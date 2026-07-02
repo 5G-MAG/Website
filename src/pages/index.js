@@ -222,7 +222,7 @@ export default function Home() {
             Technical Documentation and Standards
           </h1>
           <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.85)', marginBottom: '2rem', lineHeight: 1.6 }}>
-            Specification analysis, implementation explainers and SDO contributions — produced by 5G-MAG members.
+            Specification analysis, implementation explainers and SDO contributions — produced by our members.
           </p>
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
             <Link className="button button--primary button--lg" to="/tech/intro">
