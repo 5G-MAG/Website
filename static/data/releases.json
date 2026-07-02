@@ -1,0 +1,179 @@
+{
+  "updated_at": "2026-06-27 00:00 UTC",
+  "projects": [
+    {
+      "name": "5G Media Streaming",
+      "doc_url": "/developer/5gms/",
+      "tagline": "End-to-end 5G media streaming from network to client \u00b7 3GPP TS 26.501",
+      "latest_date": "2026-06-24",
+      "releases": [
+        {
+          "repo": "rt-5gms-application-server",
+          "tag": "v1.4.2",
+          "date": "2026-06-24",
+          "blink": true,
+          "url": "https://github.com/5G-MAG/rt-5gms-application-server/releases/tag/v1.4.2",
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/11601257?v=4"
+        },
+        {
+          "repo": "rt-5gms-application-function",
+          "tag": "v1.4.1",
+          "date": "2026-06-18",
+          "blink": true,
+          "url": "https://github.com/5G-MAG/rt-5gms-application-function/releases/tag/v1.4.1",
+          "author_login": "bit-refined",
+          "author_avatar": "https://avatars.githubusercontent.com/u/9872886?v=4"
+        },
+        {
+          "repo": "rt-5gms-media-stream-handler",
+          "tag": "v1.3.0",
+          "date": "2026-06-05",
+          "blink": true,
+          "url": "https://github.com/5G-MAG/rt-5gms-media-stream-handler/releases/tag/v1.3.0",
+          "author_login": "davidjwbbc",
+          "author_avatar": "https://avatars.githubusercontent.com/u/6951303?v=4"
+        },
+        {
+          "repo": "rt-5gms-application",
+          "tag": "v1.2.4",
+          "date": "2026-05-30",
+          "blink": true,
+          "url": "https://github.com/5G-MAG/rt-5gms-application/releases/tag/v1.2.4",
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/11601257?v=4"
+        }
+      ]
+    },
+    {
+      "name": "5G Broadcast TV Radio",
+      "doc_url": "/developer/5g-broadcast/",
+      "tagline": "LTE-based 5G broadcast for TV, radio and emergency alerts",
+      "latest_date": "2026-06-20",
+      "releases": [
+        {
+          "repo": "rt-mbms-mw",
+          "tag": "v0.10.1",
+          "date": "2026-06-20",
+          "blink": true,
+          "url": "https://github.com/5G-MAG/rt-mbms-mw/releases/tag/v0.10.1",
+          "author_login": "bit-refined",
+          "author_avatar": "https://avatars.githubusercontent.com/u/9872886?v=4"
+        },
+        {
+          "repo": "rt-mbms-modem",
+          "tag": "v0.9.3",
+          "date": "2026-06-10",
+          "blink": true,
+          "url": "https://github.com/5G-MAG/rt-mbms-modem/releases/tag/v0.9.3",
+          "author_login": "davidjwbbc",
+          "author_avatar": "https://avatars.githubusercontent.com/u/6951303?v=4"
+        },
+        {
+          "repo": "rt-mbms-tx",
+          "tag": "v0.8.0",
+          "date": "2026-05-15",
+          "blink": false,
+          "url": "https://github.com/5G-MAG/rt-mbms-tx/releases/tag/v0.8.0",
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/11601257?v=4"
+        }
+      ]
+    },
+    {
+      "name": "XR Media",
+      "doc_url": "/developer/xr/",
+      "tagline": "MPEG-I scene description and XR media integration over 5G",
+      "latest_date": "2026-06-15",
+      "releases": [
+        {
+          "repo": "rt-xr-unity-player",
+          "tag": "v2.1.0",
+          "date": "2026-06-15",
+          "blink": true,
+          "url": "https://github.com/5G-MAG/rt-xr-unity-player/releases/tag/v2.1.0",
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/11601257?v=4"
+        },
+        {
+          "repo": "rt-xr-maf-native",
+          "tag": "v2.0.2",
+          "date": "2026-06-08",
+          "blink": true,
+          "url": "https://github.com/5G-MAG/rt-xr-maf-native/releases/tag/v2.0.2",
+          "author_login": "bit-refined",
+          "author_avatar": "https://avatars.githubusercontent.com/u/9872886?v=4"
+        }
+      ]
+    },
+    {
+      "name": "5G Multicast Broadcast",
+      "doc_url": "/developer/5g-mbs/",
+      "tagline": "5G-native multicast and broadcast services \u00b7 3GPP 5G MBS",
+      "latest_date": "2026-06-12",
+      "releases": [
+        {
+          "repo": "rt-mbs-function",
+          "tag": "v0.3.0-5mbs",
+          "date": "2026-06-12",
+          "blink": true,
+          "url": "https://github.com/5G-MAG/rt-mbs-function/releases/tag/v0.3.0-5mbs",
+          "author_login": "davidjwbbc",
+          "author_avatar": "https://avatars.githubusercontent.com/u/6951303?v=4"
+        },
+        {
+          "repo": "rt-mbs-transport-function",
+          "tag": "v0.2.1-5mbs",
+          "date": "2026-06-01",
+          "blink": true,
+          "url": "https://github.com/5G-MAG/rt-mbs-transport-function/releases/tag/v0.2.1-5mbs",
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/11601257?v=4"
+        }
+      ]
+    },
+    {
+      "name": "UE Data Collection",
+      "doc_url": "/developer/data-collection/",
+      "tagline": "UE-side data collection, reporting and event exposure \u00b7 3GPP TS 26.531",
+      "latest_date": "2026-06-03",
+      "releases": [
+        {
+          "repo": "rt-data-collection-application-function",
+          "tag": "v1.1.0",
+          "date": "2026-06-03",
+          "blink": true,
+          "url": "https://github.com/5G-MAG/rt-data-collection-application-function/releases/tag/v1.1.0",
+          "author_login": "bit-refined",
+          "author_avatar": "https://avatars.githubusercontent.com/u/9872886?v=4"
+        }
+      ]
+    },
+    {
+      "name": "V3C Immersive",
+      "doc_url": "/developer/v3c/",
+      "tagline": "V3C volumetric video platform for immersive 5G experiences",
+      "latest_date": "2026-05-22",
+      "releases": [
+        {
+          "repo": "rt-v3c-unity-player",
+          "tag": "v1.2.0",
+          "date": "2026-05-22",
+          "blink": false,
+          "url": "https://github.com/5G-MAG/rt-v3c-unity-player/releases/tag/v1.2.0",
+          "author_login": "davidjwbbc",
+          "author_avatar": "https://avatars.githubusercontent.com/u/6951303?v=4"
+        },
+        {
+          "repo": "rt-v3c-decoder-plugin",
+          "tag": "v1.1.3",
+          "date": "2026-05-14",
+          "blink": false,
+          "url": "https://github.com/5G-MAG/rt-v3c-decoder-plugin/releases/tag/v1.1.3",
+          "author_login": "bit-refined",
+          "author_avatar": "https://avatars.githubusercontent.com/u/9872886?v=4"
+        }
+      ]
+    }
+  ]
+}

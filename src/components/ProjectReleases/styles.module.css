@@ -1,0 +1,111 @@
+.releaseList {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 1rem 0 2rem;
+}
+
+.releaseRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.9rem 1.25rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  gap: 1rem;
+}
+
+.releaseRow:nth-child(even) {
+  background: var(--ifm-color-emphasis-100);
+}
+
+.releaseRow:last-of-type {
+  border-bottom: none;
+}
+
+.releaseRepoInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.releaseRepoName {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary) !important;
+  text-decoration: none !important;
+}
+
+.releaseRepoName:hover {
+  text-decoration: underline !important;
+}
+
+.releaseMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.badgeNew {
+  background: var(--ifm-color-primary);
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 0.1rem 0.4rem;
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+}
+
+.releaseTag {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.8rem;
+  background: var(--ifm-color-emphasis-200);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  color: var(--ifm-color-emphasis-800) !important;
+  text-decoration: none !important;
+}
+
+.releaseTag:hover {
+  background: var(--ifm-color-emphasis-300);
+}
+
+.releaseDate {
+  font-size: 0.82rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.releaseAuthor {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  text-decoration: none !important;
+  color: var(--ifm-color-emphasis-700) !important;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  transition: color 0.15s ease;
+}
+
+.releaseAuthor:hover {
+  color: var(--ifm-color-primary) !important;
+}
+
+.releaseAuthorAvatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ifm-color-emphasis-300);
+}
+
+.updatedAt {
+  font-size: 0.78rem;
+  color: var(--ifm-color-emphasis-500);
+  padding: 0.5rem 1.25rem;
+  margin: 0;
+  background: var(--ifm-color-emphasis-100);
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}

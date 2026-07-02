@@ -1,0 +1,27 @@
+---
+hide_title: true
+title: Tutorials
+sidebar_position: 2
+---
+
+<div class="page-title-row">
+<svg xmlns="http://www.w3.org/2000/svg" class="page-banner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M11.482 20.924a1.666 1.666 0 0 1 -1.157 -1.241a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.312 .318 1.644 1.794 .995 2.697" />
+  <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+  <path d="M20 21l2 -2l-2 -2" />
+  <path d="M17 17l-2 2l2 2" /></svg>
+<h1>Tutorials, Tests and Examples</h1>
+</div>
+
+<div style="margin: 8px 0"><a class="button button--outline button--primary" href="../scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="../repositories" style="margin: 2px 4px 2px 0">GitHub Repos</a> <a class="button button--outline button--primary" href="." style="margin: 2px 4px 2px 0">Tutorials</a></div>
+
+**Start here:** if you want to stand up a working 5G network end to end, follow the [5G Network](./5gnetwork) tutorial first. The [SDR Platforms](./sdr-platforms) page is a hardware reference for installing and verifying the Software Defined Radio devices used with srsRAN, not a standalone walkthrough.
+
+## [5G Network with Open5GS, srsRAN and COTS UE](./5gnetwork)
+These are generic instructions to setup a 5G network using Open5GS and srsRAN and COTS UEs.
+
+## [SDR Platforms for srsRAN](./sdr-platforms)
+These are generic instructions to setup different SDR platforms for projects which use srsRAN.
+
+## Video Library
+Our [YouTube channel](https://www.youtube.com/@5GMAG) hosts some practical videos provided by developers on the use of the Reference Tools.

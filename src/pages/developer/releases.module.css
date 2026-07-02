@@ -1,0 +1,227 @@
+.header {
+  background: linear-gradient(135deg, var(--ifm-color-primary-darkest) 0%, var(--ifm-color-primary) 100%);
+  padding: 3rem 0 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.5rem;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding-bottom: 3rem;
+}
+
+@media (max-width: 996px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+.projectCard {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-top: 3px solid var(--ifm-color-primary);
+  border-radius: 8px;
+  background: var(--ifm-background-surface-color);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.projectCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1rem 1.1rem 0.25rem;
+}
+
+.projectCardTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.badgeNew {
+  background: var(--ifm-color-primary);
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 0.1rem 0.4rem;
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.projectCardTagline {
+  font-size: 0.82rem;
+  color: var(--ifm-color-emphasis-700);
+  margin: 0;
+  padding: 0.35rem 1.1rem 0;
+  line-height: 1.5;
+}
+
+.projectCardMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.6rem 1.1rem 0.5rem;
+  font-size: 0.8rem;
+  color: var(--ifm-color-emphasis-600);
+  flex: 1;
+}
+
+.projectCardFooter {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.65rem 1.1rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  flex-wrap: wrap;
+}
+
+/* ── Timeline ─────────────────────────────────────────────────────── */
+
+.timelineSection {
+  padding: 2rem 0 4rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.timelineSectionTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 1.75rem;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: var(--ifm-color-emphasis-200);
+}
+
+.timelineEntry {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.65rem 0;
+  position: relative;
+}
+
+.timelineEntry:not(:last-child) {
+  border-bottom: 1px solid var(--ifm-color-emphasis-100);
+}
+
+.timelineDot {
+  position: absolute;
+  left: -1.5rem;
+  top: 1.05rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ifm-color-primary);
+  border: 2px solid var(--ifm-background-color);
+  flex-shrink: 0;
+}
+
+.timelineContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.timelineHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.2rem;
+}
+
+.timelineTag {
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: var(--ifm-font-family-monospace);
+  color: var(--ifm-color-primary) !important;
+  text-decoration: none !important;
+}
+
+.timelineTag:hover {
+  text-decoration: underline !important;
+}
+
+.timelineDate {
+  font-size: 0.78rem;
+  color: var(--ifm-color-emphasis-600);
+  margin-left: auto;
+}
+
+.timelineMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+}
+
+.timelineProject {
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-800) !important;
+  text-decoration: none !important;
+}
+
+.timelineProject:hover {
+  color: var(--ifm-color-primary) !important;
+}
+
+.timelineSep {
+  color: var(--ifm-color-emphasis-400);
+}
+
+.timelineRepo {
+  color: var(--ifm-color-emphasis-600) !important;
+  text-decoration: none !important;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.78rem;
+}
+
+.timelineRepo:hover {
+  color: var(--ifm-color-primary) !important;
+  text-decoration: underline !important;
+}
+
+.timelineAvatar {
+  flex-shrink: 0;
+}
+
+.timelineAvatar img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--ifm-color-emphasis-200);
+  display: block;
+}

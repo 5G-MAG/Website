@@ -1,0 +1,9 @@
+{
+  "label": "3GPP RAN and Core Platforms",
+  "position": 1,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "index"
+  }
+}

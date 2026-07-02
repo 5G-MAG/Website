@@ -1,0 +1,359 @@
+/* ── Sections ──────────────────────────────────────────────────────── */
+
+.section {
+  padding: 4rem 0;
+}
+
+.sectionAlt {
+  background: var(--ifm-color-emphasis-100);
+}
+
+.sectionTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.sectionSubtitle {
+  text-align: center;
+  color: var(--ifm-color-emphasis-700);
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Product Type Cards ────────────────────────────────────────────── */
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+@media (max-width: 768px) {
+  .productGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.productCard {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-top: 3px solid var(--ifm-color-primary);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--ifm-background-surface-color);
+  color: inherit !important;
+  text-decoration: none !important;
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.productCard:hover {
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.13);
+  transform: translateY(-3px);
+  text-decoration: none !important;
+}
+
+.productCardImageWrap {
+  overflow: hidden;
+  line-height: 0;
+}
+
+.productCardImage {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.productCard:hover .productCardImage {
+  transform: scale(1.04);
+}
+
+.productCardBody {
+  padding: 1.1rem 1.1rem 0.5rem;
+  flex: 1;
+}
+
+.productCardLabel {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  color: var(--ifm-heading-color);
+}
+
+.productCardDesc {
+  font-size: 0.875rem;
+  color: var(--ifm-color-emphasis-700);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.productCardFooter {
+  padding: 0.65rem 1.1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+/* ── Activity Cards ─────────────────────────────────────────────────── */
+
+.activityGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 996px) {
+  .activityGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .activityGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.activityCard {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--ifm-background-surface-color);
+  color: inherit !important;
+  text-decoration: none !important;
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.activityCard:hover {
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.12);
+  transform: translateY(-3px);
+  text-decoration: none !important;
+}
+
+.activityIconBand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 1.5rem 1.25rem 1.35rem;
+  background: linear-gradient(135deg, var(--ifm-color-primary-darkest) 0%, var(--ifm-color-primary) 100%);
+  transition: opacity 0.2s ease;
+}
+
+.activityCard:hover .activityIconBand {
+  opacity: 0.88;
+}
+
+.activityIconBand svg {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.activityIconBandTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.activityBody {
+  padding: 1rem 1rem 0.5rem;
+  flex: 1;
+}
+
+.activityDesc {
+  font-size: 0.875rem;
+  color: var(--ifm-color-emphasis-700);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.activityArrow {
+  padding: 0.6rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+/* ── Pillar Cards ──────────────────────────────────────────────────── */
+
+.pillarGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .pillarGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.pillarActions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.pillarCard {
+  padding: 1.5rem 1.5rem 1.5rem 1.75rem;
+  border-left: 4px solid var(--ifm-color-primary);
+  background: var(--ifm-background-surface-color);
+  border-radius: 0 8px 8px 0;
+}
+
+.pillarIcon {
+  width: 36px;
+  height: 36px;
+  color: var(--ifm-color-primary);
+  margin-bottom: 1rem;
+}
+
+.pillarIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.pillarTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.pillarBody {
+  font-size: 0.9rem;
+  color: var(--ifm-color-emphasis-700);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ── Capability Area Cards ─────────────────────────────────────────── */
+
+.categoryColumns {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.categoryCard {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 10px;
+  background: var(--ifm-background-surface-color);
+  overflow: hidden;
+}
+
+.categoryHeader {
+  padding: 1.4rem 1.4rem 1.1rem;
+  background: linear-gradient(135deg, var(--ifm-color-primary-darkest) 0%, var(--ifm-color-primary) 100%);
+}
+
+.categoryTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  color: #fff;
+}
+
+.categoryDesc {
+  font-size: 0.925rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.categoryTopicGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  padding: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .categoryTopicGrid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 480px) {
+  .categoryTopicGrid { grid-template-columns: 1fr; }
+}
+
+.categoryTopicCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  background: var(--ifm-background-color);
+  text-decoration: none !important;
+  color: inherit !important;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.categoryTopicCard:hover {
+  border-color: var(--ifm-color-primary);
+  background: var(--ifm-color-emphasis-100);
+  text-decoration: none !important;
+}
+
+.categoryTopicCardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.categoryTopicIcon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: var(--ifm-color-primary);
+  display: flex;
+  align-items: center;
+}
+
+.categoryTopicIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.categoryTopicName {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ifm-heading-color);
+  line-height: 1.3;
+}
+
+.categoryTopicDescText {
+  font-size: 0.8rem;
+  color: var(--ifm-color-emphasis-700);
+  display: block;
+  line-height: 1.45;
+}
+
+/* ── Community ─────────────────────────────────────────────────────── */
+
+.communityLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}

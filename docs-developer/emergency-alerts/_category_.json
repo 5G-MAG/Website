@@ -1,0 +1,9 @@
+{
+  "label": "5G Broadcast: Emergency Alerts",
+  "position": 3,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "index"
+  }
+}

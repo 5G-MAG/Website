@@ -1,0 +1,11 @@
+.wrap {
+  margin-bottom: 0.5rem;
+}
+
+.icon {
+  height: 56px;
+  width: auto;
+  object-fit: contain;
+  object-position: left center;
+  display: block;
+}

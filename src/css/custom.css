@@ -1,0 +1,321 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #00A0D2;
+  --ifm-color-primary-dark: #0090BC;
+  --ifm-color-primary-darker: #0088B3;
+  --ifm-color-primary-darkest: #006F92;
+  --ifm-color-primary-light: #0AADE0;
+  --ifm-color-primary-lighter: #1DB6E8;
+  --ifm-color-primary-lightest: #47C8F0;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #00A0D2;
+  --ifm-color-primary-dark: #0090BC;
+  --ifm-color-primary-darker: #0088B3;
+  --ifm-color-primary-darkest: #006F92;
+  --ifm-color-primary-light: #0AADE0;
+  --ifm-color-primary-lighter: #1DB6E8;
+  --ifm-color-primary-lightest: #47C8F0;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* ── Doc page layout ────────────────────────────────────────────── */
+
+:root {
+  --doc-sidebar-width: 350px;
+  --doc-toc-width: 200px;
+  --ifm-container-width-xl: 1400px;
+}
+
+/* Clip content column so buttons/images don't overflow into the TOC area.
+   Uses substring match because docItemCol is a CSS Module hash class. */
+@media (min-width: 997px) {
+  [class*='docItemCol'] {
+    overflow: hidden;
+  }
+}
+
+/* Extend TOC background flush to the right viewport edge, compensating
+   for the container's 1.5rem right padding. */
+@media (min-width: 997px) {
+  .theme-doc-toc-desktop {
+    margin-right: -1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* ── Hide project index.md from sidebar children (shown as category link instead) */
+
+.project-index-link {
+  display: none;
+}
+
+/* ── Page banner icon ───────────────────────────────────────────── */
+
+.page-banner-icon {
+  height: 56px;
+  width: auto;
+  display: block;
+  margin-bottom: 0.5rem;
+  object-fit: contain;
+  object-position: left center;
+}
+
+svg.page-banner-icon {
+  width: 48px;
+  height: 48px;
+  color: var(--ifm-color-primary);
+  object-fit: unset;
+  flex-shrink: 0;
+  margin-bottom: 0;
+}
+
+/* ── Page title row (icon + h1 inline) ─────────────────────────── */
+
+.page-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.page-title-row h1 {
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* ── Project card grid ──────────────────────────────────────────── */
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0 2.5rem;
+}
+
+.project-grid--2col {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 600px) {
+  .project-grid--2col {
+    grid-template-columns: 1fr;
+  }
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--ifm-background-surface-color);
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.project-card:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  transform: translateY(-3px);
+}
+
+.project-card__icon-band {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 1.5rem 1.25rem 1.35rem;
+  background: linear-gradient(135deg, var(--ifm-color-primary-darkest) 0%, var(--ifm-color-primary) 100%);
+  text-decoration: none !important;
+  transition: opacity 0.2s ease;
+}
+
+.project-card:hover .project-card__icon-band {
+  opacity: 0.88;
+}
+
+.project-card__icon-band svg {
+  width: 2.5rem;
+  height: 2.5rem;
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.82);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.project-card__icon-band span {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.project-card__body p {
+  font-size: 0.875rem;
+  color: var(--ifm-color-emphasis-700);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.project-card__image-link {
+  display: block;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.project-card__image-link img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  border: none !important;
+  transition: transform 0.2s ease;
+}
+
+.project-card:hover .project-card__image-link img {
+  transform: scale(1.04);
+}
+
+.project-card__body {
+  padding: 0.85rem 1rem 0.4rem;
+  flex: 1;
+}
+
+.project-card__body h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--ifm-heading-color);
+}
+
+.project-card__footer {
+  padding: 0.7rem 1rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+
+/* ── Application category cards (applications/index.md) ─────────────── */
+
+.app-cat-columns {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 1.5rem 0 2.5rem;
+}
+
+.app-cat-card {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 10px;
+  background: var(--ifm-background-surface-color);
+  overflow: hidden;
+}
+
+.app-cat-header {
+  padding: 1.4rem 1.4rem 1.1rem;
+  background: linear-gradient(135deg, var(--ifm-color-primary-darkest) 0%, var(--ifm-color-primary) 100%);
+}
+
+.app-cat-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  color: #fff;
+}
+
+.app-cat-desc {
+  font-size: 0.925rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.app-cat-topics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  padding: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .app-cat-topics { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 480px) {
+  .app-cat-topics { grid-template-columns: 1fr; }
+}
+
+.app-cat-topic-link {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  background: var(--ifm-background-color);
+  text-decoration: none !important;
+  color: inherit !important;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.app-cat-topic-link:hover {
+  border-color: var(--ifm-color-primary);
+  background: var(--ifm-color-emphasis-100);
+}
+
+.app-cat-topic-icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: var(--ifm-color-primary);
+  display: flex;
+  align-items: center;
+}
+
+.app-cat-topic-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.app-cat-topic-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.app-cat-topic-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ifm-heading-color);
+  line-height: 1.3;
+}
+
+.app-cat-topic-text {
+  font-size: 0.8rem;
+  color: var(--ifm-color-emphasis-700);
+  display: block;
+  line-height: 1.45;
+}
+
+/* ── Liaison statements table ───────────────────────────────────── */
+.liaison-table { table-layout: fixed; width: 100%; }
+.liaison-table th:nth-child(1), .liaison-table td:nth-child(1) { width: 60px; }
+.liaison-table th:nth-child(2), .liaison-table td:nth-child(2) { width: 75px; }
+.liaison-table th:nth-child(3), .liaison-table td:nth-child(3) { width: 200px; }
+.liaison-table td { overflow-wrap: anywhere; }
