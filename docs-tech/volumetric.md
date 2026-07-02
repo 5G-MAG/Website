@@ -5,10 +5,15 @@ sidebar_position: 6
 ---
 
 
-<div class="page-title-row">
-<svg xmlns="http://www.w3.org/2000/svg" class="page-banner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<div class="topic-banner" style="--topic-accent: #8b5cf6; --topic-accent-dark: #5b21b6;">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M4 8v-2a2 2 0 0 1 2 -2h2"/><path d="M4 16v2a2 2 0 0 0 2 2h2"/><path d="M16 4h2a2 2 0 0 1 2 2v2"/><path d="M16 20h2a2 2 0 0 0 2 -2v-2"/><path d="M12 12.5l4 -2.5"/><path d="M8 10l4 2.5v4.5l4 -2.5v-4.5l-4 -2.5l-4 2.5"/><path d="M8 10v4.5l4 2.5"/></svg>
-<h1>Volumetric Video - Docs</h1>
+</div>
+<div class="topic-banner__text">
+<h1>Volumetric Video</h1>
+<p>3D point-cloud and mesh video that lets viewers move freely around a scene, built on MPEG V3C.</p>
+</div>
 </div>
 
 Volumetric video represents 3D objects and scenes as point clouds or mesh-based data, so viewers can move freely around the content rather than watching from a fixed camera angle.

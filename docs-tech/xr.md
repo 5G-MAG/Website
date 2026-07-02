@@ -5,10 +5,15 @@ sidebar_position: 5
 ---
 
 
-<div class="page-title-row">
-<svg xmlns="http://www.w3.org/2000/svg" class="page-banner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<div class="topic-banner" style="--topic-accent: #8b5cf6; --topic-accent-dark: #5b21b6;">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/><path d="M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2"/><path d="M3 7v-2a2 2 0 0 1 2 -2h2"/><path d="M3 17v2a2 2 0 0 0 2 2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M17 21h2a2 2 0 0 0 2 -2v-2"/></svg>
-<h1>XR and MPEG-I Scene Description - Docs</h1>
+</div>
+<div class="topic-banner__text">
+<h1>XR and MPEG-I Scene Description</h1>
+<p>Interactive, spatially-aware 3D scenes and immersive media delivered over 5G Media Streaming.</p>
+</div>
 </div>
 
 Extended Reality (XR) and 3D scene delivery bring interactive, spatially-aware content to 5G devices, from augmented reality overlays to full virtual environments. 5G-MAG's work centres on MPEG-I Scene Description (ISO/IEC 23090-14), a standard format for describing dynamic 3D scenes composed of glTF (GL Transmission Format) 3D objects, audio, and haptic elements. Scene Description content can be transported using the 5G Media Streaming (5GMS) framework (3GPP [TS 26.512](https://www.3gpp.org/dynareport/26512.htm)), enabling adaptive and policy-driven delivery of immersive media. 5G-MAG also covers [Avatar Communications](./avatar-communications), addressing real-time avatar representation and interaction in 5G contexts.

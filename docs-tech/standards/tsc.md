@@ -4,10 +4,15 @@ title: Time-Sensitive Communications
 sidebar_position: 15
 ---
 
-<div class="page-title-row">
-<svg xmlns="http://www.w3.org/2000/svg" class="page-banner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<div class="topic-banner" style="--topic-accent: #f59e0b; --topic-accent-dark: #92400e;">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M12 13m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"/><path d="M12 10l0 3l2 2"/><path d="M7 4l-2.75 2"/><path d="M17 4l2.75 2"/></svg>
-<h1>Time-Sensitive Communications - Specs</h1>
+</div>
+<div class="topic-banner__text">
+<h1>Time-Sensitive Communications</h1>
+<p>Deterministic, low-latency delivery over 5G for tightly synchronised professional media.</p>
+</div>
 </div>
 
 ## Overview

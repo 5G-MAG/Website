@@ -5,10 +5,15 @@ sidebar_position: 7
 ---
 
 
-<div class="page-title-row">
-<svg xmlns="http://www.w3.org/2000/svg" class="page-banner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<div class="topic-banner" style="--topic-accent: #8b5cf6; --topic-accent-dark: #5b21b6;">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M6 6a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2l0 -4"/><path d="M12 2v2"/><path d="M9 12v9"/><path d="M15 12v9"/><path d="M5 16l4 -2"/><path d="M15 14l4 2"/><path d="M9 18h6"/><path d="M10 8v.01"/><path d="M14 8v.01"/></svg>
-<h1>Avatar Communication with MPEG ARF - Docs</h1>
+</div>
+<div class="topic-banner__text">
+<h1>Avatar Communication with MPEG ARF</h1>
+<p>Real-time conversational avatars, animated from audio and video, for immersive calls over 5G.</p>
+</div>
 </div>
 
 Avatar Communications covers real-time conversational avatar systems in 5G contexts, targeting the MPEG Avatar Representation Format (ARF) and its use for avatar-based communications. Avatars are synthesised digital representations of participants, animated in real time from audio and video input, enabling immersive video calls and virtual presence experiences. 5G-MAG's work looks at the tools needed to encode, render, and stream avatars over 5G networks: the avatar representation itself, its animation, and the media transport that carries it.

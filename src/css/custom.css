@@ -548,3 +548,54 @@ svg.page-banner-icon {
   font-size: 0.825rem;
   font-weight: 600;
 }
+
+/* ── Topic banner (per-topic eye-catcher header) ──────────────────
+   --topic-accent / --topic-accent-dark can be overridden inline per
+   topic to give each subject area a distinct gradient; defaults to
+   the site's brand colour when not set. ──────────────────────── */
+.topic-banner {
+  --topic-accent: var(--ifm-color-primary);
+  --topic-accent-dark: var(--ifm-color-primary-darkest);
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.6rem 1.9rem;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--topic-accent-dark) 0%, var(--topic-accent) 100%);
+  margin-bottom: 1.75rem;
+}
+
+.topic-banner__icon-wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.topic-banner__icon-wrap svg {
+  width: 34px;
+  height: 34px;
+  color: #fff;
+}
+
+.topic-banner__text h1 {
+  margin: 0 0 0.3rem;
+  color: #fff;
+  font-size: 1.85rem;
+  line-height: 1.2;
+}
+
+.topic-banner__text p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 640px) {
+  .topic-banner { flex-direction: column; align-items: flex-start; }
+}

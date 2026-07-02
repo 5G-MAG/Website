@@ -5,10 +5,15 @@ sidebar_position: 9
 ---
 
 
-<div class="page-title-row">
-<svg xmlns="http://www.w3.org/2000/svg" class="page-banner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<div class="topic-banner" style="--topic-accent: #10b981; --topic-accent-dark: #065f46;">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M3 21l18 0"/><path d="M9 8l1 0"/><path d="M9 12l1 0"/><path d="M9 16l1 0"/><path d="M14 8l1 0"/><path d="M14 12l1 0"/><path d="M14 16l1 0"/><path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16"/></svg>
-<h1>Non-Public Networks - Docs</h1>
+</div>
+<div class="topic-banner__text">
+<h1>Non-Public Networks</h1>
+<p>Private 5G deployments for live production, replacing legacy satellite, ISDN and fibre contribution links.</p>
+</div>
 </div>
 
 Non-Public Networks (NPNs) are private 5G deployments operated for a specific organisation or use case, defined in 3GPP Release 16. In media production, NPNs allow broadcasters to deploy dedicated 5G infrastructure for live production workflows, replacing legacy contribution links (satellite, ISDN, fibre) with a programmable, low-latency wireless fabric. 5G-MAG's work covers deployment models, spectrum access strategies, User Equipment (UE) registration and on-boarding, and the specific requirements of live production environments such as time-sensitive communications.
