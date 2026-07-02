@@ -4,14 +4,19 @@ hide_title: true
 sidebar_position: 5
 ---
 
-<div class="page-title-row">
-<svg xmlns="http://www.w3.org/2000/svg" class="page-banner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M12 12l0 .01" />
   <path d="M14.828 9.172a4 4 0 0 1 0 5.656" />
   <path d="M17.657 6.343a8 8 0 0 1 0 11.314" />
   <path d="M9.168 14.828a4 4 0 0 1 0 -5.656" />
   <path d="M6.337 17.657a8 8 0 0 1 0 -11.314" /></svg>
+</div>
+<div class="topic-banner__text">
 <h1>MB-SMF Testing: Managing MBS Sessions and TMGIs</h1>
+<p>This page shows how to create and manage MBS sessions and their identifiers on the MB-SMF.</p>
+</div>
 </div>
 
 This page shows how to create and manage MBS sessions and their identifiers on the MB-SMF. An MBS session groups the devices that receive the same content; a **TMGI (Temporary Mobile Group Identifier)** names that session, and an **SSM (Source-Specific Multicast address)** identifies the source and destination of the multicast traffic that feeds it.

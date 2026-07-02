@@ -5,10 +5,15 @@ title: Common Tools
 sidebar_position: 5
 ---
 
-<div class="page-title-row">
-<svg xmlns="http://www.w3.org/2000/svg" class="page-banner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5" /></svg>
+</div>
+<div class="topic-banner__text">
 <h1>Common Tools</h1>
+<p>Common Tools are shared helper repositories (scripts, example configurations and build utilities) that support several Reference Tools rather than implementing a specification of their own.</p>
+</div>
 </div>
 <div style="margin: 8px 0"><a class="button button--outline button--primary" href="./" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="./releases" style="margin: 2px 4px 2px 0">Releases</a></div>
 

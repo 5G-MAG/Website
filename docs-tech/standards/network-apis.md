@@ -4,10 +4,15 @@ title: Network APIs
 sidebar_position: 11
 ---
 
-<div class="page-title-row">
-<svg xmlns="http://www.w3.org/2000/svg" class="page-banner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M4 13h5"/><path d="M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3"/><path d="M20 8v8"/><path d="M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5"/></svg>
-<h1>Network APIs - Specs</h1>
+</div>
+<div class="topic-banner__text">
+<h1>Network APIs</h1>
+<p>Network capability exposure means letting an application ask the mobile network for the conditions it needs (for example guaranteed bandwidth or low latency for a live feed) through a documented interface, instead of taking whatever best-effort service the network happens to provide.</p>
+</div>
 </div>
 
 ## Overview

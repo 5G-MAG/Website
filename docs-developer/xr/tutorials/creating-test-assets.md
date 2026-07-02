@@ -4,15 +4,20 @@ hide_title: true
 sidebar_position: 3
 ---
 
-<div class="page-title-row">
-<svg xmlns="http://www.w3.org/2000/svg" class="page-banner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
   <path d="M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2" />
   <path d="M3 7v-2a2 2 0 0 1 2 -2h2" />
   <path d="M3 17v2a2 2 0 0 0 2 2h2" />
   <path d="M17 3h2a2 2 0 0 1 2 2v2" />
   <path d="M17 21h2a2 2 0 0 0 2 -2v-2" /></svg>
+</div>
+<div class="topic-banner__text">
 <h1>MPEG-I Scene Description Test Asset Creation</h1>
+<p>Ready-made MPEG-I Scene Description test assets to download, plus a guide to authoring your own in Blender.</p>
+</div>
 </div>
 
 This page has two halves. The first, [List of available assets](#list-of-available-assets), points you to ready-made test assets you can download and play directly. The second, [Generation of MPEG-I SD compliant glTF2.0 assets](#generation-of-mpeg-i-sd-compliant-gltf20-assets), explains how to author your own assets in Blender using the exporter add-on.

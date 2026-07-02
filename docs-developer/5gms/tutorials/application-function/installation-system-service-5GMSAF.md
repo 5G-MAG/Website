@@ -4,10 +4,15 @@ hide_title: true
 sidebar_position: 2
 ---
 
-<div class="page-title-row">
-<svg xmlns="http://www.w3.org/2000/svg" class="page-banner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M7 4v16l13 -8l-13 -8" /></svg>
+</div>
+<div class="topic-banner__text">
 <h1>Installing the 5GMSd Application Function as a System Service</h1>
+<p>This guide covers building and installing the 5G Media Streaming downlink (5GMSd) Application Function (AF) as a system service, so that it is installed system-wide and managed by the operating system rather than run from your own account.</p>
+</div>
 </div>
 
 This guide covers building and installing the 5G Media Streaming downlink (5GMSd) Application Function (AF) as a system service, so that it is installed system-wide and managed by the operating system rather than run from your own account. Choose this approach when you are deploying a release for shared or longer-running use; for active development and testing under your own user account, follow [Installing as a Local User](./installation-local-user-5GMSAF) instead. The end state of this guide is the Application Function installed system-wide and runnable as a managed service.

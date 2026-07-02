@@ -4,15 +4,20 @@ hide_title: true
 sidebar_position: 2
 ---
 
-<div class="page-title-row">
-<svg xmlns="http://www.w3.org/2000/svg" class="page-banner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
   <path d="M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2" />
   <path d="M3 7v-2a2 2 0 0 1 2 -2h2" />
   <path d="M3 17v2a2 2 0 0 0 2 2h2" />
   <path d="M17 3h2a2 2 0 0 1 2 2v2" />
   <path d="M17 21h2a2 2 0 0 0 2 -2v-2" /></svg>
+</div>
+<div class="topic-banner__text">
 <h1>Immersive and 3D Media message</h1>
+<p>The goal of this tutorial is to show how 3D and AR assets can be shared like media attachments (for example through a Multimedia Messaging Service (MMS) message or a third-party messaging app) and then opened and rendered in the XR player.</p>
+</div>
 </div>
 
 The goal of this tutorial is to show how 3D and AR assets can be shared like media attachments (for example through a Multimedia Messaging Service (MMS) message or a third-party messaging app) and then opened and rendered in the XR player. A "3GPP conforming container" here means the asset is packaged so that it can be carried by 3GPP messaging services.

@@ -4,10 +4,15 @@ hide_title: true
 sidebar_position: 1
 ---
 
-<div class="page-title-row">
-<svg xmlns="http://www.w3.org/2000/svg" class="page-banner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M7 4v16l13 -8l-13 -8" /></svg>
+</div>
+<div class="topic-banner__text">
 <h1>Installing the 5GMSd Application Function as a Local User</h1>
+<p>This guide covers building, installing, and running the 5G Media Streaming downlink (5GMSd) Application Function (AF) directly as a local user (without a system-wide service installation).</p>
+</div>
 </div>
 
 This guide covers building, installing, and running the 5G Media Streaming downlink (5GMSd) Application Function (AF) directly as a local user (without a system-wide service installation). This approach is recommended for active development and testing, as it allows you to run the latest code from the `development` branch under your own user account.

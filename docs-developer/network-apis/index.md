@@ -5,13 +5,18 @@ title: Network APIs
 sidebar_position: 9
 ---
 
-<div class="page-title-row">
-<svg xmlns="http://www.w3.org/2000/svg" class="page-banner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M4 13h5" />
   <path d="M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3" />
   <path d="M20 8v8" />
   <path d="M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5" /></svg>
+</div>
+<div class="topic-banner__text">
 <h1>Network APIs</h1>
+<p>Reference implementation for accessing 5G Core network capabilities through standardised Application Programming Interfaces (APIs), demonstrating how media applications can programmatically request Quality of Service (QoS) guarantees, network slice allocation, and connectivity insights.</p>
+</div>
 </div>
 <div style="margin: 8px 0"> <a class="button button--outline button--primary" href="./repositories" style="margin: 2px 4px 2px 0">GitHub Repos</a> <a class="button button--outline button--primary" href="./releases" style="margin: 2px 4px 2px 0">Releases</a></div>
 

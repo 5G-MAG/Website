@@ -4,10 +4,15 @@ hide_title: true
 sidebar_position: 3
 ---
 
-<div class="page-title-row">
-<svg xmlns="http://www.w3.org/2000/svg" class="page-banner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M7 4v16l13 -8l-13 -8" /></svg>
+</div>
+<div class="topic-banner__text">
 <h1>Configuration of the 5GMSd Application Function</h1>
+<p>The 5G Media Streaming downlink (5GMSd) Application Function (AF) is the control-plane component that provisions media delivery: it configures Application Servers, manages certificates, and answers requests from Application Service Providers and client devices.</p>
+</div>
 </div>
 
 The 5G Media Streaming downlink (5GMSd) Application Function (AF) is the control-plane component that provisions media delivery: it configures Application Servers, manages certificates, and answers requests from Application Service Providers and client devices. Its runtime behaviour is controlled by the `msaf.yaml` configuration file. This page describes each setting in that file, its valid values, and the version of the Application Function it applies to. You normally edit `msaf.yaml` after installing the Application Function and before running it for the first time.

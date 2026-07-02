@@ -5,12 +5,17 @@ title: External Tools
 sidebar_position: 6
 ---
 
-<div class="page-title-row">
-<svg xmlns="http://www.w3.org/2000/svg" class="page-banner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" />
   <path d="M11 13l9 -9" />
   <path d="M15 4h5v5" /></svg>
+</div>
+<div class="topic-banner__text">
 <h1>External Tools</h1>
+<p>This section provides information about third-party tools that can be used in conjunction with the Reference Tools.</p>
+</div>
 </div>
 
 This section provides information about third-party tools that can be used in conjunction with the Reference Tools. The tools listed here can enhance the functionality and usability of the Reference Tools, help with testing and evaluation, and provide additional features for multimedia content delivery.

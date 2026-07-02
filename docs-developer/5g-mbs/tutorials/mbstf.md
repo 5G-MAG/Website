@@ -4,14 +4,19 @@ hide_title: true
 sidebar_position: 0
 ---
 
-<div class="page-title-row">
-<svg xmlns="http://www.w3.org/2000/svg" class="page-banner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M12 12l0 .01" />
   <path d="M14.828 9.172a4 4 0 0 1 0 5.656" />
   <path d="M17.657 6.343a8 8 0 0 1 0 11.314" />
   <path d="M9.168 14.828a4 4 0 0 1 0 -5.656" />
   <path d="M6.337 17.657a8 8 0 0 1 0 -11.314" /></svg>
+</div>
+<div class="topic-banner__text">
 <h1>MBS Transport Function (MBSTF) Testing</h1>
+<p>This tutorial describes the initial reference implementation of the MBS Transport Function (MBSTF) as specified in 3GPP TS 26.517 and 3GPP TS 29.581.</p>
+</div>
 </div>
 
 This tutorial describes the initial reference implementation of the MBS Transport Function (MBSTF) as specified in 3GPP [TS 26.517](https://www.3gpp.org/dynareport/26517.htm) and 3GPP [TS 29.581](https://www.3gpp.org/dynareport/29581.htm). You can check out the videos to see more details or follow the write-up tutorial.

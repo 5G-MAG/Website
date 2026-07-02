@@ -59,40 +59,6 @@
   display: none;
 }
 
-/* ── Page banner icon ───────────────────────────────────────────── */
-
-.page-banner-icon {
-  height: 56px;
-  width: auto;
-  display: block;
-  margin-bottom: 0.5rem;
-  object-fit: contain;
-  object-position: left center;
-}
-
-svg.page-banner-icon {
-  width: 48px;
-  height: 48px;
-  color: var(--ifm-color-primary);
-  object-fit: unset;
-  flex-shrink: 0;
-  margin-bottom: 0;
-}
-
-/* ── Page title row (icon + h1 inline) ─────────────────────────── */
-
-.page-title-row {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
-}
-
-.page-title-row h1 {
-  margin: 0;
-  line-height: 1.2;
-}
-
 /* ── Project card grid ──────────────────────────────────────────── */
 
 .project-grid {

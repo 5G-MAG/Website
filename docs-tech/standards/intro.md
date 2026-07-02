@@ -4,10 +4,15 @@ title: Introduction
 sidebar_position: -1
 ---
 
-<div class="page-title-row">
-<svg xmlns="http://www.w3.org/2000/svg" class="page-banner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0"/><path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0"/><path d="M3 6l0 13"/><path d="M12 6l0 13"/><path d="M21 6l0 13"/></svg>
-<h1>Introduction - Specs</h1>
+</div>
+<div class="topic-banner__text">
+<h1>Introduction</h1>
+<p>This is the entry point to 5G-MAG's work on Standards and Specifications.</p>
+</div>
 </div>
 
 This is the entry point to **5G-MAG's work on Standards and Specifications**. Drawing on its software development, implementation and deployment experience, 5G-MAG provides feedback, requirements and liaison statements to Standards Developing Organisations (SDOs) such as 3GPP and ETSI.
