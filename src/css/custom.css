@@ -555,6 +555,7 @@
    length. */
 .topic-banner__text {
   display: flex;
+  flex: 1;
   flex-wrap: wrap;
   align-items: flex-start;
   column-gap: 0.55rem;
