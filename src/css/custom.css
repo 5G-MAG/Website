@@ -548,11 +548,9 @@
   color: #fff;
 }
 
-/* h1 sits top-left, kicker is pushed to the top-right on the same
-   line via margin-left:auto, and the tagline always wraps to its own
-   line below, clamped to one row, so banner height stays the same
-   whether or not a kicker is present and regardless of tagline
-   length. */
+/* h1 sits on its own line, and the kicker takes the line below it
+   (where the tagline used to sit) so banner height stays the same
+   whether or not a kicker is present. */
 .topic-banner__text {
   display: flex;
   flex: 1;
@@ -564,9 +562,10 @@
 
 .topic-banner__kicker {
   order: 2;
-  margin-left: auto;
+  flex-basis: 100%;
+  margin-top: 0.3rem;
   display: inline-block;
-  flex-shrink: 0;
+  width: fit-content;
   background: rgba(255, 255, 255, 0.18);
   color: rgba(255, 255, 255, 0.92);
   padding: 0.15rem 0.55rem;
@@ -576,10 +575,6 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   white-space: nowrap;
-}
-
-.topic-banner__text p {
-  order: 3;
 }
 
 .topic-banner__text h1 {
