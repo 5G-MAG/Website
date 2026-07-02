@@ -253,7 +253,7 @@ function HeroSlideshow() {
             <p className={styles.slideEyebrow}>Reference Tools. Testbeds. Applications.</p>
             <h1 className={styles.slideTitle}>Media Connectivity Software Accelerator</h1>
             <p className={styles.slideSubtitle}>
-              Open-Source Developer Community — Collaborate, Create, Play.
+              Open-Source Developer Community
             </p>
             <div className={styles.slideButtons}>
               <Link className="button button--primary button--lg" to="/developer/community">
