@@ -548,9 +548,10 @@
   color: #fff;
 }
 
-/* Kicker and h1 share one line; the tagline always wraps to its own
-   line below and is clamped to one row, so banner height stays the
-   same whether or not a kicker is present and regardless of tagline
+/* h1 sits top-left, kicker is pushed to the top-right on the same
+   line via margin-left:auto, and the tagline always wraps to its own
+   line below, clamped to one row, so banner height stays the same
+   whether or not a kicker is present and regardless of tagline
    length. */
 .topic-banner__text {
   display: flex;
@@ -561,6 +562,8 @@
 }
 
 .topic-banner__kicker {
+  order: 2;
+  margin-left: auto;
   display: inline-block;
   flex-shrink: 0;
   background: rgba(255, 255, 255, 0.18);
@@ -574,7 +577,12 @@
   white-space: nowrap;
 }
 
+.topic-banner__text p {
+  order: 3;
+}
+
 .topic-banner__text h1 {
+  order: 1;
   margin: 0;
   min-width: 0;
   max-width: 100%;
