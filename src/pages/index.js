@@ -215,7 +215,7 @@ export default function Home() {
         padding: '1.5rem 0 2.5rem',
       }}>
         <div className="container">
-          <p style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--ifm-color-primary-lightest)', marginBottom: '0.5rem' }}>
+          <p style={{ fontSize: '0.85rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--ifm-color-primary-lightest)', marginBottom: '0.5rem' }}>
             5G-MAG — The Media Connectivity Association
           </p>
           <h1 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.75rem)', fontWeight: 700, color: '#fff', lineHeight: 1.2, marginBottom: '1.1rem', whiteSpace: 'nowrap' }}>
