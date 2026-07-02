@@ -21,6 +21,14 @@ New to this area? Read the [Overview on MPEG-I Scene Description](./xr/mpeg-i-sc
 
 **Reference tools:** The 5G-MAG software implementation is on the Developer Portal under [XR Media Integration in 5G](/developer/xr).
 
+## Go deeper
+
+| | |
+|---|---|
+| **Technology & Analysis** | This page plus the [Overview on MPEG-I Scene Description](./xr/mpeg-i-scene-description). Closely related: [Avatar Communications](./avatar-communications) and [Volumetric Video](./volumetric). |
+| **Standards Tracking** | [Standards: XR Media with MPEG-I Scene Description](/tech/standards/xr) — the normative specifications and 5G-MAG's contributions. |
+| **Software Tools** | [XR Media Integration in 5G](/developer/xr) on the Developer Portal. |
+
 [Execution Plan](https://github.com/orgs/5G-MAG/projects/44/views/9)
 
 The slide deck below introduces the XR Media reference tools and how MPEG-I Scene Description is used in 5G delivery.

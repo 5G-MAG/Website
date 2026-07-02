@@ -26,7 +26,15 @@ Mobile networks can expose selected capabilities (for example the ability to req
 
 GSMA Open Gateway (OGW) API profiles align these CAMARA APIs across operators.
 
-**Reference tools:** the 5G-MAG software implementation is on the developer portal under [Network APIs](https://developer.5g-mag.com/network-apis).
+**Reference tools:** the 5G-MAG software implementation is on the developer portal under [Network APIs](/developer/network-apis).
+
+## Go deeper
+
+| | |
+|---|---|
+| **Technology & Analysis** | This page, plus the deeper CAMARA API analyses and the [Network API: CAMARA Project and 3GPP APIs](./network-apis/network-api-initiatives) index page (see Technical Documentation below). |
+| **Standards Tracking** | [Standards: Network APIs](/tech/standards/network-apis) — 5G-MAG's standards tracking and contributions on network capability exposure. |
+| **Software Tools** | [Network APIs](/developer/network-apis) on the Developer Portal — reference clients implementing CAMARA-compliant APIs. |
 
 [Execution Plan](https://github.com/orgs/5G-MAG/projects/44/views/12)
 

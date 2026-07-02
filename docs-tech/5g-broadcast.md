@@ -20,11 +20,15 @@ LTE-based 5G Broadcast is a profile of existing 3GPP Long Term Evolution (LTE) s
 
 **Key specifications:** ETSI TS 103 720 (5G Broadcast System for linear TV and radio), 3GPP [TR 36.976](https://www.3gpp.org/dynareport/36976.htm) (LTE-based 5G broadcast overview), 3GPP [TS 26.346](https://www.3gpp.org/dynareport/26346.htm) (MBMS protocols and codecs), 3GPP [TS 26.347](https://www.3gpp.org/dynareport/26347.htm) (MBMS application programming interface).
 
-**Reference tools:** The 5G-MAG software implementation is on the developer portal under [LTE-based 5G Broadcast](https://developer.5g-mag.com/lte-based-5g-broadcast/) and [Emergency Alerts](https://developer.5g-mag.com/emergency-alerts/).
+**Reference tools:** The 5G-MAG software implementation is on the developer portal under [LTE-based 5G Broadcast](/developer/5g-broadcast) and [Emergency Alerts](/developer/emergency-alerts).
 
-:::caution
-The developer-portal links above were corrected from a hub.5g-mag.com host to the developer portal (developer.5g-mag.com). Confirm the exact slugs against the live developer portal before publishing.
-:::
+## Go deeper
+
+| | |
+|---|---|
+| **Technology & Analysis** | This page covers the broadcast chain, numerologies and channel bandwidths below. For deployment profiles and real-world parameter values, see [Deployment Profiles](./5g-broadcast/deployment-profiles) and [Operational Parameters in Use](./5g-broadcast/parameters-in-use). |
+| **Standards Tracking** | [Standards: LTE-based 5G Broadcast](/tech/standards/5g-broadcast) — normative 3GPP work items, Change Request history and the release-by-release evolution (Release 14 to 19) is on the dedicated [Standards Evolution](/tech/standards/5g-broadcast-standards-evolution) page. |
+| **Software Tools** | [LTE-based 5G Broadcast](/developer/5g-broadcast) and [Emergency Alerts](/developer/emergency-alerts) on the Developer Portal — the reference transmitter (rt-mbms-tx) and receiver/modem (rt-mbms-modem). |
 
 The slide deck below summarises the 5G-MAG reference tools for LTE-based 5G Broadcast (transmitter and receiver chain).
 

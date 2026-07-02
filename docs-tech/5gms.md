@@ -15,7 +15,15 @@ sidebar_position: 2
 
 **Key specifications:** 3GPP [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) (5GMS general description and architecture), [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) (5GMS protocols and APIs), [TS 26.510](https://www.3gpp.org/dynareport/26510.htm) (generalised media delivery provisioning and media session handling, from Release 18), [TS 26.511](https://www.3gpp.org/dynareport/26511.htm) (5GMS profiles, codecs and formats). Related UE data collection and reporting is specified in [TS 26.531](https://www.3gpp.org/dynareport/26531.htm) (architecture) and [TS 26.532](https://www.3gpp.org/dynareport/26532.htm) (protocols and formats). For the full list and links, see the [Standards page](/tech/standards/5gms).
 
-**Reference tools:** The 5G-MAG software implementation is on the developer portal under [5G Media Streaming](https://developer.5g-mag.com/5gms).
+**Reference tools:** The 5G-MAG software implementation is on the developer portal under [5G Media Streaming](/developer/5gms).
+
+## Go deeper
+
+| | |
+|---|---|
+| **Technology & Analysis** | This page plus the [5GMS Overview](./5gms/overview-5gms), [5GMSd Features](./5gms/features-5gmsd), and [Advanced Media Delivery](./5gms/overview-amd) for the Release-19 extensions. |
+| **Standards Tracking** | [Standards: 5G Media Streaming](/tech/standards/5gms) — the 5GMS specifications 5G-MAG tracks and contributes to, including the BSF/PCF core-network functions the AF consumes. |
+| **Software Tools** | [5G Media Streaming](/developer/5gms) on the Developer Portal — the Application Function (AF) and Application Server (AS) reference implementation. |
 
 [Execution Plan](https://github.com/orgs/5G-MAG/projects/44/views/6)
 
