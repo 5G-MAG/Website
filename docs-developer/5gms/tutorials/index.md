@@ -64,31 +64,6 @@ Our [YouTube channel](https://www.youtube.com/@5GMAG) hosts some practical video
 ### General end-to-end setup, components and features
 
 <!-- YOUTUBE-GRID-START -->
-<style>
-  .yt-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    width: 100%;
-  }
-  @media (max-width: 640px) {
-    .yt-grid { grid-template-columns: 1fr; }
-  }
-  .yt-embed-wrapper {
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-  }
-  .yt-embed-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-</style>
 <div class="yt-grid">
   <div class="yt-item">
     <div class="yt-embed-wrapper">

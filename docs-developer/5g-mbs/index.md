@@ -5,40 +5,6 @@ title: 5G Multicast Broadcast Services
 sidebar_position: 4
 ---
 
-<style>
-  /* Table Styles */
-  .health-table {
-    width: 100%; 
-    border-collapse: collapse; 
-    margin-top: 20px; 
-    table-layout: fixed;
-  }
-  .health-table th {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 2px solid var(--ifm-color-emphasis-300);
-    font-size: 0.75em;
-    color: var(--ifm-color-emphasis-700);
-    text-transform: uppercase;
-  }
-  .health-table td {
-    padding: 12px;
-    border-bottom: 1px solid var(--ifm-color-emphasis-200);
-    vertical-align: middle;
-    font-size: 0.9em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .dot { height: 8px; width: 8px; border-radius: 50%; display: inline-block; margin-right: 5px; }
-  .dot-green { background-color: #28a745; }
-  .dot-orange { background-color: #fd7e14; }
-  .dot-blue { background-color: var(--ifm-color-primary); }
-  .stats-sub { font-size: 0.8em; color: var(--ifm-color-emphasis-600); display: block; }
-
-</style>
-
-
 <div class="page-title-row">
 <svg xmlns="http://www.w3.org/2000/svg" class="page-banner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M12 12l0 .01" />
