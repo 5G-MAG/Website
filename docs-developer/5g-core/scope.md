@@ -13,6 +13,7 @@ sidebar_position: 0
   <path d="M8 16v4a1 1 0 0 1 -1 1h-4" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">5G Core Service Consumers</span>
 <h1>Scope</h1>
 <p>The 5G Core (5GC) presents several Network Functions, each of which has its own set of service interfaces.</p>
 </div>

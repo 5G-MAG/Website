@@ -12,6 +12,7 @@ sidebar_position: 0
   <path d="M3 15c.345 .6 1.258 1 2 1a2 2 0 1 0 0 -4a2 2 0 1 1 0 -4c.746 0 1.656 .394 2 1" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">5G Broadcast: Emergency Alerts</span>
 <h1>Scope</h1>
 <p>This page describes the specifications within the scope of the Emergency Alerts reference tools, what the tools demonstrate, and the high-level architecture that brings context to their applicability.</p>
 </div>

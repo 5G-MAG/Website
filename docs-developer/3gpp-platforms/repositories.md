@@ -13,6 +13,7 @@ sidebar_position: 1
   <path d="M17 17l-2 2l2 2" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">3GPP RAN and Core Platforms</span>
 <h1>Software Repositories</h1>
 <p>The following repositories are available.</p>
 </div>

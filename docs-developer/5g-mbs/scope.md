@@ -14,6 +14,7 @@ sidebar_position: 0
   <path d="M6.337 17.657a8 8 0 0 1 0 -11.314" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">5G Multicast Broadcast Services</span>
 <h1>Scope</h1>
 <p>These reference tools implement parts of the 3GPP 5G Multicast-Broadcast Services (MBS) feature.</p>
 </div>

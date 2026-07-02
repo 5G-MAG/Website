@@ -13,6 +13,7 @@ sidebar_position: 2
   <path d="M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">Network APIs</span>
 <h1>Software Repositories</h1>
 <p>The following repositories are available.</p>
 </div>

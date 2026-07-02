@@ -10,6 +10,7 @@ sidebar_position: 6
   <path d="M7 4v16l13 -8l-13 -8" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">5G Media Streaming</span>
 <h1>5G Media Streaming with QoE Metrics Reporting</h1>
 <p>QoE Metrics Reporting allows the Quality of Experience (QoE) of media streaming sessions to be logged by the 5GMS System and exposed for analysis.</p>
 </div>

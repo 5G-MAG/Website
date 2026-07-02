@@ -10,6 +10,7 @@ sidebar_position: 1
   <path d="M7 4v16l13 -8l-13 -8" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">5G Media Streaming</span>
 <h1>Testing the 5GMS Application Function</h1>
 <p>Here you will find information to assist with testing of the Reference Tools 5GMS Application Function (AF).</p>
 </div>

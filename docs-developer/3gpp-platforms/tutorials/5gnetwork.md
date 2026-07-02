@@ -13,6 +13,7 @@ sidebar_position: 1
   <path d="M17 17l-2 2l2 2" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">3GPP RAN and Core Platforms</span>
 <h1>5G Network with Open5GS, srsRAN and COTS UE</h1>
 <p>These are the generic instructions to set up a 5G network using Open5GS (the 5G Core) and srsRAN (the gNodeB / radio access network).</p>
 </div>

@@ -14,6 +14,7 @@ sidebar_position: 3
   <path d="M15 17l0 -3" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">UE Data Collection, Reporting and Exposure</span>
 <h1>Packages</h1>
 <p>This project provides or makes use of the following GitHub Container packages.</p>
 </div>

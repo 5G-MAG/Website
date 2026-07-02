@@ -15,6 +15,7 @@ sidebar_position: 2
   <path d="M17 21h2a2 2 0 0 0 2 -2v-2" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">XR and MPEG-I Scene Description</span>
 <h1>Immersive and 3D Media message</h1>
 <p>The goal of this tutorial is to show how 3D and AR assets can be shared like media attachments (for example through a Multimedia Messaging Service (MMS) message or a third-party messaging app) and then opened and rendered in the XR player.</p>
 </div>

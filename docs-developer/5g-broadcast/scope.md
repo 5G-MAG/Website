@@ -14,6 +14,7 @@ sidebar_position: 0
   <path d="M10 19h4" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">5G Broadcast: Hybrid TV/Radio</span>
 <h1>Scope</h1>
 <p>This page sets out what is in scope for the 5G Broadcast Reference Tools: the transmitter (rt-mbms-tx) and receiver (rt-mbms-modem), the LTE-based 5G Broadcast radio mode (FeMBMS), and the per-release features they support.</p>
 </div>

@@ -13,6 +13,7 @@ sidebar_position: 0
   <path d="M17 17l-2 2l2 2" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">3GPP RAN and Core Platforms</span>
 <h1>Scope</h1>
 <p>This project provides the 5G network infrastructure that other 5G-MAG reference tools run against.</p>
 </div>

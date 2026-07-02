@@ -15,6 +15,7 @@ sidebar_position: 0
   <path d="M5 9.3v-2.8a3.5 3.5 0 0 1 7 0v10" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">AI/ML Evaluation Framework</span>
 <h1>Scope</h1>
 <p>This page sets out what the AI/ML Evaluation Framework covers: its current focus areas, the repositories it is built from, and how it relates to 5G-MAG's standards work.</p>
 </div>

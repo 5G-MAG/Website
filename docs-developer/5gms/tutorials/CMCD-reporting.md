@@ -10,6 +10,7 @@ sidebar_position: 7
   <path d="M7 4v16l13 -8l-13 -8" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">5G Media Streaming</span>
 <h1>CMCD Reporting</h1>
 <p>CMCD Reporting enables the collection of CMCD(Common Media Client Data, CTA-5004) from the media player and the forwarding of CMCD metrics through the 5G Media Streaming system for monitoring and analysis.</p>
 </div>

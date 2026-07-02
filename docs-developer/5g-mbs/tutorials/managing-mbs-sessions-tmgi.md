@@ -14,6 +14,7 @@ sidebar_position: 5
   <path d="M6.337 17.657a8 8 0 0 1 0 -11.314" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">5G Multicast Broadcast Services</span>
 <h1>MB-SMF Testing: Managing MBS Sessions and TMGIs</h1>
 <p>This page shows how to create and manage MBS sessions and their identifiers on the MB-SMF.</p>
 </div>

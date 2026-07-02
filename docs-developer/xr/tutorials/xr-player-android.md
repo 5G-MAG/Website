@@ -15,6 +15,7 @@ sidebar_position: 1
   <path d="M17 21h2a2 2 0 0 0 2 -2v-2" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">XR and MPEG-I Scene Description</span>
 <h1>Building and using XR Player on Android Smartphone</h1>
 <p>This guide covers compiling the XR player sample Unity project for Android and configuring it with specific glTF content.</p>
 </div>

@@ -10,6 +10,7 @@ sidebar_position: 3
   <path d="M12 12l0 .01"/><path d="M14.828 9.172a4 4 0 0 1 0 5.656"/><path d="M17.657 6.343a8 8 0 0 1 0 11.314"/><path d="M9.168 14.828a4 4 0 0 1 0 -5.656"/><path d="M6.337 17.657a8 8 0 0 1 0 -11.314"/></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">Standards</span>
 <h1>5G Multicast Broadcast Services</h1>
 <p>5G Multicast-Broadcast Services (MBS) is the 3GPP 5G System feature for delivering the same content to many devices at once over the 5G core and NR radio, used for live media, software updates and mission-critical group communication.</p>
 </div>

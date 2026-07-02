@@ -12,6 +12,7 @@ sidebar_position: 0
   <path d="M12 12l0 9" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">Multimedia Content Delivery</span>
 <h1>Scope</h1>
 <p>This page contains information such as the specifications within the scope of the tools and high-level architectures that bring context to their applicability.</p>
 </div>

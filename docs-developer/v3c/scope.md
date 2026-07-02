@@ -16,6 +16,7 @@ sidebar_position: 0
   <path d="M8 10v4.5l4 2.5" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">V3C Immersive Platform</span>
 <h1>Scope</h1>
 <p>This page describes the specifications within the scope of the V3C reference tools, the codec profiles they cover, and the high-level architecture that brings context to their applicability.</p>
 </div>

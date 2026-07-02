@@ -14,6 +14,7 @@ sidebar_position: 2
   <path d="M15 17l0 -3" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">UE Data Collection, Reporting and Exposure</span>
 <h1>Software Repositories</h1>
 <p>The following repositories are available.</p>
 </div>

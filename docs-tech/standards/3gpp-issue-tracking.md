@@ -10,6 +10,7 @@ sidebar_position: 1
   <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">Standards</span>
 <h1>3GPP Issue Tracking</h1>
 <p>This page is the running log of XCHANGE meetings, the regular sessions where 5G-MAG and 3GPP SA4 review the specification issues raised by implementers.</p>
 </div>

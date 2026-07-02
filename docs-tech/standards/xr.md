@@ -10,6 +10,7 @@ sidebar_position: 18
   <path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/><path d="M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2"/><path d="M3 7v-2a2 2 0 0 1 2 -2h2"/><path d="M3 17v2a2 2 0 0 0 2 2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M17 21h2a2 2 0 0 0 2 -2v-2"/></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">Standards</span>
 <h1>XR with MPEG-I SD</h1>
 <p>eXtended Reality (XR) covers virtual, augmented and mixed reality media delivered over 5G.</p>
 </div>

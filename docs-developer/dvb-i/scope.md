@@ -11,6 +11,7 @@ sidebar_position: 0
   <path d="M16 3l-4 4l-4 -4" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">DVB-I over 5G</span>
 <h1>Scope</h1>
 <p>This page contains information such as the specifications within the scope of the tools and high-level architectures that bring context to their applicability.</p>
 </div>

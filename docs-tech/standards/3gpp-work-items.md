@@ -10,6 +10,7 @@ sidebar_position: 0
   <path d="M9 5H7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2V7a2 2 0 0 0 -2 -2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><path d="M9 12l2 2l4 -4"/></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">Standards</span>
 <h1>3GPP Work Items per Release</h1>
 <p>3GPP groups its specification work into Releases (Rel-15, Rel-16, and so on), and each Release is made up of Work Items, the individual pieces of technical work that produce or update specifications.</p>
 </div>

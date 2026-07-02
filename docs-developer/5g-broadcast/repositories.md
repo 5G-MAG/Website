@@ -14,6 +14,7 @@ sidebar_position: 2
   <path d="M10 19h4" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">5G Broadcast: Hybrid TV/Radio</span>
 <h1>Software Repositories</h1>
 <p>The following repositories make up the 5G Broadcast Reference Tools.</p>
 </div>

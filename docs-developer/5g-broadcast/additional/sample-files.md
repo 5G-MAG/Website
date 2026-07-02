@@ -14,6 +14,7 @@ sidebar_position: 2
   <path d="M10 19h4" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">5G Broadcast: Hybrid TV/Radio</span>
 <h1>Sample files</h1>
 <p>In order to support application developers as well as 5G-MAG contributors for testing their improvements, ORS captured sample files ("raw data" = digitized I/Q (In-phase/Quadrature) samples at LimeSDR Mini 2 output) directly from a 5G BC transmitter.</p>
 </div>

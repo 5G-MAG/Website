@@ -14,6 +14,7 @@ sidebar_position: 6
   <path d="M6.337 17.657a8 8 0 0 1 0 -11.314" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">5G Multicast Broadcast Services</span>
 <h1>MBS End-to-End: Operating MBS User Services, MBS 5GC, NG-RAN and UE</h1>
 <p>The written walkthrough for this end-to-end tutorial is under development.</p>
 </div>

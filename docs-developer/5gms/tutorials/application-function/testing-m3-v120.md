@@ -10,6 +10,7 @@ sidebar_position: 10
   <path d="M7 4v16l13 -8l-13 -8" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">5G Media Streaming</span>
 <h1>Testing: M3 Interface (5GMSd Application Function v1.2.0 and above)</h1>
 <p>The M3 interface is the internal interface over which the 5G Media Streaming downlink (5GMSd) Application Function (AF) configures the Application Server (AS): it pushes content hosting configurations and certificates to the Application Server so that the server can deliver the media.</p>
 </div>

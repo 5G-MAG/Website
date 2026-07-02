@@ -10,6 +10,7 @@ sidebar_position: 3
   <path d="M4.338 5.53c5.106 1.932 10.211 1.932 15.317 0a1 1 0 0 1 1.345 .934v11c0 .692 -.692 1.2 -1.34 .962c-5.107 -1.932 -10.214 -1.932 -15.321 0c-.648 .246 -1.339 -.242 -1.339 -.935v-11.027a1 1 0 0 1 1.338 -.935l0 .001" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">Beyond 2D Evaluation Framework</span>
 <h1>Tutorials, Tests and Examples</h1>
 <p>Step-by-step tutorials for the Beyond 2D Evaluation Framework are not yet published on this portal.</p>
 </div>

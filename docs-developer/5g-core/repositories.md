@@ -13,6 +13,7 @@ sidebar_position: 2
   <path d="M8 16v4a1 1 0 0 1 -1 1h-4" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">5G Core Service Consumers</span>
 <h1>Software Repositories</h1>
 <p>The following repositories are available.</p>
 </div>

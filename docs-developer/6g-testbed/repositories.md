@@ -17,6 +17,7 @@ sidebar_position: 2
   <path d="M12 15v3" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">6G Testbed and AI Traffic</span>
 <h1>Software Repositories</h1>
 <p>The following repositories are available.</p>
 </div>

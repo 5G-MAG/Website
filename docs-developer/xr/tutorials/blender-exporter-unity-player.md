@@ -15,6 +15,7 @@ sidebar_position: 4
   <path d="M17 21h2a2 2 0 0 0 2 -2v-2" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">XR and MPEG-I Scene Description</span>
 <h1>Blender glTF Exporter and Unity Player</h1>
 <p>This video is an introduction from Nils Duval (Motion Spell) on the usage of the Blender glTF exporter and the XR Unity Player.</p>
 </div>

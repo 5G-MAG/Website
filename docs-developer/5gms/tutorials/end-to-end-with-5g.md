@@ -10,6 +10,7 @@ sidebar_position: 4
   <path d="M7 4v16l13 -8l-13 -8" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">5G Media Streaming</span>
 <h1>5G MSd End-to-End deployment with 5G Network</h1>
 <p>This guide describes how to setup and configure the Reference Tools to create an end to end setup consisting of the 5G Downlink Media Streaming components and a 5G Network based on Open5GS (the 5G core network) and srsRAN (the Radio Access Network, RAN).</p>
 </div>

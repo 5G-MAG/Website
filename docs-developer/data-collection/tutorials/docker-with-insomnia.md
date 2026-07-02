@@ -14,6 +14,7 @@ sidebar_position: 0
   <path d="M15 17l0 -3" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">UE Data Collection, Reporting and Exposure</span>
 <h1>Data Collection Application Function with Docker and Insomnia REST client</h1>
 <p>To follow this tutorial you need to have Docker installed on your machine.</p>
 </div>

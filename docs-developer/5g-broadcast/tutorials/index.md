@@ -14,6 +14,7 @@ sidebar_position: -1
   <path d="M10 19h4" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">5G Broadcast: Hybrid TV/Radio</span>
 <h1>Tutorials, Tests and Examples</h1>
 <p>New to the Reference Tools? Start with SDR - HLS Playback over 5G Broadcast, the simplest receiver-only setup.</p>
 </div>

@@ -16,6 +16,7 @@ sidebar_position: 1
   <path d="M8 10v4.5l4 2.5" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">V3C Immersive Platform</span>
 <h1>Requirements</h1>
 <p>This page lists the device requirements for running the V3C Unity player on Android.</p>
 </div>

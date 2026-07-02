@@ -14,6 +14,7 @@ sidebar_position: 1
   <path d="M10 19h4" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">5G Broadcast: Hybrid TV/Radio</span>
 <h1>HLS Playback over 5G Broadcast (Linux)</h1>
 <p>This tutorial provides the required steps to test the reception of an HTTP Live Streaming (HLS) stream processed by the MBMS Modem.</p>
 </div>

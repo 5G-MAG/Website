@@ -15,6 +15,7 @@ sidebar_position: 0
   <path d="M17 21h2a2 2 0 0 0 2 -2v-2" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">XR and MPEG-I Scene Description</span>
 <h1>Scope</h1>
 <p>The specifications, architecture and features covered by the XR reference tools.</p>
 </div>

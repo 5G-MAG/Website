@@ -13,6 +13,7 @@ sidebar_position: 0
   <path d="M8 16v4a1 1 0 0 1 -1 1h-4" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">5G Core Service Consumers</span>
 <h1>Using the 5GC Service Consumer libraries: libscBSF</h1>
 <p>You do not need to wait for it to see libscBSF in action: the Using libscPCF tutorial already exercises libscBSF, because the PCF Policy Authorization tool uses the BSF to discover the PCF for a device before requesting a QoS policy.</p>
 </div>

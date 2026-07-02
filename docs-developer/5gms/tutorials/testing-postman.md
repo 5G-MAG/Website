@@ -10,6 +10,7 @@ sidebar_position: 2
   <path d="M7 4v16l13 -8l-13 -8" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">5G Media Streaming</span>
 <h1>Testing M1 and M5 APIs with Postman</h1>
 <p>Postman is a popular API development and testing tool that allows users to create, send, and manage HTTP requests.</p>
 </div>

@@ -548,6 +548,16 @@
   color: #fff;
 }
 
+.topic-banner__kicker {
+  display: block;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.3rem;
+}
+
 .topic-banner__text h1 {
   margin: 0 0 0.3rem;
   color: #fff;

@@ -10,6 +10,7 @@ sidebar_position: 2
   <path d="M7 4v16l13 -8l-13 -8" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">5G Media Streaming</span>
 <h1>Installing the 5GMSd Application Function as a System Service</h1>
 <p>This guide covers building and installing the 5G Media Streaming downlink (5GMSd) Application Function (AF) as a system service, so that it is installed system-wide and managed by the operating system rather than run from your own account.</p>
 </div>

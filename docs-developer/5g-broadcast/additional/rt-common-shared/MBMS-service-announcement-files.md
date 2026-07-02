@@ -14,6 +14,7 @@ sidebar_position: 0
   <path d="M10 19h4" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">5G Broadcast: Hybrid TV/Radio</span>
 <h1>MBMS Service Announcement Files</h1>
 <p>The ServiceAnnouncement(SA) file, also referred to as bootstrap.multipart in the context of Reference Tools, contains the information a receiver needs to find and play the available broadcast and unicast streams.</p>
 </div>

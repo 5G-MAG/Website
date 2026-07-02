@@ -17,6 +17,7 @@ sidebar_position: 3
   <path d="M12 15v3" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">6G Testbed and AI Traffic</span>
 <h1>Tutorials, Tests and Examples</h1>
 <p>This tutorial introduces the 6G Testbed including the Network Emulator and the framework for AI Traffic Characterization.</p>
 </div>

@@ -10,6 +10,7 @@ sidebar_position: 3
   <path d="M7 4v16l13 -8l-13 -8" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">5G Media Streaming</span>
 <h1>Packages</h1>
 <p>This page lists the prebuilt GitHub packages published for the 5G Media Streaming project.</p>
 </div>

@@ -15,6 +15,7 @@ sidebar_position: 2
   <path d="M5 9.3v-2.8a3.5 3.5 0 0 1 7 0v10" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">AI/ML Evaluation Framework</span>
 <h1>Software Repositories</h1>
 <p>The following repositories are available.</p>
 </div>

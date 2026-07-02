@@ -16,6 +16,7 @@ sidebar_position: 2
   <path d="M8 10v4.5l4 2.5" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">V3C Immersive Platform</span>
 <h1>Software Repositories</h1>
 <p>The table below lists the GitHub repositories that make up the V3C Immersive Platform, grouped by their role in the pipeline.</p>
 </div>

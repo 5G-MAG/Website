@@ -15,6 +15,7 @@ sidebar_position: 3
   <path d="M17 21h2a2 2 0 0 0 2 -2v-2" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">XR and MPEG-I Scene Description</span>
 <h1>MPEG-I Scene Description Test Asset Creation</h1>
 <p>Ready-made MPEG-I Scene Description test assets to download, plus a guide to authoring your own in Blender.</p>
 </div>

@@ -17,6 +17,7 @@ sidebar_position: 0
   <path d="M12 15v3" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">6G Testbed and AI Traffic</span>
 <h1>Scope</h1>
 <p>This project hosts an open-source testbed for AI/media traffic evaluation targeting 5G, 6G, and realistic UE-observed network conditions.</p>
 </div>

@@ -14,6 +14,7 @@ sidebar_position: 0
   <path d="M10 19h4" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">5G Broadcast: Hybrid TV/Radio</span>
 <h1>Seamless Switching between Unicast and Broadcast (Android)</h1>
 <p>This tutorial describes the end-to-end setup for showcasing seamless switching between 5G Broadcast and unicast delivery on an Android device.</p>
 </div>

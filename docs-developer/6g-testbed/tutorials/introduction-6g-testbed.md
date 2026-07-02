@@ -17,6 +17,7 @@ sidebar_position: 0
   <path d="M12 15v3" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">6G Testbed and AI Traffic</span>
 <h1>Introduction to the 6G Testbed: Network Emulator and AI Traffic Characterization</h1>
 <p>The 6G Testbed has two parts: a Network Emulator that reproduces realistic network conditions (delay, jitter, loss, and bandwidth limits) on a single machine, and an AI Traffic Characterization framework that runs AI workloads over those conditions and logs how they behave.</p>
 </div>

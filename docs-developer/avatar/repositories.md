@@ -18,6 +18,7 @@ sidebar_position: 2
   <path d="M14 8v.01" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">Avatar Communication with MPEG ARF</span>
 <h1>Software Repositories</h1>
 <p>The table below lists the GitHub repositories that make up the Avatar Communication reference tools, grouped by their role in the capture-to-render path.</p>
 </div>

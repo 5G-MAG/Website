@@ -10,6 +10,7 @@ sidebar_position: 0
   <path d="M7 4v16l13 -8l-13 -8" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">5G Media Streaming</span>
 <h1>Developing and Testing the 5GMS Application Server</h1>
 <p>Here you will find information to assist with development and testing of the Reference Tools 5GMS Application Server (AS).</p>
 </div>

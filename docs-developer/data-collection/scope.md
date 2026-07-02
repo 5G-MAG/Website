@@ -14,6 +14,7 @@ sidebar_position: 0
   <path d="M15 17l0 -3" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">UE Data Collection, Reporting and Exposure</span>
 <h1>Scope</h1>
 <p>The UE (User Equipment) Data Collection, Reporting and Event Exposure framework is defined in 3GPP Release 18 (Rel-18) to enable on-device collection and structured reporting of media performance data.</p>
 </div>

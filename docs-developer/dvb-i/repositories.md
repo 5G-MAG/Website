@@ -11,6 +11,7 @@ sidebar_position: 2
   <path d="M16 3l-4 4l-4 -4" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">DVB-I over 5G</span>
 <h1>Software Repositories</h1>
 <p>The following repositories are available.</p>
 </div>

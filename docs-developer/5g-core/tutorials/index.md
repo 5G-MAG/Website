@@ -13,6 +13,7 @@ sidebar_position: 3
   <path d="M8 16v4a1 1 0 0 1 -1 1h-4" /></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">5G Core Service Consumers</span>
 <h1>Tutorials, Tests and Examples</h1>
 <p>These tutorials show how to exercise the 5GC Service Consumer libraries and their command-line tools.</p>
 </div>
