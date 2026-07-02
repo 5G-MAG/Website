@@ -523,7 +523,7 @@
   --topic-accent: var(--ifm-color-primary);
   --topic-accent-dark: var(--ifm-color-primary-darkest);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
   padding: 1rem 1.5rem;
   border-radius: 14px;
@@ -556,7 +556,7 @@
 .topic-banner__text {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: flex-start;
   column-gap: 0.55rem;
   min-width: 0;
 }
