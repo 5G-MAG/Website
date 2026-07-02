@@ -209,7 +209,7 @@ export default function Home() {
       {/* Hero */}
       <header style={{
         background: 'linear-gradient(to right, rgba(0,0,0,0.62) 45%, rgba(0,0,0,0.18) 100%), linear-gradient(to right, #003580 0%, #00A0D2 100%)',
-        minHeight: '460px',
+        height: '490px',
         display: 'flex',
         alignItems: 'center',
         padding: '1.5rem 0 2.5rem',
