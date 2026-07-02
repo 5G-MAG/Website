@@ -16,6 +16,33 @@ sidebar_position: 15
 
 TSC in a media context usually runs over a private 5G deployment. For the network foundations it depends on, see [Standards: Non-Public Networks](/tech/standards/npn) first.
 
+<div class="godeeper-grid">
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
+<h3>Technology &amp; Analysis</h3>
+</div>
+<div class="godeeper-card__body">
+<p>The 5G-as-TSN-bridge model, time synchronisation, and applying TSC to SMPTE ST 2110 production.</p>
+<ul class="godeeper-card__links">
+<li><a href="/tech/tsc">Tech: Time-Sensitive Communications</a></li>
+</ul>
+</div>
+</div>
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l18 0"/><path d="M9 8l1 0"/><path d="M9 12l1 0"/><path d="M9 16l1 0"/><path d="M14 8l1 0"/><path d="M14 12l1 0"/><path d="M14 16l1 0"/><path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16"/></svg>
+<h3>Software Tools</h3>
+</div>
+<div class="godeeper-card__body">
+<p>There is no dedicated 5G-MAG reference implementation for TSC; the area is followed through analysis.</p>
+</div>
+</div>
+
+</div>
+
 ## Key 3GPP Specifications
 
 ### Service Requirements

@@ -14,6 +14,36 @@ sidebar_position: 7
 
 Beyond 2D Video covers media formats that go past a flat single-camera picture, such as stereoscopic 3D, multiview, depth-enhanced and volumetric video. 3GPP studied how these formats and their codecs perform over 5G in the feasibility study FS_Beyond2D, captured in TR 26.956. 5G-MAG tracks this work because it sets the evaluation baseline for delivering richer-than-2D experiences. This page lists the related 3GPP work item and technical report, and is for anyone assessing how immersive and 3D video will be carried over 5G.
 
+<div class="godeeper-grid">
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
+<h3>Technology &amp; Analysis</h3>
+</div>
+<div class="godeeper-card__body">
+<p>The Beyond 2D scenarios (stereoscopic, multiview plus depth, volumetric) and how they map to codecs.</p>
+<ul class="godeeper-card__links">
+<li><a href="/tech/volumetric/beyond2d">Tech: Beyond 2D Video</a></li>
+</ul>
+</div>
+</div>
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
+<h3>Software Tools</h3>
+</div>
+<div class="godeeper-card__body">
+<p>An evaluation framework for characterising beyond-2D formats and codecs against this study.</p>
+<ul class="godeeper-card__links">
+<li><a href="/developer/beyond-2d">Beyond 2D Evaluation Framework</a></li>
+</ul>
+</div>
+</div>
+
+</div>
+
 ## What the study covers
 
 FS_Beyond2D is a feasibility and characterisation study, not a normative specification. Its purpose is to establish, on a like-for-like basis, how well candidate formats and codecs can represent richer-than-2D content and how they behave when delivered over 5G, so that later normative work in 3GPP SA4 has a documented evidence base.

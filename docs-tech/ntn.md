@@ -17,6 +17,52 @@ Non-Terrestrial Networks (NTN) extend 5G coverage via satellite (geostationary G
 
 **No dedicated reference tool exists for NTN.** The 5G-MAG MBS reference tools (for Multicast and Broadcast) are the relevant software for NTN deployment scenarios: see [5G Multicast Broadcast Services](./5g-mbs). For satellite broadcast delivery using the FeMBMS (5G Broadcast) waveform, see [5G Broadcast](./5g-broadcast).
 
+## Go deeper
+
+<div class="godeeper-grid">
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
+<h3>Technology &amp; Analysis</h3>
+</div>
+<div class="godeeper-card__body">
+<p>Terminology, radio-layer adaptations, and how MBS Multicast and Broadcast are carried over NTN.</p>
+<ul class="godeeper-card__links">
+<li><a href="./ntn/analysis-mobility-ntn">Mobility Aspects for NTN</a></li>
+<li><a href="./ntn/analysis-mbs-broadcast-over-ntn">MBS Broadcast over NTN</a></li>
+</ul>
+</div>
+</div>
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" /></svg>
+<h3>Standards Tracking</h3>
+</div>
+<div class="godeeper-card__body">
+<p>Normative 3GPP specs (TR 38.811, TR 38.821) and 5G-MAG's contributions on NTN.</p>
+<ul class="godeeper-card__links">
+<li><a href="/tech/standards/ntn">Standards: Non-Terrestrial Networks</a></li>
+</ul>
+</div>
+</div>
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12l0 .01"/><path d="M14.828 9.172a4 4 0 0 1 0 5.656"/><path d="M17.657 6.343a8 8 0 0 1 0 11.314"/><path d="M9.168 14.828a4 4 0 0 1 0 -5.656"/><path d="M6.337 17.657a8 8 0 0 1 0 -11.314"/></svg>
+<h3>Software Tools</h3>
+</div>
+<div class="godeeper-card__body">
+<p>No dedicated NTN reference tool exists yet; the MBS reference tools are the relevant software for NTN scenarios.</p>
+<ul class="godeeper-card__links">
+<li><a href="/developer/5g-mbs">5G Multicast Broadcast Services</a></li>
+</ul>
+</div>
+</div>
+
+</div>
+
 [Execution Plan](https://github.com/orgs/5G-MAG/projects/44/views/13)
 
 ## NTN system model and terminology

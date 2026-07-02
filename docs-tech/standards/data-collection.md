@@ -14,6 +14,36 @@ sidebar_position: 16
 
 UE data collection covers the 3GPP mechanisms by which a device (user equipment, UE) reports data, such as media consumption and quality of experience, to the network, and by which the network exposes events to consuming functions. For media services this feeds analytics (through the Network Data Analytics Function, NWDAF) and delivery optimisation. The specifications below are grouped by the 3GPP working group responsible for them: SA2 (system architecture and analytics), SA4 (media data collection and reporting, reusing the 5G Media Streaming framework), and CT3 (stage-3 APIs for event exposure and network data analytics). 5G-MAG tracks and contributes to this work. For acronyms used here, see the [Glossary](/tech/standards/glossary).
 
+<div class="godeeper-grid">
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
+<h3>Technology &amp; Analysis</h3>
+</div>
+<div class="godeeper-card__body">
+<p>The Data Collection Application Function (DCAF) architecture and event-exposure analysis.</p>
+<ul class="godeeper-card__links">
+<li><a href="/tech/data-collection/data-collection-event-exposure">Tech: UE Data Collection and Event Exposure</a></li>
+</ul>
+</div>
+</div>
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
+<h3>Software Tools</h3>
+</div>
+<div class="godeeper-card__body">
+<p>The reference implementation for UE data collection, reporting and event exposure.</p>
+<ul class="godeeper-card__links">
+<li><a href="/developer/data-collection">UE Data Collection</a></li>
+</ul>
+</div>
+</div>
+
+</div>
+
 ## The work area
 
 Historically, UE-side quality of experience (QoE) data in 3GPP media services was collected through mechanisms specific to a single service, for example the QoE metrics defined for progressive download and DASH in [TS 26.247](https://www.3gpp.org/dynareport/26247.htm), or the reception reporting and consumption reporting of MBMS in [TS 26.346](https://www.3gpp.org/dynareport/26346.htm). Each service defined its own configuration, reporting format and collection endpoint. As more media features moved into the 5G Media Streaming (5GMS) framework (TS 26.501, TS 26.512), 3GPP SA4 defined a single, reusable data collection and reporting framework that any data domain can instantiate, rather than repeating a bespoke pipeline per feature.

@@ -16,6 +16,33 @@ sidebar_position: 14
 
 5GMSu is the uplink (device-to-network) part of the wider 5G Media Streaming (5GMS) framework. It shares its architecture and much of its specification base with the downlink part (5GMSd); the specifications below cover the 5GMS framework as a whole and call out the uplink-specific aspects. For the full downlink view, see [Standards: 5G Media Streaming](/tech/standards/5gms).
 
+<div class="godeeper-grid">
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
+<h3>Technology &amp; Analysis</h3>
+</div>
+<div class="godeeper-card__body">
+<p>The RTC architecture, its WebRTC transport, and how it relates to IMS and to 5GMS uplink.</p>
+<ul class="godeeper-card__links">
+<li><a href="/tech/rtc">Tech: Real-Time Media Communication</a></li>
+</ul>
+</div>
+</div>
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l18 0"/><path d="M9 8l1 0"/><path d="M9 12l1 0"/><path d="M9 16l1 0"/><path d="M14 8l1 0"/><path d="M14 12l1 0"/><path d="M14 16l1 0"/><path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16"/></svg>
+<h3>Software Tools</h3>
+</div>
+<div class="godeeper-card__body">
+<p>This is a standards-tracking area; there is no dedicated 5G-MAG reference implementation for RTC yet.</p>
+</div>
+</div>
+
+</div>
+
 ## Key 3GPP Specifications
 
 ### 5G Media Streaming: Uplink

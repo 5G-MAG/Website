@@ -15,11 +15,53 @@ sidebar_position: 4
 
 **Key specifications:** 3GPP TS 26.502 (MBS user services), [TS 23.247](https://www.3gpp.org/dynareport/23247.htm) (MBS architecture), [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) (5G Media Streaming, 5GMS, framework referenced for hybrid delivery), [TS 38.300](https://www.3gpp.org/dynareport/38300.htm) / [TS 38.331](https://www.3gpp.org/dynareport/38331.htm) (RAN procedures for broadcast mode).
 
-**Reference tools:** The 5G-MAG software implementation is on the developer portal under [5G Multicast Broadcast Services](https://developer.5g-mag.com/5g-multicast-broadcast-services/).
+**Reference tools:** The 5G-MAG software implementation is on the developer portal under [5G Multicast Broadcast Services](/developer/5g-mbs).
 
-:::caution
-The developer-portal link above was corrected from a hub.5g-mag.com host to the developer portal (developer.5g-mag.com). Confirm the exact slug against the live developer portal before publishing.
-:::
+## Go deeper
+
+<div class="godeeper-grid">
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
+<h3>Technology &amp; Analysis</h3>
+</div>
+<div class="godeeper-card__body">
+<p>The three-layer architecture (user service, 5G Core, NR/NG-RAN) and the mobility and RAN-procedure analysis pages.</p>
+<ul class="godeeper-card__links">
+<li><a href="./5g-mbs/overview-mbs">MBS Overview</a></li>
+<li><a href="./5g-mbs/ran-aspects">RAN Aspects</a></li>
+</ul>
+</div>
+</div>
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" /></svg>
+<h3>Standards Tracking</h3>
+</div>
+<div class="godeeper-card__body">
+<p>The 3GPP specification list grouped by layer, and 5G-MAG's standards contributions.</p>
+<ul class="godeeper-card__links">
+<li><a href="/tech/standards/5g-mbs">Standards: 5G Multicast Broadcast Services</a></li>
+</ul>
+</div>
+</div>
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
+<h3>Software Tools</h3>
+</div>
+<div class="godeeper-card__body">
+<p>The reference implementation for 5G-native multicast and broadcast delivery.</p>
+<ul class="godeeper-card__links">
+<li><a href="/developer/5g-mbs">5G Multicast Broadcast Services</a></li>
+</ul>
+</div>
+</div>
+
+</div>
 
 [Execution Plan](https://github.com/orgs/5G-MAG/projects/44/views/8)
 

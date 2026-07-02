@@ -19,6 +19,45 @@ There are two deployment models, and the plain-language names map to the 3GPP te
 
 **No dedicated reference tool exists for NPN.** This area is documented through analysis papers and explainer documents below. Live production over an NPN often needs deterministic timing, so for time-sensitive media transport over NPNs see also [Time-Sensitive Communications](./tsc).
 
+## Go deeper
+
+<div class="godeeper-grid">
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
+<h3>Technology &amp; Analysis</h3>
+</div>
+<div class="godeeper-card__body">
+<p>Deployment models (SNPN/PNI-NPN), identity and onboarding, and QoS/slicing/spectrum for media production, below.</p>
+</div>
+</div>
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" /></svg>
+<h3>Standards Tracking</h3>
+</div>
+<div class="godeeper-card__body">
+<p>Normative 3GPP specs (TS 23.501, TS 33.501) and 5G-MAG's contributions on NPN.</p>
+<ul class="godeeper-card__links">
+<li><a href="/tech/standards/npn">Standards: Non-Public Networks</a></li>
+</ul>
+</div>
+</div>
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l18 0"/><path d="M9 8l1 0"/><path d="M9 12l1 0"/><path d="M9 16l1 0"/><path d="M14 8l1 0"/><path d="M14 12l1 0"/><path d="M14 16l1 0"/><path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16"/></svg>
+<h3>Software Tools</h3>
+</div>
+<div class="godeeper-card__body">
+<p>No dedicated NPN reference tool exists yet — this area is analysis-only for now.</p>
+</div>
+</div>
+
+</div>
+
 [Execution Plan](https://github.com/orgs/5G-MAG/projects/44/views/11)
 
 ## Deployment models in detail

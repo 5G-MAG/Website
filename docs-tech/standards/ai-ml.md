@@ -19,6 +19,33 @@ sidebar_position: 6
 
 Together these allow media-aware decisions (such as proactive session management or content-aware delivery) to be driven by measured data rather than static configuration.
 
+<div class="godeeper-grid">
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
+<h3>Technology &amp; Analysis</h3>
+</div>
+<div class="godeeper-card__body">
+<p>Network-side analytics (NWDAF) versus UE-side data collection, and the SA4 AI/ML media study, below.</p>
+</div>
+</div>
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
+<h3>Software Tools</h3>
+</div>
+<div class="godeeper-card__body">
+<p>An evaluation framework for characterising AI and media traffic under controlled network conditions.</p>
+<ul class="godeeper-card__links">
+<li><a href="/developer/ai-ml">AI/ML Evaluation Framework</a></li>
+</ul>
+</div>
+</div>
+
+</div>
+
 The two tracks differ in where the data comes from and what they produce, as summarised below.
 
 | Track | Data source | 3GPP framework | Example output |

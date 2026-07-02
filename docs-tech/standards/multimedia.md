@@ -14,6 +14,36 @@ sidebar_position: 10
 
 Multimedia content delivery over broadcast and multicast networks relies on transport protocols that can deliver files and media objects one-way, without a return channel from each receiver. This page tracks the two main such transports: FLUTE, used for file delivery in MBMS-based systems, and ROUTE, used for real-time object delivery in ROUTE/DASH broadcast (and referenced by ATSC 3.0 and 5G Broadcast). 5G-MAG tracks these specifications and their use in its broadcast and multicast work. For acronyms used here, see the [Glossary](/tech/standards/glossary).
 
+<div class="godeeper-grid">
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
+<h3>Technology &amp; Analysis</h3>
+</div>
+<div class="godeeper-card__body">
+<p>Session structure, the File Delivery Table (FDT), and FEC/object recovery for FLUTE and ROUTE.</p>
+<ul class="godeeper-card__links">
+<li><a href="/tech/multimedia/multimedia-content-delivery">Tech: Multimedia Delivery Protocols</a></li>
+</ul>
+</div>
+</div>
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
+<h3>Software Tools</h3>
+</div>
+<div class="godeeper-card__body">
+<p>A FLUTE library and multimedia content delivery tooling used across 5G-MAG's broadcast projects.</p>
+<ul class="godeeper-card__links">
+<li><a href="/developer/multimedia">Multimedia Content Delivery</a></li>
+</ul>
+</div>
+</div>
+
+</div>
+
 ## The work area
 
 Two layers matter when media is delivered over broadcast or multicast. The **object/segment format** describes how media is packaged and addressed (for example DASH, HLS and CMAF), and the **unidirectional transport** describes how those objects reach receivers when there is no per-receiver return path (FLUTE and ROUTE). On a bidirectional (unicast) network, DASH and HLS clients simply pull segments over HTTP. On a broadcast or multicast bearer there is no per-receiver acknowledgement, so the same segments are carried by a one-way transport that layers reliability on top of UDP/IP multicast. 5G-MAG's work sits mainly at this transport layer, delivering DASH-, HLS- or CMAF-packaged content over 5G Broadcast (LTE-based) and 5G Multicast-Broadcast Services (MBS).

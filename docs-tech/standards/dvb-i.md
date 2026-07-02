@@ -16,6 +16,36 @@ sidebar_position: 9
 
 Delivery of DVB-I services over 5G can use several modes: unicast-based 5G Media Streaming (5GMS), LTE-based 5G Broadcast, and concurrent or hybrid combinations of the two. The DVB / 5G-MAG Joint Task Force documented deployment guidelines for these scenarios in DVB A178, published as ETSI TR 103 972.
 
+<div class="godeeper-grid">
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
+<h3>Technology &amp; Analysis</h3>
+</div>
+<div class="godeeper-card__body">
+<p>How DVB-I service discovery works alongside 5G delivery, and the deployment modes in detail.</p>
+<ul class="godeeper-card__links">
+<li><a href="/tech/dvb-i/dvb-i-5g">Tech: DVB-I Services over 5G Systems</a></li>
+</ul>
+</div>
+</div>
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
+<h3>Software Tools</h3>
+</div>
+<div class="godeeper-card__body">
+<p>The reference implementation for DVB-I service discovery and delivery over 5G.</p>
+<ul class="godeeper-card__links">
+<li><a href="/developer/dvb-i">DVB-I over 5G</a></li>
+</ul>
+</div>
+</div>
+
+</div>
+
 ## What this work area covers
 
 DVB-I is a service layer, not a delivery technology. It defines how a client discovers a curated set of linear services and their programme metadata, then leaves the actual media transport to whatever bearer the service references. That separation is what makes DVB-I relevant to 5G-MAG: the same DVB-I service list can point to a DASH manifest fetched over unicast, to a stream delivered by multicast, or to content carried on a broadcast bearer, without the client needing bespoke logic for each network.
