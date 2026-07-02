@@ -24,11 +24,51 @@ LTE-based 5G Broadcast is a profile of existing 3GPP Long Term Evolution (LTE) s
 
 ## Go deeper
 
-| | |
-|---|---|
-| **Technology & Analysis** | This page covers the broadcast chain, numerologies and channel bandwidths below. For deployment profiles and real-world parameter values, see [Deployment Profiles](./5g-broadcast/deployment-profiles) and [Operational Parameters in Use](./5g-broadcast/parameters-in-use). |
-| **Standards Tracking** | [Standards: LTE-based 5G Broadcast](/tech/standards/5g-broadcast) — normative 3GPP work items, Change Request history and the release-by-release evolution (Release 14 to 19) is on the dedicated [Standards Evolution](/tech/standards/5g-broadcast-standards-evolution) page. |
-| **Software Tools** | [LTE-based 5G Broadcast](/developer/5g-broadcast) and [Emergency Alerts](/developer/emergency-alerts) on the Developer Portal — the reference transmitter (rt-mbms-tx) and receiver/modem (rt-mbms-modem). |
+<div class="godeeper-grid">
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
+<h3>Technology &amp; Analysis</h3>
+</div>
+<div class="godeeper-card__body">
+<p>The broadcast chain, numerologies and channel bandwidths, plus real-world deployment values.</p>
+<ul class="godeeper-card__links">
+<li><a href="./5g-broadcast/deployment-profiles">Deployment Profiles</a></li>
+<li><a href="./5g-broadcast/parameters-in-use">Operational Parameters in Use</a></li>
+</ul>
+</div>
+</div>
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" /></svg>
+<h3>Standards Tracking</h3>
+</div>
+<div class="godeeper-card__body">
+<p>Normative 3GPP work items, Change Request history and the release-by-release evolution (Rel-14 to Rel-19).</p>
+<ul class="godeeper-card__links">
+<li><a href="/tech/standards/5g-broadcast">Standards: LTE-based 5G Broadcast</a></li>
+<li><a href="/tech/standards/5g-broadcast-standards-evolution">Standards Evolution</a></li>
+</ul>
+</div>
+</div>
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
+<h3>Software Tools</h3>
+</div>
+<div class="godeeper-card__body">
+<p>The reference transmitter (rt-mbms-tx) and receiver/modem (rt-mbms-modem) on the Developer Portal.</p>
+<ul class="godeeper-card__links">
+<li><a href="/developer/5g-broadcast">LTE-based 5G Broadcast</a></li>
+<li><a href="/developer/emergency-alerts">Emergency Alerts</a></li>
+</ul>
+</div>
+</div>
+
+</div>
 
 The slide deck below summarises the 5G-MAG reference tools for LTE-based 5G Broadcast (transmitter and receiver chain).
 

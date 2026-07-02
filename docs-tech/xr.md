@@ -23,11 +23,50 @@ New to this area? Read the [Overview on MPEG-I Scene Description](./xr/mpeg-i-sc
 
 ## Go deeper
 
-| | |
-|---|---|
-| **Technology & Analysis** | This page plus the [Overview on MPEG-I Scene Description](./xr/mpeg-i-scene-description). Closely related: [Avatar Communications](./avatar-communications) and [Volumetric Video](./volumetric). |
-| **Standards Tracking** | [Standards: XR Media with MPEG-I Scene Description](/tech/standards/xr) — the normative specifications and 5G-MAG's contributions. |
-| **Software Tools** | [XR Media Integration in 5G](/developer/xr) on the Developer Portal. |
+<div class="godeeper-grid">
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
+<h3>Technology &amp; Analysis</h3>
+</div>
+<div class="godeeper-card__body">
+<p>The scene-description model, runtime, and device architecture. Closely related to Avatar and Volumetric Video.</p>
+<ul class="godeeper-card__links">
+<li><a href="./xr/mpeg-i-scene-description">Overview on MPEG-I Scene Description</a></li>
+<li><a href="./avatar-communications">Avatar Communications</a></li>
+<li><a href="./volumetric">Volumetric Video</a></li>
+</ul>
+</div>
+</div>
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" /></svg>
+<h3>Standards Tracking</h3>
+</div>
+<div class="godeeper-card__body">
+<p>The normative specifications and 5G-MAG's contributions.</p>
+<ul class="godeeper-card__links">
+<li><a href="/tech/standards/xr">Standards: XR Media with MPEG-I Scene Description</a></li>
+</ul>
+</div>
+</div>
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
+<h3>Software Tools</h3>
+</div>
+<div class="godeeper-card__body">
+<p>The reference implementation for MPEG-I Scene Description delivery.</p>
+<ul class="godeeper-card__links">
+<li><a href="/developer/xr">XR Media Integration in 5G</a></li>
+</ul>
+</div>
+</div>
+
+</div>
 
 [Execution Plan](https://github.com/orgs/5G-MAG/projects/44/views/9)
 

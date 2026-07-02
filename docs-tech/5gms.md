@@ -19,11 +19,50 @@ sidebar_position: 2
 
 ## Go deeper
 
-| | |
-|---|---|
-| **Technology & Analysis** | This page plus the [5GMS Overview](./5gms/overview-5gms), [5GMSd Features](./5gms/features-5gmsd), and [Advanced Media Delivery](./5gms/overview-amd) for the Release-19 extensions. |
-| **Standards Tracking** | [Standards: 5G Media Streaming](/tech/standards/5gms) — the 5GMS specifications 5G-MAG tracks and contributes to, including the BSF/PCF core-network functions the AF consumes. |
-| **Software Tools** | [5G Media Streaming](/developer/5gms) on the Developer Portal — the Application Function (AF) and Application Server (AS) reference implementation. |
+<div class="godeeper-grid">
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
+<h3>Technology &amp; Analysis</h3>
+</div>
+<div class="godeeper-card__body">
+<p>The 5GMS architecture, functional entities and reference points, plus the Release-19 extensions.</p>
+<ul class="godeeper-card__links">
+<li><a href="./5gms/overview-5gms">5GMS Overview</a></li>
+<li><a href="./5gms/features-5gmsd">5GMSd Features</a></li>
+<li><a href="./5gms/overview-amd">Advanced Media Delivery</a></li>
+</ul>
+</div>
+</div>
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" /></svg>
+<h3>Standards Tracking</h3>
+</div>
+<div class="godeeper-card__body">
+<p>The 5GMS specifications 5G-MAG tracks and contributes to, including the BSF/PCF core-network functions the AF consumes.</p>
+<ul class="godeeper-card__links">
+<li><a href="/tech/standards/5gms">Standards: 5G Media Streaming</a></li>
+</ul>
+</div>
+</div>
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
+<h3>Software Tools</h3>
+</div>
+<div class="godeeper-card__body">
+<p>The Application Function (AF) and Application Server (AS) reference implementation.</p>
+<ul class="godeeper-card__links">
+<li><a href="/developer/5gms">5G Media Streaming</a></li>
+</ul>
+</div>
+</div>
+
+</div>
 
 [Execution Plan](https://github.com/orgs/5G-MAG/projects/44/views/6)
 

@@ -30,11 +30,48 @@ GSMA Open Gateway (OGW) API profiles align these CAMARA APIs across operators.
 
 ## Go deeper
 
-| | |
-|---|---|
-| **Technology & Analysis** | This page, plus the deeper CAMARA API analyses and the [Network API: CAMARA Project and 3GPP APIs](./network-apis/network-api-initiatives) index page (see Technical Documentation below). |
-| **Standards Tracking** | [Standards: Network APIs](/tech/standards/network-apis) — 5G-MAG's standards tracking and contributions on network capability exposure. |
-| **Software Tools** | [Network APIs](/developer/network-apis) on the Developer Portal — reference clients implementing CAMARA-compliant APIs. |
+<div class="godeeper-grid">
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
+<h3>Technology &amp; Analysis</h3>
+</div>
+<div class="godeeper-card__body">
+<p>This page, plus the deeper CAMARA API analyses and the initiatives index page (see Technical Documentation below).</p>
+<ul class="godeeper-card__links">
+<li><a href="./network-apis/network-api-initiatives">CAMARA Project and 3GPP APIs</a></li>
+</ul>
+</div>
+</div>
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" /></svg>
+<h3>Standards Tracking</h3>
+</div>
+<div class="godeeper-card__body">
+<p>5G-MAG's standards tracking and contributions on network capability exposure.</p>
+<ul class="godeeper-card__links">
+<li><a href="/tech/standards/network-apis">Standards: Network APIs</a></li>
+</ul>
+</div>
+</div>
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
+<h3>Software Tools</h3>
+</div>
+<div class="godeeper-card__body">
+<p>Reference clients implementing CAMARA-compliant APIs.</p>
+<ul class="godeeper-card__links">
+<li><a href="/developer/network-apis">Network APIs</a></li>
+</ul>
+</div>
+</div>
+
+</div>
 
 [Execution Plan](https://github.com/orgs/5G-MAG/projects/44/views/12)
 
