@@ -18,7 +18,7 @@ Start here if you know which specification or tool you want (tool-first). If you
     <span>3GPP RAN and Core Platforms</span>
   </a>
   <div class="project-card__body">
-    <p>OpenAirInterface (OAI)-based 5G Standalone (SA) Radio Access Network (RAN) and core network for lab and field testing.</p>
+    <p>Open5GS-based 5G core and srsRAN-based Radio Access Network (RAN) for lab and field testing.</p>
   </div>
   <div class="project-card__footer">
     <a class="button button--outline button--primary button--sm" href="./3gpp-platforms/">Documentation</a>

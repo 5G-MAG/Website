@@ -16,7 +16,7 @@ sidebar_position: 5
 
 Common Tools are shared helper repositories (scripts, example configurations and build utilities) that support several Reference Tools rather than implementing a specification of their own. You normally arrive here from a specific tool's setup steps, not by starting here. Each entry below names the project it supports; refer to the "Scope" section of that project for more context.
 
-The table below lists the repositories in this group. Auxiliary repositories, meaning supporting libraries or helper tools rather than primary deliverables, are indicated with a dashed border.
+The Community Stats table below lists the repositories in this group, with activity metrics synced from GitHub.
 
 ---
 

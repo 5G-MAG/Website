@@ -27,7 +27,19 @@ The slide deck below introduces the 5G-MAG 5G Media Streaming reference tools an
 
 ## How the pieces fit
 
-5GMS separates control from media. The Application Function (AF) is the control-plane entity: the Application Provider provisions services on it over M1, the Media Session Handler on the device drives sessions and reports over M5, and the AF bridges to the 5G Core (PCF, NEF, BSF) to obtain policy, QoS and binding information. The Application Server (AS) is the media-plane entity: it ingests content over M2 and delivers it to the Media Player over M4 (for downlink), typically as DASH or HLS over HTTP. M3 is the internal AF-to-AS interface and is not standardised. On the device the 5GMS Client is split into the Media Session Handler (control) and the Media Player, or Media Streamer for uplink (media), talking to each other over the UE-internal M6 and M7 APIs. M8 carries service-level information (for example the stream list) between the Application Provider and the Aware Application and is outside the 3GPP scope.
+5GMS separates control from media: the Application Function (AF) manages sessions and policy, while the Application Server (AS) actually delivers the content. The reference points below (M1-M8) are the named interfaces that connect these pieces together — most are 3GPP-standardised APIs, a few are intentionally left open for implementers.
+
+| Reference point | Connects | Standardised? | Purpose |
+|---|---|---|---|
+| M1 | Application Provider &rarr; AF | Yes | Provisioning: the Application Provider configures the AF with content, policies and reporting settings. |
+| M2 | Application Provider &rarr; AS | Yes | Content ingest: media is uploaded to the AS for delivery. |
+| M3 | AF &harr; AS | No (internal) | Internal AF-to-AS configuration; left to the implementer since it never crosses an operator boundary. |
+| M4 | AS &rarr; Media Player | Yes | Media delivery to the device, typically DASH or HLS over HTTP. |
+| M5 | Media Session Handler &harr; AF | Yes | Media session handling and reporting: consumption, metrics, network assistance, dynamic policies. |
+| M6 / M7 | Media Session Handler &harr; Media Player/Streamer | Yes (UE-internal) | On-device APIs connecting the control and media components of the 5GMS Client. |
+| M8 | Application Provider &harr; 5GMS-Aware Application | No (out of 3GPP scope) | Service-level information (for example the stream list), left to the application. |
+
+The AF also bridges to the 5G Core (PCF, NEF, BSF) to obtain policy, QoS and binding information — see [5G Core service consumers](/tech/standards/5gms#5g-core-service-consumers-used-by-the-af) on the standards page for that interaction.
 
 The downlink direction (5GMSd) uses a "d" suffix (M1d to M8d) and the uplink direction (5GMSu) a "u" suffix (M1u to M8u). The 5G-MAG reference tools implement the downlink direction. The [5GMS Overview](./5gms/overview-5gms) works through the entities and reference points in detail, the [5GMSd Features](./5gms/features-5gmsd) page maps each downlink feature to its reference points and APIs, and [Advanced Media Delivery](./5gms/overview-amd) covers the Release-19 extensions.
 

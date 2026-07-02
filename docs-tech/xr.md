@@ -19,7 +19,7 @@ New to this area? Read the [Overview on MPEG-I Scene Description](./xr/mpeg-i-sc
 
 **Key specifications:** ISO/IEC 23090-14 (MPEG-I Scene Description), 3GPP [TR 26.928](https://www.3gpp.org/dynareport/26928.htm) (Extended Reality (XR) in 5G), TS 26.512 (5GMS transport), ISO/IEC 23090-2 (OMAFv2, the second edition of the Omnidirectional Media Format for omnidirectional/360-degree media).
 
-**Reference tools:** The 5G-MAG software implementation is on the Developer Portal under [XR Media Integration in 5G](https://hub.5g-mag.com/Getting-Started/pages/xr-media-integration-in-5g/).
+**Reference tools:** The 5G-MAG software implementation is on the Developer Portal under [XR Media Integration in 5G](/developer/xr).
 
 [Execution Plan](https://github.com/orgs/5G-MAG/projects/44/views/9)
 

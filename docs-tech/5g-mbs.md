@@ -35,9 +35,17 @@ An MBS session travels through three layers, and the technical pages below are o
 
 * The **user-service layer** (TS 26.502) is where a content provider provisions a service, has it announced to clients, ingests content and optionally repairs lost data. It is realised by the Multicast/Broadcast Service Function (MBSF) on the control plane and the Multicast/Broadcast Service Transport Function (MBSTF) on the user plane. This layer is optional: a provider can also drive the core directly.
 * The **5G Core layer** (TS 23.247) defines the multicast and broadcast communication services, the MBS sessions that carry them, and the two ways the core delivers packets towards the radio: the 5GC shared method (one copy per MBS-capable RAN node) and the 5GC individual method (a per-UE copy for MBS-incapable nodes). The MBS-specific core functions are the MB-SMF and the MB-UPF.
-* The **NR / NG-RAN layer** (TS 38.300 family) is where the gNB chooses point-to-multipoint (PTM) or point-to-point (PTP) delivery and applies one of three Layer-2 delivery modes.
+* The **NR / NG-RAN layer** (TS 38.300 family) is where the gNB (the 5G base station) chooses point-to-multipoint (PTM) or point-to-point (PTP) delivery and applies one of three Layer-2 delivery modes.
 
-Two distinctions recur across the pages and are worth fixing early. First, *delivery method* (PTM vs PTP) is how the gNB sends over the air, while *delivery mode* (1 multicast, 2 broadcast, or unicast) is the Layer-2 configuration that carries it. Second, the *5GC* traffic delivery methods (shared vs individual) describe the core network, not the radio, and should not be confused with the RAN delivery methods. The [RAN Aspects](./5g-mbs/ran-aspects) page keeps these separate.
+Two distinctions recur across the pages and are worth fixing early, since the terms sound alike but describe different layers:
+
+| Term | Layer | Values | What it means |
+|---|---|---|---|
+| Delivery method | Radio (RAN) | PTM (point-to-multipoint) or PTP (point-to-point) | How the gNB (the 5G base station) physically sends the data over the air: one shared transmission, or a separate copy per device. |
+| Delivery mode | Radio (RAN), Layer 2 | 1 (multicast), 2 (broadcast), or unicast | The Layer-2 configuration that carries the delivery method above — a separate setting from the method itself. |
+| 5GC traffic delivery method | Core network | Shared or individual | How the 5G Core sends packets towards the radio: one copy per MBS-capable node (shared) or a per-UE copy for nodes that don't support MBS (individual). Describes the core, not the radio — don't confuse with the RAN delivery method row above. |
+
+The [RAN Aspects](./5g-mbs/ran-aspects) page keeps these separate in more detail.
 
 For the 3GPP specification list grouped by layer, see [Standards: 5G Multicast Broadcast Services](/tech/standards/5g-mbs). The [developer portal](https://developer.5g-mag.com/5g-multicast-broadcast-services/) covers what the reference software implements.
 

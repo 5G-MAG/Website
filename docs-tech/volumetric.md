@@ -23,7 +23,7 @@ New to volumetric video? Start with the [V3C standards tracking page](/tech/stan
 
 **Key specifications:** ISO/IEC 23090-5 (V3C and V-PCC, Video-based Point Cloud Compression), ISO/IEC 23090-12 (MIV, MPEG Immersive Video), ISO/IEC 23090-10 (carriage of V3C data, that is how the coded data is stored in and transported by file and streaming formats), [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) (5G Media Streaming (5GMS) transport for volumetric content delivery).
 
-**Reference tools:** The 5G-MAG software implementation is on the Developer Portal under [V3C Immersive Platform](https://hub.5g-mag.com/Getting-Started/pages/v3c-immersive-platform/) and [Beyond-2D Evaluation Framework](https://hub.5g-mag.com/Getting-Started/pages/beyond-2d-evaluation-framework/).
+**Reference tools:** The 5G-MAG software implementation is on the Developer Portal under [V3C Immersive Platform](/developer/v3c) and [Beyond-2D Evaluation Framework](/developer/beyond-2d).
 
 [Execution Plan](https://github.com/orgs/5G-MAG/projects/44/views/10)
 

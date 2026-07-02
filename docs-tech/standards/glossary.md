@@ -7,6 +7,46 @@ sidebar_position: 99
 
 This glossary collects the acronyms and terms that recur across the standards portal. Definitions are short and plain-language; consult the linked topic pages or the referenced specifications for full detail.
 
+## 3GPP process terms
+
+These are the process and organisational terms used throughout this section's pages (feedback, requirements, liaison statements, work-item and CR tracking) — the vocabulary of *how* standards get made, as distinct from the technical A-Z below.
+
+**CR (Change Request)**
+A formal proposal to modify a published 3GPP specification. Anyone with 3GPP membership (directly or through a member company) can submit one; it is discussed and voted on in a working group before being approved, revised, or rejected.
+
+**LS (Liaison Statement)**
+A formal letter one standards group sends to another (or that an external organisation like 5G-MAG sends to 3GPP), used to share information, ask a question, or request that a group takes an action. See [Liaison Statements](/tech/standards/ls) for 5G-MAG's incoming and outgoing statements.
+
+**pCR (pseudo-CR)**
+A draft Change Request discussed within a group before it is formally submitted as a CR. Used to iterate on wording before something becomes official.
+
+**Rapporteur**
+The individual (usually from a member company) responsible for driving a specific Work Item or specification through the standards process: drafting text, resolving comments, and reporting progress to the group.
+
+**Stage 1 / Stage 2 / Stage 3**
+3GPP's three-step specification model for a feature: Stage 1 defines the service requirements (what it should do), Stage 2 the architecture (how it fits together), and Stage 3 the detailed protocols (the exact messages and procedures an implementation must follow).
+
+**TDoc (Temporary Document)**
+The generic name for any document submitted to a 3GPP meeting for discussion — a CR, a pCR, an LS, a discussion paper, or a report all arrive as TDocs, numbered per group per meeting (for example `R2-2506344`).
+
+**TSG (Technical Specification Group)**
+One of 3GPP's top-level groups: TSG RAN (radio access network), TSG SA (service and system aspects), TSG CT (core network and terminals). Each TSG has several working groups underneath it (for example SA4 for media codecs, CT3/CT4 for core-network protocols, RAN1/RAN2/RAN3 for physical/link/network layers).
+
+**WG (Working Group)**
+A sub-group of a TSG that does the detailed technical work; a WG's decisions are reported up to its parent TSG plenary for approval. This portal most often references SA1 (service requirements), SA2 (architecture), SA4 (media/codecs), RAN1-3 (radio), and CT1/CT3/CT4 (core network protocols).
+
+**WI / WID (Work Item / Work Item Description)**
+A scoped, approved piece of standardisation work: it has an owning group, a rapporteur, defined objectives, and (usually) a target release. A Work Item is what eventually produces one or more specifications or specification updates. See [3GPP Work Items](/tech/standards/3gpp-work-items) for how 5G-MAG tracks these per release.
+
+**PCG (Project Co-ordination Group)**
+3GPP's cross-body coordination group, which oversees scheduling and coordination across all the TSGs.
+
+**Plenary**
+The full meeting of a TSG (as opposed to its working groups), where decisions from working groups are formally approved.
+
+**Agreed / Endorsed / Postponed / Withdrawn** (meeting decision status)
+The outcomes a TDoc can reach in a meeting: *agreed* means adopted into the specification; *endorsed* means the group supports the direction but it needs further work before formal adoption; *postponed* means deferred to a later meeting; *withdrawn* means the submitter pulled it, usually because it was superseded or needs rework.
+
 ## A
 
 **AF (Application Function)**

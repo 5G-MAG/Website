@@ -76,7 +76,7 @@ These identifiers on this page were not confirmed against a primary source (the 
 
 ## Information related to Reference Tools Projects
 
-[Project: UE data collection, reporting and event exposure](https://hub.5g-mag.com/Getting-Started/pages/ue-data-collection-reporting-exposure/)
+[Project: UE data collection, reporting and event exposure](/developer/data-collection)
 
 ---
 

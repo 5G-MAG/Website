@@ -23,10 +23,10 @@ sidebar_position: 6
 
 Reference tools for real-time conversational avatar systems in 5G contexts, targeting the emerging MPEG standard for avatar-based communications. Avatars are synthesised digital representations of participants, animated in real time from audio and video input, enabling immersive video calls and virtual presence experiences. The 5G-MAG implementation provides codec, rendering, and streaming tools for avatar communications over 5G networks.
 
-**Implemented specifications:** ISO/IEC 23090-39 (MPEG Avatar Representation Format, ARF), 3GPP [TR 26.813](https://www.3gpp.org/dynareport/26813.htm) (Study of Avatars in Real-Time Communication Services).
+**Implemented specifications:** ISO/IEC 23090-39 (MPEG Avatar Representation Format, ARF), 3GPP [TR 26.813](https://www.3gpp.org/dynareport/26813.htm) (Study of Avatars in Real-Time Communication Services, the FS_AVATAR study item, completed in Release 19).
 
-:::caution[Verify spec number]
-The avatar study item number (TR 26.813) was revised by automated review and is not yet confirmed against the 3GPP portal. It was previously cited as TS 26.118 and then TR 26.955. Check it against the SA4 work plan before publication.
+:::tip[Where to start]
+New to this project? Read the [Scope](./scope) first for the ARF data model and how the reference tools are organised, then check the [Tech: Avatar Communications](/tech/avatar-communications) page for the end-to-end procedure. There are no tutorials yet for this project — use the [GitHub Repos](./repositories) page for the current, authoritative list of repositories.
 :::
 
 ## Project Overview

@@ -72,4 +72,4 @@ These identifiers on this page were not confirmed against a primary source (the 
 
 ## Information related to Reference Tools Projects
 
-[Project: Multimedia Content Delivery Protocols](https://hub.5g-mag.com/Getting-Started/pages/multimedia-content-delivery/)
+[Project: Multimedia Content Delivery Protocols](/developer/multimedia)

@@ -22,6 +22,10 @@ CAMARA is an open-source project (Linux Foundation, in collaboration with GSMA) 
 
 **Implemented specifications:** [CAMARA QoD (Quality on Demand) API](https://github.com/camaraproject/QualityOnDemand), [CAMARA Connectivity Insights API](https://github.com/camaraproject/ConnectivityInsights), [CAMARA Network Slice Booking API](https://github.com/camaraproject/NetworkSliceBooking), 3GPP TS 23.434 (SEAL for network capability exposure to applications).
 
+:::tip[Where to start]
+New here? Skim the CAMARA API table below to see which capability you need, then read [Tech: Network APIs](/tech/network-apis) for how a CAMARA call maps onto the 5G Core (NEF, PCF, SMF/UPF). Use the [GitHub Repos](./repositories) page for the current repository list.
+:::
+
 ## CAMARA APIs covered
 
 The following CAMARA APIs are covered by the reference implementation and technical documentation:

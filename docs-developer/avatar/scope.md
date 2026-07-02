@@ -51,7 +51,7 @@ This mirrors the decoupling used elsewhere in 5G-MAG's immersive tooling: the co
 The runnable software and setup instructions live on the Developer Portal, not in this scope page. To begin:
 
 * Read the [Tech: Avatar Communications](/tech/avatar-communications) documentation for the ARF data model, the scene-description integration, and the end-to-end procedure, so the component boundaries are clear before you build.
-* Follow the reference-tools entry on the [Developer Portal Avatar Communications page](https://hub.5g-mag.com/Getting-Started/pages/avatar-communications/) for build and run instructions.
+* Follow the reference-tools entry on the [Developer Portal Avatar Communications page](/developer/avatar) for build and run instructions.
 * Use the [GitHub Repos](./repositories) page for the current list of repositories and their status, and the [Releases](./releases) page for tagged versions.
 * Track roadmap and open work on the [5G-MAG project board](https://github.com/orgs/5G-MAG/projects/44).
 

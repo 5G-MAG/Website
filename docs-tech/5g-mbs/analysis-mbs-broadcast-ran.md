@@ -166,11 +166,7 @@ The user-plane sections below summarise, per protocol layer (SDAP, PDCP), how re
     * if this SDAP data PDU is received from an MRB, retrieve the SDAP SDU from the DL SDAP data PDU as specified in **[3GPP TS 37.324](https://www.3gpp.org/dynareport/37324.htm) Clause 6.2.2.1**
 * Data PDU without SDAP header in **[3GPP TS 37.324](https://www.3gpp.org/dynareport/37324.htm) Clause 6.2.2.1**
 
-### PDCP: MBS Broadcast (user plane)
-
-:::caution
-This user-plane PDCP heading is empty and duplicates the PDCP subsection already covered under Control Plane Procedures above. It is flagged for maintainers: either populate it with the user-plane PDCP details or remove it and fold any content into the earlier PDCP subsection.
-:::
+User-plane PDCP handling for MBS Broadcast follows the same procedures as the control-plane PDCP subsection above (**[3GPP TS 38.323](https://www.3gpp.org/dynareport/38323.htm)**); it is not repeated here.
 
 ---
 

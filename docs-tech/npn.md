@@ -58,8 +58,6 @@ Spectrum access for NPNs is a national regulatory matter and varies by country. 
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the Release 18 and later NPN enhancement placements, and the specific NID/CAG sub-clause structure described above. Verify against the 3GPP work plan before publication.
 :::
 
-
-
 ---
 
 ## Information related to Standards
@@ -67,6 +65,20 @@ These identifiers on this page were not confirmed against a primary source (the 
 [Standards: Non-Public Networks](/tech/standards/npn)
 
 [Standards: Time Sensitive Communications](/tech/standards/tsc)
+
+---
+
+## Technical Documentation
+
+There are no deeper NPN analysis pages on this portal yet: the content above is the full extent of 5G-MAG's current NPN documentation. As no dedicated reference tool exists for NPN either, this page will grow as analysis work is published; check back or watch the [Execution Plan](https://github.com/orgs/5G-MAG/projects/44/views/11) for progress.
+
+## Related
+
+* [Time-Sensitive Communications](./tsc): deterministic transport, often combined with an NPN for live production traffic.
+
+:::note
+Refer to the [Tech](https://github.com/5G-MAG/Tech/) repository to contribute to this documentation.
+:::
 
 ---
 

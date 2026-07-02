@@ -37,7 +37,7 @@ The slide deck below introduces the Beyond 2D Video evaluation framework and its
 
 ## Information related to Reference Tools Projects
 
-[Project: Beyond 2D Evaluation Framework](https://hub.5g-mag.com/Getting-Started/pages/beyond-2d-evaluation-framework/)
+[Project: Beyond 2D Evaluation Framework](/developer/beyond-2d)
 
 ## Technical Documentation
 
@@ -46,7 +46,7 @@ The slide deck below introduces the Beyond 2D Video evaluation framework and its
 This work was conducted in 5G-MAG prior to the Beyond 2D Study Item in 3GPP, so it may not map directly onto the current study.
 
 :::note
-Detailed technical documentation for this area is not yet published here. For the latest material, see the slide deck above, the [Beyond 2D Evaluation Framework project](https://hub.5g-mag.com/Getting-Started/pages/beyond-2d-evaluation-framework/), and the [Standards: Beyond 2D Video Experiences](/tech/standards/beyond-2d) page.
+Detailed technical documentation for this area is not yet published here. For the latest material, see the slide deck above, the [Beyond 2D Evaluation Framework project](/developer/beyond-2d), and the [Standards: Beyond 2D Video Experiences](/tech/standards/beyond-2d) page.
 :::
 
 ## Formats under evaluation

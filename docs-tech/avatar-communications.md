@@ -15,13 +15,9 @@ Avatar Communications covers real-time conversational avatar systems in 5G conte
 
 The avatar representation reuses the MPEG-I Scene Description model: the `MPEG_avatar` glTF extension, described on the [MPEG-I Scene Description](./xr/mpeg-i-scene-description) page, is how a 3D avatar is placed and animated within a scene.
 
-**Key specifications:** ISO/IEC 23090-39 (MPEG Avatar Representation Format, ARF), 3GPP [TR 26.813](https://www.3gpp.org/dynareport/26813.htm) (Study on Avatars in Real-Time Communication Services).
+**Key specifications:** ISO/IEC 23090-39 (MPEG Avatar Representation Format, ARF), 3GPP [TR 26.813](https://www.3gpp.org/dynareport/26813.htm) (Study of Avatars in Real-Time Communication Services, the FS_AVATAR study item, completed in Release 19).
 
-:::caution[Verify spec number]
-The avatar study item number (TR 26.813) was revised by automated review and is not yet confirmed against the 3GPP portal. It was previously cited as TS 26.118 and then TR 26.955. Check it against the SA4 work plan before publication.
-:::
-
-**Reference tools:** The 5G-MAG software implementation is on the Developer Portal under [Avatar Communications](https://hub.5g-mag.com/Getting-Started/pages/avatar-communications/).
+**Reference tools:** The 5G-MAG software implementation is on the Developer Portal under [Avatar Communications](/developer/avatar).
 
 [Execution Plan](https://github.com/orgs/5G-MAG/projects/44)
 
@@ -88,7 +84,7 @@ The following points on this page were not confirmed against a primary source an
 * **ISO/IEC 21320-1** as the Zip-based container profile and the specific **ISO/IEC 14496-12** edition referenced by ARF.
 * The claim that the avatar animation stream is negotiated at session level via SDP alongside IVAS, and that the IMS data channel carries the animation. These describe candidate mechanisms and should be checked against the current ARF, IETF, and 3GPP drafts.
 
-The avatar study number (TR 26.813) is covered by the caution above and is not repeated here. Established citations (ISO/IEC 23090-39, ISO/IEC 23090-14 and Amendment 2, glTF 2.0, and the IETF ARF RTP payload draft) are not part of this caution.
+The avatar study number (TR 26.813, "Study of Avatars in Real-Time Communication Services") was confirmed via independent web search cross-checking two sources. Established citations (ISO/IEC 23090-39, ISO/IEC 23090-14 and Amendment 2, glTF 2.0, and the IETF ARF RTP payload draft) are not part of this caution.
 :::
 
 ## Related

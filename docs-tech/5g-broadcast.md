@@ -40,14 +40,21 @@ The slide deck below summarises the 5G-MAG reference tools for LTE-based 5G Broa
 
 ## How the broadcast chain works
 
-LTE-based 5G Broadcast is a one-way physical layer built on the LTE TS 36.xxx series. A receiver acquires the cell, reads the broadcast control information, then decodes the multicast traffic channel. There is no uplink and no per-user state.
+A 5G Broadcast receiver has to bootstrap itself from nothing: there's no SIM, no return channel, and no prior connection to the network. The order in which it reads the control channels below is what determines how fast a device can start showing a channel after power-on or after tuning in — the same problem digital TV/radio tuners have always had to solve, just over an LTE-derived physical layer. LTE-based 5G Broadcast is a one-way physical layer built on the LTE TS 36.xxx series. A receiver acquires the cell, reads the broadcast control information, then decodes the multicast traffic channel. There is no uplink and no per-user state.
 
 * **PMCH (Physical Multicast Channel)** carries the broadcast payload. In an MBMS-dedicated cell it occupies almost the whole carrier.
 * **CAS (Cell Acquisition Subframe)** is the entry point. One radio frame per 40 ms period (SFN mod 4 == 0) uses 15 kHz SCS with the standard cyclic prefix and carries PSS, SSS, PBCH, PCFICH, PDCCH and PDSCH. The receiver synchronises and decodes MIB-MBMS (on PBCH) and SIB1-MBMS here, without a USIM. The CAS occupies a narrow 15 or 25 PRB (3 or 5 MHz) regardless of the PMCH bandwidth, so the receiver bootstraps narrow and the SIBs then point it at the wider PMCH.
-* **MCCH (Multicast Control Channel)** carries the MBSFN area configuration (which services map to which PMCH, MCS, scheduling). It is re-read at each modification-period boundary so the receiver can pick up TX-side changes.
+* **MCCH (Multicast Control Channel)** carries the MBSFN (Multicast-Broadcast Single-Frequency Network — multiple cells transmitting the exact same signal in sync, so a receiver combines them as one strong signal instead of seeing interference) area configuration: which services map to which PMCH, MCS, scheduling. It is re-read at each modification-period boundary so the receiver can pick up TX-side changes.
 * **MTCH (Multicast Traffic Channel)** is the logical channel that maps the user-service data onto PMCH.
 
-Acquisition order on the receiver: synchronise on PSS/SSS in the CAS, decode PBCH to get MIB-MBMS (bandwidth, SFN, semi-static CFI), decode SIB1-MBMS (cell access, SI scheduling), then SIB13 (MBSFN area info, ROM info, extended bandwidth), then MCCH, then PMCH/MTCH.
+Acquisition order on the receiver, step by step:
+
+1. Synchronise on PSS/SSS in the CAS.
+2. Decode PBCH to get MIB-MBMS (bandwidth, SFN, semi-static CFI).
+3. Decode SIB1-MBMS (cell access, SI scheduling).
+4. Decode SIB13 (MBSFN area info, ROM info, extended bandwidth).
+5. Decode MCCH.
+6. Decode PMCH/MTCH — the receiver is now showing the channel.
 
 ### Numerologies (subcarrier spacings)
 

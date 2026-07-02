@@ -97,4 +97,4 @@ These identifiers on this page were not confirmed against a primary source (the 
 
 ## Information related to Reference Tools Projects
 
-[Project: DVB-I Services over 5G Systems](https://hub.5g-mag.com/Getting-Started/pages/dvbi-over-5g/)
+[Project: DVB-I Services over 5G Systems](/developer/dvb-i)
