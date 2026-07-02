@@ -11,8 +11,11 @@ sidebar_position: 15
 </div>
 <div class="topic-banner__text">
 <h1>Time-Sensitive Communications</h1>
-<p>Deterministic, low-latency delivery over 5G for tightly synchronised professional media.</p>
 </div>
+</div>
+
+<div class="topic-lead">
+Deterministic, low-latency delivery over 5G for tightly synchronised professional media.
 </div>
 
 ## Overview

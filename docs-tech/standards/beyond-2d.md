@@ -11,8 +11,11 @@ sidebar_position: 7
 </div>
 <div class="topic-banner__text">
 <h1>Beyond 2D Video</h1>
-<p>Evaluating stereoscopic, multiview and volumetric video formats and codecs delivered over 5G.</p>
 </div>
+</div>
+
+<div class="topic-lead">
+Evaluating stereoscopic, multiview and volumetric video formats and codecs delivered over 5G.
 </div>
 
 ## Overview

@@ -16,7 +16,6 @@ sidebar_position: 2
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Broadcast: Hybrid TV/Radio</span>
 <h1>Sample files</h1>
-<p>In order to support application developers as well as 5G-MAG contributors for testing their improvements, ORS captured sample files ("raw data" = digitized I/Q (In-phase/Quadrature) samples at LimeSDR Mini 2 output) directly from a 5G BC transmitter.</p>
 </div>
 </div>
 In order to support application developers as well as 5G-MAG contributors for testing their improvements, ORS captured sample files ("raw data" = digitized I/Q (In-phase/Quadrature) samples at [LimeSDR Mini 2](https://limemicro.com/products/boards/limesdr-mini-2-0/) output) directly from a 5G BC transmitter. You can also capture sample files using the [capture command of the Receive Process](https://github.com/5G-MAG/rt-mbms-modem#capture-and-running-of-sample-files).

@@ -19,8 +19,11 @@ sidebar_position: -1
 </div>
 <div class="topic-banner__text">
 <h1>6G Testbed and AI Traffic</h1>
-<p>Experimental testbed platform for AI-driven media traffic characterization and optimisation over 5G networks.</p>
 </div>
+</div>
+
+<div class="topic-lead">
+Experimental testbed platform for AI-driven media traffic characterization and optimisation over 5G networks.
 </div>
 <div style="margin: 8px 0"><a class="button button--outline button--primary" href="./scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="./repositories" style="margin: 2px 4px 2px 0">GitHub Repos</a> <a class="button button--outline button--primary" href="./releases" style="margin: 2px 4px 2px 0">Releases</a> <a class="button button--outline button--primary" href="./tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="./tutorials#video-library" style="margin: 2px 4px 2px 0">Video Library</a></div>
 

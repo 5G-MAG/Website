@@ -12,7 +12,6 @@ sidebar_position: 13
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Media Streaming</span>
 <h1>Testing: M5 Interface (5GMSd Application Function v1.3.0 and above)</h1>
-<p>The M5 interface is the media session handling interface: a client on the User Equipment (UE) fetches Service Access Information from the 5G Media Streaming downlink (5GMSd) Application Function (AF), which tells the client where and how to access the media.</p>
 </div>
 </div>
 

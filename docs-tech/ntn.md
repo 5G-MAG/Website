@@ -12,8 +12,11 @@ sidebar_position: 10
 </div>
 <div class="topic-banner__text">
 <h1>Non-Terrestrial Networks</h1>
-<p>Extending 5G coverage via satellite and HAPS as a delivery layer for MBS multicast and broadcast.</p>
 </div>
+</div>
+
+<div class="topic-lead">
+Extending 5G coverage via satellite and HAPS as a delivery layer for MBS multicast and broadcast.
 </div>
 
 Non-Terrestrial Networks (NTN) extend 5G coverage via satellite (geostationary GEO and low Earth orbit LEO) and high-altitude platform stations (HAPS), standardised in 3GPP Release 17. For media distribution, NTN is not a standalone system: it is a delivery infrastructure layer on top of which existing 5G services such as MBS Multicast and MBS Broadcast can be deployed. 5G-MAG's work in this area focuses on the specific challenges NTN introduces: propagation delay, Doppler effects, handover between satellite beams, and device mobility across terrestrial and non-terrestrial segments.

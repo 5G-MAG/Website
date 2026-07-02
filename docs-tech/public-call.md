@@ -12,7 +12,6 @@ sidebar_position: 0
 </div>
 <div class="topic-banner__text">
 <h1>Friday's Public Call</h1>
-<p>The 5G-MAG Public Call is an open monthly session, held on the last Friday of the month, with project news and invited speakers on 5G media and broadcast topics.</p>
 </div>
 </div>
 

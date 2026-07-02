@@ -12,7 +12,6 @@ sidebar_position: 3
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Media Streaming</span>
 <h1>Packages</h1>
-<p>This page lists the prebuilt GitHub packages published for the 5G Media Streaming project.</p>
 </div>
 </div>
 

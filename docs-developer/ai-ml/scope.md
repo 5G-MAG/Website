@@ -17,7 +17,6 @@ sidebar_position: 0
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">AI/ML Evaluation Framework</span>
 <h1>Scope</h1>
-<p>This page sets out what the AI/ML Evaluation Framework covers: its current focus areas, the repositories it is built from, and how it relates to 5G-MAG's standards work.</p>
 </div>
 </div>
 

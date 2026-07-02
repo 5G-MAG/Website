@@ -12,8 +12,11 @@ sidebar_position: 6
 </div>
 <div class="topic-banner__text">
 <h1>Volumetric Video</h1>
-<p>3D point-cloud and mesh video that lets viewers move freely around a scene, built on MPEG V3C.</p>
 </div>
+</div>
+
+<div class="topic-lead">
+3D point-cloud and mesh video that lets viewers move freely around a scene, built on MPEG V3C.
 </div>
 
 Volumetric video represents 3D objects and scenes as point clouds or mesh-based data, so viewers can move freely around the content rather than watching from a fixed camera angle.

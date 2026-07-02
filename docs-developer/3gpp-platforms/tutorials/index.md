@@ -15,7 +15,6 @@ sidebar_position: 2
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">3GPP RAN and Core Platforms</span>
 <h1>Tutorials, Tests and Examples</h1>
-<p>These are generic instructions to setup a 5G network using Open5GS and srsRAN and COTS UEs.</p>
 </div>
 </div>
 

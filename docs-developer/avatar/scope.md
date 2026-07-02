@@ -20,7 +20,6 @@ sidebar_position: 0
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Avatar Communication with MPEG ARF</span>
 <h1>Scope</h1>
-<p>This page describes the specification within the scope of the Avatar Communication reference tools, what that specification covers, and how the tools are organised.</p>
 </div>
 </div>
 

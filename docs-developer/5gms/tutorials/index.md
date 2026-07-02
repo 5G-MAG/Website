@@ -12,7 +12,6 @@ sidebar_position: -1
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Media Streaming</span>
 <h1>Tutorials, Tests and Examples</h1>
-<p>Start with the 5G MSd End-to-End deployment (with Docker) tutorial.</p>
 </div>
 </div>
 

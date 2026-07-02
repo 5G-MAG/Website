@@ -11,8 +11,11 @@ sidebar_position: 16
 </div>
 <div class="topic-banner__text">
 <h1>UE Data Collection</h1>
-<p>How devices report media consumption and quality-of-experience data back to the network for analytics.</p>
 </div>
+</div>
+
+<div class="topic-lead">
+How devices report media consumption and quality-of-experience data back to the network for analytics.
 </div>
 
 ## Overview

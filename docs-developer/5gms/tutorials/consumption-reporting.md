@@ -12,7 +12,6 @@ sidebar_position: 5
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Media Streaming</span>
 <h1>5G Media Streaming with Consumption Reporting</h1>
-<p>Consumption Collection and Reporting collects content consumption measurement logs from the Media Player.</p>
 </div>
 </div>
 

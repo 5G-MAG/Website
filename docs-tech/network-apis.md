@@ -12,8 +12,11 @@ sidebar_position: 8
 </div>
 <div class="topic-banner__text">
 <h1>Network APIs</h1>
-<p>Standardised APIs that let media applications request network capabilities like QoS, slicing and connectivity insight.</p>
 </div>
+</div>
+
+<div class="topic-lead">
+Standardised APIs that let media applications request network capabilities like QoS, slicing and connectivity insight.
 </div>
 
 Mobile networks can expose selected capabilities (for example the ability to request a given quality of service, reserve a network slice, or check current connectivity) to outside applications through standardised, portable interfaces, instead of each operator offering its own proprietary interface. Network APIs are those interfaces, applied here to media use cases: they let a media application programmatically request the network conditions it needs, whether that is guaranteed bandwidth for a live production feed, a low-latency path for a real-time contribution link, or priority routing for a breaking news stream.

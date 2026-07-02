@@ -12,7 +12,6 @@ sidebar_position: 2
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Standards</span>
 <h1>5G Media Streaming</h1>
-<p>5G Media Streaming (5GMS) is the 3GPP framework for delivering streaming media over 5G networks, covering provisioning, media session handling and reporting between content providers, the network and the device.</p>
 </div>
 </div>
 

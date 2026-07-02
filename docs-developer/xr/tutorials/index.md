@@ -17,7 +17,6 @@ sidebar_position: -1
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">XR and MPEG-I Scene Description</span>
 <h1>Tutorials, Tests and Examples</h1>
-<p>Our YouTube channel hosts some practical videos provided by developers on the use of the Reference Tools.</p>
 </div>
 </div>
 

@@ -16,7 +16,6 @@ sidebar_position: 3
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Broadcast: Hybrid TV/Radio</span>
 <h1>MBMS Modem with Sample Files</h1>
-<p>The rt-mbms-modem can work with sample files (recorded I/Q signals) in two ways: capture, which records a signal from a Software Defined Radio (SDR) and therefore needs an SDR and a live 5G Broadcast signal; and run (replay), which plays back an existing sample file and needs no SDR.</p>
 </div>
 </div>
 

@@ -11,8 +11,11 @@ sidebar_position: 6
 </div>
 <div class="topic-banner__text">
 <h1>AI & ML in 5G Media</h1>
-<p>Applying AI and machine learning to media delivery, network optimisation and quality of experience.</p>
 </div>
+</div>
+
+<div class="topic-lead">
+Applying AI and machine learning to media delivery, network optimisation and quality of experience.
 </div>
 
 ## Overview

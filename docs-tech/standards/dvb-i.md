@@ -11,8 +11,11 @@ sidebar_position: 9
 </div>
 <div class="topic-banner__text">
 <h1>DVB-I Services over 5G</h1>
-<p>Discovering and delivering linear TV services over 5G, combining broadband, broadcast and hybrid modes.</p>
 </div>
+</div>
+
+<div class="topic-lead">
+Discovering and delivering linear TV services over 5G, combining broadband, broadcast and hybrid modes.
 </div>
 
 ## Overview

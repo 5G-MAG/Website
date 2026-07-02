@@ -595,20 +595,21 @@
   text-overflow: ellipsis;
 }
 
-.topic-banner__text p {
-  flex-basis: 100%;
-  margin: 0.25rem 0 0;
-  color: rgba(255, 255, 255, 0.88);
-  font-size: 0.88rem;
-  line-height: 1.4;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 @media (max-width: 640px) {
   .topic-banner { flex-direction: column; align-items: flex-start; }
   .topic-banner__text h1 { white-space: normal; }
+}
+
+/* ── Topic lead paragraph (landing pages only) ────────────────────
+   The banner's old tagline moves here: a prominent lead paragraph on
+   the page body itself, below the (now title-only) banner. ────── */
+.topic-lead {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--ifm-color-emphasis-800);
+  background: var(--ifm-color-emphasis-100);
+  border-left: 4px solid var(--ifm-color-primary);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin: 0 0 1.5rem;
 }

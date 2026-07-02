@@ -12,7 +12,6 @@ sidebar_position: 0
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Standards</span>
 <h1>3GPP Work Items per Release</h1>
-<p>3GPP groups its specification work into Releases (Rel-15, Rel-16, and so on), and each Release is made up of Work Items, the individual pieces of technical work that produce or update specifications.</p>
 </div>
 </div>
 

@@ -17,8 +17,11 @@ sidebar_position: 12
 </div>
 <div class="topic-banner__text">
 <h1>XR and MPEG-I Scene Description</h1>
-<p>Reference player and server for eXtended Reality (XR) content delivered over 5G networks, implementing MPEG-I Scene Description (ISO/IEC 23090-14).</p>
 </div>
+</div>
+
+<div class="topic-lead">
+Reference player and server for eXtended Reality (XR) content delivered over 5G networks, implementing MPEG-I Scene Description (ISO/IEC 23090-14).
 </div>
 <div style="margin: 8px 0"><a class="button button--outline button--primary" href="./scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="./projects" style="margin: 2px 4px 2px 0">Project Roadmap</a> <a class="button button--outline button--primary" href="./repositories" style="margin: 2px 4px 2px 0">GitHub Repos</a> <a class="button button--outline button--primary" href="./releases" style="margin: 2px 4px 2px 0">Releases</a> <a class="button button--outline button--primary" href="./tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="./tutorials#video-library" style="margin: 2px 4px 2px 0">Video Library</a></div>
 

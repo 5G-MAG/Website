@@ -16,7 +16,6 @@ sidebar_position: 2
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Multicast Broadcast Services</span>
 <h1>Initial support of MBS in the 5GC</h1>
-<p>This tutorial showcases the current features present in the 5G-MAG MBS implementation.</p>
 </div>
 </div>
 

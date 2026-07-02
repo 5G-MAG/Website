@@ -16,8 +16,11 @@ sidebar_position: 4
 </div>
 <div class="topic-banner__text">
 <h1>5G Multicast Broadcast Services</h1>
-<p>Reference implementation of the 5G Multicast-Broadcast Services (MBS) user service layer targeting 3GPP Release 17 and 18.</p>
 </div>
+</div>
+
+<div class="topic-lead">
+Reference implementation of the 5G Multicast-Broadcast Services (MBS) user service layer targeting 3GPP Release 17 and 18.
 </div>
 <div style="margin: 8px 0"><a class="button button--outline button--primary" href="./scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="./projects" style="margin: 2px 4px 2px 0">Project Roadmap</a> <a class="button button--outline button--primary" href="./repositories" style="margin: 2px 4px 2px 0">GitHub Repos</a> <a class="button button--outline button--primary" href="./packages" style="margin: 2px 4px 2px 0">Packages</a> <a class="button button--outline button--primary" href="./releases" style="margin: 2px 4px 2px 0">Releases</a> <a class="button button--outline button--primary" href="./tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="./tutorials#video-library" style="margin: 2px 4px 2px 0">Video Library</a></div>
 

@@ -12,7 +12,6 @@ sidebar_position: 7
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Media Streaming</span>
 <h1>Testing: M1 Interface (5GMSd Application Function v1.3.0 to v1.4.0)</h1>
-<p>The M1 interface is the provisioning interface: an Application Service Provider (ASP) uses it to configure media delivery on the 5G Media Streaming downlink (5GMSd) Application Function (AF), creating provisioning sessions, content hosting configurations and certificates.</p>
 </div>
 </div>
 

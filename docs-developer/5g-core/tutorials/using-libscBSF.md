@@ -15,7 +15,6 @@ sidebar_position: 0
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Core Service Consumers</span>
 <h1>Using the 5GC Service Consumer libraries: libscBSF</h1>
-<p>You do not need to wait for it to see libscBSF in action: the Using libscPCF tutorial already exercises libscBSF, because the PCF Policy Authorization tool uses the BSF to discover the PCF for a device before requesting a QoS policy.</p>
 </div>
 </div>
 

@@ -12,7 +12,6 @@ sidebar_position: 1
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Standards</span>
 <h1>5G Broadcast</h1>
-<p>5G Broadcast delivers linear TV and radio to devices over a one-way, free-to-air signal, with no SIM, subscription or return channel required, reusing LTE/eMBMS radio technology (Long Term Evolution / evolved Multimedia Broadcast Multicast Service).</p>
 </div>
 </div>
 

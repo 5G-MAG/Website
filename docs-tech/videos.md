@@ -12,7 +12,6 @@ sidebar_position: 1
 </div>
 <div class="topic-banner__text">
 <h1>Video Library</h1>
-<p>This library collects recorded talks from 5G-MAG workshops on 3GPP media and broadcast specifications.</p>
 </div>
 </div>
 

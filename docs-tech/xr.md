@@ -12,8 +12,11 @@ sidebar_position: 5
 </div>
 <div class="topic-banner__text">
 <h1>XR and MPEG-I Scene Description</h1>
-<p>Interactive, spatially-aware 3D scenes and immersive media delivered over 5G Media Streaming.</p>
 </div>
+</div>
+
+<div class="topic-lead">
+Interactive, spatially-aware 3D scenes and immersive media delivered over 5G Media Streaming.
 </div>
 
 Extended Reality (XR) and 3D scene delivery bring interactive, spatially-aware content to 5G devices, from augmented reality overlays to full virtual environments. 5G-MAG's work centres on MPEG-I Scene Description (ISO/IEC 23090-14), a standard format for describing dynamic 3D scenes composed of glTF (GL Transmission Format) 3D objects, audio, and haptic elements. Scene Description content can be transported using the 5G Media Streaming (5GMS) framework (3GPP [TS 26.512](https://www.3gpp.org/dynareport/26512.htm)), enabling adaptive and policy-driven delivery of immersive media. 5G-MAG also covers [Avatar Communications](./avatar-communications), addressing real-time avatar representation and interaction in 5G contexts.

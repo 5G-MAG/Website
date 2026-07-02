@@ -12,7 +12,6 @@ sidebar_position: -1
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Standards</span>
 <h1>Introduction</h1>
-<p>This is the entry point to 5G-MAG's work on Standards and Specifications.</p>
 </div>
 </div>
 

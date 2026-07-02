@@ -15,7 +15,6 @@ sidebar_position: 1
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Core Service Consumers</span>
 <h1>Using the 5GC Service Consumer libraries: libscPCF</h1>
-<p>This tutorial provides information to test the 5GC Service Consumer libraries available in rt-5gc-service-consumers repository.</p>
 </div>
 </div>
 

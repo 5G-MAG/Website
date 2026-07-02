@@ -14,7 +14,6 @@ sidebar_position: 3
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Broadcast: Emergency Alerts</span>
 <h1>Tutorials, Tests and Examples</h1>
-<p>This guide describes how to transmit emergency alerts over 5G Broadcast to a 5G Broadcast capable device using the rt-mbms-tx-for-qrd-and-crd.</p>
 </div>
 </div>
 

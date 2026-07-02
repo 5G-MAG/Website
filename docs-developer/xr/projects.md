@@ -17,7 +17,6 @@ sidebar_position: 1
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">XR and MPEG-I Scene Description</span>
 <h1>Roadmap</h1>
-<p>The roadmap for this project is maintained on GitHub Project (Kanban) boards, linked below.</p>
 </div>
 </div>
 

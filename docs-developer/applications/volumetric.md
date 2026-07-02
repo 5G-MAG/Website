@@ -11,7 +11,6 @@ hide_title: true
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Applications</span>
 <h1>Volumetric Video and Beyond 2D Video Experiences</h1>
-<p>This application area covers media that goes past a flat single-camera picture: volumetric video, where a scene is captured in three dimensions so a viewer can change viewpoint, and other beyond-2D formats such as stereoscopic 3D and multiview.</p>
 </div>
 </div>
 

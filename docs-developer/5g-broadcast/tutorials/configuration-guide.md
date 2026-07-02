@@ -16,7 +16,6 @@ sidebar_position: 6
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Broadcast: Hybrid TV/Radio</span>
 <h1>Configuration of Service Announcement</h1>
-<p>This tutorial covers the configuration options for running the Linux-based 5G Broadcast stack, focused on the Service Announcement (SA) file and the FLUTE ffmpeg watchfolder.</p>
 </div>
 </div>
 

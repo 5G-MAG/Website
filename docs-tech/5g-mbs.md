@@ -12,8 +12,11 @@ sidebar_position: 4
 </div>
 <div class="topic-banner__text">
 <h1>Multicast & Broadcast in 5G</h1>
-<p>Native point-to-multipoint delivery in 5G NR for live TV, emergency alerts and mass content distribution.</p>
 </div>
+</div>
+
+<div class="topic-lead">
+Native point-to-multipoint delivery in 5G NR for live TV, emergency alerts and mass content distribution.
 </div>
 
 5G Multicast and Broadcast Services (MBS) introduce native point-to-multipoint delivery into 5G New Radio (NR), standardised from 3GPP Release 17 onwards. Delivery can be point-to-multipoint (PTM), one transmission shared by many devices, or point-to-point (PTP), a separate copy per device, with the network choosing between them. Unlike LTE-based broadcast (evolved Multimedia Broadcast Multicast Service, eMBMS), 5G MBS is integrated directly into the 5G Core and Radio Access Network (RAN), enabling efficient distribution of identical content to many devices simultaneously, whether for live TV, emergency alerts, or software updates. 5G-MAG implements the MBS user service layer defined in 3GPP [TS 26.502](https://www.3gpp.org/dynareport/26502.htm), covering service announcement, session management, and media delivery.

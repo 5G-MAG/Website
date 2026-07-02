@@ -14,7 +14,6 @@ sidebar_position: 2
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Multimedia Content Delivery</span>
 <h1>Software Repositories</h1>
-<p>The following repositories are available.</p>
 </div>
 </div>
 

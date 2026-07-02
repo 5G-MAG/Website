@@ -16,7 +16,6 @@ sidebar_position: 1
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Multicast Broadcast Services</span>
 <h1>Operating the MBS Function (MBSF) and APIs</h1>
-<p>The MBS Function is responsible for controlling the MBS User Services sessions.</p>
 </div>
 </div>
 

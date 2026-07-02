@@ -16,7 +16,6 @@ sidebar_position: 1
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Multicast Broadcast Services</span>
 <h1>Roadmap</h1>
-<p>This page tracks the roadmap for the 5G Multicast-Broadcast Services (5MBS) reference tools.</p>
 </div>
 </div>
 

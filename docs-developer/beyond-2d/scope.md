@@ -12,7 +12,6 @@ sidebar_position: 0
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Beyond 2D Evaluation Framework</span>
 <h1>Scope</h1>
-<p>This page describes the specifications within the scope of the Beyond 2D tools and the context for how they are meant to be used.</p>
 </div>
 </div>
 

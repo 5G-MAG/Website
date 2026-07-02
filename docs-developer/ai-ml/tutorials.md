@@ -17,7 +17,6 @@ sidebar_position: 3
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">AI/ML Evaluation Framework</span>
 <h1>Tutorials, Tests and Examples</h1>
-<p>There are no step-by-step tutorials for the AI/ML Evaluation Framework yet.</p>
 </div>
 </div>
 

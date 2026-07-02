@@ -18,7 +18,6 @@ sidebar_position: 1
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">V3C Immersive Platform</span>
 <h1>Roadmap</h1>
-<p>This page links to the public GitHub project boards that track V3C Immersive Platform work.</p>
 </div>
 </div>
 

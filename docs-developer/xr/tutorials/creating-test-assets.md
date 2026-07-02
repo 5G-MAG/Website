@@ -17,7 +17,6 @@ sidebar_position: 3
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">XR and MPEG-I Scene Description</span>
 <h1>MPEG-I Scene Description Test Asset Creation</h1>
-<p>Ready-made MPEG-I Scene Description test assets to download, plus a guide to authoring your own in Blender.</p>
 </div>
 </div>
 

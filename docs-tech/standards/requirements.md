@@ -12,7 +12,6 @@ sidebar_position: 0
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Standards</span>
 <h1>Requirements towards SDOs</h1>
-<p>This page collects the position papers and views that 5G-MAG submits to Standards Development Organisations (SDOs), mainly at 3GPP release-planning and exploratory workshops.</p>
 </div>
 </div>
 

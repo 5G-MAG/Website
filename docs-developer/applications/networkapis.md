@@ -11,7 +11,6 @@ hide_title: true
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Applications</span>
 <h1>Applications and Services using Network APIs</h1>
-<p>Network APIs let an application talk to the mobile network through standard, portable interfaces instead of operator-specific ones.</p>
 </div>
 </div>
 

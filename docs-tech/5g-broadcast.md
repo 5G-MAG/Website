@@ -11,8 +11,11 @@ sidebar_position: 3
 </div>
 <div class="topic-banner__text">
 <h1>5G Broadcast</h1>
-<p>One-to-many delivery of TV, radio and emergency alerts over dedicated LTE-based broadcast carriers.</p>
 </div>
+</div>
+
+<div class="topic-lead">
+One-to-many delivery of TV, radio and emergency alerts over dedicated LTE-based broadcast carriers.
 </div>
 
 ## Overview

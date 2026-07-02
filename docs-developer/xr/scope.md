@@ -17,7 +17,6 @@ sidebar_position: 0
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">XR and MPEG-I Scene Description</span>
 <h1>Scope</h1>
-<p>The specifications, architecture and features covered by the XR reference tools.</p>
 </div>
 </div>
 

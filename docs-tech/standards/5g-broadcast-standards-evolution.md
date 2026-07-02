@@ -12,7 +12,6 @@ sidebar_position: 2
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Standards</span>
 <h1>5G Broadcast - Standards Evolution</h1>
-<p>This page is the detailed, release-by-release companion to Standards: 5G Broadcast: the work items, Change Requests and RAN meetings behind each release.</p>
 </div>
 </div>
 

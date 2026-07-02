@@ -18,7 +18,6 @@ sidebar_position: 0
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">V3C Immersive Platform</span>
 <h1>V3C Unity Player for Android with DASH Streaming Server</h1>
-<p>This tutorial provides the instructions to set up the V3C Immersive Platform for an Android device using content streamed from a DASH server.</p>
 </div>
 </div>
 

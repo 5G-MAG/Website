@@ -12,7 +12,6 @@ sidebar_position: 3
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Beyond 2D Evaluation Framework</span>
 <h1>Tutorials, Tests and Examples</h1>
-<p>Step-by-step tutorials for the Beyond 2D Evaluation Framework are not yet published on this portal.</p>
 </div>
 </div>
 

@@ -12,7 +12,6 @@ sidebar_position: 2
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Standards</span>
 <h1>Feedback to Specifications</h1>
-<p>This page explains how anyone implementing or deploying these specifications can report problems (bugs, ambiguities, missing features) so that 5G-MAG can carry them into the relevant standards body as corrections or change requests.</p>
 </div>
 </div>
 

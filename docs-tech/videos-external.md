@@ -12,7 +12,6 @@ sidebar_position: 12
 </div>
 <div class="topic-banner__text">
 <h1>External Videos</h1>
-<p>This page collects videos produced outside 5G-MAG that are useful background for 5G media and broadcast topics.</p>
 </div>
 </div>
 

@@ -17,8 +17,11 @@ sidebar_position: -1
 </div>
 <div class="topic-banner__text">
 <h1>AI/ML Evaluation Framework</h1>
-<p>Evaluation framework for assessing AI/ML models applied to media processing in 5G network contexts.</p>
 </div>
+</div>
+
+<div class="topic-lead">
+Evaluation framework for assessing AI/ML models applied to media processing in 5G network contexts.
 </div>
 <div style="margin: 8px 0"><a class="button button--outline button--primary" href="./scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="./projects" style="margin: 2px 4px 2px 0">Project Roadmap</a> <a class="button button--outline button--primary" href="./repositories" style="margin: 2px 4px 2px 0">GitHub Repos</a> <a class="button button--outline button--primary" href="./releases" style="margin: 2px 4px 2px 0">Releases</a> <a class="button button--outline button--primary" href="./tutorials" style="margin: 2px 4px 2px 0">Tutorials</a></div>
 

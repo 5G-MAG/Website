@@ -12,7 +12,6 @@ sidebar_position: 13
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Standards</span>
 <h1>Non-Terrestrial Networks</h1>
-<p>5G-MAG investigates media distribution over Non-Terrestrial Networks (NTN), including satellite and high-altitude platform stations (HAPS).</p>
 </div>
 </div>
 

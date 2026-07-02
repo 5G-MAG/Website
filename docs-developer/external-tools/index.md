@@ -14,8 +14,11 @@ sidebar_position: 6
 </div>
 <div class="topic-banner__text">
 <h1>External Tools</h1>
-<p>This section provides information about third-party tools that can be used in conjunction with the Reference Tools.</p>
 </div>
+</div>
+
+<div class="topic-lead">
+This section provides information about third-party tools that can be used in conjunction with the Reference Tools.
 </div>
 
 This section provides information about third-party tools that can be used in conjunction with the Reference Tools. The tools listed here can enhance the functionality and usability of the Reference Tools, help with testing and evaluation, and provide additional features for multimedia content delivery.

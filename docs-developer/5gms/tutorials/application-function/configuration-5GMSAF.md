@@ -12,7 +12,6 @@ sidebar_position: 3
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Media Streaming</span>
 <h1>Configuration of the 5GMSd Application Function</h1>
-<p>The 5G Media Streaming downlink (5GMSd) Application Function (AF) is the control-plane component that provisions media delivery: it configures Application Servers, manages certificates, and answers requests from Application Service Providers and client devices.</p>
 </div>
 </div>
 

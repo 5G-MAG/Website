@@ -12,7 +12,6 @@ sidebar_position: 1
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Media Streaming</span>
 <h1>Installing the 5GMSd Application Function as a Local User</h1>
-<p>This guide covers building, installing, and running the 5G Media Streaming downlink (5GMSd) Application Function (AF) directly as a local user (without a system-wide service installation).</p>
 </div>
 </div>
 

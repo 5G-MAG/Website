@@ -12,8 +12,11 @@ sidebar_position: -1
 </div>
 <div class="topic-banner__text">
 <h1>Beyond 2D Evaluation Framework</h1>
-<p>Evaluation framework for next-generation beyond-2D video experiences, providing tools for systematic quality assessment of immersive video formats including light fields, point clouds, and multi-view video plus depth.</p>
 </div>
+</div>
+
+<div class="topic-lead">
+Evaluation framework for next-generation beyond-2D video experiences, providing tools for systematic quality assessment of immersive video formats including light fields, point clouds, and multi-view video plus depth.
 </div>
 <div style="margin: 8px 0"><a class="button button--outline button--primary" href="./scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="./projects" style="margin: 2px 4px 2px 0">Project Roadmap</a> <a class="button button--outline button--primary" href="./repositories" style="margin: 2px 4px 2px 0">GitHub Repos</a> <a class="button button--outline button--primary" href="./releases" style="margin: 2px 4px 2px 0">Releases</a> <a class="button button--outline button--primary" href="./tutorials" style="margin: 2px 4px 2px 0">Tutorials</a></div>
 

@@ -16,7 +16,6 @@ sidebar_position: -1
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Multicast Broadcast Services</span>
 <h1>Tutorials, Tests and Examples</h1>
-<p>These tutorials cover the individual pieces of the 5G Multicast-Broadcast Services (MBS) reference tools.</p>
 </div>
 </div>
 

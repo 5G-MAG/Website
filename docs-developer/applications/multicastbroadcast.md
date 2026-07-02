@@ -11,7 +11,6 @@ hide_title: true
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Applications</span>
 <h1>Multicast and Broadcast Services in 5G Networks</h1>
-<p>This application area covers 5G Multicast-Broadcast Services (MBS), the 5G System feature for delivering the same content to many devices at once natively over the 5G Core (5GC) and the New Radio (NR) access.</p>
 </div>
 </div>
 

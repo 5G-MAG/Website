@@ -12,7 +12,6 @@ sidebar_position: 2
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Media Streaming</span>
 <h1>Testing M1 and M5 APIs with Postman</h1>
-<p>Postman is a popular API development and testing tool that allows users to create, send, and manage HTTP requests.</p>
 </div>
 </div>
 

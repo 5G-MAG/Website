@@ -16,7 +16,6 @@ sidebar_position: 1
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">UE Data Collection, Reporting and Exposure</span>
 <h1>Roadmap</h1>
-<p>The roadmap for this project lives on the GitHub Project boards linked below.</p>
 </div>
 </div>
 

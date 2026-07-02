@@ -12,7 +12,6 @@ sidebar_position: 1
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Media Streaming</span>
 <h1>Roadmap</h1>
-<p>This page tracks the development roadmap for the 5G Media Streaming Reference Tools.</p>
 </div>
 </div>
 

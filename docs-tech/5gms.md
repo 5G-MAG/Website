@@ -12,8 +12,11 @@ sidebar_position: 2
 </div>
 <div class="topic-banner__text">
 <h1>Streaming & Media Delivery</h1>
-<p>The 3GPP framework for downlink and uplink video, audio and metadata delivery over 5G networks.</p>
 </div>
+</div>
+
+<div class="topic-lead">
+The 3GPP framework for downlink and uplink video, audio and metadata delivery over 5G networks.
 </div>
 
 5G Media Streaming (5GMS) is a 3GPP-defined framework for delivering video, audio, and metadata over 5G networks, supporting both downlink (unicast to device) and uplink (device to network) flows. It introduces standardised interfaces between the content provider, the 5G network, and the client device. These interfaces cover session management, dynamic policies, and media consumption metrics. 5G-MAG implements the Application Function (AF), the control-plane entity that manages sessions and talks to the 5G core, and the Application Server (AS), the entity that hosts and delivers the media, enabling end-to-end validation of 5GMS-compliant pipelines. For the architecture and how these roles fit together, see the [5GMS Overview](./5gms/overview-5gms).

@@ -16,7 +16,6 @@ sidebar_position: 3
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Multicast Broadcast Services</span>
 <h1>MBS support in the 5GC (Docker deployment)</h1>
-<p>This tutorial explains how to run the MBS-capable 5G Core (5GC) as a set of Docker containers, so you can bring up the whole MBS core network with a single Docker Compose deployment instead of building each Network Function by hand.</p>
 </div>
 </div>
 

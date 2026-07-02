@@ -12,7 +12,6 @@ sidebar_position: 11
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Standards</span>
 <h1>Network APIs</h1>
-<p>Network capability exposure means letting an application ask the mobile network for the conditions it needs (for example guaranteed bandwidth or low latency for a live feed) through a documented interface, instead of taking whatever best-effort service the network happens to provide.</p>
 </div>
 </div>
 

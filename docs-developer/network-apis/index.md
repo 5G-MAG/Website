@@ -15,8 +15,11 @@ sidebar_position: 9
 </div>
 <div class="topic-banner__text">
 <h1>Network APIs</h1>
-<p>Reference implementation for accessing 5G Core network capabilities through standardised Application Programming Interfaces (APIs), demonstrating how media applications can programmatically request Quality of Service (QoS) guarantees, network slice allocation, and connectivity insights.</p>
 </div>
+</div>
+
+<div class="topic-lead">
+Reference implementation for accessing 5G Core network capabilities through standardised Application Programming Interfaces (APIs), demonstrating how media applications can programmatically request Quality of Service (QoS) guarantees, network slice allocation, and connectivity insights.
 </div>
 <div style="margin: 8px 0"> <a class="button button--outline button--primary" href="./repositories" style="margin: 2px 4px 2px 0">GitHub Repos</a> <a class="button button--outline button--primary" href="./releases" style="margin: 2px 4px 2px 0">Releases</a></div>
 

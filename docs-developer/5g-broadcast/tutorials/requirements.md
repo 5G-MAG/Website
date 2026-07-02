@@ -16,7 +16,6 @@ sidebar_position: 7
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Broadcast: Hybrid TV/Radio</span>
 <h1>Requirements</h1>
-<p>This page lists the hardware, Software Defined Radio (SDR), and operating-system requirements for running the 5G Broadcast Reference Tools, along with a reference setup and the configurations that have been validated.</p>
 </div>
 </div>
 

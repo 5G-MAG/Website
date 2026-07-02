@@ -11,7 +11,6 @@ hide_title: true
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Applications</span>
 <h1>eXtended Reality (XR): 3D Scenes and Avatar Communications</h1>
-<p>This application area covers eXtended Reality (XR), the umbrella term for virtual, augmented and mixed reality media, delivered over 5G.</p>
 </div>
 </div>
 

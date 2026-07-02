@@ -14,7 +14,6 @@ sidebar_position: 0
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Broadcast: Emergency Alerts</span>
 <h1>Scope</h1>
-<p>This page describes the specifications within the scope of the Emergency Alerts reference tools, what the tools demonstrate, and the high-level architecture that brings context to their applicability.</p>
 </div>
 </div>
 

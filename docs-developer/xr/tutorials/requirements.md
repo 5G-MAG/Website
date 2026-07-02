@@ -17,7 +17,6 @@ sidebar_position: 5
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">XR and MPEG-I Scene Description</span>
 <h1>Requirements</h1>
-<p>This page lists the device types the XR player currently supports, so you can check your hardware before following the build tutorials.</p>
 </div>
 </div>
 

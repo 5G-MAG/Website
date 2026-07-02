@@ -14,7 +14,6 @@ sidebar_position: 1
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Multimedia Content Delivery</span>
 <h1>Roadmap</h1>
-<p>This page links to the public roadmap boards tracking work on the multimedia content delivery protocol tools, including transport support for the Multimedia Broadcast Multicast Service (MBMS) delivery protocols ROUTE and FLUTE.</p>
 </div>
 </div>
 

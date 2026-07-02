@@ -16,7 +16,6 @@ sidebar_position: 0
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Multicast Broadcast Services</span>
 <h1>Scope</h1>
-<p>These reference tools implement parts of the 3GPP 5G Multicast-Broadcast Services (MBS) feature.</p>
 </div>
 </div>
 

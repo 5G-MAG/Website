@@ -11,8 +11,11 @@ sidebar_position: 14
 </div>
 <div class="topic-banner__text">
 <h1>Real-Time Media Communication (RTC)</h1>
-<p>WebRTC-based interactive media, uplink contribution and 5GMSu standardisation over 5G.</p>
 </div>
+</div>
+
+<div class="topic-lead">
+WebRTC-based interactive media, uplink contribution and 5GMSu standardisation over 5G.
 </div>
 
 ## Overview

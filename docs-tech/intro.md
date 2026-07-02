@@ -11,7 +11,6 @@ sidebar_position: -1
 </div>
 <div class="topic-banner__text">
 <h1>Introduction</h1>
-<p>This is the entry point to 5G-MAG's Technical Documentation: specification analysis, implementation explainers, reports and videos covering 5G media and broadcast technologies.</p>
 </div>
 </div>
 

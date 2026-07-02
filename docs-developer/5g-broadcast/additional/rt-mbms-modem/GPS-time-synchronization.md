@@ -16,7 +16,6 @@ sidebar_position: 0
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Broadcast: Hybrid TV/Radio</span>
 <h1>GPS Time Synchronization for rt-mbms-modem</h1>
-<p>This page configures the receiver's system clock to be disciplined by GPS time, using chrony fed by the GPS daemon (gpsd).</p>
 </div>
 </div>
 

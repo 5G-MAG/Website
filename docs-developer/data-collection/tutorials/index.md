@@ -16,7 +16,6 @@ sidebar_position: 4
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">UE Data Collection, Reporting and Exposure</span>
 <h1>Tutorials, Tests and Examples</h1>
-<p>This tutorial covers setting up the Data Collection Application Function (DCAF) with Docker and using its REST API with the Insomnia REST client.</p>
 </div>
 </div>
 

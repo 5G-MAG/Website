@@ -12,8 +12,11 @@ sidebar_position: 5
 </div>
 <div class="topic-banner__text">
 <h1>Common Tools</h1>
-<p>Common Tools are shared helper repositories (scripts, example configurations and build utilities) that support several Reference Tools rather than implementing a specification of their own.</p>
 </div>
+</div>
+
+<div class="topic-lead">
+Common Tools are shared helper repositories (scripts, example configurations and build utilities) that support several Reference Tools rather than implementing a specification of their own.
 </div>
 <div style="margin: 8px 0"><a class="button button--outline button--primary" href="./" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="./releases" style="margin: 2px 4px 2px 0">Releases</a></div>
 

@@ -17,7 +17,6 @@ sidebar_position: 2
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">XR and MPEG-I Scene Description</span>
 <h1>Software Repositories</h1>
-<p>The following repositories make up the XR reference tools.</p>
 </div>
 </div>
 

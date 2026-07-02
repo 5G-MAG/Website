@@ -12,7 +12,6 @@ sidebar_position: 18
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Standards</span>
 <h1>XR with MPEG-I SD</h1>
-<p>eXtended Reality (XR) covers virtual, augmented and mixed reality media delivered over 5G.</p>
 </div>
 </div>
 

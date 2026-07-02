@@ -15,8 +15,11 @@ sidebar_position: -1
 </div>
 <div class="topic-banner__text">
 <h1>3GPP RAN and Core Platforms</h1>
-<p>Reference platform tools for deploying 5G Radio Access Network (RAN) and Core network components in a lab or testbed environment.</p>
 </div>
+</div>
+
+<div class="topic-lead">
+Reference platform tools for deploying 5G Radio Access Network (RAN) and Core network components in a lab or testbed environment.
 </div>
 
 <div style="margin: 8px 0"><a class="button button--outline button--primary" href="./scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="./repositories" style="margin: 2px 4px 2px 0">GitHub Repos</a> <a class="button button--outline button--primary" href="./tutorials" style="margin: 2px 4px 2px 0">Tutorials</a></div>

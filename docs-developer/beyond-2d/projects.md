@@ -12,7 +12,6 @@ sidebar_position: 1
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Beyond 2D Evaluation Framework</span>
 <h1>Roadmap</h1>
-<p>This page links to the public GitHub project board that tracks Beyond 2D Evaluation Framework work.</p>
 </div>
 </div>
 

@@ -14,7 +14,6 @@ sidebar_position: 1
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Broadcast: Emergency Alerts</span>
 <h1>Roadmap</h1>
-<p>The roadmap for this project lives on the GitHub Project boards linked below.</p>
 </div>
 </div>
 

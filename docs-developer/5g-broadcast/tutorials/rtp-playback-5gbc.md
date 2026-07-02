@@ -16,7 +16,6 @@ sidebar_position: 2
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Broadcast: Hybrid TV/Radio</span>
 <h1>RTP Playback over 5G Broadcast (Linux)</h1>
-<p>This tutorial provides the required steps to test the reception of an RTP stream processed by the MBMS Modem and played in a third-party media player such as ffplay or VLC.</p>
 </div>
 </div>
 

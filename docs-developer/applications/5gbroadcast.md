@@ -11,7 +11,6 @@ hide_title: true
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Applications</span>
 <h1>5G Broadcast for TV, Radio and Emergency Alerts</h1>
-<p>5G Broadcast delivers TV and radio to an unlimited number of devices over a free-to-air radio signal, with no SIM and no per-user connection.</p>
 </div>
 </div>
 

@@ -14,7 +14,6 @@ sidebar_position: 1
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Broadcast: Emergency Alerts</span>
 <h1>Cell Broadcast emergency alerts over a 5G Broadcast transmitter</h1>
-<p>This tutorial describes a basic setup to deliver emergency alerts compliant with the Cell Broadcast Service (CBS) over the rt-mbms-tx-for-qrd-and-crd transmitter from Reference Tools.</p>
 </div>
 </div>
 

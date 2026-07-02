@@ -16,7 +16,6 @@ sidebar_position: 5
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Multicast Broadcast Services</span>
 <h1>MB-SMF Testing: Managing MBS Sessions and TMGIs</h1>
-<p>This page shows how to create and manage MBS sessions and their identifiers on the MB-SMF.</p>
 </div>
 </div>
 

@@ -15,7 +15,6 @@ sidebar_position: 0
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">3GPP RAN and Core Platforms</span>
 <h1>Scope</h1>
-<p>This project provides the 5G network infrastructure that other 5G-MAG reference tools run against.</p>
 </div>
 </div>
 

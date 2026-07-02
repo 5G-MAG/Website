@@ -13,7 +13,6 @@ sidebar_position: 1
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">DVB-I over 5G</span>
 <h1>Roadmap</h1>
-<p>This page links to the public roadmap board tracking planned and in-progress work for the DVB-I over 5G Reference Tools.</p>
 </div>
 </div>
 

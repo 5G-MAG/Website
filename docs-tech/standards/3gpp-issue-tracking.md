@@ -12,7 +12,6 @@ sidebar_position: 1
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Standards</span>
 <h1>3GPP Issue Tracking</h1>
-<p>This page is the running log of XCHANGE meetings, the regular sessions where 5G-MAG and 3GPP SA4 review the specification issues raised by implementers.</p>
 </div>
 </div>
 

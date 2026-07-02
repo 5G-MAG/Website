@@ -15,7 +15,6 @@ sidebar_position: 0
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Core Service Consumers</span>
 <h1>Scope</h1>
-<p>The 5G Core (5GC) presents several Network Functions, each of which has its own set of service interfaces.</p>
 </div>
 </div>
 

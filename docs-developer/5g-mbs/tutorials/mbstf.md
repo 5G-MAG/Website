@@ -16,7 +16,6 @@ sidebar_position: 0
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Multicast Broadcast Services</span>
 <h1>MBS Transport Function (MBSTF) Testing</h1>
-<p>This tutorial describes the initial reference implementation of the MBS Transport Function (MBSTF) as specified in 3GPP TS 26.517 and 3GPP TS 29.581.</p>
 </div>
 </div>
 

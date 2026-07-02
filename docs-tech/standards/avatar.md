@@ -12,7 +12,6 @@ sidebar_position: 8
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Standards</span>
 <h1>Avatar Communications</h1>
-<p>5G-MAG follows standardisation work on avatar communications and the associated immersive voice and audio in 5G systems.</p>
 </div>
 </div>
 

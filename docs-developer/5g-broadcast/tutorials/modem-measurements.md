@@ -16,7 +16,6 @@ sidebar_position: 5
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Broadcast: Hybrid TV/Radio</span>
 <h1>MBMS Modem - Measurements & GPS</h1>
-<p>This tutorial shows how to have the MBMS Modem log signal-quality measurements (CINR, BLER, MCS and related values) to a CSV file, optionally tagged with GPS position and time.</p>
 </div>
 </div>
 

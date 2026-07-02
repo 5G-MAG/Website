@@ -12,7 +12,6 @@ sidebar_position: 17
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Standards</span>
 <h1>Volumetric Video with V3C</h1>
-<p>Volumetric video captures a scene in three dimensions so a viewer can change viewpoint, rather than watching a fixed 2D frame.</p>
 </div>
 </div>
 

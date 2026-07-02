@@ -20,8 +20,11 @@ sidebar_position: 6
 </div>
 <div class="topic-banner__text">
 <h1>Avatar Communication with MPEG ARF</h1>
-<p>Reference tools for real-time conversational avatar systems in 5G contexts, targeting the emerging MPEG standard for avatar-based communications.</p>
 </div>
+</div>
+
+<div class="topic-lead">
+Reference tools for real-time conversational avatar systems in 5G contexts, targeting the emerging MPEG standard for avatar-based communications.
 </div>
 <div style="margin: 8px 0"> <a class="button button--outline button--primary" href="./scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="./repositories" style="margin: 2px 4px 2px 0">GitHub Repos</a> <a class="button button--outline button--primary" href="./releases" style="margin: 2px 4px 2px 0">Releases</a></div>
 

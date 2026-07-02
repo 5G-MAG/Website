@@ -12,7 +12,6 @@ sidebar_position: 12
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Standards</span>
 <h1>Non-Public Networks</h1>
-<p>5G-MAG investigates the use of Non-Public Networks (NPNs) for media production, focusing in particular on private 5G networks for live content acquisition, contribution and on-site production workflows.</p>
 </div>
 </div>
 

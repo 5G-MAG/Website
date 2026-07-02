@@ -16,7 +16,6 @@ sidebar_position: 3
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Multicast Broadcast Services</span>
 <h1>Packages</h1>
-<p>This page lists the prebuilt container images (published to the GitHub Container Registry, GHCR) that this project provides or uses.</p>
 </div>
 </div>
 

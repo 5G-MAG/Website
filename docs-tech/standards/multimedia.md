@@ -11,8 +11,11 @@ sidebar_position: 10
 </div>
 <div class="topic-banner__text">
 <h1>Multimedia Delivery Protocols</h1>
-<p>FLUTE and ROUTE, the one-way transports behind broadcast and multicast media delivery.</p>
 </div>
+</div>
+
+<div class="topic-lead">
+FLUTE and ROUTE, the one-way transports behind broadcast and multicast media delivery.
 </div>
 
 ## Overview

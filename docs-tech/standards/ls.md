@@ -12,7 +12,6 @@ sidebar_position: 1
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Standards</span>
 <h1>Liaison Statements & Inputs</h1>
-<p>A liaison statement (LS) is a formal message exchanged between standards groups.</p>
 </div>
 </div>
 

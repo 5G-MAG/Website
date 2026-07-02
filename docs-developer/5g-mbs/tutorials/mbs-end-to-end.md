@@ -16,7 +16,6 @@ sidebar_position: 6
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Multicast Broadcast Services</span>
 <h1>MBS End-to-End: Operating MBS User Services, MBS 5GC, NG-RAN and UE</h1>
-<p>The written walkthrough for this end-to-end tutorial is under development.</p>
 </div>
 </div>
 

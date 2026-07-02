@@ -12,7 +12,6 @@ sidebar_position: 3
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Media Streaming</span>
 <h1>5G MSd End-to-End deployment (with Docker)</h1>
-<p>This guide describes how to setup and configure the Reference Tools - 5G Downlink Media Streaming components to create an end to end setup as depicted in the illustration below.</p>
 </div>
 </div>
 

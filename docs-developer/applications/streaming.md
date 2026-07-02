@@ -11,7 +11,6 @@ hide_title: true
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Applications</span>
 <h1>Streaming, Media Delivery and Data Collection</h1>
-<p>This application area brings together the Reference Tools for delivering adaptive media over 5G and for collecting playback and quality data from devices.</p>
 </div>
 </div>
 
