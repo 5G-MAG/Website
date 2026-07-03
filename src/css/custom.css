@@ -526,6 +526,7 @@
   align-items: center;
   gap: 1rem;
   padding: 1rem 1.5rem;
+  min-height: 5.25rem;
   border-radius: 14px;
   background: linear-gradient(135deg, var(--topic-accent-dark) 0%, var(--topic-accent) 100%);
   margin-bottom: 1.75rem;
