@@ -77,7 +77,7 @@ export default function Home() {
             Bridging Standards and Deployments
           </h1>
           <p className={styles.heroNowrap} style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.85)', marginBottom: '2rem', lineHeight: 1.6 }}>
-            Driving the next generation of media and connectivity through global standards and open-source.
+            Driving the next generation of media and connectivity experiences through global standards and open-source.
           </p>
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
             <Link className="button button--primary button--lg" to="/developer">
