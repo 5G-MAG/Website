@@ -99,7 +99,7 @@ const config = {
           title: 'Technical Documentation',
           items: [
             { label: 'Introduction', to: '/tech/intro' },
-            { label: 'Capability Areas', to: '/#capability-areas' },
+            { label: 'Capability Areas', to: '/tech/#capability-areas' },
             { label: 'GitHub Tech', href: 'https://github.com/5G-MAG/Tech' },
           ],
         },
