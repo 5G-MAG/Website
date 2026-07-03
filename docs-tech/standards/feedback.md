@@ -1,6 +1,6 @@
 ---
 hide_title: true
-title: Feedback and Requirements to Standards
+title: Feedback and Requirements
 sidebar_position: 0
 ---
 
@@ -11,7 +11,7 @@ sidebar_position: 0
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Standards</span>
-<h1>Feedback and Requirements to Standards</h1>
+<h1>Feedback and Requirements</h1>
 </div>
 </div>
 

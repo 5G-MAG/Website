@@ -37,7 +37,7 @@ Release status and dates are indicative. Confirm the current status of each Rele
 
 ## Related
 
-* [Feedback and Requirements to Standards](/tech/standards/feedback)
+* [Feedback and Requirements](/tech/standards/feedback)
 * [Liaison Statements & Inputs](/tech/standards/ls)
 
 :::note
