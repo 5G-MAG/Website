@@ -92,15 +92,35 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Additional Topics',
-      items: [
-        'dvb-i/dvb-i-5g',
-        'multimedia/multimedia-content-delivery',
-        'rtc/rtc',
-        'tsc/tsc',
-        'data-collection/data-collection-event-exposure',
-      ],
+      label: 'DVB-I over 5G',
+      link: { type: 'doc', id: 'dvb-i/dvb-i-5g' },
+      items: ['standards/dvb-i'],
     },
+    {
+      type: 'category',
+      label: 'Multimedia Delivery Protocols',
+      link: { type: 'doc', id: 'multimedia/multimedia-content-delivery' },
+      items: ['standards/multimedia'],
+    },
+    {
+      type: 'category',
+      label: 'Real-Time Media Communication (RTC)',
+      link: { type: 'doc', id: 'rtc/rtc' },
+      items: ['standards/rtc'],
+    },
+    {
+      type: 'category',
+      label: 'Time-Sensitive Communications',
+      link: { type: 'doc', id: 'tsc/tsc' },
+      items: ['standards/tsc'],
+    },
+    {
+      type: 'category',
+      label: 'UE Data Collection',
+      link: { type: 'doc', id: 'data-collection/data-collection-event-exposure' },
+      items: ['standards/data-collection'],
+    },
+    'standards/ai-ml',
     {
       type: 'category',
       label: 'Standards',
@@ -116,30 +136,6 @@ const sidebars = {
             'standards/3gpp-issue-tracking',
             'standards/3gpp-work-items',
             'standards/ls',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Media Streaming & Broadcast',
-          items: [
-            'standards/dvb-i',
-            'standards/multimedia',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Immersive & Emerging Media',
-          items: [
-            'standards/ai-ml',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Specialized Topics',
-          items: [
-            'standards/rtc',
-            'standards/tsc',
-            'standards/data-collection',
           ],
         },
         'standards/glossary',
