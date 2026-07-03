@@ -8,11 +8,11 @@ const sidebars = {
     'standards/3gpp-issue-tracking',
     'standards/3gpp-work-items',
     'standards/ls',
-    {
-      type: 'category',
-      label: 'Resources',
-      items: ['videos', 'videos-external', 'public-call', 'standards/glossary'],
-    },
+    { type: 'html', value: 'Resources', className: 'sidebar-section-label', defaultStyle: false },
+    'videos',
+    'videos-external',
+    'public-call',
+    'standards/glossary',
 
     { type: 'html', value: 'Media Streaming &amp; Broadcast', className: 'sidebar-section-label', defaultStyle: false },
     {
