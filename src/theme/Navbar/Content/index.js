@@ -44,7 +44,7 @@ const TECH_LEFT_ITEMS = [
       {to: '/tech/standards/3gpp-work-items', label: '3GPP Work Items per Release'},
     ],
   },
-  {to: '/tech/intro', label: 'Technology & Standards', position: 'left'},
+  {to: '/tech/intro', label: 'Technical Documentation', position: 'left'},
 ];
 
 const TECH_RIGHT_ITEMS = [
