@@ -7,7 +7,6 @@ const sidebars = {
     'standards/requirements',
     'standards/3gpp-issue-tracking',
     'standards/3gpp-work-items',
-    'standards/ls',
     { type: 'html', value: 'Resources', className: 'sidebar-section-label', defaultStyle: false },
     'videos',
     'videos-external',

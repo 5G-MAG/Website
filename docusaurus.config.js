@@ -101,8 +101,7 @@ const config = {
         {
           title: 'Standards',
           items: [
-            { label: 'SDO Feedback', to: '/tech/standards/feedback' },
-            { label: 'Liaison Statements', to: '/tech/standards/ls' },
+            { label: 'Feedback and Inputs', to: '/tech/standards/feedback' },
             { label: 'GitHub Standards', href: 'https://github.com/5G-MAG/Standards' },
           ],
         },

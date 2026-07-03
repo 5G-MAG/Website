@@ -36,7 +36,7 @@ Each row links to a topic area. The Execution Plan column links to that area's K
 
 ## Standards
 
-For 5G-MAG's standards work, see [Feedback to Specifications](/tech/standards/feedback), [Requirements towards SDOs](/tech/standards/requirements) and [Liaison Statements & Inputs](/tech/standards/ls).
+For 5G-MAG's standards work, see [Feedback and Inputs to Standards](/tech/standards/feedback) and [Requirements towards SDOs](/tech/standards/requirements).
 
 ## Video Library
 
