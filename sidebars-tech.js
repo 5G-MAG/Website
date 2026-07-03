@@ -3,8 +3,12 @@ const sidebars = {
   tutorialSidebar: [
     'intro',
     { type: 'html', value: 'Standards Work', className: 'sidebar-section-label', defaultStyle: false },
-    'standards/feedback',
-    'standards/3gpp-issue-tracking',
+    {
+      type: 'category',
+      label: 'Feedback and Requirements',
+      link: { type: 'doc', id: 'standards/feedback' },
+      items: ['standards/3gpp-issue-tracking'],
+    },
     'standards/ls',
     { type: 'html', value: 'Resources', className: 'sidebar-section-label', defaultStyle: false },
     'videos',
