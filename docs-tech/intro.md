@@ -16,7 +16,7 @@ sidebar_position: -1
 
 This is the entry point to **5G-MAG's Technical Documentation**: specification analysis, implementation explainers, reports and videos covering 5G media and broadcast technologies.
 
-5G-MAG documentation spans three areas: this Technical Documentation section (specification analysis, explainers and videos), the [Standards & Specifications](/tech/standards/intro) section (5G-MAG's feedback, requirements and liaison statements to standards bodies), and the developer portal at https://developer.5g-mag.com (the open-source Reference Tools). This page covers the Technical Documentation section. If you are new here, Streaming & Media Delivery is the most developed area and a good place to start.
+5G-MAG documentation spans three areas: this Technical Documentation section (specification analysis, explainers and videos), the Standards & Specifications section (5G-MAG's [feedback](/tech/standards/feedback), requirements and liaison statements to standards bodies), and the developer portal at https://developer.5g-mag.com (the open-source Reference Tools). This page covers the Technical Documentation section. If you are new here, Streaming & Media Delivery is the most developed area and a good place to start.
 
 ## Topic Areas
 
@@ -36,7 +36,7 @@ Each row links to a topic area. The Execution Plan column links to that area's K
 
 ## Standards
 
-For 5G-MAG's standards work (feedback to SDOs, requirements submissions and liaison statements), visit the [Standards & Specifications](/tech/standards/intro) section.
+For 5G-MAG's standards work, see [Feedback to Specifications](/tech/standards/feedback), [Requirements towards SDOs](/tech/standards/requirements) and [Liaison Statements & Inputs](/tech/standards/ls).
 
 ## Video Library
 

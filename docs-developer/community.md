@@ -14,7 +14,7 @@ hide_title: true
 </div>
 </div>
 
-5G-MAG is a cross-industry association that develops open-source software implementing 5G media and broadcast specifications. This is the developer portal: it hosts the Reference Tools, shared Testbeds and evaluation frameworks, and end-to-end Application examples. New here? Start with [Using this documentation](./how-to-use). Looking for the specifications themselves? See the [Standards section](/tech/standards/intro).
+5G-MAG is a cross-industry association that develops open-source software implementing 5G media and broadcast specifications. This is the developer portal: it hosts the Reference Tools, shared Testbeds and evaluation frameworks, and end-to-end Application examples. New here? Start with [Using this documentation](./how-to-use). Looking for the specifications themselves? See the [Standards section](/tech/standards/feedback).
 
 Any organization and independent developer willing to collaborate can join the community.
 

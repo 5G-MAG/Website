@@ -231,7 +231,7 @@ export default function Home() {
             <Link
               className="button button--outline button--lg"
               style={{ color: '#fff', borderColor: 'rgba(255,255,255,0.75)' }}
-              to="/tech/standards/intro"
+              to="/tech/standards/feedback"
             >
               Standards Work
             </Link>
@@ -270,7 +270,7 @@ export default function Home() {
               {STANDARDS_ACTIVITIES.map((a) => <ActivityCard key={a.href} {...a} />)}
             </div>
             <div className={styles.pillarActions}>
-              <Link className="button button--primary button--lg" to="/tech/standards/intro">
+              <Link className="button button--primary button--lg" to="/tech/standards/feedback">
                 Browse Standards
               </Link>
               <a
