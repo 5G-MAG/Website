@@ -56,6 +56,20 @@ const config = {
     }),
   ]],
 
+  themes: [
+    [
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      ({
+        hashed: true,
+        docsRouteBasePath: ['/developer', '/tech'],
+        docsPluginIdForPreferredVersion: 'tech',
+        indexBlog: false,
+        indexPages: true,
+        highlightSearchTermsOnTargetPage: true,
+      }),
+    ],
+  ],
+
   themeConfig: ({
     colorMode: { respectPrefersColorScheme: true },
     navbar: {
