@@ -18,19 +18,33 @@ import NavbarLogo from '@theme/Navbar/Logo';
 import NavbarSearch from '@theme/Navbar/Search';
 import styles from './styles.module.css';
 
-// On /tech/* pages, the navbar shows only the Technical Docs & Standards
-// menu on the left, and links back to the Developer Portal + GitHub on the
-// right — everything else (Reference Tools, Testbeds, Application
-// Prototypes, Activity Dashboard, Developer Community) is dev-portal-only
-// navigation and doesn't belong here.
+// On /tech/* pages, the navbar surfaces the Tech sidebar's own groupings
+// as dropdowns (mirroring sidebars-tech.js) instead of one catch-all
+// "Technical Docs & Standards" menu, plus links back to the Developer
+// Portal + GitHub on the right.
 const TECH_LEFT_ITEMS = [
   {
-    type: 'docSidebar',
-    sidebarId: 'tutorialSidebar',
-    docsPluginId: 'tech',
-    label: 'Technical Docs & Standards',
+    type: 'dropdown',
+    label: 'Standards',
     position: 'left',
+    items: [
+      {to: '/tech/standards/feedback', label: 'Feedback and Requirements'},
+      {to: '/tech/standards/ls', label: 'Liaison Statements & Inputs'},
+    ],
   },
+  {
+    type: 'dropdown',
+    label: 'Resources',
+    position: 'left',
+    items: [
+      {to: '/tech/videos', label: 'Video Library'},
+      {to: '/tech/videos-external', label: 'External Videos'},
+      {to: '/tech/public-call', label: "Friday's Public Call"},
+      {to: '/tech/standards/glossary', label: 'Glossary'},
+      {to: '/tech/standards/3gpp-work-items', label: '3GPP Work Items per Release'},
+    ],
+  },
+  {to: '/tech/intro', label: 'Technology & Standards', position: 'left'},
 ];
 
 const TECH_RIGHT_ITEMS = [
