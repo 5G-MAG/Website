@@ -1,6 +1,6 @@
 ---
 hide_title: true
-title: 3GPP Issue Tracking
+title: Specification Tracking
 sidebar_position: 1
 ---
 
@@ -11,16 +11,17 @@ sidebar_position: 1
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Standards</span>
-<h1>3GPP Issue Tracking</h1>
+<h1>Specification Tracking</h1>
 </div>
 </div>
 
 ## Overview
 
-This page is the running log of XCHANGE meetings, the regular sessions where 5G-MAG and 3GPP SA4 review the specification issues raised by implementers. Each section below is dated and listed newest first. Issue numbers link to the [5G-MAG Standards GitHub tracker](https://github.com/orgs/5G-MAG/projects/33), where the current status is always authoritative.
+This page covers how 5G-MAG profiles 3GPP specifications towards implementation: the Work Items that define what each Release delivers, and the running log of XCHANGE meetings, the regular sessions where 5G-MAG and 3GPP SA4 review the specification issues raised by implementers. Each XCHANGE section below is dated and listed newest first. Issue numbers link to the [5G-MAG Standards GitHub tracker](https://github.com/orgs/5G-MAG/projects/33), where the current status is always authoritative.
 
 ### On this page
 
+* [3GPP Work Items per Release](#3gpp-work-items-per-release)
 * [XCHANGE 09/01/2025](#xchange-09012025---status-of-standards-tickets-by-end-2024)
 * [XCHANGE 10/10/2024](#xchange-10102024)
 * [XCHANGE 02/05/2024](#xchange-02052024)
@@ -51,6 +52,24 @@ The entries below use several 3GPP media-delivery shorthands. See the [5G Media 
 :::caution
 The reference-point summaries above are for orientation only. Confirm the exact definitions against TS 26.501.
 :::
+
+## 3GPP Work Items per Release
+
+3GPP groups its specification work into Releases (Rel-15, Rel-16, and so on), and each Release is made up of Work Items, the individual pieces of technical work that produce or update specifications. The TR 21.9xx series below are the official per-Release summary reports, each describing the Work Items completed in that Release and their main achievements. This table links to those summaries so you can see, at Release level, what 3GPP delivered.
+
+The Status / timeframe column below is indicative only.
+
+:::caution
+Release status and dates are indicative. Confirm the current status of each Release against the 3GPP work plan before relying on it.
+:::
+
+ Number | Title | Status / timeframe
+ -- | -- | --
+[TR 21.915](https://www.3gpp.org/dynareport/21915.htm) | Release 15 Description; Summary of Rel-15 Work Items | Completed
+[TR 21.916](https://www.3gpp.org/dynareport/21916.htm) | Release 16 Description; Summary of Rel-16 Work Items | Completed
+[TR 21.917](https://www.3gpp.org/dynareport/21917.htm) | Release 17 Description; Summary of Rel-17 Work Items | Completed
+[TR 21.918](https://www.3gpp.org/dynareport/21918.htm) | Release 18 Description; Summary of Rel-18 Work Items | Completed
+[TR 21.919](https://www.3gpp.org/dynareport/21919.htm) | Release 19 Description; Summary of Rel-19 Work Items | In progress
 
 ## XCHANGE 09/01/2025 - Status of standards tickets by end 2024
 ### Issues that should have been resolved earlier in the year

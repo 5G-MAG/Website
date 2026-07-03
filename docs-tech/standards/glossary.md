@@ -46,7 +46,7 @@ One of 3GPP's top-level groups: TSG RAN (radio access network), TSG SA (service 
 A sub-group of a TSG that does the detailed technical work; a WG's decisions are reported up to its parent TSG plenary for approval. This portal most often references SA1 (service requirements), SA2 (architecture), SA4 (media/codecs), RAN1-3 (radio), and CT1/CT3/CT4 (core network protocols).
 
 **WI / WID (Work Item / Work Item Description)**
-A scoped, approved piece of standardisation work: it has an owning group, a rapporteur, defined objectives, and (usually) a target release. A Work Item is what eventually produces one or more specifications or specification updates. See [3GPP Work Items](/tech/standards/3gpp-work-items) for how 5G-MAG tracks these per release.
+A scoped, approved piece of standardisation work: it has an owning group, a rapporteur, defined objectives, and (usually) a target release. A Work Item is what eventually produces one or more specifications or specification updates. See [Specification Tracking](/tech/standards/3gpp-issue-tracking) for how 5G-MAG tracks these per release.
 
 **PCG (Project Co-ordination Group)**
 3GPP's cross-body coordination group, which oversees scheduling and coordination across all the TSGs.
