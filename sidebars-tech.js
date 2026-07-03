@@ -15,6 +15,7 @@ const sidebars = {
     'videos-external',
     'public-call',
     'standards/glossary',
+    'standards/3gpp-work-items',
 
     { type: 'html', value: 'Media Streaming &amp; Broadcast', className: 'sidebar-section-label', defaultStyle: false },
     {
