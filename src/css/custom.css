@@ -531,12 +531,6 @@
   margin-bottom: 1.75rem;
 }
 
-/* Landing-page banners (icon + title only, no kicker) center the whole
-   icon+title group horizontally instead of hugging the left edge. */
-.topic-banner:not(:has(.topic-banner__kicker)) {
-  justify-content: center;
-}
-
 .topic-banner__icon-wrap {
   width: 52px;
   height: 52px;
