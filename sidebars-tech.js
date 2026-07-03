@@ -4,7 +4,6 @@ const sidebars = {
     'intro',
     { type: 'html', value: 'Standards Work', className: 'sidebar-section-label', defaultStyle: false },
     'standards/feedback',
-    'standards/requirements',
     'standards/3gpp-issue-tracking',
     'standards/3gpp-work-items',
     'standards/ls',

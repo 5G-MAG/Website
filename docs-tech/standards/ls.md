@@ -92,7 +92,6 @@ These are inputs to MPEG (Moving Picture Experts Group), organised under ISO/IEC
 
 ## Related
 
-* [Requirements towards SDOs](/tech/standards/requirements)
-* [Feedback to Specifications](/tech/standards/feedback)
+* [Feedback and Requirements to Standards](/tech/standards/feedback)
 * [3GPP Issue Tracking](/tech/standards/3gpp-issue-tracking)
 

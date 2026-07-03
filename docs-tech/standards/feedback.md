@@ -1,7 +1,7 @@
 ---
 hide_title: true
-title: Feedback to Specifications
-sidebar_position: 2
+title: Feedback and Requirements to Standards
+sidebar_position: 0
 ---
 
 <div class="topic-banner">
@@ -11,13 +11,13 @@ sidebar_position: 2
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Standards</span>
-<h1>Feedback to Specifications</h1>
+<h1>Feedback and Requirements to Standards</h1>
 </div>
 </div>
 
 ## Overview
 
-This page explains how anyone implementing or deploying these specifications can report problems (bugs, ambiguities, missing features) so that 5G-MAG can carry them into the relevant standards body as corrections or change requests. It lists the issue trackers and project boards per specification area, and the methodology 5G-MAG follows to review and forward that feedback.
+This page covers the two ways 5G-MAG shapes standards work upstream of formal liaison: **feedback** on published specifications (bugs, ambiguities, missing features, tracked as GitHub issues), and **requirements** — position papers and views submitted to Standards Development Organisations (SDOs), mainly at 3GPP release-planning and exploratory workshops. Both draw on 5G-MAG's implementation and deployment experience. For formal liaison statements exchanged with standards bodies, see [Liaison Statements & Inputs](/tech/standards/ls).
 
 5G-MAG maintains the [Standards repository](https://github.com/5G-MAG/Standards) open to the community to provide feedback on specifications, in particular, comments, bug-fixing or request for new features.
 
@@ -76,8 +76,29 @@ The diagram below shows the external workflow: how feedback on a specification o
 
 <img src="/assets/images/Feedback_2.png" alt="Workflow for feedback on specifications maintained by external SDOs: a community issue is raised on GitHub, reviewed by 5G-MAG, and forwarded to the responsible standards body as a change request or liaison input." style="width: 80%">
 
+## Requirements towards Standardisation
+
+This section collects the position papers and views that 5G-MAG submits to Standards Development Organisations (SDOs), mainly at 3GPP release-planning and exploratory workshops. These inputs draw on 5G-MAG's implementation and deployment experience to shape the priorities of upcoming releases.
+
+### Inputs to 3GPP Workshops
+
+The table below lists 5G-MAG contributions to 3GPP workshops, newest first. Each link downloads the contribution package (a ZIP) from the 3GPP document server.
+
+ Year | Meeting | Title
+ -- | -- | --
+2025 | 3GPP Workshop on 6G | [6G & Media: General views & priorities](https://www.3gpp.org/ftp/workshop/2025-03-10_3GPP_6G_WS/Docs/6GWS-250137.zip)
+2024 | 3GPP SA1 IMT-2030 | [Views from 5G-MAG towards IMT-2030](https://www.3gpp.org/ftp/workshop/2024-05-08_3GPP_Stage1_IMT2030_UC_WS/Docs/SWS-240007.zip)
+2023 | 3GPP SA Release 19 | [5G-MAG views on Media related topics for Rel-19 (SA) (June 2023)](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/Workshops/2023-06-13_Rel-19_WorkShop/Docs/SWS-230009.zip)
+2023 | 3GPP RAN Release 19 | [5G-MAG views on Media related topics for Rel-19 (RAN) (June 2023)](https://www.3gpp.org/ftp/TSG_RAN/TSG_RAN/TSGR_AHs/2023_06_RAN_Rel19_WS/Docs/RWS-230367.zip)
+2021 | 3GPP SA Release 18 | [5G-MAG Proposals for 3GPP SA and SA4 Rel-18 Workshops (Aug. & Sep. 2021)](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/Workshops/2021-09-09_Rel-18_Workshop/Docs/SP-210617.zip)
+2021 | 3GPP RAN Release 18 | [5G-MAG Proposals for 3GPP RAN Rel-18 Workshop (Jun. 2021)](https://www.3gpp.org/ftp/TSG_RAN/TSG_RAN/TSGR_AHs/2021_06_RAN_Rel18_WS/Docs/RWS-210205.zip)
+
 ## Related
 
 * [3GPP Issue Tracking](/tech/standards/3gpp-issue-tracking)
+* [3GPP Work Items per Release](/tech/standards/3gpp-work-items)
 * [Liaison Statements & Inputs](/tech/standards/ls)
-* [Requirements towards SDOs](/tech/standards/requirements)
+
+:::note
+Refer to the [Standards](https://github.com/5G-MAG/Standards/) repository to contribute to this documentation.
+:::
