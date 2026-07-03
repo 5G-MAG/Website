@@ -106,7 +106,7 @@ const CATEGORIES = [
 
 const STANDARDS_ACTIVITIES = [
   {
-    title: 'Feedback and Requirements to Standards',
+    title: 'Feedback & Requirements',
     desc: 'Implementation and deployment experience submitted as structured feedback and formal requirements to 3GPP, ETSI and other SDOs.',
     href: '/tech/standards/feedback',
     icon: icon(<path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" />),
