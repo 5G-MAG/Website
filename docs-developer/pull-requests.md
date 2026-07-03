@@ -6,7 +6,15 @@ sidebar_position: 1
 
 
 
-# Open Pull Requests
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M6 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M18 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M18 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M6 8v8"/><path d="M11 6h5a2 2 0 0 1 2 2v8"/><path d="M14 9l-3 -3l3 -3"/></svg>
+</div>
+<div class="topic-banner__text">
+<h1>Open Pull Requests</h1>
+</div>
+</div>
 
 This page is an automatically generated list of the open pull requests (PRs) across the 5G-MAG repositories, grouped by project. It is useful for reviewers and contributors who want to see what is currently in flight. The data is pulled from the GitHub API by a scheduled workflow; the "Last Synced" timestamp shows when it was last refreshed, and "Sync pending" means a table has not yet been populated. Before opening a PR, see the [Guidelines for Contributors](./guidelines-contributors).
 

@@ -1,8 +1,20 @@
 ---
 title: 5GMSd Features
 sidebar_position: 1
+hide_title: true
 ---
 
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M7 4v16l13 -8l-13 -8"/></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Streaming & Media Delivery</span>
+<h1>5GMSd Features</h1>
+</div>
+</div>
 
 :::warning
 This documentation is currently **under development and subject to change**. It reflects outcomes elaborated by 5G-MAG members. If you are interested in becoming a member of the 5G-MAG and actively participating in shaping this work, please contact the [Project Office](https://www.5g-mag.com/contact)

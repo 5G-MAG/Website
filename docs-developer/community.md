@@ -4,7 +4,15 @@ sidebar_position: 0
 hide_title: true
 ---
 
-# Developer Community
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"/><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0 -3 -3.85"/></svg>
+</div>
+<div class="topic-banner__text">
+<h1>Developer Community</h1>
+</div>
+</div>
 
 5G-MAG is a cross-industry association that develops open-source software implementing 5G media and broadcast specifications. This is the developer portal: it hosts the Reference Tools, shared Testbeds and evaluation frameworks, and end-to-end Application examples. New here? Start with [Using this documentation](./how-to-use). Looking for the specifications themselves? See the [Standards section](/tech/standards/intro).
 

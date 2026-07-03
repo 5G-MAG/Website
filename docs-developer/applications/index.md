@@ -4,7 +4,15 @@ sidebar_position: -1
 hide_title: true
 ---
 
-# Applications
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M4 4h6v6h-6z"/><path d="M14 4h6v6h-6z"/><path d="M4 14h6v6h-6z"/><path d="M17 14v6"/><path d="M14 17h6"/></svg>
+</div>
+<div class="topic-banner__text">
+<h1>Applications</h1>
+</div>
+</div>
 
 Each section below describes a complete end-to-end service scenario and the Reference Tool building blocks it is built on. An Application is a curated combination of existing Reference Tools assembled into a working service; the topic links open the underlying tool documentation. Start here if you want to understand what you can build and which tools to use; if you are looking for an individual specification implementation, see [Reference Tools](../projects) instead.
 

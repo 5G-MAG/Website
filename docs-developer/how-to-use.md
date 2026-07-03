@@ -6,7 +6,15 @@ sidebar_position: 2
 
 
 
-# Using this documentation
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0"/><path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0"/><path d="M3 6l0 13"/><path d="M12 6l0 13"/><path d="M21 6l0 13"/></svg>
+</div>
+<div class="topic-banner__text">
+<h1>Using this documentation</h1>
+</div>
+</div>
 
 This documentation follows a hierarchical structure to help you navigate the 5G-MAG ecosystem efficiently. The main topics are located in the sidebar to the left, with specific subcategories available under each section.
 

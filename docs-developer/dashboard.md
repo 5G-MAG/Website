@@ -4,7 +4,15 @@ hide_title: true
 sidebar_position: 1
 ---
 
-# Activity Dashboard
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M3 12h4l3 8l4 -16l3 8h4"/></svg>
+</div>
+<div class="topic-banner__text">
+<h1>Activity Dashboard</h1>
+</div>
+</div>
 
 This page aggregates community-activity metrics for the 5G-MAG repositories, grouped by project. The figures are pulled from the GitHub API by an automated workflow and refreshed periodically; the "Last Synced" timestamp shows when the data was last updated. **Stars** and **Forks** are cumulative totals. **Views** and **Clones** are traffic counts that GitHub reports over a rolling window (confirm the exact window, typically the last 14 days, with the maintainers). "Sync pending" means the automation has not yet populated that table.
 
