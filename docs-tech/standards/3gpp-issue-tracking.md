@@ -1,6 +1,6 @@
 ---
 hide_title: true
-title: Specification Tracking
+title: Meetings with 3GPP SA4
 sidebar_position: 1
 ---
 
@@ -11,7 +11,7 @@ sidebar_position: 1
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Standards</span>
-<h1>Specification Tracking</h1>
+<h1>Meetings with 3GPP SA4</h1>
 </div>
 </div>
 

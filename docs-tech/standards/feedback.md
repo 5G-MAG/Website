@@ -31,7 +31,7 @@ This area covers feedback on 3GPP media specifications (5G Media Streaming, Mult
 
 * [List of issues](https://github.com/5G-MAG/Standards/issues?q=is%3Aopen%20is%3Aissue%20project%3A5g-mag%2F33)
 * [Project board](https://github.com/orgs/5G-MAG/projects/33) which displays the status of the issues
-* 5G-MAG and 3GPP SA4 have established regular meetings to discuss feedback; the issues and notes can be found in [Specification Tracking](/tech/standards/3gpp-issue-tracking)
+* 5G-MAG and 3GPP SA4 have established regular meetings to discuss feedback; the issues and notes can be found in [Meetings with 3GPP SA4](/tech/standards/3gpp-issue-tracking)
 
 ----
 
@@ -95,7 +95,7 @@ The table below lists 5G-MAG contributions to 3GPP workshops, newest first. Each
 
 ## Related
 
-* [Specification Tracking](/tech/standards/3gpp-issue-tracking)
+* [Meetings with 3GPP SA4](/tech/standards/3gpp-issue-tracking)
 * [Liaison Statements & Inputs](/tech/standards/ls)
 
 :::note
