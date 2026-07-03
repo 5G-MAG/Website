@@ -553,6 +553,7 @@
   display: block;
   color: rgba(255, 255, 255, 0.75);
   font-size: 0.75rem;
+  line-height: 1;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -560,7 +561,11 @@
 }
 
 .topic-banner__text h1 {
-  margin: 0;
+  /* !important needed: Infima's `.markdown h1:first-child` rule (which
+     matches here whenever there's no kicker before the h1) sets its own
+     margin-bottom at higher specificity, silently making title-only
+     banners taller than kicker+title ones without this override. */
+  margin: 0 !important;
   color: #fff;
   font-size: 1.5rem;
   line-height: 1.3;
