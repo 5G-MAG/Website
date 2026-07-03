@@ -27,6 +27,8 @@ const sidebars = {
       label: 'Resources',
       items: ['videos', 'videos-external', 'public-call'],
     },
+
+    { type: 'html', value: 'Media Streaming &amp; Broadcast', className: 'sidebar-section-label', defaultStyle: false },
     {
       type: 'category',
       label: '5G Media Streaming',
@@ -57,6 +59,20 @@ const sidebars = {
     },
     {
       type: 'category',
+      label: 'DVB-I over 5G',
+      link: { type: 'doc', id: 'dvb-i/dvb-i-5g' },
+      items: ['standards/dvb-i'],
+    },
+    {
+      type: 'category',
+      label: 'Multimedia Delivery Protocols',
+      link: { type: 'doc', id: 'multimedia/multimedia-content-delivery' },
+      items: ['standards/multimedia'],
+    },
+
+    { type: 'html', value: 'Network &amp; Connectivity', className: 'sidebar-section-label', defaultStyle: false },
+    {
+      type: 'category',
       label: 'Network APIs',
       link: { type: 'doc', id: 'network-apis' },
       items: [
@@ -73,6 +89,32 @@ const sidebars = {
         'standards/ntn',
       ],
     },
+    {
+      type: 'category',
+      label: 'Non-Public Networks',
+      link: { type: 'doc', id: 'npn' },
+      items: ['standards/npn'],
+    },
+    {
+      type: 'category',
+      label: 'Real-Time Media Communication (RTC)',
+      link: { type: 'doc', id: 'rtc/rtc' },
+      items: ['standards/rtc'],
+    },
+    {
+      type: 'category',
+      label: 'Time-Sensitive Communications',
+      link: { type: 'doc', id: 'tsc/tsc' },
+      items: ['standards/tsc'],
+    },
+    {
+      type: 'category',
+      label: 'UE Data Collection',
+      link: { type: 'doc', id: 'data-collection/data-collection-event-exposure' },
+      items: ['standards/data-collection'],
+    },
+
+    { type: 'html', value: 'Immersive &amp; Emerging Media', className: 'sidebar-section-label', defaultStyle: false },
     {
       type: 'category',
       label: 'XR & Immersive Media',
@@ -98,49 +140,13 @@ const sidebars = {
       link: { type: 'doc', id: 'avatar-communications' },
       items: ['standards/avatar'],
     },
-    {
-      type: 'category',
-      label: 'Non-Public Networks',
-      link: { type: 'doc', id: 'npn' },
-      items: ['standards/npn'],
-    },
+    'standards/ai-ml',
     {
       type: 'category',
       label: 'Towards 6G Media',
       link: { type: 'doc', id: '6g' },
       items: ['standards/6g'],
     },
-    {
-      type: 'category',
-      label: 'DVB-I over 5G',
-      link: { type: 'doc', id: 'dvb-i/dvb-i-5g' },
-      items: ['standards/dvb-i'],
-    },
-    {
-      type: 'category',
-      label: 'Multimedia Delivery Protocols',
-      link: { type: 'doc', id: 'multimedia/multimedia-content-delivery' },
-      items: ['standards/multimedia'],
-    },
-    {
-      type: 'category',
-      label: 'Real-Time Media Communication (RTC)',
-      link: { type: 'doc', id: 'rtc/rtc' },
-      items: ['standards/rtc'],
-    },
-    {
-      type: 'category',
-      label: 'Time-Sensitive Communications',
-      link: { type: 'doc', id: 'tsc/tsc' },
-      items: ['standards/tsc'],
-    },
-    {
-      type: 'category',
-      label: 'UE Data Collection',
-      link: { type: 'doc', id: 'data-collection/data-collection-event-exposure' },
-      items: ['standards/data-collection'],
-    },
-    'standards/ai-ml',
   ],
 };
 

@@ -588,3 +588,16 @@
   padding: 1rem 1.25rem;
   margin: 0 0 1.5rem;
 }
+
+/* ── Sidebar section dividers (Tech sidebar topic groupings) ─────── */
+.sidebar-section-label {
+  margin: 1rem 0 0.35rem;
+  padding: 0 var(--ifm-menu-link-padding-horizontal);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--ifm-color-emphasis-500);
+  pointer-events: none;
+  user-select: none;
+}
