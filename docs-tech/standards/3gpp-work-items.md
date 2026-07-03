@@ -38,7 +38,8 @@ Release status and dates are indicative. Confirm the current status of each Rele
 ## Related
 
 * [Requirements towards SDOs](/tech/standards/requirements)
-* [Feedback and Inputs to Standards](/tech/standards/feedback)
+* [Liaison Statements & Inputs](/tech/standards/ls)
+* [Feedback to Specifications](/tech/standards/feedback)
 
 :::note
 Refer to the [Standards](https://github.com/5G-MAG/Standards/) repository to contribute to this documentation.

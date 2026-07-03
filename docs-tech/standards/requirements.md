@@ -17,7 +17,7 @@ sidebar_position: 0
 
 ## Overview
 
-This page collects the position papers and views that 5G-MAG submits to Standards Development Organisations (SDOs), mainly at 3GPP release-planning and exploratory workshops. These inputs draw on 5G-MAG's implementation and deployment experience to shape the priorities of upcoming releases. For formal liaison statements exchanged with 3GPP working groups, see [Feedback and Inputs to Standards](/tech/standards/feedback).
+This page collects the position papers and views that 5G-MAG submits to Standards Development Organisations (SDOs), mainly at 3GPP release-planning and exploratory workshops. These inputs draw on 5G-MAG's implementation and deployment experience to shape the priorities of upcoming releases. For formal liaison statements exchanged with 3GPP working groups, see [Liaison Statements & Inputs](/tech/standards/ls).
 
 ## Inputs to 3GPP Workshops
 
@@ -34,7 +34,8 @@ The table below lists 5G-MAG contributions to 3GPP workshops, newest first. Each
 
 ## Related
 
-* [Feedback and Inputs to Standards](/tech/standards/feedback)
+* [Liaison Statements & Inputs](/tech/standards/ls)
+* [Feedback to Specifications](/tech/standards/feedback)
 * [3GPP Work Items per Release](/tech/standards/3gpp-work-items)
 
 :::note

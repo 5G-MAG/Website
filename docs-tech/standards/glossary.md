@@ -25,7 +25,7 @@ These are the process and organisational terms used throughout this section's pa
 A formal proposal to modify a published 3GPP specification. Anyone with 3GPP membership (directly or through a member company) can submit one; it is discussed and voted on in a working group before being approved, revised, or rejected.
 
 **LS (Liaison Statement)**
-A formal letter one standards group sends to another (or that an external organisation like 5G-MAG sends to 3GPP), used to share information, ask a question, or request that a group takes an action. See [Feedback and Inputs to Standards](/tech/standards/feedback) for 5G-MAG's incoming and outgoing statements.
+A formal letter one standards group sends to another (or that an external organisation like 5G-MAG sends to 3GPP), used to share information, ask a question, or request that a group takes an action. See [Liaison Statements](/tech/standards/ls) for 5G-MAG's incoming and outgoing statements.
 
 **pCR (pseudo-CR)**
 A draft Change Request discussed within a group before it is formally submitted as a CR. Used to iterate on wording before something becomes official.

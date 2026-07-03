@@ -106,8 +106,8 @@ const CATEGORIES = [
 
 const STANDARDS_ACTIVITIES = [
   {
-    title: 'Feedback and Inputs to Standards',
-    desc: 'Implementation experience submitted as structured feedback to 3GPP, ETSI and other SDOs, plus formal liaison statements exchanged on behalf of 5G-MAG members.',
+    title: 'Feedback to Specifications',
+    desc: 'Implementation and deployment experience submitted as structured feedback to 3GPP, ETSI and other SDOs.',
     href: '/tech/standards/feedback',
     icon: icon(<path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" />),
   },
@@ -116,6 +116,12 @@ const STANDARDS_ACTIVITIES = [
     desc: 'Member input consolidated into formal requirements submitted to standards bodies.',
     href: '/tech/standards/requirements',
     icon: icon(<><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" /><path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" /><path d="M9 12l.01 0" /><path d="M13 12l2 0" /><path d="M9 16l.01 0" /><path d="M13 16l2 0" /></>),
+  },
+  {
+    title: 'Liaison Statements & Inputs',
+    desc: 'Formal liaison statements and informative documents provided to standards bodies on behalf of 5G-MAG members.',
+    href: '/tech/standards/ls',
+    icon: icon(<><path d="M15 15m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M13 17.5v4.5l2 -1.5l2 1.5v-4.5" /><path d="M10 19h-5a2 2 0 0 1 -2 -2v-10c0 -1.1 .9 -2 2 -2h14a2 2 0 0 1 2 2v3.5" /></>),
   },
 ];
 
