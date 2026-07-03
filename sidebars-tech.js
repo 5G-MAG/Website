@@ -4,6 +4,26 @@ const sidebars = {
     'intro',
     {
       type: 'category',
+      label: 'Standards',
+      link: { type: 'doc', id: 'standards/intro' },
+      items: [
+        {
+          type: 'category',
+          label: 'Standards Activities',
+          collapsed: false,
+          items: [
+            'standards/requirements',
+            'standards/feedback',
+            'standards/3gpp-issue-tracking',
+            'standards/3gpp-work-items',
+            'standards/ls',
+          ],
+        },
+        'standards/glossary',
+      ],
+    },
+    {
+      type: 'category',
       label: 'Resources',
       items: ['videos', 'videos-external', 'public-call'],
     },
@@ -121,26 +141,6 @@ const sidebars = {
       items: ['standards/data-collection'],
     },
     'standards/ai-ml',
-    {
-      type: 'category',
-      label: 'Standards',
-      link: { type: 'doc', id: 'standards/intro' },
-      items: [
-        {
-          type: 'category',
-          label: 'Standards Activities',
-          collapsed: false,
-          items: [
-            'standards/requirements',
-            'standards/feedback',
-            'standards/3gpp-issue-tracking',
-            'standards/3gpp-work-items',
-            'standards/ls',
-          ],
-        },
-        'standards/glossary',
-      ],
-    },
   ],
 };
 
