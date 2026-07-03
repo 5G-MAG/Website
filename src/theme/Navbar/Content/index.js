@@ -52,12 +52,24 @@ const TECH_RIGHT_ITEMS = [
   {href: 'https://github.com/5G-MAG', label: 'GitHub', position: 'right'},
 ];
 
-function useNavbarItems(isTechSection) {
+// The root "/" page is a neutral hub pointing at the two portals, so its
+// navbar only needs links to each plus GitHub — none of the dev-portal- or
+// tech-specific items belong here.
+const HOME_LEFT_ITEMS = [
+  {to: '/tech', label: 'Technical Documentation & Standards Work', position: 'left'},
+  {to: '/developer', label: 'Software Accelerator', position: 'left'},
+];
+
+const HOME_RIGHT_ITEMS = [
+  {href: 'https://github.com/5G-MAG', label: 'GitHub', position: 'right'},
+];
+
+function useNavbarItems(variant) {
   // TODO temporary casting until ThemeConfig type is improved
   const defaultItems = useThemeConfig().navbar.items;
-  return isTechSection
-    ? [...TECH_LEFT_ITEMS, ...TECH_RIGHT_ITEMS]
-    : defaultItems;
+  if (variant === 'tech') return [...TECH_LEFT_ITEMS, ...TECH_RIGHT_ITEMS];
+  if (variant === 'home') return [...HOME_LEFT_ITEMS, ...HOME_RIGHT_ITEMS];
+  return defaultItems;
 }
 
 function NavbarItems({items}) {
@@ -105,8 +117,8 @@ function NavbarContentLayout({left, right}) {
 export default function NavbarContent() {
   const mobileSidebar = useNavbarMobileSidebar();
   const {pathname} = useLocation();
-  const isTechSection = pathname.startsWith('/tech');
-  const items = useNavbarItems(isTechSection);
+  const variant = pathname.startsWith('/tech') ? 'tech' : pathname === '/' ? 'home' : 'default';
+  const items = useNavbarItems(variant);
   const [leftItems, rightItems] = splitNavbarItems(items);
   const searchBarItem = items.find((item) => item.type === 'search');
   return (

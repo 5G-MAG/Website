@@ -11,6 +11,64 @@ const icon = (paths) => (
   </svg>
 );
 
+// A custom illustration standing in for a stock figure: a "Standards" node
+// (spec icon) bridged to a "Deployment" node (code icon) by a connectivity
+// arc with data-flow nodes along it — the hero's core proposition in one
+// image, built from the same line-icon language used across the site.
+function HeroFigure() {
+  return (
+    <svg viewBox="0 0 480 360" className={styles.heroFigure} aria-hidden="true">
+      {/* faint background grid dots */}
+      {Array.from({ length: 6 }).map((_, row) =>
+        Array.from({ length: 8 }).map((_, col) => (
+          <circle key={`${row}-${col}`} cx={30 + col * 60} cy={30 + row * 60} r="1.5" fill="rgba(255,255,255,0.18)" />
+        ))
+      )}
+
+      {/* bridge arc connecting the two nodes */}
+      <path
+        d="M130 145 C 220 95, 260 285, 350 235"
+        fill="none"
+        stroke="rgba(255,255,255,0.55)"
+        strokeWidth="2.5"
+        strokeDasharray="1 10"
+        strokeLinecap="round"
+      />
+      <path
+        d="M130 145 C 220 95, 260 285, 350 235"
+        fill="none"
+        stroke="rgba(255,255,255,0.28)"
+        strokeWidth="2.5"
+      />
+
+      {/* data-flow nodes along the arc */}
+      <circle cx="192" cy="122" r="5" fill="#fff" opacity="0.9" />
+      <circle cx="246" cy="192" r="6" fill="#fff" opacity="0.95" />
+      <circle cx="300" cy="222" r="5" fill="#fff" opacity="0.9" />
+
+      {/* Standards node */}
+      <rect x="40" y="100" width="90" height="90" rx="18" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.4)" />
+      <g transform="translate(63.4,123.4) scale(1.8)" stroke="#fff" strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+        <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />
+        <path d="M9 17l0 -5" />
+        <path d="M12 17l0 -1" />
+        <path d="M15 17l0 -3" />
+      </g>
+      <text x="85" y="215" textAnchor="middle" fill="rgba(255,255,255,0.75)" fontSize="13" fontWeight="700" letterSpacing="0.06em">STANDARDS</text>
+
+      {/* Deployment node */}
+      <rect x="350" y="190" width="90" height="90" rx="18" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.4)" />
+      <g transform="translate(373.4,213.4) scale(1.8)" stroke="#fff" strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M7 8l-4 4l4 4" />
+        <path d="M17 8l4 4l-4 4" />
+        <path d="M14 4l-4 16" />
+      </g>
+      <text x="395" y="305" textAnchor="middle" fill="rgba(255,255,255,0.75)" fontSize="13" fontWeight="700" letterSpacing="0.06em">DEPLOYMENT</text>
+    </svg>
+  );
+}
+
 const PORTALS = [
   {
     title: 'Software Accelerator Portal',
@@ -69,28 +127,31 @@ export default function Home() {
         alignItems: 'center',
         padding: '1.5rem 0 2.5rem',
       }}>
-        <div className="container">
-          <p style={{ fontSize: '0.85rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--ifm-color-primary-lightest)', marginBottom: '0.5rem' }}>
-            5G-MAG — The Media Connectivity Association
-          </p>
-          <h1 className={styles.heroNowrap} style={{ fontSize: 'clamp(1.8rem, 3vw, 2.75rem)', fontWeight: 700, color: '#fff', lineHeight: 1.2, marginBottom: '1.1rem' }}>
-            Bridging Standards and Deployments
-          </h1>
-          <p className={styles.heroNowrap} style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.85)', marginBottom: '2rem', lineHeight: 1.6 }}>
-            Driving the next generation of media and connectivity experiences through global standards and open-source.
-          </p>
-          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-            <Link className="button button--primary button--lg" to="/developer">
-              Software Accelerator Portal
-            </Link>
-            <Link
-              className="button button--outline button--lg"
-              style={{ color: '#fff', borderColor: 'rgba(255,255,255,0.75)' }}
-              to="/tech"
-            >
-              Technical Docs &amp; Standards Work
-            </Link>
+        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '2rem' }}>
+          <div>
+            <p style={{ fontSize: '0.85rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--ifm-color-primary-lightest)', marginBottom: '0.5rem' }}>
+              5G-MAG — The Media Connectivity Association
+            </p>
+            <h1 className={styles.heroNowrap} style={{ fontSize: 'clamp(1.8rem, 3vw, 2.75rem)', fontWeight: 700, color: '#fff', lineHeight: 1.2, marginBottom: '1.1rem' }}>
+              Bridging Standards and Deployments
+            </h1>
+            <p className={styles.heroNowrap} style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.85)', marginBottom: '2rem', lineHeight: 1.6 }}>
+              Driving the next generation of media and connectivity experiences through global standards and open-source.
+            </p>
+            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+              <Link className="button button--primary button--lg" to="/developer">
+                Software Accelerator Portal
+              </Link>
+              <Link
+                className="button button--outline button--lg"
+                style={{ color: '#fff', borderColor: 'rgba(255,255,255,0.75)' }}
+                to="/tech"
+              >
+                Technical Docs &amp; Standards Work
+              </Link>
+            </div>
           </div>
+          <HeroFigure />
         </div>
       </header>
 

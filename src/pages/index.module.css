@@ -458,3 +458,18 @@
     white-space: nowrap;
   }
 }
+
+/* ── Hero figure ───────────────────────────────────────────────────── */
+
+.heroFigure {
+  width: 360px;
+  height: 270px;
+  flex-shrink: 0;
+  display: none;
+}
+
+@media (min-width: 996px) {
+  .heroFigure {
+    display: block;
+  }
+}
