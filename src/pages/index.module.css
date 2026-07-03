@@ -445,3 +445,16 @@
   font-size: 0.95rem;
   font-weight: 600;
 }
+
+/* ── Hero text ─────────────────────────────────────────────────────── */
+/* Single line on wider screens; wraps normally on narrow viewports so
+   it never overflows/clips off-screen. */
+.heroNowrap {
+  white-space: normal;
+}
+
+@media (min-width: 640px) {
+  .heroNowrap {
+    white-space: nowrap;
+  }
+}

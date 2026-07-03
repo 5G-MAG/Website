@@ -212,7 +212,7 @@ export default function Home() {
           <p style={{ fontSize: '0.85rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--ifm-color-primary-lightest)', marginBottom: '0.5rem' }}>
             5G-MAG — The Media Connectivity Association
           </p>
-          <h1 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.75rem)', fontWeight: 700, color: '#fff', lineHeight: 1.2, marginBottom: '1.1rem', whiteSpace: 'nowrap' }}>
+          <h1 className={styles.heroNowrap} style={{ fontSize: 'clamp(1.8rem, 3vw, 2.75rem)', fontWeight: 700, color: '#fff', lineHeight: 1.2, marginBottom: '1.1rem' }}>
             Technical Documentation and Standards
           </h1>
           <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.85)', marginBottom: '2rem', lineHeight: 1.6 }}>

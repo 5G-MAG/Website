@@ -64,7 +64,7 @@ export default function Home() {
       {/* Hero */}
       <header style={{
         background: 'linear-gradient(to right, rgba(0,0,0,0.62) 45%, rgba(0,0,0,0.18) 100%), linear-gradient(to right, #003580 0%, #00A0D2 100%)',
-        height: '420px',
+        height: '490px',
         display: 'flex',
         alignItems: 'center',
         padding: '1.5rem 0 2.5rem',
@@ -73,10 +73,10 @@ export default function Home() {
           <p style={{ fontSize: '0.85rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--ifm-color-primary-lightest)', marginBottom: '0.5rem' }}>
             5G-MAG — The Media Connectivity Association
           </p>
-          <h1 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.75rem)', fontWeight: 700, color: '#fff', lineHeight: 1.2, marginBottom: '1.1rem' }}>
+          <h1 className={styles.heroNowrap} style={{ fontSize: 'clamp(1.8rem, 3vw, 2.75rem)', fontWeight: 700, color: '#fff', lineHeight: 1.2, marginBottom: '1.1rem' }}>
             Bridging Standards and Deployments
           </h1>
-          <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.85)', marginBottom: '2rem', lineHeight: 1.6, maxWidth: '640px' }}>
+          <p className={styles.heroNowrap} style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.85)', marginBottom: '2rem', lineHeight: 1.6 }}>
             Driving the next generation of media and connectivity through global standards and open-source.
           </p>
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
