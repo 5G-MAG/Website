@@ -20,12 +20,6 @@ description: Overview of installing, configuring and testing the 5GMS Applicatio
 This tutorial allows to: Setup the 5GMSd AF; Test the M1 Interface APIs (Provisioning Sessions, Server Certificates, Content Protocol Discovery, Content Hosting, Consumption Reporting); Test the M3 Interface APIs (Simple HTTP configuration, HTTP configuration and certificate sending); Test the M5 Interface APIs (Service Access Information).
 :::
 
-<div class="spec-chip-row">
-<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /><path d="M7 9l5 -5l5 5" /><path d="M12 4l0 12" /></svg>M1: AF provisioning</span>
-<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-10z" /><path d="M8 21h8" /><path d="M12 17v4" /></svg>M3: AF configures AS</span>
-<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5a1 1 0 0 1 1 -1h10a1 1 0 0 1 1 1v16l-6 -4l-6 4z" /></svg>M5: client session info</span>
-</div>
-
 Here you will find information to assist with testing of the Reference Tools 5GMS Application Function (AF).
 
 <img loading="lazy" src="/assets/images/5gms/5GMS_Downlink_AF.png" alt="5GMSd downlink architecture highlighting the Application Function and its M1, M3 and M5 interfaces" /> 

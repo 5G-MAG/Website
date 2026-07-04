@@ -22,12 +22,6 @@ description: Tutorial for deploying the MBS-capable 5G Core via Docker Compose (
 
 This tutorial explains how to run the MBS-capable 5G Core (5GC) as a set of Docker containers, so you can bring up the whole MBS core network with a single Docker Compose deployment instead of building each Network Function by hand.
 
-<div class="spec-chip-row">
-<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-10z" /><path d="M8 21h8" /><path d="M12 17v4" /></svg>2 deployment modes (internal / external)</span>
-<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-5" /><path d="M9 8V2" /><path d="M15 8V2" /><path d="M18 8v5a4 4 0 0 1 -4 4h-4a4 4 0 0 1 -4 -4V8Z" /></svg>3 exposed host ports</span>
-<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12l0 .01" /><path d="M14.828 9.172a4 4 0 0 1 0 5.656" /><path d="M17.657 6.343a8 8 0 0 1 0 11.314" /><path d="M9.168 14.828a4 4 0 0 1 0 -5.656" /><path d="M6.337 17.657a8 8 0 0 1 0 -11.314" /></svg>srsRAN gNB + UE included (internal)</span>
-</div>
-
 Two Docker Compose deployments of the MBS capable 5G Core are available:
 
 <a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-mbs-examples/">

@@ -20,12 +20,6 @@ description: Sets up an end-to-end 5GMSd deployment with a local Application Fun
 This tutorial allows to: Deploy 5G Media Streaming.
 :::
 
-<div class="spec-chip-row">
-<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5a9 4 0 0 0 18 0a9 4 0 0 0 -18 0" /><path d="M3 5v14a9 4 0 0 0 18 0v-14" /></svg>6 repositories</span>
-<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5a1 1 0 0 1 1 -1h10a1 1 0 0 1 1 1v16l-6 -4l-6 4z" /></svg>Android 10+ client</span>
-<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-10z" /><path d="M8 21h8" /><path d="M12 17v4" /></svg>3 server-side deployment options</span>
-</div>
-
 This guide describes how to setup and configure the Reference Tools - 5G Downlink Media Streaming components to
 create an end to end setup as depicted in the illustration below.
 

@@ -19,11 +19,6 @@ description: Covers installing and verifying BladeRF, LimeSDR and HackRF One SDR
 </div>
 </div>
 
-<div class="spec-chip-row">
-<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1" /><path d="M7 20h10" /><path d="M9 16v4" /><path d="M15 16v4" /></svg>Host: Ubuntu 22.04 LTS</span>
-<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M16.616 13.924a5 5 0 1 0 -9.23 0" /><path d="M20.307 15.469a9 9 0 1 0 -16.615 0" /><path d="M9 21l3 -9l3 9" /><path d="M10 19h4" /></svg>3 supported SDR boards</span>
-</div>
-
 This page covers installing and verifying the Software Defined Radio (SDR) hardware used with the srsRAN-based 5G Broadcast tools, including the `rt-mbms-modem` receiver. It walks through installing the SDR drivers, checking that the device is detected, and setting the right configuration for each supported board. The SDRs covered here are BladeRF, LimeSDR and HackRF One.
 
 Recommended order: install the drivers, verify the device is detected (the "Check SDR availability" section below), and only then set the device-specific configuration.

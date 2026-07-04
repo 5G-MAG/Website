@@ -21,12 +21,6 @@ description: Step-by-step guide to build the XR Unity Player for Meta Quest 3, l
 </div>
 </div>
 
-<div class="spec-chip-row">
-<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5a9 4 0 0 0 18 0a9 4 0 0 0 -18 0" /><path d="M3 5v14a9 4 0 0 0 18 0v-14" /></svg>4 repositories</span>
-<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="10" rx="4" /><circle cx="8.5" cy="12" r="1.75" /><circle cx="15.5" cy="12" r="1.75" /><path d="M11 12h2" /></svg>Meta Quest 3 headset</span>
-<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16.008v-8.016a1.98 1.98 0 0 0 -1 -1.717l-7 -4.008a2.016 2.016 0 0 0 -2 0l-7 4.008a1.98 1.98 0 0 0 -1 1.717v8.016a1.98 1.98 0 0 0 1 1.717l7 4.008a2.016 2.016 0 0 0 2 0l7 -4.008a1.98 1.98 0 0 0 1 -1.717z" /><path d="M12 22v-10" /><path d="M12 12l8.73 -5.04" /><path d="M3.27 6.96l8.73 5.04" /></svg>Unity 2022.3.34f1</span>
-</div>
-
 This guide covers compiling the XR player sample Unity project for Meta Quest 3 and configuring it with specific glTF content.
 
 **What you will build:** a native Meta Quest 3 application that loads glTF scenes with the MPEG glTF extensions, installed and running on the headset.
