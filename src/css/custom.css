@@ -821,3 +821,32 @@
   display: block;
   margin-bottom: 0.2rem;
 }
+
+/* ── Documentation content images (diagrams, screenshots) ─────────
+   Most content images (architecture/reference-point diagrams, tool
+   screenshots) are exported with a solid white background. Left
+   unstyled, that's a jarring "wall of white" against the dark theme.
+   Framing them as a light card (white backing + border + shadow in
+   dark mode) reads as an intentional figure instead, without having
+   to touch every page that embeds one. */
+.markdown img {
+  border-radius: 8px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='dark'] .markdown img {
+  background: #fff;
+  padding: 10px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+}
+
+/* Images inside these components already have bespoke framing
+   (cover photos, round avatars) — opt them back out of the card
+   treatment above so it doesn't fight their existing styling. */
+.project-card__image-link img,
+.community-contributors img {
+  background: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
