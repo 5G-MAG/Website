@@ -77,6 +77,16 @@ This application area brings together the Reference Tools for delivering adaptiv
 
 ---
 
+## Showcases
+
+Showcases go further than the tool combination above: each one is a real application prototype built by combining several of these Reference Tools, with a working demo — not just component-level documentation.
+
+:::info[Piloting this section]
+No real showcase has been built and verified yet. The page below is a **structural sample only**, demonstrating the proposed layout — not a real, working application.
+:::
+
+* [Sample: Multi-Angle Replay Viewer (template)](./streaming/sample-multi-angle-replay) — illustrates the proposed showcase structure with placeholder content.
+
 ## Other Tools
 
 These supporting tools are shared across several application areas. Auxiliary tools provide common scripts and configurations; the 3GPP Radio Access Network (RAN) and Core Platforms provide a test network to run against; External Tools are third-party utilities that work with the Reference Tools.

@@ -411,6 +411,15 @@
   margin-bottom: 0.75rem;
   flex-shrink: 0;
 }
+.community-tile .tile-kicker {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ifm-color-emphasis-600);
+  margin-bottom: 0.2rem;
+  display: block;
+}
 .community-tile strong {
   font-size: 0.95rem;
   margin-bottom: 0.35rem;
@@ -429,6 +438,18 @@
   color: var(--ifm-color-primary);
   display: block;
 }
+
+/* Even-width variant: tiles split the full row equally instead of
+   capping at the compact max-width used elsewhere (e.g. community.md). */
+.community-tiles--even {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.community-tiles--even .community-tile {
+  max-width: none;
+  width: 100%;
+}
+
 .community-contributors {
   display: flex;
   gap: 1.5rem;
@@ -604,4 +625,199 @@
   color: var(--ifm-color-emphasis-500);
   pointer-events: none;
   user-select: none;
+}
+
+/* ── Showcase hero placeholder (showcase-style tutorials) ─────────── */
+.showcase-hero-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  aspect-ratio: 16 / 9;
+  max-height: 340px;
+  border: 2px dashed var(--ifm-color-emphasis-400);
+  border-radius: 12px;
+  background: var(--ifm-color-emphasis-100);
+  color: var(--ifm-color-emphasis-600);
+  margin: 1rem 0 1.75rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+.showcase-hero-placeholder svg {
+  width: 44px;
+  height: 44px;
+  opacity: 0.55;
+}
+
+.showcase-hero-placeholder strong {
+  font-size: 0.95rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.showcase-hero-placeholder span {
+  font-size: 0.8rem;
+  max-width: 320px;
+}
+
+/* ── Reference tutorial: spec/requirement chips ───────────────────── */
+.spec-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.spec-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-background-surface-color);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-800);
+}
+
+.spec-chip svg {
+  width: 15px;
+  height: 15px;
+  color: var(--ifm-color-primary);
+  flex-shrink: 0;
+}
+
+/* ── Reference tutorial: repo/component cards ─────────────────────── */
+.repo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 0.9rem;
+  margin: 1rem 0 1.75rem;
+}
+
+.repo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 1rem 0 1.75rem;
+}
+
+.repo-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-top: 3px solid var(--ifm-color-primary);
+  border-radius: 10px;
+  background: var(--ifm-background-surface-color);
+  text-decoration: none !important;
+  color: inherit !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.repo-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  text-decoration: none !important;
+}
+
+.repo-card__name {
+  font-size: 0.875rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.repo-card__name svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.repo-card__role {
+  font-size: 0.78rem;
+  color: var(--ifm-color-emphasis-700);
+  line-height: 1.4;
+}
+
+.repo-card__version {
+  align-self: flex-start;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  background: var(--ifm-color-primary-darkest);
+  color: #fff;
+}
+
+/* Wide, full-width variant for a single inline repo-card (as opposed to
+   the vertical cards used side-by-side in a .repo-grid). */
+.repo-card--inline {
+  flex-direction: row;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.repo-card--inline .repo-card__name {
+  flex-shrink: 0;
+  margin-right: 0;
+}
+
+.repo-card--inline .repo-card__role {
+  flex: 1;
+  min-width: 200px;
+}
+
+.repo-card--inline .repo-card__version {
+  align-self: center;
+  flex-shrink: 0;
+}
+
+/* ── Reference tutorial: numbered step badge ──────────────────────── */
+.step-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: var(--ifm-color-primary-darkest);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-right: 0.55rem;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+/* ── Reference tutorial: success/completion callout ───────────────── */
+.tutorial-complete {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  padding: 1.1rem 1.25rem;
+  border-radius: 10px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-left: 4px solid #2e9e5b;
+  background: var(--ifm-color-emphasis-100);
+  margin: 1.5rem 0;
+}
+
+.tutorial-complete svg {
+  width: 26px;
+  height: 26px;
+  color: #2e9e5b;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.tutorial-complete strong {
+  display: block;
+  margin-bottom: 0.2rem;
 }

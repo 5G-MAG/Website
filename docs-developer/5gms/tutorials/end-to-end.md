@@ -20,6 +20,11 @@ description: Sets up an end-to-end 5GMSd deployment with a local Application Fun
 This tutorial allows to: Deploy 5G Media Streaming.
 :::
 
+<div class="spec-chip-row">
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5a9 4 0 0 0 18 0a9 4 0 0 0 -18 0" /><path d="M3 5v14a9 4 0 0 0 18 0v-14" /></svg>6 repositories</span>
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5a1 1 0 0 1 1 -1h10a1 1 0 0 1 1 1v16l-6 -4l-6 4z" /></svg>Android 10+ client</span>
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-10z" /><path d="M8 21h8" /><path d="M12 17v4" /></svg>3 server-side deployment options</span>
+</div>
 
 This guide describes how to setup and configure the Reference Tools - 5G Downlink Media Streaming components to
 create an end to end setup as depicted in the illustration below.
@@ -30,34 +35,68 @@ create an end to end setup as depicted in the illustration below.
 
 <img loading="lazy" width="934" alt="End-to-end 5GMSd deployment: server-side Application Function and Application Server delivering a stream to the Android client" src="https://user-images.githubusercontent.com/2427039/230307155-c0f71870-a806-4229-966a-41a8f2f838f8.png">
 
-## Versions
+## Components
 
-This guide uses the following versions. However, it is strongly recommended to use the latest versions of the
-components.
+This end-to-end deployment is built from six repositories, each with a distinct role:
 
-| Component               | Minimum Version |
-|-------------------------|-----------------|
-| Application Function    | `1.3.0`         |
-| Application Server      | `1.2.0`         |
-| 5GMSd Aware Application | `1.0.0`         |
-| Media Session Handler   | `1.0.0`         |
-| Media Stream Handler    | `1.0.0`         |
-| Common Android Library  | `1.0.0`         |
+<div class="repo-list">
+<a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-5gms-application-function">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>Application Function</span>
+<span class="repo-card__role">Control-plane: provisioning, configuration, reporting.</span>
+</a>
+<a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-5gms-application-server">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>Application Server</span>
+<span class="repo-card__role">Data-plane: ingests and delivers the media content.</span>
+</a>
+<a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-5gms-application">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>5GMSd-Aware Application</span>
+<span class="repo-card__role">Android reference app: the app itself.</span>
+</a>
+<a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-5gms-media-session-handler">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>Media Session Handler</span>
+<span class="repo-card__role">Talks to the AF over M5 to control the streaming session.</span>
+</a>
+<a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-5gms-media-stream-handler">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>Media Stream Handler</span>
+<span class="repo-card__role">Wraps ExoPlayer to implement the M7d player interface.</span>
+</a>
+<a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-5gms-common-android-library">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>Common Android Library</span>
+<span class="repo-card__role">Shared models and helper classes used by the client apps.</span>
+</a>
+</div>
 
 ## Requirements
 
-* A host machine running Ubuntu 22.04 LTS
-* A smartphone running Android 10 or later
+<div class="spec-chip-row">
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1" /><path d="M7 20h10" /><path d="M9 16v4" /><path d="M15 16v4" /></svg>Host: Ubuntu 22.04 LTS</span>
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5a1 1 0 0 1 1 -1h10a1 1 0 0 1 1 1v16l-6 -4l-6 4z" /></svg>Client: Android 10 or later</span>
+</div>
 
 ## Server-side setup
 
-We provide multiple ways to do the server-side setup. The easiest way is to use the Docker setup. However, in some
-cases, you might want to work with a native installation or even with a reduced setup to develop new functionality on
-the client-side. For that reason, the server-side setup guide is divided into three alternative sections:
+We provide multiple ways to do the server-side setup, split into three alternative paths — pick the one that fits what you're doing:
 
-* [Option 1: Docker Compose setup](#option-1-docker-compose-setup)
-* [Option 2: Native common server-side setup](#option-2-common-server-side-setup)
-* [Option 3: Server-side development setup](#option-3-server-side-development-setup).
+<div class="community-tiles community-tiles--even">
+<a class="community-tile" href="#option-1-docker-compose-setup">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6l3 5l-3 5h-6l-3 -5z" transform="translate(0 4)" /><path d="M4 20h16" /></svg>
+<strong>Option 1: Docker Compose</strong>
+<span class="tile-desc">The easiest way — a ready-made Docker Compose recipe runs AF, AS and Application Provider together.</span>
+<span class="tile-cta">Recommended starting point →</span>
+</a>
+<a class="community-tile" href="#option-2-common-server-side-setup">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.657 16c-2.572 0 -4.657 -2.007 -4.657 -4.483c0 -2.475 2.085 -4.482 4.657 -4.482c.393 -1.762 1.794 -3.2 3.675 -3.773c1.88 -.572 3.956 -.193 5.444 1c1.488 1.19 2.162 3.007 1.77 4.769h.99c1.913 0 3.464 1.56 3.464 3.486c0 1.927 -1.551 3.487 -3.465 3.487h-11.878" /></svg>
+<strong>Option 2: Native setup</strong>
+<span class="tile-desc">Install the AF and AS natively when you need full control over configuration.</span>
+<span class="tile-cta">Step-by-step install →</span>
+</a>
+<a class="community-tile" href="#option-3-server-side-development-setup">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 9l-4 3l4 3" /><path d="M16 9l4 3l-4 3" /><path d="M13 5l-2 14" /></svg>
+<strong>Option 3: Development mock</strong>
+<span class="tile-desc">A reduced static webserver, useful when developing new client-side functionality only.</span>
+<span class="tile-cta">Mock server setup →</span>
+</a>
+</div>
 
 ## Option 1: Docker Compose setup
 
@@ -109,8 +148,12 @@ control plane aspects such as provisioning, configuration, and reporting, among 
 provisioned by the 5GMSd Application Provider using a RESTful HTTP-based API (M1d). Another RESTful HTTP-based
 configuration and reporting API (M5d) is exposed to 5GMSd Clients.
 
-The detailed installation guide for the AF can be found in the
-corresponding [Github repository](https://github.com/5G-MAG/rt-5gms-application-function).
+The detailed installation guide for the AF is in its repository:
+
+<a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-5gms-application-function">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>rt-5gms-application-function</span>
+<span class="repo-card__role">Full installation guide and configuration reference.</span>
+</a>
 
 ### 2. Installing the Application Server
 
@@ -120,8 +163,12 @@ instance, a Content Delivery Network). The content is ingested (both HTTP push- 
 Application Providers at reference point `M2d`. The content is distributed to 5GMSd Clients at reference point `M4d`,
 which supports standard pull-based content retrieval protocols (e.g. DASH).
 
-The detailed installation guide for the AS can be found in the
-corresponding [Github repository](https://github.com/5G-MAG/rt-5gms-application-server).
+The detailed installation guide for the AS is in its repository:
+
+<a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-5gms-application-server">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>rt-5gms-application-server</span>
+<span class="repo-card__role">Full installation guide and configuration reference.</span>
+</a>
 
 ### 3. Running the Application Server
 
@@ -378,30 +425,32 @@ libraries, two Android applications) for the end-to-end setup.
 
 ## 1. Installing the 5GMSd Common Android Library
 
-The [5GMSd Common Android Library](https://github.com/5G-MAG/rt-5gms-common-android-library) is an Android library that
+The 5GMSd Common Android Library is an Android library that
 includes models and helper classes used within the different client-side Android applications such as the 5GMSd-Aware
 Application, 5GMSd Media Stream Handler and the 5GMSd Media Session Handler.
 
-The installation guide can be found in the [Readme](https://github.com/5G-MAG/rt-5gms-common-android-library#readme) of
-the project. Note that you need to publish the library to a local maven repository as described in the installation
-guide.
+<a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-5gms-common-android-library">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>rt-5gms-common-android-library</span>
+<span class="repo-card__role">Installation guide (Readme). Publish to a local maven repository as described there.</span>
+</a>
 
 ## 2. Installing the 5GMSd Media Stream Handler
 
-The [5GMSd Media Stream Handler](https://github.com/5G-MAG/rt-5gms-media-stream-handler) is an Android library that
+The 5GMSd Media Stream Handler is an Android library that
 includes the [ExoPlayer](https://github.com/google/ExoPlayer) as a dependency. The 5GMSd Media Stream Handler implements
 an adapter around the ExoPlayer APIs to expose TS.26.512 M7d interface functionality. Moreover, a
 MediaSessionHandlerAdapter establishes a Messenger connection to
 the [Media Session Handler](https://github.com/5G-MAG/rt-5gms-media-session-handler). The 5GMSd Media Stream Handler is
 included as an Android library by 5GMSd Aware Application.
 
-The installation guide can be found in the [Readme](https://github.com/5G-MAG/rt-5gms-media-stream-handler#readme) of
-the project. Note that you need to publish the library to a local maven repository as described in the installation
-guide.
+<a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-5gms-media-stream-handler">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>rt-5gms-media-stream-handler</span>
+<span class="repo-card__role">Installation guide (Readme). Publish to a local maven repository as described there.</span>
+</a>
 
 ## 3. Installing the 5GMSd Media Session Handler
 
-The [5GMSd Media Session Handler](https://github.com/5G-MAG/rt-5gms-media-session-handler) is an Android application
+The 5GMSd Media Session Handler is an Android application
 that implements functionality for 5G Media Streaming media session handling. It is implemented as an Android Messenger
 Service that communicates via Inter Process Communication (IPC) with other Android libraries and applications such as
 the Media Stream Handler and the 5GMSd Aware Application.
@@ -410,8 +459,10 @@ The Media Session Handler communicates with the 5GMSd Application Function via i
 delivery of a streaming media session in the downlink direction. In addition, the Media Session Handler exposes APIs via
 M6 to the 5GMSd-Aware Application and to the Media Player (for downlink streaming).
 
-The installation guide can be found in the [Readme](https://github.com/5G-MAG/rt-5gms-media-session-handler#readme) of
-the project.
+<a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-5gms-media-session-handler">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>rt-5gms-media-session-handler</span>
+<span class="repo-card__role">Installation guide (Readme).</span>
+</a>
 
 ## 4. Configuring and installing the 5GMSd-Aware Application
 
@@ -501,9 +552,10 @@ following line and replace the IP address with the IP address of your machine.
 
 ### 4.b Installation
 
-The installation guide for the 5GMSd-Aware Application can be found in
-the [Readme](https://github.com/5G-MAG/rt-5gms-application/tree/development/fivegmag_5GMSdAwareApplication) of the
-project.
+<a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-5gms-application/tree/development/fivegmag_5GMSdAwareApplication">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>rt-5gms-application</span>
+<span class="repo-card__role">Installation guide (Readme) for the 5GMSd-Aware Application.</span>
+</a>
 
 ## 5. Running the application
 
@@ -513,6 +565,11 @@ Unlock your Android phone and start the `MediaSessionHandler` if it is not alrea
 Next, click on _Start Playback_. The output should look like this:
 
 <img loading="lazy" width="757" alt="5GMSd-Aware Application UI on Android showing a stream selected and playing" src="/assets/images/5gms/5gms-ui.png">
+
+<div class="tutorial-complete">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2l4 -4" /><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9" /></svg>
+<div><strong>You now have a working end-to-end 5GMSd deployment.</strong> The AF, AS and Android client are all running and playing a real adaptive bitrate stream.</div>
+</div>
 
 ## Next steps
 
