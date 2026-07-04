@@ -915,6 +915,8 @@
   position: relative;
   line-height: 0;
   overflow: hidden;
+  padding: 6px;
+  background: var(--ifm-background-surface-color);
 }
 
 .videoThumb img {
@@ -922,6 +924,8 @@
   aspect-ratio: 16 / 9;
   object-fit: cover;
   display: block;
+  border-radius: 6px;
+  background: var(--ifm-color-emphasis-200);
   transition: transform 0.2s ease;
 }
 
