@@ -13,6 +13,8 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "fetch-youtube": "node scripts/fetch-youtube.js",
+    "validate-frontmatter": "node scripts/validate-frontmatter.js",
+    "prebuild": "npm run validate-frontmatter",
     "postinstall": "patch-package"
   },
   "dependencies": {
@@ -30,6 +32,7 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.10.1",
     "@docusaurus/types": "3.10.1",
+    "gray-matter": "^4.0.3",
     "patch-package": "^8.0.1"
   },
   "browserslist": {
