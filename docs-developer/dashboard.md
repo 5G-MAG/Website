@@ -28,6 +28,19 @@ This page aggregates community-activity metrics for the 5G-MAG repositories, gro
 </div>
 <!-- SUMMARY-CARDS-END -->
 
+## Top Contributors
+
+<div class="community-tiles">
+
+<a href="/developer/contributors" class="community-tile">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21v-4a4 4 0 0 1 4 -4h0a4 4 0 0 1 4 4v4" /><path d="M12 3l1.5 4.5l4.5 .5l-3.5 3l1 4.5l-3.5 -2.5l-3.5 2.5l1 -4.5l-3.5 -3l4.5 -.5z" /></svg>
+<strong>Contributor Leaderboard</strong>
+<span class="tile-desc">Ranked by commits across every 5G-MAG repository</span>
+<span class="tile-cta">See who's contributing →</span>
+</a>
+
+</div>
+
 ## Community Stats - 5G Broadcast: TV and Radio Hybrid Services
 [Project Documentation](./5g-broadcast/)
 
