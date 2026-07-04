@@ -22,8 +22,18 @@ description: Tutorial for deploying the MBS-capable 5G Core via Docker Compose (
 
 This tutorial explains how to run the MBS-capable 5G Core (5GC) as a set of Docker containers, so you can bring up the whole MBS core network with a single Docker Compose deployment instead of building each Network Function by hand.
 
-Two Docker Compose deployments of the MBS capable 5G Core are available in
-the [rt-mbs-examples](https://github.com/5G-MAG/rt-mbs-examples/) repository:
+<div class="spec-chip-row">
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-10z" /><path d="M8 21h8" /><path d="M12 17v4" /></svg>2 deployment modes (internal / external)</span>
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-5" /><path d="M9 8V2" /><path d="M15 8V2" /><path d="M18 8v5a4 4 0 0 1 -4 4h-4a4 4 0 0 1 -4 -4V8Z" /></svg>3 exposed host ports</span>
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12l0 .01" /><path d="M14.828 9.172a4 4 0 0 1 0 5.656" /><path d="M17.657 6.343a8 8 0 0 1 0 11.314" /><path d="M9.168 14.828a4 4 0 0 1 0 -5.656" /><path d="M6.337 17.657a8 8 0 0 1 0 -11.314" /></svg>srsRAN gNB + UE included (internal)</span>
+</div>
+
+Two Docker Compose deployments of the MBS capable 5G Core are available:
+
+<a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-mbs-examples/">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>rt-mbs-examples</span>
+<span class="repo-card__role">Docker Compose recipes for the MBS-capable 5G Core, plus the Python test suite used later in this tutorial.</span>
+</a>
 
 - The `internal` deployment connects all the developed Network Functions for MBS with one srsRAN gNB and one srsRAN UE
   running using the ZeroMQ driver
@@ -146,6 +156,11 @@ to the MB-UPF and inspecting the MB-UPF output:
 # Execute this command inside the AF/AS container
 sendip -p ipv4 -is <af_as_container_ip> -id <n6mb_ip_multicast_destination_address> <mb_upf_container_ip>
 ```
+
+<div class="tutorial-complete">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2l4 -4" /><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9" /></svg>
+<div><strong>You now have the MBS-capable 5G Core running as Docker containers.</strong> The MBS Session is created and multicast traffic is flowing from the AF/AS through the MB-UPF, visible with `smcroutectl` and `tcpdump`.</div>
+</div>
 
 ## Next steps
 

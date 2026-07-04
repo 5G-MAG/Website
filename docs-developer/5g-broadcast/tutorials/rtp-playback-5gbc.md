@@ -108,6 +108,11 @@ The output should look like this:
 
 *Figure: the same RTP stream playing in VLC.*
 
+<div class="tutorial-complete">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2l4 -4" /><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9" /></svg>
+<div><strong>You are now receiving an RTP stream over 5G Broadcast.</strong> The MBMS Modem is decoding the signal and the multicast stream is playing directly in ffplay or VLC.</div>
+</div>
+
 ## Next steps
 
 * To receive an HLS stream instead, see [SDR - HLS Playback over 5G Broadcast](./hls-playback-5gbc).

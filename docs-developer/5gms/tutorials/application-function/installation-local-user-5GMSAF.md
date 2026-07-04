@@ -24,6 +24,12 @@ If instead you want a stable release installed for others to use and managed by 
 
 ## Prerequisites
 
+<div class="spec-chip-row">
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1" /><path d="M7 20h10" /><path d="M9 16v4" /><path d="M15 16v4" /></svg>Host: Ubuntu (or equivalent)</span>
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.859 6h-2.834a2.025 2.025 0 0 0 -2.025 2.025v2.834c0 .537 .213 1.052 .593 1.432l8.09 8.09c.79 .79 2.07 .79 2.86 0l4.362 -4.362a2.025 2.025 0 0 0 0 -2.86l-8.09 -8.09a2.025 2.025 0 0 0 -1.432 -.593" /><path d="M17.5 10.5m-1.5 0a1.5 1.5 0 1 0 3 0a1.5 1.5 0 1 0 -3 0" /></svg>meson &ge; 0.63.0</span>
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" /><path d="M3.6 9h16.8" /><path d="M3.6 15h16.8" /><path d="M11.5 3a17 17 0 0 0 0 18" /><path d="M12.5 3a17 17 0 0 1 0 18" /></svg>Network access at build time</span>
+</div>
+
 - A supported Linux system (the package commands below are for Ubuntu; on other distributions install the equivalent packages).
 - The build dependencies listed under [Build Dependencies](#build-dependencies) below, including `meson` version 0.63.0 or higher.
 - Network access to clone the repository and fetch API files at build time.
@@ -175,6 +181,11 @@ For v1.4.1 and above:
    ```bash
    m1-session configure set data_store ~/m1-client-data-store
    ```
+
+<div class="tutorial-complete">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2l4 -4" /><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9" /></svg>
+<div><strong>You now have a working 5GMSd Application Function installed and running as a local user.</strong> It's built from your own clone of the repository and configured through `msaf.yaml`, ready to be exercised via the M1, M3 and M5 testing tutorials below.</div>
+</div>
 
 ## Stopping
 

@@ -32,24 +32,52 @@ This is an advanced, end-to-end setup involving a transmitter and an Android rec
 
 To replicate the setup described in this tutorial the following components are required:
 
-* An Ubuntu 22 system to install and host `ffmpeg`, an `express.js` webserver, the `flute-ffmpeg` repository as well as the 5G-MAG QRD and CRD transmitter.
-* A Software Defined Radio (SDR) such as the BladeRF with an antenna, for transmission of the 5G Broadcast signal.
-* A QRD or CRD device operating in Receive-only mode (ROM) to receive the 5G Broadcast transmission and run the 5G-MAG MBMS Android Middleware.
+<div class="spec-chip-row">
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1" /><path d="M7 20h10" /><path d="M9 16v4" /><path d="M15 16v4" /></svg>Host: Ubuntu 22</span>
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M16.616 13.924a5 5 0 1 0 -9.23 0" /><path d="M20.307 15.469a9 9 0 1 0 -16.615 0" /></svg>SDR (e.g. BladeRF) + antenna</span>
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5a1 1 0 0 1 1 -1h10a1 1 0 0 1 1 1v16l-6 -4l-6 4z" /></svg>QRD/CRD device (ROM)</span>
+</div>
+
+The Ubuntu host installs and runs `ffmpeg`, an `express.js` webserver, the `flute-ffmpeg` repository and the 5G-MAG QRD/CRD transmitter software. The SDR transmits the 5G Broadcast signal. The QRD or CRD device receives that transmission in Receive-only mode (ROM) and runs the 5G-MAG MBMS Android Middleware.
 
 ### Components at a glance
 
-The steps below refer to several named processes. This table maps each to its role:
+The steps below refer to several named processes. This maps each to its role:
 
-| Component | Role |
-|---|---|
-| `ffmpeg` | Creates an HLS live stream from a plain .mp4 file |
-| `flute-ffmpeg` | Watches the folder of HLS files, FLUTE-encodes them and multicasts them to the transmitter |
-| `rt-libflute` | FLUTE (File Delivery over Unidirectional Transport) library used by `flute-ffmpeg` |
-| `rt-mbms-tx-for-qrd-and-crd` | 5G Broadcast transmitter, hosting the `srsmbms`, `srsepc` and `srsenb` processes |
-| `srsmbms` | MBMS gateway that exposes the `sgi_mb` interface (the interface that carries multicast media into the broadcast core) |
-| `srsepc` / `srsenb` | srsRAN core (EPC) and base station (eNB) processes |
-| `rt-mbms-mw-android` | Android Middleware that receives broadcast files and, when broadcast is unavailable, fetches over unicast |
-| Exoplayer | Media player on the Android device consuming files from the local webserver |
+<div class="repo-list">
+<div class="repo-card repo-card--inline">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>ffmpeg</span>
+<span class="repo-card__role">Creates an HLS live stream from a plain .mp4 file.</span>
+</div>
+<a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-mbms-examples/tree/main/flute-ffmpeg">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>flute-ffmpeg</span>
+<span class="repo-card__role">Watches the folder of HLS files, FLUTE-encodes them and multicasts them to the transmitter.</span>
+</a>
+<div class="repo-card repo-card--inline">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>rt-libflute</span>
+<span class="repo-card__role">FLUTE (File Delivery over Unidirectional Transport) library used by flute-ffmpeg.</span>
+</div>
+<a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-mbms-tx-for-qrd-and-crd">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>rt-mbms-tx-for-qrd-and-crd</span>
+<span class="repo-card__role">5G Broadcast transmitter, hosting the srsmbms, srsepc and srsenb processes.</span>
+</a>
+<div class="repo-card repo-card--inline">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>srsmbms</span>
+<span class="repo-card__role">MBMS gateway that exposes the sgi_mb interface (carries multicast media into the broadcast core).</span>
+</div>
+<div class="repo-card repo-card--inline">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>srsepc / srsenb</span>
+<span class="repo-card__role">srsRAN core (EPC) and base station (eNB) processes.</span>
+</div>
+<a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-mbms-mw-android">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>rt-mbms-mw-android</span>
+<span class="repo-card__role">Android Middleware that receives broadcast files and, when broadcast is unavailable, fetches over unicast.</span>
+</a>
+<div class="repo-card repo-card--inline">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>Exoplayer</span>
+<span class="repo-card__role">Media player on the Android device consuming files from the local webserver.</span>
+</div>
+</div>
 
 Abbreviations: QRD (Qualcomm Reference Design); CRD (Commercial Reference Design); ROM (Receive-only mode).
 
@@ -105,8 +133,12 @@ In this phase we install and prepare each component. Do not start any of them ye
 
 ### Step 1: Install the express.js webserver
 
-The `express.js` webserver acts as our CDN node for unicast delivery. To install the webserver follow the
-instructions [here](https://github.com/5G-MAG/rt-common-shared/tree/main/simple-express-server).
+The `express.js` webserver acts as our CDN node for unicast delivery.
+
+<a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-common-shared/tree/main/simple-express-server">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>simple-express-server</span>
+<span class="repo-card__role">Installation guide (Readme) for the CDN-node webserver.</span>
+</a>
 
 This will prepare the server so contents can be stored in the `simple-express-server/public/watchfolder` path.
 
@@ -115,20 +147,31 @@ This will prepare the server so contents can be stored in the `simple-express-se
 We use `flute-ffmpeg` to create an HLS livestream and monitor changes to our watchfolder. Once new files have been added
 to the watchfolder `flute-ffmpeg` will FLUTE encode them and multicast them to the MBMS Gateway.
 
-To install `flute-ffmpeg` follow the installation and build
-instructions [here](https://github.com/5G-MAG/rt-mbms-examples/tree/main/flute-ffmpeg). Do not apply the
-configuration and running steps yet. We will do this later as part of this tutorial.
+<a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-mbms-examples/tree/main/flute-ffmpeg">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>flute-ffmpeg</span>
+<span class="repo-card__role">Installation and build instructions (Readme). Do not apply the configuration and running steps yet.</span>
+</a>
+
+We will do this later as part of this tutorial.
 
 ### Step 3: Install rt-mbms-tx-for-qrd-and-crd
 
-Next we install our 5G Broadcast transmitter. For that reason follow the steps
-described [here](https://github.com/5G-MAG/rt-mbms-tx-for-qrd-and-crd). Do not run the transmitter yet.
+Next we install our 5G Broadcast transmitter.
+
+<a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-mbms-tx-for-qrd-and-crd">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>rt-mbms-tx-for-qrd-and-crd</span>
+<span class="repo-card__role">Installation guide (Readme). Do not run the transmitter yet.</span>
+</a>
 
 ### Step 4: Clone the Android MW
 
 The Android MW is responsible for receiving the media files delivered via 5G Broadcast. In addition, it fetches files
-from the webserver if they are not available via 5G Broadcast. The Android MW including instructions on how to clone and
-install can be found [here](https://github.com/5G-MAG/rt-mbms-mw-android).
+from the webserver if they are not available via 5G Broadcast.
+
+<a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-mbms-mw-android">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>rt-mbms-mw-android</span>
+<span class="repo-card__role">Clone and install instructions (Readme).</span>
+</a>
 
 ## Configuration
 
@@ -285,6 +328,11 @@ Middleware falls back to fetching the media files via unicast:
 ![Android device playing the same stream after falling back to unicast delivery](/assets/images/5gbc/5guc-playback.png)
 
 *Figure: playback after the broadcast signal stops and the middleware falls back to unicast.*
+
+<div class="tutorial-complete">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2l4 -4" /><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9" /></svg>
+<div><strong>You now have a working seamless-switching setup.</strong> The Android Middleware plays the stream over 5G Broadcast and falls back to unicast automatically when the broadcast signal drops.</div>
+</div>
 
 ## Next steps
 

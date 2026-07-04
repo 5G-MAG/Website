@@ -28,8 +28,12 @@ More information about HLS can be found in the IETF HLS specification: [RFC 8216
 
 ## Prerequisites
 
-* The MBMS Modem, MBMS Middleware and Web User Interface installed (Step 1 below).
-* Either an SDR and a live signal, or a downloaded HLS [sample file](../additional/sample-files). For hardware details see [Requirements](./requirements).
+<div class="spec-chip-row">
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9l-8 4.5l-8 -4.5v-9z" /><path d="M12 12l8 -4.5" /><path d="M12 12v9" /><path d="M12 12l-8 -4.5" /></svg>Modem + Middleware + Web UI installed</span>
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M16.616 13.924a5 5 0 1 0 -9.23 0" /><path d="M20.307 15.469a9 9 0 1 0 -16.615 0" /><path d="M9 21l3 -9l3 9" /><path d="M10 19h4" /></svg>SDR signal or sample file</span>
+</div>
+
+Install the MBMS Modem, MBMS Middleware and Web User Interface (Step 1 below). You'll also need either an SDR and a live signal, or a downloaded HLS [sample file](../additional/sample-files) — for hardware details see [Requirements](./requirements).
 
 ## Basic workflow
 
@@ -43,10 +47,22 @@ The output of the SDR or the sample file serves as the input for the MBMS Modem 
 
 ## Step 1: Installation
 
-1. [Install the MBMS Modem](https://github.com/5G-MAG/rt-mbms-modem)
-2. [Install the MBMS Middleware](https://github.com/5G-MAG/rt-mbms-mw)
-3. [Install the Webinterface](https://github.com/5G-MAG/rt-wui)
-4. [Download an HLS sample file](../additional/sample-files) or setup an HLS live stream on your transmitting infrastructure
+<div class="repo-list">
+<a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-mbms-modem">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>MBMS Modem</span>
+<span class="repo-card__role">Receives the SDR or sample-file input and exposes the FLUTE-encoded content via UDP multicast.</span>
+</a>
+<a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-mbms-mw">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>MBMS Middleware</span>
+<span class="repo-card__role">FLUTE-decodes the multicast content from the modem and serves it to the media player via an Nginx proxy.</span>
+</a>
+<a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-wui">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>Web User Interface</span>
+<span class="repo-card__role">Monitors the Modem and Middleware, and plays back the HLS stream via the hls.js integration.</span>
+</a>
+</div>
+
+Also [download an HLS sample file](../additional/sample-files) or set up an HLS live stream on your transmitting infrastructure.
 
 ## Step 2: Configure multicast routing
 
@@ -145,6 +161,11 @@ At this point the stream received over 5G Broadcast is playing in the browser. I
 example the URL can look the following: `http://localhost/f/00001009f165/index.m3u8`. Replace the `localhost` part with
 the IP of the machine that is running the MBMS Middleware in order to access the stream from other machines in the same
 network.
+
+<div class="tutorial-complete">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2l4 -4" /><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9" /></svg>
+<div><strong>You now have a working HLS receiver chain over 5G Broadcast.</strong> The Modem, Middleware and Web UI are all running, and a real HLS stream is playing in the browser (or in VLC).</div>
+</div>
 
 ## Next steps
 

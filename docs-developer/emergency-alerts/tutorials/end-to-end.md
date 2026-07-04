@@ -20,6 +20,11 @@ description: Step-by-step tutorial to broadcast a CBS emergency alert via SDR us
 
 This tutorial describes a basic setup to deliver emergency alerts compliant with the Cell Broadcast Service (CBS) over the rt-mbms-tx-for-qrd-and-crd transmitter from Reference Tools.
 
+<a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-mbms-tx-for-qrd-and-crd">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>rt-mbms-tx-for-qrd-and-crd</span>
+<span class="repo-card__role">5G Broadcast transmitter used throughout this tutorial, built from the <code>emergency-alerts</code> branch.</span>
+</a>
+
 :::tip[In short]
 By the end of this tutorial, a real 5G Broadcast capable handset will display an emergency alert broadcast from your own Software Defined Radio (SDR). You will need the hardware listed under Prerequisites, in particular an SDR and a compatible receiving device.
 :::
@@ -29,6 +34,12 @@ By the end of this tutorial, a real 5G Broadcast capable handset will display an
 ## Prerequisites
 
 The following components are required to set up the end-to-end chain for emergency alerts:
+
+<div class="spec-chip-row">
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5a1 1 0 0 1 1 -1h10a1 1 0 0 1 1 1v16l-6 -4l-6 4z" /></svg>QRD/CRD device</span>
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M16.616 13.924a5 5 0 1 0 -9.23 0" /><path d="M20.307 15.469a9 9 0 1 0 -16.615 0" /></svg>SDR (e.g. BladeRF) + antenna</span>
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1" /><path d="M7 20h10" /><path d="M9 16v4" /><path d="M15 16v4" /></svg>Host: Ubuntu 22.04</span>
+</div>
 
 * A QRD or CRD device. These are the 5G Broadcast capable receiving devices used with the transmitter (confirm the exact meaning of the QRD and CRD abbreviations against the [rt-mbms-tx-for-qrd-and-crd repository](https://github.com/5G-MAG/rt-mbms-tx-for-qrd-and-crd)).
 * A Software Defined Radio (SDR) such as the [BladeRF](https://www.nuand.com/bladerf-2-0-micro/) with an antenna
@@ -125,6 +136,11 @@ turned on. The screenshot below shows an example alert displayed on the device:
 ![Emergency alert message displayed on the receiving device](/assets/images/emergency-alerts/emergency-alert.jpg)
 
 *Figure: an emergency alert shown on the receiving device.*
+
+<div class="tutorial-complete">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2l4 -4" /><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9" /></svg>
+<div><strong>You now have a working end-to-end emergency alert chain.</strong> The transmitter is broadcasting a CBS alert over your SDR, and it is being received and displayed on the device.</div>
+</div>
 
 ### Step 5: Changing the type of the alert
 

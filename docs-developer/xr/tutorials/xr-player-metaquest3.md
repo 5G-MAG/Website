@@ -21,6 +21,12 @@ description: Step-by-step guide to build the XR Unity Player for Meta Quest 3, l
 </div>
 </div>
 
+<div class="spec-chip-row">
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5a9 4 0 0 0 18 0a9 4 0 0 0 -18 0" /><path d="M3 5v14a9 4 0 0 0 18 0v-14" /></svg>4 repositories</span>
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="10" rx="4" /><circle cx="8.5" cy="12" r="1.75" /><circle cx="15.5" cy="12" r="1.75" /><path d="M11 12h2" /></svg>Meta Quest 3 headset</span>
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16.008v-8.016a1.98 1.98 0 0 0 -1 -1.717l-7 -4.008a2.016 2.016 0 0 0 -2 0l-7 4.008a1.98 1.98 0 0 0 -1 1.717v8.016a1.98 1.98 0 0 0 1 1.717l7 4.008a2.016 2.016 0 0 0 2 0l7 -4.008a1.98 1.98 0 0 0 1 -1.717z" /><path d="M12 22v-10" /><path d="M12 12l8.73 -5.04" /><path d="M3.27 6.96l8.73 5.04" /></svg>Unity 2022.3.34f1</span>
+</div>
+
 This guide covers compiling the XR player sample Unity project for Meta Quest 3 and configuring it with specific glTF content.
 
 **What you will build:** a native Meta Quest 3 application that loads glTF scenes with the MPEG glTF extensions, installed and running on the headset.
@@ -44,6 +50,12 @@ The tutorial covers the following steps:
 
 
 ## Step 1: Clone the XR Unity Player project
+
+<a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-xr-unity-player">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>rt-xr-unity-player</span>
+<span class="repo-card__role">The Unity project for the XR Player application.</span>
+</a>
+
 ```
 git clone --recursive https://github.com/5G-MAG/rt-xr-unity-player.git
 ```
@@ -54,6 +66,12 @@ Note: --recursive is required to get all submodules checked out.
 ## Step 2: Build and install media pipelines
 
 ### Clone and install the source code
+
+<a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-xr-maf-native">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>rt-xr-maf-native</span>
+<span class="repo-card__role">C++ Media Access Function library (libmaf) and the avpipeline media pipeline plugin.</span>
+</a>
+
 ```
 git clone https://github.com/5G-MAG/rt-xr-maf-native.git
 cd rt-xr-maf-native
@@ -64,6 +82,11 @@ cd rt-xr-maf-native
 This step builds `libmaf` (the C++ Media Access Function library used by the player), the `avpipeline` plugin (a media pipeline built on FFmpeg that decodes audio and video), and the C# bindings. The build uses Meson, and SWIG generates the C# bindings.
 
 #### Compile and install dependencies
+
+<a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-common-shared">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>rt-common-shared</span>
+<span class="repo-card__role">Provides the avcodec-build scripts used to compile the avpipeline (FFmpeg) dependencies.</span>
+</a>
 
 Clone [rt-common-shared](https://github.com/5G-MAG/rt-common-shared) as a sibling directory to `rt-xr-maf-native`, then follow [these instructions](https://github.com/5G-MAG/rt-common-shared/tree/main/avcodec-build) to compile the avpipeline dependencies. The avcodec-build produces the FFmpeg libraries that the copy commands below move into the project; if it has not been run, those `cp` commands will fail because the source files do not exist.
 
@@ -132,6 +155,11 @@ The configuration is stored in Unity's *.meta sidecar files and are tracked in t
 
 ## Step 3: Configure the glTF asset to be loaded by the XR Unity player
 
+<a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-xr-content">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>rt-xr-content</span>
+<span class="repo-card__role">Test glTF content (for example the Studio Apartment scene) used with the player.</span>
+</a>
+
 Clone the `rt-xr-content` repository. This **requires [git LFS](https://git-lfs.com/)** to be installed on your system.
 
 ```
@@ -169,6 +197,11 @@ In the Unity Editor:
 Locate and launch the player in the Meta Quest 3.
 
 Expected result: the player starts on the headset and renders the configured glTF scene (for example the Studio Apartment). If no scene appears, check that the content was pushed to the app-private path (Step 3) after the application was installed, and see Troubleshooting below.
+
+<div class="tutorial-complete">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2l4 -4" /><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9" /></svg>
+<div><strong>You now have the XR Player running on Meta Quest 3.</strong> The app is installed on the headset and rendering the glTF scene you configured in Step 3.</div>
+</div>
 
 ## Troubleshooting
 

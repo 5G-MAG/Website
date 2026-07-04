@@ -20,6 +20,11 @@ description: Overview of installing, configuring and testing the 5GMS Applicatio
 This tutorial allows to: Setup the 5GMSd AF; Test the M1 Interface APIs (Provisioning Sessions, Server Certificates, Content Protocol Discovery, Content Hosting, Consumption Reporting); Test the M3 Interface APIs (Simple HTTP configuration, HTTP configuration and certificate sending); Test the M5 Interface APIs (Service Access Information).
 :::
 
+<div class="spec-chip-row">
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /><path d="M7 9l5 -5l5 5" /><path d="M12 4l0 12" /></svg>M1: AF provisioning</span>
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-10z" /><path d="M8 21h8" /><path d="M12 17v4" /></svg>M3: AF configures AS</span>
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5a1 1 0 0 1 1 -1h10a1 1 0 0 1 1 1v16l-6 -4l-6 4z" /></svg>M5: client session info</span>
+</div>
 
 Here you will find information to assist with testing of the Reference Tools 5GMS Application Function (AF).
 
@@ -31,9 +36,22 @@ The tests on this page are grouped by interface: M1 is the provisioning interfac
 
 ## Installation of the 5GMS AF as a Local User or as a System Service
 
-Follow the instructions in this [page](./application-function/installation-local-user-5GMSAF) for setting up a test environment without requiring full system installation.
+The AF can be installed as a local user or as a full system service — pick the one that fits what you're doing:
 
-Follow the instructions in this [page](./application-function/installation-system-service-5GMSAF) for setting up a full system installation.
+<div class="community-tiles community-tiles--even">
+<a class="community-tile" href="./application-function/installation-local-user-5GMSAF">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg>
+<strong>Local user installation</strong>
+<span class="tile-desc">Sets up a test environment without requiring full system installation.</span>
+<span class="tile-cta">Test environment setup →</span>
+</a>
+<a class="community-tile" href="./application-function/installation-system-service-5GMSAF">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-10z" /><path d="M8 21h8" /><path d="M12 17v4" /></svg>
+<strong>System service installation</strong>
+<span class="tile-desc">Sets up a full system installation.</span>
+<span class="tile-cta">Full system setup →</span>
+</a>
+</div>
 
 ## Configuration of the 5GMS AF
 

@@ -42,8 +42,12 @@ To setup the 5G Network and connect a COTS device please refer to the [correspon
 
 #### Install the express.js webserver
 
-The express.js webserver acts as our CDN for unicast delivery. To install the webserver follow the
-instructions [here](https://github.com/5G-MAG/rt-common-shared/tree/main/simple-express-server).
+The express.js webserver acts as our CDN for unicast delivery. Installation instructions are in its repository:
+
+<a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-common-shared/tree/main/simple-express-server">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>simple-express-server</span>
+<span class="repo-card__role">Acts as a local CDN, serving the transcoded HLS/DASH output over unicast.</span>
+</a>
 
 #### Configure ffmpeg
 
@@ -114,6 +118,11 @@ As we are all set on the server-side now we can focus on the client side.
 
 Please follow the [instructions](end-to-end#client-side-setup) documented in
 the [basic end-to-end guide](end-to-end) setup guide.
+
+<div class="tutorial-complete">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2l4 -4" /><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9" /></svg>
+<div><strong>You now have the 5GMSd deployment running end-to-end over a real 5G Network.</strong> The stream travels from your Application Function and Application Server, through the Open5GS core and srsRAN RAN, to your COTS UE.</div>
+</div>
 
 ## Next steps
 

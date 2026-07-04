@@ -33,19 +33,38 @@ These are the generic instructions to set up a 5G network using Open5GS (the 5G 
 4. Register the phone's SIM as a subscriber.
 5. Connect the phone and confirm it attaches.
 
+## Components
+
+This private 5G network is built from two software components, connected to a commercial phone:
+
+<div class="repo-list">
+<a class="repo-card repo-card--inline" href="https://open5gs.org/open5gs/docs/guide/01-quickstart/">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3" /><path d="M3 15a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3l0 -2" /><path d="M7 8l0 .01" /><path d="M7 16l0 .01" /></svg>Open5GS</span>
+<span class="repo-card__role">5G Core network functions (AMF, SMF, UPF, NRF and more).</span>
+</a>
+<a class="repo-card repo-card--inline" href="https://docs.srsran.com/projects/project/en/latest/user_manuals/source/installation.html">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4v8" /><path d="M16 4.5v7" /><path d="M12 5v16" /><path d="M8 5.5v5" /><path d="M4 6v4" /><path d="M20 8h-16" /></svg>srsRAN</span>
+<span class="repo-card__role">gNodeB / radio access network software driving the SDR.</span>
+</a>
+</div>
+
 ## Prerequisites
 
-* Host machine running Ubuntu
-* UHD SDR like Ettus X310 USRP
-* Android Pixel 8 phone
+<div class="spec-chip-row">
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1" /><path d="M7 20h10" /><path d="M9 16v4" /><path d="M15 16v4" /></svg>Host machine running Ubuntu</span>
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 6a1 1 0 0 1 1 -1h12a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-12a1 1 0 0 1 -1 -1l0 -12" /><path d="M9 9h6v6h-6l0 -6" /><path d="M3 10h2" /><path d="M3 14h2" /><path d="M10 3v2" /><path d="M14 3v2" /><path d="M21 10h-2" /><path d="M21 14h-2" /><path d="M14 21v-2" /><path d="M10 21v-2" /></svg>UHD SDR like Ettus X310 USRP</span>
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5a1 1 0 0 1 1 -1h10a1 1 0 0 1 1 1v16l-6 -4l-6 4z" /></svg>Android Pixel 8 phone</span>
+</div>
 
 Note that other Android devices which we have not tested may work too. For details check
 the [srsRAN documentation](https://docs.srsran.com/projects/project/en/latest/knowledge_base/source/cots_ues/source/index.html#cots-ues).
 
 ## 5G Core installation and configuration
 
-Follow the installation procedures in
-the [Open5GS Quickstart guide](https://open5gs.org/open5gs/docs/guide/01-quickstart/).
+<a class="repo-card repo-card--inline" href="https://open5gs.org/open5gs/docs/guide/01-quickstart/">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3" /><path d="M3 15a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3l0 -2" /><path d="M7 8l0 .01" /><path d="M7 16l0 .01" /></svg>Open5GS Quickstart guide</span>
+<span class="repo-card__role">Follow the installation procedures here before continuing below.</span>
+</a>
 
 For the **config** files go to: `/etc/open5gs/*.yaml`
 
@@ -277,8 +296,10 @@ sudo ufw disable
 
 ## gNB installation and configuration
 
-Follow the installation procedures in
-the [srsRAN installation guide](https://docs.srsran.com/projects/project/en/latest/user_manuals/source/installation.html).
+<a class="repo-card repo-card--inline" href="https://docs.srsran.com/projects/project/en/latest/user_manuals/source/installation.html">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4v8" /><path d="M16 4.5v7" /><path d="M12 5v16" /><path d="M8 5.5v5" /><path d="M4 6v4" /><path d="M20 8h-16" /></svg>srsRAN installation guide</span>
+<span class="repo-card__role">Follow the installation procedures here before continuing below.</span>
+</a>
 
 ### Step 1: Install the gNB (srsRAN)
 
@@ -454,6 +475,11 @@ sudo tail -f /var/log/open5gs/amf.log
 ```
 
 Expected result: the phone attaches to your network and can reach the internet through the UPF. In the AMF log you will see the registration and PDU session establishment for the subscriber.
+
+<div class="tutorial-complete">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2l4 -4" /><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9" /></svg>
+<div><strong>You now have a working private 5G network.</strong> The Core, gNB and phone are all running, with the phone attached and reaching the internet through the UPF.</div>
+</div>
 
 ## Next steps
 

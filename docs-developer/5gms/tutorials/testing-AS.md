@@ -37,21 +37,24 @@ appropriate to have one or more local clones of the repository that are being us
 page provides details of one suggested way to arrange your development environment to ensure separation from the main
 system during development and testing.
 
+<a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-5gms-application-server">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>rt-5gms-application-server</span>
+<span class="repo-card__role">The Application Server (AS): ingests content at M2d, is configured over M3, and delivers media to clients at M4d.</span>
+</a>
+
 ## Prerequisites
 
 There are some packages that will need to be installed system wide that the build and install system relies on. These
-prerequisite packages are:
+can usually be installed as system packages.
 
-- **Commands**
-    - Git
-    - Java
-    - Python 3
-    - Wget
-- **Python 3 modules**
-    - pip
-    - venv
-
-These can usually be installed as system packages.
+<div class="spec-chip-row">
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" /><path d="M8 9l3 3l-3 3" /><path d="M13 15l3 0" /></svg>Git</span>
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" /><path d="M8 9l3 3l-3 3" /><path d="M13 15l3 0" /></svg>Java</span>
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" /><path d="M8 9l3 3l-3 3" /><path d="M13 15l3 0" /></svg>Python 3</span>
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" /><path d="M8 9l3 3l-3 3" /><path d="M13 15l3 0" /></svg>Wget</span>
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /><path d="M12 12l8 -4.5" /><path d="M12 12l0 9" /><path d="M12 12l-8 -4.5" /></svg>Python module: pip</span>
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /><path d="M12 12l8 -4.5" /><path d="M12 12l0 9" /><path d="M12 12l-8 -4.5" /></svg>Python module: venv</span>
+</div>
 
 **Debian/Ubuntu Linux and derivatives**
 
@@ -68,7 +71,22 @@ sudo dnf -y install git java-latest-openjdk python3 wget python3-pip python3-ven
 ## Checking out the project code
 
 Since this will be used for development and testing, the instructions here will show you how to check out the latest
-development branch.
+development branch. Pick the path that matches what you're doing:
+
+<div class="community-tiles community-tiles--even">
+<a class="community-tile" href="#checkout-for-development">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M17 7m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M12 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M7 9v1a3 3 0 0 0 3 3h4a3 3 0 0 0 3 -3v-1" /><path d="M12 13l0 4" /></svg>
+<strong>Checkout for development</strong>
+<span class="tile-desc">Fork the repository (keeping the `development` branch as default), then clone your fork.</span>
+<span class="tile-cta">For contributing back →</span>
+</a>
+<a class="community-tile" href="#checkout-for-testing-only">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /><path d="M7 11l5 5l5 -5" /><path d="M12 4l0 12" /></svg>
+<strong>Checkout for testing only</strong>
+<span class="tile-desc">Clone the 5G-MAG repository directly on the `development` branch.</span>
+<span class="tile-cta">Quickest path →</span>
+</a>
+</div>
 
 ### Checkout for development
 
@@ -187,7 +205,28 @@ PATH="/usr/local/openresty/nginx/sbin:$PATH" venv/bin/5gms-application-server -c
 
 ## Testing
 
-The following sections cover running and testing the Application Server.
+The following sections cover running and testing the Application Server — pick the path that fits what you're doing:
+
+<div class="community-tiles community-tiles--even">
+<a class="community-tile" href="#running-the-example-without-building">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M7 4v16l13 -8l-13 -8" /></svg>
+<strong>Run without building</strong>
+<span class="tile-desc">Run the AS directly from source with `python3 -m rt_5gms_as.app`, ready for M3 configuration.</span>
+<span class="tile-cta">Fastest for local iteration →</span>
+</a>
+<a class="community-tile" href="#testing-with-the-application-function">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M5 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M19 9v1a2 2 0 0 1 -2 2h-8a2 2 0 0 0 -2 2v1" /></svg>
+<strong>Testing with the Application Function</strong>
+<span class="tile-desc">Drive the AS from a real, locally running 5GMS Application Function over M3.</span>
+<span class="tile-cta">Closest to production →</span>
+</a>
+<a class="community-tile" href="#testing-without-the-application-function">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" /><path d="M8 9l3 3l-3 3" /><path d="M13 15l3 0" /></svg>
+<strong>Testing without the Application Function</strong>
+<span class="tile-desc">Configure the AS directly with the bundled `m3_client_cli.py` test script — no AF required.</span>
+<span class="tile-cta">No AF required →</span>
+</a>
+</div>
 
 ## Running the example without building
 
@@ -435,6 +474,11 @@ Note: Following these instructions will create a self-signed certificate for loc
 `~/rt-5gms-application-server/tests/examples/certificate-1.pem`, this certificate will not pass normal CA verification
 so to access the URL you need to turn off SSL validation or accept the self-signed certificate in your browser or media
 player application.
+
+<div class="tutorial-complete">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2l4 -4" /><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9" /></svg>
+<div><strong>You now have a working, tested 5GMSd Application Server.</strong> It's serving media over both HTTP and HTTPS, configured directly via the bundled `m3_client_cli.py` test client — no Application Function required.</div>
+</div>
 
 ## Runtime configuration
 

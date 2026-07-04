@@ -28,8 +28,12 @@ This tutorial describes how to set up and enable CMCD Reporting in the Reference
 
 ## Prerequisites
 
-- A working AF and AS from the [basic end-to-end guide](end-to-end). Steps 1 to 6 below point back to that guide; if you already have a running end-to-end deployment you can move quickly through them.
-- Docker (used to run the cmcd-toolkit collector, database and dashboard).
+<div class="spec-chip-row">
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2l4 -4" /><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9" /></svg>Working AF + AS</span>
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9l-8 4.5l-8 -4.5v-9z" /><path d="M12 12l8 -4.5" /><path d="M12 12v9" /><path d="M12 12l-8 -4.5" /></svg>Docker</span>
+</div>
+
+A working AF and AS from the [basic end-to-end guide](end-to-end): Steps 1 to 6 below point back to that guide, so if you already have a running end-to-end deployment you can move quickly through them. Docker is used to run the cmcd-toolkit collector, database and dashboard.
 
 Note on ports: the components below listen on different ports, which is intentional. The collector ingests CMCD on port `3000` (the `cmcd_collector_url` points here); the Grafana dashboard UI is served on port `8081`. The 5GMS Application Server itself is reached on its normal HTTP port.
 
@@ -72,6 +76,11 @@ For details please refer to the [corresponding section](end-to-end#3-running-the
 the [basic end-to-end guide](end-to-end).
 
 ### Step 7: Deploy the cmcd-toolkit
+
+<a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/cmcd-toolkit">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>cmcd-toolkit</span>
+<span class="repo-card__role">CMCD collector, database and Grafana dashboard, run via Docker Compose.</span>
+</a>
 
 #### Step 7.1 Clone cmcd-toolkit 
 ````bash
@@ -129,6 +138,10 @@ Navigate to `http://<CMCD_DASHBOARD_IP>:8081/dashboards` in your browser (note t
 
 <img loading="lazy" src="/assets/images/5gms/cmcd-dashboard.png" width="85%" alt="Grafana CMCD dashboard showing collected CMCD metrics" /> 
 
+<div class="tutorial-complete">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2l4 -4" /><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9" /></svg>
+<div><strong>You now have CMCD Reporting working end-to-end.</strong> The Application Server extracts CMCD from media requests and forwards it to the cmcd-toolkit collector, and reports show up live on the Grafana dashboard.</div>
+</div>
 
 ## Logs for Debugging
 ### Nginx access (watch the CMCD message the AS received):   
