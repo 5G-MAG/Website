@@ -2,12 +2,13 @@
 hide_title: true
 title: Volumetric Video
 sidebar_position: 6
+description: "Overview of 5G-MAG's MPEG V3C volumetric video work: V-PCC and MIV coding, bitstream structure, delivery over 5G, and reference tools."
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M4 8v-2a2 2 0 0 1 2 -2h2"/><path d="M4 16v2a2 2 0 0 0 2 2h2"/><path d="M16 4h2a2 2 0 0 1 2 2v2"/><path d="M16 20h2a2 2 0 0 0 2 -2v-2"/><path d="M12 12.5l4 -2.5"/><path d="M8 10l4 2.5v4.5l4 -2.5v-4.5l-4 -2.5l-4 2.5"/><path d="M8 10v4.5l4 2.5"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -19,7 +20,7 @@ sidebar_position: 6
 3D point-cloud and mesh video that lets viewers move freely around a scene, built on MPEG V3C.
 </div>
 
-Volumetric video represents 3D objects and scenes as point clouds or mesh-based data, so viewers can move freely around the content rather than watching from a fixed camera angle.
+Volumetric video represents 3D objects and scenes as point clouds or mesh-based data, so viewers can move freely around the content rather than watching from a fixed camera angle. For acronyms used here, see the [Glossary](/tech/standards/glossary).
 
 5G-MAG's work is built on MPEG V3C (Visual Volumetric Video-based Coding, ISO/IEC 23090-5), the framework that defines the container and compression for volumetric content. Two profiles build on it: V-PCC (Video-based Point Cloud Compression) and MIV (MPEG Immersive Video).
 
@@ -39,7 +40,7 @@ New to volumetric video? Start with the [V3C standards tracking page](/tech/stan
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
 <h3>Technology &amp; Analysis</h3>
 </div>
 <div class="godeeper-card__body">
@@ -52,7 +53,7 @@ New to volumetric video? Start with the [V3C standards tracking page](/tech/stan
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" /></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" /></svg>
 <h3>Standards Tracking</h3>
 </div>
 <div class="godeeper-card__body">
@@ -66,7 +67,7 @@ New to volumetric video? Start with the [V3C standards tracking page](/tech/stan
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
 <h3>Software Tools</h3>
 </div>
 <div class="godeeper-card__body">
@@ -115,7 +116,7 @@ The talk below, "AWE EU 2022 Day 1 XR Enablement Track: Video Based Immersive Co
 <iframe width="560" height="315" src="https://www.youtube.com/embed/woNCWjx_S2s?si=XhQ8XOjvlQCXRXz1" title="AWE EU 2022 Day 1 XR Enablement Track: Video Based Immersive Codecs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Technical Papers
-* [Efficient delivery and rendering on client devices via MPEG-I standards for emerging volumetric video experiences](https://www.ibc.org/download?ac=24714), by C. Guede (InterDigital), P. Fontaine (InterDigital), J. Mulard (InterDigital), B. Leroy (InterDigital), C. Quinquis (InterDigital), R. Gendrot (InterDigital), S. Gudumasu (InterDigital), V. Allié (InterDigital), B. Kroon (Philips), B. Sonneveldt (Philips), R. Schimanofsky (Philips)
+* [Efficient delivery and rendering on client devices via MPEG-I standards for emerging volumetric video experiences](https://www.interdigital.com/research_papers/efficient-delivery-and-rendering-on-client-devices-via-mpeg-i-standards-for-emerging-volumetric-video-experiences), by C. Guede (InterDigital), P. Fontaine (InterDigital), J. Mulard (InterDigital), B. Leroy (InterDigital), C. Quinquis (InterDigital), R. Gendrot (InterDigital), S. Gudumasu (InterDigital), V. Allié (InterDigital), B. Kroon (Philips), B. Sonneveldt (Philips), R. Schimanofsky (Philips)
 
 ## How V3C works, in detail
 

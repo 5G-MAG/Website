@@ -2,12 +2,13 @@
 title: UE Data Collection
 sidebar_position: 4
 hide_title: true
+description: Describes the 3GPP DCAF architecture, its R1-R6 reference points, and how UE data is reported and exposed to consumers as events.
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -63,7 +64,7 @@ All clients that wish to report must first obtain a data collection and reportin
 
 Provisioning at R1 uses the `Ndcaf_DataReportingProvisioning` service (TS 26.532). The flow has two parts: create a data reporting **provisioning session** (associating an Event ID and one or more data reporting configuration IDs with an Application Service Provider), then create one or more **data reporting configurations** that describe how data is sampled and reported and, critically, the **Data Access Profiles** that constrain exposure.
 
-A Data Access Profile specifies the processing that the DCAF must perform on collected UE data before it is exposed. For example, a profile can require time-window aggregation over a fixed duration using an aggregation function such as SUM, and can restrict which consumer types (for example NWDAF or a generic Event Consumer AF) may receive the resulting event. This is the mechanism by which the framework enforces data minimisation and controlled exposure: consumers at R5/R6 receive synthesised event data, not raw per-report data. The provisioning request bodies for creating a session and a configuration are shown on the [developer scope page](https://developer.5g-mag.com).
+A Data Access Profile specifies the processing that the DCAF must perform on collected UE data before it is exposed. For example, a profile can require time-window aggregation over a fixed duration using an aggregation function such as SUM, and can restrict which consumer types (for example NWDAF or a generic Event Consumer AF) may receive the resulting event. This is the mechanism by which the framework enforces data minimisation and controlled exposure: consumers at R5/R6 receive synthesised event data, not raw per-report data. The provisioning request bodies for creating a session and a configuration are shown on the [developer scope page](/developer/data-collection).
 
 ## Data reporting (R2/R3/R4)
 
@@ -75,7 +76,7 @@ At R6, an Event Consumer AF creates an individual event exposure subscription on
 
 ## Deployment shapes
 
-The DCAF can be deployed standalone or integrated with 5G Downlink Media Streaming (5GMSd). In the standalone deployment the DCAF collects and exposes UE-side data on its own. In the integrated deployment it is combined with the 5GMSd data reporting framework, so media-specific reporting (such as QoE and consumption reporting) uses the DCAF as its collection endpoint. Docker-Compose setups are provided to bring up the standalone DCAF quickly for testing. The developer-facing detail, request/response examples and tutorials are on the [developer scope page](https://developer.5g-mag.com).
+The DCAF can be deployed standalone or integrated with 5G Downlink Media Streaming (5GMSd). In the standalone deployment the DCAF collects and exposes UE-side data on its own. In the integrated deployment it is combined with the 5GMSd data reporting framework, so media-specific reporting (such as QoE and consumption reporting) uses the DCAF as its collection endpoint. Docker-Compose setups are provided to bring up the standalone DCAF quickly for testing. The developer-facing detail, request/response examples and tutorials are on the [developer scope page](/developer/data-collection).
 
 :::caution[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the exact R1 to R6 reference-point mapping and per-reference-point endpoints, the assignment of the `Ndcaf_DataReportingProvisioning`, `Ndcaf_DataReporting`, `Naf_EventExposure` and `Nnef_EventExposure` service operations to specific reference points, and the statement that TS 26.532 event types have corresponding data types added to TS 29.517. Verify against the 3GPP/ETSI work plan before publication.

@@ -2,11 +2,12 @@
 title: Scope
 hide_title: true
 sidebar_position: 0
+description: Specifications and architecture diagrams for delivering DASH, HLS, and CMAF content over FLUTE and ROUTE in 5G Broadcast and 5G MBS.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1" />
   <path d="M9 15l3 -3l3 3" />
   <path d="M12 12l0 9" /></svg>
@@ -23,7 +24,7 @@ This page contains information such as the specifications within the scope of th
 
 ## Overview
 
-Multimedia content delivery protocols carry media files and segments to receivers over broadcast and multicast networks, where there is no per-receiver return channel. 5G-MAG provides reference tools for these application-layer protocols (including FLUTE and ROUTE for file and object delivery) so that content packaged as DASH, HLS or CMAF can be delivered efficiently over both 5G Broadcast and 5G Multicast-Broadcast Services (MBS). This page lists the specifications in scope and shows how the tools fit into the broader broadcast and multicast architectures. It is aimed at developers integrating these delivery protocols into a 5G media chain.
+Multimedia content delivery protocols carry media files and segments to receivers over broadcast and multicast networks, where there is no per-receiver return channel. 5G-MAG provides reference tools for these application-layer protocols (including FLUTE and ROUTE for file and object delivery) so that content packaged as DASH, HLS or CMAF can be delivered efficiently over both 5G Broadcast and 5G Multicast Broadcast Services (MBS). This page lists the specifications in scope and shows how the tools fit into the broader broadcast and multicast architectures. It is aimed at developers integrating these delivery protocols into a 5G media chain.
 
 ## Specifications and technical context
 
@@ -43,7 +44,7 @@ A list of relevant specifications can be found in the link below.
 
 The diagram below shows the multimedia delivery protocol tools used with the LTE-based 5G Broadcast system, with links to the contributing component repositories.
 
-<img src="/assets/images/projects/5gbc_diagram.png" alt="Architecture combining the multimedia content delivery protocol tools with the 5G Broadcast system" style="width: 80%">
+<img loading="lazy" src="/assets/images/projects/5gbc_diagram.png" alt="Architecture combining the multimedia content delivery protocol tools with the 5G Broadcast system" style="width: 80%">
 
 [5G Broadcast: Repositories](../5g-broadcast/repositories)
 [Multimedia content delivery protocols: Repositories](../multimedia/repositories)
@@ -51,9 +52,9 @@ The diagram below shows the multimedia delivery protocol tools used with the LTE
 
 ### 5G Multicast Broadcast Services (MBS) with Multimedia delivery protocols
 
-The diagram below shows the same delivery protocol tools used with 5G Multicast-Broadcast Services (MBS), with links to the contributing component repositories.
+The diagram below shows the same delivery protocol tools used with 5G Multicast Broadcast Services (MBS), with links to the contributing component repositories.
 
-<img src="/assets/images/projects/mbs_diagram.png" alt="Architecture combining the multimedia content delivery protocol tools with 5G Multicast-Broadcast Services (MBS)" style="width: 80%">
+<img loading="lazy" src="/assets/images/projects/mbs_diagram.png" alt="Architecture combining the multimedia content delivery protocol tools with 5G Multicast Broadcast Services (MBS)" style="width: 80%">
 
 [5G Multicast Broadcast Services: Repositories](../5g-mbs/repositories)
 [Multimedia content delivery protocols: Repositories](../multimedia/repositories)
@@ -92,7 +93,7 @@ FLUTE and ROUTE are both built on the LCT (RFC 5651) and ALC (RFC 5775) building
 1. Choose a transport for your delivery model: FLUTE for a file/download model (as in MBMS), ROUTE for a real-time segment model.
 2. Package your content as DASH or HLS using CMAF segments so a single set of segments can serve both.
 3. Feed the segments and manifest through the delivery tool for your target system (5G Broadcast or 5G MBS), following the architectures above.
-4. Build from the [multimedia delivery repositories](../multimedia/repositories); the [Tutorials](./tutorials) cover setup and examples.
+4. Build from the [multimedia delivery repositories](../multimedia/repositories); the [Tutorials](./tutorials) page has a demo video and repository pointers.
 
 :::caution[References to verify]
 These identifiers on this page were not confirmed against a primary source (the ISO/ETSI portals block automated access): the specific ISO catalogue editions for ISO/IEC 23009-1 (DASH) and ISO/IEC 23000-19 (CMAF). The IETF mappings (FLUTE = RFC 6726, ROUTE = RFC 9223, HLS = RFC 8216, LCT = RFC 5651, ALC = RFC 5775, FCAST = RFC 6968) and the use of FLUTE by MBMS (TS 26.346) were confirmed. Verify the ISO editions against the ISO catalogue before publication.
@@ -102,7 +103,7 @@ These identifiers on this page were not confirmed against a primary source (the 
 
 * [Project Roadmap](./projects) - planned work
 * [Software Repositories](./repositories) - the source repositories for these tools
-* [Tutorials](./tutorials) - guides and examples
+* [Tutorials](./tutorials) - demo video and repository pointers
 
 :::note
 Refer to the [multimedia delivery repositories](https://github.com/5G-MAG) on GitHub to use or contribute to these Reference Tools.

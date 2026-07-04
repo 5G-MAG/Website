@@ -2,13 +2,14 @@
 title: Software Licenses and CLA
 hide_title: true
 sidebar_position: 4
+description: Explains the 5G-MAG Public License v1.0, third-party dependency licensing, and the CLA required to contribute code.
 ---
 
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M12 3l0 18"/><path d="M8 21l8 0"/><path d="M7 6l10 0"/><path d="M17 6l3 6a3 3 0 0 1 -6 0l3 -6z"/><path d="M7 6l-3 6a3 3 0 0 0 6 0l-3 -6z"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -54,10 +55,10 @@ If you wish to contribute code to the projects please download the CLA or CCLA a
 <table>
   <tr>
     <td width="65%" align="center" valign="top">
-      <img width="100%" src="/assets/images/Reference_Tools_Contributors.png" alt="Logos of the official contributors to the 5G-MAG Reference Tools">
+      <img loading="lazy" width="100%" src="/assets/images/Reference_Tools_Contributors.png" alt="Logos of the official contributors to the 5G-MAG Reference Tools">
     </td>
     <td width="35%" align="center" valign="middle">
-      <img width="100%" src="/assets/images/Reference_Tools_Members.png" alt="Logos of the 5G-MAG member organizations">
+      <img loading="lazy" width="100%" src="/assets/images/Reference_Tools_Members.png" alt="Logos of the 5G-MAG member organizations">
     </td>
   </tr>
 </table>

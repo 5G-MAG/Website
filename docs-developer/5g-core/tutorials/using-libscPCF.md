@@ -2,11 +2,12 @@
 title: Using libscPCF
 hide_title: true
 sidebar_position: 1
+description: Run the pcf-policyauthorization tool to request a QoS policy via the BSF and PCF, confirming an AppSessionContext is created.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M6.657 16c-2.572 0 -4.657 -2.007 -4.657 -4.483c0 -2.475 2.085 -4.482 4.657 -4.482c.393 -1.762 1.794 -3.2 3.675 -3.773c1.88 -.572 3.956 -.193 5.444 1c1.488 1.19 2.162 3.007 1.77 4.769h.99c1.913 0 3.464 1.56 3.464 3.486c0 1.927 -1.551 3.487 -3.465 3.487h-11.878" />
   <path d="M12 16v5" />
   <path d="M16 16v4a1 1 0 0 0 1 1h4" />
@@ -50,7 +51,7 @@ Note: This will only work if you have defined a Policy and Charging Control (PCC
 
 The screenshot below shows an example of the PCC Rules configured in the Open5GS WebUI.
 
-<img src="/assets/images/5gcsc/PCC_rules.png" style="width:80%;" alt="Open5GS WebUI showing the PCC rules configured for 5QI 2 (video) used by the PCF Policy Authorization example">
+<img loading="lazy" src="/assets/images/5gcsc/PCC_rules.png" style="width:80%;" alt="Open5GS WebUI showing the PCC rules configured for 5QI 2 (video) used by the PCF Policy Authorization example">
 
 To get the full command help for the PCF PolicyAuthorization tool use the command:
 

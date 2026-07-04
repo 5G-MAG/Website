@@ -2,11 +2,12 @@
 title: Scope
 hide_title: true
 sidebar_position: 0
+description: Describes the libscbsf, libscpcf, and libscmbsmf service consumer libraries for the BSF, PCF, and MB-SMF, and how to pick one.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M6.657 16c-2.572 0 -4.657 -2.007 -4.657 -4.483c0 -2.475 2.085 -4.482 4.657 -4.482c.393 -1.762 1.794 -3.2 3.675 -3.773c1.88 -.572 3.956 -.193 5.444 1c1.488 1.19 2.162 3.007 1.77 4.769h.99c1.913 0 3.464 1.56 3.464 3.486c0 1.927 -1.551 3.487 -3.465 3.487h-11.878" />
   <path d="M12 16v5" />
   <path d="M16 16v4a1 1 0 0 0 1 1h4" />
@@ -53,7 +54,7 @@ A series of reusable service consumer libraries to invoke service operations on 
 
 Within the context of 5G Media Streaming (5GMS), the 5GMS Application Function (AF) needs to communicate with the 5G Core in order to manipulate network Quality of Service (QoS) for ongoing media streaming sessions.
 
-<img src="/assets/images/5gcsc/5GCSC_libscbsf_libscpcf.png" alt="Architecture showing the libscbsf and libscpcf service consumer libraries connecting a media Application Function to the BSF and PCF in the 5G Core">
+<img loading="lazy" src="/assets/images/5gcsc/5GCSC_libscbsf_libscpcf.png" alt="Architecture showing the libscbsf and libscpcf service consumer libraries connecting a media Application Function to the BSF and PCF in the 5G Core">
 
 The following libraries are available:
 * **libscbsf** - Binding Support Function (BSF) service consumer library
@@ -91,7 +92,7 @@ The PCF address can be explicitly specified at the command line if this is alrea
 
 Within the context of 5G Multicast/Broadcast Services (MBS), the Multicast/Broadcast Session Management Function (MB-SMF) is responsible for allocating and deallocating Temporary Mobile Group Identities (TMGIs) and for the management of Multicast/Broadcast Services on the Multicast/Broadcast User Plane Function (MB-UPF).
 
-<img src="/assets/images/5gcsc/5GCSC_libscmbsmf.png" alt="Architecture showing the libscmbsmf service consumer library connecting an application to the MB-SMF in the 5G Core">
+<img loading="lazy" src="/assets/images/5gcsc/5GCSC_libscmbsmf.png" alt="Architecture showing the libscmbsmf service consumer library connecting an application to the MB-SMF in the 5G Core">
 
 The following libraries are available:
 * **libscmbsmf** - Multicast/Broadcast Session Management Function (MB-SMF) service consumer library
@@ -139,7 +140,7 @@ For the specification background, see the BSF/PCF entries on [Standards: 5G Medi
 
 The diagram below shows how the 5GMSd reference tools use the 5GC Service Consumer libraries (BSF and PCF) to request network QoS from the 5G Core.
 
-<img src="/assets/images/projects/5gms_5gc_diagram.png" style="width: 80%" alt="Architecture of the 5G Downlink Media Streaming reference tools using the 5GC Service Consumer libraries to reach the BSF and PCF">
+<img loading="lazy" src="/assets/images/projects/5gms_5gc_diagram.png" style="width: 80%" alt="Architecture of the 5G Downlink Media Streaming reference tools using the 5GC Service Consumer libraries to reach the BSF and PCF">
 
 [5G Media Streaming: Repositories](../5gms/repositories)
 [5GC Service Consumers: Repositories](../5g-core/repositories)
@@ -150,7 +151,7 @@ The diagram below shows how the 5GMSd reference tools use the 5GC Service Consum
 
 The diagram below shows how the MBS reference tools use the MB-SMF service consumer library to reach the 5G Core.
 
-<img src="/assets/images/projects/mbs_5gc_diagram.png" style="width: 80%" alt="Architecture of the 5G MBS reference tools using the MB-SMF service consumer library to reach the 5G Core">
+<img loading="lazy" src="/assets/images/projects/mbs_5gc_diagram.png" style="width: 80%" alt="Architecture of the 5G MBS reference tools using the MB-SMF service consumer library to reach the 5G Core">
 
 [5G Multicast Broadcast Services: Repositories](../5g-mbs/repositories)
 [Multimedia content delivery protocols: Repositories](../multimedia/repositories)

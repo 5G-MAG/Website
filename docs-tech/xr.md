@@ -2,12 +2,13 @@
 hide_title: true
 title: XR and MPEG-I Scene Description
 sidebar_position: 5
+description: "Overview of 5G-MAG's XR work: MPEG-I Scene Description, its 5G delivery, device capabilities (MeCAR), and split rendering for AR/MR."
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/><path d="M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2"/><path d="M3 7v-2a2 2 0 0 1 2 -2h2"/><path d="M3 17v2a2 2 0 0 0 2 2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M17 21h2a2 2 0 0 0 2 -2v-2"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -19,7 +20,7 @@ sidebar_position: 5
 Interactive, spatially-aware 3D scenes and immersive media delivered over 5G Media Streaming.
 </div>
 
-Extended Reality (XR) and 3D scene delivery bring interactive, spatially-aware content to 5G devices, from augmented reality overlays to full virtual environments. 5G-MAG's work centres on MPEG-I Scene Description (ISO/IEC 23090-14), a standard format for describing dynamic 3D scenes composed of glTF (GL Transmission Format) 3D objects, audio, and haptic elements. Scene Description content can be transported using the 5G Media Streaming (5GMS) framework (3GPP [TS 26.512](https://www.3gpp.org/dynareport/26512.htm)), enabling adaptive and policy-driven delivery of immersive media. 5G-MAG also covers [Avatar Communications](./avatar-communications), addressing real-time avatar representation and interaction in 5G contexts.
+Extended Reality (XR) and 3D scene delivery bring interactive, spatially-aware content to 5G devices, from augmented reality overlays to full virtual environments. 5G-MAG's work centres on MPEG-I Scene Description (ISO/IEC 23090-14), a standard format for describing dynamic 3D scenes composed of glTF (GL Transmission Format) 3D objects, audio, and haptic elements. Scene Description content can be transported using the 5G Media Streaming (5GMS) framework (3GPP [TS 26.512](https://www.3gpp.org/dynareport/26512.htm)), enabling adaptive and policy-driven delivery of immersive media. 5G-MAG also covers [Avatar Communications](./avatar-communications), addressing real-time avatar representation and interaction in 5G contexts. For acronyms used here, see the [Glossary](/tech/standards/glossary).
 
 :::tip[Start here]
 New to this area? Read the [Overview on MPEG-I Scene Description](./xr/mpeg-i-scene-description) first for the scene-description model, then see [Avatar Communications](./avatar-communications) for real-time avatar work.
@@ -35,7 +36,7 @@ New to this area? Read the [Overview on MPEG-I Scene Description](./xr/mpeg-i-sc
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
 <h3>Technology &amp; Analysis</h3>
 </div>
 <div class="godeeper-card__body">
@@ -50,7 +51,7 @@ New to this area? Read the [Overview on MPEG-I Scene Description](./xr/mpeg-i-sc
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" /></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" /></svg>
 <h3>Standards Tracking</h3>
 </div>
 <div class="godeeper-card__body">
@@ -63,7 +64,7 @@ New to this area? Read the [Overview on MPEG-I Scene Description](./xr/mpeg-i-sc
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
 <h3>Software Tools</h3>
 </div>
 <div class="godeeper-card__body">
@@ -101,7 +102,7 @@ The following resources are available:
 ### General information about XR and MPEG-I Scene Description
 
 * [**Overview on MPEG-I Scene Description**](./xr/mpeg-i-scene-description)
-* **VideoTech:** [Teaser on 5G and XR (3GPP Release 16/17/18)](./videos#teaser-on-5g-and-xr-3gpp-release-161718)
+* **VideoTech:** [Teaser on 5G and XR (3GPP Release 16/17/18)](./videos)
 
 ## Technical foundations
 

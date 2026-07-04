@@ -2,12 +2,13 @@
 title: MBS - Service Layer
 sidebar_position: 1
 hide_title: true
+description: "Explains the 5G MBS user-service layer: the MBSF and MBSTF functions, reference points, and object versus packet distribution."
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M12 12l0 .01"/><path d="M14.828 9.172a4 4 0 0 1 0 5.656"/><path d="M17.657 6.343a8 8 0 0 1 0 11.314"/><path d="M9.168 14.828a4 4 0 0 1 0 -5.656"/><path d="M6.337 17.657a8 8 0 0 1 0 -11.314"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -22,7 +23,7 @@ This documentation is currently **under development and subject to change**. If 
 
 ## MBS Service Layer Aspects
 
-This page summarises the MBS user-service layer: the higher-level abstraction (defined in [TS 26.502](https://www.3gpp.org/dynareport/26502.htm)) that sits on top of the low-level MBS Services, the control-plane and user-plane functions that realise it (the MBSF and the MBSTF), and the reference points that connect them. It complements the [Service and System Aspects](./mbs-service-system-aspects) page, which covers the underlying 5G Core architecture, and the [RAN Aspects](./ran-aspects) page, which covers the radio side.
+This page summarises the MBS user-service layer: the higher-level abstraction (defined in [TS 26.502](https://www.3gpp.org/dynareport/26502.htm)) that sits on top of the low-level MBS Services, the control-plane and user-plane functions that realise it (the MBSF and the MBSTF), and the reference points that connect them. It complements the [Service and System Aspects](./mbs-service-system-aspects) page, which covers the underlying 5G Core architecture, and the [RAN Aspects](./ran-aspects) page, which covers the radio side. For acronyms used here, see the [Glossary](/tech/standards/glossary).
 
 Two points apply to every figure and interaction described below (stated once here rather than repeated per figure):
 
@@ -71,7 +72,7 @@ The overall system architecture for MBS User Services (green) and MBS Services (
 The figure below shows the overall system architecture. Colour is used only to group functions: the MBS User Services functions are shown in green and the lower-level MBS Services functions in purple; the same grouping is stated in the caption so it does not depend on the colours.
 
 <figure>
-    <img src="https://github.com/user-attachments/assets/ed9b5a84-107e-4d9d-bb24-880ccd3d1e38" alt="MBS system architecture in reference point notation: green MBS User Services functions (MBSF, MBSTF) layered above purple lower-level MBS Services functions (MB-SMF, MB-UPF), with the labelled reference points connecting them" />
+    <img loading="lazy" src="https://github.com/user-attachments/assets/ed9b5a84-107e-4d9d-bb24-880ccd3d1e38" alt="MBS system architecture in reference point notation: green MBS User Services functions (MBSF, MBSTF) layered above purple lower-level MBS Services functions (MB-SMF, MB-UPF), with the labelled reference points connecting them" />
     <figcaption><em>System architecture for MBS Services (purple) and MBS User Services (green) in reference point notation, based on TS 23.247</em></figcaption>
 </figure>
 
@@ -94,7 +95,7 @@ In addition, TS 26.502 defines a third function:
 The figure below shows how these three core functions interact with other entities in the MBS System.
 
 <figure>
-    <img src="https://github.com/user-attachments/assets/fd5e7421-4aec-4303-8d9f-ca58e7614766" alt="MBS User Services network architecture showing how the MBSF, MBSTF and MBS AS interact with the AF/AS, the MB-SMF, the MB-UPF and the UE across the labelled reference points" />
+    <img loading="lazy" src="https://github.com/user-attachments/assets/fd5e7421-4aec-4303-8d9f-ca58e7614766" alt="MBS User Services network architecture showing how the MBSF, MBSTF and MBS AS interact with the AF/AS, the MB-SMF, the MB-UPF and the UE across the labelled reference points" />
     <figcaption>MBS User Services network architecture (from TS 26.502 figure 4.2.2-1)</figcaption>
 </figure>
 
@@ -105,10 +106,13 @@ The syntax for MBS User Service Announcements is specified in TS 26.517 clause A
 TS 26.502 defines additional entities in the UE, as shown in the figure below:
 
 <figure>
-    <img src="https://github.com/user-attachments/assets/d3f22dfd-ba92-45ec-a46e-58a01690296e" alt="MBS User Services entities inside the UE: the MBS Client split into an MBSF Client and an MBSTF Client, and the MBS-Aware Application, with the client-side reference points MBS-5, MBS-4-MC, MBS-4-UC and MBS-7" />
+    <img loading="lazy" src="https://github.com/user-attachments/assets/d3f22dfd-ba92-45ec-a46e-58a01690296e" alt="MBS User Services entities inside the UE: the MBS Client split into an MBSF Client and an MBSTF Client, and the MBS-Aware Application, with the client-side reference points MBS-5, MBS-4-MC, MBS-4-UC and MBS-7" />
     <figcaption>MBS User Services entities in the UE (based on TS 26.502)</figcaption>
-    <!-- TODO: confirm the exact TS 26.502 figure number for the UE-side entities. The previous figure (network architecture) is figure 4.2.2-1; this UE-side figure is a separate figure and its number could not be confirmed from available context. -->
 </figure>
+
+:::caution[Verify figure number]
+The exact TS 26.502 figure number for the UE-side entities shown above could not be confirmed from available context. The previous figure (network architecture) is figure 4.2.2-1; this UE-side figure is a separate figure. Verify the correct figure number against TS 26.502.
+:::
 
 The **MBS Client** is divided into two subfunctions:
 
@@ -123,7 +127,7 @@ The **MBS Client** is divided into two subfunctions:
 The general organisation of sessions in the MBS User Services domain is shown in the following figure:
 
 <figure>
-    <img src="https://github.com/user-attachments/assets/2888744b-2503-4e94-b16c-29580f96c8df" alt="MBS User Services domain model: an MBS User Service containing one or more MBS User Data Ingest Sessions, each containing one or more MBS Distribution Sessions" />
+    <img loading="lazy" src="https://github.com/user-attachments/assets/2888744b-2503-4e94-b16c-29580f96c8df" alt="MBS User Services domain model: an MBS User Service containing one or more MBS User Data Ingest Sessions, each containing one or more MBS Distribution Sessions" />
     <figcaption>MBS User Services domain model (from TS 26.501 figure 4.5.1-1)</figcaption>
 </figure>
 
@@ -134,7 +138,7 @@ The MBSTF supports two distribution methods, and the choice affects both what th
 * In the **packet distribution method**, the MBSTF forwards ingested packet payloads with minimal processing towards the MB-UPF, and the MBSTF Client exposes the received packets directly to the MBS-Aware Application at reference point MBS-7. This suits content that is already framed for transport, for example an RTP or MPEG-2 TS stream, where the transport framing is preserved end to end.
 * In the **object distribution method**, discrete files (objects) are carried in a FLUTE session as Asynchronous Layered Coding (ALC) packets. The MBSTF Client reassembles each object from the received packets before exposing it, typically via a local HTTP server. Because delivery is one-way and lossy, the object method is where object repair matters: if an object arrives incomplete, the client can fetch the missing byte ranges over unicast from the MBS AS at reference point MBS-4-UC, and only falls back to returning an incomplete object when repair is unavailable or there is no time for it.
 
-For DASH or HLS media, the object method maps segments to objects and the presentation manifest becomes a Service Entry Point object. The MBSTF can operate in a *streaming* mode, scheduling object delivery in real time from a manifest such as a DASH MPD, or in *single-shot*, *collection* and *carousel* modes for file delivery. Which of these the 5G-MAG reference tools implement is listed on the [developer scope page](https://developer.5g-mag.com/multicastbroadcast).
+For DASH or HLS media, the object method maps segments to objects and the presentation manifest becomes a Service Entry Point object. The MBSTF can operate in a *streaming* mode, scheduling object delivery in real time from a manifest such as a DASH MPD, or in *single-shot*, *collection* and *carousel* modes for file delivery. Which of these the 5G-MAG reference tools implement is listed on the [developer scope page](/developer/applications/multicastbroadcast).
 
 ## Session life-cycle and announcement
 

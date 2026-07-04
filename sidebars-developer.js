@@ -13,6 +13,9 @@ const sidebars = {
         'public-call',
       ],
     },
+    // Resources
+    { type: 'html', value: 'Resources', className: 'sidebar-section-label', defaultStyle: false },
+    'glossary',
     // Activity Dashboard
     {
       type: 'category',
@@ -186,8 +189,6 @@ const sidebars = {
         },
       ],
     },
-    // Glossary
-    'glossary',
   ],
 };
 

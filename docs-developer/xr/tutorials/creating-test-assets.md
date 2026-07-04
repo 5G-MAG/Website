@@ -2,11 +2,12 @@
 title:  MPEG-I SD Test Assets
 hide_title: true
 sidebar_position: 3
+description: Lists ready-made MPEG-I Scene Description test assets and explains how to author your own using the Blender glTF exporter add-on.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
   <path d="M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2" />
   <path d="M3 7v-2a2 2 0 0 1 2 -2h2" />
@@ -106,7 +107,7 @@ This half explains how to author your own MPEG-I Scene Description assets in Ble
 
 #### Configure anchoring of a node
 
-<img src="/assets/images/xr/anchoring-configrure-anchor.png" alt="Blender XR Anchoring panel in object properties, with an anchor type selected" style="width:80%;">
+<img loading="lazy" src="/assets/images/xr/anchoring-configrure-anchor.png" alt="Blender XR Anchoring panel in object properties, with an anchor type selected" style="width:80%;">
 
 1. select the node to be anchored
 2. locate the XR Anchoring panel in object properties, select an anchor type and configure the anchor
@@ -126,7 +127,7 @@ This authoring list omits TRACKABLE_MARKER_3D, which does appear in the player f
 
 #### Creating a 2D marker node
 
-<img src="/assets/images/xr/anchoring-create-marker-2d.png" alt="Blender XR Anchoring panel used to create a 2D marker node from an image" style="width:80%;">
+<img loading="lazy" src="/assets/images/xr/anchoring-create-marker-2d.png" alt="Blender XR Anchoring panel used to create a 2D marker node from an image" style="width:80%;">
 
 *Figure: creating a 2D marker node from an image in the XR Anchoring panel.*
 
@@ -135,7 +136,7 @@ This authoring list omits TRACKABLE_MARKER_3D, which does appear in the player f
 
 ### MPEG_texture_video
 
-To add a video and export it as MPEG_texture_video, first make sure that the blender's [scene output format](https://docs.blender.org/manual/en/3.6/render/output/properties/format) matches the framerate of the videos used as texture.
+To add a video and export it as MPEG_texture_video, first make sure that the blender's [scene output format](https://docs.blender.org/manual/en/latest/render/output/properties/format.html) matches the framerate of the videos used as texture.
 
 1. Create or select a material
 2. Select the shader slot which will be using the video, and make it an 'Image texture'
@@ -143,7 +144,7 @@ To add a video and export it as MPEG_texture_video, first make sure that the ble
 
 All Image textures with a movie source are exported as MPEG_texture_video extensions:
 
-<img src="/assets/images/xr/image-texture.jpg" alt="Blender material shader slot set to an Image texture with a movie source" style="width:80%;">
+<img loading="lazy" src="/assets/images/xr/image-texture.jpg" alt="Blender material shader slot set to an Image texture with a movie source" style="width:80%;">
 
 *Figure: a Blender image texture with a movie source, exported as an MPEG_texture_video extension.*
 
@@ -153,7 +154,7 @@ All Image textures with a movie source are exported as MPEG_texture_video extens
 
 To add an audio source to the scene:
 
-1. Add a *[Speaker](https://docs.blender.org/manual/en/latest/render/output/audio/speaker)* node to the scene: *3D Viewport > Add > Speaker*
+1. Add a *[Speaker](https://docs.blender.org/manual/en/latest/render/output/audio/speaker.html)* node to the scene: *3D Viewport > Add > Speaker*
 2. Add a file source to the speaker's *Sound*. The file is assumed to contain a single channel of audio (MONO).
 3. Configure speaker's *Distance* parameters:
     - Max Distance
@@ -161,13 +162,13 @@ To add an audio source to the scene:
     - Distance Reference
 All other parameters are ignored.
 
-The **audio attenuation model** is configured as [a scene property](https://docs.blender.org/manual/en/latest/scene_layout/scene/properties#data-scenes-audio) in Blender.
+The **audio attenuation model** is configured as [a scene property](https://docs.blender.org/manual/en/latest/scene_layout/scene/properties.html#data-scenes-audio) in Blender.
 
-<img src="/assets/images/xr/audio-source.jpg" alt="Blender Speaker node with a mono sound file and distance parameters configured" style="width:80%;">
+<img loading="lazy" src="/assets/images/xr/audio-source.jpg" alt="Blender Speaker node with a mono sound file and distance parameters configured" style="width:80%;">
 
 *Figure: configuring a Speaker node as a spatial audio source in Blender.*
 
-<img src="/assets/images/xr/audio-attenuation-model.jpg" alt="Blender scene audio properties showing the attenuation model setting" style="width:80%;">
+<img loading="lazy" src="/assets/images/xr/audio-attenuation-model.jpg" alt="Blender scene audio properties showing the attenuation model setting" style="width:80%;">
 
 *Figure: the audio attenuation model set as a scene property in Blender.*
 

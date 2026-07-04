@@ -2,12 +2,13 @@
 hide_title: true
 title: Non-Terrestrial Networks
 sidebar_position: 10
+description: Overview of NTN as a satellite/HAPS delivery layer for MBS multicast and broadcast, linking analysis, standards and tools pages.
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M3.707 6.293l2.586 -2.586a1 1 0 0 1 1.414 0l5 5a1 1 0 0 1 0 1.414l-2.586 2.586a1 1 0 0 1 -1.414 0l-5 -5a1 1 0 0 1 0 -1.414z"/><path d="M6 10l-3 3l3 3l3 -3"/><path d="M10 6l3 -3l3 3l-3 3"/><path d="M14 17a3 3 0 0 0 3 -3"/><path d="M20 13a9 9 0 0 0 -9 9"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -19,7 +20,7 @@ sidebar_position: 10
 Extending 5G coverage via satellite and HAPS as a delivery layer for MBS multicast and broadcast.
 </div>
 
-Non-Terrestrial Networks (NTN) extend 5G coverage via satellite (geostationary GEO and low Earth orbit LEO) and high-altitude platform stations (HAPS), standardised in 3GPP Release 17. For media distribution, NTN is not a standalone system: it is a delivery infrastructure layer on top of which existing 5G services such as MBS Multicast and MBS Broadcast can be deployed. 5G-MAG's work in this area focuses on the specific challenges NTN introduces: propagation delay, Doppler effects, handover between satellite beams, and device mobility across terrestrial and non-terrestrial segments.
+Non-Terrestrial Networks (NTN) extend 5G coverage via satellite (geostationary GEO and low Earth orbit LEO) and high-altitude platform stations (HAPS), standardised in 3GPP Release 17. For media distribution, NTN is not a standalone system: it is a delivery infrastructure layer on top of which existing 5G services such as MBS Multicast and MBS Broadcast can be deployed. 5G-MAG's work in this area focuses on the specific challenges NTN introduces: propagation delay, Doppler effects, handover between satellite beams, and device mobility across terrestrial and non-terrestrial segments. For acronyms used here, see the [Glossary](/tech/standards/glossary).
 
 **Key specifications:** 3GPP [TR 38.811](https://www.3gpp.org/dynareport/38811.htm) (Study on NR access to non-terrestrial networks: the foundational NTN study item), [TR 38.821](https://www.3gpp.org/dynareport/38821.htm) (Solutions for NR to support NTN), TS 38.300 (NR overall description, NTN aspects), [TR 38.863](https://www.3gpp.org/dynareport/38863.htm) (NTN related RF and co-existence aspects). For satellite broadcast delivery, see also ETSI TS 103 720 (5G Broadcast system for linear TV and radio), which is relevant to GEO-based NTN broadcast scenarios.
 
@@ -31,7 +32,7 @@ Non-Terrestrial Networks (NTN) extend 5G coverage via satellite (geostationary G
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
 <h3>Technology &amp; Analysis</h3>
 </div>
 <div class="godeeper-card__body">
@@ -45,7 +46,7 @@ Non-Terrestrial Networks (NTN) extend 5G coverage via satellite (geostationary G
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" /></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" /></svg>
 <h3>Standards Tracking</h3>
 </div>
 <div class="godeeper-card__body">
@@ -58,7 +59,7 @@ Non-Terrestrial Networks (NTN) extend 5G coverage via satellite (geostationary G
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12l0 .01"/><path d="M14.828 9.172a4 4 0 0 1 0 5.656"/><path d="M17.657 6.343a8 8 0 0 1 0 11.314"/><path d="M9.168 14.828a4 4 0 0 1 0 -5.656"/><path d="M6.337 17.657a8 8 0 0 1 0 -11.314"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 12l0 .01"/><path d="M14.828 9.172a4 4 0 0 1 0 5.656"/><path d="M17.657 6.343a8 8 0 0 1 0 11.314"/><path d="M9.168 14.828a4 4 0 0 1 0 -5.656"/><path d="M6.337 17.657a8 8 0 0 1 0 -11.314"/></svg>
 <h3>Software Tools</h3>
 </div>
 <div class="godeeper-card__body">

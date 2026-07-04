@@ -2,11 +2,12 @@
 title: Roadmap
 hide_title: true
 sidebar_position: 1
+description: Links to the GitHub Kanban boards tracking ROUTE and FLUTE transport work for the 5G Broadcast multimedia delivery tools.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1" />
   <path d="M9 15l3 -3l3 3" />
   <path d="M12 12l0 9" /></svg>
@@ -22,6 +23,9 @@ sidebar_position: 1
 This page links to the public roadmap boards tracking work on the multimedia content delivery protocol tools, including transport support for the Multimedia Broadcast Multicast Service (MBMS) delivery protocols ROUTE and FLUTE.
 
 ## General Project Roadmap
+
+The Kanban board below tracks the planned and in-progress work for Multimedia Content Delivery (ROUTE and FLUTE transport support for the 5G Broadcast components). It is maintained live on GitHub.
+
 [Kanban board: Roadmap](https://github.com/orgs/5G-MAG/projects/48/views/14)
 
 ## Developer Kanban Boards
@@ -38,4 +42,4 @@ All issues and functionality around FLUTE support for the 5G Broadcast component
 
 * [Scope](./scope) - specifications in scope and high-level architectures
 * [Software Repositories](./repositories) - the source repositories for these tools
-* [Tutorials](./tutorials) - guides and examples
+* [Tutorials](./tutorials) - demo video and repository pointers

@@ -3,11 +3,12 @@ hide_title: true
 sidebar_class_name: project-index-link
 title: 5G Media Streaming
 sidebar_position: -1
+description: Overview of the 5G-MAG 5GMS reference implementation, its AF/AS components, spec coverage, and links to project resources.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M7 4v16l13 -8l-13 -8" /></svg>
 </div>
 <div class="topic-banner__text">
@@ -23,7 +24,7 @@ Reference implementation of the 5G Media Streaming (5GMS) framework defined by 3
 
 Reference implementation of the 5G Media Streaming (5GMS) framework defined by 3GPP. The tools cover two server-side roles: the Application Function (AF), which handles provisioning, configuration and reporting, and the Application Server (AS), which caches and delivers the media. Both target 5G Unicast Downlink Media Streaming (5GMSd), adaptive bitrate streaming from the network to user equipment (UE). The current AF and AS implementations are based on Release 17 ([TS 26.512](https://www.3gpp.org/dynareport/26512.htm)); see the [Scope](./scope) page for the exact feature and specification coverage. Use these tools to build, test, and validate 5GMSd-compliant pipelines on 5G networks.
 
-:::tip[New here?]
+:::tip[Where to start]
 Start with the [End-to-End deployment (with Docker) tutorial](./tutorials/end-to-end). It is the quickest way to get a working AF and AS running, and the other tutorials build on it.
 :::
 
@@ -33,7 +34,7 @@ Start with the [End-to-End deployment (with Docker) tutorial](./tutorials/end-to
 
 The slide deck below introduces the 5G Media Streaming project, its components and the features covered by the Reference Tools.
 
-<iframe width="60%" height="560" src="../../docs/Reference_Tools_5G_Media_Streaming.pdf" title="5G Media Streaming Reference Tools slide deck"></iframe>
+<iframe loading="lazy" width="60%" height="560" src="../../docs/Reference_Tools_5G_Media_Streaming.pdf" title="5G Media Streaming Reference Tools slide deck"></iframe>
 
 <a class="button button--outline button--primary" href="/docs/Reference_Tools_5G_Media_Streaming.pdf" style="margin: 4px 0">Download the slide deck of this Project</a>
 
@@ -41,7 +42,7 @@ The slide deck below introduces the 5G Media Streaming project, its components a
 
 ## Go deeper
 
-| | |
+| Area | Details |
 |---|---|
 | **Technical documentation** | Architecture, protocols, and analysis: [5G Media Streaming on the Tech portal](/tech/5gms) |
 | **Standards** | Normative specifications and 5G-MAG contributions: [5G Media Streaming on the Standards portal](/tech/standards/5gms) |

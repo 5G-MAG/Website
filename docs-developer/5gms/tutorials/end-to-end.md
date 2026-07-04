@@ -2,11 +2,12 @@
 title: 5GMSd (with Docker)
 hide_title: true
 sidebar_position: 3
+description: Sets up an end-to-end 5GMSd deployment with a local Application Function and Application Server streaming to an Android client.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M7 4v16l13 -8l-13 -8" /></svg>
 </div>
 <div class="topic-banner__text">
@@ -27,7 +28,7 @@ create an end to end setup as depicted in the illustration below.
 
 *Figure: end-to-end 5GMSd setup, showing the server-side AF and AS and the client-side Android components.*
 
-<img width="934" alt="End-to-end 5GMSd deployment: server-side Application Function and Application Server delivering a stream to the Android client" src="https://user-images.githubusercontent.com/2427039/230307155-c0f71870-a806-4229-966a-41a8f2f838f8.png">
+<img loading="lazy" width="934" alt="End-to-end 5GMSd deployment: server-side Application Function and Application Server delivering a stream to the Android client" src="https://user-images.githubusercontent.com/2427039/230307155-c0f71870-a806-4229-966a-41a8f2f838f8.png">
 
 ## Versions
 
@@ -67,7 +68,7 @@ The `5gms-docker-setup` provides multiple Docker Compose setups to run the 5GMS 
 Application Server and the
 5GMS Application Provider in Docker container environments. This tutorial, assumes you are using Docker Compose recipe.
 
-<img src="/assets/images/5gms/5gms-docker-recipe1.png" style="width: 80%">
+<img loading="lazy" src="/assets/images/5gms/5gms-docker-recipe1.png" alt="Diagram of the 5GMS Docker Compose recipe1 setup showing the Application Function, Application Server, and Application Provider containers" style="width: 80%">
 
 ### Setup
 
@@ -511,7 +512,7 @@ Unlock your Android phone and start the `MediaSessionHandler` if it is not alrea
 `5GMSd-Aware Application`. Select an `M8` entry from the dropdown and then select one of the available stream URLs.
 Next, click on _Start Playback_. The output should look like this:
 
-<img width="757" alt="5GMSd-Aware Application UI on Android showing a stream selected and playing" src="/assets/images/5gms/5gms-ui.png">
+<img loading="lazy" width="757" alt="5GMSd-Aware Application UI on Android showing a stream selected and playing" src="/assets/images/5gms/5gms-ui.png">
 
 ## Next steps
 

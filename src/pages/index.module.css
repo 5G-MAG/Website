@@ -447,14 +447,27 @@
 }
 
 /* ── Hero text ─────────────────────────────────────────────────────── */
-/* Single line on wider screens; wraps normally on narrow viewports so
-   it never overflows/clips off-screen. */
+/* Always wraps normally. The container caps at 1400px regardless of
+   viewport width, and the full nowrap headline+subtitle next to the hero
+   figure never fits inside that — forcing single-line at any breakpoint
+   reintroduces the horizontal-overflow bug found during testing. */
 .heroNowrap {
   white-space: normal;
 }
 
-@media (min-width: 640px) {
-  .heroNowrap {
+/* Headline: same size + nowrap treatment as the slide titles on
+   /developer and /tech (see .slideTitle / the tech hero h1) — fitting it
+   requires the hero figure to leave enough room, handled by capping
+   .heroFigure's width below rather than shrinking this text. Wraps below
+   580px: even at the smallest clamped font-size, nowrap text is wider than
+   very narrow phones (found by testing, not assumption — 555px was the
+   measured breakpoint where overflow actually reached zero). */
+.heroTitle {
+  white-space: normal;
+}
+
+@media (min-width: 580px) {
+  .heroTitle {
     white-space: nowrap;
   }
 }
@@ -462,8 +475,12 @@
 /* ── Hero figure ───────────────────────────────────────────────────── */
 
 .heroFigure {
-  width: 360px;
-  height: 270px;
+  /* Fluid instead of a fixed pixel size: the container itself shrinks well
+     below 1200px, and a fixed-width figure caused real horizontal overflow
+     there (caught by testing across viewport widths). aspect-ratio keeps it
+     matching the SVG viewBox (950:560) as it scales. */
+  width: clamp(280px, 30vw, 640px);
+  aspect-ratio: 950 / 560;
   flex-shrink: 0;
   display: none;
 }
@@ -473,3 +490,17 @@
     display: block;
   }
 }
+
+/* Icons flinch away from the cursor (transform set imperatively via JS,
+   see HeroFigure's mousemove handler) and spring back with this elastic
+   ease on mouseleave / once the cursor moves out of range. */
+.tileRepel {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tileRepel {
+    transition: none;
+  }
+}
+

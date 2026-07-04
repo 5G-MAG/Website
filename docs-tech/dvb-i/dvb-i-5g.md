@@ -2,12 +2,13 @@
 title: DVB-I Services over 5G
 sidebar_position: 15
 hide_title: true
+description: Explains DVB-I service discovery and how DVB A178 deploys DVB-I services over 5G Broadcast, 5G Media Streaming, and hybrid delivery.
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M3 9a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2l0 -9"/><path d="M16 3l-4 4l-4 -4"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -19,7 +20,7 @@ hide_title: true
 
 ## Overview
 
-DVB-I (DVB internet, an ETSI-published DVB specification) lets a device discover and present linear TV and radio services delivered over IP, listing broadcast and broadband streams together in a single service list. This page covers how DVB-I service discovery works over 5G Systems, so that services carried by 5G Broadcast or 5G Media Streaming can appear alongside other IP-delivered content. 5G-MAG tracks this work and maintains related reference tooling.
+DVB-I (DVB internet, an ETSI-published DVB specification) lets a device discover and present linear TV and radio services delivered over IP, listing broadcast and broadband streams together in a single service list. This page covers how DVB-I service discovery works over 5G Systems, so that services carried by 5G Broadcast or 5G Media Streaming can appear alongside other IP-delivered content. 5G-MAG tracks this work and maintains related reference tooling. For acronyms used here, see the [Glossary](/tech/standards/glossary).
 
 [Execution Plan](https://github.com/orgs/5G-MAG/projects/44/views/17)
 

@@ -2,12 +2,13 @@
 title: MBS Multicast NTN
 sidebar_position: 1
 hide_title: true
+description: MBS Multicast over NTN, autonomous PTP/PTM switching by the Donor gNodeB, and device, subscription and mobility requirements.
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M3.707 6.293l2.586 -2.586a1 1 0 0 1 1.414 0l5 5a1 1 0 0 1 0 1.414l-2.586 2.586a1 1 0 0 1 -1.414 0l-5 -5a1 1 0 0 1 0 -1.414z"/><path d="M6 10l-3 3l3 3l3 -3"/><path d="M10 6l3 -3l3 3l-3 3"/><path d="M14 17a3 3 0 0 0 3 -3"/><path d="M20 13a9 9 0 0 0 -9 9"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -39,7 +40,7 @@ The reason MBS Multicast fits NTN well is spectral efficiency: satellite spectru
 
 The figure below shows the MBS Multicast over NTN scenario: an Application Service Provider feeds multicast services into the 5G Core of the NTN, and the Donor gNodeB delivers them to devices over PTP or PTM.
 
-<img src="./images/figure_MBS_Multicast_NTN.png" width="80%" alt="MBS Multicast over NTN: an Application Service Provider provisions multicast services into the NTN 5G Core, which the Donor gNodeB delivers to UEs over point-to-point or point-to-multipoint." />
+<img loading="lazy" src="/img/tech/ntn/figure_MBS_Multicast_NTN.png" width="80%" alt="MBS Multicast over NTN: an Application Service Provider provisions multicast services into the NTN 5G Core, which the Donor gNodeB delivers to UEs over point-to-point or point-to-multipoint." />
 
 ### Application Service Provider
 * An Application Service Provider makes available over the Internet services (e.g. TV, radio, any linear/live streaming service) which users can access through an application installed on their devices (e.g. a smartphone, a smart TV, tablet, etc.).

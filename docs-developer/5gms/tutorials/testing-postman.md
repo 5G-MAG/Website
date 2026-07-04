@@ -2,11 +2,12 @@
 title: Postman (M1, M5)
 hide_title: true
 sidebar_position: 2
+description: Step-by-step tutorial for testing the 5GMSd Application Function's M1, M5, and MAF APIs using Postman collections.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M7 4v16l13 -8l-13 -8" /></svg>
 </div>
 <div class="topic-banner__text">
@@ -20,7 +21,7 @@ This tutorial allows to: Test the M1 and M5 APIs of the 5GMSd AF with Postman.
 :::
 
 
-<img src="/assets/images/5gms/5GMS_Downlink_AF.png" alt="5GMSd downlink architecture highlighting the Application Function and its M1 and M5 interfaces tested with Postman" /> 
+<img loading="lazy" src="/assets/images/5gms/5GMS_Downlink_AF.png" alt="5GMSd downlink architecture highlighting the Application Function and its M1 and M5 interfaces tested with Postman" /> 
 
 [Postman](https://www.postman.com/) is a popular API development and testing tool that allows users to create, send, and
 manage HTTP requests. It provides a user-friendly interface for building and testing API endpoints, making it easier for
@@ -46,7 +47,7 @@ download our pre-defined Postman collections and environment here:
 After the download, open Postman and select `File->Import`. After a successful import, you should see three collections
 like this:
 
-<img width="382" src="/assets/images/5gms/5GMS_postman1.png" alt="Postman sidebar showing the three imported 5G-MAG collections (M1, M5, MAF)">
+<img loading="lazy" width="382" src="/assets/images/5gms/5GMS_postman1.png" alt="Postman sidebar showing the three imported 5G-MAG collections (M1, M5, MAF)">
 
 ## Postman Configuration
 
@@ -56,7 +57,7 @@ reason,
 select `Environments` on the left side and then select the `5G-MAG` environment. Now you should see a list of variables
 similar to this:
 
-<img width="1065" src="/assets/images/5gms/5GMS_postman2.png" alt="Postman environment editor listing the m1_url, m5_url and maf_url variables">
+<img loading="lazy" width="1065" src="/assets/images/5gms/5GMS_postman2.png" alt="Postman environment editor listing the m1_url, m5_url and maf_url variables">
 
 Add the URL to the `M1`, the `M5` and the `maf` endpoint of your Application Function here. In the example above, we are
 running
@@ -80,7 +81,7 @@ change our variable instead of all the M1 calls in our Postman collection.
 Click on `Send` on the top right. You should see a successful response (status code `201`) and the payload of the
 response on the bottom:
 
-<img width="1066" src="/assets/images/5gms/5GMS_postman3.png" alt="Postman showing a successful 201 response after creating a Provisioning Session">
+<img loading="lazy" width="1066" src="/assets/images/5gms/5GMS_postman3.png" alt="Postman showing a successful 201 response after creating a Provisioning Session">
 
 The response body contains the `provisioningSessionId` of our created provisioning session. The `provisioningSessionId`
 is an important identifier and used in many of the `M1` and `M5` endpoints. Consequently, it makes sense to assign
@@ -100,7 +101,7 @@ directly call the `GET Provisioning Session` endpoint. As expected, our route co
 the `provisioning_session_id` variable: `{{m1_url}}/3gpp-m1/v2/provisioning-sessions/{{provisioning_session_id}}`.
 
 Sending this request should result in a response similar to this:
-<img width="1069" src="/assets/images/5gms/5GMS_postman4.png" alt="Postman showing the response body of a GET Provisioning Session request">
+<img loading="lazy" width="1069" src="/assets/images/5gms/5GMS_postman4.png" alt="Postman showing the response body of a GET Provisioning Session request">
 
 ### Deleting a Provisioning Session
 

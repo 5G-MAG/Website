@@ -2,11 +2,12 @@
 title: CMCD Reporting
 hide_title: true
 sidebar_position: 7
+description: Configures the 5GMSd Application Server to forward CMCD data from media requests to the cmcd-toolkit collector and Grafana dashboard.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M7 4v16l13 -8l-13 -8" /></svg>
 </div>
 <div class="topic-banner__text">
@@ -34,7 +35,7 @@ Note on ports: the components below listen on different ports, which is intentio
 
 Note on CMCD versions: the collector converts incoming CMCD version 1 (v1) reports to version 2 (v2), as shown in the collector logs later in this tutorial.
 
-## Server-side Setup
+## Server-side setup
 
 ### Step 1: Install the Application Function
 
@@ -112,7 +113,7 @@ v=1"
 ````
 
 
-## Client-side Setup
+## Client-side setup
 As we are all set on the server-side now we can focus on the client side.
 
 ### Step 1: Installation, Configuration and Running the 5GMSd Client
@@ -121,12 +122,12 @@ Please follow the [instructions](end-to-end#client-side-setup) documented in the
 ### Step 2: Creating CMCD Report
 While consuming content via our previously installed 5GMSd Application Server and 5GMSd Application Function the client is automatically collecting and sending CMCD Reports.
 
-<img src="/assets/images/5gms/app-playback.png" width="40%" alt="5GMSd-Aware Application playing a stream on Android while CMCD reports are collected and sent" /> 
+<img loading="lazy" src="/assets/images/5gms/app-playback.png" width="40%" alt="5GMSd-Aware Application playing a stream on Android while CMCD reports are collected and sent" /> 
 
 ### Step 3: Inspecting the CMCD Report in Dashboard
 Navigate to `http://<CMCD_DASHBOARD_IP>:8081/dashboards` in your browser (note the Grafana UI port `8081`), like below you should see:
 
-<img src="/assets/images/5gms/cmcd-dashboard.png" width="85%" alt="Grafana CMCD dashboard showing collected CMCD metrics" /> 
+<img loading="lazy" src="/assets/images/5gms/cmcd-dashboard.png" width="85%" alt="Grafana CMCD dashboard showing collected CMCD metrics" /> 
 
 
 ## Logs for Debugging
@@ -148,7 +149,7 @@ Navigate to `http://<CMCD_DASHBOARD_IP>:8081/dashboards` in your browser (note t
 ````bash
     docker logs -f --tail 10 cmcd-toolkit-collector-1
 ````
-<img src="/assets/images/5gms/cmcd-toolkit-collector-log.png" width="100%" alt="cmcd-toolkit collector log showing CMCD v1 to v2 conversion" /> 
+<img loading="lazy" src="/assets/images/5gms/cmcd-toolkit-collector-log.png" width="100%" alt="cmcd-toolkit collector log showing CMCD v1 to v2 conversion" /> 
 
 ### Fluentd(watch the log of the dashboard database)
 ````bash

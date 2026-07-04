@@ -370,3 +370,30 @@
     white-space: nowrap;
   }
 }
+
+/* ── Hero figure (icon cloud) ─────────────────────────────────────────
+   Same treatment as the homepage hero: fluid sizing matching the SVG
+   viewBox aspect ratio, hidden below 996px where the hero text needs
+   the full row. */
+.heroFigure {
+  width: clamp(280px, 30vw, 640px);
+  aspect-ratio: 950 / 560;
+  flex-shrink: 0;
+  display: none;
+}
+
+@media (min-width: 996px) {
+  .heroFigure {
+    display: block;
+  }
+}
+
+.tileRepel {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tileRepel {
+    transition: none;
+  }
+}

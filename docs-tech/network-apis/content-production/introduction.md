@@ -2,12 +2,13 @@
 title: Content Production & Contribution
 sidebar_position: 0
 hide_title: true
+description: Introduces 5G-MAG's analysis of using Network APIs and CAMARA for professional content production and contribution over mobile networks.
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M4 13h5"/><path d="M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3"/><path d="M20 8v8"/><path d="M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -34,7 +35,7 @@ The scenarios below are not isolated anecdotes; they illustrate the same underly
 
 <table>
   <tr>
-    <td markdown="span" align="center" width="20%"><figure><img src="./images/figure_footballmatch.jpeg" width="100%"></figure></td>
+    <td markdown="span" align="center" width="20%"><figure><img loading="lazy" src="/img/tech/network-apis/content-production/figure_footballmatch.jpeg" alt="Photo of a football match, illustrating the mix of connectivity needs for covering a live football match, from main broadcast cameras to wireless cameras for interviews" width="100%"></figure></td>
     <td markdown="span" align="left">Media production scenarios often require a mix of connectivity solutions to meet a variety of needs. For example, during a football match, a production team uses high-quality cameras for the main broadcast, while a commentator stand might have additional wireless cameras for pre-game interviews. Wireless cameras are also deployed outside the stadium to capture interviews with the crowd at the entrance of the stadium. Similarly, a major event like the coronation of King Charles III brought together numerous TV producers. They used a combination of dedicated, high-quality streams for the main ceremony and various other setups for newsgathering and interviews from journalists deployed around the site. This demonstrates how a single event can have multiple connectivity needs, from high-bandwidth main broadcasts to more flexible, on-the-go reporting. This is independent of the overall cost or budget of the whole event.</td>
   </tr>
 </table>
@@ -43,7 +44,7 @@ The scenarios below are not isolated anecdotes; they illustrate the same underly
 
 <table>
   <tr>
-    <td markdown="span" align="center" width="20%"><figure><img src="./images/figure_mobilejournalism.jpeg" width="100%"></figure></td>
+    <td markdown="span" align="center" width="20%"><figure><img loading="lazy" src="/img/tech/network-apis/content-production/figure_mobilejournalism.jpeg" alt="Photo illustrating mobile journalism, showing a smartphone used on a best-effort connection to capture live footage of a sudden street event" width="100%"></figure></td>
     <td markdown="span" align="left">When a sudden street event unfolds, the only way to cover it is with smartphones on a best-effort connection. Getting any live footage is far more valuable than dismissing the connection due to its unreliability. While the video might not be broadcast-quality, the immediate, raw footage from the scene is critical for covering the event as it happens.</td>
   </tr>
 </table>
@@ -52,7 +53,7 @@ The scenarios below are not isolated anecdotes; they illustrate the same underly
 
 <table>
   <tr>
-    <td markdown="span" align="center" width="20%"><figure><img src="./images/figure_breakingnews.jpeg" width="100%"></figure></td>
+    <td markdown="span" align="center" width="20%"><figure><img loading="lazy" src="/img/tech/network-apis/content-production/figure_breakingnews.jpeg" alt="Photo illustrating breaking news coverage using cellular bonding equipment, such as backpacks and modems, for live reporting from a remote location" width="100%"></figure></td>
     <td markdown="span" align="left">For both sudden and partially-planned events, cellular bonding systems have emerged as cost-effective solutions to eliminate the need for e.g. dedicated satellite feeds, making live reporting from a wider range of locations economically viable. The equipment itself may be a major investment. The backpacks, modems, and SIM cards are not inexpensive and the news organization has to pay for a data plan for each SIM card and a service fee to the external company that provides the bonding infrastructure. Cellular bonding is needed as a single best-effort public mobile network cannot guarantee reliability. The news organization will plan where to send the different journalists that will provide reports from remote locations during the news programme. Covering sudden events with cellular bonding equipment is also usual, which may achieve better reliability than the connectivity via a single smartphone.</td>
   </tr>
 </table>
@@ -61,7 +62,7 @@ The scenarios below are not isolated anecdotes; they illustrate the same underly
 
 <table>
   <tr>
-    <td markdown="span" align="center" width="20%"><figure><img src="./images/figure_tourdefrance.jpeg" width="100%"></figure></td>
+    <td markdown="span" align="center" width="20%"><figure><img loading="lazy" src="/img/tech/network-apis/content-production/figure_tourdefrance.jpeg" alt="Photo illustrating the Tour de France, showing a high-mobility camera, such as one on a motorbike, capturing close-up footage of riders" width="100%"></figure></td>
     <td markdown="span" align="left">High-mobility cameras introduce the unique challenge of seamlessly mixing their footage (generally highly engaging) into a high-quality production that includes wired cameras with reliable connections. This means the wireless setup needs to be as stable as possible, whereas the nature of its constant motion, changing environments, and potential signal obstructions makes that challenging with frequent signal fades or brief drops in connectivity. Despite these issues, the value of the unique camera perspective is prioritized. A camera on a referee provides an on-field view of the action and is critical for live replays and enhancing the narrative of the game. A camera on a motorbike in the Tour de France provides up-close views of the riders that a stationary camera could never capture.</td>
   </tr>
 </table>

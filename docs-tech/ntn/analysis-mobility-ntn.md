@@ -2,12 +2,13 @@
 title: NTN - Mobility
 sidebar_position: 0
 hide_title: true
+description: NTN mobility deployment models (single-operator, shared-core, cross-operator) and quasi-Earth-fixed vs earth-moving beam handover.
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M3.707 6.293l2.586 -2.586a1 1 0 0 1 1.414 0l5 5a1 1 0 0 1 0 1.414l-2.586 2.586a1 1 0 0 1 -1.414 0l-5 -5a1 1 0 0 1 0 -1.414z"/><path d="M6 10l-3 3l3 3l3 -3"/><path d="M10 6l3 -3l3 3l-3 3"/><path d="M14 17a3 3 0 0 0 3 -3"/><path d="M20 13a9 9 0 0 0 -9 9"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -45,37 +46,24 @@ NTN mobility builds on the general NR mobility framework and the NTN radio adapt
 Two properties of NTN mobility make it different from the terrestrial case. First, mobility can be triggered by the network geometry (the satellite or beam moving) and not only by the device moving, so handovers are predictable from ephemeris and can be scheduled in advance. Second, in a wide beam a whole multicast group may need to move at roughly the same time, so group handover, not just per-device handover, has to be efficient.
 
 ## Single NTN operator
-In this deployment model the satellite infrastructure is managed by a single NTN operator. Satellite-to-satellite handovers are considered for two types of scenarios: quasi-earth fixed beam and earth moving beams. In both cases frequent handovers are expected due to motion.
+In this deployment model the satellite infrastructure is managed by a single NTN operator. Satellite-to-satellite handovers for NGSO systems are considered for two beam scenarios: quasi-Earth fixed beam and Earth-moving beam. In both cases frequent handovers are expected due to satellite motion.
 
-The two beam models differ mainly in what triggers the handover, how much of the multicast group moves at once, and where the complexity sits:
+The two beam models differ in what triggers the handover, how much of the multicast group moves at once, where the complexity sits, the switch mechanics and resulting service interruption, and how radio resources and PTM/PTP delivery are handled during the switch:
 
 | Aspect | Quasi-Earth fixed beam | Earth-moving beam |
 | --- | --- | --- |
-| Handover trigger | Time-based (fixed beam re-pointed periodically) | Location-based (UE reaches the beam edge) |
+| Handover trigger | Time-based (fixed beam re-pointed periodically) | Location-based: the UE begins handover once at distance d from the Beam Reference Centre, where D1 ≤ d ≤ D2 |
 | Group handover | Whole multicast group handed over together | Only edge UEs hand over; handover is gradual |
 | Handover frequency | Frequent | More frequent |
 | Onboard satellite complexity | Higher (steerable beamforming) | Lower |
-| End-to-end network complexity | Lower | Higher |
-| Service interruption | Milliseconds (soft switch) to hundreds of ms (hard switch) | Hundreds of ms in the best case |
+| End-to-end network complexity (mobility handling and beam/frequency-plan allocation) | Lower | Higher |
+| Service interruption | Soft switch: negligible, on the order of milliseconds; hard switch: can exceed hundreds of ms in the worst case, to allow beam layout configuration, radio baseband resource association to beam, and UE downlink synchronization | Hundreds of ms in the best case |
+| Switch types | a) Soft switch: Mapped Cell served by two overlapping beams on different carrier frequencies during the switching phase; b) hard switch: Mapped Cell served by only one beam at any point in time | Single handover procedure (no soft/hard switch distinction) |
+| Radio resource use | Soft switch needs additional margin resources (extra feeder-link and service-link carrier frequencies) to support the overlapping beam; hard switch reuses the same resources between the switching beams | N/A |
+| IP continuity | Preserved | Preserved |
+| PTM/PTP behaviour under poor radio conditions | Whole multicast group is affected at once (source satellite close to the minimum elevation angle for all UEs); PTM UEs are switched to PTP at a chosen instant (T1 + ΔT) during the switching phase to guarantee reliable, in-sequence delivery. Suited to applications intolerant of packet loss; congestion-avoidance mechanisms should also be implemented | Only the edge UE(s) are affected (source satellite close to the minimum elevation angle for that UE); edge UEs switch to PTP while the rest of the group stays in PTM. Requires the gNodeB to know each multicast PDU session's packet-loss tolerance. Suited to applications intolerant of packet loss |
 
-The two subsections below describe each model in detail.
-
-### Satellite-to-satellite handover with Quasi-Earth fixed beam for NGSO
-The target mapped cell will be served by a single beam and a frequent handover (time-based) is expected due to the satellite motion. Two different types of handover are considered:
-* a) Soft switch handover, where the Mapped Cell is served by two overlapping beams in different carrier frequencies during the switching phase.
-* b) Hard switch handover, where the Mapped Cell is served by only one beam at any point in time.
-
-Case a) has the advantage of a negligible service interruption time (in the order of milliseconds); case b) can see the service interruption time exceed hundreds of milliseconds in the worst case, to allow beam layout configuration, radio baseband resource association to beam and UE downlink synchronization. On the other hand, a) requires additional margin resources (feeder link carrier frequency, service link carrier frequency) to support the overlapping beam, whereas for b) the same resources are reused between the switching beams.
-Note that the IP address of the UE is preserved in this scenario.
-When using point-to-multipoint communication, all the UEs of the multicast group may start experiencing poor radio conditions during the switching phase, since the source satellite is close to the minimum elevation angle for the UEs. For this reason, an appropriate mode of transmission should be considered during the switching phase to enable reliability and in-sequence delivery of IP packets. As an example, the UEs served by point-to-multipoint are switched to point-to-point at a chosen instant during the switching phase (denoted T1 + ΔT) to guarantee reliability and in-sequence data reception.
-This behaviour should be suitable for applications that cannot tolerate packet loss, and some mechanisms should be implemented to avoid congestion during handover. One gNodeB could handle both satellites in the case of a Transparent Payload deployment, whereas Regenerative Payload would involve a different gNodeB and therefore dedicated signalling. Put another way, the deployment type determines whether the handover needs dedicated signalling (different gNodeB, in Regenerative Payload) or can rely on common signalling (same gNodeB, in Transparent Payload or for inter-beam handover within the same satellite). The common-signalling case reduces both the service interruption time and the signalling overhead, because it involves only the lower layers (Physical and MAC layer) for uplink synchronization and time alignment.
-The quasi-Earth fixed beam deployment model involves some onboard complexity of the satellite to support steerable beamforming techniques, but it reduces the complexity of the network in handling mobility and allocating resources (beam, frequency plan, etc.). This scenario can apply to intra-satellite beam handover, similar to Transparent Payload (two satellites managed by the same gNodeB).
-
-### Satellite-to-satellite handover with Earth-Moving beam for NGSO
-A frequent (location-driven) handover is expected due to the satellite motion. The UE at the edge of the beam starts the handover procedure: when it is located at a distance d from the Beam Reference Centre, where D1 ≤ d ≤ D2, the UE can begin the handover to the next beam. In the best case, the resulting service interruption is in the range of hundreds of milliseconds. The IP address of the UE is preserved across handover in this scenario.
-When using point-to-multipoint communication, only the UE at the edge of the beam starts to experience poor radio link conditions, since the source satellite is close to the minimum elevation angle with respect to that UE; the rest of the multicast group is unaffected. An appropriate mode of transmission should therefore be considered during the handover phase to support service continuity. For example, switching the edge UEs to PTP transmission mode, while the other members of the same multicast group remain in PTM mode, should suit applications that are intolerant of packet loss. This implies a new requirement: the gNodeB needs to know each multicast PDU session's packet loss tolerance in order to make this decision appropriately.
-The handover is performed gradually by the UEs that are members of the multicast group: compared to the quasi-Earth fixed beam deployment model, not all of them hand over at the same time, though handovers occur more frequently overall with an Earth-moving beam. As with the quasi-Earth-fixed case, the deployment determines whether more dedicated signalling is needed (different gNodeB, in Regenerative Payload) or common signalling suffices (same gNodeB, in Transparent Payload or for inter-beam handover within the same satellite); the common-signalling case again reduces both service interruption time and signalling overhead, since only the lower layers (Physical and MAC layer) are involved for uplink synchronization and time alignment.
-The Earth-moving beam deployment model involves lower onboard complexity of the satellite for beamforming techniques, but it increases the complexity of the end-to-end system in handling mobility and allocating resources (beam, frequency plan, etc.). This scenario can also apply to intra-satellite beam handover, similar to Transparent Payload (two satellites managed by the same gNodeB).
+In both models, the deployment type determines whether the handover needs dedicated signalling (a different gNodeB, in Regenerative Payload) or can rely on common signalling (the same gNodeB, in Transparent Payload or for intra-satellite beam handover within the same satellite); common signalling reduces both the service interruption time and the signalling overhead, since it involves only the Physical and MAC layers for uplink synchronization and time alignment.
 
 ## Common NTN & TN operator
 In this deployment model, the same operator owns the TN and NTN infrastructure. The same 5G Core is shared with both TN and NTN Access Network infrastructure. The handover between them does not involve a logical interface.
@@ -87,11 +75,16 @@ Because the two access networks share a common 5G Core, the handover is an intra
 ## Independent NTN and TN operators
 In this deployment model, two different operators own the TN and NTN infrastructure respectively, so the two different systems, each with its own 5G Core, are separate.
 ### Roaming between different Network Operators for TN and NTN
-Two options are envisaged for roaming:
-* a) Roaming interface at Core Network level: This assumes an interface between the Core Networks of the two systems. The mobility between both networks would require UE registration and authentication, which may involve additional latency for the mobility procedure. For applications needing to ensure end-to-end delivery of in-sequence data packets without packet loss by maintaining session continuity, a home-routed roaming architecture may be required to maintain IP continuity. This may be required by reliable multicast application protocols where a logical channel is established between the peers before exchanging data, for example FLUTE running on top of ALC/LCT.
-* b) RAN sharing agreement between both systems: This assumes both Core Networks have direct interfaces with both TN and NTN radio infrastructure to enable a roaming agreement. A RAN sharing deployment can offer lower latency for mobility between both access networks, since the UE does not need to register and authenticate again and can preserve IP continuity. This is therefore suitable for applications that require in-sequence data delivery for application session continuity. The network RTT between the Terrestrial Radio Access base station and the Non-Terrestrial Radio Access base station needs to be assessed.
+In this model, mobility always crosses an operator boundary, which is the main difference from the common-operator model above; the roaming and interconnect arrangements are a business as well as a technical matter and should be confirmed against the applicable system architecture and roaming specifications. Two options are envisaged for roaming:
 
-The trade-off between the two options is essentially latency against coupling. A core-network roaming interface (option a) keeps the two systems loosely coupled but pays a registration and authentication cost at each transition, and a home-routed architecture may be needed to keep the IP anchor stable so that a reliable multicast session survives. A RAN sharing agreement (option b) couples the systems more tightly but avoids re-registration, so it is better suited to applications that cannot tolerate the extra latency or a break in IP continuity. In both options the mobility procedure crosses an operator boundary, which is the main difference from the common-operator model above; the roaming and interconnect arrangements are a business as well as a technical matter and should be confirmed against the applicable system architecture and roaming specifications.
+| Aspect | a) Core Network roaming interface | b) RAN sharing agreement |
+| --- | --- | --- |
+| Trigger | An interface between the Core Networks of the two systems | Both Core Networks have direct interfaces with both TN and NTN radio infrastructure, enabling a roaming agreement |
+| Behaviour | UE mobility requires registration and authentication with the target core. Applications needing end-to-end delivery of in-sequence, loss-free data with session continuity (e.g. reliable multicast protocols where a logical channel is established between peers before exchanging data, such as FLUTE over ALC/LCT) may require a home-routed roaming architecture to maintain IP continuity | The UE does not need to register and authenticate again and IP continuity is preserved; suitable for applications that require in-sequence data delivery for application session continuity. The network RTT between the Terrestrial and Non-Terrestrial Radio Access base stations needs to be assessed |
+| Complexity | Loosely coupled systems (only a Core Network interface) | More tightly coupled systems (Core Networks directly interfaced with both radio access networks) |
+| Latency | Additional latency from UE registration and authentication at each mobility procedure | Lower latency for mobility between the two access networks, since no re-registration/re-authentication is needed |
+
+The trade-off between the two options is essentially latency against coupling: option a) stays loosely coupled at the cost of a registration/authentication delay (mitigated, for reliable multicast, by a home-routed architecture), while option b) couples the systems more tightly to avoid that delay and any break in IP continuity.
 
 ## Summary of deployment models
 

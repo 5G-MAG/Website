@@ -2,11 +2,12 @@
 title: Roadmap
 hide_title: true
 sidebar_position: 1
+description: Tracks planned and in-progress 5G Broadcast Reference Tools work via GitHub Kanban boards for transmitter, modem, and web UI projects.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
   <path d="M16.616 13.924a5 5 0 1 0 -9.23 0" />
   <path d="M20.307 15.469a9 9 0 1 0 -16.615 0" />
@@ -24,6 +25,9 @@ sidebar_position: 1
 This page tracks the planned and in-progress work for the 5G Broadcast Reference Tools. The general roadmap gives the overall direction; the developer boards below break the work down by component. Each links to a GitHub Kanban board, where the current status is authoritative.
 
 ## General Project Roadmap
+
+The Kanban board below tracks the planned and in-progress work for the 5G Broadcast Reference Tools (hybrid TV/Radio delivery, transmitter and receiver components). It is maintained live on GitHub.
+
 [Kanban board: Roadmap](https://github.com/orgs/5G-MAG/projects/48/views/7)
 
 ## Developer Kanban Boards
@@ -38,7 +42,7 @@ The required issues and features requests to make the MBMS Modem Rel 17 complian
 
 ### 5G Broadcast Transmitters
 Project for any improvements to the rt-mbms-tx and rt-mbms-tx-for-qrd-and-crd.
-* [**Kanban board**](https://github.com/orgs/5G-MAG/projects/29)
+* [**Kanban board**](https://github.com/orgs/5G-MAG/projects/54)
 
 ### Web User Interface
 Project for any improvements to the rt-mbms-wui

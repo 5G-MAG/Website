@@ -2,11 +2,12 @@
 title: SDR - HLS over 5G Broadcast
 hide_title: true
 sidebar_position: 1
+description: Step-by-step guide to receiving and playing an HLS stream over 5G Broadcast using the MBMS Modem, Middleware, and Web UI.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
   <path d="M16.616 13.924a5 5 0 1 0 -9.23 0" />
   <path d="M20.307 15.469a9 9 0 1 0 -16.615 0" />
@@ -132,11 +133,11 @@ In order to use the webinterface for playback perform the following steps:
 
 The output for step 3 and step 4 should look similar to this:
 
-<img src="/assets/images/5gbc/rt-wui-mw-tab.jpg" width="800" alt="Web User Interface Middleware tab showing the received stream information">
+<img loading="lazy" src="/assets/images/5gbc/rt-wui-mw-tab.jpg" width="800" alt="Web User Interface Middleware tab showing the received stream information">
 
 *Figure: the Middleware tab of the Web User Interface, showing the received stream.*
 
-<img src="/assets/images/5gbc/rt-wui-playback.jpg" width="800" alt="Web User Interface playing the HLS stream with hls.js">
+<img loading="lazy" src="/assets/images/5gbc/rt-wui-playback.jpg" width="800" alt="Web User Interface playing the HLS stream with hls.js">
 
 *Figure: the HLS stream playing in the Web User Interface via hls.js.*
 

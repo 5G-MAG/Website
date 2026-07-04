@@ -2,11 +2,12 @@
 title: Scope
 hide_title: true
 sidebar_position: 0
+description: Details the DCAF architecture, the R1, R2 and R6 interfaces, and the 3GPP specs (TS 26.531/532) it implements.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M14 3v4a1 1 0 0 0 1 1h4" />
   <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />
   <path d="M9 17l0 -5" />
@@ -44,7 +45,7 @@ A reusable Rel-18 DCAF Service Provider library for data reporting and event exp
 
 A functional Data Collection Application Function (DCAF) implementation is available. In the diagram below, the building blocks marked with a green tick are the ones already implemented.
 
-<img src="/assets/images/dcaf/UEDC_RT.png" alt="DCAF functional blocks, with implemented blocks marked by a green tick" />
+<img loading="lazy" src="/assets/images/dcaf/UEDC_RT.png" alt="DCAF functional blocks, with implemented blocks marked by a green tick" />
 
 *Figure: DCAF functional blocks; a green tick marks each implemented building block.*
 
@@ -52,7 +53,7 @@ The implementation covers the generic handling of provisioning, the receipt and 
 
 An illustrative usage sequence flow is shown below, tracing the actors (Application Service Provider, DCAF, UE) through the provisioning, subscription and reporting phases:
 
-<img src="/assets/images/dcaf/usage-sequence-diagram.png" alt="Sequence diagram of the DCAF usage flow across provisioning, subscription and reporting phases" />
+<img loading="lazy" src="/assets/images/dcaf/usage-sequence-diagram.png" alt="Sequence diagram of the DCAF usage flow across provisioning, subscription and reporting phases" />
 
 The following tutorial covers the setup of a Data Collection Application Function and usage of APIs.
 
@@ -173,7 +174,7 @@ Two deployment shapes are shown below: the DCAF running on its own (standalone),
 
 This is the standalone DCAF deployment, where the Data Collection AF is used on its own to collect and expose UE-side data.
 
-<img src="/assets/images/projects/uedc_diagram.png" style="width: 80%" alt="Standalone DCAF architecture, with the Data Collection AF connected to a UE and a consuming Application Service Provider" />
+<img loading="lazy" src="/assets/images/projects/uedc_diagram.png" style="width: 80%" alt="Standalone DCAF architecture, with the Data Collection AF connected to a UE and a consuming Application Service Provider" />
 
 *Figure: standalone DCAF deployment.*
 
@@ -184,7 +185,7 @@ This is the standalone DCAF deployment, where the Data Collection AF is used on 
 
 This is the integrated deployment, where the DCAF is combined with the 5G Downlink Media Streaming (5GMSd) data reporting framework.
 
-<img src="/assets/images/projects/5gms_uedc_diagram.png" style="width: 80%" alt="DCAF integrated with the 5G Downlink Media Streaming data reporting framework" />
+<img loading="lazy" src="/assets/images/projects/5gms_uedc_diagram.png" style="width: 80%" alt="DCAF integrated with the 5G Downlink Media Streaming data reporting framework" />
 
 *Figure: DCAF integrated with 5GMSd data reporting.*
 
@@ -196,7 +197,7 @@ This is the integrated deployment, where the DCAF is combined with the 5G Downli
 ## Docker deployment support
 Docker-Compose setups are provided to run the Data Collection AF in Docker container environments, so the standalone DCAF can be brought up quickly for testing.
 
-<img src="/assets/images/dcaf/uedc_docker_1.png" style="width: 80%" alt="Docker-Compose deployment of the Data Collection AF and supporting containers" />
+<img loading="lazy" src="/assets/images/dcaf/uedc_docker_1.png" style="width: 80%" alt="Docker-Compose deployment of the Data Collection AF and supporting containers" />
 
 *Figure: Docker-Compose deployment of the Data Collection AF.*
 

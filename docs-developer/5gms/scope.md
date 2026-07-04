@@ -2,11 +2,12 @@
 title: Scope
 hide_title: true
 sidebar_position: 0
+description: Overview of the 5G Media Streaming (5GMSd) architecture, reference points, features and what the 5G-MAG Reference Tools implement.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M7 4v16l13 -8l-13 -8" /></svg>
 </div>
 <div class="topic-banner__text">
@@ -17,7 +18,7 @@ sidebar_position: 0
 
 <div style="margin: 8px 0"><a class="button button--outline button--primary" href="./scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="./projects" style="margin: 2px 4px 2px 0">Project Roadmap</a> <a class="button button--outline button--primary" href="./repositories" style="margin: 2px 4px 2px 0">GitHub Repos</a> <a class="button button--outline button--primary" href="./packages" style="margin: 2px 4px 2px 0">Packages</a> <a class="button button--outline button--primary" href="./releases" style="margin: 2px 4px 2px 0">Releases</a> <a class="button button--outline button--primary" href="./tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="./tutorials#video-library" style="margin: 2px 4px 2px 0">Video Library</a></div>
 
-5G Media Streaming (5GMS) is a 3GPP framework for high-quality, efficient delivery of media, supporting services from Mobile Network Operators (MNOs) and third parties in both Downlink (5GMSd) and Uplink (5GMSu) Media Streaming. The 5GMS architecture is functionally divided into independent components, enabling deployments with various degrees of integration between 5G MNOs and Content Providers.
+5G Media Streaming (5GMS) is a 3GPP framework for high-quality, efficient delivery of media, supporting services from Mobile Network Operators (MNOs) and third parties in both Downlink (5GMSd) and Uplink (5GMSu) Media Streaming. The 5GMS architecture is functionally divided into independent components, enabling deployments with various degrees of integration between 5G MNOs and Content Providers. For acronyms used here, see the [Glossary](/developer/glossary).
 
 The reference points below use a trailing `d` to indicate the downlink variant (for example M1d, M4d, M5d). The following table summarises the interfaces you will meet on this page.
 
@@ -69,7 +70,7 @@ The functional entities of 5G Media Streaming, instantiated for 5G Unicast Downl
 
 A functional 5GMSd implementation is available with the building blocks highlighted with the green tick below.
 
-<img src="/assets/images/5gms/5GMS_Downlink_RT.png" alt="5GMSd downlink architecture with the entities implemented by the Reference Tools marked with a green tick">
+<img loading="lazy" src="/assets/images/5gms/5GMS_Downlink_RT.png" alt="5GMSd downlink architecture with the entities implemented by the Reference Tools marked with a green tick">
 
 *Figure: 5GMSd downlink architecture. Entities marked with a green tick are implemented by the 5G-MAG Reference Tools.*
 
@@ -132,7 +133,7 @@ Where:
 
 The content hosting feature provides a service equivalent to a Content Delivery Network (CDN) deployed inside or outside the Trusted DN. It includes selecting the ingest protocol and format, caching and proxying of media objects, content preparation, access protection (e.g. URL signing) and indicating a target distribution area (e.g. through geofencing).
 
-<img src="/assets/images/5gms/5GMS_ContentHosting.png" alt="5GMS Content Hosting feature: the Application Server acting as a CDN, ingesting and delivering media objects">
+<img loading="lazy" src="/assets/images/5gms/5GMS_ContentHosting.png" alt="5GMS Content Hosting feature: the Application Server acting as a CDN, ingesting and delivering media objects">
 
 The following are the reference points and APIs.
 
@@ -231,7 +232,7 @@ Note that the supported `protocols` in 3GPP Release 17 are:
 - DASH-IF push-based content ingest protocol: `urn:3gpp:5gms:content-protocol:dash-if-ingest`
 
 :::tip[View on GitHub]
-Examples are available in: [https://github.com/5G-MAG/rt-5gms-examples/tree/development/example-files](https://github.com/5G-MAG/rt-5gms-examples/tree/development/example-files)
+Examples are available in: [https://github.com/5G-MAG/rt-5gms-examples/tree/development/examples-files](https://github.com/5G-MAG/rt-5gms-examples/tree/development/examples-files)
 :::
 
 The following tutorials describe several steps showing how to create a Provisioning Session, add Content Hosting configuration and provisioning of Server Certificates.
@@ -250,7 +251,7 @@ The network assistance feature enables the 5GMS Client in the UE to interrogate 
 Of the two Network Assistance capabilities described below, the support table in "Summary of features supported by the 5GMS Application Function" indicates that only Delivery Boost is currently implemented; Throughput Estimation (Bit Rate Recommendation) is still in development. The descriptions below cover both as defined by the specification.
 :::
 
-<img src="/assets/images/5gms/5GMS_NetworkAssistance.png" alt="5GMS Network Assistance: the 5GMS Client requesting bit rate recommendations and delivery boosts from the network">
+<img loading="lazy" src="/assets/images/5gms/5GMS_NetworkAssistance.png" alt="5GMS Network Assistance: the 5GMS Client requesting bit rate recommendations and delivery boosts from the network">
 
 Both mechanisms make it possible to obtain:
 
@@ -276,7 +277,7 @@ The network assistance feature is not explicitly provisioned by the 5GMS Applica
 
 The dynamic policies feature enables the 5GMS Client in the UE to manipulate the network traffic handling policies for an ongoing media streaming session.
 
-<img src="/assets/images/5gms/5GMS_DynamicPolicies.png" alt="5GMS Dynamic Policies feature: the 5GMS Client selecting network traffic handling policies for a session">
+<img loading="lazy" src="/assets/images/5gms/5GMS_DynamicPolicies.png" alt="5GMS Dynamic Policies feature: the 5GMS Client selecting network traffic handling policies for a session">
 
 The following are the reference points and APIs.
 
@@ -292,7 +293,7 @@ When the dynamic policy feature is offered and selected, the 5GMSd Application P
 selected policies in the form of a list of valid Policy Template Ids.
 
 :::tip[View on GitHub]
-Examples are available in: [https://github.com/5G-MAG/rt-5gms-examples/tree/development/example-files](https://github.com/5G-MAG/rt-5gms-examples/tree/development/example-files)
+Examples are available in: [https://github.com/5G-MAG/rt-5gms-examples/tree/development/examples-files](https://github.com/5G-MAG/rt-5gms-examples/tree/development/examples-files)
 :::
 
 This is a JSON scheme of a Policy Template, which describes the QoS and charging treatment a session may request:
@@ -344,7 +345,7 @@ The following tutorials describe several steps showing how to create and provisi
 
 The consumption reporting feature allows consumption of downlink media streaming to be logged by the 5GMS System and exposed for analysis.
 
-<img src="/assets/images/5gms/5GMS_ConsumptionReporting.png" alt="5GMS Consumption Reporting feature: downlink consumption logged by the 5GMS System and exposed for analysis">
+<img loading="lazy" src="/assets/images/5gms/5GMS_ConsumptionReporting.png" alt="5GMS Consumption Reporting feature: downlink consumption logged by the 5GMS System and exposed for analysis">
 
 The following are the reference points and APIs.
 
@@ -376,7 +377,7 @@ Where:
 - `accessReporting`: Stipulates whether the Media Session Handler is required to provide consumption reporting messages to the 5GMSd AF when the access network changes during a media streaming session.
 
 :::tip[View on GitHub]
-Examples are available in: [https://github.com/5G-MAG/rt-5gms-examples/tree/development/example-files](https://github.com/5G-MAG/rt-5gms-examples/tree/development/example-files)
+Examples are available in: [https://github.com/5G-MAG/rt-5gms-examples/tree/development/examples-files](https://github.com/5G-MAG/rt-5gms-examples/tree/development/examples-files)
 :::
 
 The following tutorials describe several steps showing how to create a Consumption Reporting Configuration.
@@ -391,7 +392,7 @@ The following tutorials describe several steps showing how to create a Consumpti
 
 The QoE metrics reporting feature enables the 5GMS System to log and expose streaming performance data for further analysis.
 
-<img src="/assets/images/5gms/5GMS_MetricsReporting.png" alt="5GMS QoE Metrics Reporting feature: streaming performance data logged and exposed via RAN-based and AF-based paths">
+<img loading="lazy" src="/assets/images/5gms/5GMS_MetricsReporting.png" alt="5GMS QoE Metrics Reporting feature: streaming performance data logged and exposed via RAN-based and AF-based paths">
 
 The framework defines two distinct reporting paths:
 
@@ -448,7 +449,7 @@ Where the field `metrics` for downlink media streaming and for the 3GPP scheme <
   - Device information: <span style="font-family: monospace;">urn:3GPP:ns:PSS:DASH:QM10#DeviceInformationList</span>
 
 :::tip[View on GitHub]
-Examples are available in: [https://github.com/5G-MAG/rt-5gms-examples/tree/development/example-files](https://github.com/5G-MAG/rt-5gms-examples/tree/development/example-files)
+Examples are available in: [https://github.com/5G-MAG/rt-5gms-examples/tree/development/examples-files](https://github.com/5G-MAG/rt-5gms-examples/tree/development/examples-files)
 :::
 
 The following tutorials describe several steps showing how to create a QoE Metrics Reporting Configuration.
@@ -667,7 +668,7 @@ The Reference Tools can be combined in several deployment configurations, each p
 
 The baseline configuration: the 5GMSd tools delivering adaptive bitrate streaming over 5G unicast.
 
-<img src="/assets/images/projects/5gms_diagram.png" style="width: 80%" alt="High-level architecture of the baseline 5GMSd deployment">
+<img loading="lazy" src="/assets/images/projects/5gms_diagram.png" style="width: 80%" alt="High-level architecture of the baseline 5GMSd deployment">
 
 [5G Media Streaming: Repositories](../5gms/repositories)
 [3GPP RAN and Core Platforms: Repositories](../3gpp-platforms/repositories)
@@ -677,7 +678,7 @@ The baseline configuration: the 5GMSd tools delivering adaptive bitrate streamin
 
 Adds the UE Data Collection, Reporting and Event Exposure project so that consumption and quality data can feed analytics and event subscribers.
 
-<img src="/assets/images/projects/5gms_uedc_diagram.png" style="width: 80%" alt="High-level architecture of 5GMSd combined with UE Data Collection, Reporting and Event Exposure">
+<img loading="lazy" src="/assets/images/projects/5gms_uedc_diagram.png" style="width: 80%" alt="High-level architecture of 5GMSd combined with UE Data Collection, Reporting and Event Exposure">
 
 [5G Media Streaming: Repositories](../5gms/repositories)
 [UE Data Collection, Reporting and Event Exposure: Repositories](../data-collection/repositories)
@@ -688,7 +689,7 @@ Adds the UE Data Collection, Reporting and Event Exposure project so that consum
 
 Adds the 5G Core (5GC) Service Consumers project, letting the AF consume core network APIs (for example for policy and QoS control).
 
-<img src="/assets/images/projects/5gms_5gc_diagram.png" style="width: 80%" alt="High-level architecture of 5GMSd combined with 5GC Service Consumers">
+<img loading="lazy" src="/assets/images/projects/5gms_5gc_diagram.png" style="width: 80%" alt="High-level architecture of 5GMSd combined with 5GC Service Consumers">
 
 [5G Media Streaming: Repositories](../5gms/repositories)
 [5GC Service Consumers: Repositories](../5g-core/repositories)
@@ -699,7 +700,7 @@ Adds the 5G Core (5GC) Service Consumers project, letting the AF consume core ne
 
 Combines 5GMSd with the 5G Broadcast and multimedia content delivery projects to distribute content over evolved Multimedia Broadcast Multicast Service (eMBMS) broadcast bearers.
 
-<img src="/assets/images/projects/5gms_5gbc_diagram.png" style="width: 80%" alt="High-level architecture of 5GMSd delivered over eMBMS broadcast">
+<img loading="lazy" src="/assets/images/projects/5gms_5gbc_diagram.png" style="width: 80%" alt="High-level architecture of 5GMSd delivered over eMBMS broadcast">
 
 [5G Media Streaming: Repositories](../5gms/repositories)
 [5G Broadcast: Repositories](../5g-broadcast/repositories)
@@ -710,7 +711,7 @@ Combines 5GMSd with the 5G Broadcast and multimedia content delivery projects to
 ## Docker deployment support
 Docker-Compose setups are provided to run the 5GMS Application Function, the 5GMS Application Server and the 5GMS Application Provider in Docker container environments.
 
-<img src="/assets/images/5gms/5gms-docker-recipe1.png" style="width: 80%" alt="Docker Compose deployment recipe for the 5GMS Application Function, Application Server and Application Provider">
+<img loading="lazy" src="/assets/images/5gms/5gms-docker-recipe1.png" style="width: 80%" alt="Docker Compose deployment recipe for the 5GMS Application Function, Application Server and Application Provider">
 
 [5G Media Streaming: Repositories](../5gms/repositories)
 

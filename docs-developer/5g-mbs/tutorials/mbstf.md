@@ -2,11 +2,12 @@
 title: MBSTF Testing
 hide_title: true
 sidebar_position: 0
+description: Tests the MBS Transport Function with curl and Wireshark across single-shot and streaming, pull and push, FLUTE distribution scenarios.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M12 12l0 .01" />
   <path d="M14.828 9.172a4 4 0 0 1 0 5.656" />
   <path d="M17.657 6.343a8 8 0 0 1 0 11.314" />
@@ -19,7 +20,7 @@ sidebar_position: 0
 </div>
 </div>
 
-This tutorial describes the initial reference implementation of the MBS Transport Function (MBSTF) as specified in 3GPP [TS 26.517](https://www.3gpp.org/dynareport/26517.htm) and 3GPP [TS 29.581](https://www.3gpp.org/dynareport/29581.htm). You can check out the videos to see more details or follow the write-up tutorial.
+This tutorial describes the initial reference implementation of the MBS Transport Function (MBSTF) as specified in 3GPP [TS 26.517](https://www.3gpp.org/dynareport/26517.htm) and 3GPP [TS 29.581](https://www.3gpp.org/dynareport/29581.htm). You can check out the videos to see more details or follow the write-up tutorial. For acronyms used here, see the [Glossary](/developer/glossary).
 
 ## Tutorial videos
 

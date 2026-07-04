@@ -2,11 +2,12 @@
 title: Developer Community
 sidebar_position: 0
 hide_title: true
+description: Explains how to join the 5G-MAG developer community via Slack, Google Groups and GitHub, plus contributor guidelines and CLA process.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"/><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0 -3 -3.85"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -61,8 +62,8 @@ Any organization and independent developer willing to collaborate can join the c
 A Contributor License Agreement (CLA) is the document that clarifies the intellectual property terms under which you contribute code. It is signed once; see the [Software Licenses and CLA](/developer/license) page for the agreements and how to file them. The images below show the official contributors and 5G-MAG member organizations.
 
 <div class="community-contributors">
-<img src="/assets/images/Reference_Tools_Contributors.png" alt="Official contributors" style="max-width:62%;min-width:240px;flex:1" />
-<img src="/assets/images/Reference_Tools_Members.png" alt="5G-MAG members" style="max-width:34%;min-width:160px;flex:0 1 auto" />
+<img loading="lazy" src="/assets/images/Reference_Tools_Contributors.png" alt="Official contributors" style="max-width:62%;min-width:240px;flex:1" />
+<img loading="lazy" src="/assets/images/Reference_Tools_Members.png" alt="5G-MAG members" style="max-width:34%;min-width:160px;flex:0 1 auto" />
 </div>
 
 Please refer to the [Getting-Started](https://github.com/5G-MAG/Getting-Started/) repository to provide updates to this documentation.

@@ -2,12 +2,13 @@
 hide_title: true
 title: Streaming & Media Delivery
 sidebar_position: 2
+description: Introduces the 3GPP 5G Media Streaming (5GMS) framework, its architecture, M1-M8 reference points, key specifications, and reference tools.
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M7 4v16l13 -8l-13 -8"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -19,7 +20,7 @@ sidebar_position: 2
 The 3GPP framework for downlink and uplink video, audio and metadata delivery over 5G networks.
 </div>
 
-5G Media Streaming (5GMS) is a 3GPP-defined framework for delivering video, audio, and metadata over 5G networks, supporting both downlink (unicast to device) and uplink (device to network) flows. It introduces standardised interfaces between the content provider, the 5G network, and the client device. These interfaces cover session management, dynamic policies, and media consumption metrics. 5G-MAG implements the Application Function (AF), the control-plane entity that manages sessions and talks to the 5G core, and the Application Server (AS), the entity that hosts and delivers the media, enabling end-to-end validation of 5GMS-compliant pipelines. For the architecture and how these roles fit together, see the [5GMS Overview](./5gms/overview-5gms).
+5G Media Streaming (5GMS) is a 3GPP-defined framework for delivering video, audio, and metadata over 5G networks, supporting both downlink (unicast to device) and uplink (device to network) flows. It introduces standardised interfaces between the content provider, the 5G network, and the client device. These interfaces cover session management, dynamic policies, and media consumption metrics. 5G-MAG implements the Application Function (AF), the control-plane entity that manages sessions and talks to the 5G core, and the Application Server (AS), the entity that hosts and delivers the media, enabling end-to-end validation of 5GMS-compliant pipelines. For the architecture and how these roles fit together, see the [5GMS Overview](./5gms/overview-5gms). For acronyms used here, see the [Glossary](/tech/standards/glossary).
 
 **Key specifications:** 3GPP [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) (5GMS general description and architecture), [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) (5GMS protocols and APIs), [TS 26.510](https://www.3gpp.org/dynareport/26510.htm) (generalised media delivery provisioning and media session handling, from Release 18), [TS 26.511](https://www.3gpp.org/dynareport/26511.htm) (5GMS profiles, codecs and formats). Related UE data collection and reporting is specified in [TS 26.531](https://www.3gpp.org/dynareport/26531.htm) (architecture) and [TS 26.532](https://www.3gpp.org/dynareport/26532.htm) (protocols and formats). For the full list and links, see the [Standards page](/tech/standards/5gms).
 
@@ -31,7 +32,7 @@ The 3GPP framework for downlink and uplink video, audio and metadata delivery ov
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
 <h3>Technology &amp; Analysis</h3>
 </div>
 <div class="godeeper-card__body">
@@ -46,7 +47,7 @@ The 3GPP framework for downlink and uplink video, audio and metadata delivery ov
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" /></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" /></svg>
 <h3>Standards Tracking</h3>
 </div>
 <div class="godeeper-card__body">
@@ -59,7 +60,7 @@ The 3GPP framework for downlink and uplink video, audio and metadata delivery ov
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
 <h3>Software Tools</h3>
 </div>
 <div class="godeeper-card__body">

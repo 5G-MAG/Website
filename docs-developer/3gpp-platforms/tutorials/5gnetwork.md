@@ -2,11 +2,12 @@
 title: 5G Network & COTS UE
 hide_title: true
 sidebar_position: 1
+description: Step-by-step tutorial for building a private 5G network with Open5GS and srsRAN, and connecting a commercial off-the-shelf Android phone.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M11.482 20.924a1.666 1.666 0 0 1 -1.157 -1.241a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.312 .318 1.644 1.794 .995 2.697" />
   <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
   <path d="M20 21l2 -2l-2 -2" />
@@ -287,7 +288,7 @@ Install dependencies
 sudo apt-get install cmake make gcc g++ pkg-config libfftw3-dev libmbedtls-dev libsctp-dev libyaml-cpp-dev libgtest-dev
 ```
 
-Install UHD drivers (e.g. for Ettus USRP). More information at the Ettus [website](https://files.ettus.com/manual/page_build_guide).
+Install UHD drivers (e.g. for Ettus USRP). More information at the Ettus [website](https://files.ettus.com/manual/page_build_guide.html).
 
 ```bash
 sudo add-apt-repository ppa:ettusresearch/uhd
@@ -375,11 +376,11 @@ pcap:
 
 Ideally the USRPs should be connected to a 10 MHz external reference clock or GPSDO, although this is not a strict
 requirement. In our tests, many COTS UEs were only able to connect to the gNB when using an external reference
-clock. If this is the case, we recommend using the [Leo Bodnar GPSDO](https://www.leobodnar.com/shop/index.php?main_page=product_info&cPath=107&products_id=234&zenid=5194baec39dbc91212ec4ac755a142b6)
+clock. If this is the case, we recommend using the [Leo Bodnar GPSDO](https://www.leobodnar.com/shop/index.php?main_page=product_info&cPath=107&products_id=234)
 for that purpose.
 
 To configure the Leo Bodnar GPSDO follow
-the [How to Use instructions](https://www.leobodnar.com/shop/index.php?main_page=product_info&cPath=107&products_id=234&zenid=5194baec39dbc91212ec4ac755a142b6)
+the [How to Use instructions](https://www.leobodnar.com/shop/index.php?main_page=product_info&cPath=107&products_id=234)
 on the website. If the configuration is done on macOS, the configuration software looks like this:
 
 ![5G Core: Leo Bodnar](/assets/images/5gcore/leo-bodnar-config.jpeg)

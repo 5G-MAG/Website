@@ -2,12 +2,13 @@
 title: CAMARA QoS Profiles
 sidebar_position: 7
 hide_title: true
+description: Describes the CAMARA QoS Profiles API, which exposes named, operator-defined network performance profiles used by other QoS APIs.
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M4 13h5"/><path d="M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3"/><path d="M20 8v8"/><path d="M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -48,15 +49,18 @@ The QoS Profiles API definition (YAML) is available at: [https://github.com/cama
   * **GET /qos-profiles/{name}** - get QoS Profile for a given name
 
 #### Parameters describing a QoS Profile
-* `packetDelayBudget`- the maximum allowable one-way latency between the customer's device and the gateway from the operator's network to other networks. The end-to-end or round trip latency will be about two times this value plus the latency not controlled by the operator
-* `targetMinDownstreamRate` - the target minimum downstream rate.
-* `targetMinUpstreamRate` - the target minimum upstream rate
-* `packetErrorLossRate` - the exponential power of the allowable error loss rate 10^(-N). For 5G network the 3GPP specification [TS 23.203](https://www.3gpp.org/dynareport/23203.htm) defines the packet error loss rate QCI attribute.
-* `jitter`  - this requirement aims to limit the maximum variation in round-trip packet delay for the 99th percentile of traffic, following ITU Y.1540 standards. It considers only acknowledged packets in a session, which are packets that receive a confirmation of receipt from the recipient (e.g., using TCP).
-* `minDuration` - the minimum time a session using this profile can be requested for.
-* `maxDuration` - the maximum time a session using this profile can be requested for.
-* `priority` - the relative precedence of this profile when the network arbitrates between competing flows (lower value means higher priority).
-* `l4sQueueType` - whether the profile uses a Low Latency, Low Loss, Scalable throughput (L4S) queue, an IETF congestion-control scheme designed to keep latency low under load. Example values include `non-l4s-queue`.
+
+| Parameter | Description |
+| --- | --- |
+| `packetDelayBudget` | the maximum allowable one-way latency between the customer's device and the gateway from the operator's network to other networks. The end-to-end or round trip latency will be about two times this value plus the latency not controlled by the operator |
+| `targetMinDownstreamRate` | the target minimum downstream rate. |
+| `targetMinUpstreamRate` | the target minimum upstream rate |
+| `packetErrorLossRate` | the exponential power of the allowable error loss rate 10^(-N). For 5G network the 3GPP specification [TS 23.203](https://www.3gpp.org/dynareport/23203.htm) defines the packet error loss rate QCI attribute. |
+| `jitter` | this requirement aims to limit the maximum variation in round-trip packet delay for the 99th percentile of traffic, following ITU Y.1540 standards. It considers only acknowledged packets in a session, which are packets that receive a confirmation of receipt from the recipient (e.g., using TCP). |
+| `minDuration` | the minimum time a session using this profile can be requested for. |
+| `maxDuration` | the maximum time a session using this profile can be requested for. |
+| `priority` | the relative precedence of this profile when the network arbitrates between competing flows (lower value means higher priority). |
+| `l4sQueueType` | whether the profile uses a Low Latency, Low Loss, Scalable throughput (L4S) queue, an IETF congestion-control scheme designed to keep latency low under load. Example values include `non-l4s-queue`. |
 
 The response example below also carries fields not listed here (for example `maxUpstreamRate`, `maxDownstreamBurstRate`, `serviceClass`). The authoritative field set and allowed values are defined in the [qos-profiles.yaml](https://github.com/camaraproject/QualityOnDemand/blob/main/code/API_definitions/qos-profiles.yaml). The full object also includes `countryAvailability` (the countries in which the profile is offered). The `serviceClass` field carries a coarse traffic category (for example `real_time_interactive`).
 
@@ -82,7 +86,7 @@ The API has no operation to list the available profile names and no operation to
 A user of a media application would like to retrieve QoS profiles available in the network. An example figure is shown using the QoS Profiles in the context of Quality on Demand. The following steps are executed:
 
 <figure>
-  <img src="./content-production/images/figure_qualityondemand.png" width="80%" alt="Sequence showing a QoS Profile being retrieved by name, then used in a Quality on Demand session request." />
+  <img loading="lazy" src="/img/tech/network-apis/content-production/figure_qualityondemand.png" width="80%" alt="Sequence showing a QoS Profile being retrieved by name, then used in a Quality on Demand session request." />
   <figcaption>QoS Profiles in the context of a Quality on Demand request: the profile is looked up by name (Step 1) and the name is then passed to the QoD session.</figcaption>
 </figure>
 

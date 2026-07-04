@@ -2,11 +2,12 @@
 hide_title: true
 title: Tutorials
 sidebar_position: 3
+description: Index of 6G Testbed tutorials and videos, including the Introduction to the 6G Testbed walkthrough.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M6 9a6 6 0 1 0 12 0a6 6 0 0 0 -12 0" />
   <path d="M12 3c1.333 .333 2 2.333 2 6s-.667 5.667 -2 6" />
   <path d="M12 3c-1.333 .333 -2 2.333 -2 6s.667 5.667 2 6" />
@@ -24,11 +25,9 @@ sidebar_position: 3
 
 <div style="margin: 8px 0"><a class="button button--outline button--primary" href="../scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="../repositories" style="margin: 2px 4px 2px 0">GitHub Repos</a> <a class="button button--outline button--primary" href="../releases" style="margin: 2px 4px 2px 0">Releases</a> <a class="button button--outline button--primary" href="." style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="#video-library" style="margin: 2px 4px 2px 0">Video Library</a></div>
 
-## Tutorial: Introduction to the 6G Testbed: Network Emulator and AI Traffic Characterization
+## [Tutorial: Introduction to the 6G Testbed: Network Emulator and AI Traffic Characterization](./introduction-6g-testbed)
 
 This tutorial introduces the 6G Testbed including the Network Emulator and the framework for AI Traffic Characterization
-
-<a class="button button--outline button--primary" href="./introduction-6g-testbed" style="margin: 4px 0">Go to the Tutorial: Introduction to the 6G Testbed: Network Emulator and AI Traffic Characterization</a>
 
 ## Video Library
 Our [YouTube channel](https://www.youtube.com/@5GMAG) hosts some practical videos provided by developers on the use of the Reference Tools.

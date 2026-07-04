@@ -2,12 +2,13 @@
 title: CAMARA Quality on Demand
 sidebar_position: 9
 hide_title: true
+description: Describes the CAMARA Quality on Demand API, which requests a bounded-duration QoS session for a device's data flow.
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M4 13h5"/><path d="M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3"/><path d="M20 8v8"/><path d="M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -71,7 +72,7 @@ For a live media flow QoD is the most direct API: it is invoked at the moment th
 A user of a media application wants a QoS boost for the duration of a media flow. The following steps are executed:
 
 <figure>
-  <img src="./content-production/images/figure_qualityondemand.png" width="80%" alt="Sequence showing a QoS Profile being looked up by name, then a Quality on Demand session created for that profile and duration." />
+  <img loading="lazy" src="/img/tech/network-apis/content-production/figure_qualityondemand.png" width="80%" alt="Sequence showing a QoS Profile being looked up by name, then a Quality on Demand session created for that profile and duration." />
   <figcaption>The QoS profile is looked up by name (via the QoS Profiles API), then a QoD session is created for that profile and duration.</figcaption>
 </figure>
 
@@ -252,8 +253,10 @@ The Quality on Demand API defines a single notification event type:
 
 The change itself is conveyed in the `data` object:
 
-* `qosStatus` indicates the new status. In notifications the value is `AVAILABLE` or `UNAVAILABLE`.
-* `statusInfo` is included when `qosStatus` is `UNAVAILABLE` and gives the reason. Documented values are `DURATION_EXPIRED`, `NETWORK_TERMINATED` and `DELETE_REQUESTED`.
+| Parameter | Description |
+| --- | --- |
+| `qosStatus` | Indicates the new status. In notifications the value is `AVAILABLE` or `UNAVAILABLE`. |
+| `statusInfo` | Is included when `qosStatus` is `UNAVAILABLE` and gives the reason. Documented values are `DURATION_EXPIRED`, `NETWORK_TERMINATED` and `DELETE_REQUESTED`. |
 
 ### Example notification payload
 

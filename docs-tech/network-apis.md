@@ -2,12 +2,13 @@
 hide_title: true
 title: Network APIs
 sidebar_position: 8
+description: Landing page for 5G-MAG's analysis of CAMARA network APIs for QoS, slicing and connectivity insight in media use cases.
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M4 13h5"/><path d="M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3"/><path d="M20 8v8"/><path d="M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -19,7 +20,7 @@ sidebar_position: 8
 Standardised APIs that let media applications request network capabilities like QoS, slicing and connectivity insight.
 </div>
 
-Mobile networks can expose selected capabilities (for example the ability to request a given quality of service, reserve a network slice, or check current connectivity) to outside applications through standardised, portable interfaces, instead of each operator offering its own proprietary interface. Network APIs are those interfaces, applied here to media use cases: they let a media application programmatically request the network conditions it needs, whether that is guaranteed bandwidth for a live production feed, a low-latency path for a real-time contribution link, or priority routing for a breaking news stream.
+Mobile networks can expose selected capabilities (for example the ability to request a given quality of service, reserve a network slice, or check current connectivity) to outside applications through standardised, portable interfaces, instead of each operator offering its own proprietary interface. Network APIs are those interfaces, applied here to media use cases: they let a media application programmatically request the network conditions it needs, whether that is guaranteed bandwidth for a live production feed, a low-latency path for a real-time contribution link, or priority routing for a breaking news stream. For acronyms used here, see the [Glossary](/tech/standards/glossary).
 
 5G-MAG's work centres on the CAMARA project (a Linux Foundation initiative with GSMA support) and its mapping to 3GPP-defined APIs, applied specifically to media production and live distribution use cases.
 
@@ -42,7 +43,7 @@ GSMA Open Gateway (OGW) API profiles align these CAMARA APIs across operators.
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
 <h3>Technology &amp; Analysis</h3>
 </div>
 <div class="godeeper-card__body">
@@ -55,7 +56,7 @@ GSMA Open Gateway (OGW) API profiles align these CAMARA APIs across operators.
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" /></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" /></svg>
 <h3>Standards Tracking</h3>
 </div>
 <div class="godeeper-card__body">
@@ -68,7 +69,7 @@ GSMA Open Gateway (OGW) API profiles align these CAMARA APIs across operators.
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
 <h3>Software Tools</h3>
 </div>
 <div class="godeeper-card__body">
@@ -162,7 +163,7 @@ The following resources are available:
 ## Related
 
 * [Standards: Network APIs](/tech/standards/network-apis). 5G-MAG's standards tracking and contributions on network capability exposure.
-* [Developer portal: Network APIs](https://developer.5g-mag.com/network-apis). The 5G-MAG reference tools implementing CAMARA-compliant clients.
+* [Developer portal: Network APIs](/developer/network-apis). The 5G-MAG reference tools implementing CAMARA-compliant clients.
 * [Streaming & Media Delivery](/tech/5gms). Related media delivery analysis on this portal.
 
 :::note

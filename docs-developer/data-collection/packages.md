@@ -2,11 +2,12 @@
 title: Packages
 hide_title: true
 sidebar_position: 3
+description: Lists the DCAF (Data Collection Application Function) container image package, for running it without building from source.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M14 3v4a1 1 0 0 0 1 1h4" />
   <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />
   <path d="M9 17l0 -5" />
@@ -25,7 +26,7 @@ This project provides or makes use of the following GitHub Container packages.
 
 The published container image lets you run the Data Collection Application Function (DCAF) without compiling it yourself. Use the pre-built image when you want to try the DCAF quickly or run it in a container environment; build from source instead when you need to modify the code or work from an unreleased branch. The [DCAF Docker and Insomnia tutorial](./tutorials/docker-with-insomnia) walks through running it.
 
-## UE Data Collection, Reporting and Event Exposure
+## UE data collection, reporting and event exposure
 
 Components | Package
  --|--

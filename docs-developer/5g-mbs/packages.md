@@ -2,11 +2,12 @@
 title: Packages
 hide_title: true
 sidebar_position: 3
+description: Lists the prebuilt GHCR container images for MBS, covering baseline Open5GS 5GC network functions, MBS-capable core NFs and the MBSTF.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M12 12l0 .01" />
   <path d="M14.828 9.172a4 4 0 0 1 0 5.656" />
   <path d="M17.657 6.343a8 8 0 0 1 0 11.314" />

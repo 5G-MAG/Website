@@ -2,12 +2,13 @@
 title: 5GMSd Features
 sidebar_position: 1
 hide_title: true
+description: Details 5G Media Streaming Downlink (5GMSd) features defined in TS 26.501/26.512, mapping each feature to its reference points and APIs.
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M7 4v16l13 -8l-13 -8"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -31,7 +32,7 @@ Documentation for Release 18 and Release 19 features (including Real-Time Commun
 :::
 
 :::note
-The 5G-MAG software implementing these features is available in the [5G Media Streaming Project](https://developer.5g-mag.com/5gms) on the developer portal. For the data-collection feature, see also the [UE Data Collection, Reporting and Event Exposure Project](https://developer.5g-mag.com/ue-data-collection-reporting-exposure). (Confirm the exact developer-portal paths with the maintainers before publishing.)
+The 5G-MAG software implementing these features is available in the [5G Media Streaming Project](/developer/5gms) on the developer portal. For the data-collection feature, see also the [UE Data Collection, Reporting and Event Exposure Project](/developer/data-collection). (Confirm the exact developer-portal paths with the maintainers before publishing.)
 :::
 
 Feature | Defined in (TS 26.501 clause) | Procedure (TS 26.501 clause) | APIs
@@ -55,14 +56,14 @@ Each feature below is presented with a table of the reference points and APIs th
 
 Two structural patterns recur. First, most features touch both M1 and M5: the Application Provider provisions the feature over M1, and the Media Session Handler then uses it over M5. Second, almost every feature depends on the **Provisioning Sessions API** (to create the session that other configurations attach to) and the **Service Access Information API** (so the client can discover how to use the feature). These two appear repeatedly and are the backbone of the runtime flow described in the [Overview](./overview-5gms#session-lifecycle-at-a-glance).
 
-One point on releases and API location: the tables reference the procedures in TS 26.510, which from Release 18 carries the provisioning and session-handling procedures generalised across the 5GMS and RTC systems. In the Release 17 layout on which the reference tools are based, the equivalent APIs are carried in TS 26.512 and TS 26.510 does not exist. The OpenAPI files linked below use the TS 26.512 Release 17 names; the [Scope page](https://developer.5g-mag.com/5gms) on the developer portal maps the Release 17 and Release 18 API filenames side by side.
+One point on releases and API location: the tables reference the procedures in TS 26.510, which from Release 18 carries the provisioning and session-handling procedures generalised across the 5GMS and RTC systems. In the Release 17 layout on which the reference tools are based, the equivalent APIs are carried in TS 26.512 and TS 26.510 does not exist. The OpenAPI files linked below use the TS 26.512 Release 17 names; the [Scope page](/developer/5gms) on the developer portal maps the Release 17 and Release 18 API filenames side by side.
 
 ## Feature: Content Hosting
 
 ### Description
 The content hosting feature provides a service equivalent to a Content Delivery Network (CDN) deployed inside or outside the Trusted Data Network (DN).
 
-<img src="./images/5GMS_ContentHosting.png" width="60%">
+<img loading="lazy" src="/img/tech/5gms/5GMS_ContentHosting.png" alt="Diagram of the 5GMS content hosting feature, showing content delivery hosted inside or outside the trusted data network, equivalent to a CDN" width="60%">
 
 ### Reference points and interactions (according to 3GPP TS 26.510)
 
@@ -82,7 +83,7 @@ M5 | 5.3.2 | [Service Access Information API](https://jdegre.github.io/loader.ht
 ### Description
 The network assistance feature enables the 5GMS Client in the UE to interrogate or manipulate the network Quality of Service (QoS) for an ongoing media streaming session. It defines two mechanisms for obtaining network assistance via interactions with the Policy Control Function (PCF) (AF-based network assistance) or via Access Network Bitrate Recommendation (ANBR) signalling interactions between the UE modem and the Radio Access Network (RAN) (ANBR-based network assistance).
 
-<img src="./images/5GMS_NetworkAssistance.png" width="60%">
+<img loading="lazy" src="/img/tech/5gms/5GMS_NetworkAssistance.png" alt="Diagram of the 5GMS network assistance feature, showing AF-based network assistance via the PCF and ANBR-based network assistance between the UE modem and RAN" width="60%">
 
 Both mechanisms make it possible to obtain:
 
@@ -108,7 +109,7 @@ M5 | 5.3.4 | [Network Assistance API](https://jdegre.github.io/loader.html?yaml=
 ### Description
 The dynamic policies feature enables the 5GMS Client in the UE to manipulate the network traffic handling policies for an ongoing media streaming session.
 
-<img src="./images/5GMS_DynamicPolicies.png" width="60%">
+<img loading="lazy" src="/img/tech/5gms/5GMS_DynamicPolicies.png" alt="Diagram of the 5GMS dynamic policies feature, showing the 5GMS Client manipulating network traffic handling policies for an ongoing media streaming session" width="60%">
 
 ### Reference points and interactions (according to 3GPP TS 26.510)
 
@@ -124,7 +125,7 @@ M5 | 5.3.3 | [Dynamic Policies API](https://jdegre.github.io/loader.html?yaml=TS
 ### Description
 The consumption reporting feature allows consumption of downlink media streaming to be logged by the 5GMS System and exposed for analysis.
 
-<img src="./images/5GMS_ConsumptionReporting.png" width="60%">
+<img loading="lazy" src="/img/tech/5gms/5GMS_ConsumptionReporting.png" alt="Diagram of the 5GMS consumption reporting feature, showing downlink media streaming consumption being logged by the 5GMS System and exposed for analysis" width="60%">
 
 ### Reference points and interactions (according to 3GPP TS 26.510)
 
@@ -141,7 +142,7 @@ M5 | 5.3.6 | [Consumption Reporting API](https://jdegre.github.io/loader.html?ya
 
 The Quality of Experience (QoE) metrics reporting feature enables the 5GMS System to log and expose streaming performance data for further analysis.
 
-<img src="./images/5GMS_MetricsReporting.png" width="60%">
+<img loading="lazy" src="/img/tech/5gms/5GMS_MetricsReporting.png" alt="Diagram of the 5GMS QoE metrics reporting feature, showing RAN-based reporting to the OAM system and AF-based reporting to the network-side 5GMS System" width="60%">
 
 The framework defines two distinct reporting paths:
 
@@ -173,7 +174,7 @@ M1 | 5.2.13 | [Event Data Processing provisioning API](https://jdegre.github.io/
 M5 | 5.3.5 | [Metrics Reporting API](https://jdegre.github.io/loader.html?yaml=TS26512_M5_MetricsReporting.yaml) | 9.5
 M5 | 5.3.6 | [Consumption Reporting API](https://jdegre.github.io/loader.html?yaml=TS26512_M5_ConsumptionReporting.yaml) | 9.6
 
-The event exposure that this feature enables is defined in the generic UE data collection framework, with the architecture in [TS 26.531](https://www.3gpp.org/dynareport/26531.htm) and the protocols and formats in [TS 26.532](https://www.3gpp.org/dynareport/26532.htm). See the [UE Data Collection, Reporting and Event Exposure](https://developer.5g-mag.com/ue-data-collection-reporting-exposure) project for the reference implementation.
+The event exposure that this feature enables is defined in the generic UE data collection framework, with the architecture in [TS 26.531](https://www.3gpp.org/dynareport/26531.htm) and the protocols and formats in [TS 26.532](https://www.3gpp.org/dynareport/26532.htm). See the [UE Data Collection, Reporting and Event Exposure](/developer/data-collection) project for the reference implementation.
 
 :::caution[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the TS 26.501 feature and procedure clauses in the overview table (4.0.2, 5.4, 4.0.5, 5.9, 4.0.6, 5.8, 4.0.8, 5.6, 4.0.9, 5.5, 4.0.10, clause 8, 4.0.11, 5.10, 4.0.12, 5.11); the TS 26.510 procedure clauses in the per-feature tables (5.2.2 to 5.2.13 and 5.3.2 to 5.3.6); and the TS 26.512 API clauses (8.2 to 8.13 and 9.2 to 9.6). Verify against the specific TS 26.501, TS 26.510 and TS 26.512 versions you are targeting.

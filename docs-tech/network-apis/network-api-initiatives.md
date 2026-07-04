@@ -2,12 +2,13 @@
 title: Network API Analysis
 sidebar_position: 3
 hide_title: true
+description: Indexes the CAMARA APIs 5G-MAG analyses and how they map onto underlying 3GPP NEF and PCF service-based interfaces.
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M4 13h5"/><path d="M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3"/><path d="M20 8v8"/><path d="M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -203,7 +204,7 @@ These identifiers on this page were not confirmed against a primary source (the 
 
 * [Network APIs (this portal)](/tech/network-apis). The parent landing page for all Network API analysis.
 * [Standards: Network APIs](/tech/standards/network-apis). 5G-MAG's standards tracking and contributions.
-* [Developer portal: Network APIs](https://developer.5g-mag.com/network-apis). The 5G-MAG reference tools.
+* [Developer portal: Network APIs](/developer/network-apis). The 5G-MAG reference tools.
 
 :::note
 Refer to the [Standards](https://github.com/5G-MAG/Standards/) repository to contribute to this documentation.

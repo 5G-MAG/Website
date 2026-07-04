@@ -2,11 +2,12 @@
 hide_title: true
 title: Introduction
 sidebar_position: -1
+description: Entry point to 5G-MAG's Technical Documentation, listing the topic areas covering 5G media, broadcast, and network technologies.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0"/><path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0"/><path d="M3 6l0 13"/><path d="M12 6l0 13"/><path d="M21 6l0 13"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -16,7 +17,7 @@ sidebar_position: -1
 
 This is the entry point to **5G-MAG's Technical Documentation**: specification analysis, implementation explainers, reports and videos covering 5G media and broadcast technologies.
 
-5G-MAG documentation spans three areas: this Technical Documentation section (specification analysis, explainers and videos), the Standards & Specifications section (5G-MAG's [feedback](/tech/standards/feedback), requirements and liaison statements to standards bodies), and the developer portal at https://developer.5g-mag.com (the open-source Reference Tools). This page covers the Technical Documentation section. If you are new here, Streaming & Media Delivery is the most developed area and a good place to start.
+5G-MAG documentation spans three areas: this Technical Documentation section (specification analysis, explainers and videos), the Standards & Specifications section (5G-MAG's [feedback](/tech/standards/feedback), requirements and liaison statements to standards bodies), and [the Developer Portal](/developer) (the open-source Reference Tools). This page covers the Technical Documentation section. If you are new here, Streaming & Media Delivery is the most developed area and a good place to start. For acronyms used here, see the [Glossary](/tech/standards/glossary).
 
 ## Topic Areas
 

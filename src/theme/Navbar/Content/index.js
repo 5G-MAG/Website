@@ -56,7 +56,7 @@ const TECH_RIGHT_ITEMS = [
 // navbar only needs links to each plus GitHub — none of the dev-portal- or
 // tech-specific items belong here.
 const HOME_LEFT_ITEMS = [
-  {to: '/tech', label: 'Technical Documentation & Standards Work', position: 'left'},
+  {to: '/tech', label: 'Technical Docs & Standards Work', position: 'left'},
   {to: '/developer', label: 'Software Accelerator', position: 'left'},
 ];
 

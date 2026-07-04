@@ -2,13 +2,14 @@
 title: Friday's Public Call
 hide_title: true
 sidebar_position: 5
+description: Details on joining 5G-MAG's open monthly public call for the Reference Tools community, including schedule, Zoom link, and calendar.
 ---
 
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M15 10l4.553 -2.069a1 1 0 0 1 1.447 .894v6.35a1 1 0 0 1 -1.447 .894l-4.553 -2.069v-4"/><path d="M3 8a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-8z"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -16,7 +17,11 @@ sidebar_position: 5
 </div>
 </div>
 
-* Join our Public Call on the **last Friday of the month at 13:00 CET/CEST**, with news and invited speakers.
+This is the open, public call for the Reference Tools developer community — anyone can join, no 5G-MAG membership required. It's where the community shares news and hosts invited speakers. If you're looking for the members-only working group that steers Reference Tools development day to day, see the [Development Working Group (WG DEV)](./community#how-to-get-involved) instead.
+
+## Joining
+
+* Join on the **last Friday of the month at 13:00 CET/CEST**, with news and invited speakers.
 
 * Agendas are circulated via the [Google Group](https://groups.google.com/g/5g-mag-reference-tools) mailing list
 

@@ -2,12 +2,13 @@
 hide_title: true
 title: Multicast & Broadcast in 5G
 sidebar_position: 4
+description: Overview of 5G Multicast and Broadcast Services (MBS), covering the three-layer architecture, key specifications and links to technical pages.
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M12 12l0 .01"/><path d="M14.828 9.172a4 4 0 0 1 0 5.656"/><path d="M17.657 6.343a8 8 0 0 1 0 11.314"/><path d="M9.168 14.828a4 4 0 0 1 0 -5.656"/><path d="M6.337 17.657a8 8 0 0 1 0 -11.314"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -19,7 +20,7 @@ sidebar_position: 4
 Native point-to-multipoint delivery in 5G NR for live TV, emergency alerts and mass content distribution.
 </div>
 
-5G Multicast and Broadcast Services (MBS) introduce native point-to-multipoint delivery into 5G New Radio (NR), standardised from 3GPP Release 17 onwards. Delivery can be point-to-multipoint (PTM), one transmission shared by many devices, or point-to-point (PTP), a separate copy per device, with the network choosing between them. Unlike LTE-based broadcast (evolved Multimedia Broadcast Multicast Service, eMBMS), 5G MBS is integrated directly into the 5G Core and Radio Access Network (RAN), enabling efficient distribution of identical content to many devices simultaneously, whether for live TV, emergency alerts, or software updates. 5G-MAG implements the MBS user service layer defined in 3GPP [TS 26.502](https://www.3gpp.org/dynareport/26502.htm), covering service announcement, session management, and media delivery.
+5G Multicast and Broadcast Services (MBS) introduce native point-to-multipoint delivery into 5G New Radio (NR), standardised from 3GPP Release 17 onwards. Delivery can be point-to-multipoint (PTM), one transmission shared by many devices, or point-to-point (PTP), a separate copy per device, with the network choosing between them. Unlike LTE-based broadcast (evolved Multimedia Broadcast Multicast Service, eMBMS), 5G MBS is integrated directly into the 5G Core and Radio Access Network (RAN), enabling efficient distribution of identical content to many devices simultaneously, whether for live TV, emergency alerts, or software updates. 5G-MAG implements the MBS user service layer defined in 3GPP [TS 26.502](https://www.3gpp.org/dynareport/26502.htm), covering service announcement, session management, and media delivery. For acronyms used here, see the [Glossary](/tech/standards/glossary).
 
 **Key specifications:** 3GPP TS 26.502 (MBS user services), [TS 23.247](https://www.3gpp.org/dynareport/23247.htm) (MBS architecture), [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) (5G Media Streaming, 5GMS, framework referenced for hybrid delivery), [TS 38.300](https://www.3gpp.org/dynareport/38300.htm) / [TS 38.331](https://www.3gpp.org/dynareport/38331.htm) (RAN procedures for broadcast mode).
 
@@ -31,7 +32,7 @@ Native point-to-multipoint delivery in 5G NR for live TV, emergency alerts and m
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
 <h3>Technology &amp; Analysis</h3>
 </div>
 <div class="godeeper-card__body">
@@ -45,7 +46,7 @@ Native point-to-multipoint delivery in 5G NR for live TV, emergency alerts and m
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" /></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" /></svg>
 <h3>Standards Tracking</h3>
 </div>
 <div class="godeeper-card__body">
@@ -58,7 +59,7 @@ Native point-to-multipoint delivery in 5G NR for live TV, emergency alerts and m
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
 <h3>Software Tools</h3>
 </div>
 <div class="godeeper-card__body">
@@ -73,7 +74,7 @@ Native point-to-multipoint delivery in 5G NR for live TV, emergency alerts and m
 
 [Execution Plan](https://github.com/orgs/5G-MAG/projects/44/views/8)
 
-The slide deck below summarises the 5G-MAG reference tools for 5G Multicast-Broadcast Services.
+The slide deck below summarises the 5G-MAG reference tools for 5G Multicast Broadcast Services.
 
 <iframe width="60%" height="520" src="/docs/Reference_Tools_5G_Multicast_Broadcast.pdf"></iframe>
 
@@ -97,7 +98,7 @@ Two distinctions recur across the pages and are worth fixing early, since the te
 
 The [RAN Aspects](./5g-mbs/ran-aspects) page keeps these separate in more detail.
 
-For the 3GPP specification list grouped by layer, see [Standards: 5G Multicast Broadcast Services](/tech/standards/5g-mbs). The [developer portal](https://developer.5g-mag.com/5g-multicast-broadcast-services/) covers what the reference software implements.
+For the 3GPP specification list grouped by layer, see [Standards: 5G Multicast Broadcast Services](/tech/standards/5g-mbs). The [developer portal](/developer/5g-mbs) covers what the reference software implements.
 
 ---
 

@@ -2,11 +2,12 @@
 hide_title: true
 title: Avatar Communications
 sidebar_position: 8
+description: "Tracks avatar communications standardisation: the MPEG Avatar Representation Format, Scene Description integration and the 3GPP IVAS audio codec."
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M6 6a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2l0 -4"/><path d="M12 2v2"/><path d="M9 12v9"/><path d="M15 12v9"/><path d="M5 16l4 -2"/><path d="M15 14l4 2"/><path d="M9 18h6"/><path d="M10 8v.01"/><path d="M14 8v.01"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -93,11 +94,15 @@ The following identifiers introduced on this page were not confirmed against a p
 Established citations on this page (ISO/IEC 23090-39, ISO/IEC 23090-14 and its Amendment 2, TS 26.114, and the IETF ARF RTP payload draft) are not part of this caution. The IVAS deliverable titles and the avatar study number (TR 26.813) are covered by the separate caution above and are not repeated here.
 :::
 
+## 5G-MAG tracking and contribution focus
+
+5G-MAG follows the standardisation of avatar communications and the associated immersive voice and audio work (ARF, MPEG-I Scene Description, IVAS, and the related 3GPP/IETF transport work) as it develops. This page does not document a specific 5G-MAG contribution or reference-implementation activity for avatar communications; check the [Standards](https://github.com/5G-MAG/Standards/) repository for the current status.
+
 ## Related Standards Work
 
 * [Standards: XR Media Integration](/tech/standards/xr)
 * [Standards: Real-Time Communications](/tech/standards/rtc)
 
 :::note
-Refer to the [Standards](https://github.com/5G-MAG/Standards/) repository for 5G-MAG contributions on avatar communications.
+Refer to the [Standards](https://github.com/5G-MAG/Standards/) repository to contribute to this documentation.
 :::

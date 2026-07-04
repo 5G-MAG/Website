@@ -3,11 +3,12 @@ hide_title: true
 sidebar_class_name: project-index-link
 title: V3C Immersive Platform
 sidebar_position: 11
+description: Overview of the V3C Immersive Platform, MPEG V3C reference tools for volumetric video encoding, streaming, and Unity-based rendering.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M4 8v-2a2 2 0 0 1 2 -2h2" />
   <path d="M4 16v2a2 2 0 0 0 2 2h2" />
   <path d="M16 4h2a2 2 0 0 1 2 2v2" />
@@ -29,13 +30,17 @@ Reference tools for volumetric video using MPEG V3C (ISO/IEC 23090-5), covering 
 
 Reference tools for volumetric video using MPEG V3C (ISO/IEC 23090-5), covering encoding with V-PCC (video-based point cloud compression) and MIV (MPEG Immersive Video) profiles, streaming, and real-time rendering in Unity. The platform provides an end-to-end pipeline for 3D object and scene delivery, allowing viewers to move freely around volumetric content. Developed in collaboration with MPEG member companies including InterDigital and Philips.
 
+:::tip[Where to start]
+Read the [Scope](./scope) to see what the V3C Immersive Platform implements.
+:::
+
 **Implemented specifications:** ISO/IEC 23090-5 (Visual Volumetric Video-based Coding (V3C) container and multiplexing, including video-based point cloud compression (V-PCC)), ISO/IEC 23090-12 (MPEG Immersive Video (MIV)), ISO/IEC 23090-10 (carriage of V3C data).
 
 ## Project Overview
 
 The slide deck below introduces the V3C Immersive Platform: the volumetric encoding, streaming, and Unity-based rendering pipeline, the specifications it implements, and how the components fit together. For the code and setup steps, use the buttons above (Scope, Project Roadmap, GitHub Repos, Tutorials).
 
-<iframe width="60%" height="560" src="../../docs/Reference_Tools_V3C_Immersive_Platform.pdf" title="V3C Immersive Platform project overview slide deck"></iframe>
+<iframe loading="lazy" width="60%" height="560" src="../../docs/Reference_Tools_V3C_Immersive_Platform.pdf" title="V3C Immersive Platform project overview slide deck"></iframe>
 
 <a class="button button--outline button--primary" href="/docs/Reference_Tools_V3C_Immersive_Platform.pdf" style="margin: 4px 0">Download the slide deck of this Project</a>
 
@@ -43,7 +48,7 @@ The slide deck below introduces the V3C Immersive Platform: the volumetric encod
 
 ## Go deeper
 
-| | |
+| Area | Details |
 |---|---|
 | **Technical documentation** | V3C, MIV, and volumetric delivery analysis: [Volumetric Video on the Tech portal](/tech/volumetric) |
 | **Standards** | ISO/IEC V3C specs and beyond-2D work items: [Volumetric Video on the Standards portal](/tech/standards/v3c) |

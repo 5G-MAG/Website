@@ -2,12 +2,13 @@
 title: CAMARA Application Profiles
 sidebar_position: 0
 hide_title: true
+description: Describes the CAMARA Application Profiles API, letting applications declare network quality and compute thresholds for other APIs to reference.
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M4 13h5"/><path d="M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3"/><path d="M20 8v8"/><path d="M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -98,7 +99,7 @@ A user of a media application would like to create an Application Profile with t
 The figure below places Application Profiles in the wider Connectivity Insights flow, so it shows more than the single creation step described here (the Application Profile is the first block; the later blocks belong to Connectivity Insights).
 
 <figure>
-  <img src="./content-production/images/figure_connectivityinsights.png" width="80%" alt="Sequence showing an Application Profile being created, then referenced by a Connectivity Insights network-quality check." />
+  <img loading="lazy" src="/img/tech/network-apis/content-production/figure_connectivityinsights.png" width="80%" alt="Sequence showing an Application Profile being created, then referenced by a Connectivity Insights network-quality check." />
   <figcaption>Application Profiles in the context of a Connectivity Insights check. This page covers only the profile-creation step; the remaining blocks are described on the Connectivity Insights page.</figcaption>
 </figure>
 

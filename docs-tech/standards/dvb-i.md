@@ -2,11 +2,12 @@
 hide_title: true
 title: DVB-I Services over 5G
 sidebar_position: 9
+description: Covers DVB-I service discovery and its deployment over 5G via unicast 5GMS, LTE-based 5G Broadcast, and hybrid delivery modes.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M3 9a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2l0 -9"/><path d="M16 3l-4 4l-4 -4"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -28,7 +29,7 @@ Delivery of DVB-I services over 5G can use several modes: unicast-based 5G Media
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
 <h3>Technology &amp; Analysis</h3>
 </div>
 <div class="godeeper-card__body">
@@ -41,7 +42,7 @@ Delivery of DVB-I services over 5G can use several modes: unicast-based 5G Media
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
 <h3>Software Tools</h3>
 </div>
 <div class="godeeper-card__body">
@@ -124,7 +125,7 @@ The 5G transport specifications that DVB-I over 5G relies on sit in the 3GPP 26-
 * [TS 26.512](https://www.3gpp.org/dynareport/26512.htm): 5G Media Streaming (5GMS); Protocols
 * [TS 26.511](https://www.3gpp.org/dynareport/26511.htm): 5G Media Streaming (5GMS); Profiles, codecs and formats
 
-For multicast/broadcast transport, the relevant 3GPP work is the 5G Multicast-Broadcast Services (MBS) user-service architecture, alongside the LTE-based broadcast profile published by ETSI:
+For multicast/broadcast transport, the relevant 3GPP work is the 5G Multicast Broadcast Services (MBS) user-service architecture, alongside the LTE-based broadcast profile published by ETSI:
 
 * [TS 26.502](https://www.3gpp.org/dynareport/26502.htm): 5G Multicast-Broadcast User Service Architecture (MBS)
 * [TS 23.247](https://www.3gpp.org/dynareport/23247.htm): Architectural enhancements for 5G multicast-broadcast services
@@ -195,5 +196,5 @@ These identifiers on this page were not confirmed against a primary source (the 
 * [Standards: Multimedia Content Delivery](/tech/standards/multimedia)
 
 :::note
-Refer to the [Standards](https://github.com/5G-MAG/Standards/) repository for 5G-MAG contributions on DVB-I over 5G.
+Refer to the [Standards](https://github.com/5G-MAG/Standards/) repository to contribute to this documentation.
 :::

@@ -1,12 +1,13 @@
 ---
 hide_title: true
 title: Time-Sensitive Communications
+description: How 3GPP Time-Sensitive Communications and the 5G-as-TSN-bridge model deliver deterministic timing for SMPTE ST 2110 media production.
 sidebar_position: 15
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M12 13m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"/><path d="M12 10l0 3l2 2"/><path d="M7 4l-2.75 2"/><path d="M17 4l2.75 2"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -28,7 +29,7 @@ TSC in a media context usually runs over a private 5G deployment. For the networ
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
 <h3>Technology &amp; Analysis</h3>
 </div>
 <div class="godeeper-card__body">
@@ -41,7 +42,7 @@ TSC in a media context usually runs over a private 5G deployment. For the networ
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l18 0"/><path d="M9 8l1 0"/><path d="M9 12l1 0"/><path d="M9 16l1 0"/><path d="M14 8l1 0"/><path d="M14 12l1 0"/><path d="M14 16l1 0"/><path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l18 0"/><path d="M9 8l1 0"/><path d="M9 12l1 0"/><path d="M9 16l1 0"/><path d="M14 8l1 0"/><path d="M14 12l1 0"/><path d="M14 16l1 0"/><path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16"/></svg>
 <h3>Software Tools</h3>
 </div>
 <div class="godeeper-card__body">
@@ -113,7 +114,7 @@ For an application (or a media production controller) to ask the 5G system for d
 
 Media production was not the original target for TSC, but it is a natural fit. The core requirements resemble industrial TSC (bounded latency, tight synchronisation), but the traffic is high-bitrate, uplink-dominant media rather than small industrial control packets. In a studio or venue, an NPN carries the 5G system, the TSN bridge model connects it to the wired ST 2110 infrastructure, and PTP (IEEE 802.1AS / SMPTE ST 2059) provides the shared clock so that essence flows from wireless cameras stay aligned with the wired plant. Whether the full TSN bridge and control plane are used, or only the deterministic-QoS and time-sync features without a wired TSN CNC, depends on the production architecture.
 
-## 5G-MAG Focus
+## 5G-MAG tracking and contribution focus
 
 5G-MAG tracks how these deterministic-delivery and time-synchronisation capabilities apply to professional media, in particular the transport of SMPTE ST 2110 essence over private 5G, the alignment of the 5G and PTP time domains, and the combination with Non-Public Networks. There is no dedicated 5G-MAG reference implementation for TSC; the area is followed through analysis and the standards work referenced here.
 
@@ -135,5 +136,5 @@ These identifiers on this page were not confirmed against a primary source (the 
 * [Technical Documentation: Time-Sensitive Communications](/tech/tsc): analysis documents and reference material on the developer/technical side
 
 :::note
-Refer to the [Standards](https://github.com/5G-MAG/Standards/) repository for 5G-MAG contributions on Time Sensitive Communications.
+Refer to the [Standards](https://github.com/5G-MAG/Standards/) repository to contribute to this documentation.
 :::

@@ -1,0 +1,40 @@
+---
+hide_title: true
+title: Tutorials
+sidebar_position: 3
+description: Landing page for Emergency Alerts tutorials, linking to the end-to-end setup guide and a video library of demo recordings.
+---
+
+import VideoGrid from '@site/src/components/VideoGrid';
+
+export const communityVideos = [
+  { id: 'hkVgL8yq0V8', title: 'Emergency Alerts over 5G Broadcast embedded in DVB-T2 at IBC 2025', by: 'Demo of emergency alerts over 5G Broadcast embedded in a DVB-T2 signal, shown at IBC 2025.' },
+  { id: 'O0qrTlmYKpA', title: 'Emergency Alerts over 5G Broadcast at FOKUS Media Web Symposium 2024', by: 'Demo of emergency alerts over 5G Broadcast, shown at the FOKUS Media Web Symposium 2024.' },
+];
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M12 8a2 2 0 0 1 2 2v4a2 2 0 1 1 -4 0v-4a2 2 0 0 1 2 -2" />
+  <path d="M17 15c.345 .6 1.258 1 2 1a2 2 0 1 0 0 -4a2 2 0 1 1 0 -4c.746 0 1.656 .394 2 1" />
+  <path d="M3 15c.345 .6 1.258 1 2 1a2 2 0 1 0 0 -4a2 2 0 1 1 0 -4c.746 0 1.656 .394 2 1" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">5G Broadcast: Emergency Alerts</span>
+<h1>Tutorials, Tests and Examples</h1>
+</div>
+</div>
+
+<div style={{margin: "8px 0"}}><a class="button button--outline button--primary" href="../scope" style={{margin: "2px 4px 2px 0"}}>Scope</a> <a class="button button--outline button--primary" href="../projects" style={{margin: "2px 4px 2px 0"}}>Project Roadmap</a> <a class="button button--outline button--primary" href="../repositories" style={{margin: "2px 4px 2px 0"}}>GitHub Repos</a> <a class="button button--outline button--primary" href="../releases" style={{margin: "2px 4px 2px 0"}}>Releases</a> <a class="button button--outline button--primary" href="." style={{margin: "2px 4px 2px 0"}}>Tutorials</a> <a class="button button--outline button--primary" href="#video-library" style={{margin: "2px 4px 2px 0"}}>Video Library</a></div>
+
+## [Tutorial: Emergency Alerts end-to-end setup](./end-to-end)
+
+This guide describes how to transmit emergency alerts over 5G Broadcast to a 5G Broadcast capable device using
+the [rt-mbms-tx-for-qrd-and-crd](https://github.com/5G-MAG/rt-mbms-tx-for-qrd-and-crd).
+
+## Video Library
+Our [YouTube channel](https://www.youtube.com/@5GMAG) hosts some practical videos provided by developers on the use of the Reference Tools.
+
+The videos below are recorded demonstrations from events, not step-by-step setup guides; for a hands-on walkthrough, use the end-to-end tutorial above.
+
+<VideoGrid videos={communityVideos} />

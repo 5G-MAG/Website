@@ -2,11 +2,12 @@
 title: Software Releases
 hide_title: true
 sidebar_position: 0
+description: Nightly-synced tables of the latest stable release for each 5G-MAG Reference Tools repository, grouped by project.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M5 5m0 1a1 1 0 0 1 1 -1h4.532a1 1 0 0 1 .707 .293l7.615 7.615a1 1 0 0 1 0 1.414l-4.998 4.998a1 1 0 0 1 -1.414 0l-7.615 -7.615a1 1 0 0 1 -.293 -.707z"/><path d="M9.5 9.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/></svg>
 </div>
 <div class="topic-banner__text">

@@ -2,11 +2,12 @@
 title: Scope
 hide_title: true
 sidebar_position: 0
+description: Describes the ISO/IEC 23090 V3C, V-PCC, and MIV specifications, architecture, and pipeline implemented by the V3C reference tools.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M4 8v-2a2 2 0 0 1 2 -2h2" />
   <path d="M4 16v2a2 2 0 0 0 2 2h2" />
   <path d="M16 4h2a2 2 0 0 1 2 2v2" />
@@ -88,7 +89,7 @@ A list of relevant specifications can be found in the link below.
 
 The diagram below shows the end-to-end V3C pipeline, from encoding source content into a V3C bitstream, through packaging and delivery, to decoding and rendering in the Unity player via the decoder plugin.
 
-<img src="/assets/images/projects/v3c_diagram.png" style="width: 80%" alt="Block diagram of the V3C Immersive Platform pipeline: encoder producing a V3C bitstream, delivery, and a Unity player using the V3C decoder plugin for real-time rendering." />
+<img loading="lazy" src="/assets/images/projects/v3c_diagram.png" style="width: 80%" alt="Block diagram of the V3C Immersive Platform pipeline: encoder producing a V3C bitstream, delivery, and a Unity player using the V3C decoder plugin for real-time rendering." />
 
 *Figure: high-level architecture of the V3C Immersive Platform, showing the encode, deliver, decode, and render stages.*
 

@@ -2,11 +2,12 @@
 title: 5G Broadcast
 sidebar_position: 1
 hide_title: true
+description: "Overview of the 5G Broadcast application: LTE-based TV/radio broadcast, emergency alerts, multimedia delivery, and DVB-I tooling."
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18.364 19.364a9 9 0 1 0 -12.728 0"/><path d="M15.536 16.536a5 5 0 1 0 -7.072 0"/><path d="M11 13a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18.364 19.364a9 9 0 1 0 -12.728 0"/><path d="M15.536 16.536a5 5 0 1 0 -7.072 0"/><path d="M11 13a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/></svg>
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Applications</span>

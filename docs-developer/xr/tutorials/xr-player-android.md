@@ -2,11 +2,12 @@
 title: XR Player - Android Smartphone
 hide_title: true
 sidebar_position: 1
+description: Step-by-step guide to build the XR Unity Player and MAF native library for Android and load glTF test content.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
   <path d="M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2" />
   <path d="M3 7v-2a2 2 0 0 1 2 -2h2" />
@@ -121,7 +122,7 @@ The script copies the following:
 
 Make sure all the *.so libraries are configured properly in the Unity Editor.
 
-<img src="/assets/images/xr/unity-configure-shared-libraries.png" alt="Configure shared libraries in Unity project" style="width:80%;">
+<img loading="lazy" src="/assets/images/xr/unity-configure-shared-libraries.png" alt="Configure shared libraries in Unity project" style="width:80%;">
 
 For each library, in the inspector panel:
 * *Android* platform must be checked
@@ -133,7 +134,7 @@ The configuration is stored in Unity's *.meta sidecar files and are tracked in t
 
 Open the `rt-xr-unity-player` directory as an existing project from Unity Hub.
 
-<img src="/assets/images/xr/unity-build-player.png" alt="Build the Unity project for Android" style="width:80%;">
+<img loading="lazy" src="/assets/images/xr/unity-build-player.png" alt="Build the Unity project for Android" style="width:80%;">
 
 Then in the Unity Editor:
 1. Locate the `File > Build Settings` menu 
@@ -178,7 +179,7 @@ Locate and launch the player.
 
 Expected result: at startup the player reads the *'Paths'* file and shows a menu listing the configured scenes; selecting a scene loads and renders it.
 
-<img src="/assets/images/xr/rt-xr-player-android-icon.jpg" alt="XR player application icon on the Android home screen" style="width:30%;"> <img src="/assets/images/xr/rt-xr-player-android-menu.jpg" alt="XR player startup menu listing the scenes from the Paths file" style="width:30%;">
+<img loading="lazy" src="/assets/images/xr/rt-xr-player-android-icon.jpg" alt="XR player application icon on the Android home screen" style="width:30%;"> <img loading="lazy" src="/assets/images/xr/rt-xr-player-android-menu.jpg" alt="XR player startup menu listing the scenes from the Paths file" style="width:30%;">
 
 *Figure: the XR player app icon (left) and the startup scene-selection menu built from the Paths file (right).*
 

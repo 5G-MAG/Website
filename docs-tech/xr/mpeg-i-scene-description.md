@@ -2,12 +2,13 @@
 title: MPEG-I Scene Description
 sidebar_position: 0
 hide_title: true
+description: "Explains the MPEG-I Scene Description model: its glTF 2.0 extensions, Presentation Engine/MAF architecture, buffer API, and editions."
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/><path d="M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2"/><path d="M3 7v-2a2 2 0 0 1 2 -2h2"/><path d="M3 17v2a2 2 0 0 0 2 2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M17 21h2a2 2 0 0 0 2 -2v-2"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -32,7 +33,7 @@ MPEG-I SD builds on glTF (GL Transmission Format), which was chosen as the base 
 MPEG-I SD defines the following reference architecture. It shows how a scene flows from the media source, through the Media Access Function (MAF) and Buffers, to the Presentation Engine that renders it. The figure below sets out these components and their connections.
 
 <figure>
-  <img src="./images/mpeg-i-sd-0.png" alt="MPEG-I Scene Description reference architecture: the Presentation Engine requests media through the MAF API from the Media Access Function, which fills the Buffers that feed rendering." width="80%">
+  <img loading="lazy" src="/img/tech/xr/mpeg-i-sd-0.png" alt="MPEG-I Scene Description reference architecture: the Presentation Engine requests media through the MAF API from the Media Access Function, which fills the Buffers that feed rendering." width="80%">
   <figcaption>MPEG-I Scene Description reference architecture: Presentation Engine, Media Access Function (MAF) and Buffers.</figcaption>
 </figure>
 
@@ -48,7 +49,7 @@ A glTF extension is a named, optional addition to the base glTF format that lets
 The figure groups the extensions by colour: the green group adds the timed framework, the blue group adds dynamic and temporal media, and the purple group adds real-time immersive and interactive media. The three groups are also listed in prose below, so the grouping does not depend on the colours.
 
 <figure>
-  <img src="./images/mpeg-i-sd-1.png" alt="MPEG vendor extensions to glTF 2.0, grouped by colour: green for the timed framework, blue for dynamic and temporal media, and purple for real-time immersive and interactive media." width="80%">
+  <img loading="lazy" src="/img/tech/xr/mpeg-i-sd-1.png" alt="MPEG vendor extensions to glTF 2.0, grouped by colour: green for the timed framework, blue for dynamic and temporal media, and purple for real-time immersive and interactive media." width="80%">
   <figcaption>MPEG vendor extensions to glTF 2.0, grouped by purpose (green: timed framework; blue: dynamic and temporal media; purple: real-time immersive and interactive media).</figcaption>
 </figure>
 
@@ -96,7 +97,7 @@ ISO/IEC 23090-14 has evolved since its first publication:
 * **Amendment 2** (in development at the time of writing). Adds support for haptics, augmented reality, avatars, interactivity, MPEG-I audio and lighting; several of the purple-group extensions above (`MPEG_anchor`, the interactivity extensions, `MPEG_avatar`, the lighting extensions, `MPEG_haptic`) originate here.
 * **Second edition (2025).** Consolidates the base text and amendments into a single document.
 
-Because features arrived across editions and amendments, a given implementation may support only a subset of the extensions. The developer-facing support matrix for the 5G-MAG reference tools is on the [XR scope page](https://hub.5g-mag.com/developer/xr/scope).
+Because features arrived across editions and amendments, a given implementation may support only a subset of the extensions. The developer-facing support matrix for the 5G-MAG reference tools is on the [XR scope page](/developer/xr/scope).
 
 ## Relationship to 3GPP delivery
 

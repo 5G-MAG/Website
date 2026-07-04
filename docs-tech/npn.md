@@ -2,12 +2,13 @@
 hide_title: true
 title: Non-Public Networks
 sidebar_position: 9
+description: Private 5G (SNPN and PNI-NPN) deployment models, identity/onboarding, and QoS/spectrum considerations for live production.
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M3 21l18 0"/><path d="M9 8l1 0"/><path d="M9 12l1 0"/><path d="M9 16l1 0"/><path d="M14 8l1 0"/><path d="M14 12l1 0"/><path d="M14 16l1 0"/><path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -19,7 +20,7 @@ sidebar_position: 9
 Private 5G deployments for live production, replacing legacy satellite, ISDN and fibre contribution links.
 </div>
 
-Non-Public Networks (NPNs) are private 5G deployments operated for a specific organisation or use case, defined in 3GPP Release 16. In media production, NPNs allow broadcasters to deploy dedicated 5G infrastructure for live production workflows, replacing legacy contribution links (satellite, ISDN, fibre) with a programmable, low-latency wireless fabric. 5G-MAG's work covers deployment models, spectrum access strategies, User Equipment (UE) registration and on-boarding, and the specific requirements of live production environments such as time-sensitive communications.
+Non-Public Networks (NPNs) are private 5G deployments operated for a specific organisation or use case, defined in 3GPP Release 16. In media production, NPNs allow broadcasters to deploy dedicated 5G infrastructure for live production workflows, replacing legacy contribution links (satellite, ISDN, fibre) with a programmable, low-latency wireless fabric. 5G-MAG's work covers deployment models, spectrum access strategies, User Equipment (UE) registration and on-boarding, and the specific requirements of live production environments such as time-sensitive communications. For acronyms used here, see the [Glossary](/tech/standards/glossary).
 
 There are two deployment models, and the plain-language names map to the 3GPP terms as follows: a standalone NPN is a fully independent private network (Stand-alone Non-Public Network, SNPN), while an NPN integrated with a public network reuses the operator's Public Land Mobile Network (PLMN) with private access control (Public Network Integrated NPN, PNI-NPN, which uses a Closed Access Group, CAG, to restrict which devices may connect).
 
@@ -33,7 +34,7 @@ There are two deployment models, and the plain-language names map to the 3GPP te
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
 <h3>Technology &amp; Analysis</h3>
 </div>
 <div class="godeeper-card__body">
@@ -43,7 +44,7 @@ There are two deployment models, and the plain-language names map to the 3GPP te
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" /></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" /></svg>
 <h3>Standards Tracking</h3>
 </div>
 <div class="godeeper-card__body">
@@ -56,7 +57,7 @@ There are two deployment models, and the plain-language names map to the 3GPP te
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l18 0"/><path d="M9 8l1 0"/><path d="M9 12l1 0"/><path d="M9 16l1 0"/><path d="M14 8l1 0"/><path d="M14 12l1 0"/><path d="M14 16l1 0"/><path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l18 0"/><path d="M9 8l1 0"/><path d="M9 12l1 0"/><path d="M9 16l1 0"/><path d="M14 8l1 0"/><path d="M14 12l1 0"/><path d="M14 16l1 0"/><path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16"/></svg>
 <h3>Software Tools</h3>
 </div>
 <div class="godeeper-card__body">
@@ -70,9 +71,13 @@ There are two deployment models, and the plain-language names map to the 3GPP te
 
 ## Deployment models in detail
 
-**SNPN (Stand-alone Non-Public Network).** The SNPN operates its own 5G core and is not dependent on any PLMN. It is identified by the pair (PLMN ID, NID). Two NID assignment models exist: a locally managed NID (chosen by the operator of the SNPN, not guaranteed unique) and a universally managed NID (coordinated to be globally unique). The UE performs SNPN-specific network selection: it reads the available SNPNs from broadcast system information and matches them against its configured list, using either automatic or manual selection mode. Because the organisation runs the core, it controls the Unified Data Management (UDM), Policy Control Function (PCF) and Session Management Function (SMF) configuration directly, which is what makes tight QoS and slicing policy for production traffic practical.
+The two models differ in who operates the core, how the network is identified, and how isolation or access control is achieved:
 
-**PNI-NPN (Public Network Integrated NPN).** The NPN is realised through a PLMN. Isolation is achieved by one or more of: a dedicated DNN, a dedicated Network Slice instance (identified by an S-NSSAI), and a Closed Access Group (CAG). A CAG is advertised by cells in their broadcast information; a UE that is a member of the CAG (per its CAG configuration in the subscription) may camp on and access those cells, while non-members are barred. The CAG mechanism therefore provides cell-level access control, whereas slicing provides logical traffic separation inside the core. In practice a media PNI-NPN combines both: a CAG to keep unauthorised devices off the production cells, and a slice to isolate and dimension the production traffic.
+| | **SNPN** (Stand-alone Non-Public Network) | **PNI-NPN** (Public Network Integrated NPN) |
+|---|---|---|
+| **Who operates the core** | Operates its own 5G core and is not dependent on any PLMN. Because the organisation runs the core, it controls the Unified Data Management (UDM), Policy Control Function (PCF) and Session Management Function (SMF) configuration directly, which is what makes tight QoS and slicing policy for production traffic practical. | The NPN is realised through a PLMN — i.e. the public network operator's core. |
+| **How the network is identified** | Identified by the pair (PLMN ID, NID). Two NID assignment models exist: a locally managed NID (chosen by the operator of the SNPN, not guaranteed unique) and a universally managed NID (coordinated to be globally unique). | Identified as part of the host PLMN. |
+| **How isolation / access control is achieved** | The UE performs SNPN-specific network selection: it reads the available SNPNs from broadcast system information and matches them against its configured list, using either automatic or manual selection mode. | Achieved by one or more of: a dedicated DNN, a dedicated Network Slice instance (identified by an S-NSSAI), and a Closed Access Group (CAG). A CAG is advertised by cells in their broadcast information; a UE that is a member of the CAG (per its CAG configuration in the subscription) may camp on and access those cells, while non-members are barred. The CAG mechanism therefore provides cell-level access control, whereas slicing provides logical traffic separation inside the core. In practice a media PNI-NPN combines both: a CAG to keep unauthorised devices off the production cells, and a slice to isolate and dimension the production traffic. |
 
 ## Identity, credentials and onboarding
 

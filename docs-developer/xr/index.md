@@ -3,11 +3,12 @@ hide_title: true
 sidebar_class_name: project-index-link
 title: XR and MPEG-I Scene Description
 sidebar_position: 12
+description: Reference player and server for eXtended Reality (XR) content delivered over 5G networks, implementing MPEG-I Scene Description.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
   <path d="M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2" />
   <path d="M3 7v-2a2 2 0 0 1 2 -2h2" />
@@ -30,17 +31,17 @@ Reference player and server for eXtended Reality (XR) content delivered over 5G 
 
 **Implemented specifications:** ISO/IEC 23090-14 (MPEG-I Scene Description, the format that describes how 3D objects, media and audio are composed into a scene); 3GPP [TR 26.928](https://www.3gpp.org/dynareport/26928.htm) (Extended Reality (XR) in 5G, the study of XR use cases and requirements); TS 26.512 (the 5GMS transport layer used to deliver the scene and its media).
 
-### Where to start
-
+:::tip[Where to start]
 - **Scope** for the implemented features and the specifications in scope: see [Scope](./scope).
 - **Repositories** for the source code of the player, server and content: see [GitHub Repos](./repositories).
 - **Tutorials** to build and run the player and to author test content: see [Tutorials](./tutorials).
+:::
 
 ## Project Overview
 
 The slide deck below introduces the project: what XR media with MPEG-I Scene Description is, the reference tools involved, and how they fit together over 5G.
 
-<iframe width="60%" height="520" src="../../docs/Reference_Tools_XR_Media_MPEG_I_SD.pdf"></iframe>
+<iframe loading="lazy" width="60%" height="520" src="../../docs/Reference_Tools_XR_Media_MPEG_I_SD.pdf"></iframe>
 
 <a class="button button--outline button--primary" href="/docs/Reference_Tools_XR_Media_MPEG_I_SD.pdf" style="margin: 4px 0">Download the slide deck of this Project</a>
 
@@ -48,7 +49,7 @@ The slide deck below introduces the project: what XR media with MPEG-I Scene Des
 
 ## Go deeper
 
-| | |
+| Area | Details |
 |---|---|
 | **Technical documentation** | MPEG-I Scene Description overview and analysis: [XR on the Tech portal](/tech/xr) |
 | **Standards** | ISO/IEC 23090-14, 3GPP XR work items: [XR on the Standards portal](/tech/standards/xr) |

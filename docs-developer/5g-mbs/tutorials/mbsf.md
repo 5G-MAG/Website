@@ -2,11 +2,12 @@
 title: MBSF Operation & APIs
 hide_title: true
 sidebar_position: 1
+description: Covers CRUD operations for MBS User Services and Data Ingest Sessions on the MBSF via the Nmb10 API using curl.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M12 12l0 .01" />
   <path d="M14.828 9.172a4 4 0 0 1 0 5.656" />
   <path d="M17.657 6.343a8 8 0 0 1 0 11.314" />
@@ -19,7 +20,7 @@ sidebar_position: 1
 </div>
 </div>
 
-The MBS Function is responsible for controlling the MBS User Services sessions. It does this by managing MBS Sessions with the MB-SMF, managing MBS Distribution Sessions with the MBSTF(s) and creating and propagating the User Service Announcements. 
+The MBS Function is responsible for controlling the MBS User Services sessions. It does this by managing MBS Sessions with the MB-SMF, managing MBS Distribution Sessions with the MBSTF(s) and creating and propagating the User Service Announcements. For acronyms used here, see the [Glossary](/developer/glossary).
 
 The MBSF is configured by an Application Provider using the API at reference point Nmb10. This tutorial covers the use of the APIs at Nmb10 to configure the MBSF.
 

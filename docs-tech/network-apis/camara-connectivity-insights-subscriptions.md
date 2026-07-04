@@ -2,12 +2,13 @@
 title: CAMARA Connectivity Insights Subscriptions
 sidebar_position: 2
 hide_title: true
+description: Describes the CAMARA Connectivity Insights Subscriptions API, which pushes event notifications when a device's network quality changes.
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M4 13h5"/><path d="M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3"/><path d="M20 8v8"/><path d="M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -56,7 +57,7 @@ As with the one-shot API, the payload is qualitative (per-threshold indications 
 A user of a media application would like to obtain Connectivity Insights events. An example figure is shown in the context of using Application Profiles and Connectivity Insights. The following steps are executed:
 
 <figure>
-  <img src="./content-production/images/figure_connectivityinsights.png" width="80%" alt="Sequence showing an Application Profile being created, then a subscription that delivers recurring network-quality notifications." />
+  <img loading="lazy" src="/img/tech/network-apis/content-production/figure_connectivityinsights.png" width="80%" alt="Sequence showing an Application Profile being created, then a subscription that delivers recurring network-quality notifications." />
   <figcaption>An Application Profile is created first (Step 0), then a subscription is created (Step 1) that delivers recurring network-quality notifications.</figcaption>
 </figure>
 
@@ -152,10 +153,13 @@ This is how a device is defined:
 With **POST /subscriptions**
 
 The request below creates a subscription. The key fields are:
-* `sink` - the callback URL to which the network delivers notifications (the consumer's endpoint must accept HTTP POST).
-* `sinkCredential` - the credential the API provider uses to authenticate against that endpoint (empty here).
-* `types` - the event types the consumer subscribes to (here, network-quality change events).
-* `initialEvent` - when `true`, an event is sent immediately on subscription so the consumer has a baseline before any change occurs.
+
+| Parameter | Description |
+| --- | --- |
+| `sink` | the callback URL to which the network delivers notifications (the consumer's endpoint must accept HTTP POST). |
+| `sinkCredential` | the credential the API provider uses to authenticate against that endpoint (empty here). |
+| `types` | the event types the consumer subscribes to (here, network-quality change events). |
+| `initialEvent` | when `true`, an event is sent immediately on subscription so the consumer has a baseline before any change occurs. |
 
 ```
 {

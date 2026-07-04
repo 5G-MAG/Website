@@ -2,11 +2,12 @@
 title: Roadmap
 hide_title: true
 sidebar_position: 1
+description: Links to the GitHub Kanban board tracking planned and in-progress work for the DVB-I over 5G reference tools.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M3 9a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2l0 -9" />
   <path d="M16 3l-4 4l-4 -4" /></svg>
 </div>
@@ -21,10 +22,13 @@ sidebar_position: 1
 This page links to the public roadmap board tracking planned and in-progress work for the DVB-I over 5G Reference Tools.
 
 ## General Project Roadmap
+
+The Kanban board below tracks the planned and in-progress work for the DVB-I over 5G reference tools (service discovery and programme metadata, and their unicast, broadcast, and hybrid delivery paths). It is maintained live on GitHub.
+
 [Kanban board: Roadmap](https://github.com/orgs/5G-MAG/projects/48/views/11)
 
 ## Related
 
 * [Scope](./scope) - specifications in scope and high-level architectures
 * [Software Repositories](./repositories) - the source repositories for these tools
-* [Tutorials](./tutorials) - guides and examples
+* [Tutorials](./tutorials) - demo videos and repository pointers

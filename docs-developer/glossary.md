@@ -2,11 +2,12 @@
 title: Glossary
 sidebar_position: 99
 hide_title: true
+description: Glossary of acronyms and terms used across the developer portal, from 5G Core functions to media streaming reference points.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M19 4v16h-11a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h11z"/><path d="M19 16h-12a2 2 0 0 0 -2 2"/><path d="M9 8h6"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -21,11 +22,19 @@ This glossary collects the acronyms and terms that recur across the developer po
 **AF (Application Function)**
 A network function that interacts with the 5G Core to influence traffic handling and to request services on behalf of an application.
 
+**AMF (Access and Mobility Management Function)**
+A 5G Core function that handles UE registration, connection and mobility management, reachability, and access authentication and authorization.
+
 **ARF (Avatar Representation Format)**
 An MPEG format for describing and exchanging avatars so that they can be rendered consistently across systems.
 
 **AS (Application Server)**
 A server that hosts application logic or content and communicates with clients, often sitting behind or alongside 5G media functions.
+
+## B
+
+**BSF (Binding Support Function)**
+A 5G Core function that records which PCF is handling a given UE's policy session, so that other functions (such as an NEF or AF) can discover the right PCF to contact.
 
 ## C
 
@@ -48,7 +57,13 @@ A function that collects, buffers and reports application and device data for an
 **eMBMS (evolved Multimedia Broadcast Multicast Service)**
 The LTE-era broadcast and multicast delivery system, predecessor to 5G multicast and broadcast services.
 
+**EPC (Evolved Packet Core)**
+The core network architecture used with LTE (4G), providing mobility management, session management and gateway functions; the predecessor to the 5G Core.
+
 ## F
+
+**FeMBMS (Further evolved MBMS)**
+Release 14 enhancements to eMBMS supporting larger-scale, single-frequency-network terrestrial broadcast, including reception without a SIM or subscription.
 
 **FLUTE (File Delivery over Unidirectional Transport)**
 A protocol for reliably delivering files over one-way (broadcast or multicast) transport.
@@ -71,6 +86,9 @@ A 3GPP framework for delivering the same content to many devices at once over br
 **MBS (Multicast/Broadcast Services)**
 The 5G system feature set for delivering content to groups of devices using multicast or broadcast, rather than one stream per device.
 
+**MB-SMF (Multicast/Broadcast Session Management Function), MB-UPF (Multicast/Broadcast User Plane Function), MBSF (MBS Function), MBSTF (MBS Transport Function)**
+The 5G Core functions that support MBS delivery. The MB-SMF and MB-UPF are multicast/broadcast-aware counterparts of the SMF and UPF, managing and carrying MBS sessions in the core network. The MBSF controls MBS User Services and Service Announcements on behalf of an application provider. The MBSTF handles application-layer delivery of MBS data (for example object distribution) down to the MB-UPF. These functions are linked by 3GPP-defined reference points — including N2, N3, N4, N11, N16, N19mb, N29mb, and the Nmb1/Nmb2/Nmb5/Nmb8/Nmb9/Nmb10 interfaces (see TS 23.247) — which are not each given a separate glossary entry here.
+
 **MIV (MPEG Immersive Video)**
 An MPEG coding approach for immersive video that supports viewing from multiple positions and directions.
 
@@ -81,6 +99,9 @@ A 5G Core function that securely exposes network capabilities and events to auth
 
 **NPN (Non-Public Network)**
 A 5G network deployed for the needs of a specific organisation or site rather than for the general public.
+
+**NRF (Network Repository Function)**
+A 5G Core function that maintains a registry of available network function instances and their profiles, and supports discovery between functions.
 
 **NTN (Non-Terrestrial Network)**
 A network that uses satellites or other airborne or spaceborne platforms to provide connectivity.
@@ -120,6 +141,15 @@ Low-latency, interactive media communication such as live conversational audio a
 **SA1 / SA2 / SA4**
 3GPP working groups: SA1 handles service requirements, SA2 handles system architecture, and SA4 handles media codecs, formats and delivery.
 
+**SCEF (Service Capability Exposure Function)**
+The EPC-era function that securely exposes network capabilities to external applications; the predecessor to the 5G Core's NEF.
+
+**SCP (Service Communication Proxy)**
+A 5G Core function that provides indirect communication between network functions, handling message routing, discovery and load balancing on their behalf.
+
+**SMF (Session Management Function)**
+A 5G Core function that manages PDU sessions (establishing, modifying and releasing them), allocates UE IP addresses, and selects and controls the UPF for a session.
+
 ## T
 
 **TMGI (Temporary Mobile Group Identity)**
@@ -132,6 +162,9 @@ Communication with strict timing and reliability guarantees, used for applicatio
 
 **UE (User Equipment)**
 The end-user device (for example a phone, tablet or module) that connects to the mobile network.
+
+**UPF (User Plane Function)**
+A 5G Core function that handles user-plane traffic: packet routing and forwarding, QoS enforcement, and interconnection to external data networks.
 
 ## V
 

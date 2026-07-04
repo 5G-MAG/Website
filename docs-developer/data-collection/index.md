@@ -3,11 +3,12 @@ hide_title: true
 sidebar_class_name: project-index-link
 title: UE Data Collection, Reporting and Exposure
 sidebar_position: 10
+description: Introduces the UE Data Collection, Reporting and Event Exposure project (3GPP TS 26.531/26.532), linking to scope, repos and tutorials.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M14 3v4a1 1 0 0 0 1 1h4" />
   <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />
   <path d="M9 17l0 -5" />
@@ -29,13 +30,13 @@ Reference implementation of the User Equipment (UE) side data collection, report
 
 **Implemented specifications:** 3GPP TS 26.531 (data collection and reporting framework), [TS 26.532](https://www.3gpp.org/dynareport/26532.htm) (data collection client procedures), [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) (5GMS AF interfaces for data reporting submission). The interfaces these specifications define are referred to on the [Scope](./scope) page by their reference-point names R1 to R6.
 
-:::tip[New here?]
+:::tip[Where to start]
 Read the [Scope](./scope) page for what is being implemented, then follow the [DCAF Docker and Insomnia tutorial](./tutorials/docker-with-insomnia) to run it.
 :::
 
 ## Project Overview
 
-<iframe width="60%" height="560" src="../../docs/Reference_Tools_UE_data_collection.pdf"></iframe>
+<iframe loading="lazy" width="60%" height="560" src="../../docs/Reference_Tools_UE_data_collection.pdf"></iframe>
 
 <a class="button button--outline button--primary" href="/docs/Reference_Tools_UE_data_collection.pdf" style="margin: 4px 0">Download the slide deck of this Project</a>
 
@@ -43,7 +44,7 @@ Read the [Scope](./scope) page for what is being implemented, then follow the [D
 
 ## Go deeper
 
-| | |
+| Area | Details |
 |---|---|
 | **Technical documentation** | Data collection architecture and event exposure interfaces: [UE Data Collection on the Tech portal](/tech/data-collection/data-collection-event-exposure) |
 | **Standards** | TS 26.531/532 and event exposure specs: [UE Data Collection on the Standards portal](/tech/standards/data-collection) |

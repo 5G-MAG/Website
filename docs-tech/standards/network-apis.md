@@ -1,12 +1,13 @@
 ---
 hide_title: true
 title: Network APIs
+description: How CAMARA network APIs map to 3GPP's NEF, CAPIF and PCF exposure mechanisms for media QoS, slicing and connectivity insights.
 sidebar_position: 11
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M4 13h5"/><path d="M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3"/><path d="M20 8v8"/><path d="M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -94,7 +95,7 @@ APIs are shipped in twice-yearly meta-releases (spring and fall), each bundling 
 
 The mappings above are the general correspondence; CAMARA does not mandate a specific southbound implementation, and an operator may realise a given API differently. The detailed, per-field analysis is on the [technical pages](/tech/network-apis/network-api-initiatives).
 
-## 5G-MAG's tracking and contribution focus
+## 5G-MAG tracking and contribution focus
 
 5G-MAG's interest is media-specific: contribution and live production uplinks, and live distribution downlinks, where an application benefits from asking the network for a defined quality rather than accepting best effort. The work centres on:
 
@@ -104,11 +105,7 @@ The mappings above are the general correspondence; CAMARA does not mandate a spe
 
 ## Reference Tools
 
-For the reference implementation (CAMARA QoD, Connectivity Insights and Network Slice Booking APIs, plus 3GPP TS 23.434 SEAL), see [Network APIs on the developer portal](https://developer.5g-mag.com).
-
-:::caution[Confirm the exact link]
-The previous link pointed at the standards host (hub.5g-mag.com) while labelled "Developer Portal", so the label and host did not match. It now points at the developer portal base. Confirm the exact developer-portal path for Network APIs (for example a `/network-apis` slug) before publication and update the link.
-:::
+For the reference implementation (CAMARA QoD, Connectivity Insights and Network Slice Booking APIs, plus 3GPP TS 23.434 SEAL), see [Network APIs on the developer portal](/developer/network-apis).
 
 :::caution[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TS 24.549 (SEAL NSCE Stage 3), TS 28.531 and TS 28.541 (network slice management), TS 29.520 (NWDAF services). Verify against the 3GPP work plan before publication.
@@ -119,5 +116,5 @@ These identifiers on this page were not confirmed against a primary source (the 
 * [Standards: 5G Media Streaming](/tech/standards/5gms)
 
 :::note
-Refer to the [Standards](https://github.com/5G-MAG/Standards/) repository for 5G-MAG contributions on Network APIs.
+Refer to the [Standards](https://github.com/5G-MAG/Standards/) repository to contribute to this documentation.
 :::

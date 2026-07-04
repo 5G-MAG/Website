@@ -1,12 +1,13 @@
 ---
 hide_title: true
 title: Multimedia Delivery Protocols
+description: Overview of FLUTE and ROUTE, the one-way transports carrying DASH, HLS and CMAF media over broadcast and multicast networks.
 sidebar_position: 10
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1"/><path d="M9 15l3 -3l3 3"/><path d="M12 12l0 9"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -26,7 +27,7 @@ Multimedia content delivery over broadcast and multicast networks relies on tran
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
 <h3>Technology &amp; Analysis</h3>
 </div>
 <div class="godeeper-card__body">
@@ -39,7 +40,7 @@ Multimedia content delivery over broadcast and multicast networks relies on tran
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
 <h3>Software Tools</h3>
 </div>
 <div class="godeeper-card__body">
@@ -54,7 +55,7 @@ Multimedia content delivery over broadcast and multicast networks relies on tran
 
 ## The work area
 
-Two layers matter when media is delivered over broadcast or multicast. The **object/segment format** describes how media is packaged and addressed (for example DASH, HLS and CMAF), and the **unidirectional transport** describes how those objects reach receivers when there is no per-receiver return path (FLUTE and ROUTE). On a bidirectional (unicast) network, DASH and HLS clients simply pull segments over HTTP. On a broadcast or multicast bearer there is no per-receiver acknowledgement, so the same segments are carried by a one-way transport that layers reliability on top of UDP/IP multicast. 5G-MAG's work sits mainly at this transport layer, delivering DASH-, HLS- or CMAF-packaged content over 5G Broadcast (LTE-based) and 5G Multicast-Broadcast Services (MBS).
+Two layers matter when media is delivered over broadcast or multicast. The **object/segment format** describes how media is packaged and addressed (for example DASH, HLS and CMAF), and the **unidirectional transport** describes how those objects reach receivers when there is no per-receiver return path (FLUTE and ROUTE). On a bidirectional (unicast) network, DASH and HLS clients simply pull segments over HTTP. On a broadcast or multicast bearer there is no per-receiver acknowledgement, so the same segments are carried by a one-way transport that layers reliability on top of UDP/IP multicast. 5G-MAG's work sits mainly at this transport layer, delivering DASH-, HLS- or CMAF-packaged content over 5G Broadcast (LTE-based) and 5G Multicast Broadcast Services (MBS).
 
 ### Unidirectional transports
 
@@ -88,7 +89,7 @@ A typical broadcast/multicast media chain packages content as DASH or HLS using 
 
 ## 5G-MAG tracking and contribution focus
 
-5G-MAG tracks these transport and format specifications and maintains open-source implementations, notably a FLUTE library used in its 5G Broadcast tools, so that DASH/HLS/CMAF content can be delivered over both 5G Broadcast and 5G MBS. The deeper technical view (session structure, FDT, FEC and object recovery) is on the [Tech portal](/tech/multimedia/multimedia-content-delivery); the reference tooling is described on the [Developer portal](https://developer.5g-mag.com). Contributions to this documentation are made through the [5G-MAG Standards repository](https://github.com/5G-MAG/Standards/).
+5G-MAG tracks these transport and format specifications and maintains open-source implementations, notably a FLUTE library used in its 5G Broadcast tools, so that DASH/HLS/CMAF content can be delivered over both 5G Broadcast and 5G MBS. The deeper technical view (session structure, FDT, FEC and object recovery) is on the [Tech portal](/tech/multimedia/multimedia-content-delivery); the reference tooling is described on the [Developer portal](/developer/multimedia). Contributions to this documentation are made through the [5G-MAG Standards repository](https://github.com/5G-MAG/Standards/).
 
 ## Related IETF Specifications
 
@@ -108,7 +109,7 @@ These identifiers on this page were not confirmed against a primary source (the 
 * [Standards: 5G Broadcast](/tech/standards/5g-broadcast)
 * [Standards: 5G Multicast & Broadcast Services](/tech/standards/5g-mbs)
 * [Standards: DVB-I over 5G](/tech/standards/dvb-i)
-* [Developer portal: Reference Tools](https://developer.5g-mag.com)
+* [Developer portal: Reference Tools](/developer/multimedia)
 * [Technical Documentation: Multimedia Delivery Protocols](/tech/multimedia/multimedia-content-delivery)
 
 :::note

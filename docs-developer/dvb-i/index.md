@@ -3,11 +3,12 @@ hide_title: true
 sidebar_class_name: project-index-link
 title: DVB-I over 5G
 sidebar_position: 7
+description: Overview of the DVB-I over 5G reference tools, combining DVB-I service discovery with 5GMS unicast and 5G Broadcast delivery paths.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M3 9a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2l0 -9" />
   <path d="M16 3l-4 4l-4 -4" /></svg>
 </div>
@@ -26,11 +27,15 @@ Reference tools for delivering DVB-I (Digital Video Broadcasting Internet) servi
 
 **Implemented specifications:** DVB BlueBook A177 (DVB-I specification), ETSI TS 103 720 (5G Broadcast delivery path), 3GPP [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) (5GMS unicast delivery path).
 
+:::tip[Where to start]
+Start with the [Scope](./scope) page for the specifications in scope and the high-level architecture.
+:::
+
 ## Project Overview
 
 The slide deck below introduces the DVB-I over 5G project: its goals, the delivery paths it covers, and the reference architecture.
 
-<iframe width="60%" height="560" src="../../docs/Reference_Tools_DVB_I_over_5G.pdf"></iframe>
+<iframe loading="lazy" width="60%" height="560" src="../../docs/Reference_Tools_DVB_I_over_5G.pdf"></iframe>
 
 <a class="button button--outline button--primary" href="/docs/Reference_Tools_DVB_I_over_5G.pdf" style="margin: 4px 0">Download the slide deck of this Project</a>
 
@@ -38,7 +43,7 @@ The slide deck below introduces the DVB-I over 5G project: its goals, the delive
 
 ## Go deeper
 
-| | |
+| Area | Details |
 |---|---|
 | **Technical documentation** | DVB-I over 5G analysis: [DVB-I on the Tech portal](/tech/dvb-i/dvb-i-5g) |
 | **Standards** | DVB-I and 5G delivery specifications: [DVB-I on the Standards portal](/tech/standards/dvb-i) |
@@ -49,7 +54,7 @@ The slide deck below introduces the DVB-I over 5G project: its goals, the delive
 * [Scope](./scope) - specifications in scope and high-level architectures
 * [Project Roadmap](./projects) - planned work
 * [Software Repositories](./repositories) - the source repositories for these tools
-* [Tutorials](./tutorials) - guides and examples
+* [Tutorials](./tutorials) - demo videos and repository pointers
 
 :::note
 Refer to the [DVB-I repositories](https://github.com/5G-MAG) on GitHub to use or contribute to these Reference Tools.

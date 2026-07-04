@@ -2,11 +2,12 @@
 title: Roadmap
 hide_title: true
 sidebar_position: 1
+description: Links to the public GitHub Kanban boards tracking planned, in-progress, and completed work on the V3C Immersive Platform.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M4 8v-2a2 2 0 0 1 2 -2h2" />
   <path d="M4 16v2a2 2 0 0 0 2 2h2" />
   <path d="M16 4h2a2 2 0 0 1 2 2v2" />
@@ -26,6 +27,9 @@ sidebar_position: 1
 This page links to the public GitHub project boards that track V3C Immersive Platform work. The boards are the authoritative, up-to-date view of planned, in-progress, and completed items; the summaries here just point you to them.
 
 ## General Project Roadmap
+
+The Kanban board below tracks the planned and in-progress work for the V3C Immersive Platform (Visual Volumetric Video-based Coding support and related tooling). It is maintained live on GitHub.
+
 [Kanban board: Roadmap](https://github.com/orgs/5G-MAG/projects/48/views/15)
 
 ## Developer Kanban Boards
@@ -37,3 +41,9 @@ The board below tracks development issues for the V3C repositories.
 All issues related to the V3C repositories with ISO/IEC 23090-5 support.
 
 * [**Kanban board**](https://github.com/orgs/5G-MAG/projects/38)
+
+## Related
+
+* [Scope](./scope): specifications in scope and implemented features.
+* [Repositories](./repositories): the source code.
+* [Tutorials](./tutorials): build, run and author content.

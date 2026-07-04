@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -5,11 +6,143 @@ import Layout from '@theme/Layout';
 import styles from './index.module.css';
 
 const icon = (paths) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
     {paths}
   </svg>
 );
+
+function usePrefersReducedMotion() {
+  const [reduced, setReduced] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setReduced(mq.matches);
+    const onChange = () => setReduced(mq.matches);
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+  return reduced;
+}
+
+// Same floating + cursor-repel icon cloud as the homepage hero, compacted
+// into a tighter cluster: 3 large anchor tiles for this page's own
+// content (the two STANDARDS_ACTIVITIES plus a document icon for
+// Technical Docs), each a distinct non-blue color reused from the
+// numbered step-by-step process diagrams already used repeatedly across
+// several /tech/network-apis pages (steps 0/1/2: pre-conditions,
+// before-use, during-operation), plus 7 more randomly drawn from the
+// remaining CATEGORIES topics (no repeats) in TONE_A to fill out the
+// cloud without competing with the anchors.
+const TONE_A = '#00A0D2';
+const ANCHOR_FEEDBACK = '#7c52e4';
+const ANCHOR_LIAISON = '#f38d3c';
+const ANCHOR_DOCS = '#74b85c';
+const REPEL_RADIUS = 150;
+const REPEL_STRENGTH = 46;
+
+const HERO_TILES = [
+  { cx: 286, cy: 158, size: 130, rot: -0.4, color: ANCHOR_FEEDBACK, d: 'M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1' }, // Feedback & Requirements
+  { cx: 740, cy: 394, size: 128, rot: 6.6,  color: ANCHOR_LIAISON, d: 'M15 15m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0 M13 17.5v4.5l2 -1.5l2 1.5v-4.5 M10 19h-5a2 2 0 0 1 -2 -2v-10c0 -1.1 .9 -2 2 -2h14a2 2 0 0 1 2 2v3.5' }, // Liaison Statements & Inputs
+  { cx: 614, cy: 205, size: 130, rot: -6.5, color: ANCHOR_DOCS, d: 'M14 3v4a1 1 0 0 0 1 1h4 M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2 M9 9l1 0 M9 13l6 0 M9 17l6 0' }, // Technical Docs (document icon)
+  // Randomly added (no repeats)
+  { cx: 812, cy: 260, size: 111, rot: 8.2,  color: TONE_A, d: 'M15 10l4.553 -2.069a1 1 0 0 1 1.447 .894v6.35a1 1 0 0 1 -1.447 .894l-4.553 -2.069v-4 M3 8a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-8z' }, // Real-Time Communications
+  { cx: 304, cy: 321, size: 112, rot: -0.3, color: TONE_A, d: 'M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0 M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2 M3 7v-2a2 2 0 0 1 2 -2h2 M3 17v2a2 2 0 0 0 2 2h2 M17 3h2a2 2 0 0 1 2 2v2 M17 21h2a2 2 0 0 0 2 -2v-2' }, // XR and MPEG-I Scene Description
+  { cx: 164, cy: 382, size: 98,  rot: 8.5,  color: TONE_A, d: 'M3 21l18 0 M9 8l1 0 M9 12l1 0 M9 16l1 0 M14 8l1 0 M14 12l1 0 M14 16l1 0 M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16' }, // Non-Public Networks
+  { cx: 437, cy: 244, size: 94,  rot: 4.1,  color: TONE_A, d: 'M4 8v-2a2 2 0 0 1 2 -2h2 M4 16v2a2 2 0 0 0 2 2h2 M16 4h2a2 2 0 0 1 2 2v2 M16 20h2a2 2 0 0 0 2 -2v-2 M12 12.5l4 -2.5 M8 10l4 2.5v4.5l4 -2.5v-4.5l-4 -2.5l-4 2.5 M8 10v4.5l4 2.5' }, // Volumetric Video
+  { cx: 565, cy: 364, size: 100, rot: 8.1,  color: TONE_A, d: 'M6 6a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2l0 -4 M12 2v2 M9 12v9 M15 12v9 M5 16l4 -2 M15 14l4 2 M9 18h6 M10 8v.01 M14 8v.01' }, // Avatar Communication
+  { cx: 754, cy: 151, size: 81,  rot: -3.7, color: TONE_A, d: 'M4 13h5 M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3 M20 8v8 M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5' }, // Network APIs
+  { cx: 157, cy: 203, size: 80,  rot: 5.9,  color: TONE_A, d: 'M7 4v16l13 -8l-13 -8' }, // 5G Media Streaming
+];
+
+function HeroFigure() {
+  const reducedMotion = usePrefersReducedMotion();
+  const svgRef = useRef(null);
+  const tileRefs = useRef([]);
+  const rafRef = useRef(null);
+
+  const repelTiles = (mouseX, mouseY) => {
+    HERO_TILES.forEach((t, i) => {
+      const el = tileRefs.current[i];
+      if (!el) return;
+      const dx = t.cx - mouseX;
+      const dy = t.cy - mouseY;
+      const dist = Math.hypot(dx, dy) || 0.001;
+      if (dist >= REPEL_RADIUS) {
+        el.style.transform = 'translate(0px, 0px)';
+        return;
+      }
+      const push = (1 - dist / REPEL_RADIUS) * REPEL_STRENGTH;
+      el.style.transform = `translate(${(dx / dist) * push}px, ${(dy / dist) * push}px)`;
+    });
+  };
+
+  const handleMouseMove = (e) => {
+    if (reducedMotion || !svgRef.current) return;
+    const rect = svgRef.current.getBoundingClientRect();
+    const mouseX = ((e.clientX - rect.left) / rect.width) * 950;
+    const mouseY = ((e.clientY - rect.top) / rect.height) * 560;
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    rafRef.current = requestAnimationFrame(() => repelTiles(mouseX, mouseY));
+  };
+
+  const handleMouseLeave = () => {
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    tileRefs.current.forEach((el) => {
+      if (el) el.style.transform = 'translate(0px, 0px)';
+    });
+  };
+
+  return (
+    <svg
+      ref={svgRef}
+      viewBox="0 0 950 560"
+      className={styles.heroFigure}
+      aria-hidden="true"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      <defs>
+        <filter id="techTileShadow" x="-60%" y="-60%" width="220%" height="220%">
+          <feDropShadow dx="0" dy="6" stdDeviation="8" floodColor="#001a33" floodOpacity="0.35" />
+        </filter>
+      </defs>
+      {HERO_TILES.map((t, i) => {
+        const iconScale = (t.size * 0.62) / 24;
+        return (
+          <g key={i} ref={(el) => (tileRefs.current[i] = el)} className={styles.tileRepel}>
+            <g transform={`translate(${t.cx},${t.cy}) rotate(${t.rot})`}>
+              <g>
+                {!reducedMotion && (
+                  <animateTransform
+                    attributeName="transform"
+                    type="translate"
+                    values="0 0; 0 -7; 0 0"
+                    dur={`${3.4 + (i % 3) * 0.5}s`}
+                    begin={`${i * 0.3}s`}
+                    repeatCount="indefinite"
+                    calcMode="spline"
+                    keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"
+                    keyTimes="0; 0.5; 1"
+                  />
+                )}
+                <rect
+                  x={-t.size / 2} y={-t.size / 2} width={t.size} height={t.size}
+                  rx={t.size * 0.24} fill={t.color} filter="url(#techTileShadow)"
+                />
+                <g
+                  transform={`translate(${-12 * iconScale},${-12 * iconScale}) scale(${iconScale})`}
+                  fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                >
+                  <path d={t.d} />
+                </g>
+              </g>
+            </g>
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
 
 const CATEGORIES = [
   {
@@ -33,7 +166,7 @@ const CATEGORIES = [
         icon: icon(<><path d="M3 9a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2l0 -9" /><path d="M16 3l-4 4l-4 -4" /></>),
       },
       {
-        title: 'Multimedia Content Delivery', desc: 'DASH, HLS and CMAF delivery protocols.', href: '/tech/multimedia/multimedia-content-delivery',
+        title: 'Multimedia Content Delivery', desc: 'FLUTE and ROUTE transport for one-way delivery of DASH, HLS and CMAF content over broadcast and multicast.', href: '/tech/multimedia/multimedia-content-delivery',
         icon: icon(<><path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1" /><path d="M9 15l3 -3l3 3" /><path d="M12 12l0 9" /></>),
       },
       {
@@ -59,7 +192,7 @@ const CATEGORIES = [
         icon: icon(<><path d="M4 8v-2a2 2 0 0 1 2 -2h2" /><path d="M4 16v2a2 2 0 0 0 2 2h2" /><path d="M16 4h2a2 2 0 0 1 2 2v2" /><path d="M16 20h2a2 2 0 0 0 2 -2v-2" /><path d="M12 12.5l4 -2.5" /><path d="M8 10l4 2.5v4.5l4 -2.5v-4.5l-4 -2.5l-4 2.5" /><path d="M8 10v4.5l4 2.5" /></>),
       },
       {
-        title: 'Avatar Communication with MPEG ARF', desc: 'Real-time conversational avatars over 5G using MPEG Conversational Avatar.', href: '/tech/avatar-communications',
+        title: 'Avatar Communication with MPEG ARF', desc: 'Real-time conversational avatars over 5G using the MPEG Avatar Representation Format (ARF).', href: '/tech/avatar-communications',
         icon: icon(<><path d="M6 6a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2l0 -4" /><path d="M12 2v2" /><path d="M9 12v9" /><path d="M15 12v9" /><path d="M5 16l4 -2" /><path d="M15 14l4 2" /><path d="M9 18h6" /><path d="M10 8v.01" /><path d="M14 8v.01" /></>),
       },
     ],
@@ -106,6 +239,12 @@ const CATEGORIES = [
 
 const STANDARDS_ACTIVITIES = [
   {
+    title: 'Specification-to-Code',
+    desc: 'Bridging normative 3GPP, ETSI and IETF specification text to working implementations — analysis, explainers and reports organised by topic area.',
+    href: '/tech/intro',
+    icon: icon(<><path d="M14 3v4a1 1 0 0 0 1 1h4" /><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" /><path d="M9 17l0 -5" /><path d="M12 17l0 -1" /><path d="M15 17l0 -3" /></>),
+  },
+  {
     title: 'Feedback & Requirements',
     desc: 'Implementation and deployment experience submitted as structured feedback and formal requirements to 3GPP, ETSI and other SDOs.',
     href: '/tech/standards/feedback',
@@ -124,7 +263,7 @@ const PILLARS = [
     title: 'Specification Analysis',
     body: 'In-depth technical analysis of 3GPP, ETSI and IETF specifications relevant to 5G media and broadcast — cutting through normative text to surface what matters for implementation.',
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/>
       </svg>
     ),
@@ -133,7 +272,7 @@ const PILLARS = [
     title: 'Implementation Explainers',
     body: 'Practical documentation bridging standards text and working software — written by engineers who have built and deployed the systems, not just read the specs.',
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/>
       </svg>
     ),
@@ -142,7 +281,7 @@ const PILLARS = [
     title: 'Standards Engagement',
     body: 'Feedback to 3GPP and ETSI, formal requirements submissions and liaison statements — turning deployment experience into direct input to the specifications that matter.',
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M15 15m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/><path d="M13 17.5v4.5l2 -1.5l2 1.5v-4.5"/><path d="M10 19h-5a2 2 0 0 1 -2 -2v-10c0 -1.1 .9 -2 2 -2h14a2 2 0 0 1 2 2v3.5"/>
       </svg>
     ),
@@ -151,7 +290,7 @@ const PILLARS = [
     title: 'Reports & Videos',
     body: 'Slide decks, technical reports and video resources produced by 5G-MAG members — from working group presentations to deep-dive explainer videos.',
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M7 4v16l13 -8l-13 -8"/>
       </svg>
     ),
@@ -208,28 +347,33 @@ export default function Home() {
         alignItems: 'center',
         padding: '1.5rem 0 2.5rem',
       }}>
-        <div className="container">
-          <p style={{ fontSize: '0.85rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--ifm-color-primary-lightest)', marginBottom: '0.5rem' }}>
-            5G-MAG — The Media Connectivity Association
-          </p>
-          <h1 className={styles.heroNowrap} style={{ fontSize: 'clamp(1.8rem, 3vw, 2.75rem)', fontWeight: 700, color: '#fff', lineHeight: 1.2, marginBottom: '1.1rem' }}>
-            Technical Documentation and Standards
-          </h1>
-          <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.85)', marginBottom: '2rem', lineHeight: 1.6 }}>
-            Specification analysis, implementation explainers and SDO contributions — produced by our members.
-          </p>
-          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-            <Link className="button button--primary button--lg" to="/tech/intro">
-              Technical Docs
-            </Link>
-            <Link
-              className="button button--outline button--lg"
-              style={{ color: '#fff', borderColor: 'rgba(255,255,255,0.75)' }}
-              to="/tech/standards/feedback"
-            >
-              Standards Work
-            </Link>
+        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '2rem' }}>
+          <div>
+            <img
+              src="/img/5g-mag-logo-white.png"
+              alt="5G-MAG — The Media Connectivity Association"
+              style={{ height: '68px', width: 'auto', marginBottom: '1.25rem', display: 'block' }}
+            />
+            <h1 className={styles.heroNowrap} style={{ fontSize: 'clamp(1.8rem, 3vw, 2.75rem)', fontWeight: 700, color: '#fff', lineHeight: 1.2, marginBottom: '1.1rem' }}>
+              Technical Docs and Standards Work
+            </h1>
+            <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.85)', marginBottom: '2rem', lineHeight: 1.6 }}>
+              Specification profiles, implementation guidelines and SDO contributions — by the members.
+            </p>
+            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+              <Link className="button button--primary button--lg" to="/tech/intro">
+                Technical Docs
+              </Link>
+              <Link
+                className="button button--outline button--primary button--lg"
+                style={{ color: '#fff', borderColor: 'rgba(255,255,255,0.75)' }}
+                to="/tech/standards/feedback"
+              >
+                Standards Work
+              </Link>
+            </div>
           </div>
+          <HeroFigure />
         </div>
       </header>
 
@@ -305,9 +449,6 @@ export default function Home() {
               </a>
               <a className="button button--outline button--primary button--lg" href="https://join.slack.com/t/5g-mag/shared_invite/zt-trtvsmw5-yYgcRidDgIS7x_u48sTuQA" target="_blank" rel="noreferrer">
                 Slack
-              </a>
-              <a className="button button--outline button--primary button--lg" href="https://www.5g-mag.com" target="_blank" rel="noreferrer">
-                5G-MAG Website
               </a>
             </div>
           </div>

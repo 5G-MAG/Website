@@ -2,11 +2,12 @@
 title:  Testing M3 AF v1.1.x
 hide_title: true
 sidebar_position: 9
+description: Verifies the M3 interface of the 5GMSd Application Function v1.1.x by inspecting debug logs of AF-to-AS certificate and hosting config pushes.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M7 4v16l13 -8l-13 -8" /></svg>
 </div>
 <div class="topic-banner__text">
@@ -58,7 +59,7 @@ Each M3 test follows the same short sequence of requests from the Application Fu
 3. AF pushes any new certificates (HTTPS tests only).
 4. AF pushes the new content hosting configuration.
 
-(A four-arrow AF-to-AS sequence diagram would make this flow easier to follow; consider adding one.) The log blocks that follow each show one step of this sequence.
+The log blocks that follow each show one step of this sequence.
 
 ## Test Simple HTTP Configuration
 

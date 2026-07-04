@@ -3,11 +3,12 @@ hide_title: true
 sidebar_class_name: project-index-link
 title: External Tools
 sidebar_position: 6
+description: Lists third-party tools that complement the Reference Tools, currently featuring the DVB NIP Analyzer for DVB-NIP/FLUTE streams.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" />
   <path d="M11 13l9 -9" />
   <path d="M15 4h5v5" /></svg>
@@ -21,7 +22,7 @@ sidebar_position: 6
 This section provides information about third-party tools that can be used in conjunction with the Reference Tools.
 </div>
 
-This section provides information about third-party tools that can be used in conjunction with the Reference Tools. The tools listed here can enhance the functionality and usability of the Reference Tools, help with testing and evaluation, and provide additional features for multimedia content delivery.
+Tools listed here can enhance the functionality and usability of the Reference Tools, help with testing and evaluation, and provide additional features for multimedia content delivery.
 
 ## DVB NIP Analyzer
 Related to: [**Multimedia Content Delivery Protocols**](/developer/multimedia)

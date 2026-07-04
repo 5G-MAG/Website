@@ -3,11 +3,12 @@ hide_title: true
 sidebar_class_name: project-index-link
 title: Multimedia Content Delivery
 sidebar_position: 8
+description: Landing page for the DASH, HLS, and CMAF multimedia delivery reference tools, with links to scope, roadmap, repositories, and releases.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1" />
   <path d="M9 15l3 -3l3 3" />
   <path d="M12 12l0 9" /></svg>
@@ -27,11 +28,15 @@ Reference tools for multimedia content delivery protocols, covering DASH (Dynami
 
 **Implemented specifications:** ISO/IEC 23009-1 (MPEG-DASH), IETF RFC 8216 (HLS), ISO/IEC 23000-19 (CMAF), 3GPP [TS 26.346](https://www.3gpp.org/dynareport/26346.htm) (MBMS protocols and file delivery formats).
 
+:::tip[Where to start]
+Start with the [Scope](./scope) page for the specifications in scope and the high-level architecture.
+:::
+
 ## Project Overview
 
 The slide deck below introduces the multimedia content delivery protocols project: the protocols it covers and how they fit above the 5G transport.
 
-<iframe width="60%" height="560" src="../../docs/Reference_Tools_Multimedia_delivery_protocols.pdf"></iframe>
+<iframe loading="lazy" width="60%" height="560" src="../../docs/Reference_Tools_Multimedia_delivery_protocols.pdf"></iframe>
 
 <a class="button button--outline button--primary" href="/docs/Reference_Tools_Multimedia_delivery_protocols.pdf" style="margin: 4px 0">Download the slide deck of this Project</a>
 
@@ -39,7 +44,7 @@ The slide deck below introduces the multimedia content delivery protocols projec
 
 ## Go deeper
 
-| | |
+| Area | Details |
 |---|---|
 | **Technical documentation** | Delivery protocol analysis: [Multimedia Content Delivery on the Tech portal](/tech/multimedia/multimedia-content-delivery) |
 | **Standards** | DASH, HLS, and CMAF specifications: [Multimedia Delivery on the Standards portal](/tech/standards/multimedia) |
@@ -49,7 +54,7 @@ The slide deck below introduces the multimedia content delivery protocols projec
 * [Scope](./scope) - specifications in scope and high-level architectures
 * [Project Roadmap](./projects) - planned work
 * [Software Repositories](./repositories) - the source repositories for these tools
-* [Tutorials](./tutorials) - guides and examples
+* [Tutorials](./tutorials) - demo video and repository pointers
 
 :::note
 Refer to the [multimedia delivery repositories](https://github.com/5G-MAG) on GitHub to use or contribute to these Reference Tools.

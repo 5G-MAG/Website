@@ -2,12 +2,13 @@
 title: Workflows and Requirements
 sidebar_position: 2
 hide_title: true
+description: Defines the phased workflow and requirements for booking and using network QoS capabilities in content production and contribution.
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M4 13h5"/><path d="M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3"/><path d="M20 8v8"/><path d="M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -44,12 +45,12 @@ This section contains information on:
 ### Collaboration scenario #1: Direct invoking Network APIs
 The **Network API Platform** of a Network Operator is accessed directly from **API Consumers**, either deployed with the Studio Production or the Location Production functions. The API consumer can be a Web Portal, e.g. offered by the CSP. Alternatively, the API consumers can be embedded production devices like a Vision Mixer or a production orchestration solution ([NMOS](https://specs.amwa.tv/nmos/branches/main/docs/Technical_Overview.html)  concept). The API consumer functions can be integrated in media servers, responsible for receiving the video stream from the application client.
 
-<img src="./images/figure_collaboration_1.png" width="60%">
+<img loading="lazy" src="/img/tech/network-apis/content-production/figure_collaboration_1.png" alt="Diagram of Collaboration scenario 1: API Consumers, such as a Web Portal, a Vision Mixer, or a media server, invoking a Network Operator's Network API Platform directly." width="60%">
 
 ### Collaboration scenario #2: Invoking Network APIs via an Aggregator
 The **Network API Platform** of a Network Operator is accessed via an **Aggregator API Platform**. The Aggregator Platforms harmonize capabilities offered by different Network Providers and routes customer requests to them.
 
-<img src="./images/figure_collaboration_2.png" width="60%">
+<img loading="lazy" src="/img/tech/network-apis/content-production/figure_collaboration_2.png" alt="Diagram of Collaboration scenario 2: API Consumers invoking Network APIs via an Aggregator API Platform that harmonizes and routes requests to different Network Operators." width="60%">
 
 ## Consolidation of requirements on network interactions
 The basic requirements for this scenario are:
@@ -155,7 +156,7 @@ The basic requirements for this scenario are:
 
 #### Phase A: Preparing devices, configuring application clients and servers, and configuring client/server flows
 
-<img src="./images/Workflow_Step_1.png" width="60%">
+<img loading="lazy" src="/img/tech/network-apis/content-production/Workflow_Step_1.png" alt="Workflow diagram for Phase A of single-device connectivity: preparing devices and configuring application client/server flows before the event." width="60%">
 
 * Production device nodes are generally UEs which establish connectivity to servers in the Data Network.
 * An **application-specific API** (e.g. from the media equipment provider) enables client/server communication to configure media-related parameters and procedures.
@@ -171,7 +172,7 @@ The basic requirements for this scenario are:
 
 #### Phase B: Event planning and pre-booking
 
-<img src="./images/Workflow_Step_2.png" width="60%">
+<img loading="lazy" src="/img/tech/network-apis/content-production/Workflow_Step_2.png" alt="Workflow diagram for Phase B of single-device connectivity: event planning and pre-booking of network resources via the Network API Platform." width="60%">
 
 Through the Network API Platform:
 
@@ -207,7 +208,7 @@ Through the Network API Platform:
 
 ### During the event
 
-<img src="./images/Workflow_Step_3.png" width="60%">
+<img loading="lazy" src="/img/tech/network-apis/content-production/Workflow_Step_3.png" alt="Workflow diagram for Phase C of single-device connectivity: configuration and usage of network capabilities during the event." width="60%">
 
 #### Phase C: Configuration and Usage of the network capabilities
 1. The production crew arrives at the event and can start using the booked network resources (See phase B). The network resources are assigned to devices.
@@ -254,7 +255,7 @@ Through the Network API Platform:
 
 #### Phase A: Preparing devices, configuring application clients and servers, and configuring client/server flows
 
-<img src="./images/Workflow_Step_1.png" width="60%">
+<img loading="lazy" src="/img/tech/network-apis/content-production/Workflow_Step_1.png" alt="Workflow diagram for Phase A of multi-device connectivity: preparing devices and configuring application client/server flows before the event." width="60%">
 
 * Some production device nodes are UEs; others are connected to the Data Network:
   * Example production device nodes connected to the RAN: wireless cameras, wireless camera control units, wireless microphones, wireless talkback intercom, etc.
@@ -272,7 +273,7 @@ Through the Network API Platform:
 
 #### Phase B: Event planning and pre-booking
 
-<img src="./images/Workflow_Step_2.png" width="60%">
+<img loading="lazy" src="/img/tech/network-apis/content-production/Workflow_Step_2.png" alt="Workflow diagram for Phase B of multi-device connectivity: event planning and pre-booking of network resources via the Network API Platform." width="60%">
 
 Through the Network API Platform:
 1. The production crew (on location or from the production centre) can discover the capabilities the network can offer in a particular location and at a particular time.
@@ -316,7 +317,7 @@ Through the Network API Platform:
 
 ### During the event
 
-<img src="./images/Workflow_Step_3.png" width="60%">
+<img loading="lazy" src="/img/tech/network-apis/content-production/Workflow_Step_3.png" alt="Workflow diagram for Phase C of multi-device connectivity: configuration and usage of network capabilities during the event." width="60%">
 
 #### Phase C: Configuration and Usage of the network capabilities
 1. The production crew arrives in the venue, plugs the SIM cards and turns on the devices, connectivity is enabled based on the booked network services (See phase B).

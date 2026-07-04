@@ -2,11 +2,12 @@
 title: Scope
 hide_title: true
 sidebar_position: 0
+description: Defines what the 5G MBS reference tools implement in the MBS User Services and 5GC layers, mapped against 3GPP specifications.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M12 12l0 .01" />
   <path d="M14.828 9.172a4 4 0 0 1 0 5.656" />
   <path d="M17.657 6.343a8 8 0 0 1 0 11.314" />
@@ -21,7 +22,7 @@ sidebar_position: 0
 
 <div style="margin: 8px 0"><a class="button button--outline button--primary" href="./scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="./projects" style="margin: 2px 4px 2px 0">Project Roadmap</a> <a class="button button--outline button--primary" href="./repositories" style="margin: 2px 4px 2px 0">GitHub Repos</a> <a class="button button--outline button--primary" href="./packages" style="margin: 2px 4px 2px 0">Packages</a> <a class="button button--outline button--primary" href="./releases" style="margin: 2px 4px 2px 0">Releases</a> <a class="button button--outline button--primary" href="./tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="./tutorials#video-library" style="margin: 2px 4px 2px 0">Video Library</a></div>
 
-These reference tools implement parts of the 3GPP 5G Multicast-Broadcast Services (MBS) feature. They are aimed at developers and integrators who want to run and inspect MBS delivery over a 5G Core, using multicast and broadcast to send the same media to many devices at once. To try the tools hands-on, see the [Tutorials](./tutorials).
+These reference tools implement parts of the 3GPP 5G Multicast Broadcast Services (MBS) feature. They are aimed at developers and integrators who want to run and inspect MBS delivery over a 5G Core, using multicast and broadcast to send the same media to many devices at once. To try the tools hands-on, see the [Tutorials](./tutorials).
 
 :::note[Key terms]
 - **5GC**: 5G Core network. **NG-RAN**: the 5G radio access network. **UE**: User Equipment (the device).
@@ -144,7 +145,7 @@ The two architectures below cover the same MBS delivery path but differ in how t
 
 The MBS reference tools with the MBS-specific core functions (MB-SMF, MB-UPF) provisioned directly.
 
-<img src="/assets/images/projects/mbs_diagram.png" style="width: 80%" alt="High-level architecture of the 5G MBS reference tools showing the MBS User Services layer, the MBS-capable 5G Core and the NG-RAN">
+<img loading="lazy" src="/assets/images/projects/mbs_diagram.png" style="width: 80%" alt="High-level architecture of the 5G MBS reference tools showing the MBS User Services layer, the MBS-capable 5G Core and the NG-RAN">
 
 [5G Multicast Broadcast Services: Repositories](../5g-mbs/repositories)
 [Multimedia content delivery protocols: Repositories](../multimedia/repositories)
@@ -155,7 +156,7 @@ The MBS reference tools with the MBS-specific core functions (MB-SMF, MB-UPF) pr
 
 The same delivery path, but the MBS User Services layer uses the reusable 5GC Service Consumer libraries to invoke the core network functions.
 
-<img src="/assets/images/projects/mbs_5gc_diagram.png" style="width: 80%" alt="High-level architecture of the 5G MBS reference tools using the 5GC Service Consumer libraries to reach the MBS-capable 5G Core">
+<img loading="lazy" src="/assets/images/projects/mbs_5gc_diagram.png" style="width: 80%" alt="High-level architecture of the 5G MBS reference tools using the 5GC Service Consumer libraries to reach the MBS-capable 5G Core">
 
 [5G Multicast Broadcast Services: Repositories](../5g-mbs/repositories)
 [Multimedia content delivery protocols: Repositories](../multimedia/repositories)
@@ -166,7 +167,7 @@ The same delivery path, but the MBS User Services layer uses the reusable 5GC Se
 ## Docker deployment support
 Docker-Compose setups are provided to run the 5GC Network Functions related to MBS in Docker container environments.
 
-<img src="/assets/images/5mbs/5G-MBS_container_names.png" style="width: 80%" alt="Mapping between the MBS architecture components and the names of the Docker containers that run them">
+<img loading="lazy" src="/assets/images/5mbs/5G-MBS_container_names.png" style="width: 80%" alt="Mapping between the MBS architecture components and the names of the Docker containers that run them">
 
 [5G Multicast Broadcast Services: Repositories](../5g-mbs/repositories)
 

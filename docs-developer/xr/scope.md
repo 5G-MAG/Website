@@ -2,11 +2,12 @@
 title: Scope
 hide_title: true
 sidebar_position: 0
+description: Details which MPEG-I Scene Description (ISO/IEC 23090-14) features and glTF extensions the XR reference tools implement, with support matrices.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
   <path d="M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2" />
   <path d="M3 7v-2a2 2 0 0 1 2 -2h2" />
@@ -163,7 +164,7 @@ The extension names are colour-grouped by function: green marks the media-pipeli
 
 ### XR Media Integration in 5G
 
-<img src="/assets/images/projects/xr_diagram.png" alt="High-level architecture showing XR media flowing from a scene server through the 5G Media Streaming framework to the XR player on a device" style="width: 80%">
+<img loading="lazy" src="/assets/images/projects/xr_diagram.png" alt="High-level architecture showing XR media flowing from a scene server through the 5G Media Streaming framework to the XR player on a device" style="width: 80%">
 
 *Figure: high-level view of how XR media is delivered over 5G, from the content and scene server through 5G Media Streaming to the XR player.*
 
@@ -182,7 +183,7 @@ It establishes interfaces like the Media Access Function (MAF) API for cross-pla
 
 ### XR Player implementation
 
-<img src="/assets/images/xr/rt-xr-overview.jpg" alt="Overview of the XR player showing the Unity player, glTFast parser and MAF native library" style="width: 80%">
+<img loading="lazy" src="/assets/images/xr/rt-xr-overview.jpg" alt="Overview of the XR player showing the Unity player, glTFast parser and MAF native library" style="width: 80%">
 
 *Figure: overview of the XR player and its main building blocks.*
 
@@ -214,13 +215,13 @@ The MAF API is protocol and codec agnostic; media can be fetched from a remote U
 
 The MediaPlayer component is part of the Presentation Engine layer:
 
-<img src="/assets/images/xr/rt-xr-presentation-engine.jpg" alt="Diagram placing the MediaPlayer component within the Presentation Engine layer" style="width: 80%">
+<img loading="lazy" src="/assets/images/xr/rt-xr-presentation-engine.jpg" alt="Diagram placing the MediaPlayer component within the Presentation Engine layer" style="width: 80%">
 
 *Figure: the MediaPlayer component inside the Presentation Engine layer.*
 
 The MediaPlayer component uses the MAF API implemented by Media Pipelines:
 
-<img src="/assets/images/xr/rt-xr-maf-implementation.jpg" alt="Diagram showing the MediaPlayer component calling the MAF API implemented by media pipelines" style="width: 80%">
+<img loading="lazy" src="/assets/images/xr/rt-xr-maf-implementation.jpg" alt="Diagram showing the MediaPlayer component calling the MAF API implemented by media pipelines" style="width: 80%">
 
 *Figure: the MediaPlayer component calling the MAF API implemented by the media pipelines.*
 

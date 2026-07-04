@@ -2,12 +2,13 @@
 title: Reference Scenarios
 sidebar_position: 2
 hide_title: true
+description: Describes the live media distribution reference scenario and which actors can observe each part of the delivery chain.
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M4 13h5"/><path d="M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3"/><path d="M20 8v8"/><path d="M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -25,7 +26,7 @@ This documentation is currently **under development and subject to change**. It 
 In the reference scenario, a content provider streams live media (for example a radio or TV service) over the top (OTT) to a large population of consumer devices, with a content delivery network (CDN) at the source and the mobile network carrying the content to each device. When a consumer sees a degraded experience, the cause could lie in the CDN, the client application, the radio link or somewhere inside the operator's network. The purpose of this scenario is to identify who can observe which part of the delivery chain, so that a Network API can help share that information and close the visibility gap. The actors and their vantage points are described below.
 
 <figure>
-  <img src="./images/figure_high_level_diagram.png" width="60%" alt="High-level distribution chain from the content provider and CDN, through the network operator, to the consumer client application, showing which actor can observe each segment." />
+  <img loading="lazy" src="/img/tech/network-apis/live-media-distribution/figure_high_level_diagram.png" width="60%" alt="High-level distribution chain from the content provider and CDN, through the network operator, to the consumer client application, showing which actor can observe each segment." />
   <figcaption>High-level Live Media Distribution chain and the actors involved.</figcaption>
 </figure>
 

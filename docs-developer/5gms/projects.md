@@ -2,11 +2,12 @@
 title: Roadmap
 hide_title: true
 sidebar_position: 1
+description: Tracks the 5GMS development roadmap, linking the general Kanban board and per-feature MVP boards on GitHub.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M7 4v16l13 -8l-13 -8" /></svg>
 </div>
 <div class="topic-banner__text">
@@ -22,6 +23,9 @@ sidebar_position: 1
 This page tracks the development roadmap for the 5G Media Streaming Reference Tools. The general roadmap board gives the overall picture; the developer Kanban boards below break the work into individual feature streams. Each stream is organised as a Minimum Viable Product (MVP), a self-contained increment that delivers one working capability. For the current status of any item, the linked Kanban board is always authoritative.
 
 ## General Project Roadmap
+
+The Kanban board below tracks the planned and in-progress work for the 5G Media Streaming Reference Tools (DASH-based media delivery, Application Server and Application Function components). It is maintained live on GitHub.
+
 [Kanban board: Roadmap](https://github.com/orgs/5G-MAG/projects/48/views/6)
 
 ## Developer Kanban Boards

@@ -2,11 +2,12 @@
 title: Roadmap
 hide_title: true
 sidebar_position: 1
+description: Points to the GitHub Kanban board tracking planned and in-progress work on the AI/ML Evaluation Framework's benchmarks and tooling.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M15.5 13a3.5 3.5 0 0 0 -3.5 3.5v1a3.5 3.5 0 0 0 7 0v-1.8" />
   <path d="M8.5 13a3.5 3.5 0 0 1 3.5 3.5v1a3.5 3.5 0 0 1 -7 0v-1.8" />
   <path d="M17.5 16a3.5 3.5 0 0 0 0 -7h-.5" />
@@ -27,3 +28,9 @@ sidebar_position: 1
 The Kanban board below tracks the planned and in-progress work for the AI/ML Evaluation Framework (benchmarks, datasets, and traffic-evaluation tooling). It is maintained live on GitHub.
 
 [Kanban board: Roadmap](https://github.com/orgs/5G-MAG/projects/48/views/9)
+
+## Related
+
+* [Scope](./scope): specifications in scope and implemented features.
+* [Repositories](./repositories): the source code (currently private — see the note there on requesting early access).
+* [Tutorials](./tutorials): no walkthrough here yet — points to the shared 6G Testbed tutorial.

@@ -2,12 +2,13 @@
 title: Real-Time Media Communication (RTC)
 sidebar_position: 7
 hide_title: true
+description: Overview of 3GPP's RTC architecture (TS 26.506), WebRTC transport stack, and its relation to 5GMSu and IMS communication.
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M15 10l4.553 -2.069a1 1 0 0 1 1.447 .894v6.35a1 1 0 0 1 -1.447 .894l-4.553 -2.069v-4"/><path d="M3 8a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-8z"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -19,7 +20,7 @@ hide_title: true
 
 ## Overview
 
-Real-Time Media Communication (RTC) covers the 3GPP work on interactive, low-latency media such as conversational audio and video, immersive calls and interactive streaming, where the round-trip delay must stay low enough for two-way interaction. It builds on the uplink side of 5G Media Streaming (5GMSu) and related delivery functions. 5G-MAG tracks how these capabilities support real-time media services over 5G, and this page collects the technical resources and standards pointers for that work.
+Real-Time Media Communication (RTC) covers the 3GPP work on interactive, low-latency media such as conversational audio and video, immersive calls and interactive streaming, where the round-trip delay must stay low enough for two-way interaction. It builds on the uplink side of 5G Media Streaming (5GMSu) and related delivery functions. 5G-MAG tracks how these capabilities support real-time media services over 5G, and this page collects the technical resources and standards pointers for that work. For acronyms used here, see the [Glossary](/tech/standards/glossary).
 
 No dedicated reference tool exists for RTC yet. This area is tracked through the standards work and pointers below.
 
@@ -27,7 +28,7 @@ No dedicated reference tool exists for RTC yet. This area is tracked through the
 
 ## The RTC architecture (TS 26.506)
 
-3GPP SA4 specified a dedicated Real-Time media Communication architecture (stage 2) in [TS 26.506](https://www.3gpp.org/dynareport/26506.htm), with the stage-3 procedures, APIs and protocols in [TS 26.113](https://www.3gpp.org/dynareport/26113.htm). The design reuses 5G Media Streaming (5GMS) concepts wherever possible, so RTC functions and 5GMS functions can share media session handling and media delivery. At a high level the architecture places:
+3GPP SA4 specified a dedicated 5G Real-time Media Communication Architecture (Stage 2) in [TS 26.506](https://www.3gpp.org/dynareport/26506.htm), with the stage-3 procedures, APIs and protocols in [TS 26.113](https://www.3gpp.org/dynareport/26113.htm). The design reuses 5G Media Streaming (5GMS) concepts wherever possible, so RTC functions and 5GMS functions can share media session handling and media delivery. At a high level the architecture places:
 
 * An **RTC Application Provider** offering the service.
 * An **RTC Application Function (AF)** and **RTC Application Server (AS)** on the network side, handling provisioning, session control and media functions.

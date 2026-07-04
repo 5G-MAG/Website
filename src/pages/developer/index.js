@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -6,6 +6,138 @@ import Layout from '@theme/Layout';
 import styles from './index.module.css';
 import releasesData from '@site/static/data/releases.json';
 import youtubeData from '@site/static/data/youtube.json';
+
+function usePrefersReducedMotion() {
+  const [reduced, setReduced] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setReduced(mq.matches);
+    const onChange = () => setReduced(mq.matches);
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+  return reduced;
+}
+
+// Same floating + cursor-repel icon cloud as the homepage hero, compacted
+// into a tighter cluster: 3 large anchor tiles for this portal's own
+// top-level categories (Reference Tools, Testbeds, Applications — see
+// PRODUCT_TYPES above), each a distinct non-blue color reused from the
+// numbered step-by-step process diagrams already used repeatedly across
+// several /tech/network-apis pages (steps 0/1/2: pre-conditions,
+// before-use, during-operation) — matching /tech's hero for consistency,
+// plus 7 more randomly drawn from the remaining SLIDE_ICONS (no repeats)
+// in TONE_A to fill out the cloud without competing with the anchors.
+const TONE_A = '#00A0D2';
+const ANCHOR_REFTOOLS = '#f38d3c';
+const ANCHOR_TESTBEDS = '#74b85c';
+const ANCHOR_APPS = '#7c52e4';
+const REPEL_RADIUS = 150;
+const REPEL_STRENGTH = 46;
+
+const HERO_TILES = [
+  { cx: 286, cy: 158, size: 130, rot: -0.4, color: ANCHOR_REFTOOLS, d: 'M7 8l-4 4l4 4 M17 8l4 4l-4 4 M14 4l-4 16' }, // Reference Tools
+  { cx: 740, cy: 394, size: 128, rot: 6.6,  color: ANCHOR_TESTBEDS, d: 'M9 3l6 0 M10 9l4 0 M10 3v6l-4 11a.7 .7 0 0 0 .5 1h11a.7 .7 0 0 0 .5 -1l-4 -11v-6' }, // Testbeds
+  { cx: 614, cy: 205, size: 130, rot: -6.5, color: ANCHOR_APPS, d: 'M4.5 16.5c-1.5 1.26 -2 5 -2 5s3.74 -.5 5 -2c.71 -.84 .7 -2.13 -.09 -2.91a2.18 2.18 0 0 0 -2.91 -.09z M12 15l-3 -3a22 22 0 0 1 2 -3.95a12.88 12.88 0 0 1 10 -5.93c0 2.72 -.78 7.5 -6 11a22.35 22.35 0 0 1 -4 2z M9 12h-4s.55 -3.03 2 -4c1.62 -1.08 5 0 5 0 M12 15v5s3.03 -.55 4 -2c1.08 -1.62 0 -5 0 -5' }, // Applications
+  // Randomly added (no repeats)
+  { cx: 812, cy: 260, size: 111, rot: 8.2,  color: TONE_A, d: 'M14 3v4a1 1 0 0 0 1 1h4 M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2 M9 17l0 -5 M12 17l0 -1 M15 17l0 -3' }, // UE Data Collection
+  { cx: 304, cy: 321, size: 112, rot: -0.3, color: TONE_A, d: 'M7 4v16l13 -8l-13 -8' }, // 5G Media Streaming
+  { cx: 164, cy: 382, size: 98,  rot: 8.5,  color: TONE_A, d: 'M6.657 16c-2.572 0 -4.657 -2.007 -4.657 -4.483c0 -2.475 2.085 -4.482 4.657 -4.482c.393 -1.762 1.794 -3.2 3.675 -3.773c1.88 -.572 3.956 -.193 5.444 1c1.488 1.19 2.162 3.007 1.77 4.769h.99c1.913 0 3.464 1.56 3.464 3.486c0 1.927 -1.551 3.487 -3.465 3.487h-11.878 M12 16v5 M16 16v4a1 1 0 0 0 1 1h4 M8 16v4a1 1 0 0 1 -1 1h-4' }, // 5G Core Service Consumers
+  { cx: 437, cy: 244, size: 94,  rot: 4.1,  color: TONE_A, d: 'M4 8v-2a2 2 0 0 1 2 -2h2 M4 16v2a2 2 0 0 0 2 2h2 M16 4h2a2 2 0 0 1 2 2v2 M16 20h2a2 2 0 0 0 2 -2v-2 M12 12.5l4 -2.5 M8 10l4 2.5v4.5l4 -2.5v-4.5l-4 -2.5l-4 2.5 M8 10v4.5l4 2.5' }, // V3C Immersive
+  { cx: 565, cy: 364, size: 100, rot: 8.1,  color: TONE_A, d: 'M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5' }, // Auxiliary Tools
+  { cx: 754, cy: 151, size: 81,  rot: -3.7, color: TONE_A, d: 'M3 9a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2l0 -9 M16 3l-4 4l-4 -4' }, // DVB-I over 5G
+  { cx: 157, cy: 203, size: 80,  rot: 5.9,  color: TONE_A, d: 'M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1 M9 15l3 -3l3 3 M12 12l0 9' }, // Multimedia Protocols
+];
+
+function HeroFigure() {
+  const reducedMotion = usePrefersReducedMotion();
+  const svgRef = useRef(null);
+  const tileRefs = useRef([]);
+  const rafRef = useRef(null);
+
+  const repelTiles = (mouseX, mouseY) => {
+    HERO_TILES.forEach((t, i) => {
+      const el = tileRefs.current[i];
+      if (!el) return;
+      const dx = t.cx - mouseX;
+      const dy = t.cy - mouseY;
+      const dist = Math.hypot(dx, dy) || 0.001;
+      if (dist >= REPEL_RADIUS) {
+        el.style.transform = 'translate(0px, 0px)';
+        return;
+      }
+      const push = (1 - dist / REPEL_RADIUS) * REPEL_STRENGTH;
+      el.style.transform = `translate(${(dx / dist) * push}px, ${(dy / dist) * push}px)`;
+    });
+  };
+
+  const handleMouseMove = (e) => {
+    if (reducedMotion || !svgRef.current) return;
+    const rect = svgRef.current.getBoundingClientRect();
+    const mouseX = ((e.clientX - rect.left) / rect.width) * 950;
+    const mouseY = ((e.clientY - rect.top) / rect.height) * 560;
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    rafRef.current = requestAnimationFrame(() => repelTiles(mouseX, mouseY));
+  };
+
+  const handleMouseLeave = () => {
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    tileRefs.current.forEach((el) => {
+      if (el) el.style.transform = 'translate(0px, 0px)';
+    });
+  };
+
+  return (
+    <svg
+      ref={svgRef}
+      viewBox="0 0 950 560"
+      className={styles.heroFigure}
+      aria-hidden="true"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      <defs>
+        <filter id="devTileShadow" x="-60%" y="-60%" width="220%" height="220%">
+          <feDropShadow dx="0" dy="6" stdDeviation="8" floodColor="#001a33" floodOpacity="0.35" />
+        </filter>
+      </defs>
+      {HERO_TILES.map((t, i) => {
+        const iconScale = (t.size * 0.62) / 24;
+        return (
+          <g key={i} ref={(el) => (tileRefs.current[i] = el)} className={styles.tileRepel}>
+            <g transform={`translate(${t.cx},${t.cy}) rotate(${t.rot})`}>
+              <g>
+                {!reducedMotion && (
+                  <animateTransform
+                    attributeName="transform"
+                    type="translate"
+                    values="0 0; 0 -7; 0 0"
+                    dur={`${3.4 + (i % 3) * 0.5}s`}
+                    begin={`${i * 0.3}s`}
+                    repeatCount="indefinite"
+                    calcMode="spline"
+                    keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"
+                    keyTimes="0; 0.5; 1"
+                  />
+                )}
+                <rect
+                  x={-t.size / 2} y={-t.size / 2} width={t.size} height={t.size}
+                  rx={t.size * 0.24} fill={t.color} filter="url(#devTileShadow)"
+                />
+                <g
+                  transform={`translate(${-12 * iconScale},${-12 * iconScale}) scale(${iconScale})`}
+                  fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                >
+                  <path d={t.d} />
+                </g>
+              </g>
+            </g>
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
 
 const PROJECT_TYPE_MAP = {
   '5G Media Streaming':        'Reference Tools',
@@ -56,7 +188,7 @@ const CATEGORIES = [
     topics: [
       { title: '5G Media Streaming',        desc: 'Streaming AF/AS — 3GPP TS 26.5xx',      href: '/developer/5gms',                     icon: <ProjectIcon name="5G Media Streaming" /> },
       { title: 'UE Data Collection',         desc: 'Reporting and event exposure',            href: '/developer/data-collection',  icon: <ProjectIcon name="UE Data Collection" /> },
-      { title: 'Multimedia Content Delivery',desc: 'Multi-CDN and protocol tooling',          href: '/developer/multimedia',            icon: <ProjectIcon name="Multimedia Protocols" /> },
+      { title: 'Multimedia Content Delivery',desc: 'FLUTE and ROUTE reference tooling',       href: '/developer/multimedia',            icon: <ProjectIcon name="Multimedia Protocols" /> },
       { title: 'DVB-I over 5G',             desc: 'DVB-I service delivery over 5G',           href: '/developer/dvb-i',                           icon: <ProjectIcon name="DVB-I over 5G" /> },
     ],
   },
@@ -108,7 +240,7 @@ const PILLARS = [
     title: 'Early Validation',
     body: 'Implementation evidence that informs specification development before standards are finalised.',
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
         <polyline points="9 12 11 14 15 10"/>
       </svg>
@@ -118,7 +250,7 @@ const PILLARS = [
     title: 'Collaborative Development',
     body: 'Eliminating redundant effort when multiple organisations address the same technical challenges.',
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
         <circle cx="9" cy="7" r="4"/>
         <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
@@ -130,7 +262,7 @@ const PILLARS = [
     title: 'Accelerated Deployment',
     body: 'Proven reference implementations designed for real-world adoption and scale.',
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
         <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
         <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
@@ -142,7 +274,7 @@ const PILLARS = [
     title: 'Open by Design',
     body: 'IPR-friendly licensing designed for broad industry participation.',
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
         <path d="M7 11V7a5 5 0 0 1 9.9-1"/>
       </svg>
@@ -184,6 +316,7 @@ function ProjectIcon({ name, className }) {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      aria-hidden="true"
       dangerouslySetInnerHTML={{ __html: paths }}
     />
   );
@@ -249,31 +382,38 @@ function HeroSlideshow() {
       <div key={active} className={styles.slideContentWrapper}>
       {slide.type === 'brand' ? (
         <div className={styles.slideOverlay}>
-          <div className="container">
-            <p className={styles.slideEyebrow}>Reference Tools. Testbeds. Applications.</p>
-            <h1 className={styles.slideTitle}>Media Connectivity Software Accelerator</h1>
-            <p className={styles.slideSubtitle}>
-              Open-Source Developer Community
-            </p>
-            <div className={styles.slideButtons}>
-              <Link className="button button--primary button--lg" to="/developer/community">
-                Join the Community
-              </Link>
-              <Link
-                className={clsx('button button--outline button--lg', styles.slideBtnOutline)}
-                to="/developer/projects"
-              >
-                Explore All Projects
-              </Link>
-              <a
-                className={clsx('button button--outline button--lg', styles.slideBtnOutline)}
-                href="/docs/Reference_Tools_Overview.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Download Overview ↓
-              </a>
+          <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '2rem' }}>
+            <div>
+              <img
+                src="/img/5g-mag-logo-white.png"
+                alt="5G-MAG — The Media Connectivity Association"
+                style={{ height: '68px', width: 'auto', marginBottom: '1.25rem', display: 'block' }}
+              />
+              <h1 className={styles.slideTitle}>Media Connectivity Software Accelerator</h1>
+              <p className={styles.slideSubtitle}>
+                Open-source developer community. Reference tools, testbeds and applications for connected media experiences.
+              </p>
+              <div className={styles.slideButtons}>
+                <Link className="button button--primary button--lg" to="/developer/community">
+                  Join the Community
+                </Link>
+                <Link
+                  className={clsx('button button--outline button--primary button--lg', styles.slideBtnOutline)}
+                  to="/developer/projects"
+                >
+                  Explore All Projects
+                </Link>
+                <a
+                  className={clsx('button button--outline button--primary button--lg', styles.slideBtnOutline)}
+                  href="/docs/Reference_Tools_Overview.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Download Overview ↓
+                </a>
+              </div>
             </div>
+            <HeroFigure />
           </div>
         </div>
       ) : (
@@ -354,7 +494,7 @@ function HeroSlideshow() {
                   Documentation
                 </Link>
                 <Link
-                  className={clsx('button button--outline button--lg', styles.slideBtnOutline)}
+                  className={clsx('button button--outline button--primary button--lg', styles.slideBtnOutline)}
                   to={`${slide.doc_url}releases`}
                 >
                   Releases

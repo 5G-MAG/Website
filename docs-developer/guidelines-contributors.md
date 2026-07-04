@@ -2,13 +2,14 @@
 title: Guidelines for Contributors
 hide_title: true
 sidebar_position: 3
+description: Explains how to raise issues, fork, branch using Gitflow, and submit pull requests to contribute to 5G-MAG Reference Tools.
 ---
 
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M9.5 14.5l2 2l4 -4"/><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2"/><path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -38,19 +39,19 @@ If you find problems or have requests for new features related to the code, plea
 
 ### 1. Go to the relevant repository
 
-<img src="/assets/images/Contributing_Workflow_1.png" alt="GitHub repository page with the Issues tab highlighted" style="width: 60%">
+<img loading="lazy" src="/assets/images/Contributing_Workflow_1.png" alt="GitHub repository page with the Issues tab highlighted" style="width: 60%">
 
 ### 2. Create a new issue, select the type from the menu
 
-<img src="/assets/images/Contributing_Workflow_2.png" alt="New issue dialog with the issue type selection menu open" style="width: 60%">
+<img loading="lazy" src="/assets/images/Contributing_Workflow_2.png" alt="New issue dialog with the issue type selection menu open" style="width: 60%">
 
 ### 3. Fill the description
 
-<img src="/assets/images/Contributing_Workflow_3.png" alt="Issue form with the description field being filled in" style="width: 60%">
+<img loading="lazy" src="/assets/images/Contributing_Workflow_3.png" alt="Issue form with the description field being filled in" style="width: 60%">
 
 ### 4. Add a label, project,...
 
-<img src="/assets/images/Contributing_Workflow_4.png" alt="Issue sidebar showing label and project assignment controls" style="width: 60%">
+<img loading="lazy" src="/assets/images/Contributing_Workflow_4.png" alt="Issue sidebar showing label and project assignment controls" style="width: 60%">
 
 ## Releases
 
@@ -132,11 +133,11 @@ Once a feature or a hotfix branch is completed a new pull request against the _d
 ### 1. Navigate to the list of available branches
 Depending on the concrete setup the new branch is available directly on the main repository or on your fork of the main repository.
 
-<img src="/assets/images/Contributing_Workflow_5.png" alt="GitHub branches list view showing available branches" style="width: 60%">
+<img loading="lazy" src="/assets/images/Contributing_Workflow_5.png" alt="GitHub branches list view showing available branches" style="width: 60%">
 
 ### 2. Click on "New pull request"
 
-<img src="/assets/images/Contributing_Workflow_6.png" alt="GitHub interface with the New pull request button highlighted" style="width: 60%">
+<img loading="lazy" src="/assets/images/Contributing_Workflow_6.png" alt="GitHub interface with the New pull request button highlighted" style="width: 60%">
 
 ### 3. Select the target (base) branch
    * For `feature` branches select the `development` branch

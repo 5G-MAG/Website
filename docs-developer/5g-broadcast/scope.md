@@ -2,11 +2,12 @@
 title: Scope
 hide_title: true
 sidebar_position: 0
+description: Feature support matrix for rt-mbms-tx and rt-mbms-modem across 3GPP Rel-14 to Rel-19, plus architecture diagrams and NTN context.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
   <path d="M16.616 13.924a5 5 0 1 0 -9.23 0" />
   <path d="M20.307 15.469a9 9 0 1 0 -16.615 0" />
@@ -114,7 +115,7 @@ a 5G Broadcast transmitter. Only MBMS/Unicast-mixed cell is supported alongside 
 
 The diagram below shows the 5G Broadcast tools combined with the multimedia delivery protocols (FLUTE-based file delivery), from transmitter through to receiver.
 
-<img src="/assets/images/projects/5gbc_diagram.png" alt="Architecture combining the 5G Broadcast transmitter and modem with FLUTE-based multimedia delivery protocols" style="width: 80%">
+<img loading="lazy" src="/assets/images/projects/5gbc_diagram.png" alt="Architecture combining the 5G Broadcast transmitter and modem with FLUTE-based multimedia delivery protocols" style="width: 80%">
 
 Repositories used in this architecture:
 
@@ -126,7 +127,7 @@ Repositories used in this architecture:
 
 This second diagram shows 5G Downlink Media Streaming (5GMSd) delivered over eMBMS (enhanced Multimedia Broadcast Multicast Service), combining the 5G Media Streaming tools with the broadcast chain.
 
-<img src="/assets/images/projects/5gms_5gbc_diagram.png" alt="Architecture delivering 5G Downlink Media Streaming (5GMSd) over the eMBMS broadcast bearer" style="width: 80%">
+<img loading="lazy" src="/assets/images/projects/5gms_5gbc_diagram.png" alt="Architecture delivering 5G Downlink Media Streaming (5GMSd) over the eMBMS broadcast bearer" style="width: 80%">
 
 Repositories used in this architecture:
 
@@ -143,3 +144,10 @@ The 5G Broadcast waveform (FeMBMS, defined in ETSI TS 103 720) is relevant to **
 * [Tech: MBS Broadcast over NTN](/tech/ntn/analysis-mbs-broadcast-over-ntn)
 * [Tech: Non-Terrestrial Networks (overview)](/tech/ntn)
 * [Standards: Non-Terrestrial Networks](/tech/standards/ntn)
+
+## Getting started
+
+A practical route into the tools:
+
+1. Start with [SDR - HLS Playback over 5G Broadcast](./tutorials/hls-playback-5gbc) in the [Tutorials](./tutorials) index, the simplest receiver-only setup; the other tutorials there build on the same components (transmitter, Docker, Android seamless switching).
+2. Check the [Releases](./releases) page for tagged versions of rt-mbms-tx and rt-mbms-modem.

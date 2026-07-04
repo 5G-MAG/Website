@@ -2,12 +2,13 @@
 title: MBS - Service & System
 sidebar_position: 2
 hide_title: true
+description: Explains the 5G Core architecture for MBS defined in TS 23.247, covering communication services, MBS sessions and delivery methods.
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M12 12l0 .01"/><path d="M14.828 9.172a4 4 0 0 1 0 5.656"/><path d="M17.657 6.343a8 8 0 0 1 0 11.314"/><path d="M9.168 14.828a4 4 0 0 1 0 -5.656"/><path d="M6.337 17.657a8 8 0 0 1 0 -11.314"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -22,7 +23,7 @@ This documentation is currently **under development and subject to change**. If 
 
 ## MBS Service and System Aspects
 
-This page summarises the 5G Core system architecture for MBS defined in [TS 23.247](https://www.3gpp.org/dynareport/23247.htm): the two logical communication services (multicast and broadcast), the MBS sessions that carry them, and the two methods the core network uses to deliver MBS traffic towards the radio network. It sits below the user-service layer covered on the [Service Layer Aspects](./mbs-service-layer) page, and above the radio procedures on the [RAN Aspects](./ran-aspects) page.
+This page summarises the 5G Core system architecture for MBS defined in [TS 23.247](https://www.3gpp.org/dynareport/23247.htm): the two logical communication services (multicast and broadcast), the MBS sessions that carry them, and the two methods the core network uses to deliver MBS traffic towards the radio network. It sits below the user-service layer covered on the [Service Layer Aspects](./mbs-service-layer) page, and above the radio procedures on the [RAN Aspects](./ran-aspects) page. For acronyms used here, see the [Glossary](/tech/standards/glossary).
 
 ## MBS communication services (TS 23.247)
 TS 23.247 defines two new logical communication services:
@@ -42,12 +43,12 @@ The geographical areas for which the multicast and broadcast MBS sessions are av
 The two figures below show the MBS traffic delivery methods: the left figure illustrates multicast and the right figure broadcast.
 
 <figure>
-  <img src="https://github.com/user-attachments/assets/25f15af6-49b1-4c75-b567-ce225fa3bc96" alt="MBS traffic delivery for a multicast session, showing shared and individual delivery from the MB-UPF towards the NG-RAN and UEs" />
+  <img loading="lazy" src="https://github.com/user-attachments/assets/25f15af6-49b1-4c75-b567-ce225fa3bc96" alt="MBS traffic delivery for a multicast session, showing shared and individual delivery from the MB-UPF towards the NG-RAN and UEs" />
   <figcaption><em>MBS traffic delivery methods (multicast), adapted from TS 23.247 Figure 4.1-1.</em></figcaption>
 </figure>
 
 <figure>
-  <img src="https://github.com/user-attachments/assets/5e09d1a7-cb89-4f81-9d31-fac6d01e9a73" alt="MBS traffic delivery for a broadcast session, showing a single shared copy delivered from the MB-UPF to each NG-RAN node" />
+  <img loading="lazy" src="https://github.com/user-attachments/assets/5e09d1a7-cb89-4f81-9d31-fac6d01e9a73" alt="MBS traffic delivery for a broadcast session, showing a single shared copy delivered from the MB-UPF to each NG-RAN node" />
   <figcaption><em>MBS traffic delivery methods (broadcast), adapted from TS 23.247 Figure 4.1-1.</em></figcaption>
 </figure>
 

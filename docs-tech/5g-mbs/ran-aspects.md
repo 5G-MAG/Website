@@ -2,12 +2,13 @@
 title: MBS - RAN Aspects
 sidebar_position: 3
 hide_title: true
+description: Describes how the gNodeB delivers MBS packets over the radio interface, covering PTM/PTP delivery methods, delivery modes and RAN scheduling.
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M12 12l0 .01"/><path d="M14.828 9.172a4 4 0 0 1 0 5.656"/><path d="M17.657 6.343a8 8 0 0 1 0 11.314"/><path d="M9.168 14.828a4 4 0 0 1 0 -5.656"/><path d="M6.337 17.657a8 8 0 0 1 0 -11.314"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -55,20 +56,24 @@ PTP may also be used in combination with the 5GC shared MBS traffic delivery met
 
 ### Unicast delivery mode
 
-gNodeBs always use the unicast delivery mode for the point-to-point RAN delivery method. This includes the delivery of:
-*	Unicast packets arriving at reference point N3 from a PDU Session.
-*	MBS packets from a Multicast MBS Session arriving at reference point N3 in a PDU Session corresponding to 5GC individual MBS traffic delivery.
-*	MBS packets from a Multicast MBS Session arriving at reference point N3mb using the 5GC shared MBS traffic delivery method when the gNodeB has chosen to use the point-to-point RAN delivery method.
-
-It cannot be used for broadcast communication services. Because its payloads are intended for specific UEs and are not meant to be decoded by more than one UE, they are scrambled using a key known only to the gNodeB and the target UE: the NG-RAN uses a UE-specific PDCCH with a CRC scrambled with a UE-specific RNTI (e.g., C-RNTI) to schedule a UE-specific PDSCH which is scrambled with the same UE-specific RNTI. Unicast can only be received by UEs in RRC_Connected state.
+gNodeBs always use the unicast delivery mode for the point-to-point RAN delivery method.
 
 ### Delivery mode 1 (Multicast)
-A gNodeB uses delivery mode 1 for a Multicast MBS Session when it has chosen to use the PTM RAN delivery method. It supports HARQ feedback, retransmissions, and basic mobility with service continuity; these features let multicast offer a QoS similar to unicast and can therefore be considered to give high reliability and low latency.
-Its payloads are intended for multiple UEs served by a particular gNodeB. The payload is scrambled using a shared key known to the gNodeB and the UEs that have subscribed to the Multicast Session, shared with each UE as part of its control plane interaction with the gNodeB when it subscribes to the MBS Session. Delivery mode 1 can only be received by compatible UEs in RRC_Connected state, and is not used for a broadcast MBS session.
+
+A gNodeB uses delivery mode 1 for a Multicast MBS Session when it has chosen to use the PTM RAN delivery method.
 
 ### Delivery mode 2 (Broadcast)
-gNodeBs always use this transmission mode for a Broadcast MBS Session (which always uses the point-to-multipoint RAN delivery method). It does not support HARQ feedback nor retransmissions. Service continuity, as a UE moves from one cell to another, is supported (the UE can read the MCCH/MTCH from neighbour cells), but lossless handover is not, so service breaks may occur as the UE moves between cells; broadcast can therefore be considered to offer a lower quality of service than delivery mode 1 (Multicast).
-Its payloads are intended for any UE served by a particular gNodeB. The payload is scrambled using a shared key known to the gNodeB, broadcast in the MCCH (Multicast Control Channel) to all listening UEs. Delivery mode 2 can be received by UEs in all RRC states (RRC_Connected, RRC_Idle and RRC_Inactive).
+
+gNodeBs always use delivery mode 2 for a Broadcast MBS Session, which always uses the point-to-multipoint RAN delivery method.
+
+### Comparison of the three delivery modes
+
+| Dimension | Unicast delivery mode | Delivery mode 1 (Multicast) | Delivery mode 2 (Broadcast) |
+|---|---|---|---|
+| **HARQ / retransmission support** | Not stated in this section. | Supports HARQ feedback, retransmissions, and basic mobility with service continuity; these features let multicast offer a QoS similar to unicast and can therefore be considered to give high reliability and low latency. | Does not support HARQ feedback nor retransmissions. Service continuity, as a UE moves from one cell to another, is supported (the UE can read the MCCH/MTCH from neighbour cells), but lossless handover is not, so service breaks may occur as the UE moves between cells; broadcast can therefore be considered to offer a lower quality of service than delivery mode 1 (Multicast). |
+| **Payload scrambling / key** | Payloads are intended for specific UEs and are not meant to be decoded by more than one UE. They are scrambled using a key known only to the gNodeB and the target UE: the NG-RAN uses a UE-specific PDCCH with a CRC scrambled with a UE-specific RNTI (e.g., C-RNTI) to schedule a UE-specific PDSCH which is scrambled with the same UE-specific RNTI. | Payloads are intended for multiple UEs served by a particular gNodeB. The payload is scrambled using a shared key known to the gNodeB and the UEs that have subscribed to the Multicast Session, shared with each UE as part of its control plane interaction with the gNodeB when it subscribes to the MBS Session. | Payloads are intended for any UE served by a particular gNodeB. The payload is scrambled using a shared key known to the gNodeB, broadcast in the MCCH (Multicast Control Channel) to all listening UEs. |
+| **RRC states that can receive it** | RRC_Connected only. | RRC_Connected only (for compatible UEs). | All RRC states: RRC_Connected, RRC_Idle and RRC_Inactive. |
+| **Broadcast vs multicast applicability** | Cannot be used for broadcast communication services. Covers: unicast packets arriving at reference point N3 from a PDU Session; MBS packets from a Multicast MBS Session arriving at reference point N3 in a PDU Session corresponding to 5GC individual MBS traffic delivery; and MBS packets from a Multicast MBS Session arriving at reference point N3mb using the 5GC shared MBS traffic delivery method, when the gNodeB has chosen to use the point-to-point RAN delivery method. | Used for a Multicast MBS Session (via the PTM RAN delivery method). Not used for a Broadcast MBS Session. | Always used for a Broadcast MBS Session. |
 
 ## How the gNB decides PTM or PTP
 

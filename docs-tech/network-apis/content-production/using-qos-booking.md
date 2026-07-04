@@ -2,12 +2,13 @@
 title: QoS Booking
 sidebar_position: 5
 hide_title: true
+description: Analyses the CAMARA QoS Booking API, which reserves a QoS profile for a known device and server ahead of use.
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M4 13h5"/><path d="M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3"/><path d="M20 8v8"/><path d="M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -37,7 +38,7 @@ This API ties the booking to a device (and application server) at creation time,
 This is a high-level figure with the entities involving APIs and the devices involved:
 
 <figure>
-  <img src="./images/figure_qosbooking.png" width="80%" alt="High-level architecture for QoS Booking, showing the media application (ASP) invoking the Network API Platform to create a device-bound QoS booking." />
+  <img loading="lazy" src="/img/tech/network-apis/content-production/figure_qosbooking.png" width="80%" alt="High-level architecture for QoS Booking, showing the media application (ASP) invoking the Network API Platform to create a device-bound QoS booking." />
   <figcaption>Entities and interactions for QoS Booking.</figcaption>
 </figure>
 

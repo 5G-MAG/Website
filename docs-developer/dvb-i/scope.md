@@ -2,11 +2,12 @@
 title: Scope
 hide_title: true
 sidebar_position: 0
+description: Specifications, architecture and standards covered by the DVB-I over 5G reference tools, spanning discovery, unicast and broadcast delivery.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M3 9a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2l0 -9" />
   <path d="M16 3l-4 4l-4 -4" /></svg>
 </div>
@@ -72,12 +73,12 @@ The DVB-I over 5G tools implement the discovery and selection layer and glue it 
 
 This mapping mirrors the DVB-I-over-5G reference architecture in DVB A178 (ETSI TR 103 972): DVB-I stays the service layer, the DVB delivery formats (DVB-DASH, DVB-MABR) stay the media layer, and the 3GPP/ETSI systems stay the transport layer.
 
-### Getting started
+## Getting started
 
 1. Read the [Standards: DVB-I Services over 5G Systems](/tech/standards/dvb-i) page for the specification landscape, and the [Tech: DVB-I Services over 5G Systems](/tech/dvb-i/dvb-i-5g) page for the architecture and procedures.
 2. Review the reference architecture diagram below to see which component repositories provide each part of the chain.
 3. Pick a scenario (unicast via 5GMS, broadcast via 5G Broadcast, or concurrent/hybrid) and clone the relevant repositories from the [GitHub Repos](./repositories) page.
-4. Follow the [Tutorials](./tutorials) for step-by-step setup, and check the [Releases](./releases) page for versioned builds.
+4. Check the [Tutorials](./tutorials) page for demo videos and repository pointers, and the [Releases](./releases) page for versioned builds.
 
 Technical documentation providing context to this project can be found in the link below.
 
@@ -95,7 +96,7 @@ A list of relevant specifications can be found in the link below.
 
 The diagram below shows the DVB-I over 5G reference architecture combining a 5G Media Streaming downlink (5GMSd) unicast path with a 5G Broadcast path, so the same service can be delivered over either or both.
 
-<img src="/assets/images/projects/dvb_diagram.png" alt="DVB-I over 5G reference architecture showing 5GMSd unicast delivery alongside a 5G Broadcast path, with links to the contributing component repositories" style="width: 80%">
+<img loading="lazy" src="/assets/images/projects/dvb_diagram.png" alt="DVB-I over 5G reference architecture showing 5GMSd unicast delivery alongside a 5G Broadcast path, with links to the contributing component repositories" style="width: 80%">
 
 [5G Media Streaming: Repositories](../5gms/repositories)
 [DVB-I Services: Repositories](../dvb-i/repositories)
@@ -112,7 +113,7 @@ These identifiers on this page were not confirmed against a primary source (the 
 
 * [Project Roadmap](./projects) - planned work
 * [Software Repositories](./repositories) - the source repositories for these tools
-* [Tutorials](./tutorials) - guides and examples
+* [Tutorials](./tutorials) - demo videos and repository pointers
 
 :::note
 Refer to the [DVB-I repositories](https://github.com/5G-MAG) on GitHub to use or contribute to these Reference Tools.

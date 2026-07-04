@@ -2,12 +2,13 @@
 title: Reference Scenarios
 sidebar_position: 1
 hide_title: true
+description: Describes the single-device and multi-device reference scenarios for content production and contribution over mobile networks.
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M4 13h5"/><path d="M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3"/><path d="M20 8v8"/><path d="M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -46,11 +47,11 @@ Connectivity with a certain quality is required on short notice for a single cam
 
 The following figure represents a scenario where the device is a smartphone.
 
-<img src="./images/figure_newsgathering.png" width="60%">
+<img loading="lazy" src="/img/tech/network-apis/content-production/figure_newsgathering.png" alt="Diagram of the single-device connectivity scenario showing a smartphone as the production device used for newsgathering/mobile journalism, connecting via the network to the studio production hub." width="60%">
 
 The following figure represents a scenario where the device is a backpack.
 
-<img src="./images/figure_cellularbonding.png" width="60%">
+<img loading="lazy" src="/img/tech/network-apis/content-production/figure_cellularbonding.png" alt="Diagram of the single-device connectivity scenario showing a cellular bonding backpack as the production device, connecting via the network to the studio production hub." width="60%">
 
 ### Actors
 
@@ -85,7 +86,7 @@ Two options are considered when it comes to network deployment:
 
 The following figure represents a scenario involving multiple devices.
 
-<img src="./images/figure_outdoorbroadcast.png" width="60%">
+<img loading="lazy" src="/img/tech/network-apis/content-production/figure_outdoorbroadcast.png" alt="Diagram of the multi-device connectivity scenario for outside broadcast, showing multiple production devices connected to the network for a coordinated production." width="60%">
 
 ### Actors
 

@@ -2,11 +2,12 @@
 title: Scope
 hide_title: true
 sidebar_position: 0
+description: Describes how Emergency Alerts add Cell Broadcast Service (CBS) public warnings to the 5G Broadcast transmit and receive chain.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M12 8a2 2 0 0 1 2 2v4a2 2 0 1 1 -4 0v-4a2 2 0 0 1 2 -2" />
   <path d="M17 15c.345 .6 1.258 1 2 1a2 2 0 1 0 0 -4a2 2 0 1 1 0 -4c.746 0 1.656 .394 2 1" />
   <path d="M3 15c.345 .6 1.258 1 2 1a2 2 0 1 0 0 -4a2 2 0 1 1 0 -4c.746 0 1.656 .394 2 1" /></svg>
@@ -117,7 +118,7 @@ A list of relevant specifications can be found in the link below.
 
 The diagram below shows the alert path: an alert is passed to the transmitter, encoded as a CBS message carried in SIB12, broadcast over FeMBMS, and received and presented on a device.
 
-<img src="/assets/images/projects/ew_diagram.png" style="width: 80%" alt="Emergency alert path: alert to transmitter, encoded as CBS in SIB12, broadcast over FeMBMS, received on a device" />
+<img loading="lazy" src="/assets/images/projects/ew_diagram.png" style="width: 80%" alt="Emergency alert path: alert to transmitter, encoded as CBS in SIB12, broadcast over FeMBMS, received on a device" />
 
 *Figure: alert to transmitter, encoded as CBS in SIB12, broadcast over FeMBMS, and presented on the receiving device.*
 

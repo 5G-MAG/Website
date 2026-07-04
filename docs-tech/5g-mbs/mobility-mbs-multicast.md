@@ -2,12 +2,13 @@
 title: MBS Multicast - Mobility
 sidebar_position: 4
 hide_title: true
+description: Analyzes how multicast reception continues across handover between cells, covering PTP RLC AM, PDCP COUNT continuity and delivery-method switching.
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M12 12l0 .01"/><path d="M14.828 9.172a4 4 0 0 1 0 5.656"/><path d="M17.657 6.343a8 8 0 0 1 0 11.314"/><path d="M9.168 14.828a4 4 0 0 1 0 -5.656"/><path d="M6.337 17.657a8 8 0 0 1 0 -11.314"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -51,19 +52,23 @@ When the UE connects to the target gNB, the target gNB sends an indication that 
 * Upon successful handover completion, the source gNB may trigger the release of the MBS user plane resources towards the 5GC using the NGAP Distribution Release procedure for any multicast session for which there is no remaining
 joined UE in the gNB.
 
-## Mobility from a Multicast-supporting cell to a non-supporting cell
-### Procedure
+## Mobility between a Multicast-supporting cell and a non-supporting cell
+
+This case splits into two sub-cases depending on direction of travel: leaving MBS coverage (supporting → non-supporting) and entering it (non-supporting → supporting). The delivery-method switch (5GC Shared vs. Individual MBS traffic delivery) runs in both directions but is triggered by opposite conditions, so they are treated separately below.
+
+### Leaving Multicast-supporting coverage (supporting cell → non-supporting cell)
 * Target gNB sets up PDU Session Resources mapped to the MBS multicast session.
 * The 5GC infers from the absence of an "MBS-support" indication from gNB in the Path Switch Request message (Xn handover) or Handover Request Acknowledge message (NG handover) that MBS multicast data packets delivery has to be switched to 5GC individual MBS traffic delivery (3GPP [TS 23.247](https://www.3gpp.org/dynareport/23247.htm)).
-* For mobility from MBS non-supporting cell to MBS-supporting cell, the existing Xn/NG handover procedures apply:
-  * 5GC detects that MBS multicast data packets delivery can be switched from 5GC Individual MBS traffic delivery to 5GC Shared MBS traffic delivery.
-  * After Xn handover, the SMF triggers switching MBS multicast data packets delivery from 5GC Individual to 5GC Shared MBS traffic delivery by providing MBS Session IDs joined by the UE to the target gNB by means of the PDU Session Resource Modification procedure.
-  * For NG handover, the SMF provides the MBS Session IDs joined by the UE to the target gNB by means of NGAP Handover Request.
 
-## Mobility involving a non-supporting cell and a supporting cell
+### Entering Multicast-supporting coverage (non-supporting cell → supporting cell)
+* 5GC detects that MBS multicast data packets delivery can be switched from 5GC Individual MBS traffic delivery to 5GC Shared MBS traffic delivery.
+* After Xn handover, the SMF triggers switching MBS multicast data packets delivery from 5GC Individual to 5GC Shared MBS traffic delivery by providing MBS Session IDs joined by the UE to the target gNB by means of the PDU Session Resource Modification procedure.
+* For NG handover, the SMF provides the MBS Session IDs joined by the UE to the target gNB by means of NGAP Handover Request.
+
+## Bearer-type switch when leaving Multicast-supporting coverage
 
 :::caution
-The heading and body of this section describe opposite directions of travel: the heading refers to moving into a Multicast-supporting cell, while the procedure below describes moving from a supporting cell to a non-supporting cell (by switching the MRB to a DRB before handover). This mismatch has not been resolved. Verify the intended direction against 3GPP TS 38.300 and correct either the heading or the procedure before relying on this section.
+This section's procedure (switching the MRB to a DRB before handover) describes the same direction of travel as "Leaving Multicast-supporting coverage" above (supporting cell → non-supporting cell), using the text's own wording as the basis for this heading. What is still unresolved: whether this MRB-to-DRB bearer switch is an *additional* step that runs alongside the PDU-session/delivery-method switch described above for the same handover, or an *alternate* mechanism for a different scenario (for example, no target PDU session support at all). Verify the relationship between the two procedures against 3GPP TS 38.300 before relying on this section.
 :::
 
 ### Procedure

@@ -2,11 +2,12 @@
 title: Scope
 hide_title: true
 sidebar_position: 0
+description: Describes the 6G Testbed's network emulator and AI traffic characterization framework, their architecture, and links to 3GPP standards.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M6 9a6 6 0 1 0 12 0a6 6 0 0 0 -12 0" />
   <path d="M12 3c1.333 .333 2 2.333 2 6s-.667 5.667 -2 6" />
   <path d="M12 3c-1.333 .333 -2 2.333 -2 6s.667 5.667 2 6" />
@@ -39,7 +40,7 @@ A testbed for 6G AI Traffic Characterization able to: Measure traffic characteri
 
 The testbed has two building blocks: a **Network Emulator** that reproduces realistic network conditions on a machine, and an **AI Traffic Characterization** framework that runs AI workloads over those conditions and logs how they behave. The AI testbed reuses the network emulator rather than duplicating it. The diagram below shows how these two blocks fit together.
 
-<img src="/assets/images/6g-testbed/architecture.png" style="width: 70%" alt="6G Testbed architecture: an AI Traffic Characterization framework (orchestrator, scenarios, clients, capture, analysis) running on top of the shared Network Emulator, which applies impairments to the network interface." />
+<img loading="lazy" src="/assets/images/6g-testbed/architecture.png" style="width: 70%" alt="6G Testbed architecture: an AI Traffic Characterization framework (orchestrator, scenarios, clients, capture, analysis) running on top of the shared Network Emulator, which applies impairments to the network interface." />
 
 *Figure: high-level architecture. The AI Traffic Characterization framework runs on top of the shared Network Emulator.*
 

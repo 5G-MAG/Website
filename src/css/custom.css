@@ -13,6 +13,9 @@
   --ifm-color-primary-light: #0AADE0;
   --ifm-color-primary-lighter: #1DB6E8;
   --ifm-color-primary-lightest: #47C8F0;
+  /* Darker than --ifm-color-primary specifically so white text on top of it
+     meets WCAG AA (4.5:1); --ifm-color-primary itself only reaches ~3:1. */
+  --ifm-color-primary-textsafe: #007A9E;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
@@ -25,6 +28,7 @@
   --ifm-color-primary-light: #0AADE0;
   --ifm-color-primary-lighter: #1DB6E8;
   --ifm-color-primary-lightest: #47C8F0;
+  --ifm-color-primary-textsafe: #007A9E;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
@@ -100,7 +104,7 @@
   justify-content: center;
   gap: 0.65rem;
   padding: 1.5rem 1.25rem 1.35rem;
-  background: linear-gradient(135deg, var(--ifm-color-primary-darkest) 0%, var(--ifm-color-primary) 100%);
+  background: linear-gradient(135deg, var(--ifm-color-primary-darkest) 0%, var(--ifm-color-primary-textsafe) 100%);
   text-decoration: none !important;
   transition: opacity 0.2s ease;
 }
@@ -193,7 +197,7 @@
 
 .app-cat-header {
   padding: 1.4rem 1.4rem 1.1rem;
-  background: linear-gradient(135deg, var(--ifm-color-primary-darkest) 0%, var(--ifm-color-primary) 100%);
+  background: linear-gradient(135deg, var(--ifm-color-primary-darkest) 0%, var(--ifm-color-primary-textsafe) 100%);
 }
 
 .app-cat-title {
@@ -205,7 +209,7 @@
 
 .app-cat-desc {
   font-size: 0.925rem;
-  color: rgba(255, 255, 255, 0.85);
+  color: #fff;
   margin: 0;
   line-height: 1.6;
 }
@@ -468,7 +472,7 @@
 
 .godeeper-card__band {
   padding: 1.1rem 1.1rem 0.9rem;
-  background: linear-gradient(135deg, var(--ifm-color-primary-darkest) 0%, var(--ifm-color-primary) 100%);
+  background: linear-gradient(135deg, var(--ifm-color-primary-darkest) 0%, var(--ifm-color-primary-textsafe) 100%);
   display: flex;
   align-items: center;
   gap: 0.6rem;
@@ -520,7 +524,7 @@
    topic to give each subject area a distinct gradient; defaults to
    the site's brand colour when not set. ──────────────────────── */
 .topic-banner {
-  --topic-accent: var(--ifm-color-primary);
+  --topic-accent: var(--ifm-color-primary-textsafe);
   --topic-accent-dark: var(--ifm-color-primary-darkest);
   display: flex;
   align-items: center;
@@ -551,7 +555,7 @@
 
 .topic-banner__kicker {
   display: block;
-  color: rgba(255, 255, 255, 0.75);
+  color: #fff;
   font-size: 0.75rem;
   line-height: 1;
   font-weight: 700;

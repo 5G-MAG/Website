@@ -3,11 +3,12 @@ hide_title: true
 sidebar_class_name: project-index-link
 title: 6G Testbed and AI Traffic
 sidebar_position: -1
+description: Experimental testbed platform for AI-driven media traffic characterization and optimisation over 5G networks.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M6 9a6 6 0 1 0 12 0a6 6 0 0 0 -12 0" />
   <path d="M12 3c1.333 .333 2 2.333 2 6s-.667 5.667 -2 6" />
   <path d="M12 3c-1.333 .333 -2 2.333 -2 6s.667 5.667 2 6" />
@@ -32,11 +33,15 @@ Experimental testbed platform for AI-driven media traffic characterization and o
 
 **Relevant standardisation context:** No normative 6G specifications exist yet. Aligned with 3GPP SA4 AI/ML study items ([TR 26.927](https://www.3gpp.org/dynareport/26927.htm)) and ITU-R IMT-2030 requirements for intelligent network management.
 
+:::tip[Where to start]
+Start with the [Scope](./scope) page for the testbed's components, then follow the [Introduction to the 6G Testbed](./tutorials/introduction-6g-testbed) tutorial for a hands-on walkthrough.
+:::
+
 ## Project Overview
 
 The slide deck below introduces the 6G Testbed: its two building blocks, a configurable network emulator and an AI traffic characterisation framework, and how they are used to measure how AI and media traffic behave under emulated network conditions. To try it, see the [Scope](./scope) for the components and the [Introduction to the 6G Testbed](./tutorials/introduction-6g-testbed) tutorial for a walkthrough.
 
-<iframe width="60%" height="560" src="../../docs/Reference_Tools_3GPP_Testbed_AI_Traffic.pdf" title="6G Testbed and AI Traffic: project overview slide deck"></iframe>
+<iframe loading="lazy" width="60%" height="560" src="../../docs/Reference_Tools_3GPP_Testbed_AI_Traffic.pdf" title="6G Testbed and AI Traffic: project overview slide deck"></iframe>
 
 <a class="button button--outline button--primary" href="/docs/Reference_Tools_3GPP_Testbed_AI_Traffic.pdf" style="margin: 4px 0">Download the slide deck of this Project</a>
 
@@ -44,7 +49,7 @@ The slide deck below introduces the 6G Testbed: its two building blocks, a confi
 
 ## Go deeper
 
-| | |
+| Area | Details |
 |---|---|
 | **Technical documentation** | 6G research context and 5G-MAG contributions: [6G on the Tech portal](/tech/6g) |
 | **Standards** | 6G standardisation activities and study items: [6G on the Standards portal](/tech/standards/6g) |

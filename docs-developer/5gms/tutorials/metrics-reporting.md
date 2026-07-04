@@ -2,11 +2,12 @@
 title: QoE Metrics Reporting
 hide_title: true
 sidebar_position: 6
+description: Configures QoE Metrics Reporting so the 5GMSd client collects and reports DASH QM10 metrics to the Application Function.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M7 4v16l13 -8l-13 -8" /></svg>
 </div>
 <div class="topic-banner__text">
@@ -20,7 +21,7 @@ This tutorial allows to: Use QoE Metrics Reporting for 5G Media Streaming.
 :::
 
 
-<img src="/assets/images/5gms/5GMS_Downlink_MetricsReporting.png" alt="5GMSd downlink with QoE Metrics Reporting: the client collecting and reporting quality metrics to the AF" /> 
+<img loading="lazy" src="/assets/images/5gms/5GMS_Downlink_MetricsReporting.png" alt="5GMSd downlink with QoE Metrics Reporting: the client collecting and reporting quality metrics to the AF" /> 
 
 **What you will build:** a 5GMSd session in which the client collects Quality of Experience (QoE) metrics and reports them to the 5GMSd Application Function (AF), where you can then read the resulting reports.
 
@@ -38,7 +39,7 @@ The workflow is: first configure the 5GMS Application Function and the 5GMS Appl
 
 This tutorial assumes you have already completed the server-side and client-side setup in the [basic end-to-end guide](end-to-end). Steps 1 to 6 below simply point back to that guide; if you have a working end-to-end deployment you can skip straight to Step 7 (adding a QoE Metrics Reporting configuration).
 
-## Server-side Setup
+## Server-side setup
 
 ### Step 1: Install the Application Function
 
@@ -144,7 +145,7 @@ to `1fd61716-fe25-41ee-8d9e-cb36a16378a2`.
 Start Postman and navigate to the Postman `Environments` located on the left side. Replace the `provisioning_session_id`
 variable with the value from the JSON file:
 
-<img src="/assets/images/5gms/postman-env.png" width="80%" /> 
+<img loading="lazy" src="/assets/images/5gms/postman-env.png" alt="Screenshot of the Postman Environments panel showing the provisioning_session_id variable to be replaced" width="80%" /> 
 
 ### Step 7.4 Postman - Create Metrics Reporting Configuration
 
@@ -171,7 +172,7 @@ configuration. An example configuration looks the following:
 
 Click on `Send` once the configuration is set:
 
-<img src="/assets/images/5gms/postman-m1-metrics.png" width="80%" /> 
+<img loading="lazy" src="/assets/images/5gms/postman-m1-metrics.png" alt="Screenshot of the Postman client showing the 5G-MAG M1 Create Metrics Reporting Configuration request being sent" width="80%" /> 
 
 The REST call should return a `201` response code indicating that the call was accepted by the Application Function.
 
@@ -182,9 +183,9 @@ should contain the relevant information for the 5GMSd Client. We can validate th
 Select `Collections` in Postman and navigate to `5G-MAG M5`. Select `Service Access Information API` and then `GET SAI`.
 Click `Send` and confirm that the Service Access Information contains a `clientMetricsReportingConfigurations`:
 
-<img src="/assets/images/5gms/postman-m5-metrics.png" width="80%" /> 
+<img loading="lazy" src="/assets/images/5gms/postman-m5-metrics.png" alt="Screenshot of the Postman client showing the M5 GET Service Access Information response containing clientMetricsReportingConfigurations" width="80%" /> 
 
-## Client-side Setup
+## Client-side setup
 
 As we are all set on the server-side now we can focus on the client side.
 
@@ -198,7 +199,7 @@ the [basic end-to-end guide](end-to-end) setup guide.
 While consuming content configured and provided via our previously installed 5GMSd Application Server and 5GMSd
 Application Function the client is automatically creating and sending QoE Metrics Reports.
 
-<img src="/assets/images/5gms/app-playback.png" width="30%" alt="5GMSd-Aware Application playing a stream on Android while QoE metrics reports are generated" /> 
+<img loading="lazy" src="/assets/images/5gms/app-playback.png" width="30%" alt="5GMSd-Aware Application playing a stream on Android while QoE metrics reports are generated" /> 
 
 ### Step 3: Inspecting the QoE Metrics Report
 

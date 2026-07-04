@@ -2,11 +2,12 @@
 hide_title: true
 title: AI & ML in 5G Media
 sidebar_position: 6
+description: Compares 3GPP's network-side analytics (NWDAF) and UE-side data collection tracks for AI/ML in 5G media, with related specifications and studies.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M15.5 13a3.5 3.5 0 0 0 -3.5 3.5v1a3.5 3.5 0 0 0 7 0v-1.8"/><path d="M8.5 13a3.5 3.5 0 0 1 3.5 3.5v1a3.5 3.5 0 0 1 -7 0v-1.8"/><path d="M17.5 16a3.5 3.5 0 0 0 0 -7h-.5"/><path d="M19 9.3v-2.8a3.5 3.5 0 0 0 -7 0"/><path d="M6.5 16a3.5 3.5 0 0 1 0 -7h.5"/><path d="M5 9.3v-2.8a3.5 3.5 0 0 1 7 0v10"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -31,7 +32,7 @@ Together these allow media-aware decisions (such as proactive session management
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
 <h3>Technology &amp; Analysis</h3>
 </div>
 <div class="godeeper-card__body">
@@ -41,7 +42,7 @@ Together these allow media-aware decisions (such as proactive session management
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
 <h3>Software Tools</h3>
 </div>
 <div class="godeeper-card__body">
@@ -76,13 +77,8 @@ The SA4 Data Collection and Reporting framework provides a common way to collect
 
 ### Study Items and Work Items
 
-* [TR 26.927](https://www.3gpp.org/dynareport/26927.htm): Study on artificial intelligence and machine learning in 5G media services. This SA4 study examines media-specific AI/ML use cases (for example split inference between UE and network, model delivery to media clients, and AI-assisted media processing) and the data, traffic and architectural implications for 5G media services.
+* [TR 26.847](https://www.3gpp.org/dynareport/26847.htm): Evaluation of AI and ML in 5G media services. This SA4 study (Release 19, completed) evaluates AI/ML use cases for 5G media services, covering evaluation testbed architectures, evaluation scenarios and metrics.
 * [TR 22.874](https://www.3gpp.org/dynareport/22874.htm): Study on traffic characteristics and performance requirements for AI/ML model transfer in 5GS
-* [TR 22.817](https://www.3gpp.org/dynareport/22817.htm): Study on scenarios and requirements for AI/ML model transfer in 5GS
-
-:::caution[Verify spec titles]
-The title shown for TR 22.817 closely mirrors TR 22.874 above and has not been confirmed against the 3GPP portal. Confirm against the 3GPP work plan before relying on it.
-:::
 
 ## SA2 network-side analytics vs SA4 UE-side work
 
@@ -103,9 +99,15 @@ The practical relationship: SA4's framework can be a source of the UE-side and a
 | Core specifications | TS 23.288, TS 23.501 | TS 26.531, TS 26.532 |
 | Typical media output | Predicted load/QoS for a session | Consumption and QoE reports used for analytics, training and inference |
 
-## The SA4 AI/ML media study (TR 26.927)
+## The SA4 AI/ML media study (TR 26.847)
 
-TR 26.927 is the SA4 study that looks specifically at AI/ML in 5G media services, as opposed to the generic network-side analytics of SA2. It examines media AI/ML use cases and the data, traffic and architectural implications of running them over 5G. Reported topics include split inference between the UE and the network, delivery of AI/ML models to media clients, and AI-assisted media processing. The study also covers data formats and protocols for the different AI/ML data components, the traffic characteristics of those components over 5G, associated KPIs, and candidate areas for later normative work. It introduces media-oriented logical functions (for example an AI inference engine, AI data access/delivery, and a federated-learning engine at the UE and at the media server) whose findings are intended to guide subsequent normative work.
+TR 26.847 is the SA4 study that looks specifically at AI/ML in 5G media services, as opposed to the generic network-side analytics of SA2. Confirmed scope (Release 19, completed June 2025): it evaluates AI/ML use cases for 5G media services, covering evaluation testbed architectures and anchors, evaluation scenarios, and metrics.
+
+:::caution[Detail below not independently re-verified]
+The specific topics below (split inference, model delivery, AI-assisted processing, and the named logical functions) were written for an earlier draft of this study, which was tracked under a different, now-superseded number (TR 26.927, last seen as an incomplete draft). They are plausible given the study's confirmed scope, but have not been independently re-checked against TR 26.847's final content. Verify before relying on the specifics:
+:::
+
+It examines media AI/ML use cases and the data, traffic and architectural implications of running them over 5G. Reported topics include split inference between the UE and the network, delivery of AI/ML models to media clients, and AI-assisted media processing. The study also covers data formats and protocols for the different AI/ML data components, the traffic characteristics of those components over 5G, associated KPIs, and candidate areas for later normative work. It introduces media-oriented logical functions (for example an AI inference engine, AI data access/delivery, and a federated-learning engine at the UE and at the media server) whose findings are intended to guide subsequent normative work.
 
 This is the study most directly relevant to 5G-MAG, because it treats AI/ML as a media workload with concrete traffic behaviour, which is exactly what the 6G Testbed measures. The generic model-transfer requirements study TR 22.874 (SA1) sits behind it, characterising end-to-end latency, experienced data rate and communication service availability for moving models across 5GS.
 
@@ -119,11 +121,11 @@ This is the study most directly relevant to 5G-MAG, because it treats AI/ML as a
 
 ## 5G-MAG tracking and contribution focus
 
-5G-MAG tracks both tracks but contributes primarily on the media side (SA4), while following the SA2 analytics work for the parts that affect media sessions. The aim is to make media a concrete input to AI/ML standardisation: contributing media AI/ML use cases and, through the 6G Testbed, producing measured traffic characteristics and labelled datasets for AI workloads (generative and agentic AI as well as classic media) under controlled network conditions. Those measurements are intended to ground requirement inputs in evidence. See the [6G Testbed](https://developer.5g-mag.com/6g-testbed-ai-traffic/scope) and the [AI/ML Evaluation Framework](https://developer.5g-mag.com/ai-ml/scope) on the developer portal.
+5G-MAG tracks both tracks but contributes primarily on the media side (SA4), while following the SA2 analytics work for the parts that affect media sessions. The aim is to make media a concrete input to AI/ML standardisation: contributing media AI/ML use cases and, through the 6G Testbed, producing measured traffic characteristics and labelled datasets for AI workloads (generative and agentic AI as well as classic media) under controlled network conditions. Those measurements are intended to ground requirement inputs in evidence. See the [6G Testbed](/developer/6g-testbed/scope) and the [AI/ML Evaluation Framework](/developer/ai-ml/scope) on the developer portal.
 
 ## Reference Tools
 
-AI and media traffic characterisation tooling is developed in the 6G Testbed reference implementation. See [6G Testbed on the developer portal](https://developer.5g-mag.com/6g-testbed-ai-traffic/scope).
+AI and media traffic characterisation tooling is developed in the 6G Testbed reference implementation. See [6G Testbed on the developer portal](/developer/6g-testbed/scope).
 
 ## Related Standards Work
 
@@ -131,5 +133,5 @@ AI and media traffic characterisation tooling is developed in the 6G Testbed ref
 * [Standards: 5G Media Streaming](/tech/standards/5gms)
 
 :::note
-Refer to the [Standards](https://github.com/5G-MAG/Standards/) repository for 5G-MAG contributions related to AI/ML.
+Refer to the [Standards](https://github.com/5G-MAG/Standards/) repository to contribute to this documentation.
 :::

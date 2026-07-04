@@ -2,12 +2,13 @@
 title: Multimedia Delivery Protocols
 sidebar_position: 16
 hide_title: true
+description: Compares the FLUTE and ROUTE transport protocols used to deliver DASH, HLS, and CMAF media over broadcast and multicast networks.
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1"/><path d="M9 15l3 -3l3 3"/><path d="M12 12l0 9"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -33,7 +34,7 @@ The slide deck below introduces the multimedia delivery protocols in scope; down
 
 ## Two layers: format and transport
 
-A broadcast/multicast media chain has two separable concerns. The **format** layer packages and addresses media as segments and manifests (DASH, HLS, CMAF). The **transport** layer moves those objects to receivers over a one-way path with no per-receiver return channel (FLUTE, ROUTE). On unicast, a DASH or HLS client pulls segments over HTTP and can retransmit on loss. On a broadcast or multicast bearer there is no acknowledgement path, so the transport layers reliability on top of UDP/IP multicast using Forward Error Correction (FEC) rather than retransmission. 5G-MAG's reference tooling works mainly at the transport layer, delivering DASH-, HLS- or CMAF-packaged content over 5G Broadcast (LTE-based) and 5G Multicast-Broadcast Services (MBS).
+A broadcast/multicast media chain has two separable concerns. The **format** layer packages and addresses media as segments and manifests (DASH, HLS, CMAF). The **transport** layer moves those objects to receivers over a one-way path with no per-receiver return channel (FLUTE, ROUTE). On unicast, a DASH or HLS client pulls segments over HTTP and can retransmit on loss. On a broadcast or multicast bearer there is no acknowledgement path, so the transport layers reliability on top of UDP/IP multicast using Forward Error Correction (FEC) rather than retransmission. 5G-MAG's reference tooling works mainly at the transport layer, delivering DASH-, HLS- or CMAF-packaged content over 5G Broadcast (LTE-based) and 5G Multicast Broadcast Services (MBS).
 
 ## Transport building blocks (LCT, ALC, FEC)
 

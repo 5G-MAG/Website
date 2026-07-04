@@ -2,12 +2,13 @@
 title: Dedicated Networks
 sidebar_position: 7
 hide_title: true
+description: Describes how the CAMARA Dedicated Networks API reserves a network profile and service area, then attaches devices for multi-device productions.
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M4 13h5"/><path d="M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3"/><path d="M20 8v8"/><path d="M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -33,7 +34,7 @@ A user of a media application requests from the mobile network a set of capabili
 The entities, devices and interaction within the scope of this API are illustrated in the high-level figure below.
 
 <figure>
-  <img src="./images/figure_dedicatednetworks.png" width="80%">
+  <img loading="lazy" src="/img/tech/network-apis/content-production/figure_dedicatednetworks.png" alt="High-level diagram showing the entities, devices, and interactions involved in the Dedicated Networks API workflow and architecture." width="80%">
 </figure>
 
 ### General Workflow

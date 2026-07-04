@@ -2,12 +2,13 @@
 title: 5GMS Overview
 sidebar_position: 0
 hide_title: true
+description: Explains the 5GMS architecture, its functional entities, downlink (5GMSd) and uplink (5GMSu) reference points, features and the session lifecycle.
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M7 4v16l13 -8l-13 -8"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -28,7 +29,7 @@ This page explains the 5G Media Streaming (5GMS) architecture: its functional en
 
 The diagram below shows the general 5GMS architecture, with the functional entities and the reference points that connect them.
 
-<img src="./images/5GMS_General.png" width="60%" alt="General 5G Media Streaming architecture showing the Application Provider, 5GMS AF, 5GMS AS, 5GMS Client and 5GMS-Aware Application connected by the M1 to M8 reference points." />
+<img loading="lazy" src="/img/tech/5gms/5GMS_General.png" width="60%" alt="General 5G Media Streaming architecture showing the Application Provider, 5GMS AF, 5GMS AS, 5GMS Client and 5GMS-Aware Application connected by the M1 to M8 reference points." />
 
 *Figure: General 5GMS architecture and its reference points.*
 
@@ -54,7 +55,7 @@ To deliver downlink streaming services, the network is the origin of the media a
 
 The diagram below shows the downlink (5GMSd) architecture, with the media flowing from the network to the device.
 
-<img src="./images/5GMS_Downlink.png" width="60%" alt="Downlink 5G Media Streaming architecture showing the 5GMSd Application Provider, 5GMSd AF, 5GMSd AS and the 5GMSd Client (Media Session Handler and Media Player) on the device, connected by the M1d to M8d reference points." />
+<img loading="lazy" src="/img/tech/5gms/5GMS_Downlink.png" width="60%" alt="Downlink 5G Media Streaming architecture showing the 5GMSd Application Provider, 5GMSd AF, 5GMSd AS and the 5GMSd Client (Media Session Handler and Media Player) on the device, connected by the M1d to M8d reference points." />
 
 *Figure: Downlink (5GMSd) architecture, media flowing from network to device.*
 
@@ -78,8 +79,8 @@ The 5GMSd Client may include several subfunctions which are depicted below:
 
 <table>
   <tr>
-    <td markdown="span" align="center" style="width:40%"><img src="./images/5GMS_MediaPlayer.png" width="60%"></td>
-    <td markdown="span" align="center" style="width:40%"><img src="./images/5GMS_MediaSessionHandler.png" width="60%"></td>
+    <td markdown="span" align="center" style="width:40%"><img loading="lazy" src="/img/tech/5gms/5GMS_MediaPlayer.png" alt="Diagram showing the subfunctions of the Media Player." width="60%"></td>
+    <td markdown="span" align="center" style="width:40%"><img loading="lazy" src="/img/tech/5gms/5GMS_MediaSessionHandler.png" alt="Diagram showing the subfunctions of the Media Session Handler." width="60%"></td>
   </tr>
   <tr>
     <td markdown="span" align="center">Subfunctions of the Media Player</td>

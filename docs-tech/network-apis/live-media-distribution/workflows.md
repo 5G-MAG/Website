@@ -2,12 +2,13 @@
 title: Workflow
 sidebar_position: 3
 hide_title: true
+description: Defines the phased workflow and QoS, monitoring and geofencing requirements for live media distribution over mobile networks.
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M4 13h5"/><path d="M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3"/><path d="M20 8v8"/><path d="M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -49,7 +50,7 @@ This section contains information on:
 
 ### Phase B: Network capability pre-booking
 
-<img src="./images/Workflow_Step_1.png" width="60%">
+<img loading="lazy" src="/img/tech/network-apis/live-media-distribution/Workflow_Step_1.png" alt="Workflow diagram of Phase B: network capability pre-booking steps between the content provider and the Network API Platform, from requesting network services to receiving network access IDs." width="60%">
 
 1. Through the Network API Platform, the content provider requests network services for the population of client applications in one or more geographical areas. Possible services (network capabilities) are:
    a. *Quality-on-Demand*
@@ -68,7 +69,7 @@ Note: Booking is done based on:
 
 ## While consuming the audio streaming service
 
-<img src="./images/Workflow_Step_2.png" width="60%">
+<img loading="lazy" src="/img/tech/network-apis/live-media-distribution/Workflow_Step_2.png" alt="Workflow diagram of Phase C: setup, configuration, and monitoring steps while the audio streaming service is being consumed." width="60%">
 
 ### Phase C: Setup and configuration
 * The content provider configures its client application with the network access IDs delivered in step B.4.

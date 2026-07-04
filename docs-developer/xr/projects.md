@@ -2,11 +2,12 @@
 title: Roadmap
 hide_title: true
 sidebar_position: 1
+description: Links to the GitHub Kanban boards tracking planned and in-progress work for the XR and MPEG-I Scene Description project.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
   <path d="M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2" />
   <path d="M3 7v-2a2 2 0 0 1 2 -2h2" />
@@ -25,6 +26,9 @@ sidebar_position: 1
 The roadmap for this project is maintained on GitHub Project (Kanban) boards, linked below. Each board tracks the planned and in-progress work for a given release or work area.
 
 ## General Project Roadmap
+
+The Kanban board below tracks the planned and in-progress work for XR and MPEG-I Scene Description (XR Player and scene-description support). It is maintained live on GitHub.
+
 [Kanban board: Roadmap](https://github.com/orgs/5G-MAG/projects/48/views/16)
 
 ## Developer Kanban Boards

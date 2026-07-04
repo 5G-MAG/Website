@@ -2,11 +2,12 @@
 title: XR Player - Meta Quest 3
 hide_title: true
 sidebar_position: 0
+description: Step-by-step guide to build the XR Unity Player for Meta Quest 3, load glTF content, and troubleshoot OpenXR setup.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
   <path d="M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2" />
   <path d="M3 7v-2a2 2 0 0 1 2 -2h2" />
@@ -121,7 +122,7 @@ The script copies the following:
 
 Make sure all the *.so libraries are configured properly in the Unity Editor.
 
-<img src="/assets/images/xr/unity-configure-shared-libraries.png" alt="Configure shared libraries in Unity project" style="width:80%;">
+<img loading="lazy" src="/assets/images/xr/unity-configure-shared-libraries.png" alt="Configure shared libraries in Unity project" style="width:80%;">
 
 For each library, in the inspector panel:
 * *Android* platform must be checked
@@ -150,7 +151,7 @@ Open the `rt-xr-unity-player` directory as an existing project from Unity Hub.
 
 Now configure the glTF asset in the Unity project by adding the path, e.g. `/storage/emulated/0/Android/data/com.fivegmag.rtxrplayer/files/studio_apartment/studio_apartment.gltf`
 
-<img src="/assets/images/xr/dev-meta-quest-scene-configuration.png" alt="Meta Quest scene configuration" style="width:80%;">
+<img loading="lazy" src="/assets/images/xr/dev-meta-quest-scene-configuration.png" alt="Meta Quest scene configuration" style="width:80%;">
 
 ## Step 4: Build and run the Unity project
 
@@ -161,7 +162,7 @@ In the Unity Editor:
 4. Select the device on which the application will be installed.
 5. Hit `Build and Run` to compile the project and install it on the mobile device
 
-<img src="/assets/images/xr/dev-meta-quest-build-settings.png" alt="Meta Quest build settings" style="width:80%;">
+<img loading="lazy" src="/assets/images/xr/dev-meta-quest-build-settings.png" alt="Meta Quest build settings" style="width:80%;">
 
 ## Step 5: Launch the player
 
@@ -174,10 +175,10 @@ Expected result: the player starts on the headset and renders the configured glT
 If the player launches but XR input or rendering does not work, check the OpenXR configuration.
 
 Symptom: the scene does not render in XR, or the headset is not detected. Ensure the project is configured for OpenXR with Meta Quest support:
-<img src="/assets/images/xr/dev-meta-quest-openxr-features-settings.png" alt="Unity OpenXR feature settings with Meta Quest support enabled" style="width:80%;">
+<img loading="lazy" src="/assets/images/xr/dev-meta-quest-openxr-features-settings.png" alt="Unity OpenXR feature settings with Meta Quest support enabled" style="width:80%;">
 
 Symptom: controllers or hand input do not respond. Ensure the Meta Quest interaction profiles are configured:
-<img src="/assets/images/xr/dev-meta-quest-openxr-project-settings.png" alt="Unity OpenXR project settings showing Meta Quest interaction profiles" style="width:80%;">
+<img loading="lazy" src="/assets/images/xr/dev-meta-quest-openxr-project-settings.png" alt="Unity OpenXR project settings showing Meta Quest interaction profiles" style="width:80%;">
 
 ## Next steps
 

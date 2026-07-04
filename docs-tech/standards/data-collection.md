@@ -2,11 +2,12 @@
 hide_title: true
 title: UE Data Collection
 sidebar_position: 16
+description: Explains the Data Collection Application Function (DCAF) framework letting UEs report media consumption and QoE data for network analytics.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -26,7 +27,7 @@ UE data collection covers the 3GPP mechanisms by which a device (user equipment,
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
 <h3>Technology &amp; Analysis</h3>
 </div>
 <div class="godeeper-card__body">
@@ -39,7 +40,7 @@ UE data collection covers the 3GPP mechanisms by which a device (user equipment,
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
 <h3>Software Tools</h3>
 </div>
 <div class="godeeper-card__body">
@@ -100,7 +101,7 @@ The reusable DCAF framework (TS 26.531 / TS 26.532) was introduced in 3GPP Relea
 
 ## 5G-MAG tracking and contribution focus
 
-5G-MAG tracks the SA4 data collection and reporting framework and maintains a reference implementation of the DCAF (a reusable service-provider library plus a runnable Application Function that exercises R1, R2 and R6). The organisation's tracking issues against TS 26.531 and TS 26.532 (for example clarifications on report scope and on `reportFormat` URIs) are raised in the public [5G-MAG Standards repository](https://github.com/5G-MAG/Standards/). The deeper technical view of the interfaces and procedures is on the [Tech portal](/tech/data-collection/data-collection-event-exposure), and the reference tooling is described on the [Developer portal](https://developer.5g-mag.com).
+5G-MAG tracks the SA4 data collection and reporting framework and maintains a reference implementation of the DCAF (a reusable service-provider library plus a runnable Application Function that exercises R1, R2 and R6). The organisation's tracking issues against TS 26.531 and TS 26.532 (for example clarifications on report scope and on `reportFormat` URIs) are raised in the public [5G-MAG Standards repository](https://github.com/5G-MAG/Standards/). The deeper technical view of the interfaces and procedures is on the [Tech portal](/tech/data-collection/data-collection-event-exposure), and the reference tooling is described on the [Developer portal](/developer/data-collection).
 
 ## Related 3GPP Specifications
 
@@ -141,7 +142,7 @@ These identifiers on this page were not confirmed against a primary source (the 
 * [Standards: 5G Media Streaming](/tech/standards/5gms)
 * [Standards: Network APIs](/tech/standards/network-apis)
 * [Standards: AI/ML in 5G Media](/tech/standards/ai-ml)
-* [Developer portal: UE Data Collection reference tools](https://developer.5g-mag.com)
+* [Developer portal: UE Data Collection reference tools](/developer/data-collection)
 * [Technical Documentation: UE Data Collection, Reporting & Event Exposure](/tech/data-collection/data-collection-event-exposure)
 
 :::note

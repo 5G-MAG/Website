@@ -2,11 +2,12 @@
 hide_title: true
 title: 5G Broadcast
 sidebar_position: 1
+description: Overview of ETSI TS 103 720 LTE-based 5G Broadcast, its version history, related 3GPP specifications and 5G-MAG's standards role.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M16.616 13.924a5 5 0 1 0 -9.23 0"/><path d="M20.307 15.469a9 9 0 1 0 -16.615 0"/><path d="M9 21l3 -9l3 9"/><path d="M10 19h4"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -181,12 +182,22 @@ Individual 3GPP Change Requests (CRs) are not linked directly: the CR search por
 Well-established references (DASH = ISO/IEC 23009-1; 5GMS = TS 26.501 / [TS 26.512](https://www.3gpp.org/dynareport/26512.htm)) do not need re-checking.
 :::
 
+## 5G-MAG tracking and contribution focus
+
+5G-MAG maintains ETSI TS 103 720 itself rather than only tracking it: it undertook the specification's maintenance in 2021, contributing the requirements and fixes that shape each new version, agreed among members on the [Kanban board](https://github.com/orgs/5G-MAG/projects/32). The current focus areas are:
+
+* **ETSI TS 103 720 v1.3.1 (in progress):** the work item kicked off in 2024 updates the specification for 3GPP Release 18, extending it to Release 19. Items being progressed include extensions to DVB-I to support 5G Broadcast, additional receiver band support (including Band 108, UHF), 5G Broadcast as a Public Warning System improvement, deployment guidelines for concurrent 5G Broadcast and 5G Unicast, support for 3GPP Service URLs, and low-latency distribution.
+* **Implementer-driven fixes:** the v1.3.1 additions explicitly include bugs and clarification questions raised by implementors of the specification, in particular by 5G-MAG itself, together with new requirements identified by 5G-MAG.
+* **Completed Release 17 alignment:** 5G-MAG completed the v1.2.1 update in 2023, adding receiver requirements for consistent network planning, bandwidth/UHF spectrum information, and support for 5GMS over eMBMS (including hybrid use cases).
+
+For the reference tools that exercise this specification, see [Developer portal: 5G Broadcast reference tools](/developer/applications/5gbroadcast); for the release-by-release specification detail behind these updates, see [Standards Evolution](/tech/standards/5g-broadcast-standards-evolution).
+
 ## Related Standards Work
 
 * [Standards: DVB-I over 5G](/tech/standards/dvb-i)
 * [Standards: 5G Multicast & Broadcast Services](/tech/standards/5g-mbs)
 * [Standards: Multimedia Content Delivery](/tech/standards/multimedia)
-* [Developer portal: 5G Broadcast reference tools](https://developer.5g-mag.com/5gbroadcast)
+* [Developer portal: 5G Broadcast reference tools](/developer/applications/5gbroadcast)
 * [Technical Documentation: 5G Broadcast](/tech/5g-broadcast)
 
 :::note

@@ -71,7 +71,13 @@ const config = {
   ],
 
   themeConfig: ({
+    image: 'img/social-card.png',
     colorMode: { respectPrefersColorScheme: true },
+    docs: {
+      sidebar: {
+        autoCollapseCategories: true,
+      },
+    },
     navbar: {
       title: '',
       logo: { alt: '5G-MAG Logo', src: 'assets/images/5g-mag-logo-with-text.png' },

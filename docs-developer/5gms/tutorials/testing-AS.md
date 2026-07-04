@@ -2,11 +2,12 @@
 title: Testing 5GMS AS
 hide_title: true
 sidebar_position: 0
+description: Guide to building, configuring and testing the 5GMS Application Server for development, including HTTP/HTTPS setup and the M3 test client.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M7 4v16l13 -8l-13 -8" /></svg>
 </div>
 <div class="topic-banner__text">
@@ -22,7 +23,7 @@ This tutorial allows to: Setup the 5GMSd AS for development and testing; Test th
 
 Here you will find information to assist with development and testing of the Reference Tools 5GMS Application Server (AS).
 
-<img src="/assets/images/5gms/5GMS_Downlink_AS.png" alt="5GMSd downlink architecture highlighting the Application Server and its M2d, M3 and M4d reference points" /> 
+<img loading="lazy" src="/assets/images/5gms/5GMS_Downlink_AS.png" alt="5GMSd downlink architecture highlighting the Application Server and its M2d, M3 and M4d reference points" /> 
 
 **What you will build:** a local development and testing setup of the 5GMSd Application Server, driven either by the Application Function (over M3) or by the bundled `m3_client_cli.py` test client, serving media over HTTP and HTTPS.
 

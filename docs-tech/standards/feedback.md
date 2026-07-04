@@ -1,12 +1,13 @@
 ---
 hide_title: true
 title: Feedback and Requirements
+description: How 5G-MAG submits feedback on 3GPP, MPEG and ETSI specifications as GitHub issues, and its position papers to SDO workshops.
 sidebar_position: 0
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M3 20l1.3 -3.9c-2.324 -3.437 -1.426 -7.872 2.1 -10.374c3.526 -2.501 8.59 -2.296 11.845 .48c3.255 2.777 3.695 7.266 1.029 10.501c-2.666 3.235 -7.615 4.215 -11.574 2.293l-4.7 1"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -68,13 +69,13 @@ This area covers feedback on the ETSI deployment guidelines for delivering DVB-I
 
 The diagram below shows the internal workflow: how feedback raised as a GitHub issue is reviewed by 5G-MAG and turned into a correction or new-feature proposal for a specification that 5G-MAG maintains.
 
-<img src="/assets/images/Feedback_1.png" alt="Workflow for feedback on specifications maintained by 5G-MAG: a community issue is raised on GitHub, reviewed by 5G-MAG, and progressed to a correction or new-feature proposal." style="width: 80%">
+<img loading="lazy" src="/assets/images/Feedback_1.png" alt="Workflow for feedback on specifications maintained by 5G-MAG: a community issue is raised on GitHub, reviewed by 5G-MAG, and progressed to a correction or new-feature proposal." style="width: 80%">
 
 ### How to provide feedback to technical specifications and documents maintained by external SDOs
 
 The diagram below shows the external workflow: how feedback on a specification owned by an external Standards Development Organisation (SDO) is reviewed by 5G-MAG and carried into that body (for example 3GPP or ETSI) as a change request or liaison input.
 
-<img src="/assets/images/Feedback_2.png" alt="Workflow for feedback on specifications maintained by external SDOs: a community issue is raised on GitHub, reviewed by 5G-MAG, and forwarded to the responsible standards body as a change request or liaison input." style="width: 80%">
+<img loading="lazy" src="/assets/images/Feedback_2.png" alt="Workflow for feedback on specifications maintained by external SDOs: a community issue is raised on GitHub, reviewed by 5G-MAG, and forwarded to the responsible standards body as a change request or liaison input." style="width: 80%">
 
 ## Requirements towards Standardisation
 

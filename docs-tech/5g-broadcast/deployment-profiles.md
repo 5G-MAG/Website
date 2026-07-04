@@ -2,12 +2,13 @@
 title: Deployment profiles
 sidebar_position: 0
 hide_title: true
+description: Defines LTE-based 5G Broadcast receiver capability profiles, including ETSI TS 103 720 receiver categories and an example Profile A.
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M16.616 13.924a5 5 0 1 0 -9.23 0"/><path d="M20.307 15.469a9 9 0 1 0 -16.615 0"/><path d="M9 21l3 -9l3 9"/><path d="M10 19h4"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -53,8 +54,10 @@ Later ETSI TS 103 720 versions extend the underlying feature set: v1.3.1 (in dev
 The supported bandwidths for LTE-based 5G Broadcast are 6, 7 and 8 MHz.
 
 The supported spectrum is a subset of operating band 108 (the UHF band 470 to 698 MHz for LTE-based 5G terrestrial broadcast), as defined in the radio characteristics of ETSI TS 103 720 (clause 7).
-<!-- TODO: confirm the exact sub-clause/table of ETSI TS 103 720 that defines operating band 108 (and the specific version in force). Clause 7 (radio characteristics) is cited here because the same profile references clause 7.3 for radio aspects and the source spec could not be opened directly to read the precise band-definition table; the underlying band 108 parameters originate in 3GPP TS 36.101. Verify against the published spec before relying on this reference. -->
 
+:::caution
+The exact sub-clause/table of ETSI TS 103 720 that defines operating band 108 (and the specific version in force) has not been confirmed. Clause 7 (radio characteristics) is cited here because the same profile references clause 7.3 for radio aspects and the source spec could not be opened directly to read the precise band-definition table; the underlying band 108 parameters originate in 3GPP TS 36.101. Verify against the published spec before relying on this reference.
+:::
 
 ### Radio
 

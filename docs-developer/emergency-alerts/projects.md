@@ -2,11 +2,12 @@
 title: Roadmap
 hide_title: true
 sidebar_position: 1
+description: Links to GitHub Kanban boards tracking roadmap work for 5G Broadcast Emergency Alerts, including the Public Warning System.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M12 8a2 2 0 0 1 2 2v4a2 2 0 1 1 -4 0v-4a2 2 0 0 1 2 -2" />
   <path d="M17 15c.345 .6 1.258 1 2 1a2 2 0 1 0 0 -4a2 2 0 1 1 0 -4c.746 0 1.656 .394 2 1" />
   <path d="M3 15c.345 .6 1.258 1 2 1a2 2 0 1 0 0 -4a2 2 0 1 1 0 -4c.746 0 1.656 .394 2 1" /></svg>
@@ -22,6 +23,9 @@ sidebar_position: 1
 The roadmap for this project lives on the GitHub Project boards linked below. For what the project implements, see the [Scope](./scope) page.
 
 ## General Project Roadmap
+
+The Kanban board below tracks the planned and in-progress work for the 5G Broadcast Emergency Alerts tools (Cell Broadcast Service transport, delivery through the broadcast chain, and receiver presentation of warning messages). It is maintained live on GitHub.
+
 [Kanban board: Roadmap](https://github.com/orgs/5G-MAG/projects/48/views/12)
 
 ## Developer Kanban Boards
@@ -29,3 +33,9 @@ The roadmap for this project lives on the GitHub Project boards linked below. Fo
 ### MBMS: Public Warning System
 Issues and required functionality around support for a Public Warning System, delivered over Multimedia Broadcast Multicast Service (MBMS), as defined in ETSI TS 103 720.
 * [**Kanban board**](https://github.com/orgs/5G-MAG/projects/20)
+
+## Related
+
+* [Scope](./scope): specifications in scope and implemented features.
+* [Repositories](./repositories): the source code.
+* [Tutorials](./tutorials): build, run and author content.

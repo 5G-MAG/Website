@@ -2,11 +2,12 @@
 title: Scope
 hide_title: true
 sidebar_position: 0
+description: Explains which RAN and Core components 5G-MAG builds, and how the srsRAN and Open5GS forks split into MBS and 5G Broadcast branches.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M11.482 20.924a1.666 1.666 0 0 1 -1.157 -1.241a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.312 .318 1.644 1.794 .995 2.697" />
   <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
   <path d="M20 21l2 -2l-2 -2" />
@@ -29,7 +30,7 @@ In 5G terminology the RAN can be split into a Central Unit (CU) and a Distribute
 A note on the delivery technologies referenced here:
 
 * **MBS (Multicast-Broadcast Services)**, also written 5MBS, is the 3GPP feature for delivering the same content to many devices over the 5G Core and NR radio.
-* **5G Broadcast** (LTE-based) delivers free-to-air TV and radio over LTE/eMBMS radio, without a 5G core or return channel. It reuses **FeMBMS** (Further evolved Multimedia Broadcast Multicast Service).
+* **5G Broadcast** (LTE-based) delivers free-to-air TV and radio over LTE/eMBMS radio, without a 5G core or return channel. It reuses **Further evolved Multimedia Broadcast Multicast Service (FeMBMS)**.
 
 These are distinct technologies; the branch names in the [GitHub Repos](./repositories) page follow this split.
 
@@ -65,7 +66,7 @@ The forks are organised around two distinct delivery technologies, and the branc
 | RAN software basis | `rt-srsRAN_Project` (NR CU/DU) | `srsRAN_4G` (eNodeB with MBMS) |
 | Typical use | Same content to many devices over 5GC and NR | Free-to-air TV and radio over broadcast, receive-only |
 
-FeMBMS (Further evolved Multimedia Broadcast Multicast Service) is the LTE broadcast feature reused by 5G Broadcast. Published 5G-MAG material notes that the LTE-based 5G Broadcast transmitter builds on the MBMS implementation in the `srsRAN_4G` eNodeB, extended towards the 3GPP Release 17 LTE-based 5G Terrestrial Broadcast feature set (for example channel estimation and reference signals for the 1.25 kHz and 7.5 kHz subcarrier spacings used by dedicated broadcast). The dedicated 5G Broadcast transmitter and modem live in separate repositories (for example `rt-mbms-tx` and `rt-mbms-modem`), which depend on this project for the underlying radio software.
+Further evolved Multimedia Broadcast Multicast Service (FeMBMS) is the LTE broadcast feature reused by 5G Broadcast. Published 5G-MAG material notes that the LTE-based 5G Broadcast transmitter builds on the MBMS implementation in the `srsRAN_4G` eNodeB, extended towards the 3GPP Release 17 LTE-based 5G Terrestrial Broadcast feature set (for example channel estimation and reference signals for the 1.25 kHz and 7.5 kHz subcarrier spacings used by dedicated broadcast). The dedicated 5G Broadcast transmitter and modem live in separate repositories (for example `rt-mbms-tx` and `rt-mbms-modem`), which depend on this project for the underlying radio software.
 
 ## How this relates to the media reference tools
 

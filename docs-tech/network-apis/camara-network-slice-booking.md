@@ -2,12 +2,13 @@
 title: CAMARA Network Slice Booking
 sidebar_position: 10
 hide_title: true
+description: Describes the CAMARA Network Slice Booking API for reserving network slice resources for an area, time window, and QoS profile.
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M4 13h5"/><path d="M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3"/><path d="M20 8v8"/><path d="M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -42,11 +43,16 @@ The Network Slice Booking API definition (YAML) is available at: [https://github
   * **DELETE /slices/{sliceId}** - delete a Network Slice Booking.
 
 #### Parameters describing a Network Slice QoS Profile
-* `maxNumOfDevices`- is the maximum number of devices that can be connected to the slice
-* `downStreamRatePerDevice` - is the maximum downstream rate allowed for each device connected to the slice. It indicates the individual device capability required for the slice.
-* `upStreamRatePerDevice` - is the maximum upstream rate allowed for each device connected to the slice. It indicates the individual device capability required for the slice.
-* `downStreamDelayBudget` - is the maximum allowable downlink packet transmission latency (millisecond). By limiting the delay, the network can provide an acceptable level of performance for various services, such as voice calls, video streaming, and data.
-* `upStreamDelayBudget`  - is the maximum allowable uplink packet transmission latency (millisecond). By limiting the delay, the network can provide an acceptable level of performance for various services, such as voice calls, video streaming, and data.
+
+| Parameter | Description |
+| --- | --- |
+| `maxNumOfDevices` | Is the maximum number of devices that can be connected to the slice. |
+| `downStreamRatePerDevice` | Is the maximum downstream rate allowed for each device connected to the slice. |
+| `upStreamRatePerDevice` | Is the maximum upstream rate allowed for each device connected to the slice. |
+| `downStreamDelayBudget` | Is the maximum allowable downlink packet transmission latency (millisecond). |
+| `upStreamDelayBudget` | Is the maximum allowable uplink packet transmission latency (millisecond). |
+
+Both rate parameters (`downStreamRatePerDevice`, `upStreamRatePerDevice`) indicate the individual device capability required for the slice. Both delay-budget parameters (`downStreamDelayBudget`, `upStreamDelayBudget`) share the same rationale: by limiting the delay, the network can provide an acceptable level of performance for various services, such as voice calls, video streaming, and data.
 
 ## Standardisation context
 

@@ -2,12 +2,13 @@
 title: CAMARA QoS Provisioning
 sidebar_position: 8
 hide_title: true
+description: Describes the CAMARA QoS Provisioning API, which persistently assigns a QoS profile to a device until the assignment is deleted.
 ---
 
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M4 13h5"/><path d="M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3"/><path d="M20 8v8"/><path d="M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -70,7 +71,7 @@ A practical limitation for media, recorded in the Self-Assessment below, is that
 A user of a media application would like to request the assignment of a QoS Profile to a device. An example figure is shown using the QoS Provisioning in the context of Quality on Demand. The following steps are executed:
 
 <figure>
-  <img src="./content-production/images/figure_qualityondemand.png" width="80%" alt="Sequence showing a QoS Profile being looked up, then assigned to a device via QoS Provisioning." />
+  <img loading="lazy" src="/img/tech/network-apis/content-production/figure_qualityondemand.png" width="80%" alt="Sequence showing a QoS Profile being looked up, then assigned to a device via QoS Provisioning." />
   <figcaption>QoS Provisioning shown in the Quality on Demand context: the profile is looked up by name, then attached to the device so it applies on every connection.</figcaption>
 </figure>
 

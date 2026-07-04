@@ -2,11 +2,12 @@
 title: Roadmap
 hide_title: true
 sidebar_position: 1
+description: Links to the GitHub Kanban boards for the UE Data Collection, Reporting and Event Exposure roadmap and in-progress work.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M14 3v4a1 1 0 0 0 1 1h4" />
   <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />
   <path d="M9 17l0 -5" />
@@ -24,6 +25,9 @@ sidebar_position: 1
 The roadmap for this project lives on the GitHub Project boards linked below. For what the project implements, see the [Scope](./scope) page.
 
 ## General Project Roadmap
+
+The Kanban board below tracks the planned and in-progress work for the UE Data Collection, Reporting and Event Exposure framework (the DCAF service-provider library, its Application Function, and the R1/R2/R6 provisioning, reporting, and event-exposure interfaces). It is maintained live on GitHub.
+
 [Kanban board: Roadmap](https://github.com/orgs/5G-MAG/projects/48/views/8)
 
 ## Developer Kanban Boards

@@ -2,11 +2,12 @@
 title: Testing 5GMS AF
 hide_title: true
 sidebar_position: 1
+description: Overview of installing, configuring and testing the 5GMS Application Function's M1, M3 and M5 interfaces, linking to version-specific test pages.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M7 4v16l13 -8l-13 -8" /></svg>
 </div>
 <div class="topic-banner__text">
@@ -22,7 +23,7 @@ This tutorial allows to: Setup the 5GMSd AF; Test the M1 Interface APIs (Provisi
 
 Here you will find information to assist with testing of the Reference Tools 5GMS Application Function (AF).
 
-<img src="/assets/images/5gms/5GMS_Downlink_AF.png" alt="5GMSd downlink architecture highlighting the Application Function and its M1, M3 and M5 interfaces" /> 
+<img loading="lazy" src="/assets/images/5gms/5GMS_Downlink_AF.png" alt="5GMSd downlink architecture highlighting the Application Function and its M1, M3 and M5 interfaces" /> 
 
 **Recommended path:** install the AF, configure it, then test its interfaces in the order M1 (provisioning), M3 (AF-to-AS configuration), M5 (client session handling).
 

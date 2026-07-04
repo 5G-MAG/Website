@@ -2,11 +2,12 @@
 hide_title: true
 title: 5G Multicast Broadcast Services
 sidebar_position: 3
+description: Covers 5G Multicast-Broadcast Services architecture across user-service, 5G Core and NR/NG-RAN layers, and lists the related 3GPP specifications.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M12 12l0 .01"/><path d="M14.828 9.172a4 4 0 0 1 0 5.656"/><path d="M17.657 6.343a8 8 0 0 1 0 11.314"/><path d="M9.168 14.828a4 4 0 0 1 0 -5.656"/><path d="M6.337 17.657a8 8 0 0 1 0 -11.314"/></svg>
 </div>
 <div class="topic-banner__text">
@@ -17,7 +18,7 @@ sidebar_position: 3
 
 ## Overview
 
-5G Multicast-Broadcast Services (MBS) is the 3GPP 5G System feature for delivering the same content to many devices at once over the 5G core and NR radio, used for live media, software updates and mission-critical group communication. Unlike LTE-based 5G Broadcast (see [Standards: 5G Broadcast](/tech/standards/5g-broadcast)), MBS is native to the 5G core and New Radio (NR). Because MBS spans the whole stack, the specifications below are grouped by layer: user-service level, 5G core network, and NR / NG-RAN. 5G-MAG tracks and contributes to this work. For acronyms used here, see the [Glossary](/tech/standards/glossary).
+5G Multicast Broadcast Services (MBS) is the 3GPP 5G System feature for delivering the same content to many devices at once over the 5G core and NR radio, used for live media, software updates and mission-critical group communication. Unlike LTE-based 5G Broadcast (see [Standards: 5G Broadcast](/tech/standards/5g-broadcast)), MBS is native to the 5G core and New Radio (NR). Because MBS spans the whole stack, the specifications below are grouped by layer: user-service level, 5G core network, and NR / NG-RAN. 5G-MAG tracks and contributes to this work. For acronyms used here, see the [Glossary](/tech/standards/glossary).
 
 ## Why MBS, and what changed from eMBMS
 
@@ -33,7 +34,7 @@ The specification list below is grouped to match the three layers a single MBS s
 * **5G Core layer.** The MBS system architecture (TS 23.247, Stage 2) defines the multicast and broadcast *communication services*, the MBS *sessions* that carry them, and the two ways the core moves MBS packets towards the radio: the *5GC shared* method (one copy per MBS-capable RAN node over a shared GTP-U tunnel) and the *5GC individual* method (a per-UE copy in a normal PDU session, used for MBS-incapable nodes). The MBS-specific core functions are the **MB-SMF** (session management) and **MB-UPF** (user plane); the AMF, PCF, NEF and NRF gain MBS extensions. Stage 3 procedures are in TS 29.532 (session management), TS 29.537 (policy control), TS 29.580 (MBSF services) and TS 29.581 (MBSTF transport services).
 * **NR and NG-RAN layer.** Once packets reach the gNB, the radio side (TS 38.300 family) chooses PTM or PTP and applies one of three Layer-2 delivery modes: delivery mode 1 (multicast, HARQ feedback and retransmissions, RRC_CONNECTED), delivery mode 2 (broadcast, no feedback, receivable in any RRC state) and the default unicast mode. Broadcast configuration is carried on the MCCH (pointed to by SIB20), traffic on the MTCH, and sessions are addressed by a Group RNTI (G-RNTI).
 
-The developer-facing view of what the 5G-MAG reference tools implement across these layers is on the [developer portal](https://developer.5g-mag.com/multicastbroadcast).
+The developer-facing view of what the 5G-MAG reference tools implement across these layers is on the [developer portal](/developer/applications/multicastbroadcast).
 
 ## Specifications by release
 
@@ -150,11 +151,20 @@ NG-RAN can be split into a Central Unit (CU) and Distributed Unit (DU), with the
 The release placement statements in "Specifications by release" were not all confirmed against a primary source: the "5MBS" / "5MBS Phase 2" work-item naming, the Release 17 introduction of the listed specifications, and the Release 18 placement of MBS multicast reception in RRC_INACTIVE (SIB24 and the dedicated multicast MCCH). Verify against the specific 3GPP release and specification versions you are targeting.
 :::
 
+## 5G-MAG tracking and contribution focus
+
+5G-MAG tracks and contributes to 5G MBS standardisation, and maintains reference tools that implement the architecture across all three layers described above (user-service, 5G Core, and NR/NG-RAN). The current focus areas are:
+
+* **Release 18 "5MBS Phase 2":** following the RAN extensions that add MBS multicast reception in the RRC_INACTIVE state, introducing SIB24 and a dedicated multicast MCCH (see [MBS Multicast Inactive RAN procedures](/tech/5g-mbs/analysis-mbs-multicast-inactive-ran)).
+* **Cross-layer reference implementation:** the [developer portal](/developer/applications/multicastbroadcast) documents how the reference tools realise the user-service (TS 26.502 / TS 26.517), 5G Core (TS 23.247 and the related Stage 3 specifications), and NR/NG-RAN (TS 38.300 family) layers described above.
+
+For the implementer-facing analysis of this architecture, see [Technical Documentation: 5G MBS](/tech/5g-mbs).
+
 ## Related Standards Work
 
 * [Standards: 5G Media Streaming](/tech/standards/5gms)
 * [Standards: 5G Broadcast](/tech/standards/5g-broadcast)
-* [Developer portal: 5G MBS reference tools](https://developer.5g-mag.com/multicastbroadcast)
+* [Developer portal: 5G MBS reference tools](/developer/applications/multicastbroadcast)
 * [Technical Documentation: 5G MBS](/tech/5g-mbs)
 
 :::note

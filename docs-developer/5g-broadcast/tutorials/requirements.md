@@ -2,11 +2,12 @@
 title: SDR - Requirements
 hide_title: true
 sidebar_position: 7
+description: Lists hardware, SDR, and OS requirements for the 5G Broadcast Reference Tools, plus a reference setup and validated test configurations.
 ---
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
   <path d="M16.616 13.924a5 5 0 1 0 -9.23 0" />
   <path d="M20.307 15.469a9 9 0 1 0 -16.615 0" />
@@ -50,7 +51,7 @@ We recommend using [Ubuntu 22.04 LTS (64 bit)](https://ubuntu.com/). Ubuntu 20.0
 
 ## Reference setup
 
-<p align="center"><img src="/assets/images/5gbc/reference-ors.png" alt="Photo of the ORS reference setup: an Intel NUC with an integrated SDR and display"></p>
+<p align="center"><img loading="lazy" src="/assets/images/5gbc/reference-ors.png" alt="Photo of the ORS reference setup: an Intel NUC with an integrated SDR and display"></p>
 
 *Figure: the ORS reference hardware setup.*
 
