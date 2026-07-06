@@ -67,7 +67,7 @@ This case splits into two sub-cases depending on direction of travel: leaving MB
 
 ## Bearer-type switch when leaving Multicast-supporting coverage
 
-:::caution
+:::warning
 This section's procedure (switching the MRB to a DRB before handover) describes the same direction of travel as "Leaving Multicast-supporting coverage" above (supporting cell → non-supporting cell), using the text's own wording as the basis for this heading. What is still unresolved: whether this MRB-to-DRB bearer switch is an *additional* step that runs alongside the PDU-session/delivery-method switch described above for the same handover, or an *alternate* mechanism for a different scenario (for example, no target PDU session support at all). Verify the relationship between the two procedures against 3GPP TS 38.300 before relying on this section.
 :::
 

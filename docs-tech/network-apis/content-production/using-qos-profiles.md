@@ -61,7 +61,7 @@ CAMARA QoS Profiles are an abstraction over the 3GPP QoS model. In 3GPP, a stand
 
 For a media contribution example, a profile intended for a single uplink camera feed would set a high guaranteed upstream rate (for example several Mbps), a low `packetDelayBudget` and `jitter`, and a low `packetErrorLossRate`, with a `serviceClass` such as `real_time_interactive`.
 
-```
+```json
 // Example values — replace with actual network requirements
 [
   {
@@ -143,7 +143,7 @@ For a contribution feed the upstream (uplink) fields dominate, because the media
 The field for error loss rate appears as `packetErrorLossRate` in the CAMARA QoS Profiles definition; some API definitions spell it `packetLossErrorRate`. Confirm the exact name against the specific `.yaml` you integrate against, as noted in [Relevant QoS Parameters](../network-api-initiatives#relevant-qos-parameters).
 :::
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TS 23.501 clause 5.7.4 / Table 5.7.4-1 as the exact location of the standardised 5QI table, and TS 23.203 as the QCI packet-error-loss-rate reference. Verify against the 3GPP work plan before publication.
 :::
 

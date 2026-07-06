@@ -105,7 +105,7 @@ The diagram below shows the DVB-I over 5G reference architecture combining a 5G 
 [3GPP RAN and Core Platforms: Repositories](../3gpp-platforms/repositories)
 [Common Tools: Repositories](../common-tools/)
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): 3GPP TS 26.512 (5GMS Protocols) and TS 26.511 (5GMS Profiles, codecs and formats) as the exact companions used, and their Release placement. The DVB and ETSI document numbers/titles (A177/TS 103 770, A178/TR 103 972, TS 103 720, TS 103 285, TS 103 769) were confirmed against DVB/ETSI sources; DASH = ISO/IEC 23009-1 is established. Verify the 3GPP identifiers against the 3GPP work plan before publication.
 :::
 

@@ -101,7 +101,7 @@ The downlink direction (5GMSd) uses a "d" suffix (M1d to M8d) and the uplink dir
 
 Two points on the specification structure are worth noting for implementers. First, from Release 18 the media session handling APIs were moved from TS 26.512 into TS 26.510 and generalised so that the 5GMS System and the Real-Time media Communication (RTC) System share the same Media Session Handler and AF provisioning. The current reference tools are based on the Release 17 layout, where those APIs still live in TS 26.512 and TS 26.510 does not exist. Second, 5GMS consumption and QoE metrics reporting can feed the generic UE data collection framework specified in TS 26.531 (architecture) and TS 26.532 (protocols and formats), which is where event exposure to consuming functions such as the Network Data Analytics Function (NWDAF) or an Event Consumer AF is defined.
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the Release 18 move of the media session handling APIs from TS 26.512 into TS 26.510, and the Release 17 layout of the reference-tool baseline. Verify against the 3GPP work plan before publication.
 :::
 

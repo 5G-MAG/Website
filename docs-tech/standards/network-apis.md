@@ -107,7 +107,7 @@ The mappings above are the general correspondence; CAMARA does not mandate a spe
 
 For the reference implementation (CAMARA QoD, Connectivity Insights and Network Slice Booking APIs, plus 3GPP TS 23.434 SEAL), see [Network APIs on the developer portal](/developer/network-apis).
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TS 24.549 (SEAL NSCE Stage 3), TS 28.531 and TS 28.541 (network slice management), TS 29.520 (NWDAF services). Verify against the 3GPP work plan before publication.
 :::
 

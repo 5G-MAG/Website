@@ -169,7 +169,7 @@ For delivery over mobile networks, the V3C DASH presentation is treated as ordin
 
 The 5G-MAG V3C Immersive Platform reference tools implement the end-to-end path described above: encode source content into a V3C bitstream, package and deliver it, then decode and render it in real time. On the client side the work targets a Unity-based player: a V3C decoder is exposed to the engine as a plugin that decodes the atlas and the associated video sub-bitstreams (geometry, occupancy, attributes) and reconstructs the 3D representation for display. Decoupling the volumetric decoder from the presentation engine is the same separation-of-concerns pattern 5G-MAG uses across its immersive-media tools, and it mirrors the bitstream structure: the plugin owns the V3C-specific work, the engine owns presentation. For the current, authoritative repository list and status, see the Developer Portal scope and repositories pages linked below rather than any hard-coded list here.
 
-:::caution[References to verify]
+:::warning[References to verify]
 These specifics on this page were not confirmed against the primary source (the ISO catalogue entries were checked, but detailed clauses and amendment scope were not): the exact MIV profile names and their defining constraints (Main, Extended, Restricted Geometry, Geometry Absent), and the ISO/IEC 23090-10 amendment (support of packed video data) and its carriage conformance/reference-software parts. Verify against ISO/IEC 23090-5, 23090-10, and 23090-12 before publication.
 :::
 

@@ -1,5 +1,5 @@
 ---
-title:  Testing M3 AF v1.2.x
+title: Testing M3 AF v1.2.x
 hide_title: true
 sidebar_position: 10
 description: Verifies the M3 interface of the 5GMSd Application Function v1.2.0 and later, configuring streams dynamically with the m1-session tool.
@@ -38,7 +38,7 @@ To prepare, follow the instructions for [local user building and installation](.
 
 The Application Function is an M3 Client and most of the communication is only logged at the `debug` level. To properly see the M3 Interface interactions the configuration will need to set the minimum logging level to `debug` for the `msaf` domain.
 
-:::caution[Verify the logging section key]
+:::warning[Verify the logging section key]
 The snippet below uses a `logger:` section, but the [Configuration reference](./configuration-5GMSAF) uses a `logging:` section for the same setting. Only one key is correct; verify against the software before relying on this. Use the key that matches your installed version.
 :::
 

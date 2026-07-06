@@ -96,7 +96,7 @@ The trade-off between the two options is essentially latency against coupling: o
 
 The recurring design pattern across all three models is the same: use the predictability of satellite motion to prepare the target beam or cell in advance (conditional handover), and protect the reliability of a multicast session during the transition by temporarily switching the affected devices to PTP where lossless delivery is required.
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the exact clauses in TS 38.331 for SIB19 and conditional handover, and the specific [TS 23.501](https://www.3gpp.org/dynareport/23501.htm)/[TS 23.502](https://www.3gpp.org/dynareport/23502.htm) clauses covering NTN roaming and home-routed session continuity. Verify against the 3GPP work plan before publication.
 :::
 

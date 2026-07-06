@@ -23,7 +23,7 @@ A liaison statement (LS) is a formal message exchanged between standards groups.
 
 The tables are grouped by standards body (3GPP, MPEG, ETSI MEC) and listed newest first. Each link downloads the document (a ZIP or office file) from the relevant document server.
 
-:::caution
+:::warning
 The working-group titles and some reply threads below have not all been reconfirmed against the source document servers. Confirm the exact meeting, document number and status before relying on them.
 :::
 

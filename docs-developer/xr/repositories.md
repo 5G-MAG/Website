@@ -2,7 +2,7 @@
 title: Repositories
 hide_title: true
 sidebar_position: 2
-description: Lists the XR player, MAF, glTFast, content and Blender exporter repositories, plus their latest release versions.
+description: Auto-generated list of GitHub repositories for the XR reference tools, plus a table of each repository's latest release.
 ---
 
 <div class="topic-banner">
@@ -23,23 +23,11 @@ description: Lists the XR player, MAF, glTFast, content and Blender exporter rep
 
 <div style="margin: 8px 0"><a class="button button--outline button--primary" href="./scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="./projects" style="margin: 2px 4px 2px 0">Project Roadmap</a> <a class="button button--outline button--primary" href="./repositories" style="margin: 2px 4px 2px 0">GitHub Repos</a> <a class="button button--outline button--primary" href="./releases" style="margin: 2px 4px 2px 0">Releases</a> <a class="button button--outline button--primary" href="./tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="./tutorials#video-library" style="margin: 2px 4px 2px 0">Video Library</a></div>
 
-The following repositories make up the XR reference tools. Please refer to the [Scope](./scope) section for more context on what each implements.
-
-The main repositories are:
-
-- **rt-xr-unity-player**: the XR player itself, a Unity project that loads glTF scenes with MPEG glTF extensions and renders them on phones and head-mounted displays.
-- **rt-xr-maf-native**: a C++ implementation of the Media Access Function (MAF) API, extensible with custom media pipeline plugins, used by the player to fetch and decode media.
-- **rt-xr-glTFast**: the glTF parser that loads and instantiates 3D scenes in Unity.
-- **rt-xr-content**: test content (sample scenes) implementing the scene description format.
-- **rt-xr-blender-exporter**: a Blender add-on to author and export glTF assets with the MPEG extensions.
-
-In the table below, auxiliary repositories (shown with a dashed border) are supporting libraries or helper tools rather than primary deliverables.
+The table below lists the GitHub repositories that make up the XR reference tools, grouped by their role in the content-to-playback pipeline. It is generated automatically from the 5G-MAG organisation, so it reflects the current set of public repositories. For context on what each repository does, see the [Scope](./scope) page. Auxiliary repositories (supporting libraries or helper tools rather than primary deliverables) are shown with a dashed border.
 
 <!-- ARCH-TABLE-START:X1,X2,X3,X4,X5 -->
 
 <!-- ARCH-TABLE-END:X1,X2,X3,X4,X5 -->
-
-*Note: Auxiliary repositories are indicated with a dashed border.*
 
 ---
 

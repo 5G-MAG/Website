@@ -132,7 +132,7 @@ An implementer has to respect four interoperability boundaries: the ARF base-ava
 ARF (ISO/IEC 23090-39) was still at the Draft International Standard stage as of 2025, so the base-avatar and animation-stream details above can change before final publication. Confirm the current stage on the [ISO catalogue page](https://www.iso.org/standard/91745.html) and treat reference tooling as tracking a moving target.
 :::
 
-:::caution[References to verify]
+:::warning[References to verify]
 The following points on this page were not confirmed against a primary source and should be checked before publication:
 
 * **TS 26.114** (MTSI) and **TS 26.506** (RTC over 5G) as the delivery path for avatar animation, and the exact title of TS 26.506; confirm placement and titles against the 3GPP SA4 work plan.

@@ -1,5 +1,5 @@
 ---
-title:  Immersive and 3D Media message
+title: Immersive and 3D Media message
 hide_title: true
 sidebar_position: 2
 description: Walks through use cases for sharing 3D/AR assets via MMS or messaging apps and rendering them in the XR player.

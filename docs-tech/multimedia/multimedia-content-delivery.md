@@ -74,7 +74,7 @@ Both run over UDP/IP (including multicast IP), both use LCT/ALC and FEC, and bot
 
 Content is encoded, packaged as CMAF segments and described by a DASH MPD or HLS playlist. For a download model the segments and manifest are carried as FLUTE objects (as in MBMS), with FDT Content-Locations matching the manifest URLs. For a real-time model the same segments are carried as ROUTE objects in Source Flows with FEC in Repair Flows (as in ATSC 3.0). At the receiver, FEC recovers any lost packets, the objects are reassembled, the manifest is reconstructed, and the player renders the presentation exactly as if the segments had been pulled over HTTP. This is why the format and transport layers can be developed and reasoned about separately, and why 5G-MAG's FLUTE and ROUTE tooling is format-agnostic above the segment level.
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the ISO/ETSI/3GPP portals block automated access): the specific ISO catalogue editions for ISO/IEC 23009-1 (DASH) and ISO/IEC 23000-19 (CMAF), the current ETSI TS 103 285 (DVB-DASH) version, and the specific 3GP-DASH clause structure in TS 26.247. The IETF mappings (FLUTE = RFC 6726, ROUTE = RFC 9223, HLS = RFC 8216, LCT = RFC 5651, ALC = RFC 5775, FCAST = RFC 6968) and the use of FLUTE by MBMS (TS 26.346) were confirmed. Verify remaining edition/version numbers against the ISO and ETSI catalogues before publication.
 :::
 

@@ -86,7 +86,7 @@ As indicated in the instructions in the [rt-v3c-decoder-plugin](https://github.c
 
 Clone the Unity player repository into your home directory:
 
-```
+```bash
 cd ~
 git clone https://github.com/5G-MAG/rt-v3c-unity-player  
 ```
@@ -102,21 +102,21 @@ Although not immediately used, this will create the directories where the decode
 
 Clone the repository:
 
-```
+```bash
 cd ~
 git clone --recurse-submodules https://github.com/5G-MAG/rt-v3c-decoder-plugin.git
 ```
 
 Install the dependencies:
 
-```
+```bash
 cd ~/rt-v3c-decoder-plugin
 ./Scripts/dl_deps.sh
 ```
 
 Add the additional dependency regarding avcodec libraries. For this, instructions are provided in [rt-common-shared](https://github.com/5G-MAG/rt-common-shared). We can use the Docker build instructions with Git Bash.
 
-```
+```bash
 cd ~
 git clone --recurse-submodules https://github.com/5G-MAG/rt-common-shared.git
 cd ~/rt-common-shared/avcodec-build/
@@ -132,14 +132,14 @@ Make sure the ndk is available in the Android directory.
 
 At this point, back in the directory of the rt-v3c-decoder-plugin, we can compile for Android:
 
-```
+```bash
 cd ~/rt-v3c-decoder-plugin
 ./Scripts/build_android.sh release all  
 ```
 
 We can now copy the plugins into the rt-v3c-unity-player directories:
 
-```
+```bash
 cd ~/rt-v3c-unity-player
 ../rt-v3c-decoder-plugin/Scripts/copy_libs.sh ./Packages/V3CDecoder/Runtime/Plugins release Android
 ```
@@ -163,7 +163,7 @@ Note that you will need to manually install the content and/or configuration fil
 
 With the application already installed in the Android device and the directories automatically created we can now download the V3C Content for testing locally in the device and for streaming.
 
-```
+```bash
 git clone --recurse-submodules https://github.com/5G-MAG/rt-v3c-content.git
 ```
 

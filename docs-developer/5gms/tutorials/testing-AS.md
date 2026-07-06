@@ -175,7 +175,7 @@ root_temp = /tmp/rt-5gms-as
 #pid_path = %(root_temp)s/5gms-as-nginx.pid
 ```
 
-:::caution[M4d ports below 1024 need root]
+:::warning[M4d ports below 1024 need root]
 When you run the AS as an unprivileged user, the M4d distribution service cannot bind to the default ports 80 and 443 (ports below 1024 require root). This configuration uses ports 8080 and 8443 instead. Any URL the AF publishes for M4d will therefore need the port inserted manually before use. For example, change `http://your.hostname/...` to `http://your.hostname:8080/...`.
 :::
 
@@ -369,7 +369,7 @@ apt install python3-docopt python3-aiofiles python3-httpx python3-h2
 
 ...or on most distributions by using the python `pip` module:
 
-```
+```bash
 python3 -m pip install docopt aiofiles 'httpx[http2]'
 ```
 

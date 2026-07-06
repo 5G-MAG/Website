@@ -1,5 +1,5 @@
 ---
-title:  Testing M3 AF v1.1.x
+title: Testing M3 AF v1.1.x
 hide_title: true
 sidebar_position: 9
 description: Verifies the M3 interface of the 5GMSd Application Function v1.1.x by inspecting debug logs of AF-to-AS certificate and hosting config pushes.

@@ -146,7 +146,7 @@ In the procedure flow below, each step is tagged with the actor that performs it
 
 The response below shows one network profile: note the `id` (used in later calls), the device cap (`maxNumberOfDevices`), the aggregate uplink/downlink throughput, and the QoS profiles it bundles.
 
-```
+```json
 [
   {
     "id": "string",
@@ -171,7 +171,7 @@ The response below shows one network profile: note the `id` (used in later calls
 
 An example of the QoS Profile, including status:
 
-```
+```json
 // Example values — replace with actual network requirements
 [
   {
@@ -230,7 +230,7 @@ An example of the QoS Profile, including status:
 
 The ASP should create an object with the desired location by means of one of the following parameters:
 
-```
+```json
 {
   "atLocation": {
     "latitude": 50.735851,
@@ -248,7 +248,7 @@ The ASP should create an object with the desired location by means of one of the
 
 This operation should return an **"id": "string"**, in this form:
 
-```
+```json
 [
   {
     "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
@@ -269,7 +269,7 @@ This operation should return an **"id": "string"**, in this form:
 
 **POST /networks** passing a `profileId`, `serviceTime`, `serviceArea`, among others, in the following form. Note that `profileId` here is the `id` returned by **GET /profiles** in step 1.0a:
 
-```
+```json
 {
   "profileId": "string",
   "serviceTime": {
@@ -292,7 +292,7 @@ During this phase, **GET /networks** may be used to list the information on the 
 
 **POST /accesses** should be used to attach devices to a dedicated network. The body identifies the target network (`networkId`, the `id` returned by **POST /networks**), the device (by phone number, network access identifier or IP address), and the QoS profiles the device may use:
 
-```
+```json
 {
   "networkId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "device": {
@@ -371,7 +371,7 @@ A Network Profile bundles one or more QoS Profiles with a `maxNumberOfDevices` c
 
 A Dedicated Network is realised in the 5G Core as reserved connectivity for a set of devices over an area and window. Depending on the operator's implementation this maps to a network slice (identified by an S-NSSAI) and/or a set of QoS Flows provisioned through policy. The reservation and device-access requests drive the Network Exposure Function (NEF) northbound APIs ([TS 29.522](https://www.3gpp.org/dynareport/29522.htm)); advance reservation of a future window uses background data transfer negotiation (`Nnef_BDTPNegotiation`, [TS 29.554](https://www.3gpp.org/dynareport/29554.htm)), and per-device QoS is authorised by the Policy Control Function (`Npcf_PolicyAuthorization`, [TS 29.514](https://www.3gpp.org/dynareport/29514.htm)). Non-public network realisations (PNI-NPN via a slice, or a dedicated deployment) are defined in [TS 23.501](https://www.3gpp.org/dynareport/23501.htm), clause 5.30. See [Network API Initiatives](../network-api-initiatives#3gpp-apis-for-quality-of-service).
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the specific realisation of a CAMARA Dedicated Network as an S-NSSAI-identified slice versus policy-provisioned QoS Flows, and the exact NEF/PCF operations invoked (`Nnef_BDTPNegotiation` in TS 29.554, `Npcf_PolicyAuthorization` in TS 29.514, NEF northbound in TS 29.522). Verify against the 3GPP work plan and the current CAMARA DedicatedNetworks specification before publication.
 :::
 

@@ -102,7 +102,7 @@ Requests a QoS session (stable latency or prioritised throughput) for the durati
 ## Details on the `device` object
 A device object in the sense of CAMARA APIs is defined as:
 
-```
+```json
 "device": {
     "phoneNumber": "+123456789",
     "networkAccessIdentifier": "123456789@domain.com",
@@ -194,7 +194,7 @@ The APIs analysed in this section share a set of conventions defined by the CAMA
 * **Tracing and errors.** An optional `x-correlator` header is echoed back, and a common error model is used across APIs.
 * **Versioning and releases.** APIs are shipped in twice-yearly meta-releases; a `wip` version on `main` is not a release. Several APIs here are still `v0`, so field names and enumerations can change.
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TS 24.549 (SEAL NSCE Stage 3). The specification titles/numbers already carrying links above (TS 29.522, TS 29.514, TS 29.554, TS 23.222, TS 29.222, TS 23.434, TS 23.203) are widely established and are not flagged here. Verify any specific clause references against the 3GPP work plan before publication.
 :::
 

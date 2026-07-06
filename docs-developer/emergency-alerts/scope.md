@@ -125,7 +125,7 @@ The diagram below shows the alert path: an alert is passed to the transmitter, e
 [Emergency Alerts over 5G Broadcast: Repositories](../emergency-alerts/repositories)
 [3GPP RAN and Core Platforms: Repositories](../3gpp-platforms/repositories)
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): ETSI TS 103 720 clause 5.15.3.3, 3GPP TS 23.041 clause 9.4.1.2.2, the CMAS message identifier value 0x1102 and its warning-type mapping, and 3GPP TS 36.331 clauses 5.2.2.19 and 6.3.1. Verify against the 3GPP/ETSI work plan and the current repository code before publication.
 :::
 

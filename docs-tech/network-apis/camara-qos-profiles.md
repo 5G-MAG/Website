@@ -116,7 +116,7 @@ Potential improvements:
 ### Obtain QoS profiles available
 With **POST /retrieve-qos-profiles**, and device parameters. The request scopes the query to a device, optionally by profile `name` and `status`:
 
-```
+```json
 {
   "device": {
     "phoneNumber": "+123456789",
@@ -134,7 +134,7 @@ With **POST /retrieve-qos-profiles**, and device parameters. The request scopes 
 
 Type of response: information about the QoS Profiles, returned as an array of profile objects. Each object carries the profile `name`, `description`, `status` and its performance characteristics (rates, delay, jitter, priority, and so on):
 
-```
+```json
 // Example values — replace with actual network requirements
 [
   {

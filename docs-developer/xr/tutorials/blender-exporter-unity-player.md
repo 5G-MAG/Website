@@ -1,5 +1,5 @@
 ---
-title:  Blender glTF Exporter and Unity Player
+title: Blender glTF Exporter and Unity Player
 hide_title: true
 sidebar_position: 4
 description: Video walkthrough on adding MPEG glTF extensions to a scene in Blender and loading it in the XR Unity Player.

@@ -177,7 +177,7 @@ The ability to extend a session is a useful feature that the booking APIs do not
 
 Creating a QoS session drives the Network Exposure Function (NEF) northbound `Nnef_AFSessionWithQoS` operation ([TS 29.522](https://www.3gpp.org/dynareport/29522.htm)); the NEF requests the Policy Control Function to authorise and install the corresponding QoS Flow on the device's PDU session (`Npcf_PolicyAuthorization`, [TS 29.514](https://www.3gpp.org/dynareport/29514.htm)). Because the session is created at the point of use, no background data transfer negotiation is involved, unlike the advance-reservation APIs. The referenced QoS profile maps to a 5QI whose characteristics are tabulated in [TS 23.501](https://www.3gpp.org/dynareport/23501.htm), clause 5.7.4. See [Network API Initiatives](../network-api-initiatives#3gpp-apis-for-quality-of-service).
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the mapping of a Quality on Demand session to `Nnef_AFSessionWithQoS` (TS 29.522) and `Npcf_PolicyAuthorization` (TS 29.514). Verify against the 3GPP work plan and the current CAMARA QualityOnDemand specification before publication.
 :::
 

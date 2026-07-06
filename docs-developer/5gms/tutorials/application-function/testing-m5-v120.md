@@ -1,5 +1,5 @@
 ---
-title:  Testing M5 AF v1.2.x
+title: Testing M5 AF v1.2.x
 hide_title: true
 sidebar_position: 12
 description: Curl-based tests for the M5 ServiceAccessInformation API on 5GMSd Application Function v1.2.x, covering success and error cases.

@@ -87,7 +87,7 @@ Check: [**Application Profiles API**](./camara-application-profiles). The type o
 
 Note: this example uses `"unit": "Minutes"` for `packetDelayBudget` and `jitter`; Milliseconds is the plausible unit for latency and jitter, and the units should be aligned with the [Application Profiles page](./camara-application-profiles). Confirm the accepted values against the API definition.
 
-```
+```json
 {
   "networkQualityThresholds": {
     "packetDelayBudget": {
@@ -137,7 +137,7 @@ Note: this example uses `"unit": "Minutes"` for `packetDelayBudget` and `jitter`
 
 This is how a device is defined:
 
-```
+```json
   "device": {
     "phoneNumber": "123456789",
     "networkAccessIdentifier": "123456789@domain.com",
@@ -161,7 +161,7 @@ The request below creates a subscription. The key fields are:
 | `types` | the event types the consumer subscribes to (here, network-quality change events). |
 | `initialEvent` | when `true`, an event is sent immediately on subscription so the consumer has a baseline before any change occurs. |
 
-```
+```json
 {
   "protocol": "HTTP",
   "sink": "https://endpoint.example.com/sink",
@@ -207,7 +207,7 @@ The request below creates a subscription. The key fields are:
 
 Type of response: A **subscriptionId**. The response echoes the subscription configuration and adds the assigned `subscriptionId`, `startsAt`/`expiresAt` window, and current `status`:
 
-```
+```json
 {
   "sink": "https://endpoint.example.com/sink",
   "types": [

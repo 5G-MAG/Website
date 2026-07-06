@@ -84,7 +84,7 @@ Check: [**Application Profiles API**](./camara-application-profiles). The type o
 
 Note: this example uses `"unit": "Minutes"` for `packetDelayBudget` and `jitter`, whereas the [Application Profiles page](./camara-application-profiles) uses `Milliseconds` for the same fields. Milliseconds is the plausible unit for latency and jitter; the units here should be aligned. Confirm the accepted values against the API definition.
 
-```
+```json
 {
   "networkQualityThresholds": {
     "packetDelayBudget": {
@@ -134,7 +134,7 @@ Note: this example uses `"unit": "Minutes"` for `packetDelayBudget` and `jitter`
 
 This is how a device is defined:
 
-```
+```json
   "device": {
     "phoneNumber": "123456789",
     "networkAccessIdentifier": "123456789@domain.com",
@@ -151,7 +151,7 @@ With **POST /check-network-quality** passing:
   - the device object
   - identifier for the application server (IPv4 and/or IPv6 address and ports)
 
-```
+```json
 {
   "applicationProfileId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "device": {
@@ -185,7 +185,7 @@ With **POST /check-network-quality** passing:
 
 Type of response: The network's current level of confidence that it can meet an application profile's quality thresholds for a given end user device. Each threshold field carries a qualitative string (for example `"meets the application requirements"`) rather than a measured value; `additionalKPIs` gives supporting signal information. The exact set of allowed strings is defined in the [connectivity-insights.yaml](https://github.com/camaraproject/ConnectivityInsights/blob/main/code/API_definitions/connectivity-insights.yaml).
 
-```
+```json
 {
   "packetDelayBudget": "meets the application requirements",
   "targetMinDownstreamRate": "meets the application requirements",

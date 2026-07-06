@@ -99,7 +99,7 @@ DVB-I contributes the delivery parameters that tell the client which of these tr
 
 Because A178 is a technical report, a substantial part of its value is the catalogue of gaps it identified and the recommended changes to specifications owned by DVB, 3GPP and ETSI. The follow-up on those recommendations happens in the respective bodies (DVB for the DVB-I and delivery-format specifications, 3GPP SA4 for 5GMS and MBS, ETSI JTC Broadcast for TS 103 720). Implementers should treat the report as a snapshot of the integration approach and check the current versions of the referenced specifications for the state of any given item.
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the 3GPP TS 26.501 reference-point names summarised above, and the Release placement of the 5GMS and MBS work. The DVB and ETSI document numbers/titles (A177/TS 103 770, A178/TR 103 972, C100, TS 103 720, TS 103 285, TS 103 769) were confirmed against DVB/ETSI sources. Verify against the 3GPP/ETSI work plan before publication.
 :::
 

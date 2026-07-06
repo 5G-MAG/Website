@@ -95,7 +95,7 @@ FLUTE and ROUTE are both built on the LCT (RFC 5651) and ALC (RFC 5775) building
 3. Feed the segments and manifest through the delivery tool for your target system (5G Broadcast or 5G MBS), following the architectures above.
 4. Build from the [multimedia delivery repositories](../multimedia/repositories); the [Tutorials](./tutorials) page has a demo video and repository pointers.
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the ISO/ETSI portals block automated access): the specific ISO catalogue editions for ISO/IEC 23009-1 (DASH) and ISO/IEC 23000-19 (CMAF). The IETF mappings (FLUTE = RFC 6726, ROUTE = RFC 9223, HLS = RFC 8216, LCT = RFC 5651, ALC = RFC 5775, FCAST = RFC 6968) and the use of FLUTE by MBMS (TS 26.346) were confirmed. Verify the ISO editions against the ISO catalogue before publication.
 :::
 

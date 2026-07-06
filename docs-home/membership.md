@@ -1,5 +1,8 @@
 ---
+id: membership
+slug: /membership
 title: Membership
+hide_title: true
 description: Get involved with 5G-MAG.
 ---
 

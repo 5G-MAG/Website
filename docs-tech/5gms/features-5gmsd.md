@@ -176,6 +176,6 @@ M5 | 5.3.6 | [Consumption Reporting API](https://jdegre.github.io/loader.html?ya
 
 The event exposure that this feature enables is defined in the generic UE data collection framework, with the architecture in [TS 26.531](https://www.3gpp.org/dynareport/26531.htm) and the protocols and formats in [TS 26.532](https://www.3gpp.org/dynareport/26532.htm). See the [UE Data Collection, Reporting and Event Exposure](/developer/data-collection) project for the reference implementation.
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the TS 26.501 feature and procedure clauses in the overview table (4.0.2, 5.4, 4.0.5, 5.9, 4.0.6, 5.8, 4.0.8, 5.6, 4.0.9, 5.5, 4.0.10, clause 8, 4.0.11, 5.10, 4.0.12, 5.11); the TS 26.510 procedure clauses in the per-feature tables (5.2.2 to 5.2.13 and 5.3.2 to 5.3.6); and the TS 26.512 API clauses (8.2 to 8.13 and 9.2 to 9.6). Verify against the specific TS 26.501, TS 26.510 and TS 26.512 versions you are targeting.
 :::

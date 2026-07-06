@@ -58,7 +58,7 @@ Network conditions are applied at the interface level, enabling transparent emul
 
 An example of the profile YAML is shown below.
 
-```
+```yaml
 profiles:
   example_full_profile:
     # === DELAY PARAMETERS ===
@@ -162,7 +162,7 @@ The emulator supports multiple deployment configurations.
 
 The following Python example shows how the network emulator is driven from a test script:
 
-```
+```python
 # Apply a named profile for uplink and downlink
 emulator.apply_profile("poor_cellular",                      
       ingress_profile="5g_urban")
@@ -226,7 +226,7 @@ Applying `tc` impairments requires the appropriate privileges on the network int
 
 The [Tutorials](./tutorials) provide a guided introduction, and the [Video Library](./tutorials#video-library) collects the recorded walkthroughs.
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TS 23.501 Table 5.7.4-1 (clause reference for the standardised 5QI to QoS-characteristics mapping). Verify against the 3GPP work plan before publication.
 :::
 

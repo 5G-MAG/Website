@@ -434,10 +434,10 @@ function HeroSlideshow() {
                 </p>
                 <div className={styles.slideCardHeaderMain}>
                   <ProjectIcon name={slide.name} className={styles.slideCardHeaderIcon} />
-                  <div>
-                    <h1 className={styles.slideCardTitle}>New Releases for {slide.name}</h1>
-                    {slide.tagline && <p className={styles.slideCardTagline}>{slide.tagline}</p>}
-                  </div>
+                  <h1 className={styles.slideCardTitle}>
+                    <span className={styles.slideCardTitlePrefix}>New Releases for </span>
+                    {slide.name}
+                  </h1>
                 </div>
               </div>
               <div className={styles.slideCardBody}>

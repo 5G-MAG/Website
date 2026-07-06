@@ -53,7 +53,7 @@
 .slideOverlayCards {
   height: 100%;
   display: flex;
-  align-items: stretch;
+  align-items: center;
   background: linear-gradient(
     to right,
     rgba(0, 0, 0, 0.62) 45%,
@@ -69,21 +69,20 @@
 }
 
 .slideCard {
-  background: rgba(0, 10, 24, 0.88);
+  background: rgba(20, 48, 79, 0.94);
   border-radius: 12px;
-  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.35);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   width: 100%;
-  flex: 1;
 }
 
 .slideCardHeader {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  padding: 1.2rem 1.75rem 1.15rem;
+  padding: 1rem 1.5rem 0.9rem;
   background: linear-gradient(135deg, var(--ifm-color-primary-darkest) 0%, var(--ifm-color-primary) 100%);
 }
 
@@ -114,46 +113,43 @@
 }
 
 .slideCardHeaderIcon {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.75rem;
+  height: 2.75rem;
   color: rgba(255, 255, 255, 0.88);
   flex-shrink: 0;
 }
 
 .slideCardTitle {
-  font-size: 1.4rem;
-  font-weight: 700;
+  font-size: 2rem;
+  font-weight: 800;
   color: #fff;
-  margin: 0 0 0.15rem;
-  line-height: 1.2;
+  margin: 0;
+  line-height: 1.15;
   white-space: nowrap;
 }
 
-.slideCardTagline {
-  font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.7);
-  margin: 0;
-  line-height: 1.4;
+.slideCardTitlePrefix {
+  font-weight: 400;
 }
 
 .slideCardBody {
   display: flex;
-  padding: 1.1rem 1.75rem 1rem;
+  padding: 1rem 1.5rem 0.9rem;
   gap: 0;
-  flex: 1;
+  min-height: 200px;
 }
 
 .slideCardReleasesCol {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding-right: 1.75rem;
+  padding-right: 1.5rem;
 }
 
 .slideCardContributorsCol {
   flex: 1;
   border-left: 1px solid rgba(255, 255, 255, 0.1);
-  padding-left: 1.75rem;
+  padding-left: 1.5rem;
   display: flex;
   flex-direction: column;
 }
@@ -180,7 +176,7 @@
 .slideCardFooter {
   display: flex;
   gap: 1rem;
-  padding: 0.85rem 1.75rem 1rem;
+  padding: 0.75rem 1.5rem 0.85rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 

@@ -1,5 +1,5 @@
 ---
-title:  Sample files
+title: Sample files
 hide_title: true
 sidebar_position: 2
 description: Lists downloadable I/Q sample capture files (RTP, HLS and DASH payloads) for testing rt-mbms-modem, and explains their filename encoding.
@@ -33,7 +33,7 @@ Each filename encodes the capture parameters, for example `5MHz_MCS16_1kHz25_HLS
 
 Other terms used below: SDR (Software Defined Radio); CAS (Common Access Signalling, the broadcast control signalling used in a cell).
 
-:::caution
+:::warning
 The I/Q sample files are large (several GB each). Check that you have enough free disk space before downloading, and note the `-b` value you must pass to the modem, which is the bandwidth in the filename.
 :::
 

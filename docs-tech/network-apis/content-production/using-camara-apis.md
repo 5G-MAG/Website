@@ -360,7 +360,7 @@ Whichever CAMARA API is chosen, the operator's Network API Platform translates t
 
 Before any of the calls above, the API consumer authenticates to the operator's authorization server using OAuth 2.0, as defined by the CAMARA Security and Interoperability Profile in the CAMARA [IdentityAndConsentManagement](https://github.com/camaraproject/IdentityAndConsentManagement) repository. CAMARA supports the OAuth 2.0 client credentials grant (for server-to-server, two-legged access) and Client Initiated Backchannel Authentication (CIBA) for flows that require end-user consent; two-legged (client credentials) tokens are restricted to APIs that do not process personal data. The consumer obtains an access token carrying the OAuth scopes for the specific API and operation, then presents it as a bearer token on each call. Credentials themselves are provisioned out of band through the operator's developer portal or Network API Platform; there is no CAMARA API for issuing them.
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the mapping of specific CAMARA operations to TS 29.522 (`Nnef_AFSessionWithQoS`, `Nnef_BDTPNegotiation`), TS 29.514 (`Npcf_PolicyAuthorization`) and TS 29.554 (`Nnef_BDTPNegotiation` / BDT policy). Verify against the 3GPP work plan before publication.
 :::
 

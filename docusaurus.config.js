@@ -45,6 +45,19 @@ const config = {
         sidebarPath: './sidebars-tech.js',
       },
     ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        // Organizational pages (About, Membership, ...) that sit alongside the
+        // homepage rather than under /developer or /tech — served directly
+        // off the site root (routeBasePath '') so /about and /membership
+        // don't get an extra path segment prefixed.
+        id: 'home',
+        path: 'docs-home',
+        routeBasePath: '',
+        sidebarPath: './sidebars-home.js',
+      },
+    ],
   ],
 
   presets: [[

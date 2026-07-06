@@ -58,13 +58,13 @@ Install the dependencies and SDR drivers for the transmitter as documented [here
 
 Next, clone the transmitter repository using the `emergency-alerts` branch:
 
-```
+```bash
 git clone --recurse-submodules -b emergency-alerts https://github.com/5G-MAG/rt-mbms-tx-for-qrd-and-crd.git rt-mbms-tx-for-qrd-and-crd-emergency-alerts
 ```
 
 Now build the transmitter running the following commands:
 
-```
+```bash
 cd rt-mbms-tx-for-qrd-and-crd-emergency-alerts
 git submodule update
 mkdir build && cd build
@@ -84,12 +84,12 @@ Example configuration files are located under the configuration-template directo
 
 Copy the `bytecode` file to a folder `/home/fivegmag`.
 
-```
+```bash
 cd ~/rt-mbms-tx-for-qrd-and-crd-emergency-alerts/Config-Template
 cp bytecode /home/fivegmag/bytecode
 ```
 
-:::caution
+:::warning
 This tutorial refers to the configuration-template directory as both `Config-Template` (singular) and `Config-Templates` (plural) in different steps, and later edits are described against both `Config-Templates/sib.conf.mbsfn` and `build/sib.conf.mbsfn`. These are the source template files and the build-time copies that the transmitter actually reads at runtime: the templates under the configuration-template directory are the originals, while the build directory holds the copies used when the transmitter runs. Confirm the exact directory name (singular or plural) against your checkout before editing, and edit the copy that your running transmitter loads.
 :::
 
@@ -105,23 +105,23 @@ The transmitter is made up of three components you start in separate terminals:
 
 The MBMS-GW receives multicast packets on one tunnel interface, packages them to GTP-U packets and sends them to the eNodeB over another tunnel interface. The command below creates the sgi_mb interface used for that multicast traffic:
 
-```
+```bash
 sudo route add -net 239.11.4.0 netmask 255.255.255.0 dev sgi_mb
 ```
 
 Start the MBMS Gateway, EPC and eNodeB in different terminals, in that order (gateway first, then EPC, then eNodeB):
 
-```
+```bash
 cd ~/rt-mbms-tx-for-qrd-and-crd-emergency-alerts/build 
 sudo ./srsepc/src/srsmbms ../Config-Template/mbms.conf
 ```
 
-```
+```bash
 cd ~/rt-mbms-tx-for-qrd-and-crd-emergency-alerts/build 
 sudo ./srsepc/src/srsepc ../Config-Template/epc.conf
 ```
 
-```
+```bash
 cd ~/rt-mbms-tx-for-qrd-and-crd-emergency-alerts/build 
 sudo ./srsenb/src/srsenb ../Config-Template/enb.conf
 ```
@@ -148,7 +148,7 @@ With the current implementation, the SIB 12 payload is static and defined in `Co
 of the alert you need to open `Config-Templates/sib.conf.mbsfn` and change the `message_identifier`. A list of possible values is
 defined in [3GPP TS 23.041](https://www.3gpp.org/dynareport/23041.htm) Section 9.4.1.2.2. The example below sets `message_identifier` to `0x1102`, which corresponds to the combined earthquake and tsunami warning row in the table that follows:
 
-```
+```ini
 sib12 =
 {
     message_identifier = 0x1102;
@@ -181,7 +181,7 @@ in `build/sib.conf.mbsfn` manually (this is the build-time copy the running tran
 
 You have set up an end-to-end emergency alert chain: building and configuring the 5G Broadcast transmitter, broadcasting a CBS alert carried in SIB12 over your SDR, and receiving and displaying it on a device. You also saw how to change the alert type through `message_identifier` and how to trigger repeat alerts by changing `serial_number`.
 
-:::caution
+:::warning
 Transmitting radio signals is subject to local regulation. Only transmit in a shielded environment or under an appropriate authorisation, and check the rules that apply to your frequency and location before running the transmitter.
 :::
 

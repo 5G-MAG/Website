@@ -50,7 +50,7 @@ The tutorial covers the following steps:
 <span class="repo-card__role">The Unity project for the XR Player application.</span>
 </a>
 
-```
+```bash
 git clone --recursive https://github.com/5G-MAG/rt-xr-unity-player.git
 ```
 
@@ -66,7 +66,7 @@ Note: --recursive is required to get all submodules checked out.
 <span class="repo-card__role">C++ Media Access Function library (libmaf) and the avpipeline media pipeline plugin.</span>
 </a>
 
-```
+```bash
 git clone https://github.com/5G-MAG/rt-xr-maf-native.git
 cd rt-xr-maf-native
 ```
@@ -86,7 +86,7 @@ Clone [rt-common-shared](https://github.com/5G-MAG/rt-common-shared) as a siblin
 
 Copy the generated libraries into the avpipeline subproject:
 
-```
+```bash
 mkdir -p ./rt-xr-maf-native/subprojects/avpipeline/external/avcodec/android/arm64-v8a/lib
 cp ./rt-common-shared/avcodec-build/build/ffmpeg/aarch64/lib/*.so ./rt-xr-maf-native/subprojects/avpipeline/external/avcodec/android/arm64-v8a/lib
 
@@ -100,7 +100,7 @@ cp ./rt-common-shared/avcodec-build/build/ffmpeg/aarch64/LICENSE ./rt-xr-maf-nat
 * Download and install the Android NDK. In the next steps, we assume a Windows x86_64 environment with the Android NDK *27.2.12479018* installed in `C:\Users\<your_user_name>\AppData\Local\Android\Sdk\ndk`.
 * Locate the `./rt-xr-maf-native/crossfile/android-arm64-v8a` and modify it to point to your local NDK installation, for instance:
 
-```
+```ini
 [binaries]
 ar = ['C:\Users\<your_user_name>\AppData\Local\Android\Sdk\ndk\27.2.12479018\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-ar']
 c = ['C:\Users\<your_user_name>\AppData\Local\Android\Sdk\ndk\27.2.12479018\toolchains\llvm\prebuilt\windows-x86_64\bin\aarch64-linux-android28-clang.cmd']
@@ -115,7 +115,7 @@ strip = ['C:\Users\<your_user_name>\AppData\Local\Android\Sdk\ndk\27.2.12479018\
 * `libmaf` and C# bindings are enabled by default. 
 * the `avpipeline` plugin needs explicit configuration, the `avcodec_dir` must point to a subdirectory of the project where platform specific dependencies have been copied:
 
-```
+```bash
 cd rt-xr-maf-native
 meson setup --wipe -Davpipeline=true -Davpipeline:avcodec_dir=external/avcodec/android/arm64-v8a build/android/arm64-v8a --cross-file crossfile/android-arm64-v8a
 meson compile -C build/android/arm64-v8a
@@ -125,7 +125,7 @@ meson compile -C build/android/arm64-v8a
 
 Assuming *rt-xr-unity-player* repository has been cloned in a sibling directory `../rt-xr-unity-player`, run the following commands with the correct path that applies to your installation:
 
-```
+```bash
 export ANDROID_NDK_HOME='/c/Users/<your_user_name>/AppData/Local/Android/Sdk/ndk/27.2.12479018'
 cd rt-xr-maf-native
 scripts/install_android.sh ../rt-xr-unity-player/Packages/rt.xr.maf
@@ -156,13 +156,13 @@ The configuration is stored in Unity's *.meta sidecar files and are tracked in t
 
 Clone the `rt-xr-content` repository. This **requires [git LFS](https://git-lfs.com/)** to be installed on your system.
 
-```
+```bash
 git clone https://github.com/5G-MAG/rt-xr-content.git
 ```
 
 Push glTF content to the Meta Quest 3, for instance the "Studio Apartment":
 
-```
+```bash
 cd rt-xr-content
 adb push ./studio_apartment /storage/emulated/0/Android/data/com.fivegmag.rtxrplayer/files/studio_apartment
 ```

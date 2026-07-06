@@ -66,7 +66,7 @@ WebRTC does not mandate a signalling protocol; the offer/answer exchange must be
 * **Release 18**: RTC architecture (TS 26.506) and protocols (TS 26.113); harmonised media delivery (TS 26.510); IMS Data Channel / NG-RTC stage 3.
 * **Release 19 and later**: RTC enhancements, including immersive real-time communication over WebRTC. Confirm the specific study/work items and their identifiers against the 3GPP work plan.
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the release placement of TS 26.506 / TS 26.113 / TS 26.510, the RTC reference-point naming, the NG-RTC stage 3 specification numbers, the RESPECT signalling protocol status, and the Release 19 immersive-RTC study identifier. Verify against the 3GPP work plan before publication.
 :::
 

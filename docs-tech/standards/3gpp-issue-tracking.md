@@ -35,7 +35,7 @@ This page is the running log of XCHANGE meetings, the regular sessions where 5G-
 
 Issues move through the following stages, from earliest to latest: **Pre-Acceptance** → **Adopted** → **Change contribution drafting** → **Approved for publication by Technical Body** → **Published**. The milestone notation, for example `3GPP SA4#130→SA#106`, means the change was handled at SA4 meeting 130 and went to the SA plenary 106 for approval. The **Doubt** label marks an issue raised as a question rather than a confirmed defect.
 
-:::caution
+:::warning
 The stage order and label meanings above are provided for orientation. Confirm the exact vocabulary with the tracker owner, as the GitHub tracker remains authoritative.
 :::
 
@@ -49,7 +49,7 @@ The entries below use several 3GPP media-delivery shorthands. See the [5G Media 
 * **EVEX**: event exposure and data-collection work.
 * **QoE** (Quality of Experience) metrics reporting.
 
-:::caution
+:::warning
 The reference-point summaries above are for orientation only. Confirm the exact definitions against TS 26.501.
 :::
 
@@ -85,7 +85,7 @@ A CR has been drafted for the following new issue, and was endorsed by the SA4 M
 [#104](https://github.com/5G-MAG/Standards/issues/104)|TS 26.512: M1 Policy Template Provisioning - Return codes for error handling of put operation |	rjb1000 |	Adopted	| 3GPP Rel-16, 3GPP Rel-17, 3GPP TS 26.512, 5GMS Dynamic Policies, Adopted, Improvement	| 3GPP SA4#131→SA#107
 [#106](https://github.com/5G-MAG/Standards/issues/106)|TS 29.571: regex pattern allows all non-empty strings and will not apply restrictions as intended | haudiobe, ibouazizi, jordijoangimenez, rjb1000, tlohmar, zooksy | Adopted |	3GPP Rel-17, 3GPP TS 29.571, Adopted, Correction, Improvement |
 
-:::caution
+:::warning
 The issue number for the TS 29.571 regex entry above (shown as #106) also appears earlier for a different TS 26.512 issue. The correct tracker number needs confirmation; check the [5G-MAG Standards tracker](https://github.com/orgs/5G-MAG/projects/33) before relying on the link.
 :::
 [#35](https://github.com/5G-MAG/Standards/issues/35)|ProvisioningSession resource returned by 5GMS AF at M1 does not include information about all its subresources	| fredericgabin, haudiobe, jordijoangimenez, rjb1000, tlohmar |	Adopted	| 3GPP Rel-16, 3GPP Rel-17, 3GPP TS 26.512, Adopted, Improvement	| 3GPP SA4#127→SA#103

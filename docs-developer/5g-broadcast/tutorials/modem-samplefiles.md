@@ -28,7 +28,7 @@ Before capturing or running a sample file, make sure that *MBMS Modem* isn't run
 
 Capturing needs an SDR and a live 5G Broadcast signal. Run the command below to record the raw I/Q data from the SDR to a file:
 
-```
+```bash
 modem -w "PathToSample/samplefile.raw"
 ```
 
@@ -40,7 +40,7 @@ Based on the structure of the Service Announcement file the configuration file i
 
 To start *MBMS Modem* with a downloaded sample file, run the following command (no SDR required):
 
-```
+```bash
 modem -f "PathToSample/samplefile.raw" -b 10
 ```
 

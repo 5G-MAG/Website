@@ -253,6 +253,6 @@ Anchoring and pose handling on the two device families are provided through Unit
 4. **Load a scene.** Use the reference scenes in [rt-xr-content](https://github.com/5G-MAG/rt-xr-content) (for example `studio_apartment/studio_apartment.gltf` for media pipelines, video texture and spatial audio, or the `anchoring/` and `gravity/` scenes for anchoring and interactivity) and deploy them to the device.
 5. **Follow the changelogs.** The player [releases](https://github.com/5G-MAG/rt-xr-unity-player/releases) and the [repositories page](./repositories) track which parts of the scene-description format are implemented and what is in progress.
 
-:::caution[References to verify]
+:::warning[References to verify]
 The glTF extension support shown in the tables reflects the state of the reference tools and can change between releases; check the linked repositories and release notes for the current status. The out-of-scope 3GPP identifiers referenced above (TS 26.119, TS 26.565, and the 5G Media Streaming specifications) are tracked on the Standards and Tech views and were not confirmed here against a primary source; verify those against the 3GPP/ETSI work plan before relying on them.
 :::

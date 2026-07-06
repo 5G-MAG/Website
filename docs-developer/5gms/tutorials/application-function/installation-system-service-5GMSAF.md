@@ -1,5 +1,5 @@
 ---
-title:  Installation 5GMS AF as System Service
+title: Installation 5GMS AF as System Service
 hide_title: true
 sidebar_position: 2
 description: Guide to building and installing the 5GMSd Application Function as a systemd service, including msaf-configuration stream setup.
@@ -82,7 +82,7 @@ sudo meson install --no-rebuild
 
 Once installed, the Application Function runs under `systemd`. The commands below use `systemctl` to start, enable and check the service, and `journalctl` to view its logs.
 
-:::caution[Confirm the service unit name]
+:::warning[Confirm the service unit name]
 The unit name used in the commands below is shown as `open5gs-msafd`. Confirm the exact installed unit name with the project maintainers or by listing the installed units (for example `systemctl list-units | grep msaf`) before relying on these commands.
 :::
 

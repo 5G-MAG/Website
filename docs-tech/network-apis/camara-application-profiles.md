@@ -129,7 +129,7 @@ With **POST /application-profiles**
 
 The request body below declares the network quality thresholds and compute resources the application needs:
 
-```
+```json
 {
   "networkQualityThresholds": {
     "packetDelayBudget": {
@@ -177,7 +177,7 @@ The request body below declares the network quality thresholds and compute resou
 
 Type of response: An **applicationProfileId**. The response echoes back the stored thresholds together with the new identifier to reference in later calls:
 
-```
+```json
 {
   "applicationProfileId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "networkQualityThresholds": {

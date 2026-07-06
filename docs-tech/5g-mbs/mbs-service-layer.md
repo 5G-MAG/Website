@@ -27,7 +27,7 @@ This page summarises the MBS user-service layer: the higher-level abstraction (d
 
 Two points apply to every figure and interaction described below (stated once here rather than repeated per figure):
 
-:::caution
+:::warning
 The architecture figures on this page are subject to change following ongoing discussion about the security architecture. In particular, there is a proposal for the MBSF to be directly attached to the user plane in order to support the user plane client authentication procedure defined in [TS 33.501](https://www.3gpp.org/dynareport/33501.htm) annex W.4.
 :::
 
@@ -110,7 +110,7 @@ TS 26.502 defines additional entities in the UE, as shown in the figure below:
     <figcaption>MBS User Services entities in the UE (based on TS 26.502)</figcaption>
 </figure>
 
-:::caution[Verify figure number]
+:::warning[Verify figure number]
 The exact TS 26.502 figure number for the UE-side entities shown above could not be confirmed from available context. The previous figure (network architecture) is figure 4.2.2-1; this UE-side figure is a separate figure. Verify the correct figure number against TS 26.502.
 :::
 
@@ -150,6 +150,6 @@ Discovery is handled by the MBS User Service Announcement. The MBSF builds one M
 
 The control-plane reference points (Nmb10, Nmb1, Nmb2, and the NEF-mediated variants) use 5G service-based interfaces: HTTP/2 RESTful APIs described by OpenAPI schemas, consistent with the rest of the 5G Core. The user-plane reference points each define concrete protocols instead: content ingest at Nmb8 and the MBSTF-to-MB-UPF hand-off at Nmb9 are defined in TS 26.517, which also specifies the FLUTE/ALC object carriage, the packet distribution format and the XML and OpenAPI schemas for the User Service Announcement. This split (service-based APIs on the control plane, defined protocols on the user plane) mirrors the figure above and is the same pattern used throughout the 5G Core.
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP portal blocks automated access): the reference-point names and mappings (Nmb1, Nmb2, Nmb8, Nmb9, Nmb10, Nmb13, N33+Nmb5, N33+N29mb, N6mb, MBS-4-MC, MBS-4-UC, MBS-5, MBS-7); the figure numbers cited (TS 26.502 figure 4.2.2-1 and the UE-side figure, and TS 26.501 figure 4.5.1-1); the TS 26.517 schema clauses (A.1.1, A.2.1); and the TS 33.501 annex W.4 reference. Verify against the specific TS 23.247, TS 26.502, TS 26.517 and TS 26.501 versions you are targeting.
 :::

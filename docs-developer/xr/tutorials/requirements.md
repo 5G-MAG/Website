@@ -1,5 +1,5 @@
 ---
-title:  Requirements
+title: Requirements
 hide_title: true
 sidebar_position: 5
 description: Lists which XR headsets, phones and AR glasses the reference XR Unity Player currently supports, per 3GPP TS 26.119.

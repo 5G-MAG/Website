@@ -25,7 +25,7 @@ This documentation is currently **under development and subject to change**. If 
 
 This page analyses the 3GPP Release 18 extension that lets a UE receive MBS multicast while in the RRC_INACTIVE state. In Release 17, multicast reception (delivery mode 1) required RRC_Connected, as summarised on the [RAN Aspects](./ran-aspects) page; the Release 18 work adds a way to receive multicast in RRC_INACTIVE, using dedicated signalling (SIB24 and the multicast MCCH) rather than the broadcast signalling used for delivery mode 2. When reading the RAN Aspects page alongside this one, note that this is the Release 18 extension to the RRC-state rules stated there.
 
-:::caution
+:::warning
 The lower half of this page (the "Control Plane Procedures" and "User Plane Procedures" sections, and some of the ASN.1 appendices) is currently copied from the [MBS Broadcast RAN procedures](./analysis-mbs-broadcast-ran) page and still carries broadcast-specific labels (for example "MBS Broadcast" headings, SIB20, and clause references such as 5.9 / 5.9.3). It has not yet been reconciled to the multicast-inactive case (SIB24, MBSMulticastConfiguration, and the corresponding multicast clauses). Treat that content as provisional and verify it against 3GPP TS 38.331 before relying on it. This is flagged for maintainers.
 :::
 
@@ -183,7 +183,7 @@ Note: the per-layer procedures below are currently reused from the broadcast pag
 
 ### PDCP: MBS Broadcast (user plane)
 
-:::caution
+:::warning
 This user-plane PDCP heading is empty and duplicates the earlier PDCP subsection; like the rest of the lower half it is copied from the broadcast page. Flagged for maintainers.
 :::
 

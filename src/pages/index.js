@@ -238,7 +238,7 @@ export default function Home() {
               Bridging Standards and Deployments
             </h1>
             <p className={styles.heroNowrap} style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.85)', marginBottom: '2rem', lineHeight: 1.6 }}>
-              Advancing next-generation connected media experiences through open standards and open source.
+              Standards and open source for next-generation connected media experiences
             </p>
             <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
               <Link className="button button--primary button--lg" to="/membership">

@@ -94,7 +94,7 @@ The two session types differ in how a UE becomes a receiver, which is why their 
 
 Because multicast membership is per-UE, multicast can offer per-UE reliability and mobility handling (see [Mobility for MBS Multicast](./mobility-mbs-multicast)); broadcast trades that for zero per-UE state and wide-area reach.
 
-:::caution[References to verify]
+:::warning[References to verify]
 The following identifiers added above were not all confirmed against a primary source: the MB-SMF to MB-UPF reference point name (N4mb) and its use of PFCP; the assignment of broadcast context management to the Namf service in TS 29.518; and the placement of the broadcast and multicast session life-cycles in TS 23.247 clauses 4.2 and 4.3. Verify against the specific TS 23.247, TS 29.244, TS 29.518 and TS 29.532 versions you are targeting. The N3mb, N19mb, N3 and Uu reference points and the shared/individual delivery methods are as stated in the surrounding text.
 :::
 

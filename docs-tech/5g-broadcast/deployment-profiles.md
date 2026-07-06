@@ -27,7 +27,7 @@ This documentation is currently **under development and subject to change**. It 
 
 A receiver profile is a named set of capabilities (radio features, protocols, codecs, and delivery methods) that a device is expected to support in order to receive LTE-based 5G Broadcast services in a given deployment. This page sets out the capabilities such a profile groups together. For the parameter values observed in actual deployments, see [Operational Parameters in Use](./parameters-in-use), which also defines receiver Profile A and Profile B. The "Profile A" example on this page and the receiver profiles on that page use similar names but are described from different angles: required capabilities here, observed values there. Read the two together.
 
-:::caution
+:::warning
 The profile below is a work-in-progress example, not a finalised conformance profile. It reflects capabilities discussed by 5G-MAG members and may change.
 :::
 
@@ -55,7 +55,7 @@ The supported bandwidths for LTE-based 5G Broadcast are 6, 7 and 8 MHz.
 
 The supported spectrum is a subset of operating band 108 (the UHF band 470 to 698 MHz for LTE-based 5G terrestrial broadcast), as defined in the radio characteristics of ETSI TS 103 720 (clause 7).
 
-:::caution
+:::warning
 The exact sub-clause/table of ETSI TS 103 720 that defines operating band 108 (and the specific version in force) has not been confirmed. Clause 7 (radio characteristics) is cited here because the same profile references clause 7.3 for radio aspects and the source spec could not be opened directly to read the precise band-definition table; the underlying band 108 parameters originate in 3GPP TS 36.101. Verify against the published spec before relying on this reference.
 :::
 
@@ -118,6 +118,6 @@ This subsection covers the remaining operational modes and functions. Devices sh
 
 In case Time-Frequency-Interleaving (TFI) and co-existence of legacy broadcast and 5G Broadcast in the Ultra High Frequency (UHF) band are introduced in Release 19, both functionalities shall be supported. TFI interleaves a signal across time and frequency to improve robustness, and UHF co-existence lets 5G Broadcast share spectrum with legacy terrestrial broadcast. Both items are conditional on Release 19 outcomes and are not yet finalised; check the current status against the 5G-MAG work and ETSI TS 103 720 before relying on them. See [Operational Parameters in Use](./parameters-in-use) for the values observed today.
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the ETSI/3GPP portals block automated access): the ETSI TS 103 720 clauses (7, 7.3, 7.6), the operating Band 108 definition (the underlying Band 108 parameters originate in 3GPP TS 36.101), the MCS table reference in 3GPP TS 36.213, and the TS 26.346 / TS 26.347 / TS 23.246 clause and version citations. The Band 108 frequency range (470 to 698 MHz) is now stated consistently here and on the [Operational Parameters in Use](./parameters-in-use) page; confirm it and the version in force against the published ETSI TS 103 720 (and 3GPP TS 36.101) before relying on it. Band 108 is a 3GPP Release 18 addition profiled by ETSI TS 103 720 v1.3.1 (in development), not by the published v1.2.1.
 :::

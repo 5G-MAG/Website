@@ -1,5 +1,5 @@
 ---
-title:  MBMS Service Announcement Files
+title: MBMS Service Announcement Files
 hide_title: true
 sidebar_position: 0
 description: Documents the three MBMS Service Announcement (bootstrap.multipart) file formats read by rt-mbms-mw, with full XML examples for each.

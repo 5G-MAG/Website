@@ -147,7 +147,7 @@ NG-RAN can be split into a Central Unit (CU) and Distributed Unit (DU), with the
 * F1 (38.470, 38.473): F1-c (PDCP-c to RLC); F1-u (PDCP-u to RLC)
 * E1 (38.460, 38.463): CU-CP (RRC + PDCP-c) to CU-UP (SDAP + PDCP-u)
 
-:::caution[References to verify]
+:::warning[References to verify]
 The release placement statements in "Specifications by release" were not all confirmed against a primary source: the "5MBS" / "5MBS Phase 2" work-item naming, the Release 17 introduction of the listed specifications, and the Release 18 placement of MBS multicast reception in RRC_INACTIVE (SIB24 and the dedicated multicast MCCH). Verify against the specific 3GPP release and specification versions you are targeting.
 :::
 

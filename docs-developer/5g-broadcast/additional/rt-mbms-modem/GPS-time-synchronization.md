@@ -1,5 +1,5 @@
 ---
-title:  GPS Time Synchronization for rt-mbms-modem
+title: GPS Time Synchronization for rt-mbms-modem
 hide_title: true
 sidebar_position: 0
 description: Guide to disciplining the rt-mbms-modem receiver's clock to GPS time using chrony and gpsd, for accurate drive-test timestamps.

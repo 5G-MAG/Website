@@ -95,7 +95,7 @@ Potential improvements:
 With **POST /slices** and one of the two service-area shapes below.
 
 A location described as a circle (a centre point plus a radius in metres):
-```
+```json
 {
   "serviceTime": {
     "startDate": "2024-06-01T12:00:00Z",
@@ -133,7 +133,7 @@ A location described as a circle (a centre point plus a radius in metres):
 
 or described as a polygon (an ordered list of boundary coordinates):
 
-```
+```json
   "serviceArea": {
     "areaType": "POLYGON",
     "boundary": [
@@ -159,7 +159,7 @@ or described as a polygon (an ordered list of boundary coordinates):
 
 Type of response: A **sliceId** identifying the booking, plus its current `status`:
 
-```
+```json
 {
   "sliceId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "status": "REQUESTED"

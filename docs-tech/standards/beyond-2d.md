@@ -107,7 +107,7 @@ The technical report below is the output of the FS_Beyond2D study, giving the ev
  -- | --
 [TR 26.956](https://www.3gpp.org/dynareport/26956.htm) | Evaluation and Characterization of Beyond 2D Video Formats and Codecs
 
-:::caution[References to verify]
+:::warning[References to verify]
 These specifics on this page were not confirmed against the primary source (the 3GPP/ETSI portals block automated access, so the TR 26.956 text and clause numbers could not be machine-checked): the exact codec and anchor set attributed to each format family (MV-HEVC, V-PCC, G-PCC, MIV), the exact set and numbering of the evaluation scenarios, and the exact metric set attributed to the TR (PSNR, IV-PSNR, VMAF). The scenario names are taken from the 5G-MAG reference-tools repository. Verify against TR 26.956 and the SA4 work plan before publication.
 :::
 

@@ -196,7 +196,7 @@ A short glossary of the identifiers used here:
 * **TAC (Tracking Area Code)** identifies the tracking area within the network; here 7.
 * **S-NSSAI (Single Network Slice Selection Assistance Information)** identifies a network slice; its **SST (Slice/Service Type)** here is 1.
 
-:::caution[Values must match across all components]
+:::warning[Values must match across all components]
 The same PLMN (001/01) and TAC (7) must be configured identically in the NRF config, the AMF config, the gNodeB config, and the SIM card. A mismatch here is the most common reason a phone fails to attach.
 :::
 
@@ -411,7 +411,7 @@ of the reference clock to the `REF IN` connector on the USRP.
 
 Finally adjust the configuration of the srsRAN Project gNB to use an external clock reference:
 
-````
+````yaml
 ru_sdr:
   device_driver: uhd                  # The RF driver name.
   device_args: send_frame_size=1472,recv_frame_size=1472,type=x300              # Optionally pass arguments to the selected RF driver.

@@ -130,7 +130,7 @@ These phases mirror the [Content Production and Contribution workflows](../conte
 
 QoS for downlink segment delivery is realised the same way as for contribution: a Quality on Demand session drives the Network Exposure Function (NEF, [TS 29.522](https://www.3gpp.org/dynareport/29522.htm)) `Nnef_AFSessionWithQoS` operation, which the Policy Control Function authorises (`Npcf_PolicyAuthorization`, [TS 29.514](https://www.3gpp.org/dynareport/29514.htm)) to install a downlink QoS Flow on the client's PDU session, matched to a 5QI ([TS 23.501](https://www.3gpp.org/dynareport/23501.htm), clause 5.7.4). The monitoring and information-sharing path relies on network capability exposure through the NEF and, at the application-enabling layer, the Service Enabler Architecture Layer for Verticals (SEAL), [TS 23.434](https://www.3gpp.org/dynareport/23434.htm), whose network resource management and location management enabling services are candidates for carrying the shared performance data. See [Network API Initiatives](../network-api-initiatives#3gpp-apis-for-quality-of-service).
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the mapping of a downlink Quality on Demand session to `Nnef_AFSessionWithQoS` (TS 29.522) and `Npcf_PolicyAuthorization` (TS 29.514), and the applicability of the SEAL (TS 23.434) network-resource-management and location-management enabling services to media-distribution monitoring. Verify against the 3GPP work plan and the current CAMARA specifications before publication.
 :::
 

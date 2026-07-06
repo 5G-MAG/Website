@@ -87,6 +87,6 @@ The circle form (a reference centre plus a radius) is compact and cheap to broad
 | Broadcast RAN procedures reused unchanged | [Analysis MBS Broadcast - RAN Procedures](../5g-mbs/analysis-mbs-broadcast-ran) |
 | NTN radio access and assistance information | [TS 38.300](https://www.3gpp.org/dynareport/38300.htm), TS 38.331; [TR 38.811](https://www.3gpp.org/dynareport/38811.htm), [TR 38.821](https://www.3gpp.org/dynareport/38821.htm) |
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the SIB27 Release 19 semantics and ASN.1 for the MBS Intended Service Area, the SIB20/SIB21 assignment for MBS Broadcast, and the SIB19 clause in TS 38.331. Verify against the 3GPP work plan before publication.
 :::

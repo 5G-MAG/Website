@@ -122,7 +122,7 @@ The analysis pages below develop the specific problems NTN introduces for media:
 * **[Mobility for MBS Multicast over NTN](./ntn/analysis-mobility-mbs-multicast-over-ntn)** treats lossless handover for a whole multicast group, distinguishing satellite-triggered from user-triggered mobility.
 * **[MBS Broadcast over NTN](./ntn/analysis-mbs-broadcast-over-ntn)** shows that broadcast reuses the terrestrial procedures almost unchanged, the NTN-specific parts being SIB19 and the ISA carried in SIB27.
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TS 26.502 title, SIB27 Release 19 semantics for MBS Intended Service Area, TR 38.863 release placement, and the release placement of individual Release 18/19 NTN and MBS-over-NTN features. Verify against the 3GPP/ETSI work plan before publication.
 :::
 

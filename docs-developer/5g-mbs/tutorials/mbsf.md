@@ -592,7 +592,7 @@ The response, if the MBS User Data Ingest Session can be found, will be an HTTP 
 
 The MBSF can parse MbsServiceArea. Where a TAC is specified, the DistributionSessionInfo part of the UserDataIngSession includes the optional tgtServAreas property with the format:
 
-```
+```json
 "tgtServAreas": {
 	"taiList": [
 		{"plmnId": {"mcc": "001", "mnc": "001"}, "tac": "ABCDEF"}
@@ -603,7 +603,7 @@ The MBSF can parse MbsServiceArea. Where a TAC is specified, the DistributionSes
 ### MBS User Data Ingest Session request body including Activation Periods
 
 The MBSF can parse Activation Periods with specific time window(s) during which the broadcast/multicast session is active and transmitting data over the network.
-```
+```json
 "actPeriods": [
 	{"startTime": "2026-04-07T10:29:46Z", "stopTime": "2030-04-07T23:59:59.999999Z"}
 ]
@@ -611,7 +611,7 @@ The MBSF can parse Activation Periods with specific time window(s) during which 
 
 Repetitions can also be indicated:
 
-```
+```json
 "actPeriodsRepRule": {
 	"startTime": "2026-04-07T10:30:00Z", "duration": 60, "repetitionInterval": 120
 },
@@ -623,7 +623,7 @@ The MBSF can create a CAROUSEL session where the server will repeatedly cycle th
 
 Note: in the example below the `mbsUserServId` value is a placeholder; replace it with the actual MBS User Service Id captured earlier (the placeholder text reads as an ingest session id but the field holds the User Service Id).
 
-```
+```json
 {
   "mbsUserServId": "{<mbs_user_data_ing_session_id>}",
   "mbsDisSessInfos": {
@@ -668,7 +668,7 @@ These features are configured in `mbsf.yaml`. The reference points named here ar
 
 Note: this example configuration listens on `127.0.0.67`, whereas the tutorial configuration earlier (`local-mbsf.yaml`) listens on `127.0.0.68`. These are two separate example configurations; use one consistent listening address for your own setup and keep the client and server addresses aligned.
 
-```
+```yaml
 logger:
   file:
     path: /var/local/log/open5gs/mbsf.log

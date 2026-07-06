@@ -90,7 +90,7 @@ This is a list of specifications in the scope of Volumetric Video (V3C). Part 5 
 [ISO/IEC 23090-10](https://www.iso.org/standard/78991.html) | Information technology - Coded representation of immersive media - Part 10: Carriage of visual volumetric video-based coding data
 [ISO/IEC 23090-12](https://www.iso.org/standard/79113.html) | Information technology - Coded representation of immersive media - Part 12: MPEG immersive video
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the ISO catalogue entries were checked, but part numbers for adjacent MPEG-I deliverables were not fully verified): ISO/IEC 23090-9 (G-PCC), ISO/IEC 23090-20 (V3C/V-PCC conformance), ISO/IEC 23090-25 (carriage conformance and reference software). Verify against the ISO/IEC JTC 1/SC 29 catalogue before publication.
 :::
 

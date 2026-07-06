@@ -1,5 +1,5 @@
 ---
-title:  Installation 5GMS AF as Local User
+title: Installation 5GMS AF as Local User
 hide_title: true
 sidebar_position: 1
 description: Guide to building, installing and running the 5GMSd Application Function as a local user for development and testing.

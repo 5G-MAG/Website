@@ -1,5 +1,5 @@
 ---
-title:  Testing M1 AF v1.4.x
+title: Testing M1 AF v1.4.x
 hide_title: true
 sidebar_position: 8
 description: Manual test procedures for the M1 interface of the 5GMSd Application Function v1.4.1 and later, using the separately installed m1-session tool.
@@ -22,7 +22,7 @@ The M1 interface is the provisioning interface: an Application Service Provider 
 This page covers the 5GMSd Application Function v1.4.1 and later. For other versions see [Testing M1 (v1.2.x)](./testing-m1-v120) and [Testing M1 (v1.3.0 to v1.4.0)](./testing-m1-v130).
 :::
 
-:::caution[`m1-session` is installed separately from v1.4.1]
+:::warning[`m1-session` is installed separately from v1.4.1]
 From v1.4.1 the `m1-session` tool ships in the separate [rt-5gms-application-provider](https://github.com/5G-MAG/rt-5gms-application-provider) repository and must be installed (and, if using a virtual environment, activated) before running the commands on this page. Without this, the shell reports `m1-session: command not found`. Follow that repository's instructions to install the M1 tools.
 :::
 
@@ -611,7 +611,7 @@ This will test the ability of the Application Function to allocate and retrieve 
 
 ### Upload a public certificate
 
-:::caution[Under development]
+:::warning[Under development]
 Documentation for certificate reservation, CSR fetching, signing and upload is under development. For the current procedure, refer to the [rt-5gms-application-function repository](https://github.com/5G-MAG/rt-5gms-application-function).
 :::
 
@@ -722,7 +722,7 @@ Documentation for certificate reservation, CSR fetching, signing and upload is u
 
 **Note:** The `m1-session new-stream` command is a convenience command that will create a provisioning session, generate the
 ContentHostingConfiguration and set it in the newly created provisioning session. The above can also be done using:
-```
+```bash
 m1-session new-stream -e MyAppId -a MyASPId -n 'Big Buck Bunny' 'https://ftp.itec.aau.at/datasets/DASHDataset2014/BigBuckBunny/4sec/' 'BigBuckBunny_4s_onDemand_2014_05_09.mpd'
 ```
 
@@ -812,7 +812,7 @@ m1-session new-stream -e MyAppId -a MyASPId -n 'Big Buck Bunny' 'https://ftp.ite
 
 **Note:** The `m1-session new-stream` command is a convenience command that will create a provisioning session, generate the
 ContentHostingConfiguration and set it in the newly created provisioning session. The above configuration with the `m1-session` tool can also be done using this single command instead:
-```
+```bash
 m1-session new-stream -e MyAppId -a MyASPId -n 'Big Buck Bunny' --ssl-only 'https://ftp.itec.aau.at/datasets/DASHDataset2014/BigBuckBunny/4sec/' 'BigBuckBunny_4s_onDemand_2014_05_09.mpd'
 ```
 

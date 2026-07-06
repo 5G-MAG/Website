@@ -27,7 +27,7 @@ The following instructions have been tested to work in Ubuntu 22.04 LTS.
 
 ## Install SDR drivers
 
-````
+````bash
 sudo apt install libsoapysdr-dev soapysdr-tools
 ````
 
@@ -57,11 +57,11 @@ Next, install the driver and firmware for your specific SDR board — pick the o
 ## Using BladeRF with Soapy
 
 For BladeRF the relevant package is named *soapysdr-module-bladerf*. Install it by running:
-````
+````bash
 sudo apt install soapysdr-module-bladerf
 ````
 Finally, install the BladeRF firmware:
-````
+````bash
 sudo add-apt-repository ppa:nuandllc/bladerf
 sudo apt-get update
 sudo apt-get install bladerf
@@ -76,7 +76,7 @@ Lime Suite needs to be built from source at a specific commit. *Do not* use the 
 <span class="repo-card__role">Build from source at a pinned commit — do not use the apt package.</span>
 </a>
 
-```
+```bash
 cd ~
 git clone https://github.com/myriadrf/LimeSuite.git
 cd LimeSuite/
@@ -93,11 +93,11 @@ sudo ldconfig
 It should be noted that the HackRF One is a half-duplex SDR and has issues synchronising using the internal clock, documented [here](https://hackrf.readthedocs.io/en/latest/external_clock_interface.html). Synchronisation can be achieved by providing an external CLKIN signal using e.g. Keysight 33120A configured to output a 10 MHz sine wave with amplitude 1.5 Vpp and offset 0.75 V (as it is a high impedance input). Alternatively, a simpler option is to install [this component](https://www.nooelec.com/store/tiny-tcxo.html) following [these instructions](https://f1atb.fr/en/tcxo-installation-on-hackrf/). You may also want to install some [RF shielding](https://hackaday.io/project/158323/instructions).
 
 For HackRF One , install by running:
-````
+````bash
 sudo apt install hackrf soapysdr-module-hackrf
 ````
 Plug in your HackRF and verify it is recognised using: 
-````
+````bash
 hackrf_info
 ````
 Example output:
@@ -121,19 +121,19 @@ After installing rt-mbms-modem, you must modify the rt-mbms configuration parame
 </a>
 
 Example for BladeRF:
-```
+```ini
 device_args = "driver=bladerf";
 antenna = "RX"
 ```
 
 Example for LimeSDR:
-```
+```ini
 device_args = "driver=lime";
 antenna = "LNAW";
 ```
 
 Example for HackRF:
-```
+```ini
 device_args = "driver=hackrf";
 antenna = "TX/RX";
 ```
@@ -141,7 +141,7 @@ antenna = "TX/RX";
 ## Check SDR availability
 Check if the SDR can be found on your system
 
-```
+```bash
 SoapySDRUtil --find
 ```
 
@@ -214,12 +214,12 @@ When running the command ``SoapySDRUtil --find`` you might get a duplicate entry
   duplicate entry for lime (/usr/lib/x86_64-linux-gnu/SoapySDR/modules0.7/libLMS7Support.so)
 ```
 This is because a duplicate limesuite apt package has incorrectly been installed when installing the Soapy module and LimeSuite. You can identify this package by running the command:
-```
+```bash
 $ sudo apt list --installed | grep lime
 < ... >
 liblimesuite20.01-1/focal,now 20.01.0+dfsg-2 amd64 [installed,automatic]
 ```
 You can fix this issue by deleting this package:
-```
+```bash
 sudo apt remove liblimesuite20.01-1
 ```

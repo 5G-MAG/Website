@@ -1,5 +1,5 @@
 ---
-title:  MPEG-I SD Test Assets
+title: MPEG-I SD Test Assets
 hide_title: true
 sidebar_position: 3
 description: Lists ready-made MPEG-I Scene Description test assets and explains how to author your own using the Blender glTF exporter add-on.
@@ -121,7 +121,7 @@ The following anchor types can be configured in the exporter:
 - TRACKABLE_MARKER_GEO
 - TRACKABLE_APPLICATION
 
-:::caution
+:::warning
 This authoring list omits TRACKABLE_MARKER_3D, which does appear in the player feature tables. It is not clear whether this is intentional (not yet supported by the exporter) or an omission. Confirm with the maintainers before relying on it.
 :::
 

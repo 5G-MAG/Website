@@ -129,7 +129,7 @@ The QoS requests map to network capability exposure through the Network Exposure
 * The distribution case targets a large population of devices rather than a single contributing device; the per-device session model of Quality on Demand may not map cleanly to this scale. This needs further analysis.
 * As with Content Production, monitoring relies on a separate Application Profile rather than the QoS Profile used to request resources. Harmonising the two would be more coherent.
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the applicability of the SEAL (TS 23.434) network-resource-management and location-management enabling services to media-distribution monitoring, and the mapping of the QoS requests to the NEF (TS 29.522) and PCF (TS 29.514) service operations. Verify against the 3GPP work plan and the current CAMARA specifications before publication.
 :::
 

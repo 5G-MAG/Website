@@ -113,7 +113,7 @@ The CAMARA APIs 5G-MAG analyses fall into a few families:
 
 All of these APIs are still pre-1.0 (`v0`/`wip`) at the time of writing, delivered through CAMARA's twice-yearly meta-releases. Field names and enumerations can change between releases, so the per-API pages note where an integrator should confirm values against the specific `.yaml`.
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TS 24.549 (referenced from the analysis pages as the SEAL NSCE Stage 3 protocol specification). The northbound and policy specifications cited here (TS 29.522, TS 29.514, TS 23.222, TS 29.222, TS 23.434) are widely established. Verify any specific clause references against the 3GPP work plan before publication.
 :::
 

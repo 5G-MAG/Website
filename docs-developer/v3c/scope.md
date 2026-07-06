@@ -98,6 +98,6 @@ The blocks in the diagram map to the repositories listed on the pages below.
 * [V3C Immersive Platform: Repositories](./repositories)
 * [Common Tools: Repositories](../common-tools/)
 
-:::caution[References to verify]
+:::warning[References to verify]
 These specifics on this page were not confirmed against a primary source: the exact ISO/IEC 23090-5 edition and the V3C/MIV feature subset each reference-tool component targets (this changes as the project develops and is tracked in the repositories). The ISO part numbers themselves (23090-5, 23090-10, 23090-12) are taken from the ISO catalogue. Verify the edition and feature coverage against the repository READMEs and the Kanban board before relying on it externally.
 :::

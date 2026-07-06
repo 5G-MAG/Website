@@ -106,7 +106,7 @@ Spectrum access for NPNs is a national regulatory matter and varies by country. 
 * **Release 17**: Credentials Holder, external AAA authentication, UE onboarding and remote provisioning, equivalent SNPNs.
 * **Release 18 and later**: Enhancements to NPN mobility and service continuity, and localised services. Confirm the exact scope and placement against the 3GPP work plan.
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the Release 18 and later NPN enhancement placements, and the specific NID/CAG sub-clause structure described above. Verify against the 3GPP work plan before publication.
 :::
 

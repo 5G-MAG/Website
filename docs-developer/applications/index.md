@@ -1,6 +1,7 @@
 ---
 title: Applications
 sidebar_position: -1
+sidebar_class_name: project-index-link
 hide_title: true
 description: "Overview of 5G-MAG's application areas: streaming, broadcast, multicast, XR, volumetric video, and network APIs."
 ---

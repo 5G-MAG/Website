@@ -1,5 +1,5 @@
 :root {
-  --doc-sidebar-width: 300px;
+  /* --doc-sidebar-width is set in src/css/custom.css, kept as single source of truth */
   --doc-sidebar-hidden-width: 0px;
 }
 

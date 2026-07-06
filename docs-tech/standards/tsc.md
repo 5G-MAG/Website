@@ -125,7 +125,7 @@ Media production was not the original target for TSC, but it is a natural fit. T
 * Wireless camera links with deterministic latency guarantees
 * Integration of 5G NPN with IEEE TSN for studio infrastructure
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TR 22.804, the TS 23.501 TSC clause number, the Release 17 TSCTSF placement, and the IEEE 802.1Qbv/802.1Qcc designations as cited. Verify against the 3GPP work plan and the IEEE 802.1 standards index before publication.
 :::
 

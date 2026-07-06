@@ -99,6 +99,6 @@ The requirement that switching be interruption-free is what ties this to reliabi
 | Satellite access in the 5G system architecture | [TR 23.737](https://www.3gpp.org/dynareport/23737.htm); [TS 23.501](https://www.3gpp.org/dynareport/23501.htm), [TS 23.502](https://www.3gpp.org/dynareport/23502.htm) |
 | Mobility for the multicast group over NTN | [Mobility for MBS Multicast over NTN](./analysis-mobility-mbs-multicast-over-ntn) |
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TS 26.502 title, the exact TS 23.247 clauses for PTP/PTM switching and session counting, and the release placement of MBS-over-NTN features (broadcast/multicast, GSO/NGSO). Verify against the 3GPP work plan before publication.
 :::

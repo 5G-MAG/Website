@@ -47,14 +47,14 @@ The TMGI Allocation and Deallocation tool can request the allocation or dealloca
 
 To get the full command help for the TMGI Allocation and Deallocation tool use the command:
 
-```
+```bash
 /usr/local/bin/tmgi-tool -h
 ```
 
 ### TMGI Allocation
 TMGI Allocation can be run with a command like:
 
-```
+```bash
 /usr/local/bin/tmgi-tool -n 127.0.0.10:7777
 ```
 
@@ -113,7 +113,7 @@ Success looks like the `TMGI[...] ... created` line above, showing the allocated
 ### TMGI Deallocation
 TMGI deallocation can be run with a command like (for an allocated TMGI with PLMN of 000-000):
 
-```
+```bash
 /usr/local/bin/tmgi-tool -d -M CE2E09 -p 000-000 -n 127.0.0.10:7777
 ```
 
@@ -160,13 +160,13 @@ The MBS Service tool will create an MBS Session and then report notifications fo
 
 To get the full command help for the MBS Service tool use the command:
 
-```
+```bash
 /usr/local/bin/mbs-service-tool -h
 ```
 
 The MBS Service tool can be run with a command like the one below. The flags mean: `-T` allocate a TMGI, `-M` create a Multicast session, `-u` indicate any UE may join; `-S source:dest` sets the Source-Specific Multicast (SSM) source and destination addresses; and `-n` gives the NRF address and port used to discover the MB-SMF.
 
-```
+```bash
 /usr/local/bin/mbs-service-tool -TMu -S 192.168.0.1:232.0.0.59 -n 127.0.0.10:7777
 ```
 

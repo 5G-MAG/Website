@@ -21,7 +21,7 @@ description: Introduces libscBSF, the BSF service consumer library, noting its d
 
 **libscBSF** is the Binding Support Function (BSF) service consumer library. The BSF maps a device's PDU Session to the Policy Control Function (PCF) that is serving it, so an application can discover the right PCF (via the Network Repository Function, NRF) and then look up which PCF is managing the session for a given device IP address.
 
-:::caution
+:::warning
 This dedicated tutorial is under development.
 :::
 

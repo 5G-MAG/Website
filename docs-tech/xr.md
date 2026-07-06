@@ -137,7 +137,7 @@ The Split Rendering Media Service Enabler ([TS 26.565](https://www.3gpp.org/dyna
 * [MPEG-I Scene Description: A dynamic scene description framework for immersive media](https://www.ibc.org/download?ac=24724), by T. Stockhammer (Qualcomm), I. Bouazizi (Qualcomm), M.-L. Champel (Xiaomi), E. Potetsianakis (Nokia), E. Thomas (Xiaomi), L. Kondrad (Nokia), E. Alexiou (TNO), G. Martin-Cocher (InterDigital), G. Bhullar (InterDigital), Q. Avril (InterDigital), Q. Galvane (InterDigital), J. Regateiro (InterDigital), P. Hirtzlin (InterDigital)
 * glTF 2.0 extension in MPEG and 3GPP ([link](https://www.khronos.org/assets/uploads/developers/presentations/glTF_2.0_Extensions_in_MPEG_and_3GPP_.pdf))
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TS 26.506 as the RTC general specification; and the current release placement and status of TS 26.119 (MeCAR) and TS 26.565 (Split Rendering Media Service Enabler). Verify against the 3GPP/ETSI work plan before publication.
 :::
 

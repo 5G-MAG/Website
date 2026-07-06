@@ -71,7 +71,7 @@ The Avatar Communication reference tools relate to the specification below. For 
 | -- | -- |
 | [ISO/IEC 23090-39](https://www.iso.org/standard/91745.html) | Coded representation of immersive media, Part 39: Avatar representation format (ARF), DIS as of 2025 |
 
-:::caution[References to verify]
+:::warning[References to verify]
 The container designations cited above for ARF assets were not confirmed against a primary source: **ISO/IEC 21320-1** as the Zip-based container profile, and the specific edition of **ISO/IEC 14496-12** (ISO base media file format) intended by ARF. Check both against the ARF text before relying on them. ISO/IEC 23090-39 itself and ISO/IEC 23090-14 are established citations and are not part of this caution.
 :::
 

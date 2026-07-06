@@ -49,7 +49,7 @@ A group of users is consuming content provided via an MBS Multicast Service with
 ### Discussion
 Although point-to-multipoint (PTM) to point-to-multipoint mobility is supported by MBS Multicast Services, as explained in [Aspects on Mobility for MBS Multicast Services](../5g-mbs/mobility-mbs-multicast), mobility in this case is triggered by the satellite motion, not by the user, and the PTM traffic delivery on the entire cell has to be transferred to another cell. The next section sets out why a naive fix for this is inefficient, and what the network can do instead.
 
-:::caution
+:::warning
 Scenario 1 is still being analysed; the discussion above is a work in progress and further detail is to be added.
 :::
 
@@ -71,10 +71,10 @@ Scenario 2 covers lossless handover for an MBS Multicast Service when mobility i
 
 Conceptually this is closer to the terrestrial multicast-mobility case, because the trigger is the device, but the NTN setting still changes it. The moving device (or the subset of devices moving together, for example passengers on the same train or aircraft) may cross a beam or satellite boundary while the rest of the group stays put, so the group must not be disrupted for the sake of the few that move. As in Scenario 1, the tools are PTP/PTM switching for the moving members and conditional handover, but the geometry is no longer the sole predictor of when the handover happens, so radio measurements re-enter the decision. The detailed treatment is still to be developed.
 
-:::caution
+:::warning
 This scenario has not yet been documented. It will be added as the analysis progresses.
 :::
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the exact TS 38.331 clauses for Conditional Handover and SIB19, and the TS 23.247 clauses for PTP/PTM switching and multicast mobility. Verify against the 3GPP work plan before publication.
 :::

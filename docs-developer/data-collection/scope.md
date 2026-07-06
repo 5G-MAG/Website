@@ -68,7 +68,7 @@ R1 supports interactions between a Provisioning AF (in the Application Service P
 ### Creating a Data Reporting Provisioning Session
 An example of a request body when Creating a new Data Reporting Provisioning Session is shown below:
 
-```
+```json
 {
   "provisioningSessionId": "string",
   "aspId": "string",
@@ -86,7 +86,7 @@ Where UE_COMM is the example eventId which has been implemented (it indicates th
 ### Creating a Data Reporting Configuration
 An example of a request body when Creating a new Data Reporting Configuration is shown below:
 
-```
+```json
 {
   "dataCollectionClientType": "DIRECT",
   "dataSamplingRules": [
@@ -130,7 +130,7 @@ R6 supports interactions between the Event Consumer AF and the Data Collection A
 
 ### Subscribing for Events
 An example of a request body when Creating a new Individual Application Event Exposure Subscription is shown below:
-```
+```json
 {
   "eventsSubs": [
     {
@@ -159,7 +159,7 @@ R2 supports interactions between the Direct Data Collection Client in the UE and
 
 An example of a request body when creating a new Data Reporting Session is shown below:
 
-```
+```json
 {
   "externalApplicationId": "{{ _.external_application_id }}",
   "supportedDomains": ["COMMUNICATION"]
@@ -233,7 +233,7 @@ The other reference points in the framework (R3 for the Indirect Data Collection
 
 The [Docker + Insomnia tutorial](./tutorials/docker-with-insomnia) walks through these steps end to end. The source lives in the [UE Data Collection repositories](../data-collection/repositories).
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the exact R1 to R6 reference-point mapping (in particular R3=Indirect Data Collection Client, R4=Application Server, R5=NWDAF exposure), the assignment of `Ndcaf_DataReportingProvisioning`, `Ndcaf_DataReporting` and `Naf_EventExposure` to specific reference points, and the Release-18 placement of TS 26.531/TS 26.532. Verify against the 3GPP work plan before publication.
 :::
 

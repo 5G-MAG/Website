@@ -88,7 +88,7 @@ A user of a media application wants to reserve QoS capacity for an event, then a
 ### Request booking of QoS
 With **POST /qos-bookings**. The request reserves capacity for a device count, a QoS profile, a service area and a time window:
 
-```
+```json
 {
   "numDevices": 15,
   "qosProfile": "QOS_MEDIA_BROADCAST",
@@ -114,7 +114,7 @@ With **POST /qos-bookings**. The request reserves capacity for a device count, a
 
 Type of response: A **bookingId**, plus the reserved and remaining device counts and the booking status:
 
-```
+```json
 {
   "bookingId": "8e2f6f30-0a1c-4c6b-92e1-1bd05aef1c58",
   "totalDevices": 15,
@@ -138,7 +138,7 @@ Type of response: A **bookingId**, plus the reserved and remaining device counts
 ### Assign a device
 With **POST /qos-bookings/{bookingId}/devices/assign**, and device parameters. The request lists the devices to attach (each identified by any one of phone number, network access identifier, or IP address) and a `sink` for assignment notifications:
 
-```
+```json
 {
   "devices": [
     {
@@ -202,7 +202,7 @@ The `data` object carries a `status` field whose documented values are `PENDING`
 
 The CAMARA definition specifies the notification structure but does not provide a fully populated example. The following is an illustrative booking status-changed CloudEvent built from that structure:
 
-```
+```json
 {
   "id": "83a0d986-0866-4f38-b8c0-fc65bfcda452",
   "source": "https://api.example.com/qos-booking-and-assignment/v0/qos-bookings/8e2f6f30-0a1c-4c6b-92e1-1bd05aef1c58",

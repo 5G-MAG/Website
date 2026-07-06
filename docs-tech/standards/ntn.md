@@ -47,7 +47,7 @@ These studies define how satellite access is integrated into the 5G system archi
 * [TS 23.501](https://www.3gpp.org/dynareport/23501.htm): System architecture for the 5G System (5GS). Carries the NTN-related additions to the reference architecture (for example satellite backhaul and NTN access as an access type).
 * [TS 23.502](https://www.3gpp.org/dynareport/23502.htm): Procedures for the 5G System (5GS). Carries the registration, mobility and session-management procedures that NTN access reuses and extends.
 
-:::caution[Verify spec number]
+:::warning[Verify spec number]
 This entry was changed by automated review from TR 22.837 to TR 22.822 and is not yet confirmed against the 3GPP portal. TR 22.837 was identified as the Integrated Sensing and Communication study (unrelated to satellite access). Confirm TR 22.822 is the intended satellite-access study before publication.
 :::
 
@@ -117,7 +117,7 @@ The table groups the key specifications by the part of the system they govern, w
 
 See the [Technical Documentation: Non-Terrestrial Networks](/tech/ntn) page for the detailed analysis documents that develop these topics.
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TS 26.502 title, TR 38.863 release placement, the release placement of individual Release 18/19 NTN and MBS-over-NTN features, GEO one-way propagation delay figures. Verify against the 3GPP/ETSI work plan before publication.
 :::
 

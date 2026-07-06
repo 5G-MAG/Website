@@ -76,7 +76,7 @@ Start and then stop the MBMS Modem service. Starting it generates or updates the
 
 Start the MBMS Modem with a sample as specified [here](https://github.com/5G-MAG/rt-mbms-modem?tab=readme-ov-file#run-a-sample-file). It is important to provide the right bandwidth to the MBMS Modem. Consequently, for a 5 MHz bandwidth sample file, the command looks like this: 
 
-```
+```bash
 cd rt-mbms-modem/build
 sudo ./modem -f "PathToSample/5MHz_MCS16_1kHz25_HLS_q6a.raw" -b 5
 ```
@@ -117,7 +117,7 @@ found [here](../additional/rt-common-shared/MBMS-service-announcement-files).
 
 Start the middleware:
 
-```
+```bash
 cd rt-mbms-mw/build
 sudo ./mw
 ```
@@ -135,7 +135,7 @@ described [here](https://github.com/5G-MAG/rt-wui?tab=readme-ov-file#running).
 
 The Webinterface can also be started directly from its folder:
 
-```
+```bash
 cd rt-wui
 node app.js
 ```

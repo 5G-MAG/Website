@@ -76,6 +76,6 @@ The two features above (CMCD and CMMF) are the ones with reference-tool relevanc
 
 Not all of these have completed the move from study to normative text, and the release placement of individual items can change as 3GPP SA4 progresses the work. See the [Standards page](/tech/standards/5gms) for the specifications and technical reports, and confirm the status of a given feature against the 3GPP work plan.
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the TS 26.510 clauses (8.11), the TS 26.512 clauses (7.8, 10.5, 11.4.3, 12.4, 13.2.4, 18.3.3 and Annex G.5), the M7d/M11d and R5/R6 reference-point mappings, and the release placement of the individual Release-19 AMD topics listed above. Verify against the specific specification version you are targeting.
 :::

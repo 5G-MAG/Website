@@ -80,7 +80,7 @@ The profile-name values in the examples below (`QCI_1_voice`, `QOS_L`) are illus
 ### Request booking of QoS for a device
 With **POST /device-qos-bookings**, and device parameters. The request specifies the device(s), the QoS profile, the application server and ports, and the booking window:
 
-```
+```json
 {
   "device": {
     "phoneNumber": "+123456789",
@@ -130,7 +130,7 @@ With **POST /device-qos-bookings**, and device parameters. The request specifies
 
 Type of response: A **bookingId**
 
-```
+```json
 {
   "device": {
     "phoneNumber": "+123456789",
@@ -184,7 +184,7 @@ Type of response: A **bookingId**
 ### Obtains the existing QoS booking for a device
 With **POST /retrieve-device-qos-bookings**, and device parameters. The request identifies the device whose bookings are queried:
 
-```
+```json
 {
   "device": {
     "phoneNumber": "+123456789",
@@ -201,7 +201,7 @@ With **POST /retrieve-device-qos-bookings**, and device parameters. The request 
 ### Obtains the QoS booking information
 With **GET /device-qos-bookings/{bookingId}**. The response returns the booking's profile, window, status and service area:
 
-```
+```json
 {
   "bookingId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "duration": 3600,

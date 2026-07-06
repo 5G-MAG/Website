@@ -58,6 +58,7 @@ const TECH_RIGHT_ITEMS = [
 const HOME_LEFT_ITEMS = [
   {to: '/tech', label: 'Technical Docs & Standards Work', position: 'left'},
   {to: '/developer', label: 'Software Accelerator', position: 'left'},
+  {to: '/about', label: 'About Us', position: 'left'},
 ];
 
 const HOME_RIGHT_ITEMS = [
@@ -71,6 +72,11 @@ function useNavbarItems(variant) {
   if (variant === 'home') return [...HOME_LEFT_ITEMS, ...HOME_RIGHT_ITEMS];
   return defaultItems;
 }
+
+// Top-level organizational pages (About, Membership, ...) are neutral, like
+// the homepage itself — they should not inherit the developer-portal-only
+// default navbar.
+const HOME_LIKE_PATHS = ['/about', '/membership'];
 
 function NavbarItems({items}) {
   return (
@@ -117,7 +123,11 @@ function NavbarContentLayout({left, right}) {
 export default function NavbarContent() {
   const mobileSidebar = useNavbarMobileSidebar();
   const {pathname} = useLocation();
-  const variant = pathname.startsWith('/tech') ? 'tech' : pathname === '/' ? 'home' : 'default';
+  const variant = pathname.startsWith('/tech')
+    ? 'tech'
+    : pathname === '/' || HOME_LIKE_PATHS.includes(pathname)
+      ? 'home'
+      : 'default';
   const items = useNavbarItems(variant);
   const [leftItems, rightItems] = splitNavbarItems(items);
   const searchBarItem = items.find((item) => item.type === 'search');

@@ -77,7 +77,7 @@ A list of relevant specifications can be found in the link below.
 
 [Standards: Beyond 2D Video Experiences](/tech/standards/beyond-2d)
 
-:::caution[References to verify]
+:::warning[References to verify]
 These specifics on this page were not confirmed against the primary source (the 3GPP/ETSI portals block automated access, so the TR 26.956 text could not be machine-checked): the exact codec and anchor set per format family (MV-HEVC, V-PCC, G-PCC, MIV) and the exact metric set (PSNR, IV-PSNR, VMAF). The scenario names and the `mvd`/point-cloud repository structure are taken from the 5G-MAG reference-tools repository. Verify against TR 26.956, the SA4 work plan, and the repository READMEs before relying on it externally.
 :::
 

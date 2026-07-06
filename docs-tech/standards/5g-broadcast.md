@@ -168,7 +168,7 @@ MBMS has three named network interfaces, distinct from the M1-M8 reference point
 * [IETF RFC 7323](https://www.rfc-editor.org/rfc/rfc7323) - TCP Extensions for High Performance
 * [IETF RFC 8200](https://www.rfc-editor.org/rfc/rfc8200) - Internet Protocol, Version 6 (IPv6) Specification
 
-:::caution[References to verify]
+:::warning[References to verify]
 The per-release 3GPP CR numbers, TS clause references, meeting placements, band frequency ranges and work-item verification notes have moved to the caution box on the [Standards Evolution](/tech/standards/5g-broadcast-standards-evolution) page, along with the detailed content they apply to. The ETSI TS 103 720 version-to-release mapping shown in "Version history at a glance" above has not been independently confirmed against the primary 3GPP or ETSI record.
 
 The M1/M2/M3 interface descriptions and their specifications (TS 36.440, TS 25.446, TS 36.444) were added from web search results (3gpp.org and tech-invite.com both blocked direct fetch), cross-checked across two independent search queries that agreed on the interface roles and spec numbers. They have not been confirmed by reading the specifications themselves.

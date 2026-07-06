@@ -39,7 +39,7 @@ Usually, this should boil down to:
 - Checking which (virtual) serial port your GPS mouse uses, once you plug it in (e.g. ``/dev/ttyACM0``)
 - Setting this device in /etc/default/gpsd:
 
-```
+```bash
 # Devices gpsd should collect to at boot time.
 # They need to be read/writeable, either by user gpsd or the group dialout.
 DEVICES="/dev/ttyACM0"

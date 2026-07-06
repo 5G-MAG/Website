@@ -96,7 +96,7 @@ Note that before the required features of the 5GMS System can be used by 5GMS Cl
 
 Once created, this is a representation of a Provisioning Session:
 
-```
+```json
 {
   "provisioningSessionId": "string",
   "provisioningSessionType": "DOWNLINK",
@@ -153,7 +153,7 @@ Once a Provisioning Session is established using the API at interface M1d, **Con
 
 This is a JSON scheme of a Content Hosting Configuration, which tells the 5GMS System where to ingest content from and how to distribute it:
 
-```
+```json
 {
   "name": "string",
   "ingestConfiguration": {
@@ -298,7 +298,7 @@ Examples are available in: [https://github.com/5G-MAG/rt-5gms-examples/tree/deve
 
 This is a JSON scheme of a Policy Template, which describes the QoS and charging treatment a session may request:
 
-```
+```json
 {
   "externalReference": "string",
   "qoSSpecification": {
@@ -361,7 +361,7 @@ Once a Provisioning Session is established using the API at interface M1d, **Con
 
 This is a JSON scheme of a Consumption Reporting Configuration:
 
-```
+```json
 {
   "reportingInterval": 1,
   "samplePercentage": 100,
@@ -414,7 +414,7 @@ Once a Provisioning Session is established using the API at interface M1d, **QoE
 
 This is a JSON scheme of a Metrics Reporting Configuration:
 
-```
+```json
 {
   "metricsReportingConfigurationId": "string",
   "sliceScope": [
@@ -462,7 +462,7 @@ The following tutorials describe several steps showing how to create a QoE Metri
 
 ## Feature: Data collection, reporting and exposure
 
-:::caution[Not yet implemented in 5GMS]
+:::warning[Not yet implemented in 5GMS]
 This feature is not yet implemented within the framework of 5GMS. A generic architecture for UE Data Collection and Reporting is available separately (see the note at the end of this section).
 :::
 
@@ -726,7 +726,7 @@ A practical route into the tools:
 
 For the source, see the [GitHub Repositories](./repositories); for the standards context, see the [Standards page](/tech/standards/5gms) and the [technical documentation](/tech/5gms).
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the Release 17 baseline placement of the implemented features in TS 26.501 and TS 26.512, the specification versions cited in the "Summary of features" support table (TS 26.501 v17.6.0, TS 26.512 v17.6.0 and the associated 29-series versions), and the exact developer-portal paths linked in the notes. Verify against the 3GPP work plan and with the reference-tool maintainers before publication.
 :::
 

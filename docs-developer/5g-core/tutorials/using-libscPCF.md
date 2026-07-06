@@ -43,7 +43,7 @@ The PCF PolicyAuthorization tool can request a QoS policy and will then wait and
 
 The PCF PolicyAuthorization tool can be run with a command like the following one, which requests QoS settings for video Media-Type with a minimum guaranteed 2.5Mbps downlink:
 
-```
+```bash
 /usr/local/bin/pcf-policyauthorization -a 12.34.56.78 -n 127.0.0.10:7777 -t video -d 2.5e6
 ```
 
@@ -55,7 +55,7 @@ The screenshot below shows an example of the PCC Rules configured in the Open5GS
 
 To get the full command help for the PCF PolicyAuthorization tool use the command:
 
-```
+```bash
 /usr/local/bin/pcf-policyauthorization -h
 ```
 

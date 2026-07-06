@@ -1,5 +1,5 @@
 ---
-title:  Testing M5 AF v1.0.x
+title: Testing M5 AF v1.0.x
 hide_title: true
 sidebar_position: 11
 description: Tests the M5 ServiceAccessInformation API of the 5GMSd Application Function v1.0.0 to v1.1.x, covering HTTP/HTTPS entry points and domain aliases.

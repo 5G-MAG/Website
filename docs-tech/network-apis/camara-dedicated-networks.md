@@ -100,7 +100,7 @@ With **POST /retrieve-service-areas** a list of dedicated network service areas 
 
 The request below filters service areas by location and by an optional profile name:
 
-```
+```json
 {
   "atLocation": {
     "latitude": 50.735851,
@@ -116,7 +116,7 @@ The request below filters service areas by location and by an optional profile n
 
 Type of response: the list of areas, each with an `id` (used later when requesting a network) and the network and QoS profiles it supports:
 
-```
+```json
 [
   {
     "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
@@ -139,7 +139,7 @@ This API allows for discovering available network profiles, which are offered by
 
 With **GET /profiles** a list of available network profiles can be retrieved. Each profile lists its device limit, aggregate throughput targets and the QoS profiles it offers:
 
-```
+```json
 [
   {
     "id": "string",
@@ -167,7 +167,7 @@ This API allows for requesting a Dedicated Network, which provides a set of capa
 ### Request the creation of a dedicated network
 With **POST /networks**, passing either a **networkProfileId** or a **qosProfileName**, plus **serviceTime** and a **serviceAreaId**, among others.
 
-```
+```json
 {
   "name": "string",
   "networkProfileId": "string",
@@ -183,7 +183,7 @@ With **POST /networks**, passing either a **networkProfileId** or a **qosProfile
 
 Type of response: Information about the **status** of the request.
 
-```
+```json
 {
   "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "status": "REQUESTED",
@@ -206,7 +206,7 @@ A Device Access represents the permission for a specific device to use a Dedicat
 
 With **POST /accesses** a device access can be created
 
-```
+```json
 {
   "networkId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "device": {
@@ -227,7 +227,7 @@ With **POST /accesses** a device access can be created
 
 Type of response: An **id** for the requested device access.
 
-```
+```json
 {
   "networkId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "device": {
@@ -251,7 +251,7 @@ Type of response: An **id** for the requested device access.
 
 This is how a device is defined:
 
-```
+```json
   "device": {
     "phoneNumber": "123456789",
     "networkAccessIdentifier": "123456789@domain.com",

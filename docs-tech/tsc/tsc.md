@@ -67,7 +67,7 @@ Not every media deployment wants to run a wired TSN control plane. A relevant Re
 * **Release 17**: TSCTSF; generalised time synchronisation (multiple IEEE 802.1AS / IEEE 1588 clock roles); exposure of deterministic QoS and time-sync control to AFs via NEF; deterministic QoS without a full TSN bridge.
 * **Release 18 and later**: Further deterministic-networking, survivability and time-sync accuracy enhancements. Confirm scope and placement against the 3GPP work plan.
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the TS 23.501 TSC clause number, the Release 17 TSCTSF placement, and the IEEE 802.1Qbv/802.1Qcc/802.1AS designations as cited. Verify against the 3GPP work plan and the IEEE 802.1 standards index before publication.
 :::
 

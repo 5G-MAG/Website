@@ -1,5 +1,5 @@
 ---
-title:  Testing M5 AF v1.3.x
+title: Testing M5 AF v1.3.x
 hide_title: true
 sidebar_position: 13
 description: Curl-based tests for the M5 ServiceAccessInformation API on 5GMSd Application Function v1.3.0 and above, using the entryPoints response format.
@@ -378,7 +378,7 @@ To test this
 
 ## Consumption Reporting, Network Assistance and Dynamic Policies
 
-:::caution[Under development]
+:::warning[Under development]
 Documentation for testing Consumption Reporting, Network Assistance and Dynamic Policies on the M5 interface is under development. In the meantime:
 
 - For client-side Consumption Reporting guidance, see the [Consumption Reporting tutorial](../consumption-reporting).

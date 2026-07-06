@@ -87,7 +87,7 @@ An NPN is the network foundation on which the other two topics in this area sit:
 
 5G-MAG tracks NPN standardisation as it applies to media production and contribution, in particular the VIAPA requirements, the SNPN and PNI-NPN deployment models, device onboarding at scale, and the combination of NPN with TSC for deterministic essence transport and with RTC for interactive contribution. There is no dedicated 5G-MAG reference implementation for NPN; the area is followed through analysis and the standards work referenced here.
 
-:::caution[References to verify]
+:::warning[References to verify]
 The Release 18 and later NPN enhancement placements described above were not confirmed against a primary source (the 3GPP/ETSI portals block automated access). Verify against the 3GPP work plan before publication. (TR 23.700-07 and TS 24.501, above, were confirmed via independent secondary trackers — see the audit notes for this page.)
 :::
 

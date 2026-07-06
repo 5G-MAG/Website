@@ -103,7 +103,7 @@ The practical relationship: SA4's framework can be a source of the UE-side and a
 
 TR 26.847 is the SA4 study that looks specifically at AI/ML in 5G media services, as opposed to the generic network-side analytics of SA2. Confirmed scope (Release 19, completed June 2025): it evaluates AI/ML use cases for 5G media services, covering evaluation testbed architectures and anchors, evaluation scenarios, and metrics.
 
-:::caution[Detail below not independently re-verified]
+:::warning[Detail below not independently re-verified]
 The specific topics below (split inference, model delivery, AI-assisted processing, and the named logical functions) were written for an earlier draft of this study, which was tracked under a different, now-superseded number (TR 26.927, last seen as an incomplete draft). They are plausible given the study's confirmed scope, but have not been independently re-checked against TR 26.847's final content. Verify before relying on the specifics:
 :::
 

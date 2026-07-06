@@ -87,6 +87,6 @@ As defined in ETSI TS 103 720, the following receiver profiles are relevant:
 * [5G Broadcast Deployment Profiles](./deployment-profiles)
 * [Standards: LTE-based 5G Broadcast](/tech/standards/5g-broadcast)
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the ETSI portal blocks automated access): the Band 107 / 108 / 112 / 113 frequency ranges and their ETSI TS 103 720 version and 3GPP release attributions, and the observed subframe, bandwidth, modulation and SFN parameter values. The Band 108 frequency range (470 to 698 MHz) is now stated consistently here and on the [Deployment Profiles](./deployment-profiles) page; confirm it against the published ETSI TS 103 720 (and 3GPP TS 36.101) before relying on it.
 :::

@@ -98,7 +98,7 @@ Technical Reports:
 * **[3GPP TR 26.804](https://www.3gpp.org/dynareport/26804.htm) - Study on 5G media streaming extensions**
 * **[3GPP TR 26.802](https://www.3gpp.org/dynareport/26802.htm) - Multicast Architecture Enhancement for 5G Media Streaming**
 
-:::caution[Needs verification]
+:::warning[Needs verification]
 TR 26.802 is listed here under "Release-19 Advanced Media Delivery", but it appears to belong to an earlier release (flagged as possibly Release 17). Its release and section placement should be confirmed against the [3GPP specification record](https://www.3gpp.org/dynareport/26802.htm) and corrected if needed.
 :::
 
@@ -127,7 +127,7 @@ Coded Multisource Media Format (CMMF) is an ETSI format that lets a client fetch
 
 For the reference-tool scope and how the software maps to these specifications, see the developer portal at [/developer/5gms](/developer/5gms). For implementation analysis, see [Streaming & Media Delivery](/tech/5gms).
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the Release 17 placement of edge media processing and eMBMS delivery in TS 26.501, the Release 18 placement of TS 26.510 and of the TS 26.531 / TS 26.532 alignment, and the Release 19 placement of the Advanced Media Delivery work. Verify against the 3GPP work plan before publication.
 :::
 

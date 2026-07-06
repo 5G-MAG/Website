@@ -213,7 +213,7 @@ The overlap between this API and the [QoS Booking](./using-qos-booking) API is r
 
 A QoS booking reserves per-device QoS treatment that, on assignment and connection, is realised as a QoS Flow on the device's PDU session. The reservation and assignment requests drive the Network Exposure Function (NEF) northbound APIs ([TS 29.522](https://www.3gpp.org/dynareport/29522.htm)); advance reservation of a future window uses background data transfer negotiation (`Nnef_BDTPNegotiation`, [TS 29.554](https://www.3gpp.org/dynareport/29554.htm)), and the per-device QoS is authorised by the Policy Control Function (`Npcf_PolicyAuthorization`, [TS 29.514](https://www.3gpp.org/dynareport/29514.htm)). The QoS profile referenced maps to a 5QI whose characteristics are tabulated in [TS 23.501](https://www.3gpp.org/dynareport/23501.htm), clause 5.7.4. See [Network API Initiatives](../network-api-initiatives#3gpp-apis-for-quality-of-service).
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the exact NEF/PCF operations a QoS booking maps to (`Nnef_BDTPNegotiation` in TS 29.554, `Npcf_PolicyAuthorization` in TS 29.514, NEF northbound in TS 29.522). Verify against the 3GPP work plan and the current CAMARA QoSBooking specification before publication.
 :::
 

@@ -78,7 +78,7 @@ At R6, an Event Consumer AF creates an individual event exposure subscription on
 
 The DCAF can be deployed standalone or integrated with 5G Downlink Media Streaming (5GMSd). In the standalone deployment the DCAF collects and exposes UE-side data on its own. In the integrated deployment it is combined with the 5GMSd data reporting framework, so media-specific reporting (such as QoE and consumption reporting) uses the DCAF as its collection endpoint. Docker-Compose setups are provided to bring up the standalone DCAF quickly for testing. The developer-facing detail, request/response examples and tutorials are on the [developer scope page](/developer/data-collection).
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the exact R1 to R6 reference-point mapping and per-reference-point endpoints, the assignment of the `Ndcaf_DataReportingProvisioning`, `Ndcaf_DataReporting`, `Naf_EventExposure` and `Nnef_EventExposure` service operations to specific reference points, and the statement that TS 26.532 event types have corresponding data types added to TS 29.517. Verify against the 3GPP/ETSI work plan before publication.
 :::
 

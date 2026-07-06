@@ -185,7 +185,7 @@ A key alignment point that A178 examines is the relationship between DVB-I servi
 
 For the implementer-facing view of the reference architecture and procedures, see the [Tech: DVB-I Services over 5G Systems](/tech/dvb-i/dvb-i-5g) page.
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): 3GPP TS 26.512 (5GMS Protocols), 3GPP TS 26.502 (5G Multicast-Broadcast User Service Architecture), 3GPP TS 23.247, and the Release placements stated for TS 26.501, TS 26.502 and TS 23.247. The DVB and ETSI document numbers/titles (A177/TS 103 770, A178/TR 103 972, C100, TS 103 720, TS 103 285, TS 103 769, A180) were confirmed against DVB/ETSI sources. Verify all against the 3GPP/ETSI work plan before publication.
 :::
 

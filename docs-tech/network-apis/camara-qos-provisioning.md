@@ -109,7 +109,7 @@ Potential improvements:
 ### Obtaining the QoS assignment for a device
 With **POST /retrieve-qos-assignment**, and device object. The request identifies the device whose assignment is queried:
 
-```
+```json
 {
   "device": {
     "phoneNumber": "+123456789",
@@ -125,7 +125,7 @@ With **POST /retrieve-qos-assignment**, and device object. The request identifie
 
 Type of response: the assignment details, including the assigned `qosProfile`, the `assignmentId` (used to query or revoke it) and its current `status`:
 
-```
+```json
 {
   "device": {
     "phoneNumber": "+123456789"

@@ -156,7 +156,7 @@ The main differences from downlink are:
 
 M1u (provisioning) and M5u (media session handling) play the same control-plane roles as in downlink. The 5G-MAG reference tools implement the downlink direction (5GMSd); the uplink direction is defined by the same specifications but is not covered by the reference tools today. Low-latency and interactive uplink use cases relate to the Real-Time media Communication (RTC) system; see [Real-Time Media Communication](/tech/rtc) where documented.
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the TS 26.501 clause references in the feature table (4.0.2, 5.4, 4.0.5, 5.9, 4.0.6, 5.8, 4.0.8, 5.6, 4.0.9, 5.5, 4.0.10, clause 8, 4.0.11, 5.10, 4.0.12, 5.11) and the clause-5 grouping of the runtime procedures. Verify against the specific TS 26.501 version you are targeting.
 :::
 

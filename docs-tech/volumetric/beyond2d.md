@@ -28,7 +28,7 @@ Beyond 2D Video covers the evaluation and characterisation of next-generation vi
 
 The 5G-MAG work provides an evaluation framework for benchmarking encoding, streaming, and rendering pipelines for these formats. It relates to the 3GPP study captured in [TR 26.956](https://www.3gpp.org/dynareport/26956.htm) (Evaluation and Characterization of Beyond 2D Video Formats and Codecs).
 
-:::caution[Verify study status]
+:::warning[Verify study status]
 TR 26.956 is a 3GPP study (Technical Report). Confirm its current stage (ongoing or completed) against the SA4 work plan before relying on it.
 :::
 
@@ -99,7 +99,7 @@ Because source sequences, coded bitstreams, and rendered pose-trace videos are l
 
 Beyond 2D does not define a new transport. It evaluates the formats against the existing 5G media delivery stack: ISOBMFF/CMAF packaging and DASH (ISO/IEC 23009-1) adaptive streaming carried by 5G Media Streaming ([TS 26.501](https://www.3gpp.org/dynareport/26501.htm) architecture, [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) protocols and APIs). Framing the evaluation this way keeps the comparison grounded in how the content would actually be delivered, and it lets the study identify which formats and codecs are ready for that pipeline and where gaps remain for future 3GPP normative work.
 
-:::caution[References to verify]
+:::warning[References to verify]
 These specifics on this page were not confirmed against the primary source (the 3GPP/ETSI portals block automated access, so the TR 26.956 text could not be machine-checked): the exact codec and anchor set per format family (MV-HEVC, V-PCC, G-PCC, MIV), and the exact metric set attributed to the study (PSNR, IV-PSNR, VMAF). The scenario names and the `mvd`/point-cloud repository structure are taken from the 5G-MAG reference-tools repository. Verify against TR 26.956 and the SA4 work plan before publication.
 :::
 

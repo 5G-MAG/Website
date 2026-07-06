@@ -22,7 +22,7 @@ description: Links to the TR 21.9xx reports summarizing 3GPP Work Items complete
 
 The Status / timeframe column below is indicative only.
 
-:::caution
+:::warning
 Release status and dates are indicative. Confirm the current status of each Release against the 3GPP work plan before relying on it.
 :::
 

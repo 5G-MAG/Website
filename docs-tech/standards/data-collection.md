@@ -133,7 +133,7 @@ These are the stage-3 API specifications for exposing events, including the Netw
 [TS 29.522](https://www.3gpp.org/dynareport/29522.htm) | 5G System; Network Exposure Function Northbound APIs; Stage 3
 [TS 29.591](https://www.3gpp.org/dynareport/29591.htm) | 5G System; Network Exposure Function Southbound Services; Stage 3
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the R1 to R6 reference-point mapping and per-reference-point purpose, the assignment of the `Ndcaf_DataReportingProvisioning`, `Ndcaf_DataReporting`, `Naf_EventExposure` and `Nnef_EventExposure` service operations to specific reference points, and the Release-17/Release-18 placement of TS 26.531 and TS 26.532. Verify against the 3GPP/ETSI work plan before publication.
 :::
 

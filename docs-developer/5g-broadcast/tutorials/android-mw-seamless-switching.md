@@ -81,7 +81,7 @@ The steps below refer to several named processes. This maps each to its role:
 
 Abbreviations: QRD (Qualcomm Reference Design); CRD (Commercial Reference Design); ROM (Receive-only mode).
 
-:::caution[Values you must change]
+:::warning[Values you must change]
 The examples below use hardcoded IP addresses, file paths and multicast addresses (for example `192.168.0.101`, `239.11.4.50`, `/home/fivegmag/...`). Replace these with the values for your own machines and network before running.
 :::
 

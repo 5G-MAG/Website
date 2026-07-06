@@ -62,7 +62,7 @@ A Broadcast MBS Session can be created in two ways:
 
 A Multicast MBS Session can be created in three ways:
 
-:::caution
+:::warning
 The three multicast creation methods are not yet documented here because multicast session creation is still under implementation. Use the Broadcast MBS Session methods above for now, and check the [rt-mbs-examples repository](https://github.com/5G-MAG/rt-mbs-examples) for the current status.
 :::
 
@@ -101,13 +101,13 @@ the gNBs receiving the multicast traffic.
 
 ### [MB-SMF <-> AMF]: AMF MBS Broadcast ContextCreate side effect
 
-:::caution
+:::warning
 Not yet implemented. This side effect (the AMF MBS Broadcast ContextCreate towards the AMF) is not part of the current implementation, so it is not documented here yet.
 :::
 
 ### [AMF <-> gNBs]: NGAP BROADCAST SESSION SETUP side effect
 
-:::caution
+:::warning
 Not yet implemented. This side effect (the NGAP BROADCAST SESSION SETUP towards the gNBs) is not part of the current implementation, so it is not documented here yet.
 :::
 
@@ -334,7 +334,7 @@ the request:
 
 ### Method 3: Creating a Broadcast MBS Session using SSM as identifier
 
-:::caution
+:::warning
 Not yet documented. Using an SSM as the session identifier is not covered here yet. In the meantime, use Method 1 or Method 2 above (which allocate a TMGI), and refer to the [rt-mbs-examples repository](https://github.com/5G-MAG/rt-mbs-examples) for the latest examples.
 :::
 

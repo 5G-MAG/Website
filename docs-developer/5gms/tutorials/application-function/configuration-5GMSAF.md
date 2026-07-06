@@ -1,5 +1,5 @@
 ---
-title:  Configuration 5GMS AF
+title: Configuration 5GMS AF
 hide_title: true
 sidebar_position: 3
 description: Reference for every msaf.yaml setting of the 5GMSd Application Function, covering interfaces, TLS, network assistance and test certificates.
@@ -235,7 +235,7 @@ logging:
 
 **Location(s):** `sbi.server.no_tls`, `sbi.server.cacert`, `sbi.server.key`, `sbi.server.cert`, `sbi.client.no_tls`, `sbi.client.cacert`, `sbi.client.key` and `sbi.client.cert`
 
-:::caution[Verify the `no_tls` behaviour]
+:::warning[Verify the `no_tls` behaviour]
 The property is named `no_tls`, so the plain reading is that `true` disables TLS and `false` enables it. Some descriptive text on this page reads the other way round. The intended behaviour has not been confirmed against the software here, so verify against the source or a maintainer before relying on it. The table below states the plain-name reading.
 :::
 

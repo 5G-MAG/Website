@@ -100,7 +100,7 @@ This is a list of specifications in the scope of Multimedia Content Delivery Pro
 | FLUTE | File Delivery over Unidirectional Transport | RFC 6726 | File delivery in MBMS-based systems |
 | ROUTE | Real-time Object delivery over Unidirectional Transport | RFC 9223 | Real-time object delivery in ROUTE/DASH broadcast |
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the ISO/ETSI/3GPP portals block automated access): the specific ISO catalogue editions linked for ISO/IEC 23009-1 (DASH) and ISO/IEC 23000-19 (CMAF), and the current published version of ETSI TS 103 285 (DVB-DASH). The protocol-to-RFC mappings (FLUTE = RFC 6726, ROUTE = RFC 9223, HLS = RFC 8216, and the LCT/ALC/FCAST building blocks) were confirmed. Verify the edition and version numbers against the ISO and ETSI catalogues before publication.
 :::
 

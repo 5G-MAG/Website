@@ -100,7 +100,7 @@ This section records 5G-MAG's practical reading of the API and the open points i
 ### Request the creation of a session
 With **POST /sessions**, to manage latency/throughput priorities. The request specifies the device, the application server and ports, the chosen QoS profile, a `sink` for notifications and a `duration`:
 
-```
+```json
 {
   "device": {
     "phoneNumber": "+123456789",
@@ -150,7 +150,7 @@ With **POST /sessions**, to manage latency/throughput priorities. The request sp
 
 Type of response: Information about the **status** of the request, including the assigned `sessionId` and the initial `qosStatus`:
 
-```
+```json
 {
   "applicationServer": {
     "ipv4Address": "198.51.100.0/24"
@@ -166,7 +166,7 @@ Type of response: Information about the **status** of the request, including the
 ### Request QoS session information for a device
 With **POST /retrieve-sessions** and device object. The request identifies the device whose sessions are queried:
 
-```
+```json
 {
   "device": {
     "phoneNumber": "+123456789",
@@ -181,7 +181,7 @@ With **POST /retrieve-sessions** and device object. The request identifies the d
 ```
 
 Type of response: QoS sessions information, returned as an array (a device may have more than one session):
-```
+```json
 [
   {
     "applicationServer": {
@@ -201,7 +201,7 @@ Type of response: QoS sessions information, returned as an array (a device may h
 ### Request duration extension of an active QoS session
 With **POST /sessions/{sessionId}/extend** and the requested additional duration (in seconds):
 
-```
+```json
 {
   "requestedAdditionalDuration": 1800
 }
@@ -210,7 +210,7 @@ With **POST /sessions/{sessionId}/extend** and the requested additional duration
 ### Obtain QoS session information
 With **GET /sessions/{sessionId}**. The response returns the full current state of the session:
 
-```
+```json
 {
   "duration": 3600,
   "device": {
@@ -262,7 +262,7 @@ The change itself is conveyed in the `data` object:
 
 A CloudEvent sent to the `sink` when a session becomes unavailable because its duration expired:
 
-```
+```json
 {
   "id": "83a0d986-0866-4f38-b8c0-fc65bfcda452",
   "source": "https://api.example.com/qod/v1/sessions/3fa85f64-5717-4562-b3fc-2c963f66afa6",

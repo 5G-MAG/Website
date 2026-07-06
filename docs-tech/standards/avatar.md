@@ -74,7 +74,7 @@ The transport of ARF animation itself is being addressed at the IETF: [draft-iet
 ### XR and Immersive Media Context
 * [TR 26.928](https://www.3gpp.org/dynareport/26928.htm): Extended reality (XR) in 5G (includes avatar and presence use cases)
 
-:::caution[Verify 3GPP citations against the portal]
+:::warning[Verify 3GPP citations against the portal]
 The IVAS deliverable titles (TS 26.250 to TS 26.256) and the avatar study item number (TR 26.813) were set or revised by automated review and are not yet confirmed against a primary source, because the 3GPP portal blocks automated access. In particular, TS 26.255 is described here as "Floating-point computational description" but as "Error concealment of lost packets" on the [XR specifications page](/tech/standards/xr), where the floating-point C code is listed separately as TS 26.258; at most one description can be correct. Check all IVAS titles and the avatar study number (TR 26.813, previously cited as TS 26.118 and then TR 26.955) against the 3GPP work plan before relying on this list.
 :::
 
@@ -85,7 +85,7 @@ The IVAS deliverable titles (TS 26.250 to TS 26.256) and the avatar study item n
 * Presence and telepresence services using 3D avatars
 * Integration with XR and immersive media services (see the [XR page](/tech/standards/xr))
 
-:::caution[References to verify]
+:::warning[References to verify]
 The following identifiers introduced on this page were not confirmed against a primary source and should be checked before publication:
 
 * **TS 26.506** exact document title and its precise scope for AR/avatar conversational service. It is cited here as "Real-Time media Communication (RTC) over 5G"; confirm the official title (some sources give a stage-2 architecture subtitle) and release against the SA4 work plan.

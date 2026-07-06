@@ -103,7 +103,7 @@ Because features arrived across editions and amendments, a given implementation 
 
 MPEG defines the scene format; 3GPP defines how it is delivered over 5G and what a device must be able to play. Scene-description content and its referenced media can be carried using the 5G Media Streaming framework (3GPP [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) architecture, [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) protocols) for streamed cases, and over Real-Time Communication transports for conversational and split-rendering cases. On the device side, 3GPP [TS 26.119](https://www.3gpp.org/dynareport/26119.htm) (MeCAR) references MPEG-I Scene Description as media that an AR device must be able to consume, and aligns the on-device client with the Khronos OpenXR runtime API. For that wider delivery and device context, see the [XR and MPEG-I Scene Description](../xr) Tech page and the [Standards view](/tech/standards/xr).
 
-:::caution[References to verify]
+:::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the current release placement and status of TS 26.119 (MeCAR). Verify against the 3GPP/ETSI work plan before publication.
 :::
 
