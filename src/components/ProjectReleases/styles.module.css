@@ -1,4 +1,8 @@
 .releaseList {
+  /* Now a <ul> (was a <div>) so assistive tech announces "list of N
+     releases" — reset the default bullet/indent browsers add to <ul>. */
+  list-style: none;
+  padding: 0;
   border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: 8px;
   overflow: hidden;
@@ -49,8 +53,10 @@
 }
 
 .badgeNew {
-  background: var(--ifm-color-primary-darkest);
-  color: #fff;
+  /* Distinct violet, not brand blue — blue reads as "clickable" everywhere
+     else on this page (see custom.css's --badge-new-background comment). */
+  background: var(--badge-new-background);
+  color: var(--badge-new-foreground);
   font-size: 0.62rem;
   font-weight: 700;
   padding: 0.1rem 0.4rem;

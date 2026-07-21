@@ -16,7 +16,10 @@ export default function VideoGallery({ workshops }) {
           type="button"
           className={clsx(styles.filterChip, activeFilter === 'all' && styles.filterChipActive)}
           aria-pressed={activeFilter === 'all'}
-          onClick={() => { setActiveFilter('all'); setPlayingId(null); }}
+          onClick={() => {
+            setActiveFilter('all');
+            setPlayingId(null);
+          }}
         >
           All workshops
         </button>
@@ -26,7 +29,10 @@ export default function VideoGallery({ workshops }) {
             type="button"
             className={clsx(styles.filterChip, activeFilter === w.id && styles.filterChipActive)}
             aria-pressed={activeFilter === w.id}
-            onClick={() => { setActiveFilter(w.id); setPlayingId(null); }}
+            onClick={() => {
+              setActiveFilter(w.id);
+              setPlayingId(null);
+            }}
           >
             {w.filterLabel}
           </button>

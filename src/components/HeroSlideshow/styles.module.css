@@ -1,0 +1,489 @@
+/* ── Hero Slideshow ────────────────────────────────────────────────── */
+
+.slideshow {
+  position: relative;
+  overflow: hidden;
+  height: 490px;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+  z-index: 0;
+}
+
+.slideActive {
+  opacity: 1;
+}
+
+@keyframes slideFadeIn {
+  from {
+    opacity: 0.55;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.75);
+  }
+}
+
+.slideContentWrapper {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  animation: slideFadeIn 0.6s ease-out;
+}
+
+.slideOverlay {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.5rem 0 2.5rem;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.62) 45%, rgba(0, 0, 0, 0.18) 100%);
+}
+
+.slideOverlayCards {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.62) 45%, rgba(0, 0, 0, 0.18) 100%);
+}
+
+.slideOverlayCards :global(.container) {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.slideCard {
+  background: rgba(20, 48, 79, 0.94);
+  border-radius: 12px;
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.slideCardHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem 0.9rem;
+  background: linear-gradient(
+    135deg,
+    var(--ifm-color-primary-darkest) 0%,
+    var(--ifm-color-primary-textsafe) 100%
+  );
+}
+
+.slideCardHeaderMain {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.slideCardTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.15rem;
+}
+
+.slideCardLatestTag {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.15rem 0.55rem;
+  border-radius: 6px;
+  color: #fff;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.slideCardHeaderIcon {
+  width: 2.75rem;
+  height: 2.75rem;
+  color: rgba(255, 255, 255, 0.88);
+  flex-shrink: 0;
+}
+
+.slideCardTitle {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.slideCardTitlePrefix {
+  font-weight: 400;
+}
+
+.slideCardBody {
+  display: flex;
+  padding: 1rem 1.5rem 0.9rem;
+  gap: 0;
+  min-height: 200px;
+}
+
+.slideCardReleasesCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-right: 1.5rem;
+}
+
+.slideCardContributorsCol {
+  flex: 1;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  padding-left: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.slideCardColLabel {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0 0 0.65rem;
+}
+
+.slideContributorsLabel {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #ffd166;
+  margin: 0 0 0.75rem;
+  line-height: 1.4;
+}
+
+.slideCardFooter {
+  display: flex;
+  gap: 1rem;
+  padding: 0.75rem 1.5rem 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.slideProjectPanelAvatarRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem 0.5rem;
+  align-content: start;
+}
+
+.slideProjectPanelAvatar {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none !important;
+}
+
+.slideProjectPanelAvatar img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  flex-shrink: 0;
+  transition: border-color 0.15s ease;
+}
+
+.slideProjectPanelAvatar:hover img {
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.slideProjectPanelAvatarName {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  transition: color 0.15s ease;
+}
+
+.slideProjectPanelAvatar:hover .slideProjectPanelAvatarName {
+  color: #fff;
+}
+
+.slideEyebrow {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ifm-color-primary-lightest);
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+/* Same two-pill language as the Announcement Templates deck: a solid gold
+   pill for the release state, an outlined pill next to it for the project
+   type (Reference Tools / Testbed) -- #fab900 is that deck's own dormant
+   Accent2 brand gold (Slide 1's theme, never applied as a fill anywhere
+   before the deck work), reused here rather than the lighter #ffd166/
+   #f59e0b ambers already used elsewhere on this page for RC/status
+   meaning, so this doesn't collide with that existing color language. */
+.slideEyebrowPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #fab900;
+  color: #001331;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  white-space: nowrap;
+}
+
+.slideEyebrowPillDot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #001331;
+  flex-shrink: 0;
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+.slideEyebrowGroupPill {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #fff;
+  background: transparent;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  padding: 0.28rem 0.75rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.slideTagRc {
+  background: rgba(245, 158, 11, 0.22);
+  color: #fcd34d;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
+.slideTitle {
+  font-size: clamp(1.8rem, 3vw, 2.75rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 1.1rem;
+  white-space: nowrap;
+}
+
+.slideSubtitle {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+/* Hero figure (icon cloud) sizing + repel-transition CSS now lives in the
+   shared src/components/HeroFigure/styles.module.css, imported by that
+   component itself (used identically on the homepage and on /tech). */
+
+.slideProjectHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.1rem;
+}
+
+.slideProjectHeader .slideTitle {
+  margin-bottom: 0;
+}
+
+.slideProjectIcon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.slideReleases {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 0.45rem 1.5rem;
+  align-content: start;
+}
+
+.slideReleaseItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.slideReleaseLink {
+  display: block;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.92) !important;
+  text-decoration: none !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.slideReleaseLink:hover {
+  text-decoration: underline !important;
+}
+
+.slideReleaseMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.slideTag {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.76rem;
+  background: rgba(255, 255, 255, 0.18);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  color: #fff;
+}
+
+.slideAge {
+  font-size: 0.76rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.slideButtons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.slideBtnOutline {
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.slideBtnOutline:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: #fff !important;
+}
+
+.slideDots {
+  position: absolute;
+  bottom: 1.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  gap: 0.55rem;
+}
+
+.slideDot {
+  height: 13px;
+  min-width: 13px;
+  border-radius: 7px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    min-width 0.3s ease,
+    padding 0.3s ease;
+}
+
+.slideDot:hover {
+  border-color: #fff;
+}
+
+.slideDot:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.9);
+  outline-offset: 2px;
+}
+
+.slideDotActive {
+  background: #fff;
+  border-color: #fff;
+  min-width: 13px;
+  padding: 0 9px;
+}
+
+.slideDotLabel {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--ifm-color-primary-darkest);
+  white-space: nowrap;
+  line-height: 1;
+  letter-spacing: 0.03em;
+}
+
+@media (max-width: 768px) {
+  .slideshow {
+    height: auto;
+    min-height: 480px;
+  }
+  .slideTitle {
+    font-size: 1.3rem;
+    white-space: normal;
+  }
+  .slideSubtitle {
+    white-space: normal;
+  }
+  .slideCardTitle {
+    font-size: 1.5rem;
+    white-space: normal;
+  }
+  .slideCardBody {
+    flex-direction: column;
+    height: auto;
+    min-height: 0;
+  }
+  .slideCardReleasesCol {
+    width: 100%;
+    padding-right: 0;
+  }
+  .slideCardContributorsCol {
+    width: 100%;
+    padding-left: 0;
+    padding-top: 1rem;
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .slideOverlayCards {
+    align-items: flex-start;
+    padding: 1rem 0;
+  }
+}

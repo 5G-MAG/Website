@@ -1,0 +1,115 @@
+.pageNav {
+  background: var(--ifm-background-surface-color);
+  border-bottom: 1px solid var(--ifm-color-emphasis-300);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  /* On a docs page, the sidebar's own sticky/negative-margin trick makes its
+     box geometrically overlap this bar's screen position (same mechanism
+     Docusaurus uses so the sidebar can stick just below the fixed navbar) —
+     harmless there because the navbar carries this same z-index and wins
+     the overlap, but this bar is a plain, non-fixed element with no
+     stacking of its own, so without this it's the sidebar that wins instead
+     and swallows every click. Same elevation as the navbar (Infima's
+     --ifm-z-index-fixed), not higher — this only needs to beat the
+     sidebar, which has none. */
+  position: relative;
+  z-index: var(--ifm-z-index-fixed);
+}
+
+.navRow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem var(--ifm-spacing-horizontal, 1rem);
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.navSectionLabel {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--ifm-color-emphasis-800) !important;
+  text-decoration: none !important;
+  white-space: nowrap;
+}
+
+.navSectionLabel:hover {
+  color: var(--ifm-color-primary) !important;
+}
+
+.navDivider {
+  flex-shrink: 0;
+  width: 1px;
+  height: 1.3rem;
+  background: var(--ifm-color-emphasis-300);
+}
+
+.navChip {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-background-color);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-800);
+  white-space: nowrap;
+  text-decoration: none !important;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease,
+    background 0.15s ease;
+}
+
+/* Filled on hover/press, not just recolored text/border — matches Infima's
+   own .button--outline behavior (e.g. the project sub-nav buttons), so a
+   plain pill and an Infima outline button give the same feedback shape. */
+.navChip:hover {
+  background: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+  color: #fff;
+  text-decoration: none;
+}
+
+.navChip:active {
+  background: var(--ifm-color-primary-dark);
+  border-color: var(--ifm-color-primary-dark);
+  color: #fff;
+}
+
+.navChip:focus-visible,
+.navSectionLabel:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}
+
+/* Darker than --ifm-color-primary specifically so the white chip text
+   meets WCAG AA (4.5:1) — the plain primary only reaches ~3:1, the same
+   reason --ifm-color-primary-textsafe exists (see custom.css); every other
+   white-on-primary badge/chip in this codebase already uses this darker
+   pairing. */
+.navChipActive {
+  background: var(--ifm-color-primary-darkest);
+  border-color: var(--ifm-color-primary-darkest);
+  color: #fff;
+}
+
+/* Overrides .navChip:hover's background/border-color (same specificity,
+   but this rule is declared later) so the current page's own chip keeps
+   its distinct "you are here" shade on hover instead of flashing to the
+   plain hover-blue every other chip uses. */
+.navChipActive:hover {
+  background: var(--ifm-color-primary-darkest);
+  border-color: var(--ifm-color-primary-darkest);
+  color: #fff;
+}
+
+.navChipActive:active {
+  background: var(--ifm-color-primary-darkest);
+  border-color: var(--ifm-color-primary-darkest);
+  color: #fff;
+}

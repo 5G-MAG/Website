@@ -49,7 +49,9 @@
   background: var(--ifm-background-surface-color);
   color: inherit !important;
   text-decoration: none !important;
-  transition: box-shadow 0.2s ease, transform 0.15s ease;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
 }
 
 .productCard:hover {
@@ -131,7 +133,9 @@
   background: var(--ifm-background-surface-color);
   color: inherit !important;
   text-decoration: none !important;
-  transition: box-shadow 0.2s ease, transform 0.15s ease;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
 }
 
 .activityCard:hover {
@@ -147,7 +151,11 @@
   justify-content: center;
   gap: 0.65rem;
   padding: 1.5rem 1.25rem 1.35rem;
-  background: linear-gradient(135deg, var(--ifm-color-primary-darkest) 0%, var(--ifm-color-primary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--ifm-color-primary-darkest) 0%,
+    var(--ifm-color-primary) 100%
+  );
   transition: opacity 0.2s ease;
 }
 
@@ -162,7 +170,7 @@
 }
 
 .activityIconBandTitle {
-  font-size: 1.30rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: #fff;
   text-align: center;
@@ -262,7 +270,11 @@
 
 .categoryHeader {
   padding: 1.4rem 1.4rem 1.1rem;
-  background: linear-gradient(135deg, var(--ifm-color-primary-darkest) 0%, var(--ifm-color-primary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--ifm-color-primary-darkest) 0%,
+    var(--ifm-color-primary) 100%
+  );
 }
 
 .categoryTitle {
@@ -287,11 +299,15 @@
 }
 
 @media (max-width: 768px) {
-  .categoryTopicGrid { grid-template-columns: 1fr 1fr; }
+  .categoryTopicGrid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (max-width: 480px) {
-  .categoryTopicGrid { grid-template-columns: 1fr; }
+  .categoryTopicGrid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .categoryTopicCard {
@@ -304,7 +320,9 @@
   background: var(--ifm-background-color);
   text-decoration: none !important;
   color: inherit !important;
-  transition: border-color 0.15s ease, background 0.15s ease;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
 }
 
 .categoryTopicCard:hover {
@@ -388,7 +406,11 @@
   align-items: center;
   gap: 1rem;
   padding: 1.75rem 1.5rem;
-  background: linear-gradient(135deg, var(--ifm-color-primary-darkest) 0%, var(--ifm-color-primary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--ifm-color-primary-darkest) 0%,
+    var(--ifm-color-primary) 100%
+  );
   text-decoration: none !important;
   transition: opacity 0.2s ease;
 }
@@ -472,35 +494,6 @@
   }
 }
 
-/* ── Hero figure ───────────────────────────────────────────────────── */
-
-.heroFigure {
-  /* Fluid instead of a fixed pixel size: the container itself shrinks well
-     below 1200px, and a fixed-width figure caused real horizontal overflow
-     there (caught by testing across viewport widths). aspect-ratio keeps it
-     matching the SVG viewBox (950:560) as it scales. */
-  width: clamp(280px, 30vw, 640px);
-  aspect-ratio: 950 / 560;
-  flex-shrink: 0;
-  display: none;
-}
-
-@media (min-width: 996px) {
-  .heroFigure {
-    display: block;
-  }
-}
-
-/* Icons flinch away from the cursor (transform set imperatively via JS,
-   see HeroFigure's mousemove handler) and spring back with this elastic
-   ease on mouseleave / once the cursor moves out of range. */
-.tileRepel {
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .tileRepel {
-    transition: none;
-  }
-}
-
+/* Hero figure (icon cloud) sizing + repel-transition CSS now lives in the
+   shared src/components/HeroFigure/styles.module.css, imported by that
+   component itself (used identically here, on /tech and on /developer). */

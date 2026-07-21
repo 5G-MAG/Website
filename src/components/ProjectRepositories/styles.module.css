@@ -1,0 +1,119 @@
+.repoList {
+  list-style: none;
+  padding: 0;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 1rem 0 2rem;
+}
+
+.repoRow {
+  padding: 0.9rem 1.25rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.repoRow:nth-child(even) {
+  background: var(--ifm-color-emphasis-100);
+}
+
+.repoRow:last-of-type {
+  border-bottom: none;
+}
+
+.repoHeader {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.repoName {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary) !important;
+  text-decoration: none !important;
+}
+
+.repoName:hover {
+  text-decoration: underline !important;
+}
+
+.repoSlug {
+  font-size: 0.8rem;
+  background: var(--ifm-color-emphasis-200);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  color: var(--ifm-color-emphasis-800);
+}
+
+.badgeAux,
+.badgePrivate {
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+}
+
+.badgeAux {
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-800);
+}
+
+.badgePrivate {
+  background: var(--ifm-color-warning-contrast-background);
+  color: var(--ifm-color-warning-contrast-foreground);
+}
+
+.repoDescription {
+  margin: 0.5rem 0 0;
+  font-size: 0.88rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.repoTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.25rem;
+  margin-top: 0.6rem;
+}
+
+.tagGroup {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.tagLabel {
+  font-size: 0.72rem;
+  color: var(--ifm-color-emphasis-600);
+  margin-right: 0.1rem;
+}
+
+.tag {
+  font-size: 0.72rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  line-height: 1.5;
+}
+
+.tagLicense,
+.tagSoftware,
+.tagDependency {
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-800);
+}
+
+.tagStandard {
+  background: var(--tag-standard-background);
+  color: var(--tag-standard-foreground);
+  font-weight: 600;
+}
+
+.empty {
+  color: var(--ifm-color-emphasis-600);
+  font-style: italic;
+}

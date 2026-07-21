@@ -18,14 +18,44 @@
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
-  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    color 0.15s ease;
 }
 
+/* Filled on hover/press, not just a recolored border — matches Infima's
+   own .button--outline behavior, so this pill and an Infima outline button
+   give the same feedback shape. */
 .filterChip:hover {
+  background: var(--ifm-color-primary);
   border-color: var(--ifm-color-primary);
+  color: #fff;
+}
+
+.filterChip:active {
+  background: var(--ifm-color-primary-dark);
+  border-color: var(--ifm-color-primary-dark);
+  color: #fff;
+}
+
+.filterChip:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
 }
 
 .filterChipActive {
+  background: var(--ifm-color-primary-darkest);
+  border-color: var(--ifm-color-primary-darkest);
+  color: #fff;
+}
+
+/* Overrides .filterChip:hover/:active (same specificity, but these rules
+   are declared later) so the selected filter keeps its distinct shade on
+   hover/press instead of flashing to the plain hover-blue every other
+   chip uses. */
+.filterChipActive:hover,
+.filterChipActive:active {
   background: var(--ifm-color-primary-darkest);
   border-color: var(--ifm-color-primary-darkest);
   color: #fff;

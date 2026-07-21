@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import styles from './styles.module.css';
 
 const PLAY_ICON = (
@@ -6,9 +7,18 @@ const PLAY_ICON = (
   </svg>
 );
 
+// Mirrors the GitHub-slugger algorithm used for markdown heading anchors,
+// so hand-written links like `./videos#some-video-title` resolve to a card.
+function slugify(title) {
+  return title
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-');
+}
+
 export default function VideoCard({ video, isPlaying, onPlay }) {
   return (
-    <div className={styles.card}>
+    <div id={slugify(video.title)} className={clsx(styles.card, styles.anchorTarget)}>
       <div className={styles.thumbWrap}>
         {isPlaying ? (
           <iframe
