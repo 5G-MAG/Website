@@ -1,0 +1,394 @@
+---
+title: QoE Metrics Reporting
+hide_title: true
+sidebar_position: 6
+description: Configures QoE Metrics Reporting so the 5GMSd client collects and reports DASH QM10 metrics to the Application Function.
+---
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M7 4v16l13 -8l-13 -8" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">5G Media Streaming (5GMS)</span>
+<h1>5G Media Streaming with QoE Metrics Reporting</h1>
+</div>
+</div>
+
+:::tip[In short]
+This tutorial allows to: Use QoE Metrics Reporting for 5G Media Streaming.
+:::
+
+<img loading="lazy" src="/assets/images/5gms/5GMS_Downlink_MetricsReporting.png" alt="5GMSd downlink with QoE Metrics Reporting: the client collecting and reporting quality metrics to the AF" />
+
+**What you will build:** a 5GMSd session in which the client collects Quality of Experience (QoE) metrics and reports them to the 5GMSd Application Function (AF), where you can then read the resulting reports.
+
+QoE Metrics Reporting allows the Quality of Experience (QoE) of media streaming sessions to be logged by the 5GMS System and
+exposed for analysis. The Reference Tools support the scenario in which the metrics collection and reporting is
+configured by the 5GMSd Application Function. The metrics configuration provided by the 5GMSd AF to the 5GMSd client
+comprises instructions and rules regarding metrics collection (i.e. measurement and logging) and reporting for different
+schemes. A metrics scheme defines which metrics are collected and how; this tutorial uses the 3GPP DASH scheme QM10 (`urn:3GPP:ns:PSS:DASH:QM10`), described further on the [Scope](../scope) page. Each metrics scheme requires the 5GMSd Client to perform metrics collection and subsequent metrics reporting to
+the 5GMSd AF according to the configuration rules of that scheme. In the simplest case the resulting QoE metrics reports
+are then saved to disk by the 5GMS Application Function.
+
+The workflow is: first configure the 5GMS Application Function and the 5GMS Application Server; next, start a 5GMS media streaming downlink session on the client side; finally, access the resulting QoE metrics reports from the local hard drive.
+
+## Prerequisites
+
+This tutorial assumes you have already completed the server-side and client-side setup in the [basic end-to-end guide](end-to-end). Steps 1 to 6 below simply point back to that guide; if you have a working end-to-end deployment you can skip straight to Step 7 (adding a QoE Metrics Reporting configuration).
+
+## Server-side setup
+
+### Step 1: Install the Application Function
+
+For details please refer to the [corresponding section](end-to-end#1-installing-the-application-function) in
+the [basic end-to-end guide](end-to-end).
+
+### Step 2: Install the Application Server
+
+For details please refer to the [corresponding section](end-to-end#2-installing-the-application-server) in
+the [basic end-to-end guide](end-to-end).
+
+### Step 3: Start the Application Server
+
+For details please refer to the [corresponding section](end-to-end#3-running-the-application-server) in
+the [basic end-to-end guide](end-to-end).
+
+### Step 4: Basic Configuration of the Application Function
+
+Follow the [basic configuration steps](end-to-end) documented in
+the [basic end-to-end guide](end-to-end).
+
+### Step 5: Start the Application Function
+
+Follow the [command](end-to-end) documented in the [basic end-to-end guide](end-to-end).
+
+### Step 6: Create a Content Hosting Configuration and Provisioning Session
+
+Follow the [steps](end-to-end) to create a content hosting configuration
+and a provisioning session using the `msaf-configuration` tool.
+
+### Step 7: Adding a QoE Metrics Reporting Configuration
+
+Now that a provisioning session has been created, a QoE Metrics Reporting configuration can be added to that provisioning
+session. This guide uses
+the [Postman Collection](https://github.com/5G-MAG/rt-5gms-application-provider/tree/development/postman) for this. However,
+the same configuration is possible using any other REST client.
+
+### Step 7.1 Install and Import the Postman Collection
+
+The Postman collection used to configure QoE Metrics Reporting via the `M1` interface is in the Application Provider repository:
+
+<a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-5gms-application-provider/tree/development/postman">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>rt-5gms-application-provider (postman)</span>
+<span class="repo-card__role">Install and import this collection into Postman before continuing.</span>
+</a>
+
+### Step 7.2 Retrieving the Provisioning Session ID
+
+Open a browser and navigate to `http://<YOUR_MACHINE_IP_HERE>/m8.json`. Replace `<YOUR_MACHINE_IP_HERE>` with the IP of the
+machine that the 5GMS Application Function is running on. Then copy the `provisioningSessionId` from the JSON to your
+clipboard. As an example, the `m8.json` can look like this with a `provisioningSessionId` set
+to `1fd61716-fe25-41ee-8d9e-cb36a16378a2`.
+
+```json
+{
+  "m5BaseUrl": "http://192.168.2.7:7778/3gpp-m5/v2/",
+  "serviceList": [
+    {
+      "provisioningSessionId": "1fd61716-fe25-41ee-8d9e-cb36a16378a2",
+      "name": "VoD: Elephant's Dream",
+      "entryPoints": [
+        {
+          "locator": "http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/elephants_dream/1/client_manifest-all.mpd",
+          "contentType": "application/dash+xml",
+          "profiles": ["urn:mpeg:dash:profile:isoff-live:2011"]
+        }
+      ]
+    },
+    {
+      "provisioningSessionId": "1fd61716-fe25-41ee-8d9e-cb36a16378a2",
+      "name": "VoD: Big Buck Bunny",
+      "entryPoints": [
+        {
+          "locator": "http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/bbb/2/client_manifest-common_init.mpd",
+          "contentType": "application/dash+xml",
+          "profiles": ["urn:mpeg:dash:profile:isoff-live:2011"]
+        }
+      ]
+    },
+    {
+      "provisioningSessionId": "1fd61716-fe25-41ee-8d9e-cb36a16378a2",
+      "name": "VoD: Testcard",
+      "entryPoints": [
+        {
+          "locator": "http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/testcard/vod/manifests/avc-full.mpd",
+          "contentType": "application/dash+xml",
+          "profiles": ["urn:mpeg:dash:profile:isoff-live:2011"]
+        },
+        {
+          "locator": "http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/testcard/vod/manifests/avc-full.m3u8",
+          "contentType": "application/x-mpegURL"
+        }
+      ]
+    }
+  ]
+}
+```
+
+### Step 7.3 Postman - Environment Configuration
+
+Start Postman and navigate to the Postman `Environments` located on the left side. Replace the `provisioning_session_id`
+variable with the value from the JSON file:
+
+<img loading="lazy" src="/assets/images/5gms/postman-env.png" alt="Screenshot of the Postman Environments panel showing the provisioning_session_id variable to be replaced" width="80%" />
+
+### Step 7.4 Postman - Create Metrics Reporting Configuration
+
+In Postman navigate to `Collections` and select `5G-MAG M1`. Navigate to `Metrics Reporting` and
+select `Create Metrics Reporting Configuration`. Then adjust the attributes in the payload section based on the desired
+configuration. An example configuration looks the following:
+
+```json
+{
+  "scheme": "urn:3GPP:ns:PSS:DASH:QM10",
+  "dataNetworkName": "",
+  "reportingInterval": 10,
+  "samplePercentage": 100,
+  "urlFilters": [],
+  "samplingPeriod": 5,
+  "metrics": [
+    "urn:3GPP:ns:PSS:DASH:QM10#HTTPList",
+    "urn:3GPP:ns:PSS:DASH:QM10#BufferLevel",
+    "urn:3GPP:ns:PSS:DASH:QM10#RepSwitchList",
+    "urn:3GPP:ns:PSS:DASH:QM10#MPDInformation"
+  ]
+}
+```
+
+Click on `Send` once the configuration is set:
+
+<img loading="lazy" src="/assets/images/5gms/postman-m1-metrics.png" alt="Screenshot of the Postman client showing the 5G-MAG M1 Create Metrics Reporting Configuration request being sent" width="80%" />
+
+The REST call should return a `201` response code indicating that the call was accepted by the Application Function.
+
+### Step 7.5 Postman - Validate the Service Access Information
+
+Now that a QoE Metrics Reporting configuration has been provided via the `M1` interface, the Service Access Information
+should contain the relevant information for the 5GMSd Client. This can be validated via the M5 interface.
+Select `Collections` in Postman and navigate to `5G-MAG M5`. Select `Service Access Information API` and then `GET SAI`.
+Click `Send` and confirm that the Service Access Information contains a `clientMetricsReportingConfigurations`:
+
+<img loading="lazy" src="/assets/images/5gms/postman-m5-metrics.png" alt="Screenshot of the Postman client showing the M5 GET Service Access Information response containing clientMetricsReportingConfigurations" width="80%" />
+
+## Client-side setup
+
+With the server-side set up, focus shifts to the client side.
+
+### Step 1: Installation, Configuration and Running the 5GMSd Client
+
+Please follow the [instructions](end-to-end#client-side-setup) documented in
+the [basic end-to-end guide](end-to-end) setup guide.
+
+### Step 2: Creating QoE Metrics Report
+
+While consuming content configured and provided via the previously installed 5GMSd Application Server and 5GMSd
+Application Function, the client automatically creates and sends QoE Metrics Reports.
+
+<img loading="lazy" src="/assets/images/5gms/app-playback.png" width="30%" alt="5GMSd-Aware Application playing a stream on Android while QoE metrics reports are generated" />
+
+### Step 3: Inspecting the QoE Metrics Report
+
+By default the QoE Metrics Reports provided via the `M5` interface from the Media Session Handler to the 5GMS
+Application Function are saved to disk. They can be accessed and opened in a text editor. On the machine that
+is running the Application Function:
+
+1. Navigate to `/var/local/log/open5gs/reports/`
+2. For each provisioning session id a dedicated folder is created. Open the right folder by using the right provisioning
+   session identifier. In this example the folder is named `1fd61716-fe25-41ee-8d9e-cb36a16378a2`. Open the
+   folder: `cd 1fd61716-fe25-41ee-8d9e-cb36a16378a2`.
+3. Open the metrics reports folder: `cd metrics_reports`
+4. Type `ls` to get an overview of the different reports.
+5. Open the reports and check the data. It should look similar to the example below.
+
+How to read this report: each `<QoeMetric>` block corresponds to one of the metrics you configured in Step 7.4. In this example the `<BufferLevel>` block maps to `QM10#BufferLevel` and the `<HttpList>` block maps to `QM10#HTTPList`, each with timestamped entries. The example below has been trimmed for readability; a real report can be much longer.
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<ReceptionReport clientID="04a3f67b-aaf6-46ee-960d-30d336873e64"
+                 contentURI="http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/bbb/2/client_manifest-common_init.mpd"
+                 xsi:schemaLocation="urn:3gpp:metadata:2011:HSD:receptionreport DASH-QoE-Report.xsd"
+                 xmlns:sv="urn:3gpp:metadata:2016:PSS:schemaVersion" xmlns="urn:3gpp:metadata:2011:HSD:receptionreport"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <QoeReport recordingSessionId="1992b9e33a59419f88fae51eac909ef8" reportPeriod="10"
+               reportTime="2024-04-19T08:46:07.011Z" periodID="">
+        <QoeMetric>
+            <BufferLevel>
+                <BufferLevelEntry level="6256" t="2024-04-19T08:45:57.032Z"/>
+                <BufferLevelEntry level="6222" t="2024-04-19T08:45:57.061Z"/>
+                <BufferLevelEntry level="6193" t="2024-04-19T08:45:57.089Z"/>
+                <BufferLevelEntry level="6172" t="2024-04-19T08:45:57.270Z"/>
+                <BufferLevelEntry level="9503" t="2024-04-19T08:45:57.617Z"/>
+                <BufferLevelEntry level="9452" t="2024-04-19T08:45:57.669Z"/>
+                <BufferLevelEntry level="9392" t="2024-04-19T08:45:57.727Z"/>
+                <BufferLevelEntry level="8576" t="2024-04-19T08:45:58.710Z"/>
+                <BufferLevelEntry level="11999" t="2024-04-19T08:45:58.959Z"/>
+                <BufferLevelEntry level="11977" t="2024-04-19T08:45:59.006Z"/>
+                <BufferLevelEntry level="11477" t="2024-04-19T08:45:59.496Z"/>
+                <BufferLevelEntry level="11004" t="2024-04-19T08:45:59.960Z"/>
+                <BufferLevelEntry level="14119" t="2024-04-19T08:46:00.679Z"/>
+                <BufferLevelEntry level="14061" t="2024-04-19T08:46:01.508Z"/>
+                <BufferLevelEntry level="16861" t="2024-04-19T08:46:01.937Z"/>
+                <BufferLevelEntry level="16861" t="2024-04-19T08:46:02.724Z"/>
+                <BufferLevelEntry level="18221" t="2024-04-19T08:46:03.144Z"/>
+                <BufferLevelEntry level="21741" t="2024-04-19T08:46:03.898Z"/>
+                <BufferLevelEntry level="21741" t="2024-04-19T08:46:04.496Z"/>
+                <BufferLevelEntry level="21741" t="2024-04-19T08:46:04.543Z"/>
+                <BufferLevelEntry level="25581" t="2024-04-19T08:46:05.873Z"/>
+                <BufferLevelEntry level="25581" t="2024-04-19T08:46:06.326Z"/>
+            </BufferLevel>
+        </QoeMetric>
+        <QoeMetric>
+            <HttpList>
+                <HttpListEntry
+                        actualurl="http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/redir-7ad1c0d6-af9a-4694-5e53-488c34113c73/avc3/896x504p25/000001.m4s"
+                        interval="878" range="" responsecode="200" trequest="2024-04-19T08:45:56.147Z"
+                        tresponse="2024-04-19T08:45:56.150Z" type="MediaSegment"
+                        url="http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/redir-7ad1c0d6-af9a-4694-5e53-488c34113c73/avc3/896x504p25/000001.m4s">
+                    <Trace b="619502" d="878" s="2024-04-19T08:45:56.150Z"/>
+                </HttpListEntry>
+                <HttpListEntry
+                        actualurl="http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/redir-7ad1c0d6-af9a-4694-5e53-488c34113c73/audio/128kbps/000002.m4s"
+                        interval="407" range="" responsecode="200" trequest="2024-04-19T08:45:56.646Z"
+                        tresponse="2024-04-19T08:45:56.650Z" type="MediaSegment"
+                        url="http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/redir-7ad1c0d6-af9a-4694-5e53-488c34113c73/audio/128kbps/000002.m4s">
+                    <Trace b="60915" d="407" s="2024-04-19T08:45:56.650Z"/>
+                </HttpListEntry>
+                <HttpListEntry
+                        actualurl="http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/redir-7ad1c0d6-af9a-4694-5e53-488c34113c73/avc3/896x504p25/000002.m4s"
+                        interval="823" range="" responsecode="200" trequest="2024-04-19T08:45:56.258Z"
+                        tresponse="2024-04-19T08:45:56.262Z" type="MediaSegment"
+                        url="http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/redir-7ad1c0d6-af9a-4694-5e53-488c34113c73/avc3/896x504p25/000002.m4s">
+                    <Trace b="644503" d="823" s="2024-04-19T08:45:56.262Z"/>
+                </HttpListEntry>
+                <HttpListEntry
+                        actualurl="http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/redir-7ad1c0d6-af9a-4694-5e53-488c34113c73/audio/128kbps/000003.m4s"
+                        interval="1298" range="" responsecode="200" trequest="2024-04-19T08:45:55.961Z"
+                        tresponse="2024-04-19T08:45:55.966Z" type="MediaSegment"
+                        url="http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/redir-7ad1c0d6-af9a-4694-5e53-488c34113c73/audio/128kbps/000003.m4s">
+                    <Trace b="61006" d="1298" s="2024-04-19T08:45:55.966Z"/>
+                </HttpListEntry>
+                <HttpListEntry
+                        actualurl="http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/redir-7ad1c0d6-af9a-4694-5e53-488c34113c73/avc3/896x504p25/000003.m4s"
+                        interval="1084" range="" responsecode="200" trequest="2024-04-19T08:45:56.517Z"
+                        tresponse="2024-04-19T08:45:56.526Z" type="MediaSegment"
+                        url="http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/redir-7ad1c0d6-af9a-4694-5e53-488c34113c73/avc3/896x504p25/000003.m4s">
+                    <Trace b="667295" d="1084" s="2024-04-19T08:45:56.526Z"/>
+                </HttpListEntry>
+                <HttpListEntry
+                        actualurl="http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/redir-7ad1c0d6-af9a-4694-5e53-488c34113c73/audio/128kbps/000004.m4s"
+                        interval="422" range="" responsecode="200" trequest="2024-04-19T08:45:57.238Z"
+                        tresponse="2024-04-19T08:45:57.242Z" type="MediaSegment"
+                        url="http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/redir-7ad1c0d6-af9a-4694-5e53-488c34113c73/audio/128kbps/000004.m4s">
+                    <Trace b="60933" d="422" s="2024-04-19T08:45:57.242Z"/>
+                </HttpListEntry>
+                <HttpListEntry
+                        actualurl="http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/redir-7ad1c0d6-af9a-4694-5e53-488c34113c73/audio/160kbps/IS.mp4"
+                        interval="38" range="" responsecode="200" trequest="2024-04-19T08:45:57.680Z"
+                        tresponse="2024-04-19T08:45:57.684Z" type="InitializationSegment"
+                        url="http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/redir-7ad1c0d6-af9a-4694-5e53-488c34113c73/audio/160kbps/IS.mp4">
+                    <Trace b="600" d="38" s="2024-04-19T08:45:57.684Z"/>
+                </HttpListEntry>
+                <HttpListEntry
+                        actualurl="http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/redir-7ad1c0d6-af9a-4694-5e53-488c34113c73/audio/160kbps/000005.m4s"
+                        interval="976" range="" responsecode="200" trequest="2024-04-19T08:45:57.728Z"
+                        tresponse="2024-04-19T08:45:57.731Z" type="MediaSegment"
+                        url="http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/redir-7ad1c0d6-af9a-4694-5e53-488c34113c73/audio/160kbps/000005.m4s">
+                    <Trace b="76766" d="976" s="2024-04-19T08:45:57.731Z"/>
+                </HttpListEntry>
+                <HttpListEntry
+                        actualurl="http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/redir-7ad1c0d6-af9a-4694-5e53-488c34113c73/avc3/896x504p25/000004.m4s"
+                        interval="1340" range="" responsecode="200" trequest="2024-04-19T08:45:57.611Z"
+                        tresponse="2024-04-19T08:45:57.615Z" type="MediaSegment"
+                        url="http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/redir-7ad1c0d6-af9a-4694-5e53-488c34113c73/avc3/896x504p25/000004.m4s">
+                    <Trace b="630481" d="1340" s="2024-04-19T08:45:57.615Z"/>
+                </HttpListEntry>
+                <HttpListEntry
+                        actualurl="http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/redir-7ad1c0d6-af9a-4694-5e53-488c34113c73/avc3/1920x1080p25/IS.mp4"
+                        interval="39" range="" responsecode="200" trequest="2024-04-19T08:45:58.960Z"
+                        tresponse="2024-04-19T08:45:58.963Z" type="InitializationSegment"
+                        url="http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/redir-7ad1c0d6-af9a-4694-5e53-488c34113c73/avc3/1920x1080p25/IS.mp4">
+                    <Trace b="627" d="39" s="2024-04-19T08:45:58.963Z"/>
+                </HttpListEntry>
+                <HttpListEntry
+                        actualurl="http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/redir-7ad1c0d6-af9a-4694-5e53-488c34113c73/audio/160kbps/000006.m4s"
+                        interval="926" range="" responsecode="200" trequest="2024-04-19T08:45:59.029Z"
+                        tresponse="2024-04-19T08:45:59.032Z" type="MediaSegment"
+                        url="http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/redir-7ad1c0d6-af9a-4694-5e53-488c34113c73/audio/160kbps/000006.m4s">
+                    <Trace b="75972" d="926" s="2024-04-19T08:45:59.032Z"/>
+                </HttpListEntry>
+                <HttpListEntry
+                        actualurl="http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/redir-7ad1c0d6-af9a-4694-5e53-488c34113c73/avc3/1920x1080p25/000005.m4s"
+                        interval="1651" range="" responsecode="200" trequest="2024-04-19T08:45:59.022Z"
+                        tresponse="2024-04-19T08:45:59.025Z" type="MediaSegment"
+                        url="http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/redir-7ad1c0d6-af9a-4694-5e53-488c34113c73/avc3/1920x1080p25/000005.m4s">
+                    <Trace b="2210933" d="1651" s="2024-04-19T08:45:59.025Z"/>
+                </HttpListEntry>
+                <HttpListEntry
+                        actualurl="http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/redir-7ad1c0d6-af9a-4694-5e53-488c34113c73/audio/160kbps/000007.m4s"
+                        interval="795" range="" responsecode="200" trequest="2024-04-19T08:46:00.709Z"
+                        tresponse="2024-04-19T08:46:00.711Z" type="MediaSegment"
+                        url="http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/redir-7ad1c0d6-af9a-4694-5e53-488c34113c73/audio/160kbps/000007.m4s">
+                    <Trace b="76423" d="795" s="2024-04-19T08:46:00.711Z"/>
+                </HttpListEntry>
+                <HttpListEntry
+                        actualurl="http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/redir-7ad1c0d6-af9a-4694-5e53-488c34113c73/avc3/1920x1080p25/000006.m4s"
+                        interval="1251" range="" responsecode="200" trequest="2024-04-19T08:46:00.679Z"
+                        tresponse="2024-04-19T08:46:00.682Z" type="MediaSegment"
+                        url="http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/redir-7ad1c0d6-af9a-4694-5e53-488c34113c73/avc3/1920x1080p25/000006.m4s">
+                    <Trace b="2110450" d="1251" s="2024-04-19T08:46:00.682Z"/>
+                </HttpListEntry>
+                <HttpListEntry
+                        actualurl="http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/redir-7ad1c0d6-af9a-4694-5e53-488c34113c73/audio/160kbps/000008.m4s"
+                        interval="765" range="" responsecode="200" trequest="2024-04-19T08:46:01.956Z"
+                        tresponse="2024-04-19T08:46:01.957Z" type="MediaSegment"
+                        url="http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/redir-7ad1c0d6-af9a-4694-5e53-488c34113c73/audio/160kbps/000008.m4s">
+                    <Trace b="76469" d="765" s="2024-04-19T08:46:01.957Z"/>
+                </HttpListEntry>
+                <HttpListEntry
+                        actualurl="http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/redir-7ad1c0d6-af9a-4694-5e53-488c34113c73/avc3/1920x1080p25/000007.m4s"
+                        interval="1184" range="" responsecode="200" trequest="2024-04-19T08:46:01.954Z"
+                        tresponse="2024-04-19T08:46:01.957Z" type="MediaSegment"
+                        url="http://192.168.2.7/m4d/provisioning-session-1fd61716-fe25-41ee-8d9e-cb36a16378a2/redir-7ad1c0d6-af9a-4694-5e53-488c34113c73/avc3/1920x1080p25/000007.m4s">
+                    <Trace b="2160691" d="1184" s="2024-04-19T08:46:01.957Z"/>
+                </HttpListEntry>
+            </HttpList>
+        </QoeMetric>
+        <sv:delimiter>0</sv:delimiter>
+    </QoeReport>
+</ReceptionReport>
+```
+
+<div class="tutorial-complete">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2l4 -4" /><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9" /></svg>
+<div><strong>You now have QoE Metrics Reporting working end to end.</strong> The 5GMSd client is collecting DASH QM10 metrics during playback and reporting them to the AF, and you've opened a real report from disk.</div>
+</div>
+
+## Optional: Visualize the reports
+
+The Application Provider repository ships with a basic user interface to visualize individual QoE Metrics Reports:
+
+<a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-5gms-application-provider/tree/development/qoe-metrics-reporting-ui">
+<span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>rt-5gms-application-provider (qoe-metrics-reporting-ui)</span>
+<span class="repo-card__role">Basic UI to visualize individual QoE Metrics Reports.</span>
+</a>
+
+![Metrics Reports UI showing individual QoE metrics reports rendered as charts](/assets/images/5gms/metrics-reports-ui.png)
+
+_Figure: the QoE Metrics Reporting UI visualising an individual report._
+
+## Next steps
+
+- Try the related reporting tutorials: [Consumption Reporting](consumption-reporting) and [CMCD Reporting](CMCD-reporting).
+- Return to the [Tutorials index](.).

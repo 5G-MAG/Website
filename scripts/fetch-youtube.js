@@ -1,21 +1,23 @@
 #!/usr/bin/env node
 const https = require('https');
-const fs    = require('fs');
-const path  = require('path');
+const fs = require('fs');
+const path = require('path');
 
 const CHANNEL_ID = 'UCKzSvQnMItdCHelTd9Pg3aQ';
-const FEED_URL   = `https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNEL_ID}`;
+const FEED_URL = `https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNEL_ID}`;
 const MAX_VIDEOS = 6;
-const OUTPUT     = path.join(__dirname, '..', 'static', 'data', 'youtube.json');
+const OUTPUT = path.join(__dirname, '..', 'static', 'data', 'youtube.json');
 
 function get(url) {
   return new Promise((resolve, reject) => {
-    https.get(url, (res) => {
-      let data = '';
-      res.on('data', (chunk) => (data += chunk));
-      res.on('end', () => resolve(data));
-      res.on('error', reject);
-    }).on('error', reject);
+    https
+      .get(url, (res) => {
+        let data = '';
+        res.on('data', (chunk) => (data += chunk));
+        res.on('end', () => resolve(data));
+        res.on('error', reject);
+      })
+      .on('error', reject);
   });
 }
 
@@ -25,18 +27,24 @@ function parseEntries(xml) {
   let m;
   while ((m = entryRe.exec(xml)) !== null) {
     const block = m[1];
-    const videoId   = (block.match(/<yt:videoId>([^<]+)<\/yt:videoId>/)  || [])[1];
-    const title     = (block.match(/<media:title>([^<]+)<\/media:title>/) ||
-                       block.match(/<title>([^<]+)<\/title>/)              || [])[1];
-    const published = (block.match(/<published>([^<]+)<\/published>/)      || [])[1];
-    const thumb     = (block.match(/<media:thumbnail url="([^"]+)"/)       || [])[1];
+    const videoId = (block.match(/<yt:videoId>([^<]+)<\/yt:videoId>/) || [])[1];
+    const title = (block.match(/<media:title>([^<]+)<\/media:title>/) ||
+      block.match(/<title>([^<]+)<\/title>/) ||
+      [])[1];
+    const published = (block.match(/<published>([^<]+)<\/published>/) || [])[1];
+    const thumb = (block.match(/<media:thumbnail url="([^"]+)"/) || [])[1];
 
     if (!videoId || !title) continue;
 
     entries.push({
-      id:        videoId,
-      title:     title.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&#39;/g, "'").replace(/&quot;/g, '"'),
-      url:       `https://www.youtube.com/watch?v=${videoId}`,
+      id: videoId,
+      title: title
+        .replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&#39;/g, "'")
+        .replace(/&quot;/g, '"'),
+      url: `https://www.youtube.com/watch?v=${videoId}`,
       thumbnail: thumb || `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
       published: published ? published.split('T')[0] : null,
     });
@@ -49,10 +57,10 @@ function parseEntries(xml) {
 async function main() {
   console.log(`Fetching YouTube RSS feed for channel ${CHANNEL_ID}…`);
   try {
-    const xml    = await get(FEED_URL);
+    const xml = await get(FEED_URL);
     const videos = parseEntries(xml);
     const output = {
-      channel:    'https://www.youtube.com/@5GMAG',
+      channel: 'https://www.youtube.com/@5GMAG',
       updated_at: new Date().toISOString().split('T')[0],
       videos,
     };
@@ -61,10 +69,16 @@ async function main() {
   } catch (err) {
     console.error('Failed to fetch YouTube feed:', err.message);
     if (!fs.existsSync(OUTPUT)) {
-      fs.writeFileSync(OUTPUT, JSON.stringify({ channel: '', updated_at: '', videos: [] }, null, 2));
+      fs.writeFileSync(
+        OUTPUT,
+        JSON.stringify({ channel: '', updated_at: '', videos: [] }, null, 2)
+      );
     }
-    process.exit(0);
+    throw err;
   }
 }
 
-main();
+main().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});

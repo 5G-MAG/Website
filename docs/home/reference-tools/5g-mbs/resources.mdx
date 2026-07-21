@@ -1,0 +1,228 @@
+---
+title: Resources
+hide_title: true
+sidebar_position: 1
+description: Project roadmap, source repositories, packages and latest releases for the 5G Multicast Broadcast Services project.
+---
+
+import ProjectReleases from '@site/src/components/ProjectReleases';
+import ProjectRepositories from '@site/src/components/ProjectRepositories';
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M12 12l0 .01" />
+  <path d="M14.828 9.172a4 4 0 0 1 0 5.656" />
+  <path d="M17.657 6.343a8 8 0 0 1 0 11.314" />
+  <path d="M9.168 14.828a4 4 0 0 1 0 -5.656" />
+  <path d="M6.337 17.657a8 8 0 0 1 0 -11.314" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">5G Multicast Broadcast Services (MBS)</span>
+<h1>Resources</h1>
+</div>
+</div>
+
+<div style={{ margin: '8px 0' }}>
+  <a
+    class="button button--outline button--primary"
+    href="/reference-tools/5g-mbs/scope"
+    style={{ margin: '2px 4px 2px 0' }}
+  >
+    Scope
+  </a>{' '}
+  <a
+    class="button button--outline button--primary"
+    href="/reference-tools/5g-mbs/resources"
+    style={{ margin: '2px 4px 2px 0' }}
+  >
+    Resources
+  </a>{' '}
+  <a
+    class="button button--outline button--primary"
+    href="/reference-tools/5g-mbs/tutorials"
+    style={{ margin: '2px 4px 2px 0' }}
+  >
+    Tutorials
+  </a>{' '}
+  <a
+    class="button button--outline button--primary"
+    href="/reference-tools/5g-mbs/tutorials#video-library"
+    style={{ margin: '2px 4px 2px 0' }}
+  >
+    Video Library
+  </a>
+</div>
+
+Project roadmap, source repositories, packages and latest releases for the 5G Multicast Broadcast Services Reference Tools. Please refer to the [Scope](./scope) page for context on how these components fit together.
+
+## Roadmap
+
+This page tracks the roadmap for the 5G Multicast Broadcast Services (5MBS) reference tools. The work is organised into two workstreams that build on each other: first the 5G Core (5GC) functions (MB-SMF, MB-UPF, AMF and basic multicast support), then the MBS User Services layer (MBSF, MBSTF and the MBS Application Function/Application Server) that runs on top of them.
+
+### General Project Roadmap
+
+The Kanban board below tracks the planned and in-progress work for the 5G Multicast Broadcast Services (5MBS) reference tools (5G Core multicast functions and the MBS User Services layer). It is maintained live on GitHub.
+
+[Kanban board: Roadmap](https://github.com/orgs/5G-MAG/projects/48/views/13)
+
+### Developer Kanban Boards
+
+#### 5MBS: 5G Core functions
+
+Initial implementation of MB-SMF, MB-UPF, AMF and basic multicast support in the 5G Core
+
+- [**Kanban board**](https://github.com/orgs/5G-MAG/projects/19/views/2)
+
+#### 5MBS: MBS User Services
+
+Initial implementation of MBSF, MBSTF, MBS AF and MBS AS for supporting media multicast/broadcast. This builds on top of the 5G Core functions indicated above.
+
+- [**Kanban board**](https://github.com/orgs/5G-MAG/projects/43/views/1)
+
+## Repositories
+
+The following repositories are available. Please refer to the "Scope" section of the different projects for more context.
+
+The diagram below maps the MBS reference tools onto the architecture and links each one to its source repository. Auxiliary repositories are supporting libraries or helper tools rather than primary deliverables, and are marked with an Auxiliary badge.
+
+<ProjectRepositories project="5g-mbs" />
+
+
+---
+
+The forks below are branch-based work-in-progress implementations. They provide a basic MBS-capable radio and core, but some end-to-end functions are not yet complete: in particular, multicast reception on the gNB and UE is still under development, so traffic can be observed leaving the MB-UPF but is not yet received over the air. See the [tutorials](./tutorials) for what can currently be exercised.
+
+### 5G UE (with MBS components)
+
+[srsRAN_4G (5mbs branch)](https://github.com/5G-MAG/srsRAN_4G/tree/5mbs)
+
+This is a branch of srsRAN_4G which contains a basic implementation of an MBS-capable UE.
+
+Additional information:
+
+- [Information and how to download, build, install and run](https://github.com/5G-MAG/srsRAN_4G/tree/5mbs)
+
+### NG-RAN (with MBS components)
+
+[rt-srsRAN_Project (5mbs branch)](https://github.com/5G-MAG/rt-srsRAN_Project/tree/5mbs)
+
+This is a branch of srsRAN_Project which contains a basic implementation of an MBS-capable NG-RAN.
+
+Additional information:
+
+- [Information and how to download, build, install and run](https://github.com/5G-MAG/rt-srsRAN_Project/tree/5mbs)
+
+### 5GC (with MBS components)
+
+[open5gs/tree/5mbs (5mbs branch)](https://github.com/5G-MAG/open5gs/tree/5mbs)
+
+This is a branch of Open5GS which contains implementations of 5GC NFs related to MBS.
+
+Additional information:
+
+- [Information and how to download, build, install and run](https://github.com/5G-MAG/open5gs/tree/5mbs)
+- [Packages](https://github.com/orgs/5G-MAG/packages?repo_name=open5gs)
+
+### MBS User Services: MBS Function (MBSF)
+
+[rt-mbs-function](https://github.com/5G-MAG/rt-mbs-function)
+
+The MBS Function (MBSF) is the control point of the MBS User Services: an Application Provider uses it to set up MBS User Services and to tell the MB-SMF and the MBSTF what to distribute. This repository provides a 5G MBSF which forms part of the MBS User Services. This Network Function (NF) provides the interface designated as Nmb10 in the 3GPP [TS 29.580](https://www.3gpp.org/dynareport/29580.htm) specification. See the [MBSF Operation & APIs tutorial](./tutorials/mbsf).
+
+Additional information:
+
+- [Information and how to download, build, install and run](https://github.com/5G-MAG/rt-mbs-function)
+- [Releases](https://github.com/5G-MAG/rt-mbs-function/releases)
+
+### MBS User Services: MBS Transport Function (MBSTF)
+
+[rt-mbs-transport-function](https://github.com/5G-MAG/rt-mbs-transport-function)
+
+The MBS Transport Function (MBSTF) is the data-plane worker of the MBS User Services: it ingests media objects from the Application Provider and packages them into a FLUTE session sent towards the MB-UPF. This repository provides a 5G MBSTF which forms part of the MBS User Services. This NF provides the interfaces designated as Nmb2, Nmb8 and Nmb9 in the 3GPP [TS 29.581](https://www.3gpp.org/dynareport/29581.htm) V18.5.0 specification. See the [MBSTF Testing tutorial](./tutorials/mbstf).
+
+Additional information:
+
+- [Information and how to download, build, install and run](https://github.com/5G-MAG/rt-mbs-transport-function)
+- [Releases](https://github.com/5G-MAG/rt-mbs-transport-function/releases)
+- [Packages](https://github.com/orgs/5G-MAG/packages?repo_name=rt-mbs-transport-function)
+
+---
+
+### Auxiliary repositories:
+
+#### MBS Examples
+
+[rt-mbs-examples](https://github.com/5G-MAG/rt-mbs-examples)
+
+This repository contains Docker Compose components to deploy several network functions related to MBS.
+
+Additional information:
+
+- [Information and how to download, build, install and run](https://github.com/5G-MAG/rt-mbs-examples#readme)
+- [Packages](https://github.com/orgs/5G-MAG/packages?repo_name=rt-mbs-examples)
+- [Docker](https://github.com/5G-MAG/rt-mbs-examples/tree/development/images)
+
+## Packages
+
+### Overview
+
+This page lists the prebuilt container images (published to the GitHub Container Registry, GHCR) that this project provides or uses. Most developers do not pull these individually; the images are deployed together through the Docker Compose setups in the [rt-mbs-examples](https://github.com/5G-MAG/rt-mbs-examples) repository. Pull an image directly only if you are building a custom deployment.
+
+### 5G Core Network Functions (3GPP [TS 23.501](https://www.3gpp.org/dynareport/23501.htm)) based on Open5GS
+
+These are the standard 5G Core (5GC) Network Functions from Open5GS, without MBS-specific changes. They provide the baseline core network that the MBS functions build on.
+
+These packages are compiled from the following repository: [open5gs](https://github.com/5G-MAG/open5gs)
+
+| Components | Package                                                                 |
+| ---------- | ----------------------------------------------------------------------- |
+| NRF        | [NRF package](https://github.com/5G-MAG/open5gs/pkgs/container/nrf)     |
+| UDM        | [UDM package](https://github.com/5G-MAG/open5gs/pkgs/container/udm)     |
+| PCF        | [PCF package](https://github.com/5G-MAG/open5gs/pkgs/container/pcf)     |
+| WebUI      | [WebUI package](https://github.com/5G-MAG/open5gs/pkgs/container/webui) |
+| BSF        | [BSF package](https://github.com/5G-MAG/open5gs/pkgs/container/bsf)     |
+| UDR        | [UDR package](https://github.com/5G-MAG/open5gs/pkgs/container/udr)     |
+| NSSF       | [NSSF package](https://github.com/5G-MAG/open5gs/pkgs/container/nssf)   |
+| AUSF       | [AUSF package](https://github.com/5G-MAG/open5gs/pkgs/container/ausf)   |
+| SMF        | [SMF package](https://github.com/5G-MAG/open5gs/pkgs/container/smf)     |
+| UPF        | [UPF package](https://github.com/5G-MAG/open5gs/pkgs/container/upf)     |
+| AMF        | [AMF package](https://github.com/5G-MAG/open5gs/pkgs/container/amf)     |
+| SCP        | [SCP package](https://github.com/5G-MAG/open5gs/pkgs/container/scp)     |
+| SEPP       | [SEPP package](https://github.com/5G-MAG/open5gs/pkgs/container/sepp)   |
+
+### Multicast–Broadcast Services (MBS)
+
+Images and docker compose deployments for MBS are located in the following repository: [rt-mbs-examples](https://github.com/5G-MAG/rt-mbs-examples)
+
+#### MBS Core Network Functions (3GPP [TS 23.247](https://www.3gpp.org/dynareport/23247.htm)) based on Open5GS
+
+These are the MBS-capable versions of the core and radio functions (for example the MB-UPF, MB-SMF and an MBS-aware gNB, AMF and UE), used to move multicast and broadcast traffic through the 5G Core and radio.
+
+| Components         | Package                                                                                               |
+| ------------------ | ----------------------------------------------------------------------------------------------------- |
+| UPF and MB-UPF     | [UPF and MB-UPF package](https://github.com/5G-MAG/rt-mbs-examples/pkgs/container/upf_mb-upf)         |
+| Test AF/AS for MBS | [Test AF/AS for MBS package](https://github.com/5G-MAG/rt-mbs-examples/pkgs/container/test_mbs_af_as) |
+| SMF and MB-SMF     | [SMF and MB-SMF package](https://github.com/5G-MAG/rt-mbs-examples/pkgs/container/smf_mb-smf)         |
+| gNB with MBS       | [gNB with MBS package](https://github.com/5G-MAG/rt-mbs-examples/pkgs/container/gnb_with_mbs)         |
+| AMF with MBS       | [AMF with MBS package](https://github.com/5G-MAG/rt-mbs-examples/pkgs/container/amf_with_mbs)         |
+| UE with MBS        | [UE with MBS package](https://github.com/5G-MAG/rt-mbs-examples/pkgs/container/ue_with_mbs)           |
+
+#### MBS User Services Network Functions (3GPP [TS 26.502](https://www.3gpp.org/dynareport/26502.htm))
+
+These are the user service layer functions that package and deliver media content over MBS. The MBS Transport Function (MBSTF) ingests media objects and sends them as a FLUTE session towards the MB-UPF.
+
+| Components | Package                                                                                   |
+| ---------- | ----------------------------------------------------------------------------------------- |
+| MBSTF      | [MBSTF package](https://github.com/5G-MAG/rt-mbs-transport-function/pkgs/container/mbstf) |
+
+## Releases
+
+Latest releases across all 5G Multicast Broadcast repositories.
+
+<ProjectReleases name="5G Multicast Broadcast" />
+
+## Related
+
+- [Scope](./scope)
+- [Tutorials](./tutorials)

@@ -1,0 +1,62 @@
+---
+title: Scope
+hide_title: true
+sidebar_position: 0
+description: Lists the CAMARA network APIs (QoD, Connectivity Insights, Network Slice Booking and related) covered by the Network APIs reference implementation.
+---
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M4 13h5" />
+  <path d="M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3" />
+  <path d="M20 8v8" />
+  <path d="M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">CAMARA Connectivity Quality Management APIs</span>
+<h1>Scope</h1>
+</div>
+</div>
+
+<div style="margin: 8px 0"><a class="button button--outline button--primary" href="/reference-tools/network-apis/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/network-apis/resources" style="margin: 2px 4px 2px 0">Resources</a></div>
+
+This page lists the specifications within the scope of the Network APIs reference implementation, and which CAMARA API each covered capability maps to.
+
+The reference implementation targets CAMARA, an open-source project (Linux Foundation, in collaboration with GSMA) that standardises portable network APIs, so a media application can request network behaviour (for example a QoS boost for a live stream) through common interfaces rather than operator-specific ones. On the network side these interfaces build on 3GPP capability-exposure work such as the Service Enabler Architecture Layer (SEAL, [TS 23.434](https://www.3gpp.org/dynareport/23434.htm)).
+
+**Implemented specifications:** [CAMARA QoD (Quality on Demand) API](https://github.com/camaraproject/QualityOnDemand), [CAMARA Connectivity Insights API](https://github.com/camaraproject/ConnectivityInsights), [CAMARA Network Slice Booking API](https://github.com/camaraproject/NetworkSliceBooking), 3GPP TS 23.434 (SEAL for network capability exposure to applications).
+
+## CAMARA APIs covered
+
+The following CAMARA APIs are covered by the reference implementation and technical documentation:
+
+| API                                     | Purpose                                                                                                                                                                                                                   | CAMARA repo                                                                   |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| **Quality on Demand (QoD)**             | Create a QoS session for a device, specifying QoS profile and duration. The device and application server must be known at session creation time.                                                                         | [QualityOnDemand](https://github.com/camaraproject/QualityOnDemand)           |
+| **QoS Profiles**                        | Retrieve the list of QoS profiles (and their parameters) available in the network. Used as a discovery step before booking.                                                                                               | [QualityOnDemand](https://github.com/camaraproject/QualityOnDemand)           |
+| **QoS Provisioning**                    | Assign a QoS profile to a specific device indefinitely (no fixed duration or area). The assignment is active until explicitly deleted.                                                                                    | [QoSProvisioning](https://github.com/camaraproject/QualityOnDemand)           |
+| **QoS Booking**                         | Book QoS resources for a specific device and application server for a defined area and time window.                                                                                                                       | [QoSBookingAndAssignment](https://github.com/camaraproject/QoSBooking)        |
+| **QoS Booking & Assignment**            | Separate the booking of QoS resources (area, time, number of devices) from the assignment of specific devices to that booking. Enables flexible device swap during production.                                            | [QoSBookingAndAssignment](https://github.com/camaraproject/QoSBooking)        |
+| **Dedicated Networks**                  | Reserve network resources (dedicated network) for a defined service area and time window using a network profile, then assign specific devices. Includes sub-APIs for service area discovery and network profile listing. | [DedicatedNetworks](https://github.com/camaraproject/DedicatedNetworks)       |
+| **Network Slice Booking**               | Book a network slice for a given area and time window with a QoS profile. All devices connecting to the network in that area and window are covered.                                                                      | [NetworkSliceBooking](https://github.com/camaraproject/NetworkSliceBooking)   |
+| **Application Profiles**                | Define an application's network quality thresholds (latency, jitter, throughput, packet loss). Used as input to Connectivity Insights APIs.                                                                               | [ApplicationProfiles](https://github.com/camaraproject/ApplicationProfiles)   |
+| **Connectivity Insights**               | One-shot check of the network's confidence that it can meet an application profile's thresholds for a given device at its current location.                                                                               | [ConnectivityInsights](https://github.com/camaraproject/ConnectivityInsights) |
+| **Connectivity Insights Subscriptions** | Subscribe to receive periodic notifications about the network's ability to meet an application profile's thresholds for a device.                                                                                         | [ConnectivityInsights](https://github.com/camaraproject/ConnectivityInsights) |
+
+## Getting started
+
+1. Skim the CAMARA API table above to see which capability you need.
+2. Read the [Network APIs](/tech/network-apis) Tech page for how a CAMARA call maps onto the 5G Core (NEF, PCF, SMF/UPF).
+3. Use the [Resources](./resources) page for the current, authoritative list of repositories.
+4. Check the [Resources](./resources) page for tagged versions.
+
+## Go deeper
+
+Technical documentation providing context to this project can be found in the link below.
+
+[Tech: Network APIs](/tech/network-apis)
+
+A list of relevant specifications can be found in the link below.
+
+[Standards: Network APIs](/tech/standards/network-apis)

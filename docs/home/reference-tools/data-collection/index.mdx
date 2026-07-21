@@ -1,0 +1,57 @@
+---
+hide_title: true
+sidebar_class_name: project-index-link
+title: UE Data Collection, Reporting and Event Exposure
+sidebar_position: -1
+description: Introduces the UE Data Collection, Reporting and Event Exposure project (3GPP TS 26.531/26.532), linking to scope, repos and tutorials.
+---
+import CommunityStats from '@site/src/components/CommunityStats';
+
+
+<header class="topic-hero">
+<div class="topic-hero__icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+  <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />
+  <path d="M9 17l0 -5" />
+  <path d="M12 17l0 -1" />
+  <path d="M15 17l0 -3" /></svg>
+</div>
+<div>
+<h1 class="topic-hero__title">UE Data Collection, Reporting and Event Exposure</h1>
+</div>
+</header>
+
+<div class="topic-lead">
+Reference implementation of the User Equipment (UE) side data collection, reporting, and event exposure framework defined in 3GPP TS 26.531 and TS 26.532.
+</div>
+<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href="/reference-tools/data-collection/scope" style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href="/reference-tools/data-collection/resources" style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href="/reference-tools/data-collection/tutorials" style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/data-collection/tutorials#video-library" style={{margin: '2px 4px 2px 0'}}>Video Library</a></div>
+
+The tools enable 5G devices to collect, aggregate, and report media performance metrics (playback quality, buffer events, network conditions, and consumption data) to the 5G Media Streaming Application Function (AF). This data feeds network-assisted Quality of Experience (QoE) optimisation, analytics dashboards, and adaptive policy decisions.
+
+**Implemented specifications:** 3GPP TS 26.531 (data collection and reporting framework), [TS 26.532](https://www.3gpp.org/dynareport/26532.htm) (data collection client procedures), [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) (5GMS AF interfaces for data reporting submission). The interfaces these specifications define are referred to on the [Scope](./scope) page by their reference-point names R1 to R6.
+
+:::tip[Where to start]
+Read the [Scope](./scope) page for what is being implemented, then follow the [DCAF Docker and Insomnia tutorial](./tutorials/docker-with-insomnia) to run it.
+:::
+
+## Project Overview
+
+<div class="pdf-embed-wrapper">
+  <iframe loading="lazy" class="pdf-embed" src="pathname://../../docs/Reference_Tools_UE_data_collection.pdf" title="UE Data Collection reference tools overview slide deck"></iframe>
+</div>
+
+<a class="button button--outline button--primary" href="pathname:///docs/Reference_Tools_UE_data_collection.pdf" style={{margin: '4px 0'}}>Download the slide deck of this Project</a>
+
+---
+
+## Go deeper
+
+| Area                        | Details                                                                                                                                                   |
+| --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Technical documentation** | Data collection architecture and event exposure interfaces: [UE Data Collection on the Tech portal](/tech/data-collection/data-collection-event-exposure) |
+| **Standards**               | TS 26.531/532 and event exposure specs: [UE Data Collection on the Standards portal](/tech/standards/data-collection)                                     |
+
+## Community Stats
+
+<CommunityStats name="UE Data Collection" />

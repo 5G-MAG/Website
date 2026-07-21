@@ -1,20 +1,16 @@
 import React from 'react';
 import clsx from 'clsx';
-import {ThemeClassNames} from '@docusaurus/theme-common';
-import {useDocsSidebar} from '@docusaurus/plugin-content-docs/client';
-import {useLocation} from '@docusaurus/router';
+import { ThemeClassNames } from '@docusaurus/theme-common';
+import { useDocsSidebar } from '@docusaurus/plugin-content-docs/client';
+import { useLocation } from '@docusaurus/router';
 import DocSidebar from '@theme/DocSidebar';
 import styles from './styles.module.css';
 // Reset sidebar state when sidebar changes
 // Use React key to unmount/remount the children
 // See https://github.com/facebook/docusaurus/issues/3414
-function ResetOnSidebarChange({children}) {
+function ResetOnSidebarChange({ children }) {
   const sidebar = useDocsSidebar();
-  return (
-    <React.Fragment key={sidebar?.name ?? 'noSidebar'}>
-      {children}
-    </React.Fragment>
-  );
+  return <React.Fragment key={sidebar?.name ?? 'noSidebar'}>{children}</React.Fragment>;
 }
 export default function DocRootLayoutSidebar({
   sidebar,
@@ -23,13 +19,13 @@ export default function DocRootLayoutSidebar({
   setHiddenSidebar,
   toggleSidebar,
 }) {
-  const {pathname} = useLocation();
+  const { pathname } = useLocation();
   return (
     <aside
       className={clsx(
         ThemeClassNames.docs.docSidebarContainer,
         styles.docSidebarContainer,
-        hiddenSidebarContainer && styles.docSidebarContainerHidden,
+        hiddenSidebarContainer && styles.docSidebarContainerHidden
       )}
       onTransitionEnd={(e) => {
         if (!e.currentTarget.classList.contains(styles.docSidebarContainer)) {
@@ -38,13 +34,12 @@ export default function DocRootLayoutSidebar({
         if (hiddenSidebarContainer) {
           setHiddenSidebar(true);
         }
-      }}>
+      }}
+    >
       <ResetOnSidebarChange>
         <div
-          className={clsx(
-            styles.sidebarViewport,
-            hiddenSidebar && styles.sidebarViewportHidden,
-          )}>
+          className={clsx(styles.sidebarViewport, hiddenSidebar && styles.sidebarViewportHidden)}
+        >
           <DocSidebar
             sidebar={sidebar}
             path={pathname}

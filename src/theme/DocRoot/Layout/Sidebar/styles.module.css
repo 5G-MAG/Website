@@ -11,7 +11,6 @@
   .docSidebarContainer {
     display: block;
     width: var(--doc-sidebar-width);
-    margin-top: calc(-1 * var(--ifm-navbar-height));
     border-right: 1px solid var(--ifm-toc-border-color);
     will-change: width;
     transition: width var(--ifm-transition-fast) ease;
@@ -23,10 +22,14 @@
     border-right: none;
   }
 
+  /* Deliberately not position: sticky — with a section pill-row above the
+     content on every page (src/components/SectionNav), a sticky sidebar's
+     own internal scroll area shrinks further still, and a long menu (many
+     of this site's are) ends up needing its own separate, easy-to-miss
+     scroll gesture with no way to reach the rest via the page's own
+     scrollbar. Plain static flow: the sidebar scrolls away with the page
+     like any other content, and every item is reachable the normal way. */
   .sidebarViewport {
-    top: 0;
-    position: sticky;
-    height: 100%;
-    max-height: 100vh;
+    height: auto;
   }
 }

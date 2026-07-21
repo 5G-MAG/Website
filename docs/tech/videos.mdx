@@ -1,0 +1,145 @@
+---
+hide_title: true
+title: Video Library
+sidebar_position: 1
+description: Recorded 5G-MAG workshop talks on 3GPP media streaming, XR, split rendering and avatars from December 2022 and October 2025.
+---
+
+import VideoGallery from '@site/src/components/VideoGallery';
+
+<div class="topic-banner">
+  <div class="topic-banner__icon-wrap">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M15 10l4.553 -2.069a1 1 0 0 1 1.447 .894v6.35a1 1 0 0 1 -1.447 .894l-4.553 -2.069v-4" />
+      <path d="M3 8a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-8z" />
+    </svg>
+  </div>
+  <div class="topic-banner__text">
+    <h1>Video Library</h1>
+  </div>
+</div>
+
+## Overview
+
+This library collects recorded talks from 5G-MAG workshops on 3GPP media and broadcast specifications. Click any video to play it inline — nothing loads until you click. Use the filters to jump to a single workshop.
+
+export const workshops = [
+  {
+    id: 'oct-2025',
+    filterLabel: 'October 2025 · Rel-19',
+    title: 'Workshop — October 2025',
+    sub: '3GPP Release 19, ready for implementation',
+    series: [
+      {
+        title: 'Advanced Media Delivery series',
+        by: 'Thomas Stockhammer (Qualcomm) with support from Jason Cloud (Dolby), Frédéric Gabin (Dolby) and Richard Bradbury (BBC); the QoS talk additionally had support from Rufael Mekuria (Huawei)',
+        videos: [
+          { id: 'SS4OvkC9oK8', title: 'Advanced Media Delivery - An Introduction' },
+          { id: '_0ZyI1TZoMw', title: 'Advanced Media Delivery - Reminder on 5G Media Streaming' },
+          { id: '5CiUqlzxzKQ', title: 'Advanced Media Delivery - Common Client Metadata' },
+          { id: 'SsCTCmRmprQ', title: 'Advanced Media Delivery - Multi-CDN Media Delivery' },
+          { id: 'tLdCTMvdCuo', title: 'Advanced Media Delivery - Multi-Access Media Delivery' },
+          {
+            id: '24v2XA6C0M0',
+            title: 'Advanced Media Delivery - Distributing encrypted and high-value content',
+          },
+          {
+            id: 'YNhzTgpjkns',
+            title: 'Advanced Media Delivery - Improved QoS support for Media Streaming services',
+          },
+          {
+            id: '_Y2S16ZMFMQ',
+            title: 'Advanced Media Delivery - Media Streaming aspects of Network Slicing',
+          },
+          {
+            id: 'jadGLNqUT6c',
+            title:
+              'Advanced Media Delivery - In-Session Unicast Repair for MBS/MBMS Obj. Distribution',
+          },
+          { id: 'tksS78GA--Y', title: 'Advanced Media Delivery - Time Synchronization' },
+          { id: 'fRTFS8-ql_U', title: 'Advanced Media Delivery - Initial overview on Release 20' },
+        ],
+      },
+      {
+        title: null,
+        by: 'Saba Ahsan (Nokia) and Gazi Illahi (Nokia)',
+        videos: [{ id: 'b-w3tBNAvYM', title: 'Split Rendering with IMS Data Channel' }],
+      },
+      {
+        title: null,
+        by: 'Saba Ahsan (Nokia) and Serhan Gül (Nokia)',
+        videos: [{ id: 'fBHq_oahCXE', title: '3GPP PDU Set handling Rel-19 Enhancements' }],
+      },
+      {
+        title: null,
+        by: 'Thomas Stockhammer (Qualcomm)',
+        videos: [
+          {
+            id: '2Vpcwx4US5M',
+            title: 'VOPS - Video Operating Points - Harmonization and Stereo MV-HEVC',
+          },
+        ],
+      },
+      {
+        title: null,
+        by: 'Thomas Stockhammer (Qualcomm)',
+        videos: [{ id: 'plk9XMH1qF4', title: 'Avatar Communications in AR Calls' }],
+      },
+    ],
+  },
+  {
+    id: 'dec-2022',
+    filterLabel: 'December 2022 · Rel-16/17',
+    title: 'Workshop — December 2022',
+    sub: '3GPP Release 16, 17 (and a bit of 18)',
+    videos: [
+      {
+        id: 'GTfHnrdi_-g',
+        title: 'Introduction to 5G Media Streaming (3GPP Release 16)',
+        by: 'Thorsten Lohmar (Ericsson) and Frédéric Gabin (Dolby)',
+      },
+      {
+        id: 'cspJzBuBeU0',
+        title: 'Dynamic Policies for 5G Media Streaming (3GPP Release 16)',
+        by: 'Thorsten Lohmar (Ericsson) and Imed Bouazizi (Qualcomm)',
+      },
+      {
+        id: 'm6fU7F0DhS8',
+        title: '5G Media Streaming over eMBMS (3GPP Release 17)',
+        by: 'Thomas Stockhammer (Qualcomm) and Richard Bradbury (BBC)',
+      },
+      {
+        id: '1MciLj5V5EQ',
+        title: 'Edge Media Processing in 5G Media Streaming (3GPP Release 17)',
+        by: 'Imed Bouazizi (Qualcomm), Richard Bradbury (BBC) and Iraj Sodagar (Tencent)',
+      },
+      {
+        id: '73KINNxl_FA',
+        title: 'User Services for the 5G Multicast-Broadcast Service (3GPP Release 17)',
+        by: 'Richard Bradbury (BBC) and Thorsten Lohmar (Ericsson)',
+      },
+      {
+        id: '1Hv81xdbBfw',
+        title: 'UE Data Collection and Reporting framework for Event Exposure (3GPP Release 17)',
+        by: 'Richard Bradbury (BBC) and Charles Lo (Qualcomm)',
+      },
+      {
+        id: 'q0eyTt3KAs4',
+        title: 'Teaser on 5G and XR (3GPP Release 16/17/18)',
+        by: 'Thomas Stockhammer (Qualcomm) and Frédéric Gabin (Dolby)',
+      },
+    ],
+  },
+];
+
+<VideoGallery workshops={workshops} />

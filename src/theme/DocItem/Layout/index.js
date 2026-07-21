@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
-import {useWindowSize} from '@docusaurus/theme-common';
-import {useDoc} from '@docusaurus/plugin-content-docs/client';
-import {translate} from '@docusaurus/Translate';
+import { useWindowSize } from '@docusaurus/theme-common';
+import { useDoc } from '@docusaurus/plugin-content-docs/client';
+import { translate } from '@docusaurus/Translate';
 import DocItemPaginator from '@theme/DocItem/Paginator';
 import DocVersionBanner from '@theme/DocVersionBanner';
 import DocVersionBadge from '@theme/DocVersionBadge';
@@ -12,13 +12,13 @@ import DocItemTOCDesktop from '@theme/DocItem/TOC/Desktop';
 import DocItemContent from '@theme/DocItem/Content';
 import DocBreadcrumbs from '@theme/DocBreadcrumbs';
 import ContentVisibility from '@theme/ContentVisibility';
-import {useSidebarToggle} from '@theme/DocRoot/Layout/SidebarToggleContext';
+import { useSidebarToggle } from '@theme/DocRoot/Layout/SidebarToggleContext';
 import styles from './styles.module.css';
 /**
  * Decide if the toc should be rendered, on mobile or desktop viewports
  */
 function useDocTOC() {
-  const {frontMatter, toc} = useDoc();
+  const { frontMatter, toc } = useDoc();
   const windowSize = useWindowSize();
   const hidden = frontMatter.hide_table_of_contents;
   const canRender = !hidden && toc.length > 0;
@@ -36,7 +36,17 @@ function useDocTOC() {
 
 function SidebarToggleIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="18" height="18" aria-hidden="true">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      width="18"
+      height="18"
+      aria-hidden="true"
+    >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
       <path d="M9 4l0 16" />
@@ -46,7 +56,17 @@ function SidebarToggleIcon() {
 
 function TOCToggleIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="18" height="18" aria-hidden="true">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      width="18"
+      height="18"
+      aria-hidden="true"
+    >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
       <path d="M15 4l0 16" />
@@ -54,7 +74,7 @@ function TOCToggleIcon() {
   );
 }
 
-function HeaderToggleButton({icon, titleId, defaultMessage, onClick}) {
+function HeaderToggleButton({ icon, titleId, defaultMessage, onClick }) {
   return (
     <button
       type="button"
@@ -69,16 +89,17 @@ function HeaderToggleButton({icon, titleId, defaultMessage, onClick}) {
         id: titleId,
         message: defaultMessage,
         description: 'The title attribute for a doc-page layout toggle button',
-      })}>
+      })}
+    >
       {icon}
     </button>
   );
 }
 
-export default function DocItemLayout({children}) {
+export default function DocItemLayout({ children }) {
   const docTOC = useDocTOC();
-  const {metadata} = useDoc();
-  const [tocHidden, setTocHidden] = useState(false);
+  const { metadata } = useDoc();
+  const [tocHidden, setTocHidden] = useState(true);
   const sidebarToggle = useSidebarToggle();
   const showTocToggle = Boolean(docTOC.desktop);
   const showSidebarToggle = Boolean(sidebarToggle?.hasSidebar);
@@ -118,9 +139,7 @@ export default function DocItemLayout({children}) {
           <DocItemPaginator />
         </div>
       </div>
-      {docTOC.desktop && !tocHidden && (
-        <div className="col col--3">{docTOC.desktop}</div>
-      )}
+      {docTOC.desktop && !tocHidden && <div className="col col--3">{docTOC.desktop}</div>}
     </div>
   );
 }

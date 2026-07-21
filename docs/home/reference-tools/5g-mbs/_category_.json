@@ -1,0 +1,9 @@
+{
+  "label": "5G Multicast Broadcast Services (MBS)",
+  "position": 5,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "index"
+  }
+}

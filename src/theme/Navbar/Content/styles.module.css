@@ -14,10 +14,190 @@ Hide color mode toggle in small viewports
   }
 }
 
+.colorModeToggle {
+  margin-left: 0.75rem;
+}
+
+/* Match the hover treatment used by the icon buttons (GitHub, Slack,
+   Members Area, search) — Infima's own toggle button only changes icon
+   color on hover, with no background, which read as inconsistent next to
+   those. */
+.colorModeToggle button {
+  border-radius: 6px;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.colorModeToggle button:hover {
+  background: var(--ifm-color-emphasis-100);
+  color: var(--ifm-color-primary);
+}
+
+/* ── Sliding active/hover indicator ──────────────────────────────
+   A thin bar under the left-hand menu group that glides between items
+   on hover and settles under the current page's item otherwise. */
+.navGroup {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  /* 8 top-level items (up from the original 6) no longer fit comfortably at
+     the default item padding/font-size between ~1000-1800px — several
+     multi-word labels (Explainers & Profiles, Feedback & Requirements,
+     Interop & Testing) wrapped onto two lines there, which looked broken.
+     Spacing between items is a flex `gap` here (uniform between every pair,
+     including About Us/Membership/Events/News, not just around the bold
+     four-item cluster) rather than per-item padding, so it stays exactly
+     even everywhere; item padding itself is zeroed out. */
+  --ifm-navbar-item-padding-horizontal: 0rem;
+  gap: 0.5rem;
+}
+
+.navGroup :global(.navbar__link) {
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+/* Room to breathe once the viewport is wide enough that the tighter values
+   above leave a lot of unused space on either side of the item group. Below
+   1360px the logo's own wrapped text collides with "About Us" if the gap
+   gets much wider than this. */
+@media (min-width: 1360px) {
+  .navGroup {
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  .navGroup {
+    gap: 1.5rem;
+  }
+
+  .navGroup :global(.navbar__link) {
+    font-size: 1.08rem;
+  }
+}
+
+.slidingIndicator {
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--ifm-color-primary);
+  transition:
+    left 0.25s ease,
+    width 0.25s ease,
+    opacity 0.2s ease;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slidingIndicator {
+    transition: opacity 0.2s ease;
+  }
+}
+
+/* Explainers & Profiles / Feedback & Requirements / Software Accelerator /
+   Interop & Testing are 5G-MAG's four defining activities, so their nav
+   items are bolder and brand-colored to stand out from the more general
+   About Us/Membership/Events/News items around them. */
+.primaryNavItem {
+  font-weight: 700;
+  color: var(--ifm-color-primary-darkest);
+}
+
+.primaryNavItem:hover {
+  color: var(--ifm-color-primary);
+}
+
 /*
 Restore some Infima style that broke with CSS Cascade Layers
 See https://github.com/facebook/docusaurus/pull/11142
  */
 :global(.navbar__items--right) > :last-child {
   padding-right: 0;
+}
+
+/* ── Global nav actions (GitHub, Members Area, Join now!) ─────────
+   Rendered outside the config-driven navbar items so GitHub/Members Area
+   can be plain icon-only anchors and Join now! a real button, identical
+   on every page regardless of navbar variant. */
+.navIconLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ifm-navbar-link-color);
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+/* Applied to top-level flex items only (GitHub, Members Area) — the
+   search icon button reuses .navIconLink too, but nested inside
+   .searchCollapse, which carries its own margin instead so the gap stays
+   the same whether the search box is collapsed or expanded. */
+.navSpaced {
+  margin-left: 0.75rem;
+}
+
+.navIconLink:hover {
+  color: var(--ifm-color-primary);
+  background: var(--ifm-color-emphasis-100);
+  text-decoration: none;
+}
+
+@media (max-width: 996px) {
+  .navIconLink {
+    display: none;
+  }
+}
+
+/* ── Collapsible search ─────────────────────────────────────────────
+   A plain icon button stands in for the search box until clicked; the
+   real search-local input lives inside .searchInner, clipped to width
+   0 while collapsed (an overflow:hidden ancestor clips a descendant's
+   rendered box regardless of the descendant's own overflow:visible, so
+   this works even though the plugin's own container has unusual
+   zero-width/overflow-visible internals). */
+.searchCollapse {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: 0.75rem;
+}
+
+.searchInner {
+  width: 0;
+  overflow: hidden;
+  transition: width 0.22s ease;
+}
+
+.searchInnerExpanded {
+  /* The plugin's own input renders at a fixed ~200px; must be wider than
+     that (with a little buffer for its focus ring) or the right edge —
+     rounded corner, border, focus outline — gets clipped by the
+     overflow:hidden above, which looked like a broken/unfinished border. */
+  width: 14rem;
+  overflow: visible;
+}
+
+/* Must come after the .searchCollapse base rule above — same selector
+   specificity, so whichever is declared last wins regardless of the
+   media condition. Placing this earlier in the file silently lost to
+   the later plain rule, leaving the search icon visible (and
+   badly clipped) on mobile despite this rule "matching". */
+@media (max-width: 996px) {
+  .searchCollapse {
+    display: none;
+  }
 }

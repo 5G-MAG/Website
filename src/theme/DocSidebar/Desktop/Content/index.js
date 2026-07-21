@@ -1,27 +1,24 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
-import {ThemeClassNames} from '@docusaurus/theme-common';
-import {
-  useAnnouncementBar,
-  useScrollPosition,
-} from '@docusaurus/theme-common/internal';
-import {translate} from '@docusaurus/Translate';
+import { ThemeClassNames } from '@docusaurus/theme-common';
+import { useAnnouncementBar, useScrollPosition } from '@docusaurus/theme-common/internal';
+import { translate } from '@docusaurus/Translate';
 import DocSidebarItems from '@theme/DocSidebarItems';
 import styles from './styles.module.css';
 function useShowAnnouncementBar() {
-  const {isActive} = useAnnouncementBar();
+  const { isActive } = useAnnouncementBar();
   const [showAnnouncementBar, setShowAnnouncementBar] = useState(isActive);
   useScrollPosition(
-    ({scrollY}) => {
+    ({ scrollY }) => {
       if (isActive) {
         setShowAnnouncementBar(scrollY === 0);
       }
     },
-    [isActive],
+    [isActive]
   );
   return isActive && showAnnouncementBar;
 }
-export default function DocSidebarDesktopContent({path, sidebar, className}) {
+export default function DocSidebarDesktopContent({ path, sidebar, className }) {
   const showAnnouncementBar = useShowAnnouncementBar();
   return (
     <nav
@@ -34,8 +31,9 @@ export default function DocSidebarDesktopContent({path, sidebar, className}) {
         'menu thin-scrollbar',
         styles.menu,
         showAnnouncementBar && styles.menuWithAnnouncementBar,
-        className,
-      )}>
+        className
+      )}
+    >
       <ul className={clsx(ThemeClassNames.docs.docSidebarMenu, 'menu__list')}>
         <DocSidebarItems items={sidebar} activePath={path} level={1} />
       </ul>

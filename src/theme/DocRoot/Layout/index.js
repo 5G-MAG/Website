@@ -1,13 +1,13 @@
-import React, {useState, useCallback, useMemo} from 'react';
-import {useDocsSidebar} from '@docusaurus/plugin-content-docs/client';
-import {prefersReducedMotion} from '@docusaurus/theme-common';
+import React, { useState, useCallback, useMemo } from 'react';
+import { useDocsSidebar } from '@docusaurus/plugin-content-docs/client';
+import { prefersReducedMotion } from '@docusaurus/theme-common';
 import BackToTopButton from '@theme/BackToTopButton';
 import DocRootLayoutSidebar from '@theme/DocRoot/Layout/Sidebar';
 import DocRootLayoutMain from '@theme/DocRoot/Layout/Main';
 import SidebarToggleContext from './SidebarToggleContext';
 import styles from './styles.module.css';
 
-export default function DocRootLayout({children}) {
+export default function DocRootLayout({ children }) {
   const sidebar = useDocsSidebar();
   const [hiddenSidebarContainer, setHiddenSidebarContainer] = useState(false);
   const [hiddenSidebar, setHiddenSidebar] = useState(false);
@@ -30,7 +30,7 @@ export default function DocRootLayout({children}) {
       hiddenSidebar,
       toggleSidebar,
     }),
-    [sidebar, hiddenSidebar, toggleSidebar],
+    [sidebar, hiddenSidebar, toggleSidebar]
   );
 
   return (

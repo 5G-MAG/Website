@@ -1,0 +1,139 @@
+---
+title: Scope
+hide_title: true
+sidebar_position: 0
+description: Describes how Emergency Alerts add Cell Broadcast Service (CBS) public warnings to the 5G Broadcast transmit and receive chain.
+---
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M12 8a2 2 0 0 1 2 2v4a2 2 0 1 1 -4 0v-4a2 2 0 0 1 2 -2" />
+  <path d="M17 15c.345 .6 1.258 1 2 1a2 2 0 1 0 0 -4a2 2 0 1 1 0 -4c.746 0 1.656 .394 2 1" />
+  <path d="M3 15c.345 .6 1.258 1 2 1a2 2 0 1 0 0 -4a2 2 0 1 1 0 -4c.746 0 1.656 .394 2 1" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">5G Broadcast - Emergency Alerts</span>
+<h1>Scope</h1>
+</div>
+</div>
+
+<div style="margin: 8px 0"><a class="button button--outline button--primary" href="/reference-tools/emergency-alerts/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/emergency-alerts/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/reference-tools/emergency-alerts/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/emergency-alerts/tutorials#video-library" style="margin: 2px 4px 2px 0">Video Library</a></div>
+
+This page describes the specifications within the scope of the Emergency Alerts reference tools, what the tools demonstrate, and the high-level architecture that brings context to their applicability.
+
+:::tip[In short]
+This project extends 5G-MAG's 5G Broadcast tools so that public warning and emergency alert messages can be delivered to every receiver in a coverage area at once, without a data connection or an active SIM, using the Cell Broadcast Service (CBS) over LTE-based 5G Broadcast (also known as Further evolved Multimedia Broadcast Multicast Service, FeMBMS).
+:::
+
+## What it does
+
+- Carries public warning and emergency alert messages over the 5G Broadcast carrier rather than over unicast data.
+- Uses the Cell Broadcast Service (CBS) as the transport for alert content, following 3GPP TS 23.041.
+- Reaches devices that are idle, roaming, or otherwise not attached for data, because the alert rides on the broadcast signal; this is the property that makes broadcast attractive for public warning.
+- Exercises the end-to-end path: delivering a warning message through the broadcast chain and presenting it on a receiving device.
+
+## Relationship to 5G Broadcast
+
+The warning-message handling is added to the existing 5G Broadcast transmit and receive chain rather than introduced as a separate stack. The Emergency Alerts tools are therefore best understood as a feature set layered on the broader 5G Broadcast platform, and they are developed and tracked together with it.
+
+The reference tooling here is closely tied to the main 5G Broadcast repositories, and the exact set of public repositories evolves as the work progresses. For the authoritative, current list of repositories and their implementation status, see the [Resources](./resources) page rather than a hard-coded list here. The associated implementation work is tracked on the [MBMS: Public Warning System Kanban board](https://github.com/orgs/5G-MAG/projects/20) linked from the [Resources](./resources). For the underlying transmit and receive components (for example the MBMS transmitter and modem tools), see the related [5G Broadcast: Hybrid TV/Radio](../5g-broadcast/resources) project.
+
+Public warning here follows the Public Warning System (PWS) approach: CBS is the delivery mechanism, and the alert types it can carry include the Earthquake and Tsunami Warning System (ETWS) and the Commercial Mobile Alert System (CMAS).
+
+## What the reference tools implement
+
+The Emergency Alerts feature set is realised on the LTE-based 5G Broadcast transmit chain. Two components are involved on the transmit side, and the receive side reuses the existing 5G Broadcast receiver.
+
+- **RAN / physical-layer transmitter.** The 5G Broadcast transmitter builds the E-UTRA system information carried on the broadcast carrier. For public warning, this is where the warning-message System Information Blocks are scheduled and encoded onto the radio frame. In the current tooling this role is filled by the `rt-mbms-tx-for-qrd-and-crd` transmitter (built on the srsRAN 4G codebase), which is able to schedule and transmit the SIB12 message that triggers a CMAS alert on a connected 5G Broadcast device.
+- **SIB12 encoding.** The transmitter constructs the SIB12 message body from a set of CBS fields (message identifier, serial number, data coding scheme, and the warning-message segment carrying the alert text). In the initial implementation these fields are set to fixed values so that a default alert (for example a tsunami or earthquake warning) is broadcast; work is in progress to let a developer supply custom message content and warning type instead of a hardcoded payload.
+- **Receiver / device.** A 5G Broadcast capable device tuned to the carrier decodes the system information, detects the warning-message SIB, decodes the CBS payload, and presents the alert. The receive path reuses the 5G Broadcast modem and receiver components rather than introducing an emergency-alert-specific receiver.
+
+The mapping to the standard works as follows: the transmitter plays the role of the E-UTRAN cell (the eNB in a live network); the SIB12 it emits is the same warning-message structure a live network would broadcast; and the device applies the standard UE procedure for acquiring and acting on warning-message system information.
+
+What the reference tools do not include is the upstream network signalling that populates a live PWS (a Cell Broadcast Entity feeding a Cell Broadcast Centre, the CBC-to-MME Write-Replace Warning procedure, and the MME-to-eNB distribution). The tools stand in for the output of that chain by generating the SIB directly, so they demonstrate the last hop (network to device over broadcast) rather than a full PWS deployment.
+
+## The CBS message model on the transmit side
+
+CBS carries a warning message as a short, self-contained data structure rather than as an IP flow, which is what lets it reach idle and non-attached devices. The main fields a developer will encounter when configuring or extending the transmitter are:
+
+| CBS field               | Role                                                                                   | Notes                                                                                                                                                              |
+| ----------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Message Identifier      | Identifies the warning type / source (for example a CMAS or ETWS category)             | Values are assigned in 3GPP TS 23.041 clause 9.4.1.2.2; the transmitter's default configuration uses a fixed identifier (observed as `0x1102` in the current code) |
+| Serial Number           | Distinguishes and versions a message (geographical scope, message code, update number) | Changing the update number signals an updated message for the same event                                                                                           |
+| Data Coding Scheme      | Selects the character set / language of the message body                               | Follows the CBS data coding scheme rules in TS 23.041                                                                                                              |
+| Warning Message Segment | Carries the alert text, possibly split across segments                                 | The transmitter marks the last segment and sets the segment number; the payload is the encoded warning text                                                        |
+
+For CMAS-style alerts the message is carried in **SIB12**. For ETWS the notification and body are carried in **SIB10** and **SIB11** respectively; the current transmit tooling focuses on the SIB12 (CMAS) path, so if you need ETWS-specific SIB10/SIB11 behaviour, check the repositories and the Kanban board for current status before assuming it is present.
+
+## Releases and specification coverage
+
+The public-warning feature tracks the same release line as the underlying 5G Broadcast tools.
+
+- The transport and receiver behaviour follow the version of **ETSI TS 103 720** being implemented. PWS support (delivery of warning messages via SIB broadcast on the E-UTRAN Uu downlink) is defined in TS 103 720 v1.2.1 (clause 5.15.3.3 covers the SIB broadcast case); work towards v1.3.1, which aligns with 3GPP Release 18, adds further PWS-related improvements.
+- The CBS message realisation follows **3GPP TS 23.041** (ETWS/CMAS message structure, message identifiers, serial numbers, data coding).
+- The SIB12 encoding on the radio interface follows **3GPP TS 36.331** (E-UTRA RRC), which defines SystemInformationBlockType12 and the UE actions on receiving it.
+
+Confirm the exact version and feature coverage against the [Resources](./resources) page and the [Resources](./resources) page rather than inferring it from the release names above.
+
+## Getting started
+
+The end-to-end path is exercised as an extension of the 5G Broadcast transmit/receive setup, so the prerequisites are the same as for 5G Broadcast plus a way to view the received alert.
+
+1. Set up the 5G Broadcast transmit environment following the underlying [5G Broadcast: Hybrid TV/Radio](../5g-broadcast) tools and their build instructions; the warning-message support is part of that transmit chain rather than a separate install.
+2. Configure the transmitter to broadcast a warning message. In the current tooling this triggers a default CMAS alert via SIB12; the CBS fields (message identifier, serial number, data coding scheme, warning-message segment) are set in the transmitter configuration or code.
+3. Bring up a 5G Broadcast capable receiver tuned to the same carrier and confirm that the alert is decoded and presented.
+4. For a guided walk-through, follow the "CBS over 5G Broadcast" tutorial and the recorded demonstrations linked from the [Tutorials](./tutorials) page and the Video Library.
+
+For hardware, radio configuration, and exact build steps, follow the [Tutorials](./tutorials) and the per-repository READMEs rather than reproducing them here, because those details change with the tool versions.
+
+## Standards being implemented
+
+The Emergency Alerts work relates to the following specifications. For the full, maintained list, see the standards portal page linked below.
+
+| Specification                                                                                                  | Title                                                                                                                                                               |
+| -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [ETSI TS 103 720](https://www.etsi.org/deliver/etsi_ts/103700_103799/103720/01.02.01_60/ts_103720v010201p.pdf) | 5G Broadcast System for linear TV and radio services (maintained by 5G-MAG; includes support for public warning over CBS, PWS via SIB broadcast in clause 5.15.3.3) |
+| [3GPP TS 23.041](https://www.3gpp.org/dynareport/23041.htm)                                                    | Technical realization of Cell Broadcast Service (CBS) (CBS message structure, message identifiers and serial numbers for ETWS/CMAS)                                 |
+| [3GPP TS 36.331](https://www.3gpp.org/dynareport/36331.htm)                                                    | E-UTRA; Radio Resource Control (RRC); Protocol specification (SystemInformationBlockType12 and UE actions on receiving warning-message SIBs)                        |
+| [3GPP TR 36.976](https://www.3gpp.org/dynareport/36976.htm)                                                    | Overall description of LTE-based 5G broadcast                                                                                                                       |
+
+:::note
+Specific receiver behaviour for public warning and the exact CBS feature coverage depend on the version of ETSI TS 103 720 being implemented (work towards v1.3.1 adds PWS-related improvements). Confirm the current status against the repositories and the Kanban board before relying on it.
+:::
+
+## Go deeper
+
+Technical documentation providing context to this project can be found in the link below.
+
+[Tech: 5G Broadcast: TV, Radio and Emergency Alerts](/tech/5g-broadcast)
+
+A list of relevant specifications can be found in the link below.
+
+[Standards: 5G Broadcast](/tech/standards/5g-broadcast)
+
+## High-level architectures
+
+### 5G Broadcast extended with Emergency Alerts
+
+The diagram below shows the alert path: an alert is passed to the transmitter, encoded as a CBS message carried in SIB12, broadcast over FeMBMS, and received and presented on a device.
+
+<img loading="lazy" src="/assets/images/projects/ew_diagram.png" style="width: 80%" alt="Emergency alert path: alert to transmitter, encoded as CBS in SIB12, broadcast over FeMBMS, received on a device" />
+
+_Figure: alert to transmitter, encoded as CBS in SIB12, broadcast over FeMBMS, and presented on the receiving device._
+
+[Emergency Alerts over 5G Broadcast: Resources(../emergency-alerts/resources)
+[3GPP RAN and Core Platforms: Repositories](../3gpp-platforms/repositories)
+
+:::warning[References to verify]
+These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): ETSI TS 103 720 clause 5.15.3.3, 3GPP TS 23.041 clause 9.4.1.2.2, the CMAS message identifier value 0x1102 and its warning-type mapping, and 3GPP TS 36.331 clauses 5.2.2.19 and 6.3.1. Verify against the 3GPP/ETSI work plan and the current repository code before publication.
+:::
+
+## Related
+
+- [Resources](./resources)
+- [Resources](./resources)
+- [Tutorials](./tutorials)
+- Related project: [5G Broadcast: Hybrid TV/Radio](../5g-broadcast)
+- Standards: [5G Broadcast](/tech/standards/5g-broadcast)
+- Technical documentation: [5G Broadcast on the Tech portal](/tech/5g-broadcast)

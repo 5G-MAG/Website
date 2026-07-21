@@ -1,0 +1,120 @@
+---
+title: Scope
+hide_title: true
+sidebar_position: 0
+description: Specifications, architecture and standards covered by the DVB-I over 5G reference tools, spanning discovery, unicast and broadcast delivery.
+---
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M3 9a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2l0 -9" />
+  <path d="M16 3l-4 4l-4 -4" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">DVB-I Services over 5G Systems</span>
+<h1>Scope</h1>
+</div>
+</div>
+
+<div style="margin: 8px 0"><a class="button button--outline button--primary" href="/reference-tools/dvb-i/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/dvb-i/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/reference-tools/dvb-i/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/dvb-i/tutorials#video-library" style="margin: 2px 4px 2px 0">Video Library</a></div>
+
+This page contains information such as the specifications within the scope of the tools and high-level architectures that bring context to their applicability.
+
+## Objectives
+
+This project provides reference tools for delivering DVB-I (Digital Video Broadcasting - Internet) services over 5G networks. DVB-I defines a common service discovery and selection framework that lets internet-connected devices find and access sets of linear TV services, along with their programme metadata, independently of the underlying access network.
+
+The work focuses on combining DVB-I with 5G delivery so that the same service can reach devices over different paths:
+
+- Unicast delivery using 5G Media Streaming (5GMS)
+- Broadcast delivery using the LTE-based 5G Broadcast System
+- Concurrent or hybrid delivery over both paths
+
+The DVB / 5G-MAG Joint Task Force documented the reference architecture and deployment guidance for these scenarios in DVB A178, published as ETSI TR 103 972 (DVB-I service delivery over 5G Systems; Deployment Guidelines).
+
+## Specifications in scope
+
+- DVB A177 (ETSI TS 103 770) - Service Discovery and Programme Metadata for DVB-I, the main DVB-I specification
+- DVB A178 (ETSI TR 103 972) - DVB-I service delivery over 5G Systems; Deployment Guidelines
+- ETSI TS 103 720 - 5G Broadcast System for linear TV and radio services (broadcast delivery path)
+- 3GPP 5G Media Streaming (5GMS) specifications (unicast delivery path)
+
+The full list of relevant specifications is linked further down this page.
+
+### What the specifications provide
+
+For a developer, the specifications split into a discovery layer, a media-format layer, and a transport layer:
+
+| Layer                    | Specification                                                                                                                                                                     | What the tools use it for                                                                                        |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Discovery / selection    | DVB A177 (ETSI TS 103 770)                                                                                                                                                        | Parsing service lists, resolving service instances, querying a Service List Registry, reading programme metadata |
+| Deployment guidance      | DVB A178 (ETSI TR 103 972)                                                                                                                                                        | The reference architecture and per-scenario workflows the tools implement                                        |
+| Unicast media format     | DVB-DASH (ETSI TS 103 285), profiling MPEG-DASH (ISO/IEC 23009-1)                                                                                                                 | The DASH presentation played on the unicast path                                                                 |
+| Multicast media delivery | DVB-MABR (ETSI TS 103 769)                                                                                                                                                        | Scalable delivery reconstructed into DASH on the broadcast/multicast leg                                         |
+| Unicast transport        | 3GPP 5GMS: [TS 26.501](https://www.3gpp.org/dynareport/26501.htm), [TS 26.512](https://www.3gpp.org/dynareport/26512.htm), [TS 26.511](https://www.3gpp.org/dynareport/26511.htm) | Session handling and delivery on the 5GMS downlink                                                               |
+| Broadcast transport      | ETSI TS 103 720 (LTE-based 5G Broadcast)                                                                                                                                          | Receiving the broadcast bearer                                                                                   |
+
+DVB A178 (ETSI TR 103 972) is a technical report, so it describes the reference architecture and recommended integration rather than a normative conformance target. The normative behaviour the tools implement comes from the individual DVB, ETSI and 3GPP specifications above.
+
+## Reference tools
+
+The reference tools cover DVB-I service discovery and selection, bootstrap procedures, and integration with both the 5GMS unicast path and the 5G Broadcast path, so that a hybrid broadcast and broadband TV experience can be demonstrated end to end. See the [Resources](./resources) page for the available repositories and the [Resources](./resources) for planned work.
+
+### How the tools map to the standard
+
+The DVB-I over 5G tools implement the discovery and selection layer and glue it to the transport that 5G-MAG's other reference tools provide:
+
+- **Service discovery and selection** (DVB A177 / ETSI TS 103 770): fetching and parsing a service list, evaluating the service instances on each service, and choosing a delivery instance. This includes the bootstrap flow via a Service List Registry where one is used.
+- **Programme metadata**: retrieving and presenting content-guide data for the selected services.
+- **Unicast delivery**: handing a DVB-DASH service instance to the 5G Media Streaming client path. The 5GMS behaviour itself lives in the [5G Media Streaming reference tools](../5gms/resources).
+- **Broadcast delivery**: acquiring a broadcast service instance over the LTE-based 5G Broadcast path. The receiver/modem behaviour lives in the [5G Broadcast reference tools](../5g-broadcast/resources).
+- **Concurrent / hybrid operation**: presenting both instances for a service so the client can select or switch between broadcast and unicast.
+
+This mapping mirrors the DVB-I-over-5G reference architecture in DVB A178 (ETSI TR 103 972): DVB-I stays the service layer, the DVB delivery formats (DVB-DASH, DVB-MABR) stay the media layer, and the 3GPP/ETSI systems stay the transport layer.
+
+## Getting started
+
+1. Read the [Standards: DVB-I Services over 5G Systems](/tech/standards/dvb-i) page for the specification landscape, and the [Tech: DVB-I Services over 5G Systems](/tech/dvb-i/dvb-i-5g) page for the architecture and procedures.
+2. Review the reference architecture diagram below to see which component repositories provide each part of the chain.
+3. Pick a scenario (unicast via 5GMS, broadcast via 5G Broadcast, or concurrent/hybrid) and clone the relevant repositories from the [Resources](./resources) page.
+4. Check the [Tutorials](./tutorials) page for demo videos and repository pointers, and the [Resources](./resources) page for versioned builds.
+
+Technical documentation providing context to this project can be found in the link below.
+
+[Streaming & Media Delivery](/tech/5gms)
+
+[Tech: 5G Broadcast: TV, Radio and Emergency Alerts](/tech/5g-broadcast)
+
+A list of relevant specifications can be found in the link below.
+
+[Standards: DVB-I Services over 5G Systems](/tech/standards/dvb-i)
+
+## High-level architectures
+
+### DVB-I Services over 5G Systems: 5GMSd with 5G Broadcast
+
+The diagram below shows the DVB-I over 5G reference architecture combining a 5G Media Streaming downlink (5GMSd) unicast path with a 5G Broadcast path, so the same service can be delivered over either or both.
+
+<img loading="lazy" src="/assets/images/projects/dvb_diagram.png" alt="DVB-I over 5G reference architecture showing 5GMSd unicast delivery alongside a 5G Broadcast path, with links to the contributing component repositories" style="width: 80%">
+
+[5G Media Streaming: Resources](../5gms/resources)
+[DVB-I Services: Resources(../dvb-i/resources)
+[5G Broadcast: Resources(../5g-broadcast/resources)
+[Multimedia content delivery protocols: Resources(../multimedia/resources)
+[3GPP RAN and Core Platforms: Repositories](../3gpp-platforms/repositories)
+[Common Tools](../common-tools/)
+
+:::warning[References to verify]
+These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): 3GPP TS 26.512 (5GMS Protocols) and TS 26.511 (5GMS Profiles, codecs and formats) as the exact companions used, and their Release placement. The DVB and ETSI document numbers/titles (A177/TS 103 770, A178/TR 103 972, TS 103 720, TS 103 285, TS 103 769) were confirmed against DVB/ETSI sources; DASH = ISO/IEC 23009-1 is established. Verify the 3GPP identifiers against the 3GPP work plan before publication.
+:::
+
+## Related
+
+- [Resources](./resources) - planned work
+- [Resources](./resources) - the source repositories for these tools
+- [Tutorials](./tutorials) - demo videos and repository pointers
+
+:::note
+Refer to the [DVB-I repositories](https://github.com/5G-MAG) on GitHub to use or contribute to these Reference Tools.
+:::

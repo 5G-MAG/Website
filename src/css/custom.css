@@ -4,35 +4,128 @@
  * work well for content-centric websites.
  */
 
+/* Self-hosted so the site renders the same typeface for every visitor
+   instead of falling through to whatever the OS provides (Segoe UI,
+   San Francisco, Ubuntu, ...) via the system-ui stack. Files under
+   static/fonts/, licensed under the Ubuntu Font Licence 1.0 (see
+   static/fonts/UBUNTU-FONT-LICENCE.txt) — free to redistribute/embed. */
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Ubuntu-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/Ubuntu-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/Ubuntu-700.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Ubuntu Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/UbuntuMono-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Ubuntu Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/UbuntuMono-700.woff2') format('woff2');
+}
+
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #00A0D2;
-  --ifm-color-primary-dark: #0090BC;
-  --ifm-color-primary-darker: #0088B3;
-  --ifm-color-primary-darkest: #006F92;
-  --ifm-color-primary-light: #0AADE0;
-  --ifm-color-primary-lighter: #1DB6E8;
-  --ifm-color-primary-lightest: #47C8F0;
+  /* Set at runtime by src/components/SectionNav (measures its own rendered
+     height) — defaulted here so anything that reads it before that effect
+     runs, or on a page with no section bar at all, gets 0px rather than an
+     invalid/empty value. */
+  --section-nav-height: 0px;
+  --ifm-font-family-base:
+    'Ubuntu', system-ui, -apple-system, 'Segoe UI', Roboto, Cantarell, 'Noto Sans', sans-serif;
+  --ifm-font-family-monospace:
+    'Ubuntu Mono', SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace;
+  --ifm-color-primary: #00a0d2;
+  --ifm-color-primary-dark: #0090bc;
+  --ifm-color-primary-darker: #0088b3;
+  --ifm-color-primary-darkest: #006f92;
+  --ifm-color-primary-light: #0aade0;
+  --ifm-color-primary-lighter: #1db6e8;
+  --ifm-color-primary-lightest: #47c8f0;
   /* Darker than --ifm-color-primary specifically so white text on top of it
      meets WCAG AA (4.5:1); --ifm-color-primary itself only reaches ~3:1. */
-  --ifm-color-primary-textsafe: #007A9E;
+  --ifm-color-primary-textsafe: #007a9e;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  /* Pill-shaped at every size (regular/--lg/--sm alike) so every button
+     site-wide — hero CTAs, the project sub-nav row, form submits —
+     matches PageNav's chip shape instead of Infima's default ~6-9px
+     "soft rectangle". A fixed large radius (not a multiplier of the
+     shared global radius, which cards/inputs also use) rounds any
+     button height fully without affecting anything else. */
+  --ifm-button-border-radius: 999px;
+  /* "New" badge accent — deliberately not brand blue (that reads as "this
+     is clickable" everywhere else on the site) or success/warning green/
+     amber (already mean Ready/Active and Draft/Maintenance elsewhere).
+     Reuses the violet already used for the Applications hero tile, in the
+     same soft-background/dark-foreground pairing Infima's own
+     success/warning contrast pairs use. */
+  --badge-new-background: rgb(237, 231, 250);
+  --badge-new-foreground: rgb(58, 24, 122);
+  /* Standards tag on the per-project Repositories list — teal so it reads
+     as its own category next to the neutral license/software/dependency
+     chips, without reusing blue (link/brand), violet (New) or green/amber
+     (Active/Maintenance status elsewhere). */
+  --tag-standard-background: rgb(219, 240, 237);
+  --tag-standard-foreground: rgb(0, 77, 64);
 }
 
 [data-theme='dark'] {
-  --ifm-color-primary: #00A0D2;
-  --ifm-color-primary-dark: #0090BC;
-  --ifm-color-primary-darker: #0088B3;
-  --ifm-color-primary-darkest: #006F92;
-  --ifm-color-primary-light: #0AADE0;
-  --ifm-color-primary-lighter: #1DB6E8;
-  --ifm-color-primary-lightest: #47C8F0;
-  --ifm-color-primary-textsafe: #007A9E;
+  --ifm-color-primary: #00a0d2;
+  --ifm-color-primary-dark: #0090bc;
+  --ifm-color-primary-darker: #0088b3;
+  --ifm-color-primary-darkest: #006f92;
+  --ifm-color-primary-light: #0aade0;
+  --ifm-color-primary-lighter: #1db6e8;
+  --ifm-color-primary-lightest: #47c8f0;
+  --ifm-color-primary-textsafe: #007a9e;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  /* Swapped from the light pairing above, same violet. */
+  --badge-new-background: rgb(58, 24, 122);
+  --badge-new-foreground: rgb(237, 231, 250);
+  /* Swapped from the light pairing above, same teal. */
+  --tag-standard-background: rgb(0, 77, 64);
+  --tag-standard-foreground: rgb(219, 240, 237);
   /* Shadows tuned for a light background barely read against dark
      surfaces; boost opacity so every card's hover-lift stays visible. */
   --card-hover-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+}
+
+/* Visually hidden but still announced by screen readers/assistive tech —
+   e.g. a stable page H1 that sighted users don't need repeated over a
+   visible marketing heading. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* ── Doc page layout ────────────────────────────────────────────── */
@@ -41,7 +134,11 @@
   --doc-sidebar-width: 350px;
   --ifm-container-width-xl: 1400px;
   --card-hover-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
-  --color-success: #2e9e5b;
+  /* Alias, not an independent color: keeps "success" reading as one
+     consistent color (tutorial-complete banners here, form success notices
+     via --ifm-color-success elsewhere) instead of two different greens for
+     the same meaning. */
+  --color-success: var(--ifm-color-success);
 }
 
 /* Clip content column so buttons/images don't overflow into the TOC area.
@@ -93,7 +190,9 @@
   border-radius: 10px;
   overflow: hidden;
   background: var(--ifm-background-surface-color);
-  transition: box-shadow 0.2s ease, transform 0.15s ease;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
 }
 
 .project-card:hover {
@@ -108,7 +207,11 @@
   justify-content: center;
   gap: 0.65rem;
   padding: 1.5rem 1.25rem 1.35rem;
-  background: linear-gradient(135deg, var(--ifm-color-primary-darkest) 0%, var(--ifm-color-primary-textsafe) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--ifm-color-primary-darkest) 0%,
+    var(--ifm-color-primary-textsafe) 100%
+  );
   text-decoration: none !important;
   transition: opacity 0.2s ease;
 }
@@ -182,117 +285,26 @@
   gap: 0.4rem;
 }
 
-
-/* ── Application category cards (applications/index.md) ─────────────── */
-
-.app-cat-columns {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin: 1.5rem 0 2.5rem;
-}
-
-.app-cat-card {
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 10px;
-  background: var(--ifm-background-surface-color);
-  overflow: hidden;
-}
-
-.app-cat-header {
-  padding: 1.4rem 1.4rem 1.1rem;
-  background: linear-gradient(135deg, var(--ifm-color-primary-darkest) 0%, var(--ifm-color-primary-textsafe) 100%);
-}
-
-.app-cat-title {
-  font-size: 1.15rem;
-  font-weight: 700;
-  margin: 0 0 0.5rem;
-  color: #fff;
-}
-
-.app-cat-desc {
-  font-size: 0.925rem;
-  color: #fff;
-  margin: 0;
-  line-height: 1.6;
-}
-
-.app-cat-topics {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.5rem;
-  padding: 0.75rem;
-}
-
-@media (max-width: 768px) {
-  .app-cat-topics { grid-template-columns: 1fr 1fr; }
-}
-
-@media (max-width: 480px) {
-  .app-cat-topics { grid-template-columns: 1fr; }
-}
-
-.app-cat-topic-link {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.55rem;
-  padding: 0.65rem 0.75rem;
-  border-radius: 8px;
-  border: 1px solid var(--ifm-color-emphasis-200);
-  background: var(--ifm-background-color);
-  text-decoration: none !important;
-  color: inherit !important;
-  transition: border-color 0.15s ease, background 0.15s ease;
-}
-
-.app-cat-topic-link:hover {
-  border-color: var(--ifm-color-primary);
-  background: var(--ifm-color-emphasis-100);
-}
-
-.app-cat-topic-icon {
-  width: 36px;
-  height: 36px;
-  flex-shrink: 0;
-  margin-top: 1px;
-  color: var(--ifm-color-primary);
-  display: flex;
-  align-items: center;
-}
-
-.app-cat-topic-icon svg {
-  width: 100%;
-  height: 100%;
-}
-
-.app-cat-topic-body {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  min-width: 0;
-}
-
-.app-cat-topic-name {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--ifm-heading-color);
-  line-height: 1.3;
-}
-
-.app-cat-topic-text {
-  font-size: 0.8rem;
-  color: var(--ifm-color-emphasis-700);
-  display: block;
-  line-height: 1.45;
-}
-
 /* ── Liaison statements table ───────────────────────────────────── */
-.liaison-table { table-layout: fixed; width: 100%; }
-.liaison-table th:nth-child(1), .liaison-table td:nth-child(1) { width: 60px; }
-.liaison-table th:nth-child(2), .liaison-table td:nth-child(2) { width: 75px; }
-.liaison-table th:nth-child(3), .liaison-table td:nth-child(3) { width: 200px; }
-.liaison-table td { overflow-wrap: anywhere; }
+.liaison-table {
+  table-layout: fixed;
+  width: 100%;
+}
+.liaison-table th:nth-child(1),
+.liaison-table td:nth-child(1) {
+  width: 60px;
+}
+.liaison-table th:nth-child(2),
+.liaison-table td:nth-child(2) {
+  width: 75px;
+}
+.liaison-table th:nth-child(3),
+.liaison-table td:nth-child(3) {
+  width: 200px;
+}
+.liaison-table td {
+  overflow-wrap: anywhere;
+}
 
 /* ── Project health table (project index pages) ────────────────── */
 .health-table {
@@ -318,23 +330,13 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.dot { height: 8px; width: 8px; border-radius: 50%; display: inline-block; margin-right: 5px; }
-.dot-green { background-color: var(--color-success); }
-.dot-orange { background-color: #fd7e14; }
-.dot-blue { background-color: var(--ifm-color-primary); }
-.stats-sub { font-size: 0.8em; color: var(--ifm-color-emphasis-600); display: block; }
+.stats-sub {
+  font-size: 0.8em;
+  color: var(--ifm-color-emphasis-600);
+  display: block;
+}
 
 /* ── Dashboard-specific components ──────────────────────────────── */
-.btn-blue {
-  background-color: var(--ifm-color-primary);
-  color: var(--ifm-color-primary-contrast-foreground) !important;
-  padding: 8px 16px;
-  border-radius: 4px;
-  text-decoration: none;
-  font-size: 0.9em;
-  display: inline-block;
-  margin-bottom: 10px;
-}
 .summary-container {
   display: flex;
   gap: 20px;
@@ -351,8 +353,19 @@
   min-width: 150px;
   text-align: center;
 }
-.summary-card h4 { margin: 0; color: var(--ifm-color-emphasis-600); font-size: 0.85em; text-transform: uppercase; }
-.summary-value { display: block; font-size: 1.5em; font-weight: bold; color: var(--ifm-color-primary); margin-top: 5px; }
+.summary-card h4 {
+  margin: 0;
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.85em;
+  text-transform: uppercase;
+}
+.summary-value {
+  display: block;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--ifm-color-primary);
+  margin-top: 5px;
+}
 
 /* ── YouTube video grid (tutorials index pages) ─────────────────── */
 .yt-grid {
@@ -361,8 +374,10 @@
   gap: 1rem;
   width: 100%;
 }
-@media (max-width: 640px) {
-  .yt-grid { grid-template-columns: 1fr; }
+@media (max-width: 600px) {
+  .yt-grid {
+    grid-template-columns: 1fr;
+  }
 }
 .yt-embed-wrapper {
   position: relative;
@@ -377,6 +392,18 @@
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.pdf-embed-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+.pdf-embed {
+  width: 100%;
+  max-width: 900px;
+  height: clamp(320px, 60vh, 560px);
+  border: 0;
 }
 
 /* ── Community tiles (community.md) ─────────────────────────────── */
@@ -400,7 +427,9 @@
   max-width: 220px;
   text-decoration: none !important;
   color: inherit !important;
-  transition: box-shadow 0.2s ease, transform 0.15s ease;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
   background: var(--ifm-background-surface-color);
 }
 .community-tile:hover {
@@ -474,7 +503,19 @@
 }
 
 @media (max-width: 900px) {
-  .godeeper-grid { grid-template-columns: 1fr; }
+  .godeeper-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.godeeper-grid--4col {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 900px) {
+  .godeeper-grid--4col {
+    grid-template-columns: 1fr;
+  }
 }
 
 .godeeper-card {
@@ -486,7 +527,9 @@
   background: var(--ifm-background-surface-color);
   text-decoration: none !important;
   color: inherit !important;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .godeeper-card:hover {
@@ -497,7 +540,11 @@
 
 .godeeper-card__band {
   padding: 1.1rem 1.1rem 0.9rem;
-  background: linear-gradient(135deg, var(--ifm-color-primary-darkest) 0%, var(--ifm-color-primary-textsafe) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--ifm-color-primary-darkest) 0%,
+    var(--ifm-color-primary-textsafe) 100%
+  );
   display: flex;
   align-items: center;
   gap: 0.6rem;
@@ -521,6 +568,8 @@
 .godeeper-card__body {
   padding: 0.9rem 1.1rem 1.1rem;
   flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .godeeper-card__body p {
@@ -545,19 +594,21 @@
 }
 
 /* ── Topic banner (per-topic eye-catcher header) ──────────────────
-   --topic-accent / --topic-accent-dark can be overridden inline per
-   topic to give each subject area a distinct gradient; defaults to
-   the site's brand colour when not set. ──────────────────────── */
+   Legacy class, superseded by .topic-hero below (same component,
+   restyled) — kept for the many pages not yet migrated to the newer
+   markup. Background matches .topic-hero/HubHero exactly so every
+   page-top banner site-wide renders the same gradient regardless of
+   which of the two classes/markup shapes it uses. ──────────────── */
 .topic-banner {
-  --topic-accent: var(--ifm-color-primary-textsafe);
-  --topic-accent-dark: var(--ifm-color-primary-darkest);
   display: flex;
   align-items: center;
   gap: 1rem;
   padding: 1rem 1.5rem;
   min-height: 5.25rem;
   border-radius: 14px;
-  background: linear-gradient(135deg, var(--topic-accent-dark) 0%, var(--topic-accent) 100%);
+  background:
+    linear-gradient(to right, rgba(0, 0, 0, 0.62) 45%, rgba(0, 0, 0, 0.18) 100%),
+    linear-gradient(to right, #003580 0%, #00a0d2 100%);
   margin-bottom: 1.75rem;
 }
 
@@ -601,7 +652,80 @@
 }
 
 @media (max-width: 640px) {
-  .topic-banner { flex-direction: column; align-items: flex-start; }
+  .topic-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ── Topic hero (compact gradient banner, matches HubHero) ────────
+   Same gradient/voice as the Hub-tier pages' HubHero component
+   (src/components/HubHero), used on the project/topic doc pages one
+   level below a Hub (tech topics, reference-tools/testbeds projects) —
+   these keep their real lateral sidebar, so no PageNav here, just the
+   restyled banner in place of the old .topic-banner. ─────────────── */
+.topic-hero {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  /* Padding and min-height match .topic-banner exactly (was 1.5rem 1.75rem
+     with no floor — 16px taller than .topic-banner in the common case,
+     visibly so when navigating between a migrated and a not-yet-migrated
+     page). Both classes are the same header at different points in the
+     topic-banner -> topic-hero migration and must render at one
+     content-independent height regardless of which markup a page uses. */
+  padding: 1rem 1.5rem;
+  min-height: 5.25rem;
+  border-radius: 12px;
+  background:
+    linear-gradient(to right, rgba(0, 0, 0, 0.62) 45%, rgba(0, 0, 0, 0.18) 100%),
+    linear-gradient(to right, #003580 0%, #00a0d2 100%);
+  margin-bottom: 1.75rem;
+}
+
+.topic-hero__icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.topic-hero__icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+/* Not used by any page yet, but .topic-banner__kicker is (190 of its 202
+   pages have one) — defined here so a .topic-hero page can add a kicker
+   without falling back to unstyled text, and so the two classes stay at
+   parity as more pages migrate. */
+.topic-hero__kicker {
+  display: block;
+  color: #fff;
+  font-size: 0.75rem;
+  line-height: 1;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.25rem;
+}
+
+.topic-hero__title {
+  margin: 0 !important;
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1.3;
+}
+
+@media (max-width: 640px) {
+  .topic-hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 /* ── Topic lead paragraph (landing pages only) ────────────────────
@@ -693,6 +817,46 @@
   flex-shrink: 0;
 }
 
+/* ── Scope tag list (homepage / about "Who We Are" tag cloud) ──────
+   A static, wrapped list of all topic chips — distinct from
+   .spec-chip/.spec-chip-row above, which several tutorial pages already
+   use for their own static wrapped multi-row list and must keep behaving
+   that way. */
+.scope-marquee-track {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.scope-marquee-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.scope-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.15rem;
+  border-radius: 999px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-background-surface-color);
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-800);
+  white-space: nowrap;
+}
+
+.scope-chip svg {
+  width: 20px;
+  height: 20px;
+  color: var(--ifm-color-primary);
+  flex-shrink: 0;
+}
+
 /* ── Reference tutorial: repo/component cards ─────────────────────── */
 .repo-grid {
   display: grid;
@@ -719,7 +883,9 @@
   background: var(--ifm-background-surface-color);
   text-decoration: none !important;
   color: inherit !important;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .repo-card:hover {
@@ -784,22 +950,6 @@
 }
 
 /* ── Reference tutorial: numbered step badge ──────────────────────── */
-.step-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.6rem;
-  height: 1.6rem;
-  border-radius: 50%;
-  background: var(--ifm-color-primary-darkest);
-  color: #fff;
-  font-weight: 700;
-  font-size: 0.85rem;
-  margin-right: 0.55rem;
-  vertical-align: middle;
-  flex-shrink: 0;
-}
-
 /* ── Reference tutorial: success/completion callout ───────────────── */
 .tutorial-complete {
   display: flex;

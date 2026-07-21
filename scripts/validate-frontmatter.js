@@ -8,7 +8,7 @@ const path = require('path');
 const matter = require('gray-matter');
 
 const ROOT = path.join(__dirname, '..');
-const DOC_DIRS = ['docs-tech', 'docs-developer'];
+const DOC_DIRS = ['docs/tech', 'docs/home'];
 
 function walk(dir, out) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -40,7 +40,9 @@ if (errors.length > 0) {
     console.error(`  ${file}\n    ${message.split('\n')[0]}\n`);
   }
   console.error('Common cause: an unquoted "key: value" description containing its own colon.');
-  console.error('Fix by wrapping the value in double quotes, e.g. description: "Some text: with a colon."\n');
+  console.error(
+    'Fix by wrapping the value in double quotes, e.g. description: "Some text: with a colon."\n'
+  );
   process.exit(1);
 }
 
