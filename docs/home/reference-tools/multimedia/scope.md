@@ -58,7 +58,7 @@ The diagram below shows the same delivery protocol tools used with 5G Multicast 
 
 [5G Multicast Broadcast Services: Resources(../5g-mbs/resources)
 [Multimedia content delivery protocols: Resources(../multimedia/resources)
-[3GPP RAN and Core Platforms: Repositories](../3gpp-platforms/repositories)
+[3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
 [Common Tools](../common-tools/)
 
 ## What the tools implement

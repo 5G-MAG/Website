@@ -19,7 +19,7 @@ description: Explains which RAN and Core components 5G-MAG builds, and how the s
 </div>
 </div>
 
-<div style="margin: 8px 0"><a class="button button--outline button--primary" href="/reference-tools/3gpp-platforms/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/3gpp-platforms/repositories" style="margin: 2px 4px 2px 0">GitHub Repos</a> <a class="button button--outline button--primary" href="/reference-tools/3gpp-platforms/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a></div>
+<div style="margin: 8px 0"><a class="button button--outline button--primary" href="/reference-tools/3gpp-platforms/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/3gpp-platforms/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/reference-tools/3gpp-platforms/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a></div>
 
 ## Overview
 
@@ -32,7 +32,7 @@ A note on the delivery technologies referenced here:
 - **MBS (Multicast-Broadcast Services)**, also written 5MBS, is the 3GPP feature for delivering the same content to many devices over the 5G Core and NR radio.
 - **5G Broadcast** (LTE-based) delivers free-to-air TV and radio over LTE/eMBMS radio, without a 5G core or return channel. It reuses **Further evolved Multimedia Broadcast Multicast Service (FeMBMS)**.
 
-These are distinct technologies; the branch names in the [GitHub Repos](./repositories) page follow this split.
+These are distinct technologies; the branch names in the [Resources](./resources) page follow this split.
 
 ## Upstream software we build on
 
@@ -57,7 +57,7 @@ This project does not deliver media itself; it provides a working radio access n
 
 ## The two delivery technologies, and why the forks split
 
-The forks are organised around two distinct delivery technologies, and the branch names on the [GitHub Repos](./repositories) page follow that split.
+The forks are organised around two distinct delivery technologies, and the branch names on the [Resources](./resources) page follow that split.
 
 |                    | MBS (5MBS)                                   | 5G Broadcast (LTE-based)                              |
 | ------------------ | -------------------------------------------- | ----------------------------------------------------- |
@@ -76,14 +76,14 @@ The MBS and 5G Broadcast media stacks depend on a working network to run against
 
 1. Decide which technology you are building for: MBS (5G NR plus 5GC) or LTE-based 5G Broadcast. This determines which fork and branch you need.
 2. For MBS, build the NG-RAN from [5G-MAG/rt-srsRAN_Project](https://github.com/5G-MAG/rt-srsRAN_Project) and the core from [5G-MAG/open5gs](https://github.com/5G-MAG/open5gs), selecting the MBS-related branches.
-3. For 5G Broadcast, use the LTE-based transmitter path built on `srsRAN_4G`; see the dedicated transmitter and modem repositories via the [GitHub Repos](./repositories) page.
+3. For 5G Broadcast, use the LTE-based transmitter path built on `srsRAN_4G`; see the dedicated transmitter and modem repositories via the [Resources](./resources) page.
 4. Follow the [Tutorials](./tutorials) for the network and SDR setup guides, including SDR front-end configuration.
 
-The [GitHub Repos](./repositories) page maps each fork and branch to its use case, which is the fastest way to find the exact branch for your scenario.
+The [Resources](./resources) page maps each fork and branch to its use case, which is the fastest way to find the exact branch for your scenario.
 
 ## Related
 
-- [GitHub Repos](./repositories): the forks and their branch structure, mapped to use cases
+- [Resources](./resources): the forks and their branch structure, mapped to use cases
 - [Tutorials](./tutorials): setup guides for the network and SDR platforms
 - Project [index](.): overview and slide deck
 

@@ -71,7 +71,7 @@ These supporting tools are shared across several application areas. Auxiliary to
 ### Auxiliary tools common to various projects
 
 <a class="button button--outline button--primary" href="/reference-tools/common-tools/" style="margin-right:6px">Documentation</a>
-<a class="button button--outline button--primary" href="/reference-tools/common-tools/releases">Releases</a>
+<a class="button button--outline button--primary" href="/reference-tools/common-tools/resources">Resources</a>
 
 ### 3GPP RAN and Core Platforms
 

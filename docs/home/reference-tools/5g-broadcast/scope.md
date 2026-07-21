@@ -134,7 +134,7 @@ Repositories used in this architecture:
 - [5G Media Streaming: Resources](../5gms/resources)
 - [5G Broadcast: Resources(../5g-broadcast/resources)
 - [Multimedia content delivery protocols: Resources(../multimedia/resources)
-- [3GPP RAN and Core Platforms: Repositories](../3gpp-platforms/repositories)
+- [3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
 - [Common Tools: Repositories](../common-tools/)
 
 ## NTN deployment context

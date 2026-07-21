@@ -153,7 +153,7 @@ The MBS reference tools with the MBS-specific core functions (MB-SMF, MB-UPF) pr
 
 [5G Multicast Broadcast Services: Resources(../5g-mbs/resources)
 [Multimedia content delivery protocols: Resources(../multimedia/resources)
-[3GPP RAN and Core Platforms: Repositories](../3gpp-platforms/repositories)
+[3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
 [Common Tools: Repositories](../common-tools/)
 
 ### 5G Multicast Broadcast Services (MBS) with 5GC Service Consumers
@@ -165,7 +165,7 @@ The same delivery path, but the MBS User Services layer uses the reusable 5GC Se
 [5G Multicast Broadcast Services: Resources(../5g-mbs/resources)
 [Multimedia content delivery protocols: Resources(../multimedia/resources)
 [5GC Service Consumers: Resources(../5g-core/resources)
-[3GPP RAN and Core Platforms: Repositories](../3gpp-platforms/repositories)
+[3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
 [Common Tools: Repositories](../common-tools/)
 
 ## Docker deployment support

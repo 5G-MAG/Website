@@ -102,7 +102,7 @@ The diagram below shows the DVB-I over 5G reference architecture combining a 5G 
 [DVB-I Services: Resources(../dvb-i/resources)
 [5G Broadcast: Resources(../5g-broadcast/resources)
 [Multimedia content delivery protocols: Resources(../multimedia/resources)
-[3GPP RAN and Core Platforms: Repositories](../3gpp-platforms/repositories)
+[3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
 [Common Tools](../common-tools/)
 
 :::warning[References to verify]

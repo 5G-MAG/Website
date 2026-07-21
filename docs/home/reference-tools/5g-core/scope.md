@@ -146,7 +146,7 @@ The diagram below shows how the 5GMSd reference tools use the 5GC Service Consum
 
 [5G Media Streaming: Resources](../5gms/resources)
 [5GC Service Consumers: Resources(../5g-core/resources)
-[3GPP RAN and Core Platforms: Repositories](../3gpp-platforms/repositories)
+[3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
 [Common Tools: Repositories](../common-tools/)
 
 ## 5G Multicast Broadcast Services (MBS) with 5GC Service Consumers
@@ -158,5 +158,5 @@ The diagram below shows how the MBS reference tools use the MB-SMF service consu
 [5G Multicast Broadcast Services: Resources(../5g-mbs/resources)
 [Multimedia content delivery protocols: Resources(../multimedia/resources)
 [5GC Service Consumers: Resources(../5g-core/resources)
-[3GPP RAN and Core Platforms: Repositories](../3gpp-platforms/repositories)
+[3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
 [Common Tools: Repositories](../common-tools/)

@@ -183,9 +183,20 @@ const config = {
             // Roadmap, GitHub Repos, Packages and Releases pages merged into
             // one Resources page, to cut down the per-project page count
             // (piloted on 5GMS first, then rolled out everywhere else that
-            // had the same page set). 3gpp-platforms, common-tools and
-            // external-tools were left alone — they never had this
-            // Roadmap/Packages/Releases spread to begin with.
+            // had the same page set). external-tools was left alone -- it
+            // never had this Roadmap/Packages/Releases spread to begin
+            // with. 3gpp-platforms (repositories.mdx) and common-tools
+            // (releases.mdx) got the same Resources consolidation later,
+            // once the reference-tools structure was made coherent across
+            // all 15 projects (2026-07-22).
+            [
+              '/reference-tools/3gpp-platforms/resources',
+              ['/reference-tools/3gpp-platforms/repositories'],
+            ],
+            [
+              '/reference-tools/common-tools/resources',
+              ['/reference-tools/common-tools/releases'],
+            ],
             [
               '/reference-tools/5gms/resources',
               [

@@ -654,7 +654,7 @@ The baseline configuration: the 5GMSd tools delivering adaptive bitrate streamin
 <img loading="lazy" src="/assets/images/projects/5gms_diagram.png" style="width: 80%" alt="High-level architecture of the baseline 5GMSd deployment">
 
 [5G Media Streaming: Resources](../5gms/resources)
-[3GPP RAN and Core Platforms: Repositories](../3gpp-platforms/repositories)
+[3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
 [Common Tools: Repositories](../common-tools/)
 
 ### 5G Downlink Media Streaming (5GMSd) with UE Data Collection Reporting and Event Exposure
@@ -665,7 +665,7 @@ Adds the UE Data Collection, Reporting and Event Exposure project so that consum
 
 [5G Media Streaming: Resources](../5gms/resources)
 [UE Data Collection, Reporting and Event Exposure: Resources(../data-collection/resources)
-[3GPP RAN and Core Platforms: Repositories](../3gpp-platforms/repositories)
+[3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
 [Common Tools: Repositories](../common-tools/)
 
 ### 5G Downlink Media Streaming (5GMSd) with 5GC Service Consumers
@@ -676,7 +676,7 @@ Adds the 5G Core (5GC) Service Consumers project, letting the AF consume core ne
 
 [5G Media Streaming: Resources](../5gms/resources)
 [5GC Service Consumers: Resources(../5g-core/resources)
-[3GPP RAN and Core Platforms: Repositories](../3gpp-platforms/repositories)
+[3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
 [Common Tools: Repositories](../common-tools/)
 
 ### 5G Downlink Media Streaming (5GMSd) over eMBMS
@@ -688,7 +688,7 @@ Combines 5GMSd with the 5G Broadcast and multimedia content delivery projects to
 [5G Media Streaming: Resources](../5gms/resources)
 [5G Broadcast: Resources(../5g-broadcast/resources)
 [Multimedia content delivery protocols: Resources(../multimedia/resources)
-[3GPP RAN and Core Platforms: Repositories](../3gpp-platforms/repositories)
+[3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
 [Common Tools: Repositories](../common-tools/)
 
 ## Docker deployment support

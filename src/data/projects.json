@@ -178,7 +178,7 @@
     "repos": [
       "rt-common-shared"
     ],
-    "releases_slug": "releases"
+    "releases_slug": "resources"
   },
   {
     "name": "DVB-I over 5G",

@@ -175,7 +175,7 @@ This is the standalone DCAF deployment, where the Data Collection AF is used on 
 _Figure: standalone DCAF deployment._
 
 [UE Data Collection, Reporting and Event Exposure: Resources(../data-collection/resources)
-[3GPP RAN and Core Platforms: Repositories](../3gpp-platforms/repositories)
+[3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
 
 ### 5G Downlink Media Streaming (5GMSd) with UE Data Collection Reporting and Event Exposure
 
@@ -187,7 +187,7 @@ _Figure: DCAF integrated with 5GMSd data reporting._
 
 [5G Media Streaming: Resources](../5gms/resources)
 [UE Data Collection, Reporting and Event Exposure: Resources(../data-collection/resources)
-[3GPP RAN and Core Platforms: Repositories](../3gpp-platforms/repositories)
+[3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
 [Common Tools](../common-tools/)
 
 ## Docker deployment support
