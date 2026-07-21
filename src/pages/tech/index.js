@@ -339,6 +339,7 @@ const RESOURCES = [
 const PILLARS = [
   {
     title: 'Specification analysis for real-world applications',
+    body: 'Breaking down specification text into what it actually means for a working deployment.',
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -356,6 +357,7 @@ const PILLARS = [
   },
   {
     title: 'Making standards actionable',
+    body: 'Profiles and blueprints that turn specification text into implementation-ready guidance developers and the wider industry can build from.',
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -366,15 +368,18 @@ const PILLARS = [
         strokeLinejoin="round"
         aria-hidden="true"
       >
-        <path d="M9.5 14.5l2 2l4 -4.5" />
-        <path d="M4 6l2 2l4 -4.5" />
-        <path d="M4 14.5l2 2l4 -4.5" />
-        <path d="M13 6l7 0" />
+        <path d="M3.5 5.5l1.5 1.5l2.5 -2.5" />
+        <path d="M3.5 11.5l1.5 1.5l2.5 -2.5" />
+        <path d="M3.5 17.5l1.5 1.5l2.5 -2.5" />
+        <path d="M11 6l9 0" />
+        <path d="M11 12l9 0" />
+        <path d="M11 18l9 0" />
       </svg>
     ),
   },
   {
     title: 'Documentation and explainer videos',
+    body: 'Written explainers and audiovisual material that make dense standards work approachable to engineers outside the standards process.',
     icon: (
       <svg
         viewBox="0 0 24 24"

@@ -46,33 +46,60 @@ const FEEDBACK_ICON_PATH = <path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" />;
 const MOTIVATION = [
   {
     title: 'Active engagement with standards bodies',
+    body: 'Direct participation in the standards process, not just commentary from the outside.',
     icon: (
-      <>
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
         <path d="M8 9h8" />
         <path d="M8 13h6" />
         <path d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3z" />
-      </>
+      </svg>
     ),
   },
   {
     title: 'Requirements based on application needs',
+    body: 'Requirements drawn from real deployment experience, not theoretical scenarios.',
     icon: (
-      <>
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
         <path d="M9 5H7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2V7a2 2 0 0 0 -2 -2h-2" />
         <rect x="9" y="3" width="6" height="4" rx="2" />
         <path d="M9 12h6" />
         <path d="M9 16h6" />
-      </>
+      </svg>
     ),
   },
   {
     title: 'Identification of bugs and enhancements',
+    body: 'Implementation work surfaces specification gaps early, before they become costly to fix once a standard is frozen.',
     icon: (
-      <>
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
         <path d="M12 9v4" />
         <path d="M10.363 3.591l-8.106 13.534a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636 -2.87l-8.106 -13.536a1.914 1.914 0 0 0 -3.274 0z" />
         <path d="M12 16h.01" />
-      </>
+      </svg>
     ),
   },
 ];

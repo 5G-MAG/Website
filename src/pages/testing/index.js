@@ -23,6 +23,7 @@ const INTEROP_ICON_PATH = (
 const PILLARS = [
   {
     title: 'Make value proposition tangible to the industry',
+    body: 'Working demonstrations that show what a specification enables, not just what it says on paper.',
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -39,6 +40,7 @@ const PILLARS = [
   },
   {
     title: 'Interoperability through early testing and plugfests',
+    body: 'Shared reference code means plugfests test real interoperability from day one, instead of every participant starting from scratch.',
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -55,6 +57,7 @@ const PILLARS = [
   },
   {
     title: 'Supporting application development and trials',
+    body: 'Reference tools and testbeds that let application developers build and trial real products on top of proven implementations.',
     icon: (
       <svg
         viewBox="0 0 24 24"
