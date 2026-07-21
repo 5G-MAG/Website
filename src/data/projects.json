@@ -1,0 +1,221 @@
+[
+  {
+    "name": "5G Media Streaming",
+    "doc_url": "/reference-tools/5gms/",
+    "releases_slug": "resources",
+    "tagline": "End-to-end 5G media streaming from network to client · 3GPP TS 26.501",
+    "repos": [
+      "rt-5gms-application-function",
+      "rt-5gms-application-server",
+      "rt-5gms-application",
+      "rt-5gms-media-session-handler",
+      "rt-5gms-media-stream-handler",
+      "rt-5gms-common-android-library",
+      "rt-5gms-application-provider",
+      "rt-common-shared",
+      "rt-5gms-examples"
+    ]
+  },
+  {
+    "name": "5G Broadcast TV Radio",
+    "doc_url": "/reference-tools/5g-broadcast/",
+    "tagline": "LTE-based 5G broadcast for TV, radio and emergency alerts",
+    "repos": [
+      "rt-mbms-mw",
+      "rt-mbms-modem",
+      "rt-mbms-tx",
+      "rt-wui",
+      "rt-mbms-mw-android",
+      "rt-libflute",
+      "rt-common-shared",
+      "rt-mbms-examples",
+      "rt-gui",
+      {
+        "name": "rt-mbms-tx-for-qrd-and-crd",
+        "branch": "main"
+      }
+    ],
+    "releases_slug": "resources"
+  },
+  {
+    "name": "5G Broadcast Emergency Alerts",
+    "doc_url": "/reference-tools/emergency-alerts/",
+    "tagline": "Cell Broadcast Service warnings delivered over FeMBMS",
+    "repos": [
+      {
+        "name": "rt-mbms-tx-for-qrd-and-crd",
+        "branch": "emergency-alerts"
+      }
+    ],
+    "releases_slug": "resources"
+  },
+  {
+    "name": "XR Media",
+    "doc_url": "/reference-tools/xr/",
+    "tagline": "MPEG-I scene description and XR media integration over 5G",
+    "repos": [
+      "rt-xr-unity-player",
+      "rt-xr-maf-native",
+      "rt-xr-content",
+      "rt-xr-blender-exporter",
+      "rt-common-shared",
+      "rt-xr-gITFast"
+    ],
+    "releases_slug": "resources"
+  },
+  {
+    "name": "5G Multicast Broadcast",
+    "doc_url": "/reference-tools/5g-mbs/",
+    "tagline": "5G-native multicast and broadcast services · 3GPP 5G MBS",
+    "repos": [
+      "rt-mbs-function",
+      "rt-mbs-transport-function",
+      "rt-mbs-examples",
+      "rt-common-shared",
+      "rt-libflute",
+      {
+        "name": "open5gs",
+        "branch": "5mbs"
+      },
+      {
+        "name": "srsRAN_4G",
+        "branch": "5mbs"
+      },
+      {
+        "name": "rt-srsRAN_Project",
+        "branch": "5mbs"
+      }
+    ],
+    "releases_slug": "resources"
+  },
+  {
+    "name": "UE Data Collection",
+    "doc_url": "/reference-tools/data-collection/",
+    "tagline": "UE-side data collection, reporting and event exposure · 3GPP TS 26.531",
+    "repos": [
+      "rt-data-collection-application-function",
+      "rt-common-shared"
+    ],
+    "releases_slug": "resources"
+  },
+  {
+    "name": "V3C Immersive",
+    "doc_url": "/reference-tools/v3c/",
+    "tagline": "V3C volumetric video platform for immersive 5G experiences",
+    "repos": [
+      "rt-v3c-unity-player",
+      "rt-v3c-decoder-plugin",
+      "rt-v3c-content",
+      "rt-common-shared"
+    ],
+    "releases_slug": "resources"
+  },
+  {
+    "name": "5GC Service Consumers",
+    "doc_url": "/reference-tools/5g-core/",
+    "tagline": "Reference consumers for 5G Core capability exposure APIs",
+    "repos": [
+      "rt-5gc-service-consumers",
+      "rt-common-shared"
+    ],
+    "releases_slug": "resources"
+  },
+  {
+    "name": "Beyond 2D Video Experiences",
+    "doc_url": "/testbeds/beyond-2d/",
+    "tagline": "Evaluation framework for beyond-2D video experiences",
+    "repos": [
+      "rt-beyond2d-evaluation-framework",
+      "rt-common-shared"
+    ],
+    "releases_slug": "resources"
+  },
+  {
+    "name": "6G Testbed and AI Traffic",
+    "doc_url": "/testbeds/6g-testbed/",
+    "tagline": "6G testbed and AI-driven traffic characterization",
+    "repos": [
+      "6G-Testbed",
+      "rt-common-shared"
+    ],
+    "releases_slug": "resources"
+  },
+  {
+    "name": "Network APIs",
+    "doc_url": "/reference-tools/network-apis/",
+    "tagline": "Network capability exposure through CAMARA APIs",
+    "repos": [
+      "rt-camara-examples",
+      "rt-common-shared"
+    ],
+    "releases_slug": "resources"
+  },
+  {
+    "name": "Conversational Avatar",
+    "doc_url": "/reference-tools/avatar/",
+    "tagline": "Real-time conversational avatars over 5G using MPEG ARF",
+    "repos": [
+      "rt-avatar-content",
+      "rt-avatar-call",
+      "rt-avatar-unity-tracker",
+      "rt-3gpp-swap"
+    ],
+    "releases_slug": "resources"
+  },
+  {
+    "name": "AI ML",
+    "doc_url": "/testbeds/ai-ml/",
+    "tagline": "Evaluation framework for AI/ML models in 5G media processing",
+    "repos": [
+      "rt-ai-ml-evaluation-framework"
+    ],
+    "releases_slug": "resources"
+  },
+  {
+    "name": "Auxiliary Tools",
+    "doc_url": "/reference-tools/common-tools/",
+    "tagline": "Shared helper repositories supporting 5G-MAG Reference Tools",
+    "repos": [
+      "rt-common-shared"
+    ],
+    "releases_slug": "releases"
+  },
+  {
+    "name": "DVB-I over 5G",
+    "doc_url": "/reference-tools/dvb-i/",
+    "tagline": "DVB-I service discovery combined with 5GMS and 5G Broadcast delivery",
+    "repos": [
+      "rt-5gms-application"
+    ],
+    "releases_slug": "resources"
+  },
+  {
+    "name": "Multimedia Delivery",
+    "doc_url": "/reference-tools/multimedia/",
+    "tagline": "DASH, HLS and CMAF multimedia delivery reference tools",
+    "repos": [
+      "rt-libflute",
+      {
+        "name": "rt-mbms-mw",
+        "branch": "route-gpac"
+      }
+    ],
+    "releases_slug": "resources"
+  },
+  {
+    "name": "Dependency",
+    "doc_url": null,
+    "tagline": "External forks and dependencies 5G-MAG maintains for its reference tools — not first-class reference-tool projects with their own docs page",
+    "repos": [
+      "5GC_APIs",
+      "cmcd-toolkit",
+      "rt-srsRAN_Project",
+      "srsRAN_4G",
+      "srsRAN",
+      {
+        "name": "open5gs",
+        "branch": "main"
+      }
+    ]
+  }
+]

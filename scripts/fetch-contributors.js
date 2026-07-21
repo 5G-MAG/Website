@@ -8,16 +8,23 @@
 // only need public data). Without one, the script still runs but is
 // limited to the 60 req/hour unauthenticated rate limit.
 const https = require('https');
-const fs    = require('fs');
-const path  = require('path');
+const fs = require('fs');
+const path = require('path');
 
-const ORG     = '5G-MAG';
-const TOKEN   = process.env.SYNC_TOKEN || process.env.GITHUB_TOKEN || '';
-const OUTPUT  = path.join(__dirname, '..', 'static', 'data', 'contributors.json');
+const ORG = '5G-MAG';
+const TOKEN = process.env.SYNC_TOKEN || process.env.GITHUB_TOKEN || '';
+const OUTPUT = path.join(__dirname, '..', 'static', 'data', 'contributors.json');
 
 // Docs/site repos, not Reference Tools code — excluded so the ranking
 // reflects software contribution. Adjust freely.
-const EXCLUDE_REPOS = new Set(['Getting-Started', 'Tech', 'Standards', '5g-mag-portal', 'Website', '.github']);
+const EXCLUDE_REPOS = new Set([
+  'Getting-Started',
+  'Tech',
+  'Standards',
+  '5g-mag-portal',
+  'Website',
+  '.github',
+]);
 
 function apiGet(urlPath) {
   return new Promise((resolve, reject) => {
@@ -30,21 +37,23 @@ function apiGet(urlPath) {
         ...(TOKEN ? { Authorization: `Bearer ${TOKEN}` } : {}),
       },
     };
-    https.get(options, (res) => {
-      let data = '';
-      res.on('data', (chunk) => (data += chunk));
-      res.on('end', () => {
-        if (res.statusCode < 200 || res.statusCode >= 300) {
-          reject(new Error(`${urlPath} -> ${res.statusCode}: ${data.slice(0, 200)}`));
-          return;
-        }
-        try {
-          resolve(JSON.parse(data));
-        } catch (e) {
-          reject(e);
-        }
-      });
-    }).on('error', reject);
+    https
+      .get(options, (res) => {
+        let data = '';
+        res.on('data', (chunk) => (data += chunk));
+        res.on('end', () => {
+          if (res.statusCode < 200 || res.statusCode >= 300) {
+            reject(new Error(`${urlPath} -> ${res.statusCode}: ${data.slice(0, 200)}`));
+            return;
+          }
+          try {
+            resolve(JSON.parse(data));
+          } catch (e) {
+            reject(e);
+          }
+        });
+      })
+      .on('error', reject);
   });
 }
 

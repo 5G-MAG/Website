@@ -5,7 +5,10 @@ import styles from './releases.module.css';
 
 function daysSince(dateStr) {
   if (!dateStr || dateStr === '-') return 9999;
-  return Math.max(0, Math.floor((Date.now() - new Date(dateStr + 'T12:00:00Z').getTime()) / 86400000));
+  return Math.max(
+    0,
+    Math.floor((Date.now() - new Date(dateStr + 'T12:00:00Z').getTime()) / 86400000)
+  );
 }
 
 function formatAge(days) {
@@ -28,7 +31,9 @@ function ProjectCard({ project }) {
     .sort((a, b) => b.date.localeCompare(a.date))[0];
   const days = latest ? daysSince(latest.date) : 9999;
   const repoCount = project.releases.length;
-  const releaseUrl = project.doc_url + 'releases';
+  // Dependency has no doc_url — it's a shared-fork category, not a
+  // first-class reference-tool project with its own docs page.
+  const releaseUrl = project.doc_url ? project.doc_url + (project.releases_slug || 'resources') : null;
 
   return (
     <div className={styles.projectCard}>
@@ -38,19 +43,32 @@ function ProjectCard({ project }) {
       </div>
       {project.tagline && <p className={styles.projectCardTagline}>{project.tagline}</p>}
       <div className={styles.projectCardMeta}>
-        <span>{repoCount} {repoCount === 1 ? 'repository' : 'repositories'}</span>
+        <span>
+          {repoCount} {repoCount === 1 ? 'repository' : 'repositories'}
+        </span>
         {latest && (
-          <span>Latest: {latest.date} · {formatAge(days)}</span>
+          <span>
+            Latest: {latest.date} · {formatAge(days)}
+          </span>
         )}
       </div>
-      <div className={styles.projectCardFooter}>
-        <Link className="button button--primary button--sm" to={releaseUrl}>
-          View Releases &rarr;
-        </Link>
-        <Link className="button button--outline button--primary button--sm" to={project.doc_url}>
-          Documentation
-        </Link>
-      </div>
+      {(releaseUrl || project.doc_url) && (
+        <div className={styles.projectCardFooter}>
+          {releaseUrl && (
+            <Link className="button button--primary button--sm" to={releaseUrl}>
+              View Releases &rarr;
+            </Link>
+          )}
+          {project.doc_url && (
+            <Link
+              className="button button--outline button--primary button--sm"
+              to={project.doc_url}
+            >
+              Documentation
+            </Link>
+          )}
+        </div>
+      )}
     </div>
   );
 }
@@ -66,10 +84,18 @@ function TimelineEntry({ release, projectName, projectDocUrl }) {
             {release.tag}
           </a>
           {days <= 30 && <span className={styles.badgeNew}>New</span>}
-          <span className={styles.timelineDate}>{formatDate(release.date)} · {formatAge(days)}</span>
+          <span className={styles.timelineDate}>
+            {formatDate(release.date)} · {formatAge(days)}
+          </span>
         </div>
         <div className={styles.timelineMeta}>
-          <Link to={projectDocUrl} className={styles.timelineProject}>{projectName}</Link>
+          {projectDocUrl ? (
+            <Link to={projectDocUrl} className={styles.timelineProject}>
+              {projectName}
+            </Link>
+          ) : (
+            <span className={styles.timelineProject}>{projectName}</span>
+          )}
           <span className={styles.timelineSep}>·</span>
           <a
             href={`https://github.com/5G-MAG/${release.repo}`}
@@ -79,6 +105,7 @@ function TimelineEntry({ release, projectName, projectDocUrl }) {
           >
             {release.repo}
           </a>
+          {release.branch && <span className={styles.timelineBranch}>@{release.branch}</span>}
         </div>
       </div>
       {release.author_login && (
@@ -115,30 +142,43 @@ export default function ReleasesPage() {
           <div className="container">
             <h1 className={styles.title}>Releases</h1>
             <p className={styles.subtitle}>
-              Latest releases across all 5G-MAG reference tool projects. Updated: {releasesData.updated_at}
+              Latest releases across all 5G-MAG reference tool projects.
+              {releasesData.updated_at
+                ? ` Updated: ${releasesData.updated_at}`
+                : ' Not yet synced.'}
             </p>
           </div>
         </div>
         <div className="container">
-          <div className={styles.grid}>
-            {releasesData.projects.map((project) => (
-              <ProjectCard key={project.name} project={project} />
-            ))}
-          </div>
+          {releasesData.updated_at === null ? (
+            <p>
+              Release data hasn&apos;t been generated yet. Run{' '}
+              <code>node scripts/fetch-releases.js</code> locally, or wait for the nightly{' '}
+              <code>Update Data</code> workflow to populate this page.
+            </p>
+          ) : (
+            <>
+              <div className={styles.grid}>
+                {releasesData.projects.map((project) => (
+                  <ProjectCard key={project.name} project={project} />
+                ))}
+              </div>
 
-          <div className={styles.timelineSection}>
-            <h2 className={styles.timelineSectionTitle}>Chronological Release History</h2>
-            <div className={styles.timeline}>
-              {allReleases.map((r, i) => (
-                <TimelineEntry
-                  key={`${r.repo}-${r.tag}-${i}`}
-                  release={r}
-                  projectName={r.projectName}
-                  projectDocUrl={r.projectDocUrl}
-                />
-              ))}
-            </div>
-          </div>
+              <div className={styles.timelineSection}>
+                <h2 className={styles.timelineSectionTitle}>Chronological Release History</h2>
+                <div className={styles.timeline}>
+                  {allReleases.map((r, i) => (
+                    <TimelineEntry
+                      key={`${r.repo}-${r.tag}-${i}`}
+                      release={r}
+                      projectName={r.projectName}
+                      projectDocUrl={r.projectDocUrl}
+                    />
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </main>
     </Layout>

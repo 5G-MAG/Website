@@ -1,0 +1,168 @@
+.header {
+  background:
+    linear-gradient(to right, rgba(0, 0, 0, 0.62) 45%, rgba(0, 0, 0, 0.18) 100%),
+    linear-gradient(to right, #003580 0%, #00a0d2 100%);
+  padding: 3rem 0 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.5rem;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #fff;
+  margin: 0;
+}
+
+.projectSection {
+  margin-bottom: 2.5rem;
+}
+
+.projectSectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.projectSectionTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.prList {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--ifm-background-surface-color);
+}
+
+.prRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.prRow:last-child {
+  border-bottom: none;
+}
+
+.prMain {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.prRepo {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.78rem;
+  color: var(--ifm-color-emphasis-700) !important;
+  text-decoration: none !important;
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 999px;
+  padding: 0.1rem 0.55rem;
+  white-space: nowrap;
+}
+
+.prRepo:hover {
+  color: var(--ifm-color-primary) !important;
+}
+
+.prBranch {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.72rem;
+  color: var(--ifm-color-emphasis-500);
+}
+
+.prTitle {
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--ifm-font-color-base) !important;
+  text-decoration: none !important;
+  flex: 1;
+  min-width: 0;
+}
+
+.prTitle:hover {
+  color: var(--ifm-color-primary) !important;
+}
+
+.pillDraft,
+.pillReady {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border-radius: 999px;
+  padding: 0.15rem 0.55rem;
+  white-space: nowrap;
+}
+
+.pillDraft {
+  background: var(--ifm-color-warning-contrast-background);
+  color: var(--ifm-color-warning-contrast-foreground);
+}
+
+.pillReady {
+  background: var(--ifm-color-success-contrast-background);
+  color: var(--ifm-color-success-contrast-foreground);
+}
+
+.prMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  font-size: 0.78rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.authorAvatar {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.authorName {
+  font-weight: 600;
+}
+
+.lastComment {
+  color: var(--ifm-color-emphasis-600);
+}
+
+.prAge {
+  margin-left: auto;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.ageGreen {
+  color: var(--ifm-color-success);
+}
+.ageOrange {
+  color: var(--ifm-color-warning);
+}
+.ageRed {
+  color: var(--ifm-color-danger);
+}
+
+@media (max-width: 600px) {
+  .prAge {
+    margin-left: 0;
+  }
+}

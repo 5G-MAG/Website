@@ -5,6 +5,11 @@ on:
     - cron: '0 6 * * *'
   workflow_dispatch:
 
+# GITHUB_TOKEN only needs to read; the commit/push step below authenticates
+# with SYNC_TOKEN (a PAT), not the default token.
+permissions:
+  contents: read
+
 jobs:
   update-youtube-videos:
     runs-on: ubuntu-latest

@@ -1,0 +1,74 @@
+name: Update Data
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+# GITHUB_TOKEN only needs to read; the commit/push step below authenticates
+# with SYNC_TOKEN (a PAT), not the default token.
+permissions:
+  contents: read
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.SYNC_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # continue-on-error on each fetch step keeps every data source
+      # independent, same as when releases/contributors were separate
+      # workflows: one script failing (e.g. a transient GitHub API error,
+      # or a repo the token can't read) still lets every other script's
+      # output get committed, rather than blocking all of them.
+      - name: Fetch latest releases
+        run: node scripts/fetch-releases.js
+        env:
+          SYNC_TOKEN: ${{ secrets.SYNC_TOKEN }}
+        continue-on-error: true
+
+      - name: Fetch contributor stats
+        run: node scripts/fetch-contributors.js
+        env:
+          SYNC_TOKEN: ${{ secrets.SYNC_TOKEN }}
+        continue-on-error: true
+
+      - name: Fetch open pull requests
+        run: node scripts/fetch-pull-requests.js
+        env:
+          SYNC_TOKEN: ${{ secrets.SYNC_TOKEN }}
+        continue-on-error: true
+
+      # Requires SYNC_TOKEN to have push access on every repo in
+      # scripts/lib/projects.js — the traffic/views and traffic/clones
+      # endpoints have no read-only tier. Repos it can't access simply
+      # report zero views/clones rather than failing the whole step;
+      # see the comment at the top of the script.
+      - name: Fetch community stats (stars, forks, traffic)
+        run: node scripts/fetch-community-stats.js
+        env:
+          SYNC_TOKEN: ${{ secrets.SYNC_TOKEN }}
+        continue-on-error: true
+
+      # Requires SYNC_TOKEN — the GraphQL Projects API has no
+      # unauthenticated tier, unlike the REST-based fetch steps above.
+      - name: Fetch roadmap board
+        run: node scripts/fetch-roadmaps.js
+        env:
+          SYNC_TOKEN: ${{ secrets.SYNC_TOKEN }}
+        continue-on-error: true
+
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add static/data/releases.json static/data/contributors.json static/data/pull-requests.json static/data/community-stats.json static/data/roadmaps.json
+          git diff --cached --quiet || git commit -m "Update release, contributor, PR, community-stats and roadmap data"
+          git push

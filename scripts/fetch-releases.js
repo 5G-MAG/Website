@@ -6,81 +6,13 @@
 // Requires a token with public read access as SYNC_TOKEN or GITHUB_TOKEN
 // (any authenticated token works). Without one, limited to 60 req/hour.
 const https = require('https');
-const fs    = require('fs');
-const path  = require('path');
+const fs = require('fs');
+const path = require('path');
+const { PROJECTS, repoName, repoBranch } = require('./lib/projects');
 
-const ORG    = '5G-MAG';
-const TOKEN  = process.env.SYNC_TOKEN || process.env.GITHUB_TOKEN || '';
+const ORG = '5G-MAG';
+const TOKEN = process.env.SYNC_TOKEN || process.env.GITHUB_TOKEN || '';
 const OUTPUT = path.join(__dirname, '..', 'static', 'data', 'releases.json');
-
-// Curated repo -> project mapping, matching the categories used on the
-// Activity Dashboard. Add a repo here to have its releases tracked.
-const PROJECTS = [
-  {
-    name: '5G Media Streaming',
-    doc_url: '/developer/5gms/',
-    tagline: 'End-to-end 5G media streaming from network to client · 3GPP TS 26.501',
-    repos: [
-      'rt-5gms-application-function', 'rt-5gms-application-server', 'rt-5gms-application',
-      'rt-5gms-media-session-handler', 'rt-5gms-media-stream-handler',
-      'rt-5gms-common-android-library', 'rt-5gms-application-provider', 'rt-common-shared',
-    ],
-  },
-  {
-    name: '5G Broadcast TV Radio',
-    doc_url: '/developer/5g-broadcast/',
-    tagline: 'LTE-based 5G broadcast for TV, radio and emergency alerts',
-    repos: ['rt-mbms-mw', 'rt-mbms-modem', 'rt-mbms-tx', 'rt-wui', 'rt-mbms-mw-android', 'rt-libflute'],
-  },
-  {
-    name: 'XR Media',
-    doc_url: '/developer/xr/',
-    tagline: 'MPEG-I scene description and XR media integration over 5G',
-    repos: ['rt-xr-unity-player', 'rt-xr-maf-native', 'rt-xr-content', 'rt-xr-blender-exporter'],
-  },
-  {
-    name: '5G Multicast Broadcast',
-    doc_url: '/developer/5g-mbs/',
-    tagline: '5G-native multicast and broadcast services · 3GPP 5G MBS',
-    repos: ['rt-mbs-function', 'rt-mbs-transport-function', 'rt-mbs-examples'],
-  },
-  {
-    name: 'UE Data Collection',
-    doc_url: '/developer/data-collection/',
-    tagline: 'UE-side data collection, reporting and event exposure · 3GPP TS 26.531',
-    repos: ['rt-data-collection-application-function'],
-  },
-  {
-    name: 'V3C Immersive',
-    doc_url: '/developer/v3c/',
-    tagline: 'V3C volumetric video platform for immersive 5G experiences',
-    repos: ['rt-v3c-unity-player', 'rt-v3c-decoder-plugin', 'rt-v3c-content'],
-  },
-  {
-    name: '5GC Service Consumers',
-    doc_url: '/developer/5g-core/',
-    tagline: 'Reference consumers for 5G Core capability exposure APIs',
-    repos: ['rt-5gc-service-consumers'],
-  },
-  {
-    name: 'Beyond 2D Video Experiences',
-    doc_url: '/developer/beyond-2d/',
-    tagline: 'Evaluation framework for beyond-2D video experiences',
-    repos: ['rt-beyond2d-evaluation-framework'],
-  },
-  {
-    name: '6G Testbed and AI Traffic',
-    doc_url: '/developer/6g-testbed/',
-    tagline: '6G testbed and AI-driven traffic characterization',
-    repos: ['6G-Testbed'],
-  },
-  {
-    name: 'Network APIs',
-    doc_url: '/developer/network-apis/',
-    tagline: 'Network capability exposure through CAMARA APIs',
-    repos: ['rt-camara-examples'],
-  },
-];
 
 function apiGet(urlPath) {
   return new Promise((resolve, reject) => {
@@ -93,36 +25,53 @@ function apiGet(urlPath) {
         ...(TOKEN ? { Authorization: `Bearer ${TOKEN}` } : {}),
       },
     };
-    https.get(options, (res) => {
-      let data = '';
-      res.on('data', (chunk) => (data += chunk));
-      res.on('end', () => {
-        if (res.statusCode === 404) {
-          resolve(null); // no releases for this repo
-          return;
-        }
-        if (res.statusCode < 200 || res.statusCode >= 300) {
-          reject(new Error(`${urlPath} -> ${res.statusCode}: ${data.slice(0, 200)}`));
-          return;
-        }
-        try {
-          resolve(JSON.parse(data));
-        } catch (e) {
-          reject(e);
-        }
-      });
-    }).on('error', reject);
+    https
+      .get(options, (res) => {
+        let data = '';
+        res.on('data', (chunk) => (data += chunk));
+        res.on('end', () => {
+          if (res.statusCode === 404) {
+            resolve(null); // no releases for this repo
+            return;
+          }
+          if (res.statusCode < 200 || res.statusCode >= 300) {
+            reject(new Error(`${urlPath} -> ${res.statusCode}: ${data.slice(0, 200)}`));
+            return;
+          }
+          try {
+            resolve(JSON.parse(data));
+          } catch (e) {
+            reject(e);
+          }
+        });
+      })
+      .on('error', reject);
   });
 }
 
-async function latestRelease(repo) {
-  const release = await apiGet(`/repos/${ORG}/${repo}/releases/latest`);
+// GitHub has no "latest release on branch X" endpoint — /releases/latest
+// always considers the whole repo. For a branch-scoped entry (e.g.
+// rt-mbms-tx-for-qrd-and-crd is tracked separately on `main` vs
+// `emergency-alerts`), fetch the full release list instead and match on
+// target_commitish, the branch/commit a release's tag was cut from.
+async function latestReleaseOnBranch(repo, branch) {
+  const releases = await apiGet(`/repos/${ORG}/${repo}/releases?per_page=100`);
+  if (!Array.isArray(releases)) return null;
+  return releases.find((r) => r.target_commitish === branch) || null;
+}
+
+async function latestRelease(repoEntry) {
+  const repo = repoName(repoEntry);
+  const branch = repoBranch(repoEntry);
+  const release = branch
+    ? await latestReleaseOnBranch(repo, branch)
+    : await apiGet(`/repos/${ORG}/${repo}/releases/latest`);
   if (!release) return null;
   return {
     repo,
+    branch,
     tag: release.tag_name,
     date: release.published_at ? release.published_at.slice(0, 10) : '-',
-    blink: false,
     url: release.html_url,
     author_login: release.author ? release.author.login : null,
     author_avatar: release.author ? release.author.avatar_url : null,
@@ -142,12 +91,14 @@ async function main() {
   const projects = [];
   for (const project of PROJECTS) {
     const releases = [];
-    for (const repo of project.repos) {
+    for (const repoEntry of project.repos) {
       let release;
       try {
-        release = await latestRelease(repo);
+        release = await latestRelease(repoEntry);
       } catch (e) {
-        console.warn(`  skip ${repo}: ${e.message}`);
+        const branch = repoBranch(repoEntry);
+        const label = branch ? `${repoName(repoEntry)}@${branch}` : repoName(repoEntry);
+        console.warn(`  skip ${label}: ${e.message}`);
         continue;
       }
       if (release) releases.push(release);
@@ -156,13 +107,12 @@ async function main() {
     if (releases.length === 0) continue;
 
     releases.sort((a, b) => b.date.localeCompare(a.date));
-    // Mark the single most recent release across the whole project.
-    releases[0].blink = true;
 
     projects.push({
       name: project.name,
       doc_url: project.doc_url,
       tagline: project.tagline,
+      releases_slug: project.releases_slug,
       latest_date: releases[0].date,
       releases,
     });

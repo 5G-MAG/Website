@@ -1,5 +1,7 @@
 .header {
-  background: linear-gradient(135deg, var(--ifm-color-primary-darkest) 0%, var(--ifm-color-primary-textsafe) 100%);
+  background:
+    linear-gradient(to right, rgba(0, 0, 0, 0.62) 45%, rgba(0, 0, 0, 0.18) 100%),
+    linear-gradient(to right, #003580 0%, #00a0d2 100%);
   padding: 3rem 0 2.5rem;
   margin-bottom: 2.5rem;
 }
@@ -26,11 +28,15 @@
 }
 
 @media (max-width: 900px) {
-  .spotlightGrid { grid-template-columns: repeat(2, 1fr); }
+  .spotlightGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 480px) {
-  .spotlightGrid { grid-template-columns: 1fr; }
+  .spotlightGrid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .spotCard {
@@ -47,7 +53,9 @@
   border-radius: 8px;
   text-decoration: none !important;
   color: inherit !important;
-  transition: transform 0.15s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
 }
 
 .spotCard:hover {
@@ -70,6 +78,11 @@
 }
 
 .spotCardFirst .spotRank {
+  /* darker than the decorative #b8860b border accent to clear 4.5:1 AA text contrast in light mode */
+  color: #8a6100;
+}
+
+:global([data-theme='dark']) .spotCardFirst .spotRank {
   color: #b8860b;
 }
 
@@ -201,5 +214,7 @@
 }
 
 @media (max-width: 560px) {
-  .rankBarTrack { display: none; }
+  .rankBarTrack {
+    display: none;
+  }
 }

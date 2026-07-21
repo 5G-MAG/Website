@@ -15,7 +15,9 @@ function SpotlightCard({ c, rank }) {
       <span className={styles.spotName}>{c.login}</span>
       <span className={styles.spotStats}>
         <span className={styles.statPill}>{c.contributions} contributions</span>
-        <span className={styles.statPill}>{c.repo_count} {c.repo_count === 1 ? 'repo' : 'repos'}</span>
+        <span className={styles.statPill}>
+          {c.repo_count} {c.repo_count === 1 ? 'repo' : 'repos'}
+        </span>
       </span>
     </a>
   );
@@ -29,7 +31,9 @@ function RankRow({ c, rank, maxContributions }) {
       <img className={styles.avatarSm} src={c.avatar_url} alt={c.login} loading="lazy" />
       <span className={styles.rankNameBlock}>
         <span className={styles.rankName}>{c.login}</span>
-        <span className={styles.rankMeta}>{c.repo_count} {c.repo_count === 1 ? 'repository' : 'repositories'}</span>
+        <span className={styles.rankMeta}>
+          {c.repo_count} {c.repo_count === 1 ? 'repository' : 'repositories'}
+        </span>
       </span>
       <span className={styles.rankMetric}>
         <span className={styles.rankBarTrack}>
@@ -57,18 +61,15 @@ export default function ContributorsPage() {
           <div className="container">
             <h1 className={styles.title}>Top Contributors</h1>
             <p className={styles.subtitle}>
-              Ranked by commits across every public 5G-MAG repository{repo_count ? ` (${repo_count} repositories)` : ''}.
+              Ranked by commits across every public 5G-MAG repository
+              {repo_count ? ` (${repo_count} repositories)` : ''}.
               {updated_at ? ` Updated: ${updated_at}.` : ' Not yet synced.'}
             </p>
           </div>
         </div>
         <div className="container padding-bottom--xl">
           {contributors.length === 0 ? (
-            <p>
-              Contributor stats haven&apos;t been generated yet. Run{' '}
-              <code>node scripts/fetch-contributors.js</code> locally, or wait for the nightly{' '}
-              <code>Update Contributors</code> workflow to populate this page.
-            </p>
+            <p>Contributor stats aren&apos;t available yet. Check back soon.</p>
           ) : (
             <>
               <div className={styles.spotlightGrid}>

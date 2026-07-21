@@ -1,0 +1,71 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 480px;
+  margin: 1.5rem 0;
+}
+
+.row {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.emailInput {
+  flex: 1;
+  min-width: 220px;
+  font: inherit;
+  font-size: 0.92rem;
+  padding: 0.55rem 0.7rem;
+  border-radius: 6px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-font-color-base);
+}
+
+.emailInput:focus {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 1px;
+}
+
+.consentRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--ifm-color-emphasis-700);
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.consentRow input {
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+
+.errorText {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--ifm-color-danger);
+}
+
+.notice {
+  max-width: 480px;
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  border: 1px solid var(--ifm-color-success-contrast-background);
+  border-top: 3px solid var(--ifm-color-success);
+  border-radius: 10px;
+  background: var(--ifm-color-success-contrast-background);
+  color: var(--ifm-color-success-contrast-foreground);
+}
+
+.notice strong {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.notice p {
+  margin: 0;
+}

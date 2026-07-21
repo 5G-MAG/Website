@@ -1,9 +1,9 @@
 name: Deploy static content to Pages
 
-# Also fires after update-contributors.yml (and any future update-*.yml)
-# pushes fresh data to main, since those use a PAT (SYNC_TOKEN) rather
-# than the default GITHUB_TOKEN — pushes made with a PAT do trigger
-# other workflows, unlike the default token's anti-loop-protected push.
+# Also fires after update-data.yml or update-youtube-videos.yml pushes
+# fresh data to main, since those use a PAT (SYNC_TOKEN) rather than the
+# default GITHUB_TOKEN — pushes made with a PAT do trigger other
+# workflows, unlike the default token's anti-loop-protected push.
 on:
   push:
     branches: ['main']
