@@ -1,10 +1,11 @@
 ---
-title: Repositories
+title: Resources
 hide_title: true
 sidebar_position: 1
-description: Lists the 5G-MAG forks of Open5GS and srsRAN, and maps each branch to its MBS or 5G Broadcast use case.
+description: Roadmap notes, source repository forks (Open5GS, srsRAN, srsRAN_4G), branch mapping, and release status for the 3GPP RAN and Core Platforms project.
 ---
 
+import ProjectReleases from '@site/src/components/ProjectReleases';
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
 
 <div class="topic-banner">
@@ -17,23 +18,30 @@ import ProjectRepositories from '@site/src/components/ProjectRepositories';
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">3GPP RAN and Core Platforms</span>
-<h1>Software Repositories</h1>
+<h1>Resources</h1>
 </div>
 </div>
 
-<div style={{ margin: '8px 0' }}><a class="button button--outline button--primary" href="/reference-tools/3gpp-platforms/scope" style={{ margin: '2px 4px 2px 0' }}>Scope</a> <a class="button button--outline button--primary" href="/reference-tools/3gpp-platforms/repositories" style={{ margin: '2px 4px 2px 0' }}>GitHub Repos</a> <a class="button button--outline button--primary" href="/reference-tools/3gpp-platforms/tutorials" style={{ margin: '2px 4px 2px 0' }}>Tutorials</a></div>
+<div style={{ margin: '8px 0' }}><a class="button button--outline button--primary" href="/reference-tools/3gpp-platforms/scope" style={{ margin: '2px 4px 2px 0' }}>Scope</a> <a class="button button--outline button--primary" href="/reference-tools/3gpp-platforms/resources" style={{ margin: '2px 4px 2px 0' }}>Resources</a> <a class="button button--outline button--primary" href="/reference-tools/3gpp-platforms/tutorials" style={{ margin: '2px 4px 2px 0' }}>Tutorials</a></div>
+
+Roadmap notes, source repository forks and latest releases for the 3GPP RAN and Core Platforms project. Please refer to the [Scope](./scope) page for context on how these components fit together.
+
+## Roadmap
+
+Unlike the other reference tools, these platforms are forks that track their own upstream projects (Open5GS, srsRAN) rather than a dedicated 5G-MAG feature roadmap — the branch mapping below is the roadmap: it's what maps a given fork/branch to the delivery technology it supports.
+
+## Repositories
 
 The following repositories are available. Please refer to the "Scope" section of the different projects for more context. The table below lists the 5G-MAG forks of the upstream RAN and Core software; when the automation has run, it shows each repository with its links and status.
 
 <ProjectRepositories project="3gpp-platforms" />
 
-
-## Branches at a glance
+### Branches at a glance
 
 Each fork carries a `main`/`master` branch tracking the upstream project, plus branches that add the delivery technology 5G-MAG works on. PWS (Public Warning System) is the cell-broadcast mechanism used for emergency alerts. The mapping below shows which branch to use for which purpose.
 
 | Repository        | Branch           | Use case                                 |
-| ----------------- | ---------------- | ---------------------------------------- |
+| ------------------ | ----------------- | ----------------------------------------- |
 | open5gs           | main             | Regular 5G network (baseline core)       |
 | open5gs           | 5mbs             | 5MBS implementations (main line)         |
 | open5gs           | 5mbs-development | 5MBS development branch                  |
@@ -47,9 +55,7 @@ Each fork carries a `main`/`master` branch tracking the upstream project, plus b
 | srsRAN            | main_srsran_4g   | Baseline srsRAN fork                     |
 | srsRAN            | fembms           | LTE-based 5G Broadcast / MBMS            |
 
----
-
-## Fork of Open5GS
+#### Fork of Open5GS
 
 [open5gs](https://github.com/5G-MAG/open5gs)
 
@@ -59,7 +65,7 @@ The branches available under this repository are:
 - **5mbs** - Acts as the "main" branch for implementations related to 5MBS.
 - **5mbs-development** - Acts as the "development" branch for the 5mbs branch.
 
-## Fork of srsRAN Project
+#### Fork of srsRAN Project
 
 [rt-srsRAN_Project](https://github.com/5G-MAG/rt-srsRAN_Project)
 
@@ -69,7 +75,7 @@ The branches available under this repository are:
 - **5mbs** - Acts as the "main" branch for implementations related to 5MBS.
 - **5mbs-development** - Acts as the "development" branch for the 5mbs branch.
 
-## Fork of srsRAN_4G
+#### Fork of srsRAN_4G
 
 [srsRAN_4G](https://github.com/5G-MAG/srsRAN_4G)
 
@@ -80,7 +86,7 @@ The branches available under this repository are:
 - **fembms** - Acts as the "main" branch for implementations related to 5G Broadcast / MBMS.
 - **pws-enb** - Acts as the "main" branch for implementations related to Emergency Alerts.
 
-## Fork of srsRAN (discontinued version prior to srsRAN_4G)
+#### Fork of srsRAN (discontinued version prior to srsRAN_4G)
 
 [srsRAN](https://github.com/5G-MAG/srsRAN)
 
@@ -88,3 +94,12 @@ The branches available under this repository are:
 
 - **main_srsran_4g** - A fork of the "main" branch of srsRAN.
 - **fembms** - Acts as the "main" branch for implementations related to 5G Broadcast / MBMS.
+
+## Releases
+
+<ProjectReleases name="3GPP RAN and Core Platforms" />
+
+## Related
+
+- [Scope](./scope)
+- [Tutorials](./tutorials)

@@ -49,7 +49,9 @@
   background: var(--ifm-background-surface-color);
   color: inherit !important;
   text-decoration: none !important;
-  transition: box-shadow 0.2s ease, transform 0.15s ease;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
 }
 
 .productCard:hover {
@@ -131,7 +133,9 @@
   background: var(--ifm-background-surface-color);
   color: inherit !important;
   text-decoration: none !important;
-  transition: box-shadow 0.2s ease, transform 0.15s ease;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
 }
 
 .activityCard:hover {
@@ -147,7 +151,11 @@
   justify-content: center;
   gap: 0.65rem;
   padding: 1.5rem 1.25rem 1.35rem;
-  background: linear-gradient(135deg, var(--ifm-color-primary-darkest) 0%, var(--ifm-color-primary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--ifm-color-primary-darkest) 0%,
+    var(--ifm-color-primary) 100%
+  );
   transition: opacity 0.2s ease;
 }
 
@@ -162,7 +170,7 @@
 }
 
 .activityIconBandTitle {
-  font-size: 1.30rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: #fff;
   text-align: center;
@@ -198,8 +206,22 @@
   gap: 2rem;
 }
 
+.pillarGrid3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.pillarGrid2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
 @media (max-width: 768px) {
-  .pillarGrid {
+  .pillarGrid,
+  .pillarGrid3,
+  .pillarGrid2 {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
@@ -262,7 +284,11 @@
 
 .categoryHeader {
   padding: 1.4rem 1.4rem 1.1rem;
-  background: linear-gradient(135deg, var(--ifm-color-primary-darkest) 0%, var(--ifm-color-primary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--ifm-color-primary-darkest) 0%,
+    var(--ifm-color-primary) 100%
+  );
 }
 
 .categoryTitle {
@@ -287,11 +313,15 @@
 }
 
 @media (max-width: 768px) {
-  .categoryTopicGrid { grid-template-columns: 1fr 1fr; }
+  .categoryTopicGrid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (max-width: 480px) {
-  .categoryTopicGrid { grid-template-columns: 1fr; }
+  .categoryTopicGrid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .categoryTopicCard {
@@ -304,7 +334,9 @@
   background: var(--ifm-background-color);
   text-decoration: none !important;
   color: inherit !important;
-  transition: border-color 0.15s ease, background 0.15s ease;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
 }
 
 .categoryTopicCard:hover {
@@ -371,29 +403,164 @@
   }
 }
 
-/* ── Hero figure (icon cloud) ─────────────────────────────────────────
-   Same treatment as the homepage hero: fluid sizing matching the SVG
-   viewBox aspect ratio, hidden below 996px where the hero text needs
-   the full row. */
-.heroFigure {
-  width: clamp(280px, 30vw, 640px);
-  aspect-ratio: 950 / 560;
-  flex-shrink: 0;
-  display: none;
+/* Hero figure (icon cloud) sizing + repel-transition CSS now lives in the
+   shared src/components/HeroFigure/styles.module.css, imported by that
+   component itself (used identically on the homepage and on /developer). */
+
+/* ── Fee table (Membership) ────────────────────────────────────────── */
+
+.feeTable {
+  /* Infima's global `table { display: block; }` (for markdown tables that
+     need to scroll horizontally on narrow screens) otherwise turns this
+     into a plain block box: the <table> itself fills its 760px wrapper,
+     but thead/tr/td keep their own table-* display values and form an
+     anonymous table box sized from content alone, ignoring that 760px —
+     so the rows/borders visibly stop short of the table's own right edge. */
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  margin: 0;
 }
 
-@media (min-width: 996px) {
-  .heroFigure {
-    display: block;
+.feeTable th {
+  text-align: left;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--ifm-color-emphasis-600);
+  border-bottom: 2px solid var(--ifm-color-emphasis-200);
+}
+
+.feeTable td {
+  padding: 0.65rem 0.9rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  font-size: 0.9rem;
+}
+
+.feeTable tr:last-child td {
+  border-bottom: none;
+}
+
+.feeTableTier {
+  font-weight: 700;
+  color: var(--ifm-heading-color);
+}
+
+.feeTableFee {
+  font-weight: 700;
+  color: var(--ifm-color-primary);
+  white-space: nowrap;
+}
+
+.contactCallout {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  max-width: 760px;
+  margin: 1.5rem auto 0;
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-left: 4px solid var(--ifm-color-primary);
+  background: var(--ifm-color-emphasis-100);
+}
+
+.contactCalloutIcon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--ifm-color-primary);
+  color: #fff;
+}
+
+.contactCalloutIcon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.contactCalloutBody {
+  flex: 1;
+  text-align: left;
+}
+
+.contactCalloutBody p {
+  margin: 0;
+}
+
+.contactCalloutBody strong {
+  display: block;
+  font-size: 1.05rem;
+  margin-bottom: 0.2rem;
+}
+
+@media (max-width: 640px) {
+  .contactCallout {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .contactCalloutBody {
+    text-align: center;
   }
 }
 
-.tileRepel {
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+/* ── Photo gallery (real event/work photos) ────────────────────────── */
+
+.photoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .tileRepel {
-    transition: none;
+.photoGrid1 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.photoFigure {
+  margin: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-background-surface-color);
+}
+
+.photoImg {
+  display: block;
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.photoGrid1 .photoImg {
+  height: 420px;
+}
+
+.photoCaption {
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  color: var(--ifm-color-emphasis-700);
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .photoGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .photoImg {
+    height: 220px;
   }
 }

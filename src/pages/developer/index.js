@@ -1,530 +1,480 @@
-import { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
+import HubHero from '@site/src/components/HubHero';
+import ProjectIcon from '@site/src/components/ProjectIcon';
+import GodeeperCard, { icon } from '@site/src/components/GodeeperCard';
+import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import styles from './index.module.css';
 import releasesData from '@site/static/data/releases.json';
 import youtubeData from '@site/static/data/youtube.json';
+import { daysSince, formatAge } from '@site/src/utils/releases';
+import { FACT_REPOSITORIES, FACT_CLONES } from '@site/src/data/facts';
 
-function usePrefersReducedMotion() {
-  const [reduced, setReduced] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setReduced(mq.matches);
-    const onChange = () => setReduced(mq.matches);
-    mq.addEventListener('change', onChange);
-    return () => mq.removeEventListener('change', onChange);
-  }, []);
-  return reduced;
-}
+const DEV_HERO_ICON_PATH = (
+  <>
+    <path d="M7 8l-4 4l4 4" />
+    <path d="M17 8l4 4l-4 4" />
+    <path d="M14 4l-4 16" />
+  </>
+);
 
-// Same floating + cursor-repel icon cloud as the homepage hero, compacted
-// into a tighter cluster: 3 large anchor tiles for this portal's own
-// top-level categories (Reference Tools, Testbeds, Applications — see
-// PRODUCT_TYPES above), each a distinct non-blue color reused from the
-// numbered step-by-step process diagrams already used repeatedly across
-// several /tech/network-apis pages (steps 0/1/2: pre-conditions,
-// before-use, during-operation) — matching /tech's hero for consistency,
-// plus 7 more randomly drawn from the remaining SLIDE_ICONS (no repeats)
-// in TONE_A to fill out the cloud without competing with the anchors.
-const TONE_A = '#00A0D2';
-const ANCHOR_REFTOOLS = '#f38d3c';
-const ANCHOR_TESTBEDS = '#74b85c';
-const ANCHOR_APPS = '#7c52e4';
-const REPEL_RADIUS = 150;
-const REPEL_STRENGTH = 46;
-
-const HERO_TILES = [
-  { cx: 286, cy: 158, size: 130, rot: -0.4, color: ANCHOR_REFTOOLS, d: 'M7 8l-4 4l4 4 M17 8l4 4l-4 4 M14 4l-4 16' }, // Reference Tools
-  { cx: 740, cy: 394, size: 128, rot: 6.6,  color: ANCHOR_TESTBEDS, d: 'M9 3l6 0 M10 9l4 0 M10 3v6l-4 11a.7 .7 0 0 0 .5 1h11a.7 .7 0 0 0 .5 -1l-4 -11v-6' }, // Testbeds
-  { cx: 614, cy: 205, size: 130, rot: -6.5, color: ANCHOR_APPS, d: 'M4.5 16.5c-1.5 1.26 -2 5 -2 5s3.74 -.5 5 -2c.71 -.84 .7 -2.13 -.09 -2.91a2.18 2.18 0 0 0 -2.91 -.09z M12 15l-3 -3a22 22 0 0 1 2 -3.95a12.88 12.88 0 0 1 10 -5.93c0 2.72 -.78 7.5 -6 11a22.35 22.35 0 0 1 -4 2z M9 12h-4s.55 -3.03 2 -4c1.62 -1.08 5 0 5 0 M12 15v5s3.03 -.55 4 -2c1.08 -1.62 0 -5 0 -5' }, // Applications
-  // Randomly added (no repeats)
-  { cx: 812, cy: 260, size: 111, rot: 8.2,  color: TONE_A, d: 'M14 3v4a1 1 0 0 0 1 1h4 M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2 M9 17l0 -5 M12 17l0 -1 M15 17l0 -3' }, // UE Data Collection
-  { cx: 304, cy: 321, size: 112, rot: -0.3, color: TONE_A, d: 'M7 4v16l13 -8l-13 -8' }, // 5G Media Streaming
-  { cx: 164, cy: 382, size: 98,  rot: 8.5,  color: TONE_A, d: 'M6.657 16c-2.572 0 -4.657 -2.007 -4.657 -4.483c0 -2.475 2.085 -4.482 4.657 -4.482c.393 -1.762 1.794 -3.2 3.675 -3.773c1.88 -.572 3.956 -.193 5.444 1c1.488 1.19 2.162 3.007 1.77 4.769h.99c1.913 0 3.464 1.56 3.464 3.486c0 1.927 -1.551 3.487 -3.465 3.487h-11.878 M12 16v5 M16 16v4a1 1 0 0 0 1 1h4 M8 16v4a1 1 0 0 1 -1 1h-4' }, // 5G Core Service Consumers
-  { cx: 437, cy: 244, size: 94,  rot: 4.1,  color: TONE_A, d: 'M4 8v-2a2 2 0 0 1 2 -2h2 M4 16v2a2 2 0 0 0 2 2h2 M16 4h2a2 2 0 0 1 2 2v2 M16 20h2a2 2 0 0 0 2 -2v-2 M12 12.5l4 -2.5 M8 10l4 2.5v4.5l4 -2.5v-4.5l-4 -2.5l-4 2.5 M8 10v4.5l4 2.5' }, // V3C Immersive
-  { cx: 565, cy: 364, size: 100, rot: 8.1,  color: TONE_A, d: 'M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5' }, // Auxiliary Tools
-  { cx: 754, cy: 151, size: 81,  rot: -3.7, color: TONE_A, d: 'M3 9a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2l0 -9 M16 3l-4 4l-4 -4' }, // DVB-I over 5G
-  { cx: 157, cy: 203, size: 80,  rot: 5.9,  color: TONE_A, d: 'M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1 M9 15l3 -3l3 3 M12 12l0 9' }, // Multimedia Protocols
-];
-
-function HeroFigure() {
-  const reducedMotion = usePrefersReducedMotion();
-  const svgRef = useRef(null);
-  const tileRefs = useRef([]);
-  const rafRef = useRef(null);
-
-  const repelTiles = (mouseX, mouseY) => {
-    HERO_TILES.forEach((t, i) => {
-      const el = tileRefs.current[i];
-      if (!el) return;
-      const dx = t.cx - mouseX;
-      const dy = t.cy - mouseY;
-      const dist = Math.hypot(dx, dy) || 0.001;
-      if (dist >= REPEL_RADIUS) {
-        el.style.transform = 'translate(0px, 0px)';
-        return;
-      }
-      const push = (1 - dist / REPEL_RADIUS) * REPEL_STRENGTH;
-      el.style.transform = `translate(${(dx / dist) * push}px, ${(dy / dist) * push}px)`;
-    });
-  };
-
-  const handleMouseMove = (e) => {
-    if (reducedMotion || !svgRef.current) return;
-    const rect = svgRef.current.getBoundingClientRect();
-    const mouseX = ((e.clientX - rect.left) / rect.width) * 950;
-    const mouseY = ((e.clientY - rect.top) / rect.height) * 560;
-    if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    rafRef.current = requestAnimationFrame(() => repelTiles(mouseX, mouseY));
-  };
-
-  const handleMouseLeave = () => {
-    if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    tileRefs.current.forEach((el) => {
-      if (el) el.style.transform = 'translate(0px, 0px)';
-    });
-  };
-
-  return (
-    <svg
-      ref={svgRef}
-      viewBox="0 0 950 560"
-      className={styles.heroFigure}
-      aria-hidden="true"
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-    >
-      <defs>
-        <filter id="devTileShadow" x="-60%" y="-60%" width="220%" height="220%">
-          <feDropShadow dx="0" dy="6" stdDeviation="8" floodColor="#001a33" floodOpacity="0.35" />
-        </filter>
-      </defs>
-      {HERO_TILES.map((t, i) => {
-        const iconScale = (t.size * 0.62) / 24;
-        return (
-          <g key={i} ref={(el) => (tileRefs.current[i] = el)} className={styles.tileRepel}>
-            <g transform={`translate(${t.cx},${t.cy}) rotate(${t.rot})`}>
-              <g>
-                {!reducedMotion && (
-                  <animateTransform
-                    attributeName="transform"
-                    type="translate"
-                    values="0 0; 0 -7; 0 0"
-                    dur={`${3.4 + (i % 3) * 0.5}s`}
-                    begin={`${i * 0.3}s`}
-                    repeatCount="indefinite"
-                    calcMode="spline"
-                    keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"
-                    keyTimes="0; 0.5; 1"
-                  />
-                )}
-                <rect
-                  x={-t.size / 2} y={-t.size / 2} width={t.size} height={t.size}
-                  rx={t.size * 0.24} fill={t.color} filter="url(#devTileShadow)"
-                />
-                <g
-                  transform={`translate(${-12 * iconScale},${-12 * iconScale}) scale(${iconScale})`}
-                  fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-                >
-                  <path d={t.d} />
-                </g>
-              </g>
-            </g>
-          </g>
-        );
-      })}
-    </svg>
-  );
-}
-
-const PROJECT_TYPE_MAP = {
-  '5G Media Streaming':        'Reference Tools',
-  '5G Broadcast TV Radio':     'Reference Tools',
-  'XR Media':                  'Reference Tools',
-  '5G Multicast Broadcast':    'Reference Tools',
-  'UE Data Collection':        'Reference Tools',
-  'V3C Immersive':             'Reference Tools',
-  'Multimedia Protocols':      'Reference Tools',
-  'DVB-I over 5G':             'Reference Tools',
-  'Emergency Alerts':          'Reference Tools',
-  '5G Core Service Consumers': 'Reference Tools',
-  'Conversational Avatar':     'Reference Tools',
-  'Beyond 2D':                 'Reference Tools',
-  'Network APIs':              'Reference Tools',
-  '6G Testbed':                'Testbed',
-  'AI ML':                     'Testbed',
-};
-
+// Labels and descriptions sourced from the 5G-MAG Portfolio Slides (slide 9:
+// "The Media Connectivity Software Accelerator") rather than written from
+// scratch.
 const PRODUCT_TYPES = [
   {
     icon: 'Reference Tools',
     label: 'Reference Tools',
-    description:
-      'Reference implementations of specifications for rapid prototyping, validation and verification. The foundation of everything we build.',
-    href: '/developer/projects',
+    description: 'Turn standards into open, implementation-ready code anyone can build on.',
+    href: '/reference-tools',
   },
   {
     icon: 'Testbeds',
     label: 'Testbeds & Evaluation Tools',
-    description:
-      'Research platforms for testing, data collection and performance evaluation of emerging technologies.',
-    href: '/developer/testbeds',
+    description: 'Reproducible test environments and benchmark frameworks.',
+    href: '/testbeds',
   },
   {
     icon: 'Applications',
     label: 'Application Prototypes',
-    description:
-      'MVPs and demonstrations that run complete systems built on Reference Tools, enabling real applications and services.',
-    href: '/developer/applications',
+    description: 'Use-case driven implementations towards real-world applications.',
+    href: '/applications',
   },
 ];
 
+// Deliberately NOT shared with the near-identical arrays in
+// applications/index.js and reference-tools/index.js: each page's topic
+// titles were set independently by a 2026-07-19 per-slot naming review
+// (every hero/hub-card/sidebar label reviewed and decided on its own), not
+// by a blanket short-label-vs-full-name rule. Some topics ended up sharing
+// one canonical name across all three pages (e.g. "Avatar Communication
+// with MPEG ARF"); others still carry a shorter label here or in
+// applications/index.js while reference-tools/index.js keeps a fuller
+// canonical project name (e.g. "Apps with Network APIs" here vs "Network
+// APIs" there). Don't assume the two hub pages agree on a given topic —
+// check both before editing, and change only the file(s) the current
+// naming decision actually covers.
 const CATEGORIES = [
   {
-    title: 'Streaming, Media Delivery & Data Collection',
+    title: '5G Media Streaming (5GMS)',
     desc: 'End-to-end 5G media streaming from network to client, including data collection and reporting.',
     topics: [
-      { title: '5G Media Streaming',        desc: 'Streaming AF/AS — 3GPP TS 26.5xx',      href: '/developer/5gms',                     icon: <ProjectIcon name="5G Media Streaming" /> },
-      { title: 'UE Data Collection',         desc: 'Reporting and event exposure',            href: '/developer/data-collection',  icon: <ProjectIcon name="UE Data Collection" /> },
-      { title: 'Multimedia Content Delivery',desc: 'FLUTE and ROUTE reference tooling',       href: '/developer/multimedia',            icon: <ProjectIcon name="Multimedia Protocols" /> },
-      { title: 'DVB-I over 5G',             desc: 'DVB-I service delivery over 5G',           href: '/developer/dvb-i',                           icon: <ProjectIcon name="DVB-I over 5G" /> },
+      {
+        title: '5G Media Streaming (5GMS)',
+        desc: 'Streaming AF/AS — 3GPP TS 26.5xx',
+        href: '/reference-tools/5gms',
+        icon: <ProjectIcon name="5G Media Streaming" />,
+      },
+      {
+        title: 'UE Data Collection, Reporting and Event Exposure',
+        desc: 'Reporting and event exposure',
+        href: '/reference-tools/data-collection',
+        icon: <ProjectIcon name="UE Data Collection" />,
+      },
+      {
+        title: 'Multimedia Delivery Protocols',
+        desc: 'FLUTE and ROUTE reference tooling',
+        href: '/reference-tools/multimedia',
+        icon: <ProjectIcon name="Multimedia Protocols" />,
+      },
+      {
+        title: 'DVB-I Services over 5G Systems',
+        desc: 'DVB-I service delivery over 5G',
+        href: '/reference-tools/dvb-i',
+        icon: <ProjectIcon name="DVB-I over 5G" />,
+      },
     ],
   },
   {
-    title: '5G Broadcast for TV, Radio & Emergency Alerts',
+    title: '5G Broadcast - TV, Radio and Emergency Alerts',
     desc: 'LTE-based 5G broadcast for TV and radio services, plus standardised emergency alert delivery.',
     topics: [
-      { title: '5G Broadcast',              desc: 'LTE-based TV & radio broadcast',           href: '/developer/5g-broadcast',                 icon: <ProjectIcon name="5G Broadcast TV Radio" /> },
-      { title: 'Emergency Alerts',          desc: 'Broadcast-based public warning system',    href: '/developer/emergency-alerts',                       icon: <ProjectIcon name="5G Broadcast Emergency Alerts" /> },
+      {
+        title: '5G Broadcast - TV and Radio Services',
+        desc: 'LTE-based TV & radio broadcast',
+        href: '/reference-tools/5g-broadcast',
+        icon: <ProjectIcon name="5G Broadcast TV Radio" />,
+      },
+      {
+        title: '5G Broadcast - Emergency Alerts',
+        desc: 'Broadcast-based public warning system',
+        href: '/reference-tools/emergency-alerts',
+        icon: <ProjectIcon name="5G Broadcast Emergency Alerts" />,
+      },
     ],
   },
   {
-    title: 'Multicast & Broadcast Services in 5G',
+    title: '5G Multicast Broadcast Services (MBS)',
     desc: 'Full 5G-native multicast and broadcast services, including 5G MBS and related network functions.',
     topics: [
-      { title: '5G Multicast Broadcast',    desc: '5G MBS architecture and tooling',          href: '/developer/5g-mbs',         icon: <ProjectIcon name="5G Multicast Broadcast" /> },
-      { title: '5G Core Service Consumers', desc: '5GC consumer reference tools',             href: '/developer/5g-core',              icon: <ProjectIcon name="5G Core Service Consumers" /> },
+      {
+        title: '5G Multicast Broadcast Services (MBS)',
+        desc: '5G MBS architecture and tooling',
+        href: '/reference-tools/5g-mbs',
+        icon: <ProjectIcon name="5G Multicast Broadcast" />,
+      },
+      {
+        title: '5G Core Service Consumers',
+        desc: '5GC consumer reference tools',
+        href: '/reference-tools/5g-core',
+        icon: <ProjectIcon name="5GC Service Consumers" />,
+      },
     ],
   },
   {
     title: 'XR and MPEG-I Scene Description',
     desc: 'MPEG-I scene description and avatar communications for immersive 5G experiences.',
     topics: [
-      { title: 'XR Media Integration',      desc: 'XR and scene description over 5G',        href: '/developer/xr',             icon: <ProjectIcon name="XR Media" /> },
-      { title: 'Avatar Communications',     desc: 'MPEG ARF avatar communication',            href: '/developer/avatar',                  icon: <ProjectIcon name="Conversational Avatar" /> },
+      {
+        title: 'XR and MPEG-I Scene Description',
+        desc: 'XR and scene description over 5G',
+        href: '/reference-tools/xr',
+        icon: <ProjectIcon name="XR Media" />,
+      },
+      {
+        title: 'Avatar Communication with MPEG ARF',
+        desc: 'MPEG ARF avatar communication',
+        href: '/reference-tools/avatar',
+        icon: <ProjectIcon name="Conversational Avatar" />,
+      },
     ],
   },
   {
     title: 'Volumetric Video & Beyond 2D',
     desc: 'V3C immersive platform and beyond-2D video evaluation frameworks.',
     topics: [
-      { title: 'V3C Immersive Platform',    desc: 'Volumetric 3D content platform',           href: '/developer/v3c',                 icon: <ProjectIcon name="V3C Immersive" /> },
-      { title: 'Beyond-2D Evaluation',      desc: 'Video quality evaluation tools',           href: '/developer/beyond-2d',         icon: <ProjectIcon name="Beyond 2D" /> },
+      {
+        title: 'V3C Immersive Platform',
+        desc: 'Volumetric 3D content platform',
+        href: '/reference-tools/v3c',
+        icon: <ProjectIcon name="V3C Immersive" />,
+      },
+      {
+        title: 'Beyond 2D Evaluation Framework',
+        desc: 'Video quality evaluation tools',
+        href: '/testbeds/beyond-2d',
+        icon: <ProjectIcon name="Beyond 2D Video Experiences" />,
+      },
     ],
   },
   {
     title: 'Network APIs & Advanced Services',
-    desc: 'CAMARA-compliant network API integration and next-generation testbeds.',
+    desc: 'CAMARA-compliant network API integration, RAN/Core lab platforms, and next-generation testbeds.',
     topics: [
-      { title: 'Network APIs',              desc: 'CAMARA QoS and device-aware apps',         href: '/developer/network-apis',                           icon: <ProjectIcon name="Network APIs" /> },
-      { title: '6G Testbed & AI Traffic',   desc: 'Next-gen network testbed',                 href: '/developer/6g-testbed',                  icon: <ProjectIcon name="6G Testbed" /> },
-      { title: 'AI/ML Evaluation',          desc: 'AI/ML framework for media',                href: '/developer/ai-ml',             icon: <ProjectIcon name="AI ML" /> },
+      {
+        title: 'Connectivity Quality with Network APIs',
+        desc: 'CAMARA QoS and device-aware apps',
+        href: '/reference-tools/network-apis',
+        icon: <ProjectIcon name="Network APIs" />,
+      },
+      {
+        title: '3GPP RAN and Core Platforms',
+        desc: 'Lab 5G RAN & Core on Open5GS/srsRAN',
+        href: '/reference-tools/3gpp-platforms',
+        icon: <ProjectIcon name="3GPP RAN and Core Platforms" />,
+      },
+      {
+        title: 'AI Traffic Characterization',
+        desc: 'Next-gen network testbed',
+        href: '/testbeds/6g-testbed',
+        icon: <ProjectIcon name="6G Testbed and AI Traffic" />,
+      },
+      {
+        title: 'AI/ML Evaluation Framework',
+        desc: 'AI/ML framework for media',
+        href: '/testbeds/ai-ml',
+        icon: <ProjectIcon name="AI ML" />,
+      },
+    ],
+  },
+  {
+    title: 'Shared Tools & Utilities',
+    desc: 'Common helper repositories and third-party tools that complement the Reference Tools.',
+    topics: [
+      {
+        title: 'Common Tools',
+        desc: 'Shared scripts, configs & build utilities',
+        href: '/reference-tools/common-tools',
+        icon: <ProjectIcon name="Common Tools" />,
+      },
+      {
+        title: 'External Tools',
+        desc: 'Third-party tools, e.g. DVB NIP Analyzer',
+        href: '/reference-tools/external-tools',
+        icon: <ProjectIcon name="External Tools" />,
+      },
+    ],
+  },
+  {
+    // Kept in sync by hand with the 10 applications on src/pages/applications/index.js
+    // (flattened here into one list rather than that page's 4 categories, since this
+    // is meant as a lighter preview of the full Applications hub, not a duplicate of it).
+    title: 'Application Prototypes',
+    desc: 'End-to-end demonstrations that combine Reference Tools into complete, running scenarios.',
+    topics: [
+      {
+        title: 'Live Streaming Over a Real 5G Network',
+        desc: '5GMSd deployed over a real 5G network (Open5GS, srsRAN) with a commercial off-the-shelf device.',
+        href: '/reference-tools/5gms/tutorials/end-to-end-with-5g',
+        icon: icon(<path d="M7 4v16l13 -8l-13 -8" />),
+      },
+      {
+        title: 'MBS End-to-End Delivery Demo',
+        desc: 'Operating MBS user services end-to-end across the 5G Core, MB-SMF, MBSF, MBSTF, NG-RAN and UE.',
+        href: '/reference-tools/5g-mbs/tutorials/mbs-end-to-end',
+        icon: icon(
+          <>
+            <path d="M12 12l0 .01" />
+            <path d="M14.828 9.172a4 4 0 0 1 0 5.656" />
+            <path d="M17.657 6.343a8 8 0 0 1 0 11.314" />
+            <path d="M9.168 14.828a4 4 0 0 1 0 -5.656" />
+            <path d="M6.337 17.657a8 8 0 0 1 0 -11.314" />
+          </>
+        ),
+      },
+      {
+        title: 'QoE Analytics Dashboard',
+        desc: 'CMCD, consumption and QoE metrics reporting from the 5GMS client into a live Grafana dashboard.',
+        href: '/reference-tools/5gms/tutorials/CMCD-reporting',
+        icon: icon(
+          <>
+            <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+            <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />
+            <path d="M9 17l0 -5" />
+            <path d="M12 17l0 -1" />
+            <path d="M15 17l0 -3" />
+          </>
+        ),
+      },
+      {
+        title: 'Broadcast Stream Playback (RTP/HLS)',
+        desc: 'Receiving and playing back a broadcast stream over 5G Broadcast, via RTP or HLS.',
+        href: '/reference-tools/5g-broadcast/tutorials/hls-playback-5gbc',
+        icon: icon(
+          <>
+            <path d="M15 10l4.553 -2.069a1 1 0 0 1 1.447 .894v6.35a1 1 0 0 1 -1.447 .894l-4.553 -2.069v-4" />
+            <path d="M3 8a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-8z" />
+          </>
+        ),
+      },
+      {
+        title: 'Emergency Alert Broadcast Demo',
+        desc: 'Broadcasting a Cell Broadcast Service (CBS) emergency alert via SDR and receiving it on a device.',
+        href: '/reference-tools/emergency-alerts/tutorials/end-to-end',
+        icon: icon(
+          <>
+            <path d="M12 8a2 2 0 0 1 2 2v4a2 2 0 1 1 -4 0v-4a2 2 0 0 1 2 -2" />
+            <path d="M17 15c.345 .6 1.258 1 2 1a2 2 0 1 0 0 -4a2 2 0 1 1 0 -4c.746 0 1.656 .394 2 1" />
+            <path d="M3 15c.345 .6 1.258 1 2 1a2 2 0 1 0 0 -4a2 2 0 1 1 0 -4c.746 0 1.656 .394 2 1" />
+          </>
+        ),
+      },
+      {
+        title: 'Seamless Unicast/Broadcast Switching',
+        desc: 'Android middleware seamlessly switching a client between unicast 5GMS and 5G Broadcast reception.',
+        href: '/reference-tools/5g-broadcast/tutorials/android-mw-seamless-switching',
+        icon: icon(
+          <>
+            <path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+            <path d="M16.616 13.924a5 5 0 1 0 -9.23 0" />
+            <path d="M20.307 15.469a9 9 0 1 0 -16.615 0" />
+            <path d="M9 21l3 -9l3 9" />
+            <path d="M10 19h4" />
+          </>
+        ),
+      },
+      {
+        title: 'Immersive 3D Media Messaging',
+        desc: 'Sharing 3D and AR assets as media message attachments, opened and rendered in the XR player.',
+        href: '/reference-tools/xr/tutorials/immersive-3d-media-message',
+        icon: icon(
+          <>
+            <path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+            <path d="M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2" />
+            <path d="M3 7v-2a2 2 0 0 1 2 -2h2" />
+            <path d="M3 17v2a2 2 0 0 0 2 2h2" />
+            <path d="M17 3h2a2 2 0 0 1 2 2v2" />
+            <path d="M17 21h2a2 2 0 0 0 2 -2v-2" />
+          </>
+        ),
+      },
+      {
+        title: 'Volumetric Video Streaming to Android',
+        desc: 'The V3C Unity player streaming volumetric 3D content to Android from a DASH server.',
+        href: '/reference-tools/v3c/tutorials/v3c-immersive-platform-in-android-streaming',
+        icon: icon(
+          <>
+            <path d="M4 8v-2a2 2 0 0 1 2 -2h2" />
+            <path d="M4 16v2a2 2 0 0 0 2 2h2" />
+            <path d="M16 4h2a2 2 0 0 1 2 2v2" />
+            <path d="M16 20h2a2 2 0 0 0 2 -2v-2" />
+            <path d="M12 12.5l4 -2.5" />
+            <path d="M8 10l4 2.5v4.5l4 -2.5v-4.5l-4 -2.5l-4 2.5" />
+            <path d="M8 10v4.5l4 2.5" />
+          </>
+        ),
+      },
+      {
+        title: 'XR Content Authoring with Blender',
+        desc: 'Authoring an XR scene with the Blender glTF exporter and loading it into the XR player.',
+        href: '/reference-tools/xr/tutorials/blender-exporter-unity-player',
+        icon: icon(
+          <>
+            <path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+            <path d="M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2" />
+            <path d="M3 7v-2a2 2 0 0 1 2 -2h2" />
+            <path d="M3 17v2a2 2 0 0 0 2 2h2" />
+            <path d="M17 3h2a2 2 0 0 1 2 2v2" />
+            <path d="M17 21h2a2 2 0 0 0 2 -2v-2" />
+          </>
+        ),
+      },
+      {
+        title: 'Dedicated Network APIs for Connected Media Production',
+        desc: 'CAMARA Quality on Demand, Connectivity Insights and Network Slice Booking APIs for live contribution and remote production.',
+        href: '/reference-tools/network-apis',
+        icon: icon(
+          <>
+            <path d="M4 13h5" />
+            <path d="M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3" />
+            <path d="M20 8v8" />
+            <path d="M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5" />
+          </>
+        ),
+      },
     ],
   },
 ];
 
+const DEV_FACTS = [
+  { value: '~15', label: 'Project areas across media and connectivity' },
+  FACT_REPOSITORIES,
+  FACT_CLONES,
+  { value: 'Weekly', label: 'Developer calls and rolling releases' },
+];
+
 const PILLARS = [
   {
-    title: 'Early Validation',
+    title: 'Early feedback and validation',
     body: 'Implementation evidence that informs specification development before standards are finalised.',
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-        <polyline points="9 12 11 14 15 10"/>
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        <polyline points="9 12 11 14 15 10" />
       </svg>
     ),
   },
   {
-    title: 'Collaborative Development',
-    body: 'Eliminating redundant effort when multiple organisations address the same technical challenges.',
+    title: 'Software projects & Dev community',
+    body: 'A community of standards experts, developers and implementers, building software projects together.',
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-        <circle cx="9" cy="7" r="4"/>
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
       </svg>
     ),
   },
   {
-    title: 'Accelerated Deployment',
-    body: 'Proven reference implementations designed for real-world adoption and scale.',
+    title: 'No duplication and fast deployment',
+    body: 'Shared reference implementations mean no one builds the same thing twice — ready for real-world adoption and scale.',
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
-        <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
-        <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
-        <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M3 5v14l8 -7z" />
+        <path d="M13 5v14l8 -7z" />
       </svg>
     ),
   },
   {
-    title: 'Open by Design',
+    title: 'Open by design and IPR-friendly',
     body: 'IPR-friendly licensing designed for broad industry participation.',
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-        <path d="M7 11V7a5 5 0 0 1 9.9-1"/>
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+        <path d="M7 11V7a5 5 0 0 1 9.9-1" />
       </svg>
     ),
   },
 ];
 
-const SLIDE_ICONS = {
-  '5G Media Streaming':            '<path d="M7 4v16l13 -8l-13 -8"/>',
-  '5G Broadcast TV Radio':         '<path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M16.616 13.924a5 5 0 1 0 -9.23 0"/><path d="M20.307 15.469a9 9 0 1 0 -16.615 0"/><path d="M9 21l3 -9l3 9"/><path d="M10 19h4"/>',
-  'XR Media':                      '<path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/><path d="M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2"/><path d="M3 7v-2a2 2 0 0 1 2 -2h2"/><path d="M3 17v2a2 2 0 0 0 2 2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M17 21h2a2 2 0 0 0 2 -2v-2"/>',
-  '5G Multicast Broadcast':        '<path d="M12 12l0 .01"/><path d="M14.828 9.172a4 4 0 0 1 0 5.656"/><path d="M17.657 6.343a8 8 0 0 1 0 11.314"/><path d="M9.168 14.828a4 4 0 0 1 0 -5.656"/><path d="M6.337 17.657a8 8 0 0 1 0 -11.314"/>',
-  'UE Data Collection':            '<path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/>',
-  'V3C Immersive':                 '<path d="M4 8v-2a2 2 0 0 1 2 -2h2"/><path d="M4 16v2a2 2 0 0 0 2 2h2"/><path d="M16 4h2a2 2 0 0 1 2 2v2"/><path d="M16 20h2a2 2 0 0 0 2 -2v-2"/><path d="M12 12.5l4 -2.5"/><path d="M8 10l4 2.5v4.5l4 -2.5v-4.5l-4 -2.5l-4 2.5"/><path d="M8 10v4.5l4 2.5"/>',
-  'Beyond 2D':                     '<path d="M4.338 5.53c5.106 1.932 10.211 1.932 15.317 0a1 1 0 0 1 1.345 .934v11c0 .692 -.692 1.2 -1.34 .962c-5.107 -1.932 -10.214 -1.932 -15.321 0c-.648 .246 -1.339 -.242 -1.339 -.935v-11.027a1 1 0 0 1 1.338 -.935l0 .001"/>',
-  'AI ML':                         '<path d="M15.5 13a3.5 3.5 0 0 0 -3.5 3.5v1a3.5 3.5 0 0 0 7 0v-1.8"/><path d="M8.5 13a3.5 3.5 0 0 1 3.5 3.5v1a3.5 3.5 0 0 1 -7 0v-1.8"/><path d="M17.5 16a3.5 3.5 0 0 0 0 -7h-.5"/><path d="M19 9.3v-2.8a3.5 3.5 0 0 0 -7 0"/><path d="M6.5 16a3.5 3.5 0 0 1 0 -7h.5"/><path d="M5 9.3v-2.8a3.5 3.5 0 0 1 7 0v10"/>',
-  'Multimedia Protocols':          '<path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1"/><path d="M9 15l3 -3l3 3"/><path d="M12 12l0 9"/>',
-  'Conversational Avatar':         '<path d="M6 6a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2l0 -4"/><path d="M12 2v2"/><path d="M9 12v9"/><path d="M15 12v9"/><path d="M5 16l4 -2"/><path d="M15 14l4 2"/><path d="M9 18h6"/><path d="M10 8v.01"/><path d="M14 8v.01"/>',
-  '6G Testbed':                    '<path d="M6 9a6 6 0 1 0 12 0a6 6 0 0 0 -12 0"/><path d="M12 3c1.333 .333 2 2.333 2 6s-.667 5.667 -2 6"/><path d="M12 3c-1.333 .333 -2 2.333 -2 6s.667 5.667 2 6"/><path d="M6 9h12"/><path d="M3 20h7"/><path d="M14 20h7"/><path d="M10 20a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/><path d="M12 15v3"/>',
-  'DVB-I over 5G':                 '<path d="M3 9a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2l0 -9"/><path d="M16 3l-4 4l-4 -4"/>',
-  'Network APIs':                  '<path d="M4 13h5"/><path d="M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3"/><path d="M20 8v8"/><path d="M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5"/>',
-  '5G Broadcast Emergency Alerts': '<path d="M12 8a2 2 0 0 1 2 2v4a2 2 0 1 1 -4 0v-4a2 2 0 0 1 2 -2"/><path d="M17 15c.345 .6 1.258 1 2 1a2 2 0 1 0 0 -4a2 2 0 1 1 0 -4c.746 0 1.656 .394 2 1"/><path d="M3 15c.345 .6 1.258 1 2 1a2 2 0 1 0 0 -4a2 2 0 1 1 0 -4c.746 0 1.656 .394 2 1"/>',
-  '5G Core Service Consumers':     '<path d="M6.657 16c-2.572 0 -4.657 -2.007 -4.657 -4.483c0 -2.475 2.085 -4.482 4.657 -4.482c.393 -1.762 1.794 -3.2 3.675 -3.773c1.88 -.572 3.956 -.193 5.444 1c1.488 1.19 2.162 3.007 1.77 4.769h.99c1.913 0 3.464 1.56 3.464 3.486c0 1.927 -1.551 3.487 -3.465 3.487h-11.878"/><path d="M12 16v5"/><path d="M16 16v4a1 1 0 0 0 1 1h4"/><path d="M8 16v4a1 1 0 0 1 -1 1h-4"/>',
-  'Auxiliary Tools':               '<path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5"/>',
-  'Reference Tools':               '<path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/>',
-  'Testbeds':                      '<path d="M9 3l6 0"/><path d="M10 9l4 0"/><path d="M10 3v6l-4 11a.7 .7 0 0 0 .5 1h11a.7 .7 0 0 0 .5 -1l-4 -11v-6"/>',
-  'Applications':                  '<path d="M4.5 16.5c-1.5 1.26 -2 5 -2 5s3.74 -.5 5 -2c.71 -.84 .7 -2.13 -.09 -2.91a2.18 2.18 0 0 0 -2.91 -.09z"/><path d="M12 15l-3 -3a22 22 0 0 1 2 -3.95a12.88 12.88 0 0 1 10 -5.93c0 2.72 -.78 7.5 -6 11a22.35 22.35 0 0 1 -4 2z"/><path d="M9 12h-4s.55 -3.03 2 -4c1.62 -1.08 5 0 5 0"/><path d="M12 15v5s3.03 -.55 4 -2c1.08 -1.62 0 -5 0 -5"/>',
-};
-
-function ProjectIcon({ name, className }) {
-  const paths = SLIDE_ICONS[name];
-  if (!paths) return null;
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      dangerouslySetInnerHTML={{ __html: paths }}
-    />
-  );
-}
-
-function SlideIcon({ name }) {
-  return <ProjectIcon name={name} className={styles.slideProjectIcon} />;
-}
-
-function isRC(release) {
-  if (!release) return false;
-  if (release.prerelease) return true;
-  return release.tag && /-rc(\.|[0-9]|$)/i.test(release.tag);
-}
-
-function daysSince(dateStr) {
-  if (!dateStr || dateStr === '-') return 9999;
-  return Math.max(0, Math.floor((Date.now() - new Date(dateStr + 'T12:00:00Z').getTime()) / 86400000));
-}
-
-function formatAge(days) {
-  if (days === 0) return 'today';
-  if (days === 1) return '1d ago';
-  if (days < 7)  return `${days}d ago`;
-  if (days < 14) return '1w ago';
-  return `${Math.round(days / 7)}w ago`;
-}
-
-const BRAND_SLIDE = { type: 'brand' };
-
-function HeroSlideshow() {
-  const releaseSlides = releasesData.projects.slice(0, 3).map((p) => ({ type: 'release', ...p }));
-  const slides = [BRAND_SLIDE, ...releaseSlides];
-  const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
-
-  useEffect(() => {
-    if (paused || slides.length < 2) return;
-    const t = setInterval(() => setActive((i) => (i + 1) % slides.length), 8000);
-    return () => clearInterval(t);
-  }, [paused, slides.length]);
-
-  const slide = slides[active];
-
-  function slideBg() {
-    return 'linear-gradient(to right, #003580 0%, #00A0D2 100%)';
-  }
-
-  return (
-    <header
-      className={styles.slideshow}
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
-      {slides.map((s, i) => (
-        <div
-          key={i}
-          className={clsx(styles.slide, i === active && styles.slideActive)}
-          style={{ backgroundImage: slideBg() }}
-        />
-      ))}
-
-      <div key={active} className={styles.slideContentWrapper}>
-      {slide.type === 'brand' ? (
-        <div className={styles.slideOverlay}>
-          <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '2rem' }}>
-            <div>
-              <img
-                src="/img/5g-mag-logo-white.png"
-                alt="5G-MAG — The Media Connectivity Association"
-                style={{ height: '68px', width: 'auto', marginBottom: '1.25rem', display: 'block' }}
-              />
-              <h1 className={styles.slideTitle}>Media Connectivity Software Accelerator</h1>
-              <p className={styles.slideSubtitle}>
-                Open-source developer community. Reference tools, testbeds and applications for connected media experiences.
-              </p>
-              <div className={styles.slideButtons}>
-                <Link className="button button--primary button--lg" to="/developer/community">
-                  Join the Community
-                </Link>
-                <Link
-                  className={clsx('button button--outline button--primary button--lg', styles.slideBtnOutline)}
-                  to="/developer/projects"
-                >
-                  Explore All Projects
-                </Link>
-                <a
-                  className={clsx('button button--outline button--primary button--lg', styles.slideBtnOutline)}
-                  href="/docs/Reference_Tools_Overview.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Download Overview ↓
-                </a>
-              </div>
-            </div>
-            <HeroFigure />
-          </div>
-        </div>
-      ) : (
-        <div className={styles.slideOverlayCards}>
-          <div className="container">
-            <div className={styles.slideCard}>
-              <div className={styles.slideCardHeader}>
-                <p className={styles.slideEyebrow}>
-                  <span className={clsx(styles.slideEyebrowDot, isRC(slide.releases[0]) && styles.slideEyebrowDotRc)} />
-                  {isRC(slide.releases[0]) ? 'Release Candidate' : 'New Release'}
-                  {PROJECT_TYPE_MAP[slide.name] && (
-                    <span className={clsx(
-                      styles.slideEyebrowBadge,
-                      PROJECT_TYPE_MAP[slide.name] === 'Testbed' && styles.slideEyebrowBadgeTestbed,
-                      PROJECT_TYPE_MAP[slide.name] === 'Application Prototypes' && styles.slideEyebrowBadgeApp,
-                    )}>{PROJECT_TYPE_MAP[slide.name]}</span>
-                  )}
-                </p>
-                <div className={styles.slideCardHeaderMain}>
-                  <ProjectIcon name={slide.name} className={styles.slideCardHeaderIcon} />
-                  <h1 className={styles.slideCardTitle}>
-                    <span className={styles.slideCardTitlePrefix}>New Releases for </span>
-                    {slide.name}
-                  </h1>
-                </div>
-              </div>
-              <div className={styles.slideCardBody}>
-                <div className={styles.slideCardReleasesCol}>
-                  <ul className={styles.slideReleases}>
-                    {slide.releases
-                      .sort((a, b) => b.date.localeCompare(a.date))
-                      .slice(0, 6)
-                      .map((r) => (
-                        <li key={r.repo} className={styles.slideReleaseItem}>
-                          <a href={r.url} className={styles.slideReleaseLink} target="_blank" rel="noreferrer">
-                            {r.repo}
-                          </a>
-                          <div className={styles.slideReleaseMeta}>
-                            <span className={clsx(styles.slideTag, isRC(r) && styles.slideTagRc)}>{r.tag}</span>
-                            <span className={styles.slideAge}>{formatAge(daysSince(r.date))}</span>
-                          </div>
-                        </li>
-                      ))}
-                  </ul>
-                </div>
-                <div className={styles.slideCardContributorsCol}>
-                  <p className={styles.slideContributorsLabel}>Congratulations to the contributors</p>
-                  <div className={styles.slideProjectPanelAvatarRow}>
-                    {slide.releases
-                      .filter((r) => r.author_login)
-                      .reduce((acc, r) => {
-                        if (!acc.find((a) => a.login === r.author_login)) {
-                          acc.push({ login: r.author_login, avatar: r.author_avatar });
-                        }
-                        return acc;
-                      }, [])
-                      .map((a) => (
-                        <a
-                          key={a.login}
-                          href={`https://github.com/${a.login}`}
-                          className={styles.slideProjectPanelAvatar}
-                          target="_blank"
-                          rel="noreferrer"
-                          title={a.login}
-                        >
-                          <img src={a.avatar} alt={a.login} />
-                          <span className={styles.slideProjectPanelAvatarName}>{a.login}</span>
-                        </a>
-                      ))}
-                  </div>
-                </div>
-              </div>
-              <div className={styles.slideCardFooter}>
-                <Link
-                  className="button button--primary button--lg"
-                  to={slide.doc_url}
-                >
-                  Documentation
-                </Link>
-                <Link
-                  className={clsx('button button--outline button--primary button--lg', styles.slideBtnOutline)}
-                  to={`${slide.doc_url}releases`}
-                >
-                  Releases
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-      </div>
-
-      <div className={styles.slideDots}>
-        {slides.map((s, i) => (
-          <button
-            key={i}
-            className={clsx(styles.slideDot, i === active && styles.slideDotActive)}
-            onClick={() => setActive(i)}
-            aria-label={s.type === 'brand' ? 'Overview' : s.name}
-          >
-            {i === active && (
-              <span className={styles.slideDotLabel}>
-                {s.type === 'brand' ? 'Overview' : s.name}
-              </span>
-            )}
-          </button>
-        ))}
-      </div>
-    </header>
-  );
-}
+const PROBLEM_POINTS = [
+  {
+    title: 'Evaluation is expensive',
+    body: 'Each organisation builds its own prototype to evaluate a draft spec — duplicated effort, inconsistent results, slow feedback into the standard.',
+    href: '/testbeds',
+    icon: (
+      <>
+        <path d="M7 9.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667l0 -8.666" />
+        <path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" />
+      </>
+    ),
+  },
+  {
+    title: 'Interop is delayed',
+    body: 'Without shared code, interoperability testing starts from scratch at every plugfest. Bugs found late are expensive to fix — including specification errors.',
+    href: '/testing',
+    icon: (
+      <>
+        <path d="M9 9v-1a3 3 0 0 1 6 0v1" />
+        <path d="M8 9h8a6 6 0 0 1 1 3v3a5 5 0 0 1 -10 0v-3a6 6 0 0 1 1 -3" />
+        <path d="M3 13l4 0" />
+        <path d="M17 13l4 0" />
+        <path d="M12 20l0 -6" />
+        <path d="M4 19l3.35 -2" />
+        <path d="M20 19l-3.35 -2" />
+        <path d="M4 7l3.75 2.4" />
+        <path d="M20 7l-3.75 2.4" />
+      </>
+    ),
+  },
+  {
+    title: 'Deployment is delayed',
+    body: 'The gap between a frozen spec and a production-ready implementation can be years. Early adopters carry the full cost alone.',
+    href: '/reference-tools',
+    icon: (
+      <>
+        <path d="M6.5 7h11" />
+        <path d="M6.5 17h11" />
+        <path d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1" />
+        <path d="M6 4v2a6 6 0 1 0 12 0v-2a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1" />
+      </>
+    ),
+  },
+];
 
 function ReleaseCard({ project }) {
   const rows = project.releases
@@ -563,14 +513,16 @@ function ReleaseCard({ project }) {
           );
         })}
       </div>
-      <div className={styles.releaseCardFooter}>
-        <Link className={styles.releaseDocLink} to={project.doc_url}>
-          Documentation &rarr;
-        </Link>
-        <Link className={styles.releaseRelLink} to={`${project.doc_url}releases`}>
-          Releases &rarr;
-        </Link>
-      </div>
+      {project.doc_url && (
+        <div className={styles.releaseCardFooter}>
+          <Link className={styles.releaseDocLink} to={project.doc_url}>
+            Documentation &rarr;
+          </Link>
+          <Link className={styles.releaseRelLink} to={`${project.doc_url}${project.releases_slug || 'resources'}`}>
+            Releases &rarr;
+          </Link>
+        </div>
+      )}
     </div>
   );
 }
@@ -607,9 +559,7 @@ function ProductTypeCard({ icon, label, description, href }) {
       <div className={styles.productCardBody}>
         <p className={styles.productCardDesc}>{description}</p>
       </div>
-      <div className={styles.productCardFooter}>
-        Explore {label} &rarr;
-      </div>
+      <div className={styles.productCardFooter}>Explore {label} &rarr;</div>
     </Link>
   );
 }
@@ -627,7 +577,7 @@ function VideoCard({ video }) {
         <img src={video.thumbnail} alt={video.title} loading="lazy" />
         <div className={styles.videoPlay}>
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M8 5v14l11-7z"/>
+            <path d="M8 5v14l11-7z" />
           </svg>
         </div>
       </div>
@@ -639,26 +589,24 @@ function VideoCard({ video }) {
   );
 }
 
-function VideoSection() {
+function VideoSection({ alt }) {
   const { videos, channel } = youtubeData;
   return (
-    <section className={styles.section}>
+    <section className={clsx(styles.section, alt && styles.sectionAlt)}>
       <div className="container">
         <div className={styles.videoHeader}>
           <div>
-            <h2 className={styles.sectionTitle} style={{ textAlign: 'left', marginBottom: '0.2rem' }}>
+            <h2
+              className={styles.sectionTitle}
+              style={{ textAlign: 'left', marginBottom: '0.2rem' }}
+            >
               See it in action
             </h2>
             <p className={styles.sectionSubtitle} style={{ textAlign: 'left', margin: 0 }}>
               Latest videos from the 5G-MAG YouTube channel
             </p>
           </div>
-          <a
-            className={styles.videoViewAll}
-            href={channel}
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a className={styles.videoViewAll} href={channel} target="_blank" rel="noreferrer">
             See all videos &rarr;
           </a>
         </div>
@@ -683,21 +631,94 @@ function PillarCard({ title, body, icon }) {
 }
 
 export default function Home() {
-  const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={siteConfig.title}
+      title="Software Accelerator"
       description="Open-source reference implementations — from specifications to working code"
     >
-      <HeroSlideshow />
+      <HubHero
+        title="Media Connectivity Software Accelerator"
+        icon={DEV_HERO_ICON_PATH}
+        actions={[
+          <Link key="community" className="button button--primary button--lg" to="#community">
+            Join the Effort
+          </Link>,
+          <Link
+            key="reftools"
+            className="button button--outline button--primary button--lg"
+            to="/reference-tools"
+          >
+            Explore All Projects
+          </Link>,
+          <Link
+            key="early-access"
+            className="button button--outline button--primary button--lg"
+            to="/early-access"
+          >
+            Request Early Access
+          </Link>,
+          <a
+            key="overview"
+            className="button button--outline button--primary button--lg"
+            href="pathname:///docs/Reference_Tools_Overview.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Download Overview &#8595;
+          </a>,
+        ]}
+      />
+
+      <div className="container" style={{ marginTop: '1.75rem' }}>
+        <p className="topic-lead">Open-source developer community. Reference tools, testbeds and applications for connected media experiences.</p>
+      </div>
 
       <main>
-        {/* Product Types */}
-        <section className={clsx(styles.section, styles.sectionAlt)}>
+        {/* Pillars */}
+        {/* Motivation: merged "what this gets you" + "why open source" under one banner */}
+        <section className={styles.section}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Open-source today, live in products tomorrow</h2>
+            <h2 className={styles.sectionTitle}>Why the Media Connectivity Software Accelerator</h2>
             <p className={styles.sectionSubtitle}>
-              The Media Connectivity Software Accelerator brings together open-source reference tools, end-to-end application scenarios, and testbeds under a single developer community.
+              Media and network technologies move fast, and open source usually arrives only
+              after a standard is frozen — with additional cost at every stage along the way. The
+              Accelerator closes both gaps.
+            </p>
+
+            <h3 className={styles.pillarGroupTitle}>What this gets you</h3>
+            <div className={styles.pillarGrid}>
+              {PILLARS.map((p) => (
+                <PillarCard key={p.title} {...p} />
+              ))}
+            </div>
+            <div className={styles.pillarActions}>
+              <Link className="button button--primary button--lg" to="#community">
+                Developer Community
+              </Link>
+              <Link
+                className="button button--outline button--primary button--lg"
+                to="/developer/community-stats"
+              >
+                Community Stats
+              </Link>
+            </div>
+
+            <h3 className={styles.pillarGroupTitle}>Why open source, and why now</h3>
+            <div className="godeeper-grid">
+              {PROBLEM_POINTS.map((p) => (
+                <GodeeperCard key={p.title} {...p} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Product Types */}
+        <section className={styles.section}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>Where to start</h2>
+            <p className={styles.sectionSubtitle}>
+              Reference Tools, Testbeds and Evaluation Tools, and Application Prototypes — under
+              one open developer community.
             </p>
             <div className={styles.productGrid}>
               {PRODUCT_TYPES.map((item) => (
@@ -706,32 +727,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        {/* Pillars */}
-        <section className={styles.section}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>Why the Media Connectivity Software Accelerator?</h2>
-            <p className={styles.sectionSubtitle}>
-              Media and network technologies move fast. As applications and smart networks converge, the central question becomes whether what we are building today is ready for deployment.
-            </p>
-            <div className={styles.pillarGrid}>
-              {PILLARS.map((p) => (
-                <PillarCard key={p.title} {...p} />
-              ))}
-            </div>
-            <div className={styles.pillarActions}>
-              <Link className="button button--primary button--lg" to="/developer/community">
-                Developer Community
-              </Link>
-              <Link className="button button--outline button--primary button--lg" to="/developer/dashboard">
-                Activity Dashboard
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* Videos */}
-        <VideoSection />
 
         {/* Use Cases */}
         <section className={clsx(styles.section, styles.sectionAlt)}>
@@ -748,12 +743,73 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Latest Releases */}
+        {/* Photos */}
         <section className={styles.section}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>Real tools, real demos</h2>
+            <p className={styles.sectionSubtitle}>
+              Reference Tools running on real hardware, at real events.
+            </p>
+            <div className={styles.photoGrid}>
+              <figure className={styles.photoFigure}>
+                <img
+                  className={styles.photoImg}
+                  src="/assets/images/gallery/reference-tools-demo-rig.jpg"
+                  alt="5G-MAG Reference Tools demo rig with SDR hardware and phones running 5GMS and volumetric demos"
+                  loading="lazy"
+                />
+                <p className={styles.photoCaption}>
+                  A Reference Tools demo rig — SDR hardware and phones running live 5GMS and
+                  volumetric video demos.
+                </p>
+              </figure>
+              <figure className={styles.photoFigure}>
+                <img
+                  className={styles.photoImg}
+                  src="/assets/images/gallery/camara-dedicated-networks-demo.png"
+                  alt="CAMARA Dedicated Networks reference tool demo interface"
+                  loading="lazy"
+                />
+                <p className={styles.photoCaption}>
+                  The CAMARA Dedicated Networks reference tool, reserving a network area on a live
+                  map.
+                </p>
+              </figure>
+            </div>
+          </div>
+        </section>
+
+        {/* Videos */}
+        <VideoSection alt />
+
+        {/* Facts */}
+        <section className={styles.section}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>Our work at a glance</h2>
+            <p className={styles.sectionSubtitle}>
+              Some numbers and examples of our work — a thriving developer community of standards
+              experts, developers and implementers.
+            </p>
+            <div className="summary-container">
+              {DEV_FACTS.map((f) => (
+                <div key={f.label} className="summary-card">
+                  <h4>{f.label}</h4>
+                  <span className="summary-value">{f.value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Latest Releases */}
+        <section className={clsx(styles.section, styles.sectionAlt)}>
           <div className="container">
             <div className={styles.releasesHeader}>
               <div>
-                <h2 className={styles.sectionTitle} style={{ marginBottom: '0.2rem', textAlign: 'left' }}>
+                <h2
+                  className={styles.sectionTitle}
+                  style={{ marginBottom: '0.2rem', textAlign: 'left' }}
+                >
                   Latest Releases
                 </h2>
                 <p className={styles.releasesUpdated}>Updated: {releasesData.updated_at}</p>
@@ -770,47 +826,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Community */}
-        <section className={clsx(styles.section, styles.sectionAlt)}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>Join the Community</h2>
-            <p className={styles.sectionSubtitle}>
-              Open to any organisation or independent developer willing to collaborate.
-            </p>
-            <div className={styles.communityLinks}>
-              <a
-                className="button button--primary button--lg"
-                href="https://github.com/5G-MAG"
-                target="_blank"
-                rel="noreferrer"
-              >
-                GitHub
-              </a>
-              <a
-                className="button button--outline button--primary button--lg"
-                href="https://join.slack.com/t/5g-mag/shared_invite/zt-trtvsmw5-yYgcRidDgIS7x_u48sTuQA"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Slack
-              </a>
-              <a
-                className="button button--outline button--primary button--lg"
-                href="https://groups.google.com/g/5g-mag-reference-tools"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Google Group
-              </a>
-              <Link
-                className="button button--outline button--primary button--lg"
-                to="/developer/public-call"
-              >
-                Monthly Public Call
-              </Link>
-            </div>
-          </div>
-        </section>
+        <JoinTheEffort id="community" alt />
       </main>
     </Layout>
   );

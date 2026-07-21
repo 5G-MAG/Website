@@ -1,492 +1,3 @@
-/* ── Hero Slideshow ────────────────────────────────────────────────── */
-
-.slideshow {
-  position: relative;
-  overflow: hidden;
-  height: 490px;
-}
-
-.slide {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  transition: opacity 2s ease-in-out;
-  z-index: 0;
-}
-
-.slideActive {
-  opacity: 1;
-}
-
-@keyframes slideFadeIn {
-  from { opacity: 0.55; }
-  to   { opacity: 1; }
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%       { opacity: 0.35; transform: scale(0.75); }
-}
-
-.slideContentWrapper {
-  position: relative;
-  z-index: 1;
-  height: 100%;
-  animation: slideFadeIn 0.6s ease-out;
-}
-
-.slideOverlay {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 1.5rem 0 2.5rem;
-  background: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.62) 45%,
-    rgba(0, 0, 0, 0.18) 100%
-  );
-}
-
-.slideOverlayCards {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  background: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.62) 45%,
-    rgba(0, 0, 0, 0.18) 100%
-  );
-}
-
-.slideOverlayCards :global(.container) {
-  display: flex;
-  flex-direction: column;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-}
-
-.slideCard {
-  background: rgba(20, 48, 79, 0.94);
-  border-radius: 12px;
-  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.35);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.slideCardHeader {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding: 1rem 1.5rem 0.9rem;
-  background: linear-gradient(135deg, var(--ifm-color-primary-darkest) 0%, var(--ifm-color-primary) 100%);
-}
-
-.slideCardHeaderMain {
-  display: flex;
-  align-items: center;
-  gap: 1.1rem;
-}
-
-.slideCardTitleRow {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  flex-wrap: wrap;
-  margin-bottom: 0.15rem;
-}
-
-.slideCardLatestTag {
-  font-family: var(--ifm-font-family-monospace);
-  font-size: 1rem;
-  background: rgba(255, 255, 255, 0.18);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 0.15rem 0.55rem;
-  border-radius: 6px;
-  color: #fff;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.slideCardHeaderIcon {
-  width: 2.75rem;
-  height: 2.75rem;
-  color: rgba(255, 255, 255, 0.88);
-  flex-shrink: 0;
-}
-
-.slideCardTitle {
-  font-size: 2rem;
-  font-weight: 800;
-  color: #fff;
-  margin: 0;
-  line-height: 1.15;
-  white-space: nowrap;
-}
-
-.slideCardTitlePrefix {
-  font-weight: 400;
-}
-
-.slideCardBody {
-  display: flex;
-  padding: 1rem 1.5rem 0.9rem;
-  gap: 0;
-  min-height: 200px;
-}
-
-.slideCardReleasesCol {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding-right: 1.5rem;
-}
-
-.slideCardContributorsCol {
-  flex: 1;
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
-  padding-left: 1.5rem;
-  display: flex;
-  flex-direction: column;
-}
-
-.slideCardColLabel {
-  font-size: 0.68rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: rgba(255, 255, 255, 0.4);
-  margin: 0 0 0.65rem;
-}
-
-.slideContributorsLabel {
-  font-size: 0.68rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #ffd166;
-  margin: 0 0 0.75rem;
-  line-height: 1.4;
-}
-
-.slideCardFooter {
-  display: flex;
-  gap: 1rem;
-  padding: 0.75rem 1.5rem 0.85rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-
-
-
-.slideProjectPanelAvatarRow {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.65rem 0.5rem;
-  align-content: start;
-}
-
-.slideProjectPanelAvatar {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  text-decoration: none !important;
-}
-
-.slideProjectPanelAvatar img {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.25);
-  flex-shrink: 0;
-  transition: border-color 0.15s ease;
-}
-
-.slideProjectPanelAvatar:hover img {
-  border-color: rgba(255, 255, 255, 0.7);
-}
-
-.slideProjectPanelAvatarName {
-  font-size: 0.88rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.75);
-  transition: color 0.15s ease;
-}
-
-.slideProjectPanelAvatar:hover .slideProjectPanelAvatarName {
-  color: #fff;
-}
-
-
-.slideEyebrow {
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ifm-color-primary-lightest);
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-}
-
-.slideCardHeader .slideEyebrow {
-  color: #fff;
-}
-
-.slideEyebrowBadge {
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  padding: 0.12rem 0.45rem;
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.18);
-  color: rgba(255, 255, 255, 0.9);
-  margin-left: 0.4rem;
-  vertical-align: middle;
-}
-
-.slideEyebrowBadgeTestbed {
-  background: rgba(255, 193, 7, 0.22);
-  color: #ffd166;
-}
-
-.slideEyebrowBadgeApp {
-  background: rgba(100, 220, 160, 0.2);
-  color: #7ee8b8;
-}
-
-.slideEyebrowDot {
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #ff4444;
-  flex-shrink: 0;
-  animation: pulse 1.8s ease-in-out infinite;
-}
-
-.slideEyebrowDotRc {
-  background: #f59e0b;
-}
-
-.slideTagRc {
-  background: rgba(245, 158, 11, 0.22);
-  color: #fcd34d;
-  border: 1px solid rgba(245, 158, 11, 0.35);
-}
-
-.slideTitle {
-  font-size: clamp(1.8rem, 3vw, 2.75rem);
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.2;
-  margin-bottom: 1.1rem;
-  white-space: nowrap;
-}
-
-.slideSubtitle {
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.85);
-  margin-bottom: 2rem;
-  line-height: 1.6;
-  white-space: nowrap;
-}
-
-/* ── Hero figure (icon cloud) ─────────────────────────────────────────
-   Same treatment as the homepage hero: fluid sizing matching the SVG
-   viewBox aspect ratio, hidden below 996px where the "brand" slide's
-   text + 3 buttons need the full row. */
-.heroFigure {
-  width: clamp(280px, 30vw, 640px);
-  aspect-ratio: 950 / 560;
-  flex-shrink: 0;
-  display: none;
-}
-
-@media (min-width: 996px) {
-  .heroFigure {
-    display: block;
-  }
-}
-
-.tileRepel {
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .tileRepel {
-    transition: none;
-  }
-}
-
-.slideProjectHeader {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1.1rem;
-}
-
-.slideProjectHeader .slideTitle {
-  margin-bottom: 0;
-}
-
-.slideProjectIcon {
-  width: 32px;
-  height: 32px;
-  flex-shrink: 0;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.slideReleases {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-rows: repeat(3, auto);
-  grid-auto-flow: column;
-  grid-auto-columns: 1fr;
-  gap: 0.45rem 1.5rem;
-  align-content: start;
-}
-
-.slideReleaseItem {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-.slideReleaseLink {
-  display: block;
-  font-size: 0.88rem;
-  color: rgba(255, 255, 255, 0.92) !important;
-  text-decoration: none !important;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.slideReleaseLink:hover {
-  text-decoration: underline !important;
-}
-
-.slideReleaseMeta {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.slideTag {
-  font-family: var(--ifm-font-family-monospace);
-  font-size: 0.76rem;
-  background: rgba(255, 255, 255, 0.18);
-  padding: 0.1rem 0.4rem;
-  border-radius: 4px;
-  color: #fff;
-}
-
-.slideAge {
-  font-size: 0.76rem;
-  color: rgba(255, 255, 255, 0.5);
-}
-
-
-.slideButtons {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.slideBtnOutline {
-  color: #fff !important;
-  border-color: rgba(255, 255, 255, 0.75) !important;
-}
-
-.slideBtnOutline:hover {
-  background: rgba(255, 255, 255, 0.15) !important;
-  border-color: #fff !important;
-}
-
-.slideDots {
-  position: absolute;
-  bottom: 1.75rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  display: flex;
-  gap: 0.55rem;
-}
-
-.slideDot {
-  height: 13px;
-  min-width: 13px;
-  border-radius: 7px;
-  border: 2px solid rgba(255, 255, 255, 0.6);
-  background: transparent;
-  cursor: pointer;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  transition: background 0.25s ease, border-color 0.25s ease, min-width 0.3s ease, padding 0.3s ease;
-}
-
-.slideDot:hover {
-  border-color: #fff;
-}
-
-.slideDot:focus-visible {
-  outline: 2px solid rgba(255, 255, 255, 0.9);
-  outline-offset: 2px;
-}
-
-.slideDotActive {
-  background: #fff;
-  border-color: #fff;
-  min-width: 13px;
-  padding: 0 9px;
-}
-
-.slideDotLabel {
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: var(--ifm-color-primary-darkest);
-  white-space: nowrap;
-  line-height: 1;
-  letter-spacing: 0.03em;
-}
-
-@media (max-width: 768px) {
-  .slideshow {
-    height: auto;
-    min-height: 480px;
-  }
-  .slideTitle {
-    font-size: 1.3rem;
-    white-space: normal;
-  }
-  .slideSubtitle {
-    white-space: normal;
-  }
-  .slideCardRow {
-    flex-direction: column;
-    height: auto;
-  }
-  .slideProjectPanel {
-    flex: 0 0 auto;
-    width: 100%;
-  }
-  .slideOverlayCards {
-    align-items: flex-start;
-    padding: 1rem 0;
-  }
-}
-
 /* ── Sections ──────────────────────────────────────────────────────── */
 
 .section {
@@ -514,6 +25,13 @@
   margin-right: auto;
 }
 
+.pillarGroupTitle {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 2.5rem 0 1.25rem;
+}
+
 /* ── Product Type Cards ────────────────────────────────────────────── */
 
 .productGrid {
@@ -538,7 +56,9 @@
   background: var(--ifm-background-surface-color);
   color: inherit !important;
   text-decoration: none !important;
-  transition: box-shadow 0.2s ease, transform 0.15s ease;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
 }
 
 .productCard:hover {
@@ -554,7 +74,11 @@
   justify-content: center;
   gap: 0.65rem;
   padding: 1.5rem 1.25rem 1.35rem;
-  background: linear-gradient(135deg, var(--ifm-color-primary-darkest) 0%, var(--ifm-color-primary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--ifm-color-primary-darkest) 0%,
+    var(--ifm-color-primary) 100%
+  );
   transition: opacity 0.2s ease;
 }
 
@@ -569,7 +93,7 @@
 }
 
 .productCardBandTitle {
-  font-size: 1.30rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: #fff;
   margin: 0;
@@ -783,12 +307,14 @@
 }
 
 .badgeNew {
-  background: var(--ifm-color-primary);
-  color: #fff;
-  font-size: 0.6rem;
+  /* Distinct violet, not brand blue — blue reads as "clickable" everywhere
+     else on this page (see custom.css's --badge-new-background comment). */
+  background: var(--badge-new-background);
+  color: var(--badge-new-foreground);
+  font-size: 0.62rem;
   font-weight: 700;
-  padding: 0.1rem 0.35rem;
-  border-radius: 10px;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   line-height: 1.4;
@@ -898,7 +424,9 @@
   background: var(--ifm-background-surface-color);
   color: inherit !important;
   text-decoration: none !important;
-  transition: box-shadow 0.2s ease, transform 0.15s ease;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
 }
 
 .videoCard:hover {
@@ -949,7 +477,9 @@
   color: #fff;
   opacity: 0;
   transform: scale(0.85);
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
   filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
 }
 
@@ -1001,7 +531,11 @@
 
 .categoryHeader {
   padding: 1.4rem 1.4rem 1.1rem;
-  background: linear-gradient(135deg, var(--ifm-color-primary-darkest) 0%, var(--ifm-color-primary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--ifm-color-primary-darkest) 0%,
+    var(--ifm-color-primary) 100%
+  );
 }
 
 .categoryTitle {
@@ -1026,11 +560,15 @@
 }
 
 @media (max-width: 768px) {
-  .categoryTopicGrid { grid-template-columns: 1fr 1fr; }
+  .categoryTopicGrid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (max-width: 480px) {
-  .categoryTopicGrid { grid-template-columns: 1fr; }
+  .categoryTopicGrid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .categoryTopicCard {
@@ -1043,7 +581,9 @@
   background: var(--ifm-background-color);
   text-decoration: none !important;
   color: inherit !important;
-  transition: border-color 0.15s ease, background 0.15s ease;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
 }
 
 .categoryTopicCard:hover {
@@ -1095,4 +635,45 @@
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
+}
+
+/* ── Photo gallery (real event/work photos) ────────────────────────── */
+
+.photoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.photoFigure {
+  margin: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-background-surface-color);
+}
+
+.photoImg {
+  display: block;
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.photoCaption {
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  color: var(--ifm-color-emphasis-700);
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .photoGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .photoImg {
+    height: 220px;
+  }
 }
