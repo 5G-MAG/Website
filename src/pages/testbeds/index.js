@@ -110,7 +110,17 @@ export default function Testbeds() {
       />
 
       <div className="container" style={{ marginTop: '1.75rem' }}>
-        <p className="topic-lead">Shared infrastructure and evaluation frameworks for testing technologies in realistic conditions — complementing Reference Tools and underpinning several application scenarios.</p>
+        <p className="topic-lead">
+          Shared infrastructure and evaluation frameworks for testing technologies in realistic
+          conditions — complementing Reference Tools and underpinning several application
+          scenarios. A testbed is a reproducible test environment or benchmark framework, not the
+          spec-implementing code itself and not the events where results get shown off.{' '}
+          <Link to="/reference-tools">Reference Tools</Link> is the spec-implementing code these
+          testbeds evaluate;{' '}
+          <Link to="/testing">Interop &amp; Testing</Link> is the separate activity layer where
+          these get shown off at real interoperability events, not something that owns or
+          validates testbeds.
+        </p>
       </div>
 
       <main>

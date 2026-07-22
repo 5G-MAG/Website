@@ -102,7 +102,10 @@ export const SECTION_NAV = [
     prefixes: ['/testing'],
     title: 'Interop & Testing',
     titleHref: '/testing',
-    items: [{ label: 'Testbeds & Evaluation Tools', href: '/testbeds' }],
+    // Testing is the activity layer (plugfests, demos, trials) — it does not
+    // own or gatekeep Testbeds or Reference Tools, so this section has no
+    // sub-items of its own.
+    items: [],
   },
   {
     prefixes: ['/events'],
