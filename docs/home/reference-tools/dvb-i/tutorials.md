@@ -2,7 +2,7 @@
 title: Tutorials
 hide_title: true
 sidebar_position: 2
-description: Points to demo videos and repositories for the DVB-I over 5G reference tools, as written tutorials are not yet published.
+description: Walkthrough for standing up the DVB-I-aware 5GMS application and verifying DVB-I service discovery, plus demo videos and repository pointers.
 ---
 
 <div class="topic-banner">
@@ -19,7 +19,54 @@ description: Points to demo videos and repositories for the DVB-I over 5G refere
 
 <div style="margin: 8px 0"><a class="button button--outline button--primary" href="/reference-tools/dvb-i/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/dvb-i/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/reference-tools/dvb-i/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="#video-library" style="margin: 2px 4px 2px 0">Video Library</a></div>
 
-Written step-by-step tutorials for the DVB-I over 5G Reference Tools are not yet published here. In the meantime, the videos below and the project repositories are the best starting points. For setup instructions, refer to the README in each [DVB-I repository](https://github.com/5G-MAG). See the [Scope](./scope) page for the specifications and architecture, and the [Resources](./resources) page for the code.
+This tutorial stands up a DVB-I-aware 5GMS application and walks through verifying that DVB-I service discovery is working, on top of the plain 5GMS end-to-end deployment. For background on the specifications and architecture it exercises, see the [Scope](./scope) page; for the underlying repositories, see the [Resources](./resources) page.
+
+## Standing up the DVB-I-aware 5GMS application
+
+**What you will build:** the same end-to-end 5GMSd deployment as the [5GMS end-to-end tutorial](../5gms/tutorials/end-to-end) (an Application Function, an Application Server, and the Android client stack), but with the client driven by a DVB-I service list instead of a hard-coded stream, so you can confirm that DVB-I service discovery is actually selecting the service instance that gets played.
+
+### 1. Prerequisites: the 5GMS end-to-end deployment
+
+The client used here is built from the same repository as the plain 5GMS reference tools, `rt-5gms-application`, listed on this project's [Resources](./resources) page as the "DVB-I Reference App" (its description there notes it "holds applications that can be used to test and demonstrate other 5G-MAG Reference Tools related to 5GMS," including both the 5GMSd-Aware Application and the Exo DVB-I Player). The Application Function, Application Server, Common Android Library, Media Stream Handler, and Media Session Handler it depends on are exactly the same 5GMS components either way, and setting them up is already documented step by step:
+
+[5G Media Streaming: 5G MSd End-to-End deployment (with Docker)](../5gms/tutorials/end-to-end)
+
+Follow that tutorial's server-side setup (Option 1, Docker Compose, is the fastest path) and client-side steps 1-3 (Common Android Library, Media Stream Handler, Media Session Handler) before continuing here.
+
+### 2. Installing the DVB-I-aware application
+
+With the AF, AS, and the shared Android libraries in place, install the `rt-5gms-application` repository itself:
+
+[rt-5gms-application](https://github.com/5G-MAG/rt-5gms-application)
+
+The repository builds both the plain 5GMSd-Aware Application used in the 5GMS tutorial and the Exo DVB-I Player, the DVB-I-aware variant used here. Follow the repository's own README for the current build target/flavour used to produce the DVB-I-aware variant rather than the plain 5GMSd-Aware Application: that build step is not documented on this website.
+
+### 3. Configuring DVB-I service discovery
+
+This is the part that is specific to this project rather than to plain 5GMS. Per the [Scope](./scope) page, the DVB-I-aware client adds a discovery layer in front of the same 5GMS unicast transport: instead of (or alongside) the 5GMS `m8Url` source list used in the plain 5GMS tutorial, the client needs a DVB-I service list to fetch and parse (DVB A177 / ETSI TS 103 770), whose service instances then hand off to the 5GMS delivery path set up in step 1 (see the Scope page's "How the tools map to the standard" section for that hand-off, and "Bootstrap and the Service List Registry" on the [Tech: DVB-I Services over 5G Systems](/tech/dvb-i/dvb-i-5g) page for how a client locates a service list in the first place).
+
+:::note[Not yet documented here]
+Neither this project's docs nor the 5GMS tutorials document the specific configuration file, setting, or command used to point the DVB-I-aware application at a DVB-I service list (for example a Service List Registry query, or a directly configured service-list URL). Check the [rt-5gms-application](https://github.com/5G-MAG/rt-5gms-application) repository's own README for the current mechanism rather than assuming the 5GMS `app_config.json` `m8Url`/`metadataUrl` source list from the plain 5GMS tutorial carries over unchanged, it may not.
+:::
+
+### 4. Verifying DVB-I service discovery works
+
+Once the app is installed and pointed at a DVB-I service list, check the discovery layer itself rather than only the underlying stream playback:
+
+- The app should successfully fetch and parse a DVB-I service list (completing the Service List Registry bootstrap first, if one is configured) instead of falling back to a hard-coded stream.
+- Selecting a service in the app should resolve to the same AF/AS-served DASH source you set up in step 1, i.e. the DVB-I service and programme metadata is what is driving playback, not a bypass of it. This is the "Service discovery and selection" mapping described in [Scope](./scope).
+- If you also have a 5G Broadcast instance available (see the [5G Broadcast reference tools](../5g-broadcast/resources)), the same DVB-I service should expose both a unicast and a broadcast service instance, letting you exercise the "Concurrent / hybrid operation" behaviour described in [Scope](./scope) rather than only ever resolving a single path.
+
+<div class="tutorial-complete">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2l4 -4" /><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9" /></svg>
+<div><strong>You now have a DVB-I-aware 5GMS application running, with playback driven by DVB-I service discovery instead of a hard-coded stream.</strong></div>
+</div>
+
+### Next steps
+
+- [Scope](./scope) - the reference architecture these components implement
+- [Resources](./resources) - the underlying repositories and releases
+- [5G Media Streaming Tutorials](../5gms/tutorials) - the full set of 5GMS AF/AS walkthroughs this one builds on
 
 ## Video Library
 

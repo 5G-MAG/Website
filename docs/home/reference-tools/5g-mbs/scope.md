@@ -133,48 +133,7 @@ The feature list above marks which service operations and distribution modes are
 
 ## Getting started
 
-The fastest way to see the tools working end to end is the Docker-Compose deployment described under [Docker deployment support](#docker-deployment-support) below, which brings up the MBS-related 5GC network functions as containers. From there:
-
-1. Pick the architecture that matches what you want to exercise: the direct MBS core functions, or the same path fronted by the [5GC Service Consumers](../5g-core) libraries. The two diagrams below show each.
-2. Follow the [Tutorials](./tutorials) to provision a session and start a delivery. The tutorials walk through TMGI allocation and MBS session creation on the MB-SMF and object ingest into the MBSTF.
-3. Use the source in the [Resources](./resources) and the built [Resources](./resources) for the individual components (MBSTF, MB-SMF/MB-UPF over Open5GS, and the service consumer libraries).
-
-For the specification background behind each component, follow the [Standards: 5G Multicast Broadcast Services](/tech/standards/5g-mbs) list.
-
-## High-level architectures
-
-The two architectures below cover the same MBS delivery path but differ in how the 5G Core is provisioned. The first uses the MBS-specific network functions directly; the second adds the reusable [5GC Service Consumers](../5g-core) libraries as the way the MBS User Services layer talks to the core.
-
-### 5G Multicast Broadcast Services (MBS)
-
-The MBS reference tools with the MBS-specific core functions (MB-SMF, MB-UPF) provisioned directly.
-
-<img loading="lazy" src="/assets/images/projects/mbs_diagram.png" style="width: 80%" alt="High-level architecture of the 5G MBS reference tools showing the MBS User Services layer, the MBS-capable 5G Core and the NG-RAN">
-
-[5G Multicast Broadcast Services: Resources(../5g-mbs/resources)
-[Multimedia content delivery protocols: Resources(../multimedia/resources)
-[3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
-[Common Tools: Repositories](../common-tools/)
-
-### 5G Multicast Broadcast Services (MBS) with 5GC Service Consumers
-
-The same delivery path, but the MBS User Services layer uses the reusable 5GC Service Consumer libraries to invoke the core network functions.
-
-<img loading="lazy" src="/assets/images/projects/mbs_5gc_diagram.png" style="width: 80%" alt="High-level architecture of the 5G MBS reference tools using the 5GC Service Consumer libraries to reach the MBS-capable 5G Core">
-
-[5G Multicast Broadcast Services: Resources(../5g-mbs/resources)
-[Multimedia content delivery protocols: Resources(../multimedia/resources)
-[5GC Service Consumers: Resources(../5g-core/resources)
-[3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
-[Common Tools: Repositories](../common-tools/)
-
-## Docker deployment support
-
-Docker-Compose setups are provided to run the 5GC Network Functions related to MBS in Docker container environments.
-
-<img loading="lazy" src="/assets/images/5mbs/5G-MBS_container_names.png" style="width: 80%" alt="Mapping between the MBS architecture components and the names of the Docker containers that run them">
-
-[5G Multicast Broadcast Services: Resources(../5g-mbs/resources)
+To try the tools hands-on, follow the [Tutorials](./tutorials): they cover the two ways to provision the 5GC (direct MBS core functions, or via the [5GC Service Consumers](../5g-core) libraries), the [Docker-Compose deployment](./tutorials/docker-implementation), and the individual MBSF/MBSTF walkthroughs. For the source code, packages and releases behind each component, see [Resources](./resources); for the specification background, see [Standards: 5G Multicast Broadcast Services](/tech/standards/5g-mbs).
 
 ## NTN deployment context
 

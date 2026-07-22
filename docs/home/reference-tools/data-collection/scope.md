@@ -66,53 +66,37 @@ R1 supports interactions between a Provisioning AF (in the Application Service P
 
 ### Creating a Data Reporting Provisioning Session
 
-An example of a request body when Creating a new Data Reporting Provisioning Session is shown below:
+A Data Reporting Provisioning Session ties an Application Service Provider (`aspId`) and an event (`eventId`) to one or more Data Reporting Configurations. The shape of the request body:
 
 ```json
 {
-  "provisioningSessionId": "string",
   "aspId": "string",
-  "externalApplicationId": "string",
-  "internalApplicationId": "string",
   "eventId": "UE_COMM",
   "dataReportingConfigurationIds": ["string"]
 }
 ```
 
-Where UE_COMM is the example eventId which has been implemented (it indicates that the subscribed/notified event is UE communication information).
+`UE_COMM` is the example eventId that has been implemented (UE communication information). See the [Docker + Insomnia tutorial](./tutorials/docker-with-insomnia) for the full request body and a working walkthrough.
 
 ### Creating a Data Reporting Configuration
 
-An example of a request body when Creating a new Data Reporting Configuration is shown below:
+A Data Reporting Configuration defines how a client samples and reports data, and which access profiles may consume it. The shape of the request body:
 
 ```json
 {
   "dataCollectionClientType": "DIRECT",
-  "dataSamplingRules": [
-    {
-      "samplingPeriod": 10.0
-    }
-  ],
-  "dataReportingRules": [{}],
-  "dataReportingConditions": [
-    {
-      "type": "INTERVAL",
-      "period": 60
-    }
-  ],
+  "dataSamplingRules": [{ "samplingPeriod": 10.0 }],
+  "dataReportingConditions": [{ "type": "INTERVAL", "period": 60 }],
   "dataAccessProfiles": [
     {
       "dataAccessProfileId": "per_min_totals",
-      "targetEventConsumerTypes": ["NWDAF", "EVENT_CONSUMER_AF"],
-      "parameters": [],
-      "timeAccessRestrictions": {
-        "duration": 60,
-        "aggregationFunctions": ["SUM"]
-      }
+      "targetEventConsumerTypes": ["NWDAF", "EVENT_CONSUMER_AF"]
     }
   ]
 }
 ```
+
+See the [Docker + Insomnia tutorial](./tutorials/docker-with-insomnia) for the full request body and a working walkthrough.
 
 ## R6 (Event Exposure API) - Naf_EventExposure
 
@@ -123,28 +107,17 @@ R6 supports interactions between the Event Consumer AF and the Data Collection A
 
 ### Subscribing for Events
 
-An example of a request body when Creating a new Individual Application Event Exposure Subscription is shown below:
+An Individual Application Event Exposure Subscription names the event to subscribe to and where to send notifications. The shape of the request body:
 
 ```json
 {
-  "eventsSubs": [
-    {
-      "event": "UE_COMM",
-      "eventFilter": {
-        "anyUeInd": true
-      }
-    }
-  ],
-  "eventsRepInfo": {
-    "immRep": true,
-    "notifMethod": "PERIODIC",
-    "repPeriod": 10
-  },
-  "notifUri": "http://h2-server:8888/dcaf/notification/handler",
-  "notifId": "5g-mag-notification-id",
-  "suppFeat": "04"
+  "eventsSubs": [{ "event": "UE_COMM", "eventFilter": { "anyUeInd": true } }],
+  "eventsRepInfo": { "notifMethod": "PERIODIC", "repPeriod": 10 },
+  "notifUri": "http://h2-server:8888/dcaf/notification/handler"
 }
 ```
+
+See the [Docker + Insomnia tutorial](./tutorials/docker-with-insomnia) for the full request body and a working walkthrough.
 
 ## R2 (Direct Data Reporting API) - Ndcaf_DataReporting
 
@@ -153,7 +126,7 @@ R2 supports interactions between the Direct Data Collection Client in the UE and
 - Obtain data collection and reporting configuration from the corresponding Data Collection AF instance (by means of Ndcaf_DataReporting service) - when used by a Direct Data Collection Client instance.
 - Send reports to a Data Collection AF instance (by means of Ndcaf_DataReporting service) - when subsequently used by the Direct Data Collection Client.
 
-An example of a request body when creating a new Data Reporting Session is shown below:
+The shape of the request body when creating a new Data Reporting Session:
 
 ```json
 {
@@ -161,6 +134,8 @@ An example of a request body when creating a new Data Reporting Session is shown
   "supportedDomains": ["COMMUNICATION"]
 }
 ```
+
+See the [Docker + Insomnia tutorial](./tutorials/docker-with-insomnia) for the full request body and a working walkthrough.
 
 ## High-level architectures
 
@@ -174,7 +149,7 @@ This is the standalone DCAF deployment, where the Data Collection AF is used on 
 
 _Figure: standalone DCAF deployment._
 
-[UE Data Collection, Reporting and Event Exposure: Resources(../data-collection/resources)
+[UE Data Collection, Reporting and Event Exposure: Resources](../data-collection/resources)
 [3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
 
 ### 5G Downlink Media Streaming (5GMSd) with UE Data Collection Reporting and Event Exposure
@@ -186,7 +161,7 @@ This is the integrated deployment, where the DCAF is combined with the 5G Downli
 _Figure: DCAF integrated with 5GMSd data reporting._
 
 [5G Media Streaming: Resources](../5gms/resources)
-[UE Data Collection, Reporting and Event Exposure: Resources(../data-collection/resources)
+[UE Data Collection, Reporting and Event Exposure: Resources](../data-collection/resources)
 [3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
 [Common Tools](../common-tools/)
 
@@ -198,7 +173,7 @@ Docker-Compose setups are provided to run the Data Collection AF in Docker conta
 
 _Figure: Docker-Compose deployment of the Data Collection AF._
 
-[UE Data Collection, Reporting and Event Exposure: Resources(../data-collection/resources)
+[UE Data Collection, Reporting and Event Exposure: Resources](../data-collection/resources)
 
 ## Specifications and releases covered
 
@@ -223,12 +198,7 @@ The other reference points in the framework (R3 for the Indirect Data Collection
 
 ## Getting started
 
-1. Bring up the standalone DCAF using the provided Docker-Compose setup (see [Docker deployment support](#docker-deployment-support) above).
-2. Provision the DCAF over R1: create a provisioning session and a data reporting configuration (the request bodies are shown in the [R1 section](#r1-provisioning-api---ndcaf_datareportingprovisioning)).
-3. Subscribe an Event Consumer AF over R6 (see the [R6 section](#r6-event-exposure-api---naf_eventexposure)).
-4. Open a data reporting session and submit reports over R2 (see the [R2 section](#r2-direct-data-reporting-api---ndcaf_datareporting)).
-
-The [Docker + Insomnia tutorial](./tutorials/docker-with-insomnia) walks through these steps end to end. The source lives in the [UE Data Collection repositories](../data-collection/resources).
+Bring up the standalone DCAF (see [Docker deployment support](#docker-deployment-support) above), provision it over R1, subscribe an Event Consumer AF over R6, then open a data reporting session and submit reports over R2. The [Docker + Insomnia tutorial](./tutorials/docker-with-insomnia) walks through these steps end to end. The source lives in the [UE Data Collection repositories](../data-collection/resources).
 
 :::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the exact R1 to R6 reference-point mapping (in particular R3=Indirect Data Collection Client, R4=Application Server, R5=NWDAF exposure), the assignment of `Ndcaf_DataReportingProvisioning`, `Ndcaf_DataReporting` and `Naf_EventExposure` to specific reference points, and the Release-18 placement of TS 26.531/TS 26.532. Verify against the 3GPP work plan before publication.

@@ -2,7 +2,7 @@
 title: Introduction 6G Testbed
 hide_title: true
 sidebar_position: 0
-description: Video tutorial introducing the 6G Testbed's Network Emulator and AI Traffic Characterization framework, with links to full documentation.
+description: Video and step-by-step walkthrough introducing the 6G Testbed's Network Emulator and AI Traffic Characterization framework, with links to full documentation.
 ---
 
 <div class="topic-banner">
@@ -34,3 +34,12 @@ For the full component breakdown, the profile format, and the emulator API, see 
 The following video introduces the testbed:
 
 <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/KtYMui-cRc0" title="Introduction to the 6G Testbed: Network Emulator and AI Traffic Characterization (video walkthrough)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Getting started
+
+1. Clone the repository: [5G-MAG/6G-Testbed](https://github.com/5G-MAG/6G-Testbed).
+2. Try the network emulator on its own first, using an example profile. Pre-defined profiles are in [netemu/examples/profiles.yaml](https://github.com/5G-MAG/6G-Testbed/blob/main/netemu/examples/profiles.yaml), and the profiles used by the AI testbed are in [aitestbed/configs/profiles.yaml](https://github.com/5G-MAG/6G-Testbed/blob/main/aitestbed/configs/profiles.yaml).
+3. Run an AI scenario over an emulated profile using the orchestrator, then inspect the SQLite log and generated plots. To evaluate a self-hosted model without a commercial API key, use the vLLM client and a `chat_vllm`-style scenario.
+4. Extend it: add a scenario by subclassing `BaseScenario` and registering it, or add a provider by subclassing `LLMClient` and registering it in the orchestrator client factory (see the extension notes on the [Scope](../scope) page).
+
+Applying `tc` impairments requires the appropriate privileges on the network interface, so run the emulator on a machine where you can configure traffic control (typically with elevated privileges), and use `clear()` to return the interface to normal when finished.

@@ -57,7 +57,7 @@ Some repositories may be private and under testing. [Request early access](/earl
 
 ## Relationship to the standards work
 
-These tools are complementary to, not a replacement for, the standardisation activity. 5G-MAG contributes media-specific AI/ML requirements and use cases to 3GPP (primarily SA4 for media aspects, with SA2 for network data analytics), while the reference tools provide an experimental platform to validate and inform that work. In practice the relationship is two-way: the studies and specifications (for example 3GPP [TR 26.927](https://www.3gpp.org/dynareport/26927.htm) on AI/ML in 5G media services, and the SA4 data collection specifications TS 26.531 / TS 26.532) define the scenarios and interfaces the tools evaluate, and results from the tools can feed back into 5G-MAG positions and future contributions.
+These tools are complementary to, not a replacement for, the standardisation activity. 5G-MAG contributes media-specific AI/ML requirements and use cases to 3GPP (primarily SA4 for media aspects, with SA2 for network data analytics), while the reference tools provide an experimental platform to validate and inform that work. In practice the relationship is two-way: the studies and specifications (for example 3GPP [TR 26.847](https://www.3gpp.org/dynareport/26847.htm) on AI/ML in 5G media services, Release 19, completed, which supersedes the earlier, incomplete draft tracked as TR 26.927, and the SA4 data collection specifications TS 26.531 / TS 26.532) define the scenarios and interfaces the tools evaluate, and results from the tools can feed back into 5G-MAG positions and future contributions.
 
 A list of relevant specifications can be found in the link below.
 
@@ -79,7 +79,7 @@ These are the 3GPP studies and specifications that define the scenarios and data
 
 | Reference                                              | Group | Relevance to the tools                                                                                                            |
 | ------------------------------------------------------ | ----- | --------------------------------------------------------------------------------------------------------------------------------- |
-| TR 26.927                                              | SA4   | Study on AI/ML in 5G media services; the source of the media AI/ML scenarios and traffic-characterisation goals the tools address |
+| TR 26.847                                              | SA4   | Study on AI/ML in 5G media services, Release 19, completed (supersedes the earlier, incomplete draft tracked as TR 26.927); the source of the media AI/ML scenarios and traffic-characterisation goals the tools address |
 | [TR 22.874](https://www.3gpp.org/dynareport/22874.htm) | SA1   | Study on traffic characteristics and requirements for AI/ML model transfer; frames the latency and data-rate behaviour to measure |
 | TS 26.531 / TS 26.532                                  | SA4   | Data Collection and Reporting; implemented in the separate Data Collection project that feeds training and inference data         |
 | [TS 23.288](https://www.3gpp.org/dynareport/23288.htm) | SA2   | NWDAF (network-side analytics); context for how network data analytics would consume this kind of data                            |
@@ -95,7 +95,7 @@ Because the runnable code is the shared testbed, the quickest path is to start t
 For the data-collection components (TS 26.531 / TS 26.532), see the [Data Collection](/reference-tools/data-collection/scope) project and its repository [5G-MAG/rt-data-collection-application-function](https://github.com/5G-MAG/rt-data-collection-application-function).
 
 :::warning[References to verify]
-These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TR 26.927, TR 22.874, TS 26.531 / TS 26.532, and TS 23.288. Verify against the 3GPP work plan before publication.
+These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TR 26.847, TR 22.874, TS 26.531 / TS 26.532, and TS 23.288. Verify against the 3GPP work plan before publication.
 :::
 
 ## Related

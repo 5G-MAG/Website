@@ -24,7 +24,7 @@ description: Explains what MPEG ARF (ISO/IEC 23090-39) covers and how the Avatar
 </div>
 </div>
 
-<div style="margin: 8px 0"><a class="button button--outline button--primary" href="/reference-tools/avatar/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/avatar/resources" style="margin: 2px 4px 2px 0">Resources</a></div>
+<div style="margin: 8px 0"><a class="button button--outline button--primary" href="/reference-tools/avatar/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/avatar/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/reference-tools/avatar/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a></div>
 
 This page describes the specification within the scope of the Avatar Communication reference tools, what that specification covers, and how the tools are organised.
 
@@ -57,8 +57,8 @@ This mirrors the decoupling used elsewhere in 5G-MAG's immersive tooling: the co
 The runnable software and setup instructions live on the Developer Portal, not in this scope page. To begin:
 
 - Read the [Tech: Avatar Communications](/tech/avatar-communications) documentation for the ARF data model, the scene-description integration, and the end-to-end procedure, so the component boundaries are clear before you build.
-- Follow the reference-tools entry on the [Developer Portal Avatar Communications page](/reference-tools/avatar) for build and run instructions.
-- Use the [Resources](./resources) page for the current list of repositories and their status, and the [Resources](./resources) page for tagged versions.
+- Follow the [Tutorials](./tutorials) page for a getting-started walkthrough to build and run the avatar call demo.
+- Use the [Resources](./resources) page for the current list of repositories, their status, and tagged versions.
 - Track roadmap and open work on the [5G-MAG project board](https://github.com/orgs/5G-MAG/projects/44).
 
 If you only need to render and inspect avatars, start from the Unity presentation with the provided sample content. If you are working on capture and animation, start from the tracking/animation producer and validate its output against the sample animation streams before wiring it into a live call.

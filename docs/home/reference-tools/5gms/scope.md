@@ -219,13 +219,7 @@ Note that the supported `protocols` in 3GPP Release 17 are:
 Examples are available in the [examples-files directory of rt-5gms-examples](https://github.com/5G-MAG/rt-5gms-examples/tree/development/examples-files)
 :::
 
-The following tutorials describe several steps showing how to create a Provisioning Session, add Content Hosting configuration and provisioning of Server Certificates.
-
-[Go to the Tutorial: 5G MSd End-to-End deployment (with Docker)](./tutorials/end-to-end)
-
-[Go to the Tutorial: Testing the 5GMS Application Function](./tutorials/testing-AF)
-
-[Go to the Tutorial: Testing M1 and M5 APIs with Postman](./tutorials/testing-postman)
+See the [Tutorials](./tutorials) page for the hands-on walkthrough.
 
 ## Feature: Network Assistance
 
@@ -316,13 +310,7 @@ Key fields:
 - `applicationSessionContext`: The network slice (`sliceInfo`) and Data Network Name (`dnn`) the policy applies to.
 - `chargingSpecification`: Sponsored-data and charging settings for the session.
 
-The following tutorials describe several steps showing how to create and provision Policy Templates.
-
-[Go to the Tutorial: 5G MSd End-to-End deployment (with Docker)](./tutorials/end-to-end)
-
-[Go to the Tutorial: Testing the 5GMS Application Function](./tutorials/testing-AF)
-
-[Go to the Tutorial: Testing M1 and M5 APIs with Postman](./tutorials/testing-postman)
+See the [Tutorials](./tutorials) page for the hands-on walkthrough.
 
 ## Feature: Consumption Reporting
 
@@ -364,13 +352,7 @@ Where:
 Examples are available in the [examples-files directory of rt-5gms-examples](https://github.com/5G-MAG/rt-5gms-examples/tree/development/examples-files)
 :::
 
-The following tutorials describe several steps showing how to create a Consumption Reporting Configuration.
-
-[Go to the Tutorial: 5G Media Streaming with Consumption Reporting](./tutorials/consumption-reporting)
-
-[Go to the Tutorial: Testing the 5GMS Application Function](./tutorials/testing-AF)
-
-[Go to the Tutorial: Testing M1 and M5 APIs with Postman](./tutorials/testing-postman)
+See the [Tutorials](./tutorials) page for the hands-on walkthrough.
 
 ## Feature: QoE Metrics Reporting
 
@@ -433,13 +415,7 @@ Where the field `metrics` for downlink media streaming and for the 3GPP scheme <
 Examples are available in the [examples-files directory of rt-5gms-examples](https://github.com/5G-MAG/rt-5gms-examples/tree/development/examples-files)
 :::
 
-The following tutorials describe several steps showing how to create a QoE Metrics Reporting Configuration.
-
-[Go to the Tutorial: 5G Media Streaming with QoE Metrics Reporting](./tutorials/metrics-reporting)
-
-[Go to the Tutorial: Testing the 5GMS Application Function](./tutorials/testing-AF)
-
-[Go to the Tutorial: Testing M1 and M5 APIs with Postman](./tutorials/testing-postman)
+See the [Tutorials](./tutorials) page for the hands-on walkthrough.
 
 ## Feature: Data collection, reporting and exposure
 
@@ -664,7 +640,7 @@ Adds the UE Data Collection, Reporting and Event Exposure project so that consum
 <img loading="lazy" src="/assets/images/projects/5gms_uedc_diagram.png" style="width: 80%" alt="High-level architecture of 5GMSd combined with UE Data Collection, Reporting and Event Exposure">
 
 [5G Media Streaming: Resources](../5gms/resources)
-[UE Data Collection, Reporting and Event Exposure: Resources(../data-collection/resources)
+[UE Data Collection, Reporting and Event Exposure: Resources](../data-collection/resources)
 [3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
 [Common Tools: Repositories](../common-tools/)
 
@@ -675,7 +651,7 @@ Adds the 5G Core (5GC) Service Consumers project, letting the AF consume core ne
 <img loading="lazy" src="/assets/images/projects/5gms_5gc_diagram.png" style="width: 80%" alt="High-level architecture of 5GMSd combined with 5GC Service Consumers">
 
 [5G Media Streaming: Resources](../5gms/resources)
-[5GC Service Consumers: Resources(../5g-core/resources)
+[5GC Service Consumers: Resources](../5g-core/resources)
 [3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
 [Common Tools: Repositories](../common-tools/)
 
@@ -686,8 +662,8 @@ Combines 5GMSd with the 5G Broadcast and multimedia content delivery projects to
 <img loading="lazy" src="/assets/images/projects/5gms_5gbc_diagram.png" style="width: 80%" alt="High-level architecture of 5GMSd delivered over eMBMS broadcast">
 
 [5G Media Streaming: Resources](../5gms/resources)
-[5G Broadcast: Resources(../5g-broadcast/resources)
-[Multimedia content delivery protocols: Resources(../multimedia/resources)
+[5G Broadcast: Resources](../5g-broadcast/resources)
+[Multimedia content delivery protocols: Resources](../multimedia/resources)
 [3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
 [Common Tools: Repositories](../common-tools/)
 
@@ -698,17 +674,6 @@ Docker-Compose setups are provided to run the 5GMS Application Function, the 5GM
 <img loading="lazy" src="/assets/images/5gms/5gms-docker-recipe1.png" style="width: 80%" alt="Docker Compose deployment recipe for the 5GMS Application Function, Application Server and Application Provider">
 
 [5G Media Streaming: Resources](../5gms/resources)
-
-## Getting started
-
-A practical route into the tools:
-
-1. Stand up an end-to-end downlink deployment with the [5G MSd End-to-End deployment (with Docker)](./tutorials/end-to-end) tutorial, which brings up the AF, AS and Application Provider together.
-2. Exercise the AF and AS individually with the [Testing the 5GMS Application Function](./tutorials/testing-AF) and [Developing and Testing the 5GMS Application Server](./tutorials/testing-AS) tutorials.
-3. Drive the M1 provisioning and M5 session-handling APIs directly with the [Testing M1 and M5 APIs with Postman](./tutorials/testing-postman) tutorial.
-4. Add reporting with the [Consumption Reporting](./tutorials/consumption-reporting) and [QoE Metrics Reporting](./tutorials/metrics-reporting) tutorials.
-
-For the source, see the [Resources](./resources) page; for the standards context, see the [Standards page](/tech/standards/5gms) and the [technical documentation](/tech/5gms).
 
 :::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the Release 17 baseline placement of the implemented features in TS 26.501 and TS 26.512, the specification versions cited in the "Summary of features" support table (TS 26.501 v17.6.0, TS 26.512 v17.6.0 and the associated 29-series versions), and the exact developer-portal paths linked in the notes. Verify against the 3GPP work plan and with the reference-tool maintainers before publication.

@@ -88,6 +88,33 @@ export const communityVideos = [
 
 These tutorials cover the individual pieces of the 5G Multicast Broadcast Services (MBS) reference tools. New to this area? Start with [Initial support of MBS in the 5GC](./mbs-in-5gc) to bring up the MBS-capable 5G Core, or with [MBS Transport Function (MBSTF) Testing](./mbstf) to exercise the media user service layer. The [End-to-End](./mbs-end-to-end) tutorial ties the pieces together.
 
+## High-level architectures
+
+The two architectures below cover the same MBS delivery path but differ in how the 5G Core is provisioned. The first uses the MBS-specific network functions directly; the second adds the reusable [5GC Service Consumers](../../5g-core) libraries as the way the MBS User Services layer talks to the core.
+
+### 5G Multicast Broadcast Services (MBS)
+
+The MBS reference tools with the MBS-specific core functions (MB-SMF, MB-UPF) provisioned directly.
+
+<img loading="lazy" src="/assets/images/projects/mbs_diagram.png" style={{ width: '80%' }} alt="High-level architecture of the 5G MBS reference tools showing the MBS User Services layer, the MBS-capable 5G Core and the NG-RAN" />
+
+[5G Multicast Broadcast Services: Resources](../resources)
+[Multimedia content delivery protocols: Resources](../../multimedia/resources)
+[3GPP RAN and Core Platforms: Resources](../../3gpp-platforms/resources)
+[Common Tools: Repositories](../../common-tools/)
+
+### 5G Multicast Broadcast Services (MBS) with 5GC Service Consumers
+
+The same delivery path, but the MBS User Services layer uses the reusable 5GC Service Consumer libraries to invoke the core network functions.
+
+<img loading="lazy" src="/assets/images/projects/mbs_5gc_diagram.png" style={{ width: '80%' }} alt="High-level architecture of the 5G MBS reference tools using the 5GC Service Consumer libraries to reach the MBS-capable 5G Core" />
+
+[5G Multicast Broadcast Services: Resources](../resources)
+[Multimedia content delivery protocols: Resources](../../multimedia/resources)
+[5GC Service Consumers: Resources](../../5g-core/resources)
+[3GPP RAN and Core Platforms: Resources](../../3gpp-platforms/resources)
+[Common Tools: Repositories](../../common-tools/)
+
 ## [Tutorial: MBS Transport Function (MBSTF) Testing](./mbstf)
 
 This tutorial provides an overview on the initial implementation of the MBSTF.

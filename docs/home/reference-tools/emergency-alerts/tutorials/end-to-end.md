@@ -89,10 +89,6 @@ cd ~/rt-mbms-tx-for-qrd-and-crd-emergency-alerts/Config-Template
 cp bytecode /home/fivegmag/bytecode
 ```
 
-:::warning
-This tutorial refers to the configuration-template directory as both `Config-Template` (singular) and `Config-Templates` (plural) in different steps, and later edits are described against both `Config-Templates/sib.conf.mbsfn` and `build/sib.conf.mbsfn`. These are the source template files and the build-time copies that the transmitter actually reads at runtime: the templates under the configuration-template directory are the originals, while the build directory holds the copies used when the transmitter runs. Confirm the exact directory name (singular or plural) against your checkout before editing, and edit the copy that your running transmitter loads.
-:::
-
 ## Running
 
 ### Step 3: Running the 5G Broadcast Transmitter
@@ -144,8 +140,8 @@ _Figure: an emergency alert shown on the receiving device._
 
 ### Step 5: Changing the type of the alert
 
-With the current implementation, the SIB 12 payload is static and defined in `Config-Templates/sib.conf.mbsfn` (see the path caveat above about templates versus build-time copies). To change the type
-of the alert you need to open `Config-Templates/sib.conf.mbsfn` and change the `message_identifier`. A list of possible values is
+With the current implementation, the SIB 12 payload is static and defined in `Config-Template/sib.conf.mbsfn`. To change the type
+of the alert you need to open `Config-Template/sib.conf.mbsfn` and change the `message_identifier`. A list of possible values is
 defined in [3GPP TS 23.041](https://www.3gpp.org/dynareport/23041.htm) Section 9.4.1.2.2. The example below sets `message_identifier` to `0x1102`, which corresponds to the combined earthquake and tsunami warning row in the table that follows:
 
 ```ini
@@ -188,4 +184,4 @@ Transmitting radio signals is subject to local regulation. Only transmit in a sh
 ## Next steps
 
 - Read the [Scope](../scope) page for the specifications and architecture behind this setup.
-- See the related [5G Broadcast: Hybrid TV/Radio](../../5g-broadcast) project for the base transmitter and receiver tools.
+- See the related [5G Broadcast - TV and Radio Services](../../5g-broadcast) project for the base transmitter and receiver tools.

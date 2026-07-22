@@ -99,9 +99,9 @@ The diagram below shows the DVB-I over 5G reference architecture combining a 5G 
 <img loading="lazy" src="/assets/images/projects/dvb_diagram.png" alt="DVB-I over 5G reference architecture showing 5GMSd unicast delivery alongside a 5G Broadcast path, with links to the contributing component repositories" style="width: 80%">
 
 [5G Media Streaming: Resources](../5gms/resources)
-[DVB-I Services: Resources(../dvb-i/resources)
-[5G Broadcast: Resources(../5g-broadcast/resources)
-[Multimedia content delivery protocols: Resources(../multimedia/resources)
+[DVB-I Services: Resources](../dvb-i/resources)
+[5G Broadcast: Resources](../5g-broadcast/resources)
+[Multimedia content delivery protocols: Resources](../multimedia/resources)
 [3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
 [Common Tools](../common-tools/)
 

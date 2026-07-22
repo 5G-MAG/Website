@@ -119,8 +119,8 @@ The diagram below shows the 5G Broadcast tools combined with the multimedia deli
 
 Repositories used in this architecture:
 
-- [5G Broadcast: Resources(../5g-broadcast/resources)
-- [Multimedia content delivery protocols: Resources(../multimedia/resources)
+- [5G Broadcast: Resources](../5g-broadcast/resources)
+- [Multimedia content delivery protocols: Resources](../multimedia/resources)
 - [Common Tools: Repositories](../common-tools/)
 
 ### 5G Downlink Media Streaming (5GMSd) over eMBMS
@@ -132,8 +132,8 @@ This second diagram shows 5G Downlink Media Streaming (5GMSd) delivered over eMB
 Repositories used in this architecture:
 
 - [5G Media Streaming: Resources](../5gms/resources)
-- [5G Broadcast: Resources(../5g-broadcast/resources)
-- [Multimedia content delivery protocols: Resources(../multimedia/resources)
+- [5G Broadcast: Resources](../5g-broadcast/resources)
+- [Multimedia content delivery protocols: Resources](../multimedia/resources)
 - [3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
 - [Common Tools: Repositories](../common-tools/)
 

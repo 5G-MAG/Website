@@ -2,7 +2,7 @@
 title: Tutorials
 hide_title: true
 sidebar_position: 3
-description: No AI/ML tutorials yet; points to the 6G-Testbed README and its Introduction to 6G Testbed walkthrough instead.
+description: Quickstart pointing to the shared 6G Testbed walkthrough for what is runnable today; an AI/ML-specific quickstart follows once the evaluation framework repository is public.
 ---
 
 <div class="topic-banner">
@@ -23,10 +23,16 @@ description: No AI/ML tutorials yet; points to the 6G-Testbed README and its Int
 
 <div style="margin: 8px 0"><a class="button button--outline button--primary" href="/testbeds/ai-ml/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/testbeds/ai-ml/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/testbeds/ai-ml/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a></div>
 
-There are no step-by-step tutorials for the AI/ML Evaluation Framework yet. In the meantime:
+The AI/ML Evaluation Framework's own repository, [5G-MAG/rt-ai-ml-evaluation-framework](https://github.com/5G-MAG/rt-ai-ml-evaluation-framework), is currently private, so this page cannot yet walk through AI/ML-specific commands against it. What you can run today is the shared 6G Testbed, which the AI/ML Evaluation Framework builds on for network emulation and AI traffic characterisation.
 
-- Read the README of the [5G-MAG/6G-Testbed](https://github.com/5G-MAG/6G-Testbed) repository, which hosts the network emulator and AI traffic characterisation testbed the AI/ML work shares.
-- Follow the [Introduction to the 6G Testbed](../6g-testbed/tutorials/introduction-6g-testbed) tutorial for a hands-on walkthrough of that shared tooling.
-- See the [Scope](./scope) page for what the framework covers.
+## Quickstart: run the shared 6G Testbed today
 
-Note that some repositories are currently private and under testing; [request early access](/early-access).
+1. Read the [6G Testbed scope](../6g-testbed/scope) page for the testbed's two building blocks (network emulator and AI traffic characterisation framework) and how they fit together.
+2. Follow the [Introduction to the 6G Testbed](../6g-testbed/tutorials/introduction-6g-testbed) tutorial, a video walkthrough of both parts running together.
+3. Clone [5G-MAG/6G-Testbed](https://github.com/5G-MAG/6G-Testbed) and follow its README for setup instructions and running a scenario against an emulated network profile.
+
+## AI/ML-specific quickstart: coming once the repository is public
+
+[5G-MAG/rt-ai-ml-evaluation-framework](https://github.com/5G-MAG/rt-ai-ml-evaluation-framework) is currently private. Once it is public, this page will be updated with a step-by-step quickstart specific to the AI/ML Evaluation Framework itself (benchmarks, datasets, and how they connect to the 6G Testbed's traffic-characterisation output). This is a known gap, not an oversight: in the meantime, [request early access](/early-access) to the repository, or check the [Resources](./resources) page for its current public/private status.
+
+See the [Scope](./scope) page for what the framework covers.

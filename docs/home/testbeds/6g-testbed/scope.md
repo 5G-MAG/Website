@@ -217,14 +217,7 @@ There is no normative 6G specification yet (6G is a Release-21 target, currently
 
 ## Getting started
 
-1. Clone the repository: [5G-MAG/6G-Testbed](https://github.com/5G-MAG/6G-Testbed).
-2. Try the network emulator on its own first, using an example profile. Pre-defined profiles are in [netemu/examples/profiles.yaml](https://github.com/5G-MAG/6G-Testbed/blob/main/netemu/examples/profiles.yaml), and the profiles used by the AI testbed are in [aitestbed/configs/profiles.yaml](https://github.com/5G-MAG/6G-Testbed/blob/main/aitestbed/configs/profiles.yaml).
-3. Run an AI scenario over an emulated profile using the orchestrator, then inspect the SQLite log and generated plots. To evaluate a self-hosted model without a commercial API key, use the vLLM client and a `chat_vllm`-style scenario.
-4. Extend it: add a scenario by subclassing `BaseScenario` and registering it, or add a provider by subclassing `LLMClient` and registering it in the orchestrator client factory (see the extension notes above).
-
-Applying `tc` impairments requires the appropriate privileges on the network interface, so run the emulator on a machine where you can configure traffic control (typically with elevated privileges), and use `clear()` to return the interface to normal when finished.
-
-The [Tutorials](./tutorials) provide a guided introduction, and the [Video Library](./tutorials#video-library) collects the recorded walkthroughs.
+For the step-by-step walkthrough (cloning the repository, running the network emulator and an AI scenario, and extending the testbed with new scenarios or providers), see the [Tutorials](./tutorials) page.
 
 :::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TS 23.501 Table 5.7.4-1 (clause reference for the standardised 5QI to QoS-characteristics mapping). Verify against the 3GPP work plan before publication.

@@ -37,7 +37,7 @@ This project extends 5G-MAG's 5G Broadcast tools so that public warning and emer
 
 The warning-message handling is added to the existing 5G Broadcast transmit and receive chain rather than introduced as a separate stack. The Emergency Alerts tools are therefore best understood as a feature set layered on the broader 5G Broadcast platform, and they are developed and tracked together with it.
 
-The reference tooling here is closely tied to the main 5G Broadcast repositories, and the exact set of public repositories evolves as the work progresses. For the authoritative, current list of repositories and their implementation status, see the [Resources](./resources) page rather than a hard-coded list here. The associated implementation work is tracked on the [MBMS: Public Warning System Kanban board](https://github.com/orgs/5G-MAG/projects/20) linked from the [Resources](./resources). For the underlying transmit and receive components (for example the MBMS transmitter and modem tools), see the related [5G Broadcast: Hybrid TV/Radio](../5g-broadcast/resources) project.
+The reference tooling here is closely tied to the main 5G Broadcast repositories, and the exact set of public repositories evolves as the work progresses. For the authoritative, current list of repositories and their implementation status, see the [Resources](./resources) page rather than a hard-coded list here. The associated implementation work is tracked on the [MBMS: Public Warning System Kanban board](https://github.com/orgs/5G-MAG/projects/20) linked from the [Resources](./resources). For the underlying transmit and receive components (for example the MBMS transmitter and modem tools), see the related [5G Broadcast - TV and Radio Services](../5g-broadcast/resources) project.
 
 Public warning here follows the Public Warning System (PWS) approach: CBS is the delivery mechanism, and the alert types it can carry include the Earthquake and Tsunami Warning System (ETWS) and the Commercial Mobile Alert System (CMAS).
 
@@ -80,7 +80,7 @@ Confirm the exact version and feature coverage against the [Resources](./resourc
 
 The end-to-end path is exercised as an extension of the 5G Broadcast transmit/receive setup, so the prerequisites are the same as for 5G Broadcast plus a way to view the received alert.
 
-1. Set up the 5G Broadcast transmit environment following the underlying [5G Broadcast: Hybrid TV/Radio](../5g-broadcast) tools and their build instructions; the warning-message support is part of that transmit chain rather than a separate install.
+1. Set up the 5G Broadcast transmit environment following the underlying [5G Broadcast - TV and Radio Services](../5g-broadcast) tools and their build instructions; the warning-message support is part of that transmit chain rather than a separate install.
 2. Configure the transmitter to broadcast a warning message. In the current tooling this triggers a default CMAS alert via SIB12; the CBS fields (message identifier, serial number, data coding scheme, warning-message segment) are set in the transmitter configuration or code.
 3. Bring up a 5G Broadcast capable receiver tuned to the same carrier and confirm that the alert is decoded and presented.
 4. For a guided walk-through, follow the "CBS over 5G Broadcast" tutorial and the recorded demonstrations linked from the [Tutorials](./tutorials) page and the Video Library.
@@ -122,7 +122,7 @@ The diagram below shows the alert path: an alert is passed to the transmitter, e
 
 _Figure: alert to transmitter, encoded as CBS in SIB12, broadcast over FeMBMS, and presented on the receiving device._
 
-[Emergency Alerts over 5G Broadcast: Resources(../emergency-alerts/resources)
+[Emergency Alerts over 5G Broadcast: Resources](../emergency-alerts/resources)
 [3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
 
 :::warning[References to verify]
@@ -134,6 +134,6 @@ These identifiers on this page were not confirmed against a primary source (the 
 - [Resources](./resources)
 - [Resources](./resources)
 - [Tutorials](./tutorials)
-- Related project: [5G Broadcast: Hybrid TV/Radio](../5g-broadcast)
+- Related project: [5G Broadcast - TV and Radio Services](../5g-broadcast)
 - Standards: [5G Broadcast](/tech/standards/5g-broadcast)
 - Technical documentation: [5G Broadcast on the Tech portal](/tech/5g-broadcast)

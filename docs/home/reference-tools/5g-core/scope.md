@@ -131,12 +131,7 @@ Each library implements only the consumer (client) side of its APIs, so it assum
 
 ## Getting started
 
-1. Bring up a 5G Core that exposes the target services. The reference tools are typically exercised against an Open5GS-based core; the MBS path additionally needs the MB-SMF and MB-UPF (see the [5G MBS reference tools](../5g-mbs/scope)).
-2. Start with the command line tools, which wrap the libraries and need no application code: `pcf-policyauthorization` for the PCF/BSF path, and `tmgi-tool` and `mbs-service-tool` for the MB-SMF path. Each is described in its section above.
-3. Follow the per-library tutorials to run against your core: [Test libscpcf](./tutorials/using-libscPCF) and [Test libscmbsmf](./tutorials/using-libscMBSMF).
-4. Build the libraries into your own application from the [Resources](./resources) once the tools confirm the core responds as expected.
-
-For the specification background, see the BSF/PCF entries on [Standards: 5G Media Streaming](/tech/standards/5gms) and the MB-SMF entry on [Standards: 5G Multicast & Broadcast Services](/tech/standards/5g-mbs).
+See [Tutorials](./tutorials) to run the tools against a 5G Core, and [Resources](./resources) for the source code and releases.
 
 ## 5G Downlink Media Streaming (5GMSd) with 5GC Service Consumers
 
@@ -145,7 +140,7 @@ The diagram below shows how the 5GMSd reference tools use the 5GC Service Consum
 <img loading="lazy" src="/assets/images/projects/5gms_5gc_diagram.png" style="width: 80%" alt="Architecture of the 5G Downlink Media Streaming reference tools using the 5GC Service Consumer libraries to reach the BSF and PCF">
 
 [5G Media Streaming: Resources](../5gms/resources)
-[5GC Service Consumers: Resources(../5g-core/resources)
+[5GC Service Consumers: Resources](../5g-core/resources)
 [3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
 [Common Tools: Repositories](../common-tools/)
 
@@ -155,8 +150,8 @@ The diagram below shows how the MBS reference tools use the MB-SMF service consu
 
 <img loading="lazy" src="/assets/images/projects/mbs_5gc_diagram.png" style="width: 80%" alt="Architecture of the 5G MBS reference tools using the MB-SMF service consumer library to reach the 5G Core">
 
-[5G Multicast Broadcast Services: Resources(../5g-mbs/resources)
-[Multimedia content delivery protocols: Resources(../multimedia/resources)
-[5GC Service Consumers: Resources(../5g-core/resources)
+[5G Multicast Broadcast Services: Resources](../5g-mbs/resources)
+[Multimedia content delivery protocols: Resources](../multimedia/resources)
+[5GC Service Consumers: Resources](../5g-core/resources)
 [3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
 [Common Tools: Repositories](../common-tools/)

@@ -46,8 +46,8 @@ The diagram below shows the multimedia delivery protocol tools used with the LTE
 
 <img loading="lazy" src="/assets/images/projects/5gbc_diagram.png" alt="Architecture combining the multimedia content delivery protocol tools with the 5G Broadcast system" style="width: 80%">
 
-[5G Broadcast: Resources(../5g-broadcast/resources)
-[Multimedia content delivery protocols: Resources(../multimedia/resources)
+[5G Broadcast: Resources](../5g-broadcast/resources)
+[Multimedia content delivery protocols: Resources](../multimedia/resources)
 [Common Tools](../common-tools/)
 
 ### 5G Multicast Broadcast Services (MBS) with Multimedia delivery protocols
@@ -56,8 +56,8 @@ The diagram below shows the same delivery protocol tools used with 5G Multicast 
 
 <img loading="lazy" src="/assets/images/projects/mbs_diagram.png" alt="Architecture combining the multimedia content delivery protocol tools with 5G Multicast Broadcast Services (MBS)" style="width: 80%">
 
-[5G Multicast Broadcast Services: Resources(../5g-mbs/resources)
-[Multimedia content delivery protocols: Resources(../multimedia/resources)
+[5G Multicast Broadcast Services: Resources](../5g-mbs/resources)
+[Multimedia content delivery protocols: Resources](../multimedia/resources)
 [3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
 [Common Tools](../common-tools/)
 

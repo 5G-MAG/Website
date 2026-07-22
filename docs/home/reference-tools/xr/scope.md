@@ -168,7 +168,7 @@ _Figure: high-level view of how XR media is delivered over 5G, from the content 
 
 The diagrams and code in this project are split across two repository groups:
 
-- [XR Media with MPEG-I SD: Resources(../xr/resources) for the XR player, server, MAF and content repositories.
+- [XR Media with MPEG-I SD: Resources](../xr/resources) for the XR player, server, MAF and content repositories.
 - [Common Tools](../common-tools/) for the shared libraries reused across projects.
 
 ## XR Unity Player: Project overview
@@ -245,13 +245,7 @@ The reference tools split along the same boundary as ISO/IEC 23090-14:
 
 Anchoring and pose handling on the two device families are provided through Unity's ARFoundation (ARCore on Android handhelds, the HMD's own tracking on head-mounted displays), so the `MPEG_anchor` trackable types in the feature table map onto the trackables ARFoundation exposes on each platform.
 
-## Getting started
-
-1. **Read the model first.** The [Tech overview of MPEG-I Scene Description](/tech/xr/mpeg-i-scene-description) explains the Presentation Engine, MAF API, buffers and the glTF extensions the tools implement.
-2. **Check device support.** The [Requirements page](./tutorials/requirements) lists the supported XR Phone (Android/ARCore) and XR HMD devices and their prerequisites.
-3. **Build the player.** Clone [rt-xr-unity-player](https://github.com/5G-MAG/rt-xr-unity-player) (it pulls in [rt-xr-glTFast](https://github.com/5G-MAG/rt-xr-glTFast) as a submodule) and compile [rt-xr-maf-native](https://github.com/5G-MAG/rt-xr-maf-native) for the target platform; the MAF native library is built separately.
-4. **Load a scene.** Use the reference scenes in [rt-xr-content](https://github.com/5G-MAG/rt-xr-content) (for example `studio_apartment/studio_apartment.gltf` for media pipelines, video texture and spatial audio, or the `anchoring/` and `gravity/` scenes for anchoring and interactivity) and deploy them to the device.
-5. **Follow the changelogs.** The player [releases](https://github.com/5G-MAG/rt-xr-unity-player/releases) and the [Resources page](./resources) track which parts of the scene-description format are implemented and what is in progress.
+For hands-on setup, building the player and loading a first scene, see [Tutorials](./tutorials).
 
 :::warning[References to verify]
 The glTF extension support shown in the tables reflects the state of the reference tools and can change between releases; check the linked repositories and release notes for the current status. The out-of-scope 3GPP identifiers referenced above (TS 26.119, TS 26.565, and the 5G Media Streaming specifications) are tracked on the Standards and Tech views and were not confirmed here against a primary source; verify those against the 3GPP/ETSI work plan before relying on them.

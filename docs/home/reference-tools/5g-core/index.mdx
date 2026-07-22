@@ -3,7 +3,7 @@ hide_title: true
 sidebar_class_name: project-index-link
 title: 5G Core Service Consumers
 sidebar_position: -1
-description: Overview of the reference implementation for media applications that consume 5G Core PCF, NEF, and BSF services per 3GPP Release 16/17.
+description: Overview of the reference implementation for media applications that consume 5G Core PCF and BSF services per 3GPP Release 16/17.
 ---
 import CommunityStats from '@site/src/components/CommunityStats';
 
@@ -22,19 +22,21 @@ import CommunityStats from '@site/src/components/CommunityStats';
 </header>
 
 <div class="topic-lead">
-Reference implementation for media applications that consume 5G Core (5GC) network services directly, including policy authorisation, network event exposure, and content steering, using the interfaces defined for media applications in 3GPP Release 16 and 17.
+Reference implementation for media applications that consume 5G Core (5GC) network services directly, including policy authorisation, using the interfaces defined for media applications in 3GPP Release 16 and 17.
 </div>
 <div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href="/reference-tools/5g-core/scope" style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href="/reference-tools/5g-core/resources" style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href="/reference-tools/5g-core/tutorials" style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/5g-core/tutorials#video-library" style={{margin: '2px 4px 2px 0'}}>Video Library</a></div>
 
-The tools demonstrate how a media application server interacts with the 5G Core (the Policy Control Function (PCF), Network Exposure Function (NEF) and Binding Support Function (BSF)) to request network resources dynamically and receive notifications about network events affecting media delivery.
+The tools demonstrate how a media application server interacts with the 5G Core (the Policy Control Function (PCF) and Binding Support Function (BSF)) to request network resources dynamically.
 
 This project ships as a set of reusable service consumer libraries, and each library comes with a runnable command-line tool that demonstrates it.
 
 :::tip[Where to start]
-Read the [Scope](./scope), then follow the [Using libscPCF](./tutorials/using-libscPCF) tutorial, which is the most complete worked example (it also exercises the BSF along the way).
+- **Scope** for what each service consumer library does and how to choose between them; see [Scope](./scope).
+- **Resources** for the source code, repositories and latest releases; see [Resources](./resources).
+- **Tutorials** for walkthroughs of testing each service consumer library, starting with libscPCF; see [Tutorials](./tutorials).
 :::
 
-**Implemented specifications:** 3GPP [TS 29.214](https://www.3gpp.org/dynareport/29214.htm) (Policy and Charging Control Rx interface), [TS 29.522](https://www.3gpp.org/dynareport/29522.htm) (NEF northbound APIs), [TS 29.513](https://www.3gpp.org/dynareport/29513.htm) (Policy and Charging function interactions), [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) (5GMS AF interactions with the 5G Core).
+**Implemented specifications:** 3GPP [TS 29.214](https://www.3gpp.org/dynareport/29214.htm) (Policy and Charging Control Rx interface), [TS 29.513](https://www.3gpp.org/dynareport/29513.htm) (Policy and Charging function interactions), [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) (5GMS AF interactions with the 5G Core).
 
 ## Project Overview
 
