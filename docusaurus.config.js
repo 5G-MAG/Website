@@ -311,6 +311,15 @@ const config = {
             ['/applications/5g-broadcast', '/applications/5gbroadcast'],
             ['/applications/multicast-broadcast', '/applications/multicastbroadcast'],
             ['/applications/network-apis', '/applications/networkapis'],
+            // 2026-07-22: multicast-broadcast.md and xr.md were retired as
+            // separate Applications pages; their content now lives on
+            // streaming.md and volumetric.md respectively. Must stay ABOVE
+            // the broad '/applications' rule below for the same reason as
+            // the squashed-slug entries above it: that rule would otherwise
+            // match '/applications/streaming' and '/applications/volumetric'
+            // first and shadow these more specific ones.
+            ['/applications/streaming', '/applications/multicast-broadcast'],
+            ['/applications/volumetric', '/applications/xr'],
             ['/tech/volumetric/beyond-2d', '/tech/volumetric/beyond2d'],
             ['/applications', '/developer/applications'],
             ['/testbeds', '/developer/testbeds'],

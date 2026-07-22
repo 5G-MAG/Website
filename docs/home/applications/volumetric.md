@@ -1,8 +1,8 @@
 ---
-title: V3C Immersive Platform
+title: Immersive Media Experiences
 sidebar_position: 4
 hide_title: true
-description: Covers volumetric video (V3C) and other beyond-2D formats, with links to the V3C platform and Beyond 2D Evaluation Framework.
+description: 'Real, assembled immersive-media applications built on 5G-MAG’s XR and volumetric video reference tools: 3D/AR media messaging, volumetric video streaming to Android, and XR content authoring with Blender.'
 ---
 
 <div class="topic-banner">
@@ -11,65 +11,40 @@ description: Covers volumetric video (V3C) and other beyond-2D formats, with lin
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Applications</span>
-<h1>V3C Immersive Platform</h1>
+<h1>Immersive Media Experiences</h1>
 </div>
 </div>
 
 ## Overview
 
-This application area covers media that goes past a flat single-camera picture: volumetric video, where a scene is captured in three dimensions so a viewer can change viewpoint, and other beyond-2D formats such as stereoscopic 3D and multiview. The V3C Immersive Platform builds an end-to-end pipeline for producing and delivering volumetric content based on Visual Volumetric Video-based Coding (V3C), and the Beyond 2D Evaluation Framework provides tools to assess the quality of these richer-than-2D experiences. An Application is a curated combination of existing Reference Tools assembled into a working end-to-end service, so the cards below open the underlying tool documentation. For acronyms used here, see the [Glossary](/tech/glossary).
+An Application, on this site, is a real working scenario assembled from one or more Reference Tools, pointed at a concrete use case, rather than a single tool's own tutorial in isolation. This category covers media that goes beyond a flat single-camera picture: sharing 3D/AR assets as message attachments, volumetric video (a scene captured in three dimensions so a viewer can change viewpoint) streamed to a handheld device, and authoring XR content for playback in the XR player. It brings together 5G-MAG's XR and V3C (Visual Volumetric Video-based Coding) reference tools; this page previously covered volumetric video alone, and now covers the wider set of immersive scenarios built on both. For acronyms used here, see the [Glossary](/tech/glossary).
 
-<div class="project-grid">
+## Immersive 3D Media Messaging
 
-  <div class="project-card">
-    <a class="project-card__icon-band" href="/reference-tools/v3c/">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8v-2a2 2 0 0 1 2 -2h2"/><path d="M4 16v2a2 2 0 0 0 2 2h2"/><path d="M16 4h2a2 2 0 0 1 2 2v2"/><path d="M16 20h2a2 2 0 0 0 2 -2v-2"/><path d="M12 12.5l4 -2.5"/><path d="M8 10l4 2.5v4.5l4 -2.5v-4.5l-4 -2.5l-4 2.5"/><path d="M8 10v4.5l4 2.5"/></svg>
-      <span>V3C Immersive Platform</span>
-    </a>
-    <div class="project-card__body"><p>End-to-end pipeline for volumetric 3D content production and delivery.</p></div>
-    <div class="project-card__footer">
-      <a class="button button--outline button--primary" href="/reference-tools/v3c/">Documentation</a>
-      <a class="button button--outline button--primary" href="https://github.com/orgs/5G-MAG/projects/48/views/15">Roadmap</a>
-      <a class="button button--outline button--primary" href="/reference-tools/v3c/resources">Releases</a>
-    </div>
-  </div>
+Sharing 3D and AR assets the way you would share a photo: as an attachment to an MMS message or a third-party messaging app, packaged so a 3GPP messaging service can carry it, then opened and rendered in the XR player. Working examples include sharing a plain 3D model and sharing an AR-anchored model, for example a piece of furniture a viewer can place on their own floor before deciding whether it fits. A couple of further extensions, adding images inside a shared 3D asset and manipulating a placed AR model under anchoring constraints, are flagged in the tutorial as not yet implemented.
 
-  <div class="project-card">
-    <a class="project-card__icon-band" href="/testbeds/beyond-2d/">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.338 5.53c5.106 1.932 10.211 1.932 15.317 0a1 1 0 0 1 1.345 .934v11c0 .692 -.692 1.2 -1.34 .962c-5.107 -1.932 -10.214 -1.932 -15.321 0c-.648 .246 -1.339 -.242 -1.339 -.935v-11.027a1 1 0 0 1 1.338 -.935l0 .001"/></svg>
-      <span>Beyond 2D Evaluation Framework</span>
-    </a>
-    <div class="project-card__body"><p>Video quality evaluation tools for beyond-2D immersive content.</p></div>
-    <div class="project-card__footer">
-      <a class="button button--outline button--primary" href="/testbeds/beyond-2d/">Documentation</a>
-      <a class="button button--outline button--primary" href="https://github.com/orgs/5G-MAG/projects/48/views/10">Roadmap</a>
-      <a class="button button--outline button--primary" href="/testbeds/beyond-2d/resources">Releases</a>
-    </div>
-  </div>
+**Built from:** [XR/3D Scenes with MPEG-I Scene Description](/reference-tools/xr/).
 
-</div>
+Follow the [use-case walkthrough](/reference-tools/xr/tutorials/immersive-3d-media-message) to try the working scenarios with the provided sample assets.
 
----
+## Volumetric Video Streaming to Android
 
-## Other Tools
+A Unity-based V3C player running on an Android phone, decoding V3C-coded volumetric content and streaming it over DASH (Dynamic Adaptive Streaming over HTTP) from a server you run on your own machine: volumetric video played back on a handheld device rather than only in a fixed lab setup.
 
-These supporting tools are shared across several application areas. Auxiliary tools provide common scripts and configurations; the 3GPP Radio Access Network (RAN) and Core Platforms provide a test network to run against; External Tools are third-party utilities that work with the Reference Tools.
+**Built from:** [V3C Immersive Platform](/reference-tools/v3c/).
 
-### Auxiliary tools common to various projects
+Follow the [step-by-step guide](/reference-tools/v3c/tutorials/v3c-immersive-platform-in-android-streaming) to build the Android player, set up the DASH server, and stream sample V3C content to your device.
 
-<a class="button button--outline button--primary" href="/reference-tools/common-tools/" style="margin-right:6px">Documentation</a>
-<a class="button button--outline button--primary" href="/reference-tools/common-tools/resources">Resources</a>
+## XR Content Authoring with Blender
 
-### 3GPP RAN and Core Platforms
+Authoring an XR scene from the content-creation side rather than the playback side: adding MPEG glTF extensions (anchoring, spatial audio, video textures) to a scene in Blender using a dedicated exporter add-on, then exporting it as glTF and loading it straight into the XR Unity Player to check how it looks.
 
-<a class="button button--outline button--primary" href="/reference-tools/3gpp-platforms/">Documentation</a>
+**Built from:** [XR/3D Scenes with MPEG-I Scene Description](/reference-tools/xr/).
 
-### External Tools
-
-<a class="button button--outline button--primary" href="/reference-tools/external-tools/">Documentation</a>
+Follow the [video walkthrough](/reference-tools/xr/tutorials/blender-exporter-unity-player) for the exporter workflow; written per-extension authoring instructions are also linked from the XR tutorials index.
 
 ## Related
 
-- [Testbeds and Evaluation Tools](/testbeds) for the Beyond 2D Video Evaluation Framework.
+- [Testbeds and Evaluation Tools](/testbeds) for the Beyond 2D Evaluation Framework, used to assess quality of these richer-than-2D experiences.
 - [Reference Tools](/reference-tools) for the individual specification implementations.
 - [Applications](/applications/) for the other end-to-end service scenarios.

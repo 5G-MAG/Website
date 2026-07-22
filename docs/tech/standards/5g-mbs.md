@@ -47,7 +47,7 @@ description: Covers 5G Multicast-Broadcast Services architecture across user-ser
 <div class="godeeper-card__body">
 <p>5G-MAG's reference tools realising the MBS architecture.</p>
 <ul class="godeeper-card__links">
-<li><a href="/applications/multicast-broadcast">Developer portal: 5G MBS reference tools</a></li>
+<li><a href="/applications/streaming#mbs-end-to-end-delivery-demo">Developer portal: 5G MBS reference tools</a></li>
 </ul>
 </div>
 </div>
@@ -68,7 +68,7 @@ The specification list below is grouped to match the three layers a single MBS s
 - **5G Core layer.** The MBS system architecture (TS 23.247, Stage 2) defines the multicast and broadcast _communication services_, the MBS _sessions_ that carry them, and the two ways the core moves MBS packets towards the radio: the _5GC shared_ method (one copy per MBS-capable RAN node over a shared GTP-U tunnel) and the _5GC individual_ method (a per-UE copy in a normal PDU session, used for MBS-incapable nodes). The MBS-specific core functions are the **MB-SMF** (session management) and **MB-UPF** (user plane); the AMF, PCF, NEF and NRF gain MBS extensions. Stage 3 procedures are in TS 29.532 (session management), TS 29.537 (policy control), TS 29.580 (MBSF services) and TS 29.581 (MBSTF transport services).
 - **NR and NG-RAN layer.** Once packets reach the gNB, the radio side (TS 38.300 family) chooses PTM or PTP and applies one of three Layer-2 delivery modes: delivery mode 1 (multicast, HARQ feedback and retransmissions, RRC_CONNECTED), delivery mode 2 (broadcast, no feedback, receivable in any RRC state) and the default unicast mode. Broadcast configuration is carried on the MCCH (pointed to by SIB20), traffic on the MTCH, and sessions are addressed by a Group RNTI (G-RNTI).
 
-The developer-facing view of what the 5G-MAG reference tools implement across these layers is on the [developer portal](/applications/multicast-broadcast).
+The developer-facing view of what the 5G-MAG reference tools implement across these layers is on the [developer portal](/applications/streaming#mbs-end-to-end-delivery-demo).
 
 ## Specifications by release
 
@@ -198,7 +198,7 @@ The release placement statements in "Specifications by release" were not all con
 5G-MAG tracks and contributes to 5G MBS standardisation, and maintains reference tools that implement the architecture across all three layers described above (user-service, 5G Core, and NR/NG-RAN). The current focus areas are:
 
 - **Release 18 "5MBS Phase 2":** following the RAN extensions that add MBS multicast reception in the RRC_INACTIVE state, introducing SIB24 and a dedicated multicast MCCH (see [MBS Multicast Inactive RAN procedures](/tech/5g-mbs/analysis-mbs-multicast-inactive-ran)).
-- **Cross-layer reference implementation:** the [developer portal](/applications/multicast-broadcast) documents how the reference tools realise the user-service (TS 26.502 / TS 26.517), 5G Core (TS 23.247 and the related Stage 3 specifications), and NR/NG-RAN (TS 38.300 family) layers described above.
+- **Cross-layer reference implementation:** the [developer portal](/applications/streaming#mbs-end-to-end-delivery-demo) documents how the reference tools realise the user-service (TS 26.502 / TS 26.517), 5G Core (TS 23.247 and the related Stage 3 specifications), and NR/NG-RAN (TS 38.300 family) layers described above.
 
 For the implementer-facing analysis of this architecture, see [Technical Documentation: Multicast & Broadcast in 5G](/tech/5g-mbs).
 
@@ -206,7 +206,7 @@ For the implementer-facing analysis of this architecture, see [Technical Documen
 
 - [Standards: 5G Media Streaming](/tech/standards/5gms)
 - [Standards: 5G Broadcast](/tech/standards/5g-broadcast)
-- [Developer portal: 5G MBS reference tools](/applications/multicast-broadcast)
+- [Developer portal: 5G MBS reference tools](/applications/streaming#mbs-end-to-end-delivery-demo)
 - [Technical Documentation: Multicast & Broadcast in 5G](/tech/5g-mbs)
 - [Meetings with 3GPP SA4](/standards/3gpp-issue-tracking): the live tracker for 3GPP feedback issues on this specification
 

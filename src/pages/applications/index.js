@@ -28,20 +28,20 @@ const APPS_ICON_PATH = (
   </>
 );
 
-// Grouped by the same 5 use-case categories as Tech (src/pages/tech/index.js)
-// and Testbeds, rather than one category per application as before — each
-// topic below is now an application in its own right (its own page, its own
-// icon), not a reference tool the application is built from. Which
-// reference tools power a given application is documented on that
-// application's own page, not repeated here as a nested sub-grid.
-// Each application below links straight to the tutorial it's grounded in
-// (under /reference-tools/<tool>/tutorials/...) rather than to a dedicated
-// /applications/* page — those don't exist yet for most of these (Applications
-// is "to be built"; see the 2026-07-21 conversation that split these out of
-// six generic per-tool overview pages). Only tutorials that build or use a
-// working experience count as an application; tutorials that just exercise
-// an API/CLI (Postman, curl, Insomnia, Wireshark) or cover setup/measurement
-// stay reference-tool-only and aren't listed here.
+// Grouped into 4 application categories, each with its own dedicated page
+// under docs/home/applications/: streaming.md, 5g-broadcast.md, volumetric.md
+// (retitled to cover all Immersive Media Experiences, not just volumetric
+// video) and network-apis.md. Each topic below links to the H2 subsection on
+// its category's page (e.g. '/applications/streaming#live-streaming-over-a-
+// real-5g-network') where the application is explained in real-world terms,
+// the Reference Tool(s) it combines are linked, and the underlying tutorial
+// is linked for hands-on setup steps. multicast-broadcast.md and xr.md were
+// retired (2026-07-22): their content now lives on streaming.md and
+// volumetric.md respectively (see the docusaurus.config.js redirects). Only
+// tutorials that build or use a working experience count as an application;
+// tutorials that just exercise an API/CLI (Postman, curl, Insomnia,
+// Wireshark) or cover setup/measurement stay reference-tool-only and aren't
+// listed here.
 const CATEGORIES = [
   {
     title: 'Media Streaming, Multicast & Real-Time Communications',
@@ -50,13 +50,13 @@ const CATEGORIES = [
       {
         title: 'Live Streaming Over a Real 5G Network',
         desc: '5GMSd deployed over a real 5G network (Open5GS, srsRAN) with a commercial off-the-shelf device.',
-        href: '/reference-tools/5gms/tutorials/end-to-end-with-5g',
+        href: '/applications/streaming#live-streaming-over-a-real-5g-network',
         icon: icon(<path d="M7 4v16l13 -8l-13 -8" />),
       },
       {
         title: 'MBS End-to-End Delivery Demo',
         desc: 'Operating MBS user services end-to-end across the 5G Core, MB-SMF, MBSF, MBSTF, NG-RAN and UE.',
-        href: '/reference-tools/5g-mbs/tutorials/mbs-end-to-end',
+        href: '/applications/streaming#mbs-end-to-end-delivery-demo',
         icon: icon(
           <>
             <path d="M12 12l0 .01" />
@@ -70,7 +70,7 @@ const CATEGORIES = [
       {
         title: 'QoE Analytics Dashboard',
         desc: 'CMCD, consumption and QoE metrics reporting from the 5GMS client into a live Grafana dashboard.',
-        href: '/reference-tools/5gms/tutorials/CMCD-reporting',
+        href: '/applications/streaming#qoe-analytics-dashboard',
         icon: icon(
           <>
             <path d="M14 3v4a1 1 0 0 0 1 1h4" />
@@ -90,7 +90,7 @@ const CATEGORIES = [
       {
         title: 'Broadcast Stream Playback (RTP/HLS)',
         desc: 'Receiving and playing back a broadcast stream over 5G Broadcast, via RTP or HLS.',
-        href: '/reference-tools/5g-broadcast/tutorials/hls-playback-5gbc',
+        href: '/applications/5g-broadcast#broadcast-stream-playback-rtphls',
         icon: icon(
           <>
             <path d="M15 10l4.553 -2.069a1 1 0 0 1 1.447 .894v6.35a1 1 0 0 1 -1.447 .894l-4.553 -2.069v-4" />
@@ -101,7 +101,7 @@ const CATEGORIES = [
       {
         title: 'Emergency Alert Broadcast Demo',
         desc: 'Broadcasting a Cell Broadcast Service (CBS) emergency alert via SDR and receiving it on a device.',
-        href: '/reference-tools/emergency-alerts/tutorials/end-to-end',
+        href: '/applications/5g-broadcast#emergency-alert-broadcast-demo',
         icon: icon(
           <>
             <path d="M12 8a2 2 0 0 1 2 2v4a2 2 0 1 1 -4 0v-4a2 2 0 0 1 2 -2" />
@@ -113,7 +113,7 @@ const CATEGORIES = [
       {
         title: 'Seamless Unicast/Broadcast Switching',
         desc: 'Android middleware seamlessly switching a client between unicast 5GMS and 5G Broadcast reception.',
-        href: '/reference-tools/5g-broadcast/tutorials/android-mw-seamless-switching',
+        href: '/applications/5g-broadcast#seamless-unicastbroadcast-switching',
         icon: icon(
           <>
             <path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
@@ -133,7 +133,7 @@ const CATEGORIES = [
       {
         title: 'Immersive 3D Media Messaging',
         desc: 'Sharing 3D and AR assets as media message attachments, opened and rendered in the XR player.',
-        href: '/reference-tools/xr/tutorials/immersive-3d-media-message',
+        href: '/applications/volumetric#immersive-3d-media-messaging',
         icon: icon(
           <>
             <path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
@@ -148,7 +148,7 @@ const CATEGORIES = [
       {
         title: 'Volumetric Video Streaming to Android',
         desc: 'The V3C Unity player streaming volumetric 3D content to Android from a DASH server.',
-        href: '/reference-tools/v3c/tutorials/v3c-immersive-platform-in-android-streaming',
+        href: '/applications/volumetric#volumetric-video-streaming-to-android',
         icon: icon(
           <>
             <path d="M4 8v-2a2 2 0 0 1 2 -2h2" />
@@ -164,7 +164,7 @@ const CATEGORIES = [
       {
         title: 'XR Content Authoring with Blender',
         desc: 'Authoring an XR scene with the Blender glTF exporter and loading it into the XR player.',
-        href: '/reference-tools/xr/tutorials/blender-exporter-unity-player',
+        href: '/applications/volumetric#xr-content-authoring-with-blender',
         icon: icon(
           <>
             <path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
@@ -185,7 +185,7 @@ const CATEGORIES = [
       {
         title: 'Dedicated Network APIs for Connected Media Production',
         desc: 'CAMARA Quality on Demand, Connectivity Insights and Network Slice Booking APIs for live contribution and remote production.',
-        href: '/reference-tools/network-apis',
+        href: '/applications/network-apis#dedicated-network-apis-for-connected-media-production',
         icon: icon(
           <>
             <path d="M4 13h5" />

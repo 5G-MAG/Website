@@ -1,8 +1,8 @@
 ---
-title: Apps with Network APIs
+title: Connected Media Production and Contribution
 sidebar_position: 5
 hide_title: true
-description: Introduces CAMARA-compliant network API client tooling for QoS-aware media applications, such as requesting stream quality boosts.
+description: Real, assembled applications built on 5G-MAG's network API reference tools, using CAMARA APIs for quality-of-service, connectivity insight and network slicing in live media production.
 ---
 
 <div class="topic-banner">
@@ -11,54 +11,23 @@ description: Introduces CAMARA-compliant network API client tooling for QoS-awar
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Applications</span>
-<h1>Apps with Network APIs</h1>
+<h1>Connected Media Production and Contribution</h1>
 </div>
 </div>
 
 ## Overview
 
-Network APIs let an application talk to the mobile network through standard, portable interfaces instead of operator-specific ones. CAMARA is an open-source API project (Linux Foundation, together with the GSMA) that standardises these interfaces. This area provides CAMARA-compliant client tools so a media application can, for example, request a quality-of-service (QoS) boost for a live stream. An Application is a curated combination of existing Reference Tools assembled into a working end-to-end service, so the card below opens the underlying tool documentation. For acronyms used here, see the [Glossary](/tech/glossary).
+An Application, on this site, is a real working scenario assembled from one or more Reference Tools, pointed at a concrete use case, rather than a single tool's own tutorial in isolation. This category covers one such scenario built on 5G-MAG's network API reference tools: a media application requesting network behaviour directly through standard CAMARA APIs, for live contribution and remote production, instead of relying on operator-specific arrangements agreed in advance. For acronyms used here, see the [Glossary](/tech/glossary).
 
-The AI/ML Evaluation Framework and the 6G Testbed shown for this category are hosted under [Testbeds and Evaluation Tools](/testbeds); this page focuses on the CAMARA Network APIs client tooling.
+## Dedicated Network APIs for Connected Media Production
 
-<div class="project-grid">
+CAMARA-compliant API clients that let a media application ask the network directly for what a live production needs: a Quality on Demand (QoD) session for a contribution feed, a connectivity-insight check on whether a location can sustain a required bitrate, or a booked network slice for a broadcast at a fixed venue and time window.
 
-  <div class="project-card">
-    <a class="project-card__icon-band" href="/reference-tools/network-apis/">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 13h5"/><path d="M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3"/><path d="M20 8v8"/><path d="M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5"/></svg>
-      <span>Network APIs</span>
-    </a>
-    <div class="project-card__body"><p>CAMARA-compliant API clients for QoS-aware media applications.</p></div>
-    <div class="project-card__footer">
-      <a class="button button--outline button--primary" href="/reference-tools/network-apis/">Documentation</a>
-      <a class="button button--outline button--primary" href="https://github.com/orgs/5G-MAG/projects/48/views/19">Roadmap</a>
-      <a class="button button--outline button--primary" href="/reference-tools/network-apis/resources">Releases</a>
-    </div>
-  </div>
+**Built from:** [CAMARA Connectivity Quality Management APIs](/reference-tools/network-apis/).
 
-</div>
-
----
-
-## Other Tools
-
-These supporting tools are shared across several application areas. Auxiliary tools provide common scripts and configurations; the 3GPP Radio Access Network (RAN) and Core Platforms provide a test network to run against; External Tools are third-party utilities that work with the Reference Tools.
-
-### Auxiliary tools common to various projects
-
-<a class="button button--outline button--primary" href="/reference-tools/common-tools/" style="margin-right:6px">Documentation</a>
-<a class="button button--outline button--primary" href="/reference-tools/common-tools/resources">Resources</a>
-
-### 3GPP RAN and Core Platforms
-
-<a class="button button--outline button--primary" href="/reference-tools/3gpp-platforms/">Documentation</a>
-
-### External Tools
-
-<a class="button button--outline button--primary" href="/reference-tools/external-tools/">Documentation</a>
+Written step-by-step tutorials for these APIs are not yet published. In the meantime, see the [Scope](/reference-tools/network-apis/scope) page for the full API coverage table and the [Resources](/reference-tools/network-apis/resources) page for the project repositories to try them yourself.
 
 ## Related
 
-- [Testbeds and Evaluation Tools](/testbeds) for the AI/ML Evaluation Framework and the 6G Testbed.
 - [Reference Tools](/reference-tools) for the individual specification implementations.
 - [Applications](/applications/) for the other end-to-end service scenarios.
