@@ -33,6 +33,6 @@ export default function GodeeperCard({ title, body, icon: cardIcon, href }) {
       {inner}
     </Link>
   ) : (
-    <div className="godeeper-card">{inner}</div>
+    <div className="godeeper-card godeeper-card--static">{inner}</div>
   );
 }

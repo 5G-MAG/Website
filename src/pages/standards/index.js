@@ -439,7 +439,7 @@ export default function Standards() {
           </div>
         </section>
 
-        <JoinTheEffort />
+        <JoinTheEffort alt />
       </main>
     </Layout>
   );

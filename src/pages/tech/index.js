@@ -357,7 +357,7 @@ const PILLARS = [
   },
   {
     title: 'Making standards actionable',
-    body: 'Profiles and blueprints that turn specification text into implementation-ready guidance developers and the wider industry can build from.',
+    body: 'So implementers don’t each have to independently interpret dense specification text the same way — one clear reading, reused across the industry, instead of duplicated effort and divergent interpretations.',
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -378,8 +378,8 @@ const PILLARS = [
     ),
   },
   {
-    title: 'Documentation and explainer videos',
-    body: 'Written explainers and audiovisual material that make dense standards work approachable to engineers outside the standards process.',
+    title: 'Lowering the barrier to entry',
+    body: 'So engineers outside the standards process can get up to speed on what a specification actually enables without reading the spec text itself.',
     icon: (
       <svg
         viewBox="0 0 24 24"

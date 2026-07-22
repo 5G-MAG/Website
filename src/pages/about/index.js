@@ -1,3 +1,4 @@
+import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
 import MediaConnectivityDiagram from '@site/src/components/MediaConnectivityDiagram';
@@ -27,13 +28,13 @@ export default function About() {
         title="About Us"
         icon={ABOUT_ICON_PATH}
         actions={[
-          <a
+          <Link
             key="join"
             className="button button--primary button--lg"
-            href="/membership#request-membership"
+            to="/membership#request-membership"
           >
             Become a member
-          </a>,
+          </Link>,
           <a
             key="overview"
             className="button button--outline button--primary button--lg"

@@ -29,7 +29,6 @@
       "rt-libflute",
       "rt-common-shared",
       "rt-mbms-examples",
-      "rt-gui",
       {
         "name": "rt-mbms-tx-for-qrd-and-crd",
         "branch": "main"

@@ -538,6 +538,17 @@
   text-decoration: none !important;
 }
 
+/* Cards with no href (GodeeperCard rendered as a plain div) are descriptive
+   only — suppress the interactive hover cue so they don't look clickable. */
+.godeeper-card--static {
+  cursor: default;
+}
+
+.godeeper-card--static:hover {
+  transform: none;
+  box-shadow: none;
+}
+
 .godeeper-card__band {
   padding: 1.1rem 1.1rem 0.9rem;
   background: linear-gradient(
