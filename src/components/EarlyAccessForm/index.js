@@ -1,3 +1,5 @@
+import { useRef, useState } from 'react';
+import HCaptcha from '@hcaptcha/react-hcaptcha';
 import projectsData from '@site/src/data/projects.json';
 import useWeb3FormSubmit from '@site/src/utils/useWeb3FormSubmit';
 import styles from './styles.module.css';
@@ -7,23 +9,35 @@ import styles from './styles.module.css';
 // only real reference-tool projects are offered here.
 const REQUESTABLE_PROJECTS = projectsData.filter((p) => p.name !== 'Dependency').map((p) => p.name);
 
+// Shared free-tier sitekey Web3Forms provides for zero-signup hCaptcha use.
+const HCAPTCHA_SITEKEY = '50b2fe65-b00b-4b9e-ad62-3ba471098be2';
+
 export default function EarlyAccessForm({
   accessKey,
   subject = 'New Early Access Request — 5G-MAG website',
 }) {
   const { status, errorMessage, submit } = useWeb3FormSubmit(accessKey, subject);
+  const [captchaToken, setCaptchaToken] = useState('');
+  const captchaRef = useRef(null);
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     const form = event.target;
-    submit(form, {
-      name_affiliation: form.name_affiliation.value,
-      github_handle: form.github_handle.value,
-      is_contributor: form.is_contributor.value,
-      requested_project: form.requested_project.value,
-      is_member: form.is_member.value,
-      email: form.email.value,
-    });
+    await submit(
+      form,
+      {
+        name_affiliation: form.name_affiliation.value,
+        github_handle: form.github_handle.value,
+        is_contributor: form.is_contributor.value,
+        requested_project: form.requested_project.value,
+        is_member: form.is_member.value,
+        email: form.email.value,
+      },
+      captchaToken
+    );
+    // Tokens are single-use — always reset so the next attempt gets a fresh one.
+    captchaRef.current?.resetCaptcha();
+    setCaptchaToken('');
   }
 
   if (status === 'success') {
@@ -97,6 +111,8 @@ export default function EarlyAccessForm({
           </select>
         </label>
       </div>
+
+      <HCaptcha sitekey={HCAPTCHA_SITEKEY} reCaptchaCompat={false} onVerify={setCaptchaToken} onExpire={() => setCaptchaToken('')} ref={captchaRef} />
 
       {status === 'error' && <p className={styles.errorText}>{errorMessage}</p>}
 

@@ -43,7 +43,7 @@ const config = {
   url: 'https://www.5g-mag.com',
   baseUrl: '/',
   organizationName: '5G-MAG',
-  projectName: '5g-mag-portal',
+  projectName: 'Website',
 
   onBrokenLinks: 'throw',
   // Custom JSX pages (src/pages/**) render some anchors (e.g. #capability-areas,
@@ -374,7 +374,15 @@ const config = {
       'classic',
       {
         docs: false,
-        blog: false,
+        blog: {
+          path: 'blog',
+          routeBasePath: 'news',
+          blogTitle: 'News',
+          blogDescription: 'Announcements and updates from 5G-MAG.',
+          blogSidebarTitle: 'Recent news',
+          postsPerPage: 10,
+          showReadingTime: true,
+        },
         theme: { customCss: './src/css/custom.css' },
       },
     ],
@@ -418,20 +426,21 @@ const config = {
     },
     footer: {
       style: 'dark',
+      // Column order mirrors the main navbar's item order (see
+      // src/theme/navItems.js: About Us, Membership, Explainers & Profiles,
+      // Feedback & Requirements, Software Accelerator, Interop & Testing,
+      // Events, News) -- the "About Us" column bundles Membership/Events/News
+      // in with it (own sub-items already follow that same relative order),
+      // since those don't get their own footer column; "Follow Us" has no
+      // navbar equivalent so it stays last.
       links: [
         {
-          // Name matches the navbar item, the hub page's own SectionNav
-          // title, and src/theme/navItems.js — kept in sync deliberately
-          // rather than the previous "Developer Portal" (still used as a
-          // descriptive term in body prose, but not the section's own name).
-          title: 'Software Accelerator',
+          title: 'About Us',
           items: [
-            { label: 'Applications', to: '/applications' },
-            { label: 'Reference Tools', to: '/reference-tools' },
-            { label: 'Testbeds', to: '/testbeds' },
-            { label: 'Community', to: '/developer#community' },
-            { label: 'Open-Source Licenses', to: '/developer/license' },
-            { label: 'GitHub Getting-Started', href: 'https://github.com/5G-MAG/Getting-Started' },
+            { label: 'About Us', to: '/about' },
+            { label: 'Membership', to: '/membership' },
+            { label: 'Events', to: '/events' },
+            { label: 'News', to: '/news' },
           ],
         },
         {
@@ -450,17 +459,23 @@ const config = {
           ],
         },
         {
-          title: 'Interop & Testing',
-          items: [{ label: 'Overview', to: '/testing' }],
+          // Name matches the navbar item, the hub page's own SectionNav
+          // title, and src/theme/navItems.js — kept in sync deliberately
+          // rather than the previous "Developer Portal" (still used as a
+          // descriptive term in body prose, but not the section's own name).
+          title: 'Software Accelerator',
+          items: [
+            { label: 'Applications', to: '/applications' },
+            { label: 'Reference Tools', to: '/reference-tools' },
+            { label: 'Testbeds', to: '/testbeds' },
+            { label: 'Community', to: '/developer#community' },
+            { label: 'Open-Source Licenses', to: '/developer/license' },
+            { label: 'GitHub Getting-Started', href: 'https://github.com/5G-MAG/Getting-Started' },
+          ],
         },
         {
-          title: 'About Us',
-          items: [
-            { label: 'About Us', to: '/about' },
-            { label: 'Membership', to: '/membership' },
-            { label: 'Events', to: '/events' },
-            { label: 'News', to: '/news' },
-          ],
+          title: 'Interop & Testing',
+          items: [{ label: 'Overview', to: '/testing' }],
         },
         {
           title: 'Follow Us',

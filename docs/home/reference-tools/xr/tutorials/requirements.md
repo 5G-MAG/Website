@@ -21,7 +21,7 @@ description: Lists which XR headsets, phones and AR glasses the reference XR Uni
 </div>
 </div>
 
-<div style="margin: 8px 0"><a class="button button--outline button--primary" href="../scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="../resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="." style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href=".#video-library" style="margin: 2px 4px 2px 0">Video Library</a></div>
+<div style="margin: 8px 0"><a class="button button--outline button--primary" href="../scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="../resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="." style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href=".#developer-exchange" style="margin: 2px 4px 2px 0">Developer Exchange</a></div>
 
 This page lists the device types the XR player currently supports, so you can check your hardware before following the build tutorials.
 

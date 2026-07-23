@@ -1,38 +1,19 @@
 ---
-title: Friday's Public Call
+title: Dev Public Call
 hide_title: true
 sidebar_position: 0
 description: How to join 5G-MAG's open monthly public call — schedule, Zoom link, calendar — plus recordings of past talks.
 ---
 
 import VideoGrid from '@site/src/components/VideoGrid';
+import youtubeData from '@site/static/data/youtube-playlists.json';
+import { mergePublicCallVideos } from '@site/src/data/publicCallVideos';
 
-export const recordings = [
-  {
-    id: 'FSiWpyTgT5M',
-    title: "Using SES's DVB-NIP Analyzer to test 5G-MAG's FLUTE Library rt-libflute",
-    by: 'By Yannick Poirier (SES)',
-  },
-  {
-    id: 'SvNWzIEURU0',
-    title: "Optimization of the Reference Tools' 5G Broadcast Receiver",
-    by: 'By Rubens Brraka (Politecnico di Torino)',
-  },
-  {
-    id: 'yuCrUlNdtQE',
-    title: 'Bringing stage events with real actors to your home in VR',
-    by: 'By Joachim Keinert (Fraunhofer IIS)',
-  },
-  {
-    id: 'Xf2ChEFMzFA',
-    title: 'Enabling Portable XR Experiences across Devices and Networks',
-    by: 'By Frédéric Plourde (Collabora)',
-  },
-];
+export const recordings = mergePublicCallVideos(youtubeData.publicCall?.videos);
 
-<header class="topic-hero">
-  <div class="topic-hero__icon">
-    <svg
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="none"
@@ -46,11 +27,12 @@ export const recordings = [
       <path d="M15 10l4.553 -2.069a1 1 0 0 1 1.447 .894v6.35a1 1 0 0 1 -1.447 .894l-4.553 -2.069v-4" />
       <path d="M3 8a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-8z" />
     </svg>
-  </div>
-  <div>
-    <h1 class="topic-hero__title">Friday's Public Call</h1>
-  </div>
-</header>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Events</span>
+<h1>Dev Public Call</h1>
+</div>
+</div>
 
 This is the open, public call for the Reference Tools developer community — anyone can join, no 5G-MAG membership required. It's where the community shares news and hosts invited speakers. If you're looking for the members-only working group that steers Reference Tools development day to day, see the [Development Working Group (WG DEV)](/developer#community) instead.
 
@@ -99,7 +81,9 @@ The embedded calendar below shows the upcoming public calls and other 5G-MAG com
   scrolling="no"
 ></iframe>
 
-## Recordings
+<div class="onair-kicker"><span class="onair-kicker__dot"></span>On Air</div>
+
+## Public Call
 
 Recordings of past talks, listed most recent first.
 
@@ -110,7 +94,7 @@ Recordings of past talks, listed most recent first.
 Includes:
 
 - Updates on the Reference Tools XR implementation supporting MPEG-I Scene Description, by Nils Duval (Motionspell)
-- Updates on the Reference Tools V3C Immersive Platform including support for MPEG-I V3C Volumetric Video by Bart Kroon (Philips), Thierry Filoche (InterDigital), Patrick Fontaine (InterDigital)
+- Updates on the Reference Tools MPEG V3C Immersive Platform including support for MPEG-I V3C Volumetric Video by Bart Kroon (Philips), Thierry Filoche (InterDigital), Patrick Fontaine (InterDigital)
 - VVGLTF: Efficient Streaming of Volumetric Video with GLTF by Aljosa Smolic (HSLU) and Kit Yung Lam (HSLU)
 - Research on Networked Volumetric Video Services, by Mario Montagud (i2CAT)
 - MPEG Avatar and 3GPP Rel-19 study by Thomas Stockhammer (Qualcomm) and Imed Bouazizi (Qualcomm)

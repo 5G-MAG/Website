@@ -5,15 +5,16 @@ hide_title: true
 description: Explains how 3GPP Time Sensitive Communications lets 5G carry deterministic, low-jitter traffic for live production over Non-Public Networks.
 ---
 
-<header class="topic-hero">
-<div class="topic-hero__icon">
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M12 13m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"/><path d="M12 10l0 3l2 2"/><path d="M7 4l-2.75 2"/><path d="M17 4l2.75 2"/></svg>
 </div>
-<div>
-<h1 class="topic-hero__title">Time Sensitive Communications</h1>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Tech</span>
+<h1>Time Sensitive Communications</h1>
 </div>
-</header>
+</div>
 
 <div class="topic-lead">
 Deterministic, low-jitter 5G transport for tightly synchronised professional media, typically over a Non-Public Network.

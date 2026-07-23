@@ -1,14 +1,16 @@
 {
-  "updated_at": "2026-07-18 20:12 UTC",
+  "updated_at": "2026-07-22 22:11 UTC",
   "projects": [
     {
       "name": "5G Media Streaming",
       "doc_url": "/reference-tools/5gms/",
       "tagline": "End-to-end 5G media streaming from network to client · 3GPP TS 26.501",
+      "releases_slug": "resources",
       "latest_date": "2026-05-26",
       "releases": [
         {
           "repo": "rt-5gms-application-function",
+          "branch": null,
           "tag": "rt-5gms-application-function-v1.4.6",
           "date": "2026-05-26",
           "url": "https://github.com/5G-MAG/rt-5gms-application-function/releases/tag/rt-5gms-application-function-v1.4.6",
@@ -17,6 +19,7 @@
         },
         {
           "repo": "rt-5gms-application",
+          "branch": null,
           "tag": "rt-5gms-application-v1.3.0",
           "date": "2026-05-26",
           "url": "https://github.com/5G-MAG/rt-5gms-application/releases/tag/rt-5gms-application-v1.3.0",
@@ -25,6 +28,7 @@
         },
         {
           "repo": "rt-5gms-media-session-handler",
+          "branch": null,
           "tag": "rt-5gms-media-session-handler-v1.3.0",
           "date": "2026-05-26",
           "url": "https://github.com/5G-MAG/rt-5gms-media-session-handler/releases/tag/rt-5gms-media-session-handler-v1.3.0",
@@ -33,6 +37,7 @@
         },
         {
           "repo": "rt-5gms-media-stream-handler",
+          "branch": null,
           "tag": "rt-5gms-media-stream-handler-v1.3.0",
           "date": "2026-05-26",
           "url": "https://github.com/5G-MAG/rt-5gms-media-stream-handler/releases/tag/rt-5gms-media-stream-handler-v1.3.0",
@@ -41,6 +46,7 @@
         },
         {
           "repo": "rt-5gms-common-android-library",
+          "branch": null,
           "tag": "rt-5gms-common-android-library-v1.3.0",
           "date": "2026-05-26",
           "url": "https://github.com/5G-MAG/rt-5gms-common-android-library/releases/tag/rt-5gms-common-android-library-v1.3.0",
@@ -49,6 +55,7 @@
         },
         {
           "repo": "rt-5gms-application-provider",
+          "branch": null,
           "tag": "rt-5gms-application-provider-1.2.0",
           "date": "2026-05-26",
           "url": "https://github.com/5G-MAG/rt-5gms-application-provider/releases/tag/rt-5gms-application-provider-1.2.0",
@@ -56,24 +63,35 @@
           "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
         },
         {
+          "repo": "rt-5gms-examples",
+          "branch": null,
+          "tag": "rt-5gms-examples-v1.2.1",
+          "date": "2026-05-26",
+          "url": "https://github.com/5G-MAG/rt-5gms-examples/releases/tag/rt-5gms-examples-v1.2.1",
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
+        },
+        {
           "repo": "rt-5gms-application-server",
+          "branch": null,
           "tag": "rt-5gms-application-server-1.2.4",
           "date": "2025-03-20",
           "url": "https://github.com/5G-MAG/rt-5gms-application-server/releases/tag/rt-5gms-application-server-1.2.4",
           "author_login": "davidjwbbc",
           "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4"
         }
-      ],
-      "releases_slug": "resources"
+      ]
     },
     {
       "name": "5G Broadcast TV Radio",
       "doc_url": "/reference-tools/5g-broadcast/",
       "tagline": "LTE-based 5G broadcast for TV, radio and emergency alerts",
+      "releases_slug": "resources",
       "latest_date": "2026-04-24",
       "releases": [
         {
           "repo": "rt-libflute",
+          "branch": null,
           "tag": "rt-libflute-0.12.3",
           "date": "2026-04-24",
           "url": "https://github.com/5G-MAG/rt-libflute/releases/tag/rt-libflute-0.12.3",
@@ -81,7 +99,17 @@
           "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
         },
         {
+          "repo": "rt-mbms-examples",
+          "branch": null,
+          "tag": "rt-mbms-examples-1.1.0",
+          "date": "2024-11-05",
+          "url": "https://github.com/5G-MAG/rt-mbms-examples/releases/tag/rt-mbms-examples-1.1.0",
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
+        },
+        {
           "repo": "rt-mbms-mw-android",
+          "branch": null,
           "tag": "rt-mbms-mw-android-1.0.0",
           "date": "2024-09-05",
           "url": "https://github.com/5G-MAG/rt-mbms-mw-android/releases/tag/rt-mbms-mw-android-1.0.0",
@@ -89,7 +117,17 @@
           "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
         },
         {
+          "repo": "rt-mbms-tx-for-qrd-and-crd",
+          "branch": "main",
+          "tag": "rt-mbms-tx-for-qrd-and-crd-1.0.0",
+          "date": "2024-09-05",
+          "url": "https://github.com/5G-MAG/rt-mbms-tx-for-qrd-and-crd/releases/tag/rt-mbms-tx-for-qrd-and-crd-1.0.0",
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
+        },
+        {
           "repo": "rt-mbms-tx",
+          "branch": null,
           "tag": "v1.0.0",
           "date": "2023-06-21",
           "url": "https://github.com/5G-MAG/rt-mbms-tx/releases/tag/v1.0.0",
@@ -98,6 +136,7 @@
         },
         {
           "repo": "rt-mbms-mw",
+          "branch": null,
           "tag": "v0.10.0",
           "date": "2022-12-08",
           "url": "https://github.com/5G-MAG/rt-mbms-mw/releases/tag/v0.10.0",
@@ -106,6 +145,7 @@
         },
         {
           "repo": "rt-wui",
+          "branch": null,
           "tag": "v0.1.0",
           "date": "2022-12-08",
           "url": "https://github.com/5G-MAG/rt-wui/releases/tag/v0.1.0",
@@ -114,23 +154,43 @@
         },
         {
           "repo": "rt-mbms-modem",
+          "branch": null,
           "tag": "v1.2.1",
           "date": "2022-06-30",
           "url": "https://github.com/5G-MAG/rt-mbms-modem/releases/tag/v1.2.1",
           "author_login": "dsilhavy",
           "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
         }
-      ],
-      "releases_slug": "resources"
+      ]
+    },
+    {
+      "name": "5G Broadcast Emergency Alerts",
+      "doc_url": "/reference-tools/emergency-alerts/",
+      "tagline": "Cell Broadcast Service warnings delivered over FeMBMS",
+      "releases_slug": "resources",
+      "latest_date": "2024-09-05",
+      "releases": [
+        {
+          "repo": "rt-mbms-tx-for-qrd-and-crd",
+          "branch": "emergency-alerts",
+          "tag": "rt-mbms-tx-for-qrd-and-crd-ea-1.0.0",
+          "date": "2024-09-05",
+          "url": "https://github.com/5G-MAG/rt-mbms-tx-for-qrd-and-crd/releases/tag/rt-mbms-tx-for-qrd-and-crd-ea-1.0.0",
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
+        }
+      ]
     },
     {
       "name": "XR Media",
       "doc_url": "/reference-tools/xr/",
       "tagline": "MPEG-I scene description and XR media integration over 5G",
+      "releases_slug": "resources",
       "latest_date": "2025-04-16",
       "releases": [
         {
           "repo": "rt-xr-blender-exporter",
+          "branch": null,
           "tag": "v1.1.0",
           "date": "2025-04-16",
           "url": "https://github.com/5G-MAG/rt-xr-blender-exporter/releases/tag/v1.1.0",
@@ -139,23 +199,34 @@
         },
         {
           "repo": "rt-xr-unity-player",
+          "branch": null,
           "tag": "v1.1.0",
           "date": "2025-02-27",
           "url": "https://github.com/5G-MAG/rt-xr-unity-player/releases/tag/v1.1.0",
           "author_login": "nlsdvl",
           "author_avatar": "https://avatars.githubusercontent.com/u/2748737?v=4"
         }
-      ],
-      "releases_slug": "resources"
+      ]
     },
     {
       "name": "5G Multicast Broadcast",
       "doc_url": "/reference-tools/5g-mbs/",
       "tagline": "5G-native multicast and broadcast services · 3GPP 5G MBS",
-      "latest_date": "2026-07-06",
+      "releases_slug": "resources",
+      "latest_date": "2026-07-14",
       "releases": [
         {
+          "repo": "open5gs",
+          "branch": "5mbs",
+          "tag": "v0.1.4-5mbs-v2.7.2-o5gs",
+          "date": "2026-07-14",
+          "url": "https://github.com/5G-MAG/open5gs/releases/tag/v0.1.4-5mbs-v2.7.2-o5gs",
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4"
+        },
+        {
           "repo": "rt-mbs-examples",
+          "branch": null,
           "tag": "rt-mbs-examples-v0.3.0",
           "date": "2026-07-06",
           "url": "https://github.com/5G-MAG/rt-mbs-examples/releases/tag/rt-mbs-examples-v0.3.0",
@@ -164,6 +235,7 @@
         },
         {
           "repo": "rt-mbs-function",
+          "branch": null,
           "tag": "rt-mbs-function-1.1.0",
           "date": "2026-07-03",
           "url": "https://github.com/5G-MAG/rt-mbs-function/releases/tag/rt-mbs-function-1.1.0",
@@ -172,40 +244,52 @@
         },
         {
           "repo": "rt-mbs-transport-function",
+          "branch": null,
           "tag": "rt-mbs-transport-function-1.4.0",
           "date": "2026-07-03",
           "url": "https://github.com/5G-MAG/rt-mbs-transport-function/releases/tag/rt-mbs-transport-function-1.4.0",
           "author_login": "davidjwbbc",
           "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4"
+        },
+        {
+          "repo": "rt-libflute",
+          "branch": null,
+          "tag": "rt-libflute-0.12.3",
+          "date": "2026-04-24",
+          "url": "https://github.com/5G-MAG/rt-libflute/releases/tag/rt-libflute-0.12.3",
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
         }
-      ],
-      "releases_slug": "resources"
+      ]
     },
     {
       "name": "UE Data Collection",
       "doc_url": "/reference-tools/data-collection/",
       "tagline": "UE-side data collection, reporting and event exposure · 3GPP TS 26.531",
+      "releases_slug": "resources",
       "latest_date": "2025-05-13",
       "releases": [
         {
           "repo": "rt-data-collection-application-function",
+          "branch": null,
           "tag": "rt-data-collection-application-function-1.1.0",
           "date": "2025-05-13",
           "url": "https://github.com/5G-MAG/rt-data-collection-application-function/releases/tag/rt-data-collection-application-function-1.1.0",
           "author_login": "davidjwbbc",
           "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4"
         }
-      ],
-      "releases_slug": "resources"
+      ]
     },
     {
       "name": "V3C Immersive",
       "doc_url": "/reference-tools/v3c/",
       "tagline": "V3C volumetric video platform for immersive 5G experiences",
+      "releases_slug": "resources",
       "latest_date": "2025-10-09",
       "releases": [
         {
           "repo": "rt-v3c-content",
+          "branch": null,
           "tag": "v1.1",
           "date": "2025-10-09",
           "url": "https://github.com/5G-MAG/rt-v3c-content/releases/tag/v1.1",
@@ -214,6 +298,7 @@
         },
         {
           "repo": "rt-v3c-unity-player",
+          "branch": null,
           "tag": "v1.1",
           "date": "2025-09-30",
           "url": "https://github.com/5G-MAG/rt-v3c-unity-player/releases/tag/v1.1",
@@ -222,48 +307,86 @@
         },
         {
           "repo": "rt-v3c-decoder-plugin",
+          "branch": null,
           "tag": "v1.1",
           "date": "2025-09-30",
           "url": "https://github.com/5G-MAG/rt-v3c-decoder-plugin/releases/tag/v1.1",
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4"
         }
-      ],
-      "releases_slug": "resources"
+      ]
     },
     {
       "name": "5GC Service Consumers",
       "doc_url": "/reference-tools/5g-core/",
       "tagline": "Reference consumers for 5G Core capability exposure APIs",
+      "releases_slug": "resources",
       "latest_date": "2026-06-05",
       "releases": [
         {
           "repo": "rt-5gc-service-consumers",
+          "branch": null,
           "tag": "rt-5gc-service-consumers-2.1.1",
           "date": "2026-06-05",
           "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/releases/tag/rt-5gc-service-consumers-2.1.1",
           "author_login": "davidjwbbc",
           "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4"
         }
-      ],
-      "releases_slug": "resources"
+      ]
     },
     {
       "name": "Beyond 2D Video Experiences",
       "doc_url": "/testbeds/beyond-2d/",
       "tagline": "Evaluation framework for beyond-2D video experiences",
+      "releases_slug": "resources",
       "latest_date": "2025-07-24",
       "releases": [
         {
           "repo": "rt-beyond2d-evaluation-framework",
+          "branch": null,
           "tag": "v0.2.1",
           "date": "2025-07-24",
           "url": "https://github.com/5G-MAG/rt-beyond2d-evaluation-framework/releases/tag/v0.2.1",
           "author_login": "bart-kroon",
           "author_avatar": "https://avatars.githubusercontent.com/u/78917078?v=4"
         }
-      ],
-      "releases_slug": "resources"
+      ]
+    },
+    {
+      "name": "DVB-I over 5G",
+      "doc_url": "/reference-tools/dvb-i/",
+      "tagline": "DVB-I service discovery combined with 5GMS and 5G Broadcast delivery",
+      "releases_slug": "resources",
+      "latest_date": "2026-05-26",
+      "releases": [
+        {
+          "repo": "rt-5gms-application",
+          "branch": null,
+          "tag": "rt-5gms-application-v1.3.0",
+          "date": "2026-05-26",
+          "url": "https://github.com/5G-MAG/rt-5gms-application/releases/tag/rt-5gms-application-v1.3.0",
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
+        }
+      ]
+    },
+    {
+      "name": "Multimedia Delivery Protocols",
+      "doc_url": "/reference-tools/multimedia/",
+      "tagline": "DASH, HLS and CMAF multimedia delivery reference tools",
+      "releases_slug": "resources",
+      "latest_date": "2026-04-24",
+      "releases": [
+        {
+          "repo": "rt-libflute",
+          "branch": null,
+          "tag": "rt-libflute-0.12.3",
+          "date": "2026-04-24",
+          "url": "https://github.com/5G-MAG/rt-libflute/releases/tag/rt-libflute-0.12.3",
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
+        }
+      ]
     }
   ]
 }

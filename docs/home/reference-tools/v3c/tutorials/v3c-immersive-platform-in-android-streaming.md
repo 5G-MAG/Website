@@ -17,14 +17,14 @@ description: Step-by-step tutorial to build the V3C Unity player for Android and
   <path d="M8 10v4.5l4 2.5" /></svg>
 </div>
 <div class="topic-banner__text">
-<span class="topic-banner__kicker">V3C Immersive Platform</span>
+<span class="topic-banner__kicker">MPEG V3C Immersive Platform</span>
 <h1>V3C Unity Player for Android with DASH Streaming Server</h1>
 </div>
 </div>
 
 ## Introduction
 
-This tutorial provides the instructions to set up the V3C Immersive Platform for an Android device using content streamed from a DASH server.
+This tutorial provides the instructions to set up the MPEG V3C Immersive Platform for an Android device using content streamed from a DASH server.
 
 **What you will build:** a Unity-based V3C player running on an Android phone that decodes volumetric content and plays it back from a Dynamic Adaptive Streaming over HTTP (DASH) server you run on your own machine.
 
@@ -197,6 +197,6 @@ If you experience any errors during the Unity player build. Try selecting the V3
 
 ## Next steps
 
-- Browse more walkthroughs and recorded talks in the [Tutorials and Video Library](./).
+- Browse more walkthroughs and recorded talks in the [Tutorials and Developer Exchange](./).
 - See the source repositories behind each component on the [Resources](../resources) page.
 - For background on the specifications and pipeline, read the [Scope](../scope) page.

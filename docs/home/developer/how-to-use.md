@@ -13,6 +13,7 @@ description: Explains the portal's structure and subcategories (Scope, Roadmap, 
   <path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0"/><path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0"/><path d="M3 6l0 13"/><path d="M12 6l0 13"/><path d="M21 6l0 13"/></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">Developer</span>
 <h1>Using this documentation</h1>
 </div>
 </div>
@@ -21,7 +22,7 @@ This documentation follows a hierarchical structure to help you navigate the 5G-
 
 Each main topic shares a consistent set of subcategories covering specifications, related projects, repository links, usage instructions, and hands-on tutorials. Not every subcategory applies to every project: a project shows only the tabs relevant to it, so a missing tab (for example Packages) means "nothing published yet for this project", not a broken page.
 
-Each project opens on a landing page with a short description and a row of buttons linking to the subcategories that apply to it (typically Documentation/Scope, Project Roadmap, GitHub Repos, Packages, Releases, Tutorials, and Video Library). The subcategories below describe what each of these covers.
+Each project opens on a landing page with a short description and a row of buttons linking to the subcategories that apply to it (typically Documentation/Scope, Project Roadmap, GitHub Repos, Packages, Releases, Tutorials, and On Air). The subcategories below describe what each of these covers.
 
 For acronyms and recurring terms used across the portal, see the [Glossary](/tech/glossary).
 
@@ -58,9 +59,9 @@ The **Tutorials** section offers end-to-end setup guides. These walkthroughs typ
 
 The **Releases** section lists the latest published version of each repository in the project, with dates. It draws on the same data as the portal-wide [Releases](/developer/releases) page.
 
-### Video Library
+### On Air
 
-The **Video Library** section, where available, collects recorded talks, demonstrations and workshop sessions related to the project.
+The **On Air** section, where available, collects recorded talks, demonstrations and workshop sessions related to the project.
 
 ---
 

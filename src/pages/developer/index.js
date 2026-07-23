@@ -7,7 +7,8 @@ import GodeeperCard, { icon } from '@site/src/components/GodeeperCard';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import styles from './index.module.css';
 import releasesData from '@site/static/data/releases.json';
-import youtubeData from '@site/static/data/youtube.json';
+import youtubePlaylists from '@site/static/data/youtube-playlists.json';
+import { mergeDeveloperVideos } from '@site/src/data/developerVideos';
 import { daysSince, formatAge } from '@site/src/utils/releases';
 import { FACT_REPOSITORIES, FACT_CLONES } from '@site/src/data/facts';
 
@@ -76,7 +77,7 @@ const CATEGORIES = [
         title: 'Multimedia Delivery Protocols',
         desc: 'FLUTE and ROUTE reference tooling',
         href: '/reference-tools/multimedia',
-        icon: <ProjectIcon name="Multimedia Protocols" />,
+        icon: <ProjectIcon name="Multimedia Delivery Protocols" />,
       },
       {
         title: 'DVB-I Services over 5G Systems',
@@ -145,7 +146,7 @@ const CATEGORIES = [
     desc: 'V3C immersive platform and beyond-2D video evaluation frameworks.',
     topics: [
       {
-        title: 'V3C Immersive Platform',
+        title: 'MPEG V3C Immersive Platform',
         desc: 'Volumetric 3D content platform',
         href: '/reference-tools/v3c',
         icon: <ProjectIcon name="V3C Immersive" />,
@@ -583,14 +584,14 @@ function VideoCard({ video }) {
       </div>
       <div className={styles.videoInfo}>
         <p className={styles.videoTitle}>{video.title}</p>
-        <span className={styles.videoDate}>{video.published}</span>
+        <span className={styles.videoDate}>{video.by || video.published}</span>
       </div>
     </a>
   );
 }
 
 function VideoSection({ alt }) {
-  const { videos, channel } = youtubeData;
+  const videos = mergeDeveloperVideos(youtubePlaylists.developer?.videos);
   return (
     <section className={clsx(styles.section, alt && styles.sectionAlt)}>
       <div className="container">
@@ -603,10 +604,15 @@ function VideoSection({ alt }) {
               See it in action
             </h2>
             <p className={styles.sectionSubtitle} style={{ textAlign: 'left', margin: 0 }}>
-              Latest videos from the 5G-MAG YouTube channel
+              Recent Reference Tools &amp; Testbeds demos and tutorials
             </p>
           </div>
-          <a className={styles.videoViewAll} href={channel} target="_blank" rel="noreferrer">
+          <a
+            className={styles.videoViewAll}
+            href={youtubePlaylists.developer?.playlistUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
             See all videos &rarr;
           </a>
         </div>
@@ -641,7 +647,7 @@ export default function Home() {
         icon={DEV_HERO_ICON_PATH}
         actions={[
           <Link key="community" className="button button--primary button--lg" to="#community">
-            Join the Effort
+            Developer Community
           </Link>,
           <Link
             key="reftools"
@@ -700,6 +706,9 @@ export default function Home() {
                 to="/developer/community-stats"
               >
                 Community Stats
+              </Link>
+              <Link className="button button--outline button--primary button--lg" to="/tech/videos">
+                Watch On Air
               </Link>
             </div>
 

@@ -5,12 +5,33 @@ import Layout from '@theme/Layout';
 import HeroSlideshow from '@site/src/components/HeroSlideshow';
 import MediaConnectivityDiagram from '@site/src/components/MediaConnectivityDiagram';
 import GodeeperCard, { icon } from '@site/src/components/GodeeperCard';
-import { SLACK_INVITE_URL } from '@site/src/data/socialLinks';
+import OnAirTeaser from '@site/src/components/OnAirTeaser';
+import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import { SCOPE_TAGS } from '@site/src/data/scopeTags';
 import { SCOPE_PILLARS } from '@site/src/data/scopePillars';
 import { DISCOVER_WORK } from '@site/src/data/discoverWork';
 import { chunk } from '@site/src/utils/chunk';
 import styles from './index.module.css';
+
+// A cross-section sample of member/contributor demos, not the full library —
+// see /tech/videos for that.
+const ON_AIR_FEATURED = [
+  {
+    videoId: 'e_xK_ckkhgc',
+    title: 'Demonstrating MBS User Service Announcement mechanisms',
+    href: '/reference-tools/5g-mbs/tutorials#on-air',
+  },
+  {
+    videoId: 'hkVgL8yq0V8',
+    title: 'Emergency Alerts over 5G Broadcast embedded in DVB-T2 at IBC 2025',
+    href: '/reference-tools/emergency-alerts/tutorials#on-air',
+  },
+  {
+    videoId: '4C9bySDoVqA',
+    title: 'MPEG V3C Immersive Platform at IBC 2025',
+    href: '/reference-tools/v3c/tutorials#on-air',
+  },
+];
 
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
@@ -81,37 +102,26 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Community */}
-        <section className={clsx(styles.section, styles.sectionAlt)}>
+        {/* On Air */}
+        <section className={styles.section}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Join the Efforts</h2>
+            <h2 className={styles.sectionTitle}>On Air</h2>
             <p className={styles.sectionSubtitle}>
-              5G-MAG is an open industry association. Contributions to documentation and standards
-              work are welcome.
+              Hear it from the people building it: recorded demos and talks from 5G-MAG members and
+              contributors.
             </p>
-            <div className={styles.communityLinks}>
-              <Link className="button button--primary button--lg" to="/membership#request-membership">
-                Become a member
-              </Link>
-              <a
-                className="button button--outline button--primary button--lg"
-                href="https://github.com/5G-MAG"
-                target="_blank"
-                rel="noreferrer"
-              >
-                GitHub
-              </a>
-              <a
-                className="button button--outline button--primary button--lg"
-                href={SLACK_INVITE_URL}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Slack
-              </a>
+            <div className={styles.onAirGrid}>
+              {ON_AIR_FEATURED.map((v) => (
+                <OnAirTeaser key={v.videoId} {...v} />
+              ))}
+            </div>
+            <div className={styles.onAirMore}>
+              <Link to="/tech/videos">Browse the full library &rarr;</Link>
             </div>
           </div>
         </section>
+
+        <JoinTheEffort alt />
       </main>
     </Layout>
   );

@@ -24,7 +24,7 @@ The Beyond 2D Evaluation Framework supports the systematic assessment of next-ge
 
 From an implementer's point of view, the value here is a common, transparent test setup rather than a shipping playback product: defined test content, processing steps, and metrics that let you benchmark candidate formats and codecs on a like-for-like basis. Where volumetric coding is in scope, the framework relates to Visual Volumetric Video-based Coding (V3C, ISO/IEC 23090-5); for delivery evaluation it touches common packaging such as the Common Media Application Format (CMAF). Because this is an evaluation-focused effort tied to an active 3GPP study, the set of dedicated reference tools is smaller than for 5G-MAG's product-oriented projects, and it overlaps with the volumetric tooling; this page states that scope plainly rather than over-claiming a large standalone toolset.
 
-For the authoritative, current list of repositories and their status, see the [Resources](./resources) page; roadmap items are tracked from the [Resources](./resources). For related encoding and rendering tools, see the [V3C Immersive Platform](/reference-tools/v3c) project.
+For the authoritative, current list of repositories and their status, see the [Resources](./resources) page; roadmap items are tracked from the [Resources](./resources). For related encoding and rendering tools, see the [MPEG V3C Immersive Platform](/reference-tools/v3c) project.
 
 ## Standards being implemented
 
@@ -58,7 +58,7 @@ The pipeline runs encode, package, deliver (under a 5G Media Streaming / DASH as
 
 ### How the tools map to the standard
 
-The framework tracks 3GPP FS_Beyond2D and TR 26.956. Where volumetric or MV+D content is evaluated, it reuses V3C tooling (V-PCC and MIV), which is why this project overlaps with, and is smaller than, the product-oriented [V3C Immersive Platform](/reference-tools/v3c). The set of dedicated repositories is therefore intentionally compact; for the authoritative, current list and status see the [Resources](./resources) page.
+The framework tracks 3GPP FS_Beyond2D and TR 26.956. Where volumetric or MV+D content is evaluated, it reuses V3C tooling (V-PCC and MIV), which is why this project overlaps with, and is smaller than, the product-oriented [MPEG V3C Immersive Platform](/reference-tools/v3c). The set of dedicated repositories is therefore intentionally compact; for the authoritative, current list and status see the [Resources](./resources) page.
 
 ## Getting started
 

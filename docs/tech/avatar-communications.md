@@ -5,15 +5,16 @@ sidebar_position: 7
 description: Explains the MPEG ARF avatar data model and how avatar animation is streamed over 5G for real-time conversational calls.
 ---
 
-<header class="topic-hero">
-<div class="topic-hero__icon">
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M6 6a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2l0 -4"/><path d="M12 2v2"/><path d="M9 12v9"/><path d="M15 12v9"/><path d="M5 16l4 -2"/><path d="M15 14l4 2"/><path d="M9 18h6"/><path d="M10 8v.01"/><path d="M14 8v.01"/></svg>
 </div>
-<div>
-<h1 class="topic-hero__title">Avatar Communication with MPEG ARF</h1>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Tech</span>
+<h1>Avatar Communication with MPEG ARF</h1>
 </div>
-</header>
+</div>
 
 <div class="topic-lead">
 Real-time conversational avatars, animated from audio and video, for immersive calls over 5G.

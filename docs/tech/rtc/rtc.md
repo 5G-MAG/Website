@@ -5,15 +5,16 @@ hide_title: true
 description: Overview of 3GPP's RTC architecture (TS 26.506), WebRTC transport stack, and its relation to 5GMSu and IMS communication.
 ---
 
-<header class="topic-hero">
-<div class="topic-hero__icon">
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M15 10l4.553 -2.069a1 1 0 0 1 1.447 .894v6.35a1 1 0 0 1 -1.447 .894l-4.553 -2.069v-4"/><path d="M3 8a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-8z"/></svg>
 </div>
-<div>
-<h1 class="topic-hero__title">Real-Time Communications</h1>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Tech</span>
+<h1>Real-Time Communications</h1>
 </div>
-</header>
+</div>
 
 <div class="topic-lead">
 Interactive, low-latency WebRTC-based media communication over 5G, layered on 5GMSu and related delivery functions.

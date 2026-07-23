@@ -20,7 +20,7 @@ description: Defines what the 5G MBS reference tools implement in the MBS User S
 </div>
 </div>
 
-<div style="margin: 8px 0"><a class="button button--outline button--primary" href="/reference-tools/5g-mbs/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/5g-mbs/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/reference-tools/5g-mbs/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/5g-mbs/tutorials#video-library" style="margin: 2px 4px 2px 0">Video Library</a></div>
+<div style="margin: 8px 0"><a class="button button--outline button--primary" href="/reference-tools/5g-mbs/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/5g-mbs/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/reference-tools/5g-mbs/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/5g-mbs/tutorials#developer-exchange" style="margin: 2px 4px 2px 0">Developer Exchange</a></div>
 
 These reference tools implement parts of the 3GPP 5G Multicast Broadcast Services (MBS) feature. They are aimed at developers and integrators who want to run and inspect MBS delivery over a 5G Core, using multicast and broadcast to send the same media to many devices at once. To try the tools hands-on, see the [Tutorials](./tutorials).
 

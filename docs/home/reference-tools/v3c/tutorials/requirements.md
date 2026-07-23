@@ -17,12 +17,12 @@ description: Device requirements for running the V3C Unity player on Android, in
   <path d="M8 10v4.5l4 2.5" /></svg>
 </div>
 <div class="topic-banner__text">
-<span class="topic-banner__kicker">V3C Immersive Platform</span>
+<span class="topic-banner__kicker">MPEG V3C Immersive Platform</span>
 <h1>Requirements</h1>
 </div>
 </div>
 
-<div style="margin: 8px 0"><a class="button button--outline button--primary" href="../scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="../resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="." style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href=".#video-library" style="margin: 2px 4px 2px 0">Video Library</a></div>
+<div style="margin: 8px 0"><a class="button button--outline button--primary" href="../scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="../resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="." style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href=".#developer-exchange" style="margin: 2px 4px 2px 0">Developer Exchange</a></div>
 
 This page lists the device requirements for running the V3C Unity player on Android. Check these before following the build tutorial.
 

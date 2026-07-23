@@ -6,17 +6,18 @@ sidebar_position: -1
 description: Lists third-party tools that complement the Reference Tools, currently featuring the DVB NIP Analyzer for DVB-NIP/FLUTE streams.
 ---
 
-<header class="topic-hero">
-<div class="topic-hero__icon">
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" />
   <path d="M11 13l9 -9" />
   <path d="M15 4h5v5" /></svg>
 </div>
-<div>
-<h1 class="topic-hero__title">External Tools</h1>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Reference Tools</span>
+<h1>External Tools</h1>
 </div>
-</header>
+</div>
 
 <div class="topic-lead">
 This section provides information about third-party tools that can be used in conjunction with the Reference Tools.
@@ -34,6 +35,12 @@ understand the structure of the transmitted data.
 The tool is available on Docker Hub: [DVB NIP Analyzer](https://hub.docker.com/r/sessystems/dvb-nip-analyzer).
 
 The video below demonstrates the DVB NIP Analyzer inspecting a DVB-NIP stream.
+
+<div class="onair-kicker"><span class="onair-kicker__dot"></span>On Air</div>
+
+## Developer Exchange
+
+By Yannick Poirier (SES)
 
 <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/FSiWpyTgT5M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 

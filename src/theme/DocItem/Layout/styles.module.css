@@ -3,12 +3,6 @@
   margin-top: 0;
 }
 
-@media (min-width: 997px) {
-  .docItemCol {
-    max-width: 75% !important;
-  }
-}
-
 .docItemHeaderRow {
   display: flex;
   align-items: flex-start;

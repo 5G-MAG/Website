@@ -31,7 +31,13 @@ The 6G Testbed has two parts: a **Network Emulator** that reproduces realistic n
 
 For the full component breakdown, the profile format, and the emulator API, see the [Scope](../scope) page. The source code and setup instructions are in the [5G-MAG/6G-Testbed](https://github.com/5G-MAG/6G-Testbed) repository.
 
+<div class="onair-kicker"><span class="onair-kicker__dot"></span>On Air</div>
+
+## Developer Exchange
+
 The following video introduces the testbed:
+
+*By Thomas Stockhammer (Qualcomm)*
 
 <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/KtYMui-cRc0" title="Introduction to the 6G Testbed: Network Emulator and AI Traffic Characterization (video walkthrough)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 

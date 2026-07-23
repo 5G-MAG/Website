@@ -24,6 +24,13 @@ const SLACK_ICON = (
   </>
 );
 
+const SUBSCRIBE_ICON = (
+  <>
+    <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
+    <path d="M3 7l9 6l9 -6" />
+  </>
+);
+
 const TILES = [
   {
     key: 'membership',
@@ -50,12 +57,12 @@ const TILES = [
     cta: 'Join',
   },
   {
-    key: 'discussions',
-    href: 'https://github.com/orgs/5G-MAG/discussions',
-    icon: GITHUB_ICON,
-    title: 'GitHub Discussions',
-    desc: 'Ask questions, share ideas',
-    cta: 'Discuss',
+    key: 'subscribe',
+    to: '/subscribe',
+    icon: SUBSCRIBE_ICON,
+    title: 'Subscribe to Updates',
+    desc: 'Get 5G-MAG updates by email',
+    cta: 'Sign up',
   },
 ];
 

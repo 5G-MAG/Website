@@ -1,7 +1,10 @@
+import { useState } from 'react';
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
+import VideoCard from '@site/src/components/VideoCard';
+import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 import styles from '../tech/index.module.css';
 
 const INTEROP_ICON_PATH = (
@@ -80,7 +83,14 @@ const PILLARS = [
 const EVENT_TYPES = [
   {
     title: 'Interoperability plugfests',
-    body: 'Multi-vendor events where 5G-MAG reference code is tested side by side with other implementations — like the 5G Broadcast Plugfest 2026 hosted by Fraunhofer FOKUS in Berlin, pictured above.',
+    body: (
+      <>
+        Multi-vendor events where 5G-MAG reference code is tested side by side with other
+        implementations — like the{' '}
+        <Link to="/testing/5g-broadcast-plugfest">5G Broadcast PlugFest 2026</Link>, hosted by
+        Fraunhofer FOKUS in Berlin, pictured above.
+      </>
+    ),
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -136,6 +146,50 @@ const EVENT_TYPES = [
   },
 ];
 
+function DemosSection() {
+  const [playingId, setPlayingId] = useState(null);
+  const videos = youtubePlaylists.demos?.videos || [];
+  if (!videos.length) return null;
+
+  return (
+    <section id="demos" className={styles.section} style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}>
+      <div className="container">
+        <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
+          <div>
+            <h2 className={styles.sectionTitle} style={{ textAlign: 'left', marginBottom: '0.2rem' }}>
+              Demonstrators
+            </h2>
+            <p className={styles.sectionSubtitle} style={{ textAlign: 'left', margin: 0 }}>
+              Recordings of plugfest and trade-show demos
+            </p>
+          </div>
+          {youtubePlaylists.demos?.playlistUrl && (
+            <a
+              href={youtubePlaylists.demos.playlistUrl}
+              target="_blank"
+              rel="noreferrer"
+              style={{ fontWeight: 600, whiteSpace: 'nowrap' }}
+            >
+              See all videos &rarr;
+            </a>
+          )}
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(230px, 1fr))', gap: '1.1rem' }}>
+          {videos.map((v) => (
+            <VideoCard
+              key={v.id}
+              video={v}
+              kicker="Demo"
+              isPlaying={playingId === v.id}
+              onPlay={() => setPlayingId(v.id)}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Testing() {
   return (
     <Layout
@@ -188,7 +242,8 @@ export default function Testing() {
                   loading="lazy"
                 />
                 <p className={styles.photoCaption}>
-                  5G Broadcast Plugfest 2026 — hosted by Fraunhofer FOKUS, Berlin.
+                  <Link to="/testing/5g-broadcast-plugfest">5G Broadcast Plugfest 2026</Link> —
+                  hosted by Fraunhofer FOKUS, Berlin.
                 </p>
               </figure>
               <figure className={styles.photoFigure}>
@@ -206,6 +261,8 @@ export default function Testing() {
             </div>
           </div>
         </section>
+
+        <DemosSection />
 
         <section className={styles.section}>
           <div className="container">

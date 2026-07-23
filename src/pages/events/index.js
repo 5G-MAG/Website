@@ -18,6 +18,17 @@ const EVENTS_ICON_PATH = (
 
 const EVENT_FACTS = [FACT_LARGE_EVENTS, FACT_YEARLY_CONFERENCE];
 
+const EVENT_PAGES = [
+  { title: 'MWC Barcelona', desc: 'Stand 5C30, Swiss Pavilion, Hall 5', href: '/mwc' },
+  { title: 'IBC', desc: 'EBU stand, booth 10.D21', href: '/ibc' },
+  { title: 'Future Media Townhall', desc: 'RAI Amsterdam', href: '/fmt' },
+];
+
+const WORKSHOP_PAGES = [
+  { title: 'OSCAR Workshop', desc: 'Open-Source Core, Applications and RAN', href: '/events/oscar' },
+  { title: 'OSMART Workshops', desc: 'Open-Source Media Application Reference Tools', href: '/events/osmart' },
+];
+
 export default function Events() {
   const linkedin = SOCIAL_LINKS.find((s) => s.key === 'linkedin').href;
   return (
@@ -28,6 +39,24 @@ export default function Events() {
       <HubHero
         title="Events"
         icon={EVENTS_ICON_PATH}
+        actions={[
+          <a
+            key="linkedin"
+            className="button button--primary button--lg"
+            href={linkedin}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Follow on LinkedIn
+          </a>,
+          <Link
+            key="subscribe"
+            className="button button--outline button--primary button--lg"
+            to="/subscribe"
+          >
+            Subscribe to Updates
+          </Link>,
+        ]}
       />
 
       <div className="container" style={{ marginTop: '1.75rem' }}>
@@ -37,7 +66,7 @@ export default function Events() {
       <main>
         <section className={styles.section}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Friday&apos;s Public Call</h2>
+            <h2 className={styles.sectionTitle}>Dev Public Call</h2>
             <p className={styles.sectionSubtitle}>
               5G-MAG&apos;s open monthly session — anyone can join, no membership required.
             </p>
@@ -45,6 +74,44 @@ export default function Events() {
               <Link className="button button--primary button--lg" to="/events/public-call">
                 Join &amp; Watch Recordings
               </Link>
+            </div>
+          </div>
+        </section>
+
+        <section className={`${styles.section} ${styles.sectionAlt}`}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>Events</h2>
+            <p className={styles.sectionSubtitle}>
+              Trade shows and conferences 5G-MAG organizes or takes part in.
+            </p>
+            <div className={styles.pillarGrid3}>
+              {EVENT_PAGES.map((e) => (
+                <Link key={e.href} to={e.href} className={styles.linkCard}>
+                  <h3 className={styles.linkCardTitle}>{e.title}</h3>
+                  <p className={styles.linkCardBody}>{e.desc}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="workshops"
+          className={styles.section}
+          style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}
+        >
+          <div className="container">
+            <h2 className={styles.sectionTitle}>Workshops</h2>
+            <p className={styles.sectionSubtitle}>
+              Community workshops 5G-MAG co-organizes with other open-source and standards groups.
+            </p>
+            <div className={styles.pillarGrid3}>
+              {WORKSHOP_PAGES.map((w) => (
+                <Link key={w.href} to={w.href} className={styles.linkCard}>
+                  <h3 className={styles.linkCardTitle}>{w.title}</h3>
+                  <p className={styles.linkCardBody}>{w.desc}</p>
+                </Link>
+              ))}
             </div>
           </div>
         </section>

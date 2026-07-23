@@ -5,15 +5,16 @@ sidebar_position: 5
 description: "Overview of 5G-MAG's XR work: MPEG-I Scene Description, its 5G delivery, device capabilities (MeCAR), and split rendering for AR/MR."
 ---
 
-<header class="topic-hero">
-<div class="topic-hero__icon">
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/><path d="M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2"/><path d="M3 7v-2a2 2 0 0 1 2 -2h2"/><path d="M3 17v2a2 2 0 0 0 2 2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M17 21h2a2 2 0 0 0 2 -2v-2"/></svg>
 </div>
-<div>
-<h1 class="topic-hero__title">XR and MPEG-I Scene Description</h1>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Tech</span>
+<h1>XR and MPEG-I Scene Description</h1>
 </div>
-</header>
+</div>
 
 <div class="topic-lead">
 Interactive, spatially-aware 3D scenes and immersive media delivered over 5G Media Streaming.

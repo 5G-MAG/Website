@@ -31,7 +31,7 @@ Follow the [use-case walkthrough](/reference-tools/xr/tutorials/immersive-3d-med
 
 A Unity-based V3C player running on an Android phone, decoding V3C-coded volumetric content and streaming it over DASH (Dynamic Adaptive Streaming over HTTP) from a server you run on your own machine: volumetric video played back on a handheld device rather than only in a fixed lab setup.
 
-**Built from:** [V3C Immersive Platform](/reference-tools/v3c/).
+**Built from:** [MPEG V3C Immersive Platform](/reference-tools/v3c/).
 
 Follow the [step-by-step guide](/reference-tools/v3c/tutorials/v3c-immersive-platform-in-android-streaming) to build the Android player, set up the DASH server, and stream sample V3C content to your device.
 

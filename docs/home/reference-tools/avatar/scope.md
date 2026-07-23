@@ -24,7 +24,7 @@ description: Explains what MPEG ARF (ISO/IEC 23090-39) covers and how the Avatar
 </div>
 </div>
 
-<div style="margin: 8px 0"><a class="button button--outline button--primary" href="/reference-tools/avatar/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/avatar/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/reference-tools/avatar/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a></div>
+<div style="margin: 8px 0"><a class="button button--outline button--primary" href="/reference-tools/avatar/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/avatar/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/reference-tools/avatar/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/avatar/tutorials#developer-exchange" style="margin: 2px 4px 2px 0">Developer Exchange</a></div>
 
 This page describes the specification within the scope of the Avatar Communication reference tools, what that specification covers, and how the tools are organised.
 

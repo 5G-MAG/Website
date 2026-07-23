@@ -25,7 +25,10 @@ export const SECTION_NAV = [
     prefixes: ['/membership'],
     title: 'Membership',
     titleHref: '/membership',
-    items: [{ label: 'Request information', href: '/membership#request-membership' }],
+    items: [
+      { label: 'Request information', href: '/membership#request-membership' },
+      { label: 'Our Members', href: '/membership#our-members' },
+    ],
   },
   {
     prefixes: ['/developer'],
@@ -36,14 +39,19 @@ export const SECTION_NAV = [
       { label: 'Applications', href: '/applications' },
       { label: 'Testbeds', href: '/testbeds' },
       { label: 'Early Access', href: '/early-access' },
-      { label: 'Community', href: '/developer#community' },
-      { label: 'How to Contribute', href: '/developer/how-to-use' },
-      { label: 'Guidelines for Contributors', href: '/developer/guidelines-contributors' },
-      { label: 'Releases', href: '/developer/releases' },
-      { label: 'Pull Requests', href: '/developer/pull-requests' },
-      { label: 'Community Stats', href: '/developer/community-stats' },
-      { label: 'Roadmap', href: '/developer/roadmap' },
-      { label: 'Top Contributors', href: '/developer/contributors' },
+      {
+        label: 'Community',
+        href: '/developer#community',
+        children: [
+          { label: 'How to Contribute', href: '/developer/how-to-use' },
+          { label: 'Guidelines for Contributors', href: '/developer/guidelines-contributors' },
+          { label: 'Releases', href: '/developer/releases' },
+          { label: 'Pull Requests', href: '/developer/pull-requests' },
+          { label: 'Community Stats', href: '/developer/community-stats' },
+          { label: 'Roadmap', href: '/developer/roadmap' },
+          { label: 'Top Contributors', href: '/developer/contributors' },
+        ],
+      },
       { label: 'License', href: '/developer/license' },
     ],
   },
@@ -52,10 +60,10 @@ export const SECTION_NAV = [
     title: 'Explainers & Profiles',
     titleHref: '/tech',
     items: [
-      { label: 'Videos', href: '/tech/videos' },
-      { label: 'External Videos', href: '/tech/videos-external' },
+      { label: 'On Air Video Gallery', href: '/tech/videos' },
       { label: 'Glossary', href: '/tech/glossary' },
-      { label: '3GPP Work Items per Release', href: '/tech/3gpp-work-items' },
+      { label: 'Requirements', href: '/standards/requirements' },
+      { label: 'Feedback', href: '/standards' },
     ],
   },
   {
@@ -63,9 +71,10 @@ export const SECTION_NAV = [
     title: 'Feedback & Requirements',
     titleHref: '/standards',
     items: [
-      { label: 'Meetings with 3GPP SA4', href: '/standards/3gpp-issue-tracking' },
       { label: 'Methodology', href: '/standards/methodology' },
       { label: 'Liaison Statements & Inputs', href: '/standards/ls' },
+      { label: 'Workshops supporting Standardization', href: '/standards/workshops' },
+      { label: 'Requirements & Workshop Inputs', href: '/standards/requirements' },
     ],
   },
   {
@@ -103,20 +112,53 @@ export const SECTION_NAV = [
     title: 'Interop & Testing',
     titleHref: '/testing',
     // Testing is the activity layer (plugfests, demos, trials) — it does not
-    // own or gatekeep Testbeds or Reference Tools, so this section has no
-    // sub-items of its own.
-    items: [],
+    // own or gatekeep Testbeds or Reference Tools, so beyond its own
+    // plugfest write-ups it has no sub-items pointing back at those.
+    items: [
+      { label: '5G Broadcast PlugFest 2026', href: '/testing/5g-broadcast-plugfest' },
+      { label: 'Demonstrators', href: '/testing#demos' },
+    ],
   },
   {
     prefixes: ['/events'],
     title: 'Events',
     titleHref: '/events',
-    items: [{ label: "Friday's Public Call", href: '/events/public-call' }],
+    items: [
+      { label: 'Dev Public Call', href: '/events/public-call' },
+      { label: 'MWC', href: '/mwc' },
+      { label: 'IBC', href: '/ibc' },
+      { label: 'FMT', href: '/fmt' },
+      { label: 'Workshops', href: '/events#workshops' },
+    ],
+  },
+  {
+    prefixes: ['/mwc'],
+    title: 'MWC',
+    titleHref: '/mwc',
+    items: [{ label: 'Events', href: '/events' }],
+  },
+  {
+    prefixes: ['/ibc'],
+    title: 'IBC',
+    titleHref: '/ibc',
+    items: [{ label: 'Events', href: '/events' }],
+  },
+  {
+    prefixes: ['/fmt'],
+    title: 'FMT',
+    titleHref: '/fmt',
+    items: [{ label: 'Events', href: '/events' }],
   },
   {
     prefixes: ['/news'],
     title: 'News',
     titleHref: '/news',
-    items: [],
+    items: [{ label: 'Podcast', href: '/podcast' }],
+  },
+  {
+    prefixes: ['/podcast'],
+    title: 'Podcast',
+    titleHref: '/podcast',
+    items: [{ label: 'News', href: '/news' }],
   },
 ];

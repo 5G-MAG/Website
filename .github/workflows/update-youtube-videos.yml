@@ -23,13 +23,13 @@ jobs:
         with:
           node-version: 20
 
-      - name: Fetch latest videos
-        run: node scripts/fetch-youtube.js
+      - name: Fetch latest videos (Workshops, Developer Exchange, Public Call playlists)
+        run: node scripts/fetch-youtube-playlists.js
 
       - name: Commit and push if changed
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add static/data/youtube.json
+          git add static/data/youtube-playlists.json
           git diff --cached --quiet || git commit -m "Update YouTube videos"
           git push

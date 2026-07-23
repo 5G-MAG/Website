@@ -773,7 +773,7 @@
     {
       "repo_slug": "rt-v3c-unity-player",
       "display_name": "V3C Unity Player",
-      "description": "This project provides a Unity package to decode and play V3C contents in Unity, using the V3C Immersive Platform - Decoder Plugin. Also provided in that repository are V-PCC and MIV synthesizers plugins needed for the rendering of the V3C contents.",
+      "description": "This project provides a Unity package to decode and play V3C contents in Unity, using the MPEG V3C Immersive Platform - Decoder Plugin. Also provided in that repository are V-PCC and MIV synthesizers plugins needed for the rendering of the V3C contents.",
       "repo_url": "https://github.com/5G-MAG/rt-v3c-unity-player",
       "branch": "main",
       "license": "5G-MAG PL v1.0",
@@ -793,7 +793,7 @@
     {
       "repo_slug": "rt-v3c-decoder-plugin",
       "display_name": "V3C Decoder Plugin",
-      "description": "This project contains the entrypoints for decoding and viewing MPEG Immersive Video (MIV) and Video Point Cloud Compression (V-PCC) related to the V3C Immersive Platform.",
+      "description": "This project contains the entrypoints for decoding and viewing MPEG Immersive Video (MIV) and Video Point Cloud Compression (V-PCC) related to the MPEG V3C Immersive Platform.",
       "repo_url": "https://github.com/5G-MAG/rt-v3c-decoder-plugin",
       "branch": "main",
       "license": "5G-MAG PL v1.0",

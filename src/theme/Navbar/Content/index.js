@@ -152,7 +152,7 @@ function GlobalNavActions() {
         href="https://member.5g-mag.com"
         target="_blank"
         rel="noreferrer"
-        className={clsx(styles.navIconLink, styles.navSpaced)}
+        className={clsx(styles.navIconLink, styles.navSpaced, styles.membersAreaIcon)}
         aria-label="Members Area"
         title="Members Area"
       >

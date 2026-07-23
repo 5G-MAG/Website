@@ -48,28 +48,32 @@ export default function VideoGallery({ workshops }) {
               <div key={sIdx} className={styles.seriesBlock}>
                 {s.title && <h3 className={styles.seriesTitle}>{s.title}</h3>}
                 {s.by && <p className={styles.seriesByline}>By {s.by}</p>}
-                <div className={styles.grid}>
-                  {s.videos.map((v) => (
-                    <VideoCard
-                      key={v.id}
-                      video={v}
-                      isPlaying={playingId === v.id}
-                      onPlay={() => setPlayingId(v.id)}
-                    />
-                  ))}
+                <div className={styles.wall}>
+                  <div className={styles.grid}>
+                    {s.videos.map((v) => (
+                      <VideoCard
+                        key={v.id}
+                        video={v}
+                        isPlaying={playingId === v.id}
+                        onPlay={() => setPlayingId(v.id)}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
             ))
           ) : (
-            <div className={styles.grid}>
-              {w.videos.map((v) => (
-                <VideoCard
-                  key={v.id}
-                  video={v}
-                  isPlaying={playingId === v.id}
-                  onPlay={() => setPlayingId(v.id)}
-                />
-              ))}
+            <div className={styles.wall}>
+              <div className={styles.grid}>
+                {w.videos.map((v) => (
+                  <VideoCard
+                    key={v.id}
+                    video={v}
+                    isPlaying={playingId === v.id}
+                    onPlay={() => setPlayingId(v.id)}
+                  />
+                ))}
+              </div>
             </div>
           )}
         </div>

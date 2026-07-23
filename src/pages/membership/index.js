@@ -98,6 +98,51 @@ const FEE_TIERS = [
   { tier: 'Micro', revenue: '< €5 million', fee: '€ 2,000' },
 ];
 
+const MEMBERS = [
+  { name: '3Cat - Corporació Catalana de Mitjans Audiovisuals', href: 'https://www.3cat.cat', logo: '3cat.png' },
+  { name: 'AnixeNet', href: 'https://www.anixe.net', logo: 'anixenet.png' },
+  { name: 'Astrum Mobile', href: 'https://www.astrum-mobile.com', logo: 'astrum.png' },
+  { name: 'Ateme', href: 'https://www.ateme.com', logo: 'ateme.png' },
+  { name: 'BBC - British Broadcasting Corporation', href: 'https://www.bbc.co.uk', logo: 'bbc.png' },
+  { name: 'Belgian Tower Company', href: 'https://www.btcy.be', logo: 'belgiantower.png' },
+  { name: 'Big Blue Marble - ORF', href: 'https://www.bigbluemarble.com', logo: 'bigbluemarble.png' },
+  { name: 'BNE - Broadcast Networks Europe', href: 'https://www.broadcast-networks.eu', logo: 'bne.png' },
+  { name: 'Dolby Laboratories', href: 'https://www.dolby.com', logo: 'dolby.png' },
+  { name: 'EBU - European Broadcasting Union', href: 'https://www.ebu.ch', logo: 'ebu.png' },
+  { name: 'EI Towers', href: 'https://www.eitowers.it', logo: 'eitowers.jpg' },
+  { name: 'Ericsson', href: 'https://www.ericsson.com', logo: 'ericsson.png' },
+  { name: 'ESA - European Space Agency', href: 'https://www.esa.int', logo: 'esa.png' },
+  { name: 'Eutelsat Group', href: 'https://www.eutelsat.com', logo: 'eutelsat.png' },
+  { name: 'France Télévisions', href: 'https://www.francetelevisions.fr', logo: 'francetv.png' },
+  { name: 'Fraunhofer FOKUS', href: 'https://www.fokus.fraunhofer.de', logo: 'fraunhofer.png' },
+  { name: 'Haivision', href: 'https://www.haivision.com', logo: 'haivision.png' },
+  { name: 'Huawei', href: 'https://www.huawei.com', logo: 'huawei.jpg' },
+  { name: 'IEEE Broadcast Technology Society', href: 'https://bts.ieee.org', logo: 'ieeebts.png' },
+  { name: 'InterDigital', href: 'https://www.interdigital.com', logo: 'interdigital.png' },
+  { name: 'kronehit', href: 'https://www.kronehit.at', logo: 'kronehit.png' },
+  { name: 'MBI Group', href: 'https://www.mbigroup.it', logo: 'mbigroup.png' },
+  { name: 'MCC - State Key Laboratory of Media Convergence and Communication', href: 'https://en.cuc.edu.cn', logo: 'mcc.png' },
+  { name: 'Media Broadcast', href: 'https://www.media-broadcast.com', logo: 'mediabroadcast.png' },
+  { name: 'Nokia', href: 'https://www.nokia.com', logo: 'nokia.png' },
+  { name: 'ONE Media Technologies', href: 'https://www.onemediallc.com', logo: 'onemedia.png' },
+  { name: 'Philips', href: 'https://www.philips.com', logo: 'philips.png' },
+  { name: 'Phine.Tech', href: 'https://www.phine.tech', logo: 'phinetech.png' },
+  { name: 'Qualcomm', href: 'https://www.qualcomm.com', logo: 'qualcomm.png' },
+  { name: 'Rai - Radiotelevisione Italiana', href: 'https://www.rai.it', logo: 'rai.png' },
+  { name: 'RTI - Reti Televisive Italiane', href: 'https://www.rti.it', logo: 'rti.png' },
+  { name: 'RTVE - Corporación de Radio y Televisión Española', href: 'https://www.rtve.es', logo: 'rtve.png' },
+  { name: 'SES', href: 'https://www.ses.com', logo: 'ses.png' },
+  { name: 'Smart Mobile Labs', href: 'https://www.smartmobilelabs.com', logo: 'smartmobilelabs.png' },
+  { name: 'Swisscom', href: 'https://www.swisscom.ch', logo: 'swisscom.png' },
+  { name: 'Swiss TXT', href: 'https://www.swisstxt.ch', logo: 'swisstxt.png' },
+  { name: 'SWR - Südwestrundfunk', href: 'https://www.swr.de', logo: 'swr.png' },
+  { name: 'Temix Communications', href: 'https://www.temix.it', logo: 'temix.png' },
+  { name: 'TRedess', href: 'https://www.tredess.com', logo: 'tredess.png' },
+  { name: 'UPV - Universitat Politècnica de València', href: 'https://www.upv.es', logo: 'upv.png' },
+  { name: 'XGN - XGen Network', href: 'https://www.xgn.network', logo: 'xgn.png' },
+  { name: 'Yotta Media', href: 'https://www.yotta.work', logo: 'yotta.png' },
+];
+
 const FACTS = [
   { value: '+40', label: 'Members and developers combined' },
   FACT_REPOSITORIES,
@@ -123,6 +168,13 @@ export default function Membership() {
             href="#request-membership"
           >
             Request information
+          </a>,
+          <a
+            key="members"
+            className="button button--outline button--primary button--lg"
+            href="#our-members"
+          >
+            Our Members
           </a>,
         ]}
       />
@@ -232,10 +284,63 @@ export default function Membership() {
                 Or request membership information now
               </h3>
               <ContactForm
-                accessKey="YOUR_WEB3FORMS_ACCESS_KEY"
+                accessKey="ef3b8cf9-bbc3-413a-9983-b269b2495122"
                 subject="Membership Enquiry — 5G-MAG website"
                 submitLabel="Send enquiry"
               />
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="our-members"
+          className={`${styles.section} ${styles.sectionAlt}`}
+          style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}
+        >
+          <div className="container">
+            <h2 className={styles.sectionTitle}>Our Members</h2>
+            <p className={styles.sectionSubtitle}>
+              Broadcasters, technology vendors, network operators and research institutions
+              collaborating within 5G-MAG.
+            </p>
+            <div className={styles.membersGrid}>
+              {MEMBERS.map((m) => (
+                <a
+                  key={m.name}
+                  href={m.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  title={m.name}
+                  style={{
+                    background: '#fff',
+                    borderRadius: '10px',
+                    padding: '1.25rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '0.6rem',
+                  }}
+                >
+                  <img
+                    src={`/assets/images/members/${m.logo}`}
+                    alt={m.name}
+                    loading="lazy"
+                    style={{ width: '100%', maxWidth: '180px', height: '120px', objectFit: 'contain' }}
+                  />
+                  <span
+                    style={{
+                      fontSize: '0.78rem',
+                      fontWeight: 600,
+                      color: '#333',
+                      textAlign: 'center',
+                      lineHeight: 1.25,
+                    }}
+                  >
+                    {m.name.split(' - ')[0]}
+                  </span>
+                </a>
+              ))}
             </div>
           </div>
         </section>

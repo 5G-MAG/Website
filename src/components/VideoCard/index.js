@@ -16,9 +16,15 @@ function slugify(title) {
     .replace(/\s+/g, '-');
 }
 
-export default function VideoCard({ video, isPlaying, onPlay }) {
+export default function VideoCard({ video, isPlaying, onPlay, kicker = 'On Air' }) {
   return (
     <div id={slugify(video.title)} className={clsx(styles.card, styles.anchorTarget)}>
+      <div className={styles.header}>
+        <span className={styles.tally}>
+          <span className={styles.dot} />
+          {kicker}
+        </span>
+      </div>
       <div className={styles.thumbWrap}>
         {isPlaying ? (
           <iframe

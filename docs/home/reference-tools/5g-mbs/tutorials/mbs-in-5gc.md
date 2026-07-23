@@ -23,7 +23,9 @@ description: Builds an MBS Broadcast Session on the 5G Core and traces multicast
 This tutorial showcases the current features present in the 5G-MAG MBS implementation. You can check out the video to
 see more details or follow the write-up tutorial.
 
-## Tutorial video
+<div class="onair-kicker"><span class="onair-kicker__dot"></span>On Air</div>
+
+## Developer Exchange
 
 The recording below demonstrates the initial support of the MBS core network functions.
 

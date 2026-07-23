@@ -7,9 +7,9 @@ hide_table_of_contents: true
 description: 5G-MAG's partnerships and liaisons with other standards bodies and industry associations.
 ---
 
-<header class="topic-hero">
-  <div class="topic-hero__icon">
-    <svg
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="none"
@@ -27,19 +27,126 @@ description: 5G-MAG's partnerships and liaisons with other standards bodies and 
       <path d="M17 18.5a1.5 1.5 0 1 0 3 0a1.5 1.5 0 1 0 -3 0" />
       <path d="M4 15.5a4.5 4.5 0 1 0 9 0a4.5 4.5 0 1 0 -9 0" />
     </svg>
-  </div>
-  <div>
-    <h1 class="topic-hero__title">Partnerships</h1>
-  </div>
-</header>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">About Us</span>
+<h1>Partnerships</h1>
+</div>
+</div>
 
 <div class="topic-lead">
   The standards bodies, industry associations and initiatives 5G-MAG works alongside.
 </div>
 
-This page is being finalised — it will list 5G-MAG's formal liaisons and partnerships, including its
-engagement with **3GPP** as a Market Representation Partner, and relationships with other standards
-development organisations and industry groups.
+We are committed to enhancing industry collaboration. For this purpose, we establish partnerships
+and liaisons with other organizations or simply collaborate on topics without formal agreements.
 
-In the meantime, see [Standards Work](/standards) for how 5G-MAG engages with standards
-bodies in practice.
+export const PartnerLogo = ({ src, alt }) => (
+  <div
+    style={{
+      background: '#fff',
+      borderRadius: '10px',
+      padding: '0.75rem 1.25rem',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexShrink: 0,
+      width: '160px',
+      height: '90px',
+    }}
+  >
+    <img src={src} alt={alt} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
+  </div>
+);
+
+## Third Generation Partnership Project (3GPP)
+
+<div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center', flexWrap: 'wrap', margin: '1rem 0' }}>
+  <div style={{ flex: '1 1 400px' }}>
+
+5G-MAG is a 3GPP Market Representation Partner (MRP). As such, 5G-MAG has the ability to offer
+market advice to 3GPP and to bring a consensus view of market requirements (e.g. services,
+features, functionalities) within the scope of 3GPP.
+
+The 3rd Generation Partnership Project (3GPP) unites seven telecommunications standard development
+organizations (ARIB, ATIS, CCSA, ETSI, TSDSI, TTA, TTC), known as "Organizational Partners" and
+provides their members with a stable environment to produce the Reports and Specifications that
+define 3GPP technologies. The project covers cellular telecommunications technologies, including
+radio access, core network and service capabilities, which provide a complete system description
+for mobile telecommunications. The 3GPP specifications also provide hooks for non-radio access to
+the core network, and for interworking with non-3GPP networks.
+
+  </div>
+  <PartnerLogo src="/assets/images/partnerships/3gpp-logo.png" alt="3GPP logo" />
+</div>
+
+## 6G Smart Networks and Services Industry Association (6G-IA)
+
+<div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center', flexWrap: 'wrap', margin: '1rem 0' }}>
+  <div style={{ flex: '1 1 400px' }}>
+
+The 6G Smart Networks and Services Industry Association (6G-IA), in the framework of its activities
+as coordinator of the SNS ICE project, and 5G-MAG signed a Memorandum of Understanding (MoU) to
+collaborate on topics of mutual interest in the field of next-generation communication networks,
+systems and applications.
+
+This MoU enables exchange of information on joint activities, participation in workshops, meetings
+or webinars, and insight into research projects and trials.
+
+> "With the signature of this MoU, 5G-MAG strengthens collaboration with 6G-IA, the European
+> mobile industry and research community, in jointly developing and applying next-generation
+> technologies to innovative Media services and applications" — **Antonio Arcidiacono**,
+> Chairperson of 5G-MAG.
+
+> "I welcome this MoU to enhance collaboration between the 5G-MAG and 6G-IA and ensure that future
+> mobile communication systems meet the needs of the media sector" — **Colin Willcock**,
+> Chairperson of the 6G-IA Board and Chairperson of the Smart Networks and Services Joint
+> Undertaking Governing Board.
+
+  </div>
+  <PartnerLogo src="/assets/images/partnerships/6g-ia-logo.jpg" alt="6G-IA logo" />
+</div>
+
+## 5G India Forum (5GIF)
+
+<div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center', flexWrap: 'wrap', margin: '1rem 0' }}>
+  <div style={{ flex: '1 1 400px' }}>
+
+5GIF is an industry collaborative forum which was established to enable synergizing the national
+efforts and play a significant role in shaping the strategic, commercial and regulatory
+development of the 5G ecosystem in India. It is aimed at serving a strategic national initiative
+which concerns all stakeholders, private and public, small and large, to meet the challenge of
+making 5G a reality in India, at timelines aligning with the rest of world.
+
+  </div>
+  <PartnerLogo src="/assets/images/partnerships/5gif-logo.png" alt="5G India Forum logo" />
+</div>
+
+## Digital Video Broadcasting Project (DVB) — Work Concluded
+
+<div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center', flexWrap: 'wrap', margin: '1rem 0' }}>
+  <div style={{ flex: '1 1 400px' }}>
+
+A formal liaison agreement between DVB and 5G-MAG was established to create a Joint Task Force
+(JTF) to allow DVB and 5G-MAG members to move forward quickly with activities related to the
+combination of 5G systems with DVB solutions. This Joint Task Force between DVB and 5G-MAG sat
+outside the governance structures and rules of both fora and operated according to the framework
+agreement.
+
+The JTF elected two co-chairs, one from each forum, at its first meeting. The 5G-MAG co-chair for
+the JTF was Thomas Stockhammer (Qualcomm). The DVB co-chair was Frédéric Gabin (Dolby).
+
+Founded in 1993, the DVB Project is an industry-led consortium of the world's leading media and
+technology companies working together to design open technical specifications for digital media
+delivery. DVB Members collaborate through their working groups to develop specifications for
+digital television systems, which are turned into standards by international standards bodies,
+usually ETSI. Once specifications have become standards, they are promoted for international
+adoption and utilization.
+
+  </div>
+  <PartnerLogo src="/assets/images/partnerships/dvb-logo.png" alt="DVB logo" />
+</div>
+
+## Related
+
+See [Standards Work](/standards) for how 5G-MAG engages with standards bodies day to day.

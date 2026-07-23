@@ -75,7 +75,7 @@ const HERO_TILES = [
     rot: 8.1,
     color: TONE_A,
     d: 'M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5',
-  }, // Auxiliary Tools
+  }, // Common Tools
   {
     cx: 754,
     cy: 151,
@@ -218,7 +218,7 @@ const PROJECT_TYPE_MAP = {
   '5G Multicast Broadcast': 'Reference Tools',
   'UE Data Collection': 'Reference Tools',
   'V3C Immersive': 'Reference Tools',
-  'Multimedia Protocols': 'Reference Tools',
+  'Multimedia Delivery Protocols': 'Reference Tools',
   'DVB-I over 5G': 'Reference Tools',
   '5G Broadcast Emergency Alerts': 'Reference Tools',
   '5GC Service Consumers': 'Reference Tools',

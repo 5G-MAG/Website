@@ -5,15 +5,16 @@ sidebar_position: 4
 description: Overview of 5G Multicast and Broadcast Services (MBS), covering the three-layer architecture, key specifications and links to technical pages.
 ---
 
-<header class="topic-hero">
-<div class="topic-hero__icon">
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M12 12l0 .01"/><path d="M14.828 9.172a4 4 0 0 1 0 5.656"/><path d="M17.657 6.343a8 8 0 0 1 0 11.314"/><path d="M9.168 14.828a4 4 0 0 1 0 -5.656"/><path d="M6.337 17.657a8 8 0 0 1 0 -11.314"/></svg>
 </div>
-<div>
-<h1 class="topic-hero__title">5G Multicast Broadcast Services (MBS)</h1>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Tech</span>
+<h1>5G Multicast Broadcast Services (MBS)</h1>
 </div>
-</header>
+</div>
 
 <div class="topic-lead">
 Native point-to-multipoint delivery in 5G NR for live TV, emergency alerts and mass content distribution.

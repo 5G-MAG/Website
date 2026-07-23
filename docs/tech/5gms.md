@@ -5,15 +5,16 @@ sidebar_position: 2
 description: Introduces the 3GPP 5G Media Streaming (5GMS) framework, its architecture, M1-M8 reference points, key specifications, and reference tools.
 ---
 
-<header class="topic-hero">
-<div class="topic-hero__icon">
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M7 4v16l13 -8l-13 -8"/></svg>
 </div>
-<div>
-<h1 class="topic-hero__title">5G Media Streaming (5GMS)</h1>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Tech</span>
+<h1>5G Media Streaming (5GMS)</h1>
 </div>
-</header>
+</div>
 
 <div class="topic-lead">
 The 3GPP framework for downlink and uplink video, audio and metadata delivery over 5G networks.

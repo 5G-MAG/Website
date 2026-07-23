@@ -11,6 +11,7 @@ description: Covers DVB-I service discovery and its deployment over 5G via unica
   <path d="M3 9a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2l0 -9"/><path d="M16 3l-4 4l-4 -4"/></svg>
 </div>
 <div class="topic-banner__text">
+<span class="topic-banner__kicker">Standards</span>
 <h1>DVB-I Services over 5G Systems</h1>
 </div>
 </div>

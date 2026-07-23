@@ -17,12 +17,24 @@ export default function useWeb3FormSubmit(accessKey, subject) {
   const [status, setStatus] = useState('idle'); // idle | submitting | success | error
   const [errorMessage, setErrorMessage] = useState('');
 
-  async function submit(form, extraFields = {}) {
+  // captchaToken comes from the <HCaptcha onVerify> callback in the calling
+  // component — hCaptcha is mandatory on this access key, and Web3Forms'
+  // vanilla widget script only scans the DOM once at load time, before our
+  // React form has mounted, so it never finds the widget slot in time. The
+  // @hcaptcha/react-hcaptcha component sidesteps that by rendering the
+  // widget itself, so the token is always ready by the time of submit.
+  async function submit(form, extraFields = {}, captchaToken = '') {
     if (!accessKey || accessKey === PLACEHOLDER_WEB3FORMS_KEY) {
       setStatus('error');
       setErrorMessage(
         'This form is not fully configured yet — it needs a real Web3Forms access key.'
       );
+      return;
+    }
+
+    if (!captchaToken) {
+      setStatus('error');
+      setErrorMessage('Please complete the captcha before submitting.');
       return;
     }
 
@@ -35,6 +47,7 @@ export default function useWeb3FormSubmit(accessKey, subject) {
       // Honeypot: left unchecked by real visitors, auto-filled by most
       // bots. Web3Forms silently drops submissions where this is truthy.
       botcheck: form.botcheck.checked,
+      'h-captcha-response': captchaToken,
       ...extraFields,
     };
 

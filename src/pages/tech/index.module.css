@@ -39,6 +39,26 @@
   }
 }
 
+/* ── Members Grid ──────────────────────────────────────────────────── */
+
+.membersGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 900px) {
+  .membersGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .membersGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .productCard {
   display: flex;
   flex-direction: column;
@@ -105,6 +125,24 @@
 }
 
 /* ── Activity Cards ─────────────────────────────────────────────────── */
+
+.onAirFeaturedGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.onAirFeaturedMore {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-weight: 600;
+}
+
+@media (max-width: 996px) {
+  .onAirFeaturedGrid {
+    grid-template-columns: 1fr;
+  }
+}
 
 .activityGrid {
   display: grid;
@@ -261,6 +299,46 @@
 }
 
 .pillarBody {
+  font-size: 0.9rem;
+  color: var(--ifm-color-emphasis-700);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ── Link Cards ────────────────────────────────────────────────────── */
+/* A full bordered/hover-lift card for a single clickable destination (no
+   icon band) -- pillarCard's flat left-accent style reads as informational
+   text, not a link, so pages linking out to other pages (Events/Workshops)
+   use this instead. */
+
+.linkCard {
+  display: block;
+  padding: 1.5rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-top: 3px solid var(--ifm-color-primary);
+  border-radius: 10px;
+  background: var(--ifm-background-surface-color);
+  color: inherit !important;
+  text-decoration: none !important;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
+}
+
+.linkCard:hover {
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.12);
+  transform: translateY(-3px);
+  text-decoration: none !important;
+}
+
+.linkCardTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  color: var(--ifm-color-primary);
+}
+
+.linkCardBody {
   font-size: 0.9rem;
   color: var(--ifm-color-emphasis-700);
   margin: 0;

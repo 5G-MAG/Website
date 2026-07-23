@@ -47,7 +47,7 @@ Volumetric video captures a scene in three dimensions so a viewer can change vie
 <div class="godeeper-card__body">
 <p>An end-to-end encode, package, deliver, decode and render path for V3C content.</p>
 <ul class="godeeper-card__links">
-<li><a href="/reference-tools/v3c">V3C Immersive Platform</a></li>
+<li><a href="/reference-tools/v3c">MPEG V3C Immersive Platform</a></li>
 </ul>
 </div>
 </div>
@@ -107,7 +107,7 @@ ISO/IEC 23090-5 has progressed through successive editions (2021, 2023, and 2025
 
 5G-MAG follows this MPEG family so that volumetric and immersive assets can be produced, packaged, and delivered on the same 5G media pipelines as conventional video. The practical work sits in two places:
 
-- the **V3C Immersive Platform** reference tools, which target an end-to-end encode, package, deliver, decode, and render path (including a Unity-based player using a V3C decoder plugin); and
+- the **MPEG V3C Immersive Platform** reference tools, which target an end-to-end encode, package, deliver, decode, and render path (including a Unity-based player using a V3C decoder plugin); and
 - the **Beyond 2D Video** evaluation work, which characterises how these and adjacent formats perform, aligned to the 3GPP study on the [Beyond 2D Video](/tech/standards/beyond-2d) page.
 
 The developer-facing scope, repositories, and getting-started material are on the 5G-MAG Developer Portal; the deeper technical treatment is on the [Volumetric Video](/tech/volumetric) Tech page.

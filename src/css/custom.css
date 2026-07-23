@@ -604,6 +604,46 @@
   font-weight: 600;
 }
 
+/* ── On Air kicker (used above Developer Exchange / Technology Exchange /
+   Public Call headings — plain global classes rather than a component so
+   it works uniformly in both .md and .mdx files) ──────────────────────── */
+.onair-kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #e0272d;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+
+.onair-kicker__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #e0272d;
+  box-shadow: 0 0 6px 1px rgba(224, 39, 45, 0.7);
+  animation: onair-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes onair-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .onair-kicker__dot {
+    animation: none;
+  }
+}
+
 /* ── Topic banner (per-topic eye-catcher header) ──────────────────
    Legacy class, superseded by .topic-hero below (same component,
    restyled) — kept for the many pages not yet migrated to the newer

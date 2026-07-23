@@ -1,6 +1,16 @@
+/* The dark "control-room panel" the tally-light cards sit on -- a real
+   monitor wall isn't lit like the rest of the room. Its own fixed dark
+   background regardless of site theme, since VideoCard's dark card
+   assumes this backdrop. */
+.wall {
+  background: #0b0f14;
+  border-radius: 14px;
+  padding: 1.5rem;
+  margin: 1.25rem 0 1.5rem;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   gap: 1.1rem;
-  margin: 1.25rem 0 1.5rem;
 }

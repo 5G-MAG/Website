@@ -19,15 +19,6 @@ const CALENDAR_ICON_PATH = (
     <path d="M12 15v3" />
   </>
 );
-const DOC_ICON_PATH = (
-  <>
-    <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-    <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />
-    <path d="M9 17l0 -5" />
-    <path d="M12 17l0 -1" />
-    <path d="M15 17l0 -3" />
-  </>
-);
 const DIAGRAM_ICON_PATH = (
   <>
     <path d="M9 3l0 18" />
@@ -192,39 +183,6 @@ const STANDARDS_FACTS = [
   { value: '6', label: 'Presentations at 3GPP requirements workshops' },
 ];
 
-const WORKSHOP_INPUTS = [
-  {
-    title: '6G & Media: General views & priorities',
-    desc: '2025 — 3GPP Workshop on 6G',
-    href: 'https://www.3gpp.org/ftp/workshop/2025-03-10_3GPP_6G_WS/Docs/6GWS-250137.zip',
-  },
-  {
-    title: 'Views from 5G-MAG towards IMT-2030',
-    desc: '2024 — 3GPP SA1 IMT-2030',
-    href: 'https://www.3gpp.org/ftp/workshop/2024-05-08_3GPP_Stage1_IMT2030_UC_WS/Docs/SWS-240007.zip',
-  },
-  {
-    title: '5G-MAG views on Media related topics for Rel-19 (SA)',
-    desc: '2023 — 3GPP SA Release 19',
-    href: 'https://www.3gpp.org/ftp/tsg_sa/TSG_SA/Workshops/2023-06-13_Rel-19_WorkShop/Docs/SWS-230009.zip',
-  },
-  {
-    title: '5G-MAG views on Media related topics for Rel-19 (RAN)',
-    desc: '2023 — 3GPP RAN Release 19',
-    href: 'https://www.3gpp.org/ftp/TSG_RAN/TSG_RAN/TSGR_AHs/2023_06_RAN_Rel19_WS/Docs/RWS-230367.zip',
-  },
-  {
-    title: '5G-MAG Proposals for 3GPP SA and SA4 Rel-18 Workshops',
-    desc: '2021 — 3GPP SA Release 18',
-    href: 'https://www.3gpp.org/ftp/tsg_sa/TSG_SA/Workshops/2021-09-09_Rel-18_Workshop/Docs/SP-210617.zip',
-  },
-  {
-    title: '5G-MAG Proposals for 3GPP RAN Rel-18 Workshop',
-    desc: '2021 — 3GPP RAN Release 18',
-    href: 'https://www.3gpp.org/ftp/TSG_RAN/TSG_RAN/TSGR_AHs/2021_06_RAN_Rel18_WS/Docs/RWS-210205.zip',
-  },
-];
-
 function CategoryCard({ title, desc, topics }) {
   return (
     <div className={styles.categoryCard}>
@@ -250,21 +208,6 @@ function CategoryCard({ title, desc, topics }) {
         ))}
       </div>
     </div>
-  );
-}
-
-function ActivityCard({ title, desc, href, icon: cardIcon }) {
-  return (
-    <a className={styles.activityCard} href={href} target="_blank" rel="noreferrer">
-      <div className={styles.activityIconBand}>
-        {cardIcon}
-        <h3 className={styles.activityIconBandTitle}>{title}</h3>
-      </div>
-      <div className={styles.activityBody}>
-        <p className={styles.activityDesc}>{desc}</p>
-      </div>
-      <div className={styles.activityArrow}>Download &rarr;</div>
-    </a>
   );
 }
 
@@ -357,24 +300,16 @@ export default function Standards() {
               Requirements towards standards bodies — supported by industry inputs, targeted
               workshops or surveys.
             </p>
-            <div className={styles.activityGrid}>
-              {WORKSHOP_INPUTS.map((w) => (
-                <ActivityCard key={w.href} {...w} icon={icon(DOC_ICON_PATH)} />
-              ))}
-            </div>
-            <div className={styles.photoGrid1}>
-              <figure className={styles.photoFigure}>
-                <img
-                  className={styles.photoImg}
-                  src="/assets/images/gallery/3gpp-imt2030-contribution.jpg"
-                  alt="Cover of 5G-MAG's contribution 'Views from 5G-MAG towards IMT-2030' to the 3GPP Stage 1 Workshop"
-                  loading="lazy"
-                />
-                <p className={styles.photoCaption}>
-                  &quot;Views from 5G-MAG towards IMT-2030&quot; — 5G-MAG&apos;s contribution to the
-                  3GPP Stage 1 Workshop on IMT-2030 Use Cases, Rotterdam 2024.
-                </p>
-              </figure>
+            <div style={{ textAlign: 'center', margin: '0 0 1rem', display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <Link className="button button--primary button--lg" to="/standards/requirements">
+                3GPP Requirements & Workshop Inputs
+              </Link>
+              <Link className="button button--outline button--primary button--lg" to="/surveys">
+                Take the Industry Survey
+              </Link>
+              <Link className="button button--outline button--primary button--lg" to="/standards/workshops">
+                Watch Workshop Videos
+              </Link>
             </div>
           </div>
         </section>

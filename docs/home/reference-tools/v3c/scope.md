@@ -17,16 +17,16 @@ description: Describes the ISO/IEC 23090 V3C, V-PCC, and MIV specifications, arc
   <path d="M8 10v4.5l4 2.5" /></svg>
 </div>
 <div class="topic-banner__text">
-<span class="topic-banner__kicker">V3C Immersive Platform</span>
+<span class="topic-banner__kicker">MPEG V3C Immersive Platform</span>
 <h1>Scope</h1>
 </div>
 </div>
 
-<div style="margin: 8px 0"><a class="button button--outline button--primary" href="/reference-tools/v3c/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/v3c/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/reference-tools/v3c/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/v3c/tutorials#video-library" style="margin: 2px 4px 2px 0">Video Library</a></div>
+<div style="margin: 8px 0"><a class="button button--outline button--primary" href="/reference-tools/v3c/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/v3c/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/reference-tools/v3c/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/v3c/tutorials#developer-exchange" style="margin: 2px 4px 2px 0">Developer Exchange</a></div>
 
 This page describes the specifications within the scope of the V3C reference tools, the codec profiles they cover, and the high-level architecture that brings context to their applicability.
 
-The V3C Immersive Platform provides reference tools for volumetric video, content that captures 3D objects and scenes so a viewer can move freely around them rather than watching from a fixed camera. The implementation is built around MPEG Visual Volumetric Video-based Coding (V3C, ISO/IEC 23090-5), which defines a common container and bitstream structure for two related coding approaches: V-PCC (video-based point cloud compression) for volumetric objects, and MIV (MPEG Immersive Video, ISO/IEC 23090-12) for multi-view scenes with depth. The platform aims to cover an end-to-end path: encoding source content into a V3C bitstream, packaging and delivering it, then decoding and rendering it in real time.
+The MPEG V3C Immersive Platform provides reference tools for volumetric video, content that captures 3D objects and scenes so a viewer can move freely around them rather than watching from a fixed camera. The implementation is built around MPEG Visual Volumetric Video-based Coding (V3C, ISO/IEC 23090-5), which defines a common container and bitstream structure for two related coding approaches: V-PCC (video-based point cloud compression) for volumetric objects, and MIV (MPEG Immersive Video, ISO/IEC 23090-12) for multi-view scenes with depth. The platform aims to cover an end-to-end path: encoding source content into a V3C bitstream, packaging and delivering it, then decoding and rendering it in real time.
 
 On the rendering side, the work targets a Unity-based player so volumetric assets can be integrated into interactive applications, using the same separation-of-concerns pattern used across 5G-MAG's immersive media tools (see "What the reference tools implement" below for how the decoder plugin and the engine split the work). According to 5G-MAG, a significant part of the initial contribution came from InterDigital and Philips; treat any specific partner attribution as something to confirm against 5G-MAG's own announcements before relying on it externally.
 
@@ -44,7 +44,7 @@ The V3C reference tools relate to the following specifications. For the full, ma
 
 ## What the reference tools implement
 
-The V3C Immersive Platform aims to cover the full path for volumetric content:
+The MPEG V3C Immersive Platform aims to cover the full path for volumetric content:
 
 - **Encode**: turn source content (a point cloud for V-PCC, or multi-view-plus-depth for MIV) into a V3C bitstream. V3C projects the 3D data onto 2D planes, packs them, and codes the resulting geometry, occupancy, and attribute videos with a conventional 2D video codec, while the 3D structure is carried in a compact atlas metadata stream.
 - **Package and deliver**: store the V3C bitstream in ISOBMFF per ISO/IEC 23090-10 and describe it as a DASH presentation so it can be delivered adaptively over HTTP, on the same 5G Media Streaming path used for other media.
@@ -70,7 +70,7 @@ ISO/IEC 23090-5 has been published in successive editions (2021, 2023, 2025). Be
 
 1. Read the [Volumetric Video](/tech/volumetric) Tech page for how V3C, V-PCC, and MIV work end to end.
 2. Check the [Resources](./resources) page for the current set of repositories and pick the component you need (encoder, decoder plugin, or player).
-3. Follow the build and run instructions in each repository's README; the [Tutorials](./tutorials) page and the [Video Library](./tutorials#video-library) collect walkthroughs and demos.
+3. Follow the build and run instructions in each repository's README; the [Tutorials](./tutorials) page and the [Developer Exchange](./tutorials#developer-exchange) collect walkthroughs and demos.
 4. Track open work and status on the [Resources](./resources) and the linked Kanban board.
 
 ## Go deeper
@@ -85,13 +85,13 @@ A list of relevant specifications can be found in the link below.
 
 ## High-level architecture
 
-### V3C Immersive Platform
+### MPEG V3C Immersive Platform
 
 The diagram below shows the end-to-end V3C pipeline, from encoding source content into a V3C bitstream, through packaging and delivery, to decoding and rendering in the Unity player via the decoder plugin.
 
-<img loading="lazy" src="/assets/images/projects/v3c_diagram.png" style="width: 80%" alt="Block diagram of the V3C Immersive Platform pipeline: encoder producing a V3C bitstream, delivery, and a Unity player using the V3C decoder plugin for real-time rendering." />
+<img loading="lazy" src="/assets/images/projects/v3c_diagram.png" style="width: 80%" alt="Block diagram of the MPEG V3C Immersive Platform pipeline: encoder producing a V3C bitstream, delivery, and a Unity player using the V3C decoder plugin for real-time rendering." />
 
-_Figure: high-level architecture of the V3C Immersive Platform, showing the encode, deliver, decode, and render stages._
+_Figure: high-level architecture of the MPEG V3C Immersive Platform, showing the encode, deliver, decode, and render stages._
 
 The blocks in the diagram map to the repositories listed on the pages below.
 

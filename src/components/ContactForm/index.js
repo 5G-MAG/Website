@@ -1,18 +1,32 @@
+import { useRef, useState } from 'react';
+import HCaptcha from '@hcaptcha/react-hcaptcha';
 import useWeb3FormSubmit from '@site/src/utils/useWeb3FormSubmit';
 import styles from './styles.module.css';
 
+// Shared free-tier sitekey Web3Forms provides for zero-signup hCaptcha use.
+const HCAPTCHA_SITEKEY = '50b2fe65-b00b-4b9e-ad62-3ba471098be2';
+
 export default function ContactForm({ accessKey, subject, submitLabel = 'Send message' }) {
   const { status, errorMessage, submit } = useWeb3FormSubmit(accessKey, subject);
+  const [captchaToken, setCaptchaToken] = useState('');
+  const captchaRef = useRef(null);
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     const form = event.target;
-    submit(form, {
-      name: form.name.value,
-      email: form.email.value,
-      organization: form.organization.value,
-      message: form.message.value,
-    });
+    await submit(
+      form,
+      {
+        name: form.name.value,
+        email: form.email.value,
+        organization: form.organization.value,
+        message: form.message.value,
+      },
+      captchaToken
+    );
+    // Tokens are single-use — always reset so the next attempt gets a fresh one.
+    captchaRef.current?.resetCaptcha();
+    setCaptchaToken('');
   }
 
   if (status === 'success') {
@@ -56,6 +70,8 @@ export default function ContactForm({ accessKey, subject, submitLabel = 'Send me
         <span>Message</span>
         <textarea name="message" rows={5} required />
       </label>
+
+      <HCaptcha sitekey={HCAPTCHA_SITEKEY} reCaptchaCompat={false} onVerify={setCaptchaToken} onExpire={() => setCaptchaToken('')} ref={captchaRef} />
 
       {status === 'error' && <p className={styles.errorText}>{errorMessage}</p>}
 

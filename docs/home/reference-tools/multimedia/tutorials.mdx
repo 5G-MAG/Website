@@ -2,8 +2,14 @@
 title: Tutorials
 hide_title: true
 sidebar_position: 2
-description: Walkthrough for delivering DASH/CMAF content over FLUTE (rt-libflute) and ROUTE (rt-mbms-mw, route-gpac branch), plus the 5G-MAG YouTube video library.
+description: Walkthrough for delivering DASH/CMAF content over FLUTE (rt-libflute) and ROUTE (rt-mbms-mw, route-gpac branch), plus the 5G-MAG Developer Exchange section.
 ---
+
+import VideoGrid from '@site/src/components/VideoGrid';
+
+export const communityVideos = [
+  { id: '9jHwMHVm3PM', title: 'FLUTE support in the GPAC multimedia framework' },
+];
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -18,7 +24,7 @@ description: Walkthrough for delivering DASH/CMAF content over FLUTE (rt-libflut
 </div>
 </div>
 
-<div style="margin: 8px 0"><a class="button button--outline button--primary" href="/reference-tools/multimedia/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/multimedia/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/reference-tools/multimedia/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="#video-library" style="margin: 2px 4px 2px 0">Video Library</a></div>
+<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href="/reference-tools/multimedia/scope" style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href="/reference-tools/multimedia/resources" style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href="/reference-tools/multimedia/tutorials" style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href="#developer-exchange" style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
 This project's own resources are [rt-libflute](https://github.com/5G-MAG/rt-libflute) (the FLUTE Transceiver) and the [`route-gpac` branch of rt-mbms-mw](https://github.com/5G-MAG/rt-mbms-mw/tree/route-gpac) (the MBMS Middleware built with ROUTE support). The walkthrough below builds and runs both, so you can deliver DASH/CMAF content over FLUTE and over ROUTE. See the [Scope](./scope) page for the specifications and architecture, and the [Resources](./resources) page for the full repository table and releases.
 
@@ -96,7 +102,9 @@ The `route-gpac` branch's README covers installation and build only. It does not
 
 Between the two, this project covers both delivery models it implements: FLUTE (rt-libflute) for file-based delivery of your packaged DASH/CMAF assets, and ROUTE (rt-mbms-mw, `route-gpac` branch) for real-time segment delivery with a GPAC-based ROUTE client. See the [Scope](./scope) page for how these fit into the 5G Broadcast and 5G MBS architectures.
 
-## Video Library
+<div class="onair-kicker"><span class="onair-kicker__dot"></span>On Air</div>
+
+## Developer Exchange
 
 Our [YouTube channel](https://www.youtube.com/@5GMAG) hosts some practical videos provided by developers on the use of the Reference Tools.
 
@@ -106,4 +114,4 @@ Some of the videos are also available here.
 
 The recorded talk below demonstrates FLUTE (File Delivery over Unidirectional Transport) support in the GPAC multimedia framework.
 
-<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/9jHwMHVm3PM?si=kGD4pxw7gO3BctyV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<VideoGrid videos={communityVideos} />

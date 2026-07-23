@@ -24,7 +24,7 @@ export const DISCOVER_WORK = [
     icon: <path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" />,
   },
   {
-    title: 'Software Accelerator',
+    title: 'Media Connectivity Software Accelerator',
     body: 'Open-source reference tools turning specs into working code.',
     href: '/developer',
     icon: (

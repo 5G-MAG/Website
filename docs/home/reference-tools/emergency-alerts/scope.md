@@ -18,7 +18,7 @@ description: Describes how Emergency Alerts add Cell Broadcast Service (CBS) pub
 </div>
 </div>
 
-<div style="margin: 8px 0"><a class="button button--outline button--primary" href="/reference-tools/emergency-alerts/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/emergency-alerts/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/reference-tools/emergency-alerts/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/emergency-alerts/tutorials#video-library" style="margin: 2px 4px 2px 0">Video Library</a></div>
+<div style="margin: 8px 0"><a class="button button--outline button--primary" href="/reference-tools/emergency-alerts/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/emergency-alerts/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/reference-tools/emergency-alerts/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/emergency-alerts/tutorials#developer-exchange" style="margin: 2px 4px 2px 0">Developer Exchange</a></div>
 
 This page describes the specifications within the scope of the Emergency Alerts reference tools, what the tools demonstrate, and the high-level architecture that brings context to their applicability.
 
@@ -83,7 +83,7 @@ The end-to-end path is exercised as an extension of the 5G Broadcast transmit/re
 1. Set up the 5G Broadcast transmit environment following the underlying [5G Broadcast - TV and Radio Services](../5g-broadcast) tools and their build instructions; the warning-message support is part of that transmit chain rather than a separate install.
 2. Configure the transmitter to broadcast a warning message. In the current tooling this triggers a default CMAS alert via SIB12; the CBS fields (message identifier, serial number, data coding scheme, warning-message segment) are set in the transmitter configuration or code.
 3. Bring up a 5G Broadcast capable receiver tuned to the same carrier and confirm that the alert is decoded and presented.
-4. For a guided walk-through, follow the "CBS over 5G Broadcast" tutorial and the recorded demonstrations linked from the [Tutorials](./tutorials) page and the Video Library.
+4. For a guided walk-through, follow the "CBS over 5G Broadcast" tutorial and the recorded demonstrations linked from the [Tutorials](./tutorials) page's Developer Exchange section.
 
 For hardware, radio configuration, and exact build steps, follow the [Tutorials](./tutorials) and the per-repository READMEs rather than reproducing them here, because those details change with the tool versions.
 

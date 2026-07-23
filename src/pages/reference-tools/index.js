@@ -160,7 +160,7 @@ const CATEGORIES = [
         ),
       },
       {
-        title: 'V3C Immersive Platform',
+        title: 'MPEG V3C Immersive Platform',
         desc: 'End-to-end pipeline for volumetric 3D content production and delivery.',
         href: '/reference-tools/v3c',
         icon: icon(

@@ -9,9 +9,9 @@ description: Get in touch with the 5G-MAG Project Office.
 
 import ContactForm from '@site/src/components/ContactForm';
 
-<header class="topic-hero">
-  <div class="topic-hero__icon">
-    <svg
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="none"
@@ -25,17 +25,75 @@ import ContactForm from '@site/src/components/ContactForm';
       <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
       <path d="M3 7l9 6l9 -6" />
     </svg>
-  </div>
-  <div>
-    <h1 class="topic-hero__title">Contact</h1>
-  </div>
-</header>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">About Us</span>
+<h1>Contact</h1>
+</div>
+</div>
 
 <div class="topic-lead">Get in touch with the 5G-MAG Project Office.</div>
 
-<div class="community-tiles community-tiles--even">
+The Project Office runs 5G-MAG's day-to-day work supporting the members and activities across the association — and is based in Geneva, Switzerland.
 
-<a href="mailto:info@5g-mag.com" class="community-tile">
+## Who to contact
+
+<div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', margin: '1.5rem 0 2rem' }}>
+
+<div style={{ flex: '1 1 320px', minWidth: '260px' }}>
+<div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', marginBottom: '0.5rem' }}>
+<img
+  src="/assets/images/contact/gimenez-5gmag.jpg"
+  alt="Jordi J. Giménez"
+  loading="lazy"
+  style={{ width: '56px', height: '56px', borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }}
+/>
+<div>
+<div style={{ fontWeight: 700 }}>Jordi J. Giménez</div>
+<div style={{ fontSize: '0.8rem', color: 'var(--ifm-color-emphasis-600)' }}>Head of Technology</div>
+</div>
+</div>
+<p style={{ margin: 0 }}>
+Technology, workgroups, logistics — <a href="mailto:gimenez@5g-mag.com">gimenez@5g-mag.com</a>
+</p>
+</div>
+
+<div style={{ flex: '1 1 320px', minWidth: '260px' }}>
+<div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', marginBottom: '0.5rem' }}>
+<img
+  src="/assets/images/contact/markvoort-5gmag.jpg"
+  alt="Eva Markvoort"
+  loading="lazy"
+  style={{ width: '56px', height: '56px', borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }}
+/>
+<div>
+<div style={{ fontWeight: 700 }}>Eva Markvoort</div>
+<div style={{ fontSize: '0.8rem', color: 'var(--ifm-color-emphasis-600)' }}>Head of Finance and Administration</div>
+</div>
+</div>
+<p style={{ margin: 0 }}>
+Membership, finances, legal — <a href="mailto:markvoort@5g-mag.com">markvoort@5g-mag.com</a>
+</p>
+</div>
+
+</div>
+
+## Send us a message
+
+<div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', alignItems: 'flex-start', margin: '1.5rem 0' }}>
+
+<div style={{ flex: '2 1 360px', minWidth: '280px' }}>
+
+<ContactForm
+  accessKey="ef3b8cf9-bbc3-413a-9983-b269b2495122"
+  subject="New Contact Form Submission — 5G-MAG website"
+/>
+
+</div>
+
+<div style={{ flex: '1 1 200px', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+
+<a href="mailto:info@5g-mag.com" class="community-tile" style={{ maxWidth: 'none', width: '100%' }}>
   <svg
     viewBox="0 0 24 24"
     fill="none"
@@ -57,6 +115,7 @@ import ContactForm from '@site/src/components/ContactForm';
   target="_blank"
   rel="noreferrer"
   class="community-tile"
+  style={{ maxWidth: 'none', width: '100%' }}
 >
   <svg
     viewBox="0 0 24 24"
@@ -76,59 +135,33 @@ import ContactForm from '@site/src/components/ContactForm';
   <span class="tile-cta">Join →</span>
 </a>
 
-<a
-  href="https://github.com/orgs/5G-MAG/discussions"
-  target="_blank"
-  rel="noreferrer"
-  class="community-tile"
->
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  >
-    <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
-  </svg>
-  <strong>GitHub Discussions</strong>
-  <span class="tile-desc">Ask questions, share ideas</span>
-  <span class="tile-cta">Discuss →</span>
-</a>
-
-<a
-  href="https://www.linkedin.com/company/5g-mag/"
-  target="_blank"
-  rel="noreferrer"
-  class="community-tile"
->
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  >
-    <path d="M8 11v5" />
-    <path d="M8 8v.01" />
-    <path d="M12 16v-5" />
-    <path d="M16 16v-3a2 2 0 1 0 -4 0" />
-    <path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4l0 -10" />
-  </svg>
-  <strong>LinkedIn</strong>
-  <span class="tile-desc">Follow 5G-MAG updates</span>
-  <span class="tile-cta">Follow →</span>
-</a>
+</div>
 
 </div>
 
-## Send us a message
+## Our office
 
-<ContactForm
-  accessKey="YOUR_WEB3FORMS_ACCESS_KEY"
-  subject="New Contact Form Submission — 5G-MAG website"
-/>
+<address style={{ fontStyle: 'normal' }}>
+  5G-MAG Association<br />
+  c/o EBU-UER<br />
+  17A, L'Ancienne-Route<br />
+  CH-1218 Grand-Saconnex (GE)<br />
+  Switzerland
+</address>
 
-A postal address and formal registration details will be added here once finalised.
+<iframe
+  loading="lazy"
+  src="https://www.google.com/maps?q=17A+L%27Ancienne-Route%2C+1218+Grand-Saconnex%2C+Switzerland&output=embed"
+  title="Map to the 5G-MAG office"
+  style={{ border: 'solid 1px #777', margin: '1rem 0' }}
+  width="100%"
+  height="400"
+  frameBorder="0"
+  scrolling="no"
+></iframe>
+
+### Getting there
+
+- **By bus** — TPG lines 5, 8, 22 and 60 stop at "Grand-Saconnex, Le Pommier," a short walk from the office. A "Tout Genève" Zone 10 ticket (CHF 3) is valid for 60 minutes; the tpg+ app sells tickets online. The stop has previously been shifted for roadworks, so it's worth checking [tpg.ch](https://www.tpg.ch) for any current service alerts before you travel.
+- **By taxi/Uber** — Around CHF 30 from the airport or train station. Taxi phone: <a href="tel:+41223202233">+41 22 320 2233</a>
+- **Nearby hotels** — Hilton Geneva, ibis Styles/ibis budget Genève Palexpo Aéroport, InterContinental

@@ -1,0 +1,77 @@
+.banner {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  padding: 1rem 1.5rem;
+  background: var(--ifm-background-surface-color);
+  border-top: 1px solid var(--ifm-color-emphasis-300);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.text {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--ifm-font-color-base);
+  max-width: 640px;
+}
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.decline,
+.accept {
+  border-radius: 6px;
+  padding: 0.5rem 1.1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.decline {
+  background: transparent;
+  border: 1px solid var(--ifm-color-emphasis-400);
+  color: var(--ifm-font-color-base);
+}
+
+.decline:hover {
+  background: var(--ifm-color-emphasis-100);
+}
+
+.accept {
+  background: var(--ifm-color-primary);
+  border: 1px solid var(--ifm-color-primary);
+  color: #fff;
+}
+
+.accept:hover {
+  background: var(--ifm-color-primary-dark);
+}
+
+@media (max-width: 560px) {
+  .banner {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .actions {
+    width: 100%;
+  }
+
+  .decline,
+  .accept {
+    flex: 1;
+  }
+}

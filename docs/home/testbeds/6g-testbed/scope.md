@@ -23,7 +23,7 @@ description: Describes the 6G Testbed's network emulator and AI traffic characte
 </div>
 </div>
 
-<div style="margin: 8px 0"><a class="button button--outline button--primary" href="/testbeds/6g-testbed/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/testbeds/6g-testbed/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/testbeds/6g-testbed/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="/testbeds/6g-testbed/tutorials#video-library" style="margin: 2px 4px 2px 0">Video Library</a></div>
+<div style="margin: 8px 0"><a class="button button--outline button--primary" href="/testbeds/6g-testbed/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/testbeds/6g-testbed/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/testbeds/6g-testbed/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="/testbeds/6g-testbed/tutorials#developer-exchange" style="margin: 2px 4px 2px 0">Developer Exchange</a></div>
 
 This project hosts an open-source testbed for AI/media traffic evaluation targeting 5G, 6G, and realistic UE-observed network conditions. It supports 3GPP SA4 studies and broader media delivery evaluations and may be extended and used for other purposes.
 

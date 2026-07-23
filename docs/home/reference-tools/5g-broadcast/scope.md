@@ -20,7 +20,7 @@ description: Feature support matrix for rt-mbms-tx and rt-mbms-modem across 3GPP
 </div>
 </div>
 
-<div style="margin: 8px 0"><a class="button button--outline button--primary" href="/reference-tools/5g-broadcast/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/5g-broadcast/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/reference-tools/5g-broadcast/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/5g-broadcast/tutorials#video-library" style="margin: 2px 4px 2px 0">Video Library</a></div>
+<div style="margin: 8px 0"><a class="button button--outline button--primary" href="/reference-tools/5g-broadcast/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/5g-broadcast/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/reference-tools/5g-broadcast/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/5g-broadcast/tutorials#developer-exchange" style="margin: 2px 4px 2px 0">Developer Exchange</a></div>
 
 This page sets out what is in scope for the 5G Broadcast Reference Tools: the transmitter (rt-mbms-tx) and receiver (rt-mbms-modem), the LTE-based 5G Broadcast radio mode (FeMBMS), and the per-release features they support. It also shows the high-level architectures in which they are used. Use it to check which capabilities are implemented before planning a test. For step-by-step setups, see [Tutorials](./tutorials).
 

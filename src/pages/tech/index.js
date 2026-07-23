@@ -3,7 +3,17 @@ import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
+import OnAirTeaser from '@site/src/components/OnAirTeaser';
 import styles from './index.module.css';
+
+// A cross-section sample, not the full library — one per pillar area so the
+// featured row shows breadth rather than three videos from the same project.
+// The full set lives at /tech/videos.
+const ON_AIR_FEATURED = [
+  { videoId: 'AvjtVrTrWsA', title: '5G Media Streaming at IBC 2025', href: '/reference-tools/5gms/tutorials#on-air' },
+  { videoId: 'dZaUAhYZTUU', title: '5G Broadcast at FOKUS Media Web Symposium 2024', href: '/reference-tools/5g-broadcast/tutorials#on-air' },
+  { videoId: 'RvHWQht-7Q4', title: 'XR Media with MPEG-I Scene Description at IBC 2025', href: '/reference-tools/xr/tutorials#on-air' },
+];
 
 const icon = (paths) => (
   <svg
@@ -283,18 +293,10 @@ const CATEGORIES = [
   },
 ];
 
+// On Air (/tech/videos) is featured separately, above this grid, rather than
+// as an equal-weight card here — it's recorded talks and demos from 5G-MAG
+// members and contributors, not reference material like the other three.
 const RESOURCES = [
-  {
-    title: 'Video Library',
-    desc: 'Recorded workshop talks on 3GPP media streaming, XR, split rendering and avatars.',
-    href: '/tech/videos',
-    icon: icon(
-      <>
-        <path d="M15 10l4.553 -2.069a1 1 0 0 1 1.447 .894v6.35a1 1 0 0 1 -1.447 .894l-4.553 -2.069v-4" />
-        <path d="M3 8a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-8z" />
-      </>
-    ),
-  },
   {
     title: 'External Videos',
     desc: 'Third-party talks on 5G media and broadcast topics.',
@@ -496,6 +498,25 @@ export default function Home() {
               {CATEGORIES.map((c) => (
                 <CategoryCard key={c.title} {...c} />
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* On Air, featured */}
+        <section className={styles.section}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>On Air</h2>
+            <p className={styles.sectionSubtitle}>
+              Recorded demos, talks and workshop sessions — from 5G-MAG members and contributors,
+              showing their own work in their own words.
+            </p>
+            <div className={styles.onAirFeaturedGrid}>
+              {ON_AIR_FEATURED.map((v) => (
+                <OnAirTeaser key={v.videoId} {...v} />
+              ))}
+            </div>
+            <div className={styles.onAirFeaturedMore}>
+              <Link to="/tech/videos">Browse the full library &rarr;</Link>
             </div>
           </div>
         </section>

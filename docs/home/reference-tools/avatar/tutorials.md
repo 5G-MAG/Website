@@ -24,7 +24,7 @@ description: Getting-started walkthrough for bringing up the avatar call demo en
 </div>
 </div>
 
-<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href="/reference-tools/avatar/scope" style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href="/reference-tools/avatar/resources" style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href="/reference-tools/avatar/tutorials" style={{margin: '2px 4px 2px 0'}}>Tutorials</a></div>
+<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href="/reference-tools/avatar/scope" style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href="/reference-tools/avatar/resources" style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href="/reference-tools/avatar/tutorials" style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/avatar/tutorials#developer-exchange" style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
 This page sequences a first, end-to-end run of the avatar call demo: two participants exchanging an MPEG ARF avatar over a call, built from the components and repositories described on the [Scope](./scope) and [Resources](./resources) pages.
 
@@ -72,6 +72,12 @@ In order: get the sample content running through the Unity presentation and the 
 ## What isn't documented here yet
 
 This project's Scope and Resources pages do not currently give exact CLI commands, Docker or build instructions, network ports, or configuration files for any of the repositories above. For those, use the README in each repository linked above, or the [YouTube channel](https://www.youtube.com/@5GMAG), which hosts practical videos from developers on the use of the Reference Tools generally.
+
+<div class="onair-kicker"><span class="onair-kicker__dot"></span>On Air</div>
+
+## Developer Exchange
+
+No Conversational Avatar-specific videos are curated here yet. Browse the full [5G-MAG YouTube channel](https://www.youtube.com/@5GMAG) in the meantime.
 
 ## Related
 

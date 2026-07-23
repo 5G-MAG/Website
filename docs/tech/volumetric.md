@@ -5,15 +5,16 @@ sidebar_position: 6
 description: "Overview of 5G-MAG's MPEG V3C volumetric video work: V-PCC and MIV coding, bitstream structure, delivery over 5G, and reference tools."
 ---
 
-<header class="topic-hero">
-<div class="topic-hero__icon">
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M4 8v-2a2 2 0 0 1 2 -2h2"/><path d="M4 16v2a2 2 0 0 0 2 2h2"/><path d="M16 4h2a2 2 0 0 1 2 2v2"/><path d="M16 20h2a2 2 0 0 0 2 -2v-2"/><path d="M12 12.5l4 -2.5"/><path d="M8 10l4 2.5v4.5l4 -2.5v-4.5l-4 -2.5l-4 2.5"/><path d="M8 10v4.5l4 2.5"/></svg>
 </div>
-<div>
-<h1 class="topic-hero__title">Volumetric Video with MPEG V3C</h1>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Tech</span>
+<h1>Volumetric Video with MPEG V3C</h1>
 </div>
-</header>
+</div>
 
 <div class="topic-lead">
 3D point-cloud and mesh video that lets viewers move freely around a scene, built on MPEG V3C.
@@ -23,7 +24,7 @@ Volumetric video represents 3D objects and scenes as point clouds or mesh-based 
 
 5G-MAG's work is built on MPEG V3C (Visual Volumetric Video-based Coding, ISO/IEC 23090-5), the framework that defines the container and compression for volumetric content. Two profiles build on it: V-PCC (Video-based Point Cloud Compression) and MIV (MPEG Immersive Video).
 
-The V3C Immersive Platform reference tools provide an end-to-end pipeline for encoding, streaming, and rendering V3C content over 5G networks. The [Beyond-2D initiative](./volumetric/beyond-2d) extends this to evaluation frameworks for next-generation visual experiences.
+The MPEG V3C Immersive Platform reference tools provide an end-to-end pipeline for encoding, streaming, and rendering V3C content over 5G networks. The [Beyond-2D initiative](./volumetric/beyond-2d) extends this to evaluation frameworks for next-generation visual experiences.
 
 :::tip[Start here]
 New to volumetric video? Start with the [V3C standards tracking page](/tech/standards/v3c) for the specifications in scope, or the [Beyond 2D Video](./volumetric/beyond-2d) tech page for the evaluation work. Implementers can find the reference software on the Developer Portal (linked under Reference tools below).
@@ -31,7 +32,7 @@ New to volumetric video? Start with the [V3C standards tracking page](/tech/stan
 
 **Key specifications:** ISO/IEC 23090-5 (V3C and V-PCC, Video-based Point Cloud Compression), ISO/IEC 23090-12 (MIV, MPEG Immersive Video), ISO/IEC 23090-10 (carriage of V3C data, that is how the coded data is stored in and transported by file and streaming formats), [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) (5G Media Streaming (5GMS) transport for volumetric content delivery).
 
-**Reference tools:** The 5G-MAG software implementation is on the Developer Portal under [V3C Immersive Platform](/reference-tools/v3c) and [Beyond-2D Evaluation Framework](/testbeds/beyond-2d).
+**Reference tools:** The 5G-MAG software implementation is on the Developer Portal under [MPEG V3C Immersive Platform](/reference-tools/v3c) and [Beyond-2D Evaluation Framework](/testbeds/beyond-2d).
 
 ## Go deeper
 
@@ -72,7 +73,7 @@ New to volumetric video? Start with the [V3C standards tracking page](/tech/stan
 <div class="godeeper-card__body">
 <p>End-to-end encoding, streaming and rendering pipelines for volumetric content.</p>
 <ul class="godeeper-card__links">
-<li><a href="/reference-tools/v3c">V3C Immersive Platform</a></li>
+<li><a href="/reference-tools/v3c">MPEG V3C Immersive Platform</a></li>
 <li><a href="/testbeds/beyond-2d">Beyond-2D Evaluation Framework</a></li>
 </ul>
 </div>
@@ -82,13 +83,13 @@ New to volumetric video? Start with the [V3C standards tracking page](/tech/stan
 
 [Execution Plan](https://github.com/orgs/5G-MAG/projects/44/views/10)
 
-The slide deck below introduces the V3C Immersive Platform reference tools and the volumetric delivery pipeline.
+The slide deck below introduces the MPEG V3C Immersive Platform reference tools and the volumetric delivery pipeline.
 
 <div class="pdf-embed-wrapper">
-  <iframe loading="lazy" class="pdf-embed" src="pathname:///docs/Reference_Tools_V3C_Immersive_Platform.pdf" title="Slide deck: V3C Immersive Platform reference tools"></iframe>
+  <iframe loading="lazy" class="pdf-embed" src="pathname:///docs/Reference_Tools_V3C_Immersive_Platform.pdf" title="Slide deck: MPEG V3C Immersive Platform reference tools"></iframe>
 </div>
 
-_Slide deck: V3C Immersive Platform reference tools._
+_Slide deck: MPEG V3C Immersive Platform reference tools._
 
 [Download the Slidedeck](/docs/Reference_Tools_V3C_Immersive_Platform.pdf)
 
@@ -161,7 +162,7 @@ For delivery over mobile networks, the V3C DASH presentation is treated as ordin
 
 ## Reference-tools architecture
 
-The 5G-MAG V3C Immersive Platform reference tools implement the end-to-end path described above: encode source content into a V3C bitstream, package and deliver it, then decode and render it in real time. On the client side the work targets a Unity-based player: a V3C decoder is exposed to the engine as a plugin that decodes the atlas and the associated video sub-bitstreams (geometry, occupancy, attributes) and reconstructs the 3D representation for display. Decoupling the volumetric decoder from the presentation engine is the same separation-of-concerns pattern 5G-MAG uses across its immersive-media tools, and it mirrors the bitstream structure: the plugin owns the V3C-specific work, the engine owns presentation. For the current, authoritative repository list and status, see the Developer Portal scope and repositories pages linked below rather than any hard-coded list here.
+The 5G-MAG MPEG V3C Immersive Platform reference tools implement the end-to-end path described above: encode source content into a V3C bitstream, package and deliver it, then decode and render it in real time. On the client side the work targets a Unity-based player: a V3C decoder is exposed to the engine as a plugin that decodes the atlas and the associated video sub-bitstreams (geometry, occupancy, attributes) and reconstructs the 3D representation for display. Decoupling the volumetric decoder from the presentation engine is the same separation-of-concerns pattern 5G-MAG uses across its immersive-media tools, and it mirrors the bitstream structure: the plugin owns the V3C-specific work, the engine owns presentation. For the current, authoritative repository list and status, see the Developer Portal scope and repositories pages linked below rather than any hard-coded list here.
 
 :::warning[References to verify]
 These specifics on this page were not confirmed against the primary source (the ISO catalogue entries were checked, but detailed clauses and amendment scope were not): the exact MIV profile names and their defining constraints (Main, Extended, Restricted Geometry, Geometry Absent), and the ISO/IEC 23090-10 amendment (support of packed video data) and its carriage conformance/reference-software parts. Verify against ISO/IEC 23090-5, 23090-10, and 23090-12 before publication.

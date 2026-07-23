@@ -5,15 +5,16 @@ hide_title: true
 description: Compares the FLUTE and ROUTE transport protocols used to deliver DASH, HLS, and CMAF media over broadcast and multicast networks.
 ---
 
-<header class="topic-hero">
-<div class="topic-hero__icon">
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
   <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1"/><path d="M9 15l3 -3l3 3"/><path d="M12 12l0 9"/></svg>
 </div>
-<div>
-<h1 class="topic-hero__title">Multimedia Delivery Protocols</h1>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Tech</span>
+<h1>Multimedia Delivery Protocols</h1>
 </div>
-</header>
+</div>
 
 ## Overview
 

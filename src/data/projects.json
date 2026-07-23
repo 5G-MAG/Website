@@ -171,7 +171,7 @@
     "releases_slug": "resources"
   },
   {
-    "name": "Auxiliary Tools",
+    "name": "Common Tools",
     "doc_url": "/reference-tools/common-tools/",
     "tagline": "Shared helper repositories supporting 5G-MAG Reference Tools",
     "repos": [
@@ -189,7 +189,7 @@
     "releases_slug": "resources"
   },
   {
-    "name": "Multimedia Delivery",
+    "name": "Multimedia Delivery Protocols",
     "doc_url": "/reference-tools/multimedia/",
     "tagline": "DASH, HLS and CMAF multimedia delivery reference tools",
     "repos": [
