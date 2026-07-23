@@ -8,95 +8,12 @@ import releasesData from '@site/static/data/releases.json';
 import { isRC, daysSince, formatAge } from '@site/src/utils/releases';
 import styles from './styles.module.css';
 
-// Auto-advancing hero: a brand/overview slide plus one slide per each of
-// the 3 most recent projects with a release, showing that project's
-// latest releases and contributors. Originally /developer's hero; moved
-// to the homepage (2026-07-18) as the site's single front door, while
-// /developer itself now uses the same compact HubHero as every other hub.
+// Auto-advancing hero: the homepage slide plus one slide per each of the
+// 3 most recent projects with a release, showing that project's latest
+// releases and contributors.
 const TONE_A = '#00A0D2';
-const ANCHOR_REFTOOLS = '#f38d3c';
-const ANCHOR_TESTBEDS = '#74b85c';
-const ANCHOR_APPS = '#7c52e4';
 
-const HERO_TILES = [
-  {
-    cx: 286,
-    cy: 158,
-    size: 130,
-    rot: -0.4,
-    color: ANCHOR_REFTOOLS,
-    d: 'M7 8l-4 4l4 4 M17 8l4 4l-4 4 M14 4l-4 16',
-  }, // Reference Tools
-  {
-    cx: 740,
-    cy: 394,
-    size: 128,
-    rot: 6.6,
-    color: ANCHOR_TESTBEDS,
-    d: 'M9 3l6 0 M10 9l4 0 M10 3v6l-4 11a.7 .7 0 0 0 .5 1h11a.7 .7 0 0 0 .5 -1l-4 -11v-6',
-  }, // Testbeds
-  {
-    cx: 614,
-    cy: 205,
-    size: 130,
-    rot: -6.5,
-    color: ANCHOR_APPS,
-    d: 'M4.5 16.5c-1.5 1.26 -2 5 -2 5s3.74 -.5 5 -2c.71 -.84 .7 -2.13 -.09 -2.91a2.18 2.18 0 0 0 -2.91 -.09z M12 15l-3 -3a22 22 0 0 1 2 -3.95a12.88 12.88 0 0 1 10 -5.93c0 2.72 -.78 7.5 -6 11a22.35 22.35 0 0 1 -4 2z M9 12h-4s.55 -3.03 2 -4c1.62 -1.08 5 0 5 0 M12 15v5s3.03 -.55 4 -2c1.08 -1.62 0 -5 0 -5',
-  }, // Applications
-  // Randomly added (no repeats)
-  {
-    cx: 812,
-    cy: 260,
-    size: 111,
-    rot: 8.2,
-    color: TONE_A,
-    d: 'M14 3v4a1 1 0 0 0 1 1h4 M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2 M9 17l0 -5 M12 17l0 -1 M15 17l0 -3',
-  }, // UE Data Collection
-  { cx: 304, cy: 321, size: 112, rot: -0.3, color: TONE_A, d: 'M7 4v16l13 -8l-13 -8' }, // 5G Media Streaming
-  {
-    cx: 164,
-    cy: 382,
-    size: 98,
-    rot: 8.5,
-    color: TONE_A,
-    d: 'M18 8h-2a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h2v-4h-1 M6 15a1 1 0 0 0 1 1h2a1 1 0 0 0 1 -1v-2a1 1 0 0 0 -1 -1h-3v-4h4',
-  }, // 5GC Service Consumers
-  {
-    cx: 437,
-    cy: 244,
-    size: 94,
-    rot: 4.1,
-    color: TONE_A,
-    d: 'M4 8v-2a2 2 0 0 1 2 -2h2 M4 16v2a2 2 0 0 0 2 2h2 M16 4h2a2 2 0 0 1 2 2v2 M16 20h2a2 2 0 0 0 2 -2v-2 M12 12.5l4 -2.5 M8 10l4 2.5v4.5l4 -2.5v-4.5l-4 -2.5l-4 2.5 M8 10v4.5l4 2.5',
-  }, // V3C Immersive
-  {
-    cx: 565,
-    cy: 364,
-    size: 100,
-    rot: 8.1,
-    color: TONE_A,
-    d: 'M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5',
-  }, // Common Tools
-  {
-    cx: 754,
-    cy: 151,
-    size: 81,
-    rot: -3.7,
-    color: TONE_A,
-    d: 'M3 9a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2l0 -9 M16 3l-4 4l-4 -4',
-  }, // DVB-I over 5G
-  {
-    cx: 157,
-    cy: 203,
-    size: 80,
-    rot: 5.9,
-    color: TONE_A,
-    d: 'M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1 M9 15l3 -3l3 3 M12 12l0 9',
-  }, // Multimedia Protocols
-];
-
-// Homepage's own icon cloud (distinct from HERO_TILES above, which is the
-// brand slide's tighter 3-anchor cluster) — a curated 14-icon selection,
+// Homepage's own icon cloud — a curated 14-icon selection,
 // all in the site's real topic-banner blue, four size tiers for a real
 // size gradient. Positions are rejection-sampled against the canvas edges
 // and every other tile, then scored for left/right balance.
@@ -231,12 +148,11 @@ const PROJECT_TYPE_MAP = {
 };
 
 const HOME_SLIDE = { type: 'home' };
-const BRAND_SLIDE = { type: 'brand' };
 
 export default function HeroSlideshow() {
   const logoUrl = useBaseUrl('/img/5g-mag-logo-white.png');
   const releaseSlides = releasesData.projects.slice(0, 3).map((p) => ({ type: 'release', ...p }));
-  const slides = [HOME_SLIDE, BRAND_SLIDE, ...releaseSlides];
+  const slides = [HOME_SLIDE, ...releaseSlides];
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
 
@@ -317,62 +233,6 @@ export default function HeroSlideshow() {
                 </div>
               </div>
               <HeroFigure tiles={HOME_TILES} />
-            </div>
-          </div>
-        ) : slide.type === 'brand' ? (
-          <div className={styles.slideOverlay}>
-            <div
-              className="container"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                gap: '2rem',
-              }}
-            >
-              <div>
-                <img
-                  src={logoUrl}
-                  alt="5G-MAG — The Media Connectivity Association"
-                  style={{
-                    height: '68px',
-                    width: 'auto',
-                    marginBottom: '1.25rem',
-                    display: 'block',
-                  }}
-                />
-                <p className={styles.slideTitle}>Media Connectivity Software Accelerator</p>
-                <p className={styles.slideSubtitle}>
-                  Open-source developer community. Reference tools, testbeds and applications for
-                  connected media experiences.
-                </p>
-                <div className={styles.slideButtons}>
-                  <Link className="button button--primary" to="/developer#community">
-                    Join the Effort
-                  </Link>
-                  <Link
-                    className={clsx(
-                      'button button--outline button--primary',
-                      styles.slideBtnOutline
-                    )}
-                    to="/reference-tools"
-                  >
-                    Explore All Projects
-                  </Link>
-                  <a
-                    className={clsx(
-                      'button button--outline button--primary',
-                      styles.slideBtnOutline
-                    )}
-                    href="pathname:///docs/Reference_Tools_Overview.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Download Overview ↓
-                  </a>
-                </div>
-              </div>
-              <HeroFigure tiles={HERO_TILES} />
             </div>
           </div>
         ) : (
@@ -484,11 +344,11 @@ export default function HeroSlideshow() {
             key={i}
             className={clsx(styles.slideDot, i === active && styles.slideDotActive)}
             onClick={() => setActive(i)}
-            aria-label={s.type === 'home' ? 'Home' : s.type === 'brand' ? 'Overview' : s.name}
+            aria-label={s.type === 'home' ? 'Home' : s.name}
           >
             {i === active && (
               <span className={styles.slideDotLabel}>
-                {s.type === 'home' ? 'Home' : s.type === 'brand' ? 'Overview' : s.name}
+                {s.type === 'home' ? 'Home' : s.name}
               </span>
             )}
           </button>
