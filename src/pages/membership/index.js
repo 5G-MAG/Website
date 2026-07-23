@@ -166,14 +166,14 @@ export default function Membership() {
         actions={[
           <a
             key="join"
-            className="button button--primary button--lg"
+            className="button button--primary"
             href="#request-membership"
           >
             Request information
           </a>,
           <a
             key="members"
-            className="button button--outline button--primary button--lg"
+            className="button button--outline button--primary"
             href="#our-members"
           >
             Our Members

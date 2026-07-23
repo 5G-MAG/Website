@@ -300,14 +300,14 @@ export default function HeroSlideshow() {
                 </p>
                 <div className={styles.slideButtons}>
                   <Link
-                    className="button button--primary button--lg"
+                    className="button button--primary"
                     to="/membership#request-membership"
                   >
                     Become a member
                   </Link>
                   <Link
                     className={clsx(
-                      'button button--outline button--primary button--lg',
+                      'button button--outline button--primary',
                       styles.slideBtnOutline
                     )}
                     to="/about"
@@ -347,12 +347,12 @@ export default function HeroSlideshow() {
                   connected media experiences.
                 </p>
                 <div className={styles.slideButtons}>
-                  <Link className="button button--primary button--lg" to="/developer#community">
+                  <Link className="button button--primary" to="/developer#community">
                     Join the Effort
                   </Link>
                   <Link
                     className={clsx(
-                      'button button--outline button--primary button--lg',
+                      'button button--outline button--primary',
                       styles.slideBtnOutline
                     )}
                     to="/reference-tools"
@@ -361,7 +361,7 @@ export default function HeroSlideshow() {
                   </Link>
                   <a
                     className={clsx(
-                      'button button--outline button--primary button--lg',
+                      'button button--outline button--primary',
                       styles.slideBtnOutline
                     )}
                     href="pathname:///docs/Reference_Tools_Overview.pdf"
@@ -458,12 +458,12 @@ export default function HeroSlideshow() {
                 </div>
                 {slide.doc_url && (
                   <div className={styles.slideCardFooter}>
-                    <Link className="button button--primary button--lg" to={slide.doc_url}>
+                    <Link className="button button--primary" to={slide.doc_url}>
                       Documentation
                     </Link>
                     <Link
                       className={clsx(
-                        'button button--outline button--primary button--lg',
+                        'button button--outline button--primary',
                         styles.slideBtnOutline
                       )}
                       to={`${slide.doc_url}${slide.releases_slug || 'resources'}`}

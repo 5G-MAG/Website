@@ -42,7 +42,7 @@ export default function Events() {
         actions={[
           <a
             key="linkedin"
-            className="button button--primary button--lg"
+            className="button button--primary"
             href={linkedin}
             target="_blank"
             rel="noreferrer"
@@ -51,7 +51,7 @@ export default function Events() {
           </a>,
           <Link
             key="subscribe"
-            className="button button--outline button--primary button--lg"
+            className="button button--outline button--primary"
             to="/subscribe"
           >
             Subscribe to Updates

@@ -225,7 +225,7 @@ export default function Standards() {
         actions={[
           <a
             key="issue"
-            className="button button--primary button--lg"
+            className="button button--primary"
             href="https://github.com/5G-MAG/Standards/issues/new/choose"
             target="_blank"
             rel="noreferrer"
@@ -234,7 +234,7 @@ export default function Standards() {
           </a>,
           <Link
             key="meetings"
-            className="button button--outline button--primary button--lg"
+            className="button button--outline button--primary"
             to="/standards/3gpp-issue-tracking"
           >
             Meetings with 3GPP SA4

@@ -455,7 +455,7 @@ export default function Home() {
           </>
         }
         actions={[
-          <Link key="standards" className="button button--primary button--lg" to="/standards">
+          <Link key="standards" className="button button--primary" to="/standards">
             Standards Work
           </Link>,
         ]}

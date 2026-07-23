@@ -649,26 +649,26 @@ export default function Home() {
         title="Media Connectivity Software Accelerator"
         icon={DEV_HERO_ICON_PATH}
         actions={[
-          <Link key="community" className="button button--primary button--lg" to="#community">
+          <Link key="community" className="button button--primary" to="#community">
             Developer Community
           </Link>,
           <Link
             key="reftools"
-            className="button button--outline button--primary button--lg"
+            className="button button--outline button--primary"
             to="/reference-tools"
           >
             Explore All Projects
           </Link>,
           <Link
             key="early-access"
-            className="button button--outline button--primary button--lg"
+            className="button button--outline button--primary"
             to="/early-access"
           >
             Request Early Access
           </Link>,
           <a
             key="overview"
-            className="button button--outline button--primary button--lg"
+            className="button button--outline button--primary"
             href="pathname:///docs/Reference_Tools_Overview.pdf"
             target="_blank"
             rel="noopener noreferrer"

@@ -30,14 +30,14 @@ export default function About() {
         actions={[
           <Link
             key="join"
-            className="button button--primary button--lg"
+            className="button button--primary"
             to="/membership#request-membership"
           >
             Become a member
           </Link>,
           <a
             key="overview"
-            className="button button--outline button--primary button--lg"
+            className="button button--outline button--primary"
             href="pathname:///docs/Overview.pdf"
             target="_blank"
             rel="noopener noreferrer"
