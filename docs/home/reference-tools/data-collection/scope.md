@@ -141,7 +141,7 @@ See the [Docker + Insomnia tutorial](./tutorials/docker-with-insomnia) for the f
 
 Two deployment shapes are shown below: the DCAF running on its own (standalone), and the DCAF integrated alongside 5G Downlink Media Streaming.
 
-### Generic UE Data Collection, Reporting and Event Exposure
+### Standalone UE Data Collection, Reporting and Event Exposure
 
 This is the standalone DCAF deployment, where the Data Collection AF is used on its own to collect and expose UE-side data.
 
@@ -206,7 +206,6 @@ These identifiers on this page were not confirmed against a primary source (the 
 
 ## Related
 
-- [Resources](./resources)
 - [Resources](./resources)
 - [Tutorials](./tutorials)
 - Standards: [UE Data Collection, Reporting and Event Exposure](/tech/standards/data-collection)

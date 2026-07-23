@@ -111,8 +111,8 @@ These identifiers on this page were not confirmed against a primary source (the 
 
 ## Related
 
-- [Resources](./resources) - planned work
-- [Resources](./resources) - the source repositories for these tools
+- [Resources: Roadmap](./resources#roadmap) - planned work
+- [Resources: Repositories](./resources#repositories) - the source repositories for these tools
 - [Tutorials](./tutorials) - demo videos and repository pointers
 
 :::note

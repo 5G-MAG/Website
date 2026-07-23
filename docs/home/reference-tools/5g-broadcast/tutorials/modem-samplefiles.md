@@ -20,7 +20,7 @@ description: Explains how to capture an SDR signal to a sample file, or replay o
 </div>
 </div>
 
-The rt-mbms-modem can work with sample files (recorded I/Q signals) in two ways: **capture**, which records a signal from a Software Defined Radio (SDR) and therefore needs an SDR and a live 5G Broadcast signal; and **run** (replay), which plays back an existing sample file and needs no SDR. See [Sample Files](/reference-tools/5g-broadcast/additional/sample-files) for downloadable files and the filename convention.
+The rt-mbms-modem can work with sample files (recorded I/Q signals) in two ways: **capture**, which records a signal from a Software Defined Radio (SDR) and therefore needs an SDR and a live 5G Broadcast signal; and **run** (replay), which plays back an existing sample file and needs no SDR. See [Sample Files](../additional/sample-files) for downloadable files and the filename convention.
 
 Before capturing or running a sample file, make sure that _MBMS Modem_ isn't running in the background. If it is, stop _MBMS Modem_ with `systemctl stop 5gmag-rt-modem`.
 
@@ -36,7 +36,7 @@ modem -w "PathToSample/samplefile.raw"
 
 **Important**: For correct pre-configuring of the MBMS Modem at system startup, it has to be run through systemd once, see https://github.com/5G-MAG/rt-mbms-modem#configuration
 
-Based on the structure of the Service Announcement file the configuration file in `/etc/5gmag-rt.conf` needs to be adjusted. For details refer to the corresponding [documentation](/reference-tools/5g-broadcast/additional/rt-common-shared/MBMS-service-announcement-files).
+Based on the structure of the Service Announcement file the configuration file in `/etc/5gmag-rt.conf` needs to be adjusted. For details refer to the corresponding [documentation](../additional/rt-common-shared/MBMS-service-announcement-files).
 
 To start _MBMS Modem_ with a downloaded sample file, run the following command (no SDR required):
 
@@ -44,7 +44,7 @@ To start _MBMS Modem_ with a downloaded sample file, run the following command (
 modem -f "PathToSample/samplefile.raw" -b 10
 ```
 
-> **Notice:** `-b 10` is the bandwidth (in MHz) that the sample file was captured at, which is encoded in the filename (see [Sample Files](/reference-tools/5g-broadcast/additional/sample-files)). So for a 5 MHz bandwidth sample file you need to adjust the command to `-b 5`.
+> **Notice:** `-b 10` is the bandwidth (in MHz) that the sample file was captured at, which is encoded in the filename (see [Sample Files](../additional/sample-files)). So for a 5 MHz bandwidth sample file you need to adjust the command to `-b 5`.
 
 ## Next steps
 

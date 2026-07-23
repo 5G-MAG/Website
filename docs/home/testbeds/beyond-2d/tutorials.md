@@ -22,4 +22,4 @@ Step-by-step tutorials for the Beyond 2D Evaluation Framework are not yet publis
 
 - For the current repositories and their READMEs, see the [Resources](./resources) page.
 - For what the framework evaluates and the specifications it tracks, see the [Scope](./scope) page.
-- Related encoding and rendering walkthroughs are available for the [MPEG V3C Immersive Platform](/reference-tools/v3c/tutorials/).
+- Related encoding and rendering walkthroughs are available for the [MPEG V3C Immersive Platform](/reference-tools/v3c/tutorials).

@@ -19,17 +19,17 @@ const ON_AIR_FEATURED = [
   {
     videoId: 'e_xK_ckkhgc',
     title: 'Demonstrating MBS User Service Announcement mechanisms',
-    href: '/reference-tools/5g-mbs/tutorials#on-air',
+    href: '/reference-tools/5g-mbs/tutorials#developer-exchange',
   },
   {
     videoId: 'hkVgL8yq0V8',
     title: 'Emergency Alerts over 5G Broadcast embedded in DVB-T2 at IBC 2025',
-    href: '/reference-tools/emergency-alerts/tutorials#on-air',
+    href: '/reference-tools/emergency-alerts/tutorials#developer-exchange',
   },
   {
     videoId: '4C9bySDoVqA',
     title: 'MPEG V3C Immersive Platform at IBC 2025',
-    href: '/reference-tools/v3c/tutorials#on-air',
+    href: '/reference-tools/v3c/tutorials#developer-exchange',
   },
 ];
 

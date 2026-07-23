@@ -1,7 +1,7 @@
 ---
 title: 5G Network & COTS UE
 hide_title: true
-sidebar_position: 1
+sidebar_position: 0
 description: Step-by-step tutorial for building a private 5G network with Open5GS and srsRAN, and connecting a commercial off-the-shelf Android phone.
 ---
 

@@ -41,20 +41,20 @@ A tutorial is available here: [Blender glTF Exporter and Unity Player](./blender
 
 These ready-made assets in the `rt-xr-content` repository exercise the core MPEG glTF extensions, so you can download and play them without authoring anything yourself.
 
-### MPEG_anchor
+### MPEG_anchor (test content)
 
 The `MPEG_anchor` glTF extension enables anchoring nodes and scenes to features (_Trackable_) tracked by the XR device.
 
 |  Trackable type       | Test content                                                                                                     |
 | :-------------------- | :--------------------------------------------------------------------------------------------------------------- |
-| TRACKABLE_VIEWER      | [anchoring/anchorTest_viewer_n.gltf](https://github.com/5G-MAG/rt-xr-content/tree/development/anchoring/)        |
-| TRACKABLE_FLOOR       | [awards/scene_floor_anchoring.gltf](https://github.com/5G-MAG/rt-xr-content/tree/development/awards/)            |
-| TRACKABLE_PLANE       | [awards/scene_plane_anchoring.gltf](https://github.com/5G-MAG/rt-xr-content/tree/development/awards/)            |
-| TRACKABLE_CONTROLLER  | [anchoring/anchorTest_ctrl_n.gltf](https://github.com/5G-MAG/rt-xr-content/tree/development/anchoring/)          |
-| TRACKABLE_MARKER_2D   | [anchoring/anchorTest_m2D_n.gltf](https://github.com/5G-MAG/rt-xr-content/tree/development/anchoring/)           |
-| TRACKABLE_MARKER_3D   | [anchoring/anchorTest_m3D_n.gltf](https://github.com/5G-MAG/rt-xr-content/tree/development/anchoring/)           |
-| TRACKABLE_MARKER_GEO  | [anchoring/anchorTest_geoSpatial_n_cs.gltf](https://github.com/5G-MAG/rt-xr-content/tree/development/anchoring/) |
-| TRACKABLE_APPLICATION | [anchoring/anchorTest_app_n.gltf](https://github.com/5G-MAG/rt-xr-content/tree/development/anchoring/)           |
+| TRACKABLE_VIEWER      | [anchoring/anchorTest_viewer_n.gltf](https://github.com/5G-MAG/rt-xr-content/tree/main/anchoring/)        |
+| TRACKABLE_FLOOR       | [awards/scene_floor_anchoring.gltf](https://github.com/5G-MAG/rt-xr-content/tree/main/awards/)            |
+| TRACKABLE_PLANE       | [awards/scene_plane_anchoring.gltf](https://github.com/5G-MAG/rt-xr-content/tree/main/awards/)            |
+| TRACKABLE_CONTROLLER  | [anchoring/anchorTest_ctrl_n.gltf](https://github.com/5G-MAG/rt-xr-content/tree/main/anchoring/)          |
+| TRACKABLE_MARKER_2D   | [anchoring/anchorTest_m2D_n.gltf](https://github.com/5G-MAG/rt-xr-content/tree/main/anchoring/)           |
+| TRACKABLE_MARKER_3D   | [anchoring/anchorTest_m3D_n.gltf](https://github.com/5G-MAG/rt-xr-content/tree/main/anchoring/)           |
+| TRACKABLE_MARKER_GEO  | [anchoring/anchorTest_geoSpatial_n_cs.gltf](https://github.com/5G-MAG/rt-xr-content/tree/main/anchoring/) |
+| TRACKABLE_APPLICATION | [anchoring/anchorTest_app_n.gltf](https://github.com/5G-MAG/rt-xr-content/tree/main/anchoring/)           |
 
 ### MPEG_scene_interactivity and MPEG_node_interactivity
 
@@ -62,20 +62,20 @@ The `MPEG_anchor` glTF extension enables anchoring nodes and scenes to features 
 
 | Trigger type       | Test content                                                                                                                                                                                              |
 | :----------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| TRIGGER_COLLISION  | [gravity/gravity.gltf](https://github.com/5G-MAG/rt-xr-content/tree/development/gravity)                                                                                                                  |
-| TRIGGER_PROXIMITY  | [gravity/gravity.gltf](https://github.com/5G-MAG/rt-xr-content/tree/development/gravity), [geometry/UseCase_03-variant1-geometry.gltf](https://github.com/5G-MAG/rt-xr-content/tree/development/geometry) |
-| TRIGGER_USER_INPUT | [gravity/gravity.gltf](https://github.com/5G-MAG/rt-xr-content/tree/development/gravity), [geometry/UseCase_03-variant3-geometry.gltf](https://github.com/5G-MAG/rt-xr-content/tree/development/geometry) |
-| TRIGGER_VISIBILITY | [geometry/UseCase_03-variant3-geometry.gltf](https://github.com/5G-MAG/rt-xr-content/tree/development/geometry)                                                                                           |
+| TRIGGER_COLLISION  | [gravity/gravity.gltf](https://github.com/5G-MAG/rt-xr-content/tree/main/gravity)                                                                                                                  |
+| TRIGGER_PROXIMITY  | [gravity/gravity.gltf](https://github.com/5G-MAG/rt-xr-content/tree/main/gravity), [geometry/UseCase_03-variant1-geometry.gltf](https://github.com/5G-MAG/rt-xr-content/tree/main/geometry) |
+| TRIGGER_USER_INPUT | [gravity/gravity.gltf](https://github.com/5G-MAG/rt-xr-content/tree/main/gravity), [geometry/UseCase_03-variant3-geometry.gltf](https://github.com/5G-MAG/rt-xr-content/tree/main/geometry) |
+| TRIGGER_VISIBILITY | [geometry/UseCase_03-variant3-geometry.gltf](https://github.com/5G-MAG/rt-xr-content/tree/main/geometry)                                                                                           |
 
 | Action type         | Test content                                                                                                    |
 | :------------------ | :-------------------------------------------------------------------------------------------------------------- |
-| ACTION_ACTIVATE     | [gravity/gravity.gltf](https://github.com/5G-MAG/rt-xr-content/tree/development/gravity)                        |
-| ACTION_TRANSFORM    | [gravity/gravity.gltf](https://github.com/5G-MAG/rt-xr-content/tree/development/gravity)                        |
-| ACTION_BLOCK        | [gravity/gravity.gltf](https://github.com/5G-MAG/rt-xr-content/tree/development/gravity)                        |
-| ACTION_ANIMATION    | [geometry/UseCase_03-variant1-geometry.gltf](https://github.com/5G-MAG/rt-xr-content/tree/development/geometry) |
-| ACTION_SET_MATERIAL | [gravity/gravity.gltf](https://github.com/5G-MAG/rt-xr-content/tree/development/gravity)                        |
+| ACTION_ACTIVATE     | [gravity/gravity.gltf](https://github.com/5G-MAG/rt-xr-content/tree/main/gravity)                        |
+| ACTION_TRANSFORM    | [gravity/gravity.gltf](https://github.com/5G-MAG/rt-xr-content/tree/main/gravity)                        |
+| ACTION_BLOCK        | [gravity/gravity.gltf](https://github.com/5G-MAG/rt-xr-content/tree/main/gravity)                        |
+| ACTION_ANIMATION    | [geometry/UseCase_03-variant1-geometry.gltf](https://github.com/5G-MAG/rt-xr-content/tree/main/geometry) |
+| ACTION_SET_MATERIAL | [gravity/gravity.gltf](https://github.com/5G-MAG/rt-xr-content/tree/main/gravity)                        |
 | ACTION_MANIPULATE   |                                                                                                                 |
-| ACTION_MEDIA        | [geometry/UseCase_02-variant3-geometry.gltf](https://github.com/5G-MAG/rt-xr-content/tree/development/geometry) |
+| ACTION_MEDIA        | 🚧 not yet supported in the Unity player ([issues/19](https://github.com/5G-MAG/rt-xr-unity-player/issues/19)); test asset: [geometry/UseCase_02-variant3-geometry.gltf](https://github.com/5G-MAG/rt-xr-content/tree/main/geometry) |
 | ACTION_HAPTIC       |                                                                                                                 |
 | ACTION_SET_AVATAR   |                                                                                                                 |
 
@@ -83,25 +83,25 @@ The `MPEG_anchor` glTF extension enables anchoring nodes and scenes to features 
 
 Support for media sources (eg. mp4, dash, rtp, ...) exposing media buffers to the presentation engine through the `MPEG_media`, `MPEG_accessor_timed`, `MPEG_buffer_circular` glTF extensions.
 
-[Sample scene with media pipelines](https://github.com/5G-MAG/rt-xr-content/tree/development/studio_apartment)
+[Sample scene with media pipelines](https://github.com/5G-MAG/rt-xr-content/tree/main/studio_apartment)
 
-### MPEG_texture_video
+### MPEG_texture_video (test content)
 
 Supports video textures buffers through the `MPEG_texture_video` glTF video extension. Video decoding is implemented by media pipelines.
 
-[Sample scene with video texture](https://github.com/5G-MAG/rt-xr-content/tree/development/studio_apartment)
+[Sample scene with video texture](https://github.com/5G-MAG/rt-xr-content/tree/main/studio_apartment)
 
-### MPEG_audio_spatial
+### MPEG_audio_spatial (test content)
 
 Supports audio sources positioned in 3D through the `MPEG_audio_spatial`. For each audio source the extension specifies attenuation parameters controlling the audio source loudness as a function of the viewer's distance.
 
-[Sample scene with spatial audio source](https://github.com/5G-MAG/rt-xr-content/tree/development/studio_apartment)
+[Sample scene with spatial audio source](https://github.com/5G-MAG/rt-xr-content/tree/main/studio_apartment)
 
 ## Generation of MPEG-I SD compliant glTF2.0 assets
 
 This half explains how to author your own MPEG-I Scene Description assets in Blender using the [exporter add-on](https://github.com/5G-MAG/rt-xr-blender-exporter). The extension definitions are the same as in the list above; the steps below focus on how to configure each extension in Blender.
 
-### MPEG_anchor
+### MPEG_anchor (Blender configuration)
 
 #### Configure anchoring of a node
 
@@ -133,7 +133,7 @@ _Figure: creating a 2D marker node from an image in the XR Anchoring panel._
 1. locate the XR Anchoring panel (press N while the UI is focused on the 3D view)
 2. select an image and hit 'create marker node', the marker 2D node is added to the scene and can now be used to configure an anchor
 
-### MPEG_texture_video
+### MPEG_texture_video (Blender configuration)
 
 To add a video and export it as MPEG_texture_video, first make sure that the blender's [scene output format](https://docs.blender.org/manual/en/latest/render/output/properties/format.html) matches the framerate of the videos used as texture.
 
@@ -147,7 +147,7 @@ All Image textures with a movie source are exported as MPEG_texture_video extens
 
 _Figure: a Blender image texture with a movie source, exported as an MPEG_texture_video extension._
 
-### MPEG_audio_spatial
+### MPEG_audio_spatial (Blender configuration)
 
 #### Audio sources
 

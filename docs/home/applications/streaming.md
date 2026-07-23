@@ -15,6 +15,10 @@ description: 'Real, assembled applications built on 5G-MAG’s streaming and mul
 </div>
 </div>
 
+<div class="topic-lead">
+Real applications built on 5G-MAG's streaming and multicast reference tools: live streaming over a real 5G network, native MBS delivery, and QoE analytics.
+</div>
+
 ## Overview
 
 An Application, on this site, is a real working scenario assembled from one or more Reference Tools, pointed at a concrete use case, rather than a single tool's own tutorial in isolation. This category covers three such scenarios built on 5G-MAG's streaming and multicast reference tools: media streamed over an actual 5G radio network rather than a local loopback, a native 5G multicast delivery chain, and a live quality-of-experience dashboard fed by real playback data. For acronyms used here, see the [Glossary](/tech/glossary).

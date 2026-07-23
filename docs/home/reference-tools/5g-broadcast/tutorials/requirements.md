@@ -69,7 +69,7 @@ The full specification of the Intel NUC 8 Pro Kit (NUC8V7PNH) can be found on th
 
 If you want to fully integrate the SDR into the NUC as seen on the picture above courtesy of Johann Mika: [obeca-ors-casing](https://github.com/johannmika/obeca-ors-casing)
 
-### Testcases
+### Testcases (reference setup)
 
 The configurations below are the ones that have been validated on this reference setup. The Reference Tools system was tested live, with sample files, with bandwidths 3, 5, 6, 7, 8 and 10 MHz, subcarrier spacing (SCS) 1.25 and 7.5 kHz and
 modulation coding schemes (MCS) 1-26 with multiple services (RTP, HLS). Max CPU (2 services, 10 MHz, MCS26) was below
@@ -79,6 +79,11 @@ modulation coding schemes (MCS) 1-26 with multiple services (RTP, HLS). Max CPU 
 
 Ubuntu 20 with Hyper-V on Windows 10 has been tested.
 
-### Testcases
+### Testcases (virtual environment)
 
 The following was validated in a virtual environment: the build process and sample files (1 RTP service, 5 MHz).
+
+## Next steps
+
+- To get started with a receiver-only setup, see [SDR - HLS Playback over 5G Broadcast](./hls-playback-5gbc).
+- Return to the [Tutorials index](./).

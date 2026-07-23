@@ -1,6 +1,5 @@
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
-import HubHero from '@site/src/components/HubHero';
 import styles from '../tech/index.module.css';
 
 const icon = (paths) => (
@@ -104,12 +103,14 @@ export default function Testbeds() {
       title="Testbeds"
       description="Overview of 5G-MAG testbeds and evaluation frameworks for 6G traffic characterization, AI/ML, and beyond-2D video quality assessment."
     >
-      <HubHero
-        title="Testbeds and Evaluation Tools"
-        icon={TESTBEDS_ICON_PATH}
-      />
-
       <div className="container" style={{ marginTop: '1.75rem' }}>
+        <div className="topic-banner">
+          <div className="topic-banner__icon-wrap">{icon(TESTBEDS_ICON_PATH)}</div>
+          <div className="topic-banner__text">
+            <span className="topic-banner__kicker">Software Accelerator</span>
+            <h1>Testbeds and Evaluation Tools</h1>
+          </div>
+        </div>
         <p className="topic-lead">
           Shared infrastructure and evaluation frameworks for testing technologies in realistic
           conditions — complementing Reference Tools and underpinning several application

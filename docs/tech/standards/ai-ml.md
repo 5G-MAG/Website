@@ -123,7 +123,7 @@ This is the study most directly relevant to 5G-MAG, because it treats AI/ML as a
 
 ## 5G-MAG tracking and contribution focus
 
-5G-MAG tracks both tracks but contributes primarily on the media side (SA4), while following the SA2 analytics work for the parts that affect media sessions. The aim is to make media a concrete input to AI/ML standardisation: contributing media AI/ML use cases and, through the 6G Testbed, producing measured traffic characteristics and labelled datasets for AI workloads (generative and agentic AI as well as classic media) under controlled network conditions. Those measurements are intended to ground requirement inputs in evidence. See the [6G Testbed](/testbeds/6g-testbed/scope) and the [AI/ML Evaluation Framework](/testbeds/ai-ml/scope) on the developer portal.
+5G-MAG tracks both tracks but contributes primarily on the media side (SA4), while following the SA2 analytics work for the parts that affect media sessions. The aim is to make media a concrete input to AI/ML standardisation: contributing media AI/ML use cases and, through the 6G Testbed, producing measured traffic characteristics and labelled datasets for AI workloads (generative and agentic AI as well as classic media) under controlled network conditions. Those measurements are intended to ground requirement inputs in evidence. See the [6G Testbed](/testbeds/6g-testbed/scope) and the [AI/ML Evaluation Framework](/testbeds/ai-ml) on the developer portal.
 
 ## Reference Tools
 

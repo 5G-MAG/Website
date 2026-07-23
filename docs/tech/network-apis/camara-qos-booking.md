@@ -71,6 +71,20 @@ A user of a media application wants to reserve a QoS profile for one or more kno
 
 ---
 
+## 5G-MAG's Self-Assessment
+
+This section records 5G-MAG's practical reading of the API and the open points it raises for media use.
+
+- Booking directly against known devices keeps the model simple for a single-device contribution feed (for example a MoJo uplink) or a small crew where the devices are fixed in advance.
+- Because the reservation is bound to specific devices at booking time, substituting a device mid-event (for example replacing a failed camera) requires a new booking rather than reassigning the existing one. Where the exact devices are not known up front, or may change, [QoS Booking and Assignment](./camara-qos-booking-assignment) is the better fit.
+- Like the other QoS-family APIs, there is no separate discovery step: availability is only confirmed once the booking is created.
+
+Potential improvements:
+
+- A lightweight way to substitute one device for another within an existing booking, without deleting and recreating it, would help productions where a device may need to be replaced mid-event.
+
+---
+
 ## Note on profile names
 
 The profile-name values in the examples below (`QCI_1_voice`, `QOS_L`) are illustrative and operator-defined; the actual names come from the [QoS Profiles API](./camara-qos-profiles). Different examples on this page use different names for the same reason.

@@ -81,6 +81,8 @@ The slide deck below introduces the 5G-MAG 5G Media Streaming reference tools an
   <iframe loading="lazy" class="pdf-embed" src="pathname:///docs/Reference_Tools_5G_Media_Streaming.pdf" title="5G Media Streaming reference tools overview slide deck"></iframe>
 </div>
 
+_Slide deck: 5G Media Streaming reference tools._
+
 [Download the Slidedeck](/docs/Reference_Tools_5G_Media_Streaming.pdf)
 
 ## How the pieces fit

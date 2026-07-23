@@ -28,6 +28,11 @@ More information about the Real-Time Transport Protocol (RTP) can be found in th
 
 ## Prerequisites
 
+<div class="spec-chip-row">
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9l-8 4.5l-8 -4.5v-9z" /><path d="M12 12l8 -4.5" /><path d="M12 12v9" /><path d="M12 12l-8 -4.5" /></svg>MBMS Modem + VLC/ffplay installed</span>
+<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M16.616 13.924a5 5 0 1 0 -9.23 0" /><path d="M20.307 15.469a9 9 0 1 0 -16.615 0" /><path d="M9 21l3 -9l3 9" /><path d="M10 19h4" /></svg>SDR signal or sample file</span>
+</div>
+
 - The MBMS Modem installed, plus VLC or ffplay (Step 1 below).
 - Either an SDR and a live signal, or a downloaded RTP [sample file](../additional/sample-files#rtp-payload). For hardware details see [Requirements](./requirements).
 

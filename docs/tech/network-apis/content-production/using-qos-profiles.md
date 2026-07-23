@@ -115,6 +115,19 @@ For a media contribution example, a profile intended for a single uplink camera 
 ]
 ```
 
+---
+
+## 5G-MAG's Self-Assessment
+
+- Centralising the performance targets in a single, named QoS Profile keeps the other CAMARA QoS-family APIs simple: they only reference a profile by name rather than repeating throughput, latency and loss parameters in every booking or session request.
+- Because a profile is entirely operator-defined and published in advance, a media application cannot request arbitrary custom values; it can only pick from whatever profiles and names the operator has chosen to provision. Portability of application logic across operators therefore depends on profile names and content being comparable, which the API itself does not guarantee.
+- The mapping from a named profile onto the underlying 3GPP 5QI/QCI is deliberately hidden from the application. This keeps the application portable, but it also means the application cannot verify which underlying network treatment it is actually receiving.
+
+Potential improvements:
+
+- A degree of naming or content convergence across operators (or a small set of well-known reference profiles) would make the same media application logic portable between networks without hardcoding operator-specific profile names.
+- The field-name ambiguity noted above (`packetErrorLossRate` vs `packetLossErrorRate`) should be resolved so integrators do not need to check the specific API version they are targeting.
+
 ## The QoS Profile as the shared vocabulary
 
 The QoS Profile is the pivot of the whole CAMARA QoS analysis: every other QoS-related API references a profile by name rather than carrying raw performance numbers. This keeps the operator in control of what treatments are offered (each profile is one the operator has provisioned and can police) and keeps the media application's requests portable (the same profile name can be requested through Quality on Demand at the point of use, booked in advance through QoS Booking, or bundled into a Dedicated Network). The application discovers the available profiles and their parameters through the [QoS Profiles API](../camara-qos-profiles) (`GET /qos-profiles` and `GET /qos-profiles/{name}`); the profile name must be known beforehand, and operators are expected to publish the names through the Network API Platform.

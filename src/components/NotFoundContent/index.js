@@ -18,7 +18,7 @@ export default function NotFoundContent({ className }) {
             The page you were looking for doesn&apos;t exist, or the link that brought you here may
             be out of date. Try one of these instead:
           </p>
-          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
             <Link className="button button--primary button--lg" to="/">
               Homepage
             </Link>

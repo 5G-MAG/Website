@@ -93,7 +93,7 @@ url being deleted immediately:
 
 ## FLUTE ffmpeg watchfolder with signaling server
 
-### HLS seamless switching
+### HLS seamless switching (signaling server)
 
 Set the config file for the rt-mbms-examples project in `flute-ffmpeg\config\default.cfg` to:
 
@@ -131,7 +131,7 @@ Enable seamless switching in the `/etc/5gmag-rt.conf` file:
   }
 ```
 
-### DASH Broadcast
+### DASH Broadcast (signaling server)
 
 Disable seamless switching and set the right SA format in the `/etc/5gmag-rt.conf` file:
 
@@ -169,7 +169,7 @@ general : {
 }
 ```
 
-### HLS Broadcast
+### HLS Broadcast (signaling server)
 
 Disable seamless switching and set the right SA format in the `/etc/5gmag-rt.conf` file:
 
@@ -228,7 +228,7 @@ Disable `transmit_service_announcement` in the flute-ffmpeg `default.cfg` file:
 transmit_service_announcement = false;
 ```
 
-### HLS seamless switching
+### HLS seamless switching (local SA)
 
 Point to a local service announcement file with seamless switching support in the `/etc/5gmag-rt.conf` file e.g.:
 
@@ -249,7 +249,7 @@ bootstrap_format: "";
 
 ```
 
-### HLS Broadcast
+### HLS Broadcast (local SA)
 
 Point to a local service announcement in the `/etc/5gmag-rt.conf` file e.g.:
 
@@ -270,7 +270,7 @@ bootstrap_format: "5gmag_legacy";
 
 ```
 
-### DASH Broadcast
+### DASH Broadcast (local SA)
 
 Point to a local service announcement in the `/etc/5gmag-rt.conf` file e.g.:
 

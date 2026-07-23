@@ -114,7 +114,7 @@ The basic requirements for this scenario are:
 <p>Response: ACK the activation of the resources for the current assignment.</p>
 </div>
 
-### **Ability to activate/deactivate NOTIFICATIONS on the usage of the network resources**.
+### Ability to activate/deactivate NOTIFICATIONS on the usage of the network resources.
 
 <div style="border:1px solid var(--ifm-color-emphasis-300); border-radius:8px; padding:0.75rem 1rem; margin:1rem 0;">
 <p><b>NOTIFICATIONS API</b></p>

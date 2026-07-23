@@ -60,7 +60,7 @@ This end-to-end deployment is built from six repositories, each with a distinct 
 </a>
 </div>
 
-## Requirements
+## Prerequisites
 
 <div class="spec-chip-row">
 <span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1" /><path d="M7 20h10" /><path d="M9 16v4" /><path d="M15 16v4" /></svg>Host: Ubuntu 22.04 LTS</span>
@@ -173,17 +173,17 @@ sudo 5gms-application-server
 ```
 
 For additional options, refer to
-the [documentation](../tutorials/testing-AS#running-the-example-without-building). Pay attention to
+the [documentation](./testing-AS#running-the-example-without-building). Pay attention to
 the port configuration of the AS, as it requires root permission to run on the standard ports (`80` & `443`).
 
 ### 4. Running the Application Function
 
 Now that the AF and the AS are installed, configure the AF. A detailed configuration guide is available in
-the [documentation](../tutorials/application-function/configuration-5GMSAF) of the AF.
+the [documentation](./application-function/configuration-5GMSAF) of the AF.
 
 ### 5. Configuration of the AF
 
-This step applies only the minimal configuration change needed for this demo; the full set of configuration options is documented in the [AF configuration guide](../tutorials/application-function/configuration-5GMSAF).
+This step applies only the minimal configuration change needed for this demo; the full set of configuration options is documented in the [AF configuration guide](./application-function/configuration-5GMSAF).
 
 For this demo, AF and AS run on the same machine. To access the `ServiceAccessInformation` via the
 `M5d` interface from the Media Session Handler running on an Android device, the configuration needs a slight
@@ -212,7 +212,7 @@ Since the AF was installed as a local user, start it with the following command:
 ### 7. Creating a Content Hosting Configuration
 
 There is a guide on how to test the AS with the AF in
-the [documentation](../tutorials/testing-AS#testing-with-the-application-function). This tutorial follows
+the [documentation](./testing-AS#testing-with-the-application-function). This tutorial follows
 a slightly different approach, using the `msaf-configuration` tool that ships with version `1.3.0` of the Application
 Function. The `msaf-configuration` tool creates a `provisioningSession` and a `contentHostingConfiguration` based on a
 JSON input file. Moreover, it automatically generates the required `M8` information that will be needed later on
@@ -347,11 +347,11 @@ selection dropdown and to query the Application Function via `M5`.
 ### Optional: Creating a Server Certificate
 
 Optionally, you can now
-also [create server certificate](../tutorials/application-function/testing-m1-v130#server-certificates). For plain
+also [create server certificate](./application-function/testing-m1-v130#server-certificates). For plain
 `http` based playback, this step can be omitted.
 
 The complete documentation on how to test the M5 interface for AF versions 1.2.0 and above can be
-found [here](../tutorials/application-function/testing-m5-v120)
+found [here](./application-function/testing-m5-v120)
 
 The `ServiceAccessInformation` will be needed on the client side later. This is requested via `M5d` by the
 MediaSessionHandler. Since retrieving this information is done via a simple HTTP GET request, it can be accessed
@@ -565,5 +565,5 @@ Now that you have a working end-to-end deployment, you can add reporting feature
 - [5G Media Streaming with QoE Metrics Reporting](./metrics-reporting)
 - [CMCD Reporting](./CMCD-reporting)
 - [5G MSd End-to-End deployment with 5G Network](./end-to-end-with-5g)
-
-To exercise individual interfaces in detail, see the [Testing the 5GMS Application Function](./testing-AF) and [Developing and Testing the 5GMS Application Server](./testing-AS) tutorials, or return to the [Tutorials index](.).
+- To exercise individual interfaces in detail: [Testing the 5GMS Application Function](./testing-AF) and [Developing and Testing the 5GMS Application Server](./testing-AS).
+- Return to the [Tutorials index](.).

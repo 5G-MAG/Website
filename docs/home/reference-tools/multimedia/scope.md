@@ -47,7 +47,7 @@ The diagram below shows the multimedia delivery protocol tools used with the LTE
 <img loading="lazy" src="/assets/images/projects/5gbc_diagram.png" alt="Architecture combining the multimedia content delivery protocol tools with the 5G Broadcast system" style="width: 80%">
 
 [5G Broadcast: Resources](../5g-broadcast/resources)
-[Multimedia content delivery protocols: Resources](../multimedia/resources)
+[Multimedia content delivery protocols: Resources](./resources)
 [Common Tools](../common-tools/)
 
 ### 5G Multicast Broadcast Services (MBS) with Multimedia delivery protocols
@@ -57,7 +57,7 @@ The diagram below shows the same delivery protocol tools used with 5G Multicast 
 <img loading="lazy" src="/assets/images/projects/mbs_diagram.png" alt="Architecture combining the multimedia content delivery protocol tools with 5G Multicast Broadcast Services (MBS)" style="width: 80%">
 
 [5G Multicast Broadcast Services: Resources](../5g-mbs/resources)
-[Multimedia content delivery protocols: Resources](../multimedia/resources)
+[Multimedia content delivery protocols: Resources](./resources)
 [3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
 [Common Tools](../common-tools/)
 
@@ -93,7 +93,7 @@ FLUTE and ROUTE are both built on the LCT (RFC 5651) and ALC (RFC 5775) building
 1. Choose a transport for your delivery model: FLUTE for a file/download model (as in MBMS), ROUTE for a real-time segment model.
 2. Package your content as DASH or HLS using CMAF segments so a single set of segments can serve both.
 3. Feed the segments and manifest through the delivery tool for your target system (5G Broadcast or 5G MBS), following the architectures above.
-4. Build from the [multimedia delivery repositories](../multimedia/resources); the [Tutorials](./tutorials) page has a demo video and repository pointers.
+4. Build from the [multimedia delivery repositories](./resources); the [Tutorials](./tutorials) page has a demo video and repository pointers.
 
 :::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the ISO/ETSI portals block automated access): the specific ISO catalogue editions for ISO/IEC 23009-1 (DASH) and ISO/IEC 23000-19 (CMAF). The IETF mappings (FLUTE = RFC 6726, ROUTE = RFC 9223, HLS = RFC 8216, LCT = RFC 5651, ALC = RFC 5775, FCAST = RFC 6968) and the use of FLUTE by MBMS (TS 26.346) were confirmed. Verify the ISO editions against the ISO catalogue before publication.
@@ -101,8 +101,8 @@ These identifiers on this page were not confirmed against a primary source (the 
 
 ## Related
 
-- [Resources](./resources) - planned work
-- [Resources](./resources) - the source repositories for these tools
+- [Resources: Roadmap](./resources#roadmap) - planned work
+- [Resources: Repositories](./resources#repositories) - the source repositories for these tools
 - [Tutorials](./tutorials) - demo video and repository pointers
 
 :::note

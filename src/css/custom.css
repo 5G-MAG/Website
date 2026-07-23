@@ -90,6 +90,12 @@
      (Active/Maintenance status elsewhere). */
   --tag-standard-background: rgb(219, 240, 237);
   --tag-standard-foreground: rgb(0, 77, 64);
+  /* MPEG-I Scene Description extension-name legend (docs/tech/xr): matches
+     the green/blue/purple grouping used in the accompanying static figure,
+     so the extension names in prose carry the same colour coding. */
+  --mpeg-ext-green: #1a7a3c;
+  --mpeg-ext-blue: #0070c0;
+  --mpeg-ext-purple: #7030a0;
 }
 
 [data-theme='dark'] {
@@ -111,6 +117,12 @@
   /* Shadows tuned for a light background barely read against dark
      surfaces; boost opacity so every card's hover-lift stays visible. */
   --card-hover-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+  /* Brightened so the MPEG-I Scene Description extension-name legend
+     (docs/tech/xr) keeps enough contrast against the dark surface; the
+     light-mode hues are too dark to read against a near-black background. */
+  --mpeg-ext-green: #4ade80;
+  --mpeg-ext-blue: #4dabf7;
+  --mpeg-ext-purple: #b794f4;
 }
 
 /* Visually hidden but still announced by screen readers/assistive tech —
@@ -353,7 +365,7 @@
   min-width: 150px;
   text-align: center;
 }
-.summary-card h4 {
+.summary-card h3 {
   margin: 0;
   color: var(--ifm-color-emphasis-600);
   font-size: 0.85em;
@@ -998,6 +1010,117 @@
 .repo-card--inline .repo-card__version {
   align-self: center;
   flex-shrink: 0;
+}
+
+/* ── Network APIs content-production: phase/procedure timeline ─────
+   Used by the "General Workflow" figures on the CAMARA content-production
+   walkthrough pages (using-dedicated-networks, using-qos-booking,
+   using-qos-booking-assignment, using-quality-on-demand): a coloured
+   phase header (.p-header, background set inline per phase) followed by
+   its .p-entry rows, each showing which actor (.p-pill-asp / .p-pill-csp,
+   optionally both joined by .p-plus-sign) performs a step. ──────────── */
+.proc-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 1.25rem 0 1.75rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--ifm-background-surface-color);
+}
+
+.p-header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.55rem 1rem;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+.p-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: #fff;
+  font-weight: 800;
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.p-entry {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.55rem 1rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.p-actors {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  flex-shrink: 0;
+  width: 3.25rem;
+}
+
+.p-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.p-pill-asp {
+  background: #2f6fed;
+}
+
+.p-pill-csp {
+  background: #5a6b7d;
+}
+
+.p-plus-sign {
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--ifm-color-emphasis-500);
+}
+
+.p-content,
+.p-content-a,
+.p-content-m {
+  flex: 1;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--ifm-color-emphasis-800);
+}
+
+.p-content-a {
+  font-weight: 600;
+}
+
+.p-content-m {
+  font-style: italic;
+  color: var(--ifm-color-emphasis-600);
+}
+
+@media (max-width: 640px) {
+  .p-entry {
+    align-items: flex-start;
+  }
 }
 
 /* ── Reference tutorial: numbered step badge ──────────────────────── */

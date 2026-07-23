@@ -1,6 +1,5 @@
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
-import HubHero from '@site/src/components/HubHero';
 import styles from '../tech/index.module.css';
 
 const icon = (paths) => (
@@ -286,12 +285,14 @@ export default function ReferenceTools() {
       title="Reference Tools"
       description="Directory of 5G-MAG Reference Tools projects, each card linking to its documentation, roadmap, and releases pages."
     >
-      <HubHero
-        title="Reference Tools"
-        icon={REFTOOLS_ICON_PATH}
-      />
-
       <div className="container" style={{ marginTop: '1.75rem' }}>
+        <div className="topic-banner">
+          <div className="topic-banner__icon-wrap">{icon(REFTOOLS_ICON_PATH)}</div>
+          <div className="topic-banner__text">
+            <span className="topic-banner__kicker">Software Accelerator</span>
+            <h1>Reference Tools</h1>
+          </div>
+        </div>
         <p className="topic-lead">Open-source software implementations corresponding to industry specifications to accelerate testing and deployment.</p>
       </div>
 

@@ -98,6 +98,44 @@ Dedicated Networks and [Network Slice Booking](./camara-network-slice-booking) b
 
 ---
 
+## Workflow: Media application requesting a Dedicated Network
+
+A user of a media application wants to reserve a dedicated network for a venue ahead of an event, then attach devices individually as they are confirmed. The following steps are executed:
+
+### Step 0: Pre-conditions
+
+- The API invoker has signed up with the API provider.
+- Dedicated Network Service Areas and Network Profiles have already been defined and published by the network operator.
+
+### Step 1: Discover the service area and profile
+
+- **POST /retrieve-service-areas** passing the desired location, returning an area `id` with the network and QoS profiles it supports.
+- **GET /profiles** to review the available network profiles and, optionally, the underlying QoS Profile detail via the [QoS Profiles API](./camara-qos-profiles).
+
+### Step 2: Reserve the dedicated network
+
+- **POST /networks** passing a `networkProfileId` or `qosProfileName`, the `serviceTime` and the `serviceAreaId`. The response returns a network `id` and `status`.
+
+### Step 3: Grant device access
+
+- **POST /accesses** passing the `networkId`, the `device` object and the `qosProfiles` the device may use. The response returns an access `id`. Devices can be granted and revoked access throughout the reservation window via further calls to this operation and to **DELETE /accesses/{accessId}**.
+
+---
+
+## 5G-MAG's Self-Assessment
+
+This section records 5G-MAG's practical reading of the API and the open points it raises for media use.
+
+- Separating area discovery, reservation and device access lets the API consumer secure a venue's connectivity ahead of an event, then enrol devices individually as they are confirmed on site (for example cameras arriving one at a time), without needing to know the full device list at reservation time.
+- Because each device requires an explicit Access, only enrolled devices consume the reservation; the Network Profile's `maxNumberOfDevices` and aggregate throughput figures set the ceiling the operator dimensions the reservation for.
+- This API overlaps with [Network Slice Booking](./camara-network-slice-booking); the choice between them is mainly whether per-device authorisation (Dedicated Networks) or a single aggregate reservation for the area and window (Network Slice Booking) fits the production.
+
+Potential improvements:
+
+- It is unclear how a Network's `REQUESTED`/reserved state relates to creating Accesses against it; whether an Access can be created before the Network reaches an active status should be confirmed against the API definition.
+
+---
+
 ## Dedicated Network - Network Service Areas API Usage
 
 This API allows for discovering available network service areas, which are the geographical areas offered by the network provider where consistent coverage according to indicated network profile(s) and QoS profiles is provided, and which is to be used in conjunction with the Dedicated Network API.

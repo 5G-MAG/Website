@@ -142,7 +142,7 @@ The avatar study number (TR 26.813, "Study of Avatars in Real-Time Communication
 
 - [XR and MPEG-I Scene Description](./xr): the wider XR area, including the scene-description model that positions and animates avatars.
 - [MPEG-I Scene Description](./xr/mpeg-i-scene-description): the `MPEG_avatar` glTF extension used for 3D avatar representation.
-- [Standards: XR and Avatar Communications](/tech/standards/xr): the standards-tracking view of this topic.
+- [Standards: Avatar Communications](/tech/standards/avatar): the standards-tracking view of this topic.
 
 :::note
 Refer to the [Tech](https://github.com/5G-MAG/Tech/) repository to contribute to this documentation.

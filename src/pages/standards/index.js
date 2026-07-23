@@ -295,14 +295,14 @@ export default function Standards() {
           </div>
         </section>
 
-        <section className={styles.section}>
+        <section id="requirements--workshop-inputs" className={styles.section}>
           <div className="container">
             <h2 className={styles.sectionTitle}>Requirements & Workshop Inputs</h2>
             <p className={styles.sectionSubtitle}>
               Requirements towards standards bodies — supported by industry inputs, targeted
               workshops or surveys.
             </p>
-            <div style={{ textAlign: 'center', margin: '0 0 1rem', display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <div style={{ textAlign: 'center', margin: '0 0 1rem', display: 'flex', alignItems: 'center', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
               <Link className="button button--primary button--lg" to="/standards/requirements">
                 3GPP Requirements & Workshop Inputs
               </Link>
@@ -368,7 +368,7 @@ export default function Standards() {
             <div className="summary-container">
               {STANDARDS_FACTS.map((f) => (
                 <div key={f.label} className="summary-card">
-                  <h4>{f.label}</h4>
+                  <h3>{f.label}</h3>
                   <span className="summary-value">{f.value}</span>
                 </div>
               ))}

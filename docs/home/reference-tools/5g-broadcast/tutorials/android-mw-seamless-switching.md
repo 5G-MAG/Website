@@ -338,4 +338,4 @@ _Figure: playback after the broadcast signal stops and the middleware falls back
 
 - For a receiver-only setup without a transmitter, see [SDR - HLS Playback over 5G Broadcast](./hls-playback-5gbc).
 - For the service announcement formats used in the middleware configuration, see [Service Announcement Formats](../additional/rt-common-shared/MBMS-service-announcement-files).
-- Return to the [5G Broadcast project index](../).
+- Return to the [Tutorials index](./).

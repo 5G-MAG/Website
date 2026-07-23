@@ -13,9 +13,13 @@ description: Explains the portal's structure and subcategories (Scope, Roadmap, 
   <path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0"/><path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0"/><path d="M3 6l0 13"/><path d="M12 6l0 13"/><path d="M21 6l0 13"/></svg>
 </div>
 <div class="topic-banner__text">
-<span class="topic-banner__kicker">Developer</span>
+<span class="topic-banner__kicker">Software Accelerator</span>
 <h1>Using this documentation</h1>
 </div>
+</div>
+
+<div class="topic-lead">
+How this portal is structured, and a suggested workflow for finding your way around it.
 </div>
 
 This documentation follows a hierarchical structure to help you navigate the 5G-MAG ecosystem efficiently. Reference Tools, Applications and Testbeds each have their own project list; every project follows the same set of subcategories covering specifications, related projects, repository links, usage instructions, and hands-on tutorials.

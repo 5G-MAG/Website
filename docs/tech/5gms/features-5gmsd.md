@@ -117,7 +117,7 @@ The dynamic policies feature enables the 5GMS Client in the UE to manipulate the
 
 | Reference Point | Procedure clause (TS 26.510) | API                                                                                                                        | API clause (TS 26.512) |
 | --------------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
-| M1              | 5.2.2                        | [Provisioning Sessions API](https://jdegre.github.io/loader.html?yaml=TS26512_M1_ProvisioningSessions.yaml)                | 8.3                    |
+| M1              | 5.2.2                        | [Provisioning Sessions API](https://jdegre.github.io/loader.html?yaml=TS26512_M1_ProvisioningSessions.yaml)                | 8.2                    |
 | M1              | 5.2.7                        | [Policy Templates provisioning API](https://jdegre.github.io/loader.html?yaml=TS26512_M1_PolicyTemplatesProvisioning.yaml) | 8.7                    |
 | M5              | 5.3.2                        | [Service Access Information API](https://jdegre.github.io/loader.html?yaml=TS26512_M5_ServiceAccessInformation.yaml)       | 9.2                    |
 | M5              | 5.3.3                        | [Dynamic Policies API](https://jdegre.github.io/loader.html?yaml=TS26512_M5_DynamicPolicies.yaml)                          | 9.3                    |
@@ -134,7 +134,7 @@ The consumption reporting feature allows consumption of downlink media streaming
 
 | Reference Point | Procedure clause (TS 26.510) | API                                                                                                                                  | API clause (TS 26.512) |
 | --------------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ---------------------- |
-| M1              | 5.2.2                        | [Provisioning Sessions API](https://jdegre.github.io/loader.html?yaml=TS26512_M1_ProvisioningSessions.yaml)                          | 8.3                    |
+| M1              | 5.2.2                        | [Provisioning Sessions API](https://jdegre.github.io/loader.html?yaml=TS26512_M1_ProvisioningSessions.yaml)                          | 8.2                    |
 | M1              | 5.2.12                       | [Consumption Reporting provisioning API](https://jdegre.github.io/loader.html?yaml=TS26512_M1_ConsumptionReportingProvisioning.yaml) | 8.12                   |
 | M5              | 5.3.2                        | [Service Access Information API](https://jdegre.github.io/loader.html?yaml=TS26512_M5_ServiceAccessInformation.yaml)                 | 9.2                    |
 | M5              | 5.3.6                        | [Consumption Reporting API](https://jdegre.github.io/loader.html?yaml=TS26512_M5_ConsumptionReporting.yaml)                          | 9.6                    |
@@ -157,7 +157,7 @@ The framework defines two distinct reporting paths:
 
 | Reference Point | Procedure clause (TS 26.510) | API                                                                                                                          | API clause (TS 26.512) |
 | --------------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
-| M1              | 5.2.2                        | [Provisioning Sessions API](https://jdegre.github.io/loader.html?yaml=TS26512_M1_ProvisioningSessions.yaml)                  | 8.3                    |
+| M1              | 5.2.2                        | [Provisioning Sessions API](https://jdegre.github.io/loader.html?yaml=TS26512_M1_ProvisioningSessions.yaml)                  | 8.2                    |
 | M1              | 5.2.11                       | [Metrics Reporting provisioning API](https://jdegre.github.io/loader.html?yaml=TS26512_M1_MetricsReportingProvisioning.yaml) | 8.10                   |
 | M5              | 5.3.2                        | [Service Access Information API](https://jdegre.github.io/loader.html?yaml=TS26512_M5_ServiceAccessInformation.yaml)         | 9.2                    |
 | M5              | 5.3.5                        | [Metrics Reporting API](https://jdegre.github.io/loader.html?yaml=TS26512_M5_MetricsReporting.yaml)                          | 9.5                    |

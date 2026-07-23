@@ -82,6 +82,8 @@ The slide deck below summarises the 5G-MAG reference tools for Multicast & Broad
   <iframe loading="lazy" class="pdf-embed" src="pathname:///docs/Reference_Tools_5G_Multicast_Broadcast.pdf" title="5G Multicast Broadcast reference tools overview slide deck"></iframe>
 </div>
 
+_Slide deck: 5G Multicast Broadcast Services reference tools._
+
 [Download the Slidedeck](/docs/Reference_Tools_5G_Multicast_Broadcast.pdf)
 
 ## How the pieces fit together

@@ -16,6 +16,10 @@ description: 'Operational parameter values seen in live and trial LTE-based 5G B
 </div>
 </div>
 
+:::warning
+This documentation is currently **under development and subject to change**. It reflects outcomes elaborated by 5G-MAG members. If you are interested in becoming a member of the 5G-MAG and actively participating in shaping this work, please contact the [Project Office](/contact)
+:::
+
 ## 5G Broadcast - Operational Parameters in Use
 
 This page documents the operational parameters observed in live and trial 5G Broadcast (LTE-based evolved Multimedia Broadcast Multicast Service, eMBMS) deployments and as configured in 5G-MAG reference tool implementations. Where [Deployment Profiles](./deployment-profiles) lists the capabilities a receiver is required to support, this page records the concrete values seen in practice; read the two together.

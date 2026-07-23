@@ -10,9 +10,9 @@ import styles from './index.module.css';
 // featured row shows breadth rather than three videos from the same project.
 // The full set lives at /tech/videos.
 const ON_AIR_FEATURED = [
-  { videoId: 'AvjtVrTrWsA', title: '5G Media Streaming at IBC 2025', href: '/reference-tools/5gms/tutorials#on-air' },
-  { videoId: 'dZaUAhYZTUU', title: '5G Broadcast at FOKUS Media Web Symposium 2024', href: '/reference-tools/5g-broadcast/tutorials#on-air' },
-  { videoId: 'RvHWQht-7Q4', title: 'XR Media with MPEG-I Scene Description at IBC 2025', href: '/reference-tools/xr/tutorials#on-air' },
+  { videoId: 'AvjtVrTrWsA', title: '5G Media Streaming at IBC 2025', href: '/reference-tools/5gms/tutorials#developer-exchange' },
+  { videoId: 'dZaUAhYZTUU', title: '5G Broadcast at FOKUS Media Web Symposium 2024', href: '/reference-tools/5g-broadcast/tutorials#developer-exchange' },
+  { videoId: 'RvHWQht-7Q4', title: 'XR Media with MPEG-I Scene Description at IBC 2025', href: '/reference-tools/xr/tutorials#developer-exchange' },
 ];
 
 const icon = (paths) => (

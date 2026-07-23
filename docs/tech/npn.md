@@ -119,6 +119,7 @@ There are no deeper NPN analysis pages on this portal yet: the content above is 
 ## Related
 
 - [Time Sensitive Communications](./tsc): deterministic transport, often combined with an NPN for live production traffic.
+- [Standards: Non-Public Networks](/tech/standards/npn): the standards-tracking view of this topic.
 
 :::note
 Refer to the [Tech](https://github.com/5G-MAG/Tech/) repository to contribute to this documentation.

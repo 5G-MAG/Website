@@ -1,6 +1,5 @@
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
-import HubHero from '@site/src/components/HubHero';
 import styles from '../tech/index.module.css';
 
 const icon = (paths) => (
@@ -227,12 +226,14 @@ export default function Applications() {
       title="Applications"
       description="Overview of 5G-MAG's application areas: streaming, broadcast, multicast, XR, volumetric video, and network APIs."
     >
-      <HubHero
-        title="Application Prototypes"
-        icon={APPS_ICON_PATH}
-      />
-
       <div className="container" style={{ marginTop: '1.75rem' }}>
+        <div className="topic-banner">
+          <div className="topic-banner__icon-wrap">{icon(APPS_ICON_PATH)}</div>
+          <div className="topic-banner__text">
+            <span className="topic-banner__kicker">Software Accelerator</span>
+            <h1>Application Prototypes</h1>
+          </div>
+        </div>
         <p className="topic-lead">Curated combinations of Reference Tools assembled into a working service to show value when applied to a use case.</p>
       </div>
 

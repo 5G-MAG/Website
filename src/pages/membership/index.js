@@ -193,7 +193,7 @@ export default function Membership() {
             <div className="summary-container">
               {FACTS.map((f) => (
                 <div key={f.label} className="summary-card">
-                  <h4>{f.label}</h4>
+                  <h3>{f.label}</h3>
                   <span className="summary-value">{f.value}</span>
                   {f.sub && <span className="stats-sub">{f.sub}</span>}
                 </div>

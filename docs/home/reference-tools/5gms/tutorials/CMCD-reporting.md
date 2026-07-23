@@ -16,15 +16,17 @@ description: Configures the 5GMSd Application Server to forward CMCD data from m
 </div>
 </div>
 
-## Introduction
+:::tip[In short]
+This tutorial allows to: Enable CMCD Reporting for 5G Media Streaming.
+:::
+
+**What you will build:** a 5GMSd deployment where the Application Server extracts CMCD from media requests and forwards it to the cmcd-toolkit collector, which you view on a Grafana dashboard.
 
 CMCD Reporting enables the collection of CMCD(Common Media Client Data, [CTA-5004](https://cdn.cta.tech/cta/media/media/resources/standards/pdfs/cta-5004-final.pdf)) from the media player and the forwarding of CMCD metrics through the 5G Media Streaming system for monitoring and analysis.
 
 CMCD information is reported in-band with media requests using HTTP query parameters or request headers, and is extracted by the Application Server during normal media delivery. The Application Server then forwards the collected and formatted CMCD metrics to a CMCD Collector, where they can be visualized via a dashboard for analyzing media session behavior and content delivery characteristics.
 
 This tutorial describes how to set up and enable CMCD Reporting in the Reference Tools, and how to access the CMCD dashboard.
-
-**What you will build:** a 5GMSd deployment where the Application Server extracts CMCD from media requests and forwards it to the cmcd-toolkit collector, which you view on a Grafana dashboard.
 
 ## Prerequisites
 

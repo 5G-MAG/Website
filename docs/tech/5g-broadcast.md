@@ -80,17 +80,17 @@ LTE-based 5G Broadcast is a profile of existing 3GPP Long Term Evolution (LTE) s
 
 </div>
 
+[Execution Plan](https://github.com/orgs/5G-MAG/projects/44/views/7)
+
 The slide deck below summarises the 5G-MAG reference tools for LTE-based 5G Broadcast (transmitter and receiver chain).
 
 <div class="pdf-embed-wrapper">
   <iframe loading="lazy" class="pdf-embed" src="pathname:///docs/Reference_Tools_5G_Broadcast.pdf" title="5G Broadcast reference tools overview slide deck"></iframe>
 </div>
 
+_Slide deck: LTE-based 5G Broadcast reference tools._
+
 [Download the Slidedeck](/docs/Reference_Tools_5G_Broadcast.pdf)
-
-## Execution Plan
-
-[Execution Plan](https://github.com/orgs/5G-MAG/projects/44/views/7)
 
 ---
 

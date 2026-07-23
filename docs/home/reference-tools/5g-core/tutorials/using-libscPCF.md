@@ -1,7 +1,7 @@
 ---
 title: Using libscPCF
 hide_title: true
-sidebar_position: 1
+sidebar_position: 0
 description: Run the pcf-policyauthorization tool to request a QoS policy via the BSF and PCF, confirming an AppSessionContext is created.
 ---
 

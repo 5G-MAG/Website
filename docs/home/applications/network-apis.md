@@ -15,6 +15,10 @@ description: Real, assembled applications built on 5G-MAG's network API referenc
 </div>
 </div>
 
+<div class="topic-lead">
+A real application built on 5G-MAG's network API reference tools, using CAMARA APIs for live contribution and remote production.
+</div>
+
 ## Overview
 
 An Application, on this site, is a real working scenario assembled from one or more Reference Tools, pointed at a concrete use case, rather than a single tool's own tutorial in isolation. This category covers one such scenario built on 5G-MAG's network API reference tools: a media application requesting network behaviour directly through standard CAMARA APIs, for live contribution and remote production, instead of relying on operator-specific arrangements agreed in advance. For acronyms used here, see the [Glossary](/tech/glossary).

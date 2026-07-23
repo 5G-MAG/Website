@@ -1,7 +1,7 @@
 ---
 title: SDR Platforms srsRAN
 hide_title: true
-sidebar_position: 0
+sidebar_position: 1
 description: Covers installing and verifying BladeRF, LimeSDR and HackRF One SDR hardware for use with srsRAN-based tools like rt-mbms-modem.
 ---
 

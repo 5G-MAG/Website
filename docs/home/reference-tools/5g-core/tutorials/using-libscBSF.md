@@ -1,7 +1,7 @@
 ---
 title: Using libscBSF
 hide_title: true
-sidebar_position: 0
+sidebar_position: 2
 description: Introduces libscBSF, the BSF service consumer library, noting its dedicated tutorial is in progress and pointing to the libscPCF tutorial instead.
 ---
 
@@ -19,6 +19,8 @@ description: Introduces libscBSF, the BSF service consumer library, noting its d
 </div>
 </div>
 
+## Introduction
+
 **libscBSF** is the Binding Support Function (BSF) service consumer library. The BSF maps a device's PDU Session to the Policy Control Function (PCF) that is serving it, so an application can discover the right PCF (via the Network Repository Function, NRF) and then look up which PCF is managing the session for a given device IP address.
 
 :::warning
@@ -26,3 +28,8 @@ This dedicated tutorial is under development.
 :::
 
 You do not need to wait for it to see libscBSF in action: the [Using libscPCF](./using-libscPCF) tutorial already exercises libscBSF, because the PCF Policy Authorization tool uses the BSF to discover the PCF for a device before requesting a QoS policy. Follow that tutorial for a working end-to-end example.
+
+## Next steps
+
+- [Using libscPCF](./using-libscPCF): the recommended worked example, which already exercises libscBSF.
+- [Tutorials index](.): the full set of 5G Core Service Consumer tutorials.

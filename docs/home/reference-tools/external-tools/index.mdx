@@ -5,6 +5,8 @@ title: External Tools
 sidebar_position: -1
 description: Lists third-party tools that complement the Reference Tools, currently featuring the DVB NIP Analyzer for DVB-NIP/FLUTE streams.
 ---
+import OnAirTeaser from '@site/src/components/OnAirTeaser';
+
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -22,12 +24,19 @@ description: Lists third-party tools that complement the Reference Tools, curren
 <div class="topic-lead">
 This section provides information about third-party tools that can be used in conjunction with the Reference Tools.
 </div>
+<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href="/reference-tools/external-tools/scope" style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href="/reference-tools/external-tools/resources" style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href="/reference-tools/external-tools/tutorials" style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/external-tools/tutorials#developer-exchange" style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
 Tools listed here can enhance the functionality and usability of the Reference Tools, help with testing and evaluation, and provide additional features for multimedia content delivery.
 
+:::tip[Where to start]
+- **Scope** for what belongs on this list and why it differs from the other Reference Tools sections — see [Scope](./scope).
+- **Resources** for where each tool's own source lives — see [Resources](./resources).
+- **Tutorials** for the Developer Exchange video — see [Tutorials](./tutorials).
+:::
+
 ## DVB NIP Analyzer
 
-Related to: [**Multimedia Content Delivery Protocols**](/reference-tools/multimedia)
+Related to: [**Multimedia Delivery Protocols**](/reference-tools/multimedia)
 
 The DVB NIP Analyzer is a tool for analyzing and testing DVB-NIP streams. It can be used to inspect FLUTE sessions and
 understand the structure of the transmitted data.
@@ -40,10 +49,14 @@ The video below demonstrates the DVB NIP Analyzer inspecting a DVB-NIP stream.
 
 ## Developer Exchange
 
-By Yannick Poirier (SES)
+<OnAirTeaser videoId="FSiWpyTgT5M" title="Developer Exchange" by="Yannick Poirier (SES)" href="/reference-tools/external-tools/tutorials#developer-exchange" />
 
-<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/FSiWpyTgT5M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+## Related
 
----
+- [Scope](./scope) - what belongs on this list and why it differs from the other Reference Tools sections
+- [Resources](./resources) - where each tool's own source lives
+- [Tutorials](./tutorials) - the Developer Exchange video
 
+:::note
 This list will grow over time. If you know of a third-party tool that works well with the Reference Tools, propose it through the [Getting-Started](https://github.com/5G-MAG/Getting-Started/) repository.
+:::

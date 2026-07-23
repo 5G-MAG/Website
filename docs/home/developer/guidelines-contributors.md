@@ -13,9 +13,13 @@ description: Explains how to raise issues, fork, branch using Gitflow, and submi
   <path d="M9.5 14.5l2 2l4 -4"/><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2"/><path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"/></svg>
 </div>
 <div class="topic-banner__text">
-<span class="topic-banner__kicker">Developer</span>
+<span class="topic-banner__kicker">Software Accelerator</span>
 <h1>Guidelines for Contributors</h1>
 </div>
+</div>
+
+<div class="topic-lead">
+How to raise issues, fork, branch using Gitflow, and submit pull requests to the 5G-MAG Reference Tools.
 </div>
 
 Contributing follows a simple flow: raise an issue, fork the repository, create a branch, and open a pull request (PR) back to the project. Anyone can raise issues, but a signed Contributor License Agreement (CLA) is required before your code can be merged (see [Open-Source Software Licenses](/developer/license)). The sections below walk through each step and the branching model we use.

@@ -553,7 +553,7 @@
     {
       "repo_slug": "rt-ai-ml-evaluation-framework",
       "display_name": "AI and ML Evaluation Framework",
-      "description": "This repository holds code related to the implementation of the AI/ML evaluation framework as defined in 3GPP SA4 TR26.927.",
+      "description": "This repository holds code related to the implementation of the AI/ML evaluation framework as defined in 3GPP SA4 TR 26.847 (Release 19, completed; supersedes the earlier, incomplete draft tracked as TR 26.927).",
       "repo_url": "https://github.com/5G-MAG/rt-ai-ml-evaluation-framework",
       "branch": "main",
       "license": "5G-MAG PL v1.0",
@@ -710,23 +710,16 @@
       "description": "This repository holds auxiliary tools common to various projects.",
       "repo_url": "https://github.com/5G-MAG/rt-common-shared",
       "branch": "main",
-      "license": "5G-MAG PL v1.0",
+      "license": "Multiple",
       "standards": [],
-      "dependencies": [],
-      "software": [],
-      "public": true,
-      "is_auxiliary": false
-    },
-    {
-      "repo_slug": "rt-5gms-application-provider",
-      "display_name": "5GMS Application Provider",
-      "description": "This repository provides multiple tools to interact with the 5GMS Application Function: Command Line Interface Tool; Management UI; Postman Collection; QoE Metrics Reporting UI.",
-      "repo_url": "https://github.com/5G-MAG/rt-5gms-application-provider",
-      "branch": "main",
-      "license": "5G-MAG PL v1.0",
-      "standards": [],
-      "dependencies": [],
-      "software": [],
+      "dependencies": [
+        "ExpressJS",
+        "Open5GS"
+      ],
+      "software": [
+        "Cloud",
+        "Linux"
+      ],
       "public": true,
       "is_auxiliary": false
     },

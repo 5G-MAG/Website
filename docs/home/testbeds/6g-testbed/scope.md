@@ -172,7 +172,7 @@ emulator.clear()
 
 In this example, `apply_profile("poor_cellular", ...)` sets the downlink (egress) impairments from the `poor_cellular` profile, while `ingress_profile="5g_urban"` applies a different profile to the reverse (ingress) direction, so uplink and downlink can be shaped independently. After the tests run, `clear()` removes all impairments and returns the interface to normal.
 
-## AI Traffic characterization testbed
+## AI Traffic Characterization testbed
 
 The testbed provides an end-to-end framework to run scenarios, emulate network conditions, and log metrics in a reproducible manner.
 

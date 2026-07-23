@@ -74,7 +74,7 @@ The public-warning feature tracks the same release line as the underlying 5G Bro
 - The CBS message realisation follows **3GPP TS 23.041** (ETWS/CMAS message structure, message identifiers, serial numbers, data coding).
 - The SIB12 encoding on the radio interface follows **3GPP TS 36.331** (E-UTRA RRC), which defines SystemInformationBlockType12 and the UE actions on receiving it.
 
-Confirm the exact version and feature coverage against the [Resources](./resources) page and the [Resources](./resources) page rather than inferring it from the release names above.
+Confirm the exact version and feature coverage against the [Resources](./resources) page rather than inferring it from the release names above.
 
 ## Getting started
 
@@ -122,8 +122,10 @@ The diagram below shows the alert path: an alert is passed to the transmitter, e
 
 _Figure: alert to transmitter, encoded as CBS in SIB12, broadcast over FeMBMS, and presented on the receiving device._
 
-[Emergency Alerts over 5G Broadcast: Resources](../emergency-alerts/resources)
-[3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
+Repositories used in this architecture:
+
+- [Emergency Alerts over 5G Broadcast: Resources](./resources)
+- [3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
 
 :::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): ETSI TS 103 720 clause 5.15.3.3, 3GPP TS 23.041 clause 9.4.1.2.2, the CMAS message identifier value 0x1102 and its warning-type mapping, and 3GPP TS 36.331 clauses 5.2.2.19 and 6.3.1. Verify against the 3GPP/ETSI work plan and the current repository code before publication.
@@ -131,7 +133,6 @@ These identifiers on this page were not confirmed against a primary source (the 
 
 ## Related
 
-- [Resources](./resources)
 - [Resources](./resources)
 - [Tutorials](./tutorials)
 - Related project: [5G Broadcast - TV and Radio Services](../5g-broadcast)

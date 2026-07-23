@@ -59,7 +59,7 @@ export const SECTION_NAV = [
         label: 'Community',
         href: '/developer#community',
         children: [
-          { label: 'How to Contribute', href: '/developer/how-to-use' },
+          { label: 'Using this Documentation', href: '/developer/how-to-use' },
           { label: 'Guidelines for Contributors', href: '/developer/guidelines-contributors' },
           { label: 'Releases', href: '/developer/releases' },
           { label: 'Pull Requests', href: '/developer/pull-requests' },
@@ -91,6 +91,7 @@ export const SECTION_NAV = [
       { label: 'Liaison Statements & Inputs', href: '/standards/ls' },
       { label: 'Workshops supporting Standardization', href: '/standards/workshops' },
       { label: 'Requirements & Workshop Inputs', href: '/standards/requirements' },
+      { label: 'Meetings with 3GPP SA4', href: '/standards/3gpp-issue-tracking' },
     ],
   },
   {

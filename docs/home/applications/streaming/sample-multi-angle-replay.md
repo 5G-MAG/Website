@@ -16,15 +16,17 @@ description: A structural sample demonstrating the proposed layout for showcase-
 </div>
 </div>
 
+<div class="topic-lead">
+A structural sample showing the proposed layout for showcase-style tutorials — illustrative only, not a real, verified application.
+</div>
+
 :::danger[This is a structural sample, not a real showcase]
 Every section below is illustrative placeholder content, written only to demonstrate the proposed page structure for "Showcase" tutorials. No application described here has actually been built or verified. This page should be replaced once a real showcase exists for this project.
 :::
 
 ## The idea
 
-<div class="topic-lead">
 It's the 82nd minute and the only camera you're watching is whichever one the broadcast director picked. <strong>What if the viewer picked instead?</strong> Pitch-side, tactical overhead, or locked on their favourite player — same live moment, their choice of angle, switched instantly during a replay.
-</div>
 
 _(Illustrative scenario — pick whatever real use case you want the actual showcase to demonstrate. The point of this section is one punchy paragraph that makes someone want to keep reading, not a requirements list.)_
 
@@ -94,4 +96,4 @@ Once it's running, this is where a showcase invites tinkering rather than just r
 
 - [5GMSd (with Docker)](/reference-tools/5gms/tutorials/end-to-end)
 - [5G Media Streaming with Consumption Reporting](/reference-tools/5gms/tutorials/consumption-reporting)
-- [Back to Streaming, Media Delivery & Data Collection](..)
+- [Back to Media Streaming, Multicast & Real-Time Communications](..)

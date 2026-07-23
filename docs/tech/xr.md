@@ -98,7 +98,7 @@ The following resources are available:
 ### General information about XR and MPEG-I Scene Description
 
 - [**Overview on MPEG-I Scene Description**](./xr/mpeg-i-scene-description)
-- **VideoTech:** [Teaser on 5G and XR (3GPP Release 16/17/18)](./videos)
+- **VideoTech:** [Teaser on 5G and XR (3GPP Release 16/17/18)](./videos#teaser-on-5g-and-xr-3gpp-release-161718)
 
 ## Technical foundations
 
