@@ -16,7 +16,7 @@ description: Overview of the 5G Media Streaming (5GMSd) architecture, reference 
 </div>
 </div>
 
-<div style="margin: 8px 0"><a class="button button--outline button--primary" href="/reference-tools/5gms/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/5gms/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/reference-tools/5gms/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/5gms/tutorials#developer-exchange" style="margin: 2px 4px 2px 0">Developer Exchange</a></div>
+<div style="margin: 8px 0"><a class="button button--primary" href="/reference-tools/5gms/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/5gms/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/reference-tools/5gms/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/5gms/tutorials#developer-exchange" style="margin: 2px 4px 2px 0">Developer Exchange</a></div>
 
 5G Media Streaming (5GMS) is a 3GPP framework for high-quality, efficient delivery of media, supporting services from Mobile Network Operators (MNOs) and third parties in both Downlink (5GMSd) and Uplink (5GMSu) Media Streaming. The 5GMS architecture is functionally divided into independent components, enabling deployments with various degrees of integration between 5G MNOs and Content Providers. For acronyms used here, see the [Glossary](/tech/glossary).
 

@@ -18,7 +18,7 @@ description: Specifications and architecture diagrams for delivering DASH, HLS, 
 </div>
 </div>
 
-<div style="margin: 8px 0"><a class="button button--outline button--primary" href="/reference-tools/multimedia/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/multimedia/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/reference-tools/multimedia/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/multimedia/tutorials#developer-exchange" style="margin: 2px 4px 2px 0">Developer Exchange</a></div>
+<div style="margin: 8px 0"><a class="button button--primary" href="/reference-tools/multimedia/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/multimedia/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/reference-tools/multimedia/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/multimedia/tutorials#developer-exchange" style="margin: 2px 4px 2px 0">Developer Exchange</a></div>
 
 This page contains information such as the specifications within the scope of the tools and high-level architectures that bring context to their applicability.
 

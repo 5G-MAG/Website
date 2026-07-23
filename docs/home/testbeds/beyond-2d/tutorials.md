@@ -16,7 +16,7 @@ description: Notes that step-by-step tutorials aren't yet published for the Beyo
 </div>
 </div>
 
-<div style="margin: 8px 0"><a class="button button--outline button--primary" href="/testbeds/beyond-2d/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/testbeds/beyond-2d/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/testbeds/beyond-2d/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a></div>
+<div style="margin: 8px 0"><a class="button button--outline button--primary" href="/testbeds/beyond-2d/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/testbeds/beyond-2d/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--primary" href="/testbeds/beyond-2d/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a></div>
 
 Step-by-step tutorials for the Beyond 2D Evaluation Framework are not yet published on this portal. In the meantime, the setup and usage instructions live in the repository README files.
 

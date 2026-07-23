@@ -16,7 +16,7 @@ description: Lists the shared helper tools in rt-common-shared (5GMS, MBMS, Simp
 </div>
 </div>
 
-<div style="margin: 8px 0"><a class="button button--outline button--primary" href="/reference-tools/common-tools/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/common-tools/resources" style="margin: 2px 4px 2px 0">Resources</a></div>
+<div style="margin: 8px 0"><a class="button button--primary" href="/reference-tools/common-tools/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/common-tools/resources" style="margin: 2px 4px 2px 0">Resources</a></div>
 
 Common Tools are shared helper repositories (scripts, example configurations and build utilities) that support several Reference Tools rather than implementing a specification of their own. You normally arrive here from a specific tool's own setup steps, not by starting here — each entry below names the project it supports; refer to that project's own Scope page for more context.
 

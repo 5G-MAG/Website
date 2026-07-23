@@ -19,7 +19,7 @@ description: Lists the CAMARA network API (Dedicated Networks) covered by the Ne
 </div>
 </div>
 
-<div style="margin: 8px 0"><a class="button button--outline button--primary" href="/reference-tools/network-apis/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/network-apis/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/reference-tools/network-apis/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/network-apis/tutorials#developer-exchange" style="margin: 2px 4px 2px 0">Developer Exchange</a></div>
+<div style="margin: 8px 0"><a class="button button--primary" href="/reference-tools/network-apis/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/network-apis/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/reference-tools/network-apis/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/network-apis/tutorials#developer-exchange" style="margin: 2px 4px 2px 0">Developer Exchange</a></div>
 
 This page lists the specifications within the scope of the Network APIs reference implementation, and which CAMARA API each covered capability maps to.
 

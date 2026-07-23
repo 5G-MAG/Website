@@ -21,7 +21,7 @@ description: Details which MPEG-I Scene Description (ISO/IEC 23090-14) features 
 </div>
 </div>
 
-<div style="margin: 8px 0"><a class="button button--outline button--primary" href="/reference-tools/xr/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/xr/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/reference-tools/xr/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/xr/tutorials#developer-exchange" style="margin: 2px 4px 2px 0">Developer Exchange</a></div>
+<div style="margin: 8px 0"><a class="button button--primary" href="/reference-tools/xr/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/xr/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/reference-tools/xr/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/xr/tutorials#developer-exchange" style="margin: 2px 4px 2px 0">Developer Exchange</a></div>
 
 This page contains information such as the specifications within the scope of the tools, high-level architectures that bring context to their applicability, features under implementation,...
 

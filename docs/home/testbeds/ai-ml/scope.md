@@ -21,7 +21,7 @@ description: Explains the AI/ML Evaluation Framework's focus areas, repositories
 </div>
 </div>
 
-<div style="margin: 8px 0"><a class="button button--outline button--primary" href="/testbeds/ai-ml/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/testbeds/ai-ml/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/testbeds/ai-ml/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a></div>
+<div style="margin: 8px 0"><a class="button button--primary" href="/testbeds/ai-ml/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/testbeds/ai-ml/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/testbeds/ai-ml/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a></div>
 
 This page sets out what the AI/ML Evaluation Framework covers: its current focus areas, the repositories it is built from, and how it relates to 5G-MAG's standards work.
 

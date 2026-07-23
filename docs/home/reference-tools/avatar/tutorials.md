@@ -24,7 +24,7 @@ description: Getting-started walkthrough for bringing up the avatar call demo en
 </div>
 </div>
 
-<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href="/reference-tools/avatar/scope" style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href="/reference-tools/avatar/resources" style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href="/reference-tools/avatar/tutorials" style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/avatar/tutorials#developer-exchange" style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
+<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href="/reference-tools/avatar/scope" style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href="/reference-tools/avatar/resources" style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--primary" href="/reference-tools/avatar/tutorials" style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/avatar/tutorials#developer-exchange" style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
 This page sequences a first, end-to-end run of the avatar call demo: two participants exchanging an MPEG ARF avatar over a call, built from the components and repositories described on the [Scope](./scope) and [Resources](./resources) pages.
 

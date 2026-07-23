@@ -16,7 +16,7 @@ description: Explains the Beyond 2D Evaluation Framework's test scenarios, codec
 </div>
 </div>
 
-<div style="margin: 8px 0"><a class="button button--outline button--primary" href="/testbeds/beyond-2d/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/testbeds/beyond-2d/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/testbeds/beyond-2d/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a></div>
+<div style="margin: 8px 0"><a class="button button--primary" href="/testbeds/beyond-2d/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/testbeds/beyond-2d/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/testbeds/beyond-2d/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a></div>
 
 This page describes the specifications within the scope of the Beyond 2D tools and the context for how they are meant to be used.
 

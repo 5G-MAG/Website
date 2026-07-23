@@ -21,7 +21,7 @@ description: Quickstart pointing to the shared 6G Testbed walkthrough for what i
 </div>
 </div>
 
-<div style="margin: 8px 0"><a class="button button--outline button--primary" href="/testbeds/ai-ml/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/testbeds/ai-ml/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/testbeds/ai-ml/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a></div>
+<div style="margin: 8px 0"><a class="button button--outline button--primary" href="/testbeds/ai-ml/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/testbeds/ai-ml/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--primary" href="/testbeds/ai-ml/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a></div>
 
 The AI/ML Evaluation Framework's own repository, [5G-MAG/rt-ai-ml-evaluation-framework](https://github.com/5G-MAG/rt-ai-ml-evaluation-framework), is currently private, so this page cannot yet walk through AI/ML-specific commands against it. What you can run today is the shared 6G Testbed, which the AI/ML Evaluation Framework builds on for network emulation and AI traffic characterisation.
 

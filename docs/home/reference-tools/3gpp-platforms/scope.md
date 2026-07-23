@@ -19,7 +19,7 @@ description: Explains which RAN and Core components 5G-MAG builds, and how the s
 </div>
 </div>
 
-<div style="margin: 8px 0"><a class="button button--outline button--primary" href="/reference-tools/3gpp-platforms/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/3gpp-platforms/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/reference-tools/3gpp-platforms/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/3gpp-platforms/tutorials#developer-exchange" style="margin: 2px 4px 2px 0">Developer Exchange</a></div>
+<div style="margin: 8px 0"><a class="button button--primary" href="/reference-tools/3gpp-platforms/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/3gpp-platforms/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/reference-tools/3gpp-platforms/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/3gpp-platforms/tutorials#developer-exchange" style="margin: 2px 4px 2px 0">Developer Exchange</a></div>
 
 ## Overview
 
