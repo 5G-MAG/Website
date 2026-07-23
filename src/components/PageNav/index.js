@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import Link from '@docusaurus/Link';
 import { useLocation } from '@docusaurus/router';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { stripBaseUrl } from '@site/src/data/sectionNav';
 import styles from './styles.module.css';
 
 function isActive(pathname, href) {
@@ -156,7 +158,9 @@ function NavDropdown({ item, pathname }) {
 // Kept as its own component since SectionNav needs exactly this
 // rendering/active-state logic and nothing page-specific.
 export default function PageNav({ title, titleHref, items }) {
-  const { pathname } = useLocation();
+  const { pathname: rawPathname } = useLocation();
+  const { siteConfig } = useDocusaurusContext();
+  const pathname = stripBaseUrl(rawPathname, siteConfig.baseUrl);
   return (
     <nav className={styles.pageNav} aria-label="Section navigation">
       <div className={`container ${styles.navRow}`}>

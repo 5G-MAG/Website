@@ -1,7 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { useLocation } from '@docusaurus/router';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import PageNav from '@site/src/components/PageNav';
-import { SECTION_NAV } from '@site/src/data/sectionNav';
+import { SECTION_NAV, stripBaseUrl } from '@site/src/data/sectionNav';
 
 function matchesPrefix(pathname, prefix) {
   return pathname === prefix || pathname.startsWith(`${prefix}/`);
@@ -24,7 +25,9 @@ function matchesPrefix(pathname, prefix) {
 // on top of --ifm-navbar-height. Kept at 0px whenever no section matches
 // (most pages), so the sidebar sits exactly where it always did.
 export default function SectionNav() {
-  const { pathname } = useLocation();
+  const { pathname: rawPathname } = useLocation();
+  const { siteConfig } = useDocusaurusContext();
+  const pathname = stripBaseUrl(rawPathname, siteConfig.baseUrl);
   const section = SECTION_NAV.find((s) => s.prefixes.some((p) => matchesPrefix(pathname, p)));
   const ref = useRef(null);
 

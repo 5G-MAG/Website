@@ -10,6 +10,22 @@
 // to that section's hub — `title` text matches the corresponding top-navbar
 // item's own label where one exists (src/theme/navItems.js), so the same
 // section is never named two different ways across the page.
+// useLocation().pathname is the raw browser path, which includes baseUrl
+// (e.g. '/Website/structure' while baseUrl is '/Website/' for interim
+// testing) -- but every prefix/href above is written root-relative
+// ('/structure'), matching baseUrl ':' '/' (the eventual production
+// state). Both consumers of SECTION_NAV (SectionNav and the navbar's
+// sliding indicator) need to strip baseUrl before matching, or every
+// comparison silently fails and the section nav disappears entirely --
+// exactly what happened when baseUrl became '/Website/'. Centralized here
+// so there's one implementation, not two copies drifting apart.
+export function stripBaseUrl(pathname, baseUrl) {
+  if (!baseUrl || baseUrl === '/') return pathname;
+  if (pathname === baseUrl || pathname === baseUrl.slice(0, -1)) return '/';
+  if (pathname.startsWith(baseUrl)) return `/${pathname.slice(baseUrl.length)}`;
+  return pathname;
+}
+
 export const SECTION_NAV = [
   {
     prefixes: ['/about', '/contact', '/partnerships', '/structure'],

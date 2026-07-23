@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { useLocation } from '@docusaurus/router';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { ErrorCauseBoundary, ThemeClassNames } from '@docusaurus/theme-common';
 import { splitNavbarItems, useNavbarMobileSidebar } from '@docusaurus/theme-common/internal';
 import NavbarItem from '@theme/NavbarItem';
@@ -12,7 +13,7 @@ import NavbarSearch from '@theme/Navbar/Search';
 import { GITHUB_ICON, SLACK_ICON, LINKEDIN_ICON, LOCK_ICON, SEARCH_ICON } from '../../socialIcons';
 import { SLACK_INVITE_URL } from '../../../data/socialLinks';
 import { useNavbarItems } from '../../navItems';
-import { SECTION_NAV } from '../../../data/sectionNav';
+import { SECTION_NAV, stripBaseUrl } from '../../../data/sectionNav';
 import styles from './styles.module.css';
 
 // Same route-family concept as SectionNav's own matching (a section's pill
@@ -33,12 +34,12 @@ function resolveSectionHref(pathname) {
   return section?.titleHref;
 }
 
-function findLinkByHref(container, href) {
+function findLinkByHref(container, href, baseUrl) {
   if (!container || !href) return null;
   const links = container.querySelectorAll('a.navbar__link');
   for (const link of links) {
     try {
-      if (new URL(link.href, window.location.origin).pathname === href) return link;
+      if (stripBaseUrl(new URL(link.href, window.location.origin).pathname, baseUrl) === href) return link;
     } catch {
       // Ignore unparseable hrefs (shouldn't happen for same-origin nav links).
     }
@@ -172,7 +173,9 @@ function SlidingIndicatorGroup({ items }) {
   const containerRef = useRef(null);
   const restingRef = useRef(null);
   const [indicator, setIndicator] = useState({ opacity: 0 });
-  const { pathname } = useLocation();
+  const { pathname: rawPathname } = useLocation();
+  const { siteConfig } = useDocusaurusContext();
+  const pathname = stripBaseUrl(rawPathname, siteConfig.baseUrl);
 
   const measure = (el) => {
     const container = containerRef.current;
@@ -186,7 +189,8 @@ function SlidingIndicatorGroup({ items }) {
     const container = containerRef.current;
     const sectionHref = resolveSectionHref(pathname);
     const activeEl =
-      findLinkByHref(container, sectionHref) ?? container?.querySelector('.navbar__link--active');
+      findLinkByHref(container, sectionHref, siteConfig.baseUrl) ??
+      container?.querySelector('.navbar__link--active');
     const rect = measure(activeEl);
     restingRef.current = rect;
     setIndicator(rect ? { ...rect, opacity: 1 } : { opacity: 0 });

@@ -416,7 +416,11 @@ const config = {
 
   themeConfig: {
     image: 'img/social-card.png',
-    colorMode: { respectPrefersColorScheme: true },
+    // Light by default for every first-time visitor, regardless of their
+    // OS/browser dark-mode preference (respectPrefersColorScheme: false)
+    // -- the manual toggle in the navbar still works and is remembered
+    // (localStorage) for anyone who switches to dark themselves.
+    colorMode: { defaultMode: 'light', respectPrefersColorScheme: false },
     docs: {
       sidebar: {
         autoCollapseCategories: true,
