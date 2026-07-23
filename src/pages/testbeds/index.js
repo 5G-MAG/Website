@@ -131,7 +131,7 @@ export default function Testbeds() {
             <p className={styles.sectionSubtitle}>
               Access arrangements differ per testbed (some are open, others are available on request
               or through the community channels) — see{' '}
-              <Link to="/developer#community">Developer Community</Link> for how to get in touch.
+              <Link to="/developer/community">Developer Community</Link> for how to get in touch.
             </p>
             <div className={styles.activityGrid}>
               {TESTBED_PROJECTS.map((p) => (

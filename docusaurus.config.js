@@ -480,7 +480,7 @@ const config = {
             { label: 'Applications', to: '/applications' },
             { label: 'Reference Tools', to: '/reference-tools' },
             { label: 'Testbeds', to: '/testbeds' },
-            { label: 'Community', to: '/developer#community' },
+            { label: 'Community', to: '/developer/community' },
             { label: 'Open-Source Licenses', to: '/developer/license' },
             { label: 'GitHub Getting-Started', href: 'https://github.com/5G-MAG/Getting-Started' },
           ],

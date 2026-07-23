@@ -89,7 +89,7 @@ export const SECTION_NAV = [
     items: [
       { label: 'Reference Tools', href: '/reference-tools' },
       { label: 'Testbeds', href: '/testbeds' },
-      { label: 'Community', href: '/developer#community' },
+      { label: 'Community', href: '/developer/community' },
     ],
   },
   {
@@ -99,7 +99,7 @@ export const SECTION_NAV = [
     items: [
       { label: 'Testbeds', href: '/testbeds' },
       { label: 'Applications', href: '/applications' },
-      { label: 'Community', href: '/developer#community' },
+      { label: 'Community', href: '/developer/community' },
     ],
   },
   {
@@ -109,7 +109,7 @@ export const SECTION_NAV = [
     items: [
       { label: 'Reference Tools', href: '/reference-tools' },
       { label: 'Applications', href: '/applications' },
-      { label: 'Community', href: '/developer#community' },
+      { label: 'Community', href: '/developer/community' },
     ],
   },
   {
