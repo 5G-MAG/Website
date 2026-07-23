@@ -706,7 +706,7 @@ export default function Home() {
               </Link>
               <Link
                 className="button button--outline button--primary button--lg"
-                to="/developer/community-stats"
+                to="/developer/community#community-stats"
               >
                 Community Stats
               </Link>
@@ -826,7 +826,7 @@ export default function Home() {
                 </h2>
                 <p className={styles.releasesUpdated}>Updated: {releasesData.updated_at}</p>
               </div>
-              <Link className={styles.releasesViewAll} to="/developer/releases">
+              <Link className={styles.releasesViewAll} to="/developer/community#releases">
                 View all releases &rarr;
               </Link>
             </div>

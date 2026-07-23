@@ -1,7 +1,6 @@
-import Layout from '@theme/Layout';
 import communityStatsData from '@site/static/data/community-stats.json';
 import { activityLabel } from '@site/src/utils/communityStats';
-import styles from './community-stats.module.css';
+import styles from './styles.module.css';
 
 const STATUS_CLASSES = {
   Active: styles.statusActive,
@@ -17,7 +16,7 @@ function repoStatus(pushedAt) {
 function SummaryCard({ label, value, icon }) {
   return (
     <div className={styles.summaryCard}>
-      <h4>{label}</h4>
+      <h3>{label}</h3>
       <span className={styles.summaryValue}>
         {icon} {value}
       </span>
@@ -50,7 +49,7 @@ function ProjectTable({ project }) {
   return (
     <div className={styles.projectSection}>
       <div className={styles.projectSectionHeader}>
-        <h2 className={styles.projectSectionTitle}>{project.name}</h2>
+        <h3 className={styles.projectSectionTitle}>{project.name}</h3>
         {project.doc_url && (
           <a className="button button--outline button--primary button--sm" href={project.doc_url}>
             Documentation
@@ -81,7 +80,12 @@ function ProjectTable({ project }) {
   );
 }
 
-export default function CommunityStatsPage() {
+// Content-only (no Layout/page-header) version of the former standalone
+// /developer/community-stats page, for use as one section of the
+// consolidated /developer/community page. Not to be confused with
+// src/components/CommunityStats, the per-project stats table embedded on
+// individual reference-tool pages -- this is the sitewide overview.
+export default function CommunityStatsBoard() {
   const projects = communityStatsData.projects.filter((p) => p.repos.length > 0);
   const allRepos = projects.flatMap((p) => p.repos);
   const totals = allRepos.reduce(
@@ -94,41 +98,25 @@ export default function CommunityStatsPage() {
     { stars: 0, forks: 0, views: 0, clones: 0 }
   );
 
+  if (communityStatsData.updated_at === null) {
+    return <p>Community stats aren&apos;t available yet. Check back soon.</p>;
+  }
+
   return (
-    <Layout
-      title="Community Stats"
-      description="Per-repository GitHub activity metrics across all 5G-MAG Reference Tools projects"
-    >
-      <main>
-        <div className={styles.header}>
-          <div className="container">
-            <h1 className={styles.title}>Community Stats</h1>
-            <p className={styles.subtitle}>
-              Per-repository activity across every Reference Tools project.
-              {communityStatsData.updated_at
-                ? ` Updated: ${communityStatsData.updated_at}.`
-                : ' Not yet synced.'}
-            </p>
-          </div>
-        </div>
-        <div className="container padding-bottom--xl">
-          {communityStatsData.updated_at === null ? (
-            <p>Community stats aren&apos;t available yet. Check back soon.</p>
-          ) : (
-            <>
-              <div className={styles.summaryContainer}>
-                <SummaryCard label="Total Stars" value={totals.stars} icon="⭐" />
-                <SummaryCard label="Total Forks" value={totals.forks} icon="🍴" />
-                <SummaryCard label="Total Views" value={totals.views} icon="👀" />
-                <SummaryCard label="Total Clones" value={totals.clones} icon="📥" />
-              </div>
-              {projects.map((project) => (
-                <ProjectTable key={project.name} project={project} />
-              ))}
-            </>
-          )}
-        </div>
-      </main>
-    </Layout>
+    <>
+      <p>
+        Per-repository activity across every Reference Tools project. Updated:{' '}
+        {communityStatsData.updated_at}.
+      </p>
+      <div className={styles.summaryContainer}>
+        <SummaryCard label="Total Stars" value={totals.stars} icon="⭐" />
+        <SummaryCard label="Total Forks" value={totals.forks} icon="🍴" />
+        <SummaryCard label="Total Views" value={totals.views} icon="👀" />
+        <SummaryCard label="Total Clones" value={totals.clones} icon="📥" />
+      </div>
+      {projects.map((project) => (
+        <ProjectTable key={project.name} project={project} />
+      ))}
+    </>
   );
 }

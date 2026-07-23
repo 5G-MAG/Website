@@ -1,7 +1,6 @@
 import Link from '@docusaurus/Link';
-import Layout from '@theme/Layout';
 import releasesData from '@site/static/data/releases.json';
-import styles from './releases.module.css';
+import styles from './styles.module.css';
 
 function daysSince(dateStr) {
   if (!dateStr || dateStr === '-') return 9999;
@@ -31,8 +30,6 @@ function ProjectCard({ project }) {
     .sort((a, b) => b.date.localeCompare(a.date))[0];
   const days = latest ? daysSince(latest.date) : 9999;
   const repoCount = project.releases.length;
-  // Dependency has no doc_url — it's a shared-fork category, not a
-  // first-class reference-tool project with its own docs page.
   const releaseUrl = project.doc_url ? project.doc_url + (project.releases_slug || 'resources') : null;
 
   return (
@@ -123,7 +120,10 @@ function TimelineEntry({ release, projectName, projectDocUrl }) {
   );
 }
 
-export default function ReleasesPage() {
+// Content-only (no Layout/page-header) version of the former standalone
+// /developer/releases page, for use as one section of the consolidated
+// /developer/community page.
+export default function CommunityReleases() {
   const allReleases = releasesData.projects
     .flatMap((project) =>
       project.releases
@@ -132,55 +132,39 @@ export default function ReleasesPage() {
     )
     .sort((a, b) => b.date.localeCompare(a.date));
 
-  return (
-    <Layout
-      title="Releases"
-      description="Latest releases across all 5G-MAG reference tool projects"
-    >
-      <main>
-        <div className={styles.header}>
-          <div className="container">
-            <h1 className={styles.title}>Releases</h1>
-            <p className={styles.subtitle}>
-              Latest releases across all 5G-MAG reference tool projects.
-              {releasesData.updated_at
-                ? ` Updated: ${releasesData.updated_at}`
-                : ' Not yet synced.'}
-            </p>
-          </div>
-        </div>
-        <div className="container">
-          {releasesData.updated_at === null ? (
-            <p>
-              Release data hasn&apos;t been generated yet. Run{' '}
-              <code>node scripts/fetch-releases.js</code> locally, or wait for the nightly{' '}
-              <code>Update Data</code> workflow to populate this page.
-            </p>
-          ) : (
-            <>
-              <div className={styles.grid}>
-                {releasesData.projects.map((project) => (
-                  <ProjectCard key={project.name} project={project} />
-                ))}
-              </div>
+  if (releasesData.updated_at === null) {
+    return (
+      <p>
+        Release data hasn&apos;t been generated yet. Run{' '}
+        <code>node scripts/fetch-releases.js</code> locally, or wait for the nightly{' '}
+        <code>Update Data</code> workflow to populate this section.
+      </p>
+    );
+  }
 
-              <div className={styles.timelineSection}>
-                <h2 className={styles.timelineSectionTitle}>Chronological Release History</h2>
-                <div className={styles.timeline}>
-                  {allReleases.map((r, i) => (
-                    <TimelineEntry
-                      key={`${r.repo}-${r.tag}-${i}`}
-                      release={r}
-                      projectName={r.projectName}
-                      projectDocUrl={r.projectDocUrl}
-                    />
-                  ))}
-                </div>
-              </div>
-            </>
-          )}
+  return (
+    <>
+      <p>
+        Latest releases across all 5G-MAG reference tool projects. Updated: {releasesData.updated_at}.
+      </p>
+      <div className={styles.grid}>
+        {releasesData.projects.map((project) => (
+          <ProjectCard key={project.name} project={project} />
+        ))}
+      </div>
+      <div className={styles.timelineSection}>
+        <h3 className={styles.timelineSectionTitle}>Chronological Release History</h3>
+        <div className={styles.timeline}>
+          {allReleases.map((r, i) => (
+            <TimelineEntry
+              key={`${r.repo}-${r.tag}-${i}`}
+              release={r}
+              projectName={r.projectName}
+              projectDocUrl={r.projectDocUrl}
+            />
+          ))}
         </div>
-      </main>
-    </Layout>
+      </div>
+    </>
   );
 }

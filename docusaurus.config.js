@@ -97,7 +97,7 @@ const config = {
           // Group/GitHub links, all already offered by /developer's own
           // "Join the Community" section) — retired 2026-07-18 in favor
           // of that section, linked via the #community anchor.
-          { to: '/developer', from: ['/community', '/developer/community'] },
+          { to: '/developer', from: ['/community'] },
         ],
         createRedirects(existingPath) {
           const PREFIX_MAP = [
@@ -107,44 +107,40 @@ const config = {
               '/events/public-call',
               ['/community/public-call', '/developer/public-call', '/tech/public-call'],
             ],
-            // How-to-use, guidelines, Contributors and License moved BACK
-            // from /community (and /license) to /developer (2026-07-18 hub
-            // reorg) — each of these had already been at this same
-            // /developer/* path once before (the very first,
-            // pre-domain-consolidation location), so all prior aliases
-            // redirect straight to it again.
-            ['/developer/how-to-use', '/community/how-to-use'],
-            ['/developer/guidelines-contributors', '/community/guidelines-contributors'],
-            ['/developer/contributors', ['/community/contributors', '/contributors']],
             ['/developer/license', '/license'],
-            // The old docs-based "Activity Dashboard" pages were placeholder
-            // tables with no automation ever behind them (confirmed: no
-            // script populated them, and Pull Requests had no data source
-            // at all). Retired 2026-07-18 in favor of real synced pages —
-            // /developer/releases and /developer/contributors already
-            // existed; Pull Requests, Community Stats and Roadmap were
-            // newly built, backed by fetch scripts ported from the
-            // corresponding (working) automation in the old
-            // 5G-MAG/Getting-Started and 5G-MAG/Tech repos.
+            // How-to-use, Guidelines for Contributors, Releases, Pull
+            // Requests, Community Stats, Roadmap and Top Contributors
+            // (formerly 7 separate /developer/* pages, each with its own
+            // history of prior aliases going back to /community/* and
+            // /dashboard/* from earlier reorgs) were consolidated into one
+            // page, /developer/community (2026-07-23), removing the need
+            // for the "Community" nav item's dropdown. Every prior alias
+            // for any of the 7, plus the 7 pages' own now-retired direct
+            // slugs, redirect straight to the new consolidated page.
             [
-              '/developer/releases',
+              '/developer/community',
               [
+                '/community/how-to-use',
+                '/developer/how-to-use',
+                '/community/guidelines-contributors',
+                '/developer/guidelines-contributors',
+                '/community/contributors',
+                '/contributors',
+                '/developer/contributors',
                 '/developer/dashboard/software-releases',
                 '/community/dashboard/software-releases',
                 '/dashboard/software-releases',
-              ],
-            ],
-            [
-              '/developer/pull-requests',
-              [
+                '/developer/releases',
                 '/developer/dashboard/pull-requests',
                 '/community/dashboard/pull-requests',
                 '/dashboard/pull-requests',
+                '/developer/pull-requests',
+                '/developer/dashboard',
+                '/community/dashboard',
+                '/dashboard',
+                '/developer/community-stats',
+                '/developer/roadmap',
               ],
-            ],
-            [
-              '/developer/community-stats',
-              ['/developer/dashboard', '/community/dashboard', '/dashboard'],
             ],
             // Liaison Statements, Glossary, Methodology and 3GPP Work Items
             // moved from /tech/standards/* to /standards/* (2026-07-18 hub

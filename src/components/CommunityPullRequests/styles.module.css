@@ -1,26 +1,5 @@
-.header {
-  background:
-    linear-gradient(to right, rgba(0, 0, 0, 0.62) 45%, rgba(0, 0, 0, 0.18) 100%),
-    linear-gradient(to right, #003580 0%, #00a0d2 100%);
-  padding: 3rem 0 2.5rem;
-  margin-bottom: 2.5rem;
-}
-
-.title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #fff;
-  margin: 0 0 0.5rem;
-}
-
-.subtitle {
-  font-size: 1rem;
-  color: #fff;
-  margin: 0;
-}
-
 .projectSection {
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 
 .projectSectionHeader {
@@ -33,7 +12,7 @@
 }
 
 .projectSectionTitle {
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   font-weight: 700;
   margin: 0;
 }

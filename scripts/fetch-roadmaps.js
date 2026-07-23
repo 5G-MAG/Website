@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Refreshes static/data/roadmaps.json from the org-wide GitHub Projects
-// board (5G-MAG project #44), for the /developer/roadmap page. Ported from
+// board (5G-MAG project #44), for the Roadmap section of /developer/community. Ported from
 // 5G-MAG/Tech's "Sync Project Boards" workflow (Jekyll _data/roadmaps.json),
 // with cursor-based pagination added since a 100-item single page is easy
 // for a long-running board to exceed over time.

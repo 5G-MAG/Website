@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Refreshes static/data/community-stats.json: per-repo stars, forks, open
 // issues and traffic (views/clones) across the curated project repos, for
-// the /developer/community-stats page. Ported from the equivalent step in
+// the Community Stats section of /developer/community. Ported from the equivalent step in
 // 5G-MAG/Getting-Started's old "Sync Repo Data" workflow (Jekyll
 // _data/community_stats.json).
 //

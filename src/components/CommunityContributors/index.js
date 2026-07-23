@@ -1,6 +1,5 @@
-import Layout from '@theme/Layout';
 import contributorsData from '@site/static/data/contributors.json';
-import styles from './contributors.module.css';
+import styles from './styles.module.css';
 
 function SpotlightCard({ c, rank }) {
   return (
@@ -45,49 +44,38 @@ function RankRow({ c, rank, maxContributions }) {
   );
 }
 
-export default function ContributorsPage() {
+// Content-only (no Layout/page-header) version of the former standalone
+// /developer/contributors page, for use as one section of the
+// consolidated /developer/community page.
+export default function CommunityContributors() {
   const { contributors, updated_at, repo_count } = contributorsData;
   const spotlight = contributors.slice(0, 4);
   const rest = contributors.slice(4, 20);
   const maxContributions = contributors.length > 0 ? contributors[0].contributions : 1;
 
+  if (contributors.length === 0) {
+    return <p>Contributor stats aren&apos;t available yet. Check back soon.</p>;
+  }
+
   return (
-    <Layout
-      title="Top Contributors"
-      description="Contributors ranked by activity across all 5G-MAG repositories"
-    >
-      <main>
-        <div className={styles.header}>
-          <div className="container">
-            <h1 className={styles.title}>Top Contributors</h1>
-            <p className={styles.subtitle}>
-              Ranked by commits across every public 5G-MAG repository
-              {repo_count ? ` (${repo_count} repositories)` : ''}.
-              {updated_at ? ` Updated: ${updated_at}.` : ' Not yet synced.'}
-            </p>
-          </div>
+    <>
+      <p>
+        Ranked by commits across every public 5G-MAG repository
+        {repo_count ? ` (${repo_count} repositories)` : ''}.
+        {updated_at ? ` Updated: ${updated_at}.` : ' Not yet synced.'}
+      </p>
+      <div className={styles.spotlightGrid}>
+        {spotlight.map((c, i) => (
+          <SpotlightCard key={c.login} c={c} rank={i + 1} />
+        ))}
+      </div>
+      {rest.length > 0 && (
+        <div className={styles.rankList}>
+          {rest.map((c, i) => (
+            <RankRow key={c.login} c={c} rank={i + 5} maxContributions={maxContributions} />
+          ))}
         </div>
-        <div className="container padding-bottom--xl">
-          {contributors.length === 0 ? (
-            <p>Contributor stats aren&apos;t available yet. Check back soon.</p>
-          ) : (
-            <>
-              <div className={styles.spotlightGrid}>
-                {spotlight.map((c, i) => (
-                  <SpotlightCard key={c.login} c={c} rank={i + 1} />
-                ))}
-              </div>
-              {rest.length > 0 && (
-                <div className={styles.rankList}>
-                  {rest.map((c, i) => (
-                    <RankRow key={c.login} c={c} rank={i + 5} maxContributions={maxContributions} />
-                  ))}
-                </div>
-              )}
-            </>
-          )}
-        </div>
-      </main>
-    </Layout>
+      )}
+    </>
   );
 }

@@ -1,29 +1,8 @@
-.header {
-  background:
-    linear-gradient(to right, rgba(0, 0, 0, 0.62) 45%, rgba(0, 0, 0, 0.18) 100%),
-    linear-gradient(to right, #003580 0%, #00a0d2 100%);
-  padding: 3rem 0 2.5rem;
-  margin-bottom: 2.5rem;
-}
-
-.title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #fff;
-  margin: 0 0 0.5rem;
-}
-
-.subtitle {
-  font-size: 1rem;
-  color: #fff;
-  margin: 0;
-}
-
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
-  padding-bottom: 3rem;
+  padding-bottom: 1rem;
 }
 
 @media (max-width: 996px) {
@@ -107,14 +86,14 @@
 /* ── Timeline ─────────────────────────────────────────────────────── */
 
 .timelineSection {
-  padding: 2rem 0 4rem;
+  padding: 1.5rem 0 2rem;
   border-top: 1px solid var(--ifm-color-emphasis-200);
 }
 
 .timelineSectionTitle {
-  font-size: 1.4rem;
+  font-size: 1.25rem;
   font-weight: 700;
-  margin: 0 0 1.75rem;
+  margin: 0 0 1.5rem;
 }
 
 .timeline {

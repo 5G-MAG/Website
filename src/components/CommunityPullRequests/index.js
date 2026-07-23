@@ -1,6 +1,5 @@
-import Layout from '@theme/Layout';
 import pullRequestsData from '@site/static/data/pull-requests.json';
-import styles from './pull-requests.module.css';
+import styles from './styles.module.css';
 
 function daysSince(dateStr) {
   if (!dateStr) return 9999;
@@ -64,7 +63,7 @@ function ProjectSection({ project }) {
   return (
     <div className={styles.projectSection}>
       <div className={styles.projectSectionHeader}>
-        <h2 className={styles.projectSectionTitle}>{project.name}</h2>
+        <h3 className={styles.projectSectionTitle}>{project.name}</h3>
         {project.doc_url && (
           <a className="button button--outline button--primary button--sm" href={project.doc_url}>
             Documentation
@@ -80,37 +79,27 @@ function ProjectSection({ project }) {
   );
 }
 
-export default function PullRequestsPage() {
+// Content-only (no Layout/page-header) version of the former standalone
+// /developer/pull-requests page, for use as one section of the
+// consolidated /developer/community page.
+export default function CommunityPullRequests() {
   const projects = pullRequestsData.projects.filter((p) => p.pulls.length > 0);
   const total = pullRequestsData.projects.reduce((n, p) => n + p.pulls.length, 0);
 
+  if (pullRequestsData.updated_at === null) {
+    return <p>Pull request data isn&apos;t available yet. Check back soon.</p>;
+  }
+
   return (
-    <Layout
-      title="Open Pull Requests"
-      description="Open pull requests across all 5G-MAG Reference Tools projects"
-    >
-      <main>
-        <div className={styles.header}>
-          <div className="container">
-            <h1 className={styles.title}>Open Pull Requests</h1>
-            <p className={styles.subtitle}>
-              {total} open across every Reference Tools project.
-              {pullRequestsData.updated_at
-                ? ` Updated: ${pullRequestsData.updated_at}.`
-                : ' Not yet synced.'}
-            </p>
-          </div>
-        </div>
-        <div className="container padding-bottom--xl">
-          {pullRequestsData.updated_at === null ? (
-            <p>Pull request data isn&apos;t available yet. Check back soon.</p>
-          ) : projects.length === 0 ? (
-            <p>No open pull requests across any tracked project right now.</p>
-          ) : (
-            projects.map((project) => <ProjectSection key={project.name} project={project} />)
-          )}
-        </div>
-      </main>
-    </Layout>
+    <>
+      <p>
+        {total} open across every Reference Tools project. Updated: {pullRequestsData.updated_at}.
+      </p>
+      {projects.length === 0 ? (
+        <p>No open pull requests across any tracked project right now.</p>
+      ) : (
+        projects.map((project) => <ProjectSection key={project.name} project={project} />)
+      )}
+    </>
   );
 }

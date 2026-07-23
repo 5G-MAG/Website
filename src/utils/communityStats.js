@@ -1,5 +1,5 @@
 // Shared "how recently was this repo pushed to" classification, used by both
-// the /developer/community-stats overview page and the per-project
+// the Community Stats section of /developer/community and the per-project
 // CommunityStats component embedded on each Reference Tool/Testbed index.
 export function daysSince(dateStr) {
   if (!dateStr) return 9999;

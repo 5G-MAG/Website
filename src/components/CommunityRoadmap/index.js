@@ -1,6 +1,5 @@
-import Layout from '@theme/Layout';
 import roadmapData from '@site/static/data/roadmaps.json';
-import styles from './roadmap.module.css';
+import styles from './styles.module.css';
 
 // Fixed display order for the statuses this project board actually uses;
 // anything else (custom or renamed statuses) is appended after, so a board
@@ -42,7 +41,7 @@ function StatusColumn({ status, items }) {
   return (
     <div className={styles.statusColumn}>
       <div className={styles.statusColumnHeader}>
-        <h2 className={styles.statusColumnTitle}>{status}</h2>
+        <h3 className={styles.statusColumnTitle}>{status}</h3>
         <span className={styles.statusCount}>{items.length}</span>
       </div>
       <div className={styles.itemList}>
@@ -54,42 +53,32 @@ function StatusColumn({ status, items }) {
   );
 }
 
-export default function RoadmapPage() {
+// Content-only (no Layout/page-header) version of the former standalone
+// /developer/roadmap page, for use as one section of the consolidated
+// /developer/community page.
+export default function CommunityRoadmap() {
   const groups = groupByStatus(roadmapData.items);
 
   return (
-    <Layout
-      title="Roadmap"
-      description="Major features tracked on the 5G-MAG Reference Tools Roadmaps project board"
-    >
-      <main>
-        <div className={styles.header}>
-          <div className="container">
-            <h1 className={styles.title}>Roadmap</h1>
-            <p className={styles.subtitle}>
-              Major features tracked on the{' '}
-              <a href="https://github.com/orgs/5G-MAG/projects/48" target="_blank" rel="noreferrer">
-                Reference Tools Roadmaps board
-              </a>
-              .
-              {roadmapData.updated_at ? ` Updated: ${roadmapData.updated_at}.` : ' Not yet synced.'}
-            </p>
-          </div>
+    <>
+      <p>
+        Major features tracked on the{' '}
+        <a href="https://github.com/orgs/5G-MAG/projects/48" target="_blank" rel="noreferrer">
+          Reference Tools Roadmaps board
+        </a>
+        .{roadmapData.updated_at ? ` Updated: ${roadmapData.updated_at}.` : ' Not yet synced.'}
+      </p>
+      {roadmapData.updated_at === null ? (
+        <p>Roadmap data isn&apos;t available yet. Check back soon.</p>
+      ) : roadmapData.items.length === 0 ? (
+        <p>No items found on the board right now.</p>
+      ) : (
+        <div className={styles.board}>
+          {groups.map((group) => (
+            <StatusColumn key={group.status} status={group.status} items={group.items} />
+          ))}
         </div>
-        <div className="container padding-bottom--xl">
-          {roadmapData.updated_at === null ? (
-            <p>Roadmap data isn&apos;t available yet. Check back soon.</p>
-          ) : roadmapData.items.length === 0 ? (
-            <p>No items found on the board right now.</p>
-          ) : (
-            <div className={styles.board}>
-              {groups.map((group) => (
-                <StatusColumn key={group.status} status={group.status} items={group.items} />
-              ))}
-            </div>
-          )}
-        </div>
-      </main>
-    </Layout>
+      )}
+    </>
   );
 }
