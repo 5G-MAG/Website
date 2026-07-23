@@ -7,6 +7,7 @@ description: Landing page for the DASH, HLS, and CMAF multimedia delivery refere
 ---
 import CommunityStats from '@site/src/components/CommunityStats';
 import OnAirTeaser from '@site/src/components/OnAirTeaser';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 
 <div class="topic-banner">
@@ -25,7 +26,7 @@ import OnAirTeaser from '@site/src/components/OnAirTeaser';
 <div class="topic-lead">
 Reference tools for multimedia content delivery protocols, covering DASH (Dynamic Adaptive Streaming over HTTP), HLS (HTTP Live Streaming), and CMAF (Common Media Application Format).
 </div>
-<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href="/reference-tools/multimedia/scope" style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href="/reference-tools/multimedia/resources" style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href="/reference-tools/multimedia/tutorials" style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/multimedia/tutorials#developer-exchange" style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
+<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/multimedia/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/multimedia/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/multimedia/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/multimedia/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
 These tools address the application-layer delivery protocols that sit above the 5G transport, ensuring interoperability across content formats, packaging standards, and player implementations. The project is designed to support any delivery protocol; it currently implements FLUTE and ROUTE, used respectively for file and real-time object delivery over 5G Broadcast and 5G Multicast Broadcast Services (MBS). Useful for developers validating DASH/HLS players, packagers, and Content Delivery Network (CDN) integrations in 5G environments.
 
@@ -65,7 +66,7 @@ See the Reference Tools in action, with a community video from the tutorials pag
 <OnAirTeaser
   videoId="9jHwMHVm3PM"
   title="FLUTE support in the GPAC multimedia framework"
-  href="/reference-tools/multimedia/tutorials#developer-exchange"
+  href={useBaseUrl('/reference-tools/multimedia/tutorials#developer-exchange')}
 />
 
 ## Related

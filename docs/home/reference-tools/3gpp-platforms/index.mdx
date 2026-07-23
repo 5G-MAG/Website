@@ -6,6 +6,7 @@ sidebar_position: -1
 description: Reference platform tools for deploying a lab 5G RAN and Core network, built on Open5GS and srsRAN.
 ---
 import CommunityStats from '@site/src/components/CommunityStats';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -25,7 +26,7 @@ import CommunityStats from '@site/src/components/CommunityStats';
 Reference platform tools for deploying 5G Radio Access Network (RAN) and Core network components in a lab or testbed environment.
 </div>
 
-<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href="/reference-tools/3gpp-platforms/scope" style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href="/reference-tools/3gpp-platforms/resources" style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href="/reference-tools/3gpp-platforms/tutorials" style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/3gpp-platforms/tutorials#developer-exchange" style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
+<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/3gpp-platforms/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/3gpp-platforms/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/3gpp-platforms/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/3gpp-platforms/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
 The project provides configurations, scripts, and integration guides for standing up 3GPP-compliant RAN and Core (5G Core, 5GC) stacks, forming the network infrastructure layer on which the other 5G-MAG reference tools run. It is useful for developers who need a complete 5G system to validate end-to-end media delivery pipelines. 5G-MAG builds these platforms on established open-source projects (Open5GS for the core, srsRAN for the radio) so members can reproduce a working network without commercial equipment.
 

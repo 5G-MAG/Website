@@ -6,6 +6,7 @@ description: Landing page for Emergency Alerts tutorials, linking to the end-to-
 ---
 
 import VideoGrid from '@site/src/components/VideoGrid';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 export const communityVideos = [
   {
@@ -47,28 +48,28 @@ export const communityVideos = [
 <div style={{ margin: '8px 0' }}>
   <a
     class="button button--outline button--primary"
-    href="/reference-tools/emergency-alerts/scope"
+    href={useBaseUrl('/reference-tools/emergency-alerts/scope')}
     style={{ margin: '2px 4px 2px 0' }}
   >
     Scope
   </a>{' '}
   <a
     class="button button--outline button--primary"
-    href="/reference-tools/emergency-alerts/resources"
+    href={useBaseUrl('/reference-tools/emergency-alerts/resources')}
     style={{ margin: '2px 4px 2px 0' }}
   >
     Resources
   </a>{' '}
   <a
     class="button button--outline button--primary"
-    href="/reference-tools/emergency-alerts/tutorials"
+    href={useBaseUrl('/reference-tools/emergency-alerts/tutorials')}
     style={{ margin: '2px 4px 2px 0' }}
   >
     Tutorials
   </a>{' '}
   <a
     class="button button--outline button--primary"
-    href="/reference-tools/emergency-alerts/tutorials#developer-exchange"
+    href={useBaseUrl('/reference-tools/emergency-alerts/tutorials#developer-exchange')}
     style={{ margin: '2px 4px 2px 0' }}
   >
     Developer Exchange

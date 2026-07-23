@@ -7,6 +7,7 @@ description: Introduces the UE Data Collection, Reporting and Event Exposure pro
 ---
 import CommunityStats from '@site/src/components/CommunityStats';
 import OnAirTeaser from '@site/src/components/OnAirTeaser';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 
 <div class="topic-banner">
@@ -27,7 +28,7 @@ import OnAirTeaser from '@site/src/components/OnAirTeaser';
 <div class="topic-lead">
 Reference implementation of the User Equipment (UE) side data collection, reporting, and event exposure framework defined in 3GPP TS 26.531 and TS 26.532.
 </div>
-<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href="/reference-tools/data-collection/scope" style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href="/reference-tools/data-collection/resources" style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href="/reference-tools/data-collection/tutorials" style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/data-collection/tutorials#developer-exchange" style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
+<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/data-collection/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/data-collection/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/data-collection/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/data-collection/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
 The tools enable 5G devices to collect, aggregate, and report media performance metrics (playback quality, buffer events, network conditions, and consumption data) to the 5G Media Streaming Application Function (AF). This data feeds network-assisted Quality of Experience (QoE) optimisation, analytics dashboards, and adaptive policy decisions.
 
@@ -58,7 +59,7 @@ The tools enable 5G devices to collect, aggregate, and report media performance 
 
 Hear from the team building this:
 
-<OnAirTeaser videoId="ZpktgeRCqNY" title="Docker Setup with Insomnia REST Client - UE Data Collection" href="/reference-tools/data-collection/tutorials#developer-exchange" />
+<OnAirTeaser videoId="ZpktgeRCqNY" title="Docker Setup with Insomnia REST Client - UE Data Collection" href={useBaseUrl('/reference-tools/data-collection/tutorials#developer-exchange')} />
 
 ## Community Stats
 

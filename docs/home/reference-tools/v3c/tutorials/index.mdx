@@ -6,6 +6,7 @@ description: Tutorial for building the V3C Unity player for Android with DASH st
 ---
 
 import VideoGrid from '@site/src/components/VideoGrid';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 export const communityVideos = [
   { id: '4C9bySDoVqA', title: 'MPEG V3C Immersive Platform at IBC 2025' },
@@ -48,28 +49,28 @@ export const communityVideos = [
 <div style={{ margin: '8px 0' }}>
   <a
     class="button button--outline button--primary"
-    href="/reference-tools/v3c/scope"
+    href={useBaseUrl('/reference-tools/v3c/scope')}
     style={{ margin: '2px 4px 2px 0' }}
   >
     Scope
   </a>{' '}
   <a
     class="button button--outline button--primary"
-    href="/reference-tools/v3c/resources"
+    href={useBaseUrl('/reference-tools/v3c/resources')}
     style={{ margin: '2px 4px 2px 0' }}
   >
     Resources
   </a>{' '}
   <a
     class="button button--outline button--primary"
-    href="/reference-tools/v3c/tutorials"
+    href={useBaseUrl('/reference-tools/v3c/tutorials')}
     style={{ margin: '2px 4px 2px 0' }}
   >
     Tutorials
   </a>{' '}
   <a
     class="button button--outline button--primary"
-    href="/reference-tools/v3c/tutorials#developer-exchange"
+    href={useBaseUrl('/reference-tools/v3c/tutorials#developer-exchange')}
     style={{ margin: '2px 4px 2px 0' }}
   >
     Developer Exchange

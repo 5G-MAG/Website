@@ -7,6 +7,7 @@ description: Landing page for the 5G MBS reference tools (3GPP Rel-17/18), linki
 ---
 import CommunityStats from '@site/src/components/CommunityStats';
 import OnAirTeaser from '@site/src/components/OnAirTeaser';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 
 <div class="topic-banner">
@@ -27,7 +28,7 @@ import OnAirTeaser from '@site/src/components/OnAirTeaser';
 <div class="topic-lead">
 Reference implementation of the 5G Multicast Broadcast Services (MBS) user service layer targeting 3GPP Release 17 and 18.
 </div>
-<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href="/reference-tools/5g-mbs/scope" style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href="/reference-tools/5g-mbs/resources" style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href="/reference-tools/5g-mbs/tutorials" style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/5g-mbs/tutorials#developer-exchange" style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
+<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5g-mbs/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5g-mbs/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5g-mbs/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5g-mbs/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
 Unlike LTE-based 5G Broadcast (evolved Multimedia Broadcast Multicast Service, eMBMS), 5G MBS is natively integrated into the 5G Core (5GC) and New Radio (NR) Radio Access Network (RAN), enabling efficient point-to-multipoint delivery of live TV, software updates, and emergency information. The tools cover MBS service announcements, session management, and media delivery over both multicast and broadcast modes as defined in [TS 26.502](https://www.3gpp.org/dynareport/26502.htm).
 
@@ -66,7 +67,7 @@ The slide deck below introduces the 5G MBS reference tools, their architecture a
 
 See the reference tools in action in this community video.
 
-<OnAirTeaser videoId="e_xK_ckkhgc" title="Demonstrating MBS User Service Announcement mechanisms - Reference Tools" href="/reference-tools/5g-mbs/tutorials#developer-exchange" by="Dev Audsin, David Waring and Richard Bradbury (BBC R&D)" />
+<OnAirTeaser videoId="e_xK_ckkhgc" title="Demonstrating MBS User Service Announcement mechanisms - Reference Tools" href={useBaseUrl('/reference-tools/5g-mbs/tutorials#developer-exchange')} by="Dev Audsin, David Waring and Richard Bradbury (BBC R&D)" />
 
 ## Community Stats
 

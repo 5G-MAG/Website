@@ -7,6 +7,7 @@ description: Overview of the 5G Broadcast Emergency Alerts reference implementat
 ---
 import CommunityStats from '@site/src/components/CommunityStats';
 import OnAirTeaser from '@site/src/components/OnAirTeaser';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 
 <div class="topic-banner">
@@ -25,7 +26,7 @@ import OnAirTeaser from '@site/src/components/OnAirTeaser';
 <div class="topic-lead">
 Reference implementation for delivering public warning and emergency alert messages over 5G Broadcast infrastructure.
 </div>
-<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href="/reference-tools/emergency-alerts/scope" style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href="/reference-tools/emergency-alerts/resources" style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href="/reference-tools/emergency-alerts/tutorials" style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/emergency-alerts/tutorials#developer-exchange" style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
+<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/emergency-alerts/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/emergency-alerts/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/emergency-alerts/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/emergency-alerts/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
 The tools enable authorities and broadcasters to distribute alerts to all receivers in a coverage area simultaneously (without requiring a data connection or active SIM) using the Cell Broadcast Service (CBS) transported over LTE-based 5G Broadcast, also known as Further evolved Multimedia Broadcast Multicast Service (FeMBMS). The work builds on top of the 5G Broadcast - TV and Radio Services platform and has been demonstrated in broadcast network setups; for the current implementation status, see the caveat on the [Scope](./scope) page.
 
@@ -64,7 +65,7 @@ See the Reference Tools in action, with a community video from the tutorials pag
 <OnAirTeaser
   videoId="hkVgL8yq0V8"
   title="Emergency Alerts over 5G Broadcast embedded in DVB-T2 at IBC 2025"
-  href="/reference-tools/emergency-alerts/tutorials#developer-exchange"
+  href={useBaseUrl('/reference-tools/emergency-alerts/tutorials#developer-exchange')}
 />
 
 ## Community Stats

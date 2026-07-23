@@ -7,6 +7,7 @@ description: Overview of the 5G-MAG 5GMS reference implementation, its AF/AS com
 ---
 import CommunityStats from '@site/src/components/CommunityStats';
 import OnAirTeaser from '@site/src/components/OnAirTeaser';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 
 <div class="topic-banner">
@@ -23,7 +24,7 @@ import OnAirTeaser from '@site/src/components/OnAirTeaser';
 <div class="topic-lead">
 Reference implementation of the 5G Media Streaming (5GMS) framework defined by 3GPP.
 </div>
-<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href="/reference-tools/5gms/scope" style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href="/reference-tools/5gms/resources" style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href="/reference-tools/5gms/tutorials" style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/5gms/tutorials#developer-exchange" style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
+<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5gms/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5gms/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5gms/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5gms/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
 The tools cover two server-side roles: the Application Function (AF), which handles provisioning, configuration and reporting, and the Application Server (AS), which caches and delivers the media. Both target 5G Unicast Downlink Media Streaming (5GMSd), adaptive bitrate streaming from the network to user equipment (UE). The current AF and AS implementations are based on Release 17 ([TS 26.512](https://www.3gpp.org/dynareport/26512.htm)); see the [Scope](./scope) page for the exact feature and specification coverage. Use these tools to build, test, and validate 5GMSd-compliant pipelines on 5G networks.
 
@@ -57,7 +58,7 @@ The slide deck below introduces the 5G Media Streaming project, its components a
 
 Hear from the team building this:
 
-<OnAirTeaser videoId="uEfBaTqh5vw" title="Overview of the latest updates to the 5G Media Streaming Project - Reference Tools" href="/reference-tools/5gms/tutorials#developer-exchange" by="Daniel Silhavy (5G-MAG WG DEV Chair, Fraunhofer Fokus)" />
+<OnAirTeaser videoId="uEfBaTqh5vw" title="Overview of the latest updates to the 5G Media Streaming Project - Reference Tools" href={useBaseUrl('/reference-tools/5gms/tutorials#developer-exchange')} by="Daniel Silhavy (5G-MAG WG DEV Chair, Fraunhofer Fokus)" />
 
 ## Community Stats
 

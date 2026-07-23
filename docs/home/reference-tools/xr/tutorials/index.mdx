@@ -6,6 +6,7 @@ description: 'Index of XR Unity Player tutorials: build and run the player, auth
 ---
 
 import VideoGrid from '@site/src/components/VideoGrid';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 export const communityVideos = [
   { id: 'RvHWQht-7Q4', title: 'XR Media with MPEG-I Scene Description at IBC 2025' },
@@ -44,28 +45,28 @@ export const communityVideos = [
 <div style={{ margin: '8px 0' }}>
   <a
     class="button button--outline button--primary"
-    href="/reference-tools/xr/scope"
+    href={useBaseUrl('/reference-tools/xr/scope')}
     style={{ margin: '2px 4px 2px 0' }}
   >
     Scope
   </a>{' '}
   <a
     class="button button--outline button--primary"
-    href="/reference-tools/xr/resources"
+    href={useBaseUrl('/reference-tools/xr/resources')}
     style={{ margin: '2px 4px 2px 0' }}
   >
     Resources
   </a>{' '}
   <a
     class="button button--outline button--primary"
-    href="/reference-tools/xr/tutorials"
+    href={useBaseUrl('/reference-tools/xr/tutorials')}
     style={{ margin: '2px 4px 2px 0' }}
   >
     Tutorials
   </a>{' '}
   <a
     class="button button--outline button--primary"
-    href="/reference-tools/xr/tutorials#developer-exchange"
+    href={useBaseUrl('/reference-tools/xr/tutorials#developer-exchange')}
     style={{ margin: '2px 4px 2px 0' }}
   >
     Developer Exchange

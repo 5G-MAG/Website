@@ -7,6 +7,7 @@ description: Project roadmap, GitHub repositories, packages, and latest releases
 
 import ProjectReleases from '@site/src/components/ProjectReleases';
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -20,10 +21,10 @@ import ProjectRepositories from '@site/src/components/ProjectRepositories';
 </div>
 
 <div style={{ margin: '8px 0' }}>
-  <a class="button button--outline button--primary" href="/reference-tools/5gms/scope" style={{ margin: '2px 4px 2px 0' }}>Scope</a>{' '}
-  <a class="button button--outline button--primary" href="/reference-tools/5gms/resources" style={{ margin: '2px 4px 2px 0' }}>Resources</a>{' '}
-  <a class="button button--outline button--primary" href="/reference-tools/5gms/tutorials" style={{ margin: '2px 4px 2px 0' }}>Tutorials</a>{' '}
-  <a class="button button--outline button--primary" href="/reference-tools/5gms/tutorials#developer-exchange" style={{ margin: '2px 4px 2px 0' }}>Developer Exchange</a>
+  <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5gms/scope')} style={{ margin: '2px 4px 2px 0' }}>Scope</a>{' '}
+  <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5gms/resources')} style={{ margin: '2px 4px 2px 0' }}>Resources</a>{' '}
+  <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5gms/tutorials')} style={{ margin: '2px 4px 2px 0' }}>Tutorials</a>{' '}
+  <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5gms/tutorials#developer-exchange')} style={{ margin: '2px 4px 2px 0' }}>Developer Exchange</a>
 </div>
 
 Project roadmap, source repositories, packages, and the latest releases for the 5G Media Streaming Reference Tools. Please refer to the [Scope](./scope) page for context on how these components fit together.

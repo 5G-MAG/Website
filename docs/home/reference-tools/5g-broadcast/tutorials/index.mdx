@@ -6,6 +6,7 @@ description: Index of 5G Broadcast tutorials (playback, seamless switching, Dock
 ---
 
 import VideoGrid from '@site/src/components/VideoGrid';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 export const communityVideos = [
   { id: '3iIichQmjBg', title: 'The Nakolos Core - Interoperability with Reference Tools' },
@@ -48,28 +49,28 @@ export const communityVideos = [
 <div style={{ margin: '8px 0' }}>
   <a
     class="button button--outline button--primary"
-    href="/reference-tools/5g-broadcast/scope"
+    href={useBaseUrl('/reference-tools/5g-broadcast/scope')}
     style={{ margin: '2px 4px 2px 0' }}
   >
     Scope
   </a>{' '}
   <a
     class="button button--outline button--primary"
-    href="/reference-tools/5g-broadcast/resources"
+    href={useBaseUrl('/reference-tools/5g-broadcast/resources')}
     style={{ margin: '2px 4px 2px 0' }}
   >
     Resources
   </a>{' '}
   <a
     class="button button--outline button--primary"
-    href="/reference-tools/5g-broadcast/tutorials"
+    href={useBaseUrl('/reference-tools/5g-broadcast/tutorials')}
     style={{ margin: '2px 4px 2px 0' }}
   >
     Tutorials
   </a>{' '}
   <a
     class="button button--outline button--primary"
-    href="/reference-tools/5g-broadcast/tutorials#developer-exchange"
+    href={useBaseUrl('/reference-tools/5g-broadcast/tutorials#developer-exchange')}
     style={{ margin: '2px 4px 2px 0' }}
   >
     Developer Exchange

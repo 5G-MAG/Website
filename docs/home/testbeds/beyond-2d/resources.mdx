@@ -7,6 +7,7 @@ description: Project roadmap, source repositories and latest releases for the Be
 
 import ProjectReleases from '@site/src/components/ProjectReleases';
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -22,21 +23,21 @@ import ProjectRepositories from '@site/src/components/ProjectRepositories';
 <div style={{ margin: '8px 0' }}>
   <a
     class="button button--outline button--primary"
-    href="/testbeds/beyond-2d/scope"
+    href={useBaseUrl('/testbeds/beyond-2d/scope')}
     style={{ margin: '2px 4px 2px 0' }}
   >
     Scope
   </a>{' '}
   <a
     class="button button--outline button--primary"
-    href="/testbeds/beyond-2d/resources"
+    href={useBaseUrl('/testbeds/beyond-2d/resources')}
     style={{ margin: '2px 4px 2px 0' }}
   >
     Resources
   </a>{' '}
   <a
     class="button button--outline button--primary"
-    href="/testbeds/beyond-2d/tutorials"
+    href={useBaseUrl('/testbeds/beyond-2d/tutorials')}
     style={{ margin: '2px 4px 2px 0' }}
   >
     Tutorials
