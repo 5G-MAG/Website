@@ -32,7 +32,7 @@
   font-weight: 700;
   color: #fff;
   line-height: 1.2;
-  margin: 0 0 0.6rem;
+  margin: 0 0 0.35rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -44,7 +44,7 @@
   gap: 1rem;
   flex-wrap: wrap;
   min-height: 3.25rem;
-  margin-top: 1.25rem;
+  margin-top: 0.5rem;
 }
 
 .actions :global(.button--outline.button--primary) {
