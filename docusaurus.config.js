@@ -25,22 +25,28 @@ const config = {
 
   future: { v4: true },
 
-  // Decision (2026-07-18): consolidate onto the main www.5g-mag.com domain.
-  // hub.5g-mag.com (previously live, verified resolving to GitHub Pages),
-  // tech.5g-mag.com, and getting-started.5g-mag.com are to be retired;
-  // developer.5g-mag.com is the only subdomain to remain, redirecting to
-  // /developer. NONE of that domain/DNS work can happen from this repo or
-  // this config value alone — it requires whoever manages 5G-MAG's DNS and
-  // GitHub Pages custom-domain setting to: (1) point www.5g-mag.com at this
-  // site's hosting, (2) decommission or redirect the old subdomains, and
-  // (3) set up developer.5g-mag.com as a redirect to www.5g-mag.com/developer
-  // (GitHub Pages serves one custom domain per site with no server-side
-  // per-subdomain redirect support, so that last step likely needs a small
-  // separate redirect mechanism — e.g. a DNS/CDN-level redirect rule, or a
-  // minimal static page at that domain — rather than anything Docusaurus
-  // itself can do). This line only changes what URL *this build* declares
-  // as its own canonical address (sitemap, canonical tags, OG/social URLs).
-  url: 'https://www.5g-mag.com',
+  // Decision (2026-07-18): consolidate onto the main www.5g-mag.com domain
+  // long-term. tech.5g-mag.com and getting-started.5g-mag.com are to be
+  // retired; developer.5g-mag.com is the only subdomain to remain,
+  // redirecting to /developer. NONE of that domain/DNS work can happen
+  // from this repo or this config value alone — it requires whoever
+  // manages 5G-MAG's DNS and GitHub Pages custom-domain setting to: (1)
+  // point www.5g-mag.com at this site's hosting, (2) decommission or
+  // redirect the old subdomains, and (3) set up developer.5g-mag.com as a
+  // redirect to www.5g-mag.com/developer (GitHub Pages serves one custom
+  // domain per site with no server-side per-subdomain redirect support,
+  // so that last step likely needs a small separate redirect mechanism —
+  // e.g. a DNS/CDN-level redirect rule, or a minimal static page at that
+  // domain — rather than anything Docusaurus itself can do).
+  //
+  // INTERIM (2026-07-23): serving this build under hub.5g-mag.com for
+  // testing before the www cutover above — that domain was already
+  // verified and resolving to GitHub Pages from the previous site, so
+  // reusing it needs no new DNS work, just this config value plus
+  // static/CNAME (see that file's own comment) and the custom-domain
+  // field in this repo's own Settings -> Pages. Swap both back to
+  // www.5g-mag.com when ready to cut over for real.
+  url: 'https://hub.5g-mag.com',
   baseUrl: '/',
   organizationName: '5G-MAG',
   projectName: 'Website',
