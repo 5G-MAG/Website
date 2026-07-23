@@ -46,8 +46,22 @@ export const SECTION_NAV = [
       { label: 'Our Members', href: '/membership#our-members' },
     ],
   },
+  // Every route under the Software Accelerator umbrella shares this one
+  // entry (2026-07-23) — previously /applications, /reference-tools and
+  // /testbeds each carried their own separate, shorter, self-excluding item
+  // list (missing Early Access and License, and drifting further any time
+  // one list was updated but not the others), and /early-access matched no
+  // prefix at all so it got no bar whatsoever. One shared entry, matched by
+  // every prefix in the section, is the only way this can't drift again.
   {
-    prefixes: ['/developer'],
+    prefixes: [
+      '/developer',
+      '/reference-tools',
+      '/testbeds',
+      '/applications',
+      '/early-access',
+      '/community',
+    ],
     title: 'Software Accelerator',
     titleHref: '/developer',
     items: [
@@ -55,7 +69,7 @@ export const SECTION_NAV = [
       { label: 'Applications', href: '/applications' },
       { label: 'Testbeds', href: '/testbeds' },
       { label: 'Early Access', href: '/early-access' },
-      { label: 'Community', href: '/developer/community' },
+      { label: 'Community', href: '/community' },
       { label: 'License', href: '/developer/license' },
     ],
   },
@@ -80,36 +94,6 @@ export const SECTION_NAV = [
       { label: 'Workshops supporting Standardization', href: '/standards/workshops' },
       { label: 'Requirements & Workshop Inputs', href: '/standards/requirements' },
       { label: 'Meetings with 3GPP SA4', href: '/standards/3gpp-issue-tracking' },
-    ],
-  },
-  {
-    prefixes: ['/applications'],
-    title: 'Applications',
-    titleHref: '/applications',
-    items: [
-      { label: 'Reference Tools', href: '/reference-tools' },
-      { label: 'Testbeds', href: '/testbeds' },
-      { label: 'Community', href: '/developer/community' },
-    ],
-  },
-  {
-    prefixes: ['/reference-tools'],
-    title: 'Reference Tools',
-    titleHref: '/reference-tools',
-    items: [
-      { label: 'Testbeds', href: '/testbeds' },
-      { label: 'Applications', href: '/applications' },
-      { label: 'Community', href: '/developer/community' },
-    ],
-  },
-  {
-    prefixes: ['/testbeds'],
-    title: 'Testbeds',
-    titleHref: '/testbeds',
-    items: [
-      { label: 'Reference Tools', href: '/reference-tools' },
-      { label: 'Applications', href: '/applications' },
-      { label: 'Community', href: '/developer/community' },
     ],
   },
   {

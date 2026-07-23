@@ -55,7 +55,7 @@ function StatusColumn({ status, items }) {
 
 // Content-only (no Layout/page-header) version of the former standalone
 // /developer/roadmap page, for use as one section of the consolidated
-// /developer/community page.
+// /community page.
 export default function CommunityRoadmap() {
   const groups = groupByStatus(roadmapData.items);
 

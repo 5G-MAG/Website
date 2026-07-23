@@ -122,7 +122,7 @@ function TimelineEntry({ release, projectName, projectDocUrl }) {
 
 // Content-only (no Layout/page-header) version of the former standalone
 // /developer/releases page, for use as one section of the consolidated
-// /developer/community page.
+// /community page.
 export default function CommunityReleases() {
   const allReleases = releasesData.projects
     .flatMap((project) =>

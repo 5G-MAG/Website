@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Refreshes static/data/pull-requests.json: every open PR across the
-// curated project repos, grouped by project, for the Pull Requests section of /developer/community
+// curated project repos, grouped by project, for the Pull Requests section of /community
 // page. Ported from the equivalent step in 5G-MAG/Getting-Started's old
 // "Sync Repo Data" workflow (Jekyll _data/pull_requests.json), rewritten so
 // derived fields (status color, days-open) are computed at render time

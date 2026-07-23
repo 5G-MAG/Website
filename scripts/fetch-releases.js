@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Refreshes static/data/releases.json: the latest GitHub release for
-// every repo in every 5G-MAG project, feeding the Releases section of /developer/community
+// every repo in every 5G-MAG project, feeding the Releases section of /community
 // page. Repos/projects with no public releases yet are simply omitted.
 //
 // Requires a token with public read access as SYNC_TOKEN or GITHUB_TOKEN

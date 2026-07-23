@@ -81,7 +81,7 @@ function ProjectSection({ project }) {
 
 // Content-only (no Layout/page-header) version of the former standalone
 // /developer/pull-requests page, for use as one section of the
-// consolidated /developer/community page.
+// consolidated /community page.
 export default function CommunityPullRequests() {
   const projects = pullRequestsData.projects.filter((p) => p.pulls.length > 0);
   const total = pullRequestsData.projects.reduce((n, p) => n + p.pulls.length, 0);

@@ -649,7 +649,7 @@ export default function Home() {
         title="Media Connectivity Software Accelerator"
         icon={DEV_HERO_ICON_PATH}
         actions={[
-          <Link key="community" className="button button--primary" to="/developer/community">
+          <Link key="community" className="button button--primary" to="/community">
             Developer Community
           </Link>,
           <Link
@@ -701,12 +701,12 @@ export default function Home() {
               ))}
             </div>
             <div className={styles.pillarActions}>
-              <Link className="button button--primary button--lg" to="/developer/community">
+              <Link className="button button--primary button--lg" to="/community">
                 Developer Community
               </Link>
               <Link
                 className="button button--outline button--primary button--lg"
-                to="/developer/community#community-stats"
+                to="/community#community-stats"
               >
                 Community Stats
               </Link>
@@ -826,7 +826,7 @@ export default function Home() {
                 </h2>
                 <p className={styles.releasesUpdated}>Updated: {releasesData.updated_at}</p>
               </div>
-              <Link className={styles.releasesViewAll} to="/developer/community#releases">
+              <Link className={styles.releasesViewAll} to="/community#releases">
                 View all releases &rarr;
               </Link>
             </div>

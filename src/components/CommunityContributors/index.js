@@ -46,7 +46,7 @@ function RankRow({ c, rank, maxContributions }) {
 
 // Content-only (no Layout/page-header) version of the former standalone
 // /developer/contributors page, for use as one section of the
-// consolidated /developer/community page.
+// consolidated /community page.
 export default function CommunityContributors() {
   const { contributors, updated_at, repo_count } = contributorsData;
   const spotlight = contributors.slice(0, 4);

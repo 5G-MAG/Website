@@ -92,13 +92,10 @@ const config = {
         // children of its own, so a broad ['/developer', '/community']
         // PREFIX_MAP entry would wrongly also redirect /community/<anything>
         // to /developer/<anything> for every unrelated child page).
-        redirects: [
-          // /community was its own thin standalone page (Slack/Google
-          // Group/GitHub links, all already offered by /developer's own
-          // "Join the Community" section) — retired 2026-07-18 in favor
-          // of that section, linked via the #community anchor.
-          { to: '/developer', from: ['/community'] },
-        ],
+        // /community itself is no longer a redirect source (2026-07-23): it's
+        // the real, consolidated community page's own path now — see the
+        // '/community' PREFIX_MAP entry below for its own alias history.
+        redirects: [],
         createRedirects(existingPath) {
           const PREFIX_MAP = [
             // Public Call: the /community version (join/calendar) and the
@@ -113,13 +110,18 @@ const config = {
             // (formerly 7 separate /developer/* pages, each with its own
             // history of prior aliases going back to /community/* and
             // /dashboard/* from earlier reorgs) were consolidated into one
-            // page, /developer/community (2026-07-23), removing the need
-            // for the "Community" nav item's dropdown. Every prior alias
-            // for any of the 7, plus the 7 pages' own now-retired direct
-            // slugs, redirect straight to the new consolidated page.
+            // page (2026-07-23), removing the need for the "Community" nav
+            // item's dropdown. That page first lived at /developer/community,
+            // then moved again to /community (2026-07-23, same day) once it
+            // became clear "Community" deserved a top-level path rather than
+            // living under Software Accelerator. Every prior alias for any
+            // of the 7 original pages, their own now-retired direct slugs,
+            // and /developer/community itself all redirect straight to
+            // /community.
             [
-              '/developer/community',
+              '/community',
               [
+                '/developer/community',
                 '/community/how-to-use',
                 '/developer/how-to-use',
                 '/community/guidelines-contributors',
@@ -480,7 +482,7 @@ const config = {
             { label: 'Applications', to: '/applications' },
             { label: 'Reference Tools', to: '/reference-tools' },
             { label: 'Testbeds', to: '/testbeds' },
-            { label: 'Community', to: '/developer/community' },
+            { label: 'Community', to: '/community' },
             { label: 'Open-Source Licenses', to: '/developer/license' },
             { label: 'GitHub Getting-Started', href: 'https://github.com/5G-MAG/Getting-Started' },
           ],
