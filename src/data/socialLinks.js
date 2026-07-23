@@ -6,7 +6,7 @@
 // hand-duplicated in both places, and the Slack invite URL additionally
 // existed in two different URL formats across ~13 files.
 export const SLACK_INVITE_URL =
-  'https://join.slack.com/t/5g-mag/shared_invite/zt-trtvsmw5-yYgcRidDgIS7x_u48sTuQA';
+  'https://join.slack.com/t/5g-mag/shared_invite/zt-44la3q72s-Mrb13bWpHA33GiCbWJ6C3Q';
 
 export const SOCIAL_LINKS = [
   {

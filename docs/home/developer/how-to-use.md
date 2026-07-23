@@ -94,5 +94,5 @@ Then, to get the most out of a project's documentation, we recommend the followi
 We encourage all users to consult this documentation thoroughly before reaching out to maintainers. If your questions remain unanswered, we are happy to assist through our community channels:
 
 - **[GitHub](https://github.com/5G-MAG):** For bug reports and feature requests.
-- **[Slack](https://5g-mag.slack.com/join/shared_invite/zt-trtvsmw5-yYgcRidDgIS7x_u48sTuQA):** For real-time community discussion.
+- **[Slack](https://join.slack.com/t/5g-mag/shared_invite/zt-44la3q72s-Mrb13bWpHA33GiCbWJ6C3Q):** For real-time community discussion.
 - **[Public Monthly Call](/events/public-call):** Join our monthly sync to stay updated.
