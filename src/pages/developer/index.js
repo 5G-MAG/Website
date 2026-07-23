@@ -649,7 +649,7 @@ export default function Home() {
         title="Media Connectivity Software Accelerator"
         icon={DEV_HERO_ICON_PATH}
         actions={[
-          <Link key="community" className="button button--primary" to="#community">
+          <Link key="community" className="button button--primary" to="/developer/community">
             Developer Community
           </Link>,
           <Link
@@ -701,7 +701,7 @@ export default function Home() {
               ))}
             </div>
             <div className={styles.pillarActions}>
-              <Link className="button button--primary button--lg" to="#community">
+              <Link className="button button--primary button--lg" to="/developer/community">
                 Developer Community
               </Link>
               <Link
