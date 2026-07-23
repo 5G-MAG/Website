@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-22 22:11 UTC",
+  "updated_at": "2026-07-23 17:35 UTC",
   "projects": [
     {
       "name": "5G Media Streaming",
@@ -259,6 +259,15 @@
           "url": "https://github.com/5G-MAG/rt-libflute/releases/tag/rt-libflute-0.12.3",
           "author_login": "dsilhavy",
           "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
+        },
+        {
+          "repo": "rt-srsRAN_Project",
+          "branch": "5mbs",
+          "tag": "",
+          "date": "-",
+          "url": "https://github.com/5G-MAG/rt-srsRAN_Project/releases/tag/untagged-5cb9b23f9589c4fbefed",
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4"
         }
       ]
     },

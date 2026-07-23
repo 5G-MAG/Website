@@ -1,4 +1,773 @@
 {
-  "updated_at": null,
-  "projects": []
+  "updated_at": "2026-07-23 17:35 UTC",
+  "projects": [
+    {
+      "name": "5G Media Streaming",
+      "doc_url": "/reference-tools/5gms/",
+      "tagline": "End-to-end 5G media streaming from network to client · 3GPP TS 26.501",
+      "pulls": [
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "number": 70,
+          "title": "Remove MBS override and use a modified openapi-generator-cli.jar",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/70",
+          "draft": false,
+          "author_login": "davidjwbbc",
+          "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4",
+          "created_at": "2026-07-03",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "number": 69,
+          "title": "Feature/docker monitor",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/69",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-07-03",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-5gms-application-function",
+          "branch": null,
+          "number": 199,
+          "title": "Add error handling for missing policy template ID",
+          "url": "https://github.com/5G-MAG/rt-5gms-application-function/pull/199",
+          "draft": false,
+          "author_login": "ErikGaida",
+          "author_avatar": "https://avatars.githubusercontent.com/u/144566652?v=4",
+          "created_at": "2026-06-23",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-5gms-application-function",
+          "branch": null,
+          "number": 198,
+          "title": "fix: prevent AF crash when requestedQoS is missing",
+          "url": "https://github.com/5G-MAG/rt-5gms-application-function/pull/198",
+          "draft": false,
+          "author_login": "ErikGaida",
+          "author_avatar": "https://avatars.githubusercontent.com/u/144566652?v=4",
+          "created_at": "2026-06-12",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-5gms-application",
+          "branch": null,
+          "number": 52,
+          "title": "Fixing instructions",
+          "url": "https://github.com/5G-MAG/rt-5gms-application/pull/52",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-05-21",
+          "last_comment_by": null,
+          "last_comment_date": null
+        }
+      ]
+    },
+    {
+      "name": "5G Broadcast TV Radio",
+      "doc_url": "/reference-tools/5g-broadcast/",
+      "tagline": "LTE-based 5G broadcast for TV, radio and emergency alerts",
+      "pulls": [
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "number": 70,
+          "title": "Remove MBS override and use a modified openapi-generator-cli.jar",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/70",
+          "draft": false,
+          "author_login": "davidjwbbc",
+          "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4",
+          "created_at": "2026-07-03",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "number": 69,
+          "title": "Feature/docker monitor",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/69",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-07-03",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-mbms-modem",
+          "branch": null,
+          "number": 53,
+          "title": "rt-mbms-modem release 16 update",
+          "url": "https://github.com/5G-MAG/rt-mbms-modem/pull/53",
+          "draft": false,
+          "author_login": "jsroldan",
+          "author_avatar": "https://avatars.githubusercontent.com/u/93767149?v=4",
+          "created_at": "2026-07-02",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-libflute",
+          "branch": null,
+          "number": 57,
+          "title": "Feature/#50",
+          "url": "https://github.com/5G-MAG/rt-libflute/pull/57",
+          "draft": true,
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4",
+          "created_at": "2026-03-27",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-libflute",
+          "branch": null,
+          "number": 56,
+          "title": "Feature/end to end test tunneled mode",
+          "url": "https://github.com/5G-MAG/rt-libflute/pull/56",
+          "draft": false,
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4",
+          "created_at": "2026-03-12",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-mbms-examples",
+          "branch": null,
+          "number": 18,
+          "title": "WIP: Docker setup for MBMS client components",
+          "url": "https://github.com/5G-MAG/rt-mbms-examples/pull/18",
+          "draft": true,
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4",
+          "created_at": "2025-08-27",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-libflute",
+          "branch": null,
+          "number": 7,
+          "title": "Forward Error Correction",
+          "url": "https://github.com/5G-MAG/rt-libflute/pull/7",
+          "draft": false,
+          "author_login": "autumn-traveller",
+          "author_avatar": "https://avatars.githubusercontent.com/u/50424388?v=4",
+          "created_at": "2023-05-16",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-mbms-mw",
+          "branch": null,
+          "number": 18,
+          "title": "ROUTE support using GPAC",
+          "url": "https://github.com/5G-MAG/rt-mbms-mw/pull/18",
+          "draft": false,
+          "author_login": "rbouqueau",
+          "author_avatar": "https://avatars.githubusercontent.com/u/1917976?v=4",
+          "created_at": "2021-11-30",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-mbms-mw",
+          "branch": null,
+          "number": 15,
+          "title": "readme: propose to install in /usr/local instead of /usr (which is a …",
+          "url": "https://github.com/5G-MAG/rt-mbms-mw/pull/15",
+          "draft": false,
+          "author_login": "rbouqueau",
+          "author_avatar": "https://avatars.githubusercontent.com/u/1917976?v=4",
+          "created_at": "2021-10-23",
+          "last_comment_by": null,
+          "last_comment_date": null
+        }
+      ]
+    },
+    {
+      "name": "5G Broadcast Emergency Alerts",
+      "doc_url": "/reference-tools/emergency-alerts/",
+      "tagline": "Cell Broadcast Service warnings delivered over FeMBMS",
+      "pulls": []
+    },
+    {
+      "name": "XR Media",
+      "doc_url": "/reference-tools/xr/",
+      "tagline": "MPEG-I scene description and XR media integration over 5G",
+      "pulls": [
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "number": 70,
+          "title": "Remove MBS override and use a modified openapi-generator-cli.jar",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/70",
+          "draft": false,
+          "author_login": "davidjwbbc",
+          "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4",
+          "created_at": "2026-07-03",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "number": 69,
+          "title": "Feature/docker monitor",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/69",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-07-03",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-xr-content",
+          "branch": null,
+          "number": 27,
+          "title": "Added anchoring and interactivity in the furniture glTF file",
+          "url": "https://github.com/5G-MAG/rt-xr-content/pull/27",
+          "draft": true,
+          "author_login": "nlsdvl",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2748737?v=4",
+          "created_at": "2025-05-09",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-xr-gITFast",
+          "branch": null,
+          "number": 8,
+          "title": "Development tools",
+          "url": "https://github.com/5G-MAG/rt-xr-gITFast/pull/8",
+          "draft": true,
+          "author_login": "Etiennefaivredarcier",
+          "author_avatar": "https://avatars.githubusercontent.com/u/149043679?v=4",
+          "created_at": "2024-08-23",
+          "last_comment_by": null,
+          "last_comment_date": null
+        }
+      ]
+    },
+    {
+      "name": "5G Multicast Broadcast",
+      "doc_url": "/reference-tools/5g-mbs/",
+      "tagline": "5G-native multicast and broadcast services · 3GPP 5G MBS",
+      "pulls": [
+        {
+          "repo": "rt-mbs-function",
+          "branch": null,
+          "number": 38,
+          "title": "Alignment with rt-common-shared",
+          "url": "https://github.com/5G-MAG/rt-mbs-function/pull/38",
+          "draft": false,
+          "author_login": "davidjwbbc",
+          "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4",
+          "created_at": "2026-07-03",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-mbs-transport-function",
+          "branch": null,
+          "number": 65,
+          "title": "Alignment with rt-common-shared",
+          "url": "https://github.com/5G-MAG/rt-mbs-transport-function/pull/65",
+          "draft": false,
+          "author_login": "davidjwbbc",
+          "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4",
+          "created_at": "2026-07-03",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "number": 70,
+          "title": "Remove MBS override and use a modified openapi-generator-cli.jar",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/70",
+          "draft": false,
+          "author_login": "davidjwbbc",
+          "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4",
+          "created_at": "2026-07-03",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "number": 69,
+          "title": "Feature/docker monitor",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/69",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-07-03",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-libflute",
+          "branch": null,
+          "number": 57,
+          "title": "Feature/#50",
+          "url": "https://github.com/5G-MAG/rt-libflute/pull/57",
+          "draft": true,
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4",
+          "created_at": "2026-03-27",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-libflute",
+          "branch": null,
+          "number": 56,
+          "title": "Feature/end to end test tunneled mode",
+          "url": "https://github.com/5G-MAG/rt-libflute/pull/56",
+          "draft": false,
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4",
+          "created_at": "2026-03-12",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-libflute",
+          "branch": null,
+          "number": 7,
+          "title": "Forward Error Correction",
+          "url": "https://github.com/5G-MAG/rt-libflute/pull/7",
+          "draft": false,
+          "author_login": "autumn-traveller",
+          "author_avatar": "https://avatars.githubusercontent.com/u/50424388?v=4",
+          "created_at": "2023-05-16",
+          "last_comment_by": null,
+          "last_comment_date": null
+        }
+      ]
+    },
+    {
+      "name": "UE Data Collection",
+      "doc_url": "/reference-tools/data-collection/",
+      "tagline": "UE-side data collection, reporting and event exposure · 3GPP TS 26.531",
+      "pulls": [
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "number": 70,
+          "title": "Remove MBS override and use a modified openapi-generator-cli.jar",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/70",
+          "draft": false,
+          "author_login": "davidjwbbc",
+          "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4",
+          "created_at": "2026-07-03",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "number": 69,
+          "title": "Feature/docker monitor",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/69",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-07-03",
+          "last_comment_by": null,
+          "last_comment_date": null
+        }
+      ]
+    },
+    {
+      "name": "V3C Immersive",
+      "doc_url": "/reference-tools/v3c/",
+      "tagline": "V3C volumetric video platform for immersive 5G experiences",
+      "pulls": [
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "number": 70,
+          "title": "Remove MBS override and use a modified openapi-generator-cli.jar",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/70",
+          "draft": false,
+          "author_login": "davidjwbbc",
+          "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4",
+          "created_at": "2026-07-03",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "number": 69,
+          "title": "Feature/docker monitor",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/69",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-07-03",
+          "last_comment_by": null,
+          "last_comment_date": null
+        }
+      ]
+    },
+    {
+      "name": "5GC Service Consumers",
+      "doc_url": "/reference-tools/5g-core/",
+      "tagline": "Reference consumers for 5G Core capability exposure APIs",
+      "pulls": [
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "number": 70,
+          "title": "Remove MBS override and use a modified openapi-generator-cli.jar",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/70",
+          "draft": false,
+          "author_login": "davidjwbbc",
+          "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4",
+          "created_at": "2026-07-03",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "number": 69,
+          "title": "Feature/docker monitor",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/69",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-07-03",
+          "last_comment_by": null,
+          "last_comment_date": null
+        }
+      ]
+    },
+    {
+      "name": "Beyond 2D Video Experiences",
+      "doc_url": "/testbeds/beyond-2d/",
+      "tagline": "Evaluation framework for beyond-2D video experiences",
+      "pulls": [
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "number": 70,
+          "title": "Remove MBS override and use a modified openapi-generator-cli.jar",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/70",
+          "draft": false,
+          "author_login": "davidjwbbc",
+          "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4",
+          "created_at": "2026-07-03",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "number": 69,
+          "title": "Feature/docker monitor",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/69",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-07-03",
+          "last_comment_by": null,
+          "last_comment_date": null
+        }
+      ]
+    },
+    {
+      "name": "6G Testbed and AI Traffic",
+      "doc_url": "/testbeds/6g-testbed/",
+      "tagline": "6G testbed and AI-driven traffic characterization",
+      "pulls": [
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "number": 70,
+          "title": "Remove MBS override and use a modified openapi-generator-cli.jar",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/70",
+          "draft": false,
+          "author_login": "davidjwbbc",
+          "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4",
+          "created_at": "2026-07-03",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "number": 69,
+          "title": "Feature/docker monitor",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/69",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-07-03",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "6G-Testbed",
+          "branch": null,
+          "number": 6,
+          "title": "Add realtime video analysis and chat with token IDs scenarios",
+          "url": "https://github.com/5G-MAG/6G-Testbed/pull/6",
+          "draft": false,
+          "author_login": "jianbing119",
+          "author_avatar": "https://avatars.githubusercontent.com/u/43026344?v=4",
+          "created_at": "2026-05-12",
+          "last_comment_by": null,
+          "last_comment_date": null
+        }
+      ]
+    },
+    {
+      "name": "Network APIs",
+      "doc_url": "/reference-tools/network-apis/",
+      "tagline": "Network capability exposure through CAMARA APIs",
+      "pulls": [
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "number": 70,
+          "title": "Remove MBS override and use a modified openapi-generator-cli.jar",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/70",
+          "draft": false,
+          "author_login": "davidjwbbc",
+          "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4",
+          "created_at": "2026-07-03",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "number": 69,
+          "title": "Feature/docker monitor",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/69",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-07-03",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-camara-examples",
+          "branch": null,
+          "number": 4,
+          "title": "feat: add Dedicated Networks MCP server",
+          "url": "https://github.com/5G-MAG/rt-camara-examples/pull/4",
+          "draft": false,
+          "author_login": "aaronmontilla",
+          "author_avatar": "https://avatars.githubusercontent.com/u/47569421?v=4",
+          "created_at": "2026-07-01",
+          "last_comment_by": null,
+          "last_comment_date": null
+        }
+      ]
+    },
+    {
+      "name": "Conversational Avatar",
+      "doc_url": "/reference-tools/avatar/",
+      "tagline": "Real-time conversational avatars over 5G using MPEG ARF",
+      "pulls": [
+        {
+          "repo": "rt-avatar-call",
+          "branch": null,
+          "number": 41,
+          "title": "Demonstrate usage of bodyAnimation for head transform",
+          "url": "https://github.com/5G-MAG/rt-avatar-call/pull/41",
+          "draft": false,
+          "author_login": "nlsdvl",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2748737?v=4",
+          "created_at": "2026-07-03",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-avatar-content",
+          "branch": null,
+          "number": 5,
+          "title": "Blendshapes for mouth open and head joints",
+          "url": "https://github.com/5G-MAG/rt-avatar-content/pull/5",
+          "draft": false,
+          "author_login": "nlsdvl",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2748737?v=4",
+          "created_at": "2026-06-23",
+          "last_comment_by": null,
+          "last_comment_date": null
+        }
+      ]
+    },
+    {
+      "name": "AI ML",
+      "doc_url": "/testbeds/ai-ml/",
+      "tagline": "Evaluation framework for AI/ML models in 5G media processing",
+      "pulls": [
+        {
+          "repo": "rt-ai-ml-evaluation-framework",
+          "branch": null,
+          "number": 4,
+          "title": "Bit incremental transfer",
+          "url": "https://github.com/5G-MAG/rt-ai-ml-evaluation-framework/pull/4",
+          "draft": false,
+          "author_login": "hrtavakoli",
+          "author_avatar": "https://avatars.githubusercontent.com/u/3436071?v=4",
+          "created_at": "2026-03-24",
+          "last_comment_by": null,
+          "last_comment_date": null
+        }
+      ]
+    },
+    {
+      "name": "Common Tools",
+      "doc_url": "/reference-tools/common-tools/",
+      "tagline": "Shared helper repositories supporting 5G-MAG Reference Tools",
+      "pulls": [
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "number": 70,
+          "title": "Remove MBS override and use a modified openapi-generator-cli.jar",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/70",
+          "draft": false,
+          "author_login": "davidjwbbc",
+          "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4",
+          "created_at": "2026-07-03",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "number": 69,
+          "title": "Feature/docker monitor",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/69",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-07-03",
+          "last_comment_by": null,
+          "last_comment_date": null
+        }
+      ]
+    },
+    {
+      "name": "DVB-I over 5G",
+      "doc_url": "/reference-tools/dvb-i/",
+      "tagline": "DVB-I service discovery combined with 5GMS and 5G Broadcast delivery",
+      "pulls": [
+        {
+          "repo": "rt-5gms-application",
+          "branch": null,
+          "number": 52,
+          "title": "Fixing instructions",
+          "url": "https://github.com/5G-MAG/rt-5gms-application/pull/52",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-05-21",
+          "last_comment_by": null,
+          "last_comment_date": null
+        }
+      ]
+    },
+    {
+      "name": "Multimedia Delivery Protocols",
+      "doc_url": "/reference-tools/multimedia/",
+      "tagline": "DASH, HLS and CMAF multimedia delivery reference tools",
+      "pulls": [
+        {
+          "repo": "rt-libflute",
+          "branch": null,
+          "number": 57,
+          "title": "Feature/#50",
+          "url": "https://github.com/5G-MAG/rt-libflute/pull/57",
+          "draft": true,
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4",
+          "created_at": "2026-03-27",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-libflute",
+          "branch": null,
+          "number": 56,
+          "title": "Feature/end to end test tunneled mode",
+          "url": "https://github.com/5G-MAG/rt-libflute/pull/56",
+          "draft": false,
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4",
+          "created_at": "2026-03-12",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-libflute",
+          "branch": null,
+          "number": 7,
+          "title": "Forward Error Correction",
+          "url": "https://github.com/5G-MAG/rt-libflute/pull/7",
+          "draft": false,
+          "author_login": "autumn-traveller",
+          "author_avatar": "https://avatars.githubusercontent.com/u/50424388?v=4",
+          "created_at": "2023-05-16",
+          "last_comment_by": null,
+          "last_comment_date": null
+        }
+      ]
+    },
+    {
+      "name": "Dependency",
+      "doc_url": null,
+      "tagline": "External forks and dependencies 5G-MAG maintains for its reference tools — not first-class reference-tool projects with their own docs page",
+      "pulls": [
+        {
+          "repo": "cmcd-toolkit",
+          "branch": null,
+          "number": 2,
+          "title": "Fix spelling of 'Length' in dashboard titles",
+          "url": "https://github.com/5G-MAG/cmcd-toolkit/pull/2",
+          "draft": false,
+          "author_login": "shilinding",
+          "author_avatar": "https://avatars.githubusercontent.com/u/115362942?v=4",
+          "created_at": "2026-07-02",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "srsRAN_4G",
+          "branch": null,
+          "number": 4,
+          "title": "Fembms update for rt-mbms-modem release 16",
+          "url": "https://github.com/5G-MAG/srsRAN_4G/pull/4",
+          "draft": false,
+          "author_login": "jsroldan",
+          "author_avatar": "https://avatars.githubusercontent.com/u/93767149?v=4",
+          "created_at": "2026-07-02",
+          "last_comment_by": null,
+          "last_comment_date": null
+        }
+      ]
+    }
+  ]
 }
