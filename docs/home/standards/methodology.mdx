@@ -5,6 +5,8 @@ sidebar_position: 2
 description: How a GitHub issue raised against a 5G-MAG or external SDO specification is reviewed and carried through to a correction, new-feature proposal or liaison input.
 ---
 
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg
@@ -35,7 +37,7 @@ The diagram below shows the internal workflow: how feedback raised as a GitHub i
 
 <img
   loading="lazy"
-  src="/assets/images/Feedback_1.png"
+  src={useBaseUrl('/assets/images/Feedback_1.png')}
   alt="Workflow for feedback on specifications maintained by 5G-MAG: a community issue is raised on GitHub, reviewed by 5G-MAG, and progressed to a correction or new-feature proposal."
   style={{ width: '80%' }}
 />
@@ -46,7 +48,7 @@ The diagram below shows the external workflow: how feedback on a specification o
 
 <img
   loading="lazy"
-  src="/assets/images/Feedback_2.png"
+  src={useBaseUrl('/assets/images/Feedback_2.png')}
   alt="Workflow for feedback on specifications maintained by external SDOs: a community issue is raised on GitHub, reviewed by 5G-MAG, and forwarded to the responsible standards body as a change request or liaison input."
   style={{ width: '80%' }}
 />

@@ -7,6 +7,7 @@ description: Overview of the 5G Broadcast reference tools (rt-mbms-tx, rt-mbms-m
 ---
 import CommunityStats from '@site/src/components/CommunityStats';
 import OnAirTeaser from '@site/src/components/OnAirTeaser';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 
 <div class="topic-banner">
@@ -37,7 +38,7 @@ Reference transmitter (rt-mbms-tx) and receiver/modem (rt-mbms-modem) for LTE-ba
 
 **Implemented specifications:** ETSI TS 103 720 (5G Broadcast System for linear TV and radio), 3GPP [TR 36.976](https://www.3gpp.org/dynareport/36976.htm) (LTE-based 5G broadcast overview), [TS 26.346](https://www.3gpp.org/dynareport/26346.htm) (MBMS protocols and codecs), [TS 26.347](https://www.3gpp.org/dynareport/26347.htm) (MBMS application programming interface).
 
-<img loading="lazy" src="/assets/images/5gbc/reference-tools-broadcast-demo.jpg" alt="5G Broadcast Reference Tools transmitter hardware, with a phone running the 5G-MAGflix demo app" style={{width: '100%', borderRadius: '12px', margin: '1rem 0'}} />
+<img loading="lazy" src={useBaseUrl('/assets/images/5gbc/reference-tools-broadcast-demo.jpg')} alt="5G Broadcast Reference Tools transmitter hardware, with a phone running the 5G-MAGflix demo app" style={{width: '100%', borderRadius: '12px', margin: '1rem 0'}} />
 
 _The 5G Broadcast Reference Tools transmitter, with the "5G-MAGflix" demo app receiving a live broadcast stream._
 

@@ -1,3 +1,4 @@
+import { useBaseUrlUtils } from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
 import ContactForm from '@site/src/components/ContactForm';
@@ -153,6 +154,7 @@ const FACTS = [
 ];
 
 export default function Membership() {
+  const { withBaseUrl } = useBaseUrlUtils();
   return (
     <Layout
       title="Membership"
@@ -323,7 +325,7 @@ export default function Membership() {
                   }}
                 >
                   <img
-                    src={`/assets/images/members/${m.logo}`}
+                    src={withBaseUrl(`/assets/images/members/${m.logo}`)}
                     alt={m.name}
                     loading="lazy"
                     style={{ width: '100%', maxWidth: '180px', height: '120px', objectFit: 'contain' }}

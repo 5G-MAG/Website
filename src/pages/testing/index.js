@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
@@ -191,6 +192,8 @@ function DemosSection() {
 }
 
 export default function Testing() {
+  const plugfestImg = useBaseUrl('/assets/images/gallery/5g-broadcast-plugfest-2026.jpg');
+  const tradeshowImg = useBaseUrl('/assets/images/gallery/tradeshow-booth-demo.jpg');
   return (
     <Layout
       title="Interop & Testing"
@@ -237,7 +240,7 @@ export default function Testing() {
               <figure className={styles.photoFigure}>
                 <img
                   className={styles.photoImg}
-                  src="/assets/images/gallery/5g-broadcast-plugfest-2026.jpg"
+                  src={plugfestImg}
                   alt="5G Broadcast Plugfest 2026, hosted by Fraunhofer FOKUS in Berlin"
                   loading="lazy"
                 />
@@ -249,7 +252,7 @@ export default function Testing() {
               <figure className={styles.photoFigure}>
                 <img
                   className={styles.photoImg}
-                  src="/assets/images/gallery/tradeshow-booth-demo.jpg"
+                  src={tradeshowImg}
                   alt="5G-MAG trade show booth demonstrating 5G Media Streaming and 5G Broadcast"
                   loading="lazy"
                 />

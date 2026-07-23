@@ -7,6 +7,8 @@ hide_table_of_contents: true
 description: 5G-MAG's partnerships and liaisons with other standards bodies and industry associations.
 ---
 
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg
@@ -55,7 +57,11 @@ export const PartnerLogo = ({ src, alt }) => (
       height: '90px',
     }}
   >
-    <img src={src} alt={alt} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
+    <img
+      src={useBaseUrl(src)}
+      alt={alt}
+      style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
+    />
   </div>
 );
 

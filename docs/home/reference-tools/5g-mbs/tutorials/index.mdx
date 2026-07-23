@@ -6,6 +6,7 @@ description: Index of 5G MBS tutorials covering the MBSTF, MBSF, 5GC core, Docke
 ---
 
 import VideoGrid from '@site/src/components/VideoGrid';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 export const communityVideos = [
   {
@@ -98,7 +99,7 @@ The two architectures below cover the same MBS delivery path but differ in how t
 
 The MBS reference tools with the MBS-specific core functions (MB-SMF, MB-UPF) provisioned directly.
 
-<img loading="lazy" src="/assets/images/projects/mbs_diagram.png" style={{ width: '80%' }} alt="High-level architecture of the 5G MBS reference tools showing the MBS User Services layer, the MBS-capable 5G Core and the NG-RAN" />
+<img loading="lazy" src={useBaseUrl('/assets/images/projects/mbs_diagram.png')} style={{ width: '80%' }} alt="High-level architecture of the 5G MBS reference tools showing the MBS User Services layer, the MBS-capable 5G Core and the NG-RAN" />
 
 [5G Multicast Broadcast Services: Resources](../resources)
 [Multimedia content delivery protocols: Resources](../../multimedia/resources)
@@ -109,7 +110,7 @@ The MBS reference tools with the MBS-specific core functions (MB-SMF, MB-UPF) pr
 
 The same delivery path, but the MBS User Services layer uses the reusable 5GC Service Consumer libraries to invoke the core network functions.
 
-<img loading="lazy" src="/assets/images/projects/mbs_5gc_diagram.png" style={{ width: '80%' }} alt="High-level architecture of the 5G MBS reference tools using the 5GC Service Consumer libraries to reach the MBS-capable 5G Core" />
+<img loading="lazy" src={useBaseUrl('/assets/images/projects/mbs_5gc_diagram.png')} style={{ width: '80%' }} alt="High-level architecture of the 5G MBS reference tools using the 5GC Service Consumer libraries to reach the MBS-capable 5G Core" />
 
 [5G Multicast Broadcast Services: Resources](../resources)
 [Multimedia content delivery protocols: Resources](../../multimedia/resources)

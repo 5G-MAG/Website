@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
 import ProjectIcon from '@site/src/components/ProjectIcon';
@@ -637,6 +638,8 @@ function PillarCard({ title, body, icon }) {
 }
 
 export default function Home() {
+  const demoRigImg = useBaseUrl('/assets/images/gallery/reference-tools-demo-rig.jpg');
+  const camaraDemoImg = useBaseUrl('/assets/images/gallery/camara-dedicated-networks-demo.png');
   return (
     <Layout
       title="Software Accelerator"
@@ -763,7 +766,7 @@ export default function Home() {
               <figure className={styles.photoFigure}>
                 <img
                   className={styles.photoImg}
-                  src="/assets/images/gallery/reference-tools-demo-rig.jpg"
+                  src={demoRigImg}
                   alt="5G-MAG Reference Tools demo rig with SDR hardware and phones running 5GMS and volumetric demos"
                   loading="lazy"
                 />
@@ -775,7 +778,7 @@ export default function Home() {
               <figure className={styles.photoFigure}>
                 <img
                   className={styles.photoImg}
-                  src="/assets/images/gallery/camara-dedicated-networks-demo.png"
+                  src={camaraDemoImg}
                   alt="CAMARA Dedicated Networks reference tool demo interface"
                   loading="lazy"
                 />

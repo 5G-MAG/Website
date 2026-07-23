@@ -8,6 +8,7 @@ description: Reference player and server for eXtended Reality (XR) content deliv
 
 import CommunityStats from '@site/src/components/CommunityStats';
 import OnAirTeaser from '@site/src/components/OnAirTeaser';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -34,7 +35,7 @@ The tools enable delivery of dynamic 3D scenes composed of [glTF](/tech/glossary
 
 **Implemented specifications:** ISO/IEC 23090-14 (MPEG-I Scene Description, the format that describes how 3D objects, media and audio are composed into a scene); 3GPP [TR 26.928](https://www.3gpp.org/dynareport/26928.htm) (Extended Reality (XR) in 5G, the study of XR use cases and requirements); TS 26.512 (the 5GMS transport layer used to deliver the scene and its media).
 
-<img loading="lazy" src="/assets/images/xr/volumetric-capture-demo.jpg" alt="Volumetric capture demo running on the 5G-MAG Reference Tools" style={{width: '100%', maxWidth: '500px', display: 'block', margin: '1rem auto', borderRadius: '12px'}} />
+<img loading="lazy" src={useBaseUrl('/assets/images/xr/volumetric-capture-demo.jpg')} alt="Volumetric capture demo running on the 5G-MAG Reference Tools" style={{width: '100%', maxWidth: '500px', display: 'block', margin: '1rem auto', borderRadius: '12px'}} />
 
 :::tip[Where to start]
 

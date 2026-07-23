@@ -1,4 +1,5 @@
 import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
@@ -212,6 +213,7 @@ function CategoryCard({ title, desc, topics }) {
 }
 
 export default function Standards() {
+  const githubFeedbackImg = useBaseUrl('/assets/images/gallery/github-feedback-board.png');
   return (
     <Layout
       title="Feedback & Requirements"
@@ -280,7 +282,7 @@ export default function Standards() {
               <figure className={styles.photoFigure}>
                 <img
                   className={styles.photoImg}
-                  src="/assets/images/gallery/github-feedback-board.png"
+                  src={githubFeedbackImg}
                   alt="GitHub project board tracking 3GPP specification feedback issues"
                   loading="lazy"
                 />

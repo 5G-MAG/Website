@@ -40,14 +40,20 @@ const config = {
   // domain — rather than anything Docusaurus itself can do).
   //
   // INTERIM (2026-07-23): serving this build under hub.5g-mag.com for
-  // testing before the www cutover above — that domain was already
-  // verified and resolving to GitHub Pages from the previous site, so
-  // reusing it needs no new DNS work, just this config value plus
-  // static/CNAME (see that file's own comment) and the custom-domain
-  // field in this repo's own Settings -> Pages. Swap both back to
-  // www.5g-mag.com when ready to cut over for real.
+  // testing before the www cutover above. hub.5g-mag.com is still claimed
+  // as another repo's custom domain at the account/org level, so this
+  // repo is currently only reachable as a project-page subpath underneath
+  // it (https://hub.5g-mag.com/Website/), not as its own root site —
+  // baseUrl is set to match that reality (confirmed via Docusaurus's own
+  // baseUrl-mismatch warning banner when it was still '/'). Once
+  // hub.5g-mag.com (or www.5g-mag.com, for the real cutover) is released
+  // and assigned as THIS repo's own custom domain, switch baseUrl back to
+  // '/' and re-add a static/CNAME file with the target domain (removed
+  // for now — a CNAME file claiming a root domain that's actively serving
+  // this build under a subpath is a contradiction that would only cause
+  // confusion if the domain conflict resolves unexpectedly).
   url: 'https://hub.5g-mag.com',
-  baseUrl: '/',
+  baseUrl: '/Website/',
   organizationName: '5G-MAG',
   projectName: 'Website',
 

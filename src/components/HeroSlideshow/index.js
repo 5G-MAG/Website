@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import HeroFigure from '@site/src/components/HeroFigure';
 import ProjectIcon from '@site/src/components/ProjectIcon';
 import releasesData from '@site/static/data/releases.json';
@@ -233,6 +234,7 @@ const HOME_SLIDE = { type: 'home' };
 const BRAND_SLIDE = { type: 'brand' };
 
 export default function HeroSlideshow() {
+  const logoUrl = useBaseUrl('/img/5g-mag-logo-white.png');
   const releaseSlides = releasesData.projects.slice(0, 3).map((p) => ({ type: 'release', ...p }));
   const slides = [HOME_SLIDE, BRAND_SLIDE, ...releaseSlides];
   const [active, setActive] = useState(0);
@@ -283,7 +285,7 @@ export default function HeroSlideshow() {
             >
               <div>
                 <img
-                  src="/img/5g-mag-logo-white.png"
+                  src={logoUrl}
                   alt="5G-MAG — The Media Connectivity Association"
                   style={{
                     height: '68px',
@@ -330,7 +332,7 @@ export default function HeroSlideshow() {
             >
               <div>
                 <img
-                  src="/img/5g-mag-logo-white.png"
+                  src={logoUrl}
                   alt="5G-MAG — The Media Connectivity Association"
                   style={{
                     height: '68px',

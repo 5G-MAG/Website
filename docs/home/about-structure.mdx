@@ -7,6 +7,24 @@ hide_table_of_contents: true
 description: How 5G-MAG is organised — General Assembly, Steering Group, and the three workgroups (WG TECH, WG DEV, WG PC).
 ---
 
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+export const StructurePhoto = ({ photo, alt, size, style }) => (
+  <img
+    src={useBaseUrl(`/assets/images/structure/${photo}`)}
+    alt={alt}
+    loading="lazy"
+    style={{
+      width: size,
+      height: size,
+      borderRadius: '50%',
+      objectFit: 'cover',
+      flexShrink: 0,
+      ...style,
+    }}
+  />
+);
+
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg
@@ -173,18 +191,11 @@ export const SG_MEMBERS = [
 >
   {SG_MEMBERS.map((m) => (
     <div key={m.name} style={{ textAlign: 'center' }}>
-      <img
-        src={`/assets/images/structure/${m.photo}`}
+      <StructurePhoto
+        photo={m.photo}
         alt={m.name}
-        loading="lazy"
-        style={{
-          width: '76px',
-          height: '76px',
-          borderRadius: '50%',
-          objectFit: 'cover',
-          margin: '0 auto 0.5rem',
-          display: 'block',
-        }}
+        size="76px"
+        style={{ margin: '0 auto 0.5rem', display: 'block' }}
       />
       <div style={{ fontWeight: 700, fontSize: '0.85rem', lineHeight: 1.25 }}>{m.name}</div>
       <div style={{ fontSize: '0.78rem', color: 'var(--ifm-color-emphasis-600)' }}>{m.org}</div>
@@ -225,18 +236,7 @@ export const WG_CHAIRS = [
   {WG_CHAIRS.map((w) => (
     <div key={w.role} style={{ flex: '1 1 260px', minWidth: '240px' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', marginBottom: '0.5rem' }}>
-        <img
-          src={`/assets/images/structure/${w.photo}`}
-          alt={w.name}
-          loading="lazy"
-          style={{
-            width: '56px',
-            height: '56px',
-            borderRadius: '50%',
-            objectFit: 'cover',
-            flexShrink: 0,
-          }}
-        />
+        <StructurePhoto photo={w.photo} alt={w.name} size="56px" />
         <div>
           <div style={{ fontWeight: 700 }}>{w.name}</div>
           <div style={{ fontSize: '0.8rem', color: 'var(--ifm-color-emphasis-600)' }}>
@@ -259,12 +259,7 @@ via [reference-tools@5g-mag.com](mailto:reference-tools@5g-mag.com).
 
 <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', margin: '1.5rem 0' }}>
   <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
-    <img
-      src="/assets/images/structure/silhavy-coordinator.png"
-      alt="Daniel Silhavy"
-      loading="lazy"
-      style={{ width: '56px', height: '56px', borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }}
-    />
+    <StructurePhoto photo="silhavy-coordinator.png" alt="Daniel Silhavy" size="56px" />
     <div>
       <div style={{ fontWeight: 700 }}>Daniel Silhavy</div>
       <div style={{ fontSize: '0.8rem', color: 'var(--ifm-color-emphasis-600)' }}>
@@ -273,12 +268,7 @@ via [reference-tools@5g-mag.com](mailto:reference-tools@5g-mag.com).
     </div>
   </div>
   <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
-    <img
-      src="/assets/images/structure/duval-motionspell.png"
-      alt="Nils Duval"
-      loading="lazy"
-      style={{ width: '56px', height: '56px', borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }}
-    />
+    <StructurePhoto photo="duval-motionspell.png" alt="Nils Duval" size="56px" />
     <div>
       <div style={{ fontWeight: 700 }}>Nils Duval</div>
       <div style={{ fontSize: '0.8rem', color: 'var(--ifm-color-emphasis-600)' }}>
