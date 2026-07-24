@@ -162,23 +162,9 @@ function DemosSection() {
               Recordings of plugfest and trade-show demos
             </p>
           </div>
-          <div style={{ textAlign: 'right' }}>
-            {youtubePlaylists.demos?.playlistUrl && (
-              <a
-                href={youtubePlaylists.demos.playlistUrl}
-                target="_blank"
-                rel="noreferrer"
-                style={{ fontWeight: 600, whiteSpace: 'nowrap' }}
-              >
-                See all videos &rarr;
-              </a>
-            )}
-            <div>
-              <Link to="/videos" style={{ fontWeight: 600, whiteSpace: 'nowrap' }}>
-                Browse all 5G-MAG videos &rarr;
-              </Link>
-            </div>
-          </div>
+          <Link to="/videos" style={{ fontWeight: 600, whiteSpace: 'nowrap' }}>
+            Browse all 5G-MAG videos &rarr;
+          </Link>
         </div>
         <VideoGrid videos={videos} />
       </div>
