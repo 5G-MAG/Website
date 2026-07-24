@@ -29,17 +29,7 @@ This tutorial introduces the 6G Testbed including the Network Emulator and the f
 
 The 6G Testbed has two parts: a **Network Emulator** that reproduces realistic network conditions (delay, jitter, loss, and bandwidth limits) on a single machine, and an **AI Traffic Characterization** framework that runs AI workloads over those conditions and logs how they behave. The video below walks through both parts and shows how they are used together.
 
-For the full component breakdown, the profile format, and the emulator API, see the [Scope](../scope) page. The source code and setup instructions are in the [5G-MAG/6G-Testbed](https://github.com/5G-MAG/6G-Testbed) repository.
-
-<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
-
-## Developer Exchange
-
-The following video introduces the testbed:
-
-*By Thomas Stockhammer (Qualcomm)*
-
-<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/KtYMui-cRc0" title="Introduction to the 6G Testbed: Network Emulator and AI Traffic Characterization (video walkthrough)" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+For the full component breakdown, the profile format, and the emulator API, see the [Scope](../scope) page. The source code and setup instructions are in the [5G-MAG/6G-Testbed](https://github.com/5G-MAG/6G-Testbed) repository. The introduction video is available on the [Developer Exchange](../tutorials#developer-exchange) section of this project's Tutorials page.
 
 ## Getting started
 

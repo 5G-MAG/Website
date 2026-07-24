@@ -350,7 +350,16 @@
     "6g-testbed": {
       "playlistId": "PLFV0QXnNeYCI",
       "playlistUrl": "https://www.youtube.com/playlist?list=PLFV0QXnNeYCI",
-      "videos": []
+      "videos": [
+        {
+          "id": "KtYMui-cRc0",
+          "title": "Introducing Network Emulator & AI Traffic Characterization Framework - Developer Exchange",
+          "url": "https://www.youtube.com/watch?v=KtYMui-cRc0",
+          "thumbnail": "https://i4.ytimg.com/vi/KtYMui-cRc0/hqdefault.jpg",
+          "published": "2026-03-19",
+          "by": "Thomas Stockhammer (Qualcomm)"
+        }
+      ]
     },
     "avatar": {
       "playlistId": "PLauJtH0v19QE",
