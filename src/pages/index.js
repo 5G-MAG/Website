@@ -5,6 +5,7 @@ import Layout from '@theme/Layout';
 import HeroSlideshow from '@site/src/components/HeroSlideshow';
 import MediaConnectivityDiagram from '@site/src/components/MediaConnectivityDiagram';
 import StandardsLoopDiagram from '@site/src/components/StandardsLoopDiagram';
+import MembersMarquee from '@site/src/components/MembersMarquee';
 import GodeeperCard, { icon } from '@site/src/components/GodeeperCard';
 import OnAirTeaser from '@site/src/components/OnAirTeaser';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
@@ -121,6 +122,21 @@ export default function Home() {
                 <GodeeperCard key={p.title} {...p} />
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Members */}
+        <section className={styles.section}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>Backed by the Industry</h2>
+            <p className={styles.sectionSubtitle}>
+              Broadcasters, technology vendors, network operators and research institutions
+              collaborating within 5G-MAG.
+            </p>
+          </div>
+          <MembersMarquee />
+          <div className="container" style={{ textAlign: 'center', marginTop: '1.5rem' }}>
+            <Link to="/membership#our-members">See all members &rarr;</Link>
           </div>
         </section>
 

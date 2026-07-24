@@ -1,0 +1,69 @@
+.marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  width: max-content;
+  animation: scroll 70s linear infinite;
+}
+
+.track:hover {
+  animation-play-state: paused;
+}
+
+.tile {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 76px;
+  padding: 0.9rem 1.1rem;
+  border-radius: 10px;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.tile img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* Track holds two identical copies of the member list back to back —
+       translating exactly half its width lands on the second copy at the
+       same visual position as the first, so the loop has no seam. */
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* The reduced-motion fallback is a static wrapped row, so the aria-hidden
+     duplicate set would just show every logo twice — drop it entirely. */
+  .track > a[aria-hidden='true'] {
+    display: none;
+  }
+}
