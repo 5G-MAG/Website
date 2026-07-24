@@ -462,6 +462,19 @@
   box-shadow: none;
   transform: none;
 }
+/* Variant carrying a full-bleed image at the top (e.g. an event's own
+   branded session graphic) instead of/alongside an icon -- image escapes
+   the tile's own padding via negative margins, text keeps it. */
+.community-tile--with-image {
+  padding-top: 0;
+  overflow: hidden;
+}
+.community-tile--with-image img {
+  display: block;
+  width: calc(100% + 2.5rem);
+  margin: 0 -1.25rem 1rem;
+  max-width: none;
+}
 .community-tile svg {
   width: 40px;
   height: 40px;
@@ -560,6 +573,40 @@
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 8px;
+}
+
+/* A strong, unmistakable "which year is this" marker for event recap
+   pages that cover both an upcoming and a past edition on one page. */
+.year-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.35em 0.9em;
+  border-radius: 999px;
+  margin-bottom: 0.75rem;
+}
+.year-eyebrow--upcoming {
+  background: color-mix(in srgb, var(--ifm-color-primary) 16%, transparent);
+  color: var(--ifm-color-primary-darker);
+}
+.year-eyebrow--past {
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-700);
+}
+
+/* Wraps an entire "past edition" recap in a visibly distinct panel, so
+   it reads as archival at a glance rather than blending into the
+   upcoming edition's content above it. */
+.archive-panel {
+  background: var(--ifm-color-emphasis-100);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 14px;
+  padding: 1.75rem 1.75rem 0.5rem;
+  margin: 1.5rem 0;
 }
 
 .community-contributors {
