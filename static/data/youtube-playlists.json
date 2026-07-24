@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-23",
+  "updated_at": "2026-07-24",
   "workshops": {
     "playlistId": "PLFqKJZ78_IWUDXCiSLahAB5Av7QxOoUKX",
     "playlistUrl": "https://www.youtube.com/playlist?list=PLFqKJZ78_IWUDXCiSLahAB5Av7QxOoUKX",
@@ -108,6 +108,13 @@
     "playlistId": "PLFqKJZ78_IWW_lQytNhfVmFl9U_lLBEcF",
     "playlistUrl": "https://www.youtube.com/playlist?list=PLFqKJZ78_IWW_lQytNhfVmFl9U_lLBEcF",
     "videos": [
+      {
+        "id": "cdYV99cDuJE",
+        "title": "End-to-End setup with 5GC, NG-RAN and UE for MBS Broadcast Services - 5G-MAG Reference Tools",
+        "url": "https://www.youtube.com/watch?v=cdYV99cDuJE",
+        "thumbnail": "https://i4.ytimg.com/vi/cdYV99cDuJE/hqdefault.jpg",
+        "published": "2026-07-23"
+      },
       {
         "id": "uEfBaTqh5vw",
         "title": "Overview of the latest updates to the 5G Media Streaming Project - 5G-MAG Reference Tools",
