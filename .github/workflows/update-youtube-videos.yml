@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: 20
 
-      - name: Fetch latest videos (Workshops, Developer Exchange, Public Call playlists)
+      - name: Fetch latest videos (Workshops, Developer Exchange, Public Call, Demos and per-project playlists)
         run: node scripts/fetch-youtube-playlists.js
 
       - name: Commit and push if changed
