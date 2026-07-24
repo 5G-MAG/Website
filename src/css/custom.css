@@ -67,6 +67,9 @@
   /* Darker than --ifm-color-primary specifically so white text on top of it
      meets WCAG AA (4.5:1); --ifm-color-primary itself only reaches ~3:1. */
   --ifm-color-primary-textsafe: #007a9e;
+  /* Site-wide type scale nudged down a step (16px -> 15px base) — everything
+     sized in rem (which is most of the site, via Infima) shrinks with it. */
+  --ifm-font-size-base: 93.75%;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   /* Pill-shaped at every size (regular/--lg/--sm alike) so every button
