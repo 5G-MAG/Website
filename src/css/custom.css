@@ -594,6 +594,15 @@
 }
 
 .godeeper-card__band h3 {
+  /* flex: 1 + min-width: 0 makes this reliably claim exactly "all width
+     left after the icon", rather than depending on the flex item's default
+     auto min-width (based on its own content) -- browsers can round that
+     default differently depending on the viewport's device pixel ratio,
+     which under some Windows display-scale + Chromium combinations was
+     shaving a couple of px off the title and tipping it onto an extra
+     line where Firefox stayed put. */
+  flex: 1 1 0;
+  min-width: 0;
   margin: 0;
   font-size: 1.15rem;
   font-weight: 700;
