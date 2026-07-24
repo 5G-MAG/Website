@@ -5,7 +5,7 @@ import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 // A handful of recent videos from the wider Developer Exchange, shown when a
 // project has none of its own yet -- an actual widget of real videos rather
 // than just a link out to YouTube.
-const RECENT_DEVELOPER_EXCHANGES = (youtubePlaylists.developer?.videos || []).slice(0, 3);
+const RECENT_DEVELOPER_EXCHANGES = (youtubePlaylists.developer?.videos || []).slice(0, 6);
 
 // Renders a project's automatically-fetched playlist videos, or -- while the
 // playlist is empty (a new playlist with no uploads yet, or a transient

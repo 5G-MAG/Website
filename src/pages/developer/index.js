@@ -562,7 +562,7 @@ function ProductTypeCard({ icon, label, description, href }) {
 }
 
 function VideoSection({ alt }) {
-  const videos = mergeDeveloperVideos(youtubePlaylists.developer?.videos);
+  const videos = mergeDeveloperVideos(youtubePlaylists.developer?.videos, 6);
   return (
     <section className={clsx(styles.section, alt && styles.sectionAlt)}>
       <div className="container">

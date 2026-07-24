@@ -21,7 +21,7 @@ import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 // "tally light" treatment, the same one used on the full video galleries)
 // rather than linking through to each source page, for more visual weight on
 // the homepage; "Browse the full library" below still covers cross-linking.
-const DEVELOPER_EXCHANGES_FEATURED = (youtubePlaylists.developer?.videos || []).slice(0, 3);
+const DEVELOPER_EXCHANGES_FEATURED = (youtubePlaylists.developer?.videos || []).slice(0, 6);
 
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();

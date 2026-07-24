@@ -10,7 +10,7 @@ import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 
 // A handful of the most recent Technology Exchange sessions -- the full
 // gallery (grouped by session, with intro text) lives at /tech/exchanges.
-const TECHNOLOGY_EXCHANGES_FEATURED = (youtubePlaylists.technologyExchange?.videos || []).slice(0, 3);
+const TECHNOLOGY_EXCHANGES_FEATURED = (youtubePlaylists.technologyExchange?.videos || []).slice(0, 6);
 
 const CATEGORIES = [
   {
