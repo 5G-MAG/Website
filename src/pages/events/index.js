@@ -71,7 +71,7 @@ export default function Events() {
               5G-MAG&apos;s open monthly session — anyone can join, no membership required.
             </p>
             <div style={{ textAlign: 'center' }}>
-              <Link className="button button--primary button--lg" to="/events/public-call">
+              <Link className="button button--primary button--lg" to="/public-call">
                 Join &amp; Watch Recordings
               </Link>
             </div>

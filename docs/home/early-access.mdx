@@ -9,6 +9,7 @@ description: Request early access to 5G-MAG Reference Tools repositories that ar
 
 import EarlyAccessForm from '@site/src/components/EarlyAccessForm';
 import { SLACK_INVITE_URL } from '@site/src/data/socialLinks';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -112,7 +113,7 @@ import { SLACK_INVITE_URL } from '@site/src/data/socialLinks';
   <span class="tile-cta">Subscribe →</span>
 </a>
 
-<a href="/events/public-call" class="community-tile">
+<a href={useBaseUrl('/public-call')} class="community-tile">
   <svg
     viewBox="0 0 24 24"
     fill="none"

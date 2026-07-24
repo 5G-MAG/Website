@@ -309,7 +309,7 @@ export default function Standards() {
               <Link className="button button--outline button--primary button--lg" to="/surveys">
                 Take the Industry Survey
               </Link>
-              <Link className="button button--outline button--primary button--lg" to="/standards/workshops">
+              <Link className="button button--outline button--primary button--lg" to="/workshops">
                 Watch Workshop Videos
               </Link>
             </div>

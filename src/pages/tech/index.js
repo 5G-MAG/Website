@@ -6,15 +6,11 @@ import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import VideoGrid from '@site/src/components/VideoGrid';
 import { icon } from '@site/src/components/GodeeperCard';
 import styles from './index.module.css';
+import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 
-// A cross-section sample, not the full library — one per pillar area so the
-// featured row shows breadth rather than three videos from the same project.
-// The full set lives at /tech/videos.
-const ON_AIR_FEATURED = [
-  { id: 'AvjtVrTrWsA', title: '5G Media Streaming at IBC 2025' },
-  { id: 'dZaUAhYZTUU', title: '5G Broadcast at FOKUS Media Web Symposium 2024' },
-  { id: 'RvHWQht-7Q4', title: 'XR Media with MPEG-I Scene Description at IBC 2025' },
-];
+// A handful of the most recent Technology Exchange sessions -- the full
+// gallery (grouped by session, with intro text) lives at /tech/exchanges.
+const TECHNOLOGY_EXCHANGES_FEATURED = (youtubePlaylists.technologyExchange?.videos || []).slice(0, 3);
 
 const CATEGORIES = [
   {
@@ -279,9 +275,9 @@ const CATEGORIES = [
   },
 ];
 
-// In Action (/tech/videos) is featured separately, above this grid, rather
-// than as an equal-weight card here — it's recorded talks and demos from
-// 5G-MAG members and contributors, not reference material like the other three.
+// Technology Exchanges (/tech/exchanges) is featured separately, above this
+// grid, rather than as an equal-weight card here — it's recorded workshop
+// talks, not reference material like the other three.
 const RESOURCES = [
   {
     title: 'Glossary',
@@ -477,17 +473,16 @@ export default function Home() {
           </div>
         </section>
 
-        {/* In Action, featured */}
+        {/* Technology Exchanges, featured */}
         <section className={styles.section}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>In Action</h2>
+            <h2 className={styles.sectionTitle}>Technology Exchanges</h2>
             <p className={styles.sectionSubtitle}>
-              Recorded demos, talks and workshop sessions — from 5G-MAG members and contributors,
-              showing their own work in their own words.
+              Recorded workshop talks explaining 3GPP and MPEG media specifications to industry.
             </p>
-            <VideoGrid videos={ON_AIR_FEATURED} />
+            <VideoGrid videos={TECHNOLOGY_EXCHANGES_FEATURED} />
             <div className={styles.onAirFeaturedMore}>
-              <Link to="/tech/videos">Browse the full library &rarr;</Link>
+              <Link to="/tech/exchanges">Browse the full library &rarr;</Link>
             </div>
           </div>
         </section>

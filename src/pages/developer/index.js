@@ -572,20 +572,15 @@ function VideoSection({ alt }) {
               className={styles.sectionTitle}
               style={{ textAlign: 'left', marginBottom: '0.2rem' }}
             >
-              In Action
+              Developer Exchanges
             </h2>
             <p className={styles.sectionSubtitle} style={{ textAlign: 'left', margin: 0 }}>
               Recent Reference Tools &amp; Testbeds demos and tutorials
             </p>
           </div>
-          <a
-            className={styles.videoViewAll}
-            href={youtubePlaylists.developer?.playlistUrl}
-            target="_blank"
-            rel="noreferrer"
-          >
+          <Link className={styles.videoViewAll} to="/developer/exchanges">
             See all videos &rarr;
-          </a>
+          </Link>
         </div>
         <VideoGrid videos={videos} />
       </div>
@@ -676,7 +671,7 @@ export default function Home() {
               >
                 Community Stats
               </Link>
-              <Link className="button button--outline button--primary button--lg" to="/tech/videos">
+              <Link className="button button--outline button--primary button--lg" to="/tech/exchanges">
                 Watch In Action
               </Link>
             </div>

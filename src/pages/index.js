@@ -14,26 +14,14 @@ import { SCOPE_PILLARS } from '@site/src/data/scopePillars';
 import { DISCOVER_WORK } from '@site/src/data/discoverWork';
 import { chunk } from '@site/src/utils/chunk';
 import styles from './index.module.css';
+import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 
-// A cross-section sample of member/contributor demos, not the full library —
-// see /tech/videos for that. Plays inline (VideoGrid/VideoCard's "tally
-// light" treatment, the same one used on the full video galleries) rather
-// than linking through to each source page, for more visual weight on the
-// homepage; "Browse the full library" below still covers cross-linking.
-const ON_AIR_FEATURED = [
-  {
-    id: 'e_xK_ckkhgc',
-    title: 'Demonstrating MBS User Service Announcement mechanisms',
-  },
-  {
-    id: 'hkVgL8yq0V8',
-    title: 'Emergency Alerts over 5G Broadcast embedded in DVB-T2 at IBC 2025',
-  },
-  {
-    id: '4C9bySDoVqA',
-    title: 'MPEG V3C Immersive Platform at IBC 2025',
-  },
-];
+// A handful of the most recent Developer Exchange sessions -- the full
+// gallery lives at /developer/exchanges. Plays inline (VideoGrid/VideoCard's
+// "tally light" treatment, the same one used on the full video galleries)
+// rather than linking through to each source page, for more visual weight on
+// the homepage; "Browse the full library" below still covers cross-linking.
+const DEVELOPER_EXCHANGES_FEATURED = (youtubePlaylists.developer?.videos || []).slice(0, 3);
 
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
@@ -86,17 +74,17 @@ export default function Home() {
           </div>
         </section>
 
-        {/* In Action */}
+        {/* Developer Exchanges */}
         <section className={styles.section}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>In Action</h2>
+            <h2 className={styles.sectionTitle}>Developer Exchanges</h2>
             <p className={styles.sectionSubtitle}>
               Hear it from the people building it: recorded demos and talks from 5G-MAG members and
               contributors.
             </p>
-            <VideoGrid videos={ON_AIR_FEATURED} />
+            <VideoGrid videos={DEVELOPER_EXCHANGES_FEATURED} />
             <div className={styles.onAirMore}>
-              <Link to="/tech/videos">Browse the full library &rarr;</Link>
+              <Link to="/developer/exchanges">Browse the full library &rarr;</Link>
             </div>
           </div>
         </section>

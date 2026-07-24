@@ -1,0 +1,34 @@
+---
+id: developer-exchanges
+slug: /developer/exchanges
+hide_title: true
+title: Developer Exchanges
+description: The full list of Developer Exchange recordings -- demos and tutorials from 5G-MAG Reference Tools and Testbeds projects, newest first.
+---
+
+import VideoGrid from '@site/src/components/VideoGrid';
+import youtubeData from '@site/static/data/youtube-playlists.json';
+import { mergeAllDeveloperVideos } from '@site/src/data/developerVideos';
+
+export const videos = mergeAllDeveloperVideos(youtubeData.developer?.videos);
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M7 8l-4 4l4 4" />
+  <path d="M17 8l4 4l-4 4" />
+  <path d="M14 4l-4 16" />
+</svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">In Action</span>
+<h1>Developer Exchanges</h1>
+</div>
+</div>
+
+<div class="topic-lead">
+Demos and tutorials from 5G-MAG Reference Tools and Testbeds projects, presented by the developers building them. This list updates automatically as new sessions are uploaded to the [5G-MAG Developer Exchange playlist](https://www.youtube.com/playlist?list=PLFqKJZ78_IWW_lQytNhfVmFl9U_lLBEcF). Each project also has its own Developer Exchange section under [Reference Tools](/reference-tools) and [Testbeds](/testbeds).
+</div>
+
+<VideoGrid videos={videos} />

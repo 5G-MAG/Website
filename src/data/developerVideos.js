@@ -57,9 +57,10 @@ export const DEVELOPER_VIDEO_INFO = {
 /** Enrich the live feed's videos (already newest-first, capped at ~15 by
  * YouTube's own RSS feed) with a known clean title/byline where
  * available, capped to `limit` -- "some of the most recent", not the
- * full archive (that's what /reference-tools and /standards/workshops
- * are for). Keeps the feed's own url/thumbnail/published -- only
- * title/by ever come from the lookup. */
+ * full archive (that's what /reference-tools and /workshops are for, and
+ * mergeAllDeveloperVideos below for this playlist specifically). Keeps
+ * the feed's own url/thumbnail/published -- only title/by ever come from
+ * the lookup. */
 export function mergeDeveloperVideos(feedVideos, limit = 8) {
   return (feedVideos || []).slice(0, limit).map((v) => {
     const known = DEVELOPER_VIDEO_INFO[v.id];
@@ -69,4 +70,31 @@ export function mergeDeveloperVideos(feedVideos, limit = 8) {
       by: known ? known.by : null,
     };
   });
+}
+
+/** For /developer/exchanges (the full gallery, unlike the capped widget
+ * above): every video currently in the live feed, enriched the same way,
+ * plus every id in the lookup table that has since scrolled out of
+ * YouTube's ~15-item RSS window. Unlike workshopVideos.js/publicCallVideos.js
+ * this lookup was never a deliberately hand-verified complete archive (see
+ * the comment at the top of this file) -- it only ever grew as videos
+ * passed through the live feed -- so this is the fullest list available,
+ * not a guaranteed-complete one, and the "scrolled out" portion (unlike
+ * the live feed's own newest-first order) is only in this object's own
+ * insertion order, reversed as a best-effort newest-ish-first guess. */
+export function mergeAllDeveloperVideos(feedVideos) {
+  const feedIds = new Set((feedVideos || []).map((v) => v.id));
+  const fromFeed = (feedVideos || []).map((v) => {
+    const known = DEVELOPER_VIDEO_INFO[v.id];
+    return {
+      ...v,
+      title: known ? known.title : v.title,
+      by: known ? known.by : null,
+    };
+  });
+  const olderKnown = Object.entries(DEVELOPER_VIDEO_INFO)
+    .filter(([id]) => !feedIds.has(id))
+    .map(([id, info]) => ({ id, title: info.title, by: info.by }))
+    .reverse();
+  return [...fromFeed, ...olderKnown];
 }

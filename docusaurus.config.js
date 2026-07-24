@@ -99,11 +99,26 @@ const config = {
         createRedirects(existingPath) {
           const PREFIX_MAP = [
             // Public Call: the /community version (join/calendar) and the
-            // /tech version (recordings) merged into one page under /events.
+            // /tech version (recordings) first merged into one page under
+            // /events (2026-07-23), then moved again to root (2026-07-24)
+            // once "Dev Public Call" was treated as one of the site's 4
+            // "In Action" video categories rather than an Events sub-page.
             [
-              '/events/public-call',
-              ['/community/public-call', '/developer/public-call', '/tech/public-call'],
+              '/public-call',
+              [
+                '/community/public-call',
+                '/developer/public-call',
+                '/tech/public-call',
+                '/events/public-call',
+              ],
             ],
+            // Workshops: moved from under /standards (2026-07-24) for the
+            // same "In Action" category reason as Public Call above.
+            ['/workshops', '/standards/workshops'],
+            // Technology Exchange: renamed from /tech/videos (2026-07-24) to
+            // match the "Technology Exchanges" naming used for this category
+            // elsewhere (the /tech hub widget, Developer Exchanges, etc.).
+            ['/tech/exchanges', '/tech/videos'],
             ['/developer/license', '/license'],
             // How-to-use, Guidelines for Contributors, Releases, Pull
             // Requests, Community Stats, Roadmap and Top Contributors
