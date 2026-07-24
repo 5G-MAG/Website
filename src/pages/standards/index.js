@@ -4,8 +4,14 @@ import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import { icon } from '@site/src/components/GodeeperCard';
+import VideoGrid from '@site/src/components/VideoGrid';
 import { FACT_SPEC_ISSUES, FACT_SDO_INPUTS } from '@site/src/data/facts';
 import styles from '../tech/index.module.css';
+import youtubePlaylists from '@site/static/data/youtube-playlists.json';
+
+// A handful of the most recent Workshop recordings -- the full gallery
+// (every session, newest first) lives at /workshops.
+const WORKSHOPS_FEATURED = (youtubePlaylists.workshops?.videos || []).slice(0, 3);
 
 const GITHUB_ICON_PATH = (
   <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
@@ -312,6 +318,22 @@ export default function Standards() {
               <Link className="button button--outline button--primary button--lg" to="/workshops">
                 Watch Workshop Videos
               </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Workshops, featured */}
+        <section className={styles.section}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>Workshops</h2>
+            <p className={styles.sectionSubtitle}>
+              Recorded talks explaining a standards work item to industry.
+            </p>
+            <VideoGrid videos={WORKSHOPS_FEATURED} />
+            <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
+              <Link to="/workshops">Browse the full library &rarr;</Link>
+              {' · '}
+              <Link to="/videos">Browse all 5G-MAG videos &rarr;</Link>
             </div>
           </div>
         </section>
