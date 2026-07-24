@@ -258,8 +258,8 @@ export default function Membership() {
           <div className="container">
             <h2 className={styles.sectionTitle}>Our Members</h2>
             <p className={styles.sectionSubtitle}>
-              Broadcasters, technology vendors, network operators and research institutions
-              collaborating within 5G-MAG.
+              A thriving, open community — membership is open to any organization willing to join
+              the efforts.
             </p>
             <div className={styles.membersGrid}>
               {MEMBERS.map((m) => (
