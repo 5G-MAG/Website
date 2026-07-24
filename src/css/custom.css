@@ -508,6 +508,60 @@
   width: 100%;
 }
 
+/* A grid of recap/article cards with a thumbnail on top -- same card
+   language as .community-tile (border, radius, hover lift) but built
+   around an image + title link rather than an icon + description. */
+.event-post-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+.event-post-card {
+  display: block;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 10px;
+  overflow: hidden;
+  text-decoration: none !important;
+  color: inherit !important;
+  background: var(--ifm-background-surface-color);
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
+}
+.event-post-card:hover {
+  box-shadow: var(--card-hover-shadow);
+  transform: translateY(-3px);
+  text-decoration: none !important;
+}
+.event-post-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.event-post-card .event-post-title {
+  display: block;
+  padding: 0.85rem 1rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* A simple square photo gallery for event recap pages. */
+.event-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+.event-photo-grid img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
 .community-contributors {
   display: flex;
   gap: 1.5rem;
