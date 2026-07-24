@@ -6,6 +6,8 @@ description: Recorded 5G-MAG workshop talks on 3GPP media streaming, XR, split r
 ---
 
 import VideoGallery from '@site/src/components/VideoGallery';
+import youtubePlaylists from '@site/static/data/youtube-playlists.json';
+import { mergeTechnologyExchangeSessions } from '@site/src/data/technologyExchangeVideos';
 
 <div class="topic-banner">
   <div class="topic-banner__icon-wrap">
@@ -145,4 +147,9 @@ export const workshops = [
   },
 ];
 
-<VideoGallery workshops={workshops} />
+export const sessions = mergeTechnologyExchangeSessions(
+  workshops,
+  youtubePlaylists.technologyExchange?.videos
+);
+
+<VideoGallery workshops={sessions} />

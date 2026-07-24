@@ -7,11 +7,11 @@
       "videos": [
         {
           "id": "3iIichQmjBg",
-          "title": "The Nakolos Core - Interoperability with 5G-MAG Reference Tools - 5G-MAG Developer Xchange",
+          "title": "The Nakolos Core: Interoperability with 5G-MAG Reference Tools - Developer Exchange",
           "url": "https://www.youtube.com/watch?v=3iIichQmjBg",
           "thumbnail": "https://i4.ytimg.com/vi/3iIichQmjBg/hqdefault.jpg",
           "published": "2024-11-10",
-          "by": "Johann Mika"
+          "by": "Johann Mika (ORS Group)"
         },
         {
           "id": "dZaUAhYZTUU",
@@ -22,24 +22,27 @@
         },
         {
           "id": "TtM98uZxHuc",
-          "title": "5G Broadcast supported by 5G-MAG Reference Tools - DEVELOPER XCHANGE",
+          "title": "5G Broadcast supported by 5G-MAG Reference Tools - Developer Exchange",
           "url": "https://www.youtube.com/watch?v=TtM98uZxHuc",
           "thumbnail": "https://i1.ytimg.com/vi/TtM98uZxHuc/hqdefault.jpg",
-          "published": "2023-12-07"
+          "published": "2023-12-07",
+          "by": "Klaus Kuehnhammer (Bitstem)"
         },
         {
           "id": "O_MfEE5KG6o",
-          "title": "Closing the gap towards a 5G Broadcast Rel-16 open-source transmitter",
+          "title": "Closing the gap towards a 5G Broadcast Rel-16 open-source transmitter - Developer Exchange",
           "url": "https://www.youtube.com/watch?v=O_MfEE5KG6o",
           "thumbnail": "https://i4.ytimg.com/vi/O_MfEE5KG6o/hqdefault.jpg",
-          "published": "2022-04-07"
+          "published": "2022-04-07",
+          "by": "Jaime Sánchez Roldán (iTEAM-UPV)"
         },
         {
           "id": "Jbir8B-gC4c",
-          "title": "5G-MAG Reference Tools - 5G Broadcast-Broadband Seamless Switching",
+          "title": "5G Broadcast-Broadband Seamless Switching - Developer Exchange",
           "url": "https://www.youtube.com/watch?v=Jbir8B-gC4c",
           "thumbnail": "https://i3.ytimg.com/vi/Jbir8B-gC4c/hqdefault.jpg",
-          "published": "2021-11-19"
+          "published": "2021-11-19",
+          "by": "Klaus Kuehnhammer (Bitstem) and Daniel Silhavy (Fraunhofer FOKUS)"
         }
       ]
     },
@@ -49,23 +52,23 @@
       "videos": [
         {
           "id": "cdYV99cDuJE",
-          "title": "End-to-End setup with 5GC, NG-RAN and UE for MBS Broadcast Services - 5G-MAG Reference Tools",
+          "title": "End-to-End setup with 5GC, NG-RAN and UE for MBS Broadcast Services - Developer Exchange",
           "url": "https://www.youtube.com/watch?v=cdYV99cDuJE",
           "thumbnail": "https://i4.ytimg.com/vi/cdYV99cDuJE/hqdefault.jpg",
           "published": "2026-07-23",
-          "by": "Jaime Sánchez (iTEAM-UPV) and Josep Ribes (iTEAM-UPV)"
+          "by": "Jaime Sánchez Roldán and Josep Ribes (iTEAM-UPV)"
         },
         {
           "id": "e_xK_ckkhgc",
-          "title": "Demonstrating MBS User Service Announcement mechanisms - 5G-MAG Reference Tools",
+          "title": "Demonstrating MBS User Service Announcement mechanisms - Developer Exchange",
           "url": "https://www.youtube.com/watch?v=e_xK_ckkhgc",
           "thumbnail": "https://i2.ytimg.com/vi/e_xK_ckkhgc/hqdefault.jpg",
           "published": "2026-05-21",
-          "by": "David Waring, Dev Audsin and Richard Bradbury (BBC)"
+          "by": "Dev Audsin, David Waring and Richard Bradbury (BBC)"
         },
         {
           "id": "MF9rhnaEEP8",
-          "title": "Demonstrating the OBJECT_CAROUSEL operating mode - 5G-MAG Reference Tools",
+          "title": "Demonstrating the OBJECT_CAROUSEL operating mode - Developer Exchange",
           "url": "https://www.youtube.com/watch?v=MF9rhnaEEP8",
           "thumbnail": "https://i2.ytimg.com/vi/MF9rhnaEEP8/hqdefault.jpg",
           "published": "2026-05-21",
@@ -73,25 +76,27 @@
         },
         {
           "id": "0re77KNmxYQ",
-          "title": "TUTORIAL - Basic implementation of MBS Function (MBSF) - Multicast Broadcast Services (MBS)",
+          "title": "Basic implementation of MBS Function (MBSF) - Developer Exchange",
           "url": "https://www.youtube.com/watch?v=0re77KNmxYQ",
           "thumbnail": "https://i1.ytimg.com/vi/0re77KNmxYQ/hqdefault.jpg",
-          "published": "2026-01-14"
+          "published": "2026-01-14",
+          "by": "Richard Bradbury, Dev Audsin and David Waring (BBC)"
         },
         {
           "id": "anrtRfPttmo",
-          "title": "TUTORIAL - Basic implementation of MBS Transport Function - Multicast Broadcast Services (MBS)",
+          "title": "Basic implementation of MBS Transport Function - Developer Exchange",
           "url": "https://www.youtube.com/watch?v=anrtRfPttmo",
           "thumbnail": "https://i2.ytimg.com/vi/anrtRfPttmo/hqdefault.jpg",
-          "published": "2025-07-06"
+          "published": "2025-07-06",
+          "by": "Richard Bradbury, Dev Audsin and David Waring (BBC)"
         },
         {
           "id": "lJh2F0xXxpE",
-          "title": "TUTORIAL - Initial support of 5MBS core network functions",
+          "title": "Initial support of 5MBS core network functions - Developer Exchange",
           "url": "https://www.youtube.com/watch?v=lJh2F0xXxpE",
           "thumbnail": "https://i1.ytimg.com/vi/lJh2F0xXxpE/hqdefault.jpg",
           "published": "2024-11-10",
-          "by": "Borja Iñesta"
+          "by": "Borja Iñesta Hernández"
         }
       ]
     },
@@ -100,8 +105,16 @@
       "playlistUrl": "https://www.youtube.com/playlist?list=PLFqKJZ78_IWUibB6dMiabaVNDFLSGBWlx",
       "videos": [
         {
+          "id": "WhMLUO0Bh2U",
+          "title": "Initial steps exposing APIs to AI systems through the MCP - Developer Exchange",
+          "url": "https://www.youtube.com/watch?v=WhMLUO0Bh2U",
+          "thumbnail": "https://i4.ytimg.com/vi/WhMLUO0Bh2U/hqdefault.jpg",
+          "published": "2026-07-24",
+          "by": "Aarón Montilla (iTEAM-UPV)"
+        },
+        {
           "id": "uEfBaTqh5vw",
-          "title": "Overview of the latest updates to the 5G Media Streaming Project - 5G-MAG Reference Tools",
+          "title": "Overview of the latest updates to the 5G Media Streaming Project - Developer Exchange",
           "url": "https://www.youtube.com/watch?v=uEfBaTqh5vw",
           "thumbnail": "https://i2.ytimg.com/vi/uEfBaTqh5vw/hqdefault.jpg",
           "published": "2026-06-01",
@@ -109,10 +122,11 @@
         },
         {
           "id": "SOA7OGF86Gg",
-          "title": "Introducing the new 5GMS Application Provider Portal - 5G-MAG Reference Tools",
+          "title": "Introducing the new 5GMS Application Provider Portal - Developer Exchange",
           "url": "https://www.youtube.com/watch?v=SOA7OGF86Gg",
           "thumbnail": "https://i4.ytimg.com/vi/SOA7OGF86Gg/hqdefault.jpg",
-          "published": "2026-02-23"
+          "published": "2026-02-23",
+          "by": "Erik Gaida (Fraunhofer FOKUS)"
         },
         {
           "id": "AvjtVrTrWsA",
@@ -130,45 +144,50 @@
         },
         {
           "id": "hiHWE3DyhdM",
-          "title": "5G Media Streaming QoE Metrics Reporting - 5G-MAG Reference Tools",
+          "title": "5G Media Streaming QoE Metrics Reporting - Developer Exchange",
           "url": "https://www.youtube.com/watch?v=hiHWE3DyhdM",
           "thumbnail": "https://i1.ytimg.com/vi/hiHWE3DyhdM/hqdefault.jpg",
-          "published": "2024-05-23"
+          "published": "2024-05-23",
+          "by": "Daniel Silhavy (Fraunhofer FOKUS)"
         },
         {
           "id": "qewsQhGi8aE",
-          "title": "Introducing the 5GMS Application Provider Management Portal - 5G-MAG Reference Tools",
+          "title": "Introducing the 5GMS Application Provider Management Portal - Developer Exchange",
           "url": "https://www.youtube.com/watch?v=qewsQhGi8aE",
           "thumbnail": "https://i2.ytimg.com/vi/qewsQhGi8aE/hqdefault.jpg",
-          "published": "2024-05-23"
+          "published": "2024-05-23",
+          "by": "Vuk Stojkovic (Fraunhofer FOKUS)"
         },
         {
           "id": "fv_LoZXk5Oc",
-          "title": "5GMS Consumpion Reporting, Network Assistance and Dynamic Policies - 5G-MAG Reference Tools",
+          "title": "5GMS Consumpion Reporting, Network Assistance and Dynamic Policies - Developer Exchange",
           "url": "https://www.youtube.com/watch?v=fv_LoZXk5Oc",
           "thumbnail": "https://i3.ytimg.com/vi/fv_LoZXk5Oc/hqdefault.jpg",
-          "published": "2024-03-10"
+          "published": "2024-03-10",
+          "by": "David Waring (BBC R&D) and Daniel Silhavy (Fraunhofer FOKUS)"
         },
         {
           "id": "lJG1hNty_AU",
-          "title": "5G Media Streaming supported by 5G-MAG Reference Tools - DEVELOPER XCHANGE",
+          "title": "5G Media Streaming supported by 5G-MAG Reference Tools - Developer Exchange",
           "url": "https://www.youtube.com/watch?v=lJG1hNty_AU",
           "thumbnail": "https://i1.ytimg.com/vi/lJG1hNty_AU/hqdefault.jpg",
           "published": "2023-12-07"
         },
         {
           "id": "L5nGVf-WhNE",
-          "title": "5G Media Streaming End-to-end setup with Android clients - 5G-MAG Reference Tools",
+          "title": "5G Media Streaming End-to-end setup with Android clients - Developer Exchange",
           "url": "https://www.youtube.com/watch?v=L5nGVf-WhNE",
           "thumbnail": "https://i1.ytimg.com/vi/L5nGVf-WhNE/hqdefault.jpg",
-          "published": "2023-06-03"
+          "published": "2023-06-03",
+          "by": "Daniel Silhavy (Fraunhofer FOKUS)"
         },
         {
           "id": "2IU_18Dvhew",
-          "title": "5G Media Streaming in the BBC R&D standalone testbed - 5G-MAG Reference Tools",
+          "title": "5G Media Streaming in the BBC R&D standalone testbed - Developer Exchange",
           "url": "https://www.youtube.com/watch?v=2IU_18Dvhew",
           "thumbnail": "https://i3.ytimg.com/vi/2IU_18Dvhew/hqdefault.jpg",
-          "published": "2023-02-01"
+          "published": "2023-02-01",
+          "by": "Richard Bradbury, David Waring, Dev Audsin and John Elliott (BBC)"
         }
       ]
     },
@@ -178,18 +197,19 @@
       "videos": [
         {
           "id": "ZpktgeRCqNY",
-          "title": "5G-MAG Reference Tools - Docker Setup with Insomnia REST Client - UE Data Collection",
+          "title": "Docker Setup with Insomnia REST Client - Developer Exchange",
           "url": "https://www.youtube.com/watch?v=ZpktgeRCqNY",
           "thumbnail": "https://i3.ytimg.com/vi/ZpktgeRCqNY/hqdefault.jpg",
-          "published": "2025-05-10"
+          "published": "2025-05-10",
+          "by": "Daniel Silhavy (Fraunhofer FOKUS)"
         },
         {
           "id": "FFnyln0YB1A",
-          "title": "UE Data Collection, Reporting and Event Exposure - 5G-MAG Developer Xchange",
+          "title": "UE Data Collection, Reporting and Event Exposure - Developer Exchange",
           "url": "https://www.youtube.com/watch?v=FFnyln0YB1A",
           "thumbnail": "https://i3.ytimg.com/vi/FFnyln0YB1A/hqdefault.jpg",
           "published": "2024-11-10",
-          "by": "Richard Bradbury, David Waring and Dev Audsin"
+          "by": "Richard Bradbury, Dev Audsin and David Waring (BBC)"
         }
       ]
     },
@@ -224,11 +244,11 @@
       "videos": [
         {
           "id": "9jHwMHVm3PM",
-          "title": "GPAC FLUTE support - 5G-MAG Developer Xchange",
+          "title": "GPAC FLUTE support - Developer Exchange",
           "url": "https://www.youtube.com/watch?v=9jHwMHVm3PM",
           "thumbnail": "https://i2.ytimg.com/vi/9jHwMHVm3PM/hqdefault.jpg",
           "published": "2024-11-10",
-          "by": "Sohaib Larbi"
+          "by": "Sohaib Larbi (Motion Spell)"
         }
       ]
     },
@@ -245,17 +265,19 @@
         },
         {
           "id": "4Mj_eJnYVjE",
-          "title": "TUTORIAL - Unity Player for Android with DASH Streaming - V3C Immersive Platform",
+          "title": "Unity Player for Android with DASH Streaming - Developer Exchange",
           "url": "https://www.youtube.com/watch?v=4Mj_eJnYVjE",
           "thumbnail": "https://i1.ytimg.com/vi/4Mj_eJnYVjE/hqdefault.jpg",
-          "published": "2025-06-20"
+          "published": "2025-06-20",
+          "by": "5G-MAG"
         },
         {
           "id": "13O2lJHs_jo",
-          "title": "V3C Immersive Platform - Support for MPEG Haptics - 5G-MAG Reference Tools",
+          "title": "V3C Immersive Platform - Support for MPEG Haptics - Developer Exchange",
           "url": "https://www.youtube.com/watch?v=13O2lJHs_jo",
           "thumbnail": "https://i2.ytimg.com/vi/13O2lJHs_jo/hqdefault.jpg",
-          "published": "2025-06-10"
+          "published": "2025-06-10",
+          "by": "Bart Kroon (Philips)"
         },
         {
           "id": "DDDplLD0WjE",
@@ -280,10 +302,11 @@
         },
         {
           "id": "gFiNKcQKVuU",
-          "title": "V3C Immersive Platform - 5G-MAG Reference Tools for Volumetric Video",
+          "title": "V3C Immersive Platform - Developer Exchange",
           "url": "https://www.youtube.com/watch?v=gFiNKcQKVuU",
           "thumbnail": "https://i4.ytimg.com/vi/gFiNKcQKVuU/hqdefault.jpg",
-          "published": "2024-07-26"
+          "published": "2024-07-26",
+          "by": "Patrick Fontaine (InterDigital)"
         }
       ]
     },
@@ -300,24 +323,27 @@
         },
         {
           "id": "CVpTbiN-tmc",
-          "title": "News on XR Unity Player - XR Media Integration in 5G with MPEG-I SD - 5G-MAG Reference Tools",
+          "title": "News on XR Unity Player - Developer Exchange",
           "url": "https://www.youtube.com/watch?v=CVpTbiN-tmc",
           "thumbnail": "https://i4.ytimg.com/vi/CVpTbiN-tmc/hqdefault.jpg",
-          "published": "2025-06-10"
+          "published": "2025-06-10",
+          "by": "Nils Duval (Motion Spell)"
         },
         {
           "id": "bEMjw1YA78M",
-          "title": "Using the Blender glTF exporter with the XR Unity Player - 5G-MAG Reference Tools",
+          "title": "Using the Blender glTF exporter with the XR Unity Player - Developer Exchange",
           "url": "https://www.youtube.com/watch?v=bEMjw1YA78M",
           "thumbnail": "https://i3.ytimg.com/vi/bEMjw1YA78M/hqdefault.jpg",
-          "published": "2024-05-07"
+          "published": "2024-05-07",
+          "by": "Nils Duval (Motion Spell)"
         },
         {
           "id": "PD3JbPppLLE",
-          "title": "XR Player supported by 5G-MAG Reference Tools - DEVELOPER XCHANGE",
+          "title": "XR Player supported by 5G-MAG Reference Tools - Developer Exchange",
           "url": "https://www.youtube.com/watch?v=PD3JbPppLLE",
           "thumbnail": "https://i1.ytimg.com/vi/PD3JbPppLLE/hqdefault.jpg",
-          "published": "2023-12-07"
+          "published": "2023-12-07",
+          "by": "Imed Bouazizi (Qualcomm)"
         }
       ]
     },
@@ -353,7 +379,7 @@
     "videos": [
       {
         "id": "2j1ZXDK_4B0",
-        "title": "Joint 3GPP SA4, GoS and 5G-MAG Workshop on Media Energy Consumption Measurement and Exposure",
+        "title": "Workshop on Media Energy Consumption Measurement and Exposure - Workshop",
         "url": "https://www.youtube.com/watch?v=2j1ZXDK_4B0",
         "thumbnail": "https://i3.ytimg.com/vi/2j1ZXDK_4B0/hqdefault.jpg",
         "published": "2026-03-25"
@@ -374,63 +400,63 @@
       },
       {
         "id": "ptXi6BIrBgo",
-        "title": "5G-MAG Workshop - Part II: Media Production: Deep dive into protocols - BBC",
+        "title": "Part II: Media Production: Deep dive into protocols - BBC - Workshop",
         "url": "https://www.youtube.com/watch?v=ptXi6BIrBgo",
         "thumbnail": "https://i1.ytimg.com/vi/ptXi6BIrBgo/hqdefault.jpg",
         "published": "2022-01-24"
       },
       {
         "id": "KZB_jcfDh4Q",
-        "title": "5G-MAG Workshop - Part II: Media Production: Deep dive into protocols - Agile Content",
+        "title": "Part II: Media Production: Deep dive into protocols - Agile Content - Workshop",
         "url": "https://www.youtube.com/watch?v=KZB_jcfDh4Q",
         "thumbnail": "https://i4.ytimg.com/vi/KZB_jcfDh4Q/hqdefault.jpg",
         "published": "2022-01-24"
       },
       {
         "id": "Q3qsSlewTF8",
-        "title": "5G-MAG Workshop - Part II: Media Production: Deep dive into protocols - ROSS Video",
+        "title": "Part II: Media Production: Deep dive into protocols - ROSS Video - Workshop",
         "url": "https://www.youtube.com/watch?v=Q3qsSlewTF8",
         "thumbnail": "https://i2.ytimg.com/vi/Q3qsSlewTF8/hqdefault.jpg",
         "published": "2022-01-24"
       },
       {
         "id": "t6EsGfCDScg",
-        "title": "5G-MAG Workshop - Part II: Media Production: Deep dive into protocols - FranceTV/Globecast",
+        "title": "Part II: Media Production: Deep dive into protocols - FranceTV/Globecast - Workshop",
         "url": "https://www.youtube.com/watch?v=t6EsGfCDScg",
         "thumbnail": "https://i1.ytimg.com/vi/t6EsGfCDScg/hqdefault.jpg",
         "published": "2022-01-24"
       },
       {
         "id": "xCyLTd9gMZI",
-        "title": "5G-MAG Workshop - Part II: Media Production: Deep dive into protocols - Qualcomm",
+        "title": "Part II: Media Production: Deep dive into protocols - Qualcomm - Workshop",
         "url": "https://www.youtube.com/watch?v=xCyLTd9gMZI",
         "thumbnail": "https://i1.ytimg.com/vi/xCyLTd9gMZI/hqdefault.jpg",
         "published": "2022-01-24"
       },
       {
         "id": "_tvrlIj7TxE",
-        "title": "5G-MAG Workshop - Part II: Media Production: Deep dive into protocols - NRK",
+        "title": "Part II: Media Production: Deep dive into protocols - NRK - Workshop",
         "url": "https://www.youtube.com/watch?v=_tvrlIj7TxE",
         "thumbnail": "https://i4.ytimg.com/vi/_tvrlIj7TxE/hqdefault.jpg",
         "published": "2022-01-24"
       },
       {
         "id": "NjXyBrlnoss",
-        "title": "5G-MAG Workshop - Part II: Media Production: Deep dive into protocols - Nulink",
+        "title": "Part II: Media Production: Deep dive into protocols - Nulink - Workshop",
         "url": "https://www.youtube.com/watch?v=NjXyBrlnoss",
         "thumbnail": "https://i3.ytimg.com/vi/NjXyBrlnoss/hqdefault.jpg",
         "published": "2022-01-24"
       },
       {
         "id": "aQ-_Xf06etQ",
-        "title": "5G-MAG Workshop - Part II: Media Production: Deep dive into protocols - Vislink",
+        "title": "Part II: Media Production: Deep dive into protocols - Vislink - Workshop",
         "url": "https://www.youtube.com/watch?v=aQ-_Xf06etQ",
         "thumbnail": "https://i2.ytimg.com/vi/aQ-_Xf06etQ/hqdefault.jpg",
         "published": "2022-01-24"
       },
       {
         "id": "5-CENdYtG_I",
-        "title": "5G-MAG Workshop - Part I: Media Production: Deep dive into protocols - David and Ivan",
+        "title": "Part I: Media Production: Deep dive into protocols - David and Ivan - Workshop",
         "url": "https://www.youtube.com/watch?v=5-CENdYtG_I",
         "thumbnail": "https://i2.ytimg.com/vi/5-CENdYtG_I/hqdefault.jpg",
         "published": "2021-12-15"
@@ -444,7 +470,7 @@
       },
       {
         "id": "fv7Wdwa2fVc",
-        "title": "5G-MAG Workshop - Part I: Media Production: Deep dive into protocols - Thibaud Biatek",
+        "title": "Part I: Media Production: Deep dive into protocols - Thibaud Biatek - Workshop",
         "url": "https://www.youtube.com/watch?v=fv7Wdwa2fVc",
         "thumbnail": "https://i3.ytimg.com/vi/fv7Wdwa2fVc/hqdefault.jpg",
         "published": "2021-12-15"
@@ -561,7 +587,7 @@
     "videos": [
       {
         "id": "FSiWpyTgT5M",
-        "title": "5G-MAG Friday's Call - Using SES's DVB-NIP Analyzer to test 5G-MAG's FLUTE Library rt-libflute",
+        "title": "Using SES's DVB-NIP Analyzer to test 5G-MAG's FLUTE Library rt-libflute - Dev Public Call",
         "url": "https://www.youtube.com/watch?v=FSiWpyTgT5M",
         "thumbnail": "https://i3.ytimg.com/vi/FSiWpyTgT5M/hqdefault.jpg",
         "published": "2025-10-20",
@@ -569,7 +595,7 @@
       },
       {
         "id": "SvNWzIEURU0",
-        "title": "5G-MAG Friday's Call - Optimization of 5G Broadcast Receiver",
+        "title": "Optimization of 5G Broadcast Receiver - Dev Public Call",
         "url": "https://www.youtube.com/watch?v=SvNWzIEURU0",
         "thumbnail": "https://i4.ytimg.com/vi/SvNWzIEURU0/hqdefault.jpg",
         "published": "2025-07-06",
@@ -577,7 +603,7 @@
       },
       {
         "id": "yuCrUlNdtQE",
-        "title": "5G-MAG Friday's Call - Bringing stage evets with real actors to your home in VR",
+        "title": "Bringing stage evets with real actors to your home in VR - Dev Public Call",
         "url": "https://www.youtube.com/watch?v=yuCrUlNdtQE",
         "thumbnail": "https://i2.ytimg.com/vi/yuCrUlNdtQE/hqdefault.jpg",
         "published": "2025-06-10",
@@ -585,7 +611,7 @@
       },
       {
         "id": "Xf2ChEFMzFA",
-        "title": "5G-MAG's Friday Call - Enabling Portable XR Experiences across Devices and Networks",
+        "title": "Enabling Portable XR Experiences across Devices and Networks - Dev Public Call",
         "url": "https://www.youtube.com/watch?v=Xf2ChEFMzFA",
         "thumbnail": "https://i1.ytimg.com/vi/Xf2ChEFMzFA/hqdefault.jpg",
         "published": "2025-06-10",
@@ -593,7 +619,7 @@
       },
       {
         "id": "vxQFL2d_CBI",
-        "title": "5G-MAG Friday's Call - Special Session on Immersive Media",
+        "title": "Special Session on Immersive Media - Dev Public Call",
         "url": "https://www.youtube.com/watch?v=vxQFL2d_CBI",
         "thumbnail": "https://i3.ytimg.com/vi/vxQFL2d_CBI/hqdefault.jpg",
         "published": "2025-02-03"
@@ -631,6 +657,132 @@
         "url": "https://www.youtube.com/watch?v=hkVgL8yq0V8",
         "thumbnail": "https://i1.ytimg.com/vi/hkVgL8yq0V8/hqdefault.jpg",
         "published": "2025-09-30"
+      }
+    ]
+  },
+  "technologyExchange": {
+    "playlistId": "PLFqKJZ78_IWWFtjfMrKXmgXc_q9u9Lypx",
+    "playlistUrl": "https://www.youtube.com/playlist?list=PLFqKJZ78_IWWFtjfMrKXmgXc_q9u9Lypx",
+    "videos": [
+      {
+        "id": "GTfHnrdi_-g",
+        "title": "Introduction to 5G Media Streaming (3GPP Release 16) - Technology Exchange",
+        "url": "https://www.youtube.com/watch?v=GTfHnrdi_-g",
+        "thumbnail": "https://i4.ytimg.com/vi/GTfHnrdi_-g/hqdefault.jpg",
+        "published": "2022-12-05",
+        "by": "Thorsten Lohmar (Ericsson) and Frédéric Gabin (Dolby)"
+      },
+      {
+        "id": "cspJzBuBeU0",
+        "title": "Dynamic Policies for 5G Media Streaming (3GPP Release 16) - Technology Exchange",
+        "url": "https://www.youtube.com/watch?v=cspJzBuBeU0",
+        "thumbnail": "https://i4.ytimg.com/vi/cspJzBuBeU0/hqdefault.jpg",
+        "published": "2022-12-05",
+        "by": "Thorsten Lohmar (Ericsson) and Imed Bouazizi (Qualcomm)"
+      },
+      {
+        "id": "m6fU7F0DhS8",
+        "title": "5G Media Streaming over eMBMS (3GPP Release 17) - Technology Exchange",
+        "url": "https://www.youtube.com/watch?v=m6fU7F0DhS8",
+        "thumbnail": "https://i2.ytimg.com/vi/m6fU7F0DhS8/hqdefault.jpg",
+        "published": "2022-12-05",
+        "by": "Thomas Stockhammer (Qualcomm) and Richard Bradbury (BBC)"
+      },
+      {
+        "id": "1MciLj5V5EQ",
+        "title": "Edge Media Processing in 5G Media Streaming (3GPP Release 17) - Technology Exchange",
+        "url": "https://www.youtube.com/watch?v=1MciLj5V5EQ",
+        "thumbnail": "https://i2.ytimg.com/vi/1MciLj5V5EQ/hqdefault.jpg",
+        "published": "2022-12-05",
+        "by": "Imed Bouazizi (Qualcomm), Richard Bradbury (BBC) and Iraj Sodagar (Tencent)"
+      },
+      {
+        "id": "73KINNxl_FA",
+        "title": "User Services for the 5G Multicast-Broadcast Service (3GPP Release 17) - Technology Exchange",
+        "url": "https://www.youtube.com/watch?v=73KINNxl_FA",
+        "thumbnail": "https://i4.ytimg.com/vi/73KINNxl_FA/hqdefault.jpg",
+        "published": "2022-12-05",
+        "by": "Richard Bradbury (BBC) and Thorsten Lohmar (Ericsson)"
+      },
+      {
+        "id": "1Hv81xdbBfw",
+        "title": "UE Data Collection & Reporting framework for Event Exposure (3GPP Release 17) - Technology Exchange",
+        "url": "https://www.youtube.com/watch?v=1Hv81xdbBfw",
+        "thumbnail": "https://i2.ytimg.com/vi/1Hv81xdbBfw/hqdefault.jpg",
+        "published": "2022-12-05",
+        "by": "Richard Bradbury (BBC) and Charles Lo (Qualcomm)"
+      },
+      {
+        "id": "q0eyTt3KAs4",
+        "title": "Teaser on 5G and XR (3GPP Release 16/17/18) - Technology Exchange",
+        "url": "https://www.youtube.com/watch?v=q0eyTt3KAs4",
+        "thumbnail": "https://i2.ytimg.com/vi/q0eyTt3KAs4/hqdefault.jpg",
+        "published": "2022-12-05",
+        "by": "Thomas Stockhammer (Qualcomm) and Frédéric Gabin (Dolby)"
+      },
+      {
+        "id": "SS4OvkC9oK8",
+        "title": "Advanced Media Delivery: An Introduction - Technology Exchange",
+        "url": "https://www.youtube.com/watch?v=SS4OvkC9oK8",
+        "thumbnail": "https://i4.ytimg.com/vi/SS4OvkC9oK8/hqdefault.jpg",
+        "published": "2025-10-20",
+        "by": "Thomas Stockhammer (Qualcomm), Jason Cloud (Dolby), Frédéric Gabin (Dolby) and Richard Bradbury (BBC)"
+      },
+      {
+        "id": "_0ZyI1TZoMw",
+        "title": "Advanced Media Delivery: Reminder on 5G Media Streaming - Technology Exchange",
+        "url": "https://www.youtube.com/watch?v=_0ZyI1TZoMw",
+        "thumbnail": "https://i4.ytimg.com/vi/_0ZyI1TZoMw/hqdefault.jpg",
+        "published": "2025-10-20",
+        "by": "Thomas Stockhammer (Qualcomm), Jason Cloud (Dolby), Frédéric Gabin (Dolby) and Richard Bradbury (BBC)"
+      },
+      {
+        "id": "5CiUqlzxzKQ",
+        "title": "Advanced Media Delivery: Common Client Metadata - Technology Exchange",
+        "url": "https://www.youtube.com/watch?v=5CiUqlzxzKQ",
+        "thumbnail": "https://i2.ytimg.com/vi/5CiUqlzxzKQ/hqdefault.jpg",
+        "published": "2025-10-20",
+        "by": "Thomas Stockhammer (Qualcomm), Jason Cloud (Dolby), Frédéric Gabin (Dolby) and Richard Bradbury (BBC)"
+      },
+      {
+        "id": "SsCTCmRmprQ",
+        "title": "Advanced Media Delivery: Multi-CDN Media Delivery - Technology Exchange",
+        "url": "https://www.youtube.com/watch?v=SsCTCmRmprQ",
+        "thumbnail": "https://i4.ytimg.com/vi/SsCTCmRmprQ/hqdefault.jpg",
+        "published": "2025-10-20",
+        "by": "Thomas Stockhammer (Qualcomm), Jason Cloud (Dolby), Frédéric Gabin (Dolby) and Richard Bradbury (BBC)"
+      },
+      {
+        "id": "tLdCTMvdCuo",
+        "title": "Advanced Media Delivery: Multi-Access Media Delivery - Technology Exchange",
+        "url": "https://www.youtube.com/watch?v=tLdCTMvdCuo",
+        "thumbnail": "https://i1.ytimg.com/vi/tLdCTMvdCuo/hqdefault.jpg",
+        "published": "2025-10-20",
+        "by": "Thomas Stockhammer (Qualcomm), Jason Cloud (Dolby), Frédéric Gabin (Dolby) and Richard Bradbury (BBC)"
+      },
+      {
+        "id": "24v2XA6C0M0",
+        "title": "Advanced Media Delivery: Distributing encrypted and high-value content - Technology Exchange",
+        "url": "https://www.youtube.com/watch?v=24v2XA6C0M0",
+        "thumbnail": "https://i3.ytimg.com/vi/24v2XA6C0M0/hqdefault.jpg",
+        "published": "2025-10-20",
+        "by": "Thomas Stockhammer (Qualcomm), Jason Cloud (Dolby), Frédéric Gabin (Dolby) and Richard Bradbury (BBC)"
+      },
+      {
+        "id": "YNhzTgpjkns",
+        "title": "Advanced Media Delivery: Improved QoS support for Media Streaming services - Technology Exchange",
+        "url": "https://www.youtube.com/watch?v=YNhzTgpjkns",
+        "thumbnail": "https://i2.ytimg.com/vi/YNhzTgpjkns/hqdefault.jpg",
+        "published": "2025-10-20",
+        "by": "Thomas Stockhammer (Qualcomm), Jason Cloud (Dolby), Frédéric Gabin (Dolby) and Richard Bradbury (BBC) and Rufael Mekuria (Huawei)"
+      },
+      {
+        "id": "_Y2S16ZMFMQ",
+        "title": "Advanced Media Delivery: Media Streaming aspects of Network Slicing - Technology Exchange",
+        "url": "https://www.youtube.com/watch?v=_Y2S16ZMFMQ",
+        "thumbnail": "https://i4.ytimg.com/vi/_Y2S16ZMFMQ/hqdefault.jpg",
+        "published": "2025-10-20",
+        "by": "Thomas Stockhammer (Qualcomm), Jason Cloud (Dolby), Frédéric Gabin (Dolby) and Richard Bradbury (BBC)"
       }
     ]
   }
