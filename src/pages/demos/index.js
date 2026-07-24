@@ -1,10 +1,9 @@
-import { useState } from 'react';
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
-import VideoCard from '@site/src/components/VideoCard';
+import VideoGrid from '@site/src/components/VideoGrid';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 import styles from '../tech/index.module.css';
 
@@ -148,7 +147,6 @@ const EVENT_TYPES = [
 ];
 
 function DemosSection() {
-  const [playingId, setPlayingId] = useState(null);
   const videos = youtubePlaylists.demos?.videos || [];
   if (!videos.length) return null;
 
@@ -158,7 +156,7 @@ function DemosSection() {
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
           <div>
             <h2 className={styles.sectionTitle} style={{ textAlign: 'left', marginBottom: '0.2rem' }}>
-              Demonstrators
+              In Action
             </h2>
             <p className={styles.sectionSubtitle} style={{ textAlign: 'left', margin: 0 }}>
               Recordings of plugfest and trade-show demos
@@ -175,17 +173,7 @@ function DemosSection() {
             </a>
           )}
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(230px, 1fr))', gap: '1.1rem' }}>
-          {videos.map((v) => (
-            <VideoCard
-              key={v.id}
-              video={v}
-              kicker="Demo"
-              isPlaying={playingId === v.id}
-              onPlay={() => setPlayingId(v.id)}
-            />
-          ))}
-        </div>
+        <VideoGrid videos={videos} />
       </div>
     </section>
   );

@@ -16,7 +16,7 @@ function slugify(title) {
     .replace(/\s+/g, '-');
 }
 
-export default function VideoCard({ video, isPlaying, onPlay, kicker = 'On Air' }) {
+export default function VideoCard({ video, isPlaying, onPlay, kicker = 'In Action' }) {
   return (
     <div id={slugify(video.title)} className={clsx(styles.card, styles.anchorTarget)}>
       <div className={styles.header}>

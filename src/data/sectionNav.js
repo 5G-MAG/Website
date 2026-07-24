@@ -78,7 +78,7 @@ export const SECTION_NAV = [
     title: 'Explainers & Profiles',
     titleHref: '/tech',
     items: [
-      { label: 'On Air Video Gallery', href: '/tech/videos' },
+      { label: 'In Action', href: '/tech/videos' },
       { label: 'Glossary', href: '/tech/glossary' },
       { label: 'Requirements', href: '/standards/requirements' },
       { label: 'Feedback', href: '/standards' },
@@ -105,7 +105,7 @@ export const SECTION_NAV = [
     // plugfest write-ups it has no sub-items pointing back at those.
     items: [
       { label: '5G Broadcast PlugFest 2026', href: '/demos/5g-broadcast-plugfest' },
-      { label: 'Demonstrators', href: '/demos#demonstrators' },
+      { label: 'In Action', href: '/demos#demonstrators' },
     ],
   },
   {

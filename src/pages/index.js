@@ -86,10 +86,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* On Air */}
+        {/* In Action */}
         <section className={styles.section}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>On Air</h2>
+            <h2 className={styles.sectionTitle}>In Action</h2>
             <p className={styles.sectionSubtitle}>
               Hear it from the people building it: recorded demos and talks from 5G-MAG members and
               contributors.

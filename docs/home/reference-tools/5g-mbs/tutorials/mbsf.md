@@ -32,7 +32,7 @@ The MBSF is configured by an Application Provider using the API at reference poi
 The MBSF implementation as tested in the main body of this tutorial manages the MB-SMF and MBSTF(s) but does not yet drive full Service Announcement provisioning over Nmb10. The [Analysing MBS User Service Announcements](#analysing-mbs-user-service-announcements) section at the end describes a separate, experimental path in which an MBS Application Function (AF) co-located with the MBSF serves announcement bundles; treat it as work in progress.
 :::
 
-<div class="onair-kicker"><span class="onair-kicker__dot"></span>On Air</div>
+<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
 
 ## Developer Exchange
 

@@ -31,7 +31,7 @@ Until the full write-up is ready, you can follow the individual pieces that toge
 3. [Managing MBS Sessions and TMGIs](./managing-mbs-sessions-tmgi): the MB-SMF session and TMGI operations.
 4. [MBS Function (MBSF) Operation & APIs](./mbsf) and [MBS Transport Function (MBSTF) Testing](./mbstf): provision and deliver media over the MBS User Services layer.
 
-<div class="onair-kicker"><span class="onair-kicker__dot"></span>On Air</div>
+<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
 
 ## Developer Exchange
 

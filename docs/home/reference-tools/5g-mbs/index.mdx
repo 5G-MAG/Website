@@ -6,7 +6,7 @@ sidebar_position: -1
 description: Landing page for the 5G MBS reference tools (3GPP Rel-17/18), linking to scope, repositories, packages, releases, tutorials and community stats.
 ---
 import CommunityStats from '@site/src/components/CommunityStats';
-import OnAirTeaser from '@site/src/components/OnAirTeaser';
+import VideoGrid from '@site/src/components/VideoGrid';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 
@@ -61,13 +61,13 @@ The slide deck below introduces the 5G MBS reference tools, their architecture a
 | **Technical documentation** | Architecture, RAN aspects, and mobility analysis: [5G Multicast Broadcast Services (MBS) on the Tech portal](/tech/5g-mbs)        |
 | **Standards**               | Normative specs and 5G-MAG contributions: [5G Multicast Broadcast Services (MBS) on the Standards portal](/tech/standards/5g-mbs) |
 
-<div class="onair-kicker"><span class="onair-kicker__dot"></span>On Air</div>
+<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
 
 ## Developer Exchange
 
 See the reference tools in action in this community video.
 
-<OnAirTeaser videoId="e_xK_ckkhgc" title="Demonstrating MBS User Service Announcement mechanisms - Reference Tools" href={useBaseUrl('/reference-tools/5g-mbs/tutorials#developer-exchange')} by="Dev Audsin, David Waring and Richard Bradbury (BBC R&D)" />
+<VideoGrid videos={[{ id: 'e_xK_ckkhgc', title: 'Demonstrating MBS User Service Announcement mechanisms - Reference Tools', by: 'Dev Audsin, David Waring and Richard Bradbury (BBC R&D)' }]} />
 
 ## Community Stats
 

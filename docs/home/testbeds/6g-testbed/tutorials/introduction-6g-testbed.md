@@ -31,7 +31,7 @@ The 6G Testbed has two parts: a **Network Emulator** that reproduces realistic n
 
 For the full component breakdown, the profile format, and the emulator API, see the [Scope](../scope) page. The source code and setup instructions are in the [5G-MAG/6G-Testbed](https://github.com/5G-MAG/6G-Testbed) repository.
 
-<div class="onair-kicker"><span class="onair-kicker__dot"></span>On Air</div>
+<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
 
 ## Developer Exchange
 

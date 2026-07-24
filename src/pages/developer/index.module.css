@@ -375,107 +375,22 @@
 }
 
 /* ── Video Section ─────────────────────────────────────────────────── */
-/* .videoHeader / .videoViewAll / .videoGrid now live in the shared
-   tech/index.module.css (also used by /testing) — see sharedStyles
-   import above. */
+/* Card rendering itself is the shared VideoGrid/VideoCard component (its
+   dark "tally light" styling lives in src/components/VideoCard) -- only
+   this section's own header row (title + "see all" link) is local. */
 
-.videoCard {
+.videoHeader {
   display: flex;
-  flex-direction: column;
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 10px;
-  overflow: hidden;
-  background: var(--ifm-background-surface-color);
-  color: inherit !important;
-  text-decoration: none !important;
-  transition:
-    box-shadow 0.2s ease,
-    transform 0.15s ease;
-}
-
-.videoCard:hover {
-  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.12);
-  transform: translateY(-3px);
-  text-decoration: none !important;
-}
-
-.videoThumb {
-  position: relative;
-  line-height: 0;
-  overflow: hidden;
-  padding: 6px;
-  background: var(--ifm-background-surface-color);
-}
-
-.videoThumb img {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  display: block;
-  border-radius: 6px;
-  background: var(--ifm-color-emphasis-200);
-  transition: transform 0.2s ease;
-}
-
-.videoCard:hover .videoThumb img {
-  transform: scale(1.04);
-}
-
-.videoPlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0);
-  transition: background 0.2s ease;
-}
-
-.videoCard:hover .videoPlay {
-  background: rgba(0, 0, 0, 0.35);
-}
-
-.videoPlay svg {
-  width: 48px;
-  height: 48px;
-  color: #fff;
-  opacity: 0;
-  transform: scale(0.85);
-  transition:
-    opacity 0.2s ease,
-    transform 0.2s ease;
-  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
-}
-
-.videoCard:hover .videoPlay svg {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.videoInfo {
-  padding: 0.9rem 1rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  align-items: flex-end;
   justify-content: space-between;
-  gap: 0.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
 }
 
-.videoTitle {
-  font-size: 0.875rem;
+.videoViewAll {
   font-weight: 600;
-  margin: 0;
-  line-height: 1.45;
-  color: var(--ifm-heading-color);
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.videoDate {
-  font-size: 0.78rem;
-  color: var(--ifm-color-emphasis-600);
+  white-space: nowrap;
 }
 
 /* ── Capability Area Cards ─────────────────────────────────────────── */

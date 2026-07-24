@@ -23,7 +23,7 @@ description: Written step-by-step tutorials for the CAMARA Connectivity Quality 
 
 Written step-by-step tutorials for the Network APIs reference tools are not yet published here. In the meantime, the project repositories are the best starting point — refer to the README in each [Network APIs repository](https://github.com/5G-MAG). See the [Scope](./scope) page for the full CAMARA API coverage table, and the [Resources](./resources) page for the code. Our [YouTube channel](https://www.youtube.com/@5GMAG) also hosts practical videos from developers on the use of the Reference Tools generally.
 
-<div class="onair-kicker"><span class="onair-kicker__dot"></span>On Air</div>
+<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
 
 ## Developer Exchange
 

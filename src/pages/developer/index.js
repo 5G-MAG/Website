@@ -6,6 +6,7 @@ import HubHero from '@site/src/components/HubHero';
 import ProjectIcon from '@site/src/components/ProjectIcon';
 import GodeeperCard, { icon } from '@site/src/components/GodeeperCard';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
+import VideoGrid from '@site/src/components/VideoGrid';
 import styles from './index.module.css';
 import releasesData from '@site/static/data/releases.json';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
@@ -566,31 +567,6 @@ function ProductTypeCard({ icon, label, description, href }) {
   );
 }
 
-function VideoCard({ video }) {
-  return (
-    <a
-      className={styles.videoCard}
-      href={video.url}
-      target="_blank"
-      rel="noreferrer"
-      title={video.title}
-    >
-      <div className={styles.videoThumb}>
-        <img src={video.thumbnail} alt={video.title} loading="lazy" />
-        <div className={styles.videoPlay}>
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M8 5v14l11-7z" />
-          </svg>
-        </div>
-      </div>
-      <div className={styles.videoInfo}>
-        <p className={styles.videoTitle}>{video.title}</p>
-        <span className={styles.videoDate}>{video.by || video.published}</span>
-      </div>
-    </a>
-  );
-}
-
 function VideoSection({ alt }) {
   const videos = mergeDeveloperVideos(youtubePlaylists.developer?.videos);
   return (
@@ -602,7 +578,7 @@ function VideoSection({ alt }) {
               className={styles.sectionTitle}
               style={{ textAlign: 'left', marginBottom: '0.2rem' }}
             >
-              See it in action
+              In Action
             </h2>
             <p className={styles.sectionSubtitle} style={{ textAlign: 'left', margin: 0 }}>
               Recent Reference Tools &amp; Testbeds demos and tutorials
@@ -617,11 +593,7 @@ function VideoSection({ alt }) {
             See all videos &rarr;
           </a>
         </div>
-        <div className={styles.videoGrid}>
-          {videos.map((v) => (
-            <VideoCard key={v.id} video={v} />
-          ))}
-        </div>
+        <VideoGrid videos={videos} />
       </div>
     </section>
   );
@@ -711,7 +683,7 @@ export default function Home() {
                 Community Stats
               </Link>
               <Link className="button button--outline button--primary button--lg" to="/tech/videos">
-                Watch On Air
+                Watch In Action
               </Link>
             </div>
 

@@ -73,7 +73,7 @@ In order: get the sample content running through the Unity presentation and the 
 
 This project's Scope and Resources pages do not currently give exact CLI commands, Docker or build instructions, network ports, or configuration files for any of the repositories above. For those, use the README in each repository linked above, or the [YouTube channel](https://www.youtube.com/@5GMAG), which hosts practical videos from developers on the use of the Reference Tools generally.
 
-<div class="onair-kicker"><span class="onair-kicker__dot"></span>On Air</div>
+<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
 
 ## Developer Exchange
 
