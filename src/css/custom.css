@@ -521,6 +521,23 @@
   width: 100%;
 }
 
+/* Fixed 3-column layout regardless of item count (e.g. 6 tiles -> 2 even
+   rows of 3), for cases where community-tiles--even's auto-fit wrapping
+   would otherwise split unevenly. Collapses on narrow screens. */
+.community-tiles--cols-3 {
+  grid-template-columns: repeat(3, 1fr) !important;
+}
+@media (max-width: 768px) {
+  .community-tiles--cols-3 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media (max-width: 480px) {
+  .community-tiles--cols-3 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 /* A grid of recap/article cards with a thumbnail on top -- same card
    language as .community-tile (border, radius, hover lift) but built
    around an image + title link rather than an icon + description. */
