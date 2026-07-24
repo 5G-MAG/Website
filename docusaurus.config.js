@@ -333,6 +333,9 @@ const config = {
             ['/tech/volumetric/beyond-2d', '/tech/volumetric/beyond2d'],
             ['/applications', '/developer/applications'],
             ['/testbeds', '/developer/testbeds'],
+            // Interop & Demos (2026-07-24): renamed from "Interop & Testing",
+            // served at /demos instead of /testing.
+            ['/demos', '/testing'],
             ['/contact', '/about/contact'],
             ['/partnerships', '/about/partnerships'],
             ['/structure', '/about/structure'],
@@ -442,7 +445,7 @@ const config = {
       style: 'dark',
       // Column order mirrors the main navbar's item order (see
       // src/theme/navItems.js: About Us, Membership, Explainers & Profiles,
-      // Feedback & Requirements, Software Accelerator, Interop & Testing,
+      // Feedback & Requirements, Software Accelerator, Interop & Demos,
       // Events, News) -- the "About Us" column bundles Membership/Events/News
       // in with it (own sub-items already follow that same relative order),
       // since those don't get their own footer column; "Follow Us" has no
@@ -488,8 +491,8 @@ const config = {
           ],
         },
         {
-          title: 'Interop & Testing',
-          items: [{ label: 'Overview', to: '/testing' }],
+          title: 'Interop & Demos',
+          items: [{ label: 'Overview', to: '/demos' }],
         },
         {
           title: 'Follow Us',

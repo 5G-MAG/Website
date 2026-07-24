@@ -118,7 +118,7 @@ export default function Testbeds() {
           spec-implementing code itself and not the events where results get shown off.{' '}
           <Link to="/reference-tools">Reference Tools</Link> is the spec-implementing code these
           testbeds evaluate;{' '}
-          <Link to="/testing">Interop &amp; Testing</Link> is the separate activity layer where
+          <Link to="/demos">Interop &amp; Demos</Link> is the separate activity layer where
           these get shown off at real interoperability events, not something that owns or
           validates testbeds.
         </p>

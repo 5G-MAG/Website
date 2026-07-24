@@ -88,7 +88,7 @@ const EVENT_TYPES = [
       <>
         Multi-vendor events where 5G-MAG reference code is tested side by side with other
         implementations — like the{' '}
-        <Link to="/testing/5g-broadcast-plugfest">5G Broadcast PlugFest 2026</Link>, hosted by
+        <Link to="/demos/5g-broadcast-plugfest">5G Broadcast PlugFest 2026</Link>, hosted by
         Fraunhofer FOKUS in Berlin, pictured above.
       </>
     ),
@@ -153,7 +153,7 @@ function DemosSection() {
   if (!videos.length) return null;
 
   return (
-    <section id="demos" className={styles.section} style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}>
+    <section id="demonstrators" className={styles.section} style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}>
       <div className="container">
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
           <div>
@@ -196,7 +196,7 @@ export default function Testing() {
   const tradeshowImg = useBaseUrl('/assets/images/gallery/tradeshow-booth-demo.jpg');
   return (
     <Layout
-      title="Interop & Testing"
+      title="Interop & Demos"
       description="Plugfests and demonstrators to prove 5G-MAG implementations and value."
     >
       <HubHero
@@ -211,7 +211,7 @@ export default function Testing() {
       <main>
         <section className={styles.section}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Why Interop & Testing</h2>
+            <h2 className={styles.sectionTitle}>Why Interop & Demos</h2>
             <p className={styles.sectionSubtitle}>
               Making the value proposition tangible to the industry — through interoperability,
               early testing and plugfests, and supporting application development and trials.
@@ -245,7 +245,7 @@ export default function Testing() {
                   loading="lazy"
                 />
                 <p className={styles.photoCaption}>
-                  <Link to="/testing/5g-broadcast-plugfest">5G Broadcast Plugfest 2026</Link> —
+                  <Link to="/demos/5g-broadcast-plugfest">5G Broadcast Plugfest 2026</Link> —
                   hosted by Fraunhofer FOKUS, Berlin.
                 </p>
               </figure>

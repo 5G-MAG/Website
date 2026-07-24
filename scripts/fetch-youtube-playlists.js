@@ -30,7 +30,7 @@ const PLAYLISTS = {
   developer: 'PLFqKJZ78_IWW_lQytNhfVmFl9U_lLBEcF',
   publicCall: 'PLFqKJZ78_IWUfQ-K4qWf4sx4R9L_DgG7f',
   // "5G-MAG Demos" -- interop plugfest / trade-show demo recordings, feeds
-  // the Interop & Testing page rather than the Developer or Workshops ones.
+  // the Interop & Demos page rather than the Developer or Workshops ones.
   demos: 'PLBwVxw5NGYvM',
 };
 

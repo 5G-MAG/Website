@@ -38,7 +38,7 @@ export const DISCOVER_WORK = [
   {
     title: 'Validation, Interop Plugfests, Demos and Apps',
     body: 'Plugfests and demonstrators to prove implementations and value.',
-    href: '/testing',
+    href: '/demos',
     icon: (
       <>
         <path d="M7 12l5 5l-1.5 1.5a3.536 3.536 0 1 1 -5 -5l1.5 -1.5" />

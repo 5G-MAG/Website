@@ -1,6 +1,6 @@
 // "Running the Loop: From Standards to Products" — standards bodies (3GPP,
 // ETSI, MPEG, IETF, GSMA, DVB, …) feed into a 4-stage loop (Requirements,
-// Explainers & Profiles, Software Accelerator, Interop & Testing) that
+// Explainers & Profiles, Software Accelerator, Interop & Demos) that
 // closes back with a Feedback arc into the standards bodies, and forwards
 // into Products & Deployments. Static SVG, no external image/licensing
 // question. Shared by /about and the homepage (both feature the same loop).
@@ -249,7 +249,7 @@ export default function StandardsLoopDiagram() {
           Interop &amp;
         </text>
         <text x="724" y="314" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#00335c">
-          Testing
+          Demos
         </text>
       </g>
       <path

@@ -448,7 +448,7 @@ const PROBLEM_POINTS = [
   {
     title: 'Interop is delayed',
     body: 'Without shared code, interoperability testing starts from scratch at every plugfest. Bugs found late are expensive to fix — including specification errors.',
-    href: '/testing',
+    href: '/demos',
     icon: (
       <>
         <path d="M9 9v-1a3 3 0 0 1 6 0v1" />

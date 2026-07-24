@@ -17,7 +17,7 @@ const HUB_PAGES = [
   { key: 'membership', label: 'Membership', file: 'src/pages/membership/index.js' },
   { key: 'tech', label: 'Explainers & Profiles', file: 'src/pages/tech/index.js' },
   { key: 'standards', label: 'Feedback & Requirements', file: 'src/pages/standards/index.js' },
-  { key: 'testing', label: 'Interop & Testing', file: 'src/pages/testing/index.js' },
+  { key: 'demos', label: 'Interop & Demos', file: 'src/pages/demos/index.js' },
   { key: 'testbeds', label: 'Testbeds', file: 'src/pages/testbeds/index.js' },
   {
     key: 'reference-tools',
