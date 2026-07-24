@@ -284,17 +284,6 @@ const CATEGORIES = [
 // 5G-MAG members and contributors, not reference material like the other three.
 const RESOURCES = [
   {
-    title: 'External Videos',
-    desc: 'Third-party talks on 5G media and broadcast topics.',
-    href: '/tech/videos-external',
-    icon: icon(
-      <>
-        <path d="M15 10l4.553 -2.069a1 1 0 0 1 1.447 .894v6.35a1 1 0 0 1 -1.447 .894l-4.553 -2.069v-4" />
-        <path d="M3 8a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-8z" />
-      </>
-    ),
-  },
-  {
     title: 'Glossary',
     desc: '3GPP process terms and acronyms used across the technical documentation.',
     href: '/tech/glossary',

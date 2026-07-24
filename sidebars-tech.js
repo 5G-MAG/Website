@@ -16,7 +16,6 @@ const sidebars = {
     // Profiles rather than Standards.
     { type: 'html', value: 'Resources', className: 'sidebar-section-label', defaultStyle: false },
     'videos',
-    'videos-external',
     'glossary',
     '3gpp-work-items',
 

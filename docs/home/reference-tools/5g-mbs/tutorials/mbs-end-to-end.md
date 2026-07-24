@@ -30,13 +30,3 @@ Until the full write-up is ready, you can follow the individual pieces that toge
 2. [Initial support of MBS in the 5GC](./mbs-in-5gc): create an MBS session and send multicast traffic through the core.
 3. [Managing MBS Sessions and TMGIs](./managing-mbs-sessions-tmgi): the MB-SMF session and TMGI operations.
 4. [MBS Function (MBSF) Operation & APIs](./mbsf) and [MBS Transport Function (MBSTF) Testing](./mbstf): provision and deliver media over the MBS User Services layer.
-
-<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
-
-## Developer Exchange
-
-The recording below walks through operating the MBS User Services, MBS 5GC, NG-RAN and UE together.
-
-By Jaime Sánchez Roldán & Josep Ribes Rodríguez-Moldes (iTEAM-UPV)
-
-<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/cdYV99cDuJE" title="Operating MBS User Services, MBS 5GC, NG-RAN and UE end to end - 5G-MAG Reference Tools" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>

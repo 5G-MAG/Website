@@ -9,12 +9,19 @@
 // "Bringing stage events with real actors to your home in VR" -- the
 // raw YouTube title has a typo ("evets"); kept corrected here as this
 // page's prose already did before this file existed.
+//
+// 'U9VgiYORNrA' was previously listed on the (now-removed) External
+// Videos page; moved here since it's a Dev Public Call recording.
+// Hosted on the Khronos Group's own channel rather than 5G-MAG's, so
+// unlike the other entries it won't reappear via the live feed merge
+// below if ever removed from this list -- it has no other home.
 export const PUBLIC_CALL_VIDEOS = [
   { id: 'vxQFL2d_CBI', title: 'Special Session on Immersive Media', by: null },
   { id: 'Xf2ChEFMzFA', title: 'Enabling Portable XR Experiences across Devices and Networks', by: 'By Frédéric Plourde (Collabora)' },
   { id: 'yuCrUlNdtQE', title: 'Bringing stage events with real actors to your home in VR', by: 'By Joachim Keinert (Fraunhofer IIS)' },
   { id: 'SvNWzIEURU0', title: "Optimization of the Reference Tools' 5G Broadcast Receiver", by: 'By Rubens Brraka (Politecnico di Torino)' },
   { id: 'FSiWpyTgT5M', title: "Using SES's DVB-NIP Analyzer to test 5G-MAG's FLUTE Library rt-libflute", by: 'By Yannick Poirier (SES)' },
+  { id: 'U9VgiYORNrA', title: 'glTF 2.0 Extensions in MPEG and 3GPP - Real time exchange for 3D Experiences', by: null },
 ];
 
 /** Same merge rule as mergeWorkshopVideos: a live-feed entry not already
