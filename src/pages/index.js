@@ -4,6 +4,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HeroSlideshow from '@site/src/components/HeroSlideshow';
 import MediaConnectivityDiagram from '@site/src/components/MediaConnectivityDiagram';
+import StandardsLoopDiagram from '@site/src/components/StandardsLoopDiagram';
 import GodeeperCard, { icon } from '@site/src/components/GodeeperCard';
 import OnAirTeaser from '@site/src/components/OnAirTeaser';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
@@ -84,24 +85,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Four pillars */}
-        <section className={styles.section}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>{"Discover 5G-MAG's work"}</h2>
-            <p className={styles.sectionSubtitle}>
-              Based on open specification to address market needs.
-              <br />
-              Four pillars - each lowering cost and accelerating time from specifications to
-              deployment
-            </p>
-            <div className="godeeper-grid godeeper-grid--4col">
-              {DISCOVER_WORK.map((p) => (
-                <GodeeperCard key={p.title} {...p} />
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* On Air */}
         <section className={styles.section}>
           <div className="container">
@@ -117,6 +100,26 @@ export default function Home() {
             </div>
             <div className={styles.onAirMore}>
               <Link to="/tech/videos">Browse the full library &rarr;</Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Four pillars */}
+        <section className={styles.section}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>{"Discover 5G-MAG's work"}</h2>
+            <p className={styles.sectionSubtitle}>
+              Based on open specification to address market needs.
+              <br />
+              Four pillars - each lowering cost and accelerating time from specifications to
+              deployment
+            </p>
+            <StandardsLoopDiagram />
+
+            <div className="godeeper-grid godeeper-grid--4col">
+              {DISCOVER_WORK.map((p) => (
+                <GodeeperCard key={p.title} {...p} />
+              ))}
             </div>
           </div>
         </section>
