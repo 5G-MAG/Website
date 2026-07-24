@@ -85,8 +85,6 @@ export default function Home() {
             <VideoGrid videos={DEVELOPER_EXCHANGES_FEATURED} />
             <div className={styles.onAirMore}>
               <Link to="/developer/exchanges">Browse the full library &rarr;</Link>
-              {' · '}
-              <Link to="/videos">Browse all 5G-MAG videos &rarr;</Link>
             </div>
           </div>
         </section>

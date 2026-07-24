@@ -578,16 +578,9 @@ function VideoSection({ alt }) {
               Recent Reference Tools &amp; Testbeds demos and tutorials
             </p>
           </div>
-          <div style={{ textAlign: 'right' }}>
-            <Link className={styles.videoViewAll} to="/developer/exchanges">
-              See all videos &rarr;
-            </Link>
-            <div>
-              <Link className={styles.videoViewAll} to="/videos">
-                Browse all 5G-MAG videos &rarr;
-              </Link>
-            </div>
-          </div>
+          <Link className={styles.videoViewAll} to="/developer/exchanges">
+            See all videos &rarr;
+          </Link>
         </div>
         <VideoGrid videos={videos} />
       </div>

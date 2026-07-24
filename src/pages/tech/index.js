@@ -483,8 +483,6 @@ export default function Home() {
             <VideoGrid videos={TECHNOLOGY_EXCHANGES_FEATURED} />
             <div className={styles.onAirFeaturedMore}>
               <Link to="/tech/exchanges">Browse the full library &rarr;</Link>
-              {' · '}
-              <Link to="/videos">Browse all 5G-MAG videos &rarr;</Link>
             </div>
           </div>
         </section>

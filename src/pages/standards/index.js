@@ -332,8 +332,6 @@ export default function Standards() {
             <VideoGrid videos={WORKSHOPS_FEATURED} />
             <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
               <Link to="/workshops">Browse the full library &rarr;</Link>
-              {' · '}
-              <Link to="/videos">Browse all 5G-MAG videos &rarr;</Link>
             </div>
           </div>
         </section>
