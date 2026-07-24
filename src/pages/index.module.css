@@ -370,22 +370,10 @@
 
 /* ── On Air ────────────────────────────────────────────────────────── */
 
-.onAirGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
-}
-
 .onAirMore {
   text-align: center;
   margin-top: 1.5rem;
   font-weight: 600;
-}
-
-@media (max-width: 900px) {
-  .onAirGrid {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* ── Community ─────────────────────────────────────────────────────── */

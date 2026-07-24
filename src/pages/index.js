@@ -7,7 +7,7 @@ import MediaConnectivityDiagram from '@site/src/components/MediaConnectivityDiag
 import StandardsLoopDiagram from '@site/src/components/StandardsLoopDiagram';
 import MembersMarquee from '@site/src/components/MembersMarquee';
 import GodeeperCard, { icon } from '@site/src/components/GodeeperCard';
-import OnAirTeaser from '@site/src/components/OnAirTeaser';
+import VideoGrid from '@site/src/components/VideoGrid';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import { SCOPE_TAGS } from '@site/src/data/scopeTags';
 import { SCOPE_PILLARS } from '@site/src/data/scopePillars';
@@ -16,22 +16,22 @@ import { chunk } from '@site/src/utils/chunk';
 import styles from './index.module.css';
 
 // A cross-section sample of member/contributor demos, not the full library —
-// see /tech/videos for that.
+// see /tech/videos for that. Plays inline (VideoGrid/VideoCard's "tally
+// light" treatment, the same one used on the full video galleries) rather
+// than linking through to each source page, for more visual weight on the
+// homepage; "Browse the full library" below still covers cross-linking.
 const ON_AIR_FEATURED = [
   {
-    videoId: 'e_xK_ckkhgc',
+    id: 'e_xK_ckkhgc',
     title: 'Demonstrating MBS User Service Announcement mechanisms',
-    href: '/reference-tools/5g-mbs/tutorials#developer-exchange',
   },
   {
-    videoId: 'hkVgL8yq0V8',
+    id: 'hkVgL8yq0V8',
     title: 'Emergency Alerts over 5G Broadcast embedded in DVB-T2 at IBC 2025',
-    href: '/reference-tools/emergency-alerts/tutorials#developer-exchange',
   },
   {
-    videoId: '4C9bySDoVqA',
+    id: '4C9bySDoVqA',
     title: 'MPEG V3C Immersive Platform at IBC 2025',
-    href: '/reference-tools/v3c/tutorials#developer-exchange',
   },
 ];
 
@@ -94,11 +94,7 @@ export default function Home() {
               Hear it from the people building it: recorded demos and talks from 5G-MAG members and
               contributors.
             </p>
-            <div className={styles.onAirGrid}>
-              {ON_AIR_FEATURED.map((v) => (
-                <OnAirTeaser key={v.videoId} {...v} />
-              ))}
-            </div>
+            <VideoGrid videos={ON_AIR_FEATURED} />
             <div className={styles.onAirMore}>
               <Link to="/tech/videos">Browse the full library &rarr;</Link>
             </div>
