@@ -217,7 +217,7 @@ const CATEGORIES = [
   },
   {
     title: 'Shared Tools',
-    desc: 'Common helper repositories and third-party tools that complement the Reference Tools above.',
+    desc: 'Common helper repositories that complement the Reference Tools above.',
     topics: [
       {
         title: 'Common Tools',
@@ -225,18 +225,6 @@ const CATEGORIES = [
         href: '/reference-tools/common-tools',
         icon: icon(
           <path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5" />
-        ),
-      },
-      {
-        title: 'External Tools',
-        desc: 'Third-party tools, currently the DVB NIP Analyzer for DVB-NIP/FLUTE streams.',
-        href: '/reference-tools/external-tools',
-        icon: icon(
-          <>
-            <path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" />
-            <path d="M11 13l9 -9" />
-            <path d="M15 4h5v5" />
-          </>
         ),
       },
     ],

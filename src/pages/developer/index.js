@@ -193,19 +193,13 @@ const CATEGORIES = [
   },
   {
     title: 'Shared Tools & Utilities',
-    desc: 'Common helper repositories and third-party tools that complement the Reference Tools.',
+    desc: 'Common helper repositories that complement the Reference Tools.',
     topics: [
       {
         title: 'Common Tools',
         desc: 'Shared scripts, configs & build utilities',
         href: '/reference-tools/common-tools',
         icon: <ProjectIcon name="Common Tools" />,
-      },
-      {
-        title: 'External Tools',
-        desc: 'Third-party tools, e.g. DVB NIP Analyzer',
-        href: '/reference-tools/external-tools',
-        icon: <ProjectIcon name="External Tools" />,
       },
     ],
   },

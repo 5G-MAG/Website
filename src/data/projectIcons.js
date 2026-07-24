@@ -41,6 +41,4 @@ export const SLIDE_ICONS = {
     '<path d="M6 18l0 -2"/><path d="M10 18l0 -4"/><path d="M14 18l0 -6"/><path d="M18 18l0 -8"/>',
   'Common Tools':
     '<path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5"/>',
-  'External Tools':
-    '<path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6"/><path d="M11 13l9 -9"/><path d="M15 4h5v5"/>',
 };
