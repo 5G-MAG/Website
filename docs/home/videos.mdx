@@ -1,0 +1,66 @@
+---
+id: videos
+hide_title: true
+title: All Videos
+description: Every 5G-MAG video in one place, classified by section -- Workshops, Developer Exchanges, Dev Public Call and Technology Exchange.
+---
+
+import VideoGrid from '@site/src/components/VideoGrid';
+import youtubeData from '@site/static/data/youtube-playlists.json';
+import { mergeWorkshopVideos } from '@site/src/data/workshopVideos';
+import { mergeAllDeveloperVideos } from '@site/src/data/developerVideos';
+import { mergePublicCallVideos } from '@site/src/data/publicCallVideos';
+
+export const workshopVideos = mergeWorkshopVideos(youtubeData.workshops?.videos);
+export const developerVideos = mergeAllDeveloperVideos(youtubeData.developer?.videos);
+export const publicCallVideos = mergePublicCallVideos(youtubeData.publicCall?.videos);
+export const technologyExchangeVideos = youtubeData.technologyExchange?.videos || [];
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M15 10l4.553 -2.069a1 1 0 0 1 1.447 .894v6.35a1 1 0 0 1 -1.447 .894l-4.553 -2.069v-4" />
+  <path d="M3 8a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-8z" />
+</svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">In Action</span>
+<h1>All Videos</h1>
+</div>
+</div>
+
+<div class="topic-lead">
+Every 5G-MAG video in one place, classified by section. Each section also has its own dedicated page with more context.
+</div>
+
+<div style={{margin: '8px 0 2rem'}}>
+<a class="button button--outline button--primary" href="#workshops" style={{margin: '2px 4px 2px 0'}}>Workshops</a>{' '}
+<a class="button button--outline button--primary" href="#developer-exchanges" style={{margin: '2px 4px 2px 0'}}>Developer Exchanges</a>{' '}
+<a class="button button--outline button--primary" href="#dev-public-call" style={{margin: '2px 4px 2px 0'}}>Dev Public Call</a>{' '}
+<a class="button button--outline button--primary" href="#technology-exchange" style={{margin: '2px 4px 2px 0'}}>Technology Exchange</a>
+</div>
+
+## Workshops
+
+Recorded talks explaining a standards work item to industry. Full page: [Workshops](/workshops).
+
+<VideoGrid videos={workshopVideos} />
+
+## Developer Exchanges
+
+Demos and tutorials from 5G-MAG Reference Tools and Testbeds projects. Full page: [Developer Exchanges](/developer/exchanges).
+
+<VideoGrid videos={developerVideos} />
+
+## Dev Public Call
+
+Recordings of past talks from 5G-MAG's open monthly public call. Full page: [Dev Public Call](/public-call).
+
+<VideoGrid videos={publicCallVideos} />
+
+## Technology Exchange
+
+Recorded workshop talks explaining 3GPP and MPEG media specifications to industry. Full page (grouped by session): [Technology Exchange](/tech/exchanges).
+
+<VideoGrid videos={technologyExchangeVideos} />

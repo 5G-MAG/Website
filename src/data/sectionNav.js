@@ -75,6 +75,18 @@ export const SECTION_NAV = [
     ],
   },
   {
+    prefixes: ['/videos'],
+    title: 'In Action',
+    titleHref: '/videos',
+    items: [
+      { label: 'All Videos', href: '/videos' },
+      { label: 'Workshops', href: '/workshops' },
+      { label: 'Developer Exchanges', href: '/developer/exchanges' },
+      { label: 'Dev Public Call', href: '/public-call' },
+      { label: 'Technology Exchange', href: '/tech/exchanges' },
+    ],
+  },
+  {
     prefixes: ['/tech'],
     title: 'Explainers & Profiles',
     titleHref: '/tech',
