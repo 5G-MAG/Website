@@ -5,21 +5,11 @@ sidebar_position: 3
 description: Landing page for Emergency Alerts tutorials, linking to the end-to-end setup guide and Developer Exchange, a library of demo recordings.
 ---
 
-import VideoGrid from '@site/src/components/VideoGrid';
+import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 
-export const communityVideos = [
-  {
-    id: 'hkVgL8yq0V8',
-    title: 'Emergency Alerts over 5G Broadcast embedded in DVB-T2 at IBC 2025',
-    by: 'Demo of emergency alerts over 5G Broadcast embedded in a DVB-T2 signal, shown at IBC 2025.',
-  },
-  {
-    id: 'O0qrTlmYKpA',
-    title: 'Emergency Alerts over 5G Broadcast at FOKUS Media Web Symposium 2024',
-    by: 'Demo of emergency alerts over 5G Broadcast, shown at the FOKUS Media Web Symposium 2024.',
-  },
-];
+export const projectVideos = youtubePlaylists.projects?.['emergency-alerts']?.videos || [];
 
 <div class="topic-banner">
   <div class="topic-banner__icon-wrap">
@@ -89,4 +79,4 @@ The [YouTube channel](https://www.youtube.com/@5GMAG) hosts some practical video
 
 The videos below are recorded demonstrations from events, not step-by-step setup guides; for a hands-on walkthrough, use the end-to-end tutorial above.
 
-<VideoGrid videos={communityVideos} />
+<ProjectVideos videos={projectVideos} name="Emergency Alerts" />

@@ -6,7 +6,11 @@ sidebar_position: -1
 description: Overview of the CAMARA network API reference implementation for QoS, slicing, and connectivity insight APIs; see Scope for the full API coverage table.
 ---
 import CommunityStats from '@site/src/components/CommunityStats';
+import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import youtubePlaylists from '@site/static/data/youtube-playlists.json';
+
+export const projectVideos = (youtubePlaylists.projects?.['network-apis']?.videos || []).slice(0, 1);
 
 
 <div class="topic-banner">
@@ -46,6 +50,12 @@ CAMARA is an open-source project (Linux Foundation, in collaboration with GSMA) 
 | --------------------------- | --------------------------------------------------------------------------------------------------------- |
 | **Technical documentation** | CAMARA API analysis and media production scenarios: [Network APIs on the Tech portal](/tech/network-apis) |
 | **Standards**               | CAMARA and 3GPP API standardisation: [Network APIs on the Standards portal](/tech/standards/network-apis) |
+
+<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
+
+## Developer Exchange
+
+<ProjectVideos videos={projectVideos} name="Network APIs" />
 
 ## Related
 

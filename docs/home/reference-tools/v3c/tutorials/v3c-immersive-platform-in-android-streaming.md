@@ -28,10 +28,6 @@ This tutorial provides the instructions to set up the MPEG V3C Immersive Platfor
 
 **What you will build:** a Unity-based V3C player running on an Android phone that decodes volumetric content and plays it back from a Dynamic Adaptive Streaming over HTTP (DASH) server you run on your own machine.
 
-The video below walks through the same build.
-
-<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/4Mj_eJnYVjE?si=DGY8rmDpl-mAJBfH" title="Video walkthrough: building the V3C Unity player for Android with a DASH streaming server" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-
 This tutorial pulls together four repositories:
 
 <div class="repo-list">

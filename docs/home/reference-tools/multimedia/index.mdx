@@ -6,8 +6,11 @@ sidebar_position: -1
 description: Landing page for the DASH, HLS, and CMAF multimedia delivery reference tools, with links to scope, roadmap, repositories, and releases.
 ---
 import CommunityStats from '@site/src/components/CommunityStats';
-import VideoGrid from '@site/src/components/VideoGrid';
+import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import youtubePlaylists from '@site/static/data/youtube-playlists.json';
+
+export const projectVideos = (youtubePlaylists.projects?.['multimedia']?.videos || []).slice(0, 1);
 
 
 <div class="topic-banner">
@@ -63,7 +66,7 @@ The slide deck below introduces the multimedia content delivery protocols projec
 
 See the Reference Tools in action, with a community video from the tutorials page.
 
-<VideoGrid videos={[{ id: '9jHwMHVm3PM', title: 'FLUTE support in the GPAC multimedia framework' }]} />
+<ProjectVideos videos={projectVideos} name="Multimedia Delivery Protocols" />
 
 ## Related
 

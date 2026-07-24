@@ -5,20 +5,11 @@ sidebar_position: -1
 description: Index of 5G Broadcast tutorials (playback, seamless switching, Docker, measurements, configuration) plus reference material and Developer Exchange.
 ---
 
-import VideoGrid from '@site/src/components/VideoGrid';
+import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 
-export const communityVideos = [
-  { id: '3iIichQmjBg', title: 'The Nakolos Core - Interoperability with Reference Tools' },
-  { id: 'dZaUAhYZTUU', title: '5G Broadcast at FOKUS Media Web Symposium 2024' },
-  { id: 'gzHBEYRDXCU', title: 'Updates on the rt-mbms Web Interface and Modem' },
-  { id: 'TtM98uZxHuc', title: '5G Broadcast supported by Reference Tools' },
-  {
-    id: 'O_MfEE5KG6o',
-    title: 'Closing the gap towards a 5G Broadcast Rel-16 open-source transmitter',
-  },
-  { id: 'Jbir8B-gC4c', title: '5G Broadcast-Broadband Seamless Switching' },
-];
+export const projectVideos = youtubePlaylists.projects?.['5g-broadcast']?.videos || [];
 
 <div class="topic-banner">
   <div class="topic-banner__icon-wrap">
@@ -135,4 +126,4 @@ Supporting pages referenced by the tutorials above:
 
 The [YouTube channel](https://www.youtube.com/@5GMAG) hosts some practical videos provided by developers on the use of the Reference Tools. Some of the videos are also available here:
 
-<VideoGrid videos={communityVideos} />
+<ProjectVideos videos={projectVideos} name="5G Broadcast" />

@@ -5,12 +5,11 @@ sidebar_position: 2
 description: Walkthrough for standing up the DVB-I-aware 5GMS application and verifying DVB-I service discovery, plus demo videos and repository pointers.
 ---
 
-import VideoGrid from '@site/src/components/VideoGrid';
+import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 
-export const communityVideos = [
-  { id: 'HQX5Ao_UXo0', title: 'DVB-I over 5G Reference Tools in use' },
-];
+export const projectVideos = youtubePlaylists.projects?.['dvb-i']?.videos || [];
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -85,4 +84,4 @@ Some of the videos are also available here.
 
 The recorded talk below demonstrates the DVB-I over 5G Reference Tools in use.
 
-<VideoGrid videos={communityVideos} />
+<ProjectVideos videos={projectVideos} name="DVB-I over 5G" />

@@ -5,15 +5,11 @@ sidebar_position: -1
 description: 'Index of XR Unity Player tutorials: build and run the player, author test glTF content, and explore use cases.'
 ---
 
-import VideoGrid from '@site/src/components/VideoGrid';
+import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 
-export const communityVideos = [
-  { id: 'RvHWQht-7Q4', title: 'XR Media with MPEG-I Scene Description at IBC 2025' },
-  { id: 'CVpTbiN-tmc', title: 'News on the XR Unity Player' },
-  { id: 'bEMjw1YA78M', title: 'Using the Blender glTF exporter with the XR Unity Player' },
-  { id: 'PD3JbPppLLE', title: 'XR Player supported by Reference Tools' },
-];
+export const projectVideos = youtubePlaylists.projects?.xr?.videos || [];
 
 <div class="topic-banner">
   <div class="topic-banner__icon-wrap">
@@ -104,4 +100,4 @@ The [YouTube channel](https://www.youtube.com/@5GMAG) hosts some practical video
 
 The videos below are demonstrations and walkthroughs, not step-by-step setup guides; for setup, follow the tutorials above. Some of the videos are also available here:
 
-<VideoGrid videos={communityVideos} />
+<ProjectVideos videos={projectVideos} name="XR Media" />

@@ -5,43 +5,11 @@ sidebar_position: -1
 description: Index of 5G Media Streaming tutorials, testing guides and community videos for the Reference Tools, starting with Docker end-to-end setup.
 ---
 
-import VideoGrid from '@site/src/components/VideoGrid';
+import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 
-export const communityVideos = [
-  {
-    id: 'uEfBaTqh5vw',
-    title: 'Overview of the latest updates to the 5G Media Streaming Project - Reference Tools',
-    by: 'Daniel Silhavy (5G-MAG WG DEV Chair, Fraunhofer Fokus)',
-  },
-  {
-    id: 'SOA7OGF86Gg',
-    title: 'Introducing the new 5GMS Application Provider Portal - Reference Tools',
-  },
-  { id: 'AvjtVrTrWsA', title: '5G Media Streaming at IBC 2025' },
-  { id: 'vEhv0RYGbKo', title: '5G Media Streaming at FOKUS Media Web Symposium 2024' },
-  { id: 'hiHWE3DyhdM', title: '5G Media Streaming QoE Metrics Reporting - Reference Tools' },
-  {
-    id: 'qewsQhGi8aE',
-    title: 'Introducing the 5GMS Application Provider Management Portal - Reference Tools',
-  },
-  {
-    id: 'fv_LoZXk5Oc',
-    title: '5GMS Consumption Reporting, Network Assistance and Dynamic Policies - Reference Tools',
-  },
-  {
-    id: 'lJG1hNty_AU',
-    title: '5G Media Streaming supported by Reference Tools - DEVELOPER XCHANGE',
-  },
-  {
-    id: 'L5nGVf-WhNE',
-    title: '5G Media Streaming End-to-end setup with Android clients - Reference Tools',
-  },
-  {
-    id: '2IU_18Dvhew',
-    title: '5G Media Streaming in the BBC R&D standalone testbed - Reference Tools',
-  },
-];
+export const projectVideos = youtubePlaylists.projects?.['5gms']?.videos || [];
 
 <div class="topic-banner">
   <div class="topic-banner__icon-wrap">
@@ -140,4 +108,4 @@ The [5G-MAG YouTube channel](https://www.youtube.com/@5GMAG) hosts some practica
 
 ### Videos from the developer community: general end-to-end setup, components and features
 
-<VideoGrid videos={communityVideos} />
+<ProjectVideos videos={projectVideos} name="5G Media Streaming" />

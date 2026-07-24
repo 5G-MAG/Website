@@ -6,8 +6,11 @@ sidebar_position: -1
 description: Overview of the MPEG V3C Immersive Platform, MPEG V3C reference tools for volumetric video encoding, streaming, and Unity-based rendering.
 ---
 import CommunityStats from '@site/src/components/CommunityStats';
-import VideoGrid from '@site/src/components/VideoGrid';
+import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import youtubePlaylists from '@site/static/data/youtube-playlists.json';
+
+export const projectVideos = (youtubePlaylists.projects?.v3c?.videos || []).slice(0, 1);
 
 
 <div class="topic-banner">
@@ -63,7 +66,7 @@ The slide deck below introduces the MPEG V3C Immersive Platform: the volumetric 
 
 Hear from the team building this:
 
-<VideoGrid videos={[{ id: '4C9bySDoVqA', title: 'MPEG V3C Immersive Platform at IBC 2025' }]} />
+<ProjectVideos videos={projectVideos} name="MPEG V3C Immersive Platform" />
 
 ## Community Stats
 

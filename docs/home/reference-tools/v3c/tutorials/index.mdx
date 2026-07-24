@@ -5,18 +5,11 @@ sidebar_position: 3
 description: Tutorial for building the V3C Unity player for Android with DASH streaming, plus a library of related demo videos.
 ---
 
-import VideoGrid from '@site/src/components/VideoGrid';
+import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 
-export const communityVideos = [
-  { id: '4C9bySDoVqA', title: 'MPEG V3C Immersive Platform at IBC 2025' },
-  {
-    id: '4Mj_eJnYVjE',
-    title: 'Building up the Unity Player for Android with DASH Streaming Server',
-  },
-  { id: '13O2lJHs_jo', title: 'Introduction on support for MPEG Haptics' },
-  { id: 'gFiNKcQKVuU', title: 'Introduction to the MPEG V3C Immersive Platform (V-PCC, MIV, Haptics)' },
-];
+export const projectVideos = youtubePlaylists.projects?.v3c?.videos || [];
 
 <div class="topic-banner">
   <div class="topic-banner__icon-wrap">
@@ -89,4 +82,4 @@ This tutorial provides guidance on building the MPEG V3C Immersive Platform for 
 
 The [YouTube channel](https://www.youtube.com/@5GMAG) hosts some practical videos provided by developers on the use of the Reference Tools. Some of the videos are also available here:
 
-<VideoGrid videos={communityVideos} />
+<ProjectVideos videos={projectVideos} name="MPEG V3C Immersive Platform" />

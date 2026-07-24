@@ -6,7 +6,11 @@ sidebar_position: -1
 description: Introduces the Beyond 2D Evaluation Framework for benchmarking point-cloud and multi-view-plus-depth video formats for 3GPP/MPEG standardisation.
 ---
 import CommunityStats from '@site/src/components/CommunityStats';
+import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import youtubePlaylists from '@site/static/data/youtube-playlists.json';
+
+export const projectVideos = (youtubePlaylists.projects?.['beyond-2d']?.videos || []).slice(0, 1);
 
 
 <div class="topic-banner">
@@ -23,7 +27,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 <div class="topic-lead">
 Evaluation framework for next-generation beyond-2D video experiences, providing tools for systematic quality assessment of immersive video formats including light fields, point clouds, and multi-view video plus depth.
 </div>
-<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/testbeds/beyond-2d/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/testbeds/beyond-2d/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/testbeds/beyond-2d/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a></div>
+<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/testbeds/beyond-2d/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/testbeds/beyond-2d/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/testbeds/beyond-2d/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/testbeds/beyond-2d/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
 The framework enables standardised benchmarking of encoding, streaming, and rendering pipelines for content that goes beyond traditional flat-screen delivery, feeding directly into 3GPP and MPEG standardisation of new immersive video formats.
 
@@ -54,6 +58,12 @@ The slide deck below introduces the Beyond 2D Evaluation Framework: what it eval
 | **Technical documentation** | Volumetric and beyond-2D analysis: [Volumetric Video on the Tech portal](/tech/volumetric)     |
 | **Standards**               | Beyond-2D work items and specs: [Beyond-2D on the Standards portal](/tech/standards/beyond-2d) |
 | **Related project**         | V3C encoding and rendering tools: [MPEG V3C Immersive Platform](/reference-tools/v3c)               |
+
+<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
+
+## Developer Exchange
+
+<ProjectVideos videos={projectVideos} name="Beyond 2D Evaluation Framework" />
 
 ## Community Stats
 

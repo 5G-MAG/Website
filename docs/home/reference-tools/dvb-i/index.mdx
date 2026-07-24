@@ -6,8 +6,11 @@ sidebar_position: -1
 description: Overview of the DVB-I over 5G reference tools, combining DVB-I service discovery with 5GMS unicast and 5G Broadcast delivery paths.
 ---
 import CommunityStats from '@site/src/components/CommunityStats';
-import VideoGrid from '@site/src/components/VideoGrid';
+import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import youtubePlaylists from '@site/static/data/youtube-playlists.json';
+
+export const projectVideos = (youtubePlaylists.projects?.['dvb-i']?.videos || []).slice(0, 1);
 
 
 <div class="topic-banner">
@@ -63,7 +66,7 @@ The slide deck below introduces the DVB-I over 5G project: its goals, the delive
 
 See the reference tools in action in this community video.
 
-<VideoGrid videos={[{ id: 'HQX5Ao_UXo0', title: 'DVB-I over 5G Reference Tools in use' }]} />
+<ProjectVideos videos={projectVideos} name="DVB-I over 5G" />
 
 ## Related
 

@@ -7,8 +7,11 @@ description: Reference player and server for eXtended Reality (XR) content deliv
 ---
 
 import CommunityStats from '@site/src/components/CommunityStats';
-import VideoGrid from '@site/src/components/VideoGrid';
+import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import youtubePlaylists from '@site/static/data/youtube-playlists.json';
+
+export const projectVideos = (youtubePlaylists.projects?.xr?.videos || []).slice(0, 1);
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -66,7 +69,7 @@ The slide deck below introduces the project: what XR media with MPEG-I Scene Des
 
 Hear from the team building this:
 
-<VideoGrid videos={[{ id: 'RvHWQht-7Q4', title: 'XR Media with MPEG-I Scene Description at IBC 2025' }]} />
+<ProjectVideos videos={projectVideos} name="XR Media" />
 
 ## Community Stats
 

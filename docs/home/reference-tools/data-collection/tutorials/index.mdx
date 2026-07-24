@@ -5,21 +5,11 @@ sidebar_position: 4
 description: Tutorials and community videos for the UE Data Collection, Reporting and Exposure reference tools, including the Docker plus Insomnia walkthrough.
 ---
 
-import VideoGrid from '@site/src/components/VideoGrid';
+import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 
-export const communityVideos = [
-  {
-    id: 'ZpktgeRCqNY',
-    title: 'Docker Setup with Insomnia REST Client - UE Data Collection',
-    by: 'Video walkthrough of the Docker + Insomnia setup; it covers the same ground as the written tutorial above.',
-  },
-  {
-    id: 'FFnyln0YB1A',
-    title: 'UE Data Collection, Reporting and Event Exposure',
-    by: 'Overview talk introducing UE data collection, reporting and event exposure.',
-  },
-];
+export const projectVideos = youtubePlaylists.projects?.['data-collection']?.videos || [];
 
 <div class="topic-banner">
   <div class="topic-banner__icon-wrap">
@@ -88,4 +78,4 @@ This tutorial covers setting up the Data Collection Application Function (DCAF) 
 
 The [YouTube channel](https://www.youtube.com/@5GMAG) hosts some practical videos provided by developers on the use of the Reference Tools. Some of the videos are also available here:
 
-<VideoGrid videos={communityVideos} />
+<ProjectVideos videos={projectVideos} name="UE Data Collection" />

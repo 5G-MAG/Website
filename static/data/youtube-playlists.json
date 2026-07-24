@@ -1,5 +1,352 @@
 {
   "updated_at": "2026-07-24",
+  "projects": {
+    "5g-broadcast": {
+      "playlistId": "PLFqKJZ78_IWWbdf4rZ_SS9W0dqpLhKZz8",
+      "playlistUrl": "https://www.youtube.com/playlist?list=PLFqKJZ78_IWWbdf4rZ_SS9W0dqpLhKZz8",
+      "videos": [
+        {
+          "id": "3iIichQmjBg",
+          "title": "The Nakolos Core - Interoperability with 5G-MAG Reference Tools - 5G-MAG Developer Xchange",
+          "url": "https://www.youtube.com/watch?v=3iIichQmjBg",
+          "thumbnail": "https://i4.ytimg.com/vi/3iIichQmjBg/hqdefault.jpg",
+          "published": "2024-11-10",
+          "by": "Johann Mika"
+        },
+        {
+          "id": "dZaUAhYZTUU",
+          "title": "5G Broadcast at FOKUS Media Web Symposium 2024",
+          "url": "https://www.youtube.com/watch?v=dZaUAhYZTUU",
+          "thumbnail": "https://i1.ytimg.com/vi/dZaUAhYZTUU/hqdefault.jpg",
+          "published": "2024-06-18"
+        },
+        {
+          "id": "TtM98uZxHuc",
+          "title": "5G Broadcast supported by 5G-MAG Reference Tools - DEVELOPER XCHANGE",
+          "url": "https://www.youtube.com/watch?v=TtM98uZxHuc",
+          "thumbnail": "https://i1.ytimg.com/vi/TtM98uZxHuc/hqdefault.jpg",
+          "published": "2023-12-07"
+        },
+        {
+          "id": "O_MfEE5KG6o",
+          "title": "Closing the gap towards a 5G Broadcast Rel-16 open-source transmitter",
+          "url": "https://www.youtube.com/watch?v=O_MfEE5KG6o",
+          "thumbnail": "https://i4.ytimg.com/vi/O_MfEE5KG6o/hqdefault.jpg",
+          "published": "2022-04-07"
+        },
+        {
+          "id": "Jbir8B-gC4c",
+          "title": "5G-MAG Reference Tools - 5G Broadcast-Broadband Seamless Switching",
+          "url": "https://www.youtube.com/watch?v=Jbir8B-gC4c",
+          "thumbnail": "https://i3.ytimg.com/vi/Jbir8B-gC4c/hqdefault.jpg",
+          "published": "2021-11-19"
+        }
+      ]
+    },
+    "5g-mbs": {
+      "playlistId": "PLFqKJZ78_IWXSCsSEKeyAay10luuVF9io",
+      "playlistUrl": "https://www.youtube.com/playlist?list=PLFqKJZ78_IWXSCsSEKeyAay10luuVF9io",
+      "videos": [
+        {
+          "id": "cdYV99cDuJE",
+          "title": "End-to-End setup with 5GC, NG-RAN and UE for MBS Broadcast Services - 5G-MAG Reference Tools",
+          "url": "https://www.youtube.com/watch?v=cdYV99cDuJE",
+          "thumbnail": "https://i4.ytimg.com/vi/cdYV99cDuJE/hqdefault.jpg",
+          "published": "2026-07-23",
+          "by": "Jaime Sánchez (iTEAM-UPV) and Josep Ribes (iTEAM-UPV)"
+        },
+        {
+          "id": "e_xK_ckkhgc",
+          "title": "Demonstrating MBS User Service Announcement mechanisms - 5G-MAG Reference Tools",
+          "url": "https://www.youtube.com/watch?v=e_xK_ckkhgc",
+          "thumbnail": "https://i2.ytimg.com/vi/e_xK_ckkhgc/hqdefault.jpg",
+          "published": "2026-05-21",
+          "by": "David Waring, Dev Audsin and Richard Bradbury (BBC)"
+        },
+        {
+          "id": "MF9rhnaEEP8",
+          "title": "Demonstrating the OBJECT_CAROUSEL operating mode - 5G-MAG Reference Tools",
+          "url": "https://www.youtube.com/watch?v=MF9rhnaEEP8",
+          "thumbnail": "https://i2.ytimg.com/vi/MF9rhnaEEP8/hqdefault.jpg",
+          "published": "2026-05-21",
+          "by": "David Waring, Dev Audsin and Richard Bradbury (BBC)"
+        },
+        {
+          "id": "0re77KNmxYQ",
+          "title": "TUTORIAL - Basic implementation of MBS Function (MBSF) - Multicast Broadcast Services (MBS)",
+          "url": "https://www.youtube.com/watch?v=0re77KNmxYQ",
+          "thumbnail": "https://i1.ytimg.com/vi/0re77KNmxYQ/hqdefault.jpg",
+          "published": "2026-01-14"
+        },
+        {
+          "id": "anrtRfPttmo",
+          "title": "TUTORIAL - Basic implementation of MBS Transport Function - Multicast Broadcast Services (MBS)",
+          "url": "https://www.youtube.com/watch?v=anrtRfPttmo",
+          "thumbnail": "https://i2.ytimg.com/vi/anrtRfPttmo/hqdefault.jpg",
+          "published": "2025-07-06"
+        },
+        {
+          "id": "lJh2F0xXxpE",
+          "title": "TUTORIAL - Initial support of 5MBS core network functions",
+          "url": "https://www.youtube.com/watch?v=lJh2F0xXxpE",
+          "thumbnail": "https://i1.ytimg.com/vi/lJh2F0xXxpE/hqdefault.jpg",
+          "published": "2024-11-10",
+          "by": "Borja Iñesta"
+        }
+      ]
+    },
+    "5gms": {
+      "playlistId": "PLFqKJZ78_IWUibB6dMiabaVNDFLSGBWlx",
+      "playlistUrl": "https://www.youtube.com/playlist?list=PLFqKJZ78_IWUibB6dMiabaVNDFLSGBWlx",
+      "videos": [
+        {
+          "id": "uEfBaTqh5vw",
+          "title": "Overview of the latest updates to the 5G Media Streaming Project - 5G-MAG Reference Tools",
+          "url": "https://www.youtube.com/watch?v=uEfBaTqh5vw",
+          "thumbnail": "https://i2.ytimg.com/vi/uEfBaTqh5vw/hqdefault.jpg",
+          "published": "2026-06-01",
+          "by": "Daniel Silhavy (Fraunhofer FOKUS)"
+        },
+        {
+          "id": "SOA7OGF86Gg",
+          "title": "Introducing the new 5GMS Application Provider Portal - 5G-MAG Reference Tools",
+          "url": "https://www.youtube.com/watch?v=SOA7OGF86Gg",
+          "thumbnail": "https://i4.ytimg.com/vi/SOA7OGF86Gg/hqdefault.jpg",
+          "published": "2026-02-23"
+        },
+        {
+          "id": "AvjtVrTrWsA",
+          "title": "5G Media Streaming at IBC 2025",
+          "url": "https://www.youtube.com/watch?v=AvjtVrTrWsA",
+          "thumbnail": "https://i2.ytimg.com/vi/AvjtVrTrWsA/hqdefault.jpg",
+          "published": "2025-09-30"
+        },
+        {
+          "id": "vEhv0RYGbKo",
+          "title": "5G Media Streaming at FOKUS Media Web Symposium 2024",
+          "url": "https://www.youtube.com/watch?v=vEhv0RYGbKo",
+          "thumbnail": "https://i3.ytimg.com/vi/vEhv0RYGbKo/hqdefault.jpg",
+          "published": "2024-06-17"
+        },
+        {
+          "id": "hiHWE3DyhdM",
+          "title": "5G Media Streaming QoE Metrics Reporting - 5G-MAG Reference Tools",
+          "url": "https://www.youtube.com/watch?v=hiHWE3DyhdM",
+          "thumbnail": "https://i1.ytimg.com/vi/hiHWE3DyhdM/hqdefault.jpg",
+          "published": "2024-05-23"
+        },
+        {
+          "id": "qewsQhGi8aE",
+          "title": "Introducing the 5GMS Application Provider Management Portal - 5G-MAG Reference Tools",
+          "url": "https://www.youtube.com/watch?v=qewsQhGi8aE",
+          "thumbnail": "https://i2.ytimg.com/vi/qewsQhGi8aE/hqdefault.jpg",
+          "published": "2024-05-23"
+        },
+        {
+          "id": "fv_LoZXk5Oc",
+          "title": "5GMS Consumpion Reporting, Network Assistance and Dynamic Policies - 5G-MAG Reference Tools",
+          "url": "https://www.youtube.com/watch?v=fv_LoZXk5Oc",
+          "thumbnail": "https://i3.ytimg.com/vi/fv_LoZXk5Oc/hqdefault.jpg",
+          "published": "2024-03-10"
+        },
+        {
+          "id": "lJG1hNty_AU",
+          "title": "5G Media Streaming supported by 5G-MAG Reference Tools - DEVELOPER XCHANGE",
+          "url": "https://www.youtube.com/watch?v=lJG1hNty_AU",
+          "thumbnail": "https://i1.ytimg.com/vi/lJG1hNty_AU/hqdefault.jpg",
+          "published": "2023-12-07"
+        },
+        {
+          "id": "L5nGVf-WhNE",
+          "title": "5G Media Streaming End-to-end setup with Android clients - 5G-MAG Reference Tools",
+          "url": "https://www.youtube.com/watch?v=L5nGVf-WhNE",
+          "thumbnail": "https://i1.ytimg.com/vi/L5nGVf-WhNE/hqdefault.jpg",
+          "published": "2023-06-03"
+        },
+        {
+          "id": "2IU_18Dvhew",
+          "title": "5G Media Streaming in the BBC R&D standalone testbed - 5G-MAG Reference Tools",
+          "url": "https://www.youtube.com/watch?v=2IU_18Dvhew",
+          "thumbnail": "https://i3.ytimg.com/vi/2IU_18Dvhew/hqdefault.jpg",
+          "published": "2023-02-01"
+        }
+      ]
+    },
+    "data-collection": {
+      "playlistId": "PLFqKJZ78_IWWKZ0nJ-gR2dNVrZ0iIFQ05",
+      "playlistUrl": "https://www.youtube.com/playlist?list=PLFqKJZ78_IWWKZ0nJ-gR2dNVrZ0iIFQ05",
+      "videos": [
+        {
+          "id": "ZpktgeRCqNY",
+          "title": "5G-MAG Reference Tools - Docker Setup with Insomnia REST Client - UE Data Collection",
+          "url": "https://www.youtube.com/watch?v=ZpktgeRCqNY",
+          "thumbnail": "https://i3.ytimg.com/vi/ZpktgeRCqNY/hqdefault.jpg",
+          "published": "2025-05-10"
+        },
+        {
+          "id": "FFnyln0YB1A",
+          "title": "UE Data Collection, Reporting and Event Exposure - 5G-MAG Developer Xchange",
+          "url": "https://www.youtube.com/watch?v=FFnyln0YB1A",
+          "thumbnail": "https://i3.ytimg.com/vi/FFnyln0YB1A/hqdefault.jpg",
+          "published": "2024-11-10",
+          "by": "Richard Bradbury, David Waring and Dev Audsin"
+        }
+      ]
+    },
+    "dvb-i": {
+      "playlistId": "PLFqKJZ78_IWWx0OE_WRkHAomP7FXdwX4J",
+      "playlistUrl": "https://www.youtube.com/playlist?list=PLFqKJZ78_IWWx0OE_WRkHAomP7FXdwX4J",
+      "videos": []
+    },
+    "emergency-alerts": {
+      "playlistId": "PLFqKJZ78_IWVeyD2qw18szZe6zrukVv0e",
+      "playlistUrl": "https://www.youtube.com/playlist?list=PLFqKJZ78_IWVeyD2qw18szZe6zrukVv0e",
+      "videos": [
+        {
+          "id": "hkVgL8yq0V8",
+          "title": "Emergency Alerts over 5G Broadcast embedded in DVB-T2 at IBC 2025",
+          "url": "https://www.youtube.com/watch?v=hkVgL8yq0V8",
+          "thumbnail": "https://i1.ytimg.com/vi/hkVgL8yq0V8/hqdefault.jpg",
+          "published": "2025-09-30"
+        },
+        {
+          "id": "O0qrTlmYKpA",
+          "title": "Emergency Alerts over 5G Broadcast at FOKUS Media Web Symposium 2024",
+          "url": "https://www.youtube.com/watch?v=O0qrTlmYKpA",
+          "thumbnail": "https://i4.ytimg.com/vi/O0qrTlmYKpA/hqdefault.jpg",
+          "published": "2024-06-19"
+        }
+      ]
+    },
+    "multimedia": {
+      "playlistId": "PLFqKJZ78_IWWokVokppoiAfb6CJYwVrJn",
+      "playlistUrl": "https://www.youtube.com/playlist?list=PLFqKJZ78_IWWokVokppoiAfb6CJYwVrJn",
+      "videos": [
+        {
+          "id": "9jHwMHVm3PM",
+          "title": "GPAC FLUTE support - 5G-MAG Developer Xchange",
+          "url": "https://www.youtube.com/watch?v=9jHwMHVm3PM",
+          "thumbnail": "https://i2.ytimg.com/vi/9jHwMHVm3PM/hqdefault.jpg",
+          "published": "2024-11-10",
+          "by": "Sohaib Larbi"
+        }
+      ]
+    },
+    "v3c": {
+      "playlistId": "PLFqKJZ78_IWUNBlJetfmlc_873F3O2-0l",
+      "playlistUrl": "https://www.youtube.com/playlist?list=PLFqKJZ78_IWUNBlJetfmlc_873F3O2-0l",
+      "videos": [
+        {
+          "id": "4C9bySDoVqA",
+          "title": "V3C Immersive Platform at IBC 2025",
+          "url": "https://www.youtube.com/watch?v=4C9bySDoVqA",
+          "thumbnail": "https://i1.ytimg.com/vi/4C9bySDoVqA/hqdefault.jpg",
+          "published": "2025-09-30"
+        },
+        {
+          "id": "4Mj_eJnYVjE",
+          "title": "TUTORIAL - Unity Player for Android with DASH Streaming - V3C Immersive Platform",
+          "url": "https://www.youtube.com/watch?v=4Mj_eJnYVjE",
+          "thumbnail": "https://i1.ytimg.com/vi/4Mj_eJnYVjE/hqdefault.jpg",
+          "published": "2025-06-20"
+        },
+        {
+          "id": "13O2lJHs_jo",
+          "title": "V3C Immersive Platform - Support for MPEG Haptics - 5G-MAG Reference Tools",
+          "url": "https://www.youtube.com/watch?v=13O2lJHs_jo",
+          "thumbnail": "https://i2.ytimg.com/vi/13O2lJHs_jo/hqdefault.jpg",
+          "published": "2025-06-10"
+        },
+        {
+          "id": "DDDplLD0WjE",
+          "title": "V3C Immersive Platform - 5G-MAG Insights Demo Video 3",
+          "url": "https://www.youtube.com/watch?v=DDDplLD0WjE",
+          "thumbnail": "https://i1.ytimg.com/vi/DDDplLD0WjE/hqdefault.jpg",
+          "published": "2024-09-30"
+        },
+        {
+          "id": "nRFp7M_cayY",
+          "title": "V3C Immersive Platform - 5G-MAG Insights Demo Video 2",
+          "url": "https://www.youtube.com/watch?v=nRFp7M_cayY",
+          "thumbnail": "https://i3.ytimg.com/vi/nRFp7M_cayY/hqdefault.jpg",
+          "published": "2024-09-30"
+        },
+        {
+          "id": "0RxLPcpwFzw",
+          "title": "V3C Immersive Platform - 5G-MAG Insights Demo Video 1",
+          "url": "https://www.youtube.com/watch?v=0RxLPcpwFzw",
+          "thumbnail": "https://i1.ytimg.com/vi/0RxLPcpwFzw/hqdefault.jpg",
+          "published": "2024-09-30"
+        },
+        {
+          "id": "gFiNKcQKVuU",
+          "title": "V3C Immersive Platform - 5G-MAG Reference Tools for Volumetric Video",
+          "url": "https://www.youtube.com/watch?v=gFiNKcQKVuU",
+          "thumbnail": "https://i4.ytimg.com/vi/gFiNKcQKVuU/hqdefault.jpg",
+          "published": "2024-07-26"
+        }
+      ]
+    },
+    "xr": {
+      "playlistId": "PLFqKJZ78_IWVk0_h1oeizy9IZ0DmOUXkA",
+      "playlistUrl": "https://www.youtube.com/playlist?list=PLFqKJZ78_IWVk0_h1oeizy9IZ0DmOUXkA",
+      "videos": [
+        {
+          "id": "RvHWQht-7Q4",
+          "title": "XR Media with MPEG-I Scene Description at IBC 2025",
+          "url": "https://www.youtube.com/watch?v=RvHWQht-7Q4",
+          "thumbnail": "https://i3.ytimg.com/vi/RvHWQht-7Q4/hqdefault.jpg",
+          "published": "2025-09-30"
+        },
+        {
+          "id": "CVpTbiN-tmc",
+          "title": "News on XR Unity Player - XR Media Integration in 5G with MPEG-I SD - 5G-MAG Reference Tools",
+          "url": "https://www.youtube.com/watch?v=CVpTbiN-tmc",
+          "thumbnail": "https://i4.ytimg.com/vi/CVpTbiN-tmc/hqdefault.jpg",
+          "published": "2025-06-10"
+        },
+        {
+          "id": "bEMjw1YA78M",
+          "title": "Using the Blender glTF exporter with the XR Unity Player - 5G-MAG Reference Tools",
+          "url": "https://www.youtube.com/watch?v=bEMjw1YA78M",
+          "thumbnail": "https://i3.ytimg.com/vi/bEMjw1YA78M/hqdefault.jpg",
+          "published": "2024-05-07"
+        },
+        {
+          "id": "PD3JbPppLLE",
+          "title": "XR Player supported by 5G-MAG Reference Tools - DEVELOPER XCHANGE",
+          "url": "https://www.youtube.com/watch?v=PD3JbPppLLE",
+          "thumbnail": "https://i1.ytimg.com/vi/PD3JbPppLLE/hqdefault.jpg",
+          "published": "2023-12-07"
+        }
+      ]
+    },
+    "6g-testbed": {
+      "playlistId": "PLFV0QXnNeYCI",
+      "playlistUrl": "https://www.youtube.com/playlist?list=PLFV0QXnNeYCI",
+      "videos": []
+    },
+    "avatar": {
+      "playlistId": "PLauJtH0v19QE",
+      "playlistUrl": "https://www.youtube.com/playlist?list=PLauJtH0v19QE",
+      "videos": []
+    },
+    "network-apis": {
+      "playlistId": "PLZLRpwWhBVgA",
+      "playlistUrl": "https://www.youtube.com/playlist?list=PLZLRpwWhBVgA",
+      "videos": []
+    },
+    "ai-ml": {
+      "playlistId": "PLWFUt97V21BY",
+      "playlistUrl": "https://www.youtube.com/playlist?list=PLWFUt97V21BY",
+      "videos": []
+    },
+    "beyond-2d": {
+      "playlistId": "PLbWrBE3RT180",
+      "playlistUrl": "https://www.youtube.com/playlist?list=PLbWrBE3RT180",
+      "videos": []
+    }
+  },
   "workshops": {
     "playlistId": "PLFqKJZ78_IWUDXCiSLahAB5Av7QxOoUKX",
     "playlistUrl": "https://www.youtube.com/playlist?list=PLFqKJZ78_IWUDXCiSLahAB5Av7QxOoUKX",
@@ -217,28 +564,32 @@
         "title": "5G-MAG Friday's Call - Using SES's DVB-NIP Analyzer to test 5G-MAG's FLUTE Library rt-libflute",
         "url": "https://www.youtube.com/watch?v=FSiWpyTgT5M",
         "thumbnail": "https://i3.ytimg.com/vi/FSiWpyTgT5M/hqdefault.jpg",
-        "published": "2025-10-20"
+        "published": "2025-10-20",
+        "by": "Yannick Poirier (SES)"
       },
       {
         "id": "SvNWzIEURU0",
         "title": "5G-MAG Friday's Call - Optimization of 5G Broadcast Receiver",
         "url": "https://www.youtube.com/watch?v=SvNWzIEURU0",
         "thumbnail": "https://i4.ytimg.com/vi/SvNWzIEURU0/hqdefault.jpg",
-        "published": "2025-07-06"
+        "published": "2025-07-06",
+        "by": "Rubens Brraka (Politécnico di Torino)"
       },
       {
         "id": "yuCrUlNdtQE",
         "title": "5G-MAG Friday's Call - Bringing stage evets with real actors to your home in VR",
         "url": "https://www.youtube.com/watch?v=yuCrUlNdtQE",
         "thumbnail": "https://i2.ytimg.com/vi/yuCrUlNdtQE/hqdefault.jpg",
-        "published": "2025-06-10"
+        "published": "2025-06-10",
+        "by": "Joachim Keinert (Fraunhofer IIS)"
       },
       {
         "id": "Xf2ChEFMzFA",
         "title": "5G-MAG's Friday Call - Enabling Portable XR Experiences across Devices and Networks",
         "url": "https://www.youtube.com/watch?v=Xf2ChEFMzFA",
         "thumbnail": "https://i1.ytimg.com/vi/Xf2ChEFMzFA/hqdefault.jpg",
-        "published": "2025-06-10"
+        "published": "2025-06-10",
+        "by": "Frédéric Plourde (Collabora)"
       },
       {
         "id": "vxQFL2d_CBI",

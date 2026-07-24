@@ -5,12 +5,11 @@ sidebar_position: 2
 description: Walkthrough for delivering DASH/CMAF content over FLUTE (rt-libflute) and ROUTE (rt-mbms-mw, route-gpac branch), plus the 5G-MAG Developer Exchange section.
 ---
 
-import VideoGrid from '@site/src/components/VideoGrid';
+import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 
-export const communityVideos = [
-  { id: '9jHwMHVm3PM', title: 'FLUTE support in the GPAC multimedia framework' },
-];
+export const projectVideos = youtubePlaylists.projects?.['multimedia']?.videos || [];
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -113,7 +112,7 @@ Some of the videos are also available here.
 
 The recorded talk below demonstrates FLUTE (File Delivery over Unidirectional Transport) support in the GPAC multimedia framework.
 
-<VideoGrid videos={communityVideos} />
+<ProjectVideos videos={projectVideos} name="Multimedia Delivery Protocols" />
 
 ## Related
 

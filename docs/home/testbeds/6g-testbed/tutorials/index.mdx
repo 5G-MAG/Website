@@ -5,16 +5,11 @@ sidebar_position: 3
 description: Index of 6G Testbed tutorials and videos, including the Introduction to the 6G Testbed walkthrough.
 ---
 
-import VideoGrid from '@site/src/components/VideoGrid';
+import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 
-export const communityVideos = [
-  {
-    id: 'KtYMui-cRc0',
-    title: 'Introduction to the 6G Testbed: Network Emulator and AI Traffic Characterization',
-    by: 'Thomas Stockhammer (Qualcomm)',
-  },
-];
+export const projectVideos = youtubePlaylists.projects?.['6g-testbed']?.videos || [];
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -48,4 +43,4 @@ Our [YouTube channel](https://www.youtube.com/@5GMAG) hosts some practical video
 
 The video below is also embedded on the [Introduction to the 6G Testbed](./introduction-6g-testbed) tutorial page, alongside the written summary.
 
-<VideoGrid videos={communityVideos} />
+<ProjectVideos videos={projectVideos} name="6G Testbed" />

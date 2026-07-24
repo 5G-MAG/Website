@@ -6,8 +6,11 @@ sidebar_position: -1
 description: Experimental testbed platform for AI-driven media traffic characterization and optimisation over 5G networks.
 ---
 import CommunityStats from '@site/src/components/CommunityStats';
-import VideoGrid from '@site/src/components/VideoGrid';
+import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import youtubePlaylists from '@site/static/data/youtube-playlists.json';
+
+export const projectVideos = (youtubePlaylists.projects?.['6g-testbed']?.videos || []).slice(0, 1);
 
 
 <div class="topic-banner">
@@ -69,7 +72,7 @@ The slide deck below introduces the 6G Testbed: its two building blocks, a confi
 
 See the 6G Testbed in action, with a community video from the tutorials page.
 
-<VideoGrid videos={[{ id: 'KtYMui-cRc0', title: 'Introduction to the 6G Testbed', by: 'Thomas Stockhammer (Qualcomm)' }]} />
+<ProjectVideos videos={projectVideos} name="6G Testbed" />
 
 ## Community Stats
 

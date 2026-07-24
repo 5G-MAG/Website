@@ -6,7 +6,11 @@ sidebar_position: -1
 description: Introduces the Avatar Communication project's MPEG ARF reference tools for real-time conversational avatars over 5G networks.
 ---
 import CommunityStats from '@site/src/components/CommunityStats';
+import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import youtubePlaylists from '@site/static/data/youtube-playlists.json';
+
+export const projectVideos = (youtubePlaylists.projects?.avatar?.videos || []).slice(0, 1);
 
 
 <div class="topic-banner">
@@ -62,6 +66,12 @@ The slide deck below introduces the Avatar Communication reference tools: the MP
 | **Technical documentation** | Avatar communications architecture and 3GPP analysis: [Avatar Communications on the Tech portal](/tech/avatar-communications) |
 | **Standards**               | Avatar Representation Format and IVAS audio specifications: [Avatar Communication on the Standards portal](/tech/standards/avatar) |
 | **Related project**         | MPEG-I Scene Description and XR delivery: [XR Media Integration in 5G](../xr)                                                 |
+
+<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
+
+## Developer Exchange
+
+<ProjectVideos videos={projectVideos} name="Conversational Avatar" />
 
 ## Community Stats
 

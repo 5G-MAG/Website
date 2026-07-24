@@ -22,14 +22,6 @@ description: Tests the MBS Transport Function with curl and Wireshark across sin
 
 This tutorial describes the initial reference implementation of the MBS Transport Function (MBSTF) as specified in 3GPP [TS 26.517](https://www.3gpp.org/dynareport/26517.htm) and 3GPP [TS 29.581](https://www.3gpp.org/dynareport/29581.htm). You can check out the videos to see more details or follow the write-up tutorial. For acronyms used here, see the [Glossary](/tech/glossary).
 
-<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
-
-## Developer Exchange
-
-The recording below demonstrates the basic implementation of the MBS Transport Function.
-
-<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/anrtRfPttmo?si=f1EqspDK2LeenbSj" title="Basic implementation of the MBS Transport Function - 5G-MAG Reference Tools" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-
 ## Architecture
 
 ```mermaid

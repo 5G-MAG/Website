@@ -5,32 +5,11 @@ sidebar_position: -1
 description: Index of 5G MBS tutorials covering the MBSTF, MBSF, 5GC core, Docker deployment, end-to-end setup, TMGI/session management, and Developer Exchange.
 ---
 
-import VideoGrid from '@site/src/components/VideoGrid';
+import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 
-export const communityVideos = [
-  {
-    id: 'e_xK_ckkhgc',
-    title: 'Demonstrating MBS User Service Announcement mechanisms - Reference Tools',
-    by: 'Dev Audsin, David Waring and Richard Bradbury (BBC R&D)',
-  },
-  {
-    id: 'MF9rhnaEEP8',
-    title: 'Demonstrating the OBJECT_CAROUSEL operating mode - Reference Tools',
-    by: 'David Waring, Dev Audsin and Richard Bradbury (BBC R&D)',
-  },
-  {
-    id: '0re77KNmxYQ',
-    title:
-      'TUTORIAL - Basic implementation of MBS Function (MBSF) - Multicast Broadcast Services (MBS)',
-  },
-  {
-    id: 'anrtRfPttmo',
-    title:
-      'TUTORIAL - Basic implementation of MBS Transport Function - Multicast Broadcast Services (MBS)',
-  },
-  { id: 'lJh2F0xXxpE', title: 'TUTORIAL - Initial support of 5MBS core network functions' },
-];
+export const projectVideos = youtubePlaylists.projects?.['5g-mbs']?.videos || [];
 
 <div class="topic-banner">
   <div class="topic-banner__icon-wrap">
@@ -148,4 +127,4 @@ This tutorial provides an overview on the implementation of MBS in Open5GS Core,
 
 Our [YouTube channel](https://www.youtube.com/@5GMAG) hosts some practical videos provided by developers on the use of the Reference Tools.
 
-<VideoGrid videos={communityVideos} />
+<ProjectVideos videos={projectVideos} name="5G MBS" />

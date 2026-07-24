@@ -23,14 +23,6 @@ description: Builds an MBS Broadcast Session on the 5G Core and traces multicast
 This tutorial showcases the current features present in the 5G-MAG MBS implementation. You can check out the video to
 see more details or follow the write-up tutorial.
 
-<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
-
-## Developer Exchange
-
-The recording below demonstrates the initial support of the MBS core network functions.
-
-<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/lJh2F0xXxpE?si=qtvABXQwNoHkaveH" title="Initial support of 5MBS core network functions - 5G-MAG Reference Tools" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-
 ## Prerequisites
 
 Before starting with this tutorial please follow the [Docker installation instructions](https://github.com/5G-MAG/rt-mbs-examples) for the 5MBS stack. This tutorial assumes that you have cloned the [rt-mbs-examples repository](https://github.com/5G-MAG/rt-mbs-examples) and started the 5MBS Docker images with the internal deployment mode.

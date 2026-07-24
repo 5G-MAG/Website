@@ -6,8 +6,11 @@ sidebar_position: -1
 description: Overview of the 5G Broadcast reference tools (rt-mbms-tx, rt-mbms-modem and related repos) implementing ETSI TS 103 720 for TV and radio.
 ---
 import CommunityStats from '@site/src/components/CommunityStats';
-import VideoGrid from '@site/src/components/VideoGrid';
+import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import youtubePlaylists from '@site/static/data/youtube-playlists.json';
+
+export const projectVideos = (youtubePlaylists.projects?.['5g-broadcast']?.videos || []).slice(0, 1);
 
 
 <div class="topic-banner">
@@ -87,7 +90,7 @@ The tutorials refer to the following repositories by name. This table maps each 
 
 See the Reference Tools in action, with a community video from the tutorials page.
 
-<VideoGrid videos={[{ id: '3iIichQmjBg', title: 'The Nakolos Core - Interoperability with Reference Tools' }]} />
+<ProjectVideos videos={projectVideos} name="5G Broadcast" />
 
 ## Community Stats
 
