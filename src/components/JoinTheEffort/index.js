@@ -1,34 +1,32 @@
 import Link from '@docusaurus/Link';
 import { SLACK_INVITE_URL } from '@site/src/data/socialLinks';
+import { GITHUB_ICON, SLACK_ICON } from '@site/src/theme/socialIcons';
 import styles from '@site/src/pages/tech/index.module.css';
 
+const ICON_PROPS = {
+  viewBox: '0 0 24 24',
+  fill: 'none',
+  stroke: 'currentColor',
+  strokeWidth: 2,
+  strokeLinecap: 'round',
+  strokeLinejoin: 'round',
+  'aria-hidden': true,
+};
+
 const MEMBERSHIP_ICON = (
-  <>
+  <svg {...ICON_PROPS}>
     <path d="M17 21v-2a4 4 0 0 0 -4 -4h-6a4 4 0 0 0 -4 4v2" />
     <path d="M7 11a4 4 0 1 0 0 -8a4 4 0 0 0 0 8z" />
     <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
     <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-  </>
-);
-
-const GITHUB_ICON = (
-  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
-);
-
-const SLACK_ICON = (
-  <>
-    <path d="M12 12v-6a2 2 0 0 1 4 0v6m0 -2a2 2 0 1 1 2 2h-6" />
-    <path d="M12 12h6a2 2 0 0 1 0 4h-6m2 0a2 2 0 1 1 -2 2v-6" />
-    <path d="M12 12v6a2 2 0 0 1 -4 0v-6m0 2a2 2 0 1 1 -2 -2h6" />
-    <path d="M12 12h-6a2 2 0 0 1 0 -4h6m-2 0a2 2 0 1 1 2 -2v6" />
-  </>
+  </svg>
 );
 
 const SUBSCRIBE_ICON = (
-  <>
+  <svg {...ICON_PROPS}>
     <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
     <path d="M3 7l9 6l9 -6" />
-  </>
+  </svg>
 );
 
 const TILES = [
@@ -69,17 +67,7 @@ const TILES = [
 function Tile({ to, href, icon, title, desc, cta }) {
   const content = (
     <>
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        aria-hidden="true"
-      >
-        {icon}
-      </svg>
+      {icon}
       <strong>{title}</strong>
       <span className="tile-desc">{desc}</span>
       <span className="tile-cta">{cta} &rarr;</span>

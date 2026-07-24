@@ -1,3 +1,4 @@
+import Link from '@docusaurus/Link';
 import pullRequestsData from '@site/static/data/pull-requests.json';
 import styles from './styles.module.css';
 
@@ -65,9 +66,9 @@ function ProjectSection({ project }) {
       <div className={styles.projectSectionHeader}>
         <h3 className={styles.projectSectionTitle}>{project.name}</h3>
         {project.doc_url && (
-          <a className="button button--outline button--primary button--sm" href={project.doc_url}>
+          <Link className="button button--outline button--primary button--sm" to={project.doc_url}>
             Documentation
-          </a>
+          </Link>
         )}
       </div>
       <div className={styles.prList}>

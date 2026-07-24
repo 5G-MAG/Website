@@ -39,4 +39,4 @@ The recording below walks through operating the MBS User Services, MBS 5GC, NG-R
 
 By Jaime Sánchez Roldán & Josep Ribes Rodríguez-Moldes (iTEAM-UPV)
 
-<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/cdYV99cDuJE" title="Operating MBS User Services, MBS 5GC, NG-RAN and UE end to end - 5G-MAG Reference Tools" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/cdYV99cDuJE" title="Operating MBS User Services, MBS 5GC, NG-RAN and UE end to end - 5G-MAG Reference Tools" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>

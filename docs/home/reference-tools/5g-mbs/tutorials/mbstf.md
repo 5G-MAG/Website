@@ -28,7 +28,7 @@ This tutorial describes the initial reference implementation of the MBS Transpor
 
 The recording below demonstrates the basic implementation of the MBS Transport Function.
 
-<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/anrtRfPttmo?si=f1EqspDK2LeenbSj" title="Basic implementation of the MBS Transport Function - 5G-MAG Reference Tools" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/anrtRfPttmo?si=f1EqspDK2LeenbSj" title="Basic implementation of the MBS Transport Function - 5G-MAG Reference Tools" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
 
 ## Architecture
 

@@ -11,7 +11,7 @@ import NavbarMobileSidebarToggle from '@theme/Navbar/MobileSidebar/Toggle';
 import NavbarLogo from '@theme/Navbar/Logo';
 import NavbarSearch from '@theme/Navbar/Search';
 import { GITHUB_ICON, SLACK_ICON, LINKEDIN_ICON, LOCK_ICON, SEARCH_ICON } from '../../socialIcons';
-import { SLACK_INVITE_URL } from '../../../data/socialLinks';
+import { SLACK_INVITE_URL, SOCIAL_LINKS } from '../../../data/socialLinks';
 import { useNavbarItems } from '../../navItems';
 import { SECTION_NAV, stripBaseUrl } from '../../../data/sectionNav';
 import styles from './styles.module.css';
@@ -116,11 +116,14 @@ function CollapsibleSearch({ children }) {
 // rendered directly rather than through the config-driven NavbarItems so
 // they can be plain icon-only anchors (external, no client-side routing
 // needed for any of them).
+const GITHUB_HREF = SOCIAL_LINKS.find((s) => s.key === 'github').href;
+const LINKEDIN_HREF = SOCIAL_LINKS.find((s) => s.key === 'linkedin').href;
+
 function GlobalNavActions() {
   return (
     <>
       <a
-        href="https://github.com/5G-MAG"
+        href={GITHUB_HREF}
         target="_blank"
         rel="noreferrer"
         className={clsx(styles.navIconLink, styles.navSpaced)}
@@ -130,7 +133,7 @@ function GlobalNavActions() {
         {GITHUB_ICON}
       </a>
       <a
-        href="https://www.linkedin.com/company/5g-mag/"
+        href={LINKEDIN_HREF}
         target="_blank"
         rel="noreferrer"
         className={clsx(styles.navIconLink, styles.navSpaced)}

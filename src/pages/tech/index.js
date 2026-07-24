@@ -4,6 +4,7 @@ import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import OnAirTeaser from '@site/src/components/OnAirTeaser';
+import { icon } from '@site/src/components/GodeeperCard';
 import styles from './index.module.css';
 
 // A cross-section sample, not the full library — one per pillar area so the
@@ -14,21 +15,6 @@ const ON_AIR_FEATURED = [
   { videoId: 'dZaUAhYZTUU', title: '5G Broadcast at FOKUS Media Web Symposium 2024', href: '/reference-tools/5g-broadcast/tutorials#developer-exchange' },
   { videoId: 'RvHWQht-7Q4', title: 'XR Media with MPEG-I Scene Description at IBC 2025', href: '/reference-tools/xr/tutorials#developer-exchange' },
 ];
-
-const icon = (paths) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-    {paths}
-  </svg>
-);
 
 const CATEGORIES = [
   {
@@ -265,7 +251,7 @@ const CATEGORIES = [
       },
       {
         title: 'AI/ML in 5G Media Standards',
-        desc: 'NWDAF network-side analytics vs. UE-side data collection tracks for AI/ML in 3GPP.',
+        desc: 'NWDAF network-side analytics vs. UE-side data collection tracks for AI/ML in 3GPP — tracked on the Standards hub.',
         href: '/tech/standards/ai-ml',
         icon: icon(
           <>

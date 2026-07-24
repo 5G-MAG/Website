@@ -1,0 +1,159 @@
+---
+title: Scope
+hide_title: true
+sidebar_position: 0
+description: Describes the libscbsf, libscpcf, and libscmbsmf service consumer libraries for the BSF, PCF, and MB-SMF, and how to pick one.
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M6.657 16c-2.572 0 -4.657 -2.007 -4.657 -4.483c0 -2.475 2.085 -4.482 4.657 -4.482c.393 -1.762 1.794 -3.2 3.675 -3.773c1.88 -.572 3.956 -.193 5.444 1c1.488 1.19 2.162 3.007 1.77 4.769h.99c1.913 0 3.464 1.56 3.464 3.486c0 1.927 -1.551 3.487 -3.465 3.487h-11.878" />
+  <path d="M12 16v5" />
+  <path d="M16 16v4a1 1 0 0 0 1 1h4" />
+  <path d="M8 16v4a1 1 0 0 1 -1 1h-4" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">5G Core Service Consumers</span>
+<h1>Scope</h1>
+</div>
+</div>
+
+<div style={{margin: '8px 0'}}><a class="button button--primary" href="/reference-tools/5g-core/scope" style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href="/reference-tools/5g-core/resources" style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href="/reference-tools/5g-core/tutorials" style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/5g-core/tutorials#developer-exchange" style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
+
+The 5G Core (5GC) presents several Network Functions, each of which has its own set of service interfaces. This project hosts a collection of reusable service consumer libraries designed to talk to some of these functions. A "service consumer library" is a small library that implements the client (consumer) side of a 5G Core service API, so an application can call that function without re-implementing the protocol.
+
+:::note[Key terms]
+
+- **PDU Session**: the Packet Data Unit session that carries a device's IP traffic across the 5G network.
+- **QoS**: Quality of Service, the network treatment (bandwidth, latency, priority) applied to that traffic.
+- **NRF**: Network Repository Function, used to discover other network functions.
+- **PCF**: Policy Control Function, which applies QoS and charging policy.
+- **BSF**: Binding Support Function, which maps a PDU Session to the PCF serving it.
+- **MB-SMF**: Multicast/Broadcast Session Management Function, which manages MBS sessions.
+- **TMGI**: Temporary Mobile Group Identifier, the identifier for an MBS session.
+  :::
+
+This page is split into two domains, separated by a horizontal rule: first the **Media Streaming QoS** libraries (BSF and PCF), then the **Multicast/Broadcast Services (MBS)** library (MB-SMF).
+
+Technical documentation providing context to this project can be found in the link below.
+
+[Tech: Streaming, Media Delivery & Data Collection](/tech/5gms)
+
+[Tech: Multicast and Broadcast Services in 5G Networks](/tech/5g-mbs)
+
+Relevant specifications are listed below: the BSF and PCF service-consumer interfaces are on the [Standards: 5G Media Streaming](/tech/standards/5gms) page, and the MB-SMF service-consumer interface is on the [Standards: 5G Multicast & Broadcast Services](/tech/standards/5g-mbs) page.
+
+## What is being implemented?
+
+:::tip[In short]
+A series of reusable service consumer libraries to invoke service operations on various 5GC network functions.
+:::
+
+## Media Streaming QoS (BSF and PCF)
+
+Within the context of 5G Media Streaming (5GMS), the 5GMS Application Function (AF) needs to communicate with the 5G Core in order to manipulate network Quality of Service (QoS) for ongoing media streaming sessions.
+
+<img loading="lazy" src={useBaseUrl('/assets/images/5gcsc/5GCSC_libscbsf_libscpcf.png')} alt="Architecture showing the libscbsf and libscpcf service consumer libraries connecting a media Application Function to the BSF and PCF in the 5G Core"/>
+
+The following libraries are available:
+
+- **libscbsf** - Binding Support Function (BSF) service consumer library
+- **libscpcf** - Policy Control Function (PCF) service consumer library
+
+### libscbsf - Binding Support Function (BSF) service consumer library
+
+- Responsible for maintaining a mapping between UE PDU Session and the PCF which is managing that PDU Session.
+- The `libscbsf` library aids in discovery of the BSF in the 5G Core (by interrogating the NRF) and subsequently looking up which PCF is managing the PDU Session for a UE, identified by its IP address.
+- This library implements the service consumer end of the following service-based APIs:
+  - `Nbsf_Management`
+
+[Resources](./resources)
+
+### libscpcf - Policy Control Function (PCF) service consumer library
+
+- Responsible for applying charging and network policy to the PDU sessions of UEs. The `Npcf_PolicyAuthorization` service API is used at reference point N5 by an Application Function (AF) to request policy changes to the PDU session on behalf of the UE, manipulating particular network QoS parameters for selected IP traffic flows within it.
+- The `libscpcf` library allows an application to connect to a PCF and request an `AppSessionContext` which it can then use to manipulate the network routing policies for traffic passing across specific application flows within a UE's PDU Session.
+- This library implements the service consumer end of the following service-based APIs:
+  - `Npcf_PolicyAuthorization`
+
+#### Command line tool: pcf-policyauthorization
+
+The **pcf-policyauthorization** tool manipulates the network Quality of Service parameters of Application Session Contexts in the PCF by using the PCF service consumer library to invoke operations on the `Npcf_PolicyAuthorization` service API.
+
+The PCF address can be explicitly specified at the command line if this is already known. Alternatively, the tool can also use the BSF service consumer library to look up which PCF instance is managing the PDU Session of interest ( based on the IP address of a UE registered with the AMF).
+
+[Resources](./resources)
+
+[Tutorial: Test libscpcf](./tutorials/using-libscPCF)
+
+---
+
+## Multicast/Broadcast Services (MB-SMF)
+
+Within the context of 5G Multicast/Broadcast Services (MBS), the Multicast/Broadcast Session Management Function (MB-SMF) is responsible for allocating and deallocating Temporary Mobile Group Identities (TMGIs) and for the management of Multicast/Broadcast Services on the Multicast/Broadcast User Plane Function (MB-UPF).
+
+<img loading="lazy" src={useBaseUrl('/assets/images/5gcsc/5GCSC_libscmbsmf.png')} alt="Architecture showing the libscmbsmf service consumer library connecting an application to the MB-SMF in the 5G Core"/>
+
+The following libraries are available:
+
+- **libscmbsmf** - Multicast/Broadcast Session Management Function (MB-SMF) service consumer library
+
+### libscmbsmf - Multicast/Broadcast Session Management Function (MB-SMF) service consumer library
+
+- Responsible for allocating and deallocating Temporary Mobile Group Identities (`TMGIs`) and for the management of Multicast/Broadcast Services (`MBS`) on the Multicast/Broadcast User Plane Function (`MB-UPF`).
+- The `Nmbsmf_TMGI` service API is used at reference point `Nmb1` for the allocation and deallocation of `TMGIs`, and the `Nmbsmf_MBSSession` service API is used at reference point `Nmb1` for the creation, modification and destruction of MBS Sessions and for the management of notification subscriptions to events arising on those MBS Sessions.
+- The `libscmbsmf` library provides a simple create/destroy interface for `TMGI` management and an MBS Session and notifications subscriptions model for management of MBS Sessions.
+- This library implements the service consumer end of the following service-based APIs:
+  - `Nmbsmf_TMGI`
+  - `Nmbsmf_MBSSession`
+
+#### Command line tool: tmgi-tool
+
+The **tmgi-tool** provides a simple command line interface to either request the creation or destruction of a TMGI using the interfaces provided by the MB-SMF service consumer library to invoke operations on the Nmbsmf_TMGI service API.
+
+#### Command line tool: mbs-service-tool
+
+The **mbs-service-tool** can register an MBS Session and will then wait for notifications for that MBS Session. It does this by using the interfaces provided by the MB-SMF service consumer library to invoke operations on the Nmbsmf_MBSSession service API.
+
+[Resources](./resources)
+
+[Tutorial: Test libscmbsmf](./tutorials/using-libscMBSMF)
+
+## How to choose a library
+
+The three libraries split by what you are trying to do:
+
+- If you need to **request network QoS for a unicast media session** (the 5G Media Streaming case), use **libscpcf** to talk to the PCF via `Npcf_PolicyAuthorization`. If you do not already know which PCF serves the UE, use **libscbsf** first to look it up from the UE's IP address; the `pcf-policyauthorization` tool can do both in one step.
+- If you need to **create and manage multicast/broadcast sessions** (the MBS case), use **libscmbsmf** to talk to the MB-SMF via `Nmbsmf_TMGI` (allocate/deallocate a TMGI) and `Nmbsmf_MBSSession` (create, modify, release a session and subscribe to its events).
+
+Each library implements only the consumer (client) side of its APIs, so it assumes a running 5G Core that produces those services. The libraries handle NRF-based discovery where relevant (for example, libscbsf discovers the BSF), which means an application usually only needs an entry point address and the session or UE identity, not the full topology of the core.
+
+## Getting started
+
+See [Tutorials](./tutorials) to run the tools against a 5G Core, and [Resources](./resources) for the source code and releases.
+
+## 5G Downlink Media Streaming (5GMSd) with 5GC Service Consumers
+
+The diagram below shows how the 5GMSd reference tools use the 5GC Service Consumer libraries (BSF and PCF) to request network QoS from the 5G Core.
+
+<img loading="lazy" src={useBaseUrl('/assets/images/projects/5gms_5gc_diagram.png')} style={{width: '80%'}} alt="Architecture of the 5G Downlink Media Streaming reference tools using the 5GC Service Consumer libraries to reach the BSF and PCF"/>
+
+[5G Media Streaming: Resources](../5gms/resources)
+[5GC Service Consumers: Resources](../5g-core/resources)
+[3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
+[Common Tools: Repositories](../common-tools/)
+
+## 5G Multicast Broadcast Services (MBS) with 5GC Service Consumers
+
+The diagram below shows how the MBS reference tools use the MB-SMF service consumer library to reach the 5G Core.
+
+<img loading="lazy" src={useBaseUrl('/assets/images/projects/mbs_5gc_diagram.png')} style={{width: '80%'}} alt="Architecture of the 5G MBS reference tools using the MB-SMF service consumer library to reach the 5G Core"/>
+
+[5G Multicast Broadcast Services: Resources](../5g-mbs/resources)
+[Multimedia content delivery protocols: Resources](../multimedia/resources)
+[5GC Service Consumers: Resources](../5g-core/resources)
+[3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
+[Common Tools: Repositories](../common-tools/)

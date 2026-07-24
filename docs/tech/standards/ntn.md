@@ -43,7 +43,7 @@ New to the service layers that NTN carries? Multicast Broadcast Services (MBS) a
 </div>
 </div>
 
-<div class="godeeper-card">
+<div class="godeeper-card godeeper-card--static">
 <div class="godeeper-card__band">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l18 0"/><path d="M9 8l1 0"/><path d="M9 12l1 0"/><path d="M9 16l1 0"/><path d="M14 8l1 0"/><path d="M14 12l1 0"/><path d="M14 16l1 0"/><path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16"/></svg>
 <h3>Software Tools</h3>

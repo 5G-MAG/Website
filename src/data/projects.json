@@ -202,12 +202,10 @@
     "releases_slug": "resources"
   },
   {
-    "name": "Dependency",
-    "doc_url": null,
-    "tagline": "External forks and dependencies 5G-MAG maintains for its reference tools — not first-class reference-tool projects with their own docs page",
+    "name": "3GPP RAN and Core Platforms",
+    "doc_url": "/reference-tools/3gpp-platforms/",
+    "tagline": "Lab-ready 5G RAN and Core built on Open5GS and srsRAN forks",
     "repos": [
-      "5GC_APIs",
-      "cmcd-toolkit",
       "rt-srsRAN_Project",
       "srsRAN_4G",
       "srsRAN",
@@ -215,6 +213,15 @@
         "name": "open5gs",
         "branch": "main"
       }
+    ]
+  },
+  {
+    "name": "Dependency",
+    "doc_url": null,
+    "tagline": "External forks and dependencies 5G-MAG maintains for its reference tools — not first-class reference-tool projects with their own docs page",
+    "repos": [
+      "5GC_APIs",
+      "cmcd-toolkit"
     ]
   }
 ]

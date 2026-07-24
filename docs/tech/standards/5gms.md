@@ -1,7 +1,7 @@
 ---
 hide_title: true
 title: 5G Media Streaming (5GMS)
-sidebar_position: 2
+sidebar_position: 4
 description: Describes the 5G Media Streaming architecture, M1-M8 reference points, related 3GPP specifications and Release-19 Advanced Media Delivery work.
 ---
 
@@ -80,6 +80,8 @@ The entities are joined by named reference points M1 to M8. The downlink variant
 
 For the deeper architecture (entity sub-functions, the M1 to M8 interfaces per direction, and the downlink feature-to-API mapping), see the technical documentation on the [5GMS Overview](/tech/5gms/overview-5gms) and [5GMSd Features](/tech/5gms/features-5gmsd) pages.
 
+These M1-M8 reference points are specific to 5G Media Streaming and are distinct from the similarly-named M1/M2/M3 MBMS network interfaces used by [Standards: 5G Broadcast](/tech/standards/5g-broadcast).
+
 ## 5G Core service consumers used by the AF
 
 In the 5G Core, network functions expose service-based APIs (HTTP/2 RESTful APIs described by an OpenAPI schema) that other functions call: the function offering the API is the _producer_, the function calling it is the _consumer_. The 5GMS AF is a consumer of two such APIs for the unicast media path:
@@ -131,10 +133,13 @@ Advanced Media Delivery (AMD) is the Release-19 line of work extending 5G Media 
 Technical Reports:
 
 - **[3GPP TR 26.804](https://www.3gpp.org/dynareport/26804.htm) - Study on 5G media streaming extensions**
+
+### Related Technical Report (release unconfirmed)
+
 - **[3GPP TR 26.802](https://www.3gpp.org/dynareport/26802.htm) - Multicast Architecture Enhancement for 5G Media Streaming**
 
 :::warning[Needs verification]
-TR 26.802 is listed here under "Release-19 Advanced Media Delivery", but it appears to belong to an earlier release (flagged as possibly Release 17). Its release and section placement should be confirmed against the [3GPP specification record](https://www.3gpp.org/dynareport/26802.htm) and corrected if needed.
+TR 26.802 relates to 5GMS multicast architecture but its release is unconfirmed (possibly Release 17 rather than Release 19). It is listed here separately from the Release-19 Advanced Media Delivery reports above until its release and section placement is confirmed against the [3GPP specification record](https://www.3gpp.org/dynareport/26802.htm).
 :::
 
 ### Common Media Client Data (CMCD)

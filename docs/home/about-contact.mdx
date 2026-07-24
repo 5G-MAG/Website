@@ -9,6 +9,7 @@ description: Get in touch with the 5G-MAG Project Office.
 
 import ContactForm from '@site/src/components/ContactForm';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import { SLACK_INVITE_URL } from '@site/src/data/socialLinks';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -54,9 +55,9 @@ The Project Office runs 5G-MAG's day-to-day work supporting the members and acti
 <div style={{ fontSize: '0.8rem', color: 'var(--ifm-color-emphasis-600)' }}>Head of Technology</div>
 </div>
 </div>
-<p style={{ margin: 0 }}>
+<div style={{ margin: 0 }}>
 Technology, workgroups, logistics — [gimenez@5g-mag.com](mailto:gimenez@5g-mag.com)
-</p>
+</div>
 </div>
 
 <div style={{ flex: '1 1 320px', minWidth: '260px' }}>
@@ -72,9 +73,9 @@ Technology, workgroups, logistics — [gimenez@5g-mag.com](mailto:gimenez@5g-mag
 <div style={{ fontSize: '0.8rem', color: 'var(--ifm-color-emphasis-600)' }}>Head of Finance and Administration</div>
 </div>
 </div>
-<p style={{ margin: 0 }}>
+<div style={{ margin: 0 }}>
 Membership, finances, legal — [markvoort@5g-mag.com](mailto:markvoort@5g-mag.com)
-</p>
+</div>
 </div>
 
 </div>
@@ -112,7 +113,7 @@ Membership, finances, legal — [markvoort@5g-mag.com](mailto:markvoort@5g-mag.c
 </a>
 
 <a
-  href="https://join.slack.com/t/5g-mag/shared_invite/zt-44la3q72s-Mrb13bWpHA33GiCbWJ6C3Q"
+  href={SLACK_INVITE_URL}
   target="_blank"
   rel="noreferrer"
   class="community-tile"

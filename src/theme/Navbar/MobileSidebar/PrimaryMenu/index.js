@@ -7,7 +7,7 @@ import { useNavbarItems, MOBILE_GLOBAL_ITEMS } from '../../../navItems';
 // useThemeConfig().navbar.items (a static config array) — since the
 // desktop nav (Navbar/Content) sources its items from navItems.js instead,
 // this override keeps the mobile drawer in sync: same item list, plus the
-// desktop's icon-only GlobalNavActions (GitHub/Slack/Members Area/Join now!)
+// desktop's icon-only GlobalNavActions (GitHub/LinkedIn/Slack/Members Area)
 // as plain labeled links, since unlabeled icons alone would be a poor fit
 // for a vertical text menu.
 export default function NavbarMobilePrimaryMenu() {

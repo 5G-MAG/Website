@@ -25,20 +25,6 @@
   margin-right: auto;
 }
 
-/* ── Product Type Cards ────────────────────────────────────────────── */
-
-.productGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.75rem;
-}
-
-@media (max-width: 768px) {
-  .productGrid {
-    grid-template-columns: 1fr;
-  }
-}
-
 /* ── Members Grid ──────────────────────────────────────────────────── */
 
 .membersGrid {
@@ -59,69 +45,24 @@
   }
 }
 
-.productCard {
+.memberCard {
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 10px;
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-top: 3px solid var(--ifm-color-primary);
-  border-radius: 10px;
-  overflow: hidden;
-  background: var(--ifm-background-surface-color);
-  color: inherit !important;
-  text-decoration: none !important;
-  transition:
-    box-shadow 0.2s ease,
-    transform 0.15s ease;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
 }
 
-.productCard:hover {
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.13);
-  transform: translateY(-3px);
-  text-decoration: none !important;
-}
-
-.productCardImageWrap {
-  overflow: hidden;
-  line-height: 0;
-}
-
-.productCardImage {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.2s ease;
-}
-
-.productCard:hover .productCardImage {
-  transform: scale(1.04);
-}
-
-.productCardBody {
-  padding: 1.1rem 1.1rem 0.5rem;
-  flex: 1;
-}
-
-.productCardLabel {
-  font-size: 1.05rem;
-  font-weight: 700;
-  margin: 0 0 0.5rem;
-  color: var(--ifm-heading-color);
-}
-
-.productCardDesc {
-  font-size: 0.875rem;
-  color: var(--ifm-color-emphasis-700);
-  margin: 0;
-  line-height: 1.6;
-}
-
-.productCardFooter {
-  padding: 0.65rem 1.1rem;
-  font-size: 0.875rem;
+.memberCardLabel {
+  font-size: 0.78rem;
   font-weight: 600;
-  color: var(--ifm-color-primary);
-  border-top: 1px solid var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-800);
+  text-align: center;
+  line-height: 1.25;
 }
 
 /* ── Activity Cards ─────────────────────────────────────────────────── */
@@ -177,7 +118,7 @@
 }
 
 .activityCard:hover {
-  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--card-hover-shadow);
   transform: translateY(-3px);
   text-decoration: none !important;
 }
@@ -192,7 +133,7 @@
   background: linear-gradient(
     135deg,
     var(--ifm-color-primary-darkest) 0%,
-    var(--ifm-color-primary) 100%
+    var(--ifm-color-primary-textsafe) 100%
   );
   transition: opacity 0.2s ease;
 }
@@ -238,40 +179,17 @@
 
 /* ── Pillar Cards ──────────────────────────────────────────────────── */
 
-.pillarGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-}
-
 .pillarGrid3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
 
-.pillarGrid2 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-}
-
 @media (max-width: 768px) {
-  .pillarGrid,
-  .pillarGrid3,
-  .pillarGrid2 {
+  .pillarGrid3 {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-}
-
-.pillarActions {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 2.5rem;
-  flex-wrap: wrap;
 }
 
 .pillarCard {
@@ -327,7 +245,7 @@
 }
 
 .linkCard:hover {
-  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--card-hover-shadow);
   transform: translateY(-3px);
   text-decoration: none !important;
 }
@@ -366,7 +284,7 @@
   background: linear-gradient(
     135deg,
     var(--ifm-color-primary-darkest) 0%,
-    var(--ifm-color-primary) 100%
+    var(--ifm-color-primary-textsafe) 100%
   );
 }
 
@@ -460,28 +378,6 @@
   line-height: 1.45;
 }
 
-/* ── Community ─────────────────────────────────────────────────────── */
-
-.communityLinks {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-}
-
-/* ── Hero text ─────────────────────────────────────────────────────── */
-/* Single line on wider screens; wraps normally on narrow viewports so
-   it never overflows/clips off-screen. */
-.heroNowrap {
-  white-space: normal;
-}
-
-@media (min-width: 640px) {
-  .heroNowrap {
-    white-space: nowrap;
-  }
-}
-
 /* Hero figure (icon cloud) sizing + repel-transition CSS now lives in the
    shared src/components/HeroFigure/styles.module.css, imported by that
    component itself (used identically on the homepage and on /developer). */
@@ -531,6 +427,12 @@
   font-weight: 700;
   color: var(--ifm-color-primary);
   white-space: nowrap;
+}
+
+.feeTableNote {
+  font-size: 0.8rem;
+  color: var(--ifm-color-emphasis-600);
+  margin-top: 0.5rem;
 }
 
 .contactCallout {
@@ -641,5 +543,49 @@
 
   .photoImg {
     height: 220px;
+  }
+}
+
+/* Shared "section heading + See all videos" header and video grid, used
+   by any hub page that features a curated set of recorded videos above
+   a link to the full playlist (originally /developer's Releases videos,
+   now also /testing's Demonstrators). */
+.videoHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.videoViewAll {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.videoViewAll:hover {
+  text-decoration: underline;
+}
+
+.videoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 996px) {
+  .videoGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .videoGrid {
+    grid-template-columns: 1fr;
   }
 }

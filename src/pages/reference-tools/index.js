@@ -1,21 +1,7 @@
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
+import { icon } from '@site/src/components/GodeeperCard';
 import styles from '../tech/index.module.css';
-
-const icon = (paths) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-    {paths}
-  </svg>
-);
 
 const REFTOOLS_ICON_PATH = (
   <>

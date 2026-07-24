@@ -47,7 +47,7 @@ description: Covers 5G Multicast-Broadcast Services architecture across user-ser
 <div class="godeeper-card__body">
 <p>5G-MAG's reference tools realising the MBS architecture.</p>
 <ul class="godeeper-card__links">
-<li><a href="/applications/streaming#mbs-end-to-end-delivery-demo">Developer portal: 5G MBS reference tools</a></li>
+<li><a href="/reference-tools/5g-mbs">Developer portal: 5G MBS reference tools</a></li>
 </ul>
 </div>
 </div>
@@ -206,8 +206,9 @@ For the implementer-facing analysis of this architecture, see [Technical Documen
 
 - [Standards: 5G Media Streaming](/tech/standards/5gms)
 - [Standards: 5G Broadcast](/tech/standards/5g-broadcast)
-- [Developer portal: 5G MBS reference tools](/applications/streaming#mbs-end-to-end-delivery-demo)
+- [Developer portal: 5G MBS reference tools](/reference-tools/5g-mbs)
 - [Technical Documentation: Multicast & Broadcast in 5G](/tech/5g-mbs)
+- [Standards: Non-Terrestrial Networks (NTN)](/tech/standards/ntn)
 - [Meetings with 3GPP SA4](/standards/3gpp-issue-tracking): the live tracker for 3GPP feedback issues on this specification
 
 :::note

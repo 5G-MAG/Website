@@ -2,7 +2,7 @@
 title: Connected Media Production and Contribution
 sidebar_position: 5
 hide_title: true
-description: Real, assembled applications built on 5G-MAG's network API reference tools, using CAMARA APIs for quality-of-service, connectivity insight and network slicing in live media production.
+description: 'Real, assembled applications built on 5G-MAG’s network API reference tools, using CAMARA APIs for quality-of-service, connectivity insight and network slicing in live media production.'
 ---
 
 <div class="topic-banner">

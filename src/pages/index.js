@@ -110,10 +110,9 @@ export default function Home() {
           <div className="container">
             <h2 className={styles.sectionTitle}>{"Discover 5G-MAG's work"}</h2>
             <p className={styles.sectionSubtitle}>
-              Based on open specification to address market needs.
-              <br />
-              Four pillars - each lowering cost and accelerating time from specifications to
-              deployment
+              Based on open specifications, to address market needs. Together with our members we
+              are running the loop from specifications to products — keeping connected media
+              applications and network technologies open, interoperable and deployable at scale.
             </p>
             <StandardsLoopDiagram />
 

@@ -48,8 +48,8 @@ export default function VideoGallery({ workshops }) {
               <div key={sIdx} className={styles.seriesBlock}>
                 {s.title && <h3 className={styles.seriesTitle}>{s.title}</h3>}
                 {s.by && <p className={styles.seriesByline}>By {s.by}</p>}
-                <div className={styles.wall}>
-                  <div className={styles.grid}>
+                <div className="video-wall">
+                  <div className="video-wall__grid">
                     {s.videos.map((v) => (
                       <VideoCard
                         key={v.id}
@@ -63,8 +63,8 @@ export default function VideoGallery({ workshops }) {
               </div>
             ))
           ) : (
-            <div className={styles.wall}>
-              <div className={styles.grid}>
+            <div className="video-wall">
+              <div className="video-wall__grid">
                 {w.videos.map((v) => (
                   <VideoCard
                     key={v.id}

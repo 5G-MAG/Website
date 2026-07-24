@@ -375,46 +375,9 @@
 }
 
 /* ── Video Section ─────────────────────────────────────────────────── */
-
-.videoHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 1.5rem;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.videoViewAll {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--ifm-color-primary);
-  text-decoration: none;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.videoViewAll:hover {
-  text-decoration: underline;
-}
-
-.videoGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-
-@media (max-width: 996px) {
-  .videoGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .videoGrid {
-    grid-template-columns: 1fr;
-  }
-}
+/* .videoHeader / .videoViewAll / .videoGrid now live in the shared
+   tech/index.module.css (also used by /testing) — see sharedStyles
+   import above. */
 
 .videoCard {
   display: flex;

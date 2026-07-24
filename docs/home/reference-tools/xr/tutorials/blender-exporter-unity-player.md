@@ -39,7 +39,7 @@ The video covers the main steps:
 - exporting the scene as a glTF document;
 - loading the exported scene in the XR Unity Player.
 
-<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/bEMjw1YA78M?si=ZvxzyvkNX5FijnFR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/bEMjw1YA78M?si=ZvxzyvkNX5FijnFR" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
 
 ## Next steps
 

@@ -45,7 +45,7 @@ This page is the detailed, release-by-release companion to [Standards: 5G Broadc
 <div class="godeeper-card__body">
 <p>5G-MAG's reference tools implementing ETSI TS 103 720.</p>
 <ul class="godeeper-card__links">
-<li><a href="/applications/5g-broadcast">Developer portal: 5G Broadcast reference tools</a></li>
+<li><a href="/reference-tools/5g-broadcast">Developer portal: 5G Broadcast reference tools</a></li>
 </ul>
 </div>
 </div>
@@ -194,6 +194,7 @@ Individual 3GPP Change Requests (CRs) are not linked directly: the CR search por
 ## Related Standards Work
 
 - [Standards: 5G Broadcast](/tech/standards/5g-broadcast)
+- [Standards: Non-Terrestrial Networks (NTN)](/tech/standards/ntn)
 - [Feedback and Requirements](/standards): how 5G-MAG processes feedback on the specifications it maintains and tracks
 
 :::note

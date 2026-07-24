@@ -452,6 +452,16 @@
   transform: translateY(-3px);
   text-decoration: none !important;
 }
+/* Same purpose as .godeeper-card--static: a community-tile rendered as a
+   plain <div> (no href) is descriptive only -- suppress the hover lift/
+   shadow so it doesn't imply it's clickable when it isn't. */
+.community-tile--static {
+  cursor: default;
+}
+.community-tile--static:hover {
+  box-shadow: none;
+  transform: none;
+}
 .community-tile svg {
   width: 40px;
   height: 40px;
@@ -1126,7 +1136,6 @@
   }
 }
 
-/* ── Reference tutorial: numbered step badge ──────────────────────── */
 /* ── Reference tutorial: success/completion callout ───────────────── */
 .tutorial-complete {
   display: flex;
@@ -1180,4 +1189,22 @@
   background: none !important;
   padding: 0 !important;
   box-shadow: none !important;
+}
+
+/* Shared "control-room panel" backdrop for VideoGrid and VideoGallery --
+   a real monitor wall isn't lit like the rest of the room. Fixed dark
+   background regardless of site theme, since VideoCard's dark card
+   assumes this backdrop. Global (not a CSS Module) so both components
+   share one definition instead of two independently-drifting copies;
+   each component still supplies its own surrounding spacing. */
+.video-wall {
+  background: #0b0f14;
+  border-radius: 14px;
+  padding: 1.5rem;
+}
+
+.video-wall__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1.1rem;
 }

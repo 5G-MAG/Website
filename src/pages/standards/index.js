@@ -193,9 +193,9 @@ function CategoryCard({ title, desc, topics }) {
       </div>
       <div className={styles.categoryTopicGrid}>
         {topics.map((t) => (
-          <a
+          <Link
             key={t.href}
-            href={t.href}
+            to={t.href}
             target={t.href.startsWith('http') ? '_blank' : undefined}
             rel={t.href.startsWith('http') ? 'noreferrer' : undefined}
             className={styles.categoryTopicCard}
@@ -205,7 +205,7 @@ function CategoryCard({ title, desc, topics }) {
               <span className={styles.categoryTopicName}>{t.title}</span>
               <span className={styles.categoryTopicDescText}>{t.desc}</span>
             </span>
-          </a>
+          </Link>
         ))}
       </div>
     </div>
@@ -304,7 +304,7 @@ export default function Standards() {
             </p>
             <div style={{ textAlign: 'center', margin: '0 0 1rem', display: 'flex', alignItems: 'center', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
               <Link className="button button--primary button--lg" to="/standards/requirements">
-                3GPP Requirements & Workshop Inputs
+                Requirements & Workshop Inputs
               </Link>
               <Link className="button button--outline button--primary button--lg" to="/surveys">
                 Take the Industry Survey

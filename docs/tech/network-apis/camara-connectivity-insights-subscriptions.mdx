@@ -1,0 +1,278 @@
+---
+title: CAMARA Connectivity Insights Subscriptions
+sidebar_position: 2
+hide_title: true
+description: Describes the CAMARA Connectivity Insights Subscriptions API, which pushes event notifications when a device's network quality changes.
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M4 13h5"/><path d="M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3"/><path d="M20 8v8"/><path d="M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5"/></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Connectivity Quality with Network APIs</span>
+<h1>CAMARA Connectivity Insights Subscriptions</h1>
+</div>
+</div>
+
+:::warning
+This documentation is currently **under development and subject to change**. It reflects outcomes elaborated by 5G-MAG members. If you are interested in becoming a member of the 5G-MAG and actively participating in shaping this work, please contact the [Project Office](/contact)
+:::
+
+## CAMARA: Connectivity Insights Subscriptions API
+
+## Description
+
+The "Connectivity Insights Subscriptions" API lets application developers receive continuous updates about network quality through event notifications. This allows developers to monitor network performance for their application users and receive alerts when network conditions change, helping them take informed decisions related to optimizing the application's end user experience.
+
+This API is the continuous counterpart to the one-shot [Connectivity Insights API](./camara-connectivity-insights): instead of a single check, the consumer subscribes once and the network pushes notifications when quality changes.
+
+Information: [Connectivity Insights Subscriptions project page](https://camaraproject.org/connectivity-insights-subscriptions/) and [GitHub repository](https://github.com/camaraproject/ConnectivityInsights)
+
+The API definitions can be obtained here: [ConnectivityInsights API_definitions folder](https://github.com/camaraproject/ConnectivityInsights/tree/main/code/API_definitions)
+
+The Connectivity Insights Subscriptions API definition (YAML) is available at: [connectivity-insights-subscriptions.yaml](https://github.com/camaraproject/ConnectivityInsights/blob/main/code/API_definitions/connectivity-insights-subscriptions.yaml)
+
+## Operations and dependencies
+
+### Connectivity Insights Subscriptions API
+
+- **POST /subscriptions** with the request body containing a `device`, `applicationServer (IP:port)`, `applicationProfileId` and an indication of expiration time and maximum number of events. Response contains a `subscriptionId`.
+  - Dependency: Requires `applicationProfileId` from a previous call to the [**Application Profiles API**](./camara-application-profiles).
+- **GET /subscriptions** - Operation to list subscriptions authorized to be retrieved by the provided access token.
+- `GET /subscriptions/{subscriptionId}` - Retrieve a given subscription by ID.
+- `DELETE /subscriptions/{subscriptionId}` - Delete a given subscription by ID
+
+## Standardisation context
+
+This API is the event-driven counterpart of the one-shot [Connectivity Insights](./camara-connectivity-insights) check. It follows the CAMARA "explicit subscription" pattern defined by the Commonalities working group: the consumer creates a subscription resource with `POST /subscriptions`, supplies a `sink` callback URL and the `types` of event it wants, and the provider then pushes notifications instead of the consumer polling. This is the same subscription/notification model used by the other event-bearing APIs on this portal (for example [Quality on Demand](./camara-quality-on-demand) and [QoS Booking and Assignment](./camara-qos-booking-assignment)), and it maps conceptually onto the NEF monitoring-event subscription mechanism in the 5G Core ([TS 29.522](https://www.3gpp.org/dynareport/29522.htm)), where an Application Function subscribes to be notified of network events rather than querying repeatedly.
+
+Notifications are [CloudEvents](https://cloudevents.io/) 1.0 JSON documents. The subscription carries a lifetime and a cap: `subscriptionExpireTime` bounds how long it remains active and `subscriptionMaxEvents` bounds how many events are delivered before it closes. `initialEvent: true` requests one event immediately on creation so the consumer has a baseline reading. Where present, `sinkCredential` describes how the provider authenticates to the consumer's `sink`.
+
+As with the one-shot API, the payload is qualitative (per-threshold indications against the referenced application profile), so the same media limitation applies: the consumer learns that quality changed but not the measured value. For a media workflow the value of the subscription form is timeliness. A production can react (drop resolution, switch bonding path, request a QoS boost) at the moment quality degrades, without polling. The trade-off is that delivery depends on the consumer's `sink` being reachable and correctly authenticated.
+
+## Workflow: Media application subscribing to Connectivity Insights events
+
+A user of a media application would like to obtain Connectivity Insights events. An example figure is shown in the context of using Application Profiles and Connectivity Insights. The following steps are executed:
+
+<figure>
+  <img loading="lazy" src={useBaseUrl('/img/tech/network-apis/content-production/figure_connectivityinsights.png')} width="80%" alt="Sequence showing an Application Profile being created, then a subscription that delivers recurring network-quality notifications." />
+  <figcaption>An Application Profile is created first (Step 0), then a subscription is created (Step 1) that delivers recurring network-quality notifications.</figcaption>
+</figure>
+
+### Step 0: Pre-conditions
+
+- Create an application profile using the **Application Profiles API** (with the relevant application requirements).
+- Create a device object for the device which media flow is to be monitored.
+- Obtain IP address and port of the application server (Ingest Server of Production).
+
+### Step 1: Subscribe to recurrent events/notifications on network quality
+
+- **POST /subscriptions**, passing the **applicationProfileId** obtained in step 0, the address/port of an application server, and a device object. Indicate expiration time and maximum number of events.
+
+## 5G-MAG's Self-Assessment
+
+This section records 5G-MAG's practical reading of the API and the open points it raises for media use.
+
+The APIs are likely to be invoked to obtain information about the ability of the network to meet the requirements during operation. However:
+
+- The information received is qualitative (e.g. `"targetMinDownstreamRate": "meets the application requirements"`). An application would be unable to understand which parameters to be adapted in order to revert a situation in which requirements cannot be met.
+
+Potential improvements:
+
+- If used to monitor resources for which QoS was requested (via a different API) harmonization of Application Profile and QoS Profile for consistency.
+- an indication of the actual performance parameters (quantitative) for those defined in the Application Profile may provide better insight for potential remedies. E.g. latency cannot be fulfilled, but please respond with the actual latency the link device-AS is experiencing.
+
+---
+
+## Application Profiles API Usage
+
+Check: [**Application Profiles API**](./camara-application-profiles). The type of parameters that an `applicationProfile` defines is shown below.
+
+```json
+{
+  "networkQualityThresholds": {
+    "packetDelayBudget": {
+      "value": 12,
+      "unit": "Milliseconds"
+    },
+    "targetMinDownstreamRate": {
+      "value": 10,
+      "unit": "Bps"
+    },
+    "targetMinUpstreamRate": {
+      "value": 10,
+      "unit": "Bps"
+    },
+    "packetLossErrorRate": 3,
+    "jitter": {
+      "value": 12,
+      "unit": "Milliseconds"
+    }
+  },
+  "computeResources": {
+    "targetMinCPU": 0.5,
+    "targetMinMemory": {
+      "value": 10,
+      "unit": "Kb"
+    },
+    "gpuVendorType": "Nvidia",
+    "gpuModelName": "string",
+    "targetMinGPU": 1,
+    "targetMinGPUMemory": {
+      "value": 10,
+      "unit": "Kb"
+    },
+    "targetMinEphemeralStorage": {
+      "value": 10,
+      "unit": "Kb"
+    },
+    "targetMinPersistentStorage": {
+      "value": 10,
+      "unit": "Kb"
+    }
+  }
+}
+```
+
+## Device object
+
+This is how a device is defined:
+
+```json
+{
+  "device": {
+    "phoneNumber": "123456789",
+    "networkAccessIdentifier": "123456789@domain.com",
+    "ipv4Address": {
+      "publicAddress": "84.125.93.10",
+      "publicPort": 59765
+    },
+    "ipv6Address": "2001:db8:85a3:8d3:1319:8a2e:370:7344"
+  }
+}
+```
+
+## Connectivity Insights Subscriptions API Usage
+
+### Create a subscription for a device
+
+With **POST /subscriptions**
+
+The request below creates a subscription. The key fields are:
+
+| Parameter        | Description                                                                                                        |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `sink`           | the callback URL to which the network delivers notifications (the consumer's endpoint must accept HTTP POST).      |
+| `sinkCredential` | the credential the API provider uses to authenticate against that endpoint (empty here).                           |
+| `types`          | the event types the consumer subscribes to (here, network-quality change events).                                  |
+| `initialEvent`   | when `true`, an event is sent immediately on subscription so the consumer has a baseline before any change occurs. |
+
+```json
+{
+  "protocol": "HTTP",
+  "sink": "https://endpoint.example.com/sink",
+  "sinkCredential": {},
+  "types": ["org.camaraproject.connectivity-insights-subscriptions.v0.network-quality"],
+  "config": {
+    "subscriptionDetail": {
+      "device": {
+        "phoneNumber": "123456789",
+        "networkAccessIdentifier": "123456789@domain.com",
+        "ipv4Address": {
+          "publicAddress": "84.125.93.10",
+          "publicPort": 59765
+        },
+        "ipv6Address": "2001:db8:85a3:8d3:1319:8a2e:370:7344"
+      },
+      "applicationServer": {
+        "ipv4Address": "192.168.0.1/24",
+        "ipv6Address": "2001:db8:85a3:8d3:1319:8a2e:370:7344"
+      },
+      "applicationServerPorts": {
+        "ranges": [
+          {
+            "from": 5010,
+            "to": 5020
+          }
+        ],
+        "ports": [5060, 5070]
+      },
+      "applicationProfileId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+    },
+    "subscriptionExpireTime": "2023-07-03T12:27:08.312Z",
+    "subscriptionMaxEvents": 5,
+    "initialEvent": true
+  }
+}
+```
+
+Type of response: A **subscriptionId**. The response echoes the subscription configuration and adds the assigned `subscriptionId`, `startsAt`/`expiresAt` window, and current `status`:
+
+```json
+{
+  "sink": "https://endpoint.example.com/sink",
+  "types": ["string"],
+  "config": {
+    "subscriptionDetail": {
+      "device": {
+        "phoneNumber": "123456789",
+        "networkAccessIdentifier": "123456789@domain.com",
+        "ipv4Address": {
+          "publicAddress": "84.125.93.10",
+          "publicPort": 59765
+        },
+        "ipv6Address": "2001:db8:85a3:8d3:1319:8a2e:370:7344"
+      },
+      "applicationServer": {
+        "ipv4Address": "192.168.0.1/24",
+        "ipv6Address": "2001:db8:85a3:8d3:1319:8a2e:370:7344"
+      },
+      "applicationServerPorts": {
+        "ranges": [
+          {
+            "from": 5010,
+            "to": 5020
+          }
+        ],
+        "ports": [5060, 5070]
+      },
+      "applicationProfileId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+    },
+    "subscriptionExpireTime": "2023-07-03T12:27:08.312Z",
+    "subscriptionMaxEvents": 5,
+    "initialEvent": true
+  },
+  "subscriptionId": "1119920371",
+  "startsAt": "2023-07-03T12:27:08.312Z",
+  "expiresAt": "2023-07-03T12:27:08.312Z",
+  "status": "ACTIVATION_REQUESTED"
+}
+```
+
+---
+
+## Event notifications
+
+The whole point of this API is asynchronous delivery: once a subscription is created, the network pushes an event to the consumer whenever network quality changes (and, if `initialEvent` is `true`, once immediately as a baseline), rather than the consumer polling.
+
+### Mechanism
+
+Notifications are delivered to the callback URL supplied as the `sink` parameter when the subscription is created with **POST /subscriptions** (see the request example above). Where present, `sinkCredential` describes the credential the API provider uses to authenticate against that endpoint. The consumer's `sink` must accept HTTP POST requests carrying the notification payload. The subscription stops delivering when it expires (`subscriptionExpireTime`) or reaches its event cap (`subscriptionMaxEvents`).
+
+The payload follows the [CloudEvents](https://cloudevents.io/) 1.0 specification (JSON format).
+
+### Event types
+
+| Event type                                                                 | Meaning                                                                     |
+| -------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `org.camaraproject.connectivity-insights-subscriptions.v0.network-quality` | The network quality relative to the subscribed application profile changed. |
+
+The `data` object carries the network-quality assessment (the same qualitative per-threshold indications returned by the one-shot [Connectivity Insights](./camara-connectivity-insights) check). Note the `v0` segment in the event type, indicating the API is at an early version.
+
+:::note
+The event type and payload structure above are taken from the CAMARA Connectivity Insights Subscriptions API definition. Confirm the exact values against the [`connectivity-insights-subscriptions.yaml`](https://github.com/camaraproject/ConnectivityInsights/blob/main/code/API_definitions/connectivity-insights-subscriptions.yaml) for the version you are integrating against, as they can change between releases.
+:::

@@ -30,7 +30,7 @@ This tutorial provides the instructions to set up the MPEG V3C Immersive Platfor
 
 The video below walks through the same build.
 
-<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/4Mj_eJnYVjE?si=DGY8rmDpl-mAJBfH" title="Video walkthrough: building the V3C Unity player for Android with a DASH streaming server" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/4Mj_eJnYVjE?si=DGY8rmDpl-mAJBfH" title="Video walkthrough: building the V3C Unity player for Android with a DASH streaming server" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
 
 This tutorial pulls together four repositories:
 

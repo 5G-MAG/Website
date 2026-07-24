@@ -48,10 +48,6 @@ export default function About() {
         ]}
       />
 
-      <div className="container" style={{ marginTop: '1.75rem' }}>
-        <p className="topic-lead">5G-MAG is a neutral platform bridging standards and real-world deployments: keeping connected media applications open, interoperable and deployable at scale.</p>
-      </div>
-
       <main>
         <section className={styles.section}>
           <div className="container">
@@ -59,6 +55,19 @@ export default function About() {
             <p className={styles.sectionSubtitle}>
               &ldquo;We are not a standards body. We do not write specs. We translate them into
               things that run.&rdquo;
+            </p>
+            <p style={{ maxWidth: '760px', margin: '0 auto 1rem', lineHeight: 1.7, textAlign: 'center' }}>
+              5G-MAG is a neutral platform bridging standards and real-world deployments: keeping
+              connected media applications open, interoperable and deployable at scale.
+            </p>
+            <p style={{ maxWidth: '760px', margin: '0 auto 1.5rem', lineHeight: 1.7, textAlign: 'center' }}>
+              We turn specifications into explainers, blueprints and profiles the industry can
+              actually use. We channel deployment experience back to standards development
+              organizations. We build the open-source reference tools that turn a specification
+              into working code, and prove interoperability and added value through plugfests and
+              demos — so the result is tangible before onboarding into real products, while
+              de-risking real-world deployments. Technology, backed by open standards, ready to
+              scale across the industry.
             </p>
 
             <div style={{ margin: '0 0 2rem' }}>
