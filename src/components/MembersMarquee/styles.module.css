@@ -15,7 +15,7 @@
   align-items: center;
   gap: 1.5rem;
   width: max-content;
-  animation: scroll 85s linear infinite;
+  animation: scroll 160s linear infinite;
 }
 
 .track:hover {
