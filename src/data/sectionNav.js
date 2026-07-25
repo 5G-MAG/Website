@@ -110,15 +110,15 @@ export const SECTION_NAV = [
     ],
   },
   {
-    prefixes: ['/demos'],
+    prefixes: ['/testing'],
     title: 'Interop & Demos',
-    titleHref: '/demos',
+    titleHref: '/testing',
     // Demos is the activity layer (plugfests, demos, trials) — it does not
     // own or gatekeep Testbeds or Reference Tools, so beyond its own
     // plugfest write-ups it has no sub-items pointing back at those.
     items: [
-      { label: '5G Broadcast PlugFest 2026', href: '/demos/5g-broadcast-plugfest' },
-      { label: 'In Action', href: '/demos#demonstrators' },
+      { label: '5G Broadcast PlugFest 2026', href: '/testing/5g-broadcast-plugfest' },
+      { label: 'In Action', href: '/testing#demonstrators' },
     ],
   },
   {

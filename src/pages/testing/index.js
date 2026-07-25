@@ -87,7 +87,7 @@ const EVENT_TYPES = [
       <>
         Multi-vendor events where 5G-MAG reference code is tested side by side with other
         implementations — like the{' '}
-        <Link to="/demos/5g-broadcast-plugfest">5G Broadcast PlugFest 2026</Link>, hosted by
+        <Link to="/testing/5g-broadcast-plugfest">5G Broadcast PlugFest 2026</Link>, hosted by
         Fraunhofer FOKUS in Berlin, pictured above.
       </>
     ),
@@ -226,7 +226,7 @@ export default function Testing() {
                   loading="lazy"
                 />
                 <p className={styles.photoCaption}>
-                  <Link to="/demos/5g-broadcast-plugfest">5G Broadcast Plugfest 2026</Link> —
+                  <Link to="/testing/5g-broadcast-plugfest">5G Broadcast Plugfest 2026</Link> —
                   hosted by Fraunhofer FOKUS, Berlin.
                 </p>
               </figure>

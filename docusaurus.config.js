@@ -345,9 +345,11 @@ const config = {
             ['/tech/volumetric/beyond-2d', '/tech/volumetric/beyond2d'],
             ['/applications', '/developer/applications'],
             ['/testbeds', '/developer/testbeds'],
-            // Interop & Demos (2026-07-24): renamed from "Interop & Testing",
-            // served at /demos instead of /testing.
-            ['/demos', '/testing'],
+            // Interop & Demos: path reverted from /demos back to /testing
+            // (2026-07-25) -- the visible "Interop & Demos" label is unchanged,
+            // only the URL moved back. See the 2026-07-24 note this replaces:
+            // that earlier move went /testing -> /demos.
+            ['/testing', '/demos'],
             ['/contact', '/about/contact'],
             ['/partnerships', '/about/partnerships'],
             ['/structure', '/about/structure'],
@@ -504,7 +506,7 @@ const config = {
         },
         {
           title: 'Interop & Demos',
-          items: [{ label: 'Overview', to: '/demos' }],
+          items: [{ label: 'Overview', to: '/testing' }],
         },
         {
           title: 'Follow Us',

@@ -43,7 +43,7 @@ export const DEV_ITEM = {
 };
 
 export const INTEROP_ITEM = {
-  to: '/demos',
+  to: '/testing',
   label: 'Interop & Demos',
   position: 'left',
   className: styles.primaryNavItem,
