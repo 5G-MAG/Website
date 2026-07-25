@@ -1,0 +1,119 @@
+---
+id: media-energy-consumption-workshop
+slug: /workshops/media-energy-consumption
+title: 'Workshop: Media Energy Consumption Measurement and Exposure'
+hide_title: true
+description: Workshop co-organized by 3GPP SA4, Greening of Streaming and 5G-MAG on energy measurement, reporting and optimization in media streaming architectures, 19 March 2026.
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M8 19h-3a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v11a1 1 0 0 1 -1 1" />
+  <path d="M11 17a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v1a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -1" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Events</span>
+<h1>Workshop: Media Energy Consumption</h1>
+</div>
+</div>
+
+<div class="topic-lead">
+Measurement and Exposure — co-organized between 3GPP SA4, Greening of Streaming and 5G-MAG, exploring the practical integration of energy measurement, reporting and optimization within media streaming architectures, with a focus on 5G and upcoming 6G systems.
+</div>
+
+| | |
+| --- | --- |
+| **Date** | 19 March 2026, 15:00–17:00 CET |
+| **Location** | Online via Zoom |
+
+## Agenda
+
+- **Presentation and Logistics** — Thomas Stockhammer (Qualcomm) and Jordi J. Giménez (5G-MAG)
+- **The 3GPP Work Item [&ldquo;Study on Media Energy Consumption Exposure and Evaluation Framework phase 2&rdquo;](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1080050) (WI #1080050)** — Julien Lemotheux (Orange) &middot; [slides](https://drive.google.com/file/d/1VsrWLUUvv61KLCYuETZmf8p2ZbNc4hFZ/view?usp=drive_link)
+- **Greening of Streaming's work and perspective** — Benjamin Schwarz (Greening of Streaming) &middot; [slides](https://drive.google.com/file/d/1MyvG-8jl7scIuz7_F1yKx9IlH4KU4_65/view?usp=drive_link)
+- **State of energy awareness in today's network management protocols and devices** — Marisol Palmero (Greening of Streaming) &middot; [slides](https://drive.google.com/file/d/1MyvG-8jl7scIuz7_F1yKx9IlH4KU4_65/view?usp=drive_link)
+- **Practical Insights from the SMART-CD Project** — Lucas Gregory (ATEME) &middot; [slides](https://drive.google.com/file/d/1DbjVXmmxk14Gc7ExbHpwDxVq_b9K0qLl/view?usp=drive_link)
+- **Practical Insights** — Christian Timmerer (Alpen-Adria-Universität Klagenfurt) &middot; [slides](https://drive.google.com/file/d/1jkDdUQ2YNlRJOC9dwJ_uZ3oL-j8koHU9/view?usp=drive_link)
+- **Results from the Green Streaming projects** — Martin Lasak (Fraunhofer FOKUS) &middot; [slides](https://drive.google.com/file/d/1A_gPbdhZVUMyGxKiYqlyLQWCSqj9pbxX/view?usp=sharing)
+- **5G-MAG Reference Tools overview** — Daniel Silhavy (Fraunhofer FOKUS, 5G-MAG WG DEV Chair) &middot; [slides](https://drive.google.com/file/d/1tZJO6AXYbhOJaT2EMaEtt4TA0QIjD6J_/view?usp=drive_link)
+- **Open Discussion and Q&amp;A** (30 mins) — moderated by Thomas Stockhammer and Jordi J. Giménez
+
+:::note[AI-generated summary]
+The speaker summaries below are an AI-generated summary of the event. Please refer to the slides above, and let us know if there is anything incorrect by e-mailing [gimenez@5g-mag.com](mailto:gimenez@5g-mag.com).
+:::
+
+## Summary Per Speaker
+
+### Thomas Stockhammer (Qualcomm)
+
+Opens the workshop by framing the session as a joint effort between 3GPP, 5G-MAG and Greening of Streaming, emphasizing that energy consumption in media delivery has become &ldquo;an important topic&hellip; a design vector for 6G.&rdquo; He explains that 3GPP is actively studying media-related energy consumption and is seeking real-world measurements from industry and research partners.
+
+### Julien Lemotheux (Orange, 3GPP SA4 Rapporteur)
+
+Provided the operator perspective, explaining Orange's commitment to achieving net-zero carbon by 2040 and the challenges that come with it. He notes that while fixed networks have become more efficient — &ldquo;it was a good thing to switch from ADSL to fiber&rdquo; — mobile network energy consumption continues to rise despite optimization efforts. A central issue, he argues, is the lack of granular, shareable energy data across devices, networks and services.
+
+### Benjamin Schwarz (Greening of Streaming)
+
+Describes Greening of Streaming's mission as an evidence-driven effort to reduce energy consumption in video delivery, stressing that &ldquo;we only work on things that we can actually measure in watts.&rdquo; He shares findings from the flagship REM (Remote Energy Measurement) project: home gateways typically consume around 10 watts continuously regardless of traffic; peer-to-peer delivery adds only 0.1&ndash;0.2 watts per peer; enabling eco-mode on TVs can reduce consumption by roughly 20%; and content brightness has a far greater impact on device energy use than codec or resolution choices.
+
+### Marisol Palmero (Greening of Streaming)
+
+Focuses on the standards landscape, arguing that today's energy-related metrics are fragmented across encoding, CDN, network and device domains — &ldquo;there is no standard that will give you the measurement&hellip; in an end-to-end use case.&rdquo; She describes ongoing work in the IETF GREEN working group on a YANG-based data model for device-level energy metrics, about 70% complete, and previews a video-streaming-focused hackathon at the next IETF meeting in Vienna.
+
+### Lucas Gregory (ATEME)
+
+Presents the SmartCD project, a French collaborative effort led by ATEME to measure and reduce the environmental impact of end-to-end streaming workflows. Cloud-based measurement is particularly challenging since providers rarely expose real energy data, so the project relies on resource-usage metrics (CPU, memory, network traffic, storage activity) combined with energy models.
+
+### Christian Timmerer (University of Klagenfurt)
+
+Shares academic research on energy-aware encoding, bitrate ladder design and adaptive bitrate (ABR) algorithms. His work shows that slower encoder presets significantly increase energy consumption with diminishing quality returns, and that small quality reductions can yield substantial energy savings. He presents an energy-optimized ABR algorithm (eVISH) and notes that commercial adoption remains limited since customers rarely prioritize or pay for energy-saving features.
+
+### Martin Lasak (Fraunhofer FOKUS)
+
+Describes Fraunhofer's measurement framework, combining power meters with detailed streaming analytics. A striking finding: TV eco-mode has a dominant impact on energy consumption, yet many devices in real-world tests were not using it. Fraunhofer is exploring LLM-based user guidance to help viewers reduce energy consumption.
+
+### Daniel Silhavy (Fraunhofer FOKUS, 5G-MAG WG DEV Chair)
+
+Presents the 5G-MAG Reference Tools as an open-source environment for experimenting with media delivery, QoE metrics and client-side data collection — &ldquo;the reference tools can really be a starting point if you want to try something out&rdquo; — positioning them as a potential foundation for prototyping the Energy Information Application Function proposed earlier in the workshop.
+
+## Relevant References
+
+**The 3GPP Study**
+
+- [3GPP SA4 Study document (SP-250636)](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGS_108_Prague_2025-06/Docs/SP-250636.zip)
+- [Outcomes captured in TR 26.942](https://www.3gpp.org/dynareport/26942.htm)
+
+**IETF GREEN Framework**
+
+- [Reference Model draft](https://datatracker.ietf.org/doc/draft-ietf-green-framework/)
+
+**SMART-CD Project — Open-Source Tools**
+
+- [SmartWatts (PowerAPI)](https://powerapi.org/reference/formulas/smartwatts/#parameters)
+- [Cloud Carbon Footprint](https://www.cloudcarbonfootprint.org/)
+- [Boavizta cloud scanner](https://boavizta.github.io/cloud-scanner/)
+
+**Metrics &amp; Tools**
+
+- [SITI calculation tools (VQEG)](https://github.com/VQEG/siti-tools)
+- [VCA: Video Complexity Analyzer](https://vca.itec.aau.at/)
+- [EVCA: Enhanced Video Complexity Analyzer](https://athena.itec.aau.at/2024/03/evca-enhanced-video-complexity-analyzer/)
+- [VQM4HAS: real-time quality metric for HEVC in HTTP Adaptive Streaming](https://athena.itec.aau.at/2025/03/ieee-tmm-vqm4has-a-real-time-quality-metric-for-hevc-videos-in-http-adaptive-streaming/)
+- [VEEP: Video Encoding Energy and CO2 Emission Prediction](https://athena.itec.aau.at/2024/03/veep/)
+- [Machine Learning-Based Decoding Energy Modeling for VVC Streaming](https://doi.org/10.1109/ICIP55913.2025.11084324)
+- [Receptive: QoE- and Energy-aware content consumption for HAS](https://netlibrary.aau.at/obvuklhs/content/titleinfo/12476033)
+- [GREEM: an open-source energy measurement tool for video processing](https://athena.itec.aau.at/2024/03/greem/) &middot; [GitHub](https://github.com/cd-athena/GREEM)
+
+**Datasets**
+
+- [MVCD: Multi-Dimensional Video Compression Dataset](https://athena.itec.aau.at/2024/10/mvcd-multi-dimensional-video-compression-dataset/) &middot; [GitHub](https://github.com/cd-athena/MVCD)
+- [COCONUT: Content Consumption Energy Measurement Dataset](https://athena.itec.aau.at/2024/03/coconut-content-consumption-energy-measurement-dataset-for-adaptive-video-streaming/) &middot; [GitHub](https://github.com/cd-athena/COCONUT)
+- [VEED: Video Encoding Energy and CO2 Emissions Dataset for AWS EC2](https://athena.itec.aau.at/2024/03/veed-video-encoding-energy-and-co2-emissions-dataset-for-aws-ec2-instances/) &middot; [GitHub](https://github.com/cd-athena/VEED-dataset)
+
+**Related**
+
+- [5G-MAG Reference Tools](https://developer.5g-mag.com/)
+- [Greening of Streaming publications](https://www.greeningofstreaming.org/publications)

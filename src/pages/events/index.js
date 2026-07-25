@@ -113,6 +113,9 @@ export default function Events() {
                 </Link>
               ))}
             </div>
+            <p style={{ textAlign: 'center', marginTop: '1.5rem' }}>
+              <Link to="/workshops#workshop--session-archive">Browse the full workshop &amp; session archive &rarr;</Link>
+            </p>
           </div>
         </section>
 
