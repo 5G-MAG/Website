@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-24 01:17 UTC",
+  "updated_at": "2026-07-25 01:19 UTC",
   "projects": [
     {
       "name": "5G Media Streaming",
@@ -29,32 +29,6 @@
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-07-03",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-5gms-application-function",
-          "branch": null,
-          "number": 199,
-          "title": "Add error handling for missing policy template ID",
-          "url": "https://github.com/5G-MAG/rt-5gms-application-function/pull/199",
-          "draft": false,
-          "author_login": "ErikGaida",
-          "author_avatar": "https://avatars.githubusercontent.com/u/144566652?v=4",
-          "created_at": "2026-06-23",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-5gms-application-function",
-          "branch": null,
-          "number": 198,
-          "title": "fix: prevent AF crash when requestedQoS is missing",
-          "url": "https://github.com/5G-MAG/rt-5gms-application-function/pull/198",
-          "draft": false,
-          "author_login": "ErikGaida",
-          "author_avatar": "https://avatars.githubusercontent.com/u/144566652?v=4",
-          "created_at": "2026-06-12",
           "last_comment_by": null,
           "last_comment_date": null
         },
@@ -123,7 +97,7 @@
           "number": 57,
           "title": "Feature/#50",
           "url": "https://github.com/5G-MAG/rt-libflute/pull/57",
-          "draft": true,
+          "draft": false,
           "author_login": "dsilhavy",
           "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4",
           "created_at": "2026-03-27",
@@ -325,7 +299,7 @@
           "number": 57,
           "title": "Feature/#50",
           "url": "https://github.com/5G-MAG/rt-libflute/pull/57",
-          "draft": true,
+          "draft": false,
           "author_login": "dsilhavy",
           "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4",
           "created_at": "2026-03-27",
@@ -595,7 +569,7 @@
           "number": 41,
           "title": "Demonstrate usage of bodyAnimation for head transform",
           "url": "https://github.com/5G-MAG/rt-avatar-call/pull/41",
-          "draft": false,
+          "draft": true,
           "author_login": "nlsdvl",
           "author_avatar": "https://avatars.githubusercontent.com/u/2748737?v=4",
           "created_at": "2026-07-03",
@@ -701,7 +675,7 @@
           "number": 57,
           "title": "Feature/#50",
           "url": "https://github.com/5G-MAG/rt-libflute/pull/57",
-          "draft": true,
+          "draft": false,
           "author_login": "dsilhavy",
           "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4",
           "created_at": "2026-03-27",
@@ -737,6 +711,26 @@
       ]
     },
     {
+      "name": "3GPP RAN and Core Platforms",
+      "doc_url": "/reference-tools/3gpp-platforms/",
+      "tagline": "Lab-ready 5G RAN and Core built on Open5GS and srsRAN forks",
+      "pulls": [
+        {
+          "repo": "srsRAN_4G",
+          "branch": null,
+          "number": 4,
+          "title": "Fembms update for rt-mbms-modem release 16",
+          "url": "https://github.com/5G-MAG/srsRAN_4G/pull/4",
+          "draft": false,
+          "author_login": "jsroldan",
+          "author_avatar": "https://avatars.githubusercontent.com/u/93767149?v=4",
+          "created_at": "2026-07-02",
+          "last_comment_by": null,
+          "last_comment_date": null
+        }
+      ]
+    },
+    {
       "name": "Dependency",
       "doc_url": null,
       "tagline": "External forks and dependencies 5G-MAG maintains for its reference tools — not first-class reference-tool projects with their own docs page",
@@ -750,19 +744,6 @@
           "draft": false,
           "author_login": "shilinding",
           "author_avatar": "https://avatars.githubusercontent.com/u/115362942?v=4",
-          "created_at": "2026-07-02",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "srsRAN_4G",
-          "branch": null,
-          "number": 4,
-          "title": "Fembms update for rt-mbms-modem release 16",
-          "url": "https://github.com/5G-MAG/srsRAN_4G/pull/4",
-          "draft": false,
-          "author_login": "jsroldan",
-          "author_avatar": "https://avatars.githubusercontent.com/u/93767149?v=4",
           "created_at": "2026-07-02",
           "last_comment_by": null,
           "last_comment_date": null
