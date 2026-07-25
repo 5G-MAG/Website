@@ -5,6 +5,7 @@ description: Future Media Townhall — one of the most attended conferences at I
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import PhotoGallery from '@site/src/components/PhotoGallery';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -167,20 +168,22 @@ At the end of the event, attendees joined the 5G-MAG Meet, Greet (&amp; Eat) at 
 
 ### Gallery
 
-<div class="event-photo-grid">
-  <img loading="lazy" src={useBaseUrl('/assets/images/fmt/gallery/photo-01.png')} alt="Future Media Townhall 2025 session" />
-  <img loading="lazy" src={useBaseUrl('/assets/images/fmt/gallery/photo-02.jpg')} alt="Future Media Townhall 2025 session" />
-  <img loading="lazy" src={useBaseUrl('/assets/images/fmt/gallery/photo-03.jpg')} alt="Future Media Townhall 2025 session" />
-  <img loading="lazy" src={useBaseUrl('/assets/images/fmt/gallery/photo-04.jpg')} alt="Future Media Townhall 2025 session" />
-  <img loading="lazy" src={useBaseUrl('/assets/images/fmt/gallery/photo-05.jpg')} alt="Future Media Townhall 2025 session" />
-  <img loading="lazy" src={useBaseUrl('/assets/images/fmt/gallery/photo-06.jpg')} alt="Future Media Townhall 2025 session" />
-  <img loading="lazy" src={useBaseUrl('/assets/images/fmt/gallery/photo-07.jpg')} alt="Future Media Townhall 2025 session" />
-  <img loading="lazy" src={useBaseUrl('/assets/images/fmt/gallery/photo-08.jpg')} alt="Future Media Townhall 2025 session" />
-  <img loading="lazy" src={useBaseUrl('/assets/images/fmt/gallery/photo-09.jpg')} alt="Future Media Townhall 2025 session" />
-  <img loading="lazy" src={useBaseUrl('/assets/images/fmt/gallery/photo-10.jpg')} alt="Future Media Townhall 2025 session" />
-  <img loading="lazy" src={useBaseUrl('/assets/images/fmt/gallery/photo-11.jpg')} alt="Future Media Townhall 2025 session" />
-  <img loading="lazy" src={useBaseUrl('/assets/images/fmt/gallery/photo-12.jpg')} alt="Future Media Townhall 2025 session" />
-</div>
+Click any photo to zoom in.
+
+<PhotoGallery photos={[
+  { src: useBaseUrl('/assets/images/fmt/gallery/photo-01.png'), alt: 'Future Media Townhall 2025 session' },
+  { src: useBaseUrl('/assets/images/fmt/gallery/photo-02.jpg'), alt: 'Future Media Townhall 2025 session' },
+  { src: useBaseUrl('/assets/images/fmt/gallery/photo-03.jpg'), alt: 'Future Media Townhall 2025 session' },
+  { src: useBaseUrl('/assets/images/fmt/gallery/photo-04.jpg'), alt: 'Future Media Townhall 2025 session' },
+  { src: useBaseUrl('/assets/images/fmt/gallery/photo-05.jpg'), alt: 'Future Media Townhall 2025 session' },
+  { src: useBaseUrl('/assets/images/fmt/gallery/photo-06.jpg'), alt: 'Future Media Townhall 2025 session' },
+  { src: useBaseUrl('/assets/images/fmt/gallery/photo-07.jpg'), alt: 'Future Media Townhall 2025 session' },
+  { src: useBaseUrl('/assets/images/fmt/gallery/photo-08.jpg'), alt: 'Future Media Townhall 2025 session' },
+  { src: useBaseUrl('/assets/images/fmt/gallery/photo-09.jpg'), alt: 'Future Media Townhall 2025 session' },
+  { src: useBaseUrl('/assets/images/fmt/gallery/photo-10.jpg'), alt: 'Future Media Townhall 2025 session' },
+  { src: useBaseUrl('/assets/images/fmt/gallery/photo-11.jpg'), alt: 'Future Media Townhall 2025 session' },
+  { src: useBaseUrl('/assets/images/fmt/gallery/photo-12.jpg'), alt: 'Future Media Townhall 2025 session' },
+]} />
 
 </div>
 

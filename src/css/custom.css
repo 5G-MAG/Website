@@ -577,21 +577,6 @@
   font-size: 0.95rem;
 }
 
-/* A simple square photo gallery for event recap pages. */
-.event-photo-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 0.75rem;
-  margin: 1.5rem 0;
-}
-.event-photo-grid img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
 /* A strong, unmistakable "which year is this" marker for event recap
    pages that cover both an upcoming and a past edition on one page. */
 .year-eyebrow {
