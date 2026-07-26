@@ -154,10 +154,19 @@ export default function HeroSlideshow() {
   const logoUrl = useBaseUrl('/img/5g-mag-logo-white.png');
   const releaseSlides = sortByLatestRelease(releasesData.projects)
     .slice(0, 3)
-    .map((p) => ({ type: 'release', ...p }));
+    .map((p) => ({ type: 'release', ...p, sortDate: p.latest_date }));
   // news.json is already sorted newest-first by scripts/build-news-data.js.
-  const newsSlides = (newsData.posts || []).slice(0, 3).map((p) => ({ type: 'news', ...p }));
-  const slides = [HOME_SLIDE, ...releaseSlides, ...newsSlides];
+  const newsSlides = (newsData.posts || [])
+    .slice(0, 3)
+    .map((p) => ({ type: 'news', ...p, sortDate: p.date }));
+  // Releases and news are each picked as "top 3 of their own type" above, then
+  // interleaved by date here -- so a news post more recent than a release
+  // (or vice versa) rotates in before it, rather than always showing every
+  // release before every news post regardless of actual recency.
+  const contentSlides = [...releaseSlides, ...newsSlides].sort((a, b) =>
+    (b.sortDate || '').localeCompare(a.sortDate || '')
+  );
+  const slides = [HOME_SLIDE, ...contentSlides];
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
 
@@ -248,48 +257,41 @@ export default function HeroSlideshow() {
         ) : slide.type === 'news' ? (
           <div className={styles.slideOverlayCards}>
             <div className="container">
-              <div className={styles.slideCard}>
-                <div className={styles.slideCardHeader}>
-                  <p className={styles.slideEyebrow}>
-                    <span className={styles.slideEyebrowPill}>
-                      <span className={styles.slideEyebrowPillDot} />
-                      News
-                    </span>
-                    {slide.tags && slide.tags[0] && (
-                      <span className={styles.slideEyebrowGroupPill}>{slide.tags[0]}</span>
-                    )}
-                  </p>
-                  <h2
-                    className={styles.slideCardTitle}
-                    style={{ whiteSpace: 'normal', fontSize: '1.6rem', lineHeight: 1.3 }}
-                  >
-                    {slide.title}
-                  </h2>
-                </div>
-                <div className={styles.slideCardBody} style={slide.image ? {} : { display: 'block' }}>
-                  {slide.image && (
-                    <img
-                      src={slideImageUrl}
-                      alt=""
-                      style={{
-                        width: '220px',
-                        height: '150px',
-                        objectFit: 'cover',
-                        borderRadius: '8px',
-                        marginRight: '1.5rem',
-                        flexShrink: 0,
-                      }}
-                    />
-                  )}
-                  <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.95rem', lineHeight: 1.6, margin: 0 }}>
-                    {slide.excerpt}
-                  </p>
-                </div>
-                <div className={styles.slideCardFooter}>
-                  <Link className="button button--primary" to={`/news/${slide.slug}`}>
-                    Read More
-                  </Link>
-                  <span className={styles.slideAge}>{formatAge(daysSince(slide.date))}</span>
+              <div className={styles.slideMediaRow}>
+                {slide.image && (
+                  <div className={styles.slideImageCard}>
+                    <img src={slideImageUrl} alt="" />
+                  </div>
+                )}
+                <div className={clsx(styles.slideCard, slide.image && styles.slideCardInRow)}>
+                  <div className={styles.slideCardHeader}>
+                    <p className={styles.slideEyebrow}>
+                      <span className={styles.slideEyebrowPill}>
+                        <span className={styles.slideEyebrowPillDot} />
+                        News
+                      </span>
+                      {slide.tags && slide.tags[0] && (
+                        <span className={styles.slideEyebrowGroupPill}>{slide.tags[0]}</span>
+                      )}
+                    </p>
+                    <h2
+                      className={styles.slideCardTitle}
+                      style={{ whiteSpace: 'normal', fontSize: '1.6rem', lineHeight: 1.3 }}
+                    >
+                      {slide.title}
+                    </h2>
+                  </div>
+                  <div className={styles.slideCardBody} style={{ display: 'block' }}>
+                    <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.95rem', lineHeight: 1.6, margin: 0 }}>
+                      {slide.excerpt}
+                    </p>
+                  </div>
+                  <div className={styles.slideCardFooter}>
+                    <Link className="button button--primary" to={`/news/${slide.slug}`}>
+                      Read More
+                    </Link>
+                    <span className={styles.slideAge}>{formatAge(daysSince(slide.date))}</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -297,100 +299,79 @@ export default function HeroSlideshow() {
         ) : (
           <div className={styles.slideOverlayCards}>
             <div className="container">
-              <div className={styles.slideCard}>
-                <div className={styles.slideCardHeader}>
-                  <p className={styles.slideEyebrow}>
-                    <span className={styles.slideEyebrowPill}>
-                      <span className={styles.slideEyebrowPillDot} />
-                      {isRC(slide.releases[0]) ? 'Release Candidate' : 'New Release'}
-                    </span>
-                    {PROJECT_TYPE_MAP[slide.name] && (
-                      <span className={styles.slideEyebrowGroupPill}>
-                        {PROJECT_TYPE_MAP[slide.name]}
-                      </span>
-                    )}
-                  </p>
-                  <div className={styles.slideCardHeaderMain}>
-                    <ProjectIcon name={slide.name} className={styles.slideCardHeaderIcon} />
-                    <h2 className={styles.slideCardTitle}>
-                      <span className={styles.slideCardTitlePrefix}>New Releases for </span>
-                      {slide.name}
-                    </h2>
-                  </div>
-                </div>
-                <div className={styles.slideCardBody}>
-                  <div className={styles.slideCardReleasesCol}>
-                    <ul className={styles.slideReleases}>
-                      {slide.releases
-                        .sort((a, b) => b.date.localeCompare(a.date))
-                        .slice(0, 6)
-                        .map((r) => (
-                          <li key={r.repo} className={styles.slideReleaseItem}>
-                            <a
-                              href={r.url}
-                              className={styles.slideReleaseLink}
-                              target="_blank"
-                              rel="noreferrer"
-                            >
-                              {r.repo}
-                            </a>
-                            <div className={styles.slideReleaseMeta}>
-                              <span className={clsx(styles.slideTag, isRC(r) && styles.slideTagRc)}>
-                                {r.tag}
-                              </span>
-                              <span className={styles.slideAge}>
-                                {formatAge(daysSince(r.date))}
-                              </span>
-                            </div>
-                          </li>
-                        ))}
-                    </ul>
-                  </div>
-                  <div className={styles.slideCardContributorsCol}>
-                    <p className={styles.slideContributorsLabel}>
-                      Congratulations to the contributors
-                    </p>
-                    <div className={styles.slideProjectPanelAvatarRow}>
-                      {slide.releases
-                        .filter((r) => r.author_login)
-                        .reduce((acc, r) => {
-                          if (!acc.find((a) => a.login === r.author_login)) {
-                            acc.push({ login: r.author_login, avatar: r.author_avatar });
-                          }
-                          return acc;
-                        }, [])
-                        .map((a) => (
-                          <a
-                            key={a.login}
-                            href={`https://github.com/${a.login}`}
-                            className={styles.slideProjectPanelAvatar}
-                            target="_blank"
-                            rel="noreferrer"
-                            title={a.login}
-                          >
-                            <img src={a.avatar} alt={a.login} />
-                            <span className={styles.slideProjectPanelAvatarName}>{a.login}</span>
-                          </a>
-                        ))}
-                    </div>
-                  </div>
-                </div>
-                {slide.doc_url && (
-                  <div className={styles.slideCardFooter}>
-                    <Link className="button button--primary" to={slide.doc_url}>
-                      Documentation
-                    </Link>
-                    <Link
-                      className={clsx(
-                        'button button--outline button--primary',
-                        styles.slideBtnOutline
-                      )}
-                      to={`${slide.doc_url}${slide.releases_slug || 'resources'}`}
-                    >
-                      Releases
-                    </Link>
+              <div className={styles.slideMediaRow}>
+                {slide.image && (
+                  <div className={styles.slideImageCard}>
+                    <img src={slideImageUrl} alt="" />
                   </div>
                 )}
+                <div className={clsx(styles.slideCard, slide.image && styles.slideCardInRow)}>
+                  <div className={styles.slideCardHeader}>
+                    <p className={styles.slideEyebrow}>
+                      <span className={styles.slideEyebrowPill}>
+                        <span className={styles.slideEyebrowPillDot} />
+                        {isRC(slide.releases[0]) ? 'Release Candidate' : 'New Release'}
+                      </span>
+                      {PROJECT_TYPE_MAP[slide.name] && (
+                        <span className={styles.slideEyebrowGroupPill}>
+                          {PROJECT_TYPE_MAP[slide.name]}
+                        </span>
+                      )}
+                    </p>
+                    <div className={styles.slideCardHeaderMain}>
+                      <ProjectIcon name={slide.name} className={styles.slideCardHeaderIcon} />
+                      <h2 className={styles.slideCardTitle}>
+                        <span className={styles.slideCardTitlePrefix}>New Releases for </span>
+                        {slide.name}
+                      </h2>
+                    </div>
+                  </div>
+                  <div className={styles.slideCardBody}>
+                    <div className={styles.slideCardReleasesColFull}>
+                      <ul className={styles.slideReleases}>
+                        {slide.releases
+                          .sort((a, b) => b.date.localeCompare(a.date))
+                          .slice(0, 6)
+                          .map((r) => (
+                            <li key={r.repo} className={styles.slideReleaseItem}>
+                              <a
+                                href={r.url}
+                                className={styles.slideReleaseLink}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                {r.repo}
+                              </a>
+                              <div className={styles.slideReleaseMeta}>
+                                <span className={clsx(styles.slideTag, isRC(r) && styles.slideTagRc)}>
+                                  {r.tag}
+                                </span>
+                                <span className={styles.slideAge}>
+                                  {formatAge(daysSince(r.date))}
+                                </span>
+                              </div>
+                            </li>
+                          ))}
+                      </ul>
+                    </div>
+                  </div>
+                  {slide.doc_url && (
+                    <div className={styles.slideCardFooter}>
+                      <Link className="button button--primary" to={slide.doc_url}>
+                        Documentation
+                      </Link>
+                      <Link
+                        className={clsx(
+                          'button button--outline button--primary',
+                          styles.slideBtnOutline
+                        )}
+                        to={`${slide.doc_url}${slide.releases_slug || 'resources'}`}
+                      >
+                        Releases
+                      </Link>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
