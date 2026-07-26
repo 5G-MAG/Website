@@ -1,13 +1,49 @@
 {
-  "updated_at": "2026-07-26T14:36:55.167Z",
+  "updated_at": "2026-07-26T21:16:48.095Z",
   "posts": [
     {
-      "title": "Welcome to 5G-MAG News",
-      "date": "2026-07-23",
-      "slug": "welcome",
+      "title": "5G-MAG at MPEG/ITU Workshop: driving open-source development for faster technology deployment",
+      "date": "2026-07-17",
+      "slug": "mpeg-itu-workshop-2026",
+      "tags": [
+        "Announcement"
+      ],
+      "image": "/assets/images/news/mpeg-itu-workshop-2026.jpg",
+      "excerpt": "The ITU-T SG21 and ISO/IEC JTC 1/SC 29 (MPEG) joint workshop on \"Media Streaming Services – What's next,\" held in Geneva, brought together industry leaders to discuss the future of media streaming and the challenges of technology deployment. 5G-MAG took part to make the case for a closer relationship between standards development and open-source software, to help shorten the path from written specification to real-world market adoption."
+    },
+    {
+      "title": "First 5G Broadcast PlugFest by 5G-MAG brings developers together in Berlin",
+      "date": "2026-06-17",
+      "slug": "plugfest-berlin-2026",
+      "tags": [
+        "Announcement"
+      ],
+      "image": "/assets/images/news/plugfest-berlin-2026.jpg",
+      "excerpt": "The first 5G Broadcast PlugFest organized by 5G-MAG took place from 9 to 11 June 2026 at Fraunhofer FOKUS in Berlin, bringing together infrastructure vendors, technology providers, software developers and operators to test the interoperability of 5G Broadcast equipment."
+    },
+    {
+      "title": "phine.tech - New 5G-MAG member",
+      "date": "2026-05-07",
+      "slug": "phine-tech-member",
       "tags": [],
-      "image": null,
-      "excerpt": "This is the new home for updates from 5G-MAG — project milestones, technical deep dives, and community news."
+      "image": "/assets/images/news/phine-tech-member.png",
+      "excerpt": "The 5G-MAG Steering Group has approved phine.tech as a new member of the association."
+    },
+    {
+      "title": "Nokia - New official contributor to the 5G-MAG Reference Tools",
+      "date": "2026-04-23",
+      "slug": "nokia-reference-tools-contributor",
+      "tags": [],
+      "image": "/assets/images/news/nokia-contributor.png",
+      "excerpt": "Nokia has joined the 5G-MAG Reference Tools developer community as an official contributor."
+    },
+    {
+      "title": "5G-MAG elects Dolby's Frédéric Gabin as new Chair",
+      "date": "2026-03-31",
+      "slug": "dolby-frederic-gabin-chair",
+      "tags": [],
+      "image": "/assets/images/news/dolby-frederic-gabin-chair.png",
+      "excerpt": "5G-MAG has elected Frédéric Gabin, Director of Mobile Technology & Standards at Dolby Laboratories, to chair its Steering Group, succeeding founding chair Antonio Arcidiacono (EBU), who is retiring after leading the association since its inception in 2019."
     },
     {
       "title": "5G-MAG Elects New WG Chairs to Drive Standards and Software for Connected Media",
@@ -16,6 +52,14 @@
       "tags": [],
       "image": "/assets/images/news/new-wg-chairs-2025.png",
       "excerpt": "5G-MAG -- The Media Connectivity Association -- is pleased to announce the election of new chairs for its Working Groups, reinforcing its commitment to advancing media and connectivity technologies through open standards and collaborative development."
+    },
+    {
+      "title": "5G-MAG announces Steering Group leaders for the 2025-2027 term",
+      "date": "2025-11-17",
+      "slug": "steering-group-leaders-2025-2027",
+      "tags": [],
+      "image": "/assets/images/news/steering-group-2025-2027.png",
+      "excerpt": "The 5G-MAG General Assembly has elected its new Steering Group to lead the association's activities over the next two years."
     }
   ]
 }
