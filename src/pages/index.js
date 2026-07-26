@@ -1,6 +1,6 @@
+import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HeroSlideshow from '@site/src/components/HeroSlideshow';
@@ -10,42 +10,49 @@ import MembersMarquee from '@site/src/components/MembersMarquee';
 import GodeeperCard, { icon } from '@site/src/components/GodeeperCard';
 import VideoGrid from '@site/src/components/VideoGrid';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
-import PhotoGallery from '@site/src/components/PhotoGallery';
 import ReleaseCard from '@site/src/components/ReleaseCard';
 import { SCOPE_TAGS } from '@site/src/data/scopeTags';
 import { SCOPE_PILLARS } from '@site/src/data/scopePillars';
 import { DISCOVER_WORK } from '@site/src/data/discoverWork';
 import { chunk } from '@site/src/utils/chunk';
+import { sampleRandom } from '@site/src/utils/random';
 import styles from './index.module.css';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 import releasesData from '@site/static/data/releases.json';
 
-// A handful of the most recent Developer Exchange sessions -- the full
-// gallery lives at /developer/exchanges. Plays inline (VideoGrid/VideoCard's
-// "tally light" treatment, the same one used on the full video galleries)
-// rather than linking through to each source page, for more visual weight on
-// the homepage; "Browse the full library" below still covers cross-linking.
-const DEVELOPER_EXCHANGES_FEATURED = (youtubePlaylists.developer?.videos || []).slice(0, 6);
+const VIDEO_COUNT = 5;
+
+// A handful of the most recent Developer Exchange sessions -- shown until
+// the client-side effect below swaps in a random sample, and also the
+// server-rendered/first-paint set (so hydration has something stable to
+// match before Math.random() is allowed to run).
+const INITIAL_VIDEOS = (youtubePlaylists.developer?.videos || []).slice(0, VIDEO_COUNT);
+
+// Every video across the entire 5G-MAG YouTube channel -- the 5 named
+// category playlists plus every per-project playlist -- deduped by video
+// id (some videos are cross-listed in more than one playlist).
+const ALL_CHANNEL_VIDEOS = (() => {
+  const categories = ['workshops', 'developer', 'publicCall', 'demos', 'technologyExchange'];
+  const byId = new Map();
+  for (const key of categories) {
+    for (const v of youtubePlaylists[key]?.videos || []) byId.set(v.id, v);
+  }
+  for (const project of Object.values(youtubePlaylists.projects || {})) {
+    for (const v of project.videos || []) byId.set(v.id, v);
+  }
+  return [...byId.values()];
+})();
 
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
+  const [videos, setVideos] = useState(INITIAL_VIDEOS);
 
-  // Real, existing photos -- reference tools and applications running on
-  // real hardware, at real events -- not stock imagery.
-  const showcasePhotos = [
-    {
-      src: useBaseUrl('/assets/images/gallery/reference-tools-demo-rig.jpg'),
-      alt: '5G-MAG Reference Tools demo rig with SDR hardware and phones running 5GMS and volumetric demos',
-    },
-    {
-      src: useBaseUrl('/assets/images/gallery/camara-dedicated-networks-demo.png'),
-      alt: 'CAMARA Dedicated Networks reference tool demo interface',
-    },
-    {
-      src: useBaseUrl('/assets/images/gallery/5g-broadcast-plugfest-2026.jpg'),
-      alt: '5G Broadcast PlugFest 2026, hosted by Fraunhofer FOKUS in Berlin',
-    },
-  ];
+  // Client-only, after hydration: swap in a random sample from the whole
+  // channel so every full page load shows a different set, without a
+  // server/client markup mismatch (Math.random() can't run during SSR).
+  useEffect(() => {
+    setVideos(sampleRandom(ALL_CHANNEL_VIDEOS, VIDEO_COUNT));
+  }, []);
 
   return (
     <Layout
@@ -99,31 +106,14 @@ export default function Home() {
         {/* Developer Exchanges */}
         <section className={styles.section}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Developer Exchanges</h2>
+            <h2 className={styles.sectionTitle}>See It In Action</h2>
             <p className={styles.sectionSubtitle}>
-              Hear it from the people building it: recorded demos and talks from 5G-MAG members and
+              From the people building it: recorded talks and demos from 5G-MAG members and
               contributors.
             </p>
-            <VideoGrid videos={DEVELOPER_EXCHANGES_FEATURED} />
+            <VideoGrid videos={videos} />
             <div className={styles.onAirMore}>
               <Link to="/developer/exchanges">Browse the full library &rarr;</Link>
-            </div>
-          </div>
-        </section>
-
-        {/* Examples of Our Work */}
-        <section className={clsx(styles.section, styles.sectionAlt)}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>Examples of Our Work</h2>
-            <p className={styles.sectionSubtitle}>
-              Reference Tools and Applications running on real hardware, at real events — not just
-              specifications on paper.
-            </p>
-            <PhotoGallery photos={showcasePhotos} />
-            <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
-              <Link to="/applications">See Applications &rarr;</Link>
-              {' · '}
-              <Link to="/reference-tools">See Reference Tools &rarr;</Link>
             </div>
           </div>
         </section>
@@ -132,10 +122,11 @@ export default function Home() {
         <section className={styles.section}>
           <div className="container">
             <h2 className={styles.sectionTitle}>{"Discover 5G-MAG's work"}</h2>
+            <p className={styles.sectionSubtitle}>Based on open specifications, to address market needs.</p>
             <p className={styles.sectionSubtitle}>
-              Based on open specifications, to address market needs. Together with our members we
-              are running the loop from specifications to products — keeping connected media
-              applications and network technologies open, interoperable and deployable at scale.
+              Together with our members we are running the loop from specifications to products —
+              keeping connected media applications and network technologies open, interoperable
+              and deployable at scale.
             </p>
             <StandardsLoopDiagram />
 

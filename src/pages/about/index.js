@@ -1,10 +1,12 @@
 import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
 import MediaConnectivityDiagram from '@site/src/components/MediaConnectivityDiagram';
 import StandardsLoopDiagram from '@site/src/components/StandardsLoopDiagram';
 import GodeeperCard from '@site/src/components/GodeeperCard';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
+import PhotoGallery from '@site/src/components/PhotoGallery';
 import { DISCOVER_WORK } from '@site/src/data/discoverWork';
 import { SCOPE_PILLARS } from '@site/src/data/scopePillars';
 import { FACT_SPEC_ISSUES, FACT_SDO_INPUTS, FACT_REPOSITORIES, FACT_CLONES } from '@site/src/data/facts';
@@ -23,6 +25,23 @@ const ABOUT_ICON_PATH = (
 const LOOP_FACTS = [FACT_SPEC_ISSUES, FACT_SDO_INPUTS, FACT_REPOSITORIES, FACT_CLONES];
 
 export default function About() {
+  // Real, existing photos -- reference tools and applications running on
+  // real hardware, at real events -- not stock imagery.
+  const showcasePhotos = [
+    {
+      src: useBaseUrl('/assets/images/gallery/reference-tools-demo-rig.jpg'),
+      alt: '5G-MAG Reference Tools demo rig with SDR hardware and phones running 5GMS and volumetric demos',
+    },
+    {
+      src: useBaseUrl('/assets/images/gallery/camara-dedicated-networks-demo.png'),
+      alt: 'CAMARA Dedicated Networks reference tool demo interface',
+    },
+    {
+      src: useBaseUrl('/assets/images/gallery/5g-broadcast-plugfest-2026.jpg'),
+      alt: '5G Broadcast PlugFest 2026, hosted by Fraunhofer FOKUS in Berlin',
+    },
+  ];
+
   return (
     <Layout title="About Us" description="About 5G-MAG, The Media Connectivity Association.">
       <HubHero
@@ -118,6 +137,23 @@ export default function About() {
               {DISCOVER_WORK.map((p) => (
                 <GodeeperCard key={p.title} {...p} />
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Examples of Our Work */}
+        <section className={styles.section}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>Examples of Our Work</h2>
+            <p className={styles.sectionSubtitle}>
+              Reference Tools and Applications running on real hardware, at real events — not just
+              specifications on paper.
+            </p>
+            <PhotoGallery photos={showcasePhotos} />
+            <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
+              <Link to="/applications">See Applications &rarr;</Link>
+              {' · '}
+              <Link to="/reference-tools">See Reference Tools &rarr;</Link>
             </div>
           </div>
         </section>
