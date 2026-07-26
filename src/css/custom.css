@@ -782,11 +782,11 @@
 }
 
 /* ── Topic banner (per-topic eye-catcher header) ──────────────────
-   Legacy class, superseded by .topic-hero below (same component,
-   restyled) — kept for the many pages not yet migrated to the newer
-   markup. Background matches .topic-hero/HubHero exactly so every
-   page-top banner site-wide renders the same gradient regardless of
-   which of the two classes/markup shapes it uses. ──────────────── */
+   The one hero treatment for every content-tier page (used directly in
+   MDX/JSX, no shared component needed since it's plain markup) — same
+   gradient/voice as HubHero (src/components/HubHero), which is reserved
+   for the top-level Hub landing pages (/tech, /standards, /developer,
+   etc.) instead. Two contexts, one visual language, by design. ──────── */
 .topic-banner {
   display: flex;
   align-items: center;
@@ -841,76 +841,6 @@
 
 @media (max-width: 640px) {
   .topic-banner {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
-/* ── Topic hero (compact gradient banner, matches HubHero) ────────
-   Same gradient/voice as the Hub-tier pages' HubHero component
-   (src/components/HubHero), used on the project/topic doc pages one
-   level below a Hub (tech topics, reference-tools/testbeds projects) —
-   these keep their real lateral sidebar, so no PageNav here, just the
-   restyled banner in place of the old .topic-banner. ─────────────── */
-.topic-hero {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  /* Padding and min-height match .topic-banner exactly (was 1.5rem 1.75rem
-     with no floor — 16px taller than .topic-banner in the common case,
-     visibly so when navigating between a migrated and a not-yet-migrated
-     page). Both classes are the same header at different points in the
-     topic-banner -> topic-hero migration and must render at one
-     content-independent height regardless of which markup a page uses. */
-  padding: 1rem 1.5rem;
-  min-height: 5.25rem;
-  border-radius: 12px;
-  background:
-    linear-gradient(to right, rgba(0, 0, 0, 0.62) 45%, rgba(0, 0, 0, 0.18) 100%),
-    linear-gradient(to right, #003580 0%, #00a0d2 100%);
-  margin-bottom: 1.75rem;
-}
-
-.topic-hero__icon {
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.topic-hero__icon svg {
-  width: 26px;
-  height: 26px;
-}
-
-/* Not used by any page yet, but .topic-banner__kicker is (190 of its 202
-   pages have one) — defined here so a .topic-hero page can add a kicker
-   without falling back to unstyled text, and so the two classes stay at
-   parity as more pages migrate. */
-.topic-hero__kicker {
-  display: block;
-  color: #fff;
-  font-size: 0.75rem;
-  line-height: 1;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 0.25rem;
-}
-
-.topic-hero__title {
-  margin: 0 !important;
-  color: #fff;
-  font-size: 1.5rem;
-  line-height: 1.3;
-}
-
-@media (max-width: 640px) {
-  .topic-hero {
     flex-direction: column;
     align-items: flex-start;
   }
