@@ -1,0 +1,21 @@
+{
+  "updated_at": "2026-07-26T14:36:55.167Z",
+  "posts": [
+    {
+      "title": "Welcome to 5G-MAG News",
+      "date": "2026-07-23",
+      "slug": "welcome",
+      "tags": [],
+      "image": null,
+      "excerpt": "This is the new home for updates from 5G-MAG — project milestones, technical deep dives, and community news."
+    },
+    {
+      "title": "5G-MAG Elects New WG Chairs to Drive Standards and Software for Connected Media",
+      "date": "2025-11-17",
+      "slug": "new-wg-chairs-2025",
+      "tags": [],
+      "image": "/assets/images/news/new-wg-chairs-2025.png",
+      "excerpt": "5G-MAG -- The Media Connectivity Association -- is pleased to announce the election of new chairs for its Working Groups, reinforcing its commitment to advancing media and connectivity technologies through open standards and collaborative development."
+    }
+  ]
+}

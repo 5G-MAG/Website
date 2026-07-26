@@ -16,9 +16,12 @@ import { SCOPE_PILLARS } from '@site/src/data/scopePillars';
 import { DISCOVER_WORK } from '@site/src/data/discoverWork';
 import { chunk } from '@site/src/utils/chunk';
 import { sampleRandom } from '@site/src/utils/random';
+import { sortByLatestRelease } from '@site/src/utils/releases';
 import styles from './index.module.css';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 import releasesData from '@site/static/data/releases.json';
+
+const LATEST_RELEASE_PROJECTS = sortByLatestRelease(releasesData.projects);
 
 const VIDEO_COUNT = 5;
 
@@ -178,7 +181,7 @@ export default function Home() {
               </Link>
             </div>
             <div className={styles.releasesGrid}>
-              {releasesData.projects.slice(0, 6).map((project) => (
+              {LATEST_RELEASE_PROJECTS.slice(0, 6).map((project) => (
                 <ReleaseCard key={project.name} project={project} />
               ))}
             </div>

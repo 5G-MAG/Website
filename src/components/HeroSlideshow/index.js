@@ -5,7 +5,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import HeroFigure from '@site/src/components/HeroFigure';
 import ProjectIcon from '@site/src/components/ProjectIcon';
 import releasesData from '@site/static/data/releases.json';
-import { isRC, daysSince, formatAge } from '@site/src/utils/releases';
+import newsData from '@site/static/data/news.json';
+import { isRC, daysSince, formatAge, sortByLatestRelease } from '@site/src/utils/releases';
 import styles from './styles.module.css';
 
 // Auto-advancing hero: the homepage slide plus one slide per each of the
@@ -151,8 +152,12 @@ const HOME_SLIDE = { type: 'home' };
 
 export default function HeroSlideshow() {
   const logoUrl = useBaseUrl('/img/5g-mag-logo-white.png');
-  const releaseSlides = releasesData.projects.slice(0, 3).map((p) => ({ type: 'release', ...p }));
-  const slides = [HOME_SLIDE, ...releaseSlides];
+  const releaseSlides = sortByLatestRelease(releasesData.projects)
+    .slice(0, 3)
+    .map((p) => ({ type: 'release', ...p }));
+  // news.json is already sorted newest-first by scripts/build-news-data.js.
+  const newsSlides = (newsData.posts || []).slice(0, 3).map((p) => ({ type: 'news', ...p }));
+  const slides = [HOME_SLIDE, ...releaseSlides, ...newsSlides];
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
 
@@ -163,6 +168,11 @@ export default function HeroSlideshow() {
   }, [paused, slides.length]);
 
   const slide = slides[active];
+  // Only 'news' slides carry an image, but useBaseUrl is a hook and must run
+  // unconditionally on every render -- harmless no-op (resolves to
+  // undefined) when slide.image is absent, e.g. every non-news slide and
+  // any news post without a cover image.
+  const slideImageUrl = useBaseUrl(slide.image);
 
   function slideBg() {
     return 'linear-gradient(to right, #003580 0%, #00A0D2 100%)';
@@ -233,6 +243,55 @@ export default function HeroSlideshow() {
                 </div>
               </div>
               <HeroFigure tiles={HOME_TILES} />
+            </div>
+          </div>
+        ) : slide.type === 'news' ? (
+          <div className={styles.slideOverlayCards}>
+            <div className="container">
+              <div className={styles.slideCard}>
+                <div className={styles.slideCardHeader}>
+                  <p className={styles.slideEyebrow}>
+                    <span className={styles.slideEyebrowPill}>
+                      <span className={styles.slideEyebrowPillDot} />
+                      News
+                    </span>
+                    {slide.tags && slide.tags[0] && (
+                      <span className={styles.slideEyebrowGroupPill}>{slide.tags[0]}</span>
+                    )}
+                  </p>
+                  <h2
+                    className={styles.slideCardTitle}
+                    style={{ whiteSpace: 'normal', fontSize: '1.6rem', lineHeight: 1.3 }}
+                  >
+                    {slide.title}
+                  </h2>
+                </div>
+                <div className={styles.slideCardBody} style={slide.image ? {} : { display: 'block' }}>
+                  {slide.image && (
+                    <img
+                      src={slideImageUrl}
+                      alt=""
+                      style={{
+                        width: '220px',
+                        height: '150px',
+                        objectFit: 'cover',
+                        borderRadius: '8px',
+                        marginRight: '1.5rem',
+                        flexShrink: 0,
+                      }}
+                    />
+                  )}
+                  <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.95rem', lineHeight: 1.6, margin: 0 }}>
+                    {slide.excerpt}
+                  </p>
+                </div>
+                <div className={styles.slideCardFooter}>
+                  <Link className="button button--primary" to={`/news/${slide.slug}`}>
+                    Read More
+                  </Link>
+                  <span className={styles.slideAge}>{formatAge(daysSince(slide.date))}</span>
+                </div>
+              </div>
             </div>
           </div>
         ) : (
@@ -344,11 +403,11 @@ export default function HeroSlideshow() {
             key={i}
             className={clsx(styles.slideDot, i === active && styles.slideDotActive)}
             onClick={() => setActive(i)}
-            aria-label={s.type === 'home' ? 'Home' : s.name}
+            aria-label={s.type === 'home' ? 'Home' : s.type === 'news' ? s.title : s.name}
           >
             {i === active && (
               <span className={styles.slideDotLabel}>
-                {s.type === 'home' ? 'Home' : s.name}
+                {s.type === 'home' ? 'Home' : s.type === 'news' ? s.title : s.name}
               </span>
             )}
           </button>

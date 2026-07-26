@@ -13,6 +13,9 @@ import releasesData from '@site/static/data/releases.json';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 import { mergeDeveloperVideos } from '@site/src/data/developerVideos';
 import { FACT_REPOSITORIES, FACT_CLONES } from '@site/src/data/facts';
+import { sortByLatestRelease } from '@site/src/utils/releases';
+
+const LATEST_RELEASE_PROJECTS = sortByLatestRelease(releasesData.projects);
 
 const DEV_HERO_ICON_PATH = (
   <>
@@ -741,7 +744,7 @@ export default function Home() {
               </Link>
             </div>
             <div className={styles.releasesGrid}>
-              {releasesData.projects.slice(0, 6).map((project) => (
+              {LATEST_RELEASE_PROJECTS.slice(0, 6).map((project) => (
                 <ReleaseCard key={project.name} project={project} />
               ))}
             </div>
