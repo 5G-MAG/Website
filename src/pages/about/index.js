@@ -60,14 +60,24 @@ export default function About() {
               5G-MAG is a neutral platform bridging standards and real-world deployments: keeping
               connected media applications open, interoperable and deployable at scale.
             </p>
+            <ul style={{ maxWidth: '640px', margin: '0 auto 1.5rem', lineHeight: 1.7, paddingLeft: '1.25rem' }}>
+              <li>
+                We turn specifications into explainers, blueprints and profiles the industry can
+                actually use.
+              </li>
+              <li>We channel deployment experience back to standards development organizations.</li>
+              <li>
+                We build the open-source reference tools that turn a specification into working
+                code.
+              </li>
+              <li>
+                We prove interoperability and added value through plugfests and demos — so the
+                result is tangible before onboarding into real products, while de-risking
+                real-world deployments.
+              </li>
+            </ul>
             <p style={{ maxWidth: '760px', margin: '0 auto 1.5rem', lineHeight: 1.7, textAlign: 'center' }}>
-              We turn specifications into explainers, blueprints and profiles the industry can
-              actually use. We channel deployment experience back to standards development
-              organizations. We build the open-source reference tools that turn a specification
-              into working code, and prove interoperability and added value through plugfests and
-              demos — so the result is tangible before onboarding into real products, while
-              de-risking real-world deployments. Technology, backed by open standards, ready to
-              scale across the industry.
+              Technology, backed by open standards, ready to scale across the industry.
             </p>
 
             <div style={{ margin: '0 0 2rem' }}>
@@ -98,10 +108,11 @@ export default function About() {
         <section className={styles.section}>
           <div className="container">
             <h2 className={styles.sectionTitle}>What We Do</h2>
+            <p className={styles.sectionSubtitle}>Based on open specifications, to address market needs.</p>
             <p className={styles.sectionSubtitle}>
-              Based on open specifications, to address market needs. Together with our members we
-              are running the loop from specifications to products — keeping connected media
-              applications and network technologies open, interoperable and deployable at scale.
+              Together with our members we are running the loop from specifications to products —
+              keeping connected media applications and network technologies open, interoperable
+              and deployable at scale.
             </p>
             <div className="godeeper-grid godeeper-grid--4col">
               {DISCOVER_WORK.map((p) => (
