@@ -2,6 +2,7 @@
   {
     "name": "5G Media Streaming (5GMS)",
     "doc_url": "/reference-tools/5gms/",
+    "image": "/assets/images/projects/5gms.png",
     "releases_slug": "resources",
     "tagline": "End-to-end 5G media streaming from network to client · 3GPP TS 26.501",
     "repos": [
@@ -19,6 +20,7 @@
   {
     "name": "5G Broadcast - TV and Radio Services",
     "doc_url": "/reference-tools/5g-broadcast/",
+    "image": "/assets/images/projects/5g-broadcast.png",
     "tagline": "LTE-based 5G broadcast for TV, radio and emergency alerts",
     "repos": [
       "rt-mbms-mw",
@@ -39,6 +41,7 @@
   {
     "name": "5G Broadcast - Emergency Alerts",
     "doc_url": "/reference-tools/emergency-alerts/",
+    "image": "/assets/images/projects/emergency-alerts.png",
     "tagline": "Cell Broadcast Service warnings delivered over FeMBMS",
     "repos": [
       {
@@ -51,6 +54,7 @@
   {
     "name": "XR/3D Scenes with MPEG-I Scene Description",
     "doc_url": "/reference-tools/xr/",
+    "image": "/assets/images/projects/xr.png",
     "tagline": "MPEG-I scene description and XR media integration over 5G",
     "repos": [
       "rt-xr-unity-player",
@@ -65,6 +69,7 @@
   {
     "name": "5G Multicast Broadcast Services (MBS)",
     "doc_url": "/reference-tools/5g-mbs/",
+    "image": "/assets/images/projects/5g-mbs.png",
     "tagline": "5G-native multicast and broadcast services · 3GPP 5G MBS",
     "repos": [
       "rt-mbs-function",
@@ -90,6 +95,7 @@
   {
     "name": "UE Data Collection, Reporting and Event Exposure",
     "doc_url": "/reference-tools/data-collection/",
+    "image": "/assets/images/projects/data-collection.png",
     "tagline": "UE-side data collection, reporting and event exposure · 3GPP TS 26.531",
     "repos": [
       "rt-data-collection-application-function",
@@ -100,6 +106,7 @@
   {
     "name": "MPEG V3C Immersive Platform",
     "doc_url": "/reference-tools/v3c/",
+    "image": "/assets/images/projects/v3c.png",
     "tagline": "V3C volumetric video platform for immersive 5G experiences",
     "repos": [
       "rt-v3c-unity-player",
@@ -112,6 +119,7 @@
   {
     "name": "5G Core Service Consumers",
     "doc_url": "/reference-tools/5g-core/",
+    "image": "/assets/images/projects/5g-core.png",
     "tagline": "Reference consumers for 5G Core capability exposure APIs",
     "repos": [
       "rt-5gc-service-consumers",
@@ -122,6 +130,7 @@
   {
     "name": "Beyond 2D Evaluation Framework",
     "doc_url": "/testbeds/beyond-2d/",
+    "image": "/assets/images/projects/beyond-2d.png",
     "tagline": "Evaluation framework for beyond-2D video experiences",
     "repos": [
       "rt-beyond2d-evaluation-framework",
@@ -132,6 +141,7 @@
   {
     "name": "AI Traffic Characterization",
     "doc_url": "/testbeds/6g-testbed/",
+    "image": "/assets/images/projects/6g-testbed.png",
     "tagline": "6G testbed and AI-driven traffic characterization",
     "repos": [
       "6G-Testbed",
@@ -142,6 +152,7 @@
   {
     "name": "CAMARA Connectivity Quality Management APIs",
     "doc_url": "/reference-tools/network-apis/",
+    "image": "/assets/images/projects/network-apis.png",
     "tagline": "Network capability exposure through CAMARA APIs",
     "repos": [
       "rt-camara-examples",
@@ -152,6 +163,7 @@
   {
     "name": "Conversational Avatar Communication with MPEG ARF",
     "doc_url": "/reference-tools/avatar/",
+    "image": "/assets/images/projects/avatar.png",
     "tagline": "Real-time conversational avatars over 5G using MPEG ARF",
     "repos": [
       "rt-avatar-content",
@@ -164,6 +176,7 @@
   {
     "name": "AI/ML Evaluation Framework",
     "doc_url": "/testbeds/ai-ml/",
+    "image": "/assets/images/projects/ai-ml.png",
     "tagline": "Evaluation framework for AI/ML models in 5G media processing",
     "repos": [
       "rt-ai-ml-evaluation-framework"
@@ -173,6 +186,7 @@
   {
     "name": "Common Tools",
     "doc_url": "/reference-tools/common-tools/",
+    "image": "/assets/images/projects/common-tools.png",
     "tagline": "Shared helper repositories supporting 5G-MAG Reference Tools",
     "repos": [
       "rt-common-shared"
@@ -182,6 +196,7 @@
   {
     "name": "DVB-I Services over 5G Systems",
     "doc_url": "/reference-tools/dvb-i/",
+    "image": "/assets/images/projects/dvb-i.png",
     "tagline": "DVB-I service discovery combined with 5GMS and 5G Broadcast delivery",
     "repos": [
       "rt-5gms-application"
@@ -191,6 +206,7 @@
   {
     "name": "Multimedia Delivery Protocols",
     "doc_url": "/reference-tools/multimedia/",
+    "image": "/assets/images/projects/multimedia.png",
     "tagline": "DASH, HLS and CMAF multimedia delivery reference tools",
     "repos": [
       "rt-libflute",
@@ -204,6 +220,7 @@
   {
     "name": "3GPP RAN and Core Platforms",
     "doc_url": "/reference-tools/3gpp-platforms/",
+    "image": "/assets/images/projects/3gpp-platforms.png",
     "tagline": "Lab-ready 5G RAN and Core built on Open5GS and srsRAN forks",
     "repos": [
       "rt-srsRAN_Project",

@@ -113,6 +113,7 @@ async function main() {
       doc_url: project.doc_url,
       tagline: project.tagline,
       releases_slug: project.releases_slug,
+      image: project.image,
       latest_date: releases[0].date,
       releases,
     });

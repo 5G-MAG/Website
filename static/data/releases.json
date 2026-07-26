@@ -80,7 +80,8 @@
           "author_login": "davidjwbbc",
           "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4"
         }
-      ]
+      ],
+      "image": "/assets/images/projects/5gms.png"
     },
     {
       "name": "5G Broadcast - TV and Radio Services",
@@ -161,7 +162,8 @@
           "author_login": "dsilhavy",
           "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
         }
-      ]
+      ],
+      "image": "/assets/images/projects/5g-broadcast.png"
     },
     {
       "name": "5G Broadcast - Emergency Alerts",
@@ -179,7 +181,8 @@
           "author_login": "dsilhavy",
           "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
         }
-      ]
+      ],
+      "image": "/assets/images/projects/emergency-alerts.png"
     },
     {
       "name": "XR/3D Scenes with MPEG-I Scene Description",
@@ -206,7 +209,8 @@
           "author_login": "nlsdvl",
           "author_avatar": "https://avatars.githubusercontent.com/u/2748737?v=4"
         }
-      ]
+      ],
+      "image": "/assets/images/projects/xr.png"
     },
     {
       "name": "5G Multicast Broadcast Services (MBS)",
@@ -260,7 +264,8 @@
           "author_login": "dsilhavy",
           "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
         }
-      ]
+      ],
+      "image": "/assets/images/projects/5g-mbs.png"
     },
     {
       "name": "UE Data Collection, Reporting and Event Exposure",
@@ -278,7 +283,8 @@
           "author_login": "davidjwbbc",
           "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4"
         }
-      ]
+      ],
+      "image": "/assets/images/projects/data-collection.png"
     },
     {
       "name": "MPEG V3C Immersive Platform",
@@ -314,7 +320,8 @@
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4"
         }
-      ]
+      ],
+      "image": "/assets/images/projects/v3c.png"
     },
     {
       "name": "5G Core Service Consumers",
@@ -332,7 +339,8 @@
           "author_login": "davidjwbbc",
           "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4"
         }
-      ]
+      ],
+      "image": "/assets/images/projects/5g-core.png"
     },
     {
       "name": "Beyond 2D Evaluation Framework",
@@ -350,7 +358,8 @@
           "author_login": "bart-kroon",
           "author_avatar": "https://avatars.githubusercontent.com/u/78917078?v=4"
         }
-      ]
+      ],
+      "image": "/assets/images/projects/beyond-2d.png"
     },
     {
       "name": "DVB-I Services over 5G Systems",
@@ -368,7 +377,8 @@
           "author_login": "dsilhavy",
           "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
         }
-      ]
+      ],
+      "image": "/assets/images/projects/dvb-i.png"
     },
     {
       "name": "Multimedia Delivery Protocols",
@@ -386,7 +396,8 @@
           "author_login": "dsilhavy",
           "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
         }
-      ]
+      ],
+      "image": "/assets/images/projects/multimedia.png"
     }
   ]
 }
