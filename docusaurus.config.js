@@ -457,35 +457,38 @@ const config = {
     },
     footer: {
       style: 'dark',
-      // Column order mirrors the main navbar's item order (see
-      // src/theme/navItems.js: About Us, Membership, Explainers & Profiles,
-      // Feedback & Requirements, Software Accelerator, Interop & Demos,
-      // Events, News) -- the "About Us" column bundles Membership/Events/News
-      // in with it (own sub-items already follow that same relative order),
-      // since those don't get their own footer column; "Follow Us" has no
-      // navbar equivalent so it stays last.
+      // Redefined 2026-07-26 via an interactive pick-and-arrange pass (the
+      // user ticked/assigned every item themselves, column by column) --
+      // this is no longer a 1:1 mirror of the navbar's own item order like
+      // the previous version was. Notably: Membership stays in "About Us"
+      // but Events and News moved to "Follow Us" instead; a new "In Action"
+      // column was added for the video-hub destinations; GitHub Tech and
+      // GitHub Getting-Started were deliberately dropped (not an oversight).
       links: [
         {
           title: 'About Us',
           items: [
             { label: 'About Us', to: '/about' },
+            { label: 'Structure', to: '/structure' },
+            { label: 'Partnerships', to: '/partnerships' },
+            { label: 'Contact', to: '/contact' },
             { label: 'Membership', to: '/membership' },
-            { label: 'Events', to: '/events' },
-            { label: 'News', to: '/news' },
           ],
         },
         {
           title: 'Explainers & Profiles',
           items: [
+            { label: 'Overview', to: '/tech' },
             { label: 'Categories & Topics', to: '/tech/#categories-topics' },
-            { label: 'GitHub Tech', href: 'https://github.com/5G-MAG/Tech' },
+            { label: 'Technology Exchanges', to: '/tech/exchanges' },
           ],
         },
         {
           title: 'Feedback & Requirements',
           items: [
             { label: 'Overview', to: '/standards' },
-            { label: 'Liaison Statements', to: '/standards/ls' },
+            { label: 'Requirements & Workshop Inputs', to: '/standards/requirements' },
+            { label: 'Liaison Statements & Inputs', to: '/standards/ls' },
             { label: 'GitHub Standards', href: 'https://github.com/5G-MAG/Standards' },
           ],
         },
@@ -496,12 +499,14 @@ const config = {
           // descriptive term in body prose, but not the section's own name).
           title: 'Software Accelerator',
           items: [
-            { label: 'Applications', to: '/applications' },
+            { label: 'Overview', to: '/developer' },
             { label: 'Reference Tools', to: '/reference-tools' },
+            { label: 'Applications', to: '/applications' },
             { label: 'Testbeds', to: '/testbeds' },
+            { label: 'Developer Exchanges', to: '/developer/exchanges' },
+            { label: 'Early Access', to: '/early-access' },
             { label: 'Community', to: '/community' },
             { label: 'Open-Source Licenses', to: '/developer/license' },
-            { label: 'GitHub Getting-Started', href: 'https://github.com/5G-MAG/Getting-Started' },
           ],
         },
         {
@@ -509,8 +514,20 @@ const config = {
           items: [{ label: 'Overview', to: '/testing' }],
         },
         {
+          title: 'In Action',
+          items: [
+            { label: 'All Videos', to: '/videos' },
+            { label: 'Workshops', to: '/workshops' },
+            { label: 'Developer Exchanges', to: '/developer/exchanges' },
+            { label: 'Dev Public Call', to: '/public-call' },
+            { label: 'Technology Exchange', to: '/tech/exchanges' },
+          ],
+        },
+        {
           title: 'Follow Us',
           items: [
+            { label: 'Events', to: '/events' },
+            { label: 'News', to: '/news' },
             { label: 'Subscribe for Updates', to: '/subscribe' },
             ...SOCIAL_LINKS.map((s) => socialFooterItem(s.label, s.href, s.svgPath)),
           ],
