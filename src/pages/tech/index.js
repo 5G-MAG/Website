@@ -275,13 +275,32 @@ const CATEGORIES = [
   },
 ];
 
-// Technology Exchanges (/tech/exchanges) is featured separately, above this
-// grid, rather than as an equal-weight card here — it's recorded workshop
-// talks, not reference material like the other three.
-const RESOURCES = [
+// "What You'll Find Here" -- one crystal-clear index of every real
+// destination on this hub, shown right under "Why", before the deeper
+// Categories & Topics grid further down the page.
+const WHATS_HERE = [
+  {
+    title: 'Categories & Topics',
+    desc: 'Every technology area, browsable by category and topic.',
+    href: '/tech/#categories-topics',
+    icon: icon(
+      <>
+        <rect x="4" y="4" width="6" height="6" rx="1" />
+        <rect x="14" y="4" width="6" height="6" rx="1" />
+        <rect x="4" y="14" width="6" height="6" rx="1" />
+        <rect x="14" y="14" width="6" height="6" rx="1" />
+      </>
+    ),
+  },
+  {
+    title: 'Technology Exchanges',
+    desc: 'Recorded workshop talks explaining specifications to industry.',
+    href: '/tech/exchanges',
+    icon: icon(<path d="M7 4v16l13 -8l-13 -8" />),
+  },
   {
     title: 'Glossary',
-    desc: '3GPP process terms and acronyms used across the technical documentation.',
+    desc: '3GPP process terms and acronyms used across the documentation.',
     href: '/tech/glossary',
     icon: icon(
       <>
@@ -457,10 +476,25 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Capability Areas */}
-        <section id="capability-areas" className={clsx(styles.section, styles.sectionAlt)}>
+        {/* What You'll Find Here */}
+        <section className={styles.section}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Technical Documentation by Capability Area</h2>
+            <h2 className={styles.sectionTitle}>What You&apos;ll Find Here</h2>
+            <p className={styles.sectionSubtitle}>
+              Every destination on this hub, in one place.
+            </p>
+            <div className={styles.activityGrid}>
+              {WHATS_HERE.map((r) => (
+                <ActivityCard key={r.href} {...r} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Categories & Topics */}
+        <section id="categories-topics" className={clsx(styles.section, styles.sectionAlt)}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>Categories &amp; Topics</h2>
             <p className={styles.sectionSubtitle}>
               Profiles and blueprints that turn standards into implementation-ready analysis —
               organised by technology area.
@@ -483,22 +517,6 @@ export default function Home() {
             <VideoGrid videos={TECHNOLOGY_EXCHANGES_FEATURED} />
             <div className={styles.onAirFeaturedMore}>
               <Link to="/tech/exchanges">Browse the full library &rarr;</Link>
-            </div>
-          </div>
-        </section>
-
-        {/* Resources */}
-        <section className={styles.section}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>Resources</h2>
-            <p className={styles.sectionSubtitle}>
-              Tech documentation and explainers — understanding how specifications support
-              application requirements.
-            </p>
-            <div className={styles.activityGrid}>
-              {RESOURCES.map((r) => (
-                <ActivityCard key={r.href} {...r} />
-              ))}
             </div>
           </div>
         </section>

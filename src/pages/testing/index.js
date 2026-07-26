@@ -58,49 +58,29 @@ const PILLARS = [
       </svg>
     ),
   },
+];
+
+// "What You'll Find Here" -- Testing only gives access to two things:
+// recorded Demos and Testing Events (e.g. the PlugFest). Nothing here
+// hands off to Reference Tools or Testbeds -- that's Developer's territory.
+const WHATS_HERE = [
   {
-    title: 'Supporting application development and trials',
-    body: 'Reference tools and testbeds that let application developers build and trial real products on top of proven implementations.',
+    title: 'Demos',
+    desc: 'Recorded plugfest and trade-show demonstrations.',
+    href: '/testing/#demonstrators',
     icon: (
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        aria-hidden="true"
-      >
-        <path d="M7 11v8a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1v-7a1 1 0 0 1 1 -1h3a4 4 0 0 0 4 -4v-1a2 2 0 0 1 4 0v5h3a2 2 0 0 1 2 2l-1 5a2 3 0 0 1 -2 2h-7a3 3 0 0 1 -3 -3" />
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M15 10l4.553 -2.069a1 1 0 0 1 1.447 .894v6.35a1 1 0 0 1 -1.447 .894l-4.553 -2.069v-4" />
+        <path d="M3 8a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-8z" />
       </svg>
     ),
   },
-];
-
-// The kinds of real-world activity this section covers — not a hand-off to
-// Testbeds or Reference Tools. Examples point back at the two photos in
-// "Out in the field" above rather than naming any additional event.
-const EVENT_TYPES = [
   {
-    title: 'Interoperability plugfests',
-    body: (
-      <>
-        Multi-vendor events where 5G-MAG reference code is tested side by side with other
-        implementations — like the{' '}
-        <Link to="/testing/5g-broadcast-plugfest">5G Broadcast PlugFest 2026</Link>, hosted by
-        Fraunhofer FOKUS in Berlin, pictured above.
-      </>
-    ),
+    title: 'Testing Events',
+    desc: 'Interoperability plugfests where reference code is tested side by side.',
+    href: '/testing/#testing-events',
     icon: (
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        aria-hidden="true"
-      >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
         <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
         <path d="M16 3.13a4 4 0 0 1 0 7.75" />
@@ -108,43 +88,41 @@ const EVENT_TYPES = [
       </svg>
     ),
   },
+];
+
+// Testing Events -- just the PlugFest today, structured to hold more cards
+// as future testing events are added.
+const TESTING_EVENTS = [
   {
-    title: 'Trade-show demos',
-    body: 'Public, end-to-end demonstrations on the show floor that make a specification’s value visible to a non-technical audience — like the 5G Media Streaming and 5G Broadcast booth demo pictured above.',
-    icon: (
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        aria-hidden="true"
-      >
-        <path d="M15 10l4.553 -2.069a1 1 0 0 1 1.447 .894v6.35a1 1 0 0 1 -1.447 .894l-4.553 -2.069v-4" />
-        <path d="M3 8a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-8z" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Industry trials',
-    body: 'Putting implementations to work in real deployment conditions, ahead of commercial products built on the same specifications.',
-    icon: (
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        aria-hidden="true"
-      >
-        <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-        <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
-      </svg>
-    ),
+    title: '5G Broadcast PlugFest 2026',
+    body: 'Multi-vendor interoperability testing against ETSI TS 103 720, hosted by Fraunhofer FOKUS in Berlin.',
+    href: '/testing/5g-broadcast-plugfest',
   },
 ];
+
+function ActivityCard({ title, desc, href, icon: cardIcon }) {
+  return (
+    <Link className={styles.activityCard} to={href}>
+      <div className={styles.activityIconBand}>
+        {cardIcon}
+        <h3 className={styles.activityIconBandTitle}>{title}</h3>
+      </div>
+      <div className={styles.activityBody}>
+        <p className={styles.activityDesc}>{desc}</p>
+      </div>
+      <div className={styles.activityArrow}>View &rarr;</div>
+    </Link>
+  );
+}
+
+function TestingEventCard({ title, body, href }) {
+  return (
+    <Link to={href} className={styles.linkCard}>
+      <h3 className={styles.linkCardTitle}>{title}</h3>
+      <p className={styles.linkCardBody}>{body}</p>
+    </Link>
+  );
+}
 
 function DemosSection() {
   const videos = youtubePlaylists.demos?.videos || [];
@@ -195,7 +173,7 @@ export default function Testing() {
             <h2 className={styles.sectionTitle}>Why Interop & Demos</h2>
             <p className={styles.sectionSubtitle}>
               Making the value proposition tangible to the industry — through interoperability,
-              early testing and plugfests, and supporting application development and trials.
+              early testing and plugfests.
             </p>
             <div className={styles.pillarGrid3}>
               {PILLARS.map((p) => (
@@ -209,7 +187,22 @@ export default function Testing() {
           </div>
         </section>
 
+        {/* What You'll Find Here */}
         <section className={`${styles.section} ${styles.sectionAlt}`}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>What You&apos;ll Find Here</h2>
+            <p className={styles.sectionSubtitle}>
+              Every destination on this hub, in one place.
+            </p>
+            <div className={styles.activityGrid}>
+              {WHATS_HERE.map((r) => (
+                <ActivityCard key={r.href} {...r} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.section}>
           <div className="container">
             <h2 className={styles.sectionTitle}>Out in the field</h2>
             <p className={styles.sectionSubtitle}>
@@ -248,27 +241,19 @@ export default function Testing() {
 
         <DemosSection />
 
-        <section className={styles.section}>
+        {/* Testing Events */}
+        <section id="testing-events" className={`${styles.section} ${styles.sectionAlt}`}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Where this happens</h2>
+            <h2 className={styles.sectionTitle}>Testing Events</h2>
             <p className={styles.sectionSubtitle}>
-              Interoperability plugfests, trade-show demos and industry trials — proving that
-              specifications work together in the real world, not just on paper.
+              Multi-vendor interoperability events where 5G-MAG reference code is tested side by
+              side with other implementations.
             </p>
             <div className={styles.pillarGrid3}>
-              {EVENT_TYPES.map((e) => (
-                <div key={e.title} className={styles.pillarCard}>
-                  <div className={styles.pillarIcon}>{e.icon}</div>
-                  <h3 className={styles.pillarTitle}>{e.title}</h3>
-                  {e.body && <p className={styles.pillarBody}>{e.body}</p>}
-                </div>
+              {TESTING_EVENTS.map((e) => (
+                <TestingEventCard key={e.href} {...e} />
               ))}
             </div>
-            <p className={styles.sectionSubtitle} style={{ marginTop: '2rem', marginBottom: 0 }}>
-              The tools and testbeds shown off at these events live at{' '}
-              <Link to="/reference-tools">Reference Tools</Link> and{' '}
-              <Link to="/testbeds">Testbeds</Link>.
-            </p>
           </div>
         </section>
 

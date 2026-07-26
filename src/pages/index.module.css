@@ -506,3 +506,53 @@
 /* Hero figure (icon cloud) sizing + repel-transition CSS now lives in the
    shared src/components/HeroFigure/styles.module.css, imported by that
    component itself (used identically here, on /tech and on /developer). */
+
+/* ── Latest Releases ───────────────────────────────────────────────── */
+/* Card rendering itself is the shared src/components/ReleaseCard
+   component -- same section-wrapper rules as /developer's own copy. */
+
+.releasesHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.releasesUpdated {
+  font-size: 0.8rem;
+  color: var(--ifm-color-emphasis-600);
+  margin: 0;
+}
+
+.releasesViewAll {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.releasesViewAll:hover {
+  text-decoration: underline;
+}
+
+.releasesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 996px) {
+  .releasesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .releasesGrid {
+    grid-template-columns: 1fr;
+  }
+}

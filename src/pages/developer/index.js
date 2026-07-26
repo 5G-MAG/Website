@@ -7,11 +7,11 @@ import ProjectIcon from '@site/src/components/ProjectIcon';
 import GodeeperCard, { icon } from '@site/src/components/GodeeperCard';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import VideoGrid from '@site/src/components/VideoGrid';
+import ReleaseCard from '@site/src/components/ReleaseCard';
 import styles from './index.module.css';
 import releasesData from '@site/static/data/releases.json';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 import { mergeDeveloperVideos } from '@site/src/data/developerVideos';
-import { daysSince, formatAge } from '@site/src/utils/releases';
 import { FACT_REPOSITORIES, FACT_CLONES } from '@site/src/data/facts';
 
 const DEV_HERO_ICON_PATH = (
@@ -473,57 +473,6 @@ const PROBLEM_POINTS = [
   },
 ];
 
-function ReleaseCard({ project }) {
-  const rows = project.releases
-    .filter((r) => r.tag !== 'No Release' && r.date !== '-')
-    .sort((a, b) => b.date.localeCompare(a.date))
-    .slice(0, 4);
-
-  return (
-    <div className={styles.releaseCard}>
-      <div className={styles.releaseCardHeader}>
-        <ProjectIcon name={project.name} className={styles.releaseCardIcon} />
-        <h3 className={styles.releaseCardTitle}>{project.name}</h3>
-      </div>
-      <div className={styles.releaseCardBody}>
-        {rows.map((r) => {
-          const days = daysSince(r.date);
-          return (
-            <div key={r.repo} className={styles.releaseRow}>
-              <a
-                href={`https://github.com/5G-MAG/${r.repo}`}
-                className={styles.releaseRepo}
-                target="_blank"
-                rel="noreferrer"
-                title={r.repo}
-              >
-                {r.repo}
-              </a>
-              <div className={styles.releaseMeta}>
-                {days <= 30 && <span className={styles.badgeNew}>New</span>}
-                <a href={r.url} className={styles.releaseTag} target="_blank" rel="noreferrer">
-                  {r.tag}
-                </a>
-                <span className={styles.releaseDate}>{formatAge(days)}</span>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-      {project.doc_url && (
-        <div className={styles.releaseCardFooter}>
-          <Link className={styles.releaseDocLink} to={project.doc_url}>
-            Documentation &rarr;
-          </Link>
-          <Link className={styles.releaseRelLink} to={`${project.doc_url}${project.releases_slug || 'resources'}`}>
-            Releases &rarr;
-          </Link>
-        </div>
-      )}
-    </div>
-  );
-}
-
 function CategoryCard({ title, desc, topics }) {
   return (
     <div className={styles.categoryCard}>
@@ -688,7 +637,7 @@ export default function Home() {
         {/* Product Types */}
         <section className={styles.section}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Where to start</h2>
+            <h2 className={styles.sectionTitle}>What You&apos;ll Find Here</h2>
             <p className={styles.sectionSubtitle}>
               Reference Tools, Testbeds and Evaluation Tools, and Application Prototypes — under
               one open developer community.

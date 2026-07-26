@@ -58,7 +58,7 @@ const config = {
   projectName: 'Website',
 
   onBrokenLinks: 'throw',
-  // Custom JSX pages (src/pages/**) render some anchors (e.g. #capability-areas,
+  // Custom JSX pages (src/pages/**) render some anchors (e.g. #categories-topics,
   // and video-card ids on /tech/videos) at runtime; Docusaurus's static link
   // checker only sees MDX-authored headings, so it always flags these as
   // broken even though they resolve correctly in the browser. Left at 'warn'
@@ -477,7 +477,7 @@ const config = {
         {
           title: 'Explainers & Profiles',
           items: [
-            { label: 'Capability Areas', to: '/tech/#capability-areas' },
+            { label: 'Categories & Topics', to: '/tech/#categories-topics' },
             { label: 'GitHub Tech', href: 'https://github.com/5G-MAG/Tech' },
           ],
         },

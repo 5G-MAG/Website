@@ -4,14 +4,8 @@ import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import { icon } from '@site/src/components/GodeeperCard';
-import VideoGrid from '@site/src/components/VideoGrid';
 import { FACT_SPEC_ISSUES, FACT_SDO_INPUTS } from '@site/src/data/facts';
 import styles from '../tech/index.module.css';
-import youtubePlaylists from '@site/static/data/youtube-playlists.json';
-
-// A handful of the most recent Workshop recordings -- the full gallery
-// (every session, newest first) lives at /workshops.
-const WORKSHOPS_FEATURED = (youtubePlaylists.workshops?.videos || []).slice(0, 6);
 
 const GITHUB_ICON_PATH = (
   <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
@@ -190,6 +184,128 @@ const STANDARDS_FACTS = [
   { value: '6', label: 'Presentations at 3GPP requirements workshops' },
 ];
 
+const REQUIREMENTS_ICON_PATH = (
+  <>
+    <path d="M9 5H7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2V7a2 2 0 0 0 -2 -2h-2" />
+    <rect x="9" y="3" width="6" height="4" rx="2" />
+    <path d="M9 12h6" />
+    <path d="M9 16h6" />
+  </>
+);
+const LS_ICON_PATH = (
+  <>
+    <path d="M15 15m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+    <path d="M13 17.5v4.5l2 -1.5l2 1.5v-4.5" />
+    <path d="M10 19h-5a2 2 0 0 1 -2 -2v-10c0 -1.1 .9 -2 2 -2h14a2 2 0 0 1 2 2v3.5" />
+  </>
+);
+const WORKSHOPS_ICON_PATH = (
+  <>
+    <path d="M8 19h-3a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v11a1 1 0 0 1 -1 1" />
+    <path d="M11 17a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v1a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -1" />
+  </>
+);
+
+// "What You'll Find Here" -- one crystal-clear index of every real
+// destination on this hub, shown right under "Why".
+const WHATS_HERE = [
+  {
+    title: 'Requirements & Workshop Inputs',
+    desc: 'Requirements towards standards bodies, backed by industry inputs and surveys.',
+    href: '/standards/requirements',
+    icon: icon(REQUIREMENTS_ICON_PATH),
+  },
+  {
+    title: 'Liaison Statements & Inputs',
+    desc: 'Tables of LS sent to and received from SDOs.',
+    href: '/standards/ls',
+    icon: icon(LS_ICON_PATH),
+  },
+  {
+    title: 'Workshops Supporting Standardization',
+    desc: 'The workshops that fed directly into 3GPP study and work items.',
+    href: '/standards/#standards-workshops',
+    icon: icon(WORKSHOPS_ICON_PATH),
+  },
+  {
+    title: 'Methodology',
+    desc: 'How a GitHub issue is reviewed and carried through to a correction or liaison input.',
+    href: '/standards/methodology',
+    icon: icon(DIAGRAM_ICON_PATH),
+  },
+];
+
+// Curated subset of the full /workshops archive (21 sessions) -- only the
+// ones that directly fed a named 3GPP study/work item or pre-aligned
+// member positions ahead of a plenary decision. The rest of the archive is
+// general community/orientation content and stays under /workshops only.
+const STANDARDS_WORKSHOPS = [
+  {
+    title: 'Media Energy Consumption Measurement and Exposure',
+    why: 'Co-organized with 3GPP SA4 around its Media Energy Consumption Study Item.',
+    href: '/workshops/media-energy-consumption',
+  },
+  {
+    title: '3GPP Release 19, from Specification to Implementation',
+    why: 'Spec-to-implementation workshop for a named, just-frozen 3GPP release.',
+    href: '/workshops/3gpp-release-19',
+  },
+  {
+    title: '5G-MAG Workshop with 3GPP SA4: Advanced Media Delivery',
+    why: 'Kickoff of the 3GPP SA4 Advanced Media Delivery Feasibility Study.',
+    href: '/workshops/workshop-3gpp-sa4-advanced-media-delivery',
+  },
+  {
+    title: 'Towards 3GPP Rel-19 — NTN & Content Delivery',
+    why: 'Pre-aligned member positions ahead of the 3GPP TSG plenary that decided Rel-19.',
+    href: '/workshops/towards-rel-19-ntn-content-delivery',
+  },
+  {
+    title: '5G Media towards 3GPP Release 19',
+    why: 'Early planning input toward the Release 19 package.',
+    href: '/workshops/5g-media-towards-release-19',
+  },
+  {
+    title: '5G Advanced — Media Distribution in 3GPP Release 18',
+    why: 'Discussed new 5G Advanced work areas under Release 18.',
+    href: '/workshops/amd-3gpp-release-18',
+  },
+  {
+    title: 'Media Production over 5G Non-Public Networks',
+    why: 'Gathered industry input for the new 3GPP SA4 NPN4AVProd study item.',
+    href: '/workshops/media-production-over-5g-npn',
+  },
+  {
+    title: 'Follow-up Workshop: Media Production over 5G NPN — Deep Dive into Protocols',
+    why: 'Protocol deep-dive continuing the NPN4AVProd study item input.',
+    href: '/workshops/media-production-5g-npn-deep-dive-follow-up',
+  },
+];
+
+function ActivityCard({ title, desc, href, icon: cardIcon }) {
+  return (
+    <Link className={styles.activityCard} to={href}>
+      <div className={styles.activityIconBand}>
+        {cardIcon}
+        <h3 className={styles.activityIconBandTitle}>{title}</h3>
+      </div>
+      <div className={styles.activityBody}>
+        <p className={styles.activityDesc}>{desc}</p>
+      </div>
+      <div className={styles.activityArrow}>View &rarr;</div>
+    </Link>
+  );
+}
+
+function WorkshopCard({ title, why, href }) {
+  return (
+    <Link to={href} className={styles.linkCard}>
+      <h3 className={styles.linkCardTitle}>{title}</h3>
+      <p className={styles.linkCardBody}>{why}</p>
+    </Link>
+  );
+}
+
 function CategoryCard({ title, desc, topics }) {
   return (
     <div className={styles.categoryCard}>
@@ -272,6 +388,21 @@ export default function Standards() {
           </div>
         </section>
 
+        {/* What You'll Find Here */}
+        <section className={styles.section}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>What You&apos;ll Find Here</h2>
+            <p className={styles.sectionSubtitle}>
+              Every destination on this hub, in one place.
+            </p>
+            <div className={styles.activityGrid}>
+              {WHATS_HERE.map((r) => (
+                <ActivityCard key={r.href} {...r} />
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className={`${styles.section} ${styles.sectionAlt}`}>
           <div className="container">
             <h2 className={styles.sectionTitle}>Feedback Areas</h2>
@@ -301,37 +432,21 @@ export default function Standards() {
           </div>
         </section>
 
-        <section id="requirements--workshop-inputs" className={styles.section}>
+        {/* Workshops Supporting Standardization */}
+        <section id="standards-workshops" className={styles.section}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Requirements & Workshop Inputs</h2>
+            <h2 className={styles.sectionTitle}>Workshops Supporting Standardization</h2>
             <p className={styles.sectionSubtitle}>
-              Requirements towards standards bodies — supported by industry inputs, targeted
-              workshops or surveys.
+              Of the full workshop &amp; session archive, these fed directly into named 3GPP study
+              or work items.
             </p>
-            <div style={{ textAlign: 'center', margin: '0 0 1rem', display: 'flex', alignItems: 'center', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Link className="button button--primary button--lg" to="/standards/requirements">
-                Requirements & Workshop Inputs
-              </Link>
-              <Link className="button button--outline button--primary button--lg" to="/surveys">
-                Take the Industry Survey
-              </Link>
-              <Link className="button button--outline button--primary button--lg" to="/workshops">
-                Watch Workshop Videos
-              </Link>
+            <div className={styles.pillarGrid3}>
+              {STANDARDS_WORKSHOPS.map((w) => (
+                <WorkshopCard key={w.href} {...w} />
+              ))}
             </div>
-          </div>
-        </section>
-
-        {/* Workshops, featured */}
-        <section className={styles.section}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>Workshops</h2>
-            <p className={styles.sectionSubtitle}>
-              Recorded talks explaining a standards work item to industry.
-            </p>
-            <VideoGrid videos={WORKSHOPS_FEATURED} />
             <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
-              <Link to="/workshops">Browse the full library &rarr;</Link>
+              <Link to="/workshops">Browse the full workshop &amp; session archive &rarr;</Link>
             </div>
           </div>
         </section>

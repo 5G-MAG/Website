@@ -1,7 +1,9 @@
 import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
+import PhotoGallery from '@site/src/components/PhotoGallery';
 import { SLACK_INVITE_URL, SOCIAL_LINKS } from '@site/src/data/socialLinks';
 import { FACT_LARGE_EVENTS, FACT_YEARLY_CONFERENCE } from '@site/src/data/facts';
 import styles from '../tech/index.module.css';
@@ -18,10 +20,17 @@ const EVENTS_ICON_PATH = (
 
 const EVENT_FACTS = [FACT_LARGE_EVENTS, FACT_YEARLY_CONFERENCE];
 
+// MWC has no dedicated photo yet -- left without one rather than reusing an
+// unrelated image.
 const EVENT_PAGES = [
-  { title: 'MWC Barcelona', desc: 'Stand 5C30, Swiss Pavilion, Hall 5', href: '/mwc' },
-  { title: 'IBC', desc: 'EBU stand, booth 10.D21', href: '/ibc' },
-  { title: 'Future Media Townhall', desc: 'RAI Amsterdam', href: '/fmt' },
+  { title: 'MWC Barcelona', desc: 'Stand 5C30, Swiss Pavilion, Hall 5', href: '/mwc', img: null },
+  { title: 'IBC', desc: 'EBU stand, booth 10.D21', href: '/ibc', img: '/assets/images/gallery/ibc-panel.jpg' },
+  {
+    title: 'Future Media Townhall',
+    desc: 'RAI Amsterdam',
+    href: '/fmt',
+    img: '/assets/images/fmt/fmt-2026-banner.png',
+  },
 ];
 
 const WORKSHOP_PAGES = [
@@ -29,8 +38,47 @@ const WORKSHOP_PAGES = [
   { title: 'OSMART Workshops', desc: 'Open-Source Media Application Reference Tools', href: '/events/osmart' },
 ];
 
+function EventCard({ title, desc, href, img }) {
+  const resolvedImg = useBaseUrl(img);
+  return (
+    <Link to={href} className={styles.linkCard}>
+      {img && (
+        <img className={styles.linkCardImg} src={resolvedImg} alt={title} loading="lazy" />
+      )}
+      <h3 className={styles.linkCardTitle}>{title}</h3>
+      <p className={styles.linkCardBody}>{desc}</p>
+    </Link>
+  );
+}
+
 export default function Events() {
   const linkedin = SOCIAL_LINKS.find((s) => s.key === 'linkedin').href;
+  const galleryPhotos = [
+    {
+      src: useBaseUrl('/assets/images/gallery/5g-broadcast-plugfest-2026.jpg'),
+      alt: '5G Broadcast PlugFest 2026, hosted by Fraunhofer FOKUS in Berlin',
+    },
+    {
+      src: useBaseUrl('/assets/images/gallery/3gpp-imt2030-contribution.jpg'),
+      alt: '5G-MAG contribution to 3GPP IMT-2030',
+    },
+    {
+      src: useBaseUrl('/assets/images/gallery/tradeshow-booth-demo.jpg'),
+      alt: '5G-MAG trade show booth demonstrating 5G Media Streaming and 5G Broadcast',
+    },
+    {
+      src: useBaseUrl('/assets/images/fmt/gallery/photo-04.jpg'),
+      alt: 'Future Media Townhall 2025 session',
+    },
+    {
+      src: useBaseUrl('/assets/images/fmt/gallery/photo-07.jpg'),
+      alt: 'Future Media Townhall 2025 session',
+    },
+    {
+      src: useBaseUrl('/assets/images/fmt/gallery/photo-10.jpg'),
+      alt: 'Future Media Townhall 2025 session',
+    },
+  ];
   return (
     <Layout
       title="Events"
@@ -64,7 +112,22 @@ export default function Events() {
       </div>
 
       <main>
+        {/* Events, front and center */}
         <section className={styles.section}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>Events</h2>
+            <p className={styles.sectionSubtitle}>
+              Trade shows and conferences 5G-MAG organizes or takes part in.
+            </p>
+            <div className={styles.pillarGrid3}>
+              {EVENT_PAGES.map((e) => (
+                <EventCard key={e.href} {...e} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className={`${styles.section} ${styles.sectionAlt}`}>
           <div className="container">
             <h2 className={styles.sectionTitle}>Dev Public Call</h2>
             <p className={styles.sectionSubtitle}>
@@ -78,30 +141,13 @@ export default function Events() {
           </div>
         </section>
 
-        <section className={`${styles.section} ${styles.sectionAlt}`}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>Events</h2>
-            <p className={styles.sectionSubtitle}>
-              Trade shows and conferences 5G-MAG organizes or takes part in.
-            </p>
-            <div className={styles.pillarGrid3}>
-              {EVENT_PAGES.map((e) => (
-                <Link key={e.href} to={e.href} className={styles.linkCard}>
-                  <h3 className={styles.linkCardTitle}>{e.title}</h3>
-                  <p className={styles.linkCardBody}>{e.desc}</p>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <section
           id="workshops"
           className={styles.section}
           style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}
         >
           <div className="container">
-            <h2 className={styles.sectionTitle}>Workshops</h2>
+            <h2 className={styles.sectionTitle}>Community Workshops</h2>
             <p className={styles.sectionSubtitle}>
               Community workshops 5G-MAG co-organizes with other open-source and standards groups.
             </p>
@@ -119,7 +165,19 @@ export default function Events() {
           </div>
         </section>
 
+        {/* Gallery */}
         <section className={`${styles.section} ${styles.sectionAlt}`}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>Gallery</h2>
+            <p className={styles.sectionSubtitle}>
+              Highlights from across 5G-MAG events — plugfests, trade shows and the Future Media
+              Townhall.
+            </p>
+            <PhotoGallery photos={galleryPhotos} />
+          </div>
+        </section>
+
+        <section className={styles.section}>
           <div className="container">
             <h2 className={styles.sectionTitle}>
               In the meantime, 5G-MAG members regularly show up at

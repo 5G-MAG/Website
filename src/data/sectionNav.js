@@ -98,13 +98,13 @@ export const SECTION_NAV = [
     ],
   },
   {
-    prefixes: ['/standards', '/workshops'],
+    prefixes: ['/standards'],
     title: 'Feedback & Requirements',
     titleHref: '/standards',
     items: [
       { label: 'Methodology', href: '/standards/methodology' },
       { label: 'Liaison Statements & Inputs', href: '/standards/ls' },
-      { label: 'Workshops supporting Standardization', href: '/workshops' },
+      { label: 'Workshops for Standards', href: '/standards#standards-workshops' },
       { label: 'Requirements & Workshop Inputs', href: '/standards/requirements' },
       { label: 'Meetings with 3GPP SA4', href: '/standards/3gpp-issue-tracking' },
     ],
@@ -122,7 +122,7 @@ export const SECTION_NAV = [
     ],
   },
   {
-    prefixes: ['/events', '/public-call'],
+    prefixes: ['/events', '/public-call', '/workshops'],
     title: 'Events',
     titleHref: '/events',
     items: [
@@ -130,7 +130,8 @@ export const SECTION_NAV = [
       { label: 'MWC', href: '/mwc' },
       { label: 'IBC', href: '/ibc' },
       { label: 'FMT', href: '/fmt' },
-      { label: 'Workshops', href: '/events#workshops' },
+      { label: 'Community Workshops', href: '/events#workshops' },
+      { label: 'Workshop Archive', href: '/workshops' },
     ],
   },
   {
