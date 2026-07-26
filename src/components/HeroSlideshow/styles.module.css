@@ -453,9 +453,18 @@
 }
 
 @media (max-width: 768px) {
+  /* Auto height, sized by whichever slide is active, with just a sane
+     floor -- NOT a fixed number tuned for one slide type. The old fixed
+     480px min-height left ~180px of dead background below the (shorter)
+     Home slide's content, while being too short for the (taller) release
+     slides, whose content was silently clipped by .slideshow's
+     overflow:hidden. Since the background .slide divs are absolutely
+     positioned (inset:0) and the only in-flow child is
+     .slideContentWrapper, the container's auto height now genuinely
+     tracks that wrapper's real content height per slide. */
   .slideshow {
     height: auto;
-    min-height: 480px;
+    min-height: 320px;
   }
   .slideTitle {
     font-size: 1.3rem;
@@ -487,5 +496,13 @@
   .slideOverlayCards {
     align-items: flex-start;
     padding: 1rem 0;
+  }
+  /* Single column -- the desktop 3-row/N-column grid (grid-auto-flow:
+     column with a fixed row count) never collapses on its own at narrow
+     widths, so release names were overflowing the card horizontally. */
+  .slideReleases {
+    grid-template-rows: none;
+    grid-auto-flow: row;
+    grid-template-columns: 1fr;
   }
 }
