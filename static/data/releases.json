@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-07-25 01:18 UTC",
+  "updated_at": "2026-07-26 14:16 UTC",
   "projects": [
     {
-      "name": "5G Media Streaming",
+      "name": "5G Media Streaming (5GMS)",
       "doc_url": "/reference-tools/5gms/",
       "tagline": "End-to-end 5G media streaming from network to client · 3GPP TS 26.501",
       "releases_slug": "resources",
@@ -83,7 +83,7 @@
       ]
     },
     {
-      "name": "5G Broadcast TV Radio",
+      "name": "5G Broadcast - TV and Radio Services",
       "doc_url": "/reference-tools/5g-broadcast/",
       "tagline": "LTE-based 5G broadcast for TV, radio and emergency alerts",
       "releases_slug": "resources",
@@ -164,7 +164,7 @@
       ]
     },
     {
-      "name": "5G Broadcast Emergency Alerts",
+      "name": "5G Broadcast - Emergency Alerts",
       "doc_url": "/reference-tools/emergency-alerts/",
       "tagline": "Cell Broadcast Service warnings delivered over FeMBMS",
       "releases_slug": "resources",
@@ -182,7 +182,7 @@
       ]
     },
     {
-      "name": "XR Media",
+      "name": "XR/3D Scenes with MPEG-I Scene Description",
       "doc_url": "/reference-tools/xr/",
       "tagline": "MPEG-I scene description and XR media integration over 5G",
       "releases_slug": "resources",
@@ -209,7 +209,7 @@
       ]
     },
     {
-      "name": "5G Multicast Broadcast",
+      "name": "5G Multicast Broadcast Services (MBS)",
       "doc_url": "/reference-tools/5g-mbs/",
       "tagline": "5G-native multicast and broadcast services · 3GPP 5G MBS",
       "releases_slug": "resources",
@@ -259,20 +259,11 @@
           "url": "https://github.com/5G-MAG/rt-libflute/releases/tag/rt-libflute-0.12.3",
           "author_login": "dsilhavy",
           "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
-        },
-        {
-          "repo": "rt-srsRAN_Project",
-          "branch": "5mbs",
-          "tag": "",
-          "date": "-",
-          "url": "https://github.com/5G-MAG/rt-srsRAN_Project/releases/tag/untagged-5cb9b23f9589c4fbefed",
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4"
         }
       ]
     },
     {
-      "name": "UE Data Collection",
+      "name": "UE Data Collection, Reporting and Event Exposure",
       "doc_url": "/reference-tools/data-collection/",
       "tagline": "UE-side data collection, reporting and event exposure · 3GPP TS 26.531",
       "releases_slug": "resources",
@@ -290,7 +281,7 @@
       ]
     },
     {
-      "name": "V3C Immersive",
+      "name": "MPEG V3C Immersive Platform",
       "doc_url": "/reference-tools/v3c/",
       "tagline": "V3C volumetric video platform for immersive 5G experiences",
       "releases_slug": "resources",
@@ -326,7 +317,7 @@
       ]
     },
     {
-      "name": "5GC Service Consumers",
+      "name": "5G Core Service Consumers",
       "doc_url": "/reference-tools/5g-core/",
       "tagline": "Reference consumers for 5G Core capability exposure APIs",
       "releases_slug": "resources",
@@ -344,7 +335,7 @@
       ]
     },
     {
-      "name": "Beyond 2D Video Experiences",
+      "name": "Beyond 2D Evaluation Framework",
       "doc_url": "/testbeds/beyond-2d/",
       "tagline": "Evaluation framework for beyond-2D video experiences",
       "releases_slug": "resources",
@@ -362,7 +353,7 @@
       ]
     },
     {
-      "name": "DVB-I over 5G",
+      "name": "DVB-I Services over 5G Systems",
       "doc_url": "/reference-tools/dvb-i/",
       "tagline": "DVB-I service discovery combined with 5GMS and 5G Broadcast delivery",
       "releases_slug": "resources",

@@ -26,7 +26,7 @@ const HOME_TILES = [
     rot: 8.5,
     color: TONE_A,
     d: 'M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0 M16.616 13.924a5 5 0 1 0 -9.23 0 M20.307 15.469a9 9 0 1 0 -16.615 0 M9 21l3 -9l3 9 M10 19h4',
-  }, // 5G Broadcast TV Radio
+  }, // 5G Broadcast - TV and Radio Services
   { cx: 702, cy: 341, size: 130, rot: -2.3, color: TONE_A, d: 'M7 4v16l13 -8l-13 -8' }, // 5G Media Streaming
   {
     cx: 439,
@@ -118,7 +118,7 @@ const HOME_TILES = [
     rot: 9.7,
     color: TONE_A,
     d: 'M3 9a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2l0 -9 M16 3l-4 4l-4 -4',
-  }, // DVB-I over 5G
+  }, // DVB-I Services over 5G Systems
   {
     cx: 391,
     cy: 280,
@@ -126,25 +126,25 @@ const HOME_TILES = [
     rot: 7.7,
     color: TONE_A,
     d: 'M12 8a2 2 0 0 1 2 2v4a2 2 0 1 1 -4 0v-4a2 2 0 0 1 2 -2 M17 15c.345 .6 1.258 1 2 1a2 2 0 1 0 0 -4a2 2 0 1 1 0 -4c.746 0 1.656 .394 2 1 M3 15c.345 .6 1.258 1 2 1a2 2 0 1 0 0 -4a2 2 0 1 1 0 -4c.746 0 1.656 .394 2 1',
-  }, // 5G Broadcast Emergency Alerts
+  }, // 5G Broadcast - Emergency Alerts
 ];
 
 const PROJECT_TYPE_MAP = {
-  '5G Media Streaming': 'Reference Tools',
-  '5G Broadcast TV Radio': 'Reference Tools',
-  'XR Media': 'Reference Tools',
-  '5G Multicast Broadcast': 'Reference Tools',
-  'UE Data Collection': 'Reference Tools',
-  'V3C Immersive': 'Reference Tools',
+  '5G Media Streaming (5GMS)': 'Reference Tools',
+  '5G Broadcast - TV and Radio Services': 'Reference Tools',
+  'XR/3D Scenes with MPEG-I Scene Description': 'Reference Tools',
+  '5G Multicast Broadcast Services (MBS)': 'Reference Tools',
+  'UE Data Collection, Reporting and Event Exposure': 'Reference Tools',
+  'MPEG V3C Immersive Platform': 'Reference Tools',
   'Multimedia Delivery Protocols': 'Reference Tools',
-  'DVB-I over 5G': 'Reference Tools',
-  '5G Broadcast Emergency Alerts': 'Reference Tools',
-  '5GC Service Consumers': 'Reference Tools',
-  'Conversational Avatar': 'Reference Tools',
-  'Beyond 2D Video Experiences': 'Testbed',
-  'Network APIs': 'Reference Tools',
-  '6G Testbed and AI Traffic': 'Testbed',
-  'AI ML': 'Testbed',
+  'DVB-I Services over 5G Systems': 'Reference Tools',
+  '5G Broadcast - Emergency Alerts': 'Reference Tools',
+  '5G Core Service Consumers': 'Reference Tools',
+  'Conversational Avatar Communication with MPEG ARF': 'Reference Tools',
+  'Beyond 2D Evaluation Framework': 'Testbed',
+  'CAMARA Connectivity Quality Management APIs': 'Reference Tools',
+  'AI Traffic Characterization': 'Testbed',
+  'AI/ML Evaluation Framework': 'Testbed',
 };
 
 const HOME_SLIDE = { type: 'home' };

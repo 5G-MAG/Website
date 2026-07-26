@@ -1,6 +1,6 @@
 [
   {
-    "name": "5G Media Streaming",
+    "name": "5G Media Streaming (5GMS)",
     "doc_url": "/reference-tools/5gms/",
     "releases_slug": "resources",
     "tagline": "End-to-end 5G media streaming from network to client · 3GPP TS 26.501",
@@ -17,7 +17,7 @@
     ]
   },
   {
-    "name": "5G Broadcast TV Radio",
+    "name": "5G Broadcast - TV and Radio Services",
     "doc_url": "/reference-tools/5g-broadcast/",
     "tagline": "LTE-based 5G broadcast for TV, radio and emergency alerts",
     "repos": [
@@ -37,7 +37,7 @@
     "releases_slug": "resources"
   },
   {
-    "name": "5G Broadcast Emergency Alerts",
+    "name": "5G Broadcast - Emergency Alerts",
     "doc_url": "/reference-tools/emergency-alerts/",
     "tagline": "Cell Broadcast Service warnings delivered over FeMBMS",
     "repos": [
@@ -49,7 +49,7 @@
     "releases_slug": "resources"
   },
   {
-    "name": "XR Media",
+    "name": "XR/3D Scenes with MPEG-I Scene Description",
     "doc_url": "/reference-tools/xr/",
     "tagline": "MPEG-I scene description and XR media integration over 5G",
     "repos": [
@@ -63,7 +63,7 @@
     "releases_slug": "resources"
   },
   {
-    "name": "5G Multicast Broadcast",
+    "name": "5G Multicast Broadcast Services (MBS)",
     "doc_url": "/reference-tools/5g-mbs/",
     "tagline": "5G-native multicast and broadcast services · 3GPP 5G MBS",
     "repos": [
@@ -88,7 +88,7 @@
     "releases_slug": "resources"
   },
   {
-    "name": "UE Data Collection",
+    "name": "UE Data Collection, Reporting and Event Exposure",
     "doc_url": "/reference-tools/data-collection/",
     "tagline": "UE-side data collection, reporting and event exposure · 3GPP TS 26.531",
     "repos": [
@@ -98,7 +98,7 @@
     "releases_slug": "resources"
   },
   {
-    "name": "V3C Immersive",
+    "name": "MPEG V3C Immersive Platform",
     "doc_url": "/reference-tools/v3c/",
     "tagline": "V3C volumetric video platform for immersive 5G experiences",
     "repos": [
@@ -110,7 +110,7 @@
     "releases_slug": "resources"
   },
   {
-    "name": "5GC Service Consumers",
+    "name": "5G Core Service Consumers",
     "doc_url": "/reference-tools/5g-core/",
     "tagline": "Reference consumers for 5G Core capability exposure APIs",
     "repos": [
@@ -120,7 +120,7 @@
     "releases_slug": "resources"
   },
   {
-    "name": "Beyond 2D Video Experiences",
+    "name": "Beyond 2D Evaluation Framework",
     "doc_url": "/testbeds/beyond-2d/",
     "tagline": "Evaluation framework for beyond-2D video experiences",
     "repos": [
@@ -130,7 +130,7 @@
     "releases_slug": "resources"
   },
   {
-    "name": "6G Testbed and AI Traffic",
+    "name": "AI Traffic Characterization",
     "doc_url": "/testbeds/6g-testbed/",
     "tagline": "6G testbed and AI-driven traffic characterization",
     "repos": [
@@ -140,7 +140,7 @@
     "releases_slug": "resources"
   },
   {
-    "name": "Network APIs",
+    "name": "CAMARA Connectivity Quality Management APIs",
     "doc_url": "/reference-tools/network-apis/",
     "tagline": "Network capability exposure through CAMARA APIs",
     "repos": [
@@ -150,7 +150,7 @@
     "releases_slug": "resources"
   },
   {
-    "name": "Conversational Avatar",
+    "name": "Conversational Avatar Communication with MPEG ARF",
     "doc_url": "/reference-tools/avatar/",
     "tagline": "Real-time conversational avatars over 5G using MPEG ARF",
     "repos": [
@@ -162,7 +162,7 @@
     "releases_slug": "resources"
   },
   {
-    "name": "AI ML",
+    "name": "AI/ML Evaluation Framework",
     "doc_url": "/testbeds/ai-ml/",
     "tagline": "Evaluation framework for AI/ML models in 5G media processing",
     "repos": [
@@ -180,7 +180,7 @@
     "releases_slug": "resources"
   },
   {
-    "name": "DVB-I over 5G",
+    "name": "DVB-I Services over 5G Systems",
     "doc_url": "/reference-tools/dvb-i/",
     "tagline": "DVB-I service discovery combined with 5GMS and 5G Broadcast delivery",
     "repos": [
