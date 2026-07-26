@@ -373,6 +373,26 @@ const config = {
       },
     ],
     [
+      '@docusaurus/plugin-content-blog',
+      {
+        // A second, separate blog instance from the main News feed
+        // (preset-classic's `blog` below, at /news) -- this one is
+        // specifically for events 5G-MAG is invited to attend or speak at
+        // (conferences, workshops, webinars, Dev Public Calls), as opposed
+        // to News, which is reserved for 5G-MAG's own releases/press. Posts
+        // here never appear in /news; they're surfaced via the Agenda
+        // section on /events instead.
+        id: 'events',
+        path: 'events-blog',
+        routeBasePath: 'events/agenda',
+        blogTitle: 'Events Agenda',
+        blogDescription: 'Events where 5G-MAG participates, presents or is invited to attend.',
+        blogSidebarTitle: 'Agenda',
+        postsPerPage: 20,
+        showReadingTime: false,
+      },
+    ],
+    [
       '@docusaurus/plugin-content-docs',
       {
         id: 'tech',

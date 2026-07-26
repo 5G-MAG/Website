@@ -4,8 +4,10 @@ import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import PhotoGallery from '@site/src/components/PhotoGallery';
+import EventsAgenda from '@site/src/components/EventsAgenda';
 import { SLACK_INVITE_URL, SOCIAL_LINKS } from '@site/src/data/socialLinks';
 import { FACT_LARGE_EVENTS, FACT_YEARLY_CONFERENCE } from '@site/src/data/facts';
+import { EVENTS_AGENDA } from '@site/src/data/eventsAgenda';
 import styles from '../tech/index.module.css';
 
 const EVENTS_ICON_PATH = (
@@ -112,6 +114,23 @@ export default function Events() {
       </div>
 
       <main>
+        {/* Agenda: dated events 5G-MAG attends/presents at, as opposed to
+            the evergreen trade-show cards below */}
+        <section
+          id="agenda"
+          className={`${styles.section} ${styles.sectionAlt}`}
+          style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}
+        >
+          <div className="container">
+            <h2 className={styles.sectionTitle}>Agenda</h2>
+            <p className={styles.sectionSubtitle}>
+              Conferences, workshops, webinars and calls where 5G-MAG participates or is invited
+              to attend.
+            </p>
+            <EventsAgenda events={EVENTS_AGENDA} />
+          </div>
+        </section>
+
         {/* Events, front and center */}
         <section className={styles.section}>
           <div className="container">

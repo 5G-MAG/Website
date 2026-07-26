@@ -1,0 +1,103 @@
+.group + .groupSpaced {
+  margin-top: 2rem;
+}
+
+.groupLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ifm-color-emphasis-600);
+  margin: 0 0 0.9rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  background: var(--ifm-background-surface-color);
+  text-decoration: none !important;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  border-color: var(--ifm-color-primary);
+}
+
+.dateBadge {
+  flex-shrink: 0;
+  width: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 0.4rem 0.2rem;
+  background: linear-gradient(
+    135deg,
+    var(--ifm-color-primary-darkest) 0%,
+    var(--ifm-color-primary-textsafe) 100%
+  );
+  color: #fff;
+}
+
+.dateMonth {
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.85;
+}
+
+.dateDay {
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.cardBody {
+  min-width: 0;
+  flex: 1;
+}
+
+.typeTag {
+  display: inline-block;
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #001331;
+  background: #fab900;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  margin-bottom: 0.4rem;
+}
+
+.cardTitle {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--ifm-font-color-base);
+  margin: 0 0 0.25rem;
+  line-height: 1.35;
+}
+
+.cardLocation {
+  font-size: 0.82rem;
+  color: var(--ifm-color-emphasis-600);
+  margin: 0;
+}

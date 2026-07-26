@@ -1,0 +1,88 @@
+// Events 5G-MAG participates in, presents at, or is invited to attend --
+// as opposed to News (releases/press). Each entry's `href` points to its
+// full write-up in the separate "events" blog instance (routeBasePath
+// 'events/agenda', configured in docusaurus.config.js), kept out of the
+// main /news feed on purpose. Add new entries here AND as a post under
+// events-blog/ to keep the agenda and the write-up in sync.
+export const EVENTS_AGENDA = [
+  {
+    date: '2025-11-25',
+    endDate: null,
+    title: 'MSF Volumetric Video Town Hall',
+    type: 'Conference',
+    location: 'Online',
+    href: '/events/agenda/msf-volumetric-video-town-hall',
+  },
+  {
+    date: '2026-02-27',
+    endDate: null,
+    title: 'New Project: 6G Testbed & AI Traffic Characterization',
+    type: 'Public Call',
+    location: 'Online',
+    href: '/events/agenda/6g-testbed-ai-traffic-characterization',
+  },
+  {
+    date: '2026-03-02',
+    endDate: '2026-03-05',
+    title: '5G-MAG at MWC 2026',
+    type: 'Conference',
+    location: 'Barcelona',
+    href: '/events/agenda/mwc-2026',
+  },
+  {
+    date: '2026-03-19',
+    endDate: null,
+    title: 'Workshop on Media Energy Consumption Measurement and Exposure',
+    type: 'Workshop',
+    location: 'Online',
+    href: '/events/agenda/media-energy-consumption-workshop-2026',
+  },
+  {
+    date: '2026-03-25',
+    endDate: null,
+    title: 'Tech Talk - Streaming over LEO: Insights from Netflix on QoE',
+    type: 'Public Call',
+    location: 'Online',
+    href: '/events/agenda/tech-talk-leo-netflix',
+  },
+  {
+    date: '2026-04-14',
+    endDate: null,
+    title: 'Webinar - NTN & Content Delivery: From Specs to Software',
+    type: 'Webinar',
+    location: 'Online',
+    href: '/events/agenda/webinar-ntn-content-delivery',
+  },
+  {
+    date: '2026-06-09',
+    endDate: '2026-06-11',
+    title: '5G Broadcast PlugFest in Berlin',
+    type: 'Workshop',
+    location: 'Berlin, Fraunhofer FOKUS',
+    href: '/events/agenda/plugfest-berlin-2026-announcement',
+  },
+  {
+    date: '2026-06-16',
+    endDate: '2026-06-17',
+    title: '5G-MAG at FOKUS Media Web Symposium',
+    type: 'Conference',
+    location: 'Berlin',
+    href: '/events/agenda/fokus-media-web-symposium-2026',
+  },
+  {
+    date: '2026-06-24',
+    endDate: '2026-06-26',
+    title: '5G-MAG Reference Tools at MWC Shanghai',
+    type: 'Conference',
+    location: 'Shanghai',
+    href: '/events/agenda/mwc-shanghai-2026',
+  },
+  {
+    date: '2026-06-26',
+    endDate: null,
+    title: 'Friday Call: From Specifications to Software using AI',
+    type: 'Public Call',
+    location: 'Online',
+    href: '/events/agenda/friday-call-specs-to-software-ai',
+  },
+];
