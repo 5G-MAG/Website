@@ -124,6 +124,24 @@
   }
 }
 
+/* Four equal-weight destinations (the "Discover 5G-MAG's work" areas) --
+   same card, one more column than the default 3-up grid above. */
+.activityGrid--4col {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 996px) {
+  .activityGrid--4col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .activityGrid--4col {
+    grid-template-columns: 1fr;
+  }
+}
+
 .activityCard {
   display: flex;
   flex-direction: column;

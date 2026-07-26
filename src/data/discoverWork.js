@@ -1,10 +1,13 @@
 // Single source of truth for the "Discover 5G-MAG's work" / "What We Do"
 // four-pillar cards, shown on both the homepage and /about — previously
 // hand-duplicated with different wording in each file; edit here to update
-// both places at once.
+// both places at once. `short` (the section's own nav-label-length name)
+// is only used by Home's own card CTA ("Explore {short}") -- About's
+// plain GodeeperCard rendering ignores it.
 export const DISCOVER_WORK = [
   {
     title: 'Explainers and Profiles of Standards Specifications',
+    short: 'Tech',
     body: 'Specification analysis, blueprints and explainers organised by topic area.',
     href: '/tech',
     icon: (
@@ -19,12 +22,14 @@ export const DISCOVER_WORK = [
   },
   {
     title: 'Feedback & Requirements to Standards Bodies',
+    short: 'Standards',
     body: 'Requirements and deployment experience submitted back to SDOs.',
     href: '/standards',
     icon: <path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" />,
   },
   {
     title: 'Media Connectivity Software Accelerator',
+    short: 'Developer',
     body: 'Open-source reference tools turning specs into working code.',
     href: '/developer',
     icon: (
@@ -37,6 +42,7 @@ export const DISCOVER_WORK = [
   },
   {
     title: 'Validation, Interop Plugfests, Demos and Apps',
+    short: 'Testing',
     body: 'Plugfests and demonstrators to prove implementations and value.',
     href: '/testing',
     icon: (

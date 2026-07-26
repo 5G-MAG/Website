@@ -43,6 +43,28 @@ const ALL_CHANNEL_VIDEOS = (() => {
   return [...byId.values()];
 })();
 
+// A bigger, bolder invitation than the plain GodeeperCard used elsewhere
+// for this same data (About's "What We Do" still uses GodeeperCard) --
+// this section is Home's main gateway into the site's 4 top-level areas,
+// so it gets the more prominent icon-band treatment plus an explicit
+// "Explore X" call to action, matching ActivityCard/ProductTypeCard's
+// styling on Tech/Standards/Developer's own "What You'll Find Here"
+// sections rather than inventing a new look.
+function AreaCard({ title, short, body, href, icon: cardIcon }) {
+  return (
+    <Link className={styles.activityCard} to={href}>
+      <div className={styles.activityIconBand}>
+        {icon(cardIcon)}
+        <h3 className={styles.activityIconBandTitle}>{title}</h3>
+      </div>
+      <div className={styles.activityBody}>
+        <p className={styles.activityDesc}>{body}</p>
+      </div>
+      <div className={styles.activityArrow}>Explore {short} &rarr;</div>
+    </Link>
+  );
+}
+
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   const [videos, setVideos] = useState(INITIAL_VIDEOS);
@@ -130,9 +152,9 @@ export default function Home() {
             </p>
             <StandardsLoopDiagram />
 
-            <div className="godeeper-grid godeeper-grid--4col">
+            <div className={clsx(styles.activityGrid, styles['activityGrid--4col'])}>
               {DISCOVER_WORK.map((p) => (
-                <GodeeperCard key={p.title} {...p} />
+                <AreaCard key={p.title} {...p} />
               ))}
             </div>
           </div>
