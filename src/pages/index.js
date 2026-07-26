@@ -5,16 +5,14 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HeroSlideshow from '@site/src/components/HeroSlideshow';
 import MediaConnectivityDiagram from '@site/src/components/MediaConnectivityDiagram';
-import StandardsLoopDiagram from '@site/src/components/StandardsLoopDiagram';
 import MembersMarquee from '@site/src/components/MembersMarquee';
-import GodeeperCard, { icon } from '@site/src/components/GodeeperCard';
+import { icon } from '@site/src/components/GodeeperCard';
 import VideoGrid from '@site/src/components/VideoGrid';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import ReleaseCard from '@site/src/components/ReleaseCard';
-import { SCOPE_TAGS } from '@site/src/data/scopeTags';
-import { SCOPE_PILLARS } from '@site/src/data/scopePillars';
+import { EventsAgendaPreview } from '@site/src/components/EventsAgenda';
 import { DISCOVER_WORK } from '@site/src/data/discoverWork';
-import { chunk } from '@site/src/utils/chunk';
+import { EVENTS_AGENDA } from '@site/src/data/eventsAgenda';
 import { sampleRandom } from '@site/src/utils/random';
 import { sortByLatestRelease } from '@site/src/utils/releases';
 import styles from './index.module.css';
@@ -53,7 +51,7 @@ const ALL_CHANNEL_VIDEOS = (() => {
 // "Explore X" call to action, matching ActivityCard/ProductTypeCard's
 // styling on Tech/Standards/Developer's own "What You'll Find Here"
 // sections rather than inventing a new look.
-function AreaCard({ title, short, body, href, icon: cardIcon }) {
+function AreaCard({ title, body, href, icon: cardIcon }) {
   return (
     <Link className={styles.activityCard} to={href}>
       <div className={styles.activityIconBand}>
@@ -63,7 +61,7 @@ function AreaCard({ title, short, body, href, icon: cardIcon }) {
       <div className={styles.activityBody}>
         <p className={styles.activityDesc}>{body}</p>
       </div>
-      <div className={styles.activityArrow}>Explore {short} &rarr;</div>
+      <div className={styles.activityArrow}>Explore more &rarr;</div>
     </Link>
   );
 }
@@ -102,69 +100,35 @@ export default function Home() {
               <MediaConnectivityDiagram />
             </div>
 
-            <div className="scope-marquee" style={{ marginBottom: '1.5rem' }}>
-              <div className="scope-marquee-track">
-                {chunk(
-                  SCOPE_TAGS.filter((tag) => tag.d),
-                  [3, 4, 3]
-                ).map((row, rowIndex) => (
-                  <div key={rowIndex} className="scope-marquee-row">
-                    {row.map((tag) => (
-                      <span key={tag.label} className="scope-chip">
-                        {icon(<path d={tag.d} />)}
-                        {tag.label}
-                      </span>
-                    ))}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="godeeper-grid godeeper-grid--4col">
-              {SCOPE_PILLARS.map((p) => (
-                <GodeeperCard key={p.title} {...p} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Developer Exchanges */}
-        <section className={styles.section}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>See It In Action</h2>
-            <p className={styles.sectionSubtitle}>
-              From the people building it: recorded talks and demos from 5G-MAG members and
-              contributors.
-            </p>
-            <VideoGrid videos={videos} />
-            <div className={styles.onAirMore}>
-              <Link to="/developer/exchanges">Browse the full library &rarr;</Link>
-            </div>
-          </div>
-        </section>
-
-        {/* Four pillars */}
-        <section className={styles.section}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>{"Discover 5G-MAG's work"}</h2>
-            <p className={styles.sectionSubtitle}>Based on open specifications, to address market needs.</p>
-            <p className={styles.sectionSubtitle}>
-              Together with our members we are running the loop from specifications to products —
-              keeping connected media applications and network technologies open, interoperable
-              and deployable at scale.
-            </p>
-            <StandardsLoopDiagram />
-
             <div className={clsx(styles.activityGrid, styles['activityGrid--4col'])}>
               {DISCOVER_WORK.map((p) => (
                 <AreaCard key={p.title} {...p} />
               ))}
             </div>
+
+            <div className={styles.onAirMore}>
+              <Link to="/about">Learn more about us &rarr;</Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Developer Exchanges */}
+        <section className={clsx(styles.section, styles.sectionAlt)}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>See It In Action</h2>
+            <p className={styles.sectionSubtitle}>
+              Recorded talks, demos and calls from across all of 5G-MAG&apos;s work — Developer
+              Exchanges, Public Calls, workshops and more.
+            </p>
+            <VideoGrid videos={videos} />
+            <div className={styles.onAirMore}>
+              <Link to="/videos">Browse the full library &rarr;</Link>
+            </div>
           </div>
         </section>
 
         {/* Latest Releases */}
-        <section className={clsx(styles.section, styles.sectionAlt)}>
+        <section className={styles.section}>
           <div className="container">
             <div className={styles.releasesHeader}>
               <div>
@@ -185,6 +149,29 @@ export default function Home() {
                 <ReleaseCard key={project.name} project={project} />
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Where to find us */}
+        <section className={clsx(styles.section, styles.sectionAlt)}>
+          <div className="container">
+            <div className={styles.releasesHeader}>
+              <div>
+                <h2
+                  className={styles.sectionTitle}
+                  style={{ marginBottom: '0.2rem', textAlign: 'left' }}
+                >
+                  Where to Find Us
+                </h2>
+                <p className={styles.releasesUpdated}>
+                  Conferences, workshops, webinars and calls
+                </p>
+              </div>
+              <Link className={styles.releasesViewAll} to="/events#agenda">
+                Full agenda &rarr;
+              </Link>
+            </div>
+            <EventsAgendaPreview events={EVENTS_AGENDA} />
           </div>
         </section>
 
