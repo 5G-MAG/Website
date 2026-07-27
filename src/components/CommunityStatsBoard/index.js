@@ -86,10 +86,28 @@ function ProjectTable({ project }) {
 // consolidated /developer/community page. Not to be confused with
 // src/components/CommunityStats, the per-project stats table embedded on
 // individual reference-tool pages -- this is the sitewide overview.
+// Not part of the 5G-MAG/Getting-Started hub's own dashboard
+// (hub.5g-mag.com/Getting-Started/pages/dashboard.html) -- excluded here so
+// the summary totals match that page's totals exactly, repo for repo.
+// Still shown with their own real numbers in the per-project tables below.
+const NOT_ON_HUB_DASHBOARD = new Set([
+  '5GC_APIs',
+  'cmcd-toolkit',
+  'rt-wui',
+  'rt-xr-gITFast',
+  'srsRAN',
+]);
+
 export default function CommunityStatsBoard() {
   const projects = communityStatsData.projects.filter((p) => p.repos.length > 0);
-  const allRepos = projects.flatMap((p) => p.repos);
-  const totals = allRepos.reduce(
+  // Dedupe by repo name before summing -- a repo shared across many
+  // projects (e.g. rt-common-shared, listed under all 10) would otherwise
+  // have its stars/forks/views/clones counted once per project that
+  // references it, inflating every total well past the real per-repo
+  // numbers.
+  const uniqueRepos = [...new Map(projects.flatMap((p) => p.repos).map((r) => [r.repo, r])).values()];
+  const hubTrackedRepos = uniqueRepos.filter((r) => !NOT_ON_HUB_DASHBOARD.has(r.repo));
+  const totals = hubTrackedRepos.reduce(
     (acc, r) => ({
       stars: acc.stars + (r.stars || 0),
       forks: acc.forks + (r.forks || 0),
