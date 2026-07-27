@@ -1,0 +1,104 @@
+---
+id: developer-community-release-process
+slug: /community/release-process
+title: Release Process & Branching Strategy
+hide_title: true
+description: How 5G-MAG tests and publishes releases, and the Gitflow-based branching model used across the Reference Tools repositories.
+---
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1" /><path d="M9 15l3 -3l3 3" /><path d="M12 12l0 9" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Community</span>
+<h1>Release Process &amp; Branching Strategy</h1>
+</div>
+</div>
+
+<div class="topic-lead">
+How release candidates are tested and published, and the Gitflow-based branching model used across the 5G-MAG Reference Tools repositories.
+</div>
+
+Looking for how to raise issues, fork, or open a pull request instead? See [How to Contribute](/community/contributing).
+
+## Release Process
+
+The status of the different software releases can be found on the [Community](/community#releases) page.
+
+### Testing release candidates
+
+Availability of a RC for testing is announced in the Google Group and/or during the 5G-MAG Developers Calls. Feedback can be provided via issues during the testing period.
+If there are blocking issues, these will be fixed and a new release candidate will be created.
+
+If after the testing period no issues have been found which block the release, a release will be created and announced.
+
+## Git Branching strategy
+
+We are using a slightly modified version of Gitflow as a branching model. A detailed introduction to Gitflow can be found in this [Introduction to Gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow).
+
+The table below summarises the branch types; each is described in detail after it.
+
+| Branch type | Created from  | Merged into              | Purpose                                        |
+| ----------- | ------------- | ------------------------ | ----------------------------------------------- |
+| Feature     | `development` | `development`            | Implement a new feature                        |
+| Bugfix      | `development` | `development`            | Fix a non-critical bug                         |
+| Release     | `development` | `main`                   | Prepare and publish a release                  |
+| Hotfix      | `main`        | `main` and `development` | Patch a critical error in a production release |
+
+### Main branch
+
+The _main_ branch stores the official release history. The current version of the _main_ branch always stores the latest release.
+
+### Development branch
+
+The _development_ branch serves as the integration branch for new feature and bugfix branches. It reflects the latest stable changes in the current development cycle.
+
+### Feature branches
+
+Each new feature is implemented in a separate _feature_ branch. Feature branches use _development_ as their parent branch. When a feature is completed the respective branch gets merged back into development.
+
+A feature branch is created the following way:
+
+```
+git checkout development
+git checkout -b feature/newfeature
+```
+
+### Release branches
+
+Once the _development_ branch has acquired enough features and bugfixes for a release, a release candidate branch is created based on the current version of the _development_ branch. For details on the release procedure please refer to the release procedure documentation in the relevant repository.
+
+The release candidate always includes a version number and is created in the following way:
+
+```
+git checkout development
+git checkout -b RC-1.2.0
+```
+
+Once a release candidate is approved the respective branch is merged into the _main_ branch.
+
+### Bugfix branches
+
+Similar to _feature_ branches, the _bugfix_ branches are created directly from _development_. In contrast to hotfixes, bugfixes are not considered critical and do not require a fast new release. _Bugfix_ branches are created the following way:
+
+```
+git checkout development
+git checkout -b bugfix/newbugfix
+```
+
+### Hotfix branches
+
+_Hotfix_ branches are used to quickly patch production releases in case of critical errors. _Hotfix_ branches are created directly from _main_ and merged back into _main_ and _development_ as soon as they are completed. Once the hotfix is applied a new release shall be created.
+
+```
+git checkout main
+git checkout -b hotfix/newhotfix
+```
+
+### Cloning a repository with a specific branch
+
+It is also possible to clone a repository and specify the target branch directly:
+
+`git clone -b <branchname> <remote-repo-url>`
