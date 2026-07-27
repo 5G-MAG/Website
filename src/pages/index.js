@@ -91,9 +91,9 @@ export default function Home() {
             <h2 className={styles.sectionTitle}>
               At the intersection of Media and Connectivity
             </h2>
-            <p className={styles.sectionSubtitle}>
-              We are not a standards body. We do not write specs. We translate them into things that
-              run.
+            <p style={{ maxWidth: '760px', margin: '0 auto 1rem', lineHeight: 1.7, textAlign: 'center' }}>
+              &ldquo;We are not a standards body. We do not write specs. We translate them into
+              things that run.&rdquo;
             </p>
 
             <div style={{ margin: '0 0 2rem' }}>

@@ -2,17 +2,28 @@
   background: var(--ifm-background-surface-color);
   border-bottom: 1px solid var(--ifm-color-emphasis-300);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-  /* On a docs page, the sidebar's own sticky/negative-margin trick makes its
-     box geometrically overlap this bar's screen position (same mechanism
-     Docusaurus uses so the sidebar can stick just below the fixed navbar) —
-     harmless there because the navbar carries this same z-index and wins
-     the overlap, but this bar is a plain, non-fixed element with no
-     stacking of its own, so without this it's the sidebar that wins instead
-     and swallows every click. Same elevation as the navbar (Infima's
-     --ifm-z-index-fixed), not higher — this only needs to beat the
-     sidebar, which has none. */
   position: relative;
-  z-index: var(--ifm-z-index-fixed);
+}
+
+@media (min-width: 997px) {
+  .pageNav {
+    /* On a docs page, the sidebar's own sticky/negative-margin trick makes
+       its box geometrically overlap this bar's screen position (same
+       mechanism Docusaurus uses so the sidebar can stick just below the
+       fixed navbar) — harmless there because the navbar carries this same
+       z-index and wins the overlap, but this bar is a plain, non-fixed
+       element with no stacking of its own, so without this it's the
+       sidebar that wins instead and swallows every click. Same elevation
+       as the navbar (Infima's --ifm-z-index-fixed), not higher — this only
+       needs to beat the docs sidebar, which has none.
+
+       Desktop-only (Infima's own >996px breakpoint): the docs sidebar this
+       guards against only renders at this width. Below it, Infima's mobile
+       navbar-sidebar drawer (.navbar-sidebar) *also* has no z-index of its
+       own — giving this bar one unconditionally, at any width, meant it
+       beat the drawer too and rendered on top of it while open. */
+    z-index: var(--ifm-z-index-fixed);
+  }
 }
 
 .navRow {
