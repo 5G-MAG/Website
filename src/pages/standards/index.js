@@ -445,7 +445,7 @@ export default function Standards() {
                 <WorkshopCard key={w.href} {...w} />
               ))}
             </div>
-            <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
+            <div style={{ textAlign: 'center', marginTop: '1.5rem', fontWeight: 600 }}>
               <Link to="/workshops">Browse the full workshop &amp; session archive &rarr;</Link>
             </div>
           </div>

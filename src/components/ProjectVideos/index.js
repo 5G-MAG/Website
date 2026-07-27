@@ -25,7 +25,7 @@ export default function ProjectVideos({ videos, name }) {
           <VideoGrid videos={RECENT_DEVELOPER_EXCHANGES} />
         </>
       )}
-      <p>
+      <p style={{ fontWeight: 600 }}>
         <Link to="/videos">Browse all 5G-MAG videos &rarr;</Link>
       </p>
     </>
