@@ -79,22 +79,6 @@ export default function About() {
               5G-MAG is a neutral platform bridging standards and real-world deployments: keeping
               connected media applications open, interoperable and deployable at scale.
             </p>
-            <ul style={{ maxWidth: '640px', margin: '0 auto 1.5rem', lineHeight: 1.7, paddingLeft: '1.25rem' }}>
-              <li>
-                We turn specifications into explainers, blueprints and profiles the industry can
-                actually use.
-              </li>
-              <li>We channel deployment experience back to standards development organizations.</li>
-              <li>
-                We build the open-source reference tools that turn a specification into working
-                code.
-              </li>
-              <li>
-                We prove interoperability and added value through plugfests and demos — so the
-                result is tangible before onboarding into real products, while de-risking
-                real-world deployments.
-              </li>
-            </ul>
             <p style={{ maxWidth: '760px', margin: '0 auto 1.5rem', lineHeight: 1.7, textAlign: 'center' }}>
               Technology, backed by open standards, ready to scale across the industry.
             </p>
@@ -114,24 +98,16 @@ export default function About() {
         <section className={`${styles.section} ${styles.sectionAlt}`}>
           <div className="container">
             <h2 className={styles.sectionTitle}>Running the Loop: From Standards to Products</h2>
-            <p className={styles.sectionSubtitle}>
+            <p className={styles.sectionSubtitle} style={{ marginBottom: '1.5rem' }}>
               We take in specifications from standards bodies, feed back real-world requirements,
               accelerate software implementation, and validate technologies through interop and
               plugfests — before it ships into products.
             </p>
 
             <StandardsLoopDiagram />
-          </div>
-        </section>
 
-        <section className={styles.section}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>What We Do</h2>
-            <p className={styles.sectionSubtitle}>Based on open specifications, to address market needs.</p>
-            <p className={styles.sectionSubtitle}>
-              Together with our members we are running the loop from specifications to products —
-              keeping connected media applications and network technologies open, interoperable
-              and deployable at scale.
+            <p className={styles.sectionSubtitle} style={{ marginTop: '2rem' }}>
+              Four pillars, from specification to deployed product.
             </p>
             <div className="godeeper-grid godeeper-grid--4col">
               {DISCOVER_WORK.map((p) => (
@@ -145,12 +121,12 @@ export default function About() {
         <section className={styles.section}>
           <div className="container">
             <h2 className={styles.sectionTitle}>Examples of Our Work</h2>
-            <p className={styles.sectionSubtitle}>
+            <p className={styles.sectionSubtitle} style={{ marginBottom: '1.5rem' }}>
               Reference Tools and Applications running on real hardware, at real events — not just
               specifications on paper.
             </p>
             <PhotoGallery photos={showcasePhotos} />
-            <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
+            <div style={{ textAlign: 'center', marginTop: '2rem', fontWeight: 600 }}>
               <Link to="/applications">See Applications &rarr;</Link>
               {' · '}
               <Link to="/reference-tools">See Reference Tools &rarr;</Link>
