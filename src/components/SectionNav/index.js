@@ -11,7 +11,7 @@ function matchesPrefix(pathname, prefix) {
 // Rendered once by the swizzled Layout (src/theme/Layout), right below the
 // main navbar, on every single page. Replaces the old pattern of each hub
 // page importing PageNav and passing its own (self-excluding) item list —
-// that meant a page with a real docs sidebar (e.g. /developer/license)
+// that meant a page with a real docs sidebar (e.g. /license)
 // never got one at all. This looks up the current route in SECTION_NAV and
 // renders the same PageNav pill-row for any page under that prefix, hub or
 // sidebar page alike; PageNav highlights whichever item matches the

@@ -119,7 +119,7 @@ const config = {
             // match the "Technology Exchanges" naming used for this category
             // elsewhere (the /tech hub widget, Developer Exchanges, etc.).
             ['/tech/exchanges', '/tech/videos'],
-            ['/developer/license', '/license'],
+            ['/license', '/developer/license'],
             // How-to-use, Guidelines for Contributors, Releases, Pull
             // Requests, Community Stats, Roadmap and Top Contributors
             // (formerly 7 separate /developer/* pages, each with its own
@@ -526,7 +526,7 @@ const config = {
             { label: 'Developer Exchanges', to: '/developer/exchanges' },
             { label: 'Early Access', to: '/early-access' },
             { label: 'Community', to: '/community' },
-            { label: 'Open-Source Licenses', to: '/developer/license' },
+            { label: 'Open-Source Licenses', to: '/license' },
           ],
         },
         {
