@@ -66,12 +66,12 @@ export const SECTION_NAV = [
     titleHref: '/developer',
     items: [
       { label: 'Reference Tools', href: '/reference-tools' },
-      { label: 'Applications', href: '/applications' },
       { label: 'Testbeds', href: '/testbeds' },
+      { label: 'Applications', href: '/applications' },
       { label: 'Developer Exchanges', href: '/developer/exchanges' },
       { label: 'Early Access', href: '/early-access' },
       { label: 'Community', href: '/community' },
-      { label: 'License', href: '/developer/license' },
+      { label: 'License', href: '/license' },
     ],
   },
   {

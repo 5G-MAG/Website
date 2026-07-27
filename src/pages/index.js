@@ -115,7 +115,7 @@ export default function Home() {
         {/* Developer Exchanges */}
         <section className={clsx(styles.section, styles.sectionAlt)}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>See It In Action</h2>
+            <h2 className={styles.sectionTitle}>Our Work In Action</h2>
             <p className={styles.sectionSubtitle}>
               Recorded talks, demos and calls from across all of 5G-MAG&apos;s work — Developer
               Exchanges, Public Calls, workshops and more.
@@ -136,7 +136,7 @@ export default function Home() {
                   className={styles.sectionTitle}
                   style={{ marginBottom: '0.2rem', textAlign: 'left' }}
                 >
-                  Latest Releases
+                  Media Connectivity Software Accelerator: Latest Releases
                 </h2>
                 <p className={styles.releasesUpdated}>Updated: {releasesData.updated_at}</p>
               </div>
@@ -164,7 +164,7 @@ export default function Home() {
                   Where to Find Us
                 </h2>
                 <p className={styles.releasesUpdated}>
-                  Conferences, workshops, webinars and calls
+                  Events, conferences, workshops, webinars and calls
                 </p>
               </div>
               <Link className={styles.releasesViewAll} to="/events#agenda">
@@ -185,7 +185,7 @@ export default function Home() {
             </p>
           </div>
           <MembersMarquee />
-          <div className="container" style={{ textAlign: 'center', marginTop: '1.5rem' }}>
+          <div className="container" style={{ textAlign: 'center', marginTop: '1.5rem', fontWeight: 600 }}>
             <Link to="/membership#our-members">See all members &rarr;</Link>
           </div>
         </section>

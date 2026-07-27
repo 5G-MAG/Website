@@ -249,6 +249,15 @@ export default function HeroSlideshow() {
                   >
                     About Us
                   </Link>
+                  <Link
+                    className={clsx(
+                      'button button--outline button--primary',
+                      styles.slideBtnOutline
+                    )}
+                    to="/subscribe"
+                  >
+                    Subscribe to Updates
+                  </Link>
                 </div>
               </div>
               <HeroFigure tiles={HOME_TILES} />
