@@ -611,6 +611,47 @@
   margin: 1.5rem 0;
 }
 
+/* Compact label/value facts card (event date, location, organizers...) --
+   a styled alternative to a raw markdown table, matching the rounded-card
+   language used everywhere else (community-tile, archive-panel) instead of
+   a bare browser <table>. */
+.event-facts {
+  max-width: 560px;
+  margin: 1.5rem auto;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 10px;
+  background: var(--ifm-background-surface-color);
+  overflow: hidden;
+}
+.event-fact {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 0.5rem 1rem;
+  padding: 0.7rem 1.25rem;
+  align-items: baseline;
+}
+.event-fact:not(:last-child) {
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+.event-fact__label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ifm-color-emphasis-600);
+}
+.event-fact__value {
+  font-size: 0.95rem;
+  color: var(--ifm-color-emphasis-800);
+}
+@media (max-width: 520px) {
+  .event-fact {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+    padding: 0.6rem 1.1rem;
+  }
+}
+
 .community-contributors {
   display: flex;
   gap: 1.5rem;

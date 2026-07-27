@@ -6,7 +6,7 @@ import styles from './styles.module.css';
 // full-screen lightbox on click, with keyboard (Escape/Left/Right) and
 // backdrop-click support. `photos` is [{ src, alt }], with src already
 // resolved (e.g. via useBaseUrl) by the caller.
-export default function PhotoGallery({ photos }) {
+export default function PhotoGallery({ photos, thumbAspect = '1 / 1', columns }) {
   const [activeIndex, setActiveIndex] = useState(null);
   const isOpen = activeIndex !== null;
 
@@ -31,7 +31,10 @@ export default function PhotoGallery({ photos }) {
 
   return (
     <>
-      <div className={styles.grid}>
+      <div
+        className={clsx(styles.grid, columns && styles.gridFixedCols)}
+        style={columns ? { '--gallery-cols': columns } : undefined}
+      >
         {photos.map((photo, index) => (
           <button
             key={photo.src}
@@ -40,7 +43,7 @@ export default function PhotoGallery({ photos }) {
             onClick={() => setActiveIndex(index)}
             aria-label={`View larger photo: ${photo.alt}`}
           >
-            <img loading="lazy" src={photo.src} alt={photo.alt} />
+            <img loading="lazy" src={photo.src} alt={photo.alt} style={{ aspectRatio: thumbAspect }} />
           </button>
         ))}
       </div>
