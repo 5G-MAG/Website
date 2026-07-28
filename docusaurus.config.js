@@ -568,7 +568,7 @@ const config = {
           items: [{ label: 'Overview', to: '/testing' }],
         },
         {
-          title: 'See It In Action',
+          title: 'Our Work In Action',
           items: [
             { label: 'All Videos', to: '/videos' },
             { label: 'Workshops', to: '/workshops' },
