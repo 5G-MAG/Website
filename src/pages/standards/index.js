@@ -244,7 +244,7 @@ const WHATS_HERE = [
     icon: icon(LS_ICON_PATH),
   },
   {
-    title: 'Workshops Supporting Standardization',
+    title: 'Workshops for Standards',
     desc: 'The workshops that fed directly into 3GPP study and work items.',
     href: '/standards/#standards-workshops',
     icon: icon(WORKSHOPS_ICON_PATH),
@@ -517,10 +517,10 @@ export default function Standards() {
           </div>
         </section>
 
-        {/* Workshops Supporting Standardization */}
+        {/* Workshops for Standards */}
         <section id="standards-workshops" className={styles.section}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Workshops Supporting Standardization</h2>
+            <h2 className={styles.sectionTitle}>Workshops for Standards</h2>
             <p className={styles.sectionSubtitle}>
               Of the full workshop &amp; session archive, these fed directly into named 3GPP study
               or work items.

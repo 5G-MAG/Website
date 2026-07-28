@@ -61,6 +61,7 @@ export const SECTION_NAV = [
       '/applications',
       '/early-access',
       '/community',
+      '/license',
     ],
     title: 'Software Accelerator',
     titleHref: '/developer',
@@ -93,20 +94,20 @@ export const SECTION_NAV = [
     items: [
       { label: 'Technology Exchanges', href: '/tech/exchanges' },
       { label: 'Glossary', href: '/tech/glossary' },
-      { label: 'Requirements', href: '/standards/requirements' },
-      { label: 'Feedback', href: '/standards' },
     ],
   },
   {
-    prefixes: ['/standards'],
+    prefixes: ['/standards', '/surveys'],
     title: 'Feedback & Requirements',
     titleHref: '/standards',
+    // Matches /standards's own "What You'll Find Here" card grid exactly,
+    // same order — same 5 destinations, listed once, not two drifting sets.
     items: [
+      { label: 'Requirements towards SDOs', href: '/standards/requirements' },
+      { label: 'Industry Surveys', href: '/surveys' },
       { label: 'Feedback to SDOs', href: '/standards#feedback' },
       { label: 'Liaison Statements & Inputs', href: '/standards/ls' },
       { label: 'Workshops for Standards', href: '/standards#standards-workshops' },
-      { label: 'Requirements towards SDOs', href: '/standards/requirements' },
-      { label: 'Meetings with 3GPP SA4', href: '/standards/3gpp-issue-tracking' },
     ],
   },
   {
@@ -122,7 +123,7 @@ export const SECTION_NAV = [
     ],
   },
   {
-    prefixes: ['/events', '/public-call', '/workshops'],
+    prefixes: ['/events', '/public-call', '/workshops', '/oscar', '/osmart'],
     title: 'Events',
     titleHref: '/events',
     items: [
@@ -132,6 +133,8 @@ export const SECTION_NAV = [
       { label: 'FMT', href: '/fmt' },
       { label: 'Community Workshops', href: '/events#workshops' },
       { label: 'Workshop Archive', href: '/workshops' },
+      { label: 'OSCAR Workshop', href: '/oscar' },
+      { label: 'OSMART Workshops', href: '/osmart' },
     ],
   },
   {
