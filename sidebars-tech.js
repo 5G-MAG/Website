@@ -15,7 +15,7 @@ const sidebars = {
     // not Feedback/Requirements/LS, so they belong under Explainers &
     // Profiles rather than Standards.
     { type: 'html', value: 'Resources', className: 'sidebar-section-label', defaultStyle: false },
-    'videos',
+    'exchanges',
     'glossary',
     '3gpp-work-items',
 
