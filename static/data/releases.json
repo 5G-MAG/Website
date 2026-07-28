@@ -1,11 +1,12 @@
 {
-  "updated_at": "2026-07-26 14:16 UTC",
+  "updated_at": "2026-07-28 01:13 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
       "doc_url": "/reference-tools/5gms/",
       "tagline": "End-to-end 5G media streaming from network to client · 3GPP TS 26.501",
       "releases_slug": "resources",
+      "image": "/assets/images/projects/5gms.png",
       "latest_date": "2026-05-26",
       "releases": [
         {
@@ -80,14 +81,14 @@
           "author_login": "davidjwbbc",
           "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4"
         }
-      ],
-      "image": "/assets/images/projects/5gms.png"
+      ]
     },
     {
       "name": "5G Broadcast - TV and Radio Services",
       "doc_url": "/reference-tools/5g-broadcast/",
       "tagline": "LTE-based 5G broadcast for TV, radio and emergency alerts",
       "releases_slug": "resources",
+      "image": "/assets/images/projects/5g-broadcast.png",
       "latest_date": "2026-04-24",
       "releases": [
         {
@@ -162,14 +163,14 @@
           "author_login": "dsilhavy",
           "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
         }
-      ],
-      "image": "/assets/images/projects/5g-broadcast.png"
+      ]
     },
     {
       "name": "5G Broadcast - Emergency Alerts",
       "doc_url": "/reference-tools/emergency-alerts/",
       "tagline": "Cell Broadcast Service warnings delivered over FeMBMS",
       "releases_slug": "resources",
+      "image": "/assets/images/projects/emergency-alerts.png",
       "latest_date": "2024-09-05",
       "releases": [
         {
@@ -181,14 +182,14 @@
           "author_login": "dsilhavy",
           "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
         }
-      ],
-      "image": "/assets/images/projects/emergency-alerts.png"
+      ]
     },
     {
       "name": "XR/3D Scenes with MPEG-I Scene Description",
       "doc_url": "/reference-tools/xr/",
       "tagline": "MPEG-I scene description and XR media integration over 5G",
       "releases_slug": "resources",
+      "image": "/assets/images/projects/xr.png",
       "latest_date": "2025-04-16",
       "releases": [
         {
@@ -209,14 +210,14 @@
           "author_login": "nlsdvl",
           "author_avatar": "https://avatars.githubusercontent.com/u/2748737?v=4"
         }
-      ],
-      "image": "/assets/images/projects/xr.png"
+      ]
     },
     {
       "name": "5G Multicast Broadcast Services (MBS)",
       "doc_url": "/reference-tools/5g-mbs/",
       "tagline": "5G-native multicast and broadcast services · 3GPP 5G MBS",
       "releases_slug": "resources",
+      "image": "/assets/images/projects/5g-mbs.png",
       "latest_date": "2026-07-14",
       "releases": [
         {
@@ -263,15 +264,24 @@
           "url": "https://github.com/5G-MAG/rt-libflute/releases/tag/rt-libflute-0.12.3",
           "author_login": "dsilhavy",
           "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
+        },
+        {
+          "repo": "rt-srsRAN_Project",
+          "branch": "5mbs",
+          "tag": "",
+          "date": "-",
+          "url": "https://github.com/5G-MAG/rt-srsRAN_Project/releases/tag/untagged-5cb9b23f9589c4fbefed",
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4"
         }
-      ],
-      "image": "/assets/images/projects/5g-mbs.png"
+      ]
     },
     {
       "name": "UE Data Collection, Reporting and Event Exposure",
       "doc_url": "/reference-tools/data-collection/",
       "tagline": "UE-side data collection, reporting and event exposure · 3GPP TS 26.531",
       "releases_slug": "resources",
+      "image": "/assets/images/projects/data-collection.png",
       "latest_date": "2025-05-13",
       "releases": [
         {
@@ -283,14 +293,14 @@
           "author_login": "davidjwbbc",
           "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4"
         }
-      ],
-      "image": "/assets/images/projects/data-collection.png"
+      ]
     },
     {
       "name": "MPEG V3C Immersive Platform",
       "doc_url": "/reference-tools/v3c/",
       "tagline": "V3C volumetric video platform for immersive 5G experiences",
       "releases_slug": "resources",
+      "image": "/assets/images/projects/v3c.png",
       "latest_date": "2025-10-09",
       "releases": [
         {
@@ -320,14 +330,14 @@
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4"
         }
-      ],
-      "image": "/assets/images/projects/v3c.png"
+      ]
     },
     {
       "name": "5G Core Service Consumers",
       "doc_url": "/reference-tools/5g-core/",
       "tagline": "Reference consumers for 5G Core capability exposure APIs",
       "releases_slug": "resources",
+      "image": "/assets/images/projects/5g-core.png",
       "latest_date": "2026-06-05",
       "releases": [
         {
@@ -339,14 +349,14 @@
           "author_login": "davidjwbbc",
           "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4"
         }
-      ],
-      "image": "/assets/images/projects/5g-core.png"
+      ]
     },
     {
       "name": "Beyond 2D Evaluation Framework",
       "doc_url": "/testbeds/beyond-2d/",
       "tagline": "Evaluation framework for beyond-2D video experiences",
       "releases_slug": "resources",
+      "image": "/assets/images/projects/beyond-2d.png",
       "latest_date": "2025-07-24",
       "releases": [
         {
@@ -358,14 +368,14 @@
           "author_login": "bart-kroon",
           "author_avatar": "https://avatars.githubusercontent.com/u/78917078?v=4"
         }
-      ],
-      "image": "/assets/images/projects/beyond-2d.png"
+      ]
     },
     {
       "name": "DVB-I Services over 5G Systems",
       "doc_url": "/reference-tools/dvb-i/",
       "tagline": "DVB-I service discovery combined with 5GMS and 5G Broadcast delivery",
       "releases_slug": "resources",
+      "image": "/assets/images/projects/dvb-i.png",
       "latest_date": "2026-05-26",
       "releases": [
         {
@@ -377,14 +387,14 @@
           "author_login": "dsilhavy",
           "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
         }
-      ],
-      "image": "/assets/images/projects/dvb-i.png"
+      ]
     },
     {
       "name": "Multimedia Delivery Protocols",
       "doc_url": "/reference-tools/multimedia/",
       "tagline": "DASH, HLS and CMAF multimedia delivery reference tools",
       "releases_slug": "resources",
+      "image": "/assets/images/projects/multimedia.png",
       "latest_date": "2026-04-24",
       "releases": [
         {
@@ -396,8 +406,7 @@
           "author_login": "dsilhavy",
           "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
         }
-      ],
-      "image": "/assets/images/projects/multimedia.png"
+      ]
     }
   ]
 }
