@@ -79,31 +79,6 @@
   line-height: 1.6;
 }
 
-.projectList {
-  list-style: none;
-  margin: 0 0 1.25rem;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-.projectList li {
-  padding-left: 1.1rem;
-  position: relative;
-  font-weight: 600;
-  font-size: 0.92rem;
-}
-.projectList li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.55rem;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--ea-accent);
-}
-
 @media (max-width: 640px) {
   .callout {
     flex-direction: column;
