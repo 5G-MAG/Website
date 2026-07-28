@@ -4,7 +4,6 @@ import HubHero from '@site/src/components/HubHero';
 import ContactForm from '@site/src/components/ContactForm';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import GodeeperCard from '@site/src/components/GodeeperCard';
-import EarlyAccessCallout from '@site/src/components/EarlyAccessCallout';
 import { FACT_REPOSITORIES, FACT_CLONES, FACT_LARGE_EVENTS, FACT_YEARLY_CONFERENCE } from '@site/src/data/facts';
 import { MEMBERS } from '@site/src/data/members';
 import styles from '../tech/index.module.css';
@@ -171,12 +170,6 @@ export default function Membership() {
                 <GodeeperCard key={b.title} {...b} />
               ))}
             </div>
-          </div>
-        </section>
-
-        <section className={styles.section}>
-          <div className="container">
-            <EarlyAccessCallout />
           </div>
         </section>
 
