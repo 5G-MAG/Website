@@ -5,12 +5,13 @@
 // alphabetical order by name.
 export const CONTRIBUTORS = [
   { name: 'BBC - British Broadcasting Corporation', href: 'https://www.bbc.co.uk', logo: 'bbc.jpg' },
-  { name: 'Big Blue Marble - ORF', href: 'https://www.bigbluemarble.com', logo: 'bigbluemarble.png' },
+  { name: 'Big Blue Marble', href: 'https://www.bigbluemarble.com', logo: 'bigbluemarble.png' },
   { name: 'Bitstem', href: 'https://www.bitstem.com', logo: 'bitstem.png' },
   { name: 'Dolby Laboratories', href: 'https://www.dolby.com', logo: 'dolby.png' },
   { name: 'EBU - European Broadcasting Union', href: 'https://www.ebu.ch', logo: 'ebu.png' },
   { name: 'Ericsson', href: 'https://www.ericsson.com', logo: 'ericsson.png' },
   { name: 'Fraunhofer FOKUS', href: 'https://www.fokus.fraunhofer.de', logo: 'fraunhofer-fokus.png' },
+  { name: 'Huawei', href: 'https://www.huawei.com', logo: 'huawei.jpg' },
   { name: 'idTOLU', href: 'https://www.idtolu.com', logo: 'idtolu.png' },
   { name: 'InterDigital', href: 'https://www.interdigital.com', logo: 'interdigital.png' },
   { name: 'iTEAM - Universitat Politècnica de València', href: 'https://www.iteam.upv.es', logo: 'iteam.png' },

@@ -15,6 +15,12 @@
       "rt-5gms-application-provider",
       "rt-common-shared",
       "rt-5gms-examples"
+    ],
+    "contributors": [
+      "BBC - British Broadcasting Corporation",
+      "Fraunhofer FOKUS",
+      "Dolby Laboratories",
+      "Qualcomm"
     ]
   },
   {
@@ -36,7 +42,14 @@
         "branch": "main"
       }
     ],
-    "releases_slug": "resources"
+    "releases_slug": "resources",
+    "contributors": [
+      "Fraunhofer FOKUS",
+      "iTEAM - Universitat Politècnica de València",
+      "Big Blue Marble",
+      "Bitstem",
+      "Qualcomm"
+    ]
   },
   {
     "name": "5G Broadcast - Emergency Alerts",
@@ -49,7 +62,11 @@
         "branch": "emergency-alerts"
       }
     ],
-    "releases_slug": "resources"
+    "releases_slug": "resources",
+    "contributors": [
+      "Big Blue Marble",
+      "Fraunhofer FOKUS"
+    ]
   },
   {
     "name": "XR/3D Scenes with MPEG-I Scene Description",
@@ -64,7 +81,13 @@
       "rt-common-shared",
       "rt-xr-gITFast"
     ],
-    "releases_slug": "resources"
+    "releases_slug": "resources",
+    "contributors": [
+      "Motion Spell",
+      "InterDigital",
+      "Fraunhofer FOKUS",
+      "Qualcomm"
+    ]
   },
   {
     "name": "5G Multicast Broadcast Services (MBS)",
@@ -90,7 +113,12 @@
         "branch": "5mbs"
       }
     ],
-    "releases_slug": "resources"
+    "releases_slug": "resources",
+    "contributors": [
+      "BBC - British Broadcasting Corporation",
+      "Fraunhofer FOKUS",
+      "Universitat Politècnica de València"
+    ]
   },
   {
     "name": "UE Data Collection, Reporting and Event Exposure",
@@ -101,7 +129,11 @@
       "rt-data-collection-application-function",
       "rt-common-shared"
     ],
-    "releases_slug": "resources"
+    "releases_slug": "resources",
+    "contributors": [
+      "BBC - British Broadcasting Corporation",
+      "Fraunhofer FOKUS"
+    ]
   },
   {
     "name": "MPEG V3C Immersive Platform",
@@ -114,7 +146,11 @@
       "rt-v3c-content",
       "rt-common-shared"
     ],
-    "releases_slug": "resources"
+    "releases_slug": "resources",
+    "contributors": [
+      "InterDigital",
+      "Philips"
+    ]
   },
   {
     "name": "5G Core Service Consumers",
@@ -125,7 +161,11 @@
       "rt-5gc-service-consumers",
       "rt-common-shared"
     ],
-    "releases_slug": "resources"
+    "releases_slug": "resources",
+    "contributors": [
+      "BBC - British Broadcasting Corporation",
+      "Fraunhofer FOKUS"
+    ]
   },
   {
     "name": "Beyond 2D Evaluation Framework",
@@ -136,7 +176,11 @@
       "rt-beyond2d-evaluation-framework",
       "rt-common-shared"
     ],
-    "releases_slug": "resources"
+    "releases_slug": "resources",
+    "contributors": [
+      "Philips",
+      "InterDigital"
+    ]
   },
   {
     "name": "AI Traffic Characterization",
@@ -147,7 +191,10 @@
       "6G-Testbed",
       "rt-common-shared"
     ],
-    "releases_slug": "resources"
+    "releases_slug": "resources",
+    "contributors": [
+      "Qualcomm"
+    ]
   },
   {
     "name": "CAMARA Connectivity Quality Management APIs",
@@ -158,7 +205,11 @@
       "rt-camara-examples",
       "rt-common-shared"
     ],
-    "releases_slug": "resources"
+    "releases_slug": "resources",
+    "contributors": [
+      "Ericsson",
+      "iTEAM - Universitat Politècnica de València"
+    ]
   },
   {
     "name": "Conversational Avatar Communication with MPEG ARF",
@@ -171,7 +222,12 @@
       "rt-avatar-unity-tracker",
       "rt-3gpp-swap"
     ],
-    "releases_slug": "resources"
+    "releases_slug": "resources",
+    "contributors": [
+      "Motion Spell",
+      "Qualcomm",
+      "InterDigital"
+    ]
   },
   {
     "name": "AI/ML Evaluation Framework",
@@ -181,7 +237,11 @@
     "repos": [
       "rt-ai-ml-evaluation-framework"
     ],
-    "releases_slug": "resources"
+    "releases_slug": "resources",
+    "contributors": [
+      "Qualcomm",
+      "InterDigital"
+    ]
   },
   {
     "name": "Common Tools",
@@ -201,7 +261,13 @@
     "repos": [
       "rt-5gms-application"
     ],
-    "releases_slug": "resources"
+    "releases_slug": "resources",
+    "contributors": [
+      "Fraunhofer FOKUS",
+      "Dolby Laboratories",
+      "Qualcomm",
+      "BBC - British Broadcasting Corporation"
+    ]
   },
   {
     "name": "Multimedia Delivery Protocols",
@@ -215,7 +281,12 @@
         "branch": "route-gpac"
       }
     ],
-    "releases_slug": "resources"
+    "releases_slug": "resources",
+    "contributors": [
+      "BBC - British Broadcasting Corporation",
+      "Fraunhofer FOKUS",
+      "Big Blue Marble"
+    ]
   },
   {
     "name": "3GPP RAN and Core Platforms",

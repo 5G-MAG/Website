@@ -1,5 +1,8 @@
 import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import releasesData from '@site/static/data/releases.json';
+import projectsData from '@site/src/data/projects.json';
+import { CONTRIBUTORS } from '@site/src/data/contributors';
 import styles from './styles.module.css';
 
 function daysSince(dateStr) {
@@ -24,6 +27,23 @@ function formatDate(dateStr) {
   return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
 }
 
+function ContributorAvatar({ company }) {
+  const c = CONTRIBUTORS.find((entry) => entry.name === company);
+  const logoSrc = useBaseUrl(c ? `/assets/images/contributors/${c.logo}` : undefined);
+  if (!c) return null;
+  return (
+    <a
+      href={c.href}
+      target="_blank"
+      rel="noreferrer"
+      title={c.name}
+      className={styles.contributorAvatar}
+    >
+      <img src={logoSrc} alt={c.name} loading="lazy" />
+    </a>
+  );
+}
+
 function ProjectCard({ project }) {
   const latest = [...project.releases]
     .filter((r) => r.date !== '-')
@@ -31,6 +51,7 @@ function ProjectCard({ project }) {
   const days = latest ? daysSince(latest.date) : 9999;
   const repoCount = project.releases.length;
   const releaseUrl = project.doc_url ? project.doc_url + (project.releases_slug || 'resources') : null;
+  const contributors = projectsData.find((p) => p.name === project.name)?.contributors;
 
   return (
     <div className={styles.projectCard}>
@@ -49,6 +70,13 @@ function ProjectCard({ project }) {
           </span>
         )}
       </div>
+      {contributors && contributors.length > 0 && (
+        <div className={styles.projectCardContributors}>
+          {contributors.map((company) => (
+            <ContributorAvatar key={company} company={company} />
+          ))}
+        </div>
+      )}
       {(releaseUrl || project.doc_url) && (
         <div className={styles.projectCardFooter}>
           {releaseUrl && (
