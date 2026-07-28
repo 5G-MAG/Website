@@ -291,7 +291,18 @@ export default function HeroSlideshow() {
                     </h2>
                   </div>
                   <div className={styles.slideCardBody} style={{ display: 'block' }}>
-                    <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.95rem', lineHeight: 1.6, margin: 0 }}>
+                    <p
+                      style={{
+                        color: 'rgba(255,255,255,0.85)',
+                        fontSize: '0.95rem',
+                        lineHeight: 1.6,
+                        margin: 0,
+                        display: '-webkit-box',
+                        WebkitLineClamp: 3,
+                        WebkitBoxOrient: 'vertical',
+                        overflow: 'hidden',
+                      }}
+                    >
                       {slide.excerpt}
                     </p>
                   </div>
