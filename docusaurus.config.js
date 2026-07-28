@@ -25,35 +25,17 @@ const config = {
 
   future: { v4: true },
 
-  // Decision (2026-07-18): consolidate onto the main www.5g-mag.com domain
-  // long-term. tech.5g-mag.com and getting-started.5g-mag.com are to be
-  // retired; developer.5g-mag.com is the only subdomain to remain,
-  // redirecting to /developer. NONE of that domain/DNS work can happen
-  // from this repo or this config value alone — it requires whoever
-  // manages 5G-MAG's DNS and GitHub Pages custom-domain setting to: (1)
-  // point www.5g-mag.com at this site's hosting, (2) decommission or
-  // redirect the old subdomains, and (3) set up developer.5g-mag.com as a
-  // redirect to www.5g-mag.com/developer (GitHub Pages serves one custom
-  // domain per site with no server-side per-subdomain redirect support,
-  // so that last step likely needs a small separate redirect mechanism —
-  // e.g. a DNS/CDN-level redirect rule, or a minimal static page at that
-  // domain — rather than anything Docusaurus itself can do).
-  //
-  // INTERIM (2026-07-23): serving this build under hub.5g-mag.com for
-  // testing before the www cutover above. hub.5g-mag.com is still claimed
-  // as another repo's custom domain at the account/org level, so this
-  // repo is currently only reachable as a project-page subpath underneath
-  // it (https://hub.5g-mag.com/Website/), not as its own root site —
-  // baseUrl is set to match that reality (confirmed via Docusaurus's own
-  // baseUrl-mismatch warning banner when it was still '/'). Once
-  // hub.5g-mag.com (or www.5g-mag.com, for the real cutover) is released
-  // and assigned as THIS repo's own custom domain, switch baseUrl back to
-  // '/' and re-add a static/CNAME file with the target domain (removed
-  // for now — a CNAME file claiming a root domain that's actively serving
-  // this build under a subpath is a contradiction that would only cause
-  // confusion if the domain conflict resolves unexpectedly).
-  url: 'https://hub.5g-mag.com',
-  baseUrl: '/Website/',
+  // Cutover (2026-07-28): www.5g-mag.com replaces the Wix-hosted site and
+  // becomes this repo's own GitHub Pages custom domain, ending the interim
+  // hub.5g-mag.com/Website/ subpath arrangement (hub.5g-mag.com itself is
+  // being eliminated, not redirected). This config change alone does
+  // nothing live -- it only takes effect once (1) 5G-MAG/Website's GitHub
+  // repo Settings -> Pages -> Custom domain is set to www.5g-mag.com, and
+  // (2) Gandi's DNS has a CNAME record for `www` pointing at
+  // 5g-mag.github.io, replacing whatever currently resolves it to Wix. Both
+  // of those are external, manual steps outside this repo.
+  url: 'https://www.5g-mag.com',
+  baseUrl: '/',
   organizationName: '5G-MAG',
   projectName: 'Website',
 
