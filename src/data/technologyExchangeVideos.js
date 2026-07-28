@@ -1,4 +1,4 @@
-// Technology Exchange (docs/tech/videos.mdx) groups videos by session, with
+// Technology Exchange (docs/tech/exchanges.mdx) groups videos by session, with
 // hand-written intro text and per-series bylines that can't come from a
 // YouTube feed automatically -- so the curated `sessions` array in that file
 // stays hand-maintained. This only backstops the gap: any video already in

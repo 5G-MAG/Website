@@ -35,7 +35,7 @@ const PLAYLISTS = {
   // "5G-MAG Demos" -- interop plugfest / trade-show demo recordings, feeds
   // the Interop & Demos page rather than the Developer or Workshops ones.
   demos: 'PLBwVxw5NGYvM',
-  // Feeds docs/tech/videos.mdx ("Technology Exchange") -- a separate
+  // Feeds docs/tech/exchanges.mdx ("Technology Exchange") -- a separate
   // category from Workshops/Developer Exchange/Public Call, grouped by
   // session rather than a flat list, so only backstops brand-new videos
   // not yet placed into a curated session (see technologyExchangeVideos.js).
