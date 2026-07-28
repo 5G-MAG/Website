@@ -4,7 +4,14 @@ import HubHero from '@site/src/components/HubHero';
 import ContactForm from '@site/src/components/ContactForm';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import GodeeperCard from '@site/src/components/GodeeperCard';
-import { FACT_REPOSITORIES, FACT_CLONES, FACT_LARGE_EVENTS, FACT_YEARLY_CONFERENCE } from '@site/src/data/facts';
+import {
+  FACT_REPOSITORIES,
+  FACT_CLONES,
+  FACT_LARGE_EVENTS,
+  FACT_YEARLY_CONFERENCE,
+  FACT_SPEC_ISSUES,
+  FACT_SDO_INPUTS,
+} from '@site/src/data/facts';
 import { MEMBERS } from '@site/src/data/members';
 import styles from '../tech/index.module.css';
 
@@ -107,6 +114,8 @@ const FACTS = [
   { value: '+15', label: 'Spec-compliant reference tools' },
   FACT_LARGE_EVENTS,
   FACT_YEARLY_CONFERENCE,
+  FACT_SPEC_ISSUES,
+  FACT_SDO_INPUTS,
 ];
 
 export default function Membership() {
