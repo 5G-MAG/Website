@@ -13,7 +13,6 @@ import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 
 export const projectVideos = (youtubePlaylists.projects?.['emergency-alerts']?.videos || []).slice(0, 1);
 
-
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -34,13 +33,11 @@ Reference implementation for delivering public warning and emergency alert messa
 
 The tools enable authorities and broadcasters to distribute alerts to all receivers in a coverage area simultaneously (without requiring a data connection or active SIM) using the Cell Broadcast Service (CBS) transported over LTE-based 5G Broadcast, also known as Further evolved Multimedia Broadcast Multicast Service (FeMBMS). The work builds on top of the 5G Broadcast - TV and Radio Services platform and has been demonstrated in broadcast network setups; for the current implementation status, see the caveat on the [Scope](./scope) page.
 
-:::tip[Where to start]
-- **Scope** for what the Emergency Alerts tools implement and how they add Cell Broadcast Service (CBS) public warnings to the 5G Broadcast transmit and receive chain — see [Scope](./scope).
-- **Resources** for the source code, repositories and latest releases — see [Resources](./resources).
-- **Tutorials** for the end-to-end walkthrough to broadcast a CBS alert and receive it on a device — see [Tutorials](./tutorials).
-:::
-
 **Implemented specifications:** ETSI TS 103 720 (5G Broadcast System, including CBS transport), 3GPP [TS 23.041](https://www.3gpp.org/dynareport/23041.htm) (Cell Broadcast Service architecture), [TR 36.976](https://www.3gpp.org/dynareport/36976.htm) (LTE-based 5G Broadcast overview).
+
+## Contributors
+
+<ProjectContributors name="5G Broadcast - Emergency Alerts" />
 
 ## Project Overview
 
@@ -72,6 +69,3 @@ See the Reference Tools in action, with a community video from the tutorials pag
 
 <CommunityStats name="5G Broadcast - Emergency Alerts" />
 
-## Contributors
-
-<ProjectContributors name="5G Broadcast - Emergency Alerts" />

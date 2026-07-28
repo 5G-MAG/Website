@@ -13,7 +13,6 @@ import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 
 export const projectVideos = (youtubePlaylists.projects?.['5gms']?.videos || []).slice(0, 1);
 
-
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -32,13 +31,11 @@ Reference implementation of the 5G Media Streaming (5GMS) framework defined by 3
 
 The tools cover two server-side roles: the Application Function (AF), which handles provisioning, configuration and reporting, and the Application Server (AS), which caches and delivers the media. Both target 5G Unicast Downlink Media Streaming (5GMSd), adaptive bitrate streaming from the network to user equipment (UE). The current AF and AS implementations are based on Release 17 ([TS 26.512](https://www.3gpp.org/dynareport/26512.htm)); see the [Scope](./scope) page for the exact feature and specification coverage. Use these tools to build, test, and validate 5GMSd-compliant pipelines on 5G networks.
 
-:::tip[Where to start]
-- **Scope** for the 5GMSd architecture, reference points and which features and specifications are implemented; see [Scope](./scope).
-- **Resources** for the source code, repositories and latest releases; see [Resources](./resources).
-- **Tutorials** for walkthroughs to deploy and test the AF and AS, starting with the Docker end-to-end setup; see [Tutorials](./tutorials).
-:::
-
 **Implemented specifications:** 3GPP [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) (5GMS general description and architecture), TS 26.512 (5GMS protocols and APIs), [TS 26.511](https://www.3gpp.org/dynareport/26511.htm) (5GMS profiles, codecs and formats), and, from Release 18, [TS 26.510](https://www.3gpp.org/dynareport/26510.htm) (generalised media delivery provisioning and media session handling). For the full normative list, see the [Standards portal](/tech/standards/5gms).
+
+## Contributors
+
+<ProjectContributors name="5G Media Streaming (5GMS)" />
 
 ## Project Overview
 
@@ -52,6 +49,10 @@ The slide deck below introduces the 5G Media Streaming project, its components a
 
 ---
 
+## In Action
+
+<ProjectVideos videos={projectVideos} name="5G Media Streaming" />
+
 ## Go deeper
 
 | Area                        | Details                                                                                                               |
@@ -60,14 +61,7 @@ The slide deck below introduces the 5G Media Streaming project, its components a
 | **Standards**               | Normative specifications and 5G-MAG contributions: [5G Media Streaming on the Standards portal](/tech/standards/5gms) |
 | **Applications**            | Real, assembled scenarios built on this tool: [Media Streaming, Multicast & Real-Time Communications](/applications/streaming) |
 
-Hear from the team building this:
-
-<ProjectVideos videos={projectVideos} name="5G Media Streaming" />
-
 ## Community Stats
 
 <CommunityStats name="5G Media Streaming (5GMS)" />
 
-## Contributors
-
-<ProjectContributors name="5G Media Streaming (5GMS)" />

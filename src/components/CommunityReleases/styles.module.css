@@ -98,6 +98,14 @@
   height: 100%;
   object-fit: contain;
   display: block;
+  /* Cancel .markdown img's border/shadow/dark-mode background (this
+     page is docs/home/community/index.mdx) -- the circular chip
+     styling above is the only frame these should have. */
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: none !important;
+  padding: 0 !important;
 }
 
 .projectCardFooter {

@@ -45,25 +45,6 @@
   }
 }
 
-.memberCard {
-  background: var(--ifm-background-surface-color);
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 10px;
-  padding: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-}
-
-.memberCardLabel {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--ifm-color-emphasis-800);
-  text-align: center;
-  line-height: 1.25;
-}
 
 /* ── Activity Cards ─────────────────────────────────────────────────── */
 

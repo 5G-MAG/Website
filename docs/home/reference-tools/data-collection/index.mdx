@@ -13,7 +13,6 @@ import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 
 export const projectVideos = (youtubePlaylists.projects?.['data-collection']?.videos || []).slice(0, 1);
 
-
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -38,11 +37,9 @@ The tools enable 5G devices to collect, aggregate, and report media performance 
 
 **Implemented specifications:** 3GPP TS 26.531 (data collection and reporting framework), [TS 26.532](https://www.3gpp.org/dynareport/26532.htm) (data collection client procedures), [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) (5GMS AF interfaces for data reporting submission). The interfaces these specifications define are referred to on the [Scope](./scope) page by their reference-point names R1 to R6.
 
-:::tip[Where to start]
-- **Scope** for the DCAF architecture and the R1 (provisioning), R6 (event exposure) and R2 (direct data reporting) interfaces it implements — see [Scope](./scope).
-- **Resources** for the source code, repositories and latest releases — see [Resources](./resources).
-- **Tutorials** for the Docker and Insomnia walkthrough that sets up the DCAF and exercises its R1, R6 and R2 REST APIs — see [Tutorials](./tutorials).
-:::
+## Contributors
+
+<ProjectContributors name="UE Data Collection, Reporting and Event Exposure" />
 
 ## Project Overview
 
@@ -54,6 +51,10 @@ The tools enable 5G devices to collect, aggregate, and report media performance 
 
 ---
 
+## In Action
+
+<ProjectVideos videos={projectVideos} name="UE Data Collection" />
+
 ## Go deeper
 
 | Area                        | Details                                                                                                                                                   |
@@ -61,14 +62,7 @@ The tools enable 5G devices to collect, aggregate, and report media performance 
 | **Technical documentation** | Data collection architecture and event exposure interfaces: [UE Data Collection on the Tech portal](/tech/data-collection/data-collection-event-exposure) |
 | **Standards**               | TS 26.531/532 and event exposure specs: [UE Data Collection on the Standards portal](/tech/standards/data-collection)                                     |
 
-Hear from the team building this:
-
-<ProjectVideos videos={projectVideos} name="UE Data Collection" />
-
 ## Community Stats
 
 <CommunityStats name="UE Data Collection, Reporting and Event Exposure" />
 
-## Contributors
-
-<ProjectContributors name="UE Data Collection, Reporting and Event Exposure" />

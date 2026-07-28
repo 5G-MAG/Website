@@ -13,7 +13,6 @@ import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 
 export const projectVideos = (youtubePlaylists.projects?.['5g-broadcast']?.videos || []).slice(0, 1);
 
-
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -46,13 +45,6 @@ Reference transmitter (rt-mbms-tx) and receiver/modem (rt-mbms-modem) for LTE-ba
 
 _The 5G Broadcast Reference Tools transmitter, with the "5G-MAGflix" demo app receiving a live broadcast stream._
 
-:::tip[Where to start]
-
-- **Scope** for the feature support matrix across 3GPP Rel-14 to Rel-19, plus the architecture diagrams — see [Scope](./scope).
-- **Resources** for the source code, repositories and latest releases — see [Resources](./resources).
-- **Tutorials** for step-by-step guides to playback, seamless switching, Docker and measurements setups — see [Tutorials](./tutorials).
-  :::
-
 ### Tools at a glance
 
 The tutorials refer to the following repositories by name. This table maps each to its role in the broadcast chain.
@@ -66,6 +58,10 @@ The tutorials refer to the following repositories by name. This table maps each 
 | `rt-wui`                     | Web user interface for monitoring the modem and middleware                                            |
 | `rt-libflute`                | FLUTE (File Delivery over Unidirectional Transport) library used to encode and decode delivered files |
 | `flute-ffmpeg`               | Helper that creates a live stream and FLUTE-encodes it for transmission                               |
+
+## Contributors
+
+<ProjectContributors name="5G Broadcast - TV and Radio Services" />
 
 ## Project Overview
 
@@ -97,6 +93,3 @@ See the Reference Tools in action, with a community video from the tutorials pag
 
 <CommunityStats name="5G Broadcast - TV and Radio Services" />
 
-## Contributors
-
-<ProjectContributors name="5G Broadcast - TV and Radio Services" />
