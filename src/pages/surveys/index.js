@@ -58,15 +58,15 @@ export default function Surveys() {
 
   return (
     <Layout
-      title="Industry Survey"
-      description="Share your input through 5G-MAG's industry survey — help shape the requirements and priorities members bring to standards bodies."
+      title="Industry Surveys"
+      description="Share your input through 5G-MAG's industry surveys — help shape the requirements and priorities members bring to standards bodies."
     >
       <div className="container" style={{ marginTop: '1.75rem' }}>
         <div className="topic-banner">
           <div className="topic-banner__icon-wrap">{icon(SURVEY_ICON_PATH)}</div>
           <div className="topic-banner__text">
             <span className="topic-banner__kicker">Feedback &amp; Requirements</span>
-            <h1>Industry Survey</h1>
+            <h1>Industry Surveys</h1>
           </div>
         </div>
         <p className="topic-lead">

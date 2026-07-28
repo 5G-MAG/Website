@@ -241,7 +241,7 @@ const WHATS_HERE = [
     icon: icon(DIAGRAM_ICON_PATH),
   },
   {
-    title: 'Industry Survey',
+    title: 'Industry Surveys',
     desc: 'Share your input to help shape the requirements 5G-MAG brings to standards bodies.',
     href: '/surveys',
     icon: icon(SURVEY_ICON_PATH),
