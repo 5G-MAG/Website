@@ -1,0 +1,112 @@
+/* A distinct amber/gold treatment (vs. the site's teal-blue primary
+   everywhere else) so a members-only benefit reads as its own tier at a
+   glance, not just another card in the same color as everything else.
+   Tokens are set on .callout itself (not :root, which CSS Modules doesn't
+   scope predictably) and inherited by every descendant below via var(). */
+.callout {
+  --ea-accent: #b8860b;
+  --ea-border: #e7c988;
+  --ea-bg: #fdf8ec;
+
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 1.75rem 2rem;
+  border: 1px solid var(--ea-border);
+  border-left: 4px solid var(--ea-accent);
+  border-radius: 12px;
+  background: var(--ea-bg);
+}
+
+@media (prefers-color-scheme: dark) {
+  .callout {
+    --ea-accent: #e0b84e;
+    --ea-border: #4a3c1f;
+    --ea-bg: #24200f;
+  }
+}
+:global([data-theme='dark']) .callout {
+  --ea-accent: #e0b84e;
+  --ea-border: #4a3c1f;
+  --ea-bg: #24200f;
+}
+:global([data-theme='light']) .callout {
+  --ea-accent: #b8860b;
+  --ea-border: #e7c988;
+  --ea-bg: #fdf8ec;
+}
+
+.iconWrap {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ea-accent);
+  color: #fff;
+}
+.iconWrap svg {
+  width: 26px;
+  height: 26px;
+}
+
+.body {
+  flex: 1;
+}
+
+.kicker {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ea-accent);
+  margin-bottom: 0.3rem;
+}
+
+.title {
+  margin: 0 0 0.5rem;
+  font-size: 1.3rem;
+}
+
+.desc {
+  margin: 0 0 1rem;
+  color: var(--ifm-color-emphasis-700);
+  line-height: 1.6;
+}
+
+.projectList {
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.projectList li {
+  padding-left: 1.1rem;
+  position: relative;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+.projectList li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ea-accent);
+}
+
+@media (max-width: 640px) {
+  .callout {
+    flex-direction: column;
+    padding: 1.5rem;
+  }
+}

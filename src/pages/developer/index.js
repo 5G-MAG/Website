@@ -3,6 +3,7 @@ import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
+import EarlyAccessCallout from '@site/src/components/EarlyAccessCallout';
 import ProjectIcon from '@site/src/components/ProjectIcon';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import VideoGrid from '@site/src/components/VideoGrid';
@@ -253,6 +254,13 @@ export default function Home() {
                 <ProductTypeCard key={item.href} {...item} />
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Early Access */}
+        <section className={styles.section}>
+          <div className="container">
+            <EarlyAccessCallout />
           </div>
         </section>
 

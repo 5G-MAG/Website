@@ -10,6 +10,7 @@ import { icon } from '@site/src/components/GodeeperCard';
 import VideoGrid from '@site/src/components/VideoGrid';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import ReleaseCard from '@site/src/components/ReleaseCard';
+import EarlyAccessCallout from '@site/src/components/EarlyAccessCallout';
 import { EventsAgendaPreview } from '@site/src/components/EventsAgenda';
 import { DISCOVER_WORK } from '@site/src/data/discoverWork';
 import { EVENTS_AGENDA } from '@site/src/data/eventsAgenda';
@@ -149,6 +150,13 @@ export default function Home() {
                 <ReleaseCard key={project.name} project={project} />
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Early Access */}
+        <section className={styles.section}>
+          <div className="container">
+            <EarlyAccessCallout compact />
           </div>
         </section>
 

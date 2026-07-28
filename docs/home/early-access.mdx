@@ -9,6 +9,7 @@ description: Request early access to 5G-MAG Reference Tools repositories that ar
 
 import EarlyAccessForm from '@site/src/components/EarlyAccessForm';
 import { SLACK_INVITE_URL } from '@site/src/data/socialLinks';
+import { EARLY_ACCESS_PROJECTS } from '@site/src/data/earlyAccessProjects';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <div class="topic-banner">
@@ -34,11 +35,34 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 </div>
 
 <div class="topic-lead">
-  Some 5G-MAG Reference Tools repositories are still in development and set to private. Request
-  early access below and the team will get back to you.
+  A small number of projects are still in development and set to private. Members and active
+  contributors can request access below — every request is reviewed manually, based on who you
+  are and your answers in the form, not granted automatically.
 </div>
 
+## Currently in Early Access
+
+<div class="community-tiles community-tiles--even">
+
+{EARLY_ACCESS_PROJECTS.map((p) => (
+  <a key={p.href} href={useBaseUrl(p.href)} class="community-tile">
+    <strong>{p.name}</strong>
+    <span class="tile-desc">{p.desc}</span>
+    <span class="tile-cta">View project &rarr;</span>
+  </a>
+))}
+
+</div>
+
+Only these projects are currently gated — everything else in the [Reference Tools](/reference-tools) and [Testbeds](/testbeds) portfolio is already public.
+
 ## Request early access
+
+<p>
+  Fill in the form below to request access to one of the projects above. There is no automatic
+  approval: the 5G-MAG team reviews each request manually, taking into account your affiliation,
+  GitHub activity, contributor status and membership status.
+</p>
 
 <EarlyAccessForm accessKey="ef3b8cf9-bbc3-413a-9983-b269b2495122" />
 

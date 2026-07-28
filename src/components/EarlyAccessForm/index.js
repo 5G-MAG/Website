@@ -1,13 +1,13 @@
 import { useRef, useState } from 'react';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
-import projectsData from '@site/src/data/projects.json';
 import useWeb3FormSubmit from '@site/src/utils/useWeb3FormSubmit';
+import { EARLY_ACCESS_PROJECTS } from '@site/src/data/earlyAccessProjects';
 import styles from './styles.module.css';
 
-// "Dependency" repos (forks 5G-MAG maintains internally, e.g. open5gs) are
-// not something an external contributor would request early access to —
-// only real reference-tool projects are offered here.
-const REQUESTABLE_PROJECTS = projectsData.filter((p) => p.name !== 'Dependency').map((p) => p.name);
+// Only the projects actually gated behind Early Access right now — not
+// every reference-tool/testbed project, which the dropdown used to offer
+// regardless of whether it was ever private.
+const REQUESTABLE_PROJECTS = EARLY_ACCESS_PROJECTS.map((p) => p.name);
 
 // Shared free-tier sitekey Web3Forms provides for zero-signup hCaptcha use.
 const HCAPTCHA_SITEKEY = '50b2fe65-b00b-4b9e-ad62-3ba471098be2';
@@ -117,7 +117,9 @@ export default function EarlyAccessForm({
       {status === 'error' && <p className={styles.errorText}>{errorMessage}</p>}
 
       <p className={styles.legal}>
-        By submitting this form, you are consenting to be contacted by 5G-MAG Association.
+        Every request is reviewed manually, based on your answers above — there is no automatic
+        approval. By submitting this form, you are consenting to be contacted by 5G-MAG
+        Association.
       </p>
 
       <button type="submit" className="button button--primary" disabled={status === 'submitting'}>
