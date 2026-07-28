@@ -102,10 +102,10 @@ export const SECTION_NAV = [
     title: 'Feedback & Requirements',
     titleHref: '/standards',
     items: [
-      { label: 'Methodology', href: '/standards/methodology' },
+      { label: 'Feedback to SDOs', href: '/standards#feedback' },
       { label: 'Liaison Statements & Inputs', href: '/standards/ls' },
       { label: 'Workshops for Standards', href: '/standards#standards-workshops' },
-      { label: 'Requirements & Workshop Inputs', href: '/standards/requirements' },
+      { label: 'Requirements towards SDOs', href: '/standards/requirements' },
       { label: 'Meetings with 3GPP SA4', href: '/standards/3gpp-issue-tracking' },
     ],
   },

@@ -214,13 +214,28 @@ const SURVEY_ICON_PATH = (
 );
 
 // "What You'll Find Here" -- one crystal-clear index of every real
-// destination on this hub, shown right under "Why".
+// destination on this hub, shown right under "Why". Ordered so related
+// things sit together: Requirements and Surveys (ways to feed input in),
+// then Feedback (how issues get tracked and processed), then Liaison
+// Statements (the formal output), then Workshops.
 const WHATS_HERE = [
   {
-    title: 'Requirements & Workshop Inputs',
+    title: 'Requirements towards SDOs',
     desc: 'Requirements towards standards bodies, backed by industry inputs and surveys.',
     href: '/standards/requirements',
     icon: icon(REQUIREMENTS_ICON_PATH),
+  },
+  {
+    title: 'Industry Surveys',
+    desc: 'Share your input to help shape the requirements 5G-MAG brings to standards bodies.',
+    href: '/surveys',
+    icon: icon(SURVEY_ICON_PATH),
+  },
+  {
+    title: 'Feedback to SDOs',
+    desc: 'Per-SDO feedback tracked on GitHub, and how an issue is carried through to a correction or liaison input.',
+    href: '/standards/#feedback',
+    icon: icon(DIAGRAM_ICON_PATH),
   },
   {
     title: 'Liaison Statements & Inputs',
@@ -233,18 +248,6 @@ const WHATS_HERE = [
     desc: 'The workshops that fed directly into 3GPP study and work items.',
     href: '/standards/#standards-workshops',
     icon: icon(WORKSHOPS_ICON_PATH),
-  },
-  {
-    title: 'Methodology',
-    desc: 'How a GitHub issue is reviewed and carried through to a correction or liaison input.',
-    href: '/standards/methodology',
-    icon: icon(DIAGRAM_ICON_PATH),
-  },
-  {
-    title: 'Industry Surveys',
-    desc: 'Share your input to help shape the requirements 5G-MAG brings to standards bodies.',
-    href: '/surveys',
-    icon: icon(SURVEY_ICON_PATH),
   },
 ];
 
@@ -349,6 +352,8 @@ function CategoryCard({ title, desc, topics }) {
 
 export default function Standards() {
   const githubFeedbackImg = useBaseUrl('/assets/images/gallery/github-feedback-board.png');
+  const methodologyInternalImg = useBaseUrl('/assets/images/Feedback_1.png');
+  const methodologyExternalImg = useBaseUrl('/assets/images/Feedback_2.png');
   return (
     <Layout
       title="Feedback & Requirements"
@@ -416,12 +421,15 @@ export default function Standards() {
           </div>
         </section>
 
-        <section className={`${styles.section} ${styles.sectionAlt}`}>
+        {/* Feedback & Methodology -- per-SDO tracking and how it's processed,
+            kept on one page since they're two views of the same activity. */}
+        <section id="feedback" className={`${styles.section} ${styles.sectionAlt}`}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Feedback Areas</h2>
+            <h2 className={styles.sectionTitle}>Feedback to Standards Bodies</h2>
             <p className={styles.sectionSubtitle}>
-              Feedback, requirements and pain points — deployment experience and requirements
-              submitted to SDOs.
+              Feedback, requirements and pain points — deployment experience submitted to SDOs, and
+              how each GitHub issue is carried through to a correction, new-feature proposal or
+              liaison input.
             </p>
             <div className={styles.categoryColumns}>
               {FEEDBACK_AREAS.map((c) => (
@@ -442,6 +450,70 @@ export default function Standards() {
                 </p>
               </figure>
             </div>
+
+            <h3 style={{ marginTop: '2.5rem', textAlign: 'center' }}>How Feedback Is Processed</h3>
+            <p className={styles.sectionSubtitle}>
+              Two workflows: one for specifications 5G-MAG maintains, one for external SDOs (3GPP,
+              ETSI).
+            </p>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                gap: '2rem',
+                marginTop: '1.5rem',
+                alignItems: 'start',
+              }}
+            >
+              <figure style={{ margin: 0 }}>
+                <img
+                  loading="lazy"
+                  src={methodologyInternalImg}
+                  alt="Workflow for feedback on specifications maintained by 5G-MAG: a community issue is raised on GitHub, reviewed by 5G-MAG, and progressed to a correction or new-feature proposal."
+                  style={{
+                    display: 'block',
+                    width: '100%',
+                    borderRadius: '12px',
+                    border: '1px solid var(--ifm-color-emphasis-300)',
+                  }}
+                />
+                <figcaption
+                  style={{
+                    fontSize: '0.85rem',
+                    color: 'var(--ifm-color-emphasis-700)',
+                    marginTop: '0.6rem',
+                    textAlign: 'center',
+                  }}
+                >
+                  Feedback on specifications 5G-MAG maintains: from a GitHub issue to a correction
+                  or new-feature proposal.
+                </figcaption>
+              </figure>
+              <figure style={{ margin: 0 }}>
+                <img
+                  loading="lazy"
+                  src={methodologyExternalImg}
+                  alt="Workflow for feedback on specifications maintained by external SDOs: a community issue is raised on GitHub, reviewed by 5G-MAG, and forwarded to the responsible standards body as a change request or liaison input."
+                  style={{
+                    display: 'block',
+                    width: '100%',
+                    borderRadius: '12px',
+                    border: '1px solid var(--ifm-color-emphasis-300)',
+                  }}
+                />
+                <figcaption
+                  style={{
+                    fontSize: '0.85rem',
+                    color: 'var(--ifm-color-emphasis-700)',
+                    marginTop: '0.6rem',
+                    textAlign: 'center',
+                  }}
+                >
+                  Feedback on specifications owned by an external SDO (e.g. 3GPP, ETSI): carried in
+                  as a change request or liaison input.
+                </figcaption>
+              </figure>
+            </div>
           </div>
         </section>
 
@@ -460,49 +532,6 @@ export default function Standards() {
             </div>
             <div style={{ textAlign: 'center', marginTop: '1.5rem', fontWeight: 600 }}>
               <Link to="/workshops">Browse the full workshop &amp; session archive &rarr;</Link>
-            </div>
-          </div>
-        </section>
-
-        <section className={`${styles.section} ${styles.sectionAlt}`}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>Methodology</h2>
-            <p className={styles.sectionSubtitle}>
-              Liaison statements and inputs to SDOs — engagement in standards bodies on behalf of
-              5G-MAG members. How a GitHub issue is reviewed and carried through to a correction,
-              new-feature proposal or liaison input.
-            </p>
-            <div className={styles.categoryColumns}>
-              <CategoryCard
-                title="How feedback is processed"
-                desc="Two workflows: one for specifications 5G-MAG maintains, one for external SDOs (3GPP, ETSI)."
-                topics={[
-                  {
-                    title: 'Methodology to Provide Feedback',
-                    desc: 'Internal and external workflow diagrams',
-                    href: '/standards/methodology',
-                    icon: icon(DIAGRAM_ICON_PATH),
-                  },
-                ]}
-              />
-              <CategoryCard
-                title="Resources"
-                desc="Reference material for engaging with 3GPP, MPEG and ETSI standards work."
-                topics={[
-                  {
-                    title: 'Liaison Statements & Inputs',
-                    desc: 'Tables of LS sent to and received from SDOs',
-                    href: '/standards/ls',
-                    icon: icon(
-                      <>
-                        <path d="M15 15m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-                        <path d="M13 17.5v4.5l2 -1.5l2 1.5v-4.5" />
-                        <path d="M10 19h-5a2 2 0 0 1 -2 -2v-10c0 -1.1 .9 -2 2 -2h14a2 2 0 0 1 2 2v3.5" />
-                      </>
-                    ),
-                  },
-                ]}
-              />
             </div>
           </div>
         </section>

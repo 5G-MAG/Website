@@ -175,7 +175,6 @@ const config = {
               ['/standards/glossary', '/tech/standards/glossary', '/developer/glossary'],
             ],
             ['/tech/3gpp-work-items', ['/standards/3gpp-work-items', '/tech/standards/3gpp-work-items']],
-            ['/standards/methodology', '/tech/standards/methodology'],
             // These three /resources entries must stay ABOVE the plain
             // '/testbeds/<slug>' rules right below: the redirect matcher
             // returns on the first prefix match, and '/testbeds/6g-testbed'
@@ -359,7 +358,15 @@ const config = {
             // prefix rule below (which would wrongly append it as a child
             // of /tech/standards/feedback instead of a sibling).
             ['/standards/3gpp-issue-tracking', '/tech/standards/3gpp-issue-tracking'],
-            ['/standards', '/tech/standards/feedback'],
+            // Methodology (previously its own page at /standards/methodology,
+            // itself moved from /tech/standards/methodology in the 2026-07-18
+            // hub reorg) merged into the main /standards page's Feedback
+            // section (2026-07-28) -- both its own former URL and its older
+            // /tech/standards alias now redirect straight to the hub page.
+            [
+              '/standards',
+              ['/tech/standards/feedback', '/standards/methodology', '/tech/standards/methodology'],
+            ],
           ];
           for (const [newPrefix, oldPrefix] of PREFIX_MAP) {
             if (existingPath === newPrefix || existingPath.startsWith(`${newPrefix}/`)) {
@@ -507,7 +514,7 @@ const config = {
           title: 'Feedback & Requirements',
           items: [
             { label: 'Overview', to: '/standards' },
-            { label: 'Requirements & Workshop Inputs', to: '/standards/requirements' },
+            { label: 'Requirements towards SDOs', to: '/standards/requirements' },
             { label: 'Liaison Statements & Inputs', to: '/standards/ls' },
             { label: 'GitHub Standards', href: 'https://github.com/5G-MAG/Standards' },
           ],
