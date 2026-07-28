@@ -124,7 +124,7 @@ export default function Home() {
               Recorded talks, demos and calls from across all of 5G-MAG&apos;s work — Developer
               Exchanges, Public Calls, workshops and more.
             </p>
-            <VideoGrid videos={videos} />
+            <VideoGrid videos={videos} singleRow />
             <div className={styles.onAirMore}>
               <Link to="/videos">Browse the full library &rarr;</Link>
             </div>

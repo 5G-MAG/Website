@@ -1291,3 +1291,20 @@
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 1.1rem;
 }
+
+/* Opt-in modifier (VideoGrid's `singleRow` prop): forces exactly one row on
+   any viewport width instead of wrapping to a second row once cards no
+   longer fit -- a horizontally-scrollable strip rather than a wrapping
+   grid. Cards keep the same 230px minimum width as the wrapping grid, just
+   via flex-basis instead of a grid column track. */
+.video-wall__grid--row {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  padding-bottom: 0.25rem;
+}
+.video-wall__grid--row > * {
+  flex: 0 0 230px;
+  scroll-snap-align: start;
+}
