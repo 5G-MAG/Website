@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
+import { useBaseUrlUtils } from '@docusaurus/useBaseUrl';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HeroSlideshow from '@site/src/components/HeroSlideshow';
@@ -14,6 +15,8 @@ import EarlyAccessCallout from '@site/src/components/EarlyAccessCallout';
 import { EventsAgendaPreview } from '@site/src/components/EventsAgenda';
 import { DISCOVER_WORK } from '@site/src/data/discoverWork';
 import { EVENTS_AGENDA } from '@site/src/data/eventsAgenda';
+import { NEWS_PREVIEW } from '@site/src/data/newsPreview';
+import { FACT_REPOSITORIES, FACT_CLONES, FACT_SPEC_ISSUES, FACT_SDO_INPUTS } from '@site/src/data/facts';
 import { sampleRandom } from '@site/src/utils/random';
 import { sortByLatestRelease } from '@site/src/utils/releases';
 import styles from './index.module.css';
@@ -21,6 +24,8 @@ import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 import releasesData from '@site/static/data/releases.json';
 
 const LATEST_RELEASE_PROJECTS = sortByLatestRelease(releasesData.projects);
+const LATEST_NEWS = [...NEWS_PREVIEW].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(0, 3);
+const HOME_FACTS = [FACT_REPOSITORIES, FACT_CLONES, FACT_SPEC_ISSUES, FACT_SDO_INPUTS];
 
 const VIDEO_COUNT = 5;
 
@@ -69,6 +74,7 @@ function AreaCard({ title, body, href, icon: cardIcon }) {
 
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
+  const { withBaseUrl } = useBaseUrlUtils();
   const [videos, setVideos] = useState(INITIAL_VIDEOS);
 
   // Client-only, after hydration: swap in a random sample from the whole
@@ -128,6 +134,34 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Latest News */}
+        <section className={styles.section}>
+          <div className="container">
+            <div className={styles.releasesHeader}>
+              <div>
+                <h2
+                  className={styles.sectionTitle}
+                  style={{ marginBottom: '0.2rem', textAlign: 'left' }}
+                >
+                  Latest News
+                </h2>
+                <p className={styles.releasesUpdated}>Announcements from 5G-MAG</p>
+              </div>
+              <Link className={styles.releasesViewAll} to="/news">
+                View all news &rarr;
+              </Link>
+            </div>
+            <div className="event-post-grid">
+              {LATEST_NEWS.map((post) => (
+                <Link key={post.href} to={post.href} className="event-post-card">
+                  <img loading="lazy" src={withBaseUrl(post.image)} alt={post.title} />
+                  <span className="event-post-title">{post.title}</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Latest Releases */}
         <section className={styles.section}>
           <div className="container">
@@ -180,6 +214,21 @@ export default function Home() {
               </Link>
             </div>
             <EventsAgendaPreview events={EVENTS_AGENDA} />
+          </div>
+        </section>
+
+        {/* Facts */}
+        <section className={clsx(styles.section, styles.sectionAlt)}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>5G-MAG at a Glance</h2>
+            <div className="summary-container">
+              {HOME_FACTS.map((f) => (
+                <div key={f.label} className="summary-card">
+                  <h3>{f.label}</h3>
+                  <span className="summary-value">{f.value}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
