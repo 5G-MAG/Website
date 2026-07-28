@@ -140,6 +140,19 @@ const config = {
             // of the 7 original pages, their own now-retired direct slugs,
             // and /developer/community itself all redirect straight to
             // /community.
+            //
+            // The 3 entries below (each with an empty alias list) exist only
+            // to shadow the broad '/community' rule further down for these
+            // specific real sub-pages -- without them, the matcher's suffix
+            // logic (`existingPath.startsWith(newPrefix + '/')`) appends
+            // each sub-page's suffix to all 18 of '/community' aliases
+            // below, generating dozens of nonsensical redirect pages like
+            // /developer/roadmap/using-this-documentation (2026-07-28 audit
+            // finding -- none of those 18 aliases were ever a parent of
+            // these 3 pages, they were themselves leaf pages pre-consolidation).
+            ['/community/contributing', []],
+            ['/community/release-process', []],
+            ['/community/using-this-documentation', []],
             [
               '/community',
               [
@@ -365,6 +378,13 @@ const config = {
             // prefix rule below (which would wrongly append it as a child
             // of /tech/standards/feedback instead of a sibling).
             ['/standards/3gpp-issue-tracking', '/tech/standards/3gpp-issue-tracking'],
+            // Shadows the broad '/standards' rule below for this specific
+            // sub-page, same reasoning as the /community entries above --
+            // without it, '/standards/methodology/requirements' and
+            // '/tech/standards/feedback/requirements' get generated (2026-07-28
+            // audit finding); Requirements and Methodology/Feedback were
+            // always sibling pages, never nested.
+            ['/standards/requirements', []],
             // Methodology (previously its own page at /standards/methodology,
             // itself moved from /tech/standards/methodology in the 2026-07-18
             // hub reorg) merged into the main /standards page's Feedback
