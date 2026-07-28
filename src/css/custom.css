@@ -1308,3 +1308,29 @@
   flex: 0 0 230px;
   scroll-snap-align: start;
 }
+
+/* /news list-view thumbnail (src/theme/BlogPostItem) -- keeps each image's
+   own natural aspect ratio (no forced crop) since these are a mix of real
+   photos and banner/logo graphics with very different proportions; only
+   capped by max-height so one unusually tall image can't dominate the
+   list, with object-fit: contain so that cap letterboxes rather than
+   crops. */
+.blog-post-thumbnail {
+  display: block;
+  margin-bottom: 1.25rem;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-background-surface-color);
+}
+.blog-post-thumbnail img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 420px;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+.blog-post-thumbnail:hover img {
+  transform: scale(1.02);
+}
