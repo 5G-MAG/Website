@@ -36,8 +36,8 @@ const EVENT_PAGES = [
 ];
 
 const WORKSHOP_PAGES = [
-  { title: 'OSCAR Workshop', desc: 'Open-Source Core, Applications and RAN', href: '/events/oscar' },
-  { title: 'OSMART Workshops', desc: 'Open-Source Media Application Reference Tools', href: '/events/osmart' },
+  { title: 'OSCAR Workshop', desc: 'Open-Source Core, Applications and RAN', href: '/oscar' },
+  { title: 'OSMART Workshops', desc: 'Open-Source Media Application Reference Tools', href: '/osmart' },
 ];
 
 function EventCard({ title, desc, href, img }) {

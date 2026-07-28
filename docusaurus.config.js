@@ -115,6 +115,13 @@ const config = {
             // Workshops: moved from under /standards (2026-07-24) for the
             // same "In Action" category reason as Public Call above.
             ['/workshops', '/standards/workshops'],
+            // OSCAR/OSMART: moved to root (2026-07-28) for consistency with
+            // every other standalone event page (MWC, IBC, FMT, Public Call,
+            // Workshops) -- all directly-accessible top-level URLs rather
+            // than nested under /events, even though they're still linked
+            // from there.
+            ['/oscar', '/events/oscar'],
+            ['/osmart', '/events/osmart'],
             // Technology Exchange: renamed from /tech/videos (2026-07-24) to
             // match the "Technology Exchanges" naming used for this category
             // elsewhere (the /tech hub widget, Developer Exchanges, etc.).
