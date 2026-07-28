@@ -205,6 +205,13 @@ const WORKSHOPS_ICON_PATH = (
     <path d="M11 17a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v1a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -1" />
   </>
 );
+const SURVEY_ICON_PATH = (
+  <>
+    <path d="M9 5H7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2V7a2 2 0 0 0 -2 -2h-2" />
+    <rect x="9" y="3" width="6" height="4" rx="2" />
+    <path d="M9 14l2 2l4 -4" />
+  </>
+);
 
 // "What You'll Find Here" -- one crystal-clear index of every real
 // destination on this hub, shown right under "Why".
@@ -232,6 +239,12 @@ const WHATS_HERE = [
     desc: 'How a GitHub issue is reviewed and carried through to a correction or liaison input.',
     href: '/standards/methodology',
     icon: icon(DIAGRAM_ICON_PATH),
+  },
+  {
+    title: 'Industry Survey',
+    desc: 'Share your input to help shape the requirements 5G-MAG brings to standards bodies.',
+    href: '/surveys',
+    icon: icon(SURVEY_ICON_PATH),
   },
 ];
 

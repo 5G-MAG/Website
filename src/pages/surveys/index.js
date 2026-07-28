@@ -1,5 +1,6 @@
 import Layout from '@theme/Layout';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
+import { SURVEYS } from '@site/src/data/surveys';
 import styles from '../tech/index.module.css';
 
 const icon = (paths) => (
@@ -25,7 +26,36 @@ const SURVEY_ICON_PATH = (
   </>
 );
 
+function OpenSurvey({ survey }) {
+  return (
+    <section className={styles.section}>
+      <div className="container">
+        <div style={{ maxWidth: '720px', margin: '0 auto', textAlign: 'center' }}>
+          <h2 className={styles.sectionTitle}>{survey.title}</h2>
+          {survey.body.map((paragraph) => (
+            <p key={paragraph.slice(0, 40)} style={{ textAlign: 'left', lineHeight: 1.6 }}>
+              {paragraph}
+            </p>
+          ))}
+          <a
+            className="button button--primary button--lg"
+            href={survey.formUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ marginTop: '1rem' }}
+          >
+            Take the Survey &#8599;
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Surveys() {
+  const openSurveys = SURVEYS.filter((s) => s.status === 'open');
+  const closedSurveys = SURVEYS.filter((s) => s.status === 'closed');
+
   return (
     <Layout
       title="Industry Survey"
@@ -45,40 +75,34 @@ export default function Surveys() {
       </div>
 
       <main>
-        <section className={styles.section}>
-          <div className="container">
-            <div style={{ maxWidth: '720px', margin: '0 auto', textAlign: 'center' }}>
-              <h2 className={styles.sectionTitle}>
-                Connectivity Quality Management (CQM) in Media Production Applications
-              </h2>
-              <p style={{ textAlign: 'left', lineHeight: 1.6 }}>
-                Mobile connectivity for live production can sometimes be unreliable today due to
-                variability in coverage and the impact of congestion. Bonded cellular has long been
-                used to increase both reliability and redundancy through the use of multiple SIM
-                cards simultaneously across multiple operators. Alternatively, Low Earth Orbit
-                satellite (e.g. Starlink) can be used for broadband connectivity while non-public
-                (private) networks on dedicated spectrum can be used for local production
-                connectivity.
+        {openSurveys.length > 0 ? (
+          openSurveys.map((survey) => <OpenSurvey key={survey.id} survey={survey} />)
+        ) : (
+          <section className={styles.section}>
+            <div className="container" style={{ textAlign: 'center' }}>
+              <p className={styles.sectionSubtitle}>
+                No survey is currently open — check back soon.
               </p>
-              <p style={{ textAlign: 'left', lineHeight: 1.6 }}>
-                Mobile Network Operators (MNOs) are currently aiming to make mobile connectivity
-                more predictable and manageable, by means of exposing connectivity-related
-                capabilities via APIs. This survey is collecting information to understand whether
-                these capabilities are a fit for the workflows of media production and
-                contribution.
-              </p>
-              <a
-                className="button button--primary button--lg"
-                href="https://docs.google.com/forms/d/e/1FAIpQLScGuknLeqzgiFalOimrXqwFvZLYsi3xQNdy_X10iyiNkLDzPg/viewform"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ marginTop: '1rem' }}
-              >
-                Take the Survey ↗
-              </a>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
+
+        {closedSurveys.length > 0 && (
+          <section className={`${styles.section} ${styles.sectionAlt}`}>
+            <div className="container">
+              <div className="archive-panel">
+                <span className="year-eyebrow year-eyebrow--past">Past Surveys</span>
+                <div className={styles.pillarGrid3}>
+                  {closedSurveys.map((survey) => (
+                    <div key={survey.id} className={styles.pillarCard}>
+                      <h3 className={styles.pillarTitle}>{survey.title}</h3>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
 
         <JoinTheEffort alt />
       </main>
