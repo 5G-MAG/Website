@@ -76,7 +76,7 @@ export const SECTION_NAV = [
   },
   {
     prefixes: ['/videos'],
-    title: 'In Action',
+    title: 'See It In Action',
     titleHref: '/videos',
     items: [
       { label: 'All Videos', href: '/videos' },
