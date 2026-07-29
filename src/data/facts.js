@@ -6,7 +6,7 @@ export const FACT_SPEC_ISSUES = { value: '+90', label: 'Specification issues cor
 export const FACT_SDO_INPUTS = { value: '+20', label: 'Inputs and liaison statements to SDOs' };
 // Verified 2026-07-28: 48 public repos via api.github.com/orgs/5G-MAG,
 // ~9,700 clones via static/data/community-stats.json (deduped, hub-tracked
-// repos only -- see CommunityStatsBoard's own NOT_ON_HUB_DASHBOARD filter).
+// repos only -- see CommunityProjects' own NOT_ON_HUB_DASHBOARD filter).
 // Both drift over time (repos slowly, clones daily) -- re-check periodically
 // rather than treating these as permanently accurate.
 export const FACT_REPOSITORIES = { value: '48', label: 'Repositories, open on github.com/5G-MAG' };

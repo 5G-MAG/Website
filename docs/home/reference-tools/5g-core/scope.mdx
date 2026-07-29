@@ -21,6 +21,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 </div>
 </div>
 
+**Category:** 3GPP Implementations
+
 <div style={{margin: '8px 0'}}><a class="button button--primary" href="/reference-tools/5g-core/scope" style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href="/reference-tools/5g-core/resources" style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href="/reference-tools/5g-core/tutorials" style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/5g-core/tutorials#developer-exchange" style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
 The 5G Core (5GC) presents several Network Functions, each of which has its own set of service interfaces. This project hosts a collection of reusable service consumer libraries designed to talk to some of these functions. A "service consumer library" is a small library that implements the client (consumer) side of a 5G Core service API, so an application can call that function without re-implementing the protocol.
@@ -44,9 +46,7 @@ Technical documentation providing context to this project can be found in the li
 
 [Tech: Multicast and Broadcast Services in 5G Networks](/tech/5g-mbs)
 
-Relevant specifications are listed below: the BSF and PCF service-consumer interfaces are on the [Standards: 5G Media Streaming](/tech/standards/5gms) page, and the MB-SMF service-consumer interface is on the [Standards: 5G Multicast & Broadcast Services](/tech/standards/5g-mbs) page.
-
-## What is being implemented?
+## What This Project Implements
 
 :::tip[In short]
 A series of reusable service consumer libraries to invoke service operations on various 5GC network functions.
@@ -131,7 +131,11 @@ The three libraries split by what you are trying to do:
 
 Each library implements only the consumer (client) side of its APIs, so it assumes a running 5G Core that produces those services. The libraries handle NRF-based discovery where relevant (for example, libscbsf discovers the BSF), which means an application usually only needs an entry point address and the session or UE identity, not the full topology of the core.
 
-## Getting started
+## Standards & Specifications
+
+This project provides service-consumer libraries that call 5G Core service-based APIs rather than implementing a 3GPP specification itself, so no specific 3GPP or ETSI document numbers are cited on this page. The BSF and PCF service-consumer interfaces are documented on the [Standards: 5G Media Streaming](/tech/standards/5gms) page, and the MB-SMF service-consumer interface is documented on the [Standards: 5G Multicast & Broadcast Services](/tech/standards/5g-mbs) page.
+
+## Getting Started
 
 See [Tutorials](./tutorials) to run the tools against a 5G Core, and [Resources](./resources) for the source code and releases.
 
@@ -157,3 +161,8 @@ The diagram below shows how the MBS reference tools use the MB-SMF service consu
 [5GC Service Consumers: Resources](../5g-core/resources)
 [3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
 [Common Tools: Repositories](../common-tools/)
+
+## Related
+
+- [Resources](/reference-tools/5g-core/resources)
+- [Tutorials](/reference-tools/5g-core/tutorials)

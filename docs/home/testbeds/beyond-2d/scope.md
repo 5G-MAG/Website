@@ -26,17 +26,7 @@ From an implementer's point of view, the value here is a common, transparent tes
 
 For the authoritative, current list of repositories and their status, see the [Resources](./resources) page; roadmap items are tracked from the [Resources](./resources). For related encoding and rendering tools, see the [MPEG V3C Immersive Platform](/reference-tools/v3c) project.
 
-## Standards being implemented
-
-The Beyond 2D work relates to the following specifications and work items. For the full, maintained list, see the standards portal page linked below.
-
-| Specification / work item                                                                                 | Title                                                                 |
-| --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| [3GPP FS_Beyond2D](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGS_103_Maastricht_2024-03/Docs/SP-240479.zip) | Feasibility Study on Beyond 2D Video                                  |
-| [3GPP TR 26.956](https://www.3gpp.org/dynareport/26956.htm)                                               | Evaluation and Characterization of Beyond 2D Video Formats and Codecs |
-| [ISO/IEC 23090-5](https://www.iso.org/standard/83535.html)                                                | V3C (referenced where volumetric coding is evaluated)                 |
-
-## What the framework implements
+## What This Project Implements
 
 The Beyond 2D Evaluation Framework is a test setup, not a shipping player. It provides a repeatable way to run candidate formats and codecs through the same pipeline and compare the results. It is organised around the evaluation scenarios from the 3GPP study, which the reference repository lists as:
 
@@ -56,27 +46,38 @@ The repository separates the multi-view-plus-depth (`mvd`) and point-cloud conte
 
 The pipeline runs encode, package, deliver (under a 5G Media Streaming / DASH assumption), decode, and render, then measures quality on both source views and rendered pose-trace views. Reported metrics include PSNR, IV-PSNR, and VMAF against bitrate. Because source sequences, coded bitstreams, and rendered pose-trace videos are large, the framework references content on external servers rather than bundling it.
 
-### How the tools map to the standard
+## Standards & Specifications
+
+A list of relevant specifications can be found in the link below.
+
+[Standards: Beyond 2D Video Experiences](/tech/standards/beyond-2d)
+
+The Beyond 2D work relates to the following specifications and work items. For the full, maintained list, see the standards portal page linked above.
+
+| Specification | Body | Reference |
+| -------------- | -------- | --------- |
+| FS_Beyond2D | 3GPP SA4 | [FS_Beyond2D](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGS_103_Maastricht_2024-03/Docs/SP-240479.zip) |
+| TR 26.956 | 3GPP SA4 | [TR 26.956](https://www.3gpp.org/dynareport/26956.htm) |
+| ISO/IEC 23090-5 | ISO/IEC MPEG | [ISO/IEC 23090-5](https://www.iso.org/standard/83535.html) |
+
+FS_Beyond2D is 3GPP's Feasibility Study on Beyond 2D Video; TR 26.956, "Evaluation and Characterization of Beyond 2D Video Formats and Codecs," is the resulting technical report, which this work tracks. ISO/IEC 23090-5 (V3C, Visual Volumetric Video-based Coding) is referenced where volumetric coding is evaluated.
 
 The framework tracks 3GPP FS_Beyond2D and TR 26.956. Where volumetric or MV+D content is evaluated, it reuses V3C tooling (V-PCC and MIV), which is why this project overlaps with, and is smaller than, the product-oriented [MPEG V3C Immersive Platform](/reference-tools/v3c). The set of dedicated repositories is therefore intentionally compact; for the authoritative, current list and status see the [Resources](./resources) page.
 
-## Getting started
+:::warning[References to verify]
+These specifics on this page were not confirmed against the primary source (the 3GPP/ETSI portals block automated access, so the TR 26.956 text could not be machine-checked): the exact codec and anchor set per format family (MV-HEVC, V-PCC, G-PCC, MIV) and the exact metric set (PSNR, IV-PSNR, VMAF). The scenario names and the `mvd`/point-cloud repository structure are taken from the 5G-MAG reference-tools repository. Verify against TR 26.956, the SA4 work plan, and the repository READMEs before relying on it externally.
+:::
+
+## Getting Started
 
 1. Read the [Beyond 2D Video](/tech/volumetric/beyond-2d) Tech page for the scenarios, formats, and metrics.
 2. Check the [Resources](./resources) page for the current repository (or repositories) and clone the evaluation framework.
 3. Follow the repository README to obtain the referenced test content and run the per-scenario encode, deliver, decode, and metric steps.
 4. Track open work on the [Resources](./resources).
 
-## Go deeper
+## Related
 
-Technical documentation providing context to this project can be found in the link below.
-
-[Tech: Volumetric & Beyond 2D Video Experiences](/tech/volumetric)
-
-A list of relevant specifications can be found in the link below.
-
-[Standards: Beyond 2D Video Experiences](/tech/standards/beyond-2d)
-
-:::warning[References to verify]
-These specifics on this page were not confirmed against the primary source (the 3GPP/ETSI portals block automated access, so the TR 26.956 text could not be machine-checked): the exact codec and anchor set per format family (MV-HEVC, V-PCC, G-PCC, MIV) and the exact metric set (PSNR, IV-PSNR, VMAF). The scenario names and the `mvd`/point-cloud repository structure are taken from the 5G-MAG reference-tools repository. Verify against TR 26.956, the SA4 work plan, and the repository READMEs before relying on it externally.
-:::
+- [Resources](/testbeds/beyond-2d/resources)
+- [Tutorials](/testbeds/beyond-2d/tutorials)
+- Tech: [Volumetric & Beyond 2D Video Experiences](/tech/volumetric)
+- See also: [MPEG V3C Immersive Platform](/reference-tools/v3c) — the related volumetric encoding and rendering tools

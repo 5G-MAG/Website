@@ -22,6 +22,10 @@ description: Defines what the 5G MBS reference tools implement in the MBS User S
 
 <div style="margin: 8px 0"><a class="button button--primary" href="/reference-tools/5g-mbs/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/5g-mbs/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/reference-tools/5g-mbs/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/5g-mbs/tutorials#developer-exchange" style="margin: 2px 4px 2px 0">Developer Exchange</a></div>
 
+**Category:** 3GPP Implementations
+
+## What This Project Implements
+
 These reference tools implement parts of the 3GPP 5G Multicast Broadcast Services (MBS) feature. They are aimed at developers and integrators who want to run and inspect MBS delivery over a 5G Core, using multicast and broadcast to send the same media to many devices at once. To try the tools hands-on, see the [Tutorials](./tutorials).
 
 :::note[Key terms]
@@ -48,8 +52,6 @@ Relevant specifications are listed below.
 
 [Standards: Multimedia Delivery Protocols](/tech/standards/multimedia)
 
-## What is being implemented?
-
 :::tip[In short]
 Some of the functional entities of the MBS System and MBS User Services, including support in the application provider side, the 5GC, NG-RAN and UE.
 :::
@@ -69,12 +71,12 @@ The following features are supported:
 - `MB-SMF TMGI Service API` (Following 3GPP [TS 29.532](https://www.3gpp.org/dynareport/29532.htm) V17.4.0)
   - TMGI Allocate Service operation
   - TMGI Deallocate Service operation
-- `MB-SMF MBS Session Service API` (Following 3GPP TS 29.532 - Release 17.4.0)
+- `MB-SMF MBS Session Service API` (Following 3GPP [TS 29.532](https://www.3gpp.org/dynareport/29532.htm) - Release 17.4.0)
   - MBS Session Create Service operation
   - MBS Session Release Service operation
 - `MB-SMF PFCP Session Establishment extensions` (Following 3GPP [TS 29.244](https://www.3gpp.org/dynareport/29244.htm) - Release 17.9.0)
   - PFCP Session Establishment Request extensions
-- `MB-UPF PFCP Session Establishment extensions` (Following 3GPP TS 29.244 - Release 17.9.0)
+- `MB-UPF PFCP Session Establishment extensions` (Following 3GPP [TS 29.244](https://www.3gpp.org/dynareport/29244.htm) - Release 17.9.0)
   - PFCP Session Establishment Response extensions
 - `Multicast/Broadcast Service Transport Services (MBSTF)` (Following 3GPP [TS 29.581](https://www.3gpp.org/dynareport/29581.htm) V18.5.0)
   - Object distribution method
@@ -94,13 +96,13 @@ The following features are not yet supported:
   - MBS Broadcast ContextRelease Service operation
 - `AMF NGAP extensions` (Following 3GPP [TS 38.413](https://www.3gpp.org/dynareport/38413.htm) - Release 17.6.0)
   - BROADCAST SESSION SETUP REQUEST
-- `gNB NGAP extensions` (Following 3GPP TS 38.413 - Release 17.6.0)
+- `gNB NGAP extensions` (Following 3GPP [TS 38.413](https://www.3gpp.org/dynareport/38413.htm) - Release 17.6.0)
   - BROADCAST SESSION SETUP RESPONSE
 - `NRF NFDiscovery Service API extensions` (Following 3GPP [TS 29.510](https://www.3gpp.org/dynareport/29510.htm) - Release 17.11.0)
   - MB-SMF TMGI Service API extensions
   - MB-SMF MBS Session Service API extensions
   - AMF MBS Broadcast Service API extensions
-- `MBSTF Distribution Session management` (Following 3GPP TS 29.581 V18.5.0)
+- `MBSTF Distribution Session management` (Following 3GPP [TS 29.581](https://www.3gpp.org/dynareport/29581.htm) V18.5.0)
   - **Packet distribution method**
     - Use direct multicast packet ingest by the MB-UPF at reference point N6mb instead for now.
   - **Object distribution method**
@@ -131,7 +133,29 @@ It helps to read the feature list above against the three-layer MBS architecture
 
 The feature list above marks which service operations and distribution modes are implemented today and which are not yet, so use it to check whether a given path (for example the packet distribution method, or broadcast session setup via the AMF) is covered before building on it.
 
-## Getting started
+## Standards & Specifications
+
+The specifications cited above for the MBS User Services and MBS System APIs are consolidated below.
+
+| Specification | Body | Reference |
+| -------------- | ---- | --------- |
+| TS 29.532      | 3GPP | [https://www.3gpp.org/dynareport/29532.htm](https://www.3gpp.org/dynareport/29532.htm) |
+| TS 29.244      | 3GPP | [https://www.3gpp.org/dynareport/29244.htm](https://www.3gpp.org/dynareport/29244.htm) |
+| TS 29.581      | 3GPP | [https://www.3gpp.org/dynareport/29581.htm](https://www.3gpp.org/dynareport/29581.htm) |
+| TS 29.518      | 3GPP | [https://www.3gpp.org/dynareport/29518.htm](https://www.3gpp.org/dynareport/29518.htm) |
+| TS 38.413      | 3GPP | [https://www.3gpp.org/dynareport/38413.htm](https://www.3gpp.org/dynareport/38413.htm) |
+| TS 29.510      | 3GPP | [https://www.3gpp.org/dynareport/29510.htm](https://www.3gpp.org/dynareport/29510.htm) |
+
+- **TS 29.532** - the MB-SMF TMGI Service API and MBS Session Service API.
+- **TS 29.244** - the PFCP Session Establishment extensions used between the MB-SMF and MB-UPF.
+- **TS 29.581** - the Multicast/Broadcast Service Transport Services (MBSTF) API, including the not-yet-supported MBSTF Distribution Session management extensions.
+- **TS 29.518** - the AMF MBS Broadcast Service API (not yet supported).
+- **TS 38.413** - the AMF and gNB NGAP extensions for broadcast session setup (not yet supported).
+- **TS 29.510** - the NRF NFDiscovery Service API extensions (not yet supported).
+
+For the full standards landscape, see [Standards: 5G Multicast Broadcast Services](/tech/standards/5g-mbs) and [Standards: Multimedia Delivery Protocols](/tech/standards/multimedia).
+
+## Getting Started
 
 To try the tools hands-on, follow the [Tutorials](./tutorials): they cover the two ways to provision the 5GC (direct MBS core functions, or via the [5GC Service Consumers](../5g-core) libraries), the [Docker-Compose deployment](./tutorials/docker-implementation), and the individual MBSF/MBSTF walkthroughs. For the source code, packages and releases behind each component, see [Resources](./resources); for the specification background, see [Standards: 5G Multicast Broadcast Services](/tech/standards/5g-mbs).
 
@@ -142,3 +166,11 @@ The 5G MBS reference tools are also the relevant software for **Non-Terrestrial 
 - [Tech: MBS Multicast over NTN](/tech/ntn/analysis-mbs-multicast-over-ntn)
 - [Tech: MBS Broadcast over NTN](/tech/ntn/analysis-mbs-broadcast-over-ntn)
 - [Tech: Non-Terrestrial Networks (overview)](/tech/ntn)
+
+## Related
+
+- [Resources](/reference-tools/5g-mbs/resources)
+- [Tutorials](/reference-tools/5g-mbs/tutorials)
+- **Used in:** [MBS End-to-End Delivery Demo](/applications/streaming#mbs-end-to-end-delivery-demo)
+- Standards: [5G Multicast Broadcast Services](/tech/standards/5g-mbs)
+- Tech: [Multicast and Broadcast Services in 5G Networks](/tech/5g-mbs)

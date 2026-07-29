@@ -22,19 +22,17 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 </div>
 </div>
 
+**Category:** 3GPP Implementations
+
 <div style={{margin: '8px 0'}}><a class="button button--primary" href="/reference-tools/5g-broadcast/scope" style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href="/reference-tools/5g-broadcast/resources" style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href="/reference-tools/5g-broadcast/tutorials" style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/5g-broadcast/tutorials#developer-exchange" style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
+
+## What This Project Implements
 
 This page sets out what is in scope for the 5G Broadcast Reference Tools: the transmitter (rt-mbms-tx) and receiver (rt-mbms-modem), the LTE-based 5G Broadcast radio mode (FeMBMS), and the per-release features they support. It also shows the high-level architectures in which they are used. Use it to check which capabilities are implemented before planning a test. For step-by-step setups, see [Tutorials](./tutorials).
 
 Technical documentation providing context to this project can be found in the link below.
 
 [Tech: 5G Broadcast](/tech/5g-broadcast)
-
-Relevant specifications are listed below.
-
-[Standards: 5G Broadcast](/tech/standards/5g-broadcast)
-
-[Standards: Multimedia Delivery Protocols](/tech/standards/multimedia)
 
 ## Features under implementation
 
@@ -141,15 +139,36 @@ Repositories used in this architecture:
 
 ## NTN deployment context
 
-The 5G Broadcast waveform (FeMBMS, defined in ETSI TS 103 720) is relevant to **Non-Terrestrial Network (NTN)** delivery scenarios, in particular GEO (Geostationary Earth Orbit) satellite broadcast of linear TV and radio content to large coverage areas. Because 5G Broadcast needs no return channel from the receiver, it fits the one-way, wide-area reach of a GEO satellite well. The NTN access layer sits beneath the broadcast service layer; the rt-mbms-tx and rt-mbms-modem tools remain the applicable reference implementations.
+The 5G Broadcast waveform (FeMBMS, defined in [ETSI TS 103 720](https://www.etsi.org/standards-search#search=103%20720)) is relevant to **Non-Terrestrial Network (NTN)** delivery scenarios, in particular GEO (Geostationary Earth Orbit) satellite broadcast of linear TV and radio content to large coverage areas. Because 5G Broadcast needs no return channel from the receiver, it fits the one-way, wide-area reach of a GEO satellite well. The NTN access layer sits beneath the broadcast service layer; the rt-mbms-tx and rt-mbms-modem tools remain the applicable reference implementations.
 
 - [Tech: MBS Broadcast over NTN](/tech/ntn/analysis-mbs-broadcast-over-ntn)
 - [Tech: Non-Terrestrial Networks (overview)](/tech/ntn)
 - [Standards: Non-Terrestrial Networks](/tech/standards/ntn)
 
-## Getting started
+## Standards & Specifications
+
+Relevant specifications are listed on the standards portal pages below.
+
+[Standards: 5G Broadcast](/tech/standards/5g-broadcast)
+
+[Standards: Multimedia Delivery Protocols](/tech/standards/multimedia)
+
+| Specification | Body | Reference |
+| -------------- | ---- | --------- |
+| TS 103 720 &mdash; 5G Broadcast System for linear TV and radio services (the FeMBMS waveform implemented by rt-mbms-tx and rt-mbms-modem) | ETSI | [etsi.org standards search](https://www.etsi.org/standards-search#search=103%20720) |
+
+## Getting Started
 
 A practical route into the tools:
 
 1. Start with [SDR - HLS Playback over 5G Broadcast](./tutorials/hls-playback-5gbc) in the [Tutorials](./tutorials) index, the simplest receiver-only setup; the other tutorials there build on the same components (transmitter, Docker, Android seamless switching).
 2. Check the [Resources](./resources) page for tagged versions of rt-mbms-tx and rt-mbms-modem.
+
+## Related
+
+- [Resources](/reference-tools/5g-broadcast/resources)
+- [Tutorials](/reference-tools/5g-broadcast/tutorials)
+- **Used in:** [Broadcast Stream Playback (RTP/HLS)](/applications/5g-broadcast#broadcast-stream-playback-rtphls), [Seamless Unicast/Broadcast Switching](/applications/5g-broadcast#seamless-unicastbroadcast-switching)
+- Related project: [5G Broadcast - Emergency Alerts](../emergency-alerts)
+- Standards: [5G Broadcast](/tech/standards/5g-broadcast)
+- Technical documentation: [5G Broadcast on the Tech portal](/tech/5g-broadcast)

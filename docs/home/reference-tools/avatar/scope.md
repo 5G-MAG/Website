@@ -24,7 +24,11 @@ description: Explains what MPEG ARF (ISO/IEC 23090-39) covers and how the Avatar
 </div>
 </div>
 
+**Category:** MPEG Implementation
+
 <div style="margin: 8px 0"><a class="button button--primary" href="/reference-tools/avatar/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/avatar/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/reference-tools/avatar/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/avatar/tutorials#developer-exchange" style="margin: 2px 4px 2px 0">Developer Exchange</a></div>
+
+## What This Project Implements
 
 This page describes the specification within the scope of the Avatar Communication reference tools, what that specification covers, and how the tools are organised.
 
@@ -35,8 +39,6 @@ ISO/IEC 23090-39 was, as of 2025, still at the Draft International Standard (DIS
 On the implementation side, the work covers the pieces needed to capture, carry, and present an ARF avatar over a 5G delivery path. Broadly, that means tooling to track a participant and produce animation data, a path to package and exchange that data as part of a real-time call, sample content for testing, and integration with a Unity-based presentation so the avatar can be rendered in an interactive application. The separation between the component that produces the avatar animation and the engine that renders it follows the same decoupling pattern used across 5G-MAG's other immersive media tools, including the XR player.
 
 The reference tooling in this area is still maturing, and the exact set of public repositories changes as the project develops. For the authoritative, current list of repositories and their implementation status, see the [Resources](./resources) page rather than relying on a hard-coded list here. Roadmap and implementation-status details are tracked on the [5G-MAG project board](https://github.com/orgs/5G-MAG/projects/44).
-
-## What the reference tools implement
 
 ARF (ISO/IEC 23090-39) is defined in two halves, and the reference tooling is organised around the same split:
 
@@ -52,7 +54,7 @@ In practice the implementation splits into a small number of cooperating compone
 
 This mirrors the decoupling used elsewhere in 5G-MAG's immersive tooling: the component that produces avatar animation is kept separate from the engine that renders it, so the two can be developed and swapped independently as long as they agree on the ARF stream format. Because ARF is not yet final, expect the animation-stream and base-avatar details to change, and pin the tools to a known specification draft when building.
 
-## Getting started
+## Getting Started
 
 The runnable software and setup instructions live on the Developer Portal, not in this scope page. To begin:
 
@@ -63,26 +65,22 @@ The runnable software and setup instructions live on the Developer Portal, not i
 
 If you only need to render and inspect avatars, start from the Unity presentation with the provided sample content. If you are working on capture and animation, start from the tracking/animation producer and validate its output against the sample animation streams before wiring it into a live call.
 
-## Standard being implemented
+## Standards & Specifications
 
-The Avatar Communication reference tools relate to the specification below. For the full, maintained list of related MPEG and 3GPP specifications, see the standards portal page linked under "Go deeper".
+The Avatar Communication reference tools relate to the specification below. For the full, maintained list of related MPEG and 3GPP specifications, see the [Standards: Avatar Communications](/tech/standards/avatar) page.
 
-| Specification                                               | Title                                                                                                |
-| ----------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| [ISO/IEC 23090-39](https://www.iso.org/standard/91745.html) | Coded representation of immersive media, Part 39: Avatar representation format (ARF), DIS as of 2025 |
+| Specification | Body | Reference |
+| --- | --- | --- |
+| ISO/IEC 23090-39 | ISO/IEC (MPEG) | [Coded representation of immersive media, Part 39: Avatar representation format (ARF), DIS as of 2025](https://www.iso.org/standard/91745.html) |
 
 :::warning[References to verify]
-The container designations cited above for ARF assets were not confirmed against a primary source: **ISO/IEC 21320-1** as the Zip-based container profile, and the specific edition of **ISO/IEC 14496-12** (ISO base media file format) intended by ARF. Check both against the ARF text before relying on them. ISO/IEC 23090-39 itself and ISO/IEC 23090-14 are established citations and are not part of this caution.
+The container designations cited in the text above for ARF assets were not confirmed against a primary source: **ISO/IEC 21320-1** as the Zip-based container profile, and the specific edition of **ISO/IEC 14496-12** (ISO base media file format) intended by ARF. Check both against the ARF text before relying on them. ISO/IEC 23090-39 itself and ISO/IEC 23090-14 are established citations and are not part of this caution.
 :::
 
-## Go deeper
+## Related
 
-Technical documentation providing context to this project can be found in the link below.
-
-[Tech: Avatar Communications](/tech/avatar-communications)
-
-A list of relevant specifications can be found in the link below.
-
-[Standards: Avatar Communications](/tech/standards/avatar)
-
-Related immersive media work, including the scene framework that ARF is designed to plug into, is documented under [XR Media Integration in 5G](../xr).
+- [Resources](/reference-tools/avatar/resources)
+- [Tutorials](/reference-tools/avatar/tutorials)
+- Tech: [Avatar Communications](/tech/avatar-communications)
+- Standards: [Avatar Communications](/tech/standards/avatar)
+- See also: [XR Media Integration in 5G](/reference-tools/xr) — the scene framework that ARF is designed to plug into.

@@ -19,9 +19,11 @@ description: Explains which RAN and Core components 5G-MAG builds, and how the s
 </div>
 </div>
 
+**Category:** 3GPP Implementations
+
 <div style="margin: 8px 0"><a class="button button--primary" href="/reference-tools/3gpp-platforms/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/3gpp-platforms/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/reference-tools/3gpp-platforms/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/3gpp-platforms/tutorials#developer-exchange" style="margin: 2px 4px 2px 0">Developer Exchange</a></div>
 
-## Overview
+## What This Project Implements
 
 This project provides the 5G network infrastructure that other 5G-MAG reference tools run against. 5G-MAG maintains forks of established open-source Radio Access Network (RAN) and Core software, adds the components needed for its media and broadcast work, and documents how to stand up a working network in a lab or testbed.
 
@@ -72,7 +74,11 @@ Further evolved Multimedia Broadcast Multicast Service (FeMBMS) is the LTE broad
 
 The MBS and 5G Broadcast media stacks depend on a working network to run against. This project supplies that network so the media components do not each have to stand up a RAN and core. Because the RAN and core are forks of upstream open-source projects (srsRAN, Open5GS), 5G-MAG tracks the upstream projects and maintains the additions needed for its broadcast and multicast work on dedicated branches rather than in the mainline.
 
-## Getting started
+## Standards & Specifications
+
+This project provides underlying RAN and Core network infrastructure (forks of srsRAN and Open5GS) rather than implementing a specific 3GPP or ETSI specification itself, so no standards are cited directly on this page.
+
+## Getting Started
 
 1. Decide which technology you are building for: MBS (5G NR plus 5GC) or LTE-based 5G Broadcast. This determines which fork and branch you need.
 2. For MBS, build the NG-RAN from [5G-MAG/rt-srsRAN_Project](https://github.com/5G-MAG/rt-srsRAN_Project) and the core from [5G-MAG/open5gs](https://github.com/5G-MAG/open5gs), selecting the MBS-related branches.
@@ -83,8 +89,8 @@ The [Resources](./resources) page maps each fork and branch to its use case, whi
 
 ## Related
 
-- [Resources](./resources): the forks and their branch structure, mapped to use cases
-- [Tutorials](./tutorials): setup guides for the network and SDR platforms
+- [Resources](/reference-tools/3gpp-platforms/resources): the forks and their branch structure, mapped to use cases
+- [Tutorials](/reference-tools/3gpp-platforms/tutorials): setup guides for the network and SDR platforms
 - Project [index](.): overview and slide deck
 
 :::note

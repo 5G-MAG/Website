@@ -25,7 +25,7 @@ description: Explains the AI/ML Evaluation Framework's focus areas, repositories
 
 This page sets out what the AI/ML Evaluation Framework covers: its current focus areas, the repositories it is built from, and how it relates to 5G-MAG's standards work.
 
-## Overview
+## What This Project Implements
 
 :::note
 This introduction reflects 5G-MAG's current focus areas for AI/ML and may evolve as the work progresses.
@@ -42,7 +42,15 @@ Current focus areas include:
 
 The hands-on traffic characterisation work (network emulation and an AI traffic testbed) currently lives in the 6G Testbed reference implementation, which the AI/ML activity shares and builds on. See [6G Testbed and AI Traffic](../6g-testbed/scope) for the testbed itself.
 
-## Key GitHub repositories
+It helps to be precise about the boundary between this project and 3GPP.
+
+- **This project does not implement a 3GPP specification.** It is an evaluation harness that measures how AI/ML models and AI-driven media services behave over realistic network conditions, so results can inform standards work.
+- **The 3GPP data-collection pipeline is implemented elsewhere.** The normative Data Collection AF from SA4 (3GPP TS 26.531 and TS 26.532) is implemented in the separate [Data Collection](/reference-tools/data-collection/scope) project, not here. This project can consume or complement that data, but it does not reimplement the AF.
+- **The network-conditioning and AI-traffic measurement lives in the 6G Testbed.** The hands-on tooling (network emulator plus AI traffic characterisation) is the [6G Testbed](../6g-testbed/scope), which this activity shares. That is the code you run.
+
+In short: the standards define the scenarios and interfaces; the 6G Testbed lets you reproduce network conditions and measure behaviour; and this AI/ML activity is the framing that turns those measurements into evaluation of AI/ML for media.
+
+### Key GitHub repositories
 
 The AI/ML reference tooling is currently developed across the following 5G-MAG repositories. The live, auto-generated list (including auxiliary repositories) is on the [Resources](./resources) page.
 
@@ -55,36 +63,31 @@ The data collection components that feed AI/ML training and inference (3GPP [TS 
 Some repositories may be private and under testing. [Request early access](/early-access).
 :::
 
-## Relationship to the standards work
-
-These tools are complementary to, not a replacement for, the standardisation activity. 5G-MAG contributes media-specific AI/ML requirements and use cases to 3GPP (primarily SA4 for media aspects, with SA2 for network data analytics), while the reference tools provide an experimental platform to validate and inform that work. In practice the relationship is two-way: the studies and specifications (for example 3GPP [TR 26.847](https://www.3gpp.org/dynareport/26847.htm) on AI/ML in 5G media services, Release 19, completed, which supersedes the earlier, incomplete draft tracked as TR 26.927, and the SA4 data collection specifications TS 26.531 / TS 26.532) define the scenarios and interfaces the tools evaluate, and results from the tools can feed back into 5G-MAG positions and future contributions.
+## Standards & Specifications
 
 A list of relevant specifications can be found in the link below.
 
 [Standards: AI & ML in 5G Media Services](/tech/standards/ai-ml)
 
-## What the tools implement, and what they do not
-
-It helps to be precise about the boundary between this project and 3GPP.
-
-- **This project does not implement a 3GPP specification.** It is an evaluation harness that measures how AI/ML models and AI-driven media services behave over realistic network conditions, so results can inform standards work.
-- **The 3GPP data-collection pipeline is implemented elsewhere.** The normative Data Collection AF from SA4 (3GPP TS 26.531 and TS 26.532) is implemented in the separate [Data Collection](/reference-tools/data-collection/scope) project, not here. This project can consume or complement that data, but it does not reimplement the AF.
-- **The network-conditioning and AI-traffic measurement lives in the 6G Testbed.** The hands-on tooling (network emulator plus AI traffic characterisation) is the [6G Testbed](../6g-testbed/scope), which this activity shares. That is the code you run.
-
-In short: the standards define the scenarios and interfaces; the 6G Testbed lets you reproduce network conditions and measure behaviour; and this AI/ML activity is the framing that turns those measurements into evaluation of AI/ML for media.
-
-## Specifications and studies this activity relates to
+These tools are complementary to, not a replacement for, the standardisation activity. 5G-MAG contributes media-specific AI/ML requirements and use cases to 3GPP (primarily SA4 for media aspects, with SA2 for network data analytics), while the reference tools provide an experimental platform to validate and inform that work. In practice the relationship is two-way: the studies and specifications (for example 3GPP [TR 26.847](https://www.3gpp.org/dynareport/26847.htm) on AI/ML in 5G media services, Release 19, completed, which supersedes the earlier, incomplete draft tracked as TR 26.927, and the SA4 data collection specifications TS 26.531 / TS 26.532) define the scenarios and interfaces the tools evaluate, and results from the tools can feed back into 5G-MAG positions and future contributions.
 
 These are the 3GPP studies and specifications that define the scenarios and data this activity evaluates. They are covered in full on the standards portal ([AI & ML in 5G Media](/tech/standards/ai-ml)).
 
-| Reference                                              | Group | Relevance to the tools                                                                                                            |
-| ------------------------------------------------------ | ----- | --------------------------------------------------------------------------------------------------------------------------------- |
-| TR 26.847                                              | SA4   | Study on AI/ML in 5G media services, Release 19, completed (supersedes the earlier, incomplete draft tracked as TR 26.927); the source of the media AI/ML scenarios and traffic-characterisation goals the tools address |
-| [TR 22.874](https://www.3gpp.org/dynareport/22874.htm) | SA1   | Study on traffic characteristics and requirements for AI/ML model transfer; frames the latency and data-rate behaviour to measure |
-| TS 26.531 / TS 26.532                                  | SA4   | Data Collection and Reporting; implemented in the separate Data Collection project that feeds training and inference data         |
-| [TS 23.288](https://www.3gpp.org/dynareport/23288.htm) | SA2   | NWDAF (network-side analytics); context for how network data analytics would consume this kind of data                            |
+| Specification | Body | Reference |
+| -------------- | -------- | ------------------------------------------------------ |
+| TR 26.847 (supersedes TR 26.927) | 3GPP SA4 | [TR 26.847](https://www.3gpp.org/dynareport/26847.htm) |
+| TR 22.874 | 3GPP SA1 | [TR 22.874](https://www.3gpp.org/dynareport/22874.htm) |
+| TS 26.531 | 3GPP SA4 | [TS 26.531](https://www.3gpp.org/dynareport/26531.htm) |
+| TS 26.532 | 3GPP SA4 | [TS 26.532](https://www.3gpp.org/dynareport/26532.htm) |
+| TS 23.288 | 3GPP SA2 | [TS 23.288](https://www.3gpp.org/dynareport/23288.htm) |
 
-## Getting started
+For context: TR 26.847 (Study on AI/ML in 5G media services, Release 19, completed; supersedes the earlier, incomplete draft tracked as TR 26.927) is the source of the media AI/ML scenarios and traffic-characterisation goals the tools address. TR 22.874 (Study on traffic characteristics and requirements for AI/ML model transfer) frames the latency and data-rate behaviour to measure. TS 26.531 / TS 26.532 (Data Collection and Reporting) are implemented in the separate Data Collection project that feeds training and inference data. TS 23.288 (NWDAF, network-side analytics) provides context for how network data analytics would consume this kind of data.
+
+:::warning[References to verify]
+These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TR 26.847, TR 22.874, TS 26.531 / TS 26.532, and TS 23.288. Verify against the 3GPP work plan before publication.
+:::
+
+## Getting Started
 
 Because the runnable code is the shared testbed, the quickest path is to start there:
 
@@ -93,10 +96,6 @@ Because the runnable code is the shared testbed, the quickest path is to start t
 3. Clone [5G-MAG/6G-Testbed](https://github.com/5G-MAG/6G-Testbed) and run a scenario against an emulated profile, then inspect the logged metrics.
 
 For the data-collection components (TS 26.531 / TS 26.532), see the [Data Collection](/reference-tools/data-collection/scope) project and its repository [5G-MAG/rt-data-collection-application-function](https://github.com/5G-MAG/rt-data-collection-application-function).
-
-:::warning[References to verify]
-These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TR 26.847, TR 22.874, TS 26.531 / TS 26.532, and TS 23.288. Verify against the 3GPP work plan before publication.
-:::
 
 ## Related
 

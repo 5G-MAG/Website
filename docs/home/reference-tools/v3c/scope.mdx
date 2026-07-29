@@ -24,27 +24,19 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 </div>
 </div>
 
+**Category:** MPEG Implementation
+
 <div style={{margin: '8px 0'}}><a class="button button--primary" href="/reference-tools/v3c/scope" style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href="/reference-tools/v3c/resources" style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href="/reference-tools/v3c/tutorials" style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/v3c/tutorials#developer-exchange" style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
+
+## What This Project Implements
 
 This page describes the specifications within the scope of the V3C reference tools, the codec profiles they cover, and the high-level architecture that brings context to their applicability.
 
 The MPEG V3C Immersive Platform provides reference tools for volumetric video, content that captures 3D objects and scenes so a viewer can move freely around them rather than watching from a fixed camera. The implementation is built around MPEG Visual Volumetric Video-based Coding (V3C, ISO/IEC 23090-5), which defines a common container and bitstream structure for two related coding approaches: V-PCC (video-based point cloud compression) for volumetric objects, and MIV (MPEG Immersive Video, ISO/IEC 23090-12) for multi-view scenes with depth. The platform aims to cover an end-to-end path: encoding source content into a V3C bitstream, packaging and delivering it, then decoding and rendering it in real time.
 
-On the rendering side, the work targets a Unity-based player so volumetric assets can be integrated into interactive applications, using the same separation-of-concerns pattern used across 5G-MAG's immersive media tools (see "What the reference tools implement" below for how the decoder plugin and the engine split the work). According to 5G-MAG, a significant part of the initial contribution came from InterDigital and Philips; treat any specific partner attribution as something to confirm against 5G-MAG's own announcements before relying on it externally.
+On the rendering side, the work targets a Unity-based player so volumetric assets can be integrated into interactive applications, using the same separation-of-concerns pattern used across 5G-MAG's immersive media tools (see below for how the decoder plugin and the engine split the work). According to 5G-MAG, a significant part of the initial contribution came from InterDigital and Philips; treat any specific partner attribution as something to confirm against 5G-MAG's own announcements before relying on it externally.
 
 The reference tooling in this area is still maturing, and the exact set of public repositories changes as the project develops. For the authoritative, current list of repositories and their implementation status, see the [Resources](./resources) page rather than relying on a hard-coded list here. Implementation-status and roadmap details are tracked on the [V3C Kanban board](https://github.com/orgs/5G-MAG/projects/38) linked from the [Resources](./resources).
-
-## Standards being implemented
-
-The V3C reference tools relate to the following specifications. For the full, maintained list, see the standards portal page linked below.
-
-| Specification                                               | Title                                                                                      |
-| ----------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| [ISO/IEC 23090-5](https://www.iso.org/standard/83535.html)  | Visual volumetric video-based coding (V3C) and video-based point cloud compression (V-PCC) |
-| [ISO/IEC 23090-12](https://www.iso.org/standard/79113.html) | MPEG immersive video (MIV)                                                                 |
-| [ISO/IEC 23090-10](https://www.iso.org/standard/78991.html) | Carriage of visual volumetric video-based coding data                                      |
-
-## What the reference tools implement
 
 The MPEG V3C Immersive Platform aims to cover the full path for volumetric content:
 
@@ -68,22 +60,22 @@ The two coding profiles produce the same V3C bitstream structure, so the carriag
 
 ISO/IEC 23090-5 has been published in successive editions (2021, 2023, 2025). Because the reference tooling is still maturing, the exact edition and feature subset each component targets changes as the project develops; treat the edition support as tracked in the repositories rather than fixed here. For the authoritative, current list of repositories and their implementation status, see the [Resources](./resources) page and the [V3C Kanban board](https://github.com/orgs/5G-MAG/projects/38) linked from the [Resources](./resources).
 
-## Getting started
+## Standards & Specifications
+
+The V3C reference tools relate to the following specifications. For the full, maintained list, see the [Volumetric Video with V3C](/tech/standards/v3c) page.
+
+| Specification | Body | Reference |
+| --- | --- | --- |
+| ISO/IEC 23090-5 | ISO/IEC (MPEG) | [Visual volumetric video-based coding (V3C) and video-based point cloud compression (V-PCC)](https://www.iso.org/standard/83535.html) |
+| ISO/IEC 23090-12 | ISO/IEC (MPEG) | [MPEG immersive video (MIV)](https://www.iso.org/standard/79113.html) |
+| ISO/IEC 23090-10 | ISO/IEC (MPEG) | [Carriage of visual volumetric video-based coding data](https://www.iso.org/standard/78991.html) |
+
+## Getting Started
 
 1. Read the [Volumetric Video](/tech/volumetric) Tech page for how V3C, V-PCC, and MIV work end to end.
 2. Check the [Resources](./resources) page for the current set of repositories and pick the component you need (encoder, decoder plugin, or player).
 3. Follow the build and run instructions in each repository's README; the [Tutorials](./tutorials) page and the [Developer Exchange](./tutorials#developer-exchange) collect walkthroughs and demos.
 4. Track open work and status on the [Resources](./resources) and the linked Kanban board.
-
-## Go deeper
-
-Technical documentation providing context to this project can be found in the link below.
-
-[Volumetric Video](/tech/volumetric)
-
-A list of relevant specifications can be found in the link below.
-
-[Volumetric Video with V3C](/tech/standards/v3c)
 
 ## High-level architecture
 
@@ -103,3 +95,10 @@ The blocks in the diagram map to the repositories listed on the pages below.
 :::warning[References to verify]
 These specifics on this page were not confirmed against a primary source: the exact ISO/IEC 23090-5 edition and the V3C/MIV feature subset each reference-tool component targets (this changes as the project develops and is tracked in the repositories). The ISO part numbers themselves (23090-5, 23090-10, 23090-12) are taken from the ISO catalogue. Verify the edition and feature coverage against the repository READMEs and the Kanban board before relying on it externally.
 :::
+
+## Related
+
+- [Resources](/reference-tools/v3c/resources)
+- Tech: [Volumetric Video](/tech/volumetric)
+- Standards: [Volumetric Video with V3C](/tech/standards/v3c)
+- **Used in:** [Volumetric Video Streaming to Android](/applications/volumetric#volumetric-video-streaming-to-android)
