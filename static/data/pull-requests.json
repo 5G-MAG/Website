@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-28 01:13 UTC",
+  "updated_at": "2026-07-29 01:16 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -65,6 +65,19 @@
       "doc_url": "/reference-tools/5g-broadcast/",
       "tagline": "LTE-based 5G broadcast for TV, radio and emergency alerts",
       "pulls": [
+        {
+          "repo": "rt-libflute",
+          "branch": null,
+          "number": 60,
+          "title": "Fix unbounded FDT growth (same-TOI resend, and content-change cases)",
+          "url": "https://github.com/5G-MAG/rt-libflute/pull/60",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-07-28",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "rt-common-shared",
           "branch": null,
@@ -254,6 +267,71 @@
       "doc_url": "/reference-tools/5g-mbs/",
       "tagline": "5G-native multicast and broadcast services · 3GPP 5G MBS",
       "pulls": [
+        {
+          "repo": "rt-mbs-function",
+          "branch": null,
+          "number": 42,
+          "title": "Fix crashes on missing required fields; implement spec-defined PATCH/collection-GET; RFC 2046/2557 MIME fixes",
+          "url": "https://github.com/5G-MAG/rt-mbs-function/pull/42",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-07-28",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-mbs-function",
+          "branch": null,
+          "number": 41,
+          "title": "Add Meson to the apt install dependency list and remove the",
+          "url": "https://github.com/5G-MAG/rt-mbs-function/pull/41",
+          "draft": false,
+          "author_login": "ErikGaida",
+          "author_avatar": "https://avatars.githubusercontent.com/u/144566652?v=4",
+          "created_at": "2026-07-28",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-mbs-transport-function",
+          "branch": null,
+          "number": 67,
+          "title": "Fix null-pointer crash when a STREAMING object isn't a manifest",
+          "url": "https://github.com/5G-MAG/rt-mbs-transport-function/pull/67",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-07-28",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-mbs-examples",
+          "branch": null,
+          "number": 28,
+          "title": "Add MBSF  CRUD integration test",
+          "url": "https://github.com/5G-MAG/rt-mbs-examples/pull/28",
+          "draft": false,
+          "author_login": "ErikGaida",
+          "author_avatar": "https://avatars.githubusercontent.com/u/144566652?v=4",
+          "created_at": "2026-07-28",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-libflute",
+          "branch": null,
+          "number": 60,
+          "title": "Fix unbounded FDT growth (same-TOI resend, and content-change cases)",
+          "url": "https://github.com/5G-MAG/rt-libflute/pull/60",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-07-28",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "rt-mbs-function",
           "branch": null,
@@ -682,6 +760,19 @@
       "doc_url": "/reference-tools/multimedia/",
       "tagline": "DASH, HLS and CMAF multimedia delivery reference tools",
       "pulls": [
+        {
+          "repo": "rt-libflute",
+          "branch": null,
+          "number": 60,
+          "title": "Fix unbounded FDT growth (same-TOI resend, and content-change cases)",
+          "url": "https://github.com/5G-MAG/rt-libflute/pull/60",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-07-28",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "rt-libflute",
           "branch": null,
