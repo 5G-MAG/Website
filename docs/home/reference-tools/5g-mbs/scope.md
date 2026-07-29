@@ -171,6 +171,5 @@ The 5G MBS reference tools are also the relevant software for **Non-Terrestrial 
 
 - [Resources](/reference-tools/5g-mbs/resources)
 - [Tutorials](/reference-tools/5g-mbs/tutorials)
-- **Used in:** [MBS End-to-End Delivery Demo](/applications/streaming#mbs-end-to-end-delivery-demo)
 - Standards: [5G Multicast Broadcast Services](/tech/standards/5g-mbs)
 - Tech: [Multicast and Broadcast Services in 5G Networks](/tech/5g-mbs)

@@ -65,4 +65,3 @@ The following CAMARA API is covered by the reference implementation and technica
 
 - [Resources](/reference-tools/network-apis/resources)
 - [Tutorials](/reference-tools/network-apis/tutorials)
-- **Used in:** [Dedicated Network APIs for Connected Media Production](/applications/network-apis#dedicated-network-apis-for-connected-media-production)
