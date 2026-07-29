@@ -195,7 +195,7 @@ export default function Home() {
                 </h2>
                 <p className={styles.releasesUpdated}>Updated: {releasesData.updated_at}</p>
               </div>
-              <Link className={styles.releasesViewAll} to="/community#releases">
+              <Link className={styles.releasesViewAll} to="/community#projects">
                 View all releases &rarr;
               </Link>
             </div>
