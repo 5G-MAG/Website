@@ -57,6 +57,7 @@ export default function EarlyAccessForm({
         className={styles.honeypot}
         tabIndex={-1}
         autoComplete="off"
+        aria-hidden="true"
       />
 
       <label className={styles.field}>

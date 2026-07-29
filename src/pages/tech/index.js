@@ -445,9 +445,9 @@ export default function Home() {
           </>
         }
         actions={[
-          <Link key="standards" className="button button--primary" to="/standards">
-            Standards Work
-          </Link>,
+          <a key="docs" className="button button--primary" href="#categories-topics">
+            Documentation
+          </a>,
         ]}
       />
 

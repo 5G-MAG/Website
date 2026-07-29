@@ -372,13 +372,6 @@ export default function Standards() {
           >
             New Issue
           </a>,
-          <Link
-            key="meetings"
-            className="button button--outline button--primary"
-            to="/standards/3gpp-issue-tracking"
-          >
-            Meetings with 3GPP SA4
-          </Link>,
         ]}
       />
 
@@ -407,7 +400,7 @@ export default function Standards() {
         </section>
 
         {/* What You'll Find Here */}
-        <section className={styles.section}>
+        <section className={`${styles.section} ${styles.sectionAlt}`}>
           <div className="container">
             <h2 className={styles.sectionTitle}>What You&apos;ll Find Here</h2>
             <p className={styles.sectionSubtitle}>
@@ -423,9 +416,9 @@ export default function Standards() {
 
         {/* Feedback & Methodology -- per-SDO tracking and how it's processed,
             kept on one page since they're two views of the same activity. */}
-        <section id="feedback" className={`${styles.section} ${styles.sectionAlt}`}>
+        <section id="feedback" className={styles.section}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Feedback to Standards Bodies</h2>
+            <h2 className={styles.sectionTitle}>Feedback to SDOs</h2>
             <p className={styles.sectionSubtitle}>
               Feedback, requirements and pain points — deployment experience submitted to SDOs, and
               how each GitHub issue is carried through to a correction, new-feature proposal or
@@ -477,14 +470,7 @@ export default function Standards() {
                     border: '1px solid var(--ifm-color-emphasis-300)',
                   }}
                 />
-                <figcaption
-                  style={{
-                    fontSize: '0.85rem',
-                    color: 'var(--ifm-color-emphasis-700)',
-                    marginTop: '0.6rem',
-                    textAlign: 'center',
-                  }}
-                >
+                <figcaption className={styles.diagramCaption}>
                   Feedback on specifications 5G-MAG maintains: from a GitHub issue to a correction
                   or new-feature proposal.
                 </figcaption>
@@ -501,14 +487,7 @@ export default function Standards() {
                     border: '1px solid var(--ifm-color-emphasis-300)',
                   }}
                 />
-                <figcaption
-                  style={{
-                    fontSize: '0.85rem',
-                    color: 'var(--ifm-color-emphasis-700)',
-                    marginTop: '0.6rem',
-                    textAlign: 'center',
-                  }}
-                >
+                <figcaption className={styles.diagramCaption}>
                   Feedback on specifications owned by an external SDO (e.g. 3GPP, ETSI): carried in
                   as a change request or liaison input.
                 </figcaption>
@@ -518,7 +497,7 @@ export default function Standards() {
         </section>
 
         {/* Workshops for Standards */}
-        <section id="standards-workshops" className={styles.section}>
+        <section id="standards-workshops" className={`${styles.section} ${styles.sectionAlt}`}>
           <div className="container">
             <h2 className={styles.sectionTitle}>Workshops for Standards</h2>
             <p className={styles.sectionSubtitle}>

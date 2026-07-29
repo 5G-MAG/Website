@@ -99,6 +99,14 @@
   --mpeg-ext-green: #1a7a3c;
   --mpeg-ext-blue: #0070c0;
   --mpeg-ext-purple: #7030a0;
+  /* StandardsLoopDiagram / MediaConnectivityDiagram (both hand-authored
+     inline SVGs, shared by /about and Home) — colors as custom properties
+     so the dark-mode block below can repaint them instead of leaving them
+     hardcoded light-only. */
+  --diagram-accent: #00a0d2;
+  --diagram-chip-bg: #ffffff;
+  --diagram-chip-text: #00335c;
+  --diagram-caption-text: #006f92;
 }
 
 [data-theme='dark'] {
@@ -126,6 +134,15 @@
   --mpeg-ext-green: #4ade80;
   --mpeg-ext-blue: #4dabf7;
   --mpeg-ext-purple: #b794f4;
+  /* Diagram chips repainted for dark mode: solid white pills would look
+     like stark cutouts against a dark page background (2026-07-29 audit
+     finding), so the chip becomes a dark surface with light text instead
+     of light-with-dark-text; accent/caption text lightened to stay legible
+     on a dark ground. */
+  --diagram-accent: #1db6e8;
+  --diagram-chip-bg: #16232c;
+  --diagram-chip-text: #d6eef7;
+  --diagram-caption-text: #47c8f0;
 }
 
 /* Visually hidden but still announced by screen readers/assistive tech —
@@ -186,16 +203,6 @@
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 1.5rem;
   margin: 1.5rem 0 2.5rem;
-}
-
-.project-grid--2col {
-  grid-template-columns: repeat(2, 1fr);
-}
-
-@media (max-width: 600px) {
-  .project-grid--2col {
-    grid-template-columns: 1fr;
-  }
 }
 
 .project-card {
@@ -300,27 +307,6 @@
   gap: 0.4rem;
 }
 
-/* ── Liaison statements table ───────────────────────────────────── */
-.liaison-table {
-  table-layout: fixed;
-  width: 100%;
-}
-.liaison-table th:nth-child(1),
-.liaison-table td:nth-child(1) {
-  width: 60px;
-}
-.liaison-table th:nth-child(2),
-.liaison-table td:nth-child(2) {
-  width: 75px;
-}
-.liaison-table th:nth-child(3),
-.liaison-table td:nth-child(3) {
-  width: 200px;
-}
-.liaison-table td {
-  overflow-wrap: anywhere;
-}
-
 /* ── Project health table (project index pages) ────────────────── */
 .health-table {
   width: 100%;
@@ -382,33 +368,6 @@
   margin-top: 5px;
 }
 
-/* ── YouTube video grid (tutorials index pages) ─────────────────── */
-.yt-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  width: 100%;
-}
-@media (max-width: 600px) {
-  .yt-grid {
-    grid-template-columns: 1fr;
-  }
-}
-.yt-embed-wrapper {
-  position: relative;
-  width: 100%;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
-}
-.yt-embed-wrapper iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
 .pdf-embed-wrapper {
   display: flex;
   justify-content: center;
@@ -468,6 +427,13 @@
 .community-tile--with-image {
   padding-top: 0;
   overflow: hidden;
+}
+/* overflow: hidden above clips the browser's default focus outline, so a
+   keyboard-only user tabbing through gets no visible focus indicator
+   (2026-07-29 audit finding) -- inset box-shadow instead, since outline
+   would still be clipped. */
+.community-tile--with-image:focus-visible {
+  box-shadow: inset 0 0 0 3px var(--ifm-color-primary);
 }
 .community-tile--with-image img {
   display: block;
@@ -563,6 +529,11 @@
   box-shadow: var(--card-hover-shadow);
   transform: translateY(-3px);
   text-decoration: none !important;
+}
+/* overflow: hidden above clips the default focus outline (2026-07-29 audit
+   finding) -- inset box-shadow instead. */
+.event-post-card:focus-visible {
+  box-shadow: inset 0 0 0 3px var(--ifm-color-primary);
 }
 .event-post-card img {
   display: block;
@@ -705,6 +676,12 @@
   transform: translateY(-3px);
   box-shadow: var(--card-hover-shadow);
   text-decoration: none !important;
+}
+
+/* overflow: hidden above clips the default focus outline (2026-07-29 audit
+   finding) -- inset box-shadow instead. */
+.godeeper-card:focus-visible {
+  box-shadow: inset 0 0 0 3px var(--ifm-color-primary);
 }
 
 /* Cards with no href (GodeeperCard rendered as a plain div) are descriptive
@@ -972,46 +949,6 @@
 .spec-chip svg {
   width: 15px;
   height: 15px;
-  color: var(--ifm-color-primary);
-  flex-shrink: 0;
-}
-
-/* ── Scope tag list (homepage / about "Who We Are" tag cloud) ──────
-   A static, wrapped list of all topic chips — distinct from
-   .spec-chip/.spec-chip-row above, which several tutorial pages already
-   use for their own static wrapped multi-row list and must keep behaving
-   that way. */
-.scope-marquee-track {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.scope-marquee-row {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-.scope-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.6rem 1.15rem;
-  border-radius: 999px;
-  border: 1px solid var(--ifm-color-emphasis-300);
-  background: var(--ifm-background-surface-color);
-  font-size: 0.98rem;
-  font-weight: 600;
-  color: var(--ifm-color-emphasis-800);
-  white-space: nowrap;
-}
-
-.scope-chip svg {
-  width: 20px;
-  height: 20px;
   color: var(--ifm-color-primary);
   flex-shrink: 0;
 }

@@ -94,7 +94,7 @@ export default function MediaConnectivityDiagram() {
           markerHeight="6"
           orient="auto-start-reverse"
         >
-          <path d="M0,0 L10,5 L0,10 z" fill="#00A0D2" />
+          <path d="M0,0 L10,5 L0,10 z" fill="var(--diagram-accent)" />
         </marker>
       </defs>
 
@@ -104,7 +104,7 @@ export default function MediaConnectivityDiagram() {
           key={i}
           transform={`translate(${h.cx - 31.2},${h.cy - 31.2}) scale(2.6)`}
           fill="none"
-          stroke="#00A0D2"
+          stroke="var(--diagram-accent)"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -119,7 +119,7 @@ export default function MediaConnectivityDiagram() {
         cy="290"
         r="126"
         fill="none"
-        stroke="#00A0D2"
+        stroke="var(--diagram-accent)"
         strokeWidth="6"
         filter="url(#vennGlow)"
       />
@@ -128,7 +128,7 @@ export default function MediaConnectivityDiagram() {
         cy="290"
         r="120"
         fill="#001125"
-        stroke="#00A0D2"
+        stroke="var(--diagram-accent)"
         strokeWidth="2"
         filter="url(#vennShadow)"
       />
@@ -160,7 +160,7 @@ export default function MediaConnectivityDiagram() {
         cy="290"
         r="126"
         fill="none"
-        stroke="#00A0D2"
+        stroke="var(--diagram-accent)"
         strokeWidth="6"
         filter="url(#vennGlow)"
       />
@@ -169,7 +169,7 @@ export default function MediaConnectivityDiagram() {
         cy="290"
         r="120"
         fill="#001125"
-        stroke="#00A0D2"
+        stroke="var(--diagram-accent)"
         strokeWidth="2"
         filter="url(#vennShadow)"
       />
@@ -206,7 +206,7 @@ export default function MediaConnectivityDiagram() {
         fontSize="19"
         fontWeight="700"
         fontStyle="italic"
-        fill="#00A0D2"
+        fill="var(--diagram-caption-text)"
       >
         Media applications
       </text>
@@ -217,7 +217,7 @@ export default function MediaConnectivityDiagram() {
         fontSize="19"
         fontWeight="700"
         fontStyle="italic"
-        fill="#00A0D2"
+        fill="var(--diagram-caption-text)"
       >
         inspire new capabilities
       </text>
@@ -228,7 +228,7 @@ export default function MediaConnectivityDiagram() {
         fontSize="19"
         fontWeight="700"
         fontStyle="italic"
-        fill="#00A0D2"
+        fill="var(--diagram-caption-text)"
       >
         New network capabilities
       </text>
@@ -239,7 +239,7 @@ export default function MediaConnectivityDiagram() {
         fontSize="19"
         fontWeight="700"
         fontStyle="italic"
-        fill="#00A0D2"
+        fill="var(--diagram-caption-text)"
       >
         open new experiences
       </text>
@@ -249,14 +249,14 @@ export default function MediaConnectivityDiagram() {
       <path
         d="M358.4 146.8 A 210 210 0 0 1 667.6 146.8"
         fill="none"
-        stroke="#00A0D2"
+        stroke="var(--diagram-accent)"
         strokeWidth="4"
         markerEnd="url(#vennArrow)"
       />
       <path
         d="M667.6 433.2 A 210 210 0 0 1 358.4 433.2"
         fill="none"
-        stroke="#00A0D2"
+        stroke="var(--diagram-accent)"
         strokeWidth="4"
         markerEnd="url(#vennArrow)"
       />

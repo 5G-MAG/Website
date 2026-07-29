@@ -46,6 +46,7 @@ export default function ContactForm({ accessKey, subject, submitLabel = 'Send me
         className={styles.honeypot}
         tabIndex={-1}
         autoComplete="off"
+        aria-hidden="true"
       />
 
       <div className={styles.row}>

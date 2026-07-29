@@ -151,7 +151,7 @@ export default function Home() {
             <div className="event-post-grid">
               {LATEST_NEWS.map((post) => (
                 <Link key={post.href} to={post.href} className="event-post-card">
-                  <img loading="lazy" src={withBaseUrl(post.image)} alt={post.title} />
+                  <img loading="lazy" src={withBaseUrl(post.image)} alt="" />
                   <span className="event-post-title">{post.title}</span>
                 </Link>
               ))}

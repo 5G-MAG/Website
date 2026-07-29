@@ -134,7 +134,7 @@ export default function Membership() {
             className="button button--primary"
             href="#request-membership"
           >
-            Request information
+            Request Information
           </a>,
           <a
             key="members"
@@ -278,34 +278,14 @@ export default function Membership() {
                   target="_blank"
                   rel="noreferrer"
                   title={m.name}
-                  style={{
-                    background: '#fff',
-                    borderRadius: '10px',
-                    padding: '1.25rem',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '0.6rem',
-                  }}
+                  className={styles.memberCard}
                 >
                   <img
                     src={withBaseUrl(`/assets/images/members/${m.logo}`)}
-                    alt={m.name}
+                    alt=""
                     loading="lazy"
-                    style={{ width: '100%', maxWidth: '180px', height: '120px', objectFit: 'contain' }}
                   />
-                  <span
-                    style={{
-                      fontSize: '0.78rem',
-                      fontWeight: 600,
-                      color: '#333',
-                      textAlign: 'center',
-                      lineHeight: 1.25,
-                    }}
-                  >
-                    {m.name.split(' - ')[0]}
-                  </span>
+                  <span className={styles.memberCardName}>{m.name.split(' - ')[0]}</span>
                 </a>
               ))}
             </div>

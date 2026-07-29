@@ -238,7 +238,7 @@ export default function HeroSlideshow() {
                     className="button button--primary"
                     to="/membership#request-membership"
                   >
-                    Become a member
+                    Become a Member
                   </Link>
                   <Link
                     className={clsx(

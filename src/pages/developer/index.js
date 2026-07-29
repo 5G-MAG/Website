@@ -186,20 +186,6 @@ export default function Home() {
           <Link key="community" className="button button--primary" to="/community">
             Developer Community
           </Link>,
-          <Link
-            key="reftools"
-            className="button button--outline button--primary"
-            to="/reference-tools"
-          >
-            Explore All Projects
-          </Link>,
-          <Link
-            key="early-access"
-            className="button button--outline button--primary"
-            to="/early-access"
-          >
-            Request Early Access
-          </Link>,
           <a
             key="overview"
             className="button button--outline button--primary"
@@ -283,7 +269,7 @@ export default function Home() {
                 >
                   <img
                     src={useBaseUrl(`/assets/images/contributors/${c.logo}`)}
-                    alt={c.name}
+                    alt=""
                     loading="lazy"
                   />
                   <span className={styles.memberCardName}>{c.name.split(' - ')[0]}</span>
@@ -296,10 +282,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* See It In Action: photos + videos together */}
+        {/* Our Work In Action: photos + videos together */}
         <section className={clsx(styles.section, styles.sectionAlt)}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>See It In Action</h2>
+            <h2 className={styles.sectionTitle}>Our Work In Action</h2>
             <p className={styles.sectionSubtitle}>
               Reference Tools running on real hardware, at real events — and recent demos and
               tutorials from the developer community.

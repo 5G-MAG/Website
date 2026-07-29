@@ -129,7 +129,7 @@ function DemosSection() {
   if (!videos.length) return null;
 
   return (
-    <section id="demonstrators" className={styles.section} style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}>
+    <section id="demonstrators" className={`${styles.section} ${styles.sectionAlt}`} style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}>
       <div className="container">
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
           <div>
@@ -161,6 +161,18 @@ export default function Testing() {
       <HubHero
         title="Validation, Interop Plugfests, Demos and Applications"
         icon={INTEROP_ICON_PATH}
+        actions={[
+          <a key="demos" className="button button--primary" href="#demonstrators">
+            See Demos In Action
+          </a>,
+          <a
+            key="events"
+            className="button button--outline button--primary"
+            href="#testing-events"
+          >
+            Testing Events
+          </a>,
+        ]}
       />
 
       <div className="container" style={{ marginTop: '1.75rem' }}>
@@ -242,7 +254,7 @@ export default function Testing() {
         <DemosSection />
 
         {/* Testing Events */}
-        <section id="testing-events" className={`${styles.section} ${styles.sectionAlt}`}>
+        <section id="testing-events" className={styles.section}>
           <div className="container">
             <h2 className={styles.sectionTitle}>Testing Events</h2>
             <p className={styles.sectionSubtitle}>

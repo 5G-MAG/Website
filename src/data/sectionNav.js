@@ -28,13 +28,14 @@ export function stripBaseUrl(pathname, baseUrl) {
 
 export const SECTION_NAV = [
   {
-    prefixes: ['/about', '/contact', '/partnerships', '/structure'],
+    prefixes: ['/about', '/contact', '/partnerships', '/structure', '/subscribe'],
     title: 'About Us',
     titleHref: '/about',
     items: [
       { label: 'Structure', href: '/structure' },
       { label: 'Partnerships', href: '/partnerships' },
       { label: 'Contact', href: '/contact' },
+      { label: 'Subscribe', href: '/subscribe' },
     ],
   },
   {

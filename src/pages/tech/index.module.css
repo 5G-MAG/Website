@@ -8,6 +8,30 @@
   background: var(--ifm-color-emphasis-100);
 }
 
+/* Centered lead paragraph, repeated verbatim as an inline style object on
+   About's 3 opening paragraphs (2026-07-29 audit finding) -- shared class
+   instead. */
+.leadParagraph {
+  max-width: 760px;
+  margin: 0 auto 1rem;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.leadParagraph--last {
+  margin-bottom: 1.5rem;
+}
+
+/* Figure caption below a methodology diagram, repeated verbatim as an
+   inline style object on Standards' 2 methodology figures (2026-07-29
+   audit finding) -- shared class instead. */
+.diagramCaption {
+  font-size: 0.85rem;
+  color: var(--ifm-color-emphasis-700);
+  margin-top: 0.6rem;
+  text-align: center;
+}
+
 .sectionTitle {
   font-size: 1.75rem;
   font-weight: 700;
@@ -45,6 +69,36 @@
   }
 }
 
+/* Theme-aware member/contributor tile -- was hardcoded '#fff'/'#333' inline
+   on Membership's own member grid (2026-07-29 audit finding: stark white
+   card in dark mode); this is the same shape Developer's Contributors
+   grid already uses correctly. */
+.memberCard {
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 10px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.memberCard img {
+  width: 100%;
+  max-width: 180px;
+  height: 120px;
+  object-fit: contain;
+}
+
+.memberCardName {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-800);
+  text-align: center;
+  line-height: 1.25;
+}
 
 /* ── Activity Cards ─────────────────────────────────────────────────── */
 
@@ -90,6 +144,12 @@
   box-shadow: var(--card-hover-shadow);
   transform: translateY(-3px);
   text-decoration: none !important;
+}
+
+/* overflow: hidden above clips the default focus outline (2026-07-29 audit
+   finding) -- inset box-shadow instead. */
+.activityCard:focus-visible {
+  box-shadow: inset 0 0 0 3px var(--ifm-color-primary);
 }
 
 .activityIconBand {

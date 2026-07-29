@@ -81,7 +81,7 @@ function ProjectCard({ project }) {
         <div className={styles.projectCardFooter}>
           {releaseUrl && (
             <Link className="button button--primary button--sm" to={releaseUrl}>
-              View Releases &rarr;
+              View Releases
             </Link>
           )}
           {project.doc_url && (

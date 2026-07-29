@@ -201,7 +201,7 @@ const config = {
           title: 'Explainers & Profiles',
           items: [
             { label: 'Overview', to: '/tech' },
-            { label: 'Categories & Topics', to: '/tech/#categories-topics' },
+            { label: 'Categories & Topics', to: '/tech#categories-topics' },
             { label: 'Technology Exchanges', to: '/tech/exchanges' },
           ],
         },
@@ -250,6 +250,7 @@ const config = {
           items: [
             { label: 'Events', to: '/events' },
             { label: 'News', to: '/news' },
+            { label: 'Podcast', to: '/podcast' },
             { label: 'Subscribe for Updates', to: '/subscribe' },
             ...SOCIAL_LINKS.map((s) => socialFooterItem(s.label, s.href, s.svgPath)),
           ],

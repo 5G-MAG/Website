@@ -42,7 +42,7 @@ function PullRequestRow({ pr }) {
           <img
             className={styles.authorAvatar}
             src={pr.author_avatar}
-            alt={pr.author_login}
+            alt=""
             loading="lazy"
           />
         )}

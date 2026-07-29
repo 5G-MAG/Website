@@ -10,7 +10,7 @@ function SpotlightCard({ c, rank }) {
       className={rank === 1 ? `${styles.spotCard} ${styles.spotCardFirst}` : styles.spotCard}
     >
       <span className={styles.spotRank}>#{rank}</span>
-      <img className={styles.avatar} src={c.avatar_url} alt={c.login} loading="lazy" />
+      <img className={styles.avatar} src={c.avatar_url} alt="" loading="lazy" />
       <span className={styles.spotName}>{c.login}</span>
       <span className={styles.spotStats}>
         <span className={styles.statPill}>{c.contributions} contributions</span>
@@ -27,7 +27,7 @@ function RankRow({ c, rank, maxContributions }) {
   return (
     <a href={c.html_url} target="_blank" rel="noreferrer" className={styles.rankRow}>
       <span className={styles.rankNum}>{rank}</span>
-      <img className={styles.avatarSm} src={c.avatar_url} alt={c.login} loading="lazy" />
+      <img className={styles.avatarSm} src={c.avatar_url} alt="" loading="lazy" />
       <span className={styles.rankNameBlock}>
         <span className={styles.rankName}>{c.login}</span>
         <span className={styles.rankMeta}>

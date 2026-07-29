@@ -45,7 +45,7 @@ function EventCard({ title, desc, href, img }) {
   return (
     <Link to={href} className={styles.linkCard}>
       {img && (
-        <img className={styles.linkCardImg} src={resolvedImg} alt={title} loading="lazy" />
+        <img className={styles.linkCardImg} src={resolvedImg} alt="" loading="lazy" />
       )}
       <h3 className={styles.linkCardTitle}>{title}</h3>
       <p className={styles.linkCardBody}>{desc}</p>
@@ -70,15 +70,15 @@ export default function Events() {
     },
     {
       src: useBaseUrl('/assets/images/fmt/gallery/photo-04.jpg'),
-      alt: 'Future Media Townhall 2025 session',
+      alt: 'Future Media Townhall 2025: a speaker presents on the history of streaming technology',
     },
     {
       src: useBaseUrl('/assets/images/fmt/gallery/photo-07.jpg'),
-      alt: 'Future Media Townhall 2025 session',
+      alt: 'Future Media Townhall 2025: a panel discussion on tangible standardization projects for the Rel-20 and 6G era',
     },
     {
       src: useBaseUrl('/assets/images/fmt/gallery/photo-10.jpg'),
-      alt: 'Future Media Townhall 2025 session',
+      alt: 'Future Media Townhall 2025: a panel discussion in front of a 3GPP Release 19-21 timeline chart',
     },
   ];
   return (

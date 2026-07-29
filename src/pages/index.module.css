@@ -162,6 +162,12 @@
   text-decoration: none !important;
 }
 
+/* overflow: hidden above clips the default focus outline (2026-07-29 audit
+   finding) -- inset box-shadow instead. */
+.activityCard:focus-visible {
+  box-shadow: inset 0 0 0 3px var(--ifm-color-primary);
+}
+
 .activityIconBand {
   display: flex;
   flex-direction: column;

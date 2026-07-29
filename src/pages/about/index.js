@@ -53,7 +53,7 @@ export default function About() {
             className="button button--primary"
             to="/membership#request-membership"
           >
-            Become a member
+            Become a Member
           </Link>,
           <a
             key="overview"
@@ -71,15 +71,15 @@ export default function About() {
         <section className={styles.section}>
           <div className="container">
             <h2 className={styles.sectionTitle}>Scope: Media and Connectivity</h2>
-            <p style={{ maxWidth: '760px', margin: '0 auto 1rem', lineHeight: 1.7, textAlign: 'center' }}>
+            <p className={styles.leadParagraph}>
               &ldquo;We are not a standards body. We do not write specs. We translate them into
               things that run.&rdquo;
             </p>
-            <p style={{ maxWidth: '760px', margin: '0 auto 1rem', lineHeight: 1.7, textAlign: 'center' }}>
+            <p className={styles.leadParagraph}>
               5G-MAG is a neutral platform bridging standards and real-world deployments: keeping
               connected media applications open, interoperable and deployable at scale.
             </p>
-            <p style={{ maxWidth: '760px', margin: '0 auto 1.5rem', lineHeight: 1.7, textAlign: 'center' }}>
+            <p className={`${styles.leadParagraph} ${styles['leadParagraph--last']}`}>
               Technology, backed by open standards, ready to scale across the industry.
             </p>
 
