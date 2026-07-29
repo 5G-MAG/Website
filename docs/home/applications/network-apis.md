@@ -27,8 +27,6 @@ An Application, on this site, is a real working scenario assembled from one or m
 
 CAMARA-compliant API clients that let a media application ask the network directly for what a live production needs: a Quality on Demand (QoD) session for a contribution feed, a connectivity-insight check on whether a location can sustain a required bitrate, or a booked network slice for a broadcast at a fixed venue and time window.
 
-**Built from:** [CAMARA Connectivity Quality Management APIs](/reference-tools/network-apis/).
-
 Written step-by-step tutorials for these APIs are not yet published. In the meantime, see the [Scope](/reference-tools/network-apis/scope) page for the full API coverage table and the [Resources](/reference-tools/network-apis/resources) page for the project repositories to try them yourself.
 
 ## Related

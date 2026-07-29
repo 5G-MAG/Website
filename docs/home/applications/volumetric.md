@@ -27,23 +27,17 @@ An Application, on this site, is a real working scenario assembled from one or m
 
 Sharing 3D and AR assets the way you would share a photo: as an attachment to an MMS message or a third-party messaging app, packaged so a 3GPP messaging service can carry it, then opened and rendered in the XR player. Working examples include sharing a plain 3D model and sharing an AR-anchored model, for example a piece of furniture a viewer can place on their own floor before deciding whether it fits. A couple of further extensions, adding images inside a shared 3D asset and manipulating a placed AR model under anchoring constraints, are flagged in the tutorial as not yet implemented.
 
-**Built from:** [XR/3D Scenes with MPEG-I Scene Description](/reference-tools/xr/).
-
 Follow the [use-case walkthrough](/reference-tools/xr/tutorials/immersive-3d-media-message) to try the working scenarios with the provided sample assets.
 
 ## Volumetric Video Streaming to Android
 
 A Unity-based V3C player running on an Android phone, decoding V3C-coded volumetric content and streaming it over DASH (Dynamic Adaptive Streaming over HTTP) from a server you run on your own machine: volumetric video played back on a handheld device rather than only in a fixed lab setup.
 
-**Built from:** [MPEG V3C Immersive Platform](/reference-tools/v3c/).
-
 Follow the [step-by-step guide](/reference-tools/v3c/tutorials/v3c-immersive-platform-in-android-streaming) to build the Android player, set up the DASH server, and stream sample V3C content to your device.
 
 ## XR Content Authoring with Blender
 
 Authoring an XR scene from the content-creation side rather than the playback side: adding MPEG glTF extensions (anchoring, spatial audio, video textures) to a scene in Blender using a dedicated exporter add-on, then exporting it as glTF and loading it straight into the XR Unity Player to check how it looks.
-
-**Built from:** [XR/3D Scenes with MPEG-I Scene Description](/reference-tools/xr/).
 
 Follow the [video walkthrough](/reference-tools/xr/tutorials/blender-exporter-unity-player) for the exporter workflow; written per-extension authoring instructions are also linked from the XR tutorials index.
 
