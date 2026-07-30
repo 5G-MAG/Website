@@ -138,7 +138,7 @@ export default function Events() {
             <p className={styles.sectionSubtitle}>
               Trade shows and conferences 5G-MAG organizes or takes part in.
             </p>
-            <div className={styles.pillarGrid3}>
+            <div className={styles.pillarGrid3} style={{ alignItems: 'start' }}>
               {EVENT_PAGES.map((e) => (
                 <EventCard key={e.href} {...e} />
               ))}
