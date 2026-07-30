@@ -42,7 +42,7 @@ function EventCard({ event }) {
 
 // `now` is passed in (rather than computed here) so this stays a pure
 // function of its props -- callers pass `new Date()` at render time.
-function splitAgenda(events, now) {
+export function splitAgenda(events, now) {
   const upcoming = [];
   const past = [];
   for (const e of events) {
@@ -73,7 +73,37 @@ export function EventsAgendaPreview({ events, limit = 3 }) {
   );
 }
 
-// Full agenda for the Events page: grouped into Upcoming / Past sections.
+// Just the Upcoming group, no wrapping label section -- used on the Events
+// page so "Flagship Events" can sit between Upcoming and Past instead of
+// both always appearing back to back.
+export function UpcomingAgenda({ events }) {
+  const { upcoming } = splitAgenda(events, new Date());
+  if (upcoming.length === 0) return null;
+  return (
+    <div className={styles.grid}>
+      {upcoming.map((e) => (
+        <EventCard key={e.href} event={e} />
+      ))}
+    </div>
+  );
+}
+
+// Just the Past group, same reasoning as UpcomingAgenda above.
+export function PastAgenda({ events }) {
+  const { past } = splitAgenda(events, new Date());
+  if (past.length === 0) return null;
+  return (
+    <div className={styles.grid}>
+      {past.map((e) => (
+        <EventCard key={e.href} event={e} />
+      ))}
+    </div>
+  );
+}
+
+// Full agenda, both groups together with labels -- used on the Home page
+// preview's "see full agenda" link target context and anywhere the
+// Upcoming/Past split doesn't need another section interleaved.
 export default function EventsAgenda({ events }) {
   const { upcoming, past } = splitAgenda(events, new Date());
   return (

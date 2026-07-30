@@ -4,7 +4,7 @@ import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import PhotoGallery from '@site/src/components/PhotoGallery';
-import EventsAgenda from '@site/src/components/EventsAgenda';
+import { UpcomingAgenda, PastAgenda } from '@site/src/components/EventsAgenda';
 import { SLACK_INVITE_URL, SOCIAL_LINKS } from '@site/src/data/socialLinks';
 import { FACT_LARGE_EVENTS, FACT_YEARLY_CONFERENCE } from '@site/src/data/facts';
 import { EVENTS_AGENDA } from '@site/src/data/eventsAgenda';
@@ -117,27 +117,27 @@ export default function Events() {
       </div>
 
       <main>
-        {/* Agenda: dated events 5G-MAG attends/presents at, as opposed to
-            the evergreen trade-show cards below */}
+        {/* Upcoming: dated events 5G-MAG attends/presents at, as opposed to
+            the evergreen Flagship Events cards below */}
         <section
           id="agenda"
           className={`${styles.section} ${styles.sectionAlt}`}
           style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}
         >
           <div className="container">
-            <h2 className={styles.sectionTitle}>Agenda</h2>
+            <h2 className={styles.sectionTitle}>Upcoming Events</h2>
             <p className={styles.sectionSubtitle}>
               Conferences, workshops, webinars and calls where 5G-MAG participates or is invited
               to attend.
             </p>
-            <EventsAgenda events={EVENTS_AGENDA} />
+            <UpcomingAgenda events={EVENTS_AGENDA} />
           </div>
         </section>
 
-        {/* Events, front and center */}
+        {/* Flagship: evergreen trade-show cards, front and center */}
         <section className={styles.section}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Events</h2>
+            <h2 className={styles.sectionTitle}>Flagship Events</h2>
             <p className={styles.sectionSubtitle}>
               Trade shows and conferences 5G-MAG organizes or takes part in.
             </p>
@@ -146,6 +146,18 @@ export default function Events() {
                 <EventCard key={e.href} {...e} />
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Past: the same dated Agenda list's history, kept separate from
+            Upcoming so Flagship Events can sit between the two */}
+        <section className={`${styles.section} ${styles.sectionAlt}`}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>Past Events</h2>
+            <p className={styles.sectionSubtitle}>
+              Previous conferences, workshops, webinars and calls.
+            </p>
+            <PastAgenda events={EVENTS_AGENDA} />
           </div>
         </section>
 
