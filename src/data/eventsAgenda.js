@@ -93,4 +93,20 @@ export const EVENTS_AGENDA = [
     location: 'Noordwijk, ESA/ESTEC',
     href: '/events/agenda/ntn-forum-2026',
   },
+  {
+    date: '2026-09-11',
+    endDate: '2026-09-14',
+    title: '5G-MAG at IBC 2026',
+    type: 'Conference',
+    location: 'Amsterdam, RAI',
+    href: '/ibc',
+  },
+  {
+    date: '2026-09-12',
+    endDate: null,
+    title: 'Future Media Townhall 2026',
+    type: 'Conference',
+    location: 'Amsterdam, RAI - Room E.102',
+    href: '/fmt',
+  },
 ];
