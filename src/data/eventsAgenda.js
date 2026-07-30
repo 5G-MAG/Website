@@ -85,4 +85,12 @@ export const EVENTS_AGENDA = [
     location: 'Online',
     href: '/events/agenda/friday-call-specs-to-software-ai',
   },
+  {
+    date: '2026-08-31',
+    endDate: '2026-09-02',
+    title: '5G-MAG at NTN Forum 2026',
+    type: 'Conference',
+    location: 'Noordwijk, ESA/ESTEC',
+    href: '/events/agenda/ntn-forum-2026',
+  },
 ];
