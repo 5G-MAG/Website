@@ -26,7 +26,7 @@ const EVENT_FACTS = [FACT_LARGE_EVENTS, FACT_YEARLY_CONFERENCE];
 // unrelated image.
 const EVENT_PAGES = [
   { title: 'MWC Barcelona', desc: 'Stand 5C30, Swiss Pavilion, Hall 5', href: '/mwc', img: null },
-  { title: 'IBC', desc: 'EBU stand, booth 10.D21', href: '/ibc', img: '/assets/images/gallery/ibc-panel.jpg' },
+  { title: 'IBC', desc: 'EBU stand, booth 10.D21', href: '/ibc', img: '/assets/images/events/ibc-2026.png' },
   {
     title: 'Future Media Townhall',
     desc: 'RAI Amsterdam',
