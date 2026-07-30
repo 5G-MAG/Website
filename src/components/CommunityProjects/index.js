@@ -20,6 +20,61 @@ const NOT_ON_HUB_DASHBOARD = new Set([
   'srsRAN',
 ]);
 
+// Groups projects the same way reference-tools/index.js's own CATEGORIES
+// array already does (by standards body), plus a Testbeds group (which has
+// no such taxonomy of its own -- see testbeds/index.js) and a trailing
+// group for the one non-project "Dependency" bucket in community-stats.json
+// (external forks 5G-MAG maintains, not a first-class reference tool).
+// Without this, the project list rendered in whatever order the stats JSON
+// happened to store projects -- not alphabetical, not grouped, testbeds
+// mixed in with reference tools (2026-07-30 feedback).
+const CATEGORY_ORDER = [
+  '3GPP Implementations',
+  'MPEG Implementation',
+  'IETF Implementations',
+  'CAMARA Project Implementations',
+  'Shared Tools',
+  'Testbeds & Evaluation Frameworks',
+  'Other',
+];
+
+const PROJECT_CATEGORY = {
+  '3GPP RAN and Core Platforms': '3GPP Implementations',
+  '5G Broadcast - Emergency Alerts': '3GPP Implementations',
+  '5G Broadcast - TV and Radio Services': '3GPP Implementations',
+  '5G Core Service Consumers': '3GPP Implementations',
+  '5G Media Streaming (5GMS)': '3GPP Implementations',
+  '5G Multicast Broadcast Services (MBS)': '3GPP Implementations',
+  'DVB-I Services over 5G Systems': '3GPP Implementations',
+  'UE Data Collection, Reporting and Event Exposure': '3GPP Implementations',
+  'Conversational Avatar Communication with MPEG ARF': 'MPEG Implementation',
+  'MPEG V3C Immersive Platform': 'MPEG Implementation',
+  'XR/3D Scenes with MPEG-I Scene Description': 'MPEG Implementation',
+  'Multimedia Delivery Protocols': 'IETF Implementations',
+  'CAMARA Connectivity Quality Management APIs': 'CAMARA Project Implementations',
+  'Common Tools': 'Shared Tools',
+  'AI Traffic Characterization': 'Testbeds & Evaluation Frameworks',
+  'AI/ML Evaluation Framework': 'Testbeds & Evaluation Frameworks',
+  'Beyond 2D Evaluation Framework': 'Testbeds & Evaluation Frameworks',
+};
+
+function categoryOf(name) {
+  return PROJECT_CATEGORY[name] || 'Other';
+}
+
+function groupByCategory(projects) {
+  const groups = new Map(CATEGORY_ORDER.map((c) => [c, []]));
+  for (const project of projects) {
+    groups.get(categoryOf(project.name)).push(project);
+  }
+  for (const list of groups.values()) {
+    list.sort((a, b) => a.name.localeCompare(b.name));
+  }
+  return CATEGORY_ORDER.map((title) => ({ title, projects: groups.get(title) })).filter(
+    (g) => g.projects.length > 0
+  );
+}
+
 function daysSince(dateStr) {
   if (!dateStr || dateStr === '-') return 9999;
   return Math.max(
@@ -365,11 +420,16 @@ export default function CommunityProjects() {
         </div>
       </div>
 
-      <div className={styles.projectList}>
-        {projects.map((project) => (
-          <ProjectDetails key={project.name} project={project} />
-        ))}
-      </div>
+      {groupByCategory(projects).map((group) => (
+        <div key={group.title} className={styles.categoryGroup}>
+          <h4 className={styles.categoryGroupTitle}>{group.title}</h4>
+          <div className={styles.projectList}>
+            {group.projects.map((project) => (
+              <ProjectDetails key={project.name} project={project} />
+            ))}
+          </div>
+        </div>
+      ))}
 
       <div className={styles.timelineToggleSection}>
         <button
