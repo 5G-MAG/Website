@@ -27,7 +27,7 @@ export const EVENTS_AGENDA = [
     title: '5G-MAG at MWC 2026',
     type: 'Conference',
     location: 'Barcelona',
-    href: '/events/agenda/mwc-2026',
+    href: '/mwc',
   },
   {
     date: '2026-03-19',
