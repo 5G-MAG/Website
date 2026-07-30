@@ -6,8 +6,35 @@ import HeroFigure from '@site/src/components/HeroFigure';
 import ProjectIcon from '@site/src/components/ProjectIcon';
 import releasesData from '@site/static/data/releases.json';
 import newsData from '@site/static/data/news.json';
+import { EVENTS_AGENDA } from '@site/src/data/eventsAgenda';
 import { isRC, daysSince, formatAge, sortByLatestRelease } from '@site/src/utils/releases';
 import styles from './styles.module.css';
+
+// Lead time before an event's own date that it starts appearing as a
+// homepage slide -- flagship trade shows (MWC/IBC/FMT, see `flagship` in
+// eventsAgenda.js) get a longer runway than one-off webinars/workshops/calls,
+// since they're bigger and worth advertising further ahead.
+const FLAGSHIP_LEAD_DAYS = 45;
+const NORMAL_LEAD_DAYS = 14;
+
+function daysUntil(dateStr) {
+  const ms = new Date(`${dateStr}T00:00:00Z`).getTime() - Date.now();
+  return Math.ceil(ms / 86400000);
+}
+
+function slideLabel(s) {
+  if (s.type === 'home') return 'Home';
+  if (s.type === 'news' || s.type === 'event') return s.title;
+  return s.name;
+}
+
+function formatEventDate(dateStr, endDateStr) {
+  const opts = { day: 'numeric', month: 'short', year: 'numeric' };
+  const start = new Date(`${dateStr}T00:00:00Z`).toLocaleDateString('en-GB', opts);
+  if (!endDateStr) return start;
+  const end = new Date(`${endDateStr}T00:00:00Z`).toLocaleDateString('en-GB', opts);
+  return `${start} – ${end}`;
+}
 
 // Auto-advancing hero: the homepage slide plus one slide per each of the
 // 3 most recent projects with a release, showing that project's latest
@@ -159,11 +186,19 @@ export default function HeroSlideshow() {
   const newsSlides = (newsData.posts || [])
     .slice(0, 3)
     .map((p) => ({ type: 'news', ...p, sortDate: p.date }));
-  // Releases and news are each picked as "top 3 of their own type" above, then
-  // interleaved by date here -- so a news post more recent than a release
-  // (or vice versa) rotates in before it, rather than always showing every
-  // release before every news post regardless of actual recency.
-  const contentSlides = [...releaseSlides, ...newsSlides].sort((a, b) =>
+  // An event enters rotation once it's within its lead time (45 days for
+  // flagship trade shows, 14 for everything else) and drops out once it's
+  // past -- sortDate is the event's own date so it interleaves with
+  // releases/news by recency the same way they interleave with each other.
+  const eventSlides = EVENTS_AGENDA.filter((e) => {
+    const lead = e.flagship ? FLAGSHIP_LEAD_DAYS : NORMAL_LEAD_DAYS;
+    const until = daysUntil(e.date);
+    return until >= 0 && until <= lead;
+  }).map((e) => ({ ...e, eventType: e.type, type: 'event', sortDate: e.date }));
+  // Releases, news and events are each picked/filtered independently above,
+  // then interleaved by date here -- so whichever is most recent (or, for
+  // events, soonest) rotates in first regardless of type.
+  const contentSlides = [...releaseSlides, ...newsSlides, ...eventSlides].sort((a, b) =>
     (b.sortDate || '').localeCompare(a.sortDate || '')
   );
   const slides = [HOME_SLIDE, ...contentSlides];
@@ -316,6 +351,41 @@ export default function HeroSlideshow() {
               </div>
             </div>
           </div>
+        ) : slide.type === 'event' ? (
+          <div className={styles.slideOverlayCards}>
+            <div className="container">
+              <div className={styles.slideMediaRow}>
+                <div className={styles.slideCard}>
+                  <div className={styles.slideCardHeader}>
+                    <p className={styles.slideEyebrow}>
+                      <span className={styles.slideEyebrowPill}>
+                        <span className={styles.slideEyebrowPillDot} />
+                        {slide.flagship ? 'Flagship Event' : 'Upcoming Event'}
+                      </span>
+                      <span className={styles.slideEyebrowGroupPill}>{slide.eventType}</span>
+                    </p>
+                    <h2
+                      className={styles.slideCardTitle}
+                      style={{ whiteSpace: 'normal', fontSize: '1.6rem', lineHeight: 1.3 }}
+                    >
+                      {slide.title}
+                    </h2>
+                  </div>
+                  <div className={styles.slideCardBody} style={{ display: 'block' }}>
+                    <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.95rem', lineHeight: 1.6, margin: 0 }}>
+                      {formatEventDate(slide.date, slide.endDate)} &middot; {slide.location}
+                    </p>
+                  </div>
+                  <div className={styles.slideCardFooter}>
+                    <Link className="button button--primary" to={slide.href}>
+                      Learn More
+                    </Link>
+                    <span className={styles.slideAge}>in {daysUntil(slide.date)}d</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         ) : (
           <div className={styles.slideOverlayCards}>
             <div className="container">
@@ -404,12 +474,10 @@ export default function HeroSlideshow() {
             key={i}
             className={clsx(styles.slideDot, i === active && styles.slideDotActive)}
             onClick={() => setActive(i)}
-            aria-label={s.type === 'home' ? 'Home' : s.type === 'news' ? s.title : s.name}
+            aria-label={slideLabel(s)}
           >
             {i === active && (
-              <span className={styles.slideDotLabel}>
-                {s.type === 'home' ? 'Home' : s.type === 'news' ? s.title : s.name}
-              </span>
+              <span className={styles.slideDotLabel}>{slideLabel(s)}</span>
             )}
           </button>
         ))}

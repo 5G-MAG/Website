@@ -4,6 +4,12 @@
 // 'events/agenda', configured in docusaurus.config.js), kept out of the
 // main /news feed on purpose. Add new entries here AND as a post under
 // events-blog/ to keep the agenda and the write-up in sync.
+//
+// `flagship: true` marks the 3 recurring trade shows with their own
+// evergreen page (MWC, IBC, FMT -- see EVENT_PAGES in
+// src/pages/events/index.js). HeroSlideshow uses this to decide how far
+// ahead of the date to start surfacing the event as a homepage slide: 45
+// days for flagship events, 14 days for everything else.
 export const EVENTS_AGENDA = [
   {
     date: '2025-11-25',
@@ -28,6 +34,7 @@ export const EVENTS_AGENDA = [
     type: 'Conference',
     location: 'Barcelona',
     href: '/mwc',
+    flagship: true,
   },
   {
     date: '2026-03-19',
@@ -100,6 +107,7 @@ export const EVENTS_AGENDA = [
     type: 'Conference',
     location: 'Amsterdam, RAI',
     href: '/ibc',
+    flagship: true,
   },
   {
     date: '2026-09-12',
@@ -108,5 +116,6 @@ export const EVENTS_AGENDA = [
     type: 'Conference',
     location: 'Amsterdam, RAI - Room E.102',
     href: '/fmt',
+    flagship: true,
   },
 ];
