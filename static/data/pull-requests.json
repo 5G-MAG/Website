@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-30 01:09 UTC",
+  "updated_at": "2026-07-31 01:21 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -267,6 +267,19 @@
       "doc_url": "/reference-tools/5g-mbs/",
       "tagline": "5G-native multicast and broadcast services · 3GPP 5G MBS",
       "pulls": [
+        {
+          "repo": "rt-mbs-examples",
+          "branch": null,
+          "number": 29,
+          "title": "Non-interactive tmux tutorial mode + loadable demo templates",
+          "url": "https://github.com/5G-MAG/rt-mbs-examples/pull/29",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-07-30",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "rt-mbs-function",
           "branch": null,
