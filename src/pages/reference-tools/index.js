@@ -26,19 +26,6 @@ const CATEGORIES = [
     desc: 'Reference implementations of 3GPP-defined media streaming, broadcast, multicast, core-network and data-collection specifications.',
     topics: [
       {
-        title: '3GPP RAN and Core Platforms',
-        desc: 'Open5GS-based 5G core and srsRAN-based RAN for lab and field testing.',
-        href: '/reference-tools/3gpp-platforms',
-        icon: icon(
-          <>
-            <path d="M6 18l0 -2" />
-            <path d="M10 18l0 -4" />
-            <path d="M14 18l0 -6" />
-            <path d="M18 18l0 -8" />
-          </>
-        ),
-      },
-      {
         title: '5G Broadcast - Emergency Alerts',
         desc: 'Broadcast-based public warning system using 5G Broadcast infrastructure.',
         href: '/reference-tools/emergency-alerts',
@@ -217,7 +204,7 @@ const CATEGORIES = [
   },
   {
     title: 'Shared Tools',
-    desc: 'Common helper repositories that complement the Reference Tools above.',
+    desc: 'Auxiliary infrastructure and helper repositories that other Reference Tools projects build on.',
     topics: [
       {
         title: 'Common Tools',
@@ -225,6 +212,19 @@ const CATEGORIES = [
         href: '/reference-tools/common-tools',
         icon: icon(
           <path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5" />
+        ),
+      },
+      {
+        title: '3GPP RAN and Core Platforms',
+        desc: 'Open5GS-based 5G core and srsRAN-based RAN for lab and field testing.',
+        href: '/reference-tools/3gpp-platforms',
+        icon: icon(
+          <>
+            <path d="M6 18l0 -2" />
+            <path d="M10 18l0 -4" />
+            <path d="M14 18l0 -6" />
+            <path d="M18 18l0 -8" />
+          </>
         ),
       },
     ],
