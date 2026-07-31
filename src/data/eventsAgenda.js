@@ -10,6 +10,11 @@
 // src/pages/events/index.js). HeroSlideshow uses this to decide how far
 // ahead of the date to start surfacing the event as a homepage slide: 45
 // days for flagship events, 14 days for everything else.
+//
+// `image` matches each event's own cover image -- the same file used as
+// the `image:` frontmatter on its events-blog/*.mdx post (or, for the 3
+// flagship pages, the same banner used on /mwc, /ibc, /fmt) -- so the
+// HeroSlideshow event card isn't text-only.
 export const EVENTS_AGENDA = [
   {
     date: '2025-11-25',
@@ -18,6 +23,7 @@ export const EVENTS_AGENDA = [
     type: 'Conference',
     location: 'Online',
     href: '/events/agenda/msf-volumetric-video-town-hall',
+    image: '/assets/images/events/msf-volumetric-town-hall.png',
   },
   {
     date: '2026-02-27',
@@ -26,6 +32,7 @@ export const EVENTS_AGENDA = [
     type: 'Public Call',
     location: 'Online',
     href: '/events/agenda/6g-testbed-ai-traffic-characterization',
+    image: '/assets/images/events/6g-testbed-ai-traffic.png',
   },
   {
     date: '2026-03-02',
@@ -35,6 +42,7 @@ export const EVENTS_AGENDA = [
     location: 'Barcelona',
     href: '/mwc',
     flagship: true,
+    image: '/assets/images/events/mwc-2026.png',
   },
   {
     date: '2026-03-19',
@@ -43,6 +51,7 @@ export const EVENTS_AGENDA = [
     type: 'Workshop',
     location: 'Online',
     href: '/events/agenda/media-energy-consumption-workshop-2026',
+    image: '/assets/images/events/media-energy-workshop.png',
   },
   {
     date: '2026-03-25',
@@ -51,6 +60,7 @@ export const EVENTS_AGENDA = [
     type: 'Public Call',
     location: 'Online',
     href: '/events/agenda/tech-talk-leo-netflix',
+    image: '/assets/images/events/tech-talk-leo-netflix.png',
   },
   {
     date: '2026-04-14',
@@ -59,6 +69,7 @@ export const EVENTS_AGENDA = [
     type: 'Webinar',
     location: 'Online',
     href: '/events/agenda/webinar-ntn-content-delivery',
+    image: '/assets/images/events/webinar-ntn-content-delivery.png',
   },
   {
     date: '2026-06-09',
@@ -67,6 +78,7 @@ export const EVENTS_AGENDA = [
     type: 'Workshop',
     location: 'Berlin, Fraunhofer FOKUS',
     href: '/events/agenda/plugfest-berlin-2026-announcement',
+    image: '/assets/images/events/plugfest-announcement.png',
   },
   {
     date: '2026-06-16',
@@ -75,6 +87,7 @@ export const EVENTS_AGENDA = [
     type: 'Conference',
     location: 'Berlin',
     href: '/events/agenda/fokus-media-web-symposium-2026',
+    image: '/assets/images/events/fokus-media-web-symposium.png',
   },
   {
     date: '2026-06-24',
@@ -83,6 +96,7 @@ export const EVENTS_AGENDA = [
     type: 'Conference',
     location: 'Shanghai',
     href: '/events/agenda/mwc-shanghai-2026',
+    image: '/assets/images/events/mwc-shanghai.png',
   },
   {
     date: '2026-06-26',
@@ -91,6 +105,7 @@ export const EVENTS_AGENDA = [
     type: 'Public Call',
     location: 'Online',
     href: '/events/agenda/friday-call-specs-to-software-ai',
+    image: '/assets/images/events/friday-call-ai-software.png',
   },
   {
     date: '2026-08-31',
@@ -99,6 +114,7 @@ export const EVENTS_AGENDA = [
     type: 'Conference',
     location: 'Noordwijk, ESA/ESTEC',
     href: '/events/agenda/ntn-forum-2026',
+    image: '/assets/images/events/ntn-forum-2026.png',
   },
   {
     date: '2026-09-11',
@@ -108,6 +124,7 @@ export const EVENTS_AGENDA = [
     location: 'Amsterdam, RAI',
     href: '/ibc',
     flagship: true,
+    image: '/assets/images/events/ibc-2026.png',
   },
   {
     date: '2026-09-12',
@@ -117,5 +134,6 @@ export const EVENTS_AGENDA = [
     location: 'Amsterdam, RAI - Room E.102',
     href: '/fmt',
     flagship: true,
+    image: '/assets/images/fmt/fmt-2026-banner.png',
   },
 ];

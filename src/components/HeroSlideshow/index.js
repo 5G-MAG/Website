@@ -355,7 +355,12 @@ export default function HeroSlideshow() {
           <div className={styles.slideOverlayCards}>
             <div className="container">
               <div className={styles.slideMediaRow}>
-                <div className={styles.slideCard}>
+                {slide.image && (
+                  <div className={styles.slideImageCard}>
+                    <img src={slideImageUrl} alt="" />
+                  </div>
+                )}
+                <div className={clsx(styles.slideCard, slide.image && styles.slideCardInRow)}>
                   <div className={styles.slideCardHeader}>
                     <p className={styles.slideEyebrow}>
                       <span className={styles.slideEyebrowPill}>
