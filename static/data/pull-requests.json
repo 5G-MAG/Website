@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-31 01:21 UTC",
+  "updated_at": "2026-08-01 01:26 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -667,19 +667,6 @@
       "doc_url": "/reference-tools/avatar/",
       "tagline": "Real-time conversational avatars over 5G using MPEG ARF",
       "pulls": [
-        {
-          "repo": "rt-avatar-call",
-          "branch": null,
-          "number": 41,
-          "title": "Demonstrate usage of bodyAnimation for head transform",
-          "url": "https://github.com/5G-MAG/rt-avatar-call/pull/41",
-          "draft": true,
-          "author_login": "nlsdvl",
-          "author_avatar": "https://avatars.githubusercontent.com/u/2748737?v=4",
-          "created_at": "2026-07-03",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
         {
           "repo": "rt-avatar-content",
           "branch": null,

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-31 01:21 UTC",
+  "updated_at": "2026-08-01 01:26 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -367,6 +367,25 @@
           "url": "https://github.com/5G-MAG/rt-beyond2d-evaluation-framework/releases/tag/v0.2.1",
           "author_login": "bart-kroon",
           "author_avatar": "https://avatars.githubusercontent.com/u/78917078?v=4"
+        }
+      ]
+    },
+    {
+      "name": "Conversational Avatar Communication with MPEG ARF",
+      "doc_url": "/reference-tools/avatar/",
+      "tagline": "Real-time conversational avatars over 5G using MPEG ARF",
+      "releases_slug": "resources",
+      "image": "/assets/images/projects/avatar.png",
+      "latest_date": "2026-07-31",
+      "releases": [
+        {
+          "repo": "rt-avatar-call",
+          "branch": null,
+          "tag": "v0.9.1",
+          "date": "2026-07-31",
+          "url": "https://github.com/5G-MAG/rt-avatar-call/releases/tag/v0.9.1",
+          "author_login": "nlsdvl",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2748737?v=4"
         }
       ]
     },
