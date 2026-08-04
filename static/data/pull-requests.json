@@ -1,24 +1,11 @@
 {
-  "updated_at": "2026-08-03 01:21 UTC",
+  "updated_at": "2026-08-04 01:13 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
       "doc_url": "/reference-tools/5gms/",
       "tagline": "End-to-end 5G media streaming from network to client · 3GPP TS 26.501",
       "pulls": [
-        {
-          "repo": "rt-5gms-application-function",
-          "branch": null,
-          "number": 200,
-          "title": "Prevent crash on invalid CHC",
-          "url": "https://github.com/5G-MAG/rt-5gms-application-function/pull/200",
-          "draft": false,
-          "author_login": "ErikGaida",
-          "author_avatar": "https://avatars.githubusercontent.com/u/144566652?v=4",
-          "created_at": "2026-07-27",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
         {
           "repo": "rt-common-shared",
           "branch": null,

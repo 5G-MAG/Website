@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-03 01:20 UTC",
+  "updated_at": "2026-08-04 01:12 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -7,14 +7,50 @@
       "tagline": "End-to-end 5G media streaming from network to client · 3GPP TS 26.501",
       "releases_slug": "resources",
       "image": "/assets/images/projects/5gms.png",
-      "latest_date": "2026-05-26",
+      "latest_date": "2026-08-03",
       "releases": [
         {
           "repo": "rt-5gms-application-function",
           "branch": null,
-          "tag": "rt-5gms-application-function-v1.4.6",
-          "date": "2026-05-26",
-          "url": "https://github.com/5G-MAG/rt-5gms-application-function/releases/tag/rt-5gms-application-function-v1.4.6",
+          "tag": "rt-5gms-application-function-v1.4.7",
+          "date": "2026-08-03",
+          "url": "https://github.com/5G-MAG/rt-5gms-application-function/releases/tag/rt-5gms-application-function-v1.4.7",
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
+        },
+        {
+          "repo": "rt-5gms-application-server",
+          "branch": null,
+          "tag": "rt-5gms-application-server-1.2.5",
+          "date": "2026-08-03",
+          "url": "https://github.com/5G-MAG/rt-5gms-application-server/releases/tag/rt-5gms-application-server-1.2.5",
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
+        },
+        {
+          "repo": "rt-5gms-application-provider",
+          "branch": null,
+          "tag": "rt-5gms-application-provider-1.3.0",
+          "date": "2026-08-03",
+          "url": "https://github.com/5G-MAG/rt-5gms-application-provider/releases/tag/rt-5gms-application-provider-1.3.0",
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
+        },
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "tag": "rt-common-shared-v1.0.0",
+          "date": "2026-08-03",
+          "url": "https://github.com/5G-MAG/rt-common-shared/releases/tag/rt-common-shared-v1.0.0",
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
+        },
+        {
+          "repo": "rt-5gms-examples",
+          "branch": null,
+          "tag": "rt-5gms-examples-v1.3.0",
+          "date": "2026-08-03",
+          "url": "https://github.com/5G-MAG/rt-5gms-examples/releases/tag/rt-5gms-examples-v1.3.0",
           "author_login": "dsilhavy",
           "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
         },
@@ -53,33 +89,6 @@
           "url": "https://github.com/5G-MAG/rt-5gms-common-android-library/releases/tag/rt-5gms-common-android-library-v1.3.0",
           "author_login": "dsilhavy",
           "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
-        },
-        {
-          "repo": "rt-5gms-application-provider",
-          "branch": null,
-          "tag": "rt-5gms-application-provider-1.2.0",
-          "date": "2026-05-26",
-          "url": "https://github.com/5G-MAG/rt-5gms-application-provider/releases/tag/rt-5gms-application-provider-1.2.0",
-          "author_login": "dsilhavy",
-          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
-        },
-        {
-          "repo": "rt-5gms-examples",
-          "branch": null,
-          "tag": "rt-5gms-examples-v1.2.1",
-          "date": "2026-05-26",
-          "url": "https://github.com/5G-MAG/rt-5gms-examples/releases/tag/rt-5gms-examples-v1.2.1",
-          "author_login": "dsilhavy",
-          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
-        },
-        {
-          "repo": "rt-5gms-application-server",
-          "branch": null,
-          "tag": "rt-5gms-application-server-1.2.4",
-          "date": "2025-03-20",
-          "url": "https://github.com/5G-MAG/rt-5gms-application-server/releases/tag/rt-5gms-application-server-1.2.4",
-          "author_login": "davidjwbbc",
-          "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4"
         }
       ]
     },
@@ -89,8 +98,17 @@
       "tagline": "LTE-based 5G broadcast for TV, radio and emergency alerts",
       "releases_slug": "resources",
       "image": "/assets/images/projects/5g-broadcast.png",
-      "latest_date": "2026-04-24",
+      "latest_date": "2026-08-03",
       "releases": [
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "tag": "rt-common-shared-v1.0.0",
+          "date": "2026-08-03",
+          "url": "https://github.com/5G-MAG/rt-common-shared/releases/tag/rt-common-shared-v1.0.0",
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
+        },
         {
           "repo": "rt-libflute",
           "branch": null,
@@ -190,8 +208,17 @@
       "tagline": "MPEG-I scene description and XR media integration over 5G",
       "releases_slug": "resources",
       "image": "/assets/images/projects/xr.png",
-      "latest_date": "2025-04-16",
+      "latest_date": "2026-08-03",
       "releases": [
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "tag": "rt-common-shared-v1.0.0",
+          "date": "2026-08-03",
+          "url": "https://github.com/5G-MAG/rt-common-shared/releases/tag/rt-common-shared-v1.0.0",
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
+        },
         {
           "repo": "rt-xr-blender-exporter",
           "branch": null,
@@ -218,8 +245,17 @@
       "tagline": "5G-native multicast and broadcast services · 3GPP 5G MBS",
       "releases_slug": "resources",
       "image": "/assets/images/projects/5g-mbs.png",
-      "latest_date": "2026-07-14",
+      "latest_date": "2026-08-03",
       "releases": [
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "tag": "rt-common-shared-v1.0.0",
+          "date": "2026-08-03",
+          "url": "https://github.com/5G-MAG/rt-common-shared/releases/tag/rt-common-shared-v1.0.0",
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
+        },
         {
           "repo": "open5gs",
           "branch": "5mbs",
@@ -282,8 +318,17 @@
       "tagline": "UE-side data collection, reporting and event exposure · 3GPP TS 26.531",
       "releases_slug": "resources",
       "image": "/assets/images/projects/data-collection.png",
-      "latest_date": "2025-05-13",
+      "latest_date": "2026-08-03",
       "releases": [
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "tag": "rt-common-shared-v1.0.0",
+          "date": "2026-08-03",
+          "url": "https://github.com/5G-MAG/rt-common-shared/releases/tag/rt-common-shared-v1.0.0",
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
+        },
         {
           "repo": "rt-data-collection-application-function",
           "branch": null,
@@ -301,8 +346,17 @@
       "tagline": "V3C volumetric video platform for immersive 5G experiences",
       "releases_slug": "resources",
       "image": "/assets/images/projects/v3c.png",
-      "latest_date": "2025-10-09",
+      "latest_date": "2026-08-03",
       "releases": [
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "tag": "rt-common-shared-v1.0.0",
+          "date": "2026-08-03",
+          "url": "https://github.com/5G-MAG/rt-common-shared/releases/tag/rt-common-shared-v1.0.0",
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
+        },
         {
           "repo": "rt-v3c-content",
           "branch": null,
@@ -338,8 +392,17 @@
       "tagline": "Reference consumers for 5G Core capability exposure APIs",
       "releases_slug": "resources",
       "image": "/assets/images/projects/5g-core.png",
-      "latest_date": "2026-06-05",
+      "latest_date": "2026-08-03",
       "releases": [
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "tag": "rt-common-shared-v1.0.0",
+          "date": "2026-08-03",
+          "url": "https://github.com/5G-MAG/rt-common-shared/releases/tag/rt-common-shared-v1.0.0",
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
+        },
         {
           "repo": "rt-5gc-service-consumers",
           "branch": null,
@@ -357,8 +420,17 @@
       "tagline": "Evaluation framework for beyond-2D video experiences",
       "releases_slug": "resources",
       "image": "/assets/images/projects/beyond-2d.png",
-      "latest_date": "2025-07-24",
+      "latest_date": "2026-08-03",
       "releases": [
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "tag": "rt-common-shared-v1.0.0",
+          "date": "2026-08-03",
+          "url": "https://github.com/5G-MAG/rt-common-shared/releases/tag/rt-common-shared-v1.0.0",
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
+        },
         {
           "repo": "rt-beyond2d-evaluation-framework",
           "branch": null,
@@ -367,6 +439,44 @@
           "url": "https://github.com/5G-MAG/rt-beyond2d-evaluation-framework/releases/tag/v0.2.1",
           "author_login": "bart-kroon",
           "author_avatar": "https://avatars.githubusercontent.com/u/78917078?v=4"
+        }
+      ]
+    },
+    {
+      "name": "AI Traffic Characterization",
+      "doc_url": "/testbeds/6g-testbed/",
+      "tagline": "6G testbed and AI-driven traffic characterization",
+      "releases_slug": "resources",
+      "image": "/assets/images/projects/6g-testbed.png",
+      "latest_date": "2026-08-03",
+      "releases": [
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "tag": "rt-common-shared-v1.0.0",
+          "date": "2026-08-03",
+          "url": "https://github.com/5G-MAG/rt-common-shared/releases/tag/rt-common-shared-v1.0.0",
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
+        }
+      ]
+    },
+    {
+      "name": "CAMARA Connectivity Quality Management APIs",
+      "doc_url": "/reference-tools/network-apis/",
+      "tagline": "Network capability exposure through CAMARA APIs",
+      "releases_slug": "resources",
+      "image": "/assets/images/projects/network-apis.png",
+      "latest_date": "2026-08-03",
+      "releases": [
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "tag": "rt-common-shared-v1.0.0",
+          "date": "2026-08-03",
+          "url": "https://github.com/5G-MAG/rt-common-shared/releases/tag/rt-common-shared-v1.0.0",
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
         }
       ]
     },
@@ -386,6 +496,25 @@
           "url": "https://github.com/5G-MAG/rt-avatar-call/releases/tag/v0.9.1",
           "author_login": "nlsdvl",
           "author_avatar": "https://avatars.githubusercontent.com/u/2748737?v=4"
+        }
+      ]
+    },
+    {
+      "name": "Common Tools",
+      "doc_url": "/reference-tools/common-tools/",
+      "tagline": "Shared helper repositories supporting 5G-MAG Reference Tools",
+      "releases_slug": "resources",
+      "image": "/assets/images/projects/common-tools.png",
+      "latest_date": "2026-08-03",
+      "releases": [
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "tag": "rt-common-shared-v1.0.0",
+          "date": "2026-08-03",
+          "url": "https://github.com/5G-MAG/rt-common-shared/releases/tag/rt-common-shared-v1.0.0",
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
         }
       ]
     },

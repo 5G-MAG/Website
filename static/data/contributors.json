@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-03 01:21 UTC",
+  "updated_at": "2026-08-04 01:12 UTC",
   "repo_count": 33,
   "contributors": [
     {
@@ -13,21 +13,21 @@
       "login": "jordijoangimenez",
       "avatar_url": "https://avatars.githubusercontent.com/u/87380947?v=4",
       "html_url": "https://github.com/jordijoangimenez",
-      "contributions": 407,
+      "contributions": 413,
       "repo_count": 27
     },
     {
       "login": "dsilhavy",
       "avatar_url": "https://avatars.githubusercontent.com/u/2427039?v=4",
       "html_url": "https://github.com/dsilhavy",
-      "contributions": 398,
+      "contributions": 405,
       "repo_count": 23
     },
     {
       "login": "nlsdvl",
       "avatar_url": "https://avatars.githubusercontent.com/u/2748737?v=4",
       "html_url": "https://github.com/nlsdvl",
-      "contributions": 255,
+      "contributions": 257,
       "repo_count": 5
     },
     {
@@ -52,6 +52,13 @@
       "repo_count": 4
     },
     {
+      "login": "ErikGaida",
+      "avatar_url": "https://avatars.githubusercontent.com/u/144566652?v=4",
+      "html_url": "https://github.com/ErikGaida",
+      "contributions": 25,
+      "repo_count": 4
+    },
+    {
       "login": "Borjis131",
       "avatar_url": "https://avatars.githubusercontent.com/u/49529338?v=4",
       "html_url": "https://github.com/Borjis131",
@@ -64,13 +71,6 @@
       "html_url": "https://github.com/rjb1000",
       "contributions": 20,
       "repo_count": 5
-    },
-    {
-      "login": "ErikGaida",
-      "avatar_url": "https://avatars.githubusercontent.com/u/144566652?v=4",
-      "html_url": "https://github.com/ErikGaida",
-      "contributions": 20,
-      "repo_count": 4
     },
     {
       "login": "ibouazizi",
@@ -202,6 +202,13 @@
       "login": "sygupt",
       "avatar_url": "https://avatars.githubusercontent.com/u/268783277?v=4",
       "html_url": "https://github.com/sygupt",
+      "contributions": 1,
+      "repo_count": 1
+    },
+    {
+      "login": "aaronmontilla",
+      "avatar_url": "https://avatars.githubusercontent.com/u/47569421?v=4",
+      "html_url": "https://github.com/aaronmontilla",
       "contributions": 1,
       "repo_count": 1
     },
