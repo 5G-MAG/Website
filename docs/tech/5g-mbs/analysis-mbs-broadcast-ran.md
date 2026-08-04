@@ -188,6 +188,10 @@ The user-plane sections below summarise, per protocol layer (SDAP, PDCP), how re
 
 User-plane PDCP handling for MBS Broadcast follows the same procedures as the control-plane PDCP subsection above (**[3GPP TS 38.323](https://www.3gpp.org/dynareport/38323.htm)**); it is not repeated here.
 
+:::warning[References to verify]
+Most clause and table numbers on this page were confirmed directly against the TS 38.321 and TS 38.331 PDFs (V17.5.0): Table 7.1-1 (MCCH-RNTI = FFFD), Table 6.2.1-1c (LCID values for MBS broadcast), Clause 5.9/5.9.3/5.9.3.3/5.9.3.4 (broadcast MRB establishment and release), and the MBSBroadcastConfiguration message definition. The TS 37.324 (SDAP) clause numbers cited above (4.2, 5.1.1, 5.1.2, 5.2.2, 6.2.2.1) were not independently checked against a primary source; the specification PDF was not accessible via the usual mirror at the time of this review. Verify these against the current TS 37.324 text before relying on them.
+:::
+
 ---
 
 ### Other RRC Messages
