@@ -24,7 +24,7 @@ Evaluating stereoscopic, multiview and volumetric video formats and codecs deliv
 
 Beyond 2D Video covers media formats that go past a flat single-camera picture, such as stereoscopic 3D, multiview, depth-enhanced and volumetric video. 3GPP studied how these formats and their codecs perform over 5G in the feasibility study FS_Beyond2D, captured in TR 26.956. 5G-MAG tracks this work because it sets the evaluation baseline for delivering richer-than-2D experiences. This page lists the related 3GPP work item and technical report, and is for anyone assessing how immersive and 3D video will be carried over 5G. For acronyms used here, see the [Glossary](/tech/glossary).
 
-<div class="godeeper-grid">
+<div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
@@ -35,19 +35,6 @@ Beyond 2D Video covers media formats that go past a flat single-camera picture, 
 <p>The Beyond 2D scenarios (stereoscopic, multiview plus depth, volumetric) and how they map to codecs.</p>
 <ul class="godeeper-card__links">
 <li><a href="/tech/volumetric/beyond-2d">Tech: Beyond 2D Video</a></li>
-</ul>
-</div>
-</div>
-
-<div class="godeeper-card">
-<div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
-<h3>Software Tools</h3>
-</div>
-<div class="godeeper-card__body">
-<p>An evaluation framework for characterising beyond-2D formats and codecs against this study.</p>
-<ul class="godeeper-card__links">
-<li><a href="/testbeds/beyond-2d">Beyond 2D Evaluation Framework</a></li>
 </ul>
 </div>
 </div>
@@ -65,7 +52,7 @@ The study groups the content into families of representation formats:
 - **Video plus depth**, a single texture view augmented with a depth map;
 - **Dense point clouds**, a volumetric representation of an object or person captured in 3D.
 
-Each family is exercised through concrete end-to-end scenarios rather than in the abstract. The reference-tools work implements these scenarios, and its repository lists them as: UE-to-UE stereoscopic video live streaming; streaming of professionally produced volumetric video (a single asset containing people); and on-demand streaming of multi-view plus depth. See the [Beyond 2D Video](/tech/volumetric/beyond-2d) Tech page for the per-scenario detail.
+Each family is exercised through concrete end-to-end scenarios rather than in the abstract. See the [Beyond 2D Video](/tech/volumetric/beyond-2d) Tech page for the per-scenario detail.
 
 ## Codecs and how they map to the formats
 
@@ -88,10 +75,6 @@ The study defines a repeatable pipeline so that results are comparable across fo
 
 The study does not create a new delivery mechanism. It assesses these formats against the existing 5G media delivery framework: ISOBMFF/CMAF packaging and DASH-based adaptive streaming carried by 5G Media Streaming ([TS 26.501](https://www.3gpp.org/dynareport/26501.htm) architecture, [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) protocols and APIs). The question the study helps answer is which formats and codecs are ready to be carried over that pipeline at acceptable quality and bitrate, and where gaps remain for future 3GPP work.
 
-## 5G-MAG tracking and contribution focus
-
-5G-MAG maintains an evaluation framework aligned to this study so that the test setup, sequences, and metrics can be reproduced independently. The framework is evaluation-oriented rather than a shipping player, and it overlaps with the volumetric tooling because the volumetric and MV+D scenarios reuse V3C encoding and rendering. The developer-facing scope and repositories are on the 5G-MAG Developer Portal; the technical detail is on the [Beyond 2D Video](/tech/volumetric/beyond-2d) Tech page.
-
 ## Related 3GPP Work Items
 
 The work item below drove the Beyond 2D Video feasibility study; it produced the technical report listed in the next section. The work-item link downloads a .zip contribution package.
@@ -111,6 +94,10 @@ The technical report below is the output of the FS_Beyond2D study, giving the ev
 :::warning[References to verify]
 These specifics on this page were not confirmed against the primary source (the 3GPP/ETSI portals block automated access, so the TR 26.956 text and clause numbers could not be machine-checked): the exact codec and anchor set attributed to each format family (MV-HEVC, V-PCC, G-PCC, MIV), the exact set and numbering of the evaluation scenarios, and the exact metric set attributed to the TR (PSNR, IV-PSNR, VMAF). The scenario names are taken from the 5G-MAG reference-tools repository. Verify against TR 26.956 and the SA4 work plan before publication.
 :::
+
+## 5G-MAG tracking and contribution focus
+
+5G-MAG tracks FS_Beyond2D as it establishes the evidence base for carrying richer-than-2D formats over 5G Media Streaming, ahead of any later normative SA4 work. The technical detail is on the [Beyond 2D Video](/tech/volumetric/beyond-2d) Tech page.
 
 ## Related Standards Work
 

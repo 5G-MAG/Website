@@ -24,7 +24,7 @@ How CAMARA network APIs map to 3GPP's NEF, CAPIF and PCF exposure mechanisms for
 
 Network capability exposure means letting an application ask the mobile network for the conditions it needs (for example guaranteed bandwidth or low latency for a live feed) through a documented interface, instead of taking whatever best-effort service the network happens to provide. 5G-MAG analyses and contributes to the standards for this, focusing on APIs that let media applications request and manage network resources. The relevant pieces are 3GPP's Network Exposure Function (NEF), the Common API Framework (CAPIF), and the CAMARA open-source project (a Linux Foundation initiative developed with GSMA support). For acronyms used here, see the [Glossary](/tech/glossary).
 
-<div class="godeeper-grid">
+<div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
@@ -35,19 +35,6 @@ Network capability exposure means letting an application ask the mobile network 
 <p>The detailed, per-field CAMARA-to-3GPP API mapping analysis.</p>
 <ul class="godeeper-card__links">
 <li><a href="/tech/network-apis">Technical Documentation: Network APIs</a></li>
-</ul>
-</div>
-</div>
-
-<div class="godeeper-card">
-<div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
-<h3>Software Tools</h3>
-</div>
-<div class="godeeper-card__body">
-<p>The reference implementation of the CAMARA QoD, Connectivity Insights and Network Slice Booking APIs.</p>
-<ul class="godeeper-card__links">
-<li><a href="/reference-tools/network-apis">Network APIs on the developer portal</a></li>
 </ul>
 </div>
 </div>
@@ -136,11 +123,7 @@ The mappings above are the general correspondence; CAMARA does not mandate a spe
 
 - analysing each CAMARA QoS and slicing API against media production and live distribution scenarios, and recording gaps (for example the lack of quantitative feedback from Connectivity Insights, or the absence of a service-area dimension in QoS Provisioning);
 - checking that the CAMARA parameter set (delay budget, upstream/downstream rates, jitter, loss) is expressive enough for professional media, and that the several QoS-related APIs stay mutually consistent;
-- tracking the 3GPP northbound specifications (TS 29.522, TS 29.514) and SEAL (TS 23.434) that the CAMARA APIs map onto, so the reference tools follow the same releases.
-
-## Reference Tools
-
-For the reference implementation (CAMARA QoD, Connectivity Insights and Network Slice Booking APIs, plus 3GPP TS 23.434 SEAL), see [Network APIs on the developer portal](/reference-tools/network-apis).
+- tracking the 3GPP northbound specifications (TS 29.522, TS 29.514) and SEAL (TS 23.434) that the CAMARA APIs map onto.
 
 :::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TS 24.549 (SEAL NSCE Stage 3), TS 28.531 and TS 28.541 (network slice management), TS 29.520 (NWDAF services). Verify against the 3GPP work plan before publication.

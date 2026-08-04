@@ -28,7 +28,7 @@ sidebar_position: 13
 New to the service layers that NTN carries? Multicast Broadcast Services (MBS) and 5G Broadcast are the delivery mechanisms most often deployed over satellite paths. See [Standards: 5G Multicast & Broadcast Services](/tech/standards/5g-mbs) and [Standards: 5G Broadcast](/tech/standards/5g-broadcast) for background before reading this page.
 :::
 
-<div class="godeeper-grid">
+<div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
@@ -43,17 +43,36 @@ New to the service layers that NTN carries? Multicast Broadcast Services (MBS) a
 </div>
 </div>
 
-<div class="godeeper-card godeeper-card--static">
-<div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l18 0"/><path d="M9 8l1 0"/><path d="M9 12l1 0"/><path d="M9 16l1 0"/><path d="M14 8l1 0"/><path d="M14 12l1 0"/><path d="M14 16l1 0"/><path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16"/></svg>
-<h3>Software Tools</h3>
-</div>
-<div class="godeeper-card__body">
-<p>There is no dedicated 5G-MAG reference implementation for NTN; the area is followed through analysis.</p>
-</div>
 </div>
 
-</div>
+## How NTN Fits the 5G System
+
+NTN is an access option for the 5G system, not a parallel network. The core network, the service layers and, as far as possible, the NR protocol stack are reused; the differences are concentrated at the radio and in a few architecture roles.
+
+**Payload types.** In a _transparent_ (bent-pipe) payload the base station (gNB, referred to in NTN terms as a Satellite Access Node) sits on the ground; the satellite only relays and frequency-translates the signal between the _feeder link_ (satellite to ground station) and the _service link_ (satellite to device). In a _regenerative_ payload the gNB function, or part of it, is carried on board the spacecraft. Release 17 standardised the transparent case; regenerative scenarios are addressed in later releases. Confirm exact release placement against the work plan.
+
+**Orbits.** GEO satellites sit at a fixed point relative to the ground (about 35,786 km up), cover a wide area and add a one-way propagation delay of roughly 120 to 140 ms on the service-plus-feeder path. LEO satellites (hundreds to ~2,000 km) give much lower delay but move quickly overhead, so cells (beams) sweep across the ground and handovers are frequent. MEO sits between the two. HAPS operate in the stratosphere and behave more like a very high tower. These differences drive the media design choices below.
+
+**What the radio has to solve.** The long, variable propagation delay, the large Doppler shift on fast NGSO links, and the moving coverage all have to be handled. The main mechanisms are: satellite ephemeris and timing/frequency pre-compensation signalled to the device (via SIB19), a GNSS-capable device that computes its own timing advance and Doppler correction, HARQ and timer adaptations for the long round trip, and mobility handling for beams that move relative to the ground.
+
+## Media Delivery Considerations over NTN
+
+For media services, the orbit and payload choices translate into concrete service-layer considerations:
+
+- **One-to-many efficiency.** A single wide beam can cover a large population, which suits broadcast (MBS delivery mode 2) and shared multicast (delivery mode 1 over point-to-multipoint). Spectrum is the scarce resource on satellite, so serving many devices from one transmission is attractive.
+- **Latency and interactivity.** GEO's round trip makes tightly interactive services and chatty acknowledgement-based protocols harder; it favours linear, one-directional and delay-tolerant media. LEO's lower latency is friendlier to interactive and adaptive streaming, at the cost of frequent handovers.
+- **Reliability without a fast return path.** Application-layer forward error correction and object-based delivery (for example FLUTE over ROUTE/LCT for file and DASH-segment delivery) reduce reliance on retransmission, which is expensive over long satellite paths.
+- **Mobility and session continuity.** Media sessions must survive beam-to-beam, satellite-to-satellite and satellite-to-terrestrial transitions. The 5G-MAG analysis (see the technical pages) treats lossless handover for multicast groups as a distinct problem from unicast handover, because the whole group, or its edge devices, may move at once.
+
+## NTN Deployment Scenarios for Media
+
+The three scenarios below differ mainly in orbit type, delivery mode and the media use they best support. Geostationary Earth Orbit (GEO) satellites sit at a fixed point relative to the ground and cover a wide area; Low Earth Orbit (LEO) satellites move quickly overhead and give lower latency at the cost of more frequent handovers.
+
+| Scenario                | Orbit           | Delivery mode           | Typical media use                                                               |
+| ----------------------- | --------------- | ----------------------- | ------------------------------------------------------------------------------- |
+| GEO satellite broadcast | Geostationary   | Broadcast (one-to-many) | Wide-area linear content to many fixed and mobile 5G devices                    |
+| LEO satellite unicast   | Low Earth Orbit | Unicast                 | Mobile broadband streaming to individual devices                                |
+| Hybrid NTN/Terrestrial  | Mixed           | Either, with handover   | Continuous coverage as devices move between satellite and ground-based 5G cells |
 
 ## Key 3GPP Specifications
 
@@ -95,35 +114,6 @@ NTN does not define its own media service layer. Media is carried over NTN using
 - [TS 26.501](https://www.3gpp.org/dynareport/26501.htm): 5G Media Streaming (5GMS); General description and architecture. The media delivery architecture that MBS user services extend for multicast and broadcast.
 
 Applying MBS over NTN is the subject of active work in Release 19 and beyond. Broadcast over geostationary (GSO) and non-geostationary (NGSO) orbits, then multicast over the same, have been discussed as separable steps. Because this work is still being defined, treat orbit-by-orbit and mode-by-mode feature placement as provisional and verify against the current work plan.
-
-## How NTN Fits the 5G System
-
-NTN is an access option for the 5G system, not a parallel network. The core network, the service layers and, as far as possible, the NR protocol stack are reused; the differences are concentrated at the radio and in a few architecture roles.
-
-**Payload types.** In a _transparent_ (bent-pipe) payload the base station (gNB, referred to in NTN terms as a Satellite Access Node) sits on the ground; the satellite only relays and frequency-translates the signal between the _feeder link_ (satellite to ground station) and the _service link_ (satellite to device). In a _regenerative_ payload the gNB function, or part of it, is carried on board the spacecraft. Release 17 standardised the transparent case; regenerative scenarios are addressed in later releases. Confirm exact release placement against the work plan.
-
-**Orbits.** GEO satellites sit at a fixed point relative to the ground (about 35,786 km up), cover a wide area and add a one-way propagation delay of roughly 120 to 140 ms on the service-plus-feeder path. LEO satellites (hundreds to ~2,000 km) give much lower delay but move quickly overhead, so cells (beams) sweep across the ground and handovers are frequent. MEO sits between the two. HAPS operate in the stratosphere and behave more like a very high tower. These differences drive the media design choices below.
-
-**What the radio has to solve.** The long, variable propagation delay, the large Doppler shift on fast NGSO links, and the moving coverage all have to be handled. The main mechanisms are: satellite ephemeris and timing/frequency pre-compensation signalled to the device (via SIB19), a GNSS-capable device that computes its own timing advance and Doppler correction, HARQ and timer adaptations for the long round trip, and mobility handling for beams that move relative to the ground.
-
-## Media Delivery Considerations over NTN
-
-For media services, the orbit and payload choices translate into concrete service-layer considerations:
-
-- **One-to-many efficiency.** A single wide beam can cover a large population, which suits broadcast (MBS delivery mode 2) and shared multicast (delivery mode 1 over point-to-multipoint). Spectrum is the scarce resource on satellite, so serving many devices from one transmission is attractive.
-- **Latency and interactivity.** GEO's round trip makes tightly interactive services and chatty acknowledgement-based protocols harder; it favours linear, one-directional and delay-tolerant media. LEO's lower latency is friendlier to interactive and adaptive streaming, at the cost of frequent handovers.
-- **Reliability without a fast return path.** Application-layer forward error correction and object-based delivery (for example FLUTE over ROUTE/LCT for file and DASH-segment delivery) reduce reliance on retransmission, which is expensive over long satellite paths.
-- **Mobility and session continuity.** Media sessions must survive beam-to-beam, satellite-to-satellite and satellite-to-terrestrial transitions. The 5G-MAG analysis (see the technical pages) treats lossless handover for multicast groups as a distinct problem from unicast handover, because the whole group, or its edge devices, may move at once.
-
-## NTN Deployment Scenarios for Media
-
-The three scenarios below differ mainly in orbit type, delivery mode and the media use they best support. Geostationary Earth Orbit (GEO) satellites sit at a fixed point relative to the ground and cover a wide area; Low Earth Orbit (LEO) satellites move quickly overhead and give lower latency at the cost of more frequent handovers.
-
-| Scenario                | Orbit           | Delivery mode           | Typical media use                                                               |
-| ----------------------- | --------------- | ----------------------- | ------------------------------------------------------------------------------- |
-| GEO satellite broadcast | Geostationary   | Broadcast (one-to-many) | Wide-area linear content to many fixed and mobile 5G devices                    |
-| LEO satellite unicast   | Low Earth Orbit | Unicast                 | Mobile broadband streaming to individual devices                                |
-| Hybrid NTN/Terrestrial  | Mixed           | Either, with handover   | Continuous coverage as devices move between satellite and ground-based 5G cells |
 
 ## Specifications by Role
 

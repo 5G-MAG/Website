@@ -24,7 +24,7 @@ How devices report media consumption and quality-of-experience data back to the 
 
 UE data collection covers the 3GPP mechanisms by which a device (user equipment, UE) reports data, such as media consumption and quality of experience, to the network, and by which the network exposes events to consuming functions. For media services this feeds analytics (through the Network Data Analytics Function, NWDAF) and delivery optimisation. The specifications below are grouped by the 3GPP working group responsible for them: SA2 (system architecture and analytics), SA4 (media data collection and reporting, reusing the 5G Media Streaming framework), and CT3 (stage-3 APIs for event exposure and network data analytics). 5G-MAG tracks and contributes to this work. For acronyms used here, see the [Glossary](/tech/glossary).
 
-<div class="godeeper-grid">
+<div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
@@ -35,19 +35,6 @@ UE data collection covers the 3GPP mechanisms by which a device (user equipment,
 <p>The Data Collection Application Function (DCAF) architecture and event-exposure analysis.</p>
 <ul class="godeeper-card__links">
 <li><a href="/tech/data-collection/data-collection-event-exposure">Tech: UE Data Collection</a></li>
-</ul>
-</div>
-</div>
-
-<div class="godeeper-card">
-<div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
-<h3>Software Tools</h3>
-</div>
-<div class="godeeper-card__body">
-<p>The reference implementation for UE data collection, reporting and event exposure.</p>
-<ul class="godeeper-card__links">
-<li><a href="/reference-tools/data-collection">UE Data Collection</a></li>
 </ul>
 </div>
 </div>
@@ -98,11 +85,7 @@ The framework reuses the wider 5G core analytics and exposure machinery rather t
 - **Media data collection and reporting (SA4):** TS 26.531 and TS 26.532 define the DCAF framework itself. TS 26.501 and TS 26.512 define the 5GMS framework into which the DCAF is embedded for media data reporting (5GMS defines media-specific reporting such as QoE and consumption reporting that can use the DCAF as the collection endpoint).
 - **Stage-3 core network APIs (CT3):** TS 29.517 (AF event exposure), TS 29.520 (NWDAF services), TS 29.522 (NEF northbound) and TS 29.591 (NEF southbound) provide the REST APIs used for event exposure and analytics.
 
-The reusable DCAF framework (TS 26.531 / TS 26.532) was introduced in 3GPP Release 17 and continued in Release 18; 5G-MAG's reference implementation targets a Release 18 profile of the framework. The underlying analytics architecture (TS 23.288, NWDAF) originates in Release 16 and has been extended in subsequent releases. Because these documents are still maintained across releases, the release placement of individual features should be checked against the current 3GPP work plan before it is relied upon.
-
-## 5G-MAG tracking and contribution focus
-
-5G-MAG tracks the SA4 data collection and reporting framework and maintains a reference implementation of the DCAF (a reusable service-provider library plus a runnable Application Function that exercises R1, R2 and R6). The organisation's tracking issues against TS 26.531 and TS 26.532 (for example clarifications on report scope and on `reportFormat` URIs) are raised in the public [5G-MAG Standards repository](https://github.com/5G-MAG/Standards/). The deeper technical view of the interfaces and procedures is on the [Tech portal](/tech/data-collection/data-collection-event-exposure), and the reference tooling is described on the [Developer portal](/reference-tools/data-collection).
+The reusable DCAF framework (TS 26.531 / TS 26.532) was introduced in 3GPP Release 17 and continued in Release 18. The underlying analytics architecture (TS 23.288, NWDAF) originates in Release 16 and has been extended in subsequent releases. Because these documents are still maintained across releases, the release placement of individual features should be checked against the current 3GPP work plan before it is relied upon.
 
 ## Related 3GPP Specifications
 
@@ -138,12 +121,15 @@ These are the stage-3 API specifications for exposing events, including the Netw
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the R1 to R6 reference-point mapping and per-reference-point purpose, the assignment of the `Ndcaf_DataReportingProvisioning`, `Ndcaf_DataReporting`, `Naf_EventExposure` and `Nnef_EventExposure` service operations to specific reference points, and the Release-17/Release-18 placement of TS 26.531 and TS 26.532. Verify against the 3GPP/ETSI work plan before publication.
 :::
 
+## 5G-MAG tracking and contribution focus
+
+5G-MAG tracks the SA4 data collection and reporting framework. The organisation's tracking issues against TS 26.531 and TS 26.532 (for example clarifications on report scope and on `reportFormat` URIs) are raised in the public [5G-MAG Standards repository](https://github.com/5G-MAG/Standards/). The deeper technical view of the interfaces and procedures is on the [Tech portal](/tech/data-collection/data-collection-event-exposure).
+
 ## Related Standards Work
 
 - [Standards: 5G Media Streaming](/tech/standards/5gms)
 - [Standards: Network APIs](/tech/standards/network-apis)
 - [Standards: AI & ML in 5G Media](/tech/standards/ai-ml)
-- [Developer portal: UE Data Collection reference tools](/reference-tools/data-collection)
 - [Technical Documentation: UE Data Collection](/tech/data-collection/data-collection-event-exposure)
 - [Meetings with 3GPP SA4](/standards/3gpp-issue-tracking): the live tracker for 3GPP feedback issues on this specification
 
