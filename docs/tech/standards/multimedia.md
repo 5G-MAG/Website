@@ -24,7 +24,7 @@ FLUTE and ROUTE, the one-way transports behind broadcast and multicast media del
 
 Multimedia content delivery over broadcast and multicast networks relies on transport protocols that can deliver files and media objects one-way, without a return channel from each receiver. This page tracks the two main such transports: FLUTE, used for file delivery in MBMS-based systems, and ROUTE, used for real-time object delivery in ROUTE/DASH broadcast (and referenced by ATSC 3.0 and 5G Broadcast). 5G-MAG tracks these specifications and their use in its broadcast and multicast work. For acronyms used here, see the [Glossary](/tech/glossary).
 
-<div class="godeeper-grid">
+<div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
@@ -35,19 +35,6 @@ Multimedia content delivery over broadcast and multicast networks relies on tran
 <p>Session structure, the File Delivery Table (FDT), and FEC/object recovery for FLUTE and ROUTE.</p>
 <ul class="godeeper-card__links">
 <li><a href="/tech/multimedia/multimedia-content-delivery">Tech: Multimedia Delivery Protocols</a></li>
-</ul>
-</div>
-</div>
-
-<div class="godeeper-card">
-<div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
-<h3>Software Tools</h3>
-</div>
-<div class="godeeper-card__body">
-<p>A FLUTE library and multimedia content delivery tooling used across 5G-MAG's broadcast projects.</p>
-<ul class="godeeper-card__links">
-<li><a href="/reference-tools/multimedia">Multimedia Content Delivery</a></li>
 </ul>
 </div>
 </div>
@@ -88,10 +75,6 @@ FLUTE and ROUTE differ mainly in intent: FLUTE targets reliable file download wh
 
 A typical broadcast/multicast media chain packages content as DASH or HLS using CMAF segments, then carries those segments to receivers over a unidirectional transport: FLUTE for a file-based download model (as in MBMS), or ROUTE for a real-time streaming model (as in ATSC 3.0 ROUTE/DASH). Because CMAF lets DASH and HLS share the same segments, a broadcaster can package once and deliver over either transport and consume with either streaming client. The DASH MPD or HLS playlist is delivered as one of the objects in the FLUTE FDT or ROUTE session, so a receiver reconstructs the manifest and the media from the one-way stream and then plays it exactly as if it had pulled the segments over HTTP.
 
-## 5G-MAG tracking and contribution focus
-
-5G-MAG tracks these transport and format specifications and maintains open-source implementations, notably a FLUTE library used in its 5G Broadcast tools, so that DASH/HLS/CMAF content can be delivered over both 5G Broadcast and 5G MBS. The deeper technical view (session structure, FDT, FEC and object recovery) is on the [Tech portal](/tech/multimedia/multimedia-content-delivery); the reference tooling is described on the [Developer portal](/reference-tools/multimedia). Contributions to this documentation are made through the [5G-MAG Standards repository](https://github.com/5G-MAG/Standards/).
-
 ## Related IETF Specifications
 
 This is a list of specifications in the scope of Multimedia Content Delivery Protocols: FLUTE is defined in [IETF RFC 6726](https://datatracker.ietf.org/doc/rfc6726/) and ROUTE in [IETF RFC 9223](https://datatracker.ietf.org/doc/rfc9223/). The table below summarises each transport.
@@ -105,12 +88,15 @@ This is a list of specifications in the scope of Multimedia Content Delivery Pro
 These identifiers on this page were not confirmed against a primary source (the ISO/ETSI/3GPP portals block automated access): the specific ISO catalogue editions linked for ISO/IEC 23009-1 (DASH) and ISO/IEC 23000-19 (CMAF), and the current published version of ETSI TS 103 285 (DVB-DASH). The protocol-to-RFC mappings (FLUTE = RFC 6726, ROUTE = RFC 9223, HLS = RFC 8216, and the LCT/ALC/FCAST building blocks) were confirmed. Verify the edition and version numbers against the ISO and ETSI catalogues before publication.
 :::
 
+## 5G-MAG tracking and contribution focus
+
+5G-MAG tracks these transport and format specifications and their use across its 5G Broadcast and 5G MBS work. The deeper technical view (session structure, FDT, FEC and object recovery) is on the [Tech portal](/tech/multimedia/multimedia-content-delivery). Contributions to this documentation are made through the [5G-MAG Standards repository](https://github.com/5G-MAG/Standards/).
+
 ## Related Standards Work
 
 - [Standards: 5G Broadcast](/tech/standards/5g-broadcast)
 - [Standards: 5G Multicast & Broadcast Services](/tech/standards/5g-mbs)
 - [Standards: DVB-I over 5G](/tech/standards/dvb-i)
-- [Developer portal: Reference Tools](/reference-tools/multimedia)
 - [Technical Documentation: Multimedia Delivery Protocols](/tech/multimedia/multimedia-content-delivery)
 - [Feedback and Requirements](/standards): how 5G-MAG submits feedback and requirements to SDOs
 

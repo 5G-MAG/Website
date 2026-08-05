@@ -26,7 +26,7 @@ Deterministic, low-latency delivery over 5G for tightly synchronised professiona
 
 TSC in a media context usually runs over a private 5G deployment. For the network foundations it depends on, see [Standards: Non-Public Networks](/tech/standards/npn) first. For acronyms used here, see the [Glossary](/tech/glossary).
 
-<div class="godeeper-grid">
+<div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
@@ -41,42 +41,7 @@ TSC in a media context usually runs over a private 5G deployment. For the networ
 </div>
 </div>
 
-<div class="godeeper-card godeeper-card--static">
-<div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l18 0"/><path d="M9 8l1 0"/><path d="M9 12l1 0"/><path d="M9 16l1 0"/><path d="M14 8l1 0"/><path d="M14 12l1 0"/><path d="M14 16l1 0"/><path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16"/></svg>
-<h3>Software Tools</h3>
 </div>
-<div class="godeeper-card__body">
-<p>There is no dedicated 5G-MAG reference implementation for TSC; the area is followed through analysis.</p>
-</div>
-</div>
-
-</div>
-
-## Key 3GPP Specifications
-
-### Service Requirements
-
-- [TS 22.104](https://www.3gpp.org/dynareport/22104.htm): Service requirements for cyber-physical control applications in vertical domains (includes TSC)
-- [TR 22.804](https://www.3gpp.org/dynareport/22804.htm): Study on Communication for Automation in Vertical domains
-
-### System Architecture
-
-- [TS 23.501](https://www.3gpp.org/dynareport/23501.htm): System Architecture for the 5G System; TSN integration aspects
-- [TS 23.502](https://www.3gpp.org/dynareport/23502.htm): Procedures for the 5G System; TSC bridge procedures
-
-## IEEE Time-Sensitive Networking (TSN)
-
-5G TSC is designed to interwork with IEEE 802.1 Time-Sensitive Networking (TSN) standards. To achieve this, the 5G system presents itself to the wired network as a single logical TSN bridge: the TSN control plane sees one bridge, while the 5G core and radio handle the wireless segment internally. The relevant IEEE standards are:
-
-- **IEEE 802.1AS**: Timing and Synchronisation (gPTP)
-- **IEEE 802.1Qbv**: Enhancements for Scheduled Traffic
-- **IEEE 802.1Qcc**: Stream Reservation Protocol (SRP) Enhancements
-
-## SMPTE Standards for IP Media Production
-
-- **SMPTE ST 2110**: Professional Media Over Managed IP Networks (video, audio, metadata essences)
-- **SMPTE ST 2059**: Synchronisation of Video Signals in IP Environments
 
 ## What TSC Adds Over Ordinary QoS
 
@@ -107,26 +72,44 @@ Release 16 introduced the transparent-bridge model in which the 5G system relays
 
 For an application (or a media production controller) to ask the 5G system for deterministic behaviour, there has to be a control-plane path. Release 17 introduced the Time Sensitive Communication and Time Synchronization Function (TSCTSF). An Application Function in the same trust domain can talk to the TSCTSF directly; an Application Function in a different trust domain reaches it through the Network Exposure Function (NEF). Through this path the application can request QoS and traffic characteristics for scheduling optimisation and can activate or deactivate time synchronisation. The TSN control-plane interworking itself follows IEEE 802.1Qcc, with the 5G system exposing bridge configuration to the Centralized Network Configuration (CNC).
 
+## Applying TSC to Media Production
+
+Media production was not the original target for TSC, but it is a natural fit. The core requirements resemble industrial TSC (bounded latency, tight synchronisation), but the traffic is high-bitrate, uplink-dominant media rather than small industrial control packets. In a studio or venue, an NPN carries the 5G system, the TSN bridge model connects it to the wired ST 2110 infrastructure, and PTP (IEEE 802.1AS / SMPTE ST 2059) provides the shared clock so that essence flows from wireless cameras stay aligned with the wired plant. Whether the full TSN bridge and control plane are used, or only the deterministic-QoS and time-sync features without a wired TSN CNC, depends on the production architecture.
+
 ## Specifications by Release
 
 - **Release 16**: 5G system as a TSN bridge, transparent forwarding of gPTP, DS-TT and NW-TT, TSN QoS to 5G QoS mapping. Architecture in TS 23.501, procedures in TS 23.502.
 - **Release 17**: Generalised time synchronisation (multiple IEEE 802.1AS/1588 clock roles), the TSCTSF, exposure of deterministic QoS and time-sync control to Application Functions via NEF, and support for TSC independent of a full TSN bridge (deterministic QoS without requiring the wired TSN control plane).
 - **Release 18 and later**: Further deterministic-networking and time-sync enhancements. Confirm the exact scope and placement against the 3GPP work plan.
 
-## Applying TSC to Media Production
+## Key 3GPP Specifications
 
-Media production was not the original target for TSC, but it is a natural fit. The core requirements resemble industrial TSC (bounded latency, tight synchronisation), but the traffic is high-bitrate, uplink-dominant media rather than small industrial control packets. In a studio or venue, an NPN carries the 5G system, the TSN bridge model connects it to the wired ST 2110 infrastructure, and PTP (IEEE 802.1AS / SMPTE ST 2059) provides the shared clock so that essence flows from wireless cameras stay aligned with the wired plant. Whether the full TSN bridge and control plane are used, or only the deterministic-QoS and time-sync features without a wired TSN CNC, depends on the production architecture.
+### Service Requirements
+
+- [TS 22.104](https://www.3gpp.org/dynareport/22104.htm): Service requirements for cyber-physical control applications in vertical domains (includes TSC)
+- [TR 22.804](https://www.3gpp.org/dynareport/22804.htm): Study on Communication for Automation in Vertical domains
+
+### System Architecture
+
+- [TS 23.501](https://www.3gpp.org/dynareport/23501.htm): System Architecture for the 5G System; TSN integration aspects
+- [TS 23.502](https://www.3gpp.org/dynareport/23502.htm): Procedures for the 5G System; TSC bridge procedures
+
+## IEEE Time-Sensitive Networking (TSN)
+
+5G TSC is designed to interwork with IEEE 802.1 Time-Sensitive Networking (TSN) standards. To achieve this, the 5G system presents itself to the wired network as a single logical TSN bridge: the TSN control plane sees one bridge, while the 5G core and radio handle the wireless segment internally. The relevant IEEE standards are:
+
+- **IEEE 802.1AS**: Timing and Synchronisation (gPTP)
+- **IEEE 802.1Qbv**: Enhancements for Scheduled Traffic
+- **IEEE 802.1Qcc**: Stream Reservation Protocol (SRP) Enhancements
+
+## SMPTE Standards for IP Media Production
+
+- **SMPTE ST 2110**: Professional Media Over Managed IP Networks (video, audio, metadata essences)
+- **SMPTE ST 2059**: Synchronisation of Video Signals in IP Environments
 
 ## 5G-MAG tracking and contribution focus
 
-5G-MAG tracks how these deterministic-delivery and time-synchronisation capabilities apply to professional media, in particular the transport of SMPTE ST 2110 essence over private 5G, the alignment of the 5G and PTP time domains, and the combination with Non-Public Networks. There is no dedicated 5G-MAG reference implementation for TSC; the area is followed through analysis and the standards work referenced here.
-
-## Use Cases for 5G-MAG
-
-- Transport of SMPTE ST 2110 essence streams over private 5G networks
-- Sub-millisecond synchronisation for multi-camera live production
-- Wireless camera links with deterministic latency guarantees
-- Integration of 5G NPN with IEEE TSN for studio infrastructure
+5G-MAG tracks how these deterministic-delivery and time-synchronisation capabilities apply to professional media, in particular the transport of SMPTE ST 2110 essence over private 5G, the alignment of the 5G and PTP time domains, and the combination with Non-Public Networks.
 
 :::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TR 22.804, the TS 23.501 TSC clause number, the Release 17 TSCTSF placement, and the IEEE 802.1Qbv/802.1Qcc designations as cited. Verify against the 3GPP work plan and the IEEE 802.1 standards index before publication.

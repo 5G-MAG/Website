@@ -26,7 +26,7 @@ Discovering and delivering linear TV services over 5G, combining broadband, broa
 
 Delivery of DVB-I services over 5G can use several modes: unicast-based 5G Media Streaming (5GMS), LTE-based 5G Broadcast, and concurrent or hybrid combinations of the two. The DVB / 5G-MAG Joint Task Force documented deployment guidelines for these scenarios in DVB A178, published as ETSI TR 103 972.
 
-<div class="godeeper-grid">
+<div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
@@ -37,19 +37,6 @@ Delivery of DVB-I services over 5G can use several modes: unicast-based 5G Media
 <p>How DVB-I service discovery works alongside 5G delivery, and the deployment modes in detail.</p>
 <ul class="godeeper-card__links">
 <li><a href="/tech/dvb-i/dvb-i-5g">Tech: DVB-I Services over 5G Systems</a></li>
-</ul>
-</div>
-</div>
-
-<div class="godeeper-card">
-<div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
-<h3>Software Tools</h3>
-</div>
-<div class="godeeper-card__body">
-<p>The reference implementation for DVB-I service discovery and delivery over 5G.</p>
-<ul class="godeeper-card__links">
-<li><a href="/reference-tools/dvb-i">DVB-I Services over 5G Systems</a></li>
 </ul>
 </div>
 </div>
@@ -178,9 +165,8 @@ A key alignment point that A178 examines is the relationship between DVB-I servi
 
 ## 5G-MAG tracking and contribution focus
 
-5G-MAG follows the DVB / 5G-MAG Joint Task Force output and the downstream work in 3GPP and ETSI, and maintains reference tooling that demonstrates DVB-I discovery driving both the 5GMS unicast path and the 5G Broadcast path. The practical focus areas are:
+5G-MAG follows the DVB / 5G-MAG Joint Task Force output and the downstream work in 3GPP and ETSI. The practical focus areas are:
 
-- Keeping the reference client's DVB-I service-instance handling aligned with the delivery parameters used by the 5GMS and 5G Broadcast reference tools.
 - Tracking the recommended specification changes from A178 as they are taken up in DVB, 3GPP SA4, and ETSI JTC Broadcast.
 - Interoperability between DVB-I discovery and 3GPP service announcement on the broadcast path.
 

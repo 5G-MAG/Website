@@ -29,7 +29,7 @@ Applying AI and machine learning to media delivery, network optimisation and qua
 
 Together these allow media-aware decisions (such as proactive session management or content-aware delivery) to be driven by measured data rather than static configuration. For acronyms used here, see the [Glossary](/tech/glossary).
 
-<div class="godeeper-grid">
+<div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
@@ -41,19 +41,6 @@ Together these allow media-aware decisions (such as proactive session management
 </div>
 </div>
 
-<div class="godeeper-card">
-<div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
-<h3>Software Tools</h3>
-</div>
-<div class="godeeper-card__body">
-<p>An evaluation framework for characterising AI and media traffic under controlled network conditions.</p>
-<ul class="godeeper-card__links">
-<li><a href="/testbeds/ai-ml">AI/ML Evaluation Framework</a></li>
-</ul>
-</div>
-</div>
-
 </div>
 
 The two tracks differ in where the data comes from and what they produce, as summarised below.
@@ -62,25 +49,6 @@ The two tracks differ in where the data comes from and what they produce, as sum
 | ----------------------- | ------------------------------------- | ----------------------------------- | -------------------------------------------------------------------------------------------------------- |
 | Network-side analytics  | Network functions in the 5G core      | NWDAF (SA2)                         | Load and Quality of Service (QoS) predictions for a media session                                        |
 | UE-side data collection | User Equipment (UE) and media clients | Data Collection and Reporting (SA4) | Consumption, quality-of-experience (QoE) metrics and reports for analytics, model training and inference |
-
-## Key 3GPP Specifications
-
-### Network Data Analytics (SA2)
-
-- [TS 23.288](https://www.3gpp.org/dynareport/23288.htm): Architecture enhancements for 5GS to support Network Data Analytics Services (NWDAF)
-- [TS 23.501](https://www.3gpp.org/dynareport/23501.htm): System Architecture for the 5G System (NWDAF integration)
-
-### UE Data Collection for AI/ML (SA4)
-
-The SA4 Data Collection and Reporting framework provides a common way to collect data from UEs and media clients (events, metrics and reports) and make it available to consumers such as analytics functions. It underpins data-driven AI/ML for media by supplying the inputs used for monitoring, model training and inference.
-
-- [TS 26.531](https://www.3gpp.org/dynareport/26531.htm): Data Collection and Reporting; General Description and Architecture
-- [TS 26.532](https://www.3gpp.org/dynareport/26532.htm): Data Collection and Reporting; Protocols and Formats
-
-### Study Items and Work Items
-
-- [TR 26.847](https://www.3gpp.org/dynareport/26847.htm): Evaluation of AI and ML in 5G media services. This SA4 study (Release 19, completed) evaluates AI/ML use cases for 5G media services, covering evaluation testbed architectures, evaluation scenarios and metrics.
-- [TR 22.874](https://www.3gpp.org/dynareport/22874.htm): Study on traffic characteristics and performance requirements for AI/ML model transfer in 5GS
 
 ## SA2 network-side analytics vs SA4 UE-side work
 
@@ -113,21 +81,28 @@ It examines media AI/ML use cases and the data, traffic and architectural implic
 
 This is the study most directly relevant to 5G-MAG, because it treats AI/ML as a media workload with concrete traffic behaviour, which is exactly what the 6G Testbed measures. The generic model-transfer requirements study TR 22.874 (SA1) sits behind it, characterising end-to-end latency, experienced data rate and communication service availability for moving models across 5GS.
 
-## Use Cases Relevant to 5G-MAG
+## Key 3GPP Specifications
 
-- Adaptive bitrate (ABR) optimisation using network-side QoS data
-- QoE prediction and proactive session management
-- AI-based content-aware encoding and delivery
-- Network data analytics for media streaming session monitoring
-- UE data collection for training and inference in media applications
+### Network Data Analytics (SA2)
+
+- [TS 23.288](https://www.3gpp.org/dynareport/23288.htm): Architecture enhancements for 5GS to support Network Data Analytics Services (NWDAF)
+- [TS 23.501](https://www.3gpp.org/dynareport/23501.htm): System Architecture for the 5G System (NWDAF integration)
+
+### UE Data Collection for AI/ML (SA4)
+
+The SA4 Data Collection and Reporting framework provides a common way to collect data from UEs and media clients (events, metrics and reports) and make it available to consumers such as analytics functions. It underpins data-driven AI/ML for media by supplying the inputs used for monitoring, model training and inference.
+
+- [TS 26.531](https://www.3gpp.org/dynareport/26531.htm): Data Collection and Reporting; General Description and Architecture
+- [TS 26.532](https://www.3gpp.org/dynareport/26532.htm): Data Collection and Reporting; Protocols and Formats
+
+### Study Items and Work Items
+
+- [TR 26.847](https://www.3gpp.org/dynareport/26847.htm): Evaluation of AI and ML in 5G media services. This SA4 study (Release 19, completed) evaluates AI/ML use cases for 5G media services, covering evaluation testbed architectures, evaluation scenarios and metrics.
+- [TR 22.874](https://www.3gpp.org/dynareport/22874.htm): Study on traffic characteristics and performance requirements for AI/ML model transfer in 5GS
 
 ## 5G-MAG tracking and contribution focus
 
-5G-MAG tracks both tracks but contributes primarily on the media side (SA4), while following the SA2 analytics work for the parts that affect media sessions. The aim is to make media a concrete input to AI/ML standardisation: contributing media AI/ML use cases and, through the 6G Testbed, producing measured traffic characteristics and labelled datasets for AI workloads (generative and agentic AI as well as classic media) under controlled network conditions. Those measurements are intended to ground requirement inputs in evidence. See the [6G Testbed](/testbeds/6g-testbed/scope) and the [AI/ML Evaluation Framework](/testbeds/ai-ml) on the developer portal.
-
-## Reference Tools
-
-AI and media traffic characterisation tooling is developed in the 6G Testbed reference implementation. See [6G Testbed on the developer portal](/testbeds/6g-testbed/scope).
+5G-MAG tracks both tracks but contributes primarily on the media side (SA4), while following the SA2 analytics work for the parts that affect media sessions. The aim is to make media a concrete input to AI/ML standardisation, contributing media AI/ML use cases and grounding requirement inputs in measured evidence.
 
 ## Related Standards Work
 

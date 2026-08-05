@@ -51,7 +51,7 @@ For each PLMN, the following information is included:
 
 ## Obtention of MIB/SIB signaling
 
-For definitions refer to **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 6.2.2**
+For definitions refer to **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 6.3.1** (System information blocks)
 
 ### SIB 24 - Acquisition MCCH/MTCH for MBS multicast reception in RRC_INACTIVE
 
@@ -72,7 +72,7 @@ SIB24-r18 ::= SEQUENCE {
 
 ### RRC - MulticastMCCH-Message
 
-The block below is multicast-specific: it defines the multicast MCCH message that carries the `MBSMulticastConfiguration` used for RRC_INACTIVE multicast reception (the broadcast page uses `MBSBroadcastConfiguration` instead).
+The block below is multicast-specific: it defines the multicast MCCH message that carries the `MBSMulticastConfiguration` used for RRC_INACTIVE multicast reception (the broadcast page uses `MBSBroadcastConfiguration` instead). `MulticastMCCH-Message` is defined in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 6.2.1** (General message structure), alongside the other RRC message classes (BCCH, PCCH, CCCH, DCCH); `MBSMulticastConfiguration` itself is defined in **Clause 6.2.2** (Message definitions).
 
 ```
 -- ASN1START
@@ -120,6 +120,37 @@ ThresholdMBS-r18 ::= SEQUENCE {
 -- ASN1STOP
 ```
 
-## Control Plane and User Plane Procedures
+## Control Plane Procedures
 
-The per-layer control-plane (RRC, PDCP, RLC, MAC) and user-plane (SDAP, PDCP) procedures specific to the multicast-inactive case are not yet written up on this page. The equivalent broadcast-case procedures are analysed on the [MBS Broadcast RAN procedures](./analysis-mbs-broadcast-ran) page; the RRC/PDCP/RLC/MAC/SDAP layers involved are the same, but the multicast-inactive clause numbers and configuration structures differ (SIB24 vs SIB20, `MBSMulticastConfiguration` vs `MBSBroadcastConfiguration`, as shown above) and have not been verified against 3GPP TS 38.331 for this page. This section is tracked for a future update.
+### RRC: MBS Multicast Reception in RRC_INACTIVE
+
+The whole multicast-inactive procedure is grouped under a single clause in TS 38.331, **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 5.10** ("MBS multicast reception in RRC_INACTIVE"), split into three sub-clauses:
+
+- **Clause 5.10.1** (Introduction): general behaviour, multicast MCCH scheduling, and how the UE is notified of MCCH information changes.
+- **Clause 5.10.2** (Multicast MCCH information acquisition): initiation of acquisition, the acquisition procedure itself, and the UE actions on receiving the `MBSMulticastConfiguration` message.
+- **Clause 5.10.3** (MRB configuration): multicast MRB establishment and release, given below.
+
+#### Multicast MRB configuration
+
+- Multicast MRB establishment in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 5.10.3.2**
+  - Upon multicast MRB establishment, the UE shall:
+    - establish a PDCP entity and an RLC entity in accordance with `mrb-ListMulticast` for this multicast MRB included in the `MBSMulticastConfiguration` message;
+    - configure the MAC layer in accordance with the `mtch-SchedulingInfo` (if included);
+    - configure the physical layer in accordance with the `mbs-SessionInfoListMulticast`, `searchSpaceMulticastMTCH`, and `pdsch-ConfigMTCH`, applicable for the multicast MRB;
+    - if an SDAP entity with the received `mbs-SessionId` does not exist:
+      - establish an SDAP entity as specified in **[3GPP TS 37.324](https://www.3gpp.org/dynareport/37324.htm) Clause 5.1.1**;
+      - indicate the establishment of the user plane resources for the `mbs-SessionId` to upper layers;
+    - receive DL-SCH for the established multicast MRB using G-RNTI (if not indicated to stop monitoring this G-RNTI) and `mtch-SchedulingInfo` (if included) in this message for this MBS multicast service.
+
+- Multicast MRB release in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 5.10.3.3**
+  - Upon multicast MRB release, the UE shall:
+    - release the PDCP entity, RLC entity as well as the related MAC and physical layer configuration;
+    - if the SDAP entity associated with the corresponding `mbs-SessionId` has no associated MRB:
+      - release the SDAP entity, as specified in **[3GPP TS 37.324](https://www.3gpp.org/dynareport/37324.htm) Clause 5.1.2**;
+      - indicate the release of the user plane resources for the `mbs-SessionId` to upper layers.
+
+This is structurally identical to broadcast MRB establishment/release on the [MBS Broadcast RAN procedures](./analysis-mbs-broadcast-ran) page (same actions, same TS 37.324 SDAP clauses); only the configuration IE names differ (`mrb-ListMulticast` vs the broadcast MRB list, `MBSMulticastConfiguration` vs `MBSBroadcastConfiguration`).
+
+## User Plane Procedures
+
+PDCP and SDAP handling of multicast-inactive traffic follow the same procedures as the broadcast case, documented in the [MBS Broadcast RAN procedures: User Plane Procedures](./analysis-mbs-broadcast-ran#user-plane-procedures) section (TS 38.323 for PDCP, TS 37.324 Clause 4.2/5.2.2/6.2.2.1 for SDAP); it is not repeated here. The RLC and MAC layer citations specific to the multicast-inactive case (TS 38.322, TS 38.321) have not been separately checked against a primary source for this page, since the broadcast-case citations were confirmed instead — verify before relying on them if the two cases diverge at that level.

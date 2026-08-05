@@ -54,7 +54,7 @@ For each PLMN, the following information is included:
 
 ## Obtention of MIB/SIB signaling
 
-For definitions refer to **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 6.2.2**
+For definitions refer to **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 6.3.1** (System information blocks)
 
 ### SIB 20 - Acquisition MCCH/MTCH
 
@@ -130,7 +130,7 @@ The control-plane sections below summarise, per protocol layer (RRC, PDCP, RLC, 
 - Procedures in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 5.9**
   - Acquisition of MCCH: via SIB20, included in SIBTypeInfo in SIB1. MCCH transmission indicated via PDCCH (MCCH-RNTI)
   - Configuration information in MCCH via _MBSBroadcastConfiguration_
-- _SIB20_ in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 6.2.2**: SIB20 contains the information required to acquire the MCCH/MTCH configuration for MBS broadcast. ASN.1 definition in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 6.2.2**.
+- _SIB20_ in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 6.3.1**: SIB20 contains the information required to acquire the MCCH/MTCH configuration for MBS broadcast. ASN.1 definition in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 6.3.1**.
 - _MBSBroadcastConfiguration_ in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 6.2.2**: The MBSBroadcastConfiguration message contains the control information applicable for MBS broadcast services transmitted via broadcast MRB. ASN.1 definition in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 6.2.2**.
 - MBS information elements in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 6.3.6**
 
@@ -187,6 +187,10 @@ The user-plane sections below summarise, per protocol layer (SDAP, PDCP), how re
 - Data PDU without SDAP header in **[3GPP TS 37.324](https://www.3gpp.org/dynareport/37324.htm) Clause 6.2.2.1**
 
 User-plane PDCP handling for MBS Broadcast follows the same procedures as the control-plane PDCP subsection above (**[3GPP TS 38.323](https://www.3gpp.org/dynareport/38323.htm)**); it is not repeated here.
+
+:::note[Verified against primary sources]
+All clause, table and message citations on this page have now been checked directly against 3GPP specification documents: TS 38.321 and TS 38.331 (V17.5.0) for the RRC/MAC citations, and TS 37.324 (V19.0.0) for the SDAP citations (Clause 4.2, 5.1.1, 5.1.2, 5.2.2, 6.2.2.1 — all confirmed to match). One correction was made in the course of this check: SIB20's definition sits in TS 38.331 Clause 6.3.1 ("System information blocks"), not Clause 6.2.2 ("Message definitions") as this page previously stated; Clause 6.2.2 is correct for the MBSBroadcastConfiguration message itself, which is a distinct RRC message rather than a system information block.
+:::
 
 ---
 

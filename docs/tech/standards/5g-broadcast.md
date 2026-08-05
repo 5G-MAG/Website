@@ -24,7 +24,7 @@ ETSI TS 103 720 LTE-based 5G Broadcast: version history, related 3GPP specificat
 
 5G Broadcast delivers linear TV and radio to devices over a one-way, free-to-air signal, with no SIM, subscription or return channel required, reusing LTE/eMBMS radio technology (Long Term Evolution / evolved Multimedia Broadcast Multicast Service). It is distinct from 5G Multicast-Broadcast Services (MBS), which is native to the 5G core and NR; see [Standards: 5G Multicast & Broadcast Services](/tech/standards/5g-mbs). 5G-MAG maintains the underlying ETSI specification and contributes the requirements and fixes that shape each new version. For acronyms used here, see the [Glossary](/tech/glossary).
 
-<div class="godeeper-grid">
+<div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
@@ -35,19 +35,6 @@ ETSI TS 103 720 LTE-based 5G Broadcast: version history, related 3GPP specificat
 <p>The deeper technical treatment of 5G Broadcast delivery and receiver behaviour.</p>
 <ul class="godeeper-card__links">
 <li><a href="/tech/5g-broadcast">Technical Documentation: 5G Broadcast</a></li>
-</ul>
-</div>
-</div>
-
-<div class="godeeper-card">
-<div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
-<h3>Software Tools</h3>
-</div>
-<div class="godeeper-card__body">
-<p>5G-MAG's reference tools implementing ETSI TS 103 720.</p>
-<ul class="godeeper-card__links">
-<li><a href="/reference-tools/5g-broadcast">Developer portal: 5G Broadcast reference tools</a></li>
 </ul>
 </div>
 </div>
@@ -240,14 +227,13 @@ Well-established references (DASH = ISO/IEC 23009-1; 5GMS = TS 26.501 / [TS 26.5
 - **Implementer-driven fixes:** the v1.3.1 additions explicitly include bugs and clarification questions raised by implementors of the specification, in particular by 5G-MAG itself, together with new requirements identified by 5G-MAG.
 - **Completed Release 17 alignment:** 5G-MAG completed the v1.2.1 update in 2023, adding receiver requirements for consistent network planning, bandwidth/UHF spectrum information, and support for 5GMS over eMBMS (including hybrid use cases).
 
-For the reference tools that exercise this specification, see [Developer portal: 5G Broadcast reference tools](/reference-tools/5g-broadcast); for the release-by-release specification detail behind these updates, see [Standards Evolution](/tech/standards/5g-broadcast-standards-evolution).
+For the release-by-release specification detail behind these updates, see [Standards Evolution](/tech/standards/5g-broadcast-standards-evolution).
 
 ## Related Standards Work
 
 - [Standards: DVB-I over 5G](/tech/standards/dvb-i)
 - [Standards: 5G Multicast & Broadcast Services](/tech/standards/5g-mbs)
 - [Standards: Multimedia Delivery Protocols](/tech/standards/multimedia)
-- [Developer portal: 5G Broadcast reference tools](/reference-tools/5g-broadcast)
 - [Technical Documentation: 5G Broadcast](/tech/5g-broadcast)
 - [Feedback and Requirements](/standards): how 5G-MAG processes feedback on the specifications it maintains and tracks
 

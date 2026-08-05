@@ -24,7 +24,7 @@ MPEG's V3C framework for coding volumetric video, covering V-PCC and MIV profile
 
 Volumetric video captures a scene in three dimensions so a viewer can change viewpoint, rather than watching a fixed 2D frame. Visual Volumetric Video-based Coding (V3C, ISO/IEC 23090-5) is the MPEG framework for compressing this content; it underpins Video-based Point Cloud Compression (V-PCC) and MPEG Immersive Video (MIV). 5G-MAG tracks these formats and their carriage so that volumetric and immersive content can be delivered efficiently over 5G. This page lists the relevant MPEG-I parts and is for anyone working on 3D and immersive media delivery. For acronyms used here, see the [Glossary](/tech/glossary).
 
-<div class="godeeper-grid">
+<div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
@@ -35,19 +35,6 @@ Volumetric video captures a scene in three dimensions so a viewer can change vie
 <p>The deeper technical treatment of V3C, V-PCC and MIV delivery over 5G.</p>
 <ul class="godeeper-card__links">
 <li><a href="/tech/volumetric">Volumetric Video</a></li>
-</ul>
-</div>
-</div>
-
-<div class="godeeper-card">
-<div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
-<h3>Software Tools</h3>
-</div>
-<div class="godeeper-card__body">
-<p>An end-to-end encode, package, deliver, decode and render path for V3C content.</p>
-<ul class="godeeper-card__links">
-<li><a href="/reference-tools/v3c">MPEG V3C Immersive Platform</a></li>
 </ul>
 </div>
 </div>
@@ -103,15 +90,6 @@ MIV defines several profiles that trade decoder complexity against flexibility, 
 
 ISO/IEC 23090-5 has progressed through successive editions (2021, 2023, and 2025); the entry in the table below links to the edition currently referenced by 5G-MAG. Later editions of the V3C base added common atlas and packed-video support that MIV depends on. ISO/IEC 23090-10 (carriage) was first published in 2022 with a subsequent amendment (support of packed video data) and a technical corrigendum. MIV (ISO/IEC 23090-12) was published in 2023, with a second edition under development in MPEG. Implementers should confirm the exact edition and any amendments against the ISO catalogue for the feature set they rely on.
 
-## 5G-MAG tracking and contribution focus
-
-5G-MAG follows this MPEG family so that volumetric and immersive assets can be produced, packaged, and delivered on the same 5G media pipelines as conventional video. The practical work sits in two places:
-
-- the **MPEG V3C Immersive Platform** reference tools, which target an end-to-end encode, package, deliver, decode, and render path (including a Unity-based player using a V3C decoder plugin); and
-- the **Beyond 2D Video** evaluation work, which characterises how these and adjacent formats perform, aligned to the 3GPP study on the [Beyond 2D Video](/tech/standards/beyond-2d) page.
-
-The developer-facing scope, repositories, and getting-started material are on the 5G-MAG Developer Portal; the deeper technical treatment is on the [Volumetric Video](/tech/volumetric) Tech page.
-
 ## Related MPEG Specifications
 
 This is a list of specifications in the scope of Volumetric Video (V3C). Part 5 (V3C and V-PCC) is the core coding framework; Part 10 specifies carriage and storage of the coded data; Part 12 (MIV) applies the framework to multi-view immersive video.
@@ -127,6 +105,10 @@ This is a list of specifications in the scope of Volumetric Video (V3C). Part 5 
 :::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the ISO catalogue entries were checked, but part numbers for adjacent MPEG-I deliverables were not fully verified): ISO/IEC 23090-9 (G-PCC), ISO/IEC 23090-20 (V3C/V-PCC conformance), ISO/IEC 23090-25 (carriage conformance and reference software). Verify against the ISO/IEC JTC 1/SC 29 catalogue before publication.
 :::
+
+## 5G-MAG tracking and contribution focus
+
+5G-MAG follows this MPEG family so that volumetric and immersive assets can be produced, packaged, and delivered on the same 5G media pipelines as conventional video, and tracks the **Beyond 2D Video** evaluation work characterising how these and adjacent formats perform, aligned to the 3GPP study on the [Beyond 2D Video](/tech/standards/beyond-2d) page. The deeper technical treatment is on the [Volumetric Video](/tech/volumetric) Tech page.
 
 ## Related Standards Work
 

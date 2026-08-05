@@ -24,7 +24,7 @@ sidebar_position: 12
 
 5G-MAG investigates the use of Non-Public Networks (NPNs) for media production, focusing in particular on private 5G networks for live content acquisition, contribution and on-site production workflows. NPNs allow broadcasters and media companies to deploy dedicated 5G infrastructure with guaranteed quality of service (QoS), so a production can reserve bandwidth and latency for its own use without competing with public traffic. For acronyms used here, see the [Glossary](/tech/glossary).
 
-<div class="godeeper-grid">
+<div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
@@ -39,35 +39,7 @@ sidebar_position: 12
 </div>
 </div>
 
-<div class="godeeper-card godeeper-card--static">
-<div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l18 0"/><path d="M9 8l1 0"/><path d="M9 12l1 0"/><path d="M9 16l1 0"/><path d="M14 8l1 0"/><path d="M14 12l1 0"/><path d="M14 16l1 0"/><path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16"/></svg>
-<h3>Software Tools</h3>
 </div>
-<div class="godeeper-card__body">
-<p>There is no dedicated 5G-MAG reference implementation for NPN; the area is followed through analysis.</p>
-</div>
-</div>
-
-</div>
-
-## Key 3GPP Specifications
-
-### System Architecture
-
-- [TS 23.501](https://www.3gpp.org/dynareport/23501.htm): System Architecture for the 5G System; Non-Public Network aspects (clause 5.30)
-- [TS 23.502](https://www.3gpp.org/dynareport/23502.htm): Procedures for the 5G System; NPN procedures
-
-### Access and Authentication
-
-These specifications cover how a device gains access to an NPN and how that access is secured, including the case where the device reaches the 5G core over a non-3GPP access network.
-
-- [TS 24.501](https://www.3gpp.org/dynareport/24501.htm): Non-Access-Stratum (NAS) protocol for 5GS; Stage 3 — carries the SNPN-specific registration and authentication procedures (credential-owner vs. separate credential-holder models, SUCI handling)
-- [TS 33.501](https://www.3gpp.org/dynareport/33501.htm): Security architecture for 5GS; NPN security aspects
-
-### Study Items
-
-- [TR 23.700-07](https://www.3gpp.org/dynareport/23700-07.htm): Study on enhanced support of Non-Public Networks (Release 17)
 
 ## Why NPNs Matter for Media Production
 
@@ -101,14 +73,6 @@ The NPN feature set has grown across releases. The following is an orientation, 
 - **Release 17**: SNPN enhancements. Credentials Holder support (credentials owned by a separate 3GPP or non-3GPP entity such as an AAA server), UE onboarding and remote provisioning, and equivalent-SNPN handling. Related VIAPA requirements work continued in TS 22.263.
 - **Release 18 and later**: Continued refinements to NPN mobility, service continuity between SNPN and PLMN, and localised services. Confirm the specific enhancements and their release placement against the current 3GPP work plan.
 
-## Media Production Use Cases
-
-- Wireless camera feeds from studio floors or live event venues
-- Low-latency contribution links over private 5G
-- Coordinated multi-camera production workflows
-- Collaborative on-site editing over a dedicated 5G slice
-- Deterministic essence transport when the NPN is combined with Time Sensitive Communications (see below)
-
 ## How NPN Relates to TSC and RTC
 
 An NPN is the network foundation on which the other two topics in this area sit:
@@ -116,9 +80,27 @@ An NPN is the network foundation on which the other two topics in this area sit:
 - **NPN + TSC**: Deterministic, tightly synchronised media transport (for example SMPTE ST 2110 essence flows) is normally deployed over an NPN, because the production organisation needs to control QoS and timing end to end. See [Standards: Time Sensitive Communications](/tech/standards/tsc).
 - **NPN + RTC**: Interactive and uplink-heavy real-time media (contribution, remote production, conferencing) benefits from the reserved capacity and QoS control of a private network. See [Standards: Real-Time Communications (RTC)](/tech/standards/rtc).
 
+## Key 3GPP Specifications
+
+### System Architecture
+
+- [TS 23.501](https://www.3gpp.org/dynareport/23501.htm): System Architecture for the 5G System; Non-Public Network aspects (clause 5.30)
+- [TS 23.502](https://www.3gpp.org/dynareport/23502.htm): Procedures for the 5G System; NPN procedures
+
+### Access and Authentication
+
+These specifications cover how a device gains access to an NPN and how that access is secured, including the case where the device reaches the 5G core over a non-3GPP access network.
+
+- [TS 24.501](https://www.3gpp.org/dynareport/24501.htm): Non-Access-Stratum (NAS) protocol for 5GS; Stage 3 — carries the SNPN-specific registration and authentication procedures (credential-owner vs. separate credential-holder models, SUCI handling)
+- [TS 33.501](https://www.3gpp.org/dynareport/33501.htm): Security architecture for 5GS; NPN security aspects
+
+### Study Items
+
+- [TR 23.700-07](https://www.3gpp.org/dynareport/23700-07.htm): Study on enhanced support of Non-Public Networks (Release 17)
+
 ## 5G-MAG tracking and contribution focus
 
-5G-MAG tracks NPN standardisation as it applies to media production and contribution, in particular the VIAPA requirements, the SNPN and PNI-NPN deployment models, device onboarding at scale, and the combination of NPN with TSC for deterministic essence transport and with RTC for interactive contribution. There is no dedicated 5G-MAG reference implementation for NPN; the area is followed through analysis and the standards work referenced here.
+5G-MAG tracks NPN standardisation as it applies to media production and contribution, in particular the VIAPA requirements, the SNPN and PNI-NPN deployment models, device onboarding at scale, and the combination of NPN with TSC for deterministic essence transport and with RTC for interactive contribution.
 
 :::warning[References to verify]
 The Release 18 and later NPN enhancement placements described above were not confirmed against a primary source (the 3GPP/ETSI portals block automated access). Verify against the 3GPP work plan before publication. (TR 23.700-07 and TS 24.501, above, were confirmed via independent secondary trackers — see the audit notes for this page.)

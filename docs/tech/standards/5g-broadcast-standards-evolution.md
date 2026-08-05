@@ -22,7 +22,7 @@ Release-by-release detail on the 3GPP work items, Change Requests and RAN meetin
 
 This page is the detailed, release-by-release companion to [Standards: 5G Broadcast](/tech/standards/5g-broadcast): the work items, Change Requests and RAN meetings behind each release. See that page for the ETSI TS 103 720 overview, the full specification list and current capabilities. For acronyms used here, see the [Glossary](/tech/glossary).
 
-<div class="godeeper-grid">
+<div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
@@ -33,19 +33,6 @@ This page is the detailed, release-by-release companion to [Standards: 5G Broadc
 <p>The deeper technical treatment of 5G Broadcast delivery and receiver behaviour.</p>
 <ul class="godeeper-card__links">
 <li><a href="/tech/5g-broadcast">Technical Documentation: 5G Broadcast</a></li>
-</ul>
-</div>
-</div>
-
-<div class="godeeper-card">
-<div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
-<h3>Software Tools</h3>
-</div>
-<div class="godeeper-card__body">
-<p>5G-MAG's reference tools implementing ETSI TS 103 720.</p>
-<ul class="godeeper-card__links">
-<li><a href="/reference-tools/5g-broadcast">Developer portal: 5G Broadcast reference tools</a></li>
 </ul>
 </div>
 </div>

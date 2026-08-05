@@ -22,9 +22,9 @@ The 5GMS architecture, M1-M8 reference points, related 3GPP specifications and R
 
 ## Overview
 
-5G Media Streaming (5GMS) is the 3GPP framework for delivering streaming media over 5G networks, covering provisioning, media session handling and reporting between content providers, the network and the device. It has two directions: downlink (5GMSd), streaming from the network to the device, and uplink (5GMSu), streaming from the device to the network. This page lists the specifications in scope and recent Release-19 work; 5G-MAG's tracking and contribution focus is described further down. For the 5G-MAG software, see the reference tools on the developer portal at [/reference-tools/5gms](/reference-tools/5gms); for implementation analysis, see [Streaming & Media Delivery](/tech/5gms). For acronyms used here, see the [Glossary](/tech/glossary).
+5G Media Streaming (5GMS) is the 3GPP framework for delivering streaming media over 5G networks, covering provisioning, media session handling and reporting between content providers, the network and the device. It has two directions: downlink (5GMSd), streaming from the network to the device, and uplink (5GMSu), streaming from the device to the network. This page lists the specifications in scope and recent Release-19 work; 5G-MAG's tracking and contribution focus is described further down. For implementation analysis, see [Streaming & Media Delivery](/tech/5gms). For acronyms used here, see the [Glossary](/tech/glossary).
 
-<div class="godeeper-grid">
+<div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
@@ -35,19 +35,6 @@ The 5GMS architecture, M1-M8 reference points, related 3GPP specifications and R
 <p>The implementer-facing analysis of the 5GMS architecture and its entities.</p>
 <ul class="godeeper-card__links">
 <li><a href="/tech/5gms">Technical Documentation: Streaming &amp; Media Delivery</a></li>
-</ul>
-</div>
-</div>
-
-<div class="godeeper-card">
-<div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
-<h3>Software Tools</h3>
-</div>
-<div class="godeeper-card__body">
-<p>5G-MAG's reference implementation of the 5GMS architecture.</p>
-<ul class="godeeper-card__links">
-<li><a href="/reference-tools/5gms">Developer portal: 5G Media Streaming reference tools</a></li>
 </ul>
 </div>
 </div>
@@ -89,26 +76,26 @@ In the 5G Core, network functions expose service-based APIs (HTTP/2 RESTful APIs
 - **Binding Support Function (BSF), TS 29.521.** The BSF maps a UE's PDU session (by IP address) to the PCF that is serving it. The AF uses the `Nbsf_Management` service to find the right PCF before it can request policy; this is a lookup step rather than an action on the traffic.
 - **Policy Control Function (PCF), TS 29.514.** The PCF applies QoS and charging policy. The AF uses the `Npcf_PolicyAuthorization` service at reference point N5 to request specific network treatment (bandwidth, priority) for the media flows inside a UE's PDU session, by creating and updating an Application Session Context. This is how a unicast streaming session asks the network for the QoS it needs.
 
-The developer-side view of the reusable libraries that implement these consumer roles (libscbsf, libscpcf) is on the [developer portal](/reference-tools/5gms). For the equivalent multicast/broadcast service consumer (the MB-SMF, TS 29.532), see [Standards: 5G Multicast & Broadcast Services](/tech/standards/5g-mbs).
+For the equivalent multicast/broadcast service consumer (the MB-SMF, TS 29.532), see [Standards: 5G Multicast & Broadcast Services](/tech/standards/5g-mbs).
 
 ## Related 3GPP Specifications
 
 The 5G Media Streaming architecture is defined in TS 26.501. Protocols and APIs are specified in TS 26.512, which references the generalized Media Session Handling defined in TS 26.510. Profiles, codecs and formats are provided in TS 26.511.
 
-- **[3GPP TS 26.501](https://www.3gpp.org/dynareport/26501.htm) - 5G Media Streaming (5GMS); General description and architecture**
-- **[3GPP TS 26.512](https://www.3gpp.org/dynareport/26512.htm) - 5G Media Streaming (5GMS); Protocols**
-- **[3GPP TS 26.510](https://www.3gpp.org/dynareport/26510.htm) - Media delivery; interactions and APIs for provisioning and media session handling**
-- **[3GPP TS 26.511](https://www.3gpp.org/dynareport/26511.htm) - 5G Media Streaming (5GMS); Profiles, codecs and formats**
+- **[TS 26.501](https://www.3gpp.org/dynareport/26501.htm) - 5G Media Streaming (5GMS); General description and architecture**
+- **[TS 26.512](https://www.3gpp.org/dynareport/26512.htm) - 5G Media Streaming (5GMS); Protocols**
+- **[TS 26.510](https://www.3gpp.org/dynareport/26510.htm) - Media delivery; interactions and APIs for provisioning and media session handling**
+- **[TS 26.511](https://www.3gpp.org/dynareport/26511.htm) - 5G Media Streaming (5GMS); Profiles, codecs and formats**
 
 Two companion specifications define the generic UE data collection framework that 5GMS reporting can feed into:
 
-- **[3GPP TS 26.531](https://www.3gpp.org/dynareport/26531.htm) - Data Collection and Reporting; General Description and Architecture**
-- **[3GPP TS 26.532](https://www.3gpp.org/dynareport/26532.htm) - Data Collection and Reporting; Protocols and Formats**
+- **[TS 26.531](https://www.3gpp.org/dynareport/26531.htm) - Data Collection and Reporting; General Description and Architecture**
+- **[TS 26.532](https://www.3gpp.org/dynareport/26532.htm) - Data Collection and Reporting; Protocols and Formats**
 
 The 5GMS AF is a consumer, not a producer, of two further 5G Core service-based APIs that the unicast (5GMSd/5GMSu) path relies on:
 
-- **[3GPP TS 29.521](https://www.3gpp.org/dynareport/29521.htm) - 5G System; Binding Support Management Service; Stage 3**
-- **[3GPP TS 29.514](https://www.3gpp.org/dynareport/29514.htm) - 5G System; Policy Authorization Service; Stage 3**
+- **[TS 29.521](https://www.3gpp.org/dynareport/29521.htm) - 5G System; Binding Support Management Service; Stage 3**
+- **[TS 29.514](https://www.3gpp.org/dynareport/29514.htm) - 5G System; Policy Authorization Service; Stage 3**
 
 ### Reading the specification set by role
 
@@ -132,11 +119,11 @@ Advanced Media Delivery (AMD) is the Release-19 line of work extending 5G Media 
 
 Technical Reports:
 
-- **[3GPP TR 26.804](https://www.3gpp.org/dynareport/26804.htm) - Study on 5G media streaming extensions**
+- **[TR 26.804](https://www.3gpp.org/dynareport/26804.htm) - Study on 5G media streaming extensions**
 
 ### Related Technical Report (release unconfirmed)
 
-- **[3GPP TR 26.802](https://www.3gpp.org/dynareport/26802.htm) - Multicast Architecture Enhancement for 5G Media Streaming**
+- **[TR 26.802](https://www.3gpp.org/dynareport/26802.htm) - Multicast Architecture Enhancement for 5G Media Streaming**
 
 :::warning[Needs verification]
 TR 26.802 relates to 5GMS multicast architecture but its release is unconfirmed (possibly Release 17 rather than Release 19). It is listed here separately from the Release-19 Advanced Media Delivery reports above until its release and section placement is confirmed against the [3GPP specification record](https://www.3gpp.org/dynareport/26802.htm).
@@ -158,14 +145,13 @@ Coded Multisource Media Format (CMMF) is an ETSI format that lets a client fetch
 
 ## 5G-MAG tracking and contribution focus
 
-5G-MAG tracks the 5GMS specifications in 3GPP SA4 and maintains open-source reference implementations of the architecture. The current focus areas are:
+5G-MAG tracks the 5GMS specifications in 3GPP SA4. The current focus areas are:
 
-- **Downlink unicast (5GMSd):** the reference tools implement the 5GMSd AF, the 5GMSd AS, the Media Session Handler and the Media Player, plus a sample Application Provider and Aware Application, against the Release 17 normative baseline. This gives an end-to-end path to validate provisioning (M1) and session handling (M5) interoperably.
 - **Release 18 API migration:** tracking the move of the media session handling APIs from TS 26.512 into TS 26.510 and the generalisation across the 5GMS and RTC systems.
 - **Advanced Media Delivery (Release 19):** following the TR 26.804 study and the stage-3 work that brings CMCD reporting and CMMF multi-source delivery into the media delivery specifications.
 - **Data collection and event exposure:** the generic UE data collection framework (TS 26.531 and TS 26.532), tracked so that 5GMS consumption and QoE metrics can be exposed to consuming functions.
 
-For the reference-tool scope and how the software maps to these specifications, see the developer portal at [/reference-tools/5gms](/reference-tools/5gms). For implementation analysis, see [Streaming & Media Delivery](/tech/5gms).
+For implementation analysis, see [Streaming & Media Delivery](/tech/5gms).
 
 :::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the Release 17 placement of edge media processing and eMBMS delivery in TS 26.501, the Release 18 placement of TS 26.510 and of the TS 26.531 / TS 26.532 alignment, and the Release 19 placement of the Advanced Media Delivery work. Verify against the 3GPP work plan before publication.
@@ -176,7 +162,6 @@ These identifiers on this page were not confirmed against a primary source (the 
 - [Standards: 5G Multicast & Broadcast Services](/tech/standards/5g-mbs)
 - [Standards: UE Data Collection](/tech/standards/data-collection)
 - [Standards: Real-Time Communications (RTC)](/tech/standards/rtc)
-- [Developer portal: 5G Media Streaming reference tools](/reference-tools/5gms)
 - [Technical Documentation: Streaming & Media Delivery](/tech/5gms)
 - [Meetings with 3GPP SA4](/standards/3gpp-issue-tracking): the live tracker for 3GPP feedback issues on this specification
 

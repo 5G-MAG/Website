@@ -26,7 +26,7 @@ eXtended Reality (XR) covers virtual, augmented and mixed reality media delivere
 
 On this page: MPEG-I Scene Description; 3GPP use cases and requirements; New Radio (NR) enhancements; split rendering; media capabilities; IVAS audio codecs; test methodologies; and work items for Releases 16 to 19.
 
-<div class="godeeper-grid">
+<div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
@@ -37,19 +37,6 @@ On this page: MPEG-I Scene Description; 3GPP use cases and requirements; New Rad
 <p>The extension-by-extension model and the MAF/Presentation Engine architecture.</p>
 <ul class="godeeper-card__links">
 <li><a href="/tech/xr/mpeg-i-scene-description">MPEG-I Scene Description and glTF 2.0 extensions</a></li>
-</ul>
-</div>
-</div>
-
-<div class="godeeper-card">
-<div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
-<h3>Software Tools</h3>
-</div>
-<div class="godeeper-card__body">
-<p>5G-MAG's reference tools for XR and MPEG-I Scene Description.</p>
-<ul class="godeeper-card__links">
-<li><a href="/reference-tools/xr">XR and MPEG-I Scene Description</a></li>
 </ul>
 </div>
 </div>
@@ -215,9 +202,9 @@ Work items are the activities that produce the technical reports (TR) and specif
 
 ## 5G-MAG tracking and contribution focus
 
-5G-MAG follows this work area as it moves from study to normative specification, and maintains reference tools that implement the scene-description parts of it. The practical focus is:
+5G-MAG follows this work area as it moves from study to normative specification. The practical focus is:
 
-- **MPEG-I Scene Description playback.** Reference tools implement the ISO/IEC 23090-14 processing model (Presentation Engine, MAF API, buffers) and the MPEG glTF 2.0 extensions, targeting handheld AR (XR phone) and head-mounted displays (XR HMD). See the developer view under [XR and MPEG-I Scene Description](/tech/xr) and the Tech page [MPEG-I Scene Description and glTF 2.0 extensions](/tech/xr/mpeg-i-scene-description).
+- **MPEG-I Scene Description.** Tracking the ISO/IEC 23090-14 processing model (Presentation Engine, MAF API, buffers) and the MPEG glTF 2.0 extensions, relevant to handheld AR (XR phone) and head-mounted displays (XR HMD). See the Tech page [MPEG-I Scene Description and glTF 2.0 extensions](/tech/xr/mpeg-i-scene-description).
 - **Delivery over 5G Media Streaming.** How scene-description content and its referenced media are carried using the 5GMS framework (TS 26.501, TS 26.512), so that immersive media can be delivered adaptively and under network/operator policy.
 - **Device capabilities and split rendering.** Tracking MeCAR (TS 26.119) and the Split Rendering Media Service Enabler (TS 26.565) as they stabilise, since these define how EDGAR-class devices interoperate with network renderers.
 - **Immersive audio.** Tracking the IVAS codec deliverables and the immersive-audio split-rendering work listed above; note the verification cautions on the IVAS titles.

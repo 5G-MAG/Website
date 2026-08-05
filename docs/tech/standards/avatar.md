@@ -24,7 +24,7 @@ The MPEG Avatar Representation Format, Scene Description integration and the 3GP
 
 5G-MAG follows standardisation work on avatar communications and the associated immersive voice and audio in 5G systems. Two linked threads are in scope: the Avatar Representation Format (ARF), an MPEG format for interoperable 3D avatars, and Immersive Voice and Audio Services (IVAS), the 3GPP immersive audio codec used alongside them. Together these support next-generation real-time communication experiences over 5G. This page is for anyone tracking conversational avatar and immersive audio work. For acronyms used here, see the [Glossary](/tech/glossary).
 
-<div class="godeeper-grid">
+<div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
@@ -36,16 +36,6 @@ The MPEG Avatar Representation Format, Scene Description integration and the 3GP
 <ul class="godeeper-card__links">
 <li><a href="/tech/avatar-communications">Avatar Communication with MPEG ARF</a></li>
 </ul>
-</div>
-</div>
-
-<div class="godeeper-card godeeper-card--static">
-<div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l18 0"/><path d="M9 8l1 0"/><path d="M9 12l1 0"/><path d="M9 16l1 0"/><path d="M14 8l1 0"/><path d="M14 12l1 0"/><path d="M14 16l1 0"/><path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16"/></svg>
-<h3>Software Tools</h3>
-</div>
-<div class="godeeper-card__body">
-<p>There is no dedicated 5G-MAG reference implementation for avatar communications; the area is followed through standards analysis.</p>
 </div>
 </div>
 
@@ -115,13 +105,6 @@ The transport of ARF animation itself is being addressed at the IETF: [draft-iet
 The IVAS deliverable titles (TS 26.250 to TS 26.256) and the avatar study item number (TR 26.813) were set or revised by automated review and are not yet confirmed against a primary source, because the 3GPP portal blocks automated access. In particular, TS 26.255 is described here as "Floating-point computational description" but as "Error concealment of lost packets" on the [XR specifications page](/tech/standards/xr), where the floating-point C code is listed separately as TS 26.258; at most one description can be correct. Check all IVAS titles and the avatar study number (TR 26.813, previously cited as TS 26.118 and then TR 26.955) against the 3GPP work plan before relying on this list.
 :::
 
-## Use Cases
-
-- Real-time avatar-based video conferencing over 5G
-- Immersive spatial audio for remote collaboration
-- Presence and telepresence services using 3D avatars
-- Integration with XR and immersive media services (see the [XR page](/tech/standards/xr))
-
 :::warning[References to verify]
 The following identifiers introduced on this page were not confirmed against a primary source and should be checked before publication:
 
@@ -133,7 +116,7 @@ Established citations on this page (ISO/IEC 23090-39, ISO/IEC 23090-14 and its A
 
 ## 5G-MAG tracking and contribution focus
 
-5G-MAG follows the standardisation of avatar communications and the associated immersive voice and audio work (ARF, MPEG-I Scene Description, IVAS, and the related 3GPP/IETF transport work) as it develops. This page does not document a specific 5G-MAG contribution or reference-implementation activity for avatar communications; check the [Standards](https://github.com/5G-MAG/Standards/) repository for the current status.
+5G-MAG follows the standardisation of avatar communications and the associated immersive voice and audio work (ARF, MPEG-I Scene Description, IVAS, and the related 3GPP/IETF transport work) as it develops; check the [Standards](https://github.com/5G-MAG/Standards/) repository for the current status.
 
 ## Related Standards Work
 
