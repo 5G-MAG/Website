@@ -27,6 +27,14 @@ jobs:
         run: node scripts/fetch-youtube-playlists.js
 
       - name: Commit and push if changed
+        # Runs even if the fetch step above failed: the script falls back to
+        # the previous value for any playlist it couldn't reach and still
+        # writes a valid file, so a single dead playlist ID shouldn't block
+        # the other playlists' updates from being committed. The fetch step
+        # still exits non-zero on partial failure, so the run is correctly
+        # flagged red in Actions -- this only stops that failure from also
+        # silently discarding everything that did succeed.
+        if: ${{ !cancelled() }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"

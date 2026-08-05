@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-24",
+  "updated_at": "2026-08-05",
   "projects": {
     "5g-broadcast": {
       "playlistId": "PLFqKJZ78_IWWbdf4rZ_SS9W0dqpLhKZz8",
@@ -50,6 +50,22 @@
       "playlistId": "PLFqKJZ78_IWXSCsSEKeyAay10luuVF9io",
       "playlistUrl": "https://www.youtube.com/playlist?list=PLFqKJZ78_IWXSCsSEKeyAay10luuVF9io",
       "videos": [
+        {
+          "id": "zP5JhHugnRE",
+          "title": "Connecting MBSTF to the MBS System - Developer Exchange",
+          "url": "https://www.youtube.com/watch?v=zP5JhHugnRE",
+          "thumbnail": "https://i3.ytimg.com/vi/zP5JhHugnRE/hqdefault.jpg",
+          "published": "2026-07-27",
+          "by": "Josep Ribes Rodríguez-Moldes (iTEAM-UPV)"
+        },
+        {
+          "id": "e_VRVDAoJdk",
+          "title": "MBS User Services for 5G MBS (Release 18) - Developer Exchange",
+          "url": "https://www.youtube.com/watch?v=e_VRVDAoJdk",
+          "thumbnail": "https://i2.ytimg.com/vi/e_VRVDAoJdk/hqdefault.jpg",
+          "published": "2026-07-27",
+          "by": "Richard Bradbury, Dev Audsin and David Waring (BBC)"
+        },
         {
           "id": "cdYV99cDuJE",
           "title": "End-to-End setup with 5GC, NG-RAN and UE for MBS Broadcast Services - Developer Exchange",
@@ -104,6 +120,22 @@
       "playlistId": "PLFqKJZ78_IWUibB6dMiabaVNDFLSGBWlx",
       "playlistUrl": "https://www.youtube.com/playlist?list=PLFqKJZ78_IWUibB6dMiabaVNDFLSGBWlx",
       "videos": [
+        {
+          "id": "hcFRGmg8YBU",
+          "title": "5G Media Streaming: Latest Additions - Developer Exchange",
+          "url": "https://www.youtube.com/watch?v=hcFRGmg8YBU",
+          "thumbnail": "https://i1.ytimg.com/vi/hcFRGmg8YBU/hqdefault.jpg",
+          "published": "2026-07-27",
+          "by": "Daniel Silhavy (Fraunhofer FOKUS)"
+        },
+        {
+          "id": "Cqta-eo9490",
+          "title": "Advanced Media Delivery: CMCD Metrics in Action - Developer Exchange",
+          "url": "https://www.youtube.com/watch?v=Cqta-eo9490",
+          "thumbnail": "https://i4.ytimg.com/vi/Cqta-eo9490/hqdefault.jpg",
+          "published": "2026-07-27",
+          "by": "Shilin Ding (Qualcomm)"
+        },
         {
           "id": "WhMLUO0Bh2U",
           "title": "Initial steps exposing APIs to AI systems through the MCP - Developer Exchange",
@@ -273,7 +305,7 @@
         },
         {
           "id": "13O2lJHs_jo",
-          "title": "V3C Immersive Platform - Support for MPEG Haptics - Developer Exchange",
+          "title": "Support for MPEG Haptics in the V3C Immersive Platform - Developer Exchange",
           "url": "https://www.youtube.com/watch?v=13O2lJHs_jo",
           "thumbnail": "https://i2.ytimg.com/vi/13O2lJHs_jo/hqdefault.jpg",
           "published": "2025-06-10",
@@ -364,12 +396,30 @@
     "avatar": {
       "playlistId": "PLauJtH0v19QE",
       "playlistUrl": "https://www.youtube.com/playlist?list=PLauJtH0v19QE",
-      "videos": []
+      "videos": [
+        {
+          "id": "hVqCqGyrknE",
+          "title": "Introducing the Avatar Real-Time Communication Project - Developer Exchange",
+          "url": "https://www.youtube.com/watch?v=hVqCqGyrknE",
+          "thumbnail": "https://i1.ytimg.com/vi/hVqCqGyrknE/hqdefault.jpg",
+          "published": "2026-07-27",
+          "by": "Nils Duval (Motion Spell)"
+        }
+      ]
     },
     "network-apis": {
       "playlistId": "PLZLRpwWhBVgA",
       "playlistUrl": "https://www.youtube.com/playlist?list=PLZLRpwWhBVgA",
-      "videos": []
+      "videos": [
+        {
+          "id": "WhMLUO0Bh2U",
+          "title": "Initial steps exposing APIs to AI systems through the MCP - Developer Exchange",
+          "url": "https://www.youtube.com/watch?v=WhMLUO0Bh2U",
+          "thumbnail": "https://i4.ytimg.com/vi/WhMLUO0Bh2U/hqdefault.jpg",
+          "published": "2026-07-24",
+          "by": "Aarón Montilla (iTEAM-UPV)"
+        }
+      ]
     },
     "ai-ml": {
       "playlistId": "PLWFUt97V21BY",
@@ -487,106 +537,128 @@
     ]
   },
   "developer": {
-    "playlistId": "PLFqKJZ78_IWW_lQytNhfVmFl9U_lLBEcF",
-    "playlistUrl": "https://www.youtube.com/playlist?list=PLFqKJZ78_IWW_lQytNhfVmFl9U_lLBEcF",
+    "playlistId": "PLFqKJZ78_IWU3RXGLPulR4hkStzfBSXTJ",
+    "playlistUrl": "https://www.youtube.com/playlist?list=PLFqKJZ78_IWU3RXGLPulR4hkStzfBSXTJ",
     "videos": [
       {
+        "id": "zP5JhHugnRE",
+        "title": "Connecting MBSTF to the MBS System - Developer Exchange",
+        "url": "https://www.youtube.com/watch?v=zP5JhHugnRE",
+        "thumbnail": "https://i3.ytimg.com/vi/zP5JhHugnRE/hqdefault.jpg",
+        "published": "2026-07-27",
+        "by": "Josep Ribes Rodríguez-Moldes (iTEAM-UPV)"
+      },
+      {
+        "id": "zP5JhHugnRE",
+        "title": "Connecting MBSTF to the MBS System - Developer Exchange",
+        "url": "https://www.youtube.com/watch?v=zP5JhHugnRE",
+        "thumbnail": "https://i3.ytimg.com/vi/zP5JhHugnRE/hqdefault.jpg",
+        "published": "2026-07-27",
+        "by": "Josep Ribes Rodríguez-Moldes (iTEAM-UPV)"
+      },
+      {
+        "id": "hVqCqGyrknE",
+        "title": "Introducing the Avatar Real-Time Communication Project - Developer Exchange",
+        "url": "https://www.youtube.com/watch?v=hVqCqGyrknE",
+        "thumbnail": "https://i1.ytimg.com/vi/hVqCqGyrknE/hqdefault.jpg",
+        "published": "2026-07-27",
+        "by": "Nils Duval (Motion Spell)"
+      },
+      {
+        "id": "hVqCqGyrknE",
+        "title": "Introducing the Avatar Real-Time Communication Project - Developer Exchange",
+        "url": "https://www.youtube.com/watch?v=hVqCqGyrknE",
+        "thumbnail": "https://i1.ytimg.com/vi/hVqCqGyrknE/hqdefault.jpg",
+        "published": "2026-07-27",
+        "by": "Nils Duval (Motion Spell)"
+      },
+      {
+        "id": "hcFRGmg8YBU",
+        "title": "5G Media Streaming: Latest Additions - Developer Exchange",
+        "url": "https://www.youtube.com/watch?v=hcFRGmg8YBU",
+        "thumbnail": "https://i1.ytimg.com/vi/hcFRGmg8YBU/hqdefault.jpg",
+        "published": "2026-07-27",
+        "by": "Daniel Silhavy (Fraunhofer FOKUS)"
+      },
+      {
+        "id": "hcFRGmg8YBU",
+        "title": "5G Media Streaming: Latest Additions - Developer Exchange",
+        "url": "https://www.youtube.com/watch?v=hcFRGmg8YBU",
+        "thumbnail": "https://i1.ytimg.com/vi/hcFRGmg8YBU/hqdefault.jpg",
+        "published": "2026-07-27",
+        "by": "Daniel Silhavy (Fraunhofer FOKUS)"
+      },
+      {
+        "id": "e_VRVDAoJdk",
+        "title": "MBS User Services for 5G MBS (Release 18) - Developer Exchange",
+        "url": "https://www.youtube.com/watch?v=e_VRVDAoJdk",
+        "thumbnail": "https://i2.ytimg.com/vi/e_VRVDAoJdk/hqdefault.jpg",
+        "published": "2026-07-27",
+        "by": "Richard Bradbury, Dev Audsin and David Waring (BBC)"
+      },
+      {
+        "id": "e_VRVDAoJdk",
+        "title": "MBS User Services for 5G MBS (Release 18) - Developer Exchange",
+        "url": "https://www.youtube.com/watch?v=e_VRVDAoJdk",
+        "thumbnail": "https://i2.ytimg.com/vi/e_VRVDAoJdk/hqdefault.jpg",
+        "published": "2026-07-27",
+        "by": "Richard Bradbury, Dev Audsin and David Waring (BBC)"
+      },
+      {
+        "id": "Cqta-eo9490",
+        "title": "Advanced Media Delivery: CMCD Metrics in Action - Developer Exchange",
+        "url": "https://www.youtube.com/watch?v=Cqta-eo9490",
+        "thumbnail": "https://i4.ytimg.com/vi/Cqta-eo9490/hqdefault.jpg",
+        "published": "2026-07-27",
+        "by": "Shilin Ding (Qualcomm)"
+      },
+      {
+        "id": "WhMLUO0Bh2U",
+        "title": "Initial steps exposing APIs to AI systems through the MCP - Developer Exchange",
+        "url": "https://www.youtube.com/watch?v=WhMLUO0Bh2U",
+        "thumbnail": "https://i4.ytimg.com/vi/WhMLUO0Bh2U/hqdefault.jpg",
+        "published": "2026-07-24",
+        "by": "Aarón Montilla (iTEAM-UPV)"
+      },
+      {
+        "id": "WhMLUO0Bh2U",
+        "title": "Initial steps exposing APIs to AI systems through the MCP - Developer Exchange",
+        "url": "https://www.youtube.com/watch?v=WhMLUO0Bh2U",
+        "thumbnail": "https://i4.ytimg.com/vi/WhMLUO0Bh2U/hqdefault.jpg",
+        "published": "2026-07-24",
+        "by": "Aarón Montilla (iTEAM-UPV)"
+      },
+      {
         "id": "cdYV99cDuJE",
-        "title": "End-to-End setup with 5GC, NG-RAN and UE for MBS Broadcast Services - 5G-MAG Reference Tools",
+        "title": "End-to-End setup with 5GC, NG-RAN and UE for MBS Broadcast Services - Developer Exchange",
         "url": "https://www.youtube.com/watch?v=cdYV99cDuJE",
         "thumbnail": "https://i4.ytimg.com/vi/cdYV99cDuJE/hqdefault.jpg",
-        "published": "2026-07-23"
+        "published": "2026-07-23",
+        "by": "Jaime Sánchez Roldán and Josep Ribes (iTEAM-UPV)"
+      },
+      {
+        "id": "cdYV99cDuJE",
+        "title": "End-to-End setup with 5GC, NG-RAN and UE for MBS Broadcast Services - Developer Exchange",
+        "url": "https://www.youtube.com/watch?v=cdYV99cDuJE",
+        "thumbnail": "https://i4.ytimg.com/vi/cdYV99cDuJE/hqdefault.jpg",
+        "published": "2026-07-23",
+        "by": "Jaime Sánchez Roldán and Josep Ribes (iTEAM-UPV)"
       },
       {
         "id": "uEfBaTqh5vw",
-        "title": "Overview of the latest updates to the 5G Media Streaming Project - 5G-MAG Reference Tools",
+        "title": "Overview of the latest updates to the 5G Media Streaming Project - Developer Exchange",
         "url": "https://www.youtube.com/watch?v=uEfBaTqh5vw",
         "thumbnail": "https://i2.ytimg.com/vi/uEfBaTqh5vw/hqdefault.jpg",
-        "published": "2026-06-01"
+        "published": "2026-06-01",
+        "by": "Daniel Silhavy (Fraunhofer FOKUS)"
       },
       {
         "id": "e_xK_ckkhgc",
-        "title": "Demonstrating MBS User Service Announcement mechanisms - 5G-MAG Reference Tools",
+        "title": "Demonstrating MBS User Service Announcement mechanisms - Developer Exchange",
         "url": "https://www.youtube.com/watch?v=e_xK_ckkhgc",
         "thumbnail": "https://i2.ytimg.com/vi/e_xK_ckkhgc/hqdefault.jpg",
-        "published": "2026-05-21"
-      },
-      {
-        "id": "MF9rhnaEEP8",
-        "title": "Demonstrating the OBJECT_CAROUSEL operating mode - 5G-MAG Reference Tools",
-        "url": "https://www.youtube.com/watch?v=MF9rhnaEEP8",
-        "thumbnail": "https://i2.ytimg.com/vi/MF9rhnaEEP8/hqdefault.jpg",
-        "published": "2026-05-21"
-      },
-      {
-        "id": "KtYMui-cRc0",
-        "title": "Introducing Network Emulator & AI Traffic Characterization Framework - 5G-MAG Reference Tools",
-        "url": "https://www.youtube.com/watch?v=KtYMui-cRc0",
-        "thumbnail": "https://i4.ytimg.com/vi/KtYMui-cRc0/hqdefault.jpg",
-        "published": "2026-03-19"
-      },
-      {
-        "id": "SOA7OGF86Gg",
-        "title": "Introducing the new 5GMS Application Provider Portal - 5G-MAG Reference Tools",
-        "url": "https://www.youtube.com/watch?v=SOA7OGF86Gg",
-        "thumbnail": "https://i4.ytimg.com/vi/SOA7OGF86Gg/hqdefault.jpg",
-        "published": "2026-02-23"
-      },
-      {
-        "id": "0re77KNmxYQ",
-        "title": "TUTORIAL - Basic implementation of MBS Function (MBSF) - Multicast Broadcast Services (MBS)",
-        "url": "https://www.youtube.com/watch?v=0re77KNmxYQ",
-        "thumbnail": "https://i1.ytimg.com/vi/0re77KNmxYQ/hqdefault.jpg",
-        "published": "2026-01-14"
-      },
-      {
-        "id": "CLYj2GuL-xc",
-        "title": "2025 Christmas Update - 5G-MAG Reference Tools",
-        "url": "https://www.youtube.com/watch?v=CLYj2GuL-xc",
-        "thumbnail": "https://i4.ytimg.com/vi/CLYj2GuL-xc/hqdefault.jpg",
-        "published": "2025-12-19"
-      },
-      {
-        "id": "4C9bySDoVqA",
-        "title": "V3C Immersive Platform at IBC 2025",
-        "url": "https://www.youtube.com/watch?v=4C9bySDoVqA",
-        "thumbnail": "https://i1.ytimg.com/vi/4C9bySDoVqA/hqdefault.jpg",
-        "published": "2025-09-30"
-      },
-      {
-        "id": "RvHWQht-7Q4",
-        "title": "XR Media with MPEG-I Scene Description at IBC 2025",
-        "url": "https://www.youtube.com/watch?v=RvHWQht-7Q4",
-        "thumbnail": "https://i3.ytimg.com/vi/RvHWQht-7Q4/hqdefault.jpg",
-        "published": "2025-09-30"
-      },
-      {
-        "id": "AvjtVrTrWsA",
-        "title": "5G Media Streaming at IBC 2025",
-        "url": "https://www.youtube.com/watch?v=AvjtVrTrWsA",
-        "thumbnail": "https://i2.ytimg.com/vi/AvjtVrTrWsA/hqdefault.jpg",
-        "published": "2025-09-30"
-      },
-      {
-        "id": "hkVgL8yq0V8",
-        "title": "Emergency Alerts over 5G Broadcast embedded in DVB-T2 at IBC 2025",
-        "url": "https://www.youtube.com/watch?v=hkVgL8yq0V8",
-        "thumbnail": "https://i1.ytimg.com/vi/hkVgL8yq0V8/hqdefault.jpg",
-        "published": "2025-09-30"
-      },
-      {
-        "id": "anrtRfPttmo",
-        "title": "TUTORIAL - Basic implementation of MBS Transport Function - Multicast Broadcast Services (MBS)",
-        "url": "https://www.youtube.com/watch?v=anrtRfPttmo",
-        "thumbnail": "https://i2.ytimg.com/vi/anrtRfPttmo/hqdefault.jpg",
-        "published": "2025-07-06"
-      },
-      {
-        "id": "4Mj_eJnYVjE",
-        "title": "TUTORIAL - Unity Player for Android with DASH Streaming - V3C Immersive Platform",
-        "url": "https://www.youtube.com/watch?v=4Mj_eJnYVjE",
-        "thumbnail": "https://i1.ytimg.com/vi/4Mj_eJnYVjE/hqdefault.jpg",
-        "published": "2025-06-20"
+        "published": "2026-05-21",
+        "by": "Dev Audsin, David Waring and Richard Bradbury (BBC)"
       }
     ]
   },
@@ -594,6 +666,62 @@
     "playlistId": "PLFqKJZ78_IWUfQ-K4qWf4sx4R9L_DgG7f",
     "playlistUrl": "https://www.youtube.com/playlist?list=PLFqKJZ78_IWUfQ-K4qWf4sx4R9L_DgG7f",
     "videos": [
+      {
+        "id": "EEB0c0bN44o",
+        "title": "Spatial Computing for eXtended Reality (XR) - Dev Public Call",
+        "url": "https://www.youtube.com/watch?v=EEB0c0bN44o",
+        "thumbnail": "https://i2.ytimg.com/vi/EEB0c0bN44o/hqdefault.jpg",
+        "published": "2026-07-27",
+        "by": "Patrice Hirtlin (InterDigital) and Jérémy Lacoche (Orange)"
+      },
+      {
+        "id": "1x2lL4Seac8",
+        "title": "Initial steps into DVB-I pver 5G Systems? StreamHub app - Dev Public Call",
+        "url": "https://www.youtube.com/watch?v=1x2lL4Seac8",
+        "thumbnail": "https://i2.ytimg.com/vi/1x2lL4Seac8/hqdefault.jpg",
+        "published": "2026-07-27",
+        "by": "Hyunmin Jeon (LG Electronics)"
+      },
+      {
+        "id": "FFYBNKFABWA",
+        "title": "The MOSAIC Project and the MOSAIC Platform capabilities - Dev Public Call",
+        "url": "https://www.youtube.com/watch?v=FFYBNKFABWA",
+        "thumbnail": "https://i3.ytimg.com/vi/FFYBNKFABWA/hqdefault.jpg",
+        "published": "2026-07-27",
+        "by": "Francesc Mas (3Cat)"
+      },
+      {
+        "id": "mRV9fATxYPQ",
+        "title": "Synchronized TV and XR Experiences - Dev Public Call",
+        "url": "https://www.youtube.com/watch?v=mRV9fATxYPQ",
+        "thumbnail": "https://i2.ytimg.com/vi/mRV9fATxYPQ/hqdefault.jpg",
+        "published": "2026-07-27",
+        "by": "Rafael Bermúdez (3Cat)"
+      },
+      {
+        "id": "b2aRan5pwTY",
+        "title": "From 3GPP Specifications to Code - Dev Public Call",
+        "url": "https://www.youtube.com/watch?v=b2aRan5pwTY",
+        "thumbnail": "https://i3.ytimg.com/vi/b2aRan5pwTY/hqdefault.jpg",
+        "published": "2026-07-27",
+        "by": "Jakob Hoydis (NVIDIA)"
+      },
+      {
+        "id": "_URitkqaRJk",
+        "title": "StreamCore - Dev Public Call",
+        "url": "https://www.youtube.com/watch?v=_URitkqaRJk",
+        "thumbnail": "https://i4.ytimg.com/vi/_URitkqaRJk/hqdefault.jpg",
+        "published": "2026-07-27",
+        "by": "Chris Coronaba and Sebastian Vaduva (Doctor Quantum Ltd)"
+      },
+      {
+        "id": "CWhxilQEGSI",
+        "title": "phine.af: Bringing CAMARA APIs and N5 together - Dev Public Call",
+        "url": "https://www.youtube.com/watch?v=CWhxilQEGSI",
+        "thumbnail": "https://i4.ytimg.com/vi/CWhxilQEGSI/hqdefault.jpg",
+        "published": "2026-07-27",
+        "by": "Stefan Spattel (phine.tech)"
+      },
       {
         "id": "FSiWpyTgT5M",
         "title": "Using SES's DVB-NIP Analyzer to test 5G-MAG's FLUTE Library rt-libflute - Dev Public Call",
@@ -636,22 +764,29 @@
     ]
   },
   "demos": {
-    "playlistId": "PLBwVxw5NGYvM",
-    "playlistUrl": "https://www.youtube.com/playlist?list=PLBwVxw5NGYvM",
+    "playlistId": "PLFqKJZ78_IWUiTXQjFbjxs-Y-q0Nhtwmh",
+    "playlistUrl": "https://www.youtube.com/playlist?list=PLFqKJZ78_IWUiTXQjFbjxs-Y-q0Nhtwmh",
     "videos": [
       {
-        "id": "4C9bySDoVqA",
-        "title": "V3C Immersive Platform at IBC 2025",
-        "url": "https://www.youtube.com/watch?v=4C9bySDoVqA",
-        "thumbnail": "https://i1.ytimg.com/vi/4C9bySDoVqA/hqdefault.jpg",
-        "published": "2025-09-30"
+        "id": "O0qrTlmYKpA",
+        "title": "Emergency Alerts over 5G Broadcast at FOKUS Media Web Symposium 2024",
+        "url": "https://www.youtube.com/watch?v=O0qrTlmYKpA",
+        "thumbnail": "https://i4.ytimg.com/vi/O0qrTlmYKpA/hqdefault.jpg",
+        "published": "2024-06-19"
       },
       {
-        "id": "RvHWQht-7Q4",
-        "title": "XR Media with MPEG-I Scene Description at IBC 2025",
-        "url": "https://www.youtube.com/watch?v=RvHWQht-7Q4",
-        "thumbnail": "https://i3.ytimg.com/vi/RvHWQht-7Q4/hqdefault.jpg",
-        "published": "2025-09-30"
+        "id": "dZaUAhYZTUU",
+        "title": "5G Broadcast at FOKUS Media Web Symposium 2024",
+        "url": "https://www.youtube.com/watch?v=dZaUAhYZTUU",
+        "thumbnail": "https://i1.ytimg.com/vi/dZaUAhYZTUU/hqdefault.jpg",
+        "published": "2024-06-18"
+      },
+      {
+        "id": "vEhv0RYGbKo",
+        "title": "5G Media Streaming at FOKUS Media Web Symposium 2024",
+        "url": "https://www.youtube.com/watch?v=vEhv0RYGbKo",
+        "thumbnail": "https://i3.ytimg.com/vi/vEhv0RYGbKo/hqdefault.jpg",
+        "published": "2024-06-17"
       },
       {
         "id": "AvjtVrTrWsA",
@@ -665,6 +800,20 @@
         "title": "Emergency Alerts over 5G Broadcast embedded in DVB-T2 at IBC 2025",
         "url": "https://www.youtube.com/watch?v=hkVgL8yq0V8",
         "thumbnail": "https://i1.ytimg.com/vi/hkVgL8yq0V8/hqdefault.jpg",
+        "published": "2025-09-30"
+      },
+      {
+        "id": "RvHWQht-7Q4",
+        "title": "XR Media with MPEG-I Scene Description at IBC 2025",
+        "url": "https://www.youtube.com/watch?v=RvHWQht-7Q4",
+        "thumbnail": "https://i3.ytimg.com/vi/RvHWQht-7Q4/hqdefault.jpg",
+        "published": "2025-09-30"
+      },
+      {
+        "id": "4C9bySDoVqA",
+        "title": "V3C Immersive Platform at IBC 2025",
+        "url": "https://www.youtube.com/watch?v=4C9bySDoVqA",
+        "thumbnail": "https://i1.ytimg.com/vi/4C9bySDoVqA/hqdefault.jpg",
         "published": "2025-09-30"
       }
     ]
