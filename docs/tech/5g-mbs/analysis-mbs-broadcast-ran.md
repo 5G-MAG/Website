@@ -22,7 +22,11 @@ This documentation is currently **under development and subject to change**. If 
 
 ## Analysis of RAN procedures for MBS Broadcast
 
-This page traces, step by step, how a UE finds and starts receiving an MBS broadcast service on the radio, and then lists the per-layer procedures and the signalling structures (ASN.1) involved. It is a detailed radio-side companion to the [RAN Aspects](./ran-aspects) summary.
+This page traces, step by step, how a UE finds and starts receiving an MBS broadcast service on the radio, and then lists the per-layer procedures involved. It is a detailed radio-side companion to the [RAN Aspects](./ran-aspects) summary.
+
+:::note[About the field summaries on this page]
+This page describes 3GPP-defined information elements by field name and purpose rather than reproducing their ASN.1 definitions in full — the structures themselves, exact field types, optionality conditions and encoding are 3GPP's copyrighted text. Every summary below is cited to the exact TS 38.331 clause that carries the authoritative definition; consult that clause directly for anything you need to implement against.
+:::
 
 The step sequence below (numbered 0 to 7) is the acquisition path, from reading the base station's system information down to decoding the broadcast traffic. The channels it refers to are: MIB (Master Information Block); SIB (System Information Block, here SIB20 and SIB21); MCCH (Multicast Control Channel), which carries the broadcast configuration; MTCH (Multicast Traffic Channel), which carries the broadcast data; PDCCH (Physical Downlink Control Channel) and PDSCH (Physical Downlink Shared Channel), the physical channels that schedule and carry the data; and the identifiers MCCH-RNTI and G-RNTI (Group Radio Network Temporary Identifier) used to address them.
 
@@ -39,22 +43,22 @@ The chain is a series of pointers, each layer telling the UE where to find the n
 
 ## Implementation blueprint
 
-This page is a verified map of the acquisition path, not a self-contained implementation spec: it gives correct clause/table/RNTI/LCID pointers and the MBS-specific ASN.1, but a conformant implementation needs the full primary-source text behind each pointer. Fetch these before implementing a given step:
+This page is a verified map of the acquisition path, not a self-contained implementation spec: it gives correct clause/table/RNTI/LCID pointers and field-level summaries, but a conformant implementation needs the full primary-source text (including the exact ASN.1) behind each pointer. Fetch these before implementing a given step:
 
 | Step | Layer(s) | This page provides | Fetch in full before implementing |
 | --- | --- | --- | --- |
 | 0. PLMN/RAN info | NAS / configuration | Pre-configuration MO field list | **TS 24.575** (full MO definition), **TS 23.247** (MBS architecture, for how this config is used) |
-| 1. Obtain MIB | RRC (Layer 3), PHY | MIB ASN.1, acquisition/reception clause numbers | **TS 38.331** Clause 5.2.2.3.1 and 5.2.2.4.1 in full; **TS 38.213** for SSB/PBCH scheduling of the MIB (not covered here at all) |
-| 2. Obtain SIB1 | RRC (Layer 3), PHY | `si-SchedulingInfo`/`SIB-TypeInfo` pointer mechanism only | **TS 38.331** Clause 6.2.2 for the complete SIB1 message (this page shows one field of a much larger structure) and Clause 5.2.2.3.1/5.2.2.4.2 in full; **TS 38.213** for PDCCH-ConfigSIB1-based monitoring |
-| 3. SIB20 → MCCH config | RRC | SIB20/`MCCH-Config`/`CFR-ConfigMCCH-MTCH` ASN.1 | **TS 38.331** Clause 6.3.1 for any further-referenced IEs (e.g. `ControlResourceSet`) not expanded here |
-| 4. Demodulate MCCH via PDCCH | MAC, PHY | RNTI value (Table 7.1-1), LCID (Table 6.2.1-1c), search space and **DCI format 4_0** (TS 38.213 Clause 10.1, verified) | **TS 38.213** Clause 10.1 in full for the complete CORESET/Search Space Set configuration and PDCCH candidate blind decoding rules beyond the MCCH-specific bullet quoted on this page |
-| 5. MCCH → `MBSBroadcastConfiguration` | RRC | Full message ASN.1 | **TS 38.331** Clause 5.9 for the complete UE procedure text (this page quotes the establishment/release actions only) |
-| 6. MTCH config + G-RNTI via `MBS-SessionInfoList` | RRC | Full IE ASN.1 | Same as step 5 |
-| 7. Demodulate MTCH via PDSCH | MAC, PHY | G-RNTI table entry, **DCI format 4_0**, `pdsch-ConfigMTCH` resource-allocation source (TS 38.213/38.214, verified) | **TS 38.321** Clause 5.3.2 in full (HARQ soft-combining — this is *not* "no HARQ"; a dedicated, feedback-less HARQ process applies); **TS 38.214** Clause 5.1.2 in full for the complete PDSCH resource-allocation and decoding rules beyond the MCCH/MTCH-specific quotes on this page |
+| 1. Obtain MIB | RRC (Layer 3), PHY | MIB field summary, acquisition/reception clause numbers | **TS 38.331** Clause 6.2.2 (full ASN.1), Clause 5.2.2.3.1 and 5.2.2.4.1 in full; **TS 38.213** for SSB/PBCH scheduling of the MIB (not covered here at all) |
+| 2. Obtain SIB1 | RRC (Layer 3), PHY | `si-SchedulingInfo`/`SIB-TypeInfo` pointer mechanism only | **TS 38.331** Clause 6.2.2 for the complete SIB1 message and its full ASN.1 (this page describes one field of a much larger structure) and Clause 5.2.2.3.1/5.2.2.4.2 in full; **TS 38.213** for PDCCH-ConfigSIB1-based monitoring |
+| 3. SIB20 → MCCH config | RRC | SIB20/`MCCH-Config`/`CFR-ConfigMCCH-MTCH` field summary | **TS 38.331** Clause 6.3.1 for the full ASN.1 and any further-referenced IEs (e.g. `ControlResourceSet`) not expanded here |
+| 4. Demodulate MCCH via PDCCH | MAC, PHY | RNTI value (Table 7.1-1), LCID (Table 6.2.1-1c), search space and **DCI format 4_0** (TS 38.213 Clause 10.1, verified) | **TS 38.213** Clause 10.1 in full for the complete CORESET/Search Space Set configuration and PDCCH candidate blind decoding rules beyond the MCCH-specific summary on this page |
+| 5. MCCH → `MBSBroadcastConfiguration` | RRC | Field summary of the message | **TS 38.331** Clause 5.9 for the complete UE procedure text and Clause 6.2.2 for the full ASN.1 (this page summarises the establishment/release actions only) |
+| 6. MTCH config + G-RNTI via `MBS-SessionInfoList` | RRC | Field summary of the IE | Same as step 5, plus Clause 6.3.6 for the full ASN.1 |
+| 7. Demodulate MTCH via PDSCH | MAC, PHY | G-RNTI table entry, **DCI format 4_0**, `pdsch-ConfigMTCH` resource-allocation source (TS 38.213/38.214, verified) | **TS 38.321** Clause 5.3.2 in full (HARQ soft-combining — this is *not* "no HARQ"; a dedicated, feedback-less HARQ process applies); **TS 38.214** Clause 5.1.2 in full for the complete PDSCH resource-allocation and decoding rules beyond the MCCH/MTCH-specific summaries on this page |
 | PDCP (all steps) | PDCP | Clause pointers only | **TS 38.323** Clause 5, 6 and 7 in full |
 | RLC (all steps) | RLC | Clause pointers only | **TS 38.322** Clause 4.2.1.2 and 7 in full |
-| SDAP (user plane) | SDAP | Clause pointers, key sentences quoted | **TS 37.324** Clause 4.2, 5.1.1, 5.1.2, 5.2.2, 6.2.2.1 in full |
-| ASN.1 grammar (all steps) | — | MBS-specific message/IE fragments only | **TS 38.331** Clause 6.2 (RRC messages) and Clause 6.3 (RRC information elements) in full, for every referenced type not expanded on this page (e.g. `RNTI-Value`, `TMGI-r17`, `Q-RxLevMin`), encoded per Clause 8 (Unaligned Packed Encoding Rules) |
+| SDAP (user plane) | SDAP | Clause pointers, procedures paraphrased | **TS 37.324** Clause 4.2, 5.1.1, 5.1.2, 5.2.2, 6.2.2.1 in full |
+| ASN.1 grammar (all steps) | — | Field names and purposes only, not full type definitions | **TS 38.331** Clause 6.2 (RRC messages) and Clause 6.3 (RRC information elements) in full, for the authoritative ASN.1 of every message/IE named on this page, encoded per Clause 8 (Unaligned Packed Encoding Rules) |
 
 The [MBS Multicast Inactive RAN procedures](./analysis-mbs-multicast-inactive-ran) page has the equivalent blueprint for delivery mode 1 (RRC_INACTIVE reception) — the two diverge at Step 4 (a distinct Multicast MCCH-RNTI) and Step 7 (a different LCID table for MTCH).
 
@@ -84,24 +88,7 @@ Before any system information can be read, the UE first camps on a cell (cell se
 - MIB definition and procedures in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 6.2.2** (Message definitions) and **Clause 5.2.2.3.1** (Acquisition of MIB and SIB1)
 - Actions upon reception of the MIB in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 5.2.2.4.1**: on receiving the MIB, the UE stores it and applies `pdcch-ConfigSIB1` (among other fields) to configure PDCCH monitoring for SIB1
 
-```
--- ASN1START
--- TAG-MIB-START
-
-MIB ::= SEQUENCE {
-    systemFrameNumber        BIT STRING (SIZE (6)),
-    subCarrierSpacingCommon  ENUMERATED {scs15or60, scs30or120},
-    ssb-SubcarrierOffset     INTEGER (0..15),
-    dmrs-TypeA-Position      ENUMERATED {pos2, pos3},
-    pdcch-ConfigSIB1         PDCCH-ConfigSIB1,
-    cellBarred               ENUMERATED {barred, notBarred},
-    intraFreqReselection     ENUMERATED {allowed, notAllowed},
-    spare                    BIT STRING (SIZE (1))
-}
-
--- TAG-MIB-STOP
--- ASN1STOP
-```
+The MIB carries, alongside `pdcch-ConfigSIB1`: `systemFrameNumber`, `subCarrierSpacingCommon`, `ssb-SubcarrierOffset`, `dmrs-TypeA-Position`, `cellBarred`, `intraFreqReselection`, and a spare bit — none of these other fields are MBS-specific. Full ASN.1 definition in **TS 38.331 Clause 6.2.2**.
 
 ### Step 2: Obtain SIB1 (points to SIB20)
 
@@ -109,111 +96,15 @@ Using the PDCCH configuration from the MIB, the UE next decodes SIB1, the first 
 
 - SIB1 definition in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 6.2.2** (Message definitions); acquisition procedure in **Clause 5.2.2.3.1**, scheduled as specified in **[3GPP TS 38.213](https://www.3gpp.org/dynareport/38213.htm)**
 - Actions upon reception of SIB1 in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 5.2.2.4.2**
-- The pointer mechanism: SIB1's `si-SchedulingInfo` field (type `SI-SchedulingInfo`, **Clause 6.3.2**) contains a `schedulingInfoList`, each entry (`SchedulingInfo2-r17`) giving the periodicity/window of one SI message and a `sib-MappingInfo-r17` list of the SIB types it carries. Each `SIB-TypeInfo-v1700` entry's `type` field is an enumeration that includes `sibType20` (and, for the RRC_INACTIVE multicast case on the companion page, `sibType24`) among the other SIB types — this is the concrete field that tells the UE "SIB20 is broadcast in this SI message, at this periodicity".
-
-```
--- ASN1START
--- TAG-SIB1-SCHEDULING-START
-
--- Relevant field of SIB1 (full SIB1 structure omitted -- see TS 38.331 Clause 6.2.2):
-SIB1 ::= SEQUENCE {
-    ...
-    si-SchedulingInfo    SI-SchedulingInfo    OPTIONAL, -- Need R
-    ...
-}
-
--- SI-SchedulingInfo and the SIB-type enumeration that identifies SIB20/SIB24:
-SI-SchedulingInfo ::= SEQUENCE {
-    schedulingInfoList    SEQUENCE (SIZE (1..maxSI-Message)) OF SchedulingInfo,
-    ...
-}
-SI-SchedulingInfo-v1700 ::= SEQUENCE {
-    schedulingInfoList2-r17    SEQUENCE (SIZE (1..maxSI-Message)) OF SchedulingInfo2-r17,
-    ...
-}
-SchedulingInfo2-r17 ::= SEQUENCE {
-    si-BroadcastStatus-r17    ENUMERATED {broadcasting, notBroadcasting},
-    si-WindowPosition-r17     INTEGER (1..256),
-    si-Periodicity-r17        ENUMERATED {rf8, rf16, rf32, rf64, rf128, rf256, rf512},
-    sib-MappingInfo-r17       SIB-Mapping-v1700
-}
-SIB-Mapping-v1700 ::= SEQUENCE (SIZE (1..maxSIB)) OF SIB-TypeInfo-v1700
-SIB-TypeInfo-v1700 ::= SEQUENCE {
-    sibType-r17    CHOICE {
-        type1-r17    ENUMERATED {sibType15, sibType16, sibType17, sibType18, sibType19,
-                                  sibType20, sibType21, sibType22-v1800, sibType23-v1800,
-                                  sibType24-v1800, sibType25-v1800, ...},
-        ...
-    },
-    ...
-}
-
--- TAG-SIB1-SCHEDULING-STOP
--- ASN1STOP
-```
+- The pointer mechanism: SIB1's `si-SchedulingInfo` field (type `SI-SchedulingInfo`, **Clause 6.3.2**) contains a `schedulingInfoList`, each entry (`SchedulingInfo2-r17`) giving the periodicity/window of one SI message and a `sib-MappingInfo-r17` list of the SIB types it carries. Each `SIB-TypeInfo-v1700` entry's `type` field is an enumeration that includes `sibType20` (and, for the RRC_INACTIVE multicast case on the companion page, `sibType24`) among the other SIB types — this is the concrete field that tells the UE "SIB20 is broadcast in this SI message, at this periodicity". Full ASN.1 for `SIB1`, `SI-SchedulingInfo`, `SchedulingInfo2-r17` and `SIB-TypeInfo-v1700` is in **TS 38.331 Clause 6.2.2 and 6.3.2**.
 
 ### Step 3: SIB20 - Acquisition MCCH/MTCH
 
-SIB20 contains the information required to acquire the MCCH/MTCH configuration for MBS broadcast.
-
-```
--- ASN1START
--- TAG-SIB20-START
-
-SIB20-r17 ::= SEQUENCE {
- mcch-Config-r17 MCCH-Config-r17,
- cfr-ConfigMCCH-MTCH-r17 CFR-ConfigMCCH-MTCH-r17 OPTIONAL, -- Need S
- lateNonCriticalExtension OCTET STRING OPTIONAL,
- ...,
- [[
- cfr-ConfigMCCH-MTCH-RedCap-r18 CFR-ConfigMCCH-MTCH-r17 OPTIONAL, -- Need S
- mcch-ConfigRedCap-r18 MCCH-Config-r17 OPTIONAL -- Need S
- ]]
-}
-
-MCCH-Config-r17 ::= SEQUENCE {
- mcch-RepetitionPeriodAndOffset-r17 MCCH-RepetitionPeriodAndOffset-r17,
- mcch-WindowStartSlot-r17 INTEGER (0..79),
- mcch-WindowDuration-r17 ENUMERATED {sl2, sl4, sl8, sl10, sl20, sl40,sl80, sl160} OPTIONAL, -- Need S
- mcch-ModificationPeriod-r17 ENUMERATED {rf2, rf4, rf8, rf16, rf32, rf64, rf128, rf256,
- rf512, rf1024, rf2048, rf4096, rf8192, rf16384, rf32768, rf65536}
-}
-
-MCCH-RepetitionPeriodAndOffset-r17 ::= CHOICE {
- rf1-r17 INTEGER(0),
- rf2-r17 INTEGER(0..1),
- rf4-r17 INTEGER(0..3),
- rf8-r17 INTEGER(0..7),
- rf16-r17 INTEGER(0..15),
- rf32-r17 INTEGER(0..31),
- rf64-r17 INTEGER(0..63),
- rf128-r17 INTEGER(0..127),
- rf256-r17 INTEGER(0..255)
-}
-
--- TAG-SIB20-STOP
--- ASN1STOP
-```
+SIB20 contains the information required to acquire the MCCH/MTCH configuration for MBS broadcast. Its top-level fields are `mcch-Config-r17` (MCCH scheduling, see below) and `cfr-ConfigMCCH-MTCH-r17` (the common frequency resource used to carry MCCH and MTCH, see "Other RRC Messages" below), plus RedCap variants of both introduced in Release 18. `MCCH-Config-r17` in turn carries the MCCH's repetition period/offset, window start slot and duration, and modification period — all scheduling parameters, no MBS-specific semantics beyond timing. Full ASN.1 for `SIB20-r17` and `MCCH-Config-r17` is in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 6.3.1**.
 
 ### SIB 21 - Service continuity
 
-SIB21 supports service continuity: it lists the MBS Frequency Selection Area Identities (FSAIs), for the current frequency and for neighbouring frequencies, that let a UE find the same broadcast service on other cells or carriers. The ASN.1 below shows the intra-frequency and inter-frequency FSAI lists.
-
-```
-SIB21-r17 ::= SEQUENCE {
- mbs-FSAI-IntraFreq-r17 MBS-FSAI-List-r17 OPTIONAL, -- Need R
- mbs-FSAI-InterFreqList-r17 MBS-FSAI-InterFreqList-r17 OPTIONAL, -- Need R
- lateNonCriticalExtension OCTET STRING OPTIONAL,
- ...
-}
-MBS-FSAI-List-r17 ::= SEQUENCE (SIZE (1..maxFSAI-MBS-r17)) OF MBS-FSAI-r17
-MBS-FSAI-InterFreqList-r17 ::= SEQUENCE (SIZE (1..maxFreq)) OF MBS-FSAI-InterFreq-r17
-MBS-FSAI-InterFreq-r17 ::= SEQUENCE {
- dl-CarrierFreq-r17 ARFCN-ValueNR,
- mbs-FSAI-List-r17 MBS-FSAI-List-r17
-}
-MBS-FSAI-r17 ::= OCTET STRING (SIZE (3))
-```
+SIB21 supports service continuity: it lists the MBS Frequency Selection Area Identities (FSAIs), for the current frequency and for neighbouring frequencies, that let a UE find the same broadcast service on other cells or carriers. Its fields are an intra-frequency FSAI list (`mbs-FSAI-IntraFreq-r17`) and a list of per-frequency FSAI lists for neighbouring carriers (`mbs-FSAI-InterFreqList-r17`, each entry pairing a carrier frequency with its own FSAI list). Full ASN.1 in **TS 38.331 Clause 6.3.1**.
 
 ## Control Plane Procedures
 
@@ -265,17 +156,17 @@ The control-plane sections below summarise, per protocol layer (RRC, PDCP, RLC, 
 
 #### MAC: MBS Broadcast (Steps 4 and 7)
 
-- **Step 4 (Demodulation of MCCH via PDCCH):** MCCH reading procedure in **[3GPP TS 38.321](https://www.3gpp.org/dynareport/38321.htm) Clause 5.3.1** ("DL Assignment reception"): "When the MAC entity needs to read MCCH, the MAC entity may, based on the scheduling information from RRC: if a downlink assignment for this PDCCH occasion has been received on the PDCCH for the MCCH-RNTI or Multicast MCCH-RNTI [...]". RNTI value MCCH-RNTI = FFFD in **Table 7.1-1** ("RNTI values"), used specifically for MBS broadcast; the value FFFB (Multicast MCCH-RNTI) in the same table is a separate value used for the RRC_INACTIVE multicast case on the [companion page](./analysis-mbs-multicast-inactive-ran#step-4-demodulation-of-mcch-pdsch-via-pdcch-with-multicast-mcch-rnti--fffb), not this one.
-- **Step 7 (Demodulation of MTCH via PDSCH):** same Clause 5.3.1, the broadcast MTCH reading rule: "When the MAC entity needs to read broadcast MTCH [...] if a downlink assignment for this PDCCH occasion has been received on the PDCCH for the G-RNTI configured for broadcast MTCH [...]". G-RNTI's entry ("Dynamically scheduled MBS PTM transmission", DL-SCH, MTCH) in **Table 7.1-1**/**Table 7.1-2**; unlike MCCH-RNTI, G-RNTI is not split into separate broadcast/multicast values.
+- **Step 4 (Demodulation of MCCH via PDCCH):** MCCH reading procedure in **[3GPP TS 38.321](https://www.3gpp.org/dynareport/38321.htm) Clause 5.3.1** ("DL Assignment reception"): the MAC entity monitors PDCCH occasions carrying a downlink assignment addressed to the MCCH-RNTI (or, on the RRC_INACTIVE multicast case, the Multicast MCCH-RNTI). RNTI value MCCH-RNTI = FFFD in **Table 7.1-1** ("RNTI values"), used specifically for MBS broadcast; the value FFFB (Multicast MCCH-RNTI) in the same table is a separate value used for the RRC_INACTIVE multicast case on the [companion page](./analysis-mbs-multicast-inactive-ran#step-4-demodulation-of-mcch-pdsch-via-pdcch-with-multicast-mcch-rnti--fffb), not this one.
+- **Step 7 (Demodulation of MTCH via PDSCH):** same Clause 5.3.1, the broadcast MTCH reading rule: the MAC entity monitors PDCCH occasions carrying a downlink assignment addressed to the G-RNTI configured for broadcast MTCH. G-RNTI's entry ("Dynamically scheduled MBS PTM transmission", DL-SCH, MTCH) in **Table 7.1-1**/**Table 7.1-2**; unlike MCCH-RNTI, G-RNTI is not split into separate broadcast/multicast values.
 - Value of LCID for MCCH and broadcast MTCH on DL-SCH in **[3GPP TS 38.321](https://www.3gpp.org/dynareport/38321.htm) Table 6.2.1-1c** ("Values of LCID for MBS multicast MCCH and MBS broadcast on DL-SCH" — despite the title, this table's LCID=0 row is shared with multicast MCCH; only LCID 1–32, broadcast MTCH, is broadcast-specific; multicast MTCH's LCID instead comes from the generic Table 6.2.1-1, see the companion page)
 
 #### PHY: MBS Broadcast (Steps 4 and 7)
 
 The MAC-layer rules above rest on a specific physical-layer channel: PDCCH search space sets and a DCI format dedicated to MBS group scheduling, distinct from the DCI formats used for ordinary unicast (1_0/1_1) or uplink grants.
 
-- **PDCCH search space configuration** in **[3GPP TS 38.213](https://www.3gpp.org/dynareport/38213.htm) Clause 10.1** ("UE procedure for determining physical downlink control channel assignment"): both MCCH and broadcast MTCH are monitored via `searchSpaceMCCH`/`searchSpaceMTCH` (Type0-PDCCH or Type0B-PDCCH CSS sets, `searchSpaceID=0` for the Type0 case) — "for a DCI format 4_0 with CRC scrambled by a MCCH-RNTI or a G-RNTI for broadcast".
+- **PDCCH search space configuration** in **[3GPP TS 38.213](https://www.3gpp.org/dynareport/38213.htm) Clause 10.1** ("UE procedure for determining physical downlink control channel assignment"): both MCCH and broadcast MTCH are monitored via `searchSpaceMCCH`/`searchSpaceMTCH` (Type0-PDCCH or Type0B-PDCCH CSS sets, `searchSpaceID=0` for the Type0 case), scheduled by a DCI format 4_0 whose CRC is scrambled by MCCH-RNTI or G-RNTI for broadcast.
 - **DCI format:** both broadcast MCCH and broadcast MTCH are scheduled with **DCI format 4_0** — not the unicast formats 1_0/1_1. The CRC is scrambled with MCCH-RNTI (for MCCH) or G-RNTI (for MTCH), per the RNTI/LCID split already described above.
-- **PDSCH resource allocation** in **[3GPP TS 38.214](https://www.3gpp.org/dynareport/38214.htm) Clause 5.1.2** ("Resource allocation"): "For the PDSCH scheduled by PDCCH with DCI format 4_0 with CRC scrambled by MCCH-RNTI, the parameter `pdsch-TimeDomainAllocationList`, `mcs-Table`, `xOverhead`, `rateMatchPatternToAddModList` and `RateMatchPatternLTE-CRS` are provided by `pdsch-ConfigMCCH`" (and by `pdsch-ConfigMTCH` for the MTCH case) — the same fields already seen in the `PDSCH-ConfigBroadcast` ASN.1 further down this page.
+- **PDSCH resource allocation** in **[3GPP TS 38.214](https://www.3gpp.org/dynareport/38214.htm) Clause 5.1.2** ("Resource allocation"): for PDSCH scheduled by DCI format 4_0 with CRC scrambled by MCCH-RNTI, the resource-allocation parameters (time-domain allocation, MCS table, overhead, rate-matching) are provided by `pdsch-ConfigMCCH`; for the MTCH case, by `pdsch-ConfigMTCH` — the same fields already named in the `PDSCH-ConfigBroadcast` summary further down this page.
 
 ## User Plane Procedures
 
@@ -300,135 +191,12 @@ Every step of the acquisition path (0–7) has been checked directly against 3GP
 
 ### Other RRC Messages
 
-The blocks below give the ASN.1 for the supporting configuration structures. The first, `CFR-ConfigMCCH-MTCH`, defines the common frequency resource (location and bandwidth) used to carry MCCH and MTCH.
+The structures below are the supporting configuration IEs referenced above. `CFR-ConfigMCCH-MTCH` defines the common frequency resource (location and bandwidth) used to carry MCCH and MTCH: a location/bandwidth field (either "same as SIB1" or an explicit resource-block range), the PDSCH configuration for MCCH, and an optional CORESET extension. Full ASN.1 in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 6.3.1**.
 
-```
--- ASN1START
--- TAG-CFR-CONFIGMCCH-MTCH-START
-
-CFR-ConfigMCCH-MTCH-r17 ::= SEQUENCE {
-    locationAndBandwidthBroadcast-r17          LocationAndBandwidthBroadcast-r17  OPTIONAL,  -- Need S
-    pdsch-ConfigMCCH-r17                       PDSCH-ConfigBroadcast-r17          OPTIONAL,  -- Need S
-    commonControlResourceSetExt-r17            ControlResourceSet                 OPTIONAL   -- Cond NotSIB1CommonControlResource
-}
-
-LocationAndBandwidthBroadcast-r17 ::= CHOICE {
-    sameAsSib1ConfiguredLocationAndBW          NULL,
-    locationAndBandwidth                       INTEGER (0..37949)
-}
-
--- TAG-CFR-CONFIGMCCH-MTCH-STOP
--- ASN1STOP
-```
-
-The next block, `PDSCH-ConfigBroadcast`, defines the physical downlink shared channel configuration used for the broadcast (PTM) transmission.
-
-```
--- ASN1START
--- TAG-PDSCH-CONFIGBROADCAST-START
-
-PDSCH-ConfigBroadcast-r17 ::= SEQUENCE {
-    pdschConfigList-r17                    SEQUENCE (SIZE (1..maxNrofPDSCH-ConfigPTM-r17) ) OF PDSCH-ConfigPTM-r17,
-    pdsch-TimeDomainAllocationList-r17     PDSCH-TimeDomainResourceAllocationList-r16                          OPTIONAL,   -- Need R
-    rateMatchPatternToAddModList-r17       SEQUENCE (SIZE (1..maxNrofRateMatchPatterns)) OF RateMatchPattern   OPTIONAL,   -- Need R
-    lte-CRS-ToMatchAround-r17              RateMatchPatternLTE-CRS                                             OPTIONAL,   -- Need R
-    mcs-Table-r17                          ENUMERATED {qam256, qam64LowSE}                                     OPTIONAL,   -- Need S
-    xOverhead-r17                          ENUMERATED {xOh6, xOh12, xOh18}                                     OPTIONAL    -- Need S
-}
-
-PDSCH-ConfigPTM-r17 ::= SEQUENCE {
-    dataScramblingIdentityPDSCH-r17        INTEGER (0..1023)         OPTIONAL,   -- Need S
-    dmrs-ScramblingID0-r17                 INTEGER (0..65535)        OPTIONAL,   -- Need S
-    pdsch-AggregationFactor-r17            ENUMERATED {n2, n4, n8}   OPTIONAL    -- Need S
-}
-
--- TAG-PDSCH-CONFIGBROADCAST-STOP
--- ASN1STOP
-```
+`PDSCH-ConfigBroadcast` defines the physical downlink shared channel configuration used for the broadcast (PTM) transmission: a list of per-transmission PDSCH configs (each carrying scrambling identities and an aggregation factor), plus shared fields for time-domain allocation, rate-matching patterns, MCS table selection and PDSCH overhead. Full ASN.1 in **TS 38.331 Clause 6.3.1**.
 
 ## MBSBroadcastConfiguration
 
-The `MBSBroadcastConfiguration` message is the broadcast configuration carried on the MCCH. It lists the sessions available (`mbs-SessionInfoList`), neighbour-cell information, and the MTCH scheduling and physical-layer configuration a UE needs to receive them.
+The `MBSBroadcastConfiguration` message is the broadcast configuration carried on the MCCH. Its content (in the `MBSBroadcastConfiguration-r17-IEs` branch) lists the sessions available (`mbs-SessionInfoList-r17`), neighbour-cell information, MTCH DRX and PDSCH configuration lists, and MTCH-to-SSB mapping windows. Full ASN.1 in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 6.2.2**.
 
-```
--- ASN1START
--- TAG-MBSBROADCASTCONFIGURATION-START
-
-MBSBroadcastConfiguration-r17 ::= SEQUENCE {
-    criticalExtensions                CHOICE {
-        mbsBroadcastConfiguration-r17     MBSBroadcastConfiguration-r17-IEs,
-        criticalExtensionsFuture          SEQUENCE {}
-    }
-}
-
-MBSBroadcastConfiguration-r17-IEs ::= SEQUENCE {
-    mbs-SessionInfoList-r17               MBS-SessionInfoList-r17                                              OPTIONAL,   -- Need R
-    mbs-NeighbourCellList-r17             MBS-NeighbourCellList-r17                                            OPTIONAL,   -- Need S
-    drx-ConfigPTM-List-r17                SEQUENCE (SIZE (1..maxNrofDRX-ConfigPTM-r17)) OF DRX-ConfigPTM-r17   OPTIONAL,   -- Need R
-    pdsch-ConfigMTCH-r17                  PDSCH-ConfigBroadcast-r17                                            OPTIONAL,   -- Need S
-    mtch-SSB-MappingWindowList-r17        MTCH-SSB-MappingWindowList-r17                                       OPTIONAL,   -- Need R
-    lateNonCriticalExtension              OCTET STRING                                                         OPTIONAL,
-    nonCriticalExtension                  SEQUENCE {}                                                          OPTIONAL
-}
-
--- TAG-MBSBROADCASTCONFIGURATION-STOP
--- ASN1STOP
-```
-
-The `MBS-SessionInfoList` below is the per-session detail referenced above: for each broadcast session it gives the session identity (TMGI), the G-RNTI used to address it, and the radio bearer (MRB) configuration.
-
-```
--- ASN1START
--- TAG-MBS-SESSIONINFOLIST-START
-
-MBS-SessionInfoList-r17 ::=      SEQUENCE (SIZE (1..maxNrofMBS-Session-r17)) OF MBS-SessionInfo-r17
-
-MBS-SessionInfo-r17 ::=          SEQUENCE {
-    mbs-SessionId-r17                TMGI-r17,
-    g-RNTI-r17                       RNTI-Value,
-    mrb-ListBroadcast-r17            MRB-ListBroadcast-r17,
-    mtch-SchedulingInfo-r17          DRX-ConfigPTM-Index-r17                      OPTIONAL, -- Need S
-    mtch-NeighbourCell-r17           BIT STRING (SIZE(maxNeighCellMBS-r17))       OPTIONAL, -- Need S
-    pdsch-ConfigIndex-r17            PDSCH-ConfigIndex-r17                        OPTIONAL, -- Need S
-    mtch-SSB-MappingWindowIndex-r17  MTCH-SSB-MappingWindowIndex-r17              OPTIONAL  -- Cond MTCH-Mapping
-}
-
-DRX-ConfigPTM-Index-r17 ::=          INTEGER (0..maxNrofDRX-ConfigPTM-1-r17)
-
-PDSCH-ConfigIndex-r17  ::=           INTEGER (0..maxNrofPDSCH-ConfigPTM-1-r17)
-
-MTCH-SSB-MappingWindowIndex-r17  ::= INTEGER (0..maxNrofMTCH-SSB-MappingWindow-1-r17)
-
-MRB-ListBroadcast-r17 ::=            SEQUENCE (SIZE (1..maxNrofMRB-Broadcast-r17)) OF MRB-InfoBroadcast-r17
-
-MRB-InfoBroadcast-r17 ::=            SEQUENCE {
-    pdcp-Config-r17                      MRB-PDCP-ConfigBroadcast-r17,
-    rlc-Config-r17                       MRB-RLC-ConfigBroadcast-r17,
-    ...
-}
-
-MRB-PDCP-ConfigBroadcast-r17 ::=     SEQUENCE {
-    pdcp-SN-SizeDL-r17                   ENUMERATED {len12bits}                   OPTIONAL, -- Need S
-    headerCompression-r17                CHOICE {
-        notUsed                              NULL,
-        rohc                                 SEQUENCE {
-            maxCID-r17                           INTEGER (1..16)               DEFAULT 15,
-            profiles-r17                         SEQUENCE {
-                profile0x0000-r17                    BOOLEAN,
-                profile0x0001-r17                    BOOLEAN,
-                profile0x0002-r17                    BOOLEAN
-           }
-        }
-    },
-    t-Reordering-r17                     ENUMERATED {ms1, ms10, ms40, ms160, ms500, ms1000, ms1250, ms2750}    OPTIONAL -- Need S
-}
-
-MRB-RLC-ConfigBroadcast-r17 ::=      SEQUENCE {
-    logicalChannelIdentity-r17           LogicalChannelIdentity,
-    sn-FieldLength-r17                   ENUMERATED {size6}                       OPTIONAL, -- Need S
-    t-Reassembly-r17                     T-Reassembly                             OPTIONAL  -- Need S
-}
-
--- TAG-MBS-SESSIONINFOLIST-STOP
--- ASN1STOP
-```
+The `MBS-SessionInfoList` referenced above is the per-session detail: for each broadcast session it gives the session identity (`mbs-SessionId-r17`, a TMGI), the G-RNTI used to address it (`g-RNTI-r17`), the radio bearer configuration (`mrb-ListBroadcast-r17`), and optional MTCH scheduling/neighbour-cell/PDSCH-index/SSB-mapping fields. Each entry in the MRB list (`MRB-InfoBroadcast-r17`) in turn carries a PDCP config (SN size, header compression, reordering timer) and an RLC config (logical channel identity, sequence-number field length, reassembly timer). Full ASN.1 for `MBS-SessionInfoList-r17`, `MBS-SessionInfo-r17`, `MRB-InfoBroadcast-r17` and its PDCP/RLC config sub-types is in **TS 38.331 Clause 6.3.6**.
