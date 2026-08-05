@@ -46,29 +46,11 @@ Concretely, SIB19 carries satellite ephemeris (position and velocity) and the ti
 
 ### SIB 27 - Intended Service Area (ISA) for MBS Broadcast in NTN Cell
 
-The ASN.1 definition below shows the structure of SIB27: a list of intended service areas, each identified by an area ID and described by a coverage shape.
+SIB27 carries a list of Intended Service Areas (`intendedServiceAreaList-r19`), each entry giving an MBS area identifier (`intendedServiceAreaId-r19`) and its coverage shape (`areaCoordinates-r19`) as either a **polygon** (an opaque octet string encoding an arbitrary boundary) or a **circle** (a centre reference location plus a radius). Full ASN.1 in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 6.3.1** ("System information blocks").
 
-```
-SIB27-r19 ::= SEQUENCE {
- intendedServiceAreaList-r19 IntendedServiceAreaList-r19 OPTIONAL, -- Need R
- lateNonCriticalExtension OCTET STRING OPTIONAL,
- ...
-}
-IntendedServiceAreaList-r19 ::= SEQUENCE (SIZE (1..maxNrofMBS-Area-r19)) OF IntendedServiceAreaInfo-r19
-IntendedServiceAreaInfo-r19 ::= SEQUENCE {
- intendedServiceAreaId-r19 MBS-IntendedAreaID-r19,
- areaCoordinates-r19 CHOICE {
- polygonArea-r19 OCTET STRING,
- circleArea-r19 SEQUENCE {
- center-r19 ReferenceLocation-r17,
- radius-r19 INTEGER(0..65535)
- }
- }
-}
-MBS-IntendedAreaID-r19 ::= INTEGER (1..maxNrofMBS-Area-r19)
-```
-
-In short, each entry gives an MBS area identifier and defines its coverage either as a polygon or as a circle (a centre reference location plus a radius). This lets the NTN cell signal exactly where a broadcast service applies.
+:::note[About the field summary above]
+This describes SIB27 by field name and purpose rather than reproducing its ASN.1 definition in full — the structure, field types and encoding are 3GPP's copyrighted text. Consult TS 38.331 Clause 6.3.1 directly for anything you need to implement against.
+:::
 
 ### Why the Intended Service Area matters over NTN
 
@@ -81,11 +63,11 @@ The circle form (a reference centre plus a radius) is compact and cheap to broad
 | Aspect on this page                         | Where it is specified                                                                                                                                                             |
 | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Broadcast session, delivery mode 2          | TS 23.247 (MBS architectural enhancements)                                                                                                                                        |
-| Broadcast SIBs (SIB20, SIB21) and NTN SIB19 | TS 38.331                                                                                                                                                                         |
-| Intended Service Area in SIB27 (Release 19) | TS 38.331 (confirm the SIB27 semantics against the current specification)                                                                                                         |
+| Broadcast SIBs (SIB20, SIB21) and NTN SIB19 | TS 38.331 Clause 6.3.1 (all four SIBs are defined in the same clause)                                                                                                              |
+| Intended Service Area in SIB27 (Release 19) | TS 38.331 Clause 6.3.1                                                                                                                                                            |
 | Broadcast RAN procedures reused unchanged   | [Analysis MBS Broadcast - RAN Procedures](../5g-mbs/analysis-mbs-broadcast-ran)                                                                                                   |
 | NTN radio access and assistance information | [TS 38.300](https://www.3gpp.org/dynareport/38300.htm), TS 38.331; [TR 38.811](https://www.3gpp.org/dynareport/38811.htm), [TR 38.821](https://www.3gpp.org/dynareport/38821.htm) |
 
-:::warning[References to verify]
-These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the SIB27 Release 19 semantics and ASN.1 for the MBS Intended Service Area, the SIB20/SIB21 assignment for MBS Broadcast, and the SIB19 clause in TS 38.331. Verify against the 3GPP work plan before publication.
+:::note[Verified against primary sources]
+Checked directly against TS 38.331 V19.3.0 (the current published version). SIB27's Release 19 tag, ASN.1 structure and clause placement are all confirmed as described above. SIB19 is also confirmed at Clause 6.3.1, described in the spec as containing "satellite assistance information for NTN access" — matching this page's description of ephemeris and timing/frequency pre-compensation data; note that SIB19 itself is tagged `r17` (introduced in Release 17 for NTN generally, not new in Release 19 — it is SIB27 that is the new Release 19 addition, layered on top of the pre-existing SIB19). SIB20/SIB21's assignment to MBS broadcast was already verified on the [Broadcast RAN procedures page](../5g-mbs/analysis-mbs-broadcast-ran). The TS 23.247 delivery-mode-2 citation was not re-checked on this page specifically but is consistent with the verified Standards page ([5g-mbs.md](/tech/standards/5g-mbs)).
 :::

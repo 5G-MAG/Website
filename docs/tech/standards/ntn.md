@@ -115,6 +115,8 @@ NTN does not define its own media service layer. Media is carried over NTN using
 
 Applying MBS over NTN is the subject of active work in Release 19 and beyond. Broadcast over geostationary (GSO) and non-geostationary (NGSO) orbits, then multicast over the same, have been discussed as separable steps. Because this work is still being defined, treat orbit-by-orbit and mode-by-mode feature placement as provisional and verify against the current work plan.
 
+One piece of this is confirmed: Release 19 adds **SIB27** to TS 38.331, carrying the Intended Service Area(s) of an MBS broadcast service as geographic polygons or circles — this lets a UE check whether it sits within a broadcast service's intended area before acquiring MCCH, which matters because a single NTN beam footprint can be far larger and more heterogeneous than a terrestrial cell's coverage. See [MBS Broadcast NTN](/tech/ntn/analysis-mbs-broadcast-over-ntn) for the detail.
+
 ## Specifications by Role
 
 The table groups the key specifications by the part of the system they govern, which is often more useful than grouping by number.
@@ -139,7 +141,7 @@ The table groups the key specifications by the part of the system they govern, w
 See the [Technical Documentation: Non-Terrestrial Networks](/tech/ntn) page for the detailed analysis documents that develop these topics.
 
 :::warning[References to verify]
-These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TS 26.502 title, TR 38.863 release placement, the release placement of individual Release 18/19 NTN and MBS-over-NTN features, GEO one-way propagation delay figures. Verify against the 3GPP/ETSI work plan before publication.
+These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TS 26.502 title, TR 38.863 release placement, GEO one-way propagation delay figures. Verify against the 3GPP/ETSI work plan before publication. (SIB27, the one Release 19 MBS-over-NTN feature identified so far, has been confirmed directly against TS 38.331 V19.3.0 — see the note above. Other Release 18/19 NTN and MBS-over-NTN feature placements remain unconfirmed and should still be treated as provisional.)
 :::
 
 ## Related Standards Work

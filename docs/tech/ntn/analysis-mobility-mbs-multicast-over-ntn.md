@@ -78,6 +78,6 @@ Conceptually this is closer to the terrestrial multicast-mobility case, because 
 This scenario has not yet been documented. It will be added as the analysis progresses.
 :::
 
-:::warning[References to verify]
-These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the exact TS 38.331 clauses for Conditional Handover and SIB19, and the TS 23.247 clauses for PTP/PTM switching and multicast mobility. Verify against the 3GPP work plan before publication.
+:::note[Verified against primary sources]
+Checked directly against TS 38.331 V19.3.0 and TS 23.247 V19.3.0 (both current published versions). Conditional Handover is built on the generic **Conditional Reconfiguration** framework, TS 38.331 Clause 5.3.5.13 (with sub-clauses for addition/modification, evaluation and execution) — 3GPP does not define a separate "CHO clause"; CHO is this framework applied to a handover reconfiguration. SIB19 is confirmed at TS 38.331 Clause 6.3.1 ("satellite assistance information for NTN access"). TS 23.247 has a dedicated multicast mobility clause, **Clause 6.3.1** ("Mobility of Multicast MBS session"), plus **Clause 7.2.3** ("Mobility Procedures for MBS"); PTP/PTM switching itself is confirmed at Clause 4.1, with NG-RAN as the decision point (see the [MBS Multicast over NTN](./analysis-mbs-multicast-over-ntn) page for that finding in full). This page's own Scenario 1/Scenario 2 analysis is 5G-MAG's own reasoning about how these existing mechanisms combine for group mobility over NTN, not itself a 3GPP-specified procedure, so it isn't something to "verify" against a clause — it remains marked as work in progress for that reason.
 :::

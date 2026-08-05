@@ -106,6 +106,10 @@ SIB20 contains the information required to acquire the MCCH/MTCH configuration f
 
 SIB21 supports service continuity: it lists the MBS Frequency Selection Area Identities (FSAIs), for the current frequency and for neighbouring frequencies, that let a UE find the same broadcast service on other cells or carriers. Its fields are an intra-frequency FSAI list (`mbs-FSAI-IntraFreq-r17`) and a list of per-frequency FSAI lists for neighbouring carriers (`mbs-FSAI-InterFreqList-r17`, each entry pairing a carrier frequency with its own FSAI list). Full ASN.1 in **TS 38.331 Clause 6.3.1**.
 
+## MBS Broadcast over NTN
+
+Release 19 adds RAN signalling specific to MBS broadcast over Non-Terrestrial Networks (NTN — satellite and HAPS access): **SIB27**, carrying the Intended Service Area(s) of a broadcast service, alongside the NTN assistance data in SIB19. This isn't a variant of the acquisition chain above — the MIB → SIB1 → SIB20 → MCCH → MTCH path is unchanged over NTN — it's additional signalling layered on top. The full analysis, including why NTN needs this and how SIB19/SIB27 are used, is on the dedicated [MBS Broadcast NTN](/tech/ntn/analysis-mbs-broadcast-over-ntn) page, which explicitly builds on this page's acquisition procedures.
+
 ## Control Plane Procedures
 
 The control-plane sections below summarise, per protocol layer (RRC, PDCP, RLC, MAC), the TS 38.331 and related procedures a UE follows to acquire and maintain a broadcast MRB. They are reference pointers into the specifications rather than standalone descriptions.
