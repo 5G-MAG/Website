@@ -53,7 +53,15 @@ For each PLMN, the following information is included:
 
 For definitions refer to **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 6.3.1** (System information blocks)
 
-### SIB 24 - Acquisition MCCH/MTCH for MBS multicast reception in RRC_INACTIVE
+### Step 1: Obtain MIB
+
+This step is identical to the broadcast case: the UE camps on the cell (cell search via the SSB) and decodes the MIB, scheduled once per SSB period as specified in **[3GPP TS 38.213](https://www.3gpp.org/dynareport/38213.htm)**. The MIB is generic to NR, not multicast-specific; see [MBS Broadcast RAN procedures: Step 1](./analysis-mbs-broadcast-ran#step-1-obtain-mib) for the full ASN.1 and clause references (**Clause 6.2.2** for the message definition, **Clause 5.2.2.3.1**/**5.2.2.4.1** for the acquisition procedure and UE actions on reception). It is not repeated here.
+
+### Step 2: Obtain SIB1 (points to SIB24)
+
+Also identical in mechanism to the broadcast case, with one difference in the value used: SIB1's `si-SchedulingInfo` field points the UE to whichever SIBs the cell broadcasts, via a `SIB-TypeInfo-v1700` entry whose `type` field is one of an enumerated set of SIB types. For a cell offering MBS multicast reception in RRC_INACTIVE, that entry's value is `sibType24` rather than `sibType20`. See [MBS Broadcast RAN procedures: Step 2](./analysis-mbs-broadcast-ran#step-2-obtain-sib1-points-to-sib20) for the full `SI-SchedulingInfo`/`SIB-TypeInfo` ASN.1 (**[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 6.3.2**) and the SIB1 message definition (**Clause 6.2.2**) and acquisition procedure (**Clause 5.2.2.3.1**/**5.2.2.4.2**); it is not repeated here.
+
+### Step 3: SIB24 - Acquisition MCCH/MTCH for MBS multicast reception in RRC_INACTIVE
 
 SIB24 contains the information required to acquire the multicast MCCH/MTCH configuration for MBS multicast reception in RRC_INACTIVE.
 
@@ -70,7 +78,11 @@ SIB24-r18 ::= SEQUENCE {
 -- ASN1STOP
 ```
 
-### RRC - MulticastMCCH-Message
+### Step 4: Demodulation of MCCH (PDSCH) via PDCCH (with MCCH-RNTI = FFFD)
+
+Once SIB24 gives the multicast MCCH's scheduling (`multicastMCCH-Config-r18`) and physical-layer resource (`cfr-ConfigMCCH-MTCH-r18`), the UE monitors PDCCH scrambled with the fixed MCCH-RNTI (FFFD) to find and decode the multicast MCCH on the PDSCH — the same MCCH-RNTI value used for the broadcast MCCH. This step's MAC-layer citations (the multicast-MCCH equivalent of the broadcast page's `Table 6.2.1-1c`/`Table 7.1-1`/`Clause 5.3`) have not been separately verified against TS 38.321 for this page; see the note at the end of this page.
+
+### Step 5: RRC - MulticastMCCH-Message
 
 The block below is multicast-specific: it defines the multicast MCCH message that carries the `MBSMulticastConfiguration` used for RRC_INACTIVE multicast reception (the broadcast page uses `MBSBroadcastConfiguration` instead). `MulticastMCCH-Message` is defined in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 6.2.1** (General message structure), alongside the other RRC message classes (BCCH, PCCH, CCCH, DCCH); `MBSMulticastConfiguration` itself is defined in **Clause 6.2.2** (Message definitions).
 
@@ -120,6 +132,71 @@ ThresholdMBS-r18 ::= SEQUENCE {
 -- ASN1STOP
 ```
 
+### Step 6: MTCH configuration and G-RNTI via mbs-SessionInfoListMulticast
+
+`mbs-SessionInfoListMulticast`, referenced above in `MBSMulticastConfiguration-r18-IEs`, is the per-session detail the UE needs to actually receive each multicast session: the session identity (TMGI), the G-RNTI used to address it on the physical layer, the MRB configuration, and the MTCH scheduling information. It is the multicast-inactive counterpart of the broadcast page's `MBS-SessionInfoList`, defined in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 6.3.6** (MBS information elements) — the same clause as the broadcast structure. Two differences from the broadcast case are worth noting: `thresholdIndex-r18` links each session to one of the RSRP/RSRQ thresholds in `thresholdMBS-List` (step 5's `MBSMulticastConfiguration`), and the RLC bearer config (`MRB-RLC-ConfigMulticast-r18`) uses its own `logicalChannelIdentitymulticast-r18` type rather than the broadcast MRB's plain `LogicalChannelIdentity`, so the MAC logical-channel assignment for multicast MTCH is not necessarily identical to broadcast MTCH.
+
+```
+-- ASN1START
+-- TAG-MBS-SESSIONINFOLISTMULTICAST-START
+
+MBS-SessionInfoListMulticast-r18 ::= SEQUENCE (SIZE (1..maxNrofMBS-Session-r17)) OF MBS-SessionInfoMulticast-r18
+
+MBS-SessionInfoMulticast-r18 ::= SEQUENCE {
+    mbs-SessionId-r18                  TMGI-r17,
+    g-RNTI-r18                         RNTI-Value                                   OPTIONAL, -- Need R
+    mrb-ListMulticast-r18              MRB-ListMulticast-r18                        OPTIONAL, -- Need R
+    mtch-SchedulingInfo-r18            DRX-ConfigPTM-Index-r17                      OPTIONAL, -- Need S
+    mtch-NeighbourCell-r18             BIT STRING (SIZE(maxNeighCellMBS-r17))       OPTIONAL, -- Need S
+    pdsch-ConfigIndex-r18              PDSCH-ConfigIndex-r17                        OPTIONAL, -- Need S
+    mtch-SSB-MappingWindowIndex-r18    MTCH-SSB-MappingWindowIndex-r17              OPTIONAL, -- Cond MTCH-Mapping
+    thresholdIndex-r18                 INTEGER (0..maxNrofThresholdMBS-1-r18)       OPTIONAL, -- Need R
+    pdcp-SyncIndicator-r18             ENUMERATED {true}                            OPTIONAL, -- Cond RRCRelease
+    stopMonitoringRNTI-r18             ENUMERATED {true}                            OPTIONAL, -- Cond G-RNTI
+    ...
+}
+
+MRB-ListMulticast-r18 ::= SEQUENCE (SIZE (1.. maxMRB-r17)) OF MRB-InfoMulticast-r18
+
+MRB-InfoMulticast-r18 ::= SEQUENCE {
+    pdcp-Config-r18    MRB-PDCP-ConfigMulticast-r18,
+    rlc-Config-r18     MRB-RLC-ConfigMulticast-r18,
+    ...
+}
+
+MRB-PDCP-ConfigMulticast-r18 ::= SEQUENCE {
+    pdcp-SN-SizeDL-r18      ENUMERATED {len12bits, len18bits},
+    headerCompression-r18   CHOICE {
+        notUsed    NULL,
+        rohc       SEQUENCE {
+            maxCID-r18      INTEGER (1..16)    DEFAULT 15,
+            profiles-r18    SEQUENCE {
+                profile0x0000-r18    BOOLEAN,
+                profile0x0001-r18    BOOLEAN,
+                profile0x0002-r18    BOOLEAN
+            }
+        }
+    },
+    t-Reordering-r17    ENUMERATED {ms1, ms10, ms40, ms160, ms500, ms1000, ms1250, ms2750}    OPTIONAL -- Need R
+}
+
+MRB-RLC-ConfigMulticast-r18 ::= SEQUENCE {
+    logicalChannelIdentity-r18    CHOICE {
+        logicalChannelIdentitymulticast-r18    LogicalChannelIdentity,
+        logicalChannelIdentityExt-r18          LogicalChannelIdentityExt-r17
+    },
+    sn-FieldLength-r18    ENUMERATED {size6, size12},
+    t-Reassembly-r18      T-Reassembly    OPTIONAL  -- Need R
+}
+
+-- TAG-MBS-SESSIONINFOLISTMULTICAST-STOP
+-- ASN1STOP
+```
+
+### Step 7: Demodulation of MTCH (PDSCH) with G-RNTI
+
+The `g-RNTI-r18` field above is what the UE uses to address the physical-layer scheduling for this session's MTCH, the same mechanism as the broadcast case (`g-RNTI-r17` in the broadcast `MBS-SessionInfoList`). The PDSCH configuration itself is carried by `pdsch-ConfigMTCH-r18` (of type `PDSCH-ConfigBroadcast-r17`, the same broadcast-defined structure shown on the [broadcast RAN procedures page](./analysis-mbs-broadcast-ran)) and selected per-session via `pdsch-ConfigIndex-r18`. The MAC-layer logical-channel and RNTI-table specifics for multicast MTCH (the equivalent of the broadcast page's `Table 6.2.1-1c`/`Table 7.1-1` citations) have not been separately verified against TS 38.321 for this page — see the note at the end of this page.
+
 ## Control Plane Procedures
 
 ### RRC: MBS Multicast Reception in RRC_INACTIVE
@@ -154,3 +231,7 @@ This is structurally identical to broadcast MRB establishment/release on the [MB
 ## User Plane Procedures
 
 PDCP and SDAP handling of multicast-inactive traffic follow the same procedures as the broadcast case, documented in the [MBS Broadcast RAN procedures: User Plane Procedures](./analysis-mbs-broadcast-ran#user-plane-procedures) section (TS 38.323 for PDCP, TS 37.324 Clause 4.2/5.2.2/6.2.2.1 for SDAP); it is not repeated here. The RLC and MAC layer citations specific to the multicast-inactive case (TS 38.322, TS 38.321) have not been separately checked against a primary source for this page, since the broadcast-case citations were confirmed instead — verify before relying on them if the two cases diverge at that level.
+
+:::note[Verified against primary sources]
+Steps 0, 1, 2, 3, 5 and 6 of the acquisition path, and the RRC MRB establishment/release procedures, have been checked directly against TS 38.331 (V19.3.0, the current published version) and TS 37.324 (V19.0.0): all ASN.1 structures, clause numbers and message definitions on this page match. Steps 4 and 7 (the MAC-layer PDCCH/MCCH-RNTI and PDSCH/G-RNTI demodulation steps) are described in general terms only and have not been verified against TS 38.321 or TS 38.322 for the multicast-inactive case specifically — see the caveat above.
+:::

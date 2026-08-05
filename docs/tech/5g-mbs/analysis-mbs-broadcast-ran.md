@@ -56,7 +56,82 @@ For each PLMN, the following information is included:
 
 For definitions refer to **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 6.3.1** (System information blocks)
 
-### SIB 20 - Acquisition MCCH/MTCH
+### Step 1: Obtain MIB
+
+Before any system information can be read, the UE first camps on a cell (cell search, using the SSB) and decodes the Master Information Block (MIB), broadcast on the BCH and scheduled once per SSB period as specified in **[3GPP TS 38.213](https://www.3gpp.org/dynareport/38213.htm)**. The MIB itself is generic to NR and carries nothing MBS-specific, but it is the first link in the chain: it provides the `pdcch-ConfigSIB1` field, which gives the UE the PDCCH configuration it needs to find and decode SIB1 next.
+
+- MIB definition and procedures in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 6.2.2** (Message definitions) and **Clause 5.2.2.3.1** (Acquisition of MIB and SIB1)
+- Actions upon reception of the MIB in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 5.2.2.4.1**: on receiving the MIB, the UE stores it and applies `pdcch-ConfigSIB1` (among other fields) to configure PDCCH monitoring for SIB1
+
+```
+-- ASN1START
+-- TAG-MIB-START
+
+MIB ::= SEQUENCE {
+    systemFrameNumber        BIT STRING (SIZE (6)),
+    subCarrierSpacingCommon  ENUMERATED {scs15or60, scs30or120},
+    ssb-SubcarrierOffset     INTEGER (0..15),
+    dmrs-TypeA-Position      ENUMERATED {pos2, pos3},
+    pdcch-ConfigSIB1         PDCCH-ConfigSIB1,
+    cellBarred               ENUMERATED {barred, notBarred},
+    intraFreqReselection     ENUMERATED {allowed, notAllowed},
+    spare                    BIT STRING (SIZE (1))
+}
+
+-- TAG-MIB-STOP
+-- ASN1STOP
+```
+
+### Step 2: Obtain SIB1 (points to SIB20)
+
+Using the PDCCH configuration from the MIB, the UE next decodes SIB1, the first system information block and (like the MIB) a generic NR message rather than an MBS-specific one. The field that matters for this chain is `si-SchedulingInfo`, which lists every other SIB the cell broadcasts, when, and how — including, for a cell offering MBS broadcast, an entry pointing to SIB20.
+
+- SIB1 definition in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 6.2.2** (Message definitions); acquisition procedure in **Clause 5.2.2.3.1**, scheduled as specified in **[3GPP TS 38.213](https://www.3gpp.org/dynareport/38213.htm)**
+- Actions upon reception of SIB1 in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 5.2.2.4.2**
+- The pointer mechanism: SIB1's `si-SchedulingInfo` field (type `SI-SchedulingInfo`, **Clause 6.3.2**) contains a `schedulingInfoList`, each entry (`SchedulingInfo2-r17`) giving the periodicity/window of one SI message and a `sib-MappingInfo-r17` list of the SIB types it carries. Each `SIB-TypeInfo-v1700` entry's `type` field is an enumeration that includes `sibType20` (and, for the RRC_INACTIVE multicast case on the companion page, `sibType24`) among the other SIB types — this is the concrete field that tells the UE "SIB20 is broadcast in this SI message, at this periodicity".
+
+```
+-- ASN1START
+-- TAG-SIB1-SCHEDULING-START
+
+-- Relevant field of SIB1 (full SIB1 structure omitted -- see TS 38.331 Clause 6.2.2):
+SIB1 ::= SEQUENCE {
+    ...
+    si-SchedulingInfo    SI-SchedulingInfo    OPTIONAL, -- Need R
+    ...
+}
+
+-- SI-SchedulingInfo and the SIB-type enumeration that identifies SIB20/SIB24:
+SI-SchedulingInfo ::= SEQUENCE {
+    schedulingInfoList    SEQUENCE (SIZE (1..maxSI-Message)) OF SchedulingInfo,
+    ...
+}
+SI-SchedulingInfo-v1700 ::= SEQUENCE {
+    schedulingInfoList2-r17    SEQUENCE (SIZE (1..maxSI-Message)) OF SchedulingInfo2-r17,
+    ...
+}
+SchedulingInfo2-r17 ::= SEQUENCE {
+    si-BroadcastStatus-r17    ENUMERATED {broadcasting, notBroadcasting},
+    si-WindowPosition-r17     INTEGER (1..256),
+    si-Periodicity-r17        ENUMERATED {rf8, rf16, rf32, rf64, rf128, rf256, rf512},
+    sib-MappingInfo-r17       SIB-Mapping-v1700
+}
+SIB-Mapping-v1700 ::= SEQUENCE (SIZE (1..maxSIB)) OF SIB-TypeInfo-v1700
+SIB-TypeInfo-v1700 ::= SEQUENCE {
+    sibType-r17    CHOICE {
+        type1-r17    ENUMERATED {sibType15, sibType16, sibType17, sibType18, sibType19,
+                                  sibType20, sibType21, sibType22-v1800, sibType23-v1800,
+                                  sibType24-v1800, sibType25-v1800, ...},
+        ...
+    },
+    ...
+}
+
+-- TAG-SIB1-SCHEDULING-STOP
+-- ASN1STOP
+```
+
+### Step 3: SIB20 - Acquisition MCCH/MTCH
 
 SIB20 contains the information required to acquire the MCCH/MTCH configuration for MBS broadcast.
 
@@ -189,7 +264,7 @@ The user-plane sections below summarise, per protocol layer (SDAP, PDCP), how re
 User-plane PDCP handling for MBS Broadcast follows the same procedures as the control-plane PDCP subsection above (**[3GPP TS 38.323](https://www.3gpp.org/dynareport/38323.htm)**); it is not repeated here.
 
 :::note[Verified against primary sources]
-All clause, table and message citations on this page have now been checked directly against 3GPP specification documents: TS 38.321 and TS 38.331 (V17.5.0) for the RRC/MAC citations, and TS 37.324 (V19.0.0) for the SDAP citations (Clause 4.2, 5.1.1, 5.1.2, 5.2.2, 6.2.2.1 — all confirmed to match). One correction was made in the course of this check: SIB20's definition sits in TS 38.331 Clause 6.3.1 ("System information blocks"), not Clause 6.2.2 ("Message definitions") as this page previously stated; Clause 6.2.2 is correct for the MBSBroadcastConfiguration message itself, which is a distinct RRC message rather than a system information block.
+All clause, table and message citations on this page have been checked directly against 3GPP specification documents: TS 38.331 (V19.3.0, the current published version) for the RRC and MIB/SIB1 citations, and TS 37.324 (V19.0.0) for the SDAP citations (Clause 4.2, 5.1.1, 5.1.2, 5.2.2, 6.2.2.1 — all confirmed to match). One correction was made in the course of this check: SIB20's definition sits in TS 38.331 Clause 6.3.1 ("System information blocks"), not Clause 6.2.2 ("Message definitions") as this page previously stated; Clause 6.2.2 is correct for the MBSBroadcastConfiguration message itself, which is a distinct RRC message rather than a system information block. Steps 1 (Obtain MIB) and 2 (Obtain SIB1) were newly added to this page and verified against the same TS 38.331 V19.3.0 copy. The TS 38.321 (MAC) citations for steps 4 and 7 (Clause 5.3, Table 6.2.1-1c, Table 7.1-1) were last checked against V17.5.0 rather than the current version; re-verification against the latest TS 38.321 is pending.
 :::
 
 ---
