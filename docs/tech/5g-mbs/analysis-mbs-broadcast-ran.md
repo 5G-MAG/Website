@@ -242,11 +242,11 @@ The control-plane sections below summarise, per protocol layer (RRC, PDCP, RLC, 
   - UM RLC entity in **[3GPP TS 38.322](https://www.3gpp.org/dynareport/38322.htm) Clause 4.2.1.2**
   - Variables, constants, and timers in **[3GPP TS 38.322](https://www.3gpp.org/dynareport/38322.htm) Clause 7**
 
-#### MAC: MBS Broadcast
+#### MAC: MBS Broadcast (Steps 4 and 7)
 
-- MCCH within DL-SCH in **[3GPP TS 38.321](https://www.3gpp.org/dynareport/38321.htm) Clause 5.3**
-- Value of LCID for MBS broadcast on DL-SCH in **[3GPP TS 38.321](https://www.3gpp.org/dynareport/38321.htm) Table 6.2.1-1c**
-- RNTI values MCCH-RNTI = FFFD in **[3GPP TS 38.321](https://www.3gpp.org/dynareport/38321.htm) Table 7.1-1**
+- **Step 4 (Demodulation of MCCH via PDCCH):** MCCH reading procedure in **[3GPP TS 38.321](https://www.3gpp.org/dynareport/38321.htm) Clause 5.3.1** ("DL Assignment reception"): "When the MAC entity needs to read MCCH, the MAC entity may, based on the scheduling information from RRC: if a downlink assignment for this PDCCH occasion has been received on the PDCCH for the MCCH-RNTI or Multicast MCCH-RNTI [...]". RNTI value MCCH-RNTI = FFFD in **Table 7.1-1** ("RNTI values"), used specifically for MBS broadcast; the value FFFB (Multicast MCCH-RNTI) in the same table is a separate value used for the RRC_INACTIVE multicast case on the [companion page](./analysis-mbs-multicast-inactive-ran#step-4-demodulation-of-mcch-pdsch-via-pdcch-with-multicast-mcch-rnti--fffb), not this one.
+- **Step 7 (Demodulation of MTCH via PDSCH):** same Clause 5.3.1, the broadcast MTCH reading rule: "When the MAC entity needs to read broadcast MTCH [...] if a downlink assignment for this PDCCH occasion has been received on the PDCCH for the G-RNTI configured for broadcast MTCH [...]". G-RNTI's entry ("Dynamically scheduled MBS PTM transmission", DL-SCH, MTCH) in **Table 7.1-1**/**Table 7.1-2**; unlike MCCH-RNTI, G-RNTI is not split into separate broadcast/multicast values.
+- Value of LCID for MCCH and broadcast MTCH on DL-SCH in **[3GPP TS 38.321](https://www.3gpp.org/dynareport/38321.htm) Table 6.2.1-1c** ("Values of LCID for MBS multicast MCCH and MBS broadcast on DL-SCH" — despite the title, this table's LCID=0 row is shared with multicast MCCH; only LCID 1–32, broadcast MTCH, is broadcast-specific; multicast MTCH's LCID instead comes from the generic Table 6.2.1-1, see the companion page)
 
 ## User Plane Procedures
 
@@ -264,7 +264,7 @@ The user-plane sections below summarise, per protocol layer (SDAP, PDCP), how re
 User-plane PDCP handling for MBS Broadcast follows the same procedures as the control-plane PDCP subsection above (**[3GPP TS 38.323](https://www.3gpp.org/dynareport/38323.htm)**); it is not repeated here.
 
 :::note[Verified against primary sources]
-All clause, table and message citations on this page have been checked directly against 3GPP specification documents: TS 38.331 (V19.3.0, the current published version) for the RRC and MIB/SIB1 citations, and TS 37.324 (V19.0.0) for the SDAP citations (Clause 4.2, 5.1.1, 5.1.2, 5.2.2, 6.2.2.1 — all confirmed to match). One correction was made in the course of this check: SIB20's definition sits in TS 38.331 Clause 6.3.1 ("System information blocks"), not Clause 6.2.2 ("Message definitions") as this page previously stated; Clause 6.2.2 is correct for the MBSBroadcastConfiguration message itself, which is a distinct RRC message rather than a system information block. Steps 1 (Obtain MIB) and 2 (Obtain SIB1) were newly added to this page and verified against the same TS 38.331 V19.3.0 copy. The TS 38.321 (MAC) citations for steps 4 and 7 (Clause 5.3, Table 6.2.1-1c, Table 7.1-1) were last checked against V17.5.0 rather than the current version; re-verification against the latest TS 38.321 is pending.
+Every step of the acquisition path (0–7) has been checked directly against 3GPP specification documents, all at their current published version: TS 38.331 (V19.3.0) for RRC and MIB/SIB1, TS 37.324 (V19.0.0) for SDAP, and TS 38.321/TS 38.322 (both V19.3.0) for MAC/RLC. Two corrections were made in the course of this check: SIB20's definition sits in TS 38.331 Clause 6.3.1 ("System information blocks"), not Clause 6.2.2 ("Message definitions") as this page previously stated (Clause 6.2.2 is correct for the MBSBroadcastConfiguration message itself, a distinct RRC message); and Clause 5.3 was refined to the more precise Clause 5.3.1 ("DL Assignment reception") for the MAC-layer MCCH/MTCH reading rules. Table 6.2.1-1c's title is "Values of LCID for MBS multicast MCCH and MBS broadcast on DL-SCH" — it is shared with the multicast-inactive case for the MCCH row (LCID 0) but broadcast-only for MTCH (LCID 1–32); see the [multicast-inactive page](./analysis-mbs-multicast-inactive-ran) for the important related finding that multicast uses its own Multicast MCCH-RNTI (FFFB), distinct from this page's MCCH-RNTI (FFFD).
 :::
 
 ---

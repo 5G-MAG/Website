@@ -24,13 +24,13 @@ This documentation is currently **under development and subject to change**. If 
 
 This page analyses the 3GPP Release 18 extension that lets a UE receive MBS multicast while in the RRC_INACTIVE state. In Release 17, multicast reception (delivery mode 1) required RRC_Connected, as summarised on the [RAN Aspects](./ran-aspects) page; the Release 18 work adds a way to receive multicast in RRC_INACTIVE, using dedicated signalling (SIB24 and the multicast MCCH) rather than the broadcast signalling used for delivery mode 2. When reading the RAN Aspects page alongside this one, note that this is the Release 18 extension to the RRC-state rules stated there.
 
-The step sequence below (numbered 0 to 7) is the acquisition path for multicast reception in RRC_INACTIVE. The channels and identifiers are the same as on the broadcast page (MIB, SIB, MCCH, MTCH, PDCCH, PDSCH, MCCH-RNTI, G-RNTI), but the multicast-inactive case uses SIB24 and the multicast MCCH carrying `MBSMulticastConfiguration`.
+The step sequence below (numbered 0 to 7) is the acquisition path for multicast reception in RRC_INACTIVE. The channels involved are the same as on the broadcast page (MIB, SIB, MCCH, MTCH, PDCCH, PDSCH), and G-RNTI is shared between the two cases, but the multicast-inactive case uses SIB24, the multicast MCCH carrying `MBSMulticastConfiguration`, and — importantly — its own **Multicast MCCH-RNTI (FFFB)**, a distinct value from the broadcast MCCH-RNTI (FFFD); see Step 4.
 
 - 0. Acquiring PLMN and RAN Information
 - 1. Obtain MIB
 - 2. Obtain SIB1 (points to SIB24)
 - 3. SIB24 contains configuration of MCCH
-- 4. Demodulation of MCCH (PDSCH) via PDCCH (with MCCH-RNTI = FFFD)
+- 4. Demodulation of MCCH (PDSCH) via PDCCH (with Multicast MCCH-RNTI = FFFB)
 - 5. MCCH contains MBSMulticastConfiguration
 - 6. Obtain configuration of MTCH within MBSMulticastConfiguration
 - 7. Demodulation of MTCH (PDSCH) with G-RNTI
@@ -78,9 +78,12 @@ SIB24-r18 ::= SEQUENCE {
 -- ASN1STOP
 ```
 
-### Step 4: Demodulation of MCCH (PDSCH) via PDCCH (with MCCH-RNTI = FFFD)
+### Step 4: Demodulation of MCCH (PDSCH) via PDCCH (with Multicast MCCH-RNTI = FFFB)
 
-Once SIB24 gives the multicast MCCH's scheduling (`multicastMCCH-Config-r18`) and physical-layer resource (`cfr-ConfigMCCH-MTCH-r18`), the UE monitors PDCCH scrambled with the fixed MCCH-RNTI (FFFD) to find and decode the multicast MCCH on the PDSCH — the same MCCH-RNTI value used for the broadcast MCCH. This step's MAC-layer citations (the multicast-MCCH equivalent of the broadcast page's `Table 6.2.1-1c`/`Table 7.1-1`/`Clause 5.3`) have not been separately verified against TS 38.321 for this page; see the note at the end of this page.
+Once SIB24 gives the multicast MCCH's scheduling (`multicastMCCH-Config-r18`) and physical-layer resource (`cfr-ConfigMCCH-MTCH-r18`), the UE monitors PDCCH to find and decode the multicast MCCH on the PDSCH. **This uses a different RNTI value from the broadcast case**: TS 38.321 defines a separate **Multicast MCCH-RNTI = FFFB**, distinct from the broadcast MCCH-RNTI (FFFD) — the two are not the same value, despite both addressing an MCCH. The MAC procedure text treats them as alternatives of the same rule: **[3GPP TS 38.321](https://www.3gpp.org/dynareport/38321.htm) Clause 5.3.1** ("DL Assignment reception") states "When the MAC entity needs to read MCCH, the MAC entity may, based on the scheduling information from RRC: if a downlink assignment for this PDCCH occasion has been received on the PDCCH for the **MCCH-RNTI or Multicast MCCH-RNTI** [...]".
+
+- RNTI value Multicast MCCH-RNTI = FFFB in **Table 7.1-1** ("RNTI values"), listed there as "Dynamically scheduled MCCH signalling and MCCH change notification for MBS multicast in RRC_INACTIVE" (Table 7.1-2, "RNTI usage") — separate from the broadcast entry (MCCH-RNTI = FFFD, "[...] for MBS broadcast")
+- Value of LCID for the decoded MCCH in **Table 6.2.1-1c** ("Values of LCID for MBS multicast MCCH and MBS broadcast on DL-SCH"): LCID = 0 is shared, listed as "Broadcast MCCH or multicast MCCH" — once the PDCCH/RNTI has told the UE which MCCH it is, both broadcast and multicast MCCH use the same LCID on DL-SCH
 
 ### Step 5: RRC - MulticastMCCH-Message
 
@@ -195,7 +198,11 @@ MRB-RLC-ConfigMulticast-r18 ::= SEQUENCE {
 
 ### Step 7: Demodulation of MTCH (PDSCH) with G-RNTI
 
-The `g-RNTI-r18` field above is what the UE uses to address the physical-layer scheduling for this session's MTCH, the same mechanism as the broadcast case (`g-RNTI-r17` in the broadcast `MBS-SessionInfoList`). The PDSCH configuration itself is carried by `pdsch-ConfigMTCH-r18` (of type `PDSCH-ConfigBroadcast-r17`, the same broadcast-defined structure shown on the [broadcast RAN procedures page](./analysis-mbs-broadcast-ran)) and selected per-session via `pdsch-ConfigIndex-r18`. The MAC-layer logical-channel and RNTI-table specifics for multicast MTCH (the equivalent of the broadcast page's `Table 6.2.1-1c`/`Table 7.1-1` citations) have not been separately verified against TS 38.321 for this page — see the note at the end of this page.
+The `g-RNTI-r18` field above is what the UE uses to address the physical-layer scheduling for this session's MTCH. Unlike MCCH, **G-RNTI is not split into separate broadcast/multicast values**: TS 38.321 Table 7.1-1 lists a single G-RNTI entry ("Dynamically scheduled MBS PTM transmission", DL-SCH, MTCH) that serves both cases, matching the mechanism on the broadcast page (`g-RNTI-r17` there, `g-RNTI-r18` here — same RNTI type, values assigned per session by the network either way). **[3GPP TS 38.321](https://www.3gpp.org/dynareport/38321.htm) Clause 5.3.1** states the broadcast-specific reading rule explicitly ("[...] the PDCCH for the G-RNTI configured for broadcast MTCH"); the equivalent multicast wording is not separately called out in that clause, so the exact MAC-layer procedure text for multicast MTCH reception has not been located as a distinct rule and should be treated as inferred rather than a direct quote.
+
+Where multicast MTCH **does** differ from broadcast at the MAC layer is its logical channel identity: **Table 6.2.1-1c** (the same table used for Step 4's MCCH) only covers *broadcast* MTCH (LCID 1–32, labelled "Identity of the logical channel of broadcast MTCH"); multicast MTCH's LCID instead comes from the generic **Table 6.2.1-1** ("Values of LCID for DL-SCH"), whose LCID 1–32 row is labelled "Identity of the logical channel of DCCH, DTCH **and multicast MTCH**" — the same range used for ordinary dedicated control/traffic channels. This matches the RRC-layer finding in Step 6: the multicast MRB's `logicalChannelIdentitymulticast-r18` is the plain `LogicalChannelIdentity` type, not a broadcast-MTCH-specific one.
+
+The PDSCH configuration itself is carried by `pdsch-ConfigMTCH-r18` (of type `PDSCH-ConfigBroadcast-r17`, the same broadcast-defined structure shown on the [broadcast RAN procedures page](./analysis-mbs-broadcast-ran)) and selected per-session via `pdsch-ConfigIndex-r18`.
 
 ## Control Plane Procedures
 
@@ -228,10 +235,29 @@ The whole multicast-inactive procedure is grouped under a single clause in TS 38
 
 This is structurally identical to broadcast MRB establishment/release on the [MBS Broadcast RAN procedures](./analysis-mbs-broadcast-ran) page (same actions, same TS 37.324 SDAP clauses); only the configuration IE names differ (`mrb-ListMulticast` vs the broadcast MRB list, `MBSMulticastConfiguration` vs `MBSBroadcastConfiguration`).
 
+#### PDCP: MBS Multicast Reception in RRC_INACTIVE
+
+Identical to the broadcast case: PDCP procedures in **[3GPP TS 38.323](https://www.3gpp.org/dynareport/38323.htm) Clause 5**, protocol data units/formats/parameters in **Clause 6**, state variables/constants/timers in **Clause 7**. Not repeated here — see the [broadcast RAN procedures page: PDCP](./analysis-mbs-broadcast-ran#pdcp-mbs-broadcast).
+
+#### RLC: MBS Multicast Reception in RRC_INACTIVE
+
+RLC does not distinguish broadcast from multicast at all: TS 38.322 mentions "multicast" exactly once in the whole specification (in the abbreviations list, for "MBS"), with no multicast-specific bearer, entity, or procedure text anywhere in the document. The broadcast page's RLC citations therefore apply identically and unconditionally to the multicast MRB, unlike MAC (Step 4) where a distinct RNTI exists:
+
+- UM RLC entity in **[3GPP TS 38.322](https://www.3gpp.org/dynareport/38322.htm) Clause 4.2.1.2**
+- Variables, constants, and timers in **[3GPP TS 38.322](https://www.3gpp.org/dynareport/38322.htm) Clause 7**
+
+#### MAC: MBS Multicast Reception in RRC_INACTIVE (Steps 4 and 7)
+
+See Step 4 and Step 7 above for the full detail (Multicast MCCH-RNTI = FFFB, shared MCCH LCID via Table 6.2.1-1c, and multicast MTCH's LCID via the generic Table 6.2.1-1 rather than Table 6.2.1-1c). In summary:
+
+- RNTI values in **[3GPP TS 38.321](https://www.3gpp.org/dynareport/38321.htm) Table 7.1-1**: Multicast MCCH-RNTI = FFFB (distinct from broadcast's MCCH-RNTI = FFFD); G-RNTI shared with broadcast (no separate multicast value)
+- MCCH LCID in **Table 6.2.1-1c** (LCID = 0, shared with broadcast MCCH); multicast MTCH LCID in the generic **Table 6.2.1-1** (LCID 1–32, shared with DCCH/DTCH — not Table 6.2.1-1c, which only covers broadcast MTCH)
+- MCCH/MTCH reading procedure in **Clause 5.3.1** ("DL Assignment reception")
+
 ## User Plane Procedures
 
-PDCP and SDAP handling of multicast-inactive traffic follow the same procedures as the broadcast case, documented in the [MBS Broadcast RAN procedures: User Plane Procedures](./analysis-mbs-broadcast-ran#user-plane-procedures) section (TS 38.323 for PDCP, TS 37.324 Clause 4.2/5.2.2/6.2.2.1 for SDAP); it is not repeated here. The RLC and MAC layer citations specific to the multicast-inactive case (TS 38.322, TS 38.321) have not been separately checked against a primary source for this page, since the broadcast-case citations were confirmed instead — verify before relying on them if the two cases diverge at that level.
+PDCP and SDAP handling of multicast-inactive traffic follow the same procedures as the broadcast case, documented in the [MBS Broadcast RAN procedures: User Plane Procedures](./analysis-mbs-broadcast-ran#user-plane-procedures) section (TS 38.323 for PDCP, TS 37.324 Clause 4.2/5.2.2/6.2.2.1 for SDAP); it is not repeated here.
 
 :::note[Verified against primary sources]
-Steps 0, 1, 2, 3, 5 and 6 of the acquisition path, and the RRC MRB establishment/release procedures, have been checked directly against TS 38.331 (V19.3.0, the current published version) and TS 37.324 (V19.0.0): all ASN.1 structures, clause numbers and message definitions on this page match. Steps 4 and 7 (the MAC-layer PDCCH/MCCH-RNTI and PDSCH/G-RNTI demodulation steps) are described in general terms only and have not been verified against TS 38.321 or TS 38.322 for the multicast-inactive case specifically — see the caveat above.
+Every step of the acquisition path (0–7) has now been checked directly against 3GPP specification documents: TS 38.331 and TS 37.324 (both V19.3.0/V19.0.0, the current published versions) for RRC/PDCP/SDAP, and TS 38.321/TS 38.322 (both V19.3.0) for MAC/RLC. One real error was found and corrected in the course of this check: the multicast-inactive case uses its own **Multicast MCCH-RNTI (FFFB)**, not the broadcast MCCH-RNTI (FFFD) as this page previously stated — TS 38.321 defines the two as separate values in Table 7.1-1, even though they share the same MCCH LCID (0) once decoded. RLC (TS 38.322) has no multicast-specific content at all and applies identically to broadcast. One remaining soft spot: TS 38.321 Clause 5.3.1 states the broadcast MTCH reading rule as an explicit quote ("PDCCH for the G-RNTI configured for broadcast MTCH"), but does not give an equally explicit quotable rule for multicast MTCH reading — the G-RNTI mechanism for multicast MTCH is inferred from the shared Table 7.1-1 entry and the RRC-layer procedure text (Step 6/Step 7 above), not from a directly quotable MAC-layer sentence.
 :::
