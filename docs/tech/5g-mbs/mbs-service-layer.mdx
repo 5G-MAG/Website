@@ -28,8 +28,8 @@ This page summarises the MBS user-service layer: the higher-level abstraction (d
 
 Two points apply to every figure and interaction described below (stated once here rather than repeated per figure):
 
-:::warning
-The architecture figures on this page are subject to change following ongoing discussion about the security architecture. In particular, there is a proposal for the MBSF to be directly attached to the user plane in order to support the user plane client authentication procedure defined in [TS 33.501](https://www.3gpp.org/dynareport/33501.htm) annex W.4.
+:::note[Security architecture confirmed]
+An earlier draft of this page described the user-plane security architecture as an open proposal ("the MBSF directly attached to the user plane"). Checked against the current TS 26.502 text (Release 18): this has since been resolved with a dedicated, optional **Multicast-Broadcast Security Function (MBSSF)**, defined in TS 23.247 Clause 6.13 and TS 33.501, which realises the user-plane client authentication procedure (TS 33.501 Clause W.4.1.3) at reference point **MBS-10** between the MBSSF and the MBSF Client. The MBSSF is not part of the MBSF or MBSTF; in deployment it may be co-located with either.
 :::
 
 :::note
@@ -51,8 +51,9 @@ The service-layer reference points used below are:
 - **MBS-4-UC**: unicast object-repair interaction between the MBSTF Client and the MBS AS.
 - **MBS-5**: unicast retrieval of the MBS User Service Announcement by the MBSF Client.
 - **MBS-7**: client API exposing received data to the MBS-Aware Application.
+- **MBS-10**: MBSF Client authenticates access to security-protected MBS data via the MBSSF (see the security note below).
 
-Load-bearing acronyms used below: AF (Application Function); AS (Application Server); MB-SMF (Multicast/Broadcast Session Management Function); MB-UPF (Multicast/Broadcast User Plane Function); NEF (Network Exposure Function); TMGI (Temporary Mobile Group Identity); FLUTE (File Delivery over Unidirectional Transport).
+Load-bearing acronyms used below: AF (Application Function); AS (Application Server); MB-SMF (Multicast/Broadcast Session Management Function); MB-UPF (Multicast/Broadcast User Plane Function); MBSSF (Multicast-Broadcast Security Function); NEF (Network Exposure Function); TMGI (Temporary Mobile Group Identity); FLUTE (File Delivery over Unidirectional Transport).
 
 ## Media Streaming sessions over MBS User Services ([TS 26.501](https://www.3gpp.org/dynareport/26501.htm))
 
@@ -70,7 +71,7 @@ The MBS User Services abstraction comprises three principal data entities:
 
 For example, a sports channel could be one MBS User Service; its weekend live coverage could be an MBS User Data Ingest Session scheduled Saturday to Sunday; and within that, separate MBS Distribution Sessions could carry the video component and a regional commentary variant.
 
-The overall system architecture for MBS User Services (green) and MBS Services (purple) is depicted in figure 3.2-1. The (green) MBS User Services functions are optional in an MBS System: it is valid to omit them entirely, in which case the AF/AS must provision low-level MBS Services directly with the (purple) MB-SMF at reference point Nmb13 (or N33+N29mb, if outside the trusted network), and then inject MBS data directly into the (purple) MB-UPF at reference point N6mb. The MBSF and MBSTF functions that realise the user-service layer are described in the subsections that follow.
+The overall system architecture for MBS User Services (green) and MBS Services (purple) is depicted below. The (green) MBS User Services functions are optional in an MBS System: it is valid to omit them entirely, in which case the AF/AS must provision low-level MBS Services directly with the (purple) MB-SMF at reference point Nmb13 (or N33+N29mb, if outside the trusted network), and then inject MBS data directly into the (purple) MB-UPF at reference point N6mb. The MBSF and MBSTF functions that realise the user-service layer are described in the subsections that follow.
 
 The figure below shows the overall system architecture. Colour is used only to group functions: the MBS User Services functions are shown in green and the lower-level MBS Services functions in purple; the same grouping is stated in the caption so it does not depend on the colours.
 
@@ -105,7 +106,7 @@ The figure below shows how these three core functions interact with other entiti
 Shortly before an MBS User Data Ingest Session becomes active (e.g. according to its activation schedule), the MBSF provisions all necessary MBS Sessions in the MB-SMF (via reference point Nmb1) and corresponding MBS Distribution Sessions in the MBSTF (via reference point Nmb2). Data ingest (object or packet, as appropriate to each provisioned MBS Distribution Session) then commences at reference point Nmb8.
 
 In addition, the MBSF compiles an **MBS Distribution Session Announcement** for each MBS Distribution Session provisioned in the activated MBS User Data Ingest Session and bundles them into an **MBS User Service Announcement**. This is then made available for unicast retrieval by MBS Clients at reference point MBS-5 and/or for carouselling over an MBS User Service Announcement Channel at reference point MBS-4-MC. The configuration of MBS User Service Announcement Channel(s) – in band with each MBS Distribution Session or out of band in a special-purpose MBS Distribution Session with its own TMGI – may vary between deployments of the MBS System.
-The syntax for MBS User Service Announcements is specified in TS 26.517 clause A.1.1 (XML schema language) and clause A.2.1 (OpenAPI YAML schema). These schemas allow MBS User Service Announcements for several different MBS User Services currently active in the MBS System to be bundled together for more efficient delivery at reference point MBS-5 and/or MBS-4-MC.
+The syntax for MBS User Service Announcements is specified in TS 26.517 Clause A.2.1 ("MBS User Service Announcement schema"), a JSON-based representation described by a YAML schema file. (Annex A.1, which would have held an XML-based representation, is marked "Void" in the current Release 18 text — no XML schema is defined.) This schema allows MBS User Service Announcements for several different MBS User Services currently active in the MBS System to be bundled together for more efficient delivery at reference point MBS-5 and/or MBS-4-MC.
 TS 26.502 defines additional entities in the UE, as shown in the figure below:
 
 <figure>
@@ -113,8 +114,8 @@ TS 26.502 defines additional entities in the UE, as shown in the figure below:
     <figcaption>MBS User Services entities in the UE (based on TS 26.502)</figcaption>
 </figure>
 
-:::warning[Verify figure number]
-The exact TS 26.502 figure number for the UE-side entities shown above could not be confirmed from available context. The previous figure (network architecture) is figure 4.2.2-1; this UE-side figure is a separate figure. Verify the correct figure number against TS 26.502.
+:::note[Figure number checked]
+TS 26.502 Clause 4.3.5 ("MBS Client") describes this UE-side split (MBSF Client / MBSTF Client) in prose only — no accompanying figure exists at that clause in the current Release 18 text. The illustration above is this page's own rendering of that prose description, not a reproduction of a numbered 3GPP figure.
 :::
 
 The **MBS Client** is divided into two subfunctions:
@@ -131,7 +132,7 @@ The general organisation of sessions in the MBS User Services domain is shown in
 
 <figure>
     <img loading="lazy" src={useBaseUrl('/img/tech/5g-mbs/figure_mbs_7.png')} alt="MBS User Services domain model: an MBS User Service containing one or more MBS User Data Ingest Sessions, each containing one or more MBS Distribution Sessions" />
-    <figcaption>MBS User Services domain model (from TS 26.501 figure 4.5.1-1)</figcaption>
+    <figcaption>MBS User Services domain model (from TS 26.502 figure 4.5.1-1)</figcaption>
 </figure>
 
 ## Object distribution versus packet distribution
@@ -151,8 +152,10 @@ Discovery is handled by the MBS User Service Announcement. The MBSF builds one M
 
 ## Service-based interfaces and protocols
 
-The control-plane reference points (Nmb10, Nmb1, Nmb2, and the NEF-mediated variants) use 5G service-based interfaces: HTTP/2 RESTful APIs described by OpenAPI schemas, consistent with the rest of the 5G Core. The user-plane reference points each define concrete protocols instead: content ingest at Nmb8 and the MBSTF-to-MB-UPF hand-off at Nmb9 are defined in TS 26.517, which also specifies the FLUTE/ALC object carriage, the packet distribution format and the XML and OpenAPI schemas for the User Service Announcement. This split (service-based APIs on the control plane, defined protocols on the user plane) mirrors the figure above and is the same pattern used throughout the 5G Core.
+The control-plane reference points (Nmb10, Nmb1, Nmb2, and the NEF-mediated variants) use 5G service-based interfaces: HTTP/2 RESTful APIs described by OpenAPI schemas, consistent with the rest of the 5G Core. The user-plane reference points each define concrete protocols instead: content ingest at Nmb8 and the MBSTF-to-MB-UPF hand-off at Nmb9 are defined in TS 26.517, which also specifies the FLUTE/ALC object carriage, the packet distribution format and the JSON/YAML schema for the User Service Announcement. This split (service-based APIs on the control plane, defined protocols on the user plane) mirrors the figure above and is the same pattern used throughout the 5G Core.
 
-:::warning[References to verify]
-These identifiers on this page were not confirmed against a primary source (the 3GPP portal blocks automated access): the reference-point names and mappings (Nmb1, Nmb2, Nmb8, Nmb9, Nmb10, Nmb13, N33+Nmb5, N33+N29mb, N6mb, MBS-4-MC, MBS-4-UC, MBS-5, MBS-7); the figure numbers cited (TS 26.502 figure 4.2.2-1 and the UE-side figure, and TS 26.501 figure 4.5.1-1); the TS 26.517 schema clauses (A.1.1, A.2.1); and the TS 33.501 annex W.4 reference. Verify against the specific TS 23.247, TS 26.502, TS 26.517 and TS 26.501 versions you are targeting.
+:::note[Verified against primary sources]
+Checked directly against TS 26.502 V18 (Rel-18) and TS 26.517 V18 (Rel-18): every reference-point name and mapping on this page (Nmb1, Nmb2, Nmb5, Nmb8, Nmb9, Nmb10, Nmb13, N33+Nmb5, N33+N29mb, N6mb, MBS-4-MC, MBS-4-UC, MBS-5, MBS-7, MBS-10) matches the current spec text, as does the Figure 4.2.2-1 citation. Four corrections were made in the course of this check: a cited "figure 3.2-1" for the overall system architecture does not exist anywhere in TS 26.502 (removed, now an unlabelled figure reference); the UE-side entities figure has no confirmed 3GPP figure number either (Clause 4.3.5 describes it in prose only); the domain-model figure belongs to **TS 26.502** Figure 4.5.1-1, not TS 26.501 as previously stated; and the "XML schema" at Clause A.1.1 does not exist in the current text (Annex A.1 is Void — only the JSON/YAML-based Clause A.2.1 schema exists). The security-architecture note above was also updated from an open proposal to the now-confirmed MBSSF function.
+
+Two items remain unverified, since TS 23.247, TS 26.501 and TS 33.501 were not available for this check: the "Media Streaming sessions over MBS User Services" clause of TS 26.501 (said to be Void), and the TS 33.501 Clause W.4.1.3 reference itself. Verify these against the specific versions you are targeting.
 :::
