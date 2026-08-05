@@ -50,5 +50,6 @@ Follow the [step-by-step guide](/reference-tools/5gms/tutorials/CMCD-reporting) 
 ## Related
 
 - [Reference Tools](/reference-tools) for the individual specification implementations.
+- [Standards: 5G Media Streaming](/tech/standards/5gms) and [Standards: 5G Multicast Broadcast Services (MBS)](/tech/standards/5g-mbs) for the specifications behind these scenarios.
 - [Applications](/applications/) for the other end-to-end service scenarios.
 - [Sample: Multi-Angle Replay Viewer (template)](./streaming/sample-multi-angle-replay), a structural sample for a future real showcase, not a working application yet.

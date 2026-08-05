@@ -34,4 +34,5 @@ Written step-by-step tutorials for these APIs are not yet published. In the mean
 ## Related
 
 - [Reference Tools](/reference-tools) for the individual specification implementations.
+- [Standards: Connectivity Quality with Network APIs](/tech/standards/network-apis) for the specifications behind this scenario.
 - [Applications](/applications/) for the other end-to-end service scenarios.
