@@ -77,3 +77,7 @@ This section's procedure (switching the MRB to a DRB before handover) describes 
 ### Procedure
 
 - Mobility from a multicast-supporting cell to a multicast non-supporting cell can be achieved by switching the MRB to a DRB in the source gNB before a handover.
+
+:::warning[References to verify]
+Unlike its sibling pages, this page's specific NGAP/RRC procedure and message names have not been checked against a primary source in this session (TS 38.300, TS 38.413 and TS 23.247 were not available): the Xn/NG handover message names (Path Switch Request, Handover Request Acknowledge, NGAP Handover Request), the PDU Session Resource Modification procedure, and in particular the **NGAP Distribution Release procedure** cited for releasing multicast user-plane resources — "Distribution Setup"/"Distribution Release" are, by name, associated with broadcast session distribution management in NGAP, so its use here for a multicast release scenario should be double-checked against TS 38.413 rather than assumed correct. Verify all of the above against the specific TS 38.300/TS 38.413/TS 23.247 versions you are targeting.
+:::
