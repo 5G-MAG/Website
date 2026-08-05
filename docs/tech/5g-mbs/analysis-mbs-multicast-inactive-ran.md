@@ -37,6 +37,27 @@ The step sequence below (numbered 0 to 7) is the acquisition path for multicast 
 
 Why this matters: in Release 17 a UE receiving multicast (delivery mode 1) has to stay in RRC_CONNECTED, which keeps the UE and the network in a higher-power, higher-signalling state even when the UE is only listening. The Release 18 extension lets a multicast UE drop to RRC_INACTIVE and keep receiving, saving UE battery and network resources for large, mostly-passive multicast audiences. The mechanism mirrors the broadcast acquisition chain (a SIB points to an MCCH that carries a configuration message listing sessions, G-RNTIs and MTCH scheduling), but it uses multicast-specific structures so that reception stays tied to session membership: a dedicated SIB (SIB24) points to a multicast MCCH carrying `MBSMulticastConfiguration`, and that configuration adds RSRP/RSRQ thresholds (`thresholdMBS-List`) that govern when an inactive UE should move back to connected mode, for example to receive over PTP when its channel degrades. The `MBSMulticastConfiguration` ASN.1 shown later on this page is the multicast-specific structure.
 
+## Implementation blueprint
+
+This page is a verified map of the acquisition path, not a self-contained implementation spec: it gives correct clause/table/RNTI/LCID pointers and the multicast-specific ASN.1, but a conformant implementation needs the full primary-source text behind each pointer. Fetch these before implementing a given step:
+
+| Step | Layer(s) | This page provides | Fetch in full before implementing |
+| --- | --- | --- | --- |
+| 0. PLMN/RAN info | NAS / configuration | Pre-configuration field list (DNN/S-NSSAI pair) | **TS 24.575** (full MO definition), **TS 23.247** (MBS architecture), **TS 24.501** (DNN/S-NSSAI usage) |
+| 1. Obtain MIB | RRC (Layer 3), PHY | Identical to broadcast — not repeated | [Broadcast page: Step 1 blueprint row](./analysis-mbs-broadcast-ran#implementation-blueprint) |
+| 2. Obtain SIB1 | RRC (Layer 3), PHY | `si-SchedulingInfo` pointer mechanism, `sibType24` value only | [Broadcast page: Step 2 blueprint row](./analysis-mbs-broadcast-ran#implementation-blueprint) for the shared mechanism; **TS 38.331** Clause 6.2.2 for the complete SIB1 message |
+| 3. SIB24 → MCCH config | RRC | SIB24/`MCCH-Config`/`CFR-ConfigMCCH-MTCH` ASN.1 | **TS 38.331** Clause 6.3.1 for any further-referenced IEs not expanded here |
+| 4. Demodulate MCCH via PDCCH | MAC, PHY | **Distinct** RNTI value (Multicast MCCH-RNTI = FFFB, Table 7.1-1), shared LCID (Table 6.2.1-1c), one quoted MAC sentence | **TS 38.321** Clause 5.3.1 in full; **TS 38.213** for CORESET/Search Space Set configuration, PDCCH candidate blind decoding, and DCI format 1_0/1_1 (not covered here at all) |
+| 5. MCCH → `MBSMulticastConfiguration` | RRC | Full message ASN.1 | **TS 38.331** Clause 5.10.1 and 5.10.2 for the complete UE procedure text (this page quotes the MRB establishment/release actions only) |
+| 6. MTCH config + G-RNTI via `MBS-SessionInfoListMulticast` | RRC | Full IE ASN.1 | Same as step 5 |
+| 7. Demodulate MTCH via PDSCH | MAC, PHY | Shared G-RNTI table entry; **distinct** LCID source (generic Table 6.2.1-1, not 6.2.1-1c) | **TS 38.321** Clause 5.3.1/5.3.2 in full (the multicast MTCH reading rule is inferred, not directly quotable — see the caveat below); **TS 38.214** for PDSCH resource allocation and decoding (not covered here) |
+| PDCP (all steps) | PDCP | Cross-referenced to broadcast page, identical | **TS 38.323** Clause 5, 6 and 7 in full |
+| RLC (all steps) | RLC | Confirmed identical to broadcast (verified: no multicast-specific RLC content exists) | **TS 38.322** Clause 4.2.1.2 and 7 in full |
+| SDAP (user plane) | SDAP | Cross-referenced to broadcast page, identical | **TS 37.324** Clause 4.2, 5.1.1, 5.1.2, 5.2.2, 6.2.2.1 in full |
+| ASN.1 grammar (all steps) | — | Multicast-specific message/IE fragments only | **TS 38.331** Clause 6.2 (RRC messages) and Clause 6.3 (RRC information elements) in full, for every referenced type not expanded on this page, encoded per Clause 8 (Unaligned Packed Encoding Rules) |
+
+See the [MBS Broadcast RAN procedures](./analysis-mbs-broadcast-ran) page for the delivery-mode-2 equivalent — the two diverge at Step 4 (a distinct Multicast MCCH-RNTI) and Step 7 (a different LCID table for MTCH).
+
 ## Acquiring PLMN and RAN Information
 
 For information on the MBS Broadcast Pre-Configuration Management Object (MO) refer to **[3GPP TS 24.575](https://www.3gpp.org/dynareport/24575.htm)**.

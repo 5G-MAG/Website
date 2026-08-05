@@ -37,6 +37,27 @@ The step sequence below (numbered 0 to 7) is the acquisition path, from reading 
 
 The chain is a series of pointers, each layer telling the UE where to find the next. System information (SIB1) advertises SIB20; SIB20 gives the MCCH configuration; the MCCH (scheduled on the PDSCH via a PDCCH scrambled with the fixed MCCH-RNTI, FFFD) carries the `MBSBroadcastConfiguration`; and that configuration lists the sessions, their G-RNTIs and the MTCH scheduling needed to decode the traffic. The important property is that every step is derivable from broadcast system information with no uplink and no per-UE state, which is exactly why a broadcast service (delivery mode 2) can be received in any RRC state, including RRC_IDLE and RRC_INACTIVE. The per-layer procedure sections further down are reference pointers into TS 38.331 and the related Layer-2 specifications for each of these steps.
 
+## Implementation blueprint
+
+This page is a verified map of the acquisition path, not a self-contained implementation spec: it gives correct clause/table/RNTI/LCID pointers and the MBS-specific ASN.1, but a conformant implementation needs the full primary-source text behind each pointer. Fetch these before implementing a given step:
+
+| Step | Layer(s) | This page provides | Fetch in full before implementing |
+| --- | --- | --- | --- |
+| 0. PLMN/RAN info | NAS / configuration | Pre-configuration MO field list | **TS 24.575** (full MO definition), **TS 23.247** (MBS architecture, for how this config is used) |
+| 1. Obtain MIB | RRC (Layer 3), PHY | MIB ASN.1, acquisition/reception clause numbers | **TS 38.331** Clause 5.2.2.3.1 and 5.2.2.4.1 in full; **TS 38.213** for SSB/PBCH scheduling of the MIB (not covered here at all) |
+| 2. Obtain SIB1 | RRC (Layer 3), PHY | `si-SchedulingInfo`/`SIB-TypeInfo` pointer mechanism only | **TS 38.331** Clause 6.2.2 for the complete SIB1 message (this page shows one field of a much larger structure) and Clause 5.2.2.3.1/5.2.2.4.2 in full; **TS 38.213** for PDCCH-ConfigSIB1-based monitoring |
+| 3. SIB20 → MCCH config | RRC | SIB20/`MCCH-Config`/`CFR-ConfigMCCH-MTCH` ASN.1 | **TS 38.331** Clause 6.3.1 for any further-referenced IEs (e.g. `ControlResourceSet`) not expanded here |
+| 4. Demodulate MCCH via PDCCH | MAC, PHY | RNTI value (Table 7.1-1), LCID (Table 6.2.1-1c), one quoted MAC sentence | **TS 38.321** Clause 5.3.1 in full; **TS 38.213** for CORESET/Search Space Set configuration, PDCCH candidate blind decoding, and DCI format 1_0/1_1 (none of this physical-layer detail is covered on this page) |
+| 5. MCCH → `MBSBroadcastConfiguration` | RRC | Full message ASN.1 | **TS 38.331** Clause 5.9 for the complete UE procedure text (this page quotes the establishment/release actions only) |
+| 6. MTCH config + G-RNTI via `MBS-SessionInfoList` | RRC | Full IE ASN.1 | Same as step 5 |
+| 7. Demodulate MTCH via PDSCH | MAC, PHY | G-RNTI table entry, one quoted MAC sentence | **TS 38.321** Clause 5.3.1 (MTCH reading rule) and Clause 5.3.2 in full (HARQ soft-combining — this is *not* "no HARQ"; a dedicated, feedback-less HARQ process applies); **TS 38.214** for PDSCH resource allocation and decoding (not covered here) |
+| PDCP (all steps) | PDCP | Clause pointers only | **TS 38.323** Clause 5, 6 and 7 in full |
+| RLC (all steps) | RLC | Clause pointers only | **TS 38.322** Clause 4.2.1.2 and 7 in full |
+| SDAP (user plane) | SDAP | Clause pointers, key sentences quoted | **TS 37.324** Clause 4.2, 5.1.1, 5.1.2, 5.2.2, 6.2.2.1 in full |
+| ASN.1 grammar (all steps) | — | MBS-specific message/IE fragments only | **TS 38.331** Clause 6.2 (RRC messages) and Clause 6.3 (RRC information elements) in full, for every referenced type not expanded on this page (e.g. `RNTI-Value`, `TMGI-r17`, `Q-RxLevMin`), encoded per Clause 8 (Unaligned Packed Encoding Rules) |
+
+The [MBS Multicast Inactive RAN procedures](./analysis-mbs-multicast-inactive-ran) page has the equivalent blueprint for delivery mode 1 (RRC_INACTIVE reception) — the two diverge at Step 4 (a distinct Multicast MCCH-RNTI) and Step 7 (a different LCID table for MTCH).
+
 ## Acquiring PLMN and RAN Information
 
 For information on the MBS Broadcast Pre-Configuration Management Object (MO) refer to **[3GPP TS 24.575](https://www.3gpp.org/dynareport/24575.htm)**.
