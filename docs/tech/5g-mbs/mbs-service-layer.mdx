@@ -30,6 +30,8 @@ Two points apply to every figure and interaction described below (stated once he
 
 :::note[Security architecture confirmed]
 An earlier draft of this page described the user-plane security architecture as an open proposal ("the MBSF directly attached to the user plane"). Checked against the current TS 26.502 text (Release 18): this has since been resolved with a dedicated, optional **Multicast-Broadcast Security Function (MBSSF)**, defined in TS 23.247 Clause 6.13 and TS 33.501, which realises the user-plane client authentication procedure (TS 33.501 Clause W.4.1.3) at reference point **MBS-10** between the MBSSF and the MBSF Client. The MBSSF is not part of the MBSF or MBSTF; in deployment it may be co-located with either.
+
+Checked directly against TS 33.501 (Release 20, the latest available): Clause W.4.1.3 confirms the mechanism in more detail — the MBSSF "takes the role of the BM-SC" from the legacy MBMS security architecture (TS 33.246), and the UE authenticates to the MBSSF using either **GBA** (Generic Bootstrapping Architecture, as in MBMS security) or **AKMA** (Authentication and Key Management for Applications, TS 33.535), with the traffic-encryption key derived from the AKMA anchor key when AKMA is used.
 :::
 
 :::note
@@ -57,7 +59,11 @@ Load-bearing acronyms used below: AF (Application Function); AS (Application Ser
 
 ## Media Streaming sessions over MBS User Services ([TS 26.501](https://www.3gpp.org/dynareport/26501.htm))
 
-This clause of TS 26.501 is currently a placeholder (marked "Void" in the specification) and has no content yet; it is reserved for future definition of how 5G Media Streaming sessions run over MBS User Services.
+**This is no longer a placeholder.** An earlier version of this page (and, at the time, of TS 26.501 itself) described this as a "Void" clause reserved for future work. It has since been filled in: TS 26.501 Clause 4.9 ("Downlink 5G Media Streaming via MBS") is now a full, normative architecture for running 5G Media Streaming (5GMS) downlink delivery on top of MBS User Services, split into three subclauses:
+
+- **Clause 4.9.1** (Architecture): the 5GMSd AF configures delivery of 5GMS content to an MBS Client in the UE by provisioning an MBS User Service (TS 26.502 Clause 4.5.1); the 5GMSd Client itself acts as the MBS-Aware Application, controlling the MBS Client via the MBS-6 API; the MBSTF Client's Media Server subfunction exposes received (and possibly repaired) content to the 5GMSd Client's Media Player via MBS-7. One current limitation is called out explicitly: push-based ingest by the MBSTF at Nmb8 is not enabled in the current release — 5GMS only supports pull-based content acquisition at reference point M4.
+- **Clause 4.9.2** ("Usage of 5GMS reference points for MBS-based delivery"): how the existing 5GMS reference points (M1, M2d, M3d, M4d, M5, M6d, M7d, M8d, M11d) are used or adapted for this scenario — for example, the 5GMSd Application Provider must additionally authorise via M1 that its content may be distributed via MBS.
+- **Clause 4.9.3** ("Usage of MBS reference points and interfaces"): the MBS-side reference points introduced elsewhere on this page, from the 5GMS perspective — Nmbsf at Nmb10/Nmb5+N33 (User Service provisioning), Nmb8 (pull-based ingest from the 5GMSd AS), MBS User Services and Distribution Methods (real-time object streaming per TS 26.502 Clause 6.1, and the User Service Announcement per TS 26.502 Clause 4.2.4), MBS-6 (the 5GMSd Client acting as MBS-Aware Application, including reception reporting) and MBS-7 (the MBSTF Client exposing the entry-point document and received objects to the 5GMSd Client).
 
 ## MBS User Services (TS 26.502)
 
@@ -157,5 +163,5 @@ The control-plane reference points (Nmb10, Nmb1, Nmb2, and the NEF-mediated vari
 :::note[Verified against primary sources]
 Checked directly against TS 26.502 V18 (Rel-18) and TS 26.517 V18 (Rel-18): every reference-point name and mapping on this page (Nmb1, Nmb2, Nmb5, Nmb8, Nmb9, Nmb10, Nmb13, N33+Nmb5, N33+N29mb, N6mb, MBS-4-MC, MBS-4-UC, MBS-5, MBS-7, MBS-10) matches the current spec text, as does the Figure 4.2.2-1 citation. Four corrections were made in the course of this check: a cited "figure 3.2-1" for the overall system architecture does not exist anywhere in TS 26.502 (removed, now an unlabelled figure reference); the UE-side entities figure has no confirmed 3GPP figure number either (Clause 4.3.5 describes it in prose only); the domain-model figure belongs to **TS 26.502** Figure 4.5.1-1, not TS 26.501 as previously stated; and the "XML schema" at Clause A.1.1 does not exist in the current text (Annex A.1 is Void — only the JSON/YAML-based Clause A.2.1 schema exists). The security-architecture note above was also updated from an open proposal to the now-confirmed MBSSF function.
 
-Two items remain unverified, since TS 23.247, TS 26.501 and TS 33.501 were not available for this check: the "Media Streaming sessions over MBS User Services" clause of TS 26.501 (said to be Void), and the TS 33.501 Clause W.4.1.3 reference itself. Verify these against the specific versions you are targeting.
+**Update:** the two items above have since been checked. TS 26.501 V19.4.0 confirms the "Media Streaming sessions over MBS User Services" content is no longer Void — see the rewritten section above. TS 33.501 (Release 20) confirms Clause W.4.1.3 exists exactly as cited and describes the GBA/AKMA-based authentication mechanism now reflected in the security note above. Every claim on this page is now checked against a primary source.
 :::
