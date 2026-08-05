@@ -22,7 +22,7 @@ How CAMARA network APIs map to 3GPP's NEF, CAPIF and PCF exposure mechanisms for
 
 ## Overview
 
-Network capability exposure means letting an application ask the mobile network for the conditions it needs (for example guaranteed bandwidth or low latency for a live feed) through a documented interface, instead of taking whatever best-effort service the network happens to provide. 5G-MAG analyses and contributes to the standards for this, focusing on APIs that let media applications request and manage network resources. The relevant pieces are 3GPP's Network Exposure Function (NEF), the Common API Framework (CAPIF), and the CAMARA open-source project (a Linux Foundation initiative developed with GSMA support). For acronyms used here, see the [Glossary](/tech/glossary).
+5G-MAG tracks and contributes to standards for network capability exposure: APIs that let media applications request and manage network resources. The relevant pieces are 3GPP's Network Exposure Function (NEF), the Common API Framework (CAPIF), and the CAMARA open-source project (a Linux Foundation initiative developed with GSMA support). For the technical analysis of how these map together, see the Tech page linked below. For acronyms used here, see the [Glossary](/tech/glossary).
 
 <div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
 
@@ -41,21 +41,11 @@ Network capability exposure means letting an application ask the mobile network 
 
 </div>
 
-## How the pieces fit
-
-Network capability exposure has three layers, and the specifications below sit at different layers:
-
-- **Developer-facing APIs (CAMARA).** Simple, RESTful, operator-agnostic APIs that a media application calls directly. A CAMARA API hides the 3GPP machinery behind a small set of resources (for example a QoD "session").
-- **3GPP northbound exposure (NEF/CAPIF).** The Network Exposure Function (NEF) is the controlled gateway through which an application function reaches the 5G Core. The Common API Framework (CAPIF) provides discovery, onboarding, authentication and logging so that many northbound APIs can be published and consumed consistently.
-- **5G Core control (PCF and related functions).** Inside the core, the request is turned into policy and QoS decisions on the subscriber's PDU session.
-
-A CAMARA call therefore typically maps to a 3GPP northbound operation on the NEF, which in turn drives a service-based operation inside the core. For example, a CAMARA Quality on Demand session maps to the NEF `AsSessionWithQoS` API in TS 29.522, which drives `Npcf_PolicyAuthorization` on the PCF (TS 29.514). The mapping tables that record these correspondences are maintained by CAMARA and by GSMA; the [technical analysis pages](/tech/network-apis) work through them API by API.
-
 ## Key 3GPP Specifications
 
-### Network Exposure Function (NEF)
+The specifications below are grouped by the layer of network capability exposure they define: 3GPP northbound exposure (NEF, CAPIF), 5G Core policy control, 5G Media Streaming APIs, and the Service Enabler Architecture Layer (SEAL). See [Technical Documentation: Network APIs](/tech/network-apis) for the architecture that ties these layers together.
 
-The NEF is the 5G core function that exposes network capabilities to outside applications through northbound APIs. It acts as the controlled gateway an application function (AF, an application-side component that talks to the network) calls to request features such as a quality-of-service (QoS) session. In the 4G/EPC world the equivalent function is the Service Capability Exposure Function (SCEF); NEF and SCEF are often deployed together (an "SCEF+NEF") so the same northbound API can front both core generations.
+### Network Exposure Function (NEF)
 
 - [TS 29.522](https://www.3gpp.org/dynareport/29522.htm): Network Exposure Function (NEF); Northbound APIs (includes Nnef_AFSessionWithQoS and Nnef_ChargeableParty)
 - [TS 29.517](https://www.3gpp.org/dynareport/29517.htm): 5G System; Application Function Event Exposure Service; Stage 3
@@ -63,14 +53,10 @@ The NEF is the 5G core function that exposes network capabilities to outside app
 
 ### Policy and QoS Control
 
-These specifications define how an application function (AF) requests policy and quality-of-service (QoS) treatment for a session, and how the Policy Control Function (PCF) authorises it. They also cover scheduling bulk transfers into off-peak windows through Background Data Transfer (BDT).
-
 - [TS 29.514](https://www.3gpp.org/dynareport/29514.htm): 5G System; Policy Authorization Service; Stage 3 (Npcf_PolicyAuthorization)
 - [TS 29.554](https://www.3gpp.org/dynareport/29554.htm): 5G System; Background Data Transfer (BDT) Policy Control Service; Stage 3 (Npcf_BDTPolicyControl, Nnef_BDTPNegotiation)
 
 ### Common API Framework (CAPIF)
-
-CAPIF is the shared framework for discovering, authenticating and managing access to 3GPP northbound APIs, so that different exposed APIs (such as those above) can be published and consumed through one consistent mechanism.
 
 - [TS 23.222](https://www.3gpp.org/dynareport/23222.htm): Procedures for the Common API Framework for 3GPP Northbound APIs
 - [TS 29.222](https://www.3gpp.org/dynareport/29222.htm): Common API Framework for 3GPP Northbound APIs (Stage 3)
@@ -81,8 +67,6 @@ CAPIF is the shared framework for discovering, authenticating and managing acces
 - [TS 26.501](https://www.3gpp.org/dynareport/26501.htm): 5G Media Streaming (5GMS); General description and architecture
 
 ### Service Enabler Architecture Layer (SEAL)
-
-SEAL provides common enabler services (such as group management, configuration and network resource management) that vertical applications can reuse, and is drawn on by the reference implementation for network capability exposure. Two SEAL services are particularly relevant here: Network Resource Management (which requests QoS and multicast/broadcast resources on behalf of a vertical application) and Network Slice Capability Enablement (NSCE), which lets a vertical application influence slice selection and adaptation. The NSCE server acts as an AF towards the 5G Core, updating the S-NSSAI and DNN in the UE Route Selection Policy (URSP) rules for a vertical's traffic.
 
 - [TS 23.434](https://www.3gpp.org/dynareport/23434.htm): Service Enabler Architecture Layer for Verticals (SEAL); Functional architecture and information flows
 - [TS 24.549](https://www.3gpp.org/dynareport/24549.htm): SEAL; Network Slice Capability Enablement (NSCE); Stage 3 (protocol aspects)
@@ -102,9 +86,7 @@ See the [Technical Documentation: Network APIs](/tech/network-apis) page for det
 
 ### How CAMARA is organised
 
-CAMARA is hosted by the Linux Foundation and works with the GSMA Operator Platform Group, which contributes operator requirements; GSMA Open Gateway is the commercial programme through which operators expose CAMARA-defined APIs. Technical direction sits with a Technical Steering Committee, and individual APIs are developed in per-API sub-projects and sandbox repositories on GitHub. Cross-cutting rules (the device object, error model, security, versioning) are set by the Commonalities and Identity and Consent Management working groups and are applied to every API.
-
-APIs are shipped in twice-yearly meta-releases (spring and fall), each bundling a consistent set of API versions so that operators can plan implementations. An API version tagged `wip` on the `main` branch is work in progress; a released meta-release version (for example `r`-tagged releases) is the one to integrate against. Several of the APIs 5G-MAG analyses are still pre-1.0 (`v0`/`wip`), so field names and enumerations can change between releases; the technical pages flag where this matters.
+CAMARA is hosted by the Linux Foundation and works with the GSMA Operator Platform Group; GSMA Open Gateway is the commercial programme through which operators expose CAMARA-defined APIs. APIs are shipped in twice-yearly meta-releases (spring and fall): a `wip` version on the `main` branch is work in progress, a released meta-release version (`r`-tagged) is the one to integrate against. Several of the APIs 5G-MAG analyses are still pre-1.0 (`v0`/`wip`).
 
 ### CAMARA APIs to 3GPP mapping (summary)
 
@@ -115,15 +97,11 @@ APIs are shipped in twice-yearly meta-releases (spring and fall), each bundling 
 | Dedicated Networks                                 | Non-public network / slice provisioning plus per-device QoS   | TS 23.501 (NPN); TS 29.522 for QoS                                                                                                                               |
 | Connectivity Insights                              | Network analytics and monitoring exposure                     | NEF analytics/monitoring events (TS 29.522); NWDAF where used ([TS 29.520](https://www.3gpp.org/dynareport/29520.htm))                                           |
 
-The mappings above are the general correspondence; CAMARA does not mandate a specific southbound implementation, and an operator may realise a given API differently. The detailed, per-field analysis is on the [technical pages](/tech/network-apis/network-api-initiatives).
+The mappings above are the general correspondence. See the [technical pages](/tech/network-apis/network-api-initiatives) for the detailed, per-field analysis.
 
 ## 5G-MAG tracking and contribution focus
 
-5G-MAG's interest is media-specific: contribution and live production uplinks, and live distribution downlinks, where an application benefits from asking the network for a defined quality rather than accepting best effort. The work centres on:
-
-- analysing each CAMARA QoS and slicing API against media production and live distribution scenarios, and recording gaps (for example the lack of quantitative feedback from Connectivity Insights, or the absence of a service-area dimension in QoS Provisioning);
-- checking that the CAMARA parameter set (delay budget, upstream/downstream rates, jitter, loss) is expressive enough for professional media, and that the several QoS-related APIs stay mutually consistent;
-- tracking the 3GPP northbound specifications (TS 29.522, TS 29.514) and SEAL (TS 23.434) that the CAMARA APIs map onto.
+5G-MAG's interest is media-specific: contribution and live production uplinks, and live distribution downlinks. The work centres on the CAMARA QoS and slicing APIs and the 3GPP northbound specifications (TS 29.522, TS 29.514) and SEAL (TS 23.434) they map onto. See [Technical Documentation: Network APIs](/tech/network-apis) for the detailed gap analysis.
 
 :::warning[References to verify]
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TS 24.549 (SEAL NSCE Stage 3), TS 28.531 and TS 28.541 (network slice management), TS 29.520 (NWDAF services). Verify against the 3GPP work plan before publication.

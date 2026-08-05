@@ -43,16 +43,14 @@ Beyond 2D Video covers media formats that go past a flat single-camera picture, 
 
 ## What the study covers
 
-FS_Beyond2D is a feasibility and characterisation study, not a normative specification. Its purpose is to establish, on a like-for-like basis, how well candidate formats and codecs can represent richer-than-2D content and how they behave when delivered over 5G, so that later normative work in 3GPP SA4 has a documented evidence base.
-
-The study groups the content into families of representation formats:
+FS_Beyond2D is a feasibility and characterisation study, not a normative specification. It covers four format families:
 
 - **Stereoscopic video**, a left and right view giving a fixed 3D effect without free viewpoint;
 - **Multiview and multi-view plus depth (MV+D)**, several camera views (with depth) that support a limited change of viewpoint;
 - **Video plus depth**, a single texture view augmented with a depth map;
 - **Dense point clouds**, a volumetric representation of an object or person captured in 3D.
 
-Each family is exercised through concrete end-to-end scenarios rather than in the abstract. See the [Beyond 2D Video](/tech/volumetric/beyond-2d) Tech page for the per-scenario detail.
+See the [Beyond 2D Video](/tech/volumetric/beyond-2d) Tech page for the per-family and per-scenario detail.
 
 ## Codecs and how they map to the formats
 
@@ -65,15 +63,11 @@ The study evaluates each format with the codecs that are practical for it today,
 | Video plus depth      | HEVC/VVC with an associated depth video                         | Not V3C-based (depth carried alongside) |
 | Dense point cloud     | V-PCC (video-based) and, for comparison, G-PCC (geometry-based) | V-PCC is part of ISO/IEC 23090-5        |
 
-This is where the Beyond 2D work connects to the [Volumetric Video with V3C](/tech/standards/v3c) topic: the volumetric and multi-view-plus-depth scenarios are precisely the cases where V3C (V-PCC and MIV) is one of the coding approaches under evaluation.
-
-## Evaluation method
-
-The study defines a repeatable pipeline so that results are comparable across formats and contributors: a set of test sequences, a fixed processing chain (encode, package, deliver, decode, render), and defined quality metrics. Because several of the formats reconstruct or synthesise a viewport rather than replaying a fixed picture, quality is assessed both on source views and on rendered pose-trace views (a predefined camera path through the reconstructed content). Reported metrics include conventional PSNR alongside immersive-video measures such as IV-PSNR, and perceptual measures such as VMAF, together with bitrate. Delivery is considered in the context of 5G Media Streaming, so that the format comparison is grounded in how the content would actually be carried.
+This connects to the [Volumetric Video with V3C](/tech/standards/v3c) topic: the volumetric and multi-view-plus-depth scenarios are the cases where V3C (V-PCC and MIV) is one of the coding approaches under evaluation.
 
 ## Relationship to 5G Media Streaming
 
-The study does not create a new delivery mechanism. It assesses these formats against the existing 5G media delivery framework: ISOBMFF/CMAF packaging and DASH-based adaptive streaming carried by 5G Media Streaming ([TS 26.501](https://www.3gpp.org/dynareport/26501.htm) architecture, [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) protocols and APIs). The question the study helps answer is which formats and codecs are ready to be carried over that pipeline at acceptable quality and bitrate, and where gaps remain for future 3GPP work.
+The study assesses these formats against the existing 5G Media Streaming delivery framework ([TS 26.501](https://www.3gpp.org/dynareport/26501.htm) architecture, [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) protocols and APIs). See the [Beyond 2D Video](/tech/volumetric/beyond-2d) Tech page for the detailed analysis.
 
 ## Related 3GPP Work Items
 

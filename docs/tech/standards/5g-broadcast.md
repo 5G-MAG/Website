@@ -74,7 +74,7 @@ The additions, discussed and agreed among members on the Kanban board, include:
 - New requirements identified by 5G-MAG;
 - Extensions to DVB-I to support 5G Broadcast;
 - Band support for receivers including Band 108 (UHF);
-- 5G Broadcast as an improvement to the Public Warning System (PWS), e.g. delivery of warning messages from the Mobility Management Entity (MME) to the eNodeB (the LTE base station);
+- 5G Broadcast as an improvement to the Public Warning System (PWS);
 - Deployment Guidelines on concurrent support of 5G Broadcast and 5G Unicast;
 - Support for 3GPP Service URLs;
 - Deployment receiver profiles including a RAN-only profile;
@@ -100,9 +100,7 @@ ETSI TS 103 720 v1.2.1 defines three normative receiver categories, signalled th
 | 28            | LTE-based 5G Broadcast **Main Receiver**     | All SCS (15, 7.5, 2.5, 1.25, 0.37 kHz) |
 | 30            | **5GMS** via LTE-based 5G Broadcast Receiver | Main Receiver plus 5GMS requirements   |
 
-The Base Receiver is the minimum profile, aimed at devices for fixed indoor reception using the 1.25 kHz numerology. The Main Receiver must support all five numerologies and is the target for mobile and portable devices. The 5GMS category adds the 5G Media Streaming requirements on top of the Main Receiver.
-
-The v1.2.1 specification PDF and its work item are linked under Quick access above.
+The v1.2.1 specification PDF and its work item are linked under Quick access above. For the capabilities each category is aimed at, see [Deployment Profiles](/tech/5g-broadcast/deployment-profiles#standardised-receiver-categories-etsi-ts-103-720).
 
 ### Publication of ETSI TS 103 720 v1.1.1
 
@@ -152,7 +150,13 @@ This is a list of specifications in the scope of Multimedia Broadcast/Multicast 
 - [TS 36.133](https://www.3gpp.org/dynareport/36133.htm) - Requirements for support of radio resource management
 - [TS 36.304](https://www.3gpp.org/dynareport/36304.htm) - User Equipment (UE) procedures in idle mode, relevant to SIM-free and Receive-Only Mode reception without an RRC connection
 
-MBMS has three named network interfaces, distinct from the M1-M8 reference points used in 5G Media Streaming (see [Standards: 5G Media Streaming](/tech/standards/5gms)). **M1** (MBMS-GW to eNB) is a pure user-plane interface: it carries the broadcast content itself via IP multicast, with no dedicated application protocol of its own; the SYNC protocol (TS 25.446) keeps content time-aligned across the eNBs in an MBSFN area. **M2** (MCE to eNB) and **M3** (MME to MCE) are control-plane interfaces, specified by M2AP (TS 36.443) and M3AP (TS 36.444) respectively.
+MBMS has three named network interfaces, distinct from the M1-M8 reference points used in 5G Media Streaming (see [Standards: 5G Media Streaming](/tech/standards/5gms)).
+
+| Interface | Specification              | Plane        | Connects       |
+| --------- | --------------------------- | ------------ | -------------- |
+| M1        | TS 25.446 (SYNC)            | User plane   | MBMS-GW to eNB |
+| M2        | TS 36.443 (M2AP)            | Control plane | MCE to eNB     |
+| M3        | TS 36.444 (M3AP)            | Control plane | MME to MCE     |
 
 ### Core network and mobility
 
@@ -221,13 +225,13 @@ Well-established references (DASH = ISO/IEC 23009-1; 5GMS = TS 26.501 / [TS 26.5
 
 ## 5G-MAG tracking and contribution focus
 
-5G-MAG maintains ETSI TS 103 720 itself rather than only tracking it: it undertook the specification's maintenance in 2021, contributing the requirements and fixes that shape each new version, agreed among members on the [Kanban board](https://github.com/orgs/5G-MAG/projects/32). The current focus areas are:
+5G-MAG maintains ETSI TS 103 720 itself rather than only tracking it: it undertook the specification's maintenance in 2021, contributing the requirements and fixes that shape each new version, agreed among members on the [Kanban board](https://github.com/orgs/5G-MAG/projects/32). Current focus:
 
-- **ETSI TS 103 720 v1.3.1 (in progress):** the work item kicked off in 2024 updates the specification for 3GPP Release 18, extending it to Release 19. Items being progressed include extensions to DVB-I to support 5G Broadcast, additional receiver band support (including Band 108, UHF), 5G Broadcast as a Public Warning System improvement, deployment guidelines for concurrent 5G Broadcast and 5G Unicast, support for 3GPP Service URLs, and low-latency distribution.
-- **Implementer-driven fixes:** the v1.3.1 additions explicitly include bugs and clarification questions raised by implementors of the specification, in particular by 5G-MAG itself, together with new requirements identified by 5G-MAG.
-- **Completed Release 17 alignment:** 5G-MAG completed the v1.2.1 update in 2023, adding receiver requirements for consistent network planning, bandwidth/UHF spectrum information, and support for 5GMS over eMBMS (including hybrid use cases).
+- **ETSI TS 103 720 v1.3.1 (in progress):** 3GPP Release 18 update, extending to Release 19 (see "Updates towards ETSI TS 103 720 v1.3.1" above).
+- **Implementer-driven fixes:** bugs, clarification questions and new requirements raised by implementors, in particular 5G-MAG.
+- **Completed:** Release 17 alignment (v1.2.1, 2023).
 
-For the release-by-release specification detail behind these updates, see [Standards Evolution](/tech/standards/5g-broadcast-standards-evolution).
+For the release-by-release specification detail behind these updates, see [Standards Evolution](/tech/standards/5g-broadcast-standards-evolution). For the technical analysis, see [Technical Documentation: 5G Broadcast](/tech/5g-broadcast).
 
 ## Related Standards Work
 

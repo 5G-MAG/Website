@@ -1,7 +1,7 @@
 ---
 hide_title: true
 title: Time Sensitive Communications
-description: How 3GPP Time Sensitive Communications and the 5G-as-TSN-bridge model deliver deterministic timing for SMPTE ST 2110 media production.
+description: 3GPP Time Sensitive Communications specifications for deterministic, low-latency 5G delivery in professional media production, and the related IEEE TSN and SMPTE standards.
 sidebar_position: 15
 ---
 
@@ -22,7 +22,7 @@ Deterministic, low-latency delivery over 5G for tightly synchronised professiona
 
 ## Overview
 
-5G-MAG monitors standardisation of Time Sensitive Communication (TSC) and its application to media production workflows. TSC enables deterministic, low-latency data delivery over 5G, which is essential for professional media applications requiring tight synchronisation, such as media over 5G defined by the Society of Motion Picture and Television Engineers (SMPTE) in ST 2110. "Deterministic" here means the network delivers packets within a bounded, predictable latency (rather than best-effort), so essence streams stay in sync.
+5G-MAG monitors standardisation of Time Sensitive Communication (TSC) and its application to media production workflows, such as SMPTE ST 2110 essence transport. For the technical analysis of how TSC works, see the Tech page linked below.
 
 TSC in a media context usually runs over a private 5G deployment. For the network foundations it depends on, see [Standards: Non-Public Networks](/tech/standards/npn) first. For acronyms used here, see the [Glossary](/tech/glossary).
 
@@ -42,39 +42,6 @@ TSC in a media context usually runs over a private 5G deployment. For the networ
 </div>
 
 </div>
-
-## What TSC Adds Over Ordinary QoS
-
-Ordinary 5G QoS can give a flow a guaranteed bit rate and a target latency. TSC goes further in two respects that matter for professional media:
-
-- **Bounded latency and jitter, not just average latency.** Deterministic delivery means packets arrive within a tight window every time, which is what keeps synchronised essence streams (video, audio, ancillary data) aligned at the receiver.
-- **Shared time.** Devices on the network are synchronised to a common clock so that timestamps and scheduled transmission windows are meaningful across the whole system. This is the basis for frame-accurate production and for the scheduled-traffic behaviour that TSN relies on.
-
-## 5G System as a TSN Bridge
-
-This bridge model is defined in the TSC clause of TS 23.501. Two translator functions terminate the bridge at its edges:
-
-- **DS-TT (Device-side TSN Translator)**: sits at the UE side and connects the TSN endpoint (for example a camera) to the UE.
-- **NW-TT (Network-side TSN Translator)**: sits at the User Plane Function (UPF) and connects to the wired TSN network.
-
-Between DS-TT and NW-TT, the 5G core and radio carry the TSN traffic, mapping TSN stream QoS onto 5G QoS Flows. From the TSN control plane's point of view this whole path looks like a single bridge with ingress and egress ports, so existing TSN configuration tooling can treat the 5G system as just another bridge in the network graph.
-
-## Time Synchronisation
-
-Two time domains are involved and both must be handled:
-
-- **5G internal clock**: the 5G system distributes its own reference time to UEs and to the DS-TT/NW-TT.
-- **TSN / working clock**: the (g)PTP time carried across the bridge for the application, per IEEE 802.1AS.
-
-Release 16 introduced the transparent-bridge model in which the 5G system relays gPTP time-synchronisation messages, adjusting for the residence time inside the 5G system. Release 17 generalised time synchronisation: the 5G system can act in different roles within an IEEE 802.1AS time-aware domain and can support IEEE 1588 boundary-clock and transparent-clock modes, and time synchronisation can be exposed to and controlled by an Application Function. This generalisation is what makes TSC useful beyond the original industrial TSN framing, including for media, where SMPTE ST 2059 defines how PTP time aligns video signals.
-
-## Control Plane and the TSCTSF
-
-For an application (or a media production controller) to ask the 5G system for deterministic behaviour, there has to be a control-plane path. Release 17 introduced the Time Sensitive Communication and Time Synchronization Function (TSCTSF). An Application Function in the same trust domain can talk to the TSCTSF directly; an Application Function in a different trust domain reaches it through the Network Exposure Function (NEF). Through this path the application can request QoS and traffic characteristics for scheduling optimisation and can activate or deactivate time synchronisation. The TSN control-plane interworking itself follows IEEE 802.1Qcc, with the 5G system exposing bridge configuration to the Centralized Network Configuration (CNC).
-
-## Applying TSC to Media Production
-
-Media production was not the original target for TSC, but it is a natural fit. The core requirements resemble industrial TSC (bounded latency, tight synchronisation), but the traffic is high-bitrate, uplink-dominant media rather than small industrial control packets. In a studio or venue, an NPN carries the 5G system, the TSN bridge model connects it to the wired ST 2110 infrastructure, and PTP (IEEE 802.1AS / SMPTE ST 2059) provides the shared clock so that essence flows from wireless cameras stay aligned with the wired plant. Whether the full TSN bridge and control plane are used, or only the deterministic-QoS and time-sync features without a wired TSN CNC, depends on the production architecture.
 
 ## Specifications by Release
 
@@ -96,7 +63,7 @@ Media production was not the original target for TSC, but it is a natural fit. T
 
 ## IEEE Time-Sensitive Networking (TSN)
 
-5G TSC is designed to interwork with IEEE 802.1 Time-Sensitive Networking (TSN) standards. To achieve this, the 5G system presents itself to the wired network as a single logical TSN bridge: the TSN control plane sees one bridge, while the 5G core and radio handle the wireless segment internally. The relevant IEEE standards are:
+5G TSC is designed to interwork with IEEE 802.1 Time-Sensitive Networking (TSN) standards. The relevant IEEE standards are:
 
 - **IEEE 802.1AS**: Timing and Synchronisation (gPTP)
 - **IEEE 802.1Qbv**: Enhancements for Scheduled Traffic

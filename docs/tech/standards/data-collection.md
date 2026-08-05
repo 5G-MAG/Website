@@ -22,7 +22,7 @@ How devices report media consumption and quality-of-experience data back to the 
 
 ## Overview
 
-UE data collection covers the 3GPP mechanisms by which a device (user equipment, UE) reports data, such as media consumption and quality of experience, to the network, and by which the network exposes events to consuming functions. For media services this feeds analytics (through the Network Data Analytics Function, NWDAF) and delivery optimisation. The specifications below are grouped by the 3GPP working group responsible for them: SA2 (system architecture and analytics), SA4 (media data collection and reporting, reusing the 5G Media Streaming framework), and CT3 (stage-3 APIs for event exposure and network data analytics). 5G-MAG tracks and contributes to this work. For acronyms used here, see the [Glossary](/tech/glossary).
+UE data collection covers the 3GPP mechanisms by which a device (user equipment, UE) reports data, such as media consumption and quality of experience, to the network, and by which the network exposes events to consuming functions. The specifications below are grouped by the 3GPP working group responsible for them: SA2 (system architecture and analytics), SA4 (media data collection and reporting, reusing the 5G Media Streaming framework), and CT3 (stage-3 APIs for event exposure and network data analytics). For the technical analysis of the DCAF architecture and its reference points, see the Tech page linked below. For acronyms used here, see the [Glossary](/tech/glossary).
 
 <div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
 
@@ -41,51 +41,13 @@ UE data collection covers the 3GPP mechanisms by which a device (user equipment,
 
 </div>
 
-## The work area
-
-Historically, UE-side quality of experience (QoE) data in 3GPP media services was collected through mechanisms specific to a single service, for example the QoE metrics defined for progressive download and DASH in [TS 26.247](https://www.3gpp.org/dynareport/26247.htm), or the reception reporting and consumption reporting of MBMS in [TS 26.346](https://www.3gpp.org/dynareport/26346.htm). Each service defined its own configuration, reporting format and collection endpoint. As more media features moved into the 5G Media Streaming (5GMS) framework (TS 26.501, TS 26.512), 3GPP SA4 defined a single, reusable data collection and reporting framework that any data domain can instantiate, rather than repeating a bespoke pipeline per feature.
-
-That framework is specified in two SA4 documents: TS 26.531 (general description and architecture, the stage-2 view) and TS 26.532 (protocols, formats and the stage-3 APIs). It introduces one central network function, the Data Collection Application Function (DCAF, formally the Data Collection AF), and a small set of named reference points, R1 to R6, that connect the DCAF to the entities around it. The framework is deliberately abstract: TS 26.531 defines it so that it can be embedded inside the architecture of another data domain (for example inside 5GMS downlink media streaming), reusing the same provisioning, reporting and exposure interfaces.
-
-The collected UE data is not exposed raw. The Provisioning AF configures Data Access Profiles that constrain what may be exposed and require the DCAF to aggregate or otherwise process the data before it leaves the function, which is how the framework supports data-minimisation and access control by design.
-
-## Architecture and key concepts
-
-The framework is organised around the following functional entities:
-
-- **Data Collection Application Function (DCAF)** - the central function. It receives provisioning from the application, offers reporting configurations to clients in the UE and to Application Servers, collects and buffers the reported data, and exposes processed events to consumers.
-- **Provisioning AF** - a function in the Application Service Provider (ASP) domain that configures what data is to be collected, how it is sampled and reported, and which Data Access Profiles govern exposure.
-- **Direct Data Collection Client** - a client in the UE that obtains a reporting configuration from the DCAF and sends reports to it directly.
-- **Indirect Data Collection Client** - a client in the UE that reports via an intermediary rather than directly to the DCAF.
-- **Application Server (AS)** - a server-side source of data reports for the same collected data set.
-- **Event Consumer AF** - an Application Function that subscribes to and receives exposed events. A typical consumer is the NWDAF, the 5G core function that produces network analytics.
-
-### Reference points R1 to R6
-
-The reference points are named interfaces between the DCAF and the surrounding entities. Grouped by function:
-
-| Reference point | Between                                       | Purpose                                                                                                 |
-| --------------- | --------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| R1              | Provisioning AF and DCAF                      | Provision data collection and reporting (sessions, reporting configurations, Data Access Profiles).     |
-| R2              | Direct Data Collection Client (UE) and DCAF   | Fetch reporting configuration and submit reports directly; carried over an encrypted transfer protocol. |
-| R3              | Indirect Data Collection Client (UE) and DCAF | Fetch reporting configuration and submit reports via an intermediary.                                   |
-| R4              | Application Server and DCAF                   | Fetch reporting configuration and submit reports from the server side.                                  |
-| R5              | DCAF and NWDAF                                | Expose processed event data to network analytics.                                                       |
-| R6              | DCAF and Event Consumer AF                    | Expose processed event data to a consuming Application Function.                                        |
-
-Provisioning at R1 defines, per Event ID, a set of Data Access Profiles. A Data Access Profile specifies the processing operations (for example time-window aggregation with a function such as SUM) that the DCAF applies to collected data before exposing the resulting event over R5 or R6. This is the mechanism that restricts exposure and enforces aggregation.
-
-The stage-3 APIs that realise these reference points are: `Ndcaf_DataReportingProvisioning` and `Ndcaf_DataReporting` (TS 26.532) for R1 to R4, and `Naf_EventExposure` / `Nnef_EventExposure` (TS 29.517) for exposure at R5 and R6. The DCAF may expose either directly as an AF (`Naf_...`) or via the Network Exposure Function using the `Nnef_...` variants.
-
 ## Specifications by role and release
 
-The framework reuses the wider 5G core analytics and exposure machinery rather than duplicating it. The specifications fall into three roles, tracked in the tables below.
-
-- **System architecture and analytics (SA2):** TS 23.288 defines the NWDAF and the network data analytics architecture into which exposed UE data feeds. This is the consumer side of the framework.
-- **Media data collection and reporting (SA4):** TS 26.531 and TS 26.532 define the DCAF framework itself. TS 26.501 and TS 26.512 define the 5GMS framework into which the DCAF is embedded for media data reporting (5GMS defines media-specific reporting such as QoE and consumption reporting that can use the DCAF as the collection endpoint).
+- **System architecture and analytics (SA2):** TS 23.288 defines the NWDAF and the network data analytics architecture into which exposed UE data feeds.
+- **Media data collection and reporting (SA4):** TS 26.531 and TS 26.532 define the DCAF framework. TS 26.501 and TS 26.512 define the 5GMS framework into which the DCAF is embedded for media data reporting.
 - **Stage-3 core network APIs (CT3):** TS 29.517 (AF event exposure), TS 29.520 (NWDAF services), TS 29.522 (NEF northbound) and TS 29.591 (NEF southbound) provide the REST APIs used for event exposure and analytics.
 
-The reusable DCAF framework (TS 26.531 / TS 26.532) was introduced in 3GPP Release 17 and continued in Release 18. The underlying analytics architecture (TS 23.288, NWDAF) originates in Release 16 and has been extended in subsequent releases. Because these documents are still maintained across releases, the release placement of individual features should be checked against the current 3GPP work plan before it is relied upon.
+The DCAF framework (TS 26.531 / TS 26.532) was introduced in 3GPP Release 17 and continued in Release 18. The analytics architecture (TS 23.288, NWDAF) originates in Release 16 and has been extended in subsequent releases. Check the version of each specification you are targeting for the exact release content.
 
 ## Related 3GPP Specifications
 
@@ -118,7 +80,7 @@ These are the stage-3 API specifications for exposing events, including the Netw
 | [TS 29.591](https://www.3gpp.org/dynareport/29591.htm) | 5G System; Network Exposure Function Southbound Services; Stage 3 |
 
 :::warning[References to verify]
-These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the R1 to R6 reference-point mapping and per-reference-point purpose, the assignment of the `Ndcaf_DataReportingProvisioning`, `Ndcaf_DataReporting`, `Naf_EventExposure` and `Nnef_EventExposure` service operations to specific reference points, and the Release-17/Release-18 placement of TS 26.531 and TS 26.532. Verify against the 3GPP/ETSI work plan before publication.
+The Release-17/Release-18 placement of TS 26.531 and TS 26.532 was not confirmed against a primary source (the 3GPP/ETSI portals block automated access). Verify against the 3GPP/ETSI work plan before publication. For the verification status of the R1 to R6 reference-point mapping and stage-3 API assignments, see [Tech: UE Data Collection](/tech/data-collection/data-collection-event-exposure).
 :::
 
 ## 5G-MAG tracking and contribution focus

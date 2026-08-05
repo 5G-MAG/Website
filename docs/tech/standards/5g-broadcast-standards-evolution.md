@@ -55,12 +55,12 @@ LTE-based 5G Broadcast is not a single 3GPP work item but the accumulation of se
 
 ## Release 14: the FeMBMS baseline
 
-Release 14 introduced Further enhanced MBMS (FeMBMS) under the [**EnTV**](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=700032) work item (WI 700032; approved RAN#73, September 2016; completed RAN#76, June 2017). It is the foundation on which every later release builds. The defining change is the **MBMS-dedicated cell**, in which almost the whole carrier is given over to broadcast (up to about 97.5% of resources), and a device can receive content with no network registration or attach procedure needed.
+Release 14 introduced Further enhanced MBMS (FeMBMS) under the [**EnTV**](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=700032) work item (WI 700032; approved RAN#73, September 2016; completed RAN#76, June 2017). It is the foundation on which every later release builds. The defining change is the **MBMS-dedicated cell**, in which almost the whole carrier is given over to broadcast (up to about 97.5% of resources). See [Standards: 5G Broadcast](/tech/standards/5g-broadcast) and its linked Tech page for the receiver-behaviour detail.
 
 Physical layer (TS 36.211):
 
 - Two new PMCH numerologies with extended cyclic prefix for large-area SFN (Single Frequency Network) deployment: **1.25 kHz SCS** (about 200 microseconds CP, for high-power high-tower very large single-frequency networks) and **7.5 kHz SCS** (about 33 microseconds CP).
-- The **Cell Acquisition Subframe (CAS)**: one radio frame per 40 ms (SFN mod 4 == 0) uses 15 kHz SCS with the standard LTE cyclic prefix and carries PSS, SSS, PBCH, PCFICH, PDCCH and PDSCH. The CAS enables SIM-free reception because no USIM is needed for the radio layer. The remaining three frames per 40 ms period are fully allocated to PMCH. The CAS always occupies 15 or 25 PRB (3 or 5 MHz) regardless of the PMCH bandwidth, so a receiver bootstraps on the narrowband CAS and the SIBs then signal the wider PMCH bandwidth.
+- The **Cell Acquisition Subframe (CAS)**: one radio frame per 40 ms (SFN mod 4 == 0) uses 15 kHz SCS with the standard LTE cyclic prefix and carries PSS, SSS, PBCH, PCFICH, PDCCH and PDSCH. The remaining three frames per 40 ms period are fully allocated to PMCH. The CAS always occupies 15 or 25 PRB (3 or 5 MHz) regardless of the PMCH bandwidth.
 - **MBSFN reference-signal patterns** (TS 36.211 clause 6.10.2.2) for 1.25 kHz and 7.5 kHz.
 
 Physical layer procedures, scheduler and link adaptation (TS 36.213):
@@ -86,13 +86,13 @@ Physical layer (TS 36.211):
 - Two further PMCH numerologies: **2.5 kHz SCS** (about 100 microseconds CP, for mobile reception up to around 250 km/h) and **0.37 kHz SCS** (about 300 microseconds CP, for very large high-power high-tower SFN areas with inter-site distances up to around 100 km). The 0.37 kHz numerology uses a 3 ms slot structure with two `timeSeparation` reference-signal variants (`sl2` and `sl4`).
 - New **MBSFN reference-signal patterns** for the 2.5 kHz and 0.37 kHz numerologies (TS 36.211 clause 6.10.2.2).
 - **PDCCH Format 4** (aggregation level 16, 16 CCEs) for more robust control-channel reception in broadcast-only cells.
-- **PBCH repetition**: the PBCH carrying MIB-MBMS is transmitted in every CAS subframe rather than only in subframe 0, enabling faster MIB acquisition without a return channel.
+- **PBCH repetition**: the PBCH carrying MIB-MBMS is transmitted in every CAS subframe rather than only in subframe 0.
 
 RRC (TS 36.331):
 
 - A new **`MBSFN-AreaInfo-r16`** structure carrying `subcarrierSpacingMBMS-r16` (now including the 2.5 kHz and 0.37 kHz values) and `timeSeparation-r16`.
-- **Receive-Only Mode (ROM)** information in SIB13 (`MBMS-ROM-Info-r16`), which lets a receiver be pointed to MBMS content on another carrier without a return channel.
-- A semi-static CFI field in MIB-MBMS (`semiStaticCFI-MBMS-r16`) so that the receiver can skip reading PCFICH.
+- **Receive-Only Mode (ROM)** information in SIB13 (`MBMS-ROM-Info-r16`).
+- A semi-static CFI field in MIB-MBMS (`semiStaticCFI-MBMS-r16`).
 
 ## Release 17: new channel bandwidths and Band 107
 
@@ -148,7 +148,7 @@ A companion RAN4 work item, **`LTE_terr_bcast_Ph2_demod`**, adds the receiver co
 
 The RAN#111 CRs (parameter-name alignment across TS 36.211/36.212/36.213) show the feature was still receiving corrections into 2026, after the work item's own December 2025 completion date; this is normal 3GPP maintenance behaviour, not a sign the feature is unstable.
 
-- **PMCH time interleaving** (TS 36.211 clause 6.5.3): a transport block is spread across N consecutive MBSFN subframes for time diversity, with a "depth" N and a scheduling "window" M (N less than or equal to M). Per the official Release 19 description, the design follows the same principles as NR TBoMS (Transport Block over Multiple Slots, an existing NR coverage-enhancement technique that spreads one transport block across several time units) and reuses the receiver's existing HARQ soft-combining building blocks to combine the interleaved copies. This is a design-reuse choice, not the introduction of real HARQ: broadcast still has no feedback channel and no retransmission request from the receiver.
+- **PMCH time interleaving** (TS 36.211 clause 6.5.3): a transport block is spread across N consecutive MBSFN subframes, with a "depth" N and a scheduling "window" M (N less than or equal to M). See [Standards: 5G Broadcast](/tech/standards/5g-broadcast) and its Tech page for the design background (NR TBoMS reuse, HARQ soft-combining).
 - **PMCH cyclic shift** (TS 36.211 clause 6.5.1): a per-subframe phase rotation, with different cells in an SFN using different values to reduce correlated interference at cell boundaries.
 - **PMCH frequency interleaving** (TS 36.211 clause 6.5.2): block interleaving of PMCH resource elements in frequency for extra diversity.
 - **PMCH-specific MCS tables** (TS 36.213 clause 11.1, Tables 11.1-1 and 11.1-2): a normal table (QPSK, 16-QAM, 64-QAM) and a higher-order table extending to 256-QAM, replacing the standard PDSCH MCS table for broadcast, with TBS scaling when time interleaving is active.

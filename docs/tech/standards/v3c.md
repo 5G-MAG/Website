@@ -22,7 +22,7 @@ MPEG's V3C framework for coding volumetric video, covering V-PCC and MIV profile
 
 ## Overview
 
-Volumetric video captures a scene in three dimensions so a viewer can change viewpoint, rather than watching a fixed 2D frame. Visual Volumetric Video-based Coding (V3C, ISO/IEC 23090-5) is the MPEG framework for compressing this content; it underpins Video-based Point Cloud Compression (V-PCC) and MPEG Immersive Video (MIV). 5G-MAG tracks these formats and their carriage so that volumetric and immersive content can be delivered efficiently over 5G. This page lists the relevant MPEG-I parts and is for anyone working on 3D and immersive media delivery. For acronyms used here, see the [Glossary](/tech/glossary).
+Visual Volumetric Video-based Coding (V3C, ISO/IEC 23090-5) is the MPEG framework for compressing volumetric video; it underpins Video-based Point Cloud Compression (V-PCC) and MPEG Immersive Video (MIV). This page lists the relevant MPEG-I parts and their release status. For the technical analysis of how V3C works, see the Tech page linked below. For acronyms used here, see the [Glossary](/tech/glossary).
 
 <div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
 
@@ -41,54 +41,25 @@ Volumetric video captures a scene in three dimensions so a viewer can change vie
 
 </div>
 
-## What V3C is and why it exists
+## Specifications by profile
 
-Traditional video codecs (AVC, HEVC, VVC) compress a rectangular array of samples per frame. Volumetric content is different: the source is a 3D representation, either a set of points in space (a point cloud) or a set of camera views with per-pixel depth. Coding that representation directly with a new 3D codec would fragment the ecosystem and lose the maturity of existing 2D video hardware.
+MPEG factored the shared V3C machinery into a single base specification and defined two application profiles on top of it:
 
-V3C takes a different route. It projects the 3D data onto 2D planes, packs those projections into conventional video pictures, and codes them with an existing 2D video codec (typically HEVC, and in later editions VVC). The 3D-specific information that a decoder needs to reconstruct the scene (patch positions, projection parameters, view geometry) is carried in a separate, compact metadata stream. This is the core idea of V3C: reuse hardware 2D video decoders for the heavy lifting, and add a thin volumetric layer on top.
+- **V-PCC (Video-based Point Cloud Compression)**, specified within ISO/IEC 23090-5.
+- **MIV (MPEG Immersive Video)**, specified in ISO/IEC 23090-12 as an extension of the V3C base.
 
-Because the projection-and-pack approach is common to both point clouds and multi-view immersive video, MPEG factored the shared machinery into a single base specification, ISO/IEC 23090-5, and defined the two application profiles on top of it:
+A separate but related MPEG approach, Geometry-based Point Cloud Compression (G-PCC, ISO/IEC 23090-9), does not use the V3C bitstream structure and is outside the V3C scope tracked on this page.
 
-- **V-PCC (Video-based Point Cloud Compression)** targets a dynamic point cloud, for example a captured performer or object. It is specified within ISO/IEC 23090-5.
-- **MIV (MPEG Immersive Video)** targets a scene captured by multiple cameras with depth, giving a limited range of free viewpoint. It is specified in ISO/IEC 23090-12 as an extension of the V3C base.
+## Specifications by role
 
-A separate but related MPEG approach, Geometry-based Point Cloud Compression (G-PCC, ISO/IEC 23090-9), codes point geometry directly in 3D rather than via 2D projection. G-PCC does not use the V3C bitstream structure; it is mentioned here only to place V-PCC in context, and it is outside the V3C scope tracked on this page.
-
-## Bitstream and component structure
-
-A V3C bitstream is organised as a sequence of V3C units. The key components are:
-
-- **The atlas sub-bitstream**, which carries the volumetric metadata: patch data units, tile and frame structure, and the parameter sets that describe how 2D patches map back into 3D. In MIV this also includes a common atlas sub-bitstream carrying the camera (view) parameters shared across the scene.
-- **The occupancy video sub-bitstream**, a 2D video that signals which samples in the packed pictures are valid.
-- **The geometry video sub-bitstream**, a 2D video carrying depth or point-position information.
-- **One or more attribute video sub-bitstreams**, 2D videos carrying texture (colour) and, optionally, other attributes such as reflectance or transparency.
-
-Each video sub-bitstream is an ordinary coded video stream, so it can be decoded by a standard hardware or software video decoder. The V3C-aware layer is the atlas: a receiver parses the atlas metadata, decodes the associated video sub-bitstreams, and reconstructs the point cloud or renders the requested viewport.
-
-## How the pieces fit
-
-The parts listed below divide the work along clear lines:
-
-- **Coding.** ISO/IEC 23090-5 defines the V3C base bitstream and the V-PCC profile; ISO/IEC 23090-12 defines the MIV profile as an extension. Both rely on an underlying 2D video codec for the geometry, occupancy, and attribute sub-bitstreams.
-- **Storage and carriage.** ISO/IEC 23090-10 specifies how a V3C bitstream is stored in the ISO Base Media File Format (ISOBMFF, ISO/IEC 14496-12) and how the atlas and video sub-bitstreams are multiplexed, including support for DASH-based streaming so that V3C assets can be delivered adaptively over HTTP.
-- **Conformance and reference software.** MPEG maintains conformance and reference-software parts for this family (for example ISO/IEC 23090-20 for V3C with V-PCC and ISO/IEC 23090-25 for carriage), which implementers use to validate encoders, decoders, and packagers.
-
-For delivery over mobile networks, the coded V3C data and its ISOBMFF/DASH packaging are transported using the same 5G Media Streaming pipeline used for other on-demand and live media. The core 5G Media Streaming specifications are [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) (architecture) and [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) (protocols and APIs); they treat a V3C DASH presentation as media content to be ingested, packaged, and delivered, without needing to understand the volumetric semantics themselves.
-
-## MIV and V-PCC profiles
-
-The two profiles serve different capture and consumption models:
-
-| Profile | Typical source                                     | Reconstruction at the client                                                                                                         | Specified in     |
-| ------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ---------------- |
-| V-PCC   | Dynamic point cloud (captured object or performer) | A reconstructed 3D point cloud the application can place and view from any angle                                                     | ISO/IEC 23090-5  |
-| MIV     | Multiple camera views with per-view depth          | A synthesised viewport for the requested head position, within a limited viewing region (6 degrees of freedom over a bounded volume) | ISO/IEC 23090-12 |
-
-MIV defines several profiles that trade decoder complexity against flexibility, including a Main profile (geometry coded with embedded occupancy), an Extended profile, a Restricted Geometry profile, and a Geometry Absent profile in which the client derives geometry rather than decoding it. The MIV profiles all produce a V3C bitstream, so they share the carriage and packaging machinery described above.
+- **Coding.** ISO/IEC 23090-5 (V3C base bitstream and V-PCC profile); ISO/IEC 23090-12 (MIV profile).
+- **Storage and carriage.** ISO/IEC 23090-10 (ISOBMFF storage, ISO/IEC 14496-12, and DASH-based streaming).
+- **Conformance and reference software.** ISO/IEC 23090-20 (V3C with V-PCC) and ISO/IEC 23090-25 (carriage).
+- **Delivery over 5G.** [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) (architecture) and [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) (protocols and APIs), the 5G Media Streaming specifications used to transport V3C DASH presentations.
 
 ## Editions and status
 
-ISO/IEC 23090-5 has progressed through successive editions (2021, 2023, and 2025); the entry in the table below links to the edition currently referenced by 5G-MAG. Later editions of the V3C base added common atlas and packed-video support that MIV depends on. ISO/IEC 23090-10 (carriage) was first published in 2022 with a subsequent amendment (support of packed video data) and a technical corrigendum. MIV (ISO/IEC 23090-12) was published in 2023, with a second edition under development in MPEG. Implementers should confirm the exact edition and any amendments against the ISO catalogue for the feature set they rely on.
+ISO/IEC 23090-5 has progressed through successive editions (2021, 2023, and 2025); the entry in the table below links to the edition currently referenced by 5G-MAG. ISO/IEC 23090-10 (carriage) was first published in 2022 with a subsequent amendment (support of packed video data) and a technical corrigendum. MIV (ISO/IEC 23090-12) was published in 2023, with a second edition under development in MPEG. Implementers should confirm the exact edition and any amendments against the ISO catalogue for the feature set they rely on.
 
 ## Related MPEG Specifications
 
@@ -108,7 +79,7 @@ These identifiers on this page were not confirmed against a primary source (the 
 
 ## 5G-MAG tracking and contribution focus
 
-5G-MAG follows this MPEG family so that volumetric and immersive assets can be produced, packaged, and delivered on the same 5G media pipelines as conventional video, and tracks the **Beyond 2D Video** evaluation work characterising how these and adjacent formats perform, aligned to the 3GPP study on the [Beyond 2D Video](/tech/standards/beyond-2d) page. The deeper technical treatment is on the [Volumetric Video](/tech/volumetric) Tech page.
+5G-MAG follows this MPEG family so that volumetric and immersive assets can be delivered on the same 5G media pipelines as conventional video, and tracks the related **Beyond 2D Video** evaluation work (see the [Beyond 2D Video](/tech/standards/beyond-2d) page). The deeper technical treatment is on the [Volumetric Video](/tech/volumetric) Tech page.
 
 ## Related Standards Work
 

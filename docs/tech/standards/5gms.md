@@ -22,7 +22,7 @@ The 5GMS architecture, M1-M8 reference points, related 3GPP specifications and R
 
 ## Overview
 
-5G Media Streaming (5GMS) is the 3GPP framework for delivering streaming media over 5G networks, covering provisioning, media session handling and reporting between content providers, the network and the device. It has two directions: downlink (5GMSd), streaming from the network to the device, and uplink (5GMSu), streaming from the device to the network. This page lists the specifications in scope and recent Release-19 work; 5G-MAG's tracking and contribution focus is described further down. For implementation analysis, see [Streaming & Media Delivery](/tech/5gms). For acronyms used here, see the [Glossary](/tech/glossary).
+5G Media Streaming (5GMS) is the 3GPP framework for delivering streaming media over 5G networks, in downlink (5GMSd) and uplink (5GMSu) directions. This page lists the specifications in scope and 5G-MAG's tracking focus; for the technical analysis of how the architecture works, see the Tech page linked below. For acronyms used here, see the [Glossary](/tech/glossary).
 
 <div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
 
@@ -43,27 +43,20 @@ The 5GMS architecture, M1-M8 reference points, related 3GPP specifications and R
 
 ## Architecture and key concepts
 
-5G Media Streaming is not a separate network. It is a functional extension of the 5G System that adds media-specific control, hosting and reporting on top of the 5G Core. The architecture is defined in [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) and is functionally divided so that operators and content providers can deploy it with different degrees of integration.
+5GMS is a functional extension of the 5G System, defined in [TS 26.501](https://www.3gpp.org/dynareport/26501.htm). Its main functional entities are the 5GMS Application Provider, Application Function (AF), Application Server (AS), and Client (split into Media Session Handler and Media Player for downlink, or Media Streamer for uplink). For the entity roles and sub-functions, see the [5GMS Overview](/tech/5gms/overview-5gms).
 
-The main functional entities are the same in both directions:
+The entities are joined by reference points M1 to M8 (downlink variants carry a "d" suffix, uplink a "u" suffix):
 
-- **5GMS Application Provider**: the external content provider that uses the 5G network to deliver (downlink) or ingest (uplink) media, and supplies the 5GMS-Aware Application on the device.
-- **5GMS Application Function (AF)**: the control-plane entity that provisions and manages media sessions and acts as the bridge to the 5G Core (for example the Policy Control Function (PCF), the Network Exposure Function (NEF) or the Binding Support Function (BSF)).
-- **5GMS Application Server (AS)**: the media-plane entity that hosts, caches and delivers media (downlink) or receives and ingests it (uplink); it can be a single server or a Content Delivery Network (CDN).
-- **5GMS Client** on the User Equipment (UE), split into a **Media Session Handler** (the control-plane component that talks to the AF) and a **Media Player** for downlink or **Media Streamer** for uplink (the media-plane component that talks to the AS).
-
-The entities are joined by named reference points M1 to M8. The downlink variants carry a "d" suffix and the uplink variants a "u" suffix:
-
-| Reference point | Between                                                                     | Role                                                                                                                          |
-| :-------------- | :-------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------- |
-| M1              | Application Provider to AF                                                  | Provisioning (content hosting, certificates, policies, reporting configurations)                                              |
-| M2              | Application Provider to AS                                                  | Content ingest (downlink) or content egest (uplink)                                                                           |
-| M3              | AF to AS                                                                    | Internal configuration of the AS by the AF (not standardised)                                                                 |
-| M4              | AS to Media Player, or Media Streamer to AS                                 | Media delivery (downlink) or media ingest (uplink) on the data plane                                                          |
-| M5              | Media Session Handler to AF                                                 | Media session handling and reporting (Service Access Information, consumption, metrics, network assistance, dynamic policies) |
-| M6              | Media Session Handler to Media Player/Streamer and to the Aware Application | UE-internal APIs                                                                                                              |
-| M7              | Media Player/Streamer to Media Session Handler                              | UE-internal APIs                                                                                                              |
-| M8              | Application Provider to 5GMS-Aware Application                              | Service-level exchange, outside the 3GPP scope                                                                                |
+| Reference point | Between                                                                     | Purpose                                                        |
+| :--------------- | :--------------------------------------------------------------------------- | :--------------------------------------------------------------- |
+| M1               | Application Provider to AF                                                  | Provisioning                                                   |
+| M2               | Application Provider to AS                                                  | Content ingest (downlink) / egest (uplink)                     |
+| M3               | AF to AS                                                                     | Internal AF-to-AS configuration (not standardised)              |
+| M4               | AS to Media Player, or Media Streamer to AS                                 | Media delivery (downlink) / ingest (uplink)                     |
+| M5               | Media Session Handler to AF                                                 | Session handling and reporting                                  |
+| M6               | Media Session Handler to Media Player/Streamer and to the Aware Application | UE-internal APIs                                                |
+| M7               | Media Player/Streamer to Media Session Handler                              | UE-internal APIs                                                |
+| M8               | Application Provider to 5GMS-Aware Application                              | Service-level exchange, outside the 3GPP scope                  |
 
 For the deeper architecture (entity sub-functions, the M1 to M8 interfaces per direction, and the downlink feature-to-API mapping), see the technical documentation on the [5GMS Overview](/tech/5gms/overview-5gms) and [5GMSd Features](/tech/5gms/features-5gmsd) pages.
 
@@ -71,10 +64,10 @@ These M1-M8 reference points are specific to 5G Media Streaming and are distinct
 
 ## 5G Core service consumers used by the AF
 
-In the 5G Core, network functions expose service-based APIs (HTTP/2 RESTful APIs described by an OpenAPI schema) that other functions call: the function offering the API is the _producer_, the function calling it is the _consumer_. The 5GMS AF is a consumer of two such APIs for the unicast media path:
+The 5GMS AF is a consumer of two 5G Core service-based APIs for the unicast media path:
 
-- **Binding Support Function (BSF), TS 29.521.** The BSF maps a UE's PDU session (by IP address) to the PCF that is serving it. The AF uses the `Nbsf_Management` service to find the right PCF before it can request policy; this is a lookup step rather than an action on the traffic.
-- **Policy Control Function (PCF), TS 29.514.** The PCF applies QoS and charging policy. The AF uses the `Npcf_PolicyAuthorization` service at reference point N5 to request specific network treatment (bandwidth, priority) for the media flows inside a UE's PDU session, by creating and updating an Application Session Context. This is how a unicast streaming session asks the network for the QoS it needs.
+- **Binding Support Function (BSF), [TS 29.521](https://www.3gpp.org/dynareport/29521.htm)**: `Nbsf_Management` service.
+- **Policy Control Function (PCF), [TS 29.514](https://www.3gpp.org/dynareport/29514.htm)**: `Npcf_PolicyAuthorization` service, at reference point N5.
 
 For the equivalent multicast/broadcast service consumer (the MB-SMF, TS 29.532), see [Standards: 5G Multicast & Broadcast Services](/tech/standards/5g-mbs).
 
@@ -97,25 +90,29 @@ The 5GMS AF is a consumer, not a producer, of two further 5G Core service-based 
 - **[TS 29.521](https://www.3gpp.org/dynareport/29521.htm) - 5G System; Binding Support Management Service; Stage 3**
 - **[TS 29.514](https://www.3gpp.org/dynareport/29514.htm) - 5G System; Policy Authorization Service; Stage 3**
 
-### Reading the specification set by role
+## Specifications by Role
 
-- **Architecture and features:** TS 26.501 is the anchor. It defines the functional entities, the M1 to M8 reference points, the downlink (5GMSd) and uplink (5GMSu) directions, and each feature (content hosting, dynamic policies, network assistance, consumption and QoE metrics reporting, edge processing, eMBMS delivery, data collection).
-- **Provisioning and session-handling APIs:** from Release 18 these live in TS 26.510, which generalises the media session handling so that both the 5GMS System and the Real-Time media Communication (RTC) System share it. In Release 17 the same APIs were carried in TS 26.512.
-- **Media-plane protocols:** TS 26.512 specifies the on-the-wire protocols and the AS configuration, and continues to carry the ingest, media delivery and reporting protocol details.
-- **Profiles, codecs and formats:** TS 26.511 constrains the media formats (for example DASH per ISO/IEC 23009-1 and CMAF per ISO/IEC 23000-19) and codec profiles a compliant service uses.
+| Role                                    | Specification(s)                                     |
+| ---------------------------------------- | ------------------------------------------------------ |
+| Architecture and features                | TS 26.501                                             |
+| Provisioning and session-handling APIs   | TS 26.510 (from Release 18), TS 26.512 (Release 17)   |
+| Media-plane protocols                    | TS 26.512                                             |
+| Profiles, codecs and formats             | TS 26.511                                             |
+| Data collection and reporting            | TS 26.531, TS 26.532                                  |
+| Core service consumers used by the AF    | TS 29.521, TS 29.514                                  |
 
-### Reading the specification set by 3GPP release
+## Specifications by release
 
-- **Release 15/16:** 5GMS is introduced. TS 26.501, TS 26.511 and TS 26.512 establish the downlink and uplink architecture, the reference points and the first feature set (content hosting, dynamic policies, network assistance, consumption and QoE metrics reporting).
-- **Release 17:** adds edge media processing and 5GMS delivery over eMBMS. The reference tools baseline maps to this release, where the provisioning and session-handling APIs are still in TS 26.512.
-- **Release 18:** TS 26.510 is created and the media session handling APIs move out of TS 26.512 into it, generalised across the 5GMS and RTC systems. Data collection, reporting and event exposure is aligned with TS 26.531 and TS 26.532.
-- **Release 19:** Advanced Media Delivery (see below), studied in TR 26.804, extending reporting, multi-source and multi-access delivery, and quality of service.
+- **Release 15/16**: TS 26.501, TS 26.511, TS 26.512 (downlink and uplink architecture, first feature set: content hosting, dynamic policies, network assistance, consumption and QoE metrics reporting).
+- **Release 17**: adds edge media processing and 5GMS delivery over eMBMS. The reference tools baseline maps to this release, where the provisioning and session-handling APIs are still in TS 26.512.
+- **Release 18**: TS 26.510 is created and the media session handling APIs move out of TS 26.512 into it, generalised across the 5GMS and RTC systems. Data collection, reporting and event exposure is aligned with TS 26.531 and TS 26.532.
+- **Release 19**: Advanced Media Delivery (see below), studied in TR 26.804.
 
-The versions in force differ per release. Confirm the exact version and clause against the [3GPP specification record](https://www.3gpp.org/dynareport/26501.htm) for the release you are targeting.
+Check the version of each specification you are targeting for the exact release content.
 
 ## Release-19 Advanced Media Delivery
 
-Advanced Media Delivery (AMD) is the Release-19 line of work extending 5G Media Streaming, for example multicast delivery and client-data reporting. Release 19 studies these extensions in the following Technical Reports (study phase, informative); the reports and external specifications below feed that work.
+Advanced Media Delivery (AMD) is the Release-19 line of work extending 5G Media Streaming, for example multicast delivery and client-data reporting. See [Advanced Media Delivery](/tech/5gms/overview-amd) for the technical detail. Release 19 studies these extensions in the following Technical Reports (study phase, informative); the reports and external specifications below feed that work.
 
 Technical Reports:
 
@@ -131,7 +128,7 @@ TR 26.802 relates to 5GMS multicast architecture but its release is unconfirmed 
 
 ### Common Media Client Data (CMCD)
 
-Common Media Client Data (CMCD) is a CTA standard that lets a media player report playback and quality data to delivery servers, used for diagnostics and delivery optimisation. Stage-3 support for CMCD is being introduced into the 3GPP media delivery specifications through the change requests listed below.
+Common Media Client Data (CMCD) is a CTA standard (CTA-5004) for client-side playback and quality reporting. See [Advanced Media Delivery](/tech/5gms/overview-amd) for how 3GPP integrates it into the 5GMS reporting framework.
 
 - **Specification: [CTA-5004](https://cdn.cta.tech/cta/media/media/resources/standards/pdfs/cta-5004-final.pdf) - Web Application Video Ecosystem - Common Media Client Data**
   - Complementary information: [DASH-IF Special Sessions on CMCD (2022)](https://dashif.org/events/special-sessions/#special-sessions-2022)
@@ -139,7 +136,7 @@ Common Media Client Data (CMCD) is a CTA standard that lets a media player repor
 
 ### Coded Multisource Media Format (CMMF)
 
-Coded Multisource Media Format (CMMF) is an ETSI format that lets a client fetch a single piece of content in coded chunks from multiple sources (for example several content delivery networks or peers) to improve resilience and delivery efficiency.
+Coded Multisource Media Format (CMMF) is an ETSI format for retrieving a single piece of content in coded chunks from multiple sources. See [Advanced Media Delivery](/tech/5gms/overview-amd) for the technical detail.
 
 - **Specification: [ETSI TS 103 973](https://www.etsi.org/deliver/etsi_ts/103900_103999/103973/01.01.01_60/ts_103973v010101p.pdf) - Coded Multisource Media Format (CMMF) for Content Distribution and Delivery**
 

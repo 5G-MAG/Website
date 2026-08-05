@@ -22,9 +22,9 @@ Discovering and delivering linear TV services over 5G, combining broadband, broa
 
 ## Overview
 
-5G-MAG monitors and contributes to work on DVB-I service delivery over 5G systems. DVB-I (Digital Video Broadcasting - Internet) defines mechanisms for internet-connected devices to discover and access sets of linear TV services delivered over broadband or broadcast networks, together with the associated programme metadata. For acronyms used here, see the [Glossary](/tech/glossary).
+5G-MAG monitors and contributes to work on DVB-I service delivery over 5G systems. DVB-I (Digital Video Broadcasting - Internet) defines mechanisms for internet-connected devices to discover and access sets of linear TV services delivered over broadband or broadcast networks, together with the associated programme metadata. For the technical analysis of DVB-I service discovery and its deployment over 5G, see the Tech page linked below. For acronyms used here, see the [Glossary](/tech/glossary).
 
-Delivery of DVB-I services over 5G can use several modes: unicast-based 5G Media Streaming (5GMS), LTE-based 5G Broadcast, and concurrent or hybrid combinations of the two. The DVB / 5G-MAG Joint Task Force documented deployment guidelines for these scenarios in DVB A178, published as ETSI TR 103 972.
+The DVB / 5G-MAG Joint Task Force documented DVB-I deployment over 5G in DVB A178, published as ETSI TR 103 972.
 
 <div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
 
@@ -42,45 +42,6 @@ Delivery of DVB-I services over 5G can use several modes: unicast-based 5G Media
 </div>
 
 </div>
-
-## What this work area covers
-
-DVB-I is a service layer, not a delivery technology. It defines how a client discovers a curated set of linear services and their programme metadata, then leaves the actual media transport to whatever bearer the service references. That separation is what makes DVB-I relevant to 5G-MAG: the same DVB-I service list can point to a DASH manifest fetched over unicast, to a stream delivered by multicast, or to content carried on a broadcast bearer, without the client needing bespoke logic for each network.
-
-The work area has two distinct pieces:
-
-- The DVB-I service discovery and metadata specification itself (DVB A177 / ETSI TS 103 770), which is delivery-agnostic and predates the 5G work.
-- The deployment guidance for carrying DVB-I over 5G (DVB A178 / ETSI TR 103 972), produced by the DVB / 5G-MAG Joint Task Force, which explains how DVB-I discovery, DVB delivery formats, and 3GPP transport combine in practice.
-
-5G-MAG's interest is the second piece and its dependencies: mapping DVB-I service parameters onto 3GPP 5G Media Streaming and LTE-based 5G Broadcast, aligning DVB-I service discovery with 3GPP service announcement, and feeding the gaps found during that mapping back into DVB, 3GPP and ETSI.
-
-## Architecture and key concepts
-
-### The DVB-I data model
-
-DVB A177 (ETSI TS 103 770) defines an XML-based data model for describing services and their metadata. The main constructs a standards reader should recognise are:
-
-- **Service List**: an XML document listing the services a provider offers. Each service entry carries identity, logos, and one or more **service instances**.
-- **Service Instance**: a specific way to obtain a given service, bound to a delivery parameter set (for example a DASH source, a multicast source, or a broadcast source). A single service can carry several instances, which is the mechanism DVB-I uses to describe the same channel over unicast, multicast, and broadcast at once.
-- **Service List Registry (SLR)**: a discovery service that lets a client find service lists (for example by country or by provider) so it can bootstrap without a hard-coded URL. The registry query API is part of TS 103 770.
-- **Content Guide / Programme Metadata**: schedule and on-demand programme information, expressed using the DVB metadata schemas (aligned with the TV-Anytime data model), retrievable per service.
-
-The delivery parameters inside a service instance are the extension point that the 5G work builds on, and the client selects among the available instances based on availability and capability.
-
-### DVB delivery formats referenced by the 5G work
-
-- **DVB-DASH** (ETSI TS 103 285): the DVB profile of MPEG-DASH (ISO/IEC 23009-1), constraining segment formats, codecs, and manifest features for interoperable adaptive streaming. This is the primary media format on the unicast path.
-- **DVB-MABR** (ETSI TS 103 769): DVB Multicast Adaptive Bit Rate, a functional architecture that delivers adaptive-streaming media over IP multicast in parallel with unicast, so that the client still consumes what looks like a DASH presentation. This is the natural fit for multicast/broadcast bearers.
-- **DVB Native IP (DVB-NIP)** (DVB A180): an end-to-end native-IP broadcast system that itself builds on DVB-I for discovery and on DVB-DASH/DVB-MABR for media, referenced as context for IP-based broadcast delivery.
-
-### The two 5G delivery paths
-
-DVB-I over 5G maps onto two 3GPP transport families:
-
-- **5G Media Streaming (5GMS)**, the unicast downlink path, defined primarily by 3GPP TS 26.501 (architecture) and its companion protocol and format specifications. A DVB-I DASH service instance is served through the 5GMS Media Application Server and consumed by a 5GMS-aware client.
-- **LTE-based 5G Broadcast**, specified by ETSI TS 103 720 (which profiles the 3GPP LTE terrestrial broadcast / evolved MBMS work), the one-way wide-area path. Here DVB-MABR-style delivery is carried on the broadcast bearer and the DVB-I service instance references the broadcast source.
-
-The concurrent/hybrid case combines both, letting a client fall back between broadcast and unicast, or consume a hybrid service that spans the two.
 
 ## Key Specifications
 
@@ -142,7 +103,7 @@ Because A178 is a technical report, its main output is a set of recommended chan
 
 ## Delivery over 5G
 
-DVB A178 (ETSI TR 103 972) maps the commercial requirements for DVB-I over 5G (captured in DVB BlueBook C100, the DVB commercial-requirements document) into a reference architecture and deployment guidance. It addresses three service scenarios:
+DVB A178 (ETSI TR 103 972) maps the commercial requirements for DVB-I over 5G (captured in DVB BlueBook C100, the DVB commercial-requirements document) into a reference architecture and deployment guidance covering three service scenarios:
 
 | Mode                | Bearer                     | Typical use                                                                 |
 | ------------------- | -------------------------- | --------------------------------------------------------------------------- |
@@ -150,18 +111,7 @@ DVB A178 (ETSI TR 103 972) maps the commercial requirements for DVB-I over 5G (c
 | Broadcast           | LTE-based 5G Broadcast     | One-way, wide-area linear TV and radio to many devices                      |
 | Concurrent / hybrid | Both 5GMS and 5G Broadcast | The same service over both bearers, or hybrid DVB-I services combining them |
 
-Across these scenarios the guidelines cover DVB-I service discovery referencing the relevant delivery mode, alignment of DVB-I metadata with 3GPP service announcements, and the use of DVB delivery formats such as DVB-DASH (the DVB profile of MPEG-DASH adaptive streaming) and DVB-MABR (DVB Multicast Adaptive Bit Rate delivery). The report also records gaps identified in existing specifications under the control of DVB, 3GPP and ETSI.
-
-### How discovery meets transport
-
-The consistent pattern across all three scenarios is that DVB-I stays the discovery and selection layer, and the 3GPP/ETSI systems stay the transport layer. In outline:
-
-1. The client bootstraps a DVB-I service list, optionally via a Service List Registry, and parses the service instances.
-2. For a unicast (5GMS) instance, the client resolves the referenced DASH presentation and streams it through the 5GMS downlink; 5GMS provides the session handling, edge/AS behaviour, and reporting.
-3. For a broadcast instance, the client uses the LTE-based 5G Broadcast bearer (ETSI TS 103 720) to receive a DVB-MABR-style multicast carrying the same DASH content, so the media pipeline above the bearer is the same as for unicast.
-4. In the concurrent/hybrid case, both instances are present and the client selects or switches between them based on coverage and capability.
-
-A key alignment point that A178 examines is the relationship between DVB-I service discovery and 3GPP service announcement: on the broadcast path, 3GPP defines its own service announcement mechanism, and the report considers how a DVB-I service list can reference or coexist with that announcement rather than duplicating it.
+The report also records gaps identified in existing specifications under the control of DVB, 3GPP and ETSI. For the reference architecture and scenario-by-scenario detail, see [Tech: DVB-I Services over 5G](/tech/dvb-i/dvb-i-5g).
 
 ## 5G-MAG tracking and contribution focus
 
