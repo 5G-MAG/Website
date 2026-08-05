@@ -154,7 +154,12 @@ const sidebars = {
       defaultStyle: false,
     },
     { type: 'link', label: 'AI Traffic Characterization', href: '/testbeds/6g-testbed' },
-    'standards/ai-ml',
+    {
+      type: 'category',
+      label: 'AI/ML in 5G Media',
+      link: { type: 'doc', id: 'ai-ml' },
+      items: ['standards/ai-ml'],
+    },
     {
       type: 'category',
       label: 'Towards 6G Media',

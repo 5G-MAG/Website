@@ -246,9 +246,9 @@ const CATEGORIES = [
         ),
       },
       {
-        title: 'AI/ML in 5G Media Standards',
-        desc: 'NWDAF network-side analytics vs. UE-side data collection tracks for AI/ML in 3GPP — tracked on the Standards hub.',
-        href: '/tech/standards/ai-ml',
+        title: 'AI/ML in 5G Media',
+        desc: 'NWDAF network-side analytics vs. UE-side data collection tracks for AI/ML in 3GPP.',
+        href: '/tech/ai-ml',
         icon: icon(
           <>
             <path d="M15.5 13a3.5 3.5 0 0 0 -3.5 3.5v1a3.5 3.5 0 0 0 7 0v-1.8" />

@@ -37,7 +37,10 @@ Together these allow media-aware decisions (such as proactive session management
 <h3>Technology &amp; Analysis</h3>
 </div>
 <div class="godeeper-card__body">
-<p>Network-side analytics (NWDAF) versus UE-side data collection, and the SA4 AI/ML media study, below.</p>
+<p>Network-side analytics (NWDAF) versus UE-side data collection, and the SA4 AI/ML media study.</p>
+<ul class="godeeper-card__links">
+<li><a href="/tech/ai-ml">Tech: AI/ML in 5G Media</a></li>
+</ul>
 </div>
 </div>
 
@@ -81,12 +84,13 @@ TR 26.847 was previously tracked under a different, now-superseded number (TR 26
 
 ## 5G-MAG tracking and contribution focus
 
-5G-MAG tracks both tracks, contributing primarily on the media side (SA4) and following the SA2 analytics work for the parts that affect media sessions. See [Standards: UE Data Collection](/tech/standards/data-collection) for the related SA4 framework.
+5G-MAG tracks both tracks, contributing primarily on the media side (SA4) and following the SA2 analytics work for the parts that affect media sessions. See [Standards: UE Data Collection](/tech/standards/data-collection) for the related SA4 framework, and [Tech: AI/ML in 5G Media](/tech/ai-ml) for the implementer-facing analysis.
 
 ## Related Standards Work
 
 - [Standards: UE Data Collection](/tech/standards/data-collection)
 - [Standards: 5G Media Streaming](/tech/standards/5gms)
+- [Technical Documentation: AI/ML in 5G Media](/tech/ai-ml)
 - [Meetings with 3GPP SA4](/standards/3gpp-issue-tracking): the live tracker for 3GPP feedback issues in this area
 
 :::note
