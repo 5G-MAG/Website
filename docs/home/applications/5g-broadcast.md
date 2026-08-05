@@ -50,5 +50,4 @@ Follow the [step-by-step guide](/reference-tools/5g-broadcast/tutorials/android-
 ## Related
 
 - [Reference Tools](/reference-tools) for the individual specification implementations.
-- [Standards: 5G Broadcast](/tech/standards/5g-broadcast) for the specifications behind these scenarios.
 - [Applications](/applications/) for the other end-to-end service scenarios.
