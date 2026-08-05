@@ -16,6 +16,7 @@ const sidebars = {
     // Profiles rather than Standards.
     { type: 'html', value: 'Resources', className: 'sidebar-section-label', defaultStyle: false },
     'exchanges',
+    'blueprints',
     'glossary',
     '3gpp-work-items',
 

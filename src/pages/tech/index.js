@@ -299,6 +299,19 @@ const WHATS_HERE = [
     icon: icon(<path d="M7 4v16l13 -8l-13 -8" />),
   },
   {
+    title: 'Implementation Blueprints',
+    desc: 'Step-by-step procedures mapping build steps to protocol layers and 3GPP clauses.',
+    href: '/tech/blueprints',
+    icon: icon(
+      <>
+        <path d="M9 3h6a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-6a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2" />
+        <path d="M9 7h6" />
+        <path d="M9 11h6" />
+        <path d="M9 15h4" />
+      </>
+    ),
+  },
+  {
     title: 'Glossary',
     desc: '3GPP process terms and acronyms used across the documentation.',
     href: '/tech/glossary',

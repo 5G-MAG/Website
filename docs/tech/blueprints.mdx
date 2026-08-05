@@ -1,0 +1,42 @@
+---
+hide_title: true
+title: Implementation Blueprints
+sidebar_position: 2
+description: Index of step-by-step implementation blueprints on the Tech portal, mapping build steps to protocol layers and 3GPP clause references.
+---
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M9 3h6a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-6a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2" />
+  <path d="M9 7h6" /><path d="M9 11h6" /><path d="M9 15h4" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Tech</span>
+<h1>Implementation Blueprints</h1>
+</div>
+</div>
+
+<div class="topic-lead">
+Step-by-step procedures that map a build step directly to a protocol layer and a 3GPP clause, so an implementer can follow them without re-deriving the sequence from the spec text.
+</div>
+
+## What a blueprint is here
+
+An **Implementation Blueprint** is a specific section within a [Technology & Analysis](/tech) page: a table that walks through a procedure step by step (for example, everything a UE does to acquire and decode a broadcast service), and for each step names the protocol layer involved, the mechanism 5G-MAG's analysis found, and the exact 3GPP clause it comes from. It sits inside the page's normal analysis prose rather than as a separate page type — the same page explains *why*, the blueprint section is the *in-order how*.
+
+This is 5G-MAG's own framing, echoed in the "Profiles and Blueprints" language used to describe this portal's mission, not an externally defined 3GPP or ISO deliverable type; there is no formal industry definition of "implementation blueprint" to cite here.
+
+## Blueprints published so far
+
+| Blueprint | Covers | Analysis page |
+| --- | --- | --- |
+| MBS Broadcast RAN acquisition | Full UE path for 5G MBS broadcast: MIB, SIB1, SIB20, MCCH, MTCH, up to decoding the broadcast MRB | [MBS Broadcast RAN procedures](/tech/5g-mbs/analysis-mbs-broadcast-ran#implementation-blueprint) |
+| MBS Multicast RRC_INACTIVE RAN acquisition | The RRC_INACTIVE variant of the same path (SIB24, Multicast MCCH-RNTI, distinct MTCH LCID table) | [MBS Multicast Inactive RAN procedures](/tech/5g-mbs/analysis-mbs-multicast-inactive-ran#implementation-blueprint) |
+
+More Analysis pages will get a blueprint section as their procedures are worked through this way; this index is updated as they're added. For the full set of Analysis pages (with or without a blueprint section), see the [Categories & Topics](/tech/#categories-topics) grid.
+
+## Related
+
+- [Technology & Analysis](/tech): the parent pages these blueprint sections live inside.
+- [Glossary](/tech/glossary): acronyms and process terms used across blueprint tables.

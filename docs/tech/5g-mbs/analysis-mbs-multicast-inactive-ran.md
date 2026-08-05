@@ -45,7 +45,7 @@ This page covers the RAN side (TS 38.331 Clause 5.10). The 5G Core side of the s
 
 ## Implementation blueprint
 
-This page is a verified map of the acquisition path, not a self-contained implementation spec: it gives correct clause/table/RNTI/LCID pointers and field-level summaries, but a conformant implementation needs the full primary-source text (including the exact ASN.1) behind each pointer. Fetch these before implementing a given step:
+This page is a verified map of the acquisition path, not a self-contained implementation spec: it gives correct clause/table/RNTI/LCID pointers and field-level summaries, but a conformant implementation needs the full primary-source text (including the exact ASN.1) behind each pointer. Fetch these before implementing a given step. See the [Implementation Blueprints index](/tech/blueprints) for the other blueprints published on this portal.
 
 | Step | Layer(s) | This page provides | Fetch in full before implementing |
 | --- | --- | --- | --- |
