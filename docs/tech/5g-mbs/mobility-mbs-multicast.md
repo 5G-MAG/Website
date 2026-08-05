@@ -78,6 +78,8 @@ This section's procedure (switching the MRB to a DRB before handover) describes 
 
 - Mobility from a multicast-supporting cell to a multicast non-supporting cell can be achieved by switching the MRB to a DRB in the source gNB before a handover.
 
-:::warning[References to verify]
-Unlike its sibling pages, this page's specific NGAP/RRC procedure and message names have not been checked against a primary source in this session (TS 38.300, TS 38.413 and TS 23.247 were not available): the Xn/NG handover message names (Path Switch Request, Handover Request Acknowledge, NGAP Handover Request), the PDU Session Resource Modification procedure, and in particular the **NGAP Distribution Release procedure** cited for releasing multicast user-plane resources — "Distribution Setup"/"Distribution Release" are, by name, associated with broadcast session distribution management in NGAP, so its use here for a multicast release scenario should be double-checked against TS 38.413 rather than assumed correct. Verify all of the above against the specific TS 38.300/TS 38.413/TS 23.247 versions you are targeting.
+:::note[NGAP procedure names verified]
+Checked against TS 38.413 V17.5.0: every NGAP message and procedure name on this page is genuine and correctly used, including the one flagged here previously — Distribution Setup and Distribution Release (Clause 8.18, "Multicast Session Management Procedures") are explicitly **multicast**-specific procedures ("assign/release NG-U resources for a multicast MBS session"), not a broadcast-oriented mechanism as suspected. Path Switch Request, Handover Request, Handover Request Acknowledge and PDU Session Resource Modify are all confirmed standard NGAP procedures used exactly as described.
+
+Not yet checked (TS 38.300 and TS 23.247 were not available this session): the RRC-container mechanism for carrying MBS configuration during handover, the exact PTP RLC AM / PDCP COUNT continuity behaviour, and the TS 23.247 delivery-method-switch triggers. Verify these against the specific TS 38.300/TS 23.247 versions you are targeting.
 :::
