@@ -70,16 +70,14 @@ This case splits into two sub-cases depending on direction of travel: leaving MB
 
 ## Bearer-type switch when leaving Multicast-supporting coverage
 
-:::warning
-This section's procedure (switching the MRB to a DRB before handover) describes the same direction of travel as "Leaving Multicast-supporting coverage" above (supporting cell → non-supporting cell), using the text's own wording as the basis for this heading. What is still unresolved: whether this MRB-to-DRB bearer switch is an _additional_ step that runs alongside the PDU-session/delivery-method switch described above for the same handover, or an _alternate_ mechanism for a different scenario (for example, no target PDU session support at all). Verify the relationship between the two procedures against 3GPP TS 38.300 before relying on this section.
+:::note[Resolved against TS 38.300]
+Checked against TS 38.300 V19.3.0 Clause 16.10.5.3.3 ("Handover between Multicast-supporting cell and Multicast non-supporting cell"): the MRB-to-DRB bearer switch is an **additional, optional preparatory step** within the same procedure as the PDU-session/delivery-method switch described above, not an alternate mechanism for a different scenario. The spec's own note on this is the reason it matters: "A UE may be handed over to a target gNB not supporting MBS **without** prior reconfiguration from MRB to the DRB in the source gNB. In this case, the AS configuration may not be comprehended by the target gNB causing full configuration." In other words, switching MRB→DRB beforehand is what avoids falling back to a full (slower) reconfiguration at the target.
 :::
 
 ### Procedure
 
 - Mobility from a multicast-supporting cell to a multicast non-supporting cell can be achieved by switching the MRB to a DRB in the source gNB before a handover.
 
-:::note[NGAP procedure names verified]
-Checked against TS 38.413 V17.5.0: every NGAP message and procedure name on this page is genuine and correctly used, including the one flagged here previously — Distribution Setup and Distribution Release (Clause 8.18, "Multicast Session Management Procedures") are explicitly **multicast**-specific procedures ("assign/release NG-U resources for a multicast MBS session"), not a broadcast-oriented mechanism as suspected. Path Switch Request, Handover Request, Handover Request Acknowledge and PDU Session Resource Modify are all confirmed standard NGAP procedures used exactly as described.
-
-Not yet checked (TS 38.300 and TS 23.247 were not available this session): the RRC-container mechanism for carrying MBS configuration during handover, the exact PTP RLC AM / PDCP COUNT continuity behaviour, and the TS 23.247 delivery-method-switch triggers. Verify these against the specific TS 38.300/TS 23.247 versions you are targeting.
+:::note[Verified against primary sources]
+This entire page has now been checked directly against TS 38.413 V17.5.0 (NGAP), TS 38.300 V19.3.0 (NR overall description) and TS 23.247 V19.3.0 (5G Core MBS architecture). Every NGAP message and procedure name is genuine and correctly used, including the one flagged here previously — Distribution Setup and Distribution Release (TS 38.413 Clause 8.18, "Multicast Session Management Procedures") are explicitly **multicast**-specific, not broadcast-oriented as suspected. TS 38.300 Clause 16.10.5.3.2 confirms the RRC-container mechanism and the PTP RLC AM / PDCP COUNT continuity requirement almost word-for-word against this page's text, and TS 23.247 independently confirms the shared/individual delivery-method switch during handover. The "Bearer-type switch" section's previously-open question is also resolved (see the note above) — it is an additional, optional preparatory step, not an alternate mechanism.
 :::

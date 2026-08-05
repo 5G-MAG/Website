@@ -40,7 +40,7 @@ TS 23.247 defines MBS sessions as follows:
 - **MBS session**: A multicast or broadcast session.
 - **Broadcast MBS session**: An MBS session to deliver a broadcast communication service. A broadcast MBS session is characterised by the content to send and the geographical area over which to distribute it.
 - **Multicast MBS session**: An MBS session to deliver a multicast communication service. A multicast MBS session is characterised by the content to send, the list of UEs that may receive the service and optionally by a geographical area over which to distribute it.
-  Broadcast and multicast MBS sessions are time-bound. Their life-cycles are specified in clauses 4.2 and 4.3 of TS 23.247.
+  Broadcast and multicast MBS sessions are time-bound, but their life-cycles are not documented symmetrically in TS 23.247: broadcast's provisioning phases (creation, service announcement, data transfer, release/deletion) are in **Clause 4.2.2**, while multicast has both its own provisioning phases (**Clause 4.2.1**) and a dedicated **Clause 4.3 "Multicast session state model"** with no broadcast counterpart — broadcast has no equivalent numbered state-model clause.
   The geographical areas for which the multicast and broadcast MBS sessions are available is determined by the coverage area of the sites/sectors from which the broadcast service is transmitted. Refer to TS 23.247 (5G MBS architecture) and [TS 38.300](https://www.3gpp.org/dynareport/38300.htm) (NR overall description) for more detail.
 
 ## MBS traffic delivery methods (TS 23.247)
@@ -92,7 +92,7 @@ TS 23.247 places the MBS work on two dedicated functions plus MBS extensions to 
 
 ## Session life-cycle: broadcast and multicast
 
-The two session types differ in how a UE becomes a receiver, which is why their life-cycles are specified separately (TS 23.247 clauses 4.2 and 4.3).
+The two session types differ in how a UE becomes a receiver, which is why their life-cycles are specified separately: broadcast in Clause 4.2.2, multicast across Clause 4.2.1 and Clause 4.3.
 
 - A **broadcast session** is provisioned and activated by the network on the strength of a service definition and a service area. There is no per-UE signalling: once the session is active in a cell, any authorised UE in coverage may receive it, and the network need not know which UEs are actually listening. Setup runs from the AF/AS or MBSF through the MB-SMF and AMF out to the NG-RAN nodes in the area, always using the 5GC shared delivery method.
 - A **multicast session** adds a membership step. A UE first establishes or reuses a PDU session and then **joins** the multicast MBS session (identified by its MBS Session ID / TMGI); the join is authorised and recorded so the network knows which UEs, and therefore which cells, need the data. Only cells with at least one joined UE transmit the session. A UE **leaves** when it no longer wants the service, and when the last joined UE in a gNB leaves, the core may release the shared resources towards that node. This membership is also what lets the network switch a given UE between shared and individual delivery, and a given cell between PTM and PTP, as conditions change.
