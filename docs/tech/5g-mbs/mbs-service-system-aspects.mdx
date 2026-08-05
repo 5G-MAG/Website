@@ -62,23 +62,23 @@ Multicast–broadcast Protocol Data Units (PDUs), referred to as MBS packets, ar
 | Property                      | 5GC shared                                      | 5GC individual                                                     |
 | ----------------------------- | ----------------------------------------------- | ------------------------------------------------------------------ |
 | Copies delivered by the core  | One copy to each relevant RAN node              | A separate copy per UE                                             |
-| Transport towards the RAN     | Shared GTP tunnel at reference point N3mb       | Per-UE PDU session (via the UPF at N19mb, then N3)                 |
+| Transport towards the RAN     | Shared GTP-U tunnel at reference point N3mb     | Per-UE PDU session (via the UPF at N19mb, then N3)                 |
 | Applies to broadcast sessions | Required                                        | Not used                                                           |
 | Applies to multicast sessions | May be used                                     | May be used (e.g. for MBS-incapable base stations)                 |
 | Typical use                   | Efficient delivery to MBS-capable base stations | Reaching legacy or MBS-incapable base stations, or per-UE handling |
 
-Where the acronyms above mean: GTP (GPRS Tunnelling Protocol); NG-RAN (Next Generation Radio Access Network); MNO (Mobile Network Operator); gNodeB (5G base station); UPF (User Plane Function).
+Where the acronyms above mean: GTP-U (GPRS Tunnelling Protocol, User Plane — [TS 29.281](https://www.3gpp.org/dynareport/29281.htm) — the protocol carried over N3mb/N3; only the user-plane variant applies here, not GTP-C); NG-RAN (Next Generation Radio Access Network); MNO (Mobile Network Operator); gNodeB (5G base station); UPF (User Plane Function).
 
 - **5GC shared MBS traffic delivery method**: 5G CN receives a single copy of MBS data packets and delivers a single copy of those MBS data packets to all relevant RAN nodes.
   - This method must be applied for broadcast MBS sessions.
   - This method may be applied to multicast MBS sessions.
-  - MBS packet is forwarded by the MB-UPF directly to the relevant NG-RAN nodes at their N3mb reference point via a shared GTP tunnel.
+  - MBS packet is forwarded by the MB-UPF directly to the relevant NG-RAN nodes at their N3mb reference point via a shared GTP-U tunnel.
   - Each MBS Session establishes its own separate set of shared tunnels as required – tunnels are not shared across different MBS sessions.
 
 - **5GC individual MBS traffic delivery method**: the 5G CN receives a single copy of MBS data packets and delivers separate copies of those MBS data packets to relevant RAN nodes via per-UE Protocol Data Unit (PDU) sessions. For this traffic delivery method each UE associated with a multicast session requires its own, dedicated PDU session.
   - This method is only applied to multicast MBS sessions.
   - Because an MNO network may contain an arbitrary mix of MBS-capable and MBS-incapable gNodeBs, the same MBS packet (originating from a multicast MBS session) may be conveyed to MBS-capable gNodeBs using the shared MBS traffic delivery method, and to MBS-incapable gNodeBs via one or more PDU Sessions using the individual MBS traffic delivery method.
-  - MBS packets are forwarded by the MB-UPF to the UPF at reference point N19mb where they are delivered to the NG-RAN in a conventional PDU Session in a GTP tunnel at existing reference point N3, and thence to the target UE at reference point Uu. In this scenario, a separate PDU Session is required for each subscribed UE and the MB-UPF is responsible for performing the necessary packet replication at this fan-out point.
+  - MBS packets are forwarded by the MB-UPF to the UPF at reference point N19mb where they are delivered to the NG-RAN in a conventional PDU Session in a GTP-U tunnel at existing reference point N3, and thence to the target UE at reference point Uu. In this scenario, a separate PDU Session is required for each subscribed UE and the MB-UPF is responsible for performing the necessary packet replication at this fan-out point.
 
 ## Core network functions and their MBS roles
 
