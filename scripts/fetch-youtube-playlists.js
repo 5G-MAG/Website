@@ -30,11 +30,11 @@ const path = require('path');
 
 const PLAYLISTS = {
   workshops: 'PLFqKJZ78_IWUDXCiSLahAB5Av7QxOoUKX',
-  developer: 'PLFqKJZ78_IWW_lQytNhfVmFl9U_lLBEcF',
+  developer: 'PLFqKJZ78_IWU3RXGLPulR4hkStzfBSXTJ',
   publicCall: 'PLFqKJZ78_IWUfQ-K4qWf4sx4R9L_DgG7f',
   // "5G-MAG Demos" -- interop plugfest / trade-show demo recordings, feeds
   // the Interop & Demos page rather than the Developer or Workshops ones.
-  demos: 'PLBwVxw5NGYvM',
+  demos: 'PLFqKJZ78_IWUiTXQjFbjxs-Y-q0Nhtwmh',
   // Feeds docs/tech/exchanges.mdx ("Technology Exchange") -- a separate
   // category from Workshops/Developer Exchange/Public Call, grouped by
   // session rather than a flat list, so only backstops brand-new videos
