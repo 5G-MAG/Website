@@ -22,7 +22,7 @@ sidebar_position: 13
 
 ## Overview
 
-5G-MAG investigates media distribution over Non-Terrestrial Networks (NTN), including satellite and high-altitude platform stations (HAPS). NTN extends 5G coverage to underserved areas and supports large-scale broadcast distribution to fixed and mobile devices. For acronyms used here, see the [Glossary](/tech/glossary).
+5G-MAG tracks 3GPP Non-Terrestrial Network (NTN) standards for satellite and HAPS media distribution. For the technical analysis of NTN deployment models, mobility and media delivery, see the Tech page linked below. For acronyms used here, see the [Glossary](/tech/glossary).
 
 :::tip
 New to the service layers that NTN carries? Multicast Broadcast Services (MBS) and 5G Broadcast are the delivery mechanisms most often deployed over satellite paths. See [Standards: 5G Multicast & Broadcast Services](/tech/standards/5g-mbs) and [Standards: 5G Broadcast](/tech/standards/5g-broadcast) for background before reading this page.
@@ -45,103 +45,53 @@ New to the service layers that NTN carries? Multicast Broadcast Services (MBS) a
 
 </div>
 
-## How NTN Fits the 5G System
-
-NTN is an access option for the 5G system, not a parallel network. The core network, the service layers and, as far as possible, the NR protocol stack are reused; the differences are concentrated at the radio and in a few architecture roles.
-
-**Payload types.** In a _transparent_ (bent-pipe) payload the base station (gNB, referred to in NTN terms as a Satellite Access Node) sits on the ground; the satellite only relays and frequency-translates the signal between the _feeder link_ (satellite to ground station) and the _service link_ (satellite to device). In a _regenerative_ payload the gNB function, or part of it, is carried on board the spacecraft. Release 17 standardised the transparent case; regenerative scenarios are addressed in later releases. Confirm exact release placement against the work plan.
-
-**Orbits.** GEO satellites sit at a fixed point relative to the ground (about 35,786 km up), cover a wide area and add a one-way propagation delay of roughly 120 to 140 ms on the service-plus-feeder path. LEO satellites (hundreds to ~2,000 km) give much lower delay but move quickly overhead, so cells (beams) sweep across the ground and handovers are frequent. MEO sits between the two. HAPS operate in the stratosphere and behave more like a very high tower. These differences drive the media design choices below.
-
-**What the radio has to solve.** The long, variable propagation delay, the large Doppler shift on fast NGSO links, and the moving coverage all have to be handled. The main mechanisms are: satellite ephemeris and timing/frequency pre-compensation signalled to the device (via SIB19), a GNSS-capable device that computes its own timing advance and Doppler correction, HARQ and timer adaptations for the long round trip, and mobility handling for beams that move relative to the ground.
-
-## Media Delivery Considerations over NTN
-
-For media services, the orbit and payload choices translate into concrete service-layer considerations:
-
-- **One-to-many efficiency.** A single wide beam can cover a large population, which suits broadcast (MBS delivery mode 2) and shared multicast (delivery mode 1 over point-to-multipoint). Spectrum is the scarce resource on satellite, so serving many devices from one transmission is attractive.
-- **Latency and interactivity.** GEO's round trip makes tightly interactive services and chatty acknowledgement-based protocols harder; it favours linear, one-directional and delay-tolerant media. LEO's lower latency is friendlier to interactive and adaptive streaming, at the cost of frequent handovers.
-- **Reliability without a fast return path.** Application-layer forward error correction and object-based delivery (for example FLUTE over ROUTE/LCT for file and DASH-segment delivery) reduce reliance on retransmission, which is expensive over long satellite paths.
-- **Mobility and session continuity.** Media sessions must survive beam-to-beam, satellite-to-satellite and satellite-to-terrestrial transitions. The 5G-MAG analysis (see the technical pages) treats lossless handover for multicast groups as a distinct problem from unicast handover, because the whole group, or its edge devices, may move at once.
-
-## NTN Deployment Scenarios for Media
-
-The three scenarios below differ mainly in orbit type, delivery mode and the media use they best support. Geostationary Earth Orbit (GEO) satellites sit at a fixed point relative to the ground and cover a wide area; Low Earth Orbit (LEO) satellites move quickly overhead and give lower latency at the cost of more frequent handovers.
-
-| Scenario                | Orbit           | Delivery mode           | Typical media use                                                               |
-| ----------------------- | --------------- | ----------------------- | ------------------------------------------------------------------------------- |
-| GEO satellite broadcast | Geostationary   | Broadcast (one-to-many) | Wide-area linear content to many fixed and mobile 5G devices                    |
-| LEO satellite unicast   | Low Earth Orbit | Unicast                 | Mobile broadband streaming to individual devices                                |
-| Hybrid NTN/Terrestrial  | Mixed           | Either, with handover   | Continuous coverage as devices move between satellite and ground-based 5G cells |
-
 ## Key 3GPP Specifications
 
 ### NR for NTN
 
-These specifications adapt the New Radio (NR) air interface so that it can cope with the long propagation delays, Doppler shift and moving cells that satellite and HAPS links introduce.
-
-- [TR 38.811](https://www.3gpp.org/dynareport/38811.htm): Study on New Radio (NR) to support Non-Terrestrial Networks. The foundational Release 15 study item that defined NTN deployment scenarios (GEO, MEO, LEO, HAPS), channel models and the impairments the air interface has to handle.
-- [TR 38.821](https://www.3gpp.org/dynareport/38821.htm): Solutions for NR to support Non-Terrestrial Networks (NTN). The Release 16 study that worked out the physical-layer, protocol and architecture solutions (timing advance, Doppler pre-compensation, HARQ, feeder/service link handling) later carried into normative work.
-- [TS 38.331](https://www.3gpp.org/dynareport/38331.htm): NR; Radio Resource Control (RRC); Protocol specification. Carries the NTN system information blocks, notably SIB19 (NTN assistance information: satellite ephemeris, common timing advance, the k-offset and the epoch time and validity window used for uplink synchronisation).
-- [TS 38.300](https://www.3gpp.org/dynareport/38300.htm): NR; NR and NG-RAN Overall description; Stage 2. Describes NTN at architecture level, including the transparent payload deployment and the Satellite Access Node (SAN) concept.
-- [TR 38.863](https://www.3gpp.org/dynareport/38863.htm): Non-terrestrial networks (NTN) related RF and co-existence aspects. The Release 17 study underpinning the RF and coexistence requirements for NTN UE and satellite access nodes in FR1.
-
-3GPP added transparent-payload NR NTN as normative work in Release 17, supporting GEO, MEO and LEO orbits and HAPS, with GNSS assumed at the UE so it can pre-compensate the large timing advance and Doppler on the service link. Release 18 (5G-Advanced) and Release 19 continued the work, adding items such as coverage and mobility enhancements and, in later releases, regenerative-payload (on-board gNB) scenarios. Confirm the exact release placement of individual features against the 3GPP work plan.
+- [TR 38.811](https://www.3gpp.org/dynareport/38811.htm) - Study on New Radio (NR) to support Non-Terrestrial Networks (Rel-15)
+- [TR 38.821](https://www.3gpp.org/dynareport/38821.htm) - Solutions for NR to support Non-Terrestrial Networks (NTN) (Rel-16)
+- [TS 38.331](https://www.3gpp.org/dynareport/38331.htm) - NR; Radio Resource Control (RRC) protocol specification (carries the NTN system information, including SIB19)
+- [TS 38.300](https://www.3gpp.org/dynareport/38300.htm) - NR; NR and NG-RAN Overall description; Stage 2
+- [TR 38.863](https://www.3gpp.org/dynareport/38863.htm) - Non-terrestrial networks (NTN) related RF and co-existence aspects (Rel-17)
 
 ### System Architecture for NTN
 
-These studies define how satellite access is integrated into the 5G system architecture, covering registration, mobility and the interfaces between the satellite segment and the 5G core.
-
-- [TR 22.822](https://www.3gpp.org/dynareport/22822.htm): Study on using Satellite Access in 5G. The stage 1 study that captured use cases and service requirements for satellite integration.
-- [TR 23.737](https://www.3gpp.org/dynareport/23737.htm): Study on architecture aspects for using satellite access in 5G. The stage 2 study spanning Release 16 and 17 that identified the key issues and candidate solutions for integrating satellite access into the 5G system.
-- [TS 23.501](https://www.3gpp.org/dynareport/23501.htm): System architecture for the 5G System (5GS). Carries the NTN-related additions to the reference architecture (for example satellite backhaul and NTN access as an access type).
-- [TS 23.502](https://www.3gpp.org/dynareport/23502.htm): Procedures for the 5G System (5GS). Carries the registration, mobility and session-management procedures that NTN access reuses and extends.
+- [TR 22.822](https://www.3gpp.org/dynareport/22822.htm) - Study on using Satellite Access in 5G (Stage 1)
+- [TR 23.737](https://www.3gpp.org/dynareport/23737.htm) - Study on architecture aspects for using satellite access in 5G (Stage 2, Rel-16/17)
+- [TS 23.501](https://www.3gpp.org/dynareport/23501.htm) - System architecture for the 5G System (5GS)
+- [TS 23.502](https://www.3gpp.org/dynareport/23502.htm) - Procedures for the 5G System (5GS)
 
 :::warning[Verify spec number]
 This entry was changed by automated review from TR 22.837 to TR 22.822 and is not yet confirmed against the 3GPP portal. TR 22.837 was identified as the Integrated Sensing and Communication study (unrelated to satellite access). Confirm TR 22.822 is the intended satellite-access study before publication.
 :::
 
-### Media Distribution over NTN
-
-This study looks specifically at how media services behave over NTN paths and what the service layers need to account for on satellite delivery.
-
 ### Multicast Broadcast Services over NTN
 
-NTN does not define its own media service layer. Media is carried over NTN using the same 5G service layers used on the ground, principally MBS (Multicast Broadcast Services). The relevant specifications are therefore the MBS ones, applied over a satellite or HAPS access.
+- [TS 23.247](https://www.3gpp.org/dynareport/23247.htm) - Architectural enhancements for 5G multicast-broadcast services
+- [TS 26.502](https://www.3gpp.org/dynareport/26502.htm) - 5G multicast-broadcast user services; Protocols and formats
+- [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) - 5G Media Streaming (5GMS); General description and architecture
 
-- [TS 23.247](https://www.3gpp.org/dynareport/23247.htm): Architectural enhancements for 5G multicast-broadcast services. Defines MBS delivery mode 1 (multicast, higher QoS, RRC_CONNECTED devices) and delivery mode 2 (broadcast, receivable in RRC_IDLE and RRC_INACTIVE as well as RRC_CONNECTED).
-- [TS 26.502](https://www.3gpp.org/dynareport/26502.htm): 5G multicast-broadcast user services; Protocols and formats. The SA4 user-service layer above the MBS transport.
-- [TS 26.501](https://www.3gpp.org/dynareport/26501.htm): 5G Media Streaming (5GMS); General description and architecture. The media delivery architecture that MBS user services extend for multicast and broadcast.
-
-Applying MBS over NTN is the subject of active work in Release 19 and beyond. Broadcast over geostationary (GSO) and non-geostationary (NGSO) orbits, then multicast over the same, have been discussed as separable steps. Because this work is still being defined, treat orbit-by-orbit and mode-by-mode feature placement as provisional and verify against the current work plan.
-
-One piece of this is confirmed: Release 19 adds **SIB27** to TS 38.331, carrying the Intended Service Area(s) of an MBS broadcast service as geographic polygons or circles — this lets a UE check whether it sits within a broadcast service's intended area before acquiring MCCH, which matters because a single NTN beam footprint can be far larger and more heterogeneous than a terrestrial cell's coverage. See [MBS Broadcast NTN](/tech/ntn/analysis-mbs-broadcast-over-ntn) for the detail.
+Applying MBS over NTN is the subject of active work in Release 19 and beyond; treat orbit-by-orbit and mode-by-mode feature placement as provisional. One confirmed item: Release 19 adds **SIB27** to TS 38.331 for MBS broadcast over NTN. See [MBS Broadcast NTN](/tech/ntn/analysis-mbs-broadcast-over-ntn) for the technical detail.
 
 ## Specifications by Role
 
-The table groups the key specifications by the part of the system they govern, which is often more useful than grouping by number.
+The table groups the key specifications by the part of the system they govern.
 
-| Role                           | Specifications                                        | What they cover for NTN                                                                          |
-| ------------------------------ | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| Radio access (NR NTN)          | TR 38.811, TR 38.821, TR 38.863, TS 38.300, TS 38.331 | Air-interface adaptations, timing/Doppler pre-compensation, SIB19 assistance, RF and coexistence |
-| System architecture            | TR 22.822, TR 23.737, TS 23.501, TS 23.502            | Integrating satellite access into the 5G system, registration, mobility, session management      |
-| MBS transport                  | TS 23.247                                             | Delivery mode 1 (multicast) and mode 2 (broadcast) reused over NTN                               |
-| Media service layer            | TS 26.501, TS 26.502                                  | 5G Media Streaming and MBS user services carried over NTN paths                                  |
-| Alternative broadcast waveform | ETSI TS 103 720                                       | LTE-based 5G Broadcast for GEO linear TV and radio                                               |
+| Role                           | Specifications                                        |
+| ------------------------------ | ------------------------------------------------------ |
+| Radio access (NR NTN)          | TR 38.811, TR 38.821, TR 38.863, TS 38.300, TS 38.331 |
+| System architecture            | TR 22.822, TR 23.737, TS 23.501, TS 23.502            |
+| MBS transport                  | TS 23.247                                             |
+| Media service layer            | TS 26.501, TS 26.502                                  |
+| Alternative broadcast waveform | ETSI TS 103 720                                       |
 
 ## 5G-MAG tracking and contribution focus
 
-5G-MAG treats NTN as a delivery infrastructure for existing media service layers rather than a separate system, and its analysis concentrates on the parts that NTN genuinely changes:
-
-- Multicast Broadcast Services (MBS) broadcast delivery over NTN (GEO and LEO)
-- Multicast session management and delivery-mode switching (PTP/PTM) under NTN mobility
-- Delay-tolerant, application-layer FEC based media delivery over long satellite paths
-- Lossless handover and session continuity for multicast groups across beams, satellites and the terrestrial/non-terrestrial boundary
-
-See the [Technical Documentation: Non-Terrestrial Networks](/tech/ntn) page for the detailed analysis documents that develop these topics.
+5G-MAG tracks MBS broadcast delivery over NTN, multicast session management and delivery-mode switching under NTN mobility, and lossless handover for multicast groups across the terrestrial/non-terrestrial boundary. See the [Technical Documentation: Non-Terrestrial Networks](/tech/ntn) page for the detailed analysis.
 
 :::warning[References to verify]
-These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TS 26.502 title, TR 38.863 release placement, GEO one-way propagation delay figures. Verify against the 3GPP/ETSI work plan before publication. (SIB27, the one Release 19 MBS-over-NTN feature identified so far, has been confirmed directly against TS 38.331 V19.3.0 — see the note above. Other Release 18/19 NTN and MBS-over-NTN feature placements remain unconfirmed and should still be treated as provisional.)
+These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TS 26.502 title, TR 38.863 release placement. Verify against the 3GPP/ETSI work plan before publication. (SIB27, the one Release 19 MBS-over-NTN feature identified so far, has been confirmed directly against TS 38.331 V19.3.0 — see [MBS Broadcast NTN](/tech/ntn/analysis-mbs-broadcast-over-ntn) for the verification. Other Release 18/19 NTN and MBS-over-NTN feature placements remain unconfirmed and should still be treated as provisional.)
 :::
 
 ## Related Standards Work
