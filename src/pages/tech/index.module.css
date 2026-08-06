@@ -253,6 +253,88 @@
   line-height: 1.6;
 }
 
+/* ── Content model (Standards -> Analysis -> Tools -> Applications) ──── */
+/* Same flat, left-accent "informational" card as pillarCard, but a 4-up
+   grid and each card carries an optional inline link rather than being
+   a whole-card link -- some steps (Standards) have no single index page
+   of their own to point at. */
+
+.contentModelGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 900px) {
+  .contentModelGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .contentModelGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contentModelStep {
+  padding: 1.25rem 1.25rem 1.25rem 1.5rem;
+  border-left: 4px solid var(--ifm-color-primary);
+  background: var(--ifm-background-surface-color);
+  border-radius: 0 8px 8px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.contentModelStepLabel {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.contentModelStepTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.contentModelStepBody {
+  font-size: 0.88rem;
+  color: var(--ifm-color-emphasis-700);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.contentModelStepLink {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 0.1rem;
+}
+
+/* ── Topic status tags (on Categories & Topics cards) ─────────────────── */
+/* Deliberately exception-only in practice: most topics have a reference
+   tool and a normative spec, so tagging every card would be noise. Only
+   the topics that genuinely lack one, or are still study-stage, carry a
+   tag -- see CATEGORIES in index.js for which ones and why. Neutral chip
+   styling (shared look for both meanings, distinguished by text only) so
+   this doesn't read as a red/green pass-fail signal. */
+
+.categoryTopicTag {
+  display: inline-block;
+  margin-top: 0.3rem;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-700);
+  background: var(--ifm-color-emphasis-100);
+  white-space: nowrap;
+}
+
 /* ── Link Cards ────────────────────────────────────────────────────── */
 /* A full bordered/hover-lift card for a single clickable destination (no
    icon band) -- pillarCard's flat left-accent style reads as informational
@@ -301,6 +383,14 @@
   color: var(--ifm-color-emphasis-700);
   margin: 0;
   line-height: 1.6;
+}
+
+/* Compact variant of the grid above, sized for the Implementation
+   Blueprints preview (more, smaller cards than a typical linkCard grid). */
+.blueprintPreviewGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
 }
 
 /* ── Category Cards ────────────────────────────────────────────────── */

@@ -65,6 +65,7 @@ const CATEGORIES = [
         title: 'Non-Terrestrial Networks',
         desc: 'MBS over satellite and NTN mobility analysis.',
         href: '/tech/ntn',
+        tag: 'Analysis only',
         icon: icon(
           <>
             <path d="M3.707 6.293l2.586 -2.586a1 1 0 0 1 1.414 0l5 5a1 1 0 0 1 0 1.414l-2.586 2.586a1 1 0 0 1 -1.414 0l-5 -5a1 1 0 0 1 0 -1.414z" />
@@ -79,6 +80,7 @@ const CATEGORIES = [
         title: 'Real-Time Communications',
         desc: 'Low-latency two-way media over 5G.',
         href: '/tech/rtc',
+        tag: 'Analysis only',
         icon: icon(
           <>
             <path d="M7 21v-6" />
@@ -204,6 +206,7 @@ const CATEGORIES = [
         title: 'Non-Public Networks',
         desc: 'Private 5G deployments for media production venues.',
         href: '/tech/npn',
+        tag: 'Analysis only',
         icon: icon(
           <>
             <path d="M15 10l4.553 -2.276a1 1 0 0 1 1.447 .894v6.764a1 1 0 0 1 -1.447 .894l-4.553 -2.276v-4" />
@@ -215,6 +218,7 @@ const CATEGORIES = [
         title: 'Time Sensitive Communications',
         desc: 'Deterministic low-latency transport for professional media equipment.',
         href: '/tech/tsc',
+        tag: 'Analysis only',
         icon: icon(
           <>
             <path d="M12 13m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
@@ -228,23 +232,8 @@ const CATEGORIES = [
   },
   {
     title: 'Research Topics',
-    desc: 'Currently AI/ML and 6G research — early-stage work that will shape future releases rather than deployable technology today.',
+    desc: 'Currently AI/ML and 6G research — early-stage work that will shape future releases rather than deployable technology today. The underlying AI-traffic-characterisation testbed lives on the Testbeds portal, not below, since it has no Standards or Analysis page of its own.',
     topics: [
-      {
-        title: 'AI Traffic Characterization',
-        desc: 'Modeling AI/ML network traffic on the 6G Testbed.',
-        href: '/testbeds/6g-testbed',
-        icon: icon(
-          <>
-            <path d="M7 8l-4 4l4 4" />
-            <path d="M17 8l3.111 3.111" />
-            <path d="M14 4l-2.175 8.7" />
-            <path d="M14 21v-4a2 2 0 1 1 4 0v4" />
-            <path d="M14 19h4" />
-            <path d="M21 15v6" />
-          </>
-        ),
-      },
       {
         title: 'AI/ML in 5G Media',
         desc: 'NWDAF network-side analytics vs. UE-side data collection tracks for AI/ML in 3GPP.',
@@ -264,6 +253,7 @@ const CATEGORIES = [
         title: 'Towards 6G Media',
         desc: 'Early 6G research and technical analysis for future media technologies.',
         href: '/tech/6g',
+        tag: 'Study stage',
         icon: icon(
           <>
             <path d="M18 8h-2a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h2v-4h-1" />
@@ -403,6 +393,67 @@ const PILLARS = [
   },
 ];
 
+// How this hub relates to the other three portals. Not every step has a
+// single index page to link to (there's no one page listing every
+// Standards page — each is reached from its own topic), so linkLabel/
+// linkHref are optional per step rather than making the whole card a Link.
+const CONTENT_MODEL = [
+  {
+    label: 'Step 1',
+    title: 'Standards',
+    body: 'The specification list for a topic: 3GPP, MPEG, DVB, ETSI and CAMARA numbers and titles, nothing else.',
+  },
+  {
+    label: 'Step 2',
+    title: 'Analysis (this hub)',
+    body: 'How it actually works, including step-by-step Implementation Blueprints for the procedures that have one.',
+    linkLabel: 'Browse blueprints →',
+    linkHref: '/tech/blueprints',
+  },
+  {
+    label: 'Step 3',
+    title: 'Reference Tools & Testbeds',
+    body: 'Working code implementing the specification, where one exists yet — some topics are analysis-only for now.',
+    linkLabel: 'Browse Reference Tools →',
+    linkHref: '/reference-tools',
+  },
+  {
+    label: 'Step 4',
+    title: 'Applications',
+    body: 'Real, assembled scenarios built from one or more Reference Tools, pointed at a concrete use case.',
+    linkLabel: 'Browse Applications →',
+    linkHref: '/applications',
+  },
+];
+
+// A representative slice of /tech/blueprints, kept here so the flagship
+// content type gets its own featured section (not just one line among
+// five in "What You'll Find Here") -- mirrors the Technology Exchanges
+// featured section further down. Full, current list always lives on
+// /tech/blueprints itself; this is deliberately not the complete set.
+const BLUEPRINT_PREVIEW = [
+  {
+    title: 'MBS Broadcast RAN acquisition',
+    desc: 'MIB, SIB1, SIB20, MCCH, MTCH, up to decoding the broadcast MRB.',
+    href: '/tech/5g-mbs/analysis-mbs-broadcast-ran#implementation-blueprint',
+  },
+  {
+    title: '5GMS session establishment',
+    desc: 'Service discovery to continuous playback, progressive download and DASH.',
+    href: '/tech/5gms/overview-5gms#implementation-blueprint',
+  },
+  {
+    title: 'DVB-I service discovery bootstrap',
+    desc: 'Cold start to content-guide data, clause-cited against ETSI TS 103 770.',
+    href: '/tech/dvb-i/dvb-i-5g#implementation-blueprint',
+  },
+  {
+    title: 'MBS Multicast mobility',
+    desc: 'The three handover cases for a multicast group in motion.',
+    href: '/tech/5g-mbs/mobility-mbs-multicast#implementation-blueprint',
+  },
+];
+
 function CategoryCard({ title, desc, topics }) {
   return (
     <div className={styles.categoryCard}>
@@ -417,6 +468,7 @@ function CategoryCard({ title, desc, topics }) {
             <span className={styles.categoryTopicCardBody}>
               <span className={styles.categoryTopicName}>{t.title}</span>
               <span className={styles.categoryTopicDescText}>{t.desc}</span>
+              {t.tag && <span className={styles.categoryTopicTag}>{t.tag}</span>}
             </span>
           </Link>
         ))}
@@ -489,6 +541,32 @@ export default function Home() {
           </div>
         </section>
 
+        {/* How this hub fits with Standards, Tools & Applications */}
+        <section className={clsx(styles.section, styles.sectionAlt)}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>How This Fits Together</h2>
+            <p className={styles.sectionSubtitle}>
+              Four portals, one chain. A topic&apos;s specs, its analysis, the tools that implement it and the
+              real scenarios built from those tools are deliberately kept separate and cross-linked, rather than
+              repeated on every page.
+            </p>
+            <div className={styles.contentModelGrid}>
+              {CONTENT_MODEL.map((s) => (
+                <div key={s.title} className={styles.contentModelStep}>
+                  <span className={styles.contentModelStepLabel}>{s.label}</span>
+                  <h3 className={styles.contentModelStepTitle}>{s.title}</h3>
+                  <p className={styles.contentModelStepBody}>{s.body}</p>
+                  {s.linkHref && (
+                    <Link to={s.linkHref} className={styles.contentModelStepLink}>
+                      {s.linkLabel}
+                    </Link>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* What You'll Find Here */}
         <section className={styles.section}>
           <div className="container">
@@ -516,6 +594,28 @@ export default function Home() {
               {CATEGORIES.map((c) => (
                 <CategoryCard key={c.title} {...c} />
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Implementation Blueprints, featured */}
+        <section className={styles.section}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>Implementation Blueprints</h2>
+            <p className={styles.sectionSubtitle}>
+              Step-by-step procedures that map a build step directly to a protocol layer and a clause
+              reference — verified against a primary source, not asserted.
+            </p>
+            <div className={styles.blueprintPreviewGrid}>
+              {BLUEPRINT_PREVIEW.map((b) => (
+                <Link key={b.href} to={b.href} className={styles.linkCard}>
+                  <h3 className={styles.linkCardTitle}>{b.title}</h3>
+                  <p className={styles.linkCardBody}>{b.desc}</p>
+                </Link>
+              ))}
+            </div>
+            <div className={styles.onAirFeaturedMore}>
+              <Link to="/tech/blueprints">See the full index &rarr;</Link>
             </div>
           </div>
         </section>
