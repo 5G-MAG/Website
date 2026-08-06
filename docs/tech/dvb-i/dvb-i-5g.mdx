@@ -117,6 +117,8 @@ A client needs a starting point. TS 103 770 defines a Service List Registry (SLR
 
 This is the client-side bootstrap sequence from a cold start to content-guide data, verified against **ETSI TS 103 770 V1.2.1 (2024-09)**, the current published version (cross-checked against the DVB A177r8 / draft ETSI TS 103 770 V1.3.1 text dated June 2026: the clause numbers below are identical in both, so they should hold even once that draft is published). See the [Implementation Blueprints index](/tech/blueprints) for the other blueprints on this portal.
 
+Most of this sequence is delivery-network-agnostic: Steps 1-3, 5 and 6 are plain DVB-I mechanics that work the same way over cable, satellite, terrestrial DTT or 5G. **Step 4 is the one place "over 5G" actually enters**: a service instance's delivery parameters can point at a DVB-DASH presentation carried over 5G Media Streaming (TS 26.501) or a DVB-MABR session carried over 5G Broadcast (ETSI TS 103 720) — that specific mapping is what DVB A178 / TR 103 972 defines, covered below under "Delivery over 5G Systems." DVB-I over 5G reuses this blueprint almost unchanged, the same relationship [MBS Broadcast over NTN](/tech/ntn/analysis-mbs-broadcast-over-ntn) has to the terrestrial MBS blueprint.
+
 | Step | Interface (Fig. 1) | What happens | Clause |
 | --- | --- | --- | --- |
 | 1. Locate a Service List Registry, or a pre-configured Service List | — | The client obtains an SLR endpoint (or a built-in/provisioned Service List URL directly) via one of several discovery paths: a pre-configured URL, broadcast NIT/BAT signalling, a CICAM, or mDNS/DNS-SD | 5.1.3.1 (the options); 5.1.3.3 to 5.1.3.9 (each specific mechanism) |
