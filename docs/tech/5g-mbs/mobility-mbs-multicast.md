@@ -81,3 +81,20 @@ Checked against TS 38.300 V19.3.0 Clause 16.10.5.3.3 ("Handover between Multicas
 :::note[Verified against primary sources]
 This entire page has now been checked directly against TS 38.413 V17.5.0 (NGAP), TS 38.300 V19.3.0 (NR overall description) and TS 23.247 V19.3.0 (5G Core MBS architecture). Every NGAP message and procedure name is genuine and correctly used, including the one flagged here previously — Distribution Setup and Distribution Release (TS 38.413 Clause 8.18, "Multicast Session Management Procedures") are explicitly **multicast**-specific, not broadcast-oriented as suspected. TS 38.300 Clause 16.10.5.3.2 confirms the RRC-container mechanism and the PTP RLC AM / PDCP COUNT continuity requirement almost word-for-word against this page's text, and TS 23.247 independently confirms the shared/individual delivery-method switch during handover. The "Bearer-type switch" section's previously-open question is also resolved (see the note above) — it is an additional, optional preparatory step, not an alternate mechanism.
 :::
+
+## Implementation blueprint
+
+The three procedures above, condensed into a single step-by-step reference. See the [Implementation Blueprints index](/tech/blueprints) for the other blueprints on this portal.
+
+| Scenario | Step | What happens | Clause |
+| --- | --- | --- | --- |
+| Both cells support multicast | 1 | Source gNB transfers the UE's joined-session context to the target gNB | TS 38.300 Clause 16.10.5.3.2 |
+| | 2 | Source gNB proposes data forwarding and exchanges the MRB PDCP sequence number with the target, so the target can configure PTP RLC AM and keep the downlink PDCP COUNT synchronised — the two conditions lossless handover depends on | TS 38.300 Clause 16.10.5.3.2 |
+| | 3 | The target's MBS configuration for the UE is delivered via an RRC container relayed through the source gNB; on connecting to the target, the target signals its MBS support to the SMF via Path Switch Request (Xn handover) or Handover Request Acknowledge (NG handover) | TS 38.331; TS 38.300 Clause 16.10.5.3.2 |
+| | 4 | Once no joined UE remains at the source gNB for a session, the source may release the MBS user-plane resources via the NGAP Distribution Release procedure | TS 38.413 Clause 8.18 |
+| Leaving multicast-supporting coverage | 1 | Target gNB sets up PDU Session Resources mapped to the multicast session | TS 23.247 |
+| | 2 | 5GC infers, from the absence of an MBS-support indication in the Path Switch Request / Handover Request Acknowledge, that delivery must switch to the 5GC individual method | TS 23.247 |
+| | *(optional, before handover)* | Source gNB may switch the UE's MRB to a DRB in advance, avoiding a full reconfiguration at a target that doesn't support MBS | TS 38.300 Clause 16.10.5.3.3 |
+| Entering multicast-supporting coverage | 1 | 5GC detects that delivery can switch from the individual to the shared method | TS 23.247 |
+| | 2 | *(Xn)* SMF triggers the switch to shared delivery via the PDU Session Resource Modification procedure, providing the target gNB the joined MBS Session IDs | TS 23.247 |
+| | 2′ | *(NG)* SMF provides the joined MBS Session IDs to the target gNB via NGAP Handover Request instead | TS 23.247; TS 38.413 |

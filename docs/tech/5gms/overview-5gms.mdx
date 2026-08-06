@@ -114,7 +114,7 @@ The following features are defined for 5GMSd. The clause references below point 
 | ------------------------------------------- | -------------------------------------------------------------------------- | ---------------------------- | -------------------------------------------------------------------- |
 | **Content hosting**                         | 3GPP TS 26.501 4.0.2                                                       | 3GPP TS 26.501 5.4           | 3GPP [TS 26.510](https://www.3gpp.org/dynareport/26510.htm) + 26.512 |
 | **Network assistance**                      | 3GPP TS 26.501 4.0.5                                                       | 3GPP TS 26.501 5.9           | 3GPP TS 26.510 + 26.512                                              |
-| **Dynamic policies**                        | 3GPP TS 26.501 4.0.6                                                       | 3GPP TS 26.501 5.8           | 3GPP TS 26.510 + 26.512                                              |
+| **Dynamic policies**                        | 3GPP TS 26.501 4.0.6                                                       | 3GPP TS 26.501 5.7 (5.8 for the network-slicing variant) | 3GPP TS 26.510 + 26.512                                              |
 | **Consumption reporting**                   | 3GPP TS 26.501 4.0.8                                                       | 3GPP TS 26.501 5.6           | 3GPP TS 26.510 + 26.512                                              |
 | **QoE metrics reporting**                   | 3GPP TS 26.501 4.0.9                                                       | 3GPP TS 26.501 5.5           | 3GPP TS 26.510 + 26.512                                              |
 | **Edge processing**                         | 3GPP TS 26.501 4.0.10                                                      | 3GPP TS 26.501 8             | 3GPP TS 26.510 + 26.512                                              |
@@ -145,6 +145,25 @@ At runtime the reference points are exercised in a repeatable order. This is a s
 5. **Media session (M4d).** The Media Player fetches and plays the media from the AS over M4d, typically DASH or HLS over HTTP, coordinating with the Media Session Handler over the UE-internal M6d and M7d APIs.
 6. **In-session control and reporting (M5d).** During playback the Media Session Handler can invoke dynamic policies and network assistance, and report consumption and QoE metrics, all over M5d.
 
+## Implementation blueprint
+
+The schematic view above condenses the two baseline procedures TS 26.501 actually specifies step by step: progressive download of on-demand content (Clause 5.2.2, Figure 5.2-1) and DASH streaming (Clause 5.2.3, Figure 5.2-2). Both assume the Application Provider has already provisioned the system and the Aware Application has received a service announcement. See the [Implementation Blueprints index](/tech/blueprints) for the other blueprints on this portal.
+
+| Step | Interface | What happens | Clause |
+| --- | --- | --- | --- |
+| 1. Discover the service | — | The Aware Application runs Service Announcement and Service/Content Discovery (out of scope of TS 26.501); the announcement carries either the full Service Access Information or just a reference to it | 5.2.2/5.2.3 (step 1 of each) |
+| 2. Select content and start playback | — | The application picks a Media Player Entry and triggers playback: the Media Session Handler (progressive download) or the 5GMSd Client as a whole (DASH) | 5.2.2/5.2.3 (steps 2–3) |
+| 3. Resolve Service Access Information | M5d | If only a reference was announced, the Media Session Handler fetches the full Service Access Information from the 5GMSd AF | 5.2.2/5.2.3 (step 4) |
+| 4. Start the Media Player | M6d/M7d | The Media Session Handler triggers the Media Player, which establishes its transport session | 5.2.2 (steps 5–6); 5.2.3 (steps 5–6) |
+| 5. Acquire manifest and initialise | M4d | Progressive download: the Player requests and receives initialization information directly. DASH: the Player first requests and processes the MPD to size the needed transport sessions and initialise the decode/render pipeline (and DRM, if used) | 5.2.2 (steps 7–9); 5.2.3 (steps 6–13) |
+| 6. Notify session state | M6d/M7d | The Player tells the Media Session Handler about the transport session and content (and, for DASH, that it's ready to start) | 5.2.2 (step 10); 5.2.3 (steps 10, 14) |
+| 7. *(Optional)* Acquire DRM licence | — | The Player fetches a DRM licence from the Application Provider if the content is protected | 5.2.2 (step 11); 5.2.3 (step 11) |
+| 8. Stream and render | M4d | The Player requests and receives media (segments, for DASH) continuously, feeding the rendering pipeline until playback ends | 5.2.2 (steps 12–13); 5.2.3 (steps 15–19) |
+
+:::note[Verified against primary sources]
+Checked directly against TS 26.501 V19.4.0. Every clause number in the feature table above is confirmed correct except one, now fixed: "Dynamic policies" pointed only to Clause 5.8 ("Dynamic Policy based on Network Slicing"), a specific sub-case; the general dynamic-policy establishment procedure is Clause 5.7 ("Establishing a unicast downlink media streaming session with 5GMSd AF interactions for dynamic policy updates"), now cited alongside it. The blueprint table above paraphrases the numbered steps of Clauses 5.2.2 and 5.2.3 rather than reproducing 3GPP's text, consistent with the copyright approach used elsewhere on this portal.
+:::
+
 ## Uplink Media Streaming (5GMSu)
 
 The same architecture is mirrored for the uplink direction, where the UE is the source of the media and the network ingests it. The functional entities and reference points carry a "u" suffix in place of "d".
@@ -159,8 +178,5 @@ The main differences from downlink are:
 
 M1u (provisioning) and M5u (media session handling) play the same control-plane roles as in downlink. The 5G-MAG reference tools implement the downlink direction (5GMSd); the uplink direction is defined by the same specifications but is not covered by the reference tools today. Low-latency and interactive uplink use cases relate to the Real-Time Communications (RTC) system; see [Real-Time Communications](/tech/rtc) where documented.
 
-:::warning[References to verify]
-These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the TS 26.501 clause references in the feature table (4.0.2, 5.4, 4.0.5, 5.9, 4.0.6, 5.8, 4.0.8, 5.6, 4.0.9, 5.5, 4.0.10, clause 8, 4.0.11, 5.10, 4.0.12, 5.11) and the clause-5 grouping of the runtime procedures. Verify against the specific TS 26.501 version you are targeting.
-:::
 
 **Next:** see the [5GMSd Features page](./features-5gmsd) for how each downlink feature maps to reference points and APIs, and [Advanced Media Delivery](./overview-amd) for the Release-19 extensions.
