@@ -107,11 +107,28 @@ The delivery-parameter types inside a service instance are the extension point t
 - a DVB multicast (DVB-MABR) session for scalable delivery, or
 - a broadcast source carried on a broadcast bearer.
 
-The client evaluates the available instances against local capability and coverage, then selects one; this is where broadcast/unicast fallback is realised.
+Where a service has more than one instance, TS 103 770 Clause 5.5.4 (`ServiceInstanceType`) gives each instance a `@priority` attribute: a lower value means higher priority, and the client selects accordingly. The spec leaves tie-breaking between equal-priority instances implementation-dependent — this is where a client's own capability and coverage logic (and any broadcast/unicast fallback policy) comes in, on top of the `@priority` ordering the spec itself defines. A hybrid client that also receives the same content over classical DVB-T/C/S separately performs a distinct step, Service Instance Matching (Clause 5.2.1): de-duplicating a DVB-I-discovered instance against an already-tuned broadcast service using DVB Triplet/Network ID metadata, so the two don't appear twice in the combined list.
 
 ### Bootstrap and the Service List Registry
 
-A client needs a starting point. TS 103 770 defines a Service List Registry (SLR) query API so a client can find service lists (for example filtered by country or provider) rather than relying on a hard-coded URL. The typical bootstrap sequence is: query the registry, obtain one or more service-list URLs, fetch the chosen service list, then resolve service instances and (on demand) content-guide data. In a 5G deployment the registry and service-list endpoints are ordinary HTTPS resources and can themselves be delivered over the unicast path.
+A client needs a starting point. TS 103 770 defines a Service List Registry (SLR) query API so a client can find service lists (for example filtered by country or provider) rather than relying on a hard-coded URL. See the [implementation blueprint](#implementation-blueprint) below for the full bootstrap sequence with clause references. In a 5G deployment the registry and service-list endpoints are ordinary HTTPS resources and can themselves be delivered over the unicast path.
+
+## Implementation blueprint
+
+This is the client-side bootstrap sequence from a cold start to content-guide data, verified against **ETSI TS 103 770 V1.2.1 (2024-09)**, the current published version (cross-checked against the DVB A177r8 / draft ETSI TS 103 770 V1.3.1 text dated June 2026: the clause numbers below are identical in both, so they should hold even once that draft is published). See the [Implementation Blueprints index](/tech/blueprints) for the other blueprints on this portal.
+
+| Step | Interface (Fig. 1) | What happens | Clause |
+| --- | --- | --- | --- |
+| 1. Locate a Service List Registry, or a pre-configured Service List | — | The client obtains an SLR endpoint (or a built-in/provisioned Service List URL directly) via one of several discovery paths: a pre-configured URL, broadcast NIT/BAT signalling, a CICAM, or mDNS/DNS-SD | 5.1.3.1 (the options); 5.1.3.3 to 5.1.3.9 (each specific mechanism) |
+| 2. Query the Service List Registry | F1 → F2 | HTTP GET to the SLR endpoint, optionally with filter parameters (`TargetCountry`, `regulatorListFlag`, `Delivery`, `Language`, `Genre`, `ProviderName`, `inlineImages`, `image_variant`, in that fixed order); the SLR returns an XML list of Service List Entry Points | 5.1.3.2 (the query); 5.3.1–5.3.2 (the response schema) |
+| 3. Fetch the chosen Service List | B1 → B2 | HTTP GET to the Service List Server named in the entry point; returns the Service List XML document | 5.5.1 (`ServiceList`) |
+| 4. Select a delivery instance per service | — | Where a `Service` has more than one `ServiceInstance` (for example broadcast and DASH), the client orders them by the `@priority` attribute (lower value wins); ties are implementation-dependent | 5.5.4 (`ServiceInstanceType`) |
+| 5. *(Hybrid clients only)* De-duplicate against a tuned broadcast service | — | If the client also receives DVB-T/C/S directly, it matches a DVB-I instance against an already-tuned service using DVB Triplet/Network ID metadata, so it isn't listed twice | 5.2.1 (Service Instance Matching) |
+| 6. Request Content Guide data | A1 → A2 | HTTP GET to the Content Guide Server referenced in the Service List entry; timestamp-filtered or now/next-filtered schedule, or full programme information, on demand | 6.5 (Schedule Information Requests); 6.6 (Programme Information Request) |
+
+:::note[Verified against primary sources]
+Checked directly against ETSI TS 103 770 V1.2.1 (2024-09), downloaded from the ETSI deliverable server, and cross-checked against the DVB A177r8 / draft ETSI TS 103 770 V1.3.1 text (dated June 2026) for the same clauses — both give identical clause numbers and content for every row above. One correction made in the course of this check: this page previously implied that a device selects among multiple service instances purely on local capability/coverage; the spec's own explicit mechanism is the `@priority` attribute on `ServiceInstanceType` (Clause 5.5.4), with capability/coverage logic only breaking ties between equal-priority instances. "Service Instance Matching" (Clause 5.2.1) is a distinct, hybrid-only step (de-duplicating against a directly-tuned broadcast service), not the general instance-selection mechanism; the two were previously conflated on this page and are now described separately.
+:::
 
 ## Delivery over 5G Systems
 
