@@ -44,7 +44,7 @@ description: Covers 5G Multicast-Broadcast Services architecture across user-ser
 ## Specifications by release
 
 - **Release 17** ("5MBS"): Stage 1 (TS 22.261), Stage 2 architecture (TS 23.247, preceded by TR 23.757), user-service layer (TS 26.502, TS 26.517, preceded by TR 26.802), Stage 3 core procedures (TS 29.532, TS 29.537, TS 29.580, TS 29.581), NR/NG-RAN support (TS 38.300 family). Security study: TR 33.850.
-- **Release 18** ("5MBS Phase 2"): RAN extensions (see [MBS Multicast Inactive RAN procedures](/tech/5g-mbs/analysis-mbs-multicast-inactive-ran) for the technical detail). Architecture study: TR 23.700-47. Security study: TR 33.883.
+- **Release 18** ("5MBS Phase 2"): RAN extensions (`NR_MBS_enh` / `NR_MBS_enh-Core`, WI 940099/940199; see [MBS Multicast Inactive RAN procedures](/tech/5g-mbs/analysis-mbs-multicast-inactive-ran) for the technical detail). Architecture study: TR 23.700-47. Security study: TR 33.883.
 - **Release 19**: NTN extensions to MBS broadcast (see [MBS Broadcast NTN](/tech/ntn/analysis-mbs-broadcast-over-ntn) for the technical detail).
 
 Check the version of each specification you are targeting for the exact release content.
@@ -86,7 +86,7 @@ This is a list of specifications in the scope of 5G Multicast Broadcast Services
 
 #### Charging
 
-- [TS 32.279](https://www.3gpp.org/dynareport/32279.htm) - Charging management; 5G Multicast-broadcast Services charging
+- [TS 32.279](https://www.3gpp.org/dynareport/32279.htm) - Charging management; 5G Multicast-broadcast Services charging (`5MBS_CH`, WI 1000010, Release 18)
 
 #### Network Function services
 
@@ -120,7 +120,7 @@ Generic 5GS Stage 3 NF service specifications that gained MBS-related operations
 
 #### UE configuration and control
 
-- [TS 24.575](https://www.3gpp.org/dynareport/24575.htm) - 5G System; Multicast/Broadcast UE pre-configuration Management Object (MO)
+- [TS 24.575](https://www.3gpp.org/dynareport/24575.htm) - 5G System; Multicast/Broadcast UE pre-configuration Management Object (MO) (`UEConfig5MBS`, WI 990078, Release 18)
 - [TS 27.007](https://www.3gpp.org/dynareport/27007.htm) - AT command set for User Equipment (UE)
 
 The following table maps each core-network plane to its protocol and the specification that defines it.
@@ -219,13 +219,13 @@ The normative specifications above were preceded by 3GPP study reports (TRs), ke
 - [TR 33.883](https://www.3gpp.org/dynareport/33883.htm) - Study on security enhancements for 5G multicast-broadcast services phase 2 (Rel-18)
 
 :::warning[References to verify]
-This specification list was compiled by cross-referencing 3GPP's own Change Request records for the work items behind MBS &mdash; `5MBS` (900038), `NR_MBS` (860048) and `NR_MBS-Core` (860148), plus their CT1/CT3/CT4/SA4 sub-items (`5MBUSA`, `5MBP3`, and three unnamed CT1/CT3/CT4 sub-items) &mdash; rather than compiled from spec titles or a keyword search alone.
+This specification list was compiled by cross-referencing 3GPP's own Change Request records for the work items behind MBS &mdash; `5MBS` (900038), `NR_MBS` (860048) and `NR_MBS-Core` (860148), plus their CT1/CT3/CT4/SA4 sub-items &mdash; rather than compiled from spec titles or a keyword search alone. Checked directly against the official Release 17/18/19 Description reports (TR 21.917, TR 21.918, TR 21.919): the Release 17 `5MBS` CT sub-items, previously unnamed here, are CT1 (920043), CT3 (920044) and CT4 (910002); the SA4 sub-items are `5MBUSA` (920010, behind TS 26.502/26.517) and `5MBP3` (940008). Release 18's `5MBS_Ph2` (989999) has the equivalent CT1/CT3/CT4 set (990001/990076/990077), plus a dedicated charging work item, `5MBS_CH` (1000010, behind TS 32.279), and the RAN-side extension `NR_MBS_enh` / `NR_MBS_enh-Core` (940099/940199).
 
 TS 29.116 was checked and excluded (concerns the legacy eMBMS bridge for 5G Media Streaming, not 5G-native MBS). TS 29.274 was checked and included (adds a genuine MBS-specific interface type, N19mb in F-TEID).
 
 TS 38.463 and TS 37.483 were previously described as an old-vs-new (deprecated) pair; both are in fact actively maintained, covering different deployment scenarios. Corrected here; see the [MBS RAN procedures pages](/tech/5g-mbs/analysis-mbs-broadcast-ran) for the technical detail.
 
-A handful of candidate specifications were checked and excluded for lack of confirmed MBS content: TS 23.288, TS 28.541, TS 33.535, TS 26.501, TS 26.512. A Release 19 SA1 study item, `DTTB4MBS` (970043), is in progress but has no allocated specification number yet and is not included above.
+A handful of candidate specifications were checked and excluded for lack of confirmed MBS content: TS 23.288, TS 28.541, TS 33.535, TS 26.501, TS 26.512. A Release 19 SA1 study item, `DTT4MBS` (970043, corrected here from a previous mistyping as "DTTB4MBS"), is in progress but has no allocated specification number yet and is not included above. Separately, the Release 17/18 Description reports also list MBS work items combining it with adjacent verticals outside this page's media scope &mdash; Mission Critical Services (`5MBS_eMC` and the `FS_MC5MBS` study in Release 17, `MCOver5MBS` in Release 18) and V2X (`TEI18_MBS4V2X` in Release 18) &mdash; deliberately excluded here as out of scope, not for lack of MBS content.
 :::
 
 ## 5G-MAG tracking and contribution focus
