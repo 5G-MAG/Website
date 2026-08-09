@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-08 00:38 UTC",
+  "updated_at": "2026-08-09 00:40 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -290,19 +290,6 @@
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-07-30",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-mbs-function",
-          "branch": null,
-          "number": 41,
-          "title": "Add Meson to the apt install dependency list and remove the Regression tests Section from the readme",
-          "url": "https://github.com/5G-MAG/rt-mbs-function/pull/41",
-          "draft": false,
-          "author_login": "ErikGaida",
-          "author_avatar": "https://avatars.githubusercontent.com/u/144566652?v=4",
-          "created_at": "2026-07-28",
           "last_comment_by": null,
           "last_comment_date": null
         },
