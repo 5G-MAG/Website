@@ -104,8 +104,8 @@ The 5GMS AF is a consumer, not a producer, of two further 5G Core service-based 
 ## Specifications by release
 
 - **Release 15/16**: TS 26.501, TS 26.511, TS 26.512 (downlink and uplink architecture, first feature set: content hosting, dynamic policies, network assistance, consumption and QoE metrics reporting).
-- **Release 17**: adds edge media processing and 5GMS delivery over eMBMS. The reference tools baseline maps to this release, where the provisioning and session-handling APIs are still in TS 26.512.
-- **Release 18**: TS 26.510 is created and the media session handling APIs move out of TS 26.512 into it, generalised across the 5GMS and RTC systems. Data collection, reporting and event exposure is aligned with TS 26.531 and TS 26.532.
+- **Release 17**: adds edge media processing and 5GMS delivery over eMBMS, and aligns data collection, reporting and event exposure with TS 26.531 and TS 26.532. The reference tools baseline maps to this release, where the provisioning and session-handling APIs are still in TS 26.512.
+- **Release 18**: TS 26.510 is created and the media session handling APIs move out of TS 26.512 into it, generalised across the 5GMS and RTC systems.
 - **Release 19**: Advanced Media Delivery (see below), studied in TR 26.804.
 
 Check the version of each specification you are targeting for the exact release content.
@@ -118,16 +118,9 @@ Technical Reports:
 
 - **[TR 26.804](https://www.3gpp.org/dynareport/26804.htm) - Study on 5G media streaming extensions**
 
-### Related Technical Report (release unconfirmed)
+### Related Technical Report
 
-- **[TR 26.802](https://www.3gpp.org/dynareport/26802.htm) - Multicast Architecture Enhancement for 5G Media Streaming**
-
-<details>
-<summary>Needs verification</summary>
-
-TR 26.802 relates to 5GMS multicast architecture but its release is unconfirmed (possibly Release 17 rather than Release 19). It is listed here separately from the Release-19 Advanced Media Delivery reports above until its release and section placement is confirmed against the [3GPP specification record](https://www.3gpp.org/dynareport/26802.htm).
-
-</details>
+- **[TR 26.802](https://www.3gpp.org/dynareport/26802.htm) - Multicast Architecture Enhancement for 5G Media Streaming** (first published under Release 17; updated under Release 19, latest version 19.2.0, June 2025)
 
 ### Common Media Client Data (CMCD)
 
@@ -152,13 +145,6 @@ Coded Multisource Media Format (CMMF) is an ETSI format for retrieving a single 
 - **Data collection and event exposure:** the generic UE data collection framework (TS 26.531 and TS 26.532), tracked so that 5GMS consumption and QoE metrics can be exposed to consuming functions.
 
 For implementation analysis, see [Streaming & Media Delivery](/tech/5gms).
-
-<details>
-<summary>References to verify</summary>
-
-These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the Release 17 placement of edge media processing and eMBMS delivery in TS 26.501, the Release 18 placement of TS 26.510 and of the TS 26.531 / TS 26.532 alignment, and the Release 19 placement of the Advanced Media Delivery work. Verify against the 3GPP work plan before publication.
-
-</details>
 
 ## Related Standards Work
 

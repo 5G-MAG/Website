@@ -54,7 +54,7 @@ TSC in a media context usually runs over a private 5G deployment. For the networ
 ### Service Requirements
 
 - [TS 22.104](https://www.3gpp.org/dynareport/22104.htm): Service requirements for cyber-physical control applications in vertical domains (includes TSC)
-- [TR 22.804](https://www.3gpp.org/dynareport/22804.htm): Study on Communication for Automation in Vertical domains
+- [TR 22.804](https://www.3gpp.org/dynareport/22804.htm): Study on Communication for Automation in Vertical Domains
 
 ### System Architecture
 
@@ -67,7 +67,7 @@ TSC in a media context usually runs over a private 5G deployment. For the networ
 
 - **IEEE 802.1AS**: Timing and Synchronisation (gPTP)
 - **IEEE 802.1Qbv**: Enhancements for Scheduled Traffic
-- **IEEE 802.1Qcc**: Stream Reservation Protocol (SRP) Enhancements
+- **IEEE 802.1Qcc**: Stream Reservation Protocol (SRP) Enhancements and Performance Improvements
 
 ## SMPTE Standards for IP Media Production
 
@@ -77,13 +77,6 @@ TSC in a media context usually runs over a private 5G deployment. For the networ
 ## 5G-MAG tracking and contribution focus
 
 5G-MAG tracks how these deterministic-delivery and time-synchronisation capabilities apply to professional media, in particular the transport of SMPTE ST 2110 essence over private 5G, the alignment of the 5G and PTP time domains, and the combination with Non-Public Networks.
-
-<details>
-<summary>References to verify</summary>
-
-These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TR 22.804, the TS 23.501 TSC clause number, the Release 17 TSCTSF placement, and the IEEE 802.1Qbv/802.1Qcc designations as cited. Verify against the 3GPP work plan and the IEEE 802.1 standards index before publication.
-
-</details>
 
 ## Related Standards Work
 

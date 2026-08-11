@@ -103,13 +103,6 @@ The mappings above are the general correspondence. See the [technical pages](/te
 
 5G-MAG's interest is media-specific: contribution and live production uplinks, and live distribution downlinks. The work centres on the CAMARA QoS and slicing APIs and the 3GPP northbound specifications (TS 29.522, TS 29.514) and SEAL (TS 23.434) they map onto. See [Tech: Network APIs](/tech/network-apis) for the detailed gap analysis.
 
-<details>
-<summary>References to verify</summary>
-
-These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TS 24.549 (SEAL NSCE Stage 3), TS 28.531 and TS 28.541 (network slice management), TS 29.520 (NWDAF services). Verify against the 3GPP work plan before publication.
-
-</details>
-
 ## Related Standards Work
 
 - [Standards: 5G Media Streaming](/standards/5gms)

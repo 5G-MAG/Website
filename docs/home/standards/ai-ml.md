@@ -66,13 +66,6 @@ The two tracks differ in where the data comes from and what they produce, as sum
 - [TR 26.847](https://www.3gpp.org/dynareport/26847.htm): Evaluation of AI and ML in 5G media services (SA4, Release 19, completed June 2025)
 - [TR 22.874](https://www.3gpp.org/dynareport/22874.htm): Study on traffic characteristics and performance requirements for AI/ML model transfer in 5GS (SA1)
 
-<details>
-<summary>Detail not independently re-verified</summary>
-
-TR 26.847 was previously tracked under a different, now-superseded number (TR 26.927, last seen as an incomplete draft) with more detailed scope notes (split inference, model delivery, named logical functions). Those specifics have not been independently re-checked against TR 26.847's final published content. Verify before relying on them.
-
-</details>
-
 ## Key 3GPP Specifications
 
 ### Network Data Analytics (SA2)

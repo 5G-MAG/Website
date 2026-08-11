@@ -47,7 +47,7 @@ WebRTC-based interactive media, uplink contribution and 5GMSu standardisation ov
 
 - **Release 16 to 17**: 5G Media Streaming foundations (TS 26.501, TS 26.512) including the uplink 5GMSu path; IMS Multimedia Telephony media handling (TS 26.114).
 - **Release 18**: RTC architecture (TS 26.506) and protocols (TS 26.113); harmonised media delivery (TS 26.510); IMS Data Channel / NG-RTC.
-- **Release 19 and later**: Enhancements to RTC, including immersive real-time communication over WebRTC. Confirm the specific study/work items and their identifiers against the 3GPP work plan.
+- **Release 19 and later**: Enhancements to RTC, including immersive real-time communication over WebRTC (studied in TR 26.930). Confirm the specific work items against the 3GPP work plan.
 
 ## Key 3GPP Specifications
 
@@ -81,7 +81,7 @@ M6 and M7 are two of the 5GMS reference points (the named interfaces between the
 
 ### Study Items
 
-- [TR 26.925](https://www.3gpp.org/dynareport/26925.htm): Study on real-time communications in 5G
+- [TR 26.930](https://www.3gpp.org/dynareport/26930.htm): Study on the enhancement for Immersive Real-Time Communication for WebRTC (Release 18, with an updated Release-19 version)
 
 ## IETF Standards
 
@@ -109,13 +109,6 @@ M6 and M7 are two of the 5GMS reference points (the named interfaces between the
 ## 5G-MAG tracking and contribution focus
 
 5G-MAG follows the SA4 RTC architecture (TS 26.506 / TS 26.113), its harmonisation with 5G Media Streaming (TS 26.510), and the WebRTC transport it builds on.
-
-<details>
-<summary>References to verify</summary>
-
-These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TR 26.925, the release placement of TS 26.506 / TS 26.113 / TS 26.510, the NG-RTC stage 3 specification numbers, the RESPECT signalling protocol status, and the Release 19 immersive-RTC study identifier. Verify against the 3GPP work plan before publication.
-
-</details>
 
 ## Related Standards Work
 
