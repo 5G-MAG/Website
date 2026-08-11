@@ -150,28 +150,21 @@ The two profiles address different capture models and reconstruct different thin
 **MIV (ISO/IEC 23090-12, an extension of V3C)** targets a scene captured by several cameras with depth, and gives the viewer six degrees of freedom over a limited viewing volume (translation within a bounded region plus free rotation). Rather than reconstruct a full 3D model, the client synthesises the specific viewport requested by the current head pose, using the decoded texture and geometry views plus the view parameters in the common atlas. MIV defines profiles that trade decoder complexity against flexibility:
 
 - **Main**: geometry coded with embedded occupancy.
-- **Extended**: separable occupancy and additional flexibility.
-- **Restricted Geometry**: constrained geometry, supporting cases such as transparency.
+- **Extended**: separable occupancy and additional flexibility, including an optional transparency attribute.
+- **Extended Restricted Geometry** (a sub-profile of Extended): geometry restricted so that transparency stands in for explicit geometry, enabling multi-plane image (MPI) delivery.
 - **Geometry Absent**: no geometry is coded; the client derives geometry (for example by depth estimation), reducing the transmitted data at the cost of client-side processing.
 
 Both profiles emit a V3C bitstream, so they share the same carriage and packaging, described next.
 
 ## Carriage, packaging, and delivery
 
-ISO/IEC 23090-10 specifies how a V3C bitstream is stored in the ISO Base Media File Format (ISOBMFF, ISO/IEC 14496-12) and how the atlas and component videos are organised into tracks and multiplexed with other media. It includes support for DASH (ISO/IEC 23009-1) so a V3C presentation can be described as an adaptive streaming presentation and delivered over HTTP. An amendment adds support for packed video data, and MPEG maintains conformance and reference-software parts for carriage.
+ISO/IEC 23090-10 specifies how a V3C bitstream is stored in the ISO Base Media File Format (ISOBMFF, ISO/IEC 14496-12) and how the atlas and component videos are organised into tracks and multiplexed with other media. It includes support for DASH (ISO/IEC 23009-1) so a V3C presentation can be described as an adaptive streaming presentation and delivered over HTTP. An amendment (ISO/IEC 23090-10:2022/Amd 1) adds support for packed video data, and MPEG maintains a conformance and reference-software part for carriage (ISO/IEC 23090-25).
 
 For delivery over mobile networks, the V3C DASH presentation is treated as ordinary media by the 5G Media Streaming pipeline: it is ingested, packaged, and delivered under [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) (architecture) and TS 26.512 (protocols and APIs). The 5G Media Streaming functions do not need to understand the volumetric semantics; they see DASH segments referencing coded video and metadata tracks. This is what allows volumetric assets to reuse the same CDN, packaging, and player-provisioning machinery as conventional streaming.
 
 ## Reference-tools architecture
 
 The 5G-MAG MPEG V3C Immersive Platform reference tools implement the end-to-end path described above: encode source content into a V3C bitstream, package and deliver it, then decode and render it in real time. On the client side the work targets a Unity-based player: a V3C decoder is exposed to the engine as a plugin that decodes the atlas and the associated video sub-bitstreams (geometry, occupancy, attributes) and reconstructs the 3D representation for display. Decoupling the volumetric decoder from the presentation engine is the same separation-of-concerns pattern 5G-MAG uses across its immersive-media tools, and it mirrors the bitstream structure: the plugin owns the V3C-specific work, the engine owns presentation. For the current, authoritative repository list and status, see the Developer Portal scope and repositories pages linked below rather than any hard-coded list here.
-
-<details>
-<summary>References to verify</summary>
-
-These specifics on this page were not confirmed against the primary source (the ISO catalogue entries were checked, but detailed clauses and amendment scope were not): the exact MIV profile names and their defining constraints (Main, Extended, Restricted Geometry, Geometry Absent), and the ISO/IEC 23090-10 amendment (support of packed video data) and its carriage conformance/reference-software parts. Verify against ISO/IEC 23090-5, 23090-10, and 23090-12 before publication.
-
-</details>
 
 ## Related
 
