@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-10 00:41 UTC",
+  "updated_at": "2026-08-11 00:41 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -219,7 +219,7 @@
           "repo": "rt-mbs-examples",
           "branch": null,
           "number": 32,
-          "title": "Docker set up for MBS User Service",
+          "title": "Docker set up for MBS User Services",
           "url": "https://github.com/5G-MAG/rt-mbs-examples/pull/32",
           "draft": false,
           "author_login": "devbbc",
