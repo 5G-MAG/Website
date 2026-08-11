@@ -93,21 +93,9 @@ The transport of ARF animation itself is being addressed at the IETF: [draft-iet
 - [TR 26.928](https://www.3gpp.org/dynareport/26928.htm): Extended reality (XR) in 5G (includes avatar and presence use cases)
 
 <details>
-<summary>Verify 3GPP citations against the portal</summary>
-
-The IVAS deliverable titles (TS 26.250 to TS 26.256) and the avatar study item number (TR 26.813) were set or revised by automated review and are not yet confirmed against a primary source, because the 3GPP portal blocks automated access. In particular, TS 26.255 is described here as "Floating-point computational description" but as "Error concealment of lost packets" on the [XR specifications page](/standards/xr), where the floating-point C code is listed separately as TS 26.258; at most one description can be correct. Check all IVAS titles and the avatar study number (TR 26.813, previously cited as TS 26.118 and then TR 26.955) against the 3GPP work plan before relying on this list.
-
-</details>
-
-<details>
 <summary>References to verify</summary>
 
-The following identifiers introduced on this page were not confirmed against a primary source and should be checked before publication:
-
-- **TS 26.506** exact document title and its precise scope for AR/avatar conversational service. It is cited here as "Real-Time media Communication (RTC) over 5G"; confirm the official title (some sources give a stage-2 architecture subtitle) and release against the SA4 work plan.
-- **ISO/IEC 21320-1** as the Zip-based container profile referenced by ARF, and the exact ISOBMFF edition of **ISO/IEC 14496-12** intended by the ARF text.
-
-Established citations on this page (ISO/IEC 23090-39, ISO/IEC 23090-14 and its Amendment 2, TS 26.114, and the IETF ARF RTP payload draft) are not part of this caution. The IVAS deliverable titles and the avatar study number (TR 26.813) are covered by the separate caution above and are not repeated here.
+One identifier on this page is not confirmed against a primary source: the exact edition of **ISO/IEC 14496-12** (ISOBMFF) intended by the ARF text. ISO/IEC 23090-39 is at DIS stage and its text is not publicly accessible; confirm the referenced ISOBMFF edition against the published standard when available. All other citations on this page (IVAS titles, TR 26.813, TS 26.506, ISO/IEC 21320-1) have been verified against the 3GPP portal, the ISO catalogue and the MPEG ARF site.
 
 </details>
 

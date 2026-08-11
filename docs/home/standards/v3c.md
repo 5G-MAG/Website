@@ -54,7 +54,7 @@ A separate but related MPEG approach, Geometry-based Point Cloud Compression (G-
 
 - **Coding.** ISO/IEC 23090-5 (V3C base bitstream and V-PCC profile); ISO/IEC 23090-12 (MIV profile).
 - **Storage and carriage.** ISO/IEC 23090-10 (ISOBMFF storage, ISO/IEC 14496-12, and DASH-based streaming).
-- **Conformance and reference software.** ISO/IEC 23090-20 (V3C with V-PCC) and ISO/IEC 23090-25 (carriage).
+- **Conformance and reference software.** ISO/IEC 23090-20 (conformance testing for V3C with V-PCC) and ISO/IEC 23090-25 (conformance and reference software for carriage).
 - **Delivery over 5G.** [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) (architecture) and [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) (protocols and APIs), the 5G Media Streaming specifications used to transport V3C DASH presentations.
 
 ## Editions and status
@@ -72,13 +72,6 @@ This is a list of specifications in the scope of Volumetric Video (V3C). Part 5 
 | [ISO/IEC 23090-5](https://www.iso.org/standard/83535.html)  | Information technology: Coded representation of immersive media - Part 5: Visual volumetric video-based coding (V3C) and video-based point cloud compression (V-PCC) |
 | [ISO/IEC 23090-10](https://www.iso.org/standard/78991.html) | Information technology - Coded representation of immersive media - Part 10: Carriage of visual volumetric video-based coding data                                    |
 | [ISO/IEC 23090-12](https://www.iso.org/standard/79113.html) | Information technology - Coded representation of immersive media - Part 12: MPEG immersive video                                                                     |
-
-<details>
-<summary>References to verify</summary>
-
-These identifiers on this page were not confirmed against a primary source (the ISO catalogue entries were checked, but part numbers for adjacent MPEG-I deliverables were not fully verified): ISO/IEC 23090-9 (G-PCC), ISO/IEC 23090-20 (V3C/V-PCC conformance), ISO/IEC 23090-25 (carriage conformance and reference software). Verify against the ISO/IEC JTC 1/SC 29 catalogue before publication.
-
-</details>
 
 ## 5G-MAG tracking and contribution focus
 
