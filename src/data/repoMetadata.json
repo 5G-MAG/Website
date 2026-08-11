@@ -705,25 +705,6 @@
   ],
   "network-apis": [
     {
-      "repo_slug": "rt-common-shared",
-      "display_name": "MCP Server",
-      "description": "This repository holds auxiliary tools common to various projects.",
-      "repo_url": "https://github.com/5G-MAG/rt-common-shared",
-      "branch": "main",
-      "license": "Multiple",
-      "standards": [],
-      "dependencies": [
-        "ExpressJS",
-        "Open5GS"
-      ],
-      "software": [
-        "Cloud",
-        "Linux"
-      ],
-      "public": true,
-      "is_auxiliary": false
-    },
-    {
       "repo_slug": "rt-camara-examples",
       "display_name": "CAMARA API Examples",
       "description": "This repository contains example files and tools in relation to the CAMARA Project",
