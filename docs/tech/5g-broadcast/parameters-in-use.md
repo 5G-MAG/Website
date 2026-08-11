@@ -53,7 +53,7 @@ The 6/7/8 MHz PMCH bandwidths align with the UHF broadcast channel rasters used 
 | Parameter                 | Value                | Notes                                                                     |
 | ------------------------- | -------------------- | ------------------------------------------------------------------------- |
 | Modulation                | QPSK, 16-QAM, 64-QAM | Depends on coverage target                                                |
-| Modulation (higher-order) | up to 256-QAM        | 256-QAM available on PMCH since Rel-14; Rel-19 adds PMCH MCS Table 11.1-2 |
+| Modulation (higher-order) | up to 256-QAM        | Available on PMCH since Rel-14, selected via TS 36.213 Table 7.1.7.1-1A  |
 | Code Rate                 | Variable             | Configured per MTCH                                                       |
 | MCCH Period               | 80 ms                | Typical MBSFN area                                                        |
 
@@ -73,13 +73,15 @@ Bands in active use for LTE-based 5G Broadcast deployments:
 
 - **Band 8** (900 MHz): Used for wide-area rural coverage
 - **Band 28** (700 MHz): Primary band for broadcast in several markets
-- **Band 107** (UHF): Terrestrial broadcast band added in 3GPP Release 17; profiled by ETSI TS 103 720 v1.2.1
-- **Band 108** (UHF, 470 to 698 MHz): Receive-only broadcast band added in 3GPP Release 18; profiled by ETSI TS 103 720 v1.3.1 (in development), for co-existence with digital terrestrial television (DTT)
-- **Bands 112 and 113** (UHF, 470 to 608 MHz and 606 to 698 MHz): Receive-only broadcast bands added in 3GPP Release 19, release-independent from Rel-17
+- **Band 107** (UHF, 612 to 652 MHz): Receive-only broadcast band, first defined in the Release 18 version of 3GPP TS 36.101 and made release-independent from Release 17 via TS 36.307
+- **Band 108** (UHF, 470 to 698 MHz): Receive-only broadcast band added alongside Band 107 in 3GPP Release 18, for co-existence with digital terrestrial television (DTT)
+- **Bands 112 and 113** (UHF, 470 to 608 MHz and 606 to 698 MHz): Receive-only broadcast bands added in 3GPP Release 19, release-independent from Release 17
+
+All four bands are defined as standalone downlink-only (SDO) bands in Table 5.5H-1 of 3GPP [TS 36.101](https://www.3gpp.org/dynareport/36101.htm). The published ETSI TS 103 720 v1.2.1 does not yet include specific frequency bands; its clause 8 defers band configurations to a future revision.
 
 ## Receiver Profiles
 
-As defined in ETSI TS 103 720, the following receiver profiles are relevant:
+ETSI TS 103 720 defines normative receiver categories (Base, Main, 5GMS, Emergency Alerts; see [Deployment Profiles](./deployment-profiles)). In 5G-MAG's deployment work the following receiver profiles are used:
 
 - **Profile A (RAN-only)**: Receive-Only Mode using FeMBMS physical layer only. Typical of a dedicated broadcast receiver with no cellular return path, for example a TV set, a set-top box, or an in-car broadcast tuner.
 - **Profile B (Full)**: Full LTE UE supporting both unicast and broadcast modes. Typical of a smartphone or connected tablet that can both stream over cellular and receive broadcast.
@@ -88,8 +90,11 @@ As defined in ETSI TS 103 720, the following receiver profiles are relevant:
 
 - [ETSI TS 103 720](https://www.etsi.org/deliver/etsi_ts/103700_103799/103720/): 5G Broadcast System for linear TV and radio services
 - [5G Broadcast Deployment Profiles](./deployment-profiles)
-- [Standards: LTE-based 5G Broadcast](/tech/standards/5g-broadcast)
+- [Standards: 5G Broadcast - TV, Radio and Emergency Alerts](/standards/5g-broadcast)
 
-:::warning[References to verify]
-These identifiers on this page were not confirmed against a primary source (the ETSI portal blocks automated access): the Band 107 / 108 / 112 / 113 frequency ranges and their ETSI TS 103 720 version and 3GPP release attributions, and the observed subframe, bandwidth, modulation and SFN parameter values. The Band 108 frequency range (470 to 698 MHz) is now stated consistently here and on the [Deployment Profiles](./deployment-profiles) page; confirm it against the published ETSI TS 103 720 (and 3GPP TS 36.101) before relying on it.
-:::
+<details>
+<summary>References to verify</summary>
+
+The band frequency ranges and release attributions above were verified against 3GPP TS 36.101 (Table 5.5H-1), TS 36.307 and the published ETSI TS 103 720 v1.2.1. The observed subframe, bandwidth, modulation and SFN parameter values reflect 5G-MAG member deployment experience and reference tool configurations; they have no single public specification to check against and may differ between networks.
+
+</details>

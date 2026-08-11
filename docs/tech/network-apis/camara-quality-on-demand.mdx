@@ -55,7 +55,7 @@ Quality on Demand is the flagship QoS API of the CAMARA QualityOnDemand reposito
 
 QoD is the canonical example of a CAMARA API mapping onto 3GPP northbound exposure:
 
-1. The API provider (acting as, or on behalf of, an Application Function) calls the NEF `AsSessionWithQoS` API in [TS 29.522](https://www.3gpp.org/dynareport/29522.htm) (the RESTful form of the `Nnef_AFSessionWithQoS` service). The QoD request already carries what that API needs: the `device` (mapped to a subscriber identifier), the `applicationServer` address and the `devicePorts` / `applicationServerPorts` (which define the flow descriptors), and the `qosProfile` name (mapped to a QoS reference).
+1. The API provider (acting as, or on behalf of, an Application Function) calls the NEF `AsSessionWithQoS` API in [TS 29.522](https://www.3gpp.org/dynareport/29522.htm) (the RESTful form of the `Nnef_AFsessionWithQoS` service). The QoD request already carries what that API needs: the `device` (mapped to a subscriber identifier), the `applicationServer` address and the `devicePorts` / `applicationServerPorts` (which define the flow descriptors), and the `qosProfile` name (mapped to a QoS reference).
 2. The NEF forwards the request to the Policy Control Function via `Npcf_PolicyAuthorization` ([TS 29.514](https://www.3gpp.org/dynareport/29514.htm)). The PCF authorises it and installs policy on the subscriber's PDU session, enforced by the SMF and UPF.
 3. When the network can no longer sustain the QoS (or the session ends), the NEF raises a notification event, which the QoD provider surfaces to the consumer as a CloudEvent (see Event notifications). In 4G/EPC the same flow runs through an SCEF instead of a NEF.
 
@@ -283,3 +283,9 @@ A CloudEvent sent to the `sink` when a session becomes unavailable because its d
 :::note
 Event type and enum values above are taken from the CAMARA Quality on Demand API definition. Confirm the exact values against the [`quality-on-demand.yaml`](https://github.com/camaraproject/QualityOnDemand/blob/main/code/API_definitions/quality-on-demand.yaml) for the API version you are integrating against, as they can change between releases.
 :::
+
+## Related
+
+- [Connectivity Quality with Network APIs](/tech/network-apis): the parent topic page, with the full CAMARA API list
+- [Standards: Connectivity Quality with Network APIs](/standards/network-apis): the specification list for this topic
+- [CAMARA Connectivity Quality Management APIs Reference Tools](/reference-tools/network-apis): the software implementation

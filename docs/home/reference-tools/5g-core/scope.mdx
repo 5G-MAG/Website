@@ -23,7 +23,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 **Category:** 3GPP Implementations
 
-<div style={{margin: '8px 0'}}><a class="button button--primary" href="/reference-tools/5g-core/scope" style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href="/reference-tools/5g-core/resources" style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href="/reference-tools/5g-core/tutorials" style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/5g-core/tutorials#developer-exchange" style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
+<div style={{margin: '8px 0'}}><a class="button button--primary" href={useBaseUrl('/reference-tools/5g-core/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5g-core/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5g-core/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5g-core/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
 The 5G Core (5GC) presents several Network Functions, each of which has its own set of service interfaces. This project hosts a collection of reusable service consumer libraries designed to talk to some of these functions. A "service consumer library" is a small library that implements the client (consumer) side of a 5G Core service API, so an application can call that function without re-implementing the protocol.
 
@@ -133,7 +133,7 @@ Each library implements only the consumer (client) side of its APIs, so it assum
 
 ## Standards & Specifications
 
-This project provides service-consumer libraries that call 5G Core service-based APIs rather than implementing a 3GPP specification itself, so no specific 3GPP or ETSI document numbers are cited on this page. The BSF and PCF service-consumer interfaces are documented on the [Standards: 5G Media Streaming](/tech/standards/5gms) page, and the MB-SMF service-consumer interface is documented on the [Standards: 5G Multicast & Broadcast Services](/tech/standards/5g-mbs) page.
+This project provides service-consumer libraries that call 5G Core service-based APIs rather than implementing a 3GPP specification itself, so no specific 3GPP or ETSI document numbers are cited on this page. The BSF and PCF service-consumer interfaces are documented on the [Standards: 5G Media Streaming](/standards/5gms) page, and the MB-SMF service-consumer interface is documented on the [Standards: 5G Multicast & Broadcast Services](/standards/5g-mbs) page.
 
 ## Getting Started
 
@@ -196,3 +196,5 @@ Initial implementation of MBS User Services, including integration with the MB-S
 
 - [Resources](/reference-tools/5g-core/resources)
 - [Tutorials](/reference-tools/5g-core/tutorials)
+- Standards: [5G Media Streaming (5GMS)](/standards/5gms) and [5G Multicast Broadcast Services (MBS)](/standards/5g-mbs) — the service-consumer interfaces this project implements are documented there
+- Tech: [Streaming & Media Delivery](/tech/5gms) and [Multicast & Broadcast in 5G](/tech/5g-mbs)

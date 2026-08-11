@@ -299,3 +299,9 @@ This is how a device is defined:
   }
 }
 ```
+
+## Related
+
+- [Connectivity Quality with Network APIs](/tech/network-apis): the parent topic page, with the full CAMARA API list
+- [Standards: Connectivity Quality with Network APIs](/standards/network-apis): the specification list for this topic
+- [CAMARA Connectivity Quality Management APIs Reference Tools](/reference-tools/network-apis): the software implementation

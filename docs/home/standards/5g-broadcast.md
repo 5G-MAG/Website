@@ -1,7 +1,7 @@
 ---
 hide_title: true
 title: 5G Broadcast - TV, Radio and Emergency Alerts
-sidebar_position: 1
+slug: /standards/5g-broadcast
 description: Overview of ETSI TS 103 720 LTE-based 5G Broadcast, its version history, related 3GPP specifications and 5G-MAG's standards role.
 ---
 
@@ -22,7 +22,7 @@ ETSI TS 103 720 LTE-based 5G Broadcast: version history, related 3GPP specificat
 
 ## Overview
 
-5G Broadcast delivers linear TV and radio to devices over a one-way, free-to-air signal, with no SIM, subscription or return channel required, reusing LTE/eMBMS radio technology (Long Term Evolution / evolved Multimedia Broadcast Multicast Service). It is distinct from 5G Multicast-Broadcast Services (MBS), which is native to the 5G core and NR; see [Standards: 5G Multicast & Broadcast Services](/tech/standards/5g-mbs). 5G-MAG maintains the underlying ETSI specification and contributes the requirements and fixes that shape each new version. For acronyms used here, see the [Glossary](/tech/glossary).
+5G Broadcast delivers linear TV and radio to devices over a one-way, free-to-air signal, with no SIM, subscription or return channel required, reusing LTE/eMBMS radio technology (Long Term Evolution / evolved Multimedia Broadcast Multicast Service). It is distinct from 5G Multicast-Broadcast Services (MBS), which is native to the 5G core and NR; see [Standards: 5G Multicast Broadcast Services (MBS)](/standards/5g-mbs). 5G-MAG maintains the underlying ETSI specification and contributes the requirements and fixes that shape each new version. For acronyms used here, see the [Glossary](/tech/glossary).
 
 <div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
 
@@ -34,7 +34,7 @@ ETSI TS 103 720 LTE-based 5G Broadcast: version history, related 3GPP specificat
 <div class="godeeper-card__body">
 <p>The deeper technical treatment of 5G Broadcast delivery and receiver behaviour.</p>
 <ul class="godeeper-card__links">
-<li><a href="/tech/5g-broadcast">Technical Documentation: 5G Broadcast</a></li>
+<li><a href="/tech/5g-broadcast">Tech: 5G Broadcast</a></li>
 </ul>
 </div>
 </div>
@@ -120,7 +120,7 @@ The v1.2.1 specification PDF and its work item are linked under Quick access abo
 
 ## Related 3GPP Specifications
 
-This is a list of specifications in the scope of Multimedia Broadcast/Multicast Service (MBMS) and LTE-based 5G Terrestrial Broadcast. LTE-based 5G Broadcast reuses the MBMS delivery framework over the LTE radio, including its further-enhanced variant (FeMBMS, Further enhanced Multimedia Broadcast/Multicast Service). The specifications are grouped below by function, following the same physical layer, RRC, RF and architecture split used on the [Standards Evolution](/tech/standards/5g-broadcast-standards-evolution) page; ETSI TS 103 720 (see "About ETSI TS 103 720" above) profiles a subset of these and adds broadcast-specific receiver requirements on top.
+This is a list of specifications in the scope of Multimedia Broadcast/Multicast Service (MBMS) and LTE-based 5G Terrestrial Broadcast. LTE-based 5G Broadcast reuses the MBMS delivery framework over the LTE radio, including its further-enhanced variant (FeMBMS, Further enhanced Multimedia Broadcast/Multicast Service). The specifications are grouped below by function, following the same physical layer, RRC, RF and architecture split used on the [Standards Evolution](/standards/5g-broadcast-standards-evolution) page; ETSI TS 103 720 (see "About ETSI TS 103 720" above) profiles a subset of these and adds broadcast-specific receiver requirements on top.
 
 ### Service requirements
 
@@ -150,7 +150,7 @@ This is a list of specifications in the scope of Multimedia Broadcast/Multicast 
 - [TS 36.133](https://www.3gpp.org/dynareport/36133.htm) - Requirements for support of radio resource management
 - [TS 36.304](https://www.3gpp.org/dynareport/36304.htm) - User Equipment (UE) procedures in idle mode, relevant to SIM-free and Receive-Only Mode reception without an RRC connection
 
-MBMS has three named network interfaces, distinct from the M1-M8 reference points used in 5G Media Streaming (see [Standards: 5G Media Streaming](/tech/standards/5gms)).
+MBMS has three named network interfaces, distinct from the M1-M8 reference points used in 5G Media Streaming (see [Standards: 5G Media Streaming](/standards/5gms)).
 
 | Interface | Specification              | Plane        | Connects       |
 | --------- | --------------------------- | ------------ | -------------- |
@@ -209,19 +209,16 @@ MBMS has three named network interfaces, distinct from the M1-M8 reference point
 - [IETF RFC 7323](https://www.rfc-editor.org/rfc/rfc7323) - TCP Extensions for High Performance
 - [IETF RFC 8200](https://www.rfc-editor.org/rfc/rfc8200) - Internet Protocol, Version 6 (IPv6) Specification
 
-:::warning[References to verify]
-The per-release 3GPP CR numbers, TS clause references, meeting placements, band frequency ranges and work-item verification notes have moved to the caution box on the [Standards Evolution](/tech/standards/5g-broadcast-standards-evolution) page, along with the detailed content they apply to. The ETSI TS 103 720 version-to-release mapping shown in "Version history at a glance" above has not been independently confirmed against the primary 3GPP or ETSI record.
+<details>
+<summary>References to verify</summary>
 
-The M1/M2/M3 interface descriptions and their specifications (TS 36.440, TS 25.446, TS 36.444) were added from web search results (3gpp.org and tech-invite.com both blocked direct fetch), cross-checked across two independent search queries that agreed on the interface roles and spec numbers. They have not been confirmed by reading the specifications themselves.
+One item on this page remains unconfirmed against the primary record: the v1.3.1 row of "Version history at a glance" describes the update as "Rel-18, extending to Rel-19". The Release 18 scope is confirmed by the ETSI work item page (WKI_ID 72978), but the Release 19 extension comes from 5G-MAG's own work programme and does not appear in the ETSI work item scope text; confirm before citing.
 
-TR 36.776 (Architecture and system description list above) was confirmed to exist as a published document (ETSI TR 136 776 V16.0.0, November 2020), but its current withdrawal or maintenance status could not be confirmed against the primary 3GPP record (the "proposed for withdrawal" list on 3gpp.org returned a 403 to automated access). Confirm it is still current before citing it as an active reference.
+Everything else previously flagged here has been verified against primary sources: all 3GPP spec titles in the sections above (including TS 22.101, TS 23.122, TS 29.274, TS 29.281, TS 24.117, TS 26.348, TS 36.133, TS 36.304, TS 36.413, TS 36.306, TS 36.443) against the 3GPP specification portal; the M1/M2/M3 interface roles and endpoints against ETSI TS 136 440 V19.0.0 itself; TR 36.776's status (under change control, not withdrawn) against the 3GPP portal; and the v1.1.1 (12-2020, Release 16) and v1.2.1 (06-2023, Release 17) rows against the published ETSI TS 103 720 PDFs. One upstream erratum, now confirmed from the V1.2.1 PDF and worth reporting to ETSI: TS 103 720 V1.2.1's reference clause swaps the titles of TS 36.306 and TS 36.443; this page uses the correct titles.
 
-The Service requirements, Core network and mobility, Public warning and emergency alerts, and Transport protocols and addressing sections, plus TS 24.117, TS 26.348, TS 26.512, TS 36.133, TS 36.304 and TS 36.413 in the sections above, were added directly from the normative reference clause (clause 2.1) of ETSI TS 103 720 V1.2.1, which a maintainer supplied as source text. This is a primary-source addition, not from the internal roadmap, but the titles and dynareport links were reconstructed from the 3GPP numbering convention (ETSI "1XX YYY" to 3GPP "XY.YYY") rather than fetched from each spec individually; a maintainer should spot-check a few, especially the less common ones (TS 22.101, TS 23.122, TS 29.274, TS 29.281). Separately, ETSI TS 103 720's own reference clause appears to have a titling error worth flagging to 5G-MAG or ETSI: the entries for TS 36.306 and TS 36.443 in its bibliography carry each other's titles (TS 36.306 is listed there as "RRC Protocol specification", which is TS 36.331's title; TS 36.443 is listed as "UE radio access capabilities", which is TS 36.306's title). This page uses the correct, independently-verified titles for both, not the swapped ones from that bibliography.
+Individual 3GPP Change Requests (CRs) are not linked directly: the CR search portal (portal.3gpp.org/ChangeRequests.aspx) requires a 3GPP delegate login for record-level detail.
 
-Individual 3GPP Change Requests (CRs) are not linked directly: the CR search portal (portal.3gpp.org/ChangeRequests.aspx) requires a 3GPP delegate login for record-level detail. A filtered-by-work-item search link (using the `workitem=` query parameter) does work without login to reach the search results page itself, but the CR table contents still require authentication, so no such links are included here.
-
-Well-established references (DASH = ISO/IEC 23009-1; 5GMS = TS 26.501 / [TS 26.512](https://www.3gpp.org/dynareport/26512.htm)) do not need re-checking.
-:::
+</details>
 
 ## 5G-MAG tracking and contribution focus
 
@@ -231,14 +228,14 @@ Well-established references (DASH = ISO/IEC 23009-1; 5GMS = TS 26.501 / [TS 26.5
 - **Implementer-driven fixes:** bugs, clarification questions and new requirements raised by implementors, in particular 5G-MAG.
 - **Completed:** Release 17 alignment (v1.2.1, 2023).
 
-For the release-by-release specification detail behind these updates, see [Standards Evolution](/tech/standards/5g-broadcast-standards-evolution). For the technical analysis, see [Technical Documentation: 5G Broadcast](/tech/5g-broadcast).
+For the release-by-release specification detail behind these updates, see [Standards Evolution](/standards/5g-broadcast-standards-evolution). For the technical analysis, see [Tech: 5G Broadcast](/tech/5g-broadcast).
 
 ## Related Standards Work
 
-- [Standards: DVB-I over 5G](/tech/standards/dvb-i)
-- [Standards: 5G Multicast & Broadcast Services](/tech/standards/5g-mbs)
-- [Standards: Multimedia Delivery Protocols](/tech/standards/multimedia)
-- [Technical Documentation: 5G Broadcast](/tech/5g-broadcast)
+- [Standards: DVB-I over 5G](/standards/dvb-i)
+- [Standards: 5G Multicast Broadcast Services (MBS)](/standards/5g-mbs)
+- [Standards: Multimedia Delivery Protocols](/standards/multimedia)
+- [Tech: 5G Broadcast](/tech/5g-broadcast)
 - [Feedback and Requirements](/standards): how 5G-MAG processes feedback on the specifications it maintains and tracks
 
 :::note

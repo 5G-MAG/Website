@@ -12,11 +12,14 @@ const REQUESTABLE_PROJECTS = EARLY_ACCESS_PROJECTS.map((p) => p.name);
 // Shared free-tier sitekey Web3Forms provides for zero-signup hCaptcha use.
 const HCAPTCHA_SITEKEY = '50b2fe65-b00b-4b9e-ad62-3ba471098be2';
 
+// Prop is named web3formsKey (not accessKey) deliberately: `accessKey` as a
+// JSX prop collides with the reserved HTML accesskey attribute, which is
+// both an a11y lint error and misleading about what the value is.
 export default function EarlyAccessForm({
-  accessKey,
+  web3formsKey,
   subject = 'New Early Access Request — 5G-MAG website',
 }) {
-  const { status, errorMessage, submit } = useWeb3FormSubmit(accessKey, subject);
+  const { status, errorMessage, submit } = useWeb3FormSubmit(web3formsKey, subject);
   const [captchaToken, setCaptchaToken] = useState('');
   const captchaRef = useRef(null);
 

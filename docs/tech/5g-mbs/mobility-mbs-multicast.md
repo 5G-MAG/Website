@@ -98,3 +98,9 @@ The three procedures above, condensed into a single step-by-step reference. See 
 | Entering multicast-supporting coverage | 1 | 5GC detects that delivery can switch from the individual to the shared method | TS 23.247 |
 | | 2 | *(Xn)* SMF triggers the switch to shared delivery via the PDU Session Resource Modification procedure, providing the target gNB the joined MBS Session IDs | TS 23.247 |
 | | 2′ | *(NG)* SMF provides the joined MBS Session IDs to the target gNB via NGAP Handover Request instead | TS 23.247; TS 38.413 |
+
+## Related
+
+- [5G Multicast Broadcast Services (MBS)](/tech/5g-mbs): the parent topic page
+- [Standards: 5G Multicast Broadcast Services (MBS)](/standards/5g-mbs): the specification list for this topic
+- [5G Multicast Broadcast Services (MBS) Reference Tools](/reference-tools/5g-mbs): the software implementation

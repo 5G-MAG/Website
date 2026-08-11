@@ -22,7 +22,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 **Category:** 3GPP Implementations
 
-<div style={{margin: '8px 0'}}><a class="button button--primary" href="/reference-tools/emergency-alerts/scope" style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href="/reference-tools/emergency-alerts/resources" style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href="/reference-tools/emergency-alerts/tutorials" style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/emergency-alerts/tutorials#developer-exchange" style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
+<div style={{margin: '8px 0'}}><a class="button button--primary" href={useBaseUrl('/reference-tools/emergency-alerts/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/emergency-alerts/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/emergency-alerts/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/emergency-alerts/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
 This page describes the specifications within the scope of the Emergency Alerts reference tools, what the tools demonstrate, and the high-level architecture that brings context to their applicability.
 
@@ -63,7 +63,7 @@ CBS carries a warning message as a short, self-contained data structure rather t
 
 | CBS field               | Role                                                                                   | Notes                                                                                                                                                              |
 | ----------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Message Identifier      | Identifies the warning type / source (for example a CMAS or ETWS category)             | Values are assigned in 3GPP TS 23.041 clause 9.4.1.2.2; the transmitter's default configuration uses a fixed identifier (observed as `0x1102` in the current code) |
+| Message Identifier      | Identifies the warning type / source (for example a CMAS or ETWS category)             | Values are assigned in 3GPP TS 23.041 clause 9.4.1.2.2; the transmitter's default configuration uses the fixed identifier `0x1102`, which TS 23.041 assigns to the ETWS combined earthquake and tsunami warning |
 | Serial Number           | Distinguishes and versions a message (geographical scope, message code, update number) | Changing the update number signals an updated message for the same event                                                                                           |
 | Data Coding Scheme      | Selects the character set / language of the message body                               | Follows the CBS data coding scheme rules in TS 23.041                                                                                                              |
 | Warning Message Segment | Carries the alert text, possibly split across segments                                 | The transmitter marks the last segment and sets the segment number; the payload is the encoded warning text                                                        |
@@ -104,7 +104,7 @@ Technical documentation providing context to this project can be found in the li
 
 A list of relevant specifications can be found in the link below.
 
-[Standards: 5G Broadcast](/tech/standards/5g-broadcast)
+[Standards: 5G Broadcast](/standards/5g-broadcast)
 
 ## High-level architectures
 
@@ -121,13 +121,9 @@ Repositories used in this architecture:
 - [Emergency Alerts over 5G Broadcast: Resources](./resources)
 - [3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
 
-:::warning[References to verify]
-These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): ETSI TS 103 720 clause 5.15.3.3, 3GPP TS 23.041 clause 9.4.1.2.2, the CMAS message identifier value 0x1102 and its warning-type mapping, and 3GPP TS 36.331 clauses 5.2.2.19 and 6.3.1. Verify against the 3GPP/ETSI work plan and the current repository code before publication.
-:::
-
 ## Roadmap
 
-The roadmap for this project lives on the GitHub Project boards linked below. For what the project implements, see the [Scope](./scope) page.
+The roadmap for this project lives on the GitHub Project boards linked below. For what the project implements, see [What This Project Implements](#what-this-project-implements) above.
 
 ### General Project Roadmap
 
@@ -148,5 +144,5 @@ Issues and required functionality around support for a Public Warning System, de
 - [Resources](/reference-tools/emergency-alerts/resources)
 - [Tutorials](/reference-tools/emergency-alerts/tutorials)
 - Related project: [5G Broadcast - TV and Radio Services](../5g-broadcast)
-- Standards: [5G Broadcast](/tech/standards/5g-broadcast)
+- Standards: [5G Broadcast](/standards/5g-broadcast)
 - Technical documentation: [5G Broadcast on the Tech portal](/tech/5g-broadcast)

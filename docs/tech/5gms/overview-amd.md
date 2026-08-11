@@ -26,9 +26,9 @@ This documentation is currently **under development and subject to change**. It 
 This page assumes familiarity with the 5G Media Streaming (5GMS) architecture, its functional entities and its reference points. If you are new to 5GMS, read the [5GMS Overview](./overview-5gms) first.
 :::
 
-Advanced Media Delivery covers the Release 19 (and later) extensions to 5G Media Streaming (5GMS) studied in 3GPP [TR 26.804](https://www.3gpp.org/dynareport/26804.htm). These build on the 5GMS architecture to improve reporting, multi-source and multi-access delivery, and quality of service. The features and their normative specifications are listed on the [Standards page](/tech/standards/5gms). The reference-point and clause numbers below point to the Release 18 (or later) versions of [TS 26.510](https://www.3gpp.org/dynareport/26510.htm) and TS 26.512; verify them against the specific specification release you are targeting.
+Advanced Media Delivery covers the Release 19 (and later) extensions to 5G Media Streaming (5GMS) studied in 3GPP [TR 26.804](https://www.3gpp.org/dynareport/26804.htm). These build on the 5GMS architecture to improve reporting, multi-source and multi-access delivery, and quality of service. The features and their normative specifications are listed on the [Standards page](/standards/5gms). The reference-point and clause numbers below follow the Release 18 (or later) versions of [TS 26.510](https://www.3gpp.org/dynareport/26510.htm) and TS 26.512, checked against TS 26.510 V18.5.0 and TS 26.512 V19.3.0; the in-band CMCD clauses of TS 26.512 (clause 10.5 and Annex G.5) first appear in the Release 19 version.
 
-**Note on labels:** the reference points below use the generalised TS 26.510 names (M1, M3, M4, M5), which correspond to the downlink-specific M1d, M3d, M4d and M5d used elsewhere in this documentation. M7d is the UE-internal Media Player API and M11d is the UE-internal Media Session Handler configuration API; R5 and R6 are the data-collection reference points used for event exposure (for example to NWDAF or an Event Consumer AF). Confirm these mappings against the specification release you are targeting.
+**Note on labels:** the reference points below use the generalised TS 26.510 names (M1, M3, M4, M5), which correspond to the downlink-specific M1d, M3d, M4d and M5d used elsewhere in this documentation. M7d is the UE-internal Media Player API, exposed to the application, and M11d is the UE-internal interface from the Media Session Handler to the Media Player; TS 26.512 clause 13 specifies these Media Stream Handler APIs. R5 and R6 are the data-collection reference points used for event exposure, for example to NWDAF or an Event Consumer AF (TS 26.512 clause 18).
 
 ## Common Media Client Data (CMCD)
 
@@ -52,7 +52,7 @@ Collected client data can be exposed to consuming functions, such as the Network
 
 ## Coded Multisource Media Format (CMMF)
 
-Coded Multisource Media Format (CMMF) is specified in ETSI TS 103 973. It applies erasure coding to media objects so that a client can retrieve a single object in parallel from multiple sources (for example several Content Delivery Networks (CDNs) or both unicast and broadcast paths) and reconstruct it from any sufficient subset of the coded data. This improves resilience and download throughput for multi-CDN and multi-access delivery. See the [Standards page](/tech/standards/5gms) for the specification link.
+Coded Multisource Media Format (CMMF) is specified in ETSI TS 103 973. It applies erasure coding to media objects so that a client can retrieve a single object in parallel from multiple sources (for example several Content Delivery Networks (CDNs) or both unicast and broadcast paths) and reconstruct it from any sufficient subset of the coded data. This improves resilience and download throughput for multi-CDN and multi-access delivery. See the [Standards page](/standards/5gms) for the specification link.
 
 :::note Figure to add
 A diagram would help here: show one media object erasure-coded into chunks, delivered in parallel from two or more sources (for example CDN A, CDN B and a broadcast path) to a single client that reconstructs the object from any sufficient subset of the received chunks.
@@ -75,8 +75,4 @@ The two features above (CMCD and CMMF) are the ones with reference-tool relevanc
 - **Time synchronisation.** Aligning playback timing across clients and with a common reference, which matters for synchronised and interactive experiences.
 - **Encrypted and high-value content.** Handling of protected content in the delivery path.
 
-Not all of these have completed the move from study to normative text, and the release placement of individual items can change as 3GPP SA4 progresses the work. See the [Standards page](/tech/standards/5gms) for the specifications and technical reports, and confirm the status of a given feature against the 3GPP work plan.
-
-:::warning[References to verify]
-These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the TS 26.510 clauses (8.11), the TS 26.512 clauses (7.8, 10.5, 11.4.3, 12.4, 13.2.4, 18.3.3 and Annex G.5), the M7d/M11d and R5/R6 reference-point mappings, and the release placement of the individual Release-19 AMD topics listed above. Verify against the specific specification version you are targeting.
-:::
+Not all of these have completed the move from study to normative text, and the release placement of individual items can change as 3GPP SA4 progresses the work. See the [Standards page](/standards/5gms) for the specifications and technical reports, and confirm the status of a given feature against the 3GPP work plan.

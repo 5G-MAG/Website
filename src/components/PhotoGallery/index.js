@@ -49,13 +49,19 @@ export default function PhotoGallery({ photos, thumbAspect = '1 / 1', columns })
       </div>
 
       {isOpen && (
-        <div
-          className={styles.overlay}
-          role="dialog"
-          aria-modal="true"
-          aria-label="Photo viewer"
-          onClick={() => setActiveIndex(null)}
-        >
+        <div className={styles.overlay} role="dialog" aria-modal="true" aria-label="Photo viewer">
+          {/* Backdrop click-to-close as a real button (covers the whole
+              overlay, sits behind the content) rather than an onClick on
+              the dialog div itself — same behavior, but keyboard-reachable
+              and lint-clean (click-events-have-key-events). Escape/arrow
+              keys are additionally handled document-wide above. */}
+          <button
+            type="button"
+            className={styles.backdropButton}
+            onClick={() => setActiveIndex(null)}
+            aria-label="Close photo viewer"
+            tabIndex={-1}
+          />
           <button
             type="button"
             className={styles.closeButton}
@@ -68,29 +74,25 @@ export default function PhotoGallery({ photos, thumbAspect = '1 / 1', columns })
           <button
             type="button"
             className={clsx(styles.navButton, styles.navButtonPrev)}
-            onClick={(e) => {
-              e.stopPropagation();
-              setActiveIndex((i) => (i - 1 + photos.length) % photos.length);
-            }}
+            onClick={() => setActiveIndex((i) => (i - 1 + photos.length) % photos.length)}
             aria-label="Previous photo"
           >
             &#8249;
           </button>
 
+          {/* No stopPropagation needed: the backdrop is a sibling button
+              behind this image, not an ancestor, so clicks here never
+              reach it. */}
           <img
             className={styles.overlayImage}
             src={photos[activeIndex].src}
             alt={photos[activeIndex].alt}
-            onClick={(e) => e.stopPropagation()}
           />
 
           <button
             type="button"
             className={clsx(styles.navButton, styles.navButtonNext)}
-            onClick={(e) => {
-              e.stopPropagation();
-              setActiveIndex((i) => (i + 1) % photos.length);
-            }}
+            onClick={() => setActiveIndex((i) => (i + 1) % photos.length)}
             aria-label="Next photo"
           >
             &#8250;

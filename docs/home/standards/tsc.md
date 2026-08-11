@@ -1,8 +1,8 @@
 ---
 hide_title: true
 title: Time Sensitive Communications
+slug: /standards/tsc
 description: 3GPP Time Sensitive Communications specifications for deterministic, low-latency 5G delivery in professional media production, and the related IEEE TSN and SMPTE standards.
-sidebar_position: 15
 ---
 
 <div class="topic-banner">
@@ -24,7 +24,7 @@ Deterministic, low-latency delivery over 5G for tightly synchronised professiona
 
 5G-MAG monitors standardisation of Time Sensitive Communication (TSC) and its application to media production workflows, such as SMPTE ST 2110 essence transport. For the technical analysis of how TSC works, see the Tech page linked below.
 
-TSC in a media context usually runs over a private 5G deployment. For the network foundations it depends on, see [Standards: Non-Public Networks](/tech/standards/npn) first. For acronyms used here, see the [Glossary](/tech/glossary).
+TSC in a media context usually runs over a private 5G deployment. For the network foundations it depends on, see [Standards: Non-Public Networks](/standards/npn) first. For acronyms used here, see the [Glossary](/tech/glossary).
 
 <div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
 
@@ -54,7 +54,7 @@ TSC in a media context usually runs over a private 5G deployment. For the networ
 ### Service Requirements
 
 - [TS 22.104](https://www.3gpp.org/dynareport/22104.htm): Service requirements for cyber-physical control applications in vertical domains (includes TSC)
-- [TR 22.804](https://www.3gpp.org/dynareport/22804.htm): Study on Communication for Automation in Vertical domains
+- [TR 22.804](https://www.3gpp.org/dynareport/22804.htm): Study on Communication for Automation in Vertical Domains
 
 ### System Architecture
 
@@ -67,7 +67,7 @@ TSC in a media context usually runs over a private 5G deployment. For the networ
 
 - **IEEE 802.1AS**: Timing and Synchronisation (gPTP)
 - **IEEE 802.1Qbv**: Enhancements for Scheduled Traffic
-- **IEEE 802.1Qcc**: Stream Reservation Protocol (SRP) Enhancements
+- **IEEE 802.1Qcc**: Stream Reservation Protocol (SRP) Enhancements and Performance Improvements
 
 ## SMPTE Standards for IP Media Production
 
@@ -78,15 +78,11 @@ TSC in a media context usually runs over a private 5G deployment. For the networ
 
 5G-MAG tracks how these deterministic-delivery and time-synchronisation capabilities apply to professional media, in particular the transport of SMPTE ST 2110 essence over private 5G, the alignment of the 5G and PTP time domains, and the combination with Non-Public Networks.
 
-:::warning[References to verify]
-These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TR 22.804, the TS 23.501 TSC clause number, the Release 17 TSCTSF placement, and the IEEE 802.1Qbv/802.1Qcc designations as cited. Verify against the 3GPP work plan and the IEEE 802.1 standards index before publication.
-:::
-
 ## Related Standards Work
 
-- [Standards: Non-Public Networks](/tech/standards/npn)
-- [Standards: Network APIs](/tech/standards/network-apis)
-- [Technical Documentation: Time Sensitive Communications](/tech/tsc): analysis documents and reference material on the developer/technical side
+- [Standards: Non-Public Networks](/standards/npn)
+- [Standards: Connectivity Quality with Network APIs](/standards/network-apis)
+- [Tech: Time Sensitive Communications](/tech/tsc): analysis documents and reference material on the developer/technical side
 - [Feedback and Requirements](/standards): how 5G-MAG submits feedback and requirements to SDOs
 
 :::note

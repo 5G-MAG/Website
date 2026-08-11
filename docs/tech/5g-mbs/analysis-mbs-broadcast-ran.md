@@ -204,3 +204,9 @@ The structures below are the supporting configuration IEs referenced above. `CFR
 The `MBSBroadcastConfiguration` message is the broadcast configuration carried on the MCCH. Its content (in the `MBSBroadcastConfiguration-r17-IEs` branch) lists the sessions available (`mbs-SessionInfoList-r17`), neighbour-cell information, MTCH DRX and PDSCH configuration lists, and MTCH-to-SSB mapping windows. Full ASN.1 in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 6.2.2**.
 
 The `MBS-SessionInfoList` referenced above is the per-session detail: for each broadcast session it gives the session identity (`mbs-SessionId-r17`, a TMGI), the G-RNTI used to address it (`g-RNTI-r17`), the radio bearer configuration (`mrb-ListBroadcast-r17`), and optional MTCH scheduling/neighbour-cell/PDSCH-index/SSB-mapping fields. Each entry in the MRB list (`MRB-InfoBroadcast-r17`) in turn carries a PDCP config (SN size, header compression, reordering timer) and an RLC config (logical channel identity, sequence-number field length, reassembly timer). Full ASN.1 for `MBS-SessionInfoList-r17`, `MBS-SessionInfo-r17`, `MRB-InfoBroadcast-r17` and its PDCP/RLC config sub-types is in **TS 38.331 Clause 6.3.6**.
+
+## Related
+
+- [5G Multicast Broadcast Services (MBS)](/tech/5g-mbs): the parent topic page
+- [Standards: 5G Multicast Broadcast Services (MBS)](/standards/5g-mbs): the specification list for this topic
+- [5G Multicast Broadcast Services (MBS) Reference Tools](/reference-tools/5g-mbs): the software implementation

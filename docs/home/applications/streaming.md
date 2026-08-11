@@ -51,4 +51,3 @@ Follow the [step-by-step guide](/reference-tools/5gms/tutorials/CMCD-reporting) 
 
 - [Reference Tools](/reference-tools) for the individual specification implementations.
 - [Applications](/applications/) for the other end-to-end service scenarios.
-- [Sample: Multi-Angle Replay Viewer (template)](./streaming/sample-multi-angle-replay), a structural sample for a future real showcase, not a working application yet.

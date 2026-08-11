@@ -1,7 +1,7 @@
 ---
 hide_title: true
 title: Beyond 2D Video
-sidebar_position: 7
+slug: /standards/beyond-2d
 description: Summarises 3GPP's FS_Beyond2D study evaluating stereoscopic, multiview and volumetric video formats and codecs for delivery over 5G.
 ---
 
@@ -45,25 +45,27 @@ Beyond 2D Video covers media formats that go past a flat single-camera picture, 
 
 FS_Beyond2D is a feasibility and characterisation study, not a normative specification. It covers four format families:
 
-- **Stereoscopic video**, a left and right view giving a fixed 3D effect without free viewpoint;
+- **Stereoscopic video**, a left and right view giving a fixed 3D effect without free viewpoint, with extensions for depth and alpha metadata;
 - **Multiview and multi-view plus depth (MV+D)**, several camera views (with depth) that support a limited change of viewpoint;
-- **Video plus depth**, a single texture view augmented with a depth map;
-- **Dense point clouds**, a volumetric representation of an object or person captured in 3D.
+- **Dense dynamic point clouds**, a volumetric representation of an object or person captured in 3D;
+- **Dynamic meshes**, a volumetric representation using time-varying textured 3D meshes.
+
+The report also surveys formats under research (neural radiance fields, light fields, 3D Gaussian splatting) without evaluating them.
 
 See the [Beyond 2D Video](/tech/volumetric/beyond-2d) Tech page for the per-family and per-scenario detail.
 
 ## Codecs and how they map to the formats
 
-The study evaluates each format with the codecs that are practical for it today, and where relevant against a 2D or simulcast anchor:
+The study evaluates each format with the codecs that are practical for it today; for stereoscopic video, simulcast HEVC serves as the baseline:
 
-| Format family         | Coding approaches evaluated                                     | Relation to V3C                         |
-| --------------------- | --------------------------------------------------------------- | --------------------------------------- |
-| Stereoscopic          | MV-HEVC and frame-compatible or simulcast HEVC/AVC              | Not V3C-based                           |
-| Multi-view plus depth | MV-HEVC, and the MIV profile of V3C                             | MIV is ISO/IEC 23090-12 (a V3C profile) |
-| Video plus depth      | HEVC/VVC with an associated depth video                         | Not V3C-based (depth carried alongside) |
-| Dense point cloud     | V-PCC (video-based) and, for comparison, G-PCC (geometry-based) | V-PCC is part of ISO/IEC 23090-5        |
+| Format family             | Coding approaches evaluated                                                          | Relation to V3C                                    |
+| ------------------------- | ------------------------------------------------------------------------------------ | --------------------------------------------------- |
+| Stereoscopic              | Simulcast HEVC (baseline) and MV-HEVC                                                | Not V3C-based                                       |
+| Multi-view plus depth     | The MIV profile of V3C; the report also notes MV-HEVC as a coding option             | MIV is ISO/IEC 23090-12 (a V3C profile)             |
+| Dense dynamic point cloud | V-PCC; no anchor codec exists for the format, G-PCC is noted as a related technology | V-PCC is part of ISO/IEC 23090-5                    |
+| Dynamic mesh              | V-DMC, described alongside V-PCC for the volumetric scenario                         | V-DMC is ISO/IEC 23090-29 (video-based, V3C-related) |
 
-This connects to the [Volumetric Video with V3C](/tech/standards/v3c) topic: the volumetric and multi-view-plus-depth scenarios are the cases where V3C (V-PCC and MIV) is one of the coding approaches under evaluation.
+This connects to the [Volumetric Video with MPEG V3C](/standards/v3c) topic: the volumetric and multi-view-plus-depth scenarios are the cases where V3C (V-PCC and MIV) is one of the coding approaches under evaluation.
 
 ## Relationship to 5G Media Streaming
 
@@ -85,18 +87,14 @@ The technical report below is the output of the FS_Beyond2D study, giving the ev
 | ------------------------------------------------------ | --------------------------------------------------------------------- |
 | [TR 26.956](https://www.3gpp.org/dynareport/26956.htm) | Evaluation and Characterization of Beyond 2D Video Formats and Codecs |
 
-:::warning[References to verify]
-These specifics on this page were not confirmed against the primary source (the 3GPP/ETSI portals block automated access, so the TR 26.956 text and clause numbers could not be machine-checked): the exact codec and anchor set attributed to each format family (MV-HEVC, V-PCC, G-PCC, MIV), the exact set and numbering of the evaluation scenarios, and the exact metric set attributed to the TR (PSNR, IV-PSNR, VMAF). The scenario names are taken from the 5G-MAG reference-tools repository. Verify against TR 26.956 and the SA4 work plan before publication.
-:::
-
 ## 5G-MAG tracking and contribution focus
 
 5G-MAG tracks FS_Beyond2D as it establishes the evidence base for carrying richer-than-2D formats over 5G Media Streaming, ahead of any later normative SA4 work. The technical detail is on the [Beyond 2D Video](/tech/volumetric/beyond-2d) Tech page.
 
 ## Related Standards Work
 
-- [Standards: Volumetric Video with V3C](/tech/standards/v3c)
-- [Standards: XR with MPEG-I SD](/tech/standards/xr)
+- [Standards: Volumetric Video with MPEG V3C](/standards/v3c)
+- [Standards: XR and MPEG-I Scene Description](/standards/xr)
 - [Feedback and Requirements](/standards): how 5G-MAG submits feedback and requirements to SDOs
 
 :::note

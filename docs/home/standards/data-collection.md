@@ -1,7 +1,7 @@
 ---
 hide_title: true
 title: UE Data Collection, Reporting and Event Exposure
-sidebar_position: 16
+slug: /standards/data-collection
 description: Explains the Data Collection Application Function (DCAF) framework letting UEs report media consumption and QoE data for network analytics.
 ---
 
@@ -79,20 +79,16 @@ These are the stage-3 API specifications for exposing events, including the Netw
 | [TS 29.522](https://www.3gpp.org/dynareport/29522.htm) | 5G System; Network Exposure Function Northbound APIs; Stage 3     |
 | [TS 29.591](https://www.3gpp.org/dynareport/29591.htm) | 5G System; Network Exposure Function Southbound Services; Stage 3 |
 
-:::warning[References to verify]
-The Release-17/Release-18 placement of TS 26.531 and TS 26.532 was not confirmed against a primary source (the 3GPP/ETSI portals block automated access). Verify against the 3GPP/ETSI work plan before publication. For the verification status of the R1 to R6 reference-point mapping and stage-3 API assignments, see [Tech: UE Data Collection](/tech/data-collection/data-collection-event-exposure).
-:::
-
 ## 5G-MAG tracking and contribution focus
 
-5G-MAG tracks the SA4 data collection and reporting framework. The organisation's tracking issues against TS 26.531 and TS 26.532 (for example clarifications on report scope and on `reportFormat` URIs) are raised in the public [5G-MAG Standards repository](https://github.com/5G-MAG/Standards/). The deeper technical view of the interfaces and procedures is on the [Tech portal](/tech/data-collection/data-collection-event-exposure).
+5G-MAG tracks the SA4 data collection and reporting framework. The organisation's tracking issues against TS 26.531 and TS 26.532 (for example clarifications on report scope and on `reportFormat` URIs) are raised in the public [5G-MAG Standards repository](https://github.com/5G-MAG/Standards/). The deeper technical view of the interfaces and procedures is in the technical documentation: [Tech: UE Data Collection](/tech/data-collection/data-collection-event-exposure).
 
 ## Related Standards Work
 
-- [Standards: 5G Media Streaming](/tech/standards/5gms)
-- [Standards: Network APIs](/tech/standards/network-apis)
-- [Standards: AI & ML in 5G Media](/tech/standards/ai-ml)
-- [Technical Documentation: UE Data Collection](/tech/data-collection/data-collection-event-exposure)
+- [Standards: 5G Media Streaming](/standards/5gms)
+- [Standards: Connectivity Quality with Network APIs](/standards/network-apis)
+- [Standards: AI/ML in 5G Media](/standards/ai-ml)
+- [Tech: UE Data Collection](/tech/data-collection/data-collection-event-exposure)
 - [Meetings with 3GPP SA4](/standards/3gpp-issue-tracking): the live tracker for 3GPP feedback issues on this specification
 
 :::note

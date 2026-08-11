@@ -1,7 +1,7 @@
 ---
 hide_title: true
 title: DVB-I Services over 5G Systems
-sidebar_position: 9
+slug: /standards/dvb-i
 description: Covers DVB-I service discovery and its deployment over 5G via unicast 5GMS, LTE-based 5G Broadcast, and hybrid delivery modes.
 ---
 
@@ -76,7 +76,7 @@ The 5G transport specifications that DVB-I over 5G relies on sit in the 3GPP 26-
 
 For multicast/broadcast transport, the relevant 3GPP work is the 5G Multicast Broadcast Services (MBS) user-service architecture, alongside the LTE-based broadcast profile published by ETSI:
 
-- [TS 26.502](https://www.3gpp.org/dynareport/26502.htm): 5G Multicast-Broadcast User Service Architecture (MBS)
+- [TS 26.502](https://www.3gpp.org/dynareport/26502.htm): 5G multicast-broadcast services; User service architecture (MBS)
 - [TS 23.247](https://www.3gpp.org/dynareport/23247.htm): Architectural enhancements for 5G multicast-broadcast services
 
 ## Specifications by role
@@ -122,15 +122,11 @@ The report also records gaps identified in existing specifications under the con
 
 For the implementer-facing view of the reference architecture and procedures, see the [Tech: DVB-I Services over 5G](/tech/dvb-i/dvb-i-5g) page.
 
-:::warning[References to verify]
-These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): 3GPP TS 26.512 (5GMS Protocols), 3GPP TS 26.502 (5G Multicast-Broadcast User Service Architecture), 3GPP TS 23.247, and the Release placements stated for TS 26.501, TS 26.502 and TS 23.247. The DVB and ETSI document numbers/titles (A177/TS 103 770, A178/TR 103 972, C100, TS 103 720, TS 103 285, TS 103 769, A180) were confirmed against DVB/ETSI sources. Verify all against the 3GPP/ETSI work plan before publication.
-:::
-
 ## Related Standards Work
 
-- [Standards: 5G Media Streaming](/tech/standards/5gms)
-- [Standards: 5G Broadcast](/tech/standards/5g-broadcast)
-- [Standards: Multimedia Delivery Protocols](/tech/standards/multimedia)
+- [Standards: 5G Media Streaming](/standards/5gms)
+- [Standards: 5G Broadcast](/standards/5g-broadcast)
+- [Standards: Multimedia Delivery Protocols](/standards/multimedia)
 - [Feedback and Requirements](/standards): how 5G-MAG processes feedback on the specifications it tracks
 
 :::note

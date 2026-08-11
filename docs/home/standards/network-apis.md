@@ -1,8 +1,8 @@
 ---
 hide_title: true
 title: Connectivity Quality with Network APIs
+slug: /standards/network-apis
 description: How CAMARA network APIs map to 3GPP's NEF, CAPIF and PCF exposure mechanisms for media QoS, slicing and connectivity insights.
-sidebar_position: 11
 ---
 
 <div class="topic-banner">
@@ -34,7 +34,7 @@ How CAMARA network APIs map to 3GPP's NEF, CAPIF and PCF exposure mechanisms for
 <div class="godeeper-card__body">
 <p>The detailed, per-field CAMARA-to-3GPP API mapping analysis.</p>
 <ul class="godeeper-card__links">
-<li><a href="/tech/network-apis">Technical Documentation: Network APIs</a></li>
+<li><a href="/tech/network-apis">Tech: Network APIs</a></li>
 </ul>
 </div>
 </div>
@@ -43,11 +43,11 @@ How CAMARA network APIs map to 3GPP's NEF, CAPIF and PCF exposure mechanisms for
 
 ## Key 3GPP Specifications
 
-The specifications below are grouped by the layer of network capability exposure they define: 3GPP northbound exposure (NEF, CAPIF), 5G Core policy control, 5G Media Streaming APIs, and the Service Enabler Architecture Layer (SEAL). See [Technical Documentation: Network APIs](/tech/network-apis) for the architecture that ties these layers together.
+The specifications below are grouped by the layer of network capability exposure they define: 3GPP northbound exposure (NEF, CAPIF), 5G Core policy control, 5G Media Streaming APIs, and the Service Enabler Architecture Layer (SEAL). See [Tech: Network APIs](/tech/network-apis) for the architecture that ties these layers together.
 
 ### Network Exposure Function (NEF)
 
-- [TS 29.522](https://www.3gpp.org/dynareport/29522.htm): Network Exposure Function (NEF); Northbound APIs (includes Nnef_AFSessionWithQoS and Nnef_ChargeableParty)
+- [TS 29.522](https://www.3gpp.org/dynareport/29522.htm): Network Exposure Function (NEF); Northbound APIs (includes Nnef_AFsessionWithQoS and Nnef_ChargeableParty)
 - [TS 29.517](https://www.3gpp.org/dynareport/29517.htm): 5G System; Application Function Event Exposure Service; Stage 3
 - [TS 23.501](https://www.3gpp.org/dynareport/23501.htm): System Architecture for 5GS (NEF architecture)
 
@@ -82,7 +82,7 @@ The specifications below are grouped by the layer of network capability exposure
 | Connectivity Insights   | Reports on likely network conditions so a workflow can adapt encoding or scheduling                                        |
 | Dedicated Networks      | Provisions and manages an on-site dedicated network for a production                                                       |
 
-See the [Technical Documentation: Network APIs](/tech/network-apis) page for detailed CAMARA API profiles.
+See the [Tech: Network APIs](/tech/network-apis) page for detailed CAMARA API profiles.
 
 ### How CAMARA is organised
 
@@ -101,15 +101,11 @@ The mappings above are the general correspondence. See the [technical pages](/te
 
 ## 5G-MAG tracking and contribution focus
 
-5G-MAG's interest is media-specific: contribution and live production uplinks, and live distribution downlinks. The work centres on the CAMARA QoS and slicing APIs and the 3GPP northbound specifications (TS 29.522, TS 29.514) and SEAL (TS 23.434) they map onto. See [Technical Documentation: Network APIs](/tech/network-apis) for the detailed gap analysis.
-
-:::warning[References to verify]
-These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TS 24.549 (SEAL NSCE Stage 3), TS 28.531 and TS 28.541 (network slice management), TS 29.520 (NWDAF services). Verify against the 3GPP work plan before publication.
-:::
+5G-MAG's interest is media-specific: contribution and live production uplinks, and live distribution downlinks. The work centres on the CAMARA QoS and slicing APIs and the 3GPP northbound specifications (TS 29.522, TS 29.514) and SEAL (TS 23.434) they map onto. See [Tech: Network APIs](/tech/network-apis) for the detailed gap analysis.
 
 ## Related Standards Work
 
-- [Standards: 5G Media Streaming](/tech/standards/5gms)
+- [Standards: 5G Media Streaming](/standards/5gms)
 - [Feedback and Requirements](/standards): how 5G-MAG submits feedback and requirements to SDOs
 
 :::note

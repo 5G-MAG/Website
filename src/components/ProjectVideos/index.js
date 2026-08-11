@@ -21,7 +21,10 @@ export default function ProjectVideos({ videos, name }) {
         <VideoGrid videos={videos} />
       ) : (
         <>
-          <p>No {name}-specific videos are curated here yet. In the meantime, here's what's recent from the wider Developer Exchange:</p>
+          <p>
+            No {name}-specific videos are curated here yet. In the meantime, here&apos;s
+            what&apos;s recent from the wider Developer Exchange:
+          </p>
           <VideoGrid videos={RECENT_DEVELOPER_EXCHANGES} />
         </>
       )}

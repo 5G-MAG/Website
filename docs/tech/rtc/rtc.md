@@ -48,7 +48,7 @@ Real-Time Communications (RTC) covers the 3GPP work on interactive, low-latency 
 <div class="godeeper-card__body">
 <p>Normative 3GPP specs (TS 26.506, TS 26.113) and 5G-MAG's contributions on RTC.</p>
 <ul class="godeeper-card__links">
-<li><a href="/tech/standards/rtc">Standards: Real-Time Communications (RTC)</a></li>
+<li><a href="/standards/rtc">Standards: Real-Time Communications (RTC)</a></li>
 </ul>
 </div>
 </div>
@@ -94,7 +94,7 @@ Codec handling follows the WebRTC requirements (for example the IETF video codec
 
 ## Signalling
 
-WebRTC does not mandate a signalling protocol; the offer/answer exchange must be carried by some out-of-band channel. Within the 3GPP RTC work the signalling options are handled in the architecture and protocol specifications. One protocol developed in this context is RESPECT, a compact, extensible WebRTC-compatible session-control protocol. The precise normative status and naming should be confirmed against the current specification text rather than assumed.
+WebRTC does not mandate a signalling protocol; the offer/answer exchange must be carried by some out-of-band channel. Within the 3GPP RTC work the signalling options are handled in the architecture and protocol specifications. One protocol developed in this context is RESPECT, a WebRTC-compatible session-control (signalling) protocol documented in the Release 19 study [TR 26.930](https://www.3gpp.org/dynareport/26930.htm) (Study on the enhancement for Immersive Real-Time communication for WebRTC). As study output it is not a normative 3GPP protocol; the normative RTC protocols and APIs remain those of TS 26.113.
 
 ## Relationship to 5GMSu and to IMS
 
@@ -106,17 +106,13 @@ WebRTC does not mandate a signalling protocol; the offer/answer exchange must be
 
 - **Release 16 to 17**: 5GMS foundations (TS 26.501, TS 26.512) including the 5GMSu uplink path; IMS Multimedia Telephony (TS 26.114).
 - **Release 18**: RTC architecture (TS 26.506) and protocols (TS 26.113); harmonised media delivery (TS 26.510); IMS Data Channel / NG-RTC stage 3.
-- **Release 19 and later**: RTC enhancements, including immersive real-time communication over WebRTC. Confirm the specific study/work items and their identifiers against the 3GPP work plan.
-
-:::warning[References to verify]
-These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the release placement of TS 26.506 / TS 26.113 / TS 26.510, the RTC reference-point naming, the NG-RTC stage 3 specification numbers, the RESPECT signalling protocol status, and the Release 19 immersive-RTC study identifier. Verify against the 3GPP work plan before publication.
-:::
+- **Release 19 and later**: RTC enhancements, including immersive real-time communication over WebRTC, studied in TR 26.930 (published as V19.0.0, October 2025); TS 26.506, TS 26.113 and TS 26.510 continue to evolve under Release 19.
 
 ## Related
 
 - [Non-Public Networks](../npn): RTC contribution commonly runs over an NPN to reserve uplink capacity and control QoS.
 - [Time Sensitive Communications](/tech/tsc): the deterministic-transport counterpart, for essence flows that need bounded, scheduled timing rather than an interactive WebRTC session.
-- [Standards: Real-Time Communications (RTC)](/tech/standards/rtc): the standards-tracking view of this topic.
+- [Standards: Real-Time Communications (RTC)](/standards/rtc): the standards-tracking view of this topic.
 
 :::note
 Refer to the [Tech](https://github.com/5G-MAG/Tech/) repository to contribute to this documentation.

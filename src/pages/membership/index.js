@@ -251,7 +251,7 @@ export default function Membership() {
                 Or request membership information now
               </h3>
               <ContactForm
-                accessKey="ef3b8cf9-bbc3-413a-9983-b269b2495122"
+                web3formsKey="ef3b8cf9-bbc3-413a-9983-b269b2495122"
                 subject="Membership Enquiry — 5G-MAG website"
                 submitLabel="Send enquiry"
               />

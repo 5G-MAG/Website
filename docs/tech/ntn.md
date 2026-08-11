@@ -52,7 +52,7 @@ Non-Terrestrial Networks (NTN) extend 5G coverage via satellite (geostationary G
 <div class="godeeper-card__body">
 <p>Normative 3GPP specs (TR 38.811, TR 38.821) and 5G-MAG's contributions on NTN.</p>
 <ul class="godeeper-card__links">
-<li><a href="/tech/standards/ntn">Standards: Non-Terrestrial Networks</a></li>
+<li><a href="/standards/ntn">Standards: Non-Terrestrial Networks</a></li>
 </ul>
 </div>
 </div>
@@ -99,7 +99,7 @@ These are carried in NR RRC via NTN system information; see the SIB descriptions
 Two system information blocks are central to media over NTN:
 
 - **SIB19** carries the NTN assistance information a device needs to acquire and track a satellite cell: serving-cell (and optionally neighbour-cell) ephemeris, common timing advance parameters, the k-offset, the epoch time and its validity duration, and the cell reference location. SIB19 was introduced with the Release 17 NTN work in [TS 38.331](https://www.3gpp.org/dynareport/38331.htm).
-- **SIB27** is used, in the analysis on these pages, to convey the Intended Service Area (ISA) for MBS in an NTN cell, describing where a broadcast service applies as a polygon or a circle. The precise Release 19 semantics of SIB27 for MBS ISA should be confirmed against TS 38.331; see the ASN.1 walkthrough on the [MBS Broadcast over NTN](./ntn/analysis-mbs-broadcast-over-ntn) page.
+- **SIB27**, introduced in Release 19 of TS 38.331, conveys the Intended Service Area (ISA) of MBS broadcast services for NTN, describing where a broadcast service applies as a polygon or a circle; see the ASN.1 walkthrough on the [MBS Broadcast over NTN](./ntn/analysis-mbs-broadcast-over-ntn) page.
 
 For MBS Broadcast, the terrestrial broadcast SIBs (SIB20 and SIB21 in TS 38.331) apply as on the ground; the NTN-specific additions are SIB19 and the ISA signalling.
 
@@ -122,10 +122,6 @@ The analysis pages below develop the specific problems NTN introduces for media:
 - **[Mobility for MBS Multicast over NTN](./ntn/analysis-mobility-mbs-multicast-over-ntn)** treats lossless handover for a whole multicast group, distinguishing satellite-triggered from user-triggered mobility.
 - **[MBS Broadcast over NTN](./ntn/analysis-mbs-broadcast-over-ntn)** shows that broadcast reuses the terrestrial procedures almost unchanged, the NTN-specific parts being SIB19 and the ISA carried in SIB27.
 
-:::warning[References to verify]
-These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TS 26.502 title, SIB27 Release 19 semantics for MBS Intended Service Area, TR 38.863 release placement, and the release placement of individual Release 18/19 NTN and MBS-over-NTN features. Verify against the 3GPP/ETSI work plan before publication.
-:::
-
 ---
 
 ## Technical Documentation
@@ -147,9 +143,9 @@ The following analysis pages are available. If you are new to this area, start w
 
 ## Related
 
-- [Standards: Non-Terrestrial Networks](/tech/standards/ntn): normative 3GPP specs and 5G-MAG contributions on NTN, including TR 38.811, TR 38.821, and [TR 23.737](https://www.3gpp.org/dynareport/23737.htm).
-- [Standards: 5G Multicast & Broadcast Services](/tech/standards/5g-mbs): MBS is the primary service layer for NTN media delivery.
-- [Standards: 5G Broadcast](/tech/standards/5g-broadcast): ETSI TS 103 720; relevant for satellite-based linear TV/radio broadcast over NTN.
+- [Standards: Non-Terrestrial Networks](/standards/ntn): normative 3GPP specs and 5G-MAG contributions on NTN, including TR 38.811, TR 38.821, and [TR 23.737](https://www.3gpp.org/dynareport/23737.htm).
+- [Standards: 5G Multicast & Broadcast Services](/standards/5g-mbs): MBS is the primary service layer for NTN media delivery.
+- [Standards: 5G Broadcast](/standards/5g-broadcast): ETSI TS 103 720; relevant for satellite-based linear TV/radio broadcast over NTN.
 
 :::note
 Refer to the [Tech](https://github.com/5G-MAG/Tech/) repository to contribute to this documentation.

@@ -48,7 +48,7 @@ How network-side analytics (NWDAF) and UE-side data collection fit together to m
 <div class="godeeper-card__body">
 <p>Normative 3GPP specs (TS 23.288, TS 26.531, TS 26.532) and 5G-MAG's contributions on AI/ML.</p>
 <ul class="godeeper-card__links">
-<li><a href="/tech/standards/ai-ml">Standards: AI/ML in 5G Media Standards</a></li>
+<li><a href="/standards/ai-ml">Standards: AI/ML in 5G Media</a></li>
 </ul>
 </div>
 </div>
@@ -69,6 +69,8 @@ How network-side analytics (NWDAF) and UE-side data collection fit together to m
 
 </div>
 
+[Execution Plan](https://github.com/orgs/5G-MAG/projects/44/views/16)
+
 ## NWDAF: network-side analytics (SA2)
 
 The Network Data Analytics Function (NWDAF) is the 5G core function through which network functions and other data sources expose measurements, and through which consumers request analytics or predictions derived from that data. TS 23.288 splits the NWDAF's internal role in two:
@@ -76,7 +78,7 @@ The Network Data Analytics Function (NWDAF) is the 5G core function through whic
 - **AnLF (Analytics Logical Function)**: produces the analytics or prediction output that a consumer (for example the PCF, for QoS policy, or an Application Function such as the 5GMS AF) subscribes to or requests.
 - **MTLF (Model Training Logical Function)**: trains the ML models that an AnLF uses for inference, and can expose those models to other NWDAF instances.
 
-Splitting training from inference lets a model be trained once (potentially on a different NWDAF instance, closer to where the training data volume is largest) and reused for inference wherever it is needed. For a media session, a typical consumer-facing output is a load or QoS prediction that a function such as the 5GMS AF can act on ahead of time, for example by adjusting a bitrate ceiling before congestion actually hits. See [Standards: 5G Media Streaming](/tech/standards/5gms) for where the 5GMS AF sits in that path.
+Splitting training from inference lets a model be trained once (potentially on a different NWDAF instance, closer to where the training data volume is largest) and reused for inference wherever it is needed. For a media session, a typical consumer-facing output is a load or QoS prediction that a function such as the 5GMS AF can act on ahead of time, for example by adjusting a bitrate ceiling before congestion actually hits. See [Standards: 5G Media Streaming](/standards/5gms) for where the 5GMS AF sits in that path.
 
 ## SA4 data collection: the UE-side input
 
@@ -84,27 +86,22 @@ The SA4 Data Collection and Reporting framework (TS 26.531, TS 26.532) standardi
 
 For AI/ML purposes, the relevant point is where the two tracks meet: the Data Collection Application Function can expose its processed events to the NWDAF as one of its consumers (reference points R5/R6), so UE-side observations gathered under the SA4 framework can feed into SA2's network-side analytics rather than the two tracks running in isolation.
 
-## The SA4 AI/ML media study: TR 26.847
+## The SA4 AI/ML media studies: TR 26.927 and TR 26.847
 
-[TR 26.847](https://www.3gpp.org/dynareport/26847.htm) (Evaluation of AI and ML in 5G media services, Release 19, completed June 2025) is SA4's study into applying AI/ML techniques directly to media processing and delivery, as distinct from the network-analytics use of AI/ML in NWDAF above. It defines evaluation methodology, use cases and metrics for assessing AI/ML models in areas such as adaptive bitrate optimisation and media quality enhancement; the [AI/ML Evaluation Framework](/testbeds/ai-ml) reference tooling is aligned with this study.
+SA4's study of applying AI/ML techniques directly to media processing and delivery, as distinct from the network-analytics use of AI/ML in NWDAF above, is captured in two companion technical reports, both published at version 19.0.0 in June 2025 (Release 19):
 
-:::warning[Detail not independently re-verified]
-TR 26.847 was previously tracked under a different, now-superseded number (TR 26.927, last seen as an incomplete draft) with more detailed scope notes (split inference, model delivery, named logical functions). Those specifics have not been independently re-checked against TR 26.847's final published content. Verify before relying on them.
-:::
+- [TR 26.927](https://www.3gpp.org/dynareport/26927.htm) (Study on Artificial Intelligence and Machine Learning in 5G media services) covers the functional side: media-based AI/ML use cases (object recognition in image and video, video quality enhancement in streaming, crowd-sourced media capture, natural language processing on speech) and the media service architecture for AI/ML, including split-inference configurations and model delivery.
+- [TR 26.847](https://www.3gpp.org/dynareport/26847.htm) (Evaluation of Artificial Intelligence and Machine Learning in 5G media services) is the evaluation companion: testbed architectures and anchors for split inferencing and model-data transmission, evaluation metrics, and scenarios such as compressed AI/ML model transfer for automatic speech recognition and video quality enhancement in streaming. The [AI/ML Evaluation Framework](/testbeds/ai-ml) reference tooling is aligned with this report.
 
 ## Related AI/ML studies that feed 6G
 
 [TR 22.874](https://www.3gpp.org/dynareport/22874.htm) (SA1, Study on traffic characteristics and performance requirements for AI/ML model transfer in 5GS) is a companion study, on the network-transport side of AI/ML rather than the media-processing side: it looks at how model-transfer traffic itself behaves on the 5G system. Both this study and TR 26.847 feed 5G-MAG's early input to 6G, where AI-native traffic management is one of the new IMT-2030 usage scenarios; see [Towards 6G Media](/tech/6g) for that wider context.
 
-:::warning[References to verify]
-The Release placement of TS 26.531 / TS 26.532 relative to TS 23.288, and the exact NWDAF consumer/producer role split described above, were not confirmed against a primary source (the 3GPP/ETSI portals block automated access). Verify against the 3GPP work plan before publication.
-:::
-
 ## Related
 
 - [Tech: UE Data Collection, Reporting and Event Exposure](/tech/data-collection/data-collection-event-exposure): the DCAF architecture and reference points in full.
 - [Towards 6G Media](/tech/6g): how these AI/ML studies feed 5G-MAG's 6G requirements input.
-- [Standards: AI/ML in 5G Media Standards](/tech/standards/ai-ml): the standards-tracking view of this topic.
+- [Standards: AI/ML in 5G Media](/standards/ai-ml): the standards-tracking view of this topic.
 
 :::note
 Refer to the [Tech](https://github.com/5G-MAG/Tech/) repository to contribute to this documentation.

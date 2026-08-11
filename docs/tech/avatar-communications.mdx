@@ -26,9 +26,9 @@ Avatar Communications covers real-time conversational avatar systems in 5G conte
 
 The avatar representation reuses the MPEG-I Scene Description model: the `MPEG_avatar` glTF extension, described on the [MPEG-I Scene Description](./xr/mpeg-i-scene-description) page, is how a 3D avatar is placed and animated within a scene.
 
-**Key specifications:** ISO/IEC 23090-39 (MPEG Avatar Representation Format, ARF), 3GPP [TR 26.813](https://www.3gpp.org/dynareport/26813.htm) (Study of Avatars in Real-Time Communication Services, the FS_AVATAR study item, completed in Release 19).
+**Key specifications:** ISO/IEC 23090-39 (MPEG Avatar Representation Format, ARF), 3GPP [TR 26.813](https://www.3gpp.org/dynareport/26813.htm) (Avatar Representation and Communication, the FS_AVATAR study item, completed in Release 19).
 
-**Reference tools:** The 5G-MAG software implementation is on the Developer Portal under [Avatar Communications](/reference-tools/avatar).
+**Reference tools:** The 5G-MAG software implementation is on the Developer Portal under [Conversational Avatar Communication with MPEG ARF](/reference-tools/avatar).
 
 ## Go deeper
 
@@ -43,7 +43,7 @@ The avatar representation reuses the MPEG-I Scene Description model: the `MPEG_a
 <p>The ARF data model, end-to-end procedure, and how avatars are placed in a scene via MPEG-I Scene Description.</p>
 <ul class="godeeper-card__links">
 <li><a href="./xr/mpeg-i-scene-description">MPEG-I Scene Description</a></li>
-<li><a href="./xr">XR and Immersive Media</a></li>
+<li><a href="./xr">XR and MPEG-I Scene Description</a></li>
 </ul>
 </div>
 </div>
@@ -56,7 +56,7 @@ The avatar representation reuses the MPEG-I Scene Description model: the `MPEG_a
 <div class="godeeper-card__body">
 <p>The normative specifications (ARF, IVAS) and 5G-MAG's contributions on avatar communications standardisation.</p>
 <ul class="godeeper-card__links">
-<li><a href="/tech/standards/avatar">Standards: Avatar Communications</a></li>
+<li><a href="/standards/avatar">Standards: Avatar Communication with MPEG ARF</a></li>
 </ul>
 </div>
 </div>
@@ -69,14 +69,14 @@ The avatar representation reuses the MPEG-I Scene Description model: the `MPEG_a
 <div class="godeeper-card__body">
 <p>The reference implementation for real-time conversational avatars over 5G.</p>
 <ul class="godeeper-card__links">
-<li><a href="/reference-tools/avatar">Avatar Communications</a></li>
+<li><a href="/reference-tools/avatar">Conversational Avatar Communication with MPEG ARF</a></li>
 </ul>
 </div>
 </div>
 
 </div>
 
-[Execution Plan](https://github.com/orgs/5G-MAG/projects/44)
+[Execution Plan](https://github.com/orgs/5G-MAG/projects/44/views/9)
 
 The slide deck below introduces the Avatar Communications reference tools and their role in 5G real-time communication.
 
@@ -130,21 +130,11 @@ An implementer has to respect four interoperability boundaries: the ARF base-ava
 ARF (ISO/IEC 23090-39) was still at the Draft International Standard stage as of 2025, so the base-avatar and animation-stream details above can change before final publication. Confirm the current stage on the [ISO catalogue page](https://www.iso.org/standard/91745.html) and treat reference tooling as tracking a moving target.
 :::
 
-:::warning[References to verify]
-The following points on this page were not confirmed against a primary source and should be checked before publication:
-
-- **TS 26.114** (MTSI) and **TS 26.506** (RTC over 5G) as the delivery path for avatar animation, and the exact title of TS 26.506; confirm placement and titles against the 3GPP SA4 work plan.
-- **ISO/IEC 21320-1** as the Zip-based container profile and the specific **ISO/IEC 14496-12** edition referenced by ARF.
-- The claim that the avatar animation stream is negotiated at session level via SDP alongside IVAS, and that the IMS data channel carries the animation. These describe candidate mechanisms and should be checked against the current ARF, IETF, and 3GPP drafts.
-
-The avatar study number (TR 26.813, "Study of Avatars in Real-Time Communication Services") was confirmed via independent web search cross-checking two sources. Established citations (ISO/IEC 23090-39, ISO/IEC 23090-14 and Amendment 2, glTF 2.0, and the IETF ARF RTP payload draft) are not part of this caution.
-:::
-
 ## Related
 
 - [XR and MPEG-I Scene Description](./xr): the wider XR area, including the scene-description model that positions and animates avatars.
 - [MPEG-I Scene Description](./xr/mpeg-i-scene-description): the `MPEG_avatar` glTF extension used for 3D avatar representation.
-- [Standards: Avatar Communications](/tech/standards/avatar): the standards-tracking view of this topic.
+- [Standards: Avatar Communication with MPEG ARF](/standards/avatar): the standards-tracking view of this topic.
 
 :::note
 Refer to the [Tech](https://github.com/5G-MAG/Tech/) repository to contribute to this documentation.

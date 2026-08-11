@@ -1,8 +1,8 @@
 ---
 hide_title: true
 title: Non-Terrestrial Networks
+slug: /standards/ntn
 description: 3GPP Non-Terrestrial Network standards for satellite and HAPS media distribution, covering NR adaptations, architecture and MBS delivery.
-sidebar_position: 13
 ---
 
 <div class="topic-banner">
@@ -25,7 +25,7 @@ sidebar_position: 13
 5G-MAG tracks 3GPP Non-Terrestrial Network (NTN) standards for satellite and HAPS media distribution. For the technical analysis of NTN deployment models, mobility and media delivery, see the Tech page linked below. For acronyms used here, see the [Glossary](/tech/glossary).
 
 :::tip
-New to the service layers that NTN carries? Multicast Broadcast Services (MBS) and 5G Broadcast are the delivery mechanisms most often deployed over satellite paths. See [Standards: 5G Multicast & Broadcast Services](/tech/standards/5g-mbs) and [Standards: 5G Broadcast](/tech/standards/5g-broadcast) for background before reading this page.
+New to the service layers that NTN carries? Multicast Broadcast Services (MBS) and 5G Broadcast are the delivery mechanisms most often deployed over satellite paths. See [Standards: 5G Multicast Broadcast Services (MBS)](/standards/5g-mbs) and [Standards: 5G Broadcast](/standards/5g-broadcast) for background before reading this page.
 :::
 
 <div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
@@ -38,7 +38,7 @@ New to the service layers that NTN carries? Multicast Broadcast Services (MBS) a
 <div class="godeeper-card__body">
 <p>The detailed analysis documents behind lossless handover and multicast delivery over satellite.</p>
 <ul class="godeeper-card__links">
-<li><a href="/tech/ntn">Technical Documentation: Non-Terrestrial Networks</a></li>
+<li><a href="/tech/ntn">Tech: Non-Terrestrial Networks</a></li>
 </ul>
 </div>
 </div>
@@ -62,14 +62,10 @@ New to the service layers that NTN carries? Multicast Broadcast Services (MBS) a
 - [TS 23.501](https://www.3gpp.org/dynareport/23501.htm) - System architecture for the 5G System (5GS)
 - [TS 23.502](https://www.3gpp.org/dynareport/23502.htm) - Procedures for the 5G System (5GS)
 
-:::warning[Verify spec number]
-This entry was changed by automated review from TR 22.837 to TR 22.822 and is not yet confirmed against the 3GPP portal. TR 22.837 was identified as the Integrated Sensing and Communication study (unrelated to satellite access). Confirm TR 22.822 is the intended satellite-access study before publication.
-:::
-
 ### Multicast Broadcast Services over NTN
 
 - [TS 23.247](https://www.3gpp.org/dynareport/23247.htm) - Architectural enhancements for 5G multicast-broadcast services
-- [TS 26.502](https://www.3gpp.org/dynareport/26502.htm) - 5G multicast-broadcast user services; Protocols and formats
+- [TS 26.502](https://www.3gpp.org/dynareport/26502.htm) - 5G multicast-broadcast services; User service architecture
 - [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) - 5G Media Streaming (5GMS); General description and architecture
 
 Applying MBS over NTN is the subject of active work in Release 19 and beyond; treat orbit-by-orbit and mode-by-mode feature placement as provisional. One confirmed item: Release 19 adds **SIB27** to TS 38.331 for MBS broadcast over NTN. See [MBS Broadcast NTN](/tech/ntn/analysis-mbs-broadcast-over-ntn) for the technical detail.
@@ -88,16 +84,12 @@ The table groups the key specifications by the part of the system they govern.
 
 ## 5G-MAG tracking and contribution focus
 
-5G-MAG tracks MBS broadcast delivery over NTN, multicast session management and delivery-mode switching under NTN mobility, and lossless handover for multicast groups across the terrestrial/non-terrestrial boundary. See the [Technical Documentation: Non-Terrestrial Networks](/tech/ntn) page for the detailed analysis.
-
-:::warning[References to verify]
-These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TS 26.502 title, TR 38.863 release placement. Verify against the 3GPP/ETSI work plan before publication. (SIB27, the one Release 19 MBS-over-NTN feature identified so far, has been confirmed directly against TS 38.331 V19.3.0 — see [MBS Broadcast NTN](/tech/ntn/analysis-mbs-broadcast-over-ntn) for the verification. Other Release 18/19 NTN and MBS-over-NTN feature placements remain unconfirmed and should still be treated as provisional.)
-:::
+5G-MAG tracks MBS broadcast delivery over NTN, multicast session management and delivery-mode switching under NTN mobility, and lossless handover for multicast groups across the terrestrial/non-terrestrial boundary. See the [Tech: Non-Terrestrial Networks](/tech/ntn) page for the detailed analysis.
 
 ## Related Standards Work
 
-- [Standards: 5G Multicast & Broadcast Services](/tech/standards/5g-mbs): MBS Multicast and Broadcast are the primary service layers deployed over NTN
-- [Standards: 5G Broadcast](/tech/standards/5g-broadcast): ETSI TS 103 720 defines the 5G Broadcast system (FeMBMS) that can operate over satellite NTN delivery paths
+- [Standards: 5G Multicast Broadcast Services (MBS)](/standards/5g-mbs): MBS Multicast and Broadcast are the primary service layers deployed over NTN
+- [Standards: 5G Broadcast](/standards/5g-broadcast): ETSI TS 103 720 defines the 5G Broadcast system (FeMBMS) that can operate over satellite NTN delivery paths
 - [ETSI TS 103 720](https://www.etsi.org/deliver/etsi_ts/103700_103799/103720/): 5G Broadcast System for Linear TV and Radio Services; relevant for GEO satellite broadcast delivery scenarios
 - [Feedback and Requirements](/standards): how 5G-MAG submits feedback and requirements to SDOs
 

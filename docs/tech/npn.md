@@ -50,7 +50,7 @@ There are two deployment models, and the plain-language names map to the 3GPP te
 <div class="godeeper-card__body">
 <p>Normative 3GPP specs (TS 23.501, TS 33.501) and 5G-MAG's contributions on NPN.</p>
 <ul class="godeeper-card__links">
-<li><a href="/tech/standards/npn">Standards: Non-Public Networks</a></li>
+<li><a href="/standards/npn">Standards: Non-Public Networks</a></li>
 </ul>
 </div>
 </div>
@@ -76,7 +76,7 @@ The two models differ in who operates the core, how the network is identified, a
 |                                                | **SNPN** (Stand-alone Non-Public Network)                                                                                                                                                                                                                                                                                        | **PNI-NPN** (Public Network Integrated NPN)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | ---------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Who operates the core**                      | Operates its own 5G core and is not dependent on any PLMN. Because the organisation runs the core, it controls the Unified Data Management (UDM), Policy Control Function (PCF) and Session Management Function (SMF) configuration directly, which is what makes tight QoS and slicing policy for production traffic practical. | The NPN is realised through a PLMN — i.e. the public network operator's core.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| **How the network is identified**              | Identified by the pair (PLMN ID, NID). Two NID assignment models exist: a locally managed NID (chosen by the operator of the SNPN, not guaranteed unique) and a universally managed NID (coordinated to be globally unique).                                                                                                     | Identified as part of the host PLMN.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| **How the network is identified**              | Identified by the pair (PLMN ID, NID). Two NID assignment models exist: self-assignment (the NID is chosen individually by the SNPN at deployment time and is not guaranteed unique) and coordinated assignment (the NID is assigned so that it, alone or in combination with the PLMN ID, is globally unique).                                                                                                     | Identified as part of the host PLMN.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | **How isolation / access control is achieved** | The UE performs SNPN-specific network selection: it reads the available SNPNs from broadcast system information and matches them against its configured list, using either automatic or manual selection mode.                                                                                                                   | Achieved by one or more of: a dedicated DNN, a dedicated Network Slice instance (identified by an S-NSSAI), and a Closed Access Group (CAG). A CAG is advertised by cells in their broadcast information; a UE that is a member of the CAG (per its CAG configuration in the subscription) may camp on and access those cells, while non-members are barred. The CAG mechanism therefore provides cell-level access control, whereas slicing provides logical traffic separation inside the core. In practice a media PNI-NPN combines both: a CAG to keep unauthorised devices off the production cells, and a slice to isolate and dimension the production traffic. |
 
 ## Identity, credentials and onboarding
@@ -103,12 +103,8 @@ Spectrum access for NPNs is a national regulatory matter and varies by country. 
 ## Release timeline
 
 - **Release 16**: SNPN and PNI-NPN models, NID, CAG. Architecture in TS 23.501; security in TS 33.501; requirements in TS 22.261 and (for professional media) [TS 22.263](https://www.3gpp.org/dynareport/22263.htm).
-- **Release 17**: Credentials Holder, external AAA authentication, UE onboarding and remote provisioning, equivalent SNPNs.
-- **Release 18 and later**: Enhancements to NPN mobility and service continuity, and localised services. Confirm the exact scope and placement against the 3GPP work plan.
-
-:::warning[References to verify]
-These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the Release 18 and later NPN enhancement placements, and the specific NID/CAG sub-clause structure described above. Verify against the 3GPP work plan before publication.
-:::
+- **Release 17**: Credentials Holder, external AAA authentication, UE onboarding and remote provisioning.
+- **Release 18 and later**: NPN enhancements (eNPN Phase 2): mobility and service continuity between SNPNs using equivalent SNPN lists, broader non-3GPP access support for SNPN, and access to localised services via a hosting network.
 
 ---
 
@@ -119,10 +115,8 @@ There are no deeper NPN analysis pages on this portal yet: the content above is 
 ## Related
 
 - [Time Sensitive Communications](./tsc): deterministic transport, often combined with an NPN for live production traffic.
-- [Standards: Non-Public Networks](/tech/standards/npn): the standards-tracking view of this topic.
+- [Standards: Non-Public Networks](/standards/npn): the standards-tracking view of this topic.
 
 :::note
 Refer to the [Tech](https://github.com/5G-MAG/Tech/) repository to contribute to this documentation.
 :::
-
----

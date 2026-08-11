@@ -1,8 +1,8 @@
 ---
 hide_title: true
 title: Non-Public Networks
+slug: /standards/npn
 description: 3GPP Non-Public Network standards and deployment models (SNPN, PNI-NPN) for private 5G media production and contribution.
-sidebar_position: 12
 ---
 
 <div class="topic-banner">
@@ -34,7 +34,7 @@ sidebar_position: 12
 <div class="godeeper-card__body">
 <p>Analysis documents and reference material on the developer/technical side.</p>
 <ul class="godeeper-card__links">
-<li><a href="/tech/npn">Technical Documentation: Non-Public Networks</a></li>
+<li><a href="/tech/npn">Tech: Non-Public Networks</a></li>
 </ul>
 </div>
 </div>
@@ -79,18 +79,14 @@ The NPN feature set has grown across releases. The following is an orientation, 
 
 ## 5G-MAG tracking and contribution focus
 
-5G-MAG tracks NPN standardisation as it applies to media production and contribution, in particular the VIAPA requirements, the SNPN and PNI-NPN deployment models, device onboarding at scale, and the combination of NPN with TSC for deterministic essence transport and with RTC for interactive contribution. See the [Technical Documentation: Non-Public Networks](/tech/npn) page for the detailed analysis.
-
-:::warning[References to verify]
-The Release 18 and later NPN enhancement placements described above were not confirmed against a primary source (the 3GPP/ETSI portals block automated access). Verify against the 3GPP work plan before publication. (TR 23.700-07 and TS 24.501, above, were confirmed via independent secondary trackers — see the audit notes for this page.)
-:::
+5G-MAG tracks NPN standardisation as it applies to media production and contribution, in particular the VIAPA requirements, the SNPN and PNI-NPN deployment models, device onboarding at scale, and the combination of NPN with TSC for deterministic essence transport and with RTC for interactive contribution. See the [Tech: Non-Public Networks](/tech/npn) page for the detailed analysis.
 
 ## Related Standards Work
 
-- [Standards: Network APIs](/tech/standards/network-apis)
-- [Standards: Time Sensitive Communications](/tech/standards/tsc): TSC for professional media production is typically deployed over an NPN
-- [Standards: Real-Time Communications (RTC)](/tech/standards/rtc): interactive, uplink-heavy contribution over an NPN
-- [Technical Documentation: Non-Public Networks](/tech/npn): analysis documents and reference material on the developer/technical side
+- [Standards: Connectivity Quality with Network APIs](/standards/network-apis)
+- [Standards: Time Sensitive Communications](/standards/tsc): TSC for professional media production is typically deployed over an NPN
+- [Standards: Real-Time Communications (RTC)](/standards/rtc): interactive, uplink-heavy contribution over an NPN
+- [Tech: Non-Public Networks](/tech/npn): analysis documents and reference material on the developer/technical side
 - [Feedback and Requirements](/standards): how 5G-MAG submits feedback and requirements to SDOs
 
 :::note

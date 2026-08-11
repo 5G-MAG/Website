@@ -63,7 +63,20 @@
   }
 }
 
+/* Invisible full-overlay button behind the lightbox content: clicking the
+   backdrop closes the viewer. tabIndex -1 in the JSX keeps it out of the
+   tab order (the visible Close button and Escape already cover keyboard). */
+.backdropButton {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: default;
+}
+
 .overlayImage {
+  position: relative;
   max-width: min(90vw, 1100px);
   max-height: 85vh;
   object-fit: contain;

@@ -1,7 +1,7 @@
 ---
 hide_title: true
-title: AI/ML in 5G Media Standards
-sidebar_position: 6
+title: AI/ML in 5G Media
+slug: /standards/ai-ml
 description: 3GPP specifications for AI/ML in 5G media - NWDAF network-side analytics (SA2) and UE-side data collection (SA4) - with related studies and release mapping.
 ---
 
@@ -12,7 +12,7 @@ description: 3GPP specifications for AI/ML in 5G media - NWDAF network-side anal
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Standards</span>
-<h1>AI/ML in 5G Media Standards</h1>
+<h1>AI/ML in 5G Media</h1>
 </div>
 </div>
 
@@ -66,10 +66,6 @@ The two tracks differ in where the data comes from and what they produce, as sum
 - [TR 26.847](https://www.3gpp.org/dynareport/26847.htm): Evaluation of AI and ML in 5G media services (SA4, Release 19, completed June 2025)
 - [TR 22.874](https://www.3gpp.org/dynareport/22874.htm): Study on traffic characteristics and performance requirements for AI/ML model transfer in 5GS (SA1)
 
-:::warning[Detail not independently re-verified]
-TR 26.847 was previously tracked under a different, now-superseded number (TR 26.927, last seen as an incomplete draft) with more detailed scope notes (split inference, model delivery, named logical functions). Those specifics have not been independently re-checked against TR 26.847's final published content. Verify before relying on them.
-:::
-
 ## Key 3GPP Specifications
 
 ### Network Data Analytics (SA2)
@@ -84,13 +80,13 @@ TR 26.847 was previously tracked under a different, now-superseded number (TR 26
 
 ## 5G-MAG tracking and contribution focus
 
-5G-MAG tracks both tracks, contributing primarily on the media side (SA4) and following the SA2 analytics work for the parts that affect media sessions. See [Standards: UE Data Collection](/tech/standards/data-collection) for the related SA4 framework, and [Tech: AI/ML in 5G Media](/tech/ai-ml) for the implementer-facing analysis.
+5G-MAG tracks both tracks, contributing primarily on the media side (SA4) and following the SA2 analytics work for the parts that affect media sessions. See [Standards: UE Data Collection, Reporting and Event Exposure](/standards/data-collection) for the related SA4 framework, and [Tech: AI/ML in 5G Media](/tech/ai-ml) for the implementer-facing analysis.
 
 ## Related Standards Work
 
-- [Standards: UE Data Collection](/tech/standards/data-collection)
-- [Standards: 5G Media Streaming](/tech/standards/5gms)
-- [Technical Documentation: AI/ML in 5G Media](/tech/ai-ml)
+- [Standards: UE Data Collection, Reporting and Event Exposure](/standards/data-collection)
+- [Standards: 5G Media Streaming](/standards/5gms)
+- [Tech: AI/ML in 5G Media](/tech/ai-ml)
 - [Meetings with 3GPP SA4](/standards/3gpp-issue-tracking): the live tracker for 3GPP feedback issues in this area
 
 :::note

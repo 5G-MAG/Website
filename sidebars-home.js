@@ -56,7 +56,7 @@ const sidebars = {
 
   // reference-tools/index itself is deliberately NOT part of this sidebar
   // — it's now a full custom Hub page (src/pages/reference-tools/index.js)
-  // with its own PageNav bar. The 15 project trees below stay in this
+  // with its own PageNav bar. The 14 project trees below stay in this
   // sidebar since each is genuinely nested (releases/repositories/scope/
   // tutorials sub-pages).
   //
@@ -69,7 +69,7 @@ const sidebars = {
   // Also dropped the outer "Reference Tools" wrapping category (it had no
   // `link` and, once non-collapsible, rendered as inert text) and restored
   // per-project collapse/collapsed — collapsed by default, so the sidebar
-  // isn't 15 projects' worth of Scope/Resources/Tutorials all open at once.
+  // isn't 14 projects' worth of Scope/Resources/Tutorials all open at once.
   referenceToolsSidebar: [
     {
       type: 'html',
@@ -242,15 +242,19 @@ const sidebars = {
     },
   ],
 
-  // Feedback and Requirements moved from docs/tech (/tech/standards/feedback)
-  // to root (/standards) — see sidebars-tech.js. 3 flat docs
-  // (3gpp-issue-tracking, ls, methodology; glossary and 3gpp-work-items
-  // moved on to docs/tech — 2026-07-19 — as general reference material
-  // rather than Feedback/Requirements/LS, see sidebars-tech.js), not
-  // nested enough to warrant a lateral sidebar of their own; each page
-  // carries a SectionNav pill-bar instead (see src/data/sectionNav.js and
-  // docs/home/standards/*.mdx) and they are deliberately absent from every
-  // sidebar array here.
+  // docs/home/standards/ holds two distinct groups, both deliberately
+  // absent from every sidebar array here; each page carries a SectionNav
+  // pill-bar instead (see src/data/sectionNav.js):
+  // 1. The Feedback & Requirements pages (3gpp-issue-tracking, ls,
+  //    requirements), moved here from docs/tech in 2026-07 — the "5G-MAG
+  //    as SDO contributor" material behind the /standards hub page.
+  // 2. The 18 per-project specification pages (5gms.md, 5g-mbs.md, …),
+  //    moved from docs/tech/standards/ on 2026-08-11 so they serve at
+  //    /standards/<project>. They belong to the Explainers & Profiles
+  //    content family: sectionNav routes them to the /tech section bar,
+  //    sidebars-tech.js links each from its topic category, and /tech's
+  //    topic cards carry a direct "Standards →" link. Adding a new one
+  //    means adding its exact path to sectionNav.js's per-project entry.
   //
   // docs/home/developer/*.md (how-to-use, guidelines-contributors, license)
   // are likewise deliberately absent from every sidebar array: they carry

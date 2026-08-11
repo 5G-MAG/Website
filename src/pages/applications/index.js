@@ -22,7 +22,7 @@ const APPS_ICON_PATH = (
 // the Reference Tool(s) it combines are linked, and the underlying tutorial
 // is linked for hands-on setup steps. multicast-broadcast.md and xr.md were
 // retired (2026-07-22): their content now lives on streaming.md and
-// volumetric.md respectively (see the docusaurus.config.js redirects). Only
+// volumetric.md respectively (their old URLs never went live on www.5g-mag.com, so no redirects were needed). Only
 // tutorials that build or use a working experience count as an application;
 // tutorials that just exercise an API/CLI (Postman, curl, Insomnia,
 // Wireshark) or cover setup/measurement stay reference-tool-only and aren't

@@ -1,8 +1,8 @@
 ---
 hide_title: true
 title: Volumetric Video with MPEG V3C
+slug: /standards/v3c
 description: MPEG's V3C framework for coding volumetric video, covering V-PCC and MIV profiles, bitstream structure and delivery over 5G.
-sidebar_position: 17
 ---
 
 <div class="topic-banner">
@@ -34,7 +34,7 @@ Visual Volumetric Video-based Coding (V3C, ISO/IEC 23090-5) is the MPEG framewor
 <div class="godeeper-card__body">
 <p>The deeper technical treatment of V3C, V-PCC and MIV delivery over 5G.</p>
 <ul class="godeeper-card__links">
-<li><a href="/tech/volumetric">Volumetric Video</a></li>
+<li><a href="/tech/volumetric">Tech: Volumetric Video</a></li>
 </ul>
 </div>
 </div>
@@ -54,7 +54,7 @@ A separate but related MPEG approach, Geometry-based Point Cloud Compression (G-
 
 - **Coding.** ISO/IEC 23090-5 (V3C base bitstream and V-PCC profile); ISO/IEC 23090-12 (MIV profile).
 - **Storage and carriage.** ISO/IEC 23090-10 (ISOBMFF storage, ISO/IEC 14496-12, and DASH-based streaming).
-- **Conformance and reference software.** ISO/IEC 23090-20 (V3C with V-PCC) and ISO/IEC 23090-25 (carriage).
+- **Conformance and reference software.** ISO/IEC 23090-20 (conformance testing for V3C with V-PCC) and ISO/IEC 23090-25 (conformance and reference software for carriage).
 - **Delivery over 5G.** [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) (architecture) and [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) (protocols and APIs), the 5G Media Streaming specifications used to transport V3C DASH presentations.
 
 ## Editions and status
@@ -73,18 +73,14 @@ This is a list of specifications in the scope of Volumetric Video (V3C). Part 5 
 | [ISO/IEC 23090-10](https://www.iso.org/standard/78991.html) | Information technology - Coded representation of immersive media - Part 10: Carriage of visual volumetric video-based coding data                                    |
 | [ISO/IEC 23090-12](https://www.iso.org/standard/79113.html) | Information technology - Coded representation of immersive media - Part 12: MPEG immersive video                                                                     |
 
-:::warning[References to verify]
-These identifiers on this page were not confirmed against a primary source (the ISO catalogue entries were checked, but part numbers for adjacent MPEG-I deliverables were not fully verified): ISO/IEC 23090-9 (G-PCC), ISO/IEC 23090-20 (V3C/V-PCC conformance), ISO/IEC 23090-25 (carriage conformance and reference software). Verify against the ISO/IEC JTC 1/SC 29 catalogue before publication.
-:::
-
 ## 5G-MAG tracking and contribution focus
 
-5G-MAG follows this MPEG family so that volumetric and immersive assets can be delivered on the same 5G media pipelines as conventional video, and tracks the related **Beyond 2D Video** evaluation work (see the [Beyond 2D Video](/tech/standards/beyond-2d) page). The deeper technical treatment is on the [Volumetric Video](/tech/volumetric) Tech page.
+5G-MAG follows this MPEG family so that volumetric and immersive assets can be delivered on the same 5G media pipelines as conventional video, and tracks the related **Beyond 2D Video** evaluation work (see the [Beyond 2D Video](/standards/beyond-2d) page). The deeper technical treatment is on the [Volumetric Video](/tech/volumetric) Tech page.
 
 ## Related Standards Work
 
-- [Standards: XR with MPEG-I SD](/tech/standards/xr)
-- [Standards: Beyond 2D Video](/tech/standards/beyond-2d)
+- [Standards: XR and MPEG-I Scene Description](/standards/xr)
+- [Standards: Beyond 2D Video](/standards/beyond-2d)
 - [Feedback and Requirements](/standards): how 5G-MAG submits feedback and requirements to SDOs
 
 :::note

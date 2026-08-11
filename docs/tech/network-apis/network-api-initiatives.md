@@ -182,11 +182,11 @@ We collect here information about the following 3GPP service-based interfaces. T
 
 ### NEF (Network Exposure Function)
 
-The NEF exposes network capabilities towards Application Functions (AFs). The northbound APIs are defined in [TS 29.522](https://www.3gpp.org/dynareport/29522.htm), while the underlying background data transfer negotiation is defined in [TS 29.554](https://www.3gpp.org/dynareport/29554.htm).
+The NEF exposes network capabilities towards Application Functions (AFs). The northbound APIs are defined in [TS 29.522](https://www.3gpp.org/dynareport/29522.htm), while the underlying background data transfer (BDT) policy control service on the PCF is defined in [TS 29.554](https://www.3gpp.org/dynareport/29554.htm).
 
-- [Nnef_AFSessionWithQoS](https://www.3gpp.org/dynareport/29522.htm): set up an AF session with required QoS (TS 29.522, NEF Northbound APIs).
+- [Nnef_AFsessionWithQoS](https://www.3gpp.org/dynareport/29522.htm): set up an AF session with required QoS (TS 29.522, NEF Northbound APIs).
 - [Nnef_ChargeableParty](https://www.3gpp.org/dynareport/29522.htm): change the chargeable party at session set-up or during the session (TS 29.522, NEF Northbound APIs).
-- [Nnef_BDTPNegotiation](https://www.3gpp.org/dynareport/29554.htm): negotiate a policy for future background data transfer (BDT) (TS 29.554, BDT Policy Control Service, exposed via the NEF).
+- [Nnef_BDTPNegotiation](https://www.3gpp.org/dynareport/29522.htm): negotiate a policy for future background data transfer (BDT) (TS 29.522, NEF Northbound APIs; the underlying BDT policies are handled by the PCF, TS 29.554).
 
 ### PCF (Policy Control Function)
 
@@ -220,16 +220,12 @@ The APIs analysed in this section share a set of conventions defined by the CAMA
 - **Tracing and errors.** An optional `x-correlator` header is echoed back, and a common error model is used across APIs.
 - **Versioning and releases.** APIs are shipped in twice-yearly meta-releases; a `wip` version on `main` is not a release. Several APIs here are still `v0`, so field names and enumerations can change.
 
-:::warning[References to verify]
-These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TS 24.549 (SEAL NSCE Stage 3). The specification titles/numbers already carrying links above (TS 29.522, TS 29.514, TS 29.554, TS 23.222, TS 29.222, TS 23.434, TS 23.203) are widely established and are not flagged here. Verify any specific clause references against the 3GPP work plan before publication.
-:::
-
 ---
 
 ## Related
 
 - [Network APIs (this portal)](/tech/network-apis). The parent landing page for all Network API analysis.
-- [Standards: Network APIs](/tech/standards/network-apis). 5G-MAG's standards tracking and contributions.
+- [Standards: Network APIs](/standards/network-apis). 5G-MAG's standards tracking and contributions.
 - [Developer portal: Network APIs](/reference-tools/network-apis). The 5G-MAG reference tools.
 
 :::note

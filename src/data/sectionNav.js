@@ -93,7 +93,50 @@ export const SECTION_NAV = [
     title: 'Explainers & Profiles',
     titleHref: '/tech',
     items: [
+      { label: 'Implementation Blueprints', href: '/tech/blueprints' },
       { label: 'Technology Exchanges', href: '/tech/exchanges' },
+      { label: '3GPP Work Items', href: '/tech/3gpp-work-items' },
+      { label: 'Glossary', href: '/tech/glossary' },
+    ],
+  },
+  // The 18 per-project specification pages live at /standards/<project>
+  // URLs (moved from /tech/standards/<project>, 2026-08-11) but belong to
+  // the Explainers & Profiles content family, not Feedback & Requirements:
+  // they list the specifications a topic's analysis and reference tools are
+  // built against, alongside the Tech hub's blueprints and analysis. This
+  // entry must stay ABOVE the '/standards' prefix entry below — the
+  // matcher is first-match-wins (SectionNav and the navbar indicator both
+  // use SECTION_NAV.find), and these exact paths would otherwise fall
+  // through to the Feedback & Requirements bar, framing a spec-list page
+  // as liaison/requirements material. Exact-path prefixes; a new
+  // per-project Standards page needs its path added here when created.
+  {
+    prefixes: [
+      '/standards/5g-broadcast',
+      '/standards/5g-broadcast-standards-evolution',
+      '/standards/5g-mbs',
+      '/standards/5gms',
+      '/standards/6g',
+      '/standards/ai-ml',
+      '/standards/avatar',
+      '/standards/beyond-2d',
+      '/standards/data-collection',
+      '/standards/dvb-i',
+      '/standards/multimedia',
+      '/standards/network-apis',
+      '/standards/npn',
+      '/standards/ntn',
+      '/standards/rtc',
+      '/standards/tsc',
+      '/standards/v3c',
+      '/standards/xr',
+    ],
+    title: 'Explainers & Profiles',
+    titleHref: '/tech',
+    items: [
+      { label: 'Implementation Blueprints', href: '/tech/blueprints' },
+      { label: 'Technology Exchanges', href: '/tech/exchanges' },
+      { label: '3GPP Work Items', href: '/tech/3gpp-work-items' },
       { label: 'Glossary', href: '/tech/glossary' },
     ],
   },

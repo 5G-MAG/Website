@@ -1,7 +1,7 @@
 ---
 hide_title: true
 title: 5G Media Streaming (5GMS)
-sidebar_position: 4
+slug: /standards/5gms
 description: Describes the 5G Media Streaming architecture, M1-M8 reference points, related 3GPP specifications and Release-19 Advanced Media Delivery work.
 ---
 
@@ -34,7 +34,7 @@ The 5GMS architecture, M1-M8 reference points, related 3GPP specifications and R
 <div class="godeeper-card__body">
 <p>The implementer-facing analysis of the 5GMS architecture and its entities.</p>
 <ul class="godeeper-card__links">
-<li><a href="/tech/5gms">Technical Documentation: Streaming &amp; Media Delivery</a></li>
+<li><a href="/tech/5gms">Tech: Streaming &amp; Media Delivery</a></li>
 </ul>
 </div>
 </div>
@@ -60,7 +60,7 @@ The entities are joined by reference points M1 to M8 (downlink variants carry a 
 
 For the deeper architecture (entity sub-functions, the M1 to M8 interfaces per direction, and the downlink feature-to-API mapping), see the technical documentation on the [5GMS Overview](/tech/5gms/overview-5gms) and [5GMSd Features](/tech/5gms/features-5gmsd) pages.
 
-These M1-M8 reference points are specific to 5G Media Streaming and are distinct from the similarly-named M1/M2/M3 MBMS network interfaces used by [Standards: 5G Broadcast](/tech/standards/5g-broadcast).
+These M1-M8 reference points are specific to 5G Media Streaming and are distinct from the similarly-named M1/M2/M3 MBMS network interfaces used by [Standards: 5G Broadcast](/standards/5g-broadcast).
 
 ## 5G Core service consumers used by the AF
 
@@ -69,7 +69,7 @@ The 5GMS AF is a consumer of two 5G Core service-based APIs for the unicast medi
 - **Binding Support Function (BSF), [TS 29.521](https://www.3gpp.org/dynareport/29521.htm)**: `Nbsf_Management` service.
 - **Policy Control Function (PCF), [TS 29.514](https://www.3gpp.org/dynareport/29514.htm)**: `Npcf_PolicyAuthorization` service, at reference point N5.
 
-For the equivalent multicast/broadcast service consumer (the MB-SMF, TS 29.532), see [Standards: 5G Multicast & Broadcast Services](/tech/standards/5g-mbs).
+For the equivalent multicast/broadcast service consumer (the MB-SMF, TS 29.532), see [Standards: 5G Multicast Broadcast Services (MBS)](/standards/5g-mbs).
 
 ## Related 3GPP Specifications
 
@@ -104,8 +104,8 @@ The 5GMS AF is a consumer, not a producer, of two further 5G Core service-based 
 ## Specifications by release
 
 - **Release 15/16**: TS 26.501, TS 26.511, TS 26.512 (downlink and uplink architecture, first feature set: content hosting, dynamic policies, network assistance, consumption and QoE metrics reporting).
-- **Release 17**: adds edge media processing and 5GMS delivery over eMBMS. The reference tools baseline maps to this release, where the provisioning and session-handling APIs are still in TS 26.512.
-- **Release 18**: TS 26.510 is created and the media session handling APIs move out of TS 26.512 into it, generalised across the 5GMS and RTC systems. Data collection, reporting and event exposure is aligned with TS 26.531 and TS 26.532.
+- **Release 17**: adds edge media processing and 5GMS delivery over eMBMS, and aligns data collection, reporting and event exposure with TS 26.531 and TS 26.532. The reference tools baseline maps to this release, where the provisioning and session-handling APIs are still in TS 26.512.
+- **Release 18**: TS 26.510 is created and the media session handling APIs move out of TS 26.512 into it, generalised across the 5GMS and RTC systems.
 - **Release 19**: Advanced Media Delivery (see below), studied in TR 26.804.
 
 Check the version of each specification you are targeting for the exact release content.
@@ -118,13 +118,9 @@ Technical Reports:
 
 - **[TR 26.804](https://www.3gpp.org/dynareport/26804.htm) - Study on 5G media streaming extensions**
 
-### Related Technical Report (release unconfirmed)
+### Related Technical Report
 
-- **[TR 26.802](https://www.3gpp.org/dynareport/26802.htm) - Multicast Architecture Enhancement for 5G Media Streaming**
-
-:::warning[Needs verification]
-TR 26.802 relates to 5GMS multicast architecture but its release is unconfirmed (possibly Release 17 rather than Release 19). It is listed here separately from the Release-19 Advanced Media Delivery reports above until its release and section placement is confirmed against the [3GPP specification record](https://www.3gpp.org/dynareport/26802.htm).
-:::
+- **[TR 26.802](https://www.3gpp.org/dynareport/26802.htm) - Multicast Architecture Enhancement for 5G Media Streaming** (first published under Release 17; updated under Release 19, latest version 19.2.0, June 2025)
 
 ### Common Media Client Data (CMCD)
 
@@ -150,16 +146,12 @@ Coded Multisource Media Format (CMMF) is an ETSI format for retrieving a single 
 
 For implementation analysis, see [Streaming & Media Delivery](/tech/5gms).
 
-:::warning[References to verify]
-These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the Release 17 placement of edge media processing and eMBMS delivery in TS 26.501, the Release 18 placement of TS 26.510 and of the TS 26.531 / TS 26.532 alignment, and the Release 19 placement of the Advanced Media Delivery work. Verify against the 3GPP work plan before publication.
-:::
-
 ## Related Standards Work
 
-- [Standards: 5G Multicast & Broadcast Services](/tech/standards/5g-mbs)
-- [Standards: UE Data Collection](/tech/standards/data-collection)
-- [Standards: Real-Time Communications (RTC)](/tech/standards/rtc)
-- [Technical Documentation: Streaming & Media Delivery](/tech/5gms)
+- [Standards: 5G Multicast Broadcast Services (MBS)](/standards/5g-mbs)
+- [Standards: UE Data Collection, Reporting and Event Exposure](/standards/data-collection)
+- [Standards: Real-Time Communications (RTC)](/standards/rtc)
+- [Tech: Streaming & Media Delivery](/tech/5gms)
 - [Meetings with 3GPP SA4](/standards/3gpp-issue-tracking): the live tracker for 3GPP feedback issues on this specification
 
 :::note

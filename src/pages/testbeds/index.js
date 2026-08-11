@@ -54,14 +54,14 @@ const TESTBED_PROJECTS = [
     desc: 'AI traffic profiling and 5G-to-6G migration testbed.',
     href: '/testbeds/6g-testbed',
     icon: icon(SIXG_ICON_PATH),
-    releasesHref: '/testbeds/6g-testbed/resources',
+    releasesHref: '/testbeds/6g-testbed/resources#releases',
   },
   {
     title: 'AI/ML Evaluation Framework',
     desc: 'Framework for evaluating AI/ML solutions in mobile media services.',
     href: '/testbeds/ai-ml',
     icon: icon(AIML_ICON_PATH),
-    releasesHref: '/testbeds/ai-ml/resources',
+    releasesHref: '/testbeds/ai-ml/resources#releases',
     roadmapHref: 'https://github.com/orgs/5G-MAG/projects/48/views/9',
   },
   {
@@ -69,7 +69,7 @@ const TESTBED_PROJECTS = [
     desc: 'Test and evaluation framework for immersive video quality assessment.',
     href: '/testbeds/beyond-2d',
     icon: icon(BEYOND2D_ICON_PATH),
-    releasesHref: '/testbeds/beyond-2d/resources',
+    releasesHref: '/testbeds/beyond-2d/resources#releases',
     roadmapHref: 'https://github.com/orgs/5G-MAG/projects/48/views/10',
   },
 ];

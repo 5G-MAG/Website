@@ -452,23 +452,48 @@
 
 .categoryTopicCard {
   display: flex;
-  align-items: flex-start;
-  gap: 0.55rem;
-  padding: 0.65rem 0.75rem;
+  flex-direction: column;
   border-radius: 8px;
   border: 1px solid var(--ifm-color-emphasis-200);
   background: var(--ifm-background-color);
-  text-decoration: none !important;
-  color: inherit !important;
-  transition:
-    border-color 0.15s ease,
-    background 0.15s ease;
+  transition: border-color 0.15s ease;
 }
 
 .categoryTopicCard:hover {
   border-color: var(--ifm-color-primary);
+}
+
+/* The card's main clickable area (icon + title + desc), a Link to the
+   Analysis page. Kept as its own element, sibling to categoryTopicStandardsLink
+   below, rather than the whole card being one <a> -- two distinct
+   destinations can't be one nested-anchor link. */
+.categoryTopicMain {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  padding: 0.65rem 0.75rem;
+  text-decoration: none !important;
+  color: inherit !important;
+  transition: background 0.15s ease;
+}
+
+.categoryTopicMain:hover {
   background: var(--ifm-color-emphasis-100);
   text-decoration: none !important;
+}
+
+.categoryTopicStandardsLink {
+  display: block;
+  padding: 0 0.75rem 0.55rem;
+  margin-top: -0.15rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+  text-decoration: none !important;
+}
+
+.categoryTopicStandardsLink:hover {
+  text-decoration: underline !important;
 }
 
 .categoryTopicCardBody {

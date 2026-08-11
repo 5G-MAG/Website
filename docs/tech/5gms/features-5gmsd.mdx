@@ -33,7 +33,7 @@ Documentation for Release 18 and Release 19 features (including Real-Time Commun
 :::
 
 :::note
-The 5G-MAG software implementing these features is available in the [5G Media Streaming Project](/reference-tools/5gms) on the developer portal. For the data-collection feature, see also the [UE Data Collection, Reporting and Event Exposure Project](/reference-tools/data-collection). (Confirm the exact developer-portal paths with the maintainers before publishing.)
+The 5G-MAG software implementing these features is available in the [5G Media Streaming Project](/reference-tools/5gms) on the developer portal. For the data-collection feature, see also the [UE Data Collection, Reporting and Event Exposure Project](/reference-tools/data-collection).
 :::
 
 | Feature                                 | Defined in (TS 26.501 clause) | Procedure (TS 26.501 clause) | APIs                                                                 |
@@ -53,7 +53,7 @@ Each feature below is presented with a table of the reference points and APIs th
 
 - **Reference Point** is the named interface the interaction crosses, using the generalised TS 26.510 labels M1 and M5 (which correspond to the downlink-specific M1d and M5d used in the [Overview](./overview-5gms)). M1 is the provisioning interface between the Application Provider and the AF; M5 is the session-handling interface between the Media Session Handler and the AF.
 - **Procedure clause (TS 26.510)** points to the procedure that governs the interaction.
-- **API** links to the OpenAPI definition, and **API clause (TS 26.512)** points to where that API is specified.
+- **API** links to the OpenAPI definition, and **API clause (TS 26.510)** points to where that API is specified.
 
 Two structural patterns recur. First, most features touch both M1 and M5: the Application Provider provisions the feature over M1, and the Media Session Handler then uses it over M5. Second, almost every feature depends on the **Provisioning Sessions API** (to create the session that other configurations attach to) and the **Service Access Information API** (so the client can discover how to use the feature). These two appear repeatedly and are the backbone of the runtime flow described in the [Overview](./overview-5gms#session-lifecycle-at-a-glance).
 
@@ -69,7 +69,7 @@ The content hosting feature provides a service equivalent to a Content Delivery 
 
 ### Reference points and interactions (according to 3GPP TS 26.510)
 
-| Reference Point | Procedure clause (TS 26.510) | API                                                                                                                                                 | API clause (TS 26.512) |
+| Reference Point | Procedure clause (TS 26.510) | API                                                                                                                                                 | API clause (TS 26.510) |
 | --------------- | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
 | M1              | 5.2.2                        | [Provisioning Sessions API](https://jdegre.github.io/loader.html?yaml=TS26512_M1_ProvisioningSessions.yaml)                                         | 8.2                    |
 | M1              | 5.2.3                        | [Content protocols discovery API](https://jdegre.github.io/loader.html?yaml=TS26512_M1_ContentProtocolsDiscovery.yaml)                              | 8.3                    |
@@ -102,7 +102,7 @@ Both mechanisms make it possible to obtain:
 
 ### Reference points and interactions (according to 3GPP TS 26.510)
 
-| Reference Point | Procedure clause (TS 26.510) | API                                                                                                                  | API clause (TS 26.512) |
+| Reference Point | Procedure clause (TS 26.510) | API                                                                                                                  | API clause (TS 26.510) |
 | --------------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------------- | ---------------------- |
 | M5              | 5.3.2                        | [Service Access Information API](https://jdegre.github.io/loader.html?yaml=TS26512_M5_ServiceAccessInformation.yaml) | 9.2                    |
 | M5              | 5.3.4                        | [Network Assistance API](https://jdegre.github.io/loader.html?yaml=TS26512_M5_NetworkAssistance.yaml)                | 9.4                    |
@@ -117,7 +117,7 @@ The dynamic policies feature enables the 5GMS Client in the UE to manipulate the
 
 ### Reference points and interactions (according to 3GPP TS 26.510)
 
-| Reference Point | Procedure clause (TS 26.510) | API                                                                                                                        | API clause (TS 26.512) |
+| Reference Point | Procedure clause (TS 26.510) | API                                                                                                                        | API clause (TS 26.510) |
 | --------------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
 | M1              | 5.2.2                        | [Provisioning Sessions API](https://jdegre.github.io/loader.html?yaml=TS26512_M1_ProvisioningSessions.yaml)                | 8.2                    |
 | M1              | 5.2.7                        | [Policy Templates provisioning API](https://jdegre.github.io/loader.html?yaml=TS26512_M1_PolicyTemplatesProvisioning.yaml) | 8.7                    |
@@ -134,7 +134,7 @@ The consumption reporting feature allows consumption of downlink media streaming
 
 ### Reference points and interactions (according to 3GPP TS 26.510)
 
-| Reference Point | Procedure clause (TS 26.510) | API                                                                                                                                  | API clause (TS 26.512) |
+| Reference Point | Procedure clause (TS 26.510) | API                                                                                                                                  | API clause (TS 26.510) |
 | --------------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ---------------------- |
 | M1              | 5.2.2                        | [Provisioning Sessions API](https://jdegre.github.io/loader.html?yaml=TS26512_M1_ProvisioningSessions.yaml)                          | 8.2                    |
 | M1              | 5.2.12                       | [Consumption Reporting provisioning API](https://jdegre.github.io/loader.html?yaml=TS26512_M1_ConsumptionReportingProvisioning.yaml) | 8.12                   |
@@ -157,10 +157,10 @@ The framework defines two distinct reporting paths:
 
 ### Reference points and interactions (according to 3GPP TS 26.510)
 
-| Reference Point | Procedure clause (TS 26.510) | API                                                                                                                          | API clause (TS 26.512) |
+| Reference Point | Procedure clause (TS 26.510) | API                                                                                                                          | API clause (TS 26.510) |
 | --------------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
 | M1              | 5.2.2                        | [Provisioning Sessions API](https://jdegre.github.io/loader.html?yaml=TS26512_M1_ProvisioningSessions.yaml)                  | 8.2                    |
-| M1              | 5.2.11                       | [Metrics Reporting provisioning API](https://jdegre.github.io/loader.html?yaml=TS26512_M1_MetricsReportingProvisioning.yaml) | 8.10                   |
+| M1              | 5.2.11                       | [Metrics Reporting provisioning API](https://jdegre.github.io/loader.html?yaml=TS26512_M1_MetricsReportingProvisioning.yaml) | 8.11                   |
 | M5              | 5.3.2                        | [Service Access Information API](https://jdegre.github.io/loader.html?yaml=TS26512_M5_ServiceAccessInformation.yaml)         | 9.2                    |
 | M5              | 5.3.5                        | [Metrics Reporting API](https://jdegre.github.io/loader.html?yaml=TS26512_M5_MetricsReporting.yaml)                          | 9.5                    |
 
@@ -173,14 +173,10 @@ subscribers in the form of Events.
 
 ### Reference points and interactions (according to 3GPP TS 26.510)
 
-| Reference Point | Procedure clause (TS 26.510) | API                                                                                                                                 | API clause (TS 26.512) |
+| Reference Point | Procedure clause (TS 26.510) | API                                                                                                                                 | API clause (TS 26.510) |
 | --------------- | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
 | M1              | 5.2.13                       | [Event Data Processing provisioning API](https://jdegre.github.io/loader.html?yaml=TS26512_M1_EventDataProcessingProvisioning.yaml) | 8.13                   |
 | M5              | 5.3.5                        | [Metrics Reporting API](https://jdegre.github.io/loader.html?yaml=TS26512_M5_MetricsReporting.yaml)                                 | 9.5                    |
 | M5              | 5.3.6                        | [Consumption Reporting API](https://jdegre.github.io/loader.html?yaml=TS26512_M5_ConsumptionReporting.yaml)                         | 9.6                    |
 
 The event exposure that this feature enables is defined in the generic UE data collection framework, with the architecture in [TS 26.531](https://www.3gpp.org/dynareport/26531.htm) and the protocols and formats in [TS 26.532](https://www.3gpp.org/dynareport/26532.htm). See the [UE Data Collection, Reporting and Event Exposure](/reference-tools/data-collection) project for the reference implementation.
-
-:::warning[References to verify]
-These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the TS 26.501 feature and procedure clauses in the overview table (4.0.2, 5.4, 4.0.5, 5.9, 4.0.6, 5.8, 4.0.8, 5.6, 4.0.9, 5.5, 4.0.10, clause 8, 4.0.11, 5.10, 4.0.12, 5.11); the TS 26.510 procedure clauses in the per-feature tables (5.2.2 to 5.2.13 and 5.3.2 to 5.3.6); and the TS 26.512 API clauses (8.2 to 8.13 and 9.2 to 9.6). Verify against the specific TS 26.501, TS 26.510 and TS 26.512 versions you are targeting.
-:::

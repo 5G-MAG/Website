@@ -21,12 +21,14 @@ const CATEGORIES = [
         title: '5G Media Streaming (5GMS)',
         desc: 'Unicast on-demand and live content delivery over 5G, downlink and uplink camera-to-cloud contribution.',
         href: '/tech/5gms',
+        standardsHref: '/standards/5gms',
         icon: icon(<path d="M7 4v16l13 -8l-13 -8" />),
       },
       {
         title: '5G Multicast Broadcast Services (MBS)',
         desc: '5G-native MBS for efficient one-to-many delivery.',
         href: '/tech/5g-mbs',
+        standardsHref: '/standards/5g-mbs',
         icon: icon(
           <>
             <path d="M12 12l0 .01" />
@@ -41,6 +43,7 @@ const CATEGORIES = [
         title: 'DVB-I Services over 5G Systems',
         desc: 'Broadcast service discovery and hybrid delivery integration.',
         href: '/tech/dvb-i/dvb-i-5g',
+        standardsHref: '/standards/dvb-i',
         icon: icon(
           <>
             <path d="M3 9a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2l0 -9" />
@@ -52,6 +55,7 @@ const CATEGORIES = [
         title: 'Multimedia Delivery Protocols',
         desc: 'FLUTE and ROUTE transport for one-way delivery of DASH, HLS and CMAF content over broadcast and multicast.',
         href: '/tech/multimedia/multimedia-content-delivery',
+        standardsHref: '/standards/multimedia',
         icon: icon(
           <>
             <path d="M12 3l8 4.5v9l-8 4.5l-8 -4.5v-9z" />
@@ -65,6 +69,7 @@ const CATEGORIES = [
         title: 'Non-Terrestrial Networks',
         desc: 'MBS over satellite and NTN mobility analysis.',
         href: '/tech/ntn',
+        standardsHref: '/standards/ntn',
         tag: 'Analysis only',
         icon: icon(
           <>
@@ -80,6 +85,7 @@ const CATEGORIES = [
         title: 'Real-Time Communications',
         desc: 'Low-latency two-way media over 5G.',
         href: '/tech/rtc',
+        standardsHref: '/standards/rtc',
         tag: 'Analysis only',
         icon: icon(
           <>
@@ -98,6 +104,7 @@ const CATEGORIES = [
         title: 'UE Data Collection, Reporting and Event Exposure',
         desc: 'Device-side QoE feedback and analytics for delivery optimisation.',
         href: '/tech/data-collection/data-collection-event-exposure',
+        standardsHref: '/standards/data-collection',
         icon: icon(
           <>
             <path d="M14 3v4a1 1 0 0 0 1 1h4" />
@@ -118,6 +125,10 @@ const CATEGORIES = [
         title: '5G Broadcast - TV, Radio and Emergency Alerts',
         desc: 'Over-the-air broadcast for TV, radio and emergency services.',
         href: '/tech/5g-broadcast',
+        standardsHref: '/standards/5g-broadcast',
+        extraStandards: [
+          { label: 'Standards Evolution →', href: '/standards/5g-broadcast-standards-evolution' },
+        ],
         icon: icon(
           <>
             <path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
@@ -138,6 +149,7 @@ const CATEGORIES = [
         title: 'Avatar Communication with MPEG ARF',
         desc: 'Real-time conversational avatars over 5G using the MPEG Avatar Representation Format (ARF).',
         href: '/tech/avatar-communications',
+        standardsHref: '/standards/avatar',
         icon: icon(
           <>
             <path d="M6 6a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2l0 -4" />
@@ -156,6 +168,8 @@ const CATEGORIES = [
         title: 'Volumetric Video with MPEG V3C',
         desc: 'V3C point-cloud video and beyond-2D evaluation frameworks.',
         href: '/tech/volumetric',
+        standardsHref: '/standards/v3c',
+        extraStandards: [{ label: 'Beyond 2D Standards →', href: '/standards/beyond-2d' }],
         icon: icon(
           <>
             <path d="M4 8v-2a2 2 0 0 1 2 -2h2" />
@@ -172,6 +186,7 @@ const CATEGORIES = [
         title: 'XR and MPEG-I Scene Description',
         desc: 'AR/VR content delivery and interactive 3D scene composition.',
         href: '/tech/xr',
+        standardsHref: '/standards/xr',
         icon: icon(
           <>
             <path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
@@ -193,6 +208,7 @@ const CATEGORIES = [
         title: 'Connectivity Quality with Network APIs',
         desc: 'CAMARA and 3GPP APIs for QoS control and network event exposure.',
         href: '/tech/network-apis',
+        standardsHref: '/standards/network-apis',
         icon: icon(
           <>
             <path d="M4 13h5" />
@@ -206,6 +222,7 @@ const CATEGORIES = [
         title: 'Non-Public Networks',
         desc: 'Private 5G deployments for media production venues.',
         href: '/tech/npn',
+        standardsHref: '/standards/npn',
         tag: 'Analysis only',
         icon: icon(
           <>
@@ -218,6 +235,7 @@ const CATEGORIES = [
         title: 'Time Sensitive Communications',
         desc: 'Deterministic low-latency transport for professional media equipment.',
         href: '/tech/tsc',
+        standardsHref: '/standards/tsc',
         tag: 'Analysis only',
         icon: icon(
           <>
@@ -238,6 +256,7 @@ const CATEGORIES = [
         title: 'AI/ML in 5G Media',
         desc: 'NWDAF network-side analytics vs. UE-side data collection tracks for AI/ML in 3GPP.',
         href: '/tech/ai-ml',
+        standardsHref: '/standards/ai-ml',
         icon: icon(
           <>
             <path d="M15.5 13a3.5 3.5 0 0 0 -3.5 3.5v1a3.5 3.5 0 0 0 7 0v-1.8" />
@@ -253,6 +272,7 @@ const CATEGORIES = [
         title: 'Towards 6G Media',
         desc: 'Early 6G research and technical analysis for future media technologies.',
         href: '/tech/6g',
+        standardsHref: '/standards/6g',
         tag: 'Study stage',
         icon: icon(
           <>
@@ -463,14 +483,32 @@ function CategoryCard({ title, desc, topics }) {
       </div>
       <div className={styles.categoryTopicGrid}>
         {topics.map((t) => (
-          <Link key={t.href} to={t.href} className={styles.categoryTopicCard}>
-            {t.icon && <span className={styles.categoryTopicIcon}>{t.icon}</span>}
-            <span className={styles.categoryTopicCardBody}>
-              <span className={styles.categoryTopicName}>{t.title}</span>
-              <span className={styles.categoryTopicDescText}>{t.desc}</span>
-              {t.tag && <span className={styles.categoryTopicTag}>{t.tag}</span>}
-            </span>
-          </Link>
+          // Two separate links, not one nested inside the other: the main
+          // card area goes to the Analysis page, and (where one exists) a
+          // second small link goes straight to that topic's Standards page
+          // -- a direct, one-click path from the hub itself, on top of the
+          // Standards Tracking card already on every Analysis page and the
+          // Standards link on every sidebar category (see sidebars-tech.js).
+          <div key={t.href} className={styles.categoryTopicCard}>
+            <Link to={t.href} className={styles.categoryTopicMain}>
+              {t.icon && <span className={styles.categoryTopicIcon}>{t.icon}</span>}
+              <span className={styles.categoryTopicCardBody}>
+                <span className={styles.categoryTopicName}>{t.title}</span>
+                <span className={styles.categoryTopicDescText}>{t.desc}</span>
+                {t.tag && <span className={styles.categoryTopicTag}>{t.tag}</span>}
+              </span>
+            </Link>
+            {t.standardsHref && (
+              <Link to={t.standardsHref} className={styles.categoryTopicStandardsLink}>
+                Standards &rarr;
+              </Link>
+            )}
+            {t.extraStandards?.map((s) => (
+              <Link key={s.href} to={s.href} className={styles.categoryTopicStandardsLink}>
+                {s.label}
+              </Link>
+            ))}
+          </div>
         ))}
       </div>
     </div>

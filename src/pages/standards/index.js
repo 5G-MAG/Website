@@ -234,7 +234,7 @@ const WHATS_HERE = [
   {
     title: 'Feedback to SDOs',
     desc: 'Per-SDO feedback tracked on GitHub, and how an issue is carried through to a correction or liaison input.',
-    href: '/standards/#feedback',
+    href: '/standards#feedback',
     icon: icon(DIAGRAM_ICON_PATH),
   },
   {
@@ -246,7 +246,7 @@ const WHATS_HERE = [
   {
     title: 'Workshops for Standards',
     desc: 'The workshops that fed directly into 3GPP study and work items.',
-    href: '/standards/#standards-workshops',
+    href: '/standards#standards-workshops',
     icon: icon(WORKSHOPS_ICON_PATH),
   },
 ];
@@ -404,7 +404,10 @@ export default function Standards() {
           <div className="container">
             <h2 className={styles.sectionTitle}>What You&apos;ll Find Here</h2>
             <p className={styles.sectionSubtitle}>
-              Every destination on this hub, in one place.
+              Every feedback and requirements destination, in one place. Looking for the
+              specifications each technology implements? Those live with the technical
+              analysis on <Link to="/tech#categories-topics">Explainers &amp; Profiles</Link>{' '}
+              — every topic card there carries a direct Standards link.
             </p>
             <div className={styles.activityGrid}>
               {WHATS_HERE.map((r) => (

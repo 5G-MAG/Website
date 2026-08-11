@@ -42,7 +42,7 @@ Alongside the deployment-oriented example profile below, ETSI TS 103 720 v1.2.1 
 - **Main Receiver** must support all five numerologies and is the target for mobile and portable devices.
 - **5GMS Receiver** adds the 5G Media Streaming requirements on top of the Main Receiver.
 
-Later ETSI TS 103 720 versions extend the underlying feature set: v1.3.1 (in development) adds Band 108 (470 to 698 MHz) from 3GPP Release 18 and the Release 19 PMCH enhancements. For the release-by-release mapping, see [Standards: LTE-based 5G Broadcast](/tech/standards/5g-broadcast).
+The published v1.2.1 does not include specific frequency bands: its clause 8 (Spectrum and Frequency Bands, informative) notes that 3GPP work on frequency bands was ongoing and defers them to a future revision. The 3GPP Release 18 band additions (such as Band 108, 470 to 698 MHz) and the Release 19 PMCH enhancements are therefore expected in a later ETSI TS 103 720 version. For the release-by-release mapping, see [Standards: 5G Broadcast - TV, Radio and Emergency Alerts](/standards/5g-broadcast).
 
 ## 5G Broadcast Receiver Profile A (example)
 
@@ -50,15 +50,11 @@ Later ETSI TS 103 720 versions extend the underlying feature set: v1.3.1 (in dev
 
 The supported bandwidths for LTE-based 5G Broadcast are 6, 7 and 8 MHz.
 
-The supported spectrum is a subset of operating band 108 (the UHF band 470 to 698 MHz for LTE-based 5G terrestrial broadcast), as defined in the radio characteristics of ETSI TS 103 720 (clause 7).
-
-:::warning
-The exact sub-clause/table of ETSI TS 103 720 that defines operating band 108 (and the specific version in force) has not been confirmed. Clause 7 (radio characteristics) is cited here because the same profile references clause 7.3 for radio aspects and the source spec could not be opened directly to read the precise band-definition table; the underlying band 108 parameters originate in 3GPP TS 36.101. Verify against the published spec before relying on this reference.
-:::
+The supported spectrum is a subset of operating band 108 (the UHF band 470 to 698 MHz for LTE-based 5G terrestrial broadcast), defined as a standalone downlink-only (SDO) band in Table 5.5H-1 of 3GPP [TS 36.101](https://www.3gpp.org/dynareport/36101.htm), first included in the Release 18 version. The published ETSI TS 103 720 v1.2.1 does not define operating bands; its clause 8 defers specific band configurations to a future revision.
 
 ### Radio
 
-Implementation of radio aspects in devices shall follow clause 7.3 of ETSI TS 103 720 and support the following radio-layer capabilities:
+Implementation of radio aspects in devices shall follow clause 7.3 (Access Stratum receiver requirements) of ETSI TS 103 720 and support the following radio-layer capabilities:
 
 - MBMS-dedicated cells for 100% MBMS allocation
 - Subcarrier spacings: 1.25 kHz, 2.5 kHz and 15 kHz.
@@ -88,7 +84,7 @@ Devices shall support the following protocols (according to 3GPP 26.346 18.0.0):
 The following functionalities shall be supported:
 
 - Service announcement (according to 3GPP [23.246](https://www.3gpp.org/dynareport/23246.htm) 18.0.0)
-- Bootstrap.multipart file (according to 3GPP 23.246 18.0.0)
+- Bootstrap.multipart file (according to 3GPP 26.346 18.0.0)
 - MBMS-URL (according to 3GPP [26.347](https://www.3gpp.org/dynareport/26347.htm) 18.0.0)
 
 ### Codec
@@ -111,10 +107,6 @@ This subsection covers the remaining operational modes and functions. Devices sh
 - Multi-Frequency Network (MFN) support
 - Single Frequency Network (SFN) support
 - Service discovery strategy: 1. MBMS-URL, 2. Bootstrap.multipart file, 3. Service announcement
-- Public Warning System (PWS) support (according to clause 7.6)
+- Public Warning System (PWS) support (according to clause 7.6 of ETSI TS 103 720)
 
 In case Time-Frequency-Interleaving (TFI) and co-existence of legacy broadcast and 5G Broadcast in the Ultra High Frequency (UHF) band are introduced in Release 19, both functionalities shall be supported. TFI interleaves a signal across time and frequency to improve robustness, and UHF co-existence lets 5G Broadcast share spectrum with legacy terrestrial broadcast. Both items are conditional on Release 19 outcomes and are not yet finalised; check the current status against the 5G-MAG work and ETSI TS 103 720 before relying on them. See [Operational Parameters in Use](./parameters-in-use) for the values observed today.
-
-:::warning[References to verify]
-These identifiers on this page were not confirmed against a primary source (the ETSI/3GPP portals block automated access): the ETSI TS 103 720 clauses (7, 7.3, 7.6), the operating Band 108 definition (the underlying Band 108 parameters originate in 3GPP TS 36.101), the MCS table reference in 3GPP TS 36.213, and the TS 26.346 / TS 26.347 / TS 23.246 clause and version citations. The Band 108 frequency range (470 to 698 MHz) is now stated consistently here and on the [Operational Parameters in Use](./parameters-in-use) page; confirm it and the version in force against the published ETSI TS 103 720 (and 3GPP TS 36.101) before relying on it. Band 108 is a 3GPP Release 18 addition profiled by ETSI TS 103 720 v1.3.1 (in development), not by the published v1.2.1.
-:::

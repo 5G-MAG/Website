@@ -48,7 +48,7 @@ Time Sensitive Communications (TSC) covers the 3GPP features that let a 5G netwo
 <div class="godeeper-card__body">
 <p>Normative 3GPP specs (TS 23.501, TS 23.502) and 5G-MAG's contributions on TSC.</p>
 <ul class="godeeper-card__links">
-<li><a href="/tech/standards/tsc">Standards: Time Sensitive Communications</a></li>
+<li><a href="/standards/tsc">Standards: Time Sensitive Communications</a></li>
 </ul>
 </div>
 </div>
@@ -66,11 +66,11 @@ Time Sensitive Communications (TSC) covers the 3GPP features that let a 5G netwo
 
 </div>
 
-[Execution Plan](https://github.com/orgs/5G-MAG/projects/44/views/12)
+[Execution Plan](https://github.com/orgs/5G-MAG/projects/44/views/24)
 
 ## The bridge model in detail
 
-The integration point between 5G and wired IEEE 802.1 TSN is defined in the TSC clause of [TS 23.501](https://www.3gpp.org/dynareport/23501.htm). The 5G system is modelled as one or more virtual TSN bridges. Each bridge has ports realised by TSN Translators:
+The integration point between 5G and wired IEEE 802.1 TSN is defined in the TSC clauses of [TS 23.501](https://www.3gpp.org/dynareport/23501.htm) (clauses 5.27 and 5.28). The 5G system is modelled as one or more virtual TSN bridges. Each bridge has ports realised by TSN Translators:
 
 - **NW-TT (Network-side TSN Translator)** at the UPF. It terminates the wired TSN network, holds the bridge management information exposed to the TSN control plane, and translates between the TSN world and 5G QoS. A single NW-TT can host multiple ports.
 - **DS-TT (Device-side TSN Translator)** at the UE. It terminates the TSN endpoint (for example a camera or an audio device) and applies hold-and-forward/gate behaviour for egress toward that endpoint.
@@ -109,15 +109,11 @@ Not every media deployment wants to run a wired TSN control plane. A relevant Re
 - **Release 17**: TSCTSF; generalised time synchronisation (multiple IEEE 802.1AS / IEEE 1588 clock roles); exposure of deterministic QoS and time-sync control to AFs via NEF; deterministic QoS without a full TSN bridge.
 - **Release 18 and later**: Further deterministic-networking, survivability and time-sync accuracy enhancements. Confirm scope and placement against the 3GPP work plan.
 
-:::warning[References to verify]
-These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the TS 23.501 TSC clause number, the Release 17 TSCTSF placement, and the IEEE 802.1Qbv/802.1Qcc/802.1AS designations as cited. Verify against the 3GPP work plan and the IEEE 802.1 standards index before publication.
-:::
-
 ## Related
 
 - [Non-Public Networks](../npn): TSC media transport typically runs over an NPN.
 - [Real-Time Communications (RTC)](/tech/rtc): the interactive WebRTC-based counterpart, for conversational and collaborative media rather than deterministic essence transport.
-- [Standards: Time Sensitive Communications](/tech/standards/tsc): the standards-tracking view of this topic.
+- [Standards: Time Sensitive Communications](/standards/tsc): the standards-tracking view of this topic.
 
 :::note
 Refer to the [Tech](https://github.com/5G-MAG/Tech/) repository to contribute to this documentation.
