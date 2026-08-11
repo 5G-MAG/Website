@@ -62,7 +62,7 @@ GSMA Open Gateway (OGW) API profiles align these CAMARA APIs across operators.
 <div class="godeeper-card__body">
 <p>5G-MAG's standards tracking and contributions on network capability exposure.</p>
 <ul class="godeeper-card__links">
-<li><a href="/tech/standards/network-apis">Standards: Network APIs</a></li>
+<li><a href="/standards/network-apis">Standards: Network APIs</a></li>
 </ul>
 </div>
 </div>
@@ -156,7 +156,7 @@ The following resources are available:
 
 ## Related
 
-- [Standards: Network APIs](/tech/standards/network-apis). 5G-MAG's standards tracking and contributions on network capability exposure.
+- [Standards: Network APIs](/standards/network-apis). 5G-MAG's standards tracking and contributions on network capability exposure.
 - [Developer portal: Network APIs](/reference-tools/network-apis). The 5G-MAG reference tools implementing CAMARA-compliant clients.
 - [Streaming & Media Delivery](/tech/5gms). Related media delivery analysis on this portal.
 

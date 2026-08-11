@@ -1,6 +1,7 @@
 ---
 hide_title: true
 title: Real-Time Communications
+slug: /standards/rtc
 description: 3GPP's SA4 Real-Time Communications architecture, WebRTC transport, and 5GMS uplink standards for interactive media contribution.
 sidebar_position: 14
 ---
@@ -24,7 +25,7 @@ WebRTC-based interactive media, uplink contribution and 5GMSu standardisation ov
 
 5G-MAG tracks 3GPP standardisation of real-time media communication over 5G: the WebRTC-based RTC architecture, and 5G Uplink Media Streaming (5GMSu). For the technical analysis of how these fit together, see the Tech page linked below. For acronyms used here, see the [Glossary](/tech/glossary).
 
-5GMSu is the uplink (device-to-network) part of the wider 5G Media Streaming (5GMS) framework. It shares its architecture and much of its specification base with the downlink part (5GMSd); the specifications below cover the 5GMS framework as a whole and call out the uplink-specific aspects. For the full downlink view, see [Standards: 5G Media Streaming](/tech/standards/5gms).
+5GMSu is the uplink (device-to-network) part of the wider 5G Media Streaming (5GMS) framework. It shares its architecture and much of its specification base with the downlink part (5GMSd); the specifications below cover the 5GMS framework as a whole and call out the uplink-specific aspects. For the full downlink view, see [Standards: 5G Media Streaming](/standards/5gms).
 
 <div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
 
@@ -72,7 +73,7 @@ See the IETF and W3C listings below for the underlying protocol specifications.
 - [TS 26.501](https://www.3gpp.org/dynareport/26501.htm): 5G Media Streaming (5GMS); General description and architecture (covers both 5GMSd and 5GMSu)
 
 :::note
-M6 and M7 are two of the 5GMS reference points (the named interfaces between the functional entities of the architecture). For the full set of reference points (M1 to M8) and what each one connects, see [Standards: 5G Media Streaming](/tech/standards/5gms).
+M6 and M7 are two of the 5GMS reference points (the named interfaces between the functional entities of the architecture). For the full set of reference points (M1 to M8) and what each one connects, see [Standards: 5G Media Streaming](/standards/5gms).
 :::
 
 ### IMS Multimedia Telephony
@@ -116,10 +117,10 @@ These identifiers on this page were not confirmed against a primary source (the 
 
 ## Related Standards Work
 
-- [Standards: 5G Media Streaming](/tech/standards/5gms)
-- [Standards: Network APIs](/tech/standards/network-apis)
-- [Standards: Non-Public Networks](/tech/standards/npn): RTC contribution commonly runs over an NPN
-- [Standards: Time Sensitive Communications](/tech/standards/tsc): the deterministic-transport counterpart to RTC for essence flows
+- [Standards: 5G Media Streaming](/standards/5gms)
+- [Standards: Network APIs](/standards/network-apis)
+- [Standards: Non-Public Networks](/standards/npn): RTC contribution commonly runs over an NPN
+- [Standards: Time Sensitive Communications](/standards/tsc): the deterministic-transport counterpart to RTC for essence flows
 - [Technical Documentation: Real-Time Communications (RTC)](/tech/rtc): analysis documents and reference material on the developer/technical side
 - [Meetings with 3GPP SA4](/standards/3gpp-issue-tracking): the live tracker for 3GPP feedback issues on this specification
 

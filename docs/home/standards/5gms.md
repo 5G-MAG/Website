@@ -1,6 +1,7 @@
 ---
 hide_title: true
 title: 5G Media Streaming (5GMS)
+slug: /standards/5gms
 sidebar_position: 4
 description: Describes the 5G Media Streaming architecture, M1-M8 reference points, related 3GPP specifications and Release-19 Advanced Media Delivery work.
 ---
@@ -60,7 +61,7 @@ The entities are joined by reference points M1 to M8 (downlink variants carry a 
 
 For the deeper architecture (entity sub-functions, the M1 to M8 interfaces per direction, and the downlink feature-to-API mapping), see the technical documentation on the [5GMS Overview](/tech/5gms/overview-5gms) and [5GMSd Features](/tech/5gms/features-5gmsd) pages.
 
-These M1-M8 reference points are specific to 5G Media Streaming and are distinct from the similarly-named M1/M2/M3 MBMS network interfaces used by [Standards: 5G Broadcast](/tech/standards/5g-broadcast).
+These M1-M8 reference points are specific to 5G Media Streaming and are distinct from the similarly-named M1/M2/M3 MBMS network interfaces used by [Standards: 5G Broadcast](/standards/5g-broadcast).
 
 ## 5G Core service consumers used by the AF
 
@@ -69,7 +70,7 @@ The 5GMS AF is a consumer of two 5G Core service-based APIs for the unicast medi
 - **Binding Support Function (BSF), [TS 29.521](https://www.3gpp.org/dynareport/29521.htm)**: `Nbsf_Management` service.
 - **Policy Control Function (PCF), [TS 29.514](https://www.3gpp.org/dynareport/29514.htm)**: `Npcf_PolicyAuthorization` service, at reference point N5.
 
-For the equivalent multicast/broadcast service consumer (the MB-SMF, TS 29.532), see [Standards: 5G Multicast & Broadcast Services](/tech/standards/5g-mbs).
+For the equivalent multicast/broadcast service consumer (the MB-SMF, TS 29.532), see [Standards: 5G Multicast & Broadcast Services](/standards/5g-mbs).
 
 ## Related 3GPP Specifications
 
@@ -156,9 +157,9 @@ These identifiers on this page were not confirmed against a primary source (the 
 
 ## Related Standards Work
 
-- [Standards: 5G Multicast & Broadcast Services](/tech/standards/5g-mbs)
-- [Standards: UE Data Collection](/tech/standards/data-collection)
-- [Standards: Real-Time Communications (RTC)](/tech/standards/rtc)
+- [Standards: 5G Multicast & Broadcast Services](/standards/5g-mbs)
+- [Standards: UE Data Collection](/standards/data-collection)
+- [Standards: Real-Time Communications (RTC)](/standards/rtc)
 - [Technical Documentation: Streaming & Media Delivery](/tech/5gms)
 - [Meetings with 3GPP SA4](/standards/3gpp-issue-tracking): the live tracker for 3GPP feedback issues on this specification
 

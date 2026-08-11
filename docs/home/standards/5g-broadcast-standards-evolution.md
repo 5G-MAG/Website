@@ -1,6 +1,7 @@
 ---
 hide_title: true
 title: 5G Broadcast - Standards Evolution
+slug: /standards/5g-broadcast-standards-evolution
 sidebar_position: 2
 description: Release-by-release detail on 3GPP work items, Change Requests and RAN meetings behind LTE-based 5G Broadcast, Releases 14 to 19.
 ---
@@ -20,7 +21,7 @@ description: Release-by-release detail on 3GPP work items, Change Requests and R
 Release-by-release detail on the 3GPP work items, Change Requests and RAN meetings behind LTE-based 5G Broadcast.
 </div>
 
-This page is the detailed, release-by-release companion to [Standards: 5G Broadcast](/tech/standards/5g-broadcast): the work items, Change Requests and RAN meetings behind each release. See that page for the ETSI TS 103 720 overview, the full specification list and current capabilities. For acronyms used here, see the [Glossary](/tech/glossary).
+This page is the detailed, release-by-release companion to [Standards: 5G Broadcast](/standards/5g-broadcast): the work items, Change Requests and RAN meetings behind each release. See that page for the ETSI TS 103 720 overview, the full specification list and current capabilities. For acronyms used here, see the [Glossary](/tech/glossary).
 
 <div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
 
@@ -39,7 +40,7 @@ This page is the detailed, release-by-release companion to [Standards: 5G Broadc
 
 </div>
 
-LTE-based 5G Broadcast is not a single 3GPP work item but the accumulation of several, each adding capability to the same LTE physical layer (the TS 36.xxx series). The normative 3GPP work item **LTE_terr_bcast** was approved at RAN#83 (March 2019); the Release 14 features it builds on predate it. See [Standards: 5G Broadcast](/tech/standards/5g-broadcast#about-etsi-ts-103-720---5g-broadcast-system-for-linear-tv-and-radio-services) for how each 3GPP release maps to an ETSI TS 103 720 version.
+LTE-based 5G Broadcast is not a single 3GPP work item but the accumulation of several, each adding capability to the same LTE physical layer (the TS 36.xxx series). The normative 3GPP work item **LTE_terr_bcast** was approved at RAN#83 (March 2019); the Release 14 features it builds on predate it. See [Standards: 5G Broadcast](/standards/5g-broadcast#about-etsi-ts-103-720---5g-broadcast-system-for-linear-tv-and-radio-services) for how each 3GPP release maps to an ETSI TS 103 720 version.
 
 ## Release-by-release summary
 
@@ -55,7 +56,7 @@ LTE-based 5G Broadcast is not a single 3GPP work item but the accumulation of se
 
 ## Release 14: the FeMBMS baseline
 
-Release 14 introduced Further enhanced MBMS (FeMBMS) under the [**EnTV**](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=700032) work item (WI 700032; approved RAN#73, September 2016; completed RAN#76, June 2017). It is the foundation on which every later release builds. The defining change is the **MBMS-dedicated cell**, in which almost the whole carrier is given over to broadcast (up to about 97.5% of resources). See [Standards: 5G Broadcast](/tech/standards/5g-broadcast) and its linked Tech page for the receiver-behaviour detail.
+Release 14 introduced Further enhanced MBMS (FeMBMS) under the [**EnTV**](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=700032) work item (WI 700032; approved RAN#73, September 2016; completed RAN#76, June 2017). It is the foundation on which every later release builds. The defining change is the **MBMS-dedicated cell**, in which almost the whole carrier is given over to broadcast (up to about 97.5% of resources). See [Standards: 5G Broadcast](/standards/5g-broadcast) and its linked Tech page for the receiver-behaviour detail.
 
 Physical layer (TS 36.211):
 
@@ -148,7 +149,7 @@ A companion RAN4 work item, **`LTE_terr_bcast_Ph2_demod`**, adds the receiver co
 
 The RAN#111 CRs (parameter-name alignment across TS 36.211/36.212/36.213) show the feature was still receiving corrections into 2026, after the work item's own December 2025 completion date; this is normal 3GPP maintenance behaviour, not a sign the feature is unstable.
 
-- **PMCH time interleaving** (TS 36.211 clause 6.5.3): a transport block is spread across N consecutive MBSFN subframes, with a "depth" N and a scheduling "window" M (N less than or equal to M). See [Standards: 5G Broadcast](/tech/standards/5g-broadcast) and its Tech page for the design background (NR TBoMS reuse, HARQ soft-combining).
+- **PMCH time interleaving** (TS 36.211 clause 6.5.3): a transport block is spread across N consecutive MBSFN subframes, with a "depth" N and a scheduling "window" M (N less than or equal to M). See [Standards: 5G Broadcast](/standards/5g-broadcast) and its Tech page for the design background (NR TBoMS reuse, HARQ soft-combining).
 - **PMCH cyclic shift** (TS 36.211 clause 6.5.1): a per-subframe phase rotation, with different cells in an SFN using different values to reduce correlated interference at cell boundaries.
 - **PMCH frequency interleaving** (TS 36.211 clause 6.5.2): block interleaving of PMCH resource elements in frequency for extra diversity.
 - **PMCH-specific MCS tables** (TS 36.213 clause 11.1, Tables 11.1-1 and 11.1-2): a normal table (QPSK, 16-QAM, 64-QAM) and a higher-order table extending to 256-QAM, replacing the standard PDSCH MCS table for broadcast, with TBS scaling when time interleaving is active.
@@ -180,8 +181,8 @@ Individual 3GPP Change Requests (CRs) are not linked directly: the CR search por
 
 ## Related Standards Work
 
-- [Standards: 5G Broadcast](/tech/standards/5g-broadcast)
-- [Standards: Non-Terrestrial Networks (NTN)](/tech/standards/ntn)
+- [Standards: 5G Broadcast](/standards/5g-broadcast)
+- [Standards: Non-Terrestrial Networks (NTN)](/standards/ntn)
 - [Feedback and Requirements](/standards): how 5G-MAG processes feedback on the specifications it maintains and tracks
 
 :::note

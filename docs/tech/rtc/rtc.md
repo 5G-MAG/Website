@@ -48,7 +48,7 @@ Real-Time Communications (RTC) covers the 3GPP work on interactive, low-latency 
 <div class="godeeper-card__body">
 <p>Normative 3GPP specs (TS 26.506, TS 26.113) and 5G-MAG's contributions on RTC.</p>
 <ul class="godeeper-card__links">
-<li><a href="/tech/standards/rtc">Standards: Real-Time Communications (RTC)</a></li>
+<li><a href="/standards/rtc">Standards: Real-Time Communications (RTC)</a></li>
 </ul>
 </div>
 </div>
@@ -116,7 +116,7 @@ These identifiers on this page were not confirmed against a primary source (the 
 
 - [Non-Public Networks](../npn): RTC contribution commonly runs over an NPN to reserve uplink capacity and control QoS.
 - [Time Sensitive Communications](/tech/tsc): the deterministic-transport counterpart, for essence flows that need bounded, scheduled timing rather than an interactive WebRTC session.
-- [Standards: Real-Time Communications (RTC)](/tech/standards/rtc): the standards-tracking view of this topic.
+- [Standards: Real-Time Communications (RTC)](/standards/rtc): the standards-tracking view of this topic.
 
 :::note
 Refer to the [Tech](https://github.com/5G-MAG/Tech/) repository to contribute to this documentation.

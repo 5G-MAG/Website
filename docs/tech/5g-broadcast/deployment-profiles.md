@@ -42,7 +42,7 @@ Alongside the deployment-oriented example profile below, ETSI TS 103 720 v1.2.1 
 - **Main Receiver** must support all five numerologies and is the target for mobile and portable devices.
 - **5GMS Receiver** adds the 5G Media Streaming requirements on top of the Main Receiver.
 
-Later ETSI TS 103 720 versions extend the underlying feature set: v1.3.1 (in development) adds Band 108 (470 to 698 MHz) from 3GPP Release 18 and the Release 19 PMCH enhancements. For the release-by-release mapping, see [Standards: LTE-based 5G Broadcast](/tech/standards/5g-broadcast).
+Later ETSI TS 103 720 versions extend the underlying feature set: v1.3.1 (in development) adds Band 108 (470 to 698 MHz) from 3GPP Release 18 and the Release 19 PMCH enhancements. For the release-by-release mapping, see [Standards: LTE-based 5G Broadcast](/standards/5g-broadcast).
 
 ## 5G Broadcast Receiver Profile A (example)
 

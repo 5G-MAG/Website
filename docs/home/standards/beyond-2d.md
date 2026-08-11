@@ -1,6 +1,7 @@
 ---
 hide_title: true
 title: Beyond 2D Video
+slug: /standards/beyond-2d
 sidebar_position: 7
 description: Summarises 3GPP's FS_Beyond2D study evaluating stereoscopic, multiview and volumetric video formats and codecs for delivery over 5G.
 ---
@@ -63,7 +64,7 @@ The study evaluates each format with the codecs that are practical for it today,
 | Video plus depth      | HEVC/VVC with an associated depth video                         | Not V3C-based (depth carried alongside) |
 | Dense point cloud     | V-PCC (video-based) and, for comparison, G-PCC (geometry-based) | V-PCC is part of ISO/IEC 23090-5        |
 
-This connects to the [Volumetric Video with V3C](/tech/standards/v3c) topic: the volumetric and multi-view-plus-depth scenarios are the cases where V3C (V-PCC and MIV) is one of the coding approaches under evaluation.
+This connects to the [Volumetric Video with V3C](/standards/v3c) topic: the volumetric and multi-view-plus-depth scenarios are the cases where V3C (V-PCC and MIV) is one of the coding approaches under evaluation.
 
 ## Relationship to 5G Media Streaming
 
@@ -95,8 +96,8 @@ These specifics on this page were not confirmed against the primary source (the 
 
 ## Related Standards Work
 
-- [Standards: Volumetric Video with V3C](/tech/standards/v3c)
-- [Standards: XR with MPEG-I SD](/tech/standards/xr)
+- [Standards: Volumetric Video with V3C](/standards/v3c)
+- [Standards: XR with MPEG-I SD](/standards/xr)
 - [Feedback and Requirements](/standards): how 5G-MAG submits feedback and requirements to SDOs
 
 :::note

@@ -229,7 +229,7 @@ These identifiers on this page were not confirmed against a primary source (the 
 ## Related
 
 - [Network APIs (this portal)](/tech/network-apis). The parent landing page for all Network API analysis.
-- [Standards: Network APIs](/tech/standards/network-apis). 5G-MAG's standards tracking and contributions.
+- [Standards: Network APIs](/standards/network-apis). 5G-MAG's standards tracking and contributions.
 - [Developer portal: Network APIs](/reference-tools/network-apis). The 5G-MAG reference tools.
 
 :::note

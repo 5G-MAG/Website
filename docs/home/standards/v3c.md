@@ -1,6 +1,7 @@
 ---
 hide_title: true
 title: Volumetric Video with MPEG V3C
+slug: /standards/v3c
 description: MPEG's V3C framework for coding volumetric video, covering V-PCC and MIV profiles, bitstream structure and delivery over 5G.
 sidebar_position: 17
 ---
@@ -79,12 +80,12 @@ These identifiers on this page were not confirmed against a primary source (the 
 
 ## 5G-MAG tracking and contribution focus
 
-5G-MAG follows this MPEG family so that volumetric and immersive assets can be delivered on the same 5G media pipelines as conventional video, and tracks the related **Beyond 2D Video** evaluation work (see the [Beyond 2D Video](/tech/standards/beyond-2d) page). The deeper technical treatment is on the [Volumetric Video](/tech/volumetric) Tech page.
+5G-MAG follows this MPEG family so that volumetric and immersive assets can be delivered on the same 5G media pipelines as conventional video, and tracks the related **Beyond 2D Video** evaluation work (see the [Beyond 2D Video](/standards/beyond-2d) page). The deeper technical treatment is on the [Volumetric Video](/tech/volumetric) Tech page.
 
 ## Related Standards Work
 
-- [Standards: XR with MPEG-I SD](/tech/standards/xr)
-- [Standards: Beyond 2D Video](/tech/standards/beyond-2d)
+- [Standards: XR with MPEG-I SD](/standards/xr)
+- [Standards: Beyond 2D Video](/standards/beyond-2d)
 - [Feedback and Requirements](/standards): how 5G-MAG submits feedback and requirements to SDOs
 
 :::note

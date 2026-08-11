@@ -1,6 +1,7 @@
 ---
 hide_title: true
 title: Avatar Communication with MPEG ARF
+slug: /standards/avatar
 sidebar_position: 8
 description: 'Tracks avatar communications standardisation: the MPEG Avatar Representation Format, Scene Description integration and the 3GPP IVAS audio codec.'
 ---
@@ -56,11 +57,11 @@ The standardisation spans MPEG (avatar representation and scene placement) and 3
 
 ### Avatar Representation Format (ARF)
 
-- [ISO/IEC 23090-39](https://www.iso.org/standard/91745.html): Coded representation of immersive media; Part 39: Avatar representation format (ARF). Defines interoperable storage, carriage, and animation of 3D avatars, designed to work with MPEG-I Scene Description (ISO/IEC 23090-14; see the [XR page](/tech/standards/xr)). Storage containers: ISOBMFF (ISO/IEC 14496-12) and Zip-based (ISO/IEC 21320-1). See [Avatar Communication with MPEG ARF](/tech/avatar-communications) for the ARF data model and end-to-end procedure.
+- [ISO/IEC 23090-39](https://www.iso.org/standard/91745.html): Coded representation of immersive media; Part 39: Avatar representation format (ARF). Defines interoperable storage, carriage, and animation of 3D avatars, designed to work with MPEG-I Scene Description (ISO/IEC 23090-14; see the [XR page](/standards/xr)). Storage containers: ISOBMFF (ISO/IEC 14496-12) and Zip-based (ISO/IEC 21320-1). See [Avatar Communication with MPEG ARF](/tech/avatar-communications) for the ARF data model and end-to-end procedure.
 
 ### MPEG-I Scene Description (avatar integration)
 
-- [ISO/IEC 23090-14](https://www.iso.org/standard/80900.html): Coded representation of immersive media; Part 14: Scene description. Published in 2023 as a set of extensions to Khronos glTF 2.0. Avatar support is added through a later amendment (ISO/IEC 23090-14:2023 [Amendment 2](https://www.iso.org/standard/86439.html), "Support for haptics, augmented reality, avatars, interactivity, MPEG-I audio, and lighting"). See the [XR page](/tech/standards/xr) for the full Scene Description treatment.
+- [ISO/IEC 23090-14](https://www.iso.org/standard/80900.html): Coded representation of immersive media; Part 14: Scene description. Published in 2023 as a set of extensions to Khronos glTF 2.0. Avatar support is added through a later amendment (ISO/IEC 23090-14:2023 [Amendment 2](https://www.iso.org/standard/86439.html), "Support for haptics, augmented reality, avatars, interactivity, MPEG-I audio, and lighting"). See the [XR page](/standards/xr) for the full Scene Description treatment.
 
 ## Key 3GPP Specifications
 
@@ -92,7 +93,7 @@ The transport of ARF animation itself is being addressed at the IETF: [draft-iet
 - [TR 26.928](https://www.3gpp.org/dynareport/26928.htm): Extended reality (XR) in 5G (includes avatar and presence use cases)
 
 :::warning[Verify 3GPP citations against the portal]
-The IVAS deliverable titles (TS 26.250 to TS 26.256) and the avatar study item number (TR 26.813) were set or revised by automated review and are not yet confirmed against a primary source, because the 3GPP portal blocks automated access. In particular, TS 26.255 is described here as "Floating-point computational description" but as "Error concealment of lost packets" on the [XR specifications page](/tech/standards/xr), where the floating-point C code is listed separately as TS 26.258; at most one description can be correct. Check all IVAS titles and the avatar study number (TR 26.813, previously cited as TS 26.118 and then TR 26.955) against the 3GPP work plan before relying on this list.
+The IVAS deliverable titles (TS 26.250 to TS 26.256) and the avatar study item number (TR 26.813) were set or revised by automated review and are not yet confirmed against a primary source, because the 3GPP portal blocks automated access. In particular, TS 26.255 is described here as "Floating-point computational description" but as "Error concealment of lost packets" on the [XR specifications page](/standards/xr), where the floating-point C code is listed separately as TS 26.258; at most one description can be correct. Check all IVAS titles and the avatar study number (TR 26.813, previously cited as TS 26.118 and then TR 26.955) against the 3GPP work plan before relying on this list.
 :::
 
 :::warning[References to verify]
@@ -110,8 +111,8 @@ Established citations on this page (ISO/IEC 23090-39, ISO/IEC 23090-14 and its A
 
 ## Related Standards Work
 
-- [Standards: XR with MPEG-I SD](/tech/standards/xr)
-- [Standards: Real-Time Communications (RTC)](/tech/standards/rtc)
+- [Standards: XR with MPEG-I SD](/standards/xr)
+- [Standards: Real-Time Communications (RTC)](/standards/rtc)
 - [Feedback and Requirements](/standards): how 5G-MAG submits feedback and requirements to SDOs
 
 :::note

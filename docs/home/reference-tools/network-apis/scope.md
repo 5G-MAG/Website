@@ -37,7 +37,7 @@ Technical documentation providing context to this project can be found in the li
 
 A list of relevant specifications can be found in the link below.
 
-[Standards: Network APIs](/tech/standards/network-apis)
+[Standards: Network APIs](/standards/network-apis)
 
 ## Standards & Specifications
 

@@ -1,6 +1,7 @@
 ---
 hide_title: true
 title: 5G Multicast Broadcast Services (MBS)
+slug: /standards/5g-mbs
 sidebar_position: 3
 description: Covers 5G Multicast-Broadcast Services architecture across user-service, 5G Core and NR/NG-RAN layers, and lists the related 3GPP specifications.
 ---
@@ -234,10 +235,10 @@ A handful of candidate specifications were checked and excluded for lack of conf
 
 ## Related Standards Work
 
-- [Standards: 5G Media Streaming](/tech/standards/5gms)
-- [Standards: 5G Broadcast](/tech/standards/5g-broadcast)
+- [Standards: 5G Media Streaming](/standards/5gms)
+- [Standards: 5G Broadcast](/standards/5g-broadcast)
 - [Technical Documentation: Multicast & Broadcast in 5G](/tech/5g-mbs)
-- [Standards: Non-Terrestrial Networks (NTN)](/tech/standards/ntn)
+- [Standards: Non-Terrestrial Networks (NTN)](/standards/ntn)
 - [Meetings with 3GPP SA4](/standards/3gpp-issue-tracking): the live tracker for 3GPP feedback issues on this specification
 
 :::note

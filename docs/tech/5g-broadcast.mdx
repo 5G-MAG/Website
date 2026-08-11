@@ -24,7 +24,7 @@ One-to-many delivery of TV, radio and emergency alerts over dedicated LTE-based 
 
 ## Overview
 
-This page is the technical entry point for 5G-MAG's work on LTE-based 5G Broadcast: the reference implementations, deployment profiles, operational parameters, and the specifications they build on. It is aimed at engineers and integrators working on the transmitter or receiver side of a broadcast chain. For the standards-tracking view of the same topic, see [Standards: LTE-based 5G Broadcast](/tech/standards/5g-broadcast). For acronyms used here, see the [Glossary](/tech/glossary).
+This page is the technical entry point for 5G-MAG's work on LTE-based 5G Broadcast: the reference implementations, deployment profiles, operational parameters, and the specifications they build on. It is aimed at engineers and integrators working on the transmitter or receiver side of a broadcast chain. For the standards-tracking view of the same topic, see [Standards: LTE-based 5G Broadcast](/standards/5g-broadcast). For acronyms used here, see the [Glossary](/tech/glossary).
 
 ## Introduction
 
@@ -60,8 +60,8 @@ LTE-based 5G Broadcast is a profile of existing 3GPP Long Term Evolution (LTE) s
 <div class="godeeper-card__body">
 <p>Normative 3GPP work items, Change Request history and the release-by-release evolution (Rel-14 to Rel-19).</p>
 <ul class="godeeper-card__links">
-<li><a href="/tech/standards/5g-broadcast">Standards: LTE-based 5G Broadcast</a></li>
-<li><a href="/tech/standards/5g-broadcast-standards-evolution">Standards Evolution</a></li>
+<li><a href="/standards/5g-broadcast">Standards: LTE-based 5G Broadcast</a></li>
+<li><a href="/standards/5g-broadcast-standards-evolution">Standards Evolution</a></li>
 </ul>
 </div>
 </div>
@@ -142,7 +142,7 @@ When present, `pmch-Bandwidth-r17` overrides the narrowband CAS bandwidth for th
 
 ## Specifications by 3GPP release
 
-The features below are profiled by ETSI TS 103 720. For the standards-tracking narrative with the version-to-release mapping and the release-by-release table, see [Standards: LTE-based 5G Broadcast](/tech/standards/5g-broadcast). The clause and CR identifiers here come from an internal 5G-MAG standards-tracking document and are consolidated in the "References to verify" note before the Related sections below.
+The features below are profiled by ETSI TS 103 720. For the standards-tracking narrative with the version-to-release mapping and the release-by-release table, see [Standards: LTE-based 5G Broadcast](/standards/5g-broadcast). The clause and CR identifiers here come from an internal 5G-MAG standards-tracking document and are consolidated in the "References to verify" note before the Related sections below.
 
 ### Release 14 (FeMBMS baseline)
 
@@ -165,18 +165,18 @@ A spectrum-layer change only: **Band 108, 470 to 698 MHz** (UHF, downlink only, 
 PMCH Phase 2 adds time interleaving (spreading a transport block across N consecutive subframes for time diversity, with a scheduling window M), frequency interleaving, a per-subframe cyclic shift (different values per cell in an SFN reduce boundary interference), PMCH-specific MCS tables ([TS 36.213](https://www.3gpp.org/dynareport/36213.htm) clause 11.1, Tables 11.1-1 and 11.1-2, the latter extending to 256-QAM), TBS scaling, and extended SI scheduling periods, all carried in a new RRC v1900 extension chain. CAS muting frees synchronisation-channel airtime for PMCH by transmitting PSS/SSS/PBCH only in the active part of each period (`cas-MutingConfig-r19` in a new SIB1-MBMS v1900). Two further receive-only UHF bands, Band 112 (470 to 608 MHz) and Band 113 (606 to 698 MHz), are defined and are release-independent from Release 17. These features align with ETSI TS 103 720 v1.3.1 (in development).
 
 :::warning[References to verify]
-The 3GPP TS 36.xxx clause references, Change Request numbers, work-item identifiers and band frequency ranges in the "Specifications by 3GPP release" section come from an internal 5G-MAG standards-tracking document and were not all confirmed against the primary 3GPP or ETSI record. A maintainer should verify these against the official 3GPP record before relying on them (in particular the CR numbers and clause references, and the Band 107 / 108 / 112 / 113 frequency ranges and release placement). The [Standards page](/tech/standards/5g-broadcast) carries the full list of identifiers to check. Well-established references (DASH = ISO/IEC 23009-1; 5GMS = [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) / [TS 26.512](https://www.3gpp.org/dynareport/26512.htm)) do not need re-checking.
+The 3GPP TS 36.xxx clause references, Change Request numbers, work-item identifiers and band frequency ranges in the "Specifications by 3GPP release" section come from an internal 5G-MAG standards-tracking document and were not all confirmed against the primary 3GPP or ETSI record. A maintainer should verify these against the official 3GPP record before relying on them (in particular the CR numbers and clause references, and the Band 107 / 108 / 112 / 113 frequency ranges and release placement). The [Standards page](/standards/5g-broadcast) carries the full list of identifiers to check. Well-established references (DASH = ISO/IEC 23009-1; 5GMS = [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) / [TS 26.512](https://www.3gpp.org/dynareport/26512.htm)) do not need re-checking.
 :::
 
 ---
 
 ## Information related to Standards
 
-[Standards: LTE-based 5G Broadcast](/tech/standards/5g-broadcast)
+[Standards: LTE-based 5G Broadcast](/standards/5g-broadcast)
 
-[Standards: Multimedia Delivery Protocols](/tech/standards/multimedia)
+[Standards: Multimedia Delivery Protocols](/standards/multimedia)
 
-[Standards: DVB-I Services over 5G Systems](/tech/standards/dvb-i)
+[Standards: DVB-I Services over 5G Systems](/standards/dvb-i)
 
 ---
 

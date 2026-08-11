@@ -1,6 +1,7 @@
 ---
 hide_title: true
 title: UE Data Collection, Reporting and Event Exposure
+slug: /standards/data-collection
 sidebar_position: 16
 description: Explains the Data Collection Application Function (DCAF) framework letting UEs report media consumption and QoE data for network analytics.
 ---
@@ -89,9 +90,9 @@ The Release-17/Release-18 placement of TS 26.531 and TS 26.532 was not confirmed
 
 ## Related Standards Work
 
-- [Standards: 5G Media Streaming](/tech/standards/5gms)
-- [Standards: Network APIs](/tech/standards/network-apis)
-- [Standards: AI & ML in 5G Media](/tech/standards/ai-ml)
+- [Standards: 5G Media Streaming](/standards/5gms)
+- [Standards: Network APIs](/standards/network-apis)
+- [Standards: AI & ML in 5G Media](/standards/ai-ml)
 - [Technical Documentation: UE Data Collection](/tech/data-collection/data-collection-event-exposure)
 - [Meetings with 3GPP SA4](/standards/3gpp-issue-tracking): the live tracker for 3GPP feedback issues on this specification
 

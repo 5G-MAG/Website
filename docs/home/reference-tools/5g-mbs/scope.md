@@ -48,9 +48,9 @@ Technical documentation providing context to this project can be found in the li
 
 Relevant specifications are listed below.
 
-[Standards: 5G Multicast Broadcast Services](/tech/standards/5g-mbs)
+[Standards: 5G Multicast Broadcast Services](/standards/5g-mbs)
 
-[Standards: Multimedia Delivery Protocols](/tech/standards/multimedia)
+[Standards: Multimedia Delivery Protocols](/standards/multimedia)
 
 :::tip[In short]
 Some of the functional entities of the MBS System and MBS User Services, including support in the application provider side, the 5GC, NG-RAN and UE.
@@ -153,11 +153,11 @@ The specifications cited above for the MBS User Services and MBS System APIs are
 - **TS 38.413** - the AMF and gNB NGAP extensions for broadcast session setup (not yet supported).
 - **TS 29.510** - the NRF NFDiscovery Service API extensions (not yet supported).
 
-For the full standards landscape, see [Standards: 5G Multicast Broadcast Services](/tech/standards/5g-mbs) and [Standards: Multimedia Delivery Protocols](/tech/standards/multimedia).
+For the full standards landscape, see [Standards: 5G Multicast Broadcast Services](/standards/5g-mbs) and [Standards: Multimedia Delivery Protocols](/standards/multimedia).
 
 ## Getting Started
 
-To try the tools hands-on, follow the [Tutorials](./tutorials): they cover the two ways to provision the 5GC (direct MBS core functions, or via the [5GC Service Consumers](../5g-core) libraries), the [Docker-Compose deployment](./tutorials/docker-implementation), and the individual MBSF/MBSTF walkthroughs. For the source code, packages and releases behind each component, see [Resources](./resources); for the specification background, see [Standards: 5G Multicast Broadcast Services](/tech/standards/5g-mbs).
+To try the tools hands-on, follow the [Tutorials](./tutorials): they cover the two ways to provision the 5GC (direct MBS core functions, or via the [5GC Service Consumers](../5g-core) libraries), the [Docker-Compose deployment](./tutorials/docker-implementation), and the individual MBSF/MBSTF walkthroughs. For the source code, packages and releases behind each component, see [Resources](./resources); for the specification background, see [Standards: 5G Multicast Broadcast Services](/standards/5g-mbs).
 
 ## NTN deployment context
 
@@ -195,5 +195,5 @@ Initial implementation of MBSF, MBSTF, MBS AF and MBS AS for supporting media mu
 
 - [Resources](/reference-tools/5g-mbs/resources)
 - [Tutorials](/reference-tools/5g-mbs/tutorials)
-- Standards: [5G Multicast Broadcast Services](/tech/standards/5g-mbs)
+- Standards: [5G Multicast Broadcast Services](/standards/5g-mbs)
 - Tech: [Multicast and Broadcast Services in 5G Networks](/tech/5g-mbs)

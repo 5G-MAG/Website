@@ -34,7 +34,7 @@ This page describes the specification within the scope of the Avatar Communicati
 
 The reference tools target MPEG Avatar Representation Format (ARF), specified as Part 39 of the MPEG-I suite in ISO/IEC 23090-39. ARF is a format for representing 3D avatars (synthesised digital representations of a person) so they can be stored, carried between systems, and animated consistently across different implementations. It defines the avatar's geometry, appearance, and the data needed to drive its animation. It is also designed to work alongside MPEG-I Scene Description (ISO/IEC 23090-14), so an avatar can be placed and anchored within a wider 3D scene in a real-world context. The goal is real-time conversational use: an avatar that stands in for a participant in an immersive call or virtual-presence session, driven from live audio and video input.
 
-ISO/IEC 23090-39 was, as of 2025, still at the Draft International Standard (DIS) stage rather than published as a final International Standard. This matters for implementers because the format can still change before publication, so reference tooling built against it should be treated as tracking a moving target. Confirm the current status of the specification on the [ISO catalogue page](https://www.iso.org/standard/91745.html) before relying on it, and check the [standards portal](/tech/standards/avatar) for the maintained view of the related work.
+ISO/IEC 23090-39 was, as of 2025, still at the Draft International Standard (DIS) stage rather than published as a final International Standard. This matters for implementers because the format can still change before publication, so reference tooling built against it should be treated as tracking a moving target. Confirm the current status of the specification on the [ISO catalogue page](https://www.iso.org/standard/91745.html) before relying on it, and check the [standards portal](/standards/avatar) for the maintained view of the related work.
 
 On the implementation side, the work covers the pieces needed to capture, carry, and present an ARF avatar over a 5G delivery path. Broadly, that means tooling to track a participant and produce animation data, a path to package and exchange that data as part of a real-time call, sample content for testing, and integration with a Unity-based presentation so the avatar can be rendered in an interactive application. The separation between the component that produces the avatar animation and the engine that renders it follows the same decoupling pattern used across 5G-MAG's other immersive media tools, including the XR player.
 
@@ -67,7 +67,7 @@ If you only need to render and inspect avatars, start from the Unity presentatio
 
 ## Standards & Specifications
 
-The Avatar Communication reference tools relate to the specification below. For the full, maintained list of related MPEG and 3GPP specifications, see the [Standards: Avatar Communications](/tech/standards/avatar) page.
+The Avatar Communication reference tools relate to the specification below. For the full, maintained list of related MPEG and 3GPP specifications, see the [Standards: Avatar Communications](/standards/avatar) page.
 
 | Specification | Body | Reference |
 | --- | --- | --- |
@@ -92,5 +92,5 @@ The Kanban board below tracks the planned and in-progress work for Conversationa
 - [Resources](/reference-tools/avatar/resources)
 - [Tutorials](/reference-tools/avatar/tutorials)
 - Tech: [Avatar Communications](/tech/avatar-communications)
-- Standards: [Avatar Communications](/tech/standards/avatar)
+- Standards: [Avatar Communications](/standards/avatar)
 - See also: [XR Media Integration in 5G](/reference-tools/xr) — the scene framework that ARF is designed to plug into.

@@ -50,7 +50,7 @@ The pipeline runs encode, package, deliver (under a 5G Media Streaming / DASH as
 
 A list of relevant specifications can be found in the link below.
 
-[Standards: Beyond 2D Video Experiences](/tech/standards/beyond-2d)
+[Standards: Beyond 2D Video Experiences](/standards/beyond-2d)
 
 The Beyond 2D work relates to the following specifications and work items. For the full, maintained list, see the standards portal page linked above.
 

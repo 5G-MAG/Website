@@ -48,7 +48,7 @@ How network-side analytics (NWDAF) and UE-side data collection fit together to m
 <div class="godeeper-card__body">
 <p>Normative 3GPP specs (TS 23.288, TS 26.531, TS 26.532) and 5G-MAG's contributions on AI/ML.</p>
 <ul class="godeeper-card__links">
-<li><a href="/tech/standards/ai-ml">Standards: AI/ML in 5G Media Standards</a></li>
+<li><a href="/standards/ai-ml">Standards: AI/ML in 5G Media Standards</a></li>
 </ul>
 </div>
 </div>
@@ -76,7 +76,7 @@ The Network Data Analytics Function (NWDAF) is the 5G core function through whic
 - **AnLF (Analytics Logical Function)**: produces the analytics or prediction output that a consumer (for example the PCF, for QoS policy, or an Application Function such as the 5GMS AF) subscribes to or requests.
 - **MTLF (Model Training Logical Function)**: trains the ML models that an AnLF uses for inference, and can expose those models to other NWDAF instances.
 
-Splitting training from inference lets a model be trained once (potentially on a different NWDAF instance, closer to where the training data volume is largest) and reused for inference wherever it is needed. For a media session, a typical consumer-facing output is a load or QoS prediction that a function such as the 5GMS AF can act on ahead of time, for example by adjusting a bitrate ceiling before congestion actually hits. See [Standards: 5G Media Streaming](/tech/standards/5gms) for where the 5GMS AF sits in that path.
+Splitting training from inference lets a model be trained once (potentially on a different NWDAF instance, closer to where the training data volume is largest) and reused for inference wherever it is needed. For a media session, a typical consumer-facing output is a load or QoS prediction that a function such as the 5GMS AF can act on ahead of time, for example by adjusting a bitrate ceiling before congestion actually hits. See [Standards: 5G Media Streaming](/standards/5gms) for where the 5GMS AF sits in that path.
 
 ## SA4 data collection: the UE-side input
 
@@ -104,7 +104,7 @@ The Release placement of TS 26.531 / TS 26.532 relative to TS 23.288, and the ex
 
 - [Tech: UE Data Collection, Reporting and Event Exposure](/tech/data-collection/data-collection-event-exposure): the DCAF architecture and reference points in full.
 - [Towards 6G Media](/tech/6g): how these AI/ML studies feed 5G-MAG's 6G requirements input.
-- [Standards: AI/ML in 5G Media Standards](/tech/standards/ai-ml): the standards-tracking view of this topic.
+- [Standards: AI/ML in 5G Media Standards](/standards/ai-ml): the standards-tracking view of this topic.
 
 :::note
 Refer to the [Tech](https://github.com/5G-MAG/Tech/) repository to contribute to this documentation.

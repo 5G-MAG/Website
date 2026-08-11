@@ -1,6 +1,7 @@
 ---
 hide_title: true
 title: XR and MPEG-I Scene Description
+slug: /standards/xr
 sidebar_position: 18
 description: 'Standards tracking for XR: MPEG-I Scene Description, 3GPP AR/XR specs, split rendering, IVAS audio, and work items by release.'
 ---
@@ -132,7 +133,7 @@ The Split Rendering Media Service Enabler (TS 26.565, Release 18) specifies spli
 | [26.258](https://www.3gpp.org/dynareport/26258.htm) | TS   | Codec for Immersive Voice and Audio Services - C code (floating-point)                                                                 | Under change control | S4  |
 
 :::warning[Verify IVAS titles]
-These IVAS deliverable titles are not yet confirmed against the 3GPP portal (automated access is blocked). Note that TS 26.255 is listed here as "Error concealment of lost packets" but as "Floating-point computational description" on the [Avatar specifications page](/tech/standards/avatar); since the floating-point C code is listed separately above as TS 26.258, the two pages should be reconciled. Confirm the full IVAS list (TS 26.250 to TS 26.258) against the 3GPP work plan.
+These IVAS deliverable titles are not yet confirmed against the 3GPP portal (automated access is blocked). Note that TS 26.255 is listed here as "Error concealment of lost packets" but as "Floating-point computational description" on the [Avatar specifications page](/standards/avatar); since the floating-point C code is listed separately above as TS 26.258, the two pages should be reconciled. Confirm the full IVAS list (TS 26.250 to TS 26.258) against the 3GPP work plan.
 :::
 
 :::warning[Verify apparent duplicate titles]
@@ -210,10 +211,10 @@ These identifiers on this page were not confirmed against a primary source (the 
 
 ## Related Standards Work
 
-- [Standards: Avatar Communications](/tech/standards/avatar)
-- [Standards: Volumetric Video with V3C](/tech/standards/v3c)
-- [Standards: Beyond 2D Video](/tech/standards/beyond-2d)
-- [Standards: Real-Time Communications (RTC)](/tech/standards/rtc)
+- [Standards: Avatar Communications](/standards/avatar)
+- [Standards: Volumetric Video with V3C](/standards/v3c)
+- [Standards: Beyond 2D Video](/standards/beyond-2d)
+- [Standards: Real-Time Communications (RTC)](/standards/rtc)
 - [Feedback and Requirements](/standards): how 5G-MAG submits feedback and requirements to SDOs
 
 :::note

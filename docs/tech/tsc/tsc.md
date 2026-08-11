@@ -48,7 +48,7 @@ Time Sensitive Communications (TSC) covers the 3GPP features that let a 5G netwo
 <div class="godeeper-card__body">
 <p>Normative 3GPP specs (TS 23.501, TS 23.502) and 5G-MAG's contributions on TSC.</p>
 <ul class="godeeper-card__links">
-<li><a href="/tech/standards/tsc">Standards: Time Sensitive Communications</a></li>
+<li><a href="/standards/tsc">Standards: Time Sensitive Communications</a></li>
 </ul>
 </div>
 </div>
@@ -117,7 +117,7 @@ These identifiers on this page were not confirmed against a primary source (the 
 
 - [Non-Public Networks](../npn): TSC media transport typically runs over an NPN.
 - [Real-Time Communications (RTC)](/tech/rtc): the interactive WebRTC-based counterpart, for conversational and collaborative media rather than deterministic essence transport.
-- [Standards: Time Sensitive Communications](/tech/standards/tsc): the standards-tracking view of this topic.
+- [Standards: Time Sensitive Communications](/standards/tsc): the standards-tracking view of this topic.
 
 :::note
 Refer to the [Tech](https://github.com/5G-MAG/Tech/) repository to contribute to this documentation.

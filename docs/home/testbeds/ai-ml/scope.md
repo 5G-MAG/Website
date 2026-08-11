@@ -67,11 +67,11 @@ Some repositories may be private and under testing. [Request early access](/earl
 
 A list of relevant specifications can be found in the link below.
 
-[Standards: AI & ML in 5G Media Services](/tech/standards/ai-ml)
+[Standards: AI & ML in 5G Media Services](/standards/ai-ml)
 
 These tools are complementary to, not a replacement for, the standardisation activity. 5G-MAG contributes media-specific AI/ML requirements and use cases to 3GPP (primarily SA4 for media aspects, with SA2 for network data analytics), while the reference tools provide an experimental platform to validate and inform that work. In practice the relationship is two-way: the studies and specifications (for example 3GPP [TR 26.847](https://www.3gpp.org/dynareport/26847.htm) on AI/ML in 5G media services, Release 19, completed, which supersedes the earlier, incomplete draft tracked as TR 26.927, and the SA4 data collection specifications TS 26.531 / TS 26.532) define the scenarios and interfaces the tools evaluate, and results from the tools can feed back into 5G-MAG positions and future contributions.
 
-These are the 3GPP studies and specifications that define the scenarios and data this activity evaluates. They are covered in full on the standards portal ([AI & ML in 5G Media](/tech/standards/ai-ml)).
+These are the 3GPP studies and specifications that define the scenarios and data this activity evaluates. They are covered in full on the standards portal ([AI & ML in 5G Media](/standards/ai-ml)).
 
 | Specification | Body | Reference |
 | -------------- | -------- | ------------------------------------------------------ |
@@ -111,7 +111,7 @@ The Kanban board below tracks the planned and in-progress work for the AI/ML Eva
 - [Tutorials](./tutorials): where to try the shared 6G Testbed tooling
 - Project [index](.): overview and slide deck
 - [6G Testbed and AI Traffic](../6g-testbed/scope): the shared testbed this activity builds on
-- [AI & ML on the Standards portal](/tech/standards/ai-ml): the standards context
+- [AI & ML on the Standards portal](/standards/ai-ml): the standards context
 
 :::note
 Refer to the [Standards](https://github.com/5G-MAG/Standards/) repository to contribute to this documentation.

@@ -52,7 +52,7 @@ Non-Terrestrial Networks (NTN) extend 5G coverage via satellite (geostationary G
 <div class="godeeper-card__body">
 <p>Normative 3GPP specs (TR 38.811, TR 38.821) and 5G-MAG's contributions on NTN.</p>
 <ul class="godeeper-card__links">
-<li><a href="/tech/standards/ntn">Standards: Non-Terrestrial Networks</a></li>
+<li><a href="/standards/ntn">Standards: Non-Terrestrial Networks</a></li>
 </ul>
 </div>
 </div>
@@ -147,9 +147,9 @@ The following analysis pages are available. If you are new to this area, start w
 
 ## Related
 
-- [Standards: Non-Terrestrial Networks](/tech/standards/ntn): normative 3GPP specs and 5G-MAG contributions on NTN, including TR 38.811, TR 38.821, and [TR 23.737](https://www.3gpp.org/dynareport/23737.htm).
-- [Standards: 5G Multicast & Broadcast Services](/tech/standards/5g-mbs): MBS is the primary service layer for NTN media delivery.
-- [Standards: 5G Broadcast](/tech/standards/5g-broadcast): ETSI TS 103 720; relevant for satellite-based linear TV/radio broadcast over NTN.
+- [Standards: Non-Terrestrial Networks](/standards/ntn): normative 3GPP specs and 5G-MAG contributions on NTN, including TR 38.811, TR 38.821, and [TR 23.737](https://www.3gpp.org/dynareport/23737.htm).
+- [Standards: 5G Multicast & Broadcast Services](/standards/5g-mbs): MBS is the primary service layer for NTN media delivery.
+- [Standards: 5G Broadcast](/standards/5g-broadcast): ETSI TS 103 720; relevant for satellite-based linear TV/radio broadcast over NTN.
 
 :::note
 Refer to the [Tech](https://github.com/5G-MAG/Tech/) repository to contribute to this documentation.

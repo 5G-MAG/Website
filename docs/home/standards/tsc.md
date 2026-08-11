@@ -1,6 +1,7 @@
 ---
 hide_title: true
 title: Time Sensitive Communications
+slug: /standards/tsc
 description: 3GPP Time Sensitive Communications specifications for deterministic, low-latency 5G delivery in professional media production, and the related IEEE TSN and SMPTE standards.
 sidebar_position: 15
 ---
@@ -24,7 +25,7 @@ Deterministic, low-latency delivery over 5G for tightly synchronised professiona
 
 5G-MAG monitors standardisation of Time Sensitive Communication (TSC) and its application to media production workflows, such as SMPTE ST 2110 essence transport. For the technical analysis of how TSC works, see the Tech page linked below.
 
-TSC in a media context usually runs over a private 5G deployment. For the network foundations it depends on, see [Standards: Non-Public Networks](/tech/standards/npn) first. For acronyms used here, see the [Glossary](/tech/glossary).
+TSC in a media context usually runs over a private 5G deployment. For the network foundations it depends on, see [Standards: Non-Public Networks](/standards/npn) first. For acronyms used here, see the [Glossary](/tech/glossary).
 
 <div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
 
@@ -84,8 +85,8 @@ These identifiers on this page were not confirmed against a primary source (the 
 
 ## Related Standards Work
 
-- [Standards: Non-Public Networks](/tech/standards/npn)
-- [Standards: Network APIs](/tech/standards/network-apis)
+- [Standards: Non-Public Networks](/standards/npn)
+- [Standards: Network APIs](/standards/network-apis)
 - [Technical Documentation: Time Sensitive Communications](/tech/tsc): analysis documents and reference material on the developer/technical side
 - [Feedback and Requirements](/standards): how 5G-MAG submits feedback and requirements to SDOs
 

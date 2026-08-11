@@ -50,7 +50,7 @@ There are two deployment models, and the plain-language names map to the 3GPP te
 <div class="godeeper-card__body">
 <p>Normative 3GPP specs (TS 23.501, TS 33.501) and 5G-MAG's contributions on NPN.</p>
 <ul class="godeeper-card__links">
-<li><a href="/tech/standards/npn">Standards: Non-Public Networks</a></li>
+<li><a href="/standards/npn">Standards: Non-Public Networks</a></li>
 </ul>
 </div>
 </div>
@@ -119,7 +119,7 @@ There are no deeper NPN analysis pages on this portal yet: the content above is 
 ## Related
 
 - [Time Sensitive Communications](./tsc): deterministic transport, often combined with an NPN for live production traffic.
-- [Standards: Non-Public Networks](/tech/standards/npn): the standards-tracking view of this topic.
+- [Standards: Non-Public Networks](/standards/npn): the standards-tracking view of this topic.
 
 :::note
 Refer to the [Tech](https://github.com/5G-MAG/Tech/) repository to contribute to this documentation.

@@ -1,6 +1,7 @@
 ---
 hide_title: true
 title: DVB-I Services over 5G Systems
+slug: /standards/dvb-i
 sidebar_position: 9
 description: Covers DVB-I service discovery and its deployment over 5G via unicast 5GMS, LTE-based 5G Broadcast, and hybrid delivery modes.
 ---
@@ -128,9 +129,9 @@ These identifiers on this page were not confirmed against a primary source (the 
 
 ## Related Standards Work
 
-- [Standards: 5G Media Streaming](/tech/standards/5gms)
-- [Standards: 5G Broadcast](/tech/standards/5g-broadcast)
-- [Standards: Multimedia Delivery Protocols](/tech/standards/multimedia)
+- [Standards: 5G Media Streaming](/standards/5gms)
+- [Standards: 5G Broadcast](/standards/5g-broadcast)
+- [Standards: Multimedia Delivery Protocols](/standards/multimedia)
 - [Feedback and Requirements](/standards): how 5G-MAG processes feedback on the specifications it tracks
 
 :::note

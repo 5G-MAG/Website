@@ -1,6 +1,7 @@
 ---
 hide_title: true
 title: Non-Terrestrial Networks
+slug: /standards/ntn
 description: 3GPP Non-Terrestrial Network standards for satellite and HAPS media distribution, covering NR adaptations, architecture and MBS delivery.
 sidebar_position: 13
 ---
@@ -25,7 +26,7 @@ sidebar_position: 13
 5G-MAG tracks 3GPP Non-Terrestrial Network (NTN) standards for satellite and HAPS media distribution. For the technical analysis of NTN deployment models, mobility and media delivery, see the Tech page linked below. For acronyms used here, see the [Glossary](/tech/glossary).
 
 :::tip
-New to the service layers that NTN carries? Multicast Broadcast Services (MBS) and 5G Broadcast are the delivery mechanisms most often deployed over satellite paths. See [Standards: 5G Multicast & Broadcast Services](/tech/standards/5g-mbs) and [Standards: 5G Broadcast](/tech/standards/5g-broadcast) for background before reading this page.
+New to the service layers that NTN carries? Multicast Broadcast Services (MBS) and 5G Broadcast are the delivery mechanisms most often deployed over satellite paths. See [Standards: 5G Multicast & Broadcast Services](/standards/5g-mbs) and [Standards: 5G Broadcast](/standards/5g-broadcast) for background before reading this page.
 :::
 
 <div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
@@ -96,8 +97,8 @@ These identifiers on this page were not confirmed against a primary source (the 
 
 ## Related Standards Work
 
-- [Standards: 5G Multicast & Broadcast Services](/tech/standards/5g-mbs): MBS Multicast and Broadcast are the primary service layers deployed over NTN
-- [Standards: 5G Broadcast](/tech/standards/5g-broadcast): ETSI TS 103 720 defines the 5G Broadcast system (FeMBMS) that can operate over satellite NTN delivery paths
+- [Standards: 5G Multicast & Broadcast Services](/standards/5g-mbs): MBS Multicast and Broadcast are the primary service layers deployed over NTN
+- [Standards: 5G Broadcast](/standards/5g-broadcast): ETSI TS 103 720 defines the 5G Broadcast system (FeMBMS) that can operate over satellite NTN delivery paths
 - [ETSI TS 103 720](https://www.etsi.org/deliver/etsi_ts/103700_103799/103720/): 5G Broadcast System for Linear TV and Radio Services; relevant for GEO satellite broadcast delivery scenarios
 - [Feedback and Requirements](/standards): how 5G-MAG submits feedback and requirements to SDOs
 

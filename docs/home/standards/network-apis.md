@@ -1,6 +1,7 @@
 ---
 hide_title: true
 title: Connectivity Quality with Network APIs
+slug: /standards/network-apis
 description: How CAMARA network APIs map to 3GPP's NEF, CAPIF and PCF exposure mechanisms for media QoS, slicing and connectivity insights.
 sidebar_position: 11
 ---
@@ -109,7 +110,7 @@ These identifiers on this page were not confirmed against a primary source (the 
 
 ## Related Standards Work
 
-- [Standards: 5G Media Streaming](/tech/standards/5gms)
+- [Standards: 5G Media Streaming](/standards/5gms)
 - [Feedback and Requirements](/standards): how 5G-MAG submits feedback and requirements to SDOs
 
 :::note

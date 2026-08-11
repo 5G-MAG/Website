@@ -1,6 +1,7 @@
 ---
 hide_title: true
 title: Non-Public Networks
+slug: /standards/npn
 description: 3GPP Non-Public Network standards and deployment models (SNPN, PNI-NPN) for private 5G media production and contribution.
 sidebar_position: 12
 ---
@@ -87,9 +88,9 @@ The Release 18 and later NPN enhancement placements described above were not con
 
 ## Related Standards Work
 
-- [Standards: Network APIs](/tech/standards/network-apis)
-- [Standards: Time Sensitive Communications](/tech/standards/tsc): TSC for professional media production is typically deployed over an NPN
-- [Standards: Real-Time Communications (RTC)](/tech/standards/rtc): interactive, uplink-heavy contribution over an NPN
+- [Standards: Network APIs](/standards/network-apis)
+- [Standards: Time Sensitive Communications](/standards/tsc): TSC for professional media production is typically deployed over an NPN
+- [Standards: Real-Time Communications (RTC)](/standards/rtc): interactive, uplink-heavy contribution over an NPN
 - [Technical Documentation: Non-Public Networks](/tech/npn): analysis documents and reference material on the developer/technical side
 - [Feedback and Requirements](/standards): how 5G-MAG submits feedback and requirements to SDOs
 
