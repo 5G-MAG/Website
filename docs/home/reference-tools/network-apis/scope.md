@@ -61,6 +61,16 @@ The following CAMARA API is covered by the reference implementation and technica
 3. Use the [Resources](./resources) page for the current, authoritative list of repositories.
 4. Check the [Resources](./resources) page for tagged versions.
 
+## Roadmap
+
+This page links to the public GitHub project board that tracks Network APIs work.
+
+### General Project Roadmap
+
+The Kanban board below tracks the planned and in-progress work for the Network APIs reference implementation (currently the CAMARA Dedicated Networks API). It is maintained live on GitHub. It was newly split out from the shared Reference Tools Roadmaps board and does not yet carry historical items — items get added to it as work is tracked going forward.
+
+[Kanban board: Roadmap](https://github.com/orgs/5G-MAG/projects/48/views/19)
+
 ## Related
 
 - [Resources](/reference-tools/network-apis/resources)

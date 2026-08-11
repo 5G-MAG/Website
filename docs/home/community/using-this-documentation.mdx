@@ -21,11 +21,11 @@ import { SLACK_INVITE_URL } from '@site/src/data/socialLinks';
 How this portal is structured, and a suggested workflow for finding your way around it.
 </div>
 
-This documentation follows a hierarchical structure to help you navigate the 5G-MAG ecosystem efficiently. Reference Tools, Applications and Testbeds each have their own project list; every project follows the same set of subcategories covering specifications, related projects, repository links, usage instructions, and hands-on tutorials.
+This documentation follows a hierarchical structure to help you navigate the 5G-MAG ecosystem efficiently. Reference Tools, Applications and Testbeds each have their own project list; every project follows the same set of subcategories covering specifications and roadmap, source code and releases, and hands-on tutorials.
 
-Each main topic shares a consistent set of subcategories covering specifications, related projects, repository links, usage instructions, and hands-on tutorials. Not every subcategory applies to every project: a project shows only the tabs relevant to it, so a missing tab (for example Packages) means "nothing published yet for this project", not a broken page.
+Each project shares a consistent set of subcategories: **Scope**, **Resources**, and **Tutorials**. Not every subcategory has content for every project: a missing item (for example, no packages listed under Resources) means "nothing published yet for this project", not a broken page.
 
-Each project opens on a landing page with a short description and a row of buttons linking to the subcategories that apply to it (typically Documentation/Scope, Project Roadmap, GitHub Repos, Packages, Releases, Tutorials, and In Action). The subcategories below describe what each of these covers.
+Each project opens on a landing page with a short description, an "In Action" section of recorded talks and demos where available, and a row of buttons linking to its subcategories (Scope, Resources, Tutorials, and, where available, Developer Exchange). The subcategories below describe what each of these covers.
 
 For acronyms and recurring terms used across the portal, see the [Glossary](/tech/glossary).
 
@@ -33,36 +33,25 @@ For acronyms and recurring terms used across the portal, see the [Glossary](/tec
 
 ### Scope
 
-The **Scope** section outlines the high-level architecture and objectives of each project. Here, you will find:
+The **Scope** section outlines the high-level architecture, objectives and specifications of each project, and points to its roadmap. Here, you will find:
 
 - Links to relevant industry specifications and standards, usually under an "Implemented specifications" heading (some older pages label this "Key specifications"; both mean the same thing).
 - Architectural diagrams illustrating the implementation.
 - A feature matrix mapping specifications to their current implementation status.
 - Guidance for identifying which technical standards to study for a deeper understanding.
+- A **Roadmap** heading near the end of the page, linking to the GitHub project board(s) that track the project's planned, in-progress, and completed work. Major features are also tracked via the [Reference Tools Roadmaps board](https://github.com/orgs/5G-MAG/projects/48); the [Roadmap](/community#roadmap) section on the Community page brings these boards together in one place.
 
-### Roadmap
+### Resources
 
-The **Roadmap** section connects you to our GitHub project boards. Major features are tracked via the [Reference Tools Roadmaps board](https://github.com/orgs/5G-MAG/projects/48), and developers may also use sub-project boards to monitor granular progress. The [Roadmap](/community#roadmap) section on the Community page brings these boards together in one place.
-
-### Repositories
-
-The **Repositories** section provides direct links to the relevant GitHub codebases. Each repository includes its own build and installation instructions, as well as links to official releases and issue trackers.
-
-### Packages
-
-When available, the **Packages** section provides pre-built binaries, containers, and Docker deployments. These resources are designed to accelerate the onboarding process for new users and contributors.
+The **Resources** section provides direct links to the project's GitHub repositories, pre-built packages when available (binaries, containers, Docker deployments), and the latest published releases for each repository, with dates. Each repository includes its own build and installation instructions, as well as links to its issue tracker. The releases listed draw on the same data as the [Releases](/community#projects) section on the Community page.
 
 ### Tutorials
 
-The **Tutorials** section offers end-to-end setup guides. These walkthroughs typically demonstrate how to integrate multiple components to create a functional system. While some tutorials focus on single components, others provide cross-references to related technical topics.
-
-### Releases
-
-The **Releases** section lists the latest published version of each repository in the project, with dates. It draws on the same data as the [Releases](/community#projects) section on the Community page.
+The **Tutorials** section offers end-to-end setup guides. These walkthroughs typically demonstrate how to integrate multiple components to create a functional system. While some tutorials focus on single components, others provide cross-references to related technical topics. Where a project has one, a **Developer Exchange** subsection collects related community demos and discussion.
 
 ### In Action
 
-The **In Action** section, where available, collects recorded talks, demonstrations and workshop sessions related to the project.
+Where available, an **In Action** section on the project's landing page collects recorded talks, demonstrations and workshop sessions related to the project.
 
 ## Suggested Workflow
 
@@ -71,9 +60,9 @@ First, decide how you want to enter the documentation: if you want to understand
 Then, to get the most out of a project's documentation, we recommend the following approach:
 
 1. **Explore the Architecture:** Start with the **Scope** subcategory to understand the high-level design of your chosen technology.
-2. **Assess Status:** Visit the **Roadmap** section to see what is currently implemented and what is planned for future releases.
-3. **Access the Code:** Navigate to the **Repositories** subcategory to clone or download the software.
-4. **Implementation:** Follow the **Tutorials** and check how to begin your local setup and testing.
+2. **Assess Status:** Check the **Roadmap** heading within Scope to see what is currently implemented and what is planned.
+3. **Access the Code:** Navigate to the **Resources** subcategory to clone or download the software.
+4. **Implementation:** Follow the **Tutorials**, including any Developer Exchange links, to begin your local setup and testing.
 
 ## Feedback & Support
 
