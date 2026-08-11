@@ -68,10 +68,42 @@ const config = {
     // entries could ever fire from real traffic hitting this domain. Left
     // registered with an empty redirect list so it's ready the next time a
     // live, publicly-linked page on www.5g-mag.com actually moves.
+    //
+    // First real use of that (2026-08-11): the 18 per-project Standards
+    // pages moved from /tech/standards/<project> to /standards/<project>.
+    // Unlike the pre-launch reorgs above, these paths WERE live on
+    // www.5g-mag.com since the 2026-07-28 cutover, so external
+    // links/bookmarks/search-engine indexing may point at the old path.
     [
       '@docusaurus/plugin-client-redirects',
       {
-        redirects: [],
+        redirects: [
+          { from: '/tech/standards/5g-broadcast', to: '/standards/5g-broadcast' },
+          { from: '/tech/standards/5g-broadcast-standards-evolution', to: '/standards/5g-broadcast-standards-evolution' },
+          { from: '/tech/standards/5g-mbs', to: '/standards/5g-mbs' },
+          { from: '/tech/standards/5gms', to: '/standards/5gms' },
+          { from: '/tech/standards/6g', to: '/standards/6g' },
+          { from: '/tech/standards/ai-ml', to: '/standards/ai-ml' },
+          { from: '/tech/standards/avatar', to: '/standards/avatar' },
+          { from: '/tech/standards/beyond-2d', to: '/standards/beyond-2d' },
+          { from: '/tech/standards/data-collection', to: '/standards/data-collection' },
+          { from: '/tech/standards/dvb-i', to: '/standards/dvb-i' },
+          { from: '/tech/standards/multimedia', to: '/standards/multimedia' },
+          { from: '/tech/standards/network-apis', to: '/standards/network-apis' },
+          { from: '/tech/standards/npn', to: '/standards/npn' },
+          { from: '/tech/standards/ntn', to: '/standards/ntn' },
+          { from: '/tech/standards/rtc', to: '/standards/rtc' },
+          { from: '/tech/standards/tsc', to: '/standards/tsc' },
+          { from: '/tech/standards/v3c', to: '/standards/v3c' },
+          { from: '/tech/standards/xr', to: '/standards/xr' },
+          // These two DID go briefly live on www.5g-mag.com (merged to main
+          // as part of the same push that first synced private -> public,
+          // then removed again days later once their duplication with the
+          // project's existing Standards/Scope pages was caught) -- redirect
+          // to wherever their content actually ended up.
+          { from: '/reference-tools/multimedia/rt-libflute-standards', to: '/standards/multimedia' },
+          { from: '/reference-tools/multimedia/rt-libflute-implementation', to: '/reference-tools/multimedia/scope' },
+        ],
       },
     ],
     [
