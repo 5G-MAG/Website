@@ -358,18 +358,11 @@ Mapping the CAMARA APIs onto the 5G-MAG requirement categories surfaces recurrin
 
 ## How these APIs reach the 5G Core
 
-Whichever CAMARA API is chosen, the operator's Network API Platform translates the request into 3GPP capability-exposure procedures. A QoS session or booking resolves, through the Network Exposure Function (NEF, [TS 29.522](https://www.3gpp.org/dynareport/29522.htm)) `Nnef_AFSessionWithQoS` operation, to a Policy Control Function (PCF) authorisation (`Npcf_PolicyAuthorization`, [TS 29.514](https://www.3gpp.org/dynareport/29514.htm)) that installs a QoS Flow on the device's PDU session. Advance reservation for a future window maps to background data transfer negotiation (`Nnef_BDTPNegotiation`, [TS 29.554](https://www.3gpp.org/dynareport/29554.htm)). Authentication of the API consumer is handled separately (see below). These mappings are documented on the [Network API Initiatives](../network-api-initiatives#3gpp-apis-for-quality-of-service) page.
+Whichever CAMARA API is chosen, the operator's Network API Platform translates the request into 3GPP capability-exposure procedures. A QoS session or booking resolves, through the Network Exposure Function (NEF, [TS 29.522](https://www.3gpp.org/dynareport/29522.htm)) `Nnef_AFsessionWithQoS` service, to a Policy Control Function (PCF) authorisation (`Npcf_PolicyAuthorization`, [TS 29.514](https://www.3gpp.org/dynareport/29514.htm)) that installs a QoS Flow on the device's PDU session. Advance reservation for a future window maps to background data transfer negotiation (`Nnef_BDTPNegotiation`, TS 29.522; the underlying BDT policies are handled by the PCF, [TS 29.554](https://www.3gpp.org/dynareport/29554.htm)). Authentication of the API consumer is handled separately (see below). These mappings are documented on the [Network API Initiatives](../network-api-initiatives#3gpp-apis-for-quality-of-service) page.
 
 ## API consumer authentication
 
 Before any of the calls above, the API consumer authenticates to the operator's authorization server using OAuth 2.0, as defined by the CAMARA Security and Interoperability Profile in the CAMARA [IdentityAndConsentManagement](https://github.com/camaraproject/IdentityAndConsentManagement) repository. CAMARA supports the OAuth 2.0 client credentials grant (for server-to-server, two-legged access) and Client Initiated Backchannel Authentication (CIBA) for flows that require end-user consent; two-legged (client credentials) tokens are restricted to APIs that do not process personal data. The consumer obtains an access token carrying the OAuth scopes for the specific API and operation, then presents it as a bearer token on each call. Credentials themselves are provisioned out of band through the operator's developer portal or Network API Platform; there is no CAMARA API for issuing them.
-
-<details>
-<summary>References to verify</summary>
-
-These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the mapping of specific CAMARA operations to TS 29.522 (`Nnef_AFSessionWithQoS`, `Nnef_BDTPNegotiation`), TS 29.514 (`Npcf_PolicyAuthorization`) and TS 29.554 (`Nnef_BDTPNegotiation` / BDT policy). Verify against the 3GPP work plan before publication.
-
-</details>
 
 ## Related
 

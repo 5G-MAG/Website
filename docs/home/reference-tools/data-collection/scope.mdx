@@ -28,7 +28,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## What This Project Implements
 
-The UE (User Equipment) Data Collection, Reporting and Event Exposure framework is defined in 3GPP Release 18 (Rel-18) to enable on-device collection and structured reporting of media performance data. It specifies the Data Collection Application Function (DCAF) and the associated provisioning, reporting and event exposure interfaces (R1 to R6), allowing application service providers to receive UE-side metrics and trigger analytics or policy decisions. R1 to R6 are named 3GPP reference points: the interfaces between the DCAF and the surrounding entities. The deliverable here is a reusable Rel-18 DCAF service-provider library together with a runnable Application Function that exercises these interfaces.
+The UE (User Equipment) Data Collection, Reporting and Event Exposure framework is defined by 3GPP in TS 26.531 and TS 26.532 (introduced in Release 17 and maintained through Release 18, Rel-18) to enable on-device collection and structured reporting of media performance data. It specifies the Data Collection Application Function (DCAF) and the associated provisioning, reporting and event exposure interfaces (R1 to R6), allowing application service providers to receive UE-side metrics and trigger analytics or policy decisions. R1 to R6 are named 3GPP reference points: the interfaces between the DCAF and the surrounding entities. The deliverable here is a reusable Rel-18 DCAF service-provider library together with a runnable Application Function that exercises these interfaces.
 
 The interface sections below are presented in usage order (provision, then subscribe, then report): R1 (provisioning), R6 (event subscription and exposure) and R2 (direct data reporting). The remaining reference points R3 to R5 also exist in the framework but are not covered on this page.
 
@@ -210,13 +210,6 @@ The other reference points in the framework (R3 for the Indirect Data Collection
 ## Getting Started
 
 Bring up the standalone DCAF (see [Docker deployment support](#docker-deployment-support) above), provision it over R1, subscribe an Event Consumer AF over R6, then open a data reporting session and submit reports over R2. The [Docker + Insomnia tutorial](./tutorials/docker-with-insomnia) walks through these steps end to end. The source lives in the [UE Data Collection repositories](../data-collection/resources).
-
-<details>
-<summary>References to verify</summary>
-
-These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the exact R1 to R6 reference-point mapping (in particular R3=Indirect Data Collection Client, R4=Application Server, R5=NWDAF exposure), the assignment of `Ndcaf_DataReportingProvisioning`, `Ndcaf_DataReporting` and `Naf_EventExposure` to specific reference points, and the Release-18 placement of TS 26.531/TS 26.532. Verify against the 3GPP work plan before publication.
-
-</details>
 
 ## Roadmap
 

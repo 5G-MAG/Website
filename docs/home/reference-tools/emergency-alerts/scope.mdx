@@ -63,7 +63,7 @@ CBS carries a warning message as a short, self-contained data structure rather t
 
 | CBS field               | Role                                                                                   | Notes                                                                                                                                                              |
 | ----------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Message Identifier      | Identifies the warning type / source (for example a CMAS or ETWS category)             | Values are assigned in 3GPP TS 23.041 clause 9.4.1.2.2; the transmitter's default configuration uses a fixed identifier (observed as `0x1102` in the current code) |
+| Message Identifier      | Identifies the warning type / source (for example a CMAS or ETWS category)             | Values are assigned in 3GPP TS 23.041 clause 9.4.1.2.2; the transmitter's default configuration uses the fixed identifier `0x1102`, which TS 23.041 assigns to the ETWS combined earthquake and tsunami warning |
 | Serial Number           | Distinguishes and versions a message (geographical scope, message code, update number) | Changing the update number signals an updated message for the same event                                                                                           |
 | Data Coding Scheme      | Selects the character set / language of the message body                               | Follows the CBS data coding scheme rules in TS 23.041                                                                                                              |
 | Warning Message Segment | Carries the alert text, possibly split across segments                                 | The transmitter marks the last segment and sets the segment number; the payload is the encoded warning text                                                        |
@@ -120,13 +120,6 @@ Repositories used in this architecture:
 
 - [Emergency Alerts over 5G Broadcast: Resources](./resources)
 - [3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
-
-<details>
-<summary>References to verify</summary>
-
-These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): ETSI TS 103 720 clause 5.15.3.3, 3GPP TS 23.041 clause 9.4.1.2.2, the CMAS message identifier value 0x1102 and its warning-type mapping, and 3GPP TS 36.331 clauses 5.2.2.19 and 6.3.1. Verify against the 3GPP/ETSI work plan and the current repository code before publication.
-
-</details>
 
 ## Roadmap
 

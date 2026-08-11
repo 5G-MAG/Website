@@ -88,7 +88,7 @@ GSMA Open Gateway (OGW) API profiles align these CAMARA APIs across operators.
 
 A CAMARA API is deliberately thin. The media application (the API consumer) sees a small REST resource, for example a QoD `session` or a slice `booking`. Behind that resource sit two further layers, so a single API call travels: **CAMARA API &rarr; NEF (3GPP northbound exposure) &rarr; PCF (policy decision) &rarr; SMF/UPF (enforcement on the device's PDU session, its active data connection to the network)**.
 
-1. **3GPP northbound exposure.** The Network Exposure Function (NEF) is the 5G Core function that exposes capabilities to an Application Function (AF). Its northbound APIs are specified in [TS 29.522](https://www.3gpp.org/dynareport/29522.htm). For QoS the relevant northbound API is `AsSessionWithQoS` (the RESTful form of the `Nnef_AFSessionWithQoS` service). In 4G/EPC the equivalent function is the Service Capability Exposure Function (SCEF); operators commonly deploy a combined SCEF+NEF. Discovery, onboarding and authentication of these APIs are handled by the Common API Framework (CAPIF), [TS 23.222](https://www.3gpp.org/dynareport/23222.htm) / [TS 29.222](https://www.3gpp.org/dynareport/29222.htm).
+1. **3GPP northbound exposure.** The Network Exposure Function (NEF) is the 5G Core function that exposes capabilities to an Application Function (AF). Its northbound APIs are specified in [TS 29.522](https://www.3gpp.org/dynareport/29522.htm). For QoS the relevant northbound API is `AsSessionWithQoS` (the RESTful form of the `Nnef_AFsessionWithQoS` service). In 4G/EPC the equivalent function is the Service Capability Exposure Function (SCEF); operators commonly deploy a combined SCEF+NEF. Discovery, onboarding and authentication of these APIs are handled by the Common API Framework (CAPIF), [TS 23.222](https://www.3gpp.org/dynareport/23222.htm) / [TS 29.222](https://www.3gpp.org/dynareport/29222.htm).
 2. **5G Core policy and control.** The NEF forwards the request to the Policy Control Function (PCF) via `Npcf_PolicyAuthorization` ([TS 29.514](https://www.3gpp.org/dynareport/29514.htm)). The PCF authorises the AF request and installs policy on the subscriber's PDU session (the device's active data connection to the network), which the Session Management Function (SMF) and User Plane Function (UPF) enforce. Slice-related requests instead touch slice management (provisioning) and, at runtime, the SEAL Network Slice Capability Enablement (NSCE) service in [TS 23.434](https://www.3gpp.org/dynareport/23434.htm).
 
 The application never sees the PCF, SMF or UPF. This is the value CAMARA adds: one operator-agnostic contract in place of per-operator 3GPP integration. It is also the source of most of the open questions 5G-MAG records on the analysis pages, because information that exists inside the core (measured latency, service-area availability) is not always surfaced back through the CAMARA abstraction.
@@ -112,13 +112,6 @@ The CAMARA APIs 5G-MAG analyses fall into a few families:
 - **Requirements and monitoring:** [Application Profiles](./network-apis/camara-application-profiles) declares an application's needs once, and [Connectivity Insights](./network-apis/camara-connectivity-insights) plus [Connectivity Insights Subscriptions](./network-apis/camara-connectivity-insights-subscriptions) check whether the network can meet them.
 
 All of these APIs are still pre-1.0 (`v0`/`wip`) at the time of writing, delivered through CAMARA's twice-yearly meta-releases. Field names and enumerations can change between releases, so the per-API pages note where an integrator should confirm values against the specific `.yaml`.
-
-<details>
-<summary>References to verify</summary>
-
-These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TS 24.549 (referenced from the analysis pages as the SEAL NSCE Stage 3 protocol specification). The northbound and policy specifications cited here (TS 29.522, TS 29.514, TS 23.222, TS 29.222, TS 23.434) are widely established. Verify any specific clause references against the 3GPP work plan before publication.
-
-</details>
 
 ---
 

@@ -47,7 +47,7 @@ The specifications below are grouped by the layer of network capability exposure
 
 ### Network Exposure Function (NEF)
 
-- [TS 29.522](https://www.3gpp.org/dynareport/29522.htm): Network Exposure Function (NEF); Northbound APIs (includes Nnef_AFSessionWithQoS and Nnef_ChargeableParty)
+- [TS 29.522](https://www.3gpp.org/dynareport/29522.htm): Network Exposure Function (NEF); Northbound APIs (includes Nnef_AFsessionWithQoS and Nnef_ChargeableParty)
 - [TS 29.517](https://www.3gpp.org/dynareport/29517.htm): 5G System; Application Function Event Exposure Service; Stage 3
 - [TS 23.501](https://www.3gpp.org/dynareport/23501.htm): System Architecture for 5GS (NEF architecture)
 
