@@ -1,8 +1,7 @@
 ---
 hide_title: true
-title: AI/ML in 5G Media Standards
+title: AI/ML in 5G Media
 slug: /standards/ai-ml
-sidebar_position: 6
 description: 3GPP specifications for AI/ML in 5G media - NWDAF network-side analytics (SA2) and UE-side data collection (SA4) - with related studies and release mapping.
 ---
 
@@ -13,7 +12,7 @@ description: 3GPP specifications for AI/ML in 5G media - NWDAF network-side anal
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Standards</span>
-<h1>AI/ML in 5G Media Standards</h1>
+<h1>AI/ML in 5G Media</h1>
 </div>
 </div>
 
@@ -85,13 +84,13 @@ TR 26.847 was previously tracked under a different, now-superseded number (TR 26
 
 ## 5G-MAG tracking and contribution focus
 
-5G-MAG tracks both tracks, contributing primarily on the media side (SA4) and following the SA2 analytics work for the parts that affect media sessions. See [Standards: UE Data Collection](/standards/data-collection) for the related SA4 framework, and [Tech: AI/ML in 5G Media](/tech/ai-ml) for the implementer-facing analysis.
+5G-MAG tracks both tracks, contributing primarily on the media side (SA4) and following the SA2 analytics work for the parts that affect media sessions. See [Standards: UE Data Collection, Reporting and Event Exposure](/standards/data-collection) for the related SA4 framework, and [Tech: AI/ML in 5G Media](/tech/ai-ml) for the implementer-facing analysis.
 
 ## Related Standards Work
 
-- [Standards: UE Data Collection](/standards/data-collection)
+- [Standards: UE Data Collection, Reporting and Event Exposure](/standards/data-collection)
 - [Standards: 5G Media Streaming](/standards/5gms)
-- [Technical Documentation: AI/ML in 5G Media](/tech/ai-ml)
+- [Tech: AI/ML in 5G Media](/tech/ai-ml)
 - [Meetings with 3GPP SA4](/standards/3gpp-issue-tracking): the live tracker for 3GPP feedback issues in this area
 
 :::note

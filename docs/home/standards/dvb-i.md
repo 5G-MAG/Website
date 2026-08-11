@@ -2,7 +2,6 @@
 hide_title: true
 title: DVB-I Services over 5G Systems
 slug: /standards/dvb-i
-sidebar_position: 9
 description: Covers DVB-I service discovery and its deployment over 5G via unicast 5GMS, LTE-based 5G Broadcast, and hybrid delivery modes.
 ---
 

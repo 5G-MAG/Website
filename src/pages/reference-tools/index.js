@@ -15,7 +15,7 @@ const REFTOOLS_ICON_PATH = (
 // near-identical arrays: topic titles here intentionally use each project's
 // fuller canonical name (matching its own _category_.json label in
 // sidebars-home.js), not the shorter discovery-grid labels used on those two
-// pages. See the longer note in developer/index.js's own CATEGORIES.
+// pages (developer/index.js's PRODUCT_TYPES).
 // Categorised by standards body rather than use case: a Reference Tool's
 // defining property is which specification it implements, not which
 // scenario it eventually gets used in (that mapping lives on the
@@ -25,6 +25,19 @@ const CATEGORIES = [
     title: '3GPP Implementations',
     desc: 'Reference implementations of 3GPP-defined media streaming, broadcast, multicast, core-network and data-collection specifications.',
     topics: [
+      {
+        title: '3GPP RAN and Core Platforms',
+        desc: 'Open5GS-based 5G core and srsRAN-based RAN for lab and field testing.',
+        href: '/reference-tools/3gpp-platforms',
+        icon: icon(
+          <>
+            <path d="M6 18l0 -2" />
+            <path d="M10 18l0 -4" />
+            <path d="M14 18l0 -6" />
+            <path d="M18 18l0 -8" />
+          </>
+        ),
+      },
       {
         title: '5G Broadcast - Emergency Alerts',
         desc: 'Broadcast-based public warning system using 5G Broadcast infrastructure.',
@@ -214,19 +227,6 @@ const CATEGORIES = [
           <path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5" />
         ),
       },
-      {
-        title: '3GPP RAN and Core Platforms',
-        desc: 'Open5GS-based 5G core and srsRAN-based RAN for lab and field testing.',
-        href: '/reference-tools/3gpp-platforms',
-        icon: icon(
-          <>
-            <path d="M6 18l0 -2" />
-            <path d="M10 18l0 -4" />
-            <path d="M14 18l0 -6" />
-            <path d="M18 18l0 -8" />
-          </>
-        ),
-      },
     ],
   },
 ];
@@ -257,7 +257,7 @@ export default function ReferenceTools() {
   return (
     <Layout
       title="Reference Tools"
-      description="Directory of 5G-MAG Reference Tools projects, each card linking to its documentation, roadmap, and releases pages."
+      description="Directory of 5G-MAG Reference Tools projects, grouped by the standards body each tool implements."
     >
       <div className="container" style={{ marginTop: '1.75rem' }}>
         <div className="topic-banner">

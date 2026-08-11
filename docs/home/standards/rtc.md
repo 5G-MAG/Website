@@ -3,7 +3,6 @@ hide_title: true
 title: Real-Time Communications
 slug: /standards/rtc
 description: 3GPP's SA4 Real-Time Communications architecture, WebRTC transport, and 5GMS uplink standards for interactive media contribution.
-sidebar_position: 14
 ---
 
 <div class="topic-banner">
@@ -118,10 +117,10 @@ These identifiers on this page were not confirmed against a primary source (the 
 ## Related Standards Work
 
 - [Standards: 5G Media Streaming](/standards/5gms)
-- [Standards: Network APIs](/standards/network-apis)
+- [Standards: Connectivity Quality with Network APIs](/standards/network-apis)
 - [Standards: Non-Public Networks](/standards/npn): RTC contribution commonly runs over an NPN
 - [Standards: Time Sensitive Communications](/standards/tsc): the deterministic-transport counterpart to RTC for essence flows
-- [Technical Documentation: Real-Time Communications (RTC)](/tech/rtc): analysis documents and reference material on the developer/technical side
+- [Tech: Real-Time Communications (RTC)](/tech/rtc): analysis documents and reference material on the developer/technical side
 - [Meetings with 3GPP SA4](/standards/3gpp-issue-tracking): the live tracker for 3GPP feedback issues on this specification
 
 :::note

@@ -27,7 +27,7 @@ An Application, on this site, is a real working scenario assembled from one or m
 
 A complete 5G Broadcast receiver chain: an SDR (or a recorded sample file) feeds the MBMS Modem, which FLUTE-encodes the content as multicast traffic for the MBMS Middleware; the Middleware decodes it and serves it to a media player through a Web User Interface built on hls.js. The media player itself has no idea the content arrived over broadcast rather than a normal HTTP connection.
 
-**Built from:** [5G Broadcast, TV and Radio Services](/reference-tools/5g-broadcast/).
+**Built from:** [5G Broadcast - TV and Radio Services](/reference-tools/5g-broadcast/).
 
 Follow the [step-by-step guide](/reference-tools/5g-broadcast/tutorials/hls-playback-5gbc) to play back an HLS stream this way; the same tutorial series also points to an RTP playback variant.
 
@@ -35,7 +35,7 @@ Follow the [step-by-step guide](/reference-tools/5g-broadcast/tutorials/hls-play
 
 A Cell Broadcast Service (CBS) emergency alert, compliant with 3GPP TS 23.041, transmitted over an SDR-driven 5G Broadcast transmitter and received and displayed on a real 5G Broadcast-capable device (a QRD or CRD receiver), the same public-warning mechanism (ETWS/CMAS alert types) used for earthquake, tsunami and other emergency notifications.
 
-**Built from:** [5G Broadcast: Emergency Alerts](/reference-tools/emergency-alerts/).
+**Built from:** [5G Broadcast - Emergency Alerts](/reference-tools/emergency-alerts/).
 
 Follow the [step-by-step guide](/reference-tools/emergency-alerts/tutorials/end-to-end) to build the transmitter and trigger an alert yourself. Transmitting radio signals is subject to local regulation; only transmit in a shielded environment or under appropriate authorisation.
 
@@ -43,7 +43,7 @@ Follow the [step-by-step guide](/reference-tools/emergency-alerts/tutorials/end-
 
 An Android device plays a live stream delivered over 5G Broadcast, and falls back automatically to regular unicast delivery the moment the broadcast signal disappears, with no visible interruption to the media player, since the Android Middleware exposes both delivery paths through the same local webserver.
 
-**Built from:** [5G Broadcast, TV and Radio Services](/reference-tools/5g-broadcast/).
+**Built from:** [5G Broadcast - TV and Radio Services](/reference-tools/5g-broadcast/).
 
 Follow the [step-by-step guide](/reference-tools/5g-broadcast/tutorials/android-mw-seamless-switching) to set up the transmitter, webserver and Android Middleware, and see the switch yourself.
 

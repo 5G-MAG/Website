@@ -70,7 +70,7 @@ User Equipment (UE) data collection covers the 3GPP mechanisms by which a device
 <div class="godeeper-card__body">
 <p>Reference DCAF implementation, standalone or integrated with 5GMSd.</p>
 <ul class="godeeper-card__links">
-<li><a href="/reference-tools/data-collection">Project: UE data collection, reporting and event exposure</a></li>
+<li><a href="/reference-tools/data-collection">UE Data Collection, Reporting and Event Exposure</a></li>
 </ul>
 </div>
 </div>
@@ -103,6 +103,8 @@ The framework distinguishes a small set of functional entities:
 - **Event Consumer AF** - the function that subscribes to and receives exposed events; a typical consumer is the NWDAF ([TS 23.288](https://www.3gpp.org/dynareport/23288.htm)), the 5G core analytics function.
 
 ## Reference points R1 to R6
+
+### Implementation blueprint
 
 The reference points are the named interfaces between the DCAF and the surrounding entities. The framework groups them by role: provisioning (R1), data reporting (R2, R3, R4) and event exposure (R5, R6). The table below is this page's [implementation blueprint](/tech/blueprints): for each reference point it names the endpoints, the service/API that operates over it, and what it does.
 
@@ -150,3 +152,13 @@ The following resources are available:
 #### Recorded talk
 
 - [**UE Data Collection and Reporting framework for Event Exposure (3GPP Release 17)**](../exchanges#ue-data-collection-and-reporting-framework-for-event-exposure-3gpp-release-17)
+
+## Related
+
+- [Standards: UE Data Collection, Reporting and Event Exposure](/standards/data-collection): the specification list for this topic
+- [UE Data Collection, Reporting and Event Exposure Reference Tools](/reference-tools/data-collection): the software implementation
+- [5G Media Streaming (5GMS)](/tech/5gms): the media delivery framework this data collection serves
+
+:::note
+Refer to the [Tech](https://github.com/5G-MAG/Tech/) repository to contribute to this documentation.
+:::

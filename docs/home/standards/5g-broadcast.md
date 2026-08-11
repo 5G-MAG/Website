@@ -2,7 +2,6 @@
 hide_title: true
 title: 5G Broadcast - TV, Radio and Emergency Alerts
 slug: /standards/5g-broadcast
-sidebar_position: 1
 description: Overview of ETSI TS 103 720 LTE-based 5G Broadcast, its version history, related 3GPP specifications and 5G-MAG's standards role.
 ---
 
@@ -23,7 +22,7 @@ ETSI TS 103 720 LTE-based 5G Broadcast: version history, related 3GPP specificat
 
 ## Overview
 
-5G Broadcast delivers linear TV and radio to devices over a one-way, free-to-air signal, with no SIM, subscription or return channel required, reusing LTE/eMBMS radio technology (Long Term Evolution / evolved Multimedia Broadcast Multicast Service). It is distinct from 5G Multicast-Broadcast Services (MBS), which is native to the 5G core and NR; see [Standards: 5G Multicast & Broadcast Services](/standards/5g-mbs). 5G-MAG maintains the underlying ETSI specification and contributes the requirements and fixes that shape each new version. For acronyms used here, see the [Glossary](/tech/glossary).
+5G Broadcast delivers linear TV and radio to devices over a one-way, free-to-air signal, with no SIM, subscription or return channel required, reusing LTE/eMBMS radio technology (Long Term Evolution / evolved Multimedia Broadcast Multicast Service). It is distinct from 5G Multicast-Broadcast Services (MBS), which is native to the 5G core and NR; see [Standards: 5G Multicast Broadcast Services (MBS)](/standards/5g-mbs). 5G-MAG maintains the underlying ETSI specification and contributes the requirements and fixes that shape each new version. For acronyms used here, see the [Glossary](/tech/glossary).
 
 <div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
 
@@ -35,7 +34,7 @@ ETSI TS 103 720 LTE-based 5G Broadcast: version history, related 3GPP specificat
 <div class="godeeper-card__body">
 <p>The deeper technical treatment of 5G Broadcast delivery and receiver behaviour.</p>
 <ul class="godeeper-card__links">
-<li><a href="/tech/5g-broadcast">Technical Documentation: 5G Broadcast</a></li>
+<li><a href="/tech/5g-broadcast">Tech: 5G Broadcast</a></li>
 </ul>
 </div>
 </div>
@@ -232,14 +231,14 @@ Well-established references (DASH = ISO/IEC 23009-1; 5GMS = TS 26.501 / [TS 26.5
 - **Implementer-driven fixes:** bugs, clarification questions and new requirements raised by implementors, in particular 5G-MAG.
 - **Completed:** Release 17 alignment (v1.2.1, 2023).
 
-For the release-by-release specification detail behind these updates, see [Standards Evolution](/standards/5g-broadcast-standards-evolution). For the technical analysis, see [Technical Documentation: 5G Broadcast](/tech/5g-broadcast).
+For the release-by-release specification detail behind these updates, see [Standards Evolution](/standards/5g-broadcast-standards-evolution). For the technical analysis, see [Tech: 5G Broadcast](/tech/5g-broadcast).
 
 ## Related Standards Work
 
 - [Standards: DVB-I over 5G](/standards/dvb-i)
-- [Standards: 5G Multicast & Broadcast Services](/standards/5g-mbs)
+- [Standards: 5G Multicast Broadcast Services (MBS)](/standards/5g-mbs)
 - [Standards: Multimedia Delivery Protocols](/standards/multimedia)
-- [Technical Documentation: 5G Broadcast](/tech/5g-broadcast)
+- [Tech: 5G Broadcast](/tech/5g-broadcast)
 - [Feedback and Requirements](/standards): how 5G-MAG processes feedback on the specifications it maintains and tracks
 
 :::note

@@ -89,5 +89,6 @@ The Kanban board below tracks the planned and in-progress work for the Beyond 2D
 
 - [Resources](/testbeds/beyond-2d/resources)
 - [Tutorials](/testbeds/beyond-2d/tutorials)
+- Standards: [Beyond 2D Video](/standards/beyond-2d)
 - Tech: [Volumetric & Beyond 2D Video Experiences](/tech/volumetric)
 - See also: [MPEG V3C Immersive Platform](/reference-tools/v3c) — the related volumetric encoding and rendering tools

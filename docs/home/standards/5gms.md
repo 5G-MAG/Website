@@ -2,7 +2,6 @@
 hide_title: true
 title: 5G Media Streaming (5GMS)
 slug: /standards/5gms
-sidebar_position: 4
 description: Describes the 5G Media Streaming architecture, M1-M8 reference points, related 3GPP specifications and Release-19 Advanced Media Delivery work.
 ---
 
@@ -35,7 +34,7 @@ The 5GMS architecture, M1-M8 reference points, related 3GPP specifications and R
 <div class="godeeper-card__body">
 <p>The implementer-facing analysis of the 5GMS architecture and its entities.</p>
 <ul class="godeeper-card__links">
-<li><a href="/tech/5gms">Technical Documentation: Streaming &amp; Media Delivery</a></li>
+<li><a href="/tech/5gms">Tech: Streaming &amp; Media Delivery</a></li>
 </ul>
 </div>
 </div>
@@ -70,7 +69,7 @@ The 5GMS AF is a consumer of two 5G Core service-based APIs for the unicast medi
 - **Binding Support Function (BSF), [TS 29.521](https://www.3gpp.org/dynareport/29521.htm)**: `Nbsf_Management` service.
 - **Policy Control Function (PCF), [TS 29.514](https://www.3gpp.org/dynareport/29514.htm)**: `Npcf_PolicyAuthorization` service, at reference point N5.
 
-For the equivalent multicast/broadcast service consumer (the MB-SMF, TS 29.532), see [Standards: 5G Multicast & Broadcast Services](/standards/5g-mbs).
+For the equivalent multicast/broadcast service consumer (the MB-SMF, TS 29.532), see [Standards: 5G Multicast Broadcast Services (MBS)](/standards/5g-mbs).
 
 ## Related 3GPP Specifications
 
@@ -157,10 +156,10 @@ These identifiers on this page were not confirmed against a primary source (the 
 
 ## Related Standards Work
 
-- [Standards: 5G Multicast & Broadcast Services](/standards/5g-mbs)
-- [Standards: UE Data Collection](/standards/data-collection)
+- [Standards: 5G Multicast Broadcast Services (MBS)](/standards/5g-mbs)
+- [Standards: UE Data Collection, Reporting and Event Exposure](/standards/data-collection)
 - [Standards: Real-Time Communications (RTC)](/standards/rtc)
-- [Technical Documentation: Streaming & Media Delivery](/tech/5gms)
+- [Tech: Streaming & Media Delivery](/tech/5gms)
 - [Meetings with 3GPP SA4](/standards/3gpp-issue-tracking): the live tracker for 3GPP feedback issues on this specification
 
 :::note

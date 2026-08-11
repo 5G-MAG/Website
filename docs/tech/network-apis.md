@@ -24,7 +24,7 @@ Mobile networks can expose selected capabilities (for example the ability to req
 
 5G-MAG's work centres on the CAMARA project (a Linux Foundation initiative with GSMA support) and its mapping to 3GPP-defined APIs, applied specifically to media production and live distribution use cases.
 
-**Key specifications:** the four CAMARA APIs below map onto 3GPP-defined network capabilities. Each is described in more detail on its own analysis page (see Technical Documentation).
+**Key specifications:** the CAMARA APIs and 3GPP specifications below map onto 3GPP-defined network capabilities. Each is described in more detail on its own analysis page (see Technical Documentation).
 
 | API / specification                                                                                    | What it does for media                                                                                                                     |
 | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -158,7 +158,7 @@ The following resources are available:
 
 - [Standards: Network APIs](/standards/network-apis). 5G-MAG's standards tracking and contributions on network capability exposure.
 - [Developer portal: Network APIs](/reference-tools/network-apis). The 5G-MAG reference tools implementing CAMARA-compliant clients.
-- [Streaming & Media Delivery](/tech/5gms). Related media delivery analysis on this portal.
+- [5G Media Streaming (5GMS)](/tech/5gms). Related media delivery analysis on this portal.
 
 :::note
 Refer to the [Standards](https://github.com/5G-MAG/Standards/) repository to contribute to this documentation.

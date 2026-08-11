@@ -36,14 +36,17 @@ const sidebars = {
     'glossary',
     '3gpp-work-items',
 
-    // Grouping and labels below mirror /tech's own "Technical Documentation
-    // by Capability Area" section (src/pages/tech/index.js's CATEGORIES)
-    // exactly (2026-07-23) — previously this sidebar used a different,
-    // older 3-bucket grouping (Media Streaming & Broadcast / Network &
-    // Connectivity / Immersive & Emerging Media) with some labels that had
-    // drifted from each doc's own frontmatter title. Every category label
-    // here now matches its doc's title exactly, and the 5 groups match the
-    // hub page's 5 capability areas 1:1 (same items, same order).
+    // Grouping and labels below mirror /tech's own "Categories & Topics"
+    // section (src/pages/tech/index.js's CATEGORIES) — previously this
+    // sidebar used a different, older 3-bucket grouping (Media Streaming &
+    // Broadcast / Network & Connectivity / Immersive & Emerging Media)
+    // with some labels that had drifted from each doc's own frontmatter
+    // title. Every category label here matches its doc's title, and the 5
+    // groups match the hub page's 5 capability areas — with one deliberate
+    // extra: Research Topics here also links the AI Traffic
+    // Characterization testbed, which the hub's group description covers
+    // in prose instead of a card (it has no Standards or Analysis page of
+    // its own).
     {
       type: 'html',
       value: 'Media Streaming, Multicast &amp; Real-Time Communications',
@@ -190,7 +193,7 @@ const sidebars = {
       type: 'category',
       label: 'AI/ML in 5G Media',
       link: { type: 'doc', id: 'ai-ml' },
-      items: [{ type: 'link', label: 'Standards: AI/ML in 5G Media Standards', href: '/standards/ai-ml' }],
+      items: [{ type: 'link', label: 'Standards: AI/ML in 5G Media', href: '/standards/ai-ml' }],
     },
     {
       type: 'category',

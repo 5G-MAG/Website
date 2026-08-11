@@ -93,4 +93,4 @@ The Kanban board below tracks the planned and in-progress work for Conversationa
 - [Tutorials](/reference-tools/avatar/tutorials)
 - Tech: [Avatar Communications](/tech/avatar-communications)
 - Standards: [Avatar Communications](/standards/avatar)
-- See also: [XR Media Integration in 5G](/reference-tools/xr) — the scene framework that ARF is designed to plug into.
+- See also: [XR/3D Scenes with MPEG-I Scene Description](/reference-tools/xr) — the scene framework that ARF is designed to plug into.

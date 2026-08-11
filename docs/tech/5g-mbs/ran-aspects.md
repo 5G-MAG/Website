@@ -99,3 +99,9 @@ The scrambling keys follow the same split described in the delivery modes above:
 - [Analysis of Mobility aspects for MBS Multicast Services](./mobility-mbs-multicast): how multicast reception continues across handover.
 - [Analysis of RAN Procedures for MBS Broadcast](./analysis-mbs-broadcast-ran): the step-by-step radio acquisition of a broadcast service.
 - [Analysis of RAN Procedures for MBS Multicast Inactive](./analysis-mbs-multicast-inactive-ran): the Release 18 extension for multicast reception in RRC_INACTIVE.
+
+## Related
+
+- [5G Multicast Broadcast Services (MBS)](/tech/5g-mbs): the parent topic page
+- [Standards: 5G Multicast Broadcast Services (MBS)](/standards/5g-mbs): the specification list for this topic
+- [5G Multicast Broadcast Services (MBS) Reference Tools](/reference-tools/5g-mbs): the software implementation

@@ -40,7 +40,7 @@ Current focus areas include:
 - Traffic classification and characterisation for AI-driven media services
 - UE data collection to support model training and inference in media applications
 
-The hands-on traffic characterisation work (network emulation and an AI traffic testbed) currently lives in the 6G Testbed reference implementation, which the AI/ML activity shares and builds on. See [6G Testbed and AI Traffic](../6g-testbed/scope) for the testbed itself.
+The hands-on traffic characterisation work (network emulation and an AI traffic testbed) currently lives in the 6G Testbed reference implementation, which the AI/ML activity shares and builds on. See [AI Traffic Characterization](../6g-testbed/scope) for the testbed itself.
 
 It helps to be precise about the boundary between this project and 3GPP.
 
@@ -110,8 +110,9 @@ The Kanban board below tracks the planned and in-progress work for the AI/ML Eva
 - [Resources](./resources): the software repositories
 - [Tutorials](./tutorials): where to try the shared 6G Testbed tooling
 - Project [index](.): overview and slide deck
-- [6G Testbed and AI Traffic](../6g-testbed/scope): the shared testbed this activity builds on
+- [AI Traffic Characterization](../6g-testbed/scope): the shared testbed this activity builds on
 - [AI & ML on the Standards portal](/standards/ai-ml): the standards context
+- Tech: [AI/ML in 5G Media](/tech/ai-ml): the implementer-facing analysis
 
 :::note
 Refer to the [Standards](https://github.com/5G-MAG/Standards/) repository to contribute to this documentation.

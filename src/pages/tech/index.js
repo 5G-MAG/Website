@@ -126,6 +126,9 @@ const CATEGORIES = [
         desc: 'Over-the-air broadcast for TV, radio and emergency services.',
         href: '/tech/5g-broadcast',
         standardsHref: '/standards/5g-broadcast',
+        extraStandards: [
+          { label: 'Standards Evolution →', href: '/standards/5g-broadcast-standards-evolution' },
+        ],
         icon: icon(
           <>
             <path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
@@ -166,6 +169,7 @@ const CATEGORIES = [
         desc: 'V3C point-cloud video and beyond-2D evaluation frameworks.',
         href: '/tech/volumetric',
         standardsHref: '/standards/v3c',
+        extraStandards: [{ label: 'Beyond 2D Standards →', href: '/standards/beyond-2d' }],
         icon: icon(
           <>
             <path d="M4 8v-2a2 2 0 0 1 2 -2h2" />
@@ -499,6 +503,11 @@ function CategoryCard({ title, desc, topics }) {
                 Standards &rarr;
               </Link>
             )}
+            {t.extraStandards?.map((s) => (
+              <Link key={s.href} to={s.href} className={styles.categoryTopicStandardsLink}>
+                {s.label}
+              </Link>
+            ))}
           </div>
         ))}
       </div>

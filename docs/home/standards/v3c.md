@@ -3,7 +3,6 @@ hide_title: true
 title: Volumetric Video with MPEG V3C
 slug: /standards/v3c
 description: MPEG's V3C framework for coding volumetric video, covering V-PCC and MIV profiles, bitstream structure and delivery over 5G.
-sidebar_position: 17
 ---
 
 <div class="topic-banner">
@@ -35,7 +34,7 @@ Visual Volumetric Video-based Coding (V3C, ISO/IEC 23090-5) is the MPEG framewor
 <div class="godeeper-card__body">
 <p>The deeper technical treatment of V3C, V-PCC and MIV delivery over 5G.</p>
 <ul class="godeeper-card__links">
-<li><a href="/tech/volumetric">Volumetric Video</a></li>
+<li><a href="/tech/volumetric">Tech: Volumetric Video</a></li>
 </ul>
 </div>
 </div>
@@ -84,7 +83,7 @@ These identifiers on this page were not confirmed against a primary source (the 
 
 ## Related Standards Work
 
-- [Standards: XR with MPEG-I SD](/standards/xr)
+- [Standards: XR and MPEG-I Scene Description](/standards/xr)
 - [Standards: Beyond 2D Video](/standards/beyond-2d)
 - [Feedback and Requirements](/standards): how 5G-MAG submits feedback and requirements to SDOs
 

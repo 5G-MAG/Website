@@ -3,7 +3,6 @@ hide_title: true
 title: Multimedia Delivery Protocols
 slug: /standards/multimedia
 description: Overview of FLUTE and ROUTE, the one-way transports carrying DASH, HLS and CMAF media over broadcast and multicast networks.
-sidebar_position: 10
 ---
 
 <div class="topic-banner">
@@ -125,14 +124,14 @@ These identifiers on this page were not confirmed against a primary source (the 
 
 ## 5G-MAG tracking and contribution focus
 
-5G-MAG tracks these transport and format specifications and their use across its 5G Broadcast and 5G MBS work. See [Technical Documentation: Multimedia Delivery Protocols](/tech/multimedia/multimedia-content-delivery) for the implementer-facing analysis. Contributions to this documentation are made through the [5G-MAG Standards repository](https://github.com/5G-MAG/Standards/).
+5G-MAG tracks these transport and format specifications and their use across its 5G Broadcast and 5G MBS work. See [Tech: Multimedia Delivery Protocols](/tech/multimedia/multimedia-content-delivery) for the implementer-facing analysis. Contributions to this documentation are made through the [5G-MAG Standards repository](https://github.com/5G-MAG/Standards/).
 
 ## Related Standards Work
 
 - [Standards: 5G Broadcast](/standards/5g-broadcast)
-- [Standards: 5G Multicast & Broadcast Services](/standards/5g-mbs)
+- [Standards: 5G Multicast Broadcast Services (MBS)](/standards/5g-mbs)
 - [Standards: DVB-I over 5G](/standards/dvb-i)
-- [Technical Documentation: Multimedia Delivery Protocols](/tech/multimedia/multimedia-content-delivery)
+- [Tech: Multimedia Delivery Protocols](/tech/multimedia/multimedia-content-delivery)
 - [Feedback and Requirements](/standards): how 5G-MAG submits feedback and requirements to SDOs
 
 :::note

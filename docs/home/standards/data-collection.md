@@ -2,7 +2,6 @@
 hide_title: true
 title: UE Data Collection, Reporting and Event Exposure
 slug: /standards/data-collection
-sidebar_position: 16
 description: Explains the Data Collection Application Function (DCAF) framework letting UEs report media consumption and QoE data for network analytics.
 ---
 
@@ -86,14 +85,14 @@ The Release-17/Release-18 placement of TS 26.531 and TS 26.532 was not confirmed
 
 ## 5G-MAG tracking and contribution focus
 
-5G-MAG tracks the SA4 data collection and reporting framework. The organisation's tracking issues against TS 26.531 and TS 26.532 (for example clarifications on report scope and on `reportFormat` URIs) are raised in the public [5G-MAG Standards repository](https://github.com/5G-MAG/Standards/). The deeper technical view of the interfaces and procedures is on the [Tech portal](/tech/data-collection/data-collection-event-exposure).
+5G-MAG tracks the SA4 data collection and reporting framework. The organisation's tracking issues against TS 26.531 and TS 26.532 (for example clarifications on report scope and on `reportFormat` URIs) are raised in the public [5G-MAG Standards repository](https://github.com/5G-MAG/Standards/). The deeper technical view of the interfaces and procedures is in the technical documentation: [Tech: UE Data Collection](/tech/data-collection/data-collection-event-exposure).
 
 ## Related Standards Work
 
 - [Standards: 5G Media Streaming](/standards/5gms)
-- [Standards: Network APIs](/standards/network-apis)
-- [Standards: AI & ML in 5G Media](/standards/ai-ml)
-- [Technical Documentation: UE Data Collection](/tech/data-collection/data-collection-event-exposure)
+- [Standards: Connectivity Quality with Network APIs](/standards/network-apis)
+- [Standards: AI/ML in 5G Media](/standards/ai-ml)
+- [Tech: UE Data Collection](/tech/data-collection/data-collection-event-exposure)
 - [Meetings with 3GPP SA4](/standards/3gpp-issue-tracking): the live tracker for 3GPP feedback issues on this specification
 
 :::note

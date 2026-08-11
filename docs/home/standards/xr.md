@@ -2,7 +2,6 @@
 hide_title: true
 title: XR and MPEG-I Scene Description
 slug: /standards/xr
-sidebar_position: 18
 description: 'Standards tracking for XR: MPEG-I Scene Description, 3GPP AR/XR specs, split rendering, IVAS audio, and work items by release.'
 ---
 
@@ -35,7 +34,7 @@ eXtended Reality (XR) covers virtual, augmented and mixed reality media delivere
 <div class="godeeper-card__body">
 <p>The extension-by-extension model and the MAF/Presentation Engine architecture.</p>
 <ul class="godeeper-card__links">
-<li><a href="/tech/xr/mpeg-i-scene-description">MPEG-I Scene Description and glTF 2.0 extensions</a></li>
+<li><a href="/tech/xr/mpeg-i-scene-description">Tech: MPEG-I Scene Description and glTF 2.0 extensions</a></li>
 </ul>
 </div>
 </div>
@@ -212,7 +211,7 @@ These identifiers on this page were not confirmed against a primary source (the 
 ## Related Standards Work
 
 - [Standards: Avatar Communications](/standards/avatar)
-- [Standards: Volumetric Video with V3C](/standards/v3c)
+- [Standards: Volumetric Video with MPEG V3C](/standards/v3c)
 - [Standards: Beyond 2D Video](/standards/beyond-2d)
 - [Standards: Real-Time Communications (RTC)](/standards/rtc)
 - [Feedback and Requirements](/standards): how 5G-MAG submits feedback and requirements to SDOs

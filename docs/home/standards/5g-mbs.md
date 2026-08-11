@@ -2,7 +2,6 @@
 hide_title: true
 title: 5G Multicast Broadcast Services (MBS)
 slug: /standards/5g-mbs
-sidebar_position: 3
 description: Covers 5G Multicast-Broadcast Services architecture across user-service, 5G Core and NR/NG-RAN layers, and lists the related 3GPP specifications.
 ---
 
@@ -35,7 +34,7 @@ description: Covers 5G Multicast-Broadcast Services architecture across user-ser
 <div class="godeeper-card__body">
 <p>The implementer-facing analysis of the MBS architecture across its three layers.</p>
 <ul class="godeeper-card__links">
-<li><a href="/tech/5g-mbs">Technical Documentation: Multicast & Broadcast in 5G</a></li>
+<li><a href="/tech/5g-mbs">Tech: Multicast & Broadcast in 5G</a></li>
 </ul>
 </div>
 </div>
@@ -231,13 +230,13 @@ A handful of candidate specifications were checked and excluded for lack of conf
 
 ## 5G-MAG tracking and contribution focus
 
-5G-MAG tracks and contributes to 5G MBS standardisation across all three layers described above (user-service, 5G Core, and NR/NG-RAN). For the current focus areas and the implementer-facing analysis of this architecture, see [Technical Documentation: Multicast & Broadcast in 5G](/tech/5g-mbs).
+5G-MAG tracks and contributes to 5G MBS standardisation across all three layers described above (user-service, 5G Core, and NR/NG-RAN). For the current focus areas and the implementer-facing analysis of this architecture, see [Tech: Multicast & Broadcast in 5G](/tech/5g-mbs).
 
 ## Related Standards Work
 
 - [Standards: 5G Media Streaming](/standards/5gms)
 - [Standards: 5G Broadcast](/standards/5g-broadcast)
-- [Technical Documentation: Multicast & Broadcast in 5G](/tech/5g-mbs)
+- [Tech: Multicast & Broadcast in 5G](/tech/5g-mbs)
 - [Standards: Non-Terrestrial Networks (NTN)](/standards/ntn)
 - [Meetings with 3GPP SA4](/standards/3gpp-issue-tracking): the live tracker for 3GPP feedback issues on this specification
 

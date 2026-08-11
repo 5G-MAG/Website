@@ -3,7 +3,6 @@ hide_title: true
 title: Time Sensitive Communications
 slug: /standards/tsc
 description: 3GPP Time Sensitive Communications specifications for deterministic, low-latency 5G delivery in professional media production, and the related IEEE TSN and SMPTE standards.
-sidebar_position: 15
 ---
 
 <div class="topic-banner">
@@ -86,8 +85,8 @@ These identifiers on this page were not confirmed against a primary source (the 
 ## Related Standards Work
 
 - [Standards: Non-Public Networks](/standards/npn)
-- [Standards: Network APIs](/standards/network-apis)
-- [Technical Documentation: Time Sensitive Communications](/tech/tsc): analysis documents and reference material on the developer/technical side
+- [Standards: Connectivity Quality with Network APIs](/standards/network-apis)
+- [Tech: Time Sensitive Communications](/tech/tsc): analysis documents and reference material on the developer/technical side
 - [Feedback and Requirements](/standards): how 5G-MAG submits feedback and requirements to SDOs
 
 :::note

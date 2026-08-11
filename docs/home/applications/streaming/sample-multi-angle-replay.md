@@ -3,6 +3,10 @@ title: 'Sample: Multi-Angle Replay Viewer (Template)'
 hide_title: true
 sidebar_position: 1
 description: A structural sample demonstrating the proposed layout for showcase-style tutorials — not a real, verified application.
+# Internal template, not a real showcase: keep it out of the sidebar,
+# sitemap and search index until a real application replaces it. The page
+# stays reachable by direct URL for authors using it as the model.
+unlisted: true
 ---
 
 <div class="topic-banner">

@@ -124,5 +124,3 @@ There are no deeper NPN analysis pages on this portal yet: the content above is 
 :::note
 Refer to the [Tech](https://github.com/5G-MAG/Tech/) repository to contribute to this documentation.
 :::
-
----

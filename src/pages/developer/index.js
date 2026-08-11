@@ -50,18 +50,6 @@ const PRODUCT_TYPES = [
   },
 ];
 
-// Deliberately NOT shared with the near-identical arrays in
-// applications/index.js and reference-tools/index.js: each page's topic
-// titles were set independently by a 2026-07-19 per-slot naming review
-// (every hero/hub-card/sidebar label reviewed and decided on its own), not
-// by a blanket short-label-vs-full-name rule. Some topics ended up sharing
-// one canonical name across all three pages (e.g. "Avatar Communication
-// with MPEG ARF"); others still carry a shorter label here or in
-// applications/index.js while reference-tools/index.js keeps a fuller
-// canonical project name (e.g. "Apps with Network APIs" here vs "Network
-// APIs" there). Don't assume the two hub pages agree on a given topic —
-// check both before editing, and change only the file(s) the current
-// naming decision actually covers.
 const DEV_FACTS = [
   { value: '~15', label: 'Project areas across media and connectivity' },
   FACT_REPOSITORIES,
@@ -174,6 +162,9 @@ function ProductTypeCard({ icon, label, description, href }) {
 export default function Home() {
   const demoRigImg = useBaseUrl('/assets/images/gallery/reference-tools-demo-rig.jpg');
   const camaraDemoImg = useBaseUrl('/assets/images/gallery/camara-dedicated-networks-demo.png');
+  // Hooks can't be called inside the CONTRIBUTORS.map callback below
+  // (rules-of-hooks); resolve the directory once and concatenate.
+  const contributorsBaseUrl = useBaseUrl('/assets/images/contributors/');
   return (
     <Layout
       title="Software Accelerator"
@@ -268,7 +259,7 @@ export default function Home() {
                   className={styles.memberCard}
                 >
                   <img
-                    src={useBaseUrl(`/assets/images/contributors/${c.logo}`)}
+                    src={`${contributorsBaseUrl}${c.logo}`}
                     alt=""
                     loading="lazy"
                   />

@@ -75,3 +75,5 @@ The Kanban board below tracks the planned and in-progress work for the Network A
 
 - [Resources](/reference-tools/network-apis/resources)
 - [Tutorials](/reference-tools/network-apis/tutorials)
+- Standards: [Connectivity Quality with Network APIs](/standards/network-apis)
+- Tech: [Network APIs](/tech/network-apis)

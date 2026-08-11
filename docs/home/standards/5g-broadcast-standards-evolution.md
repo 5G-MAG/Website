@@ -2,7 +2,6 @@
 hide_title: true
 title: 5G Broadcast - Standards Evolution
 slug: /standards/5g-broadcast-standards-evolution
-sidebar_position: 2
 description: Release-by-release detail on 3GPP work items, Change Requests and RAN meetings behind LTE-based 5G Broadcast, Releases 14 to 19.
 ---
 
@@ -33,7 +32,7 @@ This page is the detailed, release-by-release companion to [Standards: 5G Broadc
 <div class="godeeper-card__body">
 <p>The deeper technical treatment of 5G Broadcast delivery and receiver behaviour.</p>
 <ul class="godeeper-card__links">
-<li><a href="/tech/5g-broadcast">Technical Documentation: 5G Broadcast</a></li>
+<li><a href="/tech/5g-broadcast">Tech: 5G Broadcast</a></li>
 </ul>
 </div>
 </div>

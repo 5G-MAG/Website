@@ -48,7 +48,7 @@ How network-side analytics (NWDAF) and UE-side data collection fit together to m
 <div class="godeeper-card__body">
 <p>Normative 3GPP specs (TS 23.288, TS 26.531, TS 26.532) and 5G-MAG's contributions on AI/ML.</p>
 <ul class="godeeper-card__links">
-<li><a href="/standards/ai-ml">Standards: AI/ML in 5G Media Standards</a></li>
+<li><a href="/standards/ai-ml">Standards: AI/ML in 5G Media</a></li>
 </ul>
 </div>
 </div>
@@ -104,7 +104,7 @@ The Release placement of TS 26.531 / TS 26.532 relative to TS 23.288, and the ex
 
 - [Tech: UE Data Collection, Reporting and Event Exposure](/tech/data-collection/data-collection-event-exposure): the DCAF architecture and reference points in full.
 - [Towards 6G Media](/tech/6g): how these AI/ML studies feed 5G-MAG's 6G requirements input.
-- [Standards: AI/ML in 5G Media Standards](/standards/ai-ml): the standards-tracking view of this topic.
+- [Standards: AI/ML in 5G Media](/standards/ai-ml): the standards-tracking view of this topic.
 
 :::note
 Refer to the [Tech](https://github.com/5G-MAG/Tech/) repository to contribute to this documentation.

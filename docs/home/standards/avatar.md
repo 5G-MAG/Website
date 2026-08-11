@@ -2,7 +2,6 @@
 hide_title: true
 title: Avatar Communication with MPEG ARF
 slug: /standards/avatar
-sidebar_position: 8
 description: 'Tracks avatar communications standardisation: the MPEG Avatar Representation Format, Scene Description integration and the 3GPP IVAS audio codec.'
 ---
 
@@ -35,7 +34,7 @@ The MPEG Avatar Representation Format, Scene Description integration and the 3GP
 <div class="godeeper-card__body">
 <p>The implementer-facing analysis of the MPEG Avatar Representation Format.</p>
 <ul class="godeeper-card__links">
-<li><a href="/tech/avatar-communications">Avatar Communication with MPEG ARF</a></li>
+<li><a href="/tech/avatar-communications">Tech: Avatar Communication with MPEG ARF</a></li>
 </ul>
 </div>
 </div>
@@ -111,7 +110,7 @@ Established citations on this page (ISO/IEC 23090-39, ISO/IEC 23090-14 and its A
 
 ## Related Standards Work
 
-- [Standards: XR with MPEG-I SD](/standards/xr)
+- [Standards: XR and MPEG-I Scene Description](/standards/xr)
 - [Standards: Real-Time Communications (RTC)](/standards/rtc)
 - [Feedback and Requirements](/standards): how 5G-MAG submits feedback and requirements to SDOs
 

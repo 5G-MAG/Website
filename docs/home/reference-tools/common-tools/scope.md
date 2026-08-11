@@ -60,4 +60,5 @@ Common Tools is a shared toolkit of helper scripts and configurations supporting
 
 ## Related
 
+- Project [index](.): overview and the tools at a glance
 - [Resources](/reference-tools/common-tools/resources)
