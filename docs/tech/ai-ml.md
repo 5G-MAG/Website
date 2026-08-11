@@ -86,27 +86,16 @@ The SA4 Data Collection and Reporting framework (TS 26.531, TS 26.532) standardi
 
 For AI/ML purposes, the relevant point is where the two tracks meet: the Data Collection Application Function can expose its processed events to the NWDAF as one of its consumers (reference points R5/R6), so UE-side observations gathered under the SA4 framework can feed into SA2's network-side analytics rather than the two tracks running in isolation.
 
-## The SA4 AI/ML media study: TR 26.847
+## The SA4 AI/ML media studies: TR 26.927 and TR 26.847
 
-[TR 26.847](https://www.3gpp.org/dynareport/26847.htm) (Evaluation of AI and ML in 5G media services, Release 19, completed June 2025) is SA4's study into applying AI/ML techniques directly to media processing and delivery, as distinct from the network-analytics use of AI/ML in NWDAF above. It defines evaluation methodology, use cases and metrics for assessing AI/ML models in areas such as adaptive bitrate optimisation and media quality enhancement; the [AI/ML Evaluation Framework](/testbeds/ai-ml) reference tooling is aligned with this study.
+SA4's study of applying AI/ML techniques directly to media processing and delivery, as distinct from the network-analytics use of AI/ML in NWDAF above, is captured in two companion technical reports, both published at version 19.0.0 in June 2025 (Release 19):
 
-<details>
-<summary>Detail not independently re-verified</summary>
-
-TR 26.847 was previously tracked under a different, now-superseded number (TR 26.927, last seen as an incomplete draft) with more detailed scope notes (split inference, model delivery, named logical functions). Those specifics have not been independently re-checked against TR 26.847's final published content. Verify before relying on them.
-
-</details>
+- [TR 26.927](https://www.3gpp.org/dynareport/26927.htm) (Study on Artificial Intelligence and Machine Learning in 5G media services) covers the functional side: media-based AI/ML use cases (object recognition in image and video, video quality enhancement in streaming, crowd-sourced media capture, natural language processing on speech) and the media service architecture for AI/ML, including split-inference configurations and model delivery.
+- [TR 26.847](https://www.3gpp.org/dynareport/26847.htm) (Evaluation of Artificial Intelligence and Machine Learning in 5G media services) is the evaluation companion: testbed architectures and anchors for split inferencing and model-data transmission, evaluation metrics, and scenarios such as compressed AI/ML model transfer for automatic speech recognition and video quality enhancement in streaming. The [AI/ML Evaluation Framework](/testbeds/ai-ml) reference tooling is aligned with this report.
 
 ## Related AI/ML studies that feed 6G
 
 [TR 22.874](https://www.3gpp.org/dynareport/22874.htm) (SA1, Study on traffic characteristics and performance requirements for AI/ML model transfer in 5GS) is a companion study, on the network-transport side of AI/ML rather than the media-processing side: it looks at how model-transfer traffic itself behaves on the 5G system. Both this study and TR 26.847 feed 5G-MAG's early input to 6G, where AI-native traffic management is one of the new IMT-2030 usage scenarios; see [Towards 6G Media](/tech/6g) for that wider context.
-
-<details>
-<summary>References to verify</summary>
-
-The Release placement of TS 26.531 / TS 26.532 relative to TS 23.288, and the exact NWDAF consumer/producer role split described above, were not confirmed against a primary source (the 3GPP/ETSI portals block automated access). Verify against the 3GPP work plan before publication.
-
-</details>
 
 ## Related
 

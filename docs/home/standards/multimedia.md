@@ -121,7 +121,7 @@ This is a list of specifications in the scope of Multimedia Content Delivery Pro
 <details>
 <summary>References to verify</summary>
 
-These identifiers on this page were not confirmed against a primary source (the ISO/ETSI/3GPP portals block automated access): the specific ISO catalogue editions linked for ISO/IEC 23009-1 (DASH) and ISO/IEC 23000-19 (CMAF), and the current published version of ETSI TS 103 285 (DVB-DASH). The protocol-to-RFC mappings (FLUTE = RFC 3926/6726, ROUTE = RFC 9223, HLS = RFC 8216, and the LCT/ALC/FCAST building blocks), the TS 26.346/26.517 normative chain, and the FEC scheme identifiers were confirmed against primary spec text. Verify the ISO/ETSI edition and version numbers before publication.
+One link on this page needs a maintainer check: the ISO/IEC 23009-1 (DASH) link points to the catalogue page for the 2022 (5th) edition (iso.org/standard/83314.html). A 2026 (6th) edition of ISO/IEC 23009-1 appears in the IEC catalogue, which would make the linked edition superseded, but iso.org blocks automated access so the current-edition page could not be confirmed; update the link to the current edition before publication. The ISO/IEC 23000-19 (CMAF) link is confirmed as the current 2024 (3rd) edition, and the ETSI TS 103 285 (DVB-DASH) link is confirmed against the ETSI publication listing (latest published version v1.4.1; this page deliberately links the version directory rather than one version). The protocol-to-RFC mappings (FLUTE = RFC 3926/6726, ROUTE = RFC 9223, HLS = RFC 8216, and the LCT/ALC/FCAST building blocks), the TS 26.346/26.517 normative chain, and the FEC scheme identifiers were confirmed against primary spec text.
 
 </details>
 

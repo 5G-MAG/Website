@@ -108,7 +108,7 @@ The reference points are the named interfaces between the DCAF and the surroundi
 | --------------- | ------------------------------------------- | --------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
 | R1              | Provisioning AF ↔ DCAF                      | `Ndcaf_DataReportingProvisioning` (TS 26.532)                                                       | Create/modify provisioning sessions, data reporting configurations and Data Access Profiles. |
 | R2              | Direct Data Collection Client (UE) ↔ DCAF   | `Ndcaf_DataReporting` (TS 26.532)                                                                   | Fetch reporting configuration and submit reports directly; encrypted transfer required.      |
-| R3              | Indirect Data Collection Client (UE) ↔ DCAF | `Ndcaf_DataReporting` (TS 26.532)                                                                   | Fetch configuration and submit reports via an intermediary.                                  |
+| R3              | Indirect Data Collection Client (ASP server) ↔ DCAF | `Ndcaf_DataReporting` (TS 26.532)                                                          | Fetch configuration and submit reports collected from UE Applications (via R8).             |
 | R4              | Application Server ↔ DCAF                   | `Ndcaf_DataReporting` (TS 26.532)                                                                   | Fetch configuration and submit reports from the server side.                                 |
 | R5              | DCAF ↔ NWDAF                                | `Naf_EventExposure` / `Nnef_EventExposure` ([TS 29.517](https://www.3gpp.org/dynareport/29517.htm)) | Expose processed events to network analytics.                                                |
 | R6              | DCAF ↔ Event Consumer AF                    | `Naf_EventExposure` / `Nnef_EventExposure` (TS 29.517)                                              | Expose processed events to a consuming Application Function.                                 |
@@ -123,7 +123,7 @@ A Data Access Profile specifies the processing that the DCAF must perform on col
 
 ## Data reporting (R2/R3/R4)
 
-At R2 the Direct Data Collection Client first obtains its configuration, then opens a data reporting session (identifying the external application and the supported data domains, for example `COMMUNICATION`), and then submits reports. TS 26.532 defines the report formats and their `reportFormat` URIs, and defines event types for 5GMS features whose corresponding data types are added to TS 29.517 for exposure. An encrypted transfer protocol is mandated at R2 to protect the secrecy and integrity of collected UE data in transit. R3 (indirect client) and R4 (Application Server) use the same `Ndcaf_DataReporting` service, differing only in the reporting source.
+At R2 the Direct Data Collection Client first obtains its configuration, then opens a data reporting session (identifying the external application and the supported data domains, for example `COMMUNICATION`), and then submits reports. TS 26.532 defines the reporting rules, including a `reportingFormat` URI per data reporting rule, and defines data types for 5GMS features (such as media streaming access activity) whose corresponding event types appear in TS 29.517 for exposure. An encrypted transfer protocol is mandated at R2 to protect the secrecy and integrity of collected UE data in transit. R3 (indirect client) and R4 (Application Server) use the same `Ndcaf_DataReporting` service, differing only in the reporting source.
 
 ## Event subscription and exposure (R5/R6)
 
@@ -132,13 +132,6 @@ At R6, an Event Consumer AF creates an individual event exposure subscription on
 ## Deployment shapes
 
 The DCAF can be deployed standalone or integrated with 5G Downlink Media Streaming (5GMSd). In the standalone deployment the DCAF collects and exposes UE-side data on its own. In the integrated deployment it is combined with the 5GMSd data reporting framework, so media-specific reporting (such as QoE and consumption reporting) uses the DCAF as its collection endpoint. Docker-Compose setups are provided to bring up the standalone DCAF quickly for testing. The developer-facing detail, request/response examples and tutorials are on the [developer scope page](/reference-tools/data-collection).
-
-<details>
-<summary>References to verify</summary>
-
-These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the exact R1 to R6 reference-point mapping and per-reference-point endpoints, the assignment of the `Ndcaf_DataReportingProvisioning`, `Ndcaf_DataReporting`, `Naf_EventExposure` and `Nnef_EventExposure` service operations to specific reference points, and the statement that TS 26.532 event types have corresponding data types added to TS 29.517. Verify against the 3GPP/ETSI work plan before publication.
-
-</details>
 
 ---
 
