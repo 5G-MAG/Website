@@ -66,26 +66,27 @@ The standardisation spans MPEG (avatar representation and scene placement) and 3
 
 ### Immersive Voice and Audio Services (IVAS)
 
-IVAS is the 3GPP immersive voice and audio codec developed by working group SA4. The deliverable set below spans the general description, the fixed- and floating-point reference software, test material, the detailed algorithmic description (including the RTP payload format and SDP parameters used to negotiate the codec in a session), rendering, and jitter buffer management.
+IVAS is the 3GPP immersive voice and audio codec developed by working group SA4. The deliverable set below spans the general overview, the fixed- and floating-point C code, test material, the detailed algorithmic description (including the RTP payload format and SDP parameters used to negotiate the codec in a session), rendering, error concealment, and jitter buffer management.
 
-- [TS 26.250](https://www.3gpp.org/dynareport/26250.htm): Immersive Voice and Audio Services (IVAS); General description and architecture
+- [TS 26.250](https://www.3gpp.org/dynareport/26250.htm): Codec for Immersive Voice and Audio Services (IVAS); General overview
 - [TS 26.251](https://www.3gpp.org/dynareport/26251.htm): Codec for Immersive Voice and Audio Services (IVAS); C code (fixed-point)
 - [TS 26.252](https://www.3gpp.org/dynareport/26252.htm): Codec for Immersive Voice and Audio Services (IVAS); Test sequences
 - [TS 26.253](https://www.3gpp.org/dynareport/26253.htm): Codec for Immersive Voice and Audio Services (IVAS); Detailed Algorithmic Description including RTP payload format and SDP parameter definitions
 - [TS 26.254](https://www.3gpp.org/dynareport/26254.htm): Codec for Immersive Voice and Audio Services (IVAS); Rendering
-- [TS 26.255](https://www.3gpp.org/dynareport/26255.htm): IVAS Codec; Floating-point computational description
+- [TS 26.255](https://www.3gpp.org/dynareport/26255.htm): Codec for Immersive Voice and Audio Services (IVAS); Error concealment of lost packets
 - [TS 26.256](https://www.3gpp.org/dynareport/26256.htm): Codec for Immersive Voice and Audio Services (IVAS); Jitter Buffer Management
+- [TS 26.258](https://www.3gpp.org/dynareport/26258.htm): Codec for Immersive Voice and Audio Services (IVAS); C code (floating-point)
 
 ### Real-time communication delivery
 
 - [TS 26.114](https://www.3gpp.org/dynareport/26114.htm): IP Multimedia Subsystem (IMS); Multimedia Telephony; Media handling and interaction (MTSI).
-- [TS 26.506](https://www.3gpp.org/dynareport/26506.htm): Real-Time media Communication (RTC) over 5G, the stage-2 architecture for RTC.
+- [TS 26.506](https://www.3gpp.org/dynareport/26506.htm): 5G Real-time Media Communication Architecture (Stage 2), the stage-2 architecture for RTC over 5G.
 
 The transport of ARF animation itself is being addressed at the IETF: [draft-ietf-avtcore-rtp-avatar](https://datatracker.ietf.org/doc/draft-ietf-avtcore-rtp-avatar/) defines an RTP payload format for ARF (ISO/IEC 23090-39) avatar animations. This is work in progress at the IETF and not a 3GPP or MPEG deliverable.
 
 ### Study Items on Avatar Communications
 
-- [TR 26.813](https://www.3gpp.org/dynareport/26813.htm): Study of Avatars in Real-Time Communication Services
+- [TR 26.813](https://www.3gpp.org/dynareport/26813.htm): Avatar Representation and Communication
 
 ### XR and Immersive Media Context
 

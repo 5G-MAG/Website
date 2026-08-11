@@ -94,7 +94,7 @@ The framework distinguishes a small set of functional entities:
 - **Data Collection Application Function (DCAF)** - receives provisioning from the application, offers reporting configurations to clients, collects and buffers reported data, applies the configured processing, and exposes the resulting events.
 - **Provisioning AF** - configures the DCAF: it creates provisioning sessions, defines reporting configurations (sampling, reporting conditions), and sets the Data Access Profiles that govern exposure.
 - **Direct Data Collection Client** - a UE-side client that fetches its configuration from the DCAF and reports directly to it over an encrypted transfer protocol.
-- **Indirect Data Collection Client** - a UE-side client that reports via an intermediary rather than directly.
+- **Indirect Data Collection Client** - a subfunction of the Application Service Provider's server that collects data from UE Applications (at reference point R8) and reports it onward to the DCAF.
 - **Application Server (AS)** - a server-side source of reports for the same data set.
 - **Event Consumer AF** - the function that subscribes to and receives exposed events; a typical consumer is the NWDAF ([TS 23.288](https://www.3gpp.org/dynareport/23288.htm)), the 5G core analytics function.
 
