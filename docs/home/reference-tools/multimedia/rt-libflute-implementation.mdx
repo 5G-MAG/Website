@@ -2,7 +2,7 @@
 title: rt-libflute Implementation
 hide_title: true
 sidebar_position: 4
-description: Which features rt-libflute implements, per TS 26.346 and the FLUTE RFCs, with a step-by-step account of how each supported feature actually works.
+description: A clear, verified list of what rt-libflute implements and what it doesn't, per TS 26.346 and the FLUTE RFCs.
 ---
 
 {/*
@@ -15,20 +15,21 @@ description: Which features rt-libflute implements, per TS 26.346 and the FLUTE 
      "<Tool> Specifications" page for the full spec list instead of
      re-listing specs here; cite specific clauses inline as you go instead.
   2. A "Key terms" admonition defining any acronyms a newcomer needs first.
-  3. One section per functional area. Each section is TWO parts, in order:
-       a. A summary table -- Feature | Standard | Implemented? (Yes / No /
-          Partial) -- for scanning. "No" and "Partial" rows get a short
-          parenthetical reason inline; nothing more.
-       b. "How this works" -- a numbered, step-by-step account of what is
-          actually implemented for the Yes/Partial rows only, each step
-          citing the exact clause/RFC section it was checked against.
-          "No" rows need no walkthrough -- there's nothing to walk through.
+  3. One section per functional area. Within each section, group features
+     under plain, unambiguous headings -- "Implemented" / "Partially
+     implemented" / "Not implemented" -- rather than a status column in a
+     table. The heading itself is the answer; a reader jumps straight to
+     the one they care about instead of reading every row to find it.
+     Every bullet still carries its exact clause/RFC citation and a short,
+     concrete line of *how* it works (Implemented) or *why it's a gap*
+     (Not implemented) -- never just the citation alone.
      Never reference PR numbers -- they merge, close, or get superseded on
      their own timeline, and hard-coding them makes the page stale on that
      PR's timeline instead of the implementation's.
   4. "What it deliberately doesn't do" -- the boundary of the component
      within its larger system, and where the rest actually lives.
-  5. One rolled-up summary table across all areas, for a single-glance view.
+  5. One rolled-up summary table across all areas, for a single-glance
+     index once a reader already knows the detail.
   6. "Related" links: the companion Specifications page, the general
      project Scope page one level up, and the source repository.
 */}
@@ -51,7 +52,7 @@ description: Which features rt-libflute implements, per TS 26.346 and the FLUTE 
 
 ## What this page is
 
-[rt-libflute](https://github.com/5G-MAG/rt-libflute) is 5G-MAG's open-source C++ library for FLUTE &mdash; the protocol used to push files (media segments, manifests, service metadata) one-way over a multicast or broadcast network, with no return channel from the receiver. This page states, feature by feature, which capabilities the library implements against 3GPP TS 26.346 and the FLUTE RFCs. Every area below follows the same pattern: a table you can scan in a few seconds, then a step-by-step account of exactly how each supported feature works, citing the specific clause it was checked against.
+[rt-libflute](https://github.com/5G-MAG/rt-libflute) is 5G-MAG's open-source C++ library for FLUTE &mdash; the protocol used to push files (media segments, manifests, service metadata) one-way over a multicast or broadcast network, with no return channel from the receiver. This page draws a hard line, feature by feature, between **what rt-libflute implements today and what it doesn't**, checked against 3GPP TS 26.346 and the FLUTE RFCs. Every area below is split into two or three plainly labelled groups &mdash; you don't need to read a status column, the heading tells you which list you're in.
 
 The specifications named here are explained and listed in full on the companion page, [rt-libflute Specifications](./rt-libflute-standards) &mdash; including why FLUTE version 1, not the newer version 2, is the profile that applies to 5G-MAG's use of this library. This page doesn't repeat that list; every RFC and TS number below is one already collected there.
 
@@ -68,112 +69,105 @@ This page describes the `development` branch as of 2026-08-11. It is a source-le
 
 ## Protocol core: FLUTE / ALC / LCT
 
-| Feature | Standard | Implemented? |
-| --- | --- | --- |
-| FLUTE version 1 on the wire | RFC 3926; TS 26.346 §7.2.0 | **Yes** |
-| LCT header fields (CCI, TSI, TOI, flags) | TS 26.346 §7.2.7 | **Yes** |
-| LCT extension headers (EXT_FDT, EXT_FTI, EXT_CENC) | TS 26.346 §7.2.8 | **Yes** |
-| Close Session / Close Object flags | TS 26.346 §7.2.7 | No &mdash; parsed on receive, not settable on transmit |
-| TSI wider than 16 bits | RFC 3451/5651 §4.2 (S/H flags) | No &mdash; not needed for MBMS, see step 2 below |
-| FDT Instance ID wraparound | RFC 3926 §3.4.1 | No &mdash; ID increments without bound instead of wrapping |
+### Implemented
 
-**How this works**
+- **FLUTE version 1 on the wire** (RFC 3926; TS 26.346 &sect;7.2.0) &mdash; every FDT-carrying packet's EXT_FDT extension is stamped with version 1 in its high nibble on transmit. The decoder additionally tolerates a version 2 nibble on receive. Matches RFC 3926's own text: "This document specifies FLUTE version 1... MUST set this field to '1'."
+- **LCT header fields** (TS 26.346 &sect;7.2.7) &mdash; CCI fixed at 32 bits and always zero; TSI as a 16-bit half-word (S=0, H=1); TOI as a 16-bit half-word on transmit (the decoder accepts a wider TOI); TOI 0 reserved exclusively for FDT Instances; Sender-Current-Time and Expected-Residual-Time flags always zero; HDR_LEN in 32-bit words.
+- **LCT extension headers** (TS 26.346 &sect;7.2.8) &mdash; EXT_FDT and EXT_FTI generated on every FDT Instance (TOI 0) packet, omitted from every file (TOI&gt;0) packet. EXT_CENC decoded on receive but never generated, since &sect;7.2.8 separately requires FDT Instances never be content encoded. EXT_NOP/EXT_AUTH/EXT_TIME accepted and ignored on receive, matching RFC 3926's default action for unrecognised extensions.
 
-1. **FLUTE version.** Every FDT-carrying packet's EXT_FDT extension is stamped with version 1 in its high nibble on transmit. The decoder additionally tolerates a version 2 nibble on receive. This matches RFC 3926's own text: "This document specifies FLUTE version 1... in any ALC packet that carries FDT Instance... MUST set this field to '1'."
-2. **LCT header.** TS 26.346 §7.2.7 fixes several fields for MBMS specifically, and the implementation matches each one: the CCI field is 32 bits and always zero; the TSI field is a 16-bit half-word (S=0, H=1); the TOI field is a 16-bit half-word on transmit (the decoder accepts a wider TOI, since nothing in the clause forbids a receiver being more permissive); TOI 0 is reserved exclusively for FDT Instances; the Sender-Current-Time and Expected-Residual-Time flags are always zero; HDR_LEN is expressed in 32-bit words as required.
-3. **LCT extensions.** Per §7.2.8's exact rule, EXT_FDT and EXT_FTI are generated on every FDT Instance (TOI 0) packet and omitted from every file (TOI&gt;0) packet. EXT_CENC is decoded on receive but never generated on transmit, since §7.2.8 separately states FDT Instances shall not be content encoded. EXT_NOP, EXT_AUTH and EXT_TIME are accepted and ignored on receive, which is RFC 3926's own default action for unrecognised extensions.
+### Not implemented
+
+- **Close Session / Close Object flags** (TS 26.346 &sect;7.2.7) &mdash; parsed on receive, but not settable on transmit.
+- **TSI wider than 16 bits on transmit** (RFC 3451/5651 &sect;4.2, the LCT S/H flags) &mdash; silently truncated rather than using the S flag's 48-bit field width. Doesn't affect a compliant MBMS session, since &sect;7.2.7 fixes MBMS TSI at 16 bits regardless &mdash; this would only matter for a caller using the library outside that profile.
+- **FDT Instance ID wraparound** (RFC 3926 &sect;3.4.1) &mdash; the ID increments without bound instead of wrapping within the wire format's 20-bit field.
 
 ## Forward Error Correction
 
-| Feature | Standard | Implemented? |
-| --- | --- | --- |
-| Compact No-Code FEC | RFC 3695; TS 26.346 §7.2.2, §7.2.3 | **Yes** |
-| Raptor FEC | RFC 5053; TS 26.346 §7.2.2 (decoder mandatory), §7.2.12, Annex B | **No** |
-| RaptorQ FEC | RFC 6330 | No &mdash; not part of TS 26.346's FEC scheme set |
+### Implemented
 
-**How this works**
+- **Compact No-Code FEC** (RFC 3695; TS 26.346 &sect;7.2.2, &sect;7.2.3) &mdash; FEC Payload ID as a 16-bit Source Block Number plus a 16-bit Encoding Symbol ID (&sect;7.2.7); source-block partitioning follows RFC 3926's "Algorithm for Computing Source Block Structure" (&sect;7.2.3). Works correctly, but carries no redundancy at all &mdash; a lost packet loses that piece of the file until the next FDT carousel cycle.
 
-1. **Compact No-Code.** The FEC Payload ID is a 16-bit Source Block Number plus a 16-bit Encoding Symbol ID, exactly as RFC 3695/TS 26.346 §7.2.7 specify. Source-block partitioning follows RFC 3926's "Algorithm for Computing Source Block Structure," referenced by §7.2.3. This scheme works correctly, but it is not the scheme TS 26.346 actually depends on for reliability &mdash; it carries no redundancy at all, so any lost packet loses that piece of the file until the next FDT carousel cycle.
-2. **Raptor is the gap that matters most on this page.** §7.2.2 states plainly: "A UE that supports MBMS User Services shall support a decoder for the Raptor FEC scheme." That decoder does not exist in `development` today. Everything else on this page is either done or a smaller gap; this is the one place where the implementation falls short of a hard MUST-level requirement that's central to what MBMS/MBS download is for.
-3. **RaptorQ** is a newer, unrelated FEC scheme (RFC 6330). It doesn't appear anywhere in TS 26.346's FEC scheme definitions (§7.2.2, §7.2.12) &mdash; not required, not forbidden, simply outside this standard's scope.
+### Not implemented
+
+:::caution[This is the gap that matters most on this page]
+**Raptor FEC** (RFC 5053; TS 26.346 &sect;7.2.2, &sect;7.2.12, Annex B) &mdash; TS 26.346 &sect;7.2.2 states: "A UE that supports MBMS User Services **shall** support a decoder for the Raptor FEC scheme." That decoder does not exist in `development` today. Everything else on this page is either done or a narrower gap; this is the one place the implementation falls short of a hard MUST-level requirement central to what MBMS/MBS download is for &mdash; without it, every download relies solely on Compact No-Code above.
+:::
+
+### Reference only (not part of this standard)
+
+- **RaptorQ FEC** (RFC 6330) &mdash; doesn't appear anywhere in TS 26.346's FEC scheme definitions (&sect;7.2.2, &sect;7.2.12). Not required, not forbidden, simply outside this standard's scope; would matter only for a non-3GPP deployment or a future 3GPP adoption.
 
 ## FDT Instances
 
-| Feature | Standard | Implemented? |
-| --- | --- | --- |
-| Mandatory FDT attributes (Content-Location, TOI, Expires) | TS 26.346 §7.2.9 | **Yes** |
-| Optional FDT attributes (Content-Length, Content-Type, Content-MD5, FEC-OTI-*) | TS 26.346 §7.2.9 | **Yes** |
-| 3GPP FDT extensions (Cache-Control, File-ETag) | TS 26.346 §7.2.10, §7.2.13 | **Yes** |
-| FDT expiry hard enforcement | TS 26.346 §7.2.9 | Partial &mdash; parsed, not enforced at packet-processing time |
-| Complete attribute | RFC 3926 §3.4.2; TS 26.346 §7.2.9 | No |
-| Group, Session-Identity, FullFDT, Decryption-KEY-URI, FEC-Redundancy-Level | TS 26.346 §7.2.6, §7.2.11, §7.2.14&ndash;7.2.16 | No |
+### Implemented
 
-**How this works**
+- **Mandatory FDT attributes** (TS 26.346 &sect;7.2.9) &mdash; every FDT Instance and File entry carries Content-Location, TOI and Expires, the three elements &sect;7.2.9 marks mandatory.
+- **Optional FDT attributes** (TS 26.346 &sect;7.2.9) &mdash; Content-Length, Content-Type, Content-Encoding, Content-MD5, and the FEC-OTI-* attributes are all read and written. Content-MD5 is actively checked: a mismatch on reception triggers re-reception rather than silently accepting a corrupt file.
+- **3GPP FDT extensions** (TS 26.346 &sect;7.2.10, &sect;7.2.13) &mdash; `mbms2007:Cache-Control` (no-cache, Expires) and `mbms2012:File-ETag`, both read and written.
 
-1. **Mandatory attributes.** Every FDT Instance and File entry carries Content-Location, TOI and Expires &mdash; the three data elements §7.2.9 marks as mandatory &mdash; read on receive and written on transmit.
-2. **Optional attributes.** Content-Length, Content-Type, Content-Encoding, Content-MD5, and the FEC-OTI-* attributes are all read and written, matching the optional set §7.2.9 lists. Content-MD5 in particular is actively checked: on reception, a mismatch against the decoded content triggers re-reception rather than silently accepting a corrupt file.
-3. **3GPP FDT extensions.** The `mbms2007:Cache-Control` element (no-cache, Expires) and `mbms2012:File-ETag` attribute, both defined in §7.2.10's schema extensions, are read and written.
-4. **FDT expiry is the one genuinely partial case on this page.** §7.2.9 requires: "the UE shall not use a received FDT Instance to interpret packets received beyond the expiration time." The Expires value is parsed and made available to callers (cache-eviction logic reads it), but nothing in the packet-receive path itself checks an FDT Instance's expiry before using it to interpret an incoming packet. The common case is covered by cache eviction; the hard, spec-mandated cutoff at packet-processing time is not yet there.
+### Partially implemented
+
+- **FDT expiry hard enforcement** (TS 26.346 &sect;7.2.9) &mdash; &sect;7.2.9 requires: "the UE shall not use a received FDT Instance to interpret packets received beyond the expiration time." The Expires value is parsed and made available to callers (cache-eviction logic reads it), but nothing in the packet-receive path itself checks an FDT Instance's expiry before using it to interpret an incoming packet. The common case is covered by cache eviction; the hard, spec-mandated cutoff at packet-processing time is not yet there.
+
+### Not implemented
+
+- **Complete attribute** (RFC 3926 &sect;3.4.2; TS 26.346 &sect;7.2.9) &mdash; marking an FDT Instance as the final, definitive file list for the session.
+- **Group, MBMS-Session-Identity/Expiry, FullFDT, Decryption-KEY-URI, FEC-Redundancy-Level** (&sect;7.2.6, &sect;7.2.11, &sect;7.2.14&ndash;7.2.16) &mdash; and the Rel-11/Rel-13 extensions (Alternate-Content-Location, IndependentUnitPositions).
 
 ## Content encoding
 
-| Feature | Standard | Implemented? |
-| --- | --- | --- |
-| GZIP encode (transmit) / decode (receive) | RFC 1952; TS 26.346 §7.2.5 | **Yes** |
-| FDT Instances never content encoded | TS 26.346 §7.2.8 | **Yes** |
+### Implemented
 
-**How this works**
-
-1. Files are GZIP-encoded on transmit and decoded on receive, satisfying §7.2.5's UE mandate; decoded length is checked against the FDT's declared Content-Length as a correctness check. Deflate is also handled.
-2. FDT Instances themselves are never content-encoded on transmit, matching §7.2.8's separate rule for FDT Instances specifically (distinct from the file content-encoding rule above).
+- **GZIP content encoding** (RFC 1952; TS 26.346 &sect;7.2.5) &mdash; files GZIP-encoded on transmit, decoded on receive; decoded length is checked against the declared Content-Length. Deflate also handled.
+- **FDT Instances never content encoded** (TS 26.346 &sect;7.2.8) &mdash; a separate rule from the file-encoding one above; enforced on transmit.
 
 ## Transport, session and platform
 
-| Feature | Standard | Implemented? |
-| --- | --- | --- |
-| UDP multicast, IPv4 and IPv6 | &mdash; | **Yes** |
-| UDP tunnel mode (GTP-U user plane) | TS 23.247 (N3mb) | **Yes** |
-| IPsec ESP protection | &mdash; | **Yes** |
-| Source-Specific Multicast (SSM) | RFC 4607 | Partial &mdash; IPv4 only |
-| Multicast join on a specific interface | &mdash; | Partial &mdash; IPv4 only |
-| Receive buffer sized to the max UDP datagram | &mdash; | No &mdash; fixed well below that today |
+### Implemented
 
-**How this works**
+- **UDP multicast, IPv4 and IPv6** &mdash; transmit and receive both work over plain UDP multicast on either protocol.
+- **UDP tunnel mode** (TS 23.247, the N3mb transport context) &mdash; encapsulated IPv4+UDP inner headers for delivery through a GTP-U user plane, used by rt-mbs-transport-function.
+- **IPsec ESP protection** &mdash; both transmit and receive directions, via Linux XFRM/netlink.
 
-1. Transmit and receive both work over plain UDP multicast on IPv4 and IPv6.
-2. Tunnel mode wraps each packet in an encapsulated IPv4+UDP inner header for delivery through a GTP-U user plane &mdash; the N3mb transport context TS 23.247 defines, used by rt-mbs-transport-function.
-3. IPsec ESP protects the transport in both directions via Linux XFRM/netlink.
-4. SSM (RFC 4607) and interface-selective multicast join are both implemented for IPv4 only; the IPv6 paths for the same features are not yet at parity.
+### Partially implemented
+
+- **Source-Specific Multicast (SSM)** (RFC 4607) &mdash; implemented for IPv4; the IPv6 path isn't at parity.
+- **Multicast join on a specific interface** &mdash; also IPv4-only; not yet at parity for IPv6.
+
+### Not implemented
+
+- **Receive buffer sized to the maximum UDP datagram** &mdash; currently fixed well below that, which can silently truncate large encoding symbols.
 
 ## What the library deliberately doesn't do
 
 rt-libflute implements the FLUTE/ALC/LCT protocol layer and FEC &mdash; the transport itself. The layers around it are the consuming application's job, not the library's:
 
-- SDP session descriptions for FLUTE sessions (TS 26.346 §7.3): parsed/generated by rt-mbms-client, rt-mbs-client and the transport functions.
-- Service announcement / User Service Description (§5.2) &mdash; how a receiver discovers a session exists in the first place.
-- Associated delivery procedures: file repair (§9.3), reception reporting (§9.4), consumption reporting (§9.4A) &mdash; all of which need a return channel, which this protocol by design doesn't have.
-- OMA Push (§7.4), RTSP session control (§7.5), Keep Updated service (§7.7), partial file handling (§7.9).
+- SDP session descriptions for FLUTE sessions (TS 26.346 &sect;7.3): parsed/generated by rt-mbms-client, rt-mbs-client and the transport functions.
+- Service announcement / User Service Description (&sect;5.2) &mdash; how a receiver discovers a session exists in the first place.
+- Associated delivery procedures: file repair (&sect;9.3), reception reporting (&sect;9.4), consumption reporting (&sect;9.4A) &mdash; all of which need a return channel, which this protocol by design doesn't have.
+- OMA Push (&sect;7.4), RTSP session control (&sect;7.5), Keep Updated service (&sect;7.7), partial file handling (&sect;7.9).
 - MBSTF/MBS service APIs (TS 29.581) and MBMS client APIs (TS 26.347).
 
 If you're looking for where those live, they're implemented in the reference tools that sit above rt-libflute: rt-mbs-transport-function, rt-mbs-client, rt-mbms-bmsc, and rt-mbms-client.
 
 ## Summary
 
-| Area | Feature | Standard | Implemented? |
+| Area | Feature | Standard | Status |
 | --- | --- | --- | --- |
-| Protocol core | FLUTE v1 wire format | RFC 3926; §7.2.0 | Yes |
-| Protocol core | LCT header / extensions | §7.2.7, §7.2.8 | Yes |
-| Protocol core | Close flags, wide TSI, FDT ID wraparound | §7.2.7; RFC 3926 §3.4.1 | No |
-| FEC | Compact No-Code | RFC 3695; §7.2.2 | Yes |
-| FEC | Raptor (UE decoder mandatory) | RFC 5053; §7.2.2 | **No** |
-| FEC | RaptorQ | RFC 6330 | No (out of scope) |
-| FDT | Mandatory + optional attributes, 3GPP extensions | §7.2.9, §7.2.10 | Yes |
-| FDT | Expiry hard enforcement | §7.2.9 | Partial |
-| FDT | Complete attribute, Group, Session-Identity, FullFDT, etc. | §7.2.6, §7.2.9, §7.2.11, §7.2.14&ndash;16 | No |
-| Content encoding | GZIP | RFC 1952; §7.2.5 | Yes |
-| Transport | UDP multicast, tunnel mode, IPsec | TS 23.247 | Yes |
-| Transport | SSM, interface join, receive buffer sizing on IPv6 | RFC 4607 | Partial / No |
-| Consumer scope | SDP, file repair, reporting, USD | §7.3, §9.x, §5.2 | Not this library's job |
+| Protocol core | FLUTE v1 wire format | RFC 3926; &sect;7.2.0 | Implemented |
+| Protocol core | LCT header / extensions | &sect;7.2.7, &sect;7.2.8 | Implemented |
+| Protocol core | Close flags, wide TSI, FDT ID wraparound | &sect;7.2.7; RFC 3926 &sect;3.4.1 | Not implemented |
+| FEC | Compact No-Code | RFC 3695; &sect;7.2.2 | Implemented |
+| FEC | Raptor (UE decoder mandatory) | RFC 5053; &sect;7.2.2 | **Not implemented** |
+| FEC | RaptorQ | RFC 6330 | Reference only |
+| FDT | Mandatory + optional attributes, 3GPP extensions | &sect;7.2.9, &sect;7.2.10 | Implemented |
+| FDT | Expiry hard enforcement | &sect;7.2.9 | Partially implemented |
+| FDT | Complete attribute, Group, Session-Identity, FullFDT, etc. | &sect;7.2.6, &sect;7.2.9, &sect;7.2.11, &sect;7.2.14&ndash;16 | Not implemented |
+| Content encoding | GZIP | RFC 1952; &sect;7.2.5 | Implemented |
+| Transport | UDP multicast, tunnel mode, IPsec | TS 23.247 | Implemented |
+| Transport | SSM, interface join on IPv6 | RFC 4607 | Partially implemented |
+| Transport | Max-datagram receive buffer | &mdash; | Not implemented |
+| Consumer scope | SDP, file repair, reporting, USD | &sect;7.3, &sect;9.x, &sect;5.2 | Not this library's job |
 
 ## Related
 
