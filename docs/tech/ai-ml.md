@@ -69,6 +69,8 @@ How network-side analytics (NWDAF) and UE-side data collection fit together to m
 
 </div>
 
+[Execution Plan](https://github.com/orgs/5G-MAG/projects/44/views/16)
+
 ## NWDAF: network-side analytics (SA2)
 
 The Network Data Analytics Function (NWDAF) is the 5G core function through which network functions and other data sources expose measurements, and through which consumers request analytics or predictions derived from that data. TS 23.288 splits the NWDAF's internal role in two:
@@ -88,17 +90,23 @@ For AI/ML purposes, the relevant point is where the two tracks meet: the Data Co
 
 [TR 26.847](https://www.3gpp.org/dynareport/26847.htm) (Evaluation of AI and ML in 5G media services, Release 19, completed June 2025) is SA4's study into applying AI/ML techniques directly to media processing and delivery, as distinct from the network-analytics use of AI/ML in NWDAF above. It defines evaluation methodology, use cases and metrics for assessing AI/ML models in areas such as adaptive bitrate optimisation and media quality enhancement; the [AI/ML Evaluation Framework](/testbeds/ai-ml) reference tooling is aligned with this study.
 
-:::warning[Detail not independently re-verified]
+<details>
+<summary>Detail not independently re-verified</summary>
+
 TR 26.847 was previously tracked under a different, now-superseded number (TR 26.927, last seen as an incomplete draft) with more detailed scope notes (split inference, model delivery, named logical functions). Those specifics have not been independently re-checked against TR 26.847's final published content. Verify before relying on them.
-:::
+
+</details>
 
 ## Related AI/ML studies that feed 6G
 
 [TR 22.874](https://www.3gpp.org/dynareport/22874.htm) (SA1, Study on traffic characteristics and performance requirements for AI/ML model transfer in 5GS) is a companion study, on the network-transport side of AI/ML rather than the media-processing side: it looks at how model-transfer traffic itself behaves on the 5G system. Both this study and TR 26.847 feed 5G-MAG's early input to 6G, where AI-native traffic management is one of the new IMT-2030 usage scenarios; see [Towards 6G Media](/tech/6g) for that wider context.
 
-:::warning[References to verify]
+<details>
+<summary>References to verify</summary>
+
 The Release placement of TS 26.531 / TS 26.532 relative to TS 23.288, and the exact NWDAF consumer/producer role split described above, were not confirmed against a primary source (the 3GPP/ETSI portals block automated access). Verify against the 3GPP work plan before publication.
-:::
+
+</details>
 
 ## Related
 

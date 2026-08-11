@@ -110,9 +110,12 @@ M6 and M7 are two of the 5GMS reference points (the named interfaces between the
 
 5G-MAG follows the SA4 RTC architecture (TS 26.506 / TS 26.113), its harmonisation with 5G Media Streaming (TS 26.510), and the WebRTC transport it builds on.
 
-:::warning[References to verify]
+<details>
+<summary>References to verify</summary>
+
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TR 26.925, the release placement of TS 26.506 / TS 26.113 / TS 26.510, the NG-RTC stage 3 specification numbers, the RESPECT signalling protocol status, and the Release 19 immersive-RTC study identifier. Verify against the 3GPP work plan before publication.
-:::
+
+</details>
 
 ## Related Standards Work
 

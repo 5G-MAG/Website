@@ -218,7 +218,9 @@ The normative specifications above were preceded by 3GPP study reports (TRs), ke
 - [TR 33.850](https://www.3gpp.org/dynareport/33850.htm) - Study on security aspects of enhancements for 5G Multicast-Broadcast Services (MBS) (Rel-17)
 - [TR 33.883](https://www.3gpp.org/dynareport/33883.htm) - Study on security enhancements for 5G multicast-broadcast services phase 2 (Rel-18)
 
-:::warning[References to verify]
+<details>
+<summary>References to verify</summary>
+
 This specification list was compiled by cross-referencing 3GPP's own Change Request records for the work items behind MBS &mdash; `5MBS` (900038), `NR_MBS` (860048) and `NR_MBS-Core` (860148), plus their CT1/CT3/CT4/SA4 sub-items &mdash; rather than compiled from spec titles or a keyword search alone. Checked directly against the official Release 17/18/19 Description reports (TR 21.917, TR 21.918, TR 21.919): the Release 17 `5MBS` CT sub-items, previously unnamed here, are CT1 (920043), CT3 (920044) and CT4 (910002); the SA4 sub-items are `5MBUSA` (920010, behind TS 26.502/26.517) and `5MBP3` (940008). Release 18's `5MBS_Ph2` (989999) has the equivalent CT1/CT3/CT4 set (990001/990076/990077), plus a dedicated charging work item, `5MBS_CH` (1000010, behind TS 32.279), and the RAN-side extension `NR_MBS_enh` / `NR_MBS_enh-Core` (940099/940199).
 
 TS 29.116 was checked and excluded (concerns the legacy eMBMS bridge for 5G Media Streaming, not 5G-native MBS). TS 29.274 was checked and included (adds a genuine MBS-specific interface type, N19mb in F-TEID).
@@ -226,7 +228,8 @@ TS 29.116 was checked and excluded (concerns the legacy eMBMS bridge for 5G Medi
 TS 38.463 and TS 37.483 were previously described as an old-vs-new (deprecated) pair; both are in fact actively maintained, covering different deployment scenarios. Corrected here; see the [MBS RAN procedures pages](/tech/5g-mbs/analysis-mbs-broadcast-ran) for the technical detail.
 
 A handful of candidate specifications were checked and excluded for lack of confirmed MBS content: TS 23.288, TS 28.541, TS 33.535, TS 26.501, TS 26.512. Separately, the Release 17/18/19 Description reports also list MBS work items combining it with adjacent scope outside this page's remit, deliberately excluded here as out of scope rather than for lack of MBS content: interworking with non-3GPP Digital Terrestrial Broadcast networks (`DTT4MBS`, 970043, Release 19 SA1 study item, corrected here from a previous mistyping as "DTTB4MBS"), Mission Critical Services (`5MBS_eMC` and the `FS_MC5MBS` study in Release 17, `MCOver5MBS` in Release 18) and V2X (`TEI18_MBS4V2X` in Release 18).
-:::
+
+</details>
 
 ## 5G-MAG tracking and contribution focus
 

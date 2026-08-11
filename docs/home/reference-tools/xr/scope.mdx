@@ -25,7 +25,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 **Category:** MPEG Implementation
 
-<div style={{margin: '8px 0'}}><a class="button button--primary" href="/reference-tools/xr/scope" style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href="/reference-tools/xr/resources" style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href="/reference-tools/xr/tutorials" style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/xr/tutorials#developer-exchange" style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
+<div style={{margin: '8px 0'}}><a class="button button--primary" href={useBaseUrl('/reference-tools/xr/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/xr/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/xr/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/xr/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
 ## What This Project Implements
 
@@ -262,9 +262,12 @@ Anchoring and pose handling on the two device families are provided through Unit
 
 For hands-on setup, building the player and loading a first scene, see [Tutorials](./tutorials).
 
-:::warning[References to verify]
+<details>
+<summary>References to verify</summary>
+
 The glTF extension support shown in the tables reflects the state of the reference tools and can change between releases; check the linked repositories and release notes for the current status. The out-of-scope 3GPP identifiers referenced above (TS 26.119, TS 26.565, and the 5G Media Streaming specifications) are tracked on the Standards and Tech views and were not confirmed here against a primary source; verify those against the 3GPP/ETSI work plan before relying on them.
-:::
+
+</details>
 
 ## Getting Started
 

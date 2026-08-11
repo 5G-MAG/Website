@@ -22,10 +22,6 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 The 3GPP DCAF architecture for UE data collection and reporting, and how the network exposes the resulting events to consumers such as the NWDAF.
 </div>
 
-:::warning
-This documentation is currently **under development and subject to change**. It reflects outcomes elaborated by 5G-MAG members. If you are interested in becoming a member of the 5G-MAG and actively participating in shaping this work, please contact the [Project Office](/contact)
-:::
-
 ## Overview
 
 User Equipment (UE) data collection covers the 3GPP mechanisms by which a device reports data, such as media consumption and quality of experience (QoE), to the network, and by which the network exposes events to consuming functions. For media services this feeds analytics and delivery optimisation. This page covers the reference tooling and technical resources for the Data Collection Application Function (DCAF) and event exposure framework. 5G-MAG tracks this work and maintains related reference implementations. For acronyms used here, see the [Glossary](/tech/glossary).
@@ -77,7 +73,7 @@ User Equipment (UE) data collection covers the 3GPP mechanisms by which a device
 
 </div>
 
-[Execution Plan](https://github.com/orgs/5G-MAG/projects/44/views/21)
+[Execution Plan](https://github.com/orgs/5G-MAG/projects/44/views/6)
 
 The slide deck below introduces the UE data collection, reporting and event exposure framework; download the file for the full detail.
 
@@ -137,9 +133,12 @@ At R6, an Event Consumer AF creates an individual event exposure subscription on
 
 The DCAF can be deployed standalone or integrated with 5G Downlink Media Streaming (5GMSd). In the standalone deployment the DCAF collects and exposes UE-side data on its own. In the integrated deployment it is combined with the 5GMSd data reporting framework, so media-specific reporting (such as QoE and consumption reporting) uses the DCAF as its collection endpoint. Docker-Compose setups are provided to bring up the standalone DCAF quickly for testing. The developer-facing detail, request/response examples and tutorials are on the [developer scope page](/reference-tools/data-collection).
 
-:::warning[References to verify]
+<details>
+<summary>References to verify</summary>
+
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the exact R1 to R6 reference-point mapping and per-reference-point endpoints, the assignment of the `Ndcaf_DataReportingProvisioning`, `Ndcaf_DataReporting`, `Naf_EventExposure` and `Nnef_EventExposure` service operations to specific reference points, and the statement that TS 26.532 event types have corresponding data types added to TS 29.517. Verify against the 3GPP/ETSI work plan before publication.
-:::
+
+</details>
 
 ---
 

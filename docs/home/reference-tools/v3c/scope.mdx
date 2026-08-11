@@ -26,7 +26,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 **Category:** MPEG Implementation
 
-<div style={{margin: '8px 0'}}><a class="button button--primary" href="/reference-tools/v3c/scope" style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href="/reference-tools/v3c/resources" style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href="/reference-tools/v3c/tutorials" style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/v3c/tutorials#developer-exchange" style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
+<div style={{margin: '8px 0'}}><a class="button button--primary" href={useBaseUrl('/reference-tools/v3c/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/v3c/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/v3c/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/v3c/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
 ## What This Project Implements
 
@@ -92,9 +92,12 @@ The blocks in the diagram map to the repositories listed on the pages below.
 - [Resources](./resources)
 - [Common Tools](../common-tools/)
 
-:::warning[References to verify]
+<details>
+<summary>References to verify</summary>
+
 These specifics on this page were not confirmed against a primary source: the exact ISO/IEC 23090-5 edition and the V3C/MIV feature subset each reference-tool component targets (this changes as the project develops and is tracked in the repositories). The ISO part numbers themselves (23090-5, 23090-10, 23090-12) are taken from the ISO catalogue. Verify the edition and feature coverage against the repository READMEs and the Kanban board before relying on it externally.
-:::
+
+</details>
 
 ## Roadmap
 

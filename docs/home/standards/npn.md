@@ -81,9 +81,12 @@ The NPN feature set has grown across releases. The following is an orientation, 
 
 5G-MAG tracks NPN standardisation as it applies to media production and contribution, in particular the VIAPA requirements, the SNPN and PNI-NPN deployment models, device onboarding at scale, and the combination of NPN with TSC for deterministic essence transport and with RTC for interactive contribution. See the [Tech: Non-Public Networks](/tech/npn) page for the detailed analysis.
 
-:::warning[References to verify]
+<details>
+<summary>References to verify</summary>
+
 The Release 18 and later NPN enhancement placements described above were not confirmed against a primary source (the 3GPP/ETSI portals block automated access). Verify against the 3GPP work plan before publication. (TR 23.700-07 and TS 24.501, above, were confirmed via independent secondary trackers — see the audit notes for this page.)
-:::
+
+</details>
 
 ## Related Standards Work
 

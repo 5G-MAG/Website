@@ -20,7 +20,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 </div>
 </div>
 
-<div style={{margin: '8px 0'}}><a class="button button--primary" href="/reference-tools/multimedia/scope" style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href="/reference-tools/multimedia/resources" style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href="/reference-tools/multimedia/tutorials" style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/multimedia/tutorials#developer-exchange" style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
+<div style={{margin: '8px 0'}}><a class="button button--primary" href={useBaseUrl('/reference-tools/multimedia/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/multimedia/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/multimedia/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/multimedia/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
 **Category:** IETF Implementations
 
@@ -86,9 +86,12 @@ The diagram below shows the same delivery protocol tools used with 5G Multicast 
 
 The transports are stable IETF RFCs, so there is no 3GPP-style release cadence at the transport layer; the tools track the current RFCs and the ways 5G Broadcast and 5G MBS reference them. See [Standards: Multimedia Delivery Protocols](/standards/multimedia) for the full specification list, including why FLUTE v1 rather than v2 is the profile that applies here.
 
-:::warning[References to verify]
+<details>
+<summary>References to verify</summary>
+
 These identifiers on this page were not confirmed against a primary source (the ISO/ETSI portals block automated access): the specific ISO catalogue editions for ISO/IEC 23009-1 (DASH) and ISO/IEC 23000-19 (CMAF). The IETF mappings (FLUTE = RFC 3926, ROUTE = RFC 9223, HLS = RFC 8216, LCT = RFC 3451, ALC = RFC 3450, FCAST = RFC 6968), the TS 26.346/26.517 normative chain, and the use of FLUTE by MBMS (TS 26.346) were confirmed. Verify the ISO editions against the ISO catalogue before publication.
-:::
+
+</details>
 
 ## How the tools map to the standard
 

@@ -5,6 +5,8 @@ sidebar_position: 0
 description: Explains what MPEG ARF (ISO/IEC 23090-39) covers and how the Avatar Communication tools split into capture, transport, and rendering components.
 ---
 
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -26,7 +28,7 @@ description: Explains what MPEG ARF (ISO/IEC 23090-39) covers and how the Avatar
 
 **Category:** MPEG Implementation
 
-<div style="margin: 8px 0"><a class="button button--primary" href="/reference-tools/avatar/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/reference-tools/avatar/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/reference-tools/avatar/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/avatar/tutorials#developer-exchange" style="margin: 2px 4px 2px 0">Developer Exchange</a></div>
+<div style={{margin: '8px 0'}}><a class="button button--primary" href={useBaseUrl('/reference-tools/avatar/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/avatar/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/avatar/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/avatar/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
 ## What This Project Implements
 
@@ -73,9 +75,12 @@ The Avatar Communication reference tools relate to the specification below. For 
 | --- | --- | --- |
 | ISO/IEC 23090-39 | ISO/IEC (MPEG) | [Coded representation of immersive media, Part 39: Avatar representation format (ARF), DIS as of 2025](https://www.iso.org/standard/91745.html) |
 
-:::warning[References to verify]
+<details>
+<summary>References to verify</summary>
+
 The container designations cited in the text above for ARF assets were not confirmed against a primary source: **ISO/IEC 21320-1** as the Zip-based container profile, and the specific edition of **ISO/IEC 14496-12** (ISO base media file format) intended by ARF. Check both against the ARF text before relying on them. ISO/IEC 23090-39 itself and ISO/IEC 23090-14 are established citations and are not part of this caution.
-:::
+
+</details>
 
 ## Roadmap
 

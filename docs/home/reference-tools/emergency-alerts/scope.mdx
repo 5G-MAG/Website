@@ -22,7 +22,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 **Category:** 3GPP Implementations
 
-<div style={{margin: '8px 0'}}><a class="button button--primary" href="/reference-tools/emergency-alerts/scope" style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href="/reference-tools/emergency-alerts/resources" style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href="/reference-tools/emergency-alerts/tutorials" style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/emergency-alerts/tutorials#developer-exchange" style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
+<div style={{margin: '8px 0'}}><a class="button button--primary" href={useBaseUrl('/reference-tools/emergency-alerts/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/emergency-alerts/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/emergency-alerts/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/emergency-alerts/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
 This page describes the specifications within the scope of the Emergency Alerts reference tools, what the tools demonstrate, and the high-level architecture that brings context to their applicability.
 
@@ -121,9 +121,12 @@ Repositories used in this architecture:
 - [Emergency Alerts over 5G Broadcast: Resources](./resources)
 - [3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
 
-:::warning[References to verify]
+<details>
+<summary>References to verify</summary>
+
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): ETSI TS 103 720 clause 5.15.3.3, 3GPP TS 23.041 clause 9.4.1.2.2, the CMAS message identifier value 0x1102 and its warning-type mapping, and 3GPP TS 36.331 clauses 5.2.2.19 and 6.3.1. Verify against the 3GPP/ETSI work plan and the current repository code before publication.
-:::
+
+</details>
 
 ## Roadmap
 

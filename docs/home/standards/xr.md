@@ -131,13 +131,19 @@ The Split Rendering Media Service Enabler (TS 26.565, Release 18) specifies spli
 | [26.256](https://www.3gpp.org/dynareport/26256.htm) | TS   | Codec for Immersive Voice and Audio Services - Jitter Buffer Management                                                                | Draft                | S4  |
 | [26.258](https://www.3gpp.org/dynareport/26258.htm) | TS   | Codec for Immersive Voice and Audio Services - C code (floating-point)                                                                 | Under change control | S4  |
 
-:::warning[Verify IVAS titles]
-These IVAS deliverable titles are not yet confirmed against the 3GPP portal (automated access is blocked). Note that TS 26.255 is listed here as "Error concealment of lost packets" but as "Floating-point computational description" on the [Avatar specifications page](/standards/avatar); since the floating-point C code is listed separately above as TS 26.258, the two pages should be reconciled. Confirm the full IVAS list (TS 26.250 to TS 26.258) against the 3GPP work plan.
-:::
+<details>
+<summary>Verify IVAS titles</summary>
 
-:::warning[Verify apparent duplicate titles]
+These IVAS deliverable titles are not yet confirmed against the 3GPP portal (automated access is blocked). Note that TS 26.255 is listed here as "Error concealment of lost packets" but as "Floating-point computational description" on the [Avatar specifications page](/standards/avatar); since the floating-point C code is listed separately above as TS 26.258, the two pages should be reconciled. Confirm the full IVAS list (TS 26.250 to TS 26.258) against the 3GPP work plan.
+
+</details>
+
+<details>
+<summary>Verify apparent duplicate titles</summary>
+
 Several entries on this page carry titles that look duplicated and may be data errors: TS 26.249 and TS 26.566 both read "Immersive Audio for Split Rendering Scenarios", and TR 26.866 and TR 26.996 both read "Immersive Audio for Split Rendering Scenarios; Performance characterization". Confirm each against the 3GPP work plan before relying on the titles.
-:::
+
+</details>
 
 ### Testing methodologies and performance requirements
 
@@ -204,9 +210,12 @@ Work items are the activities that produce the technical reports (TR) and specif
 
 This page is a tracking view; confirm against primary sources before relying on a specific status.
 
-:::warning[References to verify]
+<details>
+<summary>References to verify</summary>
+
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TS 26.506 as the RTC general specification; the split-rendering handling of immersive audio in TS 26.249 and its related TRs; and the exact release placement and current status of TS 26.119 (MeCAR) and TS 26.565 (Split Rendering Media Service Enabler). Verify against the 3GPP/ETSI work plan before publication.
-:::
+
+</details>
 
 ## Related Standards Work
 

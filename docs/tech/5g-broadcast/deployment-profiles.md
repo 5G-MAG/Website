@@ -115,6 +115,9 @@ This subsection covers the remaining operational modes and functions. Devices sh
 
 In case Time-Frequency-Interleaving (TFI) and co-existence of legacy broadcast and 5G Broadcast in the Ultra High Frequency (UHF) band are introduced in Release 19, both functionalities shall be supported. TFI interleaves a signal across time and frequency to improve robustness, and UHF co-existence lets 5G Broadcast share spectrum with legacy terrestrial broadcast. Both items are conditional on Release 19 outcomes and are not yet finalised; check the current status against the 5G-MAG work and ETSI TS 103 720 before relying on them. See [Operational Parameters in Use](./parameters-in-use) for the values observed today.
 
-:::warning[References to verify]
+<details>
+<summary>References to verify</summary>
+
 These identifiers on this page were not confirmed against a primary source (the ETSI/3GPP portals block automated access): the ETSI TS 103 720 clauses (7, 7.3, 7.6), the operating Band 108 definition (the underlying Band 108 parameters originate in 3GPP TS 36.101), the MCS table reference in 3GPP TS 36.213, and the TS 26.346 / TS 26.347 / TS 23.246 clause and version citations. The Band 108 frequency range (470 to 698 MHz) is now stated consistently here and on the [Operational Parameters in Use](./parameters-in-use) page; confirm it and the version in force against the published ETSI TS 103 720 (and 3GPP TS 36.101) before relying on it. Band 108 is a 3GPP Release 18 addition profiled by ETSI TS 103 720 v1.3.1 (in development), not by the published v1.2.1.
-:::
+
+</details>

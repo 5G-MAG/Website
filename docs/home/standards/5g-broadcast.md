@@ -209,7 +209,9 @@ MBMS has three named network interfaces, distinct from the M1-M8 reference point
 - [IETF RFC 7323](https://www.rfc-editor.org/rfc/rfc7323) - TCP Extensions for High Performance
 - [IETF RFC 8200](https://www.rfc-editor.org/rfc/rfc8200) - Internet Protocol, Version 6 (IPv6) Specification
 
-:::warning[References to verify]
+<details>
+<summary>References to verify</summary>
+
 The per-release 3GPP CR numbers, TS clause references, meeting placements, band frequency ranges and work-item verification notes have moved to the caution box on the [Standards Evolution](/standards/5g-broadcast-standards-evolution) page, along with the detailed content they apply to. The ETSI TS 103 720 version-to-release mapping shown in "Version history at a glance" above has not been independently confirmed against the primary 3GPP or ETSI record.
 
 The M1/M2/M3 interface descriptions and their specifications (TS 36.440, TS 25.446, TS 36.444) were added from web search results (3gpp.org and tech-invite.com both blocked direct fetch), cross-checked across two independent search queries that agreed on the interface roles and spec numbers. They have not been confirmed by reading the specifications themselves.
@@ -221,7 +223,8 @@ The Service requirements, Core network and mobility, Public warning and emergenc
 Individual 3GPP Change Requests (CRs) are not linked directly: the CR search portal (portal.3gpp.org/ChangeRequests.aspx) requires a 3GPP delegate login for record-level detail. A filtered-by-work-item search link (using the `workitem=` query parameter) does work without login to reach the search results page itself, but the CR table contents still require authentication, so no such links are included here.
 
 Well-established references (DASH = ISO/IEC 23009-1; 5GMS = TS 26.501 / [TS 26.512](https://www.3gpp.org/dynareport/26512.htm)) do not need re-checking.
-:::
+
+</details>
 
 ## 5G-MAG tracking and contribution focus
 

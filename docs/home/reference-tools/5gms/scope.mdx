@@ -18,7 +18,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 </div>
 </div>
 
-<div style={{margin: '8px 0'}}><a class="button button--primary" href="/reference-tools/5gms/scope" style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href="/reference-tools/5gms/resources" style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href="/reference-tools/5gms/tutorials" style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href="/reference-tools/5gms/tutorials#developer-exchange" style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
+<div style={{margin: '8px 0'}}><a class="button button--primary" href={useBaseUrl('/reference-tools/5gms/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5gms/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5gms/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5gms/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
 **Category:** 3GPP Implementations
 
@@ -243,9 +243,12 @@ The following tutorials cover the deployment and testing of 5GMSd AS and AF.
 
 For the source code, packages and releases behind each component, see [Resources](./resources).
 
-:::warning[References to verify]
+<details>
+<summary>References to verify</summary>
+
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the Release 17 baseline placement of the implemented features in TS 26.501 and TS 26.512, the specification versions cited in the "Summary of features" support table (TS 26.501 v17.6.0, TS 26.512 v17.6.0 and the associated 29-series versions), and the exact developer-portal paths linked in the notes. Verify against the 3GPP work plan and with the reference-tool maintainers before publication.
-:::
+
+</details>
 
 ## Roadmap
 

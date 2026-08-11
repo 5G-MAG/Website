@@ -122,9 +122,12 @@ Technical Reports:
 
 - **[TR 26.802](https://www.3gpp.org/dynareport/26802.htm) - Multicast Architecture Enhancement for 5G Media Streaming**
 
-:::warning[Needs verification]
+<details>
+<summary>Needs verification</summary>
+
 TR 26.802 relates to 5GMS multicast architecture but its release is unconfirmed (possibly Release 17 rather than Release 19). It is listed here separately from the Release-19 Advanced Media Delivery reports above until its release and section placement is confirmed against the [3GPP specification record](https://www.3gpp.org/dynareport/26802.htm).
-:::
+
+</details>
 
 ### Common Media Client Data (CMCD)
 
@@ -150,9 +153,12 @@ Coded Multisource Media Format (CMMF) is an ETSI format for retrieving a single 
 
 For implementation analysis, see [Streaming & Media Delivery](/tech/5gms).
 
-:::warning[References to verify]
+<details>
+<summary>References to verify</summary>
+
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): the Release 17 placement of edge media processing and eMBMS delivery in TS 26.501, the Release 18 placement of TS 26.510 and of the TS 26.531 / TS 26.532 alignment, and the Release 19 placement of the Advanced Media Delivery work. Verify against the 3GPP work plan before publication.
-:::
+
+</details>
 
 ## Related Standards Work
 

@@ -5,6 +5,8 @@ sidebar_position: 0
 description: Explains the AI/ML Evaluation Framework's focus areas, repositories, and its relationship to 3GPP standards and the 6G Testbed.
 ---
 
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -21,7 +23,7 @@ description: Explains the AI/ML Evaluation Framework's focus areas, repositories
 </div>
 </div>
 
-<div style="margin: 8px 0"><a class="button button--primary" href="/testbeds/ai-ml/scope" style="margin: 2px 4px 2px 0">Scope</a> <a class="button button--outline button--primary" href="/testbeds/ai-ml/resources" style="margin: 2px 4px 2px 0">Resources</a> <a class="button button--outline button--primary" href="/testbeds/ai-ml/tutorials" style="margin: 2px 4px 2px 0">Tutorials</a> <a class="button button--outline button--primary" href="/testbeds/ai-ml/tutorials#developer-exchange" style="margin: 2px 4px 2px 0">Developer Exchange</a></div>
+<div style={{margin: '8px 0'}}><a class="button button--primary" href={useBaseUrl('/testbeds/ai-ml/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/testbeds/ai-ml/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/testbeds/ai-ml/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/testbeds/ai-ml/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
 This page sets out what the AI/ML Evaluation Framework covers: its current focus areas, the repositories it is built from, and how it relates to 5G-MAG's standards work.
 
@@ -83,9 +85,12 @@ These are the 3GPP studies and specifications that define the scenarios and data
 
 For context: TR 26.847 (Study on AI/ML in 5G media services, Release 19, completed; supersedes the earlier, incomplete draft tracked as TR 26.927) is the source of the media AI/ML scenarios and traffic-characterisation goals the tools address. TR 22.874 (Study on traffic characteristics and requirements for AI/ML model transfer) frames the latency and data-rate behaviour to measure. TS 26.531 / TS 26.532 (Data Collection and Reporting) are implemented in the separate Data Collection project that feeds training and inference data. TS 23.288 (NWDAF, network-side analytics) provides context for how network data analytics would consume this kind of data.
 
-:::warning[References to verify]
+<details>
+<summary>References to verify</summary>
+
 These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TR 26.847, TR 22.874, TS 26.531 / TS 26.532, and TS 23.288. Verify against the 3GPP work plan before publication.
-:::
+
+</details>
 
 ## Getting Started
 
