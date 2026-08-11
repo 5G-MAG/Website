@@ -167,6 +167,30 @@ The 5G MBS reference tools are also the relevant software for **Non-Terrestrial 
 - [Tech: MBS Broadcast over NTN](/tech/ntn/analysis-mbs-broadcast-over-ntn)
 - [Tech: Non-Terrestrial Networks (overview)](/tech/ntn)
 
+## Roadmap
+
+This page tracks the roadmap for the 5G Multicast Broadcast Services (5MBS) reference tools. The work is organised into two workstreams that build on each other: first the 5G Core (5GC) functions (MB-SMF, MB-UPF, AMF and basic multicast support), then the MBS User Services layer (MBSF, MBSTF and the MBS Application Function/Application Server) that runs on top of them.
+
+### General Project Roadmap
+
+The Kanban board below tracks the planned and in-progress work for the 5G Multicast Broadcast Services (5MBS) reference tools (5G Core multicast functions and the MBS User Services layer). It is maintained live on GitHub.
+
+[Kanban board: Roadmap](https://github.com/orgs/5G-MAG/projects/48/views/13)
+
+### Developer Kanban Boards
+
+#### 5MBS: 5G Core functions
+
+Initial implementation of MB-SMF, MB-UPF, AMF and basic multicast support in the 5G Core
+
+- [**Kanban board**](https://github.com/orgs/5G-MAG/projects/19/views/2)
+
+#### 5MBS: MBS User Services
+
+Initial implementation of MBSF, MBSTF, MBS AF and MBS AS for supporting media multicast/broadcast. This builds on top of the 5G Core functions indicated above.
+
+- [**Kanban board**](https://github.com/orgs/5G-MAG/projects/43/views/1)
+
 ## Related
 
 - [Resources](/reference-tools/5g-mbs/resources)

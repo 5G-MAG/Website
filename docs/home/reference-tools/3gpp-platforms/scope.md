@@ -87,6 +87,10 @@ This project provides underlying RAN and Core network infrastructure (forks of s
 
 The [Resources](./resources) page maps each fork and branch to its use case, which is the fastest way to find the exact branch for your scenario.
 
+## Roadmap
+
+Unlike the other reference tools, these platforms are forks that track their own upstream projects (Open5GS, srsRAN) rather than a dedicated 5G-MAG feature roadmap — the branch mapping below is the roadmap: it's what maps a given fork/branch to the delivery technology it supports.
+
 ## Related
 
 - [Resources](/reference-tools/3gpp-platforms/resources): the forks and their branch structure, mapped to use cases
