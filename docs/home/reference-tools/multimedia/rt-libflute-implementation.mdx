@@ -1,0 +1,198 @@
+---
+title: rt-libflute Implementation
+hide_title: true
+sidebar_position: 4
+description: A clear explanation of what rt-libflute implements, checked feature by feature against TS 26.346 and the FLUTE RFCs.
+---
+
+{/*
+  TEMPLATE PATTERN -- "<Tool> Implementation" page.
+  This page is the model for writing the same kind of page for another tool
+  or component. The structure below is what makes it reusable; keep the
+  shape even when the content is entirely different.
+
+  1. "What this page is" -- one paragraph naming the tool, what it does in
+     plain terms, and what this page explains about it. State up front that
+     compliance/spec-checking is the *method*, not the point: the point is
+     an accurate account of the implementation. Link to a companion
+     "<Tool> Specifications" page if one exists, instead of re-listing specs
+     here.
+  2. A "Key terms" admonition defining any acronyms a newcomer needs before
+     the rest of the page makes sense -- assume no prior familiarity.
+  3. "How to read this page" -- define the status vocabulary once, up
+     front, exactly as used below (this page uses Supported / Not yet
+     supported / Reference only -- adjust the labels to fit, but keep them
+     few, consistent, and defined before first use).
+  4. An "Audit baseline" note: the branch/commit/date this was checked
+     against, and an explicit statement that this is a source-level reading,
+     not a maintainer sign-off, and that the page will go stale as the code
+     moves. Never reference PR numbers here -- they merge, close, or get
+     superseded, and hard-coding them makes the page stale on that PR's
+     timeline instead of the implementation's.
+  5. One section per functional area, each split into the same status
+     buckets from step 3, each line citing the specific clause/RFC section
+     it was checked against. Use a "Known limitation" caution admonition
+     for anything Supported-but-not-quite -- a partial or caveated case
+     that a plain bullet would misrepresent as done.
+  6. "What the <tool> deliberately doesn't do" -- the boundary of the
+     component within its larger system, and where the rest actually lives.
+  7. A summary table: one row per area, reference column, status column --
+     the same information as the sections above, scannable at a glance.
+  8. "Related" links: the companion Specifications page, the general
+     project Scope page one level up, and the source repository.
+*/}
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+  <path d="M21 21l-6 -6" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Multimedia Delivery Protocols</span>
+<h1>rt-libflute Implementation</h1>
+</div>
+</div>
+
+<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href="/reference-tools/multimedia/scope" style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href="/reference-tools/multimedia/rt-libflute-standards" style={{margin: '2px 4px 2px 0'}}>rt-libflute Specifications</a> <a class="button button--primary" href="/reference-tools/multimedia/rt-libflute-implementation" style={{margin: '2px 4px 2px 0'}}>rt-libflute Implementation</a> <a class="button button--outline button--primary" href="/reference-tools/multimedia/resources" style={{margin: '2px 4px 2px 0'}}>Resources</a></div>
+
+**Category:** IETF Implementations
+
+## What this page is
+
+[rt-libflute](https://github.com/5G-MAG/rt-libflute) is 5G-MAG's open-source C++ library for FLUTE &mdash; the protocol used to push files (media segments, manifests, service metadata) one-way over a multicast or broadcast network, with no return channel from the receiver. It's the piece that actually puts bytes on the wire and reassembles them at the other end, underneath the 5G Broadcast and 5G MBS reference tools.
+
+This page explains, feature by feature, **what rt-libflute actually does today**. For each capability, it says whether the library has it, and checks that against the specification text that defines it &mdash; mostly 3GPP TS 26.346, since that's the profile 5G-MAG's tools need to interoperate with. Compliance is the *method* used to check each row, not the point of the page: the goal is a clear, accurate account of the implementation for anyone trying to understand what this piece of software does, whether you're evaluating it, extending it, or just orienting yourself in the codebase.
+
+The companion page, [rt-libflute Specifications](./rt-libflute-standards), lists and explains every specification referenced below, including *why* FLUTE version 1 (not the newer version 2) is the profile that matters here. Read that first if the RFC/TS numbers below aren't yet familiar.
+
+:::note[Key terms]
+- **FLUTE**: File Delivery over Unidirectional Transport &mdash; the protocol this library implements. **ALC** / **LCT**: the two lower-level building blocks FLUTE is built on (congestion control and packet framing, respectively).
+- **FDT**: File Delivery Table &mdash; a special FLUTE object (always sent with TOI 0) that lists every file currently available in the session and how to decode it. Resent repeatedly ("carousel") so a receiver joining mid-session can still discover everything.
+- **TOI** / **TSI**: Transport Object Identifier (which file a packet belongs to) and Transport Session Identifier (which session). Every FLUTE packet carries both.
+- **FEC**: Forward Error Correction &mdash; redundant data that lets a receiver reconstruct a file even if some packets are lost, without asking the sender to resend anything (there's no return channel to ask with).
+- **EXT_FTI / EXT_FDT**: LCT header extensions carrying FEC parameters and FDT metadata respectively, present on specific packets as the protocol defines.
+- **MBMS**: the 3GPP-defined broadcast/multicast service (the LTE-era predecessor to 5G MBS) that TS 26.346 defines FLUTE's use for; **MBS**: the 5G-generation equivalent, layered on the same profile via TS 26.517.
+:::
+
+## How to read this page
+
+Each area below is split into what's **Supported** (implemented and checked against the relevant clause), **Not yet supported** (a real gap &mdash; either not started, or specified but skipped), and, where relevant, **Reference only** (deliberately implemented outside the 3GPP profile, kept for other uses rather than because 3GPP requires it &mdash; RaptorQ and FLUTE version 2 fall here). A summary table at the end gives the same information at a glance.
+
+:::note[Audit baseline]
+This assessment describes the `development` branch as of 2026-08-11. It is a source-level reading of the code against the specification text, not a maintainer sign-off &mdash; review with the rt-libflute maintainers before treating any row as final, and expect this page to move as the library evolves.
+:::
+
+## Protocol core: FLUTE/ALC/LCT
+
+**Supported**
+
+- FLUTE version 1 on transmit and receive (RFC 3926; mandated by TS 26.346 clause 7.2.0). The decoder additionally tolerates a version 2 EXT_FDT nibble on receive.
+- Single FLUTE channel, single rate transport, no congestion control (TS 26.346 clauses 7.2.4, 7.3.2.2).
+- LCT header per TS 26.346 clause 7.2.7: 32-bit CCI set to zero; 16-bit TSI (S=0, H=1); 16-bit TOI on transmit (O=0, H=1) with the decoder accepting up to 64-bit TOI; TOI 0 reserved for FDT Instances; Sender Current Time and Expected Residual Time flags zero; HDR_LEN in 32-bit words.
+- LCT extension headers: EXT_FDT and EXT_FTI generated on every FDT Instance packet and on no file packets (clause 7.2.8); EXT_CENC decoded on receive, never generated (clause 7.2.8: FDT Instances shall not be content encoded); EXT_NOP/EXT_AUTH/EXT_TIME ignored on receive per RFC 3926 default handling.
+
+**Not yet supported**
+
+- Close Session / Close Object flags (clause 7.2.7): parsed on receive, but not settable on transmit.
+- TSI wider than 16 bits on transmit: silently truncated rather than using the LCT S flag's 48-bit field width. Clause 7.2.7 fixes MBMS TSI at 16 bits, so this doesn't affect a compliant MBMS session; it would matter for a caller using the library outside that profile.
+- FDT Instance ID wraparound (RFC 3926 clause 3.4.1): the ID increments without bound rather than wrapping within the wire format's 20-bit field.
+- EXT_TIME with ERT on transmit ("may" per clause 7.2.7).
+
+## FEC (TS 26.346 clauses 7.2.2, 7.2.3, 7.2.12, Annex B)
+
+**Supported**
+
+- Compact No-Code FEC (RFC 3695, FEC Encoding ID 0), with blocking per the RFC 3926 "Algorithm for Computing Source Block Structure" (clause 7.2.3). This scheme sends the file with no redundancy at all &mdash; a lost packet means a lost piece of the file, recovered only by re-listening to the FDT carousel.
+
+**Not yet supported**
+
+- Raptor FEC scheme (RFC 5053, FEC Encoding ID 1) &mdash; the scheme that actually protects a broadcast/multicast download against packet loss without a return channel. Clause 7.2.2 mandates a decoder for it: "A UE that supports MBMS User Services shall support a decoder for the Raptor FEC scheme."
+
+**Reference only**
+
+- RaptorQ (RFC 6330, FEC Encoding ID 6). Not part of the TS 26.346 FEC scheme set; would be for non-3GPP deployments or a future 3GPP adoption, not a compliance requirement.
+
+## FDT Instances (TS 26.346 clauses 7.2.9, 7.2.10)
+
+**Supported**
+
+- FDT XML namespaces: none, the RFC 3926 example namespace, `urn:IETF:metadata:2005:FLUTE:FDT` (the schema base of clause 7.2.10.1), and `urn:3GPP:metadata:2022:FLUTE:FDT` (clause L.6.1).
+- Attributes read and written: Expires, TOI, Content-Location, Content-Length, Transfer-Length, Content-Type, Content-Encoding, Content-MD5 (verified on reception, mismatch triggers re-reception), FEC-OTI-FEC-Encoding-ID, FEC-OTI-FEC-Instance-ID, FEC-OTI-Maximum-Source-Block-Length, FEC-OTI-Encoding-Symbol-Length, FEC-OTI-Max-Number-of-Encoding-Symbols, at both FDT-Instance and File level.
+- 3GPP FDT extensions: `mbms2007:Cache-Control` (no-cache, Expires) and `mbms2012:File-ETag`, read and written.
+- FDT Instance replacement by instance ID on the receiver; TOI reuse across instances detected by Content-Location change (stale in-progress receptions discarded).
+
+**Not yet supported**
+
+- Complete attribute (clause 7.2.9/RFC 3926) &mdash; marking an FDT Instance as the final, definitive file list for the session.
+- Receiver bootstrap of an object from a file packet's own EXT_FTI when the describing FDT hasn't arrived yet: such packets are currently discarded rather than used to start reassembly early.
+- Group (clause 7.2.6), MBMS-Session-Identity and MBMS-Session-Identity-Expiry (clause 7.2.11), FullFDT (clause 7.2.14), Decryption-KEY-URI (clause 7.2.15), FEC-Redundancy-Level (clause 7.2.16), IndependentUnitPositions (Rel-13), Alternate-Content-Location-1/-2 and Base-URL-1/-2 (Rel-11), `mbms2007:max-stale`, the `sv:schemaVersion` element and version-based schema selection (clause 7.2.10.1).
+- Scheme-specific FEC OTI attributes (FEC-OTI-Number-Of-Source-Blocks / Number-Of-Sub-Blocks / Symbol-Alignment-Parameter) &mdash; only relevant once Raptor is supported.
+
+:::caution[Known limitation]
+Clause 7.2.9 states "the UE shall not use a received FDT Instance to interpret packets received beyond the expiration time." The Expires value is parsed and exposed, and expired files can be purged via the cache API, but packet interpretation is not hard-stopped at FDT expiry &mdash; enforcement today is partial.
+:::
+
+## Content encoding (TS 26.346 clause 7.2.5)
+
+**Supported**
+
+- GZIP (RFC 1952) encode on transmit and decode on receive, satisfying the UE mandate; deflate also handled. Decoded length is validated against Content-Length.
+- FDT Instances are never content encoded on transmit (clause 7.2.8 mandate).
+
+## Transport, session and platform
+
+**Supported**
+
+- UDP multicast transmit and receive, IPv4 and IPv6.
+- Rate-limited single-rate transmission; FDT Instance carousel with configurable repeat interval.
+- Transmitter source address selection and socket binding.
+- UDP tunnel mode: encapsulated IPv4+UDP inner headers for delivery through a GTP-U user plane (the N3mb context of TS 23.247, used by rt-mbs-transport-function).
+- Graceful session control: activate/deactivate, completion callbacks on both sides.
+- IPsec ESP protection of the transport (transmit and receive direction) via Linux XFRM/netlink.
+- Promiscuous reception of all files announced in the FDT, with file expiry and cache management hooks (the one-copy and keep-updated download modes of clause 7.2.0 are application-side policies built on these hooks).
+
+**Not yet supported**
+
+- Source-Specific Multicast join (RFC 4607) on IPv6; IPv4 SSM is supported but the two paths aren't at parity.
+- Multicast join on a specific interface for IPv6; also not yet at parity with IPv4.
+- Receive buffer sized to the maximum UDP datagram: currently fixed well below that, which can silently truncate large encoding symbols.
+- Simultaneous plain + tunnelled transmission (serving a direct SSM subscriber and the GTP-U tunnel path from the same send): currently one or the other, not both.
+- Deferred deactivation until queued files finish sending.
+
+## What the library deliberately doesn't do
+
+rt-libflute implements the FLUTE/ALC/LCT protocol layer and FEC &mdash; the transport itself. The layers around it are the consuming application's job, not the library's:
+
+- SDP session descriptions for FLUTE sessions (TS 26.346 clause 7.3): parsed/generated by rt-mbms-client, rt-mbs-client and the transport functions.
+- Service announcement / User Service Description (clause 5.2) &mdash; how a receiver discovers a session exists in the first place.
+- Associated delivery procedures: file repair (clause 9.3), reception reporting (clause 9.4), consumption reporting (clause 9.4A) &mdash; all of which need a return channel, which this protocol by design doesn't have.
+- OMA Push (clause 7.4), RTSP session control (clause 7.5), Keep Updated service (clause 7.7), partial file handling (clause 7.9).
+- MBSTF/MBS service APIs (TS 29.581) and MBMS client APIs (TS 26.347).
+
+If you're looking for where those live, they're implemented in the reference tools that sit above rt-libflute: rt-mbs-transport-function, rt-mbs-client, rt-mbms-bmsc, and rt-mbms-client.
+
+## Summary
+
+| Area | TS 26.346 reference | Status |
+| --- | --- | --- |
+| FLUTE v1 / ALC / LCT core | 7.2.0, 7.2.7 | Supported |
+| Compact No-Code FEC (ID 0) | 7.2.2, 7.2.3 | Supported |
+| Raptor FEC (ID 1) | 7.2.2, 7.2.12, Annex B | Not yet supported |
+| GZIP content encoding | 7.2.5 | Supported |
+| EXT_FDT / EXT_FTI signalling rules | 7.2.8 | Supported |
+| Mandatory FDT data elements | 7.2.9 | Supported |
+| FDT expiry hard enforcement | 7.2.9 | Partial |
+| 3GPP FDT schema (Cache-Control, File-ETag) | 7.2.10, 7.2.13 | Supported |
+| Complete attribute, FDT ID wraparound, Close flags | 7.2.7, RFC 3926 3.4.1 | Not yet supported |
+| SSM/interface-selective join/receive buffer on IPv6 | 7.3.2.1 context | Not yet supported |
+| Group, Session-Identity, FullFDT, Decryption-KEY-URI, FEC-Redundancy-Level | 7.2.6, 7.2.11, 7.2.14&ndash;7.2.16 | Not yet supported |
+| RaptorQ (ID 6) | not in 26.346 | Reference only |
+| FLUTE v2 | not in 26.346 | Reference only |
+| SDP, file repair, reporting, USD | 7.3, 9.x, 5.2 | Consumer scope |
+
+## Related
+
+- [rt-libflute Specifications](./rt-libflute-standards) &mdash; the specifications this page is checked against
+- [Scope: Multimedia Delivery Protocols](/reference-tools/multimedia/scope)
+- [rt-libflute on GitHub](https://github.com/5G-MAG/rt-libflute)
