@@ -1,0 +1,93 @@
+---
+title: rt-libflute Specifications
+hide_title: true
+sidebar_position: 3
+description: Specifications relevant to rt-libflute, the FLUTE/ALC/LCT library, and the 3GPP chain that mandates FLUTE version 1 for MBMS and 5G MBS.
+---
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1" />
+  <path d="M9 15l3 -3l3 3" />
+  <path d="M12 12l0 9" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Multimedia Delivery Protocols</span>
+<h1>rt-libflute Specifications</h1>
+</div>
+</div>
+
+<div style={{margin: '8px 0'}}><a class="button button--primary" href="/reference-tools/multimedia/scope" style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href="/reference-tools/multimedia/rt-libflute-standards" style={{margin: '2px 4px 2px 0'}}>rt-libflute Specifications</a> <a class="button button--outline button--primary" href="/reference-tools/multimedia/rt-libflute-scope" style={{margin: '2px 4px 2px 0'}}>rt-libflute Implementation Scope</a> <a class="button button--outline button--primary" href="/reference-tools/multimedia/resources" style={{margin: '2px 4px 2px 0'}}>Resources</a></div>
+
+**Category:** IETF Implementations
+
+## What this page covers
+
+rt-libflute is the 5G-MAG C++ library implementing FLUTE/ALC/LCT file delivery over UDP multicast. It is consumed by the 5G MBS reference tools (rt-mbs-transport-function, rt-mbs-client) and the 5G Broadcast / MBMS reference tools (rt-mbms-bmsc, rt-mbms-client). This page lists the specifications that define what the library must do. The companion page, [rt-libflute Implementation Scope](./rt-libflute-scope), audits what the library actually does against them.
+
+## The normative chain: why FLUTE version 1
+
+For 3GPP services, the applicable FLUTE profile is reached through this dependency chain:
+
+1. **TS 26.517, clause 6.2.1** &mdash; if FLUTE realises the Object Distribution Method, the MBS Distribution Session *shall conform to* the MBMS Download Profile of TS 26.346 clause L.4.
+2. **TS 26.346, clause L.4** &mdash; the Download Profile constrains the FDT parameters of clause 7.2, defined by RFC 3926 and the 3GPP FDT extensions.
+3. **TS 26.346, clause 7.2.0** &mdash; clients and servers *shall implement* RFC 3926 (FLUTE), RFC 3450 (ALC) and RFC 3451 (LCT).
+4. **RFC 3926** &mdash; "This document specifies FLUTE version 1"; every FDT-carrying packet MUST set the version field to 1.
+
+FLUTE version 1 (RFC 3926 and its companion RFCs) is normative for all 3GPP uses of this library. The revised IETF generation (RFC 6726 FLUTE v2, RFC 5651, RFC 5775) is reference material only for this purpose &mdash; see [Standards: Multimedia Delivery Protocols](/tech/standards/multimedia) for where those revised RFCs are tracked more generally across 5G-MAG's multimedia delivery work.
+
+## IETF specifications
+
+Normative for rt-libflute, per the chain above:
+
+| Specification | Title | Relevance |
+| --- | --- | --- |
+| [RFC 3926](https://www.rfc-editor.org/rfc/rfc3926) | FLUTE &ndash; File Delivery over Unidirectional Transport | Core protocol, FDT, version 1 |
+| [RFC 3450](https://www.rfc-editor.org/rfc/rfc3450) | Asynchronous Layered Coding (ALC) Protocol Instantiation | Transport building block |
+| [RFC 3451](https://www.rfc-editor.org/rfc/rfc3451) | Layered Coding Transport (LCT) Building Block | Header format, TSI/TOI, Close Session/Object flags |
+| [RFC 5052](https://www.rfc-editor.org/rfc/rfc5052) | Forward Error Correction (FEC) Building Block | FEC OTI, EXT_FTI, source block partitioning |
+| [RFC 3695](https://www.rfc-editor.org/rfc/rfc3695) | Compact No-Code FEC scheme | FEC Encoding ID 0 |
+| [RFC 5053](https://www.rfc-editor.org/rfc/rfc5053) | Raptor FEC scheme | FEC Encoding ID 1; the MBMS FEC scheme per TS 26.346 clause 7.2.12 and Annex B |
+| [RFC 1952](https://www.rfc-editor.org/rfc/rfc1952) | GZIP file format | Content encoding of files for transport (TS 26.346 clause 7.2.5) |
+| [RFC 4607](https://www.rfc-editor.org/rfc/rfc4607) | Source-Specific Multicast (SSM) | Reception filtered on the announced source address |
+| [RFC 4570](https://www.rfc-editor.org/rfc/rfc4570) | SDP Source Filters | How SSM sources are announced (SDP handled by consuming applications) |
+| [RFC 5905](https://www.rfc-editor.org/rfc/rfc5905) | Network Time Protocol | Time base for FDT and Cache-Control expiry values |
+
+Reference only &mdash; not applicable to 3GPP profiles:
+
+| Specification | Title | Why it's out of scope here |
+| --- | --- | --- |
+| [RFC 6726](https://www.rfc-editor.org/rfc/rfc6726) | FLUTE version 2 | Revises RFC 3926; not the 3GPP-mandated profile |
+| [RFC 5651](https://www.rfc-editor.org/rfc/rfc5651) | LCT (revised) | Revises RFC 3451 |
+| [RFC 5775](https://www.rfc-editor.org/rfc/rfc5775) | ALC (revised) | Revises RFC 3450 |
+| [RFC 6330](https://www.rfc-editor.org/rfc/rfc6330) | RaptorQ FEC scheme | FEC Encoding ID 6; not part of the TS 26.346 FEC scheme set |
+
+## 3GPP specifications: MBMS (UMTS/LTE, 5G Broadcast)
+
+- [TS 26.346](https://www.3gpp.org/dynareport/26346.htm) &mdash; MBMS; Protocols and codecs. The central specification for this library:
+  - clause 7.2 &mdash; FLUTE usage for MBMS download (header specializations, FDT schema and 3GPP FDT extensions, FEC schemes, content encoding)
+  - clause 7.2.12 and Annex B &mdash; the MBMS FEC scheme (Raptor, RFC 5053)
+  - clause 7.3 &mdash; SDP for the download delivery method (consumer scope)
+  - clause 9 &mdash; associated delivery procedures, file repair, reception reporting (consumer scope)
+  - Annex L &mdash; MBMS Download Profile and MBMS User Service profiles
+- [TS 26.347](https://www.3gpp.org/dynareport/26347.htm) &mdash; MBMS URLs and APIs; MBMS client interface towards applications (consumer scope)
+- [TS 23.246](https://www.3gpp.org/dynareport/23246.htm) &mdash; MBMS; Architecture and functional description (context)
+
+## 3GPP specifications: 5G MBS
+
+- [TS 26.517](https://www.3gpp.org/dynareport/26517.htm) &mdash; 5G MBS; User Services and Protocols. Clause 6.2 defines the Object Distribution Method over FLUTE and binds it to the MBMS Download Profile of TS 26.346
+- [TS 26.502](https://www.3gpp.org/dynareport/26502.htm) &mdash; 5G MBS; User service architecture
+- [TS 23.247](https://www.3gpp.org/dynareport/23247.htm) &mdash; Architectural enhancements for 5G MBS; defines the N3mb/GTP-U transport context served by rt-libflute's UDP tunnel mode
+- [TS 29.581](https://www.3gpp.org/dynareport/29581.htm) &mdash; 5G System; MBSTF services; the service APIs of rt-mbs-transport-function, the main 5G MBS consumer of this library
+
+## Scope boundary
+
+rt-libflute implements the FLUTE/ALC/LCT protocol layer and FEC. Session announcement (SDP, USD), associated delivery procedures (file repair, reception reporting), and service APIs are implemented by the consuming projects (rt-mbs-transport-function, rt-mbs-client, rt-mbms-bmsc, rt-mbms-client), not by the library itself.
+
+## Related
+
+- [rt-libflute Implementation Scope](./rt-libflute-scope) &mdash; what the library actually implements against this list
+- [Standards: Multimedia Delivery Protocols](/tech/standards/multimedia)
+- [Scope: Multimedia Delivery Protocols](/reference-tools/multimedia/scope)
+- [rt-libflute on GitHub](https://github.com/5G-MAG/rt-libflute)
