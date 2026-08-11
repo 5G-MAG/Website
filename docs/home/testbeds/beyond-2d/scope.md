@@ -75,6 +75,16 @@ These specifics on this page were not confirmed against the primary source (the 
 3. Follow the repository README to obtain the referenced test content and run the per-scenario encode, deliver, decode, and metric steps.
 4. Track open work on the [Resources](./resources).
 
+## Roadmap
+
+This page links to the public GitHub project board that tracks Beyond 2D Evaluation Framework work. The board is the authoritative, up-to-date view of planned, in-progress, and completed items.
+
+### General Project Roadmap
+
+The Kanban board below tracks the planned and in-progress work for the Beyond 2D Evaluation Framework (test content, processing pipelines, and evaluation metrics for beyond-2D video formats and codecs). It is maintained live on GitHub.
+
+[Kanban board: Roadmap](https://github.com/orgs/5G-MAG/projects/48/views/10)
+
 ## Related
 
 - [Resources](/testbeds/beyond-2d/resources)

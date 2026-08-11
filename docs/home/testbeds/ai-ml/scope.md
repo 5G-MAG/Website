@@ -97,6 +97,14 @@ Because the runnable code is the shared testbed, the quickest path is to start t
 
 For the data-collection components (TS 26.531 / TS 26.532), see the [Data Collection](/reference-tools/data-collection/scope) project and its repository [5G-MAG/rt-data-collection-application-function](https://github.com/5G-MAG/rt-data-collection-application-function).
 
+## Roadmap
+
+### General Project Roadmap
+
+The Kanban board below tracks the planned and in-progress work for the AI/ML Evaluation Framework (benchmarks, datasets, and traffic-evaluation tooling). It is maintained live on GitHub.
+
+[Kanban board: Roadmap](https://github.com/orgs/5G-MAG/projects/48/views/9)
+
 ## Related
 
 - [Resources](./resources): the software repositories
