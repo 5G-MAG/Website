@@ -105,16 +105,16 @@ The Split Rendering Media Service Enabler (TS 26.565, Release 18) specifies spli
 
 | Number                                              | Type | Title                                                       | Status | WG  |
 | --------------------------------------------------- | ---- | ----------------------------------------------------------- | ------ | --- |
-| [26.249](https://www.3gpp.org/dynareport/26249.htm) | TS   | Immersive Audio for Split Rendering Scenarios               | Draft  | S4  |
-| [26.865](https://www.3gpp.org/dynareport/26865.htm) | TR   | Immersive Audio for Split Rendering Scenarios; Requirements | Draft  | S4  |
+| [26.249](https://www.3gpp.org/dynareport/26249.htm) | TS   | Immersive Audio for Split Rendering Scenarios; Detailed Algorithmic Description of Split Rendering Functions | Under change control | S4  |
+| [26.865](https://www.3gpp.org/dynareport/26865.htm) | TR   | Immersive Audio for Split Rendering Scenarios; Requirements | Under change control | S4  |
 
 ### Media capabilities and services
 
 | Number                                              | Type | Title                                    | Status | WG  |
 | --------------------------------------------------- | ---- | ---------------------------------------- | ------ | --- |
-| [26.119](https://www.3gpp.org/dynareport/26119.htm) | TS   | Media Capabilities for Augmented Reality | Draft  | S4  |
+| [26.119](https://www.3gpp.org/dynareport/26119.htm) | TS   | Media Capabilities for Augmented Reality | Under change control | S4  |
 | [26.143](https://www.3gpp.org/dynareport/26143.htm) | TS   | Messaging Media profiles                 | Draft  | S4  |
-| [26.565](https://www.3gpp.org/dynareport/26565.htm) | TS   | Split Rendering Media Service Enabler    | Draft  | S4  |
+| [26.565](https://www.3gpp.org/dynareport/26565.htm) | TS   | Split Rendering Media Service Enabler    | Under change control | S4  |
 
 ### Codecs
 
@@ -122,28 +122,16 @@ The Split Rendering Media Service Enabler (TS 26.565, Release 18) specifies spli
 
 | Number                                              | Type | Title                                                                                                                                  | Status               | WG  |
 | --------------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | --- |
-| [26.250](https://www.3gpp.org/dynareport/26250.htm) | TS   | Codec for Immersive Voice and Audio Services - General overview                                                                        | Draft                | S4  |
-| [26.251](https://www.3gpp.org/dynareport/26251.htm) | TS   | Codec for Immersive Voice and Audio Services - C code (fixed-point)                                                                    | Draft                | S4  |
-| [26.252](https://www.3gpp.org/dynareport/26252.htm) | TS   | Codec for Immersive Voice and Audio Services - Test sequences                                                                          | Draft                | S4  |
-| [26.253](https://www.3gpp.org/dynareport/26253.htm) | TS   | Codec for Immersive Voice and Audio Services - Detailed Algorithmic Description incl. RTP payload format and SDP parameter definitions | Draft                | S4  |
-| [26.254](https://www.3gpp.org/dynareport/26254.htm) | TS   | Codec for Immersive Voice and Audio Services - Rendering                                                                               | Draft                | S4  |
-| [26.255](https://www.3gpp.org/dynareport/26255.htm) | TS   | Codec for Immersive Voice and Audio Services - Error concealment of lost packets                                                       | Draft                | S4  |
-| [26.256](https://www.3gpp.org/dynareport/26256.htm) | TS   | Codec for Immersive Voice and Audio Services - Jitter Buffer Management                                                                | Draft                | S4  |
-| [26.258](https://www.3gpp.org/dynareport/26258.htm) | TS   | Codec for Immersive Voice and Audio Services - C code (floating-point)                                                                 | Under change control | S4  |
+| [26.250](https://www.3gpp.org/dynareport/26250.htm) | TS   | Codec for Immersive Voice and Audio Services (IVAS); General overview                                                                        | Under change control | S4  |
+| [26.251](https://www.3gpp.org/dynareport/26251.htm) | TS   | Codec for Immersive Voice and Audio Services (IVAS); C code (fixed-point)                                                                    | Under change control | S4  |
+| [26.252](https://www.3gpp.org/dynareport/26252.htm) | TS   | Codec for Immersive Voice and Audio Services (IVAS); Test sequences                                                                          | Under change control | S4  |
+| [26.253](https://www.3gpp.org/dynareport/26253.htm) | TS   | Codec for Immersive Voice and Audio Services (IVAS); Detailed Algorithmic Description including RTP payload format and SDP parameter definitions | Under change control | S4  |
+| [26.254](https://www.3gpp.org/dynareport/26254.htm) | TS   | Codec for Immersive Voice and Audio Services (IVAS); Rendering                                                                               | Under change control | S4  |
+| [26.255](https://www.3gpp.org/dynareport/26255.htm) | TS   | Codec for Immersive Voice and Audio Services (IVAS); Error concealment of lost packets                                                       | Under change control | S4  |
+| [26.256](https://www.3gpp.org/dynareport/26256.htm) | TS   | Codec for Immersive Voice and Audio Services (IVAS); Jitter Buffer Management                                                                | Under change control | S4  |
+| [26.258](https://www.3gpp.org/dynareport/26258.htm) | TS   | Codec for Immersive Voice and Audio Services (IVAS); C code (floating-point)                                                                 | Under change control | S4  |
 
-<details>
-<summary>Verify IVAS titles</summary>
-
-These IVAS deliverable titles are not yet confirmed against the 3GPP portal (automated access is blocked). Note that TS 26.255 is listed here as "Error concealment of lost packets" but as "Floating-point computational description" on the [Avatar specifications page](/standards/avatar); since the floating-point C code is listed separately above as TS 26.258, the two pages should be reconciled. Confirm the full IVAS list (TS 26.250 to TS 26.258) against the 3GPP work plan.
-
-</details>
-
-<details>
-<summary>Verify apparent duplicate titles</summary>
-
-Several entries on this page carry titles that look duplicated and may be data errors: TS 26.249 and TS 26.566 both read "Immersive Audio for Split Rendering Scenarios", and TR 26.866 and TR 26.996 both read "Immersive Audio for Split Rendering Scenarios; Performance characterization". Confirm each against the 3GPP work plan before relying on the titles.
-
-</details>
+Note: TS 26.249 (split rendering, above) and TS 26.566 carry similar but distinct titles, and TR 26.866 and TR 26.996 share the same title on the 3GPP portal; this is portal data, not a transcription error.
 
 ### Testing methodologies and performance requirements
 
@@ -156,8 +144,8 @@ Several entries on this page carry titles that look duplicated and may be data e
 | [26.861](https://www.3gpp.org/dynareport/26861.htm) | TR   | Investigations on test methodologies for immersive audio systems                      | Under change control | S4  |
 | [26.866](https://www.3gpp.org/dynareport/26866.htm) | TR   | Immersive Audio for Split Rendering Scenarios; Performance characterization           | Draft                | S4  |
 | [26.926](https://www.3gpp.org/dynareport/26926.htm) | TR   | Traffic Models and Quality Evaluation Methods for Media and XR Services in 5G Systems | Under change control | S4  |
-| [26.996](https://www.3gpp.org/dynareport/26996.htm) | TR   | Immersive Audio for Split Rendering Scenarios; Performance characterization           | Draft                | S4  |
-| [26.997](https://www.3gpp.org/dynareport/26997.htm) | TR   | IVAS codec performance characterization                                               | Draft                | S4  |
+| [26.996](https://www.3gpp.org/dynareport/26996.htm) | TR   | Immersive Audio for Split Rendering Scenarios; Performance characterization           | Under change control | S4  |
+| [26.997](https://www.3gpp.org/dynareport/26997.htm) | TR   | Codec for Immersive Voice and Audio Services (IVAS); Performance characterization     | Under change control | S4  |
 
 ## Related 3GPP Work Items
 
@@ -209,13 +197,6 @@ Work items are the activities that produce the technical reports (TR) and specif
 - Immersive audio: the IVAS codec deliverables and related split-rendering work.
 
 This page is a tracking view; confirm against primary sources before relying on a specific status.
-
-<details>
-<summary>References to verify</summary>
-
-These identifiers on this page were not confirmed against a primary source (the 3GPP/ETSI portals block automated access): TS 26.506 as the RTC general specification; the split-rendering handling of immersive audio in TS 26.249 and its related TRs; and the exact release placement and current status of TS 26.119 (MeCAR) and TS 26.565 (Split Rendering Media Service Enabler). Verify against the 3GPP/ETSI work plan before publication.
-
-</details>
 
 ## Related Standards Work
 

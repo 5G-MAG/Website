@@ -50,7 +50,7 @@ The standardisation spans MPEG (avatar representation and scene placement) and 3
 | Avatar representation      | ISO/IEC 23090-39 (ARF)                                             |
 | Scene placement            | ISO/IEC 23090-14 and Amendment 2 (MPEG-I Scene Description)        |
 | Real-time media transport  | TS 26.114, TS 26.506, draft-ietf-avtcore-rtp-avatar                |
-| Immersive audio            | TS 26.250 to TS 26.256 (IVAS)                                      |
+| Immersive audio            | TS 26.250 to TS 26.258 (IVAS)                                      |
 
 ## Key MPEG Specifications
 
