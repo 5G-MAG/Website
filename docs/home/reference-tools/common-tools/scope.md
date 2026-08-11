@@ -58,6 +58,12 @@ Includes a helper script to build ffmpeg libraries for Android.
 
 Common Tools is a shared toolkit of helper scripts and configurations supporting other Reference Tools projects; it does not implement a specification of its own, so there are no standards or specifications to list here.
 
+## Roadmap
+
+Common Tools work is tracked as it comes up, alongside the projects it supports, rather than as its own dedicated feature roadmap. Cross-project items are still visible on the shared board below.
+
+[Kanban board: Roadmap](https://github.com/orgs/5G-MAG/projects/48/views/21)
+
 ## Related
 
 - [Resources](/reference-tools/common-tools/resources)

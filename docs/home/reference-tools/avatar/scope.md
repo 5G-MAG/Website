@@ -38,7 +38,7 @@ ISO/IEC 23090-39 was, as of 2025, still at the Draft International Standard (DIS
 
 On the implementation side, the work covers the pieces needed to capture, carry, and present an ARF avatar over a 5G delivery path. Broadly, that means tooling to track a participant and produce animation data, a path to package and exchange that data as part of a real-time call, sample content for testing, and integration with a Unity-based presentation so the avatar can be rendered in an interactive application. The separation between the component that produces the avatar animation and the engine that renders it follows the same decoupling pattern used across 5G-MAG's other immersive media tools, including the XR player.
 
-The reference tooling in this area is still maturing, and the exact set of public repositories changes as the project develops. For the authoritative, current list of repositories and their implementation status, see the [Resources](./resources) page rather than relying on a hard-coded list here. Roadmap and implementation-status details are tracked on the [5G-MAG project board](https://github.com/orgs/5G-MAG/projects/44).
+The reference tooling in this area is still maturing, and the exact set of public repositories changes as the project develops. For the authoritative, current list of repositories and their implementation status, see the [Resources](./resources) page rather than relying on a hard-coded list here. Roadmap and implementation-status details are tracked on the [Conversational Avatar Kanban board](https://github.com/orgs/5G-MAG/projects/48/views/20) (see [Roadmap](#roadmap) below).
 
 ARF (ISO/IEC 23090-39) is defined in two halves, and the reference tooling is organised around the same split:
 
@@ -61,7 +61,7 @@ The runnable software and setup instructions live on the Developer Portal, not i
 - Read the [Tech: Avatar Communications](/tech/avatar-communications) documentation for the ARF data model, the scene-description integration, and the end-to-end procedure, so the component boundaries are clear before you build.
 - Follow the [Tutorials](./tutorials) page for a getting-started walkthrough to build and run the avatar call demo.
 - Use the [Resources](./resources) page for the current list of repositories, their status, and tagged versions.
-- Track roadmap and open work on the [5G-MAG project board](https://github.com/orgs/5G-MAG/projects/44).
+- Track roadmap and open work on the [Conversational Avatar Kanban board](https://github.com/orgs/5G-MAG/projects/48/views/20).
 
 If you only need to render and inspect avatars, start from the Unity presentation with the provided sample content. If you are working on capture and animation, start from the tracking/animation producer and validate its output against the sample animation streams before wiring it into a live call.
 
@@ -76,6 +76,16 @@ The Avatar Communication reference tools relate to the specification below. For 
 :::warning[References to verify]
 The container designations cited in the text above for ARF assets were not confirmed against a primary source: **ISO/IEC 21320-1** as the Zip-based container profile, and the specific edition of **ISO/IEC 14496-12** (ISO base media file format) intended by ARF. Check both against the ARF text before relying on them. ISO/IEC 23090-39 itself and ISO/IEC 23090-14 are established citations and are not part of this caution.
 :::
+
+## Roadmap
+
+This page links to the public GitHub project board that tracks Conversational Avatar Communication work.
+
+### General Project Roadmap
+
+The Kanban board below tracks the planned and in-progress work for Conversational Avatar Communication (MPEG ARF capture, transport, and rendering). It is maintained live on GitHub. It was newly split out from the shared Reference Tools Roadmaps board and does not yet carry historical items — items get added to it as work is tracked going forward.
+
+[Kanban board: Roadmap](https://github.com/orgs/5G-MAG/projects/48/views/20)
 
 ## Related
 
