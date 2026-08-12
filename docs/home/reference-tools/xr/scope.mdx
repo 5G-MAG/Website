@@ -50,6 +50,19 @@ Out of scope for these tools (tracked in the Standards and Tech views, not imple
 
 Device families are the two listed on the [Requirements page](./tutorials/requirements): **XR Phone** (Android handheld, using Google ARCore for AR features) and **XR HMD** (head-mounted displays such as Meta Quest 3). Both use Unity's ARFoundation for anchoring.
 
+## High-level architecture
+
+### XR Media Integration in 5G
+
+<img loading="lazy" src={useBaseUrl('/assets/images/projects/xr_diagram.png')} alt="High-level architecture showing XR media flowing from a scene server through the 5G Media Streaming framework to the XR player on a device" style={{width: '80%'}}/>
+
+_Figure: high-level view of how XR media is delivered over 5G, from the content and scene server through 5G Media Streaming to the XR player._
+
+The diagrams and code in this project are split across two repository groups:
+
+- [XR Media with MPEG-I SD: Resources](../xr/resources) for the XR player, server, MAF and content repositories.
+- [Common Tools](../common-tools/) for the shared libraries reused across projects.
+
 ## Features
 
 In the tables below, the &#x2611; symbol means the feature is supported, &#x2610; means it is not yet supported, and the 🚧 construction icon marks work in progress (with a link to the tracking issue). The **XR Phone** and **XR HMD** columns correspond to the two supported device families listed on the [Requirements page](./tutorials/requirements): XR Phone covers Android handheld devices, and XR HMD (head-mounted display) covers headsets such as Meta Quest 3.
@@ -163,19 +176,6 @@ The extension names are colour-grouped by function: green marks the media-pipeli
 | <span style={{color: '#0070C0', fontWeight: 'bold'}}>MPEG_scene_dynamic</span>           | &#x2610;     | &#x2610;            |
 | <span style={{color: '#0070C0', fontWeight: 'bold'}}>MPEG_viewport_recommended</span>    | &#x2610;     | &#x2610;            |
 | <span style={{color: '#0070C0', fontWeight: 'bold'}}>MPEG_animation_timing</span>        | &#x2610;     | &#x2610;            |
-
-## High-level architectures
-
-### XR Media Integration in 5G
-
-<img loading="lazy" src={useBaseUrl('/assets/images/projects/xr_diagram.png')} alt="High-level architecture showing XR media flowing from a scene server through the 5G Media Streaming framework to the XR player on a device" style={{width: '80%'}}/>
-
-_Figure: high-level view of how XR media is delivered over 5G, from the content and scene server through 5G Media Streaming to the XR player._
-
-The diagrams and code in this project are split across two repository groups:
-
-- [XR Media with MPEG-I SD: Resources](../xr/resources) for the XR player, server, MAF and content repositories.
-- [Common Tools](../common-tools/) for the shared libraries reused across projects.
 
 ## XR Unity Player: Project overview
 

@@ -61,6 +61,54 @@ A list of relevant specifications can be found in the link below.
 
 [Standards: 5G Media Streaming](/standards/5gms)
 
+## High-level architecture
+
+The Reference Tools can be combined in several deployment configurations, each pairing 5G Media Streaming with a different set of supporting projects.
+
+### 5G Downlink Media Streaming (5GMSd)
+
+The baseline configuration: the 5GMSd tools delivering adaptive bitrate streaming over 5G unicast.
+
+<img loading="lazy" src={useBaseUrl('/assets/images/projects/5gms_diagram.png')} style={{width: '80%'}} alt="High-level architecture of the baseline 5GMSd deployment"/>
+
+[5G Media Streaming: Resources](../5gms/resources)
+[3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
+[Common Tools: Repositories](../common-tools/)
+
+### 5G Downlink Media Streaming (5GMSd) with UE Data Collection Reporting and Event Exposure
+
+Adds the UE Data Collection, Reporting and Event Exposure project so that consumption and quality data can feed analytics and event subscribers.
+
+<img loading="lazy" src={useBaseUrl('/assets/images/projects/5gms_uedc_diagram.png')} style={{width: '80%'}} alt="High-level architecture of 5GMSd combined with UE Data Collection, Reporting and Event Exposure"/>
+
+[5G Media Streaming: Resources](../5gms/resources)
+[UE Data Collection, Reporting and Event Exposure: Resources](../data-collection/resources)
+[3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
+[Common Tools: Repositories](../common-tools/)
+
+### 5G Downlink Media Streaming (5GMSd) with 5GC Service Consumers
+
+Adds the 5G Core (5GC) Service Consumers project, letting the AF consume core network APIs (for example for policy and QoS control).
+
+<img loading="lazy" src={useBaseUrl('/assets/images/projects/5gms_5gc_diagram.png')} style={{width: '80%'}} alt="High-level architecture of 5GMSd combined with 5GC Service Consumers"/>
+
+[5G Media Streaming: Resources](../5gms/resources)
+[5GC Service Consumers: Resources](../5g-core/resources)
+[3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
+[Common Tools: Repositories](../common-tools/)
+
+### 5G Downlink Media Streaming (5GMSd) over eMBMS
+
+Combines 5GMSd with the 5G Broadcast and multimedia content delivery projects to distribute content over evolved Multimedia Broadcast Multicast Service (eMBMS) broadcast bearers.
+
+<img loading="lazy" src={useBaseUrl('/assets/images/projects/5gms_5gbc_diagram.png')} style={{width: '80%'}} alt="High-level architecture of 5GMSd delivered over eMBMS broadcast"/>
+
+[5G Media Streaming: Resources](../5gms/resources)
+[5G Broadcast: Resources](../5g-broadcast/resources)
+[Multimedia content delivery protocols: Resources](../multimedia/resources)
+[3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
+[Common Tools: Repositories](../common-tools/)
+
 ## 5G Unicast Downlink Media Streaming (5GMSd)
 
 A functional 5GMSd implementation is available with the building blocks highlighted with the green tick below.
@@ -152,54 +200,6 @@ The release versions of the 5GMSd Application Function support differing sets of
 The reference tools track the 3GPP 5G Media Streaming APIs across Release 17 (TS 26.512) and Release 18 (TS 26.510 & TS 26.512), where the media session handling APIs move from TS 26.512 into TS 26.510 to generalise them across the 5GMS and Real-Time media Communication (RTC) systems.
 
 [Feature deep dive: full Release 17 / Release 18 API mapping](./tutorials#summary-of-apis-supported-for-5g-media-streaming) shows, file by file, which APIs are already implemented in the Reference Tools, which are on the roadmap, and which are not yet started.
-
-## High-level architectures
-
-The Reference Tools can be combined in several deployment configurations, each pairing 5G Media Streaming with a different set of supporting projects.
-
-### 5G Downlink Media Streaming (5GMSd)
-
-The baseline configuration: the 5GMSd tools delivering adaptive bitrate streaming over 5G unicast.
-
-<img loading="lazy" src={useBaseUrl('/assets/images/projects/5gms_diagram.png')} style={{width: '80%'}} alt="High-level architecture of the baseline 5GMSd deployment"/>
-
-[5G Media Streaming: Resources](../5gms/resources)
-[3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
-[Common Tools: Repositories](../common-tools/)
-
-### 5G Downlink Media Streaming (5GMSd) with UE Data Collection Reporting and Event Exposure
-
-Adds the UE Data Collection, Reporting and Event Exposure project so that consumption and quality data can feed analytics and event subscribers.
-
-<img loading="lazy" src={useBaseUrl('/assets/images/projects/5gms_uedc_diagram.png')} style={{width: '80%'}} alt="High-level architecture of 5GMSd combined with UE Data Collection, Reporting and Event Exposure"/>
-
-[5G Media Streaming: Resources](../5gms/resources)
-[UE Data Collection, Reporting and Event Exposure: Resources](../data-collection/resources)
-[3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
-[Common Tools: Repositories](../common-tools/)
-
-### 5G Downlink Media Streaming (5GMSd) with 5GC Service Consumers
-
-Adds the 5G Core (5GC) Service Consumers project, letting the AF consume core network APIs (for example for policy and QoS control).
-
-<img loading="lazy" src={useBaseUrl('/assets/images/projects/5gms_5gc_diagram.png')} style={{width: '80%'}} alt="High-level architecture of 5GMSd combined with 5GC Service Consumers"/>
-
-[5G Media Streaming: Resources](../5gms/resources)
-[5GC Service Consumers: Resources](../5g-core/resources)
-[3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
-[Common Tools: Repositories](../common-tools/)
-
-### 5G Downlink Media Streaming (5GMSd) over eMBMS
-
-Combines 5GMSd with the 5G Broadcast and multimedia content delivery projects to distribute content over evolved Multimedia Broadcast Multicast Service (eMBMS) broadcast bearers.
-
-<img loading="lazy" src={useBaseUrl('/assets/images/projects/5gms_5gbc_diagram.png')} style={{width: '80%'}} alt="High-level architecture of 5GMSd delivered over eMBMS broadcast"/>
-
-[5G Media Streaming: Resources](../5gms/resources)
-[5G Broadcast: Resources](../5g-broadcast/resources)
-[Multimedia content delivery protocols: Resources](../multimedia/resources)
-[3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
-[Common Tools: Repositories](../common-tools/)
 
 ## Docker deployment support
 

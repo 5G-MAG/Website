@@ -65,7 +65,11 @@ Relevant specifications are listed below.
 The complete MBS Broadcast delivery chain: the MBS Application Provider side, the MBS User Services network functions (MBSF, MBSTF), the 5GC (MB-SMF, MB-UPF, AMF), the NG-RAN (gNB), and the UE side (modem, MBSF Client and MBS-Aware Application). MBS Multicast is not yet implemented.
 :::
 
-## What's implemented, feature by feature
+## High-level architecture
+
+<ArchitectureMap architecture={MBS_ARCHITECTURE} status={MBS_SECTIONS} />
+
+## Implementation status
 
 Every functional entity in the MBS Broadcast chain is audited per feature against its defining specifications. Each section below is split into plainly labelled groups, so you can jump straight to the component you care about.
 
@@ -76,12 +80,6 @@ This describes the `development` branches of the MBS User Services repositories 
 :::caution[Broadcast first, Multicast later]
 The tools currently implement the **MBS Broadcast** delivery mode end-to-end. The **MBS Multicast** delivery mode (UE session join via the SMF, PTP/PTM switching, group paging) is not yet implemented in any component of the chain &mdash; the MB-SMF/MB-UPF multicast data path (N6mb ingest, shared GTP-U delivery) exists, but the session-join control plane does not.
 :::
-
-### High-level architecture
-
-<ArchitectureMap architecture={MBS_ARCHITECTURE} status={MBS_SECTIONS} />
-
-### Audited feature by feature
 
 <ImplementationBoard components={MBS_COMPONENTS} sections={MBS_SECTIONS} />
 
@@ -113,10 +111,6 @@ It helps to read the audit above against the three-layer MBS architecture (cover
 
 The audit above marks which service operations and distribution modes are implemented and which are not, so use it to check whether a given path (for example the `COLLECTION` operating mode, or multicast session join) is covered before building on it.
 
-## Getting Started
-
-To try the tools hands-on, follow the [Tutorials](./tutorials): they cover the two ways to provision the 5GC (direct MBS core functions, or via the [5GC Service Consumers](../5g-core) libraries), the [Docker-Compose deployment](./tutorials/docker-implementation), and the individual MBSF/MBSTF walkthroughs. For the source code, packages and releases behind each component, see [Resources](./resources); for the specification background, see [Standards: 5G Multicast Broadcast Services](/standards/5g-mbs).
-
 ## NTN deployment context
 
 The 5G MBS reference tools are also the relevant software for **Non-Terrestrial Network (NTN)** deployment scenarios. NTN extends 5G MBS coverage via GEO and LEO satellites and introduces specific challenges around propagation delay, Doppler effects, and satellite beam handover. The MBS Multicast and Broadcast delivery modes operate over NTN access without changes to the MBS service layer itself. Technical analysis of these scenarios is available on the Tech portal:
@@ -124,6 +118,10 @@ The 5G MBS reference tools are also the relevant software for **Non-Terrestrial 
 - [Tech: MBS Multicast over NTN](/tech/ntn/analysis-mbs-multicast-over-ntn)
 - [Tech: MBS Broadcast over NTN](/tech/ntn/analysis-mbs-broadcast-over-ntn)
 - [Tech: Non-Terrestrial Networks (overview)](/tech/ntn)
+
+## Getting Started
+
+To try the tools hands-on, follow the [Tutorials](./tutorials): they cover the two ways to provision the 5GC (direct MBS core functions, or via the [5GC Service Consumers](../5g-core) libraries), the [Docker-Compose deployment](./tutorials/docker-implementation), and the individual MBSF/MBSTF walkthroughs. For the source code, packages and releases behind each component, see [Resources](./resources); for the specification background, see [Standards: 5G Multicast Broadcast Services](/standards/5g-mbs).
 
 ## Roadmap
 
