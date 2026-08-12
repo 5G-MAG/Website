@@ -1,0 +1,362 @@
+// Specification catalogue for LTE-based 5G Broadcast (ETSI TS 103 720) and the
+// MBMS framework it profiles.
+//
+// Extracted from the nine-sub-heading bullet outline this page used to carry, so
+// it can be searched and filtered instead of scrolled (see
+// src/components/SpecIndex). `layer` is the sub-heading each specification used
+// to sit under; `note` carries the scope qualifier that used to trail the title.
+export const BROADCAST_SPECS = [
+  {
+    id: 'TS 22.101',
+    title: 'Service aspects; Service principles',
+    url: 'https://www.3gpp.org/dynareport/22101.htm',
+    layer: 'Service requirements',
+  },
+  {
+    id: 'TS 22.261',
+    title: 'Service requirements for the 5G system',
+    url: 'https://www.3gpp.org/dynareport/22261.htm',
+    layer: 'Service requirements',
+  },
+  {
+    id: 'TR 23.746',
+    title: 'Study on System Architecture Enhancements to eMBMS for Television Video Service',
+    url: 'https://www.3gpp.org/dynareport/23746.htm',
+    layer: 'Architecture',
+  },
+  {
+    id: 'TS 23.246',
+    title: 'Multimedia Broadcast/Multicast Service (MBMS); Architecture and functional description',
+    url: 'https://www.3gpp.org/dynareport/23246.htm',
+    layer: 'Architecture',
+  },
+  {
+    id: 'TS 36.300',
+    title:
+      'Evolved Universal Terrestrial Radio Access (E-UTRA) and Evolved UTRAN (E-UTRAN); Overall description',
+    url: 'https://www.3gpp.org/dynareport/36300.htm',
+    layer: 'Architecture',
+    note: 'includes the MBMS-dedicated cell mode used for broadcast',
+  },
+  {
+    id: 'TR 36.976',
+    title: 'Overall description of LTE-based 5G broadcast',
+    url: 'https://www.3gpp.org/dynareport/36976.htm',
+    layer: 'Architecture',
+    note: 'informative summary, produced by the normative Release 16 work item',
+  },
+  {
+    id: 'TR 36.776',
+    title: 'Study on LTE-based 5G terrestrial broadcast',
+    url: 'https://www.3gpp.org/dynareport/36776.htm',
+    layer: 'Architecture',
+    note: 'the FS_LTE_terr_bcast study output that identified the gaps met by the Release 16 numerology enhancements',
+  },
+  {
+    id: 'TS 36.211',
+    title: 'Physical channels and modulation',
+    url: 'https://www.3gpp.org/dynareport/36211.htm',
+    layer: 'Radio and interfaces',
+  },
+  {
+    id: 'TS 36.212',
+    title: 'Multiplexing and channel coding',
+    url: 'https://www.3gpp.org/dynareport/36212.htm',
+    layer: 'Radio and interfaces',
+  },
+  {
+    id: 'TS 36.213',
+    title: 'Physical layer procedures',
+    url: 'https://www.3gpp.org/dynareport/36213.htm',
+    layer: 'Radio and interfaces',
+    note: 'scheduler and link adaptation',
+  },
+  {
+    id: 'TS 36.321',
+    title: 'Medium Access Control (MAC) protocol specification',
+    url: 'https://www.3gpp.org/dynareport/36321.htm',
+    layer: 'Radio and interfaces',
+    note: 'touched by the Release 19 PMCH Phase 2 work item',
+  },
+  {
+    id: 'TS 36.331',
+    title: 'Radio Resource Control (RRC) protocol specification',
+    url: 'https://www.3gpp.org/dynareport/36331.htm',
+    layer: 'Radio and interfaces',
+    note: 'MIB-MBMS, SIB1-MBMS, MBSFN-AreaInfo and the other broadcast system-information extensions',
+  },
+  {
+    id: 'TS 36.440',
+    title: 'General aspects and principles for E-UTRAN interfaces supporting MBMS',
+    url: 'https://www.3gpp.org/dynareport/36440.htm',
+    layer: 'Radio and interfaces',
+    note: 'the M1, M2 and M3 interfaces',
+  },
+  {
+    id: 'TS 25.446',
+    title: 'MBMS synchronisation protocol (SYNC)',
+    url: 'https://www.3gpp.org/dynareport/25446.htm',
+    layer: 'Radio and interfaces',
+    note: 'used over M1 to keep content time-aligned across the eNBs of an MBSFN area',
+  },
+  {
+    id: 'TS 36.443',
+    title: 'E-UTRAN M2 Application Protocol (M2AP)',
+    url: 'https://www.3gpp.org/dynareport/36443.htm',
+    layer: 'Radio and interfaces',
+    note: 'the MCE-to-eNB control-plane interface, carrying Release 19 PMCH Phase 2 time-interleaving parameters',
+  },
+  {
+    id: 'TS 36.444',
+    title: 'E-UTRAN M3 Application Protocol (M3AP)',
+    url: 'https://www.3gpp.org/dynareport/36444.htm',
+    layer: 'Radio and interfaces',
+    note: 'the MME-to-MCE control-plane interface for MBMS session management signalling',
+  },
+  {
+    id: 'TS 36.413',
+    title: 'S1 Application Protocol (S1AP)',
+    url: 'https://www.3gpp.org/dynareport/36413.htm',
+    layer: 'Radio and interfaces',
+    note: 'the eNB-to-MME control-plane interface, distinct from the M1/M2/M3 MBMS-specific interfaces',
+  },
+  {
+    id: 'TS 36.133',
+    title: 'Requirements for support of radio resource management',
+    url: 'https://www.3gpp.org/dynareport/36133.htm',
+    layer: 'Radio and interfaces',
+  },
+  {
+    id: 'TS 36.304',
+    title: 'User Equipment (UE) procedures in idle mode',
+    url: 'https://www.3gpp.org/dynareport/36304.htm',
+    layer: 'Radio and interfaces',
+    note: 'relevant to SIM-free and Receive-Only Mode reception without an RRC connection',
+  },
+  {
+    id: 'TS 23.003',
+    title: 'Numbering, addressing and identification',
+    url: 'https://www.3gpp.org/dynareport/23003.htm',
+    layer: 'Core network',
+  },
+  {
+    id: 'TS 23.122',
+    title: 'Non-Access-Stratum (NAS) functions related to Mobile Station (MS) in idle mode',
+    url: 'https://www.3gpp.org/dynareport/23122.htm',
+    layer: 'Core network',
+  },
+  {
+    id: 'TS 23.401',
+    title: 'GPRS enhancements for E-UTRAN access',
+    url: 'https://www.3gpp.org/dynareport/23401.htm',
+    layer: 'Core network',
+    note: 'the EPS/E-UTRAN architecture that MBMS and 5G Broadcast are built on',
+  },
+  {
+    id: 'TS 29.274',
+    title: 'Evolved Packet System (EPS); GPRS Tunnelling Protocol for Control plane (GTPv2-C)',
+    url: 'https://www.3gpp.org/dynareport/29274.htm',
+    layer: 'Core network',
+  },
+  {
+    id: 'TS 29.281',
+    title: 'General Packet Radio System (GPRS) Tunnelling Protocol User Plane (GTPv1-U)',
+    url: 'https://www.3gpp.org/dynareport/29281.htm',
+    layer: 'Core network',
+  },
+  {
+    id: 'TS 36.101',
+    title: 'User Equipment (UE) radio transmission and reception',
+    url: 'https://www.3gpp.org/dynareport/36101.htm',
+    layer: 'RF and devices',
+    note: 'defines operating Bands 107, 108, 112 and 113',
+  },
+  {
+    id: 'TS 36.104',
+    title: 'Base Station (BS) radio transmission and reception',
+    url: 'https://www.3gpp.org/dynareport/36104.htm',
+    layer: 'RF and devices',
+    note: 'network-side counterpart to TS 36.101 for the same bands',
+  },
+  {
+    id: 'TS 36.306',
+    title: 'User Equipment (UE) radio access capabilities',
+    url: 'https://www.3gpp.org/dynareport/36306.htm',
+    layer: 'RF and devices',
+    note: 'includes the CAS-muting capability introduced in Release 19',
+  },
+  {
+    id: 'TS 36.102',
+    title: 'User Equipment (UE) radio transmission and reception for satellite access',
+    url: 'https://www.3gpp.org/dynareport/36102.htm',
+    layer: 'RF and devices',
+    note: 'covers the Release 19 geosynchronous-satellite broadcast band',
+  },
+  {
+    id: 'TS 36.108',
+    title: 'Satellite Access Node radio transmission and reception',
+    url: 'https://www.3gpp.org/dynareport/36108.htm',
+    layer: 'RF and devices',
+    note: 'satellite counterpart to TS 36.104',
+  },
+  {
+    id: 'TS 36.181',
+    title: 'Satellite Access Node conformance testing',
+    url: 'https://www.3gpp.org/dynareport/36181.htm',
+    layer: 'RF and devices',
+  },
+  {
+    id: 'TS 36.307',
+    title: 'Requirements on UEs supporting a release-independent frequency band',
+    url: 'https://www.3gpp.org/dynareport/36307.htm',
+    layer: 'RF and devices',
+  },
+  {
+    id: 'TS 26.346',
+    title: 'Multimedia Broadcast/Multicast Service (MBMS); Protocols and codecs',
+    url: 'https://www.3gpp.org/dynareport/26346.htm',
+    layer: 'Content delivery',
+  },
+  {
+    id: 'TS 26.347',
+    title:
+      'Multimedia Broadcast/Multicast Service (MBMS); Application Programming Interface and URL',
+    url: 'https://www.3gpp.org/dynareport/26347.htm',
+    layer: 'Content delivery',
+  },
+  {
+    id: 'TS 26.348',
+    title: 'Northbound Application Programming Interface (API) for MBMS at the xMB reference point',
+    url: 'https://www.3gpp.org/dynareport/26348.htm',
+    layer: 'Content delivery',
+  },
+  {
+    id: 'TS 29.116',
+    title:
+      'Representational state transfer over the xMB reference point between content provider and BM-SC',
+    url: 'https://www.3gpp.org/dynareport/29116.htm',
+    layer: 'Content delivery',
+  },
+  {
+    id: 'TS 24.116',
+    title: 'Stage 3 aspects of system architecture enhancements for TV services',
+    url: 'https://www.3gpp.org/dynareport/24116.htm',
+    layer: 'Content delivery',
+  },
+  {
+    id: 'TS 24.117',
+    title: 'TV service configuration Management Object (MO)',
+    url: 'https://www.3gpp.org/dynareport/24117.htm',
+    layer: 'Content delivery',
+  },
+  {
+    id: 'TS 23.041',
+    title: 'Technical realization of Cell Broadcast Service (CBS)',
+    url: 'https://www.3gpp.org/dynareport/23041.htm',
+    layer: 'Public warning',
+  },
+  {
+    id: 'TS 29.168',
+    title: 'Cell Broadcast Centre interfaces with the Evolved Packet Core',
+    url: 'https://www.3gpp.org/dynareport/29168.htm',
+    layer: 'Public warning',
+  },
+  {
+    id: 'ETSI TS 102 900',
+    title:
+      'Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service',
+    url: 'https://www.etsi.org/deliver/etsi_ts/102900_102999/102900/',
+    layer: 'Public warning',
+  },
+  {
+    id: 'OASIS CAP v1.2',
+    title: 'Common Alerting Protocol',
+    url: 'http://docs.oasis-open.org/emergency/cap/v1.2/CAP-v1.2.doc',
+    layer: 'Public warning',
+    note: 'the alert message payload format carried over Cell Broadcast Service',
+  },
+  {
+    id: 'TS 26.501',
+    title: '5G Media Streaming (5GMS); General description and architecture',
+    url: 'https://www.3gpp.org/dynareport/26501.htm',
+    layer: '5GMS',
+    note: 'for hybrid unicast/broadcast delivery',
+  },
+  {
+    id: 'TS 26.511',
+    title: '5G Media Streaming (5GMS); Profiles, codecs and formats',
+    url: 'https://www.3gpp.org/dynareport/26511.htm',
+    layer: '5GMS',
+  },
+  {
+    id: 'TS 26.512',
+    title: '5G Media Streaming (5GMS); Protocols',
+    url: 'https://www.3gpp.org/dynareport/26512.htm',
+    layer: '5GMS',
+  },
+  {
+    id: 'IANA IPv4 Multicast Addresses',
+    title: 'IPv4 Multicast Address Space Registry',
+    url: 'https://www.iana.org/assignments/multicast-addresses/multicast-addresses.xhtml',
+    layer: 'Transport',
+    note: 'allocation of the IPv4 multicast addresses used for MBMS user-plane delivery over M1',
+  },
+  {
+    id: 'IANA IPv6 Multicast Addresses',
+    title: 'IPv6 Multicast Address Space Registry',
+    url: 'https://www.iana.org/assignments/ipv6-multicast-addresses/ipv6-multicast-addresses.xhtml',
+    layer: 'Transport',
+    note: 'the IPv6 equivalent',
+  },
+  {
+    id: 'IETF RFC 6335',
+    title:
+      'IANA procedures for the management of the Service Name and Transport Protocol Port Number Registry',
+    url: 'https://www.rfc-editor.org/rfc/rfc6335',
+    layer: 'Transport',
+  },
+  {
+    id: 'IETF RFC 9110',
+    title: 'HTTP Semantics',
+    url: 'https://www.rfc-editor.org/rfc/rfc9110',
+    layer: 'Transport',
+  },
+  {
+    id: 'IETF RFC 8446',
+    title: 'The Transport Layer Security (TLS) Protocol Version 1.3',
+    url: 'https://www.rfc-editor.org/rfc/rfc8446',
+    layer: 'Transport',
+  },
+  {
+    id: 'IETF RFC 793',
+    title: 'Transmission Control Protocol (TCP)',
+    url: 'https://www.rfc-editor.org/rfc/rfc793',
+    layer: 'Transport',
+  },
+  {
+    id: 'IETF RFC 7323',
+    title: 'TCP Extensions for High Performance',
+    url: 'https://www.rfc-editor.org/rfc/rfc7323',
+    layer: 'Transport',
+  },
+  {
+    id: 'IETF RFC 8200',
+    title: 'Internet Protocol, Version 6 (IPv6) Specification',
+    url: 'https://www.rfc-editor.org/rfc/rfc8200',
+    layer: 'Transport',
+  },
+];
+
+// Order the filter chips by where each layer sits in the stack, rather than
+// alphabetically or by how many specifications happen to be in each.
+export const BROADCAST_LAYER_ORDER = [
+  'Service requirements',
+  'Architecture',
+  'Radio and interfaces',
+  'Core network',
+  'RF and devices',
+  'Content delivery',
+  'Public warning',
+  '5GMS',
+  'Transport',
+];

@@ -5,6 +5,9 @@ slug: /standards/ntn
 description: 3GPP Non-Terrestrial Network standards for satellite and HAPS media distribution, covering NR adaptations, architecture and MBS delivery.
 ---
 
+import SpecIndex from '@site/src/components/SpecIndex';
+import { NTN_SPECS, NTN_LAYER_ORDER } from '@site/src/data/specs/ntn';
+
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -28,7 +31,7 @@ description: 3GPP Non-Terrestrial Network standards for satellite and HAPS media
 New to the service layers that NTN carries? Multicast Broadcast Services (MBS) and 5G Broadcast are the delivery mechanisms most often deployed over satellite paths. See [Standards: 5G Multicast Broadcast Services (MBS)](/standards/5g-mbs) and [Standards: 5G Broadcast](/standards/5g-broadcast) for background before reading this page.
 :::
 
-<div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
+<div class="godeeper-grid" style={{gridTemplateColumns: 'minmax(0, 380px)'}}>
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
@@ -47,26 +50,9 @@ New to the service layers that NTN carries? Multicast Broadcast Services (MBS) a
 
 ## Key 3GPP Specifications
 
-### NR for NTN
+The specifications in scope, filterable by the layer they define: the NR radio adaptations for NTN, the 5G system architecture for satellite access, and the multicast broadcast services carried over it. Search matches the specification number, its title and any scope note.
 
-- [TR 38.811](https://www.3gpp.org/dynareport/38811.htm) - Study on New Radio (NR) to support Non-Terrestrial Networks (Rel-15)
-- [TR 38.821](https://www.3gpp.org/dynareport/38821.htm) - Solutions for NR to support Non-Terrestrial Networks (NTN) (Rel-16)
-- [TS 38.331](https://www.3gpp.org/dynareport/38331.htm) - NR; Radio Resource Control (RRC) protocol specification (carries the NTN system information, including SIB19)
-- [TS 38.300](https://www.3gpp.org/dynareport/38300.htm) - NR; NR and NG-RAN Overall description; Stage 2
-- [TR 38.863](https://www.3gpp.org/dynareport/38863.htm) - Non-terrestrial networks (NTN) related RF and co-existence aspects (Rel-17)
-
-### System Architecture for NTN
-
-- [TR 22.822](https://www.3gpp.org/dynareport/22822.htm) - Study on using Satellite Access in 5G (Stage 1)
-- [TR 23.737](https://www.3gpp.org/dynareport/23737.htm) - Study on architecture aspects for using satellite access in 5G (Stage 2, Rel-16/17)
-- [TS 23.501](https://www.3gpp.org/dynareport/23501.htm) - System architecture for the 5G System (5GS)
-- [TS 23.502](https://www.3gpp.org/dynareport/23502.htm) - Procedures for the 5G System (5GS)
-
-### Multicast Broadcast Services over NTN
-
-- [TS 23.247](https://www.3gpp.org/dynareport/23247.htm) - Architectural enhancements for 5G multicast-broadcast services
-- [TS 26.502](https://www.3gpp.org/dynareport/26502.htm) - 5G multicast-broadcast services; User service architecture
-- [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) - 5G Media Streaming (5GMS); General description and architecture
+<SpecIndex specs={NTN_SPECS} layerOrder={NTN_LAYER_ORDER} />
 
 Applying MBS over NTN is the subject of active work in Release 19 and beyond; treat orbit-by-orbit and mode-by-mode feature placement as provisional. One confirmed item: Release 19 adds **SIB27** to TS 38.331 for MBS broadcast over NTN. See [MBS Broadcast NTN](/tech/ntn/analysis-mbs-broadcast-over-ntn) for the technical detail.
 

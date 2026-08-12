@@ -5,6 +5,9 @@ slug: /standards/v3c
 description: MPEG's V3C framework for coding volumetric video, covering V-PCC and MIV profiles, bitstream structure and delivery over 5G.
 ---
 
+import SpecIndex from '@site/src/components/SpecIndex';
+import { V3C_SPECS, V3C_LAYER_ORDER } from '@site/src/data/specs/v3c';
+
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -24,7 +27,7 @@ MPEG's V3C framework for coding volumetric video, covering V-PCC and MIV profile
 
 Visual Volumetric Video-based Coding (V3C, ISO/IEC 23090-5) is the MPEG framework for compressing volumetric video; it underpins Video-based Point Cloud Compression (V-PCC) and MPEG Immersive Video (MIV). This page lists the relevant MPEG-I parts and their release status. For the technical analysis of how V3C works, see the Tech page linked below. For acronyms used here, see the [Glossary](/tech/glossary).
 
-<div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
+<div class="godeeper-grid" style={{gridTemplateColumns: 'minmax(0, 380px)'}}>
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
@@ -50,28 +53,15 @@ MPEG factored the shared V3C machinery into a single base specification and defi
 
 A separate but related MPEG approach, Geometry-based Point Cloud Compression (G-PCC, ISO/IEC 23090-9), does not use the V3C bitstream structure and is outside the V3C scope tracked on this page.
 
-## Specifications by role
-
-- **Coding.** ISO/IEC 23090-5 (V3C base bitstream and V-PCC profile); ISO/IEC 23090-12 (MIV profile).
-- **Storage and carriage.** ISO/IEC 23090-10 (ISOBMFF storage, ISO/IEC 14496-12, and DASH-based streaming).
-- **Conformance and reference software.** ISO/IEC 23090-20 (conformance testing for V3C with V-PCC) and ISO/IEC 23090-25 (conformance and reference software for carriage).
-- **Delivery over 5G.** [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) (architecture) and [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) (protocols and APIs), the 5G Media Streaming specifications used to transport V3C DASH presentations.
-
 ## Editions and status
 
 ISO/IEC 23090-5 has progressed through successive editions (2021, 2023, and 2025); the entry in the table below links to the edition currently referenced by 5G-MAG. ISO/IEC 23090-10 (carriage) was first published in 2022 with a subsequent amendment (support of packed video data) and a technical corrigendum. MIV (ISO/IEC 23090-12) was published in 2023, with a second edition under development in MPEG. Implementers should confirm the exact edition and any amendments against the ISO catalogue for the feature set they rely on.
 
 ## Related MPEG Specifications
 
-This is a list of specifications in the scope of Volumetric Video (V3C). Part 5 (V3C and V-PCC) is the core coding framework; Part 10 specifies carriage and storage of the coded data; Part 12 (MIV) applies the framework to multi-view immersive video.
+The specifications in the scope of Volumetric Video (V3C), grouped by the role each one plays. Part 5 (V3C and V-PCC) is the core coding framework; Part 10 specifies carriage and storage of the coded data; Part 12 (MIV) applies the framework to multi-view immersive video; the 5G Media Streaming specifications carry the result.
 
-### MPEG-I Standards
-
-| Number                                                      | Title                                                                                                                                                                |
-| ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [ISO/IEC 23090-5](https://www.iso.org/standard/83535.html)  | Information technology: Coded representation of immersive media - Part 5: Visual volumetric video-based coding (V3C) and video-based point cloud compression (V-PCC) |
-| [ISO/IEC 23090-10](https://www.iso.org/standard/78991.html) | Information technology - Coded representation of immersive media - Part 10: Carriage of visual volumetric video-based coding data                                    |
-| [ISO/IEC 23090-12](https://www.iso.org/standard/79113.html) | Information technology - Coded representation of immersive media - Part 12: MPEG immersive video                                                                     |
+<SpecIndex specs={V3C_SPECS} layerOrder={V3C_LAYER_ORDER} />
 
 ## 5G-MAG tracking and contribution focus
 

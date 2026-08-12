@@ -52,6 +52,8 @@ It helps to be precise about the boundary between this project and 3GPP.
 
 In short: the standards define the scenarios and interfaces; the 6G Testbed lets you reproduce network conditions and measure behaviour; and this AI/ML activity is the framing that turns those measurements into evaluation of AI/ML for media.
 
+These tools are complementary to, not a replacement for, the standardisation activity. 5G-MAG contributes media-specific AI/ML requirements and use cases to 3GPP (primarily SA4 for media aspects, with SA2 for network data analytics), while the reference tools provide an experimental platform to validate and inform that work. In practice the relationship is two-way: the studies and specifications (for example 3GPP [TR 26.927](https://www.3gpp.org/dynareport/26927.htm), the Release 19 study on AI/ML in 5G media services, its companion Release 19 evaluation report [TR 26.847](https://www.3gpp.org/dynareport/26847.htm), and the SA4 data collection specifications TS 26.531 / TS 26.532) define the scenarios and interfaces the tools evaluate, and results from the tools can feed back into 5G-MAG positions and future contributions.
+
 ### Key GitHub repositories
 
 The AI/ML reference tooling is currently developed across the following 5G-MAG repositories. The live, auto-generated list (including auxiliary repositories) is on the [Resources](./resources) page.
@@ -64,27 +66,6 @@ The data collection components that feed AI/ML training and inference (3GPP [TS 
 :::info
 Some repositories may be private and under testing. [Request early access](/early-access).
 :::
-
-## Standards & Specifications
-
-A list of relevant specifications can be found in the link below.
-
-[Standards: AI & ML in 5G Media Services](/standards/ai-ml)
-
-These tools are complementary to, not a replacement for, the standardisation activity. 5G-MAG contributes media-specific AI/ML requirements and use cases to 3GPP (primarily SA4 for media aspects, with SA2 for network data analytics), while the reference tools provide an experimental platform to validate and inform that work. In practice the relationship is two-way: the studies and specifications (for example 3GPP [TR 26.927](https://www.3gpp.org/dynareport/26927.htm), the Release 19 study on AI/ML in 5G media services, its companion Release 19 evaluation report [TR 26.847](https://www.3gpp.org/dynareport/26847.htm), and the SA4 data collection specifications TS 26.531 / TS 26.532) define the scenarios and interfaces the tools evaluate, and results from the tools can feed back into 5G-MAG positions and future contributions.
-
-These are the 3GPP studies and specifications that define the scenarios and data this activity evaluates. They are covered in full on the standards portal ([AI & ML in 5G Media](/standards/ai-ml)).
-
-| Specification | Body | Reference |
-| -------------- | -------- | ------------------------------------------------------ |
-| TR 26.927 | 3GPP SA4 | [TR 26.927](https://www.3gpp.org/dynareport/26927.htm) |
-| TR 26.847 | 3GPP SA4 | [TR 26.847](https://www.3gpp.org/dynareport/26847.htm) |
-| TR 22.874 | 3GPP SA1 | [TR 22.874](https://www.3gpp.org/dynareport/22874.htm) |
-| TS 26.531 | 3GPP SA4 | [TS 26.531](https://www.3gpp.org/dynareport/26531.htm) |
-| TS 26.532 | 3GPP SA4 | [TS 26.532](https://www.3gpp.org/dynareport/26532.htm) |
-| TS 23.288 | 3GPP SA2 | [TS 23.288](https://www.3gpp.org/dynareport/23288.htm) |
-
-For context: TR 26.927 (Study on Artificial Intelligence and Machine Learning in 5G media services, Release 19) is the source of the media AI/ML scenarios and traffic-characterisation goals the tools address, and TR 26.847 (Evaluation of Artificial Intelligence and Machine Learning in 5G media services, Release 19) is its companion evaluation report. TR 22.874 (Study on traffic characteristics and performance requirements for AI/ML model transfer) frames the latency and data-rate behaviour to measure. TS 26.531 / TS 26.532 (Data Collection and Reporting) are implemented in the separate Data Collection project that feeds training and inference data. TS 23.288 (NWDAF, network-side analytics) provides context for how network data analytics would consume this kind of data.
 
 ## Getting Started
 
@@ -110,7 +91,7 @@ The Kanban board below tracks the planned and in-progress work for the AI/ML Eva
 - [Tutorials](./tutorials): where to try the shared 6G Testbed tooling
 - Project [index](.): overview and slide deck
 - [AI Traffic Characterization](../6g-testbed/scope): the shared testbed this activity builds on
-- [AI & ML on the Standards portal](/standards/ai-ml): the standards context
+- Standards: [AI & ML in 5G Media](/standards/ai-ml) — the full list of the 3GPP studies and specifications that define the scenarios and data this activity evaluates
 - Tech: [AI/ML in 5G Media](/tech/ai-ml): the implementer-facing analysis
 
 :::note

@@ -131,10 +131,6 @@ The three libraries split by what you are trying to do:
 
 Each library implements only the consumer (client) side of its APIs, so it assumes a running 5G Core that produces those services. The libraries handle NRF-based discovery where relevant (for example, libscbsf discovers the BSF), which means an application usually only needs an entry point address and the session or UE identity, not the full topology of the core.
 
-## Standards & Specifications
-
-This project provides service-consumer libraries that call 5G Core service-based APIs rather than implementing a 3GPP specification itself, so no specific 3GPP or ETSI document numbers are cited on this page. The BSF and PCF service-consumer interfaces are documented on the [Standards: 5G Media Streaming](/standards/5gms) page, and the MB-SMF service-consumer interface is documented on the [Standards: 5G Multicast & Broadcast Services](/standards/5g-mbs) page.
-
 ## Getting Started
 
 See [Tutorials](./tutorials) to run the tools against a 5G Core, and [Resources](./resources) for the source code and releases.
@@ -196,5 +192,5 @@ Initial implementation of MBS User Services, including integration with the MB-S
 
 - [Resources](/reference-tools/5g-core/resources)
 - [Tutorials](/reference-tools/5g-core/tutorials)
-- Standards: [5G Media Streaming (5GMS)](/standards/5gms) and [5G Multicast Broadcast Services (MBS)](/standards/5g-mbs) — the service-consumer interfaces this project implements are documented there
+- Standards: [5G Media Streaming (5GMS)](/standards/5gms) and [5G Multicast Broadcast Services (MBS)](/standards/5g-mbs) — this project provides service-consumer libraries that call 5G Core service-based APIs rather than implementing a specification of its own; the BSF and PCF service-consumer interfaces are documented on the 5GMS page, and the MB-SMF service-consumer interface on the MBS page
 - Tech: [Streaming & Media Delivery](/tech/5gms) and [Multicast & Broadcast in 5G](/tech/5g-mbs)

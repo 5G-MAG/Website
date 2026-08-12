@@ -5,6 +5,9 @@ sidebar_position: 0
 description: Feature support matrix for rt-mbms-tx and rt-mbms-modem across 3GPP Rel-14 to Rel-19, plus architecture diagrams and NTN context.
 ---
 
+import ImplementationBoard from '@site/src/components/ImplementationBoard';
+import { BROADCAST_COMPONENTS, BROADCAST_SECTIONS } from '@site/src/data/implementation/5g-broadcast';
+
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <div class="topic-banner">
@@ -50,59 +53,15 @@ At the release/feature level, the reference tools rt-mbms-tx (transmitter) and r
 | Rel-19 (CAS muting)     | CAS muting for PSS / SSS / PBCH; SIB1-MBMS v1900; UE capability                                                 | Implemented              | Implemented              |
 | Rel-19 (new bands)      | Bands 112 (470 to 608 MHz) and 113 (606 to 698 MHz)                                                             | Implemented              | Implemented              |
 
-This is a high-level, release-level view. Some items are receive-only or transmit-only by nature (for example UE capability signalling applies on the modem side), and some Release 18/19 band support is at the frequency-lookup and configuration level. For the full standards background, see [Standards: LTE-based 5G Broadcast](/standards/5g-broadcast). The per-feature tables below give a finer breakdown.
+This is a high-level, release-level view. Some items are receive-only or transmit-only by nature (for example UE capability signalling applies on the modem side), and some Release 18/19 band support is at the frequency-lookup and configuration level. For the full standards background, see [Standards: LTE-based 5G Broadcast](/standards/5g-broadcast). The board below gives the finer, per-feature breakdown.
 
 ### Support of features in rt-mbms-tx and rt-mbms-modem
 
-Status legend: ✅ supported; ❌ not supported; "To check" means the status has not yet been confirmed.
+Each release is audited feature by feature at both ends of the chain: rt-mbms-tx (transmit) and rt-mbms-modem (receive). Where support has not yet been confirmed, the feature is marked **On hold** and its note says so.
 
-The tables use these recurring 3GPP terms: MBSFN (Multicast-Broadcast Single-Frequency Network, where several cells transmit the same signal in sync); SCS (subcarrier spacing, the frequency gap between subcarriers, in kHz); PRB (Physical Resource Block, the basic unit of radio bandwidth allocation); MIB/SIB (Master/System Information Block, broadcast control information); PDCCH/PBCH/PMCH/PCFICH (Physical Downlink Control / Broadcast / Multicast / Control Format Indicator Channels); CFI (Control Format Indicator); RRC (Radio Resource Control signalling).
+The features use these recurring 3GPP terms: MBSFN (Multicast-Broadcast Single-Frequency Network, where several cells transmit the same signal in sync); SCS (subcarrier spacing, the frequency gap between subcarriers, in kHz); PRB (Physical Resource Block, the basic unit of radio bandwidth allocation); MIB/SIB (Master/System Information Block, broadcast control information); PDCCH/PBCH/PMCH/PCFICH (Physical Downlink Control / Broadcast / Multicast / Control Format Indicator Channels); CFI (Control Format Indicator); RRC (Radio Resource Control signalling).
 
-#### Release 14 features
-
-| Feature                                         | rt-mbms-tx | rt-mbms-modem |
-| ----------------------------------------------- | ---------- | ------------- |
-| MBSFN subframes using SCS = 1.25 kHz            | ✅         | ✅            |
-| MIB-MBMS                                        | ✅         | ✅            |
-| SIB1-MBMS                                       | ✅         | ✅            |
-| MBMSInterestIndication RRC signalling procedure | To check   | To check      |
-
-#### Release 16 features
-
-| Feature                                                                      | rt-mbms-tx | rt-mbms-modem |
-| ---------------------------------------------------------------------------- | ---------- | ------------- |
-| MBSFN subframes using SCS = 0.37 kHz                                         | ✅         | ✅            |
-| MBSFN subframes using SCS = 2.5 kHz                                          | ✅         | ✅            |
-| PDCCH enhancements: CFI indication in MIB to avoid the need to decode PCFICH | ✅         | ✅            |
-| PDCCH enhancements: New aggregation level 16 (PDCCH Format 4)                | ✅         | ✅            |
-| Repetition of PBCH                                                           | ✅         | ✅            |
-| MBSFN-AreaInfo-r16 (subcarrierSpacing, timeSeparation)                       | ✅         | ✅            |
-| Receive-Only Mode (ROM) redirect                                             | ✅         | ✅            |
-
-#### Release 17 features
-
-| Feature                                                          | rt-mbms-tx | rt-mbms-modem |
-| ---------------------------------------------------------------- | ---------- | ------------- |
-| PMCH bandwidth of 30, 35 and 40 PRBs (corresponding to 6/7/8MHz) | ✅         | ✅            |
-| Band 107 (UHF)                                                   | ✅         | ✅            |
-
-#### Release 18 features
-
-| Feature                                 | rt-mbms-tx | rt-mbms-modem |
-| --------------------------------------- | ---------- | ------------- |
-| Band 108 (470 to 698 MHz, receive-only) | ✅         | ✅            |
-
-#### Release 19 features
-
-| Feature                               | rt-mbms-tx | rt-mbms-modem |
-| ------------------------------------- | ---------- | ------------- |
-| PMCH time interleaving (N subframes)  | ✅         | ✅            |
-| PMCH frequency interleaving           | ✅         | ✅            |
-| PMCH cyclic shift                     | ✅         | ✅            |
-| PMCH MCS tables 11.1-1 / 11.1-2       | ✅         | ✅            |
-| Extended SI scheduling periods        | ✅         | ✅            |
-| CAS muting (PSS / SSS / PBCH)         | ✅         | ✅            |
-| Bands 112 and 113 (UHF, receive-only) | ✅         | ✅            |
+<ImplementationBoard components={BROADCAST_COMPONENTS} sections={BROADCAST_SECTIONS} />
 
 ### Support of features for rt-mbms-tx-for-qrd-and-crd
 
@@ -144,18 +103,6 @@ The 5G Broadcast waveform (FeMBMS, defined in [ETSI TS 103 720](https://www.etsi
 - [Tech: MBS Broadcast over NTN](/tech/ntn/analysis-mbs-broadcast-over-ntn)
 - [Tech: Non-Terrestrial Networks (overview)](/tech/ntn)
 - [Standards: Non-Terrestrial Networks](/standards/ntn)
-
-## Standards & Specifications
-
-Relevant specifications are listed on the standards portal pages below.
-
-[Standards: 5G Broadcast](/standards/5g-broadcast)
-
-[Standards: Multimedia Delivery Protocols](/standards/multimedia)
-
-| Specification | Body | Reference |
-| -------------- | ---- | --------- |
-| TS 103 720 &mdash; 5G Broadcast System for linear TV and radio services (the FeMBMS waveform implemented by rt-mbms-tx and rt-mbms-modem) | ETSI | [etsi.org standards search](https://www.etsi.org/standards-search#search=103%20720) |
 
 ## Getting Started
 
@@ -205,5 +152,6 @@ Project for any improvements to the rt-mbms-wui
 - [Resources](/reference-tools/5g-broadcast/resources)
 - [Tutorials](/reference-tools/5g-broadcast/tutorials)
 - Related project: [5G Broadcast - Emergency Alerts](../emergency-alerts)
-- Standards: [5G Broadcast](/standards/5g-broadcast)
+- Standards: [5G Broadcast](/standards/5g-broadcast) — the full specification list, including ETSI TS 103 720, the FeMBMS waveform implemented by rt-mbms-tx and rt-mbms-modem
+- Standards: [Multimedia Delivery Protocols](/standards/multimedia) — the FLUTE/ROUTE transports that carry content over the broadcast bearer
 - Technical documentation: [5G Broadcast on the Tech portal](/tech/5g-broadcast)

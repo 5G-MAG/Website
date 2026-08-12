@@ -22,12 +22,41 @@ const STATUS = {
   yes: { label: 'Implemented', short: 'Yes', className: 'stateYes' },
   partial: { label: 'Partially implemented', short: 'Partial', className: 'statePartial' },
   hold: { label: 'On hold', short: 'Hold', className: 'stateHold' },
+  // Distinct from `hold`: on hold means a decision was taken to wait, unknown
+  // means nobody has checked yet. Collapsing the two would overstate what the
+  // audit actually establishes.
+  unknown: { label: 'Not yet verified', short: 'To check', className: 'stateUnknown' },
   no: { label: 'Not implemented', short: 'No', className: 'stateNo' },
   na: { label: 'Out of scope', short: 'N/A', className: 'stateNa' },
 };
 
+// Notes are authored as plain strings, but some carry a link to the issue that
+// explains a gap. Rendering them raw would print the markdown source, so inline
+// [text](url) links are turned into real anchors here. Deliberately minimal:
+// this is a note field, not a place for general markdown.
+const LINK = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
+
+function inline(text) {
+  if (!text || !text.includes('](')) return text;
+  const out = [];
+  let last = 0;
+  let m;
+  LINK.lastIndex = 0;
+  while ((m = LINK.exec(text)) !== null) {
+    if (m.index > last) out.push(text.slice(last, m.index));
+    out.push(
+      <a key={`${m[2]}-${m.index}`} href={m[2]} target="_blank" rel="noreferrer">
+        {m[1]}
+      </a>
+    );
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) out.push(text.slice(last));
+  return out;
+}
+
 function tally(rows) {
-  const counts = { yes: 0, partial: 0, hold: 0, no: 0, na: 0 };
+  const counts = { yes: 0, partial: 0, hold: 0, unknown: 0, no: 0, na: 0 };
   rows.forEach((r) => {
     // A row in a paired section (transmit/receive, for example) carries one
     // state per side; each side is counted, since each is separately audited.
@@ -38,7 +67,7 @@ function tally(rows) {
   });
   // "Out of scope" rows are deliberately excluded from the denominator: they
   // are not gaps, they are decisions about what this component is for.
-  const scored = counts.yes + counts.partial + counts.hold + counts.no;
+  const scored = counts.yes + counts.partial + counts.hold + counts.unknown + counts.no;
   return { ...counts, scored, done: counts.yes };
 }
 
@@ -120,7 +149,7 @@ export default function ImplementationBoard({ components = [], sections = [] }) 
                 </span>
               </summary>
               <div className={styles.body}>
-                {s.intro && <p className={styles.intro}>{s.intro}</p>}
+                {s.intro && <p className={styles.intro}>{inline(s.intro)}</p>}
                 <div className={styles.tableScroll}>
                   <table className={styles.table}>
                     <thead>
@@ -145,7 +174,7 @@ export default function ImplementationBoard({ components = [], sections = [] }) 
                       {(s.rows || []).map((r, i) => (
                         <tr key={`${r.feature}-${i}`}>
                           <th scope="row" className={styles.feature}>
-                            {r.feature}
+                            {inline(r.feature)}
                           </th>
                           {s.columns ? (
                             (r.statuses || []).map((st, j) => (
@@ -155,13 +184,15 @@ export default function ImplementationBoard({ components = [], sections = [] }) 
                             ))
                           ) : (
                             <>
-                              {s.whereLabel && <td className={styles.whereCell}>{r.where || ''}</td>}
+                              {s.whereLabel && (
+                                <td className={styles.whereCell}>{r.where || ''}</td>
+                              )}
                               <td className={styles.statusCell}>
                                 <StatusChip status={r.status} />
                               </td>
                             </>
                           )}
-                          <td className={styles.noteCell}>{r.note || ''}</td>
+                          <td className={styles.noteCell}>{inline(r.note) || ''}</td>
                         </tr>
                       ))}
                     </tbody>

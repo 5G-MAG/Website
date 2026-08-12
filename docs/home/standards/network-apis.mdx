@@ -5,6 +5,9 @@ slug: /standards/network-apis
 description: How CAMARA network APIs map to 3GPP's NEF, CAPIF and PCF exposure mechanisms for media QoS, slicing and connectivity insights.
 ---
 
+import SpecIndex from '@site/src/components/SpecIndex';
+import { NETWORK_APIS_SPECS, NETWORK_APIS_LAYER_ORDER } from '@site/src/data/specs/network-apis';
+
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -24,7 +27,7 @@ How CAMARA network APIs map to 3GPP's NEF, CAPIF and PCF exposure mechanisms for
 
 5G-MAG tracks and contributes to standards for network capability exposure: APIs that let media applications request and manage network resources. The relevant pieces are 3GPP's Network Exposure Function (NEF), the Common API Framework (CAPIF), and the CAMARA open-source project (a Linux Foundation initiative developed with GSMA support). For the technical analysis of how these map together, see the Tech page linked below. For acronyms used here, see the [Glossary](/tech/glossary).
 
-<div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
+<div class="godeeper-grid" style={{gridTemplateColumns: 'minmax(0, 380px)'}}>
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
@@ -43,33 +46,9 @@ How CAMARA network APIs map to 3GPP's NEF, CAPIF and PCF exposure mechanisms for
 
 ## Key 3GPP Specifications
 
-The specifications below are grouped by the layer of network capability exposure they define: 3GPP northbound exposure (NEF, CAPIF), 5G Core policy control, 5G Media Streaming APIs, and the Service Enabler Architecture Layer (SEAL). See [Tech: Network APIs](/tech/network-apis) for the architecture that ties these layers together.
+The specifications in scope, filterable by the layer of network capability exposure they define: 3GPP northbound exposure (NEF, CAPIF), 5G Core policy control, 5G Media Streaming APIs, and the Service Enabler Architecture Layer (SEAL). Search matches the specification number, its title and any scope note. See [Tech: Network APIs](/tech/network-apis) for the architecture that ties these layers together.
 
-### Network Exposure Function (NEF)
-
-- [TS 29.522](https://www.3gpp.org/dynareport/29522.htm): Network Exposure Function (NEF); Northbound APIs (includes Nnef_AFsessionWithQoS and Nnef_ChargeableParty)
-- [TS 29.517](https://www.3gpp.org/dynareport/29517.htm): 5G System; Application Function Event Exposure Service; Stage 3
-- [TS 23.501](https://www.3gpp.org/dynareport/23501.htm): System Architecture for 5GS (NEF architecture)
-
-### Policy and QoS Control
-
-- [TS 29.514](https://www.3gpp.org/dynareport/29514.htm): 5G System; Policy Authorization Service; Stage 3 (Npcf_PolicyAuthorization)
-- [TS 29.554](https://www.3gpp.org/dynareport/29554.htm): 5G System; Background Data Transfer (BDT) Policy Control Service; Stage 3 (Npcf_BDTPolicyControl, Nnef_BDTPNegotiation)
-
-### Common API Framework (CAPIF)
-
-- [TS 23.222](https://www.3gpp.org/dynareport/23222.htm): Procedures for the Common API Framework for 3GPP Northbound APIs
-- [TS 29.222](https://www.3gpp.org/dynareport/29222.htm): Common API Framework for 3GPP Northbound APIs (Stage 3)
-
-### 5G Media Streaming APIs
-
-- [TS 26.512](https://www.3gpp.org/dynareport/26512.htm): 5G Media Streaming (5GMS); Protocols (M1-M8 reference point APIs)
-- [TS 26.501](https://www.3gpp.org/dynareport/26501.htm): 5G Media Streaming (5GMS); General description and architecture
-
-### Service Enabler Architecture Layer (SEAL)
-
-- [TS 23.434](https://www.3gpp.org/dynareport/23434.htm): Service Enabler Architecture Layer for Verticals (SEAL); Functional architecture and information flows
-- [TS 24.549](https://www.3gpp.org/dynareport/24549.htm): SEAL; Network Slice Capability Enablement (NSCE); Stage 3 (protocol aspects)
+<SpecIndex specs={NETWORK_APIS_SPECS} layerOrder={NETWORK_APIS_LAYER_ORDER} />
 
 ## CAMARA
 

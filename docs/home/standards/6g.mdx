@@ -5,6 +5,9 @@ slug: /standards/6g
 description: Tracks early 3GPP and ITU-R 6G media standardisation studies, AI/ML groundwork and the 5G-MAG 6G Testbed for media traffic characterisation.
 ---
 
+import SpecIndex from '@site/src/components/SpecIndex';
+import { SIXG_SPECS, SIXG_LAYER_ORDER } from '@site/src/data/specs/6g';
+
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -24,7 +27,7 @@ Early 3GPP and ITU-R 6G media standardisation studies, AI/ML groundwork and the 
 
 5G-MAG tracks the early standardisation of media aspects for 6G systems. 6G work in 3GPP is currently at the study stage (technical reports on use cases and service requirements), so the focus here is on the relevant 3GPP studies rather than finished specifications. For the technical analysis of the IMT-2030 usage scenarios and the 5G-MAG 6G Testbed, see the Tech page linked below. For acronyms used here, see the [Glossary](/tech/glossary).
 
-<div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
+<div class="godeeper-grid" style={{gridTemplateColumns: 'minmax(0, 380px)'}}>
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
@@ -52,26 +55,11 @@ Early 3GPP and ITU-R 6G media standardisation studies, AI/ML groundwork and the 
 
 Readers should treat all study-stage content as provisional.
 
-## Key 3GPP Specifications
+## Key Specifications
 
-- **[TR 22.870](https://www.3gpp.org/dynareport/22870.htm) - Study on 6G Use Cases and Service Requirements** (SA1, Stage 1 requirements track). Clusters use cases around the IMT-2030 usage scenarios and derives candidate system requirements.
-- **[TR 26.870](https://www.3gpp.org/dynareport/26870.htm) - Study on Media Aspects for 6G System** (SA4, media track, most relevant to 5G-MAG). Media services, formats, traffic characteristics and delivery for a 6G system, building on the SA4 5G media work (5G Media Streaming and the Data Collection and Reporting framework).
+The documents in scope of 6G media, grouped by where each one comes from: the ITU-R framework that sets the vision and capability targets, the 3GPP SA1 and SA4 studies, and the 5G Advanced AI/ML studies that feed the media work. Architecture and network intelligence for 6G follows the SA2 track covered on the [AI & ML](/standards/ai-ml) page.
 
-### Related AI/ML studies that feed 6G
-
-These 5G Advanced studies are relevant to 6G media work and are covered in more detail on the [AI & ML](/standards/ai-ml) page:
-
-- [TR 26.847](https://www.3gpp.org/dynareport/26847.htm) (SA4): Evaluation of AI and ML in 5G media services (Release 19, completed).
-- [TR 22.874](https://www.3gpp.org/dynareport/22874.htm) (SA1): Study on traffic characteristics and performance requirements for AI/ML model transfer in 5GS.
-
-## Specifications by Role
-
-| Role                                              | Specifications                        |
-| -------------------------------------------------- | -------------------------------------- |
-| Vision and capability targets (ITU-R)             | ITU-R M.2160-0                        |
-| Use cases and requirements (3GPP SA1)             | TR 22.870                             |
-| Media aspects (3GPP SA4)                          | TR 26.870                             |
-| Architecture and network intelligence (3GPP SA2)  | see [AI & ML](/standards/ai-ml)  |
+<SpecIndex specs={SIXG_SPECS} layerOrder={SIXG_LAYER_ORDER} />
 
 ## 5G-MAG tracking and contribution focus
 

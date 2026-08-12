@@ -5,6 +5,9 @@ slug: /standards/avatar
 description: 'Tracks avatar communications standardisation: the MPEG Avatar Representation Format, Scene Description integration and the 3GPP IVAS audio codec.'
 ---
 
+import SpecIndex from '@site/src/components/SpecIndex';
+import { AVATAR_SPECS, AVATAR_LAYER_ORDER } from '@site/src/data/specs/avatar';
+
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -24,7 +27,7 @@ The MPEG Avatar Representation Format, Scene Description integration and the 3GP
 
 5G-MAG tracks standardisation of avatar communications and the associated immersive voice and audio in 5G systems: the Avatar Representation Format (ARF), an MPEG format for interoperable 3D avatars, MPEG-I Scene Description integration, and Immersive Voice and Audio Services (IVAS), the 3GPP immersive audio codec used alongside them. For the technical analysis of how avatar communication works, see the Tech page linked below. For acronyms used here, see the [Glossary](/tech/glossary).
 
-<div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
+<div class="godeeper-grid" style={{gridTemplateColumns: 'minmax(0, 380px)'}}>
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
@@ -52,45 +55,15 @@ The standardisation spans MPEG (avatar representation and scene placement) and 3
 | Real-time media transport  | TS 26.114, TS 26.506, draft-ietf-avtcore-rtp-avatar                |
 | Immersive audio            | TS 26.250 to TS 26.258 (IVAS)                                      |
 
-## Key MPEG Specifications
+## Key Specifications
 
-### Avatar Representation Format (ARF)
+The MPEG, 3GPP and IETF deliverables behind avatar communications, filterable by the role they play. Search matches the specification number, its title and any scope note.
 
-- [ISO/IEC 23090-39](https://www.iso.org/standard/91745.html): Coded representation of immersive media; Part 39: Avatar representation format (ARF). Defines interoperable storage, carriage, and animation of 3D avatars, designed to work with MPEG-I Scene Description (ISO/IEC 23090-14; see the [XR page](/standards/xr)). Storage containers: ISOBMFF (ISO/IEC 14496-12) and Zip-based (ISO/IEC 21320-1). See [Avatar Communication with MPEG ARF](/tech/avatar-communications) for the ARF data model and end-to-end procedure.
+ISO/IEC 23090-39 (ARF) defines interoperable storage, carriage and animation of 3D avatars, and is designed to work with MPEG-I Scene Description (ISO/IEC 23090-14; see the [XR page](/standards/xr) for the full Scene Description treatment, including the amendment that adds avatar support). See [Avatar Communication with MPEG ARF](/tech/avatar-communications) for the ARF data model and end-to-end procedure.
 
-### MPEG-I Scene Description (avatar integration)
+IVAS is the 3GPP immersive voice and audio codec developed by working group SA4. Its deliverables span the general overview, the fixed- and floating-point C code, test material, the detailed algorithmic description (including the RTP payload format and SDP parameters used to negotiate the codec in a session), rendering, error concealment, and jitter buffer management.
 
-- [ISO/IEC 23090-14](https://www.iso.org/standard/80900.html): Coded representation of immersive media; Part 14: Scene description. Published in 2023 as a set of extensions to Khronos glTF 2.0. Avatar support is added through a later amendment (ISO/IEC 23090-14:2023 [Amendment 2](https://www.iso.org/standard/86439.html), "Support for haptics, augmented reality, avatars, interactivity, MPEG-I audio, and lighting"). See the [XR page](/standards/xr) for the full Scene Description treatment.
-
-## Key 3GPP Specifications
-
-### Immersive Voice and Audio Services (IVAS)
-
-IVAS is the 3GPP immersive voice and audio codec developed by working group SA4. The deliverable set below spans the general overview, the fixed- and floating-point C code, test material, the detailed algorithmic description (including the RTP payload format and SDP parameters used to negotiate the codec in a session), rendering, error concealment, and jitter buffer management.
-
-- [TS 26.250](https://www.3gpp.org/dynareport/26250.htm): Codec for Immersive Voice and Audio Services (IVAS); General overview
-- [TS 26.251](https://www.3gpp.org/dynareport/26251.htm): Codec for Immersive Voice and Audio Services (IVAS); C code (fixed-point)
-- [TS 26.252](https://www.3gpp.org/dynareport/26252.htm): Codec for Immersive Voice and Audio Services (IVAS); Test sequences
-- [TS 26.253](https://www.3gpp.org/dynareport/26253.htm): Codec for Immersive Voice and Audio Services (IVAS); Detailed Algorithmic Description including RTP payload format and SDP parameter definitions
-- [TS 26.254](https://www.3gpp.org/dynareport/26254.htm): Codec for Immersive Voice and Audio Services (IVAS); Rendering
-- [TS 26.255](https://www.3gpp.org/dynareport/26255.htm): Codec for Immersive Voice and Audio Services (IVAS); Error concealment of lost packets
-- [TS 26.256](https://www.3gpp.org/dynareport/26256.htm): Codec for Immersive Voice and Audio Services (IVAS); Jitter Buffer Management
-- [TS 26.258](https://www.3gpp.org/dynareport/26258.htm): Codec for Immersive Voice and Audio Services (IVAS); C code (floating-point)
-
-### Real-time communication delivery
-
-- [TS 26.114](https://www.3gpp.org/dynareport/26114.htm): IP Multimedia Subsystem (IMS); Multimedia Telephony; Media handling and interaction (MTSI).
-- [TS 26.506](https://www.3gpp.org/dynareport/26506.htm): 5G Real-time Media Communication Architecture (Stage 2), the stage-2 architecture for RTC over 5G.
-
-The transport of ARF animation itself is being addressed at the IETF: [draft-ietf-avtcore-rtp-avatar](https://datatracker.ietf.org/doc/draft-ietf-avtcore-rtp-avatar/) defines an RTP payload format for ARF (ISO/IEC 23090-39) avatar animations. This is work in progress at the IETF and not a 3GPP or MPEG deliverable.
-
-### Study Items on Avatar Communications
-
-- [TR 26.813](https://www.3gpp.org/dynareport/26813.htm): Avatar Representation and Communication
-
-### XR and Immersive Media Context
-
-- [TR 26.928](https://www.3gpp.org/dynareport/26928.htm): Extended reality (XR) in 5G (includes avatar and presence use cases)
+<SpecIndex specs={AVATAR_SPECS} layerOrder={AVATAR_LAYER_ORDER} />
 
 <details>
 <summary>References to verify</summary>

@@ -5,6 +5,9 @@ slug: /standards/npn
 description: 3GPP Non-Public Network standards and deployment models (SNPN, PNI-NPN) for private 5G media production and contribution.
 ---
 
+import SpecIndex from '@site/src/components/SpecIndex';
+import { NPN_SPECS, NPN_LAYER_ORDER } from '@site/src/data/specs/npn';
+
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -24,7 +27,7 @@ description: 3GPP Non-Public Network standards and deployment models (SNPN, PNI-
 
 5G-MAG tracks 3GPP Non-Public Network (NPN) standards for private 5G media production and contribution. For the technical analysis of NPN deployment models, identity/onboarding and QoS considerations, see the Tech page linked below. For acronyms used here, see the [Glossary](/tech/glossary).
 
-<div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
+<div class="godeeper-grid" style={{gridTemplateColumns: 'minmax(0, 380px)'}}>
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
@@ -58,24 +61,9 @@ The NPN feature set has grown across releases. The following is an orientation, 
 
 ## Key 3GPP Specifications
 
-### Service Requirements
+The specifications in scope of Non-Public Networks, grouped by the layer they define: the stage 1 requirements, the system architecture, the stage 3 access and authentication procedures, and the study that fed them.
 
-- [TS 22.263](https://www.3gpp.org/dynareport/22263.htm): Service requirements for Video, Imaging and Audio for Professional Applications (VIAPA); stage 1 requirements anchor most often cited when NPNs are discussed for broadcast use
-
-### System Architecture
-
-- [TS 23.501](https://www.3gpp.org/dynareport/23501.htm): System Architecture for the 5G System; Non-Public Network aspects (clause 5.30)
-- [TS 23.502](https://www.3gpp.org/dynareport/23502.htm): Procedures for the 5G System; NPN procedures
-
-### Access and Authentication
-
-- [TS 24.501](https://www.3gpp.org/dynareport/24501.htm): Non-Access-Stratum (NAS) protocol for 5GS; Stage 3 — carries the SNPN-specific registration and authentication procedures (credential-owner vs. separate credential-holder models, SUCI handling)
-- [TS 24.502](https://www.3gpp.org/dynareport/24502.htm): Access to the 3GPP 5G Core Network (5GCN) via non-3GPP access networks; Stage 3
-- [TS 33.501](https://www.3gpp.org/dynareport/33501.htm): Security architecture for 5GS; NPN security aspects
-
-### Study Items
-
-- [TR 23.700-07](https://www.3gpp.org/dynareport/23700-07.htm): Study on enhanced support of Non-Public Networks (Release 17)
+<SpecIndex specs={NPN_SPECS} layerOrder={NPN_LAYER_ORDER} />
 
 ## 5G-MAG tracking and contribution focus
 

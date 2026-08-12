@@ -5,6 +5,9 @@ slug: /standards/dvb-i
 description: Covers DVB-I service discovery and its deployment over 5G via unicast 5GMS, LTE-based 5G Broadcast, and hybrid delivery modes.
 ---
 
+import SpecIndex from '@site/src/components/SpecIndex';
+import { DVBI_SPECS, DVBI_LAYER_ORDER } from '@site/src/data/specs/dvb-i';
+
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -26,7 +29,7 @@ Discovering and delivering linear TV services over 5G, combining broadband, broa
 
 The DVB / 5G-MAG Joint Task Force documented DVB-I deployment over 5G in DVB A178, published as ETSI TR 103 972.
 
-<div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
+<div class="godeeper-grid" style={{gridTemplateColumns: 'minmax(0, 380px)'}}>
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
@@ -45,8 +48,6 @@ The DVB / 5G-MAG Joint Task Force documented DVB-I deployment over 5G in DVB A17
 
 ## Key Specifications
 
-### DVB / ETSI
-
 DVB publishes a specification as a numbered "BlueBook" (for example DVB A177), which is then published in identical technical form by ETSI under an ETSI number. The pairs relevant here are:
 
 | DVB BlueBook | ETSI publication | Topic                                                         |
@@ -54,30 +55,9 @@ DVB publishes a specification as a numbered "BlueBook" (for example DVB A177), w
 | DVB A177     | ETSI TS 103 770  | Service Discovery and Programme Metadata for DVB-I            |
 | DVB A178     | ETSI TR 103 972  | DVB-I service delivery over 5G Systems; Deployment Guidelines |
 
-- [ETSI TS 103 720](https://www.etsi.org/deliver/etsi_ts/103700_103799/103720/): 5G Broadcast System for linear TV and radio services
-- [DVB A177](https://dvb.org/?standard=service-discovery-and-programme-metadata-for-dvb-i): Service Discovery and Programme Metadata for DVB-I (the main DVB-I specification; published as ETSI TS 103 770)
-- [ETSI TS 103 770](https://www.etsi.org/deliver/etsi_ts/103700_103799/103770/): Digital Video Broadcasting (DVB); Service Discovery and Programme Metadata for DVB-I (ETSI-published form of DVB A177)
-- [DVB A178](https://dvb.org/?standard=dvb-i-service-delivery-over-5g-systems-deployment-guidelines): DVB-I service delivery over 5G Systems; Deployment Guidelines (broader 5G delivery guidance for DVB-I, not limited to 5G Broadcast; published as ETSI TR 103 972)
-- [ETSI TR 103 972](https://www.etsi.org/deliver/etsi_tr/103900_103999/103972/): DVB-I service delivery over 5G Systems; Deployment Guidelines (ETSI-published form of DVB A178; produced by the DVB / 5G-MAG Joint Task Force)
+The specifications in scope, filterable by the layer they define: the DVB and ETSI service-discovery and deployment documents, the DVB delivery formats, and the 3GPP 5G transport (the unicast path is 5G Media Streaming, in the 26-series owned by SA4 media codecs and formats; the multicast/broadcast path is the 5G Multicast Broadcast Services user-service architecture, alongside the LTE-based broadcast profile published by ETSI). Search matches the specification number, its title and any scope note.
 
-### DVB delivery formats
-
-- [ETSI TS 103 285](https://www.etsi.org/deliver/etsi_ts/103200_103299/103285/): Digital Video Broadcasting (DVB); MPEG-DASH Profile for Transport of ISO BMFF Based DVB Services over IP Based Networks (DVB-DASH; the DVB profile of MPEG-DASH, ISO/IEC 23009-1)
-- [ETSI TS 103 769](https://www.etsi.org/deliver/etsi_ts/103700_103799/103769/): Digital Video Broadcasting (DVB); Adaptive media streaming over IP multicast (DVB-MABR)
-- [DVB A180](https://dvb.org/?standard=native-ip-broadcasting): Native IP Broadcasting (DVB-NIP), the DVB end-to-end native-IP broadcast system that reuses DVB-I, DVB-DASH and DVB-MABR
-
-### 3GPP
-
-The 5G transport specifications that DVB-I over 5G relies on sit in the 3GPP 26-series (SA4 media codecs and formats). The unicast path is 5G Media Streaming:
-
-- [TS 26.501](https://www.3gpp.org/dynareport/26501.htm): 5G Media Streaming (5GMS); General description and architecture
-- [TS 26.512](https://www.3gpp.org/dynareport/26512.htm): 5G Media Streaming (5GMS); Protocols
-- [TS 26.511](https://www.3gpp.org/dynareport/26511.htm): 5G Media Streaming (5GMS); Profiles, codecs and formats
-
-For multicast/broadcast transport, the relevant 3GPP work is the 5G Multicast Broadcast Services (MBS) user-service architecture, alongside the LTE-based broadcast profile published by ETSI:
-
-- [TS 26.502](https://www.3gpp.org/dynareport/26502.htm): 5G multicast-broadcast services; User service architecture (MBS)
-- [TS 23.247](https://www.3gpp.org/dynareport/23247.htm): Architectural enhancements for 5G multicast-broadcast services
+<SpecIndex specs={DVBI_SPECS} layerOrder={DVBI_LAYER_ORDER} />
 
 ## Specifications by role
 

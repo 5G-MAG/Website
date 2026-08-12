@@ -5,6 +5,9 @@ slug: /standards/rtc
 description: 3GPP's SA4 Real-Time Communications architecture, WebRTC transport, and 5GMS uplink standards for interactive media contribution.
 ---
 
+import SpecIndex from '@site/src/components/SpecIndex';
+import { RTC_SPECS, RTC_LAYER_ORDER } from '@site/src/data/specs/rtc';
+
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -26,7 +29,7 @@ WebRTC-based interactive media, uplink contribution and 5GMSu standardisation ov
 
 5GMSu is the uplink (device-to-network) part of the wider 5G Media Streaming (5GMS) framework. It shares its architecture and much of its specification base with the downlink part (5GMSd); the specifications below cover the 5GMS framework as a whole and call out the uplink-specific aspects. For the full downlink view, see [Standards: 5G Media Streaming](/standards/5gms).
 
-<div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
+<div class="godeeper-grid" style={{gridTemplateColumns: 'minmax(0, 380px)'}}>
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
@@ -49,62 +52,23 @@ WebRTC-based interactive media, uplink contribution and 5GMSu standardisation ov
 - **Release 18**: RTC architecture (TS 26.506) and protocols (TS 26.113); harmonised media delivery (TS 26.510); IMS Data Channel / NG-RTC.
 - **Release 19 and later**: Enhancements to RTC, including immersive real-time communication over WebRTC (studied in TR 26.930). Confirm the specific work items against the 3GPP work plan.
 
-## Key 3GPP Specifications
-
-### RTC Architecture (SA4)
-
-- [TS 26.506](https://www.3gpp.org/dynareport/26506.htm): 5G Real-time Media Communication Architecture (stage 2)
-- [TS 26.113](https://www.3gpp.org/dynareport/26113.htm): Real-Time Media Communication; Protocols and APIs (stage 3)
-- [TS 26.510](https://www.3gpp.org/dynareport/26510.htm): Media delivery; interactions and APIs for provisioning and media session handling (harmonised across 5GMS and RTC)
-
-### WebRTC Transport
+## WebRTC Transport
 
 - Media over RTP with RTCP feedback, secured as DTLS-SRTP.
 - Connectivity via ICE, using STUN and TURN for NAT traversal.
 - Data over WebRTC data channels (SCTP over DTLS).
 
-See the IETF and W3C listings below for the underlying protocol specifications.
+The IETF and W3C entries in the specification list below are the underlying protocol specifications.
 
-### 5G Media Streaming: Uplink
+## Key Specifications
 
-- [TS 26.510](https://www.3gpp.org/dynareport/26510.htm): Media delivery; interactions and APIs for provisioning and media session handling
-- [TS 26.512](https://www.3gpp.org/dynareport/26512.htm): 5G Media Streaming (5GMS); Protocols (includes uplink reference points M6, M7)
-- [TS 26.501](https://www.3gpp.org/dynareport/26501.htm): 5G Media Streaming (5GMS); General description and architecture (covers both 5GMSd and 5GMSu)
+The specifications in scope of Real-Time Communications, filterable by the role each one plays: the SA4 RTC architecture, the 5GMS uplink path, IMS multimedia telephony, and the IETF and W3C work the WebRTC transport builds on.
+
+<SpecIndex specs={RTC_SPECS} layerOrder={RTC_LAYER_ORDER} />
 
 :::note
 M6 and M7 are two of the 5GMS reference points (the named interfaces between the functional entities of the architecture). For the full set of reference points (M1 to M8) and what each one connects, see [Standards: 5G Media Streaming](/standards/5gms).
 :::
-
-### IMS Multimedia Telephony
-
-- [TS 26.114](https://www.3gpp.org/dynareport/26114.htm): IP Multimedia Subsystem (IMS); Multimedia telephony; Media handling and interaction
-
-### Study Items
-
-- [TR 26.930](https://www.3gpp.org/dynareport/26930.htm): Study on the enhancement for Immersive Real-Time Communication for WebRTC (Release 18, with an updated Release-19 version)
-
-## IETF Standards
-
-- [RFC 3550](https://datatracker.ietf.org/doc/html/rfc3550): RTP: A Transport Protocol for Real-Time Applications
-- [RFC 3551](https://datatracker.ietf.org/doc/html/rfc3551): RTP Profile for Audio and Video Conferences with Minimal Control
-- [RFC 7742](https://datatracker.ietf.org/doc/html/rfc7742): WebRTC Video Processing and Codec Requirements
-
-## W3C WebRTC
-
-- [WebRTC 1.0](https://www.w3.org/TR/webrtc/): Real-Time Communication Between Browsers
-- [Media Capture and Streams](https://www.w3.org/TR/mediacapture-streams/): API for accessing user media
-
-## Specifications by Role
-
-| Role                          | Specifications                          |
-| ------------------------------ | ---------------------------------------- |
-| RTC architecture (stage 2)     | TS 26.506                               |
-| RTC protocols and APIs (stage 3) | TS 26.113                              |
-| Harmonised media delivery       | TS 26.510                              |
-| 5GMS uplink (5GMSu)            | TS 26.501, TS 26.512                    |
-| IMS multimedia telephony        | TS 26.114                              |
-| WebRTC media transport (IETF)   | RFC 3550, RFC 3551, RFC 7742            |
-| WebRTC browser APIs (W3C)       | WebRTC 1.0, Media Capture and Streams   |
 
 ## 5G-MAG tracking and contribution focus
 

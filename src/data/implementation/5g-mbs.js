@@ -62,7 +62,7 @@ export const MBS_SECTIONS = [
       {
         feature: "MBS User Service: modify (PATCH, RFC 7396)",
         status: "hold",
-        note: "pending [Standards#182](https://github.com/5G-MAG/Standards/issues/182) ([issue #45](https://github.com/5G-MAG/rt-mbs-function/issues/45)) &mdash; use PUT",
+        note: "pending [Standards#182](https://github.com/5G-MAG/Standards/issues/182) ([issue #45](https://github.com/5G-MAG/rt-mbs-function/issues/45)) — use PUT",
       },
       {
         feature: "MBS User Service: delete",
@@ -84,7 +84,7 @@ export const MBS_SECTIONS = [
       {
         feature: "UpdateIndMBSUserDataIngSession (PUT)",
         status: "yes",
-        note: "with the &sect;5.3.2.4.2 update rules enforced: create-only attributes (`mbsSessionId`, `mbsDistSessionId`, `locationDependent`) protected; INACTIVE-only attributes (`objDistrInfo`, `pckDistrInfo`, `maxContBitRate`, ...) rejected while active; any-time attributes (`mbsServInfo`, `tgtServAreas`, `extTgtServAreas`, `nrRedCapUeInfo`, ...) applied live",
+        note: "with the §5.3.2.4.2 update rules enforced: create-only attributes (`mbsSessionId`, `mbsDistSessionId`, `locationDependent`) protected; INACTIVE-only attributes (`objDistrInfo`, `pckDistrInfo`, `maxContBitRate`, ...) rejected while active; any-time attributes (`mbsServInfo`, `tgtServAreas`, `extTgtServAreas`, `nrRedCapUeInfo`, ...) applied live",
       },
       {
         feature: "ModifyIndMBSUserDataIngSession (PATCH, RFC 7396)",
@@ -106,7 +106,7 @@ export const MBS_SECTIONS = [
       {
         feature: "RetrieveMBSUserDataIngStatSubscs / RetrieveInd (GET)",
         status: "yes",
-        note: "returned objects carry no id of their own &mdash; see [Standards#191](https://github.com/5G-MAG/Standards/issues/191)",
+        note: "returned objects carry no id of their own — see [Standards#191](https://github.com/5G-MAG/Standards/issues/191)",
       },
       {
         feature: "UpdateIndMBSUserDataIngStatSubsc (PUT) / ModifyInd (PATCH)",
@@ -117,7 +117,7 @@ export const MBS_SECTIONS = [
         status: "yes",
       },
       {
-        feature: "MBSUserDataIngStatNotif (notification to the provider callback URL, &sect;6.2.5)",
+        feature: "MBSUserDataIngStatNotif (notification to the provider callback URL, §6.2.5)",
         status: "yes",
       },
     ],
@@ -128,40 +128,40 @@ export const MBS_SECTIONS = [
     component: "MBSF",
     rows: [
       {
-        feature: "Service Announcement mode `PASSED_BACK` &mdash; bundle handed back to the Application Provider at Nmb10 for out-of-band distribution (not delivered over any MBS reference point)",
+        feature: "Service Announcement mode `PASSED_BACK` — bundle handed back to the Application Provider at Nmb10 for out-of-band distribution (not delivered over any MBS reference point)",
         where: "MBSF",
         status: "yes",
       },
       {
-        feature: "Service Announcement mode `VIA_MBS_DISTRIBUTION_SESSION` &mdash; MBSF's own broadcast announcement carousel, delivered **over MBS-4-MC** (multicast/broadcast) on a fixed, configurable SSM address/port",
+        feature: "Service Announcement mode `VIA_MBS_DISTRIBUTION_SESSION` — MBSF's own broadcast announcement carousel, delivered **over MBS-4-MC** (multicast/broadcast) on a fixed, configurable SSM address/port",
         where: "MBSF generates + MBSTF transmits; MBSF Client receives",
         status: "yes",
       },
       {
-        feature: "Service Announcement mode `VIA_MBS_5` &mdash; unicast retrieval by the client **over MBS-5**",
+        feature: "Service Announcement mode `VIA_MBS_5` — unicast retrieval by the client **over MBS-5**",
         where: "\u2014",
         status: "no",
         note: "no MBS-5 network API",
       },
       {
-        feature: "User Service Description bundle, `multipart/related` (TS 26.517 &sect;5.3.1A): `UserServiceDescriptions` document plus one SDP per Distribution Session",
+        feature: "User Service Description bundle, `multipart/related` (TS 26.517 §5.3.1A): `UserServiceDescriptions` document plus one SDP per Distribution Session",
         where: "MBSF generates; MBSF Client decomposes and parses",
         status: "yes",
-        note: "including document version ordering (&sect;5.2.2) and relative Content-Location resolution (RFC 2557)",
+        note: "including document version ordering (§5.2.2) and relative Content-Location resolution (RFC 2557)",
       },
       {
-        feature: "`ServiceScheduleDescription` activation time windows (&sect;5.2.7)",
+        feature: "`ServiceScheduleDescription` activation time windows (§5.2.7)",
         where: "MBSF Client",
         status: "yes",
       },
       {
-        feature: "Session Description / SDP for FLUTE sessions (&sect;6.2.2): `m=` FLUTE lines, `flute-tsi`, SSM `source-filter`, `mbs-servicetype`, timing",
+        feature: "Session Description / SDP for FLUTE sessions (§6.2.2): `m=` FLUTE lines, `flute-tsi`, SSM `source-filter`, `mbs-servicetype`, timing",
         where: "MBSF generates; MBSF Client parses",
         status: "yes",
         note: "multi-session SDPs supported",
       },
       {
-        feature: "Object distribution method over FLUTE, per the TS 26.346 Download profile (&sect;6.2), delivered over **MBS-4-MC**",
+        feature: "Object distribution method over FLUTE, per the TS 26.346 Download profile (§6.2), delivered over **MBS-4-MC**",
         where: "MBSTF transmit; MBSF Client receive (both via rt-libflute)",
         status: "yes",
         note: "see the [rt-libflute audit](/reference-tools/multimedia/scope) for the transport-layer detail, including the Raptor FEC gap",
@@ -254,7 +254,7 @@ export const MBS_SECTIONS = [
         status: "yes",
       },
       {
-        feature: "AL-FEC beyond Compact No-Code (Raptor, mandatory for download receivers per TS 26.346 &sect;7.2.2)",
+        feature: "AL-FEC beyond Compact No-Code (Raptor, mandatory for download receivers per TS 26.346 §7.2.2)",
         status: "no",
         note: "in the transmission path (available in rt-libflute; not yet wired in)",
       },
@@ -278,7 +278,7 @@ export const MBS_SECTIONS = [
         status: "yes",
       },
       {
-        feature: "Nmbsmf_MBSSession: Update (&sect;5.3.2.3, activity status)",
+        feature: "Nmbsmf_MBSSession: Update (§5.3.2.3, activity status)",
         status: "yes",
       },
       {
@@ -297,7 +297,7 @@ export const MBS_SECTIONS = [
     component: "AMF",
     rows: [
       {
-        feature: "ContextCreate (&sect;5.6.2.2) &mdash; drives NGAP Broadcast Session Setup towards the gNB",
+        feature: "ContextCreate (§5.6.2.2) — drives NGAP Broadcast Session Setup towards the gNB",
         status: "yes",
       },
       {
@@ -305,7 +305,7 @@ export const MBS_SECTIONS = [
         status: "no",
       },
       {
-        feature: "ContextRelease &mdash; drives NGAP Broadcast Session Release",
+        feature: "ContextRelease — drives NGAP Broadcast Session Release",
         status: "yes",
       },
       {
@@ -324,11 +324,11 @@ export const MBS_SECTIONS = [
         status: "yes",
       },
       {
-        feature: "Local Ingress Tunnel (&sect;8.2.209; the Nmb9 ingest address returned to the MBSF)",
+        feature: "Local Ingress Tunnel (§8.2.209; the Nmb9 ingest address returned to the MBSF)",
         status: "yes",
       },
       {
-        feature: "Common TEID / FSSM shared-delivery forwarding behaviour (&sect;8.2.207, &sect;5.34.2.2)",
+        feature: "Common TEID / FSSM shared-delivery forwarding behaviour (§8.2.207, §5.34.2.2)",
         status: "yes",
       },
       {
@@ -439,7 +439,7 @@ export const MBS_SECTIONS = [
       {
         feature: "PDCP broadcast MRB (TS 38.323; 18-bit SN)",
         statuses: ["yes", "yes"],
-        note: "UE (receive): with the &sect;5.2.1 SN-based receive-window bootstrap (a UE tuning in mid-stream has no COUNT synchronisation)",
+        note: "UE (receive): with the §5.2.1 SN-based receive-window bootstrap (a UE tuning in mid-stream has no COUNT synchronisation)",
       },
       {
         feature: "Delivery of received multicast IP to the MBSF Client",

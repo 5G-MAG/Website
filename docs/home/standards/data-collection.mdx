@@ -5,6 +5,9 @@ slug: /standards/data-collection
 description: Explains the Data Collection Application Function (DCAF) framework letting UEs report media consumption and QoE data for network analytics.
 ---
 
+import SpecIndex from '@site/src/components/SpecIndex';
+import { DATA_COLLECTION_SPECS, DATA_COLLECTION_LAYER_ORDER } from '@site/src/data/specs/data-collection';
+
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -24,7 +27,7 @@ How devices report media consumption and quality-of-experience data back to the 
 
 UE data collection covers the 3GPP mechanisms by which a device (user equipment, UE) reports data, such as media consumption and quality of experience, to the network, and by which the network exposes events to consuming functions. The specifications below are grouped by the 3GPP working group responsible for them: SA2 (system architecture and analytics), SA4 (media data collection and reporting, reusing the 5G Media Streaming framework), and CT3 (stage-3 APIs for event exposure and network data analytics). For the technical analysis of the DCAF architecture and its reference points, see the Tech page linked below. For acronyms used here, see the [Glossary](/tech/glossary).
 
-<div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
+<div class="godeeper-grid" style={{gridTemplateColumns: 'minmax(0, 380px)'}}>
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
@@ -51,33 +54,9 @@ The DCAF framework (TS 26.531 / TS 26.532) was introduced in 3GPP Release 17 and
 
 ## Related 3GPP Specifications
 
-This is a list of specifications in the scope of UE data collection, reporting and event exposure.
+The specifications in scope of UE data collection, reporting and event exposure, grouped by the 3GPP working group responsible: SA2 (system architecture and analytics), SA4 (media data collection and reporting), and CT3, whose stage-3 API specifications cover event exposure including the Network Exposure Function (NEF) northbound and southbound APIs.
 
-### SA2 (System architecture and analytics)
-
-| Number                                                 | Title                                                                                    |
-| ------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
-| [TS 23.288](https://www.3gpp.org/dynareport/23288.htm) | Architecture enhancements for 5G System (5GS) to support network data analytics services |
-
-### SA4 (Media data collection and reporting)
-
-| Number                                                 | Title                                                               |
-| ------------------------------------------------------ | ------------------------------------------------------------------- |
-| [TS 26.531](https://www.3gpp.org/dynareport/26531.htm) | Data Collection and Reporting; General Description and Architecture |
-| [TS 26.532](https://www.3gpp.org/dynareport/26532.htm) | Data Collection and Reporting; Protocols and Formats                |
-| [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) | 5G Media Streaming (5GMS); General description and architecture     |
-| [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) | 5G Media Streaming (5GMS); Protocols                                |
-
-### CT3 (Stage-3 core network APIs)
-
-These are the stage-3 API specifications for exposing events, including the Network Exposure Function (NEF) northbound and southbound APIs.
-
-| Number                                                 | Title                                                             |
-| ------------------------------------------------------ | ----------------------------------------------------------------- |
-| [TS 29.517](https://www.3gpp.org/dynareport/29517.htm) | 5G System; Application Function Event Exposure Service; Stage 3   |
-| [TS 29.520](https://www.3gpp.org/dynareport/29520.htm) | 5G System; Network Data Analytics Services; Stage 3               |
-| [TS 29.522](https://www.3gpp.org/dynareport/29522.htm) | 5G System; Network Exposure Function Northbound APIs; Stage 3     |
-| [TS 29.591](https://www.3gpp.org/dynareport/29591.htm) | 5G System; Network Exposure Function Southbound Services; Stage 3 |
+<SpecIndex specs={DATA_COLLECTION_SPECS} layerOrder={DATA_COLLECTION_LAYER_ORDER} />
 
 ## 5G-MAG tracking and contribution focus
 

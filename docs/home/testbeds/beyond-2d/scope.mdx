@@ -48,22 +48,6 @@ The repository separates the multi-view-plus-depth (`mvd`) and point-cloud conte
 
 The pipeline runs encode, package, deliver (under a 5G Media Streaming / DASH assumption), decode, and render, then measures quality on both source views and rendered pose-trace views. Reported metrics include PSNR, IV-PSNR, and VMAF against bitrate. Because source sequences, coded bitstreams, and rendered pose-trace videos are large, the framework references content on external servers rather than bundling it.
 
-## Standards & Specifications
-
-A list of relevant specifications can be found in the link below.
-
-[Standards: Beyond 2D Video Experiences](/standards/beyond-2d)
-
-The Beyond 2D work relates to the following specifications and work items. For the full, maintained list, see the standards portal page linked above.
-
-| Specification | Body | Reference |
-| -------------- | -------- | --------- |
-| FS_Beyond2D | 3GPP SA4 | [FS_Beyond2D](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGS_103_Maastricht_2024-03/Docs/SP-240479.zip) |
-| TR 26.956 | 3GPP SA4 | [TR 26.956](https://www.3gpp.org/dynareport/26956.htm) |
-| ISO/IEC 23090-5 | ISO/IEC MPEG | [ISO/IEC 23090-5](https://www.iso.org/standard/83535.html) |
-
-FS_Beyond2D is 3GPP's Feasibility Study on Beyond 2D Video; TR 26.956, "Evaluation and Characterization of Beyond 2D Video Formats and Codecs," is the resulting technical report, which this work tracks. ISO/IEC 23090-5 (V3C, Visual Volumetric Video-based Coding) is referenced where volumetric coding is evaluated.
-
 The framework tracks 3GPP FS_Beyond2D and TR 26.956. Where volumetric or MV+D content is evaluated, it reuses V3C tooling (V-PCC and MIV), which is why this project overlaps with, and is smaller than, the product-oriented [MPEG V3C Immersive Platform](/reference-tools/v3c). The set of dedicated repositories is therefore intentionally compact; for the authoritative, current list and status see the [Resources](./resources) page.
 
 ## Getting Started
@@ -87,6 +71,6 @@ The Kanban board below tracks the planned and in-progress work for the Beyond 2D
 
 - [Resources](/testbeds/beyond-2d/resources)
 - [Tutorials](/testbeds/beyond-2d/tutorials)
-- Standards: [Beyond 2D Video](/standards/beyond-2d)
+- Standards: [Beyond 2D Video](/standards/beyond-2d) — the full, maintained list of the specifications and work items behind this framework (FS_Beyond2D, TR 26.956, ISO/IEC 23090-5)
 - Tech: [Volumetric & Beyond 2D Video Experiences](/tech/volumetric)
 - See also: [MPEG V3C Immersive Platform](/reference-tools/v3c) — the related volumetric encoding and rendering tools

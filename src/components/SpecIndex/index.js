@@ -10,10 +10,17 @@ import styles from './styles.module.css';
 // `specs` is [{ id, title, url, layer, release?, note? }]. Layers and releases
 // are derived from the data rather than configured, so a project only has to
 // maintain its own list -- see src/data/specs/<project>.js.
-export default function SpecIndex({ specs, layerOrder = [] }) {
+// `controlsThreshold` is why this component can be used on every Standards page
+// rather than only the large ones: below it the search box and filter chips are
+// not rendered at all, so a page listing four specifications gets a clean table
+// instead of a filter UI it has no use for, while a page listing forty-four
+// gets the full controls. Same visual language either way, and a short list
+// grows into its controls on its own as specifications are added.
+export default function SpecIndex({ specs, layerOrder = [], controlsThreshold = 12 }) {
   const [query, setQuery] = useState('');
   const [layer, setLayer] = useState(null);
   const [release, setRelease] = useState(null);
+  const showControls = specs.length >= controlsThreshold;
 
   const layers = useMemo(() => {
     const found = [...new Set(specs.map((s) => s.layer).filter(Boolean))];
@@ -24,13 +31,15 @@ export default function SpecIndex({ specs, layerOrder = [] }) {
     ];
   }, [specs, layerOrder]);
 
-  const releases = useMemo(
-    () =>
-      [...new Set(specs.map((s) => s.release).filter(Boolean))].sort(
-        (a, b) => Number(a) - Number(b)
-      ),
-    [specs]
-  );
+  // A release column only earns its place when most of the catalogue actually
+  // carries one. Several pages state a release for just one or two of their
+  // specifications, which would otherwise render a column that is almost
+  // entirely blank and reads as missing data rather than as "not stated".
+  const releases = useMemo(() => {
+    const withRelease = specs.filter((s) => s.release);
+    if (withRelease.length < Math.max(3, specs.length * 0.4)) return [];
+    return [...new Set(withRelease.map((s) => s.release))].sort((a, b) => Number(a) - Number(b));
+  }, [specs]);
 
   const visible = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -50,69 +59,73 @@ export default function SpecIndex({ specs, layerOrder = [] }) {
 
   return (
     <div className={styles.wrap}>
-      <div className={styles.controls}>
-        <input
-          type="search"
-          className={styles.search}
-          placeholder="Search specification number or title..."
-          aria-label="Search specifications"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <div className={styles.chips} role="group" aria-label="Filter by layer">
-          <button
-            type="button"
-            className={`${styles.chip} ${layer === null ? styles.chipOn : ''}`}
-            aria-pressed={layer === null}
-            onClick={() => setLayer(null)}
-          >
-            All layers
-          </button>
-          {layers.map((l) => (
+      {showControls && (
+        <div className={styles.controls}>
+          <input
+            type="search"
+            className={styles.search}
+            placeholder="Search specification number or title..."
+            aria-label="Search specifications"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <div className={styles.chips} role="group" aria-label="Filter by layer">
             <button
-              key={l}
               type="button"
-              className={`${styles.chip} ${layer === l ? styles.chipOn : ''}`}
-              aria-pressed={layer === l}
-              onClick={() => setLayer(layer === l ? null : l)}
+              className={`${styles.chip} ${layer === null ? styles.chipOn : ''}`}
+              aria-pressed={layer === null}
+              onClick={() => setLayer(null)}
             >
-              {l}
+              All layers
             </button>
-          ))}
-        </div>
-        {releases.length > 1 && (
-          <div className={styles.chips} role="group" aria-label="Filter by release">
-            {releases.map((r) => (
+            {layers.map((l) => (
               <button
-                key={r}
+                key={l}
                 type="button"
-                className={`${styles.chip} ${String(release) === String(r) ? styles.chipOn : ''}`}
-                aria-pressed={String(release) === String(r)}
-                onClick={() => setRelease(String(release) === String(r) ? null : r)}
+                className={`${styles.chip} ${layer === l ? styles.chipOn : ''}`}
+                aria-pressed={layer === l}
+                onClick={() => setLayer(layer === l ? null : l)}
               >
-                Rel-{r}
+                {l}
               </button>
             ))}
           </div>
-        )}
-      </div>
+          {releases.length > 1 && (
+            <div className={styles.chips} role="group" aria-label="Filter by release">
+              {releases.map((r) => (
+                <button
+                  key={r}
+                  type="button"
+                  className={`${styles.chip} ${String(release) === String(r) ? styles.chipOn : ''}`}
+                  aria-pressed={String(release) === String(r)}
+                  onClick={() => setRelease(String(release) === String(r) ? null : r)}
+                >
+                  Rel-{r}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
 
-      <p className={styles.count} aria-live="polite">
-        {visible.length} of {specs.length} specifications
-        {filtered && (
-          <button
-            type="button"
-            className={styles.clear}
-            onClick={() => {
-              setQuery('');
-              setLayer(null);
-              setRelease(null);
-            }}
-          >
-            Clear filters
-          </button>
-        )}
-      </p>
+      {showControls && (
+        <p className={styles.count} aria-live="polite">
+          {visible.length} of {specs.length} specifications
+          {filtered && (
+            <button
+              type="button"
+              className={styles.clear}
+              onClick={() => {
+                setQuery('');
+                setLayer(null);
+                setRelease(null);
+              }}
+            >
+              Clear filters
+            </button>
+          )}
+        </p>
+      )}
 
       <div className={styles.tableScroll}>
         <table className={styles.table}>

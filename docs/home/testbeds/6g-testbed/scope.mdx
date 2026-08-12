@@ -192,9 +192,7 @@ The testbed is designed to be easily usable and highly configurable. It can be e
 
 The testbed includes a vLLM client (clients/vllm_client.py) and example scenarios in configs/scenarios.yaml (e.g., chat_vllm). This enables evaluation of self-hosted models via the OpenAI-compatible API provided by vLLM, supporting the same metrics and logging pipeline as hosted providers.
 
-## Standards & Specifications
-
-A list of relevant specifications can be found on the standards portal: [Standards: 6G Media](/standards/6g).
+## How this relates to standardisation
 
 The testbed is an evaluation harness, not an implementation of a 3GPP specification. Its value to standardisation is that it reproduces standardised network conditions and measures how AI and media workloads behave over them. Three touch points connect it to 3GPP work:
 
@@ -202,17 +200,7 @@ The testbed is an evaluation harness, not an implementation of a 3GPP specificat
 - **The AI workloads reflect the SA4 media AI/ML study.** The scenario set (chat, agentic AI, image, video, multimodal, real-time) exercises the kinds of AI/ML media services examined in 3GPP [TR 26.927](https://www.3gpp.org/dynareport/26927.htm) (SA4, Study on AI/ML in 5G media services). The metrics the testbed computes (time-to-first-token, total latency, uplink/downlink ratios, token rates, agent loop factors) are the traffic characteristics that TR 26.927 and the model-transfer requirements study [TR 22.874](https://www.3gpp.org/dynareport/22874.htm) (SA1) care about.
 - **Data collection is a separate, complementary project.** The testbed measures traffic; it does not implement the 3GPP Data Collection AF. That normative pipeline (3GPP [TS 26.531](https://www.3gpp.org/dynareport/26531.htm) and [TS 26.532](https://www.3gpp.org/dynareport/26532.htm)) is implemented in the [Data Collection](/reference-tools/data-collection/scope) reference tool. The two are complementary: one collects standardised UE and media-client data, the other characterises AI/media traffic under controlled conditions.
 
-| Specification | Body | Reference |
-| -------------- | -------- | ------------------------------------------------------ |
-| TS 23.501 | 3GPP SA2 | [TS 23.501](https://www.3gpp.org/dynareport/23501.htm) |
-| TR 26.927 | 3GPP SA4 | [TR 26.927](https://www.3gpp.org/dynareport/26927.htm) |
-| TR 22.874 | 3GPP SA1 | [TR 22.874](https://www.3gpp.org/dynareport/22874.htm) |
-| TS 26.531 | 3GPP SA4 | [TS 26.531](https://www.3gpp.org/dynareport/26531.htm) |
-| TS 26.532 | 3GPP SA4 | [TS 26.532](https://www.3gpp.org/dynareport/26532.htm) |
-
 There is no normative 6G specification yet (6G is a Release-21 target, currently at the study stage in Release 20), so the 6G-oriented profiles are experimental and provisional. They are intended to inform requirement inputs, not to assert settled values.
-
-The standards portal gives the full picture for these references: [6G Media](/standards/6g) and [AI & ML in 5G Media](/standards/ai-ml).
 
 ## Getting Started
 
@@ -224,7 +212,7 @@ For the step-by-step walkthrough (cloning the repository, running the network em
 - [Resources](./resources): the source repositories
 - Project [index](.): overview and slide deck
 - [AI/ML Evaluation Framework](../ai-ml): the related project that shares this testbed
-- [6G on the Standards portal](/standards/6g): the standards context
+- Standards: [6G Media](/standards/6g) and [AI & ML in 5G Media](/standards/ai-ml) — the full specification lists behind the references above
 - Tech: [Towards 6G Media](/tech/6g): the research analysis
 
 :::note

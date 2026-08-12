@@ -1,0 +1,143 @@
+---
+hide_title: true
+title: XR and MPEG-I Scene Description
+slug: /standards/xr
+description: 'Standards tracking for XR: MPEG-I Scene Description, 3GPP AR/XR specs, split rendering, IVAS audio, and work items by release.'
+---
+
+import SpecIndex from '@site/src/components/SpecIndex';
+import { XR_SPECS, XR_LAYER_ORDER } from '@site/src/data/specs/xr';
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/><path d="M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2"/><path d="M3 7v-2a2 2 0 0 1 2 -2h2"/><path d="M3 17v2a2 2 0 0 0 2 2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M17 21h2a2 2 0 0 0 2 -2v-2"/></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Standards</span>
+<h1>XR and MPEG-I Scene Description</h1>
+</div>
+</div>
+
+<div class="topic-lead">
+MPEG-I Scene Description, 3GPP AR/XR specifications, split rendering, IVAS audio, and work items by release.
+</div>
+
+## Overview
+
+eXtended Reality (XR) covers virtual, augmented and mixed reality media delivered over 5G. This page groups the relevant MPEG and 3GPP deliverables (scene description, AR/XR device and delivery specifications, split rendering, IVAS immersive audio), then lists the associated 3GPP work items by release. For the technical analysis of how these pieces fit together, see the Tech page linked below. For acronyms used here, see the [Glossary](/tech/glossary).
+
+<div class="godeeper-grid" style={{gridTemplateColumns: 'minmax(0, 380px)'}}>
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
+<h3>Technology &amp; Analysis</h3>
+</div>
+<div class="godeeper-card__body">
+<p>The extension-by-extension model and the MAF/Presentation Engine architecture.</p>
+<ul class="godeeper-card__links">
+<li><a href="/tech/xr/mpeg-i-scene-description">Tech: MPEG-I Scene Description and glTF 2.0 extensions</a></li>
+</ul>
+</div>
+</div>
+
+</div>
+
+## Specifications by layer
+
+XR delivery over 5G is built from four layers of standardisation. For the technical analysis of how they fit together, see [MPEG-I Scene Description and glTF 2.0 extensions](/tech/xr/mpeg-i-scene-description) and the [XR Tech page](/tech/xr).
+
+| Layer                                        | Specifications                                                        |
+| --------------------------------------------- | ----------------------------------------------------------------------- |
+| Scene and media formats (MPEG)               | ISO/IEC 23090-14 (Scene Description); ISO/IEC 23090-5 (V3C/MIV)       |
+| Delivery (3GPP SA4)                          | TS 26.501, TS 26.512 (5GMS); TS 26.506 (RTC)                          |
+| Device and media capabilities (3GPP SA4)     | TR 26.928, TR 26.998; TS 26.119 (MeCAR); TS 26.565 (split rendering)  |
+| Radio and system (3GPP RAN and SA2)          | TR 38.835, TR 38.838; 23.700-series                                    |
+
+## Scene description: ISO/IEC 23090-14
+
+ISO/IEC 23090-14 is Part 14 of the MPEG-I suite (ISO/IEC 23090, Coded representation of immersive media). It extends the Khronos glTF 2.0 format (itself published as ISO/IEC 12113) with a set of MPEG extensions that add external and timed media, buffering, spatial audio, anchoring, interactivity, avatars, lighting and haptics.
+
+The first edition (ISO/IEC 23090-14:2023) has been extended by amendments and consolidated into a second edition:
+
+- Amendment 1 added support for MPEG-I immersive audio, scene understanding and related extensions.
+- Amendment 2 (in development at the time of writing) adds support for haptics, augmented reality, avatars, interactivity, MPEG-I audio and lighting.
+- A second edition (published as ISO/IEC 23090-14:2025) consolidates the base text and amendments.
+
+For the extension-by-extension model and the MAF/Presentation Engine architecture, see the Tech view: [MPEG-I Scene Description and glTF 2.0 extensions](/tech/xr/mpeg-i-scene-description).
+
+## Related MPEG and 3GPP Specifications
+
+The MPEG and 3GPP deliverables in scope of XR, filterable by the layer they cover. Search matches the specification number, its title and any scope note; the note carries the 3GPP status and working group.
+
+TR 26.928 (Extended Reality (XR) in 5G, Release 16) and TR 26.998 (Release 17, glass-type AR/MR devices) are the studies that anchor the 3GPP work; TR 26.998 defined the **STAR** (Stand-alone AR) and **EDGAR** (Edge-Dependent AR) device classes referenced throughout the later specifications. TS 26.119 (MeCAR, Media Capabilities for Augmented Reality) turns these into concrete, testable device capabilities. See the [Tech page](/tech/xr) for the architecture analysis.
+
+The Split Rendering Media Service Enabler (TS 26.565, Release 18) specifies split rendering, dividing the rendering workload between an EDGAR-class device and a network renderer, for non-IMS media services. See the [Tech page](/tech/xr) for the mechanism (SRC/SRS roles, the SWAP control protocol, WebRTC transport).
+
+<SpecIndex specs={XR_SPECS} layerOrder={XR_LAYER_ORDER} />
+
+Note: TS 26.249 (split rendering) and TS 26.566 carry similar but distinct titles, and TR 26.866 and TR 26.996 share the same title on the 3GPP portal; this is portal data, not a transcription error.
+
+## Related 3GPP Work Items
+
+Work items are the activities that produce the technical reports (TR) and specifications (TS) listed above. The tables below group the XR work items by 3GPP Release, newest first.
+
+### Release 19
+
+| Work Item | Acronym      | Title                                      | Rel    | WG  |
+| --------- | ------------ | ------------------------------------------ | ------ | --- |
+| 1040022   | FS_ARSpatial | Study on Spatial Computing for AR Services | Rel‑19 | S4  |
+
+### Release 18
+
+| Work Item | Acronym         | Title                                                         | Rel    | WG  |
+| --------- | --------------- | ------------------------------------------------------------- | ------ | --- |
+| 940068    | FS_XRM          | Study on architecture enhancement for XR and media services   | Rel‑18 | S2  |
+| 940087    | FS_NR_XR_enh    | Study on XR (eXtended Reality) enhancements for NR            | Rel‑18 | R2  |
+| 950012    | FS_eiRTCW       | Study on immersive Real-time Communication for WebRTC Phase 2 | Rel‑18 | S4  |
+| 950014    | iRTCW           | Immersive Real-time Communication for WebRTC                  | Rel‑18 | S4  |
+| 950013    | FS_SmarTAR      | Study on Smartly Tethering AR Glasses                         | Rel‑18 | S4  |
+| 950015    | MeCAR           | Media Capabilities for Augmented Reality                      | Rel‑18 | S4  |
+| 960042    | IBACS           | IMS-based AR Conversational Services                          | Rel‑18 | S4  |
+| 960044    | GA4RTAR         | Generic architecture for RT and AR/MR                         | Rel‑18 | S4  |
+| 960045    | SR_MSE          | Split Rendering Media Service Enabler                         | Rel‑18 | S4  |
+| 960046    | 5G_RTP          | Real-time Transport Protocol Configurations                   | Rel‑18 | S4  |
+| 960049    | FS_ARMRQoE      | Study on AR and MR QoE Metrics                                | Rel‑18 | S4  |
+| 960050    | FS_Audio_5GSTAR | Study on Audio Aspects for Glasses-type AR/MR Devices         | Rel‑18 | S4  |
+
+### Release 17
+
+| Work Item | Acronym       | Title                                                                                 | Rel    | WG  |
+| --------- | ------------- | ------------------------------------------------------------------------------------- | ------ | --- |
+| 870013    | FS_XRTraffic  | Traffic Models and Quality Evaluation Methods for Media and XR Services in 5G Systems | Rel‑17 | S4  |
+| 860062    | FS_NR_XR_eval | Study on XR (Extended Reality) evaluations for NR                                     | Rel‑17 | R1  |
+
+### Release 16
+
+| Work Item | Acronym | Title                                | Rel    | WG  |
+| --------- | ------- | ------------------------------------ | ------ | --- |
+| 810006    | FS_5GXR | Study on eXtended Reality (XR) in 5G | Rel‑16 | S4  |
+
+## 5G-MAG tracking and contribution focus
+
+5G-MAG tracks this work area as it moves from study to normative specification:
+
+- MPEG-I Scene Description: ISO/IEC 23090-14 and the MPEG glTF 2.0 extensions. See [MPEG-I Scene Description and glTF 2.0 extensions](/tech/xr/mpeg-i-scene-description).
+- Delivery over 5G Media Streaming: TS 26.501, TS 26.512.
+- Device capabilities and split rendering: TS 26.119 (MeCAR), TS 26.565 (Split Rendering Media Service Enabler).
+- Immersive audio: the IVAS codec deliverables and related split-rendering work.
+
+This page is a tracking view; confirm against primary sources before relying on a specific status.
+
+## Related Standards Work
+
+- [Standards: Avatar Communications](/standards/avatar)
+- [Standards: Volumetric Video with MPEG V3C](/standards/v3c)
+- [Standards: Beyond 2D Video](/standards/beyond-2d)
+- [Standards: Real-Time Communications (RTC)](/standards/rtc)
+- [Feedback and Requirements](/standards): how 5G-MAG submits feedback and requirements to SDOs
+
+:::note
+Refer to the [Standards](https://github.com/5G-MAG/Standards/) repository to contribute to this documentation.
+:::

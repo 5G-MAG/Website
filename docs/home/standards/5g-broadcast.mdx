@@ -5,6 +5,9 @@ slug: /standards/5g-broadcast
 description: Overview of ETSI TS 103 720 LTE-based 5G Broadcast, its version history, related 3GPP specifications and 5G-MAG's standards role.
 ---
 
+import SpecIndex from '@site/src/components/SpecIndex';
+import { BROADCAST_SPECS, BROADCAST_LAYER_ORDER } from '@site/src/data/specs/5g-broadcast';
+
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -24,7 +27,7 @@ ETSI TS 103 720 LTE-based 5G Broadcast: version history, related 3GPP specificat
 
 5G Broadcast delivers linear TV and radio to devices over a one-way, free-to-air signal, with no SIM, subscription or return channel required, reusing LTE/eMBMS radio technology (Long Term Evolution / evolved Multimedia Broadcast Multicast Service). It is distinct from 5G Multicast-Broadcast Services (MBS), which is native to the 5G core and NR; see [Standards: 5G Multicast Broadcast Services (MBS)](/standards/5g-mbs). 5G-MAG maintains the underlying ETSI specification and contributes the requirements and fixes that shape each new version. For acronyms used here, see the [Glossary](/tech/glossary).
 
-<div class="godeeper-grid" style="grid-template-columns: minmax(0, 380px);">
+<div class="godeeper-grid" style={{gridTemplateColumns: 'minmax(0, 380px)'}}>
 
 <div class="godeeper-card">
 <div class="godeeper-card__band">
@@ -120,35 +123,11 @@ The v1.2.1 specification PDF and its work item are linked under Quick access abo
 
 ## Related 3GPP Specifications
 
-This is a list of specifications in the scope of Multimedia Broadcast/Multicast Service (MBMS) and LTE-based 5G Terrestrial Broadcast. LTE-based 5G Broadcast reuses the MBMS delivery framework over the LTE radio, including its further-enhanced variant (FeMBMS, Further enhanced Multimedia Broadcast/Multicast Service). The specifications are grouped below by function, following the same physical layer, RRC, RF and architecture split used on the [Standards Evolution](/standards/5g-broadcast-standards-evolution) page; ETSI TS 103 720 (see "About ETSI TS 103 720" above) profiles a subset of these and adds broadcast-specific receiver requirements on top.
+This is a list of specifications in the scope of Multimedia Broadcast/Multicast Service (MBMS) and LTE-based 5G Terrestrial Broadcast. LTE-based 5G Broadcast reuses the MBMS delivery framework over the LTE radio, including its further-enhanced variant (FeMBMS, Further enhanced Multimedia Broadcast/Multicast Service). The specifications are filterable below by the function they cover, following the same physical layer, RRC, RF and architecture split used on the [Standards Evolution](/standards/5g-broadcast-standards-evolution) page; ETSI TS 103 720 (see "About ETSI TS 103 720" above) profiles a subset of these and adds broadcast-specific receiver requirements on top. Search matches the specification number, its title and any scope note.
 
-### Service requirements
+<SpecIndex specs={BROADCAST_SPECS} layerOrder={BROADCAST_LAYER_ORDER} />
 
-- [TS 22.101](https://www.3gpp.org/dynareport/22101.htm) - Service aspects; Service principles
-- [TS 22.261](https://www.3gpp.org/dynareport/22261.htm) - Service requirements for the 5G system
-
-### Architecture and system description
-
-- [TR 23.746](https://www.3gpp.org/dynareport/23746.htm) - Study on System Architecture Enhancements to eMBMS for Television Video Service
-- [TS 23.246](https://www.3gpp.org/dynareport/23246.htm) - Multimedia Broadcast/Multicast Service (MBMS); Architecture and functional description
-- [TS 36.300](https://www.3gpp.org/dynareport/36300.htm) - Evolved Universal Terrestrial Radio Access (E-UTRA) and Evolved UTRAN (E-UTRAN); Overall description, including the MBMS-dedicated cell mode used for broadcast
-- [TR 36.976](https://www.3gpp.org/dynareport/36976.htm) - Overall description of LTE-based 5G broadcast (informative summary, produced by the normative Release 16 work item)
-- [TR 36.776](https://www.3gpp.org/dynareport/36776.htm) - Study on LTE-based 5G terrestrial broadcast (the FS_LTE_terr_bcast study output that identified the gaps met by the Release 16 numerology enhancements)
-
-### Radio protocol layer and MBMS network interfaces (physical layer, scheduling, RRC, MAC, M1/M2/M3)
-
-- [TS 36.211](https://www.3gpp.org/dynareport/36211.htm) - Physical channels and modulation
-- [TS 36.212](https://www.3gpp.org/dynareport/36212.htm) - Multiplexing and channel coding
-- [TS 36.213](https://www.3gpp.org/dynareport/36213.htm) - Physical layer procedures (scheduler and link adaptation)
-- [TS 36.321](https://www.3gpp.org/dynareport/36321.htm) - Medium Access Control (MAC) protocol specification, touched by the Release 19 PMCH Phase 2 work item
-- [TS 36.331](https://www.3gpp.org/dynareport/36331.htm) - Radio Resource Control (RRC) protocol specification: MIB-MBMS, SIB1-MBMS, MBSFN-AreaInfo and the other broadcast system-information extensions
-- [TS 36.440](https://www.3gpp.org/dynareport/36440.htm) - General aspects and principles for E-UTRAN interfaces supporting MBMS (the M1, M2 and M3 interfaces below)
-- [TS 25.446](https://www.3gpp.org/dynareport/25446.htm) - MBMS synchronisation protocol (SYNC), used over M1 to keep content time-aligned across the eNBs of an MBSFN area
-- [TS 36.443](https://www.3gpp.org/dynareport/36443.htm) - E-UTRAN M2 Application Protocol (M2AP), the MCE-to-eNB control-plane interface, carrying Release 19 PMCH Phase 2 time-interleaving parameters
-- [TS 36.444](https://www.3gpp.org/dynareport/36444.htm) - E-UTRAN M3 Application Protocol (M3AP), the MME-to-MCE control-plane interface for MBMS session management signalling
-- [TS 36.413](https://www.3gpp.org/dynareport/36413.htm) - S1 Application Protocol (S1AP), the eNB-to-MME control-plane interface, distinct from the M1/M2/M3 MBMS-specific interfaces above
-- [TS 36.133](https://www.3gpp.org/dynareport/36133.htm) - Requirements for support of radio resource management
-- [TS 36.304](https://www.3gpp.org/dynareport/36304.htm) - User Equipment (UE) procedures in idle mode, relevant to SIM-free and Receive-Only Mode reception without an RRC connection
+### MBMS network interfaces
 
 MBMS has three named network interfaces, distinct from the M1-M8 reference points used in 5G Media Streaming (see [Standards: 5G Media Streaming](/standards/5gms)).
 
@@ -157,57 +136,6 @@ MBMS has three named network interfaces, distinct from the M1-M8 reference point
 | M1        | TS 25.446 (SYNC)            | User plane   | MBMS-GW to eNB |
 | M2        | TS 36.443 (M2AP)            | Control plane | MCE to eNB     |
 | M3        | TS 36.444 (M3AP)            | Control plane | MME to MCE     |
-
-### Core network and mobility
-
-- [TS 23.003](https://www.3gpp.org/dynareport/23003.htm) - Numbering, addressing and identification
-- [TS 23.122](https://www.3gpp.org/dynareport/23122.htm) - Non-Access-Stratum (NAS) functions related to Mobile Station (MS) in idle mode
-- [TS 23.401](https://www.3gpp.org/dynareport/23401.htm) - GPRS enhancements for E-UTRAN access (the EPS/E-UTRAN architecture that MBMS and 5G Broadcast are built on)
-- [TS 29.274](https://www.3gpp.org/dynareport/29274.htm) - Evolved Packet System (EPS); GPRS Tunnelling Protocol for Control plane (GTPv2-C)
-- [TS 29.281](https://www.3gpp.org/dynareport/29281.htm) - General Packet Radio System (GPRS) Tunnelling Protocol User Plane (GTPv1-U)
-
-### RF and device / network equipment requirements
-
-- [TS 36.101](https://www.3gpp.org/dynareport/36101.htm) - User Equipment (UE) radio transmission and reception; defines operating Bands 107, 108, 112 and 113
-- [TS 36.104](https://www.3gpp.org/dynareport/36104.htm) - Base Station (BS) radio transmission and reception; network-side counterpart to 36.101 for the same bands
-- [TS 36.306](https://www.3gpp.org/dynareport/36306.htm) - User Equipment (UE) radio access capabilities, including the CAS-muting capability introduced in Release 19
-- [TS 36.102](https://www.3gpp.org/dynareport/36102.htm) - User Equipment (UE) radio transmission and reception for satellite access, covering the Release 19 geosynchronous-satellite broadcast band
-- [TS 36.108](https://www.3gpp.org/dynareport/36108.htm) - Satellite Access Node radio transmission and reception; satellite counterpart to 36.104
-- [TS 36.181](https://www.3gpp.org/dynareport/36181.htm) - Satellite Access Node conformance testing
-- [TS 36.307](https://www.3gpp.org/dynareport/36307.htm) - Requirements on UEs supporting a release-independent frequency band
-
-### Content delivery and MBMS application layer
-
-- [TS 26.346](https://www.3gpp.org/dynareport/26346.htm) - Multimedia Broadcast/Multicast Service (MBMS); Protocols and codecs
-- [TS 26.347](https://www.3gpp.org/dynareport/26347.htm) - Multimedia Broadcast/Multicast Service (MBMS); Application Programming Interface and URL
-- [TS 26.348](https://www.3gpp.org/dynareport/26348.htm) - Northbound Application Programming Interface (API) for MBMS at the xMB reference point
-- [TS 29.116](https://www.3gpp.org/dynareport/29116.htm) - Representational state transfer over the xMB reference point between content provider and BM-SC
-- [TS 24.116](https://www.3gpp.org/dynareport/24116.htm) - Stage 3 aspects of system architecture enhancements for TV services
-- [TS 24.117](https://www.3gpp.org/dynareport/24117.htm) - TV service configuration Management Object (MO)
-
-### Public warning and emergency alerts
-
-- [TS 23.041](https://www.3gpp.org/dynareport/23041.htm) - Technical realization of Cell Broadcast Service (CBS)
-- [TS 29.168](https://www.3gpp.org/dynareport/29168.htm) - Cell Broadcast Centre interfaces with the Evolved Packet Core
-- [ETSI TS 102 900](https://www.etsi.org/deliver/etsi_ts/102900_102999/102900/) - Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service
-- [OASIS CAP v1.2](http://docs.oasis-open.org/emergency/cap/v1.2/CAP-v1.2.doc) - Common Alerting Protocol, the alert message payload format carried over Cell Broadcast Service
-
-### 5G Media Streaming (5GMS) integration
-
-- [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) - 5G Media Streaming (5GMS); General description and architecture, for hybrid unicast/broadcast delivery
-- [TS 26.511](https://www.3gpp.org/dynareport/26511.htm) - 5G Media Streaming (5GMS); Profiles, codecs and formats
-- [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) - 5G Media Streaming (5GMS); Protocols
-
-### Transport protocols and addressing
-
-- [IANA IPv4 Multicast Address Space Registry](https://www.iana.org/assignments/multicast-addresses/multicast-addresses.xhtml) - allocation of the IPv4 multicast addresses used for MBMS user-plane delivery over M1
-- [IANA IPv6 Multicast Address Space Registry](https://www.iana.org/assignments/ipv6-multicast-addresses/ipv6-multicast-addresses.xhtml) - the IPv6 equivalent
-- [IETF RFC 6335](https://www.rfc-editor.org/rfc/rfc6335) - IANA procedures for the management of the Service Name and Transport Protocol Port Number Registry
-- [IETF RFC 9110](https://www.rfc-editor.org/rfc/rfc9110) - HTTP Semantics
-- [IETF RFC 8446](https://www.rfc-editor.org/rfc/rfc8446) - The Transport Layer Security (TLS) Protocol Version 1.3
-- [IETF RFC 793](https://www.rfc-editor.org/rfc/rfc793) - Transmission Control Protocol (TCP)
-- [IETF RFC 7323](https://www.rfc-editor.org/rfc/rfc7323) - TCP Extensions for High Performance
-- [IETF RFC 8200](https://www.rfc-editor.org/rfc/rfc8200) - Internet Protocol, Version 6 (IPv6) Specification
 
 <details>
 <summary>References to verify</summary>

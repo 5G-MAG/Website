@@ -49,7 +49,9 @@ Scope boundaries worth noting up front:
 
 - The **uplink** direction (5GMSu), where the UE is the media source, is defined by the same specifications but is **not** implemented by these tools.
 - Several fields accepted by the M1 Content Hosting API are not yet implemented (Content Preparation, Edge Resources, geo-fencing and URL signing); see the notes in the "Feature: Content Hosting" and "Summary of APIs" sections.
-- The generic UE data collection and event exposure framework (TS 26.531 and TS 26.532) is provided as a separate project and is not yet wired into 5GMS; see the "Feature: Data collection, reporting and exposure" section.
+- The generic UE data collection and event exposure framework (TS 26.531 and TS 26.532) is provided as a separate project ([UE Data Collection, Reporting and Event Exposure](../data-collection/scope)) and is not yet wired into 5GMS; see the "Feature: Data collection, reporting and exposure" section.
+
+The reference tools implement the **downlink** direction (5GMSd) against the **Release 17** normative baseline. They track the Release 18 changes (where the session-handling APIs move from TS 26.512 into TS 26.510 and are generalised across the 5GMS and RTC systems); the "Summary of APIs" table below maps the Release 17 and Release 18 API filenames side by side and marks which are implemented today.
 
 Technical documentation providing context to this project can be found in the link below.
 
@@ -58,24 +60,6 @@ Technical documentation providing context to this project can be found in the li
 A list of relevant specifications can be found in the link below.
 
 [Standards: 5G Media Streaming](/standards/5gms)
-
-## Standards & Specifications
-
-The reference tools implement the **downlink** direction (5GMSd) against the **Release 17** normative baseline. They track the Release 18 changes (where the session-handling APIs move from TS 26.512 into TS 26.510 and are generalised across the 5GMS and RTC systems); the "Summary of APIs" table below maps the Release 17 and Release 18 API filenames side by side and marks which are implemented today.
-
-| Specification | Body  | Reference                                                     |
-| -------------- | ----- | -------------------------------------------------------------- |
-| TS 26.501      | 3GPP  | [https://www.3gpp.org/dynareport/26501.htm](https://www.3gpp.org/dynareport/26501.htm) |
-| TS 26.512      | 3GPP  | [https://www.3gpp.org/dynareport/26512.htm](https://www.3gpp.org/dynareport/26512.htm) |
-| TS 26.511      | 3GPP  | [https://www.3gpp.org/dynareport/26511.htm](https://www.3gpp.org/dynareport/26511.htm) |
-| TS 26.510      | 3GPP  | [https://www.3gpp.org/dynareport/26510.htm](https://www.3gpp.org/dynareport/26510.htm) |
-| TS 26.531      | 3GPP  | [https://www.3gpp.org/dynareport/26531.htm](https://www.3gpp.org/dynareport/26531.htm) |
-| TS 26.532      | 3GPP  | [https://www.3gpp.org/dynareport/26532.htm](https://www.3gpp.org/dynareport/26532.htm) |
-
-- **TS 26.501** covers the architecture, functional entities and features.
-- **TS 26.512** covers the M1 provisioning APIs, the M5 session-handling APIs and the AS configuration. In Release 17 the session-handling APIs live in TS 26.512; **TS 26.510** does not exist in Release 17 (in Release 18 the session-handling APIs move into TS 26.510 and are generalised across 5GMS and RTC).
-- **TS 26.511** covers profiles, codecs and formats of the delivered media.
-- **TS 26.531 / TS 26.532** define the generic UE data collection and event exposure framework, provided as a separate project (see [UE Data Collection, Reporting and Event Exposure](../data-collection/scope)) and not yet wired into 5GMS.
 
 ## 5G Unicast Downlink Media Streaming (5GMSd)
 
@@ -269,7 +253,7 @@ The work is also broken down into individual feature streams, each organised as 
 
 - [Resources](/reference-tools/5gms/resources)
 - [Tutorials](/reference-tools/5gms/tutorials)
-- Standards: [5G Media Streaming specifications](/standards/5gms)
+- Standards: [5G Media Streaming specifications](/standards/5gms) — the full specification list (TS 26.501, TS 26.510, TS 26.511, TS 26.512) and the Release-19 work
 - Tech: [5G Media Streaming architecture and analysis](/tech/5gms)
 
 :::note
