@@ -60,7 +60,7 @@
     {
       "repo_slug": "srsRAN",
       "display_name": "Fork of srsRAN (discontinued version prior to srsRAN_4G)",
-      "description": "Distributed unit of the gNodeB managing the RLC, MAC, and Physical layers.",
+      "description": "Fork of the discontinued srsRAN suite, kept for reference. Superseded by srsRAN_4G for LTE and by rt-srsRAN_Project for 5G NR.",
       "repo_url": "https://github.com/5G-MAG/srsRAN",
       "branch": "main_srsran_4g",
       "license": "AGPLv3.0",
@@ -605,7 +605,7 @@
     {
       "repo_slug": "rt-ai-ml-evaluation-framework",
       "display_name": "AI and ML Evaluation Framework",
-      "description": "This repository holds code related to the implementation of the AI/ML evaluation framework as defined in 3GPP SA4 TR 26.847 (Release 19, completed; supersedes the earlier, incomplete draft tracked as TR 26.927).",
+      "description": "This repository holds code related to the implementation of the AI/ML evaluation framework as defined in 3GPP SA4 TR 26.847 (Release 19).",
       "repo_url": "https://github.com/5G-MAG/rt-ai-ml-evaluation-framework",
       "branch": "main",
       "license": "5G-MAG PL v1.0",
@@ -971,7 +971,7 @@
   "common-tools": [
     {
       "repo_slug": "rt-common-shared",
-      "display_name": "Auxiliary Shared Tools",
+      "display_name": "Common Shared Tools",
       "description": "This repository holds auxiliary tools common to various projects.",
       "repo_url": "https://github.com/5G-MAG/rt-common-shared",
       "branch": "main",
@@ -986,7 +986,7 @@
         "Linux"
       ],
       "public": true,
-      "is_auxiliary": false
+      "is_auxiliary": true
     }
   ]
 }
