@@ -5,6 +5,9 @@ sidebar_position: 0
 description: Per-feature audit of what the 5G MBS reference tools implement across the MBS User Services, 5GC, NG-RAN and UE layers, mapped against 3GPP specifications.
 ---
 
+import ArchitectureMap from '@site/src/components/ArchitectureMap';
+import { MBS_ARCHITECTURE } from '@site/src/data/architecture/5g-mbs';
+
 import ImplementationBoard from '@site/src/components/ImplementationBoard';
 import { MBS_COMPONENTS, MBS_SECTIONS } from '@site/src/data/implementation/5g-mbs';
 
@@ -74,20 +77,11 @@ This describes the `development` branches of the MBS User Services repositories 
 The tools currently implement the **MBS Broadcast** delivery mode end-to-end. The **MBS Multicast** delivery mode (UE session join via the SMF, PTP/PTM switching, group paging) is not yet implemented in any component of the chain &mdash; the MB-SMF/MB-UPF multicast data path (N6mb ingest, shared GTP-U delivery) exists, but the session-join control plane does not.
 :::
 
-### Components and where they sit
+### High-level architecture
 
-| Component | Repository | Layer | Interfaces / reference points |
-| --- | --- | --- | --- |
-| MBS Application Provider portal | rt-mbs-application-provider | Application provider | Nmb10 consumer (towards MBSF), Nmb8 content push (towards MBSTF) |
-| MBSF | rt-mbs-function | MBS User Services | Nmb10 server, Nmb2 consumer (towards MBSTF), Nmb1 consumer (towards MB-SMF), MBS-4-MC announcement carousel |
-| MBSTF | rt-mbs-transport-function | MBS User Services | Nmb2 server, Nmb8 object ingest, Nmb9 FLUTE/ALC delivery (towards MB-UPF) |
-| MB-SMF | Open5GS fork | 5G Core | Nmb1 server, N4mb PFCP (towards MB-UPF), Namf_MBSBroadcast consumer (towards AMF) |
-| MB-UPF | Open5GS fork | 5G Core | N4mb PFCP server, N6mb multicast ingest, Nmb9 tunnel ingest, N3mb GTP-U shared delivery (towards gNBs) |
-| AMF | Open5GS fork | 5G Core | Namf_MBSBroadcast server, NGAP N2 (towards gNB) |
-| gNB (CU-CP / CU-UP / DU) | srsRAN Project fork | NG-RAN | NGAP N2, E1AP, F1AP, N3mb GTP-U termination, Uu broadcast (MCCH/MTCH) |
-| UE modem | srsRAN 4G fork (`srsue`) | UE | Uu broadcast reception (SIB20/MCCH/MTCH), TUN delivery to the MBSF Client |
-| MBSF Client | rt-mbs-client | UE | MBS-4-MC FLUTE reception, MBS-6/MBS-7 local APIs (towards the MBS-Aware Application) |
-| MBS-Aware Application | rt-mbs-application | UE | MBS-6/MBS-7 consumer (dashboard UI) |
+<ArchitectureMap architecture={MBS_ARCHITECTURE} status={MBS_SECTIONS} />
+
+### Audited feature by feature
 
 <ImplementationBoard components={MBS_COMPONENTS} sections={MBS_SECTIONS} />
 

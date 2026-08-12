@@ -1,0 +1,142 @@
+// 5G MBS Broadcast delivery chain: the architecture TS 23.247 and TS 26.502
+// define, with the repository implementing each functional entity.
+//
+// Entities, layers and reference points are taken from the specifications, not
+// from how the tools happen to be packaged: the map should still be readable by
+// someone who has never seen this codebase. `component` links an entity to the
+// implementation board in src/data/implementation/5g-mbs.js, so its state is
+// derived from the same audit rows rather than restated here and left to drift.
+export const MBS_ARCHITECTURE = {
+  spec: '3GPP TS 23.247 (system architecture) and TS 26.502 (user services)',
+  layers: [
+    {
+      id: 'provider',
+      label: 'Application provider',
+      spec: 'TS 26.502',
+      interfaces: ['Nmb10', 'Nmb8'],
+    },
+    {
+      id: 'user-services',
+      label: 'MBS User Services',
+      spec: 'TS 26.502, TS 26.517',
+      interfaces: ['Nmb2', 'Nmb1', 'Nmb9', 'MBS-4-MC'],
+    },
+    {
+      id: 'core',
+      label: '5G Core',
+      spec: 'TS 23.247',
+      interfaces: ['N4mb', 'N6mb', 'N3mb', 'Namf_MBSBroadcast'],
+    },
+    {
+      id: 'ran',
+      label: 'NG-RAN',
+      spec: 'TS 38.300 family',
+      interfaces: ['N2 (NGAP)', 'E1AP', 'F1AP', 'Uu (MCCH/MTCH)'],
+    },
+    {
+      id: 'ue',
+      label: 'UE',
+      spec: 'TS 26.502, TS 38.331',
+      interfaces: ['Uu', 'MBS-4-MC', 'MBS-6', 'MBS-7'],
+    },
+  ],
+  entities: [
+    {
+      id: 'provider-portal',
+      label: 'MBS Application Provider',
+      layer: 'provider',
+      spec: 'TS 26.502',
+      owner: 'reference',
+      repo: 'rt-mbs-application-provider',
+      repoUrl: 'https://github.com/5G-MAG/rt-mbs-application-provider',
+    },
+    {
+      id: 'mbsf',
+      label: 'MBSF',
+      layer: 'user-services',
+      spec: 'TS 26.502, Nmb10 per TS 29.580',
+      owner: 'reference',
+      repo: 'rt-mbs-function',
+      repoUrl: 'https://github.com/5G-MAG/rt-mbs-function',
+      component: 'MBSF',
+    },
+    {
+      id: 'mbstf',
+      label: 'MBSTF',
+      layer: 'user-services',
+      spec: 'TS 26.502, Nmb2 per TS 29.581',
+      owner: 'reference',
+      repo: 'rt-mbs-transport-function',
+      repoUrl: 'https://github.com/5G-MAG/rt-mbs-transport-function',
+      component: 'MBSTF',
+    },
+    {
+      id: 'mb-smf',
+      label: 'MB-SMF',
+      layer: 'core',
+      spec: 'TS 23.247, Nmb1 per TS 29.532',
+      owner: 'fork',
+      repo: 'open5gs (5mbs)',
+      repoUrl: 'https://github.com/5G-MAG/open5gs/tree/5mbs',
+      component: 'MB-SMF',
+    },
+    {
+      id: 'mb-upf',
+      label: 'MB-UPF',
+      layer: 'core',
+      spec: 'TS 23.247, N4mb per TS 29.244',
+      owner: 'fork',
+      repo: 'open5gs (5mbs)',
+      repoUrl: 'https://github.com/5G-MAG/open5gs/tree/5mbs',
+    },
+    {
+      id: 'amf',
+      label: 'AMF',
+      layer: 'core',
+      spec: 'Namf_MBSBroadcast per TS 29.518',
+      owner: 'fork',
+      repo: 'open5gs (5mbs)',
+      repoUrl: 'https://github.com/5G-MAG/open5gs/tree/5mbs',
+      component: 'AMF',
+    },
+    {
+      id: 'gnb',
+      label: 'gNB (CU-CP, CU-UP, DU)',
+      layer: 'ran',
+      spec: 'TS 38.413, TS 38.463, TS 38.473',
+      owner: 'fork',
+      repo: 'rt-srsRAN_Project (5mbs)',
+      repoUrl: 'https://github.com/5G-MAG/rt-srsRAN_Project/tree/5mbs',
+      component: 'gNB',
+    },
+    {
+      id: 'ue-modem',
+      label: 'UE modem',
+      layer: 'ue',
+      spec: 'TS 38.331 (SIB20, MCCH, MTCH)',
+      owner: 'fork',
+      repo: 'srsRAN_4G (5mbs)',
+      repoUrl: 'https://github.com/5G-MAG/srsRAN_4G/tree/5mbs',
+      component: 'Uu radio (gNB + UE)',
+    },
+    {
+      id: 'mbs-client',
+      label: 'MBS Client',
+      layer: 'ue',
+      spec: 'TS 26.502, MBS-4-MC reception',
+      owner: 'reference',
+      repo: 'rt-mbs-client',
+      repoUrl: 'https://github.com/5G-MAG/rt-mbs-client',
+    },
+    {
+      id: 'mbs-app',
+      label: 'MBS-Aware Application',
+      layer: 'ue',
+      spec: 'TS 26.502, MBS-6 and MBS-7 consumer',
+      owner: 'reference',
+      repo: 'rt-mbs-application',
+      repoUrl: 'https://github.com/5G-MAG/rt-mbs-application',
+    },
+  ],
+  note: 'The chain above is the MBS Broadcast delivery mode. MBS Multicast (UE session join via the SMF, PTP/PTM switching, group paging) is defined by the same architecture but is not yet implemented in any component.',
+};
