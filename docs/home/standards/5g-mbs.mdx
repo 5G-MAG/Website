@@ -1,0 +1,77 @@
+---
+hide_title: true
+title: 5G Multicast Broadcast Services (MBS)
+slug: /standards/5g-mbs
+description: Covers 5G Multicast-Broadcast Services architecture across user-service, 5G Core and NR/NG-RAN layers, and lists the related 3GPP specifications.
+---
+
+import SpecIndex from '@site/src/components/SpecIndex';
+import { MBS_SPECS, MBS_LAYER_ORDER } from '@site/src/data/specs/5g-mbs';
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M12 12l0 .01"/><path d="M14.828 9.172a4 4 0 0 1 0 5.656"/><path d="M17.657 6.343a8 8 0 0 1 0 11.314"/><path d="M9.168 14.828a4 4 0 0 1 0 -5.656"/><path d="M6.337 17.657a8 8 0 0 1 0 -11.314"/></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Standards</span>
+<h1>5G Multicast Broadcast Services (MBS)</h1>
+</div>
+</div>
+
+<div class="topic-lead">
+5G MBS architecture across the user-service, 5G Core and NR/NG-RAN layers, and the 3GPP specifications behind it.
+</div>
+
+## Overview
+
+5G Multicast Broadcast Services (MBS) is the 3GPP 5G System feature for delivering the same content to many devices at once over the 5G core and NR radio. The specifications below are grouped by the layer they define: user-service level, 5G Core network, and NR/NG-RAN. For the technical analysis of how MBS works, see the Tech page linked below. For acronyms used here, see the [Glossary](/tech/glossary).
+
+<div class="godeeper-grid" style={{gridTemplateColumns: 'minmax(0, 380px)'}}>
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
+<h3>Technology &amp; Analysis</h3>
+</div>
+<div class="godeeper-card__body">
+<p>The implementer-facing analysis of the MBS architecture across its three layers.</p>
+<ul class="godeeper-card__links">
+<li><a href="/tech/5g-mbs">Tech: Multicast & Broadcast in 5G</a></li>
+</ul>
+</div>
+</div>
+
+</div>
+
+## Specifications by release
+
+- **Release 17** ("5MBS"): Stage 1 (TS 22.261), Stage 2 architecture (TS 23.247, preceded by TR 23.757), user-service layer (TS 26.502, TS 26.517, preceded by TR 26.802), Stage 3 core procedures (TS 29.532, TS 29.537, TS 29.580, TS 29.581), NR/NG-RAN support (TS 38.300 family). Security study: TR 33.850.
+- **Release 18** ("5MBS Phase 2"): RAN extensions (`NR_MBS_enh` / `NR_MBS_enh-Core`, WI 940099/940199; see [MBS Multicast Inactive RAN procedures](/tech/5g-mbs/analysis-mbs-multicast-inactive-ran) for the technical detail). Architecture study: TR 23.700-47. Security study: TR 33.883.
+- **Release 19**: NTN extensions to MBS broadcast (see [MBS Broadcast NTN](/tech/ntn/analysis-mbs-broadcast-over-ntn) for the technical detail).
+
+Check the version of each specification you are targeting for the exact release content.
+
+## Related 3GPP Specifications
+
+The specifications in scope of 5G Multicast Broadcast Services, filterable by the layer
+they define. Search matches the specification number, its title and any scope note.
+
+<SpecIndex specs={MBS_SPECS} layerOrder={MBS_LAYER_ORDER} />
+
+## 5G-MAG tracking and contribution focus
+
+5G-MAG tracks and contributes to 5G MBS standardisation across all three layers described above (user-service, 5G Core, and NR/NG-RAN). For the current focus areas and the implementer-facing analysis of this architecture, see [Tech: Multicast & Broadcast in 5G](/tech/5g-mbs).
+
+## Related Standards Work
+
+- [Standards: 5G Media Streaming](/standards/5gms)
+- [Standards: 5G Broadcast](/standards/5g-broadcast)
+- [Standards: Multimedia Delivery Protocols](/standards/multimedia) - the FLUTE/ROUTE transport layer used by the MBS Object distribution method
+- [Tech: Multicast & Broadcast in 5G](/tech/5g-mbs)
+- [Standards: Non-Terrestrial Networks (NTN)](/standards/ntn)
+- [Meetings with 3GPP SA4](/standards/3gpp-issue-tracking): the live tracker for 3GPP feedback issues on this specification
+
+:::note
+Refer to the [Standards](https://github.com/5G-MAG/Standards/) repository to contribute to this documentation.
+:::
