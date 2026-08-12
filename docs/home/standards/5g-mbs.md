@@ -67,6 +67,7 @@ This is a list of specifications in the scope of 5G Multicast Broadcast Services
 - [TS 29.580](https://www.3gpp.org/dynareport/29580.htm) - 5G System; Multicast/Broadcast Service Function services; Stage 3
 - [TS 29.581](https://www.3gpp.org/dynareport/29581.htm) - 5G System; Multicast/Broadcast Service Transport Services; Stage 3
 - [TS 29.522](https://www.3gpp.org/dynareport/29522.htm) - 5GS; NEF Northbound APIs (MBSSession, MBSUserService, MBSUserDataIngestSession and MBSGroupMsgDelivery APIs, at reference point Nmb5 - AF to MBSF via the NEF)
+- [TS 26.346](https://www.3gpp.org/dynareport/26346.htm) - MBMS; Protocols and codecs (TS 26.517 clause 6.2 binds the MBS Object distribution method to this specification's FLUTE-based Download Delivery Method; see [Standards: Multimedia Delivery Protocols](/standards/multimedia) for the full FLUTE specification chain)
 
 ### 5G Core Network specifications
 
@@ -226,6 +227,7 @@ The normative specifications above were preceded by 3GPP study reports (TRs), ke
 
 - [Standards: 5G Media Streaming](/standards/5gms)
 - [Standards: 5G Broadcast](/standards/5g-broadcast)
+- [Standards: Multimedia Delivery Protocols](/standards/multimedia) - the FLUTE/ROUTE transport layer used by the MBS Object distribution method
 - [Tech: Multicast & Broadcast in 5G](/tech/5g-mbs)
 - [Standards: Non-Terrestrial Networks (NTN)](/standards/ntn)
 - [Meetings with 3GPP SA4](/standards/3gpp-issue-tracking): the live tracker for 3GPP feedback issues on this specification
