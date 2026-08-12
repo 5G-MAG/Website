@@ -10,7 +10,9 @@ import styles from './styles.module.css';
 // standard each repository actually is. This renders one picture that answers
 // both: entities and reference points as the specification defines them, each
 // entity labelled with the repository that implements it and how complete that
-// implementation is.
+// implementation is. Colour is spent only on implementation state; whether a
+// repository is 5G-MAG's own or a fork of an upstream project is not a
+// distinction a reader of this diagram needs, so every box is styled alike.
 //
 // Deliberately not Mermaid. Its automatic layout produces generic boxes that
 // cannot follow the site's design tokens, and the layer bands below (which are
@@ -22,12 +24,6 @@ import styles from './styles.module.css';
 // implementation board, pass its sections as `status` so the map derives each
 // entity's state from the same rows as the audit below it, and the two cannot
 // disagree.
-
-const OWNER = {
-  reference: { label: '5G-MAG reference tool', className: 'ownerReference' },
-  fork: { label: '5G-MAG fork of an upstream project', className: 'ownerFork' },
-  external: { label: 'Third-party or out of scope', className: 'ownerExternal' },
-};
 
 const STATE = {
   yes: { label: 'Implemented', className: 'stateYes' },
@@ -46,16 +42,14 @@ function deriveStates(sections) {
     (s.rows || []).forEach((r) => {
       (r.statuses || [r.status]).forEach((st) => {
         if (st === 'yes') acc.yes += 1;
-        else if (st === 'partial' || st === 'no' || st === 'hold' || st === 'unknown') acc.other += 1;
+        else if (st === 'partial' || st === 'no' || st === 'hold' || st === 'unknown')
+          acc.other += 1;
       });
     });
     out[s.component] = acc;
   });
   return Object.fromEntries(
-    Object.entries(out).map(([k, v]) => [
-      k,
-      v.other === 0 ? 'yes' : v.yes === 0 ? 'no' : 'partial',
-    ])
+    Object.entries(out).map(([k, v]) => [k, v.other === 0 ? 'yes' : v.yes === 0 ? 'no' : 'partial'])
   );
 }
 
@@ -63,7 +57,6 @@ export default function ArchitectureMap({ architecture, status }) {
   const { layers = [], entities = [], spec, note } = architecture;
   const derived = deriveStates(status);
 
-  const usedOwners = [...new Set(entities.map((e) => e.owner).filter(Boolean))];
   const anyState = entities.some((e) => e.state || derived[e.component]);
 
   return (
@@ -88,13 +81,8 @@ export default function ArchitectureMap({ architecture, status }) {
               <div className={styles.entities}>
                 {inLayer.map((e) => {
                   const state = e.state || derived[e.component];
-                  const owner = OWNER[e.owner] || OWNER.external;
                   return (
-                    <div
-                      key={e.id}
-                      className={`${styles.entity} ${styles[owner.className]}`}
-                      title={owner.label}
-                    >
+                    <div key={e.id} className={styles.entity}>
                       <span className={styles.entityLabel}>{e.label}</span>
                       {e.spec && <span className={styles.entitySpec}>{e.spec}</span>}
                       {e.repo ? (
@@ -134,19 +122,11 @@ export default function ArchitectureMap({ architecture, status }) {
         })}
       </div>
 
-      <div className={styles.legend}>
-        {usedOwners.map((o) => (
-          <span key={o} className={styles.legendItem}>
-            <i className={`${styles.swatch} ${styles[(OWNER[o] || OWNER.external).className]}`} />
-            {(OWNER[o] || OWNER.external).label}
-          </span>
-        ))}
-        {anyState && status && (
-          <span className={styles.legendNote}>
-            Implementation state is derived from the per-feature audit below.
-          </span>
-        )}
-      </div>
+      {anyState && status && (
+        <p className={styles.legendNote}>
+          Implementation state is derived from the per-feature audit below.
+        </p>
+      )}
 
       {note && <p className={styles.note}>{note}</p>}
     </div>
