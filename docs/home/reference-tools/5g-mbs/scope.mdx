@@ -120,11 +120,6 @@ Implemented across **MBSF** (announcement generation), **MBSTF** (object deliver
 | Service Announcement mode `PASSED_BACK` &mdash; bundle handed back to the Application Provider at Nmb10 for out-of-band distribution (not delivered over any MBS reference point) | MBSF | Implemented |
 | Service Announcement mode `VIA_MBS_DISTRIBUTION_SESSION` &mdash; MBSF's own broadcast announcement carousel, delivered **over MBS-4-MC** (multicast/broadcast) on a fixed, configurable SSM address/port | MBSF generates + MBSTF transmits; MBSF Client receives | Implemented |
 | Service Announcement mode `VIA_MBS_5` &mdash; unicast retrieval by the client **over MBS-5** | &mdash; | Not implemented (no MBS-5 network API) |
-
-:::note[MBS-4-MC is the only over-the-air announcement path today]
-Of the two modes that deliver an announcement to a client at all, only the multicast/broadcast one (MBS-4-MC) is implemented. There is no unicast fallback (MBS-5): a client that cannot receive the broadcast carousel has no way to discover services.
-:::
-
 | User Service Description bundle, `multipart/related` (TS 26.517 &sect;5.3.1A): `UserServiceDescriptions` document plus one SDP per Distribution Session | MBSF generates; MBSF Client decomposes and parses | Implemented, including document version ordering (&sect;5.2.2) and relative Content-Location resolution (RFC 2557) |
 | `ServiceScheduleDescription` activation time windows (&sect;5.2.7) | MBSF Client | Implemented |
 | Session Description / SDP for FLUTE sessions (&sect;6.2.2): `m=` FLUTE lines, `flute-tsi`, SSM `source-filter`, `mbs-servicetype`, timing | MBSF generates; MBSF Client parses | Implemented (multi-session SDPs supported) |
@@ -133,6 +128,10 @@ Of the two modes that deliver an announcement to a client at all, only the multi
 | MBS-Aware Application | rt-mbs-application | Implemented (dashboard: announced services with play/deactivate, received-object cache, decomposed announcement bundle) |
 | MBS-4-UC (unicast object repair) | &mdash; | Not implemented (no unicast repair path; also outside TS 29.581's own scope) |
 | File repair / reception reporting (associated delivery procedures) | &mdash; | Not implemented |
+
+:::note[MBS-4-MC is the only over-the-air announcement path today]
+Of the two modes that deliver an announcement to a client at all, only the multicast/broadcast one (MBS-4-MC) is implemented. There is no unicast fallback (MBS-5): a client that cannot receive the broadcast carousel has no way to discover services.
+:::
 
 ### TS 29.581 &mdash; MBSTF distribution session services at Nmb2
 
