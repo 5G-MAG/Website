@@ -34,6 +34,45 @@ for (const file of files) {
   }
 }
 
+// ---------------------------------------------------------------------------
+// Data-join validation.
+//
+// The site joins pages to data through two unrelated key types, neither of
+// which fails loudly: <ProjectRepositories project="X"> looks X up as an object
+// key in repoMetadata.json, while ProjectReleases / CommunityStats /
+// ProjectContributors match a free-text `name` string against projects.json.
+// A typo or a rename in either direction renders an empty table or nothing at
+// all, with a clean build and no warning. These checks turn that into an error.
+const repoMetadata = require(path.join(ROOT, 'src/data/repoMetadata.json'));
+const projectsJson = require(path.join(ROOT, 'src/data/projects.json'));
+const projectNames = new Set(projectsJson.map((p) => p.name));
+const metadataKeys = new Set(Object.keys(repoMetadata));
+
+for (const file of files) {
+  const raw = fs.readFileSync(file, 'utf8');
+  const rel = path.relative(ROOT, file);
+
+  for (const m of raw.matchAll(/<ProjectRepositories\s+project="([^"]+)"/g)) {
+    if (!metadataKeys.has(m[1])) {
+      errors.push({
+        file: rel,
+        message: `ProjectRepositories project="${m[1]}" has no key in src/data/repoMetadata.json, so the repository table renders empty.`,
+      });
+    }
+  }
+
+  for (const m of raw.matchAll(
+    /<(ProjectReleases|CommunityStats|ProjectContributors)\s+name="([^"]+)"/g
+  )) {
+    if (!projectNames.has(m[2])) {
+      errors.push({
+        file: rel,
+        message: `${m[1]} name="${m[2]}" does not match any project name in src/data/projects.json, so it renders empty.`,
+      });
+    }
+  }
+}
+
 if (errors.length > 0) {
   console.error(`\nFrontmatter validation failed on ${errors.length} file(s):\n`);
   for (const { file, message } of errors) {
@@ -46,4 +85,7 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
-console.log(`Frontmatter OK across ${files.length} doc files.`);
+console.log(
+  `Frontmatter and data joins OK across ${files.length} doc files ` +
+    `(${metadataKeys.size} repo groups, ${projectNames.size} projects).`
+);

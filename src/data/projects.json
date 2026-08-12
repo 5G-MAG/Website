@@ -111,7 +111,10 @@
       {
         "name": "rt-srsRAN_Project",
         "branch": "5mbs"
-      }
+      },
+      "rt-mbs-application-provider",
+      "rt-mbs-client",
+      "rt-mbs-application"
     ],
     "releases_slug": "resources",
     "contributors": [
@@ -144,7 +147,8 @@
       "rt-v3c-unity-player",
       "rt-v3c-decoder-plugin",
       "rt-v3c-content",
-      "rt-common-shared"
+      "rt-common-shared",
+      "rt-v3c-examples"
     ],
     "releases_slug": "resources",
     "contributors": [
@@ -202,8 +206,7 @@
     "image": "/assets/images/projects/network-apis.png",
     "tagline": "Network capability exposure through CAMARA APIs",
     "repos": [
-      "rt-camara-examples",
-      "rt-common-shared"
+      "rt-camara-examples"
     ],
     "releases_slug": "resources",
     "contributors": [
