@@ -128,6 +128,7 @@ const CATEGORIES = [
         standardsHref: '/standards/5g-broadcast',
         extraStandards: [
           { label: 'Standards Evolution →', href: '/standards/5g-broadcast-standards-evolution' },
+          { label: 'Emergency Alerts →', href: '/standards/emergency-alerts' },
         ],
         icon: icon(
           <>

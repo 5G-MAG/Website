@@ -282,6 +282,7 @@ const sidebars = {
     },
     'standards/5g-broadcast',
     'standards/5g-broadcast-standards-evolution',
+    'standards/emergency-alerts',
 
     {
       type: 'html',

@@ -1,0 +1,89 @@
+---
+hide_title: true
+title: 5G Broadcast - Emergency Alerts
+slug: /standards/emergency-alerts
+description: Specifications for public warning over 5G Broadcast - ETSI TS 103 720 PWS support, the 3GPP Cell Broadcast Service realisation and the SIB12 radio encoding.
+---
+
+import SpecIndex from '@site/src/components/SpecIndex';
+import {
+  EMERGENCY_ALERTS_SPECS,
+  EMERGENCY_ALERTS_LAYER_ORDER,
+} from '@site/src/data/specs/emergency-alerts';
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M12 8a2 2 0 0 1 2 2v4a2 2 0 1 1 -4 0v-4a2 2 0 0 1 2 -2" />
+  <path d="M17 15c.345 .6 1.258 1 2 1a2 2 0 1 0 0 -4a2 2 0 1 1 0 -4c.746 0 1.656 .394 2 1" />
+  <path d="M3 15c.345 .6 1.258 1 2 1a2 2 0 1 0 0 -4a2 2 0 1 1 0 -4c.746 0 1.656 .394 2 1" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Standards</span>
+<h1>5G Broadcast - Emergency Alerts</h1>
+</div>
+</div>
+
+<div class="topic-lead">
+Delivering public warning messages over 5G Broadcast, without a SIM, a subscription or a return channel.
+</div>
+
+## Overview
+
+Public warning over 5G Broadcast carries emergency alerts (earthquake and tsunami warnings, and
+CMAS-style civil alerts) to any receiver in coverage, using the same free-to-air LTE-based
+broadcast carrier as linear TV and radio. Because it needs no SIM, no subscription and no return
+channel, it keeps working when the cellular network is congested or unavailable, which is exactly
+when warnings matter most.
+
+Three layers define it. **ETSI TS 103 720**, the 5G Broadcast system specification maintained by
+5G-MAG, profiles PWS support over the E-UTRAN Uu downlink. **3GPP TS 23.041** defines the Cell
+Broadcast Service message itself: its structure, message identifiers, serial numbers and data
+coding. **3GPP TS 36.331** defines how that message is encoded on the radio interface, as
+SystemInformationBlockType12, and what a UE does on receiving it. For acronyms used here, see the
+[Glossary](/tech/glossary).
+
+<div class="godeeper-grid" style={{ gridTemplateColumns: 'minmax(0, 380px)' }}>
+
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
+<h3>Technology &amp; Analysis</h3>
+</div>
+<div class="godeeper-card__body">
+<p>The implementer-facing analysis of 5G Broadcast, including the transmit and receive chain that carries these warnings.</p>
+<ul class="godeeper-card__links">
+<li><a href="/tech/5g-broadcast">Tech: 5G Broadcast</a></li>
+</ul>
+</div>
+</div>
+
+</div>
+
+## Specifications in scope
+
+<SpecIndex specs={EMERGENCY_ALERTS_SPECS} layerOrder={EMERGENCY_ALERTS_LAYER_ORDER} />
+
+:::note
+Receiver behaviour for public warning, and the exact CBS feature coverage, depend on the version of
+ETSI TS 103 720 being implemented; work towards v1.3.1 adds PWS-related improvements. Confirm the
+current status against the repositories and the Kanban board before relying on it.
+:::
+
+## 5G-MAG tracking and contribution focus
+
+5G-MAG maintains ETSI TS 103 720 and carries the public warning requirements into it, so feedback
+from implementing the alert chain in the reference tools feeds directly back into the specification.
+Contributions to this documentation are made through the
+[5G-MAG Standards repository](https://github.com/5G-MAG/Standards/).
+
+## Related Standards Work
+
+- [Standards: 5G Broadcast - TV, Radio and Emergency Alerts](/standards/5g-broadcast) &mdash; the full 5G Broadcast specification set this builds on
+- [Standards: Multimedia Delivery Protocols](/standards/multimedia) &mdash; the FLUTE transport used for file delivery on the same carrier
+- Tech: [5G Broadcast](/tech/5g-broadcast)
+- Reference Tools: [5G Broadcast - Emergency Alerts](/reference-tools/emergency-alerts)
+
+:::note
+Refer to the [Standards](https://github.com/5G-MAG/Standards/) repository to contribute to this documentation.
+:::
