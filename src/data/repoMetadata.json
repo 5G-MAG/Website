@@ -395,10 +395,10 @@
   ],
   "5g-mbs": [
     {
-      "repo_slug": "srsRAN_4G_mbs",
+      "repo_slug": "srsRAN_4G",
       "display_name": "UE with support for MBS",
       "description": "5G-MAG maintains a fork of srsRAN_4G for the development and adaptation of NG-RAN procedures to support other Reference Tools.",
-      "repo_url": "https://github.com/5G-MAG/srsRAN_4G",
+      "repo_url": "https://github.com/5G-MAG/srsRAN_4G/tree/5mbs",
       "branch": "5mbs",
       "license": "AGPLv3.0",
       "standards": [
@@ -411,11 +411,11 @@
         "APK",
         "Android"
       ],
-      "public": false,
+      "public": true,
       "is_auxiliary": false
     },
     {
-      "repo_slug": "srsRAN_Project_mbs",
+      "repo_slug": "rt-srsRAN_Project",
       "display_name": "NG-RAN with support for MBS",
       "description": "5G-MAG maintains a fork of srsRAN_Project for the development and adaptation of NG-RAN procedures to support other Reference Tools.",
       "repo_url": "https://github.com/5G-MAG/rt-srsRAN_Project/tree/5mbs",
@@ -431,11 +431,11 @@
         "Docker",
         "Linux"
       ],
-      "public": false,
+      "public": true,
       "is_auxiliary": false
     },
     {
-      "repo_slug": "open5gs_mbs",
+      "repo_slug": "open5gs",
       "display_name": "5G Core with MBS components",
       "description": "5G-MAG maintains a fork of open5gs for the development and adaptation of 5GC network functions to support other Reference Tools.",
       "repo_url": "https://github.com/5G-MAG/open5gs/tree/5mbs",
@@ -451,7 +451,7 @@
         "Docker",
         "Linux"
       ],
-      "public": false,
+      "public": true,
       "is_auxiliary": false
     },
     {
@@ -507,6 +507,58 @@
       ],
       "public": true,
       "is_auxiliary": true
+    },
+    {
+      "repo_slug": "rt-mbs-application-provider",
+      "display_name": "MBS Application Provider portal",
+      "description": "Web control portal playing the MBS Application Provider role (3GPP TS 26.502): provisions MBS User Services at Nmb10 towards the MBSF and pushes content at Nmb8 towards the MBSTF.",
+      "repo_url": "https://github.com/5G-MAG/rt-mbs-application-provider",
+      "branch": "main",
+      "license": "5G-MAG PL v1.0",
+      "standards": [
+        "3GPP"
+      ],
+      "dependencies": [],
+      "software": [
+        "Web",
+        "Docker"
+      ],
+      "public": false,
+      "is_auxiliary": false
+    },
+    {
+      "repo_slug": "rt-mbs-client",
+      "display_name": "MBS Client",
+      "description": "UE-side MBS Client (3GPP TS 26.502): receives the MBS-4-MC announcement carousel and FLUTE object delivery, and exposes the received services to applications over the MBS-6 and MBS-7 local APIs.",
+      "repo_url": "https://github.com/5G-MAG/rt-mbs-client",
+      "branch": "main",
+      "license": "5G-MAG PL v1.0",
+      "standards": [
+        "3GPP"
+      ],
+      "dependencies": [],
+      "software": [
+        "Linux"
+      ],
+      "public": false,
+      "is_auxiliary": false
+    },
+    {
+      "repo_slug": "rt-mbs-application",
+      "display_name": "MBS-Aware Application",
+      "description": "Dashboard playing the MBS-Aware Application role (3GPP TS 26.502) against rt-mbs-client: lists announced services, activates and deactivates reception, and inspects received objects.",
+      "repo_url": "https://github.com/5G-MAG/rt-mbs-application",
+      "branch": "main",
+      "license": "5G-MAG PL v1.0",
+      "standards": [
+        "3GPP"
+      ],
+      "dependencies": [],
+      "software": [
+        "Web"
+      ],
+      "public": false,
+      "is_auxiliary": false
     }
   ],
   "5g-core": [
@@ -714,7 +766,7 @@
       "standards": [],
       "dependencies": [],
       "software": [],
-      "public": false,
+      "public": true,
       "is_auxiliary": false
     }
   ],
@@ -799,6 +851,23 @@
       ],
       "public": true,
       "is_auxiliary": false
+    },
+    {
+      "repo_slug": "rt-v3c-examples",
+      "display_name": "V3C Example Content",
+      "description": "Example V3C content and helper files for testing the encoding, delivery and rendering pipeline.",
+      "repo_url": "https://github.com/5G-MAG/rt-v3c-examples",
+      "branch": "main",
+      "license": "5G-MAG PL v1.0",
+      "standards": [
+        "3GPP"
+      ],
+      "dependencies": [],
+      "software": [
+        "Linux"
+      ],
+      "public": false,
+      "is_auxiliary": true
     }
   ],
   "xr": [
