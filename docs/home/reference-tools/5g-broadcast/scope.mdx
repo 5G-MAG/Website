@@ -2,7 +2,7 @@
 title: Scope
 hide_title: true
 sidebar_position: 0
-description: Feature support matrix for rt-mbms-tx and rt-mbms-modem across 3GPP Rel-14 to Rel-19, plus architecture diagrams and NTN context.
+description: Feature support matrix for rt-mbms-tx and rt-mbms-modem across 3GPP Rel-14 to Rel-19, plus the architectures they are used in.
 ---
 
 import ImplementationBoard from '@site/src/components/ImplementationBoard';
@@ -96,14 +96,6 @@ The features use these recurring 3GPP terms: MBSFN (Multicast-Broadcast Single-F
 Note that the 5G Broadcast Transmitter for QRD (Qualcomm Reference Design) and CRD (Commercial Reference Design) is an extension of an MBMS-enabled eNodeB tailored to operate as
 a 5G Broadcast transmitter. Only MBMS/Unicast-mixed cell is supported alongside pre-Rel-14 features.
 
-## NTN deployment context
-
-The 5G Broadcast waveform (FeMBMS, defined in [ETSI TS 103 720](https://www.etsi.org/standards-search#search=103%20720)) is relevant to **Non-Terrestrial Network (NTN)** delivery scenarios, in particular GEO (Geostationary Earth Orbit) satellite broadcast of linear TV and radio content to large coverage areas. Because 5G Broadcast needs no return channel from the receiver, it fits the one-way, wide-area reach of a GEO satellite well. The NTN access layer sits beneath the broadcast service layer; the rt-mbms-tx and rt-mbms-modem tools remain the applicable reference implementations.
-
-- [Tech: MBS Broadcast over NTN](/tech/ntn/analysis-mbs-broadcast-over-ntn)
-- [Tech: Non-Terrestrial Networks (overview)](/tech/ntn)
-- [Standards: Non-Terrestrial Networks](/standards/ntn)
-
 ## Getting Started
 
 A practical route into the tools:
@@ -155,3 +147,5 @@ Project for any improvements to the rt-mbms-wui
 - Standards: [5G Broadcast](/standards/5g-broadcast) — the full specification list, including ETSI TS 103 720, the FeMBMS waveform implemented by rt-mbms-tx and rt-mbms-modem
 - Standards: [Multimedia Delivery Protocols](/standards/multimedia) — the FLUTE/ROUTE transports that carry content over the broadcast bearer
 - Technical documentation: [5G Broadcast on the Tech portal](/tech/5g-broadcast)
+- Technical documentation: [Non-Terrestrial Networks on the Tech portal](/tech/ntn) — satellite delivery scenarios, including [MBS Broadcast over NTN](/tech/ntn/analysis-mbs-broadcast-over-ntn)
+- Standards: [Non-Terrestrial Networks](/standards/ntn) — ETSI TS 103 720 in GEO satellite broadcast scenarios

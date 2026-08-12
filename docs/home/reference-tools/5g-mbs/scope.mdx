@@ -101,24 +101,6 @@ The tools currently implement the **MBS Broadcast** delivery mode end-to-end. Th
 - **MBS-specific NRF NFDiscovery query extensions** (TS 29.510) &mdash; standard NF registration/discovery is used; discovery by TMGI or MBS-session parameters is not.
 - **Location-dependent (multi-area) MBS sessions** and **Xn mobility / service continuity**.
 
-## How the reference tools map to the standard
-
-It helps to read the audit above against the three-layer MBS architecture (covered in full on the [Tech portal](/tech/5g-mbs)):
-
-- On the **user-service layer**, the MBSF provisions services and drives MBSTF distribution sessions (Nmb2); the MBSTF ingests objects from the MBS Application Provider at Nmb8 (pull or push) and delivers them as FLUTE/ALC packets towards the MB-UPF at Nmb9; the MBSF Client receives and reassembles them on the UE side and hands them to an MBS-Aware Application. Service Announcement over a broadcast carousel closes the discovery loop.
-- On the **5G Core layer**, the MB-SMF manages TMGIs and MBS sessions (Nmb1), coordinates the MB-UPF over N4mb PFCP, and triggers broadcast session setup through the AMF (`Namf_MBSBroadcast` &rarr; NGAP). Direct multicast ingest into the MB-UPF at N6mb is available as an alternative to the MBSTF path.
-- On the **NG-RAN layer**, the gNB terminates the shared N3mb delivery, sets up MRBs across CU-CP/CU-UP/DU, and broadcasts MCCH/MTCH; the UE acquires SIB20/MCCH and receives the MTCH point-to-multipoint.
-
-The audit above marks which service operations and distribution modes are implemented and which are not, so use it to check whether a given path (for example the `COLLECTION` operating mode, or multicast session join) is covered before building on it.
-
-## NTN deployment context
-
-The 5G MBS reference tools are also the relevant software for **Non-Terrestrial Network (NTN)** deployment scenarios. NTN extends 5G MBS coverage via GEO and LEO satellites and introduces specific challenges around propagation delay, Doppler effects, and satellite beam handover. The MBS Multicast and Broadcast delivery modes operate over NTN access without changes to the MBS service layer itself. Technical analysis of these scenarios is available on the Tech portal:
-
-- [Tech: MBS Multicast over NTN](/tech/ntn/analysis-mbs-multicast-over-ntn)
-- [Tech: MBS Broadcast over NTN](/tech/ntn/analysis-mbs-broadcast-over-ntn)
-- [Tech: Non-Terrestrial Networks (overview)](/tech/ntn)
-
 ## Getting Started
 
 To try the tools hands-on, follow the [Tutorials](./tutorials): they cover the two ways to provision the 5GC (direct MBS core functions, or via the [5GC Service Consumers](../5g-core) libraries), the [Docker-Compose deployment](./tutorials/docker-implementation), and the individual MBSF/MBSTF walkthroughs. For the source code, packages and releases behind each component, see [Resources](./resources); for the specification background, see [Standards: 5G Multicast Broadcast Services](/standards/5g-mbs).
@@ -153,4 +135,5 @@ Initial implementation of MBSF, MBSTF, MBS AF and MBS AS for supporting media mu
 - [Tutorials](/reference-tools/5g-mbs/tutorials)
 - Standards: [5G Multicast Broadcast Services](/standards/5g-mbs) &mdash; the full specification list for this topic
 - Standards: [Multimedia Delivery Protocols](/standards/multimedia) &mdash; the FLUTE transport under the Object distribution method, and why it is FLUTE version 1
-- Tech: [Multicast and Broadcast Services in 5G Networks](/tech/5g-mbs)
+- Tech: [Multicast and Broadcast Services in 5G Networks](/tech/5g-mbs) &mdash; the three-layer architecture (user service, 5G Core, NG-RAN) and the reference points the tools implement
+- Tech: [Non-Terrestrial Networks](/tech/ntn) &mdash; deploying MBS over satellite access, with the [MBS Multicast over NTN](/tech/ntn/analysis-mbs-multicast-over-ntn) and [MBS Broadcast over NTN](/tech/ntn/analysis-mbs-broadcast-over-ntn) analyses
