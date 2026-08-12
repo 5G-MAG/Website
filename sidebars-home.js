@@ -1,3 +1,5 @@
+import { TECH_GROUPS, RESEARCH_EXTRA_LINKS } from './techTopics.js';
+
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   // /about and /membership are now full custom Hub pages (src/pages/about,
@@ -257,69 +259,57 @@ const sidebars = {
   // (and /tech's own CATEGORIES) so the specification pages keep reading
   // as the same content family they are linked from, with the contributor
   // pages kept visibly separate at the end.
+  // The per-topic Standards pages are part of the Tech hub, not a section of
+  // their own: they list the specifications behind a topic's analysis and
+  // reference tools, and are only served under /standards/<topic> URLs.
+  //
+  // So this renders the SAME topic tree as the Tech sidebar, from the same
+  // definition in techTopics.js. A reader on /standards/5g-mbs sees the Tech
+  // menu with the 5G MBS topic open and its Standards page highlighted, not a
+  // separate Standards menu. The mirroring is required because a sidebar can
+  // only hold docs from its own plugin instance: here the Standards pages are
+  // real docs (so they highlight) and the Tech analysis pages are links.
   standardsSidebar: [
+    { type: 'link', label: 'Overview', href: '/tech' },
+
+    {
+      type: 'html',
+      value: 'Resources',
+      className: 'sidebar-section-label',
+      defaultStyle: false,
+    },
+    { type: 'link', label: 'Technology Exchanges', href: '/tech/exchanges' },
+    { type: 'link', label: 'Implementation Blueprints', href: '/tech/blueprints' },
+    { type: 'link', label: 'Glossary', href: '/tech/glossary' },
+    { type: 'link', label: '3GPP Work Items', href: '/tech/3gpp-work-items' },
+
+    ...TECH_GROUPS.flatMap((group) => [
+      {
+        type: 'html',
+        value: group.label,
+        className: 'sidebar-section-label',
+        defaultStyle: false,
+      },
+      ...group.topics.map((topic) => ({
+        type: 'category',
+        label: topic.label,
+        collapsed: false,
+        items: [
+          ...(topic.techDoc ? [{ type: 'link', label: 'Analysis', href: topic.techHref }] : []),
+          ...(topic.standards || []).map((s) => s.doc),
+        ],
+      })),
+      ...(group.label === 'Research Topics'
+        ? RESEARCH_EXTRA_LINKS.map((l) => ({ type: 'link', label: l.label, href: l.href }))
+        : []),
+    ]),
+  ],
+
+  // The three contributor pages behind the /standards hub (5G-MAG as an SDO
+  // participant) are a different thing from the per-topic specification pages
+  // above, and keep their own short sidebar.
+  feedbackSidebar: [
     { type: 'link', label: 'Overview', href: '/standards' },
-
-    {
-      type: 'html',
-      value: 'Media Streaming, Multicast &amp; Real-Time Communications',
-      className: 'sidebar-section-label',
-      defaultStyle: false,
-    },
-    'standards/5gms',
-    'standards/5g-mbs',
-    'standards/dvb-i',
-    'standards/multimedia',
-    'standards/ntn',
-    'standards/rtc',
-    'standards/data-collection',
-
-    {
-      type: 'html',
-      value: '5G Broadcast for TV, Radio and Emergency Alerts',
-      className: 'sidebar-section-label',
-      defaultStyle: false,
-    },
-    'standards/5g-broadcast',
-    'standards/5g-broadcast-standards-evolution',
-    'standards/emergency-alerts',
-
-    {
-      type: 'html',
-      value: 'Immersive Media Experiences',
-      className: 'sidebar-section-label',
-      defaultStyle: false,
-    },
-    'standards/avatar',
-    'standards/v3c',
-    'standards/beyond-2d',
-    'standards/xr',
-
-    {
-      type: 'html',
-      value: 'Connected Media Production and Contribution',
-      className: 'sidebar-section-label',
-      defaultStyle: false,
-    },
-    'standards/network-apis',
-    'standards/npn',
-    'standards/tsc',
-
-    {
-      type: 'html',
-      value: 'Research Topics',
-      className: 'sidebar-section-label',
-      defaultStyle: false,
-    },
-    'standards/ai-ml',
-    'standards/6g',
-
-    {
-      type: 'html',
-      value: 'Feedback &amp; Requirements',
-      className: 'sidebar-section-label',
-      defaultStyle: false,
-    },
     'standards/requirements',
     'standards/ls',
     'standards/3gpp-issue-tracking',
