@@ -99,28 +99,56 @@ export const SECTION_NAV = [
       { label: 'Glossary', href: '/tech/glossary' },
     ],
   },
-  // One entry for the whole /standards tree (2026-08-12). An earlier
-  // version special-cased the 18 per-project specification pages to show
-  // the Explainers & Profiles bar, on the reasoning that spec lists are
-  // Tech-family content. Once those pages got their own sidebar
-  // (standardsSidebar in sidebars-home.js), that split became actively
-  // confusing: the bar claimed you were in Tech and linked back to /tech,
-  // while the sidebar beside it listed /standards. Section identity now
-  // follows the URL — one bar, one sidebar, both saying "Standards".
+  // The per-topic Standards pages are Tech hub content served under
+  // /standards/<topic> URLs: they list the specifications behind a topic's
+  // analysis and reference tools. They therefore carry the Explainers &
+  // Profiles bar and render the Tech topic menu (see standardsSidebar in
+  // sidebars-home.js), so the section a reader is in is the same one the
+  // sidebar beside them shows.
   //
-  // Note the title is "Standards", not the navbar's "Feedback &
-  // Requirements" label for this same destination: since the per-project
-  // specification pages moved here, that label no longer describes
-  // everything under /standards. Renaming the navbar item is a separate
-  // call for the site owner; until then this bar carries the accurate name
-  // for the section it labels.
+  // This entry must stay ABOVE the '/standards' entry below: the matcher is
+  // first-match-wins (SectionNav and the navbar indicator both use
+  // SECTION_NAV.find), so these exact paths would otherwise fall through to
+  // the Feedback & Requirements bar. A new per-topic Standards page needs its
+  // path added here as well as to techTopics.js.
+  {
+    prefixes: [
+      '/standards/5g-broadcast',
+      '/standards/5g-broadcast-standards-evolution',
+      '/standards/5g-mbs',
+      '/standards/5gms',
+      '/standards/6g',
+      '/standards/ai-ml',
+      '/standards/avatar',
+      '/standards/beyond-2d',
+      '/standards/data-collection',
+      '/standards/dvb-i',
+      '/standards/emergency-alerts',
+      '/standards/multimedia',
+      '/standards/network-apis',
+      '/standards/npn',
+      '/standards/ntn',
+      '/standards/rtc',
+      '/standards/tsc',
+      '/standards/v3c',
+      '/standards/xr',
+    ],
+    title: 'Explainers & Profiles',
+    titleHref: '/tech',
+    items: [
+      { label: 'Implementation Blueprints', href: '/tech/blueprints' },
+      { label: 'Technology Exchanges', href: '/tech/exchanges' },
+      { label: '3GPP Work Items', href: '/tech/3gpp-work-items' },
+      { label: 'Glossary', href: '/tech/glossary' },
+    ],
+  },
+  // /standards itself and its three contributor pages: 5G-MAG as a participant
+  // in the standards process, which is a different thing from the per-topic
+  // specification pages above.
   {
     prefixes: ['/standards', '/surveys'],
-    title: 'Standards',
+    title: 'Feedback & Requirements',
     titleHref: '/standards',
-    // The specification pages are reached from the sidebar (and from every
-    // /tech topic card's "Standards →" link), so these pills stay on the
-    // hub's own "What You'll Find Here" destinations.
     items: [
       { label: 'Requirements towards SDOs', href: '/standards/requirements' },
       { label: 'Industry Surveys', href: '/surveys' },
