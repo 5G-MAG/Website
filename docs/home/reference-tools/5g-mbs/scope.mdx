@@ -119,27 +119,6 @@ It helps to read the audit above against the three-layer MBS architecture (cover
 
 The audit above marks which service operations and distribution modes are implemented and which are not, so use it to check whether a given path (for example the `COLLECTION` operating mode, or multicast session join) is covered before building on it.
 
-## Standards & Specifications
-
-The specifications audited above are consolidated below.
-
-| Specification | Body | Reference |
-| -------------- | ---- | --------- |
-| TS 26.502 - MBS User Services architecture | 3GPP | [https://www.3gpp.org/dynareport/26502.htm](https://www.3gpp.org/dynareport/26502.htm) |
-| TS 26.517 - MBS User Services protocols and formats | 3GPP | [https://www.3gpp.org/dynareport/26517.htm](https://www.3gpp.org/dynareport/26517.htm) |
-| TS 29.580 - MBSF services (Nmb10) | 3GPP | [https://www.3gpp.org/dynareport/29580.htm](https://www.3gpp.org/dynareport/29580.htm) |
-| TS 29.581 - MBSTF services (Nmb2) | 3GPP | [https://www.3gpp.org/dynareport/29581.htm](https://www.3gpp.org/dynareport/29581.htm) |
-| TS 29.532 - MB-SMF session management services (Nmb1) | 3GPP | [https://www.3gpp.org/dynareport/29532.htm](https://www.3gpp.org/dynareport/29532.htm) |
-| TS 29.244 - PFCP (N4mb) | 3GPP | [https://www.3gpp.org/dynareport/29244.htm](https://www.3gpp.org/dynareport/29244.htm) |
-| TS 29.518 - AMF services incl. Namf_MBSBroadcast | 3GPP | [https://www.3gpp.org/dynareport/29518.htm](https://www.3gpp.org/dynareport/29518.htm) |
-| TS 38.413 - NGAP broadcast session management | 3GPP | [https://www.3gpp.org/dynareport/38413.htm](https://www.3gpp.org/dynareport/38413.htm) |
-| TS 38.463 / TS 38.473 - E1AP / F1AP broadcast contexts | 3GPP | [TS 38.463](https://www.3gpp.org/dynareport/38463.htm), [TS 38.473](https://www.3gpp.org/dynareport/38473.htm) |
-| TS 38.331 / TS 38.32x - NR RRC (SIB20/MCCH), MAC/RLC/PDCP | 3GPP | [TS 38.331](https://www.3gpp.org/dynareport/38331.htm) |
-| TS 23.247 - MBS architecture (Stage 2) | 3GPP | [https://www.3gpp.org/dynareport/23247.htm](https://www.3gpp.org/dynareport/23247.htm) |
-| TS 29.510 - NRF NFDiscovery (MBS query extensions not implemented) | 3GPP | [https://www.3gpp.org/dynareport/29510.htm](https://www.3gpp.org/dynareport/29510.htm) |
-
-For the full standards landscape, see [Standards: 5G Multicast Broadcast Services](/standards/5g-mbs); for the FLUTE transport underneath the Object distribution method (and why it is FLUTE version 1), see [Standards: Multimedia Delivery Protocols](/standards/multimedia).
-
 ## Getting Started
 
 To try the tools hands-on, follow the [Tutorials](./tutorials): they cover the two ways to provision the 5GC (direct MBS core functions, or via the [5GC Service Consumers](../5g-core) libraries), the [Docker-Compose deployment](./tutorials/docker-implementation), and the individual MBSF/MBSTF walkthroughs. For the source code, packages and releases behind each component, see [Resources](./resources); for the specification background, see [Standards: 5G Multicast Broadcast Services](/standards/5g-mbs).
@@ -180,5 +159,6 @@ Initial implementation of MBSF, MBSTF, MBS AF and MBS AS for supporting media mu
 
 - [Resources](/reference-tools/5g-mbs/resources)
 - [Tutorials](/reference-tools/5g-mbs/tutorials)
-- Standards: [5G Multicast Broadcast Services](/standards/5g-mbs)
+- Standards: [5G Multicast Broadcast Services](/standards/5g-mbs) &mdash; the full specification list for this topic
+- Standards: [Multimedia Delivery Protocols](/standards/multimedia) &mdash; the FLUTE transport under the Object distribution method, and why it is FLUTE version 1
 - Tech: [Multicast and Broadcast Services in 5G Networks](/tech/5g-mbs)
