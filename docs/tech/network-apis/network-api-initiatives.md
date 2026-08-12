@@ -229,5 +229,5 @@ The APIs analysed in this section share a set of conventions defined by the CAMA
 - [Developer portal: Network APIs](/reference-tools/network-apis). The 5G-MAG reference tools.
 
 :::note
-Refer to the [Standards](https://github.com/5G-MAG/Standards/) repository to contribute to this documentation.
+Refer to the [Tech](https://github.com/5G-MAG/Tech/) repository to contribute to this documentation.
 :::

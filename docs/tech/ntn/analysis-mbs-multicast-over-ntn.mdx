@@ -107,3 +107,11 @@ The requirement that switching be interruption-free is what ties this to reliabi
 :::note[Partially verified against primary sources]
 Checked directly against TS 23.247 V19.3.0: Clause 4.1 ("Overview of multicast and broadcast communication") confirms that PTP/PTM switching for MBS multicast is supported and that "NG-RAN is the decision point for switching between PTP and PTM delivery methods" — matching this page's "autonomous switching by the Donor gNodeB" framing. A specific "session counting" clause or algorithm was not found in TS 23.247; the exact trigger mechanism for switching appears to be left to RAN implementation (consistent with the equivalent finding on the terrestrial [RAN Aspects](../5g-mbs/ran-aspects) page — "the specifications leave the exact algorithm to implementation"). TS 26.502's title and the release placement of MBS-over-NTN features (broadcast/multicast, GSO/NGSO) remain unconfirmed, since a full clause-by-clause reading of TS 23.247 for NTN-specific content was not performed.
 :::
+
+## Related
+
+- [Non-Terrestrial Networks](/tech/ntn): the parent topic page
+- [Analysis of Mobility aspects for MBS Multicast over NTN](./analysis-mobility-mbs-multicast-over-ntn): how the multicast group moves between beams and satellites
+- [Analysis of MBS Broadcast over NTN](./analysis-mbs-broadcast-over-ntn): the broadcast counterpart of this analysis
+- [Summary of MBS RAN Aspects](../5g-mbs/ran-aspects): the terrestrial PTP and PTM decision this page builds on
+- [Standards: Non-Terrestrial Networks](/standards/ntn): the specification list for this topic

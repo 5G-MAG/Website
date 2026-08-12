@@ -98,3 +98,10 @@ ETSI TS 103 720 defines normative receiver categories (Base, Main, 5GMS, Emergen
 The band frequency ranges and release attributions above were verified against 3GPP TS 36.101 (Table 5.5H-1), TS 36.307 and the published ETSI TS 103 720 v1.2.1. The observed subframe, bandwidth, modulation and SFN parameter values reflect 5G-MAG member deployment experience and reference tool configurations; they have no single public specification to check against and may differ between networks.
 
 </details>
+
+## Related
+
+- [5G Broadcast - TV, Radio and Emergency Alerts](/tech/5g-broadcast): the parent topic page
+- [5G Broadcast Deployment Profiles](./deployment-profiles): the receiver-capability profiles a device is expected to support
+- [Standards: 5G Broadcast - TV, Radio and Emergency Alerts](/standards/5g-broadcast): the specification list for this topic
+- [5G Broadcast Reference Tools](/reference-tools/5g-broadcast): the transmitter and modem implementation

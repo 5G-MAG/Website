@@ -71,6 +71,22 @@ for (const file of files) {
       });
     }
   }
+
+  // A PDF reference that points at a file we do not ship is not a build error:
+  // the page renders, the embed is blank and the download button 404s. Slide
+  // decks are added to static/docs/ after the page that embeds them is written,
+  // so this is the failure mode to expect. References inside MDX comments are
+  // skipped, since that is how a page holds ready-to-use markup for a deck that
+  // has not arrived yet.
+  const live = raw.replace(/\{\/\*[\s\S]*?\*\/\}/g, '');
+  for (const m of live.matchAll(/['"(](\/docs\/[^'")\s]+\.pdf)['")]/g)) {
+    if (!fs.existsSync(path.join(ROOT, 'static', m[1]))) {
+      errors.push({
+        file: rel,
+        message: `References ${m[1]}, which is not in static/docs/. The embed renders blank and the download button 404s.`,
+      });
+    }
+  }
 }
 
 if (errors.length > 0) {

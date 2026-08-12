@@ -71,3 +71,10 @@ The circle form (a reference centre plus a radius) is compact and cheap to broad
 :::note[Verified against primary sources]
 Checked directly against TS 38.331 V19.3.0 (the current published version). SIB27's Release 19 tag, ASN.1 structure and clause placement are all confirmed as described above. SIB19 is also confirmed at Clause 6.3.1, described in the spec as containing "satellite assistance information for NTN access" — matching this page's description of ephemeris and timing/frequency pre-compensation data; note that SIB19 itself is tagged `r17` (introduced in Release 17 for NTN generally, not new in Release 19 — it is SIB27 that is the new Release 19 addition, layered on top of the pre-existing SIB19). SIB20/SIB21's assignment to MBS broadcast was already verified on the [Broadcast RAN procedures page](../5g-mbs/analysis-mbs-broadcast-ran). The TS 23.247 delivery-mode-2 citation was not re-checked on this page specifically but is consistent with the verified Standards page ([5g-mbs.md](/standards/5g-mbs)).
 :::
+
+## Related
+
+- [Non-Terrestrial Networks](/tech/ntn): the parent topic page
+- [Analysis of MBS Multicast over NTN](./analysis-mbs-multicast-over-ntn): the multicast counterpart of this analysis
+- [Analysis of RAN Procedures for MBS Broadcast](../5g-mbs/analysis-mbs-broadcast-ran): the terrestrial broadcast procedures reused here
+- [Standards: Non-Terrestrial Networks](/standards/ntn): the specification list for this topic

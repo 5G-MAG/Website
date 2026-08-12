@@ -76,3 +76,11 @@ The two features above (CMCD and CMMF) are the ones with reference-tool relevanc
 - **Encrypted and high-value content.** Handling of protected content in the delivery path.
 
 Not all of these have completed the move from study to normative text, and the release placement of individual items can change as 3GPP SA4 progresses the work. See the [Standards page](/standards/5gms) for the specifications and technical reports, and confirm the status of a given feature against the 3GPP work plan.
+
+## Related
+
+- [5G Media Streaming (5GMS)](/tech/5gms): the parent topic page
+- [Overview on 5G Media Streaming](./overview-5gms): the architecture these extensions build on
+- [Key Features for 5G Media Streaming - Downlink](./features-5gmsd): the downlink features being extended
+- [Standards: 5G Media Streaming](/standards/5gms): the specification list for this topic
+- [5G Media Streaming Reference Tools](/reference-tools/5gms): the software implementation

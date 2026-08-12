@@ -110,3 +110,10 @@ This subsection covers the remaining operational modes and functions. Devices sh
 - Public Warning System (PWS) support (according to clause 7.6 of ETSI TS 103 720)
 
 In case Time-Frequency-Interleaving (TFI) and co-existence of legacy broadcast and 5G Broadcast in the Ultra High Frequency (UHF) band are introduced in Release 19, both functionalities shall be supported. TFI interleaves a signal across time and frequency to improve robustness, and UHF co-existence lets 5G Broadcast share spectrum with legacy terrestrial broadcast. Both items are conditional on Release 19 outcomes and are not yet finalised; check the current status against the 5G-MAG work and ETSI TS 103 720 before relying on them. See [Operational Parameters in Use](./parameters-in-use) for the values observed today.
+
+## Related
+
+- [5G Broadcast - TV, Radio and Emergency Alerts](/tech/5g-broadcast): the parent topic page
+- [5G Broadcast Operational Parameters in Use](./parameters-in-use): the parameter values observed in live and trial deployments
+- [Standards: 5G Broadcast - TV, Radio and Emergency Alerts](/standards/5g-broadcast): the specification list for this topic
+- [5G Broadcast Reference Tools](/reference-tools/5g-broadcast): the transmitter and modem implementation
