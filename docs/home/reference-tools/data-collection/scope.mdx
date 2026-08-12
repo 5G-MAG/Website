@@ -44,6 +44,34 @@ A list of relevant specifications can be found in the link below.
 A reusable Rel-18 DCAF Service Provider library for data reporting and event exposure. These functional entities could later on be integrated within the data reporting framework of 5G Media Streaming (5GMS).
 :::
 
+## High-level architecture
+
+Two deployment shapes are shown below: the DCAF running on its own (standalone), and the DCAF integrated alongside 5G Downlink Media Streaming.
+
+### Standalone UE Data Collection, Reporting and Event Exposure
+
+This is the standalone DCAF deployment, where the Data Collection AF is used on its own to collect and expose UE-side data.
+
+<img loading="lazy" src={useBaseUrl('/assets/images/projects/uedc_diagram.png')} style={{width: '80%'}} alt="Standalone DCAF architecture, with the Data Collection AF connected to a UE and a consuming Application Service Provider" />
+
+_Figure: standalone DCAF deployment._
+
+[UE Data Collection, Reporting and Event Exposure: Resources](../data-collection/resources)
+[3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
+
+### 5G Downlink Media Streaming (5GMSd) with UE Data Collection Reporting and Event Exposure
+
+This is the integrated deployment, where the DCAF is combined with the 5G Downlink Media Streaming (5GMSd) data reporting framework.
+
+<img loading="lazy" src={useBaseUrl('/assets/images/projects/5gms_uedc_diagram.png')} style={{width: '80%'}} alt="DCAF integrated with the 5G Downlink Media Streaming data reporting framework" />
+
+_Figure: DCAF integrated with 5GMSd data reporting._
+
+[5G Media Streaming: Resources](../5gms/resources)
+[UE Data Collection, Reporting and Event Exposure: Resources](../data-collection/resources)
+[3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
+[Common Tools](../common-tools/)
+
 ## Generic UE Data Collection, Reporting and Event Exposure
 
 A functional Data Collection Application Function (DCAF) implementation is available. In the diagram below, the building blocks marked with a green tick are the ones already implemented.
@@ -142,34 +170,6 @@ The shape of the request body when creating a new Data Reporting Session:
 ```
 
 See the [Docker + Insomnia tutorial](./tutorials/docker-with-insomnia) for the full request body and a working walkthrough.
-
-## High-level architectures
-
-Two deployment shapes are shown below: the DCAF running on its own (standalone), and the DCAF integrated alongside 5G Downlink Media Streaming.
-
-### Standalone UE Data Collection, Reporting and Event Exposure
-
-This is the standalone DCAF deployment, where the Data Collection AF is used on its own to collect and expose UE-side data.
-
-<img loading="lazy" src={useBaseUrl('/assets/images/projects/uedc_diagram.png')} style={{width: '80%'}} alt="Standalone DCAF architecture, with the Data Collection AF connected to a UE and a consuming Application Service Provider" />
-
-_Figure: standalone DCAF deployment._
-
-[UE Data Collection, Reporting and Event Exposure: Resources](../data-collection/resources)
-[3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
-
-### 5G Downlink Media Streaming (5GMSd) with UE Data Collection Reporting and Event Exposure
-
-This is the integrated deployment, where the DCAF is combined with the 5G Downlink Media Streaming (5GMSd) data reporting framework.
-
-<img loading="lazy" src={useBaseUrl('/assets/images/projects/5gms_uedc_diagram.png')} style={{width: '80%'}} alt="DCAF integrated with the 5G Downlink Media Streaming data reporting framework" />
-
-_Figure: DCAF integrated with 5GMSd data reporting._
-
-[5G Media Streaming: Resources](../5gms/resources)
-[UE Data Collection, Reporting and Event Exposure: Resources](../data-collection/resources)
-[3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
-[Common Tools](../common-tools/)
 
 ## Docker deployment support
 

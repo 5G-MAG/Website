@@ -37,6 +37,34 @@ Technical documentation providing context to this project can be found in the li
 
 [Tech: 5G Broadcast](/tech/5g-broadcast)
 
+## High-level architecture
+
+### 5G Broadcast with Multimedia delivery protocols
+
+The diagram below shows the 5G Broadcast tools combined with the multimedia delivery protocols (FLUTE-based file delivery), from transmitter through to receiver.
+
+<img loading="lazy" src={useBaseUrl('/assets/images/projects/5gbc_diagram.png')} alt="Architecture combining the 5G Broadcast transmitter and modem with FLUTE-based multimedia delivery protocols" style={{width: '80%'}}/>
+
+Repositories used in this architecture:
+
+- [5G Broadcast: Resources](../5g-broadcast/resources)
+- [Multimedia content delivery protocols: Resources](../multimedia/resources)
+- [Common Tools: Repositories](../common-tools/)
+
+### 5G Downlink Media Streaming (5GMSd) over eMBMS
+
+This second diagram shows 5G Downlink Media Streaming (5GMSd) delivered over eMBMS (enhanced Multimedia Broadcast Multicast Service), combining the 5G Media Streaming tools with the broadcast chain.
+
+<img loading="lazy" src={useBaseUrl('/assets/images/projects/5gms_5gbc_diagram.png')} alt="Architecture delivering 5G Downlink Media Streaming (5GMSd) over the eMBMS broadcast bearer" style={{width: '80%'}}/>
+
+Repositories used in this architecture:
+
+- [5G Media Streaming: Resources](../5gms/resources)
+- [5G Broadcast: Resources](../5g-broadcast/resources)
+- [Multimedia content delivery protocols: Resources](../multimedia/resources)
+- [3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
+- [Common Tools: Repositories](../common-tools/)
+
 ## Features under implementation
 
 ### Implementation status (high level)
@@ -67,34 +95,6 @@ The features use these recurring 3GPP terms: MBSFN (Multicast-Broadcast Single-F
 
 Note that the 5G Broadcast Transmitter for QRD (Qualcomm Reference Design) and CRD (Commercial Reference Design) is an extension of an MBMS-enabled eNodeB tailored to operate as
 a 5G Broadcast transmitter. Only MBMS/Unicast-mixed cell is supported alongside pre-Rel-14 features.
-
-## High-level architectures
-
-### 5G Broadcast with Multimedia delivery protocols
-
-The diagram below shows the 5G Broadcast tools combined with the multimedia delivery protocols (FLUTE-based file delivery), from transmitter through to receiver.
-
-<img loading="lazy" src={useBaseUrl('/assets/images/projects/5gbc_diagram.png')} alt="Architecture combining the 5G Broadcast transmitter and modem with FLUTE-based multimedia delivery protocols" style={{width: '80%'}}/>
-
-Repositories used in this architecture:
-
-- [5G Broadcast: Resources](../5g-broadcast/resources)
-- [Multimedia content delivery protocols: Resources](../multimedia/resources)
-- [Common Tools: Repositories](../common-tools/)
-
-### 5G Downlink Media Streaming (5GMSd) over eMBMS
-
-This second diagram shows 5G Downlink Media Streaming (5GMSd) delivered over eMBMS (enhanced Multimedia Broadcast Multicast Service), combining the 5G Media Streaming tools with the broadcast chain.
-
-<img loading="lazy" src={useBaseUrl('/assets/images/projects/5gms_5gbc_diagram.png')} alt="Architecture delivering 5G Downlink Media Streaming (5GMSd) over the eMBMS broadcast bearer" style={{width: '80%'}}/>
-
-Repositories used in this architecture:
-
-- [5G Media Streaming: Resources](../5gms/resources)
-- [5G Broadcast: Resources](../5g-broadcast/resources)
-- [Multimedia content delivery protocols: Resources](../multimedia/resources)
-- [3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
-- [Common Tools: Repositories](../common-tools/)
 
 ## NTN deployment context
 

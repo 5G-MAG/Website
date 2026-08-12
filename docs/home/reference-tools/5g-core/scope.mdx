@@ -52,6 +52,22 @@ Technical documentation providing context to this project can be found in the li
 A series of reusable service consumer libraries to invoke service operations on various 5GC network functions.
 :::
 
+## High-level architecture
+
+How the service-consumer libraries sit between a media Application Function and the 5G Core in each deployment.
+
+### 5G Multicast Broadcast Services (MBS) with 5GC Service Consumers
+
+The diagram below shows how the MBS reference tools use the MB-SMF service consumer library to reach the 5G Core.
+
+<img loading="lazy" src={useBaseUrl('/assets/images/projects/mbs_5gc_diagram.png')} style={{width: '80%'}} alt="Architecture of the 5G MBS reference tools using the MB-SMF service consumer library to reach the 5G Core"/>
+
+[5G Multicast Broadcast Services: Resources](../5g-mbs/resources)
+[Multimedia content delivery protocols: Resources](../multimedia/resources)
+[5GC Service Consumers: Resources](../5g-core/resources)
+[3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
+[Common Tools: Repositories](../common-tools/)
+
 ## Media Streaming QoS (BSF and PCF)
 
 Within the context of 5G Media Streaming (5GMS), the 5GMS Application Function (AF) needs to communicate with the 5G Core in order to manipulate network Quality of Service (QoS) for ongoing media streaming sessions.
@@ -135,25 +151,13 @@ Each library implements only the consumer (client) side of its APIs, so it assum
 
 See [Tutorials](./tutorials) to run the tools against a 5G Core, and [Resources](./resources) for the source code and releases.
 
-## 5G Downlink Media Streaming (5GMSd) with 5GC Service Consumers
+### 5G Downlink Media Streaming (5GMSd) with 5GC Service Consumers
 
 The diagram below shows how the 5GMSd reference tools use the 5GC Service Consumer libraries (BSF and PCF) to request network QoS from the 5G Core.
 
 <img loading="lazy" src={useBaseUrl('/assets/images/projects/5gms_5gc_diagram.png')} style={{width: '80%'}} alt="Architecture of the 5G Downlink Media Streaming reference tools using the 5GC Service Consumer libraries to reach the BSF and PCF"/>
 
 [5G Media Streaming: Resources](../5gms/resources)
-[5GC Service Consumers: Resources](../5g-core/resources)
-[3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
-[Common Tools: Repositories](../common-tools/)
-
-## 5G Multicast Broadcast Services (MBS) with 5GC Service Consumers
-
-The diagram below shows how the MBS reference tools use the MB-SMF service consumer library to reach the 5G Core.
-
-<img loading="lazy" src={useBaseUrl('/assets/images/projects/mbs_5gc_diagram.png')} style={{width: '80%'}} alt="Architecture of the 5G MBS reference tools using the MB-SMF service consumer library to reach the 5G Core"/>
-
-[5G Multicast Broadcast Services: Resources](../5g-mbs/resources)
-[Multimedia content delivery protocols: Resources](../multimedia/resources)
 [5GC Service Consumers: Resources](../5g-core/resources)
 [3GPP RAN and Core Platforms: Resources](../3gpp-platforms/resources)
 [Common Tools: Repositories](../common-tools/)
