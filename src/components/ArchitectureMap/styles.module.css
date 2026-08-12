@@ -1,8 +1,10 @@
 /* Architecture map. Layer bands read top to bottom as the specification's own
    stack; each entity carries the repository implementing it. Colours come from
-   Infima variables so both themes follow the site, and the owner colours are
-   deliberately distinct from the semantic implementation-state colours: one
-   says who builds it, the other says how far along it is. */
+   Infima variables so both themes follow the site. Colour is spent only on
+   implementation state: the boxes themselves are deliberately uniform, so the
+   eye goes to what is and is not built rather than to who maintains it. The
+   surfaces stay near the page background, since a grid of filled grey panels
+   reads as heavier than the information in it warrants. */
 
 .wrap {
   margin: 1.25rem 0 2rem;
@@ -25,7 +27,7 @@
   border: 1px solid var(--ifm-color-emphasis-200);
   border-radius: 10px;
   padding: 0.7rem 0.85rem 0.8rem;
-  background: var(--ifm-color-emphasis-100);
+  background: transparent;
 }
 
 .bandLabel {
@@ -65,8 +67,8 @@
   padding: 0.6rem 0.7rem;
   border-radius: 8px;
   background: var(--ifm-background-color);
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-left-width: 4px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-left: 3px solid var(--ifm-color-primary);
 }
 
 .entityLabel {
@@ -95,21 +97,7 @@
   margin-top: 0.2rem;
 }
 
-/* Owner: who builds this box. */
-.ownerReference {
-  border-left-color: var(--ifm-color-primary);
-}
-
-.ownerFork {
-  border-left-color: var(--ifm-color-emphasis-500);
-}
-
-.ownerExternal {
-  border-left-color: var(--ifm-color-emphasis-300);
-  background: var(--ifm-color-emphasis-100);
-}
-
-/* ---- implementation state (semantic, separate from owner colour) ----- */
+/* ---- implementation state (the only colour in the diagram) ---------- */
 
 .state {
   display: inline-block;
@@ -161,37 +149,16 @@
   font-size: 0.76rem;
   padding: 0.08rem 0.45rem;
   border-radius: 4px;
-  background: var(--ifm-color-emphasis-200);
-  color: var(--ifm-color-emphasis-800);
+  background: transparent;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  color: var(--ifm-color-emphasis-700);
 }
 
 /* ---- legend ---------------------------------------------------------- */
 
-.legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem 1.1rem;
-  align-items: center;
-  margin-top: 0.85rem;
-  font-size: 0.82rem;
-  color: var(--ifm-color-emphasis-700);
-}
-
-.legendItem {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.swatch {
-  display: inline-block;
-  width: 3px;
-  height: 1rem;
-  border-radius: 2px;
-  border-left: 4px solid;
-}
-
 .legendNote {
+  margin: 0.75rem 0 0;
+  font-size: 0.82rem;
   color: var(--ifm-color-emphasis-600);
   font-style: italic;
 }
