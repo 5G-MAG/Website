@@ -117,3 +117,18 @@
   color: var(--ifm-color-emphasis-600);
   font-style: italic;
 }
+
+/* A "Private" badge on its own tells a visitor they cannot get in. 5G-MAG
+   members can request access, so the badge carries that route next to it. */
+.privateGroup {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.earlyAccess {
+  font-size: 0.72rem;
+  color: var(--ifm-color-primary);
+  text-decoration: underline;
+  white-space: nowrap;
+}
