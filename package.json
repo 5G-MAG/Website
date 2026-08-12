@@ -28,6 +28,7 @@
     "@docusaurus/faster": "3.10.2",
     "@docusaurus/plugin-client-redirects": "3.10.2",
     "@docusaurus/preset-classic": "3.10.2",
+    "@docusaurus/theme-mermaid": "^3.10.2",
     "@easyops-cn/docusaurus-search-local": "^0.55.2",
     "@hcaptcha/react-hcaptcha": "^2.0.2",
     "@mdx-js/react": "^3.0.0",

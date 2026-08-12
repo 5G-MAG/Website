@@ -51,10 +51,17 @@ const config = {
 
   markdown: {
     format: 'detect',
+    mermaid: true,
     hooks: {
       onBrokenMarkdownImages: 'throw',
     },
   },
+
+  // Mermaid is used only for the diagram kinds a purpose-built component does
+  // not express well: call flows (sequence diagrams) and data models. The
+  // architecture diagrams use src/components/ArchitectureMap instead, which is
+  // data-driven and can carry the implementing repository per entity.
+  themes: ['@docusaurus/theme-mermaid'],
 
   plugins: [
     // Redirect map cut down (2026-07-29): the large PREFIX_MAP this plugin

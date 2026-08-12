@@ -8,8 +8,8 @@ export default function ProjectRepositories({ project }) {
   if (!repos || repos.length === 0) {
     return (
       <p className={styles.empty}>
-        Detailed repository metadata is not curated for this project yet, see the
-        repository list above.
+        Detailed repository metadata is not curated for this project yet, see the repository list
+        above.
       </p>
     );
   }
@@ -19,22 +19,22 @@ export default function ProjectRepositories({ project }) {
       {repos.map((repo) => (
         <li key={repo.repo_slug} className={styles.repoRow}>
           <div className={styles.repoHeader}>
-            <a
-              href={repo.repo_url}
-              className={styles.repoName}
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a href={repo.repo_url} className={styles.repoName} target="_blank" rel="noreferrer">
               {repo.display_name}
             </a>
             <code className={styles.repoSlug}>{repo.repo_slug}</code>
             {repo.is_auxiliary && <span className={styles.badgeAux}>Auxiliary</span>}
-            {!repo.public && <span className={styles.badgePrivate}>Private</span>}
+            {!repo.public && (
+              <span className={styles.privateGroup}>
+                <span className={styles.badgePrivate}>Private</span>
+                <a className={styles.earlyAccess} href="/early-access">
+                  request access
+                </a>
+              </span>
+            )}
           </div>
 
-          {repo.description && (
-            <p className={styles.repoDescription}>{repo.description}</p>
-          )}
+          {repo.description && <p className={styles.repoDescription}>{repo.description}</p>}
 
           <div className={styles.repoTags}>
             {repo.license && (
