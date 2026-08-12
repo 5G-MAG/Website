@@ -70,21 +70,6 @@ CBS carries a warning message as a short, self-contained data structure rather t
 
 For CMAS-style alerts the message is carried in **SIB12**. For ETWS the notification and body are carried in **SIB10** and **SIB11** respectively; the current transmit tooling focuses on the SIB12 (CMAS) path, so if you need ETWS-specific SIB10/SIB11 behaviour, check the repositories and the Kanban board for current status before assuming it is present.
 
-## Standards & Specifications
-
-The public-warning feature tracks the same release line as the underlying 5G Broadcast tools. The transport and receiver behaviour follow the version of **ETSI TS 103 720** being implemented (PWS support, delivery of warning messages via SIB broadcast on the E-UTRAN Uu downlink, is defined in v1.2.1 clause 5.15.3.3; work towards v1.3.1, which aligns with 3GPP Release 18, adds further PWS-related improvements). The CBS message realisation follows **3GPP TS 23.041** (ETWS/CMAS message structure, message identifiers, serial numbers, data coding), and the SIB12 encoding on the radio interface follows **3GPP TS 36.331** (E-UTRA RRC), which defines SystemInformationBlockType12 and the UE actions on receiving it. For the full, maintained list, see the [Resources](./resources) page rather than inferring it from the release names above.
-
-| Specification | Body | Reference |
-| -------------- | ---- | --------- |
-| TS 103 720 &mdash; 5G Broadcast System for linear TV and radio services (maintained by 5G-MAG; includes support for public warning over CBS, PWS via SIB broadcast in clause 5.15.3.3) | ETSI | [ts_103720v010201p.pdf](https://www.etsi.org/deliver/etsi_ts/103700_103799/103720/01.02.01_60/ts_103720v010201p.pdf) |
-| TS 23.041 &mdash; Technical realization of Cell Broadcast Service (CBS) (CBS message structure, message identifiers and serial numbers for ETWS/CMAS) | 3GPP | [3gpp.org/dynareport/23041.htm](https://www.3gpp.org/dynareport/23041.htm) |
-| TS 36.331 &mdash; E-UTRA; Radio Resource Control (RRC); Protocol specification (SystemInformationBlockType12 and UE actions on receiving warning-message SIBs) | 3GPP | [3gpp.org/dynareport/36331.htm](https://www.3gpp.org/dynareport/36331.htm) |
-| TR 36.976 &mdash; Overall description of LTE-based 5G broadcast | 3GPP | [3gpp.org/dynareport/36976.htm](https://www.3gpp.org/dynareport/36976.htm) |
-
-:::note
-Specific receiver behaviour for public warning and the exact CBS feature coverage depend on the version of ETSI TS 103 720 being implemented (work towards v1.3.1 adds PWS-related improvements). Confirm the current status against the repositories and the Kanban board before relying on it.
-:::
-
 ## Getting Started
 
 The end-to-end path is exercised as an extension of the 5G Broadcast transmit/receive setup, so the prerequisites are the same as for 5G Broadcast plus a way to view the received alert.
@@ -144,5 +129,6 @@ Issues and required functionality around support for a Public Warning System, de
 - [Resources](/reference-tools/emergency-alerts/resources)
 - [Tutorials](/reference-tools/emergency-alerts/tutorials)
 - Related project: [5G Broadcast - TV and Radio Services](../5g-broadcast)
-- Standards: [5G Broadcast](/standards/5g-broadcast)
+- Standards: [5G Broadcast - Emergency Alerts](/standards/emergency-alerts) &mdash; the specifications that define public warning delivery
+- Standards: [5G Broadcast - TV, Radio and Emergency Alerts](/standards/5g-broadcast)
 - Technical documentation: [5G Broadcast on the Tech portal](/tech/5g-broadcast)
