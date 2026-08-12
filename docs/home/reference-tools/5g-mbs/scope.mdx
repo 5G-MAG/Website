@@ -5,6 +5,9 @@ sidebar_position: 0
 description: Per-feature audit of what the 5G MBS reference tools implement across the MBS User Services, 5GC, NG-RAN and UE layers, mapped against 3GPP specifications.
 ---
 
+import ImplementationBoard from '@site/src/components/ImplementationBoard';
+import { MBS_COMPONENTS, MBS_SECTIONS } from '@site/src/data/implementation/5g-mbs';
+
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <div class="topic-banner">
@@ -86,150 +89,7 @@ The tools currently implement the **MBS Broadcast** delivery mode end-to-end. Th
 | MBSF Client | rt-mbs-client | UE | MBS-4-MC FLUTE reception, MBS-6/MBS-7 local APIs (towards the MBS-Aware Application) |
 | MBS-Aware Application | rt-mbs-application | UE | MBS-6/MBS-7 consumer (dashboard UI) |
 
-### TS 29.580 &mdash; MBSF services at Nmb10
-
-Server: **MBSF (rt-mbs-function)**. Consumer: **MBS Application Provider portal (rt-mbs-application-provider)**. Sits between the MBS Application Provider and the MBSF.
-
-| Service operation | Status |
-| --- | --- |
-| MBS User Service: create (POST `/mbs-user-services`) | Implemented |
-| MBS User Service: retrieve individual (GET `.../{userServiceId}`) | Implemented |
-| MBS User Service: retrieve collection (GET `/mbs-user-services`) | Not implemented (rejected as an invalid resource; the portal keeps its own registry instead) |
-| MBS User Service: update (PUT) | Implemented |
-| MBS User Service: modify (PATCH, RFC 7396) | On hold pending [Standards#182](https://github.com/5G-MAG/Standards/issues/182) ([issue #45](https://github.com/5G-MAG/rt-mbs-function/issues/45)) &mdash; use PUT |
-| MBS User Service: delete | Implemented |
-| CreateMBSUserDataIngSession (POST `/sessions`) | Implemented |
-| RetrieveIndMBSUserDataIngSession (GET `.../{sessionId}`) | Implemented |
-| RetrieveMBSUserDataIngSessions (GET `/sessions`) | Not implemented (same collection-endpoint gap as above) |
-| UpdateIndMBSUserDataIngSession (PUT) | Implemented, with the &sect;5.3.2.4.2 update rules enforced: create-only attributes (`mbsSessionId`, `mbsDistSessionId`, `locationDependent`) protected; INACTIVE-only attributes (`objDistrInfo`, `pckDistrInfo`, `maxContBitRate`, ...) rejected while active; any-time attributes (`mbsServInfo`, `tgtServAreas`, `extTgtServAreas`, `nrRedCapUeInfo`, ...) applied live |
-| ModifyIndMBSUserDataIngSession (PATCH, RFC 7396) | On hold (same as above) |
-| DeleteIndMBSUserDataIngSession | Implemented |
-| Scheduled activation (`actPeriods` / `actPeriodsRepRule`, mutually exclusive) | Implemented |
-| CreateMBSUserDataIngStatSubsc (POST `/status-subscriptions`) | Implemented |
-| RetrieveMBSUserDataIngStatSubscs / RetrieveInd (GET) | Implemented (returned objects carry no id of their own &mdash; see [Standards#191](https://github.com/5G-MAG/Standards/issues/191)) |
-| UpdateIndMBSUserDataIngStatSubsc (PUT) / ModifyInd (PATCH) | Implemented |
-| DeleteMBSUserDataIngStatSubsc | Implemented |
-| MBSUserDataIngStatNotif (notification to the provider callback URL, &sect;6.2.5) | Implemented |
-
-### TS 26.502 / TS 26.517 &mdash; MBS User Services procedures and formats
-
-Implemented across **MBSF** (announcement generation), **MBSTF** (object delivery) and **MBSF Client / MBS-Aware Application** (reception and consumption).
-
-| Feature | Where | Status |
-| --- | --- | --- |
-| Service Announcement mode `PASSED_BACK` &mdash; bundle handed back to the Application Provider at Nmb10 for out-of-band distribution (not delivered over any MBS reference point) | MBSF | Implemented |
-| Service Announcement mode `VIA_MBS_DISTRIBUTION_SESSION` &mdash; MBSF's own broadcast announcement carousel, delivered **over MBS-4-MC** (multicast/broadcast) on a fixed, configurable SSM address/port | MBSF generates + MBSTF transmits; MBSF Client receives | Implemented |
-| Service Announcement mode `VIA_MBS_5` &mdash; unicast retrieval by the client **over MBS-5** | &mdash; | Not implemented (no MBS-5 network API) |
-| User Service Description bundle, `multipart/related` (TS 26.517 &sect;5.3.1A): `UserServiceDescriptions` document plus one SDP per Distribution Session | MBSF generates; MBSF Client decomposes and parses | Implemented, including document version ordering (&sect;5.2.2) and relative Content-Location resolution (RFC 2557) |
-| `ServiceScheduleDescription` activation time windows (&sect;5.2.7) | MBSF Client | Implemented |
-| Session Description / SDP for FLUTE sessions (&sect;6.2.2): `m=` FLUTE lines, `flute-tsi`, SSM `source-filter`, `mbs-servicetype`, timing | MBSF generates; MBSF Client parses | Implemented (multi-session SDPs supported) |
-| Object distribution method over FLUTE, per the TS 26.346 Download profile (&sect;6.2), delivered over **MBS-4-MC** | MBSTF transmit; MBSF Client receive (both via rt-libflute) | Implemented &mdash; see the [rt-libflute audit](/reference-tools/multimedia/scope) for the transport-layer detail, including the Raptor FEC gap |
-| MBS-6 / MBS-7 exposure to the MBS-Aware Application | MBSF Client | Implemented as local HTTP APIs: list announced services, activate/deactivate reception, inspect the received-content store, fetch received objects at their original Content-Location paths |
-| MBS-Aware Application | rt-mbs-application | Implemented (dashboard: announced services with play/deactivate, received-object cache, decomposed announcement bundle) |
-| MBS-4-UC (unicast object repair) | &mdash; | Not implemented (no unicast repair path; also outside TS 29.581's own scope) |
-| File repair / reception reporting (associated delivery procedures) | &mdash; | Not implemented |
-
-:::note[MBS-4-MC is the only over-the-air announcement path today]
-Of the two modes that deliver an announcement to a client at all, only the multicast/broadcast one (MBS-4-MC) is implemented. There is no unicast fallback (MBS-5): a client that cannot receive the broadcast carousel has no way to discover services.
-:::
-
-### TS 29.581 &mdash; MBSTF distribution session services at Nmb2
-
-Server: **MBSTF (rt-mbs-transport-function)**. Consumer: **MBSF (rt-mbs-function)**. Sits between the MBSF and the MBSTF.
-
-| Service operation / feature | Status |
-| --- | --- |
-| Create Distribution Session (POST `/dist-sessions`) | Implemented |
-| Retrieve Distribution Session (GET `.../{distSessionRef}`) | Implemented |
-| Update Distribution Session (PATCH, RFC 6902 JSON Patch) | Implemented (state-only activate/deactivate and reconfiguration) |
-| Destroy Distribution Session (DELETE) | Implemented |
-| StatusSubscribe / StatusUnsubscribe (`.../subscriptions`) | Implemented (create, update, delete) |
-| StatusNotify (events to the MBSF callback) | Implemented (failed notifications retried, not dropped) |
-| Object distribution method: `SINGLE` operating mode, pull and push acquisition (per-session push-ingest endpoint advertised as `objIngestBaseUrl`) | Implemented |
-| Object distribution method: `STREAMING` operating mode (MPEG-DASH MPD, live profile, pull and push) | Implemented |
-| Object distribution method: `CAROUSEL` operating mode (`application/3gpp-mbs-object-manifest+json`; runs the Service Announcement channel) | Implemented |
-| Object distribution method: `COLLECTION` operating mode | Not implemented |
-| Streaming manifest types other than MPEG-DASH MPD (e.g. HLS) | Not implemented (delivered as plain objects, not parsed for scheduling) |
-| Packet distribution method: `PACKET_FORWARD_ONLY` and `PACKET_PROXY` operating modes | Implemented |
-| FLUTE/ALC delivery towards the MB-UPF at Nmb9 (unicast UDP tunnel to the MB-SMF-assigned ingress address, path-MTU detection) | Implemented |
-| AL-FEC beyond Compact No-Code (Raptor, mandatory for download receivers per TS 26.346 &sect;7.2.2) | Not implemented in the transmission path (available in rt-libflute; not yet wired in) |
-
-### TS 29.532 &mdash; MB-SMF session management services at Nmb1
-
-Server: **MB-SMF (Open5GS fork)**. Consumer: **MBSF**, via the [5GC Service Consumers](../5g-core) library. Sits between the MBSF and the 5G Core.
-
-| Service operation | Status |
-| --- | --- |
-| Nmbsmf_TMGI: Allocate (including refresh of previously allocated TMGIs) | Implemented |
-| Nmbsmf_TMGI: Deallocate (specific list or all; TMGIs referenced by a live MBS session are protected) | Implemented |
-| Nmbsmf_MBSSession: Create (broadcast service type) | Implemented |
-| Nmbsmf_MBSSession: Update (&sect;5.3.2.3, activity status) | Implemented |
-| Nmbsmf_MBSSession: Release | Implemented |
-| Nmbsmf_MBSSession: StatusSubscribe / StatusNotify | Not implemented |
-
-### TS 29.518 &mdash; Namf_MBSBroadcast
-
-Server: **AMF (Open5GS fork)**. Consumer: **MB-SMF (Open5GS fork)**. Sits between the MB-SMF and the AMF inside the 5G Core.
-
-| Service operation | Status |
-| --- | --- |
-| ContextCreate (&sect;5.6.2.2) &mdash; drives NGAP Broadcast Session Setup towards the gNB | Implemented |
-| ContextUpdate (broadcast session modification) | Not implemented |
-| ContextRelease &mdash; drives NGAP Broadcast Session Release | Implemented |
-| ContextStatusNotify | Not implemented |
-
-### TS 29.244 &mdash; N4mb PFCP
-
-Between **MB-SMF** (control plane) and **MB-UPF** (user plane), both in the Open5GS fork.
-
-| Procedure / IE | Status |
-| --- | --- |
-| PFCP Session Establishment / Modification / Deletion with the Release-17 MBS IEs | Implemented |
-| Local Ingress Tunnel (&sect;8.2.209; the Nmb9 ingest address returned to the MBSF) | Implemented |
-| Common TEID / FSSM shared-delivery forwarding behaviour (&sect;8.2.207, &sect;5.34.2.2) | Implemented |
-| PFCP Session Report for MBS sessions | Not implemented |
-
-### TS 38.413 &mdash; NGAP broadcast procedures
-
-Between the **AMF (Open5GS fork)** and the **gNB CU-CP (srsRAN Project fork)**, over N2.
-
-| Procedure | Status |
-| --- | --- |
-| Broadcast Session Setup (Request/Response, with the MBS Session Setup Request Transfer carrying TMGI and shared-delivery tunnel information) | Implemented on both ends, dynamically (no pre-provisioned session configuration required) |
-| Broadcast Session Release | Implemented on both ends |
-| Broadcast Session Modification | Not implemented |
-| Broadcast Session Release Required (gNB-initiated) | Not implemented |
-| Distribution Setup/Release, Multicast Session Activation/Deactivation/Update, Multicast Group Paging | Not implemented (multicast mode) |
-
-### TS 38.463 / TS 38.473 &mdash; E1AP and F1AP broadcast contexts
-
-Inside the **gNB (srsRAN Project fork)**: E1AP between CU-CP and CU-UP, F1AP between CU and DU.
-
-| Procedure | Status |
-| --- | --- |
-| E1AP BC Bearer Context Setup (with failure reporting) | Implemented |
-| E1AP BC Bearer Context Modification (per-MRB F1-U tunnel information) | Implemented |
-| E1AP BC Bearer Context Release | Implemented |
-| F1AP Broadcast Context Setup (with per-MRB setup-failure reporting) | Implemented |
-| F1AP Broadcast Context Release | Implemented |
-| F1AP Broadcast Context Modification | Not implemented (session reconfiguration is handled DU-internally) |
-| E1AP MC Bearer Context / F1AP multicast procedures | Not implemented (multicast mode) |
-
-### TS 38.331 / TS 38.321 / TS 38.322 / TS 38.323 &mdash; Uu broadcast radio protocols
-
-Between the **gNB (srsRAN Project fork)** transmitting and the **UE (`srsue`, srsRAN 4G fork)** receiving.
-
-| Feature | gNB (transmit) | UE (receive) |
-| --- | --- | --- |
-| SIB20 (MCCH configuration, TS 38.331) | Implemented | Implemented |
-| MCCH: MBSBroadcastConfiguration-r17 covering every live session's MRBs, transmission windows | Implemented | Implemented (with periodic re-acquisition, so sessions created later are still discovered) |
-| MCCH change notification (DCI 4-0) | Implemented | &mdash; |
-| MTCH scheduling / reception per session G-RNTI, concurrent sessions independently served | Implemented | Implemented (multiple simultaneous G-RNTIs, per-G-RNTI HARQ state) |
-| MRB LCID management | DU-wide unique LCIDs across concurrent sessions | All MRBs of all advertised sessions wired |
-| RLC-UM (TS 38.322) | Implemented | Implemented |
-| PDCP broadcast MRB (TS 38.323; 18-bit SN) | Implemented | Implemented, with the &sect;5.2.1 SN-based receive-window bootstrap (a UE tuning in mid-stream has no COUNT synchronisation) |
-| Delivery of received multicast IP to the MBSF Client | &mdash; | Implemented (TUN interface) |
-| Multicast MRBs, PTP/PTM switching, MBS Interest Indication, group paging | Not implemented | Not implemented |
+<ImplementationBoard components={MBS_COMPONENTS} sections={MBS_SECTIONS} />
 
 ### User plane path
 
