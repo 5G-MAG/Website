@@ -6,7 +6,12 @@ sidebar_position: -1
 description: Reference platform tools for deploying a lab 5G RAN and Core network, built on Open5GS and srsRAN.
 ---
 import CommunityStats from '@site/src/components/CommunityStats';
+import ProjectContributors from '@site/src/components/ProjectContributors';
+import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import youtubePlaylists from '@site/static/data/youtube-playlists.json';
+
+export const projectVideos = (youtubePlaylists.projects?.['3gpp-platforms']?.videos || []).slice(0, 1);
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -38,6 +43,10 @@ The project provides configurations, scripts, and integration guides for standin
 - **Tutorials** for the walkthrough to stand up a working 5G network with Open5GS and srsRAN, plus the SDR hardware reference and Developer Exchange — see [Tutorials](./tutorials).
 :::
 
+## Contributors
+
+<ProjectContributors name="3GPP RAN and Core Platforms" />
+
 ## Project Overview
 
 The slide deck below introduces the 3GPP RAN and Core Platforms project, its components, and how they fit together. In short: it packages an Open5GS-based 5G core and an srsRAN-based radio access network into a lab-ready 5G system that the other reference tools can run against.
@@ -49,6 +58,20 @@ The slide deck below introduces the 3GPP RAN and Core Platforms project, its com
 <a class="button button--outline button--primary" href={useBaseUrl('/docs/Reference_Tools_3GPP_Platforms.pdf')} style={{margin: '4px 0'}}>Download the slide deck of this Project</a>
 
 ---
+
+## Go deeper
+
+| Area                                  | Details                                                                                                                                                            |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Technical documentation**           | RAN and Core aspects of broadcast delivery: [Multicast & Broadcast in 5G on the Tech portal](/tech/5g-mbs)                                                          |
+| **Standards**                         | The specifications these forks are maintained against: [5G Multicast & Broadcast Services](/standards/5g-mbs), [5G Broadcast](/standards/5g-broadcast)              |
+| **Projects built on these platforms** | [5G Multicast & Broadcast Services](../5g-mbs), [5G Broadcast](../5g-broadcast), [5G Core Service Consumers](../5g-core)                                            |
+
+<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
+
+## Developer Exchange
+
+<ProjectVideos videos={projectVideos} name="3GPP RAN and Core Platforms" />
 
 ## Related
 

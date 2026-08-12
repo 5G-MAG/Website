@@ -6,7 +6,12 @@ sidebar_position: -1
 description: Describes the shared helper repositories (scripts, configs, build utilities) supporting 5G-MAG Reference Tools, with GitHub activity stats.
 ---
 import CommunityStats from '@site/src/components/CommunityStats';
+import ProjectContributors from '@site/src/components/ProjectContributors';
+import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import youtubePlaylists from '@site/static/data/youtube-playlists.json';
+
+export const projectVideos = (youtubePlaylists.projects?.['common-tools']?.videos || []).slice(0, 1);
 
 
 <div class="topic-banner">
@@ -34,10 +39,22 @@ You normally arrive here from a specific tool's setup steps, not by starting her
 There is no dedicated Tutorials page for Common Tools: these scripts and configs are consumed as steps inside each supported project's own tutorial, not run standalone — see [Scope](./scope) for which project uses which helper.
 :::
 
-## Related
+## Contributors
 
-- [Scope](./scope)
-- [Resources](./resources)
+<ProjectContributors name="Common Tools" />
+
+## Go deeper
+
+| Area                              | Details                                                                                                                                       |
+| --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Projects using these helpers**  | [Scope](./scope) maps each helper to the project it supports: [5G Media Streaming](../5gms), [5G Broadcast](../5g-broadcast), [3GPP RAN and Core Platforms](../3gpp-platforms) and [UE Data Collection](../data-collection) |
+| **Source and releases**           | Repositories and published versions: [Resources](./resources)                                                                                 |
+
+<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
+
+## Developer Exchange
+
+<ProjectVideos videos={projectVideos} name="Common Tools" />
 
 ## Community Stats
 

@@ -7,7 +7,11 @@ description: Overview of the reference implementation for media applications tha
 ---
 import CommunityStats from '@site/src/components/CommunityStats';
 import ProjectContributors from '@site/src/components/ProjectContributors';
+import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import youtubePlaylists from '@site/static/data/youtube-playlists.json';
+
+export const projectVideos = (youtubePlaylists.projects?.['5g-core']?.videos || []).slice(0, 1);
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -56,6 +60,12 @@ The slide deck below introduces the 5GC Service Consumer libraries and how a med
 | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Standards**       | 5G Core service interfaces for media (BSF, PCF): [5G Media Streaming on the Standards portal](/standards/5gms); for the MB-SMF interface, see [5G Multicast & Broadcast Services](/standards/5g-mbs) |
 | **Related project** | 5GMS Application Function (AF) tools: [5G Media Streaming (5GMS)](../5gms)                                                                                                                                            |
+
+<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
+
+## Developer Exchange
+
+<ProjectVideos videos={projectVideos} name="5G Core Service Consumers" />
 
 ## Community Stats
 
