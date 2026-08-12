@@ -22,11 +22,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 One-to-many delivery of TV, radio and emergency alerts over dedicated LTE-based broadcast carriers.
 </div>
 
-## Overview
-
 This page is the technical entry point for 5G-MAG's work on LTE-based 5G Broadcast: the reference implementations, deployment profiles, operational parameters, and the specifications they build on. It is aimed at engineers and integrators working on the transmitter or receiver side of a broadcast chain. For the standards-tracking view of the same topic, see [Standards: 5G Broadcast - TV, Radio and Emergency Alerts](/standards/5g-broadcast). For acronyms used here, see the [Glossary](/tech/glossary).
-
-## Introduction
 
 LTE-based 5G Broadcast is a profile of existing 3GPP Long Term Evolution (LTE) specifications that enables one-to-many delivery of TV, radio, and emergency alerts over dedicated broadcast carriers, without requiring a return channel or SIM card on the receiver. It builds on Further evolved Multimedia Broadcast Multicast Service (FeMBMS), itself an evolution of evolved Multimedia Broadcast Multicast Service (eMBMS); the three names refer to the same LTE-based broadcast lineage. ETSI standardises it as TS 103 720, which 5G-MAG actively maintains and extends to cover 3GPP Release 18 and 19 enhancements. The reference tools implement both the transmitter (rt-mbms-tx) and modem/receiver (rt-mbms-modem) sides of the broadcast chain, supporting live deployments and conformance testing.
 
@@ -173,16 +169,6 @@ The identifiers in this section have been verified against the published specifi
 
 ---
 
-## Information related to Standards
-
-[Standards: 5G Broadcast - TV, Radio and Emergency Alerts](/standards/5g-broadcast)
-
-[Standards: Multimedia Delivery Protocols](/standards/multimedia)
-
-[Standards: DVB-I Services over 5G Systems](/standards/dvb-i)
-
----
-
 ## Technical Documentation
 
 The following resources are available:
@@ -198,6 +184,14 @@ The following resources are available:
 - [**5G Broadcast Deployment Profiles**](./5g-broadcast/deployment-profiles): the receiver-capability profiles a device is expected to support.
 - [**5G Broadcast Operational Parameters in Use**](./5g-broadcast/parameters-in-use): the parameter values observed in live and trial deployments.
 
+## Related
+
+- [Multicast & Broadcast in 5G](./5g-mbs): the NR-native multicast and broadcast technology. A separate topic with a similar name.
+- [Standards: 5G Broadcast - TV, Radio and Emergency Alerts](/standards/5g-broadcast): the standards-tracking view of this topic.
+- [Standards: Multimedia Delivery Protocols](/standards/multimedia): the FLUTE and ROUTE transport used to carry files over the broadcast bearer.
+- [Standards: DVB-I Services over 5G Systems](/standards/dvb-i): DVB-I service discovery, used to present broadcast services alongside broadband ones.
+
+
 :::note
-Refer to the [rt-mbms-tx](https://github.com/5G-MAG/rt-mbms-tx) and [rt-mbms-modem](https://github.com/5G-MAG/rt-mbms-modem) repositories to contribute to this documentation.
+Refer to the [Tech](https://github.com/5G-MAG/Tech/) repository to contribute to this documentation.
 :::

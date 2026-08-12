@@ -157,5 +157,5 @@ The following resources are available:
 - [5G Media Streaming (5GMS)](/tech/5gms). Related media delivery analysis on this portal.
 
 :::note
-Refer to the [Standards](https://github.com/5G-MAG/Standards/) repository to contribute to this documentation.
+Refer to the [Tech](https://github.com/5G-MAG/Tech/) repository to contribute to this documentation.
 :::
