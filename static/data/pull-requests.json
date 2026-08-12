@@ -1,11 +1,24 @@
 {
-  "updated_at": "2026-08-11 00:41 UTC",
+  "updated_at": "2026-08-12 00:47 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
       "doc_url": "/reference-tools/5gms/",
       "tagline": "End-to-end 5G media streaming from network to client · 3GPP TS 26.501",
       "pulls": [
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "number": 72,
+          "title": "Fix CJson copy-assignment operator missing return statement (SIGILL crash)",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/72",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-08-11",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "rt-common-shared",
           "branch": null,
@@ -42,8 +55,60 @@
         {
           "repo": "rt-libflute",
           "branch": null,
+          "number": 68,
+          "title": "Fix receive loop never re-arming after a transient socket error",
+          "url": "https://github.com/5G-MAG/rt-libflute/pull/68",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-08-11",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-libflute",
+          "branch": null,
+          "number": 65,
+          "title": "FLUTE version 2 on transmit (not 3GPP-compliant — reference/future work, depends on #62)",
+          "url": "https://github.com/5G-MAG/rt-libflute/pull/65",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-08-11",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-libflute",
+          "branch": null,
+          "number": 64,
+          "title": "RFC 6330 RaptorQ FEC (not 3GPP-mandated — reference/future work, depends on #61)",
+          "url": "https://github.com/5G-MAG/rt-libflute/pull/64",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-08-11",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "number": 72,
+          "title": "Fix CJson copy-assignment operator missing return statement (SIGILL crash)",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/72",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-08-11",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-libflute",
+          "branch": null,
           "number": 62,
-          "title": "RFC 6726/5651/5052 compliance: FLUTE version 2, wide TSI, FDT Instance ID wraparound, Close Session/Object flags, EXT_FTI bootstrap",
+          "title": "Compliance with TS 26.517 and TS 26.346 (FLUTE v1, RFC 3986): wide TSI, FDT Instance ID wraparound, Close Session/Object flags, EXT_FTI bootstrap",
           "url": "https://github.com/5G-MAG/rt-libflute/pull/62",
           "draft": false,
           "author_login": "jordijoangimenez",
@@ -56,7 +121,7 @@
           "repo": "rt-libflute",
           "branch": null,
           "number": 61,
-          "title": "Implement RFC 5053 Raptor and RFC 6330 RaptorQ FEC",
+          "title": "Implement RFC 5053 Raptor",
           "url": "https://github.com/5G-MAG/rt-libflute/pull/61",
           "draft": false,
           "author_login": "jordijoangimenez",
@@ -118,19 +183,6 @@
           "last_comment_date": null
         },
         {
-          "repo": "rt-libflute",
-          "branch": null,
-          "number": 7,
-          "title": "Forward Error Correction",
-          "url": "https://github.com/5G-MAG/rt-libflute/pull/7",
-          "draft": false,
-          "author_login": "autumn-traveller",
-          "author_avatar": "https://avatars.githubusercontent.com/u/50424388?v=4",
-          "created_at": "2023-05-16",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
           "repo": "rt-mbms-mw",
           "branch": null,
           "number": 18,
@@ -169,6 +221,19 @@
       "doc_url": "/reference-tools/xr/",
       "tagline": "MPEG-I scene description and XR media integration over 5G",
       "pulls": [
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "number": 72,
+          "title": "Fix CJson copy-assignment operator missing return statement (SIGILL crash)",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/72",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-08-11",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "rt-common-shared",
           "branch": null,
@@ -216,6 +281,84 @@
       "tagline": "5G-native multicast and broadcast services · 3GPP 5G MBS",
       "pulls": [
         {
+          "repo": "rt-mbs-function",
+          "branch": null,
+          "number": 49,
+          "title": "Fix MBS Broadcast distribution session lifecycle and Service Announcement crashes",
+          "url": "https://github.com/5G-MAG/rt-mbs-function/pull/49",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-08-11",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-mbs-transport-function",
+          "branch": null,
+          "number": 71,
+          "title": "Fix MBS Broadcast content delivery crashes and Distribution Session bugs",
+          "url": "https://github.com/5G-MAG/rt-mbs-transport-function/pull/71",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-08-11",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "number": 72,
+          "title": "Fix CJson copy-assignment operator missing return statement (SIGILL crash)",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/72",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-08-11",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-libflute",
+          "branch": null,
+          "number": 68,
+          "title": "Fix receive loop never re-arming after a transient socket error",
+          "url": "https://github.com/5G-MAG/rt-libflute/pull/68",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-08-11",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-libflute",
+          "branch": null,
+          "number": 65,
+          "title": "FLUTE version 2 on transmit (not 3GPP-compliant — reference/future work, depends on #62)",
+          "url": "https://github.com/5G-MAG/rt-libflute/pull/65",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-08-11",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-libflute",
+          "branch": null,
+          "number": 64,
+          "title": "RFC 6330 RaptorQ FEC (not 3GPP-mandated — reference/future work, depends on #61)",
+          "url": "https://github.com/5G-MAG/rt-libflute/pull/64",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-08-11",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
           "repo": "rt-mbs-examples",
           "branch": null,
           "number": 32,
@@ -245,7 +388,7 @@
           "repo": "rt-libflute",
           "branch": null,
           "number": 62,
-          "title": "RFC 6726/5651/5052 compliance: FLUTE version 2, wide TSI, FDT Instance ID wraparound, Close Session/Object flags, EXT_FTI bootstrap",
+          "title": "Compliance with TS 26.517 and TS 26.346 (FLUTE v1, RFC 3986): wide TSI, FDT Instance ID wraparound, Close Session/Object flags, EXT_FTI bootstrap",
           "url": "https://github.com/5G-MAG/rt-libflute/pull/62",
           "draft": false,
           "author_login": "jordijoangimenez",
@@ -271,7 +414,7 @@
           "repo": "rt-libflute",
           "branch": null,
           "number": 61,
-          "title": "Implement RFC 5053 Raptor and RFC 6330 RaptorQ FEC",
+          "title": "Implement RFC 5053 Raptor",
           "url": "https://github.com/5G-MAG/rt-libflute/pull/61",
           "draft": false,
           "author_login": "jordijoangimenez",
@@ -318,19 +461,6 @@
           "created_at": "2026-07-03",
           "last_comment_by": null,
           "last_comment_date": null
-        },
-        {
-          "repo": "rt-libflute",
-          "branch": null,
-          "number": 7,
-          "title": "Forward Error Correction",
-          "url": "https://github.com/5G-MAG/rt-libflute/pull/7",
-          "draft": false,
-          "author_login": "autumn-traveller",
-          "author_avatar": "https://avatars.githubusercontent.com/u/50424388?v=4",
-          "created_at": "2023-05-16",
-          "last_comment_by": null,
-          "last_comment_date": null
         }
       ]
     },
@@ -339,6 +469,19 @@
       "doc_url": "/reference-tools/data-collection/",
       "tagline": "UE-side data collection, reporting and event exposure · 3GPP TS 26.531",
       "pulls": [
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "number": 72,
+          "title": "Fix CJson copy-assignment operator missing return statement (SIGILL crash)",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/72",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-08-11",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "rt-common-shared",
           "branch": null,
@@ -362,6 +505,19 @@
         {
           "repo": "rt-common-shared",
           "branch": null,
+          "number": 72,
+          "title": "Fix CJson copy-assignment operator missing return statement (SIGILL crash)",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/72",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-08-11",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
           "number": 69,
           "title": "Feature/docker monitor",
           "url": "https://github.com/5G-MAG/rt-common-shared/pull/69",
@@ -379,6 +535,19 @@
       "doc_url": "/reference-tools/5g-core/",
       "tagline": "Reference consumers for 5G Core capability exposure APIs",
       "pulls": [
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "number": 72,
+          "title": "Fix CJson copy-assignment operator missing return statement (SIGILL crash)",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/72",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-08-11",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "rt-common-shared",
           "branch": null,
@@ -402,6 +571,19 @@
         {
           "repo": "rt-common-shared",
           "branch": null,
+          "number": 72,
+          "title": "Fix CJson copy-assignment operator missing return statement (SIGILL crash)",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/72",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-08-11",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
           "number": 69,
           "title": "Feature/docker monitor",
           "url": "https://github.com/5G-MAG/rt-common-shared/pull/69",
@@ -419,6 +601,19 @@
       "doc_url": "/testbeds/6g-testbed/",
       "tagline": "6G testbed and AI-driven traffic characterization",
       "pulls": [
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "number": 72,
+          "title": "Fix CJson copy-assignment operator missing return statement (SIGILL crash)",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/72",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-08-11",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "rt-common-shared",
           "branch": null,
@@ -452,6 +647,19 @@
       "doc_url": "/reference-tools/network-apis/",
       "tagline": "Network capability exposure through CAMARA APIs",
       "pulls": [
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
+          "number": 72,
+          "title": "Fix CJson copy-assignment operator missing return statement (SIGILL crash)",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/72",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-08-11",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "rt-common-shared",
           "branch": null,
@@ -528,6 +736,19 @@
         {
           "repo": "rt-common-shared",
           "branch": null,
+          "number": 72,
+          "title": "Fix CJson copy-assignment operator missing return statement (SIGILL crash)",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/72",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-08-11",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
           "number": 69,
           "title": "Feature/docker monitor",
           "url": "https://github.com/5G-MAG/rt-common-shared/pull/69",
@@ -568,8 +789,47 @@
         {
           "repo": "rt-libflute",
           "branch": null,
+          "number": 68,
+          "title": "Fix receive loop never re-arming after a transient socket error",
+          "url": "https://github.com/5G-MAG/rt-libflute/pull/68",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-08-11",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-libflute",
+          "branch": null,
+          "number": 65,
+          "title": "FLUTE version 2 on transmit (not 3GPP-compliant — reference/future work, depends on #62)",
+          "url": "https://github.com/5G-MAG/rt-libflute/pull/65",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-08-11",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-libflute",
+          "branch": null,
+          "number": 64,
+          "title": "RFC 6330 RaptorQ FEC (not 3GPP-mandated — reference/future work, depends on #61)",
+          "url": "https://github.com/5G-MAG/rt-libflute/pull/64",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-08-11",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-libflute",
+          "branch": null,
           "number": 62,
-          "title": "RFC 6726/5651/5052 compliance: FLUTE version 2, wide TSI, FDT Instance ID wraparound, Close Session/Object flags, EXT_FTI bootstrap",
+          "title": "Compliance with TS 26.517 and TS 26.346 (FLUTE v1, RFC 3986): wide TSI, FDT Instance ID wraparound, Close Session/Object flags, EXT_FTI bootstrap",
           "url": "https://github.com/5G-MAG/rt-libflute/pull/62",
           "draft": false,
           "author_login": "jordijoangimenez",
@@ -582,7 +842,7 @@
           "repo": "rt-libflute",
           "branch": null,
           "number": 61,
-          "title": "Implement RFC 5053 Raptor and RFC 6330 RaptorQ FEC",
+          "title": "Implement RFC 5053 Raptor",
           "url": "https://github.com/5G-MAG/rt-libflute/pull/61",
           "draft": false,
           "author_login": "jordijoangimenez",
@@ -601,19 +861,6 @@
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-07-28",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-libflute",
-          "branch": null,
-          "number": 7,
-          "title": "Forward Error Correction",
-          "url": "https://github.com/5G-MAG/rt-libflute/pull/7",
-          "draft": false,
-          "author_login": "autumn-traveller",
-          "author_avatar": "https://avatars.githubusercontent.com/u/50424388?v=4",
-          "created_at": "2023-05-16",
           "last_comment_by": null,
           "last_comment_date": null
         }
