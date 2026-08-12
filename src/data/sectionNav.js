@@ -99,53 +99,28 @@ export const SECTION_NAV = [
       { label: 'Glossary', href: '/tech/glossary' },
     ],
   },
-  // The 18 per-project specification pages live at /standards/<project>
-  // URLs (moved from /tech/standards/<project>, 2026-08-11) but belong to
-  // the Explainers & Profiles content family, not Feedback & Requirements:
-  // they list the specifications a topic's analysis and reference tools are
-  // built against, alongside the Tech hub's blueprints and analysis. This
-  // entry must stay ABOVE the '/standards' prefix entry below — the
-  // matcher is first-match-wins (SectionNav and the navbar indicator both
-  // use SECTION_NAV.find), and these exact paths would otherwise fall
-  // through to the Feedback & Requirements bar, framing a spec-list page
-  // as liaison/requirements material. Exact-path prefixes; a new
-  // per-project Standards page needs its path added here when created.
-  {
-    prefixes: [
-      '/standards/5g-broadcast',
-      '/standards/5g-broadcast-standards-evolution',
-      '/standards/5g-mbs',
-      '/standards/5gms',
-      '/standards/6g',
-      '/standards/ai-ml',
-      '/standards/avatar',
-      '/standards/beyond-2d',
-      '/standards/data-collection',
-      '/standards/dvb-i',
-      '/standards/multimedia',
-      '/standards/network-apis',
-      '/standards/npn',
-      '/standards/ntn',
-      '/standards/rtc',
-      '/standards/tsc',
-      '/standards/v3c',
-      '/standards/xr',
-    ],
-    title: 'Explainers & Profiles',
-    titleHref: '/tech',
-    items: [
-      { label: 'Implementation Blueprints', href: '/tech/blueprints' },
-      { label: 'Technology Exchanges', href: '/tech/exchanges' },
-      { label: '3GPP Work Items', href: '/tech/3gpp-work-items' },
-      { label: 'Glossary', href: '/tech/glossary' },
-    ],
-  },
+  // One entry for the whole /standards tree (2026-08-12). An earlier
+  // version special-cased the 18 per-project specification pages to show
+  // the Explainers & Profiles bar, on the reasoning that spec lists are
+  // Tech-family content. Once those pages got their own sidebar
+  // (standardsSidebar in sidebars-home.js), that split became actively
+  // confusing: the bar claimed you were in Tech and linked back to /tech,
+  // while the sidebar beside it listed /standards. Section identity now
+  // follows the URL — one bar, one sidebar, both saying "Standards".
+  //
+  // Note the title is "Standards", not the navbar's "Feedback &
+  // Requirements" label for this same destination: since the per-project
+  // specification pages moved here, that label no longer describes
+  // everything under /standards. Renaming the navbar item is a separate
+  // call for the site owner; until then this bar carries the accurate name
+  // for the section it labels.
   {
     prefixes: ['/standards', '/surveys'],
-    title: 'Feedback & Requirements',
+    title: 'Standards',
     titleHref: '/standards',
-    // Matches /standards's own "What You'll Find Here" card grid exactly,
-    // same order — same 5 destinations, listed once, not two drifting sets.
+    // The specification pages are reached from the sidebar (and from every
+    // /tech topic card's "Standards →" link), so these pills stay on the
+    // hub's own "What You'll Find Here" destinations.
     items: [
       { label: 'Requirements towards SDOs', href: '/standards/requirements' },
       { label: 'Industry Surveys', href: '/surveys' },
