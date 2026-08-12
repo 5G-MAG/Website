@@ -242,25 +242,112 @@ const sidebars = {
     },
   ],
 
-  // docs/home/standards/ holds two distinct groups, both deliberately
-  // absent from every sidebar array here; each page carries a SectionNav
-  // pill-bar instead (see src/data/sectionNav.js):
-  // 1. The Feedback & Requirements pages (3gpp-issue-tracking, ls,
-  //    requirements), moved here from docs/tech in 2026-07 — the "5G-MAG
-  //    as SDO contributor" material behind the /standards hub page.
-  // 2. The 18 per-project specification pages (5gms.md, 5g-mbs.md, …),
-  //    moved from docs/tech/standards/ on 2026-08-11 so they serve at
-  //    /standards/<project>. They belong to the Explainers & Profiles
-  //    content family: sectionNav routes them to the /tech section bar,
-  //    sidebars-tech.js links each from its topic category, and /tech's
-  //    topic cards carry a direct "Standards →" link. Adding a new one
-  //    means adding its exact path to sectionNav.js's per-project entry.
+  // docs/home/standards/ holds two distinct groups that share a URL prefix:
+  // the 18 per-project specification pages (moved here from
+  // docs/tech/standards/ on 2026-08-11 so they serve at
+  // /standards/<project>) and the three "5G-MAG as SDO contributor" pages
+  // (requirements, ls, 3gpp-issue-tracking).
   //
+  // 2026-08-12: they now carry a real sidebar again. The move to this
+  // plugin instance silently dropped one — under /tech/standards/* they
+  // were nested items in sidebars-tech.js's capability-area categories, so
+  // they inherited the whole Tech sidebar; here they were in no sidebar
+  // array at all, which is how 21 pages ended up with no lateral
+  // navigation. The grouping below deliberately mirrors sidebars-tech.js
+  // (and /tech's own CATEGORIES) so the specification pages keep reading
+  // as the same content family they are linked from, with the contributor
+  // pages kept visibly separate at the end.
+  standardsSidebar: [
+    { type: 'link', label: 'Overview', href: '/standards' },
+
+    {
+      type: 'html',
+      value: 'Media Streaming, Multicast &amp; Real-Time Communications',
+      className: 'sidebar-section-label',
+      defaultStyle: false,
+    },
+    'standards/5gms',
+    'standards/5g-mbs',
+    'standards/dvb-i',
+    'standards/multimedia',
+    'standards/ntn',
+    'standards/rtc',
+    'standards/data-collection',
+
+    {
+      type: 'html',
+      value: '5G Broadcast for TV, Radio and Emergency Alerts',
+      className: 'sidebar-section-label',
+      defaultStyle: false,
+    },
+    'standards/5g-broadcast',
+    'standards/5g-broadcast-standards-evolution',
+
+    {
+      type: 'html',
+      value: 'Immersive Media Experiences',
+      className: 'sidebar-section-label',
+      defaultStyle: false,
+    },
+    'standards/avatar',
+    'standards/v3c',
+    'standards/beyond-2d',
+    'standards/xr',
+
+    {
+      type: 'html',
+      value: 'Connected Media Production and Contribution',
+      className: 'sidebar-section-label',
+      defaultStyle: false,
+    },
+    'standards/network-apis',
+    'standards/npn',
+    'standards/tsc',
+
+    {
+      type: 'html',
+      value: 'Research Topics',
+      className: 'sidebar-section-label',
+      defaultStyle: false,
+    },
+    'standards/ai-ml',
+    'standards/6g',
+
+    {
+      type: 'html',
+      value: 'Feedback &amp; Requirements',
+      className: 'sidebar-section-label',
+      defaultStyle: false,
+    },
+    'standards/requirements',
+    'standards/ls',
+    'standards/3gpp-issue-tracking',
+  ],
+
+  // The /community cluster is small but genuinely nested (three sub-pages
+  // under the index), and its SectionNav pill-bar only carries a single
+  // "Community" pill for the whole section — so before this sidebar
+  // existed, contributing/release-process/using-this-documentation were
+  // reachable only from the index page itself.
+  communitySidebar: [
+    'community/index',
+    'community/using-this-documentation',
+    'community/contributing',
+    'community/release-process',
+  ],
+
   // docs/home/developer/*.md (how-to-use, guidelines-contributors, license)
-  // are likewise deliberately absent from every sidebar array: they carry
-  // explicit slug overrides to live at /developer/* (folded in from the old
+  // are deliberately absent from every sidebar array: they carry explicit
+  // slug overrides to live at /developer/* (folded in from the old
   // docs-developer plugin instance, 2026-07-18) and are linked from the
-  // /developer SectionNav pill-bar instead of a doc sidebar.
+  // /developer SectionNav pill-bar instead of a doc sidebar. The same
+  // applies to the standalone leaf pages (/contact, /structure,
+  // /partnerships, /subscribe, /license, /early-access, /videos, /podcast
+  // and the event pages): each is a single page with no siblings to
+  // navigate between, so a lateral sidebar would have nothing to list.
+  // docs/home/workshops/* (22 archive write-ups) also stay out: the
+  // /workshops archive index is their listing, and they carry no ordering
+  // metadata, so an autogenerated sidebar would order them arbitrarily.
 };
 
 export default sidebars;
