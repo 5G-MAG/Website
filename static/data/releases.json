@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-12 00:47 UTC",
+  "updated_at": "2026-08-13 00:49 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -448,25 +448,6 @@
       "tagline": "6G testbed and AI-driven traffic characterization",
       "releases_slug": "resources",
       "image": "/assets/images/projects/6g-testbed.png",
-      "latest_date": "2026-08-03",
-      "releases": [
-        {
-          "repo": "rt-common-shared",
-          "branch": null,
-          "tag": "rt-common-shared-v1.0.0",
-          "date": "2026-08-03",
-          "url": "https://github.com/5G-MAG/rt-common-shared/releases/tag/rt-common-shared-v1.0.0",
-          "author_login": "dsilhavy",
-          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
-        }
-      ]
-    },
-    {
-      "name": "CAMARA Connectivity Quality Management APIs",
-      "doc_url": "/reference-tools/network-apis/",
-      "tagline": "Network capability exposure through CAMARA APIs",
-      "releases_slug": "resources",
-      "image": "/assets/images/projects/network-apis.png",
       "latest_date": "2026-08-03",
       "releases": [
         {
