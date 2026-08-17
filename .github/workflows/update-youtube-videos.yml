@@ -12,6 +12,10 @@ permissions:
 
 jobs:
   update-youtube-videos:
+    # 5G-MAG/Website is the source of truth and the only place these data commits belong.
+    # The private working copy is a mirror; running this there produces commits that diverge
+    # from public main and then have to be reconciled by hand.
+    if: github.repository == '5G-MAG/Website'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
