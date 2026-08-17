@@ -22,6 +22,10 @@ concurrency:
 
 jobs:
   deploy:
+    # Only the public repository publishes the site. GitHub Pages is not configured on the private
+    # working copy and cannot be on most plans, so configure-pages fails there on every push. Guarding
+    # by repository rather than deleting this file keeps one workflow definition valid in both places.
+    if: github.repository == '5G-MAG/Website'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
