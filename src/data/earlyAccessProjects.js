@@ -19,4 +19,9 @@ export const EARLY_ACCESS_PROJECTS = [
     href: '/reference-tools/avatar',
     desc: 'Reference tools for real-time conversational avatar systems in 5G contexts, targeting the emerging MPEG standard for avatar-based communications.',
   },
+  {
+    name: 'Standards2Deployments',
+    href: '/reference-tools/standards2deployments',
+    desc: 'Auxiliary tooling for members and contributors working from specifications: a 3GPP Work Plan and Change Request explorer, guidelines for AI-assisted development, and specification conformance audits and coverage records.',
+  },
 ];

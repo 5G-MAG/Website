@@ -1,0 +1,69 @@
+---
+hide_title: true
+sidebar_class_name: project-index-link
+title: Standards2Deployments
+sidebar_position: -1
+description: Auxiliary tooling for 5G-MAG members and contributors working from specifications, covering a 3GPP Work Plan and Change Request explorer, guidelines for AI-assisted development, and specification conformance audits.
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+  <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+  <path d="M9 13h6" />
+  <path d="M9 17h3" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Auxiliary Tooling</span>
+<h1>Standards2Deployments</h1>
+</div>
+</div>
+
+<div class="topic-lead">
+Standards2Deployments is tooling for 5G-MAG members and contributors who work from specifications. It is not a
+Reference Tool, a Testbed or an Application: it implements no specification of its own and ships no runtime
+component. It exists to make specification-driven development easier to do and easier to check.
+</div>
+
+## What the repository contains
+
+**A 3GPP Work Plan and Change Request explorer.** A small local application that downloads the current 3GPP
+Work Plan, lets you filter work items by keyword, release, group and type, then collects the Change Requests
+filed against the items you select and resolves each agreed CR to its actual meeting document, downloading them
+as a set. Everything runs locally; nothing leaves your machine except the requests to 3gpp.org.
+
+**Guidelines for AI-assisted development.** The process and rules for developing and contributing code against
+specifications when AI coding assistants do part of the work. They are written to be loaded by the assistant
+rather than only read by the contributor, so the obligations apply while the work is being done. They cover the
+order of work (read the specifications before opening a repository, map which obligations belong to which
+repository, audit coverage, then implement), what a claim about a specification has to look like before it is
+written down, and what may be submitted. A supporting check confirms that every quoted specification sentence
+actually occurs in the document cited, at the version cited.
+
+**Specification conformance audits and coverage records.** Clause-by-clause audits of reference tool
+repositories against the specifications they implement, and the per-repository records of which obligations are
+met, which are not, and in what order the gaps are being closed. These are the working records: they name
+exactly where an implementation does not yet match a specification.
+
+## Who it is for
+
+Members and active contributors doing specification-driven work on the Reference Tools: reading 3GPP documents,
+tracking what is changing between releases, checking an implementation against the text, and contributing
+changes that a reviewer can verify without re-reading the specification themselves.
+
+If you are looking to build or run a Reference Tool, start from that project's own pages instead. This
+repository sits behind them.
+
+## Access
+
+The repository is private and access is granted on request, because the audits and coverage records state where
+implementations fall short of the specifications they target. That is useful to people doing the work and
+misleading out of context.
+
+<div style={{margin: '12px 0'}}><a class="button button--primary" href={useBaseUrl('/early-access')}>Request access</a></div>
+
+Requests are reviewed manually, taking into account affiliation, contributor status and membership status. There
+is no automatic approval.
