@@ -133,10 +133,10 @@ The control-plane sections below summarise, per protocol layer (RRC, PDCP, RLC, 
     - establish a PDCP entity and an RLC entity in accordance with MRB-InfoBroadcast for this broadcast MRB included in the MBSBroadcastConfiguration message and the configuration specified in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 9.1.1.7**;
     - configure the MAC layer in accordance with the mtch-SchedulingInfo (if included);
     - configure the physical layer in accordance with the mbs-SessionInfoList, searchSpaceMTCH, and pdsch-ConfigMTCH, applicable for the broadcast MRB;
-    - receive DL-SCH on the cell where the MBSBroadcastConfiguration message was received for the established broadcast MRB using g-RNTI and mtch-SchedulingInfo (if included) in this message for this MBS broadcast service;
     - if an SDAP entity with the received mbs-SessionId does not exist:
       - establish an SDAP entity as specified in **[3GPP TS 37.324](https://www.3gpp.org/dynareport/37324.htm) clause 5.1.1**.
       - indicate the establishment of the user plane resources for the mbs-SessionId to upper layers.
+    - receive DL-SCH on the cell where the MBSBroadcastConfiguration message was received for the established broadcast MRB using g-RNTI and mtch-SchedulingInfo (if included) in this message for this MBS broadcast service;
 
 - Broadcast MRB release in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 5.9.3.4**
   - Upon broadcast MRB release for MBS broadcast service, the UE shall:
