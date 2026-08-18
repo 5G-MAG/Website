@@ -39,7 +39,7 @@ The scenarios under study are the following:
 
 This page sits at the intersection of two existing capabilities:
 
-- **Multicast mobility (PTP/PTM), from MBS.** MBS delivery mode 1, defined in [TS 23.247](https://www.3gpp.org/dynareport/23247.htm), lets the RAN switch a device between point-to-point and point-to-multipoint, and supports handover between MBS-capable cells without losing multicast continuity; see [Analysis of Mobility aspects for MBS Multicast Services](../5g-mbs/mobility-mbs-multicast).
+- **Multicast mobility (PTP/PTM), from MBS.** The Multicast MBS session of [TS 23.247](https://www.3gpp.org/dynareport/23247.htm) (this site's "delivery mode 1") lets the RAN switch a device between point-to-point and point-to-multipoint, and supports handover between MBS-capable cells without losing multicast continuity; see [Analysis of Mobility aspects for MBS Multicast Services](../5g-mbs/mobility-mbs-multicast).
 - **NTN mobility, from the radio layer.** Conditional Handover (CHO), satellite ephemeris in SIB19 and the timing/frequency adaptations are defined in [TS 38.331](https://www.3gpp.org/dynareport/38331.htm) and [TS 38.300](https://www.3gpp.org/dynareport/38300.htm); the deployment and beam-handover models are described on [Analysis of Mobility aspects for NTN](./analysis-mobility-ntn).
 
 The new problem here is the combination: keeping a whole multicast _group_ continuous when the trigger is the network geometry (Scenario 1) rather than a single device moving (the classic MBS case), or when it is one or more devices in the group (Scenario 2).
@@ -50,7 +50,7 @@ A group of users is consuming content provided via an MBS Multicast Service with
 
 ### Discussion
 
-Although point-to-multipoint (PTM) to point-to-multipoint mobility is supported by MBS Multicast Services, as explained in [Aspects on Mobility for MBS Multicast Services](../5g-mbs/mobility-mbs-multicast), mobility in this case is triggered by the satellite motion, not by the user, and the PTM traffic delivery on the entire cell has to be transferred to another cell. The next section sets out why a naive fix for this is inefficient, and what the network can do instead.
+Although MBS Multicast Services support continuing a point-to-multipoint session across a handover between two MBS-capable cells, as explained in [Aspects on Mobility for MBS Multicast Services](../5g-mbs/mobility-mbs-multicast), mobility in this case is triggered by the satellite motion, not by the user, and the PTM traffic delivery on the entire cell has to be transferred to another cell. The next section sets out why a naive fix for this is inefficient, and what the network can do instead.
 
 :::warning
 Scenario 1 is still being analysed; the discussion above is a work in progress and further detail is to be added.
