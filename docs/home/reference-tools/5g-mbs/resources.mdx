@@ -87,7 +87,7 @@ Additional information:
 
 [rt-mbs-transport-function](https://github.com/5G-MAG/rt-mbs-transport-function)
 
-The MBS Transport Function (MBSTF) is the data-plane worker of the MBS User Services: it ingests media objects from the Application Provider and packages them into a FLUTE session sent towards the MB-UPF. This repository provides a 5G MBSTF which forms part of the MBS User Services. This NF provides the interfaces designated as Nmb2, Nmb8 and Nmb9 in the 3GPP [TS 29.581](https://www.3gpp.org/dynareport/29581.htm) V18.5.0 specification. See the [MBSTF Testing tutorial](./tutorials/mbstf).
+The MBS Transport Function (MBSTF) is the data-plane worker of the MBS User Services: it ingests media objects from the Application Provider and packages them into a FLUTE session sent towards the MB-UPF. This repository provides a 5G MBSTF which forms part of the MBS User Services. This NF provides the interfaces designated as Nmb2, Nmb8 and Nmb9 in the 3GPP [TS 29.581](https://www.3gpp.org/dynareport/29581.htm) V18.6.0 specification. See the [MBSTF Testing tutorial](./tutorials/mbstf).
 
 Additional information:
 
@@ -110,6 +110,17 @@ Additional information:
 - [Information and how to download, build, install and run](https://github.com/5G-MAG/rt-mbs-examples#readme)
 - [Packages](https://github.com/orgs/5G-MAG/packages?repo_name=rt-mbs-examples)
 - [Docker](https://github.com/5G-MAG/rt-mbs-examples/tree/development/images)
+
+#### MB-SMF Service Consumer Library
+
+[rt-5gc-service-consumers](https://github.com/5G-MAG/rt-5gc-service-consumers)
+
+This library implements the MB-SMF service-consumer side of Nmbsmf_TMGI and Nmbsmf_MBSSession (3GPP TS 29.532). It is vendored as a subproject inside the MBSF, providing the alternative to provisioning the 5GC directly; see the [5GC Service Consumers tutorial](../5g-core/tutorials/using-libscMBSMF).
+
+Additional information:
+
+- [Information and how to download, build, install and run](https://github.com/5G-MAG/rt-5gc-service-consumers#readme)
+- [Packages](https://github.com/orgs/5G-MAG/packages?repo_name=rt-5gc-service-consumers)
 
 ## Packages
 
