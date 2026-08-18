@@ -377,8 +377,13 @@ export const MBS_SECTIONS = [
         status: "yes",
       },
       {
-        feature: "E1AP BC Bearer Context Modification (per-MRB F1-U tunnel information)",
+        feature: "E1AP BC Bearer Context Modification (per-MRB F1-U tunnel information, gNB-CU-CP initiated)",
         status: "yes",
+      },
+      {
+        feature: "E1AP BC Bearer Context Modification Required / Release Request (gNB-CU-UP initiated)",
+        status: "no",
+        note: "absent on both peers (TS 37.483 cl.8.6.1.3.2/8.6.1.5.2)",
       },
       {
         feature: "E1AP BC Bearer Context Release",
@@ -395,7 +400,7 @@ export const MBS_SECTIONS = [
       {
         feature: "F1AP Broadcast Context Modification",
         status: "no",
-        note: "session reconfiguration is handled DU-internally",
+        note: "not implemented on either the DU or CU-CP side (TS 38.473 cl.8.14.4.2/8.14.4.3)",
       },
       {
         feature: "E1AP MC Bearer Context / F1AP multicast procedures",
@@ -420,7 +425,8 @@ export const MBS_SECTIONS = [
       },
       {
         feature: "MCCH change notification (DCI 4-0)",
-        statuses: ["yes", "na"],
+        statuses: ["no", "na"],
+        note: "gNB (transmit): notification starts as soon as the change lands, not from the modification-period boundary as TS 38.331 cl.5.9.1.3 requires",
       },
       {
         feature: "MTCH scheduling / reception per session G-RNTI, concurrent sessions independently served",
