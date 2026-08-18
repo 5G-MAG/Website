@@ -1,24 +1,11 @@
 {
-  "updated_at": "2026-08-17 00:26 UTC",
+  "updated_at": "2026-08-18 00:26 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
       "doc_url": "/reference-tools/5gms/",
       "tagline": "End-to-end 5G media streaming from network to client · 3GPP TS 26.501",
       "pulls": [
-        {
-          "repo": "rt-common-shared",
-          "branch": null,
-          "number": 74,
-          "title": "Reallign C++ OpenAPI templates from 3GPP-Rel18 branch",
-          "url": "https://github.com/5G-MAG/rt-common-shared/pull/74",
-          "draft": false,
-          "author_login": "davidjwbbc",
-          "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4",
-          "created_at": "2026-08-13",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
         {
           "repo": "rt-5gms-application",
           "branch": null,
@@ -39,19 +26,6 @@
       "doc_url": "/reference-tools/5g-broadcast/",
       "tagline": "LTE-based 5G broadcast for TV, radio and emergency alerts",
       "pulls": [
-        {
-          "repo": "rt-common-shared",
-          "branch": null,
-          "number": 74,
-          "title": "Reallign C++ OpenAPI templates from 3GPP-Rel18 branch",
-          "url": "https://github.com/5G-MAG/rt-common-shared/pull/74",
-          "draft": false,
-          "author_login": "davidjwbbc",
-          "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4",
-          "created_at": "2026-08-13",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
         {
           "repo": "rt-libflute",
           "branch": null,
@@ -114,19 +88,6 @@
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-08-06",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-libflute",
-          "branch": null,
-          "number": 60,
-          "title": "Fix unbounded FDT growth (same-TOI resend, and content-change cases)",
-          "url": "https://github.com/5G-MAG/rt-libflute/pull/60",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-07-28",
           "last_comment_by": null,
           "last_comment_date": null
         },
@@ -196,19 +157,6 @@
       "tagline": "MPEG-I scene description and XR media integration over 5G",
       "pulls": [
         {
-          "repo": "rt-common-shared",
-          "branch": null,
-          "number": 74,
-          "title": "Reallign C++ OpenAPI templates from 3GPP-Rel18 branch",
-          "url": "https://github.com/5G-MAG/rt-common-shared/pull/74",
-          "draft": false,
-          "author_login": "davidjwbbc",
-          "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4",
-          "created_at": "2026-08-13",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
           "repo": "rt-xr-content",
           "branch": null,
           "number": 27,
@@ -241,19 +189,6 @@
       "doc_url": "/reference-tools/5g-mbs/",
       "tagline": "5G-native multicast and broadcast services · 3GPP 5G MBS",
       "pulls": [
-        {
-          "repo": "rt-common-shared",
-          "branch": null,
-          "number": 74,
-          "title": "Reallign C++ OpenAPI templates from 3GPP-Rel18 branch",
-          "url": "https://github.com/5G-MAG/rt-common-shared/pull/74",
-          "draft": false,
-          "author_login": "davidjwbbc",
-          "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4",
-          "created_at": "2026-08-13",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
         {
           "repo": "rt-mbs-function",
           "branch": null,
@@ -396,19 +331,6 @@
           "created_at": "2026-08-06",
           "last_comment_by": null,
           "last_comment_date": null
-        },
-        {
-          "repo": "rt-libflute",
-          "branch": null,
-          "number": 60,
-          "title": "Fix unbounded FDT growth (same-TOI resend, and content-change cases)",
-          "url": "https://github.com/5G-MAG/rt-libflute/pull/60",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-07-28",
-          "last_comment_by": null,
-          "last_comment_date": null
         }
       ]
     },
@@ -416,60 +338,19 @@
       "name": "UE Data Collection, Reporting and Event Exposure",
       "doc_url": "/reference-tools/data-collection/",
       "tagline": "UE-side data collection, reporting and event exposure · 3GPP TS 26.531",
-      "pulls": [
-        {
-          "repo": "rt-common-shared",
-          "branch": null,
-          "number": 74,
-          "title": "Reallign C++ OpenAPI templates from 3GPP-Rel18 branch",
-          "url": "https://github.com/5G-MAG/rt-common-shared/pull/74",
-          "draft": false,
-          "author_login": "davidjwbbc",
-          "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4",
-          "created_at": "2026-08-13",
-          "last_comment_by": null,
-          "last_comment_date": null
-        }
-      ]
+      "pulls": []
     },
     {
       "name": "MPEG V3C Immersive Platform",
       "doc_url": "/reference-tools/v3c/",
       "tagline": "V3C volumetric video platform for immersive 5G experiences",
-      "pulls": [
-        {
-          "repo": "rt-common-shared",
-          "branch": null,
-          "number": 74,
-          "title": "Reallign C++ OpenAPI templates from 3GPP-Rel18 branch",
-          "url": "https://github.com/5G-MAG/rt-common-shared/pull/74",
-          "draft": false,
-          "author_login": "davidjwbbc",
-          "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4",
-          "created_at": "2026-08-13",
-          "last_comment_by": null,
-          "last_comment_date": null
-        }
-      ]
+      "pulls": []
     },
     {
       "name": "5G Core Service Consumers",
       "doc_url": "/reference-tools/5g-core/",
       "tagline": "Reference consumers for 5G Core capability exposure APIs",
       "pulls": [
-        {
-          "repo": "rt-common-shared",
-          "branch": null,
-          "number": 74,
-          "title": "Reallign C++ OpenAPI templates from 3GPP-Rel18 branch",
-          "url": "https://github.com/5G-MAG/rt-common-shared/pull/74",
-          "draft": false,
-          "author_login": "davidjwbbc",
-          "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4",
-          "created_at": "2026-08-13",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
         {
           "repo": "rt-5gc-service-consumers",
           "branch": null,
@@ -489,40 +370,13 @@
       "name": "Beyond 2D Evaluation Framework",
       "doc_url": "/testbeds/beyond-2d/",
       "tagline": "Evaluation framework for beyond-2D video experiences",
-      "pulls": [
-        {
-          "repo": "rt-common-shared",
-          "branch": null,
-          "number": 74,
-          "title": "Reallign C++ OpenAPI templates from 3GPP-Rel18 branch",
-          "url": "https://github.com/5G-MAG/rt-common-shared/pull/74",
-          "draft": false,
-          "author_login": "davidjwbbc",
-          "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4",
-          "created_at": "2026-08-13",
-          "last_comment_by": null,
-          "last_comment_date": null
-        }
-      ]
+      "pulls": []
     },
     {
       "name": "AI Traffic Characterization",
       "doc_url": "/testbeds/6g-testbed/",
       "tagline": "6G testbed and AI-driven traffic characterization",
       "pulls": [
-        {
-          "repo": "rt-common-shared",
-          "branch": null,
-          "number": 74,
-          "title": "Reallign C++ OpenAPI templates from 3GPP-Rel18 branch",
-          "url": "https://github.com/5G-MAG/rt-common-shared/pull/74",
-          "draft": false,
-          "author_login": "davidjwbbc",
-          "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4",
-          "created_at": "2026-08-13",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
         {
           "repo": "6G-Testbed",
           "branch": null,
@@ -602,21 +456,7 @@
       "name": "Common Tools",
       "doc_url": "/reference-tools/common-tools/",
       "tagline": "Shared helper repositories supporting 5G-MAG Reference Tools",
-      "pulls": [
-        {
-          "repo": "rt-common-shared",
-          "branch": null,
-          "number": 74,
-          "title": "Reallign C++ OpenAPI templates from 3GPP-Rel18 branch",
-          "url": "https://github.com/5G-MAG/rt-common-shared/pull/74",
-          "draft": false,
-          "author_login": "davidjwbbc",
-          "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4",
-          "created_at": "2026-08-13",
-          "last_comment_by": null,
-          "last_comment_date": null
-        }
-      ]
+      "pulls": []
     },
     {
       "name": "DVB-I Services over 5G Systems",
@@ -705,19 +545,6 @@
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-08-06",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-libflute",
-          "branch": null,
-          "number": 60,
-          "title": "Fix unbounded FDT growth (same-TOI resend, and content-change cases)",
-          "url": "https://github.com/5G-MAG/rt-libflute/pull/60",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-07-28",
           "last_comment_by": null,
           "last_comment_date": null
         }
