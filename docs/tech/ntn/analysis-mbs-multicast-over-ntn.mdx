@@ -2,7 +2,7 @@
 title: MBS Multicast NTN
 sidebar_position: 1
 hide_title: true
-description: MBS Multicast over NTN, autonomous PTP/PTM switching by the Donor gNodeB, and device, subscription and mobility requirements.
+description: MBS Multicast over NTN, autonomous PTP/PTM switching by the gNB, and device, subscription and mobility requirements.
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -24,7 +24,7 @@ This documentation is currently **under development and subject to change**. If 
 
 ## Analysis - MBS Delivery Mode 1 (Multicast) over NTN
 
-This page sets out the requirements for delivering MBS Multicast content over a Non-Terrestrial Network (NTN). A satellite base station (the Donor gNodeB) can switch each device on its own between point-to-point (PTP, a dedicated per-device channel) and point-to-multipoint (PTM, a shared channel serving many devices), depending on how many devices are receiving the service. The page covers the roles of the Application Service Provider and the NTN, device and subscription considerations, and mobility requirements.
+This page sets out the requirements for delivering MBS Multicast content over a Non-Terrestrial Network (NTN). A satellite base station (the gNB) can switch each device on its own between point-to-point (PTP, a dedicated per-device channel) and point-to-multipoint (PTM, a shared channel serving many devices), depending on how many devices are receiving the service. The page covers the roles of the Application Service Provider and the NTN, device and subscription considerations, and mobility requirements.
 
 For mobility handling specific to this scenario, see also [Analysis of Mobility aspects for MBS Multicast over NTN](./analysis-mobility-mbs-multicast-over-ntn).
 
@@ -33,15 +33,15 @@ For mobility handling specific to this scenario, see also [Analysis of Mobility 
 MBS Multicast over NTN combines two existing pieces without inventing a new service layer:
 
 - **MBS delivery mode 1 (multicast)**, defined in [TS 23.247](https://www.3gpp.org/dynareport/23247.htm), targets sessions that need higher QoS and is available to devices in RRC_CONNECTED. The RAN can switch a device between point-to-point (PTP) and point-to-multipoint (PTM) delivery of the same multicast session; that autonomous switching is the central mechanism on this page. The MBS user-service layer above the transport is specified by SA4 in [TS 26.502](https://www.3gpp.org/dynareport/26502.htm), and 5G Media Streaming, which MBS user services extend, in [TS 26.501](https://www.3gpp.org/dynareport/26501.htm).
-- **NTN access**, defined at radio level in [TS 38.300](https://www.3gpp.org/dynareport/38300.htm) and [TS 38.331](https://www.3gpp.org/dynareport/38331.htm) (with the study background in [TR 38.811](https://www.3gpp.org/dynareport/38811.htm) and [TR 38.821](https://www.3gpp.org/dynareport/38821.htm)), which the multicast session simply runs over. The Donor gNodeB referred to below is the NR base station (in NTN terms the Satellite Access Node), whether ground-based (Transparent Payload) or on board (Regenerative Payload).
+- **NTN access**, defined at radio level in [TS 38.300](https://www.3gpp.org/dynareport/38300.htm) and [TS 38.331](https://www.3gpp.org/dynareport/38331.htm) (with the study background in [TR 38.811](https://www.3gpp.org/dynareport/38811.htm) and [TR 38.821](https://www.3gpp.org/dynareport/38821.htm)), which the multicast session simply runs over. The gNB referred to below is deployed either at a ground station, with the satellite acting as a transparent relay (Transparent Payload), or on board the satellite itself (Regenerative Payload) — TS 38.300's own term for the on-board node, in either case, is "NTN payload".
 
 The reason MBS Multicast fits NTN well is spectral efficiency: satellite spectrum is scarce, so serving many concurrent devices from one PTM transmission is attractive, while PTP remains available for the few or for reliability during handover.
 
 ## Requirements and Overview for the delivery of multicast content with autonomous RAN switching between point-to-point and point-to-multipoint
 
-The figure below shows the MBS Multicast over NTN scenario: an Application Service Provider feeds multicast services into the 5G Core of the NTN, and the Donor gNodeB delivers them to devices over PTP or PTM.
+The figure below shows the MBS Multicast over NTN scenario: an Application Service Provider feeds multicast services into the 5G Core of the NTN, and the gNB delivers them to devices over PTP or PTM.
 
-<img loading="lazy" src={useBaseUrl('/img/tech/ntn/figure_MBS_Multicast_NTN.png')} width="80%" alt="MBS Multicast over NTN: an Application Service Provider provisions multicast services into the NTN 5G Core, which the Donor gNodeB delivers to UEs over point-to-point or point-to-multipoint." />
+<img loading="lazy" src={useBaseUrl('/img/tech/ntn/figure_MBS_Multicast_NTN.png')} width="80%" alt="MBS Multicast over NTN: an Application Service Provider provisions multicast services into the NTN 5G Core, which the gNB delivers to UEs over point-to-point or point-to-multipoint." />
 
 ### Application Service Provider
 
@@ -55,13 +55,13 @@ Note that this is an aspect related to MBS and it is captured here: [MBS Service
 
 ### Network and access to services
 
-- The gNodeB of the NTN (“Donor gNodeB”) is deployed either at the ground station (Transparent Payload architecture) or on board the spacecraft (Regenerative Payload, not illustrated).
+- The gNB serving the NTN is deployed either at the ground station (Transparent Payload architecture) or on board the spacecraft (Regenerative Payload, not illustrated).
 - The NTN operator offers mobile broadband access to their subscribed users.
 - The NTN supports multicast user services.
-- A set of multicast services is provisioned in the NTN that deliver content to UEs using either point-to-point or point-to-multipoint multicast communication, at the discretion of the Donor gNodeB.
+- A set of multicast services is provisioned in the NTN that deliver content to UEs using either point-to-point or point-to-multipoint multicast communication, at the discretion of the gNB.
 - Optionally, the NTN operator may collaborate with the Application Service Provider to ensure the delivery of content with a desired Quality of Service, including the provision of network assistance and/or UE data collection and reporting, among other functionalities.
 - The NTN has the ability to detect concurrent consumption of services by multiple users and may use parameters such as session counting to trigger unicast-to-multicast switching at upper layers.
-- The Donor gNodeB is able to autonomously switch the delivery mode of multicast packets between point-to-point and point-to-multipoint according to the number of UEs attempting to receive multicast user services concurrently.
+- The gNB is able to autonomously switch the delivery mode of multicast packets between point-to-point and point-to-multipoint according to the number of UEs attempting to receive multicast user services concurrently.
 
 :::warning
 To be checked: Provision of MBS Multicast services which can be delivered either by means of point-to-point or point-to-multipoint and the mechanism by which concurrent consumption of a service by multiple users and session counting is performed.
@@ -86,7 +86,7 @@ To be checked: Mobility aspects in relation to NTN are captured here: [Aspects o
 
 ## Autonomous PTP/PTM switching
 
-The defining feature of this scenario is that the Donor gNodeB decides, on its own, whether to deliver a multicast session over a shared PTM channel or a dedicated PTP channel, and can move a device between the two without the application being aware.
+The defining feature of this scenario is that the gNB decides, on its own, whether to deliver a multicast session over a shared PTM channel or a dedicated PTP channel, and can move a device between the two without the application being aware.
 
 - **When PTM is used.** When enough devices in the same beam are receiving the same session, one PTM transmission serves them all and is by far the most efficient use of the scarce satellite spectrum. This is the normal state for popular content in a wide beam.
 - **When PTP is used.** When only one or very few devices are receiving, PTP can be more efficient and gives per-device link adaptation and retransmission. PTP is also used deliberately during handover to protect a device that is about to lose its beam (see the mobility page).
@@ -105,7 +105,7 @@ The requirement that switching be interruption-free is what ties this to reliabi
 | Mobility for the multicast group over NTN             | [Mobility for MBS Multicast over NTN](./analysis-mobility-mbs-multicast-over-ntn)                                                                                      |
 
 :::note[Partially verified against primary sources]
-Checked directly against TS 23.247 V19.3.0: Clause 4.1 ("Overview of multicast and broadcast communication") confirms that PTP/PTM switching for MBS multicast is supported and that "NG-RAN is the decision point for switching between PTP and PTM delivery methods" — matching this page's "autonomous switching by the Donor gNodeB" framing. A specific "session counting" clause or algorithm was not found in TS 23.247; the exact trigger mechanism for switching appears to be left to RAN implementation (consistent with the equivalent finding on the terrestrial [RAN Aspects](../5g-mbs/ran-aspects) page — "the specifications leave the exact algorithm to implementation"). TS 26.502's title and the release placement of MBS-over-NTN features (broadcast/multicast, GSO/NGSO) remain unconfirmed, since a full clause-by-clause reading of TS 23.247 for NTN-specific content was not performed.
+Checked directly against TS 23.247 V19.3.0: Clause 4.1 ("Overview of multicast and broadcast communication") confirms that PTP/PTM switching for MBS multicast is supported and that "NG-RAN is the decision point for switching between PTP and PTM delivery methods" — matching this page's "autonomous switching by the gNB" framing. A specific "session counting" clause or algorithm was not found in TS 23.247; the exact trigger mechanism for switching appears to be left to RAN implementation (consistent with the equivalent finding on the terrestrial [RAN Aspects](../5g-mbs/ran-aspects) page — "the specifications leave the exact algorithm to implementation"). TS 26.502's title and the release placement of MBS-over-NTN features (broadcast/multicast, GSO/NGSO) remain unconfirmed, since a full clause-by-clause reading of TS 23.247 for NTN-specific content was not performed.
 :::
 
 ## Related
