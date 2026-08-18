@@ -2,7 +2,7 @@
 title: MBS End-to-End
 hide_title: true
 sidebar_position: 6
-description: Links the tutorials covering the end-to-end MBS flow (5GC, MB-SMF, MBSF, MBSTF) and a demo video; write-up pending.
+description: Links the tutorials covering the end-to-end MBS flow (5GC, MB-SMF, MBSF, MBSTF); a demo video is planned.
 ---
 
 <div class="topic-banner">
@@ -20,7 +20,7 @@ description: Links the tutorials covering the end-to-end MBS flow (5GC, MB-SMF, 
 </div>
 </div>
 
-The written walkthrough for this end-to-end tutorial is under development. In the meantime, the video below demonstrates the full flow, and the component tutorials below cover each piece in written form.
+The written walkthrough for this end-to-end tutorial, and an accompanying demo video, are both under development. In the meantime, the component tutorials below cover each piece in written form.
 
 ## Interim outline
 

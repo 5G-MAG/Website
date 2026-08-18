@@ -1,7 +1,7 @@
 ---
 title: Initial support MBS-5GC
 hide_title: true
-sidebar_position: 2
+sidebar_position: 3
 description: Builds an MBS Broadcast Session on the 5G Core and traces multicast traffic from AS to MB-UPF as GTP-U.
 ---
 
@@ -20,8 +20,7 @@ description: Builds an MBS Broadcast Session on the 5G Core and traces multicast
 </div>
 </div>
 
-This tutorial showcases the current features present in the 5G-MAG MBS implementation. You can check out the video to
-see more details or follow the write-up tutorial.
+This tutorial showcases the current features present in the 5G-MAG MBS implementation; a demo video is planned. In the meantime, follow the write-up tutorial below.
 
 ## Prerequisites
 
