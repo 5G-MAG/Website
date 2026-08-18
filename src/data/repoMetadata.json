@@ -559,6 +559,25 @@
       ],
       "public": false,
       "is_auxiliary": false
+    },
+    {
+      "repo_slug": "rt-5gc-service-consumers",
+      "display_name": "MB-SMF Service Consumer Library",
+      "description": "Service-consumer library implementing the MB-SMF side of Nmbsmf_TMGI and Nmbsmf_MBSSession (3GPP TS 29.532), vendored as a subproject inside the MBSF as an alternative to provisioning the 5GC directly.",
+      "repo_url": "https://github.com/5G-MAG/rt-5gc-service-consumers",
+      "branch": "main",
+      "license": "5G-MAG PL v1.0",
+      "standards": [
+        "3GPP"
+      ],
+      "dependencies": [
+        "Open5GS"
+      ],
+      "software": [
+        "Linux"
+      ],
+      "public": true,
+      "is_auxiliary": true
     }
   ],
   "5g-core": [
