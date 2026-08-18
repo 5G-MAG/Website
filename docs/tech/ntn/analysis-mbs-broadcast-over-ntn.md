@@ -28,7 +28,7 @@ Procedures for MBS Broadcast over NTN are those defined for MBS Broadcast in [An
 
 ## Standards background
 
-MBS Broadcast is delivery mode 2 in [TS 23.247](https://www.3gpp.org/dynareport/23247.htm): a one-to-many session that a device can receive in RRC_IDLE and RRC_INACTIVE as well as RRC_CONNECTED, with no per-device signalling and no uplink required to receive. That property is exactly what makes it reusable over NTN almost unchanged. The device tunes to the broadcast, reads the system information and receives; the satellite path does not alter the broadcast procedure itself.
+MBS Broadcast — this site's "delivery mode 2" (see [MBS RAN Aspects](/tech/5g-mbs/ran-aspects)) — is the "Broadcast MBS session" of [TS 23.247](https://www.3gpp.org/dynareport/23247.htm): a one-to-many session that a device can receive in RRC_IDLE and RRC_INACTIVE as well as RRC_CONNECTED, with no per-device signalling and no uplink required to receive. That property is exactly what makes it reusable over NTN almost unchanged. The device tunes to the broadcast, reads the system information and receives; the satellite path does not alter the broadcast procedure itself.
 
 The NTN-specific parts live in NR system information, defined in [TS 38.331](https://www.3gpp.org/dynareport/38331.htm):
 
@@ -62,7 +62,7 @@ The circle form (a reference centre plus a radius) is compact and cheap to broad
 
 | Aspect on this page                         | Where it is specified                                                                                                                                                             |
 | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Broadcast session, delivery mode 2          | TS 23.247 (MBS architectural enhancements)                                                                                                                                        |
+| Broadcast MBS session (this site's "delivery mode 2") | TS 23.247 (MBS architectural enhancements)                                                                                                                                        |
 | Broadcast SIBs (SIB20, SIB21) and NTN SIB19 | TS 38.331 Clause 6.3.1 (all four SIBs are defined in the same clause)                                                                                                              |
 | Intended Service Area in SIB27 (Release 19) | TS 38.331 Clause 6.3.1                                                                                                                                                            |
 | Broadcast RAN procedures reused unchanged   | [Analysis MBS Broadcast - RAN Procedures](../5g-mbs/analysis-mbs-broadcast-ran)                                                                                                   |

@@ -55,7 +55,7 @@ PTP may also be used in combination with the 5GC shared MBS traffic delivery met
 
 ## RAN delivery modes
 
-3GPP defines two formal MBS delivery modes at Layer 2: delivery mode 1 (multicast) and delivery mode 2 (broadcast). This page also describes a third, the *unicast delivery mode* — italicised throughout because, unlike the other two, it is not an MBS-specific 3GPP term; it is used here to describe the ordinary, non-MBS delivery a UE gets absent 5G-NR MBS, included for comparison because a gNodeB chooses between it and delivery mode 1 per UE (see "How the gNB decides PTM or PTP" below).
+"Delivery mode 1" (multicast) and "delivery mode 2" (broadcast) are this page's own descriptive shorthand for two Layer 2 configurations, not 3GPP's own terminology: TS 23.247 defines the corresponding session types as the "Multicast MBS session" and the "Broadcast MBS session", with no numbered "delivery mode" label of its own. This page also describes a third, the *unicast delivery mode* — italicised on its first occurrence because, unlike the other two, it is not an MBS-specific term at all; it is used here to describe the ordinary, non-MBS delivery a UE gets absent 5G-NR MBS, included for comparison because a gNodeB chooses between it and delivery mode 1 per UE (see "How the gNB decides PTM or PTP" below).
 
 ### Unicast delivery mode
 
