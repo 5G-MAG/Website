@@ -78,7 +78,7 @@ This describes the `development` branches of the MBS User Services repositories 
 :::
 
 :::caution[Broadcast first, Multicast later]
-The tools currently implement the **MBS Broadcast** delivery mode end-to-end. The **MBS Multicast** delivery mode (UE session join via the SMF, PTP/PTM switching, group paging) is not yet implemented in any component of the chain &mdash; the MB-SMF/MB-UPF multicast data path (N6mb ingest, shared GTP-U delivery) exists, but the session-join control plane does not.
+The tools currently implement the **MBS Broadcast** delivery mode end-to-end. For **MBS Multicast**, only the MB-SMF/MB-UPF data path (N6mb ingest, shared GTP-U delivery) exists; the session-join control plane (UE session join via the SMF, PTP/PTM switching, group paging) is not yet implemented in any component of the chain.
 :::
 
 <ImplementationBoard components={MBS_COMPONENTS} sections={MBS_SECTIONS} />

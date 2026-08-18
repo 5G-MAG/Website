@@ -36,7 +36,7 @@ Two Docker Compose deployments of the MBS capable 5G Core are available:
 **Which should I use?** Choose the `internal` deployment for a self-contained first run: it includes a gNB and UE, so you can bring up everything on one machine with no extra hardware. Choose the `external` deployment when you want to connect your own (physical or separate) gNB to the MBS core over the N2 and N3mb interfaces.
 
 :::note[Which branch this builds]
-The default Docker Compose build compiles Open5GS, the gNB and the UE from each fork's `5mbs` branch. This branch does not yet carry every compliance fix made to the TMGI and MBS Session code path on the MB-SMF (status-code corrections on TMGI Allocate, and fixes to MBS Session Create/Release) — those live on a separate development branch. If your use of the [MBS session/TMGI tutorial](./managing-mbs-sessions-tmgi) depends on exact error-handling behaviour, confirm which branch your build actually used.
+The default Docker Compose build compiles Open5GS, the gNB and the UE from each fork's `5mbs` branch. This branch does not yet carry every compliance fix made to the TMGI and MBS Session code path on the MB-SMF (status-code corrections on TMGI Allocate, and fixes to MBS Session Create/Release) — those live on a separate development branch. If your use of the [MBS session/TMGI tutorial](./managing-mbs-sessions-tmgi) depends on exact error-handling behaviour, confirm which branch your build actually used. The MBSF and MBSTF containers are pulled as pre-built published images rather than built from either fork's compliance branch, so [their tutorials](./mbsf) reflect whichever image version is pinned in the deployment's configuration, not necessarily the latest source.
 :::
 
 ## Architecture using Open5GS

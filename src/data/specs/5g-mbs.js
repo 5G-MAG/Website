@@ -56,7 +56,7 @@ export const MBS_SPECS = [
   },
   {
     id: "TS 29.522",
-    title: "5GS; NEF Northbound APIs (MBSSession, MBSUserService, MBSUserDataIngestSession and MBSGroupMsgDelivery APIs, at reference point Nmb5 - AF to MBSF via the NEF)",
+    title: "5GS; NEF Northbound APIs (MBSSession, MBSUserService, MBSUserDataIngestSession and MBSGroupMsgDelivery APIs, exposed to the AF via Nnef; Nmb5 is the MBSF-to-NEF backend segment)",
     url: "https://www.3gpp.org/dynareport/29522.htm",
     layer: "User services",
   },

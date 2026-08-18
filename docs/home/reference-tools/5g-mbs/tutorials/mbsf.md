@@ -1,7 +1,7 @@
 ---
 title: MBSF Operation & APIs
 hide_title: true
-sidebar_position: 1
+sidebar_position: 3
 description: Covers CRUD operations for MBS User Services and Data Ingest Sessions on the MBSF via the Nmb10 API using curl.
 ---
 
@@ -262,7 +262,7 @@ mbs_user_service_id=d72a4394-db62-41f0-8e26-9174558de382
 
 ### Updating an MBS User Service
 
-The Update operation uses the same _MBSUserService_ JSON data structure as the Create operation to replace the details of an existing MBS User Service. This is done using a _PUT_ request to the API URL ending in `.../nmbsf-mbs-us/v1/mbs-user-services/{mbs_user_service_id}`.
+The Update operation uses the same _MBSUserService_ JSON data structure as the Create operation to replace the details of an existing MBS User Service, with one exception: per TS 29.580, the `servType` attribute must not be changed by this operation. This is done using a _PUT_ request to the API URL ending in `.../nmbsf-mbs-us/v1/mbs-user-services/{mbs_user_service_id}`.
 
 To demonstrate this, take a copy of `mbs-user-service.json` as `mbs-user-service-altered.json` and change the `"servDescrip"` attribute to `"The description has been changed!"` to change the service description.
 
