@@ -20,11 +20,11 @@ description: Shows how to create, refresh and manage MBS Broadcast Sessions, TMG
 </div>
 </div>
 
-This page shows how to create and manage MBS sessions and their identifiers on the MB-SMF. An MBS session groups the devices that receive the same content; a **TMGI (Temporary Mobile Group Identifier)** names that session, and an **SSM (Source-Specific Multicast address)** identifies the source and destination of the multicast traffic that feeds it.
+This page shows how to create and manage MBS sessions and their identifiers on the MB-SMF. An MBS session groups the devices that receive the same content; a **TMGI (Temporary Mobile Group Identity)** names that session, and an **SSM (Source-Specific Multicast address)** identifies the source and destination of the multicast traffic that feeds it.
 
 MBS Sessions can be of two different types, Broadcast MBS Sessions and Multicast MBS Sessions. Broadcast MBS Sessions
 can be seen as a subset of the Multicast MBS Sessions functionality. In the MBS Sessions context, two kinds of
-identifiers exist, TMGI (Temporary Mobile Group Identifier) and SSM (Source Specific Multicast). Broadcast MBS Sessions
+identifiers exist, TMGI (Temporary Mobile Group Identity) and SSM (Source Specific Multicast). Broadcast MBS Sessions
 are identified by a TMGI, while Multicast MBS Sessions can be identified by using TMGI or SSM. Even if SSM is selected
 as identifier, a TMGI is **always** allocated.
 
