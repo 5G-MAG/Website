@@ -76,6 +76,7 @@ For each PLMN, the following information is included:
   description (USD) information (3GPP [TS 26.517](https://www.3gpp.org/dynareport/26517.htm)) for the MBS broadcast service.
 - list of TMGI, on which the service announcement for broadcast communication service is available along with
   the associated USD information (see 3GPP TS 26.517) for the MBS user service announcement service
+- default DNN and S-NSSAI pair for PDU sessions that can be used to join MBS multicast sessions (3GPP [TS 24.501](https://www.3gpp.org/dynareport/24501.htm)) for which no other information is available
 
 ## Obtention of MIB/SIB signaling
 
@@ -86,7 +87,7 @@ For definitions refer to **[3GPP TS 38.331](https://www.3gpp.org/dynareport/3833
 Before any system information can be read, the UE first camps on a cell (cell search, using the SSB) and decodes the Master Information Block (MIB), broadcast on the BCH and scheduled once per SSB period as specified in **[3GPP TS 38.213](https://www.3gpp.org/dynareport/38213.htm)**. The MIB itself is generic to NR and carries nothing MBS-specific, but it is the first link in the chain: it provides the `pdcch-ConfigSIB1` field, which gives the UE the PDCCH configuration it needs to find and decode SIB1 next.
 
 - MIB definition and procedures in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 6.2.2** (Message definitions) and **Clause 5.2.2.3.1** (Acquisition of MIB and SIB1)
-- Actions upon reception of the MIB in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 5.2.2.4.1**: on receiving the MIB, the UE stores it and applies `pdcch-ConfigSIB1` (among other fields) to configure PDCCH monitoring for SIB1
+- Actions upon reception of the MIB in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 5.2.2.4.1**: on receiving the MIB, the UE stores it and, provided the cell is not barred, applies `pdcch-ConfigSIB1` (among other fields) to configure PDCCH monitoring for SIB1
 
 The MIB carries, alongside `pdcch-ConfigSIB1`: `systemFrameNumber`, `subCarrierSpacingCommon`, `ssb-SubcarrierOffset`, `dmrs-TypeA-Position`, `cellBarred`, `intraFreqReselection`, and a spare bit — none of these other fields are MBS-specific. Full ASN.1 definition in **TS 38.331 Clause 6.2.2**.
 
@@ -96,7 +97,7 @@ Using the PDCCH configuration from the MIB, the UE next decodes SIB1, the first 
 
 - SIB1 definition in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 6.2.2** (Message definitions); acquisition procedure in **Clause 5.2.2.3.1**, scheduled as specified in **[3GPP TS 38.213](https://www.3gpp.org/dynareport/38213.htm)**
 - Actions upon reception of SIB1 in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 5.2.2.4.2**
-- The pointer mechanism: SIB1's `si-SchedulingInfo` field (type `SI-SchedulingInfo`, **Clause 6.3.2**) contains a `schedulingInfoList`, each entry (`SchedulingInfo2-r17`) giving the periodicity/window of one SI message and a `sib-MappingInfo-r17` list of the SIB types it carries. Each `SIB-TypeInfo-v1700` entry's `type` field is an enumeration that includes `sibType20` (and, for the RRC_INACTIVE multicast case on the companion page, `sibType24`) among the other SIB types — this is the concrete field that tells the UE "SIB20 is broadcast in this SI message, at this periodicity". Full ASN.1 for `SIB1`, `SI-SchedulingInfo`, `SchedulingInfo2-r17` and `SIB-TypeInfo-v1700` is in **TS 38.331 Clause 6.2.2 and 6.3.2**.
+- The pointer mechanism: SIB1's `si-SchedulingInfo` field (type `SI-SchedulingInfo`, **Clause 6.3.2**) contains a `schedulingInfoList`, each entry (`SchedulingInfo2-r17`) giving the periodicity/window of one SI message and a `sib-MappingInfo-r17` list of the SIB types it carries. Each `SIB-TypeInfo-v1700` entry's `sibType-r17` field is a CHOICE, one branch of which (`type1-r17`) is an enumeration that includes `sibType20` (and, for the RRC_INACTIVE multicast case on the companion page, `sibType24-v1800`) among the other SIB types — this is the concrete field that tells the UE "SIB20 is broadcast in this SI message, at this periodicity". Full ASN.1 for `SIB1`, `SI-SchedulingInfo`, `SchedulingInfo2-r17` and `SIB-TypeInfo-v1700` is in **TS 38.331 Clause 6.2.2 and 6.3.2**.
 
 ### Step 3: SIB20 - Acquisition MCCH/MTCH
 
