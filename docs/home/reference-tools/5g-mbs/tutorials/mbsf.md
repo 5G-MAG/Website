@@ -154,7 +154,7 @@ mbsf:
     - addr: 127.0.0.68
       port: 7777
   serverResponseCacheControl:
-    - maxAge: 60
+    - defaultMaxAge: 60
       mbsUserServiceMaxAge: 60
       mbsUserDataIngestSessionMaxAge: 60
   activeDistributionSessionsSoftLimit: 1000
@@ -660,11 +660,11 @@ An MBS AF is co-located with the MBSF to serve User Service Announcement bundles
 - The User Service Announcement Channel is triggered when the MBS Application Provider provisions an MBS Service with the VIA_MBS_DISTRIBUTION_SESSION service announcement mode and then goes on to create an associated, active MBS User Data Ingest Session via the API at reference point Nmb10.
 - MBSF publishes announcement bundle documents to a document root folder so that they are exposed by the co-located MBS AF via HTTP.
 - MBSF creates a special MBS Distribution Session on an MBSTF for the User Service Announcement Carousel via reference point Nmb2.
-- MBSF pushes a carousel manifest to the MBSTF via reference point MBS-11 listing User Service Announcement bundles for currently active MBS User Data Ingest Sessions.
+- MBSF pushes a carousel manifest to the MBSTF via reference point Nmb2 listing User Service Announcement bundles for currently active MBS User Data Ingest Sessions.
 - MBSTF retrieves these User Service Announcement bundles from the co-located MBS AF via reference point MBS-11.
 - If the USER_SER_AD event type has been subscribed to by the MBS Application Provider, then a USER_SER_AD notification is sent to it via reference point Nmb10 when a new bundle is ready.
 
-These features are configured in `mbsf.yaml`. The reference points named here are the interfaces of the co-located MBS AF: MBS-1 (provisioning and control of the AF), MBS-5 (serving Service Announcements to a client on the UE) and MBS-11 (between the MBSF/AF and the MBSTF for the announcement carousel). The configuration below also sets parameters of the MBS User Service Announcement Channel (repetition rate, SSM address and bit rate).
+These features are configured in `mbsf.yaml`. The reference points named here are the interfaces of the co-located MBS AF: MBS-3 (used by the MBSF to configure the MBS AF), MBS-5 (serving Service Announcements to a client on the UE) and MBS-11 (used by the MBSTF to retrieve the announcement carousel manifest and its bundles from the MBS AF; the manifest push from the MBSF to the MBSTF itself travels over Nmb2). The configuration below also sets parameters of the MBS User Service Announcement Channel (repetition rate, SSM address and bit rate).
 
 Note: this example configuration listens on `127.0.0.67`, whereas the tutorial configuration earlier (`local-mbsf.yaml`) listens on `127.0.0.68`. These are two separate example configurations; use one consistent listening address for your own setup and keep the client and server addresses aligned.
 
