@@ -62,7 +62,7 @@ Relevant specifications are listed below.
 [Standards: Multimedia Delivery Protocols](/standards/multimedia)
 
 :::tip[In short]
-The complete MBS Broadcast delivery chain: the MBS Application Provider side, the MBS User Services network functions (MBSF, MBSTF), the 5GC (MB-SMF, MB-UPF, AMF), the NG-RAN (gNB), and the UE side (modem, MBSF Client and MBS-Aware Application). MBS Multicast is not yet implemented.
+The MBS Broadcast delivery chain exists across the MBS Application Provider side, the MBS User Services network functions (MBSF, MBSTF), the 5GC (MB-SMF, MB-UPF, AMF) and the UE side (MBSF Client, MBS-Aware Application) on their release branches &mdash; but it does not run end-to-end on real RAN hardware or software radio today. Two release-branch defects break the chain by themselves: the MB-UPF never attaches the mandatory GTP-U PDU Session Container to downlink packets, and neither RAN fork's release branch implements the MCCH/SIB20 signalling a UE needs to discover a broadcast session over the air. Several fixes for these and other defects listed below exist only on unreleased development branches. MBS Multicast is not yet implemented.
 :::
 
 ## High-level architecture
@@ -74,11 +74,11 @@ The complete MBS Broadcast delivery chain: the MBS Application Provider side, th
 Every functional entity in the MBS Broadcast chain is audited per feature against its defining specifications. Each section below is split into plainly labelled groups, so you can jump straight to the component you care about.
 
 :::note[Audit baseline]
-This describes the `development` branches of the MBS User Services repositories and the `5mbs-development` branches of the Open5GS and srsRAN forks as of 2026-08-12, including the changes currently in review. It is a source-level reading of the code against the specification text, backed by live end-to-end testing of the MBS Broadcast delivery chain (portal &rarr; MBSF &rarr; MBSTF &rarr; MB-SMF/MB-UPF &rarr; gNB &rarr; UE &rarr; MBSF Client &rarr; MBS-Aware Application), not a maintainer sign-off.
+This describes each repository's release branch only &mdash; `main` for the MBS User Services repositories (rt-mbs-function, rt-mbs-transport-function, rt-mbs-client, rt-mbs-application, rt-libflute) and for the Open5GS fork, and `5mbs` for the srsRAN Project and srsRAN 4G forks &mdash; each read at its own most recent commit as of 2026-08-18 (dates range from 2025-10-02 for the gNB fork to 2026-08-07 for the most recently updated User Services repositories). It deliberately excludes `feature/mbs-compliance-fixes` and other `development`/feature branches, which carry substantial fixes and new functionality that have not reached a release branch. This is a source-level reading of the code against the specification text; it is **not** backed by a live end-to-end test of the full delivery chain on these branches. Several defects found below &mdash; in particular the missing GTP-U PDU Session Container on the N3mb downlink and the complete absence of MCCH/SIB20 broadcast signalling on both RAN forks &mdash; mean the chain from the MB-UPF through the gNB to a real UE does not work today on these release branches, regardless of what earlier live testing on unreleased branches may have shown.
 :::
 
 :::caution[Broadcast first, Multicast later]
-The tools currently implement the **MBS Broadcast** delivery mode end-to-end. For **MBS Multicast**, only the MB-SMF/MB-UPF data path (N6mb ingest, shared GTP-U delivery) exists; the session-join control plane (UE session join via the SMF, PTP/PTM switching, group paging) is not yet implemented in any component of the chain.
+The tools target the **MBS Broadcast** delivery mode. On the release branches audited here it does not yet run fully end-to-end on real RAN hardware or software radio: the MB-UPF never attaches the mandatory GTP-U PDU Session Container to downlink packets (so a real gNB rejects them), and neither RAN fork's release branch implements the MCCH/SIB20 signalling a UE needs to discover a broadcast session over the air. The Namf_MBSBroadcast/NGAP/F1AP/E1AP session-release chain is also unimplemented at every layer. See the Implementation status board and the User plane path table below for the detail; several of these fixes exist only on unreleased development branches. For **MBS Multicast**, only the MB-SMF/MB-UPF data path (N6mb ingest, shared GTP-U delivery) exists; the session-join control plane (UE session join via the SMF, PTP/PTM switching, group paging) is not implemented in any component of the chain.
 :::
 
 <ImplementationBoard components={MBS_COMPONENTS} sections={MBS_SECTIONS} />
@@ -90,16 +90,18 @@ The tools currently implement the **MBS Broadcast** delivery mode end-to-end. Fo
 | Nmb8 object ingest (pull or push) | MBS Application Provider &rarr; MBSTF | Implemented |
 | Nmb9 FLUTE/ALC unicast tunnel | MBSTF &rarr; MB-UPF | Implemented |
 | N6mb direct multicast ingest (alternative to the MBSTF path) | AF/AS &rarr; MB-UPF | Implemented |
-| N3mb shared GTP-U delivery, with the mandatory PDU Session Container extension header (TS 38.415) on every downlink G-PDU | MB-UPF &rarr; gNB(s) | Implemented |
-| Uu PTM broadcast (MCCH/MTCH) | gNB &rarr; UEs | Implemented |
+| N3mb shared GTP-U delivery, with the mandatory PDU Session Container extension header (TS 38.415) on every downlink G-PDU | MB-UPF &rarr; gNB(s) | **Not implemented** |
+| Uu PTM broadcast (MCCH/MTCH) | gNB &rarr; UEs | **Not implemented** |
 | MBS-4-MC FLUTE reception (including a raw-capture relay for software TUN radio links) | UE &rarr; MBSF Client | Implemented |
+
+The two rows marked **Not implemented** are release-branch findings, not design gaps: the MB-UPF's downlink PDR never gets a QER/QFI association, so it never emits the mandatory PDU Session Container extension header a real gNB requires (TS 38.415); and neither the srsRAN Project (gNB) nor srsRAN 4G (UE) release branch implements MCCH/SIB20, so a UE has no standards-compliant way to discover a broadcast session over the air. Fixes for both exist only on unreleased development branches. The FLUTE reception row still holds because the MBSF Client's object-level FLUTE handling is independent of these two gaps and was confirmed to build and instantiate correctly on its own release branch.
 
 ### Out of scope today (all components)
 
 - **MBS Multicast delivery mode** (TS 23.247): multicast session join via the SMF, PTP/PTM switching, group paging &mdash; see the caution above.
 - **MB-PCF policy control** (TS 29.537), **NEF exposure** (TS 29.522 / Nmb5), **MBS security** (TS 33.501 traffic keys &mdash; delivery is unprotected), **charging** (TS 32.279).
 - **MBS-specific NRF NFDiscovery query extensions** (TS 29.510) &mdash; standard NF registration/discovery is used; discovery by TMGI or MBS-session parameters is not.
-- **Location-dependent (multi-area) MBS sessions** and **Xn mobility / service continuity**.
+- **Location-dependent (multi-area) MBS sessions** &mdash; only partial plumbing exists (for example, MBSF recognises `locationDependent` to gate a TMGI request), with no Area Session ID support or per-area distribution &mdash; and **Xn mobility / service continuity**.
 
 ## Getting Started
 
