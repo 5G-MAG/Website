@@ -368,7 +368,7 @@ export const MBS_SECTIONS = [
     ],
   },
   {
-    spec: "TS 38.463 / TS 38.473",
+    spec: "TS 37.483 / TS 38.473",
     title: "E1AP and F1AP broadcast contexts",
     component: "gNB",
     rows: [
@@ -440,7 +440,8 @@ export const MBS_SECTIONS = [
       },
       {
         feature: "RLC-UM (TS 38.322)",
-        statuses: ["yes", "yes"],
+        statuses: ["yes", "no"],
+        note: "UE (receive): RX_Next_Highest is never bootstrapped from the first received segmented MCCH/MTCH PDU's SN (cl.7.1); affects joining mid-session when segmented SNs land in the upper half of the SN space",
       },
       {
         feature: "PDCP broadcast MRB (TS 38.323; 18-bit SN)",
