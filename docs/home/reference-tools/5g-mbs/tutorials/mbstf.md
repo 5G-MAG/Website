@@ -819,7 +819,7 @@ them as a FLUTE stream, change the state to _ACTIVE_ (sequence step 22). This ca
 following command:
 
 ```bash
-curl -X PATCH --http2-prior-knowledge -H 'Content-Type: application/json-patch+json' --data '[{"op":"replace", "path":"/distSession/distSessionState", "value":"ACTIVE"}]' http://127.0.0.62:7777/nmbstf-distsession/v1/dist-sessions/541ebbd2-ebf9-496b-a3b8-dcd1c17fbc9d
+curl -X PATCH --http2-prior-knowledge -H 'Content-Type: application/json-patch+json' --data '[{"op":"replace", "path":"/distSessionState", "value":"ACTIVE"}]' http://127.0.0.62:7777/nmbstf-distsession/v1/dist-sessions/541ebbd2-ebf9-496b-a3b8-dcd1c17fbc9d
 ```
 
 When an MBSTF Distribution Session is configured for _STREAMING_ operating mode using a DASH MPD and is in the _ACTIVE_
@@ -886,7 +886,7 @@ To stop the MBSTF DistSession, change its state to the _INACTIVE_ state (sequenc
 the following command:
 
 ```bash
-curl -X PATCH --http2-prior-knowledge -H 'Content-Type: application/json-patch+json' --data '[{"op":"replace", "path":"/distSession/distSessionState", "value":"INACTIVE"}]' http://127.0.0.62:7777/nmbstf-distsession/v1/dist-sessions/541ebbd2-ebf9-496b-a3b8-dcd1c17fbc9d
+curl -X PATCH --http2-prior-knowledge -H 'Content-Type: application/json-patch+json' --data '[{"op":"replace", "path":"/distSessionState", "value":"INACTIVE"}]' http://127.0.0.62:7777/nmbstf-distsession/v1/dist-sessions/541ebbd2-ebf9-496b-a3b8-dcd1c17fbc9d
 ```
 
 The fetching of new media segments and output of the FLUTE stream will cease and the MBSTF DistSession will return to
