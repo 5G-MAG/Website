@@ -102,7 +102,7 @@ Because multicast membership is per-UE, multicast can offer per-UE reliability a
 :::note[Verified against primary sources]
 Checked directly against TS 29.244 V19.6.0, TS 29.518 V19.7.0, TS 29.532 V19.3.0 and TS 29.537 V19.3.0 (all Release 19, the current published versions): every core-network claim on this page is confirmed correct. N4mb is a genuine PFCP-based reference point defined for MB-SMF↔MB-UPF configuration (TS 29.244 Clause 5.34.2). Broadcast context management does use a dedicated Namf service — `Namf_MBSBroadcast`, "to create, update or release a broadcast MBS session context in the AMF" (TS 29.518 Clause 5.6). TMGI allocation and MBS session management (`Nmbsmf_TMGI`, `Nmbsmf_MBSSession`) are in TS 29.532, applicable to both broadcast and multicast. PCF multicast/broadcast policy (`Npcf_MBSPolicyControl`) is in TS 29.537.
 
-One item remains unverified: the placement of the broadcast and multicast session life-cycles in TS 23.247 Clauses 4.2 and 4.3 (TS 23.247 was not available this session).
+TS 23.247 V18.8.0 confirms the life-cycle placement above: the table of contents lists "4.2.1 Multicast data provisioning", "4.2.2 Broadcast data provisioning" and "4.3 Multicast session state model", with no Clause 4.4 broadcast-state-model counterpart.
 :::
 
 **Next:** [MBS RAN Aspects](./ran-aspects), which describes how the gNodeB delivers MBS packets over the radio interface once they arrive from the core.
