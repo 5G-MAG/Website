@@ -39,7 +39,7 @@ The scenarios under study are the following:
 
 This page sits at the intersection of two existing capabilities:
 
-- **Multicast mobility (PTP/PTM), from MBS.** MBS delivery mode 1, defined in [TS 23.247](https://www.3gpp.org/dynareport/23247.htm), lets the RAN switch a device between point-to-point and point-to-multipoint and supports PTM-to-PTM mobility for a moving device; see [Analysis of Mobility aspects for MBS Multicast Services](../5g-mbs/mobility-mbs-multicast).
+- **Multicast mobility (PTP/PTM), from MBS.** MBS delivery mode 1, defined in [TS 23.247](https://www.3gpp.org/dynareport/23247.htm), lets the RAN switch a device between point-to-point and point-to-multipoint, and supports handover between MBS-capable cells without losing multicast continuity; see [Analysis of Mobility aspects for MBS Multicast Services](../5g-mbs/mobility-mbs-multicast).
 - **NTN mobility, from the radio layer.** Conditional Handover (CHO), satellite ephemeris in SIB19 and the timing/frequency adaptations are defined in [TS 38.331](https://www.3gpp.org/dynareport/38331.htm) and [TS 38.300](https://www.3gpp.org/dynareport/38300.htm); the deployment and beam-handover models are described on [Analysis of Mobility aspects for NTN](./analysis-mobility-ntn).
 
 The new problem here is the combination: keeping a whole multicast _group_ continuous when the trigger is the network geometry (Scenario 1) rather than a single device moving (the classic MBS case), or when it is one or more devices in the group (Scenario 2).
