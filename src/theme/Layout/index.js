@@ -18,7 +18,7 @@ import Navbar from '@theme/Navbar';
 import Footer from '@theme/Footer';
 import LayoutProvider from '@theme/Layout/Provider';
 import ErrorPageContent from '@theme/ErrorPageContent';
-import SectionNav, { useSection } from '@site/src/components/SectionNav';
+import SectionNav from '@site/src/components/SectionNav';
 import styles from './styles.module.css';
 
 export default function Layout(props) {
@@ -30,12 +30,6 @@ export default function Layout(props) {
     title,
     description,
   } = props;
-  // Stamps the current section's accent key on the content wrapper so the
-  // per-section accent tokens in custom.css ([data-section='...']) reach
-  // page content; SectionNav stamps its own wrapper the same way for the
-  // pill bar. Undefined outside any section, so no attribute is rendered
-  // and components fall back to brand primary.
-  const section = useSection();
 
   return (
     <LayoutProvider>
@@ -51,7 +45,6 @@ export default function Layout(props) {
 
       <div
         id={SkipToContentFallbackId}
-        data-section={section?.accent}
         className={clsx(
           ThemeClassNames.layout.main.container,
           ThemeClassNames.wrapper.main,
