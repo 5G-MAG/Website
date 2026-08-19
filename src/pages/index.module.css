@@ -43,7 +43,7 @@
   display: flex;
   flex-direction: column;
   border: 1px solid var(--ifm-color-emphasis-300);
-  border-top: 3px solid var(--ifm-color-primary);
+  border-top: 3px solid var(--section-accent, var(--ifm-color-primary));
   border-radius: 10px;
   overflow: hidden;
   background: var(--ifm-background-surface-color);
@@ -100,7 +100,7 @@
   padding: 0.65rem 1.1rem;
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--ifm-color-primary);
+  color: var(--section-accent, var(--ifm-color-primary));
   border-top: 1px solid var(--ifm-color-emphasis-200);
 }
 
@@ -165,7 +165,7 @@
 /* overflow: hidden above clips the default focus outline (2026-07-29 audit
    finding) -- inset box-shadow instead. */
 .activityCard:focus-visible {
-  box-shadow: inset 0 0 0 3px var(--ifm-color-primary);
+  box-shadow: inset 0 0 0 3px var(--section-accent, var(--ifm-color-primary));
 }
 
 .activityIconBand {
@@ -218,7 +218,7 @@
   padding: 0.6rem 1rem;
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--ifm-color-primary);
+  color: var(--section-accent, var(--ifm-color-primary));
   border-top: 1px solid var(--ifm-color-emphasis-200);
 }
 
@@ -248,7 +248,7 @@
 
 .pillarCard {
   padding: 1.5rem 1.5rem 1.5rem 1.75rem;
-  border-left: 4px solid var(--ifm-color-primary);
+  border-left: 4px solid var(--section-accent, var(--ifm-color-primary));
   background: var(--ifm-background-surface-color);
   border-radius: 0 8px 8px 0;
 }
@@ -256,7 +256,7 @@
 .pillarIcon {
   width: 36px;
   height: 36px;
-  color: var(--ifm-color-primary);
+  color: var(--section-accent, var(--ifm-color-primary));
   margin-bottom: 1rem;
 }
 
@@ -351,7 +351,7 @@
 }
 
 .categoryTopicCard:hover {
-  border-color: var(--ifm-color-primary);
+  border-color: var(--section-accent, var(--ifm-color-primary));
   background: var(--ifm-color-emphasis-100);
   text-decoration: none !important;
 }
@@ -368,7 +368,7 @@
   height: 36px;
   flex-shrink: 0;
   margin-top: 1px;
-  color: var(--ifm-color-primary);
+  color: var(--section-accent, var(--ifm-color-primary));
   display: flex;
   align-items: center;
 }
@@ -553,7 +553,7 @@
 .releasesViewAll {
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--ifm-color-primary);
+  color: var(--section-accent, var(--ifm-color-primary));
   text-decoration: none;
   white-space: nowrap;
   flex-shrink: 0;
