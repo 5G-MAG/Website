@@ -58,7 +58,7 @@
 }
 
 .itemCard:hover {
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--card-hover-shadow);
   border-color: var(--ifm-color-primary);
 }
 
