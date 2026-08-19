@@ -145,6 +145,128 @@
   --diagram-caption-text: #47c8f0;
 }
 
+/* ── Per-section accent tokens ────────────────────────────────────
+   Each top-level section carries its own accent (the "Jewel" palette,
+   chosen by the site owner 2026-08-19): About/institutional midnight,
+   Explainers sapphire, Feedback forest, Software Accelerator aubergine,
+   Interop bronze, Events/Work-In-Action burgundy. Four roles per accent:
+
+     -solid  text/border/icon accent on light surfaces, and the bg of a
+             solid element carrying white text (active nav pill)
+     -wash   soft tinted bg paired with -solid as its text/icon color
+     -tint   light form: the kicker color on the (always-dark) navy end
+             of banner gradients, and the text/border accent in dark mode
+
+   All pairings meet WCAG AA 4.5:1 (white on -solid; -solid on -wash;
+   -tint on the navy banner end, on the dark page bg, and on the dark
+   -wash). Same structure as --diagram-*: light values here, dark
+   overrides in the [data-theme='dark'] block below, so components using
+   the mapped --section-accent* vars inherit dark mode with no per-module
+   dark selectors. */
+:root {
+  --accent-about-solid: #1e293b;
+  --accent-about-wash: #e2e8f0;
+  --accent-about-tint: #cbd5e1;
+  --accent-explainers-solid: #1e40af;
+  --accent-explainers-wash: #e0e7ff;
+  --accent-explainers-tint: #c7d2fe;
+  --accent-feedback-solid: #166534;
+  --accent-feedback-wash: #dcfce7;
+  --accent-feedback-tint: #a7f3d0;
+  --accent-accelerator-solid: #581c87;
+  --accent-accelerator-wash: #f3e8ff;
+  --accent-accelerator-tint: #e9d5ff;
+  --accent-interop-solid: #92400e;
+  --accent-interop-wash: #ffedd5;
+  --accent-interop-tint: #fcd9b8;
+  --accent-events-solid: #9f1239;
+  --accent-events-wash: #ffe4e6;
+  --accent-events-tint: #f6b8d0;
+}
+
+/* Dark theme: -solid brightens one step so white text still passes AA
+   while the pill reads as a shape against the dark ground; text/border
+   accents switch to the -tint form; washes deepen (badge-new pattern). */
+[data-theme='dark'] {
+  --accent-about-solid: #475569;
+  --accent-about-wash: #334155;
+  --accent-explainers-solid: #3451c9;
+  --accent-explainers-wash: #312e81;
+  --accent-feedback-solid: #15803d;
+  --accent-feedback-wash: #14532d;
+  --accent-accelerator-solid: #7c3aed;
+  --accent-accelerator-wash: #4c1d95;
+  --accent-interop-solid: #b45309;
+  --accent-interop-wash: #7c2d12;
+  --accent-events-solid: #be123c;
+  --accent-events-wash: #881337;
+}
+
+/* Route -> accent mapping. The swizzled Layout and SectionNav stamp
+   data-section (the `accent` key of the matched SECTION_NAV entry,
+   src/data/sectionNav.js) on the section-nav wrapper and the main
+   content wrapper. Components consume only the mapped vars below, with
+   a brand-primary fallback, so pages outside any section (/404,
+   /privacy, /search) keep today's look. */
+[data-section='about'] {
+  --section-accent: var(--accent-about-solid);
+  --section-accent-strong: var(--accent-about-solid);
+  --section-accent-wash: var(--accent-about-wash);
+  --section-accent-onbanner: var(--accent-about-tint);
+}
+[data-section='explainers'] {
+  --section-accent: var(--accent-explainers-solid);
+  --section-accent-strong: var(--accent-explainers-solid);
+  --section-accent-wash: var(--accent-explainers-wash);
+  --section-accent-onbanner: var(--accent-explainers-tint);
+}
+[data-section='feedback'] {
+  --section-accent: var(--accent-feedback-solid);
+  --section-accent-strong: var(--accent-feedback-solid);
+  --section-accent-wash: var(--accent-feedback-wash);
+  --section-accent-onbanner: var(--accent-feedback-tint);
+}
+[data-section='accelerator'] {
+  --section-accent: var(--accent-accelerator-solid);
+  --section-accent-strong: var(--accent-accelerator-solid);
+  --section-accent-wash: var(--accent-accelerator-wash);
+  --section-accent-onbanner: var(--accent-accelerator-tint);
+}
+[data-section='interop'] {
+  --section-accent: var(--accent-interop-solid);
+  --section-accent-strong: var(--accent-interop-solid);
+  --section-accent-wash: var(--accent-interop-wash);
+  --section-accent-onbanner: var(--accent-interop-tint);
+}
+[data-section='events'] {
+  --section-accent: var(--accent-events-solid);
+  --section-accent-strong: var(--accent-events-solid);
+  --section-accent-wash: var(--accent-events-wash);
+  --section-accent-onbanner: var(--accent-events-tint);
+}
+
+/* In dark mode the text/border accent role flips to the tint (the solid
+   jewel tones vanish against a dark ground); -strong stays the solid,
+   which the dark block above already brightened. */
+[data-theme='dark'] [data-section='about'] {
+  --section-accent: var(--accent-about-tint);
+}
+[data-theme='dark'] [data-section='explainers'] {
+  --section-accent: var(--accent-explainers-tint);
+}
+[data-theme='dark'] [data-section='feedback'] {
+  --section-accent: var(--accent-feedback-tint);
+}
+[data-theme='dark'] [data-section='accelerator'] {
+  --section-accent: var(--accent-accelerator-tint);
+}
+[data-theme='dark'] [data-section='interop'] {
+  --section-accent: var(--accent-interop-tint);
+}
+[data-theme='dark'] [data-section='events'] {
+  --section-accent: var(--accent-events-tint);
+}
+
 /* Visually hidden but still announced by screen readers/assistive tech —
    e.g. a stable page H1 that sighted users don't need repeated over a
    visible marketing heading. */

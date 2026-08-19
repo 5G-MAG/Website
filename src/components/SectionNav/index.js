@@ -24,11 +24,22 @@ function matchesPrefix(pathname, prefix) {
 // publishes it as --section-nav-height, which those sidebar stylesheets add
 // on top of --ifm-navbar-height. Kept at 0px whenever no section matches
 // (most pages), so the sidebar sits exactly where it always did.
-export default function SectionNav() {
+// The one route -> SECTION_NAV resolution, shared with the swizzled Layout
+// (src/theme/Layout), which stamps the matched entry's `accent` as a
+// data-section attribute on the main content wrapper so the per-section
+// accent tokens in custom.css apply to page content as well as this bar.
+export function useSection() {
   const { pathname: rawPathname } = useLocation();
   const { siteConfig } = useDocusaurusContext();
   const pathname = stripBaseUrl(rawPathname, siteConfig.baseUrl);
-  const section = SECTION_NAV.find((s) => s.prefixes.some((p) => matchesPrefix(pathname, p)));
+  return SECTION_NAV.find((s) => s.prefixes.some((p) => matchesPrefix(pathname, p)));
+}
+
+export default function SectionNav() {
+  const section = useSection();
+  // Raw pathname is only an effect dependency (re-measure on navigation);
+  // the section resolution above already handles baseUrl stripping.
+  const { pathname } = useLocation();
   const ref = useRef(null);
 
   useEffect(() => {
@@ -43,7 +54,7 @@ export default function SectionNav() {
 
   if (!section) return null;
   return (
-    <div ref={ref}>
+    <div ref={ref} data-section={section.accent}>
       <PageNav title={section.title} titleHref={section.titleHref} items={section.items} />
     </div>
   );

@@ -10,6 +10,11 @@
 // to that section's hub — `title` text matches the corresponding top-navbar
 // item's own label where one exists (src/theme/navItems.js), so the same
 // section is never named two different ways across the page.
+// `accent` names the section's accent-color family: it becomes the
+// data-section attribute the swizzled Layout and SectionNav stamp on their
+// wrappers, which selects one of the [data-section='...'] token blocks in
+// src/css/custom.css. Valid values are the six keys defined there:
+// about | explainers | feedback | accelerator | interop | events.
 // useLocation().pathname is the raw browser path, which includes baseUrl
 // (e.g. '/Website/structure' while baseUrl is '/Website/' for interim
 // testing) -- but every prefix/href above is written root-relative
@@ -31,6 +36,7 @@ export const SECTION_NAV = [
     prefixes: ['/about', '/contact', '/partnerships', '/structure', '/subscribe'],
     title: 'About Us',
     titleHref: '/about',
+    accent: 'about',
     items: [
       { label: 'Structure', href: '/structure' },
       { label: 'Partnerships', href: '/partnerships' },
@@ -42,6 +48,7 @@ export const SECTION_NAV = [
     prefixes: ['/membership'],
     title: 'Membership',
     titleHref: '/membership',
+    accent: 'about',
     items: [
       { label: 'Request information', href: '/membership#request-membership' },
       { label: 'Our Members', href: '/membership#our-members' },
@@ -66,6 +73,7 @@ export const SECTION_NAV = [
     ],
     title: 'Software Accelerator',
     titleHref: '/developer',
+    accent: 'accelerator',
     items: [
       { label: 'Reference Tools', href: '/reference-tools' },
       { label: 'Testbeds', href: '/testbeds' },
@@ -80,6 +88,7 @@ export const SECTION_NAV = [
     prefixes: ['/videos'],
     title: 'Our Work In Action',
     titleHref: '/videos',
+    accent: 'events',
     items: [
       { label: 'All Videos', href: '/videos' },
       { label: 'Workshops', href: '/workshops' },
@@ -92,6 +101,7 @@ export const SECTION_NAV = [
     prefixes: ['/tech'],
     title: 'Explainers & Profiles',
     titleHref: '/tech',
+    accent: 'explainers',
     items: [
       { label: 'Implementation Blueprints', href: '/tech/blueprints' },
       { label: 'Technology Exchanges', href: '/tech/exchanges' },
@@ -135,6 +145,7 @@ export const SECTION_NAV = [
     ],
     title: 'Explainers & Profiles',
     titleHref: '/tech',
+    accent: 'explainers',
     items: [
       { label: 'Implementation Blueprints', href: '/tech/blueprints' },
       { label: 'Technology Exchanges', href: '/tech/exchanges' },
@@ -149,6 +160,7 @@ export const SECTION_NAV = [
     prefixes: ['/standards', '/surveys'],
     title: 'Feedback & Requirements',
     titleHref: '/standards',
+    accent: 'feedback',
     items: [
       { label: 'Requirements towards SDOs', href: '/standards/requirements' },
       { label: 'Industry Surveys', href: '/surveys' },
@@ -161,6 +173,7 @@ export const SECTION_NAV = [
     prefixes: ['/testing'],
     title: 'Interop & Demos',
     titleHref: '/testing',
+    accent: 'interop',
     // Demos is the activity layer (plugfests, demos, trials) — it does not
     // own or gatekeep Testbeds or Reference Tools, so beyond its own
     // plugfest write-ups it has no sub-items pointing back at those.
@@ -173,6 +186,7 @@ export const SECTION_NAV = [
     prefixes: ['/events', '/public-call', '/workshops', '/oscar', '/osmart'],
     title: 'Events',
     titleHref: '/events',
+    accent: 'events',
     items: [
       { label: 'Dev Public Call', href: '/public-call' },
       { label: 'MWC', href: '/mwc' },
@@ -188,30 +202,35 @@ export const SECTION_NAV = [
     prefixes: ['/mwc'],
     title: 'MWC',
     titleHref: '/mwc',
+    accent: 'events',
     items: [{ label: 'Events', href: '/events' }],
   },
   {
     prefixes: ['/ibc'],
     title: 'IBC',
     titleHref: '/ibc',
+    accent: 'events',
     items: [{ label: 'Events', href: '/events' }],
   },
   {
     prefixes: ['/fmt'],
     title: 'FMT',
     titleHref: '/fmt',
+    accent: 'events',
     items: [{ label: 'Events', href: '/events' }],
   },
   {
     prefixes: ['/news'],
     title: 'News',
     titleHref: '/news',
+    accent: 'about',
     items: [{ label: 'Podcast', href: '/podcast' }],
   },
   {
     prefixes: ['/podcast'],
     title: 'Podcast',
     titleHref: '/podcast',
+    accent: 'about',
     items: [{ label: 'News', href: '/news' }],
   },
 ];
