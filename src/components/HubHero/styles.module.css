@@ -1,9 +1,7 @@
 .hero {
-  /* Single gradient ending on the text-safe cyan: white text meets WCAG AA
-     (4.5:1) at every horizontal position, so no darkening scrim layer is
-     needed (there is no photo behind this hero). Same treatment as
-     .topic-banner in custom.css; the two must stay in step. */
-  background: linear-gradient(to right, #002a66 0%, #007a9e 100%);
+  background:
+    linear-gradient(to right, rgba(0, 0, 0, 0.62) 45%, rgba(0, 0, 0, 0.18) 100%),
+    linear-gradient(to right, #003580 0%, #00a0d2 100%);
   padding: 2.25rem 0;
 }
 
