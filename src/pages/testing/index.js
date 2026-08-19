@@ -78,7 +78,7 @@ const WHATS_HERE = [
   {
     title: 'Testing Events',
     desc: 'Interoperability plugfests where reference code is tested side by side.',
-    href: '/testing/#testing-events',
+    href: '/testing#testing-events',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
