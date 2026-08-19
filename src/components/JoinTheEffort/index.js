@@ -99,8 +99,8 @@ export default function JoinTheEffort({ id, alt = false }) {
           industry.
         </p>
         <div className="community-tiles community-tiles--even">
-          {TILES.map((t) => (
-            <Tile key={t.key} {...t} />
+          {TILES.map(({ key, ...t }) => (
+            <Tile key={key} {...t} />
           ))}
         </div>
       </div>
