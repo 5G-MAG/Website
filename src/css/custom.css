@@ -934,9 +934,11 @@
   padding: 1rem 1.5rem;
   min-height: 5.25rem;
   border-radius: 14px;
-  background:
-    linear-gradient(to right, rgba(0, 0, 0, 0.62) 45%, rgba(0, 0, 0, 0.18) 100%),
-    linear-gradient(to right, #003580 0%, #00a0d2 100%);
+  /* Single gradient ending on the text-safe cyan: white text meets WCAG AA
+     (4.5:1) at every horizontal position, so no darkening scrim layer is
+     needed (no photo sits behind this banner). Same treatment as HubHero's
+     .hero; the two must stay in step. */
+  background: linear-gradient(to right, #002a66 0%, #007a9e 100%);
   margin-bottom: 1.75rem;
 }
 
