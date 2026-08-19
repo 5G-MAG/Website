@@ -959,10 +959,7 @@
 
 .topic-banner__kicker {
   display: block;
-  /* Section accent in its on-banner (light tint) form: the kicker sits on
-     the navy end of the banner gradient, where every tint meets WCAG AA.
-     White fallback outside any section. */
-  color: var(--section-accent-onbanner, #fff);
+  color: #fff;
   font-size: 0.75rem;
   line-height: 1;
   font-weight: 700;
