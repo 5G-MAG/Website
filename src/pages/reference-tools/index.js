@@ -240,13 +240,15 @@ function CategoryCard({ title, desc, topics }) {
       </div>
       <div className={styles.categoryTopicGrid}>
         {topics.map((t) => (
-          <Link key={t.href} to={t.href} className={styles.categoryTopicCard}>
-            {t.icon && <span className={styles.categoryTopicIcon}>{t.icon}</span>}
-            <span className={styles.categoryTopicCardBody}>
-              <span className={styles.categoryTopicName}>{t.title}</span>
-              <span className={styles.categoryTopicDescText}>{t.desc}</span>
-            </span>
-          </Link>
+          <div key={t.href} className={styles.categoryTopicCard}>
+            <Link to={t.href} className={styles.categoryTopicMain}>
+              {t.icon && <span className={styles.categoryTopicIcon}>{t.icon}</span>}
+              <span className={styles.categoryTopicCardBody}>
+                <span className={styles.categoryTopicName}>{t.title}</span>
+                <span className={styles.categoryTopicDescText}>{t.desc}</span>
+              </span>
+            </Link>
+          </div>
         ))}
       </div>
     </div>
