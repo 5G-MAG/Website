@@ -23,9 +23,7 @@ export function loadGoogleAnalytics() {
   loaded = true;
 
   window.dataLayer = window.dataLayer || [];
-  // eslint-disable-next-line no-inner-declarations
   function gtag() {
-    // eslint-disable-next-line prefer-rest-params
     window.dataLayer.push(arguments);
   }
   window.gtag = gtag;

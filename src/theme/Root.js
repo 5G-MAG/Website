@@ -15,7 +15,6 @@ function RouteChangeTracker() {
     if (isAnalyticsLoaded()) {
       trackPageview(location.pathname + location.search);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname, location.search]);
 
   return null;
