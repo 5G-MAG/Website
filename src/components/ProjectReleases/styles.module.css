@@ -53,8 +53,9 @@
 }
 
 .badgeNew {
-  /* Distinct violet, not brand blue — blue reads as "clickable" everywhere
-     else on this page (see custom.css's --badge-new-background comment). */
+  /* Gold, the site's release-state color (see custom.css's
+     --badge-new-background comment) — not brand blue, which reads as
+     "clickable" everywhere else on this page. */
   background: var(--badge-new-background);
   color: var(--badge-new-foreground);
   font-size: 0.62rem;

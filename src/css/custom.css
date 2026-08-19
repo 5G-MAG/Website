@@ -79,14 +79,16 @@
      shared global radius, which cards/inputs also use) rounds any
      button height fully without affecting anything else. */
   --ifm-button-border-radius: 999px;
-  /* "New" badge accent — deliberately not brand blue (that reads as "this
-     is clickable" everywhere else on the site) or success/warning green/
-     amber (already mean Ready/Active and Draft/Maintenance elsewhere).
-     Reuses the violet already used for the Applications hero tile, in the
-     same soft-background/dark-foreground pairing Infima's own
-     success/warning contrast pairs use. */
-  --badge-new-background: rgb(237, 231, 250);
-  --badge-new-foreground: rgb(58, 24, 122);
+  /* "New" badge accent — the site's one other "release" indicator besides
+     the solid gold pill on HeroSlideshow's release slides (#fab900, the
+     brand's own Accent2 gold), so this reuses that hue rather than a third
+     unrelated color for the same meaning. Soft wash pairing (not the
+     solid pill) to match this badge's smaller, inline placement; not
+     brand blue (reads as "clickable" everywhere else) and not the
+     existing RC/status amber (#fcd34d family, already means Draft/
+     Maintenance) -- a distinct lighter tint of the true gold hue instead. */
+  --badge-new-background: #fdf1cf;
+  --badge-new-foreground: #6b4f00;
   /* Standards tag on the per-project Repositories list — teal so it reads
      as its own category next to the neutral license/software/dependency
      chips, without reusing blue (link/brand), violet (New) or green/amber
@@ -119,9 +121,9 @@
   --ifm-color-primary-lightest: #47c8f0;
   --ifm-color-primary-textsafe: #007a9e;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-  /* Swapped from the light pairing above, same violet. */
-  --badge-new-background: rgb(58, 24, 122);
-  --badge-new-foreground: rgb(237, 231, 250);
+  /* Swapped from the light pairing above, same gold hue, darkened wash. */
+  --badge-new-background: #3d2e00;
+  --badge-new-foreground: #ffcd3d;
   /* Swapped from the light pairing above, same teal. */
   --tag-standard-background: rgb(0, 77, 64);
   --tag-standard-foreground: rgb(219, 240, 237);
