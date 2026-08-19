@@ -47,11 +47,7 @@
   justify-content: center;
   border-radius: 8px;
   padding: 0.4rem 0.2rem;
-  background: linear-gradient(
-    135deg,
-    var(--ifm-color-primary-darkest) 0%,
-    var(--ifm-color-primary-textsafe) 100%
-  );
+  background: var(--band-gradient);
   color: #fff;
 }
 

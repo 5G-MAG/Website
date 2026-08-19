@@ -175,11 +175,7 @@
   justify-content: center;
   gap: 0.65rem;
   padding: 1.5rem 1.25rem 1.35rem;
-  background: linear-gradient(
-    135deg,
-    var(--ifm-color-primary-darkest) 0%,
-    var(--ifm-color-primary) 100%
-  );
+  background: var(--band-gradient);
   transition: opacity 0.2s ease;
 }
 
@@ -295,11 +291,7 @@
 
 .categoryHeader {
   padding: 1.4rem 1.4rem 1.1rem;
-  background: linear-gradient(
-    135deg,
-    var(--ifm-color-primary-darkest) 0%,
-    var(--ifm-color-primary) 100%
-  );
+  background: var(--band-gradient);
 }
 
 .categoryTitle {
@@ -439,11 +431,7 @@
   align-items: center;
   gap: 1rem;
   padding: 1.75rem 1.5rem;
-  background: linear-gradient(
-    135deg,
-    var(--ifm-color-primary-darkest) 0%,
-    var(--ifm-color-primary) 100%
-  );
+  background: var(--band-gradient);
   text-decoration: none !important;
   transition: opacity 0.2s ease;
 }

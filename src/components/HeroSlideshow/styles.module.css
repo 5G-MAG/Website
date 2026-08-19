@@ -152,11 +152,7 @@
   flex-direction: column;
   gap: 0.5rem;
   padding: 1rem 1.5rem 0.9rem;
-  background: linear-gradient(
-    135deg,
-    var(--ifm-color-primary-darkest) 0%,
-    var(--ifm-color-primary-textsafe) 100%
-  );
+  background: var(--band-gradient);
 }
 
 .slideCardHeaderMain {
