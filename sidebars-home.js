@@ -23,7 +23,7 @@ const sidebars = {
   //
   // communitySidebar removed entirely (2026-07-18): how-to-use,
   // guidelines-contributors and Contributors moved back to /developer/*,
-  // and public-call merged into /events/public-call (see docs/home/events/).
+  // and public-call now lives at /public-call (docs/home/public-call.mdx).
   // /community itself was retired as a standalone page (2026-07-18): its
   // content was a subset of /developer's own "Join the Community" section,
   // so it now redirects there (see docusaurus.config.js's static

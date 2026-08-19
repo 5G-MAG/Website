@@ -67,7 +67,7 @@ const WHATS_HERE = [
   {
     title: 'Demos',
     desc: 'Recorded plugfest and trade-show demonstrations.',
-    href: '/testing/#demonstrators',
+    href: '/testing#demonstrators',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M15 10l4.553 -2.069a1 1 0 0 1 1.447 .894v6.35a1 1 0 0 1 -1.447 .894l-4.553 -2.069v-4" />

@@ -105,7 +105,7 @@ export const SECTION_NAV = [
     accent: 'explainers',
     items: [
       { label: 'Implementation Blueprints', href: '/tech/blueprints' },
-      { label: 'Technology Exchanges', href: '/tech/exchanges' },
+      { label: 'Technology Exchange', href: '/tech/exchanges' },
       { label: '3GPP Work Items', href: '/tech/3gpp-work-items' },
       { label: 'Glossary', href: '/tech/glossary' },
     ],
@@ -150,7 +150,7 @@ export const SECTION_NAV = [
     accent: 'explainers',
     items: [
       { label: 'Implementation Blueprints', href: '/tech/blueprints' },
-      { label: 'Technology Exchanges', href: '/tech/exchanges' },
+      { label: 'Technology Exchange', href: '/tech/exchanges' },
       { label: '3GPP Work Items', href: '/tech/3gpp-work-items' },
       { label: 'Glossary', href: '/tech/glossary' },
     ],

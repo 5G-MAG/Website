@@ -242,7 +242,7 @@ const config = {
           items: [
             { label: 'Overview', to: '/tech' },
             { label: 'Categories & Topics', to: '/tech#categories-topics' },
-            { label: 'Technology Exchanges', to: '/tech/exchanges' },
+            { label: 'Technology Exchange', to: '/tech/exchanges' },
           ],
         },
         {

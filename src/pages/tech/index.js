@@ -293,7 +293,7 @@ const WHATS_HERE = [
   {
     title: 'Categories & Topics',
     desc: 'Every technology area, browsable by category and topic.',
-    href: '/tech/#categories-topics',
+    href: '/tech#categories-topics',
     icon: icon(
       <>
         <rect x="4" y="4" width="6" height="6" rx="1" />
