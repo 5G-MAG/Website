@@ -165,6 +165,7 @@ export default function Home() {
   // Hooks can't be called inside the CONTRIBUTORS.map callback below
   // (rules-of-hooks); resolve the directory once and concatenate.
   const contributorsBaseUrl = useBaseUrl('/assets/images/contributors/');
+  const overviewPdfUrl = useBaseUrl('/docs/Reference_Tools_Overview.pdf');
   return (
     <Layout
       title="Software Accelerator"
@@ -180,7 +181,7 @@ export default function Home() {
           <a
             key="overview"
             className="button button--outline button--primary"
-            href="pathname:///docs/Reference_Tools_Overview.pdf"
+            href={overviewPdfUrl}
             target="_blank"
             rel="noopener noreferrer"
           >
