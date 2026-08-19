@@ -33,7 +33,7 @@ export function stripBaseUrl(pathname, baseUrl) {
 
 export const SECTION_NAV = [
   {
-    prefixes: ['/about', '/contact', '/partnerships', '/structure', '/subscribe'],
+    prefixes: ['/about', '/contact', '/partnerships', '/structure', '/subscribe', '/privacy'],
     title: 'About Us',
     titleHref: '/about',
     accent: 'about',
@@ -42,6 +42,7 @@ export const SECTION_NAV = [
       { label: 'Partnerships', href: '/partnerships' },
       { label: 'Contact', href: '/contact' },
       { label: 'Subscribe', href: '/subscribe' },
+      { label: 'Privacy Notice', href: '/privacy' },
     ],
   },
   {

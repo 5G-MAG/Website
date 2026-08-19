@@ -234,6 +234,7 @@ const config = {
             { label: 'Partnerships', to: '/partnerships' },
             { label: 'Contact', to: '/contact' },
             { label: 'Membership', to: '/membership' },
+            { label: 'Privacy Notice', to: '/privacy' },
           ],
         },
         {
