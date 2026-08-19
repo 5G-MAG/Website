@@ -40,7 +40,7 @@ export const EVENTS_AGENDA = [
     title: '5G-MAG at MWC 2026',
     type: 'Conference',
     location: 'Barcelona',
-    href: '/mwc',
+    href: '/events/agenda/mwc-2026',
     flagship: true,
     image: '/assets/images/events/mwc-2026.png',
   },

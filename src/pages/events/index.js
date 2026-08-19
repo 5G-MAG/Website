@@ -158,6 +158,9 @@ export default function Events() {
               Previous conferences, workshops, webinars and calls.
             </p>
             <PastAgenda events={EVENTS_AGENDA} />
+            <p style={{ textAlign: 'center', marginTop: '1.5rem', fontWeight: 600 }}>
+              <Link to="/events/agenda">Browse the full agenda archive &rarr;</Link>
+            </p>
           </div>
         </section>
 
