@@ -152,7 +152,12 @@ async function fetchPlaylist(name, playlistId) {
   const url = `https://www.youtube.com/feeds/videos.xml?playlist_id=${playlistId}`;
   console.log(`Fetching "${name}" playlist (${playlistId})…`);
   const xml = await get(url);
-  const videos = parseEntries(xml);
+  // A playlist can contain the same video more than once (re-added by a
+  // curator), and the RSS feed then lists it twice. Keep only the first
+  // (newest) occurrence per video id, so galleries don't render duplicate
+  // cards whose anchor ids and React keys collide.
+  const seen = new Set();
+  const videos = parseEntries(xml).filter((v) => !seen.has(v.id) && seen.add(v.id));
   console.log(`  -> ${videos.length} videos`);
   return { playlistId, playlistUrl: `https://www.youtube.com/playlist?list=${playlistId}`, videos };
 }
