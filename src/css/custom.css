@@ -79,16 +79,6 @@
      shared global radius, which cards/inputs also use) rounds any
      button height fully without affecting anything else. */
   --ifm-button-border-radius: 999px;
-  /* The one gradient used by every icon band (project cards, go-deeper
-     bands, hub tile headers, hero figure tiles, agenda date badges).
-     Ends on the text-safe cyan so the white text/icons these bands carry
-     stay at WCAG AA across the whole band. Previously 11 hand-copied
-     declarations, half of which had drifted to a non-text-safe endpoint. */
-  --band-gradient: linear-gradient(
-    135deg,
-    var(--ifm-color-primary-darkest) 0%,
-    var(--ifm-color-primary-textsafe) 100%
-  );
   /* "New" badge accent — deliberately not brand blue (that reads as "this
      is clickable" everywhere else on the site) or success/warning green/
      amber (already mean Ready/Active and Draft/Maintenance elsewhere).
@@ -361,7 +351,11 @@
   justify-content: center;
   gap: 0.65rem;
   padding: 1.5rem 1.25rem 1.35rem;
-  background: var(--band-gradient);
+  background: linear-gradient(
+    135deg,
+    var(--ifm-color-primary-darkest) 0%,
+    var(--ifm-color-primary-textsafe) 100%
+  );
   text-decoration: none !important;
   transition: opacity 0.2s ease;
 }
@@ -825,7 +819,11 @@
 
 .godeeper-card__band {
   padding: 1.1rem 1.1rem 0.9rem;
-  background: var(--band-gradient);
+  background: linear-gradient(
+    135deg,
+    var(--ifm-color-primary-darkest) 0%,
+    var(--ifm-color-primary-textsafe) 100%
+  );
   display: flex;
   align-items: center;
   gap: 0.6rem;
