@@ -57,12 +57,6 @@ const config = {
     },
   },
 
-  // Mermaid is used only for the diagram kinds a purpose-built component does
-  // not express well: call flows (sequence diagrams) and data models. The
-  // architecture diagrams use src/components/ArchitectureMap instead, which is
-  // data-driven and can carry the implementing repository per entity.
-  themes: ['@docusaurus/theme-mermaid'],
-
   plugins: [
     // Redirect map cut down (2026-07-29): the large PREFIX_MAP this plugin
     // used to carry only protected against bookmarks/search-engine links to
@@ -176,7 +170,17 @@ const config = {
     ],
   ],
 
+  // One themes array only: a second `themes:` key elsewhere in this object
+  // would silently overwrite this one (JS object-literal semantics), which
+  // is exactly how the mermaid theme was once dropped while the search
+  // theme survived.
   themes: [
+    // Mermaid is used only for the diagram kinds a purpose-built component
+    // does not express well: call flows (sequence diagrams) and data models.
+    // The architecture diagrams use src/components/ArchitectureMap instead,
+    // which is data-driven and can carry the implementing repository per
+    // entity.
+    '@docusaurus/theme-mermaid',
     [
       require.resolve('@easyops-cn/docusaurus-search-local'),
       {
