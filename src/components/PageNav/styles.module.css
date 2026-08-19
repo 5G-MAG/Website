@@ -1,6 +1,8 @@
 .pageNav {
   background: var(--ifm-background-surface-color);
-  border-bottom: 1px solid var(--ifm-color-emphasis-300);
+  /* The section's accent underlines the bar as a wayfinding cue; falls
+     back to the neutral hairline on pages outside any section. */
+  border-bottom: 2px solid var(--section-accent, var(--ifm-color-emphasis-300));
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
   position: relative;
 }
@@ -47,7 +49,7 @@
 }
 
 .navSectionLabel:hover {
-  color: var(--ifm-color-primary) !important;
+  color: var(--section-accent, var(--ifm-color-primary)) !important;
 }
 
 .navDivider {
@@ -80,32 +82,31 @@
    own .button--outline behavior (e.g. the project sub-nav buttons), so a
    plain pill and an Infima outline button give the same feedback shape. */
 .navChip:hover {
-  background: var(--ifm-color-primary);
-  border-color: var(--ifm-color-primary);
+  background: var(--section-accent-strong, var(--ifm-color-primary));
+  border-color: var(--section-accent-strong, var(--ifm-color-primary));
   color: #fff;
   text-decoration: none;
 }
 
 .navChip:active {
-  background: var(--ifm-color-primary-dark);
-  border-color: var(--ifm-color-primary-dark);
+  background: var(--section-accent-strong, var(--ifm-color-primary-dark));
+  border-color: var(--section-accent-strong, var(--ifm-color-primary-dark));
   color: #fff;
 }
 
 .navChip:focus-visible,
 .navSectionLabel:focus-visible {
-  outline: 2px solid var(--ifm-color-primary);
+  outline: 2px solid var(--section-accent, var(--ifm-color-primary));
   outline-offset: 2px;
 }
 
-/* Darker than --ifm-color-primary specifically so the white chip text
-   meets WCAG AA (4.5:1) — the plain primary only reaches ~3:1, the same
-   reason --ifm-color-primary-textsafe exists (see custom.css); every other
-   white-on-primary badge/chip in this codebase already uses this darker
-   pairing. */
+/* The section's -strong accent is defined to meet WCAG AA (4.5:1) under
+   white text in both themes (see the accent block in custom.css). The
+   fallback stays primary-darkest, not plain primary, for the same AA
+   reason --ifm-color-primary-textsafe exists. */
 .navChipActive {
-  background: var(--ifm-color-primary-darkest);
-  border-color: var(--ifm-color-primary-darkest);
+  background: var(--section-accent-strong, var(--ifm-color-primary-darkest));
+  border-color: var(--section-accent-strong, var(--ifm-color-primary-darkest));
   color: #fff;
 }
 
@@ -114,14 +115,14 @@
    its distinct "you are here" shade on hover instead of flashing to the
    plain hover-blue every other chip uses. */
 .navChipActive:hover {
-  background: var(--ifm-color-primary-darkest);
-  border-color: var(--ifm-color-primary-darkest);
+  background: var(--section-accent-strong, var(--ifm-color-primary-darkest));
+  border-color: var(--section-accent-strong, var(--ifm-color-primary-darkest));
   color: #fff;
 }
 
 .navChipActive:active {
-  background: var(--ifm-color-primary-darkest);
-  border-color: var(--ifm-color-primary-darkest);
+  background: var(--section-accent-strong, var(--ifm-color-primary-darkest));
+  border-color: var(--section-accent-strong, var(--ifm-color-primary-darkest));
   color: #fff;
 }
 
