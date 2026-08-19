@@ -127,6 +127,7 @@ export const SECTION_NAV = [
       '/standards/5g-broadcast',
       '/standards/5g-broadcast-standards-evolution',
       '/standards/5g-mbs',
+      '/standards/5g-mbs-standards-evolution',
       '/standards/5gms',
       '/standards/6g',
       '/standards/ai-ml',

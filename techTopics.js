@@ -36,6 +36,10 @@ export const TECH_GROUPS = [
         autogen: '5g-mbs',
         standards: [
           { doc: 'standards/5g-mbs', label: 'Standards: 5G Multicast Broadcast Services (MBS)' },
+          {
+            doc: 'standards/5g-mbs-standards-evolution',
+            label: 'Standards: 5G MBS - Standards Evolution',
+          },
         ],
       },
       {
