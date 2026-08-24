@@ -289,7 +289,7 @@ ${JSON.stringify(item, null, 2)}`,
               <ul className={styles.pillarMenuList}>
                 <li>
                   <Link to={preview.titleHref} className={styles.pillarMenuOverview}>
-                    {preview.title} overview
+                    {preview.title}
                   </Link>
                 </li>
                 <li className={styles.pillarMenuDivider} aria-hidden="true" />
