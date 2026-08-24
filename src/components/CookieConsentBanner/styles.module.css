@@ -60,18 +60,48 @@
   background: var(--ifm-color-primary-dark);
 }
 
+/* Mobile: the paragraph + two full-width stacked buttons ate roughly a
+   third of the viewport on first load, competing with the hero CTAs for
+   thumb space (2026-08-24 design audit). Tighter padding/type, Decline
+   demoted to a plain text action (still the same control, just visually
+   quieter than Accept), and both actions sit inline after the text
+   instead of stretching to fill the row. */
 @media (max-width: 560px) {
   .banner {
     justify-content: flex-start;
+    align-items: flex-start;
     text-align: left;
+    gap: 0.6rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .text {
+    font-size: 0.82rem;
+    line-height: 1.4;
   }
 
   .actions {
     width: 100%;
+    gap: 1rem;
+  }
+
+  .decline {
+    background: none;
+    border: none;
+    padding: 0.4rem 0.2rem;
+    text-decoration: underline;
+    color: var(--ifm-color-emphasis-700);
+  }
+
+  .decline:hover {
+    background: none;
+    color: var(--ifm-font-color-base);
   }
 
   .decline,
   .accept {
-    flex: 1;
+    flex: 0 0 auto;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
   }
 }
