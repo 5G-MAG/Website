@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import Link from '@docusaurus/Link';
 import { useLocation } from '@docusaurus/router';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -18,9 +19,37 @@ export default function PageNav({ title, titleHref, items }) {
   const { pathname: rawPathname } = useLocation();
   const { siteConfig } = useDocusaurusContext();
   const pathname = stripBaseUrl(rawPathname, siteConfig.baseUrl);
+
+  // On a narrow viewport this row scrolls horizontally with no visual hint
+  // that it does (2026-08-24 design audit: the last pill sat cut off at the
+  // edge, easy to miss on a phone). Tracks whether there's unseen content
+  // past the right edge -- true whenever the row overflows and hasn't been
+  // scrolled all the way to its end -- and only then applies the fade mask,
+  // so a row that fits at the current width shows no fade at all.
+  const rowRef = useRef(null);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  useEffect(() => {
+    const row = rowRef.current;
+    if (!row) return;
+    const update = () => {
+      setCanScrollRight(row.scrollWidth - row.clientWidth - row.scrollLeft > 1);
+    };
+    update();
+    row.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    return () => {
+      row.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
+  }, [items]);
+
   return (
     <nav className={styles.pageNav} aria-label="Section navigation">
-      <div className={`container ${styles.navRow}`}>
+      <div
+        ref={rowRef}
+        className={`container ${styles.navRow} ${canScrollRight ? styles.navRowFade : ''}`}
+      >
         {title && (
           <>
             <Link to={titleHref} className={styles.navSectionLabel}>

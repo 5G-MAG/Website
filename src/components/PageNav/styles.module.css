@@ -35,6 +35,16 @@
   scrollbar-width: thin;
 }
 
+/* Applied only while JS (PageNav/index.js) has measured real overflow past
+   the visible right edge, so a row that already fits at the current width
+   never gets faded. The mask sits on the scrolling element itself, so it
+   stays pinned to the viewport edge as content scrolls underneath it,
+   rather than moving with the content. */
+.navRowFade {
+  mask-image: linear-gradient(to right, black calc(100% - 2.5rem), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, black calc(100% - 2.5rem), transparent 100%);
+}
+
 .navSectionLabel {
   display: inline-flex;
   align-items: center;
