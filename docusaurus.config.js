@@ -190,7 +190,40 @@ const config = {
       require.resolve('@easyops-cn/docusaurus-search-local'),
       {
         hashed: true,
-        docsRouteBasePath: ['/developer', '/tech'],
+        // '/tech' matches the 'tech' docs plugin instance's own
+        // routeBasePath. The rest are every top-level directory under
+        // docs/home/ (the 'home' docs plugin instance, routeBasePath ''
+        // -- src/pages/about etc. sit at the site root alongside it), so
+        // this needs the real prefixes rather than '' itself: the
+        // plugin's own matching logic (isSameOrSubRoute in
+        // node_modules/@easyops-cn/docusaurus-search-local/dist/server/
+        // server/utils/processDocInfos.js) treats an empty-string
+        // basePath as matching every route, but its Joi validation
+        // schema (validateOptions.js) rejects an empty-string array
+        // entry outright. Being broad here is safe either way: a listed
+        // prefix only ever promotes a route to full "docs" indexing if
+        // it's *also* a real loaded doc permalink (processDocInfos.js's
+        // docs.has(url) check), so a non-doc page sharing a prefix (there
+        // are none currently) would simply fall through to indexPages'
+        // page-level treatment exactly as before.
+        //
+        // The stale '/developer' entry this replaces matched no plugin
+        // at all -- that content moved to a root-level page -- so every
+        // route below was silently falling through to indexPages' thin
+        // per-page (not per-heading, no breadcrumb) treatment instead of
+        // full docs indexing (2026-08-24 findability audit).
+        docsRouteBasePath: [
+          '/tech',
+          '/action',
+          '/applications',
+          '/community',
+          '/developer',
+          '/events',
+          '/reference-tools',
+          '/standards',
+          '/testbeds',
+          '/workshops',
+        ],
         docsPluginIdForPreferredVersion: 'tech',
         indexBlog: false,
         indexPages: true,
