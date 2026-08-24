@@ -406,7 +406,7 @@ export default function Standards() {
             <p className={styles.sectionSubtitle}>
               Every feedback and requirements destination, in one place. Looking for the
               specifications each technology implements? Those live with the technical
-              analysis on <Link to="/tech#categories-topics">Technology</Link>{' '}
+              analysis on <Link to="/tech#categories-topics">Explainers &amp; Blueprints</Link>{' '}
               — every topic card there carries a direct Standards link.
             </p>
             <div className={styles.activityGrid}>

@@ -1,9 +1,13 @@
 // "Running the Loop: From Standards to Products" — standards bodies (3GPP,
 // ETSI, MPEG, IETF, GSMA, DVB, …) feed into a 4-stage loop (Requirements,
-// Technology, Software Accelerator, In Action) that closes back with a
-// Feedback arc into the standards bodies, and forwards into Products &
-// Deployments. Static SVG, no external image/licensing question. Used by
-// /about (src/pages/about/index.js) — the homepage uses its own, separate
+// Explainers & Blueprints, Software Accelerator, Interop & Demos) that
+// closes back with a Feedback arc into the standards bodies, and forwards
+// into Products & Deployments. Chip text here is deliberately the
+// practical/descriptive names, not the short nav-pillar labels (Technology,
+// In Action) — this diagram illustrates what each stage concretely
+// produces, not which nav box it lives under (2026-08-24 user feedback).
+// Static SVG, no external image/licensing question. Used by /about
+// (src/pages/about/index.js) — the homepage uses its own, separate
 // MediaConnectivityDiagram instead, not this component.
 export default function StandardsLoopDiagram() {
   return (
@@ -209,7 +213,10 @@ export default function StandardsLoopDiagram() {
           <path d="M14 3v4a1 1 0 0 0 1 1h4 M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2 M9 17l0 -5 M12 17l0 -1 M15 17l0 -3" />
         </g>
         <text x="456" y="298" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="var(--diagram-chip-text)">
-          Technology
+          Explainers &amp;
+        </text>
+        <text x="456" y="314" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="var(--diagram-chip-text)">
+          Blueprints
         </text>
       </g>
       <g>
@@ -244,10 +251,10 @@ export default function StandardsLoopDiagram() {
           <path d="M7 12l5 5l-1.5 1.5a3.536 3.536 0 1 1 -5 -5l1.5 -1.5 M17 12l-5 -5l1.5 -1.5a3.536 3.536 0 1 1 5 5l-1.5 1.5 M3 21l2.5 -2.5 M18.5 5.5l2.5 -2.5 M10 11l-2 2 M13 14l-2 2" />
         </g>
         <text x="724" y="298" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="var(--diagram-chip-text)">
-          In
+          Interop &amp;
         </text>
         <text x="724" y="314" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="var(--diagram-chip-text)">
-          Action
+          Demos
         </text>
       </g>
       <path
