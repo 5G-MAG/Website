@@ -106,7 +106,7 @@ function ageColorClass(days) {
 const STATUS_CLASSES = {
   Active: styles.statusActive,
   Maintenance: styles.statusMaintenance,
-  Stable: styles.statusStable,
+  Quiet: styles.statusStable,
 };
 
 function ContributorAvatar({ company }) {
