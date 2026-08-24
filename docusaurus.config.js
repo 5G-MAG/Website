@@ -104,6 +104,11 @@ const config = {
           // to wherever their content actually ended up.
           { from: '/reference-tools/multimedia/rt-libflute-standards', to: '/standards/multimedia' },
           { from: '/reference-tools/multimedia/rt-libflute-implementation', to: '/reference-tools/multimedia/scope' },
+          // /testing renamed to /action (2026-08-24): live on www.5g-mag.com
+          // since the 2026-07-28 cutover, so bookmarks/search-engine
+          // indexing may still point at the old path.
+          { from: '/testing', to: '/action' },
+          { from: '/testing/5g-broadcast-plugfest', to: '/action/5g-broadcast-plugfest' },
         ],
       },
     ],
@@ -277,7 +282,7 @@ const config = {
         },
         {
           title: 'In Action',
-          items: [{ label: 'Overview', to: '/testing' }],
+          items: [{ label: 'Overview', to: '/action' }],
         },
         {
           title: 'Videos',
