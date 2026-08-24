@@ -12,8 +12,8 @@
 // section is never named two different ways across the page.
 //
 // `subtitle`, present only on the four pillar entries (Software
-// Accelerator, Explainers & Profiles, Feedback & Requirements, Interop &
-// Demos), is the plain-language one-liner the top navbar's mega-menu
+// Accelerator, Technology, Standardisation, In Action), is the
+// plain-language one-liner the top navbar's mega-menu
 // (src/theme/Navbar/Content/index.js) shows on hover/focus — verbatim the
 // same text as that page's own hero-band topic-lead paragraph, so a
 // visitor sees the same clarification before the click that they'd get
@@ -90,7 +90,7 @@ export const SECTION_NAV = [
   },
   {
     prefixes: ['/videos'],
-    title: 'Our Work In Action',
+    title: 'Videos',
     titleHref: '/videos',
     items: [
       { label: 'All Videos', href: '/videos' },
@@ -102,7 +102,7 @@ export const SECTION_NAV = [
   },
   {
     prefixes: ['/tech'],
-    title: 'Explainers & Profiles',
+    title: 'Technology',
     titleHref: '/tech',
     subtitle: 'Specification profiles and implementation guidance — by the members, for the industry.',
     items: [
@@ -114,15 +114,15 @@ export const SECTION_NAV = [
   },
   // The per-topic Standards pages are Tech hub content served under
   // /standards/<topic> URLs: they list the specifications behind a topic's
-  // analysis and reference tools. They therefore carry the Explainers &
-  // Profiles bar and render the Tech topic menu (see standardsSidebar in
+  // analysis and reference tools. They therefore carry the Technology bar
+  // and render the Tech topic menu (see standardsSidebar in
   // sidebars-home.js), so the section a reader is in is the same one the
   // sidebar beside them shows.
   //
   // This entry must stay ABOVE the '/standards' entry below: the matcher is
   // first-match-wins (SectionNav and the navbar indicator both use
   // SECTION_NAV.find), so these exact paths would otherwise fall through to
-  // the Feedback & Requirements bar. A new per-topic Standards page needs its
+  // the Standardisation bar. A new per-topic Standards page needs its
   // path added here as well as to techTopics.js.
   {
     prefixes: [
@@ -147,7 +147,7 @@ export const SECTION_NAV = [
       '/standards/v3c',
       '/standards/xr',
     ],
-    title: 'Explainers & Profiles',
+    title: 'Technology',
     titleHref: '/tech',
     subtitle: 'Specification profiles and implementation guidance — by the members, for the industry.',
     items: [
@@ -162,7 +162,7 @@ export const SECTION_NAV = [
   // specification pages above.
   {
     prefixes: ['/standards', '/surveys'],
-    title: 'Feedback & Requirements',
+    title: 'Standardisation',
     titleHref: '/standards',
     subtitle: 'Shaping standards through concrete requirements and experienced-based feedback — submitted to SDOs.',
     items: [
@@ -175,7 +175,7 @@ export const SECTION_NAV = [
   },
   {
     prefixes: ['/testing'],
-    title: 'Interop & Demos',
+    title: 'In Action',
     titleHref: '/testing',
     subtitle: 'From specifications to code, and from code to deployments and products.',
     // Demos is the activity layer (plugfests, demos, trials) — it does not
@@ -183,7 +183,7 @@ export const SECTION_NAV = [
     // plugfest write-ups it has no sub-items pointing back at those.
     items: [
       { label: '5G Broadcast PlugFest 2026', href: '/testing/5g-broadcast-plugfest' },
-      { label: 'In Action', href: '/testing#demonstrators' },
+      { label: 'Demonstrators', href: '/testing#demonstrators' },
     ],
   },
   {

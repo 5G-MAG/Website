@@ -242,7 +242,7 @@ const config = {
           ],
         },
         {
-          title: 'Explainers & Profiles',
+          title: 'Technology',
           items: [
             { label: 'Overview', to: '/tech' },
             { label: 'Categories & Topics', to: '/tech#categories-topics' },
@@ -250,7 +250,7 @@ const config = {
           ],
         },
         {
-          title: 'Feedback & Requirements',
+          title: 'Standardisation',
           items: [
             { label: 'Overview', to: '/standards' },
             { label: 'Requirements towards SDOs', to: '/standards/requirements' },
@@ -276,11 +276,11 @@ const config = {
           ],
         },
         {
-          title: 'Interop & Demos',
+          title: 'In Action',
           items: [{ label: 'Overview', to: '/testing' }],
         },
         {
-          title: 'Our Work In Action',
+          title: 'Videos',
           items: [
             { label: 'All Videos', to: '/videos' },
             { label: 'Workshops', to: '/workshops' },

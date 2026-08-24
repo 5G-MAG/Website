@@ -23,10 +23,10 @@ export default function NotFoundContent({ className }) {
               Homepage
             </Link>
             <Link className="button button--outline button--primary button--lg" to="/tech">
-              Explainers & Profiles
+              Technology
             </Link>
             <Link className="button button--outline button--primary button--lg" to="/standards">
-              Feedback & Requirements
+              Standardisation
             </Link>
             <Link className="button button--outline button--primary button--lg" to="/developer">
               Software Accelerator

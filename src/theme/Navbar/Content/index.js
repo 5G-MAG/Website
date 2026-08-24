@@ -244,8 +244,8 @@ function SlidingIndicatorGroup({ items }) {
   );
 }
 
-// The four pillar items (Software Accelerator, Explainers & Profiles,
-// Feedback & Requirements, Interop & Demos) carry a `subtitle` on their
+// The four pillar items (Software Accelerator, Technology, Standardisation,
+// In Action) carry a `subtitle` on their
 // matching SECTION_NAV entry (2026-08-24 design audit: those labels are
 // 5G-MAG's own internal vocabulary, not self-explanatory from the navbar
 // alone before a click) — looked up here by titleHref so the preview

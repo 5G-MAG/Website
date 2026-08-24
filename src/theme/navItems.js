@@ -23,14 +23,14 @@ export const NEWS_ITEM = { to: '/news', label: 'News', position: 'left' };
 // neighbors) is uniform — see .navGroup's `gap` in Navbar/Content/styles.module.css.
 export const PROFILES_ITEM = {
   to: '/tech',
-  label: 'Explainers & Profiles',
+  label: 'Technology',
   position: 'left',
   className: styles.primaryNavItem,
 };
 
 export const FEEDBACK_ITEM = {
   to: '/standards',
-  label: 'Feedback & Requirements',
+  label: 'Standardisation',
   position: 'left',
   className: styles.primaryNavItem,
 };
@@ -44,7 +44,7 @@ export const DEV_ITEM = {
 
 export const INTEROP_ITEM = {
   to: '/testing',
-  label: 'Interop & Demos',
+  label: 'In Action',
   position: 'left',
   className: styles.primaryNavItem,
 };
