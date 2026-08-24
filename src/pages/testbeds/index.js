@@ -118,7 +118,7 @@ export default function Testbeds() {
           spec-implementing code itself and not the events where results get shown off.{' '}
           <Link to="/reference-tools">Reference Tools</Link> is the spec-implementing code these
           testbeds evaluate;{' '}
-          <Link to="/testing">Interop &amp; Demos</Link> is the separate activity layer where
+          <Link to="/action">In Action</Link> is the separate activity layer where
           these get shown off at real interoperability events, not something that owns or
           validates testbeds.
         </p>
@@ -127,7 +127,7 @@ export default function Testbeds() {
       <main>
         <section className={styles.section}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Testbeds & Evaluation Frameworks</h2>
+            <h2 className={styles.sectionTitle}>Available Testbeds</h2>
             <p className={styles.sectionSubtitle}>
               Access arrangements differ per testbed (some are open, others are available on request
               or through the community channels) — see{' '}

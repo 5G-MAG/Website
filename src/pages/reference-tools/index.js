@@ -275,7 +275,7 @@ export default function ReferenceTools() {
       <main>
         <section className={styles.section}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Tools by Category</h2>
+            <h2 className={styles.sectionTitle}>By Category</h2>
             <p className={styles.sectionSubtitle}>
               Start here if you know which specification or tool you want. For a complete end-to-end
               service scenario built from several tools, see{' '}

@@ -228,7 +228,7 @@ export default function Applications() {
       <main>
         <section className={styles.section}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Application Scenarios</h2>
+            <h2 className={styles.sectionTitle}>Scenarios</h2>
             <p className={styles.sectionSubtitle}>
               Start here if you want to understand what you can build and which tools to use. If
               you&apos;re looking for an individual specification implementation, see{' '}

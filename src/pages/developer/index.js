@@ -154,7 +154,7 @@ function ProductTypeCard({ icon, label, description, href }) {
       <div className={styles.productCardBody}>
         <p className={styles.productCardDesc}>{description}</p>
       </div>
-      <div className={styles.productCardFooter}>Explore {label} &rarr;</div>
+      <div className={styles.productCardFooter}>Explore more &rarr;</div>
     </Link>
   );
 }
