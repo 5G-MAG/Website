@@ -129,6 +129,90 @@ Hide color mode toggle in small viewports
   color: var(--ifm-color-primary);
 }
 
+/* Mega-menu preview on the four pillar items (2026-08-24 design audit):
+   a plain-language one-liner plus that section's own sub-page list,
+   surfaced on hover/focus so a first-time visitor doesn't have to click
+   through 5G-MAG's own internal vocabulary blind. Wraps the existing
+   .navbar__link unchanged (SlidingIndicatorGroup keeps measuring it
+   correctly) and stays nested inside .navGroup, so moving the pointer
+   from the link down into the panel never fires that group's own
+   mouseleave handler. Desktop-only by construction: this whole component
+   tree is Infima's desktop navbar__items, hidden below the mobile-sidebar
+   breakpoint in favor of the separate drawer menu, same as the sliding
+   indicator itself. */
+.pillarWrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+}
+
+.pillarMenu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -6px);
+  margin-top: 0.4rem;
+  width: max-content;
+  min-width: 240px;
+  max-width: 300px;
+  padding: 1rem 1.1rem;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 10px;
+  box-shadow: var(--card-hover-shadow);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+  z-index: var(--ifm-z-index-dropdown, 100);
+}
+
+.pillarWrapper:hover .pillarMenu,
+.pillarWrapper:focus-within .pillarMenu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+
+.pillarMenuSubtitle {
+  margin: 0 0 0.7rem;
+  font-size: 0.82rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.pillarMenuList {
+  list-style: none;
+  margin: 0;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.pillarMenuList a {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-800);
+}
+
+.pillarMenuList a:hover {
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pillarMenu {
+    transition: none;
+  }
+}
+
 /*
 Restore some Infima style that broke with CSS Cascade Layers
 See https://github.com/facebook/docusaurus/pull/11142

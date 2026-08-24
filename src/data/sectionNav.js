@@ -10,6 +10,16 @@
 // to that section's hub — `title` text matches the corresponding top-navbar
 // item's own label where one exists (src/theme/navItems.js), so the same
 // section is never named two different ways across the page.
+//
+// `subtitle`, present only on the four pillar entries (Software
+// Accelerator, Explainers & Profiles, Feedback & Requirements, Interop &
+// Demos), is the plain-language one-liner the top navbar's mega-menu
+// (src/theme/Navbar/Content/index.js) shows on hover/focus — verbatim the
+// same text as that page's own hero-band topic-lead paragraph, so a
+// visitor sees the same clarification before the click that they'd get
+// immediately after it (2026-08-24 design audit: these four labels are
+// 5G-MAG's internal vocabulary, not self-explanatory from the navbar alone).
+//
 // useLocation().pathname is the raw browser path, which includes baseUrl
 // (e.g. '/Website/structure' while baseUrl is '/Website/' for interim
 // testing) -- but every prefix/href above is written root-relative
@@ -67,6 +77,7 @@ export const SECTION_NAV = [
     ],
     title: 'Software Accelerator',
     titleHref: '/developer',
+    subtitle: 'Open-source developer community. Reference tools, testbeds and applications for connected media experiences.',
     items: [
       { label: 'Reference Tools', href: '/reference-tools' },
       { label: 'Testbeds', href: '/testbeds' },
@@ -93,6 +104,7 @@ export const SECTION_NAV = [
     prefixes: ['/tech'],
     title: 'Explainers & Profiles',
     titleHref: '/tech',
+    subtitle: 'Technology explainers, specification profiles and blueprints, implementation guidelines — by the members for the industry.',
     items: [
       { label: 'Implementation Blueprints', href: '/tech/blueprints' },
       { label: 'Technology Exchange', href: '/tech/exchanges' },
@@ -137,6 +149,7 @@ export const SECTION_NAV = [
     ],
     title: 'Explainers & Profiles',
     titleHref: '/tech',
+    subtitle: 'Technology explainers, specification profiles and blueprints, implementation guidelines — by the members for the industry.',
     items: [
       { label: 'Implementation Blueprints', href: '/tech/blueprints' },
       { label: 'Technology Exchange', href: '/tech/exchanges' },
@@ -151,6 +164,7 @@ export const SECTION_NAV = [
     prefixes: ['/standards', '/surveys'],
     title: 'Feedback & Requirements',
     titleHref: '/standards',
+    subtitle: 'Shaping standards through concrete requirements and experienced-based feedback — submitted to SDOs.',
     items: [
       { label: 'Requirements towards SDOs', href: '/standards/requirements' },
       { label: 'Industry Surveys', href: '/surveys' },
@@ -163,6 +177,7 @@ export const SECTION_NAV = [
     prefixes: ['/testing'],
     title: 'Interop & Demos',
     titleHref: '/testing',
+    subtitle: 'From specifications to code, and from code to deployments and products.',
     // Demos is the activity layer (plugfests, demos, trials) — it does not
     // own or gatekeep Testbeds or Reference Tools, so beyond its own
     // plugfest write-ups it has no sub-items pointing back at those.

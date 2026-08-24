@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
+import Link from '@docusaurus/Link';
 import { useLocation } from '@docusaurus/router';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { ErrorCauseBoundary, ThemeClassNames } from '@docusaurus/theme-common';
@@ -243,24 +244,53 @@ function SlidingIndicatorGroup({ items }) {
   );
 }
 
+// The four pillar items (Software Accelerator, Explainers & Profiles,
+// Feedback & Requirements, Interop & Demos) carry a `subtitle` on their
+// matching SECTION_NAV entry (2026-08-24 design audit: those labels are
+// 5G-MAG's own internal vocabulary, not self-explanatory from the navbar
+// alone before a click) — looked up here by titleHref so the preview
+// content has one source, the same SECTION_NAV data the pill sub-nav bar
+// itself already renders from.
+const PILLAR_PREVIEWS = new Map(
+  SECTION_NAV.filter((s) => s.subtitle).map((s) => [s.titleHref, s])
+);
+
 function NavbarItems({ items }) {
   return (
     <>
-      {items.map((item, i) => (
-        <ErrorCauseBoundary
-          key={i}
-          onError={(error) =>
-            new Error(
-              `A theme navbar item failed to render.
+      {items.map((item, i) => {
+        const link = (
+          <ErrorCauseBoundary
+            onError={(error) =>
+              new Error(
+                `A theme navbar item failed to render.
 Please double-check the following navbar item (themeConfig.navbar.items) of your Docusaurus config:
 ${JSON.stringify(item, null, 2)}`,
-              { cause: error }
-            )
-          }
-        >
-          <NavbarItem {...item} />
-        </ErrorCauseBoundary>
-      ))}
+                { cause: error }
+              )
+            }
+          >
+            <NavbarItem {...item} />
+          </ErrorCauseBoundary>
+        );
+        const preview = item.className === styles.primaryNavItem ? PILLAR_PREVIEWS.get(item.to) : null;
+        if (!preview) return <React.Fragment key={i}>{link}</React.Fragment>;
+        return (
+          <span key={i} className={styles.pillarWrapper}>
+            {link}
+            <div className={styles.pillarMenu}>
+              <p className={styles.pillarMenuSubtitle}>{preview.subtitle}</p>
+              <ul className={styles.pillarMenuList}>
+                {preview.items.map((sub) => (
+                  <li key={sub.href}>
+                    <Link to={sub.href}>{sub.label}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </span>
+        );
+      })}
     </>
   );
 }
