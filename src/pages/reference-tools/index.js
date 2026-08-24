@@ -1,7 +1,9 @@
+import { useMemo, useState } from 'react';
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import { icon } from '@site/src/components/GodeeperCard';
 import styles from '../tech/index.module.css';
+import filterStyles from './styles.module.css';
 
 const REFTOOLS_ICON_PATH = (
   <>
@@ -255,7 +257,29 @@ function CategoryCard({ title, desc, topics }) {
   );
 }
 
+// Filters CATEGORIES by a plain-text query against each topic's own title
+// and description (not the category's, so a query like "5gms" surfaces
+// only that one topic card, inside whichever category it lives in,
+// rather than the whole category because the category description
+// happened to mention it too). A category with zero remaining topics is
+// dropped entirely rather than shown empty.
+function filterCategories(query) {
+  const q = query.trim().toLowerCase();
+  if (!q) return CATEGORIES;
+  return CATEGORIES.map((c) => ({
+    ...c,
+    topics: c.topics.filter(
+      (t) => t.title.toLowerCase().includes(q) || t.desc.toLowerCase().includes(q)
+    ),
+  })).filter((c) => c.topics.length > 0);
+}
+
 export default function ReferenceTools() {
+  const [query, setQuery] = useState('');
+  const filtered = useMemo(() => filterCategories(query), [query]);
+  const totalTopics = useMemo(() => CATEGORIES.reduce((n, c) => n + c.topics.length, 0), []);
+  const shownTopics = useMemo(() => filtered.reduce((n, c) => n + c.topics.length, 0), [filtered]);
+
   return (
     <Layout
       title="Reference Tools"
@@ -285,11 +309,33 @@ export default function ReferenceTools() {
               <Link to="/applications">Applications</Link>. For shared test infrastructure, see{' '}
               <Link to="/testbeds">Testbeds</Link>.
             </p>
-            <div className={styles.categoryColumns}>
-              {CATEGORIES.map((c) => (
-                <CategoryCard key={c.title} {...c} />
-              ))}
+            <div className={filterStyles.filterBar}>
+              <input
+                type="search"
+                className={filterStyles.filterInput}
+                placeholder={`Filter ${totalTopics} projects by name or technology…`}
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                aria-label="Filter Reference Tools projects"
+              />
+              {query && (
+                <span className={filterStyles.filterCount}>
+                  {shownTopics} of {totalTopics}
+                </span>
+              )}
             </div>
+            {filtered.length === 0 ? (
+              <p className={filterStyles.filterEmpty}>
+                No projects match &ldquo;{query}&rdquo;. Try a broader technology name (e.g.
+                &ldquo;broadcast&rdquo; or &ldquo;multicast&rdquo;).
+              </p>
+            ) : (
+              <div className={styles.categoryColumns}>
+                {filtered.map((c) => (
+                  <CategoryCard key={c.title} {...c} />
+                ))}
+              </div>
+            )}
           </div>
         </section>
       </main>
