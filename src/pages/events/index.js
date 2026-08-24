@@ -216,9 +216,7 @@ export default function Events() {
 
         <section className={styles.section}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>
-              In the meantime, 5G-MAG members regularly show up at
-            </h2>
+            <h2 className={styles.sectionTitle}>Recurring Appearances</h2>
             <div className="summary-container">
               {EVENT_FACTS.map((f) => (
                 <div key={f.label} className="summary-card">
