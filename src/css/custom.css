@@ -370,6 +370,18 @@
   margin-top: 5px;
 }
 
+/* All-caps labels ("MEMBERS AND DEVELOPERS COMBINED") wrap to three lines
+   at phone widths, spending most of the card's height on the label
+   instead of the number (2026-08-24 design audit). Sentence case instead
+   of a transform reads narrower for the same words, so it now wraps to
+   at most two lines. */
+@media (max-width: 480px) {
+  .summary-card h3 {
+    font-size: 0.78em;
+    text-transform: none;
+  }
+}
+
 .pdf-embed-wrapper {
   display: flex;
   justify-content: center;
