@@ -1285,3 +1285,43 @@
 .blog-post-thumbnail:hover img {
   transform: scale(1.02);
 }
+
+/* ── Primary CTA accent (gold) ─────────────────────────────────────
+   One accent color reserved for the single most-wanted action per page,
+   so it stands out from the brand teal used everywhere else -- hero
+   bands, cards, tags, links (2026-08-24 design audit). Reuses the site's
+   own existing brand gold (#fab900, already the "release/live" accent on
+   HeroSlideshow's release pill and the VideoCard tally light) rather than
+   inventing a new hue, with that same pill's white-on-navy-ink pairing.
+
+   Scoped to `.button--primary` that is solid (not `.button--outline`,
+   which every hub page already uses for its secondary actions) and not
+   `.button--sm` (small inline utility actions like a per-repo "View
+   Releases" link, which can appear many times on one page -- excluding
+   them is what keeps this to one highlighted button per page rather than
+   recoloring every solid-primary button site-wide). */
+:root {
+  --cta-accent: #fab900;
+  --cta-accent-dark: #d49d00;
+  --cta-accent-darker: #b48500;
+  --cta-accent-ink: #001331;
+}
+
+.button.button--primary:not(.button--outline):not(.button--sm) {
+  --ifm-button-background-color: var(--cta-accent);
+  --ifm-button-border-color: var(--cta-accent);
+  color: var(--cta-accent-ink);
+}
+
+.button.button--primary:not(.button--outline):not(.button--sm):hover {
+  --ifm-button-background-color: var(--cta-accent-dark);
+  --ifm-button-border-color: var(--cta-accent-dark);
+  color: var(--cta-accent-ink);
+}
+
+.button.button--primary:not(.button--outline):not(.button--sm):active,
+.button.button--primary:not(.button--outline):not(.button--sm).button--active {
+  --ifm-button-background-color: var(--cta-accent-darker);
+  --ifm-button-border-color: var(--cta-accent-darker);
+  color: var(--cta-accent-ink);
+}
