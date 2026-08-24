@@ -149,10 +149,15 @@ Hide color mode toggle in small viewports
 
 .pillarMenu {
   position: absolute;
+  /* Flush against the wrapper with no margin gap: a gap there belongs to
+     neither box, so a pointer moving from the link down into the panel
+     crosses a dead zone and :hover drops before the panel is reached,
+     closing it out from under the pointer. Infima's own .dropdown__menu
+     (node_modules/infima/dist/css/default/default.css) settles the same
+     way, pulling flush rather than sitting off with a margin. */
   top: 100%;
   left: 50%;
   transform: translate(-50%, -6px);
-  margin-top: 0.4rem;
   width: max-content;
   min-width: 240px;
   max-width: 300px;
