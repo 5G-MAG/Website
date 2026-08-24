@@ -255,53 +255,77 @@ const PILLAR_PREVIEWS = new Map(
   SECTION_NAV.filter((s) => s.subtitle).map((s) => [s.titleHref, s])
 );
 
+function renderNavbarItem(item) {
+  return (
+    <ErrorCauseBoundary
+      onError={(error) =>
+        new Error(
+          `A theme navbar item failed to render.
+Please double-check the following navbar item (themeConfig.navbar.items) of your Docusaurus config:
+${JSON.stringify(item, null, 2)}`,
+          { cause: error }
+        )
+      }
+    >
+      <NavbarItem {...item} />
+    </ErrorCauseBoundary>
+  );
+}
+
+// Mirrors the CSS :hover/:focus-within triggers that already show/hide
+// .pillarMenu (styles.module.css) with a matching React `expanded` flag,
+// used only to drive aria-haspopup/aria-expanded on the trigger link --
+// the visual show/hide stays pure CSS, unchanged. NavbarNavLink
+// (@docusaurus/theme-classic) spreads any unrecognised item props (here,
+// the two aria-* keys) straight onto the underlying <Link>/<a>, so this
+// needs no swizzle of that component.
+function PillarNavItem({ item, preview }) {
+  const [expanded, setExpanded] = useState(false);
+  const link = renderNavbarItem({ ...item, 'aria-haspopup': 'true', 'aria-expanded': expanded });
+  return (
+    <span
+      className={styles.pillarWrapper}
+      onMouseEnter={() => setExpanded(true)}
+      onMouseLeave={() => setExpanded(false)}
+      onFocus={() => setExpanded(true)}
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget)) setExpanded(false);
+      }}
+    >
+      {link}
+      <div className={styles.pillarMenu} aria-label={`${preview.title} quick links`}>
+        <p className={styles.pillarMenuSubtitle}>{preview.subtitle}</p>
+        {/* Same title-then-divider-then-items shape as PageNav's own
+            pill row (src/components/PageNav/index.js) — the trigger
+            link above this panel is easy to read as inert scaffolding
+            around a dropdown rather than a destination itself, so the
+            hub page needs its own explicit entry, set apart from the
+            sub-page list below it. */}
+        <ul className={styles.pillarMenuList}>
+          <li>
+            <Link to={preview.titleHref} className={styles.pillarMenuOverview}>
+              {preview.title}
+            </Link>
+          </li>
+          <li className={styles.pillarMenuDivider} aria-hidden="true" />
+          {preview.items.map((sub) => (
+            <li key={sub.href}>
+              <Link to={sub.href}>{sub.label}</Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </span>
+  );
+}
+
 function NavbarItems({ items }) {
   return (
     <>
       {items.map((item, i) => {
-        const link = (
-          <ErrorCauseBoundary
-            onError={(error) =>
-              new Error(
-                `A theme navbar item failed to render.
-Please double-check the following navbar item (themeConfig.navbar.items) of your Docusaurus config:
-${JSON.stringify(item, null, 2)}`,
-                { cause: error }
-              )
-            }
-          >
-            <NavbarItem {...item} />
-          </ErrorCauseBoundary>
-        );
         const preview = item.className === styles.primaryNavItem ? PILLAR_PREVIEWS.get(item.to) : null;
-        if (!preview) return <React.Fragment key={i}>{link}</React.Fragment>;
-        return (
-          <span key={i} className={styles.pillarWrapper}>
-            {link}
-            <div className={styles.pillarMenu}>
-              <p className={styles.pillarMenuSubtitle}>{preview.subtitle}</p>
-              {/* Same title-then-divider-then-items shape as PageNav's own
-                  pill row (src/components/PageNav/index.js) — the trigger
-                  link above this panel is easy to read as inert scaffolding
-                  around a dropdown rather than a destination itself, so the
-                  hub page needs its own explicit entry, set apart from the
-                  sub-page list below it. */}
-              <ul className={styles.pillarMenuList}>
-                <li>
-                  <Link to={preview.titleHref} className={styles.pillarMenuOverview}>
-                    {preview.title}
-                  </Link>
-                </li>
-                <li className={styles.pillarMenuDivider} aria-hidden="true" />
-                {preview.items.map((sub) => (
-                  <li key={sub.href}>
-                    <Link to={sub.href}>{sub.label}</Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </span>
-        );
+        if (!preview) return <React.Fragment key={i}>{renderNavbarItem(item)}</React.Fragment>;
+        return <PillarNavItem key={i} item={item} preview={preview} />;
       })}
     </>
   );
