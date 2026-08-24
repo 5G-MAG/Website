@@ -431,26 +431,6 @@
   line-height: 1.6;
 }
 
-/* Five consecutive full-bleed solid bands read as the densest, heaviest
-   stretch of scroll on the site (2026-08-24 design audit) -- every other
-   group instead uses the site's existing tint/left-border-accent language
-   (already established on .topic-lead and the "why this matters" cards
-   elsewhere, e.g. custom.css's topic-lead), so the wall alternates weight
-   instead of repeating the same solid band five times running. */
-.categoryCard:nth-of-type(even) .categoryHeader {
-  background: var(--ifm-color-emphasis-100);
-  border-left: 4px solid var(--ifm-color-primary);
-  padding-left: calc(1.4rem - 4px);
-}
-
-.categoryCard:nth-of-type(even) .categoryTitle {
-  color: var(--ifm-heading-color);
-}
-
-.categoryCard:nth-of-type(even) .categoryDesc {
-  color: var(--ifm-color-emphasis-700);
-}
-
 .categoryTopicGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
