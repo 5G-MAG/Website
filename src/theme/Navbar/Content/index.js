@@ -280,7 +280,19 @@ ${JSON.stringify(item, null, 2)}`,
             {link}
             <div className={styles.pillarMenu}>
               <p className={styles.pillarMenuSubtitle}>{preview.subtitle}</p>
+              {/* Same title-then-divider-then-items shape as PageNav's own
+                  pill row (src/components/PageNav/index.js) — the trigger
+                  link above this panel is easy to read as inert scaffolding
+                  around a dropdown rather than a destination itself, so the
+                  hub page needs its own explicit entry, set apart from the
+                  sub-page list below it. */}
               <ul className={styles.pillarMenuList}>
+                <li>
+                  <Link to={preview.titleHref} className={styles.pillarMenuOverview}>
+                    {preview.title} overview
+                  </Link>
+                </li>
+                <li className={styles.pillarMenuDivider} aria-hidden="true" />
                 {preview.items.map((sub) => (
                   <li key={sub.href}>
                     <Link to={sub.href}>{sub.label}</Link>

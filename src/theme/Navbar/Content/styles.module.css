@@ -229,6 +229,22 @@ Hide color mode toggle in small viewports
   text-decoration: none;
 }
 
+/* Bolder than the sub-page links below it, same weight/role as PageNav's
+   own hub link (src/components/PageNav/styles.module.css:.navSectionLabel)
+   — the trigger text above this panel isn't legible as a link of its own
+   from inside a hover panel, so the hub page needs a first-class entry
+   here rather than relying on the visitor separately noticing that. */
+.pillarMenuOverview {
+  font-weight: 700 !important;
+  color: var(--ifm-color-emphasis-900) !important;
+}
+
+.pillarMenuDivider {
+  height: 1px;
+  margin: 0.15rem 0;
+  background: var(--ifm-color-emphasis-200);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .pillarMenu {
     transition: none;
