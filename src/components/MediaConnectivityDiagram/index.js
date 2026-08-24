@@ -1,3 +1,5 @@
+import styles from './styles.module.css';
+
 // A polished "Media ⇄ Connectivity" loop diagram: two solid navy circles
 // with a cyan glow/shadow, surrounded by a halo of topic icons, linked by
 // two arcs that arrive at specific halo icons (the cloud, and the cube) —
@@ -73,11 +75,8 @@ const VENN_HALO = [
 
 export default function MediaConnectivityDiagram() {
   return (
-    <svg
-      viewBox="0 0 1020 580"
-      style={{ width: '100%', maxWidth: '820px', display: 'block', margin: '0 auto' }}
-      aria-hidden="true"
-    >
+    <>
+      <svg viewBox="0 0 1020 580" className={styles.diagram} aria-hidden="true">
       <defs>
         <filter id="vennShadow" x="-60%" y="-60%" width="220%" height="220%">
           <feDropShadow dx="0" dy="10" stdDeviation="10" floodColor="#001125" floodOpacity="0.15" />
@@ -260,6 +259,15 @@ export default function MediaConnectivityDiagram() {
         strokeWidth="4"
         markerEnd="url(#vennArrow)"
       />
-    </svg>
+      </svg>
+      {/* Plain-text stand-in for the two caption pairs above, shown only
+          below 996px once the SVG itself is hidden (see styles.module.css)
+          -- this is the only place either sentence appears on a narrow
+          viewport, so it must carry the real words, not decoration. */}
+      <p className={styles.mobileCaptions}>
+        <span>Media applications inspire new capabilities</span>
+        <span>New network capabilities open new experiences</span>
+      </p>
+    </>
   );
 }
