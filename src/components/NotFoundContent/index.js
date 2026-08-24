@@ -31,6 +31,9 @@ export default function NotFoundContent({ className }) {
             <Link className="button button--outline button--primary button--lg" to="/developer">
               Software Accelerator
             </Link>
+            <Link className="button button--outline button--primary button--lg" to="/action">
+              In Action
+            </Link>
             <Link className="button button--outline button--primary button--lg" to="/search">
               Search
             </Link>
