@@ -1,0 +1,12 @@
+/* Full post page's hero image, above the title -- see the comment at
+   BlogPostItemHeroImage in index.js. Same 16/9 crop as .event-post-card's
+   own thumbnail (src/css/custom.css) for the same image-treatment family
+   across the site. */
+.heroImage {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1.75rem;
+}
