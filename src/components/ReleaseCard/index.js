@@ -46,10 +46,10 @@ export default function ReleaseCard({ project }) {
       {project.doc_url && (
         <div className={styles.releaseCardFooter}>
           <Link className={styles.releaseDocLink} to={project.doc_url}>
-            Documentation &rarr;
+            View Documentation &rarr;
           </Link>
           <Link className={styles.releaseRelLink} to={`${project.doc_url}${project.releases_slug || 'resources'}`}>
-            Releases &rarr;
+            View Releases &rarr;
           </Link>
         </div>
       )}
