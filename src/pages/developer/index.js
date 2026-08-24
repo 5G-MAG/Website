@@ -225,7 +225,10 @@ export default function Home() {
             <h2 className={styles.sectionTitle}>What You&apos;ll Find Here</h2>
             <p className={styles.sectionSubtitle}>
               Reference Tools, Testbeds and Evaluation Tools, and Application Prototypes — under
-              one open developer community.
+              one open developer community. New here? See{' '}
+              <Link to="/community/using-this-documentation">Using this Documentation</Link> for
+              how a project's Scope, Resources and Tutorials pages fit together, and a suggested
+              path through them.
             </p>
             <div className={styles.productGrid}>
               {PRODUCT_TYPES.map((item) => (

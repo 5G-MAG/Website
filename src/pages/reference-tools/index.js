@@ -277,8 +277,11 @@ export default function ReferenceTools() {
           <div className="container">
             <h2 className={styles.sectionTitle}>By Category</h2>
             <p className={styles.sectionSubtitle}>
-              Start here if you know which specification or tool you want. For a complete end-to-end
-              service scenario built from several tools, see{' '}
+              Grouped by standards body, since a Reference Tool's defining property is which
+              specification it implements — for the same technology areas grouped by use case
+              instead, see <Link to="/tech#categories-topics">Technology</Link>. Start here if you
+              know which specification or tool you want. For a complete end-to-end service scenario
+              built from several tools, see{' '}
               <Link to="/applications">Applications</Link>. For shared test infrastructure, see{' '}
               <Link to="/testbeds">Testbeds</Link>.
             </p>
