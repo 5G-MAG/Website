@@ -147,6 +147,23 @@ Hide color mode toggle in small viewports
   height: 100%;
 }
 
+/* .navbar establishes the stacking context .pillarMenu paints inside, so
+   no z-index on .pillarMenu itself can ever beat an element outside that
+   context — a stacking context traps its descendants' z-index
+   comparisons against everything outside it. A section page's own pill
+   sub-nav (SectionNav/PageNav) sits right below the navbar at the same
+   z-index (Infima's --ifm-z-index-fixed, by design — see
+   src/components/PageNav/styles.module.css) and later in the DOM, so it
+   won the tie and painted over the mega-menu regardless of the menu's
+   own z-index. Nudging the navbar itself one tier above restores the
+   intended navbar-over-page-content order; PageNav must stay at or below
+   the navbar (see its own comment) so it is not raised instead, and
+   --ifm-z-index-fixed is left alone since .navbar--fixed-top is its only
+   other consumer. */
+:global(.navbar--fixed-top) {
+  z-index: calc(var(--ifm-z-index-fixed) + 1);
+}
+
 .pillarMenu {
   position: absolute;
   /* Flush against the wrapper with no margin gap: a gap there belongs to
