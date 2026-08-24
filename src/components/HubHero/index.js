@@ -1,7 +1,7 @@
 import styles from './styles.module.css';
 
 // Compact gradient hero shared by every Hub-tier custom page (/tech,
-// /standards, /testing, /membership, /about, /events, /developer, and
+// /standards, /action, /membership, /about, /events, /developer, and
 // the News hub). Replaces the earlier full-height hero + HeroFigure
 // icon-cloud (still used standalone on the homepage) with a single icon
 // badge — same gradient and voice, leaner.

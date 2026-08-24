@@ -383,7 +383,7 @@ export default function Standards() {
         {/* Why this matters */}
         <section className={styles.section}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Why Feedback & Requirements</h2>
+            <h2 className={styles.sectionTitle}>Motivation</h2>
             <p className={styles.sectionSubtitle}>
               Advancing standardization with implementation and experience-based feedback.
             </p>

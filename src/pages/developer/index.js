@@ -199,7 +199,7 @@ export default function Home() {
         {/* Motivation: merged "what this gets you" + "why open source" under one banner */}
         <section className={styles.section}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Why the Media Connectivity Software Accelerator</h2>
+            <h2 className={styles.sectionTitle}>Motivation</h2>
             <p className={styles.sectionSubtitle}>
               Media and network technologies move fast, and open source usually arrives only
               after a standard is frozen — with additional cost at every stage along the way. The
