@@ -356,7 +356,7 @@ export default function Standards() {
   const methodologyExternalImg = useBaseUrl('/assets/images/Feedback_2.png');
   return (
     <Layout
-      title="Feedback & Requirements"
+      title="Standardisation"
       description="How 5G-MAG submits feedback on 3GPP, MPEG and ETSI specifications as GitHub issues, and its position papers to SDO workshops."
     >
       <HubHero
@@ -406,7 +406,7 @@ export default function Standards() {
             <p className={styles.sectionSubtitle}>
               Every feedback and requirements destination, in one place. Looking for the
               specifications each technology implements? Those live with the technical
-              analysis on <Link to="/tech#categories-topics">Explainers &amp; Profiles</Link>{' '}
+              analysis on <Link to="/tech#categories-topics">Technology</Link>{' '}
               — every topic card there carries a direct Standards link.
             </p>
             <div className={styles.activityGrid}>

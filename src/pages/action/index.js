@@ -155,7 +155,7 @@ export default function Testing() {
   const tradeshowImg = useBaseUrl('/assets/images/gallery/tradeshow-booth-demo.jpg');
   return (
     <Layout
-      title="Interop & Demos"
+      title="In Action"
       description="Plugfests and demonstrators to prove 5G-MAG implementations and value."
     >
       <HubHero
@@ -163,7 +163,7 @@ export default function Testing() {
         icon={INTEROP_ICON_PATH}
         actions={[
           <a key="demos" className="button button--primary" href="#demonstrators">
-            See Demos In Action
+            See Demos
           </a>,
           <a
             key="events"
