@@ -556,7 +556,7 @@ export default function Home() {
       />
 
       <div className="container" style={{ marginTop: '1.75rem' }}>
-        <p className="topic-lead">Technology explainers, specification profiles and blueprints, implementation guidelines — by the members for the industry.</p>
+        <p className="topic-lead">Specification profiles and implementation guidance — by the members, for the industry.</p>
       </div>
 
       <main>

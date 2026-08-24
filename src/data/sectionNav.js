@@ -104,7 +104,7 @@ export const SECTION_NAV = [
     prefixes: ['/tech'],
     title: 'Explainers & Profiles',
     titleHref: '/tech',
-    subtitle: 'Technology explainers, specification profiles and blueprints, implementation guidelines — by the members for the industry.',
+    subtitle: 'Specification profiles and implementation guidance — by the members, for the industry.',
     items: [
       { label: 'Implementation Blueprints', href: '/tech/blueprints' },
       { label: 'Technology Exchange', href: '/tech/exchanges' },
@@ -149,7 +149,7 @@ export const SECTION_NAV = [
     ],
     title: 'Explainers & Profiles',
     titleHref: '/tech',
-    subtitle: 'Technology explainers, specification profiles and blueprints, implementation guidelines — by the members for the industry.',
+    subtitle: 'Specification profiles and implementation guidance — by the members, for the industry.',
     items: [
       { label: 'Implementation Blueprints', href: '/tech/blueprints' },
       { label: 'Technology Exchange', href: '/tech/exchanges' },
