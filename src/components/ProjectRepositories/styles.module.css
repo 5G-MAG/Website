@@ -132,3 +132,33 @@
   text-decoration: underline;
   white-space: nowrap;
 }
+
+/* Same three-state activity pill as /community's own stats table
+   (src/components/CommunityProjects/styles.module.css) -- kept as a
+   separate declaration since CSS Modules scope class names per file,
+   but the same tokens and shape, so the signal reads identically
+   wherever a visitor encounters it. */
+.statusPill {
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  border-radius: 999px;
+  padding: 0.14rem 0.5rem;
+  white-space: nowrap;
+}
+
+.statusActive {
+  background: var(--ifm-color-success-contrast-background);
+  color: var(--ifm-color-success-contrast-foreground);
+}
+
+.statusMaintenance {
+  background: var(--ifm-color-warning-contrast-background);
+  color: var(--ifm-color-warning-contrast-foreground);
+}
+
+.statusQuiet {
+  background: var(--ifm-color-emphasis-100);
+  color: var(--ifm-color-emphasis-700);
+}
