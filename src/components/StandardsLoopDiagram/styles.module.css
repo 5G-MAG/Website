@@ -1,0 +1,21 @@
+.diagram {
+  width: 100%;
+  max-width: 1000px;
+  display: block;
+  margin: 0 auto 1rem;
+}
+
+/* Below the site's own mobile-sidebar breakpoint (996px, same cutoff
+   src/theme/Navbar/Content/styles.module.css already uses for other
+   desktop-only decoration), this diagram's fixed 1046-wide viewBox scales
+   down with its container and its 12.5px chip text becomes illegible --
+   at a 390px phone viewport the rendered text is under 5px tall. The
+   diagram is already aria-hidden (decorative: the paragraph immediately
+   above it in src/pages/about/index.js states the same loop in prose),
+   so hiding it outright below this width loses no information, unlike
+   forcing a horizontal-scroll affordance for what is not itself content. */
+@media (max-width: 996px) {
+  .diagram {
+    display: none;
+  }
+}

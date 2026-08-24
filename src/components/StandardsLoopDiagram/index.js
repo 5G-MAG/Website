@@ -9,13 +9,11 @@
 // Static SVG, no external image/licensing question. Used by /about
 // (src/pages/about/index.js) — the homepage uses its own, separate
 // MediaConnectivityDiagram instead, not this component.
+import styles from './styles.module.css';
+
 export default function StandardsLoopDiagram() {
   return (
-    <svg
-      viewBox="0 0 1046 480"
-      style={{ width: '100%', maxWidth: '1000px', display: 'block', margin: '0 auto 1rem' }}
-      aria-hidden="true"
-    >
+    <svg viewBox="0 0 1046 480" className={styles.diagram} aria-hidden="true">
       <defs>
         <marker
           id="loopArrow"
