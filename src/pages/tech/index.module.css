@@ -496,6 +496,31 @@
   text-decoration: underline !important;
 }
 
+/* Small, fixed vocabulary (Linux/Android/Docker/Windows/Cloud/Web/API,
+   from each project's own repoMetadata.json "software" field) shown as
+   plain pills so a reader can tell what a project runs on at a glance,
+   without a filter UI -- Reference Tools only (/reference-tools/index.js),
+   not /tech, even though this module is shared between them. */
+.categoryTopicTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  padding: 0 0.75rem 0.65rem;
+  margin-top: -0.2rem;
+}
+
+.categoryTopicTag {
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  border-radius: 999px;
+  padding: 0.14rem 0.5rem;
+  white-space: nowrap;
+  background: var(--ifm-color-emphasis-100);
+  color: var(--ifm-color-emphasis-700);
+}
+
 .categoryTopicCardBody {
   display: flex;
   flex-direction: column;

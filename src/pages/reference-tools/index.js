@@ -22,6 +22,16 @@ const REFTOOLS_ICON_PATH = (
 // defining property is which specification it implements, not which
 // scenario it eventually gets used in (that mapping lives on the
 // Applications page instead, against the same categories Tech uses).
+//
+// Each topic's `tags` are drawn directly from the union of its own repos'
+// `software` field in src/data/repoMetadata.json (APK folded into
+// Android, since APK is just that platform's build artifact) -- a small,
+// fixed vocabulary (Linux, Android, Docker, Windows, Cloud, Web, API), not
+// a filter UI. Two projects (avatar, network-apis) have no `software`
+// entries recorded yet in repoMetadata.json, so they carry no tags here;
+// that is an existing gap in that file, not something invented for this
+// page. Re-derive from repoMetadata.json rather than hand-editing here if
+// a project's repo set changes.
 const CATEGORIES = [
   {
     title: '3GPP Implementations',
@@ -31,6 +41,7 @@ const CATEGORIES = [
         title: '3GPP RAN and Core Platforms',
         desc: 'Open5GS-based 5G core and srsRAN-based RAN for lab and field testing.',
         href: '/reference-tools/3gpp-platforms',
+        tags: ['Linux'],
         icon: icon(
           <>
             <path d="M6 18l0 -2" />
@@ -44,6 +55,7 @@ const CATEGORIES = [
         title: '5G Broadcast - Emergency Alerts',
         desc: 'Broadcast-based public warning system using 5G Broadcast infrastructure.',
         href: '/reference-tools/emergency-alerts',
+        tags: ['Linux', 'Cloud'],
         icon: icon(
           <>
             <path d="M12 8a2 2 0 0 1 2 2v4a2 2 0 1 1 -4 0v-4a2 2 0 0 1 2 -2" />
@@ -56,6 +68,7 @@ const CATEGORIES = [
         title: '5G Broadcast - TV and Radio Services',
         desc: 'LTE-based transmitter, middleware and modem for TV & radio broadcast over 5G.',
         href: '/reference-tools/5g-broadcast',
+        tags: ['Linux', 'Android', 'Docker', 'Web', 'Cloud'],
         icon: icon(
           <>
             <path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
@@ -70,6 +83,7 @@ const CATEGORIES = [
         title: '5G Core Service Consumers',
         desc: 'Reference consumer implementations for 5G Core (5GC) capability exposure APIs.',
         href: '/reference-tools/5g-core',
+        tags: ['Linux'],
         icon: icon(
           <>
             <path d="M18 8h-2a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h2v-4h-1" />
@@ -81,12 +95,14 @@ const CATEGORIES = [
         title: '5G Media Streaming (5GMS)',
         desc: '3GPP AF/AS implementation for adaptive media delivery over 5G.',
         href: '/reference-tools/5gms',
+        tags: ['Linux', 'Android', 'Docker', 'Web', 'API', 'Cloud'],
         icon: icon(<path d="M7 4v16l13 -8l-13 -8" />),
       },
       {
         title: '5G Multicast Broadcast Services (MBS)',
         desc: '5G MBS client and network functions for native multicast delivery.',
         href: '/reference-tools/5g-mbs',
+        tags: ['Linux', 'Android', 'Docker', 'Web', 'Cloud'],
         icon: icon(
           <>
             <path d="M12 12l0 .01" />
@@ -101,6 +117,7 @@ const CATEGORIES = [
         title: 'DVB-I Services over 5G Systems',
         desc: 'DVB-I service discovery and delivery adapted for 5G hybrid networks.',
         href: '/reference-tools/dvb-i',
+        tags: ['Android'],
         icon: icon(
           <>
             <path d="M3 9a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2l0 -9" />
@@ -112,6 +129,7 @@ const CATEGORIES = [
         title: 'UE Data Collection, Reporting and Event Exposure',
         desc: 'On-device (UE) data collection and reporting per 3GPP TS 26.531.',
         href: '/reference-tools/data-collection',
+        tags: ['Linux', 'Docker', 'API', 'Cloud'],
         icon: icon(
           <>
             <path d="M14 3v4a1 1 0 0 0 1 1h4" />
@@ -150,6 +168,7 @@ const CATEGORIES = [
         title: 'MPEG V3C Immersive Platform',
         desc: 'End-to-end pipeline for volumetric 3D content production and delivery.',
         href: '/reference-tools/v3c',
+        tags: ['Linux', 'Android', 'Windows'],
         icon: icon(
           <>
             <path d="M4 8v-2a2 2 0 0 1 2 -2h2" />
@@ -166,6 +185,7 @@ const CATEGORIES = [
         title: 'XR/3D Scenes with MPEG-I Scene Description',
         desc: 'Unity player for MPEG-I Scene Description with 5G media integration.',
         href: '/reference-tools/xr',
+        tags: ['Linux', 'Android', 'Windows'],
         icon: icon(
           <>
             <path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
@@ -187,6 +207,7 @@ const CATEGORIES = [
         title: 'Multimedia Delivery Protocols',
         desc: 'Multi-CDN tooling and protocol implementations for media delivery.',
         href: '/reference-tools/multimedia',
+        tags: ['Linux'],
         icon: icon(
           <>
             <path d="M12 3l8 4.5v9l-8 4.5l-8 -4.5v-9z" />
@@ -225,6 +246,7 @@ const CATEGORIES = [
         title: 'Common Tools',
         desc: 'Shared scripts, example configurations and build utilities used across several Reference Tools.',
         href: '/reference-tools/common-tools',
+        tags: ['Linux', 'Cloud'],
         icon: icon(
           <path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5" />
         ),
@@ -250,6 +272,15 @@ function CategoryCard({ title, desc, topics }) {
                 <span className={styles.categoryTopicDescText}>{t.desc}</span>
               </span>
             </Link>
+            {t.tags && t.tags.length > 0 && (
+              <div className={styles.categoryTopicTags}>
+                {t.tags.map((tag) => (
+                  <span key={tag} className={styles.categoryTopicTag}>
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
         ))}
       </div>
@@ -257,19 +288,22 @@ function CategoryCard({ title, desc, topics }) {
   );
 }
 
-// Filters CATEGORIES by a plain-text query against each topic's own title
-// and description (not the category's, so a query like "5gms" surfaces
-// only that one topic card, inside whichever category it lives in,
-// rather than the whole category because the category description
-// happened to mention it too). A category with zero remaining topics is
-// dropped entirely rather than shown empty.
+// Filters CATEGORIES by a plain-text query against each topic's own title,
+// description and tags (not the category's, so a query like "5gms" or
+// "android" surfaces only the matching topic cards, inside whichever
+// category they live in, rather than the whole category because the
+// category description happened to mention it too). A category with zero
+// remaining topics is dropped entirely rather than shown empty.
 function filterCategories(query) {
   const q = query.trim().toLowerCase();
   if (!q) return CATEGORIES;
   return CATEGORIES.map((c) => ({
     ...c,
     topics: c.topics.filter(
-      (t) => t.title.toLowerCase().includes(q) || t.desc.toLowerCase().includes(q)
+      (t) =>
+        t.title.toLowerCase().includes(q) ||
+        t.desc.toLowerCase().includes(q) ||
+        (t.tags || []).some((tag) => tag.toLowerCase().includes(q))
     ),
   })).filter((c) => c.topics.length > 0);
 }
