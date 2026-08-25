@@ -1305,7 +1305,15 @@
    `.button--sm` (small inline utility actions like a per-repo "View
    Releases" link, which can appear many times on one page -- excluding
    them is what keeps this to one highlighted button per page rather than
-   recoloring every solid-primary button site-wide). */
+   recoloring every solid-primary button site-wide) and not
+   `.button--tab-current` (the Scope/Resources/Tutorials/Developer
+   Exchange tab bar repeated on every Reference Tools and Testbeds
+   sub-page: exactly one of its four links is solid `.button--primary`
+   to mark "you are here", which is wayfinding, not a call to action --
+   without this exclusion every one of those ~50 pages would carry its
+   own gold button with no connection to an actual desired action,
+   defeating the "single most-wanted action per page" rule below.
+   2026-08-25 CTA convergence pass. */
 :root {
   --cta-accent: #fab900;
   --cta-accent-dark: #d49d00;
@@ -1313,21 +1321,35 @@
   --cta-accent-ink: #001331;
 }
 
-.button.button--primary:not(.button--outline):not(.button--sm) {
+.button.button--primary:not(.button--outline):not(.button--sm):not(.button--tab-current) {
   --ifm-button-background-color: var(--cta-accent);
   --ifm-button-border-color: var(--cta-accent);
   color: var(--cta-accent-ink);
 }
 
-.button.button--primary:not(.button--outline):not(.button--sm):hover {
+.button.button--primary:not(.button--outline):not(.button--sm):not(.button--tab-current):hover {
   --ifm-button-background-color: var(--cta-accent-dark);
   --ifm-button-border-color: var(--cta-accent-dark);
   color: var(--cta-accent-ink);
 }
 
-.button.button--primary:not(.button--outline):not(.button--sm):active,
-.button.button--primary:not(.button--outline):not(.button--sm).button--active {
+.button.button--primary:not(.button--outline):not(.button--sm):not(.button--tab-current):active,
+.button.button--primary:not(.button--outline):not(.button--sm):not(.button--tab-current).button--active {
   --ifm-button-background-color: var(--cta-accent-darker);
   --ifm-button-border-color: var(--cta-accent-darker);
   color: var(--cta-accent-ink);
+}
+
+/* The tab bar's "current page" link: solid, so it's visually distinct
+   from the other three (outline) tabs, but in the site's own default
+   primary color rather than the CTA gold -- current-location wayfinding
+   reads differently from "click this to do the most important thing",
+   and reusing gold here would put an unrelated gold button on every one
+   of these pages regardless of whether that page has a real CTA. */
+.button.button--primary.button--tab-current {
+  cursor: default;
+}
+.button.button--primary.button--tab-current:hover {
+  --ifm-button-background-color: var(--ifm-color-primary);
+  --ifm-button-border-color: var(--ifm-color-primary);
 }
