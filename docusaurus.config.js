@@ -97,6 +97,9 @@ const config = {
           { from: '/tech/standards/tsc', to: '/standards/tsc' },
           { from: '/tech/standards/v3c', to: '/standards/v3c' },
           { from: '/tech/standards/xr', to: '/standards/xr' },
+          { from: '/tech/standards/3gpp-issue-tracking', to: '/standards/3gpp-issue-tracking' },
+          { from: '/tech/standards/ls', to: '/standards/ls' },
+          { from: '/tech/standards/requirements', to: '/standards/requirements' },
           // These two DID go briefly live on www.5g-mag.com (merged to main
           // as part of the same push that first synced private -> public,
           // then removed again days later once their duplication with the
