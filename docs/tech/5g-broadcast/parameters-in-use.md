@@ -81,7 +81,7 @@ All four bands are defined as standalone downlink-only (SDO) bands in Table 5.5H
 
 ## Receiver Profiles
 
-ETSI TS 103 720 defines normative receiver categories (Base, Main, 5GMS, Emergency Alerts; see [Deployment Profiles](./deployment-profiles)). In 5G-MAG's deployment work the following receiver profiles are used:
+ETSI TS 103 720 defines normative receiver categories (Base, Main, 5GMS; see [Deployment Profiles](./deployment-profiles) for the full Feature Value table). In 5G-MAG's deployment work the following receiver profiles are used:
 
 - **Profile A (RAN-only)**: Receive-Only Mode using FeMBMS physical layer only. Typical of a dedicated broadcast receiver with no cellular return path, for example a TV set, a set-top box, or an in-car broadcast tuner.
 - **Profile B (Full)**: Full LTE UE supporting both unicast and broadcast modes. Typical of a smartphone or connected tablet that can both stream over cellular and receive broadcast.
