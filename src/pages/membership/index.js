@@ -26,7 +26,7 @@ const MEMBERSHIP_ICON_PATH = (
 
 const BENEFITS = [
   {
-    title: 'Influence, not just adopt when too late',
+    title: 'Shape standards early',
     body: 'Shape the standards and technologies before others set them without you.',
     href: '/standards',
     icon: (

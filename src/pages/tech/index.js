@@ -373,7 +373,7 @@ const PILLARS = [
   },
   {
     title: 'Making standards actionable',
-    body: 'So implementers don’t each have to independently interpret dense specification text the same way — one clear reading, reused across the industry, instead of duplicated effort and divergent interpretations.',
+    body: 'So implementers don’t each have to independently interpret dense specification text — one clear reading, reused across the industry, instead of duplicated effort and divergent interpretations.',
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -434,7 +434,7 @@ const CONTENT_MODEL = [
   {
     label: 'Step 3',
     title: 'Reference Tools & Testbeds',
-    body: 'Working code implementing the specification, where one exists yet — some topics are analysis-only for now.',
+    body: 'Working code implementing the specification, where one exists — some topics are analysis-only for now.',
     linkLabel: 'Browse Reference Tools →',
     linkHref: '/reference-tools',
   },
