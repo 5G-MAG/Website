@@ -12,7 +12,7 @@ description: Extends the Docker end-to-end 5GMSd deployment to run over a real 5
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Media Streaming (5GMS)</span>
-<h1>5G MSd End-to-End deployment with 5G Network</h1>
+<h1>5GMSd End-to-End deployment with 5G Network</h1>
 </div>
 </div>
 
