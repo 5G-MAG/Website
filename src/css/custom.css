@@ -358,7 +358,13 @@
 }
 .summary-card h3 {
   margin: 0;
-  color: var(--ifm-color-emphasis-600);
+  /* emphasis-700, not -600: at this font-size (0.85em, ~13.6px) -600
+     computes to 3.06:1 on the light-mode card background, below WCAG
+     AA's 4.5:1 floor for text this small. -700 (5.72:1) is the same
+     token already used for muted-but-readable labels elsewhere in this
+     file (see lines above/below). Dark mode is unaffected: Infima's own
+     dark-theme -600 already resolves light enough to pass. */
+  color: var(--ifm-color-emphasis-700);
   font-size: 0.85em;
   text-transform: uppercase;
 }

@@ -404,7 +404,7 @@ To configure the Leo Bodnar GPSDO follow
 the [How to Use instructions](https://www.leobodnar.com/shop/index.php?main_page=product_info&cPath=107&products_id=234)
 on the website. If the configuration is done on macOS, the configuration software looks like this:
 
-![5G Core: Leo Bodnar](/assets/images/5gcore/leo-bodnar-config.jpeg)
+![Leo Bodnar GPS Clock Configuration app on macOS, showing the 10 MHz output frequency settings, GPS/PLL lock status and satellite signal chart](/assets/images/5gcore/leo-bodnar-config.jpeg)
 
 After the GPS signal is locked connect output of the reference clock to your USRP device. For that reason, connect the output plug
 of the reference clock to the `REF IN` connector on the USRP.
