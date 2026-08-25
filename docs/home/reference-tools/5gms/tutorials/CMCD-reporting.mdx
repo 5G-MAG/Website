@@ -37,7 +37,7 @@ This tutorial describes how to set up and enable CMCD Reporting in the Reference
 <span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9l-8 4.5l-8 -4.5v-9z" /><path d="M12 12l8 -4.5" /><path d="M12 12v9" /><path d="M12 12l-8 -4.5" /></svg>Docker</span>
 </div>
 
-A working AF and AS from the [basic end-to-end guide](end-to-end): Steps 1 to 6 below point back to that guide, so if you already have a running end-to-end deployment you can move quickly through them. Docker is used to run the cmcd-toolkit collector, database and dashboard.
+A working AF and AS from the [basic end-to-end guide](end-to-end): Steps 1 to 6 below point back to that guide, so if you already have a running end-to-end deployment you can move quickly through them. Docker is used to run the collector, database and dashboard from [cmcd-toolkit](https://github.com/5G-MAG/cmcd-toolkit), an external dependency rather than part of this project's own repository set (it does not appear on the [Resources](../resources) page).
 
 Note on ports: the components below listen on different ports, which is intentional. The collector ingests CMCD on port `3000` (the `cmcd_collector_url` points here); the Grafana dashboard UI is served on port `8081`. The 5GMS Application Server itself is reached on its normal HTTP port.
 
@@ -52,12 +52,12 @@ the [basic end-to-end guide](end-to-end).
 
 ### Step 2: Basic Configuration of the Application Function
 
-Follow the [basic configuration steps](end-to-end) documented in
+Follow the [basic configuration steps](end-to-end#5-configuration-of-the-af) documented in
 the [basic end-to-end guide](end-to-end).
 
 ### Step 3: Start the Application Function
 
-Follow the [command](end-to-end) documented in the [basic end-to-end guide](end-to-end).
+Follow the [command](end-to-end#6-starting-the-af) documented in the [basic end-to-end guide](end-to-end).
 
 ### Step 4: Install the Application Server
 
