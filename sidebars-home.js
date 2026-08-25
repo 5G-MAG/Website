@@ -280,6 +280,7 @@ const sidebars = {
     },
     { type: 'link', label: 'Technology Exchanges', href: '/tech/exchanges' },
     { type: 'link', label: 'Implementation Blueprints', href: '/tech/blueprints' },
+    { type: 'link', label: 'Specifications', href: '/tech/specifications' },
     { type: 'link', label: 'Glossary', href: '/tech/glossary' },
     { type: 'link', label: '3GPP Work Items', href: '/tech/3gpp-work-items' },
 

@@ -35,6 +35,7 @@ const sidebars = {
     { type: 'html', value: 'Resources', className: 'sidebar-section-label', defaultStyle: false },
     'exchanges',
     'blueprints',
+    'specifications',
     'glossary',
     '3gpp-work-items',
 

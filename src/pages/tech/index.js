@@ -316,7 +316,7 @@ const WHATS_HERE = [
   },
   {
     title: 'Implementation Blueprints',
-    desc: 'Step-by-step procedures mapping build steps to protocol layers and 3GPP clauses.',
+    desc: 'The Analysis pages with a step-by-step build procedure worked through so far.',
     href: '/tech/blueprints',
     icon: icon(
       <>
@@ -324,6 +324,20 @@ const WHATS_HERE = [
         <path d="M9 7h6" />
         <path d="M9 11h6" />
         <path d="M9 15h4" />
+      </>
+    ),
+  },
+  {
+    title: 'Specifications',
+    desc: "Every Analysis page's own specification list, gathered in one place.",
+    href: '/tech/specifications',
+    icon: icon(
+      <>
+        <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+        <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />
+        <path d="M9 9l1 0" />
+        <path d="M9 13l6 0" />
+        <path d="M9 17l6 0" />
       </>
     ),
   },
