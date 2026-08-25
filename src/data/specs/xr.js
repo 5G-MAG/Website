@@ -12,7 +12,56 @@ export const XR_SPECS = [
       'Information technology - Coded representation of immersive media - Part 14: Scene description',
     url: 'https://www.iso.org/standard/80900.html',
     layer: 'MPEG',
-    note: 'extended by Amendments 1 and 2 and consolidated into a second edition (ISO/IEC 23090-14:2025)',
+    note: 'extended by Amendment 1, which is consolidated into a second edition (ISO/IEC 23090-14:2025); Amendment 2 (avatar support) is still a separate, not-yet-published Draft Amendment, not part of that edition -- see src/data/specs/avatar.js for that citation',
+  },
+  {
+    // Added 2026-08-25: docs/tech/xr.mdx's own "Key specifications" line names
+    // this as OMAFv2 alongside 23090-14, but it was missing from this index
+    // even though standards/xr.mdx calls this page "the full, maintained
+    // specification list" (findability audit).
+    id: 'ISO/IEC 23090-2:2023',
+    title:
+      'Information technology - Coded representation of immersive media - Part 2: Omnidirectional media format',
+    url: 'https://www.iso.org/standard/84636.html',
+    layer: 'MPEG',
+    note: 'third edition; the multi-viewpoint/overlay/tiling feature set this site calls OMAFv2 was introduced in the second edition (2021) and carried into this one',
+  },
+  {
+    // Added 2026-08-25: docs/tech/xr.mdx names this alongside 23090-14 as a
+    // "Key specification" for the scene's own media content, and
+    // standards/xr.mdx's own "Scene and media formats (MPEG)" table row
+    // already names it -- same completeness gap as ISO/IEC 23090-2 above.
+    id: 'ISO/IEC 23090-5',
+    title:
+      'Information technology: Coded representation of immersive media - Part 5: Visual volumetric video-based coding (V3C) and video-based point cloud compression (V-PCC)',
+    url: 'https://www.iso.org/standard/83535.html',
+    layer: 'MPEG',
+    note: 'shared with the MPEG V3C Immersive Platform reference tools; see src/data/specs/v3c.js for the same citation',
+  },
+  {
+    // Added 2026-08-25: standards/xr.mdx's own "Delivery (3GPP SA4)" table
+    // row and prose both name these three (5GMS architecture/protocols,
+    // RTC) as relevant to XR delivery, but none were in this index --
+    // same completeness gap as the two MPEG entries above.
+    id: 'TS 26.501',
+    title: '5G Media Streaming (5GMS); General description and architecture',
+    url: 'https://www.3gpp.org/dynareport/26501.htm',
+    layer: 'Delivery',
+    note: 'Under change control; WG S4',
+  },
+  {
+    id: 'TS 26.512',
+    title: '5G Media Streaming (5GMS); Protocols',
+    url: 'https://www.3gpp.org/dynareport/26512.htm',
+    layer: 'Delivery',
+    note: 'Under change control; WG S4',
+  },
+  {
+    id: 'TS 26.506',
+    title: '5G Real-time Media Communication Architecture (Stage 2)',
+    url: 'https://www.3gpp.org/dynareport/26506.htm',
+    layer: 'Delivery',
+    note: 'Under change control; WG S4',
   },
   {
     id: 'TR 23.700-23',
@@ -241,6 +290,7 @@ export const XR_SPECS = [
 // alphabetically or by how many deliverables happen to be in each.
 export const XR_LAYER_ORDER = [
   'MPEG',
+  'Delivery',
   'Use cases',
   'Radio',
   'Split rendering',
