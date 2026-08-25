@@ -254,16 +254,16 @@ This operation should return an **"id": "string"**, in this form:
 
 #### 1.1 Request for Dedicated Network reservation
 
-**POST /networks** passing a `profileId`, `serviceTime`, `serviceArea`, among others, in the following form. Note that `profileId` here is the `id` returned by **GET /profiles** in step 1.0a:
+**POST /networks** passing a `networkProfileId`, `serviceTime`, `serviceAreaId`, among others, in the following form. Note that `networkProfileId` here is the `id` returned by **GET /profiles** in step 1.0a:
 
 ```json
 {
-  "profileId": "string",
+  "networkProfileId": "string",
   "serviceTime": {
     "start": "2025-11-05T14:14:35.390Z",
     "end": "2025-11-05T14:14:35.390Z"
   },
-  "serviceArea": {},
+  "serviceAreaId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "sink": "https://endpoint.example.com/sink",
   "sinkCredential": {}
 }
