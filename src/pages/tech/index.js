@@ -550,6 +550,25 @@ export default function Home() {
       </div>
 
       <main>
+        {/* What You'll Find Here -- first section on every hub page, a
+            consistent directory of destinations before anything else
+            (2026-08-26: raised directly, "what you will find here
+            section goes first for each hub" -- this hub's version had
+            drifted to 4th place during the previous reorder pass). */}
+        <section className={styles.section}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>What You&apos;ll Find Here</h2>
+            <p className={styles.sectionSubtitle}>
+              Every destination on this hub, in one place.
+            </p>
+            <div className={styles.activityGrid}>
+              {WHATS_HERE.map((r) => (
+                <ActivityCard key={r.href} {...r} />
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Categories & Topics -- the actual browsable content, moved
             ahead of the framing sections below (2026-08-26 findability
             pass) so a visitor reaches it without scrolling past
@@ -610,21 +629,6 @@ export default function Home() {
                     </Link>
                   )}
                 </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* What You'll Find Here */}
-        <section className={styles.section}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>What You&apos;ll Find Here</h2>
-            <p className={styles.sectionSubtitle}>
-              Every destination on this hub, in one place.
-            </p>
-            <div className={styles.activityGrid}>
-              {WHATS_HERE.map((r) => (
-                <ActivityCard key={r.href} {...r} />
               ))}
             </div>
           </div>

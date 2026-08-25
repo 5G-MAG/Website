@@ -370,11 +370,33 @@ export default function Standards() {
       </div>
 
       <main>
+        {/* What You'll Find Here -- first section on every hub page, a
+            consistent directory of destinations before anything else
+            (2026-08-26: raised directly, "what you will find here
+            section goes first for each hub" -- this hub's version had
+            drifted to last place during the previous reorder pass). */}
+        <section className={`${styles.section} ${styles.sectionAlt}`}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>What You&apos;ll Find Here</h2>
+            <p className={styles.sectionSubtitle}>
+              Every feedback and requirements destination, in one place. Looking for the
+              specifications each technology implements? Those live with the technical
+              analysis on <Link to="/tech#categories-topics">Explainers &amp; Blueprints</Link>{' '}
+              — every topic card there carries a direct Standards link.
+            </p>
+            <div className={styles.activityGrid}>
+              {WHATS_HERE.map((r) => (
+                <ActivityCard key={r.href} {...r} />
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Feedback & Methodology, and Workshops for Standards -- the actual
-            browsable/actionable content, moved ahead of the framing
+            browsable/actionable content, kept ahead of the framing
             sections below (2026-08-26 findability pass) so a visitor
             reaches real destinations without scrolling past
-            "Motivation"/"What You'll Find Here" first every time. */}
+            "Motivation" first every time. */}
         <section id="feedback" className={styles.section}>
           <div className="container">
             <h2 className={styles.sectionTitle}>Feedback to SDOs</h2>
@@ -488,24 +510,6 @@ export default function Standards() {
                   <h3 className={styles.pillarTitle}>{p.title}</h3>
                   {p.body && <p className={styles.pillarBody}>{p.body}</p>}
                 </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* What You'll Find Here */}
-        <section className={`${styles.section} ${styles.sectionAlt}`}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>What You&apos;ll Find Here</h2>
-            <p className={styles.sectionSubtitle}>
-              Every feedback and requirements destination, in one place. Looking for the
-              specifications each technology implements? Those live with the technical
-              analysis on <Link to="/tech#categories-topics">Explainers &amp; Blueprints</Link>{' '}
-              — every topic card there carries a direct Standards link.
-            </p>
-            <div className={styles.activityGrid}>
-              {WHATS_HERE.map((r) => (
-                <ActivityCard key={r.href} {...r} />
               ))}
             </div>
           </div>
