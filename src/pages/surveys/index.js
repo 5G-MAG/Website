@@ -65,7 +65,7 @@ export default function Surveys() {
         <div className="topic-banner">
           <div className="topic-banner__icon-wrap">{icon(SURVEY_ICON_PATH)}</div>
           <div className="topic-banner__text">
-            <span className="topic-banner__kicker">Feedback &amp; Requirements</span>
+            <span className="topic-banner__kicker">Standardisation</span>
             <h1>Industry Surveys</h1>
           </div>
         </div>

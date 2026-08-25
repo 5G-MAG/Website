@@ -60,7 +60,7 @@ const PILLARS = [
   },
 ];
 
-// "What You'll Find Here" -- Testing only gives access to two things:
+// "What You'll Find Here" -- In Action only gives access to two things:
 // recorded Demos and Testing Events (e.g. the PlugFest). Nothing here
 // hands off to Reference Tools or Testbeds -- that's Developer's territory.
 const WHATS_HERE = [
@@ -115,7 +115,7 @@ function ActivityCard({ title, desc, href, icon: cardIcon }) {
   );
 }
 
-function TestingEventCard({ title, body, href }) {
+function ActionEventCard({ title, body, href }) {
   return (
     <Link to={href} className={styles.linkCard}>
       <h3 className={styles.linkCardTitle}>{title}</h3>
@@ -134,7 +134,7 @@ function DemosSection() {
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
           <div>
             <h2 className={styles.sectionTitle} style={{ textAlign: 'left', marginBottom: '0.2rem' }}>
-              In Action
+              Demos
             </h2>
             <p className={styles.sectionSubtitle} style={{ textAlign: 'left', margin: 0 }}>
               Recordings of plugfest and trade-show demos
@@ -150,7 +150,7 @@ function DemosSection() {
   );
 }
 
-export default function Testing() {
+export default function Action() {
   const plugfestImg = useBaseUrl('/assets/images/gallery/5g-broadcast-plugfest-2026.jpg');
   const tradeshowImg = useBaseUrl('/assets/images/gallery/tradeshow-booth-demo.jpg');
   return (
@@ -204,7 +204,8 @@ export default function Testing() {
           <div className="container">
             <h2 className={styles.sectionTitle}>What You&apos;ll Find Here</h2>
             <p className={styles.sectionSubtitle}>
-              Every destination on this hub, in one place.
+              Every destination on this hub, in one place. For the real, assembled scenarios built
+              from these tools, see <Link to="/applications">Applications</Link>.
             </p>
             <div className={styles.activityGrid}>
               {WHATS_HERE.map((r) => (
@@ -263,7 +264,7 @@ export default function Testing() {
             </p>
             <div className={styles.pillarGrid3}>
               {TESTING_EVENTS.map((e) => (
-                <TestingEventCard key={e.href} {...e} />
+                <ActionEventCard key={e.href} {...e} />
               ))}
             </div>
           </div>
