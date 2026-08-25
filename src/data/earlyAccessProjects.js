@@ -27,4 +27,17 @@ export const EARLY_ACCESS_PROJECTS = [
     href: '/reference-tools/standards2deployments',
     desc: 'Auxiliary tooling for members and contributors working from specifications: a 3GPP Work Plan and Change Request explorer, guidelines for AI-assisted development, and specification conformance audits and coverage records.',
   },
+  {
+    // The only entry here that isn't a whole gated project: the rest of
+    // MPEG V3C Immersive Platform is public (rt-v3c-unity-player,
+    // rt-v3c-decoder-plugin, rt-v3c-content are all `public: true` in
+    // repoMetadata.json). Without this entry the request form's dropdown
+    // (built from this array, see EarlyAccessForm) had no way to name this
+    // repo at all, even though ProjectRepositories renders it with a real
+    // "Private / request access" badge on /reference-tools/v3c/resources
+    // (2026-08-25 findability follow-up).
+    name: 'MPEG V3C Example Content',
+    href: '/reference-tools/v3c/resources',
+    desc: "Example V3C content and helper files for testing the encoding, delivery and rendering pipeline. The rest of the MPEG V3C Immersive Platform project is already public.",
+  },
 ];
