@@ -316,7 +316,7 @@
           "repo_url": "https://github.com/5G-MAG/rt-common-shared"
         },
         {
-          "repo": "rt-xr-gITFast",
+          "repo": "rt-xr-glTFast",
           "stars": 3,
           "forks": 0,
           "open_issues": 1,
@@ -325,7 +325,7 @@
           "clones_14d": 2,
           "total_views": 0,
           "total_clones": 8,
-          "repo_url": "https://github.com/5G-MAG/rt-xr-gITFast"
+          "repo_url": "https://github.com/5G-MAG/rt-xr-glTFast"
         }
       ]
     },
