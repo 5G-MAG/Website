@@ -20,8 +20,6 @@ description: Introduces 5G-MAG's work on Network APIs to close the visibility ga
 This documentation is currently **under development and subject to change**. It reflects outcomes elaborated by 5G-MAG members. If you are interested in becoming a member of the 5G-MAG and actively participating in shaping this work, please contact the [Project Office](/contact)
 :::
 
-## Introduction: Live Media Distribution
-
 ## Overview
 
 This work area looks at delivering live media (TV and radio) to large audiences over mobile networks and how to diagnose delivery problems when they occur. The core problem it addresses is a visibility gap: when content is delivered "over the top" (OTT), neither the content provider nor the network operator can see the whole delivery chain, so degraded experiences are hard to attribute. 5G-MAG investigates whether Network APIs, standard interfaces that let an application share data with and request treatment from the mobile network, can close that gap. It is aimed at content providers and network engineers working on live streaming quality.

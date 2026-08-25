@@ -20,8 +20,6 @@ description: Describes the CAMARA Network Slice Booking API for reserving networ
 This documentation is currently **under development and subject to change**. It reflects outcomes elaborated by 5G-MAG members. If you are interested in becoming a member of the 5G-MAG and actively participating in shaping this work, please contact the [Project Office](/contact)
 :::
 
-## CAMARA: Network Slice Booking API
-
 ## Description
 
 The "Network Slice Booking" API gives developers a programmable interface through which industry customers can reserve and manage network slice resources within designated areas and time periods, and offer network guarantee services to end users. Developers can customize service areas (e.g., circular or polygonal regions) and time periods, set Quality of Service (QoS) parameters (e.g., throughput, latency, and terminal limits), apply for network slice resources from operators, and bind slice resources to end users, all to achieve network guarantee functions.

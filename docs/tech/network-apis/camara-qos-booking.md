@@ -20,8 +20,6 @@ description: Describes the CAMARA QoS Booking API, which reserves a QoS profile 
 This documentation is currently **under development and subject to change**. It reflects outcomes elaborated by 5G-MAG members. If you are interested in becoming a member of the 5G-MAG and actively participating in shaping this work, please contact the [Project Office](/contact)
 :::
 
-## CAMARA: QoS Booking API
-
 ## Description
 
 Developers and other capabilities consumers use the "QoS Booking" (Quality of Service Booking) API to request specific network conditions from telco networks in advance, without needing in-depth knowledge of the underlying network complexity (e.g. the 4G/5G system in the case of a mobile network).

@@ -86,7 +86,7 @@ The table below summarises how multicast and broadcast differ across the main ra
 The "RRC states supported" row is a high-level summary. See [MBS RAN Aspects](./ran-aspects) for the exact RRC states per delivery mode.
 :::
 
-### How is the coverage area of a service determined?
+### Coverage area
 
 For both Multicast and Broadcast Services, individual cells may be added to or removed from the service
 area, as summarised in the table above. For multicast, link adaptation selects the most appropriate modulation and coding scheme (MCS), and beamforming is optimized for the UEs in the multicast group. For broadcast, each service is pre-assigned an
@@ -95,24 +95,20 @@ Single frequency network (SFN) operation is possible across sectors of the same 
 multicast. For broadcast, SFNs can be implemented across base stations that are sufficiently close to each
 other, transparent to UEs.
 
-### How is reliability of reception managed?
+### Reliability
 
 Beyond the summary above, multicast reliability relies on a combination of mechanisms: UE feedback, retransmissions using PTP or PTM, link adaptation, and beamforming. Broadcast, by contrast, offers no guarantee of reception, though slot-level data repetition can still improve performance.
 
-### How are mobility and service continuity managed?
+### Mobility and continuity
 
 Multicast service continuity across cells relies on handover between the base stations a UE
 traverses. Broadcast instead uses neighbour-cell information and cell-reselection mechanisms, which do
 not ensure lossless handover.
 
-### Can MBS services be transmitted together with other types of traffic on the 5G network?
+### Mixing MBS with other traffic
 
 Mixed radio carriers can deliver multicast and/or broadcast services alongside other unicast data on the
 same cell.
-
-## Learn more...
-
-A paper from [Qualcomm](https://ieeexplore.ieee.org/document/9772755) and a blog post from [Ericsson](https://www.ericsson.com/en/blog/2022/12/multicast-broadcast-group-communication) provide more details about MBS.
 
 **Next:** [MBS Service Layer Aspects](./mbs-service-layer) for the user-service architecture, then [MBS Service and System Aspects](./mbs-service-system-aspects) for the 5G Core view.
 
@@ -121,3 +117,4 @@ A paper from [Qualcomm](https://ieeexplore.ieee.org/document/9772755) and a blog
 - [5G Multicast Broadcast Services (MBS)](/tech/5g-mbs): the parent topic page
 - [Standards: 5G Multicast Broadcast Services (MBS)](/standards/5g-mbs): the specification list for this topic
 - [5G Multicast Broadcast Services (MBS) Reference Tools](/reference-tools/5g-mbs): the software implementation
+- Further reading: a paper from [Qualcomm](https://ieeexplore.ieee.org/document/9772755) and a blog post from [Ericsson](https://www.ericsson.com/en/blog/2022/12/multicast-broadcast-group-communication) with more detail on MBS

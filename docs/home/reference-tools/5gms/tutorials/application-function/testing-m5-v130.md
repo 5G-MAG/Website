@@ -392,4 +392,4 @@ Documentation for testing Consumption Reporting, Network Assistance and Dynamic 
 
 - For client-side Consumption Reporting guidance, see the [Consumption Reporting tutorial](../consumption-reporting).
 - For an overview of Dynamic Policies and Network Assistance setup, see the [end-to-end tutorial](../end-to-end).
-  :::
+:::

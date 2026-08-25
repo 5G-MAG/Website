@@ -20,8 +20,6 @@ description: Describes the CAMARA Dedicated Networks API's four-part workflow fo
 This documentation is currently **under development and subject to change**. It reflects outcomes elaborated by 5G-MAG members. If you are interested in becoming a member of the 5G-MAG and actively participating in shaping this work, please contact the [Project Office](/contact)
 :::
 
-## CAMARA: Dedicated Networks API
-
 ## Description
 
 The "Dedicated Networks" APIs cover reserving network connectivity resources, selecting network capabilities, and controlling device access.

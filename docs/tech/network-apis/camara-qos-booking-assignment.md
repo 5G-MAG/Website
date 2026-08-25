@@ -20,8 +20,6 @@ description: Describes the CAMARA QoS Booking and Assignment API, which books ca
 This documentation is currently **under development and subject to change**. It reflects outcomes elaborated by 5G-MAG members. If you are interested in becoming a member of the 5G-MAG and actively participating in shaping this work, please contact the [Project Office](/contact)
 :::
 
-## CAMARA: QoS Booking and Assignment API
-
 ## Description
 
 Application developers and service providers use the "QoS Booking and Assignment" API to reserve specific network conditions in advance for one or more devices. These conditions are based on a defined Quality of Service (QoS) profile, and also include parameters such as location, start time, and duration.
