@@ -289,11 +289,15 @@ const CATEGORIES = [
 
 // "What You'll Find Here" -- one crystal-clear index of every real
 // destination on this hub, shown right under "Why", before the deeper
-// Categories & Topics grid further down the page.
+// Analysis & Explainers grid further down the page. Each entry here
+// names an actual resource; the grid itself is the resource (16
+// topic-by-topic analysis/explainer pages), not "Categories & Topics",
+// which named how it's organised rather than what it is (raised
+// directly, 2026-08-26 hub audit).
 const WHATS_HERE = [
   {
-    title: 'Categories & Topics',
-    desc: 'Every technology area, browsable by category and topic.',
+    title: 'Analysis & Explainers',
+    desc: 'Profiles of standards specifications, one per technology area.',
     href: '/tech#categories-topics',
     icon: icon(
       <>
@@ -566,13 +570,17 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Categories & Topics -- the actual browsable content, moved
+        {/* Analysis & Explainers -- the actual browsable content, moved
             ahead of the framing sections below (2026-08-26 findability
             pass) so a visitor reaches it without scrolling past
-            "Motivation"/"How This Fits Together" first every time. */}
+            "Motivation"/"How This Fits Together" first every time.
+            Renamed from "Categories & Topics" (2026-08-26 hub audit):
+            that named the grouping mechanism, not the resource -- id
+            stays "categories-topics" since other pages already link to
+            this exact anchor. */}
         <section id="categories-topics" className={clsx(styles.section, styles.sectionAlt)}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Categories &amp; Topics</h2>
+            <h2 className={styles.sectionTitle}>Analysis &amp; Explainers</h2>
             <p className={styles.sectionSubtitle}>
               Profiles and blueprints that turn standards into implementation-ready analysis —
               organised by technology area.
