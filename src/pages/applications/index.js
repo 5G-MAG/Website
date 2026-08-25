@@ -207,9 +207,16 @@ function CategoryCard({ title, desc, topics }) {
   );
 }
 
-// Same filtering approach as /reference-tools: a plain-text query against
-// each topic's own title and description (not the category's), so a
-// category with zero remaining topics is dropped entirely.
+// Same query-drops-empty-categories mechanics as /reference-tools, but
+// title/description only, not title/description/tags: these topics are
+// scenario anchors on a shared category page (e.g. a specific H2 on
+// streaming.md), not individual projects, so there is no single project's
+// `software` field in repoMetadata.json to draw a tag from -- it would
+// have to be invented as a union across whichever Reference Tools each
+// scenario combines, which isn't recorded anywhere as a citable fact
+// (2026-08-26 findability follow-up; the filter bar's own placeholder
+// text is worded to match, see below -- "by name", not "by name or
+// technology").
 function filterCategories(query) {
   const q = query.trim().toLowerCase();
   if (!q) return CATEGORIES;
@@ -256,7 +263,7 @@ export default function Applications() {
               <input
                 type="search"
                 className={filterStyles.filterInput}
-                placeholder={`Filter ${totalTopics} scenarios by name or technology…`}
+                placeholder={`Filter ${totalTopics} scenarios by name…`}
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 aria-label="Filter Application scenarios"
@@ -269,7 +276,7 @@ export default function Applications() {
             </div>
             {filtered.length === 0 ? (
               <p className={filterStyles.filterEmpty}>
-                No scenarios match &ldquo;{query}&rdquo;. Try a broader technology name (e.g.
+                No scenarios match &ldquo;{query}&rdquo;. Try a broader term (e.g.
                 &ldquo;streaming&rdquo; or &ldquo;broadcast&rdquo;).
               </p>
             ) : (
