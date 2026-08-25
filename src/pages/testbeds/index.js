@@ -53,6 +53,13 @@ const BEYOND2D_ICON_PATH = (
   <path d="M4.338 5.53c5.106 1.932 10.211 1.932 15.317 0a1 1 0 0 1 1.345 .934v11c0 .692 -.692 1.2 -1.34 .962c-5.107 -1.932 -10.214 -1.932 -15.321 0c-.648 .246 -1.339 -.242 -1.339 -.935v-11.027a1 1 0 0 1 1.338 -.935l0 .001" />
 );
 
+// `tags` are drawn from the union of each project's own repos' `software`
+// field in src/data/repoMetadata.json, same convention and same caveat as
+// reference-tools/index.js's CATEGORIES: re-derive from repoMetadata.json
+// rather than hand-editing here if a project's repo set changes. The
+// filter bar promises "technology" search (see below), which needs this
+// field to be real rather than absent -- it was missing here even though
+// the placeholder already claimed it (2026-08-26 findability follow-up).
 const TESTBED_PROJECTS = [
   {
     title: 'AI Traffic Characterization',
@@ -60,6 +67,7 @@ const TESTBED_PROJECTS = [
     href: '/testbeds/6g-testbed',
     icon: icon(SIXG_ICON_PATH),
     releasesHref: '/testbeds/6g-testbed/resources#releases',
+    tags: ['Linux'],
   },
   {
     title: 'AI/ML Evaluation Framework',
@@ -68,6 +76,7 @@ const TESTBED_PROJECTS = [
     icon: icon(AIML_ICON_PATH),
     releasesHref: '/testbeds/ai-ml/resources#releases',
     roadmapHref: 'https://github.com/orgs/5G-MAG/projects/48/views/9',
+    tags: ['Linux'],
   },
   {
     title: 'Beyond 2D Evaluation Framework',
@@ -76,10 +85,11 @@ const TESTBED_PROJECTS = [
     icon: icon(BEYOND2D_ICON_PATH),
     releasesHref: '/testbeds/beyond-2d/resources#releases',
     roadmapHref: 'https://github.com/orgs/5G-MAG/projects/48/views/10',
+    tags: ['Linux'],
   },
 ];
 
-function ProjectCard({ title, desc, href, icon: cardIcon, releasesHref, roadmapHref }) {
+function ProjectCard({ title, desc, href, icon: cardIcon, releasesHref, roadmapHref, tags }) {
   const footerLinks = [
     { label: 'Documentation', href },
     ...(roadmapHref ? [{ label: 'Roadmap', href: roadmapHref, external: true }] : []),
@@ -92,6 +102,7 @@ function ProjectCard({ title, desc, href, icon: cardIcon, releasesHref, roadmapH
       desc={desc}
       href={href}
       footerLinks={footerLinks}
+      tags={tags}
     />
   );
 }
@@ -102,7 +113,10 @@ export default function Testbeds() {
     const q = query.trim().toLowerCase();
     if (!q) return TESTBED_PROJECTS;
     return TESTBED_PROJECTS.filter(
-      (p) => p.title.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q)
+      (p) =>
+        p.title.toLowerCase().includes(q) ||
+        p.desc.toLowerCase().includes(q) ||
+        (p.tags || []).some((tag) => tag.toLowerCase().includes(q))
     );
   }, [query]);
 
