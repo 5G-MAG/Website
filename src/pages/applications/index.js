@@ -1,7 +1,13 @@
+import { useMemo, useState } from 'react';
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import { icon } from '@site/src/components/GodeeperCard';
 import styles from '../tech/index.module.css';
+// Shared with /reference-tools, which the filter bar pattern below was
+// first built for (2026-08-24 findability audit); reused here rather than
+// duplicated, same cross-directory-module convention as the `styles`
+// import above (../tech/index.module.css).
+import filterStyles from '../reference-tools/styles.module.css';
 
 const APPS_ICON_PATH = (
   <>
@@ -208,7 +214,26 @@ function CategoryCard({ title, desc, topics }) {
   );
 }
 
+// Same filtering approach as /reference-tools: a plain-text query against
+// each topic's own title and description (not the category's), so a
+// category with zero remaining topics is dropped entirely.
+function filterCategories(query) {
+  const q = query.trim().toLowerCase();
+  if (!q) return CATEGORIES;
+  return CATEGORIES.map((c) => ({
+    ...c,
+    topics: c.topics.filter(
+      (t) => t.title.toLowerCase().includes(q) || t.desc.toLowerCase().includes(q)
+    ),
+  })).filter((c) => c.topics.length > 0);
+}
+
 export default function Applications() {
+  const [query, setQuery] = useState('');
+  const filtered = useMemo(() => filterCategories(query), [query]);
+  const totalTopics = useMemo(() => CATEGORIES.reduce((n, c) => n + c.topics.length, 0), []);
+  const shownTopics = useMemo(() => filtered.reduce((n, c) => n + c.topics.length, 0), [filtered]);
+
   return (
     <Layout
       title="Applications"
@@ -234,11 +259,33 @@ export default function Applications() {
               you&apos;re looking for an individual specification implementation, see{' '}
               <Link to="/reference-tools">Reference Tools</Link> instead.
             </p>
-            <div className={styles.categoryColumns}>
-              {CATEGORIES.map((c) => (
-                <CategoryCard key={c.title} {...c} />
-              ))}
+            <div className={filterStyles.filterBar}>
+              <input
+                type="search"
+                className={filterStyles.filterInput}
+                placeholder={`Filter ${totalTopics} scenarios by name or technology…`}
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                aria-label="Filter Application scenarios"
+              />
+              {query && (
+                <span className={filterStyles.filterCount}>
+                  {shownTopics} of {totalTopics}
+                </span>
+              )}
             </div>
+            {filtered.length === 0 ? (
+              <p className={filterStyles.filterEmpty}>
+                No scenarios match &ldquo;{query}&rdquo;. Try a broader technology name (e.g.
+                &ldquo;streaming&rdquo; or &ldquo;broadcast&rdquo;).
+              </p>
+            ) : (
+              <div className={styles.categoryColumns}>
+                {filtered.map((c) => (
+                  <CategoryCard key={c.title} {...c} />
+                ))}
+              </div>
+            )}
           </div>
         </section>
       </main>

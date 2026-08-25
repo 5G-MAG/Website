@@ -1,6 +1,10 @@
+import { useMemo, useState } from 'react';
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import styles from '../tech/index.module.css';
+// Shared with /reference-tools and /applications; see the comment there
+// for why (2026-08-24 findability audit; extended here 2026-08-25).
+import filterStyles from '../reference-tools/styles.module.css';
 
 const icon = (paths) => (
   <svg
@@ -98,6 +102,15 @@ function ProjectCard({ title, desc, href, icon: cardIcon, releasesHref, roadmapH
 }
 
 export default function Testbeds() {
+  const [query, setQuery] = useState('');
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return TESTBED_PROJECTS;
+    return TESTBED_PROJECTS.filter(
+      (p) => p.title.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q)
+    );
+  }, [query]);
+
   return (
     <Layout
       title="Testbeds"
@@ -133,11 +146,32 @@ export default function Testbeds() {
               or through the community channels) — see{' '}
               <Link to="/community">Developer Community</Link> for how to get in touch.
             </p>
-            <div className={styles.activityGrid}>
-              {TESTBED_PROJECTS.map((p) => (
-                <ProjectCard key={p.href} {...p} />
-              ))}
-            </div>
+            {TESTBED_PROJECTS.length > 3 && (
+              <div className={filterStyles.filterBar}>
+                <input
+                  type="search"
+                  className={filterStyles.filterInput}
+                  placeholder={`Filter ${TESTBED_PROJECTS.length} testbeds by name or technology…`}
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  aria-label="Filter Testbeds"
+                />
+                {query && (
+                  <span className={filterStyles.filterCount}>
+                    {filtered.length} of {TESTBED_PROJECTS.length}
+                  </span>
+                )}
+              </div>
+            )}
+            {filtered.length === 0 ? (
+              <p className={filterStyles.filterEmpty}>No testbeds match &ldquo;{query}&rdquo;.</p>
+            ) : (
+              <div className={styles.activityGrid}>
+                {filtered.map((p) => (
+                  <ProjectCard key={p.href} {...p} />
+                ))}
+              </div>
+            )}
           </div>
         </section>
       </main>
