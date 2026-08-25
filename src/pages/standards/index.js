@@ -380,45 +380,11 @@ export default function Standards() {
       </div>
 
       <main>
-        {/* Why this matters */}
-        <section className={styles.section}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>Motivation</h2>
-            <p className={styles.sectionSubtitle}>
-              Advancing standardization with implementation and experience-based feedback.
-            </p>
-            <div className={styles.pillarGrid3}>
-              {MOTIVATION.map((p) => (
-                <div key={p.title} className={styles.pillarCard}>
-                  <div className={styles.pillarIcon}>{p.icon}</div>
-                  <h3 className={styles.pillarTitle}>{p.title}</h3>
-                  {p.body && <p className={styles.pillarBody}>{p.body}</p>}
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* What You'll Find Here */}
-        <section className={`${styles.section} ${styles.sectionAlt}`}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>What You&apos;ll Find Here</h2>
-            <p className={styles.sectionSubtitle}>
-              Every feedback and requirements destination, in one place. Looking for the
-              specifications each technology implements? Those live with the technical
-              analysis on <Link to="/tech#categories-topics">Explainers &amp; Blueprints</Link>{' '}
-              — every topic card there carries a direct Standards link.
-            </p>
-            <div className={styles.activityGrid}>
-              {WHATS_HERE.map((r) => (
-                <ActivityCard key={r.href} {...r} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Feedback & Methodology -- per-SDO tracking and how it's processed,
-            kept on one page since they're two views of the same activity. */}
+        {/* Feedback & Methodology, and Workshops for Standards -- the actual
+            browsable/actionable content, moved ahead of the framing
+            sections below (2026-08-26 findability pass) so a visitor
+            reaches real destinations without scrolling past
+            "Motivation"/"What You'll Find Here" first every time. */}
         <section id="feedback" className={styles.section}>
           <div className="container">
             <h2 className={styles.sectionTitle}>Feedback to SDOs</h2>
@@ -514,6 +480,43 @@ export default function Standards() {
             </div>
             <div style={{ textAlign: 'center', marginTop: '1.5rem', fontWeight: 600 }}>
               <Link to="/workshops">Browse the full workshop &amp; session archive &rarr;</Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Why this matters */}
+        <section className={styles.section}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>Motivation</h2>
+            <p className={styles.sectionSubtitle}>
+              Advancing standardization with implementation and experience-based feedback.
+            </p>
+            <div className={styles.pillarGrid3}>
+              {MOTIVATION.map((p) => (
+                <div key={p.title} className={styles.pillarCard}>
+                  <div className={styles.pillarIcon}>{p.icon}</div>
+                  <h3 className={styles.pillarTitle}>{p.title}</h3>
+                  {p.body && <p className={styles.pillarBody}>{p.body}</p>}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* What You'll Find Here */}
+        <section className={`${styles.section} ${styles.sectionAlt}`}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>What You&apos;ll Find Here</h2>
+            <p className={styles.sectionSubtitle}>
+              Every feedback and requirements destination, in one place. Looking for the
+              specifications each technology implements? Those live with the technical
+              analysis on <Link to="/tech#categories-topics">Explainers &amp; Blueprints</Link>{' '}
+              — every topic card there carries a direct Standards link.
+            </p>
+            <div className={styles.activityGrid}>
+              {WHATS_HERE.map((r) => (
+                <ActivityCard key={r.href} {...r} />
+              ))}
             </div>
           </div>
         </section>

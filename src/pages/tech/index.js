@@ -560,6 +560,25 @@ export default function Home() {
       </div>
 
       <main>
+        {/* Categories & Topics -- the actual browsable content, moved
+            ahead of the framing sections below (2026-08-26 findability
+            pass) so a visitor reaches it without scrolling past
+            "Motivation"/"How This Fits Together" first every time. */}
+        <section id="categories-topics" className={clsx(styles.section, styles.sectionAlt)}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>Categories &amp; Topics</h2>
+            <p className={styles.sectionSubtitle}>
+              Profiles and blueprints that turn standards into implementation-ready analysis —
+              organised by technology area.
+            </p>
+            <div className={styles.categoryColumns}>
+              {CATEGORIES.map((c) => (
+                <CategoryCard key={c.title} {...c} />
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* What's here */}
         <section className={styles.section}>
           <div className="container">
@@ -616,22 +635,6 @@ export default function Home() {
             <div className={styles.activityGrid}>
               {WHATS_HERE.map((r) => (
                 <ActivityCard key={r.href} {...r} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Categories & Topics */}
-        <section id="categories-topics" className={clsx(styles.section, styles.sectionAlt)}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>Categories &amp; Topics</h2>
-            <p className={styles.sectionSubtitle}>
-              Profiles and blueprints that turn standards into implementation-ready analysis —
-              organised by technology area.
-            </p>
-            <div className={styles.categoryColumns}>
-              {CATEGORIES.map((c) => (
-                <CategoryCard key={c.title} {...c} />
               ))}
             </div>
           </div>

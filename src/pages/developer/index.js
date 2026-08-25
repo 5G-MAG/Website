@@ -195,6 +195,29 @@ export default function Home() {
       </div>
 
       <main>
+        {/* Product Types -- the actual browsable destinations (Reference
+            Tools, Testbeds, Applications), moved ahead of the framing
+            sections below (2026-08-26 findability pass) so a visitor
+            reaches them without scrolling past "Motivation" first every
+            time. */}
+        <section className={clsx(styles.section, styles.sectionAlt)}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>What You&apos;ll Find Here</h2>
+            <p className={styles.sectionSubtitle}>
+              Reference Tools, Testbeds and Evaluation Tools, and Application Prototypes — under
+              one open developer community. New here? See{' '}
+              <Link to="/community/using-this-documentation">Using this Documentation</Link> for
+              how a project's Scope, Resources and Tutorials pages fit together, and a suggested
+              path through them.
+            </p>
+            <div className={styles.productGrid}>
+              {PRODUCT_TYPES.map((item) => (
+                <ProductTypeCard key={item.href} {...item} />
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Pillars */}
         {/* Motivation: merged "what this gets you" + "why open source" under one banner */}
         <section className={styles.section}>
@@ -215,25 +238,6 @@ export default function Home() {
               <Link className="button button--primary button--lg" to="/community">
                 Learn about the Developer Community
               </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* Product Types */}
-        <section className={clsx(styles.section, styles.sectionAlt)}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>What You&apos;ll Find Here</h2>
-            <p className={styles.sectionSubtitle}>
-              Reference Tools, Testbeds and Evaluation Tools, and Application Prototypes — under
-              one open developer community. New here? See{' '}
-              <Link to="/community/using-this-documentation">Using this Documentation</Link> for
-              how a project's Scope, Resources and Tutorials pages fit together, and a suggested
-              path through them.
-            </p>
-            <div className={styles.productGrid}>
-              {PRODUCT_TYPES.map((item) => (
-                <ProductTypeCard key={item.href} {...item} />
-              ))}
             </div>
           </div>
         </section>

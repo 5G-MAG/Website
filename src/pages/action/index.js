@@ -180,26 +180,11 @@ export default function Action() {
       </div>
 
       <main>
-        <section className={styles.section}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>Motivation</h2>
-            <p className={styles.sectionSubtitle}>
-              Making the value proposition tangible to the industry — through interoperability,
-              early testing and plugfests.
-            </p>
-            <div className={styles.pillarGrid3}>
-              {PILLARS.map((p) => (
-                <div key={p.title} className={styles.pillarCard}>
-                  <div className={styles.pillarIcon}>{p.icon}</div>
-                  <h3 className={styles.pillarTitle}>{p.title}</h3>
-                  {p.body && <p className={styles.pillarBody}>{p.body}</p>}
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* What You'll Find Here */}
+        {/* What You'll Find Here, Out in the field, Demonstrators and
+            Testing Events -- the actual browsable destinations, moved
+            ahead of the framing sections below (2026-08-26 findability
+            pass) so a visitor reaches real content without scrolling
+            past "Motivation" first every time. */}
         <section className={`${styles.section} ${styles.sectionAlt}`}>
           <div className="container">
             <h2 className={styles.sectionTitle}>What You&apos;ll Find Here</h2>
@@ -265,6 +250,25 @@ export default function Action() {
             <div className={styles.pillarGrid3}>
               {TESTING_EVENTS.map((e) => (
                 <ActionEventCard key={e.href} {...e} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.section}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>Motivation</h2>
+            <p className={styles.sectionSubtitle}>
+              Making the value proposition tangible to the industry — through interoperability,
+              early testing and plugfests.
+            </p>
+            <div className={styles.pillarGrid3}>
+              {PILLARS.map((p) => (
+                <div key={p.title} className={styles.pillarCard}>
+                  <div className={styles.pillarIcon}>{p.icon}</div>
+                  <h3 className={styles.pillarTitle}>{p.title}</h3>
+                  {p.body && <p className={styles.pillarBody}>{p.body}</p>}
+                </div>
               ))}
             </div>
           </div>
