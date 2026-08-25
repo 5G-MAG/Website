@@ -152,5 +152,5 @@ export const MBS_ARCHITECTURE = {
       repoUrl: 'https://github.com/5G-MAG/rt-mbs-application',
     },
   ],
-  note: 'The chain above is the MBS Broadcast delivery mode. MBS Multicast (UE session join via the SMF, PTP/PTM switching, group paging) is defined by the same architecture but is not yet implemented in any component.',
+  note: 'The chain above is the MBS Broadcast delivery mode. MBS Multicast is defined by the same architecture: its MB-SMF/MB-UPF data path (N6mb ingest, shared GTP-U delivery) already exists, but the UE session join via the SMF, PTP/PTM switching and group paging do not yet.',
 };
