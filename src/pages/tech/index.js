@@ -484,34 +484,31 @@ function CategoryCard({ title, desc, topics }) {
         <p className={styles.categoryDesc}>{desc}</p>
       </div>
       <div className={styles.categoryTopicGrid}>
-        {topics.map((t) => (
-          // Two separate links, not one nested inside the other: the main
-          // card area goes to the Analysis page, and (where one exists) a
-          // second small link goes straight to that topic's Standards page
-          // -- a direct, one-click path from the hub itself, on top of the
-          // Standards Tracking card already on every Analysis page and the
-          // Standards link on every sidebar category (see sidebars-tech.js).
-          <div key={t.href} className={styles.categoryTopicCard}>
-            <Link to={t.href} className={styles.categoryTopicMain}>
-              {t.icon && <span className={styles.categoryTopicIcon}>{t.icon}</span>}
-              <span className={styles.categoryTopicCardBody}>
-                <span className={styles.categoryTopicName}>{t.title}</span>
-                <span className={styles.categoryTopicDescText}>{t.desc}</span>
-                {t.tag && <span className={styles.categoryTopicTag}>{t.tag}</span>}
-              </span>
-            </Link>
-            {t.standardsHref && (
-              <Link to={t.standardsHref} className={styles.categoryTopicStandardsLink}>
-                Standards &rarr;
-              </Link>
-            )}
-            {t.extraStandards?.map((s) => (
-              <Link key={s.href} to={s.href} className={styles.categoryTopicStandardsLink}>
-                {s.label}
-              </Link>
-            ))}
-          </div>
-        ))}
+        {topics.map((t) => {
+          // Two separate destinations, not one link nested inside another:
+          // the main card area goes to the Analysis page, and (where one
+          // exists) a second small link goes straight to that topic's
+          // Standards page -- a direct, one-click path from the hub itself,
+          // on top of the Standards Tracking card already on every
+          // Analysis page and the Standards link on every sidebar
+          // category (see sidebars-tech.js).
+          const secondaryLinks = [
+            ...(t.standardsHref ? [{ href: t.standardsHref, label: 'Standards →' }] : []),
+            ...(t.extraStandards || []),
+          ];
+          return (
+            <HubDestinationCard
+              key={t.href}
+              compact
+              icon={t.icon}
+              title={t.title}
+              desc={t.desc}
+              href={t.href}
+              tag={t.tag}
+              secondaryLinks={secondaryLinks}
+            />
+          );
+        })}
       </div>
     </div>
   );

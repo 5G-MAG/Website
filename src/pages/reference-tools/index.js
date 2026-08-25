@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import { icon } from '@site/src/components/GodeeperCard';
+import HubDestinationCard from '@site/src/components/HubDestinationCard';
 import styles from '../tech/index.module.css';
 import filterStyles from './styles.module.css';
 
@@ -264,24 +265,7 @@ function CategoryCard({ title, desc, topics }) {
       </div>
       <div className={styles.categoryTopicGrid}>
         {topics.map((t) => (
-          <div key={t.href} className={styles.categoryTopicCard}>
-            <Link to={t.href} className={styles.categoryTopicMain}>
-              {t.icon && <span className={styles.categoryTopicIcon}>{t.icon}</span>}
-              <span className={styles.categoryTopicCardBody}>
-                <span className={styles.categoryTopicName}>{t.title}</span>
-                <span className={styles.categoryTopicDescText}>{t.desc}</span>
-              </span>
-            </Link>
-            {t.tags && t.tags.length > 0 && (
-              <div className={styles.categoryTopicTags}>
-                {t.tags.map((tag) => (
-                  <span key={tag} className={styles.categoryTopicTag}>
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
-          </div>
+          <HubDestinationCard key={t.href} compact icon={t.icon} title={t.title} desc={t.desc} href={t.href} tags={t.tags} />
         ))}
       </div>
     </div>

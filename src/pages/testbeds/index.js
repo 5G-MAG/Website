@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
+import HubDestinationCard from '@site/src/components/HubDestinationCard';
 import styles from '../tech/index.module.css';
 // Shared with /reference-tools and /applications; see the comment there
 // for why (2026-08-24 findability audit; extended here 2026-08-25).
@@ -79,25 +80,19 @@ const TESTBED_PROJECTS = [
 ];
 
 function ProjectCard({ title, desc, href, icon: cardIcon, releasesHref, roadmapHref }) {
+  const footerLinks = [
+    { label: 'Documentation', href },
+    ...(roadmapHref ? [{ label: 'Roadmap', href: roadmapHref, external: true }] : []),
+    { label: 'Releases', href: releasesHref },
+  ];
   return (
-    <div className={styles.activityCard}>
-      <Link to={href} className={styles.activityIconBand}>
-        {cardIcon}
-        <h3 className={styles.activityIconBandTitle}>{title}</h3>
-      </Link>
-      <div className={styles.activityBody}>
-        <p className={styles.activityDesc}>{desc}</p>
-      </div>
-      <div className={styles.activityArrow} style={{ display: 'flex', gap: '1rem' }}>
-        <Link to={href}>Documentation &rarr;</Link>
-        {roadmapHref && (
-          <a href={roadmapHref} target="_blank" rel="noreferrer">
-            Roadmap &rarr;
-          </a>
-        )}
-        <Link to={releasesHref}>Releases &rarr;</Link>
-      </div>
-    </div>
+    <HubDestinationCard
+      icon={cardIcon}
+      title={title}
+      desc={desc}
+      href={href}
+      footerLinks={footerLinks}
+    />
   );
 }
 

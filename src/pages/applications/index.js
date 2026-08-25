@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import { icon } from '@site/src/components/GodeeperCard';
+import HubDestinationCard from '@site/src/components/HubDestinationCard';
 import styles from '../tech/index.module.css';
 // Shared with /reference-tools, which the filter bar pattern below was
 // first built for (2026-08-24 findability audit); reused here rather than
@@ -199,15 +200,7 @@ function CategoryCard({ title, desc, topics }) {
       </div>
       <div className={styles.categoryTopicGrid}>
         {topics.map((t) => (
-          <div key={t.href} className={styles.categoryTopicCard}>
-            <Link to={t.href} className={styles.categoryTopicMain}>
-              {t.icon && <span className={styles.categoryTopicIcon}>{t.icon}</span>}
-              <span className={styles.categoryTopicCardBody}>
-                <span className={styles.categoryTopicName}>{t.title}</span>
-                <span className={styles.categoryTopicDescText}>{t.desc}</span>
-              </span>
-            </Link>
-          </div>
+          <HubDestinationCard key={t.href} compact icon={t.icon} title={t.title} desc={t.desc} href={t.href} />
         ))}
       </div>
     </div>

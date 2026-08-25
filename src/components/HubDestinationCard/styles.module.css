@@ -92,3 +92,134 @@
   color: var(--ifm-color-primary);
   border-top: 1px solid var(--ifm-color-emphasis-200);
 }
+
+/* Testbeds' Documentation/Roadmap/Releases row: several named links
+   instead of one "linkLabel ->", same footer band otherwise. */
+.footerLinks {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ── Compact variant ──────────────────────────────────────────────────
+   Same card shell, gradient and border as .card above, at a size that
+   holds up in a dense grid (10-16 items on one page) -- used for e.g.
+   /tech's topic cards and /reference-tools' project cards. No separate
+   footer bar (see index.js): the icon band + body are themselves the
+   click target, and any secondaryLinks render below as their own rows. */
+.compactWrap {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--ifm-background-surface-color);
+}
+
+.cardCompact {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  padding: 0.65rem 0.75rem;
+  text-decoration: none !important;
+  color: inherit !important;
+  transition: background 0.15s ease;
+}
+
+.cardCompact:hover {
+  background: var(--ifm-color-emphasis-100);
+  text-decoration: none !important;
+}
+
+.cardCompact:focus-visible {
+  box-shadow: inset 0 0 0 3px var(--ifm-color-primary);
+}
+
+.iconBandCompact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  border-radius: 6px;
+  background: linear-gradient(
+    135deg,
+    var(--ifm-color-primary-darkest) 0%,
+    var(--ifm-color-primary) 100%
+  );
+}
+
+.iconBandCompact svg {
+  width: 20px;
+  height: 20px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.bandTitleCompact {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ifm-heading-color);
+  line-height: 1.3;
+  margin: 0;
+}
+
+.bodyCompact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.descCompact {
+  font-size: 0.8rem;
+  color: var(--ifm-color-emphasis-700);
+  margin: 0;
+  line-height: 1.45;
+}
+
+.tag {
+  align-self: flex-start;
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  border-radius: 999px;
+  padding: 0.14rem 0.5rem;
+  white-space: nowrap;
+  background: var(--ifm-color-emphasis-100);
+  color: var(--ifm-color-emphasis-700);
+  margin-top: 0.15rem;
+}
+
+/* Reference Tools' small fixed technology-tag vocabulary (Linux, Docker,
+   Android...): several .tag pills on one card, so they wrap as a row
+   instead of each forcing itself onto its own line via .tag's own
+   align-self/margin-top. */
+.tagRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.3rem;
+}
+
+.tagRow .tag {
+  align-self: auto;
+  margin-top: 0;
+}
+
+.secondaryLink {
+  display: block;
+  padding: 0 0.75rem 0.55rem;
+  margin-top: -0.15rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+  text-decoration: none !important;
+}
+
+.secondaryLink:hover {
+  text-decoration: underline !important;
+}

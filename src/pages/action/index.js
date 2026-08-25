@@ -105,13 +105,20 @@ function ActivityCard({ title, desc, href, icon: cardIcon }) {
   return <HubDestinationCard icon={cardIcon} title={title} desc={desc} href={href} />;
 }
 
+// Same calendar icon as /events (EVENTS_ICON_PATH there) -- a testing
+// event is an event, no need for a different icon per entry.
+const TESTING_EVENT_ICON = (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2l0 -12" />
+    <path d="M16 3l0 4" />
+    <path d="M8 3l0 4" />
+    <path d="M4 11l16 0" />
+    <path d="M8 15h2v2h-2l0 -2" />
+  </svg>
+);
+
 function ActionEventCard({ title, body, href }) {
-  return (
-    <Link to={href} className={styles.linkCard}>
-      <h3 className={styles.linkCardTitle}>{title}</h3>
-      <p className={styles.linkCardBody}>{body}</p>
-    </Link>
-  );
+  return <HubDestinationCard icon={TESTING_EVENT_ICON} title={title} desc={body} href={href} linkLabel="Read more" />;
 }
 
 function DemosSection() {

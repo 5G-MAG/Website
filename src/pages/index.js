@@ -8,6 +8,7 @@ import HeroSlideshow from '@site/src/components/HeroSlideshow';
 import MediaConnectivityDiagram from '@site/src/components/MediaConnectivityDiagram';
 import MembersMarquee from '@site/src/components/MembersMarquee';
 import { icon } from '@site/src/components/GodeeperCard';
+import HubDestinationCard from '@site/src/components/HubDestinationCard';
 import VideoGrid from '@site/src/components/VideoGrid';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import ReleaseCard from '@site/src/components/ReleaseCard';
@@ -55,18 +56,7 @@ const ALL_CHANNEL_VIDEOS = (() => {
 // styling on Tech/Standards/Developer's own "What You'll Find Here"
 // sections rather than inventing a new look.
 function AreaCard({ title, body, href, icon: cardIcon }) {
-  return (
-    <Link className={styles.activityCard} to={href}>
-      <div className={styles.activityIconBand}>
-        {icon(cardIcon)}
-        <h3 className={styles.activityIconBandTitle}>{title}</h3>
-      </div>
-      <div className={styles.activityBody}>
-        <p className={styles.activityDesc}>{body}</p>
-      </div>
-      <div className={styles.activityArrow}>Explore more &rarr;</div>
-    </Link>
-  );
+  return <HubDestinationCard icon={icon(cardIcon)} title={title} desc={body} href={href} />;
 }
 
 export default function Home() {

@@ -304,12 +304,7 @@ function ActivityCard({ title, desc, href, icon: cardIcon }) {
 }
 
 function WorkshopCard({ title, why, href }) {
-  return (
-    <Link to={href} className={styles.linkCard}>
-      <h3 className={styles.linkCardTitle}>{title}</h3>
-      <p className={styles.linkCardBody}>{why}</p>
-    </Link>
-  );
+  return <HubDestinationCard icon={icon(WORKSHOPS_ICON_PATH)} title={title} desc={why} href={href} linkLabel="Read more" />;
 }
 
 function CategoryCard({ title, desc, topics }) {
@@ -321,19 +316,7 @@ function CategoryCard({ title, desc, topics }) {
       </div>
       <div className={styles.categoryTopicGrid}>
         {topics.map((t) => (
-          <Link
-            key={t.href}
-            to={t.href}
-            target={t.href.startsWith('http') ? '_blank' : undefined}
-            rel={t.href.startsWith('http') ? 'noreferrer' : undefined}
-            className={styles.categoryTopicCard}
-          >
-            {t.icon && <span className={styles.categoryTopicIcon}>{t.icon}</span>}
-            <span className={styles.categoryTopicCardBody}>
-              <span className={styles.categoryTopicName}>{t.title}</span>
-              <span className={styles.categoryTopicDescText}>{t.desc}</span>
-            </span>
-          </Link>
+          <HubDestinationCard key={t.href} compact icon={t.icon} title={t.title} desc={t.desc} href={t.href} />
         ))}
       </div>
     </div>
