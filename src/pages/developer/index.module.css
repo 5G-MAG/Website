@@ -46,93 +46,9 @@
   }
 }
 
-.productCard {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-top: 3px solid var(--ifm-color-primary);
-  border-radius: 10px;
-  overflow: hidden;
-  background: var(--ifm-background-surface-color);
-  color: inherit !important;
-  text-decoration: none !important;
-  transition:
-    box-shadow 0.2s ease,
-    transform 0.15s ease;
-}
-
-.productCard:hover {
-  box-shadow: var(--card-hover-shadow);
-  transform: translateY(-3px);
-  text-decoration: none !important;
-}
-
-/* overflow: hidden above clips the default focus outline (2026-07-29 audit
-   finding) -- inset box-shadow instead. */
-.productCard:focus-visible {
-  box-shadow: inset 0 0 0 3px var(--ifm-color-primary);
-}
-
-.productCardIconBand {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.65rem;
-  padding: 1.5rem 1.25rem 1.35rem;
-  background: linear-gradient(
-    135deg,
-    var(--ifm-color-primary-darkest) 0%,
-    var(--ifm-color-primary) 100%
-  );
-  transition: opacity 0.2s ease;
-}
-
-.productCard:hover .productCardIconBand {
-  opacity: 0.88;
-}
-
-.productCardBandIcon {
-  width: 2.5rem;
-  height: 2.5rem;
-  color: rgba(255, 255, 255, 0.82);
-}
-
-.productCardBandTitle {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: #fff;
-  margin: 0;
-  text-align: center;
-  line-height: 1.25;
-}
-
-.productCardBody {
-  padding: 1.1rem 1.1rem 0.5rem;
-  flex: 1;
-}
-
-.productCardLabel {
-  font-size: 1.05rem;
-  font-weight: 700;
-  margin: 0 0 0.5rem;
-  color: var(--ifm-heading-color);
-}
-
-.productCardDesc {
-  font-size: 0.875rem;
-  color: var(--ifm-color-emphasis-700);
-  margin: 0;
-  line-height: 1.6;
-}
-
-.productCardFooter {
-  padding: 0.65rem 1.1rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--ifm-color-primary);
-  border-top: 1px solid var(--ifm-color-emphasis-200);
-}
+/* The productCard* rules that used to live here now live in
+   src/components/HubDestinationCard/styles.module.css -- that component
+   replaced this page's local ProductTypeCard (2026-08-26). */
 
 /* ── Pillar Cards ──────────────────────────────────────────────────── */
 

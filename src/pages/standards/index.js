@@ -2,6 +2,7 @@ import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
+import HubDestinationCard from '@site/src/components/HubDestinationCard';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import { icon } from '@site/src/components/GodeeperCard';
 import { FACT_SPEC_ISSUES, FACT_SDO_INPUTS } from '@site/src/data/facts';
@@ -299,18 +300,7 @@ const STANDARDS_WORKSHOPS = [
 ];
 
 function ActivityCard({ title, desc, href, icon: cardIcon }) {
-  return (
-    <Link className={styles.activityCard} to={href}>
-      <div className={styles.activityIconBand}>
-        {cardIcon}
-        <h3 className={styles.activityIconBandTitle}>{title}</h3>
-      </div>
-      <div className={styles.activityBody}>
-        <p className={styles.activityDesc}>{desc}</p>
-      </div>
-      <div className={styles.activityArrow}>View &rarr;</div>
-    </Link>
-  );
+  return <HubDestinationCard icon={cardIcon} title={title} desc={desc} href={href} />;
 }
 
 function WorkshopCard({ title, why, href }) {

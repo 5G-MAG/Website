@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
+import HubDestinationCard from '@site/src/components/HubDestinationCard';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import VideoGrid from '@site/src/components/VideoGrid';
 import { icon } from '@site/src/components/GodeeperCard';
@@ -517,18 +518,7 @@ function CategoryCard({ title, desc, topics }) {
 }
 
 function ActivityCard({ title, desc, href, icon }) {
-  return (
-    <Link className={styles.activityCard} to={href}>
-      <div className={styles.activityIconBand}>
-        {icon}
-        <h3 className={styles.activityIconBandTitle}>{title}</h3>
-      </div>
-      <div className={styles.activityBody}>
-        <p className={styles.activityDesc}>{desc}</p>
-      </div>
-      <div className={styles.activityArrow}>View &rarr;</div>
-    </Link>
-  );
+  return <HubDestinationCard icon={icon} title={title} desc={desc} href={href} />;
 }
 
 export default function Home() {

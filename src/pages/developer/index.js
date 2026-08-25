@@ -5,6 +5,7 @@ import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
 import EarlyAccessCallout from '@site/src/components/EarlyAccessCallout';
 import ProjectIcon from '@site/src/components/ProjectIcon';
+import HubDestinationCard from '@site/src/components/HubDestinationCard';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import VideoGrid from '@site/src/components/VideoGrid';
 import ReleaseCard from '@site/src/components/ReleaseCard';
@@ -146,16 +147,12 @@ function PillarCard({ title, body, icon }) {
 
 function ProductTypeCard({ icon, label, description, href }) {
   return (
-    <Link className={styles.productCard} to={href}>
-      <div className={styles.productCardIconBand}>
-        <ProjectIcon name={icon} className={styles.productCardBandIcon} />
-        <h3 className={styles.productCardBandTitle}>{label}</h3>
-      </div>
-      <div className={styles.productCardBody}>
-        <p className={styles.productCardDesc}>{description}</p>
-      </div>
-      <div className={styles.productCardFooter}>Explore more &rarr;</div>
-    </Link>
+    <HubDestinationCard
+      icon={<ProjectIcon name={icon} />}
+      title={label}
+      desc={description}
+      href={href}
+    />
   );
 }
 
