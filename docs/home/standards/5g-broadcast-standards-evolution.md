@@ -35,6 +35,7 @@ This page is the detailed, release-by-release companion to [Standards: 5G Broadc
 <li><a href="/tech/5g-broadcast">Tech: 5G Broadcast</a></li>
 </ul>
 </div>
+</div>
 <div class="godeeper-card">
 <div class="godeeper-card__band">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
@@ -47,8 +48,6 @@ This page is the detailed, release-by-release companion to [Standards: 5G Broadc
 <li><a href="/reference-tools/emergency-alerts">Emergency Alerts</a></li>
 </ul>
 </div>
-</div>
-
 </div>
 
 </div>
