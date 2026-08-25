@@ -1,7 +1,7 @@
 ---
 title: Android - 5GBC-UC Switching
 hide_title: true
-sidebar_position: 0
+sidebar_position: 1
 description: Step-by-step setup for an end-to-end 5G Broadcast and unicast seamless-switching demo using an SDR transmitter and Android middleware.
 ---
 

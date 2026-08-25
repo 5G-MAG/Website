@@ -1,7 +1,7 @@
 ---
 title: MBSF Operation & APIs
 hide_title: true
-sidebar_position: 3
+sidebar_position: 5
 description: Covers CRUD operations for MBS User Services and Data Ingest Sessions on the MBSF via the Nmb10 API using curl.
 ---
 

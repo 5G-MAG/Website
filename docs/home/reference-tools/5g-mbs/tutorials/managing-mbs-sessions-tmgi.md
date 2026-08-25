@@ -1,7 +1,7 @@
 ---
 title: MB-SMF Testing
 hide_title: true
-sidebar_position: 5
+sidebar_position: 4
 description: Shows how to create, refresh and manage MBS Broadcast Sessions, TMGIs and SSMs on the MB-SMF using HTTP/2 API requests.
 ---
 

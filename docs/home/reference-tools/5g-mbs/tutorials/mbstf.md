@@ -1,7 +1,7 @@
 ---
 title: MBSTF Testing
 hide_title: true
-sidebar_position: 4
+sidebar_position: 6
 description: Tests the MBS Transport Function with curl and Wireshark across single-shot and streaming, pull and push, FLUTE distribution scenarios.
 ---
 

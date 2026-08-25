@@ -1,7 +1,7 @@
 ---
 title: MBS End-to-End
 hide_title: true
-sidebar_position: 6
+sidebar_position: 7
 description: Links the tutorials covering the end-to-end MBS flow (5GC, MB-SMF, MBSF, MBSTF); a demo video is planned.
 ---
 

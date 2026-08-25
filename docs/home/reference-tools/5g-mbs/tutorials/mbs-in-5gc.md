@@ -1,5 +1,5 @@
 ---
-title: Initial support MBS-5GC
+title: Initial Support of MBS in the 5GC
 hide_title: true
 sidebar_position: 3
 description: Builds an MBS Broadcast Session on the 5G Core and traces multicast traffic from AS to MB-UPF as GTP-U.
