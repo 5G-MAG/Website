@@ -19,15 +19,23 @@ export const AVATAR_SPECS = [
     title: 'Coded representation of immersive media; Part 14: Scene description',
     url: 'https://www.iso.org/standard/90191.html',
     layer: 'Scene placement',
-    note: 'published in 2023 as a set of extensions to Khronos glTF 2.0; the 2023 edition (Edition 1) is now withdrawn, consolidated with Amendments 1 and 2 into Edition 2 (2025), linked here',
+    note: 'published in 2023 as a set of extensions to Khronos glTF 2.0; the 2023 edition (Edition 1) is now withdrawn, consolidated with Amendment 1 into Edition 2 (2025), linked here -- Amendment 2 (avatar support, see below) is not part of this edition',
   },
   {
+    // Corrected 2026-08-25: this used to claim Amendment 2 was "consolidated
+    // directly into Edition 2" with its own catalog entry "retired". Neither
+    // holds: ISO's catalogue carries Amendment 2 as an active, distinct
+    // Draft Amendment (DAmd) at the URL below, currently at the enquiry/DIS
+    // stage, not yet published and not folded into Edition 2 -- only
+    // Amendment 1 is (see the base entry above). Same correction applied to
+    // docs/tech/xr/mpeg-i-scene-description.mdx's "Editions and amendments"
+    // section, which had the identical overclaim.
     id: 'ISO/IEC 23090-14 Amd 2',
     title:
       'Support for haptics, augmented reality, avatars, interactivity, MPEG-I audio, and lighting',
-    url: 'https://www.iso.org/standard/90191.html',
+    url: 'https://www.iso.org/standard/86439.html',
     layer: 'Scene placement',
-    note: 'the amendment that added avatar support to Scene Description; never published as a standalone document (its own draft catalog entry is retired) -- consolidated directly into Edition 2 (2025) above, per src/data/specs/xr.js\'s own citation of the same consolidation',
+    note: 'the amendment that adds avatar support to Scene Description; still a separate Draft Amendment at the ISO enquiry stage as this is written, not yet published and not part of Edition 2 (2025) above',
   },
   {
     id: 'TS 26.114',
