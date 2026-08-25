@@ -55,7 +55,7 @@ const DEV_FACTS = [
   { value: '~15', label: 'Project areas across media and connectivity' },
   FACT_REPOSITORIES,
   FACT_CLONES,
-  { value: 'Weekly', label: 'Developer calls and rolling releases' },
+  { value: 'Monthly', label: 'Developer calls and rolling releases' },
 ];
 
 const PILLARS = [
