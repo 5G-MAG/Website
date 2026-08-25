@@ -166,7 +166,7 @@ Key fields:
 - `ingestConfiguration`: How the AS obtains the source content, including the ingest `protocol` and the source `baseURL`.
 - `distributionConfigurations`: How the content is exposed to clients, including the `entryPoint` (relative path, content type and profiles), caching rules, geo-fencing and URL signing.
 
-Note that some fields are accepted by the API but are not yet implemented by the Reference Tools (see the `:::note` in the "Summary of APIs" section on [Scope](../scope#summary-of-apis-supported-for-5g-media-streaming)): Content Preparation, Edge Resources, Geo-fencing and URL signing.
+Note that some fields are accepted by the API but are not yet implemented by the Reference Tools (see the `:::note` in the ["Summary of APIs"](#summary-of-apis-supported-for-5g-media-streaming) section below): Content Preparation, Edge Resources, Geo-fencing and URL signing.
 
 Note that the supported `protocols` in 3GPP Release 17 are:
 
@@ -182,7 +182,7 @@ Examples are available in the [examples-files directory of rt-5gms-examples](htt
 The network assistance feature enables the 5GMS Client in the UE to interrogate or manipulate the network Quality of Service (QoS) for an ongoing media streaming session. It defines two mechanisms for obtaining network assistance: via interactions with the Policy Control Function (PCF) (AF-based network assistance), or via Access Network Bitrate Recommendation (ANBR) signalling interactions between the UE modem and the Radio Access Network (RAN) (ANBR-based network assistance).
 
 :::note[Implementation status]
-Of the two Network Assistance capabilities described below, the support table in [Scope: Summary of features supported by the 5GMS Application Function](../scope#summary-of-features-supported-by-the-5gms-application-function) indicates that only Delivery Boost is currently implemented; Throughput Estimation (Bit Rate Recommendation) is still in development. The descriptions below cover both as defined by the specification.
+Of the two Network Assistance capabilities described below, the support table in ["Summary of features supported by the 5GMS Application Function"](#summary-of-features-supported-by-the-5gms-application-function) indicates that only Delivery Boost is currently implemented; Throughput Estimation (Bit Rate Recommendation) is still in development. The descriptions below cover both as defined by the specification.
 :::
 
 <img loading="lazy" src={useBaseUrl('/assets/images/5gms/5GMS_NetworkAssistance.png')} alt="5GMS Network Assistance: the 5GMS Client requesting bit rate recommendations and delivery boosts from the network"/>
