@@ -197,6 +197,29 @@ export default function Action() {
           </div>
         </section>
 
+        {/* Motivation -- ahead of the full Out in the field/Demos/Testing
+            Events content below (2026-08-26: raised directly, "cards,
+            then motivation, then the full topics for easy access, then
+            maybe examples and videos"). */}
+        <section className={styles.section}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>Motivation</h2>
+            <p className={styles.sectionSubtitle}>
+              Making the value proposition tangible to the industry — through interoperability,
+              early testing and plugfests.
+            </p>
+            <div className={styles.pillarGrid3}>
+              {PILLARS.map((p) => (
+                <div key={p.title} className={styles.pillarCard}>
+                  <div className={styles.pillarIcon}>{p.icon}</div>
+                  <h3 className={styles.pillarTitle}>{p.title}</h3>
+                  {p.body && <p className={styles.pillarBody}>{p.body}</p>}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className={styles.section}>
           <div className="container">
             <h2 className={styles.sectionTitle}>Out in the field</h2>
@@ -247,25 +270,6 @@ export default function Action() {
             <div className={styles.pillarGrid3}>
               {TESTING_EVENTS.map((e) => (
                 <ActionEventCard key={e.href} {...e} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className={styles.section}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>Motivation</h2>
-            <p className={styles.sectionSubtitle}>
-              Making the value proposition tangible to the industry — through interoperability,
-              early testing and plugfests.
-            </p>
-            <div className={styles.pillarGrid3}>
-              {PILLARS.map((p) => (
-                <div key={p.title} className={styles.pillarCard}>
-                  <div className={styles.pillarIcon}>{p.icon}</div>
-                  <h3 className={styles.pillarTitle}>{p.title}</h3>
-                  {p.body && <p className={styles.pillarBody}>{p.body}</p>}
-                </div>
               ))}
             </div>
           </div>

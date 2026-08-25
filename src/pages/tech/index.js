@@ -570,29 +570,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Analysis & Explainers -- the actual browsable content, moved
-            ahead of the framing sections below (2026-08-26 findability
-            pass) so a visitor reaches it without scrolling past
-            "Motivation"/"How This Fits Together" first every time.
-            Renamed from "Categories & Topics" (2026-08-26 hub audit):
-            that named the grouping mechanism, not the resource -- id
-            stays "categories-topics" since other pages already link to
-            this exact anchor. */}
-        <section id="categories-topics" className={clsx(styles.section, styles.sectionAlt)}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>Analysis &amp; Explainers</h2>
-            <p className={styles.sectionSubtitle}>
-              Profiles and blueprints that turn standards into implementation-ready analysis —
-              organised by technology area.
-            </p>
-            <div className={styles.categoryColumns}>
-              {CATEGORIES.map((c) => (
-                <CategoryCard key={c.title} {...c} />
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* What's here */}
         <section className={styles.section}>
           <div className="container">
@@ -634,6 +611,29 @@ export default function Home() {
                     </Link>
                   )}
                 </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Analysis & Explainers -- the full topic-by-topic resource,
+            after Motivation/How This Fits Together rather than before
+            them (2026-08-26: raised directly, "cards, then motivation,
+            then the full topics for easy access, then maybe examples
+            and videos"). Renamed from "Categories & Topics" earlier the
+            same day: that named the grouping mechanism, not the
+            resource -- id stays "categories-topics" since other pages
+            already link to this exact anchor. */}
+        <section id="categories-topics" className={clsx(styles.section, styles.sectionAlt)}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>Analysis &amp; Explainers</h2>
+            <p className={styles.sectionSubtitle}>
+              Profiles and blueprints that turn standards into implementation-ready analysis —
+              organised by technology area.
+            </p>
+            <div className={styles.categoryColumns}>
+              {CATEGORIES.map((c) => (
+                <CategoryCard key={c.title} {...c} />
               ))}
             </div>
           </div>

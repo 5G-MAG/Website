@@ -375,11 +375,31 @@ export default function Standards() {
           </div>
         </section>
 
-        {/* Feedback & Methodology, and Workshops for Standards -- the actual
-            browsable/actionable content, kept ahead of the framing
-            sections below (2026-08-26 findability pass) so a visitor
-            reaches real destinations without scrolling past
-            "Motivation" first every time. */}
+        {/* Motivation -- ahead of the full Feedback/Workshops content
+            below (2026-08-26: raised directly, "cards, then motivation,
+            then the full topics for easy access, then maybe examples
+            and videos"; supersedes the same-day-earlier reorder that
+            put Feedback/Workshops before Motivation). */}
+        <section className={styles.section}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>Motivation</h2>
+            <p className={styles.sectionSubtitle}>
+              Advancing standardization with implementation and experience-based feedback.
+            </p>
+            <div className={styles.pillarGrid3}>
+              {MOTIVATION.map((p) => (
+                <div key={p.title} className={styles.pillarCard}>
+                  <div className={styles.pillarIcon}>{p.icon}</div>
+                  <h3 className={styles.pillarTitle}>{p.title}</h3>
+                  {p.body && <p className={styles.pillarBody}>{p.body}</p>}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Feedback & Methodology, and Workshops for Standards -- the full
+            topic-by-topic resource, after Motivation. */}
         <section id="feedback" className={styles.section}>
           <div className="container">
             <h2 className={styles.sectionTitle}>Feedback to SDOs</h2>
@@ -475,25 +495,6 @@ export default function Standards() {
             </div>
             <div style={{ textAlign: 'center', marginTop: '1.5rem', fontWeight: 600 }}>
               <Link to="/workshops">Browse the full workshop &amp; session archive &rarr;</Link>
-            </div>
-          </div>
-        </section>
-
-        {/* Why this matters */}
-        <section className={styles.section}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>Motivation</h2>
-            <p className={styles.sectionSubtitle}>
-              Advancing standardization with implementation and experience-based feedback.
-            </p>
-            <div className={styles.pillarGrid3}>
-              {MOTIVATION.map((p) => (
-                <div key={p.title} className={styles.pillarCard}>
-                  <div className={styles.pillarIcon}>{p.icon}</div>
-                  <h3 className={styles.pillarTitle}>{p.title}</h3>
-                  {p.body && <p className={styles.pillarBody}>{p.body}</p>}
-                </div>
-              ))}
             </div>
           </div>
         </section>
