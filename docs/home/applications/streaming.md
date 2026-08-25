@@ -41,7 +41,7 @@ A full written walkthrough is still in progress. In the meantime, follow the [de
 
 ## QoE Analytics Dashboard
 
-A 5GMSd deployment where the Application Server extracts Common Media Client Data (CMCD, per [CTA-5004](https://cdn.cta.tech/cta/media/media/resources/standards/pdfs/cta-5004-final.pdf)) from media requests during normal playback and forwards it to a collector, so session quality, bitrate, buffer level and other metrics show up live on a Grafana dashboard rather than only in local logs.
+A 5GMSd deployment where the Application Server extracts Common Media Client Data (CMCD, per [CTA-5004](https://web.archive.org/web/20260725054240/https://cdn.cta.tech/cta/media/media/resources/standards/pdfs/cta-5004-final.pdf)) from media requests during normal playback and forwards it to a collector, so session quality, bitrate, buffer level and other metrics show up live on a Grafana dashboard rather than only in local logs.
 
 **Built from:** [5G Media Streaming (5GMS)](/reference-tools/5gms/), together with the external [cmcd-toolkit](https://github.com/5G-MAG/cmcd-toolkit) collector and dashboard.
 
