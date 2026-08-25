@@ -14,11 +14,14 @@
 // `subtitle`, present only on the four pillar entries (Software
 // Accelerator, Technology, Standardisation, In Action), is the
 // plain-language one-liner the top navbar's mega-menu
-// (src/theme/Navbar/Content/index.js) shows on hover/focus — verbatim the
-// same text as that page's own hero-band topic-lead paragraph, so a
-// visitor sees the same clarification before the click that they'd get
-// immediately after it (2026-08-24 design audit: these four labels are
-// 5G-MAG's internal vocabulary, not self-explanatory from the navbar alone).
+// (src/theme/Navbar/Content/index.js) shows on hover/focus (2026-08-24
+// design audit: these four labels are 5G-MAG's internal vocabulary, not
+// self-explanatory from the navbar alone). Originally kept verbatim
+// identical to that page's own hero-band topic-lead paragraph; the two
+// diverged (2026-08-25) once /tech's and /standards' own topic-lead grew
+// long enough to also reference their fuller original pillar names --
+// too long for the compact hover panel. Curate this one for brevity on
+// its own terms; it no longer has to match the page word-for-word.
 //
 // useLocation().pathname is the raw browser path, which includes baseUrl
 // (e.g. '/Website/structure' while baseUrl is '/Website/' for interim

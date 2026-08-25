@@ -360,7 +360,7 @@ export default function Standards() {
       description="How 5G-MAG submits feedback on 3GPP, MPEG and ETSI specifications as GitHub issues, and its position papers to SDO workshops."
     >
       <HubHero
-        title="Feedback and Requirements to Standards Bodies"
+        title="Standardisation"
         icon={FEEDBACK_ICON_PATH}
         actions={[
           <a
@@ -376,7 +376,7 @@ export default function Standards() {
       />
 
       <div className="container" style={{ marginTop: '1.75rem' }}>
-        <p className="topic-lead">Shaping standards through concrete requirements and experienced-based feedback — submitted to SDOs.</p>
+        <p className="topic-lead">Feedback and requirements to standards bodies: shaping standards through concrete requirements and experience-based feedback, submitted to SDOs.</p>
       </div>
 
       <main>

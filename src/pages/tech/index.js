@@ -538,7 +538,7 @@ export default function Home() {
       description="Specification analysis, implementation explainers and standards feedback work from 5G-MAG members, organised by technology area."
     >
       <HubHero
-        title="Explainers and Profiles of Standards Specifications"
+        title="Technology"
         icon={
           <>
             <path d="M14 3v4a1 1 0 0 0 1 1h4" />
@@ -556,7 +556,7 @@ export default function Home() {
       />
 
       <div className="container" style={{ marginTop: '1.75rem' }}>
-        <p className="topic-lead">Specification profiles and implementation guidance — by the members, for the industry.</p>
+        <p className="topic-lead">Explainers and profiles of standards specifications, with implementation blueprints — by the members, for the industry.</p>
       </div>
 
       <main>
