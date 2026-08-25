@@ -17,17 +17,17 @@ export const AVATAR_SPECS = [
   {
     id: 'ISO/IEC 23090-14',
     title: 'Coded representation of immersive media; Part 14: Scene description',
-    url: 'https://www.iso.org/standard/80900.html',
+    url: 'https://www.iso.org/standard/90191.html',
     layer: 'Scene placement',
-    note: 'published in 2023 as a set of extensions to Khronos glTF 2.0',
+    note: 'published in 2023 as a set of extensions to Khronos glTF 2.0; the 2023 edition (Edition 1) is now withdrawn, consolidated with Amendments 1 and 2 into Edition 2 (2025), linked here',
   },
   {
     id: 'ISO/IEC 23090-14 Amd 2',
     title:
       'Support for haptics, augmented reality, avatars, interactivity, MPEG-I audio, and lighting',
-    url: 'https://www.iso.org/standard/86439.html',
+    url: 'https://www.iso.org/standard/90191.html',
     layer: 'Scene placement',
-    note: 'the amendment that adds avatar support to Scene Description',
+    note: 'the amendment that added avatar support to Scene Description; never published as a standalone document (its own draft catalog entry is retired) -- consolidated directly into Edition 2 (2025) above, per src/data/specs/xr.js\'s own citation of the same consolidation',
   },
   {
     id: 'TS 26.114',
