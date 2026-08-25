@@ -21,9 +21,13 @@ function BlogPostItemThumbnail() {
   const image = assets.image ?? frontMatter.image;
   const resolvedImage = useBaseUrl(image ?? '');
   if (isBlogPostPage || !image) return null;
+  // Optional per-post `imageAlt` frontmatter describes the photo itself;
+  // falls back to the post title (still visible right below it, so no
+  // information is actually lost) when a post hasn't set one (2026-08-26
+  // accessibility pass).
   return (
     <Link to={metadata.permalink} className="blog-post-thumbnail">
-      <img loading="lazy" src={resolvedImage} alt={metadata.title} />
+      <img loading="lazy" src={resolvedImage} alt={frontMatter.imageAlt ?? metadata.title} />
     </Link>
   );
 }
@@ -41,7 +45,14 @@ function BlogPostItemHeroImage() {
   const image = assets.image ?? frontMatter.image;
   const resolvedImage = useBaseUrl(image ?? '');
   if (!isBlogPostPage || !image) return null;
-  return <img loading="lazy" src={resolvedImage} alt={metadata.title} className={styles.heroImage} />;
+  return (
+    <img
+      loading="lazy"
+      src={resolvedImage}
+      alt={frontMatter.imageAlt ?? metadata.title}
+      className={styles.heroImage}
+    />
+  );
 }
 
 export default function BlogPostItem({ children, className }) {
