@@ -70,7 +70,7 @@ const config = {
     // registered with an empty redirect list so it's ready the next time a
     // live, publicly-linked page on www.5g-mag.com actually moves.
     //
-    // First real use of that (2026-08-11): the 18 per-project Standards
+    // First real use of that (2026-08-11): the 20 per-project Standards
     // pages moved from /tech/standards/<project> to /standards/<project>.
     // Unlike the pre-launch reorgs above, these paths WERE live on
     // www.5g-mag.com since the 2026-07-28 cutover, so external
@@ -82,6 +82,7 @@ const config = {
           { from: '/tech/standards/5g-broadcast', to: '/standards/5g-broadcast' },
           { from: '/tech/standards/5g-broadcast-standards-evolution', to: '/standards/5g-broadcast-standards-evolution' },
           { from: '/tech/standards/5g-mbs', to: '/standards/5g-mbs' },
+          { from: '/tech/standards/5g-mbs-standards-evolution', to: '/standards/5g-mbs-standards-evolution' },
           { from: '/tech/standards/5gms', to: '/standards/5gms' },
           { from: '/tech/standards/6g', to: '/standards/6g' },
           { from: '/tech/standards/ai-ml', to: '/standards/ai-ml' },
@@ -89,6 +90,7 @@ const config = {
           { from: '/tech/standards/beyond-2d', to: '/standards/beyond-2d' },
           { from: '/tech/standards/data-collection', to: '/standards/data-collection' },
           { from: '/tech/standards/dvb-i', to: '/standards/dvb-i' },
+          { from: '/tech/standards/emergency-alerts', to: '/standards/emergency-alerts' },
           { from: '/tech/standards/multimedia', to: '/standards/multimedia' },
           { from: '/tech/standards/network-apis', to: '/standards/network-apis' },
           { from: '/tech/standards/npn', to: '/standards/npn' },

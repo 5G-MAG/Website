@@ -245,7 +245,7 @@ const sidebars = {
   ],
 
   // docs/home/standards/ holds two distinct groups that share a URL prefix:
-  // the 18 per-project specification pages (moved here from
+  // the 20 per-project specification pages (moved here from
   // docs/tech/standards/ on 2026-08-11 so they serve at
   // /standards/<project>) and the three "5G-MAG as SDO contributor" pages
   // (requirements, ls, 3gpp-issue-tracking).
@@ -254,7 +254,7 @@ const sidebars = {
   // plugin instance silently dropped one — under /tech/standards/* they
   // were nested items in sidebars-tech.js's capability-area categories, so
   // they inherited the whole Tech sidebar; here they were in no sidebar
-  // array at all, which is how 21 pages ended up with no lateral
+  // array at all, which is how 23 pages ended up with no lateral
   // navigation. The grouping below deliberately mirrors sidebars-tech.js
   // (and /tech's own CATEGORIES) so the specification pages keep reading
   // as the same content family they are linked from, with the contributor
