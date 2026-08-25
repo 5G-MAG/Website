@@ -912,10 +912,10 @@
       "is_auxiliary": false
     },
     {
-      "repo_slug": "rt-xr-glTFast",
+      "repo_slug": "rt-xr-gITFast",
       "display_name": "glTF Extensions",
       "description": "Fast glTF loader extensions for immersive media assets in Unity.",
-      "repo_url": "https://github.com/5G-MAG/rt-xr-glTFast",
+      "repo_url": "https://github.com/5G-MAG/rt-xr-gITFast",
       "branch": "main",
       "license": "Apache 2.0",
       "standards": [
