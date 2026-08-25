@@ -127,7 +127,7 @@ At a high level, a conversational avatar session proceeds as follows:
 An implementer has to respect four interoperability boundaries: the ARF base-avatar asset (so any conforming client can load the same avatar), the ARF animation stream and AAU structure (so animation produced by one endpoint can drive an avatar at another), the scene-description document that anchors the avatar, and the session-level negotiation (SDP media descriptions for IVAS audio and for the avatar animation payload). Keeping animation production separate from rendering means the tracking/animation component and the Unity-based presentation can evolve independently, provided both sides agree on the ARF stream format.
 
 :::note
-ARF (ISO/IEC 23090-39) was still at the Draft International Standard stage as of 2025, so the base-avatar and animation-stream details above can change before final publication. Confirm the current stage on the [ISO catalogue page](https://www.iso.org/standard/91745.html) and treat reference tooling as tracking a moving target.
+ARF (ISO/IEC 23090-39) was still at the Draft International Standard stage as of 2025; MPEG's own report of its 155th meeting (July 2026) states it has since advanced to Final Draft International Standard, the stage just before publication, so the base-avatar and animation-stream details above can still change before final publication. Confirm the current stage on the [ISO catalogue page](https://www.iso.org/standard/91745.html) and treat reference tooling as tracking a moving target.
 :::
 
 ## Related
