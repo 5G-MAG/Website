@@ -246,7 +246,15 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Contributors */}
+        {/* Contributors -- memberCard now picks up the same colored
+            top-border/hover-lift language as every other card on this
+            page (2026-08-26: raised directly, this section read as
+            visually flat/an afterthought next to the bold cards around
+            it -- not a position or size problem, a missing visual
+            signal). Left as plain .section, not .sectionAlt: the next
+            section ("Our Work In Action") already uses .sectionAlt, and
+            two tinted sections back to back would trade one rhythm
+            problem for another. */}
         <section className={styles.section}>
           <div className="container">
             <h2 className={styles.sectionTitle}>Contributors</h2>
