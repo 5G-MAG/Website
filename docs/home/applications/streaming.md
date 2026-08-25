@@ -33,7 +33,7 @@ Follow the [step-by-step guide](/reference-tools/5gms/tutorials/end-to-end-with-
 
 ## MBS End-to-End Delivery Demo
 
-5G Multicast Broadcast Services (MBS) deliver the same content to many devices at once natively over the 5G Core and New Radio (NR), rather than opening a separate unicast session per user. This demo operates the MBS chain together: the MBS-capable 5G Core, the MB-SMF, MBSF and MBSTF functions that manage MBS sessions and Temporary Mobile Group Identities (TMGIs), through to the NG-RAN and a receiving User Equipment (UE).
+5G Multicast Broadcast Services (MBS) deliver the same content to many devices at once natively over the 5G Core and New Radio (NR), rather than opening a separate unicast session per user. This demo operates the MBS chain together: the MBS-capable 5G Core, the MB-SMF, MBSF and MBSTF functions that manage MBS sessions and Temporary Mobile Group Identities (TMGIs), through to the NG-RAN. Delivery all the way to a receiving User Equipment (UE) over the air is not yet demonstrated on the release branches this builds on — see [Scope](/reference-tools/5g-mbs/scope) for the current status.
 
 **Built from:** [5G Multicast Broadcast Services (MBS)](/reference-tools/5g-mbs/).
 

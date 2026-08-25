@@ -22,6 +22,8 @@ description: Links the tutorials covering the end-to-end MBS flow (5GC, MB-SMF, 
 
 The written walkthrough for this end-to-end tutorial, and an accompanying demo video, are both under development. In the meantime, the component tutorials below cover each piece in written form.
 
+The individual pieces below cover the chain up to the NG-RAN. Delivery all the way to a receiving UE over the air is not yet demonstrated on the release branches this builds on — see [Scope](../scope) for the current status.
+
 ## Interim outline
 
 Until the full write-up is ready, you can follow the individual pieces that together make up the end-to-end flow, in this order:
