@@ -408,25 +408,29 @@
   overflow: hidden;
 }
 
+/* Plain heading + a colored left-accent bar, not a full solid banner
+   (2026-08-26 findability follow-up, raised directly: on /tech and
+   /standards this repeats once per category -- 5 to 9 times down one
+   page -- and read as "a wall of teal blocks", not clear. Same visual
+   language as .pillarCard's left-accent treatment elsewhere on this
+   page, so the category header stops competing with the actual topic
+   cards below it for attention. */
 .categoryHeader {
-  padding: 1.4rem 1.4rem 1.1rem;
-  background: linear-gradient(
-    135deg,
-    var(--ifm-color-primary-darkest) 0%,
-    var(--ifm-color-primary-textsafe) 100%
-  );
+  padding: 1rem 1.1rem 0.9rem 1.4rem;
+  border-left: 4px solid var(--ifm-color-primary);
+  background: var(--ifm-color-emphasis-100);
 }
 
 .categoryTitle {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 700;
-  margin: 0 0 0.5rem;
-  color: #fff;
+  margin: 0 0 0.35rem;
+  color: var(--ifm-heading-color);
 }
 
 .categoryDesc {
-  font-size: 0.925rem;
-  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+  color: var(--ifm-color-emphasis-700);
   margin: 0;
   line-height: 1.6;
 }
