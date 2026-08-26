@@ -33,8 +33,37 @@ export const BEYOND_2D_SPECS = [
     layer: 'Delivery framework',
     note: 'the framework the formats are assessed against',
   },
+  {
+    // Added 2026-08-25: docs/home/testbeds/beyond-2d/index.mdx names this as
+    // one of the specifications referenced by the testbed ("for delivery
+    // evaluation"), but it was missing from this index even though
+    // testbeds/beyond-2d/scope.mdx's own Related section calls the Standards
+    // page "the full, maintained list" (findability audit).
+    id: 'ISO/IEC 23000-19',
+    title: 'Multimedia application format (MPEG-A) - Part 19: Common media application format (CMAF) for segmented media',
+    url: 'https://www.iso.org/standard/85623.html',
+    layer: 'Delivery framework',
+    note: 'used for delivery evaluation alongside the 5GMS framework above',
+  },
+  {
+    // Added 2026-08-25: the "Dynamic meshes" format family (docs/tech/
+    // volumetric/beyond-2d.mdx and docs/home/testbeds/beyond-2d/scope.mdx,
+    // both fixed in the same pass) names V-DMC, which was already on this
+    // Standards page's own table (per its "Codecs and how they map to the
+    // formats" table) but missing from this searchable index.
+    id: 'ISO/IEC 23090-29',
+    title: 'Coded representation of immersive media - Part 29: Video-based dynamic mesh coding (V-DMC)',
+    url: 'https://www.iso.org/standard/85254.html',
+    layer: 'Format',
+    note: 'V3C-related; Edition 1 reached Final Draft International Standard (FDIS) stage and was in ISO\'s final publication steps as of mid-2026 -- confirm current status on the ISO catalogue page before relying on it',
+  },
 ];
 
-// Work item first, then the report it produced, then the delivery framework
-// the study evaluates the formats against.
-export const BEYOND_2D_LAYER_ORDER = ['Work item', 'Technical report', 'Delivery framework'];
+// Work item first, then the report it produced, the format spec it names,
+// then the delivery framework the study evaluates the formats against.
+export const BEYOND_2D_LAYER_ORDER = [
+  'Work item',
+  'Technical report',
+  'Format',
+  'Delivery framework',
+];

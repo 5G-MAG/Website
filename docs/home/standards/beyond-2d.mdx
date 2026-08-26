@@ -71,11 +71,11 @@ See the [Beyond 2D Video](/tech/volumetric/beyond-2d) Tech page for the per-fami
 
 ## Codecs and how they map to the formats
 
-The study evaluates each format with the codecs that are practical for it today; for stereoscopic video, simulcast HEVC serves as the baseline:
+The study evaluates each format with the codecs that are practical for it today; for stereoscopic video, simulcast/frame-compatible HEVC serves as the anchor against MV-HEVC:
 
 | Format family             | Coding approaches evaluated                                                          | Relation to V3C                                    |
 | ------------------------- | ------------------------------------------------------------------------------------ | --------------------------------------------------- |
-| Stereoscopic              | Simulcast HEVC (baseline) and MV-HEVC                                                | Not V3C-based                                       |
+| Stereoscopic              | MV-HEVC; simulcast/frame-compatible HEVC as the anchor                               | Not V3C-based                                       |
 | Multi-view plus depth     | The MIV profile of V3C; the report also notes MV-HEVC as a coding option             | MIV is ISO/IEC 23090-12 (a V3C profile)             |
 | Dense dynamic point cloud | V-PCC; no anchor codec exists for the format, G-PCC is noted as a related technology | V-PCC is part of ISO/IEC 23090-5                    |
 | Dynamic mesh              | V-DMC, described alongside V-PCC for the volumetric scenario                         | V-DMC is ISO/IEC 23090-29 (video-based, V3C-related) |

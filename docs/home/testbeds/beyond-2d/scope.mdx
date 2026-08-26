@@ -47,6 +47,7 @@ The repository separates the multi-view-plus-depth (`mvd`) and point-cloud conte
 | Stereoscopic          | MV-HEVC; simulcast/frame-compatible anchor    | Not V3C-based                    |
 | Multi-view plus depth | MV-HEVC; MIV (ISO/IEC 23090-12)               | MIV is a V3C profile             |
 | Dense point cloud     | V-PCC (ISO/IEC 23090-5); G-PCC for comparison | V-PCC is part of ISO/IEC 23090-5 |
+| Dynamic meshes        | V-DMC (ISO/IEC 23090-29), described alongside V-PCC for the volumetric scenario | V-DMC is V3C-related |
 
 The pipeline runs encode, package, deliver (under a 5G Media Streaming / DASH assumption), decode, and render, then measures quality on both source views and rendered pose-trace views. Reported metrics include PSNR, IV-PSNR, and VMAF against bitrate. Because source sequences, coded bitstreams, and rendered pose-trace videos are large, the framework references content on external servers rather than bundling it.
 
