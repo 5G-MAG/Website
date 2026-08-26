@@ -93,8 +93,8 @@ A broadcast/multicast media chain has two separable concerns. The **format** lay
 
 FLUTE and ROUTE are both built on the IETF Reliable Multicast Transport (RMT) building blocks:
 
-- **LCT** (Layered Coding Transport, RFC 5651) defines the common packet header, session and transport-object identification, and congestion-control signalling used by both protocols. Each packet carries a Transport Session Identifier (TSI) and a Transport Object Identifier (TOI).
-- **ALC** (Asynchronous Layered Coding, RFC 5775) is the protocol instantiation that combines LCT with an FEC building block and, optionally, layered congestion control. It gives massively scalable one-way delivery: any number of receivers can join without the sender knowing about them.
+- **LCT** (Layered Coding Transport) defines the common packet header, session and transport-object identification, and congestion-control signalling used by both protocols. Each packet carries a Transport Session Identifier (TSI) and a Transport Object Identifier (TOI). Current IETF text is RFC 5651; the profile 3GPP actually mandates (see the note below) uses its predecessor, RFC 3451.
+- **ALC** (Asynchronous Layered Coding) is the protocol instantiation that combines LCT with an FEC building block and, optionally, layered congestion control. It gives massively scalable one-way delivery: any number of receivers can join without the sender knowing about them. Current IETF text is RFC 5775; the 3GPP-mandated profile uses its predecessor, RFC 3450.
 - **FEC** allows a receiver to recover lost packets from redundancy carried in the stream, which is essential when there is no feedback channel to request retransmission. Both FLUTE and ROUTE carry FEC Object Transmission Information so a receiver knows how to reconstruct each object.
 
 ## FLUTE (RFC 3926, version 1)
