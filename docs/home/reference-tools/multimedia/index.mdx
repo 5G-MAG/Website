@@ -33,7 +33,7 @@ Reference tools for multimedia content delivery protocols, covering DASH (Dynami
 
 These tools address the application-layer delivery protocols that sit above the 5G transport, ensuring interoperability across content formats, packaging standards, and player implementations. The project is designed to support any delivery protocol; it currently implements FLUTE and ROUTE, used respectively for file and real-time object delivery over 5G Broadcast and 5G Multicast Broadcast Services (MBS). Useful for developers validating DASH/HLS players, packagers, and Content Delivery Network (CDN) integrations in 5G environments.
 
-**Implemented specifications:** ISO/IEC 23009-1 (MPEG-DASH), IETF RFC 8216 (HLS), ISO/IEC 23000-19 (CMAF), 3GPP [TS 26.346](https://www.3gpp.org/dynareport/26346.htm) (MBMS protocols and file delivery formats).
+**Implemented specifications:** IETF RFC 3926/RFC 6726 (FLUTE) and RFC 9223 (ROUTE) — the transports the tools implement. DASH (ISO/IEC 23009-1), HLS (RFC 8216) and CMAF (ISO/IEC 23000-19) are the formats these transports carry as opaque segments and manifests, not something the tools implement themselves.
 
 ## Contributors
 
