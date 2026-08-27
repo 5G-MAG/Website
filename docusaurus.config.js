@@ -285,10 +285,10 @@ const config = {
           ],
         },
         {
-          title: 'Technology',
+          title: 'Technical Resources',
           items: [
             { label: 'Overview', to: '/tech' },
-            { label: 'Categories & Topics', to: '/tech#categories-topics' },
+            { label: 'Analysis & Explainers', to: '/tech#categories-topics' },
             { label: 'Technology Exchange', to: '/tech/exchanges' },
           ],
         },

@@ -543,7 +543,7 @@ export default function Home() {
       description="Specification analysis, implementation explainers and standards feedback work from 5G-MAG members, organised by technology area."
     >
       <HubHero
-        title="Technology"
+        title="Technical Resources"
         icon={
           <>
             <path d="M14 3v4a1 1 0 0 0 1 1h4" />

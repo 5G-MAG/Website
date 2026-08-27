@@ -105,7 +105,7 @@ export const SECTION_NAV = [
   },
   {
     prefixes: ['/tech'],
-    title: 'Technology',
+    title: 'Technical Resources',
     titleHref: '/tech',
     subtitle: 'Specification profiles and implementation guidance — by the members, for the industry.',
     items: [
@@ -150,7 +150,7 @@ export const SECTION_NAV = [
       '/standards/v3c',
       '/standards/xr',
     ],
-    title: 'Technology',
+    title: 'Technical Resources',
     titleHref: '/tech',
     subtitle: 'Specification profiles and implementation guidance — by the members, for the industry.',
     items: [
