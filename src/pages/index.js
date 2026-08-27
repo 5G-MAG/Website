@@ -109,7 +109,7 @@ export default function Home() {
         {/* Developer Exchanges */}
         <section className={clsx(styles.section, styles.sectionAlt)}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Our Work In Action</h2>
+            <h2 className={styles.sectionTitle}>On Air</h2>
             <p className={styles.sectionSubtitle}>
               Recorded talks, demos and calls from across all of 5G-MAG&apos;s work — Developer
               Exchanges, Public Calls, workshops and more.
