@@ -15,7 +15,6 @@ import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import ReleaseCard from '@site/src/components/ReleaseCard';
 import { EventsAgendaPreview } from '@site/src/components/EventsAgenda';
 import { DISCOVER_WORK } from '@site/src/data/discoverWork';
-import { BENEFITS } from '@site/src/data/membershipBenefits';
 import { EVENTS_AGENDA } from '@site/src/data/eventsAgenda';
 import { TECH_AREAS } from '@site/src/data/techAreas';
 import { NEWS_PREVIEW } from '@site/src/data/newsPreview';
@@ -344,32 +343,6 @@ export default function Home() {
           <MembersMarquee />
           <div className="container" style={{ textAlign: 'center', marginTop: '1.5rem', fontWeight: 600 }}>
             <Link to="/membership#our-members">See all members &rarr;</Link>
-          </div>
-        </section>
-
-        {/* Example B: a short "why join" pitch, homepage-only, ahead of the
-            shared JoinTheEffort tiles below -- modeled on dvb.org's numbered
-            membership pitch, but quoting /membership's own established
-            "What you get that you won't get alone" copy verbatim (via the
-            shared BENEFITS data) rather than drafting new wording (2026-08-27
-            feedback: pull from the real About/Membership copy, don't invent).
-            JoinTheEffort itself is shared across 8 hub pages and stays
-            untouched; this is specific to the homepage, and deliberately
-            carries no heading of its own so "Join the Effort" below reads as
-            the title for both. */}
-        <section className={clsx(styles.section, styles.sectionAlt, styles.whyJoinSection)}>
-          <div className="container">
-            <ol className={styles.whyJoinList}>
-              {BENEFITS.slice(0, 3).map((b, i) => (
-                <li key={b.title}>
-                  <span className={styles.whyJoinNum}>{i + 1}</span>
-                  <div>
-                    <strong>{b.title}.</strong>
-                    <p>{b.body}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
           </div>
         </section>
 
