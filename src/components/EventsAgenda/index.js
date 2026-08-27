@@ -1,4 +1,5 @@
 import Link from '@docusaurus/Link';
+import { useBaseUrlUtils } from '@docusaurus/useBaseUrl';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 
@@ -24,13 +25,24 @@ function formatDateBadge(dateStr, endDateStr) {
 }
 
 function EventCard({ event }) {
+  const { withBaseUrl } = useBaseUrlUtils();
   const badge = formatDateBadge(event.date, event.endDate);
   return (
     <Link to={event.href} className={styles.card}>
-      <div className={styles.dateBadge}>
-        <span className={styles.dateMonth}>{badge.month}</span>
-        <span className={styles.dateDay}>{badge.day}</span>
-      </div>
+      {event.image ? (
+        <div className={styles.cardImageWrap}>
+          <img loading="lazy" src={withBaseUrl(event.image)} alt="" className={styles.cardImage} />
+          <div className={styles.dateBadge}>
+            <span className={styles.dateMonth}>{badge.month}</span>
+            <span className={styles.dateDay}>{badge.day}</span>
+          </div>
+        </div>
+      ) : (
+        <div className={clsx(styles.dateBadge, styles.dateBadgeInline)}>
+          <span className={styles.dateMonth}>{badge.month}</span>
+          <span className={styles.dateDay}>{badge.day}</span>
+        </div>
+      )}
       <div className={styles.cardBody}>
         <span className={styles.typeTag}>{event.type}</span>
         <h3 className={styles.cardTitle}>{event.title}</h3>
