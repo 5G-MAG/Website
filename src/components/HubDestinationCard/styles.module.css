@@ -71,6 +71,19 @@
   margin: 0;
   text-align: center;
   line-height: 1.25;
+  /* Reserve space for 2 lines and center within it, rather than sizing to
+     however many lines this exact title happens to wrap to: titles in the
+     same grid row vary a lot in length (e.g. the homepage's 4-pillar
+     grid, 26-40 characters), so which ones wrap to 1 vs 2 lines shifts
+     with viewport width -- at some widths every title matched, at others
+     a short title sat 1-line-tall at the top of an otherwise-2-line-tall
+     band, with visible dead space below it (found live, 2026-08-27). A
+     fixed 2-line reservation, centered, looks the same at every width
+     regardless of which titles happen to wrap. */
+  min-height: calc(1.3rem * 1.25 * 2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .body {

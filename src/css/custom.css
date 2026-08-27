@@ -725,6 +725,17 @@
   display: flex;
   align-items: center;
   gap: 0.6rem;
+  /* Reserve height for 2 lines of title rather than sizing to however many
+     lines THIS band's own title wraps to: titles sharing a row vary a lot
+     in length (e.g. About's "Running the Loop" row, 26-40 characters), so
+     which ones wrap to 1 vs 2 lines shifts with viewport width -- at
+     narrow widths every title in the row wrapped alike, but at a normal
+     desktop width (1920px) "Standardisation Activities" fit on one line
+     while its neighbors stayed at two, leaving that one card's band
+     visibly shorter than the rest (found live, 2026-08-27). align-items:
+     center above already centers content within whatever height this
+     resolves to. */
+  min-height: calc(1.1rem + 0.9rem + (1.15rem * 1.3 * 2));
 }
 
 .godeeper-card__band svg {

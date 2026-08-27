@@ -29,22 +29,22 @@ function EventCard({ event }) {
   const badge = formatDateBadge(event.date, event.endDate);
   return (
     <Link to={event.href} className={styles.card}>
-      {event.image ? (
+      {event.image && (
         <div className={styles.cardImageWrap}>
           <img loading="lazy" src={withBaseUrl(event.image)} alt="" className={styles.cardImage} />
-          <div className={styles.dateBadge}>
-            <span className={styles.dateMonth}>{badge.month}</span>
-            <span className={styles.dateDay}>{badge.day}</span>
-          </div>
-        </div>
-      ) : (
-        <div className={clsx(styles.dateBadge, styles.dateBadgeInline)}>
-          <span className={styles.dateMonth}>{badge.month}</span>
-          <span className={styles.dateDay}>{badge.day}</span>
         </div>
       )}
       <div className={styles.cardBody}>
-        <span className={styles.typeTag}>{event.type}</span>
+        {/* Date badge sits in the body, next to the type tag, rather than
+            overlaid on the cover image -- an overlay collapsed onto some
+            banners' own on-image text/logos (found live, 2026-08-27). */}
+        <div className={styles.cardMeta}>
+          <span className={styles.dateBadge}>
+            <span className={styles.dateMonth}>{badge.month}</span>
+            <span className={styles.dateDay}>{badge.day}</span>
+          </span>
+          <span className={styles.typeTag}>{event.type}</span>
+        </div>
         <h3 className={styles.cardTitle}>{event.title}</h3>
         <p className={styles.cardLocation}>{event.location}</p>
       </div>
