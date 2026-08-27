@@ -31,14 +31,17 @@ export default function About() {
     {
       src: useBaseUrl('/assets/images/gallery/reference-tools-demo-rig.jpg'),
       alt: '5G-MAG Reference Tools demo rig with SDR hardware and phones running 5GMS and volumetric demos',
+      caption: '5G Media Streaming & volumetric video, running on SDR hardware',
     },
     {
       src: useBaseUrl('/assets/images/gallery/camara-dedicated-networks-demo.png'),
       alt: 'CAMARA Dedicated Networks reference tool demo interface',
+      caption: 'CAMARA Dedicated Networks, a network API reference tool',
     },
     {
       src: useBaseUrl('/assets/images/gallery/5g-broadcast-plugfest-2026.jpg'),
       alt: '5G Broadcast PlugFest 2026, hosted by Fraunhofer FOKUS in Berlin',
+      caption: '5G Broadcast PlugFest 2026, Fraunhofer FOKUS, Berlin',
     },
   ];
 

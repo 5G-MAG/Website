@@ -4,8 +4,10 @@ import styles from './styles.module.css';
 
 // A simple click-to-zoom photo gallery: a grid of thumbnails that opens a
 // full-screen lightbox on click, with keyboard (Escape/Left/Right) and
-// backdrop-click support. `photos` is [{ src, alt }], with src already
-// resolved (e.g. via useBaseUrl) by the caller.
+// backdrop-click support. `photos` is [{ src, alt, caption? }], with src
+// already resolved (e.g. via useBaseUrl) by the caller. `caption` is
+// optional and shown to sighted visitors under the thumbnail and in the
+// lightbox; existing callers that only pass `alt` are unaffected.
 export default function PhotoGallery({ photos, thumbAspect = '1 / 1', columns }) {
   const [activeIndex, setActiveIndex] = useState(null);
   const isOpen = activeIndex !== null;
@@ -44,6 +46,7 @@ export default function PhotoGallery({ photos, thumbAspect = '1 / 1', columns })
             aria-label={`View larger photo: ${photo.alt}`}
           >
             <img loading="lazy" src={photo.src} alt={photo.alt} style={{ aspectRatio: thumbAspect }} />
+            {photo.caption && <span className={styles.caption}>{photo.caption}</span>}
           </button>
         ))}
       </div>
@@ -88,6 +91,9 @@ export default function PhotoGallery({ photos, thumbAspect = '1 / 1', columns })
             src={photos[activeIndex].src}
             alt={photos[activeIndex].alt}
           />
+          {photos[activeIndex].caption && (
+            <div className={styles.overlayCaption}>{photos[activeIndex].caption}</div>
+          )}
 
           <button
             type="button"

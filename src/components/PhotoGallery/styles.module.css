@@ -37,6 +37,16 @@
   border-radius: 8px;
 }
 
+.caption {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+  line-height: 1.3;
+  color: var(--ifm-color-emphasis-700);
+  text-align: left;
+  cursor: zoom-in;
+}
+
 .overlay {
   position: fixed;
   inset: 0;
@@ -137,6 +147,18 @@
   color: rgba(255, 255, 255, 0.75);
   font-size: 0.85rem;
   font-variant-numeric: tabular-nums;
+}
+
+.overlayCaption {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: min(90vw, 1100px);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+  text-align: center;
+  cursor: default;
 }
 
 @media (max-width: 640px) {
