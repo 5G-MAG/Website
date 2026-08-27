@@ -1,7 +1,9 @@
-// Single source of truth for the "Scope: Media and Connectivity" / "At the
-// intersection of Media and Connectivity" four-pillar cards, shown on both
-// the homepage and /about — previously hand-duplicated verbatim in both
-// files; edit here to update both places at once.
+// Single source of truth for /about's "Scope: Media and Connectivity"
+// four-pillar cards. The homepage's own "At the intersection of Media and
+// Connectivity" section uses DISCOVER_WORK instead (a different four
+// cards, organized by activity rather than by scope) -- this file's own
+// comment used to claim both pages shared this data; grepping confirmed
+// only about/index.js imports SCOPE_PILLARS, so that was stale.
 export const SCOPE_PILLARS = [
   {
     title: 'Fast tech evolution',
