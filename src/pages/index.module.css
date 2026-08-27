@@ -324,6 +324,55 @@
   font-weight: 600;
 }
 
+/* ── Technology areas strip ────────────────────────────────────────── */
+/* Concrete technology names (5G Broadcast, XR, streaming...) between the
+   Media/Connectivity diagram and the four organizational pillar cards --
+   without this, the top of the page describes how 5G-MAG organizes its
+   work but never names what it actually works on (findability audit,
+   2026-08-27: "does it give the impression of immersive media, streaming,
+   5G broadcast" -- it didn't, until a reader reached Latest Releases six
+   sections down). */
+.techAreaLabel {
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ifm-color-emphasis-600);
+  margin: 0 0 0.85rem;
+}
+
+.techAreaRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  max-width: 900px;
+  margin: 0 auto 2.5rem;
+}
+
+.techAreaChip {
+  display: inline-block;
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-font-color-base) !important;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.techAreaChip:hover {
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary) !important;
+  box-shadow: var(--card-hover-shadow);
+}
+
 /* ── Community ─────────────────────────────────────────────────────── */
 
 .communityLinks {

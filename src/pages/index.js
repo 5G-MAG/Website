@@ -15,6 +15,7 @@ import ReleaseCard from '@site/src/components/ReleaseCard';
 import { EventsAgendaPreview } from '@site/src/components/EventsAgenda';
 import { DISCOVER_WORK } from '@site/src/data/discoverWork';
 import { EVENTS_AGENDA } from '@site/src/data/eventsAgenda';
+import { TECH_AREAS } from '@site/src/data/techAreas';
 import { NEWS_PREVIEW } from '@site/src/data/newsPreview';
 import { sampleRandom } from '@site/src/utils/random';
 import { sortByLatestRelease } from '@site/src/utils/releases';
@@ -92,6 +93,15 @@ export default function Home() {
 
             <div style={{ margin: '0 0 2rem' }}>
               <MediaConnectivityDiagram />
+            </div>
+
+            <p className={styles.techAreaLabel}>Explore by technology area</p>
+            <div className={styles.techAreaRow}>
+              {TECH_AREAS.map((t) => (
+                <Link key={t.href} to={t.href} className={styles.techAreaChip}>
+                  {t.label}
+                </Link>
+              ))}
             </div>
 
             <div className={clsx(styles.activityGrid, styles['activityGrid--4col'])}>
