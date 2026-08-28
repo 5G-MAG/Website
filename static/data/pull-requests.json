@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-27 05:12 UTC",
+  "updated_at": "2026-08-28 07:11 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -416,7 +416,34 @@
       "name": "UE Data Collection, Reporting and Event Exposure",
       "doc_url": "/reference-tools/data-collection/",
       "tagline": "UE-side data collection, reporting and event exposure · 3GPP TS 26.531",
-      "pulls": []
+      "pulls": [
+        {
+          "repo": "rt-data-collection-application-function",
+          "branch": null,
+          "number": 32,
+          "title": "Add end-to-end CRUD integration coverage for DCAF R1, R2, and R6 APIs",
+          "url": "https://github.com/5G-MAG/rt-data-collection-application-function/pull/32",
+          "draft": false,
+          "author_login": "ErikGaida",
+          "author_avatar": "https://avatars.githubusercontent.com/u/144566652?v=4",
+          "created_at": "2026-08-27",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-data-collection-application-function",
+          "branch": null,
+          "number": 31,
+          "title": "Fix HTTP status code handling in data reporting functions",
+          "url": "https://github.com/5G-MAG/rt-data-collection-application-function/pull/31",
+          "draft": false,
+          "author_login": "ErikGaida",
+          "author_avatar": "https://avatars.githubusercontent.com/u/144566652?v=4",
+          "created_at": "2026-08-27",
+          "last_comment_by": null,
+          "last_comment_date": null
+        }
+      ]
     },
     {
       "name": "MPEG V3C Immersive Platform",
