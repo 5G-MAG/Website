@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-29 04:24 UTC",
+  "updated_at": "2026-08-30 01:51 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -15,7 +15,7 @@
           "views_14d": 20,
           "clones_14d": 668,
           "total_views": 1190,
-          "total_clones": 677,
+          "total_clones": 703,
           "repo_url": "https://github.com/5G-MAG/rt-5gms-application-function"
         },
         {
@@ -51,7 +51,7 @@
           "views_14d": 2,
           "clones_14d": 12,
           "total_views": 200,
-          "total_clones": 321,
+          "total_clones": 322,
           "repo_url": "https://github.com/5G-MAG/rt-5gms-media-session-handler"
         },
         {
@@ -87,7 +87,7 @@
           "views_14d": 13,
           "clones_14d": 23,
           "total_views": 930,
-          "total_clones": 1360,
+          "total_clones": 1361,
           "repo_url": "https://github.com/5G-MAG/rt-5gms-application-provider"
         },
         {
@@ -99,7 +99,7 @@
           "views_14d": 41,
           "clones_14d": 135,
           "total_views": 374,
-          "total_clones": 1312,
+          "total_clones": 1318,
           "repo_url": "https://github.com/5G-MAG/rt-common-shared"
         },
         {
@@ -141,7 +141,7 @@
           "pushed_at": "2025-10-31",
           "views_14d": 48,
           "clones_14d": 15,
-          "total_views": 473,
+          "total_views": 475,
           "total_clones": 208,
           "repo_url": "https://github.com/5G-MAG/rt-mbms-modem"
         },
@@ -153,7 +153,7 @@
           "pushed_at": "2025-10-31",
           "views_14d": 32,
           "clones_14d": 3,
-          "total_views": 174,
+          "total_views": 176,
           "total_clones": 90,
           "repo_url": "https://github.com/5G-MAG/rt-mbms-tx"
         },
@@ -189,8 +189,8 @@
           "pushed_at": "2026-08-23",
           "views_14d": 119,
           "clones_14d": 396,
-          "total_views": 617,
-          "total_clones": 1804,
+          "total_views": 627,
+          "total_clones": 1806,
           "repo_url": "https://github.com/5G-MAG/rt-libflute"
         },
         {
@@ -202,7 +202,7 @@
           "views_14d": 41,
           "clones_14d": 135,
           "total_views": 374,
-          "total_clones": 1312,
+          "total_clones": 1318,
           "repo_url": "https://github.com/5G-MAG/rt-common-shared"
         },
         {
@@ -312,7 +312,7 @@
           "views_14d": 41,
           "clones_14d": 135,
           "total_views": 374,
-          "total_clones": 1312,
+          "total_clones": 1318,
           "repo_url": "https://github.com/5G-MAG/rt-common-shared"
         },
         {
@@ -342,8 +342,8 @@
           "pushed_at": "2026-08-21",
           "views_14d": 61,
           "clones_14d": 13,
-          "total_views": 1011,
-          "total_clones": 1070,
+          "total_views": 1015,
+          "total_clones": 1072,
           "repo_url": "https://github.com/5G-MAG/rt-mbs-function"
         },
         {
@@ -366,8 +366,8 @@
           "pushed_at": "2026-08-28",
           "views_14d": 136,
           "clones_14d": 31,
-          "total_views": 1525,
-          "total_clones": 452,
+          "total_views": 1540,
+          "total_clones": 455,
           "repo_url": "https://github.com/5G-MAG/rt-mbs-examples"
         },
         {
@@ -379,7 +379,7 @@
           "views_14d": 41,
           "clones_14d": 135,
           "total_views": 374,
-          "total_clones": 1312,
+          "total_clones": 1318,
           "repo_url": "https://github.com/5G-MAG/rt-common-shared"
         },
         {
@@ -390,8 +390,8 @@
           "pushed_at": "2026-08-23",
           "views_14d": 119,
           "clones_14d": 396,
-          "total_views": 617,
-          "total_clones": 1804,
+          "total_views": 627,
+          "total_clones": 1806,
           "repo_url": "https://github.com/5G-MAG/rt-libflute"
         },
         {
@@ -403,7 +403,7 @@
           "views_14d": 84,
           "clones_14d": 43,
           "total_views": 396,
-          "total_clones": 995,
+          "total_clones": 997,
           "repo_url": "https://github.com/5G-MAG/open5gs"
         },
         {
@@ -415,7 +415,7 @@
           "views_14d": 5,
           "clones_14d": 6,
           "total_views": 111,
-          "total_clones": 33,
+          "total_clones": 35,
           "repo_url": "https://github.com/5G-MAG/srsRAN_4G"
         },
         {
@@ -426,8 +426,8 @@
           "pushed_at": "2025-10-24",
           "views_14d": 15,
           "clones_14d": 66,
-          "total_views": 306,
-          "total_clones": 165,
+          "total_views": 307,
+          "total_clones": 220,
           "repo_url": "https://github.com/5G-MAG/rt-srsRAN_Project"
         },
         {
@@ -450,7 +450,7 @@
           "pushed_at": "2026-08-11",
           "views_14d": 13,
           "clones_14d": 0,
-          "total_views": 96,
+          "total_views": 99,
           "total_clones": 10,
           "repo_url": "https://github.com/5G-MAG/rt-mbs-client"
         },
@@ -481,8 +481,8 @@
           "pushed_at": "2026-08-28",
           "views_14d": 43,
           "clones_14d": 8,
-          "total_views": 101,
-          "total_clones": 67,
+          "total_views": 120,
+          "total_clones": 72,
           "repo_url": "https://github.com/5G-MAG/rt-data-collection-application-function"
         },
         {
@@ -494,7 +494,7 @@
           "views_14d": 41,
           "clones_14d": 135,
           "total_views": 374,
-          "total_clones": 1312,
+          "total_clones": 1318,
           "repo_url": "https://github.com/5G-MAG/rt-common-shared"
         }
       ]
@@ -524,8 +524,8 @@
           "pushed_at": "2025-10-09",
           "views_14d": 11,
           "clones_14d": 5,
-          "total_views": 85,
-          "total_clones": 75,
+          "total_views": 86,
+          "total_clones": 77,
           "repo_url": "https://github.com/5G-MAG/rt-v3c-decoder-plugin"
         },
         {
@@ -549,7 +549,7 @@
           "views_14d": 41,
           "clones_14d": 135,
           "total_views": 374,
-          "total_clones": 1312,
+          "total_clones": 1318,
           "repo_url": "https://github.com/5G-MAG/rt-common-shared"
         },
         {
@@ -579,7 +579,7 @@
           "pushed_at": "2026-08-12",
           "views_14d": 22,
           "clones_14d": 37,
-          "total_views": 138,
+          "total_views": 139,
           "total_clones": 718,
           "repo_url": "https://github.com/5G-MAG/rt-5gc-service-consumers"
         },
@@ -592,7 +592,7 @@
           "views_14d": 41,
           "clones_14d": 135,
           "total_views": 374,
-          "total_clones": 1312,
+          "total_clones": 1318,
           "repo_url": "https://github.com/5G-MAG/rt-common-shared"
         }
       ]
@@ -623,7 +623,7 @@
           "views_14d": 41,
           "clones_14d": 135,
           "total_views": 374,
-          "total_clones": 1312,
+          "total_clones": 1318,
           "repo_url": "https://github.com/5G-MAG/rt-common-shared"
         }
       ]
@@ -635,14 +635,14 @@
       "repos": [
         {
           "repo": "6G-Testbed",
-          "stars": 13,
+          "stars": 14,
           "forks": 7,
           "open_issues": 3,
           "pushed_at": "2026-08-28",
           "views_14d": 313,
           "clones_14d": 58,
-          "total_views": 3447,
-          "total_clones": 469,
+          "total_views": 3469,
+          "total_clones": 482,
           "repo_url": "https://github.com/5G-MAG/6G-Testbed"
         },
         {
@@ -654,7 +654,7 @@
           "views_14d": 41,
           "clones_14d": 135,
           "total_views": 374,
-          "total_clones": 1312,
+          "total_clones": 1318,
           "repo_url": "https://github.com/5G-MAG/rt-common-shared"
         }
       ]
@@ -766,7 +766,7 @@
           "views_14d": 41,
           "clones_14d": 135,
           "total_views": 374,
-          "total_clones": 1312,
+          "total_clones": 1318,
           "repo_url": "https://github.com/5G-MAG/rt-common-shared"
         }
       ]
@@ -803,8 +803,8 @@
           "pushed_at": "2026-08-23",
           "views_14d": 119,
           "clones_14d": 396,
-          "total_views": 617,
-          "total_clones": 1804,
+          "total_views": 627,
+          "total_clones": 1806,
           "repo_url": "https://github.com/5G-MAG/rt-libflute"
         },
         {
@@ -834,8 +834,8 @@
           "pushed_at": "2025-10-24",
           "views_14d": 15,
           "clones_14d": 66,
-          "total_views": 306,
-          "total_clones": 165,
+          "total_views": 307,
+          "total_clones": 220,
           "repo_url": "https://github.com/5G-MAG/rt-srsRAN_Project"
         },
         {
@@ -847,7 +847,7 @@
           "views_14d": 5,
           "clones_14d": 6,
           "total_views": 111,
-          "total_clones": 33,
+          "total_clones": 35,
           "repo_url": "https://github.com/5G-MAG/srsRAN_4G"
         },
         {
@@ -871,7 +871,7 @@
           "views_14d": 84,
           "clones_14d": 43,
           "total_views": 396,
-          "total_clones": 995,
+          "total_clones": 997,
           "repo_url": "https://github.com/5G-MAG/open5gs"
         }
       ]
