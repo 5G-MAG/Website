@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-01 02:08 UTC",
+  "updated_at": "2026-09-02 01:32 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -98,23 +98,23 @@
       "tagline": "LTE-based 5G broadcast for TV, radio and emergency alerts",
       "releases_slug": "resources",
       "image": "/assets/images/projects/5g-broadcast.png",
-      "latest_date": "2026-08-03",
+      "latest_date": "2026-09-01",
       "releases": [
+        {
+          "repo": "rt-libflute",
+          "branch": null,
+          "tag": "rt-libflute-0.12.4",
+          "date": "2026-09-01",
+          "url": "https://github.com/5G-MAG/rt-libflute/releases/tag/rt-libflute-0.12.4",
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
+        },
         {
           "repo": "rt-common-shared",
           "branch": null,
           "tag": "rt-common-shared-v1.0.0",
           "date": "2026-08-03",
           "url": "https://github.com/5G-MAG/rt-common-shared/releases/tag/rt-common-shared-v1.0.0",
-          "author_login": "dsilhavy",
-          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
-        },
-        {
-          "repo": "rt-libflute",
-          "branch": null,
-          "tag": "rt-libflute-0.12.3",
-          "date": "2026-04-24",
-          "url": "https://github.com/5G-MAG/rt-libflute/releases/tag/rt-libflute-0.12.3",
           "author_login": "dsilhavy",
           "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
         },
@@ -245,8 +245,17 @@
       "tagline": "5G-native multicast and broadcast services · 3GPP 5G MBS",
       "releases_slug": "resources",
       "image": "/assets/images/projects/5g-mbs.png",
-      "latest_date": "2026-08-03",
+      "latest_date": "2026-09-01",
       "releases": [
+        {
+          "repo": "rt-libflute",
+          "branch": null,
+          "tag": "rt-libflute-0.12.4",
+          "date": "2026-09-01",
+          "url": "https://github.com/5G-MAG/rt-libflute/releases/tag/rt-libflute-0.12.4",
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
+        },
         {
           "repo": "rt-common-shared",
           "branch": null,
@@ -291,15 +300,6 @@
           "url": "https://github.com/5G-MAG/rt-mbs-transport-function/releases/tag/rt-mbs-transport-function-1.4.0",
           "author_login": "davidjwbbc",
           "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4"
-        },
-        {
-          "repo": "rt-libflute",
-          "branch": null,
-          "tag": "rt-libflute-0.12.3",
-          "date": "2026-04-24",
-          "url": "https://github.com/5G-MAG/rt-libflute/releases/tag/rt-libflute-0.12.3",
-          "author_login": "dsilhavy",
-          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
         },
         {
           "repo": "rt-srsRAN_Project",
@@ -524,14 +524,14 @@
       "tagline": "DASH, HLS and CMAF multimedia delivery reference tools",
       "releases_slug": "resources",
       "image": "/assets/images/projects/multimedia.png",
-      "latest_date": "2026-04-24",
+      "latest_date": "2026-09-01",
       "releases": [
         {
           "repo": "rt-libflute",
           "branch": null,
-          "tag": "rt-libflute-0.12.3",
-          "date": "2026-04-24",
-          "url": "https://github.com/5G-MAG/rt-libflute/releases/tag/rt-libflute-0.12.3",
+          "tag": "rt-libflute-0.12.4",
+          "date": "2026-09-01",
+          "url": "https://github.com/5G-MAG/rt-libflute/releases/tag/rt-libflute-0.12.4",
           "author_login": "dsilhavy",
           "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
         }
