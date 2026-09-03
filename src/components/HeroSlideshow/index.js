@@ -197,10 +197,21 @@ export default function HeroSlideshow() {
   }).map((e) => ({ ...e, eventType: e.type, type: 'event', sortDate: e.date }));
   // Releases, news and events are each picked/filtered independently above,
   // then interleaved by date here -- so whichever is most recent (or, for
-  // events, soonest) rotates in first regardless of type.
-  const contentSlides = [...releaseSlides, ...newsSlides, ...eventSlides].sort((a, b) =>
-    (b.sortDate || '').localeCompare(a.sortDate || '')
-  );
+  // events, soonest) rotates in first regardless of type. Both of those are
+  // "closest to today": a release/news sortDate is in the past (smallest
+  // gap = most recent), an event's is in the future (smallest gap =
+  // soonest) -- sorting by absolute distance from now, rather than by the
+  // raw date string, satisfies both with one comparator. A plain
+  // descending string sort (the previous approach) got releases/news right
+  // but put events in furthest-first order instead of soonest-first --
+  // e.g. FMT (12 Sept) rotated in ahead of IBC (11 Sept) despite IBC being
+  // sooner (found live, 2026-09-03).
+  const now = Date.now();
+  const contentSlides = [...releaseSlides, ...newsSlides, ...eventSlides].sort((a, b) => {
+    const distA = Math.abs(new Date(`${a.sortDate}T00:00:00Z`).getTime() - now);
+    const distB = Math.abs(new Date(`${b.sortDate}T00:00:00Z`).getTime() - now);
+    return distA - distB;
+  });
   const slides = [HOME_SLIDE, ...contentSlides];
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
