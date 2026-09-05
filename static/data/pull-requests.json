@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-04 01:29 UTC",
+  "updated_at": "2026-09-05 01:32 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -36,19 +36,6 @@
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-08-23",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-libflute",
-          "branch": null,
-          "number": 84,
-          "title": "Fix root CTest test discovery",
-          "url": "https://github.com/5G-MAG/rt-libflute/pull/84",
-          "draft": true,
-          "author_login": "Theater-ahyeon",
-          "author_avatar": "https://avatars.githubusercontent.com/u/180920469?v=4",
-          "created_at": "2026-08-22",
           "last_comment_by": null,
           "last_comment_date": null
         },
@@ -229,37 +216,11 @@
           "last_comment_date": null
         },
         {
-          "repo": "rt-libflute",
-          "branch": null,
-          "number": 84,
-          "title": "Fix root CTest test discovery",
-          "url": "https://github.com/5G-MAG/rt-libflute/pull/84",
-          "draft": true,
-          "author_login": "Theater-ahyeon",
-          "author_avatar": "https://avatars.githubusercontent.com/u/180920469?v=4",
-          "created_at": "2026-08-22",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
           "repo": "rt-mbs-function",
           "branch": null,
           "number": 51,
           "title": "Bug-fix: Pass ingest URL from MBSTF to MBS AP when using object PUSH mode",
           "url": "https://github.com/5G-MAG/rt-mbs-function/pull/51",
-          "draft": false,
-          "author_login": "davidjwbbc",
-          "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4",
-          "created_at": "2026-08-21",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-mbs-transport-function",
-          "branch": null,
-          "number": 72,
-          "title": "Feature: Improvements to manifest handling while streaming",
-          "url": "https://github.com/5G-MAG/rt-mbs-transport-function/pull/72",
           "draft": false,
           "author_login": "davidjwbbc",
           "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4",
@@ -468,19 +429,6 @@
           "created_at": "2026-08-26",
           "last_comment_by": null,
           "last_comment_date": null
-        },
-        {
-          "repo": "6G-Testbed",
-          "branch": null,
-          "number": 6,
-          "title": "Add realtime video analysis and chat with token IDs scenarios",
-          "url": "https://github.com/5G-MAG/6G-Testbed/pull/6",
-          "draft": false,
-          "author_login": "jianbing119",
-          "author_avatar": "https://avatars.githubusercontent.com/u/43026344?v=4",
-          "created_at": "2026-05-12",
-          "last_comment_by": null,
-          "last_comment_date": null
         }
       ]
     },
@@ -585,19 +533,6 @@
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-08-23",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-libflute",
-          "branch": null,
-          "number": 84,
-          "title": "Fix root CTest test discovery",
-          "url": "https://github.com/5G-MAG/rt-libflute/pull/84",
-          "draft": true,
-          "author_login": "Theater-ahyeon",
-          "author_avatar": "https://avatars.githubusercontent.com/u/180920469?v=4",
-          "created_at": "2026-08-22",
           "last_comment_by": null,
           "last_comment_date": null
         },
