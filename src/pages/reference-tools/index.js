@@ -319,7 +319,7 @@ export default function ReferenceTools() {
           <div className="container">
             <h2 className={styles.sectionTitle}>By Category</h2>
             <p className={styles.sectionSubtitle}>
-              Grouped by standards body, since a Reference Tool's defining property is which
+              Grouped by standards body, since a Reference Tool&apos;s defining property is which
               specification it implements — for the same technology areas grouped by use case
               instead, see <Link to="/tech#categories-topics">Technical Resources</Link>. Start here if you
               know which specification or tool you want. For a complete end-to-end service scenario

@@ -204,7 +204,7 @@ export default function Home() {
               Reference Tools, Testbeds and Evaluation Tools, and Application Prototypes — under
               one open developer community. New here? See{' '}
               <Link to="/community/using-this-documentation">Using this Documentation</Link> for
-              how a project's Scope, Resources and Tutorials pages fit together, and a suggested
+              how a project&apos;s Scope, Resources and Tutorials pages fit together, and a suggested
               path through them.
             </p>
             <div className={styles.productGrid}>
