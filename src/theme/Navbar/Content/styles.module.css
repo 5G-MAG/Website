@@ -119,7 +119,9 @@ Hide color mode toggle in small viewports
 /* Explainers & Profiles / Feedback & Requirements / Software Accelerator /
    Interop & Testing are 5G-MAG's four defining activities, so their nav
    items are bolder and brand-colored to stand out from the more general
-   About Us/Membership/Events/News items around them. */
+   About Us/Membership/Events/News items around them. Purely a visual
+   weight, independent of .navDropdownWrapper below -- News gets a dropdown
+   too (2026-09-10) without this styling, since it isn't one of the four. */
 .primaryNavItem {
   font-weight: 700;
   color: var(--ifm-color-primary-darkest);
@@ -129,27 +131,30 @@ Hide color mode toggle in small viewports
   color: var(--ifm-color-primary);
 }
 
-/* Mega-menu preview on the four pillar items (2026-08-24 design audit):
-   a plain-language one-liner plus that section's own sub-page list,
-   surfaced on hover/focus so a first-time visitor doesn't have to click
-   through 5G-MAG's own internal vocabulary blind. Wraps the existing
-   .navbar__link unchanged (SlidingIndicatorGroup keeps measuring it
-   correctly) and stays nested inside .navGroup, so moving the pointer
-   from the link down into the panel never fires that group's own
+/* Mega-menu preview, originally on the four pillar items only (2026-08-24
+   design audit: a plain-language one-liner plus that section's own
+   sub-page list, surfaced on hover/focus so a first-time visitor doesn't
+   have to click through 5G-MAG's own internal vocabulary blind), extended
+   to News (2026-09-10, to reach Podcast and Magazine without a click
+   through to /news first) -- the subtitle line is the pillars' own
+   addition and stays optional so a plain item list (News) can skip it.
+   Wraps the existing .navbar__link unchanged (SlidingIndicatorGroup keeps
+   measuring it correctly) and stays nested inside .navGroup, so moving the
+   pointer from the link down into the panel never fires that group's own
    mouseleave handler. Desktop-only by construction: this whole component
    tree is Infima's desktop navbar__items, hidden below the mobile-sidebar
    breakpoint in favor of the separate drawer menu, same as the sliding
    indicator itself. */
-.pillarWrapper {
+.navDropdownWrapper {
   position: relative;
   display: inline-flex;
   align-items: center;
   height: 100%;
 }
 
-/* .navbar establishes the stacking context .pillarMenu paints inside, so
-   no z-index on .pillarMenu itself can ever beat an element outside that
-   context — a stacking context traps its descendants' z-index
+/* .navbar establishes the stacking context .navDropdownMenu paints inside,
+   so no z-index on .navDropdownMenu itself can ever beat an element outside
+   that context — a stacking context traps its descendants' z-index
    comparisons against everything outside it. A section page's own pill
    sub-nav (SectionNav/PageNav) sits right below the navbar at the same
    z-index (Infima's --ifm-z-index-fixed, by design — see
@@ -164,7 +169,7 @@ Hide color mode toggle in small viewports
   z-index: calc(var(--ifm-z-index-fixed) + 1);
 }
 
-.pillarMenu {
+.navDropdownMenu {
   position: absolute;
   /* Flush against the wrapper with no margin gap: a gap there belongs to
      neither box, so a pointer moving from the link down into the panel
@@ -192,15 +197,15 @@ Hide color mode toggle in small viewports
   z-index: var(--ifm-z-index-dropdown, 100);
 }
 
-.pillarWrapper:hover .pillarMenu,
-.pillarWrapper:focus-within .pillarMenu {
+.navDropdownWrapper:hover .navDropdownMenu,
+.navDropdownWrapper:focus-within .navDropdownMenu {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
   transform: translate(-50%, 0);
 }
 
-.pillarMenuSubtitle {
+.navDropdownSubtitle {
   margin: 0 0 0.7rem;
   font-size: 0.82rem;
   font-weight: 400;
@@ -208,7 +213,7 @@ Hide color mode toggle in small viewports
   color: var(--ifm-color-emphasis-700);
 }
 
-.pillarMenuList {
+.navDropdownList {
   list-style: none;
   margin: 0;
   padding-top: 0.6rem;
@@ -218,13 +223,13 @@ Hide color mode toggle in small viewports
   gap: 0.45rem;
 }
 
-.pillarMenuList a {
+.navDropdownList a {
   font-size: 0.875rem;
   font-weight: 400;
   color: var(--ifm-color-emphasis-800);
 }
 
-.pillarMenuList a:hover {
+.navDropdownList a:hover {
   color: var(--ifm-color-primary);
   text-decoration: none;
 }
@@ -234,19 +239,19 @@ Hide color mode toggle in small viewports
    — the trigger text above this panel isn't legible as a link of its own
    from inside a hover panel, so the hub page needs a first-class entry
    here rather than relying on the visitor separately noticing that. */
-.pillarMenuOverview {
+.navDropdownOverview {
   font-weight: 700 !important;
   color: var(--ifm-color-emphasis-900) !important;
 }
 
-.pillarMenuDivider {
+.navDropdownDivider {
   height: 1px;
   margin: 0.15rem 0;
   background: var(--ifm-color-emphasis-200);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pillarMenu {
+  .navDropdownMenu {
     transition: none;
   }
 }

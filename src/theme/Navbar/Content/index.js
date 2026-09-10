@@ -244,15 +244,21 @@ function SlidingIndicatorGroup({ items }) {
   );
 }
 
-// The four pillar items (Software Accelerator, Technology, Standardisation,
-// In Action) carry a `subtitle` on their
-// matching SECTION_NAV entry (2026-08-24 design audit: those labels are
-// 5G-MAG's own internal vocabulary, not self-explanatory from the navbar
-// alone before a click) — looked up here by titleHref so the preview
-// content has one source, the same SECTION_NAV data the pill sub-nav bar
-// itself already renders from.
-const PILLAR_PREVIEWS = new Map(
-  SECTION_NAV.filter((s) => s.subtitle).map((s) => [s.titleHref, s])
+// Which top-level navbar items open a small flyout on hover/focus, and what
+// it shows. The four pillar items (Software Accelerator, Technology,
+// Standardisation, In Action) carry a `subtitle` on their matching
+// SECTION_NAV entry (2026-08-24 design audit: those labels are 5G-MAG's own
+// internal vocabulary, not self-explanatory from the navbar alone before a
+// click). News (2026-09-10) gets the same flyout so Podcast and Magazine
+// are reachable without a click through to /news first, but carries no
+// subtitle of its own -- a bare item list needs no explaining. Looked up by
+// titleHref so the flyout content has one source, the same SECTION_NAV data
+// the pill sub-nav bar itself already renders from; deliberately explicit
+// (which items open a flyout) rather than "every navbar item whose
+// SECTION_NAV entry happens to have items", most of which don't want one.
+const NAV_DROPDOWN_HREFS = ['/tech', '/standards', '/developer', '/action', '/news'];
+const NAV_DROPDOWNS = new Map(
+  NAV_DROPDOWN_HREFS.map((href) => [href, SECTION_NAV.find((s) => s.titleHref === href)])
 );
 
 function renderNavbarItem(item) {
@@ -273,18 +279,19 @@ ${JSON.stringify(item, null, 2)}`,
 }
 
 // Mirrors the CSS :hover/:focus-within triggers that already show/hide
-// .pillarMenu (styles.module.css) with a matching React `expanded` flag,
-// used only to drive aria-haspopup/aria-expanded on the trigger link --
-// the visual show/hide stays pure CSS, unchanged. NavbarNavLink
+// .navDropdownMenu (styles.module.css) with a matching React `expanded`
+// flag, used only to drive aria-haspopup/aria-expanded on the trigger link
+// -- the visual show/hide stays pure CSS, unchanged. NavbarNavLink
 // (@docusaurus/theme-classic) spreads any unrecognised item props (here,
 // the two aria-* keys) straight onto the underlying <Link>/<a>, so this
-// needs no swizzle of that component.
-function PillarNavItem({ item, preview }) {
+// needs no swizzle of that component. `preview.subtitle` is optional (News
+// has none) so the paragraph is only rendered when there is one to show.
+function NavDropdownItem({ item, preview }) {
   const [expanded, setExpanded] = useState(false);
   const link = renderNavbarItem({ ...item, 'aria-haspopup': 'true', 'aria-expanded': expanded });
   return (
     <span
-      className={styles.pillarWrapper}
+      className={styles.navDropdownWrapper}
       onMouseEnter={() => setExpanded(true)}
       onMouseLeave={() => setExpanded(false)}
       onFocus={() => setExpanded(true)}
@@ -293,21 +300,21 @@ function PillarNavItem({ item, preview }) {
       }}
     >
       {link}
-      <div className={styles.pillarMenu} aria-label={`${preview.title} quick links`}>
-        <p className={styles.pillarMenuSubtitle}>{preview.subtitle}</p>
+      <div className={styles.navDropdownMenu} aria-label={`${preview.title} quick links`}>
+        {preview.subtitle && <p className={styles.navDropdownSubtitle}>{preview.subtitle}</p>}
         {/* Same title-then-divider-then-items shape as PageNav's own
             pill row (src/components/PageNav/index.js) — the trigger
             link above this panel is easy to read as inert scaffolding
             around a dropdown rather than a destination itself, so the
             hub page needs its own explicit entry, set apart from the
             sub-page list below it. */}
-        <ul className={styles.pillarMenuList}>
+        <ul className={styles.navDropdownList}>
           <li>
-            <Link to={preview.titleHref} className={styles.pillarMenuOverview}>
+            <Link to={preview.titleHref} className={styles.navDropdownOverview}>
               {preview.title}
             </Link>
           </li>
-          <li className={styles.pillarMenuDivider} aria-hidden="true" />
+          <li className={styles.navDropdownDivider} aria-hidden="true" />
           {preview.items.map((sub) => (
             <li key={sub.href}>
               <Link to={sub.href}>{sub.label}</Link>
@@ -323,9 +330,9 @@ function NavbarItems({ items }) {
   return (
     <>
       {items.map((item, i) => {
-        const preview = item.className === styles.primaryNavItem ? PILLAR_PREVIEWS.get(item.to) : null;
+        const preview = NAV_DROPDOWNS.get(item.to);
         if (!preview) return <React.Fragment key={i}>{renderNavbarItem(item)}</React.Fragment>;
-        return <PillarNavItem key={i} item={item} preview={preview} />;
+        return <NavDropdownItem key={i} item={item} preview={preview} />;
       })}
     </>
   );
