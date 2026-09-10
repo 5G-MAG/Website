@@ -127,11 +127,6 @@ const config = {
           { from: '/reference-tools/multimedia/scope', to: '/reference-tools/content-delivery/scope' },
           { from: '/reference-tools/multimedia/resources', to: '/reference-tools/content-delivery/resources' },
           { from: '/reference-tools/multimedia/tutorials', to: '/reference-tools/content-delivery/tutorials' },
-          // /community/contributing promoted to the flat /contributing
-          // (2026-09-10), same as public-call.mdx before it -- was live on
-          // www.5g-mag.com, so bookmarks/search-engine indexing may still
-          // point at the old path.
-          { from: '/community/contributing', to: '/contributing' },
         ],
       },
     ],
