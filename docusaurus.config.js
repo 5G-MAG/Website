@@ -351,6 +351,7 @@ const config = {
             { label: 'Events', to: '/events' },
             { label: 'News', to: '/news' },
             { label: 'Podcast', to: '/podcast' },
+            { label: 'Magazine', to: '/magazine' },
             { label: 'Subscribe for Updates', to: '/subscribe' },
             ...SOCIAL_LINKS.map((s) => socialFooterItem(s.label, s.href, s.svgPath)),
           ],

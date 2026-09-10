@@ -14,7 +14,6 @@ export const ABOUT_ITEM = { to: '/about', label: 'About Us', position: 'left' };
 export const MEMBERSHIP_ITEM = { to: '/membership', label: 'Membership', position: 'left' };
 export const EVENTS_ITEM = { to: '/events', label: 'Events', position: 'left' };
 export const NEWS_ITEM = { to: '/news', label: 'News', position: 'left' };
-export const MAGAZINE_ITEM = { to: '/magazine', label: 'Magazine', position: 'left' };
 
 // 5G-MAG's four distinctive, defining activities (vs. the more general
 // About/Membership/Events/News items) — matching the homepage's "Discover
@@ -60,7 +59,6 @@ export function useNavbarItems() {
     INTEROP_ITEM,
     EVENTS_ITEM,
     NEWS_ITEM,
-    MAGAZINE_ITEM,
   ];
 }
 

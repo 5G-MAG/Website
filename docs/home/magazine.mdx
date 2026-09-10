@@ -1,0 +1,59 @@
+---
+title: Magazine
+hide_title: true
+sidebar_position: 0
+description: The 5G-MAG Magazine — news, insights and perspectives from the 5G-MAG community, as a downloadable PDF.
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#fff"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M3 3m0 2a2 2 0 0 1 2 -2h13a1 1 0 0 1 1 1v14a2 2 0 0 1 -2 2h-13a2 2 0 0 1 -2 -2v-13z" />
+      <path d="M3 15a2 2 0 1 0 4 0v-13" />
+      <path d="M7 5h10" />
+      <path d="M7 9h10" />
+      <path d="M7 13h5" />
+    </svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">News</span>
+<h1>Magazine</h1>
+</div>
+</div>
+
+<div class="topic-lead">
+  The 5G-MAG Magazine — news, insights and perspectives from the 5G-MAG community.
+</div>
+
+## Issues
+
+<div style={{ display: 'flex', flexDirection: 'column', gap: '16px', margin: '16px 0' }}>
+
+<div>
+<p style={{ margin: '0 0 4px', fontWeight: 600 }}>Issue #1</p>
+<div class="pdf-embed-wrapper">
+  <iframe loading="lazy" className="pdf-embed" src={useBaseUrl('/magazine/5G-MAGazine-Issue-01.pdf')} title="5G-MAG Magazine, Issue #1" />
+</div>
+<a
+  className="button button--outline button--primary"
+  href={useBaseUrl('/magazine/5G-MAGazine-Issue-01.pdf')}
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  Download Issue #1 (PDF)
+</a>
+</div>
+
+</div>

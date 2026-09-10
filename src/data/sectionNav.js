@@ -226,12 +226,27 @@ export const SECTION_NAV = [
     prefixes: ['/news'],
     title: 'News',
     titleHref: '/news',
-    items: [{ label: 'Podcast', href: '/podcast' }],
+    items: [
+      { label: 'Podcast', href: '/podcast' },
+      { label: 'Magazine', href: '/magazine' },
+    ],
   },
   {
     prefixes: ['/podcast'],
     title: 'Podcast',
     titleHref: '/podcast',
-    items: [{ label: 'News', href: '/news' }],
+    items: [
+      { label: 'News', href: '/news' },
+      { label: 'Magazine', href: '/magazine' },
+    ],
+  },
+  {
+    prefixes: ['/magazine'],
+    title: 'Magazine',
+    titleHref: '/magazine',
+    items: [
+      { label: 'News', href: '/news' },
+      { label: 'Podcast', href: '/podcast' },
+    ],
   },
 ];
