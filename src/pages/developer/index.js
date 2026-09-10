@@ -282,7 +282,7 @@ export default function Home() {
             </div>
           </div>
           <div className="container" style={{ textAlign: 'center', marginTop: '1.5rem', fontWeight: 600 }}>
-            <Link to="/community/contributing">Become a contributor &rarr;</Link>
+            <Link to="/contributing">Become a contributor &rarr;</Link>
           </div>
         </section>
 

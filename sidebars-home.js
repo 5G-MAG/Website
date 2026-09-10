@@ -316,15 +316,16 @@ const sidebars = {
     'standards/3gpp-issue-tracking',
   ],
 
-  // The /community cluster is small but genuinely nested (three sub-pages
-  // under the index), and its SectionNav pill-bar only carries a single
-  // "Community" pill for the whole section — so before this sidebar
-  // existed, contributing/release-process/using-this-documentation were
-  // reachable only from the index page itself.
+  // The /community cluster is small but genuinely nested (two sub-pages
+  // under the index, since contributing.mdx moved out to the flat
+  // /contributing (2026-09-10), same as public-call.mdx before it), and its
+  // SectionNav pill-bar only carries a single "Community" pill for the
+  // whole section — so before this sidebar existed, release-process and
+  // using-this-documentation were reachable only from the index page
+  // itself.
   communitySidebar: [
     'community/index',
     'community/using-this-documentation',
-    'community/contributing',
     'community/release-process',
   ],
 
