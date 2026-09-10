@@ -114,7 +114,6 @@ const USE_CASE_PHOTOS = [
 // shows a fixed slot 0/1/2 assignment so hydration has something stable to
 // match, and setInterval only starts after mount.
 function FadingPhotoRow({ photos }) {
-  const { withBaseUrl } = useBaseUrlUtils();
   const initial = photos.map((_, i) => i % photos.length).slice(0, 3);
   const [active, setActive] = useState(initial);
 
