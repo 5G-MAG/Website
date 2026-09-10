@@ -400,6 +400,16 @@
   border: 0;
 }
 
+/* A magazine issue is a full multi-page document to read, not a handful of
+   landscape slides like every other .pdf-embed consumer (project overview
+   decks) -- reusing the plain 560px cap made every page a lot of scroll-
+   within-the-iframe to read even one page. A modifier rather than raising
+   the shared height: doing that for all 27 other consumers would leave a
+   short slide deck sitting in a mostly-empty tall box. */
+.pdf-embed--reader {
+  height: clamp(600px, 85vh, 1400px);
+}
+
 /* ── Community tiles (community.md) ─────────────────────────────── */
 .community-tiles {
   display: flex;

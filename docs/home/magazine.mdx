@@ -43,11 +43,14 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <div>
 <p style={{ margin: '0 0 4px', fontWeight: 600 }}>Issue #1</p>
+<a href={useBaseUrl('/magazine/5G-MAGazine-Issue-01.pdf')} target="_blank" rel="noreferrer">
+  Read Issue #1 full screen &rarr;
+</a>
 <div class="pdf-embed-wrapper">
-  <iframe loading="lazy" className="pdf-embed" src={useBaseUrl('/magazine/5G-MAGazine-Issue-01.pdf')} title="5G-MAG Magazine, Issue #1" />
+  <iframe loading="lazy" className="pdf-embed pdf-embed--reader" src={useBaseUrl('/magazine/5G-MAGazine-Issue-01.pdf')} title="5G-MAG Magazine, Issue #1" />
 </div>
 <a
-  className="button button--outline button--primary"
+  className="button button--sm button--outline button--primary"
   href={useBaseUrl('/magazine/5G-MAGazine-Issue-01.pdf')}
   target="_blank"
   rel="noopener noreferrer"
