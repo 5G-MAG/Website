@@ -62,7 +62,7 @@ export const MBS_SPECS = [
   },
   {
     id: "TS 26.346",
-    title: "MBMS; Protocols and codecs (TS 26.517 clause 6.2 binds the MBS Object distribution method to this specification's FLUTE-based Download Delivery Method; see [Standards: Multimedia Delivery Protocols](/standards/multimedia) for the full FLUTE specification chain)",
+    title: "MBMS; Protocols and codecs (TS 26.517 clause 6.2 binds the MBS Object distribution method to this specification's FLUTE-based Download Delivery Method; see [Standards: Content Delivery Protocols](/standards/content-delivery) for the full FLUTE specification chain)",
     url: "https://www.3gpp.org/dynareport/26346.htm",
     layer: "User services",
   },

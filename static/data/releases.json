@@ -519,9 +519,9 @@
       ]
     },
     {
-      "name": "Multimedia Delivery Protocols",
-      "doc_url": "/reference-tools/multimedia/",
-      "tagline": "DASH, HLS and CMAF multimedia delivery reference tools",
+      "name": "Content Delivery Protocols",
+      "doc_url": "/reference-tools/content-delivery/",
+      "tagline": "DASH, HLS and CMAF content delivery reference tools",
       "releases_slug": "resources",
       "image": "/assets/images/projects/multimedia.png",
       "latest_date": "2026-09-01",

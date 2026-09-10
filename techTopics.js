@@ -49,11 +49,11 @@ export const TECH_GROUPS = [
         standards: [{ doc: 'standards/dvb-i', label: 'Standards: DVB-I Services over 5G Systems' }],
       },
       {
-        label: 'Multimedia Delivery Protocols',
-        techDoc: 'multimedia/multimedia-content-delivery',
-        techHref: '/tech/multimedia/multimedia-content-delivery',
+        label: 'Content Delivery Protocols',
+        techDoc: 'content-delivery',
+        techHref: '/tech/content-delivery',
         standards: [
-          { doc: 'standards/multimedia', label: 'Standards: Multimedia Delivery Protocols' },
+          { doc: 'standards/content-delivery', label: 'Standards: Content Delivery Protocols' },
         ],
       },
       {

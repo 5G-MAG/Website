@@ -17,7 +17,7 @@ export const TECH_AREAS = [
   { label: 'Non-Terrestrial Networks', href: '/tech/ntn' },
   { label: 'Real-Time Communications', href: '/tech/rtc' },
   { label: 'DVB-I', href: '/tech/dvb-i/dvb-i-5g' },
-  { label: 'Multimedia Delivery', href: '/tech/multimedia/multimedia-content-delivery' },
+  { label: 'Content Delivery', href: '/tech/content-delivery' },
   { label: 'Data Collection', href: '/tech/data-collection/data-collection-event-exposure' },
   { label: 'Non-Public Networks', href: '/tech/npn' },
   { label: 'Time-Sensitive Communications', href: '/tech/tsc' },

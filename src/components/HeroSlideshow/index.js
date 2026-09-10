@@ -137,7 +137,7 @@ const HOME_TILES = [
     rot: -1.9,
     color: TONE_A,
     d: 'M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1 M9 15l3 -3l3 3 M12 12l0 9',
-  }, // Multimedia Protocols
+  }, // Content Delivery Protocols
   // Tiny
   {
     cx: 189,
@@ -164,7 +164,7 @@ const PROJECT_TYPE_MAP = {
   '5G Multicast Broadcast Services (MBS)': 'Reference Tools',
   'UE Data Collection, Reporting and Event Exposure': 'Reference Tools',
   'MPEG V3C Immersive Platform': 'Reference Tools',
-  'Multimedia Delivery Protocols': 'Reference Tools',
+  'Content Delivery Protocols': 'Reference Tools',
   'DVB-I Services over 5G Systems': 'Reference Tools',
   '5G Broadcast - Emergency Alerts': 'Reference Tools',
   '5G Core Service Consumers': 'Reference Tools',

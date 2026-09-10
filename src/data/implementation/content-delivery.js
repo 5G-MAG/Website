@@ -1,5 +1,5 @@
 // Per-feature implementation audit for rt-libflute, 5G-MAG's FLUTE library and
-// the one part of the multimedia delivery protocol set that 5G-MAG writes
+// the one part of the content delivery protocol set that 5G-MAG writes
 // itself (ROUTE and the DASH/HLS/CMAF formats are tracked at the role level on
 // the Scope page).
 //

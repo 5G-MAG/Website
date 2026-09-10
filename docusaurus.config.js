@@ -91,7 +91,7 @@ const config = {
           { from: '/tech/standards/data-collection', to: '/standards/data-collection' },
           { from: '/tech/standards/dvb-i', to: '/standards/dvb-i' },
           { from: '/tech/standards/emergency-alerts', to: '/standards/emergency-alerts' },
-          { from: '/tech/standards/multimedia', to: '/standards/multimedia' },
+          { from: '/tech/standards/multimedia', to: '/standards/content-delivery' },
           { from: '/tech/standards/network-apis', to: '/standards/network-apis' },
           { from: '/tech/standards/npn', to: '/standards/npn' },
           { from: '/tech/standards/ntn', to: '/standards/ntn' },
@@ -107,13 +107,26 @@ const config = {
           // then removed again days later once their duplication with the
           // project's existing Standards/Scope pages was caught) -- redirect
           // to wherever their content actually ended up.
-          { from: '/reference-tools/multimedia/rt-libflute-standards', to: '/standards/multimedia' },
-          { from: '/reference-tools/multimedia/rt-libflute-implementation', to: '/reference-tools/multimedia/scope' },
+          { from: '/reference-tools/multimedia/rt-libflute-standards', to: '/standards/content-delivery' },
+          { from: '/reference-tools/multimedia/rt-libflute-implementation', to: '/reference-tools/content-delivery/scope' },
           // /testing renamed to /action (2026-08-24): live on www.5g-mag.com
           // since the 2026-07-28 cutover, so bookmarks/search-engine
           // indexing may still point at the old path.
           { from: '/testing', to: '/action' },
           { from: '/testing/5g-broadcast-plugfest', to: '/action/5g-broadcast-plugfest' },
+          // "Multimedia Delivery Protocols" topic renamed to "Content Delivery
+          // Protocols" (2026-09-10): the lead concept is the transport, not
+          // the media type it happens to carry -- rt-libflute (FLUTE/ROUTE,
+          // RFC 6726/9223) is a general object-delivery protocol, not
+          // multimedia-specific. All five paths below were live on
+          // www.5g-mag.com, so bookmarks/search-engine indexing may still
+          // point at the old paths.
+          { from: '/standards/multimedia', to: '/standards/content-delivery' },
+          { from: '/tech/multimedia/multimedia-content-delivery', to: '/tech/content-delivery' },
+          { from: '/reference-tools/multimedia', to: '/reference-tools/content-delivery' },
+          { from: '/reference-tools/multimedia/scope', to: '/reference-tools/content-delivery/scope' },
+          { from: '/reference-tools/multimedia/resources', to: '/reference-tools/content-delivery/resources' },
+          { from: '/reference-tools/multimedia/tutorials', to: '/reference-tools/content-delivery/tutorials' },
         ],
       },
     ],

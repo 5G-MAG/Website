@@ -188,7 +188,7 @@ export const MBS_SECTIONS = [
         feature: "Object distribution method over FLUTE, per the TS 26.346 Download profile (§6.2), delivered over **MBS-4-MC**",
         where: "MBSTF transmit; MBSF Client receive (both via rt-libflute)",
         status: "yes",
-        note: "see the [rt-libflute audit](/reference-tools/multimedia/scope) for the transport-layer detail, including the Raptor FEC gap and other release-branch findings for that library",
+        note: "see the [rt-libflute audit](/reference-tools/content-delivery/scope) for the transport-layer detail, including the Raptor FEC gap and other release-branch findings for that library",
       },
       {
         feature: "MBS-6 / MBS-7 exposure to the MBS-Aware Application",

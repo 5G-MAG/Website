@@ -735,7 +735,7 @@
       "is_auxiliary": false
     }
   ],
-  "multimedia": [
+  "content-delivery": [
     {
       "repo_slug": "rt-libflute",
       "display_name": "FLUTE Transceiver",

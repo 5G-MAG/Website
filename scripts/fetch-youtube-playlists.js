@@ -55,7 +55,7 @@ const PROJECT_PLAYLISTS = {
   'data-collection': 'PLFqKJZ78_IWWKZ0nJ-gR2dNVrZ0iIFQ05',
   'dvb-i': 'PLFqKJZ78_IWWx0OE_WRkHAomP7FXdwX4J',
   'emergency-alerts': 'PLFqKJZ78_IWVeyD2qw18szZe6zrukVv0e',
-  multimedia: 'PLFqKJZ78_IWWokVokppoiAfb6CJYwVrJn',
+  'content-delivery': 'PLFqKJZ78_IWWokVokppoiAfb6CJYwVrJn',
   v3c: 'PLFqKJZ78_IWUNBlJetfmlc_873F3O2-0l',
   xr: 'PLFqKJZ78_IWVk0_h1oeizy9IZ0DmOUXkA',
   '6g-testbed': 'PLFV0QXnNeYCI',

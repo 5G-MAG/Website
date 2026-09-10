@@ -1,9 +1,9 @@
 ---
 hide_title: true
 sidebar_class_name: project-index-link
-title: Multimedia Delivery Protocols
+title: Content Delivery Protocols
 sidebar_position: -1
-description: Landing page for the DASH, HLS, and CMAF multimedia delivery reference tools, with links to scope, roadmap, repositories, and releases.
+description: Landing page for the DASH, HLS, and CMAF content delivery reference tools, with links to scope, roadmap, repositories, and releases.
 ---
 import CommunityStats from '@site/src/components/CommunityStats';
 import ProjectContributors from '@site/src/components/ProjectContributors';
@@ -11,7 +11,7 @@ import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 
-export const projectVideos = (youtubePlaylists.projects?.['multimedia']?.videos || []).slice(0, 1);
+export const projectVideos = (youtubePlaylists.projects?.['content-delivery']?.videos || []).slice(0, 1);
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -22,14 +22,14 @@ export const projectVideos = (youtubePlaylists.projects?.['multimedia']?.videos 
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Reference Tools</span>
-<h1>Multimedia Delivery Protocols</h1>
+<h1>Content Delivery Protocols</h1>
 </div>
 </div>
 
 <div class="topic-lead">
-Reference tools for multimedia content delivery protocols, covering DASH (Dynamic Adaptive Streaming over HTTP), HLS (HTTP Live Streaming), and CMAF (Common Media Application Format).
+Reference tools for content delivery protocols, covering DASH (Dynamic Adaptive Streaming over HTTP), HLS (HTTP Live Streaming), and CMAF (Common Media Application Format).
 </div>
-<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/multimedia/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/multimedia/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/multimedia/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/multimedia/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
+<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/content-delivery/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/content-delivery/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/content-delivery/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/content-delivery/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
 These tools address the application-layer delivery protocols that sit above the 5G transport, ensuring interoperability across content formats, packaging standards, and player implementations. The project is designed to support any delivery protocol; it currently implements FLUTE and ROUTE, used respectively for file and real-time object delivery over 5G Broadcast and 5G Multicast Broadcast Services (MBS). Useful for developers validating DASH/HLS players, packagers, and Content Delivery Network (CDN) integrations in 5G environments.
 
@@ -37,14 +37,14 @@ These tools address the application-layer delivery protocols that sit above the 
 
 ## Contributors
 
-<ProjectContributors name="Multimedia Delivery Protocols" />
+<ProjectContributors name="Content Delivery Protocols" />
 
 ## Project Overview
 
-The slide deck below introduces the multimedia content delivery protocols project: the protocols it covers and how they fit above the 5G transport.
+The slide deck below introduces the content delivery protocols project: the protocols it covers and how they fit above the 5G transport.
 
 <div class="pdf-embed-wrapper">
-  <iframe loading="lazy" class="pdf-embed" src={useBaseUrl('/docs/Reference_Tools_Multimedia_delivery_protocols.pdf')} title="Multimedia Delivery Protocols: project overview slide deck"></iframe>
+  <iframe loading="lazy" class="pdf-embed" src={useBaseUrl('/docs/Reference_Tools_Multimedia_delivery_protocols.pdf')} title="Content Delivery Protocols: project overview slide deck"></iframe>
 </div>
 
 <a class="button button--outline button--primary" href={useBaseUrl('/docs/Reference_Tools_Multimedia_delivery_protocols.pdf')} style={{margin: '4px 0'}}>Download the slide deck of this Project</a>
@@ -55,8 +55,8 @@ The slide deck below introduces the multimedia content delivery protocols projec
 
 | Area                        | Details                                                                                                                    |
 | --------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| **Technical documentation** | Delivery protocol analysis: [Multimedia Content Delivery on the Tech portal](/tech/multimedia/multimedia-content-delivery) |
-| **Standards**               | DASH, HLS, and CMAF specifications: [Multimedia Delivery on the Standards portal](/standards/multimedia)              |
+| **Technical documentation** | Delivery protocol analysis: [Content Delivery Protocols on the Tech portal](/tech/content-delivery) |
+| **Standards**               | DASH, HLS, and CMAF specifications: [Content Delivery Protocols on the Standards portal](/standards/content-delivery)              |
 
 <div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
 
@@ -64,7 +64,7 @@ The slide deck below introduces the multimedia content delivery protocols projec
 
 See the Reference Tools in action, with a community video from the tutorials page.
 
-<ProjectVideos videos={projectVideos} name="Multimedia Delivery Protocols" />
+<ProjectVideos videos={projectVideos} name="Content Delivery Protocols" />
 
 ## Related
 
@@ -74,10 +74,10 @@ See the Reference Tools in action, with a community video from the tutorials pag
 - [Tutorials](./tutorials) - demo video and repository pointers
 
 :::note
-Refer to the [multimedia delivery repositories](https://github.com/5G-MAG) on GitHub to use or contribute to these Reference Tools.
+Refer to the [content delivery repositories](https://github.com/5G-MAG) on GitHub to use or contribute to these Reference Tools.
 :::
 
 ## Community Stats
 
-<CommunityStats name="Multimedia Delivery Protocols" />
+<CommunityStats name="Content Delivery Protocols" />
 

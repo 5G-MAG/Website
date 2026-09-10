@@ -205,9 +205,9 @@ const CATEGORIES = [
     desc: 'Reference implementations of IETF-specified transport protocols.',
     topics: [
       {
-        title: 'Multimedia Delivery Protocols',
+        title: 'Content Delivery Protocols',
         desc: 'Multi-CDN tooling and protocol implementations for media delivery.',
-        href: '/reference-tools/multimedia',
+        href: '/reference-tools/content-delivery',
         tags: ['Linux'],
         icon: icon(
           <>

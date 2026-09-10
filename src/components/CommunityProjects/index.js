@@ -50,7 +50,7 @@ const PROJECT_CATEGORY = {
   'Conversational Avatar Communication with MPEG ARF': 'MPEG Implementation',
   'MPEG V3C Immersive Platform': 'MPEG Implementation',
   'XR/3D Scenes with MPEG-I Scene Description': 'MPEG Implementation',
-  'Multimedia Delivery Protocols': 'IETF Implementations',
+  'Content Delivery Protocols': 'IETF Implementations',
   'CAMARA Connectivity Quality Management APIs': 'CAMARA Project Implementations',
   'Common Tools': 'Shared Tools',
   'AI Traffic Characterization': 'Testbeds & Evaluation Frameworks',

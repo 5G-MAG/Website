@@ -53,10 +53,10 @@ const CATEGORIES = [
         ),
       },
       {
-        title: 'Multimedia Delivery Protocols',
+        title: 'Content Delivery Protocols',
         desc: 'FLUTE and ROUTE transport for one-way delivery of DASH, HLS and CMAF content over broadcast and multicast.',
-        href: '/tech/multimedia/multimedia-content-delivery',
-        standardsHref: '/standards/multimedia',
+        href: '/tech/content-delivery',
+        standardsHref: '/standards/content-delivery',
         icon: icon(
           <>
             <path d="M12 3l8 4.5v9l-8 4.5l-8 -4.5v-9z" />

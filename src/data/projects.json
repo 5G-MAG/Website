@@ -273,10 +273,10 @@
     ]
   },
   {
-    "name": "Multimedia Delivery Protocols",
-    "doc_url": "/reference-tools/multimedia/",
+    "name": "Content Delivery Protocols",
+    "doc_url": "/reference-tools/content-delivery/",
     "image": "/assets/images/projects/multimedia.png",
-    "tagline": "DASH, HLS and CMAF multimedia delivery reference tools",
+    "tagline": "DASH, HLS and CMAF content delivery reference tools",
     "repos": [
       "rt-libflute",
       {

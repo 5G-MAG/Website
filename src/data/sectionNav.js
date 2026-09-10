@@ -141,7 +141,7 @@ export const SECTION_NAV = [
       '/standards/data-collection',
       '/standards/dvb-i',
       '/standards/emergency-alerts',
-      '/standards/multimedia',
+      '/standards/content-delivery',
       '/standards/network-apis',
       '/standards/npn',
       '/standards/ntn',

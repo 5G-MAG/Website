@@ -1,11 +1,11 @@
-// Specification catalogue for the Multimedia Delivery Protocols (FLUTE, ROUTE).
+// Specification catalogue for the Content Delivery Protocols topic (FLUTE, ROUTE).
 //
 // `layer` carries the distinction this topic turns on: which IETF generation is
 // normative for 3GPP use. FLUTE version 1 (RFC 3926 and its companions) is what
 // TS 26.517 and TS 26.346 mandate; the revised generation (RFC 6726/5651/5775)
 // is valid IETF text but is reference material for this purpose. Filtering on
 // the layer makes that split visible rather than leaving it to prose.
-export const MULTIMEDIA_SPECS = [
+export const CONTENT_DELIVERY_SPECS = [
   // --- IETF, normative for 3GPP use -------------------------------------
   {
     id: 'RFC 3926',
@@ -210,7 +210,7 @@ export const MULTIMEDIA_SPECS = [
   },
 ];
 
-export const MULTIMEDIA_LAYER_ORDER = [
+export const CONTENT_DELIVERY_LAYER_ORDER = [
   'IETF (normative)',
   'IETF (reference only)',
   '3GPP',
