@@ -1,6 +1,26 @@
 {
-  "updated_at": "2026-09-09T13:45:40.706Z",
+  "updated_at": "2026-09-10T21:00:27.356Z",
   "posts": [
+    {
+      "title": "Introducing the 5GMAGazine",
+      "date": "2026-09-10",
+      "slug": "5gmagazine-launch",
+      "tags": [
+        "Announcement"
+      ],
+      "image": "/assets/images/news/magazine-launch-issue-01.jpg",
+      "excerpt": "5G-MAG has launched the 5GMAGazine, a new publication bringing specification analysis, software releases and community news to one place, starting with [Issue 01](/magazine)."
+    },
+    {
+      "title": "5G-MAG Showcases 3GPP Release 18 MBS at ESA's NTN Forum",
+      "date": "2026-09-04",
+      "slug": "ntn-forum-2026-recap",
+      "tags": [
+        "Announcement"
+      ],
+      "image": "/assets/images/news/ntn-forum-2026-recap.jpg",
+      "excerpt": "5G-MAG took center stage at the European Space Agency's (ESA) NTN Forum Colloquium & General Assembly, bringing an end-to-end demonstration of its open-source 3GPP Release 18 [5G Multicast Broadcast Services (MBS)](/reference-tools/5g-mbs) reference tools."
+    },
     {
       "title": "5G-MAG at MPEG/ITU Workshop: driving open-source development for faster technology deployment",
       "date": "2026-07-17",
@@ -10,6 +30,16 @@
       ],
       "image": "/assets/images/news/mpeg-itu-workshop-2026.jpg",
       "excerpt": "The ITU-T SG21 and ISO/IEC JTC 1/SC 29 (MPEG) joint workshop on \"Media Streaming Services – What's next,\" held in Geneva, brought together industry leaders to discuss the future of media streaming and the challenges of technology deployment. 5G-MAG took part to make the case for a closer relationship between standards development and open-source software, to help shorten the path from written specification to real-world market adoption."
+    },
+    {
+      "title": "5G-MAG at MWC Shanghai: Towards Media-Aware Intelligent Networks",
+      "date": "2026-06-29",
+      "slug": "mwc-shanghai-2026-recap",
+      "tags": [
+        "Announcement"
+      ],
+      "image": "/assets/images/news/mwc-shanghai-2026-recap.jpg",
+      "excerpt": "At MWC Shanghai (24–26 June, SNIEC), 5G-MAG showcased the live demonstration \"Towards Media-Aware Intelligent Networks — Smarter Video Streaming for 6G\" at Qualcomm's booth."
     },
     {
       "title": "First 5G Broadcast PlugFest by 5G-MAG brings developers together in Berlin",

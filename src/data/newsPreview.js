@@ -45,4 +45,16 @@ export const NEWS_PREVIEW = [
     href: '/news/mpeg-itu-workshop-2026',
     image: '/assets/images/news/mpeg-itu-workshop-2026.jpg',
   },
+  {
+    date: '2026-09-04',
+    title: "5G-MAG Showcases 3GPP Release 18 MBS at ESA's NTN Forum",
+    href: '/news/ntn-forum-2026-recap',
+    image: '/assets/images/news/ntn-forum-2026-recap.jpg',
+  },
+  {
+    date: '2026-09-10',
+    title: 'Introducing the 5GMAGazine',
+    href: '/news/5gmagazine-launch',
+    image: '/assets/images/news/magazine-launch-issue-01.jpg',
+  },
 ];
