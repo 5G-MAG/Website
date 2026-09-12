@@ -1,8 +1,8 @@
 ---
-title: DVB-I over 5G - Gap Analysis
+title: DVB-I over 5G - Requirements, Specifications and Gaps
 sidebar_position: 20
 hide_title: true
-description: Re-checks the fourteen gaps ETSI TR 103 972 recorded for DVB-I over 5G against the current published specifications, and sets out how carriage over MBMS already works.
+description: What DVB-I over 5G enables, the commercial requirements behind it, which specifications address each one, and a re-check of the fourteen gaps ETSI TR 103 972 recorded.
 ---
 
 <div class="topic-banner">
@@ -12,31 +12,256 @@ description: Re-checks the fourteen gaps ETSI TR 103 972 recorded for DVB-I over
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">DVB-I Services over 5G Systems</span>
-<h1>DVB-I over 5G - Gap Analysis</h1>
+<h1>DVB-I over 5G - Requirements, Specifications and Gaps</h1>
 </div>
 </div>
 
 <div class="topic-lead">
-The gap list everyone cites is three years old. Re-checked against the current published specifications, seven of the fourteen gaps are closed, and what blocks a deployment today is one small piece of DVB signalling.
+What the DVB-I over 5G work set out to enable, the commercial requirements behind it, which specifications now address each requirement, and where the remaining gaps actually are.
 </div>
 
-## Why re-check
+This page is in three parts. It begins with what DVB-I over 5G is for and the requirements that
+define it, then maps those requirements onto the specifications that address them, and only then
+looks at what is still missing. The gap list is the part most often quoted in isolation, and it
+reads very differently once the first two parts are in view.
 
-ETSI TR 103 972 (DVB A178) is the reference document for DVB-I over 5G, and its clauses 6.2.4 and
-6.3.4 enumerate what was missing from the standards when it was written. It is dated 2023-07. Every
-document it points at has moved since, several of them by two or three releases, so the list it
-carries is a snapshot rather than a current statement.
+## Part 1: What DVB-I over 5G enables
 
-Each of the fourteen gaps below was re-checked against the newest published issue of the document
-that owns it. This is an engineering assessment by 5G-MAG, not a statement of the DVB or 3GPP
-position on any item.
+### The proposition
+
+DVB-I is a delivery-agnostic service layer. A client discovers services from an XML service list,
+and each service can offer several **service instances**, each binding that same editorial service
+to a different bearer. Broadcast and broadband appear in one list, and the user sees channels rather
+than delivery mechanisms.
+
+Putting 5G underneath that layer does three things that nothing else does at once:
+
+**It reaches devices broadcast cannot.** Phones, tablets and vehicles have no DVB-T tuner. They do
+have 5G modems. Delivering a television service over 5G Broadcast reaches them without the per-user
+cost of unicast, and without the service provider losing the service-layer control that DVB-I gives
+them. Delivery to fixed receivers is not excluded: roof-top antennas, 5G fixed wireless access and
+5G-based home gateways are all in scope.
+
+**It makes broadcast economics work at scale.** A 5G Broadcast transmission carries one copy of a
+popular linear channel regardless of how many people are watching. Unicast cost grows with audience;
+broadcast cost does not. High-power high-tower, receive-only, free-to-air operation is supported by
+the LTE-based 5G Broadcast system, so this is classical TV distribution economics on a mobile
+bearer.
+
+**It makes the hybrid service a first-class citizen.** This is the part that is specific to DVB-I,
+and TR 103 972 calls it out as the particular benefit: a basic service distributed over broadcast,
+augmented by unicast for wider coverage, better quality, and experiences broadcast alone cannot
+provide. The service list is what holds the two halves together as one service rather than two.
+
+### What a hybrid service actually buys you
+
+The hybrid case is not a single feature, it is a set of them, and the commercial requirements
+enumerate them individually:
+
+| Capability | What it means in practice |
+| --- | --- |
+| Service continuity | Reception continues on unicast when the user leaves broadcast coverage |
+| Extended coverage | Broadcast serves the coverage area, unicast fills the rest, one service either way |
+| Component addition | Subtitles or metadata delivered over unicast for a service carried over broadcast |
+| Component replacement | An alternative language or camera angle over unicast |
+| Component augmentation | An enhancement layer over unicast on top of a broadcast base layer |
+| Targeted replacement | Unicast content or advertising insertion targeted by user or region |
+| Time-shifted viewing | Unicast access to the same service for catch-up, with near-seamless transition back to live |
+| Fast start | Unicast for channel-change latency while broadcast carries the steady state |
+| Error recovery | Unicast repair when broadcast reception is lossy |
+
+Each of these is a separate requirement in DVB BlueBook C100, and each is a reason a broadcaster
+would want the service layer to span both bearers rather than running two products.
+
+### The six guiding use cases
+
+The requirements were derived from six use cases contributed by DVB members and recorded in
+TR 103 972 clause 4.1.2:
+
+1. DVB-I over 5G Media Streaming
+2. 5G Broadcast / unicast hybrid delivery to handheld devices
+3. 5G Broadcast standalone with unicast for the EPG
+4. 5G Fixed Wireless Access
+5. DVB-I services to vehicle infotainment systems over 5G
+6. DVB-I hybrid service over 5G
+
+Note what use case 3 implies: a receiver with no unicast connection at all, taking its service list,
+its content guide and its media from the broadcast bearer. That case drives more of the
+specification work than its position in the list suggests, and it is the one the DVB-I specification
+now addresses directly.
+
+## Part 2: The requirements, and the specifications that address them
+
+### Where the requirements come from
+
+The DVB Project approved **DVB BlueBook C100**, the commercial requirements for DVB-I service
+support over 5G networks and systems, in **July 2021**. It carries 70 technical and procedural
+requirements, derived from the six use cases above.
+
+TR 103 972 clause 4.1.3 summarises the four things the Technical Module was asked to specify:
+
+1. Self-contained DVB-I services over a **5G Broadcast** system (ETSI TS 103 720)
+2. Self-contained DVB-I services over a **5G Media Streaming** system (ETSI TS 126 501)
+3. The same basic service over **regular unicast, 5G Broadcast and 5GMS at the same time**, as
+   independent service instances, possibly at different quality
+4. **Hybrid** DVB-I services: described in a service list, distributed over 5G Broadcast, augmented
+   by unicast or 5GMS
+
+The detailed requirements are clustered by service-operation phase, in C100's own clause numbering:
+provisioning (2.3), announcement and detection (2.4), service components (2.5), distribution and
+delivery (2.6), quality and monitoring (2.7), and client functionality (2.8).
+
+Two procedural constraints shape every technical answer below. Existing DVB technology is to be
+reused wherever appropriate, and the solution is to stay **layered**: functionality predominantly
+access-independent and common with other DVB delivery means, enhanced only where the 5G delivery
+network genuinely requires it. That is why the answers are mostly small additions rather than a new
+system.
+
+### The layered answer
+
+| Layer | What it provides | Specifications |
+| --- | --- | --- |
+| Service layer | Discovery, selection, programme metadata. Unchanged across bearers. | DVB A177 / ETSI TS 103 770 |
+| Media format layer | The media presentation itself | DVB-DASH (ETSI TS 103 285); DVB-MABR (ETSI TS 103 769) where multicast is used |
+| Transport layer | The bearer | ETSI TS 103 720 (LTE-based 5G Broadcast); 3GPP 5GMS (TS 26.501, TS 26.512, TS 26.510) for unicast |
+| Provisioning | Getting content onto a broadcast bearer | xMB (ETSI TS 129 116); MBMS protocols (3GPP TS 26.346) |
+
+### Requirements for the 5G Broadcast scenario
+
+TR 103 972 table 6.2.1-1 lists the requirements this scenario has to satisfy. Status below is
+against the specifications as published today, not as they stood when the report was written.
+
+| Requirement (C100) | What it asks for | Addressed by | Status |
+| --- | --- | --- | --- |
+| 2.2.1, 2.6.2 | Self-contained DVB-I services delivered and distributed over a 5G Broadcast system | ETSI TS 103 720 for the bearer; TS 103 770 clause 9.3 for carriage in an MBMS system | **Addressed**, except for the instance type below |
+| 2.3.1 | Provisioning of those services | ETSI TS 129 116 clause 5.2.1.1, table 5.2.1.1-1: a service resource with a `service-class` property | **Addressed** |
+| 2.4.4 | Embed the DVB-I service list in a 5G Broadcast signal | TS 103 770 clause 9.3.1, table 106: a user service of class `DVB-I_Service_List:1` carries the list document | **Addressed** |
+| 2.4.5 | Provide an updated service list in a 5G Broadcast signal | TS 103 770 clause 9.3.3: the client subscribes to MBMS Client notifications and acquires new versions as announced | **Addressed** |
+| 2.4.17 | Announce the location of content guide endpoints | TS 103 770 clause 9.3.1, table 106: class `DVB-I_Content_Guide:1` | **Addressed**, by carrying the documents themselves |
+| 2.6.7 | Receive-only-mode reception from a 5G Broadcast system | ETSI TS 103 720 clause 5.4.8 makes receive-only mode mandatory for LTE-based 5G Broadcast services | **Addressed** at the bearer |
+| 2.6.6 | Free-to-air delivery over a 5G Broadcast system | Follows from the same clause: ROM needs neither PLMN registration nor a USIM. Announcement to such receivers is 3GPP TS 26.346 clause 5.2.3.1.1 | **Addressed** at the bearer |
+| 2.4.2 | An entry point referencing a service list registry | TS 103 770 clause 5.1.3.1 defines three discovery approaches (built-in URL, registry, CICAM); none is 5G-specific | **Partly**: the registry exists, the 5G entry point does not |
+| 2.4.3 | Announce the *location* of one or more service lists in the broadcast signal | Clause 9.3 carries the list itself rather than a pointer to it | **Partly**, by a different means |
+| 2.4.7 | **The service list shall define a service instance type for 5G Broadcast** | Nothing | **Open** |
+| 2.4.10 | Identify an editorial service from radio-layer parameters (frequency plus TMGI) | Nothing. TS 103 770 does not mention TMGI | **Open** |
+| 2.4.15, 2.4.16 | Signal free-to-air and receive-only-mode service instances | Nothing on the service-list side. FTA appears in TS 103 770 only as an abbreviation | **Open**, downstream of 2.4.7 |
+
+The last four share one cause. Requirements 2.4.10, 2.4.15 and 2.4.16 all describe attributes of a
+5G Broadcast service instance, and there is no 5G Broadcast service instance type to put them on.
+Close 2.4.7 and they become straightforward.
+
+### Requirements for the 5G Media Streaming scenario
+
+TR 103 972 table 6.3.1-1:
+
+| Requirement (C100) | What it asks for | Addressed by | Status |
+| --- | --- | --- | --- |
+| 2.2.2, 2.6.1 | Self-contained DVB-I services over a 5GMS system | ETSI TS 126 501 (architecture), TS 126 512 (protocols), TS 126 510 (client APIs) | **Addressed** at the 3GPP layer |
+| 2.3.1 | Provisioning over 5GMS | TS 126 510 clause 5.2, Provisioning (M1) interactions | **Addressed** |
+| 2.4.1 | Announcement of DVB-I services via 5GMS | Ordinary HTTPS discovery: TS 103 770 clause 5.1.3 | **Addressed** |
+| 2.6.3 | Make use of Content Hosting, Dynamic QoS Policies and Network Assistance | TS 126 510 clauses 5.2.7, 5.2.8 and 5.3.4; TS 126 512 clauses 4.3.3, 4.3.7 and 4.5.10 | **Addressed** at the 3GPP layer |
+| 2.4.8 | **The service list shall define a service instance type for 5GMS** | Nothing | **Open** |
+
+The same shape as the broadcast scenario. The transport is specified in detail; what is missing is
+the one line in the service list that says a given instance uses it, so a DVB-I client can select it
+knowingly.
+
+### Requirements for the hybrid scenario
+
+TR 103 972 table 6.4.1-1 carries thirteen requirements: the two headline ones (2.2.3, 2.2.4), three
+on disambiguating and selecting between instances (2.4.9, 2.4.10, 2.4.12), six on component-level
+unicast behaviour (2.5.4 to 2.5.9), and the remainder on time alignment, error recovery and metrics
+(2.6.5, 2.6.14, 2.7.10).
+
+The multi-instance mechanism these depend on already exists. TS 103 770 clause 5.5.4
+(`ServiceInstanceType`) gives each instance a `@priority` attribute, lower value meaning higher
+priority, and TS 103 770 clause 5.2.1 (Service Instance Matching) de-duplicates a DVB-I instance
+against an already-tuned broadcast service. The component-level behaviours are DVB-DASH and DVB-I mechanics
+that are not specific to 5G.
+
+The hybrid scenario is therefore blocked by the same two gaps and no others: without instance types
+for 5G Broadcast and 5GMS there is nothing to put in the list beside the unicast instance. Beyond
+that, this page does not assess the thirteen hybrid requirements individually; TR 103 972
+clause 6.4.4.3 discusses the component-level cases in detail.
+
+### How carriage over 5G Broadcast already works
+
+Requirements 2.4.4, 2.4.5 and 2.4.17 above are marked addressed because TS 103 770 V1.2.1
+**clause 9.3 covers carriage of DVB-I in an MBMS system normatively**. This is routinely missed, and
+it is why the broadcast path is closer to buildable than the gap list suggests.
+
+**The unit of carriage is an MBMS User Service, and its class says what it carries.** A DVB-I
+deployment over MBMS is not one bearer but a set of user services, each announced separately and
+each labelled. TS 103 770 clause 9.3.1, table 106 defines three classes:
+
+| Service class identifier | The user service carries |
+| --- | --- |
+| `urn:dvb:metadata:serviceClass:DVB-I_Service_List:1` | one service list document |
+| `urn:dvb:metadata:serviceClass:DVB-I_Content_Guide:1` | content guide documents |
+| `urn:dvb:metadata:serviceClass:DVB-I_Service_Instance:1` | the media assets of one service instance |
+
+That attribute is the whole filtering mechanism: it is how a receiver tells a DVB-I service list
+from any other file being broadcast. Its absence was TR 103 972 clause 6.2.4 gap 4, now closed.
+
+**Provisioning path:**
+
+| Step | Where it is specified |
+| --- | --- |
+| Content provider creates a service over xMB and sets its class | ETSI TS 129 116 V19.0.0 clause 5.2.1.1, table 5.2.1.1-1, row `service-class` |
+| BM-SC carries it in the User Service Description as `userServiceDescription@serviceClass` | 3GPP TS 26.346 V19.3.0 clause 11.2.1.2 |
+| For media, the User Service Description also references the entry point document (the MPD) | 3GPP TS 26.346 V19.3.0 clause 5.2.2.1 |
+| User services are announced | 3GPP TS 26.346 V19.3.0 clause 5.2.3.1 |
+| For LTE-based 5G Broadcast, announcement uses 5G Broadcast SA Services | ETSI TS 103 720 V1.2.1 clause 5.4.2 |
+
+**Receiver behaviour.** TS 103 770 clause 9.3.3 puts the DVB-I client in the role of an MBMS-Aware
+Application driving an MBMS Client, in four steps:
+
+1. **Start the announcement channel.** The client invokes the MBMS Client to start receiving the
+   MBMS Service Announcement Channel (3GPP TS 26.346 clause 5.2.3). The result is a User Service
+   Description for every user service in the system.
+2. **Read the class off each one.** The MBMS Client exposes the service class identifier to the
+   DVB-I client (TS 103 770 clause 9.3.2, referring to ETSI TS 126 347 clause 6.2).
+3. **Acquire the metadata and keep it current.** A client with *no unicast connection* acquires the
+   service list from a user service of class `DVB-I_Service_List:1`, and may then acquire content
+   guide metadata the same way. It subscribes to MBMS Client notifications and picks up new versions
+   as announced, which is the broadcast counterpart of the version polling a unicast client does
+   under TS 103 770 clause 4.3.3.7. This is guiding use case 3, fully specified.
+4. **Select an instance and hand off to the player.** On selecting an instance with an `mbms://`
+   locator, the client invokes the MBMS Client to initiate reception. The player is never given the
+   locator: what it receives is the entry point document referenced by the User Service Description.
+
+This split matches the component architecture the 5G-MAG reference tools already have: an MBMS
+Client holding the announcement channel and the reception, and an MBMS-aware application driving it
+over a local API. A DVB-I receiver occupies the second role.
+
+## Part 3: The gap analysis
+
+### Why the published gap list needs re-checking
+
+ETSI TR 103 972 (DVB A178) is the deployment guidance for all of the above, produced by the
+DVB / 5G-MAG Joint Task Force. Being a **technical report**, its output is guidance and recommended
+changes rather than normative requirements, and its most-quoted content is clauses 6.2.4 and 6.3.4,
+which enumerate what was missing from the standards.
+
+It is dated **2023-07**. Every document it points at has moved since, several by two or three
+releases. Three things follow, and all three turn out to matter:
+
+- A gap may have closed in a later issue of the owning document.
+- A gap's clause reference may no longer resolve, because the owning document was restructured or
+  the material moved to a different specification entirely.
+- A gap may have been closed *before* the report was published, where the report cites a document
+  without a version.
+
+Each of the fourteen gaps below was therefore re-checked against the newest published issue of the
+document that owns it. This is an engineering assessment by 5G-MAG, not a statement of the DVB or
+3GPP position on any item.
 
 **Versions checked:** ETSI TS 103 770 V1.2.1 (2024-09), ETSI TR 103 972 V1.1.1 (2023-07), ETSI
 TS 103 720 V1.2.1 (2023-06), ETSI TS 129 116 V19.0.0 (2025-10), ETSI TS 126 512 V19.3.0, ETSI
 TS 126 510 V19.2.0, 3GPP TS 26.346 V19.3.0 (2025-12), and the DVB A177r8 draft of TS 103 770 V1.3.1
 (June 2026).
 
-## Headline
+### Headline
 
 | Status | Count |
 | --- | --- |
@@ -52,7 +277,7 @@ The asymmetry matters more than the count. The 3GPP-derived documents account fo
 closures. The DVB side has been reissued once in the same period, closing the seventh, and added no
 means of signalling 5G delivery.
 
-## 5G Broadcast scenario (TR 103 972 clause 6.2.4)
+### 5G Broadcast scenario (TR 103 972 clause 6.2.4)
 
 | # | Gap | Owner | Status |
 | --- | --- | --- | --- |
@@ -65,19 +290,19 @@ means of signalling 5G delivery.
 **Gap 2** was closed by TS 103 720 V1.2.1 clause 7.4, dated 2023-06, one month before the report.
 The report's reference to TS 103 720 carries no version, which is how that happens.
 
-**Gap 4** was closed by TS 103 770 V1.2.1 clause 9.3.1, table 106, which defines three service class
-identifiers and requires `userServiceDescription@serviceClass` to carry the appropriate one. That is
-exactly the filter the report asked for, and it arrived in the issue published a year later.
+**Gap 4** was closed by TS 103 770 V1.2.1 clause 9.3.1, table 106, the service classes described in
+Part 2. That is exactly the filter the report asked for, and it arrived in the issue published a
+year later.
 
 **Gaps 1 and 3** are open. TS 129 116 V19.0.0 still defines both update-interval properties
 semantically with no guidance on choosing values or on how the two interact. On gap 3, the
 notification machinery in that API runs the other way: TS 129 116 clause 8 specifies push from the
 BM-SC to the Content Provider, so a Content Provider signalling a change still relies on polling.
 
-**Gap 5** is open, and stays open in the A177r8 draft. This is the one that blocks implementation;
-see [The one piece that blocks everything](#the-one-piece-that-blocks-everything) below.
+**Gap 5** is open, and stays open in the A177r8 draft. It is the same thing as requirement 2.4.7,
+and it is what blocks implementation.
 
-## 5G Media Streaming scenario (TR 103 972 clause 6.3.4)
+### 5G Media Streaming scenario (TR 103 972 clause 6.3.4)
 
 | # | Gap | Owner | Status |
 | --- | --- | --- | --- |
@@ -99,8 +324,8 @@ checking those gaps against the numbers in the report will conclude they are ope
 - **Gaps 5 and 7** are closed by TS 126 510 V19.2.0 clause 11.6.2: table 11.6.2-2 lists
   `METRICS_REPORTING_ACTIVATED` and `NEW_METRICS_REPORT` among the notification events, and
   table 11.6.2-1 adds `lastMetricsReport` status information.
-- **Gap 9** is closed by TS 126 510 clause 11.4, a Network Assistance client API where the
-  report found an empty clause.
+- **Gap 9** is closed by TS 126 510 clause 11.4, a Network Assistance client API where the report
+  found an empty clause.
 - **Gap 6** is closed: TS 126 512 V19.3.0 table 13.2.6-1 carries a `state` row holding an enumerated
   Media Player state, rather than leaving it to be inferred from a non-zero playback rate.
 - **Gap 8** is closed in both halves: the notification now declares a payload carrying the media
@@ -111,88 +336,35 @@ checking those gaps against the numbers in the report will conclude they are ope
   identifier alongside the MPD URL, binding the presentation to an already-initialised session.
   Whether that satisfies the intent is a judgement call and should be confirmed with 3GPP.
 
-## What remains
+### What remains
 
 The five open gaps fall into two groups.
 
 **Three are the same DVB-side problem.** A DVB-I service list has nowhere to put a 5G locator,
 whether for 5G Broadcast (TR 103 972 clause 6.2.4 gap 5) or for 5GMS Service Access Information
-(TR 103 972 clause 6.3.4 gaps 1 and 2). This is the group that blocks anything being built, and it is small, well understood
-and squarely in DVB's court.
+(TR 103 972 clause 6.3.4 gaps 1 and 2). These are commercial requirements 2.4.7 and 2.4.8, and they
+in turn hold up 2.4.10, 2.4.15 and 2.4.16, which describe attributes such an instance would carry.
+This is the group that blocks anything being built, and it is small, well understood and squarely in
+DVB's court.
 
-**Two are xMB provisioning details** (TR 103 972 clause 6.2.4 gaps 1 and 3). Neither blocks a demonstration.
-Both would matter to an operator running the provisioning chain in earnest.
+**Two are xMB provisioning details** (TR 103 972 clause 6.2.4 gaps 1 and 3). Neither blocks a
+demonstration. Both would matter to an operator running the provisioning chain in earnest.
 
-## What is already specified, and is more than most people expect
+### The one piece that blocks everything
 
-TS 103 770 V1.2.1 clause 9.3 covers carriage of DVB-I in an MBMS system **normatively**. This is
-routinely missed, and it means the broadcast path is far closer to buildable than the gap list
-suggests.
+Step 4 of the receiver procedure in Part 2 begins "a DVB-I service instance with an `mbms://`
+locator", and **nothing in TS 103 770 says which element carries that locator**. The delivery
+parameter choice offers eight types (clauses 5.5.18.1 to 5.5.18.8) and none of them is MBMS. The
+behaviour is specified while the element carrying the locator is not.
 
-### Service classes
-
-TS 103 770 clause 9.3.1, table 106 defines three identifiers. A DVB-I deployment over MBMS is therefore not one
-bearer but a set of MBMS User Services, each announced separately and each labelled:
-
-| Service class identifier | The user service carries |
-| --- | --- |
-| `urn:dvb:metadata:serviceClass:DVB-I_Service_List:1` | one service list document |
-| `urn:dvb:metadata:serviceClass:DVB-I_Content_Guide:1` | content guide documents |
-| `urn:dvb:metadata:serviceClass:DVB-I_Service_Instance:1` | the media assets of one service instance |
-
-The class attribute is the whole filtering mechanism: it is how a receiver tells a DVB-I service
-list from any other file being broadcast.
-
-### Provisioning path
-
-| Step | Where it is specified |
-| --- | --- |
-| Content provider creates a service over xMB and sets its class | ETSI TS 129 116 V19.0.0 clause 5.2.1.1, table 5.2.1.1-1, row `service-class` |
-| BM-SC carries it in the User Service Description as `userServiceDescription@serviceClass` | 3GPP TS 26.346 V19.3.0 clause 11.2.1.2 |
-| For media, the User Service Description also references the entry point document (the MPD) | 3GPP TS 26.346 V19.3.0 clause 5.2.2.1 |
-| User services are announced | 3GPP TS 26.346 V19.3.0 clause 5.2.3.1 |
-| For LTE-based 5G Broadcast, announcement uses 5G Broadcast SA Services | ETSI TS 103 720 V1.2.1 clause 5.4.2 |
-
-### Receiver behaviour
-
-TS 103 770 clause 9.3.3 puts the DVB-I client in the role of an MBMS-Aware Application driving an
-MBMS Client, in four steps:
-
-1. **Start the announcement channel.** The client invokes the MBMS Client to start receiving the
-   MBMS Service Announcement Channel (3GPP TS 26.346 clause 5.2.3). The result is a User Service
-   Description for every user service in the system.
-2. **Read the class off each one.** The MBMS Client exposes the service class identifier to the
-   DVB-I client (TS 103 770 clause 9.3.2, referring to ETSI TS 126 347 clause 6.2).
-3. **Acquire the metadata and keep it current.** A client with *no unicast connection* acquires the
-   service list from a user service of class `DVB-I_Service_List:1`, and may then acquire content
-   guide metadata the same way. It subscribes to MBMS Client notifications and picks up new versions
-   as they are announced, which is the broadcast counterpart of the version polling a unicast client
-   does under TS 103 770 clause 4.3.3.7.
-4. **Select an instance and hand off to the player.** On selecting an instance with an `mbms://`
-   locator, the client invokes the MBMS Client to initiate reception. The player is never given the
-   locator: what it receives is the entry point document referenced by the User Service Description.
-
-This split matches the component architecture the 5G-MAG reference tools already have: an MBMS
-Client holding the announcement channel and the reception, and an MBMS-aware application driving it
-over a local API. A DVB-I receiver occupies the second role.
-
-## The one piece that blocks everything
-
-Step 4 above begins "a DVB-I service instance with an `mbms://` locator", and **nothing in
-TS 103 770 says which element carries that locator**. The delivery parameter choice offers eight
-types (clauses 5.5.18.1 to 5.5.18.8) and none of them is MBMS. The behaviour is specified while the
-element carrying the locator is not.
-
-That is gap 5, and it is the only thing in the whole procedure that a deployment has to invent. Any
-deployment that wants to demonstrate this today must define a local extension and be explicit that
-it is one.
-
-TR 103 972 clause 6.4.3.3 is worth reading before choosing how. It sets out two options and
-discourages the first, signalling a 5G Broadcast service as DASH delivery with an added MBMS URL,
-because existing DVB-I clients may assume all DASH services are unicast. The option it points at is
-a distinct service instance type with its own delivery parameters. TS 103 770 provides the extension
-point for exactly that: `OtherDeliveryParameters`, typed `ExtensionBaseType`, which is the same
-mechanism the specification itself uses for HLS in its informative annex G.2.2.
+Any deployment wanting to demonstrate this today must define a local extension and be explicit that
+it is one. TR 103 972 clause 6.4.3.3 is worth reading before choosing how. It sets out two options
+and discourages the first, signalling a 5G Broadcast service as DASH delivery with an added MBMS
+URL, because existing DVB-I clients may assume all DASH services are unicast. The option it points
+at is a distinct service instance type with its own delivery parameters, which is requirement 2.4.7
+restated. TS 103 770 provides the extension point for exactly that: `OtherDeliveryParameters`, typed
+`ExtensionBaseType`, the same mechanism the specification itself uses for HLS in its informative
+annex G.2.2.
 
 :::caution[A local extension is not conformance]
 Anything built on that extension point sits outside the specification until DVB defines a delivery
@@ -201,29 +373,32 @@ using a local extension wherever it is read, be recorded in the conformance reco
 rather than as conformance, and be withdrawn once DVB specifies the real thing.
 :::
 
-## What would be built first
+### What would be built first
 
 The smallest useful step is **not** teaching a receiver to drive an MBMS Client, which is the
 substantial piece of work. It is publishing the service list itself as a user service of class
 `DVB-I_Service_List:1` and having the receiver load it from the MBMS Client's local copy.
 
-That exercises provisioning, the class label, the announcement channel and object delivery, and it
-needs **no extension at all**, because a service list carried this way still describes ordinary
-unicast service instances. It is the part of this that is fully specified today.
+That exercises provisioning, the class label, the announcement channel and object delivery, it
+satisfies requirements 2.4.4 and 2.4.5, and it needs **no extension at all**, because a service list
+carried this way still describes ordinary unicast service instances. It is guiding use case 3 minus
+the broadcast media, and it is fully specified today.
 
 The 5G Media Streaming path is blocked on the two DVB-side gaps above and is not a candidate for
 early work.
 
 :::note[Verified against primary sources]
-Every status above was checked against the document that owns the gap, at the version listed under
-"Versions checked", not against a summary or an earlier issue. Where a clause number in the report no
-longer resolves, the current location is given.
+Every status above was checked against the document that owns the requirement or gap, at the version
+listed under "Versions checked", not against a summary or an earlier issue. Where a clause number in
+the report no longer resolves, the current location is given.
 
-Two limits are worth stating. ETSI TS 126 347 is not held by the authors, so TS 103 770
-clause 9.3.2's reference to its clause 6.2, the form of the `mbms://` scheme, and the MBMS Client API are taken
-from TS 103 770's description of them rather than checked at source. And nothing here establishes
-whether DVB intends to close the remaining gaps in a future issue: the A177r8 draft does not, but a
-draft is not a plan of record, and the question belongs to DVB.
+Three limits are worth stating. DVB BlueBook C100 is not held by the authors: the requirements are
+quoted as TR 103 972 reproduces them in its tables 6.2.1-1, 6.3.1-1 and 6.4.1-1, and the numbering
+is C100's. ETSI TS 126 347 is not held either, so TS 103 770 clause 9.3.2's reference to its clause
+6.2, the form of the `mbms://` scheme and the MBMS Client API are taken from TS 103 770's
+description of them rather than checked at source. And nothing here establishes whether DVB intends
+to close the remaining gaps in a future issue: the A177r8 draft does not, but a draft is not a plan
+of record, and the question belongs to DVB.
 :::
 
 ## Related
