@@ -1,6 +1,16 @@
 {
-  "updated_at": "2026-09-10T21:00:27.356Z",
+  "updated_at": "2026-09-15T12:13:19.891Z",
   "posts": [
+    {
+      "title": "Future Media Townhall 2026 — Speaker Slides Now Available",
+      "date": "2026-09-15",
+      "slug": "fmt-2026-slides-available",
+      "tags": [
+        "Announcement"
+      ],
+      "image": "/assets/images/news/fmt-2026-slides-available.png",
+      "excerpt": "The Future Media Townhall took place on Saturday 12 September 2026 at IBC, RAI Amsterdam — and the speaker slides from every session are now available to download on the [event page](/fmt)."
+    },
     {
       "title": "Introducing the 5GMAGazine",
       "date": "2026-09-10",

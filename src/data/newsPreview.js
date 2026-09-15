@@ -57,4 +57,10 @@ export const NEWS_PREVIEW = [
     href: '/news/5gmagazine-launch',
     image: '/assets/images/news/magazine-launch-issue-01.jpg',
   },
+  {
+    date: '2026-09-15',
+    title: 'Future Media Townhall 2026 — Speaker Slides Now Available',
+    href: '/news/fmt-2026-slides-available',
+    image: '/assets/images/news/fmt-2026-slides-available.png',
+  },
 ];
