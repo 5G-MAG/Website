@@ -1,0 +1,61 @@
+---
+title: 'Showcase: Seamless Unicast/Broadcast Switching'
+sidebar_position: 1
+hide_title: true
+description: An Android device plays a live stream over 5G Broadcast and falls back automatically to unicast the moment the broadcast signal disappears, with no visible interruption.
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18.364 19.364a9 9 0 1 0 -12.728 0"/><path d="M15.536 16.536a5 5 0 1 0 -7.072 0"/><path d="M11 13a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Showcase</span>
+<h1>Seamless Unicast/Broadcast Switching</h1>
+</div>
+</div>
+
+<div class="topic-lead">
+An Android device plays a live stream over 5G Broadcast, and falls back automatically to unicast the moment the broadcast signal disappears — with no visible interruption to the media player.
+</div>
+
+<div style={{display: 'flex', gap: '1rem', flexWrap: 'wrap', margin: '1.5rem 0'}}>
+<img loading="lazy" src={useBaseUrl('/assets/images/5gbc/5gbc-playback.png')} alt="Android device playing the stream over 5G Broadcast, labelled 5GBC" style={{flex: '1 1 240px', maxWidth: '280px', borderRadius: '12px'}} />
+<img loading="lazy" src={useBaseUrl('/assets/images/5gbc/5guc-playback.png')} alt="The same Android device after falling back to unicast delivery, labelled CDN" style={{flex: '1 1 240px', maxWidth: '280px', borderRadius: '12px'}} />
+</div>
+<p style={{fontSize: '0.85rem', color: 'var(--ifm-color-emphasis-700)', marginTop: '-0.75rem'}}><em>Same device, same stream — left: playing over 5G Broadcast (labelled 5GBC); right: after the broadcast signal drops, automatically switched to unicast (labelled CDN). Both from the real tutorial run.</em></p>
+
+## The problem this solves
+
+5G Broadcast delivers TV and radio to an unlimited number of devices over a free-to-air signal, at a fixed cost regardless of audience size — but only within coverage. Step outside the transmission area, or lose the signal for any reason, and a broadcast-only receiver simply stops. This showcase demonstrates the alternative: a receiver that treats broadcast as the primary path and unicast as an automatic, invisible fallback, so viewers keep watching either way.
+
+## Who this is for
+
+Broadcasters and mobile network operators evaluating whether 5G Broadcast can be deployed without the usual "what happens at the edge of coverage" objection, and device or middleware vendors who need a concrete reference for building that same fallback behaviour into their own receivers.
+
+## How it works
+
+<img loading="lazy" src={useBaseUrl('/assets/images/5gbc/android-seamless-switching-architecture.png')} alt="Architecture of the Android seamless-switching setup: ffmpeg and flute-ffmpeg feed the 5G Broadcast transmitter, while the Android Middleware receives over broadcast or falls back to unicast" style={{width: '100%', borderRadius: '12px', margin: '1rem 0'}} />
+
+1. `ffmpeg` turns a plain video file into an HLS stream, written to a watchfolder on a simple webserver — this is the same content also reachable directly over unicast (it's a normal CDN node).
+2. `flute-ffmpeg` (built on 5G-MAG's `rt-libflute`) watches that folder and FLUTE-encodes every new file as multicast traffic, handed off to the 5G Broadcast transmitter (`rt-mbms-tx-for-qrd-and-crd`, an srsRAN-based eNB/EPC/MBMS gateway stack).
+3. The 5G-MAG Android Middleware (`rt-mbms-mw-android`), running on a QRD or CRD receiver, receives those files over broadcast and exposes them to the device's own media player (Exoplayer) through a local webserver.
+4. The player only ever talks to `localhost` — it has no idea whether the file it just requested arrived over broadcast or unicast.
+5. When the broadcast signal disappears, the Middleware detects this and starts fetching the same manifest and media files over unicast from the webserver in step 1 instead, still serving them to the player from that same local address. The switch is invisible to the player.
+
+**Built from:** [5G Broadcast - TV and Radio Services](/reference-tools/5g-broadcast/).
+
+## Try it yourself
+
+Follow the [step-by-step tutorial](/reference-tools/5g-broadcast/tutorials/android-mw-seamless-switching) to set up the transmitter, webserver and Android Middleware, and reproduce this switch yourself. It builds on the simpler [SDR - HLS Playback over 5G Broadcast](/reference-tools/5g-broadcast/tutorials/hls-playback-5gbc) tutorial if you want the receiver-only setup first.
+
+:::note[Status]
+The screenshots above and the tutorial's own instructions are the only record of this working; no explicit "last verified against version X" statement exists in the source tutorial to repeat here, so none is claimed.
+:::
+
+## Related
+
+- [5G Broadcast for TV, Radio and Emergency Alerts](/applications/5g-broadcast) for the other 5G Broadcast application scenarios.
+- [Reference Tools](/reference-tools) for the individual specification implementations.

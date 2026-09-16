@@ -45,7 +45,7 @@ An Android device plays a live stream delivered over 5G Broadcast, and falls bac
 
 **Built from:** [5G Broadcast - TV and Radio Services](/reference-tools/5g-broadcast/).
 
-Follow the [step-by-step guide](/reference-tools/5g-broadcast/tutorials/android-mw-seamless-switching) to set up the transmitter, webserver and Android Middleware, and see the switch yourself.
+See the [full showcase](./5g-broadcast/seamless-switching), with screenshots of the actual switch, or go straight to the [step-by-step guide](/reference-tools/5g-broadcast/tutorials/android-mw-seamless-switching) to set it up yourself.
 
 ## Related
 
