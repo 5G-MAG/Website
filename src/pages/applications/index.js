@@ -244,7 +244,7 @@ export default function Applications() {
           <div className="topic-banner__icon-wrap">{icon(APPS_ICON_PATH)}</div>
           <div className="topic-banner__text">
             <span className="topic-banner__kicker">Software Accelerator</span>
-            <h1>Application Prototypes</h1>
+            <h1>Application Showcases</h1>
           </div>
         </div>
         <p className="topic-lead">Curated combinations of Reference Tools assembled into a working service to show value when applied to a use case.</p>

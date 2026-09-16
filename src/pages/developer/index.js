@@ -29,7 +29,11 @@ const DEV_HERO_ICON_PATH = (
 
 // Labels and descriptions sourced from the 5G-MAG Portfolio Slides (slide 9:
 // "The Media Connectivity Software Accelerator") rather than written from
-// scratch.
+// scratch -- except Applications' own label, deliberately changed from the
+// deck's "Application Prototypes" (2026-09-16): every page under this
+// product type is a real, working, already-built scenario, not a
+// prototype-stage one, so that word undersold what the section actually
+// shows.
 const PRODUCT_TYPES = [
   {
     icon: 'Reference Tools',
@@ -45,7 +49,7 @@ const PRODUCT_TYPES = [
   },
   {
     icon: 'Applications',
-    label: 'Application Prototypes',
+    label: 'Application Showcases',
     description: 'Use-case driven implementations towards real-world applications.',
     href: '/applications',
   },
@@ -201,7 +205,7 @@ export default function Home() {
           <div className="container">
             <h2 className={styles.sectionTitle}>What You&apos;ll Find Here</h2>
             <p className={styles.sectionSubtitle}>
-              Reference Tools, Testbeds and Evaluation Tools, and Application Prototypes — under
+              Reference Tools, Testbeds and Evaluation Tools, and Application Showcases — under
               one open developer community. New here? See{' '}
               <Link to="/community/using-this-documentation">Using this Documentation</Link> for
               how a project&apos;s Scope, Resources and Tutorials pages fit together, and a suggested
