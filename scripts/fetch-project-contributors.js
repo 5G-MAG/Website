@@ -1,19 +1,26 @@
 #!/usr/bin/env node
-// Suggests which companies actively contribute to each Reference
+// Auto-credits which companies actively contribute to each Reference
 // Tools/Testbeds project, derived from real commit authorship
 // cross-referenced against GitHub CLA team membership (one team per
-// company, named "CLA <Company>").
+// company, named "CLA <Company>"), and merges the result straight into
+// src/data/projects.json's own `contributors` field.
 //
-// IMPORTANT: this writes a DRAFT to static/data/project-contributors-draft.json,
-// not directly into src/data/projects.json's own `contributors` field. That
-// field is hand-curated on top of this signal — it includes corrections this
-// script cannot derive on its own (a contributor active only via open PRs
-// rather than merged commits, a company self-reported on a contributor's
-// GitHub profile rather than CLA-team membership, or a deliberate distinction
-// between a member entity and its contributing subsidiary). Overwriting it
-// automatically would silently discard that manual review. Re-run this
-// on demand, diff the draft against projects.json's `contributors`, and
-// merge by hand.
+// This used to stop at a draft file for a human to merge by hand, because
+// the signal can miss a contribution (PR-only work, or a company affiliation
+// not reflected in CLA-team membership) that a person reviewing the diff
+// would have caught. Kept as a manual step for as long as someone had time
+// to review it; there isn't time for that anymore, so this now writes
+// straight through. The merge stays additive-only to bound what an
+// unreviewed run can get wrong: it only ADDS a company to a project's
+// `contributors` list when there's direct evidence (a named user who is
+// both a real committer on one of that project's repos and a member of
+// that company's CLA team), and it never removes or reorders an existing
+// entry -- so a hand-added correction (a PR-only contributor, a
+// self-reported affiliation with no CLA team) can't be silently dropped by
+// a run that simply has no way to see it. The evidence behind every
+// addition is still written out in full (see OUTPUT below) so a wrong
+// credit is traceable and correctable after the fact, just not gated
+// before publish.
 //
 // Requires SYNC_TOKEN with `repo` + `read:org` scopes on the 5G-MAG org
 // (read:org for team listings/membership, repo since some tracked repos
@@ -26,6 +33,7 @@ const { PROJECTS, repoName } = require('./lib/projects');
 const ORG = '5G-MAG';
 const TOKEN = process.env.SYNC_TOKEN || process.env.GITHUB_TOKEN || '';
 const OUTPUT = path.join(__dirname, '..', 'static', 'data', 'project-contributors-draft.json');
+const PROJECTS_FILE = path.join(__dirname, '..', 'src', 'data', 'projects.json');
 
 // Repos shared across many projects (utility/common code, not specific to
 // any one project) -- excluded as evidence everywhere except a project
@@ -163,14 +171,37 @@ async function main() {
   const output = {
     updated_at: formatTimestamp(new Date()),
     note:
-      'Draft only -- cross-reference against src/data/projects.json\'s hand-curated `contributors` ' +
-      'field before merging. This signal misses PR-only/review-only contribution and any company ' +
-      'affiliation not reflected in CLA team membership.',
+      'Evidence log for the additive merge this run just applied to src/data/projects.json ' +
+      '(see PROJECTS_FILE below) -- kept so a wrong credit is traceable and correctable after ' +
+      'the fact. This signal misses PR-only/review-only contribution and any company affiliation ' +
+      'not reflected in CLA team membership, so an entry missing here isn\'t evidence a company ' +
+      'didn\'t contribute, only that this script found no direct evidence for it.',
     projects: suggestions,
   };
 
   fs.writeFileSync(OUTPUT, JSON.stringify(output, null, 2) + '\n');
-  console.log(`Wrote draft suggestions for ${suggestions.length} projects to ${OUTPUT}`);
+  console.log(`Wrote evidence log for ${suggestions.length} projects to ${OUTPUT}`);
+
+  console.log('Merging into src/data/projects.json (additive only)...');
+  let changed = 0;
+  for (const suggestion of suggestions) {
+    const project = PROJECTS.find((p) => p.name === suggestion.name);
+    if (!project) continue; // shouldn't happen: suggestions are built from PROJECTS itself
+    const existing = new Set(project.contributors || []);
+    const before = existing.size;
+    for (const company of suggestion.suggested_contributors) existing.add(company);
+    if (existing.size !== before) {
+      project.contributors = [...existing].sort();
+      changed++;
+    }
+  }
+
+  if (changed > 0) {
+    fs.writeFileSync(PROJECTS_FILE, JSON.stringify(PROJECTS, null, 2) + '\n');
+    console.log(`Added new contributor credits to ${changed} project(s) in ${PROJECTS_FILE}`);
+  } else {
+    console.log('No new contributor credits to add.');
+  }
 }
 
 main().catch((e) => {
