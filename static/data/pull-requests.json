@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-15 01:59 UTC",
+  "updated_at": "2026-09-16 01:50 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -225,19 +225,6 @@
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-08-23",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-mbs-function",
-          "branch": null,
-          "number": 51,
-          "title": "Bug-fix: Pass ingest URL from MBSTF to MBS AP when using object PUSH mode",
-          "url": "https://github.com/5G-MAG/rt-mbs-function/pull/51",
-          "draft": false,
-          "author_login": "davidjwbbc",
-          "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4",
-          "created_at": "2026-08-21",
           "last_comment_by": null,
           "last_comment_date": null
         },
