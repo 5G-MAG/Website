@@ -39,24 +39,52 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Issues
 
-<div style={{ display: 'flex', flexDirection: 'column', gap: '16px', margin: '16px 0' }}>
+{/*
+  ISSUE TEMPLATE — copy this whole block above the previous one for each
+  new issue (newest first, matching podcast.mdx's own episode list):
 
-<div>
-<p style={{ margin: '0 0 4px', fontWeight: 600 }}>Issue #1</p>
-<a href={useBaseUrl('/magazine/5G-MAGazine-Issue-01.pdf')} target="_blank" rel="noreferrer">
-  Read Issue #1 full screen &rarr;
+  <div class="magazine-issue">
+  <div class="event-post-grid">
+  <a class="event-post-card event-post-card--portrait" href={useBaseUrl('/magazine/<FILENAME>.pdf')} target="_blank" rel="noreferrer">
+  <img loading="lazy" src={useBaseUrl('/assets/images/magazine/<cover-image>.jpg')} alt="<issue cover description>" />
+  <span class="event-post-title">Issue #<N> — <headline></span>
+  </a>
+  </div>
+  <div class="magazine-issue__summary">
+  <strong>What's inside:</strong>
+  <ul>
+  <li><one line per real featured section, 3-5 items></li>
+  </ul>
+  <a href={useBaseUrl('/magazine/<FILENAME>.pdf')} target="_blank" rel="noreferrer">Open full screen &rarr;</a>
+  </div>
+  </div>
+*/}
+
+<div class="magazine-issue">
+
+<div class="event-post-grid">
+
+<a class="event-post-card event-post-card--portrait" href={useBaseUrl('/magazine/5G-MAGazine-Issue-01.pdf')} target="_blank" rel="noreferrer">
+<img loading="lazy" src={useBaseUrl('/assets/images/magazine/issue-01-cover.jpg')} alt="5G-MAGazine, Issue 01, September 2026 cover: 'From Spec to Screen — Release 19: Advanced Media Delivery'" />
+<span class="event-post-title">Issue #1 — From Spec to Screen: Release 19, Advanced Media Delivery</span>
 </a>
-<div class="pdf-embed-wrapper">
-  <iframe loading="lazy" className="pdf-embed pdf-embed--reader" src={useBaseUrl('/magazine/5G-MAGazine-Issue-01.pdf')} title="5G-MAG Magazine, Issue #1" />
+
 </div>
-<a
-  className="button button--sm button--outline button--primary"
-  href={useBaseUrl('/magazine/5G-MAGazine-Issue-01.pdf')}
-  target="_blank"
-  rel="noopener noreferrer"
->
-  Download Issue #1 (PDF)
-</a>
+
+<div class="magazine-issue__summary">
+
+**What's inside:**
+
+- **Release 19 deep dives** — CMCD (giving the 5G media system a view from the player), CMMF multi-source streaming, real-time communication in 3GPP Release 19, and split rendering for XR over IMS
+- **Launching the Media Connectivity Software Accelerator**, plus its debut at IBC and the 6G Testbed's AI traffic characterization work
+- **News from the community** — a new Chair, the first 5G Broadcast PlugFest in Berlin, and 5G-MAG at MWC Shanghai and ESA's NTN Forum
+- **Developers' Corner** — the DVB-NIP Analyser Tool, mobile network analysis with OMNT, and The Handshake podcast
+- **The Connected Media Calendar** — what to watch over the next six months
+
+<a href={useBaseUrl('/magazine/5G-MAGazine-Issue-01.pdf')} target="_blank" rel="noreferrer">Open full screen &rarr;</a>
+
 </div>
 
 </div>
+
+Want to know as soon as the next issue is out? [Subscribe for updates](/subscribe).

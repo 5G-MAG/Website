@@ -571,6 +571,57 @@
   aspect-ratio: 16 / 9;
   object-fit: cover;
 }
+/* Modifier for portrait media (magazine covers, A4 documents): the shared
+   16/9 + cover rule above crops the top and bottom off a portrait page,
+   losing the cover art that actually identifies the issue. object-fit:
+   contain on a tinted backdrop shows the whole page instead, sized to a
+   fixed height so mixed portrait/landscape cards in the same grid still
+   line up. */
+.event-post-card--portrait img {
+  aspect-ratio: auto;
+  height: 320px;
+  width: 100%;
+  object-fit: contain;
+  background: var(--ifm-color-emphasis-100);
+  padding: 0.75rem 0;
+}
+
+/* Magazine issue block (magazine.mdx): the cover card sits beside its own
+   "what's inside" summary rather than in a grid of its own, since each
+   issue is a one-off feature, not one of many same-shaped items. Cover
+   width is fixed so the summary column doesn't reflow every time a wider
+   cover image resizes it. */
+.magazine-issue {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin: 1.5rem 0 2.5rem;
+}
+.magazine-issue .event-post-grid {
+  flex: 0 0 240px;
+  margin: 0;
+}
+.magazine-issue__summary {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.magazine-issue__summary ul {
+  margin: 0.5rem 0 1rem;
+  padding-left: 1.2rem;
+}
+.magazine-issue__summary li {
+  margin-bottom: 0.4rem;
+}
+@media (max-width: 700px) {
+  .magazine-issue {
+    flex-direction: column;
+  }
+  .magazine-issue .event-post-grid {
+    flex-basis: auto;
+    max-width: 280px;
+  }
+}
+
 .event-post-card .event-post-title {
   display: block;
   padding: 0.85rem 1rem;
