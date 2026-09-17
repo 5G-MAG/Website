@@ -8,6 +8,7 @@ description: Reference player and server for eXtended Reality (XR) content deliv
 
 import CommunityStats from '@site/src/components/CommunityStats';
 import ProjectContributors from '@site/src/components/ProjectContributors';
+import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
@@ -35,43 +36,64 @@ Reference player and server for eXtended Reality (XR) content delivered over 5G 
 </div>
 <div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/xr/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/xr/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/xr/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/xr/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
+## What it does
+
 The tools enable delivery of dynamic 3D scenes composed of [glTF](/tech/glossary) (GL Transmission Format) objects, spatial audio, and haptic elements, transported via the 5G Media Streaming ([5GMS](/tech/glossary)) framework ([TS 26.512](https://www.3gpp.org/dynareport/26512.htm)). Designed for developers exploring immersive media delivery and XR experiences on 5G devices and platforms.
 
-**Implemented specifications:** ISO/IEC 23090-14 (MPEG-I Scene Description, the format that describes how 3D objects, media and audio are composed into a scene), plus the MPEG glTF 2.0 extensions listed on [Scope](./scope). 3GPP [TR 26.928](https://www.3gpp.org/dynareport/26928.htm) (Extended Reality (XR) in 5G) is the background study of use cases and requirements this work responds to, not a specification the tools implement; TS 26.512 (5GMS transport) is explicitly out of scope today (see [Scope](./scope) for the detail).
+## Under the hood
 
 <img loading="lazy" src={useBaseUrl('/assets/images/xr/volumetric-capture-demo.jpg')} alt="Volumetric capture demo running on the 5G-MAG Reference Tools" style={{width: '100%', maxWidth: '500px', display: 'block', margin: '1rem auto', borderRadius: '12px'}} />
+
+<em>Volumetric capture demo running on the 5G-MAG Reference Tools.</em>
+
+## Repositories
+
+<ProjectRepositories project="xr" />
+
+## Standards implemented
+
+<div class="standard-card-row">
+<div class="standard-card">
+<img src={useBaseUrl('/assets/logos/MPEG.png')} alt="MPEG" />
+<span class="standard-card__label">ISO/IEC 23090-14</span>
+</div>
+</div>
+
+ISO/IEC 23090-14 (MPEG-I Scene Description, the format that describes how 3D objects, media and audio are composed into a scene), plus the MPEG glTF 2.0 extensions listed on [Scope](./scope). 3GPP [TR 26.928](https://www.3gpp.org/dynareport/26928.htm) (Extended Reality (XR) in 5G) is the background study of use cases and requirements this work responds to, not a specification the tools implement; TS 26.512 (5GMS transport) is explicitly out of scope today (see [Scope](./scope) for the detail).
+
+See [XR on the Standards portal](/standards/xr) for version history and 5G-MAG's own standards contributions.
 
 ## Contributors
 
 <ProjectContributors name="XR/3D Scenes with MPEG-I Scene Description" />
 
-## Project Overview
-
-The slide deck below introduces the project: what XR media with MPEG-I Scene Description is, the reference tools involved, and how they fit together over 5G.
-
-<div class="pdf-embed-wrapper">
-  <iframe loading="lazy" class="pdf-embed" src={useBaseUrl('/docs/Reference_Tools_XR_Media_MPEG_I_SD.pdf')} title="XR Media MPEG-I Scene Description: project overview slide deck"></iframe>
-</div>
-
-<a class="button button--outline button--primary" href={useBaseUrl('/docs/Reference_Tools_XR_Media_MPEG_I_SD.pdf')} style={{margin: '4px 0'}}>Download the slide deck of this Project</a>
-
----
-
-## Go deeper
-
-| Area                        | Details                                                                                |
-| --------------------------- | -------------------------------------------------------------------------------------- |
-| **Technical documentation** | MPEG-I Scene Description overview and analysis: [XR on the Tech portal](/tech/xr)      |
-| **Standards**               | ISO/IEC 23090-14, 3GPP XR work items: [XR on the Standards portal](/standards/xr) |
-| **Applications**            | Real, assembled scenarios built on this tool: [Immersive Media Experiences](/applications/volumetric) |
-
-<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
-
-## Developer Exchange
-
-<ProjectVideos videos={projectVideos} name="XR/3D Scenes with MPEG-I Scene Description" />
-
 ## Community Stats
 
 <CommunityStats name="XR/3D Scenes with MPEG-I Scene Description" />
 
+---
+
+## Try it yourself
+
+Follow the [tutorials](/reference-tools/xr/tutorials) to build the chain yourself, or jump to the [Immersive Media Experiences showcase](/applications/volumetric) to see one assembled scenario already running.
+
+<div class="event-post-grid">
+
+<a class="event-post-card" href={useBaseUrl('/docs/Reference_Tools_XR_Media_MPEG_I_SD.pdf')} target="_blank" rel="noreferrer">
+<img loading="lazy" src={useBaseUrl('/assets/images/projects/xr-slides-cover.jpg')} alt="XR/3D Scenes with MPEG-I Scene Description slide deck cover" />
+<span class="event-post-title">Slide deck: XR/3D Scenes with MPEG-I Scene Description overview</span>
+</a>
+
+</div>
+
+<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
+
+See the Reference Tools in action, with a community video from the tutorials page.
+
+<ProjectVideos videos={projectVideos} name="XR/3D Scenes with MPEG-I Scene Description" />
+
+| Area                        | Details                                                                                                |
+| --------------------------- | ------------------------------------------------------------------------------------------------------- |
+| **Technical documentation** | MPEG-I Scene Description overview and analysis: [XR on the Tech portal](/tech/xr)                      |
+| **Standards**               | ISO/IEC 23090-14, 3GPP XR work items: [XR on the Standards portal](/standards/xr)                      |
+| **Applications**            | Real, assembled scenarios built on this tool: [Immersive Media Experiences](/applications/volumetric)  |

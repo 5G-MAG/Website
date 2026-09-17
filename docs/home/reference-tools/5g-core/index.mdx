@@ -7,6 +7,7 @@ description: Overview of the reference implementation for media applications tha
 ---
 import CommunityStats from '@site/src/components/CommunityStats';
 import ProjectContributors from '@site/src/components/ProjectContributors';
+import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
@@ -32,9 +33,28 @@ Reference implementation for media applications that consume 5G Core (5GC) netwo
 </div>
 <div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5g-core/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5g-core/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5g-core/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5g-core/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
+## What it does
+
 The tools demonstrate how a media application server interacts with the 5G Core (the Policy Control Function (PCF) and Binding Support Function (BSF)) to request network resources dynamically.
 
 This project ships as a set of reusable service consumer libraries, and each library comes with a runnable command-line tool that demonstrates it.
+
+## Under the hood
+
+*A demo photo for this project isn't available yet.*
+
+## Repositories
+
+<ProjectRepositories project="5g-core" />
+
+## Standards implemented
+
+<div class="standard-card-row">
+<div class="standard-card">
+<img src={useBaseUrl('/assets/images/partnerships/3gpp-logo.png')} alt="3GPP" />
+<span class="standard-card__label">3GPP</span>
+</div>
+</div>
 
 **Implemented specifications:** 3GPP [TS 29.214](https://www.3gpp.org/dynareport/29214.htm) (Policy and Charging Control Rx interface), [TS 29.513](https://www.3gpp.org/dynareport/29513.htm) (Policy and Charging function interactions), [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) (5GMS AF interactions with the 5G Core).
 
@@ -42,32 +62,30 @@ This project ships as a set of reusable service consumer libraries, and each lib
 
 <ProjectContributors name="5G Core Service Consumers" />
 
-## Project Overview
+## Community Stats
 
-The slide deck below introduces the 5GC Service Consumer libraries and how a media application uses them.
-
-<div class="pdf-embed-wrapper">
-  <iframe loading="lazy" class="pdf-embed" src={useBaseUrl('/docs/Reference_Tools_5GC_Service_Consumers.pdf')} title="5G Core Service Consumers reference tools overview slide deck"></iframe>
-</div>
-
-<a class="button button--outline button--primary" href={useBaseUrl('/docs/Reference_Tools_5GC_Service_Consumers.pdf')} style={{margin: '4px 0'}}>Download the slide deck of this Project</a>
+<CommunityStats name="5G Core Service Consumers" />
 
 ---
 
-## Go deeper
+## Try it yourself
+
+Follow the [tutorials](/reference-tools/5g-core/tutorials) to run the service consumer libraries and their command-line tools yourself.
+
+<div class="event-post-grid">
+
+<a class="event-post-card" href={useBaseUrl('/docs/Reference_Tools_5GC_Service_Consumers.pdf')} target="_blank" rel="noreferrer">
+<img loading="lazy" src={useBaseUrl('/assets/images/projects/5g-core-slides-cover.jpg')} alt="5G Core Service Consumers slide deck cover" />
+<span class="event-post-title">Slide deck: 5G Core Service Consumers overview</span>
+</a>
+
+</div>
+
+<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
+
+<ProjectVideos videos={projectVideos} name="5G Core Service Consumers" />
 
 | Area                | Details                                                                                                                                                                                                        |
 | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Standards**       | 5G Core service interfaces for media (BSF, PCF): [5G Media Streaming on the Standards portal](/standards/5gms); for the MB-SMF interface, see [5G Multicast & Broadcast Services](/standards/5g-mbs) |
 | **Related project** | 5GMS Application Function (AF) tools: [5G Media Streaming (5GMS)](../5gms)                                                                                                                                            |
-
-<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
-
-## Developer Exchange
-
-<ProjectVideos videos={projectVideos} name="5G Core Service Consumers" />
-
-## Community Stats
-
-<CommunityStats name="5G Core Service Consumers" />
-

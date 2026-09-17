@@ -7,6 +7,7 @@ description: Landing page for the 5G MBS reference tools (3GPP Rel-17/18), linki
 ---
 import CommunityStats from '@site/src/components/CommunityStats';
 import ProjectContributors from '@site/src/components/ProjectContributors';
+import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
@@ -33,29 +34,61 @@ Reference implementation of the 5G Multicast Broadcast Services (MBS) user servi
 </div>
 <div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5g-mbs/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5g-mbs/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5g-mbs/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5g-mbs/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
+## What it does
+
 Unlike LTE-based 5G Broadcast (evolved Multimedia Broadcast Multicast Service, eMBMS), 5G MBS is natively integrated into the 5G Core (5GC) and New Radio (NR) Radio Access Network (RAN), enabling efficient point-to-multipoint delivery of live TV, software updates, and emergency information. The tools cover MBS service announcements, session management, and media delivery over the broadcast delivery mode, as defined in [TS 26.502](https://www.3gpp.org/dynareport/26502.htm), though the chain does not yet run fully end-to-end on real RAN hardware or software radio today; the multicast delivery mode's MB-SMF/MB-UPF data path already exists, but its session-join control plane does not yet (see [Scope](./scope) for the detail on both).
 
 If you are looking for the LTE-based, free-to-air broadcast implementation (a separate, similarly named area), see the [5G Broadcast](../5g-broadcast) reference tools instead.
 
+## Under the hood
+
+*A demo photo for this project isn't available yet.*
+
+## Repositories
+
+<ProjectRepositories project="5g-mbs" />
+
+## Standards implemented
+
+<div class="standard-card-row">
+<div class="standard-card">
+<img src={useBaseUrl('/assets/images/partnerships/3gpp-logo.png')} alt="3GPP" />
+<span class="standard-card__label">3GPP</span>
+</div>
+</div>
+
 **Implemented specifications:** 3GPP TS 26.502 (MBS user services), [TS 23.247](https://www.3gpp.org/dynareport/23247.htm) (MBS architecture and functional description), [TS 38.300](https://www.3gpp.org/dynareport/38300.htm) (NR overall description, RAN broadcast procedures), TS 29.580 (MBSF services, Nmb10), TS 29.581 (MBSTF services, Nmb2/Nmb8/Nmb9), TS 29.532 (MB-SMF services, Nmbsmf_TMGI/Nmbsmf_MBSSession).
+
+See [5G Multicast Broadcast Services (MBS) on the Standards portal](/standards/5g-mbs) for version history and 5G-MAG's own standards contributions.
 
 ## Contributors
 
 <ProjectContributors name="5G Multicast Broadcast Services (MBS)" />
 
-## Project Overview
+## Community Stats
 
-The slide deck below introduces the 5G MBS reference tools, their architecture and the specifications they implement.
-
-<div class="pdf-embed-wrapper">
-  <iframe loading="lazy" class="pdf-embed" src={useBaseUrl('/docs/Reference_Tools_5G_Multicast_Broadcast.pdf')} title="5G Multicast Broadcast Services reference tools overview slide deck"></iframe>
-</div>
-
-<a class="button button--outline button--primary" href={useBaseUrl('/docs/Reference_Tools_5G_Multicast_Broadcast.pdf')} style={{margin: '4px 0'}}>Download the slide deck of this Project</a>
+<CommunityStats name="5G Multicast Broadcast Services (MBS)" />
 
 ---
 
-## Go deeper
+## Try it yourself
+
+Follow the [tutorials](/reference-tools/5g-mbs/tutorials) to build the chain yourself, or jump to the [MBS End-to-End Delivery Demo](/applications/streaming#mbs-end-to-end-delivery-demo) to see one assembled scenario already running.
+
+<div class="event-post-grid">
+
+<a class="event-post-card" href={useBaseUrl('/docs/Reference_Tools_5G_Multicast_Broadcast.pdf')} target="_blank" rel="noreferrer">
+<img loading="lazy" src={useBaseUrl('/assets/images/projects/5g-mbs-slides-cover.jpg')} alt="5G Multicast Broadcast Services (MBS) slide deck cover" />
+<span class="event-post-title">Slide deck: 5G Multicast Broadcast Services (MBS) overview</span>
+</a>
+
+</div>
+
+<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
+
+See the reference tools in action in this community video.
+
+<ProjectVideos videos={projectVideos} name="5G Multicast Broadcast Services (MBS)" />
 
 | Area                        | Details                                                                                                                           |
 | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -63,16 +96,4 @@ The slide deck below introduces the 5G MBS reference tools, their architecture a
 | **Standards**               | Normative specs and 5G-MAG contributions: [5G Multicast Broadcast Services (MBS) on the Standards portal](/standards/5g-mbs) |
 | **Applications**            | Real, assembled scenarios built on this tool: [MBS End-to-End Delivery Demo](/applications/streaming#mbs-end-to-end-delivery-demo) |
 | **Implementation Blueprints** | The step-by-step procedures this tool implements: [MBS Broadcast RAN acquisition](/tech/5g-mbs/analysis-mbs-broadcast-ran#implementation-blueprint), [MBS Multicast RRC_INACTIVE RAN acquisition](/tech/5g-mbs/analysis-mbs-multicast-inactive-ran#implementation-blueprint), [MBS Multicast mobility](/tech/5g-mbs/mobility-mbs-multicast#implementation-blueprint), [MBS Service Layer provisioning-to-announcement](/tech/5g-mbs/mbs-service-layer#implementation-blueprint) |
-
-<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
-
-## Developer Exchange
-
-See the reference tools in action in this community video.
-
-<ProjectVideos videos={projectVideos} name="5G Multicast Broadcast Services (MBS)" />
-
-## Community Stats
-
-<CommunityStats name="5G Multicast Broadcast Services (MBS)" />
 

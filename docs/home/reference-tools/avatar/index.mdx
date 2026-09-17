@@ -7,6 +7,7 @@ description: Introduces the Avatar Communication project's MPEG ARF reference to
 ---
 import CommunityStats from '@site/src/components/CommunityStats';
 import ProjectContributors from '@site/src/components/ProjectContributors';
+import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
@@ -37,41 +38,64 @@ Reference tools for real-time conversational avatar systems in 5G contexts, targ
 </div>
 <div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/avatar/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/avatar/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/avatar/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/avatar/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
+## What it does
+
 Avatars are synthesised digital representations of participants, animated in real time from audio and video input, enabling immersive video calls and virtual presence experiences. The 5G-MAG implementation provides codec, rendering, and streaming tools for avatar communications over 5G networks.
 
-**Key specifications:** ISO/IEC 23090-39 (MPEG Avatar Representation Format, ARF, not yet a published International Standard — see [Scope](./scope) for its current stage), 3GPP [TR 26.813](https://www.3gpp.org/dynareport/26813.htm) (Avatar Representation and Communication, the FS_AVATAR study item, completed in Release 19).
+## Under the hood
+
+*A demo photo for this project isn't available yet.*
+
+## Repositories
+
+<ProjectRepositories project="avatar" />
+
+## Standards implemented
+
+<div class="standard-card-row">
+<div class="standard-card">
+<img src={useBaseUrl('/assets/logos/MPEG.png')} alt="MPEG" />
+<span class="standard-card__label">ISO/IEC 23090-39</span>
+</div>
+<div class="standard-card">
+<img src={useBaseUrl('/assets/images/partnerships/3gpp-logo.png')} alt="3GPP" />
+<span class="standard-card__label">3GPP</span>
+</div>
+</div>
+
+ISO/IEC 23090-39 (MPEG Avatar Representation Format, ARF, not yet a published International Standard — see [Scope](./scope) for its current stage), 3GPP [TR 26.813](https://www.3gpp.org/dynareport/26813.htm) (Avatar Representation and Communication, the FS_AVATAR study item, completed in Release 19).
+
+See [Conversational Avatar Communication with MPEG ARF on the Standards portal](/standards/avatar) for version history and 5G-MAG's own standards contributions.
 
 ## Contributors
 
 <ProjectContributors name="Conversational Avatar Communication with MPEG ARF" />
 
-## Project Overview
+## Community Stats
 
-The slide deck below introduces the Avatar Communication reference tools: the MPEG Avatar Representation Format (ARF), how an avatar is captured, carried, and rendered over a 5G path, and how the components fit together. For scope, code, and releases, use the buttons above.
-
-<div class="pdf-embed-wrapper">
-  <iframe loading="lazy" class="pdf-embed" src={useBaseUrl('/docs/Reference_Tools_Avatar.pdf')} title="Avatar Communication with MPEG ARF project overview slide deck"></iframe>
-</div>
-
-<a class="button button--outline button--primary" href={useBaseUrl('/docs/Reference_Tools_Avatar.pdf')} style={{margin: '4px 0'}}>Download the slide deck of this Project</a>
+<CommunityStats name="Conversational Avatar Communication with MPEG ARF" />
 
 ---
 
-## Go deeper
+## Try it yourself
+
+Follow the [tutorials](/reference-tools/avatar/tutorials) to get started. For scope, code, and releases, use the buttons above.
+
+<div class="event-post-grid">
+
+<a class="event-post-card" href={useBaseUrl('/docs/Reference_Tools_Avatar.pdf')} target="_blank" rel="noreferrer">
+<img loading="lazy" src={useBaseUrl('/assets/images/projects/avatar-slides-cover.jpg')} alt="Conversational Avatar Communication with MPEG ARF slide deck cover" />
+<span class="event-post-title">Slide deck: Conversational Avatar Communication with MPEG ARF overview</span>
+</a>
+
+</div>
+
+<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
+
+<ProjectVideos videos={projectVideos} name="Conversational Avatar Communication with MPEG ARF" />
 
 | Area                        | Details                                                                                                                       |
 | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | **Technical documentation** | Avatar communications architecture and 3GPP analysis: [Avatar Communications on the Tech portal](/tech/avatar-communications) |
 | **Standards**               | Avatar Representation Format and IVAS audio specifications: [Avatar Communication on the Standards portal](/standards/avatar) |
 | **Related project**         | MPEG-I Scene Description and XR delivery: [XR/3D Scenes with MPEG-I Scene Description](../xr)                                                 |
-
-<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
-
-## Developer Exchange
-
-<ProjectVideos videos={projectVideos} name="Conversational Avatar Communication with MPEG ARF" />
-
-## Community Stats
-
-<CommunityStats name="Conversational Avatar Communication with MPEG ARF" />
-

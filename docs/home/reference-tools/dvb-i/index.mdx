@@ -7,6 +7,7 @@ description: Overview of the DVB-I over 5G reference tools, combining DVB-I serv
 ---
 import CommunityStats from '@site/src/components/CommunityStats';
 import ProjectContributors from '@site/src/components/ProjectContributors';
+import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
@@ -30,27 +31,63 @@ Reference tools for delivering DVB-I (Digital Video Broadcasting Internet) servi
 </div>
 <div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/dvb-i/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/dvb-i/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/dvb-i/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/dvb-i/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
+## What it does
+
 DVB-I defines a common service discovery and selection framework that unifies IP-delivered TV services across access networks. The 5G-MAG implementation covers DVB-I service discovery and selection, and hands off to 5G-MAG's other reference tools for the actual 5G unicast (via 5G Media Streaming, 5GMS) and 5G Broadcast (via Further evolved Multimedia Broadcast Multicast Service, FeMBMS) delivery paths, enabling a seamless hybrid broadcast/broadband TV experience. The service list bootstrap step (via a Service List Registry) is not yet documented — see [Tutorials](./tutorials) for the current gap.
 
+## Under the hood
+
+*A demo photo for this project isn't available yet.*
+
+## Repositories
+
+<ProjectRepositories project="dvb-i" />
+
+## Standards implemented
+
+<div class="standard-card-row">
+<div class="standard-card">
+<img src={useBaseUrl('/assets/images/partnerships/dvb-logo.png')} alt="DVB" />
+<span class="standard-card__label">BlueBook A177 / TS 103 770</span>
+</div>
+<div class="standard-card">
+<img src={useBaseUrl('/assets/images/partnerships/3gpp-logo.png')} alt="3GPP" />
+<span class="standard-card__label">TS 26.512</span>
+</div>
+</div>
+
 **Implemented specifications:** DVB BlueBook A177 / ETSI TS 103 770 (DVB-I service discovery and selection). ETSI TS 103 720 (5G Broadcast) and 3GPP [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) (5GMS) are implemented by the sibling [5G Broadcast](../5g-broadcast/) and [5G Media Streaming](../5gms/) reference tools this project hands off to, not by this project itself — see [Scope](./scope).
+
+See [DVB-I on the Standards portal](/standards/dvb-i) for version history and 5G-MAG's own standards contributions.
 
 ## Contributors
 
 <ProjectContributors name="DVB-I Services over 5G Systems" />
 
-## Project Overview
+## Community Stats
 
-The slide deck below introduces the DVB-I over 5G project: its goals, the delivery paths it covers, and the reference architecture.
-
-<div class="pdf-embed-wrapper">
-  <iframe loading="lazy" class="pdf-embed" src={useBaseUrl('/docs/Reference_Tools_DVB_I_over_5G.pdf')} title="DVB-I over 5G: project overview slide deck"></iframe>
-</div>
-
-<a class="button button--outline button--primary" href={useBaseUrl('/docs/Reference_Tools_DVB_I_over_5G.pdf')} style={{margin: '4px 0'}}>Download the slide deck of this Project</a>
+<CommunityStats name="DVB-I Services over 5G Systems" />
 
 ---
 
-## Go deeper
+## Try it yourself
+
+Follow the [tutorials](./tutorials) to stand up a DVB-I-aware application, or read the [Scope](./scope) page for how the pieces fit together.
+
+<div class="event-post-grid">
+
+<a class="event-post-card" href={useBaseUrl('/docs/Reference_Tools_DVB_I_over_5G.pdf')} target="_blank" rel="noreferrer">
+<img loading="lazy" src={useBaseUrl('/assets/images/projects/dvb-i-slides-cover.jpg')} alt="DVB-I Services over 5G Systems slide deck cover" />
+<span class="event-post-title">Slide deck: DVB-I Services over 5G Systems overview</span>
+</a>
+
+</div>
+
+<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
+
+See the reference tools in action in this community video.
+
+<ProjectVideos videos={projectVideos} name="DVB-I Services over 5G Systems" />
 
 | Area                        | Details                                                                                      |
 | --------------------------- | -------------------------------------------------------------------------------------------- |
@@ -58,26 +95,8 @@ The slide deck below introduces the DVB-I over 5G project: its goals, the delive
 | **Standards**               | DVB-I and 5G delivery specifications: [DVB-I on the Standards portal](/standards/dvb-i) |
 | **Related project**         | Underlying broadcast transport: [5G Broadcast - TV and Radio Services](../5g-broadcast)      |
 
-<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
-
-## Developer Exchange
-
-See the reference tools in action in this community video.
-
-<ProjectVideos videos={projectVideos} name="DVB-I Services over 5G Systems" />
-
-## Related
-
-- [Scope](./scope) - specifications in scope and high-level architectures
-- [Scope: Roadmap](./scope#roadmap) - planned work
-- [Resources: Repositories](./resources#repositories) - the source repositories for these tools
-- [Tutorials](./tutorials) - demo videos and repository pointers
+Further pointers: [Scope: Roadmap](./scope#roadmap) for planned work, and [Resources: Repositories](./resources#repositories) for the source repositories behind these tools.
 
 :::note
 Refer to the [DVB-I repositories](https://github.com/5G-MAG) on GitHub to use or contribute to these Reference Tools.
 :::
-
-## Community Stats
-
-<CommunityStats name="DVB-I Services over 5G Systems" />
-

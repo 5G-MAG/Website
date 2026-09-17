@@ -7,6 +7,7 @@ description: Introduces the Beyond 2D Evaluation Framework for benchmarking poin
 ---
 import CommunityStats from '@site/src/components/CommunityStats';
 import ProjectContributors from '@site/src/components/ProjectContributors';
+import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
@@ -29,27 +30,65 @@ Evaluation framework for next-generation beyond-2D video experiences, providing 
 </div>
 <div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/testbeds/beyond-2d/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/testbeds/beyond-2d/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/testbeds/beyond-2d/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/testbeds/beyond-2d/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
+## What it does
+
 The framework enables standardised benchmarking of encoding, streaming, and rendering pipelines for content that goes beyond traditional flat-screen delivery, feeding directly into 3GPP and MPEG standardisation of new immersive video formats.
 
-**Specifications referenced:** ISO/IEC 23090-5 (Visual Volumetric Video-based Coding (V3C), referenced for evaluation), 3GPP [TR 26.956](https://www.3gpp.org/dynareport/26956.htm) (Evaluation and Characterization of Beyond 2D Video Formats and Codecs), ISO/IEC 23000-19 (Common Media Application Format (CMAF), for delivery evaluation). For acronyms used here, see the [Glossary](/tech/glossary).
+## Under the hood
+
+*A demo photo for this project isn't available yet.*
+
+## Repositories
+
+<ProjectRepositories project="beyond-2d" />
+
+## Standards implemented
+
+<div class="standard-card-row">
+<div class="standard-card">
+<span class="standard-card__text">ISO/IEC</span>
+<span class="standard-card__label">23090-5 (V3C)</span>
+</div>
+<div class="standard-card">
+<img src={useBaseUrl('/assets/images/partnerships/3gpp-logo.png')} alt="3GPP" />
+<span class="standard-card__label">TR 26.956</span>
+</div>
+<div class="standard-card">
+<span class="standard-card__text">ISO/IEC</span>
+<span class="standard-card__label">23000-19 (CMAF)</span>
+</div>
+</div>
+
+ISO/IEC 23090-5 (Visual Volumetric Video-based Coding (V3C), referenced for evaluation), 3GPP [TR 26.956](https://www.3gpp.org/dynareport/26956.htm) (Evaluation and Characterization of Beyond 2D Video Formats and Codecs), and ISO/IEC 23000-19 (Common Media Application Format (CMAF), for delivery evaluation). For acronyms used here, see the [Glossary](/tech/glossary).
+
+See [Beyond 2D on the Standards portal](/standards/beyond-2d) for related work items and specs.
 
 ## Contributors
 
 <ProjectContributors name="Beyond 2D Evaluation Framework" />
 
-## Project Overview
+## Community Stats
 
-The slide deck below introduces the Beyond 2D Evaluation Framework: what it evaluates, the test methodology, and how the results feed 3GPP and MPEG standardisation. For what's implemented and the project roadmap, see [Scope](./scope); for the code, use the buttons above (Resources, Tutorials).
-
-<div class="pdf-embed-wrapper">
-  <iframe loading="lazy" class="pdf-embed" src={useBaseUrl('/docs/Reference_Tools_Beyond2D_Video_Evaluation.pdf')} title="Beyond 2D Evaluation Framework project overview slide deck"></iframe>
-</div>
-
-<a class="button button--outline button--primary" href={useBaseUrl('/docs/Reference_Tools_Beyond2D_Video_Evaluation.pdf')} style={{margin: '4px 0'}}>Download the slide deck of this Project</a>
+<CommunityStats name="Beyond 2D Evaluation Framework" />
 
 ---
 
-## Go deeper
+## Try it yourself
+
+The slide deck below introduces the Beyond 2D Evaluation Framework: what it evaluates, the test methodology, and how the results feed 3GPP and MPEG standardisation. For what's implemented and the project roadmap, see [Scope](./scope); for the code, use the buttons above (Resources, Tutorials).
+
+<div class="event-post-grid">
+
+<a class="event-post-card" href={useBaseUrl('/docs/Reference_Tools_Beyond2D_Video_Evaluation.pdf')} target="_blank" rel="noreferrer">
+<img loading="lazy" src={useBaseUrl('/assets/images/projects/beyond-2d-slides-cover.jpg')} alt="Beyond 2D Evaluation Framework slide deck cover" />
+<span class="event-post-title">Slide deck: Beyond 2D Evaluation Framework overview</span>
+</a>
+
+</div>
+
+<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
+
+<ProjectVideos videos={projectVideos} name="Beyond 2D Evaluation Framework" />
 
 | Area                        | Details                                                                                        |
 | --------------------------- | ---------------------------------------------------------------------------------------------- |
@@ -57,14 +96,4 @@ The slide deck below introduces the Beyond 2D Evaluation Framework: what it eval
 | **Technical documentation** | Volumetric and beyond-2D analysis: [Volumetric Video on the Tech portal](/tech/volumetric)     |
 | **Standards**               | Beyond-2D work items and specs: [Beyond-2D on the Standards portal](/standards/beyond-2d) |
 | **Related project**         | V3C encoding and rendering tools: [MPEG V3C Immersive Platform](/reference-tools/v3c)               |
-
-<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
-
-## Developer Exchange
-
-<ProjectVideos videos={projectVideos} name="Beyond 2D Evaluation Framework" />
-
-## Community Stats
-
-<CommunityStats name="Beyond 2D Evaluation Framework" />
 

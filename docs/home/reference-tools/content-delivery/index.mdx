@@ -7,6 +7,7 @@ description: Landing page for the DASH, HLS, and CMAF content delivery reference
 ---
 import CommunityStats from '@site/src/components/CommunityStats';
 import ProjectContributors from '@site/src/components/ProjectContributors';
+import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
@@ -31,53 +32,65 @@ Reference tools for content delivery protocols, covering DASH (Dynamic Adaptive 
 </div>
 <div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/content-delivery/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/content-delivery/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/content-delivery/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/content-delivery/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
+## What it does
+
 These tools address the application-layer delivery protocols that sit above the 5G transport, ensuring interoperability across content formats, packaging standards, and player implementations. The project is designed to support any delivery protocol; it currently implements FLUTE and ROUTE, used respectively for file and real-time object delivery over 5G Broadcast and 5G Multicast Broadcast Services (MBS). Useful for developers validating DASH/HLS players, packagers, and Content Delivery Network (CDN) integrations in 5G environments.
 
+## Under the hood
+
+*A demo photo for this project isn't available yet.*
+
+## Repositories
+
+<ProjectRepositories project="content-delivery" />
+
+## Standards implemented
+
+<div class="standard-card-row">
+<div class="standard-card">
+<img src={useBaseUrl('/assets/logos/IETF.png')} alt="IETF" />
+<span class="standard-card__label">RFC 3926 (FLUTE)</span>
+</div>
+<div class="standard-card">
+<img src={useBaseUrl('/assets/logos/IETF.png')} alt="IETF" />
+<span class="standard-card__label">RFC 9223 (ROUTE)</span>
+</div>
+</div>
+
 **Implemented specifications:** IETF RFC 3926/RFC 6726 (FLUTE) and RFC 9223 (ROUTE) — the transports the tools implement. DASH (ISO/IEC 23009-1), HLS (RFC 8216) and CMAF (ISO/IEC 23000-19) are the formats these transports carry as opaque segments and manifests, not something the tools implement themselves.
+
+See [Content Delivery Protocols on the Standards portal](/standards/content-delivery) for the full specification list.
 
 ## Contributors
 
 <ProjectContributors name="Content Delivery Protocols" />
 
-## Project Overview
+## Community Stats
 
-The slide deck below introduces the content delivery protocols project: the protocols it covers and how they fit above the 5G transport.
-
-<div class="pdf-embed-wrapper">
-  <iframe loading="lazy" class="pdf-embed" src={useBaseUrl('/docs/Reference_Tools_Multimedia_delivery_protocols.pdf')} title="Content Delivery Protocols: project overview slide deck"></iframe>
-</div>
-
-<a class="button button--outline button--primary" href={useBaseUrl('/docs/Reference_Tools_Multimedia_delivery_protocols.pdf')} style={{margin: '4px 0'}}>Download the slide deck of this Project</a>
+<CommunityStats name="Content Delivery Protocols" />
 
 ---
 
-## Go deeper
+## Try it yourself
 
-| Area                        | Details                                                                                                                    |
-| --------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| **Technical documentation** | Delivery protocol analysis: [Content Delivery Protocols on the Tech portal](/tech/content-delivery) |
-| **Standards**               | DASH, HLS, and CMAF specifications: [Content Delivery Protocols on the Standards portal](/standards/content-delivery)              |
+Follow the [tutorials](/reference-tools/content-delivery/tutorials) to build the chain yourself. The slide deck below introduces the content delivery protocols project: the protocols it covers and how they fit above the 5G transport.
+
+<div class="event-post-grid">
+
+<a class="event-post-card" href={useBaseUrl('/docs/Reference_Tools_Multimedia_delivery_protocols.pdf')} target="_blank" rel="noreferrer">
+<img loading="lazy" src={useBaseUrl('/assets/images/projects/content-delivery-slides-cover.jpg')} alt="Content Delivery Protocols slide deck cover" />
+<span class="event-post-title">Slide deck: Content Delivery Protocols overview</span>
+</a>
+
+</div>
 
 <div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
-
-## Developer Exchange
 
 See the Reference Tools in action, with a community video from the tutorials page.
 
 <ProjectVideos videos={projectVideos} name="Content Delivery Protocols" />
 
-## Related
-
-- [Scope](./scope) - specifications in scope and high-level architectures
-- [Scope: Roadmap](./scope#roadmap) - planned work
-- [Resources: Repositories](./resources#repositories) - the source repositories for these tools
-- [Tutorials](./tutorials) - demo video and repository pointers
-
-:::note
-Refer to the [content delivery repositories](https://github.com/5G-MAG) on GitHub to use or contribute to these Reference Tools.
-:::
-
-## Community Stats
-
-<CommunityStats name="Content Delivery Protocols" />
-
+| Area                        | Details                                                                                                                    |
+| --------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| **Technical documentation** | Delivery protocol analysis: [Content Delivery Protocols on the Tech portal](/tech/content-delivery) |
+| **Standards**               | DASH, HLS, and CMAF specifications: [Content Delivery Protocols on the Standards portal](/standards/content-delivery)              |

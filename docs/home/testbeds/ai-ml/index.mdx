@@ -7,6 +7,7 @@ description: Evaluation framework for assessing AI/ML models applied to media pr
 ---
 import CommunityStats from '@site/src/components/CommunityStats';
 import ProjectContributors from '@site/src/components/ProjectContributors';
+import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
@@ -34,48 +35,65 @@ Evaluation framework for assessing AI/ML models applied to media processing in 5
 </div>
 <div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/testbeds/ai-ml/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/testbeds/ai-ml/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/testbeds/ai-ml/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/testbeds/ai-ml/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
-The tools provide standardised benchmarks and datasets for evaluating machine learning models for media quality enhancement, adaptive bitrate (ABR) optimisation, and traffic classification, aligned with the AI/ML work items of 3GPP working group SA4 (the group responsible for codec and media work). It is intended for researchers and engineers contributing to the standardisation of AI-native media delivery and informing 5G-MAG's 6G research direction. For acronyms used here, see the [Glossary](/tech/glossary).
-
-The specifications below are listed as background context, not as a prerequisite reading list.
-
-**Specifications referenced:** 3GPP [TR 26.927](https://www.3gpp.org/dynareport/26927.htm) (Study on AI and ML in 5G media services) and its companion evaluation report [TR 26.847](https://www.3gpp.org/dynareport/26847.htm), both Release 19, plus [TR 22.874](https://www.3gpp.org/dynareport/22874.htm) (AI/ML in 5G scenarios).
-
 :::note
 The reference tooling is currently private and under testing. [Request early access](/early-access).
 :::
+
+## What it does
+
+The tools provide standardised benchmarks and datasets for evaluating machine learning models for media quality enhancement, adaptive bitrate (ABR) optimisation, and traffic classification, aligned with the AI/ML work items of 3GPP working group SA4 (the group responsible for codec and media work). It is intended for researchers and engineers contributing to the standardisation of AI-native media delivery and informing 5G-MAG's 6G research direction. For acronyms used here, see the [Glossary](/tech/glossary).
+
+## Under the hood
+
+*A demo photo for this project isn't available yet.*
+
+## Repositories
+
+<ProjectRepositories project="ai-ml" />
+
+## Standards implemented
+
+<div class="standard-card-row">
+<div class="standard-card">
+<img src={useBaseUrl('/assets/images/partnerships/3gpp-logo.png')} alt="3GPP" />
+<span class="standard-card__label">3GPP</span>
+</div>
+</div>
+
+The specifications below are listed as background context, not as a prerequisite reading list.
+
+3GPP [TR 26.927](https://www.3gpp.org/dynareport/26927.htm) (Study on AI and ML in 5G media services) and its companion evaluation report [TR 26.847](https://www.3gpp.org/dynareport/26847.htm), both Release 19, plus [TR 22.874](https://www.3gpp.org/dynareport/22874.htm) (AI/ML in 5G scenarios).
+
+See [AI/ML on the Standards portal](/standards/ai-ml) for version history and 5G-MAG's own standards contributions.
 
 ## Contributors
 
 <ProjectContributors name="AI/ML Evaluation Framework" />
 
-## Project Overview
-
-The slide deck below introduces the AI/ML Evaluation Framework: what it evaluates (media quality enhancement, adaptive bitrate optimisation, and AI traffic classification), the benchmarks and datasets it provides, and how it relates to the shared 6G Testbed used for the hands-on traffic characterisation work.
-
-<div class="pdf-embed-wrapper">
-  <iframe loading="lazy" class="pdf-embed" src={useBaseUrl('/docs/Reference_Tools_AIML_Evaluation_Framework.pdf')} title="AI/ML Evaluation Framework: project overview slide deck"></iframe>
-</div>
-
-<a class="button button--outline button--primary" href={useBaseUrl('/docs/Reference_Tools_AIML_Evaluation_Framework.pdf')} style={{margin: '4px 0'}}>Download the slide deck of this Project</a>
-
----
-
-## Go deeper
-
-| Area                | Details                                                                                   |
-| ------------------- | ----------------------------------------------------------------------------------------- |
-| **Scope**           | Focus areas, repositories, and relationship to standards: [Scope](./scope)                |
-| **Technical documentation** | How 3GPP's network-side and UE-side AI/ML tracks fit together: [AI/ML in 5G Media on the Tech portal](/tech/ai-ml) |
-| **Standards**       | AI/ML in 5G media standardisation: [AI/ML on the Standards portal](/standards/ai-ml) |
-| **Related project** | AI traffic classification testbed: [AI Traffic Characterization](../6g-testbed)             |
-
-<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
-
-## Developer Exchange
-
-<ProjectVideos videos={projectVideos} name="AI/ML Evaluation Framework" />
-
 ## Community Stats
 
 <CommunityStats name="AI/ML Evaluation Framework" />
 
+---
+
+## Try it yourself
+
+<div class="event-post-grid">
+
+<a class="event-post-card" href={useBaseUrl('/docs/Reference_Tools_AIML_Evaluation_Framework.pdf')} target="_blank" rel="noreferrer">
+<img loading="lazy" src={useBaseUrl('/assets/images/projects/ai-ml-slides-cover.jpg')} alt="AI/ML Evaluation Framework slide deck cover" />
+<span class="event-post-title">Slide deck: AI/ML Evaluation Framework overview</span>
+</a>
+
+</div>
+
+| Area                        | Details                                                                                                             |
+| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| **Scope**                    | Focus areas, repositories, and relationship to standards: [Scope](./scope)                                                  |
+| **Technical documentation**  | How 3GPP's network-side and UE-side AI/ML tracks fit together: [AI/ML in 5G Media on the Tech portal](/tech/ai-ml)          |
+| **Standards**                | AI/ML in 5G media standardisation: [AI/ML on the Standards portal](/standards/ai-ml)                                        |
+| **Related project**          | AI traffic classification testbed: [AI Traffic Characterization](../6g-testbed)                                             |
+
+<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
+
+<ProjectVideos videos={projectVideos} name="AI/ML Evaluation Framework" />

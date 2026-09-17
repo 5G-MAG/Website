@@ -7,6 +7,7 @@ description: Overview of the MPEG V3C Immersive Platform, MPEG V3C reference too
 ---
 import CommunityStats from '@site/src/components/CommunityStats';
 import ProjectContributors from '@site/src/components/ProjectContributors';
+import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
@@ -35,27 +36,69 @@ Reference tools for volumetric video using MPEG V3C (ISO/IEC 23090-5), covering 
 </div>
 <div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/v3c/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/v3c/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/v3c/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/v3c/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
+## What it does
+
 The platform provides an end-to-end pipeline for 3D object and scene delivery, allowing viewers to move freely around volumetric content. According to 5G-MAG, a significant part of the initial contribution came from MPEG member companies including InterDigital and Philips; treat any specific partner attribution as something to confirm against 5G-MAG's own announcements before relying on it externally (see [Scope](./scope)).
 
+## Under the hood
+
+*A demo photo for this project isn't available yet.*
+
+## Repositories
+
+<ProjectRepositories project="v3c" />
+
+## Standards implemented
+
+<div class="standard-card-row">
+<div class="standard-card">
+<img src={useBaseUrl('/assets/logos/MPEG.png')} alt="MPEG" />
+<span class="standard-card__label">ISO/IEC 23090-5</span>
+</div>
+<div class="standard-card">
+<img src={useBaseUrl('/assets/logos/MPEG.png')} alt="MPEG" />
+<span class="standard-card__label">ISO/IEC 23090-12</span>
+</div>
+<div class="standard-card">
+<img src={useBaseUrl('/assets/logos/MPEG.png')} alt="MPEG" />
+<span class="standard-card__label">ISO/IEC 23090-10</span>
+</div>
+</div>
+
 **Key specifications:** ISO/IEC 23090-5 (Visual Volumetric Video-based Coding (V3C) container and multiplexing, including video-based point cloud compression (V-PCC)), ISO/IEC 23090-12 (MPEG Immersive Video (MIV)), ISO/IEC 23090-10 (carriage of V3C data). The reference tooling is still maturing; see [Scope](./scope) rather than treating this list as a fixed implementation status.
+
+See [Volumetric Video with MPEG V3C on the Standards portal](/standards/v3c) for version history and 5G-MAG's own standards contributions.
 
 ## Contributors
 
 <ProjectContributors name="MPEG V3C Immersive Platform" />
 
-## Project Overview
+## Community Stats
 
-The slide deck below introduces the MPEG V3C Immersive Platform: the volumetric encoding, streaming, and Unity-based rendering pipeline, the specifications it implements, and how the components fit together. For what's implemented and the project roadmap, see [Scope](./scope); for the code and setup steps, use the buttons above (Resources, Tutorials).
-
-<div class="pdf-embed-wrapper">
-  <iframe loading="lazy" class="pdf-embed" src={useBaseUrl('/docs/Reference_Tools_V3C_Immersive_Platform.pdf')} title="MPEG V3C Immersive Platform project overview slide deck"></iframe>
-</div>
-
-<a class="button button--outline button--primary" href={useBaseUrl('/docs/Reference_Tools_V3C_Immersive_Platform.pdf')} style={{margin: '4px 0'}}>Download the slide deck of this Project</a>
+<CommunityStats name="MPEG V3C Immersive Platform" />
 
 ---
 
-## Go deeper
+## Try it yourself
+
+Follow the [tutorials](/reference-tools/v3c/tutorials) to build the pipeline yourself, or see [Immersive Media Experiences](/applications/volumetric) for assembled scenarios already running.
+
+The slide deck below introduces the MPEG V3C Immersive Platform: the volumetric encoding, streaming, and Unity-based rendering pipeline, the specifications it implements, and how the components fit together. For what's implemented and the project roadmap, see [Scope](./scope); for the code and setup steps, use the buttons above (Resources, Tutorials).
+
+<div class="event-post-grid">
+
+<a class="event-post-card" href={useBaseUrl('/docs/Reference_Tools_V3C_Immersive_Platform.pdf')} target="_blank" rel="noreferrer">
+<img loading="lazy" src={useBaseUrl('/assets/images/projects/v3c-slides-cover.jpg')} alt="MPEG V3C Immersive Platform slide deck cover" />
+<span class="event-post-title">Slide deck: MPEG V3C Immersive Platform overview</span>
+</a>
+
+</div>
+
+<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
+
+See the MPEG V3C Immersive Platform in action, with a community video from the Developer Exchange.
+
+<ProjectVideos videos={projectVideos} name="MPEG V3C Immersive Platform" />
 
 | Area                        | Details                                                                                                     |
 | --------------------------- | ----------------------------------------------------------------------------------------------------------- |
@@ -63,14 +106,4 @@ The slide deck below introduces the MPEG V3C Immersive Platform: the volumetric 
 | **Standards**               | ISO/IEC V3C specs and beyond-2D work items: [Volumetric Video on the Standards portal](/standards/v3c) |
 | **Applications**            | Real, assembled scenarios built on this tool: [Immersive Media Experiences](/applications/volumetric) |
 | **Testbeds**                 | Evaluates formats built with this tool: [Beyond 2D Evaluation Framework](/testbeds/beyond-2d) |
-
-<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
-
-## Developer Exchange
-
-<ProjectVideos videos={projectVideos} name="MPEG V3C Immersive Platform" />
-
-## Community Stats
-
-<CommunityStats name="MPEG V3C Immersive Platform" />
 

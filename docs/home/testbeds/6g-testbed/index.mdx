@@ -7,6 +7,7 @@ description: Experimental testbed platform for AI-driven media traffic character
 ---
 import CommunityStats from '@site/src/components/CommunityStats';
 import ProjectContributors from '@site/src/components/ProjectContributors';
+import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
@@ -36,27 +37,48 @@ Experimental testbed platform for AI-driven media traffic characterization and o
 </div>
 <div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/testbeds/6g-testbed/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/testbeds/6g-testbed/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/testbeds/6g-testbed/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/testbeds/6g-testbed/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
+## What it does
+
 The project provides tools to measure, analyse, and evaluate AI traffic patterns and media delivery under emulated network conditions. It builds on a 3GPP RAN testbed infrastructure and is intended to inform 5G-MAG's contributions to 6G requirements for intelligent, media-aware networks. IMT-2030 is the ITU-R (the Radiocommunication Sector of the International Telecommunication Union) framework of requirements for 6G systems.
 
 **Specifications referenced:** No normative 6G specifications exist yet. The testbed produces measured traffic characterisation as an input to the AI, media and 6G study work currently running in 3GPP, and its candidate 6G conditions are derived from ITU-R IMT-2030 scenarios. It is not scoped to a single study item. For acronyms used here, see the [Glossary](/tech/glossary).
+
+## Under the hood
+
+*A demo photo for this project isn't available yet.*
+
+## Repositories
+
+<ProjectRepositories project="6g-testbed" />
 
 ## Contributors
 
 <ProjectContributors name="AI Traffic Characterization" />
 
-## Project Overview
+## Community Stats
 
-The slide deck below introduces the 6G Testbed: its two building blocks, a configurable network emulator and an AI traffic characterisation framework, and how they are used to measure how AI and media traffic behave under emulated network conditions. To try it, see the [Scope](./scope) for the components and the [Introduction to the 6G Testbed](./tutorials/introduction-6g-testbed) tutorial for a walkthrough.
-
-<div class="pdf-embed-wrapper">
-  <iframe loading="lazy" class="pdf-embed" src={useBaseUrl('/docs/Reference_Tools_3GPP_Testbed_AI_Traffic.pdf')} title="6G Testbed and AI Traffic: project overview slide deck"></iframe>
-</div>
-
-<a class="button button--outline button--primary" href={useBaseUrl('/docs/Reference_Tools_3GPP_Testbed_AI_Traffic.pdf')} style={{margin: '4px 0'}}>Download the slide deck of this Project</a>
+<CommunityStats name="AI Traffic Characterization" />
 
 ---
 
-## Go deeper
+## Try it yourself
+
+The slide deck below introduces the 6G Testbed: its two building blocks, a configurable network emulator and an AI traffic characterisation framework, and how they are used to measure how AI and media traffic behave under emulated network conditions. To try it, see the [Scope](./scope) for the components and the [Introduction to the 6G Testbed](./tutorials/introduction-6g-testbed) tutorial for a walkthrough.
+
+<div class="event-post-grid">
+
+<a class="event-post-card" href={useBaseUrl('/docs/Reference_Tools_3GPP_Testbed_AI_Traffic.pdf')} target="_blank" rel="noreferrer">
+<img loading="lazy" src={useBaseUrl('/assets/images/projects/6g-testbed-slides-cover.jpg')} alt="AI Traffic Characterization slide deck cover" />
+<span class="event-post-title">Slide deck: AI Traffic Characterization overview</span>
+</a>
+
+</div>
+
+<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
+
+See the 6G Testbed in action, with a community video from the tutorials page.
+
+<ProjectVideos videos={projectVideos} name="AI Traffic Characterization" />
 
 | Area                        | Details                                                                                         |
 | --------------------------- | ----------------------------------------------------------------------------------------------- |
@@ -64,16 +86,3 @@ The slide deck below introduces the 6G Testbed: its two building blocks, a confi
 | **Technical documentation** | 6G research context and 5G-MAG contributions: [6G on the Tech portal](/tech/6g)                 |
 | **Standards**               | 6G standardisation activities and study items: [6G on the Standards portal](/standards/6g) |
 | **Related project**         | AI/ML modelling tools: [AI/ML Evaluation Framework](../ai-ml)                                   |
-
-<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
-
-## Developer Exchange
-
-See the 6G Testbed in action, with a community video from the tutorials page.
-
-<ProjectVideos videos={projectVideos} name="AI Traffic Characterization" />
-
-## Community Stats
-
-<CommunityStats name="AI Traffic Characterization" />
-

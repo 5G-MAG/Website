@@ -7,6 +7,7 @@ description: Overview of the 5G Broadcast Emergency Alerts reference implementat
 ---
 import CommunityStats from '@site/src/components/CommunityStats';
 import ProjectContributors from '@site/src/components/ProjectContributors';
+import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
@@ -31,25 +32,63 @@ Reference implementation for delivering public warning and emergency alert messa
 </div>
 <div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/emergency-alerts/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/emergency-alerts/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/emergency-alerts/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/emergency-alerts/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
+## What it does
+
 The tools enable authorities and broadcasters to distribute alerts to all receivers in a coverage area simultaneously (without requiring a data connection or active SIM) using the Cell Broadcast Service (CBS) transported over LTE-based 5G Broadcast, also known as Further evolved Multimedia Broadcast Multicast Service (FeMBMS). The work builds on top of the 5G Broadcast - TV and Radio Services platform and has been demonstrated in broadcast network setups; for the current implementation status, see the caveat on the [Scope](./scope) page.
 
+## Under the hood
+
+*A demo photo for this project isn't available yet.*
+
+## Repositories
+
+<ProjectRepositories project="emergency-alerts" />
+
+## Standards implemented
+
+<div class="standard-card-row">
+<div class="standard-card">
+<span class="standard-card__text">ETSI</span>
+<span class="standard-card__label">TS 103 720</span>
+</div>
+<div class="standard-card">
+<img src={useBaseUrl('/assets/images/partnerships/3gpp-logo.png')} alt="3GPP" />
+<span class="standard-card__label">3GPP</span>
+</div>
+</div>
+
 **Implemented specifications:** ETSI TS 103 720 (5G Broadcast System, including CBS transport), 3GPP [TS 23.041](https://www.3gpp.org/dynareport/23041.htm) (Cell Broadcast Service architecture), [TR 36.976](https://www.3gpp.org/dynareport/36976.htm) (LTE-based 5G Broadcast overview).
+
+See [5G Broadcast - Emergency Alerts on the Standards portal](/standards/emergency-alerts) for version history and 5G-MAG's own standards contributions.
 
 ## Contributors
 
 <ProjectContributors name="5G Broadcast - Emergency Alerts" />
 
-## Project Overview
+## Community Stats
 
-<div class="pdf-embed-wrapper">
-  <iframe loading="lazy" class="pdf-embed" src={useBaseUrl('/docs/Reference_Tools_Emergency_Alerts_5G_Broadcast.pdf')} title="Emergency Alerts over 5G Broadcast: project overview slide deck"></iframe>
-</div>
-
-<a class="button button--outline button--primary" href={useBaseUrl('/docs/Reference_Tools_Emergency_Alerts_5G_Broadcast.pdf')} style={{margin: '4px 0'}}>Download the slide deck of this Project</a>
+<CommunityStats name="5G Broadcast - Emergency Alerts" />
 
 ---
 
-## Go deeper
+## Try it yourself
+
+Follow the [tutorials](/reference-tools/emergency-alerts/tutorials) to build the chain yourself, or jump to the [Emergency Alert Broadcast Demo](/applications/5g-broadcast#emergency-alert-broadcast-demo) to see one assembled scenario already running.
+
+<div class="event-post-grid">
+
+<a class="event-post-card" href={useBaseUrl('/docs/Reference_Tools_Emergency_Alerts_5G_Broadcast.pdf')} target="_blank" rel="noreferrer">
+<img loading="lazy" src={useBaseUrl('/assets/images/projects/emergency-alerts-slides-cover.jpg')} alt="5G Broadcast - Emergency Alerts slide deck cover" />
+<span class="event-post-title">Slide deck: 5G Broadcast - Emergency Alerts overview</span>
+</a>
+
+</div>
+
+<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
+
+See the Reference Tools in action, with a community video from the tutorials page.
+
+<ProjectVideos videos={projectVideos} name="5G Broadcast - Emergency Alerts" />
 
 | Area                        | Details                                                                                                      |
 | --------------------------- | ------------------------------------------------------------------------------------------------------------ |
@@ -57,16 +96,3 @@ The tools enable authorities and broadcasters to distribute alerts to all receiv
 | **Standards**               | ETSI TS 103 720 and CBS specifications: [5G Broadcast on the Standards portal](/standards/5g-broadcast) |
 | **Related project**         | Broadcast transmitter and receiver: [5G Broadcast - TV and Radio Services](../5g-broadcast)                         |
 | **Applications**            | Real, assembled scenarios built on this tool: [Emergency Alert Broadcast Demo](/applications/5g-broadcast#emergency-alert-broadcast-demo) |
-
-<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
-
-## Developer Exchange
-
-See the Reference Tools in action, with a community video from the tutorials page.
-
-<ProjectVideos videos={projectVideos} name="5G Broadcast - Emergency Alerts" />
-
-## Community Stats
-
-<CommunityStats name="5G Broadcast - Emergency Alerts" />
-
