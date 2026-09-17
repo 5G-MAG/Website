@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-16 01:50 UTC",
+  "updated_at": "2026-09-17 01:53 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -45,7 +45,7 @@
           "number": 68,
           "title": "Tunnel-mode reception, and five object-handling fixes (compression, partitioning, transfer length)",
           "url": "https://github.com/5G-MAG/rt-libflute/pull/68",
-          "draft": true,
+          "draft": false,
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-08-11",
@@ -260,7 +260,7 @@
           "number": 68,
           "title": "Tunnel-mode reception, and five object-handling fixes (compression, partitioning, transfer length)",
           "url": "https://github.com/5G-MAG/rt-libflute/pull/68",
-          "draft": true,
+          "draft": false,
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-08-11",
@@ -542,7 +542,7 @@
           "number": 68,
           "title": "Tunnel-mode reception, and five object-handling fixes (compression, partitioning, transfer length)",
           "url": "https://github.com/5G-MAG/rt-libflute/pull/68",
-          "draft": true,
+          "draft": false,
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-08-11",
