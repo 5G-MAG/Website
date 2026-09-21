@@ -2,40 +2,141 @@
 // mechanism/use case rather than by which 3GPP/DVB working group owns the
 // spec. Grouping and naming worked through with the user directly (not
 // derived from a single source document): Content Delivery (unicast,
-// 5GMS-based) and Multicast (MBS/NTN/transport protocols) are split apart
-// because they are different delivery mechanisms, and RTC and 5G Broadcast
-// are each their own pillar for the same reason (two-way vs. one-way,
-// connected vs. connectionless). DVB-I over 5G Systems is deliberately not
-// listed under any single pillar below -- it is a cross-cutting topic tied
-// to both Content Delivery and 5G Broadcast, called out separately in
-// about/index.js instead.
+// 5GMS-based) and Multicast (MBS) are split apart because they are
+// different delivery mechanisms, and RTC and 5G Broadcast are each their
+// own pillar for the same reason (two-way vs. one-way, connected vs.
+// connectionless). NTN is its own pillar too, not folded into Multicast --
+// its only documented use case is "MBS over satellite," but NTN itself is
+// a network-coverage technology, not a delivery mode, so it doesn't belong
+// under Multicast any more than under Content Delivery. Two topics are
+// deliberately not listed under any single pillar below, because each
+// serves two of these pillars at once: DVB-I over 5G Systems (Content
+// Delivery and 5G Broadcast) and Content Delivery Protocols/FLUTE+ROUTE
+// (Multicast and 5G Broadcast, per its own real description: "for one-way
+// delivery ... over broadcast and multicast").
+//
+// Icons and hrefs are copied from the matching topic entries in
+// src/pages/tech/index.js's CATEGORIES, not invented, so a pillar card
+// links to the same real /tech pages the Technical Resources hub already
+// uses for that technology. Connected Media Production's icon is Non-Public
+// Networks' own icon specifically (a video camera) rather than Network
+// APIs' or Time-Sensitive Communications' -- the same choice
+// MediaConnectivityDiagram already makes for its "camera" slot on the
+// Media side (see that component's own top-of-file comment).
 export const DOMAIN_PILLARS = [
   {
     title: 'Content Delivery',
-    chips: ['5G Media Streaming (5GMS)', 'Data Collection & Analytics'],
+    icon: <path d="M7 4v16l13 -8l-13 -8" />,
+    chips: [
+      { label: '5G Media Streaming (5GMS)', href: '/tech/5gms' },
+      { label: 'Data Collection & Analytics', href: '/tech/data-collection/data-collection-event-exposure' },
+    ],
   },
   {
     title: 'Real-Time Communications (RTC)',
-    chips: [],
+    icon: (
+      <>
+        <path d="M7 21v-6" />
+        <path d="M20 6l-3 -3l-3 3" />
+        <path d="M10 18l-3 3l-3 -3" />
+        <path d="M7 3v2" />
+        <path d="M7 9v2" />
+        <path d="M17 3v6" />
+        <path d="M17 21v-2" />
+        <path d="M17 15v-2" />
+      </>
+    ),
+    chips: [{ label: 'Real-Time Communications', href: '/tech/rtc' }],
   },
   {
     title: '5G Broadcast',
-    chips: ['TV & Radio', 'Emergency Alerts'],
+    icon: (
+      <>
+        <path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+        <path d="M16.616 13.924a5 5 0 1 0 -9.23 0" />
+        <path d="M20.307 15.469a9 9 0 1 0 -16.615 0" />
+        <path d="M9 21l3 -9l3 9" />
+        <path d="M10 19h4" />
+      </>
+    ),
+    chips: [
+      { label: 'TV & Radio', href: '/tech/5g-broadcast' },
+      { label: 'Emergency Alerts', href: '/tech/5g-broadcast' },
+    ],
   },
   {
     title: 'Multicast',
-    chips: ['5G Multicast Broadcast Services (MBS)', 'Non-Terrestrial Networks (NTN)', 'Content Delivery Protocols'],
+    icon: (
+      <>
+        <path d="M12 12l0 .01" />
+        <path d="M14.828 9.172a4 4 0 0 1 0 5.656" />
+        <path d="M17.657 6.343a8 8 0 0 1 0 11.314" />
+        <path d="M9.168 14.828a4 4 0 0 1 0 -5.656" />
+        <path d="M6.337 17.657a8 8 0 0 1 0 -11.314" />
+      </>
+    ),
+    chips: [{ label: '5G Multicast Broadcast Services (MBS)', href: '/tech/5g-mbs' }],
+  },
+  {
+    title: 'Non-Terrestrial Networks (NTN)',
+    icon: (
+      <>
+        <path d="M3.707 6.293l2.586 -2.586a1 1 0 0 1 1.414 0l5 5a1 1 0 0 1 0 1.414l-2.586 2.586a1 1 0 0 1 -1.414 0l-5 -5a1 1 0 0 1 0 -1.414z" />
+        <path d="M6 10l-3 3l3 3l3 -3" />
+        <path d="M10 6l3 -3l3 3l-3 3" />
+        <path d="M14 17a3 3 0 0 0 3 -3" />
+        <path d="M20 13a9 9 0 0 0 -9 9" />
+      </>
+    ),
+    chips: [{ label: 'Non-Terrestrial Networks', href: '/tech/ntn' }],
   },
   {
     title: 'Immersive Media',
-    chips: ['Avatar Communication', 'Volumetric Video', 'XR'],
+    icon: (
+      <>
+        <path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+        <path d="M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2" />
+        <path d="M3 7v-2a2 2 0 0 1 2 -2h2" />
+        <path d="M3 17v2a2 2 0 0 0 2 2h2" />
+        <path d="M17 3h2a2 2 0 0 1 2 2v2" />
+        <path d="M17 21h2a2 2 0 0 0 2 -2v-2" />
+      </>
+    ),
+    chips: [
+      { label: 'Avatar Communication', href: '/tech/avatar-communications' },
+      { label: 'Volumetric Video', href: '/tech/volumetric' },
+      { label: 'XR', href: '/tech/xr' },
+    ],
   },
   {
     title: 'Connected Media Production',
-    chips: ['Network APIs', 'Non-Public Networks', 'Time-Sensitive Communications'],
+    icon: (
+      <>
+        <path d="M15 10l4.553 -2.276a1 1 0 0 1 1.447 .894v6.764a1 1 0 0 1 -1.447 .894l-4.553 -2.276v-4" />
+        <path d="M3 8a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2l0 -8" />
+      </>
+    ),
+    chips: [
+      { label: 'Network APIs', href: '/tech/network-apis' },
+      { label: 'Non-Public Networks', href: '/tech/npn' },
+      { label: 'Time-Sensitive Communications', href: '/tech/tsc' },
+    ],
   },
   {
     title: 'Research Topics',
-    chips: ['AI/ML in Media', '6G Media'],
+    icon: (
+      <>
+        <path d="M15.5 13a3.5 3.5 0 0 0 -3.5 3.5v1a3.5 3.5 0 0 0 7 0v-1.8" />
+        <path d="M8.5 13a3.5 3.5 0 0 1 3.5 3.5v1a3.5 3.5 0 0 1 -7 0v-1.8" />
+        <path d="M17.5 16a3.5 3.5 0 0 0 0 -7h-.5" />
+        <path d="M19 9.3v-2.8a3.5 3.5 0 0 0 -7 0" />
+        <path d="M6.5 16a3.5 3.5 0 0 1 0 -7h.5" />
+        <path d="M5 9.3v-2.8a3.5 3.5 0 0 1 7 0v10" />
+      </>
+    ),
+    chips: [
+      { label: 'AI/ML in Media', href: '/tech/ai-ml' },
+      { label: '6G Media', href: '/tech/6g' },
+    ],
   },
 ];

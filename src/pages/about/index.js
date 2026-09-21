@@ -79,12 +79,9 @@ export default function About() {
               &ldquo;We are not a standards body. We do not write specs. We translate them into
               things that run.&rdquo;
             </p>
-            <p className={styles.leadParagraph}>
-              5G-MAG is a neutral platform, driven by our members: they set the priorities, and we
-              keep connected media applications open, interoperable and deployable at scale.
-            </p>
             <p className={`${styles.leadParagraph} ${styles['leadParagraph--last']}`}>
-              Technology, backed by open standards, ready to scale across the industry.
+              5G-MAG is a neutral platform, driven by our members. They set the priorities; we keep
+              connected media applications open, interoperable and deployable at scale.
             </p>
 
             <div style={{ margin: '0 0 2rem' }}>
@@ -103,25 +100,22 @@ export default function About() {
           <div className="container">
             <h2 className={styles.sectionTitle}>What We Work On</h2>
             <p className={styles.sectionSubtitle} style={{ marginBottom: '1.5rem' }}>
-              Grouped by delivery mechanism and use case, not by which standards body owns the
-              spec. DVB-I over 5G Systems cuts across two of these (Content Delivery and 5G
-              Broadcast) rather than sitting under either one.
+              Our current topics, brought by our members.
             </p>
             <div className="godeeper-grid godeeper-grid--4col">
               {DOMAIN_PILLARS.map((p) => (
                 <GodeeperCard
                   key={p.title}
                   title={p.title}
+                  icon={p.icon}
                   body={
-                    p.chips.length ? (
-                      <div className="domain-pillar-chips">
-                        {p.chips.map((c) => (
-                          <span key={c} className="domain-pillar-chip">
-                            {c}
-                          </span>
-                        ))}
-                      </div>
-                    ) : null
+                    <div className="domain-pillar-chips">
+                      {p.chips.map((c) => (
+                        <Link key={c.label} to={c.href} className="domain-pillar-chip">
+                          {c.label}
+                        </Link>
+                      ))}
+                    </div>
                   }
                 />
               ))}

@@ -1202,11 +1202,20 @@
 }
 
 .domain-pillar-chip {
-  font-size: 0.76rem;
-  color: var(--ifm-color-emphasis-700);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ifm-color-primary-textsafe);
   background: var(--ifm-color-emphasis-100);
+  border: 1px solid transparent;
   border-radius: 999px;
-  padding: 0.2rem 0.65rem;
+  padding: 0.3rem 0.8rem;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.domain-pillar-chip:hover {
+  background: var(--ifm-color-emphasis-0);
+  border-color: var(--ifm-color-primary);
+  text-decoration: none;
 }
 
 /* Capability badges: a quick-scan tag row near the top of a Showcase page. */
