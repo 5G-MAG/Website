@@ -1,8 +1,12 @@
 // "Running the Loop: From Standards to Products" — standards bodies (3GPP,
 // ETSI, MPEG, IETF, GSMA, DVB, …) feed into a 4-stage loop (Requirements,
-// Explainers & Blueprints, Software Accelerator, Interop & Demos) that
-// closes back with a Feedback arc into the standards bodies, and forwards
-// into Products & Deployments. Chip text here is deliberately the
+// Explainers & Blueprints, Software Accelerator, Interop, Demos &
+// Showcases) that closes back with a Feedback arc into the standards
+// bodies, and forwards into Products & Deployments. Relabelled from
+// "Interop & Demos" so Application Showcases (assembled, dedicated-page
+// scenarios, not just plugfest recordings) are named here too, without
+// adding a 5th circle to a diagram hand-positioned for 4. Chip text here is
+// deliberately the
 // practical/descriptive names, not the short nav-pillar labels (Technology,
 // In Action) — this diagram illustrates what each stage concretely
 // produces, not which nav box it lives under (2026-08-24 user feedback).
@@ -249,10 +253,10 @@ export default function StandardsLoopDiagram() {
           <path d="M7 12l5 5l-1.5 1.5a3.536 3.536 0 1 1 -5 -5l1.5 -1.5 M17 12l-5 -5l1.5 -1.5a3.536 3.536 0 1 1 5 5l-1.5 1.5 M3 21l2.5 -2.5 M18.5 5.5l2.5 -2.5 M10 11l-2 2 M13 14l-2 2" />
         </g>
         <text x="724" y="298" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="var(--diagram-chip-text)">
-          Interop &amp;
+          Interop, Demos
         </text>
         <text x="724" y="314" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="var(--diagram-chip-text)">
-          Demos
+          &amp; Showcases
         </text>
       </g>
       <path
