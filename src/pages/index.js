@@ -16,7 +16,7 @@ import ReleaseCard from '@site/src/components/ReleaseCard';
 import { EventsAgendaPreview } from '@site/src/components/EventsAgenda';
 import { DISCOVER_WORK } from '@site/src/data/discoverWork';
 import { EVENTS_AGENDA } from '@site/src/data/eventsAgenda';
-import { TECH_AREAS } from '@site/src/data/techAreas';
+import { DOMAIN_PILLARS } from '@site/src/data/domainPillars';
 import { NEWS_PREVIEW } from '@site/src/data/newsPreview';
 import { sampleRandom } from '@site/src/utils/random';
 import { sortByLatestRelease } from '@site/src/utils/releases';
@@ -61,7 +61,7 @@ function AreaCard({ title, body, href, icon: cardIcon }) {
   return <HubDestinationCard icon={icon(cardIcon)} title={title} desc={body} href={href} />;
 }
 
-// Real photos of the technologies named just above (in TECH_AREAS and
+// Real photos of the technologies named just above (in DOMAIN_PILLARS and
 // DISCOVER_WORK) actually running -- not stock imagery, same convention
 // About's "Examples of Our Work" gallery already uses. Added, then
 // expanded from an initial 3 to cover more of the named technology areas,
@@ -199,10 +199,10 @@ export default function Home() {
             <h2 className={styles.sectionTitle}>
               At the intersection of Media and Connectivity
             </h2>
-            <p style={{ maxWidth: '760px', margin: '0 auto 1rem', lineHeight: 1.7, textAlign: 'center' }}>
+            <p style={{ maxWidth: '760px', margin: '0 auto 0.75rem', lineHeight: 1.6, textAlign: 'center', fontSize: '1.25rem', fontWeight: 600 }}>
               Open specifications and open-source software, turned into real-world applications.
             </p>
-            <p style={{ maxWidth: '760px', margin: '0 auto 1.5rem', lineHeight: 1.7, textAlign: 'center' }}>
+            <p style={{ maxWidth: '700px', margin: '0 auto 1.5rem', lineHeight: 1.6, textAlign: 'center', fontSize: '1.1rem', color: 'var(--ifm-color-emphasis-700)' }}>
               A neutral platform, driven by our members: they set the priorities, we execute.
             </p>
 
@@ -220,12 +220,24 @@ export default function Home() {
             <p className={styles.techAreaLabel}>See It Running</p>
             <FadingPhotoRow photos={useCasePhotos} />
 
-            <p className={styles.techAreaLabel}>Explore by technology area</p>
-            <div className={styles.techAreaRow}>
-              {TECH_AREAS.map((t) => (
-                <Link key={t.href} to={t.href} className={styles.techAreaChip}>
-                  {t.label}
-                </Link>
+            {/* Same DOMAIN_PILLARS grouping /about's own "What We Work On"
+                section uses (same title, same data, same .domain-pillar-chip
+                styling) -- replaces the old flat, unsorted TECH_AREAS chip
+                row so the two pages tell one consistent story instead of
+                two different ones. */}
+            <p className={styles.techAreaLabel}>What We Work On</p>
+            <div className={styles.domainPillarGroups}>
+              {DOMAIN_PILLARS.map((p) => (
+                <div key={p.title} className={styles.domainPillarGroup}>
+                  <span className={styles.domainPillarGroupLabel}>{p.title}</span>
+                  <div className="domain-pillar-chips">
+                    {p.chips.map((c) => (
+                      <Link key={c.label} to={c.href} className="domain-pillar-chip">
+                        {c.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
 

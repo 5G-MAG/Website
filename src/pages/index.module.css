@@ -386,35 +386,32 @@
   margin: 0 0 0.85rem;
 }
 
-.techAreaRow {
+/* Same grouping as /about's "What We Work On" (DOMAIN_PILLARS): a label
+   per pillar, and its chips right below -- centered here to match this
+   section's existing centered layout, where /about's version left-aligns
+   inside a card. */
+.domainPillarGroups {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.6rem;
-  max-width: 900px;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  max-width: 800px;
   margin: 0 auto 2.5rem;
 }
 
-.techAreaChip {
-  display: inline-block;
-  padding: 0.45rem 1rem;
-  border-radius: 999px;
-  border: 1px solid var(--ifm-color-emphasis-300);
-  background: var(--ifm-background-surface-color);
-  color: var(--ifm-font-color-base) !important;
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-decoration: none !important;
-  transition:
-    border-color 0.15s ease,
-    color 0.15s ease,
-    box-shadow 0.15s ease;
+.domainPillarGroup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
-.techAreaChip:hover {
-  border-color: var(--ifm-color-primary);
-  color: var(--ifm-color-primary) !important;
-  box-shadow: var(--card-hover-shadow);
+.domainPillarGroupLabel {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ifm-font-color-base);
+  white-space: nowrap;
 }
 
 /* ── See It Running (fading photo row) ────────────────────────────────
