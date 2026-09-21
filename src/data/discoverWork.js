@@ -19,7 +19,7 @@ export const DISCOVER_WORK = [
   },
   {
     title: 'Standardisation Activities',
-    body: 'Feedback and requirements to standards bodies, drawn from real deployment experience.',
+    body: "Feedback and requirements to standards bodies, supporting our members' deployment experience.",
     href: '/standards',
     icon: <path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" />,
   },

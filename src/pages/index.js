@@ -200,8 +200,10 @@ export default function Home() {
               At the intersection of Media and Connectivity
             </h2>
             <p style={{ maxWidth: '760px', margin: '0 auto 1rem', lineHeight: 1.7, textAlign: 'center' }}>
-              &ldquo;We are not a standards body. We do not write specs. We translate them into
-              things that run.&rdquo;
+              Open specifications and open-source software, turned into real-world applications.
+            </p>
+            <p style={{ maxWidth: '760px', margin: '0 auto 1.5rem', lineHeight: 1.7, textAlign: 'center' }}>
+              A neutral platform, driven by our members: they set the priorities, we execute.
             </p>
 
             <div style={{ margin: '0 0 2rem' }}>
@@ -335,8 +337,7 @@ export default function Home() {
           <div className="container">
             <h2 className={styles.sectionTitle}>Our Members</h2>
             <p className={styles.sectionSubtitle}>
-              A thriving, open community — membership is open to any organization willing to join
-              the efforts.
+              Open to any organization willing to join — and member-driven once you do.
             </p>
           </div>
           <MembersMarquee />
