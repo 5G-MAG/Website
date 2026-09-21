@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-20 01:48 UTC",
+  "updated_at": "2026-09-21 01:49 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -202,19 +202,6 @@
       "doc_url": "/reference-tools/5g-mbs/",
       "tagline": "5G-native multicast and broadcast services · 3GPP 5G MBS",
       "pulls": [
-        {
-          "repo": "rt-mbs-examples",
-          "branch": null,
-          "number": 34,
-          "title": "Print each component's checkout, branch and built binary when a tmux tutorial starts",
-          "url": "https://github.com/5G-MAG/rt-mbs-examples/pull/34",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-18",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
         {
           "repo": "rt-mbs-examples",
           "branch": null,
@@ -453,13 +440,13 @@
         {
           "repo": "rt-camara-examples",
           "branch": null,
-          "number": 4,
-          "title": "feat: add Dedicated Networks MCP server",
-          "url": "https://github.com/5G-MAG/rt-camara-examples/pull/4",
+          "number": 6,
+          "title": "fix: redesign Dedicated Networks Portal for a more consistent flow across the 4 APIs",
+          "url": "https://github.com/5G-MAG/rt-camara-examples/pull/6",
           "draft": false,
-          "author_login": "aaronmontilla",
-          "author_avatar": "https://avatars.githubusercontent.com/u/47569421?v=4",
-          "created_at": "2026-07-01",
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-09-20",
           "last_comment_by": null,
           "last_comment_date": null
         }
