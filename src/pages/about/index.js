@@ -9,6 +9,7 @@ import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import PhotoGallery from '@site/src/components/PhotoGallery';
 import { DISCOVER_WORK } from '@site/src/data/discoverWork';
 import { SCOPE_PILLARS } from '@site/src/data/scopePillars';
+import { DOMAIN_PILLARS } from '@site/src/data/domainPillars';
 import { FACT_SPEC_ISSUES, FACT_SDO_INPUTS, FACT_REPOSITORIES, FACT_CLONES } from '@site/src/data/facts';
 import styles from '../tech/index.module.css';
 
@@ -79,8 +80,8 @@ export default function About() {
               things that run.&rdquo;
             </p>
             <p className={styles.leadParagraph}>
-              5G-MAG is a neutral platform bridging standards and real-world deployments: keeping
-              connected media applications open, interoperable and deployable at scale.
+              5G-MAG is a neutral platform, driven by our members: they set the priorities, and we
+              keep connected media applications open, interoperable and deployable at scale.
             </p>
             <p className={`${styles.leadParagraph} ${styles['leadParagraph--last']}`}>
               Technology, backed by open standards, ready to scale across the industry.
@@ -93,6 +94,36 @@ export default function About() {
             <div className="godeeper-grid godeeper-grid--4col">
               {SCOPE_PILLARS.map((p) => (
                 <GodeeperCard key={p.title} {...p} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className={`${styles.section} ${styles.sectionAlt}`}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>What We Work On</h2>
+            <p className={styles.sectionSubtitle} style={{ marginBottom: '1.5rem' }}>
+              Grouped by delivery mechanism and use case, not by which standards body owns the
+              spec. DVB-I over 5G Systems cuts across two of these (Content Delivery and 5G
+              Broadcast) rather than sitting under either one.
+            </p>
+            <div className="godeeper-grid godeeper-grid--4col">
+              {DOMAIN_PILLARS.map((p) => (
+                <GodeeperCard
+                  key={p.title}
+                  title={p.title}
+                  body={
+                    p.chips.length ? (
+                      <div className="domain-pillar-chips">
+                        {p.chips.map((c) => (
+                          <span key={c} className="domain-pillar-chip">
+                            {c}
+                          </span>
+                        ))}
+                      </div>
+                    ) : null
+                  }
+                />
               ))}
             </div>
           </div>
