@@ -1,10 +1,14 @@
 [
   {
     "name": "5G Media Streaming (5GMS)",
+    "displayName": "5G Media Streaming (5GMS) Architecture",
     "doc_url": "/reference-tools/5gms/",
     "image": "/assets/images/projects/5gms.png",
     "releases_slug": "resources",
     "tagline": "End-to-end 5G media streaming from network to client · 3GPP TS 26.501",
+    "basket": "content-delivery",
+    "status": "advanced",
+    "pages": { "tech": "/tech/5gms", "standards": "/standards/5gms", "referenceTools": "/reference-tools/5gms", "testbeds": null },
     "repos": [
       "rt-5gms-application-function",
       "rt-5gms-application-server",
@@ -28,6 +32,9 @@
     "doc_url": "/reference-tools/5g-broadcast/",
     "image": "/assets/images/projects/5g-broadcast.png",
     "tagline": "LTE-based 5G broadcast for TV, radio and emergency alerts",
+    "basket": "5g-broadcast",
+    "status": "advanced",
+    "pages": { "tech": "/tech/5g-broadcast", "standards": "/standards/5g-broadcast", "referenceTools": "/reference-tools/5g-broadcast", "testbeds": null },
     "repos": [
       "rt-mbms-mw",
       "rt-mbms-modem",
@@ -56,6 +63,9 @@
     "doc_url": "/reference-tools/emergency-alerts/",
     "image": "/assets/images/projects/emergency-alerts.png",
     "tagline": "Cell Broadcast Service warnings delivered over FeMBMS",
+    "basket": "5g-broadcast",
+    "status": "basic",
+    "pages": { "tech": "/tech/5g-broadcast", "standards": "/standards/emergency-alerts", "referenceTools": "/reference-tools/emergency-alerts", "testbeds": null },
     "repos": [
       {
         "name": "rt-mbms-tx-for-qrd-and-crd",
@@ -70,9 +80,13 @@
   },
   {
     "name": "XR/3D Scenes with MPEG-I Scene Description",
+    "displayName": "XR Media & 3D Scenes",
     "doc_url": "/reference-tools/xr/",
     "image": "/assets/images/projects/xr.png",
     "tagline": "MPEG-I scene description and XR media integration over 5G",
+    "basket": "immersive-media",
+    "status": "basic",
+    "pages": { "tech": "/tech/xr", "standards": "/standards/xr", "referenceTools": "/reference-tools/xr", "testbeds": null },
     "repos": [
       "rt-xr-unity-player",
       "rt-xr-maf-native",
@@ -94,6 +108,9 @@
     "doc_url": "/reference-tools/5g-mbs/",
     "image": "/assets/images/projects/5g-mbs.png",
     "tagline": "5G-native multicast and broadcast services · 3GPP 5G MBS",
+    "basket": "multicast",
+    "status": "advanced",
+    "pages": { "tech": "/tech/5g-mbs", "standards": "/standards/5g-mbs", "referenceTools": "/reference-tools/5g-mbs", "testbeds": null },
     "repos": [
       "rt-mbs-function",
       "rt-mbs-transport-function",
@@ -128,6 +145,9 @@
     "doc_url": "/reference-tools/data-collection/",
     "image": "/assets/images/projects/data-collection.png",
     "tagline": "UE-side data collection, reporting and event exposure · 3GPP TS 26.531",
+    "basket": "content-delivery",
+    "status": "basic",
+    "pages": { "tech": "/tech/data-collection/data-collection-event-exposure", "standards": "/standards/data-collection", "referenceTools": "/reference-tools/data-collection", "testbeds": null },
     "repos": [
       "rt-data-collection-application-function",
       "rt-common-shared"
@@ -140,9 +160,13 @@
   },
   {
     "name": "MPEG V3C Immersive Platform",
+    "displayName": "Volumetric Video Experiences",
     "doc_url": "/reference-tools/v3c/",
     "image": "/assets/images/projects/v3c.png",
     "tagline": "V3C volumetric video platform for immersive 5G experiences",
+    "basket": "immersive-media",
+    "status": "basic",
+    "pages": { "tech": "/tech/volumetric", "standards": "/standards/v3c", "referenceTools": "/reference-tools/v3c", "testbeds": null },
     "repos": [
       "rt-v3c-unity-player",
       "rt-v3c-decoder-plugin",
@@ -161,6 +185,8 @@
     "doc_url": "/reference-tools/5g-core/",
     "image": "/assets/images/projects/5g-core.png",
     "tagline": "Reference consumers for 5G Core capability exposure APIs",
+    "basket": null,
+    "excludedReason": "Reference consumer repo, not a topic in its own right.",
     "repos": [
       "rt-5gc-service-consumers",
       "rt-common-shared"
@@ -176,6 +202,9 @@
     "doc_url": "/testbeds/beyond-2d/",
     "image": "/assets/images/projects/beyond-2d.png",
     "tagline": "Evaluation framework for beyond-2D video experiences",
+    "basket": "testbeds",
+    "status": "basic",
+    "pages": { "tech": "/tech/volumetric/beyond-2d", "standards": "/standards/beyond-2d", "referenceTools": null, "testbeds": "/testbeds/beyond-2d" },
     "repos": [
       "rt-beyond2d-evaluation-framework",
       "rt-common-shared"
@@ -191,6 +220,9 @@
     "doc_url": "/testbeds/6g-testbed/",
     "image": "/assets/images/projects/6g-testbed.png",
     "tagline": "6G testbed and AI-driven traffic characterization",
+    "basket": "testbeds",
+    "status": "basic",
+    "pages": { "tech": "/tech/6g", "standards": null, "referenceTools": null, "testbeds": "/testbeds/6g-testbed" },
     "repos": [
       "6G-Testbed",
       "rt-common-shared"
@@ -202,9 +234,13 @@
   },
   {
     "name": "CAMARA Connectivity Quality Management APIs",
+    "displayName": "Network APIs for Connectivity Quality",
     "doc_url": "/reference-tools/network-apis/",
     "image": "/assets/images/projects/network-apis.png",
     "tagline": "Network capability exposure through CAMARA APIs",
+    "basket": "connected-media-production",
+    "status": "basic",
+    "pages": { "tech": "/tech/network-apis", "standards": "/standards/network-apis", "referenceTools": "/reference-tools/network-apis", "testbeds": null },
     "repos": [
       "rt-camara-examples"
     ],
@@ -216,9 +252,13 @@
   },
   {
     "name": "Conversational Avatar Communication with MPEG ARF",
+    "displayName": "Conversational Avatar Communication",
     "doc_url": "/reference-tools/avatar/",
     "image": "/assets/images/projects/avatar.png",
     "tagline": "Real-time conversational avatars over 5G using MPEG ARF",
+    "basket": "immersive-media",
+    "status": "basic",
+    "pages": { "tech": "/tech/avatar-communications", "standards": "/standards/avatar", "referenceTools": "/reference-tools/avatar", "testbeds": null },
     "repos": [
       "rt-avatar-content",
       "rt-avatar-call",
@@ -237,6 +277,9 @@
     "doc_url": "/testbeds/ai-ml/",
     "image": "/assets/images/projects/ai-ml.png",
     "tagline": "Evaluation framework for AI/ML models in 5G media processing",
+    "basket": "testbeds",
+    "status": "basic",
+    "pages": { "tech": "/tech/ai-ml", "standards": "/standards/ai-ml", "referenceTools": null, "testbeds": "/testbeds/ai-ml" },
     "repos": [
       "rt-ai-ml-evaluation-framework"
     ],
@@ -251,6 +294,8 @@
     "doc_url": "/reference-tools/common-tools/",
     "image": "/assets/images/projects/common-tools.png",
     "tagline": "Shared helper repositories supporting 5G-MAG Reference Tools",
+    "basket": null,
+    "excludedReason": "Shared helper repositories other reference tools depend on -- rt-common-shared.",
     "repos": [
       "rt-common-shared"
     ],
@@ -261,9 +306,12 @@
     "doc_url": "/reference-tools/dvb-i/",
     "image": "/assets/images/projects/dvb-i.png",
     "tagline": "DVB-I service discovery combined with 5GMS and 5G Broadcast delivery",
-    "repos": [
-      "rt-5gms-application"
-    ],
+    "basket": "5g-broadcast",
+    "status": "technical-analysis",
+    "relatedBaskets": ["content-delivery"],
+    "relatedProjects": ["5G Media Streaming (5GMS)"],
+    "pages": { "tech": "/tech/dvb-i/dvb-i-5g", "standards": "/standards/dvb-i", "referenceTools": "/reference-tools/dvb-i", "testbeds": null },
+    "repos": [],
     "releases_slug": "resources",
     "contributors": [
       "Fraunhofer FOKUS",
@@ -277,6 +325,10 @@
     "doc_url": "/reference-tools/content-delivery/",
     "image": "/assets/images/projects/multimedia.png",
     "tagline": "DASH, HLS and CMAF content delivery reference tools",
+    "basket": "content-delivery",
+    "status": "basic",
+    "relatedBaskets": ["5g-broadcast", "multicast"],
+    "pages": { "tech": "/tech/content-delivery", "standards": "/standards/content-delivery", "referenceTools": "/reference-tools/content-delivery", "testbeds": null },
     "repos": [
       "rt-libflute",
       {
@@ -296,6 +348,8 @@
     "doc_url": "/reference-tools/3gpp-platforms/",
     "image": "/assets/images/projects/3gpp-platforms.png",
     "tagline": "Lab-ready 5G RAN and Core built on Open5GS and srsRAN forks",
+    "basket": null,
+    "excludedReason": "Infrastructure other projects run on, not a topic.",
     "repos": [
       "rt-srsRAN_Project",
       "srsRAN_4G",
@@ -310,9 +364,56 @@
     "name": "Dependency",
     "doc_url": null,
     "tagline": "External forks and dependencies 5G-MAG maintains for its reference tools — not first-class reference-tool projects with their own docs page",
+    "basket": null,
+    "excludedReason": "External fork/dependency, not a 5G-MAG-authored topic.",
     "repos": [
       "5GC_APIs",
       "cmcd-toolkit"
     ]
+  },
+  {
+    "name": "Real-time Media Communication (RTC) Architecture",
+    "doc_url": null,
+    "tagline": "Interactive, low-latency WebRTC-based media communication over 5G, layered on 5GMSu and related delivery functions.",
+    "basket": "rtc",
+    "status": "technical-analysis",
+    "pages": { "tech": "/tech/rtc", "standards": "/standards/rtc", "referenceTools": null, "testbeds": null },
+    "repos": []
+  },
+  {
+    "name": "Non-Terrestrial Networks in 5G Systems",
+    "doc_url": null,
+    "tagline": "Extending 5G coverage via satellite and HAPS as a delivery layer for MBS multicast and broadcast.",
+    "basket": "ntn",
+    "status": "technical-analysis",
+    "pages": { "tech": "/tech/ntn", "standards": "/standards/ntn", "referenceTools": null, "testbeds": null },
+    "repos": []
+  },
+  {
+    "name": "Non-Public Networks",
+    "doc_url": null,
+    "tagline": "Private 5G deployments for live production, replacing legacy satellite, ISDN and fibre contribution links.",
+    "basket": "connected-media-production",
+    "status": "technical-analysis",
+    "pages": { "tech": "/tech/npn", "standards": "/standards/npn", "referenceTools": null, "testbeds": null },
+    "repos": []
+  },
+  {
+    "name": "Time-Sensitive Communications (TSC)",
+    "doc_url": null,
+    "tagline": "Deterministic, low-jitter 5G transport for tightly synchronised professional media, typically over a Non-Public Network.",
+    "basket": "connected-media-production",
+    "status": "technical-analysis",
+    "pages": { "tech": "/tech/tsc", "standards": "/standards/tsc", "referenceTools": null, "testbeds": null },
+    "repos": []
+  },
+  {
+    "name": "6G Media (standards analysis)",
+    "doc_url": null,
+    "tagline": "5G-MAG's early media requirements input to 6G standardisation, backed by an AI-driven testbed.",
+    "basket": "research-topics",
+    "status": "technical-analysis",
+    "pages": { "tech": "/tech/6g", "standards": "/standards/6g", "referenceTools": null, "testbeds": null },
+    "repos": []
   }
 ]
