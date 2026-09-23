@@ -20,7 +20,7 @@ function socialFooterItem(label, href, svgInner) {
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: '5G-MAG - The Media Connectivity Association',
-  tagline: 'Developer documentation, specification analysis and standards work',
+  tagline: 'We bridge standards and deployments. We transform specifications into open-source software to boost deployability.',
   favicon: 'img/favicon.ico',
 
   future: { v4: true },
