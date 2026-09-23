@@ -462,7 +462,7 @@ const CONTENT_MODEL = [
     title: 'Applications',
     body: 'Real, assembled scenarios built from one or more Reference Tools, pointed at a concrete use case.',
     linkLabel: 'Browse Applications →',
-    linkHref: '/applications',
+    linkHref: '/showcase',
   },
 ];
 

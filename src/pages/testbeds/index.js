@@ -3,7 +3,7 @@ import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import HubDestinationCard from '@site/src/components/HubDestinationCard';
 import styles from '../tech/index.module.css';
-// Shared with /reference-tools and /applications; see the comment there
+// Shared with /reference-tools and /showcase; see the comment there
 // for why (2026-08-24 findability audit; extended here 2026-08-25).
 import filterStyles from '../reference-tools/styles.module.css';
 

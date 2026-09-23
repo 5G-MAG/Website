@@ -21,10 +21,10 @@ const APPS_ICON_PATH = (
 );
 
 // Grouped into 4 application categories, each with its own dedicated page
-// under docs/home/applications/: streaming.md, 5g-broadcast.md, volumetric.md
+// under docs/home/showcase/: streaming.md, 5g-broadcast.md, volumetric.md
 // (retitled to cover all Immersive Media Experiences, not just volumetric
 // video) and network-apis.md. Each topic below links to the H2 subsection on
-// its category's page (e.g. '/applications/streaming#live-streaming-over-a-
+// its category's page (e.g. '/showcase/streaming#live-streaming-over-a-
 // real-5g-network') where the application is explained in real-world terms,
 // the Reference Tool(s) it combines are linked, and the underlying tutorial
 // is linked for hands-on setup steps. multicast-broadcast.md and xr.md were
@@ -42,13 +42,13 @@ const CATEGORIES = [
       {
         title: 'Live Streaming Over a Real 5G Network',
         desc: '5GMSd deployed over a real 5G network (Open5GS, srsRAN) with a commercial off-the-shelf device.',
-        href: '/applications/streaming#live-streaming-over-a-real-5g-network',
+        href: '/showcase/streaming#live-streaming-over-a-real-5g-network',
         icon: icon(<path d="M7 4v16l13 -8l-13 -8" />),
       },
       {
         title: 'MBS End-to-End Delivery Demo',
         desc: 'Operating MBS user services end-to-end across the 5G Core, MB-SMF, MBSF, MBSTF, NG-RAN and UE.',
-        href: '/applications/streaming#mbs-end-to-end-delivery-demo',
+        href: '/showcase/streaming#mbs-end-to-end-delivery-demo',
         icon: icon(
           <>
             <path d="M12 12l0 .01" />
@@ -62,7 +62,7 @@ const CATEGORIES = [
       {
         title: 'QoE Analytics Dashboard',
         desc: 'CMCD, consumption and QoE metrics reporting from the 5GMS client into a live Grafana dashboard.',
-        href: '/applications/streaming#qoe-analytics-dashboard',
+        href: '/showcase/streaming#qoe-analytics-dashboard',
         icon: icon(
           <>
             <path d="M14 3v4a1 1 0 0 0 1 1h4" />
@@ -82,7 +82,7 @@ const CATEGORIES = [
       {
         title: 'Broadcast Stream Playback (RTP/HLS)',
         desc: 'Receiving and playing back a broadcast stream over 5G Broadcast, via RTP or HLS.',
-        href: '/applications/5g-broadcast#broadcast-stream-playback-rtphls',
+        href: '/showcase/5g-broadcast#broadcast-stream-playback-rtphls',
         icon: icon(
           <>
             <path d="M15 10l4.553 -2.069a1 1 0 0 1 1.447 .894v6.35a1 1 0 0 1 -1.447 .894l-4.553 -2.069v-4" />
@@ -93,7 +93,7 @@ const CATEGORIES = [
       {
         title: 'Emergency Alert Broadcast Demo',
         desc: 'Broadcasting a Cell Broadcast Service (CBS) emergency alert via SDR and receiving it on a device.',
-        href: '/applications/5g-broadcast#emergency-alert-broadcast-demo',
+        href: '/showcase/5g-broadcast#emergency-alert-broadcast-demo',
         icon: icon(
           <>
             <path d="M12 8a2 2 0 0 1 2 2v4a2 2 0 1 1 -4 0v-4a2 2 0 0 1 2 -2" />
@@ -105,7 +105,7 @@ const CATEGORIES = [
       {
         title: 'Seamless Unicast/Broadcast Switching',
         desc: 'Android middleware seamlessly switching a client between unicast 5GMS and 5G Broadcast reception.',
-        href: '/applications/5g-broadcast#seamless-unicastbroadcast-switching',
+        href: '/showcase/5g-broadcast#seamless-unicastbroadcast-switching',
         icon: icon(
           <>
             <path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
@@ -125,7 +125,7 @@ const CATEGORIES = [
       {
         title: 'Immersive 3D Media Messaging',
         desc: 'Sharing 3D and AR assets as media message attachments, opened and rendered in the XR player.',
-        href: '/applications/volumetric#immersive-3d-media-messaging',
+        href: '/showcase/volumetric#immersive-3d-media-messaging',
         icon: icon(
           <>
             <path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
@@ -140,7 +140,7 @@ const CATEGORIES = [
       {
         title: 'Volumetric Video Streaming to Android',
         desc: 'The V3C Unity player streaming volumetric 3D content to Android from a DASH server.',
-        href: '/applications/volumetric#volumetric-video-streaming-to-android',
+        href: '/showcase/volumetric#volumetric-video-streaming-to-android',
         icon: icon(
           <>
             <path d="M4 8v-2a2 2 0 0 1 2 -2h2" />
@@ -156,7 +156,7 @@ const CATEGORIES = [
       {
         title: 'XR Content Authoring with Blender',
         desc: 'Authoring an XR scene with the Blender glTF exporter and loading it into the XR player.',
-        href: '/applications/volumetric#xr-content-authoring-with-blender',
+        href: '/showcase/volumetric#xr-content-authoring-with-blender',
         icon: icon(
           <>
             <path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
@@ -177,7 +177,7 @@ const CATEGORIES = [
       {
         title: 'Dedicated Network APIs for Connected Media Production',
         desc: 'CAMARA Quality on Demand, Connectivity Insights and Network Slice Booking APIs for live contribution and remote production.',
-        href: '/applications/network-apis#dedicated-network-apis-for-connected-media-production',
+        href: '/showcase/network-apis#dedicated-network-apis-for-connected-media-production',
         icon: icon(
           <>
             <path d="M4 13h5" />

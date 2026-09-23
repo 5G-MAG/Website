@@ -114,6 +114,17 @@ const config = {
           // indexing may still point at the old path.
           { from: '/testing', to: '/action' },
           { from: '/testing/5g-broadcast-plugfest', to: '/action/5g-broadcast-plugfest' },
+          // /applications renamed to /showcase (2026-09-23): bookmarks and
+          // search-engine indexing may still point at the old path. All
+          // seven entries below (the hub plus its six docs pages) moved
+          // together, same folder structure, only the path prefix changed.
+          { from: '/applications', to: '/showcase' },
+          { from: '/applications/streaming', to: '/showcase/streaming' },
+          { from: '/applications/streaming/sample-multi-angle-replay', to: '/showcase/streaming/sample-multi-angle-replay' },
+          { from: '/applications/5g-broadcast', to: '/showcase/5g-broadcast' },
+          { from: '/applications/5g-broadcast/seamless-switching', to: '/showcase/5g-broadcast/seamless-switching' },
+          { from: '/applications/volumetric', to: '/showcase/volumetric' },
+          { from: '/applications/network-apis', to: '/showcase/network-apis' },
           // "Multimedia Delivery Protocols" topic renamed to "Content Delivery
           // Protocols" (2026-09-10): the lead concept is the transport, not
           // the media type it happens to carry -- rt-libflute (FLUTE/ROUTE,
@@ -233,7 +244,7 @@ const config = {
         docsRouteBasePath: [
           '/tech',
           '/action',
-          '/applications',
+          '/showcase',
           '/community',
           '/developer',
           '/events',
@@ -323,7 +334,7 @@ const config = {
           items: [
             { label: 'Overview', to: '/developer' },
             { label: 'Reference Tools', to: '/reference-tools' },
-            { label: 'Applications', to: '/applications' },
+            { label: 'Applications', to: '/showcase' },
             { label: 'Testbeds', to: '/testbeds' },
             { label: 'Developer Exchanges', to: '/developer/exchanges' },
             { label: 'Early Access', to: '/early-access' },

@@ -14,7 +14,7 @@ const REFTOOLS_ICON_PATH = (
   </>
 );
 
-// Deliberately NOT shared with developer/index.js or applications/index.js's
+// Deliberately NOT shared with developer/index.js or showcase/index.js's
 // near-identical arrays: topic titles here intentionally use each project's
 // fuller canonical name (matching its own _category_.json label in
 // sidebars-home.js), not the shorter discovery-grid labels used on those two
@@ -324,7 +324,7 @@ export default function ReferenceTools() {
               instead, see <Link to="/tech#categories-topics">Technical Resources</Link>. Start here if you
               know which specification or tool you want. For a complete end-to-end service scenario
               built from several tools, see{' '}
-              <Link to="/applications">Applications</Link>. For shared test infrastructure, see{' '}
+              <Link to="/showcase">Applications</Link>. For shared test infrastructure, see{' '}
               <Link to="/testbeds">Testbeds</Link>.
             </p>
             <div className={filterStyles.filterBar}>

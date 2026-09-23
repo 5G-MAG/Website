@@ -51,7 +51,7 @@ const PRODUCT_TYPES = [
     icon: 'Applications',
     label: 'Application Showcases',
     description: 'Use-case driven implementations towards real-world applications.',
-    href: '/applications',
+    href: '/showcase',
   },
 ];
 

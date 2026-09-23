@@ -62,7 +62,7 @@ export const SECTION_NAV = [
     ],
   },
   // Every route under the Software Accelerator umbrella shares this one
-  // entry (2026-07-23) — previously /applications, /reference-tools and
+  // entry (2026-07-23) — previously /showcase, /reference-tools and
   // /testbeds each carried their own separate, shorter, self-excluding item
   // list (missing Early Access and License, and drifting further any time
   // one list was updated but not the others), and /early-access matched no
@@ -73,7 +73,7 @@ export const SECTION_NAV = [
       '/developer',
       '/reference-tools',
       '/testbeds',
-      '/applications',
+      '/showcase',
       '/early-access',
       '/community',
       '/contributing',
@@ -85,7 +85,7 @@ export const SECTION_NAV = [
     items: [
       { label: 'Reference Tools', href: '/reference-tools' },
       { label: 'Testbeds', href: '/testbeds' },
-      { label: 'Applications', href: '/applications' },
+      { label: 'Applications', href: '/showcase' },
       { label: 'Developer Exchanges', href: '/developer/exchanges' },
       { label: 'Early Access', href: '/early-access' },
       { label: 'Community', href: '/community' },

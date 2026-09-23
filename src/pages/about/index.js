@@ -142,7 +142,7 @@ export default function About() {
             </p>
             <PhotoGallery photos={showcasePhotos} />
             <div style={{ textAlign: 'center', marginTop: '2rem', fontWeight: 600 }}>
-              <Link to="/applications">See Applications &rarr;</Link>
+              <Link to="/showcase">See Applications &rarr;</Link>
               {' · '}
               <Link to="/reference-tools">See Reference Tools &rarr;</Link>
             </div>
