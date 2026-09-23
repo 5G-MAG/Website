@@ -5,11 +5,11 @@ import HubHero from '@site/src/components/HubHero';
 import MediaConnectivityDiagram from '@site/src/components/MediaConnectivityDiagram';
 import StandardsLoopDiagram from '@site/src/components/StandardsLoopDiagram';
 import GodeeperCard from '@site/src/components/GodeeperCard';
+import DomainPillarGrid from '@site/src/components/DomainPillarGrid';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import PhotoGallery from '@site/src/components/PhotoGallery';
 import { DISCOVER_WORK } from '@site/src/data/discoverWork';
 import { SCOPE_PILLARS } from '@site/src/data/scopePillars';
-import { DOMAIN_PILLARS } from '@site/src/data/domainPillars';
 import { FACT_SPEC_ISSUES, FACT_SDO_INPUTS, FACT_REPOSITORIES, FACT_CLONES } from '@site/src/data/facts';
 import styles from '../tech/index.module.css';
 
@@ -96,30 +96,13 @@ export default function About() {
           </div>
         </section>
 
-        <section className={`${styles.section} ${styles.sectionAlt}`}>
+        <section id="what-we-work-on" className={`${styles.section} ${styles.sectionAlt}`}>
           <div className="container">
             <h2 className={styles.sectionTitle}>What We Work On</h2>
             <p className={styles.sectionSubtitle} style={{ marginBottom: '1.5rem' }}>
               Our current topics, brought by our members.
             </p>
-            <div className="godeeper-grid godeeper-grid--4col">
-              {DOMAIN_PILLARS.map((p) => (
-                <GodeeperCard
-                  key={p.title}
-                  title={p.title}
-                  icon={p.icon}
-                  body={
-                    <div className="domain-pillar-chips">
-                      {p.chips.map((c) => (
-                        <Link key={c.label} to={c.href} className="domain-pillar-chip">
-                          {c.label}
-                        </Link>
-                      ))}
-                    </div>
-                  }
-                />
-              ))}
-            </div>
+            <DomainPillarGrid />
           </div>
         </section>
 

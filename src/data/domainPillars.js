@@ -23,6 +23,11 @@
 // APIs' or Time-Sensitive Communications' -- the same choice
 // MediaConnectivityDiagram already makes for its "camera" slot on the
 // Media side (see that component's own top-of-file comment).
+//
+// A pillar with exactly one real topic (RTC, NTN) gets a top-level `href`
+// and an empty `chips` array, so the whole card is the link -- a single
+// chip repeating the card's own title as its only content read as
+// redundant (raised in review).
 export const DOMAIN_PILLARS = [
   {
     title: 'Content Delivery',
@@ -34,6 +39,7 @@ export const DOMAIN_PILLARS = [
   },
   {
     title: 'Real-Time Communications (RTC)',
+    href: '/tech/rtc',
     icon: (
       <>
         <path d="M7 21v-6" />
@@ -46,7 +52,7 @@ export const DOMAIN_PILLARS = [
         <path d="M17 15v-2" />
       </>
     ),
-    chips: [{ label: 'Real-Time Communications', href: '/tech/rtc' }],
+    chips: [],
   },
   {
     title: '5G Broadcast',
@@ -79,6 +85,7 @@ export const DOMAIN_PILLARS = [
   },
   {
     title: 'Non-Terrestrial Networks (NTN)',
+    href: '/tech/ntn',
     icon: (
       <>
         <path d="M3.707 6.293l2.586 -2.586a1 1 0 0 1 1.414 0l5 5a1 1 0 0 1 0 1.414l-2.586 2.586a1 1 0 0 1 -1.414 0l-5 -5a1 1 0 0 1 0 -1.414z" />
@@ -88,7 +95,7 @@ export const DOMAIN_PILLARS = [
         <path d="M20 13a9 9 0 0 0 -9 9" />
       </>
     ),
-    chips: [{ label: 'Non-Terrestrial Networks', href: '/tech/ntn' }],
+    chips: [],
   },
   {
     title: 'Immersive Media',
