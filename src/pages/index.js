@@ -16,8 +16,8 @@ import ReleaseCard from '@site/src/components/ReleaseCard';
 import { EventsAgendaPreview } from '@site/src/components/EventsAgenda';
 import { DISCOVER_WORK } from '@site/src/data/discoverWork';
 import { EVENTS_AGENDA } from '@site/src/data/eventsAgenda';
-import { DOMAIN_PILLARS } from '@site/src/data/domainPillars';
 import { NEWS_PREVIEW } from '@site/src/data/newsPreview';
+import projectsData from '@site/src/data/projects.json';
 import { sampleRandom } from '@site/src/utils/random';
 import { sortByLatestRelease } from '@site/src/utils/releases';
 import styles from './index.module.css';
@@ -63,76 +63,96 @@ function AreaCard({ title, body, href, icon: cardIcon }) {
 
 // Real photos of the technologies named just above (in DOMAIN_PILLARS and
 // DISCOVER_WORK) actually running -- not stock imagery, same convention
-// About's "Examples of Our Work" gallery already uses. Added, then
-// expanded from an initial 3 to cover more of the named technology areas,
-// then switched from a static 6-photo grid with captions to a 3-slot row
-// that rotates through this whole pool with a crossfade (2026-08-27
-// feedback, in order: "we need something visual about streaming, immersive
-// media, automotive infotainment"; "I do not like unless you add more tech
-// than just these 3"; "just a row of 3 images, not captions and something
-// that changes images randomly with some fading"). No real photo of a car
-// infotainment deployment exists in the asset library, so that use case is
-// named in the alt text instead of illustrated with a fabricated/stock
+// About's "Examples of Our Work" gallery already uses. No real photo of a
+// car infotainment deployment exists in the asset library, so that use case
+// is named in the alt text instead of illustrated with a fabricated/stock
 // image -- it's a real target of the MBS work shown
 // (docs/tech/5g-mbs/overview-mbs.mdx: MBS User Services reaching
 // "smartphones, smart TVs or car infotainment systems"), not invented.
 const USE_CASE_PHOTOS = [
   {
+    type: 'photo',
     src: '/assets/images/gallery/reference-tools-demo-rig.jpg',
     alt: '5G Media Streaming, live on real devices — 5G-MAG Reference Tools demo rig with SDR hardware and phones',
   },
   {
+    type: 'photo',
     src: '/assets/images/5gbc/reference-tools-broadcast-demo.jpg',
     alt: '5G Broadcast reaching TV, radio and car infotainment systems — the 5G-MAGflix app running next to a broadcast receiver',
   },
   {
+    type: 'photo',
     src: '/assets/images/xr/volumetric-capture-demo.jpg',
     alt: 'Immersive & Volumetric Media, captured and viewed in AR on a phone',
   },
   {
+    type: 'photo',
     src: '/assets/images/emergency-alerts/emergency-alert.jpg',
     alt: '5G Broadcast Emergency Alerts delivered straight to a handset from an SDR transmitter',
   },
   {
+    type: 'photo',
     src: '/assets/images/gallery/camara-dedicated-networks-demo.png',
     alt: 'Network APIs — the CAMARA Dedicated Networks reference tool reserving connectivity on demand',
   },
   {
+    type: 'photo',
     src: '/assets/images/gallery/5g-broadcast-plugfest-2026.jpg',
     alt: 'Validated at PlugFests — interop testing across vendors at the 5G Broadcast PlugFest 2026',
   },
 ];
 
-// A 3-slot row where each slot independently cycles through USE_CASE_PHOTOS
-// and crossfades to the next -- every photo in the pool eventually shows in
-// every slot, so all 6 use cases surface over time without needing 6 tiles
-// on screen at once. Every photo image is rendered into every slot (stacked,
-// opacity-toggled) rather than swapping `src`, so the crossfade is a pure
-// CSS opacity transition with no flash of a half-loaded image; the browser
-// dedupes the repeated <img> requests against the same URL either way.
-// Client-only rotation (like the video sampling above): SSR/first paint
-// shows a fixed slot 0/1/2 assignment so hydration has something stable to
-// match, and setInterval only starts after mount.
-function FadingPhotoRow({ photos }) {
-  const initial = photos.map((_, i) => i % photos.length).slice(0, 3);
+// One real cover-slide card per project (projects.json) -- the exact
+// design already used for release/community cards site-wide (navy/cyan
+// gradient, category pill, project title, icon, 5G-MAG logo), not
+// hand-built here. "Dependency" is excluded: it has no image or doc_url
+// (external forks/dependencies 5G-MAG maintains, not a first-class
+// reference-tool project with its own page -- see its own tagline).
+const PROJECT_CARDS = projectsData
+  .filter((p) => p.image && p.doc_url)
+  .map((p) => ({ type: 'project', src: p.image, alt: p.name, href: p.doc_url }));
+
+const SHOWCASE_SLIDES = [...USE_CASE_PHOTOS, ...PROJECT_CARDS];
+
+// A 3-slot row where each slot independently cycles through SHOWCASE_SLIDES
+// (real demo photos and real per-project cover cards alike) and crossfades
+// to the next -- every slide in the pool eventually shows in every slot,
+// so the full set surfaces over time without needing every tile on screen
+// at once. Every slide is rendered into every slot (stacked,
+// opacity-toggled) rather than swapping content, so the crossfade is a
+// pure CSS opacity transition with no flash of a half-loaded image; the
+// browser dedupes the repeated <img> requests against the same URL either
+// way. Client-only rotation: SSR/first paint shows a fixed slot 0/1/2
+// assignment so hydration has something stable to match, and setInterval
+// only starts after mount.
+function FadingSlideRow({ slides }) {
+  // One demo photo and one project card from the start (rather than
+  // slides[0,1,2], which is always 3 photos since USE_CASE_PHOTOS is
+  // listed first in SHOWCASE_SLIDES) -- otherwise a project card never
+  // shows until the first swap fires several seconds in (raised in
+  // review: banners weren't visibly appearing at all).
+  const firstPhotoIdx = slides.findIndex((s) => s.type === 'photo');
+  const firstProjectIdx = slides.findIndex((s) => s.type === 'project');
+  const secondPhotoIdx = slides.findIndex((s, i) => s.type === 'photo' && i !== firstPhotoIdx);
+  const initial = [firstPhotoIdx, firstProjectIdx, secondPhotoIdx].map((i) => (i === -1 ? 0 : i));
   const [active, setActive] = useState(initial);
 
   useEffect(() => {
-    if (photos.length <= 3) return undefined;
+    if (slides.length <= 3) return undefined;
     const timers = active.map((_, slot) =>
       setInterval(
         () => {
           setActive((prev) => {
             let next;
             do {
-              next = Math.floor(Math.random() * photos.length);
+              next = Math.floor(Math.random() * slides.length);
             } while (next === prev[slot] || prev.includes(next));
             const copy = [...prev];
             copy[slot] = next;
             return copy;
           });
         },
-        5000 + slot * 1700
+        3000 + slot * 1200
       )
     );
     return () => timers.forEach(clearInterval);
@@ -143,15 +163,20 @@ function FadingPhotoRow({ photos }) {
     <div className={styles.fadingRow}>
       {active.map((activeIdx, slot) => (
         <div key={slot} className={styles.fadingSlot}>
-          {photos.map((p, i) => (
-            <img
-              key={p.src}
-              src={p.src}
-              alt={i === activeIdx ? p.alt : ''}
-              loading="lazy"
-              className={clsx(styles.fadingImg, i === activeIdx && styles.fadingImgActive)}
-            />
-          ))}
+          {slides.map((s, i) => {
+            const isActive = i === activeIdx;
+            const wrapperClass = clsx(styles.fadingImgWrap, isActive && styles.fadingImgActive);
+            const img = <img src={s.src} alt={isActive ? s.alt : ''} loading="lazy" className={styles.fadingImg} />;
+            return s.href ? (
+              <Link key={s.src} to={s.href} className={wrapperClass} aria-hidden={!isActive}>
+                {img}
+              </Link>
+            ) : (
+              <span key={s.src} className={wrapperClass} aria-hidden={!isActive}>
+                {img}
+              </span>
+            );
+          })}
         </div>
       ))}
     </div>
@@ -162,7 +187,7 @@ export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   const { withBaseUrl } = useBaseUrlUtils();
   const [videos, setVideos] = useState(INITIAL_VIDEOS);
-  const useCasePhotos = USE_CASE_PHOTOS.map((p) => ({ ...p, src: withBaseUrl(p.src) }));
+  const showcaseSlides = SHOWCASE_SLIDES.map((s) => (s.type === 'photo' ? { ...s, src: withBaseUrl(s.src) } : s));
 
   // Client-only, after hydration: swap in a random sample from the whole
   // channel so every full page load shows a different set, without a
@@ -210,35 +235,16 @@ export default function Home() {
               <MediaConnectivityDiagram />
             </div>
 
-            {/* See It Running: real photos of the technology areas named
-                below, actually in use -- see USE_CASE_PHOTOS' own comment
-                for why, and why this rotates rather than showing a grid.
-                Placed here, ahead of the chips/cards (2026-08-27 feedback:
-                "can the see it running sit before the explore by technology
-                area?"), so the concrete proof comes right after the
-                diagram, before naming the areas in text. */}
-            <p className={styles.techAreaLabel}>See It Running</p>
-            <FadingPhotoRow photos={useCasePhotos} />
+            {/* Real photos alternating with icon+title banner cover-slides
+                for every DOMAIN_PILLARS topic -- see SHOWCASE_SLIDES' own
+                comment for why, and why this rotates rather than showing a
+                grid. No "See It Running" label above it (dropped per
+                review) -- the row speaks for itself, right before the link
+                into the full breakdown. */}
+            <FadingSlideRow slides={showcaseSlides} />
 
-            {/* Same DOMAIN_PILLARS grouping /about's own "What We Work On"
-                section uses (same title, same data, same .domain-pillar-chip
-                styling) -- replaces the old flat, unsorted TECH_AREAS chip
-                row so the two pages tell one consistent story instead of
-                two different ones. */}
-            <p className={styles.techAreaLabel}>What We Work On</p>
-            <div className={styles.domainPillarGroups}>
-              {DOMAIN_PILLARS.map((p) => (
-                <div key={p.title} className={styles.domainPillarGroup}>
-                  <span className={styles.domainPillarGroupLabel}>{p.title}</span>
-                  <div className="domain-pillar-chips">
-                    {p.chips.map((c) => (
-                      <Link key={c.label} to={c.href} className="domain-pillar-chip">
-                        {c.label}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              ))}
+            <div className={styles.onAirMore} style={{ marginBottom: '2.5rem' }}>
+              <Link to="/about#what-we-work-on">Explore what we work on &rarr;</Link>
             </div>
 
             <div className={clsx(styles.activityGrid, styles['activityGrid--4col'])}>

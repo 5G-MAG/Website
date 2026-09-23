@@ -368,62 +368,15 @@
   font-weight: 600;
 }
 
-/* ── Technology areas strip ────────────────────────────────────────── */
-/* Concrete technology names (5G Broadcast, XR, streaming...) between the
-   Media/Connectivity diagram and the four organizational pillar cards --
-   without this, the top of the page describes how 5G-MAG organizes its
-   work but never names what it actually works on (findability audit,
-   2026-08-27: "does it give the impression of immersive media, streaming,
-   5G broadcast" -- it didn't, until a reader reached Latest Releases six
-   sections down). */
-.techAreaLabel {
-  text-align: center;
-  font-size: 0.78rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--ifm-color-emphasis-600);
-  margin: 0 0 0.85rem;
-}
-
-/* Same grouping as /about's "What We Work On" (DOMAIN_PILLARS): a label
-   per pillar, and its chips right below -- centered here to match this
-   section's existing centered layout, where /about's version left-aligns
-   inside a card. */
-.domainPillarGroups {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.85rem;
-  max-width: 800px;
-  margin: 0 auto 2.5rem;
-}
-
-.domainPillarGroup {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.domainPillarGroupLabel {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--ifm-font-color-base);
-  white-space: nowrap;
-}
-
-/* ── See It Running (fading photo row) ────────────────────────────────
-   3 slots, each independently crossfading through USE_CASE_PHOTOS -- see
-   FadingPhotoRow's own comment in index.js for the rotation mechanics. */
+/* ── See It Running (fading slide row) ────────────────────────────────
+   3 slots, each independently crossfading through SHOWCASE_SLIDES -- see
+   FadingSlideRow's own comment in index.js for the rotation mechanics. */
 
 .fadingRow {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
-  max-width: 1000px;
-  margin: 0 auto 2.5rem;
+  margin: 0 0 2.5rem;
 }
 
 @media (max-width: 768px) {
@@ -432,26 +385,38 @@
   }
 }
 
+/* 16:9, matching the real per-project cover images (1280x720) exactly --
+   was 4:3, which combined with object-fit:cover cropped both edges of
+   those designed cards and cut off their title text (raised in review). */
 .fadingSlot {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
   border-radius: 10px;
   overflow: hidden;
   background: var(--ifm-color-emphasis-200);
 }
 
-.fadingImg {
+/* Wrapper (a <span> for a plain photo, an <a> for a linked project card)
+   carries the stacking/crossfade; the <img> inside just fills it. Both
+   photo and project-card slides share this one wrapper, so no separate
+   "banner" treatment is needed for the project cards -- they're already
+   complete cover images, not something to build a look for. */
+.fadingImgWrap {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  display: block;
   opacity: 0;
   transition: opacity 1.2s ease;
 }
 
 .fadingImgActive {
   opacity: 1;
+}
+
+.fadingImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* ── Community ─────────────────────────────────────────────────────── */
