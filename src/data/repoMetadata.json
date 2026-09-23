@@ -838,9 +838,9 @@
     {
       "repo_slug": "rt-mbms-client",
       "display_name": "MBMS Client (ROUTE)",
-      "description": "The MBMS client, listed here for real-time object delivery. It delivers over FLUTE today; ROUTE support is preserved on its legacy/route-gpac branch, seven commits contributed by GPAC against the client's predecessor, and is the starting point for ROUTE here. Supersedes rt-mbms-mw, whose route-gpac branch the ROUTE walkthrough still builds from.",
+      "description": "The MBMS client, listed here for real-time object delivery. It delivers over FLUTE today; ROUTE support is preserved on its route-gpac branch, seven commits contributed by GPAC against the client's predecessor, and is the starting point for ROUTE here. Supersedes rt-mbms-mw, whose route-gpac branch the ROUTE walkthrough still builds from.",
       "repo_url": "https://github.com/5G-MAG/rt-mbms-client",
-      "branch": "legacy/route-gpac",
+      "branch": "route-gpac",
       "license": "5G-MAG PL v1.0",
       "standards": [
         "3GPP"
