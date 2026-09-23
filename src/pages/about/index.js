@@ -47,7 +47,10 @@ export default function About() {
   ];
 
   return (
-    <Layout title="About Us" description="About 5G-MAG, The Media Connectivity Association.">
+    <Layout
+      title="About Us"
+      description="5G-MAG is a not-for-profit, neutral association driven by its members. We turn media and connectivity specifications into deployments and products, through a process built on open-source software."
+    >
       <HubHero
         title="About Us"
         icon={ABOUT_ICON_PATH}
@@ -80,8 +83,9 @@ export default function About() {
               things that run.&rdquo;
             </p>
             <p className={`${styles.leadParagraph} ${styles['leadParagraph--last']}`}>
-              5G-MAG is a neutral platform, driven by our members. They set the priorities; we keep
-              connected media applications open, interoperable and deployable at scale.
+              5G-MAG is a not-for-profit, neutral association driven by our members. They set the
+              priorities; we turn specifications into deployments and products, through a process
+              built on open-source software.
             </p>
 
             <div style={{ margin: '0 0 2rem' }}>
@@ -111,7 +115,7 @@ export default function About() {
             <h2 className={styles.sectionTitle}>Running the Loop: From Standards to Products</h2>
             <p className={styles.sectionSubtitle} style={{ marginBottom: '1.5rem' }}>
               We take in specifications from standards bodies, feed back real-world requirements,
-              accelerate software implementation, and validate technologies through interop and
+              accelerate open-source implementation, and validate technologies through interop and
               plugfests — before it ships into products.
             </p>
 
@@ -133,8 +137,8 @@ export default function About() {
           <div className="container">
             <h2 className={styles.sectionTitle}>Examples of Our Work</h2>
             <p className={styles.sectionSubtitle} style={{ marginBottom: '1.5rem' }}>
-              Reference Tools and Applications running on real hardware, at real events — not just
-              specifications on paper.
+              Open-source Reference Tools and Applications running on real hardware, at real events —
+              not just specifications on paper.
             </p>
             <PhotoGallery photos={showcasePhotos} />
             <div style={{ textAlign: 'center', marginTop: '2rem', fontWeight: 600 }}>
