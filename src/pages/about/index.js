@@ -10,7 +10,7 @@ import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import PhotoGallery from '@site/src/components/PhotoGallery';
 import { DISCOVER_WORK } from '@site/src/data/discoverWork';
 import { SCOPE_PILLARS } from '@site/src/data/scopePillars';
-import { FACT_SPEC_ISSUES, FACT_SDO_INPUTS, FACT_REPOSITORIES, FACT_CLONES } from '@site/src/data/facts';
+import { FACT_SDO_INPUTS, FACT_REPOSITORIES, FACT_CLONES } from '@site/src/data/facts';
 import styles from '../tech/index.module.css';
 
 const ABOUT_ICON_PATH = (
@@ -23,7 +23,7 @@ const ABOUT_ICON_PATH = (
   </>
 );
 
-const LOOP_FACTS = [FACT_SPEC_ISSUES, FACT_SDO_INPUTS, FACT_REPOSITORIES, FACT_CLONES];
+const LOOP_FACTS = [FACT_SDO_INPUTS, FACT_REPOSITORIES, FACT_CLONES];
 
 export default function About() {
   // Real, existing photos -- reference tools and applications running on
