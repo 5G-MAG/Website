@@ -228,7 +228,7 @@ export default function Home() {
               Open specifications and open-source software, turned into real-world applications.
             </p>
             <p style={{ maxWidth: '700px', margin: '0 auto 1.5rem', lineHeight: 1.6, textAlign: 'center', fontSize: '1.1rem', color: 'var(--ifm-color-emphasis-700)' }}>
-              A neutral platform, driven by our members: they set the priorities, we execute.
+              A not-for-profit, neutral platform, driven by our members: they set the priorities, we execute.
             </p>
 
             <div style={{ margin: '0 0 2rem' }}>
