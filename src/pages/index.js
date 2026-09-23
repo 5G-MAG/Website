@@ -255,6 +255,8 @@ export default function Home() {
 
             <div className={styles.onAirMore}>
               <Link to="/about">Learn more about us &rarr;</Link>
+              {' · '}
+              <Link to="/membership#request-membership">Become a member &rarr;</Link>
             </div>
           </div>
         </section>
