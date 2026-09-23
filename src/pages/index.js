@@ -199,7 +199,7 @@ export default function Home() {
   return (
     <Layout
       title={siteConfig.title}
-      description="5G-MAG is the industry association bridging media and connectivity standards to working implementations, from specification analysis to open-source reference tools."
+      description="5G-MAG is a not-for-profit association bridging media and connectivity standards to working implementations, from specification analysis to open-source reference tools."
     >
       <HeroSlideshow />
 
