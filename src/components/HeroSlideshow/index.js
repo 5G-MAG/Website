@@ -376,7 +376,7 @@ export default function HeroSlideshow() {
                     <p className={styles.slideEyebrow}>
                       <span className={styles.slideEyebrowPill}>
                         <span className={styles.slideEyebrowPillDot} />
-                        {slide.flagship ? 'Flagship Event' : 'Upcoming Event'}
+                        Upcoming Event
                       </span>
                       <span className={styles.slideEyebrowGroupPill}>{slide.eventType}</span>
                     </p>
