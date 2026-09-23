@@ -111,7 +111,9 @@ export default function Membership() {
           <div className="container">
             <h2 className={styles.sectionTitle}>Membership fees</h2>
             <p className={styles.sectionSubtitle}>
-              Annual fee, based on your organisation&apos;s annual revenue.
+              For a decision-maker, this comes down to three things: shared effort, faster time to
+              market, and less risk on technology that hasn&apos;t shipped yet. The fee below is
+              based on your organisation&apos;s annual revenue.
             </p>
             <div style={{ maxWidth: '760px', margin: '0 auto' }}>
               <table className={styles.feeTable}>
