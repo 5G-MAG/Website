@@ -196,7 +196,7 @@
     },
     {
       "repo_slug": "rt-mbms-examples",
-      "display_name": "MBMS Example Files",
+      "display_name": "MBMS Tools and Examples",
       "description": "This repository holds example projects that make use of other 5G-MAG repositories or provide additional functionalities to test and implement new features for MBMS: FLUTE ffmpeg.",
       "repo_url": "https://github.com/5G-MAG/rt-mbms-examples",
       "branch": "main",
@@ -211,6 +211,106 @@
       ],
       "public": true,
       "is_auxiliary": true
+    },
+    {
+      "repo_slug": "rt-mbms-gw",
+      "display_name": "MBMS Gateway",
+      "description": "MBMS Gateway for an LTE-based 5G Terrestrial Broadcast deployment: takes content from the BM-SC and delivers it onto the M1-U bearer, driving the MBMS session lifecycle towards the MME over Sm (GTPv2-C).",
+      "repo_url": "https://github.com/5G-MAG/rt-mbms-gw",
+      "branch": "development",
+      "license": "5G-MAG PL v1.0",
+      "standards": [
+        "3GPP"
+      ],
+      "dependencies": [
+        "rt-mbms-tx"
+      ],
+      "software": [
+        "Linux"
+      ],
+      "public": false,
+      "is_auxiliary": false
+    },
+    {
+      "repo_slug": "rt-mbms-bmsc",
+      "display_name": "Broadcast-Multicast Service Center (BM-SC)",
+      "description": "BM-SC for MBMS user services: ingests content over xMB (TS 26.348), announces it, and delivers it with FLUTE under the TS 26.346 profile.",
+      "repo_url": "https://github.com/5G-MAG/rt-mbms-bmsc",
+      "branch": "development",
+      "license": "5G-MAG PL v1.0",
+      "standards": [
+        "3GPP"
+      ],
+      "dependencies": [
+        "rt-libflute",
+        "rt-mbms-tx",
+        "libmpdpp"
+      ],
+      "software": [
+        "Linux"
+      ],
+      "public": false,
+      "is_auxiliary": false
+    },
+    {
+      "repo_slug": "rt-mbms-client",
+      "display_name": "MBMS Client",
+      "description": "MBMS client: reads the service announcement, reassembles FLUTE objects from the bearer, and republishes them to a local player as an HLS or DASH presentation. Supersedes rt-mbms-mw.",
+      "repo_url": "https://github.com/5G-MAG/rt-mbms-client",
+      "branch": "development",
+      "license": "5G-MAG PL v1.0",
+      "standards": [
+        "3GPP"
+      ],
+      "dependencies": [
+        "rt-libflute",
+        "rt-common-shared"
+      ],
+      "software": [
+        "Linux"
+      ],
+      "public": false,
+      "is_auxiliary": false
+    },
+    {
+      "repo_slug": "rt-mbms-application",
+      "display_name": "MBMS Application",
+      "description": "Receive-side web application: plays what the MBMS client received over the air, and shows the modem's radio state, the decoded system information and any cell broadcast warning. Supersedes rt-wui.",
+      "repo_url": "https://github.com/5G-MAG/rt-mbms-application",
+      "branch": "development",
+      "license": "5G-MAG PL v1.0",
+      "standards": [
+        "3GPP"
+      ],
+      "dependencies": [
+        "rt-mbms-client"
+      ],
+      "software": [
+        "Node.js",
+        "Linux"
+      ],
+      "public": false,
+      "is_auxiliary": false
+    },
+    {
+      "repo_slug": "rt-mbms-application-provider",
+      "display_name": "5G Broadcast Application Provider",
+      "description": "Content provider portal: provisions xMB (TS 26.348) services and sessions on the BM-SC, and drives the transmitter's and MBMS Gateway's own control interfaces.",
+      "repo_url": "https://github.com/5G-MAG/rt-mbms-application-provider",
+      "branch": "development",
+      "license": "5G-MAG PL v1.0",
+      "standards": [
+        "3GPP"
+      ],
+      "dependencies": [
+        "rt-mbms-bmsc"
+      ],
+      "software": [
+        "Node.js",
+        "Linux"
+      ],
+      "public": false,
+      "is_auxiliary": false
     }
   ],
   "emergency-alerts": [
@@ -232,6 +332,26 @@
         "Linux"
       ],
       "public": true,
+      "is_auxiliary": false
+    },
+    {
+      "repo_slug": "rt-pws-cbc",
+      "display_name": "Cell Broadcast Centre (CBC)",
+      "description": "Cell Broadcast Centre for the Public Warning System: accepts a warning message from an alert originator and emits it to the MME over SBc-AP, so it reaches handsets as ETWS or CMAS. Independent of any MBMS bearer.",
+      "repo_url": "https://github.com/5G-MAG/rt-pws-cbc",
+      "branch": "development",
+      "license": "5G-MAG PL v1.0",
+      "standards": [
+        "3GPP"
+      ],
+      "dependencies": [
+        "rt-mbms-tx"
+      ],
+      "software": [
+        "Node.js",
+        "Linux"
+      ],
+      "public": false,
       "is_auxiliary": false
     }
   ],
