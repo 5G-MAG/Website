@@ -97,24 +97,6 @@
       "is_auxiliary": false
     },
     {
-      "repo_slug": "rt-mbms-mw",
-      "display_name": "MBMS Middleware",
-      "description": "This repository holds an MBMS Middleware to provide the best available content to the application. If available, it combines content from (mobile) broadband, WiFi with the 5G broadcast content from the MBMS Modem using an advanced decision logic. The content is presented to apps via HTTP. It also implements a ROUTE client.",
-      "repo_url": "https://github.com/5G-MAG/rt-mbms-mw",
-      "branch": "main",
-      "license": "5G-MAG PL v1.0",
-      "standards": [
-        "3GPP"
-      ],
-      "dependencies": [],
-      "software": [
-        "Docker",
-        "Linux"
-      ],
-      "public": true,
-      "is_auxiliary": false
-    },
-    {
       "repo_slug": "rt-mbms-modem",
       "display_name": "MBMS Modem",
       "description": "This repository holds an MBMS Modem, which main task is to convert a 5G BC input signal (received either as live I/Q raw data from the SDR or as prerecorded SDR sample file) to multicast IP packets on the output.",
@@ -133,26 +115,6 @@
       ],
       "public": true,
       "is_auxiliary": false
-    },
-    {
-      "repo_slug": "rt-wui",
-      "display_name": "MBMS Web User Interface",
-      "description": "Web-based dashboard for monitoring and managing MBMS middleware status.",
-      "repo_url": "https://github.com/5G-MAG/rt-wui",
-      "branch": "main",
-      "license": "5G-MAG PL v1.0",
-      "standards": [
-        "3GPP"
-      ],
-      "dependencies": [
-        "NGINX"
-      ],
-      "software": [
-        "Docker",
-        "Web"
-      ],
-      "public": true,
-      "is_auxiliary": true
     },
     {
       "repo_slug": "rt-mbms-tx",
@@ -867,26 +829,6 @@
         "IETF"
       ],
       "dependencies": [],
-      "software": [
-        "Linux"
-      ],
-      "public": true,
-      "is_auxiliary": false
-    },
-    {
-      "repo_slug": "rt-mbms-mw",
-      "display_name": "MBMS Middleware (ROUTE)",
-      "description": "This repository holds an MBMS Middleware to provide the best available content to the application. If available, it combines content from (mobile) broadband, WiFi with the 5G broadcast content from the MBMS Modem using an advanced decision logic. The content is presented to apps via HTTP. It also implements a ROUTE client.",
-      "repo_url": "https://github.com/5G-MAG/rt-mbms-mw/tree/route-gpac",
-      "branch": "route-gpac",
-      "license": "5G-MAG PL v1.0",
-      "standards": [
-        "IETF",
-        "3GPP"
-      ],
-      "dependencies": [
-        "GPAC"
-      ],
       "software": [
         "Linux"
       ],
