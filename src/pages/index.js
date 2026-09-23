@@ -8,7 +8,7 @@ import HeroSlideshow from '@site/src/components/HeroSlideshow';
 import MediaConnectivityDiagram from '@site/src/components/MediaConnectivityDiagram';
 import MembersMarquee from '@site/src/components/MembersMarquee';
 import SearchBar from '@theme/SearchBar';
-import { icon } from '@site/src/components/GodeeperCard';
+import GodeeperCard, { icon } from '@site/src/components/GodeeperCard';
 import HubDestinationCard from '@site/src/components/HubDestinationCard';
 import VideoGrid from '@site/src/components/VideoGrid';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
@@ -16,6 +16,7 @@ import ReleaseCard from '@site/src/components/ReleaseCard';
 import { EventsAgendaPreview } from '@site/src/components/EventsAgenda';
 import { DISCOVER_WORK } from '@site/src/data/discoverWork';
 import { EVENTS_AGENDA } from '@site/src/data/eventsAgenda';
+import { BENEFITS } from '@site/src/data/membershipBenefits';
 import { NEWS_PREVIEW } from '@site/src/data/newsPreview';
 import projectsData from '@site/src/data/projects.json';
 import { sampleRandom } from '@site/src/utils/random';
@@ -60,6 +61,22 @@ const ALL_CHANNEL_VIDEOS = (() => {
 function AreaCard({ title, body, href, icon: cardIcon }) {
   return <HubDestinationCard icon={icon(cardIcon)} title={title} desc={body} href={href} />;
 }
+
+// The business case for joining, picked from /membership's own real
+// BENEFITS list (src/data/membershipBenefits.js) rather than reworded
+// here, per standing feedback that homepage copy should be fetched from
+// About/Membership, not freshly drafted. These three speak most directly
+// to a decision-maker rather than an engineer: shared effort, speed to
+// market, de-risking an unproven bet. Filtered by title, not index, so a
+// reorder in membershipBenefits.js doesn't change which three show here
+// -- but a title rename there will silently drop that entry; keep the
+// two files' titles in sync.
+const BUSINESS_CASE_TITLES = [
+  'Mutualised effort to grow your project',
+  'Early access to pre-public code',
+  'De-risk on deployments',
+];
+const BUSINESS_CASE_BENEFITS = BENEFITS.filter((b) => BUSINESS_CASE_TITLES.includes(b.title));
 
 // Real photos of the technologies named just above (in DOMAIN_PILLARS and
 // DISCOVER_WORK) actually running -- not stock imagery, same convention
@@ -350,6 +367,21 @@ export default function Home() {
             <div className={styles.releasesGrid}>
               {LATEST_RELEASE_PROJECTS.slice(0, 6).map((project) => (
                 <ReleaseCard key={project.name} project={project} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Why Members Join */}
+        <section className={clsx(styles.section, styles.sectionAlt)}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>Why Members Join</h2>
+            <p className={styles.sectionSubtitle} style={{ marginBottom: '1.5rem' }}>
+              The business case for joining, in three points.
+            </p>
+            <div className="godeeper-grid">
+              {BUSINESS_CASE_BENEFITS.map((b) => (
+                <GodeeperCard key={b.title} {...b} />
               ))}
             </div>
           </div>
