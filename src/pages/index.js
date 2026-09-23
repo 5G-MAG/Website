@@ -80,12 +80,7 @@ const BUSINESS_CASE_BENEFITS = BENEFITS.filter((b) => BUSINESS_CASE_TITLES.inclu
 
 // Real photos of the technologies named just above (in DOMAIN_PILLARS and
 // DISCOVER_WORK) actually running -- not stock imagery, same convention
-// About's "Examples of Our Work" gallery already uses. No real photo of a
-// car infotainment deployment exists in the asset library, so that use case
-// is named in the alt text instead of illustrated with a fabricated/stock
-// image -- it's a real target of the MBS work shown
-// (docs/tech/5g-mbs/overview-mbs.mdx: MBS User Services reaching
-// "smartphones, smart TVs or car infotainment systems"), not invented.
+// About's "Examples of Our Work" gallery already uses.
 const USE_CASE_PHOTOS = [
   {
     type: 'photo',
@@ -95,7 +90,7 @@ const USE_CASE_PHOTOS = [
   {
     type: 'photo',
     src: '/assets/images/5gbc/reference-tools-broadcast-demo.jpg',
-    alt: '5G Broadcast reaching TV, radio and car infotainment systems — the 5G-MAGflix app running next to a broadcast receiver',
+    alt: '5G Broadcast reaching TV and radio receivers, the 5G-MAGflix app running next to a broadcast receiver',
   },
   {
     type: 'photo',
