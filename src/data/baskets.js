@@ -2,10 +2,11 @@ import projectsData from './projects.json';
 import releasesData from '../../static/data/releases.json';
 
 // src/data/projects.json is now the single, concentrated master for
-// 5G-MAG's topic taxonomy -- basket, status, pages, repos, releases-slug,
-// image, tagline and contributors all live on ONE array, in ONE file, per
-// direct instruction ("I want to have a single point, all very
-// concentrated, not to have multiple hops here and there"). This file is
+// 5G-MAG's topic taxonomy -- basket, status, doc_url/tech_url/
+// standards_url, repos, releases-slug, image, tagline and contributors
+// all live on ONE array, in ONE file, per direct instruction ("I want to
+// have a single point, all very concentrated, not to have multiple hops
+// here and there"). This file is
 // deliberately almost empty: the 9 basket titles (added elsewhere so
 // rarely they don't need their own file either, but a project's `basket`
 // field has to point at something) and a handful of read-only helpers.
@@ -35,10 +36,14 @@ import releasesData from '../../static/data/releases.json';
 // is a curated call, informed by -- not mechanically derived from -- a
 // project's own repos and releases.json (a project can have one lone
 // release from a year ago; whether that alone means "advanced" is a
-// judgment call, not a formula). `pages` (tech/standards/referenceTools/
-// testbeds) records which real page of each kind exists, verified
-// against the site's own routes rather than assumed; `null` means none
-// exists, not an oversight.
+// judgment call, not a formula). `doc_url`, `tech_url` and `standards_url`
+// record which real page of each kind exists, verified against the
+// site's own routes rather than assumed; `null` means none exists, not
+// an oversight. A reference-tools or testbeds page is never both at
+// once for the same project today, so `doc_url` alone covers it -- there
+// used to be a separate, redundant `pages.referenceTools`/`pages.testbeds`
+// pair that just repeated `doc_url`; removed rather than kept as a second
+// copy of the same fact.
 
 export const BASKETS = [
   { key: 'content-delivery', title: 'Content Delivery and Streaming' },
