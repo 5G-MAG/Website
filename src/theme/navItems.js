@@ -23,7 +23,7 @@ export const NEWS_ITEM = { to: '/news', label: 'News', position: 'left' };
 // neighbors) is uniform — see .navGroup's `gap` in Navbar/Content/styles.module.css.
 export const PROFILES_ITEM = {
   to: '/tech',
-  label: 'Technical Resources',
+  label: 'Technology',
   position: 'left',
   className: styles.primaryNavItem,
 };

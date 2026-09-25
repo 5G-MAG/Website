@@ -4,8 +4,8 @@ import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
 import HubDestinationCard from '@site/src/components/HubDestinationCard';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
+import PhotoGallery from '@site/src/components/PhotoGallery';
 import { icon } from '@site/src/components/GodeeperCard';
-import { FACT_SPEC_ISSUES, FACT_SDO_INPUTS } from '@site/src/data/facts';
 import styles from '../tech/index.module.css';
 
 const GITHUB_ICON_PATH = (
@@ -178,13 +178,6 @@ const FEEDBACK_AREAS = [
   },
 ];
 
-const STANDARDS_FACTS = [
-  FACT_SPEC_ISSUES,
-  { value: '3GPP', label: 'Engagement as Market Representation Partner' },
-  FACT_SDO_INPUTS,
-  { value: '6', label: 'Presentations at 3GPP requirements workshops' },
-];
-
 const REQUIREMENTS_ICON_PATH = (
   <>
     <path d="M9 5H7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2V7a2 2 0 0 0 -2 -2h-2" />
@@ -215,10 +208,15 @@ const SURVEY_ICON_PATH = (
 );
 
 // "What You'll Find Here" -- one crystal-clear index of every real
-// destination on this hub, shown right under "Why". Ordered so related
-// things sit together: Requirements and Surveys (ways to feed input in),
-// then Feedback (how issues get tracked and processed), then Liaison
-// Statements (the formal output), then Workshops.
+// destination on this hub, shown right under the hero (raised directly,
+// 2026-09-25: "the cards leading to the following topics have
+// disappeared and it is important to keep them" -- restored after a
+// prior pass replaced this grid with a plain link line for 3 of its 5
+// entries; kept as the full 5-card grid this time, not the abbreviated
+// version). Ordered so related things sit together: Requirements and
+// Surveys (ways to feed input in), then Feedback (how issues get
+// tracked and processed), then Liaison Statements (the formal output),
+// then Workshops.
 const WHATS_HERE = [
   {
     title: 'Requirements towards SDOs',
@@ -324,9 +322,23 @@ function CategoryCard({ title, desc, topics }) {
 }
 
 export default function Standards() {
-  const githubFeedbackImg = useBaseUrl('/assets/images/gallery/github-feedback-board.png');
   const methodologyInternalImg = useBaseUrl('/assets/images/Feedback_1.png');
   const methodologyExternalImg = useBaseUrl('/assets/images/Feedback_2.png');
+  // Click-to-zoom via the shared PhotoGallery component (raised directly:
+  // "can you make them clickable so they zoom?") rather than a plain
+  // <img> pair -- same lightbox every other photo grid on the site uses.
+  const METHODOLOGY_PHOTOS = [
+    {
+      src: methodologyInternalImg,
+      alt: 'Workflow for feedback on specifications maintained by 5G-MAG: a community issue is raised on GitHub, reviewed by 5G-MAG, and progressed to a correction or new-feature proposal.',
+      caption: 'Feedback on specifications 5G-MAG maintains: from a GitHub issue to a correction or new-feature proposal.',
+    },
+    {
+      src: methodologyExternalImg,
+      alt: 'Workflow for feedback on specifications maintained by external SDOs: a community issue is raised on GitHub, reviewed by 5G-MAG, and forwarded to the responsible standards body as a change request or liaison input.',
+      caption: 'Feedback on specifications owned by an external SDO (e.g. 3GPP, ETSI): carried in as a change request or liaison input.',
+    },
+  ];
   return (
     <Layout
       title="Standardisation"
@@ -348,41 +360,13 @@ export default function Standards() {
         ]}
       />
 
-      <div className="container" style={{ marginTop: '1.75rem' }}>
-        <p className="topic-lead">Feedback and requirements to standards bodies: shaping standards through concrete requirements and experience-based feedback, submitted to SDOs.</p>
-      </div>
-
       <main>
-        {/* What You'll Find Here -- first section on every hub page, a
-            consistent directory of destinations before anything else
-            (2026-08-26: raised directly, "what you will find here
-            section goes first for each hub" -- this hub's version had
-            drifted to last place during the previous reorder pass). */}
-        <section className={`${styles.section} ${styles.sectionAlt}`}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>What You&apos;ll Find Here</h2>
-            <p className={styles.sectionSubtitle}>
-              Every feedback and requirements destination, in one place. Looking for the
-              specifications each technology implements? Those live with the technical
-              analysis on <Link to="/tech#categories-topics">Explainers &amp; Blueprints</Link>{' '}
-              — every topic card there carries a direct Standards link.
-            </p>
-            <div className={styles.activityGrid}>
-              {WHATS_HERE.map((r) => (
-                <ActivityCard key={r.href} {...r} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Motivation -- ahead of the full Feedback/Workshops content
-            below (2026-08-26: raised directly, "cards, then motivation,
-            then the full topics for easy access, then maybe examples
-            and videos"; supersedes the same-day-earlier reorder that
-            put Feedback/Workshops before Motivation). */}
+        {/* Why It Matters -- first thing after the hero, keeping the
+            established order (raised directly: "keep the order we
+            decided"). */}
         <section className={styles.section}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Motivation</h2>
+            <h2 className={styles.sectionTitle}>Why It Matters</h2>
             <p className={styles.sectionSubtitle}>
               Advancing standardization with implementation and experience-based feedback.
             </p>
@@ -398,9 +382,31 @@ export default function Standards() {
           </div>
         </section>
 
+        {/* What You'll Find Here -- a full index of every real destination,
+            right after Why It Matters (raised directly, 2026-09-25: "the
+            cards leading to the following topics have disappeared and it
+            is important to keep them" -- restored as the complete 5-card
+            grid; positioned here rather than first, per "keep the order
+            we decided"). */}
+        <section className={`${styles.section} ${styles.sectionAlt}`}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>What You&apos;ll Find Here</h2>
+            <p className={styles.sectionSubtitle}>Every feedback and requirements destination, in one place.</p>
+            <div className={styles.activityGrid}>
+              {WHATS_HERE.map((r) => (
+                <ActivityCard key={r.href} {...r} />
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Feedback & Methodology, and Workshops for Standards -- the full
-            topic-by-topic resource, after Motivation. */}
-        <section id="feedback" className={styles.section}>
+            topic-by-topic resource, after What You'll Find Here. */}
+        <section
+          id="feedback"
+          className={styles.section}
+          style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}
+        >
           <div className="container">
             <h2 className={styles.sectionTitle}>Feedback to SDOs</h2>
             <p className={styles.sectionSubtitle}>
@@ -413,75 +419,21 @@ export default function Standards() {
                 <CategoryCard key={c.title} {...c} />
               ))}
             </div>
-            <div className={styles.photoGrid1}>
-              <figure className={styles.photoFigure}>
-                <img
-                  className={styles.photoImg}
-                  src={githubFeedbackImg}
-                  alt="GitHub project board tracking 3GPP specification feedback issues"
-                  loading="lazy"
-                />
-                <p className={styles.photoCaption}>
-                  The 3GPP Specifications Feedback board on GitHub — every issue tracked from
-                  discussion to adoption.
-                </p>
-              </figure>
-            </div>
-
             <h3 style={{ marginTop: '2.5rem', textAlign: 'center' }}>How Feedback Is Processed</h3>
             <p className={styles.sectionSubtitle}>
               Two workflows: one for specifications 5G-MAG maintains, one for external SDOs (3GPP,
               ETSI).
             </p>
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-                gap: '2rem',
-                marginTop: '1.5rem',
-                alignItems: 'start',
-              }}
-            >
-              <figure style={{ margin: 0 }}>
-                <img
-                  loading="lazy"
-                  src={methodologyInternalImg}
-                  alt="Workflow for feedback on specifications maintained by 5G-MAG: a community issue is raised on GitHub, reviewed by 5G-MAG, and progressed to a correction or new-feature proposal."
-                  style={{
-                    display: 'block',
-                    width: '100%',
-                    borderRadius: '12px',
-                    border: '1px solid var(--ifm-color-emphasis-300)',
-                  }}
-                />
-                <figcaption className={styles.diagramCaption}>
-                  Feedback on specifications 5G-MAG maintains: from a GitHub issue to a correction
-                  or new-feature proposal.
-                </figcaption>
-              </figure>
-              <figure style={{ margin: 0 }}>
-                <img
-                  loading="lazy"
-                  src={methodologyExternalImg}
-                  alt="Workflow for feedback on specifications maintained by external SDOs: a community issue is raised on GitHub, reviewed by 5G-MAG, and forwarded to the responsible standards body as a change request or liaison input."
-                  style={{
-                    display: 'block',
-                    width: '100%',
-                    borderRadius: '12px',
-                    border: '1px solid var(--ifm-color-emphasis-300)',
-                  }}
-                />
-                <figcaption className={styles.diagramCaption}>
-                  Feedback on specifications owned by an external SDO (e.g. 3GPP, ETSI): carried in
-                  as a change request or liaison input.
-                </figcaption>
-              </figure>
-            </div>
+            <PhotoGallery photos={METHODOLOGY_PHOTOS} thumbAspect="16 / 9" columns={2} />
           </div>
         </section>
 
         {/* Workshops for Standards */}
-        <section id="standards-workshops" className={`${styles.section} ${styles.sectionAlt}`}>
+        <section
+          id="standards-workshops"
+          className={`${styles.section} ${styles.sectionAlt}`}
+          style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}
+        >
           <div className="container">
             <h2 className={styles.sectionTitle}>Workshops for Standards</h2>
             <p className={styles.sectionSubtitle}>
@@ -495,23 +447,6 @@ export default function Standards() {
             </div>
             <div style={{ textAlign: 'center', marginTop: '1.5rem', fontWeight: 600 }}>
               <Link to="/workshops">Browse the full workshop &amp; session archive &rarr;</Link>
-            </div>
-          </div>
-        </section>
-
-        <section className={styles.section}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>Our work at a glance</h2>
-            <p className={styles.sectionSubtitle}>
-              Some numbers and examples of our work.
-            </p>
-            <div className="summary-container">
-              {STANDARDS_FACTS.map((f) => (
-                <div key={f.label} className="summary-card">
-                  <h3>{f.label}</h3>
-                  <span className="summary-value">{f.value}</span>
-                </div>
-              ))}
             </div>
           </div>
         </section>

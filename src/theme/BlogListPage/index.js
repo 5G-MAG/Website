@@ -14,7 +14,7 @@ import BlogPostItems from '@theme/BlogPostItems';
 import BlogListPageStructuredData from '@theme/BlogListPage/StructuredData';
 import HubHero from '@site/src/components/HubHero';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
-import { SLACK_INVITE_URL, SOCIAL_LINKS } from '@site/src/data/socialLinks';
+import { SOCIAL_LINKS } from '@site/src/data/socialLinks';
 import styles from '@site/src/pages/tech/index.module.css';
 
 // News is served directly by the blog plugin (routeBasePath: 'news') --
@@ -80,19 +80,6 @@ function NewsHero() {
           </Link>,
         ]}
       />
-      <div className="container" style={{ marginTop: '1.75rem' }}>
-        <p className="topic-lead">
-          Announcements and updates from 5G-MAG. Follow{' '}
-          <a href={linkedin} target="_blank" rel="noreferrer">
-            LinkedIn
-          </a>
-          ,{' '}
-          <a href={SLACK_INVITE_URL} target="_blank" rel="noreferrer">
-            Slack
-          </a>
-          , or <Link to="/subscribe">subscribe by email</Link> for the latest updates.
-        </p>
-      </div>
     </>
   );
 }

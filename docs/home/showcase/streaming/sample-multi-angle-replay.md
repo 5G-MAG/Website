@@ -20,10 +20,6 @@ unlisted: true
 </div>
 </div>
 
-<div class="topic-lead">
-A structural sample showing the proposed layout for showcase-style tutorials — illustrative only, not a real, verified application.
-</div>
-
 :::danger[This is a structural sample, not a real showcase]
 Every section below is illustrative placeholder content, written only to demonstrate the proposed page structure for "Showcase" tutorials. No application described here has actually been built or verified. This page should be replaced once a real showcase exists for this project.
 :::

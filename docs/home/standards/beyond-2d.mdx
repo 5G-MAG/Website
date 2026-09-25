@@ -19,10 +19,6 @@ import { BEYOND_2D_SPECS, BEYOND_2D_LAYER_ORDER } from '@site/src/data/specs/bey
 </div>
 </div>
 
-<div class="topic-lead">
-Evaluating stereoscopic, multiview and volumetric video formats and codecs delivered over 5G.
-</div>
-
 ## Overview
 
 Beyond 2D Video covers media formats that go past a flat single-camera picture, such as stereoscopic 3D, multiview, depth-enhanced and volumetric video. 3GPP studied how these formats and their codecs perform over 5G in the feasibility study FS_Beyond2D, captured in TR 26.956. 5G-MAG tracks this work because it sets the evaluation baseline for delivering richer-than-2D experiences. This page lists the related 3GPP work item and technical report, and is for anyone assessing how immersive and 3D video will be carried over 5G. For acronyms used here, see the [Glossary](/tech/glossary).
@@ -37,7 +33,7 @@ Beyond 2D Video covers media formats that go past a flat single-camera picture, 
 <div class="godeeper-card__body">
 <p>The Beyond 2D scenarios (stereoscopic, multiview plus depth, volumetric) and how they map to codecs.</p>
 <ul class="godeeper-card__links">
-<li><a href="/tech/volumetric/beyond-2d">Tech: Beyond 2D Video</a></li>
+<li><a href="/tech/beyond-2d">Tech: Beyond 2D Video</a></li>
 </ul>
 </div>
 </div>
@@ -67,7 +63,7 @@ FS_Beyond2D is a feasibility and characterisation study, not a normative specifi
 
 The report also surveys formats under research (neural radiance fields, light fields, 3D Gaussian splatting) without evaluating them.
 
-See the [Beyond 2D Video](/tech/volumetric/beyond-2d) Tech page for the per-family and per-scenario detail.
+See the [Beyond 2D Video](/tech/beyond-2d) Tech page for the per-family and per-scenario detail.
 
 ## Codecs and how they map to the formats
 
@@ -80,11 +76,11 @@ The study evaluates each format with the codecs that are practical for it today;
 | Dense dynamic point cloud | V-PCC; no anchor codec exists for the format, G-PCC is noted as a related technology | V-PCC is part of ISO/IEC 23090-5                    |
 | Dynamic mesh              | V-DMC, described alongside V-PCC for the volumetric scenario                         | V-DMC is ISO/IEC 23090-29 (video-based, V3C-related) |
 
-This connects to the [Volumetric Video with MPEG V3C](/standards/v3c) topic: the volumetric and multi-view-plus-depth scenarios are the cases where V3C (V-PCC and MIV) is one of the coding approaches under evaluation.
+This connects to the [MPEG V3C Immersive Platform](/standards/v3c) topic: the volumetric and multi-view-plus-depth scenarios are the cases where V3C (V-PCC and MIV) is one of the coding approaches under evaluation.
 
 ## Relationship to 5G Media Streaming
 
-The study assesses these formats against the existing 5G Media Streaming delivery framework ([TS 26.501](https://www.3gpp.org/dynareport/26501.htm) architecture, [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) protocols and APIs). See the [Beyond 2D Video](/tech/volumetric/beyond-2d) Tech page for the detailed analysis.
+The study assesses these formats against the existing 5G Media Streaming delivery framework ([TS 26.501](https://www.3gpp.org/dynareport/26501.htm) architecture, [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) protocols and APIs). See the [Beyond 2D Video](/tech/beyond-2d) Tech page for the detailed analysis.
 
 ## Specifications in scope
 
@@ -94,12 +90,12 @@ The work item that drove the Beyond 2D Video feasibility study, the technical re
 
 ## 5G-MAG tracking and contribution focus
 
-5G-MAG tracks FS_Beyond2D as it establishes the evidence base for carrying richer-than-2D formats over 5G Media Streaming, ahead of any later normative SA4 work. The technical detail is on the [Beyond 2D Video](/tech/volumetric/beyond-2d) Tech page.
+5G-MAG tracks FS_Beyond2D as it establishes the evidence base for carrying richer-than-2D formats over 5G Media Streaming, ahead of any later normative SA4 work. The technical detail is on the [Beyond 2D Video](/tech/beyond-2d) Tech page.
 
 ## Related Standards Work
 
-- [Standards: Volumetric Video with MPEG V3C](/standards/v3c)
-- [Standards: XR and MPEG-I Scene Description](/standards/xr)
+- [Standards: MPEG V3C Immersive Platform](/standards/v3c)
+- [Standards: XR/3D Scenes with MPEG-I Scene Description](/standards/xr)
 - [Standardisation](/standards): how 5G-MAG submits feedback and requirements to SDOs
 
 :::note

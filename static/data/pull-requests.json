@@ -1,11 +1,50 @@
 {
-  "updated_at": "2026-09-16 01:50 UTC",
+  "updated_at": "2026-09-24 06:54 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
       "doc_url": "/reference-tools/5gms/",
-      "tagline": "End-to-end 5G media streaming from network to client · 3GPP TS 26.501",
+      "tagline": "Driving collaboration between mobile networks and media applications",
       "pulls": [
+        {
+          "repo": "rt-5gc-service-consumers",
+          "branch": null,
+          "number": 31,
+          "title": "MBS compliance fixes: SSM/session handling, NCGI/TAI, session-area updates",
+          "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/31",
+          "draft": true,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-09-22",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-5gc-service-consumers",
+          "branch": null,
+          "number": 29,
+          "title": "Fix MBS Session Id / SSM handling for BROADCAST sessions + MNC-length-aware PLMN Id",
+          "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/29",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-08-12",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "cmcd-toolkit",
+          "branch": null,
+          "number": 2,
+          "title": "Fix spelling of 'Length' in dashboard titles",
+          "url": "https://github.com/5G-MAG/cmcd-toolkit/pull/2",
+          "draft": false,
+          "author_login": "shilinding",
+          "author_avatar": "https://avatars.githubusercontent.com/u/115362942?v=4",
+          "created_at": "2026-07-02",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "rt-5gms-application",
           "branch": null,
@@ -24,7 +63,7 @@
     {
       "name": "5G Broadcast - TV and Radio Services",
       "doc_url": "/reference-tools/5g-broadcast/",
-      "tagline": "LTE-based 5G broadcast for TV, radio and emergency alerts",
+      "tagline": "The 3GPP-based broadcast delivery system bridging OTT streaming and broadcasting",
       "pulls": [
         {
           "repo": "rt-libflute",
@@ -45,7 +84,7 @@
           "number": 68,
           "title": "Tunnel-mode reception, and five object-handling fixes (compression, partitioning, transfer length)",
           "url": "https://github.com/5G-MAG/rt-libflute/pull/68",
-          "draft": true,
+          "draft": false,
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-08-11",
@@ -147,7 +186,7 @@
           "repo": "rt-mbms-mw",
           "branch": null,
           "number": 15,
-          "title": "readme: propose to install in /usr/local instead of /usr (which is a …",
+          "title": "readme: propose to install in /usr/local instead of /usr (which is a \u2026",
           "url": "https://github.com/5G-MAG/rt-mbms-mw/pull/15",
           "draft": false,
           "author_login": "rbouqueau",
@@ -161,13 +200,13 @@
     {
       "name": "5G Broadcast - Emergency Alerts",
       "doc_url": "/reference-tools/emergency-alerts/",
-      "tagline": "Cell Broadcast Service warnings delivered over FeMBMS",
+      "tagline": "Emergency warnings delivered over 5G Broadcast",
       "pulls": []
     },
     {
       "name": "XR/3D Scenes with MPEG-I Scene Description",
       "doc_url": "/reference-tools/xr/",
-      "tagline": "MPEG-I scene description and XR media integration over 5G",
+      "tagline": "Composing, positioning, and temporally synchronizing dynamic 3D visual and audio objects for XR",
       "pulls": [
         {
           "repo": "rt-xr-content",
@@ -200,8 +239,21 @@
     {
       "name": "5G Multicast Broadcast Services (MBS)",
       "doc_url": "/reference-tools/5g-mbs/",
-      "tagline": "5G-native multicast and broadcast services · 3GPP 5G MBS",
+      "tagline": "Multicast and Broadcast delivery for 5G-NR-based terrestrial and non-terrestrial networks",
       "pulls": [
+        {
+          "repo": "rt-5gc-service-consumers",
+          "branch": null,
+          "number": 31,
+          "title": "MBS compliance fixes: SSM/session handling, NCGI/TAI, session-area updates",
+          "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/31",
+          "draft": true,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-09-22",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "rt-mbs-examples",
           "branch": null,
@@ -225,6 +277,19 @@
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-08-23",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-5gc-service-consumers",
+          "branch": null,
+          "number": 29,
+          "title": "Fix MBS Session Id / SSM handling for BROADCAST sessions + MNC-length-aware PLMN Id",
+          "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/29",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-08-12",
           "last_comment_by": null,
           "last_comment_date": null
         },
@@ -260,7 +325,7 @@
           "number": 68,
           "title": "Tunnel-mode reception, and five object-handling fixes (compression, partitioning, transfer length)",
           "url": "https://github.com/5G-MAG/rt-libflute/pull/68",
-          "draft": true,
+          "draft": false,
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-08-11",
@@ -333,6 +398,32 @@
           "last_comment_date": null
         },
         {
+          "repo": "srsRAN_4G_mbs",
+          "branch": null,
+          "number": 2,
+          "title": "Fix MBS Broadcast reception: concurrent-session support, MCCH phase-lock, PDCP bootstrap",
+          "url": "https://github.com/5G-MAG/srsRAN_4G_mbs/pull/2",
+          "draft": true,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-08-11",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "srsRAN_Project_mbs",
+          "branch": null,
+          "number": 1,
+          "title": "Fix MBS Broadcast: concurrent-session LCID collision, MCCH/MTCH bugs, and crashes",
+          "url": "https://github.com/5G-MAG/srsRAN_Project_mbs/pull/1",
+          "draft": true,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-08-11",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
           "repo": "rt-libflute",
           "branch": null,
           "number": 62,
@@ -363,7 +454,7 @@
     {
       "name": "UE Data Collection, Reporting and Event Exposure",
       "doc_url": "/reference-tools/data-collection/",
-      "tagline": "UE-side data collection, reporting and event exposure · 3GPP TS 26.531",
+      "tagline": "User data collection and reporting, and exposure of network events to consumers",
       "pulls": [
         {
           "repo": "rt-data-collection-application-function",
@@ -383,28 +474,14 @@
     {
       "name": "MPEG V3C Immersive Platform",
       "doc_url": "/reference-tools/v3c/",
-      "tagline": "V3C volumetric video platform for immersive 5G experiences",
+      "tagline": "Volumetric video platform for immersive experiences",
       "pulls": []
     },
     {
       "name": "5G Core Service Consumers",
       "doc_url": "/reference-tools/5g-core/",
       "tagline": "Reference consumers for 5G Core capability exposure APIs",
-      "pulls": [
-        {
-          "repo": "rt-5gc-service-consumers",
-          "branch": null,
-          "number": 29,
-          "title": "Fix MBS Session Id / SSM handling for BROADCAST sessions + MNC-length-aware PLMN Id",
-          "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/29",
-          "draft": true,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-08-12",
-          "last_comment_by": null,
-          "last_comment_date": null
-        }
-      ]
+      "pulls": []
     },
     {
       "name": "Beyond 2D Evaluation Framework",
@@ -435,18 +512,18 @@
     {
       "name": "CAMARA Connectivity Quality Management APIs",
       "doc_url": "/reference-tools/network-apis/",
-      "tagline": "Network capability exposure through CAMARA APIs",
+      "tagline": "Requesting, monitoring, and managing dynamic network resources and QoS",
       "pulls": [
         {
           "repo": "rt-camara-examples",
           "branch": null,
-          "number": 4,
-          "title": "feat: add Dedicated Networks MCP server",
-          "url": "https://github.com/5G-MAG/rt-camara-examples/pull/4",
+          "number": 6,
+          "title": "fix: redesign Dedicated Networks Portal for a more consistent flow across the 4 APIs",
+          "url": "https://github.com/5G-MAG/rt-camara-examples/pull/6",
           "draft": false,
-          "author_login": "aaronmontilla",
-          "author_avatar": "https://avatars.githubusercontent.com/u/47569421?v=4",
-          "created_at": "2026-07-01",
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-09-20",
           "last_comment_by": null,
           "last_comment_date": null
         }
@@ -455,8 +532,21 @@
     {
       "name": "Conversational Avatar Communication with MPEG ARF",
       "doc_url": "/reference-tools/avatar/",
-      "tagline": "Real-time conversational avatars over 5G using MPEG ARF",
+      "tagline": "Real-time conversational avatars, animated from user to user",
       "pulls": [
+        {
+          "repo": "rt-3gpp-swap",
+          "branch": null,
+          "number": 9,
+          "title": "Close TS 26.113 \u00a713.2.4 (SWAP) conformance gaps; add license",
+          "url": "https://github.com/5G-MAG/rt-3gpp-swap/pull/9",
+          "draft": true,
+          "author_login": "nlsdvl",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2748737?v=4",
+          "created_at": "2026-09-17",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "rt-avatar-content",
           "branch": null,
@@ -475,7 +565,7 @@
     {
       "name": "AI/ML Evaluation Framework",
       "doc_url": "/testbeds/ai-ml/",
-      "tagline": "Evaluation framework for AI/ML models in 5G media processing",
+      "tagline": "Evaluation framework for AI/ML models in media processing for 3GPP systems",
       "pulls": [
         {
           "repo": "rt-ai-ml-evaluation-framework",
@@ -502,26 +592,12 @@
       "name": "DVB-I Services over 5G Systems",
       "doc_url": "/reference-tools/dvb-i/",
       "tagline": "DVB-I service discovery combined with 5GMS and 5G Broadcast delivery",
-      "pulls": [
-        {
-          "repo": "rt-5gms-application",
-          "branch": null,
-          "number": 52,
-          "title": "Fixing instructions",
-          "url": "https://github.com/5G-MAG/rt-5gms-application/pull/52",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-05-21",
-          "last_comment_by": null,
-          "last_comment_date": null
-        }
-      ]
+      "pulls": []
     },
     {
       "name": "Content Delivery Protocols",
       "doc_url": "/reference-tools/content-delivery/",
-      "tagline": "DASH, HLS and CMAF content delivery reference tools",
+      "tagline": "Content delivery origin, packaging, protocols and related tools",
       "pulls": [
         {
           "repo": "rt-libflute",
@@ -542,7 +618,7 @@
           "number": 68,
           "title": "Tunnel-mode reception, and five object-handling fixes (compression, partitioning, transfer length)",
           "url": "https://github.com/5G-MAG/rt-libflute/pull/68",
-          "draft": true,
+          "draft": false,
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-08-11",
@@ -606,7 +682,7 @@
     {
       "name": "3GPP RAN and Core Platforms",
       "doc_url": "/reference-tools/3gpp-platforms/",
-      "tagline": "Lab-ready 5G RAN and Core built on Open5GS and srsRAN forks",
+      "tagline": "Lab-ready 5G RAN and Core built on Open-Source platforms",
       "pulls": [
         {
           "repo": "srsRAN_4G",
@@ -626,22 +702,38 @@
     {
       "name": "Dependency",
       "doc_url": null,
-      "tagline": "External forks and dependencies 5G-MAG maintains for its reference tools — not first-class reference-tool projects with their own docs page",
-      "pulls": [
-        {
-          "repo": "cmcd-toolkit",
-          "branch": null,
-          "number": 2,
-          "title": "Fix spelling of 'Length' in dashboard titles",
-          "url": "https://github.com/5G-MAG/cmcd-toolkit/pull/2",
-          "draft": false,
-          "author_login": "shilinding",
-          "author_avatar": "https://avatars.githubusercontent.com/u/115362942?v=4",
-          "created_at": "2026-07-02",
-          "last_comment_by": null,
-          "last_comment_date": null
-        }
-      ]
+      "tagline": "External forks and dependencies 5G-MAG maintains for its reference tools \u2014 not first-class reference-tool projects with their own docs page",
+      "pulls": []
+    },
+    {
+      "name": "Real-time Media Communication (RTC) Architecture",
+      "doc_url": null,
+      "tagline": "Interactive, low-latency, real-time media communication",
+      "pulls": []
+    },
+    {
+      "name": "Non-Terrestrial Networks in 5G Systems",
+      "doc_url": null,
+      "tagline": "Expanding network connectivity via satellite and HAPS for content delivery",
+      "pulls": []
+    },
+    {
+      "name": "Non-Public Networks",
+      "doc_url": null,
+      "tagline": "Private networks replacing legacy COFDM and RF-based contribution links",
+      "pulls": []
+    },
+    {
+      "name": "Time-Sensitive Communications (TSC)",
+      "doc_url": null,
+      "tagline": "Deterministic, low-jitter transport for tightly synchronised professional media",
+      "pulls": []
+    },
+    {
+      "name": "5G-MAG Website & Org Infrastructure",
+      "doc_url": null,
+      "tagline": "The 5G-MAG website, org-wide GitHub configuration and community discussion repos.",
+      "pulls": []
     }
   ]
 }

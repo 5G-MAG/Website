@@ -320,7 +320,7 @@
   padding: 12px;
   text-align: left;
   border-bottom: 2px solid var(--ifm-color-emphasis-300);
-  font-size: 0.75em;
+  font-size: 0.875em;
   color: var(--ifm-color-emphasis-700);
   text-transform: uppercase;
 }
@@ -334,7 +334,7 @@
   white-space: nowrap;
 }
 .stats-sub {
-  font-size: 0.8em;
+  font-size: 0.875em;
   color: var(--ifm-color-emphasis-600);
   display: block;
 }
@@ -358,14 +358,14 @@
 }
 .summary-card h3 {
   margin: 0;
-  /* emphasis-700, not -600: at this font-size (0.85em, ~13.6px) -600
+  /* emphasis-700, not -600: at this font-size (0.875em, 14px) -600
      computes to 3.06:1 on the light-mode card background, below WCAG
      AA's 4.5:1 floor for text this small. -700 (5.72:1) is the same
      token already used for muted-but-readable labels elsewhere in this
      file (see lines above/below). Dark mode is unaffected: Infima's own
      dark-theme -600 already resolves light enough to pass. */
   color: var(--ifm-color-emphasis-700);
-  font-size: 0.85em;
+  font-size: 0.875em;
   text-transform: uppercase;
 }
 .summary-value {
@@ -383,7 +383,7 @@
    at most two lines. */
 @media (max-width: 480px) {
   .summary-card h3 {
-    font-size: 0.78em;
+    font-size: 0.875em;
     text-transform: none;
   }
 }
@@ -479,7 +479,7 @@
   flex-shrink: 0;
 }
 .community-tile .tile-kicker {
-  font-size: 0.68rem;
+  font-size: 0.875rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -635,7 +635,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -686,7 +686,7 @@
   border-bottom: 1px solid var(--ifm-color-emphasis-200);
 }
 .event-fact__label {
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -859,7 +859,7 @@
   align-items: center;
   gap: 0.35rem;
   color: #e0272d;
-  font-size: 0.7rem;
+  font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -930,7 +930,7 @@
 .topic-banner__kicker {
   display: block;
   color: #fff;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   line-height: 1;
   font-weight: 700;
   text-transform: uppercase;
@@ -970,11 +970,68 @@
   margin: 0 0 1.5rem;
 }
 
+/* ── Project flagship hero (per-project landing pages) ─────────────
+   A bigger, more visual treatment than .topic-banner/.topic-lead above
+   -- raised directly ("the style needs to be flagship... looks very
+   much like documentation style"): leads with the project's own real
+   cover image (the same navy/cyan card already used site-wide for
+   release/community cards -- see PROJECT_CARDS' comment in
+   src/pages/index.js), sized to read as a poster, not an icon-in-a-box
+   banner. */
+.project-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
+  margin: 0 0 2.5rem;
+}
+
+.project-hero__cover {
+  width: 100%;
+  max-width: 720px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+}
+
+.project-hero__tagline {
+  max-width: 640px;
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--ifm-heading-color);
+}
+
+.project-hero__tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* ── Project story (per-project landing pages) ──────────────────────
+   Wider line-height, larger type, a narrower centered column -- reads
+   as a magazine lead-in, not doc-page body copy. */
+.project-story {
+  max-width: 720px;
+  margin: 0 auto 2.5rem;
+  font-size: 1.15rem;
+  line-height: 1.75;
+  color: var(--ifm-color-emphasis-800);
+}
+
+.project-story p {
+  margin: 0 0 1rem;
+}
+
 /* ── Sidebar section dividers (Tech sidebar topic groupings) ─────── */
 .sidebar-section-label {
   margin: 1rem 0 0.35rem;
   padding: 0 var(--ifm-menu-link-padding-horizontal);
-  font-size: 0.7rem;
+  font-size: 0.875rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.07em;
@@ -1013,7 +1070,7 @@
 }
 
 .showcase-hero-placeholder span {
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   max-width: 320px;
 }
 
@@ -1033,7 +1090,7 @@
   border-radius: 999px;
   border: 1px solid var(--ifm-color-emphasis-300);
   background: var(--ifm-background-surface-color);
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--ifm-color-emphasis-800);
 }
@@ -1098,14 +1155,14 @@
 }
 
 .repo-card__role {
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   color: var(--ifm-color-emphasis-700);
   line-height: 1.4;
 }
 
 .repo-card__version {
   align-self: flex-start;
-  font-size: 0.7rem;
+  font-size: 0.875rem;
   font-weight: 700;
   padding: 0.15rem 0.55rem;
   border-radius: 999px;
@@ -1166,7 +1223,7 @@
 }
 
 .standard-card__label {
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--ifm-color-emphasis-800);
 }
@@ -1202,7 +1259,7 @@
 }
 
 .domain-pillar-chip {
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   font-weight: 500;
   color: var(--ifm-color-primary-textsafe);
   background: var(--ifm-color-emphasis-100);
@@ -1229,7 +1286,7 @@
 .capability-badge {
   display: inline-flex;
   align-items: center;
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   font-weight: 600;
   padding: 0.3rem 0.85rem;
   border-radius: 999px;
@@ -1275,7 +1332,7 @@
   border-radius: 50%;
   background: #fff;
   font-weight: 800;
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   line-height: 1;
 }
 
@@ -1303,7 +1360,7 @@
   justify-content: center;
   padding: 0.15rem 0.55rem;
   border-radius: 999px;
-  font-size: 0.68rem;
+  font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.02em;
   color: #fff;
@@ -1319,7 +1376,7 @@
 }
 
 .p-plus-sign {
-  font-size: 0.7rem;
+  font-size: 0.875rem;
   font-weight: 700;
   line-height: 1;
   color: var(--ifm-color-emphasis-500);

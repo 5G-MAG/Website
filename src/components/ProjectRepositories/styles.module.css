@@ -39,7 +39,7 @@
 }
 
 .repoSlug {
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   background: var(--ifm-color-emphasis-200);
   padding: 0.1rem 0.4rem;
   border-radius: 4px;
@@ -48,7 +48,7 @@
 
 .badgeAux,
 .badgePrivate {
-  font-size: 0.62rem;
+  font-size: 0.875rem;
   font-weight: 700;
   padding: 0.1rem 0.4rem;
   border-radius: 999px;
@@ -88,13 +88,13 @@
 }
 
 .tagLabel {
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   color: var(--ifm-color-emphasis-600);
   margin-right: 0.1rem;
 }
 
 .tag {
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   padding: 0.1rem 0.5rem;
   border-radius: 999px;
   line-height: 1.5;
@@ -127,7 +127,7 @@
 }
 
 .earlyAccess {
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   color: var(--ifm-color-primary);
   text-decoration: underline;
   white-space: nowrap;
@@ -139,7 +139,7 @@
    but the same tokens and shape, so the signal reads identically
    wherever a visitor encounters it. */
 .statusPill {
-  font-size: 0.66rem;
+  font-size: 0.875rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.02em;

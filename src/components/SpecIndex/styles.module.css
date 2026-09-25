@@ -113,7 +113,7 @@
 }
 
 .table thead th {
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--ifm-color-emphasis-600);
@@ -141,14 +141,14 @@
 
 .note {
   display: block;
-  font-size: 0.87rem;
+  font-size: 0.875rem;
   color: var(--ifm-color-emphasis-600);
   margin-top: 0.15rem;
 }
 
 .layer {
   display: inline-block;
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   padding: 0.15rem 0.6rem;
   border-radius: 100px;
   background: var(--ifm-color-emphasis-200);

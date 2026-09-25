@@ -44,6 +44,7 @@
   margin: 0 auto;
 }
 
+
 /* On focus, autocomplete.js wraps the <input> in its own
    `display: inline-block` <span> with no width of its own (see
    SearchBar.jsx's `cssClasses.root` / autoComplete() call) -- the input's
@@ -69,303 +70,237 @@
   box-shadow: var(--card-hover-shadow);
 }
 
-/* ── Product Type Cards ────────────────────────────────────────────── */
-
-.productGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.75rem;
-}
-
-@media (max-width: 768px) {
-  .productGrid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.productCard {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-top: 3px solid var(--ifm-color-primary);
-  border-radius: 10px;
-  overflow: hidden;
-  background: var(--ifm-background-surface-color);
-  color: inherit !important;
-  text-decoration: none !important;
-  transition:
-    box-shadow 0.2s ease,
-    transform 0.15s ease;
-}
-
-.productCard:hover {
-  box-shadow: var(--card-hover-shadow);
-  transform: translateY(-3px);
-  text-decoration: none !important;
-}
-
-.productCardImageWrap {
-  overflow: hidden;
-  line-height: 0;
-}
-
-.productCardImage {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.2s ease;
-}
-
-.productCard:hover .productCardImage {
-  transform: scale(1.04);
-}
-
-.productCardBody {
-  padding: 1.1rem 1.1rem 0.5rem;
-  flex: 1;
-}
-
-.productCardLabel {
-  font-size: 1.05rem;
-  font-weight: 700;
-  margin: 0 0 0.5rem;
-  color: var(--ifm-heading-color);
-}
-
-.productCardDesc {
-  font-size: 0.875rem;
-  color: var(--ifm-color-emphasis-700);
-  margin: 0;
-  line-height: 1.6;
-}
-
-.productCardFooter {
-  padding: 0.65rem 1.1rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--ifm-color-primary);
-  border-top: 1px solid var(--ifm-color-emphasis-200);
-}
-
-/* ── Activity Cards ─────────────────────────────────────────────────── */
-
-.activityGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-
-@media (max-width: 996px) {
-  .activityGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .activityGrid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Four equal-weight destinations (the "Discover 5G-MAG's work" areas) --
-   same card, one more column than the default 3-up grid above. */
-.activityGrid--4col {
-  grid-template-columns: repeat(4, 1fr);
-}
-
-@media (max-width: 996px) {
-  .activityGrid--4col {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .activityGrid--4col {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* The activityCard* rules that used to live here now live in
-   src/components/HubDestinationCard/styles.module.css -- that component
-   replaced this page's local AreaCard (2026-08-26). */
-
-/* ── Pillar Cards ──────────────────────────────────────────────────── */
-
-.pillarGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-}
-
-@media (max-width: 768px) {
-  .pillarGrid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-}
-
-.pillarActions {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 2.5rem;
-  flex-wrap: wrap;
-}
-
-.pillarCard {
-  padding: 1.5rem 1.5rem 1.5rem 1.75rem;
-  border-left: 4px solid var(--ifm-color-primary);
-  background: var(--ifm-background-surface-color);
-  border-radius: 0 8px 8px 0;
-}
-
-.pillarIcon {
-  width: 36px;
-  height: 36px;
-  color: var(--ifm-color-primary);
-  margin-bottom: 1rem;
-}
-
-.pillarIcon svg {
-  width: 100%;
-  height: 100%;
-}
-
-.pillarTitle {
-  font-size: 1rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-
-.pillarBody {
-  font-size: 0.9rem;
-  color: var(--ifm-color-emphasis-700);
-  margin: 0;
-  line-height: 1.6;
-}
-
-/* ── Category Cards ──────────────────────────────────────────────────── */
-
-.categoryColumns {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.categoryCard {
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 10px;
-  background: var(--ifm-background-surface-color);
-  overflow: hidden;
-}
-
-.categoryHeader {
-  padding: 1.4rem 1.4rem 1.1rem;
-  background: linear-gradient(
-    135deg,
-    var(--ifm-color-primary-darkest) 0%,
-    var(--ifm-color-primary) 100%
-  );
-}
-
-.categoryTitle {
-  font-size: 1.15rem;
-  font-weight: 700;
-  margin: 0 0 0.5rem;
-  color: #fff;
-}
-
-.categoryDesc {
-  font-size: 0.925rem;
-  color: rgba(255, 255, 255, 0.85);
-  margin: 0;
-  line-height: 1.6;
-}
-
-.categoryTopicGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.5rem;
-  padding: 0.75rem;
-}
-
-@media (max-width: 768px) {
-  .categoryTopicGrid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 480px) {
-  .categoryTopicGrid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.categoryTopicCard {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.55rem;
-  padding: 0.65rem 0.75rem;
-  border-radius: 8px;
-  border: 1px solid var(--ifm-color-emphasis-200);
-  background: var(--ifm-background-color);
-  text-decoration: none !important;
-  color: inherit !important;
-  transition:
-    border-color 0.15s ease,
-    background 0.15s ease;
-}
-
-.categoryTopicCard:hover {
-  border-color: var(--ifm-color-primary);
-  background: var(--ifm-color-emphasis-100);
-  text-decoration: none !important;
-}
-
-.categoryTopicCardBody {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  min-width: 0;
-}
-
-.categoryTopicIcon {
-  width: 36px;
-  height: 36px;
-  flex-shrink: 0;
-  margin-top: 1px;
-  color: var(--ifm-color-primary);
-  display: flex;
-  align-items: center;
-}
-
-.categoryTopicIcon svg {
-  width: 100%;
-  height: 100%;
-}
-
-.categoryTopicName {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--ifm-heading-color);
-  line-height: 1.3;
-}
-
-.categoryTopicDescText {
-  font-size: 0.8rem;
-  color: var(--ifm-color-emphasis-700);
-  display: block;
-  line-height: 1.45;
-}
-
 /* ── On Air ────────────────────────────────────────────────────────── */
 
 .onAirMore {
   text-align: center;
   margin-top: 1.5rem;
   font-weight: 600;
+}
+
+/* ── Where We Stand (basket rollup) ───────────────────────────────────
+   One card per basket -- its own top-level section (raised directly: it
+   sat too far down as a sub-block at the tail of Who We Are), using the
+   page's standard .sectionTitle/.sectionSubtitle like every other
+   section here. Each card spells out all 4 stages by name every time
+   (a checklist, not a bar), so there's nothing to decode -- a shared
+   axis header naming 4 color segments once, tried first, still read as
+   "meaningless" once a viewer reached an unlabeled row (raised
+   directly). */
+.standGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .standGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .standGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.standCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-top: 3px solid var(--accent, var(--ifm-color-primary));
+  border-radius: 10px;
+  padding: 0.9rem 1rem 1rem;
+  background: var(--ifm-background-surface-color);
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
+}
+
+.standCard:hover {
+  box-shadow: var(--card-hover-shadow);
+  transform: translateY(-3px);
+}
+
+/* Wraps just the head+checklist (not the whole card anymore, now that
+   the project-icon row below is its own set of links -- an <a> can't
+   nest another <a>). */
+.standCardLink {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+.standCardHead {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.standIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 9px;
+  background: var(--accent, var(--ifm-color-primary));
+}
+
+.standIcon svg {
+  width: 22px;
+  height: 22px;
+  color: #fff;
+}
+
+.standName {
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: var(--ifm-heading-color);
+  line-height: 1.3;
+}
+
+.standChecklist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.standCheckRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--ifm-color-emphasis-500);
+}
+
+.standCheckRowDone {
+  font-weight: 700;
+  color: var(--ifm-heading-color);
+}
+
+.standDot {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 2px solid var(--ifm-color-emphasis-400);
+}
+
+.standDotDone {
+  border-color: var(--accent, var(--ifm-color-primary));
+  background: var(--accent, var(--ifm-color-primary));
+}
+
+/* One icon+name row per project in the basket, each a direct link to
+   that project's own tech_url -- sits below the checklist, separated
+   by a rule, as its own list of link targets outside standCardLink. */
+.standProjectList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-top: 0.15rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.standProjectItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.15rem 0.3rem;
+  margin: 0 -0.3rem;
+  border-radius: 6px;
+  color: inherit !important;
+  text-decoration: none !important;
+  transition: background 0.15s ease;
+}
+
+.standProjectItem:hover {
+  background: var(--ifm-color-emphasis-100);
+  text-decoration: none !important;
+}
+
+.standProjectIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--accent, var(--ifm-color-primary));
+}
+
+.standProjectIcon svg {
+  width: 15px;
+  height: 15px;
+}
+
+.standProjectName {
+  min-width: 0;
+  font-size: 0.875rem;
+  color: var(--ifm-color-emphasis-700);
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.standProjectItem:hover .standProjectName {
+  color: var(--ifm-heading-color);
+}
+
+/* Same invite banner as Where We Stand's own full chart
+   (tech/index.module.css's .inviteBlock) -- kept as its own copy here
+   rather than a cross-file import, same convention this page's own
+   iconForCatalogKey already follows for a single shared piece. */
+.inviteBlock {
+  margin-top: 2.5rem;
+  padding: 2rem 1.75rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--ifm-color-primary-darkest) 0%, var(--ifm-color-primary) 100%);
+  text-align: center;
+}
+
+.inviteTitle {
+  font-size: 1.45rem;
+  font-weight: 800;
+  margin: 0 0 0.6rem;
+  color: #fff;
+}
+
+.inviteBody {
+  max-width: 620px;
+  margin: 0 auto 1.4rem;
+  line-height: 1.6;
+  font-size: 1.02rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.inviteLinks {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.inviteLink {
+  font-weight: 700;
+  padding: 0.6rem 1.3rem;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ifm-color-primary-darkest) !important;
+  text-decoration: none !important;
+}
+
+.inviteLink:hover {
+  background: rgba(255, 255, 255, 0.88);
+  text-decoration: none !important;
 }
 
 /* ── See It Running (fading slide row) ────────────────────────────────
@@ -564,7 +499,7 @@
 }
 
 .releasesUpdated {
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   color: var(--ifm-color-emphasis-600);
   margin: 0;
 }

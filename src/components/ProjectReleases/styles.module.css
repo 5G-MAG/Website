@@ -58,7 +58,7 @@
      "clickable" everywhere else on this page. */
   background: var(--badge-new-background);
   color: var(--badge-new-foreground);
-  font-size: 0.62rem;
+  font-size: 0.875rem;
   font-weight: 700;
   padding: 0.1rem 0.4rem;
   border-radius: 999px;
@@ -69,7 +69,7 @@
 
 .releaseTag {
   font-family: var(--ifm-font-family-monospace);
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   background: var(--ifm-color-emphasis-200);
   padding: 0.1rem 0.4rem;
   border-radius: 4px;
@@ -82,7 +82,7 @@
 }
 
 .releaseDate {
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   color: var(--ifm-color-emphasis-600);
 }
 
@@ -92,7 +92,7 @@
   gap: 0.45rem;
   text-decoration: none !important;
   color: var(--ifm-color-emphasis-700) !important;
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   flex-shrink: 0;
   transition: color 0.15s ease;
 }
@@ -109,7 +109,7 @@
 }
 
 .updatedAt {
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   color: var(--ifm-color-emphasis-500);
   padding: 0.5rem 1.25rem;
   margin: 0;

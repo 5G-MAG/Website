@@ -16,7 +16,10 @@
   display: flex;
   flex-direction: column;
   border: 1px solid var(--ifm-color-emphasis-300);
-  border-top: 3px solid var(--ifm-color-primary);
+  /* var(--accent) is only set (inline style) by a caller passing a
+     basket's own color -- every other consumer of this card keeps the
+     exact fixed color it always had. */
+  border-top: 3px solid var(--accent, var(--ifm-color-primary));
   border-radius: 10px;
   overflow: hidden;
   background: var(--ifm-background-surface-color);
@@ -46,10 +49,13 @@
   justify-content: center;
   gap: 0.65rem;
   padding: 1.5rem 1.25rem 1.35rem;
+  /* --accent-dark/--accent are only set (inline style) by a caller
+     passing a basket color -- unset, this is exactly the original fixed
+     gradient every other consumer of this card still gets. */
   background: linear-gradient(
     135deg,
-    var(--ifm-color-primary-darkest) 0%,
-    var(--ifm-color-primary) 100%
+    var(--accent-dark, var(--ifm-color-primary-darkest)) 0%,
+    var(--accent, var(--ifm-color-primary)) 100%
   );
   transition: opacity 0.2s ease;
 }
@@ -86,9 +92,31 @@
   justify-content: center;
 }
 
+/* Only applied when a caller passes largeTitle -- same size as Where We
+   Stand's own project-name text (see .bandTitleCompactLg below); the
+   2-line space reservation shrinks with it so a smaller title doesn't
+   leave the same tall gap the 1.3rem default reserved. */
+.bandTitleLg {
+  font-size: 0.98rem;
+  font-weight: 600;
+  min-height: calc(0.98rem * 1.25 * 2);
+}
+
 .body {
   padding: 1.1rem 1.1rem 0.5rem;
   flex: 1;
+}
+
+/* Only rendered when a caller passes basketLabel (paired with accent) --
+   centered to match the icon band's own centered title above it. */
+.basketLabel {
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--accent, var(--ifm-color-primary));
+  text-align: center;
+  margin: -0.35rem 0 0.6rem;
 }
 
 .desc {
@@ -124,9 +152,17 @@
   display: flex;
   flex-direction: column;
   border: 1px solid var(--ifm-color-emphasis-300);
+  /* Same border color as the other 3 sides by default, so an unset
+     --accent reads as today's plain uniform border, not a stripe -- only
+     a caller passing a basket color turns this into a visible accent. */
+  border-top: 3px solid var(--accent, var(--ifm-color-emphasis-300));
   border-radius: 8px;
   overflow: hidden;
-  background: var(--ifm-background-surface-color);
+  /* A soft tint of --accent over the plain surface color -- when
+     --accent is unset, the mix input and target are the same color, so
+     this resolves to exactly the old flat background for every other
+     consumer of this card. */
+  background: color-mix(in srgb, var(--accent, var(--ifm-background-surface-color)) 7%, var(--ifm-background-surface-color));
 }
 
 .cardCompact {
@@ -137,6 +173,14 @@
   text-decoration: none !important;
   color: inherit !important;
   transition: background 0.15s ease;
+}
+
+/* Only applied when a caller passes big -- more breathing room for a
+   card that's the main content of its page (reference-tools, testbeds),
+   not a dense secondary grid (standards, showcase). */
+.compactWrapLg .cardCompact {
+  padding: 0.85rem 1rem;
+  gap: 0.75rem;
 }
 
 .cardCompact:hover {
@@ -159,8 +203,8 @@
   border-radius: 6px;
   background: linear-gradient(
     135deg,
-    var(--ifm-color-primary-darkest) 0%,
-    var(--ifm-color-primary) 100%
+    var(--accent-dark, var(--ifm-color-primary-darkest)) 0%,
+    var(--accent, var(--ifm-color-primary)) 100%
   );
 }
 
@@ -170,12 +214,32 @@
   color: rgba(255, 255, 255, 0.9);
 }
 
+/* Only applied when a caller passes big (see .compactWrapLg above). */
+.iconBandCompactLg {
+  width: 44px;
+  height: 44px;
+}
+
+.iconBandCompactLg svg {
+  width: 24px;
+  height: 24px;
+}
+
 .bandTitleCompact {
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--ifm-heading-color);
   line-height: 1.3;
   margin: 0;
+}
+
+/* Only applied when a caller passes largeTitle -- same size as Where We
+   Stand's own project-name text (tech/index.module.css's .chartRowLabel,
+   0.98rem/600), so a project's name reads the same size wherever it
+   appears; every other compact-card consumer keeps the smaller size
+   above. */
+.bandTitleCompactLg {
+  font-size: 0.98rem;
 }
 
 .bodyCompact {
@@ -187,15 +251,24 @@
 }
 
 .descCompact {
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   color: var(--ifm-color-emphasis-700);
   margin: 0;
   line-height: 1.45;
 }
 
+/* Only rendered when a caller passes basketLabel (paired with accent). */
+.basketLabelCompact {
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--accent, var(--ifm-color-primary));
+}
+
 .tag {
   align-self: flex-start;
-  font-size: 0.66rem;
+  font-size: 0.875rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.02em;
@@ -223,11 +296,44 @@
   margin-top: 0;
 }
 
+/* A project's real repository count, as one bubble linking to its own
+   page -- same bubble Where We Stand's chart uses for its Software stage
+   (src/pages/tech/index.js's .chartBubble), not a chip per repo; every
+   repo is already listed in full via <ProjectRepositories> one click
+   further, on that page. */
+.repoBubbleRow {
+  padding: 0 1.1rem 0.9rem;
+  margin-top: -0.3rem;
+}
+
+.repoBubbleRowCompact {
+  padding: 0 0.75rem 0.5rem;
+  margin-top: -0.15rem;
+}
+
+.repoBubble {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #fff !important;
+  background: var(--accent, var(--ifm-color-primary));
+  border-radius: 999px;
+  padding: 0.22rem 0.65rem;
+  text-decoration: none !important;
+  white-space: nowrap;
+}
+
+.repoBubble:hover {
+  opacity: 0.88;
+  text-decoration: none !important;
+}
+
 .secondaryLink {
   display: block;
   padding: 0 0.75rem 0.55rem;
   margin-top: -0.15rem;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--ifm-color-primary);
   text-decoration: none !important;

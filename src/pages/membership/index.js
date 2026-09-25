@@ -71,12 +71,27 @@ export default function Membership() {
         ]}
       />
 
-      <div className="container" style={{ marginTop: '1.75rem' }}>
-        <p className="topic-lead">Join, collaborate, sponsor software development and scale your projects.</p>
-      </div>
-
       <main>
+        {/* What You Get -- first thing after the hero (raised directly:
+            "I think what you get should be the first thing to show"),
+            ahead of the stats block: the value proposition leads, then
+            the proof. */}
         <section className={styles.section}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>What you get that you won&apos;t get alone</h2>
+            <p className={styles.sectionSubtitle}>
+              We offer a neutral framework to collaborate within minimal bureaucracy, focused on
+              results.
+            </p>
+            <div className="godeeper-grid">
+              {BENEFITS.map((b) => (
+                <GodeeperCard key={b.title} {...b} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className={`${styles.section} ${styles.sectionAlt}`}>
           <div className="container">
             <h2 className={styles.sectionTitle}>Our work at a glance</h2>
             <p className={styles.sectionSubtitle}>Some numbers and examples of our work.</p>
@@ -87,21 +102,6 @@ export default function Membership() {
                   <span className="summary-value">{f.value}</span>
                   {f.sub && <span className="stats-sub">{f.sub}</span>}
                 </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className={`${styles.section} ${styles.sectionAlt}`}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>What you get that you won&apos;t get alone</h2>
-            <p className={styles.sectionSubtitle}>
-              We offer a neutral framework to collaborate within minimal bureaucracy, focused on
-              results.
-            </p>
-            <div className="godeeper-grid">
-              {BENEFITS.map((b) => (
-                <GodeeperCard key={b.title} {...b} />
               ))}
             </div>
           </div>

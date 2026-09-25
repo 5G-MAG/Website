@@ -15,7 +15,7 @@
   color: var(--ifm-font-color-base);
   padding: 0.4rem 0.95rem;
   border-radius: 999px;
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
   transition:
@@ -88,7 +88,7 @@
 }
 
 .seriesByline {
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   color: var(--ifm-color-emphasis-700);
   margin: 0 0 0.9rem;
 }

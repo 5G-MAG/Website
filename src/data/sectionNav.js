@@ -1,3 +1,5 @@
+import { BASKETS } from './baskets';
+
 // Canonical per-section nav items, keyed by the route prefix(es) they
 // apply to. Consumed by src/components/SectionNav to render one
 // consistent pill-row across an entire section — the hub page AND every
@@ -38,6 +40,16 @@ export function stripBaseUrl(pathname, baseUrl) {
   if (pathname.startsWith(baseUrl)) return `/${pathname.slice(baseUrl.length)}`;
   return pathname;
 }
+
+// Technology's own menu items are the baskets themselves (raised
+// directly: "Tech should contain the baskets"), not the hub's meta-pages
+// (Blueprints, Glossary, etc. -- those stay one click away on /tech
+// itself). Same order and titles as BASKETS (taxonomy.json), the same
+// list Where We Stand rolls up on both /tech and the homepage, so this
+// menu can't drift from what those actually show. Each links to that
+// basket's own anchor on /tech (tech/index.js's basketBlock carries
+// id={b.key}).
+const TECHNOLOGY_ITEMS = BASKETS.map((b) => ({ label: b.title, href: `/tech#${b.key}` }));
 
 export const SECTION_NAV = [
   {
@@ -81,7 +93,7 @@ export const SECTION_NAV = [
     ],
     title: 'Software Accelerator',
     titleHref: '/developer',
-    subtitle: 'Open-source developer community. Reference tools, testbeds and applications for connected media experiences.',
+    subtitle: 'Open-source developer community.',
     items: [
       { label: 'Reference Tools', href: '/reference-tools' },
       { label: 'Testbeds', href: '/testbeds' },
@@ -107,15 +119,10 @@ export const SECTION_NAV = [
   },
   {
     prefixes: ['/tech'],
-    title: 'Technical Resources',
+    title: 'Technology',
     titleHref: '/tech',
-    subtitle: 'Specification profiles and implementation guidance — by the members, for the industry.',
-    items: [
-      { label: 'Implementation Blueprints', href: '/tech/blueprints' },
-      { label: 'Technology Exchange', href: '/tech/exchanges' },
-      { label: '3GPP Releases', href: '/tech/3gpp-work-items' },
-      { label: 'Glossary', href: '/tech/glossary' },
-    ],
+    subtitle: 'Specification profiles and implementation guidance.',
+    items: TECHNOLOGY_ITEMS,
   },
   // The per-topic Standards pages are Tech hub content served under
   // /standards/<topic> URLs: they list the specifications behind a topic's
@@ -152,15 +159,10 @@ export const SECTION_NAV = [
       '/standards/v3c',
       '/standards/xr',
     ],
-    title: 'Technical Resources',
+    title: 'Technology',
     titleHref: '/tech',
-    subtitle: 'Specification profiles and implementation guidance — by the members, for the industry.',
-    items: [
-      { label: 'Implementation Blueprints', href: '/tech/blueprints' },
-      { label: 'Technology Exchange', href: '/tech/exchanges' },
-      { label: '3GPP Releases', href: '/tech/3gpp-work-items' },
-      { label: 'Glossary', href: '/tech/glossary' },
-    ],
+    subtitle: 'Specification profiles and implementation guidance.',
+    items: TECHNOLOGY_ITEMS,
   },
   // /standards itself and its three contributor pages: 5G-MAG as a participant
   // in the standards process, which is a different thing from the per-topic
@@ -169,7 +171,7 @@ export const SECTION_NAV = [
     prefixes: ['/standards', '/surveys'],
     title: 'Standardisation',
     titleHref: '/standards',
-    subtitle: 'Shaping standards through concrete requirements and experienced-based feedback — submitted to SDOs.',
+    subtitle: 'Feedback and requirements to standards bodies.',
     items: [
       { label: 'Requirements towards SDOs', href: '/standards/requirements' },
       { label: 'Industry Surveys', href: '/surveys' },
@@ -182,7 +184,7 @@ export const SECTION_NAV = [
     prefixes: ['/action'],
     title: 'In Action',
     titleHref: '/action',
-    subtitle: 'From specifications to code, and from code to deployments and products.',
+    subtitle: 'Validation, demos and real deployments.',
     // Demos is the activity layer (plugfests, demos, trials) — it does not
     // own or gatekeep Testbeds or Reference Tools, so beyond its own
     // plugfest write-ups it has no sub-items pointing back at those.

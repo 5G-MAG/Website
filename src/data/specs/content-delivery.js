@@ -208,6 +208,14 @@ export const CONTENT_DELIVERY_SPECS = [
     layer: 'Media formats',
     note: 'The DVB DASH profile',
   },
+  // --- ETSI, multisource delivery ---------------------------------------
+  {
+    id: 'ETSI TS 103 973',
+    title: 'Coded Multisource Media Format (CMMF) for Content Distribution and Delivery',
+    url: 'https://www.etsi.org/deliver/etsi_ts/103900_103999/103973/01.01.01_60/ts_103973v010101p.pdf',
+    layer: 'Multisource delivery',
+    note: 'V1.1.1 (2024-10); a separate container carrying coded media from more than one network source at once, with no manifest of its own',
+  },
 ];
 
 export const CONTENT_DELIVERY_LAYER_ORDER = [
@@ -215,4 +223,5 @@ export const CONTENT_DELIVERY_LAYER_ORDER = [
   'IETF (reference only)',
   '3GPP',
   'Media formats',
+  'Multisource delivery',
 ];

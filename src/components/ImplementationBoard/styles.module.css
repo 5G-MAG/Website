@@ -22,7 +22,7 @@
 }
 
 .legendLabel {
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-weight: 700;
@@ -79,7 +79,7 @@
 .cardRepo {
   display: block;
   font-family: var(--ifm-font-family-monospace);
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   color: var(--ifm-color-emphasis-600);
   margin-bottom: 0.5rem;
   overflow-wrap: anywhere;
@@ -108,7 +108,7 @@
 }
 
 .cardCount {
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   color: var(--ifm-color-emphasis-700);
   font-variant-numeric: tabular-nums;
 }
@@ -117,7 +117,7 @@
 
 .chip {
   display: inline-block;
-  font-size: 0.79rem;
+  font-size: 0.875rem;
   font-weight: 700;
   padding: 0.15rem 0.6rem;
   border-radius: 100px;
@@ -201,7 +201,7 @@
 
 .sectionCount {
   margin-left: auto;
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   color: var(--ifm-color-emphasis-600);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
@@ -240,7 +240,7 @@
 }
 
 .table thead th {
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--ifm-color-emphasis-600);

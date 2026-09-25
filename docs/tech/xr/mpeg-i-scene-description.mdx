@@ -13,7 +13,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
   <path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/><path d="M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2"/><path d="M3 7v-2a2 2 0 0 1 2 -2h2"/><path d="M3 17v2a2 2 0 0 0 2 2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M17 21h2a2 2 0 0 0 2 -2v-2"/></svg>
 </div>
 <div class="topic-banner__text">
-<span class="topic-banner__kicker">XR and MPEG-I Scene Description</span>
+<span class="topic-banner__kicker">XR/3D Scenes with MPEG-I Scene Description</span>
 <h1>MPEG-I Scene Description</h1>
 </div>
 </div>
@@ -24,7 +24,7 @@ This documentation is currently **under development and subject to change**. It 
 
 ## Overview - MPEG-I Scene Description and glTF 2.0 Extensions
 
-This page explains the MPEG-I Scene Description model that underpins 5G-MAG's XR work: what it is, the reference architecture that plays back a scene, and the glTF 2.0 extensions that add timed and immersive media. For the wider XR context and reference tools, see the parent [XR and MPEG-I Scene Description](../xr) page.
+This page explains the MPEG-I Scene Description model that underpins 5G-MAG's XR work: what it is, the reference architecture that plays back a scene, and the glTF 2.0 extensions that add timed and immersive media. For the wider XR context and reference tools, see the parent [XR/3D Scenes with MPEG-I Scene Description](../xr) page.
 
 MPEG-I Scene Description (MPEG-I SD, ISO/IEC 23090-14) is a standard developed by MPEG (the Moving Picture Experts Group) for immersive media. It defines the structure and composition of a 3D scene, referencing and positioning 2D and 3D assets so the scene can be rendered properly, with support for real-time media delivery and interactivity.
 
@@ -106,10 +106,10 @@ Because features arrived across editions and amendments, a given implementation 
 
 ## Relationship to 3GPP delivery
 
-MPEG defines the scene format; 3GPP defines how it is delivered over 5G and what a device must be able to play. Scene-description content and its referenced media can be carried using the 5G Media Streaming framework (3GPP [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) architecture, [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) protocols) for streamed cases, and over Real-Time Communication transports for conversational and split-rendering cases. On the device side, 3GPP [TS 26.119](https://www.3gpp.org/dynareport/26119.htm) (MeCAR) references MPEG-I Scene Description as media that an AR device must be able to consume, and aligns the on-device client with the Khronos OpenXR runtime API. For that wider delivery and device context, see the [XR and MPEG-I Scene Description](../xr) Tech page and the [Standards view](/standards/xr).
+MPEG defines the scene format; 3GPP defines how it is delivered over 5G and what a device must be able to play. Scene-description content and its referenced media can be carried using the 5G Media Streaming framework (3GPP [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) architecture, [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) protocols) for streamed cases, and over Real-Time Communication transports for conversational and split-rendering cases. On the device side, 3GPP [TS 26.119](https://www.3gpp.org/dynareport/26119.htm) (MeCAR) references MPEG-I Scene Description as media that an AR device must be able to consume, and aligns the on-device client with the Khronos OpenXR runtime API. For that wider delivery and device context, see the [XR/3D Scenes with MPEG-I Scene Description](../xr) Tech page and the [Standards view](/standards/xr).
 
 ## Related
 
-- [XR and MPEG-I Scene Description](../xr): the parent overview, with the XR reference tools and slide deck.
-- [Avatar Communication with MPEG ARF](../avatar-communications): uses the `MPEG_avatar` extension described above for 3D avatar representation.
-- [Standards: XR and MPEG-I Scene Description](/standards/xr): the standards-tracking view of this topic.
+- [XR/3D Scenes with MPEG-I Scene Description](../xr): the parent overview, with the XR reference tools and slide deck.
+- [Conversational Avatar Communication with MPEG ARF](/tech/avatar): uses the `MPEG_avatar` extension described above for 3D avatar representation.
+- [Standards: XR/3D Scenes with MPEG-I Scene Description](/standards/xr): the standards-tracking view of this topic.

@@ -40,9 +40,35 @@
 }
 
 .label {
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--ifm-color-emphasis-800);
   text-align: center;
   line-height: 1.25;
+}
+
+/* Dashed border distinguishes the "join" card from a real logo card at a
+   glance, without a visual language this component doesn't already use
+   elsewhere. */
+.ctaCard {
+  border-style: dashed;
+  color: inherit;
+  text-decoration: none;
+}
+
+.ctaCard:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: var(--card-hover-shadow);
+}
+
+.ctaIcon {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--ifm-color-emphasis-400);
 }

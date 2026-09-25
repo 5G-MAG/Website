@@ -80,7 +80,7 @@ A network function that interacts with the 5G Core to influence traffic handling
 A 5G Core function that handles UE registration, connection and mobility management, reachability, and access authentication and authorization.
 
 **ARF (Avatar Representation Format)**
-An MPEG format for describing and exchanging avatars so that they can be rendered consistently across systems. See [Avatar Communication with MPEG ARF](/tech/avatar-communications).
+An MPEG format for describing and exchanging avatars so that they can be rendered consistently across systems. See [Conversational Avatar Communication with MPEG ARF](/tech/avatar).
 
 **AS (Application Server)**
 A server that hosts application logic or content and communicates with clients, often sitting behind or alongside 5G media functions.
@@ -93,7 +93,7 @@ A 5G Core function that records which PCF is handling a given UE's policy sessio
 ## C
 
 **CAMARA**
-An open-source project community that defines common, portable network APIs so applications can use operator capabilities across networks. See [Connectivity Quality with Network APIs](/tech/network-apis).
+An open-source project community that defines common, portable network APIs so applications can use operator capabilities across networks. See [CAMARA Connectivity Quality Management APIs](/tech/network-apis).
 
 **CMAF (Common Media Application Format)**
 A container format for segmented media that lets the same media segments be delivered over different streaming protocols. See [Content Delivery Protocols](/tech/content-delivery).
@@ -107,7 +107,7 @@ An adaptive streaming method that splits media into segments at multiple bitrate
 A function that collects, buffers and reports application and device data for analytics and exposure to consumers.
 
 **DTLS-SRTP**
-The combination used by WebRTC to protect media: DTLS (Datagram Transport Layer Security) negotiates and exchanges keys, which SRTP (Secure Real-time Transport Protocol) then uses to encrypt and authenticate RTP media. See [Real-Time Communications](/tech/rtc).
+The combination used by WebRTC to protect media: DTLS (Datagram Transport Layer Security) negotiates and exchanges keys, which SRTP (Secure Real-time Transport Protocol) then uses to encrypt and authenticate RTP media. See [Real-time Media Communication (RTC) Architecture](/tech/rtc).
 
 ## E
 
@@ -128,7 +128,7 @@ A protocol for reliably delivering files over one-way (broadcast or multicast) t
 ## G
 
 **glTF (GL Transmission Format)**
-An open format for efficient transmission and loading of 3D scenes and models. See [XR and MPEG-I Scene Description](/tech/xr).
+An open format for efficient transmission and loading of 3D scenes and models. See [XR/3D Scenes with MPEG-I Scene Description](/tech/xr).
 
 ## H
 
@@ -138,7 +138,7 @@ An adaptive streaming method that delivers media as segments over HTTP, widely u
 ## I
 
 **ICE (Interactive Connectivity Establishment)**
-A protocol that finds a usable network path between two peers behind NATs or firewalls, gathering and testing candidate addresses obtained via STUN and TURN. See [Real-Time Communications](/tech/rtc).
+A protocol that finds a usable network path between two peers behind NATs or firewalls, gathering and testing candidate addresses obtained via STUN and TURN. See [Real-time Media Communication (RTC) Architecture](/tech/rtc).
 
 ## M
 
@@ -152,7 +152,7 @@ The 5G system feature set for delivering content to groups of devices using mult
 The 5G Core functions that support MBS delivery. The MB-SMF and MB-UPF are multicast/broadcast-aware counterparts of the SMF and UPF, managing and carrying MBS sessions in the core network. The MBSF controls MBS User Services and Service Announcements on behalf of an application provider. The MBSTF handles application-layer delivery of MBS data (for example object distribution) down to the MB-UPF. These functions are linked by 3GPP-defined reference points — including N2, N3, N4, N11, N16, N19mb, N29mb, and the Nmb1/Nmb2/Nmb5/Nmb8/Nmb9/Nmb10 interfaces (see TS 23.247) — which are not each given a separate glossary entry here. See [5G Multicast Broadcast Services (MBS)](/tech/5g-mbs).
 
 **MIV (MPEG Immersive Video)**
-An MPEG coding approach for immersive video that supports viewing from multiple positions and directions. See [XR and MPEG-I Scene Description](/tech/xr).
+An MPEG coding approach for immersive video that supports viewing from multiple positions and directions. See [XR/3D Scenes with MPEG-I Scene Description](/tech/xr).
 
 ## N
 
@@ -166,7 +166,7 @@ A 5G network deployed for the needs of a specific organisation or site rather th
 A 5G Core function that maintains a registry of available network function instances and their profiles, and supports discovery between functions.
 
 **NTN (Non-Terrestrial Network)**
-A network that uses satellites or other airborne or spaceborne platforms to provide connectivity. See [Non-Terrestrial Networks](/tech/ntn).
+A network that uses satellites or other airborne or spaceborne platforms to provide connectivity. See [Non-Terrestrial Networks in 5G Systems](/tech/ntn).
 
 ## P
 
@@ -182,7 +182,7 @@ Delivery of content from one source to a single receiver, one stream per device.
 ## Q
 
 **QoD (Quality on Demand)**
-A network capability that lets an application request a specific quality of service for a session when needed. See [Connectivity Quality with Network APIs](/tech/network-apis).
+A network capability that lets an application request a specific quality of service for a session when needed. See [CAMARA Connectivity Quality Management APIs](/tech/network-apis).
 
 **QoS (Quality of Service)**
 The set of network characteristics (such as bitrate, latency and reliability) applied to a data flow.
@@ -196,10 +196,10 @@ The part of the mobile network that connects devices to the core over the radio 
 A protocol for delivering media objects and files over one-way transport, used in broadcast and multicast delivery. See [Content Delivery Protocols](/tech/content-delivery).
 
 **RTC (Real-Time Communication)**
-Low-latency, interactive media communication such as live conversational audio and video. See [Real-Time Communications](/tech/rtc).
+Low-latency, interactive media communication such as live conversational audio and video. See [Real-time Media Communication (RTC) Architecture](/tech/rtc).
 
 **RTCP (RTP Control Protocol)**
-A companion protocol to RTP that carries feedback on a media session's quality (packet loss, jitter, round-trip time) and control information such as participant identification. See [Real-Time Communications](/tech/rtc).
+A companion protocol to RTP that carries feedback on a media session's quality (packet loss, jitter, round-trip time) and control information such as participant identification. See [Real-time Media Communication (RTC) Architecture](/tech/rtc).
 
 ## S
 
@@ -219,7 +219,7 @@ A message-oriented transport protocol providing reliable, ordered or partially-o
 A 5G Core function that manages PDU sessions (establishing, modifying and releasing them), allocates UE IP addresses, and selects and controls the UPF for a session.
 
 **STUN (Session Traversal Utilities for NAT)**
-A protocol that lets a device discover its public IP address and port and the type of NAT it is behind, used to gather candidate addresses for ICE. See [Real-Time Communications](/tech/rtc).
+A protocol that lets a device discover its public IP address and port and the type of NAT it is behind, used to gather candidate addresses for ICE. See [Real-time Media Communication (RTC) Architecture](/tech/rtc).
 
 ## T
 
@@ -227,10 +227,10 @@ A protocol that lets a device discover its public IP address and port and the ty
 An identifier used to address a particular multicast or broadcast service so devices know what to receive. See [5G Multicast Broadcast Services (MBS)](/tech/5g-mbs).
 
 **TSC (Time Sensitive Communications)**
-Communication with strict timing and reliability guarantees, used for applications that need deterministic delivery. See [Time Sensitive Communications](/tech/tsc).
+Communication with strict timing and reliability guarantees, used for applications that need deterministic delivery. See [Time-Sensitive Communications (TSC)](/tech/tsc).
 
 **TURN (Traversal Using Relays around NAT)**
-An extension to STUN that relays media or data through a server when a direct peer-to-peer path cannot be established. See [Real-Time Communications](/tech/rtc).
+An extension to STUN that relays media or data through a server when a direct peer-to-peer path cannot be established. See [Real-time Media Communication (RTC) Architecture](/tech/rtc).
 
 ## U
 
@@ -243,15 +243,15 @@ A 5G Core function that handles user-plane traffic: packet routing and forwardin
 ## V
 
 **V3C (Visual Volumetric Video-based Coding)**
-An MPEG family of coding tools for compressing volumetric (3D) visual content. See [Volumetric Video with MPEG V3C](/tech/volumetric).
+An MPEG family of coding tools for compressing volumetric (3D) visual content. See [MPEG V3C Immersive Platform](/tech/v3c).
 
 **V-PCC (Video-based Point Cloud Compression)**
-A method within V3C that compresses point-cloud data by mapping it onto video and coding it with video codecs. See [Volumetric Video with MPEG V3C](/tech/volumetric).
+A method within V3C that compresses point-cloud data by mapping it onto video and coding it with video codecs. See [MPEG V3C Immersive Platform](/tech/v3c).
 
 ## W
 
 **WebRTC (Web Real-Time Communication)**
-An IETF/W3C protocol stack for interactive, low-latency peer-to-peer media and data: RTP with RTCP feedback secured as DTLS-SRTP, ICE for connectivity, and data channels (SCTP over DTLS). Used by 3GPP's RTC work; see [Standards: Real-Time Communications (RTC)](/standards/rtc).
+An IETF/W3C protocol stack for interactive, low-latency peer-to-peer media and data: RTP with RTCP feedback secured as DTLS-SRTP, ICE for connectivity, and data channels (SCTP over DTLS). Used by 3GPP's RTC work; see [Standards: Real-time Media Communication (RTC) Architecture](/standards/rtc).
 
 ## Numbers and reference points
 

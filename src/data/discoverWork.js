@@ -4,8 +4,8 @@
 // both places at once.
 export const DISCOVER_WORK = [
   {
-    title: 'Technical Resources & Blueprints',
-    body: 'Explainers and profiles of standards specifications, with implementation blueprints, organised by topic area.',
+    title: 'Technology & Blueprints',
+    body: 'Specification explainers and implementation blueprints, by topic area.',
     href: '/tech',
     icon: (
       <>
@@ -19,12 +19,12 @@ export const DISCOVER_WORK = [
   },
   {
     title: 'Standardisation Activities',
-    body: "Feedback and requirements to standards bodies, supporting our members' deployment experience.",
+    body: 'Feedback and requirements to standards bodies, from real deployments.',
     href: '/standards',
     icon: <path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" />,
   },
   {
-    title: 'Media Connectivity Software Accelerator',
+    title: 'Software Accelerator',
     body: 'Open-source reference tools turning specs into working code.',
     href: '/developer',
     icon: (

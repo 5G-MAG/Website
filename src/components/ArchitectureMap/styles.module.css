@@ -36,7 +36,7 @@
   align-items: baseline;
   gap: 0.5rem;
   margin: 0 0 0.6rem;
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -45,7 +45,7 @@
 
 .bandSpec {
   font-family: var(--ifm-font-family-monospace);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   letter-spacing: 0;
   text-transform: none;
   font-weight: 400;
@@ -79,19 +79,19 @@
 
 .entitySpec {
   font-family: var(--ifm-font-family-monospace);
-  font-size: 0.76rem;
+  font-size: 0.875rem;
   color: var(--ifm-color-emphasis-600);
 }
 
 .repo {
   font-family: var(--ifm-font-family-monospace);
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   margin-top: 0.2rem;
   overflow-wrap: anywhere;
 }
 
 .repoNone {
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   font-style: italic;
   color: var(--ifm-color-emphasis-600);
   margin-top: 0.2rem;
@@ -103,7 +103,7 @@
   display: inline-block;
   width: fit-content;
   margin-top: 0.35rem;
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   font-weight: 700;
   padding: 0.1rem 0.5rem;
   border-radius: 100px;
@@ -132,11 +132,11 @@
   align-items: center;
   gap: 0.3rem;
   margin: 0.6rem 0 0;
-  font-size: 0.8rem;
+  font-size: 0.875rem;
 }
 
 .interfacesLabel {
-  font-size: 0.7rem;
+  font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -146,7 +146,7 @@
 
 .rp {
   font-family: var(--ifm-font-family-monospace);
-  font-size: 0.76rem;
+  font-size: 0.875rem;
   padding: 0.08rem 0.45rem;
   border-radius: 4px;
   background: transparent;
@@ -158,13 +158,13 @@
 
 .legendNote {
   margin: 0.75rem 0 0;
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   color: var(--ifm-color-emphasis-600);
   font-style: italic;
 }
 
 .note {
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   color: var(--ifm-color-emphasis-700);
   margin: 0.7rem 0 0;
 }

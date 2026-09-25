@@ -38,15 +38,16 @@ for (const file of files) {
 // Data-join validation.
 //
 // The site joins pages to data through two unrelated key types, neither of
-// which fails loudly: <ProjectRepositories project="X"> looks X up as an object
-// key in repoMetadata.json, while ProjectReleases / CommunityStats /
-// ProjectContributors match a free-text `name` string against projects.json.
+// which fails loudly: <ProjectRepositories project="X"> looks X up as an
+// object key in taxonomy.json's `repoMetadata`, while ProjectReleases /
+// CommunityStats / ProjectContributors match a free-text `name` string
+// against taxonomy.json's `projects` array. Both read via the shared entry
+// point, scripts/lib/projects.js, rather than a direct require of the file.
 // A typo or a rename in either direction renders an empty table or nothing at
 // all, with a clean build and no warning. These checks turn that into an error.
-const repoMetadata = require(path.join(ROOT, 'src/data/repoMetadata.json'));
-const projectsJson = require(path.join(ROOT, 'src/data/projects.json'));
-const projectNames = new Set(projectsJson.map((p) => p.name));
-const metadataKeys = new Set(Object.keys(repoMetadata));
+const { PROJECTS, REPO_METADATA } = require('./lib/projects');
+const projectNames = new Set(PROJECTS.map((p) => p.name));
+const metadataKeys = new Set(Object.keys(REPO_METADATA));
 
 for (const file of files) {
   const raw = fs.readFileSync(file, 'utf8');
@@ -56,7 +57,7 @@ for (const file of files) {
     if (!metadataKeys.has(m[1])) {
       errors.push({
         file: rel,
-        message: `ProjectRepositories project="${m[1]}" has no key in src/data/repoMetadata.json, so the repository table renders empty.`,
+        message: `ProjectRepositories project="${m[1]}" has no key in taxonomy.json's repoMetadata, so the repository table renders empty.`,
       });
     }
   }
@@ -67,7 +68,7 @@ for (const file of files) {
     if (!projectNames.has(m[2])) {
       errors.push({
         file: rel,
-        message: `${m[1]} name="${m[2]}" does not match any project name in src/data/projects.json, so it renders empty.`,
+        message: `${m[1]} name="${m[2]}" does not match any project name in src/data/taxonomy.json, so it renders empty.`,
       });
     }
   }

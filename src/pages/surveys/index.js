@@ -69,9 +69,6 @@ export default function Surveys() {
             <h1>Industry Surveys</h1>
           </div>
         </div>
-        <p className="topic-lead">
-          Your input helps shape the requirements 5G-MAG brings to standards bodies.
-        </p>
       </div>
 
       <main>

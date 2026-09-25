@@ -4,7 +4,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import releasesData from '@site/static/data/releases.json';
 import statsData from '@site/static/data/community-stats.json';
 import pullRequestsData from '@site/static/data/pull-requests.json';
-import projectsData from '@site/src/data/projects.json';
+import { ALL_PROJECTS as projectsData } from '@site/src/data/baskets';
 import { CONTRIBUTORS } from '@site/src/data/contributors';
 import { activityLabel } from '@site/src/utils/communityStats';
 import styles from './styles.module.css';
@@ -38,28 +38,41 @@ const CATEGORY_ORDER = [
   'Other',
 ];
 
-const PROJECT_CATEGORY = {
-  '3GPP RAN and Core Platforms': '3GPP Implementations',
-  '5G Broadcast - Emergency Alerts': '3GPP Implementations',
-  '5G Broadcast - TV and Radio Services': '3GPP Implementations',
-  '5G Core Service Consumers': '3GPP Implementations',
-  '5G Media Streaming (5GMS)': '3GPP Implementations',
-  '5G Multicast Broadcast Services (MBS)': '3GPP Implementations',
-  'DVB-I Services over 5G Systems': '3GPP Implementations',
-  'UE Data Collection, Reporting and Event Exposure': '3GPP Implementations',
-  'Conversational Avatar Communication with MPEG ARF': 'MPEG Implementation',
-  'MPEG V3C Immersive Platform': 'MPEG Implementation',
-  'XR/3D Scenes with MPEG-I Scene Description': 'MPEG Implementation',
-  'Content Delivery Protocols': 'IETF Implementations',
-  'CAMARA Connectivity Quality Management APIs': 'CAMARA Project Implementations',
-  'Common Tools': 'Shared Tools',
-  'AI Traffic Characterization': 'Testbeds & Evaluation Frameworks',
-  'AI/ML Evaluation Framework': 'Testbeds & Evaluation Frameworks',
-  'Beyond 2D Evaluation Framework': 'Testbeds & Evaluation Frameworks',
+// A project's own taxonomy.json `sdos` (first entry) picks its category --
+// derived, not hand-copied, so a project's basket/sdos edit or a new
+// project with an `sdos` entry picks up here automatically, the same
+// "no second hand-maintained array to drift" reasoning reference-tools/
+// index.js's own REFTOOLS_PROJECTS/CATEGORIES already applies (its own
+// comment: "a project's basket move ... picks up here automatically").
+// This replaced a 17-entry name -> category map that had already drifted
+// (RTC, NTN, NPN and TSC were missing from it, silently landing in
+// "Other" despite each having sdos: ['3GPP'] -- code-derived, found
+// re-deriving this).
+//
+// `testbeds` is basket-derived (checked first: it overrides sdos, since
+// every current testbed project also carries sdos: ['3GPP']). EXPLICIT
+// covers the handful of real Reference Tools with no `sdos` of their own
+// (taxonomy.json's own `excludedReason` projects -- infrastructure, not a
+// standards implementation) rather than inventing an sdos value for them.
+const SDO_TO_CATEGORY = {
+  IETF: 'IETF Implementations',
+  '3GPP': '3GPP Implementations',
+  'MPEG (ISO/IEC)': 'MPEG Implementation',
+  'CAMARA Project': 'CAMARA Project Implementations',
 };
+const EXPLICIT_CATEGORY = {
+  '3GPP RAN and Core Platforms': '3GPP Implementations',
+  '5G Core Service Consumers': '3GPP Implementations',
+  'Common Tools': 'Shared Tools',
+};
+const PROJECT_BY_NAME = new Map(projectsData.map((p) => [p.name, p]));
 
 function categoryOf(name) {
-  return PROJECT_CATEGORY[name] || 'Other';
+  const project = PROJECT_BY_NAME.get(name);
+  if (!project) return 'Other';
+  if (project.basket === 'testbeds') return 'Testbeds & Evaluation Frameworks';
+  const [firstSdo] = project.sdos || [];
+  return SDO_TO_CATEGORY[firstSdo] || EXPLICIT_CATEGORY[name] || 'Other';
 }
 
 function groupByCategory(projects) {
@@ -144,10 +157,18 @@ function buildMergedProjects() {
       null
     );
 
+    // doc_url/tagline come from taxonomy.json live (PROJECT_BY_NAME), not
+    // from statsData's own copy of them -- statsData/pullRequestsData are
+    // cron-generated snapshots that only ever get these two fields right
+    // as of whenever the cron last ran, so a same-day taxonomy tagline or
+    // doc_url edit showed here only after the next cron run otherwise.
+    // Falls back to statsProject's own copy for the rare stats-only name
+    // taxonomy no longer has (should not happen; still real-world-safe).
+    const taxonomyProject = PROJECT_BY_NAME.get(statsProject.name);
     return {
       name: statsProject.name,
-      doc_url: statsProject.doc_url,
-      tagline: statsProject.tagline,
+      doc_url: taxonomyProject?.doc_url ?? statsProject.doc_url,
+      tagline: taxonomyProject?.tagline ?? statsProject.tagline,
       repos: statsProject.repos,
       releases,
       openPRs,

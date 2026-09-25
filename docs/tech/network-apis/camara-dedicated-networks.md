@@ -11,7 +11,7 @@ description: Describes the CAMARA Dedicated Networks API's four-part workflow fo
   <path d="M4 13h5"/><path d="M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3"/><path d="M20 8v8"/><path d="M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5"/></svg>
 </div>
 <div class="topic-banner__text">
-<span class="topic-banner__kicker">Connectivity Quality with Network APIs</span>
+<span class="topic-banner__kicker">CAMARA Connectivity Quality Management APIs</span>
 <h1>CAMARA Dedicated Networks</h1>
 </div>
 </div>
@@ -300,6 +300,6 @@ This is how a device is defined:
 
 ## Related
 
-- [Connectivity Quality with Network APIs](/tech/network-apis): the parent topic page, with the full CAMARA API list
-- [Standards: Connectivity Quality with Network APIs](/standards/network-apis): the specification list for this topic
+- [CAMARA Connectivity Quality Management APIs](/tech/network-apis): the parent topic page, with the full CAMARA API list
+- [Standards: CAMARA Connectivity Quality Management APIs](/standards/network-apis): the specification list for this topic
 - [CAMARA Connectivity Quality Management APIs Reference Tools](/reference-tools/network-apis): the software implementation

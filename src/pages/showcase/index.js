@@ -211,7 +211,7 @@ function CategoryCard({ title, desc, topics }) {
 // title/description only, not title/description/tags: these topics are
 // scenario anchors on a shared category page (e.g. a specific H2 on
 // streaming.md), not individual projects, so there is no single project's
-// `software` field in repoMetadata.json to draw a tag from -- it would
+// `software` field in taxonomy.json's `repoMetadata` to draw a tag from -- it would
 // have to be invented as a union across whichever Reference Tools each
 // scenario combines, which isn't recorded anywhere as a citable fact
 // (2026-08-26 findability follow-up; the filter bar's own placeholder
@@ -247,7 +247,6 @@ export default function Applications() {
             <h1>Application Showcases</h1>
           </div>
         </div>
-        <p className="topic-lead">Curated combinations of Reference Tools assembled into a working service to show value when applied to a use case.</p>
       </div>
 
       <main>

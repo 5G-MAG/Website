@@ -172,16 +172,12 @@ export default function Action() {
         ]}
       />
 
-      <div className="container" style={{ marginTop: '1.75rem' }}>
-        <p className="topic-lead">From specifications to code, and from code to deployments and products.</p>
-      </div>
-
       <main>
         {/* What You'll Find Here, Out in the field, Demonstrators and
             Testing Events -- the actual browsable destinations, moved
             ahead of the framing sections below (2026-08-26 findability
             pass) so a visitor reaches real content without scrolling
-            past "Motivation" first every time. */}
+            past "Why It Matters" first every time. */}
         <section className={`${styles.section} ${styles.sectionAlt}`}>
           <div className="container">
             <h2 className={styles.sectionTitle}>What You&apos;ll Find Here</h2>
@@ -197,13 +193,13 @@ export default function Action() {
           </div>
         </section>
 
-        {/* Motivation -- ahead of the full Out in the field/Demos/Testing
+        {/* Why It Matters -- ahead of the full Out in the field/Demos/Testing
             Events content below (2026-08-26: raised directly, "cards,
             then motivation, then the full topics for easy access, then
             maybe examples and videos"). */}
         <section className={styles.section}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Motivation</h2>
+            <h2 className={styles.sectionTitle}>Why It Matters</h2>
             <p className={styles.sectionSubtitle}>
               Making the value proposition tangible to the industry — through interoperability,
               early testing and plugfests.
@@ -260,7 +256,11 @@ export default function Action() {
         <DemosSection />
 
         {/* Testing Events */}
-        <section id="testing-events" className={styles.section}>
+        <section
+          id="testing-events"
+          className={styles.section}
+          style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}
+        >
           <div className="container">
             <h2 className={styles.sectionTitle}>Testing Events</h2>
             <p className={styles.sectionSubtitle}>

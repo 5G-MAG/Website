@@ -11,7 +11,7 @@ description: MBS Broadcast over NTN reuses terrestrial delivery-mode-2 procedure
   <path d="M3.707 6.293l2.586 -2.586a1 1 0 0 1 1.414 0l5 5a1 1 0 0 1 0 1.414l-2.586 2.586a1 1 0 0 1 -1.414 0l-5 -5a1 1 0 0 1 0 -1.414z"/><path d="M6 10l-3 3l3 3l3 -3"/><path d="M10 6l3 -3l3 3l-3 3"/><path d="M14 17a3 3 0 0 0 3 -3"/><path d="M20 13a9 9 0 0 0 -9 9"/></svg>
 </div>
 <div class="topic-banner__text">
-<span class="topic-banner__kicker">Non-Terrestrial Networks</span>
+<span class="topic-banner__kicker">Non-Terrestrial Networks in 5G Systems</span>
 <h1>MBS Broadcast NTN</h1>
 </div>
 </div>
@@ -74,7 +74,7 @@ Checked directly against TS 38.331 V19.3.0 (the current published version). SIB2
 
 ## Related
 
-- [Non-Terrestrial Networks](/tech/ntn): the parent topic page
+- [Non-Terrestrial Networks in 5G Systems](/tech/ntn): the parent topic page
 - [Analysis of MBS Multicast over NTN](./analysis-mbs-multicast-over-ntn): the multicast counterpart of this analysis
 - [Analysis of RAN Procedures for MBS Broadcast](../5g-mbs/analysis-mbs-broadcast-ran): the terrestrial broadcast procedures reused here
-- [Standards: Non-Terrestrial Networks](/standards/ntn): the specification list for this topic
+- [Standards: Non-Terrestrial Networks in 5G Systems](/standards/ntn): the specification list for this topic

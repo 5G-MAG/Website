@@ -1,0 +1,39 @@
+---
+hide_title: true
+title: CMMF (Multisource Delivery)
+slug: /standards/cmmf
+description: ETSI TS 103 973, Coded Multisource Media Format (CMMF) — a container for coded media delivered from more than one network source at once.
+---
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 7l9 -4l9 4l-9 4l-9 -4" /><path d="M3 7v10l9 4l9 -4v-10" /><path d="M12 11v10" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Standards</span>
+<h1>CMMF (Multisource Delivery)</h1>
+</div>
+</div>
+
+## Overview
+
+Coded Multisource Media Format (CMMF) is a separate container format for carrying coded media from more than one network source at once. An encoder takes an already-packaged media format (such as ISO BMFF or CMAF) and produces coded bitstreams that can be delivered from several sources simultaneously; CMMF carries no manifest of its own, so bitstreams for an asset can be created or discarded independently. This is a lower-layer container for the multisource media itself, distinct from DASH-IF content steering (CTA-5006), which is a client-side, manifest-level choice of *which* source to use.
+
+3GPP SA4 references CMMF as part of the Release 19 Advanced Media Delivery study (TR 26.804); see [Standards: 5G Media Streaming (5GMS)](/standards/5gms) and [Advanced Media Delivery](/tech/5gms/overview-amd) for that context. 5G-MAG tracks CMMF itself as a repository of [Content Delivery Protocols](/tech/content-delivery), alongside FLUTE and ROUTE, rather than as a separate project.
+
+## Specification
+
+| Spec | Title | Status |
+| --- | --- | --- |
+| ETSI TS 103 973 | Coded Multisource Media Format (CMMF) for Content Distribution and Delivery | V1.1.1 (October 2024) |
+
+## Related
+
+- [Standards: Content Delivery Protocols](/standards/content-delivery): the wider specification list this container sits alongside
+- [Standards: 5G Media Streaming (5GMS)](/standards/5gms): the 3GPP SA4 Advanced Media Delivery work that references CMMF
+- [Content Delivery Protocols on the Tech portal](/tech/content-delivery): the CMMF section in context
+- [Content Delivery Protocols Reference Tools](/reference-tools/content-delivery): the [CMMF Encoder](https://github.com/5G-MAG/rt-cmmf-encoder) reference implementation
+
+:::note
+Refer to the [Standards](https://github.com/5G-MAG/Standards/) repository to contribute to this documentation.
+:::

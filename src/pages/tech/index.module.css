@@ -22,16 +22,6 @@
   margin-bottom: 1.5rem;
 }
 
-/* Figure caption below a methodology diagram, repeated verbatim as an
-   inline style object on Standards' 2 methodology figures (2026-07-29
-   audit finding) -- shared class instead. */
-.diagramCaption {
-  font-size: 0.85rem;
-  color: var(--ifm-color-emphasis-700);
-  margin-top: 0.6rem;
-  text-align: center;
-}
-
 .sectionTitle {
   font-size: 1.75rem;
   font-weight: 700;
@@ -93,7 +83,7 @@
 }
 
 .memberCardName {
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--ifm-color-emphasis-800);
   text-align: center;
@@ -101,13 +91,12 @@
 }
 
 /* ── Activity Cards ─────────────────────────────────────────────────── */
-
-.onAirFeaturedMore {
-  text-align: center;
-  margin-top: 1.5rem;
-  font-weight: 600;
-}
-
+/* This file is shared: src/pages/testbeds/index.js also imports
+   `../tech/index.module.css` and still uses this exact grid for its own
+   testbed cards (tech/index.js's own "What You'll Find Here" grid that
+   used to use it was removed, and briefly took this rule down with it --
+   check the whole repo, not just this file, before removing anything
+   else from here). */
 .activityGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -124,6 +113,22 @@
   .activityGrid {
     grid-template-columns: 1fr;
   }
+}
+
+.onAirFeaturedMore {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-weight: 600;
+}
+
+/* A plain line for the 3 destinations that used to be their own cards in
+   "What You'll Find Here" (removed) -- not worth a second card grid for
+   three items. */
+.otherResourcesLine {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--ifm-color-emphasis-700);
+  margin: 2rem 0 0;
 }
 
 .activityCard {
@@ -253,131 +258,14 @@
   line-height: 1.6;
 }
 
-/* ── Content model (Standards -> Analysis -> Tools -> Applications) ──── */
-/* Same flat, left-accent "informational" card as pillarCard, but a 4-up
-   grid and each card carries an optional inline link rather than being
-   a whole-card link -- some steps (Standards) have no single index page
-   of their own to point at. */
-
-.contentModelGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.25rem;
-}
-
-@media (max-width: 900px) {
-  .contentModelGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 560px) {
-  .contentModelGrid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.contentModelStep {
-  padding: 1.25rem 1.25rem 1.25rem 1.5rem;
-  border-left: 4px solid var(--ifm-color-primary);
-  background: var(--ifm-background-surface-color);
-  border-radius: 0 8px 8px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.contentModelStepLabel {
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--ifm-color-emphasis-600);
-}
-
-.contentModelStepTitle {
-  font-size: 1rem;
-  font-weight: 700;
-  margin: 0;
-}
-
-.contentModelStepBody {
-  font-size: 0.88rem;
-  color: var(--ifm-color-emphasis-700);
-  line-height: 1.6;
-  margin: 0;
-}
-
-.contentModelStepLink {
-  font-size: 0.85rem;
-  font-weight: 600;
-  margin-top: 0.1rem;
-}
-
-/* The topic status tag ("ANALYSIS ONLY" etc.) now renders via
-   HubDestinationCard's own .tag class instead of a local rule here --
-   see the note near .categoryTopicGrid below. */
-
-/* ── Link Cards ────────────────────────────────────────────────────── */
-/* A full bordered/hover-lift card for a single clickable destination (no
-   icon band) -- pillarCard's flat left-accent style reads as informational
-   text, not a link, so pages linking out to other pages (Events/Workshops)
-   use this instead. */
-
-.linkCard {
-  display: block;
-  padding: 1.5rem;
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-top: 3px solid var(--ifm-color-primary);
-  border-radius: 10px;
-  background: var(--ifm-background-surface-color);
-  color: inherit !important;
-  text-decoration: none !important;
-  overflow: hidden;
-  transition:
-    box-shadow 0.2s ease,
-    transform 0.15s ease;
-}
-
-.linkCard:hover {
-  box-shadow: var(--card-hover-shadow);
-  transform: translateY(-3px);
-  text-decoration: none !important;
-}
-
-.linkCardImg {
-  display: block;
-  width: calc(100% + 3rem);
-  max-width: calc(100% + 3rem);
-  height: auto;
-  margin: -1.5rem -1.5rem 1rem;
-  border-radius: 8px 8px 0 0;
-}
-
-.linkCardTitle {
-  font-size: 1.05rem;
-  font-weight: 700;
-  margin: 0 0 0.5rem;
-  color: var(--ifm-color-primary);
-}
-
-.linkCardBody {
-  font-size: 0.9rem;
-  color: var(--ifm-color-emphasis-700);
-  margin: 0;
-  line-height: 1.6;
-}
-
-/* Compact variant of the grid above, sized for the Implementation
-   Blueprints preview (more, smaller cards than a typical linkCard grid). */
-.blueprintPreviewGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1rem;
-}
-
 /* ── Category Cards ────────────────────────────────────────────────── */
-
+/* This file is shared: src/pages/reference-tools/index.js also imports
+   `../tech/index.module.css` and still uses exactly these 6 classes for
+   its own CategoryCard (tech/index.js's own Analysis & Explainers grid
+   that used to use them was removed, and briefly took this block down
+   with it -- checking usage within tech/index.js alone missed the other
+   file importing the same stylesheet; check across the whole repo before
+   removing anything from here again). */
 .categoryColumns {
   display: flex;
   flex-direction: column;
@@ -391,13 +279,6 @@
   overflow: hidden;
 }
 
-/* Plain heading + a colored left-accent bar, not a full solid banner
-   (2026-08-26 findability follow-up, raised directly: on /tech and
-   /standards this repeats once per category -- 5 to 9 times down one
-   page -- and read as "a wall of teal blocks", not clear. Same visual
-   language as .pillarCard's left-accent treatment elsewhere on this
-   page, so the category header stops competing with the actual topic
-   cards below it for attention. */
 .categoryHeader {
   padding: 1rem 1.1rem 0.9rem 1.4rem;
   border-left: 4px solid var(--ifm-color-primary);
@@ -468,7 +349,7 @@
 .feeTable th {
   text-align: left;
   padding: 0.6rem 0.9rem;
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.03em;
   color: var(--ifm-color-emphasis-600);
@@ -497,7 +378,7 @@
 }
 
 .feeTableNote {
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   color: var(--ifm-color-emphasis-600);
   margin-top: 0.5rem;
 }
@@ -598,7 +479,7 @@
 
 .photoCaption {
   padding: 0.75rem 1rem;
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   color: var(--ifm-color-emphasis-700);
   margin: 0;
 }
@@ -656,3 +537,398 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ── Where We Stand (maturity landscape section) ──────────────────────── */
+
+.basketBlock {
+  margin-bottom: 2.25rem;
+  /* This div carries id={b.key} (a plain anchor target, not a heading
+     Docusaurus's own remark plugin ran over) -- same offset formula
+     Docusaurus applies to its own generated heading anchors
+     (@docusaurus/theme-common's anchorUtils.module.css
+     .anchorTargetStickyNavbar), so jumping here doesn't leave the
+     basket's title hidden under the sticky navbar (raised directly). */
+  scroll-margin-top: calc(var(--ifm-navbar-height) + 0.5rem);
+  /* A real framed card, not just a heading floating inside one long
+     scroll -- raised directly: arriving via a homepage anchor link
+     should feel like landing inside a distinct area, not "somewhere on
+     a long page". The left rail repeats the same accent every bar/pill
+     in this block already uses, so the frame itself reads as "this is
+     the Immersive Media block" at a glance. */
+  padding: 1.5rem 1.5rem 1.25rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-left: 4px solid var(--accent);
+  border-radius: 10px;
+  background: var(--ifm-background-surface-color);
+}
+
+.basketHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+/* Same rounded-square gradient icon band as every other icon on this
+   site (HubDestinationCard's compact icon band, GodeeperCard) -- a bare
+   colored glyph with no background read as too plain here (raised
+   directly: "I want that the icons have this blue background"). */
+.basketIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: linear-gradient(
+    135deg,
+    var(--ifm-color-primary-darkest) 0%,
+    var(--ifm-color-primary) 100%
+  );
+  flex-shrink: 0;
+}
+
+.basketIcon svg {
+  width: 22px;
+  height: 22px;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.basketTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--ifm-heading-color);
+}
+
+/* Real project count plus the one instruction a reader actually needs
+   ("click a project's name") -- not decorative copy, so a basket landed
+   on directly via an anchor link states its own scope and the one
+   action available, without depending on anything above it on the
+   page. */
+.basketMeta {
+  margin: 0.3rem 0 0;
+  font-size: 0.85rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+/* The stage-name legend, repeated inside every basket block instead of
+   once at the top of the whole section (raised directly: arriving via
+   an anchor used to skip past the one shared legend entirely, leaving
+   the coloured bars unexplained). Shares chartRow's own grid (same
+   selector, same values) so a stage boundary here lines up exactly
+   above its own column below, the same mechanism the original single
+   shared axis used -- restored per-basket rather than reinvented. */
+.basketLegend,
+.chartRow {
+  display: grid;
+  /* Widened in stages, each pass still not enough on direct follow-up
+     (220px -> 300px -> 360px -> this). Covers nearly every real project
+     name on one line now, up to ~44 characters (e.g. "Real-time Media
+     Communication (RTC) Architecture"); the two longest outliers at 48
+     (e.g. "UE Data Collection, Reporting and Event Exposure") still
+     wrap -- fitting those too would leave the track too narrow for its
+     own segments and bubbles. */
+  grid-template-columns: minmax(160px, 440px) minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.basketLegend {
+  margin-bottom: 0.6rem;
+}
+
+.basketLegendLabelCol {
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.basketLegendStages {
+  display: flex;
+  gap: 4px;
+}
+
+/* Plain text, no pill/gradient -- raised directly: the solid blue
+   background behind each stage name was too distracting given how many
+   of these now appear per page (once per basket on /tech, once per
+   project on its own page). */
+.basketLegendStage {
+  flex: 1;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--ifm-color-emphasis-600);
+  background: transparent;
+  padding: 0.4rem 0.25rem;
+}
+
+/* A swimlane roadmap chart: every project as a full-width row, its
+   segments plotted against the stage legend above -- design language
+   directly requested (DVB's own workplan-overview roadmap at dvb.org:
+   colored full-width band per row, filled up to where things stand,
+   pointed leading edge). What's currently reached and what concretely
+   exists (repo count, Reference Tools) sits directly on the track
+   itself, at the fill's own tip, rather than in a separate column --
+   raised directly: a separate side column "did not look good". */
+.chartGroupRows {
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.chartRow {
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.chartGroupRows .chartRow:last-child {
+  border-bottom: none;
+}
+
+.chartRowLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.98rem;
+  font-weight: 600;
+  min-width: 0;
+}
+
+.chartRowIcon {
+  display: flex;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--accent);
+}
+
+.chartRowIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Colored and underlined at rest, not just on hover -- the project name
+   is the one click target on the row now (raised directly: dropped the
+   separate Explore button once this alone reads clearly enough as a
+   link), so it needs to look like one without a reader having to
+   hover first. */
+.chartRowName {
+  color: var(--accent) !important;
+  font-weight: 700;
+  text-decoration: underline !important;
+  text-decoration-color: var(--accent) !important;
+  text-underline-offset: 2px;
+}
+
+a.chartRowName:hover {
+  filter: brightness(0.85);
+}
+
+/* 4 independent segments, one per stage column, matching the axis header
+   1:1 -- not one continuous fill (raised directly: wanted the bar split
+   into its stage segments, each with its own bubbles, "nothing outside
+   the arrows"). Each segment is colored on its own (reached or not),
+   consistent with `stages` being independent ticks rather than one
+   ordinal value -- a gap (Software reached, Technical Analysis not)
+   would render correctly here, not just a growing prefix. */
+.chartTrack {
+  display: flex;
+  gap: 3px;
+}
+
+.chartSegment,
+.chartSegmentFilled {
+  position: relative;
+  flex: 1;
+  min-height: 40px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 8px;
+}
+
+.chartSegment {
+  background: var(--ifm-color-emphasis-100);
+}
+
+.chartSegmentFilled {
+  background: var(--accent);
+}
+
+/* Points into the next segment, filled or not -- same arrowhead the
+   single-fill version used, now repeated per reached segment (matches
+   DVB's own reference roadmap, where each colored block in a lane gets
+   its own arrow tip, not one arrow at the very end of the whole lane). */
+.chartSegmentPoint {
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 6px solid var(--accent);
+  z-index: 1;
+}
+
+/* The bubbles themselves -- small text pills, sized to fit inside their
+   own quarter of the track, wrapping to a second line rather than
+   overflowing when a segment holds more than one (e.g. Software's grade
+   + repo count). */
+.chartBubbleRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  row-gap: 6px;
+}
+
+.chartBubble {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  padding: 0.26rem 0.65rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  text-decoration: none !important;
+}
+
+a.chartBubble:hover {
+  background: rgba(255, 255, 255, 0.32);
+}
+
+/* Phone width: stack the name above its track instead of squeezing both
+   into one row, and shrink the bubble font slightly since the track
+   itself is now the full (narrower) viewport width. */
+@media (max-width: 640px) {
+  .basketLegend,
+  .chartRow {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+
+  .chartRow {
+    padding: 0.65rem 0;
+  }
+
+  .chartBubble {
+    font-size: 0.875rem;
+    padding: 0.18rem 0.45rem;
+  }
+}
+
+/* A real banner, not a subtle gray box -- same accent gradient as the
+   axis header/icon bands elsewhere on this page, so it reads as a call
+   to action rather than blending into the page background (raised
+   directly: "make this banner more visible"). */
+.inviteBlock {
+  margin-top: 2.5rem;
+  padding: 2rem 1.75rem;
+  border-radius: 12px;
+  background: linear-gradient(
+    135deg,
+    var(--ifm-color-primary-darkest) 0%,
+    var(--ifm-color-primary) 100%
+  );
+  text-align: center;
+}
+
+.inviteTitle {
+  font-size: 1.45rem;
+  font-weight: 800;
+  margin: 0 0 0.6rem;
+  color: #fff;
+}
+
+.inviteBody {
+  max-width: 620px;
+  margin: 0 auto 1.4rem;
+  line-height: 1.6;
+  font-size: 1.02rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.inviteLinks {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.inviteLink {
+  font-weight: 700;
+  padding: 0.6rem 1.3rem;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ifm-color-primary-darkest) !important;
+  text-decoration: none !important;
+}
+
+.inviteLink:hover {
+  background: rgba(255, 255, 255, 0.88);
+  text-decoration: none !important;
+}
+
+/* ── Per-project flagship pages: capability tags + problem statement ──── */
+
+/* Real project.sdos (standards bodies this project is tracked against),
+   shown as a quick-scan tag row -- raised directly, after looking at
+   labs.bigbluemarble.com's own project pages (capability badges in their
+   hero): asked for "in a different place" than the hero, so this sits
+   under the intro prose instead, using data already curated per project
+   rather than inventing new capability labels. */
+.capabilityTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.capabilityTag {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--ifm-color-emphasis-700);
+  background: var(--ifm-color-emphasis-100);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* "Why It Matters" -- its own explicit, labelled block rather than left
+   implicit inside the opening prose (raised directly, prompted by
+   labs.bigbluemarble.com's own "The problem this solves" section, but
+   using the site's own existing phrase for this kind of framing -- see
+   /tech/index.js's own "Why It Matters" section -- rather than that
+   more sales-pitch wording). Full width, below the intro grid rather
+   than squeezed into either column. */
+.whyMattersBlock {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.whyMattersTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  color: var(--ifm-heading-color);
+}
+
+.whyMattersBody {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+

@@ -8,17 +8,23 @@ import HeroSlideshow from '@site/src/components/HeroSlideshow';
 import MediaConnectivityDiagram from '@site/src/components/MediaConnectivityDiagram';
 import MembersMarquee from '@site/src/components/MembersMarquee';
 import SearchBar from '@theme/SearchBar';
-import GodeeperCard, { icon } from '@site/src/components/GodeeperCard';
-import HubDestinationCard from '@site/src/components/HubDestinationCard';
+import { icon } from '@site/src/components/GodeeperCard';
 import VideoGrid from '@site/src/components/VideoGrid';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import ReleaseCard from '@site/src/components/ReleaseCard';
 import { EventsAgendaPreview } from '@site/src/components/EventsAgenda';
-import { DISCOVER_WORK } from '@site/src/data/discoverWork';
 import { EVENTS_AGENDA } from '@site/src/data/eventsAgenda';
-import { BENEFITS } from '@site/src/data/membershipBenefits';
 import { NEWS_PREVIEW } from '@site/src/data/newsPreview';
-import projectsData from '@site/src/data/projects.json';
+import {
+  ALL_PROJECTS as projectsData,
+  BASKETS,
+  BASKET_ACCENT,
+  ICON_CATALOG,
+  STAGE_GROUPS,
+  basketStageReach,
+  displayNameOf,
+  reposFor,
+} from '@site/src/data/baskets';
 import { sampleRandom } from '@site/src/utils/random';
 import { sortByLatestRelease } from '@site/src/utils/releases';
 import styles from './index.module.css';
@@ -51,32 +57,99 @@ const ALL_CHANNEL_VIDEOS = (() => {
   return [...byId.values()];
 })();
 
-// A bigger, bolder invitation than the plain GodeeperCard used elsewhere
-// for this same data (About's "What We Do" still uses GodeeperCard) --
-// this section is Home's main gateway into the site's 4 top-level areas,
-// so it gets the more prominent icon-band treatment plus an explicit
-// "Explore X" call to action, matching ActivityCard/ProductTypeCard's
-// styling on Tech/Standards/Developer's own "What You'll Find Here"
-// sections rather than inventing a new look.
-function AreaCard({ title, body, href, icon: cardIcon }) {
-  return <HubDestinationCard icon={icon(cardIcon)} title={title} desc={body} href={href} />;
+// A basket's own icon, same catalog Where We Stand itself reads (tech/
+// index.js's iconForCatalogKey) -- a one-line local copy rather than an
+// export from that page, same pattern reference-tools/testbeds already
+// each keep their own copy of.
+function iconForCatalogKey(key) {
+  const paths = key && ICON_CATALOG[key];
+  if (!paths || !paths.length) return null;
+  return icon(
+    <>
+      {paths.map((d, i) => (
+        <path key={i} d={d} />
+      ))}
+    </>
+  );
 }
 
-// The business case for joining, picked from /membership's own real
-// BENEFITS list (src/data/membershipBenefits.js) rather than reworded
-// here, per standing feedback that homepage copy should be fetched from
-// About/Membership, not freshly drafted. These three speak most directly
-// to a decision-maker rather than an engineer: shared effort, speed to
-// market, de-risking an unproven bet. Filtered by title, not index, so a
-// reorder in membershipBenefits.js doesn't change which three show here
-// -- but a title rename there will silently drop that entry; keep the
-// two files' titles in sync.
-const BUSINESS_CASE_TITLES = [
-  'Mutualised effort to grow your project',
-  'Early access to pre-public code',
-  'De-risk on deployments',
-];
-const BUSINESS_CASE_BENEFITS = BENEFITS.filter((b) => BUSINESS_CASE_TITLES.includes(b.title));
+// Where We Stand, rolled up to one row per basket instead of the full
+// per-project chart -- basketStageReach() is true for a stage once ANY
+// of that basket's own projects reached it. Every basket, even one
+// with no project past Under Study yet: an empty-looking row is itself
+// the invitation this section makes (see .standInvite below), not
+// something to filter out.
+const STAND_BASKETS = BASKETS.map((b) => {
+  const basketProjects = projectsData.filter((p) => p.basket === b.key);
+  return {
+    ...b,
+    accent: BASKET_ACCENT[b.key] || '#00a0d2',
+    reach: basketStageReach(basketProjects),
+    repoCount: basketProjects.reduce((n, p) => n + reposFor(p).length, 0),
+    projects: basketProjects,
+  };
+});
+
+// One card per basket -- icon, name and a checklist spelling out every
+// stage in STAGE_GROUPS by name, checked or not (tried as an unlabeled
+// segment bar first, with a shared axis header naming the columns once
+// -- still read as "meaningless" once a reader reached a row with no
+// label of its own, raised directly). The head+checklist link to that
+// basket's own spot on the full chart at /tech#where-we-stand
+// (tech/index.js's basketBlock carries id={b.key}).
+//
+// Below that, one icon+name row per project in the basket -- raised
+// directly ("add a row with the icons of the actual projects so we can
+// jump directly to the landing tech page of each project") -- each
+// jumping straight to that project's own tech_url, skipping the
+// basket-level chart entirely. A first pass showed the icon alone with
+// the name only as a hover tooltip; raised directly ("the icon alone
+// doesn't say much") that the name itself needed to be visible, not
+// just discoverable on hover -- so this is a vertical list (a row of
+// icon-only tiles has no room for a name at 3-per-line card width)
+// with the name printed next to its icon. Every basketed project has a
+// tech_url and a valid icon key (checked against taxonomy.json
+// directly), so no fallback rendering is needed for either. This list
+// sits outside the basket Link (nested <a> tags are invalid HTML), as
+// its own sibling.
+function StandCard({ basket }) {
+  return (
+    <div className={styles.standCard} style={{ '--accent': basket.accent }}>
+      <Link to={`/tech#${basket.key}`} className={styles.standCardLink}>
+        <div className={styles.standCardHead}>
+          <span className={styles.standIcon}>{iconForCatalogKey(basket.icon)}</span>
+          <span className={styles.standName}>{basket.title}</span>
+        </div>
+        <div className={styles.standChecklist}>
+          {STAGE_GROUPS.map((g, i) => {
+            const done = basket.reach[i];
+            const withCount = g.key === 'software' && done && basket.repoCount > 0;
+            return (
+              <div
+                key={g.key}
+                className={clsx(styles.standCheckRow, done && styles.standCheckRowDone)}
+              >
+                <span className={clsx(styles.standDot, done && styles.standDotDone)} />
+                {g.label}
+                {withCount && ` (${basket.repoCount} ${basket.repoCount === 1 ? 'repository' : 'repositories'})`}
+              </div>
+            );
+          })}
+        </div>
+      </Link>
+      {basket.projects.length > 0 && (
+        <div className={styles.standProjectList}>
+          {basket.projects.map((p) => (
+            <Link key={p.name} to={p.tech_url} className={styles.standProjectItem}>
+              <span className={styles.standProjectIcon}>{iconForCatalogKey(p.icon)}</span>
+              <span className={styles.standProjectName}>{displayNameOf(p)}</span>
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 // Real photos of the technologies named just above (in DOMAIN_PILLARS and
 // DISCOVER_WORK) actually running -- not stock imagery, same convention
@@ -114,7 +187,7 @@ const USE_CASE_PHOTOS = [
   },
 ];
 
-// One real cover-slide card per project (projects.json) -- the exact
+// One real cover-slide card per project (taxonomy.json) -- the exact
 // design already used for release/community cards site-wide (navy/cyan
 // gradient, category pill, project title, icon, 5G-MAG logo), not
 // hand-built here. "Dependency" is excluded: it has no image or doc_url
@@ -219,10 +292,17 @@ export default function Home() {
           modeled on dvb.org's homepage, which puts search here rather than
           leaving it as a small navbar icon only. Reuses the same indexed
           search (@easyops-cn/docusaurus-search-local) the navbar already
-          uses, just given a bigger, more discoverable home here. */}
+          uses, just given a bigger, more discoverable home here.
+          One bar, not two (a separate live-suggestion dropdown was built,
+          then raised directly to fold back into this one): this index
+          already covers specific tools/repos by name (e.g. "CMMF
+          Encoder") and already suggests live as you type, its own
+          existing autocomplete.js behavior -- verified the name itself
+          reaches the built search-index.json, since a repo's real name
+          renders as plain text on its project's own Resources page. */}
       <div className={styles.homeSearchWrap}>
         <div className="container">
-          <p className={styles.homeSearchLabel}>Looking for something specific?</p>
+          <p className={styles.homeSearchLabel}>Looking for specific software or technology?</p>
           <div className={styles.homeSearchBox}>
             <SearchBar />
           </div>
@@ -230,7 +310,51 @@ export default function Home() {
       </div>
 
       <main>
-        {/* Who We Are */}
+        {/* Where We Stand -- promoted to its own section, first thing
+            after the hero/search band and before Who We Are: raised
+            directly ("shown too late from the first sight on the
+            page") after it sat as the last thing inside Who We Are's
+            own long section. Collapsed to basket level on purpose: the
+            full per-project chart is one click away at
+            /tech#where-we-stand, and each card here links straight to
+            its own spot there. Alt-tinted so it still alternates
+            against Who We Are right after it (unchanged, plain), which
+            keeps every section after that exactly as it was. */}
+        <section className={clsx(styles.section, styles.sectionAlt)}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>Where We Stand</h2>
+            <p className={styles.sectionSubtitle}>
+              How far each technology area has come, from under study to software — the full
+              breakdown, project by project, is at{' '}
+              <Link to="/tech#where-we-stand">Where We Stand</Link>.
+            </p>
+            <div className={styles.standGrid}>
+              {STAND_BASKETS.map((b) => (
+                <StandCard key={b.key} basket={b} />
+              ))}
+            </div>
+
+            {/* Same invite banner as Where We Stand's own full chart
+                (tech/index.js's .inviteBlock) -- this landscape is set by
+                5G-MAG's members, not the other way around. */}
+            <div className={styles.inviteBlock}>
+              <h3 className={styles.inviteTitle}>Don&apos;t see your topic here?</h3>
+              <p className={styles.inviteBody}>5G-MAG&apos;s members set this landscape.</p>
+              <div className={styles.inviteLinks}>
+                <Link to="/membership#request-membership" className={styles.inviteLink}>
+                  Propose a topic as a member &rarr;
+                </Link>
+                <Link to="/contributing" className={styles.inviteLink}>
+                  See how to build together &rarr;
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Who We Are -- heading and mission text lead, then the
+            diagram (one static image), then the rest (the rotating
+            photo row and the links), per direct instruction. */}
         <section className={styles.section}>
           <div className="container">
             <h2 className={styles.sectionTitle}>
@@ -253,20 +377,8 @@ export default function Home() {
             {/* Real photos alternating with icon+title banner cover-slides
                 for every DOMAIN_PILLARS topic -- see SHOWCASE_SLIDES' own
                 comment for why, and why this rotates rather than showing a
-                grid. No "See It Running" label above it (dropped per
-                review) -- the row speaks for itself, right before the link
-                into the full breakdown. */}
+                grid. */}
             <FadingSlideRow slides={showcaseSlides} />
-
-            <div className={styles.onAirMore} style={{ marginBottom: '2.5rem' }}>
-              <Link to="/about#what-we-work-on">Explore what we work on &rarr;</Link>
-            </div>
-
-            <div className={clsx(styles.activityGrid, styles['activityGrid--4col'])}>
-              {DISCOVER_WORK.map((p) => (
-                <AreaCard key={p.title} {...p} />
-              ))}
-            </div>
 
             <div className={styles.onAirMore}>
               <Link to="/about">Learn more about us &rarr;</Link>
@@ -291,17 +403,24 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Latest News */}
+        {/* News & Events -- merged from two separate back-to-back sections
+            (raised directly: On Air / Latest News / Where to Find Us /
+            Latest Releases in a row read as bloat, 4 near-identical
+            "recent activity" blocks). Both are "here's what's
+            happening" announcements, so they now share one section,
+            each still with its own sub-heading, real content and "view
+            all" link into its own full page. */}
         <section className={styles.section}>
           <div className="container">
-            <div className={styles.releasesHeader}>
+            <h2 className={styles.sectionTitle}>News &amp; Events</h2>
+            <div className={styles.releasesHeader} style={{ marginTop: '1.5rem' }}>
               <div>
-                <h2
+                <h3
                   className={styles.sectionTitle}
-                  style={{ marginBottom: '0.2rem', textAlign: 'left' }}
+                  style={{ fontSize: '1.15rem', marginBottom: '0.2rem', textAlign: 'left' }}
                 >
                   Latest News
-                </h2>
+                </h3>
                 <p className={styles.releasesUpdated}>Announcements from 5G-MAG</p>
               </div>
               <Link className={styles.releasesViewAll} to="/news">
@@ -316,20 +435,15 @@ export default function Home() {
                 </Link>
               ))}
             </div>
-          </div>
-        </section>
 
-        {/* Where to find us */}
-        <section className={clsx(styles.section, styles.sectionAlt)}>
-          <div className="container">
-            <div className={styles.releasesHeader}>
+            <div className={styles.releasesHeader} style={{ marginTop: '2.75rem' }}>
               <div>
-                <h2
+                <h3
                   className={styles.sectionTitle}
-                  style={{ marginBottom: '0.2rem', textAlign: 'left' }}
+                  style={{ fontSize: '1.15rem', marginBottom: '0.2rem', textAlign: 'left' }}
                 >
                   Where to Find Us
-                </h2>
+                </h3>
                 <p className={styles.releasesUpdated}>
                   Events, conferences, workshops, webinars and calls
                 </p>
@@ -362,21 +476,6 @@ export default function Home() {
             <div className={styles.releasesGrid}>
               {LATEST_RELEASE_PROJECTS.slice(0, 6).map((project) => (
                 <ReleaseCard key={project.name} project={project} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Why Members Join */}
-        <section className={clsx(styles.section, styles.sectionAlt)}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>Why Members Join</h2>
-            <p className={styles.sectionSubtitle} style={{ marginBottom: '1.5rem' }}>
-              The business case for joining, in three points.
-            </p>
-            <div className="godeeper-grid">
-              {BUSINESS_CASE_BENEFITS.map((b) => (
-                <GodeeperCard key={b.title} {...b} />
               ))}
             </div>
           </div>

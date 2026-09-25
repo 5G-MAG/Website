@@ -5,12 +5,9 @@ import HubHero from '@site/src/components/HubHero';
 import MediaConnectivityDiagram from '@site/src/components/MediaConnectivityDiagram';
 import StandardsLoopDiagram from '@site/src/components/StandardsLoopDiagram';
 import GodeeperCard from '@site/src/components/GodeeperCard';
-import DomainPillarGrid from '@site/src/components/DomainPillarGrid';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
-import PhotoGallery from '@site/src/components/PhotoGallery';
 import { DISCOVER_WORK } from '@site/src/data/discoverWork';
 import { SCOPE_PILLARS } from '@site/src/data/scopePillars';
-import { FACT_SDO_INPUTS, FACT_REPOSITORIES, FACT_CLONES } from '@site/src/data/facts';
 import styles from '../tech/index.module.css';
 
 const ABOUT_ICON_PATH = (
@@ -23,29 +20,7 @@ const ABOUT_ICON_PATH = (
   </>
 );
 
-const LOOP_FACTS = [FACT_SDO_INPUTS, FACT_REPOSITORIES, FACT_CLONES];
-
 export default function About() {
-  // Real, existing photos -- reference tools and applications running on
-  // real hardware, at real events -- not stock imagery.
-  const showcasePhotos = [
-    {
-      src: useBaseUrl('/assets/images/gallery/reference-tools-demo-rig.jpg'),
-      alt: '5G-MAG Reference Tools demo rig with SDR hardware and phones running 5GMS and volumetric demos',
-      caption: '5G Media Streaming & volumetric video, running on SDR hardware',
-    },
-    {
-      src: useBaseUrl('/assets/images/gallery/camara-dedicated-networks-demo.png'),
-      alt: 'CAMARA Dedicated Networks reference tool demo interface',
-      caption: 'CAMARA Dedicated Networks, a network API reference tool',
-    },
-    {
-      src: useBaseUrl('/assets/images/gallery/5g-broadcast-plugfest-2026.jpg'),
-      alt: '5G Broadcast PlugFest 2026, hosted by Fraunhofer FOKUS in Berlin',
-      caption: '5G Broadcast PlugFest 2026, Fraunhofer FOKUS, Berlin',
-    },
-  ];
-
   return (
     <Layout
       title="About Us"
@@ -100,19 +75,9 @@ export default function About() {
           </div>
         </section>
 
-        <section id="what-we-work-on" className={`${styles.section} ${styles.sectionAlt}`}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>What We Work On</h2>
-            <p className={styles.sectionSubtitle} style={{ marginBottom: '1.5rem' }}>
-              Our current topics, brought by our members.
-            </p>
-            <DomainPillarGrid />
-          </div>
-        </section>
-
         <section className={`${styles.section} ${styles.sectionAlt}`}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Running the Loop: From Standards to Products</h2>
+            <h2 className={styles.sectionTitle}>Running the Loop: From Requirements to Products</h2>
             <p className={styles.sectionSubtitle} style={{ marginBottom: '1.5rem' }}>
               We take in specifications from standards bodies, feed back real-world requirements,
               accelerate open-source implementation, and validate technologies through interop and
@@ -127,38 +92,6 @@ export default function About() {
             <div className="godeeper-grid godeeper-grid--4col">
               {DISCOVER_WORK.map((p) => (
                 <GodeeperCard key={p.title} {...p} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Examples of Our Work */}
-        <section className={styles.section}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>Examples of Our Work</h2>
-            <p className={styles.sectionSubtitle} style={{ marginBottom: '1.5rem' }}>
-              Open-source Reference Tools and Applications running on real hardware, at real events —
-              not just specifications on paper.
-            </p>
-            <PhotoGallery photos={showcasePhotos} />
-            <div style={{ textAlign: 'center', marginTop: '2rem', fontWeight: 600 }}>
-              <Link to="/showcase">See Applications &rarr;</Link>
-              {' · '}
-              <Link to="/reference-tools">See Reference Tools &rarr;</Link>
-            </div>
-          </div>
-        </section>
-
-        <section className={`${styles.section} ${styles.sectionAlt}`}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>The Work, in Numbers</h2>
-            <p className={styles.sectionSubtitle}>Proof the loop runs, not just a description of it.</p>
-            <div className="summary-container">
-              {LOOP_FACTS.map((f) => (
-                <div key={f.label} className="summary-card">
-                  <h3>{f.label}</h3>
-                  <span className="summary-value">{f.value}</span>
-                </div>
               ))}
             </div>
           </div>

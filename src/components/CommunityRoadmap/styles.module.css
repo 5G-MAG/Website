@@ -28,7 +28,7 @@
 }
 
 .statusCount {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 700;
   color: var(--ifm-color-emphasis-600);
   font-variant-numeric: tabular-nums;
@@ -63,7 +63,7 @@
 }
 
 .itemTitle {
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.4;
 }
@@ -75,7 +75,7 @@
 }
 
 .labelPill {
-  font-size: 0.65rem;
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--ifm-color-emphasis-700);
   background: var(--ifm-color-emphasis-200);

@@ -312,7 +312,7 @@ const config = {
           title: 'Technical Resources',
           items: [
             { label: 'Overview', to: '/tech' },
-            { label: 'Analysis & Explainers', to: '/tech#categories-topics' },
+            { label: 'Where We Stand', to: '/tech#where-we-stand' },
             { label: 'Technology Exchange', to: '/tech/exchanges' },
           ],
         },

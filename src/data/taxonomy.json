@@ -1,0 +1,2155 @@
+{
+  "baskets": [
+    {
+      "key": "content-delivery",
+      "title": "Content Delivery and Streaming",
+      "icon": "play"
+    },
+    {
+      "key": "rtc",
+      "title": "Real-Time Communications (RTC)",
+      "icon": "webrtc-arrows"
+    },
+    {
+      "key": "5g-broadcast",
+      "title": "Broadcast",
+      "icon": "antenna-signal"
+    },
+    {
+      "key": "multicast",
+      "title": "Point-to-Multipoint Communication",
+      "icon": "broadcast-waves"
+    },
+    {
+      "key": "ntn",
+      "title": "Non-Terrestrial Networks (NTN)",
+      "icon": "satellite-link"
+    },
+    {
+      "key": "immersive-media",
+      "title": "Immersive Media",
+      "icon": "cube"
+    },
+    {
+      "key": "connected-media-production",
+      "title": "Connected Media Production",
+      "icon": "gauge"
+    },
+    {
+      "key": "towards-6g",
+      "title": "Towards 6G Media",
+      "icon": "chip"
+    },
+    {
+      "key": "testbeds",
+      "title": "Testbeds & Evaluation Frameworks",
+      "icon": "flask"
+    }
+  ],
+  "projects": [
+    {
+      "name": "5G Media Streaming (5GMS)",
+      "displayName": "5G Media Streaming (5GMS)",
+      "doc_url": "/reference-tools/5gms/",
+      "tech_url": "/tech/5gms",
+      "standards_url": "/standards/5gms",
+      "image": "/assets/images/projects/5gms.png",
+      "releases_slug": "resources",
+      "tagline": "Driving collaboration between mobile networks and media applications",
+      "basket": "content-delivery",
+      "repos": [
+        "rt-5gms-application-function",
+        "rt-5gms-application-server",
+        "rt-5gms-application",
+        "rt-5gms-media-session-handler",
+        "rt-5gms-media-stream-handler",
+        "rt-5gms-common-android-library",
+        "rt-5gms-application-provider",
+        "rt-5gms-examples",
+        "cmcd-toolkit",
+        "rt-media-origin",
+        "rt-5gc-service-consumers",
+        "rt-cmmf-encoder"
+      ],
+      "contributors": [
+        "BBC - British Broadcasting Corporation",
+        "Fraunhofer FOKUS",
+        "Dolby Laboratories",
+        "Qualcomm"
+      ],
+      "relatedProjects": [],
+      "sdos": [
+        "3GPP",
+        "CTA WAVE",
+        "DASH-IF"
+      ],
+      "stages": {
+        "under-study": true,
+        "technical-analysis": true,
+        "basic": true,
+        "advanced": true,
+        "showcase": false
+      },
+      "icon": "play"
+    },
+    {
+      "name": "5G Broadcast - TV and Radio Services",
+      "doc_url": "/reference-tools/5g-broadcast/",
+      "tech_url": "/tech/5g-broadcast",
+      "standards_url": "/standards/5g-broadcast",
+      "image": "/assets/images/projects/5g-broadcast.png",
+      "tagline": "The 3GPP-based broadcast delivery system bridging OTT streaming and broadcasting",
+      "basket": "5g-broadcast",
+      "repos": [
+        "rt-mbms-modem",
+        "rt-mbms-tx",
+        "rt-mbms-mw-android",
+        "rt-libflute",
+        "rt-mbms-examples",
+        {
+          "name": "rt-mbms-tx-for-qrd-and-crd",
+          "branch": "main"
+        },
+        "rt-mbms-client",
+        "rt-mbms-application",
+        "rt-mbms-application-provider",
+        "rt-mbms-bmsc",
+        "rt-mbms-gw"
+      ],
+      "releases_slug": "resources",
+      "contributors": [
+        "Fraunhofer FOKUS",
+        "iTEAM - Universitat Politècnica de València",
+        "Big Blue Marble",
+        "Bitstem",
+        "Qualcomm"
+      ],
+      "stages": {
+        "under-study": true,
+        "technical-analysis": true,
+        "basic": true,
+        "advanced": true,
+        "showcase": false
+      },
+      "sdos": [
+        "3GPP",
+        "ETSI"
+      ],
+      "icon": "antenna-signal",
+      "displayName": "5G Broadcast - TV and Radio Services"
+    },
+    {
+      "name": "5G Broadcast - Emergency Alerts",
+      "doc_url": "/reference-tools/emergency-alerts/",
+      "tech_url": "/tech/emergency-alerts",
+      "standards_url": "/standards/emergency-alerts",
+      "image": "/assets/images/projects/emergency-alerts.png",
+      "tagline": "Emergency warnings delivered over 5G Broadcast",
+      "basket": "5g-broadcast",
+      "repos": [
+        {
+          "name": "rt-mbms-tx-for-qrd-and-crd",
+          "branch": "emergency-alerts"
+        },
+        "rt-pws-cbc",
+        "rt-mbms-tx",
+        "rt-mbms-application"
+      ],
+      "releases_slug": "resources",
+      "contributors": [
+        "Big Blue Marble",
+        "Fraunhofer FOKUS",
+        "iTEAM - Universitat Politècnica de València"
+      ],
+      "stages": {
+        "under-study": true,
+        "technical-analysis": true,
+        "basic": true,
+        "advanced": false,
+        "showcase": false
+      },
+      "sdos": [
+        "3GPP",
+        "ETSI"
+      ],
+      "icon": "sos",
+      "displayName": "Public Warning Systems"
+    },
+    {
+      "name": "XR/3D Scenes with MPEG-I Scene Description",
+      "displayName": "XR Media & 3D Scenes",
+      "doc_url": "/reference-tools/xr/",
+      "tech_url": "/tech/xr",
+      "standards_url": "/standards/xr",
+      "image": "/assets/images/projects/xr.png",
+      "tagline": "Composing, positioning, and temporally synchronizing dynamic 3D visual and audio objects for XR",
+      "basket": "immersive-media",
+      "repos": [
+        "rt-xr-unity-player",
+        "rt-xr-maf-native",
+        "rt-xr-content",
+        "rt-xr-blender-exporter",
+        "rt-xr-gITFast"
+      ],
+      "releases_slug": "resources",
+      "contributors": [
+        "Motion Spell",
+        "InterDigital",
+        "Fraunhofer FOKUS",
+        "Qualcomm"
+      ],
+      "stages": {
+        "under-study": true,
+        "technical-analysis": true,
+        "basic": true,
+        "advanced": false,
+        "showcase": false
+      },
+      "sdos": [
+        "MPEG (ISO/IEC)"
+      ],
+      "icon": "ar-frame"
+    },
+    {
+      "name": "5G Multicast Broadcast Services (MBS)",
+      "doc_url": "/reference-tools/5g-mbs/",
+      "tech_url": "/tech/5g-mbs",
+      "standards_url": "/standards/5g-mbs",
+      "image": "/assets/images/projects/5g-mbs.png",
+      "tagline": "Multicast and Broadcast delivery for 5G-NR-based terrestrial and non-terrestrial networks",
+      "basket": "multicast",
+      "repos": [
+        "rt-mbs-function",
+        "rt-mbs-transport-function",
+        "rt-mbs-examples",
+        "rt-libflute",
+        "rt-media-origin",
+        {
+          "name": "open5gs",
+          "branch": "5mbs"
+        },
+        "rt-mbs-application-provider",
+        "rt-mbs-client",
+        "rt-mbs-application",
+        "srsRAN_4G_mbs",
+        "srsRAN_Project_mbs"
+      ],
+      "releases_slug": "resources",
+      "contributors": [
+        "BBC - British Broadcasting Corporation",
+        "Fraunhofer FOKUS",
+        "Universitat Politècnica de València"
+      ],
+      "stages": {
+        "under-study": true,
+        "technical-analysis": true,
+        "basic": true,
+        "advanced": false,
+        "showcase": false
+      },
+      "icon": "broadcast-waves",
+      "sdos": [
+        "3GPP"
+      ]
+    },
+    {
+      "name": "UE Data Collection, Reporting and Event Exposure",
+      "doc_url": "/reference-tools/data-collection/",
+      "tech_url": "/tech/data-collection",
+      "standards_url": "/standards/data-collection",
+      "image": "/assets/images/projects/data-collection.png",
+      "tagline": "User data collection and reporting, and exposure of network events to consumers",
+      "basket": "content-delivery",
+      "repos": [
+        "rt-data-collection-application-function",
+        "cmcd-toolkit"
+      ],
+      "releases_slug": "resources",
+      "contributors": [
+        "BBC - British Broadcasting Corporation",
+        "Fraunhofer FOKUS",
+        "Qualcomm"
+      ],
+      "stages": {
+        "under-study": true,
+        "technical-analysis": true,
+        "basic": true,
+        "advanced": false,
+        "showcase": false
+      },
+      "icon": "doc-report",
+      "sdos": [
+        "3GPP"
+      ]
+    },
+    {
+      "name": "MPEG V3C Immersive Platform",
+      "displayName": "Volumetric Video Experiences",
+      "doc_url": "/reference-tools/v3c/",
+      "tech_url": "/tech/v3c",
+      "standards_url": "/standards/v3c",
+      "image": "/assets/images/projects/v3c.png",
+      "tagline": "Volumetric video platform for immersive experiences",
+      "basket": "immersive-media",
+      "repos": [
+        "rt-v3c-unity-player",
+        "rt-v3c-decoder-plugin",
+        "rt-v3c-content",
+        "rt-v3c-examples",
+        "rt-media-origin"
+      ],
+      "releases_slug": "resources",
+      "contributors": [
+        "InterDigital",
+        "Philips"
+      ],
+      "stages": {
+        "under-study": true,
+        "technical-analysis": true,
+        "basic": true,
+        "advanced": false,
+        "showcase": false
+      },
+      "sdos": [
+        "MPEG (ISO/IEC)"
+      ],
+      "icon": "cube"
+    },
+    {
+      "name": "Dynamic Mesh Coding",
+      "displayName": "Dynamic Mesh Coding",
+      "doc_url": "/reference-tools/vdmc/",
+      "tech_url": "/tech/vdmc",
+      "standards_url": "/standards/vdmc",
+      "image": null,
+      "tagline": "Compressing moving 3D surface meshes for real-time immersive environments",
+      "basket": "immersive-media",
+      "repos": [
+        "rt-vdmc-web-decoder-player"
+      ],
+      "releases_slug": "resources",
+      "contributors": [],
+      "stages": {
+        "under-study": true,
+        "technical-analysis": false,
+        "basic": false,
+        "advanced": false,
+        "showcase": false
+      },
+      "sdos": [
+        "MPEG (ISO/IEC)"
+      ],
+      "icon": "icosahedron"
+    },
+    {
+      "name": "5G Core Service Consumers",
+      "doc_url": "/reference-tools/5g-core/",
+      "tech_url": null,
+      "standards_url": null,
+      "image": "/assets/images/projects/5g-core.png",
+      "tagline": "Reference consumers for 5G Core capability exposure APIs",
+      "basket": null,
+      "excludedReason": "Reference consumer repo, not a topic in its own right.",
+      "repos": [
+        "rt-5gc-service-consumers"
+      ],
+      "releases_slug": "resources",
+      "contributors": [
+        "BBC - British Broadcasting Corporation",
+        "Fraunhofer FOKUS"
+      ],
+      "icon": "signal-5g"
+    },
+    {
+      "name": "Beyond 2D Evaluation Framework",
+      "doc_url": "/testbeds/beyond-2d/",
+      "tech_url": "/tech/beyond-2d",
+      "standards_url": "/standards/beyond-2d",
+      "image": "/assets/images/projects/beyond-2d.png",
+      "tagline": "Evaluation framework for beyond-2D video experiences",
+      "basket": "testbeds",
+      "repos": [
+        "rt-beyond2d-evaluation-framework"
+      ],
+      "releases_slug": "resources",
+      "contributors": [
+        "Philips",
+        "InterDigital"
+      ],
+      "stages": {
+        "under-study": true,
+        "technical-analysis": true,
+        "basic": true,
+        "advanced": false,
+        "showcase": false
+      },
+      "sdos": [
+        "3GPP"
+      ],
+      "icon": "virtual-space"
+    },
+    {
+      "name": "AI Traffic Characterization",
+      "doc_url": "/testbeds/6g-testbed/",
+      "tech_url": "/tech/6g",
+      "standards_url": "/standards/6g",
+      "image": "/assets/images/projects/6g-testbed.png",
+      "tagline": "6G testbed and AI-driven traffic characterization",
+      "basket": "testbeds",
+      "repos": [
+        "6G-Testbed"
+      ],
+      "releases_slug": "resources",
+      "contributors": [
+        "Qualcomm",
+        "Huawei"
+      ],
+      "stages": {
+        "under-study": true,
+        "technical-analysis": true,
+        "basic": true,
+        "advanced": false,
+        "showcase": false
+      },
+      "icon": "code-ai",
+      "sdos": [
+        "3GPP"
+      ]
+    },
+    {
+      "name": "CAMARA Connectivity Quality Management APIs",
+      "displayName": "Network APIs for Connectivity Quality",
+      "doc_url": "/reference-tools/network-apis/",
+      "tech_url": "/tech/network-apis",
+      "standards_url": "/standards/network-apis",
+      "image": "/assets/images/projects/network-apis.png",
+      "tagline": "Requesting, monitoring, and managing dynamic network resources and QoS",
+      "basket": "connected-media-production",
+      "repos": [
+        "rt-camara-examples"
+      ],
+      "releases_slug": "resources",
+      "contributors": [
+        "Ericsson",
+        "iTEAM - Universitat Politècnica de València"
+      ],
+      "stages": {
+        "under-study": true,
+        "technical-analysis": true,
+        "basic": true,
+        "advanced": false,
+        "showcase": false
+      },
+      "sdos": [
+        "CAMARA Project"
+      ],
+      "icon": "api-server"
+    },
+    {
+      "name": "Conversational Avatar Communication with MPEG ARF",
+      "displayName": "Conversational Avatar Communication",
+      "doc_url": "/reference-tools/avatar/",
+      "tech_url": "/tech/avatar",
+      "standards_url": "/standards/avatar",
+      "image": "/assets/images/projects/avatar.png",
+      "tagline": "Real-time conversational avatars, animated from user to user",
+      "basket": "immersive-media",
+      "repos": [
+        "rt-avatar-content",
+        "rt-avatar-call",
+        "rt-avatar-unity-tracker",
+        "rt-3gpp-swap"
+      ],
+      "releases_slug": "resources",
+      "contributors": [
+        "Motion Spell",
+        "Qualcomm",
+        "InterDigital"
+      ],
+      "stages": {
+        "under-study": true,
+        "technical-analysis": true,
+        "basic": true,
+        "advanced": false,
+        "showcase": false
+      },
+      "sdos": [
+        "MPEG (ISO/IEC)",
+        "3GPP"
+      ],
+      "icon": "avatar-figure"
+    },
+    {
+      "name": "AI/ML Evaluation Framework",
+      "doc_url": "/testbeds/ai-ml/",
+      "tech_url": "/tech/ai-ml",
+      "standards_url": "/standards/ai-ml",
+      "image": "/assets/images/projects/ai-ml.png",
+      "tagline": "Evaluation framework for AI/ML models in media processing for 3GPP systems",
+      "basket": "testbeds",
+      "repos": [
+        "rt-ai-ml-evaluation-framework"
+      ],
+      "releases_slug": "resources",
+      "contributors": [
+        "Qualcomm",
+        "InterDigital"
+      ],
+      "stages": {
+        "under-study": true,
+        "technical-analysis": true,
+        "basic": true,
+        "advanced": false,
+        "showcase": false
+      },
+      "sdos": [
+        "3GPP"
+      ],
+      "icon": "brain-network"
+    },
+    {
+      "name": "Common Tools",
+      "doc_url": "/reference-tools/common-tools/",
+      "tech_url": null,
+      "standards_url": null,
+      "image": "/assets/images/projects/common-tools.png",
+      "tagline": "Shared helper repositories supporting 5G-MAG Reference Tools",
+      "basket": null,
+      "excludedReason": "Shared helper repositories other reference tools depend on -- rt-common-shared.",
+      "repos": [
+        "rt-common-shared"
+      ],
+      "releases_slug": "resources",
+      "icon": "tool"
+    },
+    {
+      "name": "DVB-I Services over 5G Systems",
+      "doc_url": "/reference-tools/dvb-i/",
+      "tech_url": "/tech/dvb-i",
+      "standards_url": "/standards/dvb-i",
+      "image": "/assets/images/projects/dvb-i.png",
+      "tagline": "DVB-I service discovery combined with 5GMS and 5G Broadcast delivery",
+      "basket": "5g-broadcast",
+      "relatedBaskets": [
+        "content-delivery"
+      ],
+      "relatedProjects": [
+        "5G Media Streaming (5GMS)"
+      ],
+      "repos": [],
+      "releases_slug": "resources",
+      "contributors": [
+        "Fraunhofer FOKUS",
+        "Dolby Laboratories",
+        "Qualcomm",
+        "BBC - British Broadcasting Corporation"
+      ],
+      "stages": {
+        "under-study": true,
+        "technical-analysis": true,
+        "basic": false,
+        "advanced": false,
+        "showcase": false
+      },
+      "sdos": [
+        "3GPP",
+        "DVB"
+      ],
+      "icon": "inbox-check"
+    },
+    {
+      "name": "Content Delivery Protocols",
+      "doc_url": "/reference-tools/content-delivery/",
+      "tech_url": "/tech/content-delivery",
+      "standards_url": "/standards/content-delivery",
+      "image": "/assets/images/projects/multimedia.png",
+      "tagline": "Content delivery origin, packaging, protocols and related tools",
+      "basket": "content-delivery",
+      "relatedBaskets": [
+        "5g-broadcast",
+        "multicast"
+      ],
+      "repos": [
+        "rt-libflute",
+        "rt-media-origin",
+        "rt-cmmf-encoder"
+      ],
+      "releases_slug": "resources",
+      "contributors": [
+        "BBC - British Broadcasting Corporation",
+        "Fraunhofer FOKUS",
+        "Big Blue Marble",
+        "Motion Spell"
+      ],
+      "sdos": [
+        "IETF",
+        "3GPP",
+        "ETSI"
+      ],
+      "stages": {
+        "under-study": true,
+        "technical-analysis": true,
+        "basic": true,
+        "advanced": false,
+        "showcase": false
+      },
+      "icon": "package"
+    },
+    {
+      "name": "3GPP RAN and Core Platforms",
+      "doc_url": "/reference-tools/3gpp-platforms/",
+      "tech_url": null,
+      "standards_url": null,
+      "image": "/assets/images/projects/3gpp-platforms.png",
+      "tagline": "Lab-ready 5G RAN and Core built on Open-Source platforms",
+      "basket": null,
+      "excludedReason": "Infrastructure other projects run on, not a topic.",
+      "repos": [
+        "srsRAN_4G",
+        "srsRAN",
+        "rt-srsRAN_Project",
+        {
+          "name": "open5gs",
+          "branch": "main"
+        }
+      ],
+      "icon": "antenna-bars-5"
+    },
+    {
+      "name": "Dependency",
+      "doc_url": null,
+      "tech_url": null,
+      "standards_url": null,
+      "tagline": "External forks and dependencies 5G-MAG maintains for its reference tools — not first-class reference-tool projects with their own docs page",
+      "basket": null,
+      "excludedReason": "External fork/dependency, not a 5G-MAG-authored topic.",
+      "repos": []
+    },
+    {
+      "name": "Real-time Media Communication (RTC) Architecture",
+      "doc_url": null,
+      "tech_url": "/tech/rtc",
+      "standards_url": "/standards/rtc",
+      "tagline": "Interactive, low-latency, real-time media communication",
+      "basket": "rtc",
+      "repos": [
+        "rt-3gpp-swap"
+      ],
+      "stages": {
+        "under-study": true,
+        "technical-analysis": false,
+        "basic": false,
+        "advanced": false,
+        "showcase": false
+      },
+      "sdos": [
+        "3GPP"
+      ],
+      "icon": "webrtc-arrows"
+    },
+    {
+      "name": "Non-Terrestrial Networks in 5G Systems",
+      "doc_url": null,
+      "tech_url": "/tech/ntn",
+      "standards_url": "/standards/ntn",
+      "tagline": "Expanding network connectivity via satellite and HAPS for content delivery",
+      "basket": "ntn",
+      "repos": [],
+      "stages": {
+        "under-study": true,
+        "technical-analysis": true,
+        "basic": false,
+        "advanced": false,
+        "showcase": false
+      },
+      "sdos": [
+        "3GPP"
+      ],
+      "icon": "satellite-link"
+    },
+    {
+      "name": "Non-Public Networks",
+      "doc_url": null,
+      "tech_url": "/tech/npn",
+      "standards_url": "/standards/npn",
+      "tagline": "Private networks replacing legacy COFDM and RF-based contribution links",
+      "basket": "connected-media-production",
+      "repos": [],
+      "stages": {
+        "under-study": true,
+        "technical-analysis": true,
+        "basic": false,
+        "advanced": false,
+        "showcase": false
+      },
+      "sdos": [
+        "3GPP"
+      ],
+      "icon": "lock"
+    },
+    {
+      "name": "Time-Sensitive Communications (TSC)",
+      "doc_url": null,
+      "tech_url": "/tech/tsc",
+      "standards_url": "/standards/tsc",
+      "tagline": "Deterministic, low-jitter transport for tightly synchronised professional media",
+      "basket": "connected-media-production",
+      "repos": [],
+      "stages": {
+        "under-study": true,
+        "technical-analysis": true,
+        "basic": false,
+        "advanced": false,
+        "showcase": false
+      },
+      "sdos": [
+        "3GPP"
+      ],
+      "icon": "clock-sync"
+    },
+    {
+      "name": "5G-MAG Website & Org Infrastructure",
+      "doc_url": null,
+      "tech_url": null,
+      "standards_url": null,
+      "tagline": "The 5G-MAG website, org-wide GitHub configuration and community discussion repos.",
+      "basket": null,
+      "excludedReason": "Org and website repositories, not a reference-tool topic.",
+      "repos": []
+    }
+  ],
+  "repoMetadata": {
+    "3gpp-platforms": [
+      {
+        "repo_slug": "open5gs",
+        "display_name": "5G-MAG's fork of Open5GS",
+        "description": "5G-MAG maintains a fork of open5gs for the development and adaptation of 5GC network functions to support other Reference Tools.",
+        "repo_url": "https://github.com/5G-MAG/open5gs",
+        "branch": "main",
+        "license": "AGPLv3.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [
+          "Open5GS"
+        ],
+        "software": [
+          "Linux"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-srsRAN_Project",
+        "display_name": "5G-MAG's Fork of srsRAN Project",
+        "description": "5G-MAG maintains a fork of srsRAN_Project for the development and adaptation of NG-RAN procedures to support other Reference Tools.",
+        "repo_url": "https://github.com/5G-MAG/rt-srsRAN_Project",
+        "branch": "main",
+        "license": "AGPLv3.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [
+          "srsRAN"
+        ],
+        "software": [
+          "Linux"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "srsRAN_4G",
+        "display_name": "5G-MAG's fork of srsRAN_4G",
+        "description": "5G-MAG maintains a fork of srsRAN_4G for the development and adaptation of NG-RAN procedures to support other Reference Tools.",
+        "repo_url": "https://github.com/5G-MAG/srsRAN_4G",
+        "branch": "master",
+        "license": "AGPLv3.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [
+          "srsRAN"
+        ],
+        "software": [
+          "Linux"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "srsRAN",
+        "display_name": "5G-MAG's fork of srsRAN (discontinued version prior to srsRAN_4G)",
+        "description": "Fork of the discontinued srsRAN suite, kept for reference. Superseded by srsRAN_4G for LTE and by rt-srsRAN_Project for 5G NR.",
+        "repo_url": "https://github.com/5G-MAG/srsRAN",
+        "branch": "main_srsran_4g",
+        "license": "AGPLv3.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [
+          "srsRAN"
+        ],
+        "software": [
+          "Linux"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      }
+    ],
+    "5g-broadcast": [
+      {
+        "repo_slug": "rt-mbms-mw-android",
+        "display_name": "MBMS Android Middleware",
+        "description": "This repository holds an implementation of the MBMS Middleware for Android.",
+        "repo_url": "https://github.com/5G-MAG/rt-mbms-mw-android",
+        "branch": "main",
+        "license": "AGPLv3.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [],
+        "software": [
+          "APK",
+          "Android"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-mbms-modem",
+        "display_name": "MBMS Modem",
+        "description": "This repository holds an MBMS Modem, which main task is to convert a 5G BC input signal (received either as live I/Q raw data from the SDR or as prerecorded SDR sample file) to multicast IP packets on the output.",
+        "repo_url": "https://github.com/5G-MAG/rt-mbms-modem",
+        "branch": "main",
+        "license": "AGPLv3.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [
+          "srsRAN"
+        ],
+        "software": [
+          "Docker",
+          "Linux"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-mbms-tx",
+        "display_name": "5G Broadcast Transmitter",
+        "description": "This repository holds a standalone 5G Broadcast transmitter.",
+        "repo_url": "https://github.com/5G-MAG/rt-mbms-tx",
+        "branch": "main",
+        "license": "AGPLv3.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [
+          "srsRAN"
+        ],
+        "software": [
+          "Cloud",
+          "Linux"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-mbms-tx-for-qrd-and-crd",
+        "display_name": "5G Broadcast Transmitter for QRD and CRD",
+        "description": "This repository holds an extension of an MBMS-enabled eNodeB tailored to operate as a 5G Broadcast transmitter compatible with Qualcomm Reference Design (QRD) and QRC devices. In addition, System Information Blocks relevant for Emergency Alerts (e.g. SIB12) can be transmitted.",
+        "repo_url": "https://github.com/5G-MAG/rt-mbms-tx-for-qrd-and-crd",
+        "branch": "main",
+        "license": "AGPLv3.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [
+          "srsRAN"
+        ],
+        "software": [
+          "Cloud",
+          "Linux"
+        ],
+        "public": true,
+        "is_auxiliary": false,
+        "icon": "antenna-signal"
+      },
+      {
+        "repo_slug": "rt-mbms-examples",
+        "display_name": "MBMS Tools and Examples",
+        "description": "This repository holds example projects that make use of other 5G-MAG repositories or provide additional functionalities to test and implement new features for MBMS: FLUTE ffmpeg.",
+        "repo_url": "https://github.com/5G-MAG/rt-mbms-examples",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [],
+        "software": [
+          "Cloud",
+          "Linux"
+        ],
+        "public": true,
+        "is_auxiliary": true
+      },
+      {
+        "repo_slug": "rt-mbms-gw",
+        "display_name": "MBMS Gateway",
+        "description": "MBMS Gateway for an LTE-based 5G Terrestrial Broadcast deployment: takes content from the BM-SC and delivers it onto the M1-U bearer, driving the MBMS session lifecycle towards the MME over Sm (GTPv2-C).",
+        "repo_url": "https://github.com/5G-MAG/rt-mbms-gw",
+        "branch": "development",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [
+          "rt-mbms-tx"
+        ],
+        "software": [
+          "Linux"
+        ],
+        "public": false,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-mbms-bmsc",
+        "display_name": "Broadcast-Multicast Service Center (BM-SC)",
+        "description": "BM-SC for MBMS user services: ingests content over xMB (TS 26.348), announces it, and delivers it with FLUTE under the TS 26.346 profile.",
+        "repo_url": "https://github.com/5G-MAG/rt-mbms-bmsc",
+        "branch": "development",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [
+          "rt-libflute",
+          "rt-mbms-tx",
+          "libmpdpp"
+        ],
+        "software": [
+          "Linux"
+        ],
+        "public": false,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-mbms-client",
+        "display_name": "MBMS Client",
+        "description": "MBMS client: reads the service announcement, reassembles FLUTE objects from the bearer, and republishes them to a local player as an HLS or DASH presentation. Supersedes rt-mbms-mw.",
+        "repo_url": "https://github.com/5G-MAG/rt-mbms-client",
+        "branch": "development",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [
+          "rt-libflute",
+          "rt-common-shared"
+        ],
+        "software": [
+          "Linux"
+        ],
+        "public": false,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-mbms-application",
+        "display_name": "MBMS-Aware Application",
+        "description": "Receive-side web application: plays what the MBMS client received over the air, and shows the modem's radio state, the decoded system information and any cell broadcast warning. Supersedes rt-wui.",
+        "repo_url": "https://github.com/5G-MAG/rt-mbms-application",
+        "branch": "development",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [
+          "rt-mbms-client"
+        ],
+        "software": [
+          "Node.js",
+          "Linux"
+        ],
+        "public": false,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-mbms-application-provider",
+        "display_name": "5G Broadcast Application Provider",
+        "description": "Content provider portal: provisions xMB (TS 26.348) services and sessions on the BM-SC, and drives the transmitter's and MBMS Gateway's own control interfaces.",
+        "repo_url": "https://github.com/5G-MAG/rt-mbms-application-provider",
+        "branch": "development",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [
+          "rt-mbms-bmsc"
+        ],
+        "software": [
+          "Node.js",
+          "Linux"
+        ],
+        "public": false,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-mbms-mw",
+        "display_name": "MBMS Middleware",
+        "description": "Combines broadband, Wi-Fi and 5G Broadcast content via decision logic and serves it to applications over HTTP; also implements a ROUTE client.",
+        "repo_url": "https://github.com/5G-MAG/rt-mbms-mw",
+        "branch": "main",
+        "license": null,
+        "dependencies": [],
+        "software": [
+          "Linux",
+          "Docker"
+        ],
+        "public": true,
+        "is_auxiliary": false,
+        "standards": [
+          "3GPP",
+          "ETSI"
+        ]
+      }
+    ],
+    "emergency-alerts": [
+      {
+        "repo_slug": "rt-mbms-tx-for-qrd-and-crd",
+        "display_name": "5G Broadcast TX with PWS support",
+        "description": "Implementation of Public Warning System (PWS) alerts over 5G Broadcast.",
+        "repo_url": "https://github.com/5G-MAG/rt-mbms-tx-for-qrd-and-crd/tree/emergency-alerts",
+        "branch": "emergency-alerts",
+        "license": "AGPLv3.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [
+          "srsRAN"
+        ],
+        "software": [
+          "Cloud",
+          "Linux"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-pws-cbc",
+        "display_name": "Cell Broadcast Centre (CBC)",
+        "description": "Cell Broadcast Centre for the Public Warning System: accepts a warning message from an alert originator and emits it to the MME over SBc-AP, so it reaches handsets as ETWS or CMAS. Independent of any MBMS bearer.",
+        "repo_url": "https://github.com/5G-MAG/rt-pws-cbc",
+        "branch": "development",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [
+          "rt-mbms-tx"
+        ],
+        "software": [
+          "Node.js",
+          "Linux"
+        ],
+        "public": false,
+        "is_auxiliary": false
+      }
+    ],
+    "5gms": [
+      {
+        "repo_slug": "rt-5gms-application",
+        "display_name": "5GMS-Aware Application",
+        "description": "This repository holds applications that can be used to test and demonstrate other 5G-MAG Reference Tools related to 5GMS. Current applications available include: 5GMSd-Aware Application; Exo DVB-I Player.",
+        "repo_url": "https://github.com/5G-MAG/rt-5gms-application",
+        "branch": "main",
+        "license": "Multiple",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [],
+        "software": [
+          "APK",
+          "Android"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-5gms-media-session-handler",
+        "display_name": "5GMS Media Session Handler",
+        "description": "The 5GMS Media Session Handler is a 5GMS Client component that forms part of the 5G Media Services framework as defined in ETSI TS 126.501.",
+        "repo_url": "https://github.com/5G-MAG/rt-5gms-media-session-handler",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [],
+        "software": [
+          "APK",
+          "Android"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-5gms-media-stream-handler",
+        "display_name": "5GMS Media Stream Handler",
+        "description": "The 5GMS Media Stream Handler is a 5GMS client component that forms part of the 5G Media Services framework as defined in ETSI TS 126.501.",
+        "repo_url": "https://github.com/5G-MAG/rt-5gms-media-stream-handler",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [
+          "ExoPlayer"
+        ],
+        "software": [
+          "Android"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-5gms-common-android-library",
+        "display_name": "5GMS Common Android Library",
+        "description": "The 5GMS Common Library is an Android library that includes models and helper classes used within the different client-side Android applications such as the 5GMSd-Aware Application, 5GMSd Media Stream Handler and the 5GMSd Media Session Handler.",
+        "repo_url": "https://github.com/5G-MAG/rt-5gms-common-android-library",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [],
+        "software": [
+          "Android"
+        ],
+        "public": true,
+        "is_auxiliary": true
+      },
+      {
+        "repo_slug": "rt-5gms-application-function",
+        "display_name": "5GMS Application Function (AF)",
+        "description": "The 5GMS Application Function (AF) is a Network Function that forms part of the 5G Media Services framework as defined in ETSI TS 126.501.",
+        "repo_url": "https://github.com/5G-MAG/rt-5gms-application-function",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [
+          "Open5GS",
+          "OpenAPI"
+        ],
+        "software": [
+          "Cloud",
+          "Linux"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-5gms-application-server",
+        "display_name": "5GMS Application Server (AS)",
+        "description": "The 5GMS Application Server (AS) is a Network Function that forms part of the 5G Media Streaming framework as defined in ETSI TS 126.501.",
+        "repo_url": "https://github.com/5G-MAG/rt-5gms-application-server",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [
+          "NGINX",
+          "OpenResty"
+        ],
+        "software": [
+          "Cloud",
+          "Linux"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-5gms-application-provider",
+        "display_name": "5GMS Application Provider",
+        "description": "This repository provides multiple tools to interact with the 5GMS Application Function: Command Line Interface Tool; Management UI; Postman Collection; QoE Metrics Reporting UI.",
+        "repo_url": "https://github.com/5G-MAG/rt-5gms-application-provider",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [
+          "Postman",
+          "Insomnia"
+        ],
+        "software": [
+          "API",
+          "Web",
+          "Cloud",
+          "Linux"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-5gms-examples",
+        "display_name": "5GMS Tools and Examples",
+        "description": "This repository holds example projects that make use of other 5G-MAG repositories or provide additional functionalities to test and implement new features for 5GMS: 5G Media Streaming - Docker Compose Setup; Express Mock AF.",
+        "repo_url": "https://github.com/5G-MAG/rt-5gms-examples",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [],
+        "software": [
+          "Cloud",
+          "Docker",
+          "Linux"
+        ],
+        "public": true,
+        "is_auxiliary": true
+      },
+      {
+        "repo_slug": "cmcd-toolkit",
+        "display_name": "CMCD Toolkit",
+        "description": "Tools to collect and analyze CMCD (Common Media Client Data) v2 locally and across different cloud providers.",
+        "repo_url": "https://github.com/5G-MAG/cmcd-toolkit",
+        "branch": "main",
+        "license": "Apache-2.0",
+        "standards": [
+          "3GPP",
+          "CTA WAVE",
+          "DASH-IF"
+        ],
+        "dependencies": [],
+        "software": [
+          "Web",
+          "Docker"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      }
+    ],
+    "5g-mbs": [
+      {
+        "repo_slug": "srsRAN_4G",
+        "display_name": "UE with support for MBS",
+        "description": "5G-MAG maintains a fork of srsRAN_4G for the development and adaptation of NG-RAN procedures to support other Reference Tools.",
+        "repo_url": "https://github.com/5G-MAG/srsRAN_4G/tree/5mbs",
+        "branch": "5mbs",
+        "license": "AGPLv3.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [
+          "srsRAN"
+        ],
+        "software": [
+          "APK",
+          "Android"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-srsRAN_Project",
+        "display_name": "NG-RAN with support for MBS",
+        "description": "5G-MAG maintains a fork of srsRAN_Project for the development and adaptation of NG-RAN procedures to support other Reference Tools.",
+        "repo_url": "https://github.com/5G-MAG/rt-srsRAN_Project/tree/5mbs",
+        "branch": "5mbs",
+        "license": "AGPLv3.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [
+          "srsRAN"
+        ],
+        "software": [
+          "Docker",
+          "Linux"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "open5gs",
+        "display_name": "5G Core with MBS components",
+        "description": "5G-MAG maintains a fork of open5gs for the development and adaptation of 5GC network functions to support other Reference Tools.",
+        "repo_url": "https://github.com/5G-MAG/open5gs/tree/5mbs",
+        "branch": "5mbs",
+        "license": "AGPLv3.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [
+          "Open5GS"
+        ],
+        "software": [
+          "Docker",
+          "Linux"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-mbs-function",
+        "display_name": "MBS Function (MBSF)",
+        "description": "Reference Tools: This repository is related to \"5G Multicast Broadcast Services\"",
+        "repo_url": "https://github.com/5G-MAG/rt-mbs-function",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [],
+        "software": [
+          "Cloud",
+          "Linux"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-mbs-transport-function",
+        "display_name": "MBS Transport Function (MBSTF)",
+        "description": "This repository is related to: 5G Multicast Broadcast Services",
+        "repo_url": "https://github.com/5G-MAG/rt-mbs-transport-function",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [],
+        "software": [
+          "Cloud",
+          "Linux"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-mbs-examples",
+        "display_name": "MBS Tools and Examples",
+        "description": "Reference Tools: This repository is related to \"5G Multicast Broadcast Services\"",
+        "repo_url": "https://github.com/5G-MAG/rt-mbs-examples",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [],
+        "software": [
+          "Docker",
+          "Linux"
+        ],
+        "public": true,
+        "is_auxiliary": true
+      },
+      {
+        "repo_slug": "rt-mbs-application-provider",
+        "display_name": "MBS Application Provider",
+        "description": "Web control portal playing the MBS Application Provider role (3GPP TS 26.502): provisions MBS User Services at Nmb10 towards the MBSF and pushes content at Nmb8 towards the MBSTF.",
+        "repo_url": "https://github.com/5G-MAG/rt-mbs-application-provider",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [],
+        "software": [
+          "Web",
+          "Docker"
+        ],
+        "public": false,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-mbs-client",
+        "display_name": "MBS Client",
+        "description": "UE-side MBS Client (3GPP TS 26.502): receives the MBS-4-MC announcement carousel and FLUTE object delivery, and exposes the received services to applications over the MBS-6 and MBS-7 local APIs.",
+        "repo_url": "https://github.com/5G-MAG/rt-mbs-client",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [],
+        "software": [
+          "Linux"
+        ],
+        "public": false,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-mbs-application",
+        "display_name": "MBS-Aware Application",
+        "description": "Dashboard playing the MBS-Aware Application role (3GPP TS 26.502) against rt-mbs-client: lists announced services, activates and deactivates reception, and inspects received objects.",
+        "repo_url": "https://github.com/5G-MAG/rt-mbs-application",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [],
+        "software": [
+          "Web"
+        ],
+        "public": false,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-5gc-service-consumers",
+        "display_name": "5G Core Service Consumers",
+        "description": "Service-consumer library implementing the MB-SMF side of Nmbsmf_TMGI and Nmbsmf_MBSSession (3GPP TS 29.532), vendored as a subproject inside the MBSF as an alternative to provisioning the 5GC directly.",
+        "repo_url": "https://github.com/5G-MAG/rt-5gc-service-consumers",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [
+          "Open5GS"
+        ],
+        "software": [
+          "Linux"
+        ],
+        "public": true,
+        "is_auxiliary": true
+      },
+      {
+        "repo_slug": "srsRAN_4G_mbs",
+        "display_name": "UE with support for MBS",
+        "description": "5G-MAG maintains a fork of srsRAN_4G, adapted for 5G Multicast Broadcast Services (MBS) support.",
+        "repo_url": "https://github.com/5G-MAG/srsRAN_4G_mbs",
+        "branch": "5mbs",
+        "license": "AGPL-3.0",
+        "standards": [],
+        "dependencies": [
+          "srsRAN_4G"
+        ],
+        "software": [
+          "Linux"
+        ],
+        "public": false,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "srsRAN_Project_mbs",
+        "display_name": "gNodeB with support for MBS",
+        "description": "5G-MAG maintains a fork of srsRAN Project, adapted for 5G Multicast Broadcast Services (MBS) support.",
+        "repo_url": "https://github.com/5G-MAG/srsRAN_Project_mbs",
+        "branch": "5mbs",
+        "license": "AGPL-3.0",
+        "standards": [],
+        "dependencies": [
+          "rt-srsRAN_Project"
+        ],
+        "software": [
+          "Linux",
+          "Docker"
+        ],
+        "public": false,
+        "is_auxiliary": false
+      }
+    ],
+    "5g-core": [
+      {
+        "repo_slug": "rt-5gc-service-consumers",
+        "display_name": "5GC Service Consumers",
+        "description": "This repository contains a collection of reusable service consumer libraries designed to interact with the 5GC Network Functions using service interfaces.",
+        "repo_url": "https://github.com/5G-MAG/rt-5gc-service-consumers",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [
+          "Open5GS"
+        ],
+        "software": [
+          "Linux"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      }
+    ],
+    "6g-testbed": [
+      {
+        "repo_slug": "6G-Testbed",
+        "display_name": "6G Testbed and AI Traffic Characterization",
+        "description": "A framework for measuring and analyzing AI/LLM service traffic patterns under various network conditions, designed to support 3GPP SA4 6G Media Study contributions.",
+        "repo_url": "https://github.com/5G-MAG/6G-Testbed",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [],
+        "software": [
+          "Linux"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      }
+    ],
+    "ai-ml": [
+      {
+        "repo_slug": "rt-ai-ml-evaluation-framework",
+        "display_name": "AI and ML Evaluation Framework",
+        "description": "This repository holds code related to the implementation of the AI/ML evaluation framework as defined in 3GPP SA4 TR 26.847 (Release 19).",
+        "repo_url": "https://github.com/5G-MAG/rt-ai-ml-evaluation-framework",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [],
+        "software": [
+          "Linux"
+        ],
+        "public": false,
+        "is_auxiliary": false
+      }
+    ],
+    "beyond-2d": [
+      {
+        "repo_slug": "rt-beyond2d-evaluation-framework",
+        "display_name": "Beyond 2D Video Evaluation Framework",
+        "description": "This project holds code related to the evaluation framework for the Feasibility Study on Beyond 2D Video (FS_Beyond2D) in 3GPP TSG SA WG4 (SA4). This study is based on work item description (WID) SP-240479 New SID on Feasibility Study on Beyond 2D Video, and the study will result in technical report TR 26.956.",
+        "repo_url": "https://github.com/5G-MAG/rt-beyond2d-evaluation-framework",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [],
+        "software": [
+          "Linux"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      }
+    ],
+    "avatar": [
+      {
+        "repo_slug": "rt-avatar-content",
+        "display_name": "Content for Avatar Call",
+        "description": "This repository holds reference MPEG ARF content for real time avatar communication.",
+        "repo_url": "https://github.com/5G-MAG/rt-avatar-content",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [],
+        "dependencies": [],
+        "software": [],
+        "public": false,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-avatar-call",
+        "display_name": "Avatar Call",
+        "description": "This repository supports the development of a reference framework for avatar communication. The goal is to demonstrate WebRTC communication using the MPEG ARF and related animation compression.",
+        "repo_url": "https://github.com/5G-MAG/rt-avatar-call",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [],
+        "dependencies": [],
+        "software": [],
+        "public": false,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-avatar-unity-tracker",
+        "display_name": "Avatar Unity Tracker",
+        "description": "Sample OpenXR tracker for ARF avatar animation in Unity",
+        "repo_url": "https://github.com/5G-MAG/rt-avatar-unity-tracker",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [],
+        "dependencies": [],
+        "software": [],
+        "public": false,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-3gpp-swap",
+        "display_name": "3GPP SWAP Protocol",
+        "description": "Reference Tools: This repository is related to \"Conversational Avatar Real-Time Communications\"",
+        "repo_url": "https://github.com/5G-MAG/rt-3gpp-swap",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [],
+        "dependencies": [],
+        "software": [],
+        "public": false,
+        "is_auxiliary": false
+      }
+    ],
+    "dvb-i": [
+      {
+        "repo_slug": "rt-5gms-application",
+        "display_name": "DVB-I Reference App",
+        "description": "This repository holds applications that can be used to test and demonstrate other 5G-MAG Reference Tools related to 5GMS. Current applications available include: 5GMSd-Aware Application; Exo DVB-I Player.",
+        "repo_url": "https://github.com/5G-MAG/rt-5gms-application",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "DVBI",
+          "3GPP"
+        ],
+        "dependencies": [
+          "ExoPlayer"
+        ],
+        "software": [
+          "APK",
+          "Android"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      }
+    ],
+    "content-delivery": [
+      {
+        "repo_slug": "rt-libflute",
+        "display_name": "FLUTE Protocol and Profiles",
+        "description": "This is an implementation of a FLUTE server and client.",
+        "repo_url": "https://github.com/5G-MAG/rt-libflute",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "IETF"
+        ],
+        "dependencies": [],
+        "software": [
+          "Linux"
+        ],
+        "public": true,
+        "is_auxiliary": false,
+        "icon": "package"
+      },
+      {
+        "repo_slug": "rt-mbms-client",
+        "display_name": "MBMS Client (ROUTE)",
+        "description": "The MBMS client, listed here for real-time object delivery. It delivers over FLUTE today; ROUTE support is preserved on its route-gpac branch, seven commits contributed by GPAC against the client's predecessor, and is the starting point for ROUTE here. Supersedes rt-mbms-mw, whose route-gpac branch the ROUTE walkthrough still builds from.",
+        "repo_url": "https://github.com/5G-MAG/rt-mbms-client",
+        "branch": "route-gpac",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [
+          "GPAC",
+          "rt-libflute"
+        ],
+        "software": [
+          "Linux"
+        ],
+        "public": false,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-mbms-mw",
+        "display_name": "MBMS Middleware",
+        "description": "Combines broadband, Wi-Fi and 5G Broadcast content via decision logic and serves it to applications over HTTP; also implements a ROUTE client.",
+        "repo_url": "https://github.com/5G-MAG/rt-mbms-mw",
+        "branch": "main",
+        "license": null,
+        "dependencies": [],
+        "software": [
+          "Linux",
+          "Docker"
+        ],
+        "public": true,
+        "is_auxiliary": false,
+        "standards": [
+          "IETF",
+          "3GPP",
+          "ETSI"
+        ]
+      },
+      {
+        "repo_slug": "rt-media-origin",
+        "display_name": "Media Origin Server and Packager",
+        "description": "A media origin server component for Content Delivery Protocols testing (JavaScript/TypeScript web application). No public description has been published on GitHub yet.",
+        "repo_url": "https://github.com/5G-MAG/rt-media-origin",
+        "branch": "main",
+        "license": null,
+        "standards": [
+          "IETF",
+          "3GPP",
+          "ETSI"
+        ],
+        "dependencies": [],
+        "software": [
+          "Web"
+        ],
+        "public": false,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-cmmf-encoder",
+        "display_name": "CMMF Encoder",
+        "description": "Reference implementation of a CMMF Encoder according to ETSI TS 103 973.",
+        "repo_url": "https://github.com/5G-MAG/rt-cmmf-encoder",
+        "branch": "main",
+        "license": null,
+        "standards": [
+          "ETSI"
+        ],
+        "dependencies": [],
+        "software": [],
+        "public": true,
+        "is_auxiliary": false
+      }
+    ],
+    "network-apis": [
+      {
+        "repo_slug": "rt-camara-examples",
+        "display_name": "CAMARA API  Tools and Examples",
+        "description": "This repository contains example files and tools in relation to the CAMARA Project",
+        "repo_url": "https://github.com/5G-MAG/rt-camara-examples",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [],
+        "dependencies": [],
+        "software": [],
+        "public": true,
+        "is_auxiliary": false
+      }
+    ],
+    "data-collection": [
+      {
+        "repo_slug": "rt-data-collection-application-function",
+        "display_name": "Generic 3GPP Data Collection AF",
+        "description": "This repository provides a 5G Data Collection Service Provider library and AF. It can provide the interfaces R1-R6 as per 3GPP TS 26.531 (See Clause 4.2). The default Application Function implementation here implements some of the data reports and events defined in 3GPP TS 26.531, 3GPP TS 26.532 and 3GPP TS 29.517.",
+        "repo_url": "https://github.com/5G-MAG/rt-data-collection-application-function",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [
+          "Open5GS",
+          "Insomnia"
+        ],
+        "software": [
+          "API",
+          "Cloud",
+          "Docker",
+          "Linux"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      }
+    ],
+    "v3c": [
+      {
+        "repo_slug": "rt-v3c-unity-player",
+        "display_name": "V3C Unity Player",
+        "description": "This project provides a Unity package to decode and play V3C contents in Unity, using the MPEG V3C Immersive Platform - Decoder Plugin. Also provided in that repository are V-PCC and MIV synthesizers plugins needed for the rendering of the V3C contents.",
+        "repo_url": "https://github.com/5G-MAG/rt-v3c-unity-player",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "MPEG"
+        ],
+        "dependencies": [
+          "Unity"
+        ],
+        "software": [
+          "Windows",
+          "Android"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-v3c-decoder-plugin",
+        "display_name": "V3C Decoder Plugin",
+        "description": "This project contains the entrypoints for decoding and viewing MPEG Immersive Video (MIV) and Video Point Cloud Compression (V-PCC) related to the MPEG V3C Immersive Platform.",
+        "repo_url": "https://github.com/5G-MAG/rt-v3c-decoder-plugin",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "MPEG"
+        ],
+        "dependencies": [],
+        "software": [
+          "Windows",
+          "Android"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-v3c-content",
+        "display_name": "Content for V3C Immersive Platform",
+        "description": "This folder contains the files to configure and test the V3CImmersivePlatform - Unity Player application.",
+        "repo_url": "https://github.com/5G-MAG/rt-v3c-content",
+        "branch": "main",
+        "license": "Multiple",
+        "standards": [
+          "MPEG"
+        ],
+        "dependencies": [],
+        "software": [
+          "Windows",
+          "Android"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-v3c-examples",
+        "display_name": "V3C Tools and Examples",
+        "description": "Example V3C content and helper files for testing the encoding, delivery and rendering pipeline.",
+        "repo_url": "https://github.com/5G-MAG/rt-v3c-examples",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [],
+        "software": [
+          "Linux"
+        ],
+        "public": false,
+        "is_auxiliary": true
+      }
+    ],
+    "xr": [
+      {
+        "repo_slug": "rt-xr-unity-player",
+        "display_name": "XR Unity Player",
+        "description": "The XR Unity Player is an interactive and XR-capable glTF scene viewer implemented in Unity3D. It supports glTF extensions specified in the MPEG-I Scene Description framework (ISO/IEC 23090-14).",
+        "repo_url": "https://github.com/5G-MAG/rt-xr-unity-player",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "MPEG",
+          "3GPP"
+        ],
+        "dependencies": [
+          "Unity"
+        ],
+        "software": [
+          "Windows",
+          "Android"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-xr-gITFast",
+        "display_name": "glTF Extensions",
+        "description": "Fast glTF loader extensions for immersive media assets in Unity.",
+        "repo_url": "https://github.com/5G-MAG/rt-xr-gITFast",
+        "branch": "main",
+        "license": "Apache 2.0",
+        "standards": [
+          "MPEG"
+        ],
+        "dependencies": [
+          "glTF"
+        ],
+        "software": [],
+        "public": true,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-xr-maf-native",
+        "display_name": "XR Media Pipelines",
+        "description": "This repository provides media pipelines implementations supporting the 5G-MAG Reference Tools XR Player Unity 3D project. Media pipelines are plugins for the XR Player's media player implementation of the Media Access Functions API (MAF) defined in ISO/IEC 23090-14.",
+        "repo_url": "https://github.com/5G-MAG/rt-xr-maf-native",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "MPEG",
+          "3GPP"
+        ],
+        "dependencies": [
+          "Unity"
+        ],
+        "software": [
+          "Windows",
+          "Linux"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-xr-content",
+        "display_name": "XR/3D Scenes and Test Content",
+        "description": "This repository provides reference content for testing and demos with the XR Player.",
+        "repo_url": "https://github.com/5G-MAG/rt-xr-content",
+        "branch": "main",
+        "license": "Multiple",
+        "standards": [
+          "MPEG"
+        ],
+        "dependencies": [
+          "glTF"
+        ],
+        "software": [],
+        "public": true,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-xr-blender-exporter",
+        "display_name": "XR/3D Scene Authoring (Blender)",
+        "description": "This Blender add-on adds support for MPEG_* glTF extensions to the built-in glTF exporter.",
+        "repo_url": "https://github.com/5G-MAG/rt-xr-blender-exporter",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "MPEG"
+        ],
+        "dependencies": [
+          "Blender"
+        ],
+        "software": [
+          "Windows",
+          "Linux"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      }
+    ],
+    "common-tools": [
+      {
+        "repo_slug": "rt-common-shared",
+        "display_name": "Common Shared Tools",
+        "description": "This repository holds auxiliary tools common to various projects.",
+        "repo_url": "https://github.com/5G-MAG/rt-common-shared",
+        "branch": "main",
+        "license": "Multiple",
+        "standards": [],
+        "dependencies": [
+          "ExpressJS",
+          "Open5GS"
+        ],
+        "software": [
+          "Cloud",
+          "Linux"
+        ],
+        "public": true,
+        "is_auxiliary": true
+      }
+    ],
+    "vdmc": [
+      {
+        "repo_slug": "rt-vdmc-web-decoder-player",
+        "display_name": "V-DMC Web Decoder/Player",
+        "description": "Web-based decoder and player for Dynamic Mesh Coding (V-DMC) content. Repository is new; no public description has been published on GitHub yet.",
+        "repo_url": "https://github.com/5G-MAG/rt-vdmc-web-decoder-player",
+        "branch": "main",
+        "license": null,
+        "standards": [
+          "MPEG (ISO/IEC)"
+        ],
+        "dependencies": [],
+        "software": [],
+        "public": true,
+        "is_auxiliary": false
+      }
+    ],
+    "rt-xr-maf-plugin": [
+      {
+        "repo_slug": "rt-xr-maf-plugin",
+        "display_name": "Media Access Functions API (MAF) Plugin",
+        "description": "",
+        "repo_url": "https://github.com/5G-MAG/rt-xr-maf-plugin",
+        "branch": "main",
+        "license": null,
+        "standards": [],
+        "dependencies": [],
+        "software": [],
+        "public": true,
+        "is_auxiliary": null
+      }
+    ]
+  },
+  "iconCatalog": {
+    "play": [
+      "M7 4v16l13 -8l-13 -8"
+    ],
+    "antenna-signal": [
+      "M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0",
+      "M16.616 13.924a5 5 0 1 0 -9.23 0",
+      "M20.307 15.469a9 9 0 1 0 -16.615 0",
+      "M9 21l3 -9l3 9",
+      "M10 19h4"
+    ],
+    "ar-frame": [
+      "M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0",
+      "M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2",
+      "M3 7v-2a2 2 0 0 1 2 -2h2",
+      "M3 17v2a2 2 0 0 0 2 2h2",
+      "M17 3h2a2 2 0 0 1 2 2v2",
+      "M17 21h2a2 2 0 0 0 2 -2v-2"
+    ],
+    "broadcast-waves": [
+      "M12 12l0 .01",
+      "M14.828 9.172a4 4 0 0 1 0 5.656",
+      "M17.657 6.343a8 8 0 0 1 0 11.314",
+      "M9.168 14.828a4 4 0 0 1 0 -5.656",
+      "M6.337 17.657a8 8 0 0 1 0 -11.314"
+    ],
+    "doc-report": [
+      "M14 3v4a1 1 0 0 0 1 1h4",
+      "M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2",
+      "M9 17l0 -5",
+      "M12 17l0 -1",
+      "M15 17l0 -3"
+    ],
+    "cube": [
+      "M4 8v-2a2 2 0 0 1 2 -2h2",
+      "M4 16v2a2 2 0 0 0 2 2h2",
+      "M16 4h2a2 2 0 0 1 2 2v2",
+      "M16 20h2a2 2 0 0 0 2 -2v-2",
+      "M12 12.5l4 -2.5",
+      "M8 10l4 2.5v4.5l4 -2.5v-4.5l-4 -2.5l-4 2.5",
+      "M8 10v4.5l4 2.5"
+    ],
+    "chip": [
+      "M18 8h-2a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h2v-4h-1",
+      "M10 9a1 1 0 0 0 -1 -1h-2a1 1 0 0 0 -1 1v6a1 1 0 0 0 1 1h2a1 1 0 0 0 1 -1v-2a1 1 0 0 0 -1 -1h-3"
+    ],
+    "api-server": [
+      "M4 13h5",
+      "M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3",
+      "M20 8v8",
+      "M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5"
+    ],
+    "avatar-figure": [
+      "M6 6a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2l0 -4",
+      "M12 2v2",
+      "M9 12v9",
+      "M15 12v9",
+      "M5 16l4 -2",
+      "M15 14l4 2",
+      "M9 18h6",
+      "M10 8v.01",
+      "M14 8v.01"
+    ],
+    "brain-network": [
+      "M15.5 13a3.5 3.5 0 0 0 -3.5 3.5v1a3.5 3.5 0 0 0 7 0v-1.8",
+      "M8.5 13a3.5 3.5 0 0 1 3.5 3.5v1a3.5 3.5 0 0 1 -7 0v-1.8",
+      "M17.5 16a3.5 3.5 0 0 0 0 -7h-.5",
+      "M19 9.3v-2.8a3.5 3.5 0 0 0 -7 0",
+      "M6.5 16a3.5 3.5 0 0 1 0 -7h.5",
+      "M5 9.3v-2.8a3.5 3.5 0 0 1 7 0v10"
+    ],
+    "inbox-check": [
+      "M3 9a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2l0 -9",
+      "M16 3l-4 4l-4 -4"
+    ],
+    "package": [
+      "M12 3l8 4.5v9l-8 4.5l-8 -4.5v-9z",
+      "M12 12l8 -4.5",
+      "M12 12v9",
+      "M12 12l-8 -4.5"
+    ],
+    "webrtc-arrows": [
+      "M7 21v-6",
+      "M20 6l-3 -3l-3 3",
+      "M10 18l-3 3l-3 -3",
+      "M7 3v2",
+      "M7 9v2",
+      "M17 3v6",
+      "M17 21v-2",
+      "M17 15v-2"
+    ],
+    "satellite-link": [
+      "M3.707 6.293l2.586 -2.586a1 1 0 0 1 1.414 0l5 5a1 1 0 0 1 0 1.414l-2.586 2.586a1 1 0 0 1 -1.414 0l-5 -5a1 1 0 0 1 0 -1.414z",
+      "M6 10l-3 3l3 3l3 -3",
+      "M10 6l3 -3l3 3l-3 3",
+      "M14 17a3 3 0 0 0 3 -3",
+      "M20 13a9 9 0 0 0 -9 9"
+    ],
+    "shield-network": [
+      "M15 10l4.553 -2.276a1 1 0 0 1 1.447 .894v6.764a1 1 0 0 1 -1.447 .894l-4.553 -2.276v-4",
+      "M3 8a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2l0 -8"
+    ],
+    "lock": [
+      "M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6",
+      "M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0",
+      "M8 11v-4a4 4 0 1 1 8 0v4"
+    ],
+    "clock-sync": [
+      "M12 13m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0",
+      "M12 10l0 3l2 2",
+      "M7 4l-2.75 2",
+      "M17 4l2.75 2"
+    ],
+    "sos": [
+      "M12 8a2 2 0 0 1 2 2v4a2 2 0 1 1 -4 0v-4a2 2 0 0 1 2 -2",
+      "M17 15c.345 .6 1.258 1 2 1a2 2 0 1 0 0 -4a2 2 0 1 1 0 -4c.746 0 1.656 .394 2 1",
+      "M3 15c.345 .6 1.258 1 2 1a2 2 0 1 0 0 -4a2 2 0 1 1 0 -4c.746 0 1.656 .394 2 1"
+    ],
+    "code-ai": [
+      "M7 8l-4 4l4 4",
+      "M17 8l3.111 3.111",
+      "M14 4l-2.175 8.7",
+      "M14 21v-4a2 2 0 1 1 4 0v4",
+      "M14 19h4",
+      "M21 15v6"
+    ],
+    "gauge": [
+      "M5 12a7 7 0 1 1 14 0",
+      "M12 12l4 -3",
+      "M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"
+    ],
+    "flask": [
+      "M9 3l6 0",
+      "M10 9l4 0",
+      "M10 3v6l-4 11a.7 .7 0 0 0 .5 1h11a.7 .7 0 0 0 .5 -1l-4 -11v-6"
+    ],
+    "signal-5g": [
+      "M18 8h-2a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h2v-4h-1",
+      "M6 15a1 1 0 0 0 1 1h2a1 1 0 0 0 1 -1v-2a1 1 0 0 0 -1 -1h-3v-4h4"
+    ],
+    "tool": [
+      "M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5"
+    ],
+    "antenna-bars-5": [
+      "M6 18l0 -3",
+      "M10 18l0 -6",
+      "M14 18l0 -9",
+      "M18 18l0 -12"
+    ],
+    "virtual-space": [
+      "M16 14.808a25 25 0 0 0 -4 -.312c-1.439 0 -2.796 .113 -4 .312",
+      "M21 17.439c0 1.148 -2.034 2.142 -4.997 2.625l-.003 -10.439c2.965 -.482 5 -1.477 5 -2.625v-.064c0 -1.622 -4.03 -2.936 -9 -2.936s-9 1.314 -9 2.936c0 1.148 2.035 2.142 5 2.624l-.003 10.44c-2.963 -.483 -4.997 -1.477 -4.997 -2.625",
+      "M3 6.936v10.439",
+      "M21 6.936v10.439"
+    ],
+    "icosahedron": [
+      "M21 8.007v7.986a2 2 0 0 1 -1.006 1.735l-7 4.007a2 2 0 0 1 -1.988 0l-7 -4.007a2 2 0 0 1 -1.006 -1.735v-7.986a2 2 0 0 1 1.006 -1.735l7 -4.007a2 2 0 0 1 1.988 0l7 4.007a2 2 0 0 1 1.006 1.735",
+      "M3.29 6.97l4.21 2.03",
+      "M20.71 6.97l-4.21 2.03",
+      "M20.7 17h-17.4",
+      "M11.76 2.03l-4.26 6.97l-4.3 7.84",
+      "M12.24 2.03q 2.797 4.44 4.26 6.97t 4.3 7.84",
+      "M12 17l-4.5 -8h9l-4.5 8",
+      "M12 17v5"
+    ],
+    "certificate": [
+      "M12 15a3 3 0 1 0 6 0a3 3 0 1 0 -6 0",
+      "M13 17.5v4.5l2 -1.5l2 1.5v-4.5",
+      "M10 19h-5a2 2 0 0 1 -2 -2v-10c0 -1.1 .9 -2 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -1 1.73",
+      "M6 9l12 0",
+      "M6 12l3 0",
+      "M6 15l2 0"
+    ],
+    "code": [
+      "M7 8l-4 4l4 4",
+      "M17 8l4 4l-4 4",
+      "M14 4l-4 16"
+    ]
+  }
+}

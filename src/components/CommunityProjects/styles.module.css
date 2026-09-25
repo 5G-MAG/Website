@@ -22,7 +22,7 @@
 .summaryCard h3 {
   margin: 0;
   color: var(--ifm-color-emphasis-700);
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
@@ -43,7 +43,7 @@
 }
 
 .categoryGroupTitle {
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -110,7 +110,7 @@
   display: flex;
   align-items: center;
   gap: 0.65rem;
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   color: var(--ifm-color-emphasis-600);
   white-space: nowrap;
 }
@@ -121,13 +121,13 @@
   border-radius: 999px;
   padding: 0.1rem 0.55rem;
   font-weight: 700;
-  font-size: 0.72rem;
+  font-size: 0.875rem;
 }
 
 .badgeNew {
   background: var(--badge-new-background);
   color: var(--badge-new-foreground);
-  font-size: 0.62rem;
+  font-size: 0.875rem;
   font-weight: 700;
   padding: 0.1rem 0.4rem;
   border-radius: 999px;
@@ -143,7 +143,7 @@
 }
 
 .projectTagline {
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   color: var(--ifm-color-emphasis-700);
   margin: 0.85rem 0 0;
 }
@@ -179,7 +179,7 @@
 }
 
 .subsectionTitle {
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -199,7 +199,7 @@
 .releaseTag {
   font-family: var(--ifm-font-family-monospace);
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   color: var(--ifm-color-primary) !important;
   text-decoration: none !important;
 }
@@ -209,7 +209,7 @@
 }
 
 .releaseDate {
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   color: var(--ifm-color-emphasis-600);
 }
 
@@ -228,7 +228,7 @@
 .repoTable th {
   text-align: left;
   padding: 0.55rem 0.8rem;
-  font-size: 0.7rem;
+  font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.03em;
   color: var(--ifm-color-emphasis-600);
@@ -239,7 +239,7 @@
 .repoTable td {
   padding: 0.5rem 0.8rem;
   border-bottom: 1px solid var(--ifm-color-emphasis-200);
-  font-size: 0.82rem;
+  font-size: 0.875rem;
 }
 
 .repoTable tr:last-child td {
@@ -262,7 +262,7 @@
 }
 
 .statusPill {
-  font-size: 0.66rem;
+  font-size: 0.875rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.02em;
@@ -313,7 +313,7 @@
 
 .prRepo {
   font-family: var(--ifm-font-family-monospace);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   color: var(--ifm-color-emphasis-700);
   background: var(--ifm-color-emphasis-100);
   border-radius: 999px;
@@ -336,7 +336,7 @@
 
 .pillDraft,
 .pillReady {
-  font-size: 0.64rem;
+  font-size: 0.875rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.03em;
@@ -359,7 +359,7 @@
   margin-left: auto;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   white-space: nowrap;
 }
 
@@ -468,7 +468,7 @@
 }
 
 .timelineDate {
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   color: var(--ifm-color-emphasis-600);
   margin-left: auto;
 }
@@ -477,7 +477,7 @@
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  font-size: 0.82rem;
+  font-size: 0.875rem;
 }
 
 .timelineProject {
@@ -498,7 +498,7 @@
   color: var(--ifm-color-emphasis-600) !important;
   text-decoration: none !important;
   font-family: var(--ifm-font-family-monospace);
-  font-size: 0.78rem;
+  font-size: 0.875rem;
 }
 
 .timelineRepo:hover {

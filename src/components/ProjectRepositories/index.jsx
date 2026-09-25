@@ -1,5 +1,5 @@
 import React from 'react';
-import repoMetadata from '@site/src/data/repoMetadata.json';
+import { REPO_METADATA as repoMetadata } from '@site/src/data/baskets';
 import statsData from '@site/static/data/community-stats.json';
 import { activityLabel } from '@site/src/utils/communityStats';
 import styles from './styles.module.css';

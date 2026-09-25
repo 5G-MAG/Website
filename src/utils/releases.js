@@ -23,7 +23,7 @@ export function formatAge(days) {
 }
 
 // releases.json's own `projects` array order is just static/data/releases.json's
-// generation order (projects.json's own array order, in turn) -- NOT sorted by
+// generation order (taxonomy.json's own array order, in turn) -- NOT sorted by
 // recency. Every "Latest Releases" card grid (Home, Developer, HeroSlideshow's
 // release slides) wants most-recently-updated first, so sort by each project's
 // own `latest_date` before slicing to however many cards it shows.

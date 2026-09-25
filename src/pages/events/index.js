@@ -112,10 +112,6 @@ export default function Events() {
         ]}
       />
 
-      <div className="container" style={{ marginTop: '1.75rem' }}>
-        <p className="topic-lead">Where to meet 5G-MAG — both when we organize events and when we are invited to attend.</p>
-      </div>
-
       <main>
         {/* Upcoming: dated events 5G-MAG attends/presents at, as opposed to
             the evergreen Flagship Events cards below */}

@@ -1,5 +1,7 @@
+import { useEffect, useMemo, useState } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
+import { useLocation } from '@docusaurus/router';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
@@ -8,16 +10,33 @@ import ProjectIcon from '@site/src/components/ProjectIcon';
 import HubDestinationCard from '@site/src/components/HubDestinationCard';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import VideoGrid from '@site/src/components/VideoGrid';
-import ReleaseCard from '@site/src/components/ReleaseCard';
+import { icon } from '@site/src/components/GodeeperCard';
 import styles from './index.module.css';
-import releasesData from '@site/static/data/releases.json';
+// Shared with /reference-tools and /showcase/testbeds; see the comment
+// there for why (2026-08-24 findability audit; extended here for the
+// All Repositories section's own filter bar).
+import filterStyles from '../reference-tools/styles.module.css';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 import { mergeDeveloperVideos } from '@site/src/data/developerVideos';
-import { FACT_REPOSITORIES, FACT_CLONES } from '@site/src/data/facts';
 import { CONTRIBUTORS } from '@site/src/data/contributors';
-import { sortByLatestRelease } from '@site/src/utils/releases';
+import { ALL_REPOS, ICON_CATALOG, filterRepos } from '@site/src/data/baskets';
 
-const LATEST_RELEASE_PROJECTS = sortByLatestRelease(releasesData.projects);
+// A repo row's own project icon -- the same taxonomy.json `icon` catalog
+// key every other hub page reads (r.projectIcon, set in ALL_REPOS), not
+// ProjectIcon/SLIDE_ICONS above (a different, PRODUCT_TYPES-only icon set
+// keyed by card label, not a taxonomy icon key). Same pattern reference-
+// tools/testbeds/tech/homepage each keep their own copy of.
+function iconForCatalogKey(key) {
+  const paths = key && ICON_CATALOG[key];
+  if (!paths || !paths.length) return null;
+  return icon(
+    <>
+      {paths.map((d, i) => (
+        <path key={i} d={d} />
+      ))}
+    </>
+  );
+}
 
 const DEV_HERO_ICON_PATH = (
   <>
@@ -38,12 +57,12 @@ const PRODUCT_TYPES = [
   {
     icon: 'Reference Tools',
     label: 'Reference Tools',
-    description: 'Turn standards into open, implementation-ready code anyone can build on.',
+    description: 'Standards, turned into open code anyone can build on.',
     href: '/reference-tools',
   },
   {
     icon: 'Testbeds',
-    label: 'Testbeds & Evaluation Tools',
+    label: 'Testbeds & Evaluation Frameworks',
     description: 'Reproducible test environments and benchmark frameworks.',
     href: '/testbeds',
   },
@@ -53,13 +72,6 @@ const PRODUCT_TYPES = [
     description: 'Use-case driven implementations towards real-world applications.',
     href: '/showcase',
   },
-];
-
-const DEV_FACTS = [
-  { value: '~15', label: 'Project areas across media and connectivity' },
-  FACT_REPOSITORIES,
-  FACT_CLONES,
-  { value: 'Monthly', label: 'Developer calls and rolling releases' },
 ];
 
 const PILLARS = [
@@ -103,7 +115,7 @@ const PILLARS = [
   },
   {
     title: 'No duplication and fast deployment',
-    body: 'Shared reference implementations mean no one builds the same thing twice — ready for real-world adoption and scale.',
+    body: 'Shared reference implementations mean no one builds the same thing twice.',
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -121,7 +133,7 @@ const PILLARS = [
   },
   {
     title: 'Open by design and IPR-friendly',
-    body: 'IPR-friendly licensing designed for broad industry participation.',
+    body: 'IPR-friendly licensing, designed from the start for broad industry participation.',
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -167,6 +179,18 @@ export default function Home() {
   // (rules-of-hooks); resolve the directory once and concatenate.
   const contributorsBaseUrl = useBaseUrl('/assets/images/contributors/');
   const overviewPdfUrl = useBaseUrl('/docs/Reference_Tools_Overview.pdf');
+  const location = useLocation();
+  const [repoQuery, setRepoQuery] = useState('');
+  const filteredRepos = useMemo(() => filterRepos(repoQuery), [repoQuery]);
+
+  // Picks up ?tool=... from the homepage's own search (src/pages/index.js's
+  // handleToolSearch) so that search continues here instead of landing on
+  // an unfiltered list the visitor has to redo -- client-only (useEffect),
+  // since the query string isn't part of the statically built page.
+  useEffect(() => {
+    const q = new URLSearchParams(location.search).get('tool');
+    if (q) setRepoQuery(q);
+  }, [location.search]);
   return (
     <Layout
       title="Software Accelerator"
@@ -191,39 +215,13 @@ export default function Home() {
         ]}
       />
 
-      <div className="container" style={{ marginTop: '1.75rem' }}>
-        <p className="topic-lead">Open-source developer community. Reference tools, testbeds and applications for connected media experiences.</p>
-      </div>
-
       <main>
-        {/* Product Types -- the actual browsable destinations (Reference
-            Tools, Testbeds, Applications), moved ahead of the framing
-            sections below (2026-08-26 findability pass) so a visitor
-            reaches them without scrolling past "Motivation" first every
-            time. */}
-        <section className={clsx(styles.section, styles.sectionAlt)}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>What You&apos;ll Find Here</h2>
-            <p className={styles.sectionSubtitle}>
-              Reference Tools, Testbeds and Evaluation Tools, and Application Showcases — under
-              one open developer community. New here? See{' '}
-              <Link to="/community/using-this-documentation">Using this Documentation</Link> for
-              how a project&apos;s Scope, Resources and Tutorials pages fit together, and a suggested
-              path through them.
-            </p>
-            <div className={styles.productGrid}>
-              {PRODUCT_TYPES.map((item) => (
-                <ProductTypeCard key={item.href} {...item} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Pillars */}
-        {/* Motivation: merged "what this gets you" + "why open source" under one banner */}
+        {/* Why It Matters, first -- why this exists, before the browsable
+            destinations below (raised directly: "motivation first and
+            then the 3 cards"). */}
         <section className={styles.section}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Motivation</h2>
+            <h2 className={styles.sectionTitle}>Why It Matters</h2>
             <p className={styles.sectionSubtitle}>
               Media and network technologies move fast, and open source usually arrives only
               after a standard is frozen — with additional cost at every stage along the way. The
@@ -243,10 +241,92 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Product Types -- the actual browsable destinations (Reference
+            Tools, Testbeds, Applications), the 3 cards after Why It Matters. */}
+        <section className={clsx(styles.section, styles.sectionAlt)}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>What You&apos;ll Find Here</h2>
+            <p className={styles.sectionSubtitle}>
+              Reference Tools, Testbeds and Evaluation Frameworks, and Application Showcases —
+              under one open developer community.
+            </p>
+            <div className={styles.productGrid}>
+              {PRODUCT_TYPES.map((item) => (
+                <ProductTypeCard key={item.href} {...item} />
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Early Access */}
         <section className={styles.section}>
           <div className="container">
             <EarlyAccessCallout />
+          </div>
+        </section>
+
+        {/* License Model -- content taken from the Overview deck (slide 10,
+            "A note on the Open-Source Software Licenses"), not written fresh
+            here: same two blocks, "What is the License Model?" and "How to
+            Contribute?", reproduced from that slide rather than paraphrased
+            from docs/home/license.mdx as before. */}
+        <section className={clsx(styles.section, styles.sectionAlt)}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>License Model</h2>
+            <p className={styles.sectionSubtitle}>Protecting IPR. Enabling industry collaboration.</p>
+
+            <div className={styles.licenseGrid}>
+              <div className={styles.licenseBox}>
+                <h3 className={styles.licenseBoxTitle}>What is the License Model?</h3>
+                <ul className={styles.licenseList}>
+                  <li>
+                    The 5G-MAG Public License v1.0 is a modified version of Apache 2.0 which allows:
+                    <ul>
+                      <li>
+                        <strong>Free Non-Commercial Use:</strong> freely use, copy, modify, and
+                        distribute the code for non-commercial purposes, including study, academic
+                        research, testing, and validation.
+                      </li>
+                      <li>
+                        <strong>Commercial Exploitation:</strong> use the reference tools and
+                        software within commercial services, trials, and live deployments, but with{' '}
+                        <strong>FRAND Patent Licensing</strong>: if used commercially, the built-in
+                        patent clause ensures that any essential contributor patents are made
+                        available under <strong>FRAND</strong> (Fair, Reasonable, and
+                        Non-Discriminatory) terms.
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    Repositories with software derived from other licenses keep their own license
+                    according to their own terms.
+                  </li>
+                </ul>
+              </div>
+
+              <div className={styles.licenseBox}>
+                <h3 className={styles.licenseBoxTitle}>How to Contribute?</h3>
+                <ul className={styles.licenseList}>
+                  <li>Sign an Individual or Corporate Contributor License Agreement (CLA).</li>
+                  <li>Anybody can become a contributor (no need to be a 5G-MAG member to contribute code).</li>
+                  <li>
+                    5G-MAG members get priority in support from the 5G-MAG Project Office, and
+                    additional development resources may be provided. 5G-MAG members define
+                    priorities and where to dedicate resources.
+                  </li>
+                  <li>
+                    Membership of 5G-MAG remains open to the industry, to boost and scale your
+                    software project by joining forces.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
+              <Link className="button button--primary" to="/license">
+                See the full License Model &rarr;
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -334,37 +414,76 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Latest Releases + Facts */}
-        <section className={styles.section}>
+        {/* All Repositories -- raised directly: a visitor who knows a
+            specific tool's name (e.g. "CMMF Encoder") but not which
+            project owns it had no way to reach it from the homepage in
+            fewer than ~5 clicks. Plain .section (not .sectionAlt): "Our
+            Work In Action" right above already uses .sectionAlt, and
+            two tinted sections back to back would trade one rhythm
+            problem for another (same reasoning as Contributors' own
+            comment above). */}
+        <section
+          id="all-repositories"
+          className={styles.section}
+          style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}
+        >
           <div className="container">
-            <div className={styles.releasesHeader}>
-              <div>
-                <h2
-                  className={styles.sectionTitle}
-                  style={{ marginBottom: '0.2rem', textAlign: 'left' }}
-                >
-                  Latest Releases
-                </h2>
-                <p className={styles.releasesUpdated}>Updated: {releasesData.updated_at}</p>
+            <h2 className={styles.sectionTitle}>All Repositories</h2>
+            <p className={styles.sectionSubtitle}>
+              Every real code repository across every Reference Tools and Testbeds project, in
+              one place. Know the name of a specific tool but not which project it belongs to?
+              Search for it here.
+            </p>
+            <div className={filterStyles.filterBar}>
+              <input
+                type="search"
+                className={filterStyles.filterInput}
+                placeholder={`Search ${ALL_REPOS.length} repositories by name, project or technology…`}
+                value={repoQuery}
+                onChange={(e) => setRepoQuery(e.target.value)}
+                aria-label="Search all repositories"
+              />
+              {repoQuery && (
+                <span className={filterStyles.filterCount}>
+                  {filteredRepos.length} of {ALL_REPOS.length}
+                </span>
+              )}
+            </div>
+            {filteredRepos.length === 0 ? (
+              <p className={filterStyles.filterEmpty}>
+                No repositories match &ldquo;{repoQuery}&rdquo;. Try a broader name (e.g. the
+                project, or a technology like &ldquo;Android&rdquo;).
+              </p>
+            ) : (
+              <div className={styles.repoList}>
+                {filteredRepos.map((r) => (
+                  <div key={r.key} className={styles.repoRow}>
+                    <span className={styles.repoProjectIcon}>{iconForCatalogKey(r.projectIcon)}</span>
+                    <div className={styles.repoMain}>
+                      <a href={r.url} target="_blank" rel="noreferrer" className={styles.repoName}>
+                        {r.name}
+                      </a>
+                      {r.branch && <span className={styles.repoBranch}>{r.branch}</span>}
+                      {r.description && <p className={styles.repoDesc}>{r.description}</p>}
+                    </div>
+                    <div className={styles.repoMeta}>
+                      <Link to={r.projectHref} className={styles.repoProject}>
+                        {r.projectName}
+                      </Link>
+                      {r.software.length > 0 && (
+                        <div className={styles.repoTags}>
+                          {r.software.map((s) => (
+                            <span key={s} className={styles.repoTag}>
+                              {s}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
               </div>
-              <Link className={styles.releasesViewAll} to="/community#projects">
-                View all releases &rarr;
-              </Link>
-            </div>
-            <div className={styles.releasesGrid}>
-              {LATEST_RELEASE_PROJECTS.slice(0, 6).map((project) => (
-                <ReleaseCard key={project.name} project={project} />
-              ))}
-            </div>
-
-            <div className="summary-container" style={{ marginTop: '2.5rem' }}>
-              {DEV_FACTS.map((f) => (
-                <div key={f.label} className="summary-card">
-                  <h3>{f.label}</h3>
-                  <span className="summary-value">{f.value}</span>
-                </div>
-              ))}
-            </div>
+            )}
           </div>
         </section>
 

@@ -27,7 +27,7 @@
 }
 
 .filterCount {
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   color: var(--ifm-color-emphasis-600);
   white-space: nowrap;
 }

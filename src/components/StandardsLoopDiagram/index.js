@@ -1,4 +1,4 @@
-// "Running the Loop: From Standards to Products" — standards bodies (3GPP,
+// "Running the Loop: From Requirements to Products" — standards bodies (3GPP,
 // ETSI, MPEG, IETF, GSMA, DVB, …) feed into a 4-stage loop (Requirements,
 // Explainers & Blueprints, Software Accelerator, Interop, Demos &
 // Showcases) that closes back with a Feedback arc into the standards

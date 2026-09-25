@@ -17,12 +17,13 @@
 //
 // Icons and hrefs are copied from the matching topic entries in
 // src/pages/tech/index.js's CATEGORIES, not invented, so a pillar card
-// links to the same real /tech pages the Technical Resources hub already
+// links to the same real /tech pages the Technology hub already
 // uses for that technology. Connected Media Production's icon is Non-Public
-// Networks' own icon specifically (a video camera) rather than Network
-// APIs' or Time-Sensitive Communications' -- the same choice
-// MediaConnectivityDiagram already makes for its "camera" slot on the
-// Media side (see that component's own top-of-file comment).
+// Networks' own icon specifically (a padlock, taxonomy.json's "lock" --
+// private 5G deployments) rather than Network APIs' or Time-Sensitive
+// Communications' -- the same choice MediaConnectivityDiagram makes for
+// its own "M18 Non-Public Networks" halo icon (see that component's own
+// top-of-file comment).
 //
 // A pillar with exactly one real topic (RTC, NTN) gets a top-level `href`
 // and an empty `chips` array, so the whole card is the link -- a single
@@ -34,11 +35,11 @@ export const DOMAIN_PILLARS = [
     icon: <path d="M7 4v16l13 -8l-13 -8" />,
     chips: [
       { label: '5G Media Streaming (5GMS)', href: '/tech/5gms' },
-      { label: 'Data Collection & Analytics', href: '/tech/data-collection/data-collection-event-exposure' },
+      { label: 'Data Collection & Analytics', href: '/tech/data-collection' },
     ],
   },
   {
-    title: 'Real-Time Communications (RTC)',
+    title: 'Real-time Media Communication (RTC) Architecture',
     href: '/tech/rtc',
     icon: (
       <>
@@ -67,7 +68,7 @@ export const DOMAIN_PILLARS = [
     ),
     chips: [
       { label: 'TV & Radio', href: '/tech/5g-broadcast' },
-      { label: 'Emergency Alerts', href: '/tech/5g-broadcast' },
+      { label: 'Emergency Alerts', href: '/tech/emergency-alerts' },
     ],
   },
   {
@@ -110,8 +111,8 @@ export const DOMAIN_PILLARS = [
       </>
     ),
     chips: [
-      { label: 'Avatar Communication', href: '/tech/avatar-communications' },
-      { label: 'Volumetric Video', href: '/tech/volumetric' },
+      { label: 'Avatar Communication', href: '/tech/avatar' },
+      { label: 'Volumetric Video', href: '/tech/v3c' },
       { label: 'XR', href: '/tech/xr' },
     ],
   },
@@ -119,8 +120,9 @@ export const DOMAIN_PILLARS = [
     title: 'Connected Media Production',
     icon: (
       <>
-        <path d="M15 10l4.553 -2.276a1 1 0 0 1 1.447 .894v6.764a1 1 0 0 1 -1.447 .894l-4.553 -2.276v-4" />
-        <path d="M3 8a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2l0 -8" />
+        <path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6" />
+        <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" />
+        <path d="M8 11v-4a4 4 0 1 1 8 0v4" />
       </>
     ),
     chips: [
@@ -143,7 +145,7 @@ export const DOMAIN_PILLARS = [
     ),
     chips: [
       { label: 'AI/ML in Media', href: '/tech/ai-ml' },
-      { label: '6G Media', href: '/tech/6g' },
+      { label: 'Towards 6G Media', href: '/tech/6g' },
     ],
   },
 ];

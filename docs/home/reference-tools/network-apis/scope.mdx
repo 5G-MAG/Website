@@ -29,7 +29,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 The reference implementation targets CAMARA, an open-source project (Linux Foundation, in collaboration with GSMA) that standardises portable network APIs, so a media application can request network behaviour (for example a QoS boost for a live stream) through common interfaces rather than operator-specific ones. On the network side these interfaces build on 3GPP capability-exposure work such as the Service Enabler Architecture Layer (SEAL, [TS 23.434](https://www.3gpp.org/dynareport/23434.htm)).
 
-**Implemented specifications:** [CAMARA Dedicated Networks API](https://github.com/camaraproject/DedicatedNetworks), 3GPP TS 23.434 (SEAL for network capability exposure to applications). See [CAMARA APIs covered](#camara-apis-covered) below for what the reference implementation covers, and [Standards: Connectivity Quality with Network APIs](/standards/network-apis) for the full specification list.
+**Implemented specifications:** [CAMARA Dedicated Networks API](https://github.com/camaraproject/DedicatedNetworks), 3GPP TS 23.434 (SEAL for network capability exposure to applications). See [CAMARA APIs covered](#camara-apis-covered) below for what the reference implementation covers, and [Standards: CAMARA Connectivity Quality Management APIs](/standards/network-apis) for the full specification list.
 
 The implementation (a management portal covering the full Dedicated Networks lifecycle: service areas, profiles, network creation and monitoring, device access, webhooks) lives on [rt-camara-examples](https://github.com/5G-MAG/rt-camara-examples)'s `development` branch, not `main` — check that branch specifically when verifying this claim against the source.
 
@@ -62,6 +62,6 @@ The Kanban board below tracks the planned and in-progress work for the Network A
 
 - [Resources](/reference-tools/network-apis/resources)
 - [Tutorials](/reference-tools/network-apis/tutorials)
-- Standards: [Connectivity Quality with Network APIs](/standards/network-apis) — the full specification list, including the CAMARA API set and the 3GPP northbound and SEAL (TS 23.434) specifications they map onto
+- Standards: [CAMARA Connectivity Quality Management APIs](/standards/network-apis) — the full specification list, including the CAMARA API set and the 3GPP northbound and SEAL (TS 23.434) specifications they map onto
 - Tech: [Network APIs](/tech/network-apis) &mdash; how a CAMARA call maps onto the 5G Core (NEF, PCF, SMF/UPF)
 - Applications: [Connected Media Production and Contribution](/showcase/network-apis) &mdash; real, assembled scenarios built on this tool

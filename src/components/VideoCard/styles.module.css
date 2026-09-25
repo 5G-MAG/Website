@@ -37,7 +37,7 @@
   align-items: center;
   gap: 0.35rem;
   color: #ff3b3b;
-  font-size: 0.64rem;
+  font-size: 0.875rem;
   font-weight: 700;
   line-height: 1;
   letter-spacing: 0.09em;
@@ -157,7 +157,7 @@
 }
 
 .cardByline {
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.03em;
   text-transform: uppercase;

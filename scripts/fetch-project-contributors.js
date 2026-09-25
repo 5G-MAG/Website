@@ -3,7 +3,7 @@
 // Tools/Testbeds project, derived from real commit authorship
 // cross-referenced against GitHub CLA team membership (one team per
 // company, named "CLA <Company>"), and merges the result straight into
-// src/data/projects.json's own `contributors` field.
+// src/data/taxonomy.json's own per-project `contributors` field.
 //
 // This used to stop at a draft file for a human to merge by hand, because
 // the signal can miss a contribution (PR-only work, or a company affiliation
@@ -28,12 +28,11 @@
 const https = require('https');
 const fs = require('fs');
 const path = require('path');
-const { PROJECTS, repoName } = require('./lib/projects');
+const { PROJECTS, repoName, writeProjects, TAXONOMY_FILE } = require('./lib/projects');
 
 const ORG = '5G-MAG';
 const TOKEN = process.env.SYNC_TOKEN || process.env.GITHUB_TOKEN || '';
 const OUTPUT = path.join(__dirname, '..', 'static', 'data', 'project-contributors-draft.json');
-const PROJECTS_FILE = path.join(__dirname, '..', 'src', 'data', 'projects.json');
 
 // Repos shared across many projects (utility/common code, not specific to
 // any one project) -- excluded as evidence everywhere except a project
@@ -171,8 +170,8 @@ async function main() {
   const output = {
     updated_at: formatTimestamp(new Date()),
     note:
-      'Evidence log for the additive merge this run just applied to src/data/projects.json ' +
-      '(see PROJECTS_FILE below) -- kept so a wrong credit is traceable and correctable after ' +
+      'Evidence log for the additive merge this run just applied to src/data/taxonomy.json ' +
+      '-- kept so a wrong credit is traceable and correctable after ' +
       'the fact. This signal misses PR-only/review-only contribution and any company affiliation ' +
       'not reflected in CLA team membership, so an entry missing here isn\'t evidence a company ' +
       'didn\'t contribute, only that this script found no direct evidence for it.',
@@ -182,7 +181,7 @@ async function main() {
   fs.writeFileSync(OUTPUT, JSON.stringify(output, null, 2) + '\n');
   console.log(`Wrote evidence log for ${suggestions.length} projects to ${OUTPUT}`);
 
-  console.log('Merging into src/data/projects.json (additive only)...');
+  console.log(`Merging into ${TAXONOMY_FILE} (additive only)...`);
   let changed = 0;
   for (const suggestion of suggestions) {
     const project = PROJECTS.find((p) => p.name === suggestion.name);
@@ -197,8 +196,8 @@ async function main() {
   }
 
   if (changed > 0) {
-    fs.writeFileSync(PROJECTS_FILE, JSON.stringify(PROJECTS, null, 2) + '\n');
-    console.log(`Added new contributor credits to ${changed} project(s) in ${PROJECTS_FILE}`);
+    writeProjects();
+    console.log(`Added new contributor credits to ${changed} project(s) in ${TAXONOMY_FILE}`);
   } else {
     console.log('No new contributor credits to add.');
   }
