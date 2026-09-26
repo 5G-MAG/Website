@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-25 02:01 UTC",
+  "updated_at": "2026-09-26 02:07 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -234,7 +234,7 @@
           "number": 49,
           "title": "Fix MBS Broadcast distribution session lifecycle and Service Announcement crashes",
           "url": "https://github.com/5G-MAG/rt-mbs-function/pull/49",
-          "draft": true,
+          "draft": false,
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-08-11",
@@ -247,7 +247,7 @@
           "number": 71,
           "title": "Fix MBS Broadcast content delivery crashes and Distribution Session bugs",
           "url": "https://github.com/5G-MAG/rt-mbs-transport-function/pull/71",
-          "draft": true,
+          "draft": false,
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-08-11",
@@ -397,7 +397,7 @@
           "number": 31,
           "title": "MBS compliance fixes: SSM/session handling, NCGI/TAI, session-area updates",
           "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/31",
-          "draft": true,
+          "draft": false,
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-09-22",
