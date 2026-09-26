@@ -52,26 +52,11 @@ import { FIVEGMS_SPECS, FIVEGMS_LAYER_ORDER } from '@site/src/data/specs/5gms';
 
 </div>
 
-## Architecture and key concepts
+## Architecture
 
-5GMS is a functional extension of the 5G System, defined in [TS 26.501](https://www.3gpp.org/dynareport/26501.htm). Its main functional entities are the 5GMS Application Provider, Application Function (AF), Application Server (AS), and Client (split into Media Session Handler and Media Player for downlink, or Media Streamer for uplink). For the entity roles and sub-functions, see the [5GMS Overview](/tech/5gms/overview-5gms).
+5GMS is a functional extension of the 5G System, defined in [TS 26.501](https://www.3gpp.org/dynareport/26501.htm). Its main functional entities are the 5GMS Application Provider, Application Function (AF), Application Server (AS), and Client (split into Media Session Handler and Media Player for downlink, or Media Streamer for uplink), joined by reference points M1 to M8 (downlink variants carry a "d" suffix, uplink a "u" suffix). These M1-M8 reference points are specific to 5G Media Streaming and are distinct from the similarly-named M1/M2/M3 MBMS network interfaces used by [Standards: 5G Broadcast](/standards/5g-broadcast).
 
-The entities are joined by reference points M1 to M8 (downlink variants carry a "d" suffix, uplink a "u" suffix):
-
-| Reference point | Between                                                                     | Purpose                                                        |
-| :--------------- | :--------------------------------------------------------------------------- | :--------------------------------------------------------------- |
-| M1               | Application Provider to AF                                                  | Provisioning                                                   |
-| M2               | Application Provider to AS                                                  | Content ingest (downlink) / egest (uplink)                     |
-| M3               | AF to AS                                                                     | Internal AF-to-AS configuration (not standardised)              |
-| M4               | AS to Media Player, or Media Streamer to AS                                 | Media delivery (downlink) / ingest (uplink)                     |
-| M5               | Media Session Handler to AF                                                 | Session handling and reporting                                  |
-| M6               | Media Session Handler to Media Player/Streamer and to the Aware Application | UE-internal APIs                                                |
-| M7               | Media Player/Streamer to Media Session Handler                              | UE-internal APIs                                                |
-| M8               | Application Provider to 5GMS-Aware Application                              | Service-level exchange, outside the 3GPP scope                  |
-
-For the deeper architecture (entity sub-functions, the M1 to M8 interfaces per direction, and the downlink feature-to-API mapping), see the technical documentation on the [5GMS Overview](/tech/5gms/overview-5gms) and [5GMSd Features](/tech/5gms/features-5gmsd) pages.
-
-These M1-M8 reference points are specific to 5G Media Streaming and are distinct from the similarly-named M1/M2/M3 MBMS network interfaces used by [Standards: 5G Broadcast](/standards/5g-broadcast).
+For the full architecture — entity sub-functions, the complete M1-M8 reference-point table, and the downlink feature-to-API mapping — see the [5GMS Overview](/tech/5gms/overview-5gms#interfaces-for-5gmsd) and [5GMSd Features](/tech/5gms/features-5gmsd) pages on the Technical Analysis portal.
 
 ## 5G Core service consumers used by the AF
 
@@ -107,6 +92,31 @@ The specifications in scope, filterable by the layer they belong to: the 5GMS sp
 - **Release 19**: Advanced Media Delivery (see below), studied in TR 26.804.
 
 Check the version of each specification you are targeting for the exact release content.
+
+## Work Items
+
+**Open item, not yet populated.** No verified 3GPP Work-Item (WID) list for TS 26.501, TS 26.510,
+TS 26.511, TS 26.512, or the Release-19 Advanced Media Delivery study was found anywhere in this
+site's own content while building this section (see [Standards: XR/3D Scenes](/standards/xr) for
+what a real, verified Work-Item table looks like once one exists here — WID/Acronym/Title/Release/
+Working Group, grouped by release). Populating this table means opening 3GPP's own work-item
+database directly; it is not done as part of this pass.
+
+## Specification feedback and Change Requests (5GMS)
+
+A snapshot of 5GMS-labelled issues from the [Meetings with 3GPP SA4](/standards/3gpp-issue-tracking)
+tracker — that page, not this table, is authoritative and current; this is a point-in-time extract
+so a 5GMS-specific reader doesn't have to search the full, whole-org log.
+
+| Issue | Summary | Status | Specification |
+| --- | --- | --- | --- |
+| [#106](https://github.com/5G-MAG/Standards/issues/106) | Discrepancy between tables and YAML for properties marked as read-only | Approved for publication | TS 26.512 |
+| [#146](https://github.com/5G-MAG/Standards/issues/146) | TS 26.512 V17.9.0: Discrepancies between normative tables and OpenAPI YAML | Approved for publication | TS 26.512 |
+| [#148](https://github.com/5G-MAG/Standards/issues/148) | Gaps identified in support for Background Data Transfer at reference point M7 | Approved for publication | TS 26.512 |
+| [#149](https://github.com/5G-MAG/Standards/issues/149) | Gaps identified in support for Background Data Transfer at reference point M6 | Approved for publication | TS 26.501, TS 26.510 |
+| [#103](https://github.com/5G-MAG/Standards/issues/103) | Add missing `filterType` parameter to `ServiceDataFlowDescription` | Pre-Acceptance | TS 26.510, TS 26.512 |
+| [#63](https://github.com/5G-MAG/Standards/issues/63) | Discussion: 5GMSd Network Assistance — synergy with CTA-WAVE Common Media Server Data (CMSD) | Pre-Acceptance | TS 26.510, TS 26.512 |
+| S4aI240047 (CR 26.512 CR0069) | \[5GMS3, TEI17\] Metrics reporting corrections | Endorsement | TS 26.512 |
 
 ## Release-19 Advanced Media Delivery
 

@@ -296,6 +296,30 @@
   margin-top: 0;
 }
 
+/* Standards (the real SDOs a project's repos implement) get their own,
+   accent-colored row above the plain-grey software tags -- direct
+   instruction: "that's more important than whether linux android etc",
+   so it needs to read as a different tier of information, not just
+   another .tag. */
+.standardsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.3rem;
+}
+
+.standardsTag {
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  border-radius: 999px;
+  padding: 0.14rem 0.5rem;
+  white-space: nowrap;
+  background: color-mix(in srgb, var(--accent, var(--ifm-color-primary)) 15%, transparent);
+  color: var(--accent-dark, var(--accent, var(--ifm-color-primary)));
+}
+
 /* A project's real repository count, as one bubble linking to its own
    page -- same bubble Where We Stand's chart uses for its Software stage
    (src/pages/tech/index.js's .chartBubble), not a chip per repo; every

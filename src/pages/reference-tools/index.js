@@ -74,6 +74,7 @@ const TOPIC_META = {
   },
   'Conversational Avatar Communication with MPEG ARF': {
     desc: 'Real-time avatar streaming using the MPEG Avatar Representation Format (ARF) standard.',
+    tags: ['Android', 'Docker', 'Windows', 'Web'],
   },
   'MPEG V3C Immersive Platform': {
     desc: 'End-to-end pipeline for volumetric 3D content production and delivery.',
@@ -85,6 +86,7 @@ const TOPIC_META = {
   },
   'Dynamic Mesh Coding': {
     desc: 'Web-based decoder and player for V-DMC (ISO/IEC 23090-29) content, in progress.',
+    tags: ['Web'],
   },
   'Content Delivery Protocols': {
     desc: 'Multi-CDN tooling and protocol implementations for media delivery.',
@@ -96,6 +98,24 @@ const TOPIC_META = {
   'Common Tools': {
     desc: 'Shared scripts, example configurations and build utilities used across several Reference Tools.',
     tags: ['Linux', 'Cloud'],
+  },
+  // Testbeds-basket entries -- /testbeds/index.js reuses this same map and
+  // topicFor() below (direct instruction: "same format... same search bar
+  // and everything"), rather than keeping its own hand-written array that
+  // could silently drift from taxonomy.json the way a project's own
+  // `basket`/`doc_url` already can't here (REFTOOLS_PROJECTS' own filter
+  // picks up a new project automatically; /testbeds' filter below does too).
+  'AI Traffic Characterization': {
+    desc: 'AI traffic profiling and 5G-to-6G migration testbed.',
+    tags: ['Linux'],
+  },
+  'AI/ML Evaluation Framework': {
+    desc: 'Framework for evaluating AI/ML solutions in mobile media services.',
+    tags: ['Linux'],
+  },
+  'Beyond 2D Evaluation Framework': {
+    desc: 'Test and evaluation framework for immersive video quality assessment.',
+    tags: ['Linux'],
   },
 };
 
@@ -116,13 +136,43 @@ const BASKET_DESC = {
 // picks up here automatically -- no second hand-maintained array to drift.
 const REFTOOLS_PROJECTS = ALL_PROJECTS.filter((p) => p.doc_url && p.basket !== 'testbeds');
 
-function topicFor(project) {
+// Build-time-only self-check (code-derived, no spec claim): TOPIC_META is
+// hand-maintained, unlike REFTOOLS_PROJECTS' own filter above -- a new
+// doc_url'd project (here or in /testbeds, which shares this same map)
+// with no entry would silently render a blank-description card instead of
+// erroring, since HubDestinationCard has no guard on an undefined `desc`.
+// Guarded to the Node-side build/SSR pass only, same as baskets.js's own
+// SHARED_REPO_OWNERS check.
+if (typeof window === 'undefined') {
+  const testbedProjects = ALL_PROJECTS.filter((p) => p.doc_url && p.basket === 'testbeds');
+  const missing = [...REFTOOLS_PROJECTS, ...testbedProjects]
+    .filter((p) => !TOPIC_META[p.name])
+    .map((p) => p.name);
+  if (missing.length > 0) {
+    throw new Error(
+      `src/pages/reference-tools/index.js: TOPIC_META is missing an entry for: ${missing.join(', ')}\n` +
+        `Add a { desc, tags? } entry for each, or its card on /reference-tools or /testbeds renders with no description.`
+    );
+  }
+}
+
+// Exported for /testbeds/index.js, which builds its own topic list with
+// this same function over its own (testbeds-basket) project filter --
+// same reasoning as CategoryCard's own export below.
+export function topicFor(project) {
   const meta = TOPIC_META[project.name] || {};
   const basket = BASKETS.find((b) => b.key === project.basket);
   return {
     title: project.displayName || project.name,
     desc: meta.desc,
     href: project.doc_url.replace(/\/$/, ''),
+    // The real SDOs this project's specifications and repos implement --
+    // taxonomy.json's own `sdos`, not a second hand-maintained list here
+    // (unlike `tags`/TOPIC_META above): every repo-level `standards` entry
+    // added this session already sums to exactly this same set per
+    // project, confirmed by hand, so there is no second source to drift
+    // from by deriving it here instead.
+    standards: project.sdos,
     tags: meta.tags,
     icon: iconForProject(project),
     repoCount: reposFor(project).length,
@@ -174,6 +224,8 @@ export function CategoryCard({ title, desc, topics }) {
             title={t.title}
             desc={t.desc}
             href={t.href}
+            standards={t.standards}
+            tags={t.tags}
             repoCount={t.repoCount}
             accent={t.accent}
             basketLabel={t.basketLabel}
@@ -199,6 +251,7 @@ function filterCategories(query) {
       (t) =>
         t.title.toLowerCase().includes(q) ||
         t.desc.toLowerCase().includes(q) ||
+        (t.standards || []).some((s) => s.toLowerCase().includes(q)) ||
         (t.tags || []).some((tag) => tag.toLowerCase().includes(q))
     ),
   })).filter((c) => c.topics.length > 0);

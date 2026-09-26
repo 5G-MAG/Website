@@ -24,7 +24,7 @@ const HUB_PAGES = [
     label: 'Reference Tools',
     file: 'src/pages/reference-tools/index.js',
   },
-  { key: 'showcase', label: 'Applications', file: 'src/pages/showcase/index.js' },
+  { key: 'showcase', label: 'Showcases', file: 'src/pages/showcase/index.js' },
   { key: 'developer', label: 'Software Accelerator', file: 'src/pages/developer/index.js' },
   { key: 'news', label: 'News', file: 'src/pages/news/index.js' },
   { key: 'events', label: 'Events', file: 'src/pages/events/index.js' },

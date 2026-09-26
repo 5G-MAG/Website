@@ -1,0 +1,78 @@
+.wrap {
+  margin: 1rem 0;
+}
+
+.feature {
+  margin: 0 0 2.5rem;
+}
+
+.featureTitle {
+  margin-bottom: 0.5rem;
+}
+
+.description {
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.citation {
+  margin: 0.75rem 0 1rem;
+  padding: 0.75rem 1rem;
+  border-left: 3px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 0 8px 8px 0;
+}
+
+.citationLine {
+  margin: 0 0 0.35rem;
+  font-size: 0.9rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.quote {
+  margin: 0;
+  font-style: italic;
+}
+
+/* Explicitly unverified -- never let a placeholder read as a real quote. */
+.quotePending {
+  margin: 0;
+  font-style: italic;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.pendingTag {
+  display: inline-block;
+  font-style: normal;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  background: var(--ifm-color-warning-contrast-background);
+  color: var(--ifm-color-warning-contrast-foreground);
+  margin-right: 0.4rem;
+}
+
+.tableScroll {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  padding: 0.5rem 0.7rem;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.table th {
+  background: var(--ifm-color-emphasis-100);
+}

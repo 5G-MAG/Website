@@ -2,7 +2,7 @@
 title: Scope
 hide_title: true
 sidebar_position: 0
-description: Overview of the 5G Media Streaming (5GMSd) architecture, reference points, features and what the 5G-MAG Reference Tools implement.
+description: Overview of the 5G Media Streaming (5GMSd) architecture, deployment configurations and what the 5G-MAG Reference Tools implement.
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -20,6 +20,13 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <div style={{margin: '8px 0'}}><a class="button button--primary button--tab-current" href={useBaseUrl('/reference-tools/5gms/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5gms/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5gms/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5gms/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
+:::note
+The Implementation Status board, Architecture map, feature-stream Kanban boards and tutorial
+entry points that used to live on this page now live on the [project index](/reference-tools/5gms)
+— this page keeps the deployment-configuration diagrams and the Provisioning Session example as a
+"go deeper" architecture and deployment reference.
+:::
+
 **Category:** 3GPP Implementations
 
 ## What This Project Implements
@@ -30,18 +37,9 @@ The functional entities of 5G Media Streaming, instantiated for 5G Unicast Downl
 
 5G Media Streaming (5GMS) is a 3GPP framework for high-quality, efficient delivery of media, supporting services from Mobile Network Operators (MNOs) and third parties in both Downlink (5GMSd) and Uplink (5GMSu) Media Streaming. The 5GMS architecture is functionally divided into independent components, enabling deployments with various degrees of integration between 5G MNOs and Content Providers. For acronyms used here, see the [Glossary](/tech/glossary).
 
-The reference points below use a trailing `d` to indicate the downlink variant (for example M1d, M4d, M5d). The following table summarises the interfaces you will meet on this page.
-
-| Reference point | Connects                                                                    | Purpose                                                                                                |
-| --------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| M1 / M1d        | 5GMS Application Provider to 5GMS Application Function (AF)                 | Provisioning of streaming sessions (content hosting, certificates, policies, reporting configurations) |
-| M2d             | 5GMS Application Provider to 5GMS Application Server (AS)                   | Content ingest into the AS (HTTP push or pull)                                                         |
-| M3 / M3d        | 5GMS Application Function to 5GMS Application Server                        | Internal configuration of the AS by the AF                                                             |
-| M4d             | 5GMS Application Server to 5GMS Client                                      | Delivery of media to the client (for example DASH over HTTP)                                           |
-| M5 / M5d        | 5GMS Client to 5GMS Application Function                                    | Media session handling and reporting (Service Access Information, consumption, metrics)                |
-| M6d             | Media Session Handler to Media Player / 5GMSd-Aware Application (in the UE) | Client-side API between the session handler and the player or application                              |
-| M7d             | Media Player to Media Session Handler (in the UE)                           | Client-side API used by the player to drive the session handler                                        |
-| M8              | 5GMS Application Provider to 5GMSd-Aware Application                        | Application-level information (out of 3GPP scope), for example the stream list                         |
+For the full M1-M8 reference-point table (the named interfaces between these components), see
+[5GMS Overview: Interfaces for 5GMSd](/tech/5gms/overview-5gms#interfaces-for-5gmsd) — kept as one
+canonical copy rather than repeated here.
 
 The reference tools developed by 5G-MAG for 5GMSd consist of four main components: the **5GMSd Application Function (AF)** (`rt-5gms-application-function`), which exposes the M1 provisioning and M5 session handling interfaces; the **5GMSd Application Server (AS)** (`rt-5gms-application-server`), which caches and delivers media objects to clients; the **Media Session Handler** (`rt-5gms-media-session-handler`), an Android background service that manages the streaming session on the User Equipment (UE) side; and the **Media Stream Handler** (`rt-5gms-media-stream-handler`), which handles media playback using the configuration provided by the Media Session Handler. In TS 26.501 terms the Media Stream Handler plays the role of the downlink **Media Player**.
 
@@ -145,62 +143,6 @@ Where:
 - `aspId`: The identity of the Application Service Provider responsible for this Provisioning Session.
 - `appId`: The Application Identifier to which this Provisioning Session pertains.
 
-## Feature: Content Hosting
-
-The content hosting feature provides a service equivalent to a Content Delivery Network (CDN) deployed inside or outside the Trusted DN. It includes selecting the ingest protocol and format, caching and proxying of media objects, content preparation, access protection (e.g. URL signing) and indicating a target distribution area (e.g. through geofencing). Once a Provisioning Session is established, Content Hosting is configured via a Content Hosting Configuration at M1 (optionally secured by a provisioned Server Certificate); the supported ingest `protocols` in Release 17 are HTTP pull-based ingest (`urn:3gpp:5gms:content-protocol:http-pull-ingest`) and DASH-IF push-based ingest (`urn:3gpp:5gms:content-protocol:dash-if-ingest`). Content Preparation, Edge Resources, geo-fencing and URL signing are accepted by the API but not yet implemented by the Reference Tools.
-
-[Feature deep dive: Content Hosting](./tutorials#content-hosting) covers the full reference points and APIs, the Content Hosting Configuration JSON schema, and worked examples.
-
-## Feature: Network Assistance
-
-The network assistance feature enables the 5GMS Client in the UE to interrogate or manipulate the network Quality of Service (QoS) for an ongoing media streaming session, via interactions with the Policy Control Function (AF-based network assistance) or via Access Network Bitrate Recommendation (ANBR) signalling between the UE modem and the Radio Access Network (RAN-based network assistance). It covers two capabilities: Bit Rate Recommendation (Throughput Estimation), which keeps the client synchronised with the network's current capabilities, and Delivery Boost, a reactive request for a temporary increase in bit rate. Of the two, only Delivery Boost is currently implemented by the Reference Tools; Throughput Estimation is still in development.
-
-[Feature deep dive: Network Assistance](./tutorials#network-assistance) covers both mechanisms in detail and the M5 reference points/APIs involved.
-
-## Feature: Dynamic Policies
-
-The dynamic policies feature enables the 5GMS Client in the UE to manipulate the network traffic handling policies for an ongoing media streaming session. When the feature is offered and selected, the 5GMSd Application Provider specifies a set of policies in the Provisioning Session which can be invoked for the session, and the UE becomes aware of the selected policies as a list of valid Policy Template Ids (covering QoS, network slice/DNN context and charging treatment).
-
-[Feature deep dive: Dynamic Policies](./tutorials#dynamic-policies) covers the M1/M5 reference points and APIs and the Policy Template JSON schema.
-
-## Feature: Consumption Reporting
-
-The consumption reporting feature allows consumption of downlink media streaming to be logged by the 5GMS System and exposed for analysis. Once a Provisioning Session is established, Consumption Reporting is configured via a Consumption Reporting Configuration that sets the reporting interval, the sample percentage of clients that report, and whether location and access-network-change reporting are required.
-
-[Feature deep dive: Consumption Reporting](./tutorials#consumption-reporting) covers the M1/M5 reference points and APIs and the full configuration schema.
-
-## Feature: QoE Metrics Reporting
-
-The QoE metrics reporting feature enables the 5GMS System to log and expose streaming performance data for further analysis, via two distinct paths: RAN-based reporting (metrics sent to the Operations, Administration and Maintenance system via the Radio Access Network) and AF-based reporting (metrics sent directly to the 5GMS AF). A Metrics Reporting Configuration selects which DASH quality metrics (3GPP scheme `urn:3GPP:ns:PSS:DASH:QM10`) are collected; the Reference Tools currently support the HTTP request/response list, the list of Representation Switch Events, Buffer Level and MPD Information.
-
-[Feature deep dive: QoE Metrics Reporting](./tutorials#qoe-metrics-reporting) covers the full metric list, the M1/M5 reference points/APIs and the configuration schema.
-
-## Feature: Data collection, reporting and exposure
-
-:::warning[Not yet implemented in 5GMS]
-This feature is not yet implemented within the framework of 5GMS. A generic architecture for UE Data Collection and Reporting is available separately (see the note below).
-:::
-
-The data collection, reporting and exposure feature would enable the 5GMS System to log data relating to media streaming sessions and expose this to subscribers in the form of Events, via the Event Data Processing provisioning API at M1 and the Metrics Reporting / Consumption Reporting APIs at M5.
-
-:::note
-At the moment, a generic architecture for UE Data Collection and Reporting is available in the Reference Tools under the following project: [**UE Data Collection, Reporting and Event Exposure**](../data-collection/scope). Note these entities are not yet implemented within the framework of 5GMS.
-:::
-
-[Feature deep dive: Data collection, reporting and exposure](./tutorials#data-collection-reporting-and-exposure) covers the reference points and APIs involved.
-
-## Summary of features supported by the 5GMS Application Function
-
-The release versions of the 5GMSd Application Function support differing sets of interfaces and differing levels of feature support for those interfaces, tracked release by release across the M1, M3, M5, N5, N33, R4, R5/R6 and Nbsf interface points.
-
-[Feature deep dive: full feature-support matrix](./tutorials#summary-of-features-supported-by-the-5gms-application-function) gives the interface-by-interface breakdown, the specification versions used, and which protocols and features are supported, in development, or unimplemented.
-
-## Summary of APIs supported for 5G Media Streaming
-
-The reference tools track the 3GPP 5G Media Streaming APIs across Release 17 (TS 26.512) and Release 18 (TS 26.510 & TS 26.512), where the media session handling APIs move from TS 26.512 into TS 26.510 to generalise them across the 5GMS and Real-Time media Communication (RTC) systems.
-
-[Feature deep dive: full Release 17 / Release 18 API mapping](./tutorials#summary-of-apis-supported-for-5g-media-streaming) shows, file by file, which APIs are already implemented in the Reference Tools, which are on the roadmap, and which are not yet started.
-
 ## Docker deployment support
 
 Docker-Compose setups are provided to run the 5GMS Application Function, the 5GMS Application Server and the 5GMS Application Provider in Docker container environments.
@@ -209,45 +151,11 @@ Docker-Compose setups are provided to run the 5GMS Application Function, the 5GM
 
 [5G Media Streaming: Resources](../5gms/resources)
 
-## Getting Started
-
-The following tutorials cover the deployment of an end-to-end 5GMSd implementation.
-
-[Go to the Tutorial: 5GMSd End-to-End deployment (with Docker)](./tutorials/end-to-end)
-
-[Go to the Tutorial: 5GMSd End-to-End deployment with 5G Network](./tutorials/end-to-end-with-5g)
-
-The following tutorials cover the deployment and testing of 5GMSd AS and AF.
-
-[Go to the Tutorial: Developing and Testing the 5GMS Application Server](./tutorials/testing-AS)
-
-[Go to the Tutorial: Testing the 5GMS Application Function](./tutorials/testing-AF)
-
-[Go to the Tutorial: Testing M1 and M5 APIs with Postman](./tutorials/testing-postman)
-
-For the source code, packages and releases behind each component, see [Resources](./resources).
-
-## Roadmap
-
-The Kanban board below tracks the planned and in-progress work for the 5G Media Streaming Reference Tools (DASH-based media delivery, Application Server and Application Function components). It is maintained live on GitHub.
-
-[Kanban board: Roadmap](https://github.com/orgs/5G-MAG/projects/48/views/6)
-
-The work is also broken down into individual feature streams, each organised as a Minimum Viable Product (MVP), a self-contained increment that delivers one working capability. For the current status of any item, the linked Kanban board is always authoritative.
-
-| Feature stream | Kanban board |
-| --- | --- |
-| Basic Media stream handling (MVP#1) | [Kanban board](https://github.com/orgs/5G-MAG/projects/3) |
-| Media session handling (MVP#2) | [Kanban board](https://github.com/orgs/5G-MAG/projects/4) |
-| M1d Provisioning | [Kanban board](https://github.com/orgs/5G-MAG/projects/8) |
-| M3 Link (AF to AS RESTful OpenAPI) | [Kanban board](https://github.com/orgs/5G-MAG/projects/6) |
-| Network Assistance and Dynamic Policies | [Kanban board](https://github.com/orgs/5G-MAG/projects/11) |
-| QoE metrics collection and reporting | [Kanban board](https://github.com/orgs/5G-MAG/projects/12) |
-| Consumption collection and reporting | [Kanban board](https://github.com/orgs/5G-MAG/projects/16) |
-| Application Provider User Interface | [Kanban board](https://github.com/orgs/5G-MAG/projects/40) |
-| [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) V17.5.0 uplift | [Kanban board](https://github.com/orgs/5G-MAG/projects/18) |
-| Cloud infrastructure | [Kanban board](https://github.com/orgs/5G-MAG/projects/21) |
-| DVB-I Service using 5G Media Streaming | [Kanban board](https://github.com/orgs/5G-MAG/projects/23) |
+:::note
+The tutorial entry points now live under [Call to Try](/reference-tools/5gms#call-to-try) on the
+project index; the feature-stream Kanban boards and roadmap live under
+[Developer Updates](/reference-tools/5gms#developer-updates) there.
+:::
 
 ## Related
 

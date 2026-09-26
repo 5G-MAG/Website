@@ -60,12 +60,25 @@ export default function PageNav({ title, titleHref, items }) {
         )}
         {items.map((item) => {
           const active = isActive(pathname, item.href);
+          // `featured` (e.g. Reference Tools/Testbeds/Showcases in the
+          // Software Accelerator bar) renders as a solid, slightly larger
+          // chip instead of the plain outline ones around it. Both classes
+          // apply together when a featured item is also the current page,
+          // so its size/weight never changes on click -- only the colour
+          // does (navChipActive's own CSS wins that, at higher specificity,
+          // over navChipFeatured's). Previously `active` replaced `featured`
+          // outright, which shrank the chip back to the plain size the
+          // instant you landed on it (2026-09-26, reported directly: "the
+          // buttons... change size and format when clicked").
+          const classNames = [
+            styles.navChip,
+            item.featured && styles.navChipFeatured,
+            active && styles.navChipActive,
+          ]
+            .filter(Boolean)
+            .join(' ');
           return (
-            <Link
-              key={item.href}
-              to={item.href}
-              className={active ? `${styles.navChip} ${styles.navChipActive}` : styles.navChip}
-            >
+            <Link key={item.href} to={item.href} className={classNames}>
               {item.label}
             </Link>
           );

@@ -183,7 +183,7 @@ export default function Action() {
             <h2 className={styles.sectionTitle}>What You&apos;ll Find Here</h2>
             <p className={styles.sectionSubtitle}>
               Every destination on this hub, in one place. For the real, assembled scenarios built
-              from these tools, see <Link to="/showcase">Applications</Link>.
+              from these tools, see <Link to="/showcase">Showcases</Link>.
             </p>
             <div className={styles.activityGrid}>
               {WHATS_HERE.map((r) => (

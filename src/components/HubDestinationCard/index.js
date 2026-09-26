@@ -72,6 +72,7 @@ export default function HubDestinationCard({
   compact = false,
   tag,
   tags,
+  standards,
   repoCount,
   secondaryLinks,
   footerLinks,
@@ -81,6 +82,19 @@ export default function HubDestinationCard({
   big = false,
 }) {
   const accentStyle = accent ? { '--accent': accent, '--accent-dark': darken(accent) } : undefined;
+  // Standards (the real SDOs this project's specifications and repos
+  // implement, taxonomy.json's own `sdos`) render first and accent-
+  // colored, above the plain-grey software tags -- direct instruction:
+  // "that's more important than whether linux android etc".
+  const standardsNodes = standards && standards.length > 0 && (
+    <div className={styles.standardsRow}>
+      {standards.map((s) => (
+        <span key={s} className={styles.standardsTag}>
+          {s}
+        </span>
+      ))}
+    </div>
+  );
   const tagNodes = (
     <>
       {tag && <span className={styles.tag}>{tag}</span>}
@@ -121,6 +135,7 @@ export default function HubDestinationCard({
         <h4 className={clsx(styles.bandTitleCompact, largeTitle && styles.bandTitleCompactLg)}>{title}</h4>
         {basketLabel && <div className={styles.basketLabelCompact}>{basketLabel}</div>}
         <p className={styles.descCompact}>{desc}</p>
+        {standardsNodes}
         {tagNodes}
       </div>
     </>
@@ -133,6 +148,7 @@ export default function HubDestinationCard({
       <div className={styles.body}>
         {basketLabel && <div className={styles.basketLabel}>{basketLabel}</div>}
         <p className={styles.desc}>{desc}</p>
+        {standardsNodes}
         {tagNodes}
       </div>
     </>

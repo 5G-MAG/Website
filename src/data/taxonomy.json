@@ -55,6 +55,7 @@
       "standards_url": "/standards/5gms",
       "image": "/assets/images/projects/5gms.png",
       "releases_slug": "resources",
+      "roadmapTopics": ["Topic: Streaming & Media Delivery"],
       "tagline": "Driving collaboration between mobile networks and media applications",
       "basket": "content-delivery",
       "repos": [
@@ -1428,7 +1429,9 @@
         "repo_url": "https://github.com/5G-MAG/srsRAN_4G_mbs",
         "branch": "5mbs",
         "license": "AGPL-3.0",
-        "standards": [],
+        "standards": [
+          "3GPP"
+        ],
         "dependencies": [
           "srsRAN_4G"
         ],
@@ -1445,7 +1448,9 @@
         "repo_url": "https://github.com/5G-MAG/srsRAN_Project_mbs",
         "branch": "5mbs",
         "license": "AGPL-3.0",
-        "standards": [],
+        "standards": [
+          "3GPP"
+        ],
         "dependencies": [
           "rt-srsRAN_Project"
         ],
@@ -1543,9 +1548,13 @@
         "repo_url": "https://github.com/5G-MAG/rt-avatar-content",
         "branch": "main",
         "license": "5G-MAG PL v1.0",
-        "standards": [],
+        "standards": [
+          "MPEG (ISO/IEC)"
+        ],
         "dependencies": [],
-        "software": [],
+        "software": [
+          "Android"
+        ],
         "public": false,
         "is_auxiliary": false
       },
@@ -1556,9 +1565,15 @@
         "repo_url": "https://github.com/5G-MAG/rt-avatar-call",
         "branch": "main",
         "license": "5G-MAG PL v1.0",
-        "standards": [],
+        "standards": [
+          "3GPP",
+          "MPEG (ISO/IEC)"
+        ],
         "dependencies": [],
-        "software": [],
+        "software": [
+          "Android",
+          "Windows"
+        ],
         "public": false,
         "is_auxiliary": false
       },
@@ -1569,7 +1584,9 @@
         "repo_url": "https://github.com/5G-MAG/rt-avatar-unity-tracker",
         "branch": "main",
         "license": "5G-MAG PL v1.0",
-        "standards": [],
+        "standards": [
+          "MPEG (ISO/IEC)"
+        ],
         "dependencies": [],
         "software": [],
         "public": false,
@@ -1582,9 +1599,14 @@
         "repo_url": "https://github.com/5G-MAG/rt-3gpp-swap",
         "branch": "main",
         "license": "5G-MAG PL v1.0",
-        "standards": [],
+        "standards": [
+          "3GPP"
+        ],
         "dependencies": [],
-        "software": [],
+        "software": [
+          "Web",
+          "Docker"
+        ],
         "public": false,
         "is_auxiliary": false
       }
@@ -1714,7 +1736,9 @@
         "repo_url": "https://github.com/5G-MAG/rt-camara-examples",
         "branch": "main",
         "license": "5G-MAG PL v1.0",
-        "standards": [],
+        "standards": [
+          "CAMARA Project"
+        ],
         "dependencies": [],
         "software": [],
         "public": true,
@@ -1952,7 +1976,9 @@
           "MPEG (ISO/IEC)"
         ],
         "dependencies": [],
-        "software": [],
+        "software": [
+          "Web"
+        ],
         "public": true,
         "is_auxiliary": false
       }
@@ -1965,9 +1991,13 @@
         "repo_url": "https://github.com/5G-MAG/rt-xr-maf-plugin",
         "branch": "main",
         "license": null,
-        "standards": [],
+        "standards": [
+          "MPEG (ISO/IEC)"
+        ],
         "dependencies": [],
-        "software": [],
+        "software": [
+          "Android"
+        ],
         "public": true,
         "is_auxiliary": null
       }

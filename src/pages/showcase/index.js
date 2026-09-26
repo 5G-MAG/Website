@@ -236,7 +236,7 @@ export default function Applications() {
 
   return (
     <Layout
-      title="Applications"
+      title="Showcases"
       description="Overview of 5G-MAG’s application areas: streaming, broadcast, multicast, XR, volumetric video, and network APIs."
     >
       <div className="container" style={{ marginTop: '1.75rem' }}>

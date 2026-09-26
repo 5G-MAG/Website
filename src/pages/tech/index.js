@@ -130,8 +130,18 @@ export default function Home() {
         }
         actions={[
           <a key="docs" className="button button--primary" href="#where-we-stand">
-            Documentation
+            Where we stand
           </a>,
+          <Link key="exchanges" className="button button--outline button--primary" to="/tech/exchanges">
+            Technology Exchanges
+          </Link>,
+          <Link
+            key="propose"
+            className="button button--outline button--primary"
+            to="/membership#request-membership"
+          >
+            Bring your topic as a member
+          </Link>,
         ]}
       />
 

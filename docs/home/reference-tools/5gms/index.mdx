@@ -5,14 +5,37 @@ title: 5G Media Streaming (5GMS)
 sidebar_position: -1
 description: Overview of the 5G-MAG 5GMS reference implementation, its AF/AS components, spec coverage, and links to project resources.
 ---
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import CommunityStats from '@site/src/components/CommunityStats';
 import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
+import ProjectReleases from '@site/src/components/ProjectReleases';
+import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
+import ProjectRoadmap from '@site/src/components/ProjectRoadmap';
 import ProjectVideos from '@site/src/components/ProjectVideos';
-import useBaseUrl from '@docusaurus/useBaseUrl';
+import ArchitectureMap from '@site/src/components/ArchitectureMap';
+import ImplementationBoard from '@site/src/components/ImplementationBoard';
+import { FIVEGMS_ARCHITECTURE } from '@site/src/data/architecture/5gms';
+import { FIVEGMS_COMPONENTS, FIVEGMS_FEATURES, toBoardSections } from '@site/src/data/blueprints/5gms';
+import { REPO_METADATA } from '@site/src/data/baskets';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
+import pullRequestsData from '@site/static/data/pull-requests.json';
+import roadmapData from '@site/static/data/roadmaps.json';
 
 export const projectVideos = (youtubePlaylists.projects?.['5gms']?.videos || []).slice(0, 1);
+
+{/* Real counts for the dashboard strip and the "what's pending" call-out below -- each
+    re-derived directly from the same data the sections further down the page render from
+    (REPO_METADATA/FIVEGMS_FEATURES/pull-requests.json/roadmaps.json), so the strip cannot drift
+    from what those sections actually show when expanded. */}
+export const REPO_COUNT = (REPO_METADATA['5gms'] || []).length;
+export const FEATURES_DONE = FIVEGMS_FEATURES.filter((f) => f.status === 'yes').length;
+export const FEATURES_TOTAL = FIVEGMS_FEATURES.length;
+export const OPEN_PR_COUNT = (pullRequestsData.projects.find((p) => p.name === '5G Media Streaming (5GMS)')?.pulls || []).length;
+export const ROADMAP_TOPICS = ['Topic: Streaming & Media Delivery'];
+export const ROADMAP_COUNT = roadmapData.items.filter((i) => i.labels.some((l) => ROADMAP_TOPICS.includes(l))).length;
+export const GAP_FEATURES = FIVEGMS_FEATURES.filter((f) => f.status === 'no' || f.status === 'partial');
+export const AF_REPO = FIVEGMS_COMPONENTS[0];
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -27,40 +50,104 @@ export const projectVideos = (youtubePlaylists.projects?.['5gms']?.videos || [])
 
 <div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5gms/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5gms/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5gms/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5gms/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
+<div style={{fontSize: '0.95rem', color: 'var(--ifm-color-emphasis-700)'}}>
+{REPO_COUNT} repositories &middot; {FEATURES_DONE} of {FEATURES_TOTAL} 5GMSd features implemented &middot;{' '}
+{OPEN_PR_COUNT} open pull request{OPEN_PR_COUNT === 1 ? '' : 's'} &middot; {ROADMAP_COUNT} roadmap item{ROADMAP_COUNT === 1 ? '' : 's'}
+</div>
+
 ## What it does
 
-The tools cover two server-side roles: the Application Function (AF), which handles provisioning, configuration and reporting, and the Application Server (AS), which caches and delivers the media. Both target 5G Unicast Downlink Media Streaming (5GMSd), adaptive bitrate streaming from the network to user equipment (UE). The current AF and AS implementations are based on Release 17 ([TS 26.512](https://www.3gpp.org/dynareport/26512.htm)); see the [Scope](./scope) page for the exact feature and specification coverage. Use these tools to build, test, and validate 5GMSd-compliant pipelines on 5G networks.
+The tools cover two server-side roles: the Application Function (AF), which handles provisioning, configuration and reporting, and the Application Server (AS), which caches and delivers the media. Both target 5G Unicast Downlink Media Streaming (5GMSd), adaptive bitrate streaming from the network to user equipment (UE). Use these tools to build, test, and validate 5GMSd-compliant pipelines on 5G networks. For the architecture, deployment configurations and specification detail behind this project, see the [Scope](./scope) page.
 
-## Repositories
+**Implements:** 3GPP [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) (5GMS general description and architecture), TS 26.512 (protocols and APIs), [TS 26.511](https://www.3gpp.org/dynareport/26511.htm) (profiles, codecs and formats) and, from Release 18, [TS 26.510](https://www.3gpp.org/dynareport/26510.htm). Full normative list: [Standards portal](/standards/5gms).
 
-<ProjectRepositories project="5gms" />
+## What's Built
 
-## Standards implemented
+<ArchitectureMap architecture={FIVEGMS_ARCHITECTURE} />
 
-<div class="standard-card-row">
-<div class="standard-card">
-<img src={useBaseUrl('/assets/images/partnerships/3gpp-logo.png')} alt="3GPP" />
-<span class="standard-card__label">3GPP</span>
+Entity colour is not shown here yet: the shared blueprint's own implementation-status data
+(`src/data/blueprints/5gms.js`) is still placeholder/inherited-not-independently-re-verified for
+this pass (see the board below) — wiring it into this map today would render every entity
+misleadingly as "Not implemented", since `ArchitectureMap` has no distinct state for "not yet
+audited". Wire `status={toBoardSections(FIVEGMS_FEATURES)}` here once the real code audit replaces
+those placeholders.
+
+**Status key:** `Yes` implemented &middot; `Partial` partially implemented &middot; `Hold` on hold
+(a decision to wait) &middot; `To check` not yet independently verified &middot; `No` not
+implemented &middot; `N/A` out of scope.
+
+<ImplementationBoard components={FIVEGMS_COMPONENTS} sections={toBoardSections(FIVEGMS_FEATURES)} />
+
+Six of the eight rows above carry real status already published on this site (this project's own
+former per-feature prose and the Tutorials page's own per-interface checkbox table), carried
+forward rather than discarded — **not** an independent code audit performed this pass; see each
+row's `statusEvidence` in `src/data/blueprints/5gms.js` for exactly what it's based on. The real,
+independent code audit (re-checking each row against the repos directly) is a separate, later
+effort.
+
+## What's Pending
+
+<div class="godeeper-grid" style={{gridTemplateColumns: '1fr'}}>
+<div class="godeeper-card">
+<div class="godeeper-card__body">
+{GAP_FEATURES.map((f) => (
+  <div key={f.id} style={{marginBottom: '0.75em'}}>
+    <strong>{f.name}</strong> ({f.status === 'no' ? 'not yet implemented' : 'partially implemented'})
+    {f.note ? <> — {f.note}</> : null}
+    {' '}&middot; Owning repo:{' '}
+    <a href={`https://github.com/5G-MAG/${AF_REPO.repo}`} target="_blank" rel="noreferrer">{AF_REPO.repo}</a>
+    {f.trackingIssue ? (
+      <>
+        {' '}&middot; <a href={f.trackingIssue} target="_blank" rel="noreferrer">Tracking issue</a>
+      </>
+    ) : null}
+  </div>
+))}
 </div>
 </div>
+</div>
 
-**Implemented specifications:** 3GPP [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) (5GMS general description and architecture), TS 26.512 (5GMS protocols and APIs), [TS 26.511](https://www.3gpp.org/dynareport/26511.htm) (5GMS profiles, codecs and formats), and, from Release 18, [TS 26.510](https://www.3gpp.org/dynareport/26510.htm) (generalised media delivery provisioning and media session handling). For the full normative list, see the [Standards portal](/standards/5gms).
+These are the honest gaps: no curated "good first issue" list exists for this project, so the rows
+above are the real Implementation Status board's own `no`/`partial` entries, each pointing at the
+repo that owns it and, where one exists, its real tracking issue.
 
-See [5G Media Streaming on the Standards portal](/standards/5gms) for version history and 5G-MAG's own standards contributions.
-
-## Contributors
+### Contributors & How to Contribute
 
 <ProjectContributors />
 
-## Community Stats
+## Repositories & Releases
+
+<ProjectRepositories project="5gms" />
+
+<ProjectReleases name="5G Media Streaming (5GMS)" />
+
+See [Resources](./resources) for packages and full release notes. For live GitHub activity across
+these repositories (stars, forks, contributors), see [Community Stats](#community-stats) below.
+
+### Community Stats
 
 <CommunityStats name="5G Media Streaming (5GMS)" />
 
----
+## Call to Try
 
-## Try it yourself
-
-Follow the [tutorials](/reference-tools/5gms/tutorials) to build and test the AF/AS pipeline yourself.
+<div class="godeeper-grid" style={{gridTemplateColumns: '1fr'}}>
+<div class="godeeper-card">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4v16l13 -8l-13 -8"/></svg>
+<h3>Tutorials</h3>
+</div>
+<div class="godeeper-card__body">
+<p>Follow the tutorials to build and test the AF/AS pipeline yourself.</p>
+<ul class="godeeper-card__links">
+<li><a href={useBaseUrl('/reference-tools/5gms/tutorials/end-to-end')}>5GMSd End-to-End deployment (with Docker)</a></li>
+<li><a href={useBaseUrl('/reference-tools/5gms/tutorials/end-to-end-with-5g')}>5GMSd End-to-End deployment with 5G Network</a></li>
+<li><a href={useBaseUrl('/reference-tools/5gms/tutorials/testing-AS')}>Developing and Testing the 5GMS Application Server</a></li>
+<li><a href={useBaseUrl('/reference-tools/5gms/tutorials/testing-AF')}>Testing the 5GMS Application Function</a></li>
+<li><a href={useBaseUrl('/reference-tools/5gms/tutorials/testing-postman')}>Testing M1 and M5 APIs with Postman</a></li>
+</ul>
+</div>
+</div>
+</div>
 
 <div class="event-post-grid">
 
@@ -75,8 +162,45 @@ Follow the [tutorials](/reference-tools/5gms/tutorials) to build and test the AF
 
 <ProjectVideos videos={projectVideos} name="5G Media Streaming (5GMS)" />
 
-| Area                        | Details                                                                                                               |
-| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+## Developer Updates
+
+### Open Pull Requests
+
+<ProjectOpenPRs name="5G Media Streaming (5GMS)" />
+
+### Next Steps
+
+<ProjectRoadmap topics={ROADMAP_TOPICS} />
+
+### Feature-stream boards
+
+The work is also broken down into individual feature streams, each organised as a Minimum Viable Product (MVP), a self-contained increment that delivers one working capability. For the current status of any item, the linked Kanban board is always authoritative.
+
+| Feature stream | Kanban board |
+| --- | --- |
+| Basic Media stream handling (MVP#1) | [Kanban board](https://github.com/orgs/5G-MAG/projects/3) |
+| Media session handling (MVP#2) | [Kanban board](https://github.com/orgs/5G-MAG/projects/4) |
+| M1d Provisioning | [Kanban board](https://github.com/orgs/5G-MAG/projects/8) |
+| M3 Link (AF to AS RESTful OpenAPI) | [Kanban board](https://github.com/orgs/5G-MAG/projects/6) |
+| Network Assistance and Dynamic Policies | [Kanban board](https://github.com/orgs/5G-MAG/projects/11) |
+| QoE metrics collection and reporting | [Kanban board](https://github.com/orgs/5G-MAG/projects/12) |
+| Consumption collection and reporting | [Kanban board](https://github.com/orgs/5G-MAG/projects/16) |
+| Application Provider User Interface | [Kanban board](https://github.com/orgs/5G-MAG/projects/40) |
+| [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) V17.5.0 uplift | [Kanban board](https://github.com/orgs/5G-MAG/projects/18) |
+| Cloud infrastructure | [Kanban board](https://github.com/orgs/5G-MAG/projects/21) |
+| DVB-I Service using 5G Media Streaming | [Kanban board](https://github.com/orgs/5G-MAG/projects/23) |
+
+:::note
+This table and the "Next Steps" board above read two different real sources — this one a
+hand-curated list of per-feature-stream Kanban boards, "Next Steps" the org-wide Reference Tools
+Roadmap filtered to this project's labels — kept side by side rather than merged, since they answer
+different questions ("which board tracks stream X" vs. "what's moving right now").
+:::
+
+## Related
+
+| Area                        | Details                                                                                                                               |
+| --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Technical documentation** | Architecture, protocols, and analysis: [Streaming & Media Delivery on the Tech portal](/tech/5gms)                    |
 | **Standards**               | Normative specifications and 5G-MAG contributions: [5G Media Streaming on the Standards portal](/standards/5gms) |
 | **Applications**            | Real, assembled scenarios built on this tool: [Media Streaming, Multicast & Real-Time Communications](/showcase/streaming) |

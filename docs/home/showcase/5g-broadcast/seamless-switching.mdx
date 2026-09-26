@@ -62,6 +62,14 @@ Follow the [step-by-step tutorial](/reference-tools/5g-broadcast/tutorials/andro
 The screenshots above and the tutorial's own instructions are the only record of this working; no explicit "last verified against version X" statement exists in the source tutorial to repeat here, so none is claimed.
 :::
 
+## What's Next
+
+Once the switch is running, a few directions to take it further:
+
+- Add [QoE Metrics Reporting](/reference-tools/5gms/tutorials/metrics-reporting) or [Consumption Reporting](/reference-tools/5gms/tutorials/consumption-reporting) alongside the switch, to measure rebuffering or startup delay across the broadcast/unicast transition rather than just observing it visually.
+- Try the receiver-only [SDR - HLS Playback over 5G Broadcast](/reference-tools/5g-broadcast/tutorials/hls-playback-5gbc) tutorial first if you want to isolate the broadcast path before adding the unicast fallback.
+- Swap the fixed test content for a live encode, to see the switch behave under a real, changing stream rather than a static file.
+
 ## Related
 
 - [5G Broadcast for TV, Radio and Emergency Alerts](/showcase/5g-broadcast) for the other 5G Broadcast application scenarios.

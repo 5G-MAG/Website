@@ -43,7 +43,7 @@ const sidebars = {
     { type: 'link', label: 'Overview', href: '/showcase' },
     {
       type: 'category',
-      label: 'Applications',
+      label: 'Showcases',
       items: [
         {
           type: 'category',
@@ -321,25 +321,43 @@ const sidebars = {
   ],
 
   // The three contributor pages behind the /standards hub (5G-MAG as an SDO
-  // participant) are a different thing from the per-topic specification pages
-  // above, and keep their own short sidebar.
-  feedbackSidebar: [
-    { type: 'link', label: 'Overview', href: '/standards' },
-    'standards/requirements',
-    'standards/ls',
-    'standards/3gpp-issue-tracking',
-  ],
+  // participant: requirements.mdx, ls.mdx, 3gpp-issue-tracking.mdx) used to
+  // carry their own short sidebar here (feedbackSidebar). Removed
+  // (2026-09-26, direct instruction: "all the pages under standardization...
+  // need to look like /surveys... there is no need for the lateral menu in
+  // this case") now that every page under the Standardisation SectionNav
+  // group (src/data/sectionNav.js) already carries that pill bar for
+  // cross-page navigation -- a lateral sidebar duplicated it. None of these
+  // three docs are referenced in any sidebar array below, so (same mechanism
+  // as /contact, /workshops) they render with no lateral sidebar; each still
+  // has `hide_table_of_contents: true` in its own frontmatter to drop the
+  // right-hand ToC too, matching the plain-page look of /surveys.
 
-  // The /community cluster is small but genuinely nested (two sub-pages
-  // under the index, since contributing.mdx moved out to the flat
-  // /contributing (2026-09-10), same as public-call.mdx before it), and its
-  // SectionNav pill-bar only carries a single "Community" pill for the
-  // whole section — so before this sidebar existed, release-process and
-  // using-this-documentation were reachable only from the index page
-  // itself.
+  // The /community cluster is small but genuinely nested (two real sub-pages
+  // under the index), and its SectionNav pill-bar only carries a single
+  // "Developer Community" pill for the whole section — so before this
+  // sidebar existed, release-process and using-this-documentation were
+  // reachable only from the index page itself.
+  //
+  // `contributing` (2026-09-26, direct instruction, "the page for
+  // contributing has disappeared, put it under the developer community
+  // page"): its own URL stays exactly `/contributing` -- unchanged,
+  // deliberately kept flat since contributing.mdx moved out of this cluster
+  // on 2026-09-10, same as public-call.mdx before it, and no redirect is
+  // needed since nothing about the route changed. Only its SIDEBAR
+  // membership changed: this array is what puts a doc "under" a section in
+  // Docusaurus (sidebar membership, not URL nesting), and adding it here is
+  // what surfaces it as a sibling of Using this Documentation/Release
+  // Process again, after the Software Accelerator top bar's own separate
+  // "Contributing" pill was removed per an earlier, unrelated instruction --
+  // this restores the same discoverability through a different, real
+  // mechanism (the lateral sidebar) instead of reverting that pill removal.
+  // Same order as the Getting Started list on /community's own page, so the
+  // sidebar and the page content read as the same sequence.
   communitySidebar: [
     'community/index',
     'community/using-this-documentation',
+    'contributing',
     'community/release-process',
   ],
 

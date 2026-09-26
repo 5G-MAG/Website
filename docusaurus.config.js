@@ -57,6 +57,8 @@ const config = {
     },
   },
 
+  clientModules: [require.resolve('./src/clientModules/openDetailsOnHash.js')],
+
   plugins: [
     // Redirect map cut down (2026-07-29): the large PREFIX_MAP this plugin
     // used to carry only protected against bookmarks/search-engine links to
@@ -100,7 +102,8 @@ const config = {
           { from: '/tech/standards/v3c', to: '/standards/v3c' },
           { from: '/tech/standards/xr', to: '/standards/xr' },
           { from: '/tech/standards/3gpp-issue-tracking', to: '/standards/3gpp-issue-tracking' },
-          { from: '/tech/standards/ls', to: '/standards/ls' },
+          { from: '/tech/standards/ls', to: '/ls' },
+          { from: '/standards/ls', to: '/ls' },
           { from: '/tech/standards/requirements', to: '/standards/requirements' },
           // These two DID go briefly live on www.5g-mag.com (merged to main
           // as part of the same push that first synced private -> public,
@@ -321,7 +324,7 @@ const config = {
           items: [
             { label: 'Overview', to: '/standards' },
             { label: 'Requirements towards SDOs', to: '/standards/requirements' },
-            { label: 'Liaison Statements & Inputs', to: '/standards/ls' },
+            { label: 'Liaison Statements & Inputs', to: '/ls' },
             { label: 'GitHub Standards', href: 'https://github.com/5G-MAG/Standards' },
           ],
         },
@@ -334,11 +337,11 @@ const config = {
           items: [
             { label: 'Overview', to: '/developer' },
             { label: 'Reference Tools', to: '/reference-tools' },
-            { label: 'Applications', to: '/showcase' },
+            { label: 'Showcases', to: '/showcase' },
             { label: 'Testbeds', to: '/testbeds' },
             { label: 'Developer Exchanges', to: '/developer/exchanges' },
             { label: 'Early Access', to: '/early-access' },
-            { label: 'Community', to: '/community' },
+            { label: 'Developer Community', to: '/community' },
             { label: 'Open-Source Licenses', to: '/license' },
           ],
         },

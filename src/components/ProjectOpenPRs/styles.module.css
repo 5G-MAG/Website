@@ -1,0 +1,83 @@
+.empty {
+  color: var(--ifm-color-emphasis-600);
+  font-style: italic;
+}
+
+.prList {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--ifm-background-color);
+}
+
+.prRow {
+  padding: 0.65rem 0.9rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.prRow:last-child {
+  border-bottom: none;
+}
+
+.prMain {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.prRepo {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.875rem;
+  color: var(--ifm-color-emphasis-700);
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 999px;
+  padding: 0.08rem 0.5rem;
+}
+
+.prTitle {
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--ifm-font-color-base) !important;
+  text-decoration: none !important;
+  flex: 1;
+  min-width: 0;
+}
+
+.prTitle:hover {
+  color: var(--ifm-color-primary) !important;
+}
+
+.pillDraft,
+.pillReady {
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border-radius: 999px;
+  padding: 0.14rem 0.5rem;
+}
+
+.pillDraft {
+  background: var(--ifm-color-warning-contrast-background);
+  color: var(--ifm-color-warning-contrast-foreground);
+}
+
+.pillReady {
+  background: var(--ifm-color-success-contrast-background);
+  color: var(--ifm-color-success-contrast-foreground);
+}
+
+.prAge {
+  margin-left: auto;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.ageGreen { color: var(--ifm-color-success); }
+.ageOrange { color: var(--ifm-color-warning); }
+.ageRed { color: var(--ifm-color-danger); }

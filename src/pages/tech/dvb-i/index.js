@@ -176,7 +176,7 @@ export default function DvbI() {
 
         <section className={styles.section}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Built By</h2>
+            <h2 className={styles.sectionTitle}>Open Source, Built Together</h2>
             <ProjectContributors />
           </div>
         </section>

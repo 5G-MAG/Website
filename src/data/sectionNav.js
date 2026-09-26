@@ -94,15 +94,27 @@ export const SECTION_NAV = [
     title: 'Software Accelerator',
     titleHref: '/developer',
     subtitle: 'Open-source developer community.',
+    // Reference Tools / Testbeds / Showcases are this section's three real
+    // destinations (real code, real environments, real assembled scenarios)
+    // -- `featured: true` renders them as solid chips in PageNav, distinct
+    // from the plain outline chips below them, which are secondary/meta
+    // pages (exchanges, access, community process) rather than destinations
+    // in their own right.
+    // Order past the 3 featured destinations follows direct instruction
+    // (2026-09-26): "order of importance after reference tools, testbeds
+    // and showcase is: Developer Community, License, Early Access,
+    // Developer Exchanges." Contributing is deliberately NOT its own pill
+    // here — it's reached via Developer Community instead (both /community's
+    // own "How to Contribute" link and the developer hub's "Become a
+    // contributor" link already point to /contributing).
     items: [
-      { label: 'Reference Tools', href: '/reference-tools' },
-      { label: 'Testbeds', href: '/testbeds' },
-      { label: 'Applications', href: '/showcase' },
-      { label: 'Developer Exchanges', href: '/developer/exchanges' },
-      { label: 'Early Access', href: '/early-access' },
-      { label: 'Community', href: '/community' },
-      { label: 'Contributing', href: '/contributing' },
+      { label: 'Reference Tools', href: '/reference-tools', featured: true },
+      { label: 'Testbeds', href: '/testbeds', featured: true },
+      { label: 'Showcases', href: '/showcase', featured: true },
+      { label: 'Developer Community', href: '/community' },
       { label: 'License', href: '/license' },
+      { label: 'Early Access', href: '/early-access' },
+      { label: 'Developer Exchanges', href: '/developer/exchanges' },
     ],
   },
   {
@@ -168,7 +180,7 @@ export const SECTION_NAV = [
   // in the standards process, which is a different thing from the per-topic
   // specification pages above.
   {
-    prefixes: ['/standards', '/surveys'],
+    prefixes: ['/standards', '/surveys', '/ls'],
     title: 'Standardisation',
     titleHref: '/standards',
     subtitle: 'Feedback and requirements to standards bodies.',
@@ -176,8 +188,8 @@ export const SECTION_NAV = [
       { label: 'Requirements towards SDOs', href: '/standards/requirements' },
       { label: 'Industry Surveys', href: '/surveys' },
       { label: 'Feedback to SDOs', href: '/standards#feedback' },
-      { label: 'Liaison Statements & Inputs', href: '/standards/ls' },
-      { label: 'Workshops for Standards', href: '/standards#standards-workshops' },
+      { label: 'Liaison Statements & Inputs', href: '/ls' },
+      { label: 'Workshops for Standards', href: '/workshops' },
     ],
   },
   {
@@ -203,7 +215,7 @@ export const SECTION_NAV = [
       { label: 'IBC', href: '/ibc' },
       { label: 'FMT', href: '/fmt' },
       { label: 'Community Workshops', href: '/events#workshops' },
-      { label: 'Workshop Archive', href: '/workshops' },
+      { label: 'Workshops', href: '/workshops' },
       { label: 'OSCAR Workshop', href: '/oscar' },
       { label: 'OSMART Workshops', href: '/osmart' },
     ],

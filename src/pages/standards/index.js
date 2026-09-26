@@ -1,4 +1,3 @@
-import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
@@ -239,70 +238,19 @@ const WHATS_HERE = [
   {
     title: 'Liaison Statements & Inputs',
     desc: 'Tables of LS sent to and received from SDOs.',
-    href: '/standards/ls',
+    href: '/ls',
     icon: icon(LS_ICON_PATH),
   },
   {
     title: 'Workshops for Standards',
     desc: 'The workshops that fed directly into 3GPP study and work items.',
-    href: '/standards#standards-workshops',
+    href: '/events',
     icon: icon(WORKSHOPS_ICON_PATH),
-  },
-];
-
-// Curated subset of the full /workshops archive (21 sessions) -- only the
-// ones that directly fed a named 3GPP study/work item or pre-aligned
-// member positions ahead of a plenary decision. The rest of the archive is
-// general community/orientation content and stays under /workshops only.
-const STANDARDS_WORKSHOPS = [
-  {
-    title: 'Media Energy Consumption Measurement and Exposure',
-    why: 'Co-organized with 3GPP SA4 around its Media Energy Consumption Study Item.',
-    href: '/workshops/media-energy-consumption',
-  },
-  {
-    title: '3GPP Release 19, from Specification to Implementation',
-    why: 'Spec-to-implementation workshop for a named, just-frozen 3GPP release.',
-    href: '/workshops/3gpp-release-19',
-  },
-  {
-    title: '5G-MAG Workshop with 3GPP SA4: Advanced Media Delivery',
-    why: 'Kickoff of the 3GPP SA4 Advanced Media Delivery Feasibility Study.',
-    href: '/workshops/workshop-3gpp-sa4-advanced-media-delivery',
-  },
-  {
-    title: 'Towards 3GPP Rel-19 — NTN & Content Delivery',
-    why: 'Pre-aligned member positions ahead of the 3GPP TSG plenary that decided Rel-19.',
-    href: '/workshops/towards-rel-19-ntn-content-delivery',
-  },
-  {
-    title: '5G Media towards 3GPP Release 19',
-    why: 'Early planning input toward the Release 19 package.',
-    href: '/workshops/5g-media-towards-release-19',
-  },
-  {
-    title: '5G Advanced — Media Distribution in 3GPP Release 18',
-    why: 'Discussed new 5G Advanced work areas under Release 18.',
-    href: '/workshops/amd-3gpp-release-18',
-  },
-  {
-    title: 'Media Production over 5G Non-Public Networks',
-    why: 'Gathered industry input for the new 3GPP SA4 NPN4AVProd study item.',
-    href: '/workshops/media-production-over-5g-npn',
-  },
-  {
-    title: 'Follow-up Workshop: Media Production over 5G NPN — Deep Dive into Protocols',
-    why: 'Protocol deep-dive continuing the NPN4AVProd study item input.',
-    href: '/workshops/media-production-5g-npn-deep-dive-follow-up',
   },
 ];
 
 function ActivityCard({ title, desc, href, icon: cardIcon }) {
   return <HubDestinationCard icon={cardIcon} title={title} desc={desc} href={href} />;
-}
-
-function WorkshopCard({ title, why, href }) {
-  return <HubDestinationCard icon={icon(WORKSHOPS_ICON_PATH)} title={title} desc={why} href={href} linkLabel="Read more" />;
 }
 
 function CategoryCard({ title, desc, topics }) {
@@ -425,29 +373,6 @@ export default function Standards() {
               ETSI).
             </p>
             <PhotoGallery photos={METHODOLOGY_PHOTOS} thumbAspect="16 / 9" columns={2} />
-          </div>
-        </section>
-
-        {/* Workshops for Standards */}
-        <section
-          id="standards-workshops"
-          className={`${styles.section} ${styles.sectionAlt}`}
-          style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}
-        >
-          <div className="container">
-            <h2 className={styles.sectionTitle}>Workshops for Standards</h2>
-            <p className={styles.sectionSubtitle}>
-              Of the full workshop &amp; session archive, these fed directly into named 3GPP study
-              or work items.
-            </p>
-            <div className={styles.pillarGrid3}>
-              {STANDARDS_WORKSHOPS.map((w) => (
-                <WorkshopCard key={w.href} {...w} />
-              ))}
-            </div>
-            <div style={{ textAlign: 'center', marginTop: '1.5rem', fontWeight: 600 }}>
-              <Link to="/workshops">Browse the full workshop &amp; session archive &rarr;</Link>
-            </div>
           </div>
         </section>
 
