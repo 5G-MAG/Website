@@ -16,7 +16,7 @@ description: Tests the M5 ServiceAccessInformation API of the 5GMSd Application 
 </div>
 </div>
 
-The M5 interface is the media session handling interface: a client on the User Equipment (UE) fetches Service Access Information from the 5G Media Streaming downlink (5GMSd) Application Function (AF), which tells the client where and how to access the media. This page verifies that behaviour for versions v1.0.0 to v1.1.x. See the [Glossary](/tech/glossary) for wider 5GMS terminology.
+The M5 interface is the media session handling interface: a client on the User Equipment (UE) fetches Service Access Information from the 5G Media Streaming downlink (5GMSd) Application Function (AF), which tells the client where and how to access the media. This page verifies that behaviour for versions v1.0.0 to v1.1.x.
 
 :::note[Version]
 This page covers the 5GMSd Application Function v1.0.0 to v1.1.x. For later versions see [Testing M5 (v1.2.x)](./testing-m5-v120) and [Testing M5 (v1.3.0 and above)](./testing-m5-v130).

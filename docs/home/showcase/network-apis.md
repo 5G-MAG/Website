@@ -17,7 +17,7 @@ description: 'Real, assembled applications built on 5G-MAG’s network API refer
 
 ## Overview
 
-An Application, on this site, is a real working scenario assembled from one or more Reference Tools, pointed at a concrete use case, rather than a single tool's own tutorial in isolation. This category covers one such scenario built on 5G-MAG's network API reference tools: a media application requesting network behaviour directly through standard CAMARA APIs, for live contribution and remote production, instead of relying on operator-specific arrangements agreed in advance. For acronyms used here, see the [Glossary](/tech/glossary).
+An Application, on this site, is a real working scenario assembled from one or more Reference Tools, pointed at a concrete use case, rather than a single tool's own tutorial in isolation. This category covers one such scenario built on 5G-MAG's network API reference tools: a media application requesting network behaviour directly through standard CAMARA APIs, for live contribution and remote production, instead of relying on operator-specific arrangements agreed in advance.
 
 ## Dedicated Network APIs for Connected Media Production
 
@@ -25,7 +25,7 @@ CAMARA-compliant API clients that let a media application ask the network direct
 
 **Built from:** [CAMARA Connectivity Quality Management APIs](/reference-tools/network-apis/).
 
-Written step-by-step tutorials for these APIs are not yet published. In the meantime, see the [Scope](/reference-tools/network-apis/scope) page for the full API coverage table and the [Resources](/reference-tools/network-apis/resources) page for the project repositories to try them yourself.
+Written step-by-step tutorials for these APIs are not yet published. In the meantime, see the [Implementation Detail](/reference-tools/network-apis/implementation) page for the full API coverage table and [Repositories & Releases](/reference-tools/network-apis#repositories--releases) on the project index for the project repositories to try them yourself.
 
 ## Related
 

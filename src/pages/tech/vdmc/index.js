@@ -20,14 +20,15 @@ const PROJECT_NAME = PROJECT.name;
 // A per-project "flagship" page, following the 5gms pilot
 // (src/pages/tech/5gms/index.js) -- replacing the former docs/tech/vdmc.md
 // doc. Same Layout/HubHero every hub page uses, not the doc-tier
-// topic-banner. Unlike 5gms/5g-mbs this topic has no separate
-// technical-analysis subpage (taxonomy.json's "technical-analysis" stage
-// is still false), so the "Technical Analysis" destination points at this
-// page's own How It Works section (#how-it-works), the same pattern
-// src/pages/tech/content-delivery/index.js uses for its own
-// not-yet-split-out analysis. taxonomy.json's own `image` for this
-// project is null, so the intro below is single-column prose, no cover
-// image grid.
+// topic-banner. taxonomy.json's own `image` for this project is null, so
+// the intro below is single-column prose, no cover image grid.
+//
+// 2026-09-27: docs/tech/vdmc/overview.mdx now exists as a structural
+// placeholder (it says so itself -- taxonomy.json's "technical-analysis"
+// stage is still false, so there is no real deep-dive content yet, here or
+// on this page) and techTopics.js's own entry carries `autogen: 'vdmc'`,
+// so the topic now DOES have a real sidebar presence -- analysisHref below
+// points at it directly rather than at the in-page "#how-it-works" anchor.
 const ICOSAHEDRON_ICON = (
   <>
     <path d="M21 8.007v7.986a2 2 0 0 1 -1.006 1.735l-7 4.007a2 2 0 0 1 -1.988 0l-7 -4.007a2 2 0 0 1 -1.006 -1.735v-7.986a2 2 0 0 1 1.006 -1.735l7 -4.007a2 2 0 0 1 1.988 0l7 4.007a2 2 0 0 1 1.006 1.735" />
@@ -79,8 +80,7 @@ export default function VDMC() {
               <p>
                 This differs from <Link to="/tech/v3c">MPEG V3C Immersive Platform</Link>, which is
                 point-cloud based; V-DMC targets well-parameterized mesh surfaces where point-cloud
-                methods are less efficient. For acronyms used here, see the{' '}
-                <Link to="/tech/glossary">Glossary</Link>.
+                methods are less efficient.
               </p>
               {PROJECT.sdos?.length > 0 && (
                 <div className={styles.capabilityTags}>
@@ -93,7 +93,7 @@ export default function VDMC() {
               )}
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>Why It Matters</h3>
+              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
               <p className={styles.whyMattersBody}>
                 A moving 3D mesh — an animated character or a performance capture — has geometry,
                 connectivity and attributes that all change per frame, and coding that directly has no
@@ -112,7 +112,7 @@ export default function VDMC() {
           <div className="container">
             <ProjectDestinationCards
               accent={ACCENT}
-              analysisHref="#how-it-works"
+              analysisHref="/tech/vdmc/overview"
               standardsHref="/standards/vdmc"
               softwareHref="/reference-tools/vdmc/"
             />

@@ -310,52 +310,13 @@ export default function Home() {
       </div>
 
       <main>
-        {/* Where We Stand -- promoted to its own section, first thing
-            after the hero/search band and before Who We Are: raised
-            directly ("shown too late from the first sight on the
-            page") after it sat as the last thing inside Who We Are's
-            own long section. Collapsed to basket level on purpose: the
-            full per-project chart is one click away at
-            /tech#where-we-stand, and each card here links straight to
-            its own spot there. Alt-tinted so it still alternates
-            against Who We Are right after it (unchanged, plain), which
-            keeps every section after that exactly as it was. */}
-        <section className={clsx(styles.section, styles.sectionAlt)}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>Where We Stand</h2>
-            <p className={styles.sectionSubtitle}>
-              How far each technology area has come, from under study to software — the full
-              breakdown, project by project, is at{' '}
-              <Link to="/tech#where-we-stand">Where We Stand</Link>.
-            </p>
-            <div className={styles.standGrid}>
-              {STAND_BASKETS.map((b) => (
-                <StandCard key={b.key} basket={b} />
-              ))}
-            </div>
-
-            {/* Same invite banner as Where We Stand's own full chart
-                (tech/index.js's .inviteBlock) -- this landscape is set by
-                5G-MAG's members, not the other way around. */}
-            <div className={styles.inviteBlock}>
-              <h3 className={styles.inviteTitle}>Don&apos;t see your topic here?</h3>
-              <p className={styles.inviteBody}>5G-MAG&apos;s members set this landscape.</p>
-              <div className={styles.inviteLinks}>
-                <Link to="/membership#request-membership" className={styles.inviteLink}>
-                  Propose a topic as a member &rarr;
-                </Link>
-                <Link to="/contributing" className={styles.inviteLink}>
-                  See how to build together &rarr;
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Who We Are -- heading and mission text lead, then the
             diagram (one static image), then the rest (the rotating
-            photo row and the links), per direct instruction. */}
-        <section className={styles.section}>
+            photo row and the links), per direct instruction. First
+            thing after the hero/search band (2026-09-27: swapped ahead
+            of Where We Stand, at direct request, so Where We Stand sits
+            immediately before On Air instead of two sections away). */}
+        <section className={clsx(styles.section, styles.sectionAlt)}>
           <div className="container">
             <h2 className={styles.sectionTitle}>
               At the intersection of Media and Connectivity
@@ -384,6 +345,44 @@ export default function Home() {
               <Link to="/about">Learn more about us &rarr;</Link>
               {' · '}
               <Link to="/membership#request-membership">Become a member &rarr;</Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Where We Stand -- its own section, collapsed to basket level
+            on purpose: the full per-project chart is one click away at
+            /tech#where-we-stand, and each card here links straight to
+            its own spot there. Plain-tinted (2026-09-27: moved to sit
+            directly before On Air, at direct request) so the two still
+            alternate against each other. */}
+        <section className={styles.section}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>Where We Stand</h2>
+            <p className={styles.sectionSubtitle}>
+              How far each technology area has come, from under study to software — the full
+              breakdown, project by project, is at{' '}
+              <Link to="/tech#where-we-stand">Where We Stand</Link>.
+            </p>
+            <div className={styles.standGrid}>
+              {STAND_BASKETS.map((b) => (
+                <StandCard key={b.key} basket={b} />
+              ))}
+            </div>
+
+            {/* Same invite banner as Where We Stand's own full chart
+                (tech/index.js's .inviteBlock) -- this landscape is set by
+                5G-MAG's members, not the other way around. */}
+            <div className={styles.inviteBlock}>
+              <h3 className={styles.inviteTitle}>Don&apos;t see your topic here?</h3>
+              <p className={styles.inviteBody}>5G-MAG&apos;s members set this landscape.</p>
+              <div className={styles.inviteLinks}>
+                <Link to="/membership#request-membership" className={styles.inviteLink}>
+                  Propose a topic as a member &rarr;
+                </Link>
+                <Link to="/contributing" className={styles.inviteLink}>
+                  See how to build together &rarr;
+                </Link>
+              </div>
             </div>
           </div>
         </section>

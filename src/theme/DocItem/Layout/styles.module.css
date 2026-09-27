@@ -8,6 +8,13 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 0.75rem;
+  /* Used to rely on DocBreadcrumbs (docItemHeaderBreadcrumbs) filling this
+     row with enough height to read as its own row before the page content
+     starts. Breadcrumbs are now disabled site-wide (2026-09-27,
+     docusaurus.config.js's docs plugin instances), so with no breadcrumb
+     this row can be just the small toggle button and nothing else -- needs
+     its own bottom margin now rather than borrowing the breadcrumb's. */
+  margin-bottom: 1rem;
 }
 
 .docItemHeaderBreadcrumbs {
@@ -24,10 +31,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 0.4rem;
     flex-shrink: 0;
-    width: 34px;
+    min-width: 34px;
     height: 34px;
-    padding: 0;
+    padding: 0 0.4rem;
     background: var(--ifm-background-surface-color);
     color: var(--ifm-color-emphasis-700);
     border: 1px solid var(--ifm-color-emphasis-300);
@@ -35,11 +43,30 @@
     cursor: pointer;
     transition:
       border-color 0.15s ease,
-      color 0.15s ease;
+      color 0.15s ease,
+      background 0.15s ease;
   }
 
   .headerToggleButton:hover,
   .headerToggleButton:focus {
+    border-color: var(--ifm-color-primary);
+    color: var(--ifm-color-primary);
+  }
+
+  /* Present only while the sidebar is actually hidden (see DocItem/Layout's
+     own conditional) -- a plain icon-only button reads as decoration, not as
+     "there is a menu here"; the label plus the tinted background make it an
+     obvious, self-explanatory affordance the moment a reader lands on a page
+     that starts with the sidebar collapsed. */
+  .headerToggleButtonLabel {
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .headerToggleButton:has(.headerToggleButtonLabel) {
+    padding: 0 0.65rem 0 0.55rem;
+    background: color-mix(in srgb, var(--ifm-color-primary) 8%, var(--ifm-background-surface-color));
     border-color: var(--ifm-color-primary);
     color: var(--ifm-color-primary);
   }

@@ -17,7 +17,7 @@ description: 'Real, assembled applications built on 5G-MAG’s streaming and mul
 
 ## Overview
 
-An Application, on this site, is a real working scenario assembled from one or more Reference Tools, pointed at a concrete use case, rather than a single tool's own tutorial in isolation. This category covers three such scenarios built on 5G-MAG's streaming and multicast reference tools: media streamed over an actual 5G radio network rather than a local loopback, a native 5G multicast delivery chain, and a live quality-of-experience dashboard fed by real playback data. For acronyms used here, see the [Glossary](/tech/glossary).
+An Application, on this site, is a real working scenario assembled from one or more Reference Tools, pointed at a concrete use case, rather than a single tool's own tutorial in isolation. This category covers three such scenarios built on 5G-MAG's streaming and multicast reference tools: media streamed over an actual 5G radio network rather than a local loopback, a native 5G multicast delivery chain, and a live quality-of-experience dashboard fed by real playback data.
 
 ## Live Streaming Over a Real 5G Network
 
@@ -29,7 +29,7 @@ Follow the [step-by-step guide](/reference-tools/5gms/tutorials/end-to-end-with-
 
 ## MBS End-to-End Delivery Demo
 
-5G Multicast Broadcast Services (MBS) deliver the same content to many devices at once natively over the 5G Core and New Radio (NR), rather than opening a separate unicast session per user. This demo operates the MBS chain together: the MBS-capable 5G Core, the MB-SMF, MBSF and MBSTF functions that manage MBS sessions and Temporary Mobile Group Identities (TMGIs), through to the NG-RAN. Delivery all the way to a receiving User Equipment (UE) over the air is not yet demonstrated on the release branches this builds on — see [Scope](/reference-tools/5g-mbs/scope) for the current status.
+5G Multicast Broadcast Services (MBS) deliver the same content to many devices at once natively over the 5G Core and New Radio (NR), rather than opening a separate unicast session per user. This demo operates the MBS chain together: the MBS-capable 5G Core, the MB-SMF, MBSF and MBSTF functions that manage MBS sessions and Temporary Mobile Group Identities (TMGIs), through to the NG-RAN. Delivery all the way to a receiving User Equipment (UE) over the air is not yet demonstrated on the release branches this builds on — see [Implementation Detail](/reference-tools/5g-mbs/implementation) for the current status.
 
 **Built from:** [5G Multicast Broadcast Services (MBS)](/reference-tools/5g-mbs/).
 

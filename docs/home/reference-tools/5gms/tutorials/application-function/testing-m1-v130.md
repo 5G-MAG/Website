@@ -16,7 +16,7 @@ description: Manual test procedures for the M1 interface of the 5GMSd Applicatio
 </div>
 </div>
 
-The M1 interface is the provisioning interface: an Application Service Provider (ASP) uses it to configure media delivery on the 5G Media Streaming downlink (5GMSd) Application Function (AF), creating provisioning sessions, content hosting configurations and certificates. This page verifies that the Application Function correctly handles those M1 provisioning requests for versions v1.3.0 to v1.4.0. See the [Glossary](/tech/glossary) for wider 5GMS terminology.
+The M1 interface is the provisioning interface: an Application Service Provider (ASP) uses it to configure media delivery on the 5G Media Streaming downlink (5GMSd) Application Function (AF), creating provisioning sessions, content hosting configurations and certificates. This page verifies that the Application Function correctly handles those M1 provisioning requests for versions v1.3.0 to v1.4.0.
 
 :::note[Version]
 This page covers the 5GMSd Application Function v1.3.0 to v1.4.0. For other versions see [Testing M1 (v1.2.x)](./testing-m1-v120) and [Testing M1 (v1.4.1 and later)](./testing-m1-v141).

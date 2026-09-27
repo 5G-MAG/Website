@@ -16,7 +16,7 @@ description: Release-by-release detail on the 3GPP work items behind 5G Multicas
 </div>
 </div>
 
-This page is the detailed, release-by-release companion to [Standards: 5G Multicast Broadcast Services (MBS)](/standards/5g-mbs): the work items behind each release, and what each one added. See that page for the full specification list and current scope. For acronyms used here, see the [Glossary](/tech/glossary).
+This page is the detailed, release-by-release companion to [Standards: 5G Multicast Broadcast Services (MBS)](/standards/5g-mbs): the work items behind each release, and what each one added. See that page for the full specification list and current scope.
 
 <div class="godeeper-grid" style={{gridTemplateColumns: 'repeat(auto-fit, minmax(0, 380px))'}}>
 

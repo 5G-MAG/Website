@@ -22,11 +22,14 @@ const PROJECT_NAME = PROJECT.name;
 // A per-project "flagship" page, following the 5gms pilot
 // (src/pages/tech/5gms/index.js) -- replacing the former
 // docs/tech/avatar-communications.mdx doc. Same Layout/HubHero every hub
-// page uses, not the doc-tier topic-banner. Like content-delivery, this
-// topic had no techDoc entry in techTopics.js to begin with (its category
-// link was never wired to the doc), so no sidebar-side change accompanies
-// this move -- see techTopics.js's own "Avatar Communication with MPEG
-// ARF" entry.
+// page uses, not the doc-tier topic-banner.
+//
+// 2026-09-27: docs/tech/avatar/overview.mdx now exists as a structural
+// placeholder (real content still lives in this page's own "How It Works"
+// section below, not yet migrated there) and techTopics.js's own entry
+// carries `autogen: 'avatar'`, so the topic now DOES have a real sidebar
+// presence -- analysisHref below points at it directly rather than at the
+// in-page "#how-it-works" anchor.
 
 // src/data/taxonomy.json's iconCatalog['avatar-figure'] -- this project's
 // own catalog icon, reused here rather than invented, same paths the old
@@ -115,8 +118,7 @@ export default function Avatar() {
                 <p>
                   5G-MAG&apos;s work looks at the tools needed to encode, render, and stream avatars
                   over 5G networks: the avatar representation itself, its animation, and the media
-                  transport that carries it. For acronyms used here, see the{' '}
-                  <Link to="/tech/glossary">Glossary</Link>.
+                  transport that carries it.
                 </p>
                 {PROJECT.sdos?.length > 0 && (
                   <div className={styles.capabilityTags}>
@@ -135,7 +137,7 @@ export default function Avatar() {
               />
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>Why It Matters</h3>
+              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
               <p className={styles.whyMattersBody}>
                 Before ARF, an avatar-based call needed the sender&apos;s capture/tracking system and
                 the receiver&apos;s rendering engine to come from the same vendor&apos;s proprietary
@@ -154,7 +156,7 @@ export default function Avatar() {
           <div className="container">
             <ProjectDestinationCards
               accent={ACCENT}
-              analysisHref="#how-it-works"
+              analysisHref="/tech/avatar/overview"
               standardsHref="/standards/avatar"
               softwareHref="/reference-tools/avatar/"
             />

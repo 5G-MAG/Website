@@ -21,10 +21,14 @@ const PROJECT_NAME = PROJECT.name;
 // A per-project "flagship" page, following the 5gms pilot
 // (src/pages/tech/5gms/index.js) -- replacing the former
 // docs/tech/content-delivery.mdx doc. Same Layout/HubHero every hub page
-// uses, not the doc-tier topic-banner. Unlike 5gms this topic had no
-// techDoc entry in techTopics.js to begin with (its category link was
-// never wired to the doc), so no sidebar-side change accompanies this
-// move -- see techTopics.js's own "Content Delivery Protocols" entry.
+// uses, not the doc-tier topic-banner.
+//
+// 2026-09-27: docs/tech/content-delivery/overview.mdx now exists as a
+// structural placeholder (real content still lives in this page's own "How
+// It Works" section below, not yet migrated there) and techTopics.js's own
+// entry carries `autogen: 'content-delivery'`, so the topic now DOES have a
+// real sidebar presence -- analysisHref below points at it directly rather
+// than at the in-page "#how-it-works" anchor.
 const PACKAGE_ICON = (
   <>
     <path d="M12 3l8 4.5v9l-8 4.5l-8 -4.5v-9z" />
@@ -79,8 +83,7 @@ export default function ContentDelivery() {
                 <p>
                   5G-MAG maintains open-source implementations, including the FLUTE library used
                   in the 5G Broadcast tools, a media origin, and a Coded Multisource Media Format
-                  (CMMF) encoder. For acronyms used here, see the{' '}
-                  <Link to="/tech/glossary">Glossary</Link>.
+                  (CMMF) encoder.
                 </p>
                 {PROJECT.sdos?.length > 0 && (
                   <div className={styles.capabilityTags}>
@@ -99,7 +102,7 @@ export default function ContentDelivery() {
               />
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>Why It Matters</h3>
+              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
               <p className={styles.whyMattersBody}>
                 A broadcast or multicast bearer has no return channel, so a receiver can never ask for
                 a retransmission — reliability has to come from somewhere else, and Forward Error
@@ -118,7 +121,7 @@ export default function ContentDelivery() {
           <div className="container">
             <ProjectDestinationCards
               accent={ACCENT}
-              analysisHref="#how-it-works"
+              analysisHref="/tech/content-delivery/overview"
               standardsHref="/standards/content-delivery"
               softwareHref="/reference-tools/content-delivery/"
             />

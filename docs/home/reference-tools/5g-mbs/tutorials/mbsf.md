@@ -20,7 +20,7 @@ description: Covers CRUD operations for MBS User Services and Data Ingest Sessio
 </div>
 </div>
 
-The MBS Function is responsible for controlling the MBS User Services sessions. It does this by managing MBS Sessions with the MB-SMF, managing MBS Distribution Sessions with the MBSTF(s) and creating and propagating the User Service Announcements. For acronyms used here, see the [Glossary](/tech/glossary).
+The MBS Function is responsible for controlling the MBS User Services sessions. It does this by managing MBS Sessions with the MB-SMF, managing MBS Distribution Sessions with the MBSTF(s) and creating and propagating the User Service Announcements.
 
 The MBSF is configured by an Application Provider using the API at reference point Nmb10. This tutorial covers the use of the APIs at Nmb10 to configure the MBSF.
 

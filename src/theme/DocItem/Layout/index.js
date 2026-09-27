@@ -31,7 +31,7 @@ function SidebarToggleIcon() {
   );
 }
 
-function HeaderToggleButton({ icon, titleId, defaultMessage, onClick }) {
+function HeaderToggleButton({ icon, label, titleId, defaultMessage, onClick }) {
   return (
     <button
       type="button"
@@ -49,6 +49,7 @@ function HeaderToggleButton({ icon, titleId, defaultMessage, onClick }) {
       })}
     >
       {icon}
+      {label && <span className={styles.headerToggleButtonLabel}>{label}</span>}
     </button>
   );
 }
@@ -57,6 +58,11 @@ export default function DocItemLayout({ children }) {
   const { metadata } = useDoc();
   const sidebarToggle = useSidebarToggle();
   const showSidebarToggle = Boolean(sidebarToggle?.hasSidebar);
+  // The sidebar now starts OPEN on every doc page (see DocRoot/Layout), but
+  // this button still doubles as the way to collapse and later reopen it --
+  // the label only shows while it's actually hidden; once open, the icon
+  // alone is enough (the sidebar itself is the proof).
+  const sidebarIsHidden = Boolean(sidebarToggle?.hiddenSidebar);
   return (
     <div className="row">
       <div className="col">
@@ -68,8 +74,9 @@ export default function DocItemLayout({ children }) {
               {showSidebarToggle && (
                 <HeaderToggleButton
                   icon={<SidebarToggleIcon />}
+                  label={sidebarIsHidden ? 'Menu' : null}
                   titleId="theme.docs.sidebar.toggleButtonTitle"
-                  defaultMessage="Toggle sidebar"
+                  defaultMessage={sidebarIsHidden ? 'Show sidebar menu' : 'Hide sidebar menu'}
                   onClick={sidebarToggle.toggleSidebar}
                 />
               )}

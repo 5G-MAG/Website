@@ -194,5 +194,5 @@ If you experience any errors during the Unity player build. Try selecting the V3
 ## Next steps
 
 - Browse more walkthroughs and recorded talks in the [Tutorials and Developer Exchange](./).
-- See the source repositories behind each component on the [Resources](../resources) page.
-- For background on the specifications and pipeline, read the [Scope](../scope) page.
+- See the source repositories behind each component in [Repositories & Releases](/reference-tools/v3c#repositories--releases) on the project index.
+- For background on the specifications and pipeline, read the [Implementation Detail](../implementation) page.

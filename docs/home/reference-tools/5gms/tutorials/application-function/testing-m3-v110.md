@@ -16,7 +16,7 @@ description: Verifies the M3 interface of the 5GMSd Application Function v1.1.x 
 </div>
 </div>
 
-The M3 interface is the internal interface over which the 5G Media Streaming downlink (5GMSd) Application Function (AF) configures the Application Server (AS): it pushes content hosting configurations and certificates to the Application Server so that the server can deliver the media. This page verifies that behaviour for version v1.1.x by inspecting the Application Function's debug log output. See the [Glossary](/tech/glossary) for wider 5GMS terminology.
+The M3 interface is the internal interface over which the 5G Media Streaming downlink (5GMSd) Application Function (AF) configures the Application Server (AS): it pushes content hosting configurations and certificates to the Application Server so that the server can deliver the media. This page verifies that behaviour for version v1.1.x by inspecting the Application Function's debug log output.
 
 :::note[Version]
 This page covers the 5GMSd Application Function v1.1.x. For later versions see [Testing M3 (v1.2.0 and above)](./testing-m3-v120).

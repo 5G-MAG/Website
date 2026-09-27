@@ -6,36 +6,23 @@ sidebar_position: -1
 description: Overview of the 5G-MAG 5GMS reference implementation, its AF/AS components, spec coverage, and links to project resources.
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import CommunityStats from '@site/src/components/CommunityStats';
-import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
-import ProjectReleases from '@site/src/components/ProjectReleases';
+import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
-import ProjectRoadmap from '@site/src/components/ProjectRoadmap';
-import ProjectVideos from '@site/src/components/ProjectVideos';
-import ArchitectureMap from '@site/src/components/ArchitectureMap';
-import ImplementationBoard from '@site/src/components/ImplementationBoard';
-import { FIVEGMS_ARCHITECTURE } from '@site/src/data/architecture/5gms';
-import { FIVEGMS_COMPONENTS, FIVEGMS_FEATURES, toBoardSections } from '@site/src/data/blueprints/5gms';
+import CommunityStats from '@site/src/components/CommunityStats';
+import ArchitectureDiagram from '@site/src/components/ArchitectureDiagram';
+import { FIVEGMS_ARCHITECTURE, FIVEGMS_DIAGRAM_CONTAINERS, FIVEGMS_DIAGRAM_NODES, FIVEGMS_DIAGRAM_EDGES } from '@site/src/data/architecture/5gms';
+import { FIVEGMS_FEATURES } from '@site/src/data/blueprints/5gms';
 import { REPO_METADATA } from '@site/src/data/baskets';
-import youtubePlaylists from '@site/static/data/youtube-playlists.json';
-import pullRequestsData from '@site/static/data/pull-requests.json';
-import roadmapData from '@site/static/data/roadmaps.json';
 
-export const projectVideos = (youtubePlaylists.projects?.['5gms']?.videos || []).slice(0, 1);
-
-{/* Real counts for the dashboard strip and the "what's pending" call-out below -- each
-    re-derived directly from the same data the sections further down the page render from
-    (REPO_METADATA/FIVEGMS_FEATURES/pull-requests.json/roadmaps.json), so the strip cannot drift
-    from what those sections actually show when expanded. */}
+{/* Real counts, re-derived from the same data the sections below render
+    from, so this summary can't drift from what those sections actually
+    show. */}
 export const REPO_COUNT = (REPO_METADATA['5gms'] || []).length;
+export const ENTITIES_WITH_REPO = FIVEGMS_ARCHITECTURE.entities.filter((e) => e.repo).length;
+export const ENTITIES_TOTAL = FIVEGMS_ARCHITECTURE.entities.length;
 export const FEATURES_DONE = FIVEGMS_FEATURES.filter((f) => f.status === 'yes').length;
 export const FEATURES_TOTAL = FIVEGMS_FEATURES.length;
-export const OPEN_PR_COUNT = (pullRequestsData.projects.find((p) => p.name === '5G Media Streaming (5GMS)')?.pulls || []).length;
-export const ROADMAP_TOPICS = ['Topic: Streaming & Media Delivery'];
-export const ROADMAP_COUNT = roadmapData.items.filter((i) => i.labels.some((l) => ROADMAP_TOPICS.includes(l))).length;
-export const GAP_FEATURES = FIVEGMS_FEATURES.filter((f) => f.status === 'no' || f.status === 'partial');
-export const AF_REPO = FIVEGMS_COMPONENTS[0];
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -48,160 +35,104 @@ export const AF_REPO = FIVEGMS_COMPONENTS[0];
 </div>
 </div>
 
-<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5gms/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5gms/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5gms/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5gms/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
-
-<div style={{fontSize: '0.95rem', color: 'var(--ifm-color-emphasis-700)'}}>
-{REPO_COUNT} repositories &middot; {FEATURES_DONE} of {FEATURES_TOTAL} 5GMSd features implemented &middot;{' '}
-{OPEN_PR_COUNT} open pull request{OPEN_PR_COUNT === 1 ? '' : 's'} &middot; {ROADMAP_COUNT} roadmap item{ROADMAP_COUNT === 1 ? '' : 's'}
-</div>
-
-## What it does
-
-The tools cover two server-side roles: the Application Function (AF), which handles provisioning, configuration and reporting, and the Application Server (AS), which caches and delivers the media. Both target 5G Unicast Downlink Media Streaming (5GMSd), adaptive bitrate streaming from the network to user equipment (UE). Use these tools to build, test, and validate 5GMSd-compliant pipelines on 5G networks. For the architecture, deployment configurations and specification detail behind this project, see the [Scope](./scope) page.
-
-**Implements:** 3GPP [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) (5GMS general description and architecture), TS 26.512 (protocols and APIs), [TS 26.511](https://www.3gpp.org/dynareport/26511.htm) (profiles, codecs and formats) and, from Release 18, [TS 26.510](https://www.3gpp.org/dynareport/26510.htm). Full normative list: [Standards portal](/standards/5gms).
+The tools cover two server-side roles: the Application Function (AF), which handles provisioning, configuration and reporting, and the Application Server (AS), which caches and delivers the media. Both target 5G Unicast Downlink Media Streaming (5GMSd), against the Release 17 normative baseline ([TS 26.501](https://www.3gpp.org/dynareport/26501.htm) / [TS 26.512](https://www.3gpp.org/dynareport/26512.htm)). For the deployment configurations and full specification detail, see [Implementation Detail](./implementation).
 
 ## What's Built
 
-<ArchitectureMap architecture={FIVEGMS_ARCHITECTURE} />
+<ArchitectureDiagram
+  entities={FIVEGMS_ARCHITECTURE.entities}
+  containers={FIVEGMS_DIAGRAM_CONTAINERS}
+  nodes={FIVEGMS_DIAGRAM_NODES}
+  edges={FIVEGMS_DIAGRAM_EDGES}
+  spec={FIVEGMS_ARCHITECTURE.spec}
+/>
 
-Entity colour is not shown here yet: the shared blueprint's own implementation-status data
-(`src/data/blueprints/5gms.js`) is still placeholder/inherited-not-independently-re-verified for
-this pass (see the board below) — wiring it into this map today would render every entity
-misleadingly as "Not implemented", since `ArchitectureMap` has no distinct state for "not yet
-audited". Wire `status={toBoardSections(FIVEGMS_FEATURES)}` here once the real code audit replaces
-those placeholders.
+**{ENTITIES_WITH_REPO} of {ENTITIES_TOTAL}** architecture entities have a real, running repository behind them{ENTITIES_WITH_REPO === ENTITIES_TOTAL ? ' — every box in the diagram above' : ''}. At the feature level, **{FEATURES_DONE} of {FEATURES_TOTAL}** defined 5GMSd features are fully implemented today; the rest are partially implemented or not yet started (see [Implementation Detail](/reference-tools/5gms/implementation) for exactly which).
 
-**Status key:** `Yes` implemented &middot; `Partial` partially implemented &middot; `Hold` on hold
-(a decision to wait) &middot; `To check` not yet independently verified &middot; `No` not
-implemented &middot; `N/A` out of scope.
+<div class="godeeper-grid" style={{gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))'}}>
 
-<ImplementationBoard components={FIVEGMS_COMPONENTS} sections={toBoardSections(FIVEGMS_FEATURES)} />
-
-Six of the eight rows above carry real status already published on this site (this project's own
-former per-feature prose and the Tutorials page's own per-interface checkbox table), carried
-forward rather than discarded — **not** an independent code audit performed this pass; see each
-row's `statusEvidence` in `src/data/blueprints/5gms.js` for exactly what it's based on. The real,
-independent code audit (re-checking each row against the repos directly) is a separate, later
-effort.
-
-## What's Pending
-
-<div class="godeeper-grid" style={{gridTemplateColumns: '1fr'}}>
-<div class="godeeper-card">
+<a class="godeeper-card" href="#repositories--releases">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h4"/></svg>
+<h3>Repositories</h3>
+</div>
 <div class="godeeper-card__body">
-{GAP_FEATURES.map((f) => (
-  <div key={f.id} style={{marginBottom: '0.75em'}}>
-    <strong>{f.name}</strong> ({f.status === 'no' ? 'not yet implemented' : 'partially implemented'})
-    {f.note ? <> — {f.note}</> : null}
-    {' '}&middot; Owning repo:{' '}
-    <a href={`https://github.com/5G-MAG/${AF_REPO.repo}`} target="_blank" rel="noreferrer">{AF_REPO.repo}</a>
-    {f.trackingIssue ? (
-      <>
-        {' '}&middot; <a href={f.trackingIssue} target="_blank" rel="noreferrer">Tracking issue</a>
-      </>
-    ) : null}
-  </div>
-))}
+<p>The real code behind this project, with each repository's latest release.</p>
 </div>
+</a>
+
+<a class="godeeper-card" href={useBaseUrl('/reference-tools/5gms/implementation')}>
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5H7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2V7a2 2 0 0 0 -2 -2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><path d="M9 12l2 2l4 -4"/></svg>
+<h3>Implementation Detail</h3>
+</div>
+<div class="godeeper-card__body">
+<p>Feature by feature: what's fully implemented, what's partial, and what's still pending.</p>
+</div>
+</a>
+
+<a class="godeeper-card" href={useBaseUrl('/reference-tools/5gms/tutorials')}>
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 4v16l13 -8l-13 -8"/></svg>
+<h3>Call to Try</h3>
+</div>
+<div class="godeeper-card__body">
+<p>Build and test it yourself, with the tutorials.</p>
+</div>
+</a>
+
+<a class="godeeper-card" href="#developer-updates">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"/><path d="M3.6 9h16.8"/><path d="M3.6 15h16.8"/><path d="M11.5 3a17 17 0 0 0 0 18"/><path d="M12.5 3a17 17 0 0 1 0 18"/></svg>
+<h3>Developer Updates</h3>
+</div>
+<div class="godeeper-card__body">
+<p>Community stats, open pull requests and the roadmap.</p>
+</div>
+</a>
+
+</div>
+
+## Standards implemented
+
+<div class="standard-card-row">
+<div class="standard-card">
+<img src={useBaseUrl('/assets/images/partnerships/3gpp-logo.png')} alt="3GPP" />
+<span class="standard-card__label">3GPP</span>
 </div>
 </div>
 
-These are the honest gaps: no curated "good first issue" list exists for this project, so the rows
-above are the real Implementation Status board's own `no`/`partial` entries, each pointing at the
-repo that owns it and, where one exists, its real tracking issue.
+**Implemented specifications:** 3GPP [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) (5G Media Streaming general description and architecture), [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) (5G Media Streaming protocols), against the Release 17 normative baseline. See [Implementation Detail](./implementation) for the full specification list (TS 26.501, TS 26.510, TS 26.511, TS 26.512) and Release-19 tracking.
 
-### Contributors & How to Contribute
+See [5G Media Streaming (5GMS) on the Standards portal](/standards/5gms) for version history and 5G-MAG's own standards contributions.
+
+## Contributors & How to Contribute
 
 <ProjectContributors />
 
 ## Repositories & Releases
 
+Each card below already carries its own repository's latest release, as coming from GitHub.
+
 <ProjectRepositories project="5gms" />
 
-<ProjectReleases name="5G Media Streaming (5GMS)" />
+### Packages
 
-See [Resources](./resources) for packages and full release notes. For live GitHub activity across
-these repositories (stars, forks, contributors), see [Community Stats](#community-stats) below.
+This project also provides the following prebuilt GitHub Container packages: Android library artifacts that client-side applications (such as the 5GMSd-Aware Application) depend on, so you do not have to build the libraries from source.
 
-### Community Stats
+| Component | Package |
+| --- | --- |
+| com.fivegmag.a5gmsmediastreamhandler | [Package](https://github.com/5G-MAG/rt-5gms-media-stream-handler/packages/) |
+| com.fivegmag.a5gmscommonlibrary | [Package](https://github.com/5G-MAG/rt-5gms-common-android-library/packages/) |
+
+## Developer Updates
 
 <CommunityStats name="5G Media Streaming (5GMS)" />
 
-## Call to Try
-
-<div class="godeeper-grid" style={{gridTemplateColumns: '1fr'}}>
-<div class="godeeper-card">
-<div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4v16l13 -8l-13 -8"/></svg>
-<h3>Tutorials</h3>
-</div>
-<div class="godeeper-card__body">
-<p>Follow the tutorials to build and test the AF/AS pipeline yourself.</p>
-<ul class="godeeper-card__links">
-<li><a href={useBaseUrl('/reference-tools/5gms/tutorials/end-to-end')}>5GMSd End-to-End deployment (with Docker)</a></li>
-<li><a href={useBaseUrl('/reference-tools/5gms/tutorials/end-to-end-with-5g')}>5GMSd End-to-End deployment with 5G Network</a></li>
-<li><a href={useBaseUrl('/reference-tools/5gms/tutorials/testing-AS')}>Developing and Testing the 5GMS Application Server</a></li>
-<li><a href={useBaseUrl('/reference-tools/5gms/tutorials/testing-AF')}>Testing the 5GMS Application Function</a></li>
-<li><a href={useBaseUrl('/reference-tools/5gms/tutorials/testing-postman')}>Testing M1 and M5 APIs with Postman</a></li>
-</ul>
-</div>
-</div>
-</div>
-
-<div class="event-post-grid">
-
-<a class="event-post-card" href={useBaseUrl('/docs/Reference_Tools_5G_Media_Streaming.pdf')} target="_blank" rel="noreferrer">
-<img loading="lazy" src={useBaseUrl('/assets/images/projects/5gms-slides-cover.jpg')} alt="5G Media Streaming (5GMS) slide deck cover" />
-<span class="event-post-title">Slide deck: 5G Media Streaming (5GMS) overview</span>
-</a>
-
-</div>
-
-<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
-
-<ProjectVideos videos={projectVideos} name="5G Media Streaming (5GMS)" />
-
-## Developer Updates
+**{REPO_COUNT}** repositories &middot; **{FEATURES_DONE} of {FEATURES_TOTAL}** features implemented.
 
 ### Open Pull Requests
 
 <ProjectOpenPRs name="5G Media Streaming (5GMS)" />
 
-### Next Steps
-
-<ProjectRoadmap topics={ROADMAP_TOPICS} />
-
-### Feature-stream boards
-
-The work is also broken down into individual feature streams, each organised as a Minimum Viable Product (MVP), a self-contained increment that delivers one working capability. For the current status of any item, the linked Kanban board is always authoritative.
-
-| Feature stream | Kanban board |
-| --- | --- |
-| Basic Media stream handling (MVP#1) | [Kanban board](https://github.com/orgs/5G-MAG/projects/3) |
-| Media session handling (MVP#2) | [Kanban board](https://github.com/orgs/5G-MAG/projects/4) |
-| M1d Provisioning | [Kanban board](https://github.com/orgs/5G-MAG/projects/8) |
-| M3 Link (AF to AS RESTful OpenAPI) | [Kanban board](https://github.com/orgs/5G-MAG/projects/6) |
-| Network Assistance and Dynamic Policies | [Kanban board](https://github.com/orgs/5G-MAG/projects/11) |
-| QoE metrics collection and reporting | [Kanban board](https://github.com/orgs/5G-MAG/projects/12) |
-| Consumption collection and reporting | [Kanban board](https://github.com/orgs/5G-MAG/projects/16) |
-| Application Provider User Interface | [Kanban board](https://github.com/orgs/5G-MAG/projects/40) |
-| [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) V17.5.0 uplift | [Kanban board](https://github.com/orgs/5G-MAG/projects/18) |
-| Cloud infrastructure | [Kanban board](https://github.com/orgs/5G-MAG/projects/21) |
-| DVB-I Service using 5G Media Streaming | [Kanban board](https://github.com/orgs/5G-MAG/projects/23) |
-
-:::note
-This table and the "Next Steps" board above read two different real sources — this one a
-hand-curated list of per-feature-stream Kanban boards, "Next Steps" the org-wide Reference Tools
-Roadmap filtered to this project's labels — kept side by side rather than merged, since they answer
-different questions ("which board tracks stream X" vs. "what's moving right now").
-:::
-
-## Related
-
-| Area                        | Details                                                                                                                               |
-| --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Technical documentation** | Architecture, protocols, and analysis: [Streaming & Media Delivery on the Tech portal](/tech/5gms)                    |
-| **Standards**               | Normative specifications and 5G-MAG contributions: [5G Media Streaming on the Standards portal](/standards/5gms) |
-| **Applications**            | Real, assembled scenarios built on this tool: [Media Streaming, Multicast & Real-Time Communications](/showcase/streaming) |
-| **Implementation Blueprint** | The step-by-step procedure this tool implements: [5GMS session establishment](/tech/5gms/overview-5gms#implementation-blueprint) |
+See the [Reference Tools Roadmap](https://github.com/orgs/5G-MAG/projects/48) for planned and in-progress work.

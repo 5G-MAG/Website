@@ -17,7 +17,7 @@ description: 'Real, assembled applications built on 5G-MAG’s 5G Broadcast refe
 
 ## Overview
 
-An Application, on this site, is a real working scenario assembled from one or more Reference Tools, pointed at a concrete use case, rather than a single tool's own tutorial in isolation. 5G Broadcast delivers TV and radio to an unlimited number of devices over a free-to-air radio signal, with no SIM and no per-user connection; it is built on LTE and standardised by 3GPP, reusing eMBMS/FeMBMS rather than the 5G core. This category covers three demonstrable scenarios built on 5G-MAG's 5G Broadcast reference tools: a receiver chain playing back a broadcast stream, an emergency alert broadcast, and an Android device that switches seamlessly between broadcast and unicast delivery. For acronyms used here, see the [Glossary](/tech/glossary).
+An Application, on this site, is a real working scenario assembled from one or more Reference Tools, pointed at a concrete use case, rather than a single tool's own tutorial in isolation. 5G Broadcast delivers TV and radio to an unlimited number of devices over a free-to-air radio signal, with no SIM and no per-user connection; it is built on LTE and standardised by 3GPP, reusing eMBMS/FeMBMS rather than the 5G core. This category covers three demonstrable scenarios built on 5G-MAG's 5G Broadcast reference tools: a receiver chain playing back a broadcast stream, an emergency alert broadcast, and an Android device that switches seamlessly between broadcast and unicast delivery.
 
 ## Broadcast Stream Playback (RTP/HLS)
 

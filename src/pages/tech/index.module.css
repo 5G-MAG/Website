@@ -279,22 +279,35 @@
   overflow: hidden;
 }
 
+/* Real per-basket banner (2026-09-27, direct instruction: propagated from
+   /tech's own Where We Stand basket banners -- .basketHeader just above),
+   tinted via --accent (set inline per category, falling back to the
+   site's normal blue for the basket-less "Shared Infrastructure" group).
+   Project cards inside the grid below keep their own existing per-project
+   accent -- only this header band changes here. */
 .categoryHeader {
-  padding: 1rem 1.1rem 0.9rem 1.4rem;
-  border-left: 4px solid var(--ifm-color-primary);
-  background: var(--ifm-color-emphasis-100);
+  padding: 1rem 1.5rem;
+  min-height: 4.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--accent) 80%, black) 0%,
+    var(--accent) 100%
+  );
 }
 
 .categoryTitle {
   font-size: 1.1rem;
   font-weight: 700;
   margin: 0 0 0.35rem;
-  color: var(--ifm-heading-color);
+  color: #fff;
 }
 
 .categoryDesc {
   font-size: 0.9rem;
-  color: var(--ifm-color-emphasis-700);
+  color: rgba(255, 255, 255, 0.85);
   margin: 0;
   line-height: 1.6;
 }
@@ -562,43 +575,52 @@
   background: var(--ifm-background-surface-color);
 }
 
+/* A real banner per basket (2026-09-27, direct instruction: "each basket
+   title deserves a sort of banner to separate" -- the plain icon+text
+   header this replaced left every basket reading as one long stacked
+   list, no clearer separation than a heading would give). Same visual
+   language as .topic-banner (custom.css) -- gradient band, translucent
+   icon-wrap, white text -- but tinted per basket via --accent (already
+   set on .basketBlock) instead of the fixed navy/teal every topic-banner
+   shares, so a reader can tell baskets apart by color while scrolling,
+   not just by re-reading the heading text. */
 .basketHeader {
   display: flex;
-  align-items: flex-start;
-  gap: 0.85rem;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  min-height: 4.5rem;
+  border-radius: 14px;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--accent) 80%, black) 0%,
+    var(--accent) 100%
+  );
   margin-bottom: 1rem;
 }
 
-/* Same rounded-square gradient icon band as every other icon on this
-   site (HubDestinationCard's compact icon band, GodeeperCard) -- a bare
-   colored glyph with no background read as too plain here (raised
-   directly: "I want that the icons have this blue background"). */
 .basketIcon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 8px;
-  background: linear-gradient(
-    135deg,
-    var(--ifm-color-primary-darkest) 0%,
-    var(--ifm-color-primary) 100%
-  );
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.18);
   flex-shrink: 0;
 }
 
 .basketIcon svg {
-  width: 22px;
-  height: 22px;
-  color: rgba(255, 255, 255, 0.92);
+  width: 24px;
+  height: 24px;
+  color: #fff;
 }
 
 .basketTitle {
   font-size: 1.15rem;
   font-weight: 700;
   margin: 0;
-  color: var(--ifm-heading-color);
+  color: #fff;
 }
 
 /* Real project count plus the one instruction a reader actually needs
@@ -609,7 +631,7 @@
 .basketMeta {
   margin: 0.3rem 0 0;
   font-size: 0.85rem;
-  color: var(--ifm-color-emphasis-600);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 /* The stage-name legend, repeated inside every basket block instead of
@@ -691,7 +713,7 @@
 .chartRowLabel {
   display: flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.6rem;
   font-size: 0.98rem;
   font-weight: 600;
   min-width: 0;
@@ -700,8 +722,8 @@
 .chartRowIcon {
   display: flex;
   flex-shrink: 0;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   color: var(--accent);
 }
 
@@ -710,21 +732,26 @@
   height: 100%;
 }
 
-/* Colored and underlined at rest, not just on hover -- the project name
-   is the one click target on the row now (raised directly: dropped the
-   separate Explore button once this alone reads clearly enough as a
-   link), so it needs to look like one without a reader having to
-   hover first. */
+/* 2026-09-27, direct instruction: the project name -- the one piece of
+   information the whole row exists to convey -- was the LEAST visible
+   thing on it, a small accent-colored link sitting next to solid,
+   white-on-color filled pills (.chartBubble) that outweigh it visually.
+   Bumped size, switched to the site's normal heading color (dark, high
+   contrast against white, rather than a lighter accent blue) so it reads
+   as the row's own heading rather than secondary link text, and moved the
+   underline to hover-only so it doesn't look muted at rest. */
 .chartRowName {
-  color: var(--accent) !important;
+  color: var(--ifm-heading-color) !important;
+  font-size: 1.05rem;
   font-weight: 700;
-  text-decoration: underline !important;
-  text-decoration-color: var(--accent) !important;
-  text-underline-offset: 2px;
+  text-decoration: none !important;
 }
 
 a.chartRowName:hover {
-  filter: brightness(0.85);
+  color: var(--accent) !important;
+  text-decoration: underline !important;
+  text-decoration-color: var(--accent) !important;
+  text-underline-offset: 2px;
 }
 
 /* 4 independent segments, one per stage column, matching the axis header
@@ -755,14 +782,21 @@ a.chartRowName:hover {
   background: var(--ifm-color-emphasis-100);
 }
 
+/* 2026-09-27, direct instruction: "make the blue of each stage background
+   more transparent so it is just the bubble in the current blue and the
+   background of each stage is dimmed" -- was a solid --accent fill with a
+   translucent white bubble on top; inverted so the segment itself is a
+   dimmed tint and the bubble now carries the full, solid accent color. */
 .chartSegmentFilled {
-  background: var(--accent);
+  background: color-mix(in srgb, var(--accent) 16%, var(--ifm-background-surface-color));
 }
 
 /* Points into the next segment, filled or not -- same arrowhead the
    single-fill version used, now repeated per reached segment (matches
    DVB's own reference roadmap, where each colored block in a lane gets
-   its own arrow tip, not one arrow at the very end of the whole lane). */
+   its own arrow tip, not one arrow at the very end of the whole lane).
+   Kept at the full accent color (not dimmed like the segment fill) so the
+   direction cue stays legible against the now-lighter background. */
 .chartSegmentPoint {
   position: absolute;
   right: -6px;
@@ -796,8 +830,8 @@ a.chartRowName:hover {
   font-weight: 700;
   line-height: 1.2;
   color: #fff;
-  background: rgba(255, 255, 255, 0.18);
-  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: var(--accent);
+  border: 1px solid transparent;
   padding: 0.26rem 0.65rem;
   border-radius: 999px;
   white-space: nowrap;
@@ -805,13 +839,18 @@ a.chartRowName:hover {
 }
 
 a.chartBubble:hover {
-  background: rgba(255, 255, 255, 0.32);
+  filter: brightness(0.88);
 }
 
 /* Phone width: stack the name above its track instead of squeezing both
    into one row, and shrink the bubble font slightly since the track
    itself is now the full (narrower) viewport width. */
 @media (max-width: 640px) {
+  .basketHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
   .basketLegend,
   .chartRow {
     grid-template-columns: 1fr;

@@ -1,0 +1,221 @@
+---
+title: Implementation Detail
+hide_title: true
+sidebar_position: 2
+description: Per-feature audit of what the 5G MBS reference tools implement across the MBS User Services, 5GC, NG-RAN and UE layers, mapped against 3GPP specifications.
+---
+
+import ImplementationBoard from '@site/src/components/ImplementationBoard';
+import { MBS_COMPONENTS, MBS_SECTIONS } from '@site/src/data/implementation/5g-mbs';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M12 12l0 .01" />
+  <path d="M14.828 9.172a4 4 0 0 1 0 5.656" />
+  <path d="M17.657 6.343a8 8 0 0 1 0 11.314" />
+  <path d="M9.168 14.828a4 4 0 0 1 0 -5.656" />
+  <path d="M6.337 17.657a8 8 0 0 1 0 -11.314" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">5G Multicast Broadcast Services (MBS)</span>
+<h1>Implementation Detail</h1>
+</div>
+</div>
+
+<div style={{margin: '8px 0'}}><a class="button button--primary button--tab-current" href={useBaseUrl('/reference-tools/5g-mbs/implementation')} style={{margin: '2px 4px 2px 0'}}>Implementation</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5g-mbs/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5g-mbs/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
+
+**Category:** 3GPP Implementations
+
+## What This Project Implements
+
+These reference tools implement parts of the 3GPP 5G Multicast Broadcast Services (MBS) feature. They are aimed at developers and integrators who want to run and inspect MBS delivery over a 5G Core, using multicast and broadcast to send the same media to many devices at once. To try the tools hands-on, see the [Tutorials](./tutorials).
+
+:::note[Key terms]
+
+- **5GC**: 5G Core network. **NG-RAN**: the 5G radio access network. **UE**: User Equipment (the device).
+- **MBSF / MBSTF**: MBS Function (control) and MBS Transport Function (media data plane), the two MBS User Services network functions.
+- **MB-SMF / MB-UPF**: the multicast/broadcast versions of the Session Management Function and User Plane Function in the 5G Core.
+- **AF / AS**: the Application Function and Application Server on the MBS Application Provider side.
+- **TMGI**: Temporary Mobile Group Identity, the identifier for an MBS session. **SSM**: Source-Specific Multicast address.
+- **FLUTE / ALC**: File Delivery over Unidirectional Transport, carried in Asynchronous Layered Coding packets, used to send files one-way.
+- **PFCP**: Packet Forwarding Control Protocol (control between MB-SMF and MB-UPF). **GTP-U**: the user-plane tunnelling protocol between core and RAN.
+- **PTM**: Point-to-Multipoint delivery. **NTN**: Non-Terrestrial Network (satellite) access.
+- **MRB**: MBS Radio Bearer, the radio bearer carrying broadcast traffic. **MCCH / MTCH**: the MBS Control and Traffic logical channels &mdash; MCCH announces the live sessions over the air, MTCH carries their content. **G-RNTI**: the group radio identity a session's MTCH is scheduled on.
+  :::
+
+In the context of 3GPP standards, the Multicast Broadcast Services System, **MBS System**, is designed to support multicast and broadcast services in 5G networks. It introduces a flexible architecture that supports both Multicast (for specific groups with high reliability) and Broadcast (for wide-area distribution to all users), allowing the network to dynamically switch between point-to-point and point-to-multipoint delivery. While the MBS System handles the heavy lifting of moving data through the 5G core and radio, **MBS User Services** defines how that content is actually packaged, discovered, and consumed by the end-user's application.
+
+Technical documentation providing context to this project can be found in the link below.
+
+[Tech: Multicast and Broadcast Services in 5G Networks](/tech/5g-mbs)
+
+Relevant specifications are listed below.
+
+[Standards: 5G Multicast Broadcast Services](/standards/5g-mbs)
+
+[Standards: Content Delivery Protocols](/standards/content-delivery)
+
+:::tip[In short]
+The MBS Broadcast delivery chain exists across the MBS Application Provider side, the MBS User Services network functions (MBSF, MBSTF), the 5GC (MB-SMF, MB-UPF, AMF) and the UE side (MBSF Client, MBS-Aware Application) on their release branches &mdash; but it does not run end-to-end on real RAN hardware or software radio today. Two release-branch defects break the chain by themselves: the MB-UPF never attaches the mandatory GTP-U PDU Session Container to downlink packets, and neither RAN fork's release branch implements the MCCH/SIB20 signalling a UE needs to discover a broadcast session over the air. Several fixes for these and other defects listed below exist only on unreleased development branches. MBS Multicast is not yet implemented.
+:::
+
+## Deployment Configurations
+
+The two architectures below cover the same MBS delivery path but differ in how the 5G Core is provisioned. The first uses the MBS-specific network functions directly; the second adds the reusable [5GC Service Consumers](../5g-core) libraries as the way the MBS User Services layer talks to the core.
+
+### 5G Multicast Broadcast Services (MBS)
+
+The MBS reference tools with the MBS-specific core functions (MB-SMF, MB-UPF) provisioned directly.
+
+<img loading="lazy" src={useBaseUrl('/assets/images/projects/mbs_diagram.png')} style={{ width: '80%' }} alt="High-level architecture of the 5G MBS reference tools showing the MBS User Services layer, the MBS-capable 5G Core and the NG-RAN" />
+
+- [5G Multicast Broadcast Services](../5g-mbs/)
+- [Content Delivery Protocols](../content-delivery/)
+- [3GPP RAN and Core Platforms](../3gpp-platforms/)
+- [Common Tools: Repositories](../common-tools/)
+
+### 5G Multicast Broadcast Services (MBS) with 5GC Service Consumers
+
+The same delivery path, but the MBS User Services layer uses the reusable 5GC Service Consumer libraries to invoke the core network functions.
+
+<img loading="lazy" src={useBaseUrl('/assets/images/projects/mbs_5gc_diagram.png')} style={{ width: '80%' }} alt="High-level architecture of the 5G MBS reference tools using the 5GC Service Consumer libraries to reach the MBS-capable 5G Core" />
+
+- [5G Multicast Broadcast Services](../5g-mbs/)
+- [Content Delivery Protocols](../content-delivery/)
+- [5GC Service Consumers](../5g-core/)
+- [3GPP RAN and Core Platforms](../3gpp-platforms/)
+- [Common Tools: Repositories](../common-tools/)
+
+## Implementation status board
+
+Every functional entity in the MBS Broadcast chain is audited per feature against its defining specifications. Each section below is split into plainly labelled groups, so you can jump straight to the component you care about.
+
+:::note[Audit baseline]
+This describes each repository's release branch only &mdash; `main` for the MBS User Services repositories (rt-mbs-function, rt-mbs-transport-function, rt-mbs-client, rt-mbs-application, rt-libflute) and for the Open5GS fork, and `5mbs` for the srsRAN Project and srsRAN 4G forks &mdash; each read at its own most recent commit as of 2026-08-18 (dates range from 2025-10-02 for the gNB fork to 2026-08-07 for the most recently updated User Services repositories). Of these, rt-mbs-client and rt-mbs-application are private today; see [Early Access](/early-access) to request access if you want to check this audit's claims against their source yourself. It deliberately excludes `feature/mbs-compliance-fixes` and other `development`/feature branches, which carry substantial fixes and new functionality that have not reached a release branch. This is a source-level reading of the code against the specification text; it is **not** backed by a live end-to-end test of the full delivery chain on these branches. Several defects found below &mdash; in particular the missing GTP-U PDU Session Container on the N3mb downlink and the complete absence of MCCH/SIB20 broadcast signalling on both RAN forks &mdash; mean the chain from the MB-UPF through the gNB to a real UE does not work today on these release branches, regardless of what earlier live testing on unreleased branches may have shown.
+:::
+
+:::caution[Broadcast first, Multicast later]
+The tools target the **MBS Broadcast** delivery mode. On the release branches audited here it does not yet run fully end-to-end on real RAN hardware or software radio: the MB-UPF never attaches the mandatory GTP-U PDU Session Container to downlink packets (so a real gNB rejects them), and neither RAN fork's release branch implements the MCCH/SIB20 signalling a UE needs to discover a broadcast session over the air. The Namf_MBSBroadcast/NGAP/F1AP/E1AP session-release chain is also unimplemented at every layer. See the Implementation status board and the User plane path table below for the detail; several of these fixes exist only on unreleased development branches. For **MBS Multicast**, only the MB-SMF/MB-UPF data path (N6mb ingest, shared GTP-U delivery) exists; the session-join control plane (UE session join via the SMF, PTP/PTM switching, group paging) is not implemented in any component of the chain.
+:::
+
+<ImplementationBoard components={MBS_COMPONENTS} sections={MBS_SECTIONS} />
+
+### User plane path
+
+| Segment | Between | Status |
+| --- | --- | --- |
+| Nmb8 object ingest (pull or push) | MBS Application Provider &rarr; MBSTF | Implemented |
+| Nmb9 FLUTE/ALC unicast tunnel | MBSTF &rarr; MB-UPF | Implemented |
+| N6mb direct multicast ingest (alternative to the MBSTF path) | AF/AS &rarr; MB-UPF | Implemented |
+| N3mb shared GTP-U delivery, with the mandatory PDU Session Container extension header (TS 38.415) on every downlink G-PDU | MB-UPF &rarr; gNB(s) | **Not implemented** |
+| Uu PTM broadcast (MCCH/MTCH) | gNB &rarr; UEs | **Not implemented** |
+| MBS-4-MC FLUTE reception (including a raw-capture relay for software TUN radio links) | UE &rarr; MBSF Client | Implemented |
+
+The two rows marked **Not implemented** are release-branch findings, not design gaps: the MB-UPF's downlink PDR never gets a QER/QFI association, so it never emits the mandatory PDU Session Container extension header a real gNB requires (TS 38.415); and neither the srsRAN Project (gNB) nor srsRAN 4G (UE) release branch implements MCCH/SIB20, so a UE has no standards-compliant way to discover a broadcast session over the air. Fixes for both exist only on unreleased development branches. The FLUTE reception row still holds because the MBSF Client's object-level FLUTE handling is independent of these two gaps and was confirmed to build and instantiate correctly on its own release branch.
+
+### Out of scope today (all components)
+
+- **MBS Multicast delivery mode** (TS 23.247): multicast session join via the SMF, PTP/PTM switching, group paging &mdash; see the caution above.
+- **MB-PCF policy control** (TS 29.537), **NEF exposure** (TS 29.522 / Nmb5), **MBS security** (TS 33.501 traffic keys &mdash; delivery is unprotected), **charging** (TS 32.279).
+- **MBS-specific NRF NFDiscovery query extensions** (TS 29.510) &mdash; standard NF registration/discovery is used; discovery by TMGI or MBS-session parameters is not.
+- **Location-dependent (multi-area) MBS sessions** &mdash; only partial plumbing exists (for example, MBSF recognises `locationDependent` to gate a TMGI request), with no Area Session ID support or per-area distribution &mdash; and **Xn mobility / service continuity**.
+
+## Components
+
+The forks below are branch-based work-in-progress implementations. They provide a basic MBS-capable radio and core, but some end-to-end functions are not yet complete: in particular, multicast reception on the gNB and UE is still under development, so traffic can be observed leaving the MB-UPF but is not yet received over the air (see the Implementation status board above). See the [tutorials](./tutorials) for what can currently be exercised.
+
+### 5G UE (with MBS components)
+
+[srsRAN_4G (5mbs branch)](https://github.com/5G-MAG/srsRAN_4G/tree/5mbs) &mdash; a branch of srsRAN_4G which contains a basic implementation of an MBS-capable UE.
+
+### NG-RAN (with MBS components)
+
+[rt-srsRAN_Project (5mbs branch)](https://github.com/5G-MAG/rt-srsRAN_Project/tree/5mbs) &mdash; a branch of srsRAN_Project which contains a basic implementation of an MBS-capable NG-RAN.
+
+### 5GC (with MBS components)
+
+[open5gs (5mbs branch)](https://github.com/5G-MAG/open5gs/tree/5mbs) &mdash; a branch of Open5GS which contains implementations of 5GC NFs related to MBS.
+
+### MBS User Services: MBS Function (MBSF)
+
+[rt-mbs-function](https://github.com/5G-MAG/rt-mbs-function) &mdash; the MBS Function (MBSF) is the control point of the MBS User Services: an Application Provider uses it to set up MBS User Services and to tell the MB-SMF and the MBSTF what to distribute. This repository provides a 5G MBSF which forms part of the MBS User Services. This Network Function (NF) provides the interface designated as Nmb10 in the 3GPP [TS 29.580](https://www.3gpp.org/dynareport/29580.htm) specification. See the [MBSF Operation & APIs tutorial](./tutorials/mbsf).
+
+### MBS User Services: MBS Transport Function (MBSTF)
+
+[rt-mbs-transport-function](https://github.com/5G-MAG/rt-mbs-transport-function) &mdash; the MBS Transport Function (MBSTF) is the data-plane worker of the MBS User Services: it ingests media objects from the Application Provider and packages them into a FLUTE session sent towards the MB-UPF. This repository provides a 5G MBSTF which forms part of the MBS User Services. This NF provides the interfaces designated as Nmb2, Nmb8 and Nmb9 in the 3GPP [TS 29.581](https://www.3gpp.org/dynareport/29581.htm) V18.6.0 specification. See the [MBSTF Testing tutorial](./tutorials/mbstf).
+
+### Auxiliary repositories
+
+**MBS Examples** &mdash; [rt-mbs-examples](https://github.com/5G-MAG/rt-mbs-examples): Docker Compose components to deploy several network functions related to MBS.
+
+**MB-SMF Service Consumer Library** &mdash; [rt-5gc-service-consumers](https://github.com/5G-MAG/rt-5gc-service-consumers): implements the MB-SMF service-consumer side of Nmbsmf_TMGI and Nmbsmf_MBSSession (3GPP TS 29.532). It is vendored as a subproject inside the MBSF, providing the alternative to provisioning the 5GC directly; see the [5GC Service Consumers tutorial](../5g-core/tutorials/using-libscMBSMF).
+
+## Getting Started
+
+To try the tools hands-on, follow the [Tutorials](./tutorials): they cover the two ways to provision the 5GC (direct MBS core functions, or via the [5GC Service Consumers](../5g-core) libraries), the [Docker-Compose deployment](./tutorials/docker-implementation), and the individual MBSF/MBSTF walkthroughs. For the source code and releases behind each component, see [Repositories & Releases](/reference-tools/5g-mbs#repositories--releases); for packages, see below; for the specification background, see [Standards: 5G Multicast Broadcast Services](/standards/5g-mbs).
+
+## Packages
+
+This page lists the prebuilt container images (published to the GitHub Container Registry, GHCR) that this project provides or uses. Most developers do not pull these individually; the images are deployed together through the Docker Compose setups in the [rt-mbs-examples](https://github.com/5G-MAG/rt-mbs-examples) repository. Pull an image directly only if you are building a custom deployment.
+
+### 5G Core Network Functions (3GPP [TS 23.501](https://www.3gpp.org/dynareport/23501.htm)) based on Open5GS
+
+These are the standard 5G Core (5GC) Network Functions from Open5GS, without MBS-specific changes. They provide the baseline core network that the MBS functions build on.
+
+These packages are compiled from the following repository: [open5gs](https://github.com/5G-MAG/open5gs)
+
+| Components | Package                                                                 |
+| ---------- | ----------------------------------------------------------------------- |
+| NRF        | [NRF package](https://github.com/5G-MAG/open5gs/pkgs/container/nrf)     |
+| UDM        | [UDM package](https://github.com/5G-MAG/open5gs/pkgs/container/udm)     |
+| PCF        | [PCF package](https://github.com/5G-MAG/open5gs/pkgs/container/pcf)     |
+| WebUI      | [WebUI package](https://github.com/5G-MAG/open5gs/pkgs/container/webui) |
+| BSF        | [BSF package](https://github.com/5G-MAG/open5gs/pkgs/container/bsf)     |
+| UDR        | [UDR package](https://github.com/5G-MAG/open5gs/pkgs/container/udr)     |
+| NSSF       | [NSSF package](https://github.com/5G-MAG/open5gs/pkgs/container/nssf)   |
+| AUSF       | [AUSF package](https://github.com/5G-MAG/open5gs/pkgs/container/ausf)   |
+| SMF        | [SMF package](https://github.com/5G-MAG/open5gs/pkgs/container/smf)     |
+| UPF        | [UPF package](https://github.com/5G-MAG/open5gs/pkgs/container/upf)     |
+| AMF        | [AMF package](https://github.com/5G-MAG/open5gs/pkgs/container/amf)     |
+| SCP        | [SCP package](https://github.com/5G-MAG/open5gs/pkgs/container/scp)     |
+| SEPP       | [SEPP package](https://github.com/5G-MAG/open5gs/pkgs/container/sepp)   |
+
+### Multicast–Broadcast Services (MBS)
+
+Images and docker compose deployments for MBS are located in the following repository: [rt-mbs-examples](https://github.com/5G-MAG/rt-mbs-examples)
+
+#### MBS Core Network Functions (3GPP [TS 23.247](https://www.3gpp.org/dynareport/23247.htm)) based on Open5GS
+
+These are the MBS-capable versions of the core and radio functions (for example the MB-UPF, MB-SMF and an MBS-aware gNB, AMF and UE), used to move multicast and broadcast traffic through the 5G Core and radio.
+
+| Components         | Package                                                                                               |
+| ------------------ | ----------------------------------------------------------------------------------------------------- |
+| UPF and MB-UPF     | [UPF and MB-UPF package](https://github.com/5G-MAG/rt-mbs-examples/pkgs/container/upf_mb-upf)         |
+| Test AF/AS for MBS | [Test AF/AS for MBS package](https://github.com/5G-MAG/rt-mbs-examples/pkgs/container/test_mbs_af_as) |
+| SMF and MB-SMF     | [SMF and MB-SMF package](https://github.com/5G-MAG/rt-mbs-examples/pkgs/container/smf_mb-smf)         |
+| gNB with MBS       | [gNB with MBS package](https://github.com/5G-MAG/rt-mbs-examples/pkgs/container/gnb_with_mbs)         |
+| AMF with MBS       | [AMF with MBS package](https://github.com/5G-MAG/rt-mbs-examples/pkgs/container/amf_with_mbs)         |
+| UE with MBS        | [UE with MBS package](https://github.com/5G-MAG/rt-mbs-examples/pkgs/container/ue_with_mbs)           |
+
+#### MBS User Services Network Functions (3GPP [TS 26.502](https://www.3gpp.org/dynareport/26502.htm))
+
+These are the user service layer functions that package and deliver media content over MBS. The MBS Transport Function (MBSTF) ingests media objects and sends them as a FLUTE session towards the MB-UPF.
+
+| Components | Package                                                                                   |
+| ---------- | ----------------------------------------------------------------------------------------- |
+| MBSTF      | [MBSTF package](https://github.com/5G-MAG/rt-mbs-transport-function/pkgs/container/mbstf) |
+
+## Related
+
+- [Project index](/reference-tools/5g-mbs)
+- [Repositories & Releases](/reference-tools/5g-mbs#repositories--releases)
+- [Tutorials](/reference-tools/5g-mbs/tutorials)
+- [Slide deck: 5G Multicast Broadcast Services (MBS) overview](/docs/Reference_Tools_5G_Multicast_Broadcast.pdf)
+- Standards: [5G Multicast Broadcast Services](/standards/5g-mbs) &mdash; the full specification list for this topic
+- Standards: [Content Delivery Protocols](/standards/content-delivery) &mdash; the FLUTE transport under the Object distribution method, and why it is FLUTE version 1
+- Tech: [Multicast and Broadcast Services in 5G Networks](/tech/5g-mbs) &mdash; the three-layer architecture (user service, 5G Core, NG-RAN) and the reference points the tools implement
+- Implementation Blueprints: [MBS Broadcast RAN acquisition](/tech/5g-mbs/analysis-mbs-broadcast-ran#implementation-blueprint), [MBS Multicast RRC_INACTIVE RAN acquisition](/tech/5g-mbs/analysis-mbs-multicast-inactive-ran#implementation-blueprint), [MBS Multicast mobility](/tech/5g-mbs/mobility-mbs-multicast#implementation-blueprint), and [MBS Service Layer provisioning-to-announcement](/tech/5g-mbs/mbs-service-layer#implementation-blueprint) &mdash; the step-by-step procedures this tool implements
+- Applications: [MBS End-to-End Delivery Demo](/showcase/streaming#mbs-end-to-end-delivery-demo) &mdash; a real, assembled scenario built on this tool
+- Tech: [Non-Terrestrial Networks in 5G Systems](/tech/ntn) &mdash; deploying MBS over satellite access, with the [MBS Multicast over NTN](/tech/ntn/analysis-mbs-multicast-over-ntn) and [MBS Broadcast over NTN](/tech/ntn/analysis-mbs-broadcast-over-ntn) analyses

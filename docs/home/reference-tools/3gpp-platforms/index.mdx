@@ -5,13 +5,14 @@ title: 3GPP RAN and Core Platforms
 sidebar_position: -1
 description: Reference platform tools for deploying a lab 5G RAN and Core network, built on Open5GS and srsRAN.
 ---
-import CommunityStats from '@site/src/components/CommunityStats';
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
-import ProjectVideos from '@site/src/components/ProjectVideos';
+import ProjectContributors from '@site/src/components/ProjectContributors';
+import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
+import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import youtubePlaylists from '@site/static/data/youtube-playlists.json';
+import { REPO_METADATA } from '@site/src/data/baskets';
 
-export const projectVideos = (youtubePlaylists.projects?.['3gpp-platforms']?.videos || []).slice(0, 1);
+export const REPO_COUNT = (REPO_METADATA['3gpp-platforms'] || []).length;
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -27,15 +28,57 @@ export const projectVideos = (youtubePlaylists.projects?.['3gpp-platforms']?.vid
 </div>
 </div>
 
-<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/3gpp-platforms/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/3gpp-platforms/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/3gpp-platforms/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/3gpp-platforms/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
+<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/3gpp-platforms/implementation')} style={{margin: '2px 4px 2px 0'}}>Implementation</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/3gpp-platforms/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/3gpp-platforms/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
-## What it does
+The project provides configurations, scripts, and integration guides for standing up 3GPP-compliant RAN and Core (5G Core, 5GC) stacks, forming the network infrastructure layer on which the other 5G-MAG reference tools run. It is useful for developers who need a complete 5G system to validate end-to-end media delivery pipelines. 5G-MAG builds these platforms on established open-source projects (Open5GS for the core, srsRAN for the radio) so members can reproduce a working network without commercial equipment. For the fork/branch mapping and full technical detail, see [Implementation Detail](./implementation).
 
-The project provides configurations, scripts, and integration guides for standing up 3GPP-compliant RAN and Core (5G Core, 5GC) stacks, forming the network infrastructure layer on which the other 5G-MAG reference tools run. It is useful for developers who need a complete 5G system to validate end-to-end media delivery pipelines. 5G-MAG builds these platforms on established open-source projects (Open5GS for the core, srsRAN for the radio) so members can reproduce a working network without commercial equipment.
+## What's Built
 
-## Repositories
+**{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project — the 5G-MAG forks of Open5GS and srsRAN, listed below.
 
-<ProjectRepositories project="3gpp-platforms" />
+<div class="godeeper-grid" style={{gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))'}}>
+
+<a class="godeeper-card" href="#repositories--releases">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h4"/></svg>
+<h3>Repositories</h3>
+</div>
+<div class="godeeper-card__body">
+<p>The real code behind this project, with each repository's latest release.</p>
+</div>
+</a>
+
+<a class="godeeper-card" href={useBaseUrl('/reference-tools/3gpp-platforms/implementation')}>
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5H7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2V7a2 2 0 0 0 -2 -2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><path d="M9 12l2 2l4 -4"/></svg>
+<h3>Implementation Detail</h3>
+</div>
+<div class="godeeper-card__body">
+<p>Which fork and branch to use for which delivery technology.</p>
+</div>
+</a>
+
+<a class="godeeper-card" href={useBaseUrl('/reference-tools/3gpp-platforms/tutorials')}>
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 4v16l13 -8l-13 -8"/></svg>
+<h3>Call to Try</h3>
+</div>
+<div class="godeeper-card__body">
+<p>Build and test it yourself, with the tutorials.</p>
+</div>
+</a>
+
+<a class="godeeper-card" href="#developer-updates">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"/><path d="M3.6 9h16.8"/><path d="M3.6 15h16.8"/><path d="M11.5 3a17 17 0 0 0 0 18"/><path d="M12.5 3a17 17 0 0 1 0 18"/></svg>
+<h3>Developer Updates</h3>
+</div>
+<div class="godeeper-card__body">
+<p>Community stats and open pull requests.</p>
+</div>
+</a>
+
+</div>
 
 ## Standards implemented
 
@@ -48,33 +91,20 @@ The project provides configurations, scripts, and integration guides for standin
 
 **Specifications referenced:** 3GPP [TS 38.300](https://www.3gpp.org/dynareport/38300.htm) (NR overall description), [TS 23.501](https://www.3gpp.org/dynareport/23501.htm) (5G System architecture), [TS 38.401](https://www.3gpp.org/dynareport/38401.htm) (NG-RAN architecture and interfaces).
 
-## Community Stats
+## Contributors & How to Contribute
+
+<ProjectContributors />
+
+## Repositories & Releases
+
+<ProjectRepositories project="3gpp-platforms" />
+
+## Developer Updates
 
 <CommunityStats name="3GPP RAN and Core Platforms" />
 
----
+### Open Pull Requests
 
-## Try it yourself
+<ProjectOpenPRs name="3GPP RAN and Core Platforms" />
 
-Follow the [tutorials](/reference-tools/3gpp-platforms/tutorials) to stand up a working 5G RAN and Core network yourself.
-
-<div class="event-post-grid">
-
-<a class="event-post-card" href={useBaseUrl('/docs/Reference_Tools_3GPP_Platforms.pdf')} target="_blank" rel="noreferrer">
-<img loading="lazy" src={useBaseUrl('/assets/images/projects/3gpp-platforms-slides-cover.jpg')} alt="3GPP RAN and Core Platforms slide deck cover" />
-<span class="event-post-title">Slide deck: 3GPP RAN and Core Platforms overview</span>
-</a>
-
-</div>
-
-<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
-
-See the Reference Tools in action, with a community video from the tutorials page.
-
-<ProjectVideos videos={projectVideos} name="3GPP RAN and Core Platforms" />
-
-| Area                                  | Details                                                                                                                                                            |
-| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Technical documentation**           | RAN and Core aspects of broadcast delivery: [Multicast & Broadcast in 5G on the Tech portal](/tech/5g-mbs)                                                          |
-| **Standards**                         | The specifications these forks are maintained against: [5G Multicast & Broadcast Services](/standards/5g-mbs), [5G Broadcast](/standards/5g-broadcast)              |
-| **Projects built on these platforms** | [5G Multicast & Broadcast Services](../5g-mbs), [5G Broadcast](../5g-broadcast), [5G Core Service Consumers](../5g-core)                                            |
+Unlike the other reference tools, these platforms are forks that track their own upstream projects (Open5GS, srsRAN) rather than a dedicated 5G-MAG feature roadmap — see [Implementation Detail](./implementation) for the fork/branch mapping that serves as this project's own roadmap.

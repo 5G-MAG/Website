@@ -22,6 +22,11 @@ const PROJECT_NAME = PROJECT.name;
 // system; techTopics.js's ntn entry already carries no techDoc field
 // (autogen: 'ntn' only), so both sidebars already treat it the same way
 // they treat the migrated 5gms/5g-mbs entries.
+//
+// 2026-09-27: taxonomy.json's doc_url, previously null, now points at
+// docs/home/reference-tools/ntn/index.mdx, itself a placeholder honestly
+// stating no dedicated tool or repository exists yet -- softwareHref below
+// points at it instead of leaving the Software card muted.
 const SATELLITE_ICON = (
   <>
     <path d="M3.707 6.293l2.586 -2.586a1 1 0 0 1 1.414 0l5 5a1 1 0 0 1 0 1.414l-2.586 2.586a1 1 0 0 1 -1.414 0l-5 -5a1 1 0 0 1 0 -1.414z" />
@@ -65,7 +70,6 @@ export default function NTN() {
                 Broadcast can be deployed. 5G-MAG&apos;s work in this area focuses on the specific
                 challenges NTN introduces: propagation delay, Doppler effects, handover between
                 satellite beams, and device mobility across terrestrial and non-terrestrial segments.
-                For acronyms used here, see the <Link to="/tech/glossary">Glossary</Link>.
               </p>
               <p>
                 <strong>No dedicated reference tool exists for NTN.</strong> The 5G-MAG MBS reference
@@ -86,7 +90,7 @@ export default function NTN() {
               )}
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>Why It Matters</h3>
+              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
               <p className={styles.whyMattersBody}>
                 Terrestrial infrastructure doesn&apos;t reach every area a broadcaster needs to serve,
                 and building a separate service layer for satellite delivery would mean maintaining
@@ -107,6 +111,7 @@ export default function NTN() {
               accent={ACCENT}
               analysisHref="/tech/ntn/analysis-mobility-ntn"
               standardsHref="/standards/ntn"
+              softwareHref="/reference-tools/ntn"
             />
           </div>
         </section>

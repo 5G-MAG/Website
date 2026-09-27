@@ -7,10 +7,14 @@
 // link on the page, so they carry no `url` and render as plain identifiers.
 export const V3C_SPECS = [
   {
-    id: 'ISO/IEC 23090-5',
+    // Corrected 2026-09-27 (spec-catalogue research pass): was citing the
+    // 2023 second edition (83535.html); current is the 2025 third edition
+    // (89030.html), which adds VVC (ISO/IEC 23090-3) bitstream support and
+    // real-time-communication enhancements.
+    id: 'ISO/IEC 23090-5:2025',
     title:
       'Information technology: Coded representation of immersive media - Part 5: Visual volumetric video-based coding (V3C) and video-based point cloud compression (V-PCC)',
-    url: 'https://www.iso.org/standard/83535.html',
+    url: 'https://www.iso.org/standard/89030.html',
     layer: 'Coding',
     note: 'the V3C base bitstream and the V-PCC profile',
   },

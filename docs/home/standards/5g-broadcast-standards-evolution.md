@@ -16,7 +16,7 @@ description: Release-by-release detail on 3GPP work items, Change Requests and R
 </div>
 </div>
 
-This page is the detailed, release-by-release companion to [Standards: 5G Broadcast](/standards/5g-broadcast): the work items, Change Requests and RAN meetings behind each release. See that page for the ETSI TS 103 720 overview, the full specification list and current capabilities. For acronyms used here, see the [Glossary](/tech/glossary).
+This page is the detailed, release-by-release companion to [Standards: 5G Broadcast](/standards/5g-broadcast): the work items, Change Requests and RAN meetings behind each release. See that page for the ETSI TS 103 720 overview, the full specification list and current capabilities.
 
 <div class="godeeper-grid" style="grid-template-columns: repeat(auto-fit, minmax(0, 380px));">
 

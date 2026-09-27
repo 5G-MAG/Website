@@ -35,9 +35,9 @@ const STAGE_BASKET_ROWS = BASKETS.map((b) => ({
   ),
 })).filter((b) => b.projects.length > 0);
 
-function StageTable({ projects, accent }) {
+function StageTable({ projects }) {
   return (
-    <div className={styles.chartGroupRows} style={{ '--accent': accent }}>
+    <div className={styles.chartGroupRows}>
       {projects.map((p) => (
         <ChartRow key={p.name} project={p} />
       ))}
@@ -168,6 +168,11 @@ export default function Home() {
                 </div>
               ))}
             </div>
+            <p className={styles.sectionSubtitle} style={{ marginTop: '1.5rem' }}>
+              See it built: browse the <Link to="/reference-tools">Reference Tools</Link> behind
+              these specifications, evaluate them on a <Link to="/testbeds">Testbed</Link>, or
+              explore <Link to="/showcase">Application Showcases</Link> built from them.
+            </p>
           </div>
         </section>
 
@@ -189,15 +194,21 @@ export default function Home() {
             <h2 className={styles.sectionTitle}>Where We Stand</h2>
             <p className={styles.sectionSubtitle}>What we are working on, and how far along it is.</p>
             {STAGE_BASKET_ROWS.map((b) => {
-              const accent = BASKET_ACCENT[b.key] || '#00a0d2';
+              // 2026-09-27, direct instruction: "only the banner per basket
+              // will have color" -- the basket accent now tints only the
+              // banner itself (basketHeader, via its own scoped --accent
+              // override below); everything else in the block (border
+              // rail, project rows, progress bars) uses the site's normal
+              // blue instead of a per-basket one.
+              const basketAccent = BASKET_ACCENT[b.key] || '#00a0d2';
               return (
                 <div
                   key={b.key}
                   id={b.key}
                   className={styles.basketBlock}
-                  style={{ '--accent': accent }}
+                  style={{ '--accent': 'var(--ifm-color-primary)' }}
                 >
-                  <div className={styles.basketHeader}>
+                  <div className={styles.basketHeader} style={{ '--accent': basketAccent }}>
                     {iconForCatalogKey(b.icon) && (
                       <span className={styles.basketIcon}>{iconForCatalogKey(b.icon)}</span>
                     )}
@@ -233,7 +244,7 @@ export default function Home() {
                       ))}
                     </div>
                   </div>
-                  <StageTable projects={b.projects} accent={accent} />
+                  <StageTable projects={b.projects} />
                 </div>
               );
             })}
@@ -275,8 +286,6 @@ export default function Home() {
           <p className={styles.otherResourcesLine}>
             Also on this hub:{' '}
             <Link to="/tech/specifications">Specifications</Link>
-            {' · '}
-            <Link to="/tech/glossary">Glossary</Link>
             {' · '}
             <Link to="/tech/3gpp-work-items">3GPP Work Items per Release</Link>
           </p>

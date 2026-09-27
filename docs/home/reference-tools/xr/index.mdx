@@ -6,14 +6,14 @@ sidebar_position: -1
 description: Reference player and server for eXtended Reality (XR) content delivered over 5G networks, implementing MPEG-I Scene Description.
 ---
 
-import CommunityStats from '@site/src/components/CommunityStats';
-import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
-import ProjectVideos from '@site/src/components/ProjectVideos';
+import ProjectContributors from '@site/src/components/ProjectContributors';
+import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
+import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import youtubePlaylists from '@site/static/data/youtube-playlists.json';
+import { REPO_METADATA } from '@site/src/data/baskets';
 
-export const projectVideos = (youtubePlaylists.projects?.xr?.videos || []).slice(0, 1);
+export const REPO_COUNT = (REPO_METADATA['xr'] || []).length;
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -31,11 +31,7 @@ export const projectVideos = (youtubePlaylists.projects?.xr?.videos || []).slice
 </div>
 </div>
 
-<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/xr/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/xr/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/xr/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/xr/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
-
-## What it does
-
-The tools enable delivery of dynamic 3D scenes composed of [glTF](/tech/glossary) (GL Transmission Format) objects, spatial audio, and haptic elements, transported via the 5G Media Streaming ([5GMS](/tech/glossary)) framework ([TS 26.512](https://www.3gpp.org/dynareport/26512.htm)). Designed for developers exploring immersive media delivery and XR experiences on 5G devices and platforms.
+The tools enable delivery of dynamic 3D scenes composed of glTF (GL Transmission Format) objects, spatial audio, and haptic elements, transported via the 5G Media Streaming (5GMS) framework ([TS 26.512](https://www.3gpp.org/dynareport/26512.htm)). Designed for developers exploring immersive media delivery and XR experiences on 5G devices and platforms. For the full glTF extension support matrices and how the tools map to the standard, see [Implementation Detail](./implementation); to see one assembled scenario already running, jump to [Immersive Media Experiences](/showcase/volumetric).
 
 ## Under the hood
 
@@ -43,9 +39,53 @@ The tools enable delivery of dynamic 3D scenes composed of [glTF](/tech/glossary
 
 <em>Volumetric capture demo running on the 5G-MAG Reference Tools.</em>
 
-## Repositories
+## What's Built
 
-<ProjectRepositories project="xr" />
+**{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
+
+<div class="godeeper-grid" style={{gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))'}}>
+
+<a class="godeeper-card" href="#repositories--releases">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h4"/></svg>
+<h3>Repositories</h3>
+</div>
+<div class="godeeper-card__body">
+<p>The real code behind this project, with each repository's latest release.</p>
+</div>
+</a>
+
+<a class="godeeper-card" href={useBaseUrl('/reference-tools/xr/implementation')}>
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5H7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2V7a2 2 0 0 0 -2 -2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><path d="M9 12l2 2l4 -4"/></svg>
+<h3>Implementation Detail</h3>
+</div>
+<div class="godeeper-card__body">
+<p>Which glTF extensions are supported, on which device family, and how the tools map to the standard.</p>
+</div>
+</a>
+
+<a class="godeeper-card" href={useBaseUrl('/reference-tools/xr/tutorials')}>
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 4v16l13 -8l-13 -8"/></svg>
+<h3>Call to Try</h3>
+</div>
+<div class="godeeper-card__body">
+<p>Build and test it yourself, with the tutorials.</p>
+</div>
+</a>
+
+<a class="godeeper-card" href="#developer-updates">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"/><path d="M3.6 9h16.8"/><path d="M3.6 15h16.8"/><path d="M11.5 3a17 17 0 0 0 0 18"/><path d="M12.5 3a17 17 0 0 1 0 18"/></svg>
+<h3>Developer Updates</h3>
+</div>
+<div class="godeeper-card__body">
+<p>Community stats, open pull requests and the roadmap.</p>
+</div>
+</a>
+
+</div>
 
 ## Standards implemented
 
@@ -56,41 +96,32 @@ The tools enable delivery of dynamic 3D scenes composed of [glTF](/tech/glossary
 </div>
 </div>
 
-ISO/IEC 23090-14 (MPEG-I Scene Description, the format that describes how 3D objects, media and audio are composed into a scene), plus the MPEG glTF 2.0 extensions listed on [Scope](./scope). 3GPP [TR 26.928](https://www.3gpp.org/dynareport/26928.htm) (Extended Reality (XR) in 5G) is the background study of use cases and requirements this work responds to, not a specification the tools implement; TS 26.512 (5GMS transport) is explicitly out of scope today (see [Scope](./scope) for the detail).
+ISO/IEC 23090-14 (MPEG-I Scene Description, the format that describes how 3D objects, media and audio are composed into a scene), plus the MPEG glTF 2.0 extensions listed on [Implementation Detail](./implementation). 3GPP [TR 26.928](https://www.3gpp.org/dynareport/26928.htm) (Extended Reality (XR) in 5G) is the background study of use cases and requirements this work responds to, not a specification the tools implement; TS 26.512 (5GMS transport) is explicitly out of scope today (see [Implementation Detail](./implementation) for the detail).
 
 See [XR on the Standards portal](/standards/xr) for version history and 5G-MAG's own standards contributions.
 
-## Contributors
+## Contributors & How to Contribute
 
 <ProjectContributors />
 
-## Community Stats
+## Repositories & Releases
+
+<ProjectRepositories project="xr" />
+
+## Developer Updates
 
 <CommunityStats name="XR/3D Scenes with MPEG-I Scene Description" />
 
----
+### Open Pull Requests
 
-## Try it yourself
+<ProjectOpenPRs name="XR/3D Scenes with MPEG-I Scene Description" />
 
-Follow the [tutorials](/reference-tools/xr/tutorials) to build the chain yourself, or jump to the [Immersive Media Experiences showcase](/showcase/volumetric) to see one assembled scenario already running.
+The roadmap for this project is maintained on GitHub Project (Kanban) boards, linked below. Each board tracks the planned and in-progress work for a given release or work area.
 
-<div class="event-post-grid">
+**General Project Roadmap:** the Kanban board below tracks the planned and in-progress work for XR/3D Scenes with MPEG-I Scene Description (XR Player and scene-description support). It is maintained live on GitHub.
 
-<a class="event-post-card" href={useBaseUrl('/docs/Reference_Tools_XR_Media_MPEG_I_SD.pdf')} target="_blank" rel="noreferrer">
-<img loading="lazy" src={useBaseUrl('/assets/images/projects/xr-slides-cover.jpg')} alt="XR/3D Scenes with MPEG-I Scene Description slide deck cover" />
-<span class="event-post-title">Slide deck: XR/3D Scenes with MPEG-I Scene Description overview</span>
-</a>
+[Kanban board: Roadmap](https://github.com/orgs/5G-MAG/projects/48/views/16)
 
-</div>
+**Developer Kanban Boards:**
 
-<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
-
-See the Reference Tools in action, with a community video from the tutorials page.
-
-<ProjectVideos videos={projectVideos} name="XR/3D Scenes with MPEG-I Scene Description" />
-
-| Area                        | Details                                                                                                |
-| --------------------------- | ------------------------------------------------------------------------------------------------------- |
-| **Technical documentation** | MPEG-I Scene Description overview and analysis: [XR on the Tech portal](/tech/xr)                      |
-| **Standards**               | ISO/IEC 23090-14, 3GPP XR work items: [XR on the Standards portal](/standards/xr)                      |
-| **Applications**            | Real, assembled scenarios built on this tool: [Immersive Media Experiences](/showcase/volumetric)  |
+- **XR: XR Player ISO/IEC 23090-14 support** — all issues related to the release of version 1.0.0 of the XR repositories dealing with [functionalities defined in ISO/IEC 23090-14](/standards/xr): [Kanban board](https://github.com/orgs/5G-MAG/projects/22)

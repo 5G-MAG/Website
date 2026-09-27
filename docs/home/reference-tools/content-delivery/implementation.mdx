@@ -1,0 +1,103 @@
+---
+title: Implementation Detail
+hide_title: true
+sidebar_position: 2
+description: Specifications and architecture diagrams for delivering DASH, HLS, and CMAF content over FLUTE and ROUTE in 5G Broadcast and 5G MBS.
+---
+
+import ImplementationBoard from '@site/src/components/ImplementationBoard';
+import { LIBFLUTE_COMPONENTS, LIBFLUTE_SECTIONS } from '@site/src/data/implementation/content-delivery';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1" />
+  <path d="M9 15l3 -3l3 3" />
+  <path d="M12 12l0 9" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Content Delivery Protocols</span>
+<h1>Implementation Detail</h1>
+</div>
+</div>
+
+<div style={{margin: '8px 0'}}><a class="button button--primary button--tab-current" href={useBaseUrl('/reference-tools/content-delivery/implementation')} style={{margin: '2px 4px 2px 0'}}>Implementation</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/content-delivery/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/content-delivery/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
+
+**Category:** IETF Implementations
+
+## What This Project Implements
+
+Content delivery protocols carry media files and segments to receivers over broadcast and multicast networks, where there is no per-receiver return channel. 5G-MAG provides reference tools for these application-layer protocols (including FLUTE and ROUTE for file and object delivery) so that content packaged as DASH, HLS or CMAF can be delivered efficiently over both 5G Broadcast and 5G Multicast Broadcast Services (MBS). This page lists the specifications in scope and shows how the tools fit into the broader broadcast and multicast architectures. It is aimed at developers integrating these delivery protocols into a 5G media chain.
+
+The content delivery reference tools implement two of these application-layer transports:
+
+- **FLUTE** (File Delivery over Unidirectional Transport) - the file-delivery transport, including the File Delivery Table (FDT) handling and FEC-based recovery. 5G-MAG maintains an open-source FLUTE library used in the 5G Broadcast tools.
+- **ROUTE** (Real-Time Transport Object Delivery over Unidirectional Transport) - the real-time object transport, with Source and Repair Flows for low-latency segment delivery.
+
+The tools sit above the media format: they carry DASH/HLS/CMAF segments and manifests as transport objects and are largely agnostic to the codec inside each segment.
+
+## Deployment Configurations
+
+### 5G Broadcast with Content Delivery Protocols
+
+The diagram below shows the content delivery protocol tools used with the LTE-based 5G Broadcast system, with links to the contributing component repositories.
+
+<img loading="lazy" src={useBaseUrl('/assets/images/projects/5gbc_diagram.png')} alt="Architecture combining the content delivery protocol tools with the 5G Broadcast system" style={{width: '80%'}}/>
+
+- [5G Broadcast](../5g-broadcast/)
+- [Content Delivery Protocols](../content-delivery/)
+- [Common Tools](../common-tools/)
+
+### 5G Multicast Broadcast Services (MBS) with Content Delivery Protocols
+
+The diagram below shows the same delivery protocol tools used with 5G Multicast Broadcast Services (MBS), with links to the contributing component repositories.
+
+<img loading="lazy" src={useBaseUrl('/assets/images/projects/mbs_diagram.png')} alt="Architecture combining the content delivery protocol tools with 5G Multicast Broadcast Services (MBS)" style={{width: '80%'}}/>
+
+- [5G Multicast Broadcast Services](../5g-mbs/)
+- [Content Delivery Protocols](../content-delivery/)
+- [3GPP RAN and Core Platforms](../3gpp-platforms/)
+- [Common Tools](../common-tools/)
+
+## rt-libflute: what's implemented, feature by feature
+
+The rest of this project's specification set (ROUTE, DASH/HLS/CMAF) is tracked at the role level above. FLUTE is 5G-MAG's own library, [rt-libflute](https://github.com/5G-MAG/rt-libflute), so it gets a rigorous, per-feature audit against TS 26.346 and the FLUTE RFCs instead. The board below groups the audit by protocol area, so you can jump straight to the one you care about.
+
+:::note[Key terms]
+- **FLUTE**: File Delivery over Unidirectional Transport &mdash; the protocol this library implements. **ALC** / **LCT**: the two lower-level building blocks FLUTE is built on (congestion control and packet framing, respectively).
+- **FDT**: File Delivery Table &mdash; a special FLUTE object (always sent with TOI 0) listing every file currently available in the session and how to decode it. Resent repeatedly ("carousel") so a receiver joining mid-session can still discover everything.
+- **TOI** / **TSI**: Transport Object Identifier (which file a packet belongs to) and Transport Session Identifier (which session). Every FLUTE packet carries both.
+- **FEC**: Forward Error Correction &mdash; redundant data that lets a receiver reconstruct a file even if some packets are lost, without a return channel to ask for a resend.
+:::
+
+:::note[Audit baseline]
+This describes the `rt-libflute` `development` branch as of 2026-08-11. It is a source-level reading of the code against the specification text, not a maintainer sign-off.
+:::
+
+:::caution[This is the gap that matters most]
+**Raptor FEC** (RFC 5053; TS 26.346 &sect;7.2.2, &sect;7.2.12, Annex B) &mdash; TS 26.346 &sect;7.2.2 states: "A UE that supports MBMS User Services **shall** support a decoder for the Raptor FEC scheme." That decoder does not exist in `development` today. Everything else in this audit is either done or a narrower gap; this is the one place the implementation falls short of a hard MUST-level requirement central to what MBMS/MBS download is for &mdash; without it, every download relies solely on Compact No-Code FEC.
+:::
+
+<ImplementationBoard components={LIBFLUTE_COMPONENTS} sections={LIBFLUTE_SECTIONS} />
+
+## Getting Started
+
+1. Choose a transport for your delivery model: FLUTE for a file/download model (as in MBMS), ROUTE for a real-time segment model.
+2. Package your content as DASH or HLS using CMAF segments so a single set of segments can serve both.
+3. Feed the segments and manifest through the delivery tool for your target system (5G Broadcast or 5G MBS), following the architectures above.
+4. Build from the [content delivery repositories](/reference-tools/content-delivery#repositories--releases); the [Tutorials](./tutorials) page has a demo video and repository pointers.
+
+## Related
+
+- [Project index](/reference-tools/content-delivery)
+- [Repositories & Releases](/reference-tools/content-delivery#repositories--releases)
+- [Tutorials](/reference-tools/content-delivery/tutorials)
+- [Slide deck: Content Delivery Protocols overview](/docs/Reference_Tools_Multimedia_delivery_protocols.pdf)
+- Standards: [Content Delivery Protocols](/standards/content-delivery) &mdash; the full specification list, including the 3GPP chain that mandates FLUTE version 1 rather than v2. The transports are stable IETF RFCs, so there is no 3GPP-style release cadence at the transport layer; the tools track the current RFCs and the ways 5G Broadcast and 5G MBS reference them.
+- Tech: [Content Delivery Protocols](/tech/content-delivery) &mdash; the LCT/ALC/FEC building blocks, FLUTE compared with ROUTE, and how DASH/HLS/CMAF are carried over them
+- Tech: [5G Broadcast: TV, Radio and Emergency Alerts](/tech/5g-broadcast) and [Multicast &amp; Broadcast in 5G](/tech/5g-mbs) &mdash; the delivery systems these transports run over
+
+:::note
+Refer to the [content delivery repositories](https://github.com/5G-MAG) on GitHub to use or contribute to these Reference Tools.
+:::

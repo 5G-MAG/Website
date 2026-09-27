@@ -5,7 +5,7 @@
       "name": "5G Media Streaming (5GMS)",
       "doc_url": "/reference-tools/5gms/",
       "tagline": "Driving collaboration between mobile networks and media applications",
-      "releases_slug": "resources",
+      "releases_slug": "#repositories--releases",
       "image": "/assets/images/projects/5gms.png",
       "latest_date": "2026-08-03",
       "releases": [
@@ -96,7 +96,7 @@
       "name": "5G Broadcast - TV and Radio Services",
       "doc_url": "/reference-tools/5g-broadcast/",
       "tagline": "LTE-based 5G broadcast for TV, radio and emergency alerts",
-      "releases_slug": "resources",
+      "releases_slug": "#repositories--releases",
       "image": "/assets/images/projects/5g-broadcast.png",
       "latest_date": "2026-09-01",
       "releases": [
@@ -169,7 +169,7 @@
       "name": "5G Broadcast - Emergency Alerts",
       "doc_url": "/reference-tools/emergency-alerts/",
       "tagline": "Cell Broadcast Service warnings delivered over FeMBMS",
-      "releases_slug": "resources",
+      "releases_slug": "#repositories--releases",
       "image": "/assets/images/projects/emergency-alerts.png",
       "latest_date": "2024-09-05",
       "releases": [
@@ -188,7 +188,7 @@
       "name": "XR/3D Scenes with MPEG-I Scene Description",
       "doc_url": "/reference-tools/xr/",
       "tagline": "MPEG-I scene description and XR media integration over 5G",
-      "releases_slug": "resources",
+      "releases_slug": "#repositories--releases",
       "image": "/assets/images/projects/xr.png",
       "latest_date": "2025-04-16",
       "releases": [
@@ -216,7 +216,7 @@
       "name": "5G Multicast Broadcast Services (MBS)",
       "doc_url": "/reference-tools/5g-mbs/",
       "tagline": "5G-native multicast and broadcast services · 3GPP 5G MBS",
-      "releases_slug": "resources",
+      "releases_slug": "#repositories--releases",
       "image": "/assets/images/projects/5g-mbs.png",
       "latest_date": "2026-09-01",
       "releases": [
@@ -298,7 +298,7 @@
       "name": "UE Data Collection, Reporting and Event Exposure",
       "doc_url": "/reference-tools/data-collection/",
       "tagline": "UE-side data collection, reporting and event exposure · 3GPP TS 26.531",
-      "releases_slug": "resources",
+      "releases_slug": "#repositories--releases",
       "image": "/assets/images/projects/data-collection.png",
       "latest_date": "2025-05-13",
       "releases": [
@@ -317,7 +317,7 @@
       "name": "MPEG V3C Immersive Platform",
       "doc_url": "/reference-tools/v3c/",
       "tagline": "V3C volumetric video platform for immersive 5G experiences",
-      "releases_slug": "resources",
+      "releases_slug": "#repositories--releases",
       "image": "/assets/images/projects/v3c.png",
       "latest_date": "2025-10-09",
       "releases": [
@@ -373,7 +373,7 @@
       "name": "Conversational Avatar Communication with MPEG ARF",
       "doc_url": "/reference-tools/avatar/",
       "tagline": "Real-time conversational avatars over 5G using MPEG ARF",
-      "releases_slug": "resources",
+      "releases_slug": "#repositories--releases",
       "image": "/assets/images/projects/avatar.png",
       "latest_date": "2026-07-31",
       "releases": [
@@ -392,7 +392,7 @@
       "name": "Common Tools",
       "doc_url": "/reference-tools/common-tools/",
       "tagline": "Shared helper repositories supporting 5G-MAG Reference Tools",
-      "releases_slug": "resources",
+      "releases_slug": "#repositories--releases",
       "image": "/assets/images/projects/common-tools.png",
       "latest_date": "2026-08-03",
       "releases": [
@@ -411,7 +411,7 @@
       "name": "Content Delivery Protocols",
       "doc_url": "/reference-tools/content-delivery/",
       "tagline": "Content delivery protocols and related tools",
-      "releases_slug": "resources",
+      "releases_slug": "#repositories--releases",
       "image": "/assets/images/projects/multimedia.png",
       "latest_date": "2026-09-01",
       "releases": [

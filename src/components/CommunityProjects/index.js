@@ -157,11 +157,11 @@ function buildMergedProjects() {
       null
     );
 
-    // doc_url/tagline come from taxonomy.json live (PROJECT_BY_NAME), not
-    // from statsData's own copy of them -- statsData/pullRequestsData are
-    // cron-generated snapshots that only ever get these two fields right
-    // as of whenever the cron last ran, so a same-day taxonomy tagline or
-    // doc_url edit showed here only after the next cron run otherwise.
+    // doc_url/tagline/releases_slug come from taxonomy.json live
+    // (PROJECT_BY_NAME), not from statsData's own copy of them --
+    // statsData/pullRequestsData are cron-generated snapshots that only ever
+    // get these fields right as of whenever the cron last ran, so a same-day
+    // taxonomy edit showed here only after the next cron run otherwise.
     // Falls back to statsProject's own copy for the rare stats-only name
     // taxonomy no longer has (should not happen; still real-world-safe).
     const taxonomyProject = PROJECT_BY_NAME.get(statsProject.name);
@@ -169,6 +169,7 @@ function buildMergedProjects() {
       name: statsProject.name,
       doc_url: taxonomyProject?.doc_url ?? statsProject.doc_url,
       tagline: taxonomyProject?.tagline ?? statsProject.tagline,
+      releases_slug: taxonomyProject?.releases_slug ?? statsProject.releases_slug,
       repos: statsProject.repos,
       releases,
       openPRs,
@@ -247,7 +248,7 @@ function OpenPRList({ pulls }) {
 }
 
 function ProjectDetails({ project }) {
-  const releaseUrl = project.doc_url ? project.doc_url + 'resources' : null;
+  const releaseUrl = project.doc_url ? project.doc_url + (project.releases_slug ?? 'resources') : null;
   const latestDays = project.latestRelease ? daysSince(project.latestRelease.date) : 9999;
   const contributors = projectsData.find((p) => p.name === project.name)?.contributors || [];
 

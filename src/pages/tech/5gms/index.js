@@ -85,8 +85,7 @@ export default function FiveGMS() {
                   This lets a streaming application request network assistance — QoS, dynamic
                   policies, consumption reporting — through a standard interface rather than a
                   bespoke, operator-specific one, and lets the network offer that assistance without
-                  needing to understand the application&apos;s own business logic. For acronyms used
-                  here, see the <Link to="/tech/glossary">Glossary</Link>.
+                  needing to understand the application&apos;s own business logic.
                 </p>
                 {PROJECT.sdos?.length > 0 && (
                   <div className={styles.capabilityTags}>
@@ -105,7 +104,7 @@ export default function FiveGMS() {
               />
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>Why It Matters</h3>
+              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
               <p className={styles.whyMattersBody}>
                 Before a standard interface like this existed, a streaming application wanting
                 network assistance had no common way to ask for it, and an operator had no common
@@ -124,7 +123,7 @@ export default function FiveGMS() {
           <div className="container">
             <ProjectDestinationCards
               accent={ACCENT}
-              analysisHref="/tech/5gms/overview-5gms"
+              analysisHref="/tech/5gms/overview"
               standardsHref="/standards/5gms"
               softwareHref="/reference-tools/5gms"
             />
@@ -213,7 +212,7 @@ export default function FiveGMS() {
               The downlink direction (5GMSd) uses a &quot;d&quot; suffix (M1d to M8d) and the uplink
               direction (5GMSu) a &quot;u&quot; suffix (M1u to M8u). The 5G-MAG reference tools
               implement the downlink direction. The{' '}
-              <Link to="/tech/5gms/overview-5gms">5GMS Overview</Link> works through the entities and
+              <Link to="/tech/5gms/overview">5GMS Overview</Link> works through the entities and
               reference points in detail, the{' '}
               <Link to="/tech/5gms/features-5gmsd">5GMSd Features</Link> page maps each downlink
               feature to its reference points and APIs, and{' '}

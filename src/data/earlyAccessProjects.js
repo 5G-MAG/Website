@@ -34,10 +34,10 @@ export const EARLY_ACCESS_PROJECTS = [
     // taxonomy.json's `repoMetadata`). Without this entry the request form's dropdown
     // (built from this array, see EarlyAccessForm) had no way to name this
     // repo at all, even though ProjectRepositories renders it with a real
-    // "Private / request access" badge on /reference-tools/v3c/resources
-    // (2026-08-25 findability follow-up).
+    // "Private / request access" badge on /reference-tools/v3c
+    // (2026-08-25 findability follow-up; page consolidated 2026-09-27).
     name: 'MPEG V3C Example Content',
-    href: '/reference-tools/v3c/resources',
+    href: '/reference-tools/v3c',
     desc: "Example V3C content and helper files for testing the encoding, delivery and rendering pipeline. The rest of the MPEG V3C Immersive Platform project is already public.",
   },
 ];

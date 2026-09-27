@@ -20,7 +20,7 @@ description: Tests the MBS Transport Function with curl and Wireshark across sin
 </div>
 </div>
 
-This tutorial describes the initial reference implementation of the MBS Transport Function (MBSTF) as specified in 3GPP [TS 26.517](https://www.3gpp.org/dynareport/26517.htm) and 3GPP [TS 29.581](https://www.3gpp.org/dynareport/29581.htm). You can check out the videos to see more details or follow the write-up tutorial. For acronyms used here, see the [Glossary](/tech/glossary).
+This tutorial describes the initial reference implementation of the MBS Transport Function (MBSTF) as specified in 3GPP [TS 26.517](https://www.3gpp.org/dynareport/26517.htm) and 3GPP [TS 29.581](https://www.3gpp.org/dynareport/29581.htm). You can check out the videos to see more details or follow the write-up tutorial.
 
 ## Architecture
 

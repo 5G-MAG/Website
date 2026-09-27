@@ -1,7 +1,9 @@
 import { useMemo, useState } from 'react';
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
-import { ALL_PROJECTS } from '@site/src/data/baskets';
+import HubHero from '@site/src/components/HubHero';
+import JoinTheEffort from '@site/src/components/JoinTheEffort';
+import { ALL_PROJECTS, BASKET_ACCENT } from '@site/src/data/baskets';
 import styles from '../tech/index.module.css';
 // Shared with /reference-tools and /showcase; see the comment there
 // for why (2026-08-24 findability audit; extended here 2026-08-25).
@@ -11,21 +13,6 @@ import filterStyles from '../reference-tools/styles.module.css';
 // copied, so the two can't drift apart (direct instruction: "same
 // format... same search bar and everything").
 import { CategoryCard, topicFor } from '../reference-tools';
-
-const icon = (paths) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-    {paths}
-  </svg>
-);
 
 const TESTBEDS_ICON_PATH = (
   <>
@@ -60,19 +47,26 @@ export default function Testbeds() {
       title="Testbeds"
       description="Overview of 5G-MAG testbeds and evaluation frameworks for 6G traffic characterization, AI/ML, and beyond-2D video quality assessment."
     >
-      <div className="container" style={{ marginTop: '1.75rem' }}>
-        <div className="topic-banner">
-          <div className="topic-banner__icon-wrap">{icon(TESTBEDS_ICON_PATH)}</div>
-          <div className="topic-banner__text">
-            <span className="topic-banner__kicker">Software Accelerator</span>
-            <h1>Testbeds and Evaluation Tools</h1>
-          </div>
-        </div>
-      </div>
+      <HubHero
+        title="Testbeds and Evaluation Tools"
+        icon={TESTBEDS_ICON_PATH}
+        actions={[
+          <Link key="contribute" className="button button--primary" to="/contributing">
+            Contribute
+          </Link>,
+          <Link key="license" className="button button--outline button--primary" to="/license">
+            License Model
+          </Link>,
+          <Link key="early-access" className="button button--outline button--primary" to="/early-access">
+            Early Access
+          </Link>,
+        ]}
+      />
 
       <main>
         <section className={styles.section}>
           <div className="container">
+            <p className={filterStyles.filterLabel}>Looking for a specific testbed or technology?</p>
             <div className={filterStyles.filterBar}>
               <input
                 type="search"
@@ -89,11 +83,15 @@ export default function Testbeds() {
               )}
             </div>
             {filtered.length === 0 ? (
-              <p className={filterStyles.filterEmpty}>No testbeds match &ldquo;{query}&rdquo;.</p>
+              <p className={filterStyles.filterEmpty}>
+                No testbeds match &ldquo;{query}&rdquo;. Try a broader technology name (e.g. &ldquo;AI&rdquo;
+                or &ldquo;video&rdquo;).
+              </p>
             ) : (
               <div className={styles.categoryColumns}>
                 <CategoryCard
                   title="Testbeds & Evaluation Frameworks"
+                  accent={BASKET_ACCENT.testbeds}
                   desc={
                     <>
                       Access arrangements differ per testbed (some are open, others available on
@@ -107,6 +105,8 @@ export default function Testbeds() {
             )}
           </div>
         </section>
+
+        <JoinTheEffort alt />
       </main>
     </Layout>
   );

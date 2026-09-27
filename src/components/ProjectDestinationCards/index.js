@@ -12,6 +12,12 @@ import { ICON_CATALOG } from '@site/src/data/baskets';
 // ICON_CATALOG (src/data/taxonomy.json) instead of a hardcoded const
 // per page, so a future icon-catalog change reaches every page for free.
 //
+// `accent` is accepted but no longer applied to these 3 cards (2026-09-27,
+// direct instruction: "revert the colors in the tech analysis
+// specification reference tools card per project... only the
+// repositories will keep the color") -- left in the signature rather than
+// removed from all 18 flagship-page call sites, which still pass it in.
+//
 // `analysisHref`/`standardsHref`/`softwareHref`: the three destinations
 // (this project's own tech_url or a sub-analysis page, standards_url,
 // doc_url) -- one single "Explore More" link each, not a multi-link
@@ -31,7 +37,6 @@ import { ICON_CATALOG } from '@site/src/data/baskets';
 // Reference Tools' -- raised directly ("given we have testbeds maybe
 // make clear if it is reference tools or testbed").
 export default function ProjectDestinationCards({
-  accent,
   analysisHref,
   standardsHref,
   softwareHref,
@@ -41,7 +46,6 @@ export default function ProjectDestinationCards({
   return (
     <div className="godeeper-grid">
       <HubDestinationCard
-        accent={accent}
         title="Technical Analysis"
         desc="A blueprint of how this technology works, and what it's good for."
         href={analysisHref}
@@ -49,7 +53,6 @@ export default function ProjectDestinationCards({
         icon={icon(iconPaths('doc-report'))}
       />
       <HubDestinationCard
-        accent={accent}
         title="Specifications"
         desc="The real specifications this technology is built on."
         href={standardsHref}
@@ -58,7 +61,6 @@ export default function ProjectDestinationCards({
       />
       {softwareHref ? (
         <HubDestinationCard
-          accent={accent}
           title="Software Accelerator"
           desc={
             softwareIsTestbed

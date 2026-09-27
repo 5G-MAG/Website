@@ -6,13 +6,13 @@ sidebar_position: -1
 description: Describes the shared helper repositories (scripts, configs, build utilities) supporting 5G-MAG Reference Tools, with GitHub activity stats.
 ---
 import CommunityStats from '@site/src/components/CommunityStats';
+import ProjectContributors from '@site/src/components/ProjectContributors';
+import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
-import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import youtubePlaylists from '@site/static/data/youtube-playlists.json';
+import { REPO_METADATA } from '@site/src/data/baskets';
 
-export const projectVideos = (youtubePlaylists.projects?.['common-tools']?.videos || []).slice(0, 1);
-
+export const REPO_COUNT = (REPO_METADATA['common-tools'] || []).length;
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -25,37 +25,66 @@ export const projectVideos = (youtubePlaylists.projects?.['common-tools']?.video
 </div>
 </div>
 
-<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/common-tools/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/common-tools/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a></div>
+<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/common-tools/implementation')} style={{margin: '2px 4px 2px 0'}}>Implementation</a></div>
 
-## What it does
+You normally arrive here from a specific tool's own setup steps, not by starting here. [Implementation Detail](./implementation) lists which shared helper tool in `rt-common-shared` supports which Reference Tool project. There is no dedicated Tutorials page for Common Tools: these scripts and configs are consumed as steps inside each supported project's own tutorial, not run standalone.
 
-You normally arrive here from a specific tool's own setup steps, not by starting here. [Scope](./scope) lists which shared helper tool in `rt-common-shared` supports which Reference Tool project, and [Resources](./resources) has the repository and latest releases. There is no dedicated Tutorials page for Common Tools: these scripts and configs are consumed as steps inside each supported project's own tutorial, not run standalone.
+## What's Built
 
-## Repositories
+**{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below — a supporting/shared dependency rather than a primary deliverable.
+
+<div class="godeeper-grid" style={{gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))'}}>
+
+<a class="godeeper-card" href="#repositories--releases">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h4"/></svg>
+<h3>Repositories</h3>
+</div>
+<div class="godeeper-card__body">
+<p>The real code behind this project, with its latest release.</p>
+</div>
+</a>
+
+<a class="godeeper-card" href={useBaseUrl('/reference-tools/common-tools/implementation')}>
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5H7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2V7a2 2 0 0 0 -2 -2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><path d="M9 12l2 2l4 -4"/></svg>
+<h3>Implementation Detail</h3>
+</div>
+<div class="godeeper-card__body">
+<p>Which shared helper supports which Reference Tools project.</p>
+</div>
+</a>
+
+<a class="godeeper-card" href="#developer-updates">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"/><path d="M3.6 9h16.8"/><path d="M3.6 15h16.8"/><path d="M11.5 3a17 17 0 0 0 0 18"/><path d="M12.5 3a17 17 0 0 1 0 18"/></svg>
+<h3>Developer Updates</h3>
+</div>
+<div class="godeeper-card__body">
+<p>Community stats and open pull requests.</p>
+</div>
+</a>
+
+</div>
+
+## Contributors & How to Contribute
+
+<ProjectContributors />
+
+## Repositories & Releases
 
 <ProjectRepositories project="common-tools" />
 
-## Community Stats
+## Developer Updates
 
 <CommunityStats name="Common Tools" />
 
----
+### Open Pull Requests
 
-## Try it yourself
+<ProjectOpenPRs name="Common Tools" />
 
-A slide deck introducing the shared helper tools is in preparation. In the meantime, [Scope](./scope) maps each helper in `rt-common-shared` to the project it supports.
+A slide deck introducing the shared helper tools is in preparation. In the meantime, [Implementation Detail](./implementation) maps each helper in `rt-common-shared` to the project it supports.
 
 {/* When the deck is ready: drop it in as static/docs/Reference_Tools_Common_Tools.pdf,
     generate a cover thumbnail, delete the paragraph above, and add the event-post-grid
     thumbnail card markup used on the other project index pages. */}
-
-<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
-
-<ProjectVideos videos={projectVideos} name="Common Tools" />
-
-**Go deeper**
-
-| Area                              | Details                                                                                                                                       |
-| --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Projects using these helpers**  | [Scope](./scope) maps each helper to the project it supports: [5G Media Streaming](../5gms), [5G Broadcast](../5g-broadcast), [3GPP RAN and Core Platforms](../3gpp-platforms) and [UE Data Collection](../data-collection) |
-| **Source and releases**           | Repositories and published versions: [Resources](./resources)                                                                                 |

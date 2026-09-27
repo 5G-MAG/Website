@@ -9,7 +9,6 @@ import {
   FACT_CLONES,
   FACT_LARGE_EVENTS,
   FACT_YEARLY_CONFERENCE,
-  FACT_SPEC_ISSUES,
   FACT_SDO_INPUTS,
 } from '@site/src/data/facts';
 import { MEMBERS } from '@site/src/data/members';
@@ -39,7 +38,6 @@ const FACTS = [
   { value: '+15', label: 'Spec-compliant reference tools' },
   FACT_LARGE_EVENTS,
   FACT_YEARLY_CONFERENCE,
-  FACT_SPEC_ISSUES,
   FACT_SDO_INPUTS,
 ];
 
@@ -174,13 +172,24 @@ export default function Membership() {
                 scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)',
               }}
             >
-              <h3 style={{ textAlign: 'center', marginBottom: '1rem' }}>
+              <h3 style={{ textAlign: 'center', marginBottom: '0.5rem' }}>
                 Or request membership information now
               </h3>
+              <p
+                style={{
+                  textAlign: 'center',
+                  color: 'var(--ifm-color-emphasis-700)',
+                  marginBottom: '1rem',
+                }}
+              >
+                After you get in touch, we will follow up directly and share the Articles of
+                Association and the Internal Rules as the next step.
+              </p>
               <ContactForm
                 web3formsKey="ef3b8cf9-bbc3-413a-9983-b269b2495122"
                 subject="Membership Enquiry — 5G-MAG website"
                 submitLabel="Send enquiry"
+                successNote="Next, we will follow up directly and share the Articles of Association and the Internal Rules with you."
               />
             </div>
           </div>

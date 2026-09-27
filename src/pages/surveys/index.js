@@ -1,22 +1,8 @@
 import Layout from '@theme/Layout';
+import HubHero from '@site/src/components/HubHero';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import { SURVEYS } from '@site/src/data/surveys';
 import styles from '../tech/index.module.css';
-
-const icon = (paths) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-    {paths}
-  </svg>
-);
 
 const SURVEY_ICON_PATH = (
   <>
@@ -61,15 +47,7 @@ export default function Surveys() {
       title="Industry Surveys"
       description="Share your input through 5G-MAG's industry surveys — help shape the requirements and priorities members bring to standards bodies."
     >
-      <div className="container" style={{ marginTop: '1.75rem' }}>
-        <div className="topic-banner">
-          <div className="topic-banner__icon-wrap">{icon(SURVEY_ICON_PATH)}</div>
-          <div className="topic-banner__text">
-            <span className="topic-banner__kicker">Standardisation</span>
-            <h1>Industry Surveys</h1>
-          </div>
-        </div>
-      </div>
+      <HubHero title="Industry Surveys" icon={SURVEY_ICON_PATH} />
 
       <main>
         {openSurveys.length > 0 ? (

@@ -105,13 +105,59 @@ const config = {
           { from: '/tech/standards/ls', to: '/ls' },
           { from: '/standards/ls', to: '/ls' },
           { from: '/tech/standards/requirements', to: '/standards/requirements' },
+          { from: '/tech/5gms/overview-5gms', to: '/tech/5gms/overview' },
+          // /reference-tools/5gms/resources removed (2026-09-27): its real
+          // content (Packages table) moved onto the project index, its
+          // Repositories/Releases lists were redundant with sections already
+          // on that same index.
+          { from: '/reference-tools/5gms/resources', to: '/reference-tools/5gms' },
+          // /reference-tools/5gms/scope removed (2026-09-27): the project's
+          // sub-pages were consolidated down to index/tutorials/implementation;
+          // all of scope's real content (deployment configurations, downlink
+          // entity figure, Provisioning Session example, Docker deployment)
+          // moved onto the Implementation Detail page.
+          { from: '/reference-tools/5gms/scope', to: '/reference-tools/5gms/implementation' },
           // These two DID go briefly live on www.5g-mag.com (merged to main
           // as part of the same push that first synced private -> public,
           // then removed again days later once their duplication with the
           // project's existing Standards/Scope pages was caught) -- redirect
           // to wherever their content actually ended up.
           { from: '/reference-tools/multimedia/rt-libflute-standards', to: '/standards/content-delivery' },
-          { from: '/reference-tools/multimedia/rt-libflute-implementation', to: '/reference-tools/content-delivery/scope' },
+          { from: '/reference-tools/multimedia/rt-libflute-implementation', to: '/reference-tools/content-delivery/implementation' },
+          // Reference Tools template rollout (2026-09-27): every project's
+          // Scope + Resources pages consolidated into one Implementation
+          // Detail page, with Repositories/Releases folded onto the project
+          // index -- same pattern as the 5gms pilot above. Real content
+          // (deployment diagrams, feature audits, packages tables) moved,
+          // not dropped; see each project's implementation.mdx.
+          { from: '/reference-tools/3gpp-platforms/scope', to: '/reference-tools/3gpp-platforms/implementation' },
+          { from: '/reference-tools/3gpp-platforms/resources', to: '/reference-tools/3gpp-platforms' },
+          { from: '/reference-tools/5g-broadcast/scope', to: '/reference-tools/5g-broadcast/implementation' },
+          { from: '/reference-tools/5g-broadcast/resources', to: '/reference-tools/5g-broadcast' },
+          { from: '/reference-tools/5g-core/scope', to: '/reference-tools/5g-core/implementation' },
+          { from: '/reference-tools/5g-core/resources', to: '/reference-tools/5g-core' },
+          { from: '/reference-tools/5g-mbs/scope', to: '/reference-tools/5g-mbs/implementation' },
+          { from: '/reference-tools/5g-mbs/resources', to: '/reference-tools/5g-mbs' },
+          { from: '/reference-tools/avatar/scope', to: '/reference-tools/avatar/implementation' },
+          { from: '/reference-tools/avatar/resources', to: '/reference-tools/avatar' },
+          { from: '/reference-tools/content-delivery/scope', to: '/reference-tools/content-delivery/implementation' },
+          { from: '/reference-tools/content-delivery/resources', to: '/reference-tools/content-delivery' },
+          { from: '/reference-tools/data-collection/scope', to: '/reference-tools/data-collection/implementation' },
+          { from: '/reference-tools/data-collection/resources', to: '/reference-tools/data-collection' },
+          { from: '/reference-tools/dvb-i/scope', to: '/reference-tools/dvb-i/implementation' },
+          { from: '/reference-tools/dvb-i/resources', to: '/reference-tools/dvb-i' },
+          { from: '/reference-tools/emergency-alerts/scope', to: '/reference-tools/emergency-alerts/implementation' },
+          { from: '/reference-tools/emergency-alerts/resources', to: '/reference-tools/emergency-alerts' },
+          { from: '/reference-tools/network-apis/scope', to: '/reference-tools/network-apis/implementation' },
+          { from: '/reference-tools/network-apis/resources', to: '/reference-tools/network-apis' },
+          { from: '/reference-tools/v3c/scope', to: '/reference-tools/v3c/implementation' },
+          { from: '/reference-tools/v3c/resources', to: '/reference-tools/v3c' },
+          { from: '/reference-tools/vdmc/scope', to: '/reference-tools/vdmc/implementation' },
+          { from: '/reference-tools/vdmc/resources', to: '/reference-tools/vdmc' },
+          { from: '/reference-tools/xr/scope', to: '/reference-tools/xr/implementation' },
+          { from: '/reference-tools/xr/resources', to: '/reference-tools/xr' },
+          { from: '/reference-tools/common-tools/scope', to: '/reference-tools/common-tools/implementation' },
+          { from: '/reference-tools/common-tools/resources', to: '/reference-tools/common-tools' },
           // /testing renamed to /action (2026-08-24): live on www.5g-mag.com
           // since the 2026-07-28 cutover, so bookmarks/search-engine
           // indexing may still point at the old path.
@@ -138,8 +184,8 @@ const config = {
           { from: '/standards/multimedia', to: '/standards/content-delivery' },
           { from: '/tech/multimedia/multimedia-content-delivery', to: '/tech/content-delivery' },
           { from: '/reference-tools/multimedia', to: '/reference-tools/content-delivery' },
-          { from: '/reference-tools/multimedia/scope', to: '/reference-tools/content-delivery/scope' },
-          { from: '/reference-tools/multimedia/resources', to: '/reference-tools/content-delivery/resources' },
+          { from: '/reference-tools/multimedia/scope', to: '/reference-tools/content-delivery/implementation' },
+          { from: '/reference-tools/multimedia/resources', to: '/reference-tools/content-delivery' },
           { from: '/reference-tools/multimedia/tutorials', to: '/reference-tools/content-delivery/tutorials' },
         ],
       },
@@ -171,6 +217,7 @@ const config = {
         path: 'docs/tech',
         routeBasePath: 'tech',
         sidebarPath: './sidebars-tech.js',
+        breadcrumbs: false,
       },
     ],
     [
@@ -184,6 +231,7 @@ const config = {
         path: 'docs/home',
         routeBasePath: '',
         sidebarPath: './sidebars-home.js',
+        breadcrumbs: false,
       },
     ],
   ],

@@ -471,7 +471,7 @@ export default function HeroSlideshow() {
                           'button button--outline button--primary',
                           styles.slideBtnOutline
                         )}
-                        to={`${slide.doc_url}${slide.releases_slug || 'resources'}`}
+                        to={`${slide.doc_url}${slide.releases_slug ?? 'resources'}`}
                       >
                         Releases
                       </Link>

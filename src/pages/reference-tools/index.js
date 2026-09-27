@@ -1,5 +1,8 @@
 import { useMemo, useState } from 'react';
+import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
+import HubHero from '@site/src/components/HubHero';
+import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import { icon } from '@site/src/components/GodeeperCard';
 import HubDestinationCard from '@site/src/components/HubDestinationCard';
 import { ALL_PROJECTS, BASKETS, BASKET_ACCENT, ICON_CATALOG, reposFor } from '@site/src/data/baskets';
@@ -95,6 +98,19 @@ const TOPIC_META = {
   'CAMARA Connectivity Quality Management APIs': {
     desc: 'CAMARA-compliant API clients for QoS-aware media applications.',
   },
+  'Real-time Media Communication (RTC) Architecture': {
+    desc: 'No dedicated reference tool yet; one related repository (3GPP SWAP Protocol) is tracked below.',
+    tags: ['Web', 'Docker'],
+  },
+  'Non-Terrestrial Networks in 5G Systems': {
+    desc: 'Analysis-only today — see the Technical Analysis and Specifications for what\'s defined.',
+  },
+  'Non-Public Networks': {
+    desc: 'Analysis-only today — see the Technical Analysis and Specifications for what\'s defined.',
+  },
+  'Time-Sensitive Communications (TSC)': {
+    desc: 'Analysis-only today — see the Technical Analysis and Specifications for what\'s defined.',
+  },
   'Common Tools': {
     desc: 'Shared scripts, example configurations and build utilities used across several Reference Tools.',
     tags: ['Linux', 'Cloud'],
@@ -125,6 +141,8 @@ const BASKET_DESC = {
   'immersive-media': 'Reference implementations of MPEG scene-description, avatar and volumetric-video standards.',
   multicast: 'Reference implementations of native multicast delivery over 5G.',
   'connected-media-production': 'Reference implementations of CAMARA telco network APIs for connected production.',
+  rtc: 'Reference implementations for interactive, low-latency, real-time media communication.',
+  ntn: 'Reference implementations for content delivery over satellite and HAPS non-terrestrial networks.',
 };
 
 // Every doc_url'd project except the testbeds-basket ones, which are
@@ -176,10 +194,12 @@ export function topicFor(project) {
     tags: meta.tags,
     icon: iconForProject(project),
     repoCount: reposFor(project).length,
-    // Only set for a real basket topic -- the Shared Infrastructure
-    // residual group below has no basket of its own, so its cards keep
-    // the shared card's default color and no basket label.
-    accent: basket && BASKET_ACCENT[basket.key],
+    // No longer accent-tinted (2026-09-27, direct instruction: "only the
+    // repositories will keep the color" -- these per-project tiles aren't
+    // repository cards, so they revert to the site's normal blue, same as
+    // the ProjectDestinationCards triad on each flagship page). basketLabel
+    // stays; it's real information (which basket this project belongs to),
+    // not a color choice.
     basketLabel: basket?.title,
   };
 }
@@ -193,11 +213,19 @@ const CATEGORIES = [
   ...BASKETS.map((b) => ({
     title: b.title,
     desc: BASKET_DESC[b.key],
+    // 2026-09-27: propagated from /tech's own Where We Stand basket
+    // banners, direct instruction -- each basket's own accent color, kept
+    // to the header band only (project cards below keep their own
+    // existing per-project accent, untouched).
+    accent: BASKET_ACCENT[b.key],
     topics: REFTOOLS_PROJECTS.filter((p) => p.basket === b.key).map(topicFor),
   })),
   {
     title: 'Shared Infrastructure',
     desc: 'Shared infrastructure and reference-consumer repositories other Reference Tools projects build on or exercise.',
+    // No real basket, so no accent -- CategoryCard falls back to the
+    // site's normal blue, same as every basket-less card already does
+    // elsewhere.
     topics: REFTOOLS_PROJECTS.filter((p) => !p.basket).map(topicFor),
   },
 ].filter((c) => c.topics.length > 0);
@@ -206,10 +234,10 @@ const CATEGORIES = [
 // this same gradient-header-plus-grid box rather than a second copy of
 // it (that page's own basket happens to be just one, but the shared
 // look is the point, not the count).
-export function CategoryCard({ title, desc, topics }) {
+export function CategoryCard({ title, desc, accent, topics }) {
   return (
     <div className={styles.categoryCard}>
-      <div className={styles.categoryHeader}>
+      <div className={styles.categoryHeader} style={{ '--accent': accent || 'var(--ifm-color-primary)' }}>
         <h3 className={styles.categoryTitle}>{title}</h3>
         <p className={styles.categoryDesc}>{desc}</p>
       </div>
@@ -268,19 +296,26 @@ export default function ReferenceTools() {
       title="Reference Tools"
       description="Directory of 5G-MAG Reference Tools projects and their repositories, grouped by technology area."
     >
-      <div className="container" style={{ marginTop: '1.75rem' }}>
-        <div className="topic-banner">
-          <div className="topic-banner__icon-wrap">{icon(REFTOOLS_ICON_PATH)}</div>
-          <div className="topic-banner__text">
-            <span className="topic-banner__kicker">Software Accelerator</span>
-            <h1>Reference Tools</h1>
-          </div>
-        </div>
-      </div>
+      <HubHero
+        title="Reference Tools"
+        icon={REFTOOLS_ICON_PATH}
+        actions={[
+          <Link key="contribute" className="button button--primary" to="/contributing">
+            Contribute
+          </Link>,
+          <Link key="license" className="button button--outline button--primary" to="/license">
+            License Model
+          </Link>,
+          <Link key="early-access" className="button button--outline button--primary" to="/early-access">
+            Early Access
+          </Link>,
+        ]}
+      />
 
       <main>
         <section className={styles.section}>
           <div className="container">
+            <p className={filterStyles.filterLabel}>Looking for a specific project or technology?</p>
             <div className={filterStyles.filterBar}>
               <input
                 type="search"
@@ -310,6 +345,8 @@ export default function ReferenceTools() {
             )}
           </div>
         </section>
+
+        <JoinTheEffort alt />
       </main>
     </Layout>
   );

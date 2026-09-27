@@ -17,7 +17,7 @@ description: 'Real, assembled immersive-media applications built on 5G-MAG’s X
 
 ## Overview
 
-An Application, on this site, is a real working scenario assembled from one or more Reference Tools, pointed at a concrete use case, rather than a single tool's own tutorial in isolation. This category covers media that goes beyond a flat single-camera picture: sharing 3D/AR assets as message attachments, volumetric video (a scene captured in three dimensions so a viewer can change viewpoint) streamed to a handheld device, and authoring XR content for playback in the XR player. It brings together 5G-MAG's XR and V3C (Visual Volumetric Video-based Coding) reference tools; this page previously covered volumetric video alone, and now covers the wider set of immersive scenarios built on both. For acronyms used here, see the [Glossary](/tech/glossary).
+An Application, on this site, is a real working scenario assembled from one or more Reference Tools, pointed at a concrete use case, rather than a single tool's own tutorial in isolation. This category covers media that goes beyond a flat single-camera picture: sharing 3D/AR assets as message attachments, volumetric video (a scene captured in three dimensions so a viewer can change viewpoint) streamed to a handheld device, and authoring XR content for playback in the XR player. It brings together 5G-MAG's XR and V3C (Visual Volumetric Video-based Coding) reference tools; this page previously covered volumetric video alone, and now covers the wider set of immersive scenarios built on both.
 
 ## Immersive 3D Media Messaging
 

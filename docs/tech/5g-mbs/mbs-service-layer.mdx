@@ -24,7 +24,7 @@ This documentation is currently **under development and subject to change**. If 
 
 ## MBS Service Layer Aspects
 
-This page summarises the MBS user-service layer: the higher-level abstraction (defined in [TS 26.502](https://www.3gpp.org/dynareport/26502.htm)) that sits on top of the low-level MBS Services, the control-plane and user-plane functions that realise it (the MBSF and the MBSTF), and the reference points that connect them. It complements the [Service and System Aspects](./mbs-service-system-aspects) page, which covers the underlying 5G Core architecture, and the [RAN Aspects](./ran-aspects) page, which covers the radio side. For acronyms used here, see the [Glossary](/tech/glossary).
+This page summarises the MBS user-service layer: the higher-level abstraction (defined in [TS 26.502](https://www.3gpp.org/dynareport/26502.htm)) that sits on top of the low-level MBS Services, the control-plane and user-plane functions that realise it (the MBSF and the MBSTF), and the reference points that connect them. It complements the [Service and System Aspects](./mbs-service-system-aspects) page, which covers the underlying 5G Core architecture, and the [RAN Aspects](./ran-aspects) page, which covers the radio side.
 
 Two points apply to every figure and interaction described below (stated once here rather than repeated per figure):
 
@@ -148,7 +148,7 @@ The MBSTF supports two distribution methods, and the choice affects both what th
 - In the **packet distribution method**, the MBSTF forwards ingested packet payloads with minimal processing towards the MB-UPF, and the MBSTF Client exposes the received packets directly to the MBS-Aware Application at reference point MBS-7. This suits content that is already framed for transport, for example an RTP or MPEG-2 TS stream, where the transport framing is preserved end to end.
 - In the **object distribution method**, discrete files (objects) are carried in a FLUTE session as Asynchronous Layered Coding (ALC) packets. The MBSTF Client reassembles each object from the received packets before exposing it, typically via a local HTTP server. Because delivery is one-way and lossy, the object method is where object repair matters: if an object arrives incomplete, the client can fetch the missing byte ranges over unicast from the MBS AS at reference point MBS-4-UC, and only falls back to returning an incomplete object when repair is unavailable or there is no time for it.
 
-For DASH or HLS media, the object method maps segments to objects and the presentation manifest becomes a Service Entry Point object. The MBSTF can operate in a _streaming_ mode, scheduling object delivery in real time from a manifest such as a DASH MPD, or in _single-shot_, _collection_ and _carousel_ modes for file delivery. Which of these the 5G-MAG reference tools implement is listed on the [MBS scope page](/reference-tools/5g-mbs/scope).
+For DASH or HLS media, the object method maps segments to objects and the presentation manifest becomes a Service Entry Point object. The MBSTF can operate in a _streaming_ mode, scheduling object delivery in real time from a manifest such as a DASH MPD, or in _single-shot_, _collection_ and _carousel_ modes for file delivery. Which of these the 5G-MAG reference tools implement is listed on the [MBS Implementation Detail page](/reference-tools/5g-mbs/implementation).
 
 ## Session life-cycle and announcement
 

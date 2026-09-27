@@ -147,7 +147,7 @@ export default function DvbI() {
               />
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>Why It Matters</h3>
+              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
               <p className={styles.whyMattersBody}>
                 Without DVB-I, a broadcaster&apos;s 5G Broadcast service and its 5GMS unicast service
                 would look like two unrelated things to a device, discovered separately with no
@@ -244,7 +244,7 @@ export default function DvbI() {
               are ordinary HTTPS resources and can themselves be delivered over the unicast path.
             </p>
 
-            <h3>Implementation blueprint</h3>
+            <h3 id="implementation-blueprint">Implementation blueprint</h3>
             <p>
               This is the client-side bootstrap sequence from a cold start to content-guide data, checked
               against ETSI TS 103 770 V1.2.1 (2024-09). Most of it is delivery-network-agnostic — steps

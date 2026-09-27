@@ -54,7 +54,7 @@
       "tech_url": "/tech/5gms",
       "standards_url": "/standards/5gms",
       "image": "/assets/images/projects/5gms.png",
-      "releases_slug": "resources",
+      "releases_slug": "#repositories--releases",
       "roadmapTopics": ["Topic: Streaming & Media Delivery"],
       "tagline": "Driving collaboration between mobile networks and media applications",
       "basket": "content-delivery",
@@ -117,7 +117,7 @@
         "rt-mbms-bmsc",
         "rt-mbms-gw"
       ],
-      "releases_slug": "resources",
+      "releases_slug": "#repositories--releases",
       "contributors": [
         "Fraunhofer FOKUS",
         "iTEAM - Universitat Politècnica de València",
@@ -156,7 +156,7 @@
         "rt-mbms-tx",
         "rt-mbms-application"
       ],
-      "releases_slug": "resources",
+      "releases_slug": "#repositories--releases",
       "contributors": [
         "Big Blue Marble",
         "Fraunhofer FOKUS",
@@ -192,7 +192,7 @@
         "rt-xr-blender-exporter",
         "rt-xr-gITFast"
       ],
-      "releases_slug": "resources",
+      "releases_slug": "#repositories--releases",
       "contributors": [
         "Motion Spell",
         "InterDigital",
@@ -235,7 +235,7 @@
         "srsRAN_4G_mbs",
         "srsRAN_Project_mbs"
       ],
-      "releases_slug": "resources",
+      "releases_slug": "#repositories--releases",
       "contributors": [
         "BBC - British Broadcasting Corporation",
         "Fraunhofer FOKUS",
@@ -265,7 +265,7 @@
         "rt-data-collection-application-function",
         "cmcd-toolkit"
       ],
-      "releases_slug": "resources",
+      "releases_slug": "#repositories--releases",
       "contributors": [
         "BBC - British Broadcasting Corporation",
         "Fraunhofer FOKUS",
@@ -299,7 +299,7 @@
         "rt-v3c-examples",
         "rt-media-origin"
       ],
-      "releases_slug": "resources",
+      "releases_slug": "#repositories--releases",
       "contributors": [
         "InterDigital",
         "Philips"
@@ -328,7 +328,7 @@
       "repos": [
         "rt-vdmc-web-decoder-player"
       ],
-      "releases_slug": "resources",
+      "releases_slug": "#repositories--releases",
       "contributors": [],
       "stages": {
         "under-study": true,
@@ -354,7 +354,7 @@
       "repos": [
         "rt-5gc-service-consumers"
       ],
-      "releases_slug": "resources",
+      "releases_slug": "#repositories--releases",
       "contributors": [
         "BBC - British Broadcasting Corporation",
         "Fraunhofer FOKUS"
@@ -429,7 +429,7 @@
       "repos": [
         "rt-camara-examples"
       ],
-      "releases_slug": "resources",
+      "releases_slug": "#repositories--releases",
       "contributors": [
         "Ericsson",
         "iTEAM - Universitat Politècnica de València"
@@ -461,7 +461,7 @@
         "rt-avatar-unity-tracker",
         "rt-3gpp-swap"
       ],
-      "releases_slug": "resources",
+      "releases_slug": "#repositories--releases",
       "contributors": [
         "Motion Spell",
         "Qualcomm",
@@ -520,7 +520,7 @@
       "repos": [
         "rt-common-shared"
       ],
-      "releases_slug": "resources",
+      "releases_slug": "#repositories--releases",
       "icon": "tool"
     },
     {
@@ -538,7 +538,7 @@
         "5G Media Streaming (5GMS)"
       ],
       "repos": [],
-      "releases_slug": "resources",
+      "releases_slug": "#repositories--releases",
       "contributors": [
         "Fraunhofer FOKUS",
         "Dolby Laboratories",
@@ -575,7 +575,7 @@
         "rt-media-origin",
         "rt-cmmf-encoder"
       ],
-      "releases_slug": "resources",
+      "releases_slug": "#repositories--releases",
       "contributors": [
         "BBC - British Broadcasting Corporation",
         "Fraunhofer FOKUS",
@@ -602,6 +602,7 @@
       "tech_url": null,
       "standards_url": null,
       "image": "/assets/images/projects/3gpp-platforms.png",
+      "releases_slug": "#repositories--releases",
       "tagline": "Lab-ready 5G RAN and Core built on Open-Source platforms",
       "basket": null,
       "excludedReason": "Infrastructure other projects run on, not a topic.",
@@ -628,7 +629,8 @@
     },
     {
       "name": "Real-time Media Communication (RTC) Architecture",
-      "doc_url": null,
+      "doc_url": "/reference-tools/rtc/",
+      "releases_slug": "#repositories--releases",
       "tech_url": "/tech/rtc",
       "standards_url": "/standards/rtc",
       "tagline": "Interactive, low-latency, real-time media communication",
@@ -650,7 +652,8 @@
     },
     {
       "name": "Non-Terrestrial Networks in 5G Systems",
-      "doc_url": null,
+      "doc_url": "/reference-tools/ntn/",
+      "releases_slug": "#repositories--releases",
       "tech_url": "/tech/ntn",
       "standards_url": "/standards/ntn",
       "tagline": "Expanding network connectivity via satellite and HAPS for content delivery",
@@ -670,7 +673,8 @@
     },
     {
       "name": "Non-Public Networks",
-      "doc_url": null,
+      "doc_url": "/reference-tools/npn/",
+      "releases_slug": "#repositories--releases",
       "tech_url": "/tech/npn",
       "standards_url": "/standards/npn",
       "tagline": "Private networks replacing legacy COFDM and RF-based contribution links",
@@ -690,7 +694,8 @@
     },
     {
       "name": "Time-Sensitive Communications (TSC)",
-      "doc_url": null,
+      "doc_url": "/reference-tools/tsc/",
+      "releases_slug": "#repositories--releases",
       "tech_url": "/tech/tsc",
       "standards_url": "/standards/tsc",
       "tagline": "Deterministic, low-jitter transport for tightly synchronised professional media",
@@ -720,6 +725,7 @@
     }
   ],
   "repoMetadata": {
+    "rtc": [],
     "3gpp-platforms": [
       {
         "repo_slug": "open5gs",

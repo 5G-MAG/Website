@@ -21,13 +21,14 @@ const PROJECT_NAME = PROJECT.name;
 // A per-project "flagship" page, following the 5gms pilot
 // (src/pages/tech/5gms/index.js) -- replacing the former docs/tech/ai-ml.md
 // doc. Same Layout/HubHero every hub page uses, not the doc-tier
-// topic-banner. Like content-delivery this topic had no techDoc entry in
-// techTopics.js to begin with (its category link was never wired to the
-// doc), so no sidebar-side change accompanies this move -- see
-// techTopics.js's "AI/ML in 5G Media" entry. This topic has no real
-// sub-pages of its own (unlike 5gms), so "Technical Analysis" points at
-// this same page's own How It Works section, same pattern as
-// content-delivery's #how-it-works.
+// topic-banner.
+//
+// 2026-09-27: docs/tech/ai-ml/overview.mdx now exists as a structural
+// placeholder (real content still lives in this page's own "How It Works"
+// section below, not yet migrated there) and techTopics.js's own entry
+// carries `autogen: 'ai-ml'`, so the topic now DOES have a real sidebar
+// presence -- analysisHref below points at it directly rather than at the
+// in-page "#how-it-works" anchor.
 const BRAIN_ICON = (
   <>
     <path d="M15.5 13a3.5 3.5 0 0 0 -3.5 3.5v1a3.5 3.5 0 0 0 7 0v-1.8" />
@@ -76,8 +77,7 @@ export default function AiMl() {
                   the Data Collection and Reporting framework, which standardises how data is
                   gathered from User Equipment (UE) and media clients. A media-aware AI/ML use case
                   (for example, predicting a QoS drop before it affects a live stream) typically
-                  needs both tracks feeding in together. For acronyms used here, see the{' '}
-                  <Link to="/tech/glossary">Glossary</Link>.
+                  needs both tracks feeding in together.
                 </p>
                 <p>
                   5G-MAG&apos;s <Link to="/testbeds/ai-ml/">AI/ML Evaluation Framework</Link>{' '}
@@ -102,7 +102,7 @@ export default function AiMl() {
               />
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>Why It Matters</h3>
+              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
               <p className={styles.whyMattersBody}>
                 A claim that an AI/ML model improves media quality, ABR selection or traffic
                 classification is only useful if it can be checked against a common baseline —
@@ -121,7 +121,7 @@ export default function AiMl() {
           <div className="container">
             <ProjectDestinationCards
               accent={ACCENT}
-              analysisHref="#how-it-works"
+              analysisHref="/tech/ai-ml/overview"
               standardsHref="/standards/ai-ml"
               softwareHref="/testbeds/ai-ml/"
               softwareIsTestbed

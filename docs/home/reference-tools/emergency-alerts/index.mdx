@@ -5,14 +5,14 @@ title: '5G Broadcast - Emergency Alerts'
 sidebar_position: -1
 description: Overview of the 5G Broadcast Emergency Alerts reference implementation, delivering Cell Broadcast Service warnings over FeMBMS.
 ---
-import CommunityStats from '@site/src/components/CommunityStats';
-import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
-import ProjectVideos from '@site/src/components/ProjectVideos';
+import ProjectContributors from '@site/src/components/ProjectContributors';
+import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
+import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import youtubePlaylists from '@site/static/data/youtube-playlists.json';
+import { REPO_METADATA } from '@site/src/data/baskets';
 
-export const projectVideos = (youtubePlaylists.projects?.['emergency-alerts']?.videos || []).slice(0, 1);
+export const REPO_COUNT = (REPO_METADATA['emergency-alerts'] || []).length;
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -27,15 +27,55 @@ export const projectVideos = (youtubePlaylists.projects?.['emergency-alerts']?.v
 </div>
 </div>
 
-<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/emergency-alerts/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/emergency-alerts/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/emergency-alerts/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/emergency-alerts/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
+The tools enable authorities and broadcasters to distribute alerts to all receivers in a coverage area simultaneously (without requiring a data connection or active SIM) using the Cell Broadcast Service (CBS) transported over LTE-based 5G Broadcast, also known as Further evolved Multimedia Broadcast Multicast Service (FeMBMS). The work builds on top of the 5G Broadcast - TV and Radio Services platform and has been demonstrated in broadcast network setups; for the current implementation status, see the caveat on the [Implementation Detail](./implementation) page. To see one assembled scenario already running, jump to the [Emergency Alert Broadcast Demo](/showcase/5g-broadcast#emergency-alert-broadcast-demo).
 
-## What it does
+## What's Built
 
-The tools enable authorities and broadcasters to distribute alerts to all receivers in a coverage area simultaneously (without requiring a data connection or active SIM) using the Cell Broadcast Service (CBS) transported over LTE-based 5G Broadcast, also known as Further evolved Multimedia Broadcast Multicast Service (FeMBMS). The work builds on top of the 5G Broadcast - TV and Radio Services platform and has been demonstrated in broadcast network setups; for the current implementation status, see the caveat on the [Scope](./scope) page.
+**{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
 
-## Repositories
+<div class="godeeper-grid" style={{gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))'}}>
 
-<ProjectRepositories project="emergency-alerts" />
+<a class="godeeper-card" href="#repositories--releases">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h4"/></svg>
+<h3>Repositories</h3>
+</div>
+<div class="godeeper-card__body">
+<p>The real code behind this project, with each repository's latest release.</p>
+</div>
+</a>
+
+<a class="godeeper-card" href={useBaseUrl('/reference-tools/emergency-alerts/implementation')}>
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5H7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2V7a2 2 0 0 0 -2 -2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><path d="M9 12l2 2l4 -4"/></svg>
+<h3>Implementation Detail</h3>
+</div>
+<div class="godeeper-card__body">
+<p>The CBS/SIB12 alert path, the message model, and how it maps to the standard.</p>
+</div>
+</a>
+
+<a class="godeeper-card" href={useBaseUrl('/reference-tools/emergency-alerts/tutorials')}>
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 4v16l13 -8l-13 -8"/></svg>
+<h3>Call to Try</h3>
+</div>
+<div class="godeeper-card__body">
+<p>Build and test it yourself, with the tutorials.</p>
+</div>
+</a>
+
+<a class="godeeper-card" href="#developer-updates">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"/><path d="M3.6 9h16.8"/><path d="M3.6 15h16.8"/><path d="M11.5 3a17 17 0 0 0 0 18"/><path d="M12.5 3a17 17 0 0 1 0 18"/></svg>
+<h3>Developer Updates</h3>
+</div>
+<div class="godeeper-card__body">
+<p>Community stats, open pull requests and the roadmap.</p>
+</div>
+</a>
+
+</div>
 
 ## Standards implemented
 
@@ -54,38 +94,28 @@ The tools enable authorities and broadcasters to distribute alerts to all receiv
 
 See [5G Broadcast - Emergency Alerts on the Standards portal](/standards/emergency-alerts) for version history and 5G-MAG's own standards contributions.
 
-## Contributors
+## Contributors & How to Contribute
 
 <ProjectContributors />
 
-## Community Stats
+## Repositories & Releases
+
+<ProjectRepositories project="emergency-alerts" />
+
+## Developer Updates
 
 <CommunityStats name="5G Broadcast - Emergency Alerts" />
 
----
+### Open Pull Requests
 
-## Try it yourself
+<ProjectOpenPRs name="5G Broadcast - Emergency Alerts" />
 
-Follow the [tutorials](/reference-tools/emergency-alerts/tutorials) to build the chain yourself, or jump to the [Emergency Alert Broadcast Demo](/showcase/5g-broadcast#emergency-alert-broadcast-demo) to see one assembled scenario already running.
+The roadmap for this project lives on the GitHub Project boards linked below. For what the project implements, see [Implementation Detail](./implementation).
 
-<div class="event-post-grid">
+**General Project Roadmap:** the Kanban board below tracks the planned and in-progress work for the 5G Broadcast Emergency Alerts tools (Cell Broadcast Service transport, delivery through the broadcast chain, and receiver presentation of warning messages). It is maintained live on GitHub.
 
-<a class="event-post-card" href={useBaseUrl('/docs/Reference_Tools_Emergency_Alerts_5G_Broadcast.pdf')} target="_blank" rel="noreferrer">
-<img loading="lazy" src={useBaseUrl('/assets/images/projects/emergency-alerts-slides-cover.jpg')} alt="5G Broadcast - Emergency Alerts slide deck cover" />
-<span class="event-post-title">Slide deck: 5G Broadcast - Emergency Alerts overview</span>
-</a>
+[Kanban board: Roadmap](https://github.com/orgs/5G-MAG/projects/48/views/12)
 
-</div>
+**Developer Kanban Boards:**
 
-<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
-
-See the Reference Tools in action, with a community video from the tutorials page.
-
-<ProjectVideos videos={projectVideos} name="5G Broadcast - Emergency Alerts" />
-
-| Area                        | Details                                                                                                      |
-| --------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| **Technical documentation** | The alert path and CBS message model: [5G Broadcast - Emergency Alerts on the Tech portal](/tech/emergency-alerts) |
-| **Standards**               | ETSI TS 103 720 and CBS specifications: [5G Broadcast on the Standards portal](/standards/5g-broadcast) |
-| **Related project**         | Broadcast transmitter and receiver: [5G Broadcast - TV and Radio Services](../5g-broadcast)                         |
-| **Applications**            | Real, assembled scenarios built on this tool: [Emergency Alert Broadcast Demo](/showcase/5g-broadcast#emergency-alert-broadcast-demo) |
+- **MBMS: Public Warning System** — issues and required functionality around support for a Public Warning System, delivered over Multimedia Broadcast Multicast Service (MBMS), as defined in ETSI TS 103 720: [Kanban board](https://github.com/orgs/5G-MAG/projects/20)

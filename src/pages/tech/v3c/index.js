@@ -99,8 +99,7 @@ export default function V3C() {
                   fixed camera angle. 5G-MAG&apos;s work is built on MPEG V3C (Visual Volumetric
                   Video-based Coding, ISO/IEC 23090-5), the framework that defines the container and
                   compression for volumetric content. Two profiles build on it: V-PCC (Video-based
-                  Point Cloud Compression) and MIV (MPEG Immersive Video). For acronyms used here, see
-                  the <Link to="/tech/glossary">Glossary</Link>.
+                  Point Cloud Compression) and MIV (MPEG Immersive Video).
                 </p>
                 <p>
                   The MPEG V3C Immersive Platform reference tools provide an end-to-end pipeline for
@@ -126,7 +125,7 @@ export default function V3C() {
               />
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>Why It Matters</h3>
+              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
               <p className={styles.whyMattersBody}>
                 Volumetric content (point clouds, multi-view-plus-depth) has no dedicated hardware
                 codec of its own, and building one is not practical on mobile-class devices. V3C

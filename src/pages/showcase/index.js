@@ -1,6 +1,8 @@
 import { useMemo, useState } from 'react';
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
+import HubHero from '@site/src/components/HubHero';
+import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import { icon } from '@site/src/components/GodeeperCard';
 import HubDestinationCard from '@site/src/components/HubDestinationCard';
 import styles from '../tech/index.module.css';
@@ -239,15 +241,21 @@ export default function Applications() {
       title="Showcases"
       description="Overview of 5G-MAG’s application areas: streaming, broadcast, multicast, XR, volumetric video, and network APIs."
     >
-      <div className="container" style={{ marginTop: '1.75rem' }}>
-        <div className="topic-banner">
-          <div className="topic-banner__icon-wrap">{icon(APPS_ICON_PATH)}</div>
-          <div className="topic-banner__text">
-            <span className="topic-banner__kicker">Software Accelerator</span>
-            <h1>Application Showcases</h1>
-          </div>
-        </div>
-      </div>
+      <HubHero
+        title="Application Showcases"
+        icon={APPS_ICON_PATH}
+        actions={[
+          <Link key="contribute" className="button button--primary" to="/contributing">
+            Contribute
+          </Link>,
+          <Link key="license" className="button button--outline button--primary" to="/license">
+            License Model
+          </Link>,
+          <Link key="early-access" className="button button--outline button--primary" to="/early-access">
+            Early Access
+          </Link>,
+        ]}
+      />
 
       <main>
         <section className={styles.section}>
@@ -287,6 +295,8 @@ export default function Applications() {
             )}
           </div>
         </section>
+
+        <JoinTheEffort alt />
       </main>
     </Layout>
   );

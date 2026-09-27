@@ -25,7 +25,7 @@ The 5G Media Streaming downlink (5GMSd) Application Function (AF) is the control
 
 ## Reference points at a glance
 
-The Application Function communicates over several 3GPP 5G Media Streaming reference points (named interfaces between defined functions). The `msaf.yaml` settings below configure the listening addresses and behaviour for these. The following legend explains each interface referenced on this page (see the [Glossary](/tech/glossary) for wider 5GMS terminology).
+The Application Function communicates over several 3GPP 5G Media Streaming reference points (named interfaces between defined functions). The `msaf.yaml` settings below configure the listening addresses and behaviour for these. The following legend explains each interface referenced on this page.
 
 | Interface | Connects                                                        | Purpose                                                                                                                                                     |
 | --------- | --------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |

@@ -23,7 +23,7 @@ This documentation is currently **under development and subject to change**. It 
 ## Advanced Media Delivery - Overview
 
 :::note Prerequisite
-This page assumes familiarity with the 5G Media Streaming (5GMS) architecture, its functional entities and its reference points. If you are new to 5GMS, read the [5GMS Overview](./overview-5gms) first.
+This page assumes familiarity with the 5G Media Streaming (5GMS) architecture, its functional entities and its reference points. If you are new to 5GMS, read the [5GMS Overview](./overview) first.
 :::
 
 Advanced Media Delivery covers the Release 19 (and later) extensions to 5G Media Streaming (5GMS) studied in 3GPP [TR 26.804](https://www.3gpp.org/dynareport/26804.htm). These build on the 5GMS architecture to improve reporting, multi-source and multi-access delivery, and quality of service. The features and their normative specifications are listed on the [Standards page](/standards/5gms). The reference-point and clause numbers below follow the Release 18 (or later) versions of [TS 26.510](https://www.3gpp.org/dynareport/26510.htm) and TS 26.512, checked against TS 26.510 V18.5.0 and TS 26.512 V19.3.0; the in-band CMCD clauses of TS 26.512 (clause 10.5 and Annex G.5) first appear in the Release 19 version.
@@ -80,7 +80,7 @@ Not all of these have completed the move from study to normative text, and the r
 ## Related
 
 - [5G Media Streaming (5GMS)](/tech/5gms): the parent topic page
-- [Overview on 5G Media Streaming](./overview-5gms): the architecture these extensions build on
+- [Overview on 5G Media Streaming](./overview): the architecture these extensions build on
 - [Key Features for 5G Media Streaming - Downlink](./features-5gmsd): the downlink features being extended
 - [Standards: 5G Media Streaming](/standards/5gms): the specification list for this topic
 - [5G Media Streaming Reference Tools](/reference-tools/5gms): the software implementation

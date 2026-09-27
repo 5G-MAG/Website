@@ -48,7 +48,7 @@ export default function ReleaseCard({ project }) {
           <Link className={styles.releaseDocLink} to={project.doc_url}>
             View Documentation &rarr;
           </Link>
-          <Link className={styles.releaseRelLink} to={`${project.doc_url}${project.releases_slug || 'resources'}`}>
+          <Link className={styles.releaseRelLink} to={`${project.doc_url}${project.releases_slug ?? 'resources'}`}>
             View Releases &rarr;
           </Link>
         </div>

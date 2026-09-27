@@ -19,14 +19,15 @@ const PROJECT_NAME = PROJECT.name;
 // Layout/HubHero every hub page (/tech, /standards, /developer...) uses,
 // not the doc-tier topic-banner.
 //
-// Unlike 5gms/5g-mbs, RTC has no separate analysis sub-page of its own --
-// the old doc was a single file (docs/tech/rtc/rtc.md, nested one level
-// down though its URL was flat, /tech/rtc) and taxonomy.json's doc_url for
-// this project is null (no Reference Tools page exists yet, despite 1
-// repo being tracked elsewhere -- see the Software card below). So this
-// page carries its own "How It Works" content directly in the section
-// below, rather than linking out to a docs/tech/rtc/* sub-page the way
-// 5gms links to docs/tech/5gms/overview-5gms.
+// 2026-09-27: docs/tech/rtc/overview.mdx now exists as a structural
+// placeholder (real content still lives in this page's own "How It Works"
+// section below, not yet migrated there) and techTopics.js's own entry
+// carries `autogen: 'rtc'`, so the topic now DOES have a real sidebar
+// presence -- analysisHref below points at it directly rather than at the
+// in-page "#how-it-works" anchor. taxonomy.json's doc_url, previously null,
+// now points at docs/home/reference-tools/rtc/index.mdx, itself a
+// placeholder honestly stating no dedicated tool exists yet (1 repo,
+// rt-3gpp-swap, is tracked there) -- softwareHref below points at it.
 const WEBRTC_ARROWS_ICON = (
   <>
     <path d="M7 21v-6" />
@@ -70,8 +71,7 @@ export default function RTC() {
                 such as conversational audio and video, immersive calls and interactive streaming,
                 where the round-trip delay must stay low enough for two-way interaction. It builds on
                 the uplink side of 5G Media Streaming (5GMSu) and related delivery functions. 5G-MAG
-                tracks how these capabilities support real-time media services over 5G. For acronyms
-                used here, see the <Link to="/tech/glossary">Glossary</Link>.
+                tracks how these capabilities support real-time media services over 5G.
               </p>
               {PROJECT.sdos?.length > 0 && (
                 <div className={styles.capabilityTags}>
@@ -84,7 +84,7 @@ export default function RTC() {
               )}
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>Why It Matters</h3>
+              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
               <p className={styles.whyMattersBody}>
                 Interactive media (conversational calls, collaborative streaming) has different
                 requirements than 5GMS&apos;s one-way delivery — but building it as a completely
@@ -104,9 +104,9 @@ export default function RTC() {
           <div className="container">
             <ProjectDestinationCards
               accent={ACCENT}
-              analysisHref="#how-it-works"
+              analysisHref="/tech/rtc/overview"
               standardsHref="/standards/rtc"
-              softwarePlaceholderRepo={{ name: '3GPP SWAP Protocol', href: 'https://github.com/5G-MAG/rt-3gpp-swap' }}
+              softwareHref="/reference-tools/rtc"
             />
             <p style={{ textAlign: 'center', marginTop: '0.5rem' }}>
               <a href="https://github.com/orgs/5G-MAG/projects/44/views/19">Execution Plan</a>

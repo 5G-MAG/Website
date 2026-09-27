@@ -1,4 +1,5 @@
 import { BASKETS } from './baskets';
+import { ALL_TOPICS } from '../../techTopics.js';
 
 // Canonical per-section nav items, keyed by the route prefix(es) they
 // apply to. Consumed by src/components/SectionNav to render one
@@ -43,13 +44,26 @@ export function stripBaseUrl(pathname, baseUrl) {
 
 // Technology's own menu items are the baskets themselves (raised
 // directly: "Tech should contain the baskets"), not the hub's meta-pages
-// (Blueprints, Glossary, etc. -- those stay one click away on /tech
+// (Blueprints, Specifications, etc. -- those stay one click away on /tech
 // itself). Same order and titles as BASKETS (taxonomy.json), the same
 // list Where We Stand rolls up on both /tech and the homepage, so this
 // menu can't drift from what those actually show. Each links to that
 // basket's own anchor on /tech (tech/index.js's basketBlock carries
 // id={b.key}).
 const TECHNOLOGY_ITEMS = BASKETS.map((b) => ({ label: b.title, href: `/tech#${b.key}` }));
+
+// Every per-topic Standards doc's own URL, derived from techTopics.js's
+// ALL_TOPICS (2026-09-27: was a hand-listed array here, and had silently
+// drifted -- content-delivery's own second Standards doc, /standards/cmmf,
+// and vdmc's /standards/vdmc were both missing, so those two pages fell
+// through to the generic Standardisation bar below instead of this
+// Technology one, unlike every sibling per-topic Standards page. Deriving
+// from ALL_TOPICS instead of hand-listing means a topic's Standards docs
+// can never drift from this list again -- same reasoning as
+// techTopics.js's own header comment about the Tech/Standards sidebars.
+const PER_TOPIC_STANDARDS_PREFIXES = ALL_TOPICS.flatMap((t) =>
+  (t.standards || []).map((s) => `/${s.doc}`)
+);
 
 export const SECTION_NAV = [
   {
@@ -146,31 +160,12 @@ export const SECTION_NAV = [
   // This entry must stay ABOVE the '/standards' entry below: the matcher is
   // first-match-wins (SectionNav and the navbar indicator both use
   // SECTION_NAV.find), so these exact paths would otherwise fall through to
-  // the Standardisation bar. A new per-topic Standards page needs its
-  // path added here as well as to techTopics.js.
+  // the Standardisation bar. Prefixes are derived above (see
+  // PER_TOPIC_STANDARDS_PREFIXES) from techTopics.js's own ALL_TOPICS, so a
+  // new per-topic Standards page picks this up automatically -- no matching
+  // edit needed here anymore.
   {
-    prefixes: [
-      '/standards/5g-broadcast',
-      '/standards/5g-broadcast-standards-evolution',
-      '/standards/5g-mbs',
-      '/standards/5g-mbs-standards-evolution',
-      '/standards/5gms',
-      '/standards/6g',
-      '/standards/ai-ml',
-      '/standards/avatar',
-      '/standards/beyond-2d',
-      '/standards/data-collection',
-      '/standards/dvb-i',
-      '/standards/emergency-alerts',
-      '/standards/content-delivery',
-      '/standards/network-apis',
-      '/standards/npn',
-      '/standards/ntn',
-      '/standards/rtc',
-      '/standards/tsc',
-      '/standards/v3c',
-      '/standards/xr',
-    ],
+    prefixes: PER_TOPIC_STANDARDS_PREFIXES,
     title: 'Technology',
     titleHref: '/tech',
     subtitle: 'Specification profiles and implementation guidance.',

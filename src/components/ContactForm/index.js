@@ -9,7 +9,7 @@ const HCAPTCHA_SITEKEY = '50b2fe65-b00b-4b9e-ad62-3ba471098be2';
 // Prop is named web3formsKey (not accessKey) deliberately: `accessKey` as a
 // JSX prop collides with the reserved HTML accesskey attribute, which is
 // both an a11y lint error and misleading about what the value is.
-export default function ContactForm({ web3formsKey, subject, submitLabel = 'Send message' }) {
+export default function ContactForm({ web3formsKey, subject, submitLabel = 'Send message', successNote }) {
   const { status, errorMessage, submit } = useWeb3FormSubmit(web3formsKey, subject);
   const [captchaToken, setCaptchaToken] = useState('');
   const captchaRef = useRef(null);
@@ -37,6 +37,7 @@ export default function ContactForm({ web3formsKey, subject, submitLabel = 'Send
       <div className={styles.notice}>
         <strong>Thanks — your message has been sent.</strong>
         <p>We&apos;ll get back to you as soon as we can.</p>
+        {successNote && <p>{successNote}</p>}
       </div>
     );
   }

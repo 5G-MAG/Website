@@ -7,12 +7,15 @@
 // occupy their own table columns, plus any scope qualifier.
 export const XR_SPECS = [
   {
-    id: 'ISO/IEC 23090-14:2023',
-    title:
-      'Information technology - Coded representation of immersive media - Part 14: Scene description',
-    url: 'https://www.iso.org/standard/80900.html',
+    // Corrected 2026-09-27 (spec-catalogue research pass): was citing the
+    // withdrawn 2023 first edition (80900.html); avatar.js already had the
+    // current 2025 second edition (90191.html) for this identical document,
+    // so this entry now matches it instead of disagreeing with it.
+    id: 'ISO/IEC 23090-14',
+    title: 'Coded representation of immersive media; Part 14: Scene description',
+    url: 'https://www.iso.org/standard/90191.html',
     layer: 'MPEG',
-    note: 'extended by Amendment 1, which is consolidated into a second edition (ISO/IEC 23090-14:2025); Amendment 2 (avatar support) is still a separate, not-yet-published Draft Amendment, not part of that edition -- see src/data/specs/avatar.js for that citation',
+    note: 'published in 2023 as a set of extensions to Khronos glTF 2.0; the 2023 edition (Edition 1) is now withdrawn, consolidated with Amendment 1 into Edition 2 (2025), linked here -- Amendment 2 (avatar support) is still a separate, not-yet-published Draft Amendment, not part of this edition -- see src/data/specs/avatar.js for that citation',
   },
   {
     // Added 2026-08-25: docs/tech/xr.mdx's own "Key specifications" line names

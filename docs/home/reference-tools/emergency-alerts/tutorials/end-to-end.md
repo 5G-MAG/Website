@@ -183,5 +183,5 @@ Transmitting radio signals is subject to local regulation. Only transmit in a sh
 
 ## Next steps
 
-- Read the [Scope](../scope) page for the specifications and architecture behind this setup.
+- Read the [Implementation Detail](../implementation) page for the specifications and architecture behind this setup.
 - See the related [5G Broadcast - TV and Radio Services](../../5g-broadcast) project for the base transmitter and receiver tools.

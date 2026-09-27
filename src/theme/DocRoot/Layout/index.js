@@ -9,6 +9,14 @@ import styles from './styles.module.css';
 
 export default function DocRootLayout({ children }) {
   const sidebar = useDocsSidebar();
+  // Starts open on every doc page (2026-09-27, direct instruction: "make the
+  // menu always open on the left... in general always up" -- reversing an
+  // earlier "starts collapsed" instruction). The HeaderToggleButton in
+  // DocItem/Layout (this same swizzle set) remains the way to collapse it --
+  // Docusaurus's own stock CollapseButton/ExpandButton were already removed
+  // from this project's DocSidebar/Desktop and this Sidebar component, so
+  // that header button is the single, deliberate affordance, not a second
+  // one competing with a native one.
   const [hiddenSidebarContainer, setHiddenSidebarContainer] = useState(false);
   const [hiddenSidebar, setHiddenSidebar] = useState(false);
 

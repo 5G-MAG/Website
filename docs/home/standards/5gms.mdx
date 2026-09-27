@@ -21,42 +21,13 @@ import { FIVEGMS_SPECS, FIVEGMS_LAYER_ORDER } from '@site/src/data/specs/5gms';
 
 ## Overview
 
-5G Media Streaming (5GMS) is the 3GPP framework for delivering streaming media over 5G networks, in downlink (5GMSd) and uplink (5GMSu) directions. This page lists the specifications in scope and 5G-MAG's tracking focus; for the technical analysis of how the architecture works, see the Tech page linked below. For acronyms used here, see the [Glossary](/tech/glossary).
-
-<div class="godeeper-grid" style={{gridTemplateColumns: 'repeat(auto-fit, minmax(0, 380px))'}}>
-
-<div class="godeeper-card">
-<div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
-<h3>Technology &amp; Analysis</h3>
-</div>
-<div class="godeeper-card__body">
-<p>The implementer-facing analysis of the 5GMS architecture and its entities.</p>
-<ul class="godeeper-card__links">
-<li><a href="/tech/5gms">Tech: Streaming &amp; Media Delivery</a></li>
-</ul>
-</div>
-</div>
-<div class="godeeper-card">
-<div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
-<h3>Software Tools</h3>
-</div>
-<div class="godeeper-card__body">
-<p>The Application Function (AF) and Application Server (AS) reference implementation.</p>
-<ul class="godeeper-card__links">
-<li><a href="/reference-tools/5gms">5G Media Streaming</a></li>
-</ul>
-</div>
-</div>
-
-</div>
+5G Media Streaming (5GMS) is the 3GPP framework for delivering streaming media over 5G networks, in downlink (5GMSd) and uplink (5GMSu) directions. This page lists the specifications in scope and 5G-MAG's tracking focus; for the technical analysis of how the architecture works, see the Tech page linked below.
 
 ## Architecture
 
 5GMS is a functional extension of the 5G System, defined in [TS 26.501](https://www.3gpp.org/dynareport/26501.htm). Its main functional entities are the 5GMS Application Provider, Application Function (AF), Application Server (AS), and Client (split into Media Session Handler and Media Player for downlink, or Media Streamer for uplink), joined by reference points M1 to M8 (downlink variants carry a "d" suffix, uplink a "u" suffix). These M1-M8 reference points are specific to 5G Media Streaming and are distinct from the similarly-named M1/M2/M3 MBMS network interfaces used by [Standards: 5G Broadcast](/standards/5g-broadcast).
 
-For the full architecture — entity sub-functions, the complete M1-M8 reference-point table, and the downlink feature-to-API mapping — see the [5GMS Overview](/tech/5gms/overview-5gms#interfaces-for-5gmsd) and [5GMSd Features](/tech/5gms/features-5gmsd) pages on the Technical Analysis portal.
+For the full architecture — entity sub-functions, the complete M1-M8 reference-point table, and the downlink feature-to-API mapping — see the [5GMS Overview](/tech/5gms/overview#interfaces-for-5gmsd) and [5GMSd Features](/tech/5gms/features-5gmsd) pages on the Technical Analysis portal.
 
 ## 5G Core service consumers used by the AF
 

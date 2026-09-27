@@ -49,7 +49,7 @@ The hands-on traffic characterisation work (network emulation and an AI traffic 
 It helps to be precise about the boundary between this project and 3GPP.
 
 - **This project does not implement a 3GPP specification.** It is an evaluation harness that measures how AI/ML models and AI-driven media services behave over realistic network conditions, so results can inform standards work.
-- **The 3GPP data-collection pipeline is implemented elsewhere.** The normative Data Collection AF from SA4 (3GPP TS 26.531 and TS 26.532) is implemented in the separate [Data Collection](/reference-tools/data-collection/scope) project, not here. This project can consume or complement that data, but it does not reimplement the AF.
+- **The 3GPP data-collection pipeline is implemented elsewhere.** The normative Data Collection AF from SA4 (3GPP TS 26.531 and TS 26.532) is implemented in the separate [Data Collection](/reference-tools/data-collection) project, not here. This project can consume or complement that data, but it does not reimplement the AF.
 - **The network-conditioning and AI-traffic measurement lives in the 6G Testbed.** The hands-on tooling (network emulator plus AI traffic characterisation) is the [6G Testbed](../6g-testbed/scope), which this activity shares. That is the code you run.
 
 In short: the standards define the scenarios and interfaces; the 6G Testbed lets you reproduce network conditions and measure behaviour; and this AI/ML activity is the framing that turns those measurements into evaluation of AI/ML for media.
@@ -63,7 +63,7 @@ The AI/ML reference tooling is currently developed across the following 5G-MAG r
 - [5G-MAG/6G-Testbed](https://github.com/5G-MAG/6G-Testbed): network emulator and AI traffic characterisation testbed used for AI/media traffic evaluation
 - [5G-MAG/Standards](https://github.com/5G-MAG/Standards): tracking of 5G-MAG contributions to 3GPP, including AI/ML-related items
 
-The data collection components that feed AI/ML training and inference (3GPP [TS 26.531](https://www.3gpp.org/dynareport/26531.htm) and [TS 26.532](https://www.3gpp.org/dynareport/26532.htm)) are implemented in the separate [Data Collection](/reference-tools/data-collection/scope) project ([5G-MAG/rt-data-collection-application-function](https://github.com/5G-MAG/rt-data-collection-application-function)).
+The data collection components that feed AI/ML training and inference (3GPP [TS 26.531](https://www.3gpp.org/dynareport/26531.htm) and [TS 26.532](https://www.3gpp.org/dynareport/26532.htm)) are implemented in the separate [Data Collection](/reference-tools/data-collection) project ([5G-MAG/rt-data-collection-application-function](https://github.com/5G-MAG/rt-data-collection-application-function)).
 
 :::info
 Some repositories may be private and under testing. [Request early access](/early-access).
@@ -77,7 +77,7 @@ Because the runnable code is the shared testbed, the quickest path is to start t
 2. Follow the [Tutorials](./tutorials), which walk through the shared 6G Testbed tooling.
 3. Clone [5G-MAG/6G-Testbed](https://github.com/5G-MAG/6G-Testbed) and run a scenario against an emulated profile, then inspect the logged metrics.
 
-For the data-collection components (TS 26.531 / TS 26.532), see the [Data Collection](/reference-tools/data-collection/scope) project and its repository [5G-MAG/rt-data-collection-application-function](https://github.com/5G-MAG/rt-data-collection-application-function).
+For the data-collection components (TS 26.531 / TS 26.532), see the [Data Collection](/reference-tools/data-collection) project and its repository [5G-MAG/rt-data-collection-application-function](https://github.com/5G-MAG/rt-data-collection-application-function).
 
 ## Roadmap
 

@@ -1,78 +1,109 @@
-import { TECH_GROUPS, RESEARCH_EXTRA_LINKS } from './techTopics.js';
+import { ALL_TOPICS } from './techTopics.js';
 
-/** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
+// One small sidebar per project (2026-09-27, direct instruction: "each
+// project and all the pages related to such project have exactly the same
+// menu... access to different projects should be managed in the top bar
+// menus" -- replacing the earlier single giant basket-grouped tree, which
+// made every project's page carry a sidebar listing every OTHER project
+// too). Generated from techTopics.js's ALL_TOPICS, not hand-written once
+// per project, so a topic added there needs no matching edit here.
+//
+// Each project's sidebar carries the project's own flagship hub page, then
+// exactly 3 destinations -- Technical Analysis, Reference Tools (or
+// Testbed), Specifications -- the same as sidebars-home.js's own
+// per-project sidebars, real vs. link swapped depending on which plugin
+// instance owns which page (a sidebar can only hold real docs from its OWN
+// plugin instance; the other two destinations are `type: 'link'` here
+// since their real docs live in the "home" instance). "All Projects"
+// always leads back out to /tech's own Where We Stand chart, which links
+// into every project's own destinations -- the site's real "switch
+// project" surface now that this sidebar no longer lists every project
+// itself.
 const sidebars = {
-  tutorialSidebar: [
-    // The navbar no longer links back to the bare /tech hub once you're
-    // inside this section (its own nav item is a constant link to /tech
-    // itself, same on every route) — this is the way back to it.
+  // General portal-wide reference material, not per-project -- unchanged
+  // from the old single tutorialSidebar, just split out into its own named
+  // sidebar now that per-project pages carry their own instead.
+  resourcesSidebar: [
     { type: 'link', label: 'Overview', href: '/tech' },
-    // intro.md removed (2026-07-20): fully redundant with the /tech hub's own
-    // topic grid, apart from its per-topic Kanban execution-plan links — those
-    // are slated to move onto /tech's own topic cards later instead.
-    // Feedback and Requirements and Liaison Statements moved to /standards
-    // (docs/home) — see sidebars-home.js. public-call merged into
-    // /events/public-call. Glossary and 3GPP Work Items moved to /standards
-    // then back here (2026-07-19): general portal-wide reference material,
-    // not Feedback/Requirements/LS, so they belong under Explainers &
-    // Profiles rather than Standards.
-    //
-    // Per-project "what specs does this implement" pages (2026-08-11): moved
-    // from docs/tech/standards/*.md (served at /tech/standards/<project>) to
-    // docs/home/standards/*.md (served at /standards/<project>), alongside
-    // the existing feedback/requirements/LS pages, at the site owner's
-    // request — despite the naming overlap with that different "5G-MAG as
-    // SDO contributor" material, a deliberate tradeoff. Moving plugin
-    // instance (tech -> home) was required: a docs slug starting with "/" is
-    // NOT actually absolute across plugin instances in this Docusaurus
-    // version — plugin-content-docs always joins routeBasePath + slug
-    // (see node_modules/@docusaurus/plugin-content-docs/lib/docs.js's
-    // `normalizeUrl([versionMetadata.path, docSlug])`), so a doc living
-    // under the "tech" plugin (routeBasePath: 'tech') can only ever resolve
-    // under /tech/*, no matter what its slug says. The items below are now
-    // explicit `link` entries (not doc-id strings) since these docs no
-    // longer belong to this plugin's own doc collection.
     { type: 'html', value: 'Resources', className: 'sidebar-section-label', defaultStyle: false },
     'exchanges',
     'blueprints',
     'specifications',
-    'glossary',
     '3gpp-work-items',
-
-    // Groups, topics and their Standards pages all come from techTopics.js, so
-    // this sidebar and the Standards-side sidebar in sidebars-home.js cannot
-    // drift apart. Here the analysis pages are real docs and the Standards
-    // pages are links, because those live in the other plugin instance.
-    ...TECH_GROUPS.flatMap((group) => [
-      {
-        type: 'html',
-        value: group.label,
-        className: 'sidebar-section-label',
-        defaultStyle: false,
-      },
-      ...group.topics.map((topic) => ({
-        type: 'category',
-        label: topic.label,
-        // Omitted (not a `type: 'doc'` link with no `id`) when a topic has
-        // no techDoc of its own -- a plain page instead (see techTopics.js's
-        // 5gms entry) -- Docusaurus then renders the category as an
-        // expand/collapse toggle only, same as sidebars-home.js already
-        // does for its own "Analysis" link (conditional on `topic.techDoc`).
-        ...(topic.techDoc ? { link: { type: 'doc', id: topic.techDoc } } : {}),
-        items: [
-          ...(topic.autogen ? [{ type: 'autogenerated', dirName: topic.autogen }] : []),
-          ...(topic.standards || []).map((s) => ({
-            type: 'link',
-            label: s.label,
-            href: `/${s.doc}`,
-          })),
-        ],
-      })),
-      ...(group.key === 'towards-6g'
-        ? RESEARCH_EXTRA_LINKS.map((l) => ({ type: 'link', label: l.label, href: l.href }))
-        : []),
-    ]),
   ],
 };
+
+ALL_TOPICS.forEach((topic) => {
+  const slug = topic.techHref.replace('/tech/', '');
+  const items = [
+    { type: 'link', label: 'All Projects', href: '/tech#where-we-stand' },
+    // The project's own flagship hub page (src/pages/tech/<slug>/index.js)
+    // -- its own hero/cards page, distinct from "Technical Analysis" below,
+    // which goes straight to the deep-dive doc instead (2026-09-27, direct
+    // instruction: "Technical Analysis should go directly to overview...
+    // the main hub of the project should be clickable with its own project
+    // name").
+    { type: 'link', label: topic.label, href: topic.techHref },
+  ];
+
+  items.push(
+    topic.autogen
+      ? {
+          type: 'category',
+          label: 'Technical Analysis',
+          collapsed: false,
+          ...(topic.techOverviewDoc ? { link: { type: 'doc', id: topic.techOverviewDoc } } : {}),
+          items: [{ type: 'autogenerated', dirName: topic.autogen }],
+        }
+      : {
+          type: 'link',
+          label: 'Technical Analysis',
+          href: topic.techOverviewDoc ? `/tech/${topic.techOverviewDoc}` : topic.techHref,
+        }
+  );
+
+  if (topic.refTools) {
+    items.push({
+      type: 'link',
+      label: topic.refTools.isTestbed ? 'Testbed' : 'Reference Tools',
+      href: topic.refTools.href,
+    });
+  }
+
+  if ((topic.standards || []).length === 1) {
+    // A single Standards doc: a flat link, same as Reference Tools/Testbed
+    // above -- no need for a collapsible category over one destination.
+    // Docusaurus categories can only `link` to a doc in this SAME plugin
+    // instance (Standards docs live in "home"), so a header link isn't
+    // possible here the way sidebars-home.js's own Specifications category
+    // gets one; a flat link sidesteps that limitation entirely for the
+    // common single-doc case.
+    items.push({
+      type: 'link',
+      label: 'Specifications',
+      href: `/${topic.standards[0].doc}`,
+    });
+  } else if ((topic.standards || []).length > 1) {
+    items.push({
+      type: 'category',
+      label: 'Specifications',
+      // No header `link`: a category can only link to a doc in this same
+      // plugin instance, and Standards docs live in "home" -- clicking the
+      // header here just expands/collapses, same limitation Reference
+      // Tools/Testbed would have if it were rendered as a category instead
+      // of a flat link. Child labels drop the "Standards: " prefix each
+      // one's own techTopics.js entry carries (used standalone elsewhere)
+      // -- redundant once already nested under a "Specifications" heading.
+      collapsed: false,
+      items: topic.standards.map((s) => ({
+        type: 'link',
+        label: s.label.replace(/^Standards: /, ''),
+        href: `/${s.doc}`,
+      })),
+    });
+  }
+
+  sidebars[`sidebar_${slug.replace(/-/g, '_')}`] = items;
+});
 
 export default sidebars;

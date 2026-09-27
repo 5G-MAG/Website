@@ -16,7 +16,7 @@ import styles from '../index.module.css';
 // and /reference-tools/emergency-alerts/ already existed as real, complete
 // docs; this was the one missing piece. Content below is adapted from those
 // two already-published docs (docs/home/standards/emergency-alerts.mdx,
-// docs/home/reference-tools/emergency-alerts/scope.mdx), not invented here.
+// docs/home/reference-tools/emergency-alerts/implementation.mdx), not invented here.
 const PROJECT = ALL_PROJECTS.find((p) => p.tech_url === '/tech/emergency-alerts');
 const PROJECT_NAME = PROJECT.name;
 
@@ -90,7 +90,7 @@ export default function EmergencyAlerts() {
                   <Link to="/tech/5g-broadcast">5G Broadcast - TV and Radio Services</Link> transmit and
                   receive chain rather than introduced as a separate stack: it is best understood as a
                   feature set layered on that broader platform, developed and tracked together with
-                  it. For acronyms used here, see the <Link to="/tech/glossary">Glossary</Link>.
+                  it.
                 </p>
                 {PROJECT.sdos?.length > 0 && (
                   <div className={styles.capabilityTags}>
@@ -109,7 +109,7 @@ export default function EmergencyAlerts() {
               />
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>Why It Matters</h3>
+              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
               <p className={styles.whyMattersBody}>
                 A warning delivered only over a data connection fails exactly when it matters most:
                 when the cellular network is congested with everyone trying to check on each other, or
@@ -128,7 +128,7 @@ export default function EmergencyAlerts() {
           <div className="container">
             <ProjectDestinationCards
               accent={ACCENT}
-              analysisHref="#how-it-works"
+              analysisHref="/tech/emergency-alerts/overview"
               standardsHref="/standards/emergency-alerts"
               softwareHref="/reference-tools/emergency-alerts/"
             />

@@ -33,11 +33,13 @@ const BASKET_TITLE = BASKETS.find((b) => b.key === 'towards-6g').title;
 // explicit BASKET_OVERRIDES entry (see its own comment), so this page
 // uses the towards-6g accent and icon ("chip", src/data/taxonomy.json
 // iconCatalog.chip) throughout, even though the Software destination it
-// links to belongs to the project's own "testbeds" basket. There is no
-// autogen sub-page folder for this topic (no docs/tech/6g/ directory), so
-// "Technical Analysis" points at this page's own How It Works section
-// rather than a separate doc, the same pattern content-delivery's page
-// uses.
+// links to belongs to the project's own "testbeds" basket.
+// 2026-09-27: docs/tech/6g/overview.mdx now exists as a structural
+// placeholder (real content still lives in this page's own "How It Works"
+// section below, not yet migrated there) and techTopics.js's own entry
+// carries `autogen: '6g'`, so the topic now DOES have a real sidebar
+// presence -- analysisHref below points at it directly rather than at the
+// in-page "#how-it-works" anchor.
 const CHIP_ICON = (
   <>
     <path d="M18 8h-2a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h2v-4h-1" />
@@ -97,8 +99,7 @@ export default function Towards6GMedia() {
                   use cases to the 6G standardisation process, covering media delivery at extreme
                   data rates, Artificial Intelligence (AI)-native network management for media
                   traffic, immersive and haptic experiences, and the evolution of broadcast and
-                  multicast. For acronyms used here, see the{' '}
-                  <Link to="/tech/glossary">Glossary</Link>.
+                  multicast.
                 </p>
                 <p>
                   In parallel, the 5G-MAG 6G Testbed provides an early experimental platform for
@@ -124,7 +125,7 @@ export default function Towards6GMedia() {
               />
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>Why It Matters</h3>
+              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
               <p className={styles.whyMattersBody}>
                 Requirements written at the study stage carry more weight when they&apos;re backed by
                 measurement instead of assumption. AI workloads behave differently from classic media
@@ -143,7 +144,7 @@ export default function Towards6GMedia() {
           <div className="container">
             <ProjectDestinationCards
               accent={ACCENT}
-              analysisHref="#how-it-works"
+              analysisHref="/tech/6g/overview"
               standardsHref="/standards/6g"
               softwareHref="/testbeds/6g-testbed/"
               softwareIsTestbed

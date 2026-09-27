@@ -1,7 +1,7 @@
 // Shared blueprint for 5G Media Streaming (5GMS): the single source both the
 // Technical Analysis page (docs/tech/5gms/features-5gmsd.mdx, via
 // FeatureBlueprint) and the Reference Tools page
-// (docs/home/reference-tools/5gms/scope.mdx, via ImplementationBoard and
+// (docs/home/reference-tools/5gms/implementation.mdx, via ImplementationBoard and
 // ArchitectureMap) read, so the "ideal system" and "real status against it"
 // can never silently disagree -- one array feeds both renders, not just the
 // same author by convention.
@@ -11,7 +11,7 @@
 //   - `specRef`/`idealDescription` -- source-derived. The clause numbers and
 //     descriptions below are moved, not rewritten, from the real prose
 //     already on docs/tech/5gms/features-5gmsd.mdx and
-//     docs/home/reference-tools/5gms/scope.mdx (see each row's own comment
+//     docs/home/reference-tools/5gms/implementation.mdx (see each row's own comment
 //     for exactly where). `specRef.quote` is left as an explicit placeholder
 //     -- no page on this site currently quotes TS 26.501/26.510 verbatim
 //     (they paraphrase, correctly, per copyright), so a real quote needs a
@@ -66,7 +66,7 @@ export const FIVEGMS_FEATURES = [
     idealDescription:
       'Provides a service equivalent to a Content Delivery Network (CDN) deployed inside or outside the Trusted Data Network. It includes selecting the ingest protocol and format, caching and proxying of media objects, content preparation, access protection (e.g. URL signing) and indicating a target distribution area (e.g. through geofencing). Once a Provisioning Session is established, Content Hosting is configured via a Content Hosting Configuration at M1 (optionally secured by a provisioned Server Certificate); the supported ingest protocols in Release 17 are HTTP pull-based ingest and DASH-IF push-based ingest.',
     status: 'partial',
-    statusEvidence: INHERITED('docs/home/reference-tools/5gms/scope.mdx, "Feature: Content Hosting" + tutorials/index.mdx M1 interface table'),
+    statusEvidence: INHERITED('docs/home/reference-tools/5gms/implementation.mdx, "Feature Deep Dives: Content Hosting" section'),
     note: 'Base ingest/hosting is implemented; Content Preparation, Edge Resources, geo-fencing and URL signing are accepted by the API but not yet implemented by the Reference Tools.',
     trackingIssue: null,
   },
@@ -81,7 +81,7 @@ export const FIVEGMS_FEATURES = [
     idealDescription:
       'Enables the 5GMS Client in the UE to interrogate or manipulate the network Quality of Service (QoS) for an ongoing media streaming session, via the Policy Control Function (AF-based network assistance) or via Access Network Bitrate Recommendation (ANBR) signalling between the UE modem and the RAN (RAN-based network assistance). It covers Bit Rate Recommendation (Throughput Estimation), which keeps the client synchronised with the network’s current capabilities, and Delivery Boost, a reactive request for a temporary increase in bit rate.',
     status: 'partial',
-    statusEvidence: INHERITED('docs/home/reference-tools/5gms/scope.mdx, "Feature: Network Assistance" + tutorials/index.mdx M5 interface table'),
+    statusEvidence: INHERITED('docs/home/reference-tools/5gms/implementation.mdx, "Feature Deep Dives: Network Assistance" section'),
     note: 'Only Delivery Boost is currently implemented by the Reference Tools; Throughput Estimation is still in development.',
     trackingIssue: 'https://github.com/5G-MAG/Standards/issues/63',
   },
@@ -98,7 +98,7 @@ export const FIVEGMS_FEATURES = [
     idealDescription:
       'Enables the 5GMS Client in the UE to manipulate the network traffic handling policies for an ongoing media streaming session. When the feature is offered and selected, the 5GMSd Application Provider specifies a set of policies in the Provisioning Session which can be invoked for the session, and the UE becomes aware of the selected policies as a list of valid Policy Template Ids (covering QoS, network slice/DNN context and charging treatment).',
     status: 'partial',
-    statusEvidence: INHERITED('docs/home/reference-tools/5gms/tutorials/index.mdx M5 interface table (Dynamic Policies checked; only the 5-Tuple Service Data Flow Description method checked, others unchecked)'),
+    statusEvidence: INHERITED('docs/home/reference-tools/5gms/implementation.mdx "Feature Deep Dives" section (Dynamic Policies checked; only the 5-Tuple Service Data Flow Description method checked, others unchecked)'),
     note: 'The base feature is implemented; of the Service Data Flow Description methods, only 5-Tuple is implemented (2-Tuple, ToS, Flow Label and Domain Name are not).',
     trackingIssue: 'https://github.com/5G-MAG/Standards/issues/103',
   },
@@ -148,7 +148,7 @@ export const FIVEGMS_FEATURES = [
     idealDescription:
       'Would enable the 5GMS System to log data relating to media streaming sessions and expose this to subscribers in the form of Events, via the Event Data Processing provisioning API at M1 and the Metrics Reporting / Consumption Reporting APIs at M5. The event exposure this feature enables is defined in the generic UE data collection framework (architecture in TS 26.531, protocols and formats in TS 26.532); see the UE Data Collection, Reporting and Event Exposure project for that reference implementation.',
     status: 'no',
-    statusEvidence: INHERITED('docs/home/reference-tools/5gms/scope.mdx, "Feature: Data collection, reporting and exposure" (":::warning Not yet implemented in 5GMS") + tutorials/index.mdx N33 interface table (Event Exposure unchecked)'),
+    statusEvidence: INHERITED('docs/home/reference-tools/5gms/implementation.mdx, "Feature Deep Dives: Data Collection, Reporting and Exposure" section (":::warning Not yet implemented in 5GMS")'),
     note: 'Not yet implemented within the framework of 5GMS. A generic UE data collection architecture exists separately under the UE Data Collection, Reporting and Event Exposure project, not yet wired into 5GMS.',
     trackingIssue: null,
   },
@@ -160,7 +160,7 @@ export const FIVEGMS_FEATURES = [
     idealDescription:
       'Listed in the 5GMS Key Features table (features-5gmsd.mdx) with its own clause reference, but not yet elaborated with its own "Feature:" section or worked description anywhere on the site -- carried forward as a table entry only, not expanded on here.',
     status: 'no',
-    statusEvidence: INHERITED('docs/home/reference-tools/5gms/tutorials/index.mdx M1 interface table (Edge Resources Provisioning unchecked)'),
+    statusEvidence: INHERITED('docs/home/reference-tools/5gms/implementation.mdx "Feature Deep Dives" section (Edge Resources Provisioning unchecked)'),
     note: null,
     trackingIssue: null,
   },

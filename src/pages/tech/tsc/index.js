@@ -17,12 +17,18 @@ const PROJECT_NAME = PROJECT.name;
 // A per-project "flagship" page, following the 5gms pilot
 // (src/pages/tech/5gms/index.js) -- replacing the former
 // docs/tech/tsc/tsc.md doc. Same Layout/HubHero every hub page uses, not
-// the doc-tier topic-banner. Like content-delivery this topic had no
-// techDoc entry in techTopics.js to begin with (its category link was
-// never wired to a doc), so no sidebar-side change accompanies this
-// move. Unlike 5gms/5g-mbs, TSC has no sub-pages of its own (taxonomy.json:
-// repos: 0, doc_url: null) so its full analysis lives in this page's own
-// "How It Works" section rather than being split across separate docs.
+// the doc-tier topic-banner. Unlike 5gms/5g-mbs, TSC has no repos of its
+// own (taxonomy.json: repos: 0) so its full analysis still lives in this
+// page's own "How It Works" section, not split across separate docs.
+//
+// 2026-09-27: docs/tech/tsc/overview.mdx now exists as a structural
+// placeholder (no real content moved there yet) and techTopics.js's own
+// entry carries `autogen: 'tsc'`, so the topic now DOES have a real sidebar
+// presence -- analysisHref below points at it directly rather than at the
+// in-page "#how-it-works" anchor. taxonomy.json's doc_url, previously null,
+// now points at docs/home/reference-tools/tsc/index.mdx, itself a
+// placeholder honestly stating no dedicated tool or repository exists yet
+// -- softwareHref below points at it.
 const CLOCK_ICON = (
   <>
     <path d="M12 13m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
@@ -85,8 +91,7 @@ export default function TSC() {
               <p>
                 5G-MAG tracks how these deterministic-delivery capabilities apply to professional
                 media, in particular over the <Link to="/tech/npn">Non-Public Networks</Link> that
-                broadcasters use for on-site production. For acronyms used here, see the{' '}
-                <Link to="/tech/glossary">Glossary</Link>.
+                broadcasters use for on-site production.
               </p>
               {PROJECT.sdos?.length > 0 && (
                 <div className={styles.capabilityTags}>
@@ -99,7 +104,7 @@ export default function TSC() {
               )}
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>Why It Matters</h3>
+              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
               <p className={styles.whyMattersBody}>
                 Deterministic, time-synchronised delivery normally means joining a full IEEE 802.1 TSN
                 bridge with a Centralized Network Configuration controller — infrastructure most media
@@ -118,8 +123,9 @@ export default function TSC() {
           <div className="container">
             <ProjectDestinationCards
               accent={ACCENT}
-              analysisHref="#how-it-works"
+              analysisHref="/tech/tsc/overview"
               standardsHref="/standards/tsc"
+              softwareHref="/reference-tools/tsc"
             />
           </div>
         </section>

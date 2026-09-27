@@ -16,13 +16,15 @@ const PROJECT_NAME = PROJECT.name;
 // /tech/rtc and /tech/ntn), replacing the former docs/tech/npn.md doc. Same
 // Layout/HubHero every hub page uses, not the doc-tier topic-banner.
 //
-// Like RTC, NPN has no separate analysis sub-page of its own -- the old doc
-// was a single flat file (docs/tech/npn.md) and taxonomy.json's doc_url for
-// this project is null (no Reference Tools page exists yet). So this page
-// carries its own "How It Works" content directly in the section below, and
-// the hero/grid only offer 2 real destinations (Technical Analysis,
-// Specifications) plus the muted Software placeholder, exactly the pattern
-// /tech/rtc established for the same doc_url-null case.
+// 2026-09-27: docs/tech/npn/overview.mdx now exists as a structural
+// placeholder (real content still lives in this page's own "How It Works"
+// section below, not yet migrated there) and techTopics.js's own entry
+// carries `autogen: 'npn'`, so the topic now DOES have a real sidebar
+// presence -- analysisHref below points at it directly rather than at the
+// in-page "#how-it-works" anchor. taxonomy.json's doc_url, previously null,
+// now points at docs/home/reference-tools/npn/index.mdx, itself a
+// placeholder honestly stating no dedicated tool or repository exists yet
+// -- softwareHref below points at it.
 const LOCK_ICON = (
   <>
     <path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6" />
@@ -85,8 +87,7 @@ export default function NPN() {
                 programmable, low-latency wireless fabric. 5G-MAG&apos;s work covers deployment
                 models, spectrum access strategies, User Equipment (UE) registration and
                 on-boarding, and the specific requirements of live production environments such as
-                time-sensitive communications. For acronyms used here, see the{' '}
-                <Link to="/tech/glossary">Glossary</Link>.
+                time-sensitive communications.
               </p>
               <p>
                 <strong>No dedicated reference tool exists for NPN.</strong> This area is
@@ -105,7 +106,7 @@ export default function NPN() {
               )}
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>Why It Matters</h3>
+              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
               <p className={styles.whyMattersBody}>
                 A broadcaster deploying its own private 5G network doesn&apos;t want to become a full
                 mobile operator with its own subscriber database — NPN avoids that: the Release 17
@@ -124,8 +125,9 @@ export default function NPN() {
           <div className="container">
             <ProjectDestinationCards
               accent={ACCENT}
-              analysisHref="#how-it-works"
+              analysisHref="/tech/npn/overview"
               standardsHref="/standards/npn"
+              softwareHref="/reference-tools/npn"
             />
             <p style={{ textAlign: 'center', marginTop: '0.5rem' }}>
               <a href="https://github.com/orgs/5G-MAG/projects/44/views/11">Execution Plan</a>

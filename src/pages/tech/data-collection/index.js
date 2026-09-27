@@ -22,11 +22,14 @@ const PROJECT_NAME = PROJECT.name;
 // (src/pages/tech/5gms/index.js) and the content-delivery page built the
 // same way -- replacing the former
 // docs/tech/data-collection/data-collection-event-exposure.mdx doc. Same
-// Layout/HubHero every hub page uses, not the doc-tier topic-banner. This
-// topic had no techDoc entry in techTopics.js to begin with (its category
-// link was never wired to the doc, and it has no autogen sub-docs either),
-// so no sidebar-side change accompanies this move -- see techTopics.js's
-// own "UE Data Collection, Reporting and Event Exposure" entry.
+// Layout/HubHero every hub page uses, not the doc-tier topic-banner.
+//
+// 2026-09-27: docs/tech/data-collection/overview.mdx now exists as a
+// structural placeholder (real content still lives in this page's own "How
+// It Works" section below, not yet migrated there) and techTopics.js's own
+// entry carries `autogen: 'data-collection'`, so the topic now DOES have a
+// real sidebar presence -- analysisHref below points at it directly rather
+// than at the in-page "#how-it-works" anchor.
 const DOC_REPORT_ICON = (
   <>
     <path d="M14 3v4a1 1 0 0 0 1 1h4" />
@@ -83,8 +86,7 @@ export default function DataCollection() {
                 <p>
                   This page covers the reference tooling and technical resources for the Data
                   Collection Application Function (DCAF) and event exposure framework. 5G-MAG tracks
-                  this work and maintains related reference implementations. For acronyms used here,
-                  see the <Link to="/tech/glossary">Glossary</Link>.
+                  this work and maintains related reference implementations.
                 </p>
                 {PROJECT.sdos?.length > 0 && (
                   <div className={styles.capabilityTags}>
@@ -103,7 +105,7 @@ export default function DataCollection() {
               />
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>Why It Matters</h3>
+              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
               <p className={styles.whyMattersBody}>
                 Every media service that needs UE-side data — streaming QoE, RTC quality, or a future
                 data domain nobody has defined yet — would otherwise have to build its own collection,
@@ -122,7 +124,7 @@ export default function DataCollection() {
           <div className="container">
             <ProjectDestinationCards
               accent={ACCENT}
-              analysisHref="#how-it-works"
+              analysisHref="/tech/data-collection/overview"
               standardsHref="/standards/data-collection"
               softwareHref="/reference-tools/data-collection/"
             />

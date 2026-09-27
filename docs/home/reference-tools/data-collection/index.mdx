@@ -3,16 +3,16 @@ hide_title: true
 sidebar_class_name: project-index-link
 title: UE Data Collection, Reporting and Event Exposure
 sidebar_position: -1
-description: Introduces the UE Data Collection, Reporting and Event Exposure project (3GPP TS 26.531/26.532), linking to scope, repos and tutorials.
+description: Introduces the UE Data Collection, Reporting and Event Exposure project (3GPP TS 26.531/26.532), linking to implementation detail, repos and tutorials.
 ---
-import CommunityStats from '@site/src/components/CommunityStats';
-import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
-import ProjectVideos from '@site/src/components/ProjectVideos';
+import ProjectContributors from '@site/src/components/ProjectContributors';
+import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
+import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import youtubePlaylists from '@site/static/data/youtube-playlists.json';
+import { REPO_METADATA } from '@site/src/data/baskets';
 
-export const projectVideos = (youtubePlaylists.projects?.['data-collection']?.videos || []).slice(0, 1);
+export const REPO_COUNT = (REPO_METADATA['data-collection'] || []).length;
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -29,15 +29,55 @@ export const projectVideos = (youtubePlaylists.projects?.['data-collection']?.vi
 </div>
 </div>
 
-<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/data-collection/scope')} style={{margin: '2px 4px 2px 0'}}>Scope</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/data-collection/resources')} style={{margin: '2px 4px 2px 0'}}>Resources</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/data-collection/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/data-collection/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
+The tools enable 5G devices to collect, aggregate, and report media performance metrics (playback quality, buffer events, network conditions, and consumption data) to the 5G Media Streaming Application Function (AF). This data feeds network-assisted Quality of Experience (QoE) optimisation, analytics dashboards, and adaptive policy decisions. For the DCAF architecture, reference-point APIs and deployment diagrams, see [Implementation Detail](./implementation).
 
-## What it does
+## What's Built
 
-The tools enable 5G devices to collect, aggregate, and report media performance metrics (playback quality, buffer events, network conditions, and consumption data) to the 5G Media Streaming Application Function (AF). This data feeds network-assisted Quality of Experience (QoE) optimisation, analytics dashboards, and adaptive policy decisions.
+**{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
 
-## Repositories
+<div class="godeeper-grid" style={{gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))'}}>
 
-<ProjectRepositories project="data-collection" />
+<a class="godeeper-card" href="#repositories--releases">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h4"/></svg>
+<h3>Repositories</h3>
+</div>
+<div class="godeeper-card__body">
+<p>The real code behind this project, with each repository's latest release.</p>
+</div>
+</a>
+
+<a class="godeeper-card" href={useBaseUrl('/reference-tools/data-collection/implementation')}>
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5H7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2V7a2 2 0 0 0 -2 -2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><path d="M9 12l2 2l4 -4"/></svg>
+<h3>Implementation Detail</h3>
+</div>
+<div class="godeeper-card__body">
+<p>The DCAF architecture, the R1/R2/R6 interfaces, and which building blocks are implemented.</p>
+</div>
+</a>
+
+<a class="godeeper-card" href={useBaseUrl('/reference-tools/data-collection/tutorials')}>
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 4v16l13 -8l-13 -8"/></svg>
+<h3>Call to Try</h3>
+</div>
+<div class="godeeper-card__body">
+<p>Build and test it yourself, with the tutorials.</p>
+</div>
+</a>
+
+<a class="godeeper-card" href="#developer-updates">
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"/><path d="M3.6 9h16.8"/><path d="M3.6 15h16.8"/><path d="M11.5 3a17 17 0 0 0 0 18"/><path d="M12.5 3a17 17 0 0 1 0 18"/></svg>
+<h3>Developer Updates</h3>
+</div>
+<div class="godeeper-card__body">
+<p>Community stats, open pull requests and the roadmap.</p>
+</div>
+</a>
+
+</div>
 
 ## Standards implemented
 
@@ -48,41 +88,32 @@ The tools enable 5G devices to collect, aggregate, and report media performance 
 </div>
 </div>
 
-**Implemented specifications:** 3GPP TS 26.531 (data collection and reporting framework), [TS 26.532](https://www.3gpp.org/dynareport/26532.htm) (data collection client procedures), [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) (5GMS AF interfaces for data reporting submission). The interfaces these specifications define are referred to on the [Scope](./scope) page by their reference-point names R1 to R6.
+**Implemented specifications:** 3GPP TS 26.531 (data collection and reporting framework), [TS 26.532](https://www.3gpp.org/dynareport/26532.htm) (data collection client procedures), [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) (5GMS AF interfaces for data reporting submission). The interfaces these specifications define are referred to on the [Implementation Detail](./implementation) page by their reference-point names R1 to R6.
 
 See [UE Data Collection on the Standards portal](/standards/data-collection) for version history and 5G-MAG's own standards contributions.
 
-## Contributors
+## Contributors & How to Contribute
 
 <ProjectContributors />
 
-## Community Stats
+## Repositories & Releases
+
+<ProjectRepositories project="data-collection" />
+
+## Developer Updates
 
 <CommunityStats name="UE Data Collection, Reporting and Event Exposure" />
 
----
+### Open Pull Requests
 
-## Try it yourself
+<ProjectOpenPRs name="UE Data Collection, Reporting and Event Exposure" />
 
-Follow the [tutorials](/reference-tools/data-collection/tutorials) to try the data collection reference implementation yourself.
+The roadmap for this project lives on the GitHub Project boards linked below. For what the project implements, see [Implementation Detail](./implementation).
 
-<div class="event-post-grid">
+**General Project Roadmap:** the Kanban board below tracks the planned and in-progress work for the UE Data Collection, Reporting and Event Exposure framework (the DCAF service-provider library, its Application Function, and the R1/R2/R6 provisioning, reporting, and event-exposure interfaces). It is maintained live on GitHub.
 
-<a class="event-post-card" href={useBaseUrl('/docs/Reference_Tools_UE_data_collection.pdf')} target="_blank" rel="noreferrer">
-<img loading="lazy" src={useBaseUrl('/assets/images/projects/data-collection-slides-cover.jpg')} alt="UE Data Collection, Reporting and Event Exposure slide deck cover" />
-<span class="event-post-title">Slide deck: UE Data Collection, Reporting and Event Exposure overview</span>
-</a>
+[Kanban board: Roadmap](https://github.com/orgs/5G-MAG/projects/48/views/8)
 
-</div>
+**Developer Kanban Boards:**
 
-<div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
-
-See the Reference Tools in action, with a community video from the tutorials page.
-
-<ProjectVideos videos={projectVideos} name="UE Data Collection, Reporting and Event Exposure" />
-
-| Area                        | Details                                                                                                                                                   |
-| --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Technical documentation** | Data collection architecture and event exposure interfaces: [UE Data Collection on the Tech portal](/tech/data-collection) |
-| **Standards**               | TS 26.531/532 and event exposure specs: [UE Data Collection on the Standards portal](/standards/data-collection)                                     |
-| **Testbeds**                 | Complementary evaluation activities that consume this data rather than reimplementing it: [AI/ML Evaluation Framework](/testbeds/ai-ml) and [6G Testbed](/testbeds/6g-testbed) |
+- **UE data collection, reporting and event exposure** — reference implementation of the generic Data Collection AF and its instantiation in the 5G Media Streaming (5GMS) Application Function: [Kanban board](https://github.com/orgs/5G-MAG/projects/30)
