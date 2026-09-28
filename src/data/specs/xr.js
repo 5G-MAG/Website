@@ -18,6 +18,20 @@ export const XR_SPECS = [
     note: 'published in 2023 as a set of extensions to Khronos glTF 2.0; the 2023 edition (Edition 1) is now withdrawn, consolidated with Amendment 1 (immersive audio, scene understanding and related extensions) into Edition 2 (2025), linked here -- Amendment 2 (anchors, interactivity, MPEG_avatar, lighting, haptics) is still a separate, not-yet-published Draft Amendment, not part of this edition -- see src/data/specs/avatar.js for that citation',
   },
   {
+    id: 'Khronos glTF 2.0',
+    title: 'glTF - Runtime 3D Asset Delivery',
+    url: 'https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html',
+    layer: 'Khronos',
+    note: 'current patch 2.0.1; the base format ISO/IEC 23090-14 (MPEG-I Scene Description) extends',
+  },
+  {
+    id: 'Khronos OpenXR',
+    title: 'OpenXR',
+    url: 'https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html',
+    layer: 'Khronos',
+    note: 'current version 1.1; the runtime API TS 26.119 (MeCAR) aligns the on-device client with',
+  },
+  {
     // Added 2026-08-25: docs/tech/xr.mdx's own "Key specifications" line names
     // this as OMAFv2 alongside 23090-14, but it was missing from this index
     // even though standards/xr.mdx calls this page "the full, maintained
@@ -300,6 +314,7 @@ export const XR_SPECS = [
 // alphabetically or by how many deliverables happen to be in each.
 export const XR_LAYER_ORDER = [
   'MPEG',
+  'Khronos',
   'Delivery',
   'Use cases',
   'Radio',
