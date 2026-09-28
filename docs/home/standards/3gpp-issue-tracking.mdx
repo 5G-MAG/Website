@@ -6,6 +6,9 @@ slug: /standards/3gpp-issue-tracking
 description: Dated log of XCHANGE meetings between 5G-MAG and 3GPP SA4 tracking specification issues, CRs and their status.
 ---
 
+import IssueTrackerFilter from '@site/src/components/IssueTrackerFilter';
+import { ISSUE_TRACKER_GROUPS } from '@site/src/data/specs/issueTrackerProjects';
+
 <div class="topic-banner">
   <div class="topic-banner__icon-wrap">
     <svg
@@ -66,6 +69,8 @@ The entries below use several 3GPP media-delivery shorthands. See the [5G Media 
 :::warning
 The reference-point summaries above are for orientation only. Confirm the exact definitions against TS 26.501.
 :::
+
+<IssueTrackerFilter groups={ISSUE_TRACKER_GROUPS}>
 
 ## XCHANGE 09/01/2025 - Status of standards tickets by end 2024
 
@@ -620,6 +625,8 @@ _The page references below are as presented at the time (11/03/2023) on the lega
 ### Issues to be covered at the session
 
 See [Kanban board](https://github.com/orgs/5G-MAG/projects/33).
+
+</IssueTrackerFilter>
 
 ## Related Standards Work
 

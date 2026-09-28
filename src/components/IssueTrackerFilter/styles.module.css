@@ -1,0 +1,65 @@
+/* Project filter for the 3GPP issue-tracking log. Same chip visual language
+   as SpecIndex (src/components/SpecIndex/styles.module.css) for consistency,
+   duplicated rather than shared since the two components have no other code
+   in common. */
+
+.bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.6rem;
+  margin: 1rem 0 1.5rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  background: var(--ifm-color-emphasis-100);
+}
+
+.label {
+  font-size: 0.85rem;
+  color: var(--ifm-color-emphasis-700);
+  margin-right: 0.2rem;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.chip {
+  font-size: 0.86rem;
+  font-family: inherit;
+  padding: 0.3rem 0.75rem;
+  border-radius: 100px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-background-color);
+  color: var(--ifm-color-emphasis-700);
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.chip:hover {
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+}
+
+.chipOn {
+  background: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+  color: #fff;
+  font-weight: 600;
+}
+
+.chipOn:hover {
+  color: #fff;
+}
+
+.note {
+  font-size: 0.82rem;
+  color: var(--ifm-color-emphasis-600);
+  margin: -1rem 0 1.25rem;
+}
