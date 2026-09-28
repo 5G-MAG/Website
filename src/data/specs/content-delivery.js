@@ -153,7 +153,7 @@ export const CONTENT_DELIVERY_SPECS = [
   },
   {
     id: 'TS 26.517',
-    title: '5G MBS; User Services and Protocols',
+    title: '5G Multicast-Broadcast User Services; Protocols and Formats',
     url: 'https://www.3gpp.org/dynareport/26517.htm',
     layer: '3GPP',
     note: 'Clause 6.2 defines the Object Distribution Method over FLUTE and binds it to the MBMS Download Profile of TS 26.346',
