@@ -17,7 +17,15 @@ export const BEYOND_2D_SPECS = [
     title: 'Evaluation and Characterization of Beyond 2D Video Formats and Codecs',
     url: 'https://www.3gpp.org/dynareport/26956.htm',
     layer: 'Technical report',
-    note: 'the output of FS_Beyond2D, giving the evaluation and characterisation of the formats and codecs in scope',
+    release: '19',
+    note: 'the output of FS_Beyond2D, giving the evaluation and characterisation of the formats and codecs in scope; published as V19.0.1, October 2025',
+  },
+  {
+    id: 'ISO/IEC 23090-9:2023',
+    title: 'Information technology - Coded representation of immersive media - Part 9: Geometry-based point cloud compression',
+    url: 'https://www.iso.org/standard/78990.html',
+    layer: 'Format',
+    note: 'G-PCC, named for comparison alongside V-PCC in the shared tech deep-dive page; Edition 1, March 2023',
   },
   {
     id: 'TS 26.501',
