@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-28 15:44 UTC",
-  "note": "Draft only -- cross-reference against src/data/projects.json's hand-curated `contributors` field before merging. This signal misses PR-only/review-only contribution and any company affiliation not reflected in CLA team membership.",
+  "updated_at": "2026-09-28 17:57 UTC",
+  "note": "Evidence log for the additive merge this run just applied to src/data/taxonomy.json -- kept so a wrong credit is traceable and correctable after the fact. This signal misses PR-only/review-only contribution and any company affiliation not reflected in CLA team membership, so an entry missing here isn't evidence a company didn't contribute, only that this script found no direct evidence for it.",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -50,19 +50,19 @@
         ],
         "Fraunhofer FOKUS": [
           {
-            "login": "dsilhavy",
-            "repo": "rt-5gms-application-function",
-            "commits": 8
-          },
-          {
             "login": "ErikGaida",
             "repo": "rt-5gms-application-function",
-            "commits": 5
+            "commits": 10
+          },
+          {
+            "login": "dsilhavy",
+            "repo": "rt-5gms-application-function",
+            "commits": 9
           },
           {
             "login": "dsilhavy",
             "repo": "rt-5gms-application-server",
-            "commits": 5
+            "commits": 6
           },
           {
             "login": "dsilhavy",
@@ -92,12 +92,12 @@
           {
             "login": "dsilhavy",
             "repo": "rt-5gms-application-provider",
-            "commits": 11
+            "commits": 12
           },
           {
             "login": "dsilhavy",
             "repo": "rt-5gms-examples",
-            "commits": 23
+            "commits": 24
           },
           {
             "login": "ErikGaida",
@@ -147,6 +147,11 @@
             "login": "shilinding",
             "repo": "rt-5gms-examples",
             "commits": 2
+          },
+          {
+            "login": "shilinding",
+            "repo": "cmcd-toolkit",
+            "commits": 1
           }
         ]
       }
@@ -154,18 +159,12 @@
     {
       "name": "5G Broadcast - TV and Radio Services",
       "suggested_contributors": [
-        "BBC - British Broadcasting Corporation",
         "Big Blue Marble",
         "Fraunhofer FOKUS",
         "iTEAM - Universitat Politècnica de València"
       ],
       "evidence": {
         "Fraunhofer FOKUS": [
-          {
-            "login": "dsilhavy",
-            "repo": "rt-mbms-mw",
-            "commits": 41
-          },
           {
             "login": "dsilhavy",
             "repo": "rt-mbms-modem",
@@ -178,23 +177,8 @@
           },
           {
             "login": "dsilhavy",
-            "repo": "rt-wui",
-            "commits": 15
-          },
-          {
-            "login": "dsilhavy",
             "repo": "rt-mbms-mw-android",
             "commits": 3
-          },
-          {
-            "login": "dsilhavy",
-            "repo": "rt-libflute",
-            "commits": 20
-          },
-          {
-            "login": "alexzfokus",
-            "repo": "rt-libflute",
-            "commits": 2
           },
           {
             "login": "dsilhavy",
@@ -205,19 +189,19 @@
             "login": "dsilhavy",
             "repo": "rt-mbms-tx-for-qrd-and-crd",
             "commits": 1
+          },
+          {
+            "login": "dsilhavy",
+            "repo": "rt-mbms-client",
+            "commits": 41
+          },
+          {
+            "login": "dsilhavy",
+            "repo": "rt-mbms-application",
+            "commits": 15
           }
         ],
         "Big Blue Marble": [
-          {
-            "login": "stefanbabel",
-            "repo": "rt-mbms-mw",
-            "commits": 4
-          },
-          {
-            "login": "gokulsani",
-            "repo": "rt-mbms-mw",
-            "commits": 3
-          },
           {
             "login": "stefanbabel",
             "repo": "rt-mbms-modem",
@@ -225,23 +209,28 @@
           },
           {
             "login": "stefanbabel",
-            "repo": "rt-wui",
+            "repo": "rt-mbms-tx-for-qrd-and-crd",
+            "commits": 10
+          },
+          {
+            "login": "stefanbabel",
+            "repo": "rt-mbms-client",
+            "commits": 4
+          },
+          {
+            "login": "gokulsani",
+            "repo": "rt-mbms-client",
+            "commits": 3
+          },
+          {
+            "login": "stefanbabel",
+            "repo": "rt-mbms-application",
             "commits": 7
           },
           {
             "login": "gokulsani",
-            "repo": "rt-wui",
+            "repo": "rt-mbms-application",
             "commits": 3
-          },
-          {
-            "login": "stefanbabel",
-            "repo": "rt-libflute",
-            "commits": 3
-          },
-          {
-            "login": "stefanbabel",
-            "repo": "rt-mbms-tx-for-qrd-and-crd",
-            "commits": 10
           }
         ],
         "iTEAM - Universitat Politècnica de València": [
@@ -252,15 +241,8 @@
           },
           {
             "login": "jsroldan",
-            "repo": "rt-wui",
+            "repo": "rt-mbms-application",
             "commits": 1
-          }
-        ],
-        "BBC - British Broadcasting Corporation": [
-          {
-            "login": "davidjwbbc",
-            "repo": "rt-libflute",
-            "commits": 26
           }
         ]
       }
@@ -269,7 +251,8 @@
       "name": "5G Broadcast - Emergency Alerts",
       "suggested_contributors": [
         "Big Blue Marble",
-        "Fraunhofer FOKUS"
+        "Fraunhofer FOKUS",
+        "iTEAM - Universitat Politècnica de València"
       ],
       "evidence": {
         "Big Blue Marble": [
@@ -277,12 +260,44 @@
             "login": "stefanbabel",
             "repo": "rt-mbms-tx-for-qrd-and-crd",
             "commits": 10
+          },
+          {
+            "login": "stefanbabel",
+            "repo": "rt-mbms-application",
+            "commits": 7
+          },
+          {
+            "login": "gokulsani",
+            "repo": "rt-mbms-application",
+            "commits": 3
           }
         ],
         "Fraunhofer FOKUS": [
           {
             "login": "dsilhavy",
             "repo": "rt-mbms-tx-for-qrd-and-crd",
+            "commits": 1
+          },
+          {
+            "login": "dsilhavy",
+            "repo": "rt-mbms-tx",
+            "commits": 2
+          },
+          {
+            "login": "dsilhavy",
+            "repo": "rt-mbms-application",
+            "commits": 15
+          }
+        ],
+        "iTEAM - Universitat Politècnica de València": [
+          {
+            "login": "jsroldan",
+            "repo": "rt-mbms-tx",
+            "commits": 6
+          },
+          {
+            "login": "jsroldan",
+            "repo": "rt-mbms-application",
             "commits": 1
           }
         ]
@@ -381,8 +396,8 @@
       "name": "5G Multicast Broadcast Services (MBS)",
       "suggested_contributors": [
         "BBC - British Broadcasting Corporation",
-        "Big Blue Marble",
-        "Fraunhofer FOKUS"
+        "Fraunhofer FOKUS",
+        "iTEAM - Universitat Politècnica de València"
       ],
       "evidence": {
         "BBC - British Broadcasting Corporation": [
@@ -405,11 +420,6 @@
             "login": "davidjwbbc",
             "repo": "rt-mbs-examples",
             "commits": 3
-          },
-          {
-            "login": "davidjwbbc",
-            "repo": "rt-libflute",
-            "commits": 26
           }
         ],
         "Fraunhofer FOKUS": [
@@ -435,20 +445,15 @@
           },
           {
             "login": "dsilhavy",
-            "repo": "rt-libflute",
-            "commits": 20
-          },
-          {
-            "login": "alexzfokus",
-            "repo": "rt-libflute",
-            "commits": 2
+            "repo": "rt-mbs-client",
+            "commits": 1
           }
         ],
-        "Big Blue Marble": [
+        "iTEAM - Universitat Politècnica de València": [
           {
-            "login": "stefanbabel",
-            "repo": "rt-libflute",
-            "commits": 3
+            "login": "jsroldan",
+            "repo": "srsRAN_4G_mbs",
+            "commits": 10
           }
         ]
       }
@@ -457,7 +462,8 @@
       "name": "UE Data Collection, Reporting and Event Exposure",
       "suggested_contributors": [
         "BBC - British Broadcasting Corporation",
-        "Fraunhofer FOKUS"
+        "Fraunhofer FOKUS",
+        "Qualcomm"
       ],
       "evidence": {
         "BBC - British Broadcasting Corporation": [
@@ -472,6 +478,13 @@
             "login": "dsilhavy",
             "repo": "rt-data-collection-application-function",
             "commits": 15
+          }
+        ],
+        "Qualcomm": [
+          {
+            "login": "shilinding",
+            "repo": "cmcd-toolkit",
+            "commits": 1
           }
         ]
       }
@@ -518,6 +531,11 @@
           }
         ]
       }
+    },
+    {
+      "name": "Dynamic Mesh Coding",
+      "suggested_contributors": [],
+      "evidence": {}
     },
     {
       "name": "5G Core Service Consumers",
@@ -606,17 +624,12 @@
           {
             "login": "nlsdvl",
             "repo": "rt-avatar-content",
-            "commits": 16
+            "commits": 17
           },
           {
             "login": "nlsdvl",
             "repo": "rt-avatar-call",
-            "commits": 112
-          },
-          {
-            "login": "nlsdvl",
-            "repo": "rt-3gpp-swap",
-            "commits": 7
+            "commits": 135
           }
         ],
         "Qualcomm": [
@@ -624,11 +637,6 @@
             "login": "ibouazizi",
             "repo": "rt-avatar-content",
             "commits": 3
-          },
-          {
-            "login": "ibouazizi",
-            "repo": "rt-3gpp-swap",
-            "commits": 7
           }
         ]
       }
@@ -653,7 +661,8 @@
       "suggested_contributors": [
         "BBC - British Broadcasting Corporation",
         "Fraunhofer FOKUS",
-        "Motion Spell"
+        "Motion Spell",
+        "iTEAM - Universitat Politècnica de València"
       ],
       "evidence": {
         "BBC - British Broadcasting Corporation": [
@@ -677,61 +686,29 @@
           {
             "login": "nlsdvl",
             "repo": "rt-common-shared",
-            "commits": 7
+            "commits": 9
           }
         ],
         "Fraunhofer FOKUS": [
           {
             "login": "dsilhavy",
             "repo": "rt-common-shared",
-            "commits": 2
+            "commits": 5
+          }
+        ],
+        "iTEAM - Universitat Politècnica de València": [
+          {
+            "login": "aaronmontilla",
+            "repo": "rt-common-shared",
+            "commits": 1
           }
         ]
       }
     },
     {
       "name": "DVB-I Services over 5G Systems",
-      "suggested_contributors": [
-        "BBC - British Broadcasting Corporation",
-        "Dolby Laboratories",
-        "Fraunhofer FOKUS",
-        "Qualcomm"
-      ],
-      "evidence": {
-        "Fraunhofer FOKUS": [
-          {
-            "login": "dsilhavy",
-            "repo": "rt-5gms-application",
-            "commits": 27
-          }
-        ],
-        "Dolby Laboratories": [
-          {
-            "login": "KurtKrauss",
-            "repo": "rt-5gms-application",
-            "commits": 3
-          },
-          {
-            "login": "gcris-dolby",
-            "repo": "rt-5gms-application",
-            "commits": 2
-          }
-        ],
-        "Qualcomm": [
-          {
-            "login": "shilinding",
-            "repo": "rt-5gms-application",
-            "commits": 2
-          }
-        ],
-        "BBC - British Broadcasting Corporation": [
-          {
-            "login": "rjb1000",
-            "repo": "rt-5gms-application",
-            "commits": 1
-          }
-        ]
-      }
+      "suggested_contributors": [],
+      "evidence": {}
     },
     {
       "name": "Content Delivery Protocols",
@@ -745,40 +722,25 @@
           {
             "login": "davidjwbbc",
             "repo": "rt-libflute",
-            "commits": 26
+            "commits": 27
           }
         ],
         "Fraunhofer FOKUS": [
           {
             "login": "dsilhavy",
             "repo": "rt-libflute",
-            "commits": 20
+            "commits": 22
           },
           {
             "login": "alexzfokus",
             "repo": "rt-libflute",
             "commits": 2
-          },
-          {
-            "login": "dsilhavy",
-            "repo": "rt-mbms-mw",
-            "commits": 41
           }
         ],
         "Big Blue Marble": [
           {
             "login": "stefanbabel",
             "repo": "rt-libflute",
-            "commits": 3
-          },
-          {
-            "login": "stefanbabel",
-            "repo": "rt-mbms-mw",
-            "commits": 4
-          },
-          {
-            "login": "gokulsani",
-            "repo": "rt-mbms-mw",
             "commits": 3
           }
         ]
@@ -809,18 +771,51 @@
     },
     {
       "name": "Dependency",
+      "suggested_contributors": [],
+      "evidence": {}
+    },
+    {
+      "name": "Real-time Media Communication (RTC) Architecture",
       "suggested_contributors": [
+        "Motion Spell",
         "Qualcomm"
       ],
       "evidence": {
         "Qualcomm": [
           {
-            "login": "shilinding",
-            "repo": "cmcd-toolkit",
-            "commits": 1
+            "login": "ibouazizi",
+            "repo": "rt-3gpp-swap",
+            "commits": 7
+          }
+        ],
+        "Motion Spell": [
+          {
+            "login": "nlsdvl",
+            "repo": "rt-3gpp-swap",
+            "commits": 7
           }
         ]
       }
+    },
+    {
+      "name": "Non-Terrestrial Networks in 5G Systems",
+      "suggested_contributors": [],
+      "evidence": {}
+    },
+    {
+      "name": "Non-Public Networks",
+      "suggested_contributors": [],
+      "evidence": {}
+    },
+    {
+      "name": "Time-Sensitive Communications (TSC)",
+      "suggested_contributors": [],
+      "evidence": {}
+    },
+    {
+      "name": "5G-MAG Website & Org Infrastructure",
+      "suggested_contributors": [],
+      "evidence": {}
     }
   ]
 }

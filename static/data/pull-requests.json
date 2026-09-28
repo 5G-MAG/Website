@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-24 06:54 UTC",
+  "updated_at": "2026-09-28 17:44 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -12,7 +12,7 @@
           "number": 31,
           "title": "MBS compliance fixes: SSM/session handling, NCGI/TAI, session-area updates",
           "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/31",
-          "draft": true,
+          "draft": false,
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-09-22",
@@ -168,32 +168,6 @@
           "created_at": "2025-08-27",
           "last_comment_by": null,
           "last_comment_date": null
-        },
-        {
-          "repo": "rt-mbms-mw",
-          "branch": null,
-          "number": 18,
-          "title": "ROUTE support using GPAC",
-          "url": "https://github.com/5G-MAG/rt-mbms-mw/pull/18",
-          "draft": false,
-          "author_login": "rbouqueau",
-          "author_avatar": "https://avatars.githubusercontent.com/u/1917976?v=4",
-          "created_at": "2021-11-30",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-mbms-mw",
-          "branch": null,
-          "number": 15,
-          "title": "readme: propose to install in /usr/local instead of /usr (which is a \u2026",
-          "url": "https://github.com/5G-MAG/rt-mbms-mw/pull/15",
-          "draft": false,
-          "author_login": "rbouqueau",
-          "author_avatar": "https://avatars.githubusercontent.com/u/1917976?v=4",
-          "created_at": "2021-10-23",
-          "last_comment_by": null,
-          "last_comment_date": null
         }
       ]
     },
@@ -242,19 +216,6 @@
       "tagline": "Multicast and Broadcast delivery for 5G-NR-based terrestrial and non-terrestrial networks",
       "pulls": [
         {
-          "repo": "rt-5gc-service-consumers",
-          "branch": null,
-          "number": 31,
-          "title": "MBS compliance fixes: SSM/session handling, NCGI/TAI, session-area updates",
-          "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/31",
-          "draft": true,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-22",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
           "repo": "rt-mbs-examples",
           "branch": null,
           "number": 33,
@@ -281,25 +242,12 @@
           "last_comment_date": null
         },
         {
-          "repo": "rt-5gc-service-consumers",
-          "branch": null,
-          "number": 29,
-          "title": "Fix MBS Session Id / SSM handling for BROADCAST sessions + MNC-length-aware PLMN Id",
-          "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/29",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-08-12",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
           "repo": "rt-mbs-function",
           "branch": null,
           "number": 49,
           "title": "Fix MBS Broadcast distribution session lifecycle and Service Announcement crashes",
           "url": "https://github.com/5G-MAG/rt-mbs-function/pull/49",
-          "draft": true,
+          "draft": false,
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-08-11",
@@ -312,7 +260,7 @@
           "number": 71,
           "title": "Fix MBS Broadcast content delivery crashes and Distribution Session bugs",
           "url": "https://github.com/5G-MAG/rt-mbs-transport-function/pull/71",
-          "draft": true,
+          "draft": false,
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-08-11",
@@ -468,6 +416,19 @@
           "created_at": "2026-08-27",
           "last_comment_by": null,
           "last_comment_date": null
+        },
+        {
+          "repo": "cmcd-toolkit",
+          "branch": null,
+          "number": 2,
+          "title": "Fix spelling of 'Length' in dashboard titles",
+          "url": "https://github.com/5G-MAG/cmcd-toolkit/pull/2",
+          "draft": false,
+          "author_login": "shilinding",
+          "author_avatar": "https://avatars.githubusercontent.com/u/115362942?v=4",
+          "created_at": "2026-07-02",
+          "last_comment_by": null,
+          "last_comment_date": null
         }
       ]
     },
@@ -478,10 +439,43 @@
       "pulls": []
     },
     {
+      "name": "Dynamic Mesh Coding",
+      "doc_url": "/reference-tools/vdmc/",
+      "tagline": "Compressing moving 3D surface meshes for real-time immersive environments",
+      "pulls": []
+    },
+    {
       "name": "5G Core Service Consumers",
       "doc_url": "/reference-tools/5g-core/",
       "tagline": "Reference consumers for 5G Core capability exposure APIs",
-      "pulls": []
+      "pulls": [
+        {
+          "repo": "rt-5gc-service-consumers",
+          "branch": null,
+          "number": 31,
+          "title": "MBS compliance fixes: SSM/session handling, NCGI/TAI, session-area updates",
+          "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/31",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-09-22",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-5gc-service-consumers",
+          "branch": null,
+          "number": 29,
+          "title": "Fix MBS Session Id / SSM handling for BROADCAST sessions + MNC-length-aware PLMN Id",
+          "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/29",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-08-12",
+          "last_comment_by": null,
+          "last_comment_date": null
+        }
+      ]
     },
     {
       "name": "Beyond 2D Evaluation Framework",
@@ -538,7 +532,7 @@
           "repo": "rt-3gpp-swap",
           "branch": null,
           "number": 9,
-          "title": "Close TS 26.113 \u00a713.2.4 (SWAP) conformance gaps; add license",
+          "title": "Close TS 26.113 §13.2.4 (SWAP) conformance gaps; add license",
           "url": "https://github.com/5G-MAG/rt-3gpp-swap/pull/9",
           "draft": true,
           "author_login": "nlsdvl",
@@ -702,30 +696,44 @@
     {
       "name": "Dependency",
       "doc_url": null,
-      "tagline": "External forks and dependencies 5G-MAG maintains for its reference tools \u2014 not first-class reference-tool projects with their own docs page",
+      "tagline": "External forks and dependencies 5G-MAG maintains for its reference tools — not first-class reference-tool projects with their own docs page",
       "pulls": []
     },
     {
       "name": "Real-time Media Communication (RTC) Architecture",
-      "doc_url": null,
+      "doc_url": "/reference-tools/rtc/",
       "tagline": "Interactive, low-latency, real-time media communication",
-      "pulls": []
+      "pulls": [
+        {
+          "repo": "rt-3gpp-swap",
+          "branch": null,
+          "number": 9,
+          "title": "Close TS 26.113 §13.2.4 (SWAP) conformance gaps; add license",
+          "url": "https://github.com/5G-MAG/rt-3gpp-swap/pull/9",
+          "draft": true,
+          "author_login": "nlsdvl",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2748737?v=4",
+          "created_at": "2026-09-17",
+          "last_comment_by": null,
+          "last_comment_date": null
+        }
+      ]
     },
     {
       "name": "Non-Terrestrial Networks in 5G Systems",
-      "doc_url": null,
+      "doc_url": "/reference-tools/ntn/",
       "tagline": "Expanding network connectivity via satellite and HAPS for content delivery",
       "pulls": []
     },
     {
       "name": "Non-Public Networks",
-      "doc_url": null,
+      "doc_url": "/reference-tools/npn/",
       "tagline": "Private networks replacing legacy COFDM and RF-based contribution links",
       "pulls": []
     },
     {
       "name": "Time-Sensitive Communications (TSC)",
-      "doc_url": null,
+      "doc_url": "/reference-tools/tsc/",
       "tagline": "Deterministic, low-jitter transport for tightly synchronised professional media",
       "pulls": []
     },

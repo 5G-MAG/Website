@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-24 06:17 UTC",
+  "updated_at": "2026-09-28 17:45 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -95,7 +95,7 @@
     {
       "name": "5G Broadcast - TV and Radio Services",
       "doc_url": "/reference-tools/5g-broadcast/",
-      "tagline": "LTE-based 5G broadcast for TV, radio and emergency alerts",
+      "tagline": "The 3GPP-based broadcast delivery system bridging OTT streaming and broadcasting",
       "releases_slug": "#repositories--releases",
       "image": "/assets/images/projects/5g-broadcast.png",
       "latest_date": "2026-09-01",
@@ -146,15 +146,6 @@
           "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
         },
         {
-          "repo": "rt-mbms-mw",
-          "branch": null,
-          "tag": "v0.10.0",
-          "date": "2022-12-08",
-          "url": "https://github.com/5G-MAG/rt-mbms-mw/releases/tag/v0.10.0",
-          "author_login": "dsilhavy",
-          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
-        },
-        {
           "repo": "rt-mbms-modem",
           "branch": null,
           "tag": "v1.2.1",
@@ -168,7 +159,7 @@
     {
       "name": "5G Broadcast - Emergency Alerts",
       "doc_url": "/reference-tools/emergency-alerts/",
-      "tagline": "Cell Broadcast Service warnings delivered over FeMBMS",
+      "tagline": "Emergency warnings delivered over 5G Broadcast",
       "releases_slug": "#repositories--releases",
       "image": "/assets/images/projects/emergency-alerts.png",
       "latest_date": "2024-09-05",
@@ -181,13 +172,22 @@
           "url": "https://github.com/5G-MAG/rt-mbms-tx-for-qrd-and-crd/releases/tag/rt-mbms-tx-for-qrd-and-crd-ea-1.0.0",
           "author_login": "dsilhavy",
           "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
+        },
+        {
+          "repo": "rt-mbms-tx",
+          "branch": null,
+          "tag": "v1.0.0",
+          "date": "2023-06-21",
+          "url": "https://github.com/5G-MAG/rt-mbms-tx/releases/tag/v1.0.0",
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
         }
       ]
     },
     {
       "name": "XR/3D Scenes with MPEG-I Scene Description",
       "doc_url": "/reference-tools/xr/",
-      "tagline": "MPEG-I scene description and XR media integration over 5G",
+      "tagline": "Composing, positioning, and temporally synchronizing dynamic 3D visual and audio objects for XR",
       "releases_slug": "#repositories--releases",
       "image": "/assets/images/projects/xr.png",
       "latest_date": "2025-04-16",
@@ -215,7 +215,7 @@
     {
       "name": "5G Multicast Broadcast Services (MBS)",
       "doc_url": "/reference-tools/5g-mbs/",
-      "tagline": "5G-native multicast and broadcast services · 3GPP 5G MBS",
+      "tagline": "Multicast and Broadcast delivery for 5G-NR-based terrestrial and non-terrestrial networks",
       "releases_slug": "#repositories--releases",
       "image": "/assets/images/projects/5g-mbs.png",
       "latest_date": "2026-09-01",
@@ -282,22 +282,13 @@
           "url": "https://github.com/5G-MAG/rt-mbs-transport-function/releases/tag/rt-mbs-transport-function-1.4.0",
           "author_login": "davidjwbbc",
           "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4"
-        },
-        {
-          "repo": "rt-5gc-service-consumers",
-          "branch": null,
-          "tag": "rt-5gc-service-consumers-2.1.1",
-          "date": "2026-06-05",
-          "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/releases/tag/rt-5gc-service-consumers-2.1.1",
-          "author_login": "davidjwbbc",
-          "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4"
         }
       ]
     },
     {
       "name": "UE Data Collection, Reporting and Event Exposure",
       "doc_url": "/reference-tools/data-collection/",
-      "tagline": "UE-side data collection, reporting and event exposure · 3GPP TS 26.531",
+      "tagline": "User data collection and reporting, and exposure of network events to consumers",
       "releases_slug": "#repositories--releases",
       "image": "/assets/images/projects/data-collection.png",
       "latest_date": "2025-05-13",
@@ -316,7 +307,7 @@
     {
       "name": "MPEG V3C Immersive Platform",
       "doc_url": "/reference-tools/v3c/",
-      "tagline": "V3C volumetric video platform for immersive 5G experiences",
+      "tagline": "Volumetric video platform for immersive experiences",
       "releases_slug": "#repositories--releases",
       "image": "/assets/images/projects/v3c.png",
       "latest_date": "2025-10-09",
@@ -351,6 +342,25 @@
       ]
     },
     {
+      "name": "5G Core Service Consumers",
+      "doc_url": "/reference-tools/5g-core/",
+      "tagline": "Reference consumers for 5G Core capability exposure APIs",
+      "releases_slug": "#repositories--releases",
+      "image": "/assets/images/projects/5g-core.png",
+      "latest_date": "2026-06-05",
+      "releases": [
+        {
+          "repo": "rt-5gc-service-consumers",
+          "branch": null,
+          "tag": "rt-5gc-service-consumers-2.1.1",
+          "date": "2026-06-05",
+          "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/releases/tag/rt-5gc-service-consumers-2.1.1",
+          "author_login": "davidjwbbc",
+          "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4"
+        }
+      ]
+    },
+    {
       "name": "Beyond 2D Evaluation Framework",
       "doc_url": "/testbeds/beyond-2d/",
       "tagline": "Evaluation framework for beyond-2D video experiences",
@@ -372,7 +382,7 @@
     {
       "name": "Conversational Avatar Communication with MPEG ARF",
       "doc_url": "/reference-tools/avatar/",
-      "tagline": "Real-time conversational avatars over 5G using MPEG ARF",
+      "tagline": "Real-time conversational avatars, animated from user to user",
       "releases_slug": "#repositories--releases",
       "image": "/assets/images/projects/avatar.png",
       "latest_date": "2026-07-31",
@@ -410,7 +420,7 @@
     {
       "name": "Content Delivery Protocols",
       "doc_url": "/reference-tools/content-delivery/",
-      "tagline": "Content delivery protocols and related tools",
+      "tagline": "Content delivery origin, packaging, protocols and related tools",
       "releases_slug": "#repositories--releases",
       "image": "/assets/images/projects/multimedia.png",
       "latest_date": "2026-09-01",
