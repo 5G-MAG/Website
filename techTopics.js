@@ -98,6 +98,13 @@ const ALL_TOPICS = [
     label: 'Non-Terrestrial Networks in 5G Systems',
     techHref: '/tech/ntn',
     autogen: 'ntn',
+    // Added 2026-09-28 (consistency audit: every project needs a working
+    // landing page behind "Technical Analysis"): a placeholder, matching
+    // the pattern already used by several other topics (6g, ai-ml, etc.)
+    // -- none of this folder's 4 existing docs is a general overview
+    // (each is a specific mobility/broadcast-over-NTN deep-dive), so
+    // writing a real one needs source material this pass doesn't have.
+    techOverviewDoc: 'ntn/overview',
     standards: [{ doc: 'standards/ntn', label: 'Standards: Non-Terrestrial Networks in 5G Systems' }],
   },
   {
@@ -129,6 +136,12 @@ const ALL_TOPICS = [
     label: '5G Broadcast - TV and Radio Services',
     techHref: '/tech/5g-broadcast',
     autogen: '5g-broadcast',
+    // Added 2026-09-28 (consistency audit: every project needs a working
+    // landing page behind "Technical Analysis"): a placeholder, matching
+    // the pattern already used by several other topics (6g, ai-ml, etc.)
+    // -- neither of this folder's 2 existing docs (parameters-in-use,
+    // deployment-profiles) is a general overview.
+    techOverviewDoc: '5g-broadcast/overview',
     standards: [
       {
         doc: 'standards/5g-broadcast',
@@ -165,6 +178,12 @@ const ALL_TOPICS = [
     label: 'MPEG V3C Immersive Platform',
     techHref: '/tech/v3c',
     autogen: 'volumetric',
+    // Added 2026-09-28 (consistency audit: every project needs a working
+    // landing page behind "Technical Analysis"): a placeholder, matching
+    // the pattern already used by several other topics (6g, ai-ml, etc.)
+    // -- this shared folder's other real doc, beyond-2d.mdx, is the
+    // separate Beyond 2D project's own content, not V3C's.
+    techOverviewDoc: 'volumetric/v3c-overview',
     standards: [{ doc: 'standards/v3c', label: 'Standards: MPEG V3C Immersive Platform' }],
   },
   {
