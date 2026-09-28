@@ -221,13 +221,6 @@ The APIs analysed in this section share a set of conventions defined by the CAMA
 - **Versioning and releases.** APIs are shipped in twice-yearly meta-releases; a `wip` version on `main` is not a release. Several APIs here are still `v0`, so field names and enumerations can change.
 
 ---
-
-## Related
-
-- [Network APIs (this portal)](/tech/network-apis). The parent landing page for all Network API analysis.
-- [Standards: Network APIs](/standards/network-apis). 5G-MAG's standards tracking and contributions.
-- [Developer portal: Network APIs](/reference-tools/network-apis). The 5G-MAG reference tools.
-
 :::note
 Refer to the [Tech](https://github.com/5G-MAG/Tech/) repository to contribute to this documentation.
 :::

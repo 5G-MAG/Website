@@ -81,6 +81,15 @@ This describes the `rt-libflute` `development` branch as of 2026-08-11. It is a 
 
 <ImplementationBoard components={LIBFLUTE_COMPONENTS} sections={LIBFLUTE_SECTIONS} />
 
+## Coded Multisource Media Format (CMMF)
+
+[rt-cmmf-encoder](https://github.com/5G-MAG/rt-cmmf-encoder) is an early-stage reference
+implementation of ETSI TS 103 973 (Coded Multisource Media Format), packaging content
+for delivery from more than one network source at once. It is not yet feature-complete
+against the published standard — this is one of this project's more open areas, so
+check the repository's own issues and README for current status, and open an issue or
+pull request there if you want to help close the gap.
+
 ## Getting Started
 
 1. Choose a transport for your delivery model: FLUTE for a file/download model (as in MBMS), ROUTE for a real-time segment model.
@@ -90,14 +99,9 @@ This describes the `rt-libflute` `development` branch as of 2026-08-11. It is a 
 
 ## Related
 
-- [Project index](/reference-tools/content-delivery)
 - [Repositories & Releases](/reference-tools/content-delivery#repositories--releases)
-- [Tutorials](/reference-tools/content-delivery/tutorials)
 - [Slide deck: Content Delivery Protocols overview](/docs/Reference_Tools_Multimedia_delivery_protocols.pdf)
-- Standards: [Content Delivery Protocols](/standards/content-delivery) &mdash; the full specification list, including the 3GPP chain that mandates FLUTE version 1 rather than v2. The transports are stable IETF RFCs, so there is no 3GPP-style release cadence at the transport layer; the tools track the current RFCs and the ways 5G Broadcast and 5G MBS reference them.
-- Tech: [Content Delivery Protocols](/tech/content-delivery) &mdash; the LCT/ALC/FEC building blocks, FLUTE compared with ROUTE, and how DASH/HLS/CMAF are carried over them
 - Tech: [5G Broadcast: TV, Radio and Emergency Alerts](/tech/5g-broadcast) and [Multicast &amp; Broadcast in 5G](/tech/5g-mbs) &mdash; the delivery systems these transports run over
-
 :::note
-Refer to the [content delivery repositories](https://github.com/5G-MAG) on GitHub to use or contribute to these Reference Tools.
+Refer to the [content delivery repositories](https://github.com/5G-MAG) on GitHub to use or contribute to these Reference Tools. See [How to Contribute](/contributing) for the process.
 :::

@@ -219,12 +219,7 @@ A QoS booking reserves per-device QoS treatment that, on assignment and connecti
 
 ## Related
 
-- [Using CAMARA APIs: QoS Booking](./using-qos-booking): the device-bound counterpart.
-- [Using Dedicated Networks](./using-dedicated-networks): the more complete reservation/assignment alternative.
-- [Workflows and Requirements](./workflows): the reservation and assignment phases this API covers.
-- [Using CAMARA APIs](./using-camara-apis): where this API sits among the alternatives.
 - [QoS Booking and Assignment API](../camara-qos-booking-assignment): the API reference and CAMARA source.
-
 :::note
 Refer to the [Tech](https://github.com/5G-MAG/Tech/) repository to contribute to this documentation.
 :::

@@ -80,12 +80,8 @@ This work reflects analysis in progress by 5G-MAG members. It does not assert th
 
 ## Related
 
-- [Reference Scenarios](./scenarios): the distribution chain and who observes each part.
-- [Workflows and Requirements](./workflows): the phases and the QoS, monitoring and geofencing requirements.
-- [Using CAMARA APIs](./using-camara-apis): the candidate APIs mapped to the phases.
 - [Content Production and Contribution](../content-production/introduction): the same QoS APIs analysed from the uplink side.
 - [Network API Initiatives](../network-api-initiatives): the CAMARA APIs and the 3GPP interfaces they map onto.
-
 :::note
 Refer to the [Tech](https://github.com/5G-MAG/Tech/) repository to contribute to this documentation.
 :::

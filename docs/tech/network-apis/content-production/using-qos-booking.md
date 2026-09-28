@@ -170,12 +170,7 @@ A device-bound QoS booking is realised, once the booked device connects, as a Qo
 
 ## Related
 
-- [Using CAMARA APIs: QoS Booking and Assignment](./using-qos-booking-assignment): the assignment-decoupled counterpart, with a side-by-side comparison.
-- [Using CAMARA APIs: Quality on Demand](./using-quality-on-demand): the point-of-use alternative with no advance reservation.
-- [Workflows and Requirements](./workflows): the reservation phase this API covers.
-- [Using CAMARA APIs](./using-camara-apis): where this API sits among the alternatives.
 - [QoS Booking API](../camara-qos-booking): the API reference and CAMARA source.
-
 :::note
 Refer to the [Tech](https://github.com/5G-MAG/Tech/) repository to contribute to this documentation.
 :::

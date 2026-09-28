@@ -101,14 +101,3 @@ The trade-off between the two options is essentially latency against coupling: o
 | Independent NTN and TN operators | Two separate 5G Cores | Roaming (core interface) or RAN sharing                          | Preserved only with home-routing or RAN sharing | Cross-operator coverage where a roaming or sharing agreement exists |
 
 The recurring design pattern across all three models is the same: use the predictability of satellite motion to prepare the target beam or cell in advance (conditional handover), and protect the reliability of a multicast session during the transition by temporarily switching the affected devices to PTP where lossless delivery is required.
-
-## Related analysis
-
-- [Analysis of MBS Multicast over NTN](./analysis-mbs-multicast-over-ntn): deploying MBS Multicast on top of an NTN
-- [Analysis of Mobility aspects for MBS Multicast over NTN](./analysis-mobility-mbs-multicast-over-ntn): how these mobility models apply to MBS Multicast
-- [Analysis of MBS Broadcast over NTN](./analysis-mbs-broadcast-over-ntn): deploying MBS Broadcast on top of an NTN
-
-## Related
-
-- [Non-Terrestrial Networks in 5G Systems](/tech/ntn): the parent topic page
-- [Standards: Non-Terrestrial Networks in 5G Systems](/standards/ntn): the specification list for this topic

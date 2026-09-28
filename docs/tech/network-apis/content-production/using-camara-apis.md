@@ -366,11 +366,7 @@ Before any of the calls above, the API consumer authenticates to the operator's 
 
 ## Related
 
-- [Workflows and Requirements](./workflows): the requirement categories mapped here.
-- [Reference Scenarios](./scenarios): the production setups these APIs serve.
-- [Quality on Demand](./using-quality-on-demand), [QoS Booking](./using-qos-booking), [QoS Booking and Assignment](./using-qos-booking-assignment), [QoS Profiles](./using-qos-profiles), [Dedicated Networks](./using-dedicated-networks): the per-API walkthroughs.
 - [Network API Initiatives](../network-api-initiatives): the CAMARA APIs and their 3GPP mappings.
-
 :::note
 Refer to the [Tech](https://github.com/5G-MAG/Tech/) repository to contribute to this documentation.
 :::

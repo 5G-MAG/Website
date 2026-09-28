@@ -74,7 +74,4 @@ Checked directly against TS 38.331 V19.3.0 (the current published version). SIB2
 
 ## Related
 
-- [Non-Terrestrial Networks in 5G Systems](/tech/ntn): the parent topic page
-- [Analysis of MBS Multicast over NTN](./analysis-mbs-multicast-over-ntn): the multicast counterpart of this analysis
 - [Analysis of RAN Procedures for MBS Broadcast](../5g-mbs/analysis-mbs-broadcast-ran): the terrestrial broadcast procedures reused here
-- [Standards: Non-Terrestrial Networks in 5G Systems](/standards/ntn): the specification list for this topic

@@ -225,9 +225,3 @@ The CAMARA definition specifies the notification structure but does not provide 
 :::note
 The event types and `status` values above are taken from the CAMARA QoS Booking and Assignment API definition; note the `v0` segment in the event type, indicating the API is at an early version. The example payload is illustrative (the spec does not ship a populated example) and the `data` field contents in particular should be confirmed against the [`qos-booking-and-assignment.yaml`](https://github.com/camaraproject/QoSBooking/blob/main/code/API_definitions/qos-booking-and-assignment.yaml) for the version you are integrating against.
 :::
-
-## Related
-
-- [CAMARA Connectivity Quality Management APIs](/tech/network-apis): the parent topic page, with the full CAMARA API list
-- [Standards: CAMARA Connectivity Quality Management APIs](/standards/network-apis): the specification list for this topic
-- [CAMARA Connectivity Quality Management APIs Reference Tools](/reference-tools/network-apis): only Dedicated Networks is implemented there today; this API has no reference implementation yet

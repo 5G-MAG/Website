@@ -169,8 +169,4 @@ Type of response: A **sliceId** identifying the booking, plus its current `statu
 }
 ```
 
-## Related
-
-- [CAMARA Connectivity Quality Management APIs](/tech/network-apis): the parent topic page, with the full CAMARA API list
-- [Standards: CAMARA Connectivity Quality Management APIs](/standards/network-apis): the specification list for this topic
-- [CAMARA Connectivity Quality Management APIs Reference Tools](/reference-tools/network-apis): only Dedicated Networks is implemented there today; this API has no reference implementation yet
+Only Dedicated Networks has a reference implementation among these CAMARA APIs today; this one does not yet.
