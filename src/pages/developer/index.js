@@ -18,8 +18,7 @@ import styles from './index.module.css';
 import filterStyles from '../reference-tools/styles.module.css';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 import { mergeDeveloperVideos } from '@site/src/data/developerVideos';
-import { CONTRIBUTORS } from '@site/src/data/contributors';
-import { ALL_REPOS, ICON_CATALOG, filterRepos } from '@site/src/data/baskets';
+import { ALL_REPOS, CONTRIBUTORS, ICON_CATALOG, filterRepos } from '@site/src/data/baskets';
 
 // A repo row's own project icon -- the same taxonomy.json `icon` catalog
 // key every other hub page reads (r.projectIcon, set in ALL_REPOS), not
@@ -296,7 +295,7 @@ export default function Home() {
             </div>
           </div>
           <div className="container" style={{ textAlign: 'center', marginTop: '1.5rem', fontWeight: 600 }}>
-            <Link to="/contributing">Become a contributor &rarr;</Link>
+            <Link to="/community#becoming-a-contributor">Become a contributor &rarr;</Link>
           </div>
         </section>
 

@@ -118,9 +118,10 @@ export const SECTION_NAV = [
     // (2026-09-26): "order of importance after reference tools, testbeds
     // and showcase is: Developer Community, License, Early Access,
     // Developer Exchanges." Contributing is deliberately NOT its own pill
-    // here — it's reached via Developer Community instead (both /community's
-    // own "How to Contribute" link and the developer hub's "Become a
-    // contributor" link already point to /contributing).
+    // here — it's reached via Developer Community instead. Community's own
+    // "Where to Go Next" tile links to /contributing (the code workflow);
+    // the developer hub's "Become a contributor" link points at Community's
+    // own Becoming a Contributor section instead (the CLA/joining side).
     items: [
       { label: 'Reference Tools', href: '/reference-tools', featured: true },
       { label: 'Testbeds', href: '/testbeds', featured: true },

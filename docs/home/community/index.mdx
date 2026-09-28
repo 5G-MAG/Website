@@ -1,11 +1,14 @@
 ---
 title: Developer Community
 hide_title: true
-description: Everything for the 5G-MAG developer community in one place — using this documentation, releases, pull requests, activity stats and the roadmap. See Contributing for how to raise issues and submit pull requests.
+description: Join the 5G-MAG developer community — becoming a contributor, the CLA, activity stats, and how to get in touch.
 ---
 
 import CommunityProjects from '@site/src/components/CommunityProjects';
 import CommunityRoadmap from '@site/src/components/CommunityRoadmap';
+import ProjectContributors from '@site/src/components/ProjectContributors';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import { SLACK_INVITE_URL } from '@site/src/data/socialLinks';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -18,13 +21,118 @@ import CommunityRoadmap from '@site/src/components/CommunityRoadmap';
 </div>
 </div>
 
-## Getting Started
+5G-MAG doesn't write specifications — it turns them into working, open-source software, built by the same industry that writes the standards. That code is developed in the open, by engineers from broadcasters, vendors, and research labs working side by side, and it feeds real implementation experience straight back into 3GPP and MPEG. If you build media or connectivity software, this is where you get a running start on the next generation of it, and a say in how it's specified.
 
-- **[Using this Documentation](/community/using-this-documentation)** — how this portal is structured, and a suggested workflow for finding your way around it.
-- **[How to Contribute](/contributing)** — raising issues, forking the project, and opening a pull request.
-- **[Release Process & Branching Strategy](/community/release-process)** — testing release candidates and our Gitflow-based branching model.
+## Contributors
 
-A signed Contributor License Agreement (CLA) is required before any code can be merged — see [Open-Source Software Licenses](/license).
+<ProjectContributors />
+
+## Becoming a Contributor
+
+This is the legal and organisational side of contributing — joining as a contributor and signing the paperwork that lets your code be merged.
+
+1. Sign an Individual or Corporate Contributor License Agreement (CLA).
+2. Anybody can become a contributor — no need to be a 5G-MAG member to contribute code.
+3. 5G-MAG members get priority support from the 5G-MAG Project Office, and additional development resources may be provided — members define priorities and where to dedicate resources.
+4. Membership of 5G-MAG remains open to the industry, to boost and scale your software project by joining forces.
+
+In order to clarify the intellectual property license granted with contributions from any person or entity willing to contribute under the 5G-MAG Public License, a **Contributor License Agreement (CLA)** is required to be on file signed by each Contributor, indicating agreement to the license terms. We do this for your protection as a contributor as well as the protection of 5G-MAG and its users; and it does not change your rights to use your own contributions for any other purpose.
+
+If you wish to contribute code to the projects please download the CLA or CCLA and send it signed to Eva Markvoort [markvoort@5g-mag.com](mailto:markvoort@5g-mag.com).
+
+- Download the [**5G-MAG Individual Contributor License Agreement (CLA)**](/Getting-Started/OFFICIAL_5G-MAG_Contributor_License_Agreement.pdf)
+- Download the [**5G-MAG Corporate Contributor License Agreement (CCLA)**](/Getting-Started/OFFICIAL_5G-MAG_Corporate_Contributor_License_Agreement.pdf)
+
+## Where to Go Next
+
+<div class="community-tiles community-tiles--cols-2">
+
+<a href={useBaseUrl('/contributing')} class="community-tile">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1" /><path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M17 10h2a2 2 0 0 1 2 2v1" /><path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M3 13v-1a2 2 0 0 1 2 -2h2" />
+  </svg>
+  <strong>How to Contribute Code</strong>
+  <span class="tile-desc">Raising issues, forking, branching, and pull requests</span>
+  <span class="tile-cta">Read more →</span>
+</a>
+
+<a href={useBaseUrl('/license')} class="community-tile">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 3l0 18" /><path d="M8 21l8 0" /><path d="M7 6l10 0" /><path d="M17 6l3 6a3 3 0 0 1 -6 0l3 -6z" /><path d="M7 6l-3 6a3 3 0 0 0 6 0l-3 -6z" />
+  </svg>
+  <strong>Open-Source Software Licenses</strong>
+  <span class="tile-desc">The 5G-MAG Public License, FRAND terms, and third-party dependencies</span>
+  <span class="tile-cta">Read more →</span>
+</a>
+
+<a href={useBaseUrl('/community/using-this-documentation')} class="community-tile">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M4 19.5a2.5 2.5 0 0 1 2.5 -2.5h13" /><path d="M6.5 2h13v20h-13a2.5 2.5 0 0 1 -2.5 -2.5v-15a2.5 2.5 0 0 1 2.5 -2.5" />
+  </svg>
+  <strong>Using this Documentation</strong>
+  <span class="tile-desc">How this portal is structured, and a suggested workflow</span>
+  <span class="tile-cta">Read more →</span>
+</a>
+
+<a href={useBaseUrl('/community/release-process')} class="community-tile">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1" /><path d="M9 15l3 -3l3 3" /><path d="M12 12l0 9" />
+  </svg>
+  <strong>Release Process &amp; Branching</strong>
+  <span class="tile-desc">Testing release candidates and our Gitflow-based model</span>
+  <span class="tile-cta">Read more →</span>
+</a>
+
+</div>
+
+## Get in Touch
+
+<div class="community-tiles community-tiles--cols-2">
+
+<a href="https://github.com/5G-MAG" target="_blank" rel="noreferrer" class="community-tile">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+  </svg>
+  <strong>GitHub Repositories</strong>
+  <span class="tile-desc">Browse the public reference tool repos</span>
+  <span class="tile-cta">Explore →</span>
+</a>
+
+<a href={SLACK_INVITE_URL} target="_blank" rel="noreferrer" class="community-tile">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 12v-6a2 2 0 0 1 4 0v6m0 -2a2 2 0 1 1 2 2h-6" />
+    <path d="M12 12h6a2 2 0 0 1 0 4h-6m2 0a2 2 0 1 1 -2 2v-6" />
+    <path d="M12 12v6a2 2 0 0 1 -4 0v-6m0 2a2 2 0 1 1 -2 -2h6" />
+    <path d="M12 12h-6a2 2 0 0 1 0 -4h6m-2 0a2 2 0 1 1 2 -2v6" />
+  </svg>
+  <strong>5G-MAG Dev Community</strong>
+  <span class="tile-desc">Join the developer conversation on Slack</span>
+  <span class="tile-cta">Join →</span>
+</a>
+
+<a href="https://groups.google.com/g/5g-mag-reference-tools" target="_blank" rel="noreferrer" class="community-tile">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M9 8m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+    <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
+  </svg>
+  <strong>Reference Tools Mailing List</strong>
+  <span class="tile-desc">Announcements via Google Groups</span>
+  <span class="tile-cta">Subscribe →</span>
+</a>
+
+<a href={useBaseUrl('/public-call')} class="community-tile">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M15 10l4.553 -2.069a1 1 0 0 1 1.447 .894v6.35a1 1 0 0 1 -1.447 .894l-4.553 -2.069v-4" />
+    <path d="M3 8a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-8z" />
+  </svg>
+  <strong>Monthly Public Call</strong>
+  <span class="tile-desc">Open session, no membership required</span>
+  <span class="tile-cta">Join →</span>
+</a>
+
+</div>
 
 ## Community Activity
 

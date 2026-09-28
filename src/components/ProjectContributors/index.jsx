@@ -2,19 +2,19 @@ import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { useLocation } from '@docusaurus/router';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import { ALL_PROJECTS as projects } from '@site/src/data/baskets';
-import { CONTRIBUTORS } from '@site/src/data/contributors';
+import { ALL_PROJECTS as projects, CONTRIBUTORS } from '@site/src/data/baskets';
 import { stripBaseUrl } from '@site/src/data/sectionNav';
 import styles from './styles.module.css';
 
 // Always the last card, same size/shape as a real logo card, so it reads
 // as "join this list" rather than a separate unrelated callout -- direct
 // instruction: "one more card in the same style as the contributor logo".
-// /contributing is the real, already-linked destination for this
-// (src/data/sectionNav.js's own Community menu entry), not a guessed URL.
+// Points at Community's own Becoming a Contributor section (2026-09-28):
+// that's the CLA/joining process this card means, as distinct from
+// /contributing, which is now the code-mechanics workflow only.
 function BecomeContributorCard() {
   return (
-    <Link to="/contributing" className={`${styles.card} ${styles.ctaCard}`}>
+    <Link to="/community#becoming-a-contributor" className={`${styles.card} ${styles.ctaCard}`}>
       <span className={styles.ctaIcon} aria-hidden="true">
         +
       </span>

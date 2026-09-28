@@ -534,6 +534,18 @@
   }
 }
 
+/* Fixed 2-column layout for exactly 4 tiles (2 even rows of 2), same
+   reasoning as --cols-3: auto-fit's own wrapping splits 4 items 3-then-1
+   at typical desktop widths instead of an even 2x2. */
+.community-tiles--cols-2 {
+  grid-template-columns: repeat(2, 1fr) !important;
+}
+@media (max-width: 480px) {
+  .community-tiles--cols-2 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 /* A grid of recap/article cards with a thumbnail on top -- same card
    language as .community-tile (border, radius, hover lift) but built
    around an image + title link rather than an icon + description. */
