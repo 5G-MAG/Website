@@ -162,15 +162,30 @@ const ALL_TOPICS = [
     ],
   },
   {
-    // Also covers Beyond 2D (nested under this same directory, its own
-    // Standards doc listed alongside V3C's).
     label: 'MPEG V3C Immersive Platform',
     techHref: '/tech/v3c',
     autogen: 'volumetric',
-    standards: [
-      { doc: 'standards/v3c', label: 'Standards: MPEG V3C Immersive Platform' },
-      { doc: 'standards/beyond-2d', label: 'Standards: Beyond 2D Video' },
-    ],
+    standards: [{ doc: 'standards/v3c', label: 'Standards: MPEG V3C Immersive Platform' }],
+  },
+  {
+    // Added 2026-09-28 (consistency audit, direct instruction: "all
+    // projects have its technical analysis landing page, its standards
+    // page and its reference tools / or testbeds page... wired
+    // correctly"): Beyond 2D has its own tech_url/standards_url/doc_url
+    // in taxonomy.json (a real, separate testbed project from V3C), but
+    // had no entry of its own here -- its /tech and /standards pages
+    // silently rode on V3C's sidebar (wrong project name shown, no link
+    // back to its own testbed), and its /testbeds page used the older,
+    // unrelated flat Scope/Resources/Tutorials sidebar shape with no
+    // cross-link to either. Shares V3C's own `autogen` folder
+    // (docs/tech/volumetric/) since that folder's one real doc,
+    // beyond-2d.mdx, genuinely is Beyond 2D's own analysis, not V3C's --
+    // same doc, now correctly attributed to the project it's about.
+    label: 'Beyond 2D Evaluation Framework',
+    techHref: '/tech/beyond-2d',
+    autogen: 'volumetric',
+    techOverviewDoc: 'volumetric/beyond-2d',
+    standards: [{ doc: 'standards/beyond-2d', label: 'Standards: Beyond 2D Video' }],
   },
   {
     label: 'XR/3D Scenes with MPEG-I Scene Description',
