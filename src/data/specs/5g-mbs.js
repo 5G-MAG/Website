@@ -117,6 +117,20 @@ export const MBS_SPECS = [
     layer: "Core",
   },
   {
+    id: "TS 33.246",
+    title: "3G Security; Security of Multimedia Broadcast/Multicast Service (MBMS)",
+    url: "https://www.3gpp.org/dynareport/33246.htm",
+    layer: "Core",
+    note: "the legacy MBMS security architecture; TS 33.501 clause W.4.2 applies its clauses 6.6.2/6.6.3 (protection of streaming/download data) to MBS Traffic Key protection",
+  },
+  {
+    id: "TS 33.535",
+    title: "Authentication and Key Management for Applications (AKMA) based on 3GPP credentials in the 5G System (5GS)",
+    url: "https://www.3gpp.org/dynareport/33535.htm",
+    layer: "Core",
+    note: "the alternative to GBA for UE-to-MBSSF authentication",
+  },
+  {
     id: "TS 32.279",
     title: "Charging management; 5G Multicast-broadcast Services charging (`5MBS_CH`, WI 1000010, Release 18)",
     url: "https://www.3gpp.org/dynareport/32279.htm",
