@@ -88,6 +88,20 @@ export const DVBI_SPECS = [
     layer: '3GPP unicast',
   },
   {
+    id: 'TS 26.510',
+    title: 'Media delivery; interactions and APIs for provisioning and media session handling',
+    url: 'https://www.3gpp.org/dynareport/26510.htm',
+    layer: '3GPP unicast',
+    note: 'closes 3 of the 9 DVB-I-over-5GMS scenario gaps this page tracks (clauses 11.4, 11.6.2), partially addresses a 4th (clause 13.2.3.3, attachMPD())',
+  },
+  {
+    id: 'TS 29.116',
+    title: 'Representational state transfer over the xMB reference point between content provider and BM-SC',
+    url: 'https://www.3gpp.org/dynareport/29116.htm',
+    layer: '3GPP unicast',
+    note: 'the provisioning-layer spec behind 2 of the 5 open gaps this page tracks; already listed under Content delivery in the 5G Broadcast catalogue',
+  },
+  {
     id: 'TS 26.502',
     title: '5G multicast-broadcast services; User service architecture',
     url: 'https://www.3gpp.org/dynareport/26502.htm',
