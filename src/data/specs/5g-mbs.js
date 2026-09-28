@@ -141,12 +141,14 @@ export const MBS_SPECS = [
     title: "5G System; 5G Multicast-Broadcast Session Management Services; Stage 3",
     url: "https://www.3gpp.org/dynareport/29532.htm",
     layer: "Core",
+    note: "Nmbsmf_TMGI (allocation/pre-allocation) and Nmbsmf_MBSSession service operations",
   },
   {
     id: "TS 29.537",
     title: "5G System; Multicast/Broadcast Policy Control services; Stage 3",
     url: "https://www.3gpp.org/dynareport/29537.htm",
     layer: "Core",
+    note: "Npcf_MBSPolicyControl service",
   },
   {
     id: "TS 29.303",
@@ -202,7 +204,7 @@ export const MBS_SPECS = [
     title: "5G System; Access and Mobility Management Services; Stage 3",
     url: "https://www.3gpp.org/dynareport/29518.htm",
     layer: "Core",
-    note: "generic 5GS spec that gained MBS operations",
+    note: "generic 5GS spec that gained MBS operations; clause 5.6, Namf_MBSBroadcast (create/update/release a broadcast MBS session context in the AMF)",
   },
   {
     id: "TS 29.519",
@@ -237,12 +239,14 @@ export const MBS_SPECS = [
     title: "Interface between the Control Plane and the User Plane nodes",
     url: "https://www.3gpp.org/dynareport/29244.htm",
     layer: "Core",
+    note: "N4mb reference point (MB-SMF <-> MB-UPF configuration), clause 5.34.2",
   },
   {
     id: "TS 38.413",
     title: "NG-RAN; NG Application Protocol (NGAP)",
     url: "https://www.3gpp.org/dynareport/38413.htm",
     layer: "Core",
+    note: "Distribution Setup / Distribution Release procedures, clause 8.18 \"Multicast Session Management Procedures\"",
   },
   {
     id: "TS 24.501",
@@ -474,8 +478,36 @@ export const MBS_SPECS = [
     url: "https://www.3gpp.org/dynareport/33883.htm",
     layer: "Studies",
   },
+  {
+    id: "TS 38.508-1",
+    title: "5GS; User Equipment (UE) conformance specification; Part 1: Common test environment",
+    url: "https://www.3gpp.org/dynareport/38508-1.htm",
+    layer: "Conformance testing",
+    note: "listed under WI 920010, the same work item that produced TS 26.502",
+  },
+  {
+    id: "TS 38.508-2",
+    title: "5GS; User Equipment (UE) conformance specification; Part 2: Common Implementation Conformance Statement (ICS) proforma",
+    url: "https://www.3gpp.org/dynareport/38508-2.htm",
+    layer: "Conformance testing",
+    note: "listed under WI 920010, the same work item that produced TS 26.502",
+  },
+  {
+    id: "TS 38.509",
+    title: "5GS; Special conformance testing functions for User Equipment (UE)",
+    url: "https://www.3gpp.org/dynareport/38509.htm",
+    layer: "Conformance testing",
+    note: "listed under WI 920010, the same work item that produced TS 26.502",
+  },
+  {
+    id: "TS 26.501",
+    title: "5G Media Streaming (5GMS); General description and architecture",
+    url: "https://www.3gpp.org/dynareport/26501.htm",
+    layer: "User services",
+    note: "clause 4.9, \"Downlink 5G Media Streaming via MBS\"; shares work item 920010 with TS 26.502. Current limitation: push-based ingest by the MBSTF at Nmb8 is not enabled in this release -- 5GMS only supports pull-based content acquisition at reference point M4",
+  },
 ];
 
 // Order the filter chips by where each layer sits in the stack, rather than
 // alphabetically or by how many specs happen to be in each.
-export const MBS_LAYER_ORDER = ['Stage 1', 'User services', 'Core', 'RAN', 'Studies'];
+export const MBS_LAYER_ORDER = ['Stage 1', 'User services', 'Core', 'RAN', 'Conformance testing', 'Studies'];
