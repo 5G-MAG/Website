@@ -302,6 +302,27 @@ export const BROADCAST_SPECS = [
     layer: '5GMS',
   },
   {
+    id: 'IETF RFC 3550',
+    title: 'RTP: A Transport Protocol for Real-Time Applications',
+    url: 'https://www.rfc-editor.org/rfc/rfc3550',
+    layer: 'Transport',
+    note: 'base RTP spec; the page names RTP as a delivery-method protocol but the base transport RFC was missing, unlike TCP/TLS/HTTP already listed here',
+  },
+  {
+    id: 'IETF RFC 6726',
+    title: 'FLUTE - File Delivery over Unidirectional Transport',
+    url: 'https://www.rfc-editor.org/rfc/rfc6726',
+    layer: 'Transport',
+    note: 'obsoletes RFC 3926; base FLUTE spec named by the page but previously missing here',
+  },
+  {
+    id: 'IETF RFC 8216',
+    title: 'HTTP Live Streaming (HLS)',
+    url: 'https://datatracker.ietf.org/doc/html/rfc8216',
+    layer: 'Transport',
+    note: 'base HLS spec named by the page but previously missing here; informational status, not standards-track',
+  },
+  {
     id: 'IANA IPv4 Multicast Addresses',
     title: 'IPv4 Multicast Address Space Registry',
     url: 'https://www.iana.org/assignments/multicast-addresses/multicast-addresses.xhtml',
