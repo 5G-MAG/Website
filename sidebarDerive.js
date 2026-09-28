@@ -52,6 +52,25 @@ function readCategoryMeta(dirAbs) {
 // (docs/tech/volumetric/beyond-2d.mdx's `slug: /beyond-2d` resolves to
 // /tech/beyond-2d, not the bare value) that a `slug` frontmatter override
 // is relative to it, the same as a path-derived href already is.
+// Resolves the real URL for a "home"-instance doc referenced by its
+// file-path ID (e.g. 'standards/5g-mbs-standards-evolution') -- honours a
+// `slug` frontmatter override instead of assuming the URL matches the file
+// path. Needed because a doc's Docusaurus *id* (used for `type: 'doc'`
+// resolution within its own instance) always matches its file path, but its
+// *URL* does not once a `slug` override diverges from the filename -- the
+// case for every Standards Evolution page (renamed to the nested
+// `/standards/<topic>/evolution` form while the file itself kept its old
+// flat name). A `type: 'link'` item in the *other* instance's sidebar needs
+// the real URL, not the id, so it must read the frontmatter rather than
+// reproduce the id-to-href guess sidebars-tech.js used to make.
+export function resolveDocHref(relDocId, relDir = 'docs/home') {
+  const base = path.join(ROOT_DIR, relDir, relDocId);
+  const file = ['.md', '.mdx'].map((ext) => `${base}${ext}`).find((f) => fs.existsSync(f));
+  if (!file) return `/${relDocId}`;
+  const { data } = matter(fs.readFileSync(file, 'utf8'));
+  return data.slug || `/${relDocId}`;
+}
+
 export function deriveLinkItems(relDir, urlPrefix, routeBasePathPrefix = '') {
   const dirAbs = path.join(ROOT_DIR, relDir);
   if (!fs.existsSync(dirAbs)) return [];

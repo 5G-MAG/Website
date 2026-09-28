@@ -1,5 +1,5 @@
 import { ALL_TOPICS } from './techTopics.js';
-import { deriveLinkItems } from './sidebarDerive.js';
+import { deriveLinkItems, resolveDocHref } from './sidebarDerive.js';
 
 // One small sidebar per project (2026-09-27, direct instruction: "each
 // project and all the pages related to such project have exactly the same
@@ -98,7 +98,7 @@ ALL_TOPICS.forEach((topic) => {
       items: topic.standards.map((s) => ({
         type: 'link',
         label: s.label.replace(/^Standards: /, ''),
-        href: `/${s.doc}`,
+        href: resolveDocHref(s.doc),
       })),
     });
   }
