@@ -1,4 +1,5 @@
 import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
 import ProjectDestinationCards from '@site/src/components/ProjectDestinationCards';
@@ -60,6 +61,7 @@ const MODEL_COMPARISON = [
 ];
 
 export default function NPN() {
+  const coverImg = useBaseUrl('/assets/images/projects/npn.png');
   return (
     <Layout
       title={PROJECT_NAME}
@@ -78,32 +80,39 @@ export default function NPN() {
       <main>
         <section className={styles.section}>
           <div className="container">
-            <div style={{ maxWidth: '860px', margin: '0 auto', fontSize: '1.1rem', lineHeight: 1.7 }}>
-              <p>
-                Non-Public Networks (NPNs) are private 5G deployments operated for a specific
-                organisation or use case, defined in 3GPP Release 16. In media production, NPNs
-                allow broadcasters to deploy dedicated 5G infrastructure for live production
-                workflows, replacing legacy contribution links (satellite, ISDN, fibre) with a
-                programmable, low-latency wireless fabric. 5G-MAG&apos;s work covers deployment
-                models, spectrum access strategies, User Equipment (UE) registration and
-                on-boarding, and the specific requirements of live production environments such as
-                time-sensitive communications.
-              </p>
-              <p>
-                <strong>No dedicated reference tool exists for NPN.</strong> This area is
-                documented through the analysis below. Live production over an NPN often needs
-                deterministic timing, so for time-sensitive media transport over NPNs see also{' '}
-                <Link to="/tech/tsc">Time-Sensitive Communications (TSC)</Link>.
-              </p>
-              {PROJECT.sdos?.length > 0 && (
-                <div className={styles.capabilityTags}>
-                  {PROJECT.sdos.map((s) => (
-                    <span key={s} className={styles.capabilityTag}>
-                      {s}
-                    </span>
-                  ))}
-                </div>
-              )}
+            <div className={styles.introGrid}>
+              <div style={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
+                <p>
+                  Non-Public Networks (NPNs) are private 5G deployments operated for a specific
+                  organisation or use case, defined in 3GPP Release 16. In media production, NPNs
+                  allow broadcasters to deploy dedicated 5G infrastructure for live production
+                  workflows, replacing legacy contribution links (satellite, ISDN, fibre) with a
+                  programmable, low-latency wireless fabric. 5G-MAG&apos;s work covers deployment
+                  models, spectrum access strategies, User Equipment (UE) registration and
+                  on-boarding, and the specific requirements of live production environments such as
+                  time-sensitive communications.
+                </p>
+                <p>
+                  <strong>No dedicated reference tool exists for NPN.</strong> This area is
+                  documented through the analysis below. Live production over an NPN often needs
+                  deterministic timing, so for time-sensitive media transport over NPNs see also{' '}
+                  <Link to="/tech/tsc">Time-Sensitive Communications (TSC)</Link>.
+                </p>
+                {PROJECT.sdos?.length > 0 && (
+                  <div className={styles.capabilityTags}>
+                    {PROJECT.sdos.map((s) => (
+                      <span key={s} className={styles.capabilityTag}>
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+              <img
+                src={coverImg}
+                alt={PROJECT_NAME}
+                style={{ width: '100%', borderRadius: '16px', boxShadow: '0 12px 40px rgba(0,0,0,0.25)' }}
+              />
             </div>
             <div className={styles.whyMattersBlock}>
               <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>

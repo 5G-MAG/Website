@@ -1,4 +1,5 @@
 import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
 import ProjectDestinationCards from '@site/src/components/ProjectDestinationCards';
@@ -43,6 +44,7 @@ const SATELLITE_ICON = (
 const ACCENT = '#1a9e93';
 
 export default function NTN() {
+  const coverImg = useBaseUrl('/assets/images/projects/ntn.png');
   return (
     <Layout
       title={PROJECT_NAME}
@@ -61,33 +63,40 @@ export default function NTN() {
       <main>
         <section className={styles.section}>
           <div className="container">
-            <div style={{ maxWidth: '820px', margin: '0 auto', fontSize: '1.1rem', lineHeight: 1.7 }}>
-              <p>
-                Non-Terrestrial Networks (NTN) extend 5G coverage via satellite (geostationary GEO and
-                low Earth orbit LEO) and high-altitude platform stations (HAPS), standardised in 3GPP
-                Release 17. For media distribution, NTN is not a standalone system: it is a delivery
-                infrastructure layer on top of which existing 5G services such as MBS Multicast and MBS
-                Broadcast can be deployed. 5G-MAG&apos;s work in this area focuses on the specific
-                challenges NTN introduces: propagation delay, Doppler effects, handover between
-                satellite beams, and device mobility across terrestrial and non-terrestrial segments.
-              </p>
-              <p>
-                <strong>No dedicated reference tool exists for NTN.</strong> The 5G-MAG MBS reference
-                tools (for Multicast and Broadcast) are the relevant software for NTN deployment
-                scenarios — see{' '}
-                <Link to="/tech/5g-mbs">5G Multicast Broadcast Services (MBS)</Link>. For satellite broadcast
-                delivery using the FeMBMS (5G Broadcast) waveform, see{' '}
-                <Link to="/tech/5g-broadcast">5G Broadcast - TV and Radio Services</Link>.
-              </p>
-              {PROJECT.sdos?.length > 0 && (
-                <div className={styles.capabilityTags}>
-                  {PROJECT.sdos.map((s) => (
-                    <span key={s} className={styles.capabilityTag}>
-                      {s}
-                    </span>
-                  ))}
-                </div>
-              )}
+            <div className={styles.introGrid}>
+              <div style={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
+                <p>
+                  Non-Terrestrial Networks (NTN) extend 5G coverage via satellite (geostationary GEO and
+                  low Earth orbit LEO) and high-altitude platform stations (HAPS), standardised in 3GPP
+                  Release 17. For media distribution, NTN is not a standalone system: it is a delivery
+                  infrastructure layer on top of which existing 5G services such as MBS Multicast and MBS
+                  Broadcast can be deployed. 5G-MAG&apos;s work in this area focuses on the specific
+                  challenges NTN introduces: propagation delay, Doppler effects, handover between
+                  satellite beams, and device mobility across terrestrial and non-terrestrial segments.
+                </p>
+                <p>
+                  <strong>No dedicated reference tool exists for NTN.</strong> The 5G-MAG MBS reference
+                  tools (for Multicast and Broadcast) are the relevant software for NTN deployment
+                  scenarios — see{' '}
+                  <Link to="/tech/5g-mbs">5G Multicast Broadcast Services (MBS)</Link>. For satellite broadcast
+                  delivery using the FeMBMS (5G Broadcast) waveform, see{' '}
+                  <Link to="/tech/5g-broadcast">5G Broadcast - TV and Radio Services</Link>.
+                </p>
+                {PROJECT.sdos?.length > 0 && (
+                  <div className={styles.capabilityTags}>
+                    {PROJECT.sdos.map((s) => (
+                      <span key={s} className={styles.capabilityTag}>
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+              <img
+                src={coverImg}
+                alt={PROJECT_NAME}
+                style={{ width: '100%', borderRadius: '16px', boxShadow: '0 12px 40px rgba(0,0,0,0.25)' }}
+              />
             </div>
             <div className={styles.whyMattersBlock}>
               <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>

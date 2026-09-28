@@ -325,7 +325,7 @@
       "doc_url": "/reference-tools/vdmc/",
       "tech_url": "/tech/vdmc",
       "standards_url": "/standards/vdmc",
-      "image": null,
+      "image": "/assets/images/projects/vdmc.png",
       "tagline": "Compressing moving 3D surface meshes for real-time immersive environments",
       "basket": "immersive-media",
       "repos": [
@@ -572,7 +572,7 @@
       "doc_url": "/reference-tools/content-delivery/",
       "tech_url": "/tech/content-delivery",
       "standards_url": "/standards/content-delivery",
-      "image": "/assets/images/projects/multimedia.png",
+      "image": "/assets/images/projects/content-delivery.png",
       "tagline": "Content delivery origin, packaging, protocols and related tools",
       "basket": "content-delivery",
       "relatedBaskets": [
@@ -643,6 +643,7 @@
     {
       "name": "Real-time Media Communication (RTC) Architecture",
       "doc_url": "/reference-tools/rtc/",
+      "image": "/assets/images/projects/rtc.png",
       "releases_slug": "#repositories--releases",
       "tech_url": "/tech/rtc",
       "standards_url": "/standards/rtc",
@@ -670,6 +671,7 @@
     {
       "name": "Non-Terrestrial Networks in 5G Systems",
       "doc_url": "/reference-tools/ntn/",
+      "image": "/assets/images/projects/ntn.png",
       "releases_slug": "#repositories--releases",
       "tech_url": "/tech/ntn",
       "standards_url": "/standards/ntn",
@@ -691,6 +693,7 @@
     {
       "name": "Non-Public Networks",
       "doc_url": "/reference-tools/npn/",
+      "image": "/assets/images/projects/npn.png",
       "releases_slug": "#repositories--releases",
       "tech_url": "/tech/npn",
       "standards_url": "/standards/npn",
@@ -712,6 +715,7 @@
     {
       "name": "Time-Sensitive Communications (TSC)",
       "doc_url": "/reference-tools/tsc/",
+      "image": "/assets/images/projects/tsc.png",
       "releases_slug": "#repositories--releases",
       "tech_url": "/tech/tsc",
       "standards_url": "/standards/tsc",

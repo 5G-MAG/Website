@@ -1,4 +1,5 @@
 import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
 import ProjectDestinationCards from '@site/src/components/ProjectDestinationCards';
@@ -47,6 +48,7 @@ const WEBRTC_ARROWS_ICON = (
 const ACCENT = '#4f63d6';
 
 export default function RTC() {
+  const coverImg = useBaseUrl('/assets/images/projects/rtc.png');
   return (
     <Layout
       title={PROJECT_NAME}
@@ -65,23 +67,30 @@ export default function RTC() {
       <main>
         <section className={styles.section}>
           <div className="container">
-            <div style={{ maxWidth: '860px', margin: '0 auto', fontSize: '1.1rem', lineHeight: 1.7 }}>
-              <p>
-                Real-Time Communications (RTC) covers the 3GPP work on interactive, low-latency media
-                such as conversational audio and video, immersive calls and interactive streaming,
-                where the round-trip delay must stay low enough for two-way interaction. It builds on
-                the uplink side of 5G Media Streaming (5GMSu) and related delivery functions. 5G-MAG
-                tracks how these capabilities support real-time media services over 5G.
-              </p>
-              {PROJECT.sdos?.length > 0 && (
-                <div className={styles.capabilityTags}>
-                  {PROJECT.sdos.map((s) => (
-                    <span key={s} className={styles.capabilityTag}>
-                      {s}
-                    </span>
-                  ))}
-                </div>
-              )}
+            <div className={styles.introGrid}>
+              <div style={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
+                <p>
+                  Real-Time Communications (RTC) covers the 3GPP work on interactive, low-latency media
+                  such as conversational audio and video, immersive calls and interactive streaming,
+                  where the round-trip delay must stay low enough for two-way interaction. It builds on
+                  the uplink side of 5G Media Streaming (5GMSu) and related delivery functions. 5G-MAG
+                  tracks how these capabilities support real-time media services over 5G.
+                </p>
+                {PROJECT.sdos?.length > 0 && (
+                  <div className={styles.capabilityTags}>
+                    {PROJECT.sdos.map((s) => (
+                      <span key={s} className={styles.capabilityTag}>
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+              <img
+                src={coverImg}
+                alt={PROJECT_NAME}
+                style={{ width: '100%', borderRadius: '16px', boxShadow: '0 12px 40px rgba(0,0,0,0.25)' }}
+              />
             </div>
             <div className={styles.whyMattersBlock}>
               <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>

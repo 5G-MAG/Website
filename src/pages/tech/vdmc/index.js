@@ -1,4 +1,5 @@
 import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
 import ProjectDestinationCards from '@site/src/components/ProjectDestinationCards';
@@ -48,6 +49,7 @@ const ICOSAHEDRON_ICON = (
 const ACCENT = '#8355c7';
 
 export default function VDMC() {
+  const coverImg = useBaseUrl('/assets/images/projects/vdmc.png');
   return (
     <Layout
       title={PROJECT_NAME}
@@ -66,31 +68,38 @@ export default function VDMC() {
       <main>
         <section className={styles.section}>
           <div className="container">
-            <div style={{ fontSize: '1.1rem', lineHeight: 1.7, maxWidth: '54rem' }}>
-              <p>
-                Dynamic Mesh Coding (V-DMC, Video-based Dynamic Mesh Coding, ISO/IEC 23090-29) is an
-                MPEG standard from ISO/IEC JTC 1/SC 29/WG 7 (Coding of 3D Graphics and Haptics) for
-                compressing 3D meshes whose geometry, connectivity and attributes change per frame --
-                for example animated avatars, characters or performance-capture content. Rather than
-                coding a mesh&apos;s full geometry directly, V-DMC reduces each frame to a simplified
-                &quot;basemesh&quot; (a connectivity structure that may itself change per frame) plus
-                per-frame displacement offsets that refine the geometry, along with a texture atlas,
-                and then reuses existing video codecs (HEVC, VVC) to compress that data.
-              </p>
-              <p>
-                This differs from <Link to="/tech/v3c">MPEG V3C Immersive Platform</Link>, which is
-                point-cloud based; V-DMC targets well-parameterized mesh surfaces where point-cloud
-                methods are less efficient.
-              </p>
-              {PROJECT.sdos?.length > 0 && (
-                <div className={styles.capabilityTags}>
-                  {PROJECT.sdos.map((s) => (
-                    <span key={s} className={styles.capabilityTag}>
-                      {s}
-                    </span>
-                  ))}
-                </div>
-              )}
+            <div className={styles.introGrid}>
+              <div style={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
+                <p>
+                  Dynamic Mesh Coding (V-DMC, Video-based Dynamic Mesh Coding, ISO/IEC 23090-29) is an
+                  MPEG standard from ISO/IEC JTC 1/SC 29/WG 7 (Coding of 3D Graphics and Haptics) for
+                  compressing 3D meshes whose geometry, connectivity and attributes change per frame --
+                  for example animated avatars, characters or performance-capture content. Rather than
+                  coding a mesh&apos;s full geometry directly, V-DMC reduces each frame to a simplified
+                  &quot;basemesh&quot; (a connectivity structure that may itself change per frame) plus
+                  per-frame displacement offsets that refine the geometry, along with a texture atlas,
+                  and then reuses existing video codecs (HEVC, VVC) to compress that data.
+                </p>
+                <p>
+                  This differs from <Link to="/tech/v3c">MPEG V3C Immersive Platform</Link>, which is
+                  point-cloud based; V-DMC targets well-parameterized mesh surfaces where point-cloud
+                  methods are less efficient.
+                </p>
+                {PROJECT.sdos?.length > 0 && (
+                  <div className={styles.capabilityTags}>
+                    {PROJECT.sdos.map((s) => (
+                      <span key={s} className={styles.capabilityTag}>
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+              <img
+                src={coverImg}
+                alt={PROJECT_NAME}
+                style={{ width: '100%', borderRadius: '16px', boxShadow: '0 12px 40px rgba(0,0,0,0.25)' }}
+              />
             </div>
             <div className={styles.whyMattersBlock}>
               <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>

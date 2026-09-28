@@ -1,4 +1,5 @@
 import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
 import ProjectDestinationCards from '@site/src/components/ProjectDestinationCards';
@@ -62,6 +63,7 @@ const RELEASE_TIMELINE = [
 ];
 
 export default function TSC() {
+  const coverImg = useBaseUrl('/assets/images/projects/tsc.png');
   return (
     <Layout
       title={PROJECT_NAME}
@@ -80,28 +82,35 @@ export default function TSC() {
       <main>
         <section className={styles.section}>
           <div className="container">
-            <div style={{ fontSize: '1.1rem', lineHeight: 1.7, maxWidth: '860px' }}>
-              <p>
-                Time Sensitive Communications (TSC) covers the 3GPP features that let a 5G network
-                carry traffic with bounded, predictable latency and tight timing, rather than
-                best-effort delivery. In media production this matters for live workflows, for
-                example synchronising cameras, audio and control signals over a wireless link where
-                jitter and timing drift are not acceptable.
-              </p>
-              <p>
-                5G-MAG tracks how these deterministic-delivery capabilities apply to professional
-                media, in particular over the <Link to="/tech/npn">Non-Public Networks</Link> that
-                broadcasters use for on-site production.
-              </p>
-              {PROJECT.sdos?.length > 0 && (
-                <div className={styles.capabilityTags}>
-                  {PROJECT.sdos.map((s) => (
-                    <span key={s} className={styles.capabilityTag}>
-                      {s}
-                    </span>
-                  ))}
-                </div>
-              )}
+            <div className={styles.introGrid}>
+              <div style={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
+                <p>
+                  Time Sensitive Communications (TSC) covers the 3GPP features that let a 5G network
+                  carry traffic with bounded, predictable latency and tight timing, rather than
+                  best-effort delivery. In media production this matters for live workflows, for
+                  example synchronising cameras, audio and control signals over a wireless link where
+                  jitter and timing drift are not acceptable.
+                </p>
+                <p>
+                  5G-MAG tracks how these deterministic-delivery capabilities apply to professional
+                  media, in particular over the <Link to="/tech/npn">Non-Public Networks</Link> that
+                  broadcasters use for on-site production.
+                </p>
+                {PROJECT.sdos?.length > 0 && (
+                  <div className={styles.capabilityTags}>
+                    {PROJECT.sdos.map((s) => (
+                      <span key={s} className={styles.capabilityTag}>
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+              <img
+                src={coverImg}
+                alt={PROJECT_NAME}
+                style={{ width: '100%', borderRadius: '16px', boxShadow: '0 12px 40px rgba(0,0,0,0.25)' }}
+              />
             </div>
             <div className={styles.whyMattersBlock}>
               <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>

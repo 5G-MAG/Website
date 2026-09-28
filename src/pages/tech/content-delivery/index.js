@@ -52,7 +52,7 @@ const FLUTE_VS_ROUTE = [
 ];
 
 export default function ContentDelivery() {
-  const coverImg = useBaseUrl('/assets/images/projects/multimedia.png');
+  const coverImg = useBaseUrl('/assets/images/projects/content-delivery.png');
   return (
     <Layout
       title={PROJECT_NAME}
