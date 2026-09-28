@@ -190,9 +190,9 @@ export const CONTENT_DELIVERY_SPECS = [
   {
     id: 'ISO/IEC 23009-1',
     title: 'Dynamic Adaptive Streaming over HTTP (DASH)',
-    url: 'https://www.iso.org/standard/83314.html',
+    url: 'https://www.iso.org/standard/89027.html',
     layer: 'Media formats',
-    note: 'Adaptive streaming format',
+    note: 'links the incoming edition\'s own catalogue page (89027), not the superseded 2022 edition (83314); at FDIS stage targeting June 2026 publication as of this check (September 2026) -- iso.org blocks automated fetches, so its exact current status could not be confirmed directly',
   },
   {
     id: 'ISO/IEC 23000-19',
