@@ -12,14 +12,16 @@
 // 4 incoming replies) plus 6 workshop inputs listed on docs/home/standards/
 // requirements.mdx = 47, rounded down. The previous '+20' had no recorded
 // source and undercounted the site's own tables by more than half.
+// Re-checked 2026-09-29: 43 outgoing rows + 6 workshop inputs = 49, still '+40'.
 export const FACT_SDO_INPUTS = { value: '+40', label: 'Inputs and liaison statements to SDOs' };
-// Verified 2026-08-27: 48 public repos via api.github.com/orgs/5G-MAG,
-// 12,431 clones via static/data/community-stats.json (deduped, hub-tracked
-// repos only -- see CommunityProjects' own NOT_ON_HUB_DASHBOARD filter;
-// recomputed with the same dedup/exclusion logic before updating this).
-// Both drift over time (repos slowly, clones daily) -- re-check periodically
-// rather than treating these as permanently accurate.
-export const FACT_REPOSITORIES = { value: '48', label: 'Repositories, open on github.com/5G-MAG' };
-export const FACT_CLONES = { value: '12,400+', label: 'Clones: developers pulling the code' };
+// Verified 2026-09-29: 50 public repos via api.github.com/orgs/5G-MAG,
+// 17,994 clones via static/data/community-stats.json (updated_at 2026-09-28
+// 02:05 UTC; deduped, hub-tracked repos only -- see CommunityProjects' own
+// NOT_ON_HUB_DASHBOARD filter; recomputed with the same dedup/exclusion
+// logic before updating this). Both drift over time (repos slowly, clones
+// daily) -- re-check periodically rather than treating these as
+// permanently accurate.
+export const FACT_REPOSITORIES = { value: '50', label: 'Repositories, open on github.com/5G-MAG' };
+export const FACT_CLONES = { value: '17,900+', label: 'Clones: developers pulling the code' };
 export const FACT_LARGE_EVENTS = { value: '2', label: 'Recurrent large events', sub: 'MWC Barcelona & IBC' };
 export const FACT_YEARLY_CONFERENCE = { value: '1', label: 'Yearly conference', sub: 'Future Media Townhall' };
