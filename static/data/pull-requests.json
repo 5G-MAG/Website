@@ -4,7 +4,7 @@
     {
       "name": "5G Media Streaming (5GMS)",
       "doc_url": "/reference-tools/5gms/",
-      "tagline": "End-to-end 5G media streaming from network to client · 3GPP TS 26.501",
+      "tagline": "Driving collaboration between mobile networks and media applications",
       "pulls": [
         {
           "repo": "rt-5gms-application",
@@ -24,7 +24,7 @@
     {
       "name": "5G Broadcast - TV and Radio Services",
       "doc_url": "/reference-tools/5g-broadcast/",
-      "tagline": "LTE-based 5G broadcast for TV, radio and emergency alerts",
+      "tagline": "The 3GPP-based broadcast delivery system bridging OTT streaming and broadcasting",
       "pulls": [
         {
           "repo": "rt-libflute",
@@ -161,13 +161,13 @@
     {
       "name": "5G Broadcast - Emergency Alerts",
       "doc_url": "/reference-tools/emergency-alerts/",
-      "tagline": "Cell Broadcast Service warnings delivered over FeMBMS",
+      "tagline": "Emergency warnings delivered over 5G Broadcast",
       "pulls": []
     },
     {
       "name": "XR/3D Scenes with MPEG-I Scene Description",
       "doc_url": "/reference-tools/xr/",
-      "tagline": "MPEG-I scene description and XR media integration over 5G",
+      "tagline": "Composing, positioning, and temporally synchronizing dynamic 3D visual and audio objects for XR",
       "pulls": [
         {
           "repo": "rt-xr-content",
@@ -200,7 +200,7 @@
     {
       "name": "5G Multicast Broadcast Services (MBS)",
       "doc_url": "/reference-tools/5g-mbs/",
-      "tagline": "5G-native multicast and broadcast services · 3GPP 5G MBS",
+      "tagline": "Multicast and Broadcast delivery for 5G-NR-based terrestrial and non-terrestrial networks",
       "pulls": [
         {
           "repo": "rt-mbs-examples",
@@ -363,7 +363,7 @@
     {
       "name": "UE Data Collection, Reporting and Event Exposure",
       "doc_url": "/reference-tools/data-collection/",
-      "tagline": "UE-side data collection, reporting and event exposure · 3GPP TS 26.531",
+      "tagline": "User data collection and reporting, and exposure of network events to consumers",
       "pulls": [
         {
           "repo": "rt-data-collection-application-function",
@@ -383,7 +383,7 @@
     {
       "name": "MPEG V3C Immersive Platform",
       "doc_url": "/reference-tools/v3c/",
-      "tagline": "V3C volumetric video platform for immersive 5G experiences",
+      "tagline": "Volumetric video platform for immersive experiences",
       "pulls": []
     },
     {
@@ -448,7 +448,7 @@
     {
       "name": "CAMARA Connectivity Quality Management APIs",
       "doc_url": "/reference-tools/network-apis/",
-      "tagline": "Network capability exposure through CAMARA APIs",
+      "tagline": "Requesting, monitoring, and managing dynamic network resources and QoS",
       "pulls": [
         {
           "repo": "rt-camara-examples",
@@ -468,7 +468,7 @@
     {
       "name": "Conversational Avatar Communication with MPEG ARF",
       "doc_url": "/reference-tools/avatar/",
-      "tagline": "Real-time conversational avatars over 5G using MPEG ARF",
+      "tagline": "Real-time conversational avatars, animated from user to user",
       "pulls": [
         {
           "repo": "rt-3gpp-swap",
@@ -501,7 +501,7 @@
     {
       "name": "AI/ML Evaluation Framework",
       "doc_url": "/testbeds/ai-ml/",
-      "tagline": "Evaluation framework for AI/ML models in 5G media processing",
+      "tagline": "Evaluation framework for AI/ML models in media processing for 3GPP systems",
       "pulls": [
         {
           "repo": "rt-ai-ml-evaluation-framework",
@@ -547,7 +547,7 @@
     {
       "name": "Content Delivery Protocols",
       "doc_url": "/reference-tools/content-delivery/",
-      "tagline": "DASH, HLS and CMAF content delivery reference tools",
+      "tagline": "Content delivery origin, packaging, protocols and related tools",
       "pulls": [
         {
           "repo": "rt-libflute",
@@ -632,7 +632,7 @@
     {
       "name": "3GPP RAN and Core Platforms",
       "doc_url": "/reference-tools/3gpp-platforms/",
-      "tagline": "Lab-ready 5G RAN and Core built on Open5GS and srsRAN forks",
+      "tagline": "Lab-ready 5G RAN and Core built on Open-Source platforms",
       "pulls": [
         {
           "repo": "srsRAN_4G",
