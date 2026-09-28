@@ -66,28 +66,39 @@
   gap: 0.15rem;
   padding: 0.6rem 0.7rem;
   border-radius: 8px;
-  background: var(--ifm-background-color);
-  border: 1px solid var(--ifm-color-emphasis-200);
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
   border-left: 3px solid var(--ifm-color-primary);
 }
 
 .entityLabel {
-  font-weight: 700;
-  font-size: 0.95rem;
+  font-weight: 600;
+  font-size: 0.85rem;
   line-height: 1.25;
+  color: var(--ifm-color-emphasis-700);
 }
 
 .entitySpec {
   font-family: var(--ifm-font-family-monospace);
-  font-size: 0.875rem;
-  color: var(--ifm-color-emphasis-600);
+  font-size: 0.75rem;
+  color: var(--ifm-color-emphasis-500);
 }
 
+/* The repository is this page's whole subject (Reference Tools is about the
+   software, not the specification -- the entity label/spec above are just
+   enough context to place it), so it carries the strongest weight in the
+   box: larger, bold, and in the theme's link colour rather than the muted
+   grey every other label here uses. */
 .repo {
   font-family: var(--ifm-font-family-monospace);
-  font-size: 0.875rem;
-  margin-top: 0.2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-top: 0.3rem;
   overflow-wrap: anywhere;
+}
+
+.repo a {
+  color: var(--ifm-color-primary);
 }
 
 .repoNone {
