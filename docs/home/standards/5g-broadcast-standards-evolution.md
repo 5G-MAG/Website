@@ -18,35 +18,7 @@ description: Release-by-release detail on 3GPP work items, Change Requests and R
 
 This page is the detailed, release-by-release companion to [Standards: 5G Broadcast](/standards/5g-broadcast): the work items, Change Requests and RAN meetings behind each release. See that page for the ETSI TS 103 720 overview, the full specification list and current capabilities.
 
-<div class="godeeper-grid" style="grid-template-columns: repeat(auto-fit, minmax(0, 380px));">
-
-<div class="godeeper-card">
-<div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
-<h3>Technology &amp; Analysis</h3>
-</div>
-<div class="godeeper-card__body">
-<p>The deeper technical treatment of 5G Broadcast delivery and receiver behaviour.</p>
-<ul class="godeeper-card__links">
-<li><a href="/tech/5g-broadcast">Tech: 5G Broadcast</a></li>
-</ul>
-</div>
-</div>
-<div class="godeeper-card">
-<div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
-<h3>Software Tools</h3>
-</div>
-<div class="godeeper-card__body">
-<p>The reference transmitter (rt-mbms-tx) and receiver/modem (rt-mbms-modem) on the Developer Portal.</p>
-<ul class="godeeper-card__links">
-<li><a href="/reference-tools/5g-broadcast">LTE-based 5G Broadcast</a></li>
-<li><a href="/reference-tools/emergency-alerts">Emergency Alerts</a></li>
-</ul>
-</div>
-</div>
-
-</div>
+Related reference tools, not otherwise linked from this page's own sidebar (which is scoped to 5G Broadcast, not Emergency Alerts): [Emergency Alerts](/reference-tools/emergency-alerts).
 
 LTE-based 5G Broadcast is not a single 3GPP work item but the accumulation of several, each adding capability to the same LTE physical layer (the TS 36.xxx series). The normative 3GPP work item **LTE_terr_bcast** was approved at RAN#83 (March 2019); the Release 14 features it builds on predate it. See [Standards: 5G Broadcast](/standards/5g-broadcast#about-etsi-ts-103-720---5g-broadcast-system-for-linear-tv-and-radio-services) for how each 3GPP release maps to an ETSI TS 103 720 version.
 

@@ -18,36 +18,7 @@ description: Release-by-release detail on the 3GPP work items behind 5G Multicas
 
 This page is the detailed, release-by-release companion to [Standards: 5G Multicast Broadcast Services (MBS)](/standards/5g-mbs): the work items behind each release, and what each one added. See that page for the full specification list and current scope.
 
-<div class="godeeper-grid" style={{gridTemplateColumns: 'repeat(auto-fit, minmax(0, 380px))'}}>
-
-<div class="godeeper-card">
-<div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></svg>
-<h3>Technology &amp; Analysis</h3>
-</div>
-<div class="godeeper-card__body">
-<p>The implementer-facing analysis of the MBS architecture, including the Release 18 RAN procedures this page covers below.</p>
-<ul class="godeeper-card__links">
-<li><a href="/tech/5g-mbs">Tech: Multicast &amp; Broadcast in 5G</a></li>
-<li><a href="/tech/5g-mbs/analysis-mbs-multicast-inactive-ran">MBS Multicast Inactive - RAN Procedures</a></li>
-<li><a href="/tech/ntn/analysis-mbs-broadcast-over-ntn">MBS Broadcast over NTN</a></li>
-</ul>
-</div>
-</div>
-<div class="godeeper-card">
-<div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 8l-4 4l4 4"/><path d="M17 8l4 4l-4 4"/><path d="M14 4l-4 16"/></svg>
-<h3>Software Tools</h3>
-</div>
-<div class="godeeper-card__body">
-<p>The reference implementation for 5G-native multicast and broadcast delivery.</p>
-<ul class="godeeper-card__links">
-<li><a href="/reference-tools/5g-mbs">5G Multicast Broadcast Services</a></li>
-</ul>
-</div>
-</div>
-
-</div>
+Related deep-dive analysis, not otherwise linked from this page or the sidebar: [MBS Multicast Inactive - RAN Procedures](/tech/5g-mbs/analysis-mbs-multicast-inactive-ran) and [MBS Broadcast over NTN](/tech/ntn/analysis-mbs-broadcast-over-ntn).
 
 5G MBS is not one 3GPP work item but a family, run in parallel across SA2 (core architecture), SA4 (user-service layer), CT1/CT3/CT4/CT6 (stage-3 protocols), RAN2/RAN3 (radio and RAN interfaces) and SA3 (security), each with its own work item under a shared umbrella. The table below lists every work item confirmed directly against the 3GPP work item portal for this page; see "References to verify" at the end for exactly what that does and does not establish.
 
