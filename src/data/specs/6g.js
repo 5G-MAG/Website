@@ -35,7 +35,7 @@ export const SIXG_SPECS = [
     url: 'https://www.3gpp.org/dynareport/26847.htm',
     layer: 'AI/ML studies feeding 6G',
     release: '19',
-    note: 'SA4, completed',
+    note: 'SA4, completed June 2025',
   },
   {
     id: 'TR 22.874',
