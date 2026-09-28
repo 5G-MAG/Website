@@ -79,7 +79,7 @@ export default function FiveGBroadcast() {
       <main>
         <section className={styles.section}>
           <div className="container">
-            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.3fr) minmax(240px, 1fr)', gap: '2.5rem', alignItems: 'center' }}>
+            <div className={styles.introGrid}>
               <div style={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
                 <p>
                   LTE-based 5G Broadcast is a profile of existing 3GPP Long Term Evolution (LTE)
@@ -91,10 +91,9 @@ export default function FiveGBroadcast() {
                   which 5G-MAG actively maintains and extends to cover 3GPP Release 18 and 19 enhancements.
                 </p>
                 <p>
-                  5G-MAG&apos;s reference tools implement both sides of that same transport for linear
-                  TV and radio: the transmitter (rt-mbms-tx) and the modem/receiver (rt-mbms-modem)
-                  chain, letting anyone building a broadcast transmitter or receiver validate against a
-                  real, running reference. The same transmit/receive chain is also the platform{' '}
+                  TS 103 720 covers both directions of that same transport for linear TV and radio:
+                  the transmit side and the modem/receive side. The same transmit/receive chain is
+                  also the platform{' '}
                   <Link to="/tech/emergency-alerts">5G Broadcast - Emergency Alerts</Link> layers Cell
                   Broadcast Service public warning on top of.
                 </p>

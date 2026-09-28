@@ -71,7 +71,7 @@ export default function ContentDelivery() {
       <main>
         <section className={styles.section}>
           <div className="container">
-            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.3fr) minmax(240px, 1fr)', gap: '2.5rem', alignItems: 'center' }}>
+            <div className={styles.introGrid}>
               <div style={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
                 <p>
                   Content delivery over broadcast and multicast networks relies on transport
@@ -152,9 +152,8 @@ export default function ContentDelivery() {
               pulls segments over HTTP and can retransmit on loss. On a broadcast or multicast
               bearer there is no acknowledgement path, so the transport layers reliability on top
               of UDP/IP multicast using Forward Error Correction (FEC) rather than retransmission.
-              5G-MAG&apos;s reference tooling works mainly at the transport layer, delivering
-              DASH-, HLS- or CMAF-packaged content over 5G Broadcast (LTE-based) and 5G Multicast
-              Broadcast Services (MBS).
+              This transport layer is what carries DASH-, HLS- or CMAF-packaged content over 5G
+              Broadcast (LTE-based) and 5G Multicast Broadcast Services (MBS).
             </p>
 
             <p>
@@ -317,9 +316,7 @@ export default function ContentDelivery() {
               CMMF carries no manifest of its own, so bitstreams for an asset can be created or
               discarded independently. This is a lower-layer container for the multisource media
               itself, distinct from DASH-IF content steering (CTA-5006), which is a client-side,
-              manifest-level choice of <em>which</em> source to use. 5G-MAG&apos;s{' '}
-              <a href="https://github.com/5G-MAG/rt-cmmf-encoder">CMMF Encoder reference
-              implementation</a> is tracked as part of this project&apos;s own repositories. This
+              manifest-level choice of <em>which</em> source to use. This
               section is a starting placeholder: deeper clause-level analysis of TS 103 973 awaits
               a full reading of the published standard text.
             </p>

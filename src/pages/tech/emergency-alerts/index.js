@@ -76,7 +76,7 @@ export default function EmergencyAlerts() {
       <main>
         <section className={styles.section}>
           <div className="container">
-            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.3fr) minmax(240px, 1fr)', gap: '2.5rem', alignItems: 'center' }}>
+            <div className={styles.introGrid}>
               <div style={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
                 <p>
                   Public warning over 5G Broadcast carries emergency alerts (earthquake and tsunami
@@ -178,35 +178,32 @@ export default function EmergencyAlerts() {
               Warning System (ETWS) and the Commercial Mobile Alert System (CMAS).
             </p>
 
-            <h3>What the reference tools implement</h3>
+            <h3>Transmit and receive roles</h3>
             <p>
-              The Emergency Alerts feature set is realised on the LTE-based 5G Broadcast transmit
-              chain. Two components are involved on the transmit side, and the receive side reuses the
-              existing 5G Broadcast receiver:
+              The Emergency Alerts feature set sits on the LTE-based 5G Broadcast transmit chain, in
+              the roles the standard itself defines:
             </p>
             <ul>
               <li>
                 <strong>RAN / physical-layer transmitter.</strong> The 5G Broadcast transmitter builds
                 the E-UTRA system information carried on the broadcast carrier. For public warning,
                 this is where the warning-message System Information Blocks are scheduled and encoded
-                onto the radio frame. In the current tooling this role is filled by the{' '}
-                <code>rt-mbms-tx-for-qrd-and-crd</code> transmitter (built on the srsRAN 4G codebase),
-                which schedules and transmits the SIB12 message that triggers a CMAS alert on a
-                connected 5G Broadcast device.
+                onto the radio frame, so that a connected 5G Broadcast device receives the SIB12
+                message that triggers a CMAS alert.
               </li>
               <li>
                 <strong>SIB12 encoding.</strong> The transmitter constructs the SIB12 message body from
                 a set of CBS fields (message identifier, serial number, data coding scheme, and the
-                warning-message segment carrying the alert text). In the initial implementation these
-                fields are set to fixed values so that a default alert (for example a tsunami or
-                earthquake warning) is broadcast; work is in progress to let a developer supply custom
-                message content and warning type instead of a hardcoded payload.
+                warning-message segment carrying the alert text) — the fields a standards-conformant
+                transmitter needs to populate to broadcast a given alert (for example a tsunami or
+                earthquake warning).
               </li>
               <li>
                 <strong>Receiver / device.</strong> A 5G Broadcast capable device tuned to the carrier
                 decodes the system information, detects the warning-message SIB, decodes the CBS
-                payload, and presents the alert. The receive path reuses the 5G Broadcast modem and
-                receiver components rather than introducing an emergency-alert-specific receiver.
+                payload, and presents the alert. 3GPP does not define an alert-specific receiver: the
+                same procedure that decodes ordinary system information also decodes SIB10/11/12, so
+                a warning is just another scheduled SIB.
               </li>
             </ul>
             <p>
@@ -245,18 +242,17 @@ export default function EmergencyAlerts() {
             <p>
               For CMAS-style alerts the message is carried in <strong>SIB12</strong>. For ETWS the
               notification and body are carried in <strong>SIB10</strong> and <strong>SIB11</strong>{' '}
-              respectively; the current transmit tooling focuses on the SIB12 (CMAS) path, so ETWS-specific
-              SIB10/SIB11 behaviour should be confirmed against the repositories and Kanban board before
-              being assumed present.
+              respectively, each following the same scheduling and encoding model as SIB12.
             </p>
 
-            <h3>What is not in scope</h3>
+            <h3>The complete public warning chain</h3>
             <p>
-              The reference tools do not include the upstream network signalling that populates a live
-              PWS: a Cell Broadcast Entity feeding a Cell Broadcast Centre, the CBC-to-MME
-              Write-Replace Warning procedure, or the MME-to-eNB distribution. The tools stand in for
-              the output of that chain by generating the SIB directly, so they demonstrate the last hop
-              (network to device over broadcast) rather than a full PWS deployment.
+              A live Public Warning System has more upstream steps than the broadcast hop this page
+              focuses on: a Cell Broadcast Entity feeds a Cell Broadcast Centre, which runs the
+              CBC-to-MME Write-Replace Warning procedure, and the MME distributes the warning to the
+              relevant eNBs. This page&apos;s analysis covers the last hop of that chain — network to
+              device over the broadcast carrier — which is where CBS/SIB12 delivery and the standard
+              UE procedure for acting on it are defined.
             </p>
 
             <p>

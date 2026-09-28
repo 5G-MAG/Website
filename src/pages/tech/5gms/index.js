@@ -72,7 +72,7 @@ export default function FiveGMS() {
             points, TS 26.501/26.512), not a recovery of the lost text. */}
         <section className={styles.section}>
           <div className="container">
-            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.3fr) minmax(240px, 1fr)', gap: '2.5rem', alignItems: 'center' }}>
+            <div className={styles.introGrid}>
               <div style={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
                 <p>
                   5G Media Streaming (5GMS) is the 3GPP framework for delivering video, audio and
@@ -224,9 +224,8 @@ export default function FiveGMS() {
               Two points on the specification structure are worth noting for implementers. First, from
               Release 18 the media session handling APIs were moved from TS 26.512 into TS 26.510 and
               generalised so that the 5GMS System and the Real-Time media Communication (RTC) System
-              share the same Media Session Handler and AF provisioning. The current reference tools are
-              based on the Release 17 layout, where those APIs still live in TS 26.512 and TS 26.510
-              does not exist. Second, 5GMS consumption and QoE metrics reporting can feed the generic UE
+              share the same Media Session Handler and AF provisioning; Release 17 keeps those APIs in
+              TS 26.512, with TS 26.510 not yet existing. Second, 5GMS consumption and QoE metrics reporting can feed the generic UE
               data collection framework specified in TS 26.531 (architecture) and TS 26.532 (protocols
               and formats), which is where event exposure to consuming functions such as the Network
               Data Analytics Function (NWDAF) or an Event Consumer AF is defined.

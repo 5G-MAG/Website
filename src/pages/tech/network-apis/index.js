@@ -84,7 +84,7 @@ export default function NetworkAPIs() {
       <main>
         <section className={styles.section}>
           <div className="container">
-            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.3fr) minmax(240px, 1fr)', gap: '2.5rem', alignItems: 'center' }}>
+            <div className={styles.introGrid}>
               <div style={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
                 <p>
                   Mobile networks can expose selected capabilities, for example the ability to request

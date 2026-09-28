@@ -67,7 +67,7 @@ export default function XR() {
       <main>
         <section className={styles.section}>
           <div className="container">
-            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.3fr) minmax(240px, 1fr)', gap: '2.5rem', alignItems: 'center' }}>
+            <div className={styles.introGrid}>
               <div style={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
                 <p>
                   Extended Reality (XR) and 3D scene delivery bring interactive, spatially-aware content
@@ -77,9 +77,8 @@ export default function XR() {
                 </p>
                 <p>
                   Scene Description content can be transported using the 5G Media Streaming (5GMS)
-                  framework, enabling adaptive and policy-driven delivery of immersive media. 5G-MAG&apos;s
-                  reference tools — an MPEG-I-aware media player, native MAF and content pipeline — let
-                  anyone building an XR client validate against a real, running implementation.
+                  framework, enabling adaptive and policy-driven delivery of immersive media alongside
+                  the scene&apos;s own glTF assets and media tracks.
                 </p>
                 {PROJECT.sdos?.length > 0 && (
                   <div className={styles.capabilityTags}>

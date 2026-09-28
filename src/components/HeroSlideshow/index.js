@@ -491,6 +491,7 @@ export default function HeroSlideshow() {
             className={clsx(styles.slideDot, i === active && styles.slideDotActive)}
             onClick={() => setActive(i)}
             aria-label={slideLabel(s)}
+            title={slideLabel(s)}
           >
             {i === active && (
               <span className={styles.slideDotLabel}>{slideLabel(s)}</span>

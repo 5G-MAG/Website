@@ -75,7 +75,7 @@ export default function DataCollection() {
       <main>
         <section className={styles.section}>
           <div className="container">
-            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.3fr) minmax(240px, 1fr)', gap: '2.5rem', alignItems: 'center' }}>
+            <div className={styles.introGrid}>
               <div style={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
                 <p>
                   User Equipment (UE) data collection covers the 3GPP mechanisms by which a device
@@ -84,9 +84,8 @@ export default function DataCollection() {
                   services this feeds analytics and delivery optimisation.
                 </p>
                 <p>
-                  This page covers the reference tooling and technical resources for the Data
-                  Collection Application Function (DCAF) and event exposure framework. 5G-MAG tracks
-                  this work and maintains related reference implementations.
+                  This page covers the Data Collection Application Function (DCAF) and event
+                  exposure framework architecture, as defined by 3GPP.
                 </p>
                 {PROJECT.sdos?.length > 0 && (
                   <div className={styles.capabilityTags}>

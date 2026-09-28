@@ -91,7 +91,7 @@ export default function V3C() {
       <main>
         <section className={styles.section}>
           <div className="container">
-            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.3fr) minmax(240px, 1fr)', gap: '2.5rem', alignItems: 'center' }}>
+            <div className={styles.introGrid}>
               <div style={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
                 <p>
                   Volumetric video represents 3D objects and scenes as point clouds or mesh-based
@@ -310,20 +310,17 @@ export default function V3C() {
               player-provisioning machinery as conventional streaming.
             </p>
 
-            <h3>Reference-tools architecture</h3>
+            <h3>End-to-end pipeline</h3>
             <p>
-              The 5G-MAG MPEG V3C Immersive Platform reference tools implement the end-to-end path
-              described above: encode source content into a V3C bitstream, package and deliver it,
-              then decode and render it in real time. On the client side the work targets a
-              Unity-based player: a V3C decoder is exposed to the engine as a plugin that decodes the
-              atlas and the associated video sub-bitstreams (geometry, occupancy, attributes) and
-              reconstructs the 3D representation for display. Decoupling the volumetric decoder from
-              the presentation engine is the same separation-of-concerns pattern 5G-MAG uses across
-              its immersive-media tools, and it mirrors the bitstream structure: the plugin owns the
-              V3C-specific work, the engine owns presentation. For the current, authoritative
-              repository list and status, see the{' '}
-              <Link to="/reference-tools/v3c/">Reference Tools</Link> scope and repositories pages
-              rather than any hard-coded list here.
+              A V3C deployment covers five stages: encode source content into a V3C bitstream,
+              package it, deliver it over the transport described above, then decode and render it
+              in real time on the client. On playback, a V3C decoder reconstructs the 3D
+              representation from the atlas and its associated video sub-bitstreams (geometry,
+              occupancy, attributes) before handing it to the presentation layer — a separation of
+              concerns that keeps the V3C-specific decode work independent of whatever engine or
+              renderer presents the result. For the current, authoritative repository list and
+              implementation status, see the{' '}
+              <Link to="/reference-tools/v3c/">Reference Tools</Link> scope and repositories pages.
             </p>
 
             <h3>Beyond 2D Video</h3>

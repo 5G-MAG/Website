@@ -919,6 +919,27 @@ a.chartBubble:hover {
   text-decoration: none !important;
 }
 
+/* ── Per-project flagship pages: intro grid ───────────────────────────── */
+
+/* The intro's two-column layout (prose left, cover image right) on every
+   flagship page (2026-09-28 audit finding): all 13 pages that use it had
+   this as an inline style with no mobile breakpoint, and the image
+   column's `minmax(240px, ...)` floor doesn't yield below ~520px wide --
+   on a phone the text column was measured at 82.5px, wrapping one word
+   per line. One shared class instead of 13 separate inline fixes. */
+.introGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(240px, 1fr);
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .introGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ── Per-project flagship pages: capability tags + problem statement ──── */
 
 /* Real project.sdos (standards bodies this project is tracked against),

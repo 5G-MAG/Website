@@ -59,7 +59,7 @@ Each feature below is presented with a table of the reference points and APIs th
 
 Two structural patterns recur. First, most features touch both M1 and M5: the Application Provider provisions the feature over M1, and the Media Session Handler then uses it over M5. Second, almost every feature depends on the **Provisioning Sessions API** (to create the session that other configurations attach to) and the **Service Access Information API** (so the client can discover how to use the feature). These two appear repeatedly and are the backbone of the runtime flow described in the [Overview](./overview#implementation-blueprint).
 
-One point on releases and API location: the tables reference the procedures in TS 26.510, which from Release 18 carries the provisioning and session-handling procedures generalised across the 5GMS and RTC systems. In the Release 17 layout on which the reference tools are based, the equivalent APIs are carried in TS 26.512 and TS 26.510 does not exist. The OpenAPI files linked below use the TS 26.512 Release 17 names; the [Scope page](/reference-tools/5gms) on the developer portal maps the Release 17 and Release 18 API filenames side by side.
+One point on releases and API location: the tables reference the procedures in TS 26.510, which from Release 18 carries the provisioning and session-handling procedures generalised across the 5GMS and RTC systems; in Release 17, the equivalent APIs are carried in TS 26.512 and TS 26.510 does not exist. The OpenAPI files linked below use the TS 26.512 Release 17 names; the [Scope page](/reference-tools/5gms) on the developer portal maps the Release 17 and Release 18 API filenames side by side, and states which release the reference tools track.
 
 ## Features
 
@@ -74,11 +74,3 @@ shared data file. The per-feature diagrams that illustrated this section previou
 `FeatureBlueprint` — re-attaching them is a small follow-up, the images themselves are untouched.
 
 <FeatureBlueprint features={FIVEGMS_FEATURES} />
-
-## Related
-
-- [5G Media Streaming (5GMS)](/tech/5gms): the parent topic page
-- [Overview on 5G Media Streaming](./overview): the architecture, functional entities and reference points these features sit on
-- [Overview on Advanced Media Delivery](./overview-amd): the Release-19 extensions to these features
-- [Standards: 5G Media Streaming](/standards/5gms): the specification list for this topic
-- [5G Media Streaming Reference Tools](/reference-tools/5gms): the software implementation
