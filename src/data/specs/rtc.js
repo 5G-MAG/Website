@@ -67,9 +67,10 @@ export const RTC_SPECS = [
   },
   {
     id: 'WebRTC 1.0',
-    title: 'Real-Time Communication Between Browsers',
+    title: 'WebRTC: Real-Time Communication in Browsers',
     url: 'https://www.w3.org/TR/webrtc/',
     layer: 'W3C',
+    note: 'W3C Recommendation since 13 March 2025',
   },
   {
     id: 'Media Capture and Streams',
@@ -82,7 +83,7 @@ export const RTC_SPECS = [
     title: 'Study on the enhancement for Immersive Real-Time Communication for WebRTC',
     url: 'https://www.3gpp.org/dynareport/26930.htm',
     layer: 'Studies',
-    note: 'Release 18, with an updated Release-19 version',
+    note: 'Release 18, with an updated Release-19 version; clause 6.4.5 specifies RESPECT (REaltime & REality media Setup Protocol, Extensible and CompacT), a WebRTC-compatible, JSON-over-WebSocket-Secure session-control protocol',
   },
 ];
 
