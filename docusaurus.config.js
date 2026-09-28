@@ -82,9 +82,9 @@ const config = {
       {
         redirects: [
           { from: '/tech/standards/5g-broadcast', to: '/standards/5g-broadcast' },
-          { from: '/tech/standards/5g-broadcast-standards-evolution', to: '/standards/5g-broadcast-standards-evolution' },
+          { from: '/tech/standards/5g-broadcast-standards-evolution', to: '/standards/5g-broadcast/evolution' },
           { from: '/tech/standards/5g-mbs', to: '/standards/5g-mbs' },
-          { from: '/tech/standards/5g-mbs-standards-evolution', to: '/standards/5g-mbs-standards-evolution' },
+          { from: '/tech/standards/5g-mbs-standards-evolution', to: '/standards/5g-mbs/evolution' },
           { from: '/tech/standards/5gms', to: '/standards/5gms' },
           { from: '/tech/standards/6g', to: '/standards/6g' },
           { from: '/tech/standards/ai-ml', to: '/standards/ai-ml' },
@@ -187,6 +187,12 @@ const config = {
           { from: '/reference-tools/multimedia/scope', to: '/reference-tools/content-delivery/implementation' },
           { from: '/reference-tools/multimedia/resources', to: '/reference-tools/content-delivery' },
           { from: '/reference-tools/multimedia/tutorials', to: '/reference-tools/content-delivery/tutorials' },
+          // Standards Evolution pages renamed from a flat "-standards-evolution"
+          // suffix to a nested "/evolution" path, to match every other topic's
+          // own new companion page (2026-09-28). Both were live before this
+          // rename.
+          { from: '/standards/5g-mbs-standards-evolution', to: '/standards/5g-mbs/evolution' },
+          { from: '/standards/5g-broadcast-standards-evolution', to: '/standards/5g-broadcast/evolution' },
         ],
       },
     ],

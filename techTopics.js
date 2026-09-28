@@ -91,7 +91,12 @@ const ALL_TOPICS = [
     techOverviewDoc: 'content-delivery/overview',
     standards: [
       { doc: 'standards/content-delivery', label: 'Standards: Content Delivery Protocols' },
+      {
+        doc: 'standards/content-delivery-standards-evolution',
+        label: 'Standards: Content Delivery - Standards Evolution',
+      },
       { doc: 'standards/cmmf', label: 'Standards: CMMF (Multisource Delivery)' },
+      { doc: 'standards/cmmf-standards-evolution', label: 'Standards: CMMF - Standards Evolution' },
     ],
   },
   {
@@ -105,7 +110,13 @@ const ALL_TOPICS = [
     // (each is a specific mobility/broadcast-over-NTN deep-dive), so
     // writing a real one needs source material this pass doesn't have.
     techOverviewDoc: 'ntn/overview',
-    standards: [{ doc: 'standards/ntn', label: 'Standards: Non-Terrestrial Networks in 5G Systems' }],
+    standards: [
+      { doc: 'standards/ntn', label: 'Standards: Non-Terrestrial Networks in 5G Systems' },
+      {
+        doc: 'standards/ntn-standards-evolution',
+        label: 'Standards: Non-Terrestrial Networks - Standards Evolution',
+      },
+    ],
   },
   {
     label: 'Real-time Media Communication (RTC) Architecture',
@@ -123,6 +134,10 @@ const ALL_TOPICS = [
       {
         doc: 'standards/data-collection',
         label: 'Standards: UE Data Collection, Reporting and Event Exposure',
+      },
+      {
+        doc: 'standards/data-collection-standards-evolution',
+        label: 'Standards: UE Data Collection - Standards Evolution',
       },
     ],
   },
@@ -163,6 +178,10 @@ const ALL_TOPICS = [
         doc: 'standards/emergency-alerts',
         label: 'Standards: 5G Broadcast - Emergency Alerts',
       },
+      {
+        doc: 'standards/emergency-alerts-standards-evolution',
+        label: 'Standards: Emergency Alerts - Standards Evolution',
+      },
     ],
   },
   {
@@ -184,7 +203,10 @@ const ALL_TOPICS = [
     // -- this shared folder's other real doc, beyond-2d.mdx, is the
     // separate Beyond 2D project's own content, not V3C's.
     techOverviewDoc: 'volumetric/v3c-overview',
-    standards: [{ doc: 'standards/v3c', label: 'Standards: MPEG V3C Immersive Platform' }],
+    standards: [
+      { doc: 'standards/v3c', label: 'Standards: MPEG V3C Immersive Platform' },
+      { doc: 'standards/v3c-standards-evolution', label: 'Standards: V3C - Standards Evolution' },
+    ],
   },
   {
     // Added 2026-09-28 (consistency audit, direct instruction: "all
@@ -223,7 +245,10 @@ const ALL_TOPICS = [
     techHref: '/tech/vdmc',
     autogen: 'vdmc',
     techOverviewDoc: 'vdmc/overview',
-    standards: [{ doc: 'standards/vdmc', label: 'Standards: Dynamic Mesh Coding' }],
+    standards: [
+      { doc: 'standards/vdmc', label: 'Standards: Dynamic Mesh Coding' },
+      { doc: 'standards/vdmc-standards-evolution', label: 'Standards: Dynamic Mesh Coding - Standards Evolution' },
+    ],
   },
   {
     label: 'CAMARA Connectivity Quality Management APIs',
@@ -240,6 +265,10 @@ const ALL_TOPICS = [
         doc: 'standards/network-apis',
         label: 'Standards: CAMARA Connectivity Quality Management APIs',
       },
+      {
+        doc: 'standards/network-apis-standards-evolution',
+        label: 'Standards: CAMARA APIs - Standards Evolution',
+      },
     ],
   },
   {
@@ -247,28 +276,40 @@ const ALL_TOPICS = [
     techHref: '/tech/npn',
     autogen: 'npn',
     techOverviewDoc: 'npn/overview',
-    standards: [{ doc: 'standards/npn', label: 'Standards: Non-Public Networks' }],
+    standards: [
+      { doc: 'standards/npn', label: 'Standards: Non-Public Networks' },
+      { doc: 'standards/npn-standards-evolution', label: 'Standards: Non-Public Networks - Standards Evolution' },
+    ],
   },
   {
     label: 'Time-Sensitive Communications (TSC)',
     techHref: '/tech/tsc',
     autogen: 'tsc',
     techOverviewDoc: 'tsc/overview',
-    standards: [{ doc: 'standards/tsc', label: 'Standards: Time-Sensitive Communications (TSC)' }],
+    standards: [
+      { doc: 'standards/tsc', label: 'Standards: Time-Sensitive Communications (TSC)' },
+      { doc: 'standards/tsc-standards-evolution', label: 'Standards: TSC - Standards Evolution' },
+    ],
   },
   {
     label: 'AI/ML Evaluation Framework',
     techHref: '/tech/ai-ml',
     autogen: 'ai-ml',
     techOverviewDoc: 'ai-ml/overview',
-    standards: [{ doc: 'standards/ai-ml', label: 'Standards: AI/ML Evaluation Framework' }],
+    standards: [
+      { doc: 'standards/ai-ml', label: 'Standards: AI/ML Evaluation Framework' },
+      { doc: 'standards/ai-ml-standards-evolution', label: 'Standards: AI/ML - Standards Evolution' },
+    ],
   },
   {
     label: 'Towards 6G Media',
     techHref: '/tech/6g',
     autogen: '6g',
     techOverviewDoc: '6g/overview',
-    standards: [{ doc: 'standards/6g', label: 'Standards: Towards 6G Media' }],
+    standards: [
+      { doc: 'standards/6g', label: 'Standards: Towards 6G Media' },
+      { doc: 'standards/6g-standards-evolution', label: 'Standards: 6G Media - Standards Evolution' },
+    ],
   },
 ];
 

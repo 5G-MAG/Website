@@ -21,7 +21,15 @@ import { BROADCAST_SPECS, BROADCAST_LAYER_ORDER } from '@site/src/data/specs/5g-
 
 ## Overview
 
-5G Broadcast delivers linear TV and radio to devices over a one-way, free-to-air signal, with no SIM, subscription or return channel required, reusing LTE/eMBMS radio technology (Long Term Evolution / evolved Multimedia Broadcast Multicast Service). It is distinct from 5G Multicast-Broadcast Services (MBS), which is native to the 5G core and NR; see [Standards: 5G Multicast Broadcast Services (MBS)](/standards/5g-mbs). 5G-MAG maintains the underlying ETSI specification and contributes the requirements and fixes that shape each new version.
+5G Broadcast delivers linear TV and radio to devices over a one-way, free-to-air signal, with no SIM, subscription or return channel required, reusing LTE/eMBMS radio technology (Long Term Evolution / evolved Multimedia Broadcast Multicast Service). It is distinct from 5G Multicast-Broadcast Services (MBS), which is native to the 5G core and NR; see [Standards: 5G Multicast Broadcast Services (MBS)](/standards/5g-mbs).
+
+5G-MAG maintains ETSI TS 103 720 itself rather than only tracking it: it undertook the specification's maintenance in 2021, contributing the requirements and fixes that shape each new version, agreed among members on the [Kanban board](https://github.com/orgs/5G-MAG/projects/32). Current focus:
+
+- **ETSI TS 103 720 v1.3.1 (in progress):** 3GPP Release 18 update, extending to Release 19 (see "Updates towards ETSI TS 103 720 v1.3.1" below).
+- **Implementer-driven fixes:** bugs, clarification questions and new requirements raised by implementors, in particular 5G-MAG.
+- **Completed:** Release 17 alignment (v1.2.1, 2023).
+
+For the release-by-release specification detail behind these updates, see [Standards Evolution](/standards/5g-broadcast/evolution). For the technical analysis, see [Tech: 5G Broadcast](/tech/5g-broadcast).
 
 ## About ETSI TS 103 720 - 5G Broadcast System for linear TV and radio services
 
@@ -102,7 +110,7 @@ The v1.2.1 specification PDF and its work item are linked under Quick access abo
 
 ## Specifications in scope
 
-This is a list of specifications in the scope of Multimedia Broadcast/Multicast Service (MBMS) and LTE-based 5G Terrestrial Broadcast. LTE-based 5G Broadcast reuses the MBMS delivery framework over the LTE radio, including its further-enhanced variant (FeMBMS, Further enhanced Multimedia Broadcast/Multicast Service). The specifications are filterable below by the function they cover, following the same physical layer, RRC, RF and architecture split used on the [Standards Evolution](/standards/5g-broadcast-standards-evolution) page; ETSI TS 103 720 (see "About ETSI TS 103 720" above) profiles a subset of these and adds broadcast-specific receiver requirements on top. Search matches the specification number, its title and any scope note.
+This is a list of specifications in the scope of Multimedia Broadcast/Multicast Service (MBMS) and LTE-based 5G Terrestrial Broadcast. LTE-based 5G Broadcast reuses the MBMS delivery framework over the LTE radio, including its further-enhanced variant (FeMBMS, Further enhanced Multimedia Broadcast/Multicast Service). The specifications are filterable below by the function they cover, following the same physical layer, RRC, RF and architecture split used on the [Standards Evolution](/standards/5g-broadcast/evolution) page; ETSI TS 103 720 (see "About ETSI TS 103 720" above) profiles a subset of these and adds broadcast-specific receiver requirements on top. Search matches the specification number, its title and any scope note.
 
 <SpecIndex specs={BROADCAST_SPECS} layerOrder={BROADCAST_LAYER_ORDER} />
 
@@ -126,16 +134,6 @@ Everything else previously flagged here has been verified against primary source
 Individual 3GPP Change Requests (CRs) are not linked directly: the CR search portal (portal.3gpp.org/ChangeRequests.aspx) requires a 3GPP delegate login for record-level detail.
 
 </details>
-
-## 5G-MAG tracking and contribution focus
-
-5G-MAG maintains ETSI TS 103 720 itself rather than only tracking it: it undertook the specification's maintenance in 2021, contributing the requirements and fixes that shape each new version, agreed among members on the [Kanban board](https://github.com/orgs/5G-MAG/projects/32). Current focus:
-
-- **ETSI TS 103 720 v1.3.1 (in progress):** 3GPP Release 18 update, extending to Release 19 (see "Updates towards ETSI TS 103 720 v1.3.1" above).
-- **Implementer-driven fixes:** bugs, clarification questions and new requirements raised by implementors, in particular 5G-MAG.
-- **Completed:** Release 17 alignment (v1.2.1, 2023).
-
-For the release-by-release specification detail behind these updates, see [Standards Evolution](/standards/5g-broadcast-standards-evolution). For the technical analysis, see [Tech: 5G Broadcast](/tech/5g-broadcast).
 
 ## Related Standards Work
 

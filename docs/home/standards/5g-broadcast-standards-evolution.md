@@ -1,7 +1,7 @@
 ---
 hide_title: true
 title: 5G Broadcast - Standards Evolution
-slug: /standards/5g-broadcast-standards-evolution
+slug: /standards/5g-broadcast/evolution
 description: Release-by-release detail on 3GPP work items, Change Requests and RAN meetings behind LTE-based 5G Broadcast, Releases 14 to 19.
 ---
 
@@ -174,7 +174,8 @@ Individual 3GPP Change Requests (CRs) are not linked directly: the CR search por
 
 ## Related Standards Work
 
-- [Standards: 5G Broadcast](/standards/5g-broadcast)
+- [Standards: 5G Multicast Broadcast Services (MBS)](/standards/5g-mbs)
+- [Standards: 5G MBS - Standards Evolution](/standards/5g-mbs/evolution)
 - [Standards: Non-Terrestrial Networks (NTN)](/standards/ntn)
 - [Standardisation](/standards): how 5G-MAG processes feedback on the specifications it maintains and tracks
 :::note

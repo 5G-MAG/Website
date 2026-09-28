@@ -1,7 +1,7 @@
 ---
 hide_title: true
 title: 5G MBS - Standards Evolution
-slug: /standards/5g-mbs-standards-evolution
+slug: /standards/5g-mbs/evolution
 description: Release-by-release detail on the 3GPP work items behind 5G Multicast Broadcast Services, Releases 17 to 19.
 ---
 
@@ -91,11 +91,9 @@ CR 5481 (TS 38.331, introducing SIB27) is confirmed directly from its own docume
 
 ## Related Standards Work
 
-- [Standards: 5G Multicast Broadcast Services (MBS)](/standards/5g-mbs)
 - [Standards: 5G Broadcast](/standards/5g-broadcast)
-- [Standards: 5G Broadcast - Standards Evolution](/standards/5g-broadcast-standards-evolution)
+- [Standards: 5G Broadcast - Standards Evolution](/standards/5g-broadcast/evolution)
 - [Standards: Non-Terrestrial Networks (NTN)](/standards/ntn)
-- [Tech: Multicast & Broadcast in 5G](/tech/5g-mbs)
 :::note
 Refer to the [Standards](https://github.com/5G-MAG/Standards/) repository to contribute to this documentation.
 :::

@@ -23,6 +23,14 @@ import { FIVEGMS_SPECS, FIVEGMS_LAYER_ORDER } from '@site/src/data/specs/5gms';
 
 5G Media Streaming (5GMS) is the 3GPP framework for delivering streaming media over 5G networks, in downlink (5GMSd) and uplink (5GMSu) directions. This page lists the specifications in scope and 5G-MAG's tracking focus; for the technical analysis of how the architecture works, see the Tech page linked below.
 
+5G-MAG tracks the 5GMS specifications in 3GPP SA4. The current focus areas are:
+
+- **Release 18 API migration:** tracking the move of the media session handling APIs from TS 26.512 into TS 26.510 and the generalisation across the 5GMS and RTC systems.
+- **Advanced Media Delivery (Release 19):** following the TR 26.804 study and the stage-3 work that brings CMCD reporting and CMMF multi-source delivery into the media delivery specifications.
+- **Data collection and event exposure:** the generic UE data collection framework (TS 26.531 and TS 26.532), tracked so that 5GMS consumption and QoE metrics can be exposed to consuming functions.
+
+For implementation analysis, see [Streaming & Media Delivery](/tech/5gms).
+
 ## Architecture
 
 5GMS is a functional extension of the 5G System, defined in [TS 26.501](https://www.3gpp.org/dynareport/26501.htm). Its main functional entities are the 5GMS Application Provider, Application Function (AF), Application Server (AS), and Client (split into Media Session Handler and Media Player for downlink, or Media Streamer for uplink), joined by reference points M1 to M8 (downlink variants carry a "d" suffix, uplink a "u" suffix). These M1-M8 reference points are specific to 5G Media Streaming and are distinct from the similarly-named M1/M2/M3 MBMS network interfaces used by [Standards: 5G Broadcast](/standards/5g-broadcast).
@@ -114,16 +122,6 @@ Common Media Client Data (CMCD) is a CTA standard (CTA-5004) for client-side pla
 Coded Multisource Media Format (CMMF) is an ETSI format for retrieving a single piece of content in coded chunks from multiple sources. See [Advanced Media Delivery](/tech/5gms/overview-amd) for the technical detail, and [Standards: CMMF (Multisource Delivery)](/standards/cmmf) for the dedicated tracking page (CMMF is tracked as part of [Content Delivery Protocols](/tech/content-delivery), not as a 5GMS specification).
 
 - **Specification: [ETSI TS 103 973](https://www.etsi.org/deliver/etsi_ts/103900_103999/103973/01.01.01_60/ts_103973v010101p.pdf) - Coded Multisource Media Format (CMMF) for Content Distribution and Delivery**
-
-## 5G-MAG tracking and contribution focus
-
-5G-MAG tracks the 5GMS specifications in 3GPP SA4. The current focus areas are:
-
-- **Release 18 API migration:** tracking the move of the media session handling APIs from TS 26.512 into TS 26.510 and the generalisation across the 5GMS and RTC systems.
-- **Advanced Media Delivery (Release 19):** following the TR 26.804 study and the stage-3 work that brings CMCD reporting and CMMF multi-source delivery into the media delivery specifications.
-- **Data collection and event exposure:** the generic UE data collection framework (TS 26.531 and TS 26.532), tracked so that 5GMS consumption and QoE metrics can be exposed to consuming functions.
-
-For implementation analysis, see [Streaming & Media Delivery](/tech/5gms).
 
 ## Related Standards Work
 
