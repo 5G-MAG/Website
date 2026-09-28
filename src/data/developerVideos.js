@@ -9,9 +9,9 @@
 // just with YouTube's own raw title and no byline until someone adds it
 // here.
 export const DEVELOPER_VIDEO_INFO = {
-  YjzC08BrniA: { title: 'Reference Tools', by: null },
-  OfNl92FmglY: { title: 'Initial steps', by: null },
-  'Jbir8B-gC4c': { title: '5G Broadcast-Broadband Seamless Switching', by: 'By Klaus Kühnhammer (Bitstem) and Daniel Silhavy (Fraunhofer Fokus)' },
+  YjzC08BrniA: { title: '5G-MAG Workshop - Reference Tools', by: null },
+  OfNl92FmglY: { title: '5G-MAG Reference Tools - Initial steps', by: null },
+  'Jbir8B-gC4c': { title: '5G Broadcast-Broadband Seamless Switching', by: 'By Klaus Kühnhammer (Bitstem) and Daniel Silhavy (Fraunhofer FOKUS)' },
   O_MfEE5KG6o: { title: 'Closing the gap towards a 5G Broadcast Rel-16 open-source transmitter', by: 'By Jaime Sánchez Roldán (iTEAM-UPV)' },
   '1L5vonxICOg': { title: 'OSMART Workshop - 09.05.22 - 5G-MAG Reference Tools presentation', by: null },
   F2xGDeoBfck: { title: 'Target 2023 - 5G & Media, all we need to know', by: null },
@@ -21,7 +21,7 @@ export const DEVELOPER_VIDEO_INFO = {
   TtM98uZxHuc: { title: '5G Broadcast supported by 5G-MAG Reference Tools', by: 'By Klaus Kühnhammer (Bitstem)' },
   lJG1hNty_AU: { title: '5G Media Streaming supported by 5G-MAG Reference Tools', by: 'By Richard Bradbury (BBC)' },
   PD3JbPppLLE: { title: 'XR Player supported by 5G-MAG Reference Tools', by: 'By Imed Bouazizi (Qualcomm)' },
-  fv_LoZXk5Oc: { title: '5GMS Consumpion Reporting, Network Assistance and Dynamic Policies', by: 'By David Waring (BBC) and Daniel Silhavy (Fraunhofer FOKUS)' },
+  fv_LoZXk5Oc: { title: '5GMS Consumption Reporting, Network Assistance and Dynamic Policies', by: 'By David Waring (BBC) and Daniel Silhavy (Fraunhofer FOKUS)' },
   WLFxoN6HCZ8: { title: '5G-MAG REFERENCE TOOLS in Action', by: null },
   bEMjw1YA78M: { title: 'Using the Blender glTF exporter with the XR Unity Player', by: 'By Nils Duval (Motion Spell)' },
   qewsQhGi8aE: { title: 'Introducing the 5GMS Application Provider Management Portal', by: 'By Vuk Stojkovic (Fraunhofer FOKUS)' },
@@ -51,7 +51,14 @@ export const DEVELOPER_VIDEO_INFO = {
   'KtYMui-cRc0': { title: 'Introducing Network Emulator & AI Traffic Characterization Framework', by: 'By Thomas Stockhammer (Qualcomm)' },
   MF9rhnaEEP8: { title: 'Demonstrating the OBJECT_CAROUSEL operating mode', by: 'By David Waring, Dev Audsin and Richard Bradbury (BBC R&D)' },
   e_xK_ckkhgc: { title: 'Demonstrating MBS User Service Announcement mechanisms', by: 'By Dev Audsin, David Waring and Richard Bradbury (BBC R&D)' },
-  uEfBaTqh5vw: { title: 'Overview of the latest updates to the 5G Media Streaming Project', by: 'By Daniel Silhavy (5G-MAG WG DEV Chair, Fraunhofer Fokus)' },
+  uEfBaTqh5vw: { title: 'Overview of the latest updates to the 5G Media Streaming Project', by: 'By Daniel Silhavy (5G-MAG WG DEV Chair, Fraunhofer FOKUS)' },
+  cdYV99cDuJE: { title: 'End-to-End setup with 5GC, NG-RAN and UE for MBS Broadcast Services', by: 'By Jaime Sánchez Roldán and Josep Ribes Rodríguez-Moldes (iTEAM-UPV)' },
+  WhMLUO0Bh2U: { title: 'Initial steps exposing APIs to AI systems through the MCP', by: 'By Aarón Montilla (iTEAM-UPV)' },
+  'Cqta-eo9490': { title: 'Advanced Media Delivery - CMCD Metrics in Action', by: 'By Shilin Ding (Qualcomm)' },
+  e_VRVDAoJdk: { title: 'MBS User Services for 5G MBS (Release 18) - Updates', by: 'By Richard Bradbury (BBC), Dev Audsin (BBC) and David Waring (BBC)' },
+  hcFRGmg8YBU: { title: '5G Media Streaming - Latest Additions', by: 'By Daniel Silhavy (Fraunhofer FOKUS)' },
+  hVqCqGyrknE: { title: 'Introducing the Avatar Real-Time Communication Project', by: 'By Nils Duval (Motion Spell)' },
+  zP5JhHugnRE: { title: 'Connecting MBSTF to the MBS System', by: 'By Josep Ribes Rodríguez-Moldes (iTEAM-UPV)' },
 };
 
 /** Enrich the live feed's videos (already newest-first, capped at ~15 by

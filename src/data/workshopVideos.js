@@ -13,6 +13,7 @@
 export const WORKSHOP_VIDEOS = [
   { id: '2j1ZXDK_4B0', title: 'Workshop on Media Energy Consumption Measurement and Exposure', by: null },
   { id: 'S5VK94lu_Dw', title: 'OSCAR Workshop - 12.06.2025', by: null },
+  { id: '1L5vonxICOg', title: 'OSMART Workshop - 09.05.22 - 5G-MAG Reference Tools presentation', by: null },
   { id: 'ptXi6BIrBgo', title: 'Part II: Media Production: Deep dive into protocols - BBC', by: null },
   { id: 'KZB_jcfDh4Q', title: 'Part II: Media Production: Deep dive into protocols - Agile Content', by: null },
   { id: 'Q3qsSlewTF8', title: 'Part II: Media Production: Deep dive into protocols - ROSS Video', by: null },
