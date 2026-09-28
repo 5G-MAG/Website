@@ -15,7 +15,7 @@ export const XR_SPECS = [
     title: 'Coded representation of immersive media; Part 14: Scene description',
     url: 'https://www.iso.org/standard/90191.html',
     layer: 'MPEG',
-    note: 'published in 2023 as a set of extensions to Khronos glTF 2.0; the 2023 edition (Edition 1) is now withdrawn, consolidated with Amendment 1 into Edition 2 (2025), linked here -- Amendment 2 (avatar support) is still a separate, not-yet-published Draft Amendment, not part of this edition -- see src/data/specs/avatar.js for that citation',
+    note: 'published in 2023 as a set of extensions to Khronos glTF 2.0; the 2023 edition (Edition 1) is now withdrawn, consolidated with Amendment 1 (immersive audio, scene understanding and related extensions) into Edition 2 (2025), linked here -- Amendment 2 (anchors, interactivity, MPEG_avatar, lighting, haptics) is still a separate, not-yet-published Draft Amendment, not part of this edition -- see src/data/specs/avatar.js for that citation',
   },
   {
     // Added 2026-08-25: docs/tech/xr.mdx's own "Key specifications" line names
@@ -40,6 +40,13 @@ export const XR_SPECS = [
     url: 'https://www.iso.org/standard/83535.html',
     layer: 'MPEG',
     note: 'shared with the MPEG V3C Immersive Platform reference tools; see src/data/specs/v3c.js for the same citation',
+  },
+  {
+    id: 'ISO/IEC 23090-4:2025',
+    title: 'Information technology - Coded representation of immersive media - Part 4: Immersive audio',
+    url: 'https://www.iso.org/standard/84711.html',
+    layer: 'MPEG',
+    note: 'the "MPEG-I immersive audio" the scene description page names in prose without a document number -- this identification is an inference from that prose, not an explicit page citation',
   },
   {
     // Added 2026-08-25: standards/xr.mdx's own "Delivery (3GPP SA4)" table
@@ -151,7 +158,7 @@ export const XR_SPECS = [
     title: 'Media Capabilities for Augmented Reality',
     url: 'https://www.3gpp.org/dynareport/26119.htm',
     layer: 'Media capabilities',
-    note: 'Under change control; WG S4',
+    note: 'called "MeCAR" by the tech deep-dive page, which describes it as aligning the on-device client with the Khronos OpenXR runtime API; under change control, WG S4',
   },
   {
     id: 'TS 26.143',
