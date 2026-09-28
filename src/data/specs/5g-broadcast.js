@@ -7,6 +7,13 @@
 // to sit under; `note` carries the scope qualifier that used to trail the title.
 export const BROADCAST_SPECS = [
   {
+    id: 'ETSI TS 103 720',
+    title: '5G Broadcast System for linear TV and radio services',
+    url: 'https://www.etsi.org/deliver/etsi_ts/103700_103799/103720/01.02.01_60/ts_103720v010201p.pdf',
+    layer: 'System specification',
+    note: 'the system this whole page profiles; current v1.2.1 (2023-06, Rel-17); a v1.3.1 (Rel-18) work item is open, not yet published',
+  },
+  {
     id: 'TS 22.101',
     title: 'Service aspects; Service principles',
     url: 'https://www.3gpp.org/dynareport/22101.htm',
@@ -350,6 +357,7 @@ export const BROADCAST_SPECS = [
 // Order the filter chips by where each layer sits in the stack, rather than
 // alphabetically or by how many specifications happen to be in each.
 export const BROADCAST_LAYER_ORDER = [
+  'System specification',
   'Service requirements',
   'Architecture',
   'Radio and interfaces',
