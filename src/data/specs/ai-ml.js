@@ -44,7 +44,32 @@ export const AI_ML_SPECS = [
       'Study on traffic characteristics and performance requirements for AI/ML model transfer in 5GS',
     url: 'https://www.3gpp.org/dynareport/22874.htm',
     layer: 'Studies',
+    release: '18',
     note: 'SA1',
+  },
+  {
+    id: 'TR 26.927',
+    title: 'Study on Artificial Intelligence and Machine learning in 5G media services',
+    url: 'https://www.3gpp.org/dynareport/26927.htm',
+    layer: 'Studies',
+    release: '19',
+    note: 'SA4, companion functional study to TR 26.847 (same SID); under change control since 17 June 2025',
+  },
+  {
+    id: 'TR 23.700-81',
+    title: 'Study of Enablers for Network Automation for the 5G System (5GS); Phase 3',
+    url: 'https://www.3gpp.org/dynareport/23700-81.htm',
+    layer: 'Studies',
+    release: '18',
+    note: 'SA2, eNA Phase 3 study; results folded into TS 23.288',
+  },
+  {
+    id: 'TR 23.700-80',
+    title: 'Study on 5G system support for AI/ML-based services',
+    url: 'https://www.3gpp.org/dynareport/23700-80.htm',
+    layer: 'Studies',
+    release: '18',
+    note: 'SA2, generic AI/ML operational-support study distinct from the NWDAF-specific eNA study',
   },
 ];
 
