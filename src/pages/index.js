@@ -288,18 +288,13 @@ export default function Home() {
     >
       <HeroSlideshow />
 
-      {/* Example A: a dedicated, prominent search band right below the hero --
-          modeled on dvb.org's homepage, which puts search here rather than
-          leaving it as a small navbar icon only. Reuses the same indexed
-          search (@easyops-cn/docusaurus-search-local) the navbar already
-          uses, just given a bigger, more discoverable home here.
-          One bar, not two (a separate live-suggestion dropdown was built,
-          then raised directly to fold back into this one): this index
-          already covers specific tools/repos by name (e.g. "CMMF
-          Encoder") and already suggests live as you type, its own
-          existing autocomplete.js behavior -- verified the name itself
-          reaches the built search-index.json, since a repo's real name
-          renders as plain text on its project's own Resources page. */}
+      {/* A dedicated, prominent search band right below the hero -- modeled
+          on dvb.org's homepage, which puts search here rather than leaving
+          it as a small navbar icon only. Reuses @theme/SearchBar, the same
+          component the navbar uses, just given a bigger, more discoverable
+          home here. One bar, not two: no separate custom suggestion UI --
+          this is the real Algolia DocSearch widget (2026-09-28), which
+          already does live-as-you-type suggestions on its own. */}
       <div className={styles.homeSearchWrap}>
         <div className="container">
           <p className={styles.homeSearchLabel}>Looking for specific software or technology?</p>

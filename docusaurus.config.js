@@ -266,50 +266,20 @@ const config = {
     // which is data-driven and can carry the implementing repository per
     // entity.
     '@docusaurus/theme-mermaid',
-    [
-      require.resolve('@easyops-cn/docusaurus-search-local'),
-      {
-        hashed: true,
-        // '/tech' matches the 'tech' docs plugin instance's own
-        // routeBasePath. The rest are every top-level directory under
-        // docs/home/ (the 'home' docs plugin instance, routeBasePath ''
-        // -- src/pages/about etc. sit at the site root alongside it), so
-        // this needs the real prefixes rather than '' itself: the
-        // plugin's own matching logic (isSameOrSubRoute in
-        // node_modules/@easyops-cn/docusaurus-search-local/dist/server/
-        // server/utils/processDocInfos.js) treats an empty-string
-        // basePath as matching every route, but its Joi validation
-        // schema (validateOptions.js) rejects an empty-string array
-        // entry outright. Being broad here is safe either way: a listed
-        // prefix only ever promotes a route to full "docs" indexing if
-        // it's *also* a real loaded doc permalink (processDocInfos.js's
-        // docs.has(url) check), so a non-doc page sharing a prefix (there
-        // are none currently) would simply fall through to indexPages'
-        // page-level treatment exactly as before.
-        //
-        // The stale '/developer' entry this replaces matched no plugin
-        // at all -- that content moved to a root-level page -- so every
-        // route below was silently falling through to indexPages' thin
-        // per-page (not per-heading, no breadcrumb) treatment instead of
-        // full docs indexing (2026-08-24 findability audit).
-        docsRouteBasePath: [
-          '/tech',
-          '/action',
-          '/showcase',
-          '/community',
-          '/developer',
-          '/events',
-          '/reference-tools',
-          '/standards',
-          '/testbeds',
-          '/workshops',
-        ],
-        docsPluginIdForPreferredVersion: 'tech',
-        indexBlog: false,
-        indexPages: true,
-        highlightSearchTermsOnTargetPage: true,
-      },
-    ],
+    // Algolia DocSearch (2026-09-28): replaces the local lunr-based search
+    // (@easyops-cn/docusaurus-search-local). That plugin had no way to
+    // weight one page's match above another's -- every field was indexed
+    // unboosted, so short exact-title matches beat longer, more relevant
+    // pages purely on lunr's default length normalization, with no config
+    // option to fix it (confirmed against its own PluginOptions type and
+    // index-building source -- there is no boost/weight/priority field).
+    // DocSearch's crawler + Algolia's own relevance/typo-tolerance replaces
+    // that mechanism outright rather than working around it.
+    //
+    // Not listed here: preset-classic auto-adds
+    // '@docusaurus/theme-search-algolia' itself whenever themeConfig.algolia
+    // is set (node_modules/@docusaurus/preset-classic/lib/index.js) --
+    // listing it again here throws "used 2 times with ID default".
   ],
 
   themeConfig: {
@@ -323,6 +293,15 @@ const config = {
       sidebar: {
         autoCollapseCategories: true,
       },
+    },
+    // DocSearch (free program) crawl approved 2026-09-28, indexing
+    // www.5g-mag.com. apiKey here is the public Search-Only key DocSearch's
+    // own dashboard hands out for client-side embedding -- not the Admin
+    // key -- so it's safe to commit.
+    algolia: {
+      appId: 'G1APNTN3JA',
+      apiKey: '98a7babf8ef984646df72b7de6bfc298',
+      indexName: 'Website',
     },
     navbar: {
       title: '',

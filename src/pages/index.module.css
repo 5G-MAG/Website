@@ -55,39 +55,52 @@
 }
 
 
-/* On focus, autocomplete.js wraps the <input> in its own
-   `display: inline-block` <span> with no width of its own (see
-   SearchBar.jsx's `cssClasses.root` / autoComplete() call) -- the input's
-   own `width: 100%` below then resolves against that unsized wrapper
-   instead of .homeSearchBox, collapsing to the browser's intrinsic input
-   width the instant it's focused. Forcing the wrapper to full width fixes
-   it (code-derived, no spec claim -- reproduced live, 2026-08-27). */
-.homeSearchBox :global(.navbar__search) > span {
-  display: block;
-  width: 100%;
-}
-
-.homeSearchBox :global(.navbar__search-input) {
+/* Targets DocSearch's own button (@docsearch/css/dist/button.css), not an
+   <input> -- this used to style the old local-search plugin's
+   .navbar__search-input, dead selectors since the move to Algolia
+   DocSearch (2026-09-28) swapped what @theme/SearchBar renders here. */
+.homeSearchBox :global(.DocSearch-Button) {
   width: 100%;
   height: 3.75rem;
   border-radius: 999px;
   border: 2px solid color-mix(in srgb, var(--ifm-color-primary) 35%, var(--ifm-color-emphasis-300));
   background-color: var(--ifm-background-surface-color);
-  background-position: 1.35rem center;
-  background-size: 1.25rem 1.25rem;
-  padding-left: 3.4rem;
+  padding: 0 1.35rem;
   font-size: 1.05rem;
   box-shadow: 0 6px 20px color-mix(in srgb, var(--ifm-color-primary) 16%, transparent);
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
-.homeSearchBox :global(.navbar__search-input:hover) {
+.homeSearchBox :global(.DocSearch-Button:hover) {
   border-color: var(--ifm-color-primary);
+  background-color: var(--ifm-background-surface-color);
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--ifm-color-primary) 16%, transparent);
 }
 
-.homeSearchBox :global(.navbar__search-input:focus) {
+.homeSearchBox :global(.DocSearch-Button:focus-visible) {
   border-color: var(--ifm-color-primary);
   box-shadow: 0 6px 24px color-mix(in srgb, var(--ifm-color-primary) 28%, transparent);
+}
+
+.homeSearchBox :global(.DocSearch-Search-Icon) {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.homeSearchBox :global(.DocSearch-Button-Placeholder) {
+  font-size: 1.05rem;
+  padding-inline-start: 0.75rem;
+}
+
+/* This band is a deliberately large, prominent entry point (unlike the
+   small navbar icon) -- keep its "Search" label visible at every width
+   rather than collapsing to a bare icon, which is DocSearch's own default
+   below 768px and left this band looking unfinished on a phone (2026-09-28
+   audit finding: measured as a bare 38x38px button with no visible text). */
+@media (max-width: 768px) {
+  .homeSearchBox :global(.DocSearch-Button-Placeholder) {
+    display: inline-block;
+  }
 }
 
 /* ── On Air ────────────────────────────────────────────────────────── */
