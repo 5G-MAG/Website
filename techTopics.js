@@ -76,6 +76,12 @@ const ALL_TOPICS = [
     // it with no lateral sidebar at all (found by a site-wide consistency
     // audit), not a deliberate choice.
     autogen: 'dvb-i',
+    // Added 2026-09-28 (direct instruction: every project needs a real
+    // landing page behind "Technical Analysis"): this topic has exactly
+    // one analysis doc, so it IS the overview -- not one choice among
+    // several, just wiring the header link to the content that already
+    // exists.
+    techOverviewDoc: 'dvb-i/analysis-dvb-i-over-5g-gaps',
     standards: [{ doc: 'standards/dvb-i', label: 'Standards: DVB-I Services over 5G Systems' }],
   },
   {
@@ -170,6 +176,12 @@ const ALL_TOPICS = [
     label: 'XR/3D Scenes with MPEG-I Scene Description',
     techHref: '/tech/xr',
     autogen: 'xr',
+    // Added 2026-09-28 (direct instruction: every project needs a real
+    // landing page behind "Technical Analysis"): this topic has exactly
+    // one analysis doc, so it IS the overview -- not one choice among
+    // several, just wiring the header link to the content that already
+    // exists.
+    techOverviewDoc: 'xr/mpeg-i-scene-description',
     standards: [{ doc: 'standards/xr', label: 'Standards: XR/3D Scenes with MPEG-I Scene Description' }],
   },
   {
@@ -183,6 +195,12 @@ const ALL_TOPICS = [
     label: 'CAMARA Connectivity Quality Management APIs',
     techHref: '/tech/network-apis',
     autogen: 'network-apis',
+    // Added 2026-09-28 (direct instruction: every project needs a real
+    // landing page behind "Technical Analysis"): network-api-initiatives.md
+    // is already explicitly written as this topic's entry point (title
+    // "Network API Analysis", sidebar_position -1, introduces the whole
+    // section) -- not a new page, just wiring the header link to it.
+    techOverviewDoc: 'network-apis/network-api-initiatives',
     standards: [
       {
         doc: 'standards/network-apis',
