@@ -10,6 +10,48 @@
 // API maps onto) and stays a markdown table.
 export const NETWORK_APIS_SPECS = [
   {
+    id: 'CAMARA Quality on Demand',
+    title: 'Request a QoS session for the duration of a media flow',
+    url: 'https://github.com/camaraproject/QualityOnDemand',
+    layer: 'CAMARA',
+    note: 'quality-on-demand API; stable r3.2 (2025-09-16); v1.2.0 in release-candidate as of 2026-08-20',
+  },
+  {
+    id: 'CAMARA QoS Profiles',
+    title: 'Discover the named QoS profiles an operator offers',
+    url: 'https://github.com/camaraproject/QualityOnDemand',
+    layer: 'CAMARA',
+    note: 'qos-profiles API, same repo as Quality on Demand',
+  },
+  {
+    id: 'CAMARA QoS Provisioning',
+    title: 'Assign a QoS profile to a device indefinitely',
+    url: 'https://github.com/camaraproject/QualityOnDemand',
+    layer: 'CAMARA',
+    note: 'qos-provisioning API, same repo as Quality on Demand; still pre-1.0',
+  },
+  {
+    id: 'CAMARA QoS Booking',
+    title: 'Reserve a QoS profile in advance for specific devices',
+    url: 'https://github.com/camaraproject/QoSBooking',
+    layer: 'CAMARA',
+    note: 'qos-booking API; first public release 2025-09-12, still pre-1.0',
+  },
+  {
+    id: 'CAMARA QoS Booking and Assignment',
+    title: 'Reserve a QoS profile for a device count, assign devices later',
+    url: 'https://github.com/camaraproject/QoSBooking',
+    layer: 'CAMARA',
+    note: 'qos-booking-and-assignment API, same repo as QoS Booking',
+  },
+  {
+    id: 'CAMARA Dedicated Networks',
+    title: 'Reserve a dedicated network for an area and time, grant device access',
+    url: 'https://github.com/camaraproject/DedicatedNetworks',
+    layer: 'CAMARA',
+    note: 'first public release 2025-09-18',
+  },
+  {
     id: 'TS 29.522',
     title: 'Network Exposure Function (NEF); Northbound APIs',
     url: 'https://www.3gpp.org/dynareport/29522.htm',
@@ -87,4 +129,4 @@ export const NETWORK_APIS_SPECS = [
 // Order the filter chips by where each layer sits in the exposure stack:
 // 3GPP northbound exposure first, then core policy control, then the media and
 // enabler layers that sit on top of it.
-export const NETWORK_APIS_LAYER_ORDER = ['NEF', 'Policy and QoS', 'CAPIF', '5GMS APIs', 'SEAL'];
+export const NETWORK_APIS_LAYER_ORDER = ['CAMARA', 'NEF', 'Policy and QoS', 'CAPIF', '5GMS APIs', 'SEAL'];
