@@ -6,7 +6,6 @@ description: Walkthrough for delivering DASH/CMAF content over FLUTE (rt-libflut
 ---
 
 import ProjectVideos from '@site/src/components/ProjectVideos';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 
 export const projectVideos = youtubePlaylists.projects?.['content-delivery']?.videos || [];
@@ -23,8 +22,6 @@ export const projectVideos = youtubePlaylists.projects?.['content-delivery']?.vi
 <h1>Tutorials, Tests and Examples</h1>
 </div>
 </div>
-
-<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/content-delivery/implementation')} style={{margin: '2px 4px 2px 0'}}>Implementation</a> <a class="button button--primary button--tab-current" href={useBaseUrl('/reference-tools/content-delivery/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/content-delivery/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
 This project's own resources are [rt-libflute](https://github.com/5G-MAG/rt-libflute) (the FLUTE Transceiver) and the [`route-gpac` branch of rt-mbms-mw](https://github.com/5G-MAG/rt-mbms-mw/tree/route-gpac) (the MBMS Middleware built with ROUTE support). The walkthrough below builds and runs both, so you can deliver DASH/CMAF content over FLUTE and over ROUTE. See the [Implementation Detail](./implementation) page for the specifications and architecture, and [Repositories & Releases](/reference-tools/content-delivery#repositories--releases) on the project index for the full repository table and releases.
 

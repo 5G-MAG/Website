@@ -6,7 +6,6 @@ description: Written step-by-step tutorials for the CAMARA Connectivity Quality 
 ---
 
 import ProjectVideos from '@site/src/components/ProjectVideos';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 
 export const projectVideos = youtubePlaylists.projects?.['network-apis']?.videos || [];
@@ -24,8 +23,6 @@ export const projectVideos = youtubePlaylists.projects?.['network-apis']?.videos
 <h1>Tutorials, Tests and Examples</h1>
 </div>
 </div>
-
-<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/network-apis/implementation')} style={{margin: '2px 4px 2px 0'}}>Implementation</a> <a class="button button--primary button--tab-current" href={useBaseUrl('/reference-tools/network-apis/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/network-apis/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
 Written step-by-step tutorials for the Network APIs reference tools are not yet published here. In the meantime, the project repositories are the best starting point — refer to the README in each [Network APIs repository](https://github.com/5G-MAG). See the [Implementation Detail](./implementation) page for the full CAMARA API coverage table, and [Repositories & Releases](/reference-tools/network-apis#repositories--releases) on the project index for the code. Our [YouTube channel](https://www.youtube.com/@5GMAG) also hosts practical videos from developers on the use of the Reference Tools generally.
 

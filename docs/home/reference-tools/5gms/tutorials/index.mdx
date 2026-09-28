@@ -6,7 +6,6 @@ description: Index of 5G Media Streaming tutorials, testing guides and community
 ---
 
 import ProjectVideos from '@site/src/components/ProjectVideos';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 
 export const projectVideos = youtubePlaylists.projects?.['5gms']?.videos || [];
@@ -32,8 +31,6 @@ export const projectVideos = youtubePlaylists.projects?.['5gms']?.videos || [];
     <h1>Tutorials, Tests and Examples</h1>
   </div>
 </div>
-
-<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5gms/implementation')} style={{margin: '2px 4px 2px 0'}}>Implementation</a> <a class="button button--primary button--tab-current" href={useBaseUrl('/reference-tools/5gms/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5gms/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
 ## Where to start
 

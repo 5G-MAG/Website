@@ -6,7 +6,6 @@ description: Tutorial for building the V3C Unity player for Android with DASH st
 ---
 
 import ProjectVideos from '@site/src/components/ProjectVideos';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 
 export const projectVideos = youtubePlaylists.projects?.v3c?.videos || [];
@@ -38,8 +37,6 @@ export const projectVideos = youtubePlaylists.projects?.v3c?.videos || [];
     <h1>Tutorials, Tests and Examples</h1>
   </div>
 </div>
-
-<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/v3c/implementation')} style={{margin: '2px 4px 2px 0'}}>Implementation</a> <a class="button button--primary button--tab-current" href={useBaseUrl('/reference-tools/v3c/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/v3c/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
 New to the MPEG V3C Immersive Platform? Start with the written walkthrough below, which builds the Unity player for Android and streams content from a DASH server end to end. The Developer Exchange section further down shows the same workflow and related topics on video. Before building, check the hardware and Android device requirements on the [Requirements](./requirements) page.
 

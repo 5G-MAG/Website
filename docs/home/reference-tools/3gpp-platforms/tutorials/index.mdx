@@ -5,7 +5,6 @@ sidebar_position: 2
 description: Landing page linking to the 5G Network setup tutorial, the SDR Platforms hardware reference, and the project's Developer Exchange section.
 ---
 
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import ProjectVideos from '@site/src/components/ProjectVideos';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 
@@ -24,8 +23,6 @@ export const projectVideos = youtubePlaylists.projects?.['3gpp-platforms']?.vide
 <h1>Tutorials, Tests and Examples</h1>
 </div>
 </div>
-
-<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/3gpp-platforms/implementation')} style={{margin: '2px 4px 2px 0'}}>Implementation</a> <a class="button button--primary button--tab-current" href={useBaseUrl('/reference-tools/3gpp-platforms/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/3gpp-platforms/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
 **Start here:** if you want to stand up a working 5G network end to end, follow the [5G Network](./5gnetwork) tutorial first. The [SDR Platforms](./sdr-platforms) page is a hardware reference for installing and verifying the Software Defined Radio devices used with srsRAN, not a standalone walkthrough.
 

@@ -6,7 +6,6 @@ description: Tutorials and community videos for the UE Data Collection, Reportin
 ---
 
 import ProjectVideos from '@site/src/components/ProjectVideos';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 
 export const projectVideos = youtubePlaylists.projects?.['data-collection']?.videos || [];
@@ -36,8 +35,6 @@ export const projectVideos = youtubePlaylists.projects?.['data-collection']?.vid
     <h1>Tutorials, Tests and Examples</h1>
   </div>
 </div>
-
-<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/data-collection/implementation')} style={{margin: '2px 4px 2px 0'}}>Implementation</a> <a class="button button--primary button--tab-current" href={useBaseUrl('/reference-tools/data-collection/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/data-collection/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
 ## [Docker Setup with Insomnia REST client for testing DCAF APIs](./docker-with-insomnia)
 

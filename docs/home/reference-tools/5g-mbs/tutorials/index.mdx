@@ -6,7 +6,6 @@ description: Index of 5G MBS tutorials covering the MBSTF, MBSF, 5GC core, Docke
 ---
 
 import ProjectVideos from '@site/src/components/ProjectVideos';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 
 export const projectVideos = youtubePlaylists.projects?.['5g-mbs']?.videos || [];
@@ -36,8 +35,6 @@ export const projectVideos = youtubePlaylists.projects?.['5g-mbs']?.videos || []
     <h1>Tutorials, Tests and Examples</h1>
   </div>
 </div>
-
-<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5g-mbs/implementation')} style={{margin: '2px 4px 2px 0'}}>Implementation</a> <a class="button button--primary button--tab-current" href={useBaseUrl('/reference-tools/5g-mbs/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5g-mbs/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
 These tutorials cover the individual pieces of the 5G Multicast Broadcast Services (MBS) reference tools. New to this area? Start with [Initial support of MBS in the 5GC](./mbs-in-5gc) to bring up the MBS-capable 5G Core, or with [MBS Transport Function (MBSTF) Testing](./mbstf) to exercise the media user service layer. The [End-to-End](./mbs-end-to-end) tutorial ties the pieces together. For the deployment architectures these tutorials build (direct MBS core functions, or via the reusable 5GC Service Consumers libraries), see [Implementation Detail](../implementation#deployment-configurations).
 

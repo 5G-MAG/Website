@@ -6,7 +6,6 @@ description: 'Index of XR Unity Player tutorials: build and run the player, auth
 ---
 
 import ProjectVideos from '@site/src/components/ProjectVideos';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 
 export const projectVideos = youtubePlaylists.projects?.xr?.videos || [];
@@ -37,8 +36,6 @@ export const projectVideos = youtubePlaylists.projects?.xr?.videos || [];
     <h1>Tutorials, Tests and Examples</h1>
   </div>
 </div>
-
-<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/xr/implementation')} style={{margin: '2px 4px 2px 0'}}>Implementation</a> <a class="button button--primary button--tab-current" href={useBaseUrl('/reference-tools/xr/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/xr/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
 **Start here:** first check the [Requirements](./requirements) to confirm your device is supported. If you are new to the tools, the Android build is the simplest starting point. The tutorials below are grouped by what you want to do: build and run the player, author test content, or explore use cases.
 

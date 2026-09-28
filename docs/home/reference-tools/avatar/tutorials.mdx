@@ -6,7 +6,6 @@ description: Getting-started walkthrough for bringing up the avatar call demo en
 ---
 
 import ProjectVideos from '@site/src/components/ProjectVideos';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 
 export const projectVideos = youtubePlaylists.projects?.avatar?.videos || [];
@@ -29,8 +28,6 @@ export const projectVideos = youtubePlaylists.projects?.avatar?.videos || [];
 <h1>Tutorials, Tests and Examples</h1>
 </div>
 </div>
-
-<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/avatar/implementation')} style={{margin: '2px 4px 2px 0'}}>Implementation</a> <a class="button button--primary button--tab-current" href={useBaseUrl('/reference-tools/avatar/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/avatar/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
 This page sequences a first, end-to-end run of the avatar call demo: two participants exchanging an MPEG ARF avatar over a call, built from the components and repositories described on the [Implementation Detail](./implementation) page and [Repositories & Releases](/reference-tools/avatar#repositories--releases) on the project index.
 

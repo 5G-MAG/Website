@@ -6,7 +6,6 @@ description: Walkthrough for standing up the DVB-I-aware 5GMS application and ve
 ---
 
 import ProjectVideos from '@site/src/components/ProjectVideos';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 
 export const projectVideos = youtubePlaylists.projects?.['dvb-i']?.videos || [];
@@ -22,8 +21,6 @@ export const projectVideos = youtubePlaylists.projects?.['dvb-i']?.videos || [];
 <h1>Tutorials, Tests and Examples</h1>
 </div>
 </div>
-
-<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/dvb-i/implementation')} style={{margin: '2px 4px 2px 0'}}>Implementation</a> <a class="button button--primary button--tab-current" href={useBaseUrl('/reference-tools/dvb-i/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/dvb-i/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
 This tutorial stands up a DVB-I-aware 5GMS application and walks through verifying that DVB-I service discovery is working, on top of the plain 5GMS end-to-end deployment. For background on the specifications and architecture it exercises, see the [Implementation Detail](./implementation) page; for the underlying repositories, see [Repositories & Releases](/reference-tools/dvb-i#repositories--releases) on the project index.
 

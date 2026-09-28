@@ -6,7 +6,6 @@ description: Index of 5G Broadcast tutorials (playback, seamless switching, Dock
 ---
 
 import ProjectVideos from '@site/src/components/ProjectVideos';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 
 export const projectVideos = youtubePlaylists.projects?.['5g-broadcast']?.videos || [];
@@ -36,8 +35,6 @@ export const projectVideos = youtubePlaylists.projects?.['5g-broadcast']?.videos
     <h1>Tutorials, Tests and Examples</h1>
   </div>
 </div>
-
-<div style={{margin: '8px 0'}}><a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5g-broadcast/implementation')} style={{margin: '2px 4px 2px 0'}}>Implementation</a> <a class="button button--primary button--tab-current" href={useBaseUrl('/reference-tools/5g-broadcast/tutorials')} style={{margin: '2px 4px 2px 0'}}>Tutorials</a> <a class="button button--outline button--primary" href={useBaseUrl('/reference-tools/5g-broadcast/tutorials#developer-exchange')} style={{margin: '2px 4px 2px 0'}}>Developer Exchange</a></div>
 
 New to the Reference Tools? Start with [SDR - HLS Playback over 5G Broadcast](./hls-playback-5gbc), the simplest receiver-only setup. The other tutorials build on the same components. Reference material (sample files, service announcement formats and GPS time sync) is listed at the end of this page.
 
