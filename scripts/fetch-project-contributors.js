@@ -34,14 +34,29 @@ const ORG = '5G-MAG';
 const TOKEN = process.env.SYNC_TOKEN || process.env.GITHUB_TOKEN || '';
 const OUTPUT = path.join(__dirname, '..', 'static', 'data', 'project-contributors-draft.json');
 
-// Repos shared across many projects (utility/common code, not specific to
-// any one project) -- excluded as evidence everywhere except a project
-// whose *own* repo list is exactly this set (e.g. Common Tools), where
-// it's the genuine subject rather than noise.
-const SHARED_REPOS = new Set(['rt-common-shared']);
+// Repos listed in more than one project's own repo list because several
+// projects depend on or reuse them, not because they co-own the work --
+// each maps to the ONE project that's its genuine subject. A commit to
+// rt-libflute counts as evidence for Content Delivery Protocols (the
+// project actually about that library) and not for 5G Broadcast or MBS,
+// which merely consume it as a dependency, even though both list it in
+// their own `repos` array so their own Reference Tools pages can show it.
+// Found live and corrected (2026-09-28): a run before this map existed
+// credited BBC to 5G Broadcast and Big Blue Marble to MBS on rt-libflute
+// commits alone -- removed by hand from src/data/taxonomy.json, since this
+// fix only prevents the mistake going forward, it doesn't undo one already
+// written by an earlier run.
+const SHARED_REPO_OWNER = {
+  'rt-common-shared': 'Common Tools',
+  'rt-libflute': 'Content Delivery Protocols',
+  'rt-media-origin': 'Content Delivery Protocols',
+  'rt-cmmf-encoder': 'Content Delivery Protocols',
+  'rt-5gc-service-consumers': '5G Core Service Consumers',
+  'rt-3gpp-swap': 'Real-time Media Communication (RTC) Architecture',
+};
 
 // Maps each company's CLA team slug to the exact company name used in
-// src/data/contributors.js -- keep in sync if either list changes.
+// taxonomy.json's own `contributors` field -- keep in sync if either changes.
 const TEAM_TO_COMPANY = {
   'cla-bbc': 'BBC - British Broadcasting Corporation',
   'cla-bbm': 'Big Blue Marble',
@@ -144,11 +159,11 @@ async function main() {
   const suggestions = [];
   for (const project of PROJECTS) {
     const repos = project.repos.map(repoName);
-    const isSharedRepoProject = repos.every((r) => SHARED_REPOS.has(r));
     const companies = new Map(); // company -> [{ login, repo, commits }]
 
     for (const repo of repos) {
-      if (SHARED_REPOS.has(repo) && !isSharedRepoProject) continue;
+      const owner = SHARED_REPO_OWNER[repo];
+      if (owner && owner !== project.name) continue;
       for (const c of repoContributors.get(repo) || []) {
         const comps = usernameToCompany.get(c.login);
         if (!comps) continue;

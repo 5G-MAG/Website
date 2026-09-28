@@ -4,8 +4,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import releasesData from '@site/static/data/releases.json';
 import statsData from '@site/static/data/community-stats.json';
 import pullRequestsData from '@site/static/data/pull-requests.json';
-import { ALL_PROJECTS as projectsData } from '@site/src/data/baskets';
-import { CONTRIBUTORS } from '@site/src/data/contributors';
+import { ALL_PROJECTS as projectsData, CONTRIBUTORS } from '@site/src/data/baskets';
 import { activityLabel } from '@site/src/utils/communityStats';
 import styles from './styles.module.css';
 

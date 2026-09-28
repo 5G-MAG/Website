@@ -55,7 +55,9 @@
       "standards_url": "/standards/5gms",
       "image": "/assets/images/projects/5gms.png",
       "releases_slug": "#repositories--releases",
-      "roadmapTopics": ["Topic: Streaming & Media Delivery"],
+      "roadmapTopics": [
+        "Topic: Streaming & Media Delivery"
+      ],
       "tagline": "Driving collaboration between mobile networks and media applications",
       "basket": "content-delivery",
       "repos": [
@@ -119,11 +121,11 @@
       ],
       "releases_slug": "#repositories--releases",
       "contributors": [
-        "Fraunhofer FOKUS",
-        "iTEAM - Universitat Politècnica de València",
         "Big Blue Marble",
         "Bitstem",
-        "Qualcomm"
+        "Fraunhofer FOKUS",
+        "Qualcomm",
+        "iTEAM - Universitat Politècnica de València"
       ],
       "stages": {
         "under-study": true,
@@ -239,7 +241,8 @@
       "contributors": [
         "BBC - British Broadcasting Corporation",
         "Fraunhofer FOKUS",
-        "Universitat Politècnica de València"
+        "Universitat Politècnica de València",
+        "iTEAM - Universitat Politècnica de València"
       ],
       "stages": {
         "under-study": true,
@@ -521,7 +524,13 @@
         "rt-common-shared"
       ],
       "releases_slug": "#repositories--releases",
-      "icon": "tool"
+      "icon": "tool",
+      "contributors": [
+        "BBC - British Broadcasting Corporation",
+        "Fraunhofer FOKUS",
+        "Motion Spell",
+        "iTEAM - Universitat Politècnica de València"
+      ]
     },
     {
       "name": "DVB-I Services over 5G Systems",
@@ -615,7 +624,11 @@
           "branch": "main"
         }
       ],
-      "icon": "antenna-bars-5"
+      "icon": "antenna-bars-5",
+      "contributors": [
+        "Fraunhofer FOKUS",
+        "iTEAM - Universitat Politècnica de València"
+      ]
     },
     {
       "name": "Dependency",
@@ -648,7 +661,11 @@
       "sdos": [
         "3GPP"
       ],
-      "icon": "webrtc-arrows"
+      "icon": "webrtc-arrows",
+      "contributors": [
+        "Motion Spell",
+        "Qualcomm"
+      ]
     },
     {
       "name": "Non-Terrestrial Networks in 5G Systems",
@@ -2187,5 +2204,102 @@
       "M17 8l4 4l-4 4",
       "M14 4l-4 16"
     ]
-  }
+  },
+  "contributors": [
+    {
+      "name": "BBC - British Broadcasting Corporation",
+      "href": "https://www.bbc.co.uk",
+      "logo": "bbc.jpg"
+    },
+    {
+      "name": "Big Blue Marble",
+      "href": "https://www.bigbluemarble.com",
+      "logo": "bigbluemarble.png"
+    },
+    {
+      "name": "Bitstem",
+      "href": "https://www.bitstem.com",
+      "logo": "bitstem.png"
+    },
+    {
+      "name": "Dolby Laboratories",
+      "href": "https://www.dolby.com",
+      "logo": "dolby.png"
+    },
+    {
+      "name": "EBU - European Broadcasting Union",
+      "href": "https://www.ebu.ch",
+      "logo": "ebu.png"
+    },
+    {
+      "name": "Ericsson",
+      "href": "https://www.ericsson.com",
+      "logo": "ericsson.png"
+    },
+    {
+      "name": "Fraunhofer FOKUS",
+      "href": "https://www.fokus.fraunhofer.de",
+      "logo": "fraunhofer-fokus.png"
+    },
+    {
+      "name": "Huawei",
+      "href": "https://www.huawei.com",
+      "logo": "huawei.jpg"
+    },
+    {
+      "name": "idTOLU",
+      "href": "https://www.idtolu.com",
+      "logo": "idtolu.png"
+    },
+    {
+      "name": "InterDigital",
+      "href": "https://www.interdigital.com",
+      "logo": "interdigital.png"
+    },
+    {
+      "name": "iTEAM - Universitat Politècnica de València",
+      "href": "https://www.iteam.upv.es",
+      "logo": "iteam.png"
+    },
+    {
+      "name": "Motion Spell",
+      "href": "https://www.motionspell.com",
+      "logo": "motionspell.jpg"
+    },
+    {
+      "name": "Nokia",
+      "href": "https://www.nokia.com",
+      "logo": "nokia.jpg"
+    },
+    {
+      "name": "Philips",
+      "href": "https://www.philips.com",
+      "logo": "philips.png"
+    },
+    {
+      "name": "phine.tech",
+      "href": "https://www.phine.tech",
+      "logo": "phinetech.png"
+    },
+    {
+      "name": "Qualcomm",
+      "href": "https://www.qualcomm.com",
+      "logo": "qualcomm.png"
+    },
+    {
+      "name": "Resillion",
+      "href": "https://www.resillion.com",
+      "logo": "resillion.png"
+    },
+    {
+      "name": "Sofia Digital",
+      "href": "https://www.sofiadigital.fi",
+      "logo": "sofiadigital.jpg"
+    },
+    {
+      "name": "Universitat Politècnica de València",
+      "href": "https://www.upv.es",
+      "logo": "upv.jpg"
+    }
+  ]
 }

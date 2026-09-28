@@ -122,6 +122,16 @@ export const ALL_PROJECTS = taxonomyData.projects;
 // Mesh Coding both use "cube").
 export const ICON_CATALOG = taxonomyData.iconCatalog;
 
+// Every organisation that has signed a CLA (name, href, logo filename) --
+// the site-wide roster (e.g. /license, /community), distinct from a single
+// project's own `contributors` field (who's actively contributed code to
+// that project, a strict subset of this list). Single source with
+// scripts/lib/projects.js's own CONTRIBUTORS export -- both read this same
+// taxonomy.json field, so there is exactly one place that knows who's
+// signed (2026-09-28: replaced the separate src/data/contributors.js,
+// which could drift from it).
+export const CONTRIBUTORS = taxonomyData.contributors;
+
 // What to show a reader: the renamed title if this project has one,
 // otherwise its stable name. Never use this as a lookup key -- use
 // `project.name` for that (see the file header for why).

@@ -31,6 +31,14 @@ const REPO_METADATA = taxonomyData.repoMetadata;
 // Named icon shapes a project's own `icon` field picks from -- see
 // src/data/baskets.js's ICON_CATALOG export for the full rationale.
 const ICON_CATALOG = taxonomyData.iconCatalog;
+// Every organisation that has signed a CLA (name, href, logo filename) --
+// the site-wide roster shown on /license and /community, distinct from a
+// single project's own `contributors` field (who has *actively contributed
+// code* to that project specifically, a strict subset of this list). Used
+// to live in src/data/contributors.js, a second file that could (and did)
+// drift from this one; merged in here 2026-09-28 so there is exactly one
+// place that knows who's signed.
+const CONTRIBUTORS = taxonomyData.contributors;
 
 function repoName(entry) {
   return typeof entry === 'string' ? entry : entry.name;
@@ -42,9 +50,9 @@ function repoBranch(entry) {
 
 // Persists PROJECTS's current in-memory state (mutated in place by a
 // caller, e.g. fetch-project-contributors.js adding a credit) back to
-// taxonomy.json, preserving BASKETS, REPO_METADATA and ICON_CATALOG
-// untouched. The one place that knows the merged file's shape, so a
-// script that only ever touches PROJECTS never has to.
+// taxonomy.json, preserving BASKETS, REPO_METADATA, ICON_CATALOG and
+// CONTRIBUTORS untouched. The one place that knows the merged file's
+// shape, so a script that only ever touches PROJECTS never has to.
 //
 // Bug fixed here (code-derived, no spec claim): this used to write only
 // {baskets, projects}, silently dropping repoMetadata and iconCatalog from
@@ -53,8 +61,12 @@ function repoBranch(entry) {
 function writeProjects() {
   fs.writeFileSync(
     TAXONOMY_FILE,
-    JSON.stringify({ baskets: BASKETS, projects: PROJECTS, repoMetadata: REPO_METADATA, iconCatalog: ICON_CATALOG }, null, 2) + '\n'
+    JSON.stringify(
+      { baskets: BASKETS, projects: PROJECTS, repoMetadata: REPO_METADATA, iconCatalog: ICON_CATALOG, contributors: CONTRIBUTORS },
+      null,
+      2
+    ) + '\n'
   );
 }
 
-module.exports = { PROJECTS, BASKETS, REPO_METADATA, ICON_CATALOG, repoName, repoBranch, writeProjects, TAXONOMY_FILE };
+module.exports = { PROJECTS, BASKETS, REPO_METADATA, ICON_CATALOG, CONTRIBUTORS, repoName, repoBranch, writeProjects, TAXONOMY_FILE };
