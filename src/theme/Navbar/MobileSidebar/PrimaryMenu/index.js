@@ -32,21 +32,28 @@ export default function NavbarMobilePrimaryMenu() {
       {items.map((item, i) => {
         const subtitle = NAV_SUBTITLE_BY_HREF.get(item.to);
         return (
-          <li key={i} className="menu__list-item">
+          // NavbarItem's mobile variant already renders its own <li
+          // className="menu__list-item"> internally (Docusaurus's
+          // DefaultNavbarItemMobile) -- wrapping it in another <li> here
+          // produced invalid nested-<li> markup. The subtitle instead gets
+          // its own sibling <li>, both direct children of this <ul>.
+          <React.Fragment key={i}>
             <NavbarItem mobile {...item} onClick={() => mobileSidebar.toggle()} />
             {subtitle && (
-              <p
-                style={{
-                  margin: '-0.35rem 0 0.35rem',
-                  padding: '0 0.75rem',
-                  fontSize: '0.8rem',
-                  color: 'var(--ifm-color-emphasis-600)',
-                }}
-              >
-                {subtitle}
-              </p>
+              <li className="menu__list-item">
+                <p
+                  style={{
+                    margin: '-0.35rem 0 0.35rem',
+                    padding: '0 0.75rem',
+                    fontSize: '0.8rem',
+                    color: 'var(--ifm-color-emphasis-600)',
+                  }}
+                >
+                  {subtitle}
+                </p>
+              </li>
             )}
-          </li>
+          </React.Fragment>
         );
       })}
     </ul>
