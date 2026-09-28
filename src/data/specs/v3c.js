@@ -19,6 +19,13 @@ export const V3C_SPECS = [
     note: 'the V3C base bitstream and the V-PCC profile',
   },
   {
+    id: 'ISO/IEC 23090-9:2023',
+    title: 'Information technology - Coded representation of immersive media - Part 9: Geometry-based point cloud compression',
+    url: 'https://www.iso.org/standard/78990.html',
+    layer: 'Coding',
+    note: 'G-PCC, the geometry-based sibling codec to V-PCC (23090-5), named for comparison in the shared tech deep-dive page; Edition 1, March 2023',
+  },
+  {
     id: 'ISO/IEC 23090-12',
     title:
       'Information technology - Coded representation of immersive media - Part 12: MPEG immersive video',
