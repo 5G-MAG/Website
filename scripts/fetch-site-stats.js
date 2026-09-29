@@ -6,6 +6,8 @@
 //   projects        projects with their own page in taxonomy.json (doc_url):
 //                   Reference Tools and Testbeds, shared infrastructure
 //                   included.
+//   referenceTools  projects with a Reference Tools page.
+//   testbeds        projects with a Testbeds page.
 //   repositories    repositories that belong to a project page in
 //                   taxonomy.json (each project's `repos` plus its
 //                   repoMetadata group), public and Early Access (private),
@@ -88,6 +90,18 @@ function projectRepos() {
     }
   }
   return { names, meta };
+}
+
+function referenceTools() {
+  const n = readJson('src/data/taxonomy.json').projects.filter((p) => (p.doc_url || '').startsWith('/reference-tools/')).length;
+  if (!n) throw new Error('referenceTools: counted 0');
+  return n;
+}
+
+function testbeds() {
+  const n = readJson('src/data/taxonomy.json').projects.filter((p) => (p.doc_url || '').startsWith('/testbeds/')).length;
+  if (!n) throw new Error('testbeds: counted 0');
+  return n;
 }
 
 async function repositories() {
@@ -205,7 +219,7 @@ function sdoInputs() {
   const previous = fs.existsSync(OUTPUT) ? JSON.parse(fs.readFileSync(OUTPUT, 'utf8')) : {};
   const next = { ...previous };
   let failed = false;
-  const steps = { projects, repositories, clones, specIssues, sdoInputs };
+  const steps = { projects, referenceTools, repositories, clones, specIssues, sdoInputs, testbeds };
   for (const [key, fn] of Object.entries(steps)) {
     try {
       next[key] = await fn();

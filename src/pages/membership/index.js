@@ -11,6 +11,8 @@ import {
   FACT_LARGE_EVENTS,
   FACT_YEARLY_CONFERENCE,
   FACT_SDO_INPUTS,
+  FACT_REFERENCE_TOOLS,
+  FACT_TESTBEDS,
 } from '@site/src/data/facts';
 import { MEMBERS } from '@site/src/data/members';
 import { BENEFITS } from '@site/src/data/membershipBenefits';
@@ -36,7 +38,8 @@ const FEE_TIERS = [
 const FACTS = [
   FACT_REPOSITORIES,
   FACT_CLONES,
-  { value: '+15', label: 'Spec-compliant reference tools' },
+  FACT_REFERENCE_TOOLS,
+  FACT_TESTBEDS,
   FACT_LARGE_EVENTS,
   FACT_YEARLY_CONFERENCE,
   FACT_SDO_INPUTS,
