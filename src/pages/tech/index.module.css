@@ -851,9 +851,11 @@ a.chartBubble:hover {
     align-items: flex-start;
   }
 
+  /* minmax(0, ...): a plain 1fr cannot shrink below its content, so a row
+     whose pills do not wrap pushed the whole page wider than the screen. */
   .basketLegend,
   .chartRow {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 0.35rem;
   }
 
@@ -864,6 +866,23 @@ a.chartBubble:hover {
   .chartBubble {
     font-size: 0.875rem;
     padding: 0.18rem 0.45rem;
+  }
+
+  /* Where We Stand's basket blocks on /tech are narrower than a project
+     page's chart: a third of the row cannot hold "Documentation" or
+     "MPEG (ISO/IEC)" at the size above, so the pills there are smaller and
+     may wrap inside their segment. */
+  .basketBlock .chartSegment,
+  .basketBlock .chartSegmentFilled {
+    min-width: 0;
+    padding: 6px 2px;
+  }
+
+  .basketBlock .chartBubble {
+    font-size: 0.75rem;
+    padding: 0.18rem 0.3rem;
+    white-space: normal;
+    text-align: center;
   }
 }
 
