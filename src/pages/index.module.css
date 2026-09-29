@@ -61,6 +61,86 @@
   margin: 2rem 0 0;
 }
 
+/* Multimedia, Connectivity, Standards, Open Source: 4 across, 2 x 2 below
+   900px, stacked on phones. */
+.themeGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 1.75rem;
+}
+
+@media (max-width: 900px) {
+  .themeGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .themeGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.themeCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.1rem 1.1rem 1rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 12px;
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-font-color-base);
+  text-align: left;
+  text-decoration: none;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
+}
+
+.themeCard:hover,
+.themeCard:focus-visible {
+  color: var(--ifm-font-color-base);
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.themeIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--ifm-color-primary);
+}
+
+.themeIcon svg {
+  width: 24px;
+  height: 24px;
+  color: #fff;
+}
+
+.themeTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ifm-heading-color);
+}
+
+.themeBody {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ifm-color-emphasis-800);
+}
+
+.themeCta {
+  margin-top: auto;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--ifm-color-primary);
+}
+
 
 /* Targets DocSearch's own button (@docsearch/css/dist/button.css), not an
    <input> -- this used to style the old local-search plugin's

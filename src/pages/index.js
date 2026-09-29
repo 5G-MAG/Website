@@ -152,6 +152,43 @@ function StandCard({ basket }) {
   );
 }
 
+// The four things 5G-MAG does, named in so many words at the top of the
+// first section. Icons are ones the site already draws: the old TV and the
+// signal bars from MediaConnectivityDiagram's halo and the catalog, the
+// Standards hub's own speech bubble, and the catalog's code brackets (the
+// Reference Tools icon). Standards and Open Source reuse the one-liners
+// src/data/discoverWork.js already gives those two activities.
+const THEMES = [
+  {
+    title: 'Multimedia',
+    body: 'Streaming, broadcast, real-time communication and immersive media.',
+    to: '/tech',
+    cta: 'Technology areas',
+    d: ['M3 9a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2l0 -9', 'M16 3l-4 4l-4 -4'],
+  },
+  {
+    title: 'Connectivity',
+    body: '5G systems today and 6G next: multicast, satellite, private networks and network APIs.',
+    to: '/tech#where-we-stand',
+    cta: 'Where we stand',
+    d: ICON_CATALOG['antenna-bars-5'],
+  },
+  {
+    title: 'Standards',
+    body: 'Feedback and requirements to standards bodies, from real deployments.',
+    to: '/standards',
+    cta: 'Standards',
+    d: ['M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1'],
+  },
+  {
+    title: 'Open Source',
+    body: 'Open-source reference tools turning specs into working code.',
+    to: '/reference-tools',
+    cta: 'Reference Tools',
+    d: ICON_CATALOG.code,
+  },
+];
+
 // Real photos of the technologies named just above (in DOMAIN_PILLARS and
 // DISCOVER_WORK) actually running -- not stock imagery, same convention
 // About's "Examples of Our Work" gallery already uses.
@@ -322,6 +359,24 @@ export default function Home() {
             <p style={{ maxWidth: '760px', margin: '0 auto 0.75rem', lineHeight: 1.6, textAlign: 'center', fontSize: '1.25rem', fontWeight: 600 }}>
               Open specifications and open-source software, turned into real-world applications.
             </p>
+            <div className={styles.themeGrid}>
+              {THEMES.map((t) => (
+                <Link key={t.title} to={t.to} className={styles.themeCard}>
+                  <span className={styles.themeIcon}>
+                    {icon(
+                      <>
+                        {t.d.map((d, i) => (
+                          <path key={i} d={d} />
+                        ))}
+                      </>
+                    )}
+                  </span>
+                  <span className={styles.themeTitle}>{t.title}</span>
+                  <span className={styles.themeBody}>{t.body}</span>
+                  <span className={styles.themeCta}>{t.cta} &rarr;</span>
+                </Link>
+              ))}
+            </div>
             <p style={{ maxWidth: '700px', margin: '0 auto 0.75rem', lineHeight: 1.6, textAlign: 'center', fontSize: '1.1rem', color: 'var(--ifm-color-emphasis-700)' }}>
               A not-for-profit, neutral platform, driven by our members: they set the priorities, we execute.
             </p>
