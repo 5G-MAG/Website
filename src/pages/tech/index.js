@@ -213,8 +213,10 @@ export default function Home() {
                           where you are... very clear that the next step
                           is to go to the project page". */}
                       <p className={styles.basketMeta}>
-                        {b.projects.length} {b.projects.length === 1 ? 'project' : 'projects'} —
-                        click a project&apos;s name to open its own page
+                        {b.areaRow
+                          ? 'Technology area under study — click its name to open its page'
+                          : <>{b.projects.length} {b.projects.length === 1 ? 'project' : 'projects'} —
+                            click a project&apos;s name to open its own page</>}
                       </p>
                     </div>
                   </div>
@@ -235,7 +237,7 @@ export default function Home() {
                       ))}
                     </div>
                   </div>
-                  <StageTable projects={b.projects} />
+                  <StageTable projects={b.areaRow ? [b.areaRow] : b.projects} />
                 </div>
               );
             })}

@@ -148,19 +148,20 @@ export function displayNameOf(project) {
 export const PROJECTS = ALL_PROJECTS.filter((p) => p.basket);
 
 // Where We Stand's rows on /tech: one per basket, in taxonomy order, with
-// the projects that have a `stages` entry. AI Traffic Characterization's
-// own basket is "testbeds" (it is fundamentally a testbed), but its
-// analysis lives on /tech/6g under Towards 6G Media, the same override
-// techTopics.js's BASKET_OVERRIDES applies for that page's nav grouping;
-// without it that row would have no member project and vanish. Shared so
-// the jump tiles above the chart and on the homepage count what the chart
-// shows.
-export const WHERE_WE_STAND_ROWS = BASKETS.map((b) => ({
-  ...b,
-  projects: PROJECTS.filter(
-    (p) => p.stages && (p.basket === b.key || (b.key === 'towards-6g' && p.name === 'AI Traffic Characterization'))
-  ),
-})).filter((b) => b.projects.length > 0);
+// the projects that have a `stages` entry. A basket with no such project
+// but its own `stages` in taxonomy.json (Towards 6G Media: under study) gets
+// one `areaRow` for the area itself instead, linking to the basket's own
+// `tech_url`, so the chart shows the same stage as the homepage card rather
+// than borrowing a project from another basket. Shared so the jump tiles
+// above the chart and on the homepage count what the chart shows.
+export const WHERE_WE_STAND_ROWS = BASKETS.map((b) => {
+  const projects = PROJECTS.filter((p) => p.stages && p.basket === b.key);
+  const areaRow =
+    projects.length === 0 && b.stages
+      ? { name: b.title, tech_url: b.tech_url, icon: b.icon, stages: b.stages }
+      : null;
+  return { ...b, projects, areaRow };
+}).filter((b) => b.projects.length > 0 || b.areaRow);
 
 // The `basket: null` entries themselves, for the one place (a "not a
 // topic" listing) that needs to show they exist and why.

@@ -39,6 +39,7 @@
       "key": "towards-6g",
       "title": "Towards 6G Media",
       "icon": "chip",
+      "tech_url": "/tech/6g",
       "stages": {
         "under-study": true
       }

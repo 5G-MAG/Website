@@ -19,7 +19,7 @@ export default function BasketJumpRow({ inPage = false, label = 'Technology area
             <span className={styles.icon}>{iconForCatalogKey(b.icon)}</span>
             <span className={styles.name}>{b.title}</span>
             <span className={styles.count}>
-              {n} {n === 1 ? 'project' : 'projects'}
+              {b.areaRow ? 'Under study' : `${n} ${n === 1 ? 'project' : 'projects'}`}
             </span>
           </>
         );
