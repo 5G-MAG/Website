@@ -130,7 +130,7 @@ export default function Home() {
             className="button button--outline button--primary"
             to="/membership#request-membership"
           >
-            Bring your topic as a member
+            Bring your topic or project
           </Link>,
         ]}
       />
@@ -244,7 +244,7 @@ export default function Home() {
               <p className={styles.inviteBody}>5G-MAG&apos;s members set this landscape.</p>
               <div className={styles.inviteLinks}>
                 <Link to="/membership#request-membership" className={styles.inviteLink}>
-                  Propose a topic as a member &rarr;
+                  Bring your topic or project &rarr;
                 </Link>
                 <Link to="/contributing" className={styles.inviteLink}>
                   See how to build together &rarr;

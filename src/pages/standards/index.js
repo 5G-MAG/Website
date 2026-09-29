@@ -1,4 +1,6 @@
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import { FACT_SPEC_ISSUES, FACT_3GPP_MRP, FACT_SDO_INPUTS, FACT_WORKSHOP_INPUTS } from '@site/src/data/facts';
+import StatRow from '@site/src/components/StatRow';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
 import HubDestinationCard from '@site/src/components/HubDestinationCard';
@@ -349,6 +351,12 @@ export default function Standards() {
             </div>
           </div>
         </section>
+
+        <StatRow
+          title="Standardisation activities in numbers"
+          subtitle="Counted daily from GitHub and the liaison and workshop records on this site."
+          facts={[FACT_SPEC_ISSUES, FACT_3GPP_MRP, FACT_SDO_INPUTS, FACT_WORKSHOP_INPUTS]}
+        />
 
         {/* Feedback & Methodology, and Workshops for Standards -- the full
             topic-by-topic resource, after What You'll Find Here. */}

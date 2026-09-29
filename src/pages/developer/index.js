@@ -1,4 +1,7 @@
 import BalancedLogo from '@site/src/components/BalancedLogo';
+import { FACT_PROJECTS, FACT_REPOSITORIES, FACT_CLONES, FACT_DEV_CALL } from '@site/src/data/facts';
+import StatRow from '@site/src/components/StatRow';
+import OpenSourceFromTheStart from '@site/src/components/OpenSourceFromTheStart';
 import { useEffect, useMemo, useState } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
@@ -258,6 +261,16 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Standards and Open Source, then the Accelerator in numbers: the order of
+            the 5G-MAG General Deck's Software Accelerator part (aligned 2026-09-29). */}
+        <OpenSourceFromTheStart />
+        <StatRow
+          alt
+          title="Software Accelerator in numbers"
+          subtitle="Counted daily from the project pages and GitHub."
+          facts={[FACT_PROJECTS, FACT_REPOSITORIES, FACT_CLONES, FACT_DEV_CALL]}
+        />
+
         {/* Contributors -- reordered ahead of License/Early Access
             (2026-09-26, direct instruction: "order of importance after
             reference tools, testbeds and showcase is: Developer Community,
@@ -271,7 +284,7 @@ export default function Home() {
             another. */}
         <section className={styles.section}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Contributors</h2>
+            <h2 className={styles.sectionTitle}>Growing community of developers</h2>
             <p className={styles.sectionSubtitle}>
               Organizations contributing to the Media Connectivity Software Accelerator.
             </p>
