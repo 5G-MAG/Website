@@ -221,6 +221,11 @@
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  /* Room between the rows' right-hand text ("4w ago") and the scrollbar,
+     and a gutter kept for it, so the list neither touches the bar nor
+     shifts when the bar appears. */
+  padding-right: 0.75rem;
+  scrollbar-gutter: stable;
 }
 
 .slideCardColLabel {
@@ -507,6 +512,7 @@
   .slideCardReleasesColFull {
     width: 100%;
     overflow-y: visible;
+    padding-right: 0;
   }
   .slideOverlayCards {
     align-items: flex-start;
