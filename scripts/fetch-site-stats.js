@@ -19,6 +19,7 @@
 //                   fetch-community-stats.js.
 //   specIssues      issues (open and closed) in 5G-MAG/Standards that carry a
 //                   specification label.
+//   workshopInputs  distinct 5G-MAG documents submitted to 3GPP workshops.
 //   sdoInputs       rows sent by 5G-MAG in the LS tables on
 //                   docs/home/standards/ls.mdx (3GPP, MPEG) plus the distinct
 //                   workshop inputs on docs/home/standards/requirements.mdx.
@@ -182,6 +183,16 @@ async function specIssues() {
   return n;
 }
 
+// Distinct 5G-MAG documents submitted to 3GPP workshops (requirements page).
+function workshopInputs() {
+  const req = read('docs/home/standards/requirements.mdx');
+  const ws = req.split(/\n(?=## )/).find((sec) => sec.startsWith('## Inputs to 3GPP Workshops'));
+  if (!ws) throw new Error('workshopInputs: heading not found');
+  const docs = new Set([...ws.matchAll(/<a href="([^"]+)"[^>]*class="community-tile"/g)].map((m) => m[1].split('/').pop()));
+  if (!docs.size) throw new Error('workshopInputs: counted 0');
+  return docs.size;
+}
+
 function sdoInputs() {
   // Every "<SDO>: Incoming / Outgoing LS and Inputs" table (3GPP, MPEG, ...),
   // rows sent by 5G-MAG ("Out" or "In/Out"), plus each distinct workshop
@@ -219,7 +230,7 @@ function sdoInputs() {
   const previous = fs.existsSync(OUTPUT) ? JSON.parse(fs.readFileSync(OUTPUT, 'utf8')) : {};
   const next = { ...previous };
   let failed = false;
-  const steps = { projects, referenceTools, repositories, clones, specIssues, sdoInputs, testbeds };
+  const steps = { projects, referenceTools, repositories, clones, specIssues, sdoInputs, workshopInputs, testbeds };
   for (const [key, fn] of Object.entries(steps)) {
     try {
       next[key] = await fn();
