@@ -17,6 +17,7 @@ export const FACT_REPOSITORIES = {
 };
 export const FACT_CLONES = { value: fmt(siteStats.clones), label: 'Clones: developers pulling the code' };
 export const FACT_SPEC_ISSUES = { value: fmt(siteStats.specIssues), label: 'Issues raised on specifications through GitHub' };
+export const FACT_PROJECTS = { value: fmt(siteStats.projects), label: 'Projects across media and connectivity' };
 export const STATS_UPDATED = siteStats.updated_at;
 export const FACT_LARGE_EVENTS = { value: '2', label: 'Recurrent large events', sub: 'MWC Barcelona & IBC' };
 export const FACT_YEARLY_CONFERENCE = { value: '1', label: 'Yearly conference', sub: 'Future Media Townhall' };

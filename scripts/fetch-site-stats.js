@@ -3,6 +3,9 @@
 // homepage and in the stat rows of About/Developer/Membership/Standards
 // (via src/data/facts.js), so no page carries a hand-copied number.
 //
+//   projects        projects with their own page in taxonomy.json (doc_url):
+//                   Reference Tools and Testbeds, shared infrastructure
+//                   included.
 //   repositories    repositories that belong to a project page in
 //                   taxonomy.json (each project's `repos` plus its
 //                   repoMetadata group), public and Early Access (private),
@@ -61,6 +64,12 @@ function apiGet(urlPath) {
 }
 
 const repoSlug = (r) => (typeof r === 'string' ? r : r.repo_slug || r.name || r.repo);
+
+function projects() {
+  const n = readJson('src/data/taxonomy.json').projects.filter((p) => p.doc_url).length;
+  if (!n) throw new Error('projects: counted 0');
+  return n;
+}
 
 async function repositories() {
   const tax = readJson('src/data/taxonomy.json');
@@ -164,7 +173,7 @@ function sdoInputs() {
   const previous = fs.existsSync(OUTPUT) ? JSON.parse(fs.readFileSync(OUTPUT, 'utf8')) : {};
   const next = { ...previous };
   let failed = false;
-  const steps = { repositories, clones, specIssues, sdoInputs };
+  const steps = { projects, repositories, clones, specIssues, sdoInputs };
   for (const [key, fn] of Object.entries(steps)) {
     try {
       next[key] = await fn();
