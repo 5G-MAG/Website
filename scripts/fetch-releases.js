@@ -8,7 +8,7 @@
 const https = require('https');
 const fs = require('fs');
 const path = require('path');
-const { PROJECTS, repoName, repoBranch } = require('./lib/projects');
+const { PROJECTS, REPO_METADATA, repoName, repoBranch } = require('./lib/projects');
 
 const ORG = '5G-MAG';
 const TOKEN = process.env.SYNC_TOKEN || process.env.GITHUB_TOKEN || '';
@@ -78,6 +78,25 @@ async function latestRelease(repoEntry) {
   };
 }
 
+// A project's releases are those of the repositories its own page lists
+// under "Repositories & Releases" -- the repoMetadata group named after its
+// doc_url slug, which is what <ProjectRepositories> renders there -- plus
+// any repo in its taxonomy `repos` that the page does not list. Shared
+// repositories count: DVB-I's only repository is the 5GMS-Aware
+// Application it shares with 5G Media Streaming.
+function releaseReposFor(project) {
+  const entries = [...project.repos];
+  const listed = new Set(entries.map(repoName));
+  const slug = (project.doc_url || '').replace(/\/+$/, '').split('/').pop();
+  for (const meta of REPO_METADATA[slug] || []) {
+    if (!listed.has(meta.repo_slug)) {
+      entries.push(meta.repo_slug);
+      listed.add(meta.repo_slug);
+    }
+  }
+  return entries;
+}
+
 function formatTimestamp(date) {
   const pad = (n) => String(n).padStart(2, '0');
   return `${date.getUTCFullYear()}-${pad(date.getUTCMonth() + 1)}-${pad(date.getUTCDate())} ${pad(date.getUTCHours())}:${pad(date.getUTCMinutes())} UTC`;
@@ -91,7 +110,8 @@ async function main() {
   const projects = [];
   for (const project of PROJECTS) {
     const releases = [];
-    for (const repoEntry of project.repos) {
+    const repoEntries = releaseReposFor(project);
+    for (const repoEntry of repoEntries) {
       let release;
       try {
         release = await latestRelease(repoEntry);
@@ -103,7 +123,7 @@ async function main() {
       }
       if (release) releases.push(release);
     }
-    console.log(`${project.name}: ${releases.length}/${project.repos.length} repos have a release`);
+    console.log(`${project.name}: ${releases.length}/${repoEntries.length} repos have a release`);
     if (releases.length === 0) continue;
 
     releases.sort((a, b) => b.date.localeCompare(a.date));
