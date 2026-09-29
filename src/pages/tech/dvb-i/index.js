@@ -27,9 +27,10 @@ const PROJECT_NAME = PROJECT.name;
 // requirements/gaps analysis at docs/tech/dvb-i/analysis-dvb-i-over-5g-gaps.mdx,
 // linked from the Technical Analysis card's footerLinks.
 //
-// taxonomy.json's own icon key for this project is "inbox-check" -- the
-// literal path data below is copied from iconCatalog['inbox-check'] there.
-const INBOX_CHECK_ICON = (
+// taxonomy.json's own icon key for this project is "device-tv" (Tabler's
+// name for this drawing) -- the literal path data below is copied from
+// iconCatalog['device-tv'] there.
+const TV_ICON = (
   <>
     <path d="M3 9a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2l0 -9" />
     <path d="M16 3l-4 4l-4 -4" />
@@ -106,7 +107,7 @@ export default function DvbI() {
     >
       <HubHero
         title={PROJECT_NAME}
-        icon={INBOX_CHECK_ICON}
+        icon={TV_ICON}
         actions={[
           <p key="subtitle" style={{ color: 'var(--cta-accent)', fontSize: '1.05rem', fontWeight: 600, margin: 0 }}>
             DVB-I service discovery combined with 5GMS and 5G Broadcast delivery
