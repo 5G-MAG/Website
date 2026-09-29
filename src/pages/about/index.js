@@ -24,7 +24,7 @@ export default function About() {
   return (
     <Layout
       title="About Us"
-      description="5G-MAG is a not-for-profit, neutral association driven by its members. We turn media and connectivity specifications into deployments and products, through a process built on open-source software."
+      description="5G-MAG is a neutral not-for-profit association at the intersection of Media and Connectivity. Driven by our members, we support their efforts in bridging standards and deployments through open specifications and open-source software."
     >
       <HubHero
         title="About Us"
@@ -58,9 +58,9 @@ export default function About() {
               things that run.&rdquo;
             </p>
             <p className={`${styles.leadParagraph} ${styles['leadParagraph--last']}`}>
-              5G-MAG is a not-for-profit, neutral association driven by our members. We work with
-              them, adding resources to their efforts to turn specifications into deployments and
-              products, through a process built on open-source software.
+              5G-MAG is a neutral not-for-profit association at the intersection of Media and
+              Connectivity. Driven by our members, we support their efforts in bridging standards and
+              deployments through open specifications and open-source software.
             </p>
 
             <div style={{ margin: '0 0 2rem' }}>
