@@ -144,6 +144,21 @@ export function displayNameOf(project) {
 // reference-consumer repos; see EXCLUDED below for those).
 export const PROJECTS = ALL_PROJECTS.filter((p) => p.basket);
 
+// Where We Stand's rows on /tech: one per basket, in taxonomy order, with
+// the projects that have a `stages` entry. AI Traffic Characterization's
+// own basket is "testbeds" (it is fundamentally a testbed), but its
+// analysis lives on /tech/6g under Towards 6G Media, the same override
+// techTopics.js's BASKET_OVERRIDES applies for that page's nav grouping;
+// without it that row would have no member project and vanish. Shared so
+// the jump tiles above the chart and on the homepage count what the chart
+// shows.
+export const WHERE_WE_STAND_ROWS = BASKETS.map((b) => ({
+  ...b,
+  projects: PROJECTS.filter(
+    (p) => p.stages && (p.basket === b.key || (b.key === 'towards-6g' && p.name === 'AI Traffic Characterization'))
+  ),
+})).filter((b) => b.projects.length > 0);
+
 // The `basket: null` entries themselves, for the one place (a "not a
 // topic" listing) that needs to show they exist and why.
 export const EXCLUDED = ALL_PROJECTS.filter((p) => !p.basket);

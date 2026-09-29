@@ -4,12 +4,8 @@ import HubHero from '@site/src/components/HubHero';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import VideoGrid from '@site/src/components/VideoGrid';
 import { ChartRow, iconForCatalogKey } from '@site/src/components/ProjectStatus';
-import {
-  BASKET_ACCENT,
-  BASKETS,
-  PROJECTS,
-  STAGE_GROUPS,
-} from '@site/src/data/baskets';
+import BasketJumpRow from '@site/src/components/BasketJumpRow';
+import { BASKET_ACCENT, STAGE_GROUPS, WHERE_WE_STAND_ROWS } from '@site/src/data/baskets';
 import styles from './index.module.css';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 
@@ -23,17 +19,9 @@ const TECHNOLOGY_EXCHANGES_FEATURED = (youtubePlaylists.technologyExchange?.vide
 // each project's own /tech page (2026-09-27, raised directly: "use
 // exactly what's already in tech" rather than a second status widget).
 
-// AI Traffic Characterization's own basket is "testbeds" (it is
-// fundamentally a testbed), but its analysis lives on /tech/6g under
-// Towards 6G Media, the same override techTopics.js's BASKET_OVERRIDES
-// applies for that page's nav grouping -- without it this row would have
-// no member project and vanish from the chart entirely.
-const STAGE_BASKET_ROWS = BASKETS.map((b) => ({
-  ...b,
-  projects: PROJECTS.filter(
-    (p) => p.stages && (p.basket === b.key || (b.key === 'towards-6g' && p.name === 'AI Traffic Characterization'))
-  ),
-})).filter((b) => b.projects.length > 0);
+// Where We Stand's rows (one per basket) are WHERE_WE_STAND_ROWS in
+// src/data/baskets.js, shared with BasketJumpRow.
+const STAGE_BASKET_ROWS = WHERE_WE_STAND_ROWS;
 
 function StageTable({ projects }) {
   return (
@@ -193,6 +181,7 @@ export default function Home() {
           <div className="container">
             <h2 className={styles.sectionTitle}>Where We Stand</h2>
             <p className={styles.sectionSubtitle}>What we are working on, and how far along it is.</p>
+            <BasketJumpRow inPage />
             {STAGE_BASKET_ROWS.map((b) => {
               // 2026-09-27, direct instruction: "only the banner per basket
               // will have color" -- the basket accent now tints only the
