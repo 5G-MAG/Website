@@ -164,7 +164,7 @@ export default function Membership() {
                 <p>
                   <strong>Membership information, sponsorship opportunities, partnerships,
                   questions on fees?</strong>
-                  Contact Eva Markvoort — <a href="mailto:markvoort@5g-mag.com">markvoort@5g-mag.com</a>
+                  {' '}Contact Eva Markvoort at <a href="mailto:markvoort@5g-mag.com">markvoort@5g-mag.com</a>
                 </p>
               </div>
             </div>

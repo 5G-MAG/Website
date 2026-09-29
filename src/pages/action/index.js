@@ -25,6 +25,12 @@ const INTEROP_ICON_PATH = (
 // the dark-card row below it — "End-to-End Demos and Use Cases" / "Interop
 // Events and Plugfests" / "Showcase at Industry Events and Trials" is the
 // real section content, not motivation framing.
+const ACTIVITIES = [
+  { title: 'End-to-End Demos and Use Cases', body: 'User-facing demonstrations that abstract technical complexity.' },
+  { title: 'Interoperability Events and Plugfests', body: 'With shared code, so interop does not start from scratch at plugfests.' },
+  { title: 'Showcase at Industry Events and Trials', body: 'Promotion and demonstration of value, not just specs.' },
+];
+
 const PILLARS = [
   {
     title: 'Make value proposition tangible to the industry',
@@ -230,6 +236,19 @@ export default function Action() {
                   <div className={styles.pillarIcon}>{p.icon}</div>
                   <h3 className={styles.pillarTitle}>{p.title}</h3>
                   {p.body && <p className={styles.pillarBody}>{p.body}</p>}
+                </div>
+              ))}
+            </div>
+            {/* What that means in practice: the three activity cards of the General
+                Deck's "Validation, Interop Plugfests, Demos and Applications" slide. */}
+            <p className={styles.sectionSubtitle} style={{ marginTop: '2rem' }}>
+              Specifications to code. Code to deployments.
+            </p>
+            <div className="community-tiles community-tiles--even">
+              {ACTIVITIES.map((a) => (
+                <div key={a.title} className="community-tile">
+                  <strong>{a.title}</strong>
+                  <span className="tile-desc">{a.body}</span>
                 </div>
               ))}
             </div>
