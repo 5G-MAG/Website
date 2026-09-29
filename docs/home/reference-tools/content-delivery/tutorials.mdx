@@ -2,7 +2,7 @@
 title: Tutorials
 hide_title: true
 sidebar_position: 2
-description: Walkthrough for delivering DASH/CMAF content over FLUTE (rt-libflute) and ROUTE (rt-mbms-mw, route-gpac branch), plus the 5G-MAG Developer Exchange section.
+description: Walkthrough for delivering DASH/CMAF content over FLUTE (rt-libflute) and ROUTE (the MBMS Client, route-gpac branch), plus the 5G-MAG Developer Exchange section.
 ---
 
 import ProjectVideos from '@site/src/components/ProjectVideos';
@@ -23,7 +23,7 @@ export const projectVideos = youtubePlaylists.projects?.['content-delivery']?.vi
 </div>
 </div>
 
-This project's own resources are [rt-libflute](https://github.com/5G-MAG/rt-libflute) (the FLUTE Transceiver) and the [`route-gpac` branch of rt-mbms-mw](https://github.com/5G-MAG/rt-mbms-mw/tree/route-gpac) (the MBMS Middleware built with ROUTE support). The walkthrough below builds and runs both, so you can deliver DASH/CMAF content over FLUTE and over ROUTE. See the [Implementation Detail](./implementation) page for the specifications and architecture, and [Repositories & Releases](/reference-tools/content-delivery#repositories--releases) on the project index for the full repository table and releases.
+This project's own resources are [rt-libflute](https://github.com/5G-MAG/rt-libflute) (the FLUTE Transceiver) and the [`route-gpac` branch of rt-mbms-client](https://github.com/5G-MAG/rt-mbms-client/tree/route-gpac) (the MBMS Client, built with ROUTE support). The walkthrough below builds and runs both, so you can deliver DASH/CMAF content over FLUTE and over ROUTE. See the [Implementation Detail](./implementation) page for the specifications and architecture, and [Repositories & Releases](/reference-tools/content-delivery#repositories--releases) on the project index for the full repository table and releases.
 
 ## Walkthrough: delivering DASH/CMAF content over FLUTE and ROUTE
 
@@ -61,9 +61,9 @@ cd rt-libflute/build/examples
 
 `flute-transmitter` takes a single file per invocation, so repeat the command (or check `./flute-transmitter --help` for batching options) to also send the CMAF segment files the manifest references. The receiver reassembles each file into the output directory you configured.
 
-### Part 2: Real-time object delivery with rt-mbms-mw (route-gpac branch)
+### Part 2: Real-time object delivery with the MBMS Client (route-gpac branch)
 
-The `route-gpac` branch builds the MBMS Middleware together with a GPAC build that adds ROUTE support. Per its entry in the repository list, this middleware combines content from (mobile) broadband and WiFi with the 5G broadcast content from the MBMS Modem, presents it to applications over HTTP, and implements a ROUTE client. Install its dependencies:
+The `route-gpac` branch of the MBMS Client builds it together with a GPAC build that adds ROUTE support. The branch predates the client's move from rt-mbms-mw and is carried over unchanged, so it still builds the `mw` binary and installs the `5gmag-rt-mw` service. Install its dependencies:
 
 ```bash
 sudo apt update
@@ -79,11 +79,11 @@ cd /tmp && git clone https://github.com/gpac/gpac.git && cd gpac && git checkout
 sudo make install
 ```
 
-Then get the `route-gpac` branch of the middleware and build it (the branch's own README shows the clone command without a branch flag, which would check out `main` instead; use `-b route-gpac` to get this branch):
+Then get the `route-gpac` branch and build it. The branch's own README still names the old rt-mbms-mw repository and gives no branch flag, which would check out the default branch (`development`); the command below gets this branch:
 
 ```bash
-git clone --recurse-submodules -b route-gpac https://github.com/5G-MAG/rt-mbms-mw
-cd rt-mbms-mw
+git clone --recurse-submodules -b route-gpac https://github.com/5G-MAG/rt-mbms-client
+cd rt-mbms-client
 git submodule update
 mkdir build && cd build
 cmake -DCMAKE_INSTALL_PREFIX=/usr -GNinja ..
@@ -92,12 +92,12 @@ sudo ninja install
 ```
 
 :::note[Not yet documented]
-The `route-gpac` branch's README covers installation and build only. It does not document the runtime command(s) to point the built middleware at a live FLUTE/ROUTE session, or the exact GPAC invocation to publish DASH/CMAF content into that session end-to-end. Rather than inventing those steps here, check the repository's `supporting_files/5gmag-rt.conf` and `supporting_files/5gmag-rt-mw.service`, and the [rt-mbms-mw repository](https://github.com/5G-MAG/rt-mbms-mw/tree/route-gpac) for the current guidance.
+The `route-gpac` branch's README covers installation and build only. It does not document the runtime command(s) to point the built client at a live FLUTE/ROUTE session, or the exact GPAC invocation to publish DASH/CMAF content into that session end-to-end. Rather than inventing those steps here, check the repository's `supporting_files/5gmag-rt.conf` and `supporting_files/5gmag-rt-mw.service`, and the [MBMS Client repository](https://github.com/5G-MAG/rt-mbms-client/tree/route-gpac) for the current guidance.
 :::
 
 ### Putting it together
 
-Between the two, this project covers both delivery models it implements: FLUTE (rt-libflute) for file-based delivery of your packaged DASH/CMAF assets, and ROUTE (rt-mbms-mw, `route-gpac` branch) for real-time segment delivery with a GPAC-based ROUTE client. See the [Implementation Detail](./implementation) page for how these fit into the 5G Broadcast and 5G MBS architectures.
+Between the two, this project covers both delivery models it implements: FLUTE (rt-libflute) for file-based delivery of your packaged DASH/CMAF assets, and ROUTE (the MBMS Client, `route-gpac` branch) for real-time segment delivery with a GPAC-based ROUTE client. See the [Implementation Detail](./implementation) page for how these fit into the 5G Broadcast and 5G MBS architectures.
 
 <div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
 
