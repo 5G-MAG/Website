@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-29 02:50 UTC",
+  "updated_at": "2026-09-29 10:03 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -146,6 +146,15 @@
           "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
         },
         {
+          "repo": "rt-mbms-mw",
+          "branch": null,
+          "tag": "v0.10.0",
+          "date": "2022-12-08",
+          "url": "https://github.com/5G-MAG/rt-mbms-mw/releases/tag/v0.10.0",
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
+        },
+        {
           "repo": "rt-mbms-modem",
           "branch": null,
           "tag": "v1.2.1",
@@ -280,6 +289,15 @@
           "tag": "rt-mbs-transport-function-1.4.0",
           "date": "2026-07-03",
           "url": "https://github.com/5G-MAG/rt-mbs-transport-function/releases/tag/rt-mbs-transport-function-1.4.0",
+          "author_login": "davidjwbbc",
+          "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4"
+        },
+        {
+          "repo": "rt-5gc-service-consumers",
+          "branch": null,
+          "tag": "rt-5gc-service-consumers-2.1.1",
+          "date": "2026-06-05",
+          "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/releases/tag/rt-5gc-service-consumers-2.1.1",
           "author_login": "davidjwbbc",
           "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4"
         }
@@ -418,6 +436,25 @@
       ]
     },
     {
+      "name": "DVB-I Services over 5G Systems",
+      "doc_url": "/reference-tools/dvb-i/",
+      "tagline": "DVB-I service discovery combined with 5GMS and 5G Broadcast delivery",
+      "releases_slug": "#repositories--releases",
+      "image": "/assets/images/projects/dvb-i.png",
+      "latest_date": "2026-05-26",
+      "releases": [
+        {
+          "repo": "rt-5gms-application",
+          "branch": null,
+          "tag": "rt-5gms-application-v1.3.0",
+          "date": "2026-05-26",
+          "url": "https://github.com/5G-MAG/rt-5gms-application/releases/tag/rt-5gms-application-v1.3.0",
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
+        }
+      ]
+    },
+    {
       "name": "Content Delivery Protocols",
       "doc_url": "/reference-tools/content-delivery/",
       "tagline": "Content delivery origin, packaging, protocols and related tools",
@@ -431,6 +468,15 @@
           "tag": "rt-libflute-0.12.4",
           "date": "2026-09-01",
           "url": "https://github.com/5G-MAG/rt-libflute/releases/tag/rt-libflute-0.12.4",
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
+        },
+        {
+          "repo": "rt-mbms-mw",
+          "branch": null,
+          "tag": "v0.10.0",
+          "date": "2022-12-08",
+          "url": "https://github.com/5G-MAG/rt-mbms-mw/releases/tag/v0.10.0",
           "author_login": "dsilhavy",
           "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
         }

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-29 02:52 UTC",
+  "updated_at": "2026-09-29 10:04 UTC",
   "note": "Evidence log for the additive merge this run just applied to src/data/taxonomy.json -- kept so a wrong credit is traceable and correctable after the fact. This signal misses PR-only/review-only contribution and any company affiliation not reflected in CLA team membership, so an entry missing here isn't evidence a company didn't contribute, only that this script found no direct evidence for it.",
   "projects": [
     {
