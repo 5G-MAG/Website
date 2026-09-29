@@ -12,11 +12,11 @@
 //                   archived ones excluded. Pseudo-projects without a
 //                   doc_url ("Dependency", website/org infrastructure) are
 //                   not projects and do not count.
-//   clones          sum of total_clones in community-stats.json, deduplicated
-//                   by repo and without the repos the Community dashboard
-//                   also leaves out (src/data/notOnHubDashboard.json). Run
-//                   this after fetch-community-stats.js.
-//   specIssues      issues (open and closed) in 5G-MAG/Standards.
+//   clones          sum of total_clones in community-stats.json over the same
+//                   project repositories, each once. Run this after
+//                   fetch-community-stats.js.
+//   specIssues      issues (open and closed) in 5G-MAG/Standards that carry a
+//                   specification label.
 //   sdoInputs       rows sent by 5G-MAG in the LS tables on
 //                   docs/home/standards/ls.mdx (3GPP, MPEG) plus the distinct
 //                   workshop inputs on docs/home/standards/requirements.mdx.
@@ -71,7 +71,10 @@ function projects() {
   return n;
 }
 
-async function repositories() {
+// Repositories that belong to a project page: each project's `repos` plus its
+// repoMetadata group. Shared by the repository and clone counts, so both
+// cover exactly the same set.
+function projectRepos() {
   const tax = readJson('src/data/taxonomy.json');
   const meta = new Map();
   const names = new Set();
@@ -84,6 +87,11 @@ async function repositories() {
       meta.set(repoSlug(r).toLowerCase(), r);
     }
   }
+  return { names, meta };
+}
+
+async function repositories() {
+  const { names, meta } = projectRepos();
   // Visibility and archive state come from GitHub when the token can list the
   // org's private repos; otherwise from taxonomy.json's own `public` flags.
   let gh = null;
@@ -120,20 +128,44 @@ async function repositories() {
 }
 
 function clones() {
+  // Same repositories as the repository count (archived ones have no traffic
+  // to add and are skipped by fetch-community-stats.js anyway).
+  const { names } = projectRepos();
   const stats = readJson('static/data/community-stats.json');
-  const skip = new Set(readJson('src/data/notOnHubDashboard.json'));
   const byRepo = new Map();
-  for (const p of stats.projects) for (const r of p.repos || []) byRepo.set(r.repo, r);
+  for (const p of stats.projects) for (const r of p.repos || []) byRepo.set(r.repo.toLowerCase(), r);
   let total = 0;
-  for (const [repo, r] of byRepo) if (!skip.has(repo)) total += r.total_clones || 0;
+  const noAccess = [];
+  for (const n of names) {
+    const r = byRepo.get(n);
+    if (!r) continue;
+    if (r.traffic_ok === false) noAccess.push(r.repo);
+    total += r.total_clones || 0;
+  }
+  // A repo whose traffic the token could not read reports 0; publishing a
+  // total that silently misses it would be wrong, so fail and keep the last value.
+  if (noAccess.length) throw new Error(`clones: no traffic access for ${noAccess.join(', ')}`);
   if (!total) throw new Error('clones: counted 0');
   return total;
 }
 
+// Issues that carry at least one specification label (3GPP/ETSI TS or TR,
+// a 3GPP release, ISO/IEC); discussion or documentation issues without one are not issues
+// raised on a specification.
+const SPEC_LABEL = /^(3GPP|ETSI) (TS|TR) |^3GPP Rel-\d+$|ISO\/IEC/;
+
 async function specIssues() {
-  const res = await apiGet(`/search/issues?q=${encodeURIComponent(`repo:${ORG}/Standards is:issue`)}&per_page=1`);
-  if (!res.total_count) throw new Error('specIssues: counted 0');
-  return res.total_count;
+  let n = 0;
+  for (let page = 1; page < 50; page++) {
+    const batch = await apiGet(`/repos/${ORG}/Standards/issues?state=all&per_page=100&page=${page}`);
+    for (const i of batch) {
+      if (i.pull_request) continue;
+      if ((i.labels || []).some((l) => SPEC_LABEL.test(l.name))) n++;
+    }
+    if (batch.length < 100) break;
+  }
+  if (!n) throw new Error('specIssues: counted 0');
+  return n;
 }
 
 function sdoInputs() {

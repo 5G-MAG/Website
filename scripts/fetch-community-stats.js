@@ -139,6 +139,9 @@ async function statsForRepo(repo, previous) {
     // 14-day window — see the module comment above.
     total_views: Math.max(views14d, prev.total_views + newCompleteDays(views, 'views', through, today)),
     total_clones: Math.max(clones14d, prev.total_clones + newCompleteDays(clones, 'clones', through, today)),
+    // false when the token could not read this repo's traffic (401/403), so a
+    // 0 above is not mistaken for a real zero.
+    traffic_ok: Boolean(views && clones),
     // Last day folded into the totals above; a failed traffic call keeps the old marker.
     traffic_counted_through: views && clones ? (yesterday > through ? yesterday : through) : through,
     repo_url: `https://github.com/${ORG}/${repo}`,
