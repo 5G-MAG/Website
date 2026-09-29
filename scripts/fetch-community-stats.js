@@ -14,7 +14,7 @@
 //
 // GitHub's traffic API only reports a rolling 14-day window, not an
 // all-time total, so this script keeps a running cumulative estimate by
-// reading its own previous output and folding in each day's new count —
+// reading its own previous output and folding in each complete day once —
 // the same approach the original Jekyll script used, since there's no API
 // that returns true lifetime totals.
 const https = require('https');
@@ -71,20 +71,33 @@ async function apiGetTrafficOrNull(urlPath) {
   }
 }
 
-function latestDayCount(trafficResp, key) {
-  if (!trafficResp || !Array.isArray(trafficResp[key]) || trafficResp[key].length === 0) return 0;
-  return trafficResp[key][trafficResp[key].length - 1].count || 0;
+// Adds each complete UTC day exactly once: only days after the last one
+// already folded in (`through`), and never today, whose count is still
+// growing. Adding "the latest day" on every run instead counted a day again
+// whenever the workflow ran more than once that day.
+function newCompleteDays(trafficResp, key, through, today) {
+  if (!trafficResp || !Array.isArray(trafficResp[key])) return 0;
+  return trafficResp[key]
+    .filter((d) => {
+      const day = (d.timestamp || '').slice(0, 10);
+      return day > through && day < today;
+    })
+    .reduce((n, d) => n + (d.count || 0), 0);
 }
 
 function loadPreviousStats() {
-  const previous = new Map(); // repo -> { total_views, total_clones }
+  const previous = new Map(); // repo -> { total_views, total_clones, traffic_counted_through }
   try {
     const raw = JSON.parse(fs.readFileSync(OUTPUT, 'utf8'));
+    // Files written before traffic_counted_through existed had already added
+    // the day of their run (partially); treat that day as counted.
+    const lastRun = (raw.updated_at || '').slice(0, 10);
     for (const project of raw.projects || []) {
       for (const repo of project.repos || []) {
         previous.set(repo.repo, {
           total_views: repo.total_views || 0,
           total_clones: repo.total_clones || 0,
+          traffic_counted_through: repo.traffic_counted_through || lastRun,
         });
       }
     }
@@ -109,7 +122,10 @@ async function statsForRepo(repo, previous) {
   ]);
   const views14d = views ? views.count || 0 : 0;
   const clones14d = clones ? clones.count || 0 : 0;
-  const prev = previous.get(repo) || { total_views: 0, total_clones: 0 };
+  const prev = previous.get(repo) || { total_views: 0, total_clones: 0, traffic_counted_through: '' };
+  const today = new Date().toISOString().slice(0, 10);
+  const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+  const through = prev.traffic_counted_through || '';
 
   return {
     repo,
@@ -121,8 +137,10 @@ async function statsForRepo(repo, previous) {
     clones_14d: clones14d,
     // Running estimate of lifetime totals, since /traffic only exposes a
     // 14-day window — see the module comment above.
-    total_views: Math.max(views14d, prev.total_views + latestDayCount(views, 'views')),
-    total_clones: Math.max(clones14d, prev.total_clones + latestDayCount(clones, 'clones')),
+    total_views: Math.max(views14d, prev.total_views + newCompleteDays(views, 'views', through, today)),
+    total_clones: Math.max(clones14d, prev.total_clones + newCompleteDays(clones, 'clones', through, today)),
+    // Last day folded into the totals above; a failed traffic call keeps the old marker.
+    traffic_counted_through: views && clones ? (yesterday > through ? yesterday : through) : through,
     repo_url: `https://github.com/${ORG}/${repo}`,
   };
 }
