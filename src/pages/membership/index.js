@@ -14,6 +14,7 @@ import {
 import { MEMBERS } from '@site/src/data/members';
 import { BENEFITS } from '@site/src/data/membershipBenefits';
 import styles from '../tech/index.module.css';
+import useAnchors from '@site/src/utils/useAnchors';
 
 const MEMBERSHIP_ICON_PATH = (
   <>
@@ -42,6 +43,7 @@ const FACTS = [
 ];
 
 export default function Membership() {
+  useAnchors('request-membership', 'our-members');
   const { withBaseUrl } = useBaseUrlUtils();
   return (
     <Layout

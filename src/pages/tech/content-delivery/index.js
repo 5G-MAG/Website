@@ -8,6 +8,7 @@ import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import ProjectContributors from '@site/src/components/ProjectContributors';
 import { ALL_PROJECTS, displayNameOf } from '@site/src/data/baskets';
 import styles from '../index.module.css';
+import useAnchors from '@site/src/utils/useAnchors';
 
 // The page title/H1 uses taxonomy.json's own `name` field directly (direct
 // instruction: "the name should be the one in the taxonomy"). ProjectRepoSection
@@ -52,6 +53,7 @@ const FLUTE_VS_ROUTE = [
 ];
 
 export default function ContentDelivery() {
+  useAnchors('how-it-works');
   const coverImg = useBaseUrl('/assets/images/projects/content-delivery.png');
   return (
     <Layout

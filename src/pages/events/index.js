@@ -9,6 +9,7 @@ import { SLACK_INVITE_URL, SOCIAL_LINKS } from '@site/src/data/socialLinks';
 import { FACT_LARGE_EVENTS, FACT_YEARLY_CONFERENCE } from '@site/src/data/facts';
 import { EVENTS_AGENDA } from '@site/src/data/eventsAgenda';
 import styles from '../tech/index.module.css';
+import useAnchors from '@site/src/utils/useAnchors';
 
 const EVENTS_ICON_PATH = (
   <>
@@ -57,6 +58,7 @@ function EventCard({ title, desc, href, img }) {
 }
 
 export default function Events() {
+  useAnchors('agenda', 'workshops');
   const linkedin = SOCIAL_LINKS.find((s) => s.key === 'linkedin').href;
   const galleryPhotos = [
     {

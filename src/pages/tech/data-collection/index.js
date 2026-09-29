@@ -8,6 +8,7 @@ import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import ProjectContributors from '@site/src/components/ProjectContributors';
 import { ALL_PROJECTS, displayNameOf } from '@site/src/data/baskets';
 import styles from '../index.module.css';
+import useAnchors from '@site/src/utils/useAnchors';
 
 // The page title/H1 uses taxonomy.json's own `name` field directly (direct
 // instruction: "the name should be the one in the taxonomy"). ProjectRepoSection
@@ -56,6 +57,7 @@ const REFERENCE_POINTS = [
 ];
 
 export default function DataCollection() {
+  useAnchors('reference-points-r1-to-r6');
   const coverImg = useBaseUrl('/assets/images/projects/data-collection.png');
   return (
     <Layout

@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import useAnchors from '@site/src/utils/useAnchors';
 import styles from './styles.module.css';
 
 const PLAY_ICON = (
@@ -17,8 +18,10 @@ function slugify(title) {
 }
 
 export default function VideoCard({ video, isPlaying, onPlay, kicker = 'In Action' }) {
+  const id = slugify(video.title);
+  useAnchors(id);
   return (
-    <div id={slugify(video.title)} className={clsx(styles.card, styles.anchorTarget)}>
+    <div id={id} className={clsx(styles.card, styles.anchorTarget)}>
       <div className={styles.header}>
         <span className={styles.tally}>
           <span className={styles.dot} />

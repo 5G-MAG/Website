@@ -7,6 +7,7 @@ import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import VideoGrid from '@site/src/components/VideoGrid';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 import styles from '../tech/index.module.css';
+import useAnchors from '@site/src/utils/useAnchors';
 
 const INTEROP_ICON_PATH = (
   <>
@@ -139,6 +140,7 @@ function ActionEventCard({ title, body, href }) {
 }
 
 function DemosSection() {
+  useAnchors('demonstrators');
   const videos = youtubePlaylists.demos?.videos || [];
   if (!videos.length) return null;
 
@@ -165,6 +167,7 @@ function DemosSection() {
 }
 
 export default function Action() {
+  useAnchors('testing-events');
   const plugfestImg = useBaseUrl('/assets/images/gallery/5g-broadcast-plugfest-2026.jpg');
   const tradeshowImg = useBaseUrl('/assets/images/gallery/tradeshow-booth-demo.jpg');
   return (

@@ -8,6 +8,7 @@ import BasketJumpRow from '@site/src/components/BasketJumpRow';
 import { BASKET_ACCENT, STAGE_GROUPS, WHERE_WE_STAND_ROWS } from '@site/src/data/baskets';
 import styles from './index.module.css';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
+import useAnchors from '@site/src/utils/useAnchors';
 
 // A handful of the most recent Technology Exchange sessions -- the full
 // gallery (grouped by session, with intro text) lives at /tech/exchanges.
@@ -100,6 +101,7 @@ const PILLARS = [
 ];
 
 export default function Home() {
+  useAnchors('where-we-stand', ...STAGE_BASKET_ROWS.map((b) => b.key));
   return (
     <Layout
       title="Technical Docs and Standards Work"
