@@ -253,7 +253,7 @@ function ProjectDetails({ project }) {
     <details className={styles.projectDetails}>
       <summary className={styles.projectSummary}>
         <span className={styles.projectSummaryMain}>
-          <span className={styles.projectName}>{project.name}</span>
+          <span className={styles.projectName}>{PROJECT_BY_NAME.get(project.name)?.displayName || project.name}</span>
           {latestDays <= 30 && <span className={styles.badgeNew}>New release</span>}
         </span>
         <span className={styles.projectSummaryMeta}>
