@@ -162,6 +162,16 @@
   border: 0;
 }
 
+/* Every #anchor target lands below the sticky navbar, with the offset
+   Docusaurus gives its own Markdown headings (theme-common's
+   .anchorTargetStickyNavbar). Ids on custom pages get nothing from
+   Docusaurus, so without this a jump hides the section's heading under the
+   navbar. :where() keeps it at zero specificity, so any page's own rule
+   still wins. */
+:where([id]) {
+  scroll-margin-top: calc(var(--ifm-navbar-height) + 0.5rem);
+}
+
 /* ── Doc page layout ────────────────────────────────────────────── */
 
 :root {
