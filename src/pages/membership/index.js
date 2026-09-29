@@ -34,7 +34,6 @@ const FEE_TIERS = [
 ];
 
 const FACTS = [
-  { value: '+40', label: 'Members and developers combined' },
   FACT_REPOSITORIES,
   FACT_CLONES,
   { value: '+15', label: 'Spec-compliant reference tools' },
