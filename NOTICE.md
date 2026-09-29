@@ -32,11 +32,14 @@ requires.
 
 ## Icons
 
-Icons throughout the site are [Tabler Icons](https://tabler.io/icons)
-(copyright the Tabler Icons contributors, MIT License) — their SVG path
-data is pasted directly into the source as inline `<path>` elements
-rather than pulled in via the `@tabler/icons` npm package, but the
-artwork itself is theirs, unmodified.
+Icons throughout the site are [Tabler Icons](https://tabler.io/icons),
+Copyright (c) 2020-2026 Paweł Kuna, licensed under the MIT License. Their
+SVG path data is pasted directly into the source as inline `<path>`
+elements rather than pulled in via the `@tabler/icons` npm package, but
+the artwork itself is theirs, unmodified. The full license text, with
+that copyright notice, ships at `static/licenses/tabler-icons-LICENSE.txt`
+(served as `/licenses/tabler-icons-LICENSE.txt` and linked from the
+footer of every page), as the license requires.
 
 ## Sample media
 

@@ -162,6 +162,19 @@
   border: 0;
 }
 
+/* The icon credit under the footer's copyright line. */
+.footer__credits {
+  display: inline-block;
+  margin-top: 0.35rem;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.footer__credits a {
+  color: inherit;
+  text-decoration: underline;
+}
+
 /* Every #anchor target lands below the sticky navbar, with the offset
    Docusaurus gives its own Markdown headings (theme-common's
    .anchorTargetStickyNavbar). Ids on custom pages get nothing from

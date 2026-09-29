@@ -404,7 +404,10 @@ const config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} 5G-MAG - The Media Connectivity Association`,
+      // The icon credit is the last line of every page, as the Tabler Icons
+      // MIT License asks its notice to accompany copies of the icons; the
+      // license link points at the copy this site serves.
+      copyright: `Copyright © ${new Date().getFullYear()} 5G-MAG - The Media Connectivity Association<br /><span class="footer__credits">Icons: <a href="https://tabler.io/icons" target="_blank" rel="noopener noreferrer">Tabler Icons</a>, <a href="/licenses/tabler-icons-LICENSE.txt" target="_blank" rel="noopener noreferrer">MIT License</a></span>`,
     },
     prism: { theme: prismThemes.github, darkTheme: prismThemes.dracula },
   },
