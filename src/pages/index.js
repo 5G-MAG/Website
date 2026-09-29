@@ -11,6 +11,7 @@ import SearchBar from '@theme/SearchBar';
 import { icon } from '@site/src/components/GodeeperCard';
 import VideoGrid from '@site/src/components/VideoGrid';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
+import BasketJumpRow from '@site/src/components/BasketJumpRow';
 import ReleaseCard from '@site/src/components/ReleaseCard';
 import { EventsAgendaPreview } from '@site/src/components/EventsAgenda';
 import { EVENTS_AGENDA } from '@site/src/data/eventsAgenda';
@@ -301,6 +302,8 @@ export default function Home() {
           <div className={styles.homeSearchBox}>
             <SearchBar />
           </div>
+          <p className={styles.homeJumpLabel}>Or go straight to a technology area</p>
+          <BasketJumpRow />
         </div>
       </div>
 

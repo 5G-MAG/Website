@@ -54,6 +54,13 @@
   margin: 0 auto;
 }
 
+.homeJumpLabel {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ifm-heading-color);
+  margin: 2rem 0 0;
+}
+
 
 /* Targets DocSearch's own button (@docsearch/css/dist/button.css), not an
    <input> -- this used to style the old local-search plugin's
