@@ -1,3 +1,4 @@
+import BalancedLogo from '@site/src/components/BalancedLogo';
 import { useBaseUrlUtils } from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
@@ -218,11 +219,7 @@ export default function Membership() {
                   title={m.name}
                   className={styles.memberCard}
                 >
-                  <img
-                    src={withBaseUrl(`/assets/images/members/${m.logo}`)}
-                    alt=""
-                    loading="lazy"
-                  />
+                  <BalancedLogo src={withBaseUrl(`/assets/images/members/${m.logo}`)} />
                   <span className={styles.memberCardName}>{m.name.split(' - ')[0]}</span>
                 </a>
               ))}

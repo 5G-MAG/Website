@@ -1,3 +1,4 @@
+import BalancedLogo from '@site/src/components/BalancedLogo';
 import { useState } from 'react';
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -127,7 +128,7 @@ function ContributorAvatar({ company }) {
   if (!c) return null;
   return (
     <a href={c.href} target="_blank" rel="noreferrer" title={c.name} className={styles.contributorAvatar}>
-      <img src={logoSrc} alt="" loading="lazy" />
+      <BalancedLogo src={logoSrc} area={620} maxWidth={60} maxHeight={22} />
     </a>
   );
 }

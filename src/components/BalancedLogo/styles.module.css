@@ -1,0 +1,18 @@
+.slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.slot img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  /* Docs pages style every .markdown img as a framed diagram; a logo is not one. */
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: none !important;
+  padding: 0 !important;
+}

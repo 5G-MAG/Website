@@ -35,11 +35,6 @@
   border: 1px solid var(--ifm-color-emphasis-200);
 }
 
-.tile img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-}
 
 @keyframes scroll {
   from {

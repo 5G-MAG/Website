@@ -1,3 +1,4 @@
+import BalancedLogo from '@site/src/components/BalancedLogo';
 import { useEffect, useMemo, useState } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
@@ -284,11 +285,7 @@ export default function Home() {
                   title={c.name}
                   className={styles.memberCard}
                 >
-                  <img
-                    src={`${contributorsBaseUrl}${c.logo}`}
-                    alt=""
-                    loading="lazy"
-                  />
+                  <BalancedLogo src={`${contributorsBaseUrl}${c.logo}`} />
                   <span className={styles.memberCardName}>{c.name.split(' - ')[0]}</span>
                 </a>
               ))}

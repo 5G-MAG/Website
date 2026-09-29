@@ -4,6 +4,7 @@ import { useLocation } from '@docusaurus/router';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { ALL_PROJECTS as projects, CONTRIBUTORS } from '@site/src/data/baskets';
 import { stripBaseUrl } from '@site/src/data/sectionNav';
+import BalancedLogo from '@site/src/components/BalancedLogo';
 import styles from './styles.module.css';
 
 // Always the last card, same size/shape as a real logo card, so it reads
@@ -35,7 +36,7 @@ function ContributorLogo({ company }) {
   }
   return (
     <a href={c.href} target="_blank" rel="noreferrer" title={c.name} className={styles.card}>
-      <img src={logoSrc} alt={c.name} loading="lazy" />
+      <BalancedLogo src={logoSrc} alt={c.name} />
       <span className={styles.label}>{c.name.split(' - ')[0]}</span>
     </a>
   );

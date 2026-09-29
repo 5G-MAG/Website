@@ -1,3 +1,4 @@
+import BalancedLogo from '@site/src/components/BalancedLogo';
 import { useEffect, useState } from 'react';
 import { useBaseUrlUtils } from '@docusaurus/useBaseUrl';
 import { MEMBERS } from '@site/src/data/members';
@@ -29,10 +30,12 @@ function LogoTile({ member, withBaseUrl, ariaHidden }) {
       aria-hidden={ariaHidden || undefined}
       tabIndex={ariaHidden ? -1 : undefined}
     >
-      <img
+      <BalancedLogo
         src={withBaseUrl(`/assets/images/members/${member.logo}`)}
         alt={ariaHidden ? '' : member.name}
-        loading="lazy"
+        area={3600}
+        maxWidth={150}
+        maxHeight={60}
       />
     </a>
   );
