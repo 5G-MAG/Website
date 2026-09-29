@@ -95,9 +95,12 @@ export const STAGE_GROUPS = [
 
 // A basket's own rolled-up reach per STAGE_GROUPS stage -- true once ANY
 // of its projects reached that stage, for a basket-level summary (the
-// homepage's own strip) that doesn't show individual projects.
-export function basketStageReach(basketProjects) {
-  return STAGE_GROUPS.map((g) => basketProjects.some((p) => g.reached(p.stages)));
+// homepage's own strip) that doesn't show individual projects. A basket
+// may also carry its own `stages` in taxonomy.json, for an area that is
+// itself at a stage before any project of its own exists (Towards 6G
+// Media: under study).
+export function basketStageReach(basketProjects, basketStages) {
+  return STAGE_GROUPS.map((g) => g.reached(basketStages) || basketProjects.some((p) => g.reached(p.stages)));
 }
 
 // Per-repo detail (description, license, standards, dependencies, software,

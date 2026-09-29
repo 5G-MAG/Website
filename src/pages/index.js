@@ -89,7 +89,7 @@ const STAND_BASKETS = BASKETS.map((b) => {
   return {
     ...b,
     accent: BASKET_ACCENT[b.key] || '#00a0d2',
-    reach: basketStageReach(basketProjects),
+    reach: basketStageReach(basketProjects, b.stages),
     repoCount: basketProjects.reduce((n, p) => n + reposFor(p).length, 0),
     projects: basketProjects,
   };

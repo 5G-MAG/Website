@@ -38,7 +38,10 @@
     {
       "key": "towards-6g",
       "title": "Towards 6G Media",
-      "icon": "chip"
+      "icon": "chip",
+      "stages": {
+        "under-study": true
+      }
     },
     {
       "key": "testbeds",
