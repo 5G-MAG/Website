@@ -296,7 +296,7 @@ function FadingSlideRow({ slides }) {
             const wrapperClass = clsx(styles.fadingImgWrap, isActive && styles.fadingImgActive);
             const img = <img src={s.src} alt={isActive ? s.alt : ''} loading="lazy" className={styles.fadingImg} />;
             return s.href ? (
-              <Link key={s.src} to={s.href} className={wrapperClass} aria-hidden={!isActive}>
+              <Link key={s.src} to={s.href} className={wrapperClass} aria-hidden={!isActive} tabIndex={isActive ? undefined : -1}>
                 {img}
               </Link>
             ) : (
