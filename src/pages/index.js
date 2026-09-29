@@ -345,20 +345,43 @@ export default function Home() {
       </div>
 
       <main>
-        {/* Who We Are -- heading and mission text lead, then the
-            diagram (one static image), then the rest (the rotating
-            photo row and the links), per direct instruction. First
-            thing after the hero/search band (2026-09-27: swapped ahead
-            of Where We Stand, at direct request, so Where We Stand sits
-            immediately before On Air instead of two sections away). */}
+        {/* Who We Are -- the heading and the three mission lines, with the
+            links under them, beside the Media and Connectivity diagram they
+            describe; then the four theme cards; then the rotating photos.
+            Chosen by the user from two rendered layouts (2026-09-29): with
+            the cards between the mission lines and the diagram, the diagram
+            sat on its own with no flow. First thing after the hero/search
+            band (2026-09-27: swapped ahead of Where We Stand, at direct
+            request, so Where We Stand sits immediately before On Air
+            instead of two sections away). */}
         <section className={clsx(styles.section, styles.sectionAlt)}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>
-              At the intersection of Media and Connectivity
-            </h2>
-            <p style={{ maxWidth: '760px', margin: '0 auto 0.75rem', lineHeight: 1.6, textAlign: 'center', fontSize: '1.25rem', fontWeight: 600 }}>
-              Open specifications and open-source software, turned into real-world applications.
-            </p>
+            <div className={styles.introSplit}>
+              <div>
+                <h2 className={clsx(styles.sectionTitle, styles.introTitle)}>
+                  At the intersection of Media and Connectivity
+                </h2>
+                <p className={styles.introLead}>
+                  Open specifications and open-source software, turned into{' '}
+                  <span className={styles.noWrap}>real-world</span> applications.
+                </p>
+                <p className={styles.introLine}>
+                  A not-for-profit, neutral platform, driven by our members: they set the priorities, we execute.
+                </p>
+                <p className={styles.introLine}>
+                  Members build together, and back technologies that actually get deployed, not specifications that stall.
+                </p>
+                <div className={styles.introLinks}>
+                  <Link to="/about">Learn more about us &rarr;</Link>
+                  {' · '}
+                  <Link to="/membership#request-membership">Become a member &rarr;</Link>
+                </div>
+              </div>
+              <div>
+                <MediaConnectivityDiagram />
+              </div>
+            </div>
+
             <div className={styles.themeGrid}>
               {THEMES.map((t) => (
                 <Link key={t.title} to={t.to} className={styles.themeCard}>
@@ -377,28 +400,12 @@ export default function Home() {
                 </Link>
               ))}
             </div>
-            <p style={{ maxWidth: '700px', margin: '0 auto 0.75rem', lineHeight: 1.6, textAlign: 'center', fontSize: '1.1rem', color: 'var(--ifm-color-emphasis-700)' }}>
-              A not-for-profit, neutral platform, driven by our members: they set the priorities, we execute.
-            </p>
-            <p style={{ maxWidth: '700px', margin: '0 auto 1.5rem', lineHeight: 1.6, textAlign: 'center', fontSize: '1.1rem', color: 'var(--ifm-color-emphasis-700)' }}>
-              Members build together, and back technologies that actually get deployed, not specifications that stall.
-            </p>
-
-            <div style={{ margin: '0 0 2rem' }}>
-              <MediaConnectivityDiagram />
-            </div>
 
             {/* Real photos alternating with icon+title banner cover-slides
                 for every DOMAIN_PILLARS topic -- see SHOWCASE_SLIDES' own
                 comment for why, and why this rotates rather than showing a
                 grid. */}
             <FadingSlideRow slides={showcaseSlides} />
-
-            <div className={styles.onAirMore}>
-              <Link to="/about">Learn more about us &rarr;</Link>
-              {' · '}
-              <Link to="/membership#request-membership">Become a member &rarr;</Link>
-            </div>
           </div>
         </section>
 

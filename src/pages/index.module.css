@@ -62,12 +62,13 @@
 }
 
 /* Multimedia, Connectivity, Standards, Open Source: 4 across, 2 x 2 below
-   900px, stacked on phones. */
+   900px, stacked on phones with the icon beside the text (rules after
+   .themeCta, so they win over the base rules). */
 .themeGrid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem;
-  margin: 1.5rem 0 1.75rem;
+  margin: 0 0 2.5rem;
 }
 
 @media (max-width: 900px) {
@@ -141,6 +142,30 @@
   color: var(--ifm-color-primary);
 }
 
+@media (max-width: 520px) {
+  .themeGrid {
+    gap: 0.75rem;
+  }
+
+  .themeCard {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: 0.85rem;
+    row-gap: 0.3rem;
+    padding: 0.9rem 1rem;
+  }
+
+  .themeIcon {
+    grid-row: span 3;
+  }
+
+  .themeTitle,
+  .themeBody,
+  .themeCta {
+    grid-column: 2;
+  }
+}
+
 
 /* Targets DocSearch's own button (@docsearch/css/dist/button.css), not an
    <input> -- this used to style the old local-search plugin's
@@ -200,6 +225,53 @@
   text-align: center;
   margin-top: 1.5rem;
   font-weight: 600;
+}
+
+/* Who We Are: the mission text beside the Media and Connectivity diagram,
+   stacked from 996px down (text first). */
+.introSplit {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: 3rem;
+  align-items: center;
+  margin: 0 0 3rem;
+}
+
+@media (max-width: 996px) {
+  .introSplit {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.introTitle {
+  font-size: 2rem;
+  text-align: left;
+  margin: 0 0 1rem;
+}
+
+.introLead {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.6;
+  margin: 0 0 0.75rem;
+}
+
+.introLine {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--ifm-color-emphasis-700);
+  margin: 0 0 0.75rem;
+}
+
+.introLinks {
+  margin-top: 1.5rem;
+  font-weight: 600;
+}
+
+/* Keeps a hyphenated word such as "real-world" on one line. */
+.noWrap {
+  white-space: nowrap;
 }
 
 /* ── Where We Stand (basket rollup) ───────────────────────────────────
@@ -438,9 +510,16 @@
   margin: 0 0 2.5rem;
 }
 
+/* One column from 768px down, and only the first slot: three stacked
+   16:9 slots made the section several screens long on a phone. The slot
+   still crossfades through every slide. */
 @media (max-width: 768px) {
   .fadingRow {
     grid-template-columns: 1fr;
+  }
+
+  .fadingSlot:nth-child(n + 2) {
+    display: none;
   }
 }
 
