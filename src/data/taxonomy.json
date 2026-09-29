@@ -1023,25 +1023,6 @@
         ],
         "public": false,
         "is_auxiliary": false
-      },
-      {
-        "repo_slug": "rt-mbms-mw",
-        "display_name": "MBMS Middleware",
-        "description": "Combines broadband, Wi-Fi and 5G Broadcast content via decision logic and serves it to applications over HTTP; also implements a ROUTE client.",
-        "repo_url": "https://github.com/5G-MAG/rt-mbms-mw",
-        "branch": "main",
-        "license": null,
-        "dependencies": [],
-        "software": [
-          "Linux",
-          "Docker"
-        ],
-        "public": true,
-        "is_auxiliary": false,
-        "standards": [
-          "3GPP",
-          "ETSI"
-        ]
       }
     ],
     "emergency-alerts": [
@@ -1700,26 +1681,6 @@
         ],
         "public": false,
         "is_auxiliary": false
-      },
-      {
-        "repo_slug": "rt-mbms-mw",
-        "display_name": "MBMS Middleware",
-        "description": "Combines broadband, Wi-Fi and 5G Broadcast content via decision logic and serves it to applications over HTTP; also implements a ROUTE client.",
-        "repo_url": "https://github.com/5G-MAG/rt-mbms-mw",
-        "branch": "main",
-        "license": null,
-        "dependencies": [],
-        "software": [
-          "Linux",
-          "Docker"
-        ],
-        "public": true,
-        "is_auxiliary": false,
-        "standards": [
-          "IETF",
-          "3GPP",
-          "ETSI"
-        ]
       },
       {
         "repo_slug": "rt-media-origin",
