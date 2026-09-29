@@ -1206,7 +1206,7 @@
         "display_name": "5GMS Application Provider",
         "description": "This repository provides multiple tools to interact with the 5GMS Application Function: Command Line Interface Tool; Management UI; Postman Collection; QoE Metrics Reporting UI.",
         "repo_url": "https://github.com/5G-MAG/rt-5gms-application-provider",
-        "branch": "main",
+        "branch": "master",
         "license": "5G-MAG PL v1.0",
         "standards": [
           "3GPP"
@@ -1493,7 +1493,7 @@
     "5g-core": [
       {
         "repo_slug": "rt-5gc-service-consumers",
-        "display_name": "5GC Service Consumers",
+        "display_name": "5G Core Service Consumers",
         "description": "This repository contains a collection of reusable service consumer libraries designed to interact with the 5GC Network Functions using service interfaces.",
         "repo_url": "https://github.com/5G-MAG/rt-5gc-service-consumers",
         "branch": "main",
@@ -1642,7 +1642,7 @@
     "dvb-i": [
       {
         "repo_slug": "rt-5gms-application",
-        "display_name": "DVB-I Reference App",
+        "display_name": "5GMS-Aware Application",
         "description": "This repository holds applications that can be used to test and demonstrate other 5G-MAG Reference Tools related to 5GMS. Current applications available include: 5GMSd-Aware Application; Exo DVB-I Player.",
         "repo_url": "https://github.com/5G-MAG/rt-5gms-application",
         "branch": "main",
@@ -2014,7 +2014,7 @@
     "rt-xr-maf-plugin": [
       {
         "repo_slug": "rt-xr-maf-plugin",
-        "display_name": "Media Access Functions API (MAF) Plugin",
+        "display_name": "Media Access Function (MAF) API Unity3D packager",
         "description": "",
         "repo_url": "https://github.com/5G-MAG/rt-xr-maf-plugin",
         "branch": "main",
