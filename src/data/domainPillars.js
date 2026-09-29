@@ -18,12 +18,9 @@
 // Icons and hrefs are copied from the matching topic entries in
 // src/pages/tech/index.js's CATEGORIES, not invented, so a pillar card
 // links to the same real /tech pages the Technology hub already
-// uses for that technology. Connected Media Production's icon is Non-Public
-// Networks' own icon specifically (a padlock, taxonomy.json's "lock" --
-// private 5G deployments) rather than Network APIs' or Time-Sensitive
-// Communications' -- the same choice MediaConnectivityDiagram makes for
-// its own "M18 Non-Public Networks" halo icon (see that component's own
-// top-of-file comment).
+// uses for that technology. Connected Media Production's icon is that
+// basket's own icon in taxonomy.json ("video-camera"), not one of its
+// projects' icons: Non-Public Networks keeps the padlock ("lock").
 //
 // A pillar with exactly one real topic (RTC, NTN) gets a top-level `href`
 // and an empty `chips` array, so the whole card is the link -- a single
@@ -120,9 +117,8 @@ export const DOMAIN_PILLARS = [
     title: 'Connected Media Production',
     icon: (
       <>
-        <path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6" />
-        <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" />
-        <path d="M8 11v-4a4 4 0 1 1 8 0v4" />
+        <path d="M15 10l4.553 -2.276a1 1 0 0 1 1.447 .894v6.764a1 1 0 0 1 -1.447 .894l-4.553 -2.276v-4" />
+        <path d="M3 8a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2l0 -8" />
       </>
     ),
     chips: [

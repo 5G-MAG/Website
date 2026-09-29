@@ -33,7 +33,7 @@
     {
       "key": "connected-media-production",
       "title": "Connected Media Production",
-      "icon": "gauge"
+      "icon": "video-camera"
     },
     {
       "key": "towards-6g",
@@ -2129,7 +2129,7 @@
       "M14 17a3 3 0 0 0 3 -3",
       "M20 13a9 9 0 0 0 -9 9"
     ],
-    "shield-network": [
+    "video-camera": [
       "M15 10l4.553 -2.276a1 1 0 0 1 1.447 .894v6.764a1 1 0 0 1 -1.447 .894l-4.553 -2.276v-4",
       "M3 8a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2l0 -8"
     ],
@@ -2156,11 +2156,6 @@
       "M14 21v-4a2 2 0 1 1 4 0v4",
       "M14 19h4",
       "M21 15v6"
-    ],
-    "gauge": [
-      "M5 12a7 7 0 1 1 14 0",
-      "M12 12l4 -3",
-      "M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"
     ],
     "flask": [
       "M9 3l6 0",
