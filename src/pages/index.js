@@ -370,7 +370,7 @@ export default function Home() {
                   <span className={styles.noWrap}>real-world</span> applications.
                 </p>
                 <p className={styles.introLine}>
-                  A not-for-profit, neutral platform, driven by our members: they set the priorities, we execute.
+                  A not-for-profit, neutral platform, driven by our members: we work with them, adding resources to their efforts.
                 </p>
                 <p className={styles.introLine}>
                   Members build together, and back technologies that actually get deployed, not specifications that stall.
