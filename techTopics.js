@@ -371,5 +371,5 @@ export { ALL_TOPICS };
 // Placed alongside Towards 6G since /tech/6g (its closest analysis
 // neighbour) lives there -- see BASKET_OVERRIDES above.
 export const RESEARCH_EXTRA_LINKS = [
-  { label: 'AI Traffic Characterization', href: '/testbeds/6g-testbed' },
+  { label: '6G AI Traffic Characterization Testbed', href: '/testbeds/6g-testbed' },
 ];

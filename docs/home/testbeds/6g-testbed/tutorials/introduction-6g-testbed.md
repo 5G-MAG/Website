@@ -1,8 +1,8 @@
 ---
-title: Introduction 6G Testbed
+title: Introduction to the 6G AI Traffic Characterization Testbed
 hide_title: true
 sidebar_position: 0
-description: Video and step-by-step walkthrough introducing the 6G Testbed's Network Emulator and AI Traffic Characterization framework, with links to full documentation.
+description: Video and step-by-step walkthrough introducing the 6G AI Traffic Characterization Testbed's Network Emulator and AI Traffic Characterization framework, with links to full documentation.
 ---
 
 <div class="topic-banner">
@@ -18,16 +18,16 @@ description: Video and step-by-step walkthrough introducing the 6G Testbed's Net
   <path d="M12 15v3" /></svg>
 </div>
 <div class="topic-banner__text">
-<span class="topic-banner__kicker">AI Traffic Characterization</span>
-<h1>Introduction to the 6G Testbed: Network Emulator and AI Traffic Characterization</h1>
+<span class="topic-banner__kicker">6G AI Traffic Characterization Testbed</span>
+<h1>Introduction to the 6G AI Traffic Characterization Testbed: Network Emulator and AI Traffic Characterization</h1>
 </div>
 </div>
 
 :::tip[In short]
-This tutorial introduces the 6G Testbed including the Network Emulator and the framework for AI Traffic Characterization
+This tutorial introduces the 6G AI Traffic Characterization Testbed including the Network Emulator and the framework for AI Traffic Characterization
 :::
 
-The 6G Testbed has two parts: a **Network Emulator** that reproduces realistic network conditions (delay, jitter, loss, and bandwidth limits) on a single machine, and an **AI Traffic Characterization** framework that runs AI workloads over those conditions and logs how they behave. The video below walks through both parts and shows how they are used together.
+The 6G AI Traffic Characterization Testbed has two parts: a **Network Emulator** that reproduces realistic network conditions (delay, jitter, loss, and bandwidth limits) on a single machine, and an **AI Traffic Characterization** framework that runs AI workloads over those conditions and logs how they behave. The video below walks through both parts and shows how they are used together.
 
 For the full component breakdown, the profile format, and the emulator API, see the [Scope](../scope) page. The source code and setup instructions are in the [5G-MAG/6G-Testbed](https://github.com/5G-MAG/6G-Testbed) repository. The introduction video is available on the [Developer Exchange](../tutorials#developer-exchange) section of this project's Tutorials page.
 

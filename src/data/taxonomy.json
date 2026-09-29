@@ -398,6 +398,7 @@
     },
     {
       "name": "AI Traffic Characterization",
+      "displayName": "6G AI Traffic Characterization Testbed",
       "doc_url": "/testbeds/6g-testbed/",
       "tech_url": "/tech/6g",
       "standards_url": "/standards/6g",
@@ -1498,7 +1499,7 @@
     "6g-testbed": [
       {
         "repo_slug": "6G-Testbed",
-        "display_name": "6G Testbed and AI Traffic Characterization",
+        "display_name": "6G AI Traffic Characterization Testbed",
         "description": "A framework for measuring and analyzing AI/LLM service traffic patterns under various network conditions, designed to support 3GPP SA4 6G Media Study contributions.",
         "repo_url": "https://github.com/5G-MAG/6G-Testbed",
         "branch": "main",

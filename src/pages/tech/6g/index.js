@@ -102,7 +102,7 @@ export default function Towards6GMedia() {
                   multicast.
                 </p>
                 <p>
-                  In parallel, the 5G-MAG 6G Testbed provides an early experimental platform for
+                  In parallel, the 5G-MAG 6G AI Traffic Characterization Testbed provides an early experimental platform for
                   AI-driven media traffic classification and optimisation over 5G networks,
                   informing future 6G design. The testbed produces labelled traffic datasets and
                   classification results that 5G-MAG uses to shape its requirement inputs to
@@ -131,7 +131,7 @@ export default function Towards6GMedia() {
                 measurement instead of assumption. AI workloads behave differently from classic media
                 streaming — bursty request/response cycles, asymmetric uplink/downlink ratios,
                 sensitivity to time-to-first-token as well as sustained throughput — and those
-                differences matter for a 6G system meant to carry them. The 6G Testbed exists to
+                differences matter for a 6G system meant to carry them. The 6G AI Traffic Characterization Testbed exists to
                 characterise those patterns under controlled, reproducible network conditions, so
                 5G-MAG&apos;s media-requirements input to 3GPP and ITU-R is grounded in real measured
                 traffic behaviour rather than assumption alone.
@@ -294,7 +294,7 @@ export default function Towards6GMedia() {
               produce traffic patterns that differ from classic media streaming. These include
               bursty request/response cycles, asymmetric uplink/downlink ratios, long-lived
               sessions with variable think-time, and sensitivity to time-to-first-token as well as
-              to sustained throughput. The 5G-MAG 6G Testbed exists to characterise these patterns
+              to sustained throughput. The 5G-MAG 6G AI Traffic Characterization Testbed exists to characterise these patterns
               under controlled, reproducible network conditions.
             </p>
             <p>Concretely, the testbed:</p>
@@ -320,7 +320,7 @@ export default function Towards6GMedia() {
               These outputs are what 5G-MAG uses to ground its media and AI-traffic requirement
               inputs to 3GPP. Full detail, including the emulator YAML profile schema and the AI
               characterisation architecture, is on the{' '}
-              <Link to="/testbeds/6g-testbed/scope">6G Testbed developer scope page</Link>.
+              <Link to="/testbeds/6g-testbed/scope">6G AI Traffic Characterization Testbed developer scope page</Link>.
             </p>
 
             <h3>Inputs from 5G-MAG to 3GPP Workshops on 6G</h3>
