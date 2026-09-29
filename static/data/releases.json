@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-29 10:03 UTC",
+  "updated_at": "2026-09-29 11:08 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -142,15 +142,6 @@
           "tag": "v1.0.0",
           "date": "2023-06-21",
           "url": "https://github.com/5G-MAG/rt-mbms-tx/releases/tag/v1.0.0",
-          "author_login": "dsilhavy",
-          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
-        },
-        {
-          "repo": "rt-mbms-mw",
-          "branch": null,
-          "tag": "v0.10.0",
-          "date": "2022-12-08",
-          "url": "https://github.com/5G-MAG/rt-mbms-mw/releases/tag/v0.10.0",
           "author_login": "dsilhavy",
           "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
         },
@@ -468,15 +459,6 @@
           "tag": "rt-libflute-0.12.4",
           "date": "2026-09-01",
           "url": "https://github.com/5G-MAG/rt-libflute/releases/tag/rt-libflute-0.12.4",
-          "author_login": "dsilhavy",
-          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
-        },
-        {
-          "repo": "rt-mbms-mw",
-          "branch": null,
-          "tag": "v0.10.0",
-          "date": "2022-12-08",
-          "url": "https://github.com/5G-MAG/rt-mbms-mw/releases/tag/v0.10.0",
           "author_login": "dsilhavy",
           "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
         }
