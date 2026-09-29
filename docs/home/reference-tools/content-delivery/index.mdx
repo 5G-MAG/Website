@@ -11,6 +11,7 @@ import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { REPO_METADATA } from '@site/src/data/baskets';
+import ProjectSlide from '@site/src/components/ProjectSlide';
 
 export const REPO_COUNT = (REPO_METADATA['content-delivery'] || []).length;
 
@@ -28,7 +29,11 @@ export const REPO_COUNT = (REPO_METADATA['content-delivery'] || []).length;
 </div>
 </div>
 
+<ProjectSlide image="/assets/images/projects/content-delivery-reference-tools.png" alt="Content Delivery Protocols: Reference Tools slide">
+
 These tools address the application-layer delivery protocols that sit above the 5G transport, ensuring interoperability across content formats, packaging standards, and player implementations. The project is designed to support any delivery protocol; it currently implements FLUTE and ROUTE, used respectively for file and real-time object delivery over 5G Broadcast and 5G Multicast Broadcast Services (MBS). Useful for developers validating DASH/HLS players, packagers, and Content Delivery Network (CDN) integrations in 5G environments. For the architectures these transports plug into and the per-feature FLUTE audit, see [Implementation Detail](./implementation).
+
+</ProjectSlide>
 
 ## What's Built
 

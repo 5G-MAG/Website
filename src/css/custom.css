@@ -1496,6 +1496,18 @@
   box-shadow: none !important;
 }
 
+/* The Reference Tools / Testbed slide beside a page's description
+   (src/components/ProjectSlide) is a finished slide, not a diagram: it
+   keeps its own frame in both themes, like the /tech pages' covers. */
+.markdown img.project-slide,
+[data-theme='dark'] .markdown img.project-slide {
+  background: none;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
 /* Shared "control-room panel" backdrop for VideoGrid and VideoGallery --
    a real monitor wall isn't lit like the rest of the room. Fixed dark
    background regardless of site theme, since VideoCard's dark card

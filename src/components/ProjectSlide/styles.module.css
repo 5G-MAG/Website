@@ -1,0 +1,27 @@
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(220px, 1fr);
+  gap: 1.75rem;
+  align-items: center;
+  margin: 0 0 1.5rem;
+}
+
+/* Docs pages keep a sidebar beside the content, so the text column gets
+   narrow well before the /tech pages' 768px breakpoint. */
+@media (max-width: 1100px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.text > :last-child {
+  margin-bottom: 0;
+}
+
+/* Frame (radius, shadow) is set globally on .project-slide in custom.css,
+   where it must outrank the docs-wide image card. */
+.slide {
+  display: block;
+  width: 100%;
+  height: auto;
+}

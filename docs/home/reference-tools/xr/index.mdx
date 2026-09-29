@@ -12,6 +12,7 @@ import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { REPO_METADATA } from '@site/src/data/baskets';
+import ProjectSlide from '@site/src/components/ProjectSlide';
 
 export const REPO_COUNT = (REPO_METADATA['xr'] || []).length;
 
@@ -31,7 +32,11 @@ export const REPO_COUNT = (REPO_METADATA['xr'] || []).length;
 </div>
 </div>
 
+<ProjectSlide image="/assets/images/projects/xr-reference-tools.png" alt="XR/3D Scenes with MPEG-I Scene Description: Reference Tools slide">
+
 The tools enable delivery of dynamic 3D scenes composed of glTF (GL Transmission Format) objects, spatial audio, and haptic elements, transported via the 5G Media Streaming (5GMS) framework ([TS 26.512](https://www.3gpp.org/dynareport/26512.htm)). Designed for developers exploring immersive media delivery and XR experiences on 5G devices and platforms. For the full glTF extension support matrices and how the tools map to the standard, see [Implementation Detail](./implementation); to see one assembled scenario already running, jump to [Immersive Media Experiences](/showcase/volumetric).
+
+</ProjectSlide>
 
 ## Under the hood
 

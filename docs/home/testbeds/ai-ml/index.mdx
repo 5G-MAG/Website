@@ -11,6 +11,7 @@ import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
+import ProjectSlide from '@site/src/components/ProjectSlide';
 
 export const projectVideos = (youtubePlaylists.projects?.['ai-ml']?.videos || []).slice(0, 1);
 
@@ -38,7 +39,11 @@ The reference tooling is currently private and under testing. [Request early acc
 
 ## What it does
 
+<ProjectSlide image="/assets/images/projects/ai-ml-testbed.png" alt="AI/ML Evaluation Framework: Testbed slide">
+
 The tools provide standardised benchmarks and datasets for evaluating machine learning models for media quality enhancement, adaptive bitrate (ABR) optimisation, and traffic classification, aligned with the AI/ML work items of 3GPP working group SA4 (the group responsible for codec and media work). It is intended for researchers and engineers contributing to the standardisation of AI-native media delivery and informing 5G-MAG's 6G research direction.
+
+</ProjectSlide>
 
 ## Repositories
 

@@ -11,6 +11,7 @@ import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
+import ProjectSlide from '@site/src/components/ProjectSlide';
 
 export const projectVideos = (youtubePlaylists.projects?.['beyond-2d']?.videos || []).slice(0, 1);
 
@@ -29,7 +30,11 @@ See also: <a href={useBaseUrl('/testbeds/beyond-2d/tutorials#developer-exchange'
 
 ## What it does
 
+<ProjectSlide image="/assets/images/projects/beyond-2d-testbed.png" alt="Beyond 2D Evaluation Framework: Testbed slide">
+
 The framework enables standardised benchmarking of encoding, streaming, and rendering pipelines for content that goes beyond traditional flat-screen delivery, feeding directly into 3GPP and MPEG standardisation of new immersive video formats.
+
+</ProjectSlide>
 
 ## Repositories
 

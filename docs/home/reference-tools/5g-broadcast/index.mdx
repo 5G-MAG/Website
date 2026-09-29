@@ -11,6 +11,7 @@ import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { REPO_METADATA } from '@site/src/data/baskets';
+import ProjectSlide from '@site/src/components/ProjectSlide';
 
 export const REPO_COUNT = (REPO_METADATA['5g-broadcast'] || []).length;
 
@@ -29,7 +30,11 @@ export const REPO_COUNT = (REPO_METADATA['5g-broadcast'] || []).length;
 </div>
 </div>
 
+<ProjectSlide image="/assets/images/projects/5g-broadcast-reference-tools.png" alt="5G Broadcast - TV and Radio Services: Reference Tools slide">
+
 It is built on LTE (Long Term Evolution, the 4G radio standard) and standardised by 3GPP, using the evolved Multimedia Broadcast Multicast Service (eMBMS) and its further-enhanced variant Further evolved Multimedia Broadcast Multicast Service (FeMBMS), also called LTE-based 5G Broadcast. This project provides the reference transmitter and receiver so anyone can test a complete broadcast chain, covering end-to-end 5G Broadcast systems for TV and radio distribution over dedicated broadcast carriers, without a return channel or SIM requirement on the receiver side. The project also covers hybrid broadcast/broadband delivery and integration with DVB-I service discovery. For the deployment configurations and full feature-support detail, see [Implementation Detail](./implementation); to see one assembled scenario already running, jump to the [Seamless Unicast/Broadcast Switching showcase](/showcase/5g-broadcast/seamless-switching).
+
+</ProjectSlide>
 
 <img loading="lazy" src={useBaseUrl('/assets/images/5gbc/reference-tools-broadcast-demo.jpg')} alt="5G Broadcast Reference Tools transmitter hardware, with a phone running the 5G-MAGflix demo app" style={{width: '100%', borderRadius: '12px', margin: '1rem 0'}} />
 

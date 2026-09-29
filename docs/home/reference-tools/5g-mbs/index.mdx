@@ -14,6 +14,7 @@ import { MBS_ARCHITECTURE } from '@site/src/data/architecture/5g-mbs';
 import { MBS_SECTIONS } from '@site/src/data/implementation/5g-mbs';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { REPO_METADATA } from '@site/src/data/baskets';
+import ProjectSlide from '@site/src/components/ProjectSlide';
 
 export const REPO_COUNT = (REPO_METADATA['5g-mbs'] || []).length;
 
@@ -32,9 +33,13 @@ export const REPO_COUNT = (REPO_METADATA['5g-mbs'] || []).length;
 </div>
 </div>
 
+<ProjectSlide image="/assets/images/projects/5g-mbs-reference-tools.png" alt="5G Multicast Broadcast Services (MBS): Reference Tools slide">
+
 Unlike LTE-based 5G Broadcast (evolved Multimedia Broadcast Multicast Service, eMBMS), 5G MBS is natively integrated into the 5G Core (5GC) and New Radio (NR) Radio Access Network (RAN), enabling efficient point-to-multipoint delivery of live TV, software updates, and emergency information. The tools cover MBS service announcements, session management, and media delivery over the broadcast delivery mode, as defined in [TS 26.502](https://www.3gpp.org/dynareport/26502.htm), though the chain does not yet run fully end-to-end on real RAN hardware or software radio today; the multicast delivery mode's MB-SMF/MB-UPF data path already exists, but its session-join control plane does not yet (see [Implementation Detail](./implementation) for the detail on both). To see one assembled scenario already running, jump to the [MBS End-to-End Delivery Demo](/showcase/streaming#mbs-end-to-end-delivery-demo).
 
 If you are looking for the LTE-based, free-to-air broadcast implementation (a separate, similarly named area), see the [5G Broadcast](../5g-broadcast) reference tools instead.
+
+</ProjectSlide>
 
 ## What's Built
 

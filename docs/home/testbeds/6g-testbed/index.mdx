@@ -11,6 +11,7 @@ import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
+import ProjectSlide from '@site/src/components/ProjectSlide';
 
 export const projectVideos = (youtubePlaylists.projects?.['6g-testbed']?.videos || []).slice(0, 1);
 
@@ -34,9 +35,13 @@ See also: <a href={useBaseUrl('/testbeds/6g-testbed/tutorials#developer-exchange
 
 ## What it does
 
+<ProjectSlide image="/assets/images/projects/6g-testbed-testbed.png" alt="AI Traffic Characterization: Testbed slide">
+
 The project provides tools to measure, analyse, and evaluate AI traffic patterns and media delivery under emulated network conditions. It builds on a 3GPP RAN testbed infrastructure and is intended to inform 5G-MAG's contributions to 6G requirements for intelligent, media-aware networks. IMT-2030 is the ITU-R (the Radiocommunication Sector of the International Telecommunication Union) framework of requirements for 6G systems.
 
 **Specifications referenced:** No normative 6G specifications exist yet. The testbed produces measured traffic characterisation as an input to the AI, media and 6G study work currently running in 3GPP, and its candidate 6G conditions are derived from ITU-R IMT-2030 scenarios. It is not scoped to a single study item.
+
+</ProjectSlide>
 
 ## Repositories
 

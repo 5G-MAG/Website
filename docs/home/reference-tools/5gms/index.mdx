@@ -14,6 +14,7 @@ import ArchitectureDiagram from '@site/src/components/ArchitectureDiagram';
 import { FIVEGMS_ARCHITECTURE, FIVEGMS_DIAGRAM_CONTAINERS, FIVEGMS_DIAGRAM_NODES, FIVEGMS_DIAGRAM_EDGES } from '@site/src/data/architecture/5gms';
 import { FIVEGMS_FEATURES } from '@site/src/data/blueprints/5gms';
 import { REPO_METADATA } from '@site/src/data/baskets';
+import ProjectSlide from '@site/src/components/ProjectSlide';
 
 {/* Real counts, re-derived from the same data the sections below render
     from, so this summary can't drift from what those sections actually
@@ -35,7 +36,11 @@ export const FEATURES_TOTAL = FIVEGMS_FEATURES.length;
 </div>
 </div>
 
+<ProjectSlide image="/assets/images/projects/5gms-reference-tools.png" alt="5G Media Streaming (5GMS): Reference Tools slide">
+
 The tools cover two server-side roles: the Application Function (AF), which handles provisioning, configuration and reporting, and the Application Server (AS), which caches and delivers the media. Both target 5G Unicast Downlink Media Streaming (5GMSd), against the Release 17 normative baseline ([TS 26.501](https://www.3gpp.org/dynareport/26501.htm) / [TS 26.512](https://www.3gpp.org/dynareport/26512.htm)). For the deployment configurations and full specification detail, see [Implementation Detail](./implementation).
+
+</ProjectSlide>
 
 ## What's Built
 

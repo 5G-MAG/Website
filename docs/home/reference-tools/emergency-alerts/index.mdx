@@ -11,6 +11,7 @@ import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { REPO_METADATA } from '@site/src/data/baskets';
+import ProjectSlide from '@site/src/components/ProjectSlide';
 
 export const REPO_COUNT = (REPO_METADATA['emergency-alerts'] || []).length;
 
@@ -27,7 +28,11 @@ export const REPO_COUNT = (REPO_METADATA['emergency-alerts'] || []).length;
 </div>
 </div>
 
+<ProjectSlide image="/assets/images/projects/emergency-alerts-reference-tools.png" alt="5G Broadcast - Emergency Alerts: Reference Tools slide">
+
 The tools enable authorities and broadcasters to distribute alerts to all receivers in a coverage area simultaneously (without requiring a data connection or active SIM) using the Cell Broadcast Service (CBS) transported over LTE-based 5G Broadcast, also known as Further evolved Multimedia Broadcast Multicast Service (FeMBMS). The work builds on top of the 5G Broadcast - TV and Radio Services platform and has been demonstrated in broadcast network setups; for the current implementation status, see the caveat on the [Implementation Detail](./implementation) page. To see one assembled scenario already running, jump to the [Emergency Alert Broadcast Demo](/showcase/5g-broadcast#emergency-alert-broadcast-demo).
+
+</ProjectSlide>
 
 ## What's Built
 

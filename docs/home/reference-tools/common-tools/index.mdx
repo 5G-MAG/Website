@@ -11,6 +11,7 @@ import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { REPO_METADATA } from '@site/src/data/baskets';
+import ProjectSlide from '@site/src/components/ProjectSlide';
 
 export const REPO_COUNT = (REPO_METADATA['common-tools'] || []).length;
 
@@ -25,7 +26,11 @@ export const REPO_COUNT = (REPO_METADATA['common-tools'] || []).length;
 </div>
 </div>
 
+<ProjectSlide image="/assets/images/projects/common-tools-reference-tools.png" alt="Common Tools: Reference Tools slide">
+
 You normally arrive here from a specific tool's own setup steps, not by starting here. [Implementation Detail](./implementation) lists which shared helper tool in `rt-common-shared` supports which Reference Tool project. There is no dedicated Tutorials page for Common Tools: these scripts and configs are consumed as steps inside each supported project's own tutorial, not run standalone.
+
+</ProjectSlide>
 
 ## What's Built
 

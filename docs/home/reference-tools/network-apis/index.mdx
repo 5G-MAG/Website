@@ -11,6 +11,7 @@ import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { REPO_METADATA } from '@site/src/data/baskets';
+import ProjectSlide from '@site/src/components/ProjectSlide';
 
 export const REPO_COUNT = (REPO_METADATA['network-apis'] || []).length;
 
@@ -28,9 +29,13 @@ export const REPO_COUNT = (REPO_METADATA['network-apis'] || []).length;
 </div>
 </div>
 
+<ProjectSlide image="/assets/images/projects/network-apis-reference-tools.png" alt="CAMARA Connectivity Quality Management APIs: Reference Tools slide">
+
 The tools cover key CAMARA project APIs and their application to media production (live contribution, remote production) and live distribution scenarios. Targeted at developers and network engineers integrating 5G network intelligence into media workflows.
 
 CAMARA is an open-source project (Linux Foundation, in collaboration with GSMA) that standardises portable network APIs, so a media application can request network behaviour (for example a QoS boost for a live stream) through common interfaces rather than operator-specific ones. On the network side these interfaces build on 3GPP capability-exposure work such as the Service Enabler Architecture Layer (SEAL, [TS 23.434](https://www.3gpp.org/dynareport/23434.htm)). For the full API coverage table, see [Implementation Detail](./implementation); to see one assembled scenario already running, jump to the [Connected Media Production and Contribution](/showcase/network-apis) showcase.
+
+</ProjectSlide>
 
 ## What's Built
 
