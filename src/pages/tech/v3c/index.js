@@ -104,7 +104,7 @@ export default function V3C() {
                 <p>
                   The MPEG V3C Immersive Platform reference tools provide an end-to-end pipeline for
                   encoding, streaming, and rendering V3C content over 5G networks. The related{' '}
-                  <Link to="/tech/beyond-2d">Beyond 2D Video</Link> work extends this to evaluation
+                  <Link to="/tech/beyond-2d">Beyond 2D Video Experiences</Link> work extends this to evaluation
                   frameworks for next-generation visual experiences (stereoscopic, multi-view, depth
                   and point-cloud formats) — closely related to V3C but tracked as its own topic.
                 </p>
@@ -323,9 +323,9 @@ export default function V3C() {
               <Link to="/reference-tools/v3c/">Reference Tools</Link> scope and repositories pages.
             </p>
 
-            <h3>Beyond 2D Video</h3>
+            <h3>Beyond 2D Video Experiences</h3>
             <p>
-              The <Link to="/tech/beyond-2d">Beyond 2D Video</Link> work provides an evaluation
+              The <Link to="/tech/beyond-2d">Beyond 2D Video Experiences</Link> work provides an evaluation
               framework for benchmarking encoding, streaming, and rendering pipelines for
               next-generation visual formats that go beyond traditional flat-screen video —
               stereoscopic video, multi-view video, video plus depth, and point clouds — including the
@@ -333,7 +333,7 @@ export default function V3C() {
               approaches that relate to V3C. It relates to the 3GPP study captured in{' '}
               <a href="https://www.3gpp.org/dynareport/26956.htm">TR 26.956</a> (Evaluation and
               Characterization of Beyond 2D Video Formats and Codecs). See the{' '}
-              <Link to="/tech/beyond-2d">Beyond 2D Video</Link> page for the full technical treatment,
+              <Link to="/tech/beyond-2d">Beyond 2D Video Experiences</Link> page for the full technical treatment,
               including the evaluation scenarios, pipeline and metrics.
             </p>
 
@@ -360,10 +360,10 @@ export default function V3C() {
             </p>
 
             <p>
-              <strong>Related:</strong> <Link to="/tech/beyond-2d">Beyond 2D Video</Link> &middot;{' '}
+              <strong>Related:</strong> <Link to="/tech/beyond-2d">Beyond 2D Video Experiences</Link> &middot;{' '}
               <Link to="/tech/xr">XR/3D Scenes with MPEG-I Scene Description</Link> &middot;{' '}
               <Link to="/standards/v3c">Standards: MPEG V3C Immersive Platform</Link> &middot;{' '}
-              <Link to="/standards/beyond-2d">Standards: Beyond 2D Video</Link>
+              <Link to="/standards/beyond-2d">Standards: Beyond 2D Video Experiences</Link>
             </p>
           </div>
         </section>

@@ -45,6 +45,6 @@ Follow the [video walkthrough](/reference-tools/xr/tutorials/blender-exporter-un
 
 ## Related
 
-- [Testbeds and Evaluation Tools](/testbeds) for the Beyond 2D Evaluation Framework, used to assess quality of these richer-than-2D experiences.
+- [Testbeds & Evaluation Frameworks](/testbeds) for the Beyond 2D Evaluation Framework, used to assess quality of these richer-than-2D experiences.
 - [Reference Tools](/reference-tools) for the individual specification implementations.
 - [Applications](/showcase/) for the other end-to-end service scenarios.

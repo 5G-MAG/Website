@@ -222,11 +222,11 @@ const ALL_TOPICS = [
     // (docs/tech/volumetric/) since that folder's one real doc,
     // beyond-2d.mdx, genuinely is Beyond 2D's own analysis, not V3C's --
     // same doc, now correctly attributed to the project it's about.
-    label: 'Beyond 2D Evaluation Framework',
+    label: 'Beyond 2D Video Experiences',
     techHref: '/tech/beyond-2d',
     autogen: 'volumetric',
     techOverviewDoc: 'volumetric/beyond-2d',
-    standards: [{ doc: 'standards/beyond-2d', label: 'Standards: Beyond 2D Video' }],
+    standards: [{ doc: 'standards/beyond-2d', label: 'Standards: Beyond 2D Video Experiences' }],
   },
   {
     label: 'XR/3D Scenes with MPEG-I Scene Description',

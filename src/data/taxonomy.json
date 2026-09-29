@@ -366,6 +366,7 @@
     },
     {
       "name": "Beyond 2D Evaluation Framework",
+      "displayName": "Beyond 2D Video Experiences",
       "doc_url": "/testbeds/beyond-2d/",
       "tech_url": "/tech/beyond-2d",
       "standards_url": "/standards/beyond-2d",
@@ -769,7 +770,7 @@
       },
       {
         "repo_slug": "rt-srsRAN_Project",
-        "display_name": "5G-MAG's Fork of srsRAN Project",
+        "display_name": "5G-MAG's fork of srsRAN Project",
         "description": "5G-MAG maintains a fork of srsRAN_Project for the development and adaptation of NG-RAN procedures to support other Reference Tools.",
         "repo_url": "https://github.com/5G-MAG/rt-srsRAN_Project",
         "branch": "main",

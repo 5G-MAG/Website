@@ -48,7 +48,7 @@ export default function Testbeds() {
       description="Overview of 5G-MAG testbeds and evaluation frameworks for 6G traffic characterization, AI/ML, and beyond-2D video quality assessment."
     >
       <HubHero
-        title="Testbeds and Evaluation Tools"
+        title="Testbeds & Evaluation Frameworks"
         icon={TESTBEDS_ICON_PATH}
         actions={[
           <Link key="contribute" className="button button--primary" to="/contributing">
