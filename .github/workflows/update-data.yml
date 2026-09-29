@@ -80,10 +80,16 @@ jobs:
           SYNC_TOKEN: ${{ secrets.SYNC_TOKEN }}
         continue-on-error: true
 
+      - name: Refresh site stats (after community stats)
+        run: node scripts/fetch-site-stats.js
+        env:
+          SYNC_TOKEN: ${{ secrets.SYNC_TOKEN }}
+        continue-on-error: true
+
       - name: Commit and push if changed
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add static/data/releases.json static/data/contributors.json static/data/pull-requests.json static/data/community-stats.json static/data/roadmaps.json static/data/project-contributors-draft.json src/data/taxonomy.json
-          git diff --cached --quiet || git commit -m "Update release, contributor, PR, community-stats, roadmap and project-contributor data"
+          git add static/data/releases.json static/data/contributors.json static/data/pull-requests.json static/data/community-stats.json static/data/roadmaps.json static/data/project-contributors-draft.json static/data/site-stats.json src/data/taxonomy.json
+          git diff --cached --quiet || git commit -m "Update release, contributor, PR, community-stats, site-stats, roadmap and project-contributor data"
           git push

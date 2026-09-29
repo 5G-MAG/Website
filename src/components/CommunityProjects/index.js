@@ -1,4 +1,5 @@
 import BalancedLogo from '@site/src/components/BalancedLogo';
+import notOnHubDashboard from '@site/src/data/notOnHubDashboard.json';
 import { useState } from 'react';
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -12,13 +13,9 @@ import styles from './styles.module.css';
 // Same exclusion set CommunityStatsBoard used to keep its summary totals
 // matching the 5G-MAG/Getting-Started hub's own dashboard, repo for repo --
 // preserved here since this component replaces that one.
-const NOT_ON_HUB_DASHBOARD = new Set([
-  '5GC_APIs',
-  'cmcd-toolkit',
-  'rt-wui',
-  'rt-xr-gITFast',
-  'srsRAN',
-]);
+// Shared with scripts/fetch-site-stats.js, so the homepage clone total and
+// this dashboard's total count the same repositories.
+const NOT_ON_HUB_DASHBOARD = new Set(notOnHubDashboard);
 
 // Groups projects the same way reference-tools/index.js's own CATEGORIES
 // array already does (by standards body), plus a Testbeds group (which has

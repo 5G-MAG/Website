@@ -1,3 +1,4 @@
+import SiteStats from '@site/src/components/SiteStats';
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
@@ -410,6 +411,9 @@ export default function Home() {
                 comment for why, and why this rotates rather than showing a
                 grid. */}
             <FadingSlideRow slides={showcaseSlides} />
+
+            {/* Counted daily, never typed: see SiteStats. */}
+            <SiteStats />
           </div>
         </section>
 

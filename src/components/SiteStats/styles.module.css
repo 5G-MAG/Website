@@ -1,0 +1,60 @@
+.strip {
+  padding-top: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-top: 3px solid var(--ifm-color-primary);
+  border-radius: 12px;
+  padding: 1.1rem 1.2rem;
+  background: var(--ifm-background-surface-color);
+}
+
+.num {
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--ifm-color-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.label {
+  font-weight: 600;
+  margin-top: 0.35rem;
+  color: var(--ifm-font-color-base);
+}
+
+.sub {
+  font-size: 0.85rem;
+  color: var(--ifm-color-emphasis-700);
+  margin-top: 0.15rem;
+}
+
+.foot {
+  font-size: 0.8rem;
+  color: var(--ifm-color-emphasis-600);
+  margin: 0.9rem 0 0;
+  text-align: right;
+}
+
+@media (max-width: 760px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .num {
+    font-size: 1.7rem;
+  }
+
+  .foot {
+    text-align: left;
+  }
+}
