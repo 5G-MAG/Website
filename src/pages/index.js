@@ -5,7 +5,10 @@ import { useBaseUrlUtils } from '@docusaurus/useBaseUrl';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HeroSlideshow from '@site/src/components/HeroSlideshow';
-import MediaConnectivityDiagram from '@site/src/components/MediaConnectivityDiagram';
+import MediaConnectivityDiagram, {
+  CONNECTIVITY_SYMBOL_PATHS,
+  MEDIA_SYMBOL_PATHS,
+} from '@site/src/components/MediaConnectivityDiagram';
 import MembersMarquee from '@site/src/components/MembersMarquee';
 import SearchBar from '@theme/SearchBar';
 import { icon } from '@site/src/components/GodeeperCard';
@@ -153,25 +156,26 @@ function StandCard({ basket }) {
 }
 
 // The four things 5G-MAG does, named in so many words at the top of the
-// first section. Icons are ones the site already draws: the old TV and the
-// signal bars from MediaConnectivityDiagram's halo and the catalog, the
-// Standards hub's own speech bubble, and the catalog's code brackets (the
-// Reference Tools icon). Standards and Open Source reuse the one-liners
-// src/data/discoverWork.js already gives those two activities.
+// first section. Multimedia and Connectivity draw the two symbols inside the
+// Media and Connectivity diagram's circles (exported by that component);
+// Standards takes the Standards hub's own speech bubble, Open Source the
+// catalog's code brackets (the Reference Tools icon). Standards and Open
+// Source reuse the one-liners src/data/discoverWork.js already gives those
+// two activities.
 const THEMES = [
   {
     title: 'Multimedia',
     body: 'Streaming, broadcast, real-time communication and immersive media.',
     to: '/tech',
     cta: 'Technology areas',
-    d: ['M3 9a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2l0 -9', 'M16 3l-4 4l-4 -4'],
+    d: MEDIA_SYMBOL_PATHS,
   },
   {
     title: 'Connectivity',
     body: '5G systems today and 6G next: multicast, satellite, private networks and network APIs.',
     to: '/tech#where-we-stand',
     cta: 'Where we stand',
-    d: ICON_CATALOG['antenna-bars-5'],
+    d: CONNECTIVITY_SYMBOL_PATHS,
   },
   {
     title: 'Standards',

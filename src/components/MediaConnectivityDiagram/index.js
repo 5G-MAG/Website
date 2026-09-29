@@ -19,6 +19,15 @@ import styles from './styles.module.css';
 // each circle's own outward direction (away from the other circle, 0deg)
 // toward straight-up (positive) or straight-down (negative) — evenly spread
 // from -85deg to 85deg, at a fixed radius R from that circle's center.
+// The symbols inside the two circles: a play button for Media, a dot
+// under two arcs for Connectivity. Exported so the homepage's Multimedia
+// and Connectivity cards draw the same two symbols.
+export const MEDIA_SYMBOL_PATHS = ['M7 4v16l13 -8l-13 -8'];
+export const CONNECTIVITY_SYMBOL_PATHS = [
+  'M18.364 19.364a9 9 0 1 0 -12.728 0',
+  'M15.536 16.536a5 5 0 1 0 -7.072 0',
+  'M11 13a1 1 0 1 0 2 0a1 1 0 1 0 -2 0',
+];
 const MEDIA_CENTER = { cx: 340, cy: 290 };
 const CONNECTIVITY_CENTER = { cx: 686, cy: 290 };
 const HALO_R = 175;
@@ -139,7 +148,9 @@ export default function MediaConnectivityDiagram() {
         strokeLinecap="round"
         strokeLinejoin="round"
       >
-        <path d="M7 4v16l13 -8l-13 -8" />
+        {MEDIA_SYMBOL_PATHS.map((d) => (
+          <path key={d} d={d} />
+        ))}
       </g>
       <text
         x="340"
@@ -180,9 +191,9 @@ export default function MediaConnectivityDiagram() {
         strokeLinecap="round"
         strokeLinejoin="round"
       >
-        <path d="M18.364 19.364a9 9 0 1 0 -12.728 0" />
-        <path d="M15.536 16.536a5 5 0 1 0 -7.072 0" />
-        <path d="M11 13a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+        {CONNECTIVITY_SYMBOL_PATHS.map((d) => (
+          <path key={d} d={d} />
+        ))}
       </g>
       <text
         x="686"
