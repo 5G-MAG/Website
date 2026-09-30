@@ -521,7 +521,7 @@
       "displayName": "VOPS Conformance Validator",
       "doc_url": "/testbeds/vops/",
       "tech_url": null,
-      "standards_url": null,
+      "standards_url": "/standards/vops",
       "tagline": "Validates video bitstreams against the operation points of 3GPP TS 26.265",
       "basket": "testbeds",
       "repos": [
