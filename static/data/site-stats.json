@@ -1,16 +1,16 @@
 {
   "repositories": {
-    "total": 56,
-    "public": 38,
+    "total": 57,
+    "public": 39,
     "earlyAccess": 18,
     "source": "github"
   },
-  "clones": 18588,
+  "clones": 19213,
   "specIssues": 182,
   "sdoInputs": 35,
-  "updated_at": "2026-09-30 02:33 UTC",
-  "projects": 22,
+  "updated_at": "2026-09-30 14:10 UTC",
+  "projects": 23,
   "referenceTools": 19,
-  "testbeds": 3,
+  "testbeds": 4,
   "workshopInputs": 6
 }

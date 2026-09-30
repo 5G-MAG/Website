@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-30 02:32 UTC",
+  "updated_at": "2026-09-30 14:10 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -208,6 +208,32 @@
       "doc_url": "/reference-tools/5g-broadcast/",
       "tagline": "The 3GPP-based broadcast delivery system bridging OTT streaming and broadcasting",
       "pulls": [
+        {
+          "repo": "rt-mbms-modem",
+          "branch": null,
+          "number": 55,
+          "title": "rest: report the pre-FEC BER estimate from srsRAN in the channel status",
+          "url": "https://github.com/5G-MAG/rt-mbms-modem/pull/55",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-09-30",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-mbms-client",
+          "branch": null,
+          "number": 2,
+          "title": "client: acquire the Service Announcement by every client-side method of TS 26.346",
+          "url": "https://github.com/5G-MAG/rt-mbms-client/pull/2",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-09-30",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "rt-mbms-modem",
           "branch": null,
@@ -1270,6 +1296,12 @@
       ]
     },
     {
+      "name": "VOPS Conformance Validator",
+      "doc_url": "/testbeds/vops/",
+      "tagline": "Validates video bitstreams against the operation points of 3GPP TS 26.265",
+      "pulls": []
+    },
+    {
       "name": "Common Tools",
       "doc_url": "/reference-tools/common-tools/",
       "tagline": "Shared helper repositories supporting 5G-MAG Reference Tools",
@@ -1424,6 +1456,19 @@
       "doc_url": "/reference-tools/3gpp-platforms/",
       "tagline": "Lab-ready 5G RAN and Core built on Open-Source platforms",
       "pulls": [
+        {
+          "repo": "srsRAN_4G",
+          "branch": null,
+          "number": 6,
+          "title": "phch: estimate the pre-FEC bit error rate of decoded DL-SCH code blocks",
+          "url": "https://github.com/5G-MAG/srsRAN_4G/pull/6",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-09-30",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "srsRAN_4G",
           "branch": null,
