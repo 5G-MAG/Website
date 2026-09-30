@@ -1,133 +1,95 @@
-// Specification catalogue for 5G Media Streaming (5GMS).
+// Specification catalogue for 5G Media Streaming (5GMS), rendered by
+// src/components/SpecIndex on /standards/5gms.
 //
-// Extracted from the "Related 3GPP Specifications" bullet list this page used to
-// carry, so it can be searched and filtered instead of scrolled (see
-// src/components/SpecIndex). `layer` is the grouping the bullets sat under on
-// the page: the 5GMS specifications proper, the generic UE data collection
-// companions, and the 5G Core services the 5GMS AF consumes.
-//
-// Two other views on the page are deliberately NOT part of this list and stay
-// markdown: "Specifications by Role" (analytical, which spec plays which role)
-// and "Specifications by release" (the release-by-release narrative). The
-// Release-19 Advanced Media Delivery section also keeps its own study reports
-// and external specifications, since each carries surrounding commentary and
-// change-request links that a table row cannot hold.
+// Titles are each document's cover title. `release` is the release of the
+// document's first version under change control, from its own change history.
+// Notes paraphrase clause 1 (Scope). Baseline: the latest Rel-19 version of
+// each document (TS 26.501 V19.4.0, TS 26.510 V19.2.0, TS 26.511 V19.0.0,
+// TS 26.512 V19.3.0, TS 26.531 V19.0.0, TS 26.532 V19.1.0, TS 26.117 V19.2.0,
+// TR 26.804 V19.1.0, TR 26.802 V19.2.0, TR 26.941 V19.0.1).
 export const FIVEGMS_SPECS = [
   {
     id: 'TS 26.501',
     title: '5G Media Streaming (5GMS); General description and architecture',
     url: 'https://www.3gpp.org/dynareport/26501.htm',
     layer: '5GMS',
+    release: '16',
+    note: 'the 5GMS architecture, with its network and UE functions and APIs, for downlink and uplink',
   },
   {
     id: 'TS 26.512',
     title: '5G Media Streaming (5GMS); Protocols',
     url: 'https://www.3gpp.org/dynareport/26512.htm',
     layer: '5GMS',
+    release: '16',
+    note: 'the protocols and APIs for 5GMS services',
   },
   {
     id: 'TS 26.510',
     title: 'Media delivery; interactions and APIs for provisioning and media session handling',
     url: 'https://www.3gpp.org/dynareport/26510.htm',
     layer: '5GMS',
-    note: 'the generalized Media Session Handling referenced by TS 26.512',
+    release: '18',
+    note: 'provisioning and media session handling APIs, shared by 5GMS and RTC',
   },
   {
     id: 'TS 26.511',
-    title: '5G Media Streaming (5GMS); Profiles, codecs and formats',
+    title: '5G Media Streaming (5GMS); Profiles, Codecs and Formats',
     url: 'https://www.3gpp.org/dynareport/26511.htm',
     layer: '5GMS',
+    release: '16',
+    note: 'profiles, codecs and formats for downlink and uplink, based on CMAF',
   },
   {
     id: 'TS 26.117',
     title: '5G Media Streaming (5GMS); Speech and audio profiles',
     url: 'https://www.3gpp.org/dynareport/26117.htm',
     layer: '5GMS',
-    note: 'companion to TS 26.511 for speech/audio-specific profiles; shares work item 5GMS3 with TS 26.511 and TS 26.512',
+    release: '16',
+    note: 'speech and audio capabilities, operation points and profiles',
   },
   {
     id: 'TS 26.531',
     title: 'Data Collection and Reporting; General Description and Architecture',
     url: 'https://www.3gpp.org/dynareport/26531.htm',
     layer: 'Data collection',
+    release: '17',
+    note: 'a generic architecture for collecting and reporting data in the 5G System',
   },
   {
     id: 'TS 26.532',
     title: 'Data Collection and Reporting; Protocols and Formats',
     url: 'https://www.3gpp.org/dynareport/26532.htm',
     layer: 'Data collection',
+    release: '17',
+    note: 'the APIs and data models for collecting and reporting UE data',
   },
   {
-    id: 'TS 29.521',
-    title: '5G System; Binding Support Management Service; Stage 3',
-    url: 'https://www.3gpp.org/dynareport/29521.htm',
-    layer: 'Core services consumed',
-    note: 'the 5GMS AF is a consumer, not a producer, of this service',
+    id: 'TR 26.804',
+    title: 'Study on 5G media streaming extensions',
+    url: 'https://www.3gpp.org/dynareport/26804.htm',
+    layer: 'Studies',
+    release: '17',
+    note: 'key topics for extending 5GMS; many TS 26.501 features come from its conclusions',
   },
   {
-    id: 'TS 29.514',
-    title: '5G System; Policy Authorization Service; Stage 3',
-    url: 'https://www.3gpp.org/dynareport/29514.htm',
-    layer: 'Core services consumed',
-    note: 'the 5GMS AF is a consumer, not a producer, of this service',
+    id: 'TR 26.802',
+    title: 'Multicast Architecture Enhancement for 5G Media Streaming',
+    url: 'https://www.3gpp.org/dynareport/26802.htm',
+    layer: 'Studies',
+    release: '17',
+    note: 'enhancements to 5GMS for multicast-broadcast media streaming',
   },
   {
-    id: 'CTA-5004-B',
-    title: 'Web Application Video Ecosystem - Common Media Client Data (CMCD)',
-    url: 'https://www.cta.tech/standards/cta-5004/',
-    layer: 'Related SDO specifications',
-    note: 'v2 (April 2026), adds Request/Response/Event transmission modes; one of the two features (with CMMF) this page\'s Technical Analysis deep-dive is built around',
-  },
-  {
-    id: 'ETSI TS 103 973',
-    title: 'Coded Multisource Media Format (CMMF) for Content Distribution and Delivery',
-    url: 'https://www.etsi.org/deliver/etsi_ts/103900_103999/103973/01.01.01_60/ts_103973v010101p.pdf',
-    layer: 'Related SDO specifications',
-    note: 'V1.1.1 (2024-10); this page\'s other core feature (with CMCD); already catalogued under Multisource delivery in src/data/specs/content-delivery.js',
-  },
-  {
-    id: 'ETSI TS 103 998',
-    title: 'DASH-IF: Content Steering for DASH',
-    url: 'https://www.etsi.org/deliver/etsi_ts/103900_103999/103998/01.01.01_60/ts_103998v010101p.pdf',
-    layer: 'Related SDO specifications',
-    note: 'V1.1.1 (2024-01); multi-CDN source-switching; published via the ETSI PAS route, EBU is a co-rightsholder',
-  },
-  {
-    id: 'DASH-IF IOP-1',
-    title: 'DASH-IF Interoperability Points; Part 1: Overview, Architecture and Interfaces',
-    url: 'https://dashif.org/docs/IOP-Guidelines/DASH-IF-IOP-Part1-v5.0.0.pdf',
-    layer: 'Related SDO specifications',
-    note: 'V5.0.0 (2022-06); constrained to CMAF-formatted media',
-  },
-  {
-    id: 'CTA-5006',
-    title: 'Web Application Video Ecosystem - Common Media Server Data (CMSD)',
-    url: 'https://shop.cta.tech/products/web-application-video-ecosystem-common-media-server-data-cta-5006',
-    layer: 'Related SDO specifications',
-    note: 'published November 2022; server/CDN-side counterpart to CMCD',
-  },
-  {
-    id: 'CTA-5001-F',
-    title: 'Web Application Video Ecosystem - Content Specification',
-    url: 'https://shop.cta.tech/products/cta-5001-f',
-    layer: 'Related SDO specifications',
-    note: 'published May 2025; CMAF-based WAVE content/program requirements',
-  },
-  {
-    id: 'CTA-5003-C',
-    title: 'Web Application Video Ecosystem - Device Playback Capabilities',
-    url: 'https://shop.cta.tech/products/cta-5003',
-    layer: 'Related SDO specifications',
-    note: 'published June 2026; device/platform requirements for playing back WAVE-compliant content',
+    id: 'TR 26.941',
+    title: 'Network Slicing Extensions for 5G media services',
+    url: 'https://www.3gpp.org/dynareport/26941.htm',
+    layer: 'Studies',
+    release: '18',
+    note: 'standards gaps for media streaming over 5G network slicing',
   },
 ];
 
-// Order the filter chips from the 5GMS specifications outwards: the framework
-// itself, then the reporting framework it feeds, then the 5G Core services the
-// AF relies on underneath, then the non-3GPP SDO specifications it profiles.
-export const FIVEGMS_LAYER_ORDER = [
-  '5GMS',
-  'Data collection',
-  'Core services consumed',
-  'Related SDO specifications',
-];
+// Filter chips, from the specifications outwards: 5GMS itself, the data
+// collection framework it reports into, then the studies behind it.
+export const FIVEGMS_LAYER_ORDER = ['5GMS', 'Data collection', 'Studies'];

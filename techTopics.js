@@ -52,7 +52,10 @@ const ALL_TOPICS = [
     techHref: '/tech/5gms',
     autogen: '5gms',
     techOverviewDoc: '5gms/overview',
-    standards: [{ doc: 'standards/5gms', label: 'Standards: 5G Media Streaming (5GMS)' }],
+    standards: [
+      { doc: 'standards/5gms', label: 'Standards: 5G Media Streaming (5GMS)', sidebarLabel: 'Specifications' },
+      { doc: 'standards/5gms-standards-evolution', label: 'Standards: 5GMS - Standards Evolution', sidebarLabel: 'Evolution by release' },
+    ],
   },
   {
     label: '5G Multicast Broadcast Services (MBS)',

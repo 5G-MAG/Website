@@ -97,7 +97,8 @@ ALL_TOPICS.forEach((topic) => {
       collapsed: false,
       items: topic.standards.map((s) => ({
         type: 'link',
-        label: s.label.replace(/^Standards: /, ''),
+        // `sidebarLabel`, where a topic sets one, is the menu's own shorter name.
+        label: s.sidebarLabel || s.label.replace(/^Standards: /, ''),
         href: resolveDocHref(s.doc),
       })),
     });

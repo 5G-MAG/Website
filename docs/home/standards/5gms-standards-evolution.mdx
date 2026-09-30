@@ -1,0 +1,101 @@
+---
+hide_title: true
+sidebar_label: Evolution by release
+title: 5GMS - Standards Evolution
+slug: /standards/5gms/evolution
+description: Release by release, the 3GPP SA4 work items and study items behind 5G Media Streaming, Release 16 to Release 20.
+pagination_prev: null
+pagination_next: null
+---
+
+import JumpMenu from '@site/src/components/JumpMenu';
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M7 4v16l13 -8l-13 -8"/></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Standards</span>
+<h1>5GMS - Standards Evolution</h1>
+</div>
+</div>
+
+:::tip[At a glance]
+
+- **Release 16:** 5GMS is created, because 3GPP's earlier streaming architecture (TS 26.233) was seen as unfit for 5G media streaming services. TS 26.233 is not maintained from Release 16 onward.
+- **Release 17:** edge processing, event exposure, and two studies, on extensions and on multicast.
+- **Release 18:** phase 2, and TS 26.510 for provisioning and media session handling.
+- **Releases 19 and 20:** Advanced Media Delivery (AMD).
+
+:::
+
+
+Work items as listed in the 3GPP work plan of 28 September 2026. The specifications shown are the 5GMS specifications among those the work plan lists for each item, plus the MBS specifications (TS 26.502, TS 26.517) for the Advanced Media Delivery items.
+
+Note: for FS_5GMS_Multicast the work plan lists its output only as "new". TR 26.802 is its output according to its study description (SP-200238), which names a TR titled "Multicast Architecture Enhancement for 5G Media Streaming".
+
+<JumpMenu items={[["Release 20", "release-20"], ["Release 19", "release-19"], ["Release 18", "release-18"], ["Release 17", "release-17"], ["Release 16", "release-16"], ["Other SA4 work items", "other-sa4-work-items-that-changed-5gms-specifications"]]} />
+
+### Release 20
+
+| Work item | Title | Type | Specifications | Status | WID |
+| --- | --- | --- | --- | --- | --- |
+| [FS_AMD_Ph2](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1090046) | Study on Advanced Media Delivery Phase 2 | Study | [TR 26.802](https://www.3gpp.org/dynareport/26802.htm), [TR 26.804](https://www.3gpp.org/dynareport/26804.htm), [TR 26.941](https://www.3gpp.org/dynareport/26941.htm) | Complete, Sep 2026 | [SP-251265](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGS_109_Beijing_2025-09/Docs/SP-251265.zip) |
+| [AMD_ARCH_Ph2-MED](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1120098) | Architectural Updates for Advanced Media Delivery Phase 2 | Normative | [TS 26.501](https://www.3gpp.org/dynareport/26501.htm), [TS 26.502](https://www.3gpp.org/dynareport/26502.htm) (MBS) | 51%, due Dec 2026 | [SP-260973](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGS_113_Madrid_2026-09/Docs/SP-260973.zip) |
+
+### Release 19
+
+| Work item | Title | Type | Specifications | Status | WID |
+| --- | --- | --- | --- | --- | --- |
+| [FS_AMD](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1030006) | Study on Advanced Media Delivery | Study | [TR 26.802](https://www.3gpp.org/dynareport/26802.htm), [TR 26.804](https://www.3gpp.org/dynareport/26804.htm) | Complete, Dec 2024 | [SP-241011](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGS_104_Shanghai_2024-06/Docs/SP-241011.zip) |
+| [AMD-ARCH-MED](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1060069) | Stage 2 for Advanced Media Delivery | Normative | [TS 26.501](https://www.3gpp.org/dynareport/26501.htm), [TS 26.502](https://www.3gpp.org/dynareport/26502.htm) (MBS) | Complete, Mar 2025 | [SP-241963](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGS_106_Madrid_2024-12/Docs/SP-241963.zip) |
+| [AMD_PRO-MED](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1070057) | Stage 3 for Advanced Media Delivery | Normative | [TS 26.510](https://www.3gpp.org/dynareport/26510.htm), [TS 26.511](https://www.3gpp.org/dynareport/26511.htm), [TS 26.512](https://www.3gpp.org/dynareport/26512.htm), [TS 26.517](https://www.3gpp.org/dynareport/26517.htm) (MBS), [TS 26.532](https://www.3gpp.org/dynareport/26532.htm) | Complete, Dec 2025 | [SP-250265](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGS_107_Incheon_2025-03/Docs/SP-250265.zip) |
+
+### Release 18
+
+| Work item | Title | Type | Specifications | Status | WID |
+| --- | --- | --- | --- | --- | --- |
+| [FS_MS_NS_Ph2](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=960048) | Study on Media Streaming aspects of Network Slicing Phase 2 | Study | [TR 26.941](https://www.3gpp.org/dynareport/26941.htm) | Complete, Dec 2023 | [SP-220675](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGS_96_Budapest_2022_06/Docs/SP-220675.zip) |
+| [5GMS_Ph2](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=960047) | 5G Media Streaming Architecture Phase 2 | Normative | [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) | Complete, Jun 2023 | [SP-230164](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGS_99_Rotterdam_2023-03/Docs/SP-230164.zip) |
+| [5GMS_Audio_Ph2](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=980009) | 5G Media Streaming Audio codec phase 2 for 5G-Advanced | Normative | [TS 26.117](https://www.3gpp.org/dynareport/26117.htm), [TS 26.511](https://www.3gpp.org/dynareport/26511.htm) | Complete, Mar 2023 | [SP-221033](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGS_98E_Electronic_2022-12/Docs/SP-221033.zip) |
+| [5GMS_Pro_Ph2](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1000018) | 5G Media Streaming Protocols Phase 2 | Normative | [TS 26.512](https://www.3gpp.org/dynareport/26512.htm), [TS 26.532](https://www.3gpp.org/dynareport/26532.htm), [TS 26.510](https://www.3gpp.org/dynareport/26510.htm) | Complete, Jun 2024 | [SP-230976](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGs_101_Bangalore_2023-09/Docs/SP-230976.zip) |
+
+### Release 17
+
+| Work item | Title | Type | Specifications | Status | WID |
+| --- | --- | --- | --- | --- | --- |
+| [FS_5GMS_Multicast](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=870014) | Study on Multicast Architecture Enhancements for 5G Media Streaming | Study | [TR 26.802](https://www.3gpp.org/dynareport/26802.htm) (see note) | Complete, Jun 2021 | [SP-200238](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGS_87E_Electronic/Docs/SP-200238.zip) |
+| [FS_5GMS_EXT](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=900029) | Study on 5G media streaming extensions | Study | [TR 26.804](https://www.3gpp.org/dynareport/26804.htm) | Complete, Mar 2022 | [SP-200937](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGs_90E_Electronic/Docs/SP-200937.zip) |
+| [5GMS_EDGE](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=920009) | Edge Extensions to the 5G Media Streaming Architecture | Normative | [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) | Complete, Sep 2021 | [SP-210375](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGs_92E_Electronic_2021_06/Docs/SP-210375.zip) |
+| [EVEX](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=960051) | 5GMS AF Event Exposure | Normative | [TS 26.512](https://www.3gpp.org/dynareport/26512.htm), [TS 26.501](https://www.3gpp.org/dynareport/26501.htm), [TS 26.531](https://www.3gpp.org/dynareport/26531.htm), [TS 26.532](https://www.3gpp.org/dynareport/26532.htm) | Complete, Jun 2022 | [SP-210374](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGs_92E_Electronic_2021_06/Docs/SP-210374.zip) |
+| [5GMS_EDGE_3](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=940009) | Edge Extensions to 5GMS Stage 3 | Normative | [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) | Complete, Jun 2022 | [SP-211336](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGS_94E_Electronic_2021_12/Docs/SP-211336.zip) |
+
+### Release 16
+
+| Work item | Title | Type | Specifications | Status | WID |
+| --- | --- | --- | --- | --- | --- |
+| [5GMSA](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=820002) | Media streaming architecture | Normative | [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) | Complete, Jun 2019 | [SP-180984](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGS_82/Docs/SP-180984.zip) |
+| [5GMS3](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=840001) | 5G Media Streaming stage 3 | Normative | [TS 26.117](https://www.3gpp.org/dynareport/26117.htm), [TS 26.511](https://www.3gpp.org/dynareport/26511.htm), [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) | Complete, Sep 2020 | [SP-190464](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGS_84/Docs/SP-190464.zip) |
+
+## Other SA4 work items that changed 5GMS specifications
+
+These SA4 work items are not 5GMS work items, but the work plan lists 5GMS specifications among the specifications they changed. The 5GMS specifications are shown.
+
+<details>
+<summary>The ten work items, with the 5GMS specifications each changed</summary>
+
+| Release | Work item | Title | 5GMS specifications | Status |
+| --- | --- | --- | --- | --- |
+| 17 | [5MBP3](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=940008) | 5G Multicast-Broadcast Protocols | [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) | Complete, Jun 2022 |
+| 17 | [5MBUSA](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=920010) | 5G Multicast-Broadcast User Service Architecture and related 5GMS Extensions | [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) | Complete, Mar 2022 |
+| 17 | [8K_TV_5G](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=920011) | 8K Television over 5G | [TS 26.511](https://www.3gpp.org/dynareport/26511.htm) | Complete, Mar 2022 |
+| 17 | [8K_VR_5G](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=890009) | Points for 8K VR 360 Video over 5G | [TS 26.511](https://www.3gpp.org/dynareport/26511.htm) | Complete, Jun 2021 |
+| 18 | [MeCAR](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=950015) | Media Capabilities for Augmented Reality | [TS 26.511](https://www.3gpp.org/dynareport/26511.htm), [TS 26.117](https://www.3gpp.org/dynareport/26117.htm) | Complete, Mar 2024 |
+| 19 | [5G_RTP_Ph2](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1060021) | 5G Real-time Transport Protocol Configurations, Phase 2 | [TS 26.510](https://www.3gpp.org/dynareport/26510.htm) | Complete, Sep 2025 |
+| 19 | [IVAS_Codec_Ph2](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1040021) | EVS Codec Extension for Immersive Voice and Audio Services, Phase 2 | [TS 26.117](https://www.3gpp.org/dynareport/26117.htm) | Complete, Dec 2025 |
+| 19 | [VOPS](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1030002) | Video Operating Points - Harmonization and Stereo MV-HEVC | [TS 26.511](https://www.3gpp.org/dynareport/26511.htm) | Complete, Dec 2025 |
+| 20 | [Energy_ARCH-MED](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1120097) | System architecture for application energy consumption information collection and reporting Stage 2 | [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) | Complete, Sep 2026 |
+| 20 | [Energy_PRO-MED](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1130006) | Protocols, network APIs and data types for application energy consumption information collection, reporting and exposure Stage 3 | [TS 26.510](https://www.3gpp.org/dynareport/26510.htm), [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) | 0%, due Mar 2027 |
+
+</details>
