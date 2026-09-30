@@ -87,9 +87,8 @@ export default function About() {
           <div className="container">
             <h2 className={styles.sectionTitle}>Running the Loop: From Requirements to Products</h2>
             <p className={styles.sectionSubtitle} style={{ marginBottom: '1.5rem' }}>
-              We take in specifications from standards development organizations, feed back
-              real-world requirements, accelerate open-source implementation, and validate
-              technologies through interop and plugfests, before they ship in products.
+              From specifications to products: we feed back requirements, build open-source
+              implementations and test interoperability before launch.
             </p>
 
             <StandardsLoopDiagram />
