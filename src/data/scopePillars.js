@@ -1,7 +1,7 @@
 // Single source of truth for /about's "Scope: Media and Connectivity"
 // four-pillar cards. The homepage's own "At the intersection of Media and
-// Connectivity" section uses DISCOVER_WORK instead (a different four
-// cards, organized by activity rather than by scope) -- this file's own
+// Connectivity" section uses HOME_WORK instead (src/data/discoverWork.js,
+// the four activities) -- this file's own
 // comment used to claim both pages shared this data; grepping confirmed
 // only about/index.js imports SCOPE_PILLARS, so that was stale.
 export const SCOPE_PILLARS = [
@@ -30,7 +30,7 @@ export const SCOPE_PILLARS = [
   },
   {
     title: 'Built better together',
-    body: 'Concrete, tangible actions — run jointly instead of duplicated org-by-org across the industry.',
+    body: 'Concrete, tangible actions, run jointly instead of duplicated org-by-org across the industry.',
     icon: (
       <>
         <path d="M9 15l6 -6" />

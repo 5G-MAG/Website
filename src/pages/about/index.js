@@ -31,7 +31,7 @@ export default function About() {
   return (
     <Layout
       title="About Us"
-      description="5G-MAG is a neutral not-for-profit association at the intersection of Media and Connectivity. Driven by our members, we support their efforts in bridging standards and deployments through open specifications and open-source software."
+      description="5G-MAG works with its members to shape global standards and turn them into deployable solutions, through open specifications and open-source software. A neutral, not-for-profit platform at the intersection of Media and Connectivity."
     >
       <HubHero
         title="About Us"
@@ -61,13 +61,14 @@ export default function About() {
           <div className="container">
             <h2 className={styles.sectionTitle}>Scope: Media and Connectivity</h2>
             <p className={styles.leadParagraph}>
-              &ldquo;We are not a standards body. We do not write specs. We translate them into
-              things that run.&rdquo;
+              Technology moves fast: global players shape it, the internet makes it borderless, and
+              it soon becomes a commodity.
             </p>
             <p className={`${styles.leadParagraph} ${styles['leadParagraph--last']}`}>
-              5G-MAG is a neutral not-for-profit association at the intersection of Media and
-              Connectivity. Driven by our members, we support their efforts in bridging standards and
-              deployments through open specifications and open-source software.
+              We work with our members to shape global standards and turn them into deployable
+              solutions, through open specifications and open-source software. A neutral,
+              not-for-profit platform to enable collaboration, share resources and efforts, and bring
+              new media experiences to users faster.
             </p>
 
             <div style={{ margin: '0 0 2rem' }}>
@@ -86,9 +87,9 @@ export default function About() {
           <div className="container">
             <h2 className={styles.sectionTitle}>Running the Loop: From Requirements to Products</h2>
             <p className={styles.sectionSubtitle} style={{ marginBottom: '1.5rem' }}>
-              We take in specifications from standards bodies, feed back real-world requirements,
-              accelerate open-source implementation, and validate technologies through interop and
-              plugfests — before it ships into products.
+              We take in specifications from standards development organizations, feed back
+              real-world requirements, accelerate open-source implementation, and validate
+              technologies through interop and plugfests, before they ship in products.
             </p>
 
             <StandardsLoopDiagram />
