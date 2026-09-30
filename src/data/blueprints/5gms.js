@@ -1,5 +1,5 @@
 // Shared blueprint for 5G Media Streaming (5GMS): the single source both the
-// Technical Analysis page (docs/tech/5gms/features-5gmsd.mdx, via
+// Technical Analysis page (docs/tech/5gms/features.mdx, via
 // FeatureBlueprint) and the Reference Tools page
 // (docs/home/reference-tools/5gms/implementation.mdx, via ImplementationBoard and
 // ArchitectureMap) read, so the "ideal system" and "real status against it"
@@ -8,14 +8,10 @@
 //
 // Two kinds of claim live on every feature row, and MUST NOT be merged into
 // one narrative (RULES.md rule 3):
-//   - `specRef`/`idealDescription` -- source-derived. The clause numbers and
-//     descriptions below are moved, not rewritten, from the real prose
-//     already on docs/tech/5gms/features-5gmsd.mdx and
-//     docs/home/reference-tools/5gms/implementation.mdx (see each row's own comment
-//     for exactly where). `specRef.quote` is left as an explicit placeholder
-//     -- no page on this site currently quotes TS 26.501/26.510 verbatim
-//     (they paraphrase, correctly, per copyright), so a real quote needs a
-//     fresh clause-by-clause read this pass deliberately does not do.
+//   - `specRef`/`idealDescription` -- source-derived from TS 26.501 V19.4.0
+//     clauses 4.0.2 to 4.0.12 (quote: the clause's defining sentence) and, for
+//     the API rows, TS 26.510 V19.2.0 clauses 5.2, 5.3, 8 and 9. Recorded in
+//     Standards2Deployments/projects/website-5gms/register.md, section J.
 //   - `status`/`statusEvidence` -- for six of the eight rows, this is real
 //     information ALREADY published on the site (scope.mdx's own feature
 //     prose and tutorials/index.mdx's per-interface checkbox table), carried
@@ -39,7 +35,6 @@ export const FIVEGMS_COMPONENTS = [
   { name: 'Media Player / Media Stream Handler', repo: 'rt-5gms-media-stream-handler' },
 ];
 
-const PLACEHOLDER_QUOTE = 'TODO: re-open this clause and pull its shortest defining sentence (not yet done this pass)';
 
 // Moved from scope.mdx's own per-interface prose ("Content Preparation, Edge
 // Resources, geo-fencing and URL signing... not yet implemented") and
@@ -52,10 +47,10 @@ export const FIVEGMS_FEATURES = [
   {
     id: 'content-hosting',
     name: 'Content Hosting',
-    specRef: { doc: 'TS 26.501', version: 'V19.4.0', clause: '4.0.2', proceduralClause: '5.4', quote: PLACEHOLDER_QUOTE },
+    specRef: { doc: 'TS 26.501', version: 'V19.4.0', clause: '4.0.2', proceduralClause: '5.4', quote: 'It provides a service equivalent to a Content Delivery Network (CDN) deployed inside or outside the Trusted DN.' },
     apis: [
       { referencePoint: 'M1', procedureClause: '5.2.2', api: 'Provisioning Sessions API', apiClause: '8.2' },
-      { referencePoint: 'M1', procedureClause: '5.2.3', api: 'Content protocols discovery API', apiClause: '8.3' },
+      { referencePoint: 'M1', procedureClause: '5.2.3', api: 'Content Protocols Discovery API', apiClause: '8.3' },
       { referencePoint: 'M1', procedureClause: '5.2.4', api: 'Server Certificates provisioning API', apiClause: '8.4' },
       { referencePoint: 'M1', procedureClause: '5.2.5', api: 'Content Preparation Templates provisioning API', apiClause: '8.5' },
       { referencePoint: 'M1', procedureClause: '5.2.6', api: 'Edge Resources provisioning API', apiClause: '8.6' },
@@ -64,7 +59,7 @@ export const FIVEGMS_FEATURES = [
       { referencePoint: 'M5', procedureClause: '5.3.2', api: 'Service Access Information API', apiClause: '9.2' },
     ],
     idealDescription:
-      'Provides a service equivalent to a Content Delivery Network (CDN) deployed inside or outside the Trusted Data Network. It includes selecting the ingest protocol and format, caching and proxying of media objects, content preparation, access protection (e.g. URL signing) and indicating a target distribution area (e.g. through geofencing). Once a Provisioning Session is established, Content Hosting is configured via a Content Hosting Configuration at M1 (optionally secured by a provisioned Server Certificate); the supported ingest protocols in Release 17 are HTTP pull-based ingest and DASH-IF push-based ingest.',
+      'Provides a service equivalent to a CDN, inside or outside the trusted data network. Content is ingested pull-based (retrieved from a media origin at the Application Provider) or push-based (published by the Application Provider), may be cached across one or more service locations and manipulated according to Content Preparation Templates, and is then retrieved by the 5GMSd Client. A provisioned Server Certificate may secure the content served. The 5GMSd Client may also be configured to report client data in band with media requests (TS 26.501 clause 5.13). Use of content hosting is logged and, if provisioned, exposed to the Application Provider as events.',
     status: 'partial',
     statusEvidence: INHERITED('docs/home/reference-tools/5gms/implementation.mdx, "Feature Deep Dives: Content Hosting" section'),
     note: 'Base ingest/hosting is implemented; Content Preparation, Edge Resources, geo-fencing and URL signing are accepted by the API but not yet implemented by the Reference Tools.',
@@ -73,13 +68,13 @@ export const FIVEGMS_FEATURES = [
   {
     id: 'network-assistance',
     name: 'Network Assistance',
-    specRef: { doc: 'TS 26.501', version: 'V19.4.0', clause: '4.0.5', proceduralClause: '5.9', quote: PLACEHOLDER_QUOTE },
+    specRef: { doc: 'TS 26.501', version: 'V19.4.0', clause: '4.0.5', proceduralClause: '5.9', quote: 'It enables the 5GMS Client in the UE to interrogate or manipulate the network Quality of Service for an ongoing media streaming session.' },
     apis: [
       { referencePoint: 'M5', procedureClause: '5.3.2', api: 'Service Access Information API', apiClause: '9.2' },
       { referencePoint: 'M5', procedureClause: '5.3.4', api: 'Network Assistance API', apiClause: '9.4' },
     ],
     idealDescription:
-      'Enables the 5GMS Client in the UE to interrogate or manipulate the network Quality of Service (QoS) for an ongoing media streaming session, via the Policy Control Function (AF-based network assistance) or via Access Network Bitrate Recommendation (ANBR) signalling between the UE modem and the RAN (RAN-based network assistance). It covers Bit Rate Recommendation (Throughput Estimation), which keeps the client synchronised with the network’s current capabilities, and Delivery Boost, a reactive request for a temporary increase in bit rate.',
+      'Enables the 5GMS Client to interrogate or manipulate the network Quality of Service for an ongoing session. It is not explicitly provisioned: whether it is available depends on system pre-configuration and policy. There are two mechanisms, AF-based (through the PCF) and ANBR-based (signalling between the UE modem and the RAN), and two sub-features: bit rate recommendation (throughput estimation), and delivery boost, a speculative request for a temporary boost to the session bit rate.',
     status: 'partial',
     statusEvidence: INHERITED('docs/home/reference-tools/5gms/implementation.mdx, "Feature Deep Dives: Network Assistance" section'),
     note: 'Only Delivery Boost is currently implemented by the Reference Tools; Throughput Estimation is still in development.',
@@ -88,15 +83,15 @@ export const FIVEGMS_FEATURES = [
   {
     id: 'dynamic-policies',
     name: 'Dynamic Policies',
-    specRef: { doc: 'TS 26.501', version: 'V19.4.0', clause: '4.0.6', proceduralClause: '5.7 (5.8 for the network-slicing variant)', quote: PLACEHOLDER_QUOTE },
+    specRef: { doc: 'TS 26.501', version: 'V19.4.0', clause: '4.0.6', proceduralClause: '5.8, 5.7.6', quote: 'It enables the 5GMS Client in the UE to manipulate the network traffic handling policies for an ongoing media streaming session.' },
     apis: [
       { referencePoint: 'M1', procedureClause: '5.2.2', api: 'Provisioning Sessions API', apiClause: '8.2' },
       { referencePoint: 'M1', procedureClause: '5.2.7', api: 'Policy Templates provisioning API', apiClause: '8.7' },
       { referencePoint: 'M5', procedureClause: '5.3.2', api: 'Service Access Information API', apiClause: '9.2' },
-      { referencePoint: 'M5', procedureClause: '5.3.3', api: 'Dynamic Policies API', apiClause: '9.3' },
+      { referencePoint: 'M5', procedureClause: '5.3.3', api: 'Dynamic Policy API', apiClause: '9.3' },
     ],
     idealDescription:
-      'Enables the 5GMS Client in the UE to manipulate the network traffic handling policies for an ongoing media streaming session. When the feature is offered and selected, the 5GMSd Application Provider specifies a set of policies in the Provisioning Session which can be invoked for the session, and the UE becomes aware of the selected policies as a list of valid Policy Template Ids (covering QoS, network slice/DNN context and charging treatment).',
+      'Enables the 5GMS Client to manipulate the network traffic handling policies for an ongoing session. The Application Provider provisions Policy Templates within a Provisioning Session. Each Policy Template carries an External reference and the Network QoS parameters of one Service Operation Point (for example SD, HD or UHD), and may apply to one or more Data Networks or Network Slices. Media Entry Point documents refer to the same Service Operation Points in their Service Descriptions. Outside the trusted data network, the PCF is reached through the NEF.',
     status: 'partial',
     statusEvidence: INHERITED('docs/home/reference-tools/5gms/implementation.mdx "Feature Deep Dives" section (Dynamic Policies checked; only the 5-Tuple Service Data Flow Description method checked, others unchecked)'),
     note: 'The base feature is implemented; of the Service Data Flow Description methods, only 5-Tuple is implemented (2-Tuple, ToS, Flow Label and Domain Name are not).',
@@ -105,7 +100,7 @@ export const FIVEGMS_FEATURES = [
   {
     id: 'consumption-reporting',
     name: 'Consumption Reporting',
-    specRef: { doc: 'TS 26.501', version: 'V19.4.0', clause: '4.0.8', proceduralClause: '5.6', quote: PLACEHOLDER_QUOTE },
+    specRef: { doc: 'TS 26.501', version: 'V19.4.0', clause: '4.0.8', proceduralClause: '5.6', quote: 'It allows consumption of downlink media streaming to be logged by the 5GMS System and exposed for analysis.' },
     apis: [
       { referencePoint: 'M1', procedureClause: '5.2.2', api: 'Provisioning Sessions API', apiClause: '8.2' },
       { referencePoint: 'M1', procedureClause: '5.2.12', api: 'Consumption Reporting provisioning API', apiClause: '8.12' },
@@ -113,7 +108,7 @@ export const FIVEGMS_FEATURES = [
       { referencePoint: 'M5', procedureClause: '5.3.6', api: 'Consumption Reporting API', apiClause: '9.6' },
     ],
     idealDescription:
-      'Allows consumption of downlink media streaming to be logged by the 5GMS System and exposed for analysis. Once a Provisioning Session is established, Consumption Reporting is configured via a Consumption Reporting Configuration that sets the reporting interval, the sample percentage of clients that report, and whether location and access-network-change reporting are required.',
+      'Allows consumption of downlink media streaming to be logged and exposed for analysis. When the feature is provisioned, the 5GMSd Client reports consumption to a network-side component of the 5GMS System, and the data may be exposed as events to subscribing Application Providers. Downlink only in the current release.',
     status: 'yes',
     statusEvidence: INHERITED('docs/home/reference-tools/5gms/tutorials/index.mdx M1 + M5 interface table (Consumption Reporting Provisioning and Consumption Reporting both checked)'),
     note: null,
@@ -122,7 +117,7 @@ export const FIVEGMS_FEATURES = [
   {
     id: 'qoe-metrics-reporting',
     name: 'QoE Metrics Reporting',
-    specRef: { doc: 'TS 26.501', version: 'V19.4.0', clause: '4.0.9', proceduralClause: '5.5', quote: PLACEHOLDER_QUOTE },
+    specRef: { doc: 'TS 26.501', version: 'V19.4.0', clause: '4.0.9', proceduralClause: '5.5', quote: 'It allows the Quality of Experience of media streaming sessions to be logged by the 5GMS System and exposed for analysis.' },
     apis: [
       { referencePoint: 'M1', procedureClause: '5.2.2', api: 'Provisioning Sessions API', apiClause: '8.2' },
       { referencePoint: 'M1', procedureClause: '5.2.11', api: 'Metrics Reporting provisioning API', apiClause: '8.11' },
@@ -130,7 +125,7 @@ export const FIVEGMS_FEATURES = [
       { referencePoint: 'M5', procedureClause: '5.3.5', api: 'Metrics Reporting API', apiClause: '9.5' },
     ],
     idealDescription:
-      'Enables the 5GMS System to log and expose streaming performance data for further analysis, via two distinct paths: RAN-based reporting (metrics sent to the OAM system via the Radio Access Network) and AF-based reporting (metrics sent directly to the network-side AF). A Metrics Reporting Configuration selects which DASH quality metrics are collected.',
+      'Allows the Quality of Experience of media streaming sessions to be logged and exposed for analysis. There are two mechanisms: RAN-based, with reports sent to the OAM via the RAN, and AF-based, with reports sent to network-side components of the 5GMS System. Data in AF-based reports may be exposed as events. Downlink only in the current release.',
     status: 'yes',
     statusEvidence: INHERITED('docs/home/reference-tools/5gms/tutorials/index.mdx M1 + M5 interface table (Metrics Reporting Provisioning and Metrics Reporting both checked)'),
     note: 'Currently supports the HTTP request/response list, Representation Switch Events, Buffer Level and MPD Information metrics.',
@@ -139,14 +134,14 @@ export const FIVEGMS_FEATURES = [
   {
     id: 'data-collection-reporting-exposure',
     name: 'Data Collection, Reporting and Exposure',
-    specRef: { doc: 'TS 26.501', version: 'V19.4.0', clause: '4.0.12', proceduralClause: '5.11', quote: PLACEHOLDER_QUOTE },
+    specRef: { doc: 'TS 26.501', version: 'V19.4.0', clause: '4.0.12', proceduralClause: '5.11', quote: 'It enables the 5GMS System to log data relating to media streaming sessions and to expose this to subscribers in the form of Events.' },
     apis: [
       { referencePoint: 'M1', procedureClause: '5.2.13', api: 'Event Data Processing provisioning API', apiClause: '8.13' },
       { referencePoint: 'M5', procedureClause: '5.3.5', api: 'Metrics Reporting API', apiClause: '9.5' },
       { referencePoint: 'M5', procedureClause: '5.3.6', api: 'Consumption Reporting API', apiClause: '9.6' },
     ],
     idealDescription:
-      'Would enable the 5GMS System to log data relating to media streaming sessions and expose this to subscribers in the form of Events, via the Event Data Processing provisioning API at M1 and the Metrics Reporting / Consumption Reporting APIs at M5. The event exposure this feature enables is defined in the generic UE data collection framework (architecture in TS 26.531, protocols and formats in TS 26.532); see the UE Data Collection, Reporting and Event Exposure project for that reference implementation.',
+      'Enables the 5GMS System to log data relating to media streaming sessions and to expose it to subscribers as events, in downlink and uplink. Defined in TS 26.501 clause 4.7.',
     status: 'no',
     statusEvidence: INHERITED('docs/home/reference-tools/5gms/implementation.mdx, "Feature Deep Dives: Data Collection, Reporting and Exposure" section (":::warning Not yet implemented in 5GMS")'),
     note: 'Not yet implemented within the framework of 5GMS. A generic UE data collection architecture exists separately under the UE Data Collection, Reporting and Event Exposure project, not yet wired into 5GMS.',
@@ -155,10 +150,10 @@ export const FIVEGMS_FEATURES = [
   {
     id: 'edge-processing',
     name: 'Edge Processing',
-    specRef: { doc: 'TS 26.501', version: 'V19.4.0', clause: '4.0.10', proceduralClause: '8', quote: PLACEHOLDER_QUOTE },
+    specRef: { doc: 'TS 26.501', version: 'V19.4.0', clause: '4.0.10', proceduralClause: '8', quote: 'It enables the 5GMS Client in the UE to take advantage of edge computing capabilities in the 5GMS System to support media streaming.' },
     apis: [{ referencePoint: 'M1', procedureClause: '5.2.6', api: 'Edge Resources provisioning API', apiClause: '8.6' }],
     idealDescription:
-      'Listed in the 5GMS Key Features table (features-5gmsd.mdx) with its own clause reference, but not yet elaborated with its own "Feature:" section or worked description anywhere on the site -- carried forward as a table entry only, not expanded on here.',
+      'Enables the 5GMS Client to take advantage of edge computing capabilities in the 5GMS System, in downlink and uplink. Defined in TS 26.501 clause 4.5, with procedures in clause 8. TS 26.510 table 5.1-1 has no row for edge processing; TS 26.512 table 4.2-1 also lists the Provisioning Sessions API at M1 and the Service Access Information API at M5 for edge content processing.',
     status: 'no',
     statusEvidence: INHERITED('docs/home/reference-tools/5gms/implementation.mdx "Feature Deep Dives" section (Edge Resources Provisioning unchecked)'),
     note: null,
@@ -167,10 +162,10 @@ export const FIVEGMS_FEATURES = [
   {
     id: 'embms-delivery',
     name: 'eMBMS Delivery',
-    specRef: { doc: 'TS 26.501', version: 'V19.4.0', clause: '4.0.11', proceduralClause: '5.10', quote: PLACEHOLDER_QUOTE },
+    specRef: { doc: 'TS 26.501', version: 'V19.4.0', clause: '4.0.11', proceduralClause: '5.10', quote: 'It enables the 5GMS System to provision the delivery of downlink media streaming content via eMBMS User Services sessions.' },
     apis: [],
     idealDescription:
-      'Listed in the 5GMS Key Features table (features-5gmsd.mdx) with its own clause reference, but not yet elaborated with its own "Feature:" section or worked description anywhere on the site -- carried forward as a table entry only, not expanded on here.',
+      'Enables the 5GMS System to provision the delivery of downlink media streaming content via eMBMS User Services sessions. Downlink only. Defined in TS 26.501 clause 4.6, with procedures in clause 5.10. TS 26.510 table 5.1-1 has no row for this feature, so there is no API table here; TS 26.512 table 4.2-1 maps it to the Provisioning Sessions API at M1d and the Service Access Information API at M5d.',
     status: 'unknown',
     statusEvidence: null,
     note: 'No existing site content states this feature’s implementation status either way; genuinely not yet assessed.',

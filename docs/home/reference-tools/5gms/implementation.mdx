@@ -34,7 +34,7 @@ The functional entities of 5G Media Streaming, instantiated for 5G Unicast Downl
 5G Media Streaming (5GMS) is a 3GPP framework for high-quality, efficient delivery of media, supporting services from Mobile Network Operators (MNOs) and third parties in both Downlink (5GMSd) and Uplink (5GMSu) Media Streaming. The 5GMS architecture is functionally divided into independent components, enabling deployments with various degrees of integration between 5G MNOs and Content Providers.
 
 For the full M1-M8 reference-point table (the named interfaces between these components), see
-[5GMS Overview: Interfaces for 5GMSd](/tech/5gms/overview#interfaces-for-5gmsd) — kept as one
+[5GMS Architecture: downlink reference points](/tech/5gms/architecture#interfaces-for-5gmsd) — kept as one
 canonical copy rather than repeated here.
 
 The reference tools developed by 5G-MAG for 5GMSd consist of four main components: the **5GMSd Application Function (AF)** (`rt-5gms-application-function`), which exposes the M1 provisioning and M5 session handling interfaces; the **5GMSd Application Server (AS)** (`rt-5gms-application-server`), which caches and delivers media objects to clients; the **Media Session Handler** (`rt-5gms-media-session-handler`), an Android background service that manages the streaming session on the User Equipment (UE) side; and the **Media Stream Handler** (`rt-5gms-media-stream-handler`), which handles media playback using the configuration provided by the Media Session Handler. In TS 26.501 terms the Media Stream Handler plays the role of the downlink **Media Player**.
@@ -494,7 +494,7 @@ At the moment, a generic architecture for UE Data Collection and Reporting is av
 ## Related
 
 - [Repositories & Releases](/reference-tools/5gms#repositories--releases)
-- Implementation Blueprint: [5GMS session establishment](/tech/5gms/overview#implementation-blueprint) — the step-by-step procedure this tool implements
+- Implementation Blueprint: [5GMS session establishment](/tech/5gms/architecture#how-a-downlink-session-runs) — the step-by-step procedure this tool implements
 - Applications: [Media Streaming, Multicast & Real-Time Communications](/showcase/streaming) — real, assembled scenarios built on this tool
 :::note
 Refer to the [rt-5gms-application-function](https://github.com/5G-MAG/rt-5gms-application-function) and related [5G-MAG Reference Tools](https://github.com/5G-MAG) repositories to contribute to this project. See [How to Contribute](/contributing) for the process.

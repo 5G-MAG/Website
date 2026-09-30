@@ -37,12 +37,12 @@ const ACCENT = '#00a0d2';
 
 const M1_M8 = [
   { ref: 'M1', connects: 'Application Provider → AF', standardised: 'Yes', purpose: 'Provisioning: the Application Provider configures the AF with content, policies and reporting settings.' },
-  { ref: 'M2', connects: 'Application Provider → AS', standardised: 'Yes', purpose: 'Content ingest: media is uploaded to the AS for delivery.' },
-  { ref: 'M3', connects: 'AF ↔ AS', standardised: 'No (internal)', purpose: 'Internal AF-to-AS configuration; left to the implementer since it never crosses an operator boundary.' },
+  { ref: 'M2', connects: 'Application Provider → AS', standardised: 'Yes (optional)', purpose: 'Content ingest: media is ingested into the AS, pulled by the AS or pushed by the provider.' },
+  { ref: 'M3', connects: 'AF → AS', standardised: 'Yes (added in Release 18)', purpose: 'AS configuration and management, and media session handling. Internal and not specified up to Release 17.' },
   { ref: 'M4', connects: 'AS → Media Player', standardised: 'Yes', purpose: 'Media delivery to the device, typically DASH or HLS over HTTP.' },
   { ref: 'M5', connects: 'Media Session Handler ↔ AF', standardised: 'Yes', purpose: 'Media session handling and reporting: consumption, metrics, network assistance, dynamic policies.' },
-  { ref: 'M6 / M7', connects: 'Media Session Handler ↔ Media Player/Streamer', standardised: 'Yes (UE-internal)', purpose: 'On-device APIs connecting the control and media components of the 5GMS Client.' },
-  { ref: 'M8', connects: 'Application Provider ↔ 5GMS-Aware Application', standardised: 'No (out of 3GPP scope)', purpose: 'Service-level information (for example the stream list), left to the application.' },
+  { ref: 'M6 / M7', connects: '5GMS-Aware Application → Media Session Handler / Media Player', standardised: 'Yes (UE-internal)', purpose: 'On-device APIs: M6 to use 5GMS functions, M7 for media access control. The Media Session Handler and Media Player also offer these APIs to each other at M11.' },
+  { ref: 'M8', connects: 'Application Provider ↔ 5GMS-Aware Application', standardised: 'No (private, beyond the scope of standardisation)', purpose: 'Information exchange between the application and the provider, for example Service Access Information.' },
 ];
 
 export default function FiveGMS() {
@@ -63,29 +63,21 @@ export default function FiveGMS() {
       />
 
       <main>
-        {/* Reconstructed after an accidental deletion this session wiped
-            this intro out along with the Current Status section it sat
-            next to (2026-09-25) -- no tracked or deployed copy of the
-            original wording survived to restore verbatim, so this is
-            freshly written from the same facts the file's own How It
-            Works section below states (AF/AS split, M1-M8 reference
-            points, TS 26.501/26.512), not a recovery of the lost text. */}
         <section className={styles.section}>
           <div className="container">
             <div className={styles.introGrid}>
               <div style={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
                 <p>
-                  5G Media Streaming (5GMS) is the 3GPP framework for delivering video, audio and
-                  metadata over 5G networks in both directions, standardising the interface between
-                  a media application, its content provider, and the mobile network itself. An
-                  Application Function (AF) manages sessions and policy while an Application Server
-                  (AS) delivers the content, connected by the M1-M8 reference points detailed below.
+                  5G Media Streaming (5GMS) is specified by 3GPP in TS 26.501 as a set of extensions to
+                  the 5G System architecture. It supports media streaming services from mobile network
+                  operators and from third parties, in downlink, where the network is the origin of the
+                  media, and in uplink, where the device is.
                 </p>
                 <p>
-                  This lets a streaming application request network assistance — QoS, dynamic
-                  policies, consumption reporting — through a standard interface rather than a
-                  bespoke, operator-specific one, and lets the network offer that assistance without
-                  needing to understand the application&apos;s own business logic.
+                  The architecture is divided into independent components, so that it can be deployed
+                  with different degrees of integration between mobile network operators and content
+                  providers. Media can be streamed as it is produced (live) or after it has been
+                  produced (on demand).
                 </p>
                 {PROJECT.sdos?.length > 0 && (
                   <div className={styles.capabilityTags}>
@@ -106,14 +98,31 @@ export default function FiveGMS() {
             <div className={styles.whyMattersBlock}>
               <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
               <p className={styles.whyMattersBody}>
-                Before a standard interface like this existed, a streaming application wanting
-                network assistance had no common way to ask for it, and an operator had no common
-                way to offer it — each integration was its own bespoke arrangement between one
-                application provider and one network. 5GMS standardises that boundary once, through
-                the AF/AS split and the M1-M8 reference points, so a conforming application can
-                request the same assistance from any conforming 5G network, and a network can offer
-                it to any conforming application, without either side needing to know the
-                other&apos;s internals.
+                Before 5GMS, 3GPP&apos;s streaming architecture was the Packet Switched Streaming
+                architecture in TS 26.233, mainly developed for RTSP streaming. When the Release 16 work
+                began, 3GPP considered it unfit for 5G media streaming services. Meanwhile, classical
+                broadcast and content distribution services were migrating towards modern distribution
+                architectures.
+              </p>
+              <p className={styles.whyMattersBody}>
+                A 3GPP study on media distribution over 5G (TR 26.891) concluded that a new 5G media
+                streaming architecture was required to enable any type of deployment of streaming
+                services over 5G. 5GMS is that architecture. Its Release 16 work item asked for input
+                from broadcasters, content providers and emerging media service providers, and from
+                mobile network operators running their own media services.
+              </p>
+              <p className={styles.whyMattersBody}>
+                As of Release 19, TS 26.501 defines these features for media streaming in the 5G
+                System: content hosting, content publishing and content preparation; network
+                assistance and dynamic policies; consumption and QoE metrics reporting; edge
+                processing; delivery via eMBMS and via MBS; data collection, reporting and exposure;
+                3GPP Service URL handling; and remote control. TS 26.501 states that many of its features
+                are motivated by the conclusions of TR 26.804, the Study on 5G media streaming
+                extensions.
+              </p>
+              <p className={styles.whyMattersBody} style={{ fontSize: '0.85rem', opacity: 0.8 }}>
+                Sources: WID SP-180984 (5GMSA, Release 16), clauses 3 and 4; TS 26.501 V19.4.0,
+                clauses 1 and 4.0.1 to 4.0.14.
               </p>
             </div>
           </div>
@@ -159,7 +168,7 @@ export default function FiveGMS() {
               5GMS separates control from media: the Application Function (AF) manages sessions and
               policy, while the Application Server (AS) actually delivers the content. The reference
               points below (M1-M8) are the named interfaces that connect these pieces together — most
-              are 3GPP-standardised APIs, a few are intentionally left open for implementers.
+              are 3GPP-standardised APIs; M8 is private and beyond the scope of standardisation. The table shows the downlink (5GMSd) case.
             </p>
 
             <p>
@@ -168,7 +177,7 @@ export default function FiveGMS() {
               description and architecture),{' '}
               <a href="https://www.3gpp.org/dynareport/26512.htm">TS 26.512</a> (5GMS protocols and
               APIs), <a href="https://www.3gpp.org/dynareport/26510.htm">TS 26.510</a> (generalised
-              media delivery provisioning and media session handling, from Release 18),{' '}
+              media delivery provisioning and media session handling, created in Release 18),{' '}
               <a href="https://www.3gpp.org/dynareport/26511.htm">TS 26.511</a> (5GMS profiles, codecs
               and formats). Related UE data collection and reporting is specified in{' '}
               <a href="https://www.3gpp.org/dynareport/26531.htm">TS 26.531</a> (architecture) and{' '}
@@ -200,32 +209,22 @@ export default function FiveGMS() {
             </div>
 
             <p>
-              The AF also bridges to the 5G Core (PCF, NEF, BSF) to obtain policy, QoS and binding
-              information — see{' '}
-              <Link to="/standards/5gms#5g-core-service-consumers-used-by-the-af">
-                5G Core service consumers
-              </Link>{' '}
-              on the standards page for that interaction.
+              The AF also reaches the 5G Core: directly from a trusted data network, for example the
+              PCF for policy and QoS, or through the NEF from an external one.
             </p>
 
             <p>
               The downlink direction (5GMSd) uses a &quot;d&quot; suffix (M1d to M8d) and the uplink
               direction (5GMSu) a &quot;u&quot; suffix (M1u to M8u). The 5G-MAG reference tools
-              implement the downlink direction. The{' '}
-              <Link to="/tech/5gms/overview">5GMS Overview</Link> works through the entities and
-              reference points in detail, the{' '}
-              <Link to="/tech/5gms/features-5gmsd">5GMSd Features</Link> page maps each downlink
-              feature to its reference points and APIs, and{' '}
-              <Link to="/tech/5gms/overview-amd">Advanced Media Delivery</Link> covers the Release-19
-              extensions.
+              implement the downlink direction.
             </p>
 
             <p>
-              Two points on the specification structure are worth noting for implementers. First, from
-              Release 18 the media session handling APIs were moved from TS 26.512 into TS 26.510 and
-              generalised so that the 5GMS System and the Real-Time media Communication (RTC) System
-              share the same Media Session Handler and AF provisioning; Release 17 keeps those APIs in
-              TS 26.512, with TS 26.510 not yet existing. Second, 5GMS consumption and QoE metrics reporting can feed the generic UE
+              Two points on the specification structure are worth noting for implementers. First, in
+              Release 18 the provisioning and media session handling operations moved from TS 26.512
+              to TS 26.510, which a 5GMS System and a Real-Time media Communication (RTC) System can
+              both use; TS 26.512 refers to them. Up to Release 17 they are specified in TS 26.512,
+              and TS 26.510 does not exist. Second, 5GMS consumption and QoE metrics reporting can feed the generic UE
               data collection framework specified in TS 26.531 (architecture) and TS 26.532 (protocols
               and formats), which is where event exposure to consuming functions such as the Network
               Data Analytics Function (NWDAF) or an Event Consumer AF is defined.

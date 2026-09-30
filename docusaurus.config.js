@@ -86,6 +86,7 @@ const config = {
           { from: '/tech/standards/5g-mbs', to: '/standards/5g-mbs' },
           { from: '/tech/standards/5g-mbs-standards-evolution', to: '/standards/5g-mbs/evolution' },
           { from: '/tech/standards/5gms', to: '/standards/5gms' },
+          { from: '/tech/5gms/features-5gmsd', to: '/tech/5gms/features' },
           { from: '/tech/standards/6g', to: '/standards/6g' },
           { from: '/tech/standards/ai-ml', to: '/standards/ai-ml' },
           { from: '/tech/standards/avatar', to: '/standards/avatar' },
