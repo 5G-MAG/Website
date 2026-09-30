@@ -364,7 +364,8 @@ export default function Home() {
             <div className={styles.introSplit}>
               <div>
                 <h2 className={clsx(styles.sectionTitle, styles.introTitle)}>
-                  At the intersection of Media and Connectivity
+                  At the intersection of{' '}
+                  <span className={styles.noWrap}>Media and Connectivity</span>
                 </h2>
                 <p className={styles.introLead}>
                   Technology moves fast: global players shape it, the internet makes it borderless, and it soon becomes a commodity.
