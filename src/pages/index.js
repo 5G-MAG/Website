@@ -7,7 +7,6 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HeroSlideshow from '@site/src/components/HeroSlideshow';
 import MediaConnectivityDiagram, {
-  CONNECTIVITY_SYMBOL_PATHS,
   MEDIA_SYMBOL_PATHS,
 } from '@site/src/components/MediaConnectivityDiagram';
 import MembersMarquee from '@site/src/components/MembersMarquee';
@@ -156,41 +155,48 @@ function StandCard({ basket }) {
   );
 }
 
-// The four things 5G-MAG does, named in so many words at the top of the
-// first section. Multimedia and Connectivity draw the two symbols inside the
-// Media and Connectivity diagram's circles (exported by that component);
-// Standards takes the Standards hub's own speech bubble, Open Source the
-// catalog's code brackets (the Reference Tools icon). Standards and Open
-// Source reuse the one-liners src/data/discoverWork.js already gives those
-// two activities.
+// The four things 5G-MAG does, one card per top-navigation section in the
+// same order (Technology, Standardisation, Software Accelerator, In Action)
+// and linking to that section's hub. Media and Connectivity draws the media
+// symbol from the diagram beside it (exported by that component); Shaping
+// Specifications takes the Standards hub's speech bubble, Open Source
+// Software the catalog's code brackets, In Action its own page's plug icon.
 const THEMES = [
   {
-    title: 'Multimedia',
-    body: 'Streaming, broadcast, calls, conferencing and immersive media.',
+    title: 'Media and Connectivity',
+    body: 'Streaming, broadcast, real-time and immersive media, over 5G, satellite, multicast and network APIs.',
     to: '/tech',
     cta: 'Technology areas',
     d: MEDIA_SYMBOL_PATHS,
   },
   {
-    title: 'Connectivity',
-    body: '5G systems today and 6G next: multicast, satellite, private networks and network APIs.',
-    to: '/tech#where-we-stand',
-    cta: 'Where we stand',
-    d: CONNECTIVITY_SYMBOL_PATHS,
-  },
-  {
-    title: 'Standards',
-    body: 'Feedback and requirements to standards bodies, from real deployments.',
+    title: 'Shaping Specifications',
+    body: 'Requirements and implementation feedback to standards development organizations.',
     to: '/standards',
-    cta: 'Standards',
+    cta: 'Standardisation',
     d: ['M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1'],
   },
   {
-    title: 'Open Source',
-    body: 'Open-source reference tools turning specs into working code.',
-    to: '/reference-tools',
-    cta: 'Reference Tools',
+    title: 'Open Source Software',
+    body: 'Reference tools and testbeds that turn specifications into working code.',
+    to: '/developer',
+    cta: 'Software Accelerator',
     d: ICON_CATALOG.code,
+  },
+  {
+    title: 'In Action',
+    body: 'Plugfests, demos and trials that prove interoperability before products launch.',
+    to: '/action',
+    cta: 'In Action',
+    // The In Action page's own plug icon (src/pages/action/index.js INTEROP_ICON_PATH).
+    d: [
+      'M7 12l5 5l-1.5 1.5a3.536 3.536 0 1 1 -5 -5l1.5 -1.5',
+      'M17 12l-5 -5l1.5 -1.5a3.536 3.536 0 1 1 5 5l-1.5 1.5',
+      'M3 21l2.5 -2.5',
+      'M18.5 5.5l2.5 -2.5',
+      'M10 11l-2 2',
+      'M13 14l-2 2',
+    ],
   },
 ];
 
