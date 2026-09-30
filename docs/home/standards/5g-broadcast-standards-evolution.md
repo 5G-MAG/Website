@@ -178,6 +178,3 @@ Individual 3GPP Change Requests (CRs) are not linked directly: the CR search por
 - [Standards: 5G MBS - Standards Evolution](/standards/5g-mbs/evolution)
 - [Standards: Non-Terrestrial Networks (NTN)](/standards/ntn)
 - [Standardisation](/standards): how 5G-MAG processes feedback on the specifications it maintains and tracks
-:::note
-Refer to the [Standards](https://github.com/5G-MAG/Standards/) repository to contribute to this documentation.
-:::

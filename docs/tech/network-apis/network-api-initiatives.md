@@ -221,6 +221,3 @@ The APIs analysed in this section share a set of conventions defined by the CAMA
 - **Versioning and releases.** APIs are shipped in twice-yearly meta-releases; a `wip` version on `main` is not a release. Several APIs here are still `v0`, so field names and enumerations can change.
 
 ---
-:::note
-Refer to the [Tech](https://github.com/5G-MAG/Tech/) repository to contribute to this documentation.
-:::

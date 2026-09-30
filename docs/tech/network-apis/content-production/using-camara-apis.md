@@ -367,6 +367,3 @@ Before any of the calls above, the API consumer authenticates to the operator's 
 ## Related
 
 - [Network API Initiatives](../network-api-initiatives): the CAMARA APIs and their 3GPP mappings.
-:::note
-Refer to the [Tech](https://github.com/5G-MAG/Tech/) repository to contribute to this documentation.
-:::

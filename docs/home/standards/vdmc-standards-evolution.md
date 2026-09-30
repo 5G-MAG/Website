@@ -21,7 +21,3 @@ This page is the detailed, stage-by-stage companion to [Standards: Dynamic Mesh 
 ## Standardisation stage history
 
 **Not yet populated.** V-DMC is a single ISO/IEC specification developed by ISO/IEC JTC 1/SC 29/WG 7, not a 3GPP work item: its progression is tracked through MPEG/WG 7's own stage process (Committee Draft, Draft International Standard, Final Draft International Standard, International Standard), not the 3GPP work item/CR databases used for [5G MBS - Standards Evolution](/standards/5g-mbs/evolution). No verified stage-by-stage history for ISO/IEC 23090-29 (currently Final Draft International Standard, July 2025, targeting International Standard March 2026) has been researched for this page yet. Not done as part of this pass.
-
-:::note
-Refer to the [Standards](https://github.com/5G-MAG/Standards/) repository to contribute to this documentation.
-:::

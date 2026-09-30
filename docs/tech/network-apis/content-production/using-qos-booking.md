@@ -171,6 +171,3 @@ A device-bound QoS booking is realised, once the booked device connects, as a Qo
 ## Related
 
 - [QoS Booking API](../camara-qos-booking): the API reference and CAMARA source.
-:::note
-Refer to the [Tech](https://github.com/5G-MAG/Tech/) repository to contribute to this documentation.
-:::

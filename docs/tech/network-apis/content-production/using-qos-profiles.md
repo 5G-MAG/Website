@@ -159,6 +159,3 @@ The field for error loss rate appears as `packetErrorLossRate` in the CAMARA QoS
 
 - [Network API Initiatives: Relevant QoS Parameters](../network-api-initiatives#relevant-qos-parameters): the shared parameter definitions.
 - [QoS Profiles API](../camara-qos-profiles): the API reference and CAMARA source.
-:::note
-Refer to the [Tech](https://github.com/5G-MAG/Tech/) repository to contribute to this documentation.
-:::

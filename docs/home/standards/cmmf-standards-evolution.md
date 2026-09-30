@@ -20,7 +20,3 @@ This page is the detailed, version-by-version companion to [Standards: CMMF (Mul
 ## Version history
 
 **Not yet populated.** CMMF is a single ETSI specification maintained through ETSI's own work item process, not a 3GPP work item: its version history is tracked through ETSI's portal (work item pages and successive TS editions), not the 3GPP work item/CR databases used for [5G MBS - Standards Evolution](/standards/5g-mbs/evolution). No verified prior-version or amendment history for ETSI TS 103 973 (currently V1.1.1, October 2024) has been researched for this page yet. Not done as part of this pass.
-
-:::note
-Refer to the [Standards](https://github.com/5G-MAG/Standards/) repository to contribute to this documentation.
-:::

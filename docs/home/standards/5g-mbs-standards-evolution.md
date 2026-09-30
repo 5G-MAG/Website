@@ -94,6 +94,3 @@ CR 5481 (TS 38.331, introducing SIB27) is confirmed directly from its own docume
 - [Standards: 5G Broadcast](/standards/5g-broadcast)
 - [Standards: 5G Broadcast - Standards Evolution](/standards/5g-broadcast/evolution)
 - [Standards: Non-Terrestrial Networks (NTN)](/standards/ntn)
-:::note
-Refer to the [Standards](https://github.com/5G-MAG/Standards/) repository to contribute to this documentation.
-:::

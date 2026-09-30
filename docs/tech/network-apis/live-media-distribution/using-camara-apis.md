@@ -132,6 +132,3 @@ The QoS requests map to network capability exposure through the Network Exposure
 
 - [Content Production: Using CAMARA APIs](../content-production/using-camara-apis): the fuller QoS API analysis reused here.
 - [Network API Initiatives](../network-api-initiatives): the CAMARA APIs and the 3GPP interfaces.
-:::note
-Refer to the [Tech](https://github.com/5G-MAG/Tech/) repository to contribute to this documentation.
-:::

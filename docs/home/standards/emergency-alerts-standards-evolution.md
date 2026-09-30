@@ -21,7 +21,3 @@ This page is the detailed, release-by-release companion to [Standards: 5G Broadc
 ## Release-by-release summary
 
 **Not yet populated.** No verified, release-by-release work-item or Change Request history for TS 22.268, TS 23.041, TS 29.168, TS 36.331, ETSI TS 102 900 has been researched for this page yet. Populating it means checking each specification's own "Related Work Items" entry against the 3GPP work item portal (portal.3gpp.org) and its Change Request history against the public 3GPP CR database — the same approach used for [5G MBS - Standards Evolution](/standards/5g-mbs/evolution) and [5G Broadcast - Standards Evolution](/standards/5g-broadcast/evolution). Not done as part of this pass.
-
-:::note
-Refer to the [Standards](https://github.com/5G-MAG/Standards/) repository to contribute to this documentation.
-:::

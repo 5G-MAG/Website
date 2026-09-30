@@ -220,6 +220,3 @@ A QoS booking reserves per-device QoS treatment that, on assignment and connecti
 ## Related
 
 - [QoS Booking and Assignment API](../camara-qos-booking-assignment): the API reference and CAMARA source.
-:::note
-Refer to the [Tech](https://github.com/5G-MAG/Tech/) repository to contribute to this documentation.
-:::
