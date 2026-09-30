@@ -14,7 +14,6 @@
 // is 5G Broadcast TV Radio on its `main` branch but 5G Broadcast Emergency
 // Alerts on its `emergency-alerts` branch. repoName/repoBranch below
 // normalize both shapes.
-const fs = require('fs');
 const path = require('path');
 
 const TAXONOMY_FILE = path.join(__dirname, '../../src/data/taxonomy.json');
@@ -48,25 +47,4 @@ function repoBranch(entry) {
   return typeof entry === 'string' ? null : entry.branch || null;
 }
 
-// Persists PROJECTS's current in-memory state (mutated in place by a
-// caller, e.g. fetch-project-contributors.js adding a credit) back to
-// taxonomy.json, preserving BASKETS, REPO_METADATA, ICON_CATALOG and
-// CONTRIBUTORS untouched. The one place that knows the merged file's
-// shape, so a script that only ever touches PROJECTS never has to.
-//
-// Bug fixed here (code-derived, no spec claim): this used to write only
-// {baskets, projects}, silently dropping repoMetadata and iconCatalog from
-// taxonomy.json on every call -- live since fetch-project-contributors.js
-// started calling this, caught before it ran against real data.
-function writeProjects() {
-  fs.writeFileSync(
-    TAXONOMY_FILE,
-    JSON.stringify(
-      { baskets: BASKETS, projects: PROJECTS, repoMetadata: REPO_METADATA, iconCatalog: ICON_CATALOG, contributors: CONTRIBUTORS },
-      null,
-      2
-    ) + '\n'
-  );
-}
-
-module.exports = { PROJECTS, BASKETS, REPO_METADATA, ICON_CATALOG, CONTRIBUTORS, repoName, repoBranch, writeProjects, TAXONOMY_FILE };
+module.exports = { PROJECTS, BASKETS, REPO_METADATA, ICON_CATALOG, CONTRIBUTORS, repoName, repoBranch, TAXONOMY_FILE };

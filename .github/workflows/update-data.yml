@@ -69,17 +69,6 @@ jobs:
           SYNC_TOKEN: ${{ secrets.SYNC_TOKEN }}
         continue-on-error: true
 
-      # Additive-only (see the script's own header): only ever adds a
-      # company credit to a project's `contributors` list when there's
-      # direct commit+CLA-team evidence, never removes or reorders an
-      # existing hand-added entry. That bound is what makes it safe to run
-      # unattended straight into src/data/taxonomy.json.
-      - name: Fetch and merge project contributor credits
-        run: node scripts/fetch-project-contributors.js
-        env:
-          SYNC_TOKEN: ${{ secrets.SYNC_TOKEN }}
-        continue-on-error: true
-
       - name: Refresh site stats (after community stats)
         run: node scripts/fetch-site-stats.js
         env:
@@ -90,6 +79,6 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add static/data/releases.json static/data/contributors.json static/data/pull-requests.json static/data/community-stats.json static/data/roadmaps.json static/data/project-contributors-draft.json static/data/site-stats.json src/data/taxonomy.json
-          git diff --cached --quiet || git commit -m "Update release, contributor, PR, community-stats, site-stats, roadmap and project-contributor data"
+          git add static/data/releases.json static/data/contributors.json static/data/pull-requests.json static/data/community-stats.json static/data/roadmaps.json static/data/site-stats.json
+          git diff --cached --quiet || git commit -m "Update release, contributor, PR, community-stats, site-stats and roadmap data"
           git push
