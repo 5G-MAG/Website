@@ -367,14 +367,13 @@ export default function Home() {
                   At the intersection of Media and Connectivity
                 </h2>
                 <p className={styles.introLead}>
-                  Open specifications and open-source software, turned into{' '}
-                  <span className={styles.noWrap}>real-world</span> applications.
+                  Technology moves fast: global players shape it, the internet makes it borderless, and it soon becomes a commodity.
                 </p>
                 <p className={styles.introLine}>
-                  A not-for-profit, neutral platform, driven by our members: we work with them, adding resources to their efforts.
+                  We work with our members to shape global standards and turn them into deployable solutions, through open specifications and open-source software.
                 </p>
                 <p className={styles.introLine}>
-                  Members build together, and back technologies that actually get deployed, not specifications that stall.
+                  A neutral, not-for-profit platform to enable collaboration, share resources and efforts, and bring new media experiences to users faster.
                 </p>
                 <div className={styles.introLinks}>
                   <Link to="/about">Learn more about us &rarr;</Link>
