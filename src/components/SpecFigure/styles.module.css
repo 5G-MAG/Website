@@ -1,0 +1,62 @@
+.figure {
+  margin: 1.5rem 0 2rem;
+}
+
+.frame {
+  display: block;
+  background: #ffffff;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 10px;
+  padding: 0.75rem;
+  text-align: center;
+  overflow-x: auto;
+}
+
+.frame:hover,
+.frame:focus-visible {
+  border-color: var(--ifm-color-primary);
+}
+
+.frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  /* the frame is the figure's border; opt out of the site-wide .markdown img card treatment */
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  background: none !important;
+}
+
+.caption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem 0.75rem;
+  margin-top: 0.6rem;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.title {
+  font-weight: 600;
+}
+
+.source {
+  color: var(--ifm-color-emphasis-600);
+}
+
+.hint {
+  display: none;
+  flex-basis: 100%;
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 640px) {
+  .hint {
+    display: block;
+  }
+}

@@ -1,0 +1,36 @@
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0 0 1.75rem;
+}
+
+.label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ifm-color-emphasis-600);
+  margin-right: 0.25rem;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-background-color);
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ifm-color-emphasis-800);
+  text-decoration: none !important;
+}
+
+.pill:hover,
+.pill:focus-visible {
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+}
