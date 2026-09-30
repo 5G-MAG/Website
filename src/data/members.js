@@ -42,7 +42,7 @@ export const MEMBERS = [
   { name: 'SWR - Südwestrundfunk', href: 'https://www.swr.de', logo: 'swr.png' },
   { name: 'Temix Communications', href: 'https://www.temix.it', logo: 'temix.png' },
   { name: 'TRedess', href: 'https://www.tredess.com', logo: 'tredess.png' },
-  { name: 'UPV - Universitat Politècnica de València', href: 'https://www.upv.es', logo: 'upv.png' },
+  { name: 'iTEAM - Universitat Politècnica de València', href: 'https://www.upv.es', logo: 'upv.png' },
   { name: 'XGN - XGen Network', href: 'https://www.xgn.network', logo: 'xgn.png' },
   { name: 'Yotta Media', href: 'https://www.yotta.work', logo: 'yotta.png' },
 ];

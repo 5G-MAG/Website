@@ -245,7 +245,6 @@
       "contributors": [
         "BBC - British Broadcasting Corporation",
         "Fraunhofer FOKUS",
-        "Universitat Politècnica de València",
         "iTEAM - Universitat Politècnica de València"
       ],
       "stages": {
@@ -2261,11 +2260,6 @@
       "name": "Sofia Digital",
       "href": "https://www.sofiadigital.fi",
       "logo": "sofiadigital.jpg"
-    },
-    {
-      "name": "Universitat Politècnica de València",
-      "href": "https://www.upv.es",
-      "logo": "upv.jpg"
     }
   ]
 }
