@@ -133,6 +133,9 @@ const TOPIC_META = {
     desc: 'Test and evaluation framework for immersive video quality assessment.',
     tags: ['Linux'],
   },
+  'VOPS Conformance Validator': {
+    desc: 'Conformance validator for the video operation points of 3GPP TS 26.265.',
+  },
 };
 
 const BASKET_DESC = {

@@ -517,6 +517,23 @@
       "icon": "brain-network"
     },
     {
+      "name": "VOPS Conformance Validator",
+      "displayName": "VOPS Conformance Validator",
+      "doc_url": "/testbeds/vops/",
+      "tech_url": null,
+      "standards_url": null,
+      "tagline": "Validates video bitstreams against the operation points of 3GPP TS 26.265",
+      "basket": "testbeds",
+      "repos": [
+        "vops-conformance-validator"
+      ],
+      "sdos": [
+        "3GPP"
+      ],
+      "icon": "flask",
+      "releases_slug": "#repositories"
+    },
+    {
       "name": "Common Tools",
       "doc_url": "/reference-tools/common-tools/",
       "tech_url": null,
@@ -1993,6 +2010,23 @@
         ],
         "public": true,
         "is_auxiliary": null
+      }
+    ],
+    "vops": [
+      {
+        "repo_slug": "vops-conformance-validator",
+        "display_name": "VOPS Conformance Validator",
+        "description": "Validates AVC and HEVC video bitstreams against the operation points of 3GPP TS 26.265 (VOPS)",
+        "repo_url": "https://github.com/5G-MAG/vops-conformance-validator",
+        "branch": "main",
+        "license": "BSD-3-Clause-Clear",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [],
+        "software": [],
+        "public": true,
+        "is_auxiliary": false
       }
     ]
   },
