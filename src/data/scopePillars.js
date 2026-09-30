@@ -7,7 +7,7 @@
 export const SCOPE_PILLARS = [
   {
     title: 'Fast tech evolution',
-    body: 'Connectivity and media technologies move fast, and together even faster — our scope keeps pace with both.',
+    body: 'Streaming, calls and immersive media now share fast-moving networks. Our scope keeps pace.',
     icon: (
       <>
         <path d="M3 17l6 -6l4 4l8 -8" />

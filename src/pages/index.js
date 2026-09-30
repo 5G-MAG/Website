@@ -166,7 +166,7 @@ function StandCard({ basket }) {
 const THEMES = [
   {
     title: 'Multimedia',
-    body: 'Streaming, broadcast, real-time communication and immersive media.',
+    body: 'Streaming, broadcast, calls, conferencing and immersive media.',
     to: '/tech',
     cta: 'Technology areas',
     d: MEDIA_SYMBOL_PATHS,
