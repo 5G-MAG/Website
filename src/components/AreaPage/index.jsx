@@ -94,10 +94,12 @@ function Showcase({ topic }) {
             </span>
           ))}
         </div>
-        <div className={styles.tutorial}>
-          <Link className="button button--primary" to={s.tutorial.to}>Try it →</Link>
-          {s.tutorial.inPreparation && <span className={styles.prep}>in preparation</span>}
-        </div>
+        {/* only a showcase that is available can be tried; an early-stage one shows no button */}
+        {s.status === 'available' && s.tutorial && !s.tutorial.inPreparation && (
+          <div className={styles.tutorial}>
+            <Link className="button button--primary" to={s.tutorial.to}>Try it →</Link>
+          </div>
+        )}
       </div>
     </article>
   );

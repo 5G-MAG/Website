@@ -37,7 +37,7 @@ export const SHOWCASE_BASKETS = {
     title: 'Content Delivery and Streaming',
     headline: 'Better streaming services, end to end',
     description:
-      'What you can build for content delivery and streaming: QoE and audience analytics, network-assisted streaming, CDN and edge delivery, with the spec features behind each and one tutorial to try it.',
+      'What you can build for content delivery and streaming: QoE and audience analytics, CDN and edge delivery, network-assisted streaming, with the spec features behind each and one tutorial to try it.',
     lead:
       'Media services may need more from networks than a bit pipe: insight into what viewers experience, help when the network can give it, delivery at scale, and a way to bring content in and keep it protected.\n\nEach showcase below starts from that problem, follows with the technology that supports a solution and what you can build with Reference Tools.',
     topics: [
@@ -51,9 +51,9 @@ export const SHOWCASE_BASKETS = {
             'Packet and server observations alone cannot fully reconstruct the player’s current experience. Players report QoE metrics and their consumption, and add CMCD key–value pairs, such as buffer state, playback rate and throughput estimate, to ordinary HTTP media requests.', // slides 13, 7
           status: 'available',
           features: [
-            { name: 'QoE metrics reporting', status: 'yes' }, // 4.0.9
-            { name: 'Consumption reporting', status: 'yes' }, // 4.0.8
-            { name: 'In-band client data reporting (CMCD)', status: 'yes' }, // 4.0.2, 5.13; TS 26.512 10.5.1
+            { name: 'QoE metrics reporting', status: 'partial' }, // 4.0.9; audit 2026-10-01: wrong report media type at the AF, no final report
+            { name: 'Consumption reporting', status: 'partial' }, // 4.0.8; audit: no final report when no interval is set
+            { name: 'In-band client data reporting (CMCD)', status: 'partial' }, // 4.0.2, 5.13; TS 26.512 10.5.1; audit: not provisioned, AS forwards headers
           ],
           tutorial: { label: 'QoE and Audience Analytics', to: `${TUT}#qoe-and-audience-analytics` }, // the three reporting tutorials
         },
@@ -62,34 +62,6 @@ export const SHOWCASE_BASKETS = {
           { title: 'Data collection, reporting and exposure framework', needs: 'Data collection, reporting and exposure', status: 'no' }, // slide 7; 4.0.12
           { title: 'Measure Latency Against a Common Reference', needs: 'Latency measurement and control (Release 20, in progress)', status: 'no' }, // slide 15; AMD page
           { title: 'Energy Information as an Additional Optimisation Input', needs: null }, // slide 19; not on /tech/5gms
-        ],
-      },
-      {
-        id: 'quality',
-        title: 'Network-assisted streaming',
-        diagram: 'network',
-        showcase: {
-          title: 'Network Assistance and Dynamic Policies', // slide 7
-          about:
-            'AF-based and ANBR-based assistance towards the client and the RAN, such as a short delivery boost when the buffer runs low; policy templates instantiated and provisioned through the PCF, one per quality tier (SD, HD, UHD).', // slide 7; 4.0.5, 4.0.6
-          status: 'early',
-          features: [
-            { name: 'Network assistance: delivery boost', status: 'yes' }, // 4.0.5
-            { name: 'Network assistance: bit rate recommendation', status: 'no' }, // 4.0.5
-            { name: 'Dynamic policies (5-tuple only)', status: 'partial' }, // 4.0.6
-          ],
-          tutorial: {
-            label: 'Network Assistance and Dynamic Policies',
-            to: `${TUT}network-assistance-and-dynamic-policies`,
-            inPreparation: true,
-          },
-        },
-        pipeline: [
-          { title: 'Improved QoS Support for Media Streaming: ECN and L4S', needs: 'Dynamic policies: ECN marking for L4S', status: 'no' }, // slide 8; 4.0.6
-          { title: 'QoS monitoring during a media streaming session', needs: 'Dynamic policies: QoS monitoring', status: 'no' }, // 4.0.6
-          { title: 'Background data transfer in off-peak windows', needs: 'Dynamic policies: Background Data Transfer', status: 'no' }, // 4.0.6
-          { title: 'Slice awareness', needs: 'Dynamic policies per Network Slice', status: 'no' }, // slide 12; 4.0.6, TS 26.510 5.2.7.1
-          { title: 'The Player Should Not Have to Rediscover a Known Limit', needs: 'In-band signalling of rate limits (Release 20, in progress)', status: 'no' }, // slide 16; AMD page
         ],
       },
       {
@@ -115,6 +87,34 @@ export const SHOWCASE_BASKETS = {
           { title: 'Distributing Encrypted and High-Value Content', needs: 'Content preparation with DRM', status: 'no' }, // slide 8; 4.0.4, 5.14
           { title: 'Service URLs and deep links', needs: 'Service URL handling', status: 'no' }, // slide 12; 4.0.13
           { title: 'One Media Service over Multiple Access Networks', needs: 'Multi-access media delivery (Release 20, in progress)', status: 'no' }, // slide 17; AMD page, TS 26.501 Annex H
+        ],
+      },
+      {
+        id: 'quality',
+        title: 'Network-assisted streaming',
+        diagram: 'network',
+        showcase: {
+          title: 'Network Assistance and Dynamic Policies', // slide 7
+          about:
+            'AF-based and ANBR-based assistance towards the client and the RAN, such as a short delivery boost when the buffer runs low; policy templates instantiated and provisioned through the PCF, one per quality tier (SD, HD, UHD).', // slide 7; 4.0.5, 4.0.6
+          status: 'early',
+          features: [
+            { name: 'Network assistance: delivery boost', status: 'partial' }, // 4.0.5; audit: the AF can request it, no client asks for it
+            { name: 'Network assistance: bit rate recommendation', status: 'no' }, // 4.0.5
+            { name: 'Dynamic policies (5-tuple only)', status: 'partial' }, // 4.0.6
+          ],
+          tutorial: {
+            label: 'Network Assistance and Dynamic Policies',
+            to: `${TUT}network-assistance-and-dynamic-policies`,
+            inPreparation: true,
+          },
+        },
+        pipeline: [
+          { title: 'Improved QoS Support for Media Streaming: ECN and L4S', needs: 'Dynamic policies: ECN marking for L4S', status: 'no' }, // slide 8; 4.0.6
+          { title: 'QoS monitoring during a media streaming session', needs: 'Dynamic policies: QoS monitoring', status: 'no' }, // 4.0.6
+          { title: 'Background data transfer in off-peak windows', needs: 'Dynamic policies: Background Data Transfer', status: 'no' }, // 4.0.6
+          { title: 'Slice awareness', needs: 'Dynamic policies per Network Slice', status: 'no' }, // slide 12; 4.0.6, TS 26.510 5.2.7.1
+          { title: 'The Player Should Not Have to Rediscover a Known Limit', needs: 'In-band signalling of rate limits (Release 20, in progress)', status: 'no' }, // slide 16; AMD page
         ],
       },
     ],
