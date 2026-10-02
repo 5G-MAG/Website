@@ -1,4 +1,3 @@
-import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
@@ -52,7 +51,7 @@ export default function XR() {
   return (
     <Layout
       title={PROJECT_NAME}
-      description="MPEG-I scene description and XR media integration over 5G: the scene format, its device and delivery model, and 5G-MAG's reference tools."
+      description="MPEG-I scene description and XR media integration over 5G: the scene format and 5G-MAG's reference tools."
     >
       <HubHero
         title={PROJECT_NAME}
@@ -136,92 +135,6 @@ export default function XR() {
             <ProjectRepoSection projectNames={displayNameOf(PROJECT)} accent={ACCENT} />
           </div>
         </section>
-
-        <section className={styles.section}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>How It Works</h2>
-            <p className={styles.sectionSubtitle}>
-              XR delivery combines a scene format, a runtime that plays it, a delivery layer over 5G,
-              and a device capability model. MPEG defines the scene format; 3GPP defines how it is
-              delivered over 5G and what a device must be able to play.
-            </p>
-
-            <p>
-              <strong>Key specifications:</strong> ISO/IEC 23090-14 (MPEG-I Scene Description), 3GPP{' '}
-              <a href="https://www.3gpp.org/dynareport/26928.htm">TR 26.928</a> (Extended Reality (XR) in
-              5G), <a href="https://www.3gpp.org/dynareport/26512.htm">TS 26.512</a> (5GMS transport),
-              ISO/IEC 23090-2 (OMAFv2, the second edition of the Omnidirectional Media Format).
-            </p>
-
-            <p>
-              MPEG-I Scene Description (ISO/IEC 23090-14) extends Khronos glTF 2.0 (also published as
-              ISO/IEC 12113). glTF describes the static scene: node hierarchy, meshes, materials,
-              textures, cameras and animations. The MPEG extensions add what glTF alone cannot express:
-              references to external and timed media, circular buffers for streaming, spatial audio,
-              real-world anchoring, interactivity, avatars, lighting and haptics.
-            </p>
-
-            <p>
-              At runtime, ISO/IEC 23090-14 defines a processing model with two roles. The{' '}
-              <strong>Presentation Engine</strong> parses the scene, renders each frame, and drives
-              playback; it knows the viewer&apos;s pose and object poses and can pass that information
-              downstream so delivery can be optimised. The{' '}
-              <strong>Media Access Function (MAF)</strong> is asked, through the MAF API, to make a
-              media object available in a given format — it builds a pipeline (access, demux, decode,
-              format conversion) appropriate to the object&apos;s MIME type and codec parameters, and
-              writes the result into buffers that the Presentation Engine reads. The MAF is deliberately
-              transport- and codec-agnostic: the same scene can be served over MPEG-DASH, RTP/SRTP or
-              local files without changing the scene document. This decoupling is the core
-              interoperability contract of the standard; the{' '}
-              <Link to="/tech/xr/mpeg-i-scene-description">MPEG-I Scene Description</Link> page details
-              the glTF extensions and the buffer/MAF interfaces in full.
-            </p>
-
-            <p>
-              For streamed and on-demand immersive media, the 5G Media Streaming (5GMS) framework
-              applies: 3GPP <a href="https://www.3gpp.org/dynareport/26501.htm">TS 26.501</a> defines the
-              architecture (Media Session Handler, Media AF/AS, provisioning and reporting) and TS
-              26.512 defines the protocols and APIs. For conversational and low-latency AR (for example
-              AR calls), the Real-Time Communication work (the{' '}
-              <a href="https://www.3gpp.org/dynareport/26506.htm">TS 26.506</a>/RTC family) applies, and
-              split rendering uses WebRTC transport.
-            </p>
-
-            <p>
-              On the device side, TR 26.928 (Rel-16) and{' '}
-              <a href="https://www.3gpp.org/dynareport/26998.htm">TR 26.998</a> (Rel-17) established the
-              reference architectures for XR and for glass-type AR/MR devices, and the STAR (stand-alone)
-              and EDGAR (edge-dependent) device classes.{' '}
-              <a href="https://www.3gpp.org/dynareport/26119.htm">TS 26.119</a> (MeCAR) turns these into
-              a concrete capability model — device categories (thin AR glasses, AR glasses, XR phone, XR
-              HMD) and the audio, video, scene and XR-system capabilities each supports — and aligns the
-              on-device XR client with the Khronos OpenXR runtime API, so an AR application can query
-              poses, spaces and inputs in a portable way. A STAR device can render a complex scene
-              locally; an EDGAR device cannot, so rendering is split between the device and a network
-              renderer. The Split Rendering Media Service Enabler ({' '}
-              <a href="https://www.3gpp.org/dynareport/26565.htm">TS 26.565</a>, Rel-18) specifies this
-              for non-IMS services: a Split Rendering Client and Server establish a session over the SWAP
-              control protocol, and the rendered media itself is carried over WebRTC.
-            </p>
-
-            <p>
-              5G-MAG&apos;s own{' '}
-              <a href={useBaseUrl('/docs/Reference_Tools_XR_Media_MPEG_I_SD.pdf')}>
-                reference tools overview slide deck
-              </a>{' '}
-              introduces the XR Media reference tools and how MPEG-I Scene Description is used in 5G
-              delivery, and the{' '}
-              <a href="https://github.com/orgs/5G-MAG/projects/44/views/9">Execution Plan</a> tracks
-              current implementation work.
-            </p>
-
-            <p>
-              <strong>Related:</strong> <Link to="/tech/avatar">Conversational Avatar Communication with MPEG ARF</Link> &middot;{' '}
-              <Link to="/tech/v3c">MPEG V3C Immersive Platform</Link>
-            </p>
-          </div>
-        </section>
-
 
         <JoinTheEffort alt />
       </main>

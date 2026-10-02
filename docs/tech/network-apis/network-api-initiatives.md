@@ -216,8 +216,29 @@ The APIs analysed in this section share a set of conventions defined by the CAMA
 
 - **Device identification.** `phoneNumber` is an MSISDN; `networkAccessIdentifier` corresponds to a 3GPP GPSI expressed as an External Identifier; IP address identification is also allowed. When a three-legged token already identifies the subscriber the device object can be omitted, and a `422 MISSING_IDENTIFIER` error is returned if the device still cannot be resolved.
 - **Authorisation.** OAuth 2.0, with a three-legged (end-user consent, OpenID Connect / CIBA) token for operations on a specific subscriber and a two-legged (client-credentials) token for others.
-- **Notifications.** CloudEvents 1.0 JSON delivered to a `sink` callback URL, authenticated per `sinkCredential`.
+- **Notifications.** [CloudEvents](https://cloudevents.io/) 1.0 JSON delivered to a `sink` callback URL, authenticated per `sinkCredential`.
 - **Tracing and errors.** An optional `x-correlator` header is echoed back, and a common error model is used across APIs.
 - **Versioning and releases.** APIs are shipped in twice-yearly meta-releases; a `wip` version on `main` is not a release. Several APIs here are still `v0`, so field names and enumerations can change.
+
+## How it works
+
+A CAMARA API is deliberately thin: the media application sees a small REST resource, for example a QoD `session` or a slice `booking`. Behind that resource sit two further layers, so a single API call travels CAMARA API &rarr; NEF (3GPP northbound exposure) &rarr; PCF (policy decision) &rarr; SMF/UPF (enforcement on the device's PDU session, its active data connection to the network).
+
+| API / specification | What it does for media |
+|---|---|
+| CAMARA Quality on Demand (QoD) API | Requests stable latency or prioritised throughput for a media flow on demand, for example a low-latency contribution link. |
+| CAMARA Connectivity Insights API | Checks whether the network can currently meet an application's quality requirements before or during a session. |
+| CAMARA Network Slice Booking API | Reserves network slice resources for a given area and time window ahead of an event. |
+| 3GPP TS 23.434 (SEAL) | Provides common enabling services (group management, configuration, network resource management) that support network capability exposure. |
+
+**3GPP northbound exposure.** The Network Exposure Function (NEF) is the 5G Core function that exposes capabilities to an Application Function (AF). Its northbound APIs are specified in [TS 29.522](https://www.3gpp.org/dynareport/29522.htm). For QoS the relevant northbound API is `AsSessionWithQoS` (the RESTful form of the `Nnef_AFsessionWithQoS` service). In 4G/EPC the equivalent function is the Service Capability Exposure Function (SCEF); operators commonly deploy a combined SCEF+NEF. Discovery, onboarding and authentication of these APIs are handled by the Common API Framework (CAPIF), [TS 23.222](https://www.3gpp.org/dynareport/23222.htm) / [TS 29.222](https://www.3gpp.org/dynareport/29222.htm).
+
+The application never sees the PCF, SMF or UPF. This is the value CAMARA adds: one operator-agnostic contract in place of per-operator 3GPP integration. It is also the source of most of the open questions 5G-MAG records on the analysis pages, because information that exists inside the core (measured latency, service-area availability) is not always surfaced back through the CAMARA abstraction.
+
+**API families.** The CAMARA APIs 5G-MAG analyses fall into a few families: QoS for a flow or device ([Quality on Demand](/tech/network-apis/camara-quality-on-demand), [QoS Provisioning](/tech/network-apis/camara-qos-provisioning), [QoS Booking](/tech/network-apis/camara-qos-booking) and [QoS Booking and Assignment](/tech/network-apis/camara-qos-booking-assignment), all consuming a named profile from [QoS Profiles](/tech/network-apis/camara-qos-profiles)); area and time reservation for many devices ([Network Slice Booking](/tech/network-apis/camara-network-slice-booking) and [Dedicated Networks](/tech/network-apis/camara-dedicated-networks)); and requirements and monitoring ([Application Profiles](/tech/network-apis/camara-application-profiles) declares an application's needs once, and [Connectivity Insights](/tech/network-apis/camara-connectivity-insights) plus [Connectivity Insights Subscriptions](/tech/network-apis/camara-connectivity-insights-subscriptions) check whether the network can meet them). All of these APIs are still pre-1.0 (`v0`/`wip`) at the time of writing, delivered through CAMARA's twice-yearly meta-releases, so field names and enumerations can change between releases.
+
+Two further sets of pages apply this to real workflows: [Content Production & Contribution](/tech/network-apis/content-production/introduction) covers professional content production and contribution scenarios, and [Live Media Distribution](/tech/network-apis/live-media-distribution/introduction) covers the visibility gap between content providers and network operators for live distribution.
+
+**Related:** [5G Media Streaming (5GMS)](/tech/5gms)
 
 ---

@@ -5,7 +5,7 @@ import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import VideoGrid from '@site/src/components/VideoGrid';
 import { ChartRow, iconForCatalogKey } from '@site/src/components/ProjectStatus';
 import BasketJumpRow from '@site/src/components/BasketJumpRow';
-import { BASKET_ACCENT, STAGE_GROUPS, WHERE_WE_STAND_ROWS } from '@site/src/data/baskets';
+import { BASKET_ACCENT, BASKET_PAGE, STAGE_GROUPS, WHERE_WE_STAND_ROWS } from '@site/src/data/baskets';
 import styles from './index.module.css';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 import useAnchors from '@site/src/utils/useAnchors';
@@ -204,7 +204,9 @@ export default function Home() {
                       <span className={styles.basketIcon}>{iconForCatalogKey(b.icon)}</span>
                     )}
                     <div>
-                      <h3 className={styles.basketTitle}>{b.title}</h3>
+                      <h3 className={styles.basketTitle}>
+                        {BASKET_PAGE[b.key] ? <Link to={BASKET_PAGE[b.key]}>{b.title} →</Link> : b.title}
+                      </h3>
                       {/* Landing here straight from a homepage anchor link
                           (StandCard) should not require scrolling up to
                           find out what the coloured bars mean, or which

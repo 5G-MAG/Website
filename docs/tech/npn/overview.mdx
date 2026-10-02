@@ -18,13 +18,99 @@ description: Placeholder for the Non-Public Networks technical analysis deep-div
 </div>
 </div>
 
-:::info[Placeholder]
-This page's structure is set; real content is not yet written here. The real, published technical
-detail for this topic currently lives on [its Tech hub page](/tech/npn) (see "How It Works" there)
-rather than in this deep-dive structure.
-:::
-
 ## How It Works
+
+There are two deployment models, and the plain-language names map to the 3GPP terms
+as follows: a standalone NPN is a fully independent private network (Stand-alone
+Non-Public Network, SNPN), while an NPN integrated with a public network reuses the
+operator's Public Land Mobile Network (PLMN) with private access control (Public
+Network Integrated NPN, PNI-NPN, which uses a Closed Access Group, CAG, to restrict
+which devices may connect).
+
+**Key specifications:** 3GPP [TS 23.501](https://www.3gpp.org/dynareport/23501.htm) (NPN architecture,
+clauses on SNPN and PNI-NPN), [TS 33.501](https://www.3gpp.org/dynareport/33501.htm) (NPN security),
+[TS 22.261](https://www.3gpp.org/dynareport/22261.htm) (service
+requirements for NPNs).
+
+### Deployment models in detail
+
+The two models differ in who operates the core, how the network is identified, and
+how isolation or access control is achieved:
+
+| Aspect | SNPN (Stand-alone Non-Public Network) | PNI-NPN (Public Network Integrated NPN) |
+|---|---|---|
+| Who operates the core | Operates its own 5G core and is not dependent on any PLMN. Because the organisation runs the core, it controls the Unified Data Management (UDM), Policy Control Function (PCF) and Session Management Function (SMF) configuration directly, which is what makes tight QoS and slicing policy for production traffic practical. | The NPN is realised through a PLMN -- i.e. the public network operator's core. |
+| How the network is identified | Identified by the pair (PLMN ID, NID). Two NID assignment models exist: self-assignment (the NID is chosen individually by the SNPN at deployment time and is not guaranteed unique) and coordinated assignment (the NID is assigned so that it, alone or in combination with the PLMN ID, is globally unique). | Identified as part of the host PLMN. |
+| How isolation / access control is achieved | The UE performs SNPN-specific network selection: it reads the available SNPNs from broadcast system information and matches them against its configured list, using either automatic or manual selection mode. | Achieved by one or more of: a dedicated DNN, a dedicated Network Slice instance (identified by an S-NSSAI), and a Closed Access Group (CAG). A CAG is advertised by cells in their broadcast information; a UE that is a member of the CAG (per its CAG configuration in the subscription) may camp on and access those cells, while non-members are barred. The CAG mechanism therefore provides cell-level access control, whereas slicing provides logical traffic separation inside the core. In practice a media PNI-NPN combines both: a CAG to keep unauthorised devices off the production cells, and a slice to isolate and dimension the production traffic. |
+
+### Identity, credentials and onboarding
+
+The Release 16 baseline assumes the SNPN holds the subscription and credentials
+itself. Release 17 decoupled these:
+
+- **Credentials Holder (CH).** The entity that owns the subscription
+  credentials can be separate from the SNPN that provides access. The CH may be a
+  3GPP entity (an AUSF/UDM belonging to another SNPN or a PLMN) or a non-3GPP entity
+  (an external AAA server reached for authentication). When the CH is an AUSF/UDM,
+  the authentication flow resembles the roaming case; when it is an AAA server,
+  key-generating EAP methods are used. This lets, for example, a broadcaster's
+  central identity system authenticate devices onto a venue-operated SNPN.
+- **UE onboarding.** A UE configured only with Default UE Credentials
+  can attach to an Onboarding SNPN (ON) purely to be provisioned. The onboarding
+  network authenticates the UE against a Default Credentials Server (DCS) and then
+  hands off to a Provisioning Server, which installs the SNPN subscription
+  credentials and configuration. After provisioning, the UE deregisters from the ON
+  and registers on the target SNPN normally. This is aimed at bringing fleets of
+  devices onto a private network without per-device manual configuration.
+
+Security procedures for both the CH and onboarding cases are specified in the NPN
+security clauses of [TS 33.501](https://www.3gpp.org/dynareport/33501.htm).
+
+### Access over non-3GPP networks
+
+An NPN device can reach the 5G core over untrusted or trusted non-3GPP access (for
+example a wired LAN, Wi-Fi, or a fixed backhaul). The stage 3 procedures for
+accessing the 5GC via non-3GPP access networks are defined in TS 24.502. This is
+relevant where production equipment is cabled but still needs to be a first-class
+subscriber of the private 5G core; note the scope caution on the
+[Standards](/standards/npn) page regarding this reference.
+
+### QoS, slicing and dimensioning for production
+
+Media production traffic is dominated by high-bitrate uplink (camera contribution)
+rather than the downlink-heavy profile of consumer networks. The NPN operator
+therefore has to dimension radio and transport for sustained aggregate uplink, and
+use 5G QoS Flows with appropriate 5QI values and Guaranteed Bit Rate (GBR) where a
+flow must not be starved. Network slicing (an S-NSSAI per production service class)
+provides isolation between, say, a critical camera contribution slice and a general
+crew-comms slice. Where deterministic timing is required on top of guaranteed
+bandwidth, the NPN is combined with Time Sensitive Communications; see
+[Time-Sensitive Communications (TSC)](/tech/tsc).
+
+### Spectrum
+
+Spectrum access for NPNs is a national regulatory matter and varies by country.
+Broadly, options include locally licensed dedicated spectrum where a regulator has
+set aside bands for private/vertical use, spectrum leased from an operator,
+shared-access frameworks, and unlicensed bands. The specific bands, licence
+conditions and power limits differ between administrations, so any concrete spectrum
+plan should be checked against the relevant national regulator rather than assumed.
+This is an operational and regulatory question rather than a 3GPP specification
+question.
+
+### Release timeline
+
+- **Release 16**: SNPN and PNI-NPN models, NID, CAG. Architecture in TS
+  23.501; security in TS 33.501; requirements in TS 22.261 and (for professional
+  media) [TS 22.263](https://www.3gpp.org/dynareport/22263.htm).
+- **Release 17**: Credentials Holder, external AAA authentication, UE
+  onboarding and remote provisioning.
+- **Release 18 and later**: NPN enhancements (eNPN Phase 2): mobility and
+  service continuity between SNPNs using equivalent SNPN lists, broader non-3GPP
+  access support for SNPN, and access to localised services via a hosting network.
+
+**Related:** [Time-Sensitive Communications (TSC)](/tech/tsc)
+· [Standards: Non-Public Networks](/standards/npn)
 
 ### Intro
 

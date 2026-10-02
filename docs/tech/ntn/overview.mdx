@@ -20,25 +20,116 @@ description: Placeholder for the Non-Terrestrial Networks technical analysis dee
 </div>
 </div>
 
-:::info[Placeholder]
-This page's structure is set; real content is not yet written here. The real, published technical
-detail for this topic currently lives on [its Tech hub page](/tech/ntn) (see "How It Works" there),
-and in the deep-dive analysis pages already published in this section (Mobility over NTN, MBS
-Broadcast over NTN, MBS Multicast over NTN), rather than in this overview.
-:::
+## How it works
 
-## How It Works
+NTN reuses the 5G system and the NR protocol stack; the differences are concentrated in
+the radio and in a small number of architecture roles.
 
-### Intro
+**Key specifications:** 3GPP
+[TR 38.811](https://www.3gpp.org/dynareport/38811.htm) (Study on NR access to
+non-terrestrial networks: the foundational NTN study item),
+[TR 38.821](https://www.3gpp.org/dynareport/38821.htm) (Solutions for NR to
+support NTN), TS 38.300 (NR overall description, NTN aspects),
+[TR 38.863](https://www.3gpp.org/dynareport/38863.htm) (NTN related RF and
+co-existence aspects). For satellite broadcast delivery, see also ETSI TS 103 720 (5G
+Broadcast system for linear TV and radio), which is relevant to GEO-based NTN broadcast
+scenarios.
 
-*(Placeholder — plain-language explanation of what this topic is and why it exists.)*
+### NTN system model and terminology
 
-### Architecture
+- **Feeder link / service link.** The feeder link connects the satellite to
+  the ground gateway; the service link connects the satellite to the device (UE).
+  One-way propagation delay accumulates over both, which is why GEO round trips are
+  large.
+- **Transparent vs regenerative payload.** In a transparent (bent-pipe)
+  payload the gNB, in NTN terms the *Satellite Access Node (SAN)*, is on the
+  ground and the satellite only relays and frequency-translates. In a regenerative
+  payload the gNB (or its lower layers) is on board the spacecraft. Release 17
+  standardised the transparent case; regenerative deployments are addressed in later
+  releases. See
+  [TS 38.300](https://www.3gpp.org/dynareport/38300.htm).
+- **Beam / cell / mapped cell.** A satellite radiates one or more beams. A
+  beam maps to an NR cell on the ground. As NGSO satellites move, the beam either stays
+  pointed at a fixed ground area for a while (quasi-Earth-fixed beam) or sweeps across
+  the ground (earth-moving beam). This distinction drives the handover models on the
+  [Mobility Aspects for NTN](/tech/ntn/analysis-mobility-ntn) page.
+- **GNSS at the UE.** NTN assumes the device has GNSS so it can compute its
+  own timing advance and Doppler pre-compensation from its position and the satellite
+  ephemeris.
 
-*(Placeholder — one diagram, functional entities / key building blocks, with deeper detail folded
-into expandable detail.)*
+### Radio-layer adaptations for NTN
 
-### Features
+The long, variable delay and the large Doppler shift on fast NGSO links are handled
+mainly at the physical and MAC layers, with assistance signalled in system information:
+a large, UE-specific **timing advance** computed from GNSS position and
+satellite ephemeris (plus a network-broadcast common component, anchored to an epoch
+time with a validity window); **Doppler pre-compensation** on the service
+link, computed by the device from geometry; a **k-offset** scheduling
+offset so uplink grants and other timing relationships remain valid despite the long
+round trip; and **HARQ/RRC/MAC timers** adapted for round trips that can
+far exceed terrestrial values, with some HARQ processes disabled and reliability moved to
+higher layers.
 
-*(Placeholder — compact per-feature or per-topic table, with deeper clause-level or per-item detail
-folded into expandable detail.)*
+### NTN system information for media delivery
+
+Two system information blocks are central to media over NTN:
+
+- **SIB19** carries the NTN assistance information a device needs to
+  acquire and track a satellite cell: serving-cell (and optionally neighbour-cell)
+  ephemeris, common timing advance parameters, the k-offset, the epoch time and its
+  validity duration, and the cell reference location. SIB19 was introduced with the
+  Release 17 NTN work in
+  [TS 38.331](https://www.3gpp.org/dynareport/38331.htm).
+- **SIB27**, introduced in Release 19 of TS 38.331, conveys the Intended
+  Service Area (ISA) of MBS broadcast services for NTN, describing where a broadcast
+  service applies as a polygon or a circle; see the ASN.1 walkthrough on the
+  [MBS Broadcast over NTN](/tech/ntn/analysis-mbs-broadcast-over-ntn)
+  page.
+
+### Carrying MBS over NTN
+
+Media over NTN is delivered with the same MBS service layers used on the ground, applied
+over a satellite or HAPS access:
+
+- **Delivery mode 1 (multicast)**, per
+  [TS 23.247](https://www.3gpp.org/dynareport/23247.htm), targets higher QoS
+  and RRC_CONNECTED devices, and the RAN can switch a device between point-to-point
+  (PTP) and point-to-multipoint (PTM) delivery. Over NTN this switching is a key tool
+  for reliability during handover.
+- **Delivery mode 2 (broadcast)**, also per TS 23.247, is receivable in
+  RRC_IDLE and RRC_INACTIVE as well as RRC_CONNECTED, which suits wide-area linear
+  content to many devices.
+- **User-service and streaming layers.** The SA4 MBS user-service layer ([TS 26.502](https://www.3gpp.org/dynareport/26502.htm)) and 5G Media
+  Streaming ([TS 26.501](https://www.3gpp.org/dynareport/26501.htm)) sit
+  above MBS transport and are, in principle, agnostic to whether the access is
+  terrestrial or non-terrestrial. Application-layer FEC and object delivery (for example
+  FLUTE over ROUTE/LCT) matter more over NTN because retransmission over long paths is
+  expensive.
+
+The application of MBS over NTN is being defined in Release 19 and later, with broadcast
+over GSO and NGSO, then multicast, discussed as separable steps. Treat orbit-by-orbit and
+mode-by-mode placement as provisional.
+
+### What each analysis page adds
+
+- [Mobility Aspects for NTN](/tech/ntn/analysis-mobility-ntn) sets out
+  three deployment models (single NTN operator; common NTN/TN operator; independent
+  operators) and the beam handover models (quasi-Earth-fixed vs earth-moving), with
+  soft-switch and hard-switch handover and their service-interruption ranges.
+- [MBS Multicast over NTN](/tech/ntn/analysis-mbs-multicast-over-ntn)
+  covers the base multicast scenario, including autonomous RAN switching between PTP
+  and PTM and the roles of the Application Service Provider and NTN operator.
+- [Mobility for MBS Multicast over NTN](/tech/ntn/analysis-mobility-mbs-multicast-over-ntn)
+  treats lossless handover for a whole multicast group, distinguishing
+  satellite-triggered from user-triggered mobility.
+- [MBS Broadcast over NTN](/tech/ntn/analysis-mbs-broadcast-over-ntn)
+  shows that broadcast reuses the terrestrial procedures almost unchanged, the
+  NTN-specific parts being SIB19 and the ISA carried in SIB27.
+
+See the [Execution Plan](https://github.com/orgs/5G-MAG/projects/44/views/13)
+for current implementation work.
+
+**Related:** [5G Multicast Broadcast Services (MBS)](/tech/5g-mbs)
+· [5G Broadcast - TV and Radio Services](/tech/5g-broadcast) ·
+[Standards: 5G Multicast & Broadcast Services](/standards/5g-mbs)
+· [Standards: 5G Broadcast - TV, Radio and Emergency Alerts](/standards/5g-broadcast)

@@ -110,8 +110,35 @@ not ensure lossless handover.
 Mixed radio carriers can deliver multicast and/or broadcast services alongside other unicast data on the
 same cell.
 
+## How it works
+
+An MBS session travels through three layers, from the content provider down to the device.
+
+**Key specifications:** 3GPP [TS 26.502](https://www.3gpp.org/dynareport/26502.htm) (MBS user services), [TS 23.247](https://www.3gpp.org/dynareport/23247.htm) (MBS architecture), [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) (5G Media Streaming, 5GMS, framework referenced for hybrid delivery), [TS 38.300](https://www.3gpp.org/dynareport/38300.htm) / [TS 38.331](https://www.3gpp.org/dynareport/38331.htm) (RAN procedures for broadcast mode).
+
+- The **user-service layer** (TS 26.502) is where a content provider provisions a service, has it announced to clients, ingests content and optionally repairs lost data. It is realised by the Multicast/Broadcast Service Function (MBSF) on the control plane and the Multicast/Broadcast Service Transport Function (MBSTF) on the user plane. This layer is optional: a provider can also drive the core directly.
+- The **5G Core layer** (TS 23.247) defines the multicast and broadcast communication services, the MBS sessions that carry them, and the two ways the core delivers packets towards the radio: the 5GC shared method (one copy per MBS-capable RAN node) and the 5GC individual method (a per-UE copy for MBS-incapable nodes). The MBS-specific core functions are the MB-SMF and the MB-UPF.
+- The **NR / NG-RAN layer** (TS 38.300 family) is where the gNB (the 5G base station) chooses point-to-multipoint (PTM) or point-to-point (PTP) delivery and applies one of three Layer-2 delivery modes.
+
+Two distinctions recur across the technical-analysis pages and are worth fixing early, since the terms sound alike but describe different layers:
+
+| Term | Layer | Values | What it means |
+|---|---|---|---|
+| Delivery method | Radio (RAN) | PTM (point-to-multipoint) or PTP (point-to-point) | How the gNB (the 5G base station) physically sends the data over the air: one shared transmission, or a separate copy per device. |
+| Delivery mode | Radio (RAN), Layer 2 | 1 (multicast), 2 (broadcast), or unicast | The Layer-2 configuration that carries the delivery method above — a separate setting from the method itself. |
+| 5GC traffic delivery method | Core network | Shared or individual | How the 5G Core sends packets towards the radio: one copy per MBS-capable node (shared) or a per-UE copy for nodes that don't support MBS (individual). Describes the core, not the radio. |
+
+The [RAN Aspects](/tech/5g-mbs/ran-aspects) page keeps these separate in more detail. The [MBS Overview](/tech/5g-mbs/overview-mbs) page introduces Multicast and Broadcast Services in plain language and the use cases each suits; the [Service Layer Aspects](/tech/5g-mbs/mbs-service-layer) and [Service & System Aspects](/tech/5g-mbs/mbs-service-system-aspects) pages work through the user-service and 5G Core architecture in more detail.
+
+Three further pages analyse specific procedures in depth: [Mobility aspects for MBS Multicast Services](/tech/5g-mbs/mobility-mbs-multicast) covers how multicast reception continues across handover between cells; [RAN Procedures for MBS Multicast Inactive](/tech/5g-mbs/analysis-mbs-multicast-inactive-ran) covers the Release 18 extension that lets a UE receive multicast in the RRC_INACTIVE state; and [RAN Procedures for MBS Broadcast](/tech/5g-mbs/analysis-mbs-broadcast-ran) works through the step-by-step radio acquisition of a broadcast service.
+
+5G-MAG's own [reference tools overview slide deck](pathname:///docs/Reference_Tools_5G_Multicast_Broadcast.pdf) maps these reference tools to the architecture above, and the [Execution Plan](https://github.com/orgs/5G-MAG/projects/44/views/8) tracks current implementation work.
+
 **Next:** [MBS Service Layer Aspects](./mbs-service-layer) for the user-service architecture, then [MBS Service and System Aspects](./mbs-service-system-aspects) for the 5G Core view.
 
 ## Related
 
+- [5G Broadcast - TV and Radio Services](/tech/5g-broadcast) (the LTE-based, free-to-air broadcast technology — a separate topic with a similar name)
+- [5G Media Streaming (5GMS)](/tech/5gms) (the unicast delivery architecture whose user-service layer MBS extends)
+- [Content Delivery Protocols](/standards/content-delivery) (the FLUTE and ROUTE transport used by the MBS Object distribution method)
 - Further reading: a paper from [Qualcomm](https://ieeexplore.ieee.org/document/9772755) and a blog post from [Ericsson](https://www.ericsson.com/en/blog/2022/12/multicast-broadcast-group-communication) with more detail on MBS

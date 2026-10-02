@@ -20,25 +20,164 @@ description: Placeholder for the 5G Broadcast technical analysis deep-dive; stru
 </div>
 </div>
 
-:::info[Placeholder]
-This page's structure is set; real content is not yet written here. The real, published technical
-detail for this topic currently lives on [its Tech hub page](/tech/5g-broadcast) (see "How It Works"
-there), and in the deep-dive analysis pages already published in this section (Operational Parameters
-in Use, Deployment Profiles), rather than in this overview.
-:::
+## How it works
 
-## How It Works
+A 5G Broadcast receiver has to bootstrap itself from nothing: there's no SIM, no return
+channel, and no prior connection to the network. LTE-based 5G Broadcast is a one-way
+physical layer built on the LTE TS 36.xxx series -- a receiver acquires the cell, reads the
+broadcast control information, then decodes the multicast traffic channel, with no uplink
+and no per-user state.
 
-### Intro
+**Key specifications:** ETSI TS 103 720 (5G Broadcast System for linear TV and
+radio), 3GPP [TR 36.976](https://www.3gpp.org/dynareport/36976.htm) (LTE-based 5G
+broadcast overview), 3GPP [TS 26.346](https://www.3gpp.org/dynareport/26346.htm)
+(MBMS protocols and codecs), 3GPP
+[TS 26.347](https://www.3gpp.org/dynareport/26347.htm) (MBMS application
+programming interface).
 
-*(Placeholder — plain-language explanation of what this topic is and why it exists.)*
+**PMCH (Physical Multicast Channel)** carries the broadcast payload; in an
+MBMS-dedicated cell it occupies almost the whole carrier. **CAS (Cell Acquisition
+Subframe)** is the entry point -- one radio frame per 40 ms period (SFN mod 4 == 0)
+uses 15 kHz SCS with the standard cyclic prefix and carries PSS, SSS, PBCH, PCFICH, PDCCH and
+PDSCH, letting the receiver synchronise and decode MIB-MBMS (on PBCH) and SIB1-MBMS without a
+USIM. The CAS occupies a narrow 15 or 25 PRB (3 or 5 MHz) regardless of the PMCH bandwidth, so
+the receiver bootstraps narrow and the SIBs then point it at the wider PMCH.
+**MCCH (Multicast Control Channel)** carries the MBSFN (Multicast-Broadcast
+Single-Frequency Network) area configuration -- which services map to which PMCH, MCS,
+scheduling -- and is re-read at each modification-period boundary so the receiver can pick up
+transmitter-side changes. **MTCH (Multicast Traffic Channel)** is the logical
+channel that maps the user-service data onto PMCH.
 
-### Architecture
+Acquisition order on the receiver, step by step:
 
-*(Placeholder — one diagram, functional entities / key building blocks, with deeper detail folded
-into expandable detail.)*
+1. Synchronise on PSS/SSS in the CAS.
+2. Decode PBCH to get MIB-MBMS (bandwidth, SFN, semi-static CFI).
+3. Decode SIB1-MBMS (cell access, SI scheduling).
+4. Decode SIB13 (MBSFN area info, ROM info, extended bandwidth).
+5. Decode MCCH.
+6. Decode PMCH/MTCH -- the receiver is now showing the channel.
 
-### Features
+### Numerologies (subcarrier spacings)
 
-*(Placeholder — compact per-feature or per-topic table, with deeper clause-level or per-item detail
-folded into expandable detail.)*
+The choice of subcarrier spacing (SCS) trades cyclic-prefix length (and therefore maximum
+SFN reach and mobility tolerance) against overhead. The full set profiled by ETSI TS 103 720
+is:
+
+| SCS      | 3GPP release   | Cyclic prefix (approx.) | Primary use case                                    |
+| -------- | -------------- | ----------------------- | --------------------------------------------------- |
+| 15 kHz   | (LTE baseline) | standard                | CAS; mixed-mode operation                           |
+| 7.5 kHz  | Rel-14         | \~33 microseconds       | standard-area broadcast                             |
+| 1.25 kHz | Rel-14         | \~200 microseconds      | high-power high-tower, very large SFN               |
+| 2.5 kHz  | Rel-16         | \~100 microseconds      | mobile reception (up to \~250 km/h)                 |
+| 0.37 kHz | Rel-16         | \~300 microseconds      | very large SFN (inter-site distance up to \~100 km) |
+
+The 0.37 kHz numerology uses a 3 ms slot structure and defines two reference-signal placement
+variants selected by `timeSeparation` (`sl2` and `sl4`);
+this is signalled per MBSFN area in `MBSFN-AreaInfo-r16` ([TS 36.331](https://www.3gpp.org/dynareport/36331.htm)). The MBSFN
+reference-signal patterns for each numerology are defined in
+[TS 36.211](https://www.3gpp.org/dynareport/36211.htm) clause 6.10.2.2.
+
+### Channel bandwidths
+
+The PMCH can use the standard LTE bandwidths (up to 20 MHz) carried in MIB-MBMS, or the UHF
+broadcast bandwidths added in Release 17 and signalled by `pmch-Bandwidth-r17` in
+SIB13:
+
+| pmch-Bandwidth-r17 | Bandwidth | PRB |
+| ------------------ | --------- | --- |
+| `n30`              | 6 MHz     | 30  |
+| `n35`              | 7 MHz     | 35  |
+| `n40`              | 8 MHz     | 40  |
+
+When present, `pmch-Bandwidth-r17` overrides the narrowband CAS bandwidth for the
+PMCH region; its absence means the legacy LTE bandwidth applies. See
+[Operational Parameters in Use](/tech/5g-broadcast/parameters-in-use) for the
+values observed in practice.
+
+### Specifications by 3GPP release
+
+The features below are profiled by ETSI TS 103 720. For the standards-tracking narrative with
+the version-to-release mapping and the release-by-release table, see
+[Standards: 5G Broadcast - TV, Radio and Emergency Alerts](/standards/5g-broadcast).
+
+**Release 14 (FeMBMS baseline).** The foundation: the MBMS-dedicated cell
+(almost 100% of the carrier for broadcast), the 1.25 kHz and 7.5 kHz numerologies with
+extended cyclic prefix, the CAS frame structure, 256-QAM on PMCH (with the extended TBS
+table), and the broadcast control blocks MIB-MBMS (`MasterInformationBlock-MBMS-r14`,
+on PBCH) and SIB1-MBMS (`SystemInformationBlockType1-MBMS-r14`). Shorter MCCH
+repetition and modification periods (down to one radio frame) support faster
+system-information updates.
+
+**Release 16 (LTE-based 5G Terrestrial Broadcast, normative).** The normative
+work item adds the 2.5 kHz and 0.37 kHz numerologies and their reference-signal patterns,
+PDCCH Format 4 (aggregation level 16) for robust control-channel reception, PBCH repetition
+across CAS subframes for faster MIB acquisition, the `MBSFN-AreaInfo-r16` structure
+(carrying `subcarrierSpacingMBMS-r16` and `timeSeparation-r16`), the
+semi-static CFI in MIB-MBMS (`semiStaticCFI-MBMS-r16`), and Receive-Only Mode (ROM)
+information in SIB13 (`MBMS-ROM-Info-r16`), which lets a receiver be redirected to
+MBMS content on another carrier without a return channel.
+
+**Release 17 (channel bandwidths).** Adds the 6/7/8 MHz PMCH bandwidths (30/35/40
+PRB) via `pmch-Bandwidth-r17`, with updated TBS and PMCH resource-allocation
+tables. This is the release profiled by the published ETSI TS 103 720 v1.2.1 (June 2023),
+which also defines the Base, Main and 5GMS receiver categories.
+
+**Release 18 (UHF bands, receive-only).** A spectrum-layer change only: the
+receive-only (downlink-only) UHF bands Band 107 (612 to 652 MHz) and Band 108 (470 to 698
+MHz), defined as standalone downlink-only (SDO) bands in Table 5.5H-1 of
+[TS 36.101](https://www.3gpp.org/dynareport/36101.htm), with base-station
+requirements in [TS 36.104](https://www.3gpp.org/dynareport/36104.htm);
+[TS 36.307](https://www.3gpp.org/dynareport/36307.htm) makes the SDO broadcast
+bands release-independent from Release 17. There are no new numerologies and no MAC or RRC
+changes. The published ETSI TS 103 720 v1.2.1 does not yet include specific frequency bands;
+its clause 8 defers them to a future revision.
+
+**Release 19 (PMCH Phase 2, CAS muting, new bands).** PMCH Phase 2 adds time
+interleaving (spreading a transport block across N consecutive subframes for time diversity,
+with a scheduling window M), frequency interleaving, a per-subframe cyclic shift (different
+values per cell in an SFN reduce boundary interference), TBS scaling, and extended SI
+scheduling periods, all carried in a new RRC v1900 extension chain. The PMCH-specific MCS
+tables ([TS 36.213](https://www.3gpp.org/dynareport/36213.htm) clause 11.1, Tables
+11.1-1 and 11.1-2, the latter extending to 256-QAM) already exist in the Release 18 version
+of TS 36.213. CAS muting frees synchronisation-channel airtime for PMCH by transmitting
+PSS/SSS/PBCH only in the active part of each period (`cas-MutingConfig-r19` in the
+new `SystemInformationBlockType1-MBMS-v1900` extension). Two further receive-only
+UHF bands, Band 112 (470 to 608 MHz) and Band 113 (606 to 698 MHz), are defined in Table
+5.5H-1 of TS 36.101 and are release-independent from Release 17. These features postdate the
+published ETSI TS 103 720 v1.2.1 and are expected in a later revision.
+
+<details>
+<summary>References to verify</summary>
+
+The identifiers above have been verified against the published specifications: the RRC
+structures against TS 36.331 V19.3.0, the MBSFN reference-signal clause against TS 36.211,
+the PDCCH Format 4 definition and the PMCH MCS tables against TS 36.211 and TS 36.213
+(Release 14 to Release 19 versions), the band definitions and release placement against TS
+36.101 (Table 5.5H-1), TS 36.104 and TS 36.307, and the ETSI TS 103 720 v1.2.1 content
+against the published ETSI PDF. Feature-level details that originate in an internal 5G-MAG
+standards-tracking document and were not re-checked clause by clause: the Release 14 MCCH
+repetition and modification period values, the Release 16 PBCH-repetition description, and
+the Release 19 interleaving and TBS-scaling parameter descriptions (N, M and the
+per-subframe cyclic-shift behaviour). The
+[Standards page](/standards/5g-broadcast) carries the release-by-release
+identifier list.
+
+</details>
+
+5G-MAG's own
+[reference tools overview slide deck](pathname:///docs/Reference_Tools_5G_Broadcast.pdf)
+summarises the transmitter and receiver chain, and the
+[Execution Plan](https://github.com/orgs/5G-MAG/projects/44/views/7) tracks current
+implementation work. See also
+[5G Media Streaming over eMBMS (3GPP Release 17)](/tech/exchanges#5g-media-streaming-over-embms-3gpp-release-17)
+for the related VideoTech session.
+
+**Related:**
+[5G Broadcast - Emergency Alerts](/tech/emergency-alerts) (Cell Broadcast
+Service public warning, layered on this same transmit and receive chain) ·
+[5G Multicast Broadcast Services (MBS)](/tech/5g-mbs)
+(the NR-native multicast and broadcast technology, a separate topic with a similar name)
+· [Standards: Content Delivery Protocols](/standards/content-delivery)
+(the FLUTE and ROUTE transport used to carry files over the broadcast bearer) ·
+[Standards: DVB-I Services over 5G Systems](/standards/dvb-i) (DVB-I service
+discovery, used to present broadcast services alongside broadband ones)

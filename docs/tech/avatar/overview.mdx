@@ -5,6 +5,8 @@ hide_title: true
 description: Placeholder for the Conversational Avatar Communication with MPEG ARF technical analysis deep-dive; structure only, content to follow.
 ---
 
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -24,24 +26,52 @@ description: Placeholder for the Conversational Avatar Communication with MPEG A
 </div>
 </div>
 
-:::info[Placeholder]
-This page's structure is set; real content is not yet written here. The real, published technical
-detail for this topic currently lives on [its Tech hub page](/tech/avatar) (see "How It Works"
-there) rather than in this deep-dive structure.
+## How it works
+
+An avatar communication system combines three pieces: a representation of the avatar (its 3D model and how it is described), an animation stream that drives it in real time from a participant's audio and video, and a media transport that carries these over the network so remote participants see and hear the avatar. 5G-MAG's work looks at how these pieces map onto 5G media delivery.
+
+**Key specifications:** ISO/IEC 23090-39 (MPEG Avatar Representation Format, ARF), 3GPP [TR 26.813](https://www.3gpp.org/dynareport/26813.htm) (Avatar Representation and Communication, the FS_AVATAR study item, completed in Release 19). An introductory teaser is also available on the [Technology Exchanges](/tech/exchanges#avatar-communications-in-ar-calls) page.
+
+### The ARF data model
+
+The Avatar Representation Format (ISO/IEC 23090-39) is built from two complementary specifications:
+
+- A **Base Avatar Format** that stores the avatar asset. Its data model is composed of skeletons, meshes, blendshapes, skins, landmarks, and nodes (joints). The skeleton and joints give the avatar its articulation; meshes and skins give it surface geometry and how that geometry deforms with the skeleton; blendshapes provide expression and fine facial deformation; landmarks give named reference points used to map tracking data onto the model.
+- An **Animation Stream Format** that carries the time-varying data used to animate a base avatar. The stream is a sequence of Avatar Animation Units (AAUs). Each AAU is a self-contained packetisation unit, similar in role to a NAL unit in video coding, and consists of an AAU header followed by zero or more AAU packets. Each AAU references an Avatar ID so that, in a multi-party session, animation data can be routed to the correct avatar.
+
+The base avatar can be stored and exchanged in two container types: an ISOBMFF container (ISO/IEC 14496-12) or a Zip-based container (ISO/IEC 21320-1). Because the base avatar and the animation are separate, a client can fetch and load the model once (or reuse one it already holds) and then receive only the compact animation stream during the call.
+
+### Scene placement via MPEG-I Scene Description
+
+ARF does not, by itself, position an avatar in a room; that is the job of MPEG-I Scene Description (ISO/IEC 23090-14), a set of extensions to Khronos glTF 2.0. Avatar support was added to Scene Description through an amendment (ISO/IEC 23090-14:2023 Amendment 2), which defines a glTF node extension that marks a particular node as the root/skeleton node of a humanoid avatar. In the 5G-MAG documentation this is referred to as the `MPEG_avatar` glTF extension, described on the [MPEG-I Scene Description](/tech/xr/mpeg-i-scene-description) page. The Presentation Engine reads the scene, resolves the avatar node, binds the ARF base avatar to it, and then applies the incoming animation stream frame by frame. This is the same Presentation Engine / Media Access Function decoupling used across the other MPEG-I Scene Description tooling.
+
+### End-to-end procedure
+
+At a high level, a conversational avatar session proceeds as follows:
+
+| Step | What happens |
+|---|---|
+| 1. Provisioning | Both endpoints obtain the base avatar (either a stored ARF asset or one generated for the user). Because the avatar model is shared, only animation and audio need to flow during the call. |
+| 2. Session setup | The endpoints negotiate a real-time session, over the IMS-based conversational path (MTSI) or the RTC framework; the immersive audio codec (IVAS) and any avatar animation stream are negotiated through SDP. |
+| 3. Capture and tracking | The sender tracks the participant from camera and microphone input and derives animation parameters (skeletal pose, facial blendshape weights, and similar) mapped onto the ARF landmarks and joints. |
+| 4. Encode and packetise | Animation parameters are formatted as ARF AAUs; audio is encoded with IVAS. |
+| 5. Transport | AAUs are carried over RTP. The IETF is defining an RTP payload format for ARF animations (draft-ietf-avtcore-rtp-avatar) with single-unit, fragmentation, and aggregation packet modes; IVAS audio uses its own RTP payload format. The IMS data channel is one candidate carrier for the animation data. |
+| 6. Render | The receiver's Presentation Engine applies the animation stream to the bound base avatar within the scene, and IVAS renders the spatial audio so the avatar is heard from its scene position. |
+
+### Interfaces and interoperability
+
+An implementer has to respect four interoperability boundaries: the ARF base-avatar asset (so any conforming client can load the same avatar), the ARF animation stream and AAU structure (so animation produced by one endpoint can drive an avatar at another), the scene-description document that anchors the avatar, and the session-level negotiation (SDP media descriptions for IVAS audio and for the avatar animation payload). Keeping animation production separate from rendering means the tracking/animation component and the Unity-based presentation can evolve independently, provided both sides agree on the ARF stream format.
+
+:::note[ARF specification stage]
+ARF (ISO/IEC 23090-39) was still at the Draft International Standard stage as of 2025; MPEG's own report of its 155th meeting (July 2026) states it has since advanced to Final Draft International Standard, the stage just before publication, so the base-avatar and animation-stream details above can still change before final publication. Confirm the current stage on the [ISO catalogue page](https://www.iso.org/standard/91745.html) and treat reference tooling as tracking a moving target.
 :::
 
-## How It Works
+The slide deck below introduces the Avatar Communications reference tools and their role in 5G real-time communication.
 
-### Intro
+<div class="pdf-embed-wrapper">
+  <iframe loading="lazy" class="pdf-embed" src={useBaseUrl('/docs/Reference_Tools_Avatar.pdf')} title="Slide deck: Avatar Communications reference tools"></iframe>
+</div>
 
-*(Placeholder — plain-language explanation of what this topic is and why it exists.)*
+[Download the slide deck](pathname:///docs/Reference_Tools_Avatar.pdf) &middot; the [Execution Plan](https://github.com/orgs/5G-MAG/projects/44/views/9) tracks current implementation work.
 
-### Architecture
-
-*(Placeholder — one diagram, functional entities / key building blocks, with deeper detail folded
-into expandable detail.)*
-
-### Features
-
-*(Placeholder — compact per-feature or per-topic table, with deeper clause-level or per-item detail
-folded into expandable detail.)*
+**Related:** [XR/3D Scenes with MPEG-I Scene Description](/tech/xr): the wider XR area, including the scene-description model that positions and animates avatars &middot; [MPEG-I Scene Description](/tech/xr/mpeg-i-scene-description): the `MPEG_avatar` glTF extension used for 3D avatar representation &middot; [Standards: Conversational Avatar Communication with MPEG ARF](/standards/avatar): the standards-tracking view of this topic.

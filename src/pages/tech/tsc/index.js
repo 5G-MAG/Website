@@ -19,11 +19,11 @@ const PROJECT_NAME = PROJECT.name;
 // (src/pages/tech/5gms/index.js) -- replacing the former
 // docs/tech/tsc/tsc.md doc. Same Layout/HubHero every hub page uses, not
 // the doc-tier topic-banner. Unlike 5gms/5g-mbs, TSC has no repos of its
-// own (taxonomy.json: repos: 0) so its full analysis still lives in this
-// page's own "How It Works" section, not split across separate docs.
+// own (taxonomy.json: repos: 0); its analysis (formerly this page's own
+// "How It Works" section) lives in docs/tech/tsc/overview.mdx.
 //
-// 2026-09-27: docs/tech/tsc/overview.mdx now exists as a structural
-// placeholder (no real content moved there yet) and techTopics.js's own
+// 2026-09-27: docs/tech/tsc/overview.mdx now exists and holds that
+// analysis, and techTopics.js's own
 // entry carries `autogen: 'tsc'`, so the topic now DOES have a real sidebar
 // presence -- analysisHref below points at it directly rather than at the
 // in-page "#how-it-works" anchor. taxonomy.json's doc_url, previously null,
@@ -43,24 +43,6 @@ const CLOCK_ICON = (
 // in src/data/baskets.js) -- a plain literal here rather than importing the
 // whole map for one color, same reasoning as the 5gms page's own ACCENT.
 const ACCENT = '#d1477a';
-
-const RELEASE_TIMELINE = [
-  {
-    release: 'Release 16',
-    detail:
-      '5G system as a TSN bridge; DS-TT/NW-TT; transparent forwarding of gPTP with residence-time correction; TSN-to-5G QoS mapping.',
-  },
-  {
-    release: 'Release 17',
-    detail:
-      'TSCTSF; generalised time synchronisation (multiple IEEE 802.1AS / IEEE 1588 clock roles); exposure of deterministic QoS and time-sync control to AFs via NEF; deterministic QoS without a full TSN bridge.',
-  },
-  {
-    release: 'Release 18 and later',
-    detail:
-      'Further deterministic-networking, survivability and time-sync accuracy enhancements. Confirm scope and placement against the 3GPP work plan.',
-  },
-];
 
 export default function TSC() {
   const coverImg = useBaseUrl('/assets/images/projects/tsc.png');
@@ -145,164 +127,6 @@ export default function TSC() {
             <ProjectContributors />
           </div>
         </section>
-
-        <section className={`${styles.section} ${styles.sectionAlt}`} id="how-it-works">
-          <div className="container">
-            <h2 className={styles.sectionTitle}>How It Works</h2>
-            <p className={styles.sectionSubtitle}>
-              The 5G system is modelled as a TSN bridge, carrying deterministic traffic and shared
-              timing between wired IEEE 802.1 TSN segments across a wireless hop.
-            </p>
-
-            <p>
-              <strong>Key specifications:</strong> 3GPP{' '}
-              <a href="https://www.3gpp.org/dynareport/23501.htm">TS 23.501</a> (TSC clause: the 5G
-              system modelled as a TSN bridge, NW-TT/DS-TT, time synchronisation),{' '}
-              <a href="https://www.3gpp.org/dynareport/23502.htm">TS 23.502</a> (TSC procedures),{' '}
-              <a href="https://www.3gpp.org/dynareport/38331.htm">TS 38.331</a> (RRC support for time
-              synchronisation), IEEE 802.1Qbv / 802.1Qcc / 802.1AS (scheduled traffic, centralized
-              TSN configuration and time synchronisation, referenced by the 3GPP TSC model).
-            </p>
-
-            <h3>The 5G-as-TSN-bridge model</h3>
-            <p>
-              The integration point between 5G and wired IEEE 802.1 TSN is defined in the TSC
-              clauses of TS 23.501 (clauses 5.27 and 5.28). The 5G system is modelled as one or more
-              virtual TSN bridges. Each bridge has ports realised by TSN Translators:
-            </p>
-            <ul>
-              <li>
-                <strong>NW-TT (Network-side TSN Translator)</strong> at the UPF. It terminates the
-                wired TSN network, holds the bridge management information exposed to the TSN
-                control plane, and translates between the TSN world and 5G QoS. A single NW-TT can
-                host multiple ports.
-              </li>
-              <li>
-                <strong>DS-TT (Device-side TSN Translator)</strong> at the UE. It terminates the TSN
-                endpoint (for example a camera or an audio device) and applies hold-and-forward/gate
-                behaviour for egress toward that endpoint.
-              </li>
-            </ul>
-            <p>
-              A PDU Session between the UE and the UPF forms the internal path of the bridge. TSN
-              streams are mapped onto 5G QoS Flows within that PDU Session, so a stream with a
-              strict deadline is carried on a QoS Flow with a matching 5QI and, where needed, a
-              Guaranteed Bit Rate. Because the whole 5G segment is abstracted as a bridge, the
-              external TSN Centralized Network Configuration (CNC) can compute schedules across it
-              using ordinary TSN tooling; the 5G system reports its bridge capabilities (including
-              per-port propagation and processing delays) to the CNC.
-            </p>
-
-            <h3>Time synchronisation architecture</h3>
-            <p>Two clocks coexist:</p>
-            <ul>
-              <li>
-                The <strong>5G clock (5G GM)</strong>, which the 5G system distributes internally to
-                UEs and translators.
-              </li>
-              <li>
-                The <strong>TSN/working clock</strong>, the (g)PTP time relevant to the application,
-                carried across the bridge per IEEE 802.1AS.
-              </li>
-            </ul>
-            <p>
-              In the Release 16 model the 5G system behaves as a time-aware relay: gPTP event
-              messages entering at one translator are timestamped, carried across the 5G system,
-              and corrected for the measured residence time before egress at the other translator,
-              so the downstream clock stays accurate. Release 17 generalised this so the 5G system
-              can take different roles in an IEEE 802.1AS time-aware domain and can operate as an
-              IEEE 1588 boundary clock or transparent clock, and so that time-synchronisation
-              service can be requested and controlled through the control plane rather than being
-              purely a transparent forwarding behaviour. For media, the working clock is typically
-              PTP as used by SMPTE ST 2059, which is the same IEEE 1588 base, so the 5G time-sync
-              machinery maps onto the timing model the ST 2110 plant already uses.
-            </p>
-
-            <h3>Control plane: TSCTSF, NEF and AF</h3>
-            <p>
-              Release 17 introduced the Time Sensitive Communication and Time Synchronization
-              Function (TSCTSF). It is the network function through which deterministic QoS and
-              time-synchronisation services are requested and coordinated:
-            </p>
-            <ul>
-              <li>
-                An <strong>Application Function (AF)</strong> in the operator&apos;s trust domain
-                can interact with the TSCTSF directly.
-              </li>
-              <li>
-                An <strong>AF outside that trust domain</strong> reaches the TSCTSF through the{' '}
-                <strong>Network Exposure Function (NEF)</strong>.
-              </li>
-            </ul>
-            <p>
-              Through this interface the AF can provide traffic characteristics (periodicity, burst
-              size, direction, arrival time reference) that let the system optimise scheduling,
-              request the associated QoS, and activate or deactivate time synchronisation for
-              specified UEs/ports. The TSCTSF works with the PCF to install the corresponding policy
-              and with the SMF/UPF to realise it. Toward the wired TSN network, the
-              bridge-management and scheduling interworking follows IEEE 802.1Qcc (fully centralized
-              model), with the NW-TT presenting the 5G bridge to the CNC.
-            </p>
-
-            <h3>Scheduled traffic and gating</h3>
-            <p>
-              Deterministic egress toward a TSN endpoint uses gate behaviour aligned with IEEE
-              802.1Qbv (enhancements for scheduled traffic): the translator opens and closes
-              transmission gates according to a schedule derived from the CNC configuration and the
-              shared clock. Combined with the bounded latency of the 5G QoS Flow, this gives an
-              end-to-end path where a frame leaves the wired network, crosses the 5G segment, and is
-              delivered to the wireless endpoint within a known window.
-            </p>
-
-            <h3>Deterministic QoS without a full TSN bridge</h3>
-            <p>
-              Not every media deployment wants to run a wired TSN control plane. A relevant Release
-              17 outcome is that deterministic QoS and time synchronisation can be requested via the
-              TSCTSF/NEF without the 5G system having to be configured as part of a full IEEE 802.1
-              TSN bridge with a CNC. For a production that only needs bounded-latency,
-              time-synchronised transport over its NPN (not integration into a plant-wide TSN
-              schedule), this lighter path is often the practical one. Which approach is chosen
-              depends on whether the wireless segment must participate in a network-wide TSN
-              schedule or simply deliver deterministic transport to endpoints.
-            </p>
-
-            <h3>Release timeline</h3>
-            <div style={{ maxWidth: '100%', overflowX: 'auto' }}>
-              <table className={styles.feeTable}>
-                <thead>
-                  <tr>
-                    <th>Release</th>
-                    <th>What it adds</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {RELEASE_TIMELINE.map((r) => (
-                    <tr key={r.release}>
-                      <td className={styles.feeTableTier}>{r.release}</td>
-                      <td>{r.detail}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            <p>
-              The <a href="https://github.com/orgs/5G-MAG/projects/44/views/24">Execution Plan</a>{' '}
-              tracks current work on this topic.
-            </p>
-
-            <p>
-              <strong>Related:</strong> <Link to="/tech/npn">Non-Public Networks</Link> (TSC media
-              transport typically runs over an NPN) &middot;{' '}
-              <Link to="/tech/rtc">Real-time Media Communication (RTC) Architecture</Link> (the interactive
-              WebRTC-based counterpart, for conversational and collaborative media rather than
-              deterministic essence transport) &middot;{' '}
-              <Link to="/standards/tsc">Standards: Time-Sensitive Communications (TSC)</Link> (the
-              standards-tracking view of this topic)
-            </p>
-          </div>
-        </section>
-
 
         <JoinTheEffort alt />
       </main>

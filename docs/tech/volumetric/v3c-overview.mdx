@@ -22,32 +22,71 @@ description: Placeholder for the MPEG V3C Immersive Platform technical analysis 
 </div>
 </div>
 
-:::info[Placeholder]
-This page's structure is set; real content is not yet written here. The real, published technical
-detail for this topic currently lives on [its Tech hub page](/tech/v3c) (see "How It Works" there).
 Note this folder also carries the separate [Beyond 2D Video Experiences](/tech/beyond-2d)
 project's own analysis page, since the two are closely related but distinct projects.
-:::
 
-## How It Works
+## How it works
 
-### Intro
+V3C (ISO/IEC 23090-5) does not define a new low-level video codec. It defines a way to represent 3D content so that conventional 2D video codecs (HEVC, and in later editions VVC) do the compression, with a compact metadata layer carrying the 3D structure. The pipeline is projection based.
 
-*(Placeholder — plain-language explanation of what this topic is and why it exists.)*
+**Key specifications:** ISO/IEC 23090-5 (V3C and V-PCC, Video-based Point Cloud Compression), ISO/IEC 23090-12 (MIV, MPEG Immersive Video), ISO/IEC 23090-10 (carriage of V3C data, that is how the coded data is stored in and transported by file and streaming formats), [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) (5G Media Streaming (5GMS) transport for volumetric content delivery).
 
-### Architecture
+1. **Projection.** The 3D source (a point cloud for V-PCC, or a set of camera views with depth for MIV) is projected onto 2D planes. For V-PCC, connected regions of the point cloud are projected onto the plane whose normal best matches the surface; for MIV, the input is already a set of views, and redundant content between views is pruned.
+2. **Patch generation and packing.** Each projected region becomes a patch. Patches are packed into 2D atlas frames, and the placement is recorded in the atlas metadata so the decoder can invert the process.
+3. **Component video generation.** The packing produces parallel 2D videos: a geometry video (depth or point position), an occupancy video (which samples are valid), and one or more attribute videos (texture, and optionally reflectance or transparency).
+4. **Video coding.** Each component video is coded with a standard 2D video codec. This is what lets V3C reuse hardware video decoders.
+5. **Multiplexing.** The coded component videos plus the atlas sub-bitstream are assembled into a V3C bitstream as a sequence of V3C units.
 
-*(Placeholder — one diagram, functional entities / key building blocks, with deeper detail folded
-into expandable detail.)*
+At the client the process runs in reverse: parse the atlas, decode the component videos, then reconstruct the point cloud (V-PCC) or synthesise the requested viewport (MIV).
 
-### Features
+### Bitstream components
 
-*(Placeholder — compact per-feature or per-topic table, with deeper clause-level or per-item detail
-folded into expandable detail.)*
+A V3C bitstream carries a small number of clearly separated components:
+
+| Component | Carries | Notes |
+|---|---|---|
+| Atlas sub-bitstream | Patch data, tile/frame structure, parameter sets | The V3C-specific layer; not an ordinary video stream |
+| Common atlas sub-bitstream (MIV) | Camera/view parameters shared across the scene | Present for MIV; lets the renderer place views in space |
+| Occupancy video | Validity mask for packed samples | Ordinary 2D video |
+| Geometry video | Depth (MIV) or point geometry (V-PCC) | Ordinary 2D video |
+| Attribute video(s) | Texture and optional attributes | One or more ordinary 2D videos |
+
+Because the component videos are ordinary coded video, a decoder can offload them to a hardware video decoder and reserve CPU/GPU work for the atlas parsing and 3D reconstruction. That separation is the reason V3C is practical on mobile-class hardware.
+
+### V-PCC versus MIV
+
+The two profiles address different capture models and reconstruct different things at the client.
+
+**V-PCC** (part of ISO/IEC 23090-5) targets a dynamic point cloud, typically a single captured object or performer. The client reconstructs the point cloud itself, which the application can then place in a scene and view from any angle. The main coding tools are the projection of point regions onto per-normal planes, the packing of those projections, and the coding of geometry, occupancy, and attribute videos.
+
+**MIV** (ISO/IEC 23090-12, an extension of V3C) targets a scene captured by several cameras with depth, and gives the viewer six degrees of freedom over a limited viewing volume (translation within a bounded region plus free rotation). Rather than reconstruct a full 3D model, the client synthesises the specific viewport requested by the current head pose, using the decoded texture and geometry views plus the view parameters in the common atlas. MIV defines profiles that trade decoder complexity against flexibility:
+
+- **Main**: geometry coded with embedded occupancy.
+- **Extended**: separable occupancy and additional flexibility, including an optional transparency attribute.
+- **Extended Restricted Geometry** (a sub-profile of Extended): geometry restricted so that transparency stands in for explicit geometry, enabling multi-plane image (MPI) delivery.
+- **Geometry Absent**: no geometry is coded; the client derives geometry (for example by depth estimation), reducing the transmitted data at the cost of client-side processing.
+
+Both profiles emit a V3C bitstream, so they share the same carriage and packaging.
+
+### Carriage, packaging, and delivery
+
+ISO/IEC 23090-10 specifies how a V3C bitstream is stored in the ISO Base Media File Format (ISOBMFF, ISO/IEC 14496-12) and how the atlas and component videos are organised into tracks and multiplexed with other media. It includes support for DASH (ISO/IEC 23009-1) so a V3C presentation can be described as an adaptive streaming presentation and delivered over HTTP. An amendment (ISO/IEC 23090-10:2022/Amd 1) adds support for packed video data, and MPEG maintains a conformance and reference-software part for carriage (ISO/IEC 23090-25) and a separate conformance-testing part for V3C with V-PCC itself (ISO/IEC 23090-20).
+
+For delivery over mobile networks, the V3C DASH presentation is treated as ordinary media by the 5G Media Streaming pipeline: it is ingested, packaged, and delivered under [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) (architecture) and TS 26.512 (protocols and APIs). The 5G Media Streaming functions do not need to understand the volumetric semantics; they see DASH segments referencing coded video and metadata tracks. This is what allows volumetric assets to reuse the same CDN, packaging, and player-provisioning machinery as conventional streaming.
+
+### End-to-end pipeline
+
+A V3C deployment covers five stages: encode source content into a V3C bitstream, package it, deliver it over the transport described above, then decode and render it in real time on the client. On playback, a V3C decoder reconstructs the 3D representation from the atlas and its associated video sub-bitstreams (geometry, occupancy, attributes) before handing it to the presentation layer — a separation of concerns that keeps the V3C-specific decode work independent of whatever engine or renderer presents the result. For the current, authoritative repository list and implementation status, see the [Reference Tools](/reference-tools/v3c/) scope and repositories pages.
+
+**Technical paper:** [Efficient delivery and rendering on client devices via MPEG-I standards for emerging volumetric video experiences](https://www.interdigital.com/research_papers/efficient-delivery-and-rendering-on-client-devices-via-mpeg-i-standards-for-emerging-volumetric-video-experiences), by C. Guede (InterDigital), P. Fontaine (InterDigital), J. Mulard (InterDigital), B. Leroy (InterDigital), C. Quinquis (InterDigital), R. Gendrot (InterDigital), S. Gudumasu (InterDigital), V. Allié (InterDigital), B. Kroon (Philips), B. Sonneveldt (Philips), R. Schimanofsky (Philips).
+
+5G-MAG's own [MPEG V3C Immersive Platform reference tools slide deck](pathname:///docs/Reference_Tools_V3C_Immersive_Platform.pdf) introduces the volumetric delivery pipeline, and the [Execution Plan](https://github.com/orgs/5G-MAG/projects/44/views/10) tracks current implementation work.
 
 ## Related
 
 - [MPEG V3C Immersive Platform on the Tech hub](/tech/v3c)
 - [Standards: MPEG V3C Immersive Platform](/standards/v3c)
+- [Standards: Beyond 2D Video Experiences](/standards/beyond-2d)
+- [XR/3D Scenes with MPEG-I Scene Description](/tech/xr)
 - [Reference Tools: MPEG V3C Immersive Platform](/reference-tools/v3c)
 - [Beyond 2D Video Experiences](/tech/beyond-2d) — the related, separate project sharing this folder

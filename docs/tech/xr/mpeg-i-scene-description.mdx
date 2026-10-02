@@ -108,6 +108,21 @@ Because features arrived across editions and amendments, a given implementation 
 
 MPEG defines the scene format; 3GPP defines how it is delivered over 5G and what a device must be able to play. Scene-description content and its referenced media can be carried using the 5G Media Streaming framework (3GPP [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) architecture, [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) protocols) for streamed cases, and over Real-Time Communication transports for conversational and split-rendering cases. On the device side, 3GPP [TS 26.119](https://www.3gpp.org/dynareport/26119.htm) (MeCAR) references MPEG-I Scene Description as media that an AR device must be able to consume, and aligns the on-device client with the Khronos OpenXR runtime API. For that wider delivery and device context, see the [XR/3D Scenes with MPEG-I Scene Description](../xr) Tech page and the [Standards view](/standards/xr).
 
+## How it works
+
+XR delivery combines a scene format, a runtime that plays it, a delivery layer over 5G, and a device capability model.
+
+**Key specifications:** ISO/IEC 23090-14 (MPEG-I Scene Description), 3GPP [TR 26.928](https://www.3gpp.org/dynareport/26928.htm) (Extended Reality (XR) in 5G), [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) (5GMS transport), ISO/IEC 23090-2 (OMAFv2, the second edition of the Omnidirectional Media Format).
+
+MPEG-I Scene Description (ISO/IEC 23090-14) extends Khronos glTF 2.0 (also published as ISO/IEC 12113). glTF describes the static scene: node hierarchy, meshes, materials, textures, cameras and animations.
+
+For streamed and on-demand immersive media, the 5G Media Streaming (5GMS) framework applies: 3GPP [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) defines the architecture (Media Session Handler, Media AF/AS, provisioning and reporting) and TS 26.512 defines the protocols and APIs. For conversational and low-latency AR (for example AR calls), the Real-Time Communication work (the [TS 26.506](https://www.3gpp.org/dynareport/26506.htm)/RTC family) applies, and split rendering uses WebRTC transport.
+
+On the device side, TR 26.928 (Rel-16) and [TR 26.998](https://www.3gpp.org/dynareport/26998.htm) (Rel-17) established the reference architectures for XR and for glass-type AR/MR devices, and the STAR (stand-alone) and EDGAR (edge-dependent) device classes. [TS 26.119](https://www.3gpp.org/dynareport/26119.htm) (MeCAR) turns these into a concrete capability model — device categories (thin AR glasses, AR glasses, XR phone, XR HMD) and the audio, video, scene and XR-system capabilities each supports — and aligns the on-device XR client with the Khronos OpenXR runtime API, so an AR application can query poses, spaces and inputs in a portable way. A STAR device can render a complex scene locally; an EDGAR device cannot, so rendering is split between the device and a network renderer. The Split Rendering Media Service Enabler ([TS 26.565](https://www.3gpp.org/dynareport/26565.htm), Rel-18) specifies this for non-IMS services: a Split Rendering Client and Server establish a session over the SWAP control protocol, and the rendered media itself is carried over WebRTC.
+
+5G-MAG's own [reference tools overview slide deck](pathname:///docs/Reference_Tools_XR_Media_MPEG_I_SD.pdf) introduces the XR Media reference tools and how MPEG-I Scene Description is used in 5G delivery, and the [Execution Plan](https://github.com/orgs/5G-MAG/projects/44/views/9) tracks current implementation work.
+
 ## Related
 
 - [Conversational Avatar Communication with MPEG ARF](/tech/avatar): uses the `MPEG_avatar` extension described above for 3D avatar representation.
+- [MPEG V3C Immersive Platform](/tech/v3c)

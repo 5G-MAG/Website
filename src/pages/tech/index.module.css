@@ -610,6 +610,19 @@
   color: #fff;
 }
 
+/* An area title that links to its Solutions page keeps the band's own text colour: the site's link blue is
+   unreadable on the accent background. */
+.basketTitle a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.basketTitle a:hover,
+.basketTitle a:focus-visible {
+  color: inherit;
+  text-decoration: underline;
+}
+
 .basketTitle {
   font-size: 1.15rem;
   font-weight: 700;

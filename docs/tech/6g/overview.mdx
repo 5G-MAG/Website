@@ -17,13 +17,117 @@ description: Placeholder for the Towards 6G Media technical analysis deep-dive; 
 </div>
 </div>
 
-:::info[Placeholder]
-This page's structure is set; real content is not yet written here. The real, published technical
-detail for this topic currently lives on [its Tech hub page](/tech/6g) (see "How It Works" there)
-rather than in this deep-dive structure.
-:::
-
 ## How It Works
+
+No normative 6G specification exists yet. Everything below that concerns 6G
+behaviour is study-stage and provisional; where a number or requirement is not yet
+decided in 3GPP or ITU-R, it should be treated as an open question rather than a
+settled value.
+
+**Key standardisation bodies:** ITU-R IMT-2030 (framework), 3GPP
+working group SA1 (requirements), 3GPP working groups SA2 and SA4 (architecture and
+media aspects).
+
+### The IMT-2030 usage scenarios and where media sits
+
+The global 6G framework is
+[Recommendation ITU-R M.2160-0](https://www.itu.int/dms_pubrec/itu-r/rec/m/R-REC-M.2160-0-202311-I!!PDF-E.pdf)
+(November 2023). It defines six usage scenarios, mapped below to their 5G
+(IMT-2020) origin and to media relevance.
+
+| IMT-2030 usage scenario | Origin | Media relevance |
+|---|---|---|
+| Immersive communication | Evolves eMBB | Primary scenario for high-rate and immersive media (volumetric, XR, high-resolution) |
+| Massive communication | Evolves mMTC | Sensor and device data; indirect (metadata, telemetry) |
+| Hyper-reliable and low-latency communication (HRLLC) | Evolves URLLC | Interactive and real-time media, remote production, haptics |
+| Ubiquitous connectivity | New | Broadcast/multicast reach, non-terrestrial delivery |
+| AI and communication | New | AI-native traffic management for media; AI/ML model and inference traffic as a workload |
+| Integrated sensing and communication (ISAC) | New | Context capture for media applications; not a delivery path in itself |
+
+M.2160 also states overarching design principles (sustainability, security and
+resilience, connecting the unconnected, and ubiquitous intelligence) and extends the
+5G capability set with new capabilities. These are targets, not specifications: the
+numeric values and the mechanisms to reach them are the subject of the 3GPP work
+below.
+
+### Standardisation timeline and where the work is
+
+6G in 3GPP is a Release-21 target. The current activity is study-stage in Release
+20.
+
+- **ITU-R** completed the framework (M.2160) in 2023 and is
+  progressing the detailed technical performance requirements and evaluation
+  methodology for IMT-2030 through Working Party 5D.
+- **3GPP SA1** produced TR 22.870 (Study on 6G Use Cases and Service
+  Requirements) at the study stage; the normative Stage 1 6G requirements are
+  expected in Release 21.
+- **3GPP SA2 and SA4** are running architecture and media studies.
+  SA4's media study is TR 26.870.
+- **Initial 6G specifications** are expected around 2028.
+
+### Study items relevant to media in 6G
+
+The following studies are the current primary sources. TR 22.870 and TR 26.870 are
+the 6G studies; the AI/ML studies are 5G Advanced work that the 6G media work builds
+on.
+
+| Study | Group | Track | Focus |
+|---|---|---|---|
+| [TR 22.870](https://www.3gpp.org/dynareport/22870.htm) | SA1 | 6G Stage 1 | 6G use cases and candidate service requirements, clustered around the IMT-2030 usage scenarios |
+| [TR 26.870](https://www.3gpp.org/dynareport/26870.htm) | SA4 | 6G media | Media aspects of a 6G system: media services, formats, traffic and delivery |
+| [TR 26.847](https://www.3gpp.org/dynareport/26847.htm) | SA4 | 5G media AI/ML | Evaluation of AI and ML in 5G media services; evaluation testbeds, scenarios and metrics |
+| [TR 22.874](https://www.3gpp.org/dynareport/22874.htm) | SA1 | 5G AI/ML | Traffic characteristics and performance requirements for AI/ML model transfer in 5GS |
+
+TR 26.847 and TR 22.874 matter for 6G because two of the new IMT-2030 scenarios
+(immersive communication and AI and communication) drive traffic that these studies
+already characterise: high-rate media flows on one side, and model transfer flows on
+the other. See
+[AI/ML Evaluation Framework](/tech/ai-ml) for the interface and procedure
+detail.
+
+### Why an experimental testbed at the study stage
+
+Standardisation at the study stage is requirement-driven, and requirements are
+stronger when backed by measurement. AI workloads (large language models, image and
+video generation, agentic multi-step tool calling, real-time multimodal interaction)
+produce traffic patterns that differ from classic media streaming. These include
+bursty request/response cycles, asymmetric uplink/downlink ratios, long-lived
+sessions with variable think-time, and sensitivity to time-to-first-token as well as
+to sustained throughput. The 5G-MAG 6G AI Traffic Characterization Testbed exists to characterise these patterns
+under controlled, reproducible network conditions.
+
+Concretely, the testbed:
+
+- Emulates realistic network conditions on a single machine using Linux Traffic
+  Control (`tc`) with `netem` and Hierarchical Token Bucket
+  (HTB), including profiles derived from 3GPP 5QI values (see
+  [TS 23.501](https://www.3gpp.org/dynareport/23501.htm), the
+  standardised 5QI to QoS-characteristics mapping) and candidate 6G conditions (for
+  example a hyper-reliable low-latency profile).
+- Runs AI and media workloads over those conditions and captures traffic at L3/L4
+  (via tcpdump) and optionally L7 (via mitmproxy).
+- Logs metrics for large-scale, reproducible analysis, producing labelled datasets
+  and classification results.
+
+These outputs are what 5G-MAG uses to ground its media and AI-traffic requirement
+inputs to 3GPP. Full detail, including the emulator YAML profile schema and the AI
+characterisation architecture, is on the
+[6G AI Traffic Characterization Testbed developer scope page](/testbeds/6g-testbed/scope).
+
+### Inputs from 5G-MAG to 3GPP Workshops on 6G
+
+Each link below downloads a ZIP contribution package (the submitted document and
+its supporting files) from the 3GPP file server.
+
+- 3GPP Workshop on 6G -
+  [6G & Media: General views & priorities](https://www.3gpp.org/ftp/workshop/2025-03-10_3GPP_6G_WS/Docs/6GWS-250137.zip):
+  5G-MAG's overall views and priorities for media in 6G.
+- 3GPP SA1 IMT-2030 -
+  [Views from 5G-MAG towards IMT-2030](https://www.3gpp.org/ftp/workshop/2024-05-08_3GPP_Stage1_IMT2030_UC_WS/Docs/SWS-240007.zip):
+  5G-MAG's requirements-stage input to the SA1 IMT-2030 use-case workshop.
+
+The [Execution Plan](https://github.com/orgs/5G-MAG/projects/44/views/15)
+tracks current implementation work.
 
 ### Intro
 
@@ -42,3 +146,6 @@ folded into expandable detail.)*
 ## Related
 
 - [6G AI Traffic Characterization Testbed](/testbeds/6g-testbed)
+- [5G Multicast Broadcast Services (MBS)](/tech/5g-mbs): 5G-native MBS, one of the delivery mechanisms expected to evolve towards 6G
+- [5G Broadcast - TV and Radio Services](/tech/5g-broadcast): LTE-based broadcast delivery and its evolution
+- [Standards: Towards 6G Media](/standards/6g): the standards-tracking view of this topic

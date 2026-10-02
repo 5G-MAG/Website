@@ -1,4 +1,3 @@
-import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
@@ -44,25 +43,6 @@ const API_SERVER_ICON = (
 // whole map for one color, since this page only ever needs its own single
 // project's accent.
 const ACCENT = '#d1477a';
-
-const KEY_SPECS = [
-  {
-    ref: 'CAMARA Quality on Demand (QoD) API',
-    purpose: 'Requests stable latency or prioritised throughput for a media flow on demand, for example a low-latency contribution link.',
-  },
-  {
-    ref: 'CAMARA Connectivity Insights API',
-    purpose: "Checks whether the network can currently meet an application's quality requirements before or during a session.",
-  },
-  {
-    ref: 'CAMARA Network Slice Booking API',
-    purpose: 'Reserves network slice resources for a given area and time window ahead of an event.',
-  },
-  {
-    ref: '3GPP TS 23.434 (SEAL)',
-    purpose: 'Provides common enabling services (group management, configuration, network resource management) that support network capability exposure.',
-  },
-];
 
 export default function NetworkAPIs() {
   const coverImg = useBaseUrl('/assets/images/projects/network-apis.png');
@@ -156,132 +136,6 @@ export default function NetworkAPIs() {
             <ProjectRepoSection projectNames={displayNameOf(PROJECT)} accent={ACCENT} />
           </div>
         </section>
-
-        <section className={styles.section}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>How It Works</h2>
-            <p className={styles.sectionSubtitle}>
-              A CAMARA API is deliberately thin: the media application sees a small REST resource,
-              for example a QoD <code>session</code> or a slice <code>booking</code>. Behind that
-              resource sit two further layers, so a single API call travels CAMARA API &rarr; NEF
-              (3GPP northbound exposure) &rarr; PCF (policy decision) &rarr; SMF/UPF (enforcement on
-              the device&apos;s PDU session, its active data connection to the network).
-            </p>
-
-            <div style={{ maxWidth: '100%', overflowX: 'auto' }}>
-              <table className={styles.feeTable}>
-                <thead>
-                  <tr>
-                    <th>API / specification</th>
-                    <th>What it does for media</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {KEY_SPECS.map((r) => (
-                    <tr key={r.ref}>
-                      <td className={styles.feeTableTier}>{r.ref}</td>
-                      <td>{r.purpose}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            <p>
-              <strong>3GPP northbound exposure.</strong> The Network Exposure Function (NEF) is the
-              5G Core function that exposes capabilities to an Application Function (AF). Its
-              northbound APIs are specified in{' '}
-              <a href="https://www.3gpp.org/dynareport/29522.htm">TS 29.522</a>. For QoS the relevant
-              northbound API is <code>AsSessionWithQoS</code> (the RESTful form of the{' '}
-              <code>Nnef_AFsessionWithQoS</code> service). In 4G/EPC the equivalent function is the
-              Service Capability Exposure Function (SCEF); operators commonly deploy a combined
-              SCEF+NEF. Discovery, onboarding and authentication of these APIs are handled by the
-              Common API Framework (CAPIF),{' '}
-              <a href="https://www.3gpp.org/dynareport/23222.htm">TS 23.222</a> /{' '}
-              <a href="https://www.3gpp.org/dynareport/29222.htm">TS 29.222</a>.
-            </p>
-
-            <p>
-              <strong>5G Core policy and control.</strong> The NEF forwards the request to the Policy
-              Control Function (PCF) via <code>Npcf_PolicyAuthorization</code> (
-              <a href="https://www.3gpp.org/dynareport/29514.htm">TS 29.514</a>). The PCF authorises
-              the AF request and installs policy on the subscriber&apos;s PDU session, which the
-              Session Management Function (SMF) and User Plane Function (UPF) enforce. Slice-related
-              requests instead touch slice management (provisioning) and, at runtime, the SEAL
-              Network Slice Capability Enablement (NSCE) service in{' '}
-              <a href="https://www.3gpp.org/dynareport/23434.htm">TS 23.434</a>.
-            </p>
-
-            <p>
-              The application never sees the PCF, SMF or UPF. This is the value CAMARA adds: one
-              operator-agnostic contract in place of per-operator 3GPP integration. It is also the
-              source of most of the open questions 5G-MAG records on the analysis pages, because
-              information that exists inside the core (measured latency, service-area availability)
-              is not always surfaced back through the CAMARA abstraction.
-            </p>
-
-            <p>
-              <strong>Common building blocks.</strong> Cross-cutting behaviour is defined once in the
-              CAMARA Commonalities working group and reused by every API on the analysis pages: a
-              device object identified by <code>phoneNumber</code>, <code>networkAccessIdentifier</code>{' '}
-              or an IP address; application-server and port scoping so QoS applies to a specific flow
-              rather than all of a device&apos;s traffic; OAuth 2.0 authorisation (three-legged for
-              operations on a specific end user, two-legged for back-office operations); asynchronous
-              notifications delivered as{' '}
-              <a href="https://cloudevents.io/">CloudEvents</a> 1.0 JSON to a consumer-supplied sink;
-              and a common error model with an optional <code>x-correlator</code> tracing header.
-            </p>
-
-            <p>
-              <strong>API families.</strong> The CAMARA APIs 5G-MAG analyses fall into a few families:
-              QoS for a flow or device (
-              <Link to="/tech/network-apis/camara-quality-on-demand">Quality on Demand</Link>,{' '}
-              <Link to="/tech/network-apis/camara-qos-provisioning">QoS Provisioning</Link>,{' '}
-              <Link to="/tech/network-apis/camara-qos-booking">QoS Booking</Link> and{' '}
-              <Link to="/tech/network-apis/camara-qos-booking-assignment">QoS Booking and Assignment</Link>
-              , all consuming a named profile from{' '}
-              <Link to="/tech/network-apis/camara-qos-profiles">QoS Profiles</Link>); area and time
-              reservation for many devices (
-              <Link to="/tech/network-apis/camara-network-slice-booking">Network Slice Booking</Link>{' '}
-              and{' '}
-              <Link to="/tech/network-apis/camara-dedicated-networks">Dedicated Networks</Link>); and
-              requirements and monitoring (
-              <Link to="/tech/network-apis/camara-application-profiles">Application Profiles</Link>{' '}
-              declares an application&apos;s needs once, and{' '}
-              <Link to="/tech/network-apis/camara-connectivity-insights">Connectivity Insights</Link>{' '}
-              plus{' '}
-              <Link to="/tech/network-apis/camara-connectivity-insights-subscriptions">
-                Connectivity Insights Subscriptions
-              </Link>{' '}
-              check whether the network can meet them). All of these APIs are still pre-1.0
-              (<code>v0</code>/<code>wip</code>) at the time of writing, delivered through
-              CAMARA&apos;s twice-yearly meta-releases, so field names and enumerations can change
-              between releases.
-            </p>
-
-            <p>
-              The{' '}
-              <Link to="/tech/network-apis/network-api-initiatives">
-                CAMARA Project and 3GPP APIs
-              </Link>{' '}
-              page indexes every individual API analysis above. Two further sets of pages apply this
-              to real workflows: <Link to="/tech/network-apis/content-production/introduction">
-                Content Production &amp; Contribution
-              </Link>{' '}
-              covers professional content production and contribution scenarios, and{' '}
-              <Link to="/tech/network-apis/live-media-distribution/introduction">
-                Live Media Distribution
-              </Link>{' '}
-              covers the visibility gap between content providers and network operators for live
-              distribution.
-            </p>
-
-            <p>
-              <strong>Related:</strong> <Link to="/tech/5gms">5G Media Streaming (5GMS)</Link>
-            </p>
-          </div>
-        </section>
-
 
         <JoinTheEffort alt />
       </main>

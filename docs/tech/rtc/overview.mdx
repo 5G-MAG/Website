@@ -23,24 +23,106 @@ description: Placeholder for the Real-time Media Communication (RTC) Architectur
 </div>
 </div>
 
-:::info[Placeholder]
-This page's structure is set; real content is not yet written here. The real, published technical
-detail for this topic currently lives on [its Tech hub page](/tech/rtc) (see "How It Works" there)
-rather than in this deep-dive structure.
-:::
+## How it works
 
-## How It Works
+RTC is 3GPP's interactive, WebRTC-based counterpart to 5G Media Streaming's
+one-way delivery paths, reusing 5GMS concepts wherever possible so the two can share
+session-handling and delivery functions.
 
-### Intro
+**Key specifications:** 3GPP
+[TS 26.506](https://www.3gpp.org/dynareport/26506.htm) (5G Real-time Media
+Communication Architecture, Stage 2),
+[TS 26.113](https://www.3gpp.org/dynareport/26113.htm) (RTC stage 3:
+procedures, APIs and protocols),
+[TS 26.510](https://www.3gpp.org/dynareport/26510.htm) (harmonised media
+delivery specification shared with 5GMS).
 
-*(Placeholder — plain-language explanation of what this topic is and why it exists.)*
+### The RTC architecture (TS 26.506)
 
-### Architecture
+3GPP SA4 specified a dedicated 5G Real-time Media Communication Architecture (Stage 2)
+in [TS 26.506](https://www.3gpp.org/dynareport/26506.htm), with the stage-3
+procedures, APIs and protocols in
+[TS 26.113](https://www.3gpp.org/dynareport/26113.htm). The design reuses 5G
+Media Streaming (5GMS) concepts wherever possible, so RTC functions and 5GMS functions
+can share media session handling and media delivery. At a high level the architecture
+places:
 
-*(Placeholder — one diagram, functional entities / key building blocks, with deeper detail folded
-into expandable detail.)*
+- An **RTC Application Provider** offering the service.
+- An **RTC Application Function (AF)** and
+  **RTC Application Server (AS)** on the network side, handling
+  provisioning, session control and media functions.
+- An **RTC-aware application** on the UE.
 
-### Features
+These are connected by named reference points, analogous to the M1..M8 model used in
+5GMS. Because RTC was defined after 5GMS, the harmonised provisioning and
+session-handling functions are being pulled into a common media delivery specification,
+[TS 26.510](https://www.3gpp.org/dynareport/26510.htm), so that the same
+functions can serve both 5GMS and RTC; not all functions are shared yet.
 
-*(Placeholder — compact per-feature or per-topic table, with deeper clause-level or per-item detail
-folded into expandable detail.)*
+### Collaboration scenarios
+
+The architecture is defined for a range of collaboration scenarios that differ in how
+much of the service the mobile operator provides. At one end the operator provides only
+connectivity and QoS support for a third-party WebRTC service; at the other end the
+operator hosts the signalling and media functions (for example acting as a WebRTC gateway
+or media function). Intermediate scenarios have the operator provide some functions (such
+as TURN relays or a media gateway) while the application provider keeps the rest. This
+lets one architecture cover both operator-assisted third-party services and
+operator-run RTC services.
+
+### WebRTC transport stack
+
+RTC media transport uses the WebRTC protocol stack:
+
+- **Media**: RTP with RTCP feedback, secured as DTLS-SRTP.
+- **Connectivity / NAT traversal**: ICE, using STUN for server-reflexive
+  candidates and TURN for relayed candidates.
+- **Data**: WebRTC data channels, i.e. SCTP over DTLS, for reliable or
+  partially-reliable messaging alongside the media.
+
+Codec handling follows the WebRTC requirements (for example the IETF video codec
+requirements referenced on the standards page). QoS for the media flows is requested
+from the 5G system through the exposure interfaces (NEF, then PCF for policy) so that an
+RTC session can obtain better-than-best-effort treatment; for production use this is
+normally combined with a
+[Non-Public Networks](/tech/npn) so uplink capacity can be reserved.
+
+### Signalling
+
+WebRTC does not mandate a signalling protocol; the offer/answer exchange must be carried
+by some out-of-band channel. Within the 3GPP RTC work the signalling options are handled
+in the architecture and protocol specifications. One protocol developed in this context
+is RESPECT, a WebRTC-compatible session-control (signalling) protocol documented in the
+Release 19 study
+[TR 26.930](https://www.3gpp.org/dynareport/26930.htm) (Study on the
+enhancement for Immersive Real-Time communication for WebRTC). As study output it is not
+a normative 3GPP protocol; the normative RTC protocols and APIs remain those of TS 26.113.
+
+### Relationship to 5GMSu and to IMS
+
+- **5GMSu (uplink 5G Media Streaming)** is a one-way, device-to-network
+  streaming path within the 5GMS framework ([TS 26.501](https://www.3gpp.org/dynareport/26501.htm),
+  [TS 26.512](https://www.3gpp.org/dynareport/26512.htm), and the harmonised
+  TS 26.510). It suits contribution/ingest where interactivity is not required.
+- **RTC (TS 26.506 / TS 26.113)** is the interactive, WebRTC-based path,
+  suited to conversational and collaborative media and low-latency two-way contribution.
+- **IMS-based real-time communication**, including IMS Multimedia Telephony
+  ([TS 26.114](https://www.3gpp.org/dynareport/26114.htm)) and the more recent
+  IMS Data Channel / NG-RTC work, is a separate, IMS-anchored path. NG-RTC adds a data
+  channel, AI media processing and a service-based interface to IMS; its stage 3 was
+  progressed in Release 18. Which path a service uses depends on whether it is anchored
+  in IMS telephony or in the 5GMS/RTC media framework.
+
+### Release timeline
+
+- **Release 16 to 17**: 5GMS foundations (TS 26.501, TS 26.512) including
+  the 5GMSu uplink path; IMS Multimedia Telephony (TS 26.114).
+- **Release 18**: RTC architecture (TS 26.506) and protocols (TS 26.113);
+  harmonised media delivery (TS 26.510); IMS Data Channel / NG-RTC stage 3.
+- **Release 19 and later**: RTC enhancements, including immersive real-time
+  communication over WebRTC, studied in TR 26.930 (published as V19.0.0, October 2025);
+  TS 26.506, TS 26.113 and TS 26.510 continue to evolve under Release 19.
+
+**Related:** [Non-Public Networks](/tech/npn)
+· [Time-Sensitive Communications (TSC)](/tech/tsc)
+· [Standards: Real-time Media Communication (RTC) Architecture](/standards/rtc)

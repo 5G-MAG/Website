@@ -141,39 +141,6 @@ export default function VDMC() {
           </div>
         </section>
 
-        <section className={styles.section} id="how-it-works">
-          <div className="container">
-            <h2 className={styles.sectionTitle}>How It Works</h2>
-            <p className={styles.sectionSubtitle}>
-              V-DMC compresses a deforming 3D mesh by separating a simplified, per-frame basemesh
-              from the displacement detail and texture that refine it, then delegates the heavy
-              compression work to existing video codecs.
-            </p>
-
-            <p>
-              <strong>Key specification:</strong> ISO/IEC 23090-29 (Video-based Dynamic Mesh Coding).
-              Source: <a href="https://mpeg.expert/v-dmc/#about">mpeg.expert/v-dmc</a>, which records
-              Final Draft International Standard status as of July 2025, progressing to full
-              International Standard in March 2026.
-            </p>
-
-            <p>
-              This page is a starting placeholder: deeper clause-level analysis (basemesh signalling,
-              displacement coding, profile/level structure) awaits a full reading of the published
-              standard text, not yet done here.
-            </p>
-
-            <p>
-              <strong>Related:</strong> <Link to="/tech/v3c">MPEG V3C Immersive Platform</Link>{' '}
-              (the point-cloud-based counterpart, for volumetric video content that isn&apos;t a
-              parameterized mesh) &middot;{' '}
-              <Link to="/standards/vdmc">Standards: Dynamic Mesh Coding</Link> (the standards-tracking
-              view of this topic)
-            </p>
-          </div>
-        </section>
-
-
         <JoinTheEffort alt />
       </main>
     </Layout>
