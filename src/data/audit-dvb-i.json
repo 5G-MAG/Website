@@ -3,7 +3,7 @@
  "title": "DVB-I Services over 5G Systems",
  "audited": "2026-10-02",
  "tier": "T0",
- "method": "code read at the commits listed, nothing built or run for the verdicts (the repositories' own tests pass at these commits). Read at 7a9ae28, 003ce59 and 97721a6; moved to 32d8344, f06e618 and 8708485 (development, 2026-10-02), which replace the local 5G extension with IdentifierBasedDeliveryParameters: evidence lines remapped through the diff, and the entries on the changed code re-read. The audit was then moved to fa1a63c, bb46926 and 1f33245 (development) after the compliance work, and all cases of the provider, client and registry were re-judged by a second reader on 2026-10-02 against the code at those commits, with the repositories' test suites run and passing. The audit was then moved to 1bee9af, 1416c9d and 893d068 (development) after the owner decisions D6 to D8 (D6: plain HTTP with a warning where no certificate is configured; D7: Genre terms always checked by the registry; D8: a regulator list always the default in the client), and the affected cases re-judged on 2026-10-02.",
+ "method": "code read at the commits listed, nothing built or run for the verdicts (the repositories' own tests pass at these commits). Read at 7a9ae28, 003ce59 and 97721a6; moved to 32d8344, f06e618 and 8708485 (development, 2026-10-02), which replace the local 5G extension with IdentifierBasedDeliveryParameters: evidence lines remapped through the diff, and the entries on the changed code re-read. The audit was then moved to fa1a63c, bb46926 and 1f33245 (development) after the compliance work, and all cases of the provider, client and registry were re-judged by a second reader on 2026-10-02 against the code at those commits, with the repositories' test suites run and passing. The audit was then moved to 1bee9af, 1416c9d and 893d068 (development) after the owner decisions D6 to D8 (D6: plain HTTP with a warning where no certificate is configured; D7: Genre terms always checked by the registry; D8: a regulator list always the default in the client), and the affected cases re-judged on 2026-10-02. Evidence then moved to 272eb70, 733290f and c05d531, which add licence headers (code unchanged; line numbers remapped) and, in the client, show an application as unavailable when its XML AIT has none it can run (7ce6c39).",
  "releases": {
   "V121": "ETSI TS 103 770 V1.2.1 (2024-09), Service Discovery and Programme Metadata for DVB-I, with its schemas (annex B)"
  },
@@ -25,7 +25,7 @@
    "repos": [
     {
      "repo": "rt-dvb-i-application",
-     "commit": "1416c9d",
+     "commit": "733290f",
      "version": ""
     }
    ]
@@ -37,7 +37,7 @@
    "repos": [
     {
      "repo": "rt-dvb-i-application-provider",
-     "commit": "1bee9af",
+     "commit": "272eb70",
      "version": ""
     }
    ]
@@ -49,7 +49,7 @@
    "repos": [
     {
      "repo": "rt-dvb-i-service-list-registry",
-     "commit": "893d068",
+     "commit": "c05d531",
      "version": ""
     }
    ]
@@ -541,7 +541,7 @@
   },
   {
    "name": "Service lists and services",
-   "summary": "The provider publishes schema-valid service lists as application/vnd.dvb.dvbisl+xml, with a new version on every change, JPEG or PNG logos, image variants, subscription packages, one LCN table per region and region selection by regionID. The client chooses one LCN table by region, honours @visible, @selectable and LCNRange, every target region, subscription packages, parental ratings and linked applications, and reads XML AITs; it does not apply the XML AIT platform profile, and when the XML AIT of an application offered beside the media has no application it can run, it hides the application rather than showing it as unavailable. The Exo player leaves all of this to an external frontend.",
+   "summary": "The provider publishes schema-valid service lists as application/vnd.dvb.dvbisl+xml, with a new version on every change, JPEG or PNG logos, image variants, subscription packages, one LCN table per region and region selection by regionID. The client chooses one LCN table by region, honours @visible, @selectable and LCNRange, every target region, subscription packages, parental ratings and linked applications, and reads XML AITs; it does not apply the XML AIT platform profile, and shows an application as unavailable, without an error, when its XML AIT has none it can run. The Exo player leaves all of this to an external frontend.",
    "requirements": [
     {
      "id": "sl-5.1.2-provider",
@@ -1324,8 +1324,8 @@
       },
       {
        "case": "No error when the XML AIT has no executable application",
-       "verdict": "differs",
-       "what": "No error is issued: when the XML AIT of an application controlling media presentation holds no application it can start, that instance is discarded and the next one tried, and when none is left the service is shown as unavailable; an application offered beside the media is offered only once its XML AIT gives one it can start, and otherwise is not offered at all, so for it nothing is shown as unavailable, while the clause asks that a service or content item be shown as unavailable.",
+       "verdict": "implemented",
+       "what": "No error is issued. When the XML AIT of an application controlling media presentation holds no application the client can start, that instance is discarded and the next one tried. When the XML AIT of an application offered beside the media holds none, the application stays shown, disabled and labelled as unavailable.",
        "repo": "rt-dvb-i-application",
        "locator": "clause 5.2.4.2"
       }
