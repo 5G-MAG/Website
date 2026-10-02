@@ -3,7 +3,7 @@
  "title": "DVB-I Services over 5G Systems",
  "audited": "2026-10-02",
  "tier": "T0",
- "method": "code read at the commits listed, nothing built or run for the verdicts (the repositories' own tests pass at these commits). Read at 7a9ae28, 003ce59 and 97721a6; moved to 32d8344, f06e618 and 8708485 (development, 2026-10-02), which replace the local 5G extension with IdentifierBasedDeliveryParameters: evidence lines remapped through the diff, and the entries on the changed code re-read. The audit was then moved to fa1a63c, bb46926 and 1f33245 (development) after the compliance work, and all cases of the provider, client and registry were re-judged by a second reader on 2026-10-02 against the code at those commits, with the repositories' test suites run and passing.",
+ "method": "code read at the commits listed, nothing built or run for the verdicts (the repositories' own tests pass at these commits). Read at 7a9ae28, 003ce59 and 97721a6; moved to 32d8344, f06e618 and 8708485 (development, 2026-10-02), which replace the local 5G extension with IdentifierBasedDeliveryParameters: evidence lines remapped through the diff, and the entries on the changed code re-read. The audit was then moved to fa1a63c, bb46926 and 1f33245 (development) after the compliance work, and all cases of the provider, client and registry were re-judged by a second reader on 2026-10-02 against the code at those commits, with the repositories' test suites run and passing. The audit was then moved to 1bee9af, 1416c9d and 893d068 (development) after the owner decisions D6 to D8 (D6: plain HTTP with a warning where no certificate is configured; D7: Genre terms always checked by the registry; D8: a regulator list always the default in the client), and the affected cases re-judged on 2026-10-02.",
  "releases": {
   "V121": "ETSI TS 103 770 V1.2.1 (2024-09), Service Discovery and Programme Metadata for DVB-I, with its schemas (annex B)"
  },
@@ -25,7 +25,7 @@
    "repos": [
     {
      "repo": "rt-dvb-i-application",
-     "commit": "bb46926",
+     "commit": "1416c9d",
      "version": ""
     }
    ]
@@ -37,7 +37,7 @@
    "repos": [
     {
      "repo": "rt-dvb-i-application-provider",
-     "commit": "fa1a63c",
+     "commit": "1bee9af",
      "version": ""
     }
    ]
@@ -49,7 +49,7 @@
    "repos": [
     {
      "repo": "rt-dvb-i-service-list-registry",
-     "commit": "1f33245",
+     "commit": "893d068",
      "version": ""
     }
    ]
@@ -70,7 +70,7 @@
  "features": [
   {
    "name": "Service list discovery",
-   "summary": "The registry answers queries with schema-valid Service List Entry Points for every offering type, includes offerings that leave a filter unspecified, refuses invalid TargetCountry and Language values, writes the service list media type and @regulatorListFlag, and serves over TLS when configured; it refuses unknown genre terms only when the operator supplies the genre schemes, and how it treats image_variant falls under a contradiction in the specification. The browser client queries a registry, lists regulator lists first, acts on Delivery, Language, TargetCountry and logos, and checks ServiceListId; it does not always make a regulator list the default. The Exo DVB-I Player does no discovery of its own.",
+   "summary": "The registry answers queries with schema-valid Service List Entry Points for every offering type, includes offerings that leave a filter unspecified, refuses invalid TargetCountry and Language values, writes the service list media type and @regulatorListFlag, refuses unknown genre terms, and serves over TLS when configured, otherwise plain HTTP with a warning; how it treats image_variant falls under a contradiction in the specification. The browser client queries a registry, lists regulator lists first, acts on Delivery, Language, TargetCountry and logos, makes a regulator list the default whenever there is one, and checks ServiceListId. The Exo DVB-I Player does no discovery of its own.",
    "requirements": [
     {
      "id": "5.1.3.2-query-registry",
@@ -216,8 +216,8 @@
       },
       {
        "case": "400 for an invalid Genre value",
-       "verdict": "differs",
-       "what": "A Genre value that is not one of the three table 12 scheme URIs followed by a colon and a term identifier is refused with 400; whether the term exists in its scheme is checked only when the operator supplies the scheme files, so in the default configuration a well-formed value naming a term no scheme defines is accepted with 200, where the clause requires a 400 for an invalid value.",
+       "verdict": "implemented",
+       "what": "A Genre value is refused with 400 unless it is one of the three table 12 scheme URIs followed by a colon and a term identifier that the loaded scheme files define; the registry does not start without those files, so a well-formed value naming a term no scheme defines is always refused.",
        "repo": "rt-dvb-i-service-list-registry",
        "locator": "clause 5.1.3.2; clause 5.3.5, Table 12, row Genre"
       }
@@ -228,7 +228,7 @@
       "regulatorListFlag and inlineImages accept true and false in any letter case and refuse 1 and 0; the clause calls the values boolean but does not say which written forms a query may use.",
       "TS 103 770 V1.2.1 is not consistent on this: clause 5.1.3.2 requires 400 for an undefined parameter, while clause 6.2.2 says a server may ignore it. Answering 400 satisfies both, so the verdict does not depend on which reading applies.",
       "TargetCountry and Language values are checked against the patterns of their schema types only; whether a code is in the ISO 3166 list or is a registered language identifier is not checked (ISO 3166 and RFC 3066 not held for this audit).",
-      "The form of a Genre value (scheme URI, a colon, the term identifier) is a reading: clause 5.1.3.2 does not define it, and the rule for term references is in ISO/IEC 15938-5, not held. With the scheme files supplied, an undefined term is refused with 400 (observed with test scheme files); the repository test of that mode skips without the TV-Anytime ContentCS and FormatCS files, which this audit does not hold."
+      "The form of a Genre value (scheme URI, a colon, the term identifier) is a reading: clause 5.1.3.2 does not define it, and the rule for term references is in ISO/IEC 15938-5, not held. The repository tests use small synthetic schemes; the scheme file of clause D.5 from the TS 103 770 attachments loads with its 95 terms (observed, read-only, Node.js 24.19.0). The TV-Anytime ContentCS and FormatCS files are not held for this audit, so loading them was not observed and the test that reads the real files was not run."
      ]
     },
     {
@@ -356,8 +356,8 @@
      "cases": [
       {
        "case": "Query endpoint served over TLS",
-       "verdict": "implemented",
-       "what": "With a key and certificate configured the registry serves its endpoints over HTTPS only and does not answer plain HTTP on that port; an incomplete or unreadable TLS configuration stops it rather than falling back to HTTP. With neither configured it serves plain HTTP with a warning, for the same-private-subnet case the clause allows.",
+       "verdict": "differs",
+       "what": "With a key and certificate configured the registry serves its endpoints over HTTPS only, and an incomplete or unreadable TLS configuration stops it rather than falling back to HTTP. With neither configured it serves plain HTTP with a warning and does not check that clients are on its private subnet, while the clause allows HTTP without TLS only in that case. Serving plain HTTP with a warning follows an owner decision.",
        "repo": "rt-dvb-i-service-list-registry"
       },
       {
@@ -369,9 +369,8 @@
       }
      ],
      "noted": [
-      "In plain HTTP mode the registry does not check that a client is on its private subnet, which is the only case the clause allows HTTP without TLS; the README leaves that to the deployment.",
       "The TLS profile the clause takes from ETSI TS 102 796 clause 11.2 (root certificates, cipher suites, signature algorithms, key sizes, curves) is not applied; the runtime defaults are used.",
-      "The shipped registry data lists the provider's service list at an http:// URL on localhost, while the provider now serves over TLS by default."
+      "The shipped registry data lists the provider's service list at an http:// URL on localhost."
      ]
     },
     {
@@ -391,8 +390,9 @@
       {
        "case": "Percent-encoding of query values",
        "verdict": "implemented",
-       "what": "The country code the user types is percent-encoded before it is put in the query.",
-       "repo": "rt-dvb-i-application"
+       "what": "The country code the user types is percent-encoded before it is put in the query, every reserved character of RFC 3986 clause 2.2 included (the gen-delims and the sub-delims ! $ & ' ( ) * + , ; =), with uppercase hexadecimal digits.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 5.1.3.2; IETF RFC 3986 clauses 2.1 and 2.2"
       },
       {
        "case": "Parameters in the specified order",
@@ -406,7 +406,7 @@
       "The registry endpoint is user-configurable and defaults to a third-party public registry; a query string already in the configured endpoint is kept and TargetCountry appended after it.",
       "Besides a registry, the client accepts a typed Service List URL, preset URLs and a built-in default URL, the other discovery options clause 5.1.3.1 describes.",
       "The registry query goes through the same HTTP handling as the service list requests (clause 4.3, judged under its own feature): a failure is reported to the user as a failed lookup and not retried automatically, and after a 400 or 406 the same query is not sent again.",
-      "The encoding used leaves the characters ! ' ( ) * as they are. Whether this meets the clause could not be checked: IETF RFC 3986, whose clause 2.2 defines the reserved characters, was not available to this audit (unverified). Country codes are letters only, so a valid query is not affected."
+      "The character set of annex C of ETSI TS 102 809 that the clause also requires of query parameters is not checked: the value is sent as the user types it, upper-cased."
      ]
     },
     {
@@ -439,8 +439,8 @@
       },
       {
        "case": "@regulatorListFlag preference (Table 83 note 2)",
-       "verdict": "differs",
-       "what": "Reads the flag and offers regulator lists first, with the first one it can install marked as the default and focused; a regulator list it should not install (for example one requiring DVB-T, or one for another country) is shown disabled and a non-regulator list becomes the default, while NOTE 2 requires the default to be a list with @regulatorListFlag true whenever the response includes one.",
+       "verdict": "implemented",
+       "what": "Reads the flag and offers regulator lists first; whenever the response includes a regulator list the default is one: the first it can install, or, when none can be installed here, the first one, marked as the default but disabled with the reason shown. Without a regulator list the first list it can install is the default.",
        "repo": "rt-dvb-i-application",
        "locator": "clause 8.5.3.2, Table 83, NOTE 2"
       },
@@ -478,7 +478,8 @@
       "A non-standard root of ProviderOffering in the older servicediscovery namespaces is also parsed; it carries none of the fields above and they are not read from it.",
       "ServiceListURI @contentType is ignored; any URI is fetched as a Service List.",
       "When an offering has several ServiceListName values the first is shown, whatever the user's language preference.",
-      "Genre and SRSSupport, which table 83 does not mark for any receiver, are not read."
+      "Genre and SRSSupport, which table 83 does not mark for any receiver, are not read.",
+      "When the regulator list is the default but cannot be installed here (for example it requires DVB-S), it is shown as the default and disabled, so the user picks another list; NOTE 2 does not say what a client should do with a regulator list it cannot receive."
      ]
     },
     {
@@ -540,7 +541,7 @@
   },
   {
    "name": "Service lists and services",
-   "summary": "The provider publishes schema-valid service lists as application/vnd.dvb.dvbisl+xml, with a new version on every change, JPEG or PNG logos, image variants, subscription packages, one LCN table per region and region selection by regionID. The client chooses one LCN table by region, honours @visible, @selectable and LCNRange, every target region, subscription packages, parental ratings and linked applications, and reads XML AITs; it still plays media for a controlling application of a type it cannot start, does not apply the XML AIT platform profile, and shows an error when an XML AIT has no application it can run. The Exo player leaves all of this to an external frontend.",
+   "summary": "The provider publishes schema-valid service lists as application/vnd.dvb.dvbisl+xml, with a new version on every change, JPEG or PNG logos, image variants, subscription packages, one LCN table per region and region selection by regionID. The client chooses one LCN table by region, honours @visible, @selectable and LCNRange, every target region, subscription packages, parental ratings and linked applications, and reads XML AITs; it does not apply the XML AIT platform profile, and when the XML AIT of an application offered beside the media has no application it can run, it hides the application rather than showing it as unavailable. The Exo player leaves all of this to an external frontend.",
    "requirements": [
     {
      "id": "sl-5.1.2-provider",
@@ -1270,13 +1271,13 @@
       {
        "case": "Media presented in parallel with an application with media in parallel (1.1)",
        "verdict": "implemented",
-       "what": "Playback starts on selection independently of any application; the playing instance's 1.1 application is offered from a toolbar button and opened in a new window.",
+       "what": "Playback starts on selection independently of any application; the playing instance's 1.1 application is offered from a toolbar button once it has been resolved, an XML AIT read included, and opened in a new window.",
        "repo": "rt-dvb-i-application"
       },
       {
        "case": "No media presented for an application controlling media (1.2)",
-       "verdict": "differs",
-       "what": "For a 1.2 application of a type it can start (an HTML page or an XML AIT), plays no media, ignores the instance's delivery parameters and shows the application in a frame in the player; a 1.2 application of any other type is dropped and the instance's delivery parameters are then played, while the clause says no media stream shall be presented for such an application whatever its @contentType.",
+       "verdict": "implemented",
+       "what": "For a 1.2 application it plays no media and ignores the instance's delivery parameters: one of a type it can start (an HTML page or an XML AIT) is shown in a frame in the player; one of any other type is kept as the instance's application and the instance is discarded, so its delivery parameters are never played.",
        "repo": "rt-dvb-i-application",
        "locator": "clause 5.2.3.2"
       },
@@ -1298,7 +1299,7 @@
      "noted": [
       "The application URL is opened with an added sid parameter carrying the client's own session identifier and no launch location. Clause 5.2.3.1 says the context of invocation may be passed and, for broadcast-independent HbbTV applications, refers to ETSI TS 102 796 (not opened in this audit), so the launch location sentences are not judged here.",
       "The LinkedApplicationCS terms are told apart: 1.1 is offered from the toolbar, a service-level term 3 application is offered there when the instance has no 1.1, 1.2 presents the service, and 2 is started when the service is off air. A 1.1 application is only opened on request, never started automatically.",
-      "Applications of a type other than an HTML page or an XML AIT are ignored, which clause 5.2.3.1 permits."
+      "Applications of a type other than an HTML page or an XML AIT are ignored, which clause 5.2.3.1 permits, except an application controlling media presentation, which is kept so that its instance is discarded."
      ]
     },
     {
@@ -1324,7 +1325,7 @@
       {
        "case": "No error when the XML AIT has no executable application",
        "verdict": "differs",
-       "what": "When the XML AIT of an application controlling media presentation holds no application it can start, that instance is discarded and the next one is tried; for an application opened from the toolbar the user gets a notice that it cannot be started, and the button was offered before the AIT was read, while the clause says the client shall not issue an error but show the service or content item as unavailable.",
+       "what": "No error is issued: when the XML AIT of an application controlling media presentation holds no application it can start, that instance is discarded and the next one tried, and when none is left the service is shown as unavailable; an application offered beside the media is offered only once its XML AIT gives one it can start, and otherwise is not offered at all, so for it nothing is shown as unavailable, while the clause asks that a service or content item be shown as unavailable.",
        "repo": "rt-dvb-i-application",
        "locator": "clause 5.2.4.2"
       }
@@ -1564,7 +1565,7 @@
   },
   {
    "name": "Service instance selection and delivery",
-   "summary": "The browser client selects instances by clause 5.2.13: per-instance availability, re-evaluation when hours change or an application exits, and @priority with its default of 0; it reads every DRM and CA system, shows DisplayName, caches and makes conditional requests, does not retry 400 or 406, backs off at random and uses TLS except on the same private subnet. It does not yet check codecs or the encryption scheme in advance, does not discard an instance whose controlling application is of a type it cannot start, and after a 401 or 403 has no credentials to present. The provider writes schema-valid delivery signalling, including a 5G Broadcast instance as IdentifierBasedDeliveryParameters, and serves over TLS. No component implements MBMS carriage (clause 9.3): the client checks and shows the 5G Broadcast signalling, but nothing calls an MBMS Client. The Exo wrapper leaves selection to an external frontend.",
+   "summary": "The browser client selects instances by clause 5.2.13: per-instance availability, re-evaluation when hours change or an application exits, and @priority with its default of 0; it reads every DRM and CA system, shows DisplayName, caches and makes conditional requests, does not retry 400 or 406, backs off at random and fetches plain HTTP endpoints with a warning, not only on the same private subnet. It does not yet check codecs or the encryption scheme in advance, and after a 401 or 403 has no credentials to present. The provider writes schema-valid delivery signalling, including a 5G Broadcast instance as IdentifierBasedDeliveryParameters, and serves over TLS when a certificate is configured, otherwise plain HTTP with a warning. No component implements MBMS carriage (clause 9.3): the client checks and shows the 5G Broadcast signalling, but nothing calls an MBMS Client. The Exo wrapper leaves selection to an external frontend.",
    "requirements": [
     {
      "id": "4.3-app",
@@ -1599,6 +1600,13 @@
        "what": "Reads Cache-Control max-age on every response, answers a repeated request from its local copy while it is fresh, and polls the current list no sooner than the later of 30 seconds and the end of max-age; the proxy passes the header on. The daily check and any reload go through the same cache.",
        "repo": "rt-dvb-i-application",
        "locator": "clause 4.3.2.1"
+      },
+      {
+       "case": "If-None-Match where the server provides an ETag",
+       "verdict": "implemented",
+       "what": "The HTTP client used for every DVB-I request keeps the ETag of each response and sends it as If-None-Match on the next request for that document, omits it when none is held, and takes a new ETag from a 304; the proxy forwards If-None-Match upstream and passes ETag back.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 4.3.2.1, referring to ETSI TS 102 796 V1.8.1 clause 7.3.2.6"
       },
       {
        "case": "400 (Bad Request) or 406 (Not Acceptable): no retry of the same request",
@@ -1659,7 +1667,7 @@
       {
        "case": "Redirect followed by 4xx or 5xx: request deemed failed",
        "verdict": "implemented",
-       "what": "Redirects are followed by the browser for same-origin requests and by the proxy for others, which checks every hop and relays the final status, so a redirect ending in a 4xx or 5xx counts as a failure and the next URI is tried.",
+       "what": "Redirects are followed by the browser for same-origin requests and by the proxy for others, which checks the address of every hop and relays the final status, so a redirect ending in a 4xx or 5xx counts as a failure and the next URI is tried.",
        "repo": "rt-dvb-i-application",
        "locator": "clause 4.3.3.6"
       }
@@ -1669,7 +1677,7 @@
       "After every URI of a list fails on first load the client does not retry automatically; the periodic refresh starts only once a list has loaded.",
       "Besides the periodic refresh, the client checks the current list once a day at a time drawn at random, through the same HTTP client, so a list still fresh by its max-age is not requested; the daily update check of clause 5.1.7 is judged under Service lists.",
       "After a 404 or another failure that clause 4.3.3 gives no rule for, the periodic refresh applies the back-off wait as well, a client choice.",
-      "Clause 4.3.2.1 delegates cache control to clause 7.3.2.6 of ETSI TS 102 796, now held as V1.8.1 (reference [21] is undated). That clause also asks for If-None-Match \"where a server provides an ETag header\"; the client neither keeps ETag nor sends If-None-Match. Not judged as a case here; the requirement and its cases rest on clause 4.3 only."
+      "Clause 4.3.2.1 says \"The DVB-I client shall follow the cache control requirements in clause 7.3.2.6 of ETSI TS 102 796\"; reference [21] is undated and V1.8.1 is the issue held. That clause also asks for the HTTP/1.1 caching rules in general and for an HTTP cache for content accessed by the browser; only max-age and the two conditional headers are judged here."
      ]
     },
     {
@@ -1688,8 +1696,8 @@
      "cases": [
       {
        "case": "Service list, registry and guide requests over TLS",
-       "verdict": "implemented",
-       "what": "Every http:// request, same origin included, goes through the client's proxy, which refuses it unless every address the host resolves to is in an RFC 1918 block on the subnet of one of the host's own interfaces, and applies the same check to every redirect hop; https:// is used otherwise, and the default service list is https://.",
+       "verdict": "differs",
+       "what": "Fetches http:// endpoints as well as https://: each plain HTTP request the proxy makes, redirect hops included, is logged with a warning saying whether the endpoint is on the host's own private subnet, and a service list loaded over plain HTTP is shown with a warning; but plain HTTP is fetched whether or not the endpoint is on that subnet, while the clause allows HTTP without TLS only in that case, and the default service list is http://. Fetching plain HTTP with a warning follows an owner decision.",
        "repo": "rt-dvb-i-application",
        "locator": "clause 7.3"
       },
@@ -1703,7 +1711,7 @@
      ],
      "noted": [
       "The client server itself listens on plain HTTP unless a key and certificate are configured, and falls back to HTTP if they cannot be read; that hop is between the browser and the client's own server, not a DVB-I metadata endpoint.",
-      "A plain-HTTP endpoint on the private subnet passes the clause 7.3 check but is still refused by the proxy's private-address guard unless its origin is named in PROXY_ALLOW_ORIGINS, so in practice such endpoints must be configured.",
+      "A plain-HTTP endpoint on a private address, the only case the clause allows, is still refused by the proxy's private-address guard unless its origin is named in PROXY_ALLOW_ORIGINS, while one on a public address is fetched; same-origin requests are made by the browser directly and are not logged.",
       "Clause 7.3 takes root certificates, cipher suites, signature algorithms, key sizes and elliptic curves from clause 11.2 of ETSI TS 102 796, now held as V1.8.1; the proxy uses the Node.js defaults and that profile is not judged here."
      ]
     },
@@ -1743,8 +1751,8 @@
       },
       {
        "case": "Discard instances whose application controlling media presentation cannot be started",
-       "verdict": "differs",
-       "what": "An instance whose controlling application cannot be started (an XML AIT with no HTML5 application, or a URL that cannot be opened) is discarded and the next one tried; but a controlling application whose MediaUri@contentType is not HTML, XHTML or XML AIT is dropped from the instance, which is then played from its delivery parameters instead of being discarded. NOTE 1 of the clause gives an unsupported application format as an application that cannot be started.",
+       "verdict": "implemented",
+       "what": "An instance whose application controlling media presentation cannot be started is discarded and the next one tried: one of a type the client has no engine for (NOTE 1 i)), an XML AIT with no application it can start, or a URL that cannot be opened; when none is left the reason is shown. The client has no setting to disable an application engine, so NOTE 1 ii) does not arise.",
        "repo": "rt-dvb-i-application",
        "locator": "clause 5.2.13"
       },
@@ -2017,22 +2025,22 @@
      "cases": [
       {
        "case": "Service list and content guide endpoints served over TLS",
-       "verdict": "implemented",
-       "what": "Serves HTTPS by default and refuses to start without a readable key and certificate; it serves plain HTTP only when the operator names one of two cases, clients on the same private subnet (endpoint URLs in the list written as http://) or a TLS-terminating proxy in front (endpoint URLs written as https://).",
+       "verdict": "differs",
+       "what": "With a key and certificate configured it serves HTTPS only, and an incomplete or unreadable TLS configuration stops it rather than falling back to plain HTTP. With neither configured, the default, it serves plain HTTP and logs a warning quoting the same-private-subnet exception, but does not check that clients are on its private subnet, while the clause allows HTTP without TLS only in that case; behind a TLS-terminating proxy the endpoint URLs in the list are written as https://. Serving plain HTTP with a warning follows an owner decision.",
        "repo": "rt-dvb-i-application-provider"
       },
       {
        "case": "Server supports TLS 1.2 (and should support TLS 1.3)",
        "verdict": "implemented",
-       "what": "Uses the Node.js https server with its default TLS versions; the repository's test makes a TLS 1.2 and a TLS 1.3 handshake and both succeed (T1, run at c415c60; the container image's Node.js 22 was not checked).",
+       "what": "With a key and certificate configured it uses the Node.js https server with its default TLS versions; the repository test makes a TLS 1.2 and a TLS 1.3 handshake and both succeed (the container image's Node.js 22 was not checked).",
        "repo": "rt-dvb-i-application-provider",
        "locator": "clause 7.3"
       }
      ],
      "noted": [
-      "Neither plain HTTP mode is checked by the server: in the private subnet mode a client's address is not compared with the private ranges, and in the proxy mode the presence of a proxy is not detected; both rest on the operator's declaration.",
+      "The proxy mode, which writes https:// endpoint URLs for a TLS-terminating proxy in front, rests on the operator's declaration: the presence of a proxy is not detected.",
       "The TLS profile that clause 7.3 takes from clause 11.2 of ETSI TS 102 796 is not judged (the server sets no cipher suites, certificates or key sizes beyond Node.js defaults).",
-      "The container image starts the server with neither a certificate nor the plain HTTP setting, so as built it exits at start.",
+      "The container image starts the server with no TLS settings, so as built it serves plain HTTP with the warning.",
       "A per-service content guide URL entered by the operator is written as given, http:// included; it points at another Content Guide Server."
      ]
     },
@@ -2298,7 +2306,7 @@
   },
   {
    "name": "Content guide",
-   "summary": "The provider signals its guide through ContentGuideSourceRef, answers timestamp requests with start and end checked and applied, now_next=true and now_next=window with the structural groups, and programme information by pid, writes the metadata profile including a deep-linked XML AIT for on-demand programmes, and returns both tables, empty, for a service with no events. The client finds guide sources by clause 6.1, makes aligned 12 hour, now/next and pid requests, browses More Episodes and Box Sets with pagination, launches on-demand through the XML AIT and enforces programme ratings; after a 404 it re-acquires the service list for schedule requests but not for the other guide requests. The empty Schedule element and the programme image HowRelated term fall under contradictions in the specification. The Exo DVB-I Player leaves the guide to an external frontend.",
+   "summary": "The provider signals its guide through ContentGuideSourceRef, answers timestamp requests with start and end checked and applied, now_next=true and now_next=window with the structural groups, and programme information by pid, writes the metadata profile including a deep-linked XML AIT for on-demand programmes, and returns both tables, empty, for a service with no events. The client finds guide sources by clause 6.1, makes aligned 12 hour, now/next and pid requests, browses More Episodes and Box Sets with pagination, launches on-demand through the XML AIT and enforces programme ratings; after a 404 from any guide endpoint it re-acquires the service list. The empty Schedule element and the programme image HowRelated term fall under contradictions in the specification. The Exo DVB-I Player leaves the guide to an external frontend.",
    "requirements": [
     {
      "id": "6.1-provider",
@@ -2785,13 +2793,15 @@
       {
        "case": "Reserved characters in query values percent-encoded",
        "verdict": "implemented",
-       "what": "Keys and values are encoded with encodeURIComponent, which percent-encodes characters such as : / ? # [ ] @ & = + , ; $ and space (a service identifier such as tag:example,2026:svc is sent encoded, square brackets in regionID[] and sid[] as %5B%5D); it leaves ! ' ( ) * as they are. Whether those five are reserved under clause 2.2 of IETF RFC 3986 was not checked: RFC 3986 was not obtained.",
-       "repo": "rt-dvb-i-application"
+       "what": "Keys and values are percent-encoded for every reserved character of RFC 3986 clause 2.2, the gen-delims : / ? # [ ] @ and the sub-delims ! $ & ' ( ) * + , ; =, with uppercase hexadecimal digits; square brackets in regionID[] and sid[] are sent as %5B%5D, and a service identifier such as tag:example,2026:svc is sent encoded.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 6.2.2; IETF RFC 3986 clauses 2.1 and 2.2"
       }
      ],
      "noted": [
       "The serviceId parameter that TS 103 770 does not define is no longer sent; image_variant and inclusive, which the clauses make optional, are not sent either.",
-      "Pagination links are used as given, with only white space removed from the MediaUri text (clause 6.9 example URIs are wrapped across lines)."
+      "Pagination links are used as given, with only white space removed from the MediaUri text (clause 6.9 example URIs are wrapped across lines).",
+      "The character set of annex C of ETSI TS 102 809 that the clause also requires of query parameters is not judged here."
      ]
     },
     {
@@ -2831,8 +2841,8 @@
       },
       {
        "case": "404 on a ContentGuideSource URL: re-acquire the service list, then back off",
-       "verdict": "differs",
-       "what": "For schedule and now/next requests a 404 makes the client re-acquire the service list once, and a 404 again after that applies the back-off; a 404 on the ProgramInfo, GroupInfo or MoreEpisodes endpoints only leaves the detail or browse panel empty, with no re-acquisition. The clause applies to any API URL listed in the ContentGuideSource.",
+       "verdict": "implemented",
+       "what": "A 404 from any guide endpoint of the ContentGuideSource (schedule and now/next, ProgramInfo, GroupInfo for box sets, MoreEpisodes) makes the client re-acquire the service list once, and a 404 again on the same request after that applies the back-off.",
        "repo": "rt-dvb-i-application",
        "locator": "clause 4.3.3.4"
       },
