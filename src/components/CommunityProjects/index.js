@@ -9,6 +9,8 @@ import pullRequestsData from '@site/static/data/pull-requests.json';
 import { ALL_PROJECTS as projectsData, CONTRIBUTORS } from '@site/src/data/baskets';
 import { activityLabel } from '@site/src/utils/communityStats';
 import styles from './styles.module.css';
+import ProjectIcon from '@site/src/components/ProjectIcon';
+import { AgeKey, Icon, Repo, CLUSTERS, BASKET_OF, ACTIVITY_BY_PROJECT, clusterStyles } from '@site/src/components/RepoActivity';
 
 // Same exclusion set CommunityStatsBoard used to keep its summary totals
 // matching the 5G-MAG/Getting-Started hub's own dashboard, repo for repo --
@@ -247,34 +249,28 @@ function OpenPRList({ pulls }) {
 function ProjectDetails({ project }) {
   const releaseUrl = project.doc_url ? project.doc_url + (project.releases_slug ?? 'resources') : null;
   const latestDays = project.latestRelease ? daysSince(project.latestRelease.date) : 9999;
-  const contributors = projectsData.find((p) => p.name === project.name)?.contributors || [];
 
   return (
     <details className={styles.projectDetails}>
       <summary className={styles.projectSummary}>
         <span className={styles.projectSummaryMain}>
+          <span className={clusterStyles.pIcon} style={{ gridRow: 'auto', width: 28, height: 28 }}><ProjectIcon name={project.name} /></span>
           <span className={styles.projectName}>{PROJECT_BY_NAME.get(project.name)?.displayName || project.name}</span>
           {latestDays <= 30 && <span className={styles.badgeNew}>New release</span>}
         </span>
         <span className={styles.projectSummaryMeta}>
-          <span className={`${styles.statusPill} ${STATUS_CLASSES[project.status]}`}>{project.status}</span>
-          <span>{project.repos.length} {project.repos.length === 1 ? 'repo' : 'repos'}</span>
-          {project.openPRs.length > 0 && (
-            <span className={styles.prCountBadge}>{project.openPRs.length} open PR{project.openPRs.length === 1 ? '' : 's'}</span>
-          )}
+          <span className={styles.statusCol}><span className={`${styles.statusPill} ${STATUS_CLASSES[project.status]}`}>{project.status}</span></span>
+          <span className={styles.repoCol}>{project.repos.length} {project.repos.length === 1 ? 'repo' : 'repos'}</span>
+          <span className={styles.prCol}>
+            {project.openPRs.length > 0 && (
+              <span className={styles.prCountBadge}>{project.openPRs.length} open PR{project.openPRs.length === 1 ? '' : 's'}</span>
+            )}
+          </span>
         </span>
       </summary>
 
       <div className={styles.projectBody}>
-        {project.tagline && <p className={styles.projectTagline}>{project.tagline}</p>}
 
-        {contributors.length > 0 && (
-          <div className={styles.contributorRow}>
-            {contributors.map((company) => (
-              <ContributorAvatar key={company} company={company} />
-            ))}
-          </div>
-        )}
 
         {project.releases.length > 0 && (
           <div className={styles.subsection}>
@@ -294,15 +290,13 @@ function ProjectDetails({ project }) {
           </div>
         )}
 
-        <div className={styles.subsection}>
-          <h4 className={styles.subsectionTitle}>Repository Stats</h4>
-          <RepoStatsTable repos={project.repos} />
-        </div>
 
-        {project.openPRs.length > 0 && (
+        {(ACTIVITY_BY_PROJECT[project.name] || []).length > 0 && (
           <div className={styles.subsection}>
-            <h4 className={styles.subsectionTitle}>Open Pull Requests</h4>
-            <OpenPRList pulls={project.openPRs} />
+            <h4 className={styles.subsectionTitle}>Repositories and open pull requests <AgeKey /></h4>
+            <div className={clusterStyles.repoGrid} style={{ padding: 0 }}>
+              {ACTIVITY_BY_PROJECT[project.name].map((r) => <Repo key={r.repo} r={r} />)}
+            </div>
           </div>
         )}
 
@@ -397,58 +391,21 @@ export default function CommunityProjects() {
     return <p>Community activity data isn&apos;t available yet. Check back soon.</p>;
   }
 
-  const hubTrackedRepos = [...new Map(
-    projects.flatMap((p) => p.repos).map((r) => [r.repo, r])
-  ).values()].filter((r) => !NOT_ON_HUB_DASHBOARD.has(r.repo));
-
-  const totals = hubTrackedRepos.reduce(
-    (acc, r) => ({
-      stars: acc.stars + (r.stars || 0),
-      forks: acc.forks + (r.forks || 0),
-      views: acc.views + (r.total_views || 0),
-      clones: acc.clones + (r.total_clones || 0),
-    }),
-    { stars: 0, forks: 0, views: 0, clones: 0 }
-  );
-
-  const totalOpenPRs = projects.reduce((n, p) => n + p.openPRs.length, 0);
-
   return (
     <>
-      <p>
-        Releases, repository stats and open pull requests for every Reference Tools and Testbeds
-        project, grouped together instead of spread across separate lists. Updated:{' '}
-        {statsData.updated_at}.
-      </p>
-      <div className={styles.summaryContainer}>
-        <div className={styles.summaryCard}>
-          <h3>Total Stars</h3>
-          <span className={styles.summaryValue}>&#11088; {totals.stars}</span>
-        </div>
-        <div className={styles.summaryCard}>
-          <h3>Total Forks</h3>
-          <span className={styles.summaryValue}>&#127811; {totals.forks}</span>
-        </div>
-        <div className={styles.summaryCard}>
-          <h3>Total Views</h3>
-          <span className={styles.summaryValue}>&#128064; {totals.views}</span>
-        </div>
-        <div className={styles.summaryCard}>
-          <h3>Open Pull Requests</h3>
-          <span className={styles.summaryValue}>{totalOpenPRs}</span>
-        </div>
-      </div>
-
-      {groupByCategory(projects).map((group) => (
-        <div key={group.title} className={styles.categoryGroup}>
-          <h4 className={styles.categoryGroupTitle}>{group.title}</h4>
-          <div className={styles.projectList}>
-            {group.projects.map((project) => (
-              <ProjectDetails key={project.name} project={project} />
-            ))}
-          </div>
-        </div>
-      ))}
+      <p>Updated: {statsData.updated_at}.</p>
+      {CLUSTERS.map((c) => {
+        const ps = projects.filter((p) => BASKET_OF[p.name] === c.key);
+        if (!ps.length) return null;
+        return (
+          <section key={c.title} className={clusterStyles.cluster} style={{ '--accent': c.accent }}>
+            <h3 className={clusterStyles.clusterTitle}><span className={clusterStyles.clusterIcon}><Icon paths={c.icon} /></span>{c.title}</h3>
+            <div className={styles.projectList}>
+              {ps.map((project) => <ProjectDetails key={project.name} project={project} />)}
+            </div>
+          </section>
+        );
+      })}
 
       <div className={styles.timelineToggleSection}>
         <button
@@ -460,6 +417,45 @@ export default function CommunityProjects() {
         </button>
         {showTimeline && <FullTimeline projects={projects} />}
       </div>
+    </>
+  );
+}
+
+
+// Repository statistics for every project, on their own below the project list: the totals, then one table per
+// project, grouped by area like the project list.
+export function CommunityRepoStats() {
+  const projects = buildMergedProjects();
+  if (statsData.updated_at === null) return null;
+  const hubTrackedRepos = [...new Map(projects.flatMap((p) => p.repos).map((r) => [r.repo, r])).values()]
+    .filter((r) => !NOT_ON_HUB_DASHBOARD.has(r.repo));
+  const totals = hubTrackedRepos.reduce(
+    (acc, r) => ({ stars: acc.stars + (r.stars || 0), forks: acc.forks + (r.forks || 0), views: acc.views + (r.total_views || 0) }),
+    { stars: 0, forks: 0, views: 0 }
+  );
+  return (
+    <>
+      <p>Updated: {statsData.updated_at}.</p>
+      <div className={styles.summaryContainer}>
+        <div className={styles.summaryCard}><h3>Total Stars</h3><span className={styles.summaryValue}>&#11088; {totals.stars}</span></div>
+        <div className={styles.summaryCard}><h3>Total Forks</h3><span className={styles.summaryValue}>&#127811; {totals.forks}</span></div>
+        <div className={styles.summaryCard}><h3>Total Views</h3><span className={styles.summaryValue}>&#128064; {totals.views}</span></div>
+      </div>
+      {CLUSTERS.map((c) => {
+        const ps = projects.filter((p) => BASKET_OF[p.name] === c.key && p.repos.length);
+        if (!ps.length) return null;
+        return (
+          <section key={c.title} className={clusterStyles.cluster} style={{ '--accent': c.accent }}>
+            <h3 className={clusterStyles.clusterTitle}><span className={clusterStyles.clusterIcon}><Icon paths={c.icon} /></span>{c.title}</h3>
+            {ps.map((project) => (
+              <div key={project.name} className={styles.subsection}>
+                <h4 className={styles.statsProject}><ProjectIcon name={project.name} className={styles.statsIcon} /> {PROJECT_BY_NAME.get(project.name)?.displayName || project.name}</h4>
+                <RepoStatsTable repos={project.repos} />
+              </div>
+            ))}
+          </section>
+        );
+      })}
     </>
   );
 }

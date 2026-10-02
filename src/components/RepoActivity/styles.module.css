@@ -1,0 +1,71 @@
+.wrap { margin: 1rem 0 2rem; }
+.bar { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center; margin-bottom: 0.8rem; }
+.bar input { flex: 1 1 260px; max-width: 420px; padding: 0.45rem 0.7rem; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 8px; background: var(--ifm-background-surface-color); color: inherit; font: inherit; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.cluster { margin: 1.4rem 0 0.4rem; }
+.clusterTitle { display: flex; align-items: center; gap: 0.6rem; font-size: 1.05rem; margin: 0 0 0.6rem; padding-bottom: 0.4rem; border-bottom: 2px solid var(--accent); }
+.clusterIcon { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 8px; background: var(--accent); color: #fff; }
+.clusterIcon svg { width: 18px; height: 18px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.6rem; align-items: start; }
+.project { border: 1px solid var(--ifm-color-emphasis-300); border-left: 3px solid var(--accent); border-radius: 10px; background: var(--ifm-background-surface-color); min-width: 0; }
+.project[open] { grid-column: 1 / -1; }
+.project > summary { cursor: pointer; padding: 0.7rem 0.9rem; display: grid; grid-template-columns: auto 1fr; gap: 0.3rem 0.6rem; align-items: center; list-style: none; }
+.project > summary::-webkit-details-marker { display: none; }
+.pIcon { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); grid-row: span 2; }
+.pIcon svg { width: 20px; height: 20px; }
+.pname { font-weight: 700; }
+.counts { display: flex; flex-wrap: wrap; gap: 0.2rem 0.8rem; font-size: 0.8rem; color: var(--ifm-font-color-base); font-variant-numeric: tabular-nums; }
+.counts span, .legend span, .none, .list > summary { display: inline-flex; align-items: center; gap: 0.25rem; }
+.icon { width: 15px; height: 15px; flex: none; }
+.legend { display: flex; flex-wrap: wrap; gap: 0.2rem 0.9rem; font-size: 0.78rem; color: var(--ifm-font-color-base); }
+.repoIcon { width: 16px; height: 16px; color: var(--accent); align-self: center; }
+.doc { display: inline-block; margin: 0 0.9rem 0.4rem; font-size: 0.85rem; }
+.repoGrid { display: grid; grid-template-columns: 1fr; gap: 0.6rem; padding: 0 0.9rem 0.9rem; }
+.repo { border: 1px solid var(--ifm-color-emphasis-200); border-radius: 8px; padding: 0.6rem 0.75rem; min-width: 0; background: var(--ifm-background-color); }
+.repo:has(details[open]) { grid-column: 1 / -1; }
+.repoHead { display: flex; flex-wrap: wrap; gap: 0.3rem 0.7rem; align-items: baseline; }
+.repoName { font-weight: 700; font-family: var(--ifm-font-family-monospace); font-size: 0.9rem; word-break: break-all; }
+.desc { margin: 0.25rem 0 0.4rem; font-size: 0.85rem; color: var(--ifm-font-color-base); }
+.lists { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; }
+.lists > details[open] { flex-basis: 100%; }
+.list > summary { cursor: pointer; font-size: 0.88rem; font-weight: 500; }
+.n { display: inline-block; min-width: 1.6em; padding: 0 0.4em; margin-left: 0.3em; border-radius: 999px; background: var(--ifm-color-emphasis-200); font-size: 0.75rem; text-align: center; font-variant-numeric: tabular-nums; }
+.none { font-size: 0.85rem; color: var(--ifm-font-color-base); }
+.items { list-style: none; padding: 0.3rem 0 0 1rem; margin: 0; font-size: 0.85rem; }
+.items li { margin: 0.3rem 0; min-width: 0; }
+.items a { word-break: break-word; }
+.meta { display: inline-flex; flex-wrap: wrap; gap: 0.3rem; align-items: center; margin-left: 0.4rem; font-size: 0.76rem; color: var(--ifm-font-color-base); }
+.label, .draft, .def, .aux { font-size: 0.7rem; padding: 0 0.45em; border-radius: 999px; background: var(--ifm-color-emphasis-200); color: var(--ifm-font-color-base); }
+.draft { background: #fbeed3; color: #7a4f00; }
+.def { background: #e3f3e9; color: #1f6b3f; }
+.aux { background: #ece6f8; color: #4f3a8a; }
+.more { margin: 0.2rem 0 0 1rem; padding: 0; border: 0; background: none; color: var(--ifm-color-primary-darker); cursor: pointer; font: inherit; font-size: 0.82rem; }
+[data-theme='dark'] .draft { background: #3a2c12; color: #f2c870; }
+[data-theme='dark'] .def { background: #173323; color: #8fdcab; }
+[data-theme='dark'] .aux { background: #2a2140; color: #c7b5f2; }
+
+/* Pull request bullets coloured by age */
+.pr { list-style: none; position: relative; padding-left: 1rem; }
+.dot { position: absolute; left: 0; top: 0.45em; width: 9px; height: 9px; border-radius: 50%; }
+.ageNew { background: #2e9e5b; }
+.ageMid { background: #e0a526; }
+.ageOld { background: #b42318; }
+.ageKey { display: inline-flex; gap: 0.7rem; margin-left: 0.6rem; font-size: 0.74rem; color: var(--ifm-font-color-base); }
+.ageKey span { display: inline-flex; align-items: center; gap: 0.25rem; }
+.ageKey .dot { position: static; }
+
+/* Readable repository rows: larger, darker text; nothing to expand */
+.repo { padding: 0.8rem 1rem; }
+.repoHead { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.8rem; }
+.repoName { font-size: 1rem; }
+.repoHead .desc { margin: 0; font-size: 0.95rem; color: var(--ifm-font-color-base); }
+.repoLinks { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 0.3rem 1rem; margin-left: auto; font-size: 0.92rem; }
+.repoLinks a { display: inline-flex; align-items: center; gap: 0.3rem; font-weight: 500; }
+.push { font-size: 0.85rem; color: var(--ifm-font-color-base); }
+.items { font-size: 0.95rem; padding-left: 0.2rem; margin-top: 0.5rem; }
+.items li { margin: 0.4rem 0; }
+.meta { font-size: 0.85rem; color: var(--ifm-font-color-base); }
+.none { margin: 0.5rem 0 0; font-size: 0.92rem; color: var(--ifm-font-color-base); display: flex; align-items: center; gap: 0.3rem; }
+.n { font-size: 0.8rem; background: var(--ifm-color-emphasis-200); color: var(--ifm-font-color-base); }
+.dot { width: 10px; height: 10px; top: 0.5em; }
+.ageKey { font-size: 0.85rem; color: var(--ifm-font-color-base); text-transform: none; letter-spacing: 0; font-weight: 500; }

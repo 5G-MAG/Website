@@ -50,6 +50,13 @@ jobs:
           SYNC_TOKEN: ${{ secrets.SYNC_TOKEN }}
         continue-on-error: true
 
+      # Requires SYNC_TOKEN: branches come from the GraphQL API.
+      - name: Fetch repository activity (open PRs, issues, branches)
+        run: node scripts/fetch-repo-activity.js
+        env:
+          SYNC_TOKEN: ${{ secrets.SYNC_TOKEN }}
+        continue-on-error: true
+
       # Requires SYNC_TOKEN to have push access on every repo in
       # scripts/lib/projects.js — the traffic/views and traffic/clones
       # endpoints have no read-only tier. Repos it can't access simply
@@ -79,6 +86,6 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add static/data/releases.json static/data/contributors.json static/data/pull-requests.json static/data/community-stats.json static/data/roadmaps.json static/data/site-stats.json
+          git add static/data/releases.json static/data/contributors.json static/data/pull-requests.json static/data/repo-activity.json static/data/community-stats.json static/data/roadmaps.json static/data/site-stats.json
           git diff --cached --quiet || git commit -m "Update release, contributor, PR, community-stats, site-stats and roadmap data"
           git push

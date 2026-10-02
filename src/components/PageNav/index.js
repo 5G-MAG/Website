@@ -52,14 +52,20 @@ export default function PageNav({ title, titleHref, items }) {
       >
         {title && (
           <>
-            <Link to={titleHref} className={styles.navSectionLabel}>
-              {title}
-            </Link>
+            {titleHref ? (
+              <Link to={titleHref} className={styles.navSectionLabel}>
+                {title}
+              </Link>
+            ) : (
+              <span className={styles.navSectionLabel}>{title}</span>
+            )}
             {items.length > 0 && <span className={styles.navDivider} aria-hidden="true" />}
           </>
         )}
         {items.map((item) => {
-          const active = isActive(pathname, item.href);
+          // the most specific matching item wins, so /community/activity does not also light /community
+          const active = isActive(pathname, item.href)
+            && !items.some((o) => o !== item && o.href.length > item.href.length && o.href.startsWith(item.href) && isActive(pathname, o.href));
           // `featured` (e.g. Reference Tools/Testbeds/Showcases in the
           // Software Accelerator bar) renders as a solid, slightly larger
           // chip instead of the plain outline ones around it. Both classes

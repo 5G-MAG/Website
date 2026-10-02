@@ -21,7 +21,7 @@
 
 .summaryCard h3 {
   margin: 0;
-  color: var(--ifm-color-emphasis-700);
+  color: var(--ifm-font-color-base);
   font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.03em;
@@ -47,7 +47,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--ifm-color-emphasis-600);
+  color: var(--ifm-font-color-base);
   margin: 0 0 0.6rem;
   padding-bottom: 0.4rem;
   border-bottom: 1px solid var(--ifm-color-emphasis-200);
@@ -85,7 +85,7 @@
 .projectSummary::after {
   content: '+';
   font-weight: 700;
-  color: var(--ifm-color-emphasis-500);
+  color: var(--ifm-font-color-base);
   font-size: 1.1rem;
   margin-left: 0.5rem;
 }
@@ -111,13 +111,13 @@
   align-items: center;
   gap: 0.65rem;
   font-size: 0.875rem;
-  color: var(--ifm-color-emphasis-600);
+  color: var(--ifm-font-color-base);
   white-space: nowrap;
 }
 
 .prCountBadge {
   background: var(--ifm-color-emphasis-100);
-  color: var(--ifm-color-emphasis-700);
+  color: var(--ifm-font-color-base);
   border-radius: 999px;
   padding: 0.1rem 0.55rem;
   font-weight: 700;
@@ -144,7 +144,7 @@
 
 .projectTagline {
   font-size: 0.875rem;
-  color: var(--ifm-color-emphasis-700);
+  color: var(--ifm-font-color-base);
   margin: 0.85rem 0 0;
 }
 
@@ -179,7 +179,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: var(--ifm-color-emphasis-600);
+  color: var(--ifm-font-color-base);
   margin: 0 0 0.5rem;
 }
 
@@ -206,7 +206,7 @@
 
 .releaseDate {
   font-size: 0.875rem;
-  color: var(--ifm-color-emphasis-600);
+  color: var(--ifm-font-color-base);
 }
 
 .tableWrap {
@@ -227,7 +227,7 @@
   font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  color: var(--ifm-color-emphasis-600);
+  color: var(--ifm-font-color-base);
   border-bottom: 2px solid var(--ifm-color-emphasis-200);
   white-space: nowrap;
 }
@@ -279,7 +279,7 @@
 
 .statusStable {
   background: var(--ifm-color-emphasis-100);
-  color: var(--ifm-color-emphasis-700);
+  color: var(--ifm-font-color-base);
 }
 
 .prList {
@@ -310,7 +310,7 @@
 .prRepo {
   font-family: var(--ifm-font-family-monospace);
   font-size: 0.875rem;
-  color: var(--ifm-color-emphasis-700);
+  color: var(--ifm-font-color-base);
   background: var(--ifm-color-emphasis-100);
   border-radius: 999px;
   padding: 0.08rem 0.5rem;
@@ -465,7 +465,7 @@
 
 .timelineDate {
   font-size: 0.875rem;
-  color: var(--ifm-color-emphasis-600);
+  color: var(--ifm-font-color-base);
   margin-left: auto;
 }
 
@@ -478,7 +478,7 @@
 
 .timelineProject {
   font-weight: 600;
-  color: var(--ifm-color-emphasis-800) !important;
+  color: var(--ifm-font-color-base) !important;
   text-decoration: none !important;
 }
 
@@ -487,11 +487,11 @@
 }
 
 .timelineSep {
-  color: var(--ifm-color-emphasis-400);
+  color: var(--ifm-font-color-base);
 }
 
 .timelineRepo {
-  color: var(--ifm-color-emphasis-600) !important;
+  color: var(--ifm-font-color-base) !important;
   text-decoration: none !important;
   font-family: var(--ifm-font-family-monospace);
   font-size: 0.875rem;
@@ -520,3 +520,25 @@
     justify-content: space-between;
   }
 }
+
+/* Summary rows line up in columns: name, status, repositories, open pull requests. */
+.projectSummaryMeta { display: grid; grid-template-columns: 6.5rem 4.5rem 7.5rem; gap: 0 0.75rem; align-items: center; }
+.statusCol, .repoCol, .prCol { display: flex; align-items: center; }
+.repoCol { justify-content: flex-end; font-variant-numeric: tabular-nums; }
+@media (max-width: 640px) {
+  .projectSummaryMeta { grid-template-columns: auto auto 1fr; }
+  .prCol { justify-content: flex-end; }
+}
+.projectSummary { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 0.5rem 1rem; }
+@media (max-width: 640px) {
+  .projectSummary { grid-template-columns: minmax(0, 1fr) auto; }
+  .projectSummaryMeta { grid-column: 1 / -1; grid-row: 2; }
+}
+
+.statsProject { display: flex; align-items: center; gap: 0.45rem; font-size: 0.98rem; margin: 0.8rem 0 0.4rem; }
+.statsIcon { width: 18px; height: 18px; color: var(--accent); }
+/* Full-width tables with fixed numeric columns, so every project's table lines up with the next */
+.repoTable { display: table; width: 100%; table-layout: fixed; }
+.repoTable th:first-child, .repoTable td:first-child { width: auto; }
+.repoTable th:not(:first-child), .repoTable td:not(:first-child) { width: 6.5rem; }
+@media (max-width: 640px) { .repoTable { table-layout: auto; } .repoTable th:not(:first-child), .repoTable td:not(:first-child) { width: auto; } }
