@@ -163,6 +163,40 @@ export const SHOWCASE_BASKETS = {
       },
     ],
   },
+  'towards-6g': {
+    basket: 'towards-6g',
+    title: 'Towards 6G Media',
+    headline: 'Measured traffic for 6G media',
+    description:
+      'What you can build towards 6G media: characterise the traffic of AI media services with the testbed 3GPP SA4 uses for its 6G media study, TR 26.870.',
+    // TR 26.870 V0.6.1 clauses 6.3.3.1 and C.1
+    lead:
+      'The design of 6G radio and system is expected to be impacted by emerging and new traffic types. AI media services are one of them.\n\n3GPP SA4 characterises their traffic for its 6G media study with a testbed: AI service scenarios run over emulated network conditions, and their traffic is captured and measured.',
+    // The testbed lives in the Testbeds basket; it is listed here too, as the area's work today.
+    relatedProjects: ['AI Traffic Characterization'],
+    topics: [
+      {
+        id: 'ai-traffic',
+        icon: 'code-ai',
+        title: 'AI traffic characterization',
+        diagram: 'ai',
+        showcase: {
+          title: 'Characterise the Traffic of AI Media Services',
+          // TR 26.870 V0.6.1 annex B.1, C.1, D.1.1
+          about:
+            'Run AI service scenarios, from chat and agents to real-time video understanding, over emulated network conditions, and measure their traffic: volume and direction, bursts, response time and tokens. The same measurements answer the questions 6G radio and system design asks about AI traffic, such as whether it is uplink heavy.',
+          status: 'available',
+          features: [
+            { name: 'AI service scenarios (TR 26.870 annex D.1)', status: 'yes' }, // table D.1.1: defined in the testbed's configs/scenarios.yaml; AI gateway (D.1.2.11) not yet defined
+            { name: 'Network profiles (annex D.3)', status: 'yes' }, // development branch: all eleven profiles of table D.3.1-1, lossy at a fixed 10 %
+            { name: 'Traffic, response-time, service and task metrics (annex D.4)', status: 'yes' }, // D.4.1: the metrics produced by the testbed
+          ],
+          tutorial: { label: 'Run the testbed', to: '/testbeds/6g-testbed/tutorials/introduction-6g-testbed' },
+        },
+        pipeline: [],
+      },
+    ],
+  },
   multicast: {
     basket: 'multicast',
     title: 'Point-to-Multipoint Communication',
