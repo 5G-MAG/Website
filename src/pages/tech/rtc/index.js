@@ -49,7 +49,7 @@ export default function RTC() {
   return (
     <Layout
       title={PROJECT_NAME}
-      description="Overview of 3GPP's RTC architecture (TS 26.506)."
+      description="The 3GPP architecture for real-time media communication integrated into the 5G System, based on 5G Media Streaming and WebRTC."
     >
       <HubHero
         title={PROJECT_NAME}
@@ -67,11 +67,14 @@ export default function RTC() {
             <div className={styles.introGrid}>
               <div style={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
                 <p>
-                  Real-Time Communications (RTC) covers the 3GPP work on interactive, low-latency media
-                  such as conversational audio and video, immersive calls and interactive streaming,
-                  where the round-trip delay must stay low enough for two-way interaction. It builds on
-                  the uplink side of 5G Media Streaming (5GMSu) and related delivery functions. 5G-MAG
-                  tracks how these capabilities support real-time media services over 5G.
+                  3GPP defines an architecture for real-time media communication integrated into the 5G System:
+                  the delivery of delay-sensitive media from one peer to another with support of the 5G network.
+                  An RTC Application Function and an RTC Application Server support RTC endpoints that use a
+                  subset of the WebRTC protocol stack.
+                </p>
+                <p>
+                  The architecture is based on 5G Media Streaming. Both are realisations of one generalised
+                  Media Delivery architecture, and share their provisioning and media session handling APIs.
                 </p>
                 {PROJECT.sdos?.length > 0 && (
                   <div className={styles.capabilityTags}>
@@ -92,15 +95,11 @@ export default function RTC() {
             <div className={styles.whyMattersBlock}>
               <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
               <p className={styles.whyMattersBody}>
-                Interactive media (conversational calls, collaborative streaming) has different
-                requirements than 5GMS&apos;s one-way delivery — but building it as a completely
-                separate system would mean an operator maintaining two unrelated session-handling and
-                provisioning stacks. RTC avoids that by reusing 5GMS concepts wherever possible, with
-                both systems being pulled onto a shared media delivery specification (TS 26.510) so
-                the same Media Session Handler and AF provisioning can serve either one. That shared
-                foundation is also what lets the collaboration model flex from one end to the other —
-                an operator can provide just connectivity and QoS for a third-party WebRTC service, or
-                host the full signalling and media stack itself, under the same architecture.
+                Beyond traditional telephony, real-time media is needed for immersive XR conferencing and
+                between third-party applications in the device and the network. 3GPP extended the 5G Media
+                Streaming principles to it, so that the 5G System can support both operator and third-party
+                services: from a session that runs over the top, with QoS, bit rate recommendations and QoE
+                reporting from the operator, to a session the operator hosts itself.
               </p>
             </div>
           </div>

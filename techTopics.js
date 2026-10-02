@@ -126,7 +126,10 @@ const ALL_TOPICS = [
     techHref: '/tech/rtc',
     autogen: 'rtc',
     techOverviewDoc: 'rtc/overview',
-    standards: [{ doc: 'standards/rtc', label: 'Standards: Real-time Media Communication (RTC) Architecture' }],
+    standards: [
+      { doc: 'standards/rtc', label: 'Standards: Real-time Media Communication (RTC) Architecture' },
+      { doc: 'standards/rtc-standards-evolution', label: 'Standards: Real-time Media Communication - Standards Evolution' },
+    ],
   },
   {
     label: 'UE Data Collection, Reporting and Event Exposure',

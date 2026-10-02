@@ -1,0 +1,193 @@
+---
+title: Architecture
+sidebar_position: 1
+hide_title: true
+description: The RTC functions and reference points RTC-1 to RTC-12, the four collaboration scenarios, the two application types, the generalised Media Delivery architecture shared with 5GMS, and edge-enabled RTC.
+---
+
+import FigurePair from '@site/src/components/FigurePair';
+import SpecFigure from '@site/src/components/SpecFigure';
+import JumpMenu from '@site/src/components/JumpMenu';
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M7 21v-6" />
+  <path d="M20 6l-3 -3l-3 3" />
+  <path d="M10 18l-3 3l-3 -3" />
+  <path d="M7 3v2" />
+  <path d="M7 9v2" />
+  <path d="M17 3v6" />
+  <path d="M17 21v-2" />
+  <path d="M17 15v-2" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Real-time Media Communication (RTC)</span>
+<h1>Architecture</h1>
+</div>
+</div>
+
+TS 26.506 specifies an architecture for real-time media communication integrated into the 5G System: the functions involved, the reference points between them, and the collaboration scenarios between the 5G System operator and third-party providers. The media data is exchanged between two or more RTC endpoints over the 5G System.
+
+:::tip[At a glance]
+
+- **Network side:** an RTC AF (provisioning, configuration, network support) and an RTC AS (ICE, signalling, media and interworking functions).
+- **UE side:** an RTC Client with an RTC Media Session Handler and an RTC Access Function, used by a Native WebRTC App or a Web App.
+- **Reference points:** RTC-1 provisioning, RTC-5 media session handling, RTC-4 and RTC-12 signalling and media, RTC-6, RTC-7 and RTC-11 client APIs on the UE. RTC-2 and RTC-3 have no stage 3 APIs in this release.
+- **Shared with 5GMS:** RTC is one realisation of a generalised Media Delivery architecture, with M1 to M13 as the generalised reference points.
+
+:::
+
+<JumpMenu items={[["Functions", "functions"], ["Reference points", "reference-points"], ["Collaboration scenarios", "collaboration-scenarios"], ["Application types", "application-types"], ["The generalised Media Delivery architecture", "the-generalised-media-delivery-architecture"], ["Edge-enabled RTC", "edge-enabled-rtc"], ["Release differences", "release-differences"]]} />
+
+## Functions
+
+<FigurePair
+  figures={[
+    {
+      label: 'General architecture',
+      src: '/img/tech/rtc/generated/ts26506-fig4.1.1-2.svg',
+      width: 1200, height: 726,
+      title: 'RTC General Architecture',
+      source: 'Redrawn from TS 26.506 V19.2.0, figure 4.1.1-2',
+      alt: 'The UE with the RTC Application above the RTC Client, which holds the RTC Media Session Handler and the RTC Access Function with its WebRTC Framework. The RTC AF holds the Network Support Function, the Configuration Function and the Provisioning Function. The RTC AS holds the WebRTC Signalling Function, the Application-supporting Web Function, the Transport Gateway Function, the ICE Function, the Media Function and the Interworking Function. Reference points RTC-1, RTC-3 to RTC-8 and RTC-10 to RTC-12; PCF, NEF and SMF attached to the RTC AF.',
+    },
+    {
+      label: 'In the 5G System',
+      src: '/img/tech/rtc/generated/ts26506-fig4.1.1-1.svg',
+      width: 1200, height: 540,
+      title: 'Real-time media communication (RTC) in 5G System',
+      source: 'Redrawn from TS 26.506 V19.2.0, figure 4.1.1-1',
+      alt: 'The UE with the RTC Application and the RTC Client, reaching the RAN over Uu, the UPF over N3 and the trusted DN over N6. The trusted DN holds the RTC AF and the RTC AS. The NEF reaches the RTC AF over N33 and the PCF over N5; the SMF reaches the PCF over N7. The Application Provider in the external DN reaches the RTC AF over RTC-1.',
+    },
+  ]}
+  note="Click a figure to enlarge it. The RTC functions are shown in light blue; circles mark exposed APIs."
+/>
+
+| Function | In | Role |
+| --- | --- | --- |
+| **Provisioning Function** | RTC AF | Lets an RTC Application Provider provision QoS, charging, consumption and QoE metrics collection, ICE (STUN and TURN) and the WebRTC Signalling Function. |
+| **Configuration Function** | RTC AF | Stores WebRTC-related configuration information and makes it accessible to the UE. |
+| **Network Support Function** | RTC AF | Requests the network to allocate QoS for a starting or modified session. Shown as NS-AF in the figures. |
+| **ICE Function** | RTC AS | STUN and TURN services that facilitate NAT and firewall traversal. When provided by the operator, they may assist with the 5G integration of RTC Applications. |
+| **WebRTC Signalling Function** | RTC AS | Handles the offer/answer exchange, with access to the SDP in both directions. It may be co-located with the RTC AF, in which case it acts as an RTC AF with access to the 5G Core. |
+| **Media Function** | RTC AS | An RTC endpoint incorporating a WebRTC Framework, used for example as a content server, for media processing, scene composition, or as an MCU or SFU. |
+| **Application-supporting Web Function** | RTC AS | A web server offering a service entry point, authorisation and authentication, file sharing, or conference scheduling. |
+| **Transport Gateway Function** | RTC AS | Supports cross-operator RTC sessions. |
+| **Interworking Function** | RTC AS | Enables operator-facilitated RTC sessions with endpoints across different operators. |
+| **RTC Media Session Handler** | RTC Client | Runs on the UE and assists with the integration of the RTC Application: it communicates with the RTC AF at RTC-5. |
+| **RTC Access Function** | RTC Client | Sends and receives media at RTC-4m and RTC-12, relays signalling from RTC-7 to RTC-4s, and offers client APIs at RTC-7 and RTC-11. |
+
+If both the RTC AF and the RTC AS are deployed in an external DN, this is out of scope of TS 26.506.
+
+## Reference points
+
+| Reference point | Between | Purpose | Stage 3 |
+| --- | --- | --- | --- |
+| RTC-1 | RTC Application Provider and RTC AF | Provisioning support for the RTC sessions the provider offers | TS 26.113, clause 6 |
+| RTC-2 | Not named in TS 26.506 | | Not specified in this release |
+| RTC-3 | RTC AS and RTC AF | Information about the RTC session | APIs not specified in this release |
+| RTC-4s | RTC Access Function and RTC AS (e.g. WebRTC Signalling Function) | Signalling | TS 26.113, clause 13.2 |
+| RTC-4m | RTC Access Function and RTC AS | Media and related data, when at least one RTC endpoint of the session is in the RTC AS; also between UEs where peer-to-peer communication is not permitted | TS 26.113, clauses 9 and 13 |
+| RTC-5 | RTC Media Session Handler and RTC AF | Configuration information to the Media Session Handler, and requests for media session handling support | TS 26.113, clause 10 |
+| RTC-6 | RTC Application and RTC Media Session Handler | Media session handling functions offered on request, or transparently without the application | TS 26.113, clause 11 |
+| RTC-7 | RTC Application and RTC Access Function | The client API for a Native WebRTC App, or the W3C JavaScript APIs including the WebRTC API for a Web App | TS 26.113, clause 12 |
+| RTC-8 | RTC Application and RTC Application Provider | Proprietary exchange of configuration information | Out of scope |
+| RTC-10 | RTC AS and RTC AS | | Defined, not further specified in this release |
+| RTC-11 | RTC Access Function and RTC Media Session Handler | Inside the RTC Client; may be an internal API rather than one exposed to application developers | TS 26.113, clauses 11 and 12 |
+| RTC-12 | RTC Access Function and RTC Access Function | Peer-to-peer communication between UEs, where permitted by the 5G System. Its protocols are a subset of those at RTC-4m. | TS 26.113, clause 9.2 |
+
+## Collaboration scenarios
+
+The four collaboration scenarios are defined by which functions are in the operator's trusted domain. TS 26.506 draws a derivative architecture for scenarios 1 to 3, and gives a call flow for each.
+
+| Scenario | Description |
+| --- | --- |
+| 1. Over the top WebRTC | The RTC session runs completely over the top, established using external signalling mechanisms. The operator may offer QoS allocation, bit rate recommendations and QoE report collection on request by the UE. |
+| 2. MNO-provided WebRTC functions | In addition, the operator offers trusted ICE functionality in the RTC AS, such as a list of trusted STUN and TURN servers for the RTC Client. RTC-4 is present only when the ICE Function contains the TURN server. |
+| 3. MNO-facilitated WebRTC services | The operator hosts the RTC sessions with a trusted WebRTC Signalling Function in the RTC AS, which may also offer 5G network assistance. The Simple WebRTC Application Protocol (SWAP) of TS 26.113 supports this scenario. |
+| 4. Interoperable WebRTC services | Scenario 3 extended to interoperability between operators. It is in scope, but some of its details are for future study, including its signalling protocol. |
+
+Functions required in each scenario (TS 26.506 table A.1-1):
+
+| Function | 1 | 2 | 3 | 4 |
+| --- | :---: | :---: | :---: | :---: |
+| Provisioning Function | Optional | Optional | Optional | Optional |
+| Configuration Function | Optional | Required | Optional (may be fulfilled by the WebRTC Signalling Function) | Optional (may be fulfilled by the WebRTC Signalling Function) |
+| RTC Media Session Handler | Required | Optional | Optional | Optional |
+| Network Support Function | Required | Required | Optional (may be fulfilled by the WebRTC Signalling Function) | Optional (may be fulfilled by the WebRTC Signalling Function) |
+| ICE Function | N/A | Required | Optional | Optional |
+| WebRTC Signalling Function | N/A | N/A | Required | Required |
+| Media Function | N/A | Optional | Optional | Optional |
+
+The reference points used for media in each scenario (TS 26.113 table 4.3.1.1-1): in scenario 1 none is in the scope of TS 26.113; in scenario 2, RTC-4m (only with TURN) and RTC-12; in scenarios 3 and 4, RTC-4m, RTC-12 and RTC-4s.
+
+## Application types
+
+| Type | Uses | WebRTC terminology (RFC 8825) |
+| --- | --- | --- |
+| **Native WebRTC App** | The client APIs at RTC-6 and RTC-7 | A WebRTC non-browser |
+| **Web App** | The W3C-defined WebRTC APIs, in a web browser on the UE. It does not instantiate RTC-6. | A WebRTC browser |
+
+The RTC Access Function may be realised by a web browser, for RTC Clients that support Web Apps.
+
+## The generalised Media Delivery architecture
+
+TS 26.506 defines a generalised Media Delivery architecture, of which the RTC architecture is one possible realisation. In case of misalignment, the RTC architecture has precedence. TS 26.501 defines the same generalised architecture for 5G Media Streaming.
+
+<SpecFigure src="/img/tech/rtc/generated/ts26506-fig4.1.2.2-1.svg" width={1155} height={663} spec="TS 26.506 V19.2.0" figure="4.1.2.2-1" title="Generalized Media Delivery architecture" alt="The UE with the Media-aware Application and the Media Client, which holds the Media Session Handler and the Media Access Function; the UPF; NEF and PCF joined by N30; the DN with the Media AF, the Media AS and the Media Application Provider. Reference points M1 to M13, with M8, M9, M10 and M13 out of scope; N5 and N33 to the Media AF; services Maf_Provisioning, Maf_SessionHandling and Mas_Configuration." />
+
+| Generalised | RTC |
+| --- | --- |
+| Media AF | RTC AF |
+| Media AS | RTC AS |
+| Media Client | RTC Client |
+| Media Session Handler | RTC Media Session Handler |
+| Media Access Function | RTC Access Function |
+| Media Application Provider | RTC Application Provider |
+| Media-aware Application | Native WebRTC App |
+
+| Generalised reference point | In RTC |
+| --- | --- |
+| M1, M4 to M8, M11, M12 | RTC-1, RTC-4 to RTC-8, RTC-11, RTC-12 |
+| M2 | Not defined by the RTC architecture in this release |
+| M3 | RTC-3; defined, but its specification is for future study |
+| M9 | Not defined by the RTC architecture in this release |
+| M10 | RTC-10; defined, but not further specified in this release |
+| M13 | Not defined in RTC; private, beyond the scope of standardisation |
+
+A Web App, which does not invoke the Media Session Handler or the Media Access Function through 3GPP-defined APIs, is not a Media-aware Application and is not mapped into the generalised architecture.
+
+## Edge-enabled RTC
+
+TS 26.506 supports two ways of managing edge processing. In client-driven management, an RTC Application aware of edge processing requests an edge resource directly and discovers the Edge Application Server best suited to serve it. In Application Function-driven management, the RTC AF allocates edge resources on behalf of the application, using information in the RTC provisioning session.
+
+<SpecFigure src="/img/tech/rtc/generated/ts26506-fig4.4.2-1.svg" width={1200} height={709} spec="TS 26.506 V19.2.0" figure="4.4.2-1" title="Edge-enabled RTC architecture" alt="The RTC architecture with edge functions in orange: an Application Client in the RTC Application, an EEC in the RTC Media Session Handler, an EES in the RTC AF, an ECS between the RTC AF and the RTC AS, and an EAS in the RTC AS beside the ICE Function. EDGE-1, EDGE-3, EDGE-4, EDGE-5, EDGE-6 and EDGE-9 join them." />
+
+The figure corresponds to collaboration scenario 2.
+
+| Function | Edge role | Edge interfaces |
+| --- | --- | --- |
+| RTC AF | Edge Enabler Server (EES), shall support | EDGE-1, EDGE-3, EDGE-6, EDGE-9 |
+| RTC AS | Edge Application Server (EAS), shall support | EDGE-3, for registration with the EES |
+| RTC Media Session Handler | Edge Enabler Client (EEC), should support | EDGE-1, EDGE-4, EDGE-5 |
+
+## Release differences
+
+- **Release 18:** TS 26.506 V18.6.0 has the same functions, reference points, scenarios and figures, except figure 4.1.2.2-1.
+- **Release 19:** the generalised architecture adds reference point M13, between the Media Access Function and the Media Application Provider (figure 4.1.2.2-1).
+
+<details>
+<summary>Sources for this page</summary>
+
+- **Introduction:** TS 26.506 V19.2.0, clauses 1 and 4.1.1.
+- **Functions:** TS 26.506 V19.2.0, clause 4.1.1 and its NOTE, clauses 4.2.2 to 4.2.12; placement from figure 4.1.1-2.
+- **Reference points:** TS 26.506 V19.2.0, clauses 4.3.1 to 4.3.9 and clause 4.1.2.4, NOTE 1, NOTE 2 and NOTE 6; TS 26.113 V19.2.0, clauses 4.3.1.1, 6 to 13 and annex B.3, NOTE.
+- **Collaboration scenarios:** TS 26.506 V19.2.0, annex A.1, table A.1-1, annexes A.3 and A.5, and clauses 5.3 to 5.5; TS 26.113 V19.2.0, clause 13.2.1 and its NOTE, table 4.3.1.1-1.
+- **Application types:** TS 26.506 V19.2.0, clause 4.1.1 and NOTE 4, annexes B.2 and B.3.
+- **The generalised Media Delivery architecture:** TS 26.506 V19.2.0, clauses 4.1.2.1, 4.1.2.3 and its NOTE, 4.1.2.4 and NOTE 1 to NOTE 7, table 4.1.2.3-1; TS 26.501 V19.4.0, clause 4.1.2.1.
+- **Edge-enabled RTC:** TS 26.506 V19.2.0, clauses 4.4.1, 4.4.2.1 and its NOTE, 4.4.2.3.
+- **Figures:** redrawn from TS 26.506 V19.2.0, figures 4.1.1-1, 4.1.1-2, 4.1.2.2-1 and 4.4.2-1.
+- **Release differences:** TS 26.506 V18.6.0 and V19.2.0, annex C and the figure media files compared.
+
+</details>

@@ -1,9 +1,13 @@
 ---
-title: Real-time Media Communication (RTC) Architecture Overview
+title: Real-time Media Communication (RTC) Overview
 sidebar_position: 0
+sidebar_label: Overview
 hide_title: true
-description: Placeholder for the Real-time Media Communication (RTC) Architecture technical analysis deep-dive; structure only, content to follow.
+description: Why 3GPP defined a real-time media communication architecture for the 5G System, its main functions, how it relates to 5G Media Streaming, and what each release added.
 ---
+
+import FigurePair from '@site/src/components/FigurePair';
+import JumpMenu from '@site/src/components/JumpMenu';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -19,110 +23,88 @@ description: Placeholder for the Real-time Media Communication (RTC) Architectur
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Technical Analysis</span>
-<h1>Real-time Media Communication (RTC) Architecture</h1>
+<h1>Real-time Media Communication (RTC)</h1>
 </div>
 </div>
 
-## How it works
+:::tip[At a glance]
 
-RTC is 3GPP's interactive, WebRTC-based counterpart to 5G Media Streaming's
-one-way delivery paths, reusing 5GMS concepts wherever possible so the two can share
-session-handling and delivery functions.
+- **What it is:** an architecture for real-time media communication integrated into the 5G System (TS 26.506), with its procedures, APIs and protocols (TS 26.113).
+- **Real-time media communication:** the delivery of delay-sensitive media from one peer to another with support of the 5G network.
+- **Based on 5GMS and on WebRTC:** the control plane follows 5G Media Streaming, with an RTC AF and an RTC AS; media is carried with a subset of the WebRTC protocol stack.
+- **Operator and third-party services:** four collaboration scenarios, from a fully over-the-top session that the operator supports with QoS and reporting, to sessions the operator hosts itself.
+- **Releases:** created in Release 18; Release 19 adds PDU handling and marking enhancements, media capabilities and metadata.
 
-**Key specifications:** 3GPP
-[TS 26.506](https://www.3gpp.org/dynareport/26506.htm) (5G Real-time Media
-Communication Architecture, Stage 2),
-[TS 26.113](https://www.3gpp.org/dynareport/26113.htm) (RTC stage 3:
-procedures, APIs and protocols),
-[TS 26.510](https://www.3gpp.org/dynareport/26510.htm) (harmonised media
-delivery specification shared with 5GMS).
+:::
 
-### The RTC architecture (TS 26.506)
+<JumpMenu items={[["Why it exists", "why-it-exists"], ["The main functions", "the-main-functions"], ["Operator and third-party collaboration", "operator-and-third-party-collaboration"], ["Relation to 5G Media Streaming", "relation-to-5g-media-streaming"], ["How it grew", "how-it-grew"]]} />
 
-3GPP SA4 specified a dedicated 5G Real-time Media Communication Architecture (Stage 2)
-in [TS 26.506](https://www.3gpp.org/dynareport/26506.htm), with the stage-3
-procedures, APIs and protocols in
-[TS 26.113](https://www.3gpp.org/dynareport/26113.htm). The design reuses 5G
-Media Streaming (5GMS) concepts wherever possible, so RTC functions and 5GMS functions
-can share media session handling and media delivery. At a high level the architecture
-places:
+## Why it exists
 
-- An **RTC Application Provider** offering the service.
-- An **RTC Application Function (AF)** and
-  **RTC Application Server (AS)** on the network side, handling
-  provisioning, session control and media functions.
-- An **RTC-aware application** on the UE.
+In 5G Media Streaming, the separation of the data plane and the control plane, and the access it gives third-party services to 5G System functionality, was seen as a major benefit. 3GPP set out to extend these 5GMS principles to any type of service, including real-time communication and split rendering. The basic control plane is similar to 5GMS, while the media plane is generic, so that different operator and third-party services can be supported by the 5G System.
 
-These are connected by named reference points, analogous to the M1..M8 model used in
-5GMS. Because RTC was defined after 5GMS, the harmonised provisioning and
-session-handling functions are being pulled into a common media delivery specification,
-[TS 26.510](https://www.3gpp.org/dynareport/26510.htm), so that the same
-functions can serve both 5GMS and RTC; not all functions are shared yet.
+Beyond traditional MTSI services, real-time transport of media over 5G is needed for immersive media in XR conferencing, and between third-party applications in the device and the network. For this, 3GPP defines WebRTC-based components that are integrated into, and optimised for, the 5G System.
 
-### Collaboration scenarios
+## The main functions
 
-The architecture is defined for a range of collaboration scenarios that differ in how
-much of the service the mobile operator provides. At one end the operator provides only
-connectivity and QoS support for a third-party WebRTC service; at the other end the
-operator hosts the signalling and media functions (for example acting as a WebRTC gateway
-or media function). Intermediate scenarios have the operator provide some functions (such
-as TURN relays or a media gateway) while the application provider keeps the rest. This
-lets one architecture cover both operator-assisted third-party services and
-operator-run RTC services.
+<FigurePair
+  figures={[
+    {
+      label: 'In the 5G System',
+      src: '/img/tech/rtc/generated/ts26506-fig4.1.1-1.svg',
+      width: 1200, height: 540,
+      title: 'Real-time media communication (RTC) in 5G System',
+      source: 'Redrawn from TS 26.506 V19.2.0, figure 4.1.1-1',
+      alt: 'The UE with the RTC Application and the RTC Client, reaching the RAN over Uu, the UPF over N3 and the trusted DN over N6. The trusted DN holds the RTC AF and the RTC AS. The NEF reaches the RTC AF over N33 and the PCF over N5; the SMF reaches the PCF over N7. The Application Provider in the external DN reaches the RTC AF over RTC-1.',
+    },
+    {
+      label: 'General architecture',
+      src: '/img/tech/rtc/generated/ts26506-fig4.1.1-2.svg',
+      width: 1200, height: 726,
+      title: 'RTC General Architecture',
+      source: 'Redrawn from TS 26.506 V19.2.0, figure 4.1.1-2',
+      alt: 'The UE with the RTC Application above the RTC Client, which holds the RTC Media Session Handler and the RTC Access Function with its WebRTC Framework. The RTC AF holds the Network Support Function, the Configuration Function and the Provisioning Function. The RTC AS holds the WebRTC Signalling Function, the Application-supporting Web Function, the Transport Gateway Function, the ICE Function, the Media Function and the Interworking Function. Reference points RTC-1, RTC-3 to RTC-8 and RTC-10 to RTC-12; PCF, NEF and SMF attached to the RTC AF.',
+    },
+  ]}
+  note="Click a figure to enlarge it. The RTC functions are shown in light blue."
+/>
 
-### WebRTC transport stack
+- **RTC AF:** an Application Function, as defined in TS 26.501, dedicated to real-time media communication. Its Provisioning Function lets an RTC Application Provider provision QoS, charging, consumption and QoE reporting, ICE and the WebRTC Signalling Function. Its Configuration Function makes WebRTC-related configuration accessible to the UE. Its Network Support Function requests QoS from the network for a starting or modified session.
+- **RTC AS:** an Application Server dedicated to real-time media communication. It may hold an ICE Function (STUN and TURN services for NAT and firewall traversal), a WebRTC Signalling Function that handles the offer/answer exchange, a Media Function that is itself an RTC endpoint, and functions for web support, cross-operator transport and interworking.
+- **RTC Client:** a UE function comprising an RTC Access Function, which sends and receives media and offers client APIs, and an RTC Media Session Handler, which assists with the integration of the RTC Application.
+- **RTC Application:** a Native WebRTC App, which uses the RTC client APIs, or a Web App, which runs in a web browser and uses the W3C-defined WebRTC APIs.
+- **RTC endpoint:** an entity that participates in an RTC session by incorporating an instance of the WebRTC Framework, a defined subset of the WebRTC protocol stack. It is typically a UE, but an RTC AS may also play the role.
 
-RTC media transport uses the WebRTC protocol stack:
+## Operator and third-party collaboration
 
-- **Media**: RTP with RTCP feedback, secured as DTLS-SRTP.
-- **Connectivity / NAT traversal**: ICE, using STUN for server-reflexive
-  candidates and TURN for relayed candidates.
-- **Data**: WebRTC data channels, i.e. SCTP over DTLS, for reliable or
-  partially-reliable messaging alongside the media.
+TS 26.506 defines four collaboration scenarios, based on which functions are in the operator's trusted domain.
 
-Codec handling follows the WebRTC requirements (for example the IETF video codec
-requirements referenced on the standards page). QoS for the media flows is requested
-from the 5G system through the exposure interfaces (NEF, then PCF for policy) so that an
-RTC session can obtain better-than-best-effort treatment; for production use this is
-normally combined with a
-[Non-Public Networks](/tech/npn) so uplink capacity can be reserved.
+| Scenario | What the operator provides |
+| --- | --- |
+| 1. Over the top WebRTC | The session runs completely over the top. The operator may offer QoS allocation, bit rate recommendations and QoE report collection, on request by the UE. |
+| 2. MNO-provided WebRTC functions | In addition, an ICE Function in the RTC AS. |
+| 3. MNO-facilitated WebRTC services | The operator hosts and facilitates RTC sessions with a WebRTC Signalling Function, which may also offer 5G network assistance. |
+| 4. Interoperable WebRTC services | Scenario 3 extended with functions for interoperability between operators. Some of its details are for future study. |
 
-### Signalling
+## Relation to 5G Media Streaming
 
-WebRTC does not mandate a signalling protocol; the offer/answer exchange must be carried
-by some out-of-band channel. Within the 3GPP RTC work the signalling options are handled
-in the architecture and protocol specifications. One protocol developed in this context
-is RESPECT, a WebRTC-compatible session-control (signalling) protocol documented in the
-Release 19 study
-[TR 26.930](https://www.3gpp.org/dynareport/26930.htm) (Study on the
-enhancement for Immersive Real-Time communication for WebRTC). As study output it is not
-a normative 3GPP protocol; the normative RTC protocols and APIs remain those of TS 26.113.
+TS 26.506 defines a generalised Media Delivery architecture, of which RTC is one possible realisation. The RTC AF is a realisation of the Media AF, the RTC AS of the Media AS, and the RTC Client is part of the Media Client. TS 26.501 defines the same generalised architecture for 5GMS, noting that the two may share many common functionalities for media session handling and media delivery. Full integration of 5GMS and RTC is not addressed.
 
-### Relationship to 5GMSu and to IMS
+The shared building blocks are specified once, in TS 26.510: provisioning sessions, certificates, edge resources, policy templates, dynamic policies, Network Assistance, QoE metrics reporting and consumption reporting. RTC adds its own provisioning of STUN, TURN and signalling services, delivered to the RTC Client in the service access information.
 
-- **5GMSu (uplink 5G Media Streaming)** is a one-way, device-to-network
-  streaming path within the 5GMS framework ([TS 26.501](https://www.3gpp.org/dynareport/26501.htm),
-  [TS 26.512](https://www.3gpp.org/dynareport/26512.htm), and the harmonised
-  TS 26.510). It suits contribution/ingest where interactivity is not required.
-- **RTC (TS 26.506 / TS 26.113)** is the interactive, WebRTC-based path,
-  suited to conversational and collaborative media and low-latency two-way contribution.
-- **IMS-based real-time communication**, including IMS Multimedia Telephony
-  ([TS 26.114](https://www.3gpp.org/dynareport/26114.htm)) and the more recent
-  IMS Data Channel / NG-RTC work, is a separate, IMS-anchored path. NG-RTC adds a data
-  channel, AI media processing and a service-based interface to IMS; its stage 3 was
-  progressed in Release 18. Which path a service uses depends on whether it is anchored
-  in IMS telephony or in the 5GMS/RTC media framework.
+## How it grew
 
-### Release timeline
+- **Release 18:** the GA4RTAR work item creates the architecture (TS 26.506, approved June 2023). The iRTCW work item creates the procedures, APIs and protocols (TS 26.113, approved June 2024), with media session handling relying on the 5GMS_Pro_Ph2 work on TS 26.510. Later Release 18 changes add reference point RTC-11 in the UE, make RTC functions general Media Functions, and add PDU Set-based QoS handling.
+- **Release 19:** 5G_RTP_Ph2 adds PDU Set Importance for N6-unmarked PDUs, data burst size, time to next burst, expedited transfer and multiplexed media to dynamic policies. iRTCW adds media capability requirements for immersive real-time communication and timed metadata over the data channel. The generalised architecture gains reference point M13.
 
-- **Release 16 to 17**: 5GMS foundations (TS 26.501, TS 26.512) including
-  the 5GMSu uplink path; IMS Multimedia Telephony (TS 26.114).
-- **Release 18**: RTC architecture (TS 26.506) and protocols (TS 26.113);
-  harmonised media delivery (TS 26.510); IMS Data Channel / NG-RTC stage 3.
-- **Release 19 and later**: RTC enhancements, including immersive real-time
-  communication over WebRTC, studied in TR 26.930 (published as V19.0.0, October 2025);
-  TS 26.506, TS 26.113 and TS 26.510 continue to evolve under Release 19.
+<details>
+<summary>Sources for this page</summary>
 
-**Related:** [Non-Public Networks](/tech/npn)
-· [Time-Sensitive Communications (TSC)](/tech/tsc)
-· [Standards: Real-time Media Communication (RTC) Architecture](/standards/rtc)
+- **Why it exists:** WID SP-220672 (GA4RTAR), clause 3; WID SP-230977 (iRTCW), clause 3.
+- **The main functions:** TS 26.506 V19.2.0, clauses 3.1, 4.1.1 and 4.2.2 to 4.2.12.
+- **Figures:** redrawn from TS 26.506 V19.2.0, figures 4.1.1-1 and 4.1.1-2.
+- **Operator and third-party collaboration:** TS 26.506 V19.2.0, annex A.1 and its NOTE.
+- **Relation to 5G Media Streaming:** TS 26.506 V19.2.0, clause 4.1.2.1; TS 26.501 V19.4.0, clause 4.1.2.1 and NOTE; TS 26.510 V19.2.0, clause 5.1, table 5.1-1.
+- **How it grew:** 3GPP work plan of 28 September 2026; WID SP-241961 (5G_RTP_Ph2), clause 4; TS 26.506 V19.2.0, annex C; TS 26.113 V19.2.0, annex D.
+
+</details>
