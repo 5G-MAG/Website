@@ -6,9 +6,9 @@ description: What the data collection Reference Tools implement, for the generic
 ---
 
 import FigurePair from '@site/src/components/FigurePair';
-import ImplementationMatrix from '@site/src/components/ImplementationMatrix';
+import ImplementationCases from '@site/src/components/ImplementationCases';
 import { RepoCards } from '@site/src/components/ProjectRepoSection';
-import IMPLEMENTATION from '@site/src/data/implementation-data-collection.json';
+import AUDIT from '@site/src/data/audit-data-collection.json';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -30,7 +30,7 @@ import IMPLEMENTATION from '@site/src/data/implementation-data-collection.json';
 - **Which specification the code follows:** Release 18, TS 26.532 V18.3.0 and TS 29.517 V18.6.0, as the Data Collection AF build pins. Release 19 adds nothing to implement.
 - **Generic framework:** a Data Collection AF library and a standalone AF serve R1, R2 to R4, R5 and R6. No data collection client is provided.
 - **In 5G Media Streaming:** the 5GMS components do not yet use the Data Collection AF; the integration is in progress.
-- **Source of this page:** a code audit of the repositories on 2026-10-01.
+- **Source of this page:** a code audit of the repositories on 2026-10-02: each requirement split into the cases its clause defines, each case checked against the code and then re-checked by a second reader.
 
 :::
 
@@ -64,15 +64,15 @@ The generic architecture and its 5G Media Streaming instantiation, with the part
 
 ## Generic framework
 
-Each feature, per component. Open Details for the requirements checked.
+Each feature, split into its requirements and each requirement into the cases its clause defines: what works, what does not, and why. Open a feature, then a requirement.
 
-<ImplementationMatrix data={IMPLEMENTATION.generic} />
+<ImplementationCases data={AUDIT} only={['dcaf-lib', 'dcaf', 'dc-client']} />
 
 ## Integration with 5G Media Streaming
 
-Each feature, per 5GMS component. Open Details for the requirements checked, by release.
+Each feature, per 5GMS component and release, in the same form.
 
-<ImplementationMatrix data={IMPLEMENTATION.fivegms} />
+<ImplementationCases data={AUDIT} only={['msaf', 'msaf-branch', 'msas', 'msue', 'msap']} />
 
 :::info[Full audit for members]
 
@@ -112,7 +112,7 @@ This page summarises a requirement-by-requirement audit of the code. The full au
 ## Used with other projects
 
 <ul>
-{IMPLEMENTATION.dependencies.map((d) => (
+{AUDIT.dependencies.map((d) => (
   <li key={d.what}><strong>{d.project}</strong>: {d.what}. <em>{d.status}.</em></li>
 ))}
 </ul>
