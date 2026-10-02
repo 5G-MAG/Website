@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Refreshes static/data/repo-activity.json: every public, non-archived 5G-MAG repository, classified by
+// Refreshes static/data/repo-activity.json: every non-archived 5G-MAG repository, public or private, classified by
 // project from src/data/taxonomy.json, with its open pull requests, open issues and branches, for the
 // /community/activity page. Repositories no taxonomy project lists are left out.
 //
@@ -94,6 +94,7 @@ async function activity(repo, meta) {
     url: `https://github.com/${ORG}/${repo}`,
     description: meta.description || null,
     auxiliary: !!meta.auxiliary,
+    private: !!meta.private,
     pushed_at: day(meta.pushed_at),
     pulls: pulls.map((p) => ({
       number: p.number, title: p.title, url: p.html_url, draft: !!p.draft,
@@ -116,7 +117,8 @@ function formatTimestamp(date) {
 
 async function main() {
   if (!TOKEN) throw new Error('SYNC_TOKEN or GITHUB_TOKEN is required (branches use the GraphQL API).');
-  const orgRepos = (await getAllPages(`/orgs/${ORG}/repos?type=public`)).filter((r) => !r.archived);
+  // type=all: private repositories are listed too (at the site owner's request), marked as private
+  const orgRepos = (await getAllPages(`/orgs/${ORG}/repos?type=all`)).filter((r) => !r.archived);
   const byName = new Map(orgRepos.map((r) => [r.name, r]));
   // auxiliary flag per repository, from taxonomy.json repoMetadata
   const auxiliary = new Set();
@@ -127,7 +129,7 @@ async function main() {
     if (!cache.has(name)) {
       const r = byName.get(name);
       try {
-        cache.set(name, await activity(name, { description: r.description, pushed_at: r.pushed_at, auxiliary: auxiliary.has(name) }));
+        cache.set(name, await activity(name, { description: r.description, pushed_at: r.pushed_at, auxiliary: auxiliary.has(name), private: r.private }));
       } catch (e) {
         console.warn(`  skip ${name}: ${e.message}`);
         cache.set(name, null);

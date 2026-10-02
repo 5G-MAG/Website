@@ -69,3 +69,5 @@
 .n { font-size: 0.8rem; background: var(--ifm-color-emphasis-200); color: var(--ifm-font-color-base); }
 .dot { width: 10px; height: 10px; top: 0.5em; }
 .ageKey { font-size: 0.85rem; color: var(--ifm-font-color-base); text-transform: none; letter-spacing: 0; font-weight: 500; }
+/* the same Early Access badge as the project repository cards (ProjectRepositories) */
+.early { font-size: 0.72rem; font-weight: 700; padding: 0.1rem 0.45rem; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.05em; line-height: 1.4; color: var(--ifm-color-warning-contrast-foreground) !important; background: var(--ifm-color-warning); text-decoration: none !important; }

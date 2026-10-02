@@ -96,6 +96,7 @@ export function Repo({ r }) {
         <Icon k="repo" className={styles.repoIcon} />
         <a href={r.url} target="_blank" rel="noreferrer" className={styles.repoName}>{r.repo}</a>
         {r.auxiliary && <span className={styles.aux}>Auxiliary</span>}
+        {r.private && <Link className={styles.early} to="/early-access">Early Access</Link>}
         {r.description && <span className={styles.desc}>{r.description}</span>}
         <span className={styles.repoLinks}>
           <a href={`${r.url}/issues`} target="_blank" rel="noreferrer"><Icon k="issues" /> Issues <span className={styles.n}>{r.issues.length}</span> ↗</a>

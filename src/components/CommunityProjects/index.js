@@ -277,13 +277,13 @@ function ProjectDetails({ project }) {
             <h4 className={styles.subsectionTitle}>Latest Releases</h4>
             <ul className={styles.releaseList}>
               {project.releases.slice(0, 3).map((r) => (
-                <li key={`${r.repo}-${r.tag}`}>
+                <li key={`${r.repo}-${r.tag}`} className={styles.releaseRow}>
                   <a href={r.url} target="_blank" rel="noreferrer" className={styles.releaseTag}>
                     {r.tag}
-                  </a>{' '}
-                  <span className={styles.releaseDate}>
-                    {formatDate(r.date)} &middot; {formatAge(daysSince(r.date))}
-                  </span>
+                  </a>
+                  <span className={styles.releaseRepo}>{r.repo}</span>
+                  <span className={styles.releaseDate}>{formatDate(r.date)}</span>
+                  <span className={styles.releaseAge}>{formatAge(daysSince(r.date))}</span>
                 </li>
               ))}
             </ul>
