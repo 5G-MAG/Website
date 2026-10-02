@@ -83,7 +83,7 @@ In downlink the network is the origin of the media. The content hosting feature 
 | **M7d** | 5GMSd Media Access Client API | Media Player | Application; Media Stream Handler at M11d, as TS 26.501 clause 4.2.1 words it (clause 4.1.2.5.2 names the Media Session Handler) | Media access control |
 | **M8d** | 5GMSd Application API | Between the application and the Application Provider | | For example, Service Access Information. Not specified by 5GMS |
 
-Release 19 adds two more: M10d, which redistributes content between instances of the AS so it need not be ingested repeatedly at M2d, and M13d, through which the Media Player reaches content the Application Provider hosts outside the 5GMS System.
+Release 19 adds two more: M10d, which redistributes content between client-facing instances of the AS so it need not be ingested repeatedly at M2d (TS 26.501 V19.4.0 clause 4.2.1), and which TS 26.512 V19.3.0 clause 4.10A has a 5GMSd AS use to ingest content from a 5GMSd AS in another 5GMS System; and M13d, through which the Media Player reaches content the Application Provider hosts outside the 5GMS System.
 
 </details>
 
@@ -175,7 +175,7 @@ The generalised architecture first appears in TS 26.501 version 18.5.0 (March 20
 | --- | --- | --- | --- | --- |
 | **Generalised Media Delivery architecture** | No | No | Yes, from V18.5.0 | Yes |
 | **Reference points** | M1 to M8 | M1 to M8 | M1 to M8, and M9 to M12 | M1 to M8, and M9 to M13 |
-| **M3 (AF and AS)** | Internal and not specified | Internal and not specified | An API used by the AF to configure and manage the AS, from TS 26.501 V18.2.0 | An API exposed by the AS to the AF |
+| **M3 (AF and AS)** | Internal and not specified | Internal and not specified | An API used by the AF to configure and manage the AS, from TS 26.501 V18.2.0 | Mas_Configuration, exposed by the AS to the AF, and Maf_SessionHandling, exposed by the AF to the AS |
 | **Provisioning and session APIs** | TS 26.512 | TS 26.512 | TS 26.510 (created in Release 18), referred to by TS 26.512 | TS 26.510, referred to by TS 26.512 |
 
 <details>
