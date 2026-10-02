@@ -13,7 +13,7 @@ export const SIXG_SPECS = [
     title: 'Framework and overall objectives of the future development of IMT for 2030 and beyond',
     url: 'https://www.itu.int/dms_pubrec/itu-r/rec/m/R-REC-M.2160-0-202311-I!!PDF-E.pdf',
     layer: 'ITU-R framework',
-    note: 'the vision and capability targets, published November 2023',
+    note: 'the framework and overall objectives of IMT-2030, with its usage scenarios and capabilities; approved November 2023, in force',
   },
   {
     id: 'TR 38.914',
@@ -21,7 +21,7 @@ export const SIXG_SPECS = [
     url: 'https://www.3gpp.org/dynareport/38914.htm',
     layer: 'Radio studies (RAN)',
     release: '20',
-    note: 'RAN (work item FS_6G_RAN_Scen_Req); high-level 6G radio scenarios and requirements, feeding the ITU-R IMT-2030 technical performance requirements process',
+    note: 'RAN (work item FS_6G_RAN_Scen_Req); scenarios and requirements for 6G Radio, as guidance for the RAN working groups and as input for ITU-R when developing the IMT-2030 technical performance requirements',
   },
   {
     id: 'TR 22.870',
@@ -29,14 +29,14 @@ export const SIXG_SPECS = [
     url: 'https://www.3gpp.org/dynareport/22870.htm',
     layer: 'Use cases and requirements (SA1)',
     release: '20',
-    note: 'clusters use cases around the IMT-2030 usage scenarios and derives candidate system requirements; completed, frozen ~March 2026',
+    note: 'use cases and potential requirements for the 6G system, based on, but not limited to, the IMT-2030 usage scenarios; V20.0.0 approved March 2026 (SA#111), under change control',
   },
   {
     id: 'TS 22.270',
     title: '6G System Requirements',
     url: 'https://www.3gpp.org/dynareport/22270.htm',
     layer: 'Use cases and requirements (SA1)',
-    note: 'where the 6G system requirements developed in TR 22.870 are captured (TR 26.870 V0.6.1, clause 1)',
+    note: 'where the 6G system requirements developed in TR 22.870 are captured (TR 26.870 V0.6.1, clause 1); a draft (V0.3.0)',
   },
   {
     id: 'TR 23.801-01',
@@ -50,7 +50,8 @@ export const SIXG_SPECS = [
     title: 'Study on Media Aspects for 6G System',
     url: 'https://www.3gpp.org/dynareport/26870.htm',
     layer: 'Media aspects (SA4)',
-    note: 'the track most relevant to 5G-MAG: media services, formats, traffic characteristics and delivery for a 6G system, building on the SA4 5G media work (5G Media Streaming and the Data Collection and Reporting framework)',
+    release: '20',
+    note: 'the track most relevant to 5G-MAG: media-related opportunities and gaps for 6G; its media delivery work starts from the generalized Media Delivery architecture of TS 26.501 (5G Media Streaming) and TS 26.506 (Real-Time media Communication); a draft (V0.6.1)',
   },
   {
     id: 'TR 26.925',
@@ -58,7 +59,7 @@ export const SIXG_SPECS = [
     url: 'https://www.3gpp.org/dynareport/26925.htm',
     layer: 'Media aspects (SA4)',
     release: '19',
-    note: 'SA4 traffic-modelling baseline, actively maintained release over release; its radio-technology scope now includes 6G alongside 2G/3G/LTE/5G',
+    note: 'typical traffic patterns of media services delivered over 3GPP networks, with versions in Releases 16 to 19; TR 26.870 complements it with the traffic of AI media services',
   },
 ];
 
