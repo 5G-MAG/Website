@@ -568,7 +568,12 @@
       "relatedProjects": [
         "5G Media Streaming (5GMS)"
       ],
-      "repos": [],
+      "repos": [
+        "rt-dvb-i-application",
+        "rt-dvb-i-application-provider",
+        "rt-dvb-i-service-list-registry",
+        "rt-dvb-i-examples"
+      ],
       "releases_slug": "#repositories--releases",
       "contributors": [
         "Fraunhofer FOKUS",
@@ -1662,6 +1667,93 @@
         ],
         "public": true,
         "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-dvb-i-application",
+        "display_name": "DVB-I Application",
+        "description": "A browser DVB-I client that discovers a service list, presents its channels with their content guide, and plays them, per ETSI TS 103 770.",
+        "repo_url": "https://github.com/5G-MAG/rt-dvb-i-application",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "DVBI",
+          "ETSI"
+        ],
+        "dependencies": [
+          "Express",
+          "dash.js",
+          "hls.js"
+        ],
+        "software": [
+          "Web",
+          "Node.js",
+          "Docker"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-dvb-i-application-provider",
+        "display_name": "DVB-I Application Provider",
+        "description": "Publishes a DVB-I service list and its content guide, and gives an editor for maintaining them, per ETSI TS 103 770.",
+        "repo_url": "https://github.com/5G-MAG/rt-dvb-i-application-provider",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "DVBI",
+          "ETSI"
+        ],
+        "dependencies": [
+          "Express"
+        ],
+        "software": [
+          "Web",
+          "Node.js",
+          "Docker"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-dvb-i-service-list-registry",
+        "display_name": "DVB-I Service List Registry",
+        "description": "Answers DVB-I client queries with a list of Service List Entry Points, per ETSI TS 103 770 V1.2.1 clause 5.1.3.2.",
+        "repo_url": "https://github.com/5G-MAG/rt-dvb-i-service-list-registry",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "DVBI",
+          "ETSI"
+        ],
+        "dependencies": [
+          "Express"
+        ],
+        "software": [
+          "Web",
+          "Node.js"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-dvb-i-examples",
+        "display_name": "DVB-I Examples",
+        "description": "Runnable examples that bring the DVB-I repositories up together on one machine, publishing and playing a service list per ETSI TS 103 770.",
+        "repo_url": "https://github.com/5G-MAG/rt-dvb-i-examples",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "DVBI",
+          "ETSI"
+        ],
+        "dependencies": [
+          "FFmpeg"
+        ],
+        "software": [
+          "Linux"
+        ],
+        "public": true,
+        "is_auxiliary": true
       }
     ],
     "content-delivery": [
