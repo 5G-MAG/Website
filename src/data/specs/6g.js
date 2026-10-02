@@ -46,32 +46,13 @@ export const SIXG_SPECS = [
     release: '19',
     note: 'SA4 traffic-modelling baseline, actively maintained release over release; its radio-technology scope now includes 6G alongside 2G/3G/LTE/5G',
   },
-  {
-    id: 'TR 26.847',
-    title: 'Evaluation of AI and ML in 5G media services',
-    url: 'https://www.3gpp.org/dynareport/26847.htm',
-    layer: 'AI/ML studies feeding 6G',
-    release: '19',
-    note: 'SA4, completed June 2025',
-  },
-  {
-    id: 'TR 22.874',
-    title:
-      'Study on traffic characteristics and performance requirements for AI/ML model transfer in 5GS',
-    url: 'https://www.3gpp.org/dynareport/22874.htm',
-    layer: 'AI/ML studies feeding 6G',
-    release: '18',
-    note: 'SA1; an earlier, already-closed study (Dec 2021) compared to the Release-19 items above',
-  },
 ];
 
 // The global framework first, then the RAN and SA1 studies that implement it,
-// then the media track most relevant to 5G-MAG, then the 5G Advanced studies
-// feeding into it.
+// then the media track most relevant to 5G-MAG.
 export const SIXG_LAYER_ORDER = [
   'ITU-R framework',
   'Radio studies (RAN)',
   'Use cases and requirements (SA1)',
   'Media aspects (SA4)',
-  'AI/ML studies feeding 6G',
 ];

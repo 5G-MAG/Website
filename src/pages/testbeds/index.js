@@ -3,7 +3,7 @@ import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
-import { ALL_PROJECTS, BASKET_ACCENT } from '@site/src/data/baskets';
+import { ALL_PROJECTS, BASKET_ACCENT, isTestbed } from '@site/src/data/baskets';
 import styles from '../tech/index.module.css';
 // Shared with /reference-tools and /showcase; see the comment there
 // for why (2026-08-24 findability audit; extended here 2026-08-25).
@@ -22,11 +22,11 @@ const TESTBEDS_ICON_PATH = (
   </>
 );
 
-// Every doc_url'd project in the testbeds basket -- same "no second
+// Every project with pages under /testbeds/ (isTestbed) -- same "no second
 // hand-maintained array to drift" reasoning as reference-tools/index.js's
 // own REFTOOLS_PROJECTS, and the exact complement of that filter, so a
 // project can never silently vanish from both pages or appear on neither.
-const TESTBED_PROJECTS = ALL_PROJECTS.filter((p) => p.doc_url && p.basket === 'testbeds').map(topicFor);
+const TESTBED_PROJECTS = ALL_PROJECTS.filter(isTestbed).map(topicFor);
 
 export default function Testbeds() {
   const [query, setQuery] = useState('');

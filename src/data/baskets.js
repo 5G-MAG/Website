@@ -184,6 +184,19 @@ export const WHERE_WE_STAND_ROWS = TOPIC_BASKETS.map((b) => {
 export const EXCLUDED = ALL_PROJECTS.filter((p) => !p.basket);
 
 // Every project in a given basket, in taxonomy.json's own order.
+// A testbed is a project whose own pages are under /testbeds/, whatever its
+// basket: the 6G AI Traffic Characterization Testbed is in Towards 6G Media.
+export function isTestbed(project) {
+  return Boolean(project.doc_url && project.doc_url.startsWith('/testbeds/'));
+}
+
+// The name a link to a project's Technology page carries. A testbed's display name names the testbed, so
+// its Technology page is labelled with the project name (AI Traffic Characterization, not the 6G AI Traffic
+// Characterization Testbed).
+export function techLabelOf(project) {
+  return isTestbed(project) ? project.name : displayNameOf(project);
+}
+
 export function projectsInBasket(basketKey) {
   return PROJECTS.filter((p) => p.basket === basketKey);
 }

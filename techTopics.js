@@ -319,9 +319,8 @@ const ALL_TOPICS = [
   },
 ];
 
-// techHref -> the project's own doc_url (Reference Tools, or a Testbed for
-// the two testbeds-basket topics -- see BASKET_OVERRIDES below for why
-// those two still have a Tech-menu presence at all), the same
+// techHref -> the project's own doc_url (Reference Tools, or a Testbed when
+// it is under /testbeds/), the same
 // derive-don't-hand-list technique as basketForHref: a topic with no
 // doc_url at all (true for none currently) simply gets no entry, and the
 // per-project sidebar generators (sidebars-tech.js, sidebars-home.js) omit
@@ -338,21 +337,10 @@ taxonomyData.projects.forEach((p) => {
 
 // techHref -> basket key, from taxonomy.json's own projects -- the single
 // place that decides which basket a topic belongs to.
-//
-// /tech/6g's own project (AI Traffic Characterization) carries basket
-// "testbeds", since it is fundamentally a testbed, but its tech analysis
-// has always sat under Towards 6G Media on this menu, not under a
-// Testbeds group here (Testbeds has its own separate portal) -- it
-// already gets its own entry below via RESEARCH_EXTRA_LINKS pointing at
-// its testbed page, not this analysis page. AI/ML Evaluation Framework's
-// own basket is "testbeds" too and gets the same treatment, for the same
-// reason.
-const BASKET_OVERRIDES = { '/tech/6g': 'towards-6g', '/tech/ai-ml': 'towards-6g' };
 const basketForHref = {};
 taxonomyData.projects.forEach((p) => {
   if (p.tech_url) basketForHref[p.tech_url] = p.basket;
 });
-Object.assign(basketForHref, BASKET_OVERRIDES);
 
 // Attach each topic's own refTools destination (computed above) so every
 // consumer of TECH_GROUPS/ALL_TOPICS sees it without a second lookup.
@@ -374,8 +362,6 @@ export { ALL_TOPICS };
 
 // Reachable from the Tech menu but not a Tech doc: the testbed has no Standards
 // or Analysis page of its own, so it is a plain link in both renderings.
-// Placed alongside Towards 6G since /tech/6g (its closest analysis
-// neighbour) lives there -- see BASKET_OVERRIDES above.
 export const RESEARCH_EXTRA_LINKS = [
   { label: '6G AI Traffic Characterization Testbed', href: '/testbeds/6g-testbed' },
 ];

@@ -1,4 +1,4 @@
-import { TOPIC_BASKETS, BASKET_PAGE, BASKET_ACCENT, PROJECTS, displayNameOf } from './baskets';
+import { TOPIC_BASKETS, BASKET_PAGE, BASKET_ACCENT, PROJECTS, techLabelOf } from './baskets';
 import { ALL_TOPICS } from '../../techTopics.js';
 
 // Canonical per-section nav items, keyed by the route prefix(es) they
@@ -53,9 +53,10 @@ export function stripBaseUrl(pathname, baseUrl) {
 const TECHNOLOGY_ITEMS = TOPIC_BASKETS.map((b) => ({ label: b.title, href: `/tech#${b.key}` }));
 
 // The Technology mega menu: every project with its own page, grouped under its area (taxonomy order).
-// An area with no project yet but its own page (Towards 6G Media) lists that page instead.
+// An area with no project yet but its own page lists that page instead.
 export const TECHNOLOGY_GROUPS = TOPIC_BASKETS.map((b) => {
-  const items = PROJECTS.filter((p) => p.basket === b.key && p.tech_url).map((p) => ({ label: displayNameOf(p), href: p.tech_url, icon: p.icon }));
+  const items = PROJECTS.filter((p) => p.basket === b.key && p.tech_url)
+    .map((p) => ({ label: techLabelOf(p), href: p.tech_url, icon: p.icon }));
   return {
     title: b.title,
     href: `/tech#${b.key}`,

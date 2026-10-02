@@ -4,7 +4,7 @@ sidebar_class_name: project-index-link
 title: 6G AI Traffic Characterization Testbed
 sidebar_label: Overview
 sidebar_position: -1
-description: "The testbed 3GPP SA4 uses to measure the traffic of AI media services for the 6G media study (TR 26.870): what it measures, how, and what it has found so far."
+description: "The testbed 3GPP SA4 uses to measure the traffic of AI media services for the 6G media study (TR 26.870): what it measures and how."
 ---
 import CommunityStats from '@site/src/components/CommunityStats';
 import ProjectContributors from '@site/src/components/ProjectContributors';
@@ -41,7 +41,7 @@ export const projectVideos = (youtubePlaylists.projects?.['6g-testbed']?.videos 
 
 ## What it does
 
-Traffic characteristics of media services are relevant to the design of 6G radio and service architectures. AI media services are new, so the study measures them with this testbed, and records the results as the basis for its statements on AI media services.
+The 6G media study records the traffic characteristics of AI media services from this testbed's measurements, as the basis for its statements on AI media services. What the study covers, and where AI traffic fits in it: [Towards 6G Media](/tech/6g/overview).
 
 <figure style={{maxWidth: '820px', margin: '1.5rem auto'}}>
 <img loading="lazy" style={{width: "100%", height: "auto"}} src={useBaseUrl('/img/testbeds/6g-testbed/architecture.svg')} width="1200" height="672" alt="The Scenario Orchestrator drives the scenarios (chat, agents, image, video and audio) and MCP tool servers, through the LLM client layer, L7 capture with mitmproxy and the network emulator with tc/netem profiles, to the LLM and tool APIs on the Internet. Capture and analysis: L3/L4 capture with tcpdump and L7 capture with mitmproxy feed the TrafficLogger, which feeds the MetricsCalculator (TTFT, TTLT, UL/DL, loop factor) and the visualization." />
@@ -92,18 +92,6 @@ Traffic characteristics of media services are relevant to the design of 6G radio
 
 </div>
 
-## What it has found
-
-| Question | Initial answer in TR 26.870 |
-| --- | --- |
-| Is AI traffic uplink heavy? | For some scenarios, such as video sent for inference and the agents evaluated. Others are heavily downlink. |
-| Bursts and delay sensitivity? | Bursty, periodic or not, delay sensitive or tolerant depending on the application. |
-| Does round-trip delay matter? | Yes, many AI applications are interactive; connection setup adds to it. |
-| Does traffic vary within one application? | Yes, on every dimension measured. |
-| Tokenized traffic? | Seen on the uplink where the client tokenizes media, and on the downlink when output is streamed. |
-
-See [Results](./results) for the figures behind each answer.
-
 ## Get involved
 
 <div class="event-post-grid" style={{maxWidth: '340px'}}>
@@ -133,6 +121,5 @@ See [Results](./results) for the figures behind each answer.
 <summary>Sources for this page</summary>
 
 - **At a glance and What it does:** TR 26.870 V0.6.1, cover, clause 6.3.3.1, annexes B.1 and C.1; work item code from annex X. The figure is the architecture diagram of the 6G-Testbed repository, redrawn.
-- **What it has found:** TR 26.870 V0.6.1, clauses C.4.6, C.5.6, C.6.6, C.7.6 and C.8.6.2.
 
 </details>

@@ -5,7 +5,7 @@ import HubHero from '@site/src/components/HubHero';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import { icon } from '@site/src/components/GodeeperCard';
 import HubDestinationCard from '@site/src/components/HubDestinationCard';
-import { ALL_PROJECTS, BASKETS, BASKET_ACCENT, ICON_CATALOG, reposFor } from '@site/src/data/baskets';
+import { ALL_PROJECTS, BASKETS, BASKET_ACCENT, ICON_CATALOG, reposFor, isTestbed } from '@site/src/data/baskets';
 import styles from '../tech/index.module.css';
 import filterStyles from './styles.module.css';
 
@@ -148,14 +148,14 @@ const BASKET_DESC = {
   ntn: 'Reference implementations for content delivery over satellite and HAPS non-terrestrial networks.',
 };
 
-// Every doc_url'd project except the testbeds-basket ones, which are
+// Every doc_url'd project except the testbeds (isTestbed), which are
 // /testbeds' own destinations, not this page's -- same exclusion techTopics.js
 // already applies on the Tech side (AI Traffic Characterization etc. reach
 // their testbed page via a plain link there, not a Reference Tools card
 // here). Grouped by basket, same taxonomy and same order as tech/index.js's
 // TECH_GROUPS, so a project's basket move or a new project with a doc_url
 // picks up here automatically -- no second hand-maintained array to drift.
-const REFTOOLS_PROJECTS = ALL_PROJECTS.filter((p) => p.doc_url && p.basket !== 'testbeds');
+const REFTOOLS_PROJECTS = ALL_PROJECTS.filter((p) => p.doc_url && !isTestbed(p));
 
 // Build-time-only self-check (code-derived, no spec claim): TOPIC_META is
 // hand-maintained, unlike REFTOOLS_PROJECTS' own filter above -- a new
@@ -165,7 +165,7 @@ const REFTOOLS_PROJECTS = ALL_PROJECTS.filter((p) => p.doc_url && p.basket !== '
 // Guarded to the Node-side build/SSR pass only, same as baskets.js's own
 // SHARED_REPO_OWNERS check.
 if (typeof window === 'undefined') {
-  const testbedProjects = ALL_PROJECTS.filter((p) => p.doc_url && p.basket === 'testbeds');
+  const testbedProjects = ALL_PROJECTS.filter(isTestbed);
   const missing = [...REFTOOLS_PROJECTS, ...testbedProjects]
     .filter((p) => !TOPIC_META[p.name])
     .map((p) => p.name);

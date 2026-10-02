@@ -5,7 +5,7 @@ import Link from '@docusaurus/Link';
 import ShowcaseDiagram from '@site/src/components/ShowcaseDiagram';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import { SHOWCASE_BASKETS, SHOWCASE_STATUS, FEATURE_STATUS } from '@site/src/data/showcases';
-import { ALL_PROJECTS, BASKETS, ICON_CATALOG, projectsInBasket, displayNameOf } from '@site/src/data/baskets';
+import { BASKETS, ICON_CATALOG, projectsInBasket, techLabelOf } from '@site/src/data/baskets';
 import { CATEGORIES as PROJECT_CATEGORIES } from '@site/src/pages/reference-tools';
 import boxStyles from '@site/src/pages/tech/index.module.css';
 
@@ -63,7 +63,7 @@ function ProjectRow({ projects }) {
               </svg>
             </span>
             <span>
-              <b>{displayNameOf(p)}</b>
+              <b>{techLabelOf(p)}</b>
             </span>
           </Link>
         ))}
@@ -141,14 +141,10 @@ export default function AreaPage({ basketKey }) {
   const basket = BASKETS.find((b) => b.key === basketKey);
   const content = Object.values(SHOWCASE_BASKETS).find((c) => c.basket === basketKey);
   const icon = ICON_CATALOG[basket.icon] || [];
-  // An area with no project yet but its own stage (Towards 6G Media) shows itself, as /tech's chart does.
+  // An area with no project yet but its own stage shows itself, as /tech's chart does.
   const own = projectsInBasket(basketKey);
-  // A project from another basket that does this area's work (content.relatedProjects) is listed too, opening
-  // its own pages rather than its Technology page.
-  const related = (content?.relatedProjects || []).map((n) => ALL_PROJECTS.find((p) => p.name === n)).filter(Boolean)
-    .map((p) => ({ ...p, tech_url: p.doc_url || p.tech_url }));
-  const projects = [...(own.length ? own : basket.stages && basket.tech_url
-    ? [{ name: basket.title, icon: basket.icon, tech_url: basket.tech_url, stages: basket.stages }] : []), ...related];
+  const projects = own.length ? own : basket.stages && basket.tech_url
+    ? [{ name: basket.title, icon: basket.icon, tech_url: basket.tech_url, stages: basket.stages }] : [];
   // The area's box as on the Reference Tools page (its colour band only, not its description), holding the
   // same tiles as the topic buttons: icon and name, each opening the project's Technology page. An area
   // with no box there (Towards 6G Media) keeps the small row.
@@ -210,7 +206,7 @@ export default function AreaPage({ basketKey }) {
                           {(ICON_CATALOG[p.icon] || []).map((d) => <path key={d} d={d} />)}
                         </svg>
                       </span>
-                      <b>{displayNameOf(p)}</b>
+                      <b>{techLabelOf(p)}</b>
                     </Link>
                   ))}
                 </div>
