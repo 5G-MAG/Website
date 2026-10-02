@@ -164,7 +164,7 @@ The Data Collection AF in the 5GMS AF exposes these event types, with the Event 
 | Dynamic policy invocation | MS_DYN_POLICY_INVOCATION |
 | Media streaming access activity | MS_ACCESS_ACTIVITY |
 
-Eligible consumers are the NWDAF, the NEF and the Event Consumer AF of the 5GMS Application Provider. Each event carries common baseline parameters, such as collection timestamps, sample count and streaming direction. The UE identification is present only for individual records, and only when the data exposure restrictions permit it.
+Eligible consumers are the NWDAF, the NEF and the Event Consumer AF of the 5GMS Application Provider (TS 26.501 V19.4.0 clause 5.11.3, TS 26.512 V19.3.0 clause 4.12.1). TS 29.517 V18.6.0 clause 4.2.2.1 lists the NWDAF only for Media Streaming QoE metrics; consumption, Network Assistance invocation, dynamic policy invocation and access activity it lists for the Event Consumer AF or NEF. Each event carries common baseline parameters, such as collection timestamps, sample count and streaming direction. The UE identification is present only for individual records, and only when the data exposure restrictions permit it.
 
 ### How it is provisioned
 
@@ -173,9 +173,9 @@ The 5GMS Application Provider configures the collection and processing of 5GMS U
 <details>
 <summary>Release differences in 5G Media Streaming</summary>
 
-- **Release 17:** five downlink event types and one uplink event type; R2 is not instantiated; the access reporting parameters are in TS 26.501 clauses 5.11.4 and 6.8.4.
+- **Release 17:** five downlink event types; TS 26.501 V17.10.0 clause 4.7.4.2 lists one uplink event type (uplink Network Assistance invocations), while clauses 6.8.2 and 6.8.3 also define uplink media streaming access reporting by the 5GMSu AS and its exposure; R2 is not instantiated; the access reporting parameters are in TS 26.501 clauses 5.11.4 and 6.8.4.
 - **Release 18:** ANBR-based Network Assistance reporting at R2, for downlink and uplink. TS 26.512 specifies the event collection and record data types itself, in clause 18.
-- **Release 19:** no change request touching data collection is recorded in the change history of TS 26.501 or TS 26.512.
+- **Release 19:** no change request subject in the change history of TS 26.501 or TS 26.512 names data collection, but TS 26.512 V19.3.0 adds clause 18.3.3 (Exposure of client data: CMCD information packed into QoEMetricsEvent records), which V18.7.0 does not have.
 
 </details>
 

@@ -49,7 +49,7 @@ The work plan lists TS 26.532 for AMD_PRO-MED; the change history of TS 26.532 V
 | --- | --- | --- | --- | --- | --- |
 | [5GMS_Pro_Ph2](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1000018) | 5G Media Streaming Protocols Phase 2 | Normative | [TS 26.532](https://www.3gpp.org/dynareport/26532.htm) (with TS 26.510, TS 26.512, TS 26.517, TS 26.247) | Complete, Jun 2024 | [SP-230976](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGs_101_Bangalore_2023-09/Docs/SP-230976.zip) |
 
-The other Release 18 change requests are tagged EVEX and TEI18 ("(Small) Technical Enhancements and Improvements for Rel-18").
+The other Release 18 change requests are tagged EVEX and TEI18 ("(Small) Technical Enhancements and Improvements for Rel-18"), with these exceptions: TS 26.531 CR 0007 and TS 26.532 CR 0005 are also tagged ADAE, and TS 26.531 CR 0008 and TS 26.532 CRs 0014 and 0015 carry no tag.
 
 | Specification | Version | CR | Subject |
 | --- | --- | --- | --- |
