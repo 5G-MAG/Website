@@ -10,9 +10,7 @@ import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import CommunityStats from '@site/src/components/CommunityStats';
-import ArchitectureDiagram from '@site/src/components/ArchitectureDiagram';
-import { FIVEGMS_ARCHITECTURE, FIVEGMS_DIAGRAM_CONTAINERS, FIVEGMS_DIAGRAM_NODES, FIVEGMS_DIAGRAM_EDGES } from '@site/src/data/architecture/5gms';
-import { FIVEGMS_FEATURES } from '@site/src/data/blueprints/5gms';
+import FigurePair from '@site/src/components/FigurePair';
 import { REPO_METADATA } from '@site/src/data/baskets';
 import ProjectSlide from '@site/src/components/ProjectSlide';
 
@@ -20,10 +18,6 @@ import ProjectSlide from '@site/src/components/ProjectSlide';
     from, so this summary can't drift from what those sections actually
     show. */}
 export const REPO_COUNT = (REPO_METADATA['5gms'] || []).length;
-export const ENTITIES_WITH_REPO = FIVEGMS_ARCHITECTURE.entities.filter((e) => e.repo).length;
-export const ENTITIES_TOTAL = FIVEGMS_ARCHITECTURE.entities.length;
-export const FEATURES_DONE = FIVEGMS_FEATURES.filter((f) => f.status === 'yes').length;
-export const FEATURES_TOTAL = FIVEGMS_FEATURES.length;
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -44,15 +38,29 @@ The tools cover two server-side roles: the Application Function (AF), which hand
 
 ## What's Built
 
-<ArchitectureDiagram
-  entities={FIVEGMS_ARCHITECTURE.entities}
-  containers={FIVEGMS_DIAGRAM_CONTAINERS}
-  nodes={FIVEGMS_DIAGRAM_NODES}
-  edges={FIVEGMS_DIAGRAM_EDGES}
-  spec={FIVEGMS_ARCHITECTURE.spec}
+<FigurePair
+  figures={[
+    {
+      label: 'Release 17 · what the tools implement',
+      src: '/img/tech/5gms/generated/ts26501-v17-fig4.1-2-status-rel17.svg',
+      width: 1200, height: 560,
+      title: '5G Media Streaming general architecture, with Reference Tools status',
+      source: 'Based on TS 26.501 V17.10.0, figure 4.1-2; status against TS 26.512 V17.10.0',
+      alt: 'The Release 17 5GMS architecture. All 5GMS components are provided by the Reference Tools. M1, M2, M4 and M5 are partial, N5 is implemented, M6 and M7 are partial, M3 and M8 are not specified by 3GPP in Release 17, and N33 is not implemented.',
+    },
+    {
+      label: 'Release 18/19',
+      src: '/img/tech/5gms/generated/ts26501-fig4.1.1-2-status-rel19.svg',
+      width: 1200, height: 591,
+      title: '5G Media Streaming general architecture, with Reference Tools status',
+      source: 'Based on TS 26.501 V19.4.0, figure 4.1.1-2; status against TS 26.510 V19.2.0 and TS 26.512 V19.3.0',
+      alt: 'The Release 19 5GMS architecture. The components are provided, but M1, M3, M5, M6, M7, M11, M13 and N33 are not implemented in their Release 18/19 form; M2 and M4 are partial and N5 is implemented.',
+    },
+  ]}
+  note="Status from a code audit of the 5GMS repositories (October 2026): the code follows Release 17; no component implements the Release 18/19 TS 26.510 APIs yet. Click a figure to enlarge it."
 />
 
-**{ENTITIES_WITH_REPO} of {ENTITIES_TOTAL}** architecture entities have a real, running repository behind them{ENTITIES_WITH_REPO === ENTITIES_TOTAL ? ' — every box in the diagram above' : ''}. At the feature level, **{FEATURES_DONE} of {FEATURES_TOTAL}** defined 5GMSd features are fully implemented today; the rest are partially implemented or not yet started (see [Implementation Detail](/reference-tools/5gms/implementation) for exactly which).
+For each feature and component, against Release 17 and Release 18/19, see [Implementation Detail](/reference-tools/5gms/implementation).
 
 <div class="godeeper-grid" style={{gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))'}}>
 
@@ -78,7 +86,7 @@ The tools cover two server-side roles: the Application Function (AF), which hand
 
 <a class="godeeper-card" href={useBaseUrl('/reference-tools/5gms/tutorials')}>
 <div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 4v16l13 -8l-13 -8"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26 -2 5 -2 5s3.74 -.5 5 -2c.71 -.84 .7 -2.13 -.09 -2.91a2.18 2.18 0 0 0 -2.91 -.09z" /><path d="M12 15l-3 -3a22 22 0 0 1 2 -3.95a12.88 12.88 0 0 1 10 -5.93c0 2.72 -.78 7.5 -6 11a22.35 22.35 0 0 1 -4 2z" /><path d="M9 12h-4s.55 -3.03 2 -4c1.62 -1.08 5 0 5 0" /><path d="M12 15v5s3.03 -.55 4 -2c1.08 -1.62 0 -5 0 -5" /></svg>
 <h3>Call to Try</h3>
 </div>
 <div class="godeeper-card__body">
@@ -134,7 +142,7 @@ This project also provides the following prebuilt GitHub Container packages: And
 
 <CommunityStats name="5G Media Streaming (5GMS)" />
 
-**{REPO_COUNT}** repositories &middot; **{FEATURES_DONE} of {FEATURES_TOTAL}** features implemented.
+**{REPO_COUNT}** repositories.
 
 ### Open Pull Requests
 

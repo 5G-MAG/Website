@@ -1,0 +1,61 @@
+.wrap { margin: 1rem 0 2rem; }
+.meta { font-size: 0.85rem; color: var(--ifm-color-emphasis-800); padding-left: 1.1rem; margin-bottom: 1rem; }
+.meta li { margin: 0.2rem 0; }
+.tbl { overflow-x: auto; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 10px; }
+.tbl table { display: table; width: 100%; min-width: 880px; margin: 0; border-collapse: collapse; font-size: 0.85rem; }
+.tbl th, .tbl td { border: 0; border-bottom: 1px solid var(--ifm-color-emphasis-200); padding: 0.45rem 0.4rem; vertical-align: top; text-align: left; }
+.tbl tr { background: none !important; }
+.tbl th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ifm-color-emphasis-700); }
+.grp { text-align: center !important; border-bottom: 2px solid var(--ifm-color-emphasis-300) !important; }
+.c { text-align: center !important; white-space: nowrap; }
+.feat { min-width: 120px; }
+.note { min-width: 220px; }
+.st { display: inline-block; font-size: 0.7rem; font-weight: 700; border-radius: 999px; padding: 1px 8px; white-space: nowrap; }
+.ok { color: #1f6b3f; background: #e3f3e9; }
+.mid { color: #7a4f00; background: #fbeed3; }
+.off { color: #4b5563; background: #eceef1; }
+.fix { color: #fff; background: #b42318; }
+.unclear { color: #4f3a8a; background: #ece6f8; }
+.na { color: var(--ifm-color-emphasis-600); }
+[data-theme='dark'] .ok { color: #8fdcab; background: #173323; }
+[data-theme='dark'] .mid { color: #f2c870; background: #3a2c12; }
+[data-theme='dark'] .off { color: #b8c0cc; background: #2a2f37; }
+[data-theme='dark'] .fix { color: #fff; background: #c0392b; }
+[data-theme='dark'] .unclear { color: #c7b5f2; background: #2a2140; }
+.toggle { display: block; margin-top: 0.35rem; padding: 0; border: 0; background: none; cursor: pointer; color: var(--ifm-color-primary-darker); font: inherit; font-size: 0.8rem; }
+.subrow > td { background: var(--ifm-color-emphasis-100); padding: 0.6rem !important; }
+.sub { display: table; width: 100%; margin: 0; border-collapse: collapse; font-size: 0.76rem; background: var(--ifm-background-surface-color); }
+.sub th, .sub td { border: 0; border-bottom: 1px solid var(--ifm-color-emphasis-200); padding: 0.35rem 0.45rem; vertical-align: top; }
+.sub td:nth-child(6) { min-width: 220px; }
+.sub td:nth-child(7) { min-width: 180px; }
+.more { margin-top: 0.35rem; }
+.more summary { cursor: pointer; color: var(--ifm-color-primary-darker); font-size: 0.8rem; }
+.more ul { margin: 0.4rem 0 0; padding-left: 1rem; font-size: 0.78rem; }
+.more li { margin: 0.35rem 0; }
+.fid { font-family: var(--ifm-font-family-monospace); }
+.fnote { color: var(--ifm-color-emphasis-800); }
+.ev { display: block; color: var(--ifm-color-emphasis-700); font-family: var(--ifm-font-family-monospace); font-size: 0.72rem; word-break: break-word; }
+.key { display: flex; flex-wrap: wrap; gap: 0.5rem 0.75rem; align-items: center; font-size: 0.8rem; color: var(--ifm-color-emphasis-700); margin-top: 0.6rem; }
+
+.anchored { scroll-margin-top: calc(var(--ifm-navbar-height) + var(--section-nav-height, 0px) + 1rem); }
+.anchored:target td { background: var(--ifm-color-emphasis-100); }
+
+/* Opening a row must not let the browser re-anchor the scroll on an open row further down. */
+.wrap { overflow-anchor: none; }
+
+/* Share cells: percentage, a bar of every status, and the count line. */
+.share { text-align: left !important; min-width: 84px; }
+.pct { display: block; font-weight: 700; font-size: 0.95rem; font-variant-numeric: tabular-nums; line-height: 1.2; }
+.bar { display: flex; height: 6px; border-radius: 3px; overflow: hidden; background: #eceef1; margin: 3px 0; }
+.bar span { display: block; height: 100%; }
+.subn { display: block; font-size: 0.68rem; color: var(--ifm-color-emphasis-700); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.fixn { color: #b42318; font-weight: 700; }
+.sOk { background: #2e9e5b; }
+.sMid { background: #e0a526; }
+.sFix { background: #b42318; }
+.sUn { background: #7b61c4; }
+.sOff { background: #b9c4cb; }
+[data-theme='dark'] .bar { background: #2a2f37; }
+[data-theme='dark'] .fixn { color: #ff8a80; }
+.nspec { color: #587180; background: #f3f6f8; border: 1px dashed #7a8c97; white-space: normal; }
+[data-theme='dark'] .nspec { color: #b8c0cc; background: #1e252d; border-color: #6b7a86; }

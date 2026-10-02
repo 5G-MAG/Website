@@ -6,6 +6,7 @@ description: The 5GMS functions and reference points in downlink and uplink, and
 ---
 
 import SpecFigure from '@site/src/components/SpecFigure';
+import FigurePair from '@site/src/components/FigurePair';
 import JumpMenu from '@site/src/components/JumpMenu';
 
 <div class="topic-banner">
@@ -34,7 +35,27 @@ TS 26.501 describes 5GMS in two ways. The **5GMS architecture**, defined since R
 
 ## The 5GMS architecture
 
-<SpecFigure src="/img/tech/5gms/generated/ts26501-fig4.1.1-2.svg" width={1200} height={551} spec="TS 26.501 V19.4.0" figure="4.1.1-2" title="5G Media Streaming general architecture" alt="The 5GMS Client in the UE, with its Media Session Handler and Media Stream Handler, and the 5GMS-Aware Application; the 5GMS AF and 5GMS AS in the DN with the 5GMS Application Provider; NEF and PCF connected to the AF over N33 and N5; reference points M1 to M8, M11 and M13." />
+<FigurePair
+  figures={[
+    {
+      label: 'Release 17',
+      src: '/img/tech/5gms/generated/ts26501-v17-fig4.1-2.svg',
+      width: 1200, height: 520,
+      title: '5G Media Streaming general architecture',
+      source: 'Redrawn from TS 26.501 V17.10.0, figure 4.1-2',
+      alt: 'The Release 17 5GMS general architecture: the 5GMS Client in the UE with its Media Session Handler and Media Stream Handler, linked by M6 and M7, the 5GMS-Aware Application, and in the DN the 5GMS AF, AS and Application Provider, with M1 to M8, N5 to the PCF and N33 to the NEF. M3 is drawn as out of scope.',
+    },
+    {
+      label: 'Release 19',
+      src: '/img/tech/5gms/generated/ts26501-fig4.1.1-2.svg',
+      width: 1200, height: 551,
+      title: '5G Media Streaming general architecture',
+      source: 'Redrawn from TS 26.501 V19.4.0, figure 4.1.1-2',
+      alt: 'The 5GMS Client in the UE, with its Media Session Handler and Media Stream Handler, and the 5GMS-Aware Application; the 5GMS AF and 5GMS AS in the DN with the 5GMS Application Provider; NEF and PCF connected to the AF over N33 and N5; reference points M1 to M8, M11 and M13.',
+    },
+  ]}
+  note="Click a figure to enlarge it. The differences between the releases are summarised under Before and after generalisation."
+/>
 
 - **5GMS Application Provider:** uses 5GMS for its streaming services, and provides a 5GMS-Aware Application on the User Equipment (UE).
 - **5GMS AF:** an Application Function dedicated to 5G Media Streaming. It provides control functions to the Media Session Handler on the UE and to the Application Provider. It may relay or initiate a request for Policy and Charging Function (PCF) treatment, or interact with other network functions through the Network Exposure Function (NEF).
