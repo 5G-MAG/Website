@@ -10,7 +10,9 @@ function Item({ fig, onOpen }) {
   return (
     <figure className={styles.item}>
       <span className={styles.label}>{fig.label}</span>
-      <button type="button" className={`${figStyles.frame} ${styles.frame}`} onClick={() => onOpen(fig, url)} title="Open larger">
+      {/* maxWidth (optional): a narrow drawing is shown no wider than this, centred, so its text keeps its size */}
+      <button type="button" className={`${figStyles.frame} ${styles.frame}`} onClick={() => onOpen(fig, url)} title="Open larger"
+        style={fig.maxWidth ? { maxWidth: `${fig.maxWidth}px`, alignSelf: 'center' } : undefined}>
         <img loading="lazy" src={url} alt={fig.alt} width={fig.width} height={fig.height} />
       </button>
       <figcaption className={figStyles.caption}>

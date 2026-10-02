@@ -10,7 +10,6 @@ import CommunityStats from '@site/src/components/CommunityStats';
 import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import ProjectVideos from '@site/src/components/ProjectVideos';
-import JumpMenu from '@site/src/components/JumpMenu';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 
@@ -34,64 +33,85 @@ export const projectVideos = (youtubePlaylists.projects?.['6g-testbed']?.videos 
 
 :::tip[At a glance]
 
-- **What it is:** the testbed 3GPP SA4 uses to obtain the traffic characteristics of AI media services in its 6G media study, TR 26.870 (study item FS_6G_MED, Release 20).
-- **What it does:** runs reproducible AI service scenarios (chat, agents, image generation, multimodal analysis, video understanding, real-time text and audio, web search, computer use) over emulated network conditions, captures the traffic, and computes traffic, response-time, service and task metrics.
-- **Where it is specified:** TR 26.870 describes the testbed in annex B, defines its scenarios, network profiles and metrics in annex D, and reports its methodology, results and conclusions in annex C.
-- **Status:** TR 26.870 is a draft (V0.6.1, September 2026). Its results are initial, and several items are marked for further study.
+- **What it is:** the testbed SA4 uses to measure the traffic of AI media services for its 6G media study, TR 26.870 (FS_6G_MED, Release 20).
+- **How:** AI service scenarios run over emulated network conditions; the traffic is captured and turned into metrics.
+- **Status:** TR 26.870 is a draft (V0.6.1, September 2026); its results are initial.
 
 :::
 
-<JumpMenu items={[["Why it exists", "why-it-exists"], ["How it works", "how-it-works"], ["What it has found", "what-it-has-found"], ["Status", "status"], ["Get involved", "get-involved"]]} />
+## What it does
 
-## Why it exists
+Traffic characteristics of media services are relevant to the design of 6G radio and service architectures. AI media services are new, so the study measures them with this testbed, and records the results as the basis for its statements on AI media services.
 
-The traffic characteristics of media services are relevant to the design of 6G radio and service architectures. SA4 already documents the traffic of conversational, streaming and immersive media services in TR 26.925. AI media services are new, so the 6G media study collects their traffic characteristics with a framework of its own: a testbed, a set of test scenarios, network profiles and metrics, and a methodology for drawing conclusions.
-
-The questions come from 6G radio and system design: whether AI traffic is uplink heavy; whether it comes in data bursts with varying delay requirements within one application; whether round-trip delay matters; whether its characteristics vary strongly within one application; and what "tokenized traffic" implies. TR 26.870 records the results as the basis for its statements on AI media services. Like TR 26.925, it describes traffic observed at the IP and application layers and defines no requirements, procedures or protocols.
-
-## How it works
-
-<figure>
-<img loading="lazy" src={useBaseUrl('/img/testbeds/6g-testbed/architecture.svg')} width="1200" height="672" alt="The Scenario Orchestrator drives the scenarios (chat, agents, image, video and audio) and MCP tool servers, through the LLM client layer, L7 capture with mitmproxy and the network emulator with tc/netem profiles, to the LLM and tool APIs on the Internet. Capture and analysis: L3/L4 capture with tcpdump and L7 capture with mitmproxy feed the TrafficLogger, which feeds the MetricsCalculator (TTFT, TTLT, UL/DL, loop factor) and the visualization." />
+<figure style={{maxWidth: '820px', margin: '1.5rem auto'}}>
+<img loading="lazy" style={{width: "100%", height: "auto"}} src={useBaseUrl('/img/testbeds/6g-testbed/architecture.svg')} width="1200" height="672" alt="The Scenario Orchestrator drives the scenarios (chat, agents, image, video and audio) and MCP tool servers, through the LLM client layer, L7 capture with mitmproxy and the network emulator with tc/netem profiles, to the LLM and tool APIs on the Internet. Capture and analysis: L3/L4 capture with tcpdump and L7 capture with mitmproxy feed the TrafficLogger, which feeds the MetricsCalculator (TTFT, TTLT, UL/DL, loop factor) and the visualization." />
 <figcaption>Testbed architecture, from the 6G-Testbed repository.</figcaption>
 </figure>
 
-- **Orchestrator:** coordinates scenario runs, applies network profiles, handles retries and generates reports.
-- **Scenarios:** each a named, reproducible AI interaction pattern, defined by its input and output modalities, interaction style, protocol, and AI model or provider.
-- **Clients:** adapters for commercial providers and for self-hosted models through vLLM.
-- **Network emulator:** applies a network profile with Linux tc and netem, on egress and, through an IFB device, on ingress.
-- **Capture and analysis:** L3/L4 packet capture with tcpdump, optional L7 capture with mitmproxy, logging to SQLite, metric computation and plots.
+<div class="godeeper-grid godeeper-grid--4col">
 
-A test run combines a scenario, a network profile and an execution mode, and produces a metric record. In **remote execution** the model runs at a public cloud provider and the traffic crosses the main network interface. In **local execution** the model is self-hosted next to the client, and the impairment is applied on the loopback path to emulate a radio link to a local edge server. Each combination is run several times, to obtain meaningful results.
+<a class="godeeper-card" href={useBaseUrl('/testbeds/6g-testbed/scope')}>
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4h6v6h-6z"/><path d="M14 4h6v6h-6z"/><path d="M4 14h6v6h-6z"/><path d="M17 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/></svg>
+<h3>Test design</h3>
+</div>
+<div class="godeeper-card__body">
+<p>Scenarios, network profiles and their call flows.</p>
+</div>
+</a>
 
-See [Test design](./scope) for the scenarios and network profiles, and [Metrics](./metrics) for what is measured.
+<a class="godeeper-card" href={useBaseUrl('/testbeds/6g-testbed/metrics')}>
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 3v18h18"/><path d="M20 18v3"/><path d="M16 16v5"/><path d="M12 13v8"/><path d="M8 16v5"/><path d="M3 11c6 0 5 -5 9 -5s3 3 7 3"/></svg>
+<h3>Metrics</h3>
+</div>
+<div class="godeeper-card__body">
+<p>Traffic, response time, service and task metrics.</p>
+</div>
+</a>
+
+<a class="godeeper-card" href={useBaseUrl('/testbeds/6g-testbed/results')}>
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2"/><path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"/><path d="M9 14l2 2l4 -4"/></svg>
+<h3>Results</h3>
+</div>
+<div class="godeeper-card__body">
+<p>What the measurements show so far.</p>
+</div>
+</a>
+
+<a class="godeeper-card" href={useBaseUrl('/testbeds/6g-testbed/tutorials/introduction-6g-testbed')}>
+<div class="godeeper-card__band">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4.5 16.5c-1.5 1.26 -2 5 -2 5s3.74 -.5 5 -2c.71 -.84 .7 -2.13 -.09 -2.91a2.18 2.18 0 0 0 -2.91 -.09z"/><path d="M12 15l-3 -3a22 22 0 0 1 2 -3.95a12.88 12.88 0 0 1 10 -5.93c0 2.72 -.78 7.5 -6 11a22.35 22.35 0 0 1 -4 2z"/><path d="M9 12h-4s.55 -3.03 2 -4c1.62 -1.08 5 0 5 0"/><path d="M12 15v5s3.03 -.55 4 -2c1.08 -1.62 0 -5 0 -5"/></svg>
+<h3>Run it</h3>
+</div>
+<div class="godeeper-card__body">
+<p>Install, run a scenario, reproduce SA4 results.</p>
+</div>
+</a>
+
+</div>
 
 ## What it has found
 
-TR 26.870 states initial conclusions for each of the five questions. The figures behind them are on [Results](./results).
+| Question | Initial answer in TR 26.870 |
+| --- | --- |
+| Is AI traffic uplink heavy? | For some scenarios, such as video sent for inference and the agents evaluated. Others are heavily downlink. |
+| Bursts and delay sensitivity? | Bursty, periodic or not, delay sensitive or tolerant depending on the application. |
+| Does round-trip delay matter? | Yes, many AI applications are interactive; connection setup adds to it. |
+| Does traffic vary within one application? | Yes, on every dimension measured. |
+| Tokenized traffic? | Seen on the uplink where the client tokenizes media, and on the downlink when output is streamed. |
 
-- **Uplink heavy:** for some scenarios. Uplink dominates where a high bit-rate modality such as video is sent for inference and a low bit-rate result returns, and in the agentic scenarios evaluated. Other scenarios are heavily downlink biased. The ratio spans about five orders of magnitude, so directionality is stated per scenario.
-- **Data bursts and delay sensitivity:** the traffic is bursty, periodic or not, and delay sensitive or tolerant depending on the application.
-- **Round-trip delay:** important, because many AI applications are interactive. Connection and security setup add significantly to it.
-- **Variability:** AI applications can vary on every dimension measured, sometimes combining different types of data in one session.
-- **Tokenized traffic:** observed on the uplink where the client tokenizes media before sending it, and on the downlink wherever model output is delivered incrementally.
-
-## Status
-
-- TR 26.870 is at V0.6.1 (September 2026), a draft not yet approved by 3GPP. Its results are those of initial measurement campaigns, and the TR expects to align them as more results and implementations are added.
-- Open points in the TR include whether and how TTFT, TTLT and tool-call latency can be used for AI traffic evaluation, and extending the token-related metrics to more scenarios and implementations.
-- The testbed builds on the common test platform of TR 26.934. The TR notes that annex D should be moved into TR 26.934, and that the management of the software assets is under study.
+See [Results](./results) for the figures behind each answer.
 
 ## Get involved
 
-<div class="event-post-grid">
+<div class="event-post-grid" style={{maxWidth: '340px'}}>
 <a class="event-post-card" href={useBaseUrl('/docs/Reference_Tools_3GPP_Testbed_AI_Traffic.pdf')} target="_blank" rel="noreferrer">
 <img loading="lazy" src={useBaseUrl('/assets/images/projects/6g-testbed-slides-cover.jpg')} alt="6G AI Traffic Characterization Testbed slide deck cover" />
 <span class="event-post-title">Slide deck: 6G AI Traffic Characterization Testbed overview</span>
 </a>
 </div>
-
-To run it yourself, see [Run the testbed](./tutorials/introduction-6g-testbed).
 
 <div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
 
@@ -112,10 +132,7 @@ To run it yourself, see [Run the testbed](./tutorials/introduction-6g-testbed).
 <details>
 <summary>Sources for this page</summary>
 
-- **At a glance:** TR 26.870 V0.6.1, cover, clause 6.3.3.1 and annexes B to D; work item code from annex X.
-- **Why it exists:** TR 26.870 V0.6.1, clause 6.3.3.1 and its NOTE, annex C.1.
-- **How it works:** TR 26.870 V0.6.1, annex B.1, B.2 and C.2, annex E.1. The figure is the architecture diagram of the 6G-Testbed repository, redrawn.
-- **What it has found:** TR 26.870 V0.6.1, clauses C.4.6, C.5.6, C.6.6, C.7.6 and C.8.6.2, and C.4.6 NOTE.
-- **Status:** TR 26.870 V0.6.1, cover page, annex B.1 Editor's Note, annex B.3 Editor's Note, annex C.8.6.2 Editor's Notes, annex D Editor's Note.
+- **At a glance and What it does:** TR 26.870 V0.6.1, cover, clause 6.3.3.1, annexes B.1 and C.1; work item code from annex X. The figure is the architecture diagram of the 6G-Testbed repository, redrawn.
+- **What it has found:** TR 26.870 V0.6.1, clauses C.4.6, C.5.6, C.6.6, C.7.6 and C.8.6.2.
 
 </details>

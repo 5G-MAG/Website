@@ -31,13 +31,22 @@ description: How to install and run the 6G AI Traffic Characterization Testbed, 
 
 :::
 
-## Install
-
-The pages follow the `development` branch:
+## Quick start
 
 ```bash
 git clone -b development https://github.com/5G-MAG/6G-Testbed.git
 ```
+
+Install the testbed (open **Install** below), then, from the `aitestbed` folder, run one scenario over one network profile:
+
+```bash
+python orchestrator.py --scenario chat_basic --profile 5g_urban --runs 10
+```
+
+Results are logged to an SQLite database, from which the testbed computes the [metrics](../metrics).
+
+<details>
+<summary>Install</summary>
 
 Prerequisites, as the repository lists them: Python 3.10 or later; Node.js 18 or later, for the MCP servers; Linux with `iproute2`, for network emulation; `tcpdump`, for packet capture; sudo access or Docker with `NET_ADMIN`; and, for the VLM scenarios, an NVIDIA GPU with about 30 GB of memory (about 2.5 GB for the VLM client and 27 GB for the VLM server) and CUDA Toolkit 12.1 or later.
 
@@ -73,19 +82,19 @@ docker run --cap-add=NET_ADMIN -e OPENAI_API_KEY="..." \
   6g-ai-testbed python orchestrator.py --scenario all --runs 10
 ```
 
-## Run a scenario
+</details>
 
-From the `aitestbed` folder, run one scenario over one network profile:
-
-```bash
-python orchestrator.py --scenario chat_basic --profile 5g_urban --runs 10
-```
+<details>
+<summary>More run options</summary>
 
 Run every scenario, the full matrix, with `--scenario all`. Add `--capture-pcap` for L3/L4 packet capture, which the network-layer metrics need, and `--capture-l7` for L7 capture through mitmproxy. `--list-scenarios` and `--list-profiles` show what is configured.
 
 Results are logged to an SQLite database, from which the testbed computes the [metrics](../metrics) and generates plots. Setting `TRACE_PAYLOADS=1` also logs protocol and payload traces, such as WebRTC SDP samples and the exact request and response payloads of an agent.
 
-## Token and real-time video scenarios
+</details>
+
+<details>
+<summary>Token and real-time video scenarios</summary>
 
 The two scenarios in which TR 26.870 observes tokenized traffic need their own setup.
 
@@ -112,7 +121,10 @@ python orchestrator.py --scenario chat_token --profile 5g_urban --runs 10
 
 Both can also be run over the `lossy` profile with packet capture; the repository README gives the full commands.
 
-## Reproduce SA4 results
+</details>
+
+<details>
+<summary>Reproduce SA4 results</summary>
 
 To cross-check results contributed to SA4, use `run_full_tests.sh`. It runs the full matrix of `configs/scenarios.yaml` across the network profiles, captures L3/L4 traffic, and runs the post-processing: charts, an Excel export, `RESULTS.md`, `TRACES.md`, and an anonymized database.
 
@@ -134,7 +146,10 @@ bash run_full_tests.sh --enable vllm --runs 30
 
 A full run can take many hours. If it is interrupted, re-run it with the same parameters and `--resume`: completed combinations are skipped and new results are appended to the existing database. Keep packet capture on for cross-check runs, and match the run count (`--runs N`) to the contribution being checked. The repository README lists every option.
 
-## Use the network emulator on its own
+</details>
+
+<details>
+<summary>Use the network emulator on its own</summary>
 
 The network emulator, `netemu`, is a standalone package and can shape traffic for any measurement, not only the AI scenarios. Every queueing discipline it creates is cleared when the block exits:
 
@@ -149,12 +164,17 @@ with NetworkEmulator(interface="eth0",
 
 The profiles and their parameters are on [Test design](../scope#network-profiles).
 
-## Extend it
+</details>
+
+<details>
+<summary>Extend it</summary>
 
 - **A new scenario:** create a class in `scenarios/` that extends `BaseScenario`, register it in `scenarios/__init__.py`, and add an entry in `configs/scenarios.yaml`.
 - **A new provider:** implement a client in `clients/` that subclasses `LLMClient`, and register it in the orchestrator client factory.
 
 To contribute changes, see the [6G-Testbed](https://github.com/5G-MAG/6G-Testbed) repository and [How to Contribute](/contributing).
+
+</details>
 
 ## Video introduction
 

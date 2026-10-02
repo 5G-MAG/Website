@@ -5,7 +5,6 @@ hide_title: true
 sidebar_position: 2
 description: What the 6G AI Traffic Characterization Testbed has measured so far, per TR 26.870 annex C. The five assumptions on AI traffic, the agentic campaign, and the real-time video understanding results.
 ---
-import JumpMenu from '@site/src/components/JumpMenu';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -32,7 +31,7 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 :::
 
-<JumpMenu items={[["How the results are reported", "how-the-results-are-reported"], ["1. Uplink heavy", "1-uplink-heavy"], ["2. Data bursts and delay sensitivity", "2-data-bursts-and-delay-sensitivity"], ["3. Round-trip delay", "3-round-trip-delay"], ["4. Variability within an application", "4-variability-within-an-application"], ["5. Tokenized traffic", "5-tokenized-traffic"], ["Agentic scenarios", "agentic-scenarios"]]} />
+
 
 ## How the results are reported
 
@@ -40,7 +39,20 @@ The per-scenario results are in an Excel workbook attached to TR 26.870, with on
 
 Each assumption below follows the same structure in the TR: the metrics considered, the scenarios and network profiles (all of them, except that tokenized traffic considers the scenarios with token traffic), and initial high-level conclusions.
 
-## 1. Uplink heavy
+## The five questions
+
+| Question | Initial answer | A figure behind it |
+| --- | --- | --- |
+| 1. Is AI traffic uplink heavy? | For some scenarios; directionality is stated per scenario | UL/DL ratio from about 0.000 (image generation) to about 840 to 990 (video understanding, local inference) |
+| 2. Bursts and delay sensitivity? | Bursty; delay sensitive or tolerant depending on the application | Under congestion, latency +13.7 % for chat with tokens, +889 % for non-real-time video understanding |
+| 3. Does round-trip delay matter? | Yes; connection setup adds significantly | About 171 ms median, 1.46 s at the 95th percentile, before any application data |
+| 4. Variability within an application? | Yes, on every dimension measured | Different types of data can combine in one session |
+| 5. Tokenized traffic? | On the uplink where the client tokenizes media; on the downlink when output is streamed | About 2.21 bytes per uplink video token: token identifiers, not embeddings |
+
+Open a question for what was measured and the figures in full.
+
+<details>
+<summary>1. Uplink heavy</summary>
 
 **Measured with:** uplink and downlink volume per session and their ratio; HTTP payload sizes per turn, which separate payload asymmetry from transport overhead; packet counts and mean packet size per direction; and volume per direction at 1, 10 and 100 ms granularity.
 
@@ -50,7 +62,10 @@ Each assumption below follows the same structure in the TR: the metrics consider
 - Among remote hosted services, image generation is at about 0.000 and video understanding with local inference at about 840 to 990. MCP browser agents are at about 3.5.
 - Among local inference scenarios, real-time video understanding is at 5 to 7, non-real-time video understanding at about 300, and streaming chat at about 0.03.
 
-## 2. Data bursts and delay sensitivity
+</details>
+
+<details>
+<summary>2. Data bursts and delay sensitivity</summary>
 
 **Measured with:** burst detection by idle gap; per-burst size, duration and peak rate; the peak-to-mean ratio at windows from 1 ms to 10 s; and the time to first and to last byte of a request. For multimodal scenarios, bursts are also reported per modality.
 
@@ -60,7 +75,10 @@ Each assumption below follows the same structure in the TR: the metrics consider
 - Under the congested profile, response latency rises by 13.7 % for chat with tokens and by 889 % for non-real-time video understanding, relative to no emulation.
 - Where a response is delivered incrementally, the time to first token degrades more than the session latency. For streaming multimodal analysis under the congested profile, the time to first token grows by a factor of more than 20, against about 3 for the session latency.
 
-## 3. Round-trip delay
+</details>
+
+<details>
+<summary>3. Round-trip delay</summary>
 
 **Measured with:** TCP round-trip time per connection; TLS handshake time and HTTP connection setup; the gap between chunks against the round-trip time, which separates server-side generation from network-induced gaps; and end-to-end latency against the round-trip time for non-streaming scenarios.
 
@@ -70,13 +88,19 @@ Each assumption below follows the same structure in the TR: the metrics consider
 - The gap between downlink token chunks has a median of 0.116 ms, against a TCP round-trip time median of 63.21 ms. The pacing of the token stream is set by the inference engine, not by the network path.
 - Several AI applications now use QUIC instead of TCP; whether persistent connections are used is for further study.
 
-## 4. Variability within an application
+</details>
+
+<details>
+<summary>4. Variability within an application</summary>
 
 **Measured with:** distributions of request bytes, response bytes and packet counts; burst size and duration per flow or request type; time to first and last byte under congestion and loss; reliability under different loss rates; the variation of idle time between bursts; flow duration, connections per session and connection reuse; and, for agents, the number of distinct destinations and the volume per tool sub-flow.
 
 **Initial conclusion:** on every dimension measured (bursts, volume, delay, inter-arrival time and others), AI applications can have variable traffic characteristics, sometimes combining different types of data in one session.
 
-## 5. Tokenized traffic
+</details>
+
+<details>
+<summary>5. Tokenized traffic</summary>
 
 **Measured with:** input and output tokens per turn; the token rate at the application level; the token arrival rate against the downlink packet arrival rate; the gap between tokens per profile; and metrics of error resilience for real-time token communication.
 
@@ -91,7 +115,14 @@ Observations from one evaluated implementation of real-time video understanding,
 
 Extending these observations to other implementations and scenarios is for further study. The loss sweep applies independent, identically distributed loss; correlated loss is for further study.
 
+</details>
+
 ## Agentic scenarios
+
+Agent traffic is close to symmetric on the wire, even when it looks downlink heavy at the application layer. Uplink provisioning and uplink grant latency directly gate it, and faster connection setup and reuse are worth more to it than additional capacity.
+
+<details>
+<summary>The agentic measurement campaign</summary>
 
 A measurement campaign ran the personal assistant agent and the agent-to-agent scenarios over the ten network profiles, with 10 or more runs per profile. The personal assistant used OpenClaw, a self-hosted agent runtime; the agent-to-agent scenarios used the Agent2Agent (A2A) protocol with deterministic agents.
 
@@ -100,6 +131,8 @@ A measurement campaign ran the personal assistant agent and the agent-to-agent s
 - **Volume on the wire:** at the application layer, a personal-assistant turn is 144 bytes up against 20,230 bytes down. In the packet capture, its UL/DL ratio is 0.50, with about 172 kB of uplink per turn, because every agent step re-uploads the context, the system prompt and the tool definitions. Uplink provisioning and uplink grant latency therefore directly gate agentic workloads.
 - **Connections:** a single personal-assistant user appears as 2.46 TCP flows per turn towards 28 distinct destinations, with a median TLS handshake of 1.33 s. Session resumption, connection coalescing and persistent multiplexed transports are worth more to this workload than additional capacity.
 - **Reliability:** the agent runtime absorbs loss at the cost of latency. The small A2A exchanges have no redundancy: they are unaffected by delay, even at 340 ms one-way geostationary delay, but they degrade under loss, the only failures occurring on the two lossy profiles of the campaign. Agent signalling therefore needs a low packet error rate with only a moderate delay budget.
+
+</details>
 
 <details>
 <summary>Sources for this page</summary>

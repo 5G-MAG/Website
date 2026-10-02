@@ -27,54 +27,16 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 :::tip[At a glance]
 
-- **Test run:** one scenario, one network profile and one execution mode, run several times; the output is a metric record.
-- **Scenarios:** eleven scenario types in the testbed, from chat to agent-to-agent collaboration, each mapped to a 6G media AI service and to TR 22.870 use cases. A twelfth, the AI gateway, is not yet fully defined.
-- **Network profiles:** ten deployment profiles, from an ideal baseline and a 6G HRLLC profile to satellite and congested links, plus a lossy profile used only to find where a scenario stops working.
-- **Source:** TR 26.870 V0.6.1, a draft. Values marked in brackets in the TR are still under discussion.
+- **Scenarios:** eleven AI interaction patterns, from chat to agent-to-agent collaboration, each with its call flow.
+- **Network profiles:** ten deployment conditions, from an ideal baseline and a 6G HRLLC profile to satellite and congested links, plus a lossy profile to find where a scenario breaks.
+- **A test run:** one scenario, one profile and one execution mode, repeated; the output is a metric record.
+- **Source:** TR 26.870 V0.6.1 annexes B to E, a draft.
 
 :::
 
-<JumpMenu items={[["Architecture", "architecture"], ["Method", "method"], ["Scenarios", "scenarios"], ["Scenario call flows", "scenario-call-flows"], ["From use cases to scenarios", "from-use-cases-to-scenarios"], ["Network profiles", "network-profiles"], ["Network emulator", "network-emulator"]]} />
-
-## Architecture
-
-<figure>
-<img loading="lazy" src={useBaseUrl('/img/testbeds/6g-testbed/architecture.svg')} width="1200" height="672" alt="The Scenario Orchestrator drives the scenarios (chat, agents, image, video and audio) and MCP tool servers, through the LLM client layer, L7 capture with mitmproxy and the network emulator with tc/netem profiles, to the LLM and tool APIs on the Internet. Capture and analysis: L3/L4 capture with tcpdump and L7 capture with mitmproxy feed the TrafficLogger, which feeds the MetricsCalculator (TTFT, TTLT, UL/DL, loop factor) and the visualization." />
-<figcaption>Testbed architecture, from the 6G-Testbed repository.</figcaption>
-</figure>
-
-The testbed builds on the common test platform of TR 26.934, which provides an end-to-end framework to run scenarios, emulate network conditions and log metrics reproducibly. Its architecture is orchestrator-centric, with scenarios, clients, network emulation, capture and analysis kept separate:
-
-| Part | Role |
-| --- | --- |
-| `orchestrator.py` | Coordinates scenario runs, applies network profiles, handles retries and generates reports |
-| `scenarios/` | Implements the traffic patterns: chat, agent, direct search, real-time, multimodal, image, video, computer use, personal assistant agent, agent-to-agent collaboration |
-| `clients/` | Provider adapters, including OpenAI, Gemini, DeepSeek (OpenAI-compatible) and vLLM for self-hosted models |
-| netem | The network emulator, an external dependency proposed to be common to all studies |
-| `capture/` | L3/L4 packet capture (PCAP) and L7 capture through mitmproxy |
-| `analysis/` | Logs to SQLite, computes the metrics and generates plots |
-
-Trace logging gives visibility into protocol and payload behaviour, for example WebRTC SDP samples and the exact request and response payloads of an agent.
-
-## Method
-
-TR 26.870 sets out an initial methodology; other methodologies are not precluded.
-
-1. The AI traffic use cases of TR 22.870 are categorised against the scenarios, to check that the scenarios are meaningful in a 6G context.
-2. A set of representative scenarios implements the use cases. A scenario is a named, reproducible AI interaction pattern, defined by its input and output modalities, its interaction style (real-time or batch, streaming or not), its protocol and its AI model or provider.
-3. Metrics are defined as computable scalar quantities from which traffic characteristics can be stated.
-4. Network profiles emulate real-world access technologies, together with stress-test profiles.
-5. Two execution modes are distinguished, by where the model weights are loaded and the forward pass is computed:
-   - **Remote execution:** the inference engine is hosted by a public cloud provider, beyond the testbed's control. Traffic crosses the main network interface, where it is captured and impaired.
-   - **Local execution:** the inference engine is a self-hosted model on a server co-located with the client. Traffic crosses the loopback interface, where it is captured and impaired, emulating a radio link to a local edge server.
-
-A test run takes a scenario, a network profile and an execution mode, and produces a metric record. Several runs are executed for each combination.
-
-The TR also lists, in brackets, principles still under discussion: metrics reported only per scenario and profile, never aggregated across scenarios without labelling; raw traces shared selectively for independent verification; results at three levels (per run, per cell, cross-cell summary); repetitions for robust percentiles; and independent collation by several companies.
+<JumpMenu items={[["Scenarios", "scenarios"], ["Network profiles", "network-profiles"], ["How a test runs", "how-a-test-runs"]]} />
 
 ## Scenarios
-
-The scenario types defined in the testbed (TR 26.870 table D.1.1).
 
 | Scenario | Providers | What it exercises | Clause |
 | --- | --- | --- | :---: |
@@ -92,11 +54,10 @@ The scenario types defined in the testbed (TR 26.870 table D.1.1).
 
 The AI gateway scenario (clause D.1.2.11) places an intermediary between AI applications and model providers, which authenticates, routes, applies policies and optionally enriches the prompt. Its test definition is still to be provided.
 
-## Scenario call flows
+The call flows TR 26.870 gives for the scenarios, between the client the testbed drives, the client library and the model or service.
 
-The call flows TR 26.870 gives for the scenarios, between the client the testbed drives, the client library and the model or service. For several scenarios the TR still has to provide the drawing.
-
-### Chat
+<details>
+<summary>Call flows: Chat</summary>
 
 In non-streaming mode the client sends one HTTP POST and receives the full response. In streaming mode the server returns the response in chunks as Server-Sent Events. With tokens, the client first turns the text into token identifiers with a local tokenizer and sends those as the prompt.
 
@@ -105,7 +66,7 @@ In non-streaming mode the client sends one HTTP POST and receives the full respo
     {
       label: 'Streaming and non-streaming',
       src: '/img/testbeds/6g-testbed/tr26870-figD.1.2.1-1.svg',
-      width: 668, height: 868,
+      width: 668, height: 868, maxWidth: 400,
       title: 'Chat scenario simplified with streaming/non-streaming options',
       source: 'Redrawn from TR 26.870 V0.6.1, figure D.1.2.1-1',
       alt: 'Chat Client, LM Client and LM Server. For each prompt the client appends the prompt to the history; if streaming, the request returns stream chunks relayed as a streaming response; otherwise a full response; the response is appended to the history.',
@@ -122,7 +83,53 @@ In non-streaming mode the client sends one HTTP POST and receives the full respo
   note="Click a figure to enlarge it."
 />
 
-### Video understanding
+</details>
+
+<details>
+<summary>Call flows: Agent with MCP, image generation and multimodal analysis</summary>
+
+In the agent scenario, the client sends the model its messages with tool definitions; while the response contains tool calls, the client executes them through MCP and appends the results. Image generation sends a text prompt and receives the image; multimodal analysis sends an image and a text prompt and receives the analysis.
+
+<FigurePair
+  figures={[
+    {
+      label: 'Agent with MCP',
+      src: '/img/testbeds/6g-testbed/tr26870-figD.1.2.2-1.svg',
+      width: 1095, height: 694,
+      title: 'AI agent scenario with MCP simplified',
+      source: 'Redrawn from TR 26.870 V0.6.1, figure D.1.2.2-1',
+      alt: 'Agent, LM Client, LM Server, MCP Executor and MCP Server (Tools): over multiple turns the agent sends chat with messages and tools as an HTTP POST chat completion; while the response has tool calls, it executes each tool through the MCP Executor, which calls the MCP server, and appends the tool results to the messages.',
+    },
+    {
+      label: 'Image generation',
+      src: '/img/testbeds/6g-testbed/tr26870-figD.1.2.3-1.svg',
+      width: 715, height: 360,
+      title: 'Image generation scenario',
+      source: 'Redrawn from TR 26.870 V0.6.1, figure D.1.2.3-1',
+      alt: 'Image Generation Client, LM Client and LM Server: generate image with a prompt, an HTTP POST with the text prompt, an HTTP response with the image data, and the image.',
+    },
+  ]}
+  note="Click a figure to enlarge it."
+/>
+
+<FigurePair
+  figures={[
+    {
+      label: 'Multimodal analysis',
+      src: '/img/testbeds/6g-testbed/tr26870-figD.1.2.4-1.svg',
+      width: 860, height: 360,
+      title: 'Multimodal analysis scenario in non-stream mode',
+      source: 'Redrawn from TR 26.870 V0.6.1, figure D.1.2.4-1',
+      alt: 'Multimodal Client, LM Client and LM Server: generate content with image and prompt, an HTTP request with image and text, an HTTP response with text, and the response.',
+    },
+  ]}
+  note="Click a figure to enlarge it."
+/>
+
+</details>
+
+<details>
+<summary>Call flows: Video understanding</summary>
 
 In real time, a persistent WebRTC connection is set up first. Its video track carries video tokens to the server, and its data channel carries the prompt and the result the server streams back. In non-real time, the client sends one HTTP request with the video and a text prompt.
 
@@ -131,7 +138,7 @@ In real time, a persistent WebRTC connection is set up first. Its video track ca
     {
       label: 'Real time',
       src: '/img/testbeds/6g-testbed/tr26870-figD.1.2.5-1.svg',
-      width: 758, height: 1132,
+      width: 758, height: 1132, maxWidth: 380,
       title: 'Real-time VLM video understanding',
       source: 'Redrawn from TR 26.870 V0.6.1, figure D.1.2.5-1',
       alt: 'Realtime Video, WebRTC VLM Client and WebRTC VLM Server: connect with SDP offer, answer, ICE and DTLS handshake and data channel open; then a loop in which the client transforms video frames to tokens, streams video tokens over WebRTC and receives the text response over the data channel; then disconnect.',
@@ -148,7 +155,10 @@ In real time, a persistent WebRTC connection is set up first. Its video track ca
   note="Click a figure to enlarge it."
 />
 
-### Real-time text and audio, and computer use
+</details>
+
+<details>
+<summary>Call flows: Real-time text and audio, and computer use</summary>
 
 The real-time scenario keeps a bidirectional connection open: WebSocket for text, WebRTC for audio. In computer use, each step sends the model a prompt, carries out the returned action in a browser, and returns a screenshot as input to the next step.
 
@@ -174,7 +184,10 @@ The real-time scenario keeps a bidirectional connection open: WebSocket for text
   note="Click a figure to enlarge it."
 />
 
-### Agents
+</details>
+
+<details>
+<summary>Call flows: Personal assistant and agent-to-agent</summary>
 
 The personal assistant runtime calls the model and the tools itself; the testbed sees it from the network, on two surfaces shown in blue (the local control channel) and red (the runtime egress). The agent-to-agent scenarios retrieve the capability description of the target agent, then delegate the task without or with streaming, or through an orchestrator that delegates to two peers.
 
@@ -183,7 +196,7 @@ The personal assistant runtime calls the model and the tools itself; the testbed
     {
       label: 'Personal assistant agent',
       src: '/img/testbeds/6g-testbed/tr26870-figD.1.2.9-1.svg',
-      width: 1200, height: 806,
+      width: 1193, height: 801,
       title: 'Personal-assistant agent scenario',
       source: 'Redrawn from TR 26.870 V0.6.1, figure D.1.2.9-1',
       alt: 'Testbed orchestrator, Agent runtime, LLM provider and Tools or external services. In blue, the task submitted to the runtime and the task result. In red, the runtime HTTPS prompt with system context and tool definitions, the assistant turn, the tool invocation and result, repeated per agent step, and the final assistant text.',
@@ -191,7 +204,7 @@ The personal assistant runtime calls the model and the tools itself; the testbed
     {
       label: 'Multi-agent delegation',
       src: '/img/testbeds/6g-testbed/tr26870-figD.1.2.10-3.svg',
-      width: 1200, height: 743,
+      width: 1193, height: 738,
       title: 'Multi-agent delegation with orchestrator fan-out to peer agents',
       source: 'Redrawn from TR 26.870 V0.6.1, figure D.1.2.10-3',
       alt: 'Delegating client, Orchestrating agent, Peer agent A and Peer agent B: the client retrieves the capability description and sends the task; the orchestrator delegates sub-tasks to each peer, aggregates artifacts A and B, and returns the aggregated result.',
@@ -205,7 +218,7 @@ The personal assistant runtime calls the model and the tools itself; the testbed
     {
       label: 'Single task',
       src: '/img/testbeds/6g-testbed/tr26870-figD.1.2.10-1.svg',
-      width: 1200, height: 1358,
+      width: 637, height: 721, maxWidth: 320,
       title: 'Single-task delegation (non-streaming)',
       source: 'Redrawn from TR 26.870 V0.6.1, figure D.1.2.10-1',
       alt: 'Delegating client and Remote agent: retrieve capability description; capability description with capabilities, skills and endpoint; a non-streaming task request; the agent executes the skill, deterministic with no LLM; and the task result, state completed with artifacts.',
@@ -213,7 +226,7 @@ The personal assistant runtime calls the model and the tools itself; the testbed
     {
       label: 'Streaming',
       src: '/img/testbeds/6g-testbed/tr26870-figD.1.2.10-2.svg',
-      width: 1200, height: 1767,
+      width: 571, height: 841, maxWidth: 300,
       title: 'Streaming delegation with incremental status and artifact updates',
       source: 'Redrawn from TR 26.870 V0.6.1, figure D.1.2.10-2',
       alt: 'Delegating client and Remote agent: capability description with streaming supported, a streaming task request, a working status update, artifact chunks 1 to N with TTFT measured at the first, and a terminal status update closing the stream.',
@@ -222,7 +235,10 @@ The personal assistant runtime calls the model and the tools itself; the testbed
   note="Click a figure to enlarge it."
 />
 
-## From use cases to scenarios
+</details>
+
+<details>
+<summary>Which 6G services and use cases each scenario covers</summary>
 
 TR 26.870 derives 6G media AI services from TR 22.870 use cases (clause D.2.1), and maps each test scenario to the services whose traffic it characterises (clause D.2.2).
 
@@ -236,6 +252,8 @@ TR 26.870 derives 6G media AI services from TR 22.870 use cases (clause D.2.1), 
 | Compressed multi-sensor services | Video understanding | 6.26, 6.59 |
 
 The TR notes that the mapping of video understanding is still to be added to its summary table.
+
+</details>
 
 ## Network profiles
 
@@ -257,7 +275,57 @@ The recommended profile set (TR 26.870 table D.3.1-1). The profiles other than t
 
 The TR notes that this is an initial set based on information available in SA4, and that the 3GPP averaging window and resource type are not taken into account. For satellite_leo, the same table cell also gives 100 ms delay, 20 ms jitter, 0.3 % loss and 4 Mbit/s before defining the separate downlink and uplink parameters shown here.
 
-## Network emulator
+## How a test runs
+
+A test run takes a scenario, a network profile and an execution mode, and produces a metric record; several runs are executed for each combination. The two execution modes differ in where the model runs:
+
+- **Remote execution:** at a public cloud provider. Traffic crosses the main network interface, where it is captured and impaired.
+- **Local execution:** a self-hosted model on a server next to the client. Traffic crosses the loopback interface, emulating a radio link to a local edge server.
+
+<figure style={{maxWidth: '820px', margin: '1.5rem auto'}}>
+<img loading="lazy" style={{width: "100%", height: "auto"}} src={useBaseUrl('/img/testbeds/6g-testbed/architecture.svg')} width="1200" height="672" alt="The Scenario Orchestrator drives the scenarios (chat, agents, image, video and audio) and MCP tool servers, through the LLM client layer, L7 capture with mitmproxy and the network emulator with tc/netem profiles, to the LLM and tool APIs on the Internet. Capture and analysis: L3/L4 capture with tcpdump and L7 capture with mitmproxy feed the TrafficLogger, which feeds the MetricsCalculator (TTFT, TTLT, UL/DL, loop factor) and the visualization." />
+<figcaption>Testbed architecture, from the 6G-Testbed repository.</figcaption>
+</figure>
+
+<details>
+<summary>The parts of the testbed</summary>
+
+The testbed builds on the common test platform of TR 26.934, which provides an end-to-end framework to run scenarios, emulate network conditions and log metrics reproducibly. Its architecture is orchestrator-centric, with scenarios, clients, network emulation, capture and analysis kept separate:
+
+| Part | Role |
+| --- | --- |
+| `orchestrator.py` | Coordinates scenario runs, applies network profiles, handles retries and generates reports |
+| `scenarios/` | Implements the traffic patterns: chat, agent, direct search, real-time, multimodal, image, video, computer use, personal assistant agent, agent-to-agent collaboration |
+| `clients/` | Provider adapters, including OpenAI, Gemini, DeepSeek (OpenAI-compatible) and vLLM for self-hosted models |
+| netem | The network emulator, an external dependency proposed to be common to all studies |
+| `capture/` | L3/L4 packet capture (PCAP) and L7 capture through mitmproxy |
+| `analysis/` | Logs to SQLite, computes the metrics and generates plots |
+
+Trace logging gives visibility into protocol and payload behaviour, for example WebRTC SDP samples and the exact request and response payloads of an agent.
+
+</details>
+
+<details>
+<summary>The method in full</summary>
+
+TR 26.870 sets out an initial methodology; other methodologies are not precluded.
+
+1. The AI traffic use cases of TR 22.870 are categorised against the scenarios, to check that the scenarios are meaningful in a 6G context.
+2. A set of representative scenarios implements the use cases. A scenario is a named, reproducible AI interaction pattern, defined by its input and output modalities, its interaction style (real-time or batch, streaming or not), its protocol and its AI model or provider.
+3. Metrics are defined as computable scalar quantities from which traffic characteristics can be stated.
+4. Network profiles emulate real-world access technologies, together with stress-test profiles.
+5. Two execution modes are distinguished, by where the model weights are loaded and the forward pass is computed:
+   - **Remote execution:** the inference engine is hosted by a public cloud provider, beyond the testbed's control. Traffic crosses the main network interface, where it is captured and impaired.
+   - **Local execution:** the inference engine is a self-hosted model on a server co-located with the client. Traffic crosses the loopback interface, where it is captured and impaired, emulating a radio link to a local edge server.
+
+A test run takes a scenario, a network profile and an execution mode, and produces a metric record. Several runs are executed for each combination.
+
+The TR also lists, in brackets, principles still under discussion: metrics reported only per scenario and profile, never aggregated across scenarios without labelling; raw traces shared selectively for independent verification; results at three levels (per run, per cell, cross-cell summary); repetitions for robust percentiles; and independent collation by several companies.
+
+</details>
+
+<details>
+<summary>The network emulator</summary>
 
 The network emulator, netemu, is a Python wrapper around the Linux tc toolchain that depends only on the Python standard library and a YAML parser. It covers four independent stages of a measurement run:
 
@@ -268,13 +336,15 @@ The network emulator, netemu, is a Python wrapper around the Linux tc toolchain 
 
 A profile sets one-way delay and jitter, the delay distribution (normal, pareto, paretonormal or fixed) and correlation, loss and its correlation or a Gilbert-Elliott loss model, an HTB rate ceiling and burst sizes, corruption, reordering and duplication rates, and the transmit queue length.
 
+</details>
+
 <details>
 <summary>Sources for this page</summary>
 
 - **Architecture:** TR 26.870 V0.6.1, annex B.1 and B.2. The figure is the architecture diagram of the 6G-Testbed repository, redrawn.
 - **Method:** TR 26.870 V0.6.1, annex C.2 and its NOTE. The bracketed principles are those of annex C.2, items 1 to 5.
 - **Scenarios:** TR 26.870 V0.6.1, table D.1.1 and clauses D.1.2.1 to D.1.2.12, including the Editor's Note in D.1.2.11.
-- **Scenario call flows:** TR 26.870 V0.6.1, clauses D.1.2.1, D.1.2.5, D.1.2.6, D.1.2.8 to D.1.2.10; figures redrawn from figures D.1.2.1-1, D.1.2.1-2, D.1.2.5-1, D.1.2.5-2, D.1.2.6-1, D.1.2.8-1, D.1.2.9-1 and D.1.2.10-1 to D.1.2.10-3.
+- **Scenario call flows:** TR 26.870 V0.6.1, clauses D.1.2.1 to D.1.2.6, D.1.2.8 to D.1.2.10; figures redrawn from figures D.1.2.1-1, D.1.2.1-2, D.1.2.2-1, D.1.2.3-1, D.1.2.4-1, D.1.2.5-1, D.1.2.5-2, D.1.2.6-1, D.1.2.8-1, D.1.2.9-1 and D.1.2.10-1 to D.1.2.10-3.
 - **From use cases to scenarios:** TR 26.870 V0.6.1, tables D.2.1.0-1 and D.2.2.0-1, clauses D.2.1.1 to D.2.2.9, and the Editor's Note in D.2.2.6.
 - **Network profiles:** TR 26.870 V0.6.1, clause D.3.1, table D.3.1-1 and its NOTEs.
 - **Network emulator:** TR 26.870 V0.6.1, annex E.1, E.2 (table 4.4.5-1), E.4 and its NOTE, E.5.
