@@ -21,6 +21,15 @@ export const NEWS_ITEM = { to: '/news', label: 'News', position: 'left' };
 // stand out with bolder, brand-colored text rather than blending in as just
 // another menu entry. Spacing between every item (including this cluster's
 // neighbors) is uniform — see .navGroup's `gap` in Navbar/Content/styles.module.css.
+// Solutions: a menu of the area pages (src/data/sectionNav.js SOLUTIONS_ITEMS), with no page of its own.
+// Navbar/Content and the mobile drawer render it themselves; it is never passed to NavbarItem.
+export const SOLUTIONS_ITEM = {
+  label: 'Solutions',
+  position: 'left',
+  solutionsMenu: true,
+  className: styles.primaryNavItem,
+};
+
 export const PROFILES_ITEM = {
   to: '/tech',
   label: 'Technology',
@@ -53,6 +62,7 @@ export function useNavbarItems() {
   return [
     ABOUT_ITEM,
     MEMBERSHIP_ITEM,
+    SOLUTIONS_ITEM,
     PROFILES_ITEM,
     FEEDBACK_ITEM,
     DEV_ITEM,

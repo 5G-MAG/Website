@@ -540,6 +540,13 @@
   width: 100%;
 }
 
+/* Left-aligned variant, for tiles that carry a paragraph of description
+   (e.g. a project's Application Showcase list) rather than a short line. */
+.community-tiles--left .community-tile {
+  align-items: flex-start;
+  text-align: left;
+}
+
 /* Fixed 3-column layout regardless of item count (e.g. 6 tiles -> 2 even
    rows of 3), for cases where community-tiles--even's auto-fit wrapping
    would otherwise split unevenly. Collapses on narrow screens. */

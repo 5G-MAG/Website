@@ -1,0 +1,183 @@
+// Showcases by basket: what a business can build, the spec features that realise it, and one tutorial.
+//
+// Three layers, kept apart (the page shows only the first two plus the tutorial link):
+//   - the showcase: the business use, as a headline and one paragraph;
+//   - `features`: the spec functionality that realises it, each with its implementation status as stated on the
+//     project's implementation page ('yes', 'partial' or 'no');
+//   - the tutorial: the one page that shows how to run it. Tools (AF, AS, Application Provider UI, Docker,
+//     Postman, a 5G network) belong inside the tutorial, never here.
+//
+// `status` is 'available' or 'early' for a topic's showcase. `pipeline` lists what else could be built (shown as
+// "Also possible"), with the feature each needs (`needs: null` when none is identified) and its Reference Tools status.
+
+export const FEATURE_STATUS = {
+  yes: 'implemented',
+  partial: 'partial',
+  no: 'not implemented',
+  early: 'early stage',
+  unknown: 'to be checked',
+};
+
+export const SHOWCASE_STATUS = {
+  available: 'Available',
+  early: 'Early stage',
+};
+
+const TUT = '/reference-tools/5gms/tutorials/';
+
+// Case titles and descriptions use the wording of the 5G-MAG Reference Tools presentation slides noted beside
+// each (slide numbers are for traceability; the source is not named on the site). Topic names use the industry
+// terms. Feature names follow 3GPP TS 26.501 V19.4.0 clause 4.0 ("Media Streaming features"); CMCD as the client
+// data format: TS 26.512 V19.3.0 clause 10.5.1; Release 20 topics as sourced on /tech/5gms/overview-amd
+// (SP-251265, SP-260973); Object Repair: TS 26.502 V18.6.0 clause 4.2.6.
+export const SHOWCASE_BASKETS = {
+  'content-delivery': {
+    basket: 'content-delivery', // taxonomy.json basket key: its title and icon head the page
+    heroDiagram: 'hero',
+    title: 'Content Delivery and Streaming',
+    headline: 'Better streaming services, end to end',
+    description:
+      'What you can build for content delivery and streaming: QoE and audience analytics, network-assisted streaming, CDN and edge delivery, with the spec features behind each and one tutorial to try it.',
+    lead:
+      'Media services may need more from networks than a bit pipe: insight into what viewers experience, help when the network can give it, delivery at scale, and a way to bring content in and keep it protected.\n\nEach showcase below starts from that problem, follows with the technology that supports a solution and what you can build with Reference Tools.',
+    topics: [
+      {
+        id: 'insight',
+        title: 'QoE and audience analytics',
+        diagram: 'insight',
+        showcase: {
+          title: 'The Media Player Is the Best Sensor of User Experience', // slide 13
+          about:
+            'Packet and server observations alone cannot fully reconstruct the player’s current experience. Players report QoE metrics and their consumption, and add CMCD key–value pairs, such as buffer state, playback rate and throughput estimate, to ordinary HTTP media requests.', // slides 13, 7
+          status: 'available',
+          features: [
+            { name: 'QoE metrics reporting', status: 'yes' }, // 4.0.9
+            { name: 'Consumption reporting', status: 'yes' }, // 4.0.8
+            { name: 'In-band client data reporting (CMCD)', status: 'yes' }, // 4.0.2, 5.13; TS 26.512 10.5.1
+          ],
+          tutorial: { label: 'QoE and Audience Analytics', to: `${TUT}#qoe-and-audience-analytics` }, // the three reporting tutorials
+        },
+        pipeline: [
+          { title: 'Client Metadata: From CMCD to Actionable Delivery Insight', needs: 'CMCD version 2 (Release 20, in progress)', status: 'no' }, // slide 14; AMD page
+          { title: 'Data collection, reporting and exposure framework', needs: 'Data collection, reporting and exposure', status: 'no' }, // slide 7; 4.0.12
+          { title: 'Measure Latency Against a Common Reference', needs: 'Latency measurement and control (Release 20, in progress)', status: 'no' }, // slide 15; AMD page
+          { title: 'Energy Information as an Additional Optimisation Input', needs: null }, // slide 19; not on /tech/5gms
+        ],
+      },
+      {
+        id: 'quality',
+        title: 'Network-assisted streaming',
+        diagram: 'network',
+        showcase: {
+          title: 'Network Assistance and Dynamic Policies', // slide 7
+          about:
+            'AF-based and ANBR-based assistance towards the client and the RAN, such as a short delivery boost when the buffer runs low; policy templates instantiated and provisioned through the PCF, one per quality tier (SD, HD, UHD).', // slide 7; 4.0.5, 4.0.6
+          status: 'early',
+          features: [
+            { name: 'Network assistance: delivery boost', status: 'yes' }, // 4.0.5
+            { name: 'Network assistance: bit rate recommendation', status: 'no' }, // 4.0.5
+            { name: 'Dynamic policies (5-tuple only)', status: 'partial' }, // 4.0.6
+          ],
+          tutorial: {
+            label: 'Network Assistance and Dynamic Policies',
+            to: `${TUT}network-assistance-and-dynamic-policies`,
+            inPreparation: true,
+          },
+        },
+        pipeline: [
+          { title: 'Improved QoS Support for Media Streaming: ECN and L4S', needs: 'Dynamic policies: ECN marking for L4S', status: 'no' }, // slide 8; 4.0.6
+          { title: 'QoS monitoring during a media streaming session', needs: 'Dynamic policies: QoS monitoring', status: 'no' }, // 4.0.6
+          { title: 'Background data transfer in off-peak windows', needs: 'Dynamic policies: Background Data Transfer', status: 'no' }, // 4.0.6
+          { title: 'Slice awareness', needs: 'Dynamic policies per Network Slice', status: 'no' }, // slide 12; 4.0.6, TS 26.510 5.2.7.1
+          { title: 'The Player Should Not Have to Rediscover a Known Limit', needs: 'In-band signalling of rate limits (Release 20, in progress)', status: 'no' }, // slide 16; AMD page
+        ],
+      },
+      {
+        id: 'cdn',
+        title: 'CDN and edge delivery',
+        diagram: 'cdn',
+        showcase: {
+          title: 'Content Hosting', // slide 7
+          about:
+            'Downlink media streaming with pull- and push-based content ingest: a service equivalent to a CDN, deployed inside or outside the mobile network, while the application keeps standard HTTP adaptive-streaming formats.', // slides 7, 5; 4.0.2
+          status: 'available',
+          features: [
+            {
+              name: 'Content hosting (no content preparation, edge resources, geo-fencing or URL signing)', // 4.0.2
+              status: 'partial',
+            },
+          ],
+          tutorial: { label: '5GMSd + 5G Network', to: `${TUT}end-to-end-with-5g` },
+        },
+        pipeline: [
+          { title: 'Media Delivery from Multiple Service Endpoints', needs: 'Multiple service locations: Content Steering, CMMF', status: 'early' }, // slide 9; 5.2.6
+          { title: 'Edge processing', needs: 'Edge processing', status: 'no' }, // slide 12; 4.0.10
+          { title: 'Distributing Encrypted and High-Value Content', needs: 'Content preparation with DRM', status: 'no' }, // slide 8; 4.0.4, 5.14
+          { title: 'Service URLs and deep links', needs: 'Service URL handling', status: 'no' }, // slide 12; 4.0.13
+          { title: 'One Media Service over Multiple Access Networks', needs: 'Multi-access media delivery (Release 20, in progress)', status: 'no' }, // slide 17; AMD page, TS 26.501 Annex H
+        ],
+      },
+    ],
+  },
+  'connected-media-production': {
+    basket: 'connected-media-production',
+    title: 'Connected Media Production',
+    topics: [
+      {
+        id: 'contribution',
+        title: 'Live contribution',
+        diagram: null,
+        showcase: null,
+        // The presentation covers downlink only; these use the industry and 3GPP terms.
+        pipeline: [
+          { title: 'Mobile contribution', needs: 'Content publishing (uplink)', status: 'no' }, // 4.0.3
+          { title: 'Network assistance for the contribution uplink', needs: 'Network assistance (uplink)', status: 'no' }, // 4.0.5
+          { title: 'From contribution to distribution', needs: 'Content publishing and content hosting', status: 'no' }, // 4.0.3, 4.0.2
+        ],
+      },
+    ],
+  },
+  '5g-broadcast': {
+    basket: '5g-broadcast',
+    title: 'Broadcast',
+    topics: [
+      {
+        id: 'hybrid',
+        icon: 'antenna-signal',
+        title: 'Hybrid broadcast and unicast delivery',
+        diagram: 'broadcast',
+        showcase: {
+          title: 'Broadcast What Is Common, Use Unicast Where Needed', // slide 18
+          about:
+            'Broadcast delivers what is common to all viewers; unicast handles what is individual, personalised, unavailable or interactive. An Android device plays a stream over 5G Broadcast and falls back to unicast when the broadcast signal is unavailable.', // slide 18; 5G Broadcast tutorial
+          status: 'early',
+          features: [
+            { name: 'Seamless switching between unicast and 5G Broadcast (Android)', status: 'yes' }, // 5G Broadcast Application Showcase
+          ],
+          tutorial: {
+            label: 'Seamless Switching between Unicast and Broadcast',
+            to: '/reference-tools/5g-broadcast/tutorials/android-mw-seamless-switching',
+          },
+        },
+        pipeline: [],
+      },
+    ],
+  },
+  multicast: {
+    basket: 'multicast',
+    title: 'Point-to-Multipoint Communication',
+    topics: [
+      {
+        id: 'converged',
+        icon: 'broadcast-waves',
+        title: 'Converged unicast and multicast delivery',
+        diagram: null,
+        showcase: null,
+        pipeline: [
+          { title: 'In-Session Unicast Repair for MBS/MBMS Object Distribution', needs: 'Object Repair (TS 26.502 clause 4.2.6)', status: 'unknown' }, // slide 8
+          { title: 'Broadcast What Is Common, Use Unicast Where Needed, over 5G MBS', needs: 'Combined unicast, multicast and broadcast delivery (Release 20, in progress)', status: 'no' }, // slide 18; AMD page
+        ],
+      },
+    ],
+  },
+};

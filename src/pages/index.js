@@ -18,16 +18,7 @@ import ReleaseCard from '@site/src/components/ReleaseCard';
 import { EventsAgendaPreview } from '@site/src/components/EventsAgenda';
 import { EVENTS_AGENDA } from '@site/src/data/eventsAgenda';
 import { NEWS_PREVIEW } from '@site/src/data/newsPreview';
-import {
-  ALL_PROJECTS as projectsData,
-  BASKETS,
-  BASKET_ACCENT,
-  ICON_CATALOG,
-  STAGE_GROUPS,
-  basketStageReach,
-  displayNameOf,
-  reposFor,
-} from '@site/src/data/baskets';
+import { ALL_PROJECTS as projectsData, BASKET_ACCENT, ICON_CATALOG, STAGE_GROUPS, basketStageReach, displayNameOf, reposFor, TOPIC_BASKETS } from '@site/src/data/baskets';
 import { sampleRandom } from '@site/src/utils/random';
 import { sortByLatestRelease } from '@site/src/utils/releases';
 import styles from './index.module.css';
@@ -82,7 +73,7 @@ function iconForCatalogKey(key) {
 // with no project past Under Study yet: an empty-looking row is itself
 // the invitation this section makes (see .standInvite below), not
 // something to filter out.
-const STAND_BASKETS = BASKETS.map((b) => {
+const STAND_BASKETS = TOPIC_BASKETS.map((b) => {
   const basketProjects = projectsData.filter((p) => p.basket === b.key);
   return {
     ...b,
@@ -304,8 +295,8 @@ export default function Home() {
           <div className={styles.homeSearchBox}>
             <SearchBar />
           </div>
-          <p className={styles.homeJumpLabel}>Or go straight to a technology area</p>
-          <BasketJumpRow />
+          <p className={styles.homeJumpLabel}>Or go straight to a solution</p>
+          <BasketJumpRow label="Solutions" />
         </div>
       </div>
 
@@ -488,7 +479,7 @@ export default function Home() {
                 </h2>
                 <p className={styles.releasesUpdated}>Updated: {releasesData.updated_at}</p>
               </div>
-              <Link className={styles.releasesViewAll} to="/community#projects">
+              <Link className={styles.releasesViewAll} to="/community/activity#projects">
                 View all releases &rarr;
               </Link>
             </div>

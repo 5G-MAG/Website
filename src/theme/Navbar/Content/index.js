@@ -14,7 +14,8 @@ import NavbarSearch from '@theme/Navbar/Search';
 import { GITHUB_ICON, SLACK_ICON, LINKEDIN_ICON, LOCK_ICON, SEARCH_ICON } from '../../socialIcons';
 import { SLACK_INVITE_URL, SOCIAL_LINKS } from '../../../data/socialLinks';
 import { useNavbarItems } from '../../navItems';
-import { SECTION_NAV, stripBaseUrl } from '../../../data/sectionNav';
+import { SECTION_NAV, SOLUTIONS_ITEMS, TECHNOLOGY_GROUPS, stripBaseUrl } from '../../../data/sectionNav';
+import { ICON_CATALOG } from '../../../data/baskets';
 import styles from './styles.module.css';
 
 // Same route-family concept as SectionNav's own matching (a section's pill
@@ -192,7 +193,9 @@ function SlidingIndicatorGroup({ items }) {
   const settleOnActive = () => {
     const container = containerRef.current;
     const sectionHref = resolveSectionHref(pathname);
+    const onAreaPage = SOLUTIONS_ITEMS.some((i) => matchesPrefix(pathname, i.href));
     const activeEl =
+      (onAreaPage ? container?.querySelector('[data-solutions-trigger]') : null) ??
       findLinkByHref(container, sectionHref, siteConfig.baseUrl) ??
       container?.querySelector('.navbar__link--active');
     const rect = measure(activeEl);
@@ -286,7 +289,7 @@ ${JSON.stringify(item, null, 2)}`,
 // the two aria-* keys) straight onto the underlying <Link>/<a>, so this
 // needs no swizzle of that component. `preview.subtitle` is optional (News
 // has none) so the paragraph is only rendered when there is one to show.
-function NavDropdownItem({ item, preview }) {
+function NavDropdownItem({ item, preview, groups }) {
   const [expanded, setExpanded] = useState(false);
   const link = renderNavbarItem({ ...item, 'aria-haspopup': 'true', 'aria-expanded': expanded });
   return (
@@ -300,24 +303,173 @@ function NavDropdownItem({ item, preview }) {
       }}
     >
       {link}
-      <div className={styles.navDropdownMenu} aria-label={`${preview.title} quick links`}>
-        {preview.subtitle && <p className={styles.navDropdownSubtitle}>{preview.subtitle}</p>}
-        {/* Same title-then-divider-then-items shape as PageNav's own
-            pill row (src/components/PageNav/index.js) — the trigger
-            link above this panel is easy to read as inert scaffolding
-            around a dropdown rather than a destination itself, so the
-            hub page needs its own explicit entry, set apart from the
-            sub-page list below it. */}
-        <ul className={styles.navDropdownList}>
-          <li>
-            <Link to={preview.titleHref} className={styles.navDropdownOverview}>
-              {preview.title}
-            </Link>
-          </li>
-          <li className={styles.navDropdownDivider} aria-hidden="true" />
-          {preview.items.map((sub) => (
+      <div
+        className={clsx(styles.navDropdownMenu, groups ? styles.navMegaMenu : styles.navAreasMenu, !groups && preview.items.length <= 4 && styles.navAreasMenuNarrow)}
+        aria-label={`${preview.title} quick links`}
+      >
+        {!groups && (
+          <>
+            <SectionHeadCard title={preview.menuTitle || preview.title} subtitle={preview.subtitle} href={preview.titleHref} icon={SECTION_ICONS[preview.titleHref]} />
+            {/* `featured` entries (the section's main destinations, solid chips in its pill row) come
+                first as larger cards; the rest follow as icon rows. */}
+            {preview.items.some((sub) => sub.featured) && (
+              <ul className={styles.navFeatured}>
+                {preview.items.filter((sub) => sub.featured).map((sub) => (
+                  <li key={sub.href}>
+                    <Link to={sub.href} className={styles.navFeaturedCard}>
+                      <span className={clsx(styles.navAreaIcon, styles.navHeadIcon)}><NavItemIcon href={sub.href} size={20} /></span>
+                      {sub.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+            <ul className={clsx(styles.navAreaGrid, preview.items.length <= 4 && styles.navAreaGridSingle)}>
+              {preview.items.filter((sub) => !sub.featured).map((sub) => (
+                <li key={sub.href}>
+                  <Link to={sub.href} className={styles.navAreaLink}>
+                    <span className={styles.navAreaIcon}><NavItemIcon href={sub.href} /></span>
+                    {sub.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+        {groups && <SectionHeadCard title={preview.menuTitle || preview.title} subtitle={preview.subtitle} href={preview.titleHref} icon={SECTION_ICONS[preview.titleHref]} />}
+        {groups && (
+          <div className={styles.navMegaGroups}>
+            {groups.map((g) => (
+              <div key={g.title} className={styles.navMegaCard} style={{ '--accent': g.accent }}>
+                <Link to={g.href} className={styles.navMegaArea}>
+                  <span className={styles.navAreaIcon}><CatalogIcon name={g.icon} size={17} /></span>
+                  {g.title}
+                </Link>
+                <ul className={styles.navMegaList}>
+                  {g.items.map((sub) => (
+                    <li key={sub.href}>
+                      <Link to={sub.href}>
+                        <CatalogIcon name={sub.icon} size={16} />
+                        {sub.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </span>
+  );
+}
+
+// An icon from the taxonomy catalog (the same shapes the area and project pages use), or raw path data.
+function CatalogIcon({ name, paths, size = 16 }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={size} height={size} fill="none" stroke="currentColor"
+      strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      {(paths || ICON_CATALOG[name] || []).map((d) => <path key={d} d={d} />)}
+    </svg>
+  );
+}
+
+// Icons for the section dropdowns' entries, by destination: a catalog name where the destination
+// already uses one (Testbeds' flask, the 5G Broadcast antenna), else Tabler-style line paths, the set
+// the destination hub pages use (Reference Tools' </>, Showcases' grid).
+const NAV_ITEM_ICONS = {
+  '/reference-tools': ['M7 8l-4 4l4 4', 'M17 8l4 4l-4 4', 'M14 4l-4 16'],
+  '/testbeds': 'flask',
+  '/showcase': ['M4.5 16.5c-1.5 1.26 -2 5 -2 5s3.74 -.5 5 -2c.71 -.84 .7 -2.13 -.09 -2.91a2.18 2.18 0 0 0 -2.91 -.09z', 'M12 15l-3 -3a22 22 0 0 1 2 -3.95a12.88 12.88 0 0 1 10 -5.93c0 2.72 -.78 7.5 -6 11a22.35 22.35 0 0 1 -4 2z', 'M9 12h-4s.55 -3.03 2 -4c1.62 -1.08 5 0 5 0', 'M12 15v5s3.03 -.55 4 -2c1.08 -1.62 0 -5 0 -5'],
+  '/community': ['M5 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0', 'M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2', 'M16 3.13a4 4 0 0 1 0 7.75', 'M21 21v-2a4 4 0 0 0 -3 -3.85'],
+  '/license': ['M14 3v4a1 1 0 0 0 1 1h4', 'M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z', 'M9 13l6 0', 'M9 17l6 0'],
+  '/early-access': ['M7 14a4 4 0 1 1 0 -8a4 4 0 0 1 0 8', 'M11 10h10', 'M18 10v3', 'M21 10v2'],
+  '/developer/exchanges': ['M3 4l18 0', 'M4 4v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-10', 'M12 16l0 4', 'M9 20l6 0', 'M8 12l3 -3l2 2l3 -3'],
+  '/standards/requirements': ['M3.5 5.5l1.5 1.5l2.5 -2.5', 'M3.5 11.5l1.5 1.5l2.5 -2.5', 'M3.5 17.5l1.5 1.5l2.5 -2.5', 'M11 6l9 0', 'M11 12l9 0', 'M11 18l9 0'],
+  '/surveys': ['M3 13a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z', 'M15 9a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z', 'M9 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z'],
+  '/standards#feedback': ['M8 9h8', 'M8 13h6', 'M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12z'],
+  '/ls': ['M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z', 'M3 7l9 6l9 -6'],
+  '/workshops': ['M3 4l18 0', 'M4 4v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-10', 'M12 16l0 4', 'M9 20l6 0', 'M8 12l3 -3l2 2l3 -3'],
+  '/action/5g-broadcast-plugfest': 'antenna-signal',
+  '/action#demonstrators': ['M7 4v16l13 -8l-13 -8'],
+  '/podcast': ['M9 5a3 3 0 0 1 6 0v5a3 3 0 0 1 -6 0z', 'M5 10a7 7 0 0 0 14 0', 'M8 21l8 0', 'M12 17l0 4'],
+  '/magazine': ['M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0', 'M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0', 'M3 6l0 13', 'M12 6l0 13', 'M21 6l0 13'],
+};
+
+// Each section's own hub-page icon (the HubHero icon on /tech, /standards, /developer, /action, /news),
+// shown on that section's header card at the top of its dropdown.
+const SECTION_ICONS = {
+  '/tech': ['M14 3v4a1 1 0 0 0 1 1h4', 'M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2', 'M9 17l0 -5', 'M12 17l0 -1', 'M15 17l0 -3'],
+  '/standards': ['M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1'],
+  '/developer': ['M7 8l-4 4l4 4', 'M17 8l4 4l-4 4', 'M14 4l-4 16'],
+  '/action': ['M7 12l5 5l-1.5 1.5a3.536 3.536 0 1 1 -5 -5l1.5 -1.5', 'M17 12l-5 -5l1.5 -1.5a3.536 3.536 0 1 1 5 5l-1.5 1.5', 'M3 21l2.5 -2.5', 'M18.5 5.5l2.5 -2.5', 'M10 11l-2 2', 'M13 14l-2 2'],
+  '/news': ['M16 6h3a1 1 0 0 1 1 1v11a2 2 0 0 1 -4 0v-13a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1v12a3 3 0 0 0 3 3h11', 'M8 8l4 0', 'M8 12l4 0', 'M8 16l4 0'],
+};
+
+// Solutions has no hub page and no icon of its own: its header card uses a lightbulb (what you can
+// build), a shape no other section uses.
+const SOLUTIONS_ICON = ['M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7', 'M9 16a5 5 0 1 1 6 0a3.5 3.5 0 0 0 -1 3a2 2 0 0 1 -4 0a3.5 3.5 0 0 0 -1 -3', 'M9.7 17l4.6 0'];
+
+// The header card: the section's icon, name and one-line description. It links to the section's
+// hub page when there is one (`href`), and is plain text otherwise (Solutions).
+function SectionHeadCard({ title, subtitle, href, icon }) {
+  const body = (
+    <>
+      <span className={clsx(styles.navAreaIcon, styles.navHeadIcon)}>
+        <CatalogIcon paths={icon} size={20} />
+      </span>
+      <span className={styles.navHeadText}>
+        <b>{title}</b>
+        {subtitle && <small>{subtitle}</small>}
+      </span>
+      {href && <span className={styles.navHeadArrow} aria-hidden="true">→</span>}
+    </>
+  );
+  return href ? (
+    <Link to={href} className={styles.navHeadCard}>{body}</Link>
+  ) : (
+    <div className={clsx(styles.navHeadCard, styles.navHeadStatic)}>{body}</div>
+  );
+}
+
+function NavItemIcon({ href, size = 18 }) {
+  const icon = NAV_ITEM_ICONS[href];
+  if (!icon) return null;
+  return typeof icon === 'string' ? <CatalogIcon name={icon} size={size} /> : <CatalogIcon paths={icon} size={size} />;
+}
+
+// Solutions has no page of its own: its trigger is a button that only opens the
+// list of area pages, in the same flyout the pillar items use.
+function SolutionsMenu({ item }) {
+  const [expanded, setExpanded] = useState(false);
+  return (
+    <span
+      className={styles.navDropdownWrapper}
+      onMouseEnter={() => setExpanded(true)}
+      onMouseLeave={() => setExpanded(false)}
+      onFocus={() => setExpanded(true)}
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget)) setExpanded(false);
+      }}
+    >
+      <button
+        type="button"
+        data-solutions-trigger
+        className={clsx('navbar__item navbar__link clean-btn', item.className)}
+        aria-haspopup="true"
+        aria-expanded={expanded}
+      >
+        {item.label}
+      </button>
+      <div className={clsx(styles.navDropdownMenu, styles.navAreasMenu)} aria-label="Solutions">
+        <SectionHeadCard title="Areas" subtitle="What you can build, area by area." icon={SOLUTIONS_ICON} />
+        <ul className={styles.navAreaGrid}>
+          {SOLUTIONS_ITEMS.map((sub) => (
             <li key={sub.href}>
-              <Link to={sub.href}>{sub.label}</Link>
+              <Link to={sub.href} className={styles.navAreaLink} style={{ '--accent': sub.accent }}>
+                <span className={styles.navAreaIcon}><CatalogIcon name={sub.icon} size={18} /></span>
+                {sub.label}
+              </Link>
             </li>
           ))}
         </ul>
@@ -330,9 +482,12 @@ function NavbarItems({ items }) {
   return (
     <>
       {items.map((item, i) => {
+        if (item.solutionsMenu) return <SolutionsMenu key={i} item={item} />;
         const preview = NAV_DROPDOWNS.get(item.to);
         if (!preview) return <React.Fragment key={i}>{renderNavbarItem(item)}</React.Fragment>;
-        return <NavDropdownItem key={i} item={item} preview={preview} />;
+        return (
+          <NavDropdownItem key={i} item={item} preview={preview} groups={item.to === '/tech' ? TECHNOLOGY_GROUPS : null} />
+        );
       })}
     </>
   );

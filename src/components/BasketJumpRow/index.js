@@ -1,6 +1,6 @@
 import Link from '@docusaurus/Link';
 import { iconForCatalogKey } from '@site/src/components/ProjectStatus';
-import { BASKET_ACCENT, WHERE_WE_STAND_ROWS } from '@site/src/data/baskets';
+import { BASKET_ACCENT, BASKET_PAGE, WHERE_WE_STAND_ROWS } from '@site/src/data/baskets';
 import styles from './styles.module.css';
 
 // One tile per Where We Stand basket (icon on the basket's accent, name,
@@ -29,7 +29,8 @@ export default function BasketJumpRow({ inPage = false, label = 'Technology area
             {body}
           </a>
         ) : (
-          <Link key={b.key} to={`/tech#${b.key}`} className={styles.tile} style={style}>
+          // Outside /tech, a tile opens the area's Solutions page (its block on /tech if it has none).
+          <Link key={b.key} to={BASKET_PAGE[b.key] || `/tech#${b.key}`} className={styles.tile} style={style}>
             {body}
           </Link>
         );

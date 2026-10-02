@@ -1,16 +1,15 @@
-/* Nine tiles in one row where the container allows it, 3 x 3 below that:
-   9 does not divide into 2, 4 or 5 columns without leaving one tile alone
-   on the last line. */
+/* Eight tiles (the topic areas, TOPIC_BASKETS) in one row where the
+   container allows it, 4 x 2 below that, so no line is left part-empty. */
 .row {
   display: grid;
-  grid-template-columns: repeat(9, minmax(0, 1fr));
+  grid-template-columns: repeat(8, minmax(0, 1fr));
   gap: 0.6rem;
   margin: 1.5rem 0 2.25rem;
 }
 
 @media (max-width: 1100px) {
   .row {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 

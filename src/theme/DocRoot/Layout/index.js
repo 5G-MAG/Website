@@ -1,7 +1,6 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import { useDocsSidebar } from '@docusaurus/plugin-content-docs/client';
 import { prefersReducedMotion } from '@docusaurus/theme-common';
-import BackToTopButton from '@theme/BackToTopButton';
 import DocRootLayoutSidebar from '@theme/DocRoot/Layout/Sidebar';
 import DocRootLayoutMain from '@theme/DocRoot/Layout/Main';
 import SidebarToggleContext from './SidebarToggleContext';
@@ -44,7 +43,6 @@ export default function DocRootLayout({ children }) {
   return (
     <SidebarToggleContext.Provider value={sidebarToggleValue}>
       <div className={styles.docsWrapper}>
-        <BackToTopButton />
         <div className={styles.docRoot}>
           {sidebar && (
             <DocRootLayoutSidebar

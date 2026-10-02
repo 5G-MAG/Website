@@ -52,10 +52,26 @@ import releasesData from '../../static/data/releases.json';
 
 export const BASKETS = taxonomyData.baskets;
 
+// The baskets shown as technology topics and Solutions areas. Testbeds & Evaluation Frameworks is a
+// basket in the data, but it is its own section of the site (/testbeds), not a topic.
+export const TOPIC_BASKETS = BASKETS.filter((b) => b.key !== 'testbeds');
+
 // Accent color per basket -- originally Where We Stand's own chart-row
 // color (src/pages/tech/index.js), lifted here as the single source once
 // the Reference Tools and Testbeds project cards started reading it too,
 // so the three pages can't drift apart on what a basket's color is.
+// Each area's own page (Solutions in the top bar): what you can build there and the projects behind it.
+export const BASKET_PAGE = {
+  'content-delivery': '/content-delivery-and-streaming',
+  'rtc': '/real-time-communications',
+  '5g-broadcast': '/broadcast',
+  'multicast': '/point-to-multipoint',
+  'ntn': '/non-terrestrial-networks',
+  'immersive-media': '/immersive-media',
+  'connected-media-production': '/connected-media-production',
+  'towards-6g': '/towards-6g-media',
+};
+
 export const BASKET_ACCENT = {
   'content-delivery': '#00a0d2',
   '5g-broadcast': '#e07b1a',
@@ -154,7 +170,7 @@ export const PROJECTS = ALL_PROJECTS.filter((p) => p.basket);
 // `tech_url`, so the chart shows the same stage as the homepage card rather
 // than borrowing a project from another basket. Shared so the jump tiles
 // above the chart and on the homepage count what the chart shows.
-export const WHERE_WE_STAND_ROWS = BASKETS.map((b) => {
+export const WHERE_WE_STAND_ROWS = TOPIC_BASKETS.map((b) => {
   const projects = PROJECTS.filter((p) => p.stages && p.basket === b.key);
   const areaRow =
     projects.length === 0 && b.stages

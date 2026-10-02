@@ -7,6 +7,10 @@
  * (custom src/pages/*.js pages and every docs plugin's pages alike),
  * right below the main navbar, computed from the current route. See
  * src/components/SectionNav for the route -> nav-items resolution.
+ *
+ * <BackToTopButton /> is mounted here too, so every page gets the floating
+ * back-to-top button, not only docs pages (the stock DocRoot layout is
+ * where Docusaurus puts it; DocRoot/Layout no longer renders its own copy).
  */
 import React from 'react';
 import clsx from 'clsx';
@@ -18,6 +22,7 @@ import Navbar from '@theme/Navbar';
 import Footer from '@theme/Footer';
 import LayoutProvider from '@theme/Layout/Provider';
 import ErrorPageContent from '@theme/ErrorPageContent';
+import BackToTopButton from '@theme/BackToTopButton';
 import SectionNav from '@site/src/components/SectionNav';
 import styles from './styles.module.css';
 
@@ -58,6 +63,8 @@ export default function Layout(props) {
       </div>
 
       {!noFooter && <Footer />}
+
+      <BackToTopButton />
     </LayoutProvider>
   );
 }

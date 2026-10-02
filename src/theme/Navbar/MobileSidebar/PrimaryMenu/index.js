@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavbarMobileSidebar } from '@docusaurus/theme-common/internal';
 import NavbarItem from '@theme/NavbarItem';
 import { useNavbarItems, MOBILE_GLOBAL_ITEMS } from '../../../navItems';
-import { SECTION_NAV } from '../../../../data/sectionNav';
+import { SECTION_NAV, SOLUTIONS_ITEMS } from '../../../../data/sectionNav';
 
 // Docusaurus's stock PrimaryMenu reads items straight from
 // useThemeConfig().navbar.items (a static config array) — since the
@@ -38,7 +38,20 @@ export default function NavbarMobilePrimaryMenu() {
           // produced invalid nested-<li> markup. The subtitle instead gets
           // its own sibling <li>, both direct children of this <ul>.
           <React.Fragment key={i}>
-            <NavbarItem mobile {...item} onClick={() => mobileSidebar.toggle()} />
+            {item.solutionsMenu ? (
+              // Solutions has no page: a heading, then its area pages as indented links.
+              <>
+                <li className="menu__list-item">
+                  <span className={`menu__link ${item.className || ''}`}>{item.label}</span>
+                </li>
+                {SOLUTIONS_ITEMS.map((sub) => (
+                  <NavbarItem key={sub.href} mobile to={sub.href} label={sub.label}
+                    className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
+                ))}
+              </>
+            ) : (
+              <NavbarItem mobile {...item} onClick={() => mobileSidebar.toggle()} />
+            )}
             {subtitle && (
               <li className="menu__list-item">
                 <p

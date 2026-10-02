@@ -1,4 +1,4 @@
-import { BASKETS } from './baskets';
+import { TOPIC_BASKETS, BASKET_PAGE, BASKET_ACCENT, PROJECTS, displayNameOf } from './baskets';
 import { ALL_TOPICS } from '../../techTopics.js';
 
 // Canonical per-section nav items, keyed by the route prefix(es) they
@@ -50,7 +50,23 @@ export function stripBaseUrl(pathname, baseUrl) {
 // menu can't drift from what those actually show. Each links to that
 // basket's own anchor on /tech (tech/index.js's basketBlock carries
 // id={b.key}).
-const TECHNOLOGY_ITEMS = BASKETS.map((b) => ({ label: b.title, href: `/tech#${b.key}` }));
+const TECHNOLOGY_ITEMS = TOPIC_BASKETS.map((b) => ({ label: b.title, href: `/tech#${b.key}` }));
+
+// The Technology mega menu: every project with its own page, grouped under its area (taxonomy order).
+// An area with no project yet but its own page (Towards 6G Media) lists that page instead.
+export const TECHNOLOGY_GROUPS = TOPIC_BASKETS.map((b) => {
+  const items = PROJECTS.filter((p) => p.basket === b.key && p.tech_url).map((p) => ({ label: displayNameOf(p), href: p.tech_url, icon: p.icon }));
+  return {
+    title: b.title,
+    href: `/tech#${b.key}`,
+    icon: b.icon,
+    accent: BASKET_ACCENT[b.key],
+    items: items.length ? items : b.tech_url ? [{ label: b.title, href: b.tech_url, icon: b.icon }] : [],
+  };
+}).filter((g) => g.items.length);
+
+// The area pages, in taxonomy order: the Solutions menu and the Solutions bar on each area page.
+export const SOLUTIONS_ITEMS = TOPIC_BASKETS.map((b) => ({ label: b.title, href: BASKET_PAGE[b.key], icon: b.icon, accent: BASKET_ACCENT[b.key] })).filter((i) => i.href);
 
 // Every per-topic Standards doc's own URL, derived from techTopics.js's
 // ALL_TOPICS (2026-09-27: was a hand-listed array here, and had silently
@@ -106,6 +122,8 @@ export const SECTION_NAV = [
       '/license',
     ],
     title: 'Software Accelerator',
+    // The full name, shown on the header card inside the top bar's dropdown only.
+    menuTitle: 'Media Connectivity Software Accelerator',
     titleHref: '/developer',
     subtitle: 'Open-source developer community.',
     // Reference Tools / Testbeds / Showcases are this section's three real
@@ -127,6 +145,7 @@ export const SECTION_NAV = [
       { label: 'Testbeds', href: '/testbeds', featured: true },
       { label: 'Showcases', href: '/showcase', featured: true },
       { label: 'Developer Community', href: '/community' },
+      { label: 'Community Activity', href: '/community/activity' },
       { label: 'License', href: '/license' },
       { label: 'Early Access', href: '/early-access' },
       { label: 'Developer Exchanges', href: '/developer/exchanges' },
@@ -143,6 +162,12 @@ export const SECTION_NAV = [
       { label: 'Dev Public Call', href: '/public-call' },
       { label: 'Technology Exchange', href: '/tech/exchanges' },
     ],
+  },
+  {
+    // Solutions has no hub page of its own: its bar title is plain text, and the top-bar item is a menu.
+    prefixes: Object.values(BASKET_PAGE),
+    title: 'Solutions',
+    items: SOLUTIONS_ITEMS,
   },
   {
     prefixes: ['/tech'],

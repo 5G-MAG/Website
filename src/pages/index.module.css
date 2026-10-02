@@ -283,21 +283,30 @@
    axis header naming 4 color segments once, tried first, still read as
    "meaningless" once a viewer reached an unlabeled row (raised
    directly). */
+/* Three cards per row (two, then one, on narrower screens); a short last
+   row is centred rather than left-aligned. */
 .standGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  --stand-cols: 3;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
+}
+
+.standGrid > * {
+  flex: 0 0 calc((100% - (var(--stand-cols) - 1) * 1rem) / var(--stand-cols));
+  min-width: 0;
 }
 
 @media (max-width: 900px) {
   .standGrid {
-    grid-template-columns: repeat(2, 1fr);
+    --stand-cols: 2;
   }
 }
 
 @media (max-width: 600px) {
   .standGrid {
-    grid-template-columns: 1fr;
+    --stand-cols: 1;
   }
 }
 
