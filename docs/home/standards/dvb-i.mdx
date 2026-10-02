@@ -23,11 +23,11 @@ import { DVBI_SPECS, DVBI_LAYER_ORDER } from '@site/src/data/specs/dvb-i';
 
 5G-MAG monitors and contributes to work on DVB-I service delivery over 5G systems. DVB-I (Digital Video Broadcasting - Internet) defines mechanisms for internet-connected devices to discover and access sets of linear TV services delivered over broadband or broadcast networks, together with the associated programme metadata. For the technical analysis of DVB-I service discovery and its deployment over 5G, see the Tech page linked below.
 
-The DVB / 5G-MAG Joint Task Force documented DVB-I deployment over 5G in DVB A178, published as ETSI TR 103 972.
+The DVB / 5G-MAG Joint Task Force documented DVB-I deployment over 5G in ETSI TR 103 972.
 
 5G-MAG follows the DVB / 5G-MAG Joint Task Force output and the downstream work in 3GPP and ETSI. The practical focus areas are:
 
-- Tracking the recommended specification changes from A178 as they are taken up in DVB, 3GPP SA4, and ETSI JTC Broadcast.
+- Tracking the recommended specification changes from TR 103 972 as they are taken up in DVB, 3GPP SA4, and ETSI JTC Broadcast.
 - Interoperability between DVB-I discovery and 3GPP service announcement on the broadcast path.
 
 ## Specifications in scope
@@ -37,7 +37,7 @@ DVB publishes a specification as a numbered "BlueBook" (for example DVB A177), w
 | DVB BlueBook | ETSI publication | Topic                                                         |
 | ------------ | ---------------- | ------------------------------------------------------------- |
 | DVB A177     | ETSI TS 103 770  | Service Discovery and Programme Metadata for DVB-I            |
-| DVB A178     | ETSI TR 103 972  | DVB-I service delivery over 5G Systems; Deployment Guidelines |
+| None (dvb.org lists it as TR 103 972) | ETSI TR 103 972 | DVB-I service delivery over 5G Systems; Deployment Guidelines |
 
 The specifications in scope, filterable by the layer they define: the DVB and ETSI service-discovery and deployment documents, the DVB delivery formats, and the 3GPP 5G transport (the unicast path is 5G Media Streaming, in the 26-series owned by SA4 media codecs and formats; the multicast/broadcast path is the 5G Multicast Broadcast Services user-service architecture, alongside the LTE-based broadcast profile published by ETSI). Search matches the specification number, its title and any scope note.
 
@@ -48,7 +48,7 @@ The specifications in scope, filterable by the layer they define: the DVB and ET
 | Role in DVB-I over 5G                    | Specification(s)                                                          |
 | ---------------------------------------- | ------------------------------------------------------------------------- |
 | Service discovery and programme metadata | DVB A177 / ETSI TS 103 770                                                |
-| Deployment guidance for 5G               | DVB A178 / ETSI TR 103 972                                                |
+| Deployment guidance for 5G               | ETSI TR 103 972                                                           |
 | Commercial requirements input            | DVB C100 (Commercial Requirements for DVB-I over 5G)                      |
 | Unicast media format                     | DVB-DASH (ETSI TS 103 285), profiling MPEG-DASH (ISO/IEC 23009-1)         |
 | Multicast media delivery                 | DVB-MABR (ETSI TS 103 769)                                                |
@@ -60,21 +60,21 @@ The specifications in scope, filterable by the layer they define: the DVB and ET
 
 DVB-I over 5G spans three standards bodies, so there is no single release line. The dependencies track as follows:
 
-- **DVB**: A177 (published in successive revisions as ETSI TS 103 770) is the stable service-discovery base; A178 (ETSI TR 103 972 V1.1.1, 2023) is a technical report rather than a normative specification, so it records guidance and gaps rather than mandating behaviour. The commercial input came from DVB C100 (2021).
+- **DVB**: A177 (published in successive revisions as ETSI TS 103 770) is the stable service-discovery base; ETSI TR 103 972 V1.1.1 (2023) is a technical report rather than a normative specification, so it records guidance and gaps rather than mandating behaviour. The commercial input came from DVB C100 (2021).
 - **3GPP SA4**: the 5GMS architecture (TS 26.501) was introduced in Release 16 and has been extended in later releases; the MBS user-service work (TS 26.502) and the underlying system architecture (TS 23.247) were introduced in Release 17 and continue to evolve.
 - **ETSI JTC Broadcast**: the LTE-based 5G Broadcast profile (TS 103 720) has been aligned to successive 3GPP releases, with work items updating it toward Release 18 and Release 19.
 
-Because A178 is a technical report, its main output is a set of recommended changes to specifications owned by DVB, 3GPP and ETSI; the follow-up happens in those bodies rather than in a single DVB-I-over-5G specification.
+Because TR 103 972 is a technical report, its main output is a set of recommended changes to specifications owned by DVB, 3GPP and ETSI; the follow-up happens in those bodies rather than in a single DVB-I-over-5G specification.
 
 ## Delivery over 5G
 
-DVB A178 (ETSI TR 103 972) maps the commercial requirements for DVB-I over 5G (captured in DVB BlueBook C100, the DVB commercial-requirements document) into a reference architecture and deployment guidance covering three service scenarios:
+ETSI TR 103 972 maps the commercial requirements for DVB-I over 5G (captured in DVB BlueBook C100, the DVB commercial-requirements document) into a reference architecture and deployment guidance covering three service scenarios:
 
 | Mode                | Bearer                     | Typical use                                                                 |
 | ------------------- | -------------------------- | --------------------------------------------------------------------------- |
 | Unicast             | 5G Media Streaming (5GMS)  | On-demand and linear services delivered per device over broadband 5G        |
 | Broadcast           | LTE-based 5G Broadcast     | One-way, wide-area linear TV and radio to many devices                      |
-| Concurrent / hybrid | Both 5GMS and 5G Broadcast | The same service over both bearers, or hybrid DVB-I services combining them |
+| Concurrent / hybrid | 5G Broadcast and ordinary unicast | The same service over both bearers, or hybrid DVB-I services combining them |
 
 The report also records gaps identified in existing specifications under the control of DVB, 3GPP and ETSI. For the reference architecture and scenario-by-scenario detail, see [Tech: DVB-I Services over 5G](/tech/dvb-i).
 

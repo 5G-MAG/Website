@@ -34,18 +34,11 @@ export const DVBI_SPECS = [
     note: 'ETSI-published form of DVB A177',
   },
   {
-    id: 'DVB A178',
-    title: 'DVB-I service delivery over 5G Systems; Deployment Guidelines',
-    url: 'https://dvb.org/?standard=dvb-i-service-delivery-over-5g-systems-deployment-guidelines',
-    layer: 'DVB / ETSI',
-    note: 'broader 5G delivery guidance for DVB-I, not limited to 5G Broadcast; published as ETSI TR 103 972',
-  },
-  {
     id: 'ETSI TR 103 972',
     title: 'DVB-I service delivery over 5G Systems; Deployment Guidelines',
     url: 'https://www.etsi.org/deliver/etsi_tr/103900_103999/103972/',
     layer: 'DVB / ETSI',
-    note: 'ETSI-published form of DVB A178; produced by the DVB / 5G-MAG Joint Task Force',
+    note: 'informative report by the DVB / 5G-MAG Joint Task Force; listed on dvb.org without a BlueBook number',
   },
   {
     id: 'ETSI TS 103 285',
