@@ -166,14 +166,13 @@ export const SHOWCASE_BASKETS = {
   'towards-6g': {
     basket: 'towards-6g',
     title: 'Towards 6G Media',
-    headline: 'Measured traffic for 6G media',
+    headline: 'Media for 6G, at the study stage',
+    heroDiagram: 'sixg',
     description:
-      'What you can build towards 6G media: characterise the traffic of AI media services with the testbed 3GPP SA4 uses for its 6G media study, TR 26.870.',
-    // TR 26.870 V0.6.1 clauses 6.3.3.1 and C.1
+      'Media for 6G in 3GPP: the SA4 study on media aspects for 6G (TR 26.870), its work topics, and the measured traffic of AI media services.',
+    // TR 26.870 V0.6.1: Introduction, clause 1 and the work topics of clause 6
     lead:
-      'The design of 6G radio and system is expected to be impacted by emerging and new traffic types. AI media services are one of them.\n\n3GPP SA4 characterises their traffic for its 6G media study with a testbed: AI service scenarios run over emulated network conditions, and their traffic is captured and measured.',
-    // The testbed lives in the Testbeds basket; it is listed here too, as the area's work today.
-    relatedProjects: ['AI Traffic Characterization'],
+      'Media for 6G is at the study stage in 3GPP. The SA4 study, TR 26.870, identifies media-related opportunities and gaps in the context of 6G, to improve existing services and support new ones.\n\nIts work topics range from the media delivery architecture and 6G media to media for ubiquitous access, trusted and private communication, software and asset management, and real-time communication. Its conclusions will form the basis for further studies and normative work.',
     topics: [
       {
         id: 'ai-traffic',
