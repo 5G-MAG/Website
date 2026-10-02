@@ -3,7 +3,7 @@ hide_title: true
 sidebar_class_name: project-index-link
 title: UE Data Collection, Reporting and Event Exposure
 sidebar_position: -1
-description: Introduces the UE Data Collection, Reporting and Event Exposure project (3GPP TS 26.531/26.532), linking to implementation detail, repos and tutorials.
+description: The data collection Reference Tools, what they implement against TS 26.531 and TS 26.532, and links to the repositories and tutorials.
 ---
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import ProjectContributors from '@site/src/components/ProjectContributors';
@@ -12,6 +12,7 @@ import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { REPO_METADATA } from '@site/src/data/baskets';
 import ProjectSlide from '@site/src/components/ProjectSlide';
+import FigurePair from '@site/src/components/FigurePair';
 
 export const REPO_COUNT = (REPO_METADATA['data-collection'] || []).length;
 
@@ -31,14 +32,34 @@ export const REPO_COUNT = (REPO_METADATA['data-collection'] || []).length;
 </div>
 
 <ProjectSlide image="/assets/images/projects/data-collection-reference-tools.png" alt="UE Data Collection, Reporting and Event Exposure: Reference Tools slide">
-
-The tools enable 5G devices to collect, aggregate, and report media performance metrics (playback quality, buffer events, network conditions, and consumption data) to the 5G Media Streaming Application Function (AF). This data feeds network-assisted Quality of Experience (QoE) optimisation, analytics dashboards, and adaptive policy decisions. For the DCAF architecture, reference-point APIs and deployment diagrams, see [Implementation Detail](./implementation).
-
+The tools provide the Data Collection AF: a library and a standalone Application Function that serve provisioning (R1), data reporting (R2 to R4) and event exposure (R5, R6), against Release 18 ([TS 26.531](https://www.3gpp.org/dynareport/26531.htm), [TS 26.532](https://www.3gpp.org/dynareport/26532.htm)). Its integration with 5G Media Streaming is in progress on an unmerged branch. For each feature and component, see [Implementation Detail](./implementation).
 </ProjectSlide>
 
 ## What's Built
 
-**{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
+<FigurePair
+  figures={[
+    {
+      label: 'Generic architecture',
+      src: '/img/tech/data-collection/generated/ts26531-fig4.2-1-status.svg',
+      width: 1049, height: 1054,
+      title: 'Data collection reference architecture, with Reference Tools status',
+      source: 'Based on TS 26.531 V19.0.0, figure 4.2-1; status against TS 26.532 V18.3.0',
+      alt: 'The generic data collection architecture. The Data Collection AF is provided by rt-data-collection-application-function. R1 to R6 need fixes; R7 and N33 are not implemented; no Direct or Indirect Data Collection Client is provided.',
+    },
+    {
+      label: 'In 5G Media Streaming',
+      src: '/img/tech/data-collection/generated/ts26501-fig4.7.1-1-status.svg',
+      width: 1200, height: 908,
+      title: 'Data collection in 5G Media Streaming, with Reference Tools status',
+      source: 'Based on TS 26.501 V19.4.0, figure 4.7.1-1; status of the development branches',
+      alt: 'The 5GMS instantiation. The 5GMS components are provided, but the Data Collection AF inside the 5GMS AF is not. Metrics and consumption collection are implemented in the Media Session Handler, M1 and M5 are partial, and R2, R4, R5 and R6 are not implemented.',
+    },
+  ]}
+  note="Click a figure to enlarge it."
+/>
+
+For each feature and component, see [Implementation Detail](/reference-tools/data-collection/implementation).
 
 <div class="godeeper-grid" style={{gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))'}}>
 
@@ -58,13 +79,13 @@ The tools enable 5G devices to collect, aggregate, and report media performance 
 <h3>Implementation Detail</h3>
 </div>
 <div class="godeeper-card__body">
-<p>The DCAF architecture, the R1/R2/R6 interfaces, and which building blocks are implemented.</p>
+<p>Feature by feature: what is implemented, partial, needs fixing or missing.</p>
 </div>
 </a>
 
 <a class="godeeper-card" href={useBaseUrl('/reference-tools/data-collection/tutorials')}>
 <div class="godeeper-card__band">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 4v16l13 -8l-13 -8"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26 -2 5 -2 5s3.74 -.5 5 -2c.71 -.84 .7 -2.13 -.09 -2.91a2.18 2.18 0 0 0 -2.91 -.09z" /><path d="M12 15l-3 -3a22 22 0 0 1 2 -3.95a12.88 12.88 0 0 1 10 -5.93c0 2.72 -.78 7.5 -6 11a22.35 22.35 0 0 1 -4 2z" /><path d="M9 12h-4s.55 -3.03 2 -4c1.62 -1.08 5 0 5 0" /><path d="M12 15v5s3.03 -.55 4 -2c1.08 -1.62 0 -5 0 -5" /></svg>
 <h3>Call to Try</h3>
 </div>
 <div class="godeeper-card__body">
@@ -93,9 +114,9 @@ The tools enable 5G devices to collect, aggregate, and report media performance 
 </div>
 </div>
 
-**Implemented specifications:** 3GPP TS 26.531 (data collection and reporting framework), [TS 26.532](https://www.3gpp.org/dynareport/26532.htm) (data collection client procedures), [TS 26.512](https://www.3gpp.org/dynareport/26512.htm) (5GMS AF interfaces for data reporting submission). The interfaces these specifications define are referred to on the [Implementation Detail](./implementation) page by their reference-point names R1 to R6.
+**Implemented specifications:** 3GPP [TS 26.531](https://www.3gpp.org/dynareport/26531.htm) (data collection and reporting architecture) and [TS 26.532](https://www.3gpp.org/dynareport/26532.htm) (protocols and formats), Release 18, with event exposure from [TS 29.517](https://www.3gpp.org/dynareport/29517.htm). See [Implementation Detail](./implementation) for what each component implements.
 
-See [UE Data Collection on the Standards portal](/standards/data-collection) for version history and 5G-MAG's own standards contributions.
+See [UE Data Collection on the Standards portal](/standards/data-collection) for the specifications and their evolution.
 
 ## Contributors & How to Contribute
 

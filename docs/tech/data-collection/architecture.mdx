@@ -1,0 +1,144 @@
+---
+title: Architecture
+sidebar_position: 1
+hide_title: true
+description: The data collection functions and reference points R1 to R8, where the Data Collection AF can be deployed, and how 5G Media Streaming maps them onto its own functions.
+---
+
+import FigurePair from '@site/src/components/FigurePair';
+import JumpMenu from '@site/src/components/JumpMenu';
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+  <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />
+  <path d="M9 17l0 -5" />
+  <path d="M12 17l0 -1" />
+  <path d="M15 17l0 -3" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">UE Data Collection, Reporting and Event Exposure</span>
+<h1>Architecture</h1>
+</div>
+</div>
+
+TS 26.531 defines a generic reference architecture for data collection, reporting and exposure of UE data: the logical functions involved and the reference points between them. It is intended to be instantiated in domain-specific ways. TS 26.501 instantiates it for 5G Media Streaming.
+
+:::tip[At a glance]
+
+- **Reference points:** R1 provisioning, R2 to R4 data reporting, R5 and R6 event exposure, R7 a client API on the UE. R8 is outside 3GPP standardisation.
+- **Services:** Ndcaf_DataReportingProvisioning (R1) and Ndcaf_DataReporting (R2 to R4), specified in TS 26.532; Naf_EventExposure (R5, R6), specified in TS 29.517.
+- **Deployment:** the Data Collection AF may sit inside or outside the trusted domain. Outside it, the NEF mediates its services.
+- **In 5GMS:** the Data Collection AF sits in the 5GMS AF; provisioning moves to M1, and QoE and consumption reports travel over M5.
+
+:::
+
+<JumpMenu items={[["The generic architecture", "the-generic-architecture"], ["Reference points", "reference-points"], ["Where the Data Collection AF is deployed", "where-the-data-collection-af-is-deployed"], ["In 5G Media Streaming", "in-5g-media-streaming"], ["Release differences", "release-differences"]]} />
+
+## The generic architecture
+
+<FigurePair
+  figures={[
+    {
+      label: 'Generic architecture',
+      src: '/img/tech/data-collection/generated/ts26531-fig4.2-1.svg',
+      width: 1049, height: 1014,
+      title: 'Reference architecture for data collection and reporting in reference point notation',
+      source: 'Redrawn from TS 26.531 V19.0.0, figure 4.2-1',
+      alt: 'The UE with the UE Application and the Direct Data Collection Client, joined by R7; the Data Collection AF at the centre with the NRF above and the NWDAF below (R5); the Application Service Provider with the Provisioning AF (R1), the Indirect Data Collection Client (R3) and the Event Consumer AF (R6); the AS (R4); the NEF (N33); R2 from the Direct Data Collection Client and R8 from the UE Application to the Application Service Provider.',
+    },
+    {
+      label: 'In 5G Media Streaming',
+      src: '/img/tech/data-collection/generated/ts26501-fig4.7.1-1.svg',
+      width: 1200, height: 868,
+      title: 'Data collection and reporting architecture instantiation for 5G Media Streaming',
+      source: 'Redrawn from TS 26.501 V19.4.0, figure 4.7.1-1',
+      alt: 'The 5GMS Client in the UE, whose Media Session Handler holds the Direct Data Collection Client with Metrics Collection & Reporting, Consumption Collection & Reporting and Network Assistance; the 5GMS AF holding the Data Collection AF, reached over M5 and R2; the 5GMS Application Provider with the Event Consumer AF (R6) and a 5GMS AS (R4), reached over M1; a second 5GMS AS (R4) and the NWDAF (R5) below the AF.',
+    },
+  ]}
+  note="Click a figure to enlarge it. The data collection roles are shown in rose."
+/>
+
+| Function | Role |
+| --- | --- |
+| **Data Collection AF** | Manages the provisioning state for data collection and reporting, processes collected UE data, and realises the Event Exposure Service. When its provisioning state changes, it updates its NF profiles in the NRF. |
+| **Provisioning AF** | Provisions data collection and reporting at R1. It belongs to the Application Service Provider and may be deployed inside or outside the trusted domain. |
+| **Direct Data Collection Client** | Collects relevant data in the UE and sends data reports at R2, according to a configuration it first obtains at R2. It can be a common middleware component or part of each UE Application. |
+| **UE Application** | Shares relevant data with the Direct Data Collection Client at R7. |
+| **Indirect Data Collection Client** | A subfunction of the Application Service Provider that sends data reports at R3, for data the provider collected from UE Applications at R8. It may modify the collected data to meet its configuration. |
+| **Application Server (AS)** | Collects data and reports it at R4. It plays the role of a Network Function when it does so. |
+| **NWDAF** | The primary consumer of processed UE data (R5). |
+| **Event Consumer AF** | Receives data reporting events at R6. It resides in the Application Service Provider. |
+
+## Reference points
+
+| Reference point | Between | Purpose | Service |
+| --- | --- | --- | --- |
+| R1 | Provisioning AF and Data Collection AF | What data is collected, how it is sampled and reported, how it is processed, and how it is exposed to event subscribers | Ndcaf_DataReportingProvisioning |
+| R2 | Direct Data Collection Client and Data Collection AF | Obtain the configuration, then send data reports. An encrypted data transfer protocol is required. | Ndcaf_DataReporting |
+| R3 | Indirect Data Collection Client and Data Collection AF | Obtain the configuration, then send data reports | Ndcaf_DataReporting |
+| R4 | AS and Data Collection AF | Obtain the configuration, then send data reports | Ndcaf_DataReporting |
+| R5 | NWDAF and Data Collection AF | Subscribe to data reporting events and receive notifications | Naf_EventExposure (or Nnef_EventExposure across trust domains) |
+| R6 | Event Consumer AF and Data Collection AF | Subscribe to data reporting events and receive notifications | Naf_EventExposure |
+| R7 | UE Application and Direct Data Collection Client | A client API on the UE. Not used when the client is embedded in the UE Application. | Specified in TS 26.532, clause 8 |
+| R8 | UE Application and Application Service Provider server | Data collection between the application and its provider | Beyond 3GPP standardisation |
+
+R2 runs in the user plane, so it does not traverse the 5G System service bus.
+
+## Where the Data Collection AF is deployed
+
+TS 26.531 documents five collaboration scenarios. Reference point R2 traverses the data plane in all of them.
+
+| Scenario | Deployment |
+| --- | --- |
+| A | All functions inside the trusted domain. |
+| B | The Application Service Provider functions outside the trusted domain; their interactions with the Data Collection AF are mediated by the NEF. |
+| C | As B, with the AS also outside the trusted domain. |
+| D | The Data Collection AF itself outside the trusted domain; it registers with the NRF via the NEF, and the NWDAF uses Nnef_EventExposure to subscribe to its events. |
+| E | The Direct Data Collection Client deployed as a subfunction of the UE Application. It can be combined with any of the other scenarios. |
+
+When a function is outside the trusted domain, the NEF exposes the services under its own names: Nnef_DataReportingProvisioning to Provisioning AFs, Nnef_DataReporting to Indirect Data Collection Clients and Application Servers, and Nnef_EventExposure to Event Consumer AFs. When the Data Collection AF itself is outside the trusted domain, the interactions at R1′, R3′, R4′ and R6′ are outside the scope of 3GPP and are expected to be functionally equivalent to those at R1, R3, R4 and R6.
+
+## In 5G Media Streaming
+
+TS 26.501 maps the abstract roles onto 5GMS functions.
+
+| Role in TS 26.531 | In 5GMS |
+| --- | --- |
+| Application Service Provider | The 5GMS Application Provider |
+| Data Collection AF | Instantiated in the 5GMS AF |
+| Direct Data Collection Client | Instantiated in the Media Session Handler. It takes logical responsibility for the Metrics Collection & Reporting and Consumption Collection & Reporting subfunctions, and for logging ANBR-based Network Assistance invocations. |
+| AS | The 5GMS AS, deployed as a trusted AS within the 5G System or externally |
+| Event Consumer AF | Instantiated in the 5GMS Application Provider |
+| Provisioning AF | Not instantiated; data collection is provisioned with the 5GMS procedures |
+| Indirect Data Collection Client | Not instantiated; indirect reporting is outside the scope of 5G Media Streaming |
+
+| Reference point | In 5GMS |
+| --- | --- |
+| M1 | Provisioning of data collection and reporting in the Data Collection AF (R1 is not instantiated) |
+| M5 | Direct data reporting of QoE metrics and consumption, via the Media Session Handler and the 5GMS AF |
+| R2 | Direct data reporting of ANBR-based Network Assistance invocations to the Data Collection AF |
+| R4 | Media streaming access reporting by the 5GMS AS |
+| R5 | Event exposure to subscribing NWDAF instances |
+| R6 | Event exposure to subscribing Event Consumer AF instances in the 5GMS Application Provider |
+| M6 | Configuration of 5GMS-related data reporting by the 5GMS-Aware Application |
+| R3, R7, R8 | Not instantiated |
+
+## Release differences
+
+- **TS 26.531:** the figures are the same in Release 17, 18 and 19.
+- **TS 26.501, Release 17:** R2 is not instantiated; all direct reporting is logically realised through M5. Figure 4.7.1-1 has no Network Assistance subfunction and no R2 line.
+- **TS 26.501, from Release 18:** R2 carries ANBR-based Network Assistance invocations, and the Media Session Handler takes responsibility for logging them.
+
+<details>
+<summary>Sources for this page</summary>
+
+- **The generic architecture:** TS 26.531 V19.0.0, clause 4.1 and clause 4.2, items 1 to 8, NOTE 7 and NOTE 10.
+- **Reference points:** TS 26.531 V19.0.0, clause 4.3 (R1 to R8, NOTE 3, NOTE 4, NOTE 5), clause 4.4 (services, NOTE 2) and clause 4.5.1.
+- **Where the Data Collection AF is deployed:** TS 26.531 V19.0.0, annex A, clauses A.1 to A.6, and clauses 4.4 and 4.7.1.
+- **In 5G Media Streaming:** TS 26.501 V19.4.0, clause 4.7.1 (role list and reference point definitions).
+- **Figures:** redrawn from TS 26.531 V19.0.0, figure 4.2-1, and TS 26.501 V19.4.0, figure 4.7.1-1.
+- **Release differences:** image files compared in TS 26.531 V17.3.0, V18.2.0 and V19.0.0; TS 26.501 V17.10.0 and V19.4.0, clause 4.7.1 and figure 4.7.1-1.
+
+</details>

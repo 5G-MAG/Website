@@ -1,12 +1,14 @@
 ---
 hide_title: true
+sidebar_label: Specifications
 title: UE Data Collection, Reporting and Event Exposure
 slug: /standards/data-collection
-description: Explains the Data Collection Application Function (DCAF) framework letting UEs report media consumption and QoE data for network analytics.
+description: The 3GPP specifications that define UE data collection, reporting and event exposure, what each covers, and the 5G System specifications they build on.
+pagination_prev: null
+pagination_next: null
 ---
 
-import SpecIndex from '@site/src/components/SpecIndex';
-import { DATA_COLLECTION_SPECS, DATA_COLLECTION_LAYER_ORDER } from '@site/src/data/specs/data-collection';
+import JumpMenu from '@site/src/components/JumpMenu';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -19,29 +21,45 @@ import { DATA_COLLECTION_SPECS, DATA_COLLECTION_LAYER_ORDER } from '@site/src/da
 </div>
 </div>
 
-## Overview
+UE data collection, reporting and event exposure is specified by 3GPP SA4. This page lists its specifications and what each covers.
 
-UE data collection covers the 3GPP mechanisms by which a device (user equipment, UE) reports data, such as media consumption and quality of experience, to the network, and by which the network exposes events to consuming functions. The specifications below are grouped by the 3GPP working group responsible for them: SA2 (system architecture and analytics), SA4 (media data collection and reporting, reusing the 5G Media Streaming framework), and CT3 (stage-3 APIs for event exposure and network data analytics). For the technical analysis of the DCAF architecture and its reference points, see the Tech page linked below. For the release-by-release work-item history behind these specifications, see [Standards Evolution](/standards/data-collection/evolution).
+The page covers Release 17 to Release 19. No Release 20 work item in the 3GPP work plan lists these specifications.
 
-5G-MAG tracks the SA4 data collection and reporting framework. The organisation's tracking issues against TS 26.531 and TS 26.532 (for example clarifications on report scope and on `reportFormat` URIs) are raised in the public [5G-MAG Standards repository](https://github.com/5G-MAG/Standards/).
+:::tip[At a glance]
 
-## Specifications by role and release
+- **Specified by:** 3GPP SA4.
+- **Two specifications:** TS 26.531 (architecture) and TS 26.532 (protocols and formats).
+- **By release:** both are created in Release 17. Release 18 adds immediate data report delivery instructed by the UE application, and ANBR-based network assistance data reporting. Release 19 carries the Release 18 content forward, with an update of the API info and externalDocs fields.
+- **Built on:** the 5G System as defined in TS 23.501, TS 23.502, TS 23.288 and TS 29.517, and, for the APIs, TS 29.510.
 
-- **System architecture and analytics (SA2):** TS 23.288 defines the NWDAF and the network data analytics architecture into which exposed UE data feeds.
-- **Media data collection and reporting (SA4):** TS 26.531 and TS 26.532 define the DCAF framework. TS 26.501 and TS 26.512 define the 5GMS framework into which the DCAF is embedded for media data reporting.
-- **Stage-3 core network APIs (CT3):** TS 29.517 (AF event exposure), TS 29.520 (NWDAF services), TS 29.522 (NEF northbound) and TS 29.591 (NEF southbound) provide the REST APIs used for event exposure and analytics.
+:::
 
-The DCAF framework (TS 26.531 / TS 26.532) was introduced in 3GPP Release 17 and continued in Release 18. The analytics architecture (TS 23.288, NWDAF) originates in Release 16 and has been extended in subsequent releases. Check the version of each specification you are targeting for the exact release content.
+<JumpMenu items={[["Specifications", "specifications"], ["5G System specifications they build on", "5g-system-specifications-they-build-on"], ["Related", "related"]]} />
 
-## Specifications in scope
+## Specifications
 
-The specifications in scope of UE data collection, reporting and event exposure, grouped by the 3GPP working group responsible: SA2 (system architecture and analytics), SA4 (media data collection and reporting), and CT3, whose stage-3 API specifications cover event exposure including the Network Exposure Function (NEF) northbound and southbound APIs.
+The Release column is the release of each document's first version. Titles are each document's cover title; the last column summarises its Scope clause.
 
-<SpecIndex specs={DATA_COLLECTION_SPECS} layerOrder={DATA_COLLECTION_LAYER_ORDER} />
+| Specification | Title | Release | Covers |
+| --- | --- | :---: | --- |
+| [TS 26.531](https://www.3gpp.org/dynareport/26531.htm) | Data Collection and Reporting; General Description and Architecture | 17 | A generic architecture for collecting and reporting data in the 5G System |
+| [TS 26.532](https://www.3gpp.org/dynareport/26532.htm) | Data Collection and Reporting; Protocols and Formats | 17 | The APIs, resource structures and data models for the collection and reporting of UE data by the Data Collection AF, for event exposure to network consumers |
 
-## Related Standards Work
+TS 26.531 has the same clause structure in Release 17, 18 and 19. In TS 26.532 the API roots stay at `/v1`; from Release 18 a data reporting configuration is created at `/sessions/{sessionId}/configurations` instead of `/sessions/{sessionId}/configurations/{configurationId}`.
 
-- [Standards: 5G Media Streaming](/standards/5gms)
-- [Standards: CAMARA Connectivity Quality Management APIs](/standards/network-apis)
+## 5G System specifications they build on
+
+The Scope clause of each specification names the 5G System documents it is defined against.
+
+| Specification | Title | Group | Named in the Scope of |
+| --- | --- | --- | --- |
+| [TS 23.501](https://www.3gpp.org/dynareport/23501.htm) | System architecture for the 5G System (5GS) | SA2 | TS 26.531, TS 26.532 |
+| [TS 23.502](https://www.3gpp.org/dynareport/23502.htm) | Procedures for the 5G System (5GS) | SA2 | TS 26.531, TS 26.532 |
+| [TS 23.288](https://www.3gpp.org/dynareport/23288.htm) | Architecture enhancements for 5G System (5GS) to support network data analytics services | SA2 | TS 26.531, TS 26.532 |
+| [TS 29.517](https://www.3gpp.org/dynareport/29517.htm) | 5G System; Application Function Event Exposure Service; Stage 3 | CT3 | TS 26.531, TS 26.532 |
+| [TS 29.510](https://www.3gpp.org/dynareport/29510.htm) | 5G System; Network Function Repository Services; Stage 3 | CT4 | TS 26.532 |
+
+## Related
+
+- [Standards: 5G Media Streaming (5GMS)](/standards/5gms)
 - [Standards: AI/ML Evaluation Framework](/standards/ai-ml)
-- [Meetings with 3GPP SA4](/standards/3gpp-issue-tracking): the live tracker for 3GPP feedback issues on this specification

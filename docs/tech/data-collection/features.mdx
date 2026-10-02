@@ -1,0 +1,195 @@
+---
+title: Features
+sidebar_position: 2
+hide_title: true
+description: Provisioning, client configuration, sampling and reporting rules, data domains, Data Access Profiles and event exposure, and what 5G Media Streaming reports, processes and exposes.
+---
+
+import JumpMenu from '@site/src/components/JumpMenu';
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+  <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />
+  <path d="M9 17l0 -5" />
+  <path d="M12 17l0 -1" />
+  <path d="M15 17l0 -3" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">UE Data Collection, Reporting and Event Exposure</span>
+<h1>Features</h1>
+</div>
+</div>
+
+:::tip[At a glance]
+
+- **The cycle:** a Provisioning AF provisions what to collect; clients obtain a configuration and report; the Data Collection AF processes the reports and exposes events to subscribers.
+- **Control of exposure:** Data Access Profiles define the processing applied before any event leaves the Data Collection AF, along time, user and location.
+- **APIs:** TS 26.532 specifies Ndcaf_DataReportingProvisioning, Ndcaf_DataReporting and the R7 client API; event exposure uses Naf_EventExposure from TS 29.517.
+- **In 5GMS:** QoE metrics, consumption, dynamic policy and Network Assistance invocations, and media streaming access activity, exposed as five media streaming event types.
+
+:::
+
+<JumpMenu items={[["Provisioning", "provisioning"], ["Client configuration", "client-configuration-and-reporting-sessions"], ["Sampling and reporting rules", "sampling-and-reporting-rules"], ["Data reports and domains", "data-reports-and-data-domains"], ["Data Access Profiles", "data-access-profiles"], ["Event exposure", "event-exposure"], ["Consent, security, precedence", "consent-security-and-precedence"], ["In 5G Media Streaming", "in-5g-media-streaming"]]} />
+
+## The features
+
+| Feature | Reference point | Service | Specified in |
+| --- | --- | --- | --- |
+| Provisioning | R1 | Ndcaf_DataReportingProvisioning | TS 26.532, clause 6 |
+| Client configuration and reporting | R2, R3, R4 | Ndcaf_DataReporting | TS 26.532, clause 7 |
+| UE Application to client | R7 | Client API | TS 26.532, clause 8 |
+| Event exposure | R5, R6 | Naf_EventExposure | TS 29.517 |
+
+## Provisioning
+
+The Provisioning AF provisions sets of provisioning information in the Data Collection AF at R1, one for each Event ID it is to expose. This provisioning information embodies the Service Level Agreement between the network operator and the Application Service Provider. The combination of external application identifier and Event ID is unique for a given Data Collection AF.
+
+Before provisioning, the Provisioning AF creates a Provisioning Session. Under it, it creates Data Reporting Configurations, each for one type of data collection client: Direct, Indirect or Application Server. Destroying a Provisioning Session releases its resources, purges cached data and deletes all its configurations.
+
+<details>
+<summary>Ndcaf_DataReportingProvisioning resources (TS 26.532 V19.1.0, table 6.2.1-1)</summary>
+
+| Resource | Operations |
+| --- | --- |
+| `/sessions` | CreateSession (POST) |
+| `/sessions/{sessionId}` | RetrieveSession (GET), DestroySession (DELETE) |
+| `/sessions/{sessionId}/configurations` | CreateConfiguration (POST) |
+| `/sessions/{sessionId}/configurations/{configurationId}` | RetrieveConfiguration (GET), UpdateConfiguration (PUT, PATCH), DestroyConfiguration (DELETE) |
+
+The API root is `{apiRoot}/3gpp-ndcaf_data-reporting-provisioning/{apiVersion}`. In Release 17 a configuration was created with POST on `/sessions/{sessionId}/configurations/{configurationId}`.
+
+</details>
+
+## Client configuration and reporting sessions
+
+Every data collection client first obtains a data collection and reporting configuration from the Data Collection AF, at R2, R3 or R4, before it reports. Whenever the provisioning information or the set of event exposure subscriptions changes, the Data Collection AF makes a new configuration available to clients.
+
+A client opens a Data Reporting Session, declaring the data domains it is able to report. The session carries the sampling rules, reporting conditions and reporting rules that apply. A session cannot be updated.
+
+<details>
+<summary>Ndcaf_DataReporting resources (TS 26.532 V19.1.0, table 7.2.1-1)</summary>
+
+| Resource | Operations |
+| --- | --- |
+| `/sessions` | CreateSession (POST) |
+| `/sessions/{sessionId}` | RetrieveSession (GET), DestroySession (DELETE) |
+| `/sessions/{sessionId}/report` | Report (POST) |
+
+The API root is `{apiRoot}/3gpp-ndcaf_data-reporting/{apiVersion}`.
+
+</details>
+
+## Sampling and reporting rules
+
+- **Data sampling rules** say how the parameters associated with the Event ID are collected, for example the sampling period and a location filter.
+- **Data reporting conditions** say when to report: at a regular interval, when a threshold is passed, or on an event such as entering a new location.
+- **Data reporting rules** say how to report, for example the reporting probability (100 percent if omitted) and the data packaging strategy.
+
+Each rule carries the reporting context identifiers that the Data Collection AF assigns to its configurations, so it can apply the matching data exposure restrictions to the data reported.
+
+## Data reports and data domains
+
+Each data report carries the external application identifier and a non-empty list of records with the parameters collected. Each type of UE data belongs to a logical UE data domain, owned either by the 5G System (the MNO) or by the Application Service Provider.
+
+| Data domain (TS 26.532) | Content |
+| --- | --- |
+| SERVICE_EXPERIENCE, LOCATION, COMMUNICATION, PERFORMANCE, PLANNED_TRIPS | 5G System domains |
+| APPLICATION_SPECIFIC | A combination of QoE metrics and application service-specific data |
+| MS_ACCESS_ACTIVITY | 5GMS access activity data |
+| MS_ANBR_NETWORK_ASSISTANCE | ANBR-based Network Assistance invocation data |
+
+A Direct Data Collection Client may flag a report as needing expedited processing. Indirect reporting may be used when no Direct Data Collection Client is available in the UE, or when the Indirect Data Collection Client needs to modify the collected data to meet its configuration.
+
+## Data Access Profiles
+
+The Provisioning AF restricts the exposure of UE data at R5 and R6 by configuring Data Access Profiles for each Event ID. A Data Access Profile specifies the processing the Data Collection AF performs on the collected UE data to synthesise the event data exposed to the NWDAF and the Event Consumer AF.
+
+- **Time:** aggregation over a duration. The coarsest level aggregates all event data along the time axis into a single value.
+- **User:** restriction by groups of users.
+- **Location:** restriction by the location of the data collection client during the event.
+
+The aggregation functions are None, Count, Mean, Maximum, Minimum and Sum. With None, all reported records are exposed as individual events. A profile can also restrict which consumer types may receive the events: NWDAF, Event Consumer AF or NEF.
+
+## Event exposure
+
+An event consumer, the NWDAF or an Event Consumer AF, subscribes to a type of event exposed by the Data Collection AF. It may add user, location or application filters to see only a subset of what the Data Access Profiles permit. Subscribing to an event type that is not yet provisioned is allowed, but yields no notifications until it is provisioned.
+
+The Data Collection AF exposes a batch of recent events to consumers as an event exposure notification. When an event is synthesised from several records, its timestamp says when it was synthesised. When a subscription request has no valid access token, it is redirected to an authorisation server, which performs the authorisation for the requested Data Access Profile.
+
+## Consent, security and precedence
+
+- **Consent:** the user is presumed to have consented to the collection, reporting and exposure of its UE data, by means outside the specification. A UE Application may consent to a UE identifier being included in reports; otherwise the client uses a stable, opaque reporting identifier.
+- **Security:** an encrypted data transfer protocol is required at R2. Resource access is authorised with OAuth 2.0 access tokens.
+- **Location data:** collection, reporting and exposure of location-based UE data is expected to comply with regional regulation, and may be further limited by MNO policy.
+- **Precedence:** when operator preconfiguration and Application Service Provider provisioning conflict, the owner of the UE data domain decides. Operator preconfiguration wins for 5G System domains, and Application Service Provider provisioning wins for application-specific domains.
+
+## In 5G Media Streaming
+
+### What is reported
+
+| Data | Reported by | Reference point |
+| --- | --- | --- |
+| QoE metrics (downlink) | Media Session Handler | M5 |
+| Consumption (downlink) | Media Session Handler | M5 |
+| Dynamic policy invocations (downlink) | Logged by the 5GMSd AF | Inside the 5GMS AF |
+| AF-based Network Assistance invocations (downlink, uplink) | Logged by the 5GMS AF | Inside the 5GMS AF |
+| ANBR-based Network Assistance invocations (downlink, uplink) | Media Session Handler | R2 |
+| Media streaming access activity (downlink, uplink) | 5GMS AS | R4 |
+
+The 5GMS AS obtains its data collection client configuration at R4 when it initialises, and refreshes it periodically. It reports each logged access as a single record, and declares support for the MS_ACCESS_ACTIVITY data domain.
+
+### What may be processed
+
+A Data Access Profile in a 5GMSd Provisioning Session may apply the time, user and location restriction dimensions to every data type. The aggregation functions allowed differ by data type.
+
+| Data type (downlink) | Count | Mean, Maximum, Minimum | Sum |
+| --- | :---: | :---: | :---: |
+| QoE metrics | Yes | Yes | Yes |
+| Consumption | Yes, number of sessions | No | No |
+| Dynamic policy invocations | Yes, number of invocations | No | No |
+| AF-based and ANBR-based Network Assistance invocations | Yes, number of invocations | Yes, on bit rate recommendations | No |
+| Media streaming access activity | Yes, number of sessions | No | No |
+
+### What is exposed
+
+The Data Collection AF in the 5GMS AF exposes these event types, with the Event IDs from TS 29.517:
+
+| Event | Event ID |
+| --- | --- |
+| QoE metrics | MS_QOE_METRICS |
+| Consumption | MS_CONSUMPTION |
+| Network Assistance invocation | MS_NET_ASSIST_INVOCATION |
+| Dynamic policy invocation | MS_DYN_POLICY_INVOCATION |
+| Media streaming access activity | MS_ACCESS_ACTIVITY |
+
+Eligible consumers are the NWDAF, the NEF and the Event Consumer AF of the 5GMS Application Provider. Each event carries common baseline parameters, such as collection timestamps, sample count and streaming direction. The UE identification is present only for individual records, and only when the data exposure restrictions permit it.
+
+### How it is provisioned
+
+The 5GMS Application Provider configures the collection and processing of 5GMS UE data at M1, with one or more Event Data Processing Configurations and Data Access Profiles for an Event ID. In Release 17 TS 26.512 specifies this API itself; from Release 18 it refers to TS 26.510, clause 8.13.
+
+<details>
+<summary>Release differences in 5G Media Streaming</summary>
+
+- **Release 17:** five downlink event types and one uplink event type; R2 is not instantiated; the access reporting parameters are in TS 26.501 clauses 5.11.4 and 6.8.4.
+- **Release 18:** ANBR-based Network Assistance reporting at R2, for downlink and uplink. TS 26.512 specifies the event collection and record data types itself, in clause 18.
+- **Release 19:** no change request touching data collection is recorded in the change history of TS 26.501 or TS 26.512.
+
+</details>
+
+<details>
+<summary>Sources for this page</summary>
+
+- **Provisioning:** TS 26.531 V19.0.0, clauses 4.6.1 and 4.6.2; TS 26.532 V19.1.0, clauses 4.2.3.2.1, 4.2.3.2.5, 4.2.3.3.2 and 6.2, table 5.4.3.1-1. Release 17 path: TS 26.532 V17.3.0.
+- **Client configuration and reporting sessions:** TS 26.531 V19.0.0, clauses 4.6.3 and 5.4; TS 26.532 V19.1.0, clauses 7.2 and 7.2.3.3.2, table 7.3.2.1-1.
+- **Sampling and reporting rules:** TS 26.531 V19.0.0, clause 4.6.1; TS 26.532 V19.1.0, clause 4.1, tables 5.4.2.1-1, 5.4.2.1A-1, 5.4.2.2-1, 5.4.3.2-1 and 5.4.3.3-1.
+- **Data reports and data domains:** TS 26.531 V19.0.0, clauses 4.1, 4.6.1 and 5.5, table B.2-1; TS 26.532 V19.1.0, table 7.3.3.1-1.
+- **Data Access Profiles:** TS 26.531 V19.0.0, clause 4.5.2, table 4.5.2-1; TS 26.532 V19.1.0, tables 6.3.2.3-1 and 6.3.3.1-1.
+- **Event exposure:** TS 26.531 V19.0.0, clauses 4.5.2 and 4.6.1.
+- **Consent, security and precedence:** TS 26.531 V19.0.0, clause 4.1 NOTE 1 and NOTE 2, clauses 4.5.1, 4.5.4.1 to 4.5.4.3 and 5.4; TS 26.532 V19.1.0, clauses 4.4.2 and 9.
+- **In 5G Media Streaming:** TS 26.501 V19.4.0, clauses 4.7.1, 4.7.2, 4.7.3 (table 4.7.3.1-1), 4.7.4, 5.11.1 and 5.11.2; TS 26.512 V19.3.0, clauses 4.3.11.1, 4.11.2, 4.12.1 and 7.11.1; TS 29.517 V18.6.0, table 5.6.3.3-1 (Event IDs; the Release 19 copy was not obtained).
+- **Release differences:** TS 26.501 V17.10.0 and V19.4.0; TS 26.512 V17.10.0, V18.7.0 and V19.3.0, and their change histories.
+
+</details>

@@ -6,6 +6,7 @@ description: Tutorial for running the Data Collection Application Function in Do
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import { RepoCards } from '@site/src/components/ProjectRepoSection';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -28,6 +29,10 @@ This tutorial covers setting up the Data Collection Application Function (DCAF) 
 
 **What you will build:** a running DCAF, driven end to end through its provisioning (R1), event subscription (R6) and direct data reporting (R2) interfaces from the Insomnia REST client.
 
+## Components
+
+<RepoCards slugs={['rt-data-collection-application-function']} />
+
 ## Prerequisites
 
 - Docker installed on your machine (download from [here](https://www.docker.com/products/docker-desktop)).
@@ -37,15 +42,6 @@ This tutorial covers setting up the Data Collection Application Function (DCAF) 
 ## Setup diagram
 
 <img loading="lazy" src={useBaseUrl('/assets/images/dcaf/uedc_docker_1.png')} style={{width: '80%'}} alt="Docker setup for the DCAF tutorial, showing the DCAF, NRF and HTTP/2 server containers" />
-
-## Requirements
-
-<div class="spec-chip-row">
-<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9l-8 4.5l-8 -4.5v-9z" /><path d="M12 12l8 -4.5" /><path d="M12 12v9" /><path d="M12 12l-8 -4.5" /></svg>Docker installed</span>
-<span class="spec-chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14l11 -11" /><path d="M21 3l-6.5 18a0.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a0.55 .55 0 0 1 0 -1l18 -6.5" /></svg>Insomnia REST client</span>
-</div>
-
-Same two tools as in [Prerequisites](#prerequisites) above; see there for download links.
 
 ## DCAF Setup
 

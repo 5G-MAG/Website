@@ -2,10 +2,13 @@
 title: Implementation Detail
 hide_title: true
 sidebar_position: 2
-description: Details the DCAF architecture, the R1, R2 and R6 interfaces, and the 3GPP specs (TS 26.531/532) it implements.
+description: What the data collection Reference Tools implement, for the generic framework and for its integration with 5G Media Streaming, from a code audit of the repositories.
 ---
 
-import useBaseUrl from '@docusaurus/useBaseUrl';
+import FigurePair from '@site/src/components/FigurePair';
+import ImplementationMatrix from '@site/src/components/ImplementationMatrix';
+import { RepoCards } from '@site/src/components/ProjectRepoSection';
+import IMPLEMENTATION from '@site/src/data/implementation-data-collection.json';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -22,195 +25,92 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 </div>
 </div>
 
-See also: <a href={useBaseUrl('/reference-tools/data-collection/tutorials#developer-exchange')}>Developer Exchange</a>.
-
-**Category:** 3GPP Implementations
-
-## What This Project Implements
-
-The UE (User Equipment) Data Collection, Reporting and Event Exposure framework is defined by 3GPP in TS 26.531 and TS 26.532 (introduced in Release 17 and maintained through Release 18, Rel-18) to enable on-device collection and structured reporting of media performance data. It specifies the Data Collection Application Function (DCAF) and the associated provisioning, reporting and event exposure interfaces (R1 to R6), allowing application service providers to receive UE-side metrics and trigger analytics or policy decisions. R1 to R6 are named 3GPP reference points: the interfaces between the DCAF and the surrounding entities. The deliverable here is a reusable Rel-18 DCAF service-provider library together with a runnable Application Function that exercises these interfaces.
-
-The interface sections below are presented in usage order (provision, then subscribe, then report): R1 (provisioning), R6 (event subscription and exposure) and R2 (direct data reporting). The remaining reference points R3 to R5 also exist in the framework but are not covered on this page.
-
-Technical documentation providing context to this project can be found in the link below.
-
-[Streaming & Media Delivery](/tech/5gms)
-
-A list of relevant specifications can be found in the link below.
-
-[Standards: UE Data Collection, Reporting and Event Exposure](/standards/data-collection)
-
 :::tip[In short]
-A reusable Rel-18 DCAF Service Provider library for data reporting and event exposure. These functional entities could later on be integrated within the data reporting framework of 5G Media Streaming (5GMS).
+
+- **Which specification the code follows:** Release 18, TS 26.532 V18.3.0 and TS 29.517 V18.6.0, as the Data Collection AF build pins. Release 19 adds nothing to implement.
+- **Generic framework:** a Data Collection AF library and a standalone AF serve R1, R2 to R4, R5 and R6. No data collection client is provided.
+- **In 5G Media Streaming:** the 5GMS components do not yet use the Data Collection AF. The integration exists only on an unmerged 5GMS AF branch.
+- **Source of this page:** a code audit of the repositories on 2026-10-01.
+
 :::
 
-## Deployment Configurations
+For what the specifications define, see the [Technical Analysis](/tech/data-collection/overview). For how to run the tools, see the [Application Showcase](/reference-tools/data-collection/tutorials).
 
-Two deployment shapes are shown below: the DCAF running on its own (standalone), and the DCAF integrated alongside 5G Downlink Media Streaming.
+## Architecture
 
-### Standalone UE Data Collection, Reporting and Event Exposure
+The generic architecture and its 5G Media Streaming instantiation, with the parts the Reference Tools provide and the status of each reference point.
 
-This is the standalone DCAF deployment, where the Data Collection AF is used on its own to collect and expose UE-side data.
-
-<img loading="lazy" src={useBaseUrl('/assets/images/projects/uedc_diagram.png')} style={{width: '80%'}} alt="Standalone DCAF architecture, with the Data Collection AF connected to a UE and a consuming Application Service Provider" />
-
-_Figure: standalone DCAF deployment._
-
-- [UE Data Collection, Reporting and Event Exposure](../data-collection/)
-- [3GPP RAN and Core Platforms](../3gpp-platforms/)
-
-### 5G Downlink Media Streaming (5GMSd) with UE Data Collection Reporting and Event Exposure
-
-This is the integrated deployment, where the DCAF is combined with the 5G Downlink Media Streaming (5GMSd) data reporting framework.
-
-<img loading="lazy" src={useBaseUrl('/assets/images/projects/5gms_uedc_diagram.png')} style={{width: '80%'}} alt="DCAF integrated with the 5G Downlink Media Streaming data reporting framework" />
-
-_Figure: DCAF integrated with 5GMSd data reporting._
-
-- [5G Media Streaming](../5gms/)
-- [UE Data Collection, Reporting and Event Exposure](../data-collection/)
-- [3GPP RAN and Core Platforms](../3gpp-platforms/)
-- [Common Tools](../common-tools/)
-
-## Generic UE Data Collection, Reporting and Event Exposure
-
-A functional Data Collection Application Function (DCAF) implementation is available. In the diagram below, the building blocks marked with a green tick are the ones already implemented.
-
-<img loading="lazy" src={useBaseUrl('/assets/images/dcaf/UEDC_RT.png')} alt="DCAF functional blocks, with implemented blocks marked by a green tick" />
-
-_Figure: DCAF functional blocks; a green tick marks each implemented building block._
-
-The implementation covers the generic handling of provisioning, the receipt and queueing of data reports, and event subscription management and exposure. It provides service endpoints for provisioning (R1), data reporting (R2/R3/R4) and event subscription/exposure (R5/R6).
-
-An illustrative usage sequence flow is shown below, tracing the actors (Application Service Provider, DCAF, UE) through the provisioning, subscription and reporting phases:
-
-<img loading="lazy" src={useBaseUrl('/assets/images/dcaf/usage-sequence-diagram.png')} alt="Sequence diagram of the DCAF usage flow across provisioning, subscription and reporting phases" />
-
-The following tutorial covers the setup of a Data Collection Application Function and usage of APIs.
-
-[Go to the Tutorial: Data Collection Application Function with Docker and Insomnia REST client](./tutorials/docker-with-insomnia)
-
-The event exposure API links in the interface sections below resolve to the Rel-17 and Rel-18 `5GC_APIs` OpenAPI definitions; use the Rel-18 definitions when a matching version is available.
-
-## R1 (Provisioning API) - Ndcaf_DataReportingProvisioning
-
-R1 supports interactions between a Provisioning AF (in the Application Service Provider) and the Data Collection AF to:
-
-- Provision data collection and reporting in a Data Collection AF (by means of the [Ndcaf_DataReportingProvisioning](https://jdegre.github.io/loader.html?yaml=TS26532_Ndcaf_DataReportingProvisioning.yaml) service).
-
-### Creating a Data Reporting Provisioning Session
-
-A Data Reporting Provisioning Session ties an Application Service Provider (`aspId`) and an event (`eventId`) to one or more Data Reporting Configurations. The shape of the request body:
-
-```json
-{
-  "aspId": "string",
-  "eventId": "UE_COMM",
-  "dataReportingConfigurationIds": ["string"]
-}
-```
-
-`UE_COMM` is the example eventId that has been implemented (UE communication information). See the [Docker + Insomnia tutorial](./tutorials/docker-with-insomnia) for the full request body and a working walkthrough.
-
-### Creating a Data Reporting Configuration
-
-A Data Reporting Configuration defines how a client samples and reports data, and which access profiles may consume it. The shape of the request body:
-
-```json
-{
-  "dataCollectionClientType": "DIRECT",
-  "dataSamplingRules": [{ "samplingPeriod": 10.0 }],
-  "dataReportingConditions": [{ "type": "INTERVAL", "period": 60 }],
-  "dataAccessProfiles": [
+<FigurePair
+  figures={[
     {
-      "dataAccessProfileId": "per_min_totals",
-      "targetEventConsumerTypes": ["NWDAF", "EVENT_CONSUMER_AF"]
-    }
-  ]
-}
-```
+      label: 'Generic architecture',
+      src: '/img/tech/data-collection/generated/ts26531-fig4.2-1-status.svg',
+      width: 1049, height: 1054,
+      title: 'Data collection reference architecture, with Reference Tools status',
+      source: 'Based on TS 26.531 V19.0.0, figure 4.2-1; status against TS 26.532 V18.3.0',
+      alt: 'The generic data collection architecture. The Data Collection AF is provided by rt-data-collection-application-function. R1 to R6 need fixes; R7 and N33 are not implemented; no Direct or Indirect Data Collection Client is provided.',
+    },
+    {
+      label: 'In 5G Media Streaming',
+      src: '/img/tech/data-collection/generated/ts26501-fig4.7.1-1-status.svg',
+      width: 1200, height: 908,
+      title: 'Data collection in 5G Media Streaming, with Reference Tools status',
+      source: 'Based on TS 26.501 V19.4.0, figure 4.7.1-1; status of the development branches',
+      alt: 'The 5GMS instantiation. The 5GMS components are provided, but the Data Collection AF inside the 5GMS AF is not. Metrics and consumption collection are implemented in the Media Session Handler, M1 and M5 are partial, and R2, R4, R5 and R6 are not implemented.',
+    },
+  ]}
+  note="Click a figure to enlarge it."
+/>
 
-See the [Docker + Insomnia tutorial](./tutorials/docker-with-insomnia) for the full request body and a working walkthrough.
+## Generic framework
 
-## R6 (Event Exposure API) - Naf_EventExposure
+Each feature, per component. Open Details for the requirements checked.
 
-R6 supports interactions between the Event Consumer AF and the Data Collection AF. The Event Consumer AF is the Application Function that subscribes to and receives the exposed events; a typical consumer is the Network Data Analytics Function (NWDAF), the 5G core function that produces network analytics. It works as follows:
+<ImplementationMatrix data={IMPLEMENTATION.generic} />
 
-- Subscribe to data reporting events exposed by the Data Collection AF (by means of [Naf_EventExposure_Subscribe](https://jdegre.github.io/editor/?url=https://raw.githubusercontent.com/jdegre/5GC_APIs/Rel-17/TS29517_Naf_EventExposure.yaml) or Nnef_EventExposure_Subscribe services) - when used by an Event Consumer AF.
-- Expose data reporting events to the Event Consumer AF (by means of [Naf_EventExposure_Notify](https://jdegre.github.io/editor/?url=https://raw.githubusercontent.com/jdegre/5GC_APIs/Rel-17/TS29517_Naf_EventExposure.yaml) or Nnef_EventExposure_Notify services) - when subsequently used by the Data Collection AF.
+## Integration with 5G Media Streaming
 
-### Subscribing for Events
+Each feature, per 5GMS component. Open Details for the requirements checked, by release.
 
-An Individual Application Event Exposure Subscription names the event to subscribe to and where to send notifications. The shape of the request body:
+<ImplementationMatrix data={IMPLEMENTATION.fivegms} />
 
-```json
-{
-  "eventsSubs": [{ "event": "UE_COMM", "eventFilter": { "anyUeInd": true } }],
-  "eventsRepInfo": { "notifMethod": "PERIODIC", "repPeriod": 10 },
-  "notifUri": "http://h2-server:8888/dcaf/notification/handler"
-}
-```
+## Components
 
-See the [Docker + Insomnia tutorial](./tutorials/docker-with-insomnia) for the full request body and a working walkthrough.
+### Data Collection AF
 
-## R2 (Direct Data Reporting API) - Ndcaf_DataReporting
+<RepoCards slugs={['rt-data-collection-application-function']} />
 
-R2 supports interactions between the Direct Data Collection Client in the UE and the Data Collection AF to:
+- **Release and build:** latest release 1.1.0; `development` is two commits ahead, with corrected HTTP status codes. Built against the 5G_APIs tag `TSG105-Rel18`.
+- **Implemented:** creating, reading and deleting Provisioning Sessions, Data Reporting Configurations and Data Reporting Sessions; communication reports; time-window aggregation; event subscription and notification at R5 and R6; registration of one AF profile with the NRF.
+- **Needs fix:** replacing a Data Reporting Configuration does not store it; the aggregation names MAXIMUM and MINIMUM are not accepted; `"expedite": false` is treated as true; replacing a subscription does not change its notifications; the installed default configuration uses section names the library does not read, so the AF starts without its data collection servers.
+- **Not implemented:** PATCH, user and location restrictions, record types other than communication, TLS and OAuth 2.0, and a Direct, Indirect or AS data collection client.
+- **Other branches:** `bugfix/dcaf-subproject-integration` lets another project build the Data Collection AF as a subproject; `feature/integration-test` adds a Python test suite for R1, R2 and R6.
 
-- Obtain data collection and reporting configuration from the corresponding Data Collection AF instance (by means of Ndcaf_DataReporting service) - when used by a Direct Data Collection Client instance.
-- Send reports to a Data Collection AF instance (by means of Ndcaf_DataReporting service) - when subsequently used by the Direct Data Collection Client.
+### 5G Media Streaming components
 
-The shape of the request body when creating a new Data Reporting Session:
+<RepoCards slugs={['rt-5gms-application-function', 'rt-5gms-application-server', 'rt-5gms-media-session-handler', 'rt-5gms-application-provider']} />
 
-```json
-{
-  "externalApplicationId": "{{ _.external_application_id }}",
-  "supportedDomains": ["COMMUNICATION"]
-}
-```
+- **5GMS AF:** on `development`, no Data Collection AF and no Event Data Processing provisioning; QoE metrics and consumption reports received at M5 are written to files. The unmerged branch `Feature/DCAF` links the Data Collection AF library, but does not start, because it registers no report handlers. The branch `feature/Integrate-DCAF` holds an integration plan, with no code.
+- **5GMS AS:** no reporting of media streaming access activity at R4.
+- **5GMS client:** the Media Session Handler sends QoE metrics and consumption reports at M5; no ANBR-based Network Assistance reporting at R2.
+- **5GMS Application Provider:** the M1 Event Data Processing methods are commented out, and there is no Event Consumer AF.
 
-See the [Docker + Insomnia tutorial](./tutorials/docker-with-insomnia) for the full request body and a working walkthrough.
+### Packages
 
-## Docker deployment support
+| Component | Package |
+| --- | --- |
+| Data Collection AF | [Container image](https://github.com/5G-MAG/rt-data-collection-application-function/pkgs/container/data-collection-af) |
 
-Docker-Compose setups are provided to run the Data Collection AF in Docker container environments, so the standalone DCAF can be brought up quickly for testing.
+## Used with other projects
 
-<img loading="lazy" src={useBaseUrl('/assets/images/dcaf/uedc_docker_1.png')} style={{width: '80%'}} alt="Docker-Compose deployment of the Data Collection AF and supporting containers" />
-
-_Figure: Docker-Compose deployment of the Data Collection AF._
-
-## How the tools map to the standard
-
-The implementation provides a reusable DCAF Service Provider library plus a runnable Application Function. It implements the generic handling described in TS 26.531/26.532, covering provisioning, the receipt and queueing of data reports, and event subscription management, together with the service endpoints for the reference points. The interface coverage exercised on this page is:
-
-- **R1 (provisioning)** via `Ndcaf_DataReportingProvisioning` - create provisioning sessions and data reporting configurations, including Data Access Profiles.
-- **R2 (direct data reporting)** via `Ndcaf_DataReporting` - obtain a reporting configuration and submit reports from a Direct Data Collection Client.
-- **R6 (event exposure)** via `Naf_EventExposure` - an Event Consumer AF subscribes and receives notifications.
-
-The other reference points in the framework (R3 for the Indirect Data Collection Client, R4 for Application Server reporting, and R5 for NWDAF exposure) exist in the standard but are not exercised by the examples on this page. The green ticks in the DCAF functional-block diagram above indicate which building blocks are implemented.
-
-## Packages
-
-This project provides or makes use of the following GitHub Container packages.
-
-The published container image lets you run the Data Collection Application Function (DCAF) without compiling it yourself. Use the pre-built image when you want to try the DCAF quickly or run it in a container environment; build from source instead when you need to modify the code or work from an unreleased branch. The [DCAF Docker and Insomnia tutorial](./tutorials/docker-with-insomnia) walks through running it.
-
-### UE data collection, reporting and event exposure
-
-| Components | Package                                                                                                                     |
-| ---------- | --------------------------------------------------------------------------------------------------------------------------- |
-| DCAF       | [DCAF container image](https://github.com/5G-MAG/rt-data-collection-application-function/pkgs/container/data-collection-af) |
-
-## Getting Started
-
-Bring up the standalone DCAF (see [Docker deployment support](#docker-deployment-support) above), provision it over R1, subscribe an Event Consumer AF over R6, then open a data reporting session and submit reports over R2. The [Docker + Insomnia tutorial](./tutorials/docker-with-insomnia) walks through these steps end to end. The source lives in [Repositories & Releases](/reference-tools/data-collection#repositories--releases) on the project index.
+<ul>
+{IMPLEMENTATION.dependencies.map((d) => (
+  <li key={d.what}><strong>{d.project}</strong>: {d.what}. <em>{d.status}.</em></li>
+))}
+</ul>
 
 ## Related
 
 - [Repositories & Releases](/reference-tools/data-collection#repositories--releases)
 - [Slide deck: UE Data Collection, Reporting and Event Exposure overview](pathname:///docs/Reference_Tools_UE_data_collection.pdf)
-- Implementation Blueprint: [UE Data Collection reference points (R1&ndash;R6)](/tech/data-collection#reference-points-r1-to-r6) &mdash; the step-by-step procedure this tool implements
-- Testbeds: [AI/ML Evaluation Framework](/testbeds/ai-ml) and [6G AI Traffic Characterization Testbed](/testbeds/6g-testbed) &mdash; complementary evaluation activities that consume this data rather than reimplementing it
-:::note
-Refer to the [UE Data Collection repositories](https://github.com/5G-MAG) on GitHub to use or contribute to these Reference Tools. See [How to Contribute](/contributing) for the process.
-:::
+- [5G Media Streaming: Implementation Detail](/reference-tools/5gms/implementation)
