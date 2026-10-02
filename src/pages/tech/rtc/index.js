@@ -113,9 +113,6 @@ export default function RTC() {
               standardsHref="/standards/rtc"
               softwareHref="/reference-tools/rtc"
             />
-            <p style={{ textAlign: 'center', marginTop: '0.5rem' }}>
-              <a href="https://github.com/orgs/5G-MAG/projects/44/views/19">Execution Plan</a>
-            </p>
           </div>
         </section>
 

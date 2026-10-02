@@ -117,9 +117,6 @@ export default function NPN() {
               standardsHref="/standards/npn"
               softwareHref="/reference-tools/npn"
             />
-            <p style={{ textAlign: 'center', marginTop: '0.5rem' }}>
-              <a href="https://github.com/orgs/5G-MAG/projects/44/views/11">Execution Plan</a>
-            </p>
           </div>
         </section>
 
