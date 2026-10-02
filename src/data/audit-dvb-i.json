@@ -1,0 +1,3122 @@
+{
+ "area": "dvb-i",
+ "title": "DVB-I Services over 5G Systems",
+ "audited": "2026-10-02",
+ "tier": "T0",
+ "method": "code read at the commits listed, nothing built or run for the verdicts (the repositories' own tests pass at these commits). Read at 7a9ae28, 003ce59 and 97721a6; moved to 32d8344, f06e618 and 8708485 (development, 2026-10-02), which replace the local 5G extension with IdentifierBasedDeliveryParameters: evidence lines remapped through the diff, and the entries on the changed code re-read. The audit was then moved to fa1a63c, bb46926 and 1f33245 (development) after the compliance work, and all cases of the provider, client and registry were re-judged by a second reader on 2026-10-02 against the code at those commits, with the repositories' test suites run and passing.",
+ "releases": {
+  "V121": "ETSI TS 103 770 V1.2.1 (2024-09), Service Discovery and Programme Metadata for DVB-I, with its schemas (annex B)"
+ },
+ "releaseNames": {
+  "V121": "TS 103 770 V1.2.1"
+ },
+ "dependencies": [
+  {
+   "project": "5G Media Streaming (5GMS)",
+   "what": "the Exo DVB-I Player lives in rt-5gms-application",
+   "status": "used"
+  }
+ ],
+ "components": {
+  "app": {
+   "short": "Client",
+   "name": "DVB-I Application (browser client)",
+   "builtAgainst": "TS 103 770 V1.2.1 (no build pin; stated in the README)",
+   "repos": [
+    {
+     "repo": "rt-dvb-i-application",
+     "commit": "bb46926",
+     "version": ""
+    }
+   ]
+  },
+  "provider": {
+   "short": "Provider",
+   "name": "DVB-I Application Provider (service list and content guide)",
+   "builtAgainst": "TS 103 770 V1.2.1; output checked against its schemas",
+   "repos": [
+    {
+     "repo": "rt-dvb-i-application-provider",
+     "commit": "fa1a63c",
+     "version": ""
+    }
+   ]
+  },
+  "registry": {
+   "short": "Registry",
+   "name": "DVB-I Service List Registry",
+   "builtAgainst": "TS 103 770 V1.2.1; responses checked against dvbi_service_list_discovery_v1.6.xsd",
+   "repos": [
+    {
+     "repo": "rt-dvb-i-service-list-registry",
+     "commit": "1f33245",
+     "version": ""
+    }
+   ]
+  },
+  "exo": {
+   "short": "Exo player",
+   "name": "Exo DVB-I Player (Android WebView around an external DVB-I frontend, with ExoPlayer)",
+   "builtAgainst": "ExoPlayer r2.18.2 (submodule); no DVB-I version stated",
+   "repos": [
+    {
+     "repo": "rt-5gms-application",
+     "commit": "6536205",
+     "version": "v1.3.0"
+    }
+   ]
+  }
+ },
+ "features": [
+  {
+   "name": "Service list discovery",
+   "summary": "The registry answers queries with schema-valid Service List Entry Points for every offering type, includes offerings that leave a filter unspecified, refuses invalid TargetCountry and Language values, writes the service list media type and @regulatorListFlag, and serves over TLS when configured; it refuses unknown genre terms only when the operator supplies the genre schemes, and how it treats image_variant falls under a contradiction in the specification. The browser client queries a registry, lists regulator lists first, acts on Delivery, Language, TargetCountry and logos, and checks ServiceListId; it does not always make a regulator list the default. The Exo DVB-I Player does no discovery of its own.",
+   "requirements": [
+    {
+     "id": "5.1.3.2-query-registry",
+     "name": "Service List Registry query filtering",
+     "release": "V121",
+     "component": "registry",
+     "spec": {
+      "doc": "ETSI TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.1.3.2"
+     },
+     "repos": [
+      "rt-dvb-i-service-list-registry"
+     ],
+     "cases": [
+      {
+       "case": "Query endpoint answers an HTTP GET",
+       "verdict": "implemented",
+       "what": "Serves GET /query and answers a valid query with 200 and a ServiceListEntryPoints XML document built from the registry's stored offerings.",
+       "repo": "rt-dvb-i-service-list-registry"
+      },
+      {
+       "case": "No filtering on a parameter that is absent",
+       "verdict": "implemented",
+       "what": "Each filter (TargetCountry, Delivery, Language, Genre, regulatorListFlag, ProviderName) is applied only when the parameter is present, so a query without parameters returns every offering.",
+       "repo": "rt-dvb-i-service-list-registry",
+       "locator": "clause 5.1.3.2"
+      },
+      {
+       "case": "Repeated values with square bracket notation are alternatives (OR)",
+       "verdict": "implemented",
+       "what": "Reads a parameter whether sent once or repeated as name[]=, and keeps an offering if any one of the values matches.",
+       "repo": "rt-dvb-i-service-list-registry",
+       "locator": "clause 5.1.3.2"
+      },
+      {
+       "case": "TargetCountry query includes offerings that specify no TargetCountry",
+       "verdict": "implemented",
+       "what": "The TargetCountry filter is applied only to an offering that declares at least one country, so an offering with no TargetCountry is included in the results of any TargetCountry query.",
+       "repo": "rt-dvb-i-service-list-registry",
+       "locator": "clause 5.1.3.2"
+      },
+      {
+       "case": "Language query includes offerings that specify no Language",
+       "verdict": "implemented",
+       "what": "The Language filter is applied only to an offering that declares at least one language, so an offering with no Language is included in the results of any Language query.",
+       "repo": "rt-dvb-i-service-list-registry",
+       "locator": "clause 5.3.5, Table 12, row Language"
+      },
+      {
+       "case": "Genre query includes offerings that specify no Genre",
+       "verdict": "implemented",
+       "what": "The Genre filter is applied only to an offering that declares at least one genre, so an offering with no Genre is included in the results of any Genre query.",
+       "repo": "rt-dvb-i-service-list-registry",
+       "locator": "clause 5.3.5, Table 12, row Genre"
+      },
+      {
+       "case": "Delivery query values and their DeliveryTypes (table 12b)",
+       "verdict": "implemented",
+       "what": "Accepts exactly dvb-dash, dvb-t, dvb-c, dvb-s, dvb-iptv and application, matching dvb-dash on DASHDelivery, dvb-iptv on MulticastTSDelivery or RTSPDelivery, and the others on their own DeliveryType; an offering matches only on a DeliveryType it actually emits, so one declared without its mandatory values does not match.",
+       "repo": "rt-dvb-i-service-list-registry",
+       "locator": "clause 5.3.6.1, Table 12b"
+      },
+      {
+       "case": "regulatorListFlag query",
+       "verdict": "implemented",
+       "what": "With regulatorListFlag=true only offerings marked as the regulator's list are returned, with false only the others, and without the parameter both.",
+       "repo": "rt-dvb-i-service-list-registry"
+      },
+      {
+       "case": "ProviderName query",
+       "verdict": "implemented",
+       "what": "Keeps only providers whose name equals one of the ProviderName values, compared without regard to case.",
+       "repo": "rt-dvb-i-service-list-registry"
+      }
+     ],
+     "noted": [
+      "Different parameters narrow the result together (each must match); the clause gives the OR rule for repeated values only.",
+      "Language values in the query are lower-cased before comparison, while stored values are compared as written, so an offering stored with an upper-case language code never matches.",
+      "A TargetCountry value is read as a comma separated list (the type allows several codes) and each code, on the query and on the offering, is an alternative; no clause defines matching for a list value.",
+      "Only the first regulatorListFlag value is used, so a query repeating the flag with true and false returns only one kind of list; the clause applies the OR rule where multiple values are accepted and does not say whether they are for this boolean.",
+      "A request URL longer than 2 048 characters is answered with 414; the clause sets the limit but names no response.",
+      "Genre is used to filter but is never written into the response, so a client cannot see why an offering matched a Genre query.",
+      "Delivery values are compared without regard to case, so a value such as DVB-DASH is accepted and matched although table 12b lists the values in lower case; the clause does not say whether case matters."
+     ]
+    },
+    {
+     "id": "5.1.3.2-errors-registry",
+     "name": "Service List Registry error responses",
+     "release": "V121",
+     "component": "registry",
+     "spec": {
+      "doc": "ETSI TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.1.3.2"
+     },
+     "repos": [
+      "rt-dvb-i-service-list-registry"
+     ],
+     "cases": [
+      {
+       "case": "400 for an undefined query parameter",
+       "verdict": "implemented",
+       "what": "Any parameter other than the seven clause 5.1.3.2 lists, with or without square brackets, is answered with 400.",
+       "repo": "rt-dvb-i-service-list-registry",
+       "locator": "clause 5.1.3.2"
+      },
+      {
+       "case": "image_variant query parameter",
+       "verdict": "inconsistent",
+       "what": "image_variant is not one of the accepted parameters, so a request carrying it is answered with 400 whatever its value, including a value listed in table 8.",
+       "repo": "rt-dvb-i-service-list-registry",
+       "conflict": "TS 103 770 V1.2.1 clause 5.2.8.2.1: \"The list of image_variant query parameters listed in table 8 shall be used by ALL endpoints to validate image_variant query parameters.\" and \"If a valid value from this list is used, the response shall not error but is not required to contain an image.\" Clause 5.1.3.2 does not list image_variant among the Service List Registry parameters and requires 400 \"if an undefined query parameter is provided with a request to a Service List Registry endpoint; or\".",
+       "locator": "clause 5.2.8.2.1; clause 5.1.3.2"
+      },
+      {
+       "case": "400 for an invalid Delivery value",
+       "verdict": "implemented",
+       "what": "A Delivery value outside table 12b is answered with 400.",
+       "repo": "rt-dvb-i-service-list-registry",
+       "locator": "clause 5.1.3.2"
+      },
+      {
+       "case": "400 for an invalid regulatorListFlag or inlineImages value",
+       "verdict": "implemented",
+       "what": "A value other than true or false is answered with 400.",
+       "repo": "rt-dvb-i-service-list-registry",
+       "locator": "clause 5.1.3.2"
+      },
+      {
+       "case": "400 for an invalid TargetCountry value",
+       "verdict": "implemented",
+       "what": "Every TargetCountry value must match the ISO-3166-List pattern of its schema type (upper-case three-letter codes, comma separated), or the query is answered with 400; lower-case and malformed codes are refused.",
+       "repo": "rt-dvb-i-service-list-registry",
+       "locator": "clause 5.1.3.2; clause 5.3.5 (TargetCountry of type tva:ISO-3166-List); tva_metadata_3-1.xsd, simpleType ISO-3166-List, pattern [A-Z]{3}(,[A-Z]{3})*"
+      },
+      {
+       "case": "400 for an invalid Language value",
+       "verdict": "implemented",
+       "what": "Every Language value must match the lexical pattern of the XML Schema language type on which the Language type is based, or the query is answered with 400.",
+       "repo": "rt-dvb-i-service-list-registry",
+       "locator": "clause 5.1.3.2; clause 5.3.5 (Language of type tva:AudioLanguageType); tva_metadata_3-1.xsd AudioLanguageType, tva_mpeg7.xsd ExtendedLanguageType (base language); XML Schema Part 2 Second Edition clause 3.3.3"
+      },
+      {
+       "case": "400 for an invalid Genre value",
+       "verdict": "differs",
+       "what": "A Genre value that is not one of the three table 12 scheme URIs followed by a colon and a term identifier is refused with 400; whether the term exists in its scheme is checked only when the operator supplies the scheme files, so in the default configuration a well-formed value naming a term no scheme defines is accepted with 200, where the clause requires a 400 for an invalid value.",
+       "repo": "rt-dvb-i-service-list-registry",
+       "locator": "clause 5.1.3.2; clause 5.3.5, Table 12, row Genre"
+      }
+     ],
+     "noted": [
+      "The registry requires no query parameter, so the 422 response for a registry that does never arises.",
+      "A parameter given with an empty value is treated as absent rather than refused.",
+      "regulatorListFlag and inlineImages accept true and false in any letter case and refuse 1 and 0; the clause calls the values boolean but does not say which written forms a query may use.",
+      "TS 103 770 V1.2.1 is not consistent on this: clause 5.1.3.2 requires 400 for an undefined parameter, while clause 6.2.2 says a server may ignore it. Answering 400 satisfies both, so the verdict does not depend on which reading applies.",
+      "TargetCountry and Language values are checked against the patterns of their schema types only; whether a code is in the ISO 3166 list or is a registered language identifier is not checked (ISO 3166 and RFC 3066 not held for this audit).",
+      "The form of a Genre value (scheme URI, a colon, the term identifier) is a reading: clause 5.1.3.2 does not define it, and the rule for term references is in ISO/IEC 15938-5, not held. With the scheme files supplied, an undefined term is refused with 400 (observed with test scheme files); the repository test of that mode skips without the TV-Anytime ContentCS and FormatCS files, which this audit does not hold."
+     ]
+    },
+    {
+     "id": "5.1.3.2-response-registry",
+     "name": "Service List Registry query response",
+     "release": "V121",
+     "component": "registry",
+     "spec": {
+      "doc": "ETSI TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.1.3.2"
+     },
+     "repos": [
+      "rt-dvb-i-service-list-registry"
+     ],
+     "cases": [
+      {
+       "case": "Response is a ServiceListEntryPoints document valid against the clause 5.3 schema",
+       "verdict": "implemented",
+       "what": "Returns ServiceListEntryPoints in the servicelistdiscovery 2024 namespace with xml:lang, then ProviderOffering elements; responses built from the shipped data and the test data, including offerings with DVB-C, DVB-S and application delivery, validate against dvbi_service_list_discovery_v1.6.xsd in the repository's schema check.",
+       "repo": "rt-dvb-i-service-list-registry"
+      },
+      {
+       "case": "No ProviderOffering when nothing matches",
+       "verdict": "implemented",
+       "what": "A provider with no matching offering is left out, so a query that matches nothing returns a document with ServiceListRegistryEntity and no ProviderOffering.",
+       "repo": "rt-dvb-i-service-list-registry",
+       "locator": "clause 5.1.3.2"
+      }
+     ],
+     "noted": [
+      "The response is served as application/xml; the specification defines no media type for it.",
+      "inlineImages is accepted and validated but changes nothing: the registry stores and emits no graphical element in any form (RelatedMaterial is optional), so there is nothing to inline and, without the parameter, the default of false is met."
+     ]
+    },
+    {
+     "id": "5.3-entrypoints-registry",
+     "name": "Service List Entry Point fields",
+     "release": "V121",
+     "component": "registry",
+     "spec": {
+      "doc": "ETSI TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.3.2, Table 9"
+     },
+     "repos": [
+      "rt-dvb-i-service-list-registry"
+     ],
+     "cases": [
+      {
+       "case": "ServiceListRegistryEntity",
+       "verdict": "implemented",
+       "what": "Emits ServiceListRegistryEntity with the registry's Name; no Kind, contact or regulatorFlag is emitted, all optional.",
+       "repo": "rt-dvb-i-service-list-registry",
+       "locator": "clause 5.3.2, Table 9, row ServiceListRegistryEntity; clause 5.3.3, Table 10"
+      },
+      {
+       "case": "ProviderOffering with Provider and ServiceListOffering",
+       "verdict": "implemented",
+       "what": "Each matching provider becomes one ProviderOffering with a Provider Name and one ServiceListOffering per matching offering.",
+       "repo": "rt-dvb-i-service-list-registry",
+       "locator": "clause 5.3.4, Table 11"
+      },
+      {
+       "case": "ServiceListName, Language, TargetCountry and ServiceListId",
+       "verdict": "implemented",
+       "what": "Emits ServiceListName, Language, TargetCountry and ServiceListId from the stored offering, in schema order.",
+       "repo": "rt-dvb-i-service-list-registry",
+       "locator": "clause 5.3.5, Table 12"
+      },
+      {
+       "case": "ServiceListURI @contentType",
+       "verdict": "implemented",
+       "what": "Every ServiceListURI carries contentType application/vnd.dvb.dvbisl+xml, the media type of a Service List.",
+       "repo": "rt-dvb-i-service-list-registry",
+       "locator": "clause 5.5.9, Table 22, row @contentType; clause 5.1.2"
+      },
+      {
+       "case": "Delivery with DASHDelivery, DVBTDelivery, RTSPDelivery, MulticastTSDelivery",
+       "verdict": "implemented",
+       "what": "Emits the declared DeliveryType children as empty elements in schema order, which is valid for these four types.",
+       "repo": "rt-dvb-i-service-list-registry",
+       "locator": "clause 5.3.6.1, Table 12a"
+      },
+      {
+       "case": "Delivery with DVBCDelivery, DVBSDelivery or ApplicationDelivery",
+       "verdict": "implemented",
+       "what": "DVBCDelivery is written with its networkID, DVBSDelivery with one or more OrbitalPosition values and ApplicationDelivery with one or more ApplicationType elements carrying contentType (and xmlAitApplicationType for an XML AIT), taken from the registry data and checked against their schema types; a delivery declared without valid values is left out and logged, so no incomplete element is written.",
+       "repo": "rt-dvb-i-service-list-registry",
+       "locator": "clause 5.3.6.6, Table 12f, row @networkID; clause 5.3.6.7, Table 12g, row OrbitalPosition; clause 5.3.6.8, Table 12h, row ApplicationType"
+      },
+      {
+       "case": "@regulatorListFlag on a regulator's list",
+       "verdict": "implemented",
+       "what": "An offering stored as the regulator's list is written with regulatorListFlag=\"true\"; other offerings leave the attribute out and so take the default false.",
+       "repo": "rt-dvb-i-service-list-registry",
+       "locator": "clause 5.3.5, Table 12, row @regulatorListFlag"
+      }
+     ],
+     "noted": [
+      "@version is not emitted (it is optional), so a client cannot tell from the document that the registry data changed.",
+      "Several ServiceListName values can be emitted without xml:lang; Table 12 allows several names only with different xml:lang values.",
+      "ServiceListName and ServiceListId are whatever the operator stores; nothing compares them with the Name and id of the list at the ServiceListURI, which Table 12 requires to be the same name. With the shipped data and the provider's default configuration they differ.",
+      "The stored kind of the registry is not written into ServiceListRegistryEntity.",
+      "No offering is marked as carried over 5G Broadcast: TS 103 770 V1.2.1 gives a registry no element or Delivery value for it, and the registry adds none of its own.",
+      "No delivery type is ever marked @required (optional, default false), so a client cannot tell which delivery methods the provider considers essential.",
+      "No RelatedMaterial (service list logo) is emitted, and the registry data has no field for one; the element is optional.",
+      "SRSSupport is never emitted and the registry data has no field for it. TS 103 770 clause 5.6.4.1 places the duty to include SRSSupport in the ServiceListOffering on the Service List Server, while the ServiceListOffering is returned by the registry, so the specification does not say who emits it.",
+      "An offering that declares only deliveries without valid values is written with an empty Delivery element, which the schema allows; it then matches no Delivery query."
+     ]
+    },
+    {
+     "id": "7.3-registry",
+     "name": "HTTP over TLS (registry)",
+     "release": "V121",
+     "component": "registry",
+     "spec": {
+      "doc": "ETSI TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 7.3"
+     },
+     "repos": [
+      "rt-dvb-i-service-list-registry"
+     ],
+     "cases": [
+      {
+       "case": "Query endpoint served over TLS",
+       "verdict": "implemented",
+       "what": "With a key and certificate configured the registry serves its endpoints over HTTPS only and does not answer plain HTTP on that port; an incomplete or unreadable TLS configuration stops it rather than falling back to HTTP. With neither configured it serves plain HTTP with a warning, for the same-private-subnet case the clause allows.",
+       "repo": "rt-dvb-i-service-list-registry"
+      },
+      {
+       "case": "Server supports TLS 1.2 (and should support TLS 1.3)",
+       "verdict": "implemented",
+       "what": "The HTTPS server uses the runtime's default TLS range, TLS 1.2 to TLS 1.3, and refuses to start if the configured range excludes TLS 1.2, warning if it excludes TLS 1.3; handshakes with TLS 1.2 only and TLS 1.3 only both succeed in the repository test.",
+       "repo": "rt-dvb-i-service-list-registry",
+       "locator": "clause 7.3"
+      }
+     ],
+     "noted": [
+      "In plain HTTP mode the registry does not check that a client is on its private subnet, which is the only case the clause allows HTTP without TLS; the README leaves that to the deployment.",
+      "The TLS profile the clause takes from ETSI TS 102 796 clause 11.2 (root certificates, cipher suites, signature algorithms, key sizes, curves) is not applied; the runtime defaults are used.",
+      "The shipped registry data lists the provider's service list at an http:// URL on localhost, while the provider now serves over TLS by default."
+     ]
+    },
+    {
+     "id": "5.1.3.2-query-app",
+     "name": "Client query to a Service List Registry",
+     "release": "V121",
+     "component": "app",
+     "spec": {
+      "doc": "ETSI TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.1.3.2"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "Percent-encoding of query values",
+       "verdict": "implemented",
+       "what": "The country code the user types is percent-encoded before it is put in the query.",
+       "repo": "rt-dvb-i-application"
+      },
+      {
+       "case": "Parameters in the specified order",
+       "verdict": "implemented",
+       "what": "Sends a single parameter, TargetCountry, so the order rule is met; no other parameter and no repeated value is ever sent.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 5.1.3.2"
+      }
+     ],
+     "noted": [
+      "The registry endpoint is user-configurable and defaults to a third-party public registry; a query string already in the configured endpoint is kept and TargetCountry appended after it.",
+      "Besides a registry, the client accepts a typed Service List URL, preset URLs and a built-in default URL, the other discovery options clause 5.1.3.1 describes.",
+      "The registry query goes through the same HTTP handling as the service list requests (clause 4.3, judged under its own feature): a failure is reported to the user as a failed lookup and not retried automatically, and after a 400 or 406 the same query is not sent again.",
+      "The encoding used leaves the characters ! ' ( ) * as they are. Whether this meets the clause could not be checked: IETF RFC 3986, whose clause 2.2 defines the reserved characters, was not available to this audit (unverified). Country codes are letters only, so a valid query is not affected."
+     ]
+    },
+    {
+     "id": "8.5.3.2-app",
+     "name": "Client support of Service List Entry Point fields",
+     "release": "V121",
+     "component": "app",
+     "spec": {
+      "doc": "ETSI TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 8.5.1"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "ServiceListEntryPoints and ProviderOffering (Tables 80, 82)",
+       "verdict": "implemented",
+       "what": "Recognises a ServiceListEntryPoints root and reads every ServiceListOffering in it, in any namespace, using the Provider Name only as a fallback label.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 8.5.3.2, Tables 80 and 82"
+      },
+      {
+       "case": "ServiceListName and ServiceListURI (Table 83)",
+       "verdict": "implemented",
+       "what": "Labels each offering with its first ServiceListName and keeps all of its ServiceListURI addresses, in order and without duplicates, as fallbacks for the same list; a single installable offering is loaded at once, several are offered for the user to pick.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 8.5.3.2, Table 83, rows ServiceListName and ServiceListURI"
+      },
+      {
+       "case": "@regulatorListFlag preference (Table 83 note 2)",
+       "verdict": "differs",
+       "what": "Reads the flag and offers regulator lists first, with the first one it can install marked as the default and focused; a regulator list it should not install (for example one requiring DVB-T, or one for another country) is shown disabled and a non-regulator list becomes the default, while NOTE 2 requires the default to be a list with @regulatorListFlag true whenever the response includes one.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 8.5.3.2, Table 83, NOTE 2"
+      },
+      {
+       "case": "Delivery and its DeliveryType children (Tables 83, 83a)",
+       "verdict": "implemented",
+       "what": "Reads Delivery and each delivery type in it with its @required flag; an offering that requires a broadcast, RTSP or multicast delivery, or only application types this client cannot run, is shown disabled with the reason and is not installed, and several required DVB-T, DVB-C or DVB-S entries are taken as alternatives.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 8.5.3.2, Table 83, row Delivery; Table 83a"
+      },
+      {
+       "case": "Language and TargetCountry (Table 83)",
+       "verdict": "implemented",
+       "what": "Reads Language and TargetCountry and shows them; offerings in the preferred audio language are offered first, and an offering whose TargetCountry does not include the country looked up is shown disabled; one without TargetCountry is accepted for any country.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 8.5.3.2, Table 83, rows Language and TargetCountry"
+      },
+      {
+       "case": "RelatedMaterial (Table 83)",
+       "verdict": "implemented",
+       "what": "Reads the service list logo (HowRelatedCS:2021:1001.1) of each offering and shows it beside the offering name; a logo that fails to load is removed.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 8.5.3.2, Table 83, row RelatedMaterial"
+      },
+      {
+       "case": "Organization @regulatorFlag (Table 81)",
+       "verdict": "implemented",
+       "what": "Reads @regulatorFlag of the registry entity and of each provider; the picker says when the registry is a recognized regulator and labels offerings whose provider is one.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 8.5.3.2, Table 81, row @regulatorFlag"
+      }
+     ],
+     "noted": [
+      "A response with no ServiceListOffering, which means nothing matched, is treated as if the registry URL were itself a Service List and is fetched again as one.",
+      "A non-standard root of ProviderOffering in the older servicediscovery namespaces is also parsed; it carries none of the fields above and they are not read from it.",
+      "ServiceListURI @contentType is ignored; any URI is fetched as a Service List.",
+      "When an offering has several ServiceListName values the first is shown, whatever the user's language preference.",
+      "Genre and SRSSupport, which table 83 does not mark for any receiver, are not read."
+     ]
+    },
+    {
+     "id": "5.3.6.2-app",
+     "name": "Client use of required delivery and ServiceListId",
+     "release": "V121",
+     "component": "app",
+     "spec": {
+      "doc": "ETSI TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.3.6.2, Table 12c, row @required"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "Install only when every required delivery type is usable (should)",
+       "verdict": "implemented",
+       "what": "Reads @required on every delivery type of an offering; an offering that requires a delivery this IP-only client cannot use (DVB-T, DVB-C, DVB-S, RTSP, multicast, or only application types it cannot run) is shown disabled with the reason and never installed, also when it is the only one returned. This is a should.",
+       "repo": "rt-dvb-i-application"
+      },
+      {
+       "case": "ServiceList@id checked against ServiceListOffering ServiceListId (should)",
+       "verdict": "implemented",
+       "what": "Keeps the registry's ServiceListId with the offering; a list whose @id differs fails like any other error, so the next ServiceListURI is tried and, when none works, the failure is reported with the mismatch as its cause. This is a should.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 5.3.5, Table 12, row ServiceListId"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "5.1.3.2-exo",
+     "name": "Service list discovery in the Exo DVB-I Player",
+     "release": "V121",
+     "component": "exo",
+     "spec": {
+      "doc": "ETSI TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 8.5.1; clause 8.5.3.2, Tables 80 to 83"
+     },
+     "repos": [
+      "rt-5gms-application"
+     ],
+     "cases": [
+      {
+       "case": "Query a Service List Registry and read ServiceListEntryPoints",
+       "verdict": "absent",
+       "what": "The wrapper sends no registry query and parses no ServiceListEntryPoints document; discovery and service list handling happen in the external third-party frontend it loads, which is not 5G-MAG code."
+      }
+     ],
+     "exists": "A hard-coded landing page of the external frontend is loaded in the WebView, and a hard-coded Service List URL on the same third-party host is fetched into the app cache.",
+     "noted": [
+      "The wrapper downloads one fixed Service List into its cache at start-up, but nothing in this repository reads that file."
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Service lists and services",
+   "summary": "The provider publishes schema-valid service lists as application/vnd.dvb.dvbisl+xml, with a new version on every change, JPEG or PNG logos, image variants, subscription packages, one LCN table per region and region selection by regionID. The client chooses one LCN table by region, honours @visible, @selectable and LCNRange, every target region, subscription packages, parental ratings and linked applications, and reads XML AITs; it still plays media for a controlling application of a type it cannot start, does not apply the XML AIT platform profile, and shows an error when an XML AIT has no application it can run. The Exo player leaves all of this to an external frontend.",
+   "requirements": [
+    {
+     "id": "sl-5.1.2-provider",
+     "name": "Service list publication (media type)",
+     "release": "V121",
+     "component": "provider",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.1.2"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "Service list served at a stable URL",
+       "verdict": "implemented",
+       "what": "Serves the generated ServiceList at one fixed URL on every GET, with Last-Modified and conditional GET.",
+       "repo": "rt-dvb-i-application-provider"
+      },
+      {
+       "case": "Media type application/vnd.dvb.dvbisl+xml",
+       "verdict": "implemented",
+       "what": "Sends the service list with Content-Type application/vnd.dvb.dvbisl+xml.",
+       "repo": "rt-dvb-i-application-provider"
+      }
+     ],
+     "noted": [
+      "Whether the list is served over TLS (clause 7.3) is not judged in this feature."
+     ]
+    },
+    {
+     "id": "sl-5.1.4-provider",
+     "name": "Each service defined once in a list",
+     "release": "V121",
+     "component": "provider",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.1.4"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "Duplicate UniqueIdentifier refused when a service is saved in the editor",
+       "verdict": "implemented",
+       "what": "The service editor refuses to save a service whose UniqueIdentifier is already used by another service, and template loading renames a clashing identifier.",
+       "repo": "rt-dvb-i-application-provider"
+      },
+      {
+       "case": "Duplicate UniqueIdentifier refused on every path that publishes",
+       "verdict": "implemented",
+       "what": "Cloning gives the copy a new UniqueIdentifier, and publishing from the editor or the configuration API and restoring a saved copy all refuse two published services with the same UniqueIdentifier; a disabled copy, which is not published, is accepted.",
+       "repo": "rt-dvb-i-application-provider"
+      }
+     ],
+     "noted": [
+      "A configuration file edited outside the server that already repeats a UniqueIdentifier is loaded and served as it is, with a warning in the log, until its next publish is refused."
+     ]
+    },
+    {
+     "id": "sl-5.1.5-provider",
+     "name": "Subscription packages",
+     "release": "V121",
+     "component": "provider",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.1.5"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "SubscriptionPackage on service instances",
+       "verdict": "implemented",
+       "what": "Emits the operator's package label as a SubscriptionPackage in every ServiceInstance of the service, in schema order after Availability.",
+       "repo": "rt-dvb-i-application-provider"
+      },
+      {
+       "case": "SubscriptionPackageList when packages are used",
+       "verdict": "implemented",
+       "what": "Writes a SubscriptionPackageList after the services listing once each package carried on a service instance, and none when no instance carries one.",
+       "repo": "rt-dvb-i-application-provider"
+      }
+     ],
+     "noted": [
+      "Only one package label per service is possible, applied identically to all its instances; packages are never attached to LCN tables."
+     ]
+    },
+    {
+     "id": "sl-5.2.2-provider",
+     "name": "Service and service list identifiers",
+     "release": "V121",
+     "component": "provider",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.2.2"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "ServiceList@id",
+       "verdict": "implemented",
+       "what": "Uses the configured list identifier, or a tag: URI by default, and keeps it the same whatever query parameters the request carries.",
+       "repo": "rt-dvb-i-application-provider"
+      },
+      {
+       "case": "Service UniqueIdentifier",
+       "verdict": "implemented",
+       "what": "Emits the configured identifier; the editor proposes a tag: URI when the operator leaves it empty.",
+       "repo": "rt-dvb-i-application-provider"
+      }
+     ],
+     "noted": [
+      "The default identifiers use the reserved example domain dvbi.example as tagging entity, so every deployment that keeps the defaults publishes the same identifiers; an operator-entered identifier is not checked for a URI scheme when saved (only the editor's separate checker warns)."
+     ]
+    },
+    {
+     "id": "sl-5.2.3-provider",
+     "name": "Linked applications in the service list",
+     "release": "V121",
+     "component": "provider",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.2.3.1"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "HowRelated from LinkedApplicationCS:2019 and MediaUri with @contentType",
+       "verdict": "implemented",
+       "what": "Emits a service-level RelatedMaterial with HowRelated urn:dvb:metadata:cs:LinkedApplicationCS:2019:1.1 and a MediaUri whose @contentType is the operator's value or text/html.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 5.2.3.1"
+      },
+      {
+       "case": "At most one 1.1 or 1.2 application per @contentType",
+       "verdict": "implemented",
+       "what": "At most one linked application can be configured per service, so at most one such RelatedMaterial is emitted.",
+       "repo": "rt-dvb-i-application-provider"
+      }
+     ],
+     "noted": [
+      "The HowRelated term is fixed at 1.1 (application with media in parallel); an application that controls media presentation (1.2), one for when the service is not active (2) or a home page application (3) cannot be signalled."
+     ]
+    },
+    {
+     "id": "sl-5.2.5-provider",
+     "name": "Part-time services (Availability)",
+     "release": "V121",
+     "component": "provider",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.2.5.2"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "Availability inside the service instance",
+       "verdict": "implemented",
+       "what": "When the operator sets a start or end date, every ServiceInstance of the service carries Availability with one Period whose @validFrom and @validTo are those dates.",
+       "repo": "rt-dvb-i-application-provider"
+      }
+     ],
+     "noted": [
+      "Only one date window per service can be expressed: no Interval (days of week, times of day, recurrence) and no per-instance difference."
+     ]
+    },
+    {
+     "id": "sl-5.2.6-provider",
+     "name": "Logos and banners",
+     "release": "V121",
+     "component": "provider",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.2.6.2"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "Service logo RelatedMaterial (HowRelatedCS:2021:1001.2, MediaUri with @contentType)",
+       "verdict": "implemented",
+       "what": "Emits one RelatedMaterial per service with HowRelated urn:dvb:metadata:cs:HowRelatedCS:2021:1001.2 and one MediaLocator whose MediaUri carries a @contentType, written only for a JPEG or PNG logo.",
+       "repo": "rt-dvb-i-application-provider"
+      },
+      {
+       "case": "At least one logo as image/jpeg or image/png",
+       "verdict": "implemented",
+       "what": "A service logo is signalled only when it is image/jpeg or image/png (from the file extension, or the media type of a data URL), uploads accept PNG and JPEG only, and the generated placeholder is not signalled, so every signalled logo is JPEG or PNG; a service without such a logo has no logo RelatedMaterial, which tables 14 and 15 allow.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 5.2.6.2"
+      }
+     ],
+     "noted": [
+      "The logo @contentType comes from the media type of a data URL or from the file extension; a logo URL without a recognised extension is not signalled. No out of service image (1000.1) or content finished image (1000.2) can be signalled.",
+      "No service list logo (HowRelatedCS:2021:1001.1), content guide source logo (1002.1) or service banner (1001.3) can be configured or emitted. Clauses 5.2.6.1, 5.2.6.3 and 5.2.6.4 say how each is signalled when it is provided, and RelatedMaterial is optional in tables 14 and 15, so leaving them out is not a departure."
+     ]
+    },
+    {
+     "id": "sl-5.2.8-provider",
+     "name": "Image requests (variants and width)",
+     "release": "V121",
+     "component": "provider",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.2.8.2.1"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "image_variant validated, 400 for a value not in table 8",
+       "verdict": "implemented",
+       "what": "Every request, on every route including static files, is checked before it is answered: an image_variant outside table 8, or given more than once, gets 400, and a table 8 value is accepted.",
+       "repo": "rt-dvb-i-application-provider"
+      },
+      {
+       "case": "Only the requested variant returned",
+       "verdict": "implemented",
+       "what": "No image variants exist, so a request naming a valid variant gets the service list without service logos and guide responses without programme images; the default image is not returned in their place.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 5.2.8.2.1"
+      }
+     ],
+     "noted": [
+      "Uploaded logos are served as stored files, so neither variants nor scaling apply to them either.",
+      "The logo endpoint ignores the w parameter and returns a fixed-size SVG, so it neither scales nor rejects a width. Clause 5.2.8.3 places the scaling and 400 obligations on a Content Guide Server, and the text does not say whether they bind the server of a logo referenced from a service list, so no verdict is given here."
+     ]
+    },
+    {
+     "id": "sl-5.2.9-provider",
+     "name": "Extensibility (ExtensionBaseType)",
+     "release": "V121",
+     "component": "provider",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.2.9.2"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "OtherDeliveryParameters carries @extensionName",
+       "verdict": "implemented",
+       "what": "The one OtherDeliveryParameters it emits, for HLS, carries @extensionName and an xsi:type naming the concrete type.",
+       "repo": "rt-dvb-i-application-provider"
+      }
+     ],
+     "noted": [
+      "5G Broadcast is not carried through this extension point: a 5G Broadcast instance is IdentifierBasedDeliveryParameters, a TS 103 770 element (see ServiceInstanceType and delivery parameters)."
+     ]
+    },
+    {
+     "id": "sl-5.2.10-provider",
+     "name": "Multilingual elements",
+     "release": "V121",
+     "component": "provider",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.2.10"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "Each repeated ServiceName carries @xml:lang",
+       "verdict": "implemented",
+       "what": "When the operator gives names in several languages, every ServiceName is emitted with @xml:lang; otherwise a single ServiceName without it.",
+       "repo": "rt-dvb-i-application-provider"
+      },
+      {
+       "case": "Each element repeated at most once per language code",
+       "verdict": "implemented",
+       "what": "Publishing refuses a service whose name rows have an empty language code or repeat one, so each ServiceName appears once per language code; the editor still lets such rows be entered, and the publish then fails with the reason.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 5.2.10"
+      }
+     ],
+     "noted": [
+      "Language codes are compared exactly as entered, so two codes differing only in letter case are both accepted; whether they count as one language code is not judged here (the language tag specification was not opened)."
+     ]
+    },
+    {
+     "id": "sl-5.5.1-provider",
+     "name": "ServiceList fields",
+     "release": "V121",
+     "component": "provider",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.5.1, table 14"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "Name, ProviderName, @id, @xml:lang and schema order",
+       "verdict": "implemented",
+       "what": "Emits Name, ProviderName, LanguageList, RegionList, LCNTableList, ContentGuideSourceList, the services and SubscriptionPackageList in schema order, with @id, @version and @xml:lang; the lists the repository's schema test generates validate against the V1.2.1 schema file (T1).",
+       "repo": "rt-dvb-i-application-provider"
+      },
+      {
+       "case": "@version incremented for every published change",
+       "verdict": "implemented",
+       "what": "Every path that publishes (editor or API save, logo upload, logo removal, restoring a saved copy) sets @version to the last published number plus one.",
+       "repo": "rt-dvb-i-application-provider"
+      },
+      {
+       "case": "LanguageList lists the audio languages of the services",
+       "verdict": "implemented",
+       "what": "LanguageList is built from each service's configured audio languages and left out when none is configured.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 5.5.1, table 14, row LanguageList"
+      }
+     ],
+     "noted": [
+      "No TestService is ever emitted, and no service list level RelatedMaterial or TargetRegion.",
+      "The element is emitted as LCNTableList, as clause 5.5.1 and the schema file dvbi_v6.0.xsd name it; annex A.1 as printed names it LCNTableTable. Syntax is judged against the schema file.",
+      "How services are linked to a content guide source (ContentGuideSourceRef, ContentGuideServiceRef) and the language of the ContentGuideSource ProviderName are judged once, under the Content guide feature.",
+      "A list edited by hand outside the server is not given a new @version until its next publish."
+     ]
+    },
+    {
+     "id": "sl-5.5.2-provider",
+     "name": "Service fields",
+     "release": "V121",
+     "component": "provider",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.5.2, table 15"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "UniqueIdentifier, ServiceName, ProviderName, ServiceType, ServiceGenre in schema order",
+       "verdict": "implemented",
+       "what": "Emits each Service with UniqueIdentifier, its instances, TargetRegion, ServiceName, ProviderName, RelatedMaterial, ServiceGenre, ServiceType, ContentGuideSourceRef and ParentalRating in schema order; ServiceType takes linear, linear-radio, ondemand or data, all terms of DVBServiceTypeCS-2019 (clause D.4); the lists the repository's schema test generates validate against the V1.2.1 schema file (T1).",
+       "repo": "rt-dvb-i-application-provider"
+      },
+      {
+       "case": "Service@version incremented for every published change",
+       "verdict": "implemented",
+       "what": "Every publish compares each service's rendered element with the one last published; a changed service, or one whose logo file was replaced or removed, gets a higher @version, an unchanged one keeps its number, and a restored copy never goes back to a lower one.",
+       "repo": "rt-dvb-i-application-provider"
+      },
+      {
+       "case": "ProviderName carries @xml:lang (should)",
+       "verdict": "implemented",
+       "what": "Emits the service ProviderName with @xml:lang set to the list's language, since the provider name is configured in one language only.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 5.5.2, table 15, row ProviderName"
+      }
+     ],
+     "noted": [
+      "ServiceGenre uses the urn:tva:metadata:cs:ContentCS:2011 scheme, which table 15 allows. Whether its term identifiers exist is unverified: could not obtain ETSI TS 102 822-3-1 (TV-Anytime), which defines ContentCS; it is not among the V1.2.1 attachments, and the repository's own term check also leaves ContentCS unchecked. The code maps children to the entertainment term for want of a children term. DVBContentSubjectCS-2019 (clause D.5), the third allowed scheme, is held but not used."
+     ]
+    },
+    {
+     "id": "sl-5.5.12-provider",
+     "name": "LCN tables",
+     "release": "V121",
+     "component": "provider",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.5.12"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "LCN entries reference services of this list",
+       "verdict": "implemented",
+       "what": "Each LCN carries the service's channel number and a @serviceRef equal to its UniqueIdentifier, for enabled services only, sorted by number.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 5.5.10, table 23, row @serviceRef"
+      },
+      {
+       "case": "One table in total when no TargetRegion is used",
+       "verdict": "implemented",
+       "what": "A list without regional services gets a single LCNTable without TargetRegion.",
+       "repo": "rt-dvb-i-application-provider"
+      },
+      {
+       "case": "One applicable table per TargetRegion",
+       "verdict": "implemented",
+       "what": "With regional services, each region's table numbers that region's services and those targeting no region, and no table without TargetRegion is written, so each region has exactly one applicable table.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 5.5.12, table 25, row TargetRegion"
+      }
+     ],
+     "noted": [
+      "A service has one channel number and at most one target region. The editor refuses two services with the same channel number even when they target different regions."
+     ]
+    },
+    {
+     "id": "sl-5.5.28-provider",
+     "name": "Service parental rating",
+     "release": "V121",
+     "component": "provider",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.5.28, table 37f"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "ParentalRating with one MinimumAge applying to all countries",
+       "verdict": "implemented",
+       "what": "When a rating is set, emits ParentalRating with a single MinimumAge and no @countryCodes, which applies irrespective of the country.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 5.5.28, table 37f, row @countryCodes"
+      }
+     ],
+     "noted": [
+      "Nothing checks the MPD for AdaptationSet.Rating, which, when present, obliges Service.ParentalRating to be signalled and to be at least as restrictive."
+     ]
+    },
+    {
+     "id": "sl-5.6.2-provider",
+     "name": "Region list",
+     "release": "V121",
+     "component": "provider",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.6.2.1"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "RegionList present when services have target regions",
+       "verdict": "implemented",
+       "what": "Emits a RegionList with one Region per distinct service TargetRegion whenever any enabled service has one; TargetRegion values are the regionID as element text.",
+       "repo": "rt-dvb-i-application-provider"
+      },
+      {
+       "case": "Regions are leaves and selectable",
+       "verdict": "implemented",
+       "what": "Every region is a top-level region without sub-regions and without @selectable, so each is selectable.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 5.6.2.1"
+      },
+      {
+       "case": "@countryCodes lists the countries of each top-level region",
+       "verdict": "implemented",
+       "what": "@countryCodes is the list's configured country list (ISO 3166 alpha-3 format checked), never derived from the region identifier, and publishing regional services without it is refused.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 5.6.2.1, table 38, row CountryRegionType @countryCodes"
+      },
+      {
+       "case": "RegionList@version incremented for every published change",
+       "verdict": "implemented",
+       "what": "RegionList@version is written from the list @version, which every publish increments, including restoring a saved copy.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 5.6.2.1, table 38, row @version"
+      }
+     ],
+     "noted": [
+      "Table 38 marks CountryRegionType @countryCodes as Optional, while the RegionListType schema in clause 5.6.2.2 and dvbi_v6.0.xsd declare it required. The provider always emits it, which satisfies both. Top-level regions may also be geographical areas rather than single countries (clause 5.6.2.1).",
+      "Every region carries the same configured country list, so a list whose regions lie in different countries cannot describe them separately. A configuration file edited outside the server with regional services and no country is served with Region elements without @countryCodes, which the schema rejects, and a warning in the log."
+     ]
+    },
+    {
+     "id": "sl-5.6.4-provider",
+     "name": "Server-side region selection",
+     "release": "V121",
+     "component": "provider",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.6.4.1"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "Full list when the client supplies no information",
+       "verdict": "implemented",
+       "what": "A request without query parameters returns the whole list with its RegionList and no @responseStatus.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 5.6.4.1"
+      },
+      {
+       "case": "Postcode or regionID method",
+       "verdict": "implemented",
+       "what": "Supports the regionID method: ?region=<regionID> returns the list tailored to that region (its services and those targeting no region, its Region and its LCN table). The postcode method is not offered, which the clause allows when regionID is supported.",
+       "repo": "rt-dvb-i-application-provider"
+      },
+      {
+       "case": "@responseStatus on a tailored response",
+       "verdict": "implemented",
+       "what": "A region request is answered with @responseStatus OK, ERROR_INVALID_REGION_ID for a region the list does not define, or ERROR_INVALID_REQUEST for an empty or repeated region, the two error responses carrying the untailored list.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 5.6.4.5"
+      }
+     ],
+     "noted": [
+      "The server's own TargetCountry parameter still tailors the list by matching the start of each service's region identifier; it is not a method of clause 5.6.4 and its responses carry no @responseStatus.",
+      "Declaring SRSSupport is left to the registry's ServiceListOffering, which is where clause 5.6.4.1 places it (a contradiction recorded in the specification notes); not judged here."
+     ]
+    },
+    {
+     "id": "sl-5.1.7-app",
+     "name": "Service list updates",
+     "release": "V121",
+     "component": "app",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.1.7"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "Checks for an update at least every 24 hours (should)",
+       "verdict": "implemented",
+       "what": "Polls the installed list no more often than every 30 seconds and not before its max-age has passed, with If-Modified-Since, and reloads it when its @version changes; it also checks the list once every 24 hours. After a 400 or 406 answer no further request is sent, as clause 4.3.3.2 requires.",
+       "repo": "rt-dvb-i-application"
+      },
+      {
+       "case": "Randomises an update around a fixed time (should)",
+       "verdict": "implemented",
+       "what": "The daily check runs at a time of day drawn at random over the 24 hours from start-up, then every 24 hours, so clients do not share a fixed update time.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 5.1.7"
+      }
+     ],
+     "noted": [
+      "The polling interval follows max-age where the response gives one, with 30 seconds as the minimum; the caching and retry rules of clause 4.3 are judged under their own feature."
+     ]
+    },
+    {
+     "id": "sl-5.5.1-app",
+     "name": "ServiceList and Service fields presented",
+     "release": "V121",
+     "component": "app",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.5.2, table 15, row ServiceType"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "Service list Name shown",
+       "verdict": "implemented",
+       "what": "Shows the list's Name as the list title and its @version in settings.",
+       "repo": "rt-dvb-i-application"
+      },
+      {
+       "case": "TestService not selectable (should)",
+       "verdict": "implemented",
+       "what": "Only Service elements are read, so TestService entries never appear in the channel list.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 5.5.1, table 14, row TestService"
+      },
+      {
+       "case": "Missing ServiceType means linear television",
+       "verdict": "implemented",
+       "what": "A service without ServiceType is taken as linear television and shown as Linear TV in the player overlay.",
+       "repo": "rt-dvb-i-application"
+      }
+     ],
+     "noted": [
+      "Among several ServiceName elements it shows the one without @xml:lang, else the first, whatever the user's language. ServiceRestriction, read for a subscription badge, is not an element of the V1.2.1 schema.",
+      "How a service finds its content guide source, and the instance DisplayName, are judged once, under the Content guide and Service instance selection features.",
+      "ProminenceList is not read; channel order follows channel numbers and favourites only. Clause 5.2.11 leaves how prominence is shown to local regulation, and its one should (use the nearest ancestor region) applies only to a client that interprets prominence."
+     ]
+    },
+    {
+     "id": "sl-5.5.12-app",
+     "name": "LCN tables and channel numbers",
+     "release": "V121",
+     "component": "app",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.5.12"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "Table without TargetRegion applies anywhere",
+       "verdict": "implemented",
+       "what": "With no region chosen, or no table for the chosen region, channel numbers come from the table without TargetRegion.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 5.5.12, table 25, row TargetRegion"
+      },
+      {
+       "case": "Table chosen by the selected region",
+       "verdict": "implemented",
+       "what": "Selects the table whose TargetRegion names exactly the regionID the user chose; tables for other regions are not used.",
+       "repo": "rt-dvb-i-application"
+      },
+      {
+       "case": "A single table selected, tables not combined",
+       "verdict": "implemented",
+       "what": "Selects one table for the chosen region (and subscription packages), else the one without constraints, and numbers services from that table alone; tables are never combined.",
+       "repo": "rt-dvb-i-application"
+      },
+      {
+       "case": "@visible=false services left out of normal navigation (should)",
+       "verdict": "implemented",
+       "what": "Reads @visible; a service whose number entry has it false is left out of the channel list, the channel up and down order and the guide grid.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 5.5.10, table 23, row @visible"
+      },
+      {
+       "case": "Direct entry of the channel number",
+       "verdict": "implemented",
+       "what": "Typing digits selects the service with that channel number: a hidden service is reached this way unless @selectable is false, and other services among those shown under the current filters.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 5.5.10, table 23, row @visible"
+      },
+      {
+       "case": "@selectable honoured for hidden services (should)",
+       "verdict": "implemented",
+       "what": "Reads @selectable; a service with @visible false and @selectable false is not reached by direct entry of its number, and the flag is ignored for visible services.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 5.5.10, table 23, row @selectable"
+      },
+      {
+       "case": "LCNRange mapping for services without an LCN",
+       "verdict": "implemented",
+       "what": "Services the selected table does not number get numbers from its LCNRange elements in document order, by priority then lowest @start, with both fill methods, ascending, descending and open ranges, and the @serviceType and @serviceGenre filters, for the dvbi and any origins.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 5.5.29, table 37g, row @serviceOrigin"
+      }
+     ],
+     "noted": [
+      "Services that neither an LCN entry nor an LCNRange of the selected table numbers get no channel number, which clause 5.5.29 leaves to the client. The deprecated table-level SubscriptionPackage is still honoured when selecting the table.",
+      "The region is matched as an exact regionID; the region hierarchy of the RegionList is not used, so a table for a parent region is not selected for a sub-region."
+     ]
+    },
+    {
+     "id": "sl-5.5.2-app",
+     "name": "Service target regions",
+     "release": "V121",
+     "component": "app",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.5.2, table 15, row TargetRegion"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "Services without TargetRegion shown in every region",
+       "verdict": "implemented",
+       "what": "With a region chosen, the channel list keeps services that have no TargetRegion together with those whose region matches.",
+       "repo": "rt-dvb-i-application"
+      },
+      {
+       "case": "All TargetRegion elements of a service considered",
+       "verdict": "implemented",
+       "what": "Reads every TargetRegion of a service; it is shown when any one of them is the chosen region.",
+       "repo": "rt-dvb-i-application"
+      }
+     ],
+     "noted": [
+      "The region is typed as a regionID and compared exactly; the RegionList (names, hierarchy, @selectable, postcodes) is not read, and clause 5.6.3, which describes region selection, is informative."
+     ]
+    },
+    {
+     "id": "sl-5.2.3-app",
+     "name": "Linked applications",
+     "release": "V121",
+     "component": "app",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.2.3.2"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "Application recognised from HowRelated and MediaUri",
+       "verdict": "implemented",
+       "what": "Takes each RelatedMaterial of a service or service instance whose HowRelated is a LinkedApplicationCS:2019 term and keeps the term, the MediaUri and its @contentType as a linked application.",
+       "repo": "rt-dvb-i-application"
+      },
+      {
+       "case": "Media presented in parallel with an application with media in parallel (1.1)",
+       "verdict": "implemented",
+       "what": "Playback starts on selection independently of any application; the playing instance's 1.1 application is offered from a toolbar button and opened in a new window.",
+       "repo": "rt-dvb-i-application"
+      },
+      {
+       "case": "No media presented for an application controlling media (1.2)",
+       "verdict": "differs",
+       "what": "For a 1.2 application of a type it can start (an HTML page or an XML AIT), plays no media, ignores the instance's delivery parameters and shows the application in a frame in the player; a 1.2 application of any other type is dropped and the instance's delivery parameters are then played, while the clause says no media stream shall be presented for such an application whatever its @contentType.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 5.2.3.2"
+      },
+      {
+       "case": "Instance-level application overrides the service-level one",
+       "verdict": "implemented",
+       "what": "Builds the applications of each instance from its own RelatedMaterial first: an instance-level 1.1 or 1.2 replaces service-level 1.1 and 1.2 of the same @contentType, an instance-level 2 replaces a service-level 2 of the same type, and term 3 is used only at service level.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 5.2.3.4"
+      },
+      {
+       "case": "Application signalling of the fallback instance processed",
+       "verdict": "implemented",
+       "what": "When playback falls back to another instance, the applications of that instance are used: its own 1.1 application is offered, and a 1.2 application presents it.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 5.2.3.2"
+      }
+     ],
+     "noted": [
+      "The application URL is opened with an added sid parameter carrying the client's own session identifier and no launch location. Clause 5.2.3.1 says the context of invocation may be passed and, for broadcast-independent HbbTV applications, refers to ETSI TS 102 796 (not opened in this audit), so the launch location sentences are not judged here.",
+      "The LinkedApplicationCS terms are told apart: 1.1 is offered from the toolbar, a service-level term 3 application is offered there when the instance has no 1.1, 1.2 presents the service, and 2 is started when the service is off air. A 1.1 application is only opened on request, never started automatically.",
+      "Applications of a type other than an HTML page or an XML AIT are ignored, which clause 5.2.3.1 permits."
+     ]
+    },
+    {
+     "id": "sl-5.2.4-app",
+     "name": "XML AIT for linked applications",
+     "release": "V121",
+     "component": "app",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.2.4.2"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "XML AIT (application/vnd.dvb.ait+xml) processed to choose the application",
+       "verdict": "differs",
+       "what": "Fetches the XML AIT and starts, from its URLBase and applicationLocation, the application with the highest priority whose type is text/html or application/xhtml+xml; the platform profile in mhpVersion is not checked, and HbbTV applications are never chosen as this client has no HbbTV engine, while clause 5.2.4.2 makes the type and the platform profile together decide the application.",
+       "repo": "rt-dvb-i-application"
+      },
+      {
+       "case": "No error when the XML AIT has no executable application",
+       "verdict": "differs",
+       "what": "When the XML AIT of an application controlling media presentation holds no application it can start, that instance is discarded and the next one is tried; for an application opened from the toolbar the user gets a notice that it cannot be started, and the button was offered before the AIT was read, while the clause says the client shall not issue an error but show the service or content item as unavailable.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 5.2.4.2"
+      }
+     ],
+     "noted": [
+      "Content guide deep links (ProgramURL, AuxiliaryURL, Template XML AIT) are left to the content guide feature."
+     ]
+    },
+    {
+     "id": "sl-5.2.5-app",
+     "name": "Selection outside scheduled service hours",
+     "release": "V121",
+     "component": "app",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.2.5.3"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "Application started outside scheduled hours (should)",
+       "verdict": "implemented",
+       "what": "When a service is selected outside the scheduled hours of all its instances, or all its instances become unavailable while it plays, the off-air message is shown and the service-level application for an inactive service (LinkedApplicationCS term 2) is started in a frame in the player when its type is one this client can start.",
+       "repo": "rt-dvb-i-application"
+      }
+     ],
+     "noted": [
+      "No out of service image (HowRelatedCS:2021:1000.1) is shown; clause 5.2.5.3 lists it as one option among others.",
+      "How the client evaluates Availability per instance is judged once, under Service instance selection (clause 5.2.13); the sentences of clause 5.2.5.2 that define the union of Periods describe the signalling and carry no separate client obligation."
+     ]
+    },
+    {
+     "id": "sl-5.2.6-app",
+     "name": "Service logos",
+     "release": "V121",
+     "component": "app",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.2.8.3"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "Service logo taken from HowRelatedCS:2021:1001.2",
+       "verdict": "implemented",
+       "what": "Shows the MediaUri of the first RelatedMaterial whose HowRelated is the service logo term.",
+       "repo": "rt-dvb-i-application"
+      },
+      {
+       "case": "Unavailable image handled",
+       "verdict": "implemented",
+       "what": "A logo that fails to load is hidden and the channel entry still renders.",
+       "repo": "rt-dvb-i-application"
+      }
+     ],
+     "noted": [
+      "Among several MediaLocator elements the first is used, whatever its @contentType; no image_variant or width is requested. The logo term is recognised by the text 1001.2 anywhere in HowRelated@href."
+     ]
+    },
+    {
+     "id": "sl-5.2.7-app",
+     "name": "Playlists and end of content",
+     "release": "V121",
+     "component": "app",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.2.7.1"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "Manifest fetched only on selection (should)",
+       "verdict": "implemented",
+       "what": "The MPD of an instance, or its DVB-I Playlist document, is requested only when that service is selected and the instance is tried.",
+       "repo": "rt-dvb-i-application"
+      },
+      {
+       "case": "Content finished image at the end (should)",
+       "verdict": "implemented",
+       "what": "When a VoD MPD, or the last entry of a playlist, has played out, the content finished image (HowRelatedCS:2021:1000.2) of the instance, else of the service, is shown, in the preferred language where there is one, else the first JPEG or PNG.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 5.2.7.3"
+      }
+     ],
+     "noted": [
+      "A DASHDeliveryParameters URI whose UriBasedLocation @contentType is application/xml is fetched as a DVB-I Playlist and its PlaylistEntry MPDs are played in order; a playlist that cannot be fetched or has no entry, or an entry that fails, fails the instance and the next one is tried. Clause 5.2.7.2 says a client can tell the two apart and table 105 marks no Playlist field as required, so this is not a verdict."
+     ]
+    },
+    {
+     "id": "sl-5.5.28-app",
+     "name": "Parental rating of services",
+     "release": "V121",
+     "component": "app",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.5.28"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "Service.ParentalRating enforced when a threshold and a PIN are set",
+       "verdict": "implemented",
+       "what": "Selecting a service rated at or above the chosen threshold asks for the PIN before playing, and the channel list marks it as locked.",
+       "repo": "rt-dvb-i-application"
+      },
+      {
+       "case": "Service.ParentalRating enforced when only a threshold is set",
+       "verdict": "implemented",
+       "what": "A threshold chosen without a PIN blocks a service rated at or above it, with a message saying it is blocked and that a PIN unlocks it.",
+       "repo": "rt-dvb-i-application"
+      },
+      {
+       "case": "MinimumAge for the user's country",
+       "verdict": "implemented",
+       "what": "Uses the MinimumAge whose @countryCodes includes the user's country, else one without @countryCodes; the country is the one last entered for a registry lookup, and with none the most restrictive MinimumAge is applied.",
+       "repo": "rt-dvb-i-application"
+      },
+      {
+       "case": "Content guide rating takes precedence during its programme",
+       "verdict": "implemented",
+       "what": "When the content guide gives a rating for the programme on air, that rating decides whether selecting the service is allowed, in either direction; otherwise the service rating does.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 5.5.28"
+      }
+     ],
+     "noted": [
+      "While a service plays, the programme rating is checked again at each programme change (clause 6.10.15, judged under the content guide feature)."
+     ]
+    },
+    {
+     "id": "sl-5.5.4-app",
+     "name": "Subscription packages",
+     "release": "V121",
+     "component": "app",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.5.4, table 16, row SubscriptionPackage"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "Instance selectable only with a matching package",
+       "verdict": "implemented",
+       "what": "The user chooses the packages the client is associated with in settings, from the list's SubscriptionPackageList, remembered per list @id; an instance whose SubscriptionPackage names none of them is discarded, so the service plays another instance or reports why it cannot play.",
+       "repo": "rt-dvb-i-application"
+      }
+     ],
+     "noted": [
+      "With @allowNoPackage false and no package chosen, settings open with a warning asking for one; the list still installs. Clause 5.1.5 lets the package be chosen by the user."
+     ]
+    },
+    {
+     "id": "sl-5.1.7-exo",
+     "name": "Service list updates",
+     "release": "V121",
+     "component": "exo",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.1.7"
+     },
+     "repos": [
+      "rt-5gms-application"
+     ],
+     "cases": [
+      {
+       "case": "Periodic update check (should)",
+       "verdict": "absent",
+       "what": "No code in this repository checks for, or applies, a service list update."
+      }
+     ],
+     "exists": "The wrapper downloads one fixed external service list into the app cache when it starts and never reads it; the channel list is shown by an external, third-party DVB-I frontend in a WebView, which is not 5G-MAG code, and the wrapper only passes the stream URL the frontend requests to ExoPlayer.",
+     "noted": []
+    },
+    {
+     "id": "sl-5.5.12-exo",
+     "name": "LCN tables and channel numbers",
+     "release": "V121",
+     "component": "exo",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.5.12"
+     },
+     "repos": [
+      "rt-5gms-application"
+     ],
+     "cases": [
+      {
+       "case": "LCN table selected",
+       "verdict": "absent",
+       "what": "No code in this repository parses the service list or its LCN tables."
+      }
+     ],
+     "exists": "The wrapper downloads one fixed external service list into the app cache when it starts and never reads it; the channel list is shown by an external, third-party DVB-I frontend in a WebView, which is not 5G-MAG code, and the wrapper only passes the stream URL the frontend requests to ExoPlayer.",
+     "noted": []
+    },
+    {
+     "id": "sl-5.5.28-exo",
+     "name": "Parental rating of services",
+     "release": "V121",
+     "component": "exo",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.5.28"
+     },
+     "repos": [
+      "rt-5gms-application"
+     ],
+     "cases": [
+      {
+       "case": "Service.ParentalRating enforced on selection",
+       "verdict": "absent",
+       "what": "No code in this repository reads Service.ParentalRating or gates playback."
+      }
+     ],
+     "exists": "The wrapper downloads one fixed external service list into the app cache when it starts and never reads it; the channel list is shown by an external, third-party DVB-I frontend in a WebView, which is not 5G-MAG code, and the wrapper only passes the stream URL the frontend requests to ExoPlayer.",
+     "noted": []
+    }
+   ]
+  },
+  {
+   "name": "Service instance selection and delivery",
+   "summary": "The browser client selects instances by clause 5.2.13: per-instance availability, re-evaluation when hours change or an application exits, and @priority with its default of 0; it reads every DRM and CA system, shows DisplayName, caches and makes conditional requests, does not retry 400 or 406, backs off at random and uses TLS except on the same private subnet. It does not yet check codecs or the encryption scheme in advance, does not discard an instance whose controlling application is of a type it cannot start, and after a 401 or 403 has no credentials to present. The provider writes schema-valid delivery signalling, including a 5G Broadcast instance as IdentifierBasedDeliveryParameters, and serves over TLS. No component implements MBMS carriage (clause 9.3): the client checks and shows the 5G Broadcast signalling, but nothing calls an MBMS Client. The Exo wrapper leaves selection to an external frontend.",
+   "requirements": [
+    {
+     "id": "4.3-app",
+     "name": "HTTP requests and responses for service list access",
+     "release": "V121",
+     "component": "app",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 4.3.2.2"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "If-Modified-Since on a repeated service list request",
+       "verdict": "implemented",
+       "what": "Every service list, registry and guide request goes through one HTTP client that keeps the Last-Modified time of each document and sends it as If-Modified-Since on the next request for it; the proxy now forwards the header upstream, passes Last-Modified back and relays a 304, which keeps the cached copy.",
+       "repo": "rt-dvb-i-application"
+      },
+      {
+       "case": "If-Modified-Since omitted when no Last-Modified is held",
+       "verdict": "implemented",
+       "what": "Leaves the header out when no Last-Modified time is held for that URL, which is the case after a page reload, since the times are kept in memory only, and after a response without Last-Modified.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 4.3.2.2"
+      },
+      {
+       "case": "Cache-Control max-age honoured",
+       "verdict": "implemented",
+       "what": "Reads Cache-Control max-age on every response, answers a repeated request from its local copy while it is fresh, and polls the current list no sooner than the later of 30 seconds and the end of max-age; the proxy passes the header on. The daily check and any reload go through the same cache.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 4.3.2.1"
+      },
+      {
+       "case": "400 (Bad Request) or 406 (Not Acceptable): no retry of the same request",
+       "verdict": "implemented",
+       "what": "After a 400 or 406 the same request is never sent again in this session: the first load moves to the next listed URI, and the periodic refresh stops for that list.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 4.3.3.2"
+      },
+      {
+       "case": "401 (Authentication Required) or 403 (Forbidden) on a service list: next listed URI",
+       "verdict": "implemented",
+       "what": "Any response other than 2xx or 304, 401 and 403 included, makes the client try the next ServiceListURI of the offering.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 4.3.3.3"
+      },
+      {
+       "case": "401 or 403: wait for Retry-After, then present credentials again",
+       "verdict": "differs",
+       "what": "After a 401 or 403 the client does not send the request again before the Retry-After period has passed, but it holds no credentials and has no authentication method, so the next attempt is the same unauthenticated request; the clause requires an attempt to re-authenticate after the wait.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 4.3.3.3"
+      },
+      {
+       "case": "404 (Not Found) on a service list: next listed URI",
+       "verdict": "implemented",
+       "what": "A 404 on one ServiceListURI makes the client try the next one listed for the same service list.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 4.3.3.4"
+      },
+      {
+       "case": "404 and no service list acquired: notify the user (should)",
+       "verdict": "implemented",
+       "what": "When every URI fails on first load the channel list shows \"Load failed\" with the HTTP status and the reason the proxy gives; when a refresh fails it keeps the current list and says so; a failed registry query shows \"SLR lookup failed\".",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 4.3.3.4"
+      },
+      {
+       "case": "500, 502, 504 or connection failure on a service list: next listed URI",
+       "verdict": "implemented",
+       "what": "A server error, or a connection failure, which the proxy reports as 502, makes the client try the next ServiceListURI.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 4.3.3.5"
+      },
+      {
+       "case": "Retries no faster than the back-off mechanism",
+       "verdict": "implemented",
+       "what": "After a 500, 502, 504 or a connection failure the client sends no request for that document before the back-off wait has passed, whatever triggers it (periodic refresh, daily check, reload or user action); the periodic refresh waits exactly until then.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 4.3.3.5"
+      },
+      {
+       "case": "Back-off: random wait between minwait and maxwait",
+       "verdict": "implemented",
+       "what": "Waits a random period between 4^(CurrentRetry-1) x 100 ms and 4^CurrentRetry x 100 ms, CurrentRetry being 1 after the first failure, rising by one per failed retry, held at 10 (at most 104 857 600 ms) and reset by a success or a page reload; this matches the prose of the clause (up to 400 ms before the first retry, up to 1 600 ms before the second).",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 4.3.3.7"
+      },
+      {
+       "case": "Redirect followed by 4xx or 5xx: request deemed failed",
+       "verdict": "implemented",
+       "what": "Redirects are followed by the browser for same-origin requests and by the proxy for others, which checks every hop and relays the final status, so a redirect ending in a 4xx or 5xx counts as a failure and the next URI is tried.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 4.3.3.6"
+      }
+     ],
+     "noted": [
+      "A Service List Registry query is sent once per user action; it goes through the same HTTP client, so caching, If-Modified-Since and the retry waits apply, but a failed query is not retried automatically.",
+      "After every URI of a list fails on first load the client does not retry automatically; the periodic refresh starts only once a list has loaded.",
+      "Besides the periodic refresh, the client checks the current list once a day at a time drawn at random, through the same HTTP client, so a list still fresh by its max-age is not requested; the daily update check of clause 5.1.7 is judged under Service lists.",
+      "After a 404 or another failure that clause 4.3.3 gives no rule for, the periodic refresh applies the back-off wait as well, a client choice.",
+      "Clause 4.3.2.1 delegates cache control to clause 7.3.2.6 of ETSI TS 102 796, now held as V1.8.1 (reference [21] is undated). That clause also asks for If-None-Match \"where a server provides an ETag header\"; the client neither keeps ETag nor sends If-None-Match. Not judged as a case here; the requirement and its cases rest on clause 4.3 only."
+     ]
+    },
+    {
+     "id": "7.3-app",
+     "name": "HTTP over TLS (client)",
+     "release": "V121",
+     "component": "app",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 7.3"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "Service list, registry and guide requests over TLS",
+       "verdict": "implemented",
+       "what": "Every http:// request, same origin included, goes through the client's proxy, which refuses it unless every address the host resolves to is in an RFC 1918 block on the subnet of one of the host's own interfaces, and applies the same check to every redirect hop; https:// is used otherwise, and the default service list is https://.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 7.3"
+      },
+      {
+       "case": "Client supports TLS 1.3 and TLS 1.2",
+       "verdict": "implemented",
+       "what": "Relies on the browser for same-origin requests and on Node.js fetch in the proxy for the rest; Node.js allows TLS 1.2 to TLS 1.3 by default (observed on Node.js 24.19.0 in the first pass; the container image uses Node.js 22, not checked).",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 7.3"
+      }
+     ],
+     "noted": [
+      "The client server itself listens on plain HTTP unless a key and certificate are configured, and falls back to HTTP if they cannot be read; that hop is between the browser and the client's own server, not a DVB-I metadata endpoint.",
+      "A plain-HTTP endpoint on the private subnet passes the clause 7.3 check but is still refused by the proxy's private-address guard unless its origin is named in PROXY_ALLOW_ORIGINS, so in practice such endpoints must be configured.",
+      "Clause 7.3 takes root certificates, cipher suites, signature algorithms, key sizes and elliptic curves from clause 11.2 of ETSI TS 102 796, now held as V1.8.1; the proxy uses the Node.js defaults and that profile is not judged here."
+     ]
+    },
+    {
+     "id": "5.2.13-app",
+     "name": "Service instance precedence",
+     "release": "V121",
+     "component": "app",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.2.13"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "Select one instance by precedence, and fall back on error",
+       "verdict": "implemented",
+       "what": "Starts the first instance by precedence when a service is selected and, when the player reports a non-recoverable error, sets that instance aside and applies precedence again to the rest.",
+       "repo": "rt-dvb-i-application"
+      },
+      {
+       "case": "Instances outside their scheduled service hours not evaluated",
+       "verdict": "implemented",
+       "what": "Availability is read per instance, every Period and Interval, and an instance outside its own scheduled hours is left out before the ranking; a service is shown off-air only when every instance is outside its hours. How Availability itself is read is judged under Service lists (Part-time services).",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 5.2.13"
+      },
+      {
+       "case": "Re-evaluate when an instance enters or leaves its scheduled hours",
+       "verdict": "implemented",
+       "what": "While a service is selected, a timer fires at the next instant any of its instances enters or leaves its scheduled hours and applies precedence again, switching instance when another now comes first, and showing off-air or restarting the service when all or one comes on air.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 5.2.13"
+      },
+      {
+       "case": "Discard instances whose application controlling media presentation cannot be started",
+       "verdict": "differs",
+       "what": "An instance whose controlling application cannot be started (an XML AIT with no HTML5 application, or a URL that cannot be opened) is discarded and the next one tried; but a controlling application whose MediaUri@contentType is not HTML, XHTML or XML AIT is dropped from the instance, which is then played from its delivery parameters instead of being discarded. NOTE 1 of the clause gives an unsupported application format as an application that cannot be started.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 5.2.13"
+      },
+      {
+       "case": "Discard instances that can be known in advance not to play",
+       "verdict": "differs",
+       "what": "Before trying an instance, leaves out multicast delivery, DASH or HLS when no player for it is available, conditional access only, DRM when the browser has no Encrypted Media Extensions, and DRM systems the player knows no key system for. It does not read the codecs or picture format an instance signals in ContentAttributes, nor check @encryptionScheme, so an instance whose codec, format or scheme the browser cannot play is set aside only after playback fails.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 5.2.13"
+      },
+      {
+       "case": "Re-evaluate when an application controlling media presentation exits",
+       "verdict": "implemented",
+       "what": "An application controlling media presentation runs in a frame in the player; closing the frame, which is how such an application exits here, discards its instance and applies precedence again, so the next instance plays.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 5.2.13"
+      },
+      {
+       "case": "ServiceInstance@priority respected",
+       "verdict": "implemented",
+       "what": "Orders the remaining instances by ascending @priority, lower value first, and tries them in that order; equal priorities keep document order.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 5.2.13"
+      }
+     ],
+     "noted": [
+      "Clause 5.2.1 (service instance matching) binds hybrid clients with DVB-T/C/S tuners. This browser client has none, so matching does not apply; it marks a service whose instances are all DVB-T/S/C as broadcast only.",
+      "When every instance fails, the message lists the reasons instances were discarded in advance; when there are none and any instance carries ContentProtection, it says the stream is DRM protected and no CDM is available, whatever the actual cause.",
+      "Instances outside the subscription packages the user has chosen are also discarded before ranking; subscription packages are judged under Service lists.",
+      "How the client reads Availability (Period, Interval, per instance) and how it handles applications controlling media presentation (clause 5.2.3.2) are judged under Service lists; only their effect on instance selection is judged here."
+     ]
+    },
+    {
+     "id": "5.5.4-app",
+     "name": "ServiceInstanceType and delivery parameters (client)",
+     "release": "V121",
+     "component": "app",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 8.5.1; clause 8.5.3.2, table 86"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "DisplayName, falling back to ServiceName",
+       "verdict": "implemented",
+       "what": "Reads the first DisplayName of each instance, or the service name when there is none, and shows it in the toolbar and the player overlay while that instance plays; the channel list keeps the service name.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 5.5.4, table 16, row DisplayName"
+      },
+      {
+       "case": "@priority default",
+       "verdict": "implemented",
+       "what": "Treats an instance without @priority as priority 0, the schema default and the highest priority.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 5.5.4, ServiceInstanceType schema"
+      },
+      {
+       "case": "DASHDeliveryParameters/UriBasedLocation",
+       "verdict": "implemented",
+       "what": "Takes the URI from UriBasedLocation and plays it as an MPD with dash.js 5.2.0, or, when @contentType is application/xml, fetches it as a DVB-I Playlist on selection and plays its entries in order; MinimumBitRate and Extension are not used, which table 100 does not require.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 5.5.18.6, DASHDeliveryParametersType schema; clause 8.5.3.2, table 100, row UriBasedLocation"
+      }
+     ],
+     "noted": [
+      "MulticastTSDeliveryParameters are parsed into a udp:// address and then discarded before selection, since a browser cannot join multicast; table 86 does not require them of IP-only receivers.",
+      "HLS is accepted through OtherDeliveryParameters when @extensionName or xsi:type contains \"mpegurl\", \"m3u8\" or \"apple\" (annex G, informative), and an extension whose name contains \"dash\" is played as DASH; IdentifierBasedDeliveryParameters, RTSPDeliveryParameters, SATIPDeliveryParameters and the deprecated SourceType are ignored.",
+      "FTAContentManagement is not read; table 102 marks none of its attributes as required.",
+      "SubscriptionPackage is now read per instance and decides which instances can be selected; it is judged under Service lists.",
+      "A 5G Broadcast instance (IdentifierBasedDeliveryParameters holding an mbms:// locator) yields no playable instance, since a browser has no MBMS Client. The client checks the locator against TS 26.347 clause 8.2.2 and shows it, its priority and its MBMS User Service on a 5G badge, or says what is wrong; another instance of the service plays if one is listed.",
+      "An application controlling media presentation (LinkedApplicationCS 1.2, clause 5.2.3.2), for which the client presents no media and ignores delivery parameters, is judged under Service lists (Linked applications)."
+     ]
+    },
+    {
+     "id": "5.5.20-app",
+     "name": "ContentProtection (client)",
+     "release": "V121",
+     "component": "app",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 8.5.1; clause 8.5.3.2, table 103"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "DRMSystemId: identify that an instance is protected",
+       "verdict": "implemented",
+       "what": "Collects every DRMSystemId of each instance and maps the Widevine, PlayReady, FairPlay and one ClearKey identifier to browser key systems for dash.js and hls.js; an instance protected only by systems with no mapping is discarded before playback.",
+       "repo": "rt-dvb-i-application"
+      },
+      {
+       "case": "Several DRMSystemId in one ContentProtection",
+       "verdict": "implemented",
+       "what": "Reads every DRMSystemId of each ContentProtection element.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 5.5.20, ContentProtectionType schema"
+      },
+      {
+       "case": "CASystemId",
+       "verdict": "implemented",
+       "what": "Reads every CASystemId; an instance protected by conditional access only is discarded, since a browser cannot descramble it.",
+       "repo": "rt-dvb-i-application"
+      },
+      {
+       "case": "DRMSystemId@encryptionScheme",
+       "verdict": "differs",
+       "what": "@encryptionScheme is read and kept per DRM system but not acted on: a cbcs or cbcs-10 instance is neither told apart from a cenc one nor checked against the browser before playback. Table 103 marks it as required for IP-only receivers, which must understand and act on it.",
+       "repo": "rt-dvb-i-application"
+      }
+     ],
+     "noted": [
+      "A licence server is configured only from a LicenseServerURL element inside ContentProtection, which the V1.2.1 schema does not define; lists from the provider never carry it.",
+      "NOTE 3 of clause 8.5.1 (informative) explains that ContentProtection support means identifying whether content is protected and whether the receiver supports the scheme. The client checks for Encrypted Media Extensions and a known key system before playback, but does not query the browser for the key system and scheme; the normative effect, discarding in advance an instance that cannot play, is judged under Service instance precedence.",
+      "The client maps ClearKey from urn:uuid:1077efec-c0b2-4d02-ace3-3c1e52e2fb4b, while the provider writes urn:uuid:e2719d58-a985-b3c9-781a-b030af78d30e for ClearKey. TS 103 770 does not define the identifier: table 35 says DRMSystemId values are as described in clause 8.2 of ETSI TS 103 285, which was not obtained, and the schema types the value as a string. Not judged. (Provider line not re-checked in this pass.)"
+     ]
+    },
+    {
+     "id": "8.3-app",
+     "name": "Interoperability point IP1, IP-only mobile receiver: delivery",
+     "release": "V121",
+     "component": "app",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 8.3"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "Identify and store the DVB-DASH services of a service list",
+       "verdict": "implemented",
+       "what": "Parses every Service, keeps those with a DASH (or other IP-deliverable) instance, and keeps broadcast-only ones in the list marked as such.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 8.3"
+      },
+      {
+       "case": "Continuous presentation of the selected DVB-DASH stream",
+       "verdict": "implemented",
+       "what": "Plays the selected instance's MPD, or the entries of a DVB-I Playlist in order, with dash.js 5.2.0 and switches to the next instance on a fatal error; whether this meets the DVB-DASH profile requirements of clause 8.5.2 was not checked.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 8.3"
+      },
+      {
+       "case": "Identification of streams with content protection applied",
+       "verdict": "implemented",
+       "what": "Identifies a protected instance from its ContentProtection DRMSystemId and CASystemId values and uses them to configure the player's key systems, to discard instances it cannot play and to word the error shown when every instance fails; the clause asks for identification and does not say it must be shown to the user.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 8.3"
+      }
+     ],
+     "noted": [
+      "Protected services are not marked in the channel list or the info overlay.",
+      "Whether the DASH playback meets the DVB-DASH profiles that clause 8.5.2 requires depends on ETSI TS 103 285, which was not obtained; it is not part of any verdict here."
+     ]
+    },
+    {
+     "id": "9.3.3-app",
+     "name": "Carriage in MBMS: DVB-I client behaviour",
+     "release": "V121",
+     "component": "app",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 9.3.3"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "Start reception of the MBMS Service Announcement Channel",
+       "verdict": "absent",
+       "what": "The client has no interface to an MBMS Client.",
+       "locator": "clause 9.3.3"
+      },
+      {
+       "case": "Acquire the service list from an MBMS User Service when there is no unicast connection",
+       "verdict": "absent",
+       "what": "The client loads service lists over HTTP only.",
+       "locator": "clause 9.3.3"
+      },
+      {
+       "case": "On selecting an instance with an mbms:// locator, start reception of the MBMS User Service",
+       "verdict": "absent",
+       "what": "No MBMS User Service is ever started.",
+       "locator": "clause 9.3.3"
+      },
+      {
+       "case": "Pass the entry point document from the User Service Description to the player",
+       "verdict": "absent",
+       "what": "The player is only given URLs taken from the service list.",
+       "locator": "clause 9.3.3"
+      },
+      {
+       "case": "Subscribe to MBMS Client update notifications for metadata acquired over MBMS, and re-acquire new versions",
+       "verdict": "absent",
+       "what": "No MBMS Client is used, so no update notifications are subscribed to; this applies once metadata is acquired over MBMS, which does not happen today.",
+       "locator": "clause 9.3.3"
+      }
+     ],
+     "exists": "The client reads the mbms:// locator of a 5G Broadcast instance from IdentifierBasedDeliveryParameters, checks it against TS 26.347 clause 8.2.2, and shows it with the MBMS User Service it names; it plays any other instance the service has. A browser has no MBMS Client, so no reception is started.",
+     "noted": [
+      "The repositories carry 5G broadcast (MBMS) delivery in a local extension, urn:5g-mag:metadata:dvbi-5g:2026, inside OtherDeliveryParameters. It is not part of TS 103 770 and is not judged here.",
+      "Clause 9.3.3 refers to a service instance with an mbms:// locator, but the document does not say which element carries such a locator. This does not change any case here: the client has no interface to an MBMS Client at all. The procedures of ETSI TS 126 346 and TS 126 347 that the clause cites were not obtained and no verdict depends on them."
+     ]
+    },
+    {
+     "id": "4.3-provider",
+     "name": "HTTP responses for service list access (server)",
+     "release": "V121",
+     "component": "provider",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 4.3.2.2"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "200 (OK) with the document when changed since If-Modified-Since",
+       "verdict": "implemented",
+       "what": "Answers /service-list.xml with 200, the full list and a Last-Modified header when the configuration was saved after the If-Modified-Since time.",
+       "repo": "rt-dvb-i-application-provider"
+      },
+      {
+       "case": "Standard GET when no If-Modified-Since is sent",
+       "verdict": "implemented",
+       "what": "A request without the header, or with an unparseable date, always gets 200 and the full list.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 4.3.2.2"
+      },
+      {
+       "case": "401 or 403 only where the endpoint requires client authentication",
+       "verdict": "implemented",
+       "what": "The service list never answers 401 or 403; only the administration routes, which are not DVB-I endpoints, answer 401.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 4.3.3.3"
+      }
+     ],
+     "noted": [
+      "A 304 (Not Modified), which the clause permits, is returned when nothing was saved after the If-Modified-Since time; the comparison uses whole seconds.",
+      "The list is sent with Cache-Control: no-cache and no max-age, which clause 4.3.2.1 leaves optional.",
+      "One Last-Modified time covers every TargetCountry and region variant of the list, and it is reset to the start time whenever the server restarts."
+     ]
+    },
+    {
+     "id": "7.3-provider",
+     "name": "HTTP over TLS (server)",
+     "release": "V121",
+     "component": "provider",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 7.3"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "Service list and content guide endpoints served over TLS",
+       "verdict": "implemented",
+       "what": "Serves HTTPS by default and refuses to start without a readable key and certificate; it serves plain HTTP only when the operator names one of two cases, clients on the same private subnet (endpoint URLs in the list written as http://) or a TLS-terminating proxy in front (endpoint URLs written as https://).",
+       "repo": "rt-dvb-i-application-provider"
+      },
+      {
+       "case": "Server supports TLS 1.2 (and should support TLS 1.3)",
+       "verdict": "implemented",
+       "what": "Uses the Node.js https server with its default TLS versions; the repository's test makes a TLS 1.2 and a TLS 1.3 handshake and both succeed (T1, run at c415c60; the container image's Node.js 22 was not checked).",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 7.3"
+      }
+     ],
+     "noted": [
+      "Neither plain HTTP mode is checked by the server: in the private subnet mode a client's address is not compared with the private ranges, and in the proxy mode the presence of a proxy is not detected; both rest on the operator's declaration.",
+      "The TLS profile that clause 7.3 takes from clause 11.2 of ETSI TS 102 796 is not judged (the server sets no cipher suites, certificates or key sizes beyond Node.js defaults).",
+      "The container image starts the server with neither a certificate nor the plain HTTP setting, so as built it exits at start.",
+      "A per-service content guide URL entered by the operator is written as given, http:// included; it points at another Content Guide Server."
+     ]
+    },
+    {
+     "id": "5.5.4-provider",
+     "name": "ServiceInstanceType and delivery parameters (service list)",
+     "release": "V121",
+     "component": "provider",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.5.4, ServiceInstanceType schema"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "ServiceInstance elements valid against the V1.2.1 schema",
+       "verdict": "implemented",
+       "what": "DASH instances, multicast instances and DRM signalling are written in schema order, and lists carrying them validate against the V1.2.1 service list schema.",
+       "repo": "rt-dvb-i-application-provider"
+      },
+      {
+       "case": "@priority",
+       "verdict": "implemented",
+       "what": "Writes @priority when one is configured and leaves it out (schema default 0) when not; a value that is not a non-negative integer is refused on save and restore.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 5.5.4, ServiceInstanceType schema"
+      },
+      {
+       "case": "DisplayName",
+       "verdict": "implemented",
+       "what": "Writes a DisplayName for every instance, from the instance label or else the service name.",
+       "repo": "rt-dvb-i-application-provider"
+      },
+      {
+       "case": "DASHDeliveryParameters/UriBasedLocation",
+       "verdict": "implemented",
+       "what": "Writes UriBasedLocation with contentType=\"application/dash+xml\" and the MPD URL in a URI element of the types namespace.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 5.5.18.6, DASHDeliveryParametersType schema"
+      },
+      {
+       "case": "MulticastTSDeliveryParameters/IPMulticastAddress",
+       "verdict": "implemented",
+       "what": "Turns a udp://address:port URL into IPMulticastAddress with the Address and Port attributes the schema requires.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 5.5.18.5, MulticastTSDeliveryParametersType schema"
+      }
+     ],
+     "noted": [
+      "Availability in service instances (clause 5.2.5.2), including that only a date window can be configured, is judged under Service lists (Part-time services).",
+      "A multicast URL without a port is written with Port 5004, a value no clause gives.",
+      "HLS instances use OtherDeliveryParameters with extensionName \"vnd.apple.mpegurl\" and the hls:m3u8RefType of annex G, which is informative; the base V1.2.1 schema cannot validate them.",
+      "DVB-T, DVB-S, DVB-C, RTSP, SAT>IP and IdentifierBasedDeliveryParameters cannot be written, nor AltServiceName, so a list from the provider carries no data for clause 5.2.1 service instance matching; FTAContentManagement and the deprecated SourceType are never written.",
+      "Linked applications are always written as LinkedApplicationCS 1.1 (media in parallel), never as an application controlling media presentation.",
+      "A 5G Broadcast instance is emitted as IdentifierBasedDeliveryParameters holding its mbms:// URL, which the editor checks against TS 26.347 V18.1.0 clause 8.2.2 and refuses with a 400 when it is not an MBMS URL. Table 16 defines the element as an identifier \"in the form of a locator (URL)\" for \"the relevant delivery system\"; no clause names it for MBMS, so using it for MBMS is our reading and is not judged as a separate case."
+     ]
+    },
+    {
+     "id": "5.5.20-provider",
+     "name": "ContentProtection (service list)",
+     "release": "V121",
+     "component": "provider",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.5.20, ContentProtectionType schema"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "DRMSystemId with @encryptionScheme",
+       "verdict": "implemented",
+       "what": "Writes one ContentProtection per configured DRM system, with DRMSystemId as a urn:uuid identifier for Widevine, PlayReady, FairPlay and ClearKey and @encryptionScheme from the editor (cenc, cbcs or cbcs-10, default cenc).",
+       "repo": "rt-dvb-i-application-provider"
+      }
+     ],
+     "noted": [
+      "CASystemId and @cpsIndex cannot be configured.",
+      "A DRM system name the provider does not know is written verbatim as the DRMSystemId value, and an encryptionScheme set through the configuration API is not checked against cenc, cbcs and cbcs-10.",
+      "The licence server URL entered in the editor is not written to the list, which has no element for it.",
+      "Which identifier stands for each DRM system is not defined in TS 103 770: table 35 refers DRMSystemId values to clause 8.2 of ETSI TS 103 285, which was not obtained, so the identifiers written are not judged."
+     ]
+    },
+    {
+     "id": "4.3-exo",
+     "name": "HTTP requests and responses for service list access",
+     "release": "V121",
+     "component": "exo",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 4.3.2.2"
+     },
+     "repos": [
+      "rt-5gms-application"
+     ],
+     "cases": [
+      {
+       "case": "If-Modified-Since on a repeated service list request",
+       "verdict": "differs",
+       "what": "Downloads the external frontend's service list on every start with a plain GET and keeps no Last-Modified time, so no request is ever conditional; the clause asks for the header whenever the time of the last update is known, and says the Last-Modified time should be held for that.",
+       "repo": "rt-5gms-application"
+      },
+      {
+       "case": "Cache-Control max-age honoured",
+       "verdict": "differs",
+       "what": "Never reads Cache-Control and downloads the list again each time the start screen is created.",
+       "repo": "rt-5gms-application",
+       "locator": "clause 4.3.2.1"
+      },
+      {
+       "case": "400 or 406: no retry of the same request",
+       "verdict": "implemented",
+       "what": "Any failed download, a 400 or 406 included, is logged and not retried.",
+       "repo": "rt-5gms-application",
+       "locator": "clause 4.3.3.2"
+      },
+      {
+       "case": "404 and no service list acquired: notify the user (should)",
+       "verdict": "absent",
+       "what": "A failed download only prints a stack trace to the log.",
+       "locator": "clause 4.3.3.4"
+      }
+     ],
+     "noted": [
+      "Nothing in the wrapper reads the downloaded file; the external frontend in the WebView fetches its own service list."
+     ]
+    },
+    {
+     "id": "7.3-exo",
+     "name": "HTTP over TLS (client)",
+     "release": "V121",
+     "component": "exo",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 7.3"
+     },
+     "repos": [
+      "rt-5gms-application"
+     ],
+     "cases": [
+      {
+       "case": "Service list request over TLS",
+       "verdict": "differs",
+       "what": "Fetches the service list from a hard-coded http:// URL on a public server and enables cleartext traffic for the whole app; the clause requires TLS except on the same private subnet.",
+       "repo": "rt-5gms-application",
+       "locator": "clause 7.3"
+      }
+     ],
+     "noted": [
+      "The WebView start page, the external DVB-I frontend, is also loaded over http://."
+     ]
+    },
+    {
+     "id": "5.2.13-exo",
+     "name": "Service instance precedence",
+     "release": "V121",
+     "component": "exo",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.2.13"
+     },
+     "repos": [
+      "rt-5gms-application"
+     ],
+     "cases": [
+      {
+       "case": "Select one instance by precedence, and fall back on error",
+       "verdict": "absent",
+       "what": "The wrapper does not read service instances; which stream plays is decided by the external frontend."
+      }
+     ],
+     "exists": "The wrapper starts ExoPlayer with the first WebView request whose URL contains .mpd; although .m3u8, .mp4 and .ts are also listed, the check returns after the first entry, so only .mpd URLs are intercepted. A later intercepted URL is ignored while the player is open.",
+     "noted": []
+    },
+    {
+     "id": "8.3-exo",
+     "name": "Interoperability point IP1, IP-only mobile receiver: delivery",
+     "release": "V121",
+     "component": "exo",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 8.3"
+     },
+     "repos": [
+      "rt-5gms-application"
+     ],
+     "cases": [
+      {
+       "case": "Continuous presentation of the selected DVB-DASH stream",
+       "verdict": "implemented",
+       "what": "Plays the intercepted MPD URL in the ExoPlayer r2.18.2 demo player; whether this meets the DVB-DASH profile requirements of clause 8.5.2 was not checked.",
+       "repo": "rt-5gms-application",
+       "locator": "clause 8.3"
+      },
+      {
+       "case": "Identification of streams with content protection applied",
+       "verdict": "absent",
+       "what": "No ContentProtection information reaches the wrapper; only a URL is handed to the player.",
+       "locator": "clause 8.3"
+      }
+     ],
+     "noted": [
+      "Whether the playback meets the DVB-DASH profiles that clause 8.5.2 requires depends on ETSI TS 103 285, which was not obtained; it is not part of any verdict here."
+     ]
+    },
+    {
+     "id": "9.3.3-exo",
+     "name": "Carriage in MBMS: DVB-I client behaviour",
+     "release": "V121",
+     "component": "exo",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 9.3.3"
+     },
+     "repos": [
+      "rt-5gms-application"
+     ],
+     "cases": [
+      {
+       "case": "Start reception of the MBMS Service Announcement Channel",
+       "verdict": "absent",
+       "what": "The wrapper has no interface to an MBMS Client.",
+       "locator": "clause 9.3.3"
+      },
+      {
+       "case": "Acquire the service list from an MBMS User Service when there is no unicast connection",
+       "verdict": "absent",
+       "what": "The service list is only downloaded over HTTP.",
+       "locator": "clause 9.3.3"
+      },
+      {
+       "case": "On selecting an instance with an mbms:// locator, start reception of the MBMS User Service",
+       "verdict": "absent",
+       "what": "Only WebView requests whose URL contains .mpd are intercepted; an mbms:// locator is not handled.",
+       "locator": "clause 9.3.3"
+      },
+      {
+       "case": "Pass the entry point document from the User Service Description to the player",
+       "verdict": "absent",
+       "what": "The player is only given the intercepted URL.",
+       "locator": "clause 9.3.3"
+      },
+      {
+       "case": "Subscribe to MBMS Client update notifications for metadata acquired over MBMS, and re-acquire new versions",
+       "verdict": "absent",
+       "what": "No MBMS Client is used, so no update notifications are subscribed to; this applies once metadata is acquired over MBMS, which does not happen today.",
+       "locator": "clause 9.3.3"
+      }
+     ],
+     "noted": []
+    }
+   ]
+  },
+  {
+   "name": "Content guide",
+   "summary": "The provider signals its guide through ContentGuideSourceRef, answers timestamp requests with start and end checked and applied, now_next=true and now_next=window with the structural groups, and programme information by pid, writes the metadata profile including a deep-linked XML AIT for on-demand programmes, and returns both tables, empty, for a service with no events. The client finds guide sources by clause 6.1, makes aligned 12 hour, now/next and pid requests, browses More Episodes and Box Sets with pagination, launches on-demand through the XML AIT and enforces programme ratings; after a 404 it re-acquires the service list for schedule requests but not for the other guide requests. The empty Schedule element and the programme image HowRelated term fall under contradictions in the specification. The Exo DVB-I Player leaves the guide to an external frontend.",
+   "requirements": [
+    {
+     "id": "6.1-provider",
+     "name": "Content guide source signalling",
+     "release": "V121",
+     "component": "provider",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 6.1; clause 5.5.7, table 20; clause 5.5.2, Service table rows ContentGuideSourceRef and ContentGuideServiceRef"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "ContentGuideSourceList with @CGSID",
+       "verdict": "implemented",
+       "what": "Emits a ContentGuideSourceList with one ContentGuideSource for the list, plus one for each service that has its own guide URL, each with a @CGSID that is checked to be a valid xs:ID before the list is saved.",
+       "repo": "rt-dvb-i-application-provider"
+      },
+      {
+       "case": "ProviderName (mandatory)",
+       "verdict": "implemented",
+       "what": "Every ContentGuideSource carries a ProviderName taken from the configuration (the service name or provider for per-service sources); it has no @xml:lang of its own and inherits the one on ServiceList, where table 20 says it should carry one.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 5.5.7, table 20, row ProviderName"
+      },
+      {
+       "case": "ScheduleInfoEndpoint (mandatory) with @contentType application/xml",
+       "verdict": "implemented",
+       "what": "Every ContentGuideSource has a ScheduleInfoEndpoint with contentType=\"application/xml\" and a URI, pointing at the provider's own schedule endpoint or at the operator's per-service guide URL.",
+       "repo": "rt-dvb-i-application-provider"
+      },
+      {
+       "case": "Service refers to its content guide source with ContentGuideSourceRef",
+       "verdict": "implemented",
+       "what": "Every service carries ContentGuideSourceRef with the CGSID of a source in the list's ContentGuideSourceList: its own source for a service with its own guide URL, otherwise the list's.",
+       "repo": "rt-dvb-i-application-provider"
+      },
+      {
+       "case": "ContentGuideServiceRef is the identifier used in guide queries",
+       "verdict": "implemented",
+       "what": "No ContentGuideServiceRef is written, so clients query the guide with the UniqueIdentifier, which the schedule, now/next and programme endpoints answer to.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 5.5.2, Service table, row ContentGuideServiceRef"
+      }
+     ],
+     "noted": [
+      "GroupInfoEndpoint, MoreEpisodesEndpoint, Name, RelatedMaterial (logo) and @minimumMetadataUpdatePeriod are never emitted; table 20 makes all of them optional, so the More Episodes, Box Set and pagination rules of clauses 6.7 to 6.9 do not apply to this provider.",
+      "No ContentGuideServiceRef is written any more; how the DVB-I Application reads the content guide signalling is judged in its own audit.",
+      "The list-level source also signals ProgramInfoEndpoint with contentType application/xml, at the programme information handler; its behaviour is judged under the programme information request."
+     ]
+    },
+    {
+     "id": "6.2.3-provider",
+     "name": "HTTP behaviour of the content guide endpoints",
+     "release": "V121",
+     "component": "provider",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clauses 6.2.3 and 6.2.4, referring to clauses 4.3.2 and 4.3.3 (the published text of 6.2.3 reads \"4.3.24.3.2\"); clause 4.3.2.2"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "Conditional and unconditional requests (If-Modified-Since)",
+       "verdict": "implemented",
+       "what": "The schedule, now/next, programme information and XML AIT endpoints ignore If-Modified-Since and answer the full document, never 304 and never with a Last-Modified header, which the clause permits.",
+       "repo": "rt-dvb-i-application-provider"
+      },
+      {
+       "case": "401 and 403 only where client access control is required",
+       "verdict": "implemented",
+       "what": "The guide endpoints are outside the optional admin gate and never answer 401 or 403.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 4.3.3.3"
+      }
+     ],
+     "noted": [
+      "No Cache-Control max-age is sent on guide responses; clause 4.3.2.1 says a lifetime may be defined this way.",
+      "Unprofiled query parameters are accepted silently, and the endpoint also accepts serviceId as an alias of sid; clause 6.2.2 says a 400 may be returned for an unprofiled parameter.",
+      "No server-side regional tailoring of guide data is done; clause 6.3 describes it as possible."
+     ]
+    },
+    {
+     "id": "6.5.2-provider",
+     "name": "Timestamp filtered schedule request (server)",
+     "release": "V121",
+     "component": "provider",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clauses 6.5.2.1 and 6.5.2.2"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "Known Service ID answered with 200 and a schedule document",
+       "verdict": "implemented",
+       "what": "A sid equal to a configured service's UniqueIdentifier, with a valid start and end, gets 200 with a TV-Anytime schedule document, valid against the TV-Anytime schema of the V1.2.1 attachments in the repository's XSD test (T1).",
+       "repo": "rt-dvb-i-application-provider"
+      },
+      {
+       "case": "Unknown Service ID answered with 200 and empty tables",
+       "verdict": "implemented",
+       "what": "An unknown sid is answered 200 with an empty ProgramInformationTable and ProgramLocationTable, for timestamp and now/next requests alike.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 6.5.2.2"
+      },
+      {
+       "case": "start and end filter the events returned",
+       "verdict": "implemented",
+       "what": "Only events whose PublishedStartTime is at or after start and before end are returned; the generated schedule is the same for any window, so adjacent windows join up.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 6.5.2.1"
+      },
+      {
+       "case": "400 for a missing, invalid or misaligned start or end",
+       "verdict": "implemented",
+       "what": "start and end are checked against every limit of the clause (whole numbers, multiples of 10 800, a span of 6 or 12 hours, no earlier than midnight at the start of today minus 28 days, no later than midnight at the end of today plus 28 days), and a request breaking any of them, or missing either, is answered 400.",
+       "repo": "rt-dvb-i-application-provider"
+      }
+     ],
+     "noted": [
+      "The optional inclusive parameter is ignored, which the clause allows (\"if supported\").",
+      "The schedule is generated by repeating the configured programme list back to back from the Unix epoch, so it does not reflect real broadcast times."
+     ]
+    },
+    {
+     "id": "6.5.3-provider",
+     "name": "Now/next filtered schedule request (server)",
+     "release": "V121",
+     "component": "provider",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clauses 6.5.3.1, 6.5.4.1 and 6.5.4.4; clause 6.10.17.3, table 64"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "now_next=true on the ScheduleInfoEndpoint",
+       "verdict": "implemented",
+       "what": "now_next=true on the schedule endpoint returns the on-air event as the only member of the now group and the next event as the only member of the later group, with no earlier events.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 6.5.4.4"
+      },
+      {
+       "case": "now_next=window (up to ten earlier and ten later events)",
+       "verdict": "implemented",
+       "what": "now_next=window returns the on-air event with up to ten earlier and up to ten later events.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 6.5.4.4"
+      },
+      {
+       "case": "GroupInformationTable with the now, later and earlier structural groups",
+       "verdict": "implemented",
+       "what": "The response has a GroupInformationTable with one GroupInformation per non-empty now, later and earlier group (ordered true, numOfItems, GroupType ProgramGroupTypeType with value otherCollection, empty BasicDescription), and each ProgramInformation has a MemberOf with the group CRID and its @index, counting forward in the later group and backward in the earlier group.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 6.5.4.4"
+      }
+     ],
+     "noted": [
+      "A second now/next URL, not signalled in the list, is kept for direct callers and answers as now_next=true."
+     ]
+    },
+    {
+     "id": "6.5.4-provider",
+     "name": "Schedule response",
+     "release": "V121",
+     "component": "provider",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clauses 6.5.4.1 and 6.5.4.2; clause 6.10.6, table 50"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "Well-formed document with ProgramLocationTable and ProgramInformationTable",
+       "verdict": "implemented",
+       "what": "Schedule and now/next responses with events are TV-Anytime documents with both tables, valid against the attached schema; a recognised service with no events for the request gets both tables, empty, which also validates.",
+       "repo": "rt-dvb-i-application-provider"
+      },
+      {
+       "case": "Every ScheduleEvent has a ProgramInformation, and only those",
+       "verdict": "implemented",
+       "what": "A ProgramInformation is written for each event returned, with the CRID of its ScheduleEvent Program@crid, and none for anything else, in timestamp and now/next responses.",
+       "repo": "rt-dvb-i-application-provider"
+      },
+      {
+       "case": "Empty Schedule element for a recognised service with no events",
+       "verdict": "inconsistent",
+       "what": "A recognised service with no programmes, or none starting in the requested window, is answered 200 with an empty TV-Anytime document that holds no Schedule and neither table; the empty Schedule element the clause asks for would fail the attached TV-Anytime schema.",
+       "repo": "rt-dvb-i-application-provider",
+       "conflict": "TS 103 770 V1.2.1 clause 6.5.4.1: \"If there are no matching schedule events for a requested service and the service is recognized by a Content Guide Server, then an empty Schedule element shall be returned for the service.\" (table 50, clause 6.10.6, row ScheduleEvent, agrees: \"Optional {0..n}\"). Against: tva_metadata_3-1.xsd (TS 103 770 V1.2.1 annex B attachment), complexType ScheduleType (line 901), line 903: \"<element name=\"ScheduleEvent\" type=\"tva:ScheduleEventType\" maxOccurs=\"unbounded\"/>\"; with no minOccurs the default of 1 applies, so every Schedule needs at least one ScheduleEvent and an empty Schedule element is invalid.",
+       "locator": "clause 6.5.4.1"
+      },
+      {
+       "case": "OnDemandProgram returned for events also available on demand",
+       "verdict": "implemented",
+       "what": "Each returned event whose programme has a catch-up URL also gets an OnDemandProgram in the ProgramLocationTable with the same Program@crid; publishing a catch-up URL without a usable catch-up player is refused.",
+       "repo": "rt-dvb-i-application-provider"
+      },
+      {
+       "case": "Schedule@serviceIDRef matches the service identifier of the request",
+       "verdict": "implemented",
+       "what": "Schedule@serviceIDRef echoes the sid of the request, which is the service UniqueIdentifier.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 6.5.4.2"
+      },
+      {
+       "case": "Schedule@start and Schedule@end",
+       "verdict": "implemented",
+       "what": "@start is the start of the earliest event returned and @end the end of the latest, both in UTC with the Z designator, as table 50 defines them.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 6.10.6, table 50, rows @start and @end"
+      }
+     ],
+     "noted": [
+      "The timestamp schedule response also carries a GroupInformationTable of series groups; clause 6.5.4.1 lists that table for now/next and window responses, and says that when it is present the order of programmes is given by structural CRIDs.",
+      "Each occurrence of a programme gets its own CRID naming the service and its start, so no @programId repeats within a response.",
+      "A configuration file edited outside the server with a catch-up URL but no usable catch-up player is served without OnDemandProgram for those programmes, with a warning in the log."
+     ]
+    },
+    {
+     "id": "6.6-provider",
+     "name": "Programme information request (server)",
+     "release": "V121",
+     "component": "provider",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clauses 6.6.2 and 6.6.3"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "Request by pid answered with one extended ProgramInformation",
+       "verdict": "implemented",
+       "what": "A request by pid returns one ProgramInformation, the same as in schedule responses, and a ProgramLocationTable holding the programme's OnDemandProgram when it is on demand and empty otherwise.",
+       "repo": "rt-dvb-i-application-provider"
+      },
+      {
+       "case": "Unknown CRID answered with 200 and empty tables",
+       "verdict": "implemented",
+       "what": "An unknown, malformed or absent pid is answered 200 with an empty ProgramInformationTable and ProgramLocationTable.",
+       "repo": "rt-dvb-i-application-provider"
+      }
+     ],
+     "noted": [
+      "The programme response carries the same data as the schedule and nothing beyond it; clause 6.6.3 lets extended information be added if available."
+     ]
+    },
+    {
+     "id": "6.10-provider",
+     "name": "Metadata profile of guide responses",
+     "release": "V121",
+     "component": "provider",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 6.10.3; clauses 6.10.1.2, 6.10.4, 6.10.5.2, 6.10.7, 6.10.8.2, 6.10.13, 6.10.15 (tables 41, 42, 51, 52, 59, 61)"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "TVAMain@xml:lang",
+       "verdict": "implemented",
+       "what": "Every guide response sets @xml:lang on TVAMain to the list's language.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 6.10.1.2"
+      },
+      {
+       "case": "ProgramInformation@programId and BasicDescription",
+       "verdict": "implemented",
+       "what": "Each ProgramInformation has a crid:// @programId and a BasicDescription.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 6.10.4, table 41"
+      },
+      {
+       "case": "Title with @type main",
+       "verdict": "implemented",
+       "what": "One Title with type=\"main\" is written from the configured programme title.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 6.10.5.2, table 42, row Title"
+      },
+      {
+       "case": "Title at most 80 characters",
+       "verdict": "implemented",
+       "what": "Publishing refuses a programme title longer than 80 characters (counted in Unicode code points), so no longer title is written.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 6.10.5.2, table 42, row Title"
+      },
+      {
+       "case": "Synopsis with @length medium",
+       "verdict": "implemented",
+       "what": "One Synopsis with length=\"medium\" is written per programme, and publishing refuses a description longer than 250 characters, the medium limit.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 6.10.5.2, table 42, row Synopsis"
+      },
+      {
+       "case": "ParentalGuidance with mpeg7:MinimumAge",
+       "verdict": "implemented",
+       "what": "When a programme has an age rating, one ParentalGuidance with mpeg7:MinimumAge is written.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 6.10.15, table 61, row mpeg7:MinimumAge"
+      },
+      {
+       "case": "Programme image: one RelatedMaterial, image/jpeg or image/png",
+       "verdict": "implemented",
+       "what": "At most one RelatedMaterial is written for a programme image, with @contentType, and only when the image is image/jpeg or image/png; other images are not signalled.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 6.10.13, table 59, row MediaLocator"
+      },
+      {
+       "case": "MemberOf@xsi:type MemberOfType",
+       "verdict": "implemented",
+       "what": "Every MemberOf, for series and for the now/next groups, carries xsi:type=\"MemberOfType\".",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 6.10.4, table 41, row MemberOf"
+      },
+      {
+       "case": "ScheduleEvent Program, PublishedStartTime and PublishedDuration",
+       "verdict": "implemented",
+       "what": "Each ScheduleEvent has Program@crid, PublishedStartTime in UTC with Z and an ISO 8601 PublishedDuration.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 6.10.7, table 51"
+      },
+      {
+       "case": "OnDemandProgram@serviceIDRef",
+       "verdict": "implemented",
+       "what": "OnDemandProgram carries @serviceIDRef: the sid of the request, or the service's UniqueIdentifier in a programme request, which has no sid.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 6.10.8.2, table 52, row @serviceIDRef"
+      },
+      {
+       "case": "OnDemandProgram ProgramURL is an XML AIT with @contentType application/vnd.dvb.ait+xml",
+       "verdict": "implemented",
+       "what": "ProgramURL carries @contentType application/vnd.dvb.ait+xml and points at the provider's content deep-linked XML AIT for the programme, served with that media type, whose URLBase and applicationLocation launch the operator's configured catch-up player at the programme; the XML AIT validates against the XML AIT schema in the repository's test (T1).",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 6.10.8.2, table 52, row ProgramURL"
+      },
+      {
+       "case": "OnDemandProgram InstanceDescription with two availability Genre elements",
+       "verdict": "implemented",
+       "what": "InstanceDescription holds two Genre elements with @type other: MediaAvailabilityCS media_available while the programme is inside its availability window (else media_unavailable), and FEPGAvailabilityCS fepg_unavailable, the default.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 6.10.16, table 62, row Genre [OnDemandProgram]"
+      },
+      {
+       "case": "OnDemandProgram PublishedDuration, StartOfAvailability, EndOfAvailability, DeliveryMode and Free",
+       "verdict": "implemented",
+       "what": "All five are written: availability starts at the broadcast start and ends 30 days after the broadcast end, DeliveryMode is streaming and Free is true.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 6.10.8.2, table 52"
+      }
+     ],
+     "noted": [
+      "Events that have started also carry ActualStartTime and ActualEndTime equal to the published values; the profile lists ActualStartTime and ActualDuration, not ActualEndTime, which a client may ignore.",
+      "No AuxiliaryURL (Template XML AIT) is written. Table 52 marks it \"Optional {0..1}\", while clause 5.2.4.4.2 reads \"Within every OnDemandProgram element supplied through the content guide interface there shall be an AuxiliaryURL referencing a Template XML AIT.\" Writing one would satisfy both, so leaving it out does not meet clause 5.2.4.4.2; that clause is outside this requirement's locators and has no case here.",
+      "A programme without a description is written with an empty medium Synopsis.",
+      "The XML AIT endpoint accepts the regionID[] and lloc parameters the client appends without tailoring on them, and never returns the application/vnd.dvbi.non form clause 5.2.4.2 describes for content the provider cannot offer to a device."
+     ]
+    },
+    {
+     "id": "6.11-provider",
+     "name": "Classification terms in guide responses",
+     "release": "V121",
+     "component": "provider",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 6.10.5.2, table 42, row Genre; clause 6.11.5; clause 6.10.13, table 59, row HowRelated; clause 6.11.9, table 72"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "Genre @type main",
+       "verdict": "implemented",
+       "what": "Programme Genre is written with @href and a Name child and no @type, so the schema default of main applies, as the table requires.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 6.10.5.2, table 42, row Genre"
+      },
+      {
+       "case": "Programme Genre terms from ContentCS",
+       "verdict": "implemented",
+       "what": "Programme genres are written as terms of urn:tva:metadata:cs:ContentCS:2011, a scheme clause 6.11.5 names; whether each term exists in that scheme is not verified, because ETSI TS 102 822-3-1, which defines it, is not held at a known version (reference [7] is undated and the scheme is not among the TS 103 770 V1.2.1 attachments).",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 6.11.5"
+      },
+      {
+       "case": "Programme image HowRelated term",
+       "verdict": "inconsistent",
+       "what": "Programme images use urn:tva:metadata:cs:HowRelatedCS:2012:19 (Promotional Still Image), the term table 72 lists; table 59 requires a clause D.1 term for a programme image, and clause D.1 defines none, so no value meets both.",
+       "repo": "rt-dvb-i-application-provider",
+       "conflict": "TS 103 770 V1.2.1 clause 6.10.13, table 59, row HowRelated: \"The @href attribute shall carry a value specified in clause D.1 where the RelatedMaterial fragment contains a link to an application, an application logo, service logo or programme image in the MediaLocator.MediaUri element.\" Clause D.1 (urn:dvb:metadata:cs:HowRelatedCS:2021) has terms only for service, service list and content guide material. Against: TS 103 770 V1.2.1 clause 6.11.9: \"The values identified in table 72 are profiled from TV-Anytime, ETSI TS 102 822-3-1 [7].\" Table 72 lists urn:tva:metadata:cs:HowRelatedCS:2012:19 (Promotional Still Image) for .../BasicDescription/RelatedMaterial/HowRelated[@href], and the example column of table 59 uses the same term for a programme image.",
+       "locator": "clause 6.10.13, table 59, row HowRelated; clause 6.11.9, table 72"
+      }
+     ],
+     "noted": [
+      "All eight ContentCS terms used were found in a TV-Anytime ContentCS file held locally whose specification version is not stated in the file; that is not a check against a known version.",
+      "No Restart, Box Set, More Episodes or audio terms are emitted, as the related features are not implemented."
+     ]
+    },
+    {
+     "id": "6.1-app",
+     "name": "Content guide source discovery (client)",
+     "release": "V121",
+     "component": "app",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 6.1; clause 5.5.2, Service table rows ContentGuideSource and ContentGuideSourceRef"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "ScheduleInfoEndpoint URI read from ContentGuideSource",
+       "verdict": "implemented",
+       "what": "For each ContentGuideSource, in ContentGuideSourceList, at list level or in a Service, the ScheduleInfoEndpoint URI is read with the ProgramInfo, GroupInfo and MoreEpisodes endpoints; list entries are kept by @CGSID.",
+       "repo": "rt-dvb-i-application"
+      },
+      {
+       "case": "Service-level ContentGuideSource takes precedence",
+       "verdict": "implemented",
+       "what": "A service's own ContentGuideSource is used first, before any reference or the list-level source.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 5.5.2, Service table, row ContentGuideSource"
+      },
+      {
+       "case": "ContentGuideSourceRef resolved to a CGSID",
+       "verdict": "implemented",
+       "what": "ContentGuideSourceRef is read and looked up among the ContentGuideSourceList entries by @CGSID; ContentGuideServiceRef is no longer used for this and only sets the guide service identifier.",
+       "repo": "rt-dvb-i-application"
+      },
+      {
+       "case": "List-level ContentGuideSource for services with no source of their own",
+       "verdict": "implemented",
+       "what": "A service with neither its own source nor a matching reference uses the ContentGuideSource element directly under ServiceList, or has no guide when there is none.",
+       "repo": "rt-dvb-i-application"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "6.2.2-app",
+     "name": "Guide request URL format (client)",
+     "release": "V121",
+     "component": "app",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 6.2.2"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "<api_endpoint_URL>[?<query_params>]",
+       "verdict": "implemented",
+       "what": "Query parameters are appended to the endpoint URL from the service list with ? or &, before any proxy wrapping.",
+       "repo": "rt-dvb-i-application"
+      },
+      {
+       "case": "Reserved characters in query values percent-encoded",
+       "verdict": "implemented",
+       "what": "Keys and values are encoded with encodeURIComponent, which percent-encodes characters such as : / ? # [ ] @ & = + , ; $ and space (a service identifier such as tag:example,2026:svc is sent encoded, square brackets in regionID[] and sid[] as %5B%5D); it leaves ! ' ( ) * as they are. Whether those five are reserved under clause 2.2 of IETF RFC 3986 was not checked: RFC 3986 was not obtained.",
+       "repo": "rt-dvb-i-application"
+      }
+     ],
+     "noted": [
+      "The serviceId parameter that TS 103 770 does not define is no longer sent; image_variant and inclusive, which the clauses make optional, are not sent either.",
+      "Pagination links are used as given, with only white space removed from the MediaUri text (clause 6.9 example URIs are wrapped across lines)."
+     ]
+    },
+    {
+     "id": "6.2.3-app",
+     "name": "HTTP caching and error handling for guide requests (client)",
+     "release": "V121",
+     "component": "app",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clauses 6.2.3 and 6.2.4, referring to clauses 4.3.2 and 4.3.3 (the published text of 6.2.3 reads \"4.3.24.3.2\"); clause 6.5.1"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "Cache-Control max-age honoured",
+       "verdict": "implemented",
+       "what": "Guide requests go through the same HTTP client as service lists: a response's max-age is honoured per URL, so the five-minute refresh is answered from the local copy until it expires; request URLs are now stable (3-hour aligned schedule windows, fixed now/next URLs), and the proxy passes Cache-Control on.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 4.3.2.1"
+      },
+      {
+       "case": "If-Modified-Since on repeated requests",
+       "verdict": "implemented",
+       "what": "The Last-Modified time of each guide response is kept and sent as If-Modified-Since on the next request for the same URL.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 4.3.2.2"
+      },
+      {
+       "case": "400 or 406: request not retried",
+       "verdict": "implemented",
+       "what": "A guide request answered with 400 or 406 is never sent again in the session; the next request differs only when a new 3-hour window starts, and the parameters now meet clause 6.5.2.1.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 6.5.2.1"
+      },
+      {
+       "case": "404 on a ContentGuideSource URL: re-acquire the service list, then back off",
+       "verdict": "differs",
+       "what": "For schedule and now/next requests a 404 makes the client re-acquire the service list once, and a 404 again after that applies the back-off; a 404 on the ProgramInfo, GroupInfo or MoreEpisodes endpoints only leaves the detail or browse panel empty, with no re-acquisition. The clause applies to any API URL listed in the ContentGuideSource.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 4.3.3.4"
+      },
+      {
+       "case": "5xx or connection failure: retries no faster than the back-off model",
+       "verdict": "implemented",
+       "what": "After a 5xx or a connection failure no guide request for that URL is sent before the clause 4.3.3.7 back-off wait has passed; the five-minute refresh is skipped until then.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 4.3.3.5"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "6.5.2-app",
+     "name": "Timestamp filtered schedule request (client)",
+     "release": "V121",
+     "component": "app",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clauses 6.5.2.1 and 6.5.2.2"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "Single sid parameter",
+       "verdict": "implemented",
+       "what": "Each schedule request carries exactly one sid.",
+       "repo": "rt-dvb-i-application"
+      },
+      {
+       "case": "sid is ContentGuideServiceRef when present, else UniqueIdentifier",
+       "verdict": "implemented",
+       "what": "sid is the service's ContentGuideServiceRef when it has one, else its UniqueIdentifier.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 6.5.2.2, service_id"
+      },
+      {
+       "case": "start and end are whole multiples of 10 800 seconds",
+       "verdict": "implemented",
+       "what": "start is rounded down to a 3-hour boundary, so it is a whole multiple of 10 800, and each further window starts 12 hours later.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 6.5.2.1"
+      },
+      {
+       "case": "end is start plus 21 600 or 43 200 seconds",
+       "verdict": "implemented",
+       "what": "Each request spans 43 200 seconds (12 hours); the period shown is covered by several requests whose results are combined.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 6.5.2.1"
+      },
+      {
+       "case": "Times within 28 days back and forward",
+       "verdict": "implemented",
+       "what": "The requested windows run from up to four hours before the current time to at most a day after it, inside the 28 day limits.",
+       "repo": "rt-dvb-i-application"
+      },
+      {
+       "case": "Only services listed in a DVB-I service list",
+       "verdict": "implemented",
+       "what": "Guide requests are made only for services parsed from the loaded service list.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 6.5.2.2"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "6.5.3-app",
+     "name": "Now/next filtered schedule request (client)",
+     "release": "V121",
+     "component": "app",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clauses 6.5.3.1 and 6.5.4.1"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "now_next=true on the ScheduleInfoEndpoint, without start and end",
+       "verdict": "implemented",
+       "what": "The channel list is filled from <ScheduleInfoEndpoint>?sid=...&now_next=true, without start and end.",
+       "repo": "rt-dvb-i-application"
+      },
+      {
+       "case": "now_next=window",
+       "verdict": "implemented",
+       "what": "The selected service is queried with now_next=window, without start and end.",
+       "repo": "rt-dvb-i-application"
+      },
+      {
+       "case": "Order of now/next events from the structural group CRIDs",
+       "verdict": "implemented",
+       "what": "MemberOf of the now, later and earlier structural groups is read from ProgramInformation; when present, events are ordered by it (earlier counting back, later forward) and the event in the now group is taken as current.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 6.5.4.1"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "6.5.4-app",
+     "name": "Schedule response handling (client)",
+     "release": "V121",
+     "component": "app",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clauses 6.5.4.1, 6.5.4.2 and 6.10.1.1"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "Robust to element order and additional elements",
+       "verdict": "implemented",
+       "what": "Elements are looked up by namespace and name wherever they appear, and unknown elements are ignored.",
+       "repo": "rt-dvb-i-application"
+      },
+      {
+       "case": "ProgramInformation linked to ScheduleEvent and OnDemandProgram by CRID",
+       "verdict": "implemented",
+       "what": "Programme details are keyed by ProgramInformation@programId and joined to ScheduleEvent and OnDemandProgram through Program@crid.",
+       "repo": "rt-dvb-i-application"
+      },
+      {
+       "case": "Events re-ordered for the UI (should)",
+       "verdict": "implemented",
+       "what": "Events are sorted for display, by the structural groups of a now/next answer or else by start time, as clause 6.5.4.2 says a client should do since events are not necessarily in order.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 6.5.4.2"
+      }
+     ],
+     "noted": [
+      "Events with the same start time are reduced to one, and the start time shown is ActualStartTime when present; table 51 describes PublishedStartTime as the time displayed to the viewer.",
+      "The client handles only IP services, so the hybrid broadcast merging rules of clause 6.5.4.2 do not apply to it."
+     ]
+    },
+    {
+     "id": "6.6-app",
+     "name": "Programme information request (client)",
+     "release": "V121",
+     "component": "app",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 6.6.2"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "Request <ProgramInfoEndpoint>?pid=<CRID>",
+       "verdict": "implemented",
+       "what": "When an event is selected, the client requests <ProgramInfoEndpoint>?pid=<CRID>, the CRID being the event's Program@crid from the ScheduleInfo answer, and shows the long synopsis from the ProgramInformation returned.",
+       "repo": "rt-dvb-i-application"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "6.7-app",
+     "name": "More Episodes, Box Sets and pagination (client)",
+     "release": "V121",
+     "component": "app",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 8.6; clauses 6.7, 6.8 and 6.9"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "More Episodes requests and display",
+       "verdict": "implemented",
+       "what": "From the detail pane the client requests <MoreEpisodesEndpoint>?pid=...&type=ondemand with the region chosen in settings, shows the results in MemberOf@index order and hides those whose on-demand entry is unavailable or incompatible.",
+       "repo": "rt-dvb-i-application"
+      },
+      {
+       "case": "Box Set Categories, Lists and Contents",
+       "verdict": "implemented",
+       "what": "A toolbar button requests Box Set Categories, then Box Set Lists for a category and Box Set Contents for a box set, with the URL formats of clauses 6.8.2.2, 6.8.3.2 and 6.8.4.2 (paginated format).",
+       "repo": "rt-dvb-i-application"
+      },
+      {
+       "case": "Pagination links and page handling",
+       "verdict": "implemented",
+       "what": "Pages of any size are handled; the next page is requested from the pagination link as given, on request, or at once only when a page leaves nothing to show; GroupInformation@numOfItems is not displayed.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 6.9"
+      }
+     ],
+     "noted": [
+      "Box sets whose Template XML AIT offers no application this client can start, and box set contents whose on-demand entry is unavailable or incompatible, are hidden. Clause 6.8.3.2 says the client \"shall not filter the results, whether by region ID or other means\", while clause 6.8.3.3 expects @numOfItems to differ from the items visible to the user due to content compatibility signalled in the Template XML AIT, and clause 5.2.4.4.1 says incompatible content shall be marked as unavailable. Not judged as a separate case."
+     ]
+    },
+    {
+     "id": "6.10-app",
+     "name": "Use of guide metadata (client)",
+     "release": "V121",
+     "component": "app",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 6.10.15; clause 6.10.5.2, table 42; clause 6.10.8.2, table 52"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "Programme ParentalGuidance enforced at playback",
+       "verdict": "implemented",
+       "what": "Every ParentalGuidance MinimumAge with its CountryCodes is read; the programme on air is checked when a live service is selected and again when the guide's current programme changes, and an on-demand programme before it starts; a programme over the threshold is blocked, or asks for the PIN where one is set.",
+       "repo": "rt-dvb-i-application"
+      },
+      {
+       "case": "OnDemandProgram ProgramURL used as an XML AIT to launch the player",
+       "verdict": "implemented",
+       "what": "An on-demand item is offered only when its ProgramURL is an XML AIT; it is started by fetching that XML AIT, choosing its HTML5 application and launching it in the player area.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 6.10.8.2, table 52, row ProgramURL"
+      },
+      {
+       "case": "RelatedMaterial not referring to an image ignored",
+       "verdict": "implemented",
+       "what": "Only RelatedMaterial with HowRelated term 19 (or the older 1001) is used as the programme image; other RelatedMaterial is ignored.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 6.10.5.2, table 42, row RelatedMaterial"
+      },
+      {
+       "case": "Robust to additional Genre elements",
+       "verdict": "implemented",
+       "what": "The first Genre is used (its Name, or the last part of @href) and any further Genre elements are ignored without error.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 6.10.5.2, table 42, row Genre"
+      }
+     ],
+     "noted": [
+      "Watch again is offered for an ended event only when its OnDemandProgram is within StartOfAvailability and EndOfAvailability and its Template XML AIT has an HTML5 application; the media availability Genre is not read.",
+      "Audio, video and access-service attributes in guide metadata are not read, so the media metadata precedence of clause 6.12 has nothing to apply to.",
+      "The programme image term the client accepts (TV-Anytime HowRelatedCS:2012:19) is the one table 72 and clause 5.2.8.2.1 use; table 59 asks for a clause D.1 value, and D.1 has none for a programme image (SPEC-NOTES contradiction 10). The case above is judged on the table 42 sentence only.",
+      "The rating check at a programme change and before on-demand playback has no automated test of its own; only the check at selection is tested."
+     ]
+    },
+    {
+     "id": "6-exo",
+     "name": "Content guide acquisition (Exo DVB-I Player)",
+     "release": "V121",
+     "component": "exo",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 6.2.2; clause 6.5.2.1"
+     },
+     "repos": [
+      "rt-5gms-application"
+     ],
+     "cases": [
+      {
+       "case": "Content guide source discovery and guide requests",
+       "verdict": "absent",
+       "what": "The wrapper makes no content guide requests; any guide shown comes from the external DVB-I frontend it loads, which is not part of this repository."
+      },
+      {
+       "case": "Guide presentation and on-demand launch",
+       "verdict": "absent",
+       "what": "The wrapper has no guide user interface; it only hands stream URLs requested by the frontend to ExoPlayer."
+      }
+     ],
+     "exists": "An Android WebView loads a third-party DVB-I frontend from a fixed URL and passes any request for a .mpd, .m3u8, .mp4 or .ts URL to ExoPlayer.",
+     "noted": []
+    }
+   ]
+  }
+ ]
+}

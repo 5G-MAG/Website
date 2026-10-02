@@ -6,6 +6,8 @@ description: Specifications, architecture and standards covered by the DVB-I ove
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import ImplementationCases from '@site/src/components/ImplementationCases';
+import AUDIT from '@site/src/data/audit-dvb-i.json';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -35,7 +37,7 @@ The work focuses on combining DVB-I with 5G delivery so that the same service ca
 - Broadcast delivery using the LTE-based 5G Broadcast System
 - Concurrent or hybrid delivery over both paths
 
-The DVB / 5G-MAG Joint Task Force documented the reference architecture and deployment guidance for these scenarios in DVB A178, published as ETSI TR 103 972 (DVB-I service delivery over 5G Systems; Deployment Guidelines).
+The DVB / 5G-MAG Joint Task Force documented the reference architecture and deployment guidance for these scenarios in ETSI TR 103 972 (DVB-I service delivery over 5G Systems; Deployment Guidelines).
 
 ## Deployment Configurations
 
@@ -66,7 +68,32 @@ The DVB-I over 5G tools implement the discovery and selection layer and glue it 
 - **Broadcast delivery**: acquiring a broadcast service instance over the LTE-based 5G Broadcast path. The receiver/modem behaviour lives in the [5G Broadcast reference tools](../5g-broadcast/).
 - **Concurrent / hybrid operation**: presenting both instances for a service so the client can select or switch between broadcast and unicast.
 
-This mapping mirrors the DVB-I-over-5G reference architecture in DVB A178 (ETSI TR 103 972): DVB-I stays the service layer, the DVB delivery formats (DVB-DASH, DVB-MABR) stay the media layer, and the 3GPP/ETSI systems stay the transport layer.
+This mapping mirrors the DVB-I-over-5G reference architecture in ETSI TR 103 972 clause 5.1: DVB-I stays the service layer, DVB-DASH stays the media layer, and the 3GPP/ETSI systems stay the transport layer.
+
+## Implementation status
+
+Each feature of ETSI TS 103 770 V1.2.1, split into its requirements and each requirement into the cases its clause defines: what works, what does not, and why, for the client, the provider, the registry and the Exo DVB-I Player. Filter by component; open a feature, then a requirement.
+
+<ImplementationCases data={AUDIT} />
+
+### DVB-I over 5G
+
+ETSI TR 103 972 V1.1.1 (2023-07), *DVB-I service delivery over 5G Systems; Deployment Guidelines*, is an informative technical report: it places no requirement on a DVB-I client, service list provider or registry, so nothing in this section is scored. It describes three scenarios (5G Broadcast, 5G Media Streaming, and both at once) and records the gaps the DVB and 3GPP specifications leave. What the reference tools do towards them:
+
+- **5G Broadcast instances use an existing DVB-I element.** TS 103 770 V1.2.1 clause 9.3.3 acts on "a DVB-I service instance with an mbms:// locator" without naming the element that carries it, and TR 103 972 clause 6.2.4 asks for "an extension" for it. The provider puts the `mbms://` URL in `IdentifierBasedDeliveryParameters`, which table 16 defines as "An identifier in the form of a locator (URL) or name (URN) that contains the parameters of the relevant delivery system for this service instance." No clause names that element for MBMS, so this is a reading, and the "new set of service delivery parameters" the TR also asks for has no home. The list validates against the published schema, and the provider refuses a locator that is not an MBMS URL by ETSI TS 126 347 clause 8.2.2.
+- **The registry** says nothing about 5G: TS 103 770 gives it no element or `Delivery` value for it.
+- **The client** cannot receive over MBMS from a browser, so it checks the signalling instead: a 5G badge shows the locator, its priority and the MBMS User Service it names, or what is wrong with it. It plays the service from a DASH or HLS instance where one exists.
+- **5G Media Streaming:** no component yet carries 5GMS Service Access Information, which TR 103 972 clause 6.3.3.2 says a service list "needs to convey" and clause 6.3.4 lists as a gap. The Exo DVB-I Player hands an intercepted DASH address to ExoPlayer, without a Media Session Handler.
+
+TS 103 770 clause 9.3 (carriage in an MBMS system) is part of the status above, under *Service instance selection and delivery*.
+
+:::info[Full audit for members]
+
+This page summarises a requirement-by-requirement audit of the code. The full audit (each requirement with its clause quoted, the code that meets or misses it, and the findings) is available to 5G-MAG members through Standards2Deployments.
+
+[Become a member](/membership) · [Request access](/early-access)
+
+:::
 
 ## Getting Started
 
