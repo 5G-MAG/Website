@@ -52,11 +52,11 @@ The generic architecture and its 5G Media Streaming instantiation, with the part
     },
     {
       label: 'In 5G Media Streaming',
-      src: '/img/tech/data-collection/generated/ts26501-fig4.7.1-1-status.svg',
-      width: 1200, height: 908,
-      title: 'Data collection in 5G Media Streaming, with Reference Tools status',
-      source: 'Based on TS 26.501 V19.4.0, figure 4.7.1-1; status at the time of the audit',
-      alt: 'The 5GMS instantiation. The 5GMS components are provided, but the Data Collection AF inside the 5GMS AF is not. Metrics and consumption collection are implemented in the Media Session Handler, M1 and M5 are partial, and R2, R4, R5 and R6 are not implemented.',
+      src: '/img/tech/data-collection/generated/ts26501-v17-fig4.7.1-1-status.svg',
+      width: 1200, height: 923,
+      title: 'Data collection in 5G Media Streaming (Release 17), with Reference Tools status',
+      source: 'Based on TS 26.501 V17.10.0, figure 4.7.1-1, the release the 5GMS AF is built against; status at the time of the audit',
+      alt: 'The Release 17 5GMS instantiation. The 5GMS components are provided, but the Data Collection AF inside the 5GMS AF is not. Metrics and consumption collection are implemented in the Media Session Handler; M1 and M5 are partial; R4, R5, R6 and M6 are not implemented; the NWDAF and the Event Consumer AF are not implemented.',
     },
   ]}
   note="Click a figure to enlarge it."
@@ -91,8 +91,9 @@ Each feature, per 5GMS component. Open Details for the requirements checked, by 
 
 - **5GMS AF:** no Data Collection AF and no Event Data Processing provisioning yet; QoE metrics and consumption reports received at M5 are written to files. Work to embed the Data Collection AF library in the 5GMS AF is in progress and not yet usable.
 - **5GMS AS:** no reporting of media streaming access activity at R4.
-- **5GMS client:** the Media Session Handler sends QoE metrics and consumption reports at M5; no ANBR-based Network Assistance reporting at R2.
+- **5GMS client:** the Media Session Handler sends QoE metrics and consumption reports at M5. ANBR-based Network Assistance reporting at R2 is a Release 18 addition, beyond the Release 17 the 5GMS AF is built against.
 - **5GMS Application Provider:** the M1 Event Data Processing methods are commented out, and there is no Event Consumer AF.
+- **NWDAF:** not provided. open5gs, which the 5GMS AF builds on, has no NWDAF, so there is no consumer at R5.
 
 ### Packages
 
