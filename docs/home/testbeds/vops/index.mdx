@@ -3,8 +3,9 @@ hide_title: true
 sidebar_class_name: project-index-link
 title: VOPS Conformance Validator
 sidebar_position: -1
-description: Conformance validator for the video operation points defined in 3GPP TS 26.265.
+description: Checks that an AVC or HEVC video bitstream conforms to an operation point of 3GPP TS 26.265, the conformance validator of its annex B.
 ---
+import FigurePair from '@site/src/components/FigurePair';
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
@@ -24,37 +25,93 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 </div>
 </div>
 
-:::note
-This is a placeholder. The full project page is in preparation.
+:::tip[At a glance]
+
+- **What it is:** the conformance validator of 3GPP TS 26.265 (Video Capabilities and Operation Points, V19.2.0, Release 19), annex B.2.3. It checks whether an AVC or HEVC bitstream conforms to a video operation point.
+- **What it covers:** the seven operation points of TS 26.265, from AVC HD to MV-HEVC stereo.
+- **What it is not:** an encoder or decoder. It tests bitstreams that encoders produce.
+- **Status:** under development. Every operation point is implemented; each still needs testing with its conformance bitstreams.
+
 :::
 
 ## What it does
 
-3GPP TS 26.265 defines service-independent video operation points and capabilities, which 3GPP
-service specifications and third-party services may reference. Its conformance annex provides a
-conformance validator for testing bitstreams against those operation points. The repository below
-holds that validator.
+TS 26.265 defines service-independent video operation points and capabilities, which 3GPP service specifications and third-party services may reference. An operation point combines a video coding format with a video representation format, and a receiver conforming to it can decode the bitstream and render its video signal.
+
+<figure style={{maxWidth: '820px', margin: '1.5rem auto'}}>
+<img loading="lazy" style={{width: "100%", height: "auto"}} src={useBaseUrl('/img/testbeds/vops/ts26265-fig4.2-1.svg')} width="975" height="284" alt="A video signal enters the Video Encoder, configured through VID-ENC-API, which produces coded metadata and a video bitstream. In the receiver conforming to the operation point, the Video Decoder, configured through VID-DEC-API, passes the video signal and rendering metadata to Rendering. An Application spans both." />
+<figcaption>Reference architecture for video Operation points and capabilities. Redrawn from TS 26.265 V19.2.0, figure 4.2-1.</figcaption>
+</figure>
+
+## Where the validator fits
+
+TS 26.265 annex B provides a set of conformance functions: annotated video test signals, reference encoders and configurations, a conformance validator, conforming decoders, and conformance bitstreams. The validator tests whether a bitstream claiming to conform to an operation point does, and if not, which test assertions fail. This testbed is that validator.
+
+<figure style={{maxWidth: '900px', margin: '1.5rem auto'}}>
+<img loading="lazy" style={{width: "100%", height: "auto"}} src={useBaseUrl('/img/testbeds/vops/ts26265-figB.1-1.svg')} width="1900" height="964" alt="The Encoder Configuration for Operation Point and the Video Signal Test Sequences with annotation feed the Reference Software Encoder. Its bitstream goes to the Conformance Validator, which returns a report and a description; coded metadata goes to the Conforming Decoder, which returns a report and an MD5. All of these, with the encoding configuration and the video signal metadata, form the Conformance Bitstream with annotation, which provides a bitstream to a decoder under test and conformance information to the decoder conformance test." />
+<figcaption>Overview of conformance functionalities provided for this specification. Redrawn from TS 26.265 V19.2.0, figure B.1-1.</figcaption>
+</figure>
+
+## Operation points
+
+The operation points of TS 26.265 (table 6.1-1), and how the validator names them.
+
+| Operation point | Bitstream | Video format | In the validator |
+| --- | --- | --- | --- |
+| 3GPP-AVC-HD | AVC High Progressive Profile, Level 4.0 | 3GPP-HD | `3GPP-AVC-HD` |
+| 3GPP-HEVC-HD | HEVC Main 10 Profile, Main Tier, Level 4.1 | 3GPP-HD | `3GPP-HEVC-HD` |
+| 3GPP-HEVC-HD-HDR | HEVC Main 10 Profile, Main Tier, Level 4.1 | 3GPP-HDR | `3GPP-HEVC-HDR` |
+| 3GPP-HEVC-UHD-HDR | HEVC Main 10 Profile, Main Tier, Level 5.1 | 3GPP-HDR | `3GPP-HEVC-UHD`, `3GPP-HEVC-UHD-HDR` |
+| 3GPP-HEVC-Stereo | HEVC Main 10 Profile, Main Tier, Level 5.2, frame packed | 3GPP-Stereo | `3GPP-HEVC-Stereo` |
+| 3GPP-MV-HEVC-Main-Stereo | MV-HEVC, two layers | 3GPP-Stereo | `3GPP-MV-HEVC-Main-Stereo` |
+| 3GPP-MV-HEVC-Ext-Stereo | MV-HEVC, two layers | 3GPP-Stereo | `3GPP-MV-HEVC-Ext-Stereo` |
+
+TS 26.265 itself also uses "3GPP-HEVC-HDR" and "3GPP-HEVC-UHD" in its clause text for the HDR and UHD operation points.
+
+## How it works
+
+The validator parses the bitstream into an XML description of its NAL units and parameters, then checks that description against XSD 1.1 schemas, one set per operation point, and reports every passing and failing assertion. A "shall" requirement that fails is reported as an error, a "should" as a warning.
+
+TS 26.265 leaves the semantics and format of the validator report for further study, so the JSON report is the tool's own.
+
+<details>
+<summary>Run it</summary>
+
+```bash
+cd ~
+git clone https://github.com/5G-MAG/vops-conformance-validator.git
+cd vops-conformance-validator
+```
+
+```shell
+python -m pip install -r requirements.txt
+```
+
+Validate a bitstream against an operation point, with a JSON report:
+
+```shell
+# Validate bitstream against predefined operation point with JSON report
+$ python -m sa4_bitstream_validator validate bitstream_path 3GPP-MV-HEVC-Main-Stereo --report report.json
+```
+
+`dump` writes the XML description of a bitstream, and `check` tests a description against one or more schemas. `config.yaml` maps each operation point to its schemas in `bitstream_rules/`. The repository README lists every option.
+
+</details>
 
 ## Repositories
 
 <ProjectRepositories project="vops" />
 
-## Standards
+See [Standards: VOPS Conformance Validator](/standards/vops) for the specification.
 
-<div class="standard-card-row">
-<div class="standard-card">
-<img src={useBaseUrl('/assets/images/partnerships/3gpp-logo.png')} alt="3GPP" />
-<span class="standard-card__label">3GPP</span>
-</div>
-</div>
+<details>
+<summary>Sources for this page</summary>
 
-3GPP [TS 26.265](https://www.3gpp.org/dynareport/26265.htm), Media Delivery: Video Capabilities and
-Operation Points, V19.2.0 (2026-03), Release 19.
+- **At a glance and What it does:** TS 26.265 V19.2.0, Introduction, clause 4.2 (Operation Point, Conforming Receiver) and annex B.2.3.
+- **Where the validator fits:** TS 26.265 V19.2.0, annex B.1 and B.3.
+- **Operation points:** TS 26.265 V19.2.0, table 6.1-1, clauses 6.2.2.2, 6.3.2.2 to 6.3.5.2, 6.3.6 and 6.3.4.3; validator names from the repository README.
+- **How it works:** the repository README, commit d621ace; TS 26.265 V19.2.0, annex B.2.3.
+- **Figures:** redrawn from TS 26.265 V19.2.0, figures 4.2-1 and B.1-1.
+- **Status:** the repository README (status badge and operation point table).
 
-See [Standards: VOPS Conformance Validator](/standards/vops) for the specification list.
-
-## Sources for this page
-
-- 3GPP TS 26.265 V19.2.0, Introduction: "The present document defines service-independent video operation points and capabilities."
-- 3GPP TS 26.265 V19.2.0, Introduction: "These may be referenced in 3GPP service specifications or in third-party services."
-- 3GPP TS 26.265 V19.2.0, clause B.2.3: "A conformance validator for testing bitstreams for conformance against the operation points defined in this specification is provided"
+</details>
