@@ -3320,20 +3320,16 @@
     "name": "Data Collection Service Provider library",
     "repos": [
      [
-      "rt-data-collection-application-function",
-      "cef77bc",
-      null
+      "rt-data-collection-application-function"
      ]
     ],
-    "pinned": "5G_APIs tag TSG105-Rel18: TS 26.532 V18.3.0 (V18.2.0 for the provisioning API), TS 29.517 V18.6.0"
+    "pinned": "TS 26.532 V18.3.0 and TS 29.517 V18.6.0 (Release 18)"
    },
    "af": {
     "name": "standalone Data Collection AF",
     "repos": [
      [
-      "rt-data-collection-application-function",
-      "cef77bc",
-      null
+      "rt-data-collection-application-function"
      ]
     ],
     "pinned": "the same build as the library"
@@ -3342,9 +3338,7 @@
     "name": "test scripts and test suite that exercise the APIs; no Direct or Indirect Data Collection Client or AS reporter exists",
     "repos": [
      [
-      "rt-data-collection-application-function",
-      "cef77bc",
-      null
+      "rt-data-collection-application-function"
      ]
     ],
     "pinned": "not applicable"
@@ -4700,7 +4694,7 @@
      "M15",
      "M16"
     ],
-    "note": "The 5GMS AF on development has no Data Collection AF and no Event Data Processing provisioning. The unmerged branch links the DCAF library but crashes on start-up because it registers no report handlers. The Application Provider has only commented-out stubs for the M1 Event Data Processing API.",
+    "note": "The 5GMS AF has no Data Collection AF and no Event Data Processing provisioning. The work in progress links the Data Collection AF library but does not yet start. The Application Provider has only commented-out stubs for the M1 Event Data Processing API.",
     "status": {
      "ALL": {
       "af": "partial",
@@ -4762,7 +4756,7 @@
      "M47",
      "M48"
     ],
-    "note": "No 5GMS event is generated or exposed. The branch advertises only the UE Communication event feature and sets no event generation callback, and the Application Provider has no Event Consumer AF.",
+    "note": "No 5GMS event is generated or exposed. The work in progress advertises only the UE Communication event feature and sets no event generation callback, and the Application Provider has no Event Consumer AF.",
     "status": {
      "ALL": {
       "af": "absent",
@@ -4776,50 +4770,40 @@
   ],
   "components": {
    "af": {
-    "name": "5GMS AF, development",
+    "name": "5GMS AF",
     "repos": [
      [
-      "rt-5gms-application-function",
-      "ce8d19e",
-      "v1.4.7"
+      "rt-5gms-application-function"
      ]
     ],
-    "pinned": "TS 26.512 V17.10.0 (5G_APIs tag TSG109-Rel17)"
+    "pinned": "TS 26.512 V17.10.0 (Release 17)"
    },
    "af_branch": {
-    "name": "5GMS AF, unmerged branches Feature/DCAF and feature/Integrate-DCAF",
+    "name": "5GMS AF with the Data Collection AF library (work in progress, not yet merged)",
     "repos": [
      [
-      "rt-5gms-application-function",
-      "9ffb2dd",
-      null
+      "rt-5gms-application-function"
      ]
     ],
-    "pinned": "the AF pins unchanged, plus the DCAF library at TSG105-Rel18"
+    "pinned": "Release 17 for 5GMS, Release 18 for the Data Collection AF library"
    },
    "as": {
     "name": "5GMS AS",
     "repos": [
      [
-      "rt-5gms-application-server",
-      "6ab1109",
-      "1.2.5"
+      "rt-5gms-application-server"
      ]
     ],
-    "pinned": "5G_APIs branch REL-17"
+    "pinned": "TS 26.512 Release 17"
    },
    "ue": {
     "name": "5GMS client: Media Session Handler, Media Stream Handler, common library",
     "repos": [
      [
-      "rt-5gms-media-session-handler",
-      "0a2f54c",
-      "v1.3.0"
+      "rt-5gms-media-session-handler"
      ],
      [
-      "rt-5gms-media-stream-handler",
-      "ffae70a",
-      "v1.3.0"
+      "rt-5gms-media-stream-handler"
      ]
     ],
     "pinned": "not determinable from the build"
@@ -4828,12 +4812,10 @@
     "name": "5GMS Application Provider",
     "repos": [
      [
-      "rt-5gms-application-provider",
-      "297c7be",
-      "1.3.0"
+      "rt-5gms-application-provider"
      ]
     ],
-    "pinned": "hand-written Release 17 M1 client"
+    "pinned": "a Release 17 M1 client"
    }
   },
   "columns": [
@@ -4843,7 +4825,7 @@
    ],
    [
     "af_branch",
-    "AF branch"
+    "AF, in progress"
    ],
    [
     "as",
@@ -4883,7 +4865,7 @@
   {
    "project": "5G Media Streaming (5GMS)",
    "what": "the 5GMS AF is meant to embed the Data Collection AF library",
-   "status": "on the unmerged AF branch Feature/DCAF only"
+   "status": "work in progress, not yet merged"
   }
  ]
 }

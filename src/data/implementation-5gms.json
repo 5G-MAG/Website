@@ -11,67 +11,53 @@
    "name": "5GMS Application Function",
    "repos": [
     [
-     "rt-5gms-application-function",
-     "ce8d19e",
-     "v1.4.7"
+     "rt-5gms-application-function"
     ]
    ],
-   "pinned": "3GPP Forge 5G_APIs tag TSG109-Rel17 (identical to TS 26.512 V17.10.0); M3 (not specified by 3GPP in Release 17): /3gpp-m3/v1"
+   "pinned": "TS 26.512 V17.10.0 (Release 17); for M3, which Release 17 does not specify, /3gpp-m3/v1"
   },
   "as": {
    "name": "5GMS Application Server",
    "repos": [
     [
-     "rt-5gms-application-server",
-     "6ab1109",
-     "1.2.5"
+     "rt-5gms-application-server"
     ]
    ],
-   "pinned": "5G_APIs floating REL-17 branch (identical to V17.10.0 on 2026-10-01); M3 (not specified by 3GPP in Release 17): /3gpp-m3/v1 from rt-common-shared 401b015"
+   "pinned": "TS 26.512 Release 17; for M3, /3gpp-m3/v1"
   },
   "ue": {
    "name": "5GMS client (Media Session Handler, Media Stream Handler, common library, 5GMS-Aware Application)",
    "repos": [
     [
-     "rt-5gms-media-session-handler",
-     "0a2f54c",
-     "v1.3.0"
+     "rt-5gms-media-session-handler"
     ],
     [
-     "rt-5gms-media-stream-handler",
-     "ffae70a",
-     "v1.3.0"
+     "rt-5gms-media-stream-handler"
     ],
     [
-     "rt-5gms-common-android-library",
-     "d1e5abb",
-     "v1.3.0"
+     "rt-5gms-common-android-library"
     ],
     [
-     "rt-5gms-application",
-     "6536205",
-     "v1.3.0"
+     "rt-5gms-application"
     ]
    ],
-   "pinned": "not determinable from the build (hand-written Release 17 models; Media3 ExoPlayer 1.10.0)"
+   "pinned": "Release 17 data models, written by hand; Media3 ExoPlayer"
   },
   "tools": {
    "name": "5GMS Application Provider",
    "repos": [
     [
-     "rt-5gms-application-provider",
-     "297c7be",
-     "1.3.0"
+     "rt-5gms-application-provider"
     ]
    ],
-   "pinned": "hand-written /3gpp-m1/v2 client (Release 17); 5G_APIs REL-17 branch"
+   "pinned": "a Release 17 M1 client (/3gpp-m1/v2)"
   }
  },
  "dependencies": [
   {
    "project": "Content Delivery Protocols",
    "what": "CMMF encoder and multiple service locations (Release 19, TS 26.512 Annex H)",
-   "status": "unmerged branches only"
+   "status": "in progress, not yet merged"
   },
   {
    "project": "5G Core Service Consumers",
@@ -81,7 +67,7 @@
   {
    "project": "UE Data Collection, Reporting and Event Exposure",
    "what": "DCAF for data collection and exposure (R4/R5/R6)",
-   "status": "unmerged AF branch only"
+   "status": "in progress, not yet merged"
   },
   {
    "project": "Content Delivery Protocols",
@@ -3035,7 +3021,7 @@
     "F122",
     "F123"
    ],
-   "note": "Absent; DCAF only on an unmerged AF branch; the AS R4 role is missing.",
+   "note": "Absent; integration of the Data Collection AF is in progress; the AS R4 role is missing.",
    "status": {
     "R17": {
      "af": "absent",
@@ -3163,7 +3149,7 @@
     "M09",
     "M10"
    ],
-   "note": "Absent; CMMF work only on unmerged branches (Content Delivery Protocols).",
+   "note": "Absent; CMMF work is in progress, not yet merged (Content Delivery Protocols).",
    "status": {
     "R17": {
      "af": "not in release",

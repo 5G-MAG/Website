@@ -98,11 +98,10 @@ export default function ImplementationMatrix({ data }) {
           return (
             <li key={c}>
               <b>{SHORT[c]}</b> ({comp.name}):{' '}
-              {comp.repos.map(([repo, sha, tag], i) => (
+              {comp.repos.map(([repo], i) => (
                 <React.Fragment key={repo}>
                   {i > 0 && ', '}
-                  <a href={`https://github.com/5G-MAG/${repo}/tree/${sha}`} target="_blank" rel="noreferrer">{repo}</a>
-                  {tag ? ` ${tag}` : ''} ({sha})
+                  <a href={`https://github.com/5G-MAG/${repo}`} target="_blank" rel="noreferrer">{repo}</a>
                 </React.Fragment>
               ))}
               . Built against: {comp.pinned}.

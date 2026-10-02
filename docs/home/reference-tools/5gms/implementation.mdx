@@ -68,7 +68,7 @@ Each feature, per component and per release. Open Details for the requirements c
 
 <RepoCards slugs={['rt-5gms-application-function']} />
 
-- **Release and build:** v1.4.7. Built against 3GPP Forge 5G_APIs tag `TSG109-Rel17`, whose files match TS 26.512 V17.10.0. Serves `3gpp-m1/v2` and `3gpp-m5/v2`.
+- **Built against:** TS 26.512 V17.10.0 (Release 17). Serves `3gpp-m1/v2` and `3gpp-m5/v2`.
 - **Implemented:** Provisioning Sessions, Content Protocols Discovery (HTTP pull ingest only), Server Certificates, M5 Consumption Reporting, Delivery Boost through the PCF.
 - **Partial:** Content Hosting, Policy Templates, Consumption and Metrics Reporting provisioning, M5 Dynamic Policies, Network Assistance, Metrics Reporting and Service Access Information. PATCH is not supported; reports are written to local files.
 - **Not implemented:** Content Preparation Templates, Content Publication, Edge Resources, Event Data Processing, bit rate recommendation, data reporting and event exposure (R4, R5, R6), the NEF path (N33), uplink, and the Release 19 Policy Template and Content Hosting additions.
@@ -78,7 +78,7 @@ Each feature, per component and per release. Open Details for the requirements c
 
 <RepoCards slugs={['rt-5gms-application-server']} />
 
-- **Release and build:** 1.2.5. Built against the 5G_APIs `REL-17` branch, which matched TS 26.512 V17.10.0 on the audit date.
+- **Built against:** TS 26.512 Release 17 (V17.10.0 at the time of the audit).
 - **Implemented:** HTTP pull-based ingest at M2d; M4d delivery as an HTTP and HTTPS caching proxy, with domain aliases and path rewrite rules.
 - **Partial:** the M3 Server Certificates and Content Hosting configuration (`/3gpp-m3/v1`; Release 17 specifies no M3 API); CMCD reception at M4d, forwarded to the CMCD Toolkit.
 - **Not implemented:** DASH-IF push and low-latency ingest, content preparation, M10 redistribution, Content Steering, CMMF, CPIX, uplink. Geo-fencing, URL signing and caching rules are accepted in a configuration but not applied.
@@ -87,7 +87,7 @@ Each feature, per component and per release. Open Details for the requirements c
 
 <RepoCards slugs={['rt-5gms-media-session-handler', 'rt-5gms-media-stream-handler', 'rt-5gms-common-android-library', 'rt-5gms-application']} />
 
-- **Release and build:** v1.3.0 for all four. Models written by hand in the Release 17 form; player: Media3 ExoPlayer 1.10.0.
+- **Built against:** Release 17, with the data models written by hand; the player is Media3 ExoPlayer.
 - **Implemented:** DASH playback; M8 with a 5G-MAG `m8.json` service list.
 - **Partial:** M5 Service Access Information, Consumption Reporting and Metrics Reporting (QM10 scheme, 8 metrics).
 - **Not implemented:** HLS in the session path, Dynamic Policies and Network Assistance requests, 3GPP Service URL handling, DRM, Content Steering, CMMF, edge, eMBMS and MBS, uplink. M6 and M7 use a 5G-MAG interface between the application and the client services.
@@ -97,7 +97,7 @@ Each feature, per component and per release. Open Details for the requirements c
 
 <RepoCards slugs={['rt-5gms-application-provider']} />
 
-- **Application Provider (1.3.0):** a Release 17 M1 client (`3gpp-m1/v2`) with command-line tools and management interfaces. It drives Provisioning Sessions, Content Protocols, Server Certificates, Content Hosting, Consumption Reporting, Metrics Reporting and Policy Templates. Content Preparation, Edge Resources, Event Data Processing and Content Publication are not implemented.
+- **Application Provider:** a Release 17 M1 client (`3gpp-m1/v2`) with command-line tools and management interfaces. It drives Provisioning Sessions, Content Protocols, Server Certificates, Content Hosting, Consumption Reporting, Metrics Reporting and Policy Templates. Content Preparation, Edge Resources, Event Data Processing and Content Publication are not implemented.
 
 ### Supporting repositories
 
@@ -105,9 +105,9 @@ These support the components above; the table does not rate them.
 
 <RepoCards slugs={['rt-5gms-examples', 'cmcd-toolkit', 'rt-common-shared']} />
 
-- **Examples (v1.3.0):** Docker Compose recipes that deploy the AF, AS and Application Provider from their default branches, with Open5GS v2.7.7.
+- **Examples:** Docker Compose recipes that deploy the AF, AS and Application Provider, with Open5GS.
 - **CMCD Toolkit:** collector, storage (InfluxDB 1.8) and Grafana dashboards for the CMCD the AS forwards.
-- **rt-common-shared (v1.0.0):** the `/3gpp-m3/v1` definitions used by the AF and AS for M3, which Release 17 does not specify.
+- **rt-common-shared:** the `/3gpp-m3/v1` definitions used by the AF and AS for M3, which Release 17 does not specify.
 
 ## Used with other projects
 

@@ -29,7 +29,7 @@ import IMPLEMENTATION from '@site/src/data/implementation-data-collection.json';
 
 - **Which specification the code follows:** Release 18, TS 26.532 V18.3.0 and TS 29.517 V18.6.0, as the Data Collection AF build pins. Release 19 adds nothing to implement.
 - **Generic framework:** a Data Collection AF library and a standalone AF serve R1, R2 to R4, R5 and R6. No data collection client is provided.
-- **In 5G Media Streaming:** the 5GMS components do not yet use the Data Collection AF. The integration exists only on an unmerged 5GMS AF branch.
+- **In 5G Media Streaming:** the 5GMS components do not yet use the Data Collection AF; the integration is in progress.
 - **Source of this page:** a code audit of the repositories on 2026-10-01.
 
 :::
@@ -55,7 +55,7 @@ The generic architecture and its 5G Media Streaming instantiation, with the part
       src: '/img/tech/data-collection/generated/ts26501-fig4.7.1-1-status.svg',
       width: 1200, height: 908,
       title: 'Data collection in 5G Media Streaming, with Reference Tools status',
-      source: 'Based on TS 26.501 V19.4.0, figure 4.7.1-1; status of the development branches',
+      source: 'Based on TS 26.501 V19.4.0, figure 4.7.1-1; status at the time of the audit',
       alt: 'The 5GMS instantiation. The 5GMS components are provided, but the Data Collection AF inside the 5GMS AF is not. Metrics and consumption collection are implemented in the Media Session Handler, M1 and M5 are partial, and R2, R4, R5 and R6 are not implemented.',
     },
   ]}
@@ -80,17 +80,16 @@ Each feature, per 5GMS component. Open Details for the requirements checked, by 
 
 <RepoCards slugs={['rt-data-collection-application-function']} />
 
-- **Release and build:** latest release 1.1.0; `development` is two commits ahead, with corrected HTTP status codes. Built against the 5G_APIs tag `TSG105-Rel18`.
+- **Built against:** TS 26.532 V18.3.0 and TS 29.517 V18.6.0 (Release 18).
 - **Implemented:** creating, reading and deleting Provisioning Sessions, Data Reporting Configurations and Data Reporting Sessions; communication reports; time-window aggregation; event subscription and notification at R5 and R6; registration of one AF profile with the NRF.
 - **Needs fix:** replacing a Data Reporting Configuration does not store it; the aggregation names MAXIMUM and MINIMUM are not accepted; `"expedite": false` is treated as true; replacing a subscription does not change its notifications; the installed default configuration uses section names the library does not read, so the AF starts without its data collection servers.
 - **Not implemented:** PATCH, user and location restrictions, record types other than communication, TLS and OAuth 2.0, and a Direct, Indirect or AS data collection client.
-- **Other branches:** `bugfix/dcaf-subproject-integration` lets another project build the Data Collection AF as a subproject; `feature/integration-test` adds a Python test suite for R1, R2 and R6.
 
 ### 5G Media Streaming components
 
 <RepoCards slugs={['rt-5gms-application-function', 'rt-5gms-application-server', 'rt-5gms-media-session-handler', 'rt-5gms-application-provider']} />
 
-- **5GMS AF:** on `development`, no Data Collection AF and no Event Data Processing provisioning; QoE metrics and consumption reports received at M5 are written to files. The unmerged branch `Feature/DCAF` links the Data Collection AF library, but does not start, because it registers no report handlers. The branch `feature/Integrate-DCAF` holds an integration plan, with no code.
+- **5GMS AF:** no Data Collection AF and no Event Data Processing provisioning yet; QoE metrics and consumption reports received at M5 are written to files. Work to embed the Data Collection AF library in the 5GMS AF is in progress and not yet usable.
 - **5GMS AS:** no reporting of media streaming access activity at R4.
 - **5GMS client:** the Media Session Handler sends QoE metrics and consumption reports at M5; no ANBR-based Network Assistance reporting at R2.
 - **5GMS Application Provider:** the M1 Event Data Processing methods are commented out, and there is no Event Consumer AF.
