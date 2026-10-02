@@ -6,9 +6,9 @@ description: What the 5G Media Streaming Reference Tools implement, component by
 ---
 
 import FigurePair from '@site/src/components/FigurePair';
-import ImplementationMatrix from '@site/src/components/ImplementationMatrix';
+import ImplementationCases from '@site/src/components/ImplementationCases';
 import { RepoCards } from '@site/src/components/ProjectRepoSection';
-import IMPLEMENTATION from '@site/src/data/implementation-5gms.json';
+import AUDIT from '@site/src/data/audit-5gms.json';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -24,7 +24,7 @@ import IMPLEMENTATION from '@site/src/data/implementation-5gms.json';
 
 - **Which specification the code follows:** Release 17, TS 26.512 V17.10.0, for downlink 5GMS (5GMSd).
 - **Release 18/19:** no component implements the TS 26.510 APIs or the Release 19 M3 API yet.
-- **Source of this page:** a code audit of the repositories on 2026-10-01.
+- **Source of this page:** a code audit of the repositories on 2026-10-02: each requirement split into the cases its clause defines, each case checked against the code and then re-checked by a second reader.
 
 :::
 
@@ -58,9 +58,9 @@ The 5GMS architecture of each release, with the parts the Reference Tools provid
 
 ## Implementation status
 
-Each feature, per component and per release. Open Details for the requirements checked, by release.
+Each feature, split into its requirements and each requirement into the cases its clause defines: what works, what does not, and why. Filter by component or release; open a feature, then a requirement.
 
-<ImplementationMatrix data={IMPLEMENTATION} />
+<ImplementationCases data={AUDIT} />
 
 :::info[Full audit for members]
 
@@ -120,7 +120,7 @@ These support the components above; the table does not rate them.
 ## Used with other projects
 
 <ul>
-{IMPLEMENTATION.dependencies.map((d) => (
+{AUDIT.dependencies.map((d) => (
   <li key={d.what}><strong>{d.project}</strong>: {d.what}. <em>{d.status}.</em></li>
 ))}
 </ul>
