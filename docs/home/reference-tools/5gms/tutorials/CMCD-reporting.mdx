@@ -4,6 +4,7 @@ hide_title: true
 sidebar_position: 7
 description: Configures the 5GMSd Application Server to forward CMCD data from media requests to the cmcd-toolkit collector and Grafana dashboard.
 ---
+import { RepoCards } from '@site/src/components/ProjectRepoSection';
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
@@ -29,6 +30,10 @@ CMCD Reporting enables the collection of CMCD(Common Media Client Data, [CTA-500
 CMCD information is reported in-band with media requests using HTTP query parameters or request headers, and is extracted by the Application Server during normal media delivery. The Application Server then forwards the collected and formatted CMCD metrics to a CMCD Collector, where they can be visualized via a dashboard for analyzing media session behavior and content delivery characteristics.
 
 This tutorial describes how to set up and enable CMCD Reporting in the Reference Tools, and how to access the CMCD dashboard.
+
+## Components
+
+<RepoCards slugs={['rt-5gms-application-function', 'rt-5gms-application-server', 'rt-5gms-application', 'rt-5gms-media-session-handler', 'rt-5gms-media-stream-handler', 'rt-5gms-common-android-library', 'cmcd-toolkit']} />
 
 ## Prerequisites
 
@@ -273,4 +278,4 @@ request_user_agent
 ## Next steps
 
 - Try the related reporting tutorials: [Consumption Reporting](consumption-reporting) and [QoE Metrics Reporting](metrics-reporting).
-- Return to the [Tutorials index](.).
+- Return to the [Application Showcase](.).

@@ -3,8 +3,21 @@ import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
-import { icon } from '@site/src/components/GodeeperCard';
-import HubDestinationCard from '@site/src/components/HubDestinationCard';
+import { CATEGORIES as PROJECT_CATEGORIES, CategoryCard as ProjectCategoryCard, filterCategories as filterProjectCategories } from '../reference-tools';
+
+// The Reference Tools project boxes, for the projects that have an Application Showcase page (their
+// list of Application Showcases, at <Reference Tools page>/tutorials); each card opens that page.
+const APPLICATION_SHOWCASE_SLUGS = [
+  '5gms', 'data-collection', 'content-delivery', '5g-broadcast', 'emergency-alerts', 'dvb-i', '5g-mbs',
+  'xr', 'v3c', 'vdmc', 'avatar', 'network-apis', '5g-core', '3gpp-platforms',
+];
+const SHOWCASE_CATEGORIES = PROJECT_CATEGORIES.map((c) => ({
+  ...c,
+  topics: c.topics
+    .filter((t) => APPLICATION_SHOWCASE_SLUGS.includes(t.href.replace('/reference-tools/', '')))
+    .map((t) => ({ ...t, href: `${t.href}/tutorials` })),
+})).filter((c) => c.topics.length > 0);
+const SHOWCASE_PROJECT_COUNT = SHOWCASE_CATEGORIES.reduce((n, c) => n + c.topics.length, 0);
 import styles from '../tech/index.module.css';
 // Shared with /reference-tools, which the filter bar pattern below was
 // first built for (2026-08-24 findability audit); reused here rather than
@@ -12,229 +25,20 @@ import styles from '../tech/index.module.css';
 // import above (../tech/index.module.css).
 import filterStyles from '../reference-tools/styles.module.css';
 
+// The Application Showcases rocket (src/data/projectIcons.js).
 const APPS_ICON_PATH = (
   <>
-    <path d="M4 4h6v6h-6z" />
-    <path d="M14 4h6v6h-6z" />
-    <path d="M4 14h6v6h-6z" />
-    <path d="M17 14v6" />
-    <path d="M14 17h6" />
+    <path d="M4.5 16.5c-1.5 1.26 -2 5 -2 5s3.74 -.5 5 -2c.71 -.84 .7 -2.13 -.09 -2.91a2.18 2.18 0 0 0 -2.91 -.09z" />
+    <path d="M12 15l-3 -3a22 22 0 0 1 2 -3.95a12.88 12.88 0 0 1 10 -5.93c0 2.72 -.78 7.5 -6 11a22.35 22.35 0 0 1 -4 2z" />
+    <path d="M9 12h-4s.55 -3.03 2 -4c1.62 -1.08 5 0 5 0" />
+    <path d="M12 15v5s3.03 -.55 4 -2c1.08 -1.62 0 -5 0 -5" />
   </>
 );
 
-// Grouped into 4 application categories, each with its own dedicated page
-// under docs/home/showcase/: streaming.md, 5g-broadcast.md, volumetric.md
-// (retitled to cover all Immersive Media Experiences, not just volumetric
-// video) and network-apis.md. Each topic below links to the H2 subsection on
-// its category's page (e.g. '/showcase/streaming#live-streaming-over-a-
-// real-5g-network') where the application is explained in real-world terms,
-// the Reference Tool(s) it combines are linked, and the underlying tutorial
-// is linked for hands-on setup steps. multicast-broadcast.md and xr.md were
-// retired (2026-07-22): their content now lives on streaming.md and
-// volumetric.md respectively (their old URLs never went live on www.5g-mag.com, so no redirects were needed). Only
-// tutorials that build or use a working experience count as an application;
-// tutorials that just exercise an API/CLI (Postman, curl, Insomnia,
-// Wireshark) or cover setup/measurement stay reference-tool-only and aren't
-// listed here.
-const CATEGORIES = [
-  {
-    title: 'Media Streaming, Multicast & Real-Time Communications',
-    desc: 'Applications built on 5G-MAG’s streaming and multicast reference tools.',
-    topics: [
-      {
-        title: 'Live Streaming Over a Real 5G Network',
-        desc: '5GMSd deployed over a real 5G network (Open5GS, srsRAN) with a commercial off-the-shelf device.',
-        href: '/showcase/streaming#live-streaming-over-a-real-5g-network',
-        icon: icon(<path d="M7 4v16l13 -8l-13 -8" />),
-      },
-      {
-        title: 'MBS End-to-End Delivery Demo',
-        desc: 'Operating MBS user services end-to-end across the 5G Core, MB-SMF, MBSF, MBSTF, NG-RAN and UE.',
-        href: '/showcase/streaming#mbs-end-to-end-delivery-demo',
-        icon: icon(
-          <>
-            <path d="M12 12l0 .01" />
-            <path d="M14.828 9.172a4 4 0 0 1 0 5.656" />
-            <path d="M17.657 6.343a8 8 0 0 1 0 11.314" />
-            <path d="M9.168 14.828a4 4 0 0 1 0 -5.656" />
-            <path d="M6.337 17.657a8 8 0 0 1 0 -11.314" />
-          </>
-        ),
-      },
-      {
-        title: 'QoE Analytics Dashboard',
-        desc: 'CMCD, consumption and QoE metrics reporting from the 5GMS client into a live Grafana dashboard.',
-        href: '/showcase/streaming#qoe-analytics-dashboard',
-        icon: icon(
-          <>
-            <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-            <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />
-            <path d="M9 17l0 -5" />
-            <path d="M12 17l0 -1" />
-            <path d="M15 17l0 -3" />
-          </>
-        ),
-      },
-    ],
-  },
-  {
-    title: '5G Broadcast for TV, Radio and Emergency Alerts',
-    desc: 'Applications built on 5G-MAG’s 5G Broadcast reference tools.',
-    topics: [
-      {
-        title: 'Broadcast Stream Playback (RTP/HLS)',
-        desc: 'Receiving and playing back a broadcast stream over 5G Broadcast, via RTP or HLS.',
-        href: '/showcase/5g-broadcast#broadcast-stream-playback-rtphls',
-        icon: icon(
-          <>
-            <path d="M15 10l4.553 -2.069a1 1 0 0 1 1.447 .894v6.35a1 1 0 0 1 -1.447 .894l-4.553 -2.069v-4" />
-            <path d="M3 8a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-8z" />
-          </>
-        ),
-      },
-      {
-        title: 'Emergency Alert Broadcast Demo',
-        desc: 'Broadcasting a Cell Broadcast Service (CBS) emergency alert via SDR and receiving it on a device.',
-        href: '/showcase/5g-broadcast#emergency-alert-broadcast-demo',
-        icon: icon(
-          <>
-            <path d="M12 8a2 2 0 0 1 2 2v4a2 2 0 1 1 -4 0v-4a2 2 0 0 1 2 -2" />
-            <path d="M17 15c.345 .6 1.258 1 2 1a2 2 0 1 0 0 -4a2 2 0 1 1 0 -4c.746 0 1.656 .394 2 1" />
-            <path d="M3 15c.345 .6 1.258 1 2 1a2 2 0 1 0 0 -4a2 2 0 1 1 0 -4c.746 0 1.656 .394 2 1" />
-          </>
-        ),
-      },
-      {
-        title: 'Seamless Unicast/Broadcast Switching',
-        desc: 'Android middleware seamlessly switching a client between unicast 5GMS and 5G Broadcast reception.',
-        href: '/showcase/5g-broadcast#seamless-unicastbroadcast-switching',
-        icon: icon(
-          <>
-            <path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-            <path d="M16.616 13.924a5 5 0 1 0 -9.23 0" />
-            <path d="M20.307 15.469a9 9 0 1 0 -16.615 0" />
-            <path d="M9 21l3 -9l3 9" />
-            <path d="M10 19h4" />
-          </>
-        ),
-      },
-    ],
-  },
-  {
-    title: 'Immersive Media Experiences',
-    desc: 'Applications built on 5G-MAG’s XR, avatar and volumetric video reference tools.',
-    topics: [
-      {
-        title: 'Immersive 3D Media Messaging',
-        desc: 'Sharing 3D and AR assets as media message attachments, opened and rendered in the XR player.',
-        href: '/showcase/volumetric#immersive-3d-media-messaging',
-        icon: icon(
-          <>
-            <path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
-            <path d="M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2" />
-            <path d="M3 7v-2a2 2 0 0 1 2 -2h2" />
-            <path d="M3 17v2a2 2 0 0 0 2 2h2" />
-            <path d="M17 3h2a2 2 0 0 1 2 2v2" />
-            <path d="M17 21h2a2 2 0 0 0 2 -2v-2" />
-          </>
-        ),
-      },
-      {
-        title: 'Volumetric Video Streaming to Android',
-        desc: 'The V3C Unity player streaming volumetric 3D content to Android from a DASH server.',
-        href: '/showcase/volumetric#volumetric-video-streaming-to-android',
-        icon: icon(
-          <>
-            <path d="M4 8v-2a2 2 0 0 1 2 -2h2" />
-            <path d="M4 16v2a2 2 0 0 0 2 2h2" />
-            <path d="M16 4h2a2 2 0 0 1 2 2v2" />
-            <path d="M16 20h2a2 2 0 0 0 2 -2v-2" />
-            <path d="M12 12.5l4 -2.5" />
-            <path d="M8 10l4 2.5v4.5l4 -2.5v-4.5l-4 -2.5l-4 2.5" />
-            <path d="M8 10v4.5l4 2.5" />
-          </>
-        ),
-      },
-      {
-        title: 'XR Content Authoring with Blender',
-        desc: 'Authoring an XR scene with the Blender glTF exporter and loading it into the XR player.',
-        href: '/showcase/volumetric#xr-content-authoring-with-blender',
-        icon: icon(
-          <>
-            <path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
-            <path d="M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2" />
-            <path d="M3 7v-2a2 2 0 0 1 2 -2h2" />
-            <path d="M3 17v2a2 2 0 0 0 2 2h2" />
-            <path d="M17 3h2a2 2 0 0 1 2 2v2" />
-            <path d="M17 21h2a2 2 0 0 0 2 -2v-2" />
-          </>
-        ),
-      },
-    ],
-  },
-  {
-    title: 'Connected Media Production and Contribution',
-    desc: 'Applications built on 5G-MAG’s network API reference tools.',
-    topics: [
-      {
-        title: 'Dedicated Network APIs for Connected Media Production',
-        desc: 'CAMARA Quality on Demand, Connectivity Insights and Network Slice Booking APIs for live contribution and remote production.',
-        href: '/showcase/network-apis#dedicated-network-apis-for-connected-media-production',
-        icon: icon(
-          <>
-            <path d="M4 13h5" />
-            <path d="M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3" />
-            <path d="M20 8v8" />
-            <path d="M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5" />
-          </>
-        ),
-      },
-    ],
-  },
-];
-
-function CategoryCard({ title, desc, topics }) {
-  return (
-    <div className={styles.categoryCard}>
-      <div className={styles.categoryHeader}>
-        <h3 className={styles.categoryTitle}>{title}</h3>
-        <p className={styles.categoryDesc}>{desc}</p>
-      </div>
-      <div className={styles.categoryTopicGrid}>
-        {topics.map((t) => (
-          <HubDestinationCard key={t.href} compact icon={t.icon} title={t.title} desc={t.desc} href={t.href} />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-// Same query-drops-empty-categories mechanics as /reference-tools, but
-// title/description only, not title/description/tags: these topics are
-// scenario anchors on a shared category page (e.g. a specific H2 on
-// streaming.md), not individual projects, so there is no single project's
-// `software` field in taxonomy.json's `repoMetadata` to draw a tag from -- it would
-// have to be invented as a union across whichever Reference Tools each
-// scenario combines, which isn't recorded anywhere as a citable fact
-// (2026-08-26 findability follow-up; the filter bar's own placeholder
-// text is worded to match, see below -- "by name", not "by name or
-// technology").
-function filterCategories(query) {
-  const q = query.trim().toLowerCase();
-  if (!q) return CATEGORIES;
-  return CATEGORIES.map((c) => ({
-    ...c,
-    topics: c.topics.filter(
-      (t) => t.title.toLowerCase().includes(q) || t.desc.toLowerCase().includes(q)
-    ),
-  })).filter((c) => c.topics.length > 0);
-}
-
 export default function Applications() {
-  const [query, setQuery] = useState('');
-  const filtered = useMemo(() => filterCategories(query), [query]);
-  const totalTopics = useMemo(() => CATEGORIES.reduce((n, c) => n + c.topics.length, 0), []);
-  const shownTopics = useMemo(() => filtered.reduce((n, c) => n + c.topics.length, 0), [filtered]);
+  const [projectQuery, setProjectQuery] = useState('');
+  const filteredProjects = useMemo(() => filterProjectCategories(SHOWCASE_CATEGORIES, projectQuery), [projectQuery]);
+  const shownProjects = useMemo(() => filteredProjects.reduce((n, c) => n + c.topics.length, 0), [filteredProjects]);
 
   return (
     <Layout
@@ -260,36 +64,28 @@ export default function Applications() {
       <main>
         <section className={styles.section}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Scenarios</h2>
-            <p className={styles.sectionSubtitle}>
-              Start here if you want to understand what you can build and which tools to use. If
-              you&apos;re looking for an individual specification implementation, see{' '}
-              <Link to="/reference-tools">Reference Tools</Link> instead.
-            </p>
+            <p className={filterStyles.filterLabel}>Each project&apos;s Application Showcases</p>
             <div className={filterStyles.filterBar}>
               <input
                 type="search"
                 className={filterStyles.filterInput}
-                placeholder={`Filter ${totalTopics} scenarios by name…`}
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                aria-label="Filter Application scenarios"
+                placeholder={`Filter ${SHOWCASE_PROJECT_COUNT} projects by name or technology…`}
+                value={projectQuery}
+                onChange={(e) => setProjectQuery(e.target.value)}
+                aria-label="Filter Application Showcases by project"
               />
-              {query && (
+              {projectQuery && (
                 <span className={filterStyles.filterCount}>
-                  {shownTopics} of {totalTopics}
+                  {shownProjects} of {SHOWCASE_PROJECT_COUNT}
                 </span>
               )}
             </div>
-            {filtered.length === 0 ? (
-              <p className={filterStyles.filterEmpty}>
-                No scenarios match &ldquo;{query}&rdquo;. Try a broader term (e.g.
-                &ldquo;streaming&rdquo; or &ldquo;broadcast&rdquo;).
-              </p>
+            {filteredProjects.length === 0 ? (
+              <p className={filterStyles.filterEmpty}>No projects match &ldquo;{projectQuery}&rdquo;.</p>
             ) : (
               <div className={styles.categoryColumns}>
-                {filtered.map((c) => (
-                  <CategoryCard key={c.title} {...c} />
+                {filteredProjects.map((c) => (
+                  <ProjectCategoryCard key={c.title} {...c} />
                 ))}
               </div>
             )}

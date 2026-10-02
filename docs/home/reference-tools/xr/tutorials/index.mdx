@@ -1,6 +1,6 @@
 ---
 hide_title: true
-title: Tutorials
+title: Application Showcase
 sidebar_position: -1
 description: 'Index of XR Unity Player tutorials: build and run the player, author test glTF content, and explore use cases.'
 ---
@@ -12,28 +12,11 @@ export const projectVideos = youtubePlaylists.projects?.xr?.videos || [];
 
 <div class="topic-banner">
   <div class="topic-banner__icon-wrap">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      aria-hidden="true"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
-      <path d="M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2" />
-      <path d="M3 7v-2a2 2 0 0 1 2 -2h2" />
-      <path d="M3 17v2a2 2 0 0 0 2 2h2" />
-      <path d="M17 3h2a2 2 0 0 1 2 2v2" />
-      <path d="M17 21h2a2 2 0 0 0 2 -2v-2" />
-    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26 -2 5 -2 5s3.74 -.5 5 -2c.71 -.84 .7 -2.13 -.09 -2.91a2.18 2.18 0 0 0 -2.91 -.09z" /><path d="M12 15l-3 -3a22 22 0 0 1 2 -3.95a12.88 12.88 0 0 1 10 -5.93c0 2.72 -.78 7.5 -6 11a22.35 22.35 0 0 1 -4 2z" /><path d="M9 12h-4s.55 -3.03 2 -4c1.62 -1.08 5 0 5 0" /><path d="M12 15v5s3.03 -.55 4 -2c1.08 -1.62 0 -5 0 -5" /></svg>
   </div>
   <div class="topic-banner__text">
     <span class="topic-banner__kicker">XR/3D Scenes with MPEG-I Scene Description</span>
-    <h1>Tutorials, Tests and Examples</h1>
+    <h1>Application Showcase</h1>
   </div>
 </div>
 
@@ -48,17 +31,21 @@ export const projectVideos = youtubePlaylists.projects?.xr?.videos || [];
 
 ## Build and run the player
 
-- [Tutorial: Compile the Unity project for Android smartphones](./xr-player-android): step by step instructions to compile the `rt-xr-unity-player` and `rt-xr-maf-native` projects for Android smartphones. The compiled application loads glTF documents with support for MPEG glTF extensions. This is the simplest build to start with.
-- [Tutorial: Compile the Unity project for Meta Quest 3](./xr-player-metaquest3): step by step instructions to compile the `rt-xr-unity-player` and `rt-xr-maf-native` projects for Meta Quest 3. The compiled application loads glTF documents with support for MPEG glTF extensions.
+- [Application Showcase: Compile the Unity project for Android smartphones](./xr-player-android): step by step instructions to compile the `rt-xr-unity-player` and `rt-xr-maf-native` projects for Android smartphones. The compiled application loads glTF documents with support for MPEG glTF extensions. This is the simplest build to start with.
+- [Application Showcase: Compile the Unity project for Meta Quest 3](./xr-player-metaquest3): step by step instructions to compile the `rt-xr-unity-player` and `rt-xr-maf-native` projects for Meta Quest 3. The compiled application loads glTF documents with support for MPEG glTF extensions.
 
 ## Author test content
 
-- [Tutorial: Creation of MPEG-I Scene Description Test Assets](./creating-test-assets): a collection of MPEG-I Scene Description test assets alongside instructions and insight into the use of the Blender glTF exporter to add a series of MPEG extensions which can later be played in the Unity Player.
-- [Tutorial: Usage of Blender glTF exporter and XR Unity Player](./blender-exporter-unity-player): insight into the use of the Blender glTF exporter to add a series of MPEG extensions which can later be played in the Unity Player.
+- [Application Showcase: Creation of MPEG-I Scene Description Test Assets](./creating-test-assets): a collection of MPEG-I Scene Description test assets alongside instructions and insight into the use of the Blender glTF exporter to add a series of MPEG extensions which can later be played in the Unity Player.
+- [Application Showcase: Usage of Blender glTF exporter and XR Unity Player](./blender-exporter-unity-player): insight into the use of the Blender glTF exporter to add a series of MPEG extensions which can later be played in the Unity Player.
+
+  Authoring an XR scene from the content-creation side rather than the playback side: adding MPEG glTF extensions (anchoring, spatial audio, video textures) to a scene in Blender using a dedicated exporter add-on, then exporting it as glTF and loading it straight into the XR Unity Player to check how it looks.
 
 ## Explore use cases
 
-- [Tutorial: Immersive 3D Media Message](./immersive-3d-media-message): an overview of different use cases related to VR, XR, 3D scenes and AR scenes. It also provides information on how to share 3D assets using 3GPP conforming messaging (MMS) and third-party applications.
+- [Application Showcase: Immersive 3D Media Message](./immersive-3d-media-message): an overview of different use cases related to VR, XR, 3D scenes and AR scenes. It also provides information on how to share 3D assets using 3GPP conforming messaging (MMS) and third-party applications.
+
+  Sharing 3D and AR assets the way you would share a photo: as an attachment to an MMS message or a third-party messaging app, packaged so a 3GPP messaging service can carry it, then opened and rendered in the XR player. Working examples include sharing a plain 3D model and sharing an AR-anchored model, for example a piece of furniture a viewer can place on their own floor before deciding whether it fits. A couple of further extensions, adding images inside a shared 3D asset and manipulating a placed AR model under anchoring constraints, are flagged in the tutorial as not yet implemented.
 
 <div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
 

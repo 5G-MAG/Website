@@ -5,6 +5,8 @@ sidebar_position: 4
 description: Extends the Docker end-to-end 5GMSd deployment to run over a real 5G Network (Open5GS, srsRAN) with a COTS UE.
 ---
 
+import { RepoCards } from '@site/src/components/ProjectRepoSection';
+
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -24,6 +26,10 @@ This guide describes how to setup and configure the Reference Tools to create an
 the 5G Downlink Media Streaming components and a 5G Network based on Open5GS (the 5G core network) and srsRAN (the Radio Access Network, RAN).
 
 **What you will build:** the same end-to-end 5GMSd deployment as the [Docker end-to-end tutorial](end-to-end), but with the stream delivered over a real 5G Network to a commercial off-the-shelf (COTS) User Equipment (UE) rather than over the local network.
+
+## Components
+
+<RepoCards slugs={['rt-5gms-application-function', 'rt-5gms-application-server', 'rt-5gms-application', 'rt-5gms-media-session-handler', 'rt-5gms-media-stream-handler', 'rt-5gms-common-android-library', 'rt-common-shared']} />
 
 ## Prerequisites
 
@@ -126,4 +132,4 @@ the [basic end-to-end guide](end-to-end) setup guide.
 ## Next steps
 
 - Add reporting features on top of this deployment: [Consumption Reporting](consumption-reporting), [QoE Metrics Reporting](metrics-reporting) or [CMCD Reporting](CMCD-reporting).
-- Return to the [Tutorials index](.).
+- Return to the [Application Showcase](.).

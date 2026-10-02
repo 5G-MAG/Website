@@ -4,6 +4,7 @@ hide_title: true
 sidebar_position: 1
 description: Overview of installing, configuring and testing the 5GMS Application Function's M1, M3 and M5 interfaces, linking to version-specific test pages.
 ---
+import { RepoCards } from '@site/src/components/ProjectRepoSection';
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
@@ -29,6 +30,10 @@ Here you will find information to assist with testing of the Reference Tools 5GM
 **Recommended path:** install the AF, configure it, then test its interfaces in the order M1 (provisioning), M3 (AF-to-AS configuration), M5 (client session handling).
 
 The tests on this page are grouped by interface: M1 is the provisioning interface used by the Application Service Provider to provision the AF; M3 is the interface the AF uses to configure the Application Server (AS); M5 is the interface the client on the UE uses to obtain Service Access Information from the AF. The exact test steps depend on the AF version you have installed, so each interface section links to the page matching your version. If you are unsure which version you have, check the release you installed from the [rt-5gms-application-function repository](https://github.com/5G-MAG/rt-5gms-application-function).
+
+## Components
+
+<RepoCards slugs={['rt-5gms-application-function']} />
 
 ## Installation of the 5GMS AF as a Local User or as a System Service
 
@@ -94,4 +99,4 @@ visit the [Testing with Postman](./testing-postman) page.
 
 - Test the Application Server: [Developing and Testing the 5GMS Application Server](./testing-AS).
 - Exercise the M1 and M5 APIs interactively: [Testing M1 and M5 APIs with Postman](./testing-postman).
-- Return to the [Tutorials index](.).
+- Return to the [Application Showcase](.).

@@ -212,7 +212,9 @@ export function topicFor(project) {
 // Consumers) are not a basket topic -- see their own `excludedReason` in
 // taxonomy.json -- so they get one explicit residual group rather than
 // being silently dropped by the per-basket grouping below.
-const CATEGORIES = [
+// Exported for /showcase, which lists the same projects in the same boxes, each card opening the
+// project's Application Showcase instead of its Reference Tools page.
+export const CATEGORIES = [
   ...BASKETS.map((b) => ({
     title: b.title,
     desc: BASKET_DESC[b.key],
@@ -273,10 +275,10 @@ export function CategoryCard({ title, desc, accent, topics }) {
 // category they live in, rather than the whole category because the
 // category description happened to mention it too). A category with zero
 // remaining topics is dropped entirely rather than shown empty.
-function filterCategories(query) {
+export function filterCategories(categories, query) {
   const q = query.trim().toLowerCase();
-  if (!q) return CATEGORIES;
-  return CATEGORIES.map((c) => ({
+  if (!q) return categories;
+  return categories.map((c) => ({
     ...c,
     topics: c.topics.filter(
       (t) =>
@@ -290,7 +292,7 @@ function filterCategories(query) {
 
 export default function ReferenceTools() {
   const [query, setQuery] = useState('');
-  const filtered = useMemo(() => filterCategories(query), [query]);
+  const filtered = useMemo(() => filterCategories(CATEGORIES, query), [query]);
   const totalTopics = useMemo(() => CATEGORIES.reduce((n, c) => n + c.topics.length, 0), []);
   const shownTopics = useMemo(() => filtered.reduce((n, c) => n + c.topics.length, 0), [filtered]);
 

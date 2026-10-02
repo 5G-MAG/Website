@@ -1,6 +1,6 @@
 ---
 hide_title: true
-title: Tutorials
+title: Application Showcase
 sidebar_position: -1
 description: Index of 5G MBS tutorials covering the MBSTF, MBSF, 5GC core, Docker deployment, end-to-end setup, TMGI/session management, and Developer Exchange.
 ---
@@ -12,55 +12,41 @@ export const projectVideos = youtubePlaylists.projects?.['5g-mbs']?.videos || []
 
 <div class="topic-banner">
   <div class="topic-banner__icon-wrap">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      aria-hidden="true"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M12 12l0 .01" />
-      <path d="M14.828 9.172a4 4 0 0 1 0 5.656" />
-      <path d="M17.657 6.343a8 8 0 0 1 0 11.314" />
-      <path d="M9.168 14.828a4 4 0 0 1 0 -5.656" />
-      <path d="M6.337 17.657a8 8 0 0 1 0 -11.314" />
-    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26 -2 5 -2 5s3.74 -.5 5 -2c.71 -.84 .7 -2.13 -.09 -2.91a2.18 2.18 0 0 0 -2.91 -.09z" /><path d="M12 15l-3 -3a22 22 0 0 1 2 -3.95a12.88 12.88 0 0 1 10 -5.93c0 2.72 -.78 7.5 -6 11a22.35 22.35 0 0 1 -4 2z" /><path d="M9 12h-4s.55 -3.03 2 -4c1.62 -1.08 5 0 5 0" /><path d="M12 15v5s3.03 -.55 4 -2c1.08 -1.62 0 -5 0 -5" /></svg>
   </div>
   <div class="topic-banner__text">
     <span class="topic-banner__kicker">5G Multicast Broadcast Services (MBS)</span>
-    <h1>Tutorials, Tests and Examples</h1>
+    <h1>Application Showcase</h1>
   </div>
 </div>
 
 These tutorials cover the individual pieces of the 5G Multicast Broadcast Services (MBS) reference tools. New to this area? Start with [Initial support of MBS in the 5GC](./mbs-in-5gc) to bring up the MBS-capable 5G Core, or with [MBS Transport Function (MBSTF) Testing](./mbstf) to exercise the media user service layer. The [End-to-End](./mbs-end-to-end) tutorial ties the pieces together. For the deployment architectures these tutorials build (direct MBS core functions, or via the reusable 5GC Service Consumers libraries), see [Implementation Detail](../implementation#deployment-configurations).
 
-## [Tutorial: MBS support in the 5GC (Docker deployment)](./docker-implementation)
+## [Application Showcase: MBS support in the 5GC (Docker deployment)](./docker-implementation)
 
 This tutorial provides an overview on the Docker deployment implementation of MBS in Open5GS Core.
 
-## [Tutorial: Initial support of MBS in the 5GC](./mbs-in-5gc)
+## [Application Showcase: Initial support of MBS in the 5GC](./mbs-in-5gc)
 
 This tutorial provides an overview on the initial implementation of MBS in Open5GS Core.
 
-## [Tutorial: Managing MBS Sessions and TMGIs](./managing-mbs-sessions-tmgi)
+## [Application Showcase: Managing MBS Sessions and TMGIs](./managing-mbs-sessions-tmgi)
 
 This tutorial provides an overview on the management of MBS Session and TMGIs with the MBS 5GC implementation.
 
-## [Tutorial: MBS Function Operation and APIs](./mbsf)
+## [Application Showcase: MBS Function Operation and APIs](./mbsf)
 
 This tutorial provides an overview on the initial implementation of the MBSF.
 
-## [Tutorial: MBS Transport Function (MBSTF) Testing](./mbstf)
+## [Application Showcase: MBS Transport Function (MBSTF) Testing](./mbstf)
 
 This tutorial provides an overview on the initial implementation of the MBSTF.
 
-## [Tutorial: MBS End-to-End: Operating MBS User Services, MBS 5GC, NG-RAN and UE](./mbs-end-to-end)
+## [Application Showcase: MBS End-to-End: Operating MBS User Services, MBS 5GC, NG-RAN and UE](./mbs-end-to-end)
 
 This tutorial provides an overview on the implementation of MBS in Open5GS Core, srsRAN NG-RAN and srsRAN UE.
+
+5G Multicast Broadcast Services (MBS) deliver the same content to many devices at once natively over the 5G Core and New Radio (NR), rather than opening a separate unicast session per user. This demo operates the MBS chain together: the MBS-capable 5G Core, the MB-SMF, MBSF and MBSTF functions that manage MBS sessions and Temporary Mobile Group Identities (TMGIs), through to the NG-RAN. Delivery all the way to a receiving User Equipment (UE) over the air is not yet demonstrated on the release branches this builds on — see [Implementation Detail](/reference-tools/5g-mbs/implementation) for the current status. A full written walkthrough is still in progress.
 
 <div class="onair-kicker"><span class="onair-kicker__dot"></span>In Action</div>
 

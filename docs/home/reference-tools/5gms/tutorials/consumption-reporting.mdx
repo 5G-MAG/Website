@@ -4,6 +4,7 @@ hide_title: true
 sidebar_position: 5
 description: Configures Consumption Reporting so the 5GMSd client sends media consumption logs to the Application Function for inspection.
 ---
+import { RepoCards } from '@site/src/components/ProjectRepoSection';
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
@@ -29,6 +30,10 @@ This tutorial allows to: Use Consumption Reporting for 5G Media Streaming.
 Consumption Collection and Reporting collects content consumption measurement logs from the Media Player. It sends consumption reports to a 5GMSd AF describing the currently consumed media within the available presentation, the User Equipment (UE) capabilities, and the environment of the media session. The network can use this for transport optimisations or for consumption report analysis.
 
 The workflow is: first configure the 5GMS Application Function and the 5GMS Application Server; next, start a 5GMS media streaming downlink session on the client side; finally, access the resulting consumption reports from the local hard drive.
+
+## Components
+
+<RepoCards slugs={['rt-5gms-application-function', 'rt-5gms-application-server', 'rt-5gms-application', 'rt-5gms-media-session-handler', 'rt-5gms-media-stream-handler', 'rt-5gms-common-android-library', 'rt-5gms-application-provider']} />
 
 ## Prerequisites
 
@@ -245,4 +250,4 @@ is running the Application Function:
 ## Next steps
 
 - Try the related reporting tutorials: [QoE Metrics Reporting](metrics-reporting) and [CMCD Reporting](CMCD-reporting).
-- Return to the [Tutorials index](.).
+- Return to the [Application Showcase](.).

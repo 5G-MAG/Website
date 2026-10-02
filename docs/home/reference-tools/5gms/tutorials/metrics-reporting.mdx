@@ -4,6 +4,7 @@ hide_title: true
 sidebar_position: 6
 description: Configures QoE Metrics Reporting so the 5GMSd client collects and reports DASH QM10 metrics to the Application Function.
 ---
+import { RepoCards } from '@site/src/components/ProjectRepoSection';
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
@@ -35,6 +36,10 @@ the 5GMSd AF according to the configuration rules of that scheme. In the simples
 are then saved to disk by the 5GMS Application Function.
 
 The workflow is: first configure the 5GMS Application Function and the 5GMS Application Server; next, start a 5GMS media streaming downlink session on the client side; finally, access the resulting QoE metrics reports from the local hard drive.
+
+## Components
+
+<RepoCards slugs={['rt-5gms-application-function', 'rt-5gms-application-server', 'rt-5gms-application', 'rt-5gms-media-session-handler', 'rt-5gms-media-stream-handler', 'rt-5gms-common-android-library', 'rt-5gms-application-provider']} />
 
 ## Prerequisites
 
@@ -393,4 +398,4 @@ _Figure: the QoE Metrics Reporting UI visualising an individual report._
 ## Next steps
 
 - Try the related reporting tutorials: [Consumption Reporting](consumption-reporting) and [CMCD Reporting](CMCD-reporting).
-- Return to the [Tutorials index](.).
+- Return to the [Application Showcase](.).

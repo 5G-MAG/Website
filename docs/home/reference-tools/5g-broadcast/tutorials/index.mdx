@@ -1,6 +1,6 @@
 ---
 hide_title: true
-title: Tutorials
+title: Application Showcase
 sidebar_position: -1
 description: Index of 5G Broadcast tutorials (playback, seamless switching, Docker, measurements, configuration) plus reference material and Developer Exchange.
 ---
@@ -12,33 +12,17 @@ export const projectVideos = youtubePlaylists.projects?.['5g-broadcast']?.videos
 
 <div class="topic-banner">
   <div class="topic-banner__icon-wrap">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      aria-hidden="true"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-      <path d="M16.616 13.924a5 5 0 1 0 -9.23 0" />
-      <path d="M20.307 15.469a9 9 0 1 0 -16.615 0" />
-      <path d="M9 21l3 -9l3 9" />
-      <path d="M10 19h4" />
-    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26 -2 5 -2 5s3.74 -.5 5 -2c.71 -.84 .7 -2.13 -.09 -2.91a2.18 2.18 0 0 0 -2.91 -.09z" /><path d="M12 15l-3 -3a22 22 0 0 1 2 -3.95a12.88 12.88 0 0 1 10 -5.93c0 2.72 -.78 7.5 -6 11a22.35 22.35 0 0 1 -4 2z" /><path d="M9 12h-4s.55 -3.03 2 -4c1.62 -1.08 5 0 5 0" /><path d="M12 15v5s3.03 -.55 4 -2c1.08 -1.62 0 -5 0 -5" /></svg>
   </div>
   <div class="topic-banner__text">
     <span class="topic-banner__kicker">5G Broadcast - TV and Radio Services</span>
-    <h1>Tutorials, Tests and Examples</h1>
+    <h1>Application Showcase</h1>
   </div>
 </div>
 
 New to the Reference Tools? Start with [SDR - HLS Playback over 5G Broadcast](./hls-playback-5gbc), the simplest receiver-only setup. The other tutorials build on the same components. Reference material (sample files, service announcement formats and GPS time sync) is listed at the end of this page.
 
-## [Tutorial: Seamless Switching between Unicast and Broadcast (Android)](./android-mw-seamless-switching)
+## [Application Showcase: Seamless Switching between Unicast and Broadcast (Android)](./android-mw-seamless-switching)
 
 This tutorial describes the end-to-end setup for seamless switching between 5G Broadcast and unicast delivery on an
 Android device. It
@@ -46,34 +30,38 @@ utilizes [flute-ffmpeg](https://github.com/5G-MAG/rt-mbms-examples/tree/developm
 and [rt-mbms-tx-for-qrd-and-crd](https://github.com/5G-MAG/rt-mbms-tx-for-qrd-and-crd) for the transmission of the
 media data and the [rt-mbms-mw-android](https://github.com/5G-MAG/rt-mbms-mw-android) for the reception on the client-side.
 
-## [Tutorial: SDR - HLS Playback over 5G Broadcast](./hls-playback-5gbc)
+An Android device plays a live stream delivered over 5G Broadcast, and falls back automatically to regular unicast delivery the moment the broadcast signal disappears, with no visible interruption to the media player, since the Android Middleware exposes both delivery paths through the same local webserver.
+
+## [Application Showcase: SDR - HLS Playback over 5G Broadcast](./hls-playback-5gbc)
 
 This tutorial provides guidelines how to setup the
 Reference Tools to use an HLS stream which was received via 5G Broadcast, processed by
 the [MBMS Modem](https://github.com/5G-MAG/rt-mbms-modem) and played via dash.js or hls.js in
 the [Web User Interface](https://github.com/5G-MAG/rt-wui).
 
-## [Tutorial: SDR - RTP Playback over 5G Broadcast](./rtp-playback-5gbc)
+A complete 5G Broadcast receiver chain: an SDR (or a recorded sample file) feeds the MBMS Modem, which FLUTE-encodes the content as multicast traffic for the MBMS Middleware; the Middleware decodes it and serves it to a media player through a Web User Interface built on hls.js. The media player itself has no idea the content arrived over broadcast rather than a normal HTTP connection.
+
+## [Application Showcase: SDR - RTP Playback over 5G Broadcast](./rtp-playback-5gbc)
 
 This tutorial provides guidelines how to setup the
 Reference Tools to use an RTP stream which was received via 5G Broadcast, processed by
 the [MBMS Modem](https://github.com/5G-MAG/rt-mbms-modem) and played in a third-party media player such as ffplay or
 VLC.
 
-## [Tutorial: MBMS Modem with Sample Files](./modem-samplefiles)
+## [Application Showcase: MBMS Modem with Sample Files](./modem-samplefiles)
 
 This tutorial provides information on the use of the rt-mbms-modem with sample files as input.
 
-## [Tutorial: Docker support for rt-mbms client components (Linux)](./docker-implementation)
+## [Application Showcase: Docker support for rt-mbms client components (Linux)](./docker-implementation)
 
 The implementation of the rt-mbms processes (5G broadcast receiver) is provided as Docker containers. Details on how to
 use the Docker setup can be found in this tutorial.
 
-## [Tutorial: MBMS Modem - Measurements & GPS](./modem-measurements)
+## [Application Showcase: MBMS Modem - Measurements & GPS](./modem-measurements)
 
 This tutorial provides information on the use of the rt-mbms-modem to record data.
 
-## [Tutorial: Configuration of Service Announcement](./configuration-guide)
+## [Application Showcase: Configuration of Service Announcement](./configuration-guide)
 
 This tutorial provides an overview of the different configuration options when running the Linux based 5G broadcast
 stack. It highlights the required configuration options for the 5G Broadcast Service Announcements files and how to

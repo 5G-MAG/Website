@@ -82,6 +82,28 @@ export default function ProjectRepoSection({ projectNames, accent, isTestbed = f
   );
 }
 
+// The same cards for a chosen list of repositories, by slug, in the order given: e.g. the components a
+// tutorial needs. A repository listed under several projects shows once, with its owning project's icon.
+export function RepoCards({ slugs, accent }) {
+  const repos = slugs.map((slug) => ALL_REPOS.find((r) => r.slug === slug && r.originName === r.projectName) || ALL_REPOS.find((r) => r.slug === slug)).filter(Boolean);
+  if (repos.length === 0) return null;
+  return (
+    <div className="godeeper-grid">
+      {repos.map((r) => (
+        <HubDestinationCard
+          key={r.slug}
+          compact
+          accent={accent}
+          icon={iconForCatalogKey(r.originIcon)}
+          title={r.name}
+          desc={shortDesc(r.description)}
+          href={r.url}
+        />
+      ))}
+    </div>
+  );
+}
+
 function iconForCatalogKey(key) {
   const paths = key && ICON_CATALOG[key];
   if (!paths || !paths.length) return null;
