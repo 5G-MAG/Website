@@ -7,6 +7,7 @@ description: Checks that an AVC or HEVC video bitstream conforms to an operation
 ---
 import FigurePair from '@site/src/components/FigurePair';
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
+import ShowcaseDiagram from '@site/src/components/ShowcaseDiagram';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <div class="topic-banner">
@@ -33,6 +34,10 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 - **Status:** under development. Every operation point is implemented; each still needs testing with its conformance bitstreams.
 
 :::
+
+<div style={{maxWidth: '620px', margin: '1.5rem auto', borderRadius: '14px', overflow: 'hidden'}}>
+<ShowcaseDiagram name="vops" />
+</div>
 
 ## What it does
 
@@ -72,6 +77,11 @@ TS 26.265 itself also uses "3GPP-HEVC-HDR" and "3GPP-HEVC-UHD" in its clause tex
 
 The validator parses the bitstream into an XML description of its NAL units and parameters, then checks that description against XSD 1.1 schemas, one set per operation point, and reports every passing and failing assertion. A "shall" requirement that fails is reported as an error, a "should" as a warning.
 
+<figure style={{maxWidth: '900px', margin: '1.5rem auto'}}>
+<img loading="lazy" style={{width: "100%", height: "auto"}} src={useBaseUrl('/img/testbeds/vops/validation-pipeline.svg')} width="1232" height="300" alt="The bitstream (.264 or .hevc) goes to the AVC or HEVC parser, which generates an XML document. The validator (XSD 1.1) checks it against the XSD schemas of the operation point and produces the validation report, with every assertion passed or failed." />
+<figcaption>How the validator works, from its README (validation pipeline, steps 1 to 4).</figcaption>
+</figure>
+
 TS 26.265 leaves the semantics and format of the validator report for further study, so the JSON report is the tool's own.
 
 <details>
@@ -110,7 +120,7 @@ See [Standards: VOPS Conformance Validator](/standards/vops) for the specificati
 - **At a glance and What it does:** TS 26.265 V19.2.0, Introduction, clause 4.2 (Operation Point, Conforming Receiver) and annex B.2.3.
 - **Where the validator fits:** TS 26.265 V19.2.0, annex B.1 and B.3.
 - **Operation points:** TS 26.265 V19.2.0, table 6.1-1, clauses 6.2.2.2, 6.3.2.2 to 6.3.5.2, 6.3.6 and 6.3.4.3; validator names from the repository README.
-- **How it works:** the repository README, commit d621ace; TS 26.265 V19.2.0, annex B.2.3.
+- **How it works:** the repository README, commit d621ace (including the pipeline figure); TS 26.265 V19.2.0, annex B.2.3.
 - **Figures:** redrawn from TS 26.265 V19.2.0, figures 4.2-1 and B.1-1.
 - **Status:** the repository README (status badge and operation point table).
 
