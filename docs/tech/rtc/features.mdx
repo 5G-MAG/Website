@@ -5,7 +5,9 @@ hide_title: true
 description: Provisioning, ICE and signalling configuration, SWAP, WebRTC media transport, dynamic policies and PDU Set handling, Network Assistance, QoE metrics, consumption reporting, media capabilities and edge processing in RTC.
 ---
 
+import FigurePair from '@site/src/components/FigurePair';
 import JumpMenu from '@site/src/components/JumpMenu';
+import SpecFigure from '@site/src/components/SpecFigure';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -51,7 +53,9 @@ The RTC features and the APIs that provision and use them (TS 26.113 table 4.1-1
 
 ## Provisioning
 
-To configure ICE candidates, dynamic policies or reporting, the RTC Application Provider creates a Provisioning Session in the RTC AF. The provisioning API at RTC-1 is a subset of the TS 26.510 provisioning APIs.
+To configure ICE candidates, dynamic policies or reporting, the RTC Application Provider creates a Provisioning Session in the RTC AF. The provisioning API at RTC-1 is a subset of the TS 26.510 provisioning APIs. The provisioning procedure is common to the different collaboration scenarios.
+
+<SpecFigure src="/img/tech/rtc/generated/ts26506-fig5.2.1-1.svg" width={480} height={248} spec="TS 26.506 V19.2.0" figure="5.2.1-1" title="Provisioning procedure" alt="A sequence chart between the Provisioning AF and the Application Provider: 1, create a provisioning session; 2, confirm creation of provisioning session; then, under Update, 3, update provisioning." />
 
 <details>
 <summary>APIs at RTC-1 (TS 26.113 V19.2.0, table 6.1-1)</summary>
@@ -83,23 +87,55 @@ The Real-time Media Communication provisioning API enables or advertises STUN, T
 
 Each endpoint gives a domain name, port numbers, and optionally credentials and a server certificate.
 
+The configuration procedure pre-configures the RTC Media Session Handler with information it makes available to RTC applications at RTC-6: the location and capabilities of trusted ICE functions and of trusted WebRTC Signalling Functions, and the edge configuration. After the Application Service Provider has provisioned its resources, the Media Session Handler requests the configuration from the RTC AF, optionally for a given application identifier, in a single retrieval.
+
+<SpecFigure src="/img/tech/rtc/generated/ts26506-fig5.2.2-1.svg" width={760} height={251} spec="TS 26.506 V19.2.0" figure="5.2.2-1" title="Configuration procedure" alt="A sequence chart between App, RTC MSH, RTC AF and ASP: 1, provisioning step for application; a retrieval block with 2, retrieve configuration information, from the RTC MSH to the RTC AF, and 3, provide configuration information, back; then 4, retrieve configuration information, from the App to the RTC MSH." />
+
 The RTC AF relays this configuration to the RTC Media Session Handler at RTC-5, in the `rtcClientConfiguration` of the Service Access Information, which carries trusted STUN, TURN and SWAP endpoints for use as ICE candidates. For RTC, the Service Access Information carries no `streamingAccess` object. If TURN credentials were not provisioned at RTC-1, the AF populates a set unique to the requesting client.
 
 ## SWAP signalling
 
 The Simple WebRTC Application Protocol (SWAP), in TS 26.113, supports collaboration scenario 3. It is an acknowledged signalling protocol for WebRTC, designed to adhere to the JSEP state machine of RFC 8829. If the RTC AS provides a WebRTC Signalling Function, an RTC Application configures itself to use one of its servers.
 
-- **Transport:** a full-duplex reliable WebSocket connection, between two endpoints or between an endpoint and a SWAP server. The URI uses the `wss` scheme and the path `/3gpp-swap/v1/`, with the subprotocol identifier `3gpp.SWAP.v1` in the HTTP upgrade request.
+<FigurePair
+  figures={[
+    {
+      label: 'Point to point',
+      src: '/img/tech/rtc/generated/ts26113-fig13.2.4.2-1.svg',
+      width: 460, height: 82,
+      title: 'Point-to-point SWAP',
+      source: 'Redrawn from TS 26.113 V19.2.0, figure 13.2.4.2-1',
+      alt: 'Endpoint 1 and Endpoint 2 joined directly by a two-way SWAP connection.',
+    },
+    {
+      label: 'Through a SWAP server',
+      src: '/img/tech/rtc/generated/ts26113-fig13.2.4.2-2.svg',
+      width: 489, height: 177,
+      title: 'SWAP relay',
+      source: 'Redrawn from TS 26.113 V19.2.0, figure 13.2.4.2-2',
+      alt: 'Endpoint 1 and Endpoint 2 each joined by a two-way connection to a SWAP Server (5G-RTC AS) above them.',
+    },
+  ]}
+  note="Click a figure to enlarge it."
+/>
+
+- **Transport:** a full-duplex reliable WebSocket connection, between two endpoints or between an endpoint and a SWAP server. Point to point, one endpoint acts as the WebSocket server and listens for the incoming connection request. Through a SWAP server, enough information is provided for the server to relay messages to the other endpoint. The URI uses the `wss` scheme and the path `/3gpp-swap/v1/`, with the subprotocol identifier `3gpp.SWAP.v1` in the HTTP upgrade request.
 - **Messages:** Register, Response, Connect, Accept, Reject, Update, Close and Application. An endpoint registers with the SWAP server and provides the matching criteria used to match it with incoming connection requests. Connect establishes a connection; Update may tear down media partially, such as one direction; Close terminates the entire RTC session.
 - **Errors:** formatted as Problem Details (RFC 7807).
 - **Not in version 1:** ICE trickling and preliminary answers.
 - **Security:** integrity and confidentiality options are described, with consultation with SA3 recommended.
+
+The SWAP server maintains state information about ongoing RTC sessions, as in the state machine below.
+
+<SpecFigure src="/img/tech/rtc/generated/ts26113-fig13.2.4.3-1.svg" width={640} height={690} spec="TS 26.113 V19.2.0" figure="13.2.4.3-1" title="SWAP state machine" alt="Connect leads to SWAP Session Created. Destination Endpoint Found leads to Await Reply; Destination Endpoint Not Found leads to Error. From Await Reply, Accept Message Received leads to Session Established and Reject Message Received to Error; from Session Established, Update Received leads back to Await Reply. Close Message Received leads to Session Closing, and Close Message Forwarded to Session Closed." />
 
 The signalling protocol for collaboration scenario 4 is for future study.
 
 ## Media transport
 
 An RTC endpoint supports the transport protocols used in WebRTC (RFC 8834), including those for interaction with firewalls, relays and NAT. Signalling information is exchanged over the WebSocket connection described above.
+
+<SpecFigure src="/img/tech/rtc/generated/ts26113-fig13.1-1.svg" width={800} height={408} spec="TS 26.113 V19.2.0" figure="13.1-1" title="Protocol stack for a basic RTC endpoint" alt="Two columns over IP. Over TCP and TLS: HTTP, carrying XHR, SSE and WebSocket. Over UDP and ICE, STUN, TURN: SRTP/SRTCP with payload formats for video and audio, grouped as RTCPeerConnection, and SCTP over DTLS for the RTCDataChannel." />
 
 - **Media:** video, audio and speech over RTP for WebRTC. An endpoint that transports them supports the RTP/SAVPF profile, and encapsulates the encoded media in SRTP.
 - **Data:** application data and metadata over the WebRTC data channel (RFC 8831), with SCTP over DTLS.
@@ -127,6 +163,10 @@ If AF-based Network Assistance is supported in the RTC System, the RTC Media Ses
 
 An RTC Client UE reports QoE metrics for the real-time media it has received, valid for speech, video and text media. The metrics scheme is `urn:3GPP:ns:RTC:QM1`, and an XML QoE report has the MIME type `application/3gprtc-qoe-report+xml`. Reporting is provisioned at RTC-1 and reports are sent at RTC-5, or at RTC-3 by an RTC AS.
 
+In the RTC Client, the RTC Media Session Handler obtains the metrics configuration from the RTC AF and configures metrics collection in the RTC Access Function. The Access Function collects QoE metrics about the real-time media it has received; the Media Session Handler receives them at RTC-11, collates them into metrics reports, and periodically submits the reports to the RTC AF. An RTC AS follows the same steps with its Media Function, reporting at RTC-3.
+
+<SpecFigure src="/img/tech/rtc/generated/ts26506-fig5.2.3.1-1.svg" width={660} height={603} spec="TS 26.506 V19.2.0" figure="5.2.3.1-1" title="Metrics reporting procedure" alt="A sequence chart between the RTC Client (RTC Access Function and RTC Media Session Handler), the RTC AF and the RTC Application Provider: 1, provisioning (RTC-1); 2, configuration retrieval at RTC-5; 3, configure QoE metrics collection procedure (RTC-11); then, in a loop, 4, collect QoE metrics, 5, QoE metrics (RTC-11), 6, collate metrics report, and 7, submit metrics report (RTC-5)." />
+
 | Metric (TS 26.113 clause 15.2) |
 | --- |
 | Corruption duration |
@@ -142,6 +182,10 @@ The list of metrics in TS 26.506 table 4.5-1 differs: it has an average presenta
 ## Consumption reporting
 
 An RTC Client collects and reports at RTC-5 information about the real-time media it consumes at RTC-4 and RTC-12; an RTC AS reports at RTC-3 the media it consumes at RTC-4. One consumption report unit is included for each media component actively being received, as identified by the `m=` line of the negotiated SDP, and identifies the media by its media identifier (mid) or SSRC.
+
+The procedure follows the same steps as metrics reporting: the RTC Media Session Handler configures collection in the RTC Access Function, receives the consumption information it collects, collates it into consumption reports and periodically submits them to the RTC AF.
+
+<SpecFigure src="/img/tech/rtc/generated/ts26506-fig5.2.4.1-1.svg" width={680} height={594} spec="TS 26.506 V19.2.0" figure="5.2.4.1-1" title="Consumption reporting procedure" alt="A sequence chart between the RTC Client (RTC Access Function and RTC Media Session Handler), the RTC AF and the RTC Application Provider: provisioning at RTC-1, configuration retrieval at RTC-5, configuration of consumption collection at RTC-11, then in a loop collection, delivery to the Media Session Handler, collation into a consumption report, and submission at RTC-5." />
 
 ## Media capabilities and metadata
 
@@ -175,14 +219,15 @@ TS 26.510 specifies the provisioning and media session handling APIs once, for b
 <summary>Sources for this page</summary>
 
 - **The features:** TS 26.113 V19.2.0, clause 4.1, table 4.1-1.
-- **Provisioning:** TS 26.113 V19.2.0, clauses 4.2.1 and 6.1, table 6.1-1; resource paths from TS26113_Maf_Provisioning.yaml (V19.2.0).
-- **ICE and signalling configuration:** TS 26.510 V19.2.0, clauses 5.2.10.2, 8.10.1, tables 8.10.2-1, 8.10.3.1-1 and 9.2.3.1-1; TS 26.113 V19.2.0, clauses 4.2.1, 6.3 and 10.2.
+- **Figures:** redrawn from TS 26.506 V19.2.0, figures 5.2.1-1, 5.2.2-1, 5.2.3.1-1 and 5.2.4.1-1, and TS 26.113 V19.2.0, figures 13.1-1, 13.2.4.2-1, 13.2.4.2-2 and 13.2.4.3-1.
+- **Provisioning:** TS 26.506 V19.2.0, clause 5.2.1; TS 26.113 V19.2.0, clauses 4.2.1 and 6.1, table 6.1-1; resource paths from TS26113_Maf_Provisioning.yaml (V19.2.0).
+- **ICE and signalling configuration:** TS 26.506 V19.2.0, clause 5.2.2; TS 26.510 V19.2.0, clauses 5.2.10.2, 8.10.1, tables 8.10.2-1, 8.10.3.1-1 and 9.2.3.1-1; TS 26.113 V19.2.0, clauses 4.2.1, 6.3 and 10.2.
 - **SWAP signalling:** TS 26.113 V19.2.0, clauses 4.3.2, 13.2.1 and its NOTE, 13.2.3, 13.2.4.1 to 13.2.4.5, 13.2.4.7.
 - **Media transport:** TS 26.113 V19.2.0, clauses 9.2, 9.3, 13.1, 14.2.2.1 and 14.2.2.3.
 - **Dynamic policies:** TS 26.506 V19.2.0, clauses 4.7.1 and NOTE 2, 4.7.2.1, 4.7.2.2, 4.7.3.1.1 NOTE 1, 4.7.3.2 and 7.2.2; TS 26.113 V19.2.0, clauses 10.3.1 to 10.3.4.
 - **Network Assistance:** TS 26.113 V19.2.0, clause 10.4; TS 26.510 V19.2.0, clause 5.2.1, NOTE; TS 26.506 V19.2.0, clause 5.3.
-- **QoE metrics:** TS 26.506 V19.2.0, clause 4.5, table 4.5-1; TS 26.113 V19.2.0, clauses 6.7, 15.1, 15.2.2 to 15.2.8 and 15.3.1.
-- **Consumption reporting:** TS 26.506 V19.2.0, clause 4.6; TS 26.113 V19.2.0, clauses 10.6.2 and 10.6.3.
+- **QoE metrics:** TS 26.506 V19.2.0, clause 4.5, table 4.5-1, clauses 5.2.3.1 and 5.2.3.2; TS 26.113 V19.2.0, clauses 6.7, 15.1, 15.2.2 to 15.2.8 and 15.3.1.
+- **Consumption reporting:** TS 26.506 V19.2.0, clauses 4.6 and 5.2.4.1; TS 26.113 V19.2.0, clauses 10.6.2 and 10.6.3.
 - **Media capabilities and metadata:** TS 26.113 V19.2.0, clauses 9.2 and its NOTE, and 16 and its NOTE.
 - **Edge processing:** TS 26.113 V19.2.0, clause 6.5.
 - **Shared with 5G Media Streaming:** TS 26.510 V19.2.0, clause 5.1, table 5.1-1.
