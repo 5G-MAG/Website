@@ -1,218 +1,282 @@
 ---
-title: Scope
+title: Test design
+sidebar_label: Test design
 hide_title: true
 sidebar_position: 0
-description: Describes the 6G AI Traffic Characterization Testbed's network emulator and AI traffic characterization framework, their architecture, and links to 3GPP standards.
+description: How the 6G AI Traffic Characterization Testbed is built and what it tests, per TR 26.870 annexes B to E. Architecture, execution modes, scenarios, mapping to 6G AI services and TR 22.870 use cases, network profiles and the network emulator.
 ---
-
+import FigurePair from '@site/src/components/FigurePair';
+import JumpMenu from '@site/src/components/JumpMenu';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
-  <path d="M6 9a6 6 0 1 0 12 0a6 6 0 0 0 -12 0" />
-  <path d="M12 3c1.333 .333 2 2.333 2 6s-.667 5.667 -2 6" />
-  <path d="M12 3c-1.333 .333 -2 2.333 -2 6s.667 5.667 2 6" />
-  <path d="M6 9h12" />
-  <path d="M3 20h7" />
-  <path d="M14 20h7" />
-  <path d="M10 20a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
-  <path d="M12 15v3" /></svg>
+  <path d="M7 8l-4 4l4 4" />
+  <path d="M17 8l3.111 3.111" />
+  <path d="M14 4l-2.175 8.7" />
+  <path d="M14 21v-4a2 2 0 1 1 4 0v4" />
+  <path d="M14 19h4" />
+  <path d="M21 15v6" /></svg>
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">6G AI Traffic Characterization Testbed</span>
-<h1>Scope</h1>
+<h1>Test design</h1>
 </div>
 </div>
 
-See also: <a href={useBaseUrl('/testbeds/6g-testbed/tutorials#developer-exchange')}>Developer Exchange</a>.
+:::tip[At a glance]
 
-**Category:** Evaluation Testbeds
+- **Test run:** one scenario, one network profile and one execution mode, run several times; the output is a metric record.
+- **Scenarios:** eleven scenario types in the testbed, from chat to agent-to-agent collaboration, each mapped to a 6G media AI service and to TR 22.870 use cases. A twelfth, the AI gateway, is not yet fully defined.
+- **Network profiles:** ten deployment profiles, from an ideal baseline and a 6G HRLLC profile to satellite and congested links, plus a lossy profile used only to find where a scenario stops working.
+- **Source:** TR 26.870 V0.6.1, a draft. Values marked in brackets in the TR are still under discussion.
 
-This project hosts an open-source testbed for AI/media traffic evaluation targeting 5G, 6G, and realistic UE-observed network conditions. It supports 3GPP SA4 studies and broader media delivery evaluations and may be extended and used for other purposes.
-
-## What This Project Implements
-
-:::tip[In short]
-A testbed for 6G AI Traffic Characterization able to: Measure traffic characteristics of generative AI services (LLMs, image/video generation); Analyze agentic AI patterns such as multi-step tool calling and tool server workflows; Evaluate QoE under emulated network conditions like latency, loss, and bandwidth.
 :::
 
-The testbed has two building blocks: a **Network Emulator** that reproduces realistic network conditions on a machine, and an **AI Traffic Characterization** framework that runs AI workloads over those conditions and logs how they behave. The AI testbed reuses the network emulator rather than duplicating it. The diagram below shows how these two blocks fit together.
+<JumpMenu items={[["Architecture", "architecture"], ["Method", "method"], ["Scenarios", "scenarios"], ["Scenario call flows", "scenario-call-flows"], ["From use cases to scenarios", "from-use-cases-to-scenarios"], ["Network profiles", "network-profiles"], ["Network emulator", "network-emulator"]]} />
 
-<img loading="lazy" src={useBaseUrl('/assets/images/6g-testbed/architecture.png')} style={{width: '70%'}} alt="6G AI Traffic Characterization Testbed architecture: an AI Traffic Characterization framework (orchestrator, scenarios, clients, capture, analysis) running on top of the shared Network Emulator, which applies impairments to the network interface." />
+## Architecture
 
-_Figure: high-level architecture. The AI Traffic Characterization framework runs on top of the shared Network Emulator._
+<figure>
+<img loading="lazy" src={useBaseUrl('/img/testbeds/6g-testbed/architecture.svg')} width="1200" height="672" alt="The Scenario Orchestrator drives the scenarios (chat, agents, image, video and audio) and MCP tool servers, through the LLM client layer, L7 capture with mitmproxy and the network emulator with tc/netem profiles, to the LLM and tool APIs on the Internet. Capture and analysis: L3/L4 capture with tcpdump and L7 capture with mitmproxy feed the TrafficLogger, which feeds the MetricsCalculator (TTFT, TTLT, UL/DL, loop factor) and the visualization." />
+<figcaption>Testbed architecture, from the 6G-Testbed repository.</figcaption>
+</figure>
 
-This tutorial provides an introduction to the work:
+The testbed builds on the common test platform of TR 26.934, which provides an end-to-end framework to run scenarios, emulate network conditions and log metrics reproducibly. Its architecture is orchestrator-centric, with scenarios, clients, network emulation, capture and analysis kept separate:
 
-[Go to the Tutorial: Introduction to the 6G AI Traffic Characterization Testbed](./tutorials/introduction-6g-testbed)
+| Part | Role |
+| --- | --- |
+| `orchestrator.py` | Coordinates scenario runs, applies network profiles, handles retries and generates reports |
+| `scenarios/` | Implements the traffic patterns: chat, agent, direct search, real-time, multimodal, image, video, computer use, personal assistant agent, agent-to-agent collaboration |
+| `clients/` | Provider adapters, including OpenAI, Gemini, DeepSeek (OpenAI-compatible) and vLLM for self-hosted models |
+| netem | The network emulator, an external dependency proposed to be common to all studies |
+| `capture/` | L3/L4 packet capture (PCAP) and L7 capture through mitmproxy |
+| `analysis/` | Logs to SQLite, computes the metrics and generates plots |
 
-### Network Emulator
+Trace logging gives visibility into protocol and payload behaviour, for example WebRTC SDP samples and the exact request and response payloads of an agent.
 
-In plain terms, the network emulator lets you make one machine behave as if it were on a slow, lossy, or congested network, so you can test how media and AI traffic hold up under realistic conditions without needing a real radio link. It does this by shaping the traffic on a network interface.
+## Method
 
-Under the hood it is built on Linux Traffic Control (`tc`, the kernel traffic-shaping subsystem) using the `netem` queueing discipline (qdisc, the component that decides how packets are queued and delayed). It supports one-way delay, jitter, loss, bandwidth shaping, and advanced netem controls (correlation, distributions, loss models, reordering, duplication, corruption, and queue limits). It can combine Hierarchical Token Bucket (HTB) rate limiting with netem impairments, and applies impairments to the reverse direction using an Intermediate Functional Block (IFB) device. It is controlled via YAML profiles.
+TR 26.870 sets out an initial methodology; other methodologies are not precluded.
 
-Network conditions are applied at the interface level, enabling transparent emulation for any media delivery protocol without requiring modifications to the client or server implementations.
+1. The AI traffic use cases of TR 22.870 are categorised against the scenarios, to check that the scenarios are meaningful in a 6G context.
+2. A set of representative scenarios implements the use cases. A scenario is a named, reproducible AI interaction pattern, defined by its input and output modalities, its interaction style (real-time or batch, streaming or not), its protocol and its AI model or provider.
+3. Metrics are defined as computable scalar quantities from which traffic characteristics can be stated.
+4. Network profiles emulate real-world access technologies, together with stress-test profiles.
+5. Two execution modes are distinguished, by where the model weights are loaded and the forward pass is computed:
+   - **Remote execution:** the inference engine is hosted by a public cloud provider, beyond the testbed's control. Traffic crosses the main network interface, where it is captured and impaired.
+   - **Local execution:** the inference engine is a self-hosted model on a server co-located with the client. Traffic crosses the loopback interface, where it is captured and impaired, emulating a radio link to a local edge server.
 
-An example of the profile YAML is shown below.
+A test run takes a scenario, a network profile and an execution mode, and produces a metric record. Several runs are executed for each combination.
 
-```yaml
-profiles:
-  example_full_profile:
-    # === DELAY PARAMETERS ===
+The TR also lists, in brackets, principles still under discussion: metrics reported only per scenario and profile, never aggregated across scenarios without labelling; raw traces shared selectively for independent verification; results at three levels (per run, per cell, cross-cell summary); repetitions for robust percentiles; and independent collation by several companies.
 
-    # One-way packet delay in milliseconds
-    # Maps to: tc qdisc add dev eth0 root netem delay <delay_ms>ms
-    delay_ms: 50
+## Scenarios
 
-    # Delay variation (jitter) in milliseconds
-    # Adds random variation to base delay using specified distribution
-    # Maps to: tc qdisc ... delay 50ms 10ms (adds +/- jitter)
-    jitter_ms: 10
+The scenario types defined in the testbed (TR 26.870 table D.1.1).
 
-    # Delay distribution model
-    # Options: "normal", "pareto", "paretonormal"
-    # - normal: Gaussian distribution (symmetric around mean)
-    # - pareto: Heavy-tailed distribution (models bursty delays)
-    # - paretonormal: Combination for realistic mobile networks
-    # Maps to: tc qdisc ... delay 50ms 10ms distribution pareto
-    delay_distribution: 'normal'
+| Scenario | Providers | What it exercises | Clause |
+| --- | --- | --- | :---: |
+| Chat (streaming, non-streaming, tokens) | OpenAI, Gemini, DeepSeek, Qwen | Single- or multi-turn text chat. Streaming responses arrive as Server-Sent Events. In the tokens variant the client sends token identifiers from a local tokenizer as the prompt. | D.1.2.1 |
+| Agent with MCP | OpenAI, DeepSeek | An agentic loop: the model calls tools (web search, browser) through MCP until it reaches a final answer. Captures tool latency and loop factor. | D.1.2.2 |
+| Image generation | OpenAI | An image generation request, measuring request size, response size and generation latency | D.1.2.3 |
+| Multimodal analysis | OpenAI, Gemini, llama.cpp | An image or document with a text prompt, measuring upload bytes, response bytes and latency | D.1.2.4 |
+| Multimodal analysis, live AI mode | llama.cpp | The client periodically uploads an image to a file server and sends a streaming request with its URL | D.1.2.12 |
+| Video understanding | Gemini, vLLM; Qwen (non-real-time), Liquid (real-time) | Real-time: a WebRTC session whose video track carries video tokens to the server and whose data channel carries the prompt and the streamed result. Non-real-time: one request with the video and a text prompt. | D.1.2.5 |
+| Real-time text and audio | OpenAI | A persistent bidirectional connection, WebSocket for text and WebRTC for audio, measuring per-event timing, TTFT, TTLT and audio bytes | D.1.2.6 |
+| Direct web search | OpenAI, DeepSeek | Multi-threaded direct web search without MCP, optionally synthesised by the model | D.1.2.7 |
+| Computer use | OpenAI | A browser-automation agent: each step sends a screenshot to the model and performs the action returned, measuring screenshot bytes, action count and action latency | D.1.2.8 |
+| Personal assistant agent | A local agent runtime with a commercial or local model | A self-hosted agent on the user device. The local control channel and the runtime egress to the model and tools are measured separately, as the network would see them. | D.1.2.9 |
+| Agent-to-agent collaboration (single task, streaming, multi-agent) | Deterministic test agents, local or remote | Capability discovery, delegation and result exchange over an HTTP-based agent protocol. The agents contain no model, so the cost measured is that of the protocol and its transport. | D.1.2.10 |
 
-    # Correlation between consecutive packet delays (0-100%)
-    # Higher values create smoother delay variations (less random)
-    # Maps to: tc qdisc ... delay 50ms 10ms 25%
-    delay_correlation_pct: 25
+The AI gateway scenario (clause D.1.2.11) places an intermediary between AI applications and model providers, which authenticates, routes, applies policies and optionally enriches the prompt. Its test definition is still to be provided.
 
-    # === LOSS PARAMETERS ===
+## Scenario call flows
 
-    # Random packet loss percentage (0-100)
-    # Maps to: tc qdisc ... loss 0.5%
-    loss_pct: 0.5
+The call flows TR 26.870 gives for the scenarios, between the client the testbed drives, the client library and the model or service. For several scenarios the TR still has to provide the drawing.
 
-    # Loss correlation for bursty loss patterns (0-100%)
-    # Higher values create loss bursts rather than random drops
-    # Maps to: tc qdisc ... loss 0.5% 25%
-    loss_correlation_pct: 25
+### Chat
 
-    # Gilbert-Elliott loss model for realistic loss simulation
-    # Defines a two-state Markov model (Good/Bad states)
-    # Maps to: tc qdisc ... loss gemodel p h 1-k
-    loss_model:
-      type: 'gemodel' # Gilbert-Elliott model
-      p: 0.01 # Probability of transitioning Good -> Bad
-      r: 0.10 # Probability of transitioning Bad -> Good
-      h: 0.0 # Probability of loss in Good state (1-h)
-      k: 0.95 # Probability of loss in Bad state (1-k)
+In non-streaming mode the client sends one HTTP POST and receives the full response. In streaming mode the server returns the response in chunks as Server-Sent Events. With tokens, the client first turns the text into token identifiers with a local tokenizer and sends those as the prompt.
 
-    # === BANDWIDTH PARAMETERS ===
+<FigurePair
+  figures={[
+    {
+      label: 'Streaming and non-streaming',
+      src: '/img/testbeds/6g-testbed/tr26870-figD.1.2.1-1.svg',
+      width: 668, height: 868,
+      title: 'Chat scenario simplified with streaming/non-streaming options',
+      source: 'Redrawn from TR 26.870 V0.6.1, figure D.1.2.1-1',
+      alt: 'Chat Client, LM Client and LM Server. For each prompt the client appends the prompt to the history; if streaming, the request returns stream chunks relayed as a streaming response; otherwise a full response; the response is appended to the history.',
+    },
+    {
+      label: 'Tokens as prompt',
+      src: '/img/testbeds/6g-testbed/tr26870-figD.1.2.1-2.svg',
+      width: 882, height: 638,
+      title: 'Chat scenario simplified with tokens as prompt',
+      source: 'Redrawn from TR 26.870 V0.6.1, figure D.1.2.1-2',
+      alt: 'Chat with Tokens, LM Client with Tokenizer and LM Server, over multiple turns: the client transforms the text to token ids and sends completions.create with the token ids as prompt, then receives the full response.',
+    },
+  ]}
+  note="Click a figure to enlarge it."
+/>
 
-    # Bandwidth limit in Mbps
-    # When set, enables HTB (Hierarchical Token Bucket) with netem as leaf
-    # Maps to: tc qdisc add dev eth0 root handle 1: htb default 1
-    #          tc class add dev eth0 parent 1: classid 1:1 htb rate 100mbit
-    #          tc qdisc add dev eth0 parent 1:1 handle 10: netem ...
-    rate_mbit: 100
+### Video understanding
 
-    # Queue buffer size in packets
-    # Controls how many packets can be queued before drops occur
-    # Maps to: tc qdisc ... limit 1000
-    limit_packets: 1000
+In real time, a persistent WebRTC connection is set up first. Its video track carries video tokens to the server, and its data channel carries the prompt and the result the server streams back. In non-real time, the client sends one HTTP request with the video and a text prompt.
 
-    # === ADDITIONAL IMPAIRMENTS ===
+<FigurePair
+  figures={[
+    {
+      label: 'Real time',
+      src: '/img/testbeds/6g-testbed/tr26870-figD.1.2.5-1.svg',
+      width: 758, height: 1132,
+      title: 'Real-time VLM video understanding',
+      source: 'Redrawn from TR 26.870 V0.6.1, figure D.1.2.5-1',
+      alt: 'Realtime Video, WebRTC VLM Client and WebRTC VLM Server: connect with SDP offer, answer, ICE and DTLS handshake and data channel open; then a loop in which the client transforms video frames to tokens, streams video tokens over WebRTC and receives the text response over the data channel; then disconnect.',
+    },
+    {
+      label: 'Non-real time',
+      src: '/img/testbeds/6g-testbed/tr26870-figD.1.2.5-2.svg',
+      width: 1130, height: 360,
+      title: 'Non-real-time VLM video understanding scenario',
+      source: 'Redrawn from TR 26.870 V0.6.1, figure D.1.2.5-2',
+      alt: 'Non-realtime Video Understanding, VLM Client and VLM Server: generate content with video, a chat.completions.create HTTP request with text and video, the response content, and the response text.',
+    },
+  ]}
+  note="Click a figure to enlarge it."
+/>
 
-    # Packet reordering percentage
-    # Causes specified percentage of packets to be delayed further
-    # Maps to: tc qdisc ... reorder 5% 50%
-    reorder_pct: 0.0
-    reorder_correlation_pct: 0
+### Real-time text and audio, and computer use
 
-    # Packet duplication percentage
-    # Causes specified percentage of packets to be sent twice
-    # Maps to: tc qdisc ... duplicate 0.1%
-    duplicate_pct: 0.0
+The real-time scenario keeps a bidirectional connection open: WebSocket for text, WebRTC for audio. In computer use, each step sends the model a prompt, carries out the returned action in a browser, and returns a screenshot as input to the next step.
 
-    # Packet corruption percentage
-    # Introduces bit errors in specified percentage of packets
-    # Maps to: tc qdisc ... corrupt 0.01%
-    corrupt_pct: 0.0
+<FigurePair
+  figures={[
+    {
+      label: 'Real-time text and audio',
+      src: '/img/testbeds/6g-testbed/tr26870-figD.1.2.6-1.svg',
+      width: 1084, height: 914,
+      title: 'Real-Time text/audio scenario',
+      source: 'Redrawn from TR 26.870 V0.6.1, figure D.1.2.6-1',
+      alt: 'Realtime Client, LM Client, LM Server and TTS Server: connect over a WebSocket or WebRTC handshake; in the turn loop, optionally text to speech, then stream input and stream output; then disconnect.',
+    },
+    {
+      label: 'Computer use',
+      src: '/img/testbeds/6g-testbed/tr26870-figD.1.2.8-1.svg',
+      width: 1024, height: 748,
+      title: 'Computer use scenario',
+      source: 'Redrawn from TR 26.870 V0.6.1, figure D.1.2.8-1',
+      alt: 'Agent, LM Client, LM Server, Computer Use Executor and Local Browser (Playwright): while there are tool calls, the agent sends a prompt over HTTP, extracts tool calls, executes each action in the browser, and feeds the screenshot back as input.',
+    },
+  ]}
+  note="Click a figure to enlarge it."
+/>
 
-# === GLOBAL CONFIGURATION ===
-defaults:
-  # Default interface to apply impairments
-  interface: 'eth0'
+### Agents
 
-  # Default profile if none specified
-  default_profile: 'ideal_6g'
+The personal assistant runtime calls the model and the tools itself; the testbed sees it from the network, on two surfaces shown in blue (the local control channel) and red (the runtime egress). The agent-to-agent scenarios retrieve the capability description of the target agent, then delegate the task without or with streaming, or through an orchestrator that delegates to two peers.
 
-  # Whether to apply impairments bidirectionally
-  # (requires IFB device for ingress shaping)
-  bidirectional: true
-```
+<FigurePair
+  figures={[
+    {
+      label: 'Personal assistant agent',
+      src: '/img/testbeds/6g-testbed/tr26870-figD.1.2.9-1.svg',
+      width: 1200, height: 806,
+      title: 'Personal-assistant agent scenario',
+      source: 'Redrawn from TR 26.870 V0.6.1, figure D.1.2.9-1',
+      alt: 'Testbed orchestrator, Agent runtime, LLM provider and Tools or external services. In blue, the task submitted to the runtime and the task result. In red, the runtime HTTPS prompt with system context and tool definitions, the assistant turn, the tool invocation and result, repeated per agent step, and the final assistant text.',
+    },
+    {
+      label: 'Multi-agent delegation',
+      src: '/img/testbeds/6g-testbed/tr26870-figD.1.2.10-3.svg',
+      width: 1200, height: 743,
+      title: 'Multi-agent delegation with orchestrator fan-out to peer agents',
+      source: 'Redrawn from TR 26.870 V0.6.1, figure D.1.2.10-3',
+      alt: 'Delegating client, Orchestrating agent, Peer agent A and Peer agent B: the client retrieves the capability description and sends the task; the orchestrator delegates sub-tasks to each peer, aggregates artifacts A and B, and returns the aggregated result.',
+    },
+  ]}
+  note="Click a figure to enlarge it."
+/>
 
-Example YAMLs with pre-defined profiles are available here: [netemu/examples/profiles.yaml](https://github.com/5G-MAG/6G-Testbed/blob/main/netemu/examples/profiles.yaml)
+<FigurePair
+  figures={[
+    {
+      label: 'Single task',
+      src: '/img/testbeds/6g-testbed/tr26870-figD.1.2.10-1.svg',
+      width: 1200, height: 1358,
+      title: 'Single-task delegation (non-streaming)',
+      source: 'Redrawn from TR 26.870 V0.6.1, figure D.1.2.10-1',
+      alt: 'Delegating client and Remote agent: retrieve capability description; capability description with capabilities, skills and endpoint; a non-streaming task request; the agent executes the skill, deterministic with no LLM; and the task result, state completed with artifacts.',
+    },
+    {
+      label: 'Streaming',
+      src: '/img/testbeds/6g-testbed/tr26870-figD.1.2.10-2.svg',
+      width: 1200, height: 1767,
+      title: 'Streaming delegation with incremental status and artifact updates',
+      source: 'Redrawn from TR 26.870 V0.6.1, figure D.1.2.10-2',
+      alt: 'Delegating client and Remote agent: capability description with streaming supported, a streaming task request, a working status update, artifact chunks 1 to N with TTFT measured at the first, and a terminal status update closing the stream.',
+    },
+  ]}
+  note="Click a figure to enlarge it."
+/>
 
-The emulator provides pre-defined network profiles derived from 3GPP 5QI specifications. The 5QI (5G QoS Identifier) is a standard value that maps to a set of quality-of-service characteristics for a traffic type. See for example 3GPP TS 23.501 Table 5.7.4-1, where the PDB (Packet Delay Budget) is mapped to `delay_ms` and the PER (Packet Error Rate) is mapped to `loss_pct`.
+## From use cases to scenarios
 
-Example YAMLs with the pre-defined profiles used by the AI traffic characterization testbed are available here: [aitestbed/configs/profiles.yaml](https://github.com/5G-MAG/6G-Testbed/blob/main/aitestbed/configs/profiles.yaml)
+TR 26.870 derives 6G media AI services from TR 22.870 use cases (clause D.2.1), and maps each test scenario to the services whose traffic it characterises (clause D.2.2).
 
-The emulator supports multiple deployment configurations.
+| 6G media AI service | Test scenarios | TR 22.870 use cases (examples) |
+| --- | --- | --- |
+| Multi-agent communication: agent instructions and telemetry exchange; collaborative agent coordination | Agent tool calling and browser automation; personal assistant agent; agent-to-agent collaboration; AI gateway | 6.6, 6.7, 6.8, 6.9, 6.34 |
+| Distributed AI compute: device-sourced media analysis; network-sourced media generation; interactive media and control loops | Multimodal analysis and image generation; video understanding | 6.3, 6.26, 6.28, 6.31, 6.33, 6.49, 6.50 |
+| AI-enhanced conversational and media services: network-integrated conversational assistance; real-time media augmentation | Real-time conversational and audio AI; personal assistant agent | 6.11, 6.17, 6.22, 6.38 |
+| Network knowledge and exposure (network telemetry for retrieval-augmented generation) | Direct multi-threaded web search; AI gateway | 6.13 |
+| Real-time AI text conversation | Streaming chat | 6.26 |
+| Compressed multi-sensor services | Video understanding | 6.26, 6.59 |
 
-The following Python example shows how the network emulator is driven from a test script:
+The TR notes that the mapping of video understanding is still to be added to its summary table.
 
-```python
-# Apply a named profile for uplink and downlink
-emulator.apply_profile("poor_cellular",
-      ingress_profile="5g_urban")
+## Network profiles
 
-# ... run tests ...
+The recommended profile set (TR 26.870 table D.3.1-1). The profiles other than the lossy profile represent deployment conditions, so their loss rates are low. The lossy profile is applied at a range of loss rates to find the boundary of the region in which a scenario works; results with it characterise resilience and are not expected operating conditions.
 
-emulator.clear()
-```
+| Profile | Delay | Jitter | Loss | Rate | Role |
+| --- | --- | --- | --- | --- | --- |
+| ideal | none | none | none | none | Clean baseline for all scenarios |
+| 6g_itu_hrllc | 1 ms | | 0.001 % | 300 Mbit/s | Derived from the HRLLC profile of ITU-R M.2160 (IMT-2030); buffer of 2000 packets |
+| 5g_urban | 20 ms | 5 ms | 0.1 % | 100 Mbit/s | Representative mobile broadband |
+| wifi_good | 30 ms | 10 ms | 0.1 % | 50 Mbit/s | Non-cellular access comparison point; a fictional average of common Wi-Fi configurations |
+| cell_edge | 120 ms | 30 ms | 1.0 % | 5 Mbit/s | Poor coverage, unstable edge of cell; heavier-tailed jitter, burst loss, small reorder rate |
+| satellite_leo | 22 ms | 7 ms DL, 8 ms UL | 0.5 % DL, 0.8 % UL | 100 Mbit/s DL, 15 Mbit/s UL | Remote access and NTN-like latency stress |
+| satellite_geo | 340 ms | 15 ms DL, 18 ms UL | 0.1 % DL, 0.2 % UL | 50 Mbit/s DL, 3 Mbit/s UL | Defined from published satellite measurement reports |
+| congested | 200 ms | 50 ms | 3.0 % | 1 Mbit/s | Severe bottleneck; heavier-tailed jitter, burst loss, queue limit, small reorder rate |
+| 5qi_7 | 80 ms | 10 ms | 0.1 % | uncapped | 5QI anchor for live streaming and interactive traffic |
+| 5qi_80 | 8 ms | low, non-zero | 0.0001 % | uncapped | 5QI anchor for low-latency eMBB and AR-like traffic |
+| lossy | none | none | 1 % to 30 % (uplink) | none | Loss tolerance of a scenario, isolated from delay |
 
-In this example, `apply_profile("poor_cellular", ...)` sets the downlink (egress) impairments from the `poor_cellular` profile, while `ingress_profile="5g_urban"` applies a different profile to the reverse (ingress) direction, so uplink and downlink can be shaped independently. After the tests run, `clear()` removes all impairments and returns the interface to normal.
+The TR notes that this is an initial set based on information available in SA4, and that the 3GPP averaging window and resource type are not taken into account. For satellite_leo, the same table cell also gives 100 ms delay, 20 ms jitter, 0.3 % loss and 4 Mbit/s before defining the separate downlink and uplink parameters shown here.
 
-### AI Traffic Characterization Testbed
+## Network emulator
 
-The testbed provides an end-to-end framework to run scenarios, emulate network conditions, and log metrics in a reproducible manner.
+The network emulator, netemu, is a Python wrapper around the Linux tc toolchain that depends only on the Python standard library and a YAML parser. It covers four independent stages of a measurement run:
 
-Key capabilities include orchestration of scenarios, provider adapters for different commercial and self-hosted models, network-layer and transport-layer capture (L3/L4, via tcpdump), optional application-layer capture (L7, via mitmproxy), and SQLite-based logging for large-scale analysis.
+- **Emulation:** tc, netem and HTB impose the impairments on egress and, through an IFB device, on ingress.
+- **Capture:** tcpdump on the shaped interface, with a metadata file alongside each capture.
+- **Analysis:** a capture is parsed into per-packet records, per-flow records and per-capture aggregates. Direction is derived from the TCP handshake, not from port numbers. Per-flow metrics are computed for TCP only; for QUIC, only metrics from packet sizes, timestamps and directions.
+- **Aggregation:** one or many parsed captures are summarised into distributions.
 
-The testbed architecture is orchestrator-centric with clear separation of scenarios, clients, network emulation, capture, and analysis:
+A profile sets one-way delay and jitter, the delay distribution (normal, pareto, paretonormal or fixed) and correlation, loss and its correlation or a Gilbert-Elliott loss model, an HTB rate ceiling and burst sizes, corruption, reordering and duplication rates, and the transmit queue length.
 
-- orchestrator.py coordinates scenario runs, applies network profiles, handles retries, and generates reports.
-- scenarios/* implement traffic patterns (chat, agent, direct search, realtime, multimodal, image, video, computer use).
-- clients/* provide provider adapters, including OpenAI, Gemini, DeepSeek (OpenAI-compatible), and vLLM for self-hosted models.
-- netem: external dependency on the network emulator module that is proposed to be common to all studies.
-- capture/* provides L3/L4 pcap capture and L7 capture via mitmproxy.
-- analysis/* logs to SQLite, computes 3GPP-aligned metrics, and generates plots.
+<details>
+<summary>Sources for this page</summary>
 
-The testbed is designed to be easily usable and highly configurable. It can be extended in two main ways:
+- **Architecture:** TR 26.870 V0.6.1, annex B.1 and B.2. The figure is the architecture diagram of the 6G-Testbed repository, redrawn.
+- **Method:** TR 26.870 V0.6.1, annex C.2 and its NOTE. The bracketed principles are those of annex C.2, items 1 to 5.
+- **Scenarios:** TR 26.870 V0.6.1, table D.1.1 and clauses D.1.2.1 to D.1.2.12, including the Editor's Note in D.1.2.11.
+- **Scenario call flows:** TR 26.870 V0.6.1, clauses D.1.2.1, D.1.2.5, D.1.2.6, D.1.2.8 to D.1.2.10; figures redrawn from figures D.1.2.1-1, D.1.2.1-2, D.1.2.5-1, D.1.2.5-2, D.1.2.6-1, D.1.2.8-1, D.1.2.9-1 and D.1.2.10-1 to D.1.2.10-3.
+- **From use cases to scenarios:** TR 26.870 V0.6.1, tables D.2.1.0-1 and D.2.2.0-1, clauses D.2.1.1 to D.2.2.9, and the Editor's Note in D.2.2.6.
+- **Network profiles:** TR 26.870 V0.6.1, clause D.3.1, table D.3.1-1 and its NOTEs.
+- **Network emulator:** TR 26.870 V0.6.1, annex E.1, E.2 (table 4.4.5-1), E.4 and its NOTE, E.5.
 
-- **New scenarios** can be added by creating a class in `scenarios/` that extends `BaseScenario`, registering it in `scenarios/__init__.py`, and adding a YAML entry in `configs/scenarios.yaml`.
-- **New providers** can be added by implementing a client in `clients/` that subclasses `LLMClient` and registering it in the orchestrator client factory.
-
-The testbed includes a vLLM client (clients/vllm_client.py) and example scenarios in configs/scenarios.yaml (e.g., chat_vllm). This enables evaluation of self-hosted models via the OpenAI-compatible API provided by vLLM, supporting the same metrics and logging pipeline as hosted providers.
-
-## How this relates to standardisation
-
-The testbed is an evaluation harness, not an implementation of a 3GPP specification. Its value to standardisation is that it reproduces standardised network conditions and measures how AI and media workloads behave over them. Three touch points connect it to 3GPP work:
-
-- **Network conditions are anchored in 3GPP QoS.** The emulator ships profiles derived from 3GPP 5QI values. The 5QI (5G QoS Identifier) maps a traffic type to a set of QoS characteristics; the standardised mapping is in [3GPP TS 23.501](https://www.3gpp.org/dynareport/23501.htm) (Table 5.7.4-1). As noted above, the Packet Delay Budget (PDB) maps to `delay_ms` and the Packet Error Rate (PER) maps to `loss_pct`, so a profile such as 5QI 7 or 5QI 80 reproduces a recognisable, standards-referenced condition rather than an arbitrary one. Candidate 6G conditions (for example a hyper-reliable low-latency profile derived from the ITU-R IMT-2030 HRLLC scenario) are provided alongside them.
-- **The AI workloads produce traffic characterisation for ongoing 3GPP study work.** The scenario set (chat, agentic AI, image, video, multimodal, real-time) and the metrics the testbed computes (time-to-first-token, total latency, uplink/downlink ratios, token rates, agent loop factors) are intended as measured inputs to the AI, media and 6G studies currently running in 3GPP, rather than to any single one of them. The testbed is not scoped to one study item, and which studies it feeds changes as that work progresses.
-- **Data collection is a separate, complementary project.** The testbed measures traffic; it does not implement the 3GPP Data Collection AF. That normative pipeline (3GPP [TS 26.531](https://www.3gpp.org/dynareport/26531.htm) and [TS 26.532](https://www.3gpp.org/dynareport/26532.htm)) is implemented in the [Data Collection](/reference-tools/data-collection) reference tool. The two are complementary: one collects standardised UE and media-client data, the other characterises AI/media traffic under controlled conditions.
-
-There is no normative 6G specification yet (6G is a Release-21 target, currently at the study stage in Release 20), so the 6G-oriented profiles are experimental and provisional. They are intended to inform requirement inputs, not to assert settled values.
-
-## Getting Started
-
-For the step-by-step walkthrough (cloning the repository, running the network emulator and an AI scenario, and extending the testbed with new scenarios or providers), see the [Tutorials](./tutorials) page.
-
-## Related
-
-- [AI/ML Evaluation Framework](../ai-ml): the related project that shares this testbed
-- Standards: [Towards 6G Media](/standards/6g) and [AI/ML Evaluation Framework](/standards/ai-ml) — the study and specification landscape this work feeds into
-- Tech: [Towards 6G Media](/tech/6g): the research analysis
-:::note
-Refer to the [6G-Testbed](https://github.com/5G-MAG/6G-Testbed) repository to contribute to this project. See [How to Contribute](/contributing) for the process.
-:::
+</details>

@@ -1,0 +1,100 @@
+---
+title: Metrics
+sidebar_label: Metrics
+hide_title: true
+sidebar_position: 1
+description: The metrics the 6G AI Traffic Characterization Testbed computes, per TR 26.870 annex D.4. Traffic characteristics, response time and errors, service metrics, and task-related QoE.
+---
+import JumpMenu from '@site/src/components/JumpMenu';
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M7 8l-4 4l4 4" />
+  <path d="M17 8l3.111 3.111" />
+  <path d="M14 4l-2.175 8.7" />
+  <path d="M14 21v-4a2 2 0 1 1 4 0v4" />
+  <path d="M14 19h4" />
+  <path d="M21 15v6" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">6G AI Traffic Characterization Testbed</span>
+<h1>Metrics</h1>
+</div>
+</div>
+
+:::tip[At a glance]
+
+- **Four categories:** A, traffic characteristics; B, response time and errors; C, service metrics for agents and computer use; D, task-related QoE.
+- **Two vantage points:** application-layer records logged per request, and packet captures parsed per packet and per flow.
+- **What the study groups need:** TR 26.870 maps each group of traffic characteristics it lists for other working groups (volume, temporal structure, latency, reliability, adaptivity) to these metrics.
+- **Open point:** whether and how TTFT, TTLT and tool-call latency can be used for AI traffic evaluation is for further study.
+
+:::
+
+<JumpMenu items={[["The categories", "the-categories"], ["A. Traffic characteristics", "a-traffic-characteristics"], ["B. Response time and errors", "b-response-time-and-errors"], ["C. Service metrics", "c-service-metrics"], ["D. Task-related QoE", "d-task-related-qoe"], ["What each characteristic is measured with", "what-each-characteristic-is-measured-with"]]} />
+
+## The categories
+
+| Category | Covers |
+| :---: | --- |
+| A | Traffic characteristics: byte volumes, UL/DL ratio, token throughput, streaming rate, burstiness |
+| B | Response time and HTTP errors: end-to-end latency, TTFT, TTLT, stall events, success rate, error taxonomy |
+| C | Service metrics: agent tool calling, loop factor, tool latency, computer-use actions |
+| D | Task-related QoE: video understanding accuracy. Task completion, answer quality, satisfaction and safety are for further study. |
+
+## A. Traffic characteristics
+
+These describe the volume and temporal shape of AI service traffic.
+
+- **Volume and tokens:** mean uplink, downlink and total bytes; the UL/DL ratio, computed as the ratio of the means; mean input and output tokens, from the provider's usage report or estimated with a tokenizer; and the token output rate, computed per record and then averaged.
+- **Streaming throughput:** for chunked HTTP streaming, the byte rate between the first and the last token, and the mean number of content chunks.
+- **Burstiness, application layer:** the peak-to-mean ratio and the coefficient of variation of the bytes per request; and, with a configurable gap threshold (1 s by default) separating ON from OFF periods, the mean and count of ON and OFF gaps between requests.
+- **Burstiness, packet layer:** the instantaneous bit rate over short windows (1 ms to 100 ms recommended), with its mean, peak, peak-to-mean, coefficient of variation, active fraction and 95th and 99th percentiles; the packet arrival rate per window; and the inter-packet gap, with its mean, coefficient of variation and 99th percentile.
+- **Communication frequency:** application-layer interactions (requests, responses, coordination or signalling messages) per second, and the interval between them.
+- **Small packets:** the share of packets below a size threshold, 128 bytes by default.
+
+## B. Response time and errors
+
+- **Response latency:** the wall-clock time from sending the request to receiving the last byte, reported as mean, median, 95th and 99th percentile, minimum, maximum and standard deviation.
+- **Time to first token (TTFT):** from sending the request to receiving the first content token, or first byte where the token is not in the first bytes. It reflects the model's initial inference latency plus the network round trip, and is the primary indicator of perceived responsiveness for streaming.
+- **Time to last token (TTLT):** from sending the request to the final content token. For non-streaming responses it equals the full latency.
+- **Streaming stalls:** a stall is a gap between chunks above a threshold, 1 s by default. Reported as stall rate, stall count and stall duration.
+- **Success and errors:** success rate, then failures classified as timeouts, rate limiting (HTTP 429), server errors (5xx), tool failures and other errors.
+
+## C. Service metrics
+
+- **Agents (MCP tool calling):** tool calls per session; the loop factor, the mean number of model turns per session, above 1 for multi-step reasoning; and tool latency, the execution time inside the tool without model inference.
+- **Computer use:** actions and steps per session, where one step is one reasoning cycle of the model; action latency, the full screenshot, action and result cycle; screenshot bytes; and the action error rate.
+
+## D. Task-related QoE
+
+An AI media service delivers an inference result, often text, rather than a reconstructed media signal. There is no reference signal to compare against, so reference-based media quality metrics, including those of TR 26.944, do not apply. A task-related metric is used instead, specific to each scenario because it depends on that scenario's ground truth.
+
+For video understanding, the closed-form accuracy is the share of questions the model answers correctly in a test session. An open-ended accuracy, scored by a second model acting as judge on completeness and reliability, is for further study.
+
+## What each characteristic is measured with
+
+TR 26.870 lists groups of traffic characteristics as relevant to other working groups, and maps each to the analysis in annex C and to these metrics.
+
+| Group | Examples from the TR | Analysis | Metrics |
+| --- | --- | --- | --- |
+| A. Volume and directionality | Uplink and downlink volume, UL/DL asymmetry, session and flow duration | Clause C.4 | Category A |
+| B. Temporal structure | Burstiness, inter-arrival times, periodic or event-driven, streaming or request/response | Clause C.5 | Category C (clause D.4.5) |
+| C. Latency sensitivity | One-way and round-trip sensitivity, time to first media element, completion latency | Clauses C.5 and C.6 | Category B |
+| D. Reliability and continuity | Sensitivity to loss, tolerance to reordering or jitter, stalls, retransmissions | Clause C.7 | Categories B and D |
+| E. Adaptivity and dynamics | Rate adaptation, dependency on inference timing, coupling across flows or modalities, changes within a session | Clauses C.7 and C.8 | Categories A and D |
+
+The TR lists as follow-up a careful review and detailed definition of these metrics, and the definition of how the characteristics are measured. Extending the mapping to media services other than AI is for further study.
+
+<details>
+<summary>Sources for this page</summary>
+
+- **At a glance and the categories:** TR 26.870 V0.6.1, clause D.4.1, table D.4.1-1; annex B.1 and its Editor's Note.
+- **A. Traffic characteristics:** TR 26.870 V0.6.1, clauses D.4.3.1 to D.4.3.6, tables D.4.3.2-1, D.4.3.3-1, D.4.3.4-1 and D.4.3.4-2.
+- **B. Response time and errors:** TR 26.870 V0.6.1, clauses D.4.4.1 to D.4.4.5 and their tables.
+- **C. Service metrics:** TR 26.870 V0.6.1, clauses D.4.5.2 and D.4.5.3, tables D.4.5.2-1 and D.4.5.3-1.
+- **D. Task-related QoE:** TR 26.870 V0.6.1, clauses D.4.6.0, D.4.6.1.0 to D.4.6.1.2.
+- **What each characteristic is measured with:** TR 26.870 V0.6.1, clause 6.3.3.3, table 6.3.3.3-1 and its Editor's Note.
+
+</details>
