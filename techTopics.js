@@ -359,9 +359,3 @@ export const TECH_GROUPS = BASKETS.map((b) => ({
 // generators in sidebars-tech.js/sidebars-home.js, which build one small
 // sidebar per topic rather than one big basket-grouped tree.
 export { ALL_TOPICS };
-
-// Reachable from the Tech menu but not a Tech doc: the testbed has no Standards
-// or Analysis page of its own, so it is a plain link in both renderings.
-export const RESEARCH_EXTRA_LINKS = [
-  { label: '6G AI Traffic Characterization Testbed', href: '/testbeds/6g-testbed' },
-];

@@ -32,6 +32,20 @@ export const SIXG_SPECS = [
     note: 'clusters use cases around the IMT-2030 usage scenarios and derives candidate system requirements; completed, frozen ~March 2026',
   },
   {
+    id: 'TS 22.270',
+    title: '6G System Requirements',
+    url: 'https://www.3gpp.org/dynareport/22270.htm',
+    layer: 'Use cases and requirements (SA1)',
+    note: 'where the 6G system requirements developed in TR 22.870 are captured (TR 26.870 V0.6.1, clause 1)',
+  },
+  {
+    id: 'TR 23.801-01',
+    title: 'Study on Architecture for 6G System Stage 2',
+    url: 'https://www.3gpp.org/dynareport/23801-01.htm',
+    layer: 'Architecture (SA2)',
+    note: 'the architecture study the SA4 media study aligns with (TR 26.870 V0.6.1, clause 1)',
+  },
+  {
     id: 'TR 26.870',
     title: 'Study on Media Aspects for 6G System',
     url: 'https://www.3gpp.org/dynareport/26870.htm',
@@ -48,11 +62,12 @@ export const SIXG_SPECS = [
   },
 ];
 
-// The global framework first, then the RAN and SA1 studies that implement it,
+// The global framework first, then the RAN, SA1 and SA2 work that implements it,
 // then the media track most relevant to 5G-MAG.
 export const SIXG_LAYER_ORDER = [
   'ITU-R framework',
   'Radio studies (RAN)',
   'Use cases and requirements (SA1)',
+  'Architecture (SA2)',
   'Media aspects (SA4)',
 ];
