@@ -570,6 +570,7 @@
       ],
       "repos": [
         "rt-dvb-i-application",
+        "rt-dvb-i-android-application",
         "rt-dvb-i-application-provider",
         "rt-dvb-i-service-list-registry",
         "rt-dvb-i-examples"
@@ -1688,6 +1689,26 @@
           "Web",
           "Node.js",
           "Docker"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-dvb-i-android-application",
+        "display_name": "DVB-I Android Application",
+        "description": "A native Android DVB-I client that discovers a service list, presents its channels with their content guide, and plays them with Media3 ExoPlayer, per ETSI TS 103 770.",
+        "repo_url": "https://github.com/5G-MAG/rt-dvb-i-android-application",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "DVBI",
+          "ETSI"
+        ],
+        "dependencies": [
+          "ExoPlayer"
+        ],
+        "software": [
+          "Android"
         ],
         "public": true,
         "is_auxiliary": false
