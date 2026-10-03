@@ -28,7 +28,7 @@ Procedures for MBS Broadcast over NTN are those defined for MBS Broadcast in [An
 
 ## Standards background
 
-MBS Broadcast — this site's "delivery mode 2" (see [MBS RAN Aspects](/tech/5g-mbs/ran-aspects)) — is the "Broadcast MBS session" of [TS 23.247](https://www.3gpp.org/dynareport/23247.htm): a one-to-many session that a device can receive in RRC_IDLE and RRC_INACTIVE as well as RRC_CONNECTED, with no per-device signalling and no uplink required to receive. That property is exactly what makes it reusable over NTN almost unchanged. The device tunes to the broadcast, reads the system information and receives; the satellite path does not alter the broadcast procedure itself.
+MBS Broadcast — this site's "delivery mode 2" (see [MBS Architecture](/tech/5g-mbs/architecture)) — is the "Broadcast MBS session" of [TS 23.247](https://www.3gpp.org/dynareport/23247.htm): a one-to-many session that a device can receive in RRC_IDLE and RRC_INACTIVE as well as RRC_CONNECTED, with no per-device signalling and no uplink required to receive. That property is exactly what makes it reusable over NTN almost unchanged. The device tunes to the broadcast, reads the system information and receives; the satellite path does not alter the broadcast procedure itself.
 
 The NTN-specific parts live in NR system information, defined in [TS 38.331](https://www.3gpp.org/dynareport/38331.htm):
 

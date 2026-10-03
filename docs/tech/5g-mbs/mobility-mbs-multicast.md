@@ -1,8 +1,8 @@
 ---
 title: MBS Multicast - Mobility
-sidebar_position: 4
+sidebar_position: 5
 hide_title: true
-description: Analyzes how multicast reception continues across handover between cells, covering PTP RLC AM, PDCP COUNT continuity and delivery-method switching.
+description: How multicast reception continues at handover, between cells that support MBS and between a cell that supports it and one that does not, based on TS 38.300 clause 16.10.5.3 and TS 23.247 clause 7.2.3 Release 18.
 ---
 
 <div class="topic-banner">
@@ -16,85 +16,83 @@ description: Analyzes how multicast reception continues across handover between 
 </div>
 </div>
 
-:::warning
-This documentation is currently **under development and subject to change**. If you are interested in becoming a member of the 5G-MAG and actively participating in shaping this work, please contact the [Project Office](/contact)
+:::tip[At a glance]
+
+- **Goal:** the UE continues receiving its multicast services via PTM or PTP in the new cell after handover.
+- **Lossless handover** between cells that support MBS requires a PTP RLC AM entity in the target cell MRB, and DL PDCP COUNT synchronisation and continuity between the cells.
+- **Delivery switching:** the target gNB's MBS support indication, in the Path Switch Request (Xn) or Handover Request Acknowledge (NG), tells the 5G Core whether to use 5GC Shared or 5GC Individual delivery.
+- **Resources:** the target gNB sets up shared resources with the NGAP Distribution Setup procedure; the source gNB may release them with Distribution Release when no joined UE remains.
+
 :::
 
-## Aspects on Mobility for MBS Multicast Services
-
-Multicast reception is tied to an active radio connection, so when a UE moves between cells the network must hand the session over without dropping it. This matters because multicast is meant to offer unicast-like reliability: a viewer moving through a coverage area (for example along a road or through a stadium) should keep receiving the same live stream. The behaviour depends on whether the source and target cells both support MBS multicast, so the three cases below are treated separately.
-
-Across all three cases, the mobility procedures described in 3GPP [TS 38.300](https://www.3gpp.org/dynareport/38300.htm) for multicast reception allow the UE to continue receiving multicast service(s) via PTM or PTP in a new cell after handover. Two handover types are referenced: an **Xn handover** is coordinated directly between the source and target gNBs over the Xn interface, while an **NG handover** is coordinated through the core network (the AMF) when no direct Xn interface is available.
-
-Acronyms used below: MRB (Multicast Radio Bearer); DRB (Data Radio Bearer, the unicast equivalent); RLC AM (Radio Link Control Acknowledged Mode, which adds reliable, in-order delivery); NGAP (NG Application Protocol, the control-plane protocol between the gNB and the AMF); PDCP (Packet Data Convergence Protocol); SMF (Session Management Function).
-
-## Why multicast mobility is a distinct problem
-
-Multicast reception depends on the UE holding an active, per-UE radio configuration for the session (the MRB), which is why Release 17 multicast requires RRC_CONNECTED. At handover the UE moves to a target cell that may or may not have that session running, so the network has to reconstruct the reception context in the target and, ideally, avoid losing any packets in the gap. Two mechanisms make lossless handover possible when both cells support multicast:
-
-- **PTP RLC AM in the target.** If the target configures the UE's MRB with a point-to-point RLC entity in Acknowledged Mode, retransmission can recover any packets missed during the switch, exactly as for a unicast bearer. Lossless handover for multicast is only guaranteed in this configuration; a UE handed straight into a PTM/UM bearer has no per-UE retransmission and may see a brief gap.
-- **PDCP COUNT continuity.** The source and target must keep the downlink PDCP COUNT synchronised and continuous across the handover so the receiving PDCP entity treats the two cells' packets as one ordered stream. This is why the source may forward buffered PDCP data and exchange sequence-number state during handover preparation.
-
-A second, orthogonal concern is the **core-side delivery method**. As the UE moves between MBS-capable and MBS-incapable cells, the core must switch that UE's session between the 5GC shared and 5GC individual delivery methods so the target can actually receive the packets. The SMF drives this switch, and it is triggered by whether the target gNB signals MBS support (see the per-case procedures below). Radio-side (PTM/PTP) and core-side (shared/individual) switching are decided separately.
-
-## Mobility between two cells both supporting Multicast
-
-### Procedure
-
-- Source gNB transfers to target gNB information about the MBS multicast sessions the UE has joined (UE context information).
-
-- Source gNB may propose data forwarding for some MRBs to minimize data loss and may exchange the corresponding MRB PDCP Sequence Number with the target gNB during the handover preparation:
-  - Lossless handover for multicast service is supported for the handover between MBS supporting cells if the UE is configured with PTP RLC AM entity in target cell MRB of a UE.
-  - The network has to ensure DL PDCP COUNT value synchronization and continuity between the source cell and the target cell.
-
-- During handover execution, the MBS configuration decided at target gNB is sent to the UE via the source gNB within an RRC container (3GPP [TS 38.331](https://www.3gpp.org/dynareport/38331.htm)).
-  When the UE connects to the target gNB, the target gNB sends an indication that it is an MBS-supporting node to the SMF in the Path Switch Request message (Xn handover) or Handover Request Acknowledge message (NG handover).
-
-- Upon successful handover completion, the source gNB may trigger the release of the MBS user plane resources towards the 5GC using the NGAP Distribution Release procedure for any multicast session for which there is no remaining
-  joined UE in the gNB.
-
-## Mobility between a Multicast-supporting cell and a non-supporting cell
-
-This case splits into two sub-cases depending on direction of travel: leaving MBS coverage (supporting → non-supporting) and entering it (non-supporting → supporting). The delivery-method switch (5GC Shared vs. Individual MBS traffic delivery) runs in both directions but is triggered by opposite conditions, so they are treated separately below.
-
-### Leaving Multicast-supporting coverage (supporting cell → non-supporting cell)
-
-- Target gNB sets up PDU Session Resources mapped to the MBS multicast session.
-- The 5GC infers from the absence of an "MBS-support" indication from gNB in the Path Switch Request message (Xn handover) or Handover Request Acknowledge message (NG handover) that MBS multicast data packets delivery has to be switched to 5GC individual MBS traffic delivery (3GPP [TS 23.247](https://www.3gpp.org/dynareport/23247.htm)).
-
-### Entering Multicast-supporting coverage (non-supporting cell → supporting cell)
-
-- 5GC detects that MBS multicast data packets delivery can be switched from 5GC Individual MBS traffic delivery to 5GC Shared MBS traffic delivery.
-- After Xn handover, the SMF triggers switching MBS multicast data packets delivery from 5GC Individual to 5GC Shared MBS traffic delivery by providing MBS Session IDs joined by the UE to the target gNB by means of the PDU Session Resource Modification procedure.
-- For NG handover, the SMF provides the MBS Session IDs joined by the UE to the target gNB by means of NGAP Handover Request.
-
-## Bearer-type switch when leaving Multicast-supporting coverage
-
-:::note[Resolved against TS 38.300]
-Checked against TS 38.300 V19.3.0 Clause 16.10.5.3.3 ("Handover between Multicast-supporting cell and Multicast non-supporting cell"): the MRB-to-DRB bearer switch is an **additional, optional preparatory step** within the same procedure as the PDU-session/delivery-method switch described above, not an alternate mechanism for a different scenario. The spec's own note on this is the reason it matters: "A UE may be handed over to a target gNB not supporting MBS **without** prior reconfiguration from MRB to the DRB in the source gNB. In this case, the AS configuration may not be comprehended by the target gNB causing full configuration." In other words, switching MRB→DRB beforehand is what avoids falling back to a full (slower) reconfiguration at the target.
-:::
-
-### Procedure
-
-- Mobility from a multicast-supporting cell to a multicast non-supporting cell can be achieved by switching the MRB to a DRB in the source gNB before a handover.
-
-:::note[Verified against primary sources]
-This entire page has now been checked directly against TS 38.413 V17.5.0 (NGAP), TS 38.300 V19.3.0 (NR overall description — this document is not part of this project's pinned baseline, so no earlier version is mandated; V19.3.0 was the version held and checked) and TS 23.247 V18.8.0 (this project's pinned Release 18 baseline) (5G Core MBS architecture). Every NGAP message and procedure name is genuine and correctly used: Distribution Setup and Distribution Release (TS 38.413 Clause 8.18, "Multicast Session Management Procedures") are explicitly **multicast**-specific. TS 38.300 Clause 16.10.5.3.2 confirms the RRC-container mechanism and the PTP RLC AM / PDCP COUNT continuity requirement almost word-for-word against this page's text, and TS 23.247 independently confirms the shared/individual delivery-method switch during handover.
-:::
+TS 23.247 supports multicast mobility in two cases: between NG-RAN nodes that both support MBS, and between a node that supports MBS and one that does not, in either direction. In both, minimisation of data loss should be supported. The procedures add to the Xn and N2 handover procedures of TS 23.502.
 
 ## Implementation blueprint
 
-The three procedures above, condensed into a single step-by-step reference. See the [Implementation Blueprints index](/tech/blueprints) for the other blueprints on this portal.
-
-| Scenario | Step | What happens | Clause |
+| Case | Step | What happens | Clause |
 | --- | --- | --- | --- |
-| Both cells support multicast | 1 | Source gNB transfers the UE's joined-session context to the target gNB | TS 38.300 Clause 16.10.5.3.2 |
-| | 2 | Source gNB proposes data forwarding and exchanges the MRB PDCP sequence number with the target, so the target can configure PTP RLC AM and keep the downlink PDCP COUNT synchronised — the two conditions lossless handover depends on | TS 38.300 Clause 16.10.5.3.2 |
-| | 3 | The target's MBS configuration for the UE is delivered via an RRC container relayed through the source gNB; on connecting to the target, the target signals its MBS support to the SMF via Path Switch Request (Xn handover) or Handover Request Acknowledge (NG handover) | TS 38.331; TS 38.300 Clause 16.10.5.3.2 |
-| | 4 | Once no joined UE remains at the source gNB for a session, the source may release the MBS user-plane resources via the NGAP Distribution Release procedure | TS 38.413 Clause 8.18 |
-| Leaving multicast-supporting coverage | 1 | Target gNB sets up PDU Session Resources mapped to the multicast session | TS 23.247 |
-| | 2 | 5GC infers, from the absence of an MBS-support indication in the Path Switch Request / Handover Request Acknowledge, that delivery must switch to the 5GC individual method | TS 23.247 |
-| | *(optional, before handover)* | Source gNB may switch the UE's MRB to a DRB in advance, avoiding a full reconfiguration at a target that doesn't support MBS | TS 38.300 Clause 16.10.5.3.3 |
-| Entering multicast-supporting coverage | 1 | 5GC detects that delivery can switch from the individual to the shared method | TS 23.247 |
-| | 2 | *(Xn)* SMF triggers the switch to shared delivery via the PDU Session Resource Modification procedure, providing the target gNB the joined MBS Session IDs | TS 23.247 |
-| | 2′ | *(NG)* SMF provides the joined MBS Session IDs to the target gNB via NGAP Handover Request instead | TS 23.247; TS 38.413 |
+| Both cells support multicast | 1 | In handover preparation, the source gNB gives the target gNB the multicast sessions the UE joined, in the UE context information | TS 38.300 cl. 16.10.5.3.2 |
+| | 2 | The source gNB may propose data forwarding for some MRBs and exchange their PDCP sequence numbers with the target | TS 38.300 cl. 16.10.5.3.2 |
+| | 3 | For each active session without MBS Session Resources at the target, the target gNB sets them up with NGAP Distribution Setup | TS 38.300 cl. 16.10.5.3.2; TS 38.413 cl. 8.18.1; TS 23.247 cl. 7.2.1.4 |
+| | 4 | The MBS configuration decided by the target is sent to the UE through the source gNB in an RRC container | TS 38.300 cl. 16.10.5.3.2 |
+| | 5 | The target gNB indicates to the SMF that it supports MBS, in the Path Switch Request (Xn) or Handover Request Acknowledge (NG) | TS 38.300 cl. 16.10.5.3.2; TS 23.247 cl. 7.2.3.2, 7.2.3.3 |
+| | 6 | The source gNB may release the resources with NGAP Distribution Release for any session without a remaining joined UE | TS 38.300 cl. 16.10.5.3.2; TS 38.413 cl. 8.18.2 |
+| To a cell without multicast | 1 | Optionally, before the handover, the source gNB switches the MRB to a DRB | TS 38.300 cl. 16.10.5.3.3 |
+| | 2 | The target gNB sets up PDU Session Resources mapped to the multicast session | TS 38.300 cl. 16.10.5.3.3 |
+| | 3 | From the absence of the MBS support indication, the 5G Core switches to 5GC Individual delivery | TS 38.300 cl. 16.10.5.3.3; TS 23.247 cl. 6.3.1 |
+| From a cell without multicast | 1 | The existing Xn or NG handover applies; the PDU Sessions are handed over | TS 38.300 cl. 16.10.5.3.3; TS 23.247 cl. 7.2.3.4 |
+| | 2 (Xn) | After the handover, the SMF gives the target gNB the joined MBS Session IDs with the PDU Session Resource Modification procedure | TS 38.300 cl. 16.10.5.3.3 |
+| | 2 (NG) | The SMF gives the joined MBS Session IDs in the NGAP Handover Request | TS 38.300 cl. 16.10.5.3.3 |
+| | 3 | The SMF changes the delivery from 5GC Individual to 5GC Shared | TS 23.247 cl. 6.3.1, 7.2.3.4 |
+
+## Between two cells that support multicast
+
+Mobility procedures for multicast reception let the UE continue receiving its multicast services via PTM or PTP in the new cell after handover.
+
+During handover preparation, the source gNB tells the target gNB, in the UE context information, which multicast sessions the UE has joined. For a local multicast service with location dependent content, service area information per Area Session ID may be provided for each active session.
+
+The source gNB may propose data forwarding for some MRBs to minimise data loss, and may exchange their PDCP sequence numbers with the target gNB:
+
+- Lossless handover is supported between cells that support MBS if the UE is configured with a PTP RLC AM entity in the target cell MRB, whether or not it had one in the source cell.
+- For lossless handover, the network has to ensure DL PDCP COUNT value synchronisation and continuity between the source and the target cell. Data forwarding and a PDCP status report from the UE can also be used.
+
+For each session with ongoing data and no MBS Session Resources at the target gNB, the target sets up the MBS user plane resources towards the 5G Core with the NGAP Distribution Setup procedure. With unicast transport, the target gives the MB-SMF its tunnel endpoint; with multicast transport, it receives the IP multicast address from the MB-SMF.
+
+During handover execution, the MBS configuration decided by the target gNB is sent to the UE through the source gNB, in an RRC container. The PDCP entities of the multicast MRBs in the UE can be re-established or kept. When the UE connects, the target gNB indicates to the SMF that it supports MBS. After the handover, the source gNB may release the MBS user plane resources with the NGAP Distribution Release procedure for any session without a remaining joined UE.
+
+## Between a cell that supports multicast and one that does not
+
+### Towards a cell without multicast
+
+At mobility to a cell that does not support MBS, the target gNB sets up PDU Session Resources mapped to the multicast session. The 5G Core infers from the absence of the "MBS-support" indication, in the Path Switch Request (Xn handover) or Handover Request Acknowledge (NG handover), that delivery has to switch to 5GC Individual MBS traffic delivery. In TS 23.247, the N3 tunnel of the PDU Session used for 5GC Individual delivery is then established towards the target node. If data forwarding is applied, the source gNB changes the QFIs of the forwarded packets to those of the associated PDU Session, when the mapping is available.
+
+The source gNB can switch the MRB to a DRB before the handover. TS 38.300 notes that without that prior reconfiguration, the target gNB may not understand the AS configuration, causing full configuration.
+
+### Towards a cell with multicast
+
+From a cell that does not support MBS, the existing Xn or NG handover procedures apply. The 5G Core infers from the presence of the "MBS-support" indicator that delivery can switch from 5GC Individual to 5GC Shared:
+
+- After an Xn handover, the SMF triggers the switch by giving the target gNB the MBS Session IDs the UE joined, with the PDU Session Resource Modification procedure.
+- For an NG handover, the SMF gives those MBS Session IDs in the NGAP Handover Request.
+
+Data loss can be minimised and duplicates avoided by comparing the MBS QFI sequence numbers received over the shared NG-U tunnel with those received over the unicast or forwarding tunnels.
+
+## Minimisation of data loss
+
+| Mechanism | In the specifications |
+| --- | --- |
+| **Sequence numbers** | The MB-UPF adds a sequence number per MBS QoS flow to each packet it sends to NG-RAN nodes and UPFs; a UPF that forwards the packet does not change it (TS 23.247 clause 7.2.3.5) |
+| **PDCP COUNT from the sequence number** | With one QoS flow mapped to an MRB, the gNB sets the PDCP COUNT to the DL MBS QFI sequence number received over NG-U (TS 38.300 clause 16.10.5.1) |
+| **Shared NG-U termination** | NG-RAN nodes that share a common user plane entity can allocate identical PDCP numbers in cells of different nodes (TS 23.247 clause 7.2.3.5; TS 38.300 clause 16.10.5.1) |
+| **MRB reconfiguration** | When the MRB type changes, the gNB may ask the UE for a PDCP status report (TS 38.300 clause 16.10.5.3.4) |
+
+For a session in the Inactive state, the target NG-RAN node establishes the shared tunnel if needed, but does not allocate radio resources (TS 23.247 clause 7.2.3.6).
+
+<details>
+<summary>Sources for this page</summary>
+
+- **NG-RAN procedures:** TS 38.300 V18.11.0, clauses 16.10.5.1 and 16.10.5.3.1 to 16.10.5.3.4.
+- **5G Core procedures:** TS 23.247 V18.8.0, clauses 6.3.1, 7.2.1.4, 7.2.3.1 to 7.2.3.6.
+- **NGAP procedures:** TS 38.413 V18.11.0, clauses 8.18.1 and 8.18.2.
+
+</details>

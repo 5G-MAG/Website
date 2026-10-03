@@ -1,11 +1,12 @@
 ---
 title: MBS Overview
 sidebar_position: 0
+sidebar_label: Overview
 hide_title: true
-description: Plain-language introduction to 5G MBS covering multicast and broadcast services, PTM/PTP delivery methods, use cases, and how they differ.
+description: The main functions of MBS User Services and of MBS in the 5G System and NG-RAN, and how the two fit together, based on TS 26.502, TS 23.247 and TS 38.300.
 ---
 
-import useBaseUrl from '@docusaurus/useBaseUrl';
+import JumpMenu from '@site/src/components/JumpMenu';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -18,127 +19,65 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 </div>
 </div>
 
-:::warning
-This documentation is currently **under development and subject to change**. If you are interested in becoming a member of the 5G-MAG and actively participating in shaping this work, please contact the [Project Office](/contact)
+:::tip[At a glance]
+
+- **Two parts:** MBS User Services, a service layer made of the MBSF and the MBSTF; and MBS in the 5G System and NG-RAN, with the MB-SMF and MB-UPF in the core and multicast and broadcast radio bearers in NR.
+- **Two communication services:** broadcast, for all UEs in a geographical area, and multicast, for a dedicated set of UEs.
+- **Delivery:** between the 5G Core and NG-RAN, 5GC Shared or 5GC Individual MBS traffic delivery; over the radio, point-to-multipoint (PTM) or point-to-point (PTP).
+- **Optional service layer:** the MBSF and MBSTF are optional in the 5G System. Without them, MBS transports the data without modifying it.
+
 :::
 
-## Media distribution with 5G Multicast Broadcast Services (MBS) - Overview
+<JumpMenu items={[["MBS User Services", "mbs-user-services"], ["MBS", "mbs"], ["How the two parts fit", "how-the-two-parts-fit"]]} />
 
-3GPP Release 17 brings Multicast Broadcast Services (MBS) to the 5G System, based on 5G Core and New Radio. MBS allows the network to select the most suitable among point-to-multipoint (PTM) or point-to-point (PTP) delivery based on requirements set by either service providers or network operators and/or taking into account concurrent user demand.
+## MBS User Services
 
-Two 5G Core traffic delivery methods are referenced below: the _shared_ method sends one copy of the data to each base station that then serves many devices, while the _individual_ method sends a separate per-device copy (used, for example, to reach base stations that do not support MBS). Both are defined in more detail on the [Service and System Aspects](./mbs-service-system-aspects) page.
+MBS User Services let high-level applications use the low-level features of the MBS System. An MBS User Service is provided by two functions working together:
 
-### Where MBS sits in the 5G System
+- **MBSF (Multicast/Broadcast Service Function):** the control plane function. It receives provisioning from the MBS Application Provider and controls the MBSTF.
+- **MBSTF (Multicast/Broadcast Service Transport Function):** the user plane function. It ingests content from the MBS Application Provider and sends MBS data packets towards the 5G Core.
 
-MBS reuses the 5G System rather than sitting beside it. On the core network side, two MBS-specific network functions are added: the Multicast/Broadcast Session Management Function (MB-SMF), which manages MBS sessions and allocates the session identifier (a Temporary Mobile Group Identity, TMGI), and the Multicast/Broadcast User Plane Function (MB-UPF), which receives one copy of the content and fans it out towards the radio. Existing functions gain MBS roles: the AMF coordinates broadcast session setup towards the gNB, the PCF supplies policy, and the NEF exposes MBS provisioning to application providers outside the trusted domain. Above the core, an optional user-service layer (the MBSF and MBSTF, specified in [TS 26.502](https://www.3gpp.org/dynareport/26502.htm)) lets a content provider provision, announce and ingest services without driving the core directly. These layers are covered on the [Service Layer](./mbs-service-layer) and [Service and System Aspects](./mbs-service-system-aspects) pages.
+The **MBS Application Provider** plays the role of the Application Function and Application Server (AF/AS). On the device, the **MBS Client** is a function of the User Equipment (UE). An **MBS-Aware Application** uses the MBS Client through its APIs, which let it activate or deactivate reception of MBS User Services. TS 26.502 does not define the MBS-Aware Application itself.
 
-The reuse principle is deliberate: it keeps MBS deployable alongside unicast on the same carriers and lets an operator introduce it incrementally, one cell or one function at a time, rather than as a parallel network.
+The service layer delivers data with two **distribution methods**, the Object Distribution Method and the Packet Distribution Method. Either can use a multicast or a broadcast MBS Session. They provide security and key distribution, reliability control by means of Forward Erasure Correction (FEC), and the associated delivery procedures.
 
-## Multicast Services
+An **MBS User Service Announcement** gives the MBS Client the service access information it needs to discover an MBS User Service and activate its reception. TS 26.517 defines the protocols and formats used by MBS User Services. Reporting by the MBS Client to the MBSF is for further study.
 
-A Multicast Service uses PTM and/or PTP delivery methods to transport traffic from a single source to User Equipment (UE) terminals within a multicast service area that have subscribed to the service. Multicast traffic is efficiently and reliably transported over the 5G core network to compatible base stations using the shared traffic delivery method. The individual traffic delivery method can serve multicast traffic to legacy base stations that do not support MBS.
+## MBS
 
-MBS-enabled base stations autonomously decide whether to use PTM or PTP delivery methods at the radio access network based on the number of concurrent subscriptions and the quality of the radio channel.
+MBS is a point-to-multipoint service: data is transmitted from a single source to multiple recipients, either to all users in a broadcast service area or to the users in a multicast group. TS 23.247 states what its architecture provides:
 
-<figure>
-  <img loading="lazy" src={useBaseUrl('/img/tech/5g-mbs/figure_mbs_1.png')} alt="Diagram of three base stations delivering a Multicast Service: base stations 1 and 2 use PTM to reach subscribed UEs, base station 2 also uses PTP for UEs needing more robust delivery, and base station 3, which does not support MBS, falls back to individual unicast PDU sessions per UE" width="60%"/>
-  <figcaption style={{textAlign: 'left', fontStyle: 'italic'}}>To receive Multicast Services, UEs must first subscribe to a multicast group. Base stations 1 and 2 use the PTM delivery method to serve subscribed UEs within their reception footprints. Base station 2 additionally uses the PTP delivery method to serve UEs that require more robust delivery. Base station 3 (not supporting MBS) can deliver multicast packets via a conventional unicast PDU session unique to each subscribed UE.</figcaption>
-</figure>
+- efficient usage of radio access and core network resources, with an emphasis on radio interface efficiency;
+- efficient transport for a variety of multicast and broadcast services.
 
-## Broadcast Services
+The architecture follows the 5G System principles of TS 23.501. It distributes MBS data from the 5G System ingress to the NG-RAN nodes and then to the UE. TS 38.300 states that the NR system enables resource efficient delivery of multicast and broadcast services.
 
-A Broadcast Service uses only the PTM delivery method to transport traffic from a single source to multiple UEs within a broadcast service area. Any UE within the broadcast service area that has registered with the network can receive Broadcast Services.
+Two communication services are defined:
 
-A single copy of the MBS traffic is efficiently transported over the 5G core network to each MBS-compatible base station in the service area using the shared traffic delivery method.
+- **Broadcast communication service:** the same content is provided at the same time to all UEs in a geographical area. The content provider and the network may not be aware whether the UEs are actually receiving it. A UE can receive it in RRC_IDLE, RRC_INACTIVE and RRC_CONNECTED.
+- **Multicast communication service:** the same content is provided at the same time to a dedicated set of UEs. The content provider and the network can be aware whether the UEs are actually receiving it. A UE can receive it in RRC_CONNECTED, with PTP and/or PTM delivery, and in RRC_INACTIVE, with PTM delivery.
 
-<figure>
-  <img loading="lazy" src={useBaseUrl('/img/tech/5g-mbs/figure_mbs_2.png')} alt="Diagram of a Broadcast Service delivered via PTM only from a single source across the 5G core to every MBS-compatible base station in the broadcast service area, reaching any registered UE within that area" width="60%"/>
-  <figcaption style={{textAlign: 'left', fontStyle: 'italic'}}>A Broadcast Service is available to compatible UEs within the broadcast service area, always using the PTM delivery method.</figcaption>
-</figure>
+Two functions are added to the 5G Core: the **MB-SMF**, which manages MBS sessions and allocates TMGIs, and the **MB-UPF**, which handles the multicast and broadcast data. Existing functions are extended, among them the AMF, SMF, UPF, PCF, NEF, NRF and UDM, and NG-RAN and the UE. NG-RAN is the decision point for switching between PTP and PTM. MBS for roaming is not supported in Release 18.
 
-## What kinds of service could be offered with 5G MBS?
+## How the two parts fit
 
-MBS supports the delivery of both operator and third-party media content. In particular, MBS User Services allow popular online television and radio services (e.g. live sport or national events) to be delivered efficiently to compatible equipment such as smartphones, smart TVs or car infotainment systems.
+In the 5G System, the MBSF and the MBSTF are optional. TS 23.247 annex A defines three configuration options:
 
-- Broadcast is suitable for localized services at the granularity of individual cells (e.g. services in venues, stadiums, exhibition centres).
-- Multicast allows the efficient and scalable delivery of popular services while ensuring a similar quality of service (QoS) and reliability to that of unicast distribution: quality of experience stays independent of audience size, network congestion is mitigated, and a group of UEs can receive services according to QoS requirements and/or prevailing channel conditions.
+| Option | Service layer | Control plane entry point for the AF | User plane entry point for the AF |
+| --- | --- | --- | --- |
+| **1** | No MBSF. Transport Only Mode: MBS transports the data without modifying it | NEF at N33 (an AF in the trusted domain may use the core interfaces directly) | MB-UPF at N6mb |
+| **2** | MBSF, reached through the NEF | NEF at N33 | MBSTF at Nmb8 (or MB2-U, xMB-U) |
+| **3** | MBSF, reached directly | MBSF at Nmb10 (or MB2-C, xMB-C) | MBSTF at Nmb8 (or MB2-U, xMB-U) |
 
-<figure>
-  <img loading="lazy" src={useBaseUrl('/img/tech/5g-mbs/figure_mbs_3.png')} alt="Illustration of example MBS use cases, contrasting localised broadcast within a venue with wide-area multicast of a popular service to many devices" width="60%"/>
-  <figcaption style={{textAlign: 'left', fontStyle: 'italic'}}>Example MBS use cases: broadcast for localised services (such as within a venue) and multicast for scalable delivery of popular services to many devices.</figcaption>
-</figure>
+For Service Mode, in which the service layer may modify the data, the MBSF is used: option 2 or option 3. MBS User Services support options 2 and 3, and TS 26.502 does not address deployments without an MBSTF.
 
-## Additional characteristics
+When the service layer is used, the MBSF invokes MBS Session operations on the MB-SMF at reference point Nmb1, and the MBSTF sends MBS data packets to the MB-UPF at Nmb9. In every option, the MB-UPF receives only one copy of the MBS data packets, from the AF or from the MBSTF.
 
-To minimize implementation impact and complexity, MBS reuses the existing (3GPP Release 15/16) radio layer design for physical channels, reference signals, and sub-carrier spacings and cyclic prefixes.
+<details>
+<summary>Sources for this page</summary>
 
-The table below summarises how multicast and broadcast differ across the main radio aspects. The subsections that follow give the detail and nuance.
+- **MBS User Services:** TS 26.502 V18.6.0, clauses 4.2.2, 4.2.3, 4.2.4, 4.2.5, 4.3.1, 4.3.5 and 4.3.6; TS 26.517 V18.6.0, clause 1.
+- **MBS:** TS 23.247 V18.8.0, clauses 3.1, 4.1 and 5.3.2; TS 38.300 V18.11.0, clause 16.10.1.
+- **How the two parts fit:** TS 23.247 V18.8.0, clause 5.1, clause 6.7 and annex A; TS 26.502 V18.6.0, clauses 4.2.2, 4.3.2 and 4.3.3.1.
 
-| Aspect                       | Multicast                                                                     | Broadcast                                                                      |
-| ---------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| Coverage area                | Only cells where UEs have joined an MBS session                               | All cells in the broadcast service area, whether requested or not              |
-| MCS selection                | Link adaptation selects the MCS per current channel conditions                | A fixed MCS is pre-assigned (no channel-state feedback)                        |
-| Reliability / retransmission | UE feedback, PTP/PTM retransmissions, link adaptation and beamforming         | No reception guarantee; slot-level data repetition possible                    |
-| Mobility and continuity      | Handover between base stations supports service continuity                    | Neighbour-cell information and cell reselection; lossless handover not ensured |
-| RRC states supported         | Requires an active connection (see the RAN Aspects page for the exact states) | Receivable across RRC states                                                   |
-
-:::note
-The "RRC states supported" row is a high-level summary. See [MBS RAN Aspects](./ran-aspects) for the exact RRC states per delivery mode.
-:::
-
-### Coverage area
-
-For both Multicast and Broadcast Services, individual cells may be added to or removed from the service
-area, as summarised in the table above. For multicast, link adaptation selects the most appropriate modulation and coding scheme (MCS), and beamforming is optimized for the UEs in the multicast group. For broadcast, each service is pre-assigned an
-MCS, as there is no channel-state information feedback from UEs.
-Single frequency network (SFN) operation is possible across sectors of the same base station for
-multicast. For broadcast, SFNs can be implemented across base stations that are sufficiently close to each
-other, transparent to UEs.
-
-### Reliability
-
-Beyond the summary above, multicast reliability relies on a combination of mechanisms: UE feedback, retransmissions using PTP or PTM, link adaptation, and beamforming. Broadcast, by contrast, offers no guarantee of reception, though slot-level data repetition can still improve performance.
-
-### Mobility and continuity
-
-Multicast service continuity across cells relies on handover between the base stations a UE
-traverses. Broadcast instead uses neighbour-cell information and cell-reselection mechanisms, which do
-not ensure lossless handover.
-
-### Mixing MBS with other traffic
-
-Mixed radio carriers can deliver multicast and/or broadcast services alongside other unicast data on the
-same cell.
-
-## How it works
-
-An MBS session travels through three layers, from the content provider down to the device.
-
-**Key specifications:** 3GPP [TS 26.502](https://www.3gpp.org/dynareport/26502.htm) (MBS user services), [TS 23.247](https://www.3gpp.org/dynareport/23247.htm) (MBS architecture), [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) (5G Media Streaming, 5GMS, framework referenced for hybrid delivery), [TS 38.300](https://www.3gpp.org/dynareport/38300.htm) / [TS 38.331](https://www.3gpp.org/dynareport/38331.htm) (RAN procedures for broadcast mode).
-
-- The **user-service layer** (TS 26.502) is where a content provider provisions a service, has it announced to clients, ingests content and optionally repairs lost data. It is realised by the Multicast/Broadcast Service Function (MBSF) on the control plane and the Multicast/Broadcast Service Transport Function (MBSTF) on the user plane. This layer is optional: a provider can also drive the core directly.
-- The **5G Core layer** (TS 23.247) defines the multicast and broadcast communication services, the MBS sessions that carry them, and the two ways the core delivers packets towards the radio: the 5GC shared method (one copy per MBS-capable RAN node) and the 5GC individual method (a per-UE copy for MBS-incapable nodes). The MBS-specific core functions are the MB-SMF and the MB-UPF.
-- The **NR / NG-RAN layer** (TS 38.300 family) is where the gNB (the 5G base station) chooses point-to-multipoint (PTM) or point-to-point (PTP) delivery and applies one of three Layer-2 delivery modes.
-
-Two distinctions recur across the technical-analysis pages and are worth fixing early, since the terms sound alike but describe different layers:
-
-| Term | Layer | Values | What it means |
-|---|---|---|---|
-| Delivery method | Radio (RAN) | PTM (point-to-multipoint) or PTP (point-to-point) | How the gNB (the 5G base station) physically sends the data over the air: one shared transmission, or a separate copy per device. |
-| Delivery mode | Radio (RAN), Layer 2 | 1 (multicast), 2 (broadcast), or unicast | The Layer-2 configuration that carries the delivery method above — a separate setting from the method itself. |
-| 5GC traffic delivery method | Core network | Shared or individual | How the 5G Core sends packets towards the radio: one copy per MBS-capable node (shared) or a per-UE copy for nodes that don't support MBS (individual). Describes the core, not the radio. |
-
-The [RAN Aspects](/tech/5g-mbs/ran-aspects) page keeps these separate in more detail. The [MBS Overview](/tech/5g-mbs/overview-mbs) page introduces Multicast and Broadcast Services in plain language and the use cases each suits; the [Service Layer Aspects](/tech/5g-mbs/mbs-service-layer) and [Service & System Aspects](/tech/5g-mbs/mbs-service-system-aspects) pages work through the user-service and 5G Core architecture in more detail.
-
-Three further pages analyse specific procedures in depth: [Mobility aspects for MBS Multicast Services](/tech/5g-mbs/mobility-mbs-multicast) covers how multicast reception continues across handover between cells; [RAN Procedures for MBS Multicast Inactive](/tech/5g-mbs/analysis-mbs-multicast-inactive-ran) covers the Release 18 extension that lets a UE receive multicast in the RRC_INACTIVE state; and [RAN Procedures for MBS Broadcast](/tech/5g-mbs/analysis-mbs-broadcast-ran) works through the step-by-step radio acquisition of a broadcast service.
-
-5G-MAG's own [reference tools overview slide deck](pathname:///docs/Reference_Tools_5G_Multicast_Broadcast.pdf) maps these reference tools to the architecture above.
-
-**Next:** [MBS Service Layer Aspects](./mbs-service-layer) for the user-service architecture, then [MBS Service and System Aspects](./mbs-service-system-aspects) for the 5G Core view.
-
-## Related
-
-- [5G Broadcast - TV and Radio Services](/tech/5g-broadcast) (the LTE-based, free-to-air broadcast technology — a separate topic with a similar name)
-- [5G Media Streaming (5GMS)](/tech/5gms) (the unicast delivery architecture whose user-service layer MBS extends)
-- [Content Delivery Protocols](/standards/content-delivery) (the FLUTE and ROUTE transport used by the MBS Object distribution method)
-- Further reading: a paper from [Qualcomm](https://ieeexplore.ieee.org/document/9772755) and a blog post from [Ericsson](https://www.ericsson.com/en/blog/2022/12/multicast-broadcast-group-communication) with more detail on MBS
+</details>
