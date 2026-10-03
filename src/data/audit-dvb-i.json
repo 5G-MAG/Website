@@ -47,7 +47,7 @@
    "repos": [
     {
      "repo": "rt-dvb-i-application-provider",
-     "commit": "d6dfab5",
+     "commit": "688de42",
      "version": ""
     }
    ]
@@ -59,7 +59,7 @@
    "repos": [
     {
      "repo": "rt-dvb-i-service-list-registry",
-     "commit": "40bd4aa",
+     "commit": "7003ba5",
      "version": ""
     }
    ]
