@@ -3502,6 +3502,7 @@
   {
    "name": "TMGI allocation",
    "summary": "The MB-SMF allocates, refreshes and deallocates TMGIs over Nmbsmf_TMGI with the response codes and causes TS 29.532 defines, and the MB-SMF client library sends and reads all three requests; the MBSF itself never calls this service and obtains its TMGIs through MBS session creation instead.",
+   "mode": "common",
    "requirements": [
     {
      "id": "SYS-T01",
@@ -3657,6 +3658,7 @@
   {
    "name": "MBS session creation",
    "summary": "The MB-SMF creates broadcast and multicast MBS sessions with a TMGI it allocates or one supplied, reserves the MB-UPF ingress tunnel and answers 201 with a Location header; it does not return the MBS FSA IDs, ignores the status subscription carried in the request, continues with the requested rather than the reduced service area, mis-reads cell lists, supports only one area per location dependent session, and has none of the Release 18 RedCap or associated-session inputs.",
+   "mode": "common",
    "requirements": [
     {
      "id": "SYS-S01",
@@ -3812,6 +3814,7 @@
   {
    "name": "MBS session update and release",
    "summary": "Release works end to end, the MB-SMF tearing down the MB-UPF session and the AMF context, and an Update can switch a multicast session between active and inactive; no other modifiable field can be updated, two of them are refused as malformed, and status subscriptions and notifications towards the MBSF, NEF or AF do not exist.",
+   "mode": "common",
    "requirements": [
     {
      "id": "SYS-U01",
@@ -4027,6 +4030,7 @@
   {
    "name": "MB-UPF user plane (N4mb, N6mb, Nmb9, N3mb)",
    "summary": "The MB-SMF sets up one PFCP session per MBS session on N4mb with the MBS Session Identifier and the PLLSSM and JMBSSM flags, and the MB-UPF opens a UDP ingress tunnel for Nmb9 or N6mb and forwards over N3mb to a lower-layer SSM with a common TEID it allocates; only one QoS flow is set up whatever the session carries, the QFI sequence number is never inserted, the JMBSSM flag is not acted on, the Area Session ID is not sent, and unicast N3mb (MBSU, PFCP Session Modification) does not exist.",
+   "mode": "common",
    "requirements": [
     {
      "id": "SYS-N01",
@@ -4221,6 +4225,7 @@
   {
    "name": "Broadcast session start, update and release towards NG-RAN",
    "summary": "For a broadcast session the MB-SMF creates and releases an AMF broadcast context carrying the N2 SM information it builds (lower-layer SSM, C-TEID, QoS flows, FSA IDs), and the AMF sends Broadcast Session Setup, Modification and Release Requests and answers after the first NG-RAN response; the AMF sends to every connected gNB, can send cells the request never named, never reports completion in its first response, does not identify the NG-RAN in notifications, and does not handle Broadcast Session Release Response, Release Required or Transport, while the MB-SMF never sends ContextUpdate and ignores the N3mb tunnel information returned.",
+   "mode": "broadcast",
    "requirements": [
     {
      "id": "SYS-B01",
@@ -4593,6 +4598,7 @@
   {
    "name": "Multicast sessions",
    "summary": "A multicast MBS session can be created at the MB-SMF and its activity status set, and the AMF can relay Multicast Session Activation, Deactivation and Update Requests to NG-RAN through Namf_MBSCommunication; UE join and leave, the MB-SMF context services, NGAP Distribution Setup and Release, N19mb and the activation and deactivation procedures are absent from the audited code.",
+   "mode": "multicast",
    "requirements": [
     {
      "id": "SYS-M01",
@@ -4786,6 +4792,7 @@
   {
    "name": "MB-SMF service consumer (MBSF side)",
    "summary": "The MB-SMF client library creates, updates and releases MBS sessions and creates and deletes status subscriptions with the request shapes TS 29.532 defines, and reads the 201 response in full; a subscription update sends the session changes instead of the subscription changes, notifications are answered 200 rather than 204, the associated session ID is never sent, and the MBSF never subscribes to status notifications.",
+   "mode": "common",
    "requirements": [
     {
      "id": "SYS-C01",
@@ -4938,6 +4945,7 @@
   {
    "name": "NGAP broadcast session management at the gNB",
    "summary": "The gNB-CU-CP answers Broadcast Session Setup, Modification and Release from the AMF, drives the E1AP and F1AP procedures behind each, and returns its own N3mb endpoint; it does not use the MBS service area or the MBS FSA IDs to choose cells, does not act on the Release 18 Supported UE Type List or Associated Session ID, does not answer a Release for an unknown session, never initiates Broadcast Session Release Required, and has the Release 18 Broadcast Session Transport procedure coded but never started.",
+   "mode": "broadcast",
    "requirements": [
     {
      "id": "RAN-N01-gnb",
@@ -5142,6 +5150,7 @@
   {
    "name": "MB-UPF to gNB user plane (N3mb, shared delivery)",
    "summary": "The gNB-CU-UP joins the IP multicast group the 5G Core signals for the session, terminates the shared GTP-U tunnel and passes packets through SDAP and an unciphered PDCP entity per MRB towards the DU; it registers the tunnel under the byte-reversed TEID rather than the signalled one, and the 5GC unicast transport option is not offered.",
+   "mode": "broadcast",
    "requirements": [
     {
      "id": "RAN-U01-gnb",
@@ -5216,6 +5225,7 @@
   {
    "name": "F1AP broadcast context (gNB-CU and gNB-DU)",
    "summary": "Broadcast Context Setup, Modification and Release run between the CU-CP and the DU, with MRB setup, modify and release and both failure messages; the DU does not answer some setup failures, never reports MRBs that failed in a Modification, ignores the MBS service area and never reports the Release 18 Broadcast Area Scope, the CU does not act on MRBs the DU reports as failed, and Broadcast Context Release Request and the Release 18 Broadcast Transport Resource Request are not sent or handled.",
+   "mode": "broadcast",
    "requirements": [
     {
      "id": "RAN-F01-gnb",
@@ -5466,6 +5476,7 @@
   {
    "name": "E1AP broadcast bearer context (gNB-CU-CP and gNB-CU-UP)",
    "summary": "BC Bearer Context Setup, Modification and Release work between CU-CP and CU-UP with per-MRB and per-flow result lists and F1-U endpoints, and the CU-CP reacts to Modification Required and Release Request; both Failure messages leave the Cause unset, a changed 5GC NG-U address is not applied, and the shared NG-U termination options are not acted on.",
+   "mode": "broadcast",
    "requirements": [
     {
      "id": "RAN-E01-gnb",
@@ -5641,6 +5652,7 @@
   {
    "name": "MCCH and SIB20 broadcast signalling at the gNB",
    "summary": "The DU advertises SIB20 and SIB21 in SIB1, broadcasts SIB20 from operator settings, sends MCCH on PDCCH addressed to MCCH-RNTI with DCI format 4_0 inside the configured window, changes MCCH only at modification-period boundaries and signals the change, with no Release 18 (e)RedCap CFR; it sends MCCH every radio frame whatever repetition period SIB20 advertises, can flag a new service as an \"other modification\", and sends MCCH as a bare RRC message without the MAC subheader and RLC header the logical channel requires.",
+   "mode": "broadcast",
    "requirements": [
     {
      "id": "RAN-R01-gnb",
@@ -5914,6 +5926,7 @@
   {
    "name": "MRB and MTCH scheduling at the gNB",
    "summary": "Each broadcast session gets a G-RNTI and its MRBs get LCIDs; MTCH is scheduled with DCI format 4_0 scrambled by the G-RNTI, without HARQ feedback, over RLC UM; G-RNTIs are taken from the C-RNTI range without checking for UEs, and a statically configured MRB on an LCID below 21 is advertised but never scheduled.",
+   "mode": "broadcast",
    "requirements": [
     {
      "id": "RAN-M01-gnb",
@@ -6020,6 +6033,7 @@
   {
    "name": "UE broadcast reception",
    "summary": "The UE reads SIB20, decodes MCCH on MCCH-RNTI inside the window, joins every advertised session, decodes MTCH on the G-RNTIs and delivers packets through RLC UM and PDCP with the correct start-of-reception rules; it ignores the repetition period and the change notification, never re-reads SIB20, expects MCCH without MAC and RLC headers, applies its own defaults instead of the specified ones when PDCP t-Reordering and RLC t-Reassembly are absent, has no SDAP, broadcast DRX or MBS Interest Indication, and keys MRBs by LCID alone.",
+   "mode": "broadcast",
    "requirements": [
     {
      "id": "RAN-R10-ue",
@@ -6422,6 +6436,7 @@
   {
    "name": "MBS multicast in the RAN",
    "summary": "Release 17 multicast (shared delivery to UEs in RRC_CONNECTED) and Release 18 multicast reception in RRC_INACTIVE are not implemented in the gNB or the UE; only codec types and a few placeholder fields exist.",
+   "mode": "multicast",
    "requirements": [
     {
      "id": "RAN-X01-gnb",

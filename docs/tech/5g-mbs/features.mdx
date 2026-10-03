@@ -188,9 +188,11 @@ Reception reporting by the MBS Client (TS 26.502 clauses 4.2.5 and 4.5.4) and th
 
 ## MBS
 
+TS 23.247 groups the MBS procedures in three: a "Common procedure for Multicast and Broadcast" (clause 7.1), "MBS procedures for multicast Session" (clause 7.2) and "MBS procedures for broadcast Session" (clause 7.3). Each feature below says which of MBS Broadcast and MBS Multicast it applies to, from the clauses that define it.
+
 ### Broadcast MBS session
 
-**Defined in** TS 23.247 clauses 4.2.2 and 6 · **procedure** clause 7.3.1 · **NG-RAN** TS 38.300 clause 16.10.6
+**Applies to:** MBS Broadcast · **Defined in** TS 23.247 clauses 4.2.2 and 6 · **procedure** clause 7.3.1 · **NG-RAN** TS 38.300 clause 16.10.6
 
 The AF starts a broadcast MBS session with TMGI allocation and MBS Session Create, which sets up resources in the MB-UPF and in NG-RAN for 5GC Shared delivery. The MB-SMF asks the AMFs serving the MBS service area to create a broadcast context, and they send the setup request to all NG-RAN nodes that support MBS in the area. A UE that is pre-configured with the needed configuration does not need to interact with the network. In NG-RAN, the UE receives the broadcast configuration on the MCCH in any RRC state. Broadcast has no HARQ-ACK feedback, uses dynamic scheduling only, and supports slot-level repetition of MTCH.
 
@@ -208,7 +210,7 @@ The AF starts a broadcast MBS session with TMGI allocation and MBS Session Creat
 
 ### Multicast join and leave
 
-**Defined in** TS 23.247 clauses 4.2.1 and 6.1 · **procedures** clauses 7.2.1 and 7.2.2
+**Applies to:** MBS Multicast · **Defined in** TS 23.247 clauses 4.2.1 and 6.1 · **procedures** clauses 7.2.1 and 7.2.2
 
 A UE joins a Multicast MBS session with a PDU Session Modification Request on an associated PDU Session, carrying the MBS Session IDs and a join request. The SMF authorises the join from the UE's MBS subscription data and whether the session is open to any UE. An NG-RAN node sets up shared delivery when it serves at least one UE of the session, and may release it when the last UE leaves.
 
@@ -225,7 +227,7 @@ A UE joins a Multicast MBS session with a PDU Session Modification Request on an
 
 ### Multicast session activation and deactivation
 
-**Defined in** TS 23.247 clause 4.3 · **procedures** clause 7.2.5 · **NG-RAN** TS 38.300 clause 16.10.5.2
+**Applies to:** MBS Multicast · **Defined in** TS 23.247 clause 4.3 · **procedures** clause 7.2.5 · **NG-RAN** TS 38.300 clause 16.10.5.2
 
 Activation and deactivation apply to multicast only. The MB-SMF triggers them on a notification from the MB-UPF (downlink data, or none for some duration) or on a request from the AF, directly or through the NEF. To notify UEs in RRC_IDLE or RRC_INACTIVE that a session has been activated, the gNB uses group notification: a paging message containing the MBS session ID pages all UEs that joined the session.
 
@@ -241,7 +243,7 @@ Activation and deactivation apply to multicast only. The MB-SMF triggers them on
 
 ### Mobility and switching between shared and individual delivery
 
-**Defined in** TS 23.247 clause 6.3 · **procedures** clause 7.2.3 · **NG-RAN** TS 38.300 clause 16.10.5.3
+**Applies to:** MBS Multicast (TS 23.247 clause 6.3.1); MBS Broadcast mobility is clause 6.3.2 · **Defined in** TS 23.247 clause 6.3 · **procedures** clause 7.2.3 · **NG-RAN** TS 38.300 clause 16.10.5.3
 
 Multicast mobility is supported between NG-RAN nodes that both support MBS, and between a node that supports MBS and one that does not. At handover to a node without MBS, delivery switches from 5GC Shared to 5GC Individual; on the way back, the SMF switches it to 5GC Shared. To minimise data loss, the MB-UPF adds a sequence number per MBS QoS flow. A broadcast service continues in the target node if the same session is established there with 5GC Shared delivery.
 
@@ -259,19 +261,19 @@ Multicast mobility is supported between NG-RAN nodes that both support MBS, and 
 
 ### Multicast reception in RRC_INACTIVE
 
-**Added in Release 18** · **defined in** TS 23.247 clause 6.17 · **NG-RAN** TS 38.300 clauses 16.10.5.2 and 16.10.5.3.5, TS 38.331 clause 5.10
+**Applies to:** MBS Multicast · **Added in Release 18** · **defined in** TS 23.247 clause 6.17 · **NG-RAN** TS 38.300 clauses 16.10.5.2 and 16.10.5.3.5, TS 38.331 clause 5.10
 
 To provide a multicast service to more UEs in a cell, NG-RAN may move UEs that can receive in RRC_INACTIVE out of RRC_CONNECTED. The gNB decides in which state the UE receives. In RRC_INACTIVE, multicast uses PTM only, without HARQ feedback. The configuration comes in the RRCRelease message and on the multicast MCCH, whose scheduling is in SIB24. TS 38.331 V17.17.0 has no SIB24 and no clause 5.10; they appear in Release 18.
 
 ### Local and location dependent MBS
 
-**Defined in** TS 23.247 clause 6.2 · **procedures** clauses 7.2.4 and 7.3.4
+**Applies to:** MBS Broadcast and MBS Multicast · **Defined in** TS 23.247 clause 6.2 · **procedures** clauses 7.2.4 and 7.3.4
 
 A local MBS service is provided in one MBS service area: only UEs in it receive the content. A location dependent MBS service distributes different content to different MBS service areas, with the same MBS Session ID and a different Area Session ID for each area.
 
 ### QoS and policy control
 
-**Defined in** TS 23.247 clauses 6.6 and 6.10 · **services** clause 9.2
+**Applies to:** MBS Broadcast and MBS Multicast · **Defined in** TS 23.247 clauses 6.6 and 6.10 · **services** clause 9.2
 
 The network supports QoS control per MBS session, with one or more GBR or non-GBR QoS flows. The policy and charging control framework of TS 23.503 applies, for example MBS Session binding and QoS Flow binding.
 
@@ -287,7 +289,7 @@ The network supports QoS control per MBS session, with one or more GBR or non-GB
 
 ### Authorisation and identifiers
 
-**Defined in** TS 23.247 clauses 6.1, 6.4 and 6.5 · **services** clauses 9.1.2 and 9.4.2
+**Applies to:** MBS Broadcast and MBS Multicast · **Defined in** TS 23.247 clauses 6.1, 6.4 and 6.5 · **services** clauses 9.1.2 and 9.4.2
 
 The 5G Core authorises a UE for multicast: whether it may use the Multicast service in the PLMN, and whether it may receive a given session. A Multicast MBS session may be open to any UE. An MBS session is identified by a TMGI (broadcast and multicast) or by a source specific IP multicast address (multicast only).
 
@@ -303,43 +305,43 @@ The 5G Core authorises a UE for multicast: whether it may use the Multicast serv
 
 ### Frequency selection for broadcast
 
-**Defined in** TS 23.247 clause 6.5.4 · **NG-RAN** TS 38.300 clause 16.10.6.5, SIB21 in TS 38.331
+**Applies to:** MBS Broadcast · **Defined in** TS 23.247 clause 6.5.4 · **NG-RAN** TS 38.300 clause 16.10.6.5, SIB21 in TS 38.331
 
 The MBS Frequency Selection Area (FSA) ID guides the UE's frequency selection for a broadcast session. It is sent in the service announcement, and the UE compares it with the FSA IDs in the SIBs. NR MBS supports frequency layer prioritisation for broadcast sessions.
 
 ### Service announcement and pre-configuration
 
-**Defined in** TS 23.247 clause 6.11 · TS 24.575 clause 4
+**Applies to:** MBS Broadcast and MBS Multicast · **Defined in** TS 23.247 clause 6.11 · TS 24.575 clause 4
 
 The service announcement describes the services delivered in an MBS session. It may be encoded as defined in TS 26.517 or in an application-specific format. A UE may also be pre-configured, per PLMN, with the information to discover and receive services.
 
 ### Power saving
 
-**Defined in** TS 23.247 clause 6.16 · **procedures** clauses 7.2.10 and 7.3.8
+**Applies to:** MBS Broadcast and MBS Multicast · **Defined in** TS 23.247 clause 6.16 · **procedures** clauses 7.2.10 and 7.3.8
 
 UEs that use power saving functions wake up at coordinated times. The service announcement gives them a start time and/or scheduled activation times of the MBS session.
 
 ### Broadcast for RedCap UEs
 
-**Defined in** TS 23.247 clause 6.19 · **NG-RAN** TS 38.300 clause 16.10.6.6
+**Applies to:** MBS Broadcast · **Defined in** TS 23.247 clause 6.19 · **NG-RAN** TS 38.300 clause 16.10.6.6
 
 The AF provides the "NR RedCap UE Information" parameter at MBS Session Creation, and the MB-SMF forwards it to NG-RAN. NG-RAN may configure an additional RedCap common frequency resource when the default one is wider than the RedCap UE capability.
 
 ### Resource sharing in network sharing
 
-**Defined in** TS 23.247 clause 6.18 · **NG-RAN** TS 38.300 clause 16.10.6.8
+**Applies to:** MBS Broadcast · **Defined in** TS 23.247 clause 6.18 · **NG-RAN** TS 38.300 clause 16.10.6.8
 
 When the AF creates broadcast MBS sessions with the same content through several core networks, the shared NG-RAN allocates radio resources for only one of them.
 
 ### Group message delivery
 
-**Defined in** TS 23.247 clause 6.15 · **procedures** clause 7.5 · **service** Nnef_MBSGroupMsgDelivery
+**Applies to:** MBS Broadcast · **Defined in** TS 23.247 clause 6.15 · **procedures** clause 7.5 · **service** Nnef_MBSGroupMsgDelivery
 
 An AF can deliver a payload to a group of UEs in a geographical area through a broadcast MBS session. It uses the Object Distribution Method of the MBSTF.
 
 ### Security
 
-**Defined in** TS 23.247 clause 6.13
+**Applies to:** MBS Broadcast and MBS Multicast · **Defined in** TS 23.247 clause 6.13
 
 The MBS security function is implemented in the MBSF and MBSTF, so it applies only with configuration options 2 and 3.
 

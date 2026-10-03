@@ -25,6 +25,9 @@ export const part = (keep) => {
 };
 export const US = part((f) => f.requirements.every((r) => r.release === 'US18'));
 export const SYS = part((f) => f.requirements.some((r) => r.release !== 'US18'));
+export const COMMON = part((f) => f.mode === 'common');
+export const BCAST = part((f) => f.mode === 'broadcast');
+export const MCAST = part((f) => f.mode === 'multicast');
 export const count = (data) => {
   const reqs = data.features.flatMap((f) => f.requirements);
   const cases = reqs.flatMap((r) => r.cases);
@@ -33,6 +36,9 @@ export const count = (data) => {
 };
 export const CUS = count(US);
 export const CSYS = count(SYS);
+export const CCOM = count(COMMON);
+export const CBC = count(BCAST);
+export const CMC = count(MCAST);
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -53,7 +59,10 @@ export const CSYS = count(SYS);
 
 - **Which specifications the code is judged against:** the latest Release 18 issue of each: for MBS User Services, 3GPP TS 26.502 V18.6.0, TS 26.517 V18.6.0, TS 29.580 V18.8.0 and TS 29.581 V18.6.0; for MBS, TS 23.247 V18.8.0 with TS 29.532 V18.6.0, TS 29.518 V18.15.0 and TS 29.244 V18.10.0, and for NG-RAN TS 38.300, TS 38.331, TS 38.413 and TS 38.473 V18.11.0. What each component is built against is given under Components.
 - **[MBS User Services](#mbs-user-services):** {CUS.reqs} requirements in {CUS.cases} cases: {CUS.implemented} implemented, {CUS.differs} differ from the specification, {CUS.absent} not implemented, and {CUS.inconsistent} where the specification contradicts itself.
-- **[MBS](#mbs) (5G System and NG-RAN):** {CSYS.reqs} requirements in {CSYS.cases} cases: {CSYS.implemented} implemented, {CSYS.differs} differ, {CSYS.absent} not implemented. MBS Broadcast is covered; MBS Multicast is mostly not implemented.
+- **[MBS](#mbs) (5G System and NG-RAN):** {CSYS.reqs} requirements in {CSYS.cases} cases, grouped as TS 23.247 groups its procedures:
+  - [common to broadcast and multicast](#common-to-broadcast-and-multicast): {CCOM.cases} cases, {CCOM.implemented} implemented, {CCOM.differs} differ, {CCOM.absent} not implemented;
+  - [MBS Broadcast](#mbs-broadcast): {CBC.cases} cases, {CBC.implemented} implemented, {CBC.differs} differ, {CBC.absent} not implemented;
+  - [MBS Multicast](#mbs-multicast): {CMC.cases} cases, {CMC.implemented} implemented, {CMC.differs} differ, {CMC.absent} not implemented.
 - **Source of this page:** a code audit of the repositories on 2026-10-03: each requirement split into the cases its clause defines, each case checked against the code, then every case that is not implemented, and a third of the others, re-checked by a second reader. The FLUTE library (rt-libflute) is audited separately.
 
 :::
@@ -100,9 +109,25 @@ The 5G System architecture for MBS of TS 23.247, with the parts the Reference To
   note="Click a figure to enlarge it."
 />
 
-Filter by component or specification; open a feature, then a requirement.
+TS 23.247 V18.8.0 clause 7 groups the MBS procedures as "Common procedure for Multicast and Broadcast" (clause 7.1), "MBS procedures for multicast Session" (clause 7.2) and "MBS procedures for broadcast Session" (clause 7.3). The status below follows the same grouping; the NG-RAN features fall under broadcast or multicast.
 
-<ImplementationCases data={SYS} />
+### Common to broadcast and multicast
+
+TMGI allocation, MBS session creation, update and release, the MB-UPF user plane, and the MB-SMF service consumer. Filter by component; open a feature, then a requirement.
+
+<ImplementationCases data={COMMON} />
+
+### MBS Broadcast
+
+The broadcast session towards NG-RAN, and broadcast in the gNB and the UE.
+
+<ImplementationCases data={BCAST} />
+
+### MBS Multicast
+
+Multicast sessions in the 5G Core, and multicast in the gNB and the UE.
+
+<ImplementationCases data={MCAST} />
 
 :::info[Full audit for members]
 
