@@ -63,11 +63,8 @@ const ALL_TOPICS = [
     autogen: '5g-mbs',
     techOverviewDoc: '5g-mbs/overview-mbs',
     standards: [
-      { doc: 'standards/5g-mbs', label: 'Standards: 5G Multicast Broadcast Services (MBS)' },
-      {
-        doc: 'standards/5g-mbs-standards-evolution',
-        label: 'Standards: 5G MBS - Standards Evolution',
-      },
+      { doc: 'standards/5g-mbs', label: 'Standards: 5G Multicast Broadcast Services (MBS)', sidebarLabel: 'Specifications' },
+      { doc: 'standards/5g-mbs-standards-evolution', label: 'Standards: 5G MBS - Standards Evolution', sidebarLabel: 'Evolution by release' },
     ],
   },
   {

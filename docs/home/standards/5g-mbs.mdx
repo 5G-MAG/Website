@@ -1,12 +1,48 @@
 ---
 hide_title: true
+sidebar_label: Specifications
 title: 5G Multicast Broadcast Services (MBS)
 slug: /standards/5g-mbs
-description: Covers 5G Multicast-Broadcast Services architecture across user-service, 5G Core and NR/NG-RAN layers, and lists the related 3GPP specifications.
+description: The 3GPP specifications for MBS User Services and for MBS in the 5G System and NG-RAN, what each covers, and the last version of each in Release 17, 18, 19 and 20.
+pagination_prev: null
+pagination_next: null
 ---
 
 import SpecIndex from '@site/src/components/SpecIndex';
-import { MBS_SPECS, MBS_LAYER_ORDER } from '@site/src/data/specs/5g-mbs';
+import JumpMenu from '@site/src/components/JumpMenu';
+import {
+  MBS_RELEASES,
+  MBS_USER_SERVICES_SPECS,
+  MBS_USER_SERVICES_REUSED,
+  MBS_SYSTEM_SPECS,
+  MBS_SYSTEM_LAYER_ORDER,
+} from '@site/src/data/specs/5g-mbs';
+
+export const VersionTable = ({ rows, reused = [] }) => (
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Specification</th>
+        {MBS_RELEASES.map((r) => (
+          <th scope="col" key={r}>Release {r}</th>
+        ))}
+      </tr>
+    </thead>
+    <tbody>
+      {[...rows, ...reused.map((r) => ({ ...r, reused: true }))].map((s) => (
+        <tr key={s.id}>
+          <th scope="row">
+            <a href={s.url} target="_blank" rel="noreferrer">{s.id}</a>
+            {s.reused ? ' (reused)' : ''}
+          </th>
+          {MBS_RELEASES.map((r) => (
+            <td key={r}>{s.versions[r] || 'none'}</td>
+          ))}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+);
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -19,31 +55,87 @@ import { MBS_SPECS, MBS_LAYER_ORDER } from '@site/src/data/specs/5g-mbs';
 </div>
 </div>
 
-## Overview
+This page lists the 3GPP specifications for 5G Multicast Broadcast Services (MBS) in two sections: the MBS User Services, and MBS in the 5G System and NG-RAN. For each document it gives what it covers and its last version in each release.
 
-5G Multicast Broadcast Services (MBS) is the 3GPP 5G System feature for delivering the same content to many devices at once over the 5G core and NR radio. The specifications below are grouped by the layer they define: user-service level, 5G Core network, and NR/NG-RAN. For the technical analysis of how MBS works, see the Tech page linked below.
+Versions are read from the 3GPP specification archive on 3 October 2026. Release 20 is still open: its column shows the latest version so far. "none" means the archive holds no version of the document in that release.
 
-5G-MAG tracks and contributes to 5G MBS standardisation across all three layers described above (user-service, 5G Core, and NR/NG-RAN). For the current focus areas and the implementer-facing analysis of this architecture, see [Tech: Multicast & Broadcast in 5G](/tech/5g-mbs).
+:::tip[At a glance]
 
-## Specifications by release
+- **MBS User Services:** TS 26.502 (architecture) and TS 26.517 (protocols and formats), with TS 29.580 and TS 29.581 for the services of the MBSF and the MBSTF. The design in TS 26.502 is primarily motivated by the conclusions of the study TR 26.802.
+- **MBS in the 5G System and NG-RAN:** TS 23.247 (stage 2), TS 29.532 (MB-SMF services), TS 29.537 (PCF services), TS 24.575 (UE pre-configuration) and TS 32.279 (charging); MBS parts in six other 5G System specifications; MBS clauses in TS 38.300, TS 38.331, TS 38.413, TS 38.473 and TS 37.483.
+- **By release:** Release 17 creates TS 26.502, TS 26.517, TS 29.580, TS 29.581, TS 23.247, TS 29.532 and TS 29.537. Release 18 creates TS 24.575 and TS 32.279. All nine have a Release 19 version; TS 29.580, TS 29.581, TS 23.247, TS 29.532 and TS 29.537 have a Release 20 version.
 
-- **Release 17** ("5MBS"): Stage 1 (TS 22.261), Stage 2 architecture (TS 23.247, preceded by TR 23.757), user-service layer (TS 26.502, TS 26.517, preceded by TR 26.802), Stage 3 network protocols (TS 29.532, TS 29.537 for the 5G Core layer; TS 29.580, TS 29.581 for the user-service layer), NR/NG-RAN support (TS 38.300 family). Security study: TR 33.850.
-- **Release 18** ("5MBS Phase 2"): RAN extensions (`NR_MBS_enh` / `NR_MBS_enh-Core`, WI 940099/940199; see [MBS Multicast Inactive RAN procedures](/tech/5g-mbs/analysis-mbs-multicast-inactive-ran) for the technical detail); UE pre-configuration (`UEConfig5MBS`, WI 990078, TS 24.575); charging aspects for SMF/MB-SMF (WI 1000010, TS 32.279). Architecture study: TR 23.700-47. Security study: TR 33.883.
-- **Release 19**: NTN extensions to MBS broadcast (see [MBS Broadcast NTN](/tech/ntn/analysis-mbs-broadcast-over-ntn) for the technical detail).
+:::
 
-Check the version of each specification you are targeting for the exact release content. For the release-by-release work-item detail behind these updates, see [Standards Evolution](/standards/5g-mbs/evolution).
+<JumpMenu items={[["MBS User Services", "mbs-user-services"], ["MBS", "mbs"], ["Related", "related"]]} />
 
-## Specifications in scope
+## MBS User Services
 
-The specifications in scope of 5G Multicast Broadcast Services, filterable by the layer
-they define. Search matches the specification number, its title and any scope note.
+The Rel column is the release of each document's first version under change control. Titles are each document's cover title; the notes summarise its Scope clause.
 
-<SpecIndex specs={MBS_SPECS} layerOrder={MBS_LAYER_ORDER} />
+<SpecIndex specs={MBS_USER_SERVICES_SPECS} />
 
-## Related Standards Work
+### Versions by release
 
-- [Standards: 5G Media Streaming](/standards/5gms)
+The last version of each document in each release. The two documents marked "reused" are those the MBS User Services specifications build on (see below).
+
+<VersionTable rows={MBS_USER_SERVICES_SPECS} reused={MBS_USER_SERVICES_REUSED} />
+
+### Specifications they build on
+
+| Specification | Title | Used by | For |
+| --- | --- | --- | --- |
+| [TS 23.247](https://www.3gpp.org/dynareport/23247.htm) | Architectural enhancements for 5G multicast-broadcast services; Stage 2 | TS 26.502, TS 26.517 | The multicast-broadcast capabilities of the 5G System that convey the User Services (with TS 23.501 and TS 23.502). Listed under [MBS](#mbs) below |
+| [TS 26.346](https://www.3gpp.org/dynareport/26346.htm) | Multimedia Broadcast/Multicast Service (MBMS); Protocols and codecs | TS 26.517 | The MBMS Download Profile, which an Object Distribution Method session using FLUTE conforms to; three MBMS delivery methods, combined with modifications into the Packet Distribution Method; the MBMS User Service announcement, to which the MBS User Service Announcement plays an equivalent role |
+| [TS 33.246](https://www.3gpp.org/dynareport/33246.htm) | 3G Security; Security of Multimedia Broadcast/Multicast Service (MBMS) | TS 26.517 | The protocol the MBSF Client uses to retrieve an MBS Service Key from the MBSSF |
+| [TS 26.501](https://www.3gpp.org/dynareport/26501.htm) | 5G Media Streaming (5GMS); General description and architecture | TS 26.502 | The 5GMS AF and 5GMS AS, with which the MBS AF and MBS AS may be co-located. The use of MBS User Services with the 5G Media Streaming architecture is for further study |
+
+## MBS
+
+The 5G System and NG-RAN side of MBS, in four groups: specifications whose scope is MBS; 5G System specifications with an MBS part (the clause is named); NG-RAN specifications with clauses for MBS; and the studies. For a specification with an MBS part, the Rel column is the first release whose last version contains that part.
+
+<SpecIndex specs={MBS_SYSTEM_SPECS} layerOrder={MBS_SYSTEM_LAYER_ORDER} />
+
+The NG-RAN specifications listed are those with clauses titled for MBS. The work item descriptions of the NR MBS work items list further NR and NG-RAN specifications as impacted; they are named on the Evolution by release page.
+
+### Versions by release
+
+<details>
+<summary>The last version of each of the 20 documents in each release</summary>
+
+<VersionTable rows={MBS_SYSTEM_SPECS} />
+
+</details>
+
+## Related
+
+- [Standards: 5G MBS - Standards Evolution](/standards/5g-mbs/evolution)
+- [Standards: 5G Media Streaming (5GMS)](/standards/5gms)
 - [Standards: 5G Broadcast](/standards/5g-broadcast)
-- [Standards: Content Delivery Protocols](/standards/content-delivery) - the FLUTE/ROUTE transport layer used by the MBS Object distribution method
+- [Standards: Content Delivery Protocols](/standards/content-delivery)
 - [Standards: Non-Terrestrial Networks (NTN)](/standards/ntn)
-- [Meetings with 3GPP SA4](/standards/3gpp-issue-tracking): the live tracker for 3GPP feedback issues on this specification
+
+## Sources for this page
+
+<details>
+<summary>Documents, versions and clauses each section rests on</summary>
+
+**MBS User Services**
+
+- TS 26.502 V19.5.0: clause 1 (scope, TS 23.247, TR 26.802); clauses 4.3.3A and 4.3.4 (co-location with the 5GMS AF and AS); Annex A.2 (5GMS collaboration for further study); change history (V17.0.0).
+- TS 26.517 V19.2.0: clause 1 (scope); clause 5.0 (User Service Announcement and TS 26.346); clause 6.2.1 (MBMS Download Profile); clause 7.2.1 (Packet Distribution Method); clause 11.2.1 (MBS Service Key retrieval, TS 33.246); change history (V17.0.0).
+- TS 29.580 V19.6.0 and TS 29.581 V19.3.0: clause 1; change history (V17.0.0).
+- TR 26.802 V19.2.0: clause 1; change history (V17.0.0).
+- Cover titles of TS 26.346 V19.3.0 and TS 33.246 V18.0.0.
+
+**MBS**
+
+- TS 23.247 V19.3.0, TS 29.532 V19.3.0, TS 29.537 V19.3.0, TS 24.575 V19.0.0, TS 32.279 V19.0.0: clause 1; change history (first version under change control).
+- TS 29.518 V17.18.0 and V19.8.0: clauses 5.6.1 and 5.7.1. TS 29.502 V17.14.0 and V19.8.0: clauses 5.2.2.2.1 and 5.2.2.3.1. TS 29.244 V17.10.0 and V19.6.0: clause 5.34.1. TS 24.501 V17.18.1 and V19.8.0: clauses 9.11.4.30 and 9.11.4.31. TS 29.522 V17.18.0 and V19.7.0: clause 4.4.29. TS 33.501 V17.16.0 and V18.12.0: Annex W. The last Release 16 version of each, which has no MBS part.
+- TS 38.300 V17.17.0 and V19.4.0: clause 16.10. TS 38.331 V17.18.0 and V19.4.0: clauses 5.9 and 5.10. TS 38.413 V17.15.0 and V19.4.0: clauses 8.17 and 8.18. TS 38.473 V17.16.0 and V19.4.0: clause 8.14. TS 37.483 V17.11.0 and V19.4.0: clause 8.6.
+- TR 23.757 V17.0.0, TR 23.700-47 V18.0.0, TR 33.850 V17.0.0, TR 33.883 V18.0.1: clause 1.
+- RAN work item descriptions RP-220428 and RP-232993: impacted specifications.
+
+**Versions:** the 3GPP specification archive, https://www.3gpp.org/ftp/Specs/archive/, one folder per document, read on 3 October 2026.
+
+</details>
