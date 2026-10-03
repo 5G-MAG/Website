@@ -2,12 +2,25 @@
 title: Implementation Detail
 hide_title: true
 sidebar_position: 2
-description: Specifications, architecture and standards covered by the DVB-I over 5G reference tools, spanning discovery, unicast and broadcast delivery.
+description: What the DVB-I Services over 5G Systems Reference Tools implement, component by component, against ETSI TS 103 770 V1.2.1 and for DVB-I over 5G, from a code audit of the repositories.
 ---
 
-import useBaseUrl from '@docusaurus/useBaseUrl';
+import FigurePair from '@site/src/components/FigurePair';
 import ImplementationCases from '@site/src/components/ImplementationCases';
+import { RepoCards } from '@site/src/components/ProjectRepoSection';
 import AUDIT from '@site/src/data/audit-dvb-i.json';
+
+export const FIVEG = 'DVB-I over 5G';
+export const DVBI = { ...AUDIT, features: AUDIT.features.filter((f) => f.name !== FIVEG) };
+export const OVER5G = { ...AUDIT, features: AUDIT.features.filter((f) => f.name === FIVEG) };
+export const count = (data) => {
+  const reqs = data.features.flatMap((f) => f.requirements);
+  const cases = reqs.flatMap((r) => r.cases);
+  const n = (v) => cases.filter((c) => c.verdict === v).length;
+  return { reqs: reqs.length, cases: cases.length, implemented: n('implemented'), differs: n('differs'), absent: n('absent'), inconsistent: n('inconsistent') };
+};
+export const COUNT = count(DVBI);
+export const COUNT5G = count(OVER5G);
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -21,71 +34,62 @@ import AUDIT from '@site/src/data/audit-dvb-i.json';
 </div>
 </div>
 
-See also: <a href={useBaseUrl('/reference-tools/dvb-i/tutorials#developer-exchange')}>Developer Exchange</a>.
+:::tip[In short]
 
-**Category:** 3GPP Implementations
+- **Which specification the code follows:** ETSI TS 103 770 V1.2.1 (2024-09), *Service Discovery and Programme Metadata for DVB-I*, with its schemas.
+- **Status against TS 103 770:** {COUNT.reqs} requirements in {COUNT.cases} cases: {COUNT.implemented} implemented, {COUNT.differs} differ from the specification, {COUNT.absent} not implemented, and {COUNT.inconsistent} where the specification contradicts itself.
+- **DVB-I over 5G**, in [its own section](#dvb-i-over-5g-status): {COUNT5G.reqs} requirements in {COUNT5G.cases} cases, judged against TS 103 770 clause 9.3, 3GPP TS 26.347 V18.1.0 and ETSI TR 103 972 V1.1.1 (informative, so judged as guidelines): {COUNT5G.implemented} implemented, {COUNT5G.differs} differ, {COUNT5G.absent} not implemented. The client checks and shows the 5G Broadcast signalling but reaches no MBMS Client. No component carries 5GMS Service Access Information, because no DVB or 3GPP element for it exists yet.
+- **Source of this page:** a code audit of the repositories on 2026-10-02: each requirement split into the cases its clause defines, each case checked against the code, and the TS 103 770 cases of the client, provider and registry then re-checked by a second reader.
 
-## What This Project Implements
+:::
 
-This page contains information such as the specifications within the scope of the tools and high-level architectures that bring context to their applicability.
+For what the specifications define, see the [Technical Analysis](/tech/dvb-i). For how to run the tools, see the [Application Showcase](/reference-tools/dvb-i/tutorials).
 
-This project provides reference tools for delivering DVB-I (Digital Video Broadcasting - Internet) services over 5G networks. DVB-I defines a common service discovery and selection framework that lets internet-connected devices find and access sets of linear TV services, along with their programme metadata, independently of the underlying access network.
+## Architecture
 
-The work focuses on combining DVB-I with 5G delivery so that the same service can reach devices over different paths:
+The DVB-I components and interfaces of TS 103 770, with the parts the Reference Tools provide and the status of each interface. The DVB-I over 5G architecture is in [its own section](#dvb-i-over-5g-status).
 
-- Unicast delivery using 5G Media Streaming (5GMS)
-- Broadcast delivery using the LTE-based 5G Broadcast System
-- Concurrent or hybrid delivery over both paths
-
-The DVB / 5G-MAG Joint Task Force documented the reference architecture and deployment guidance for these scenarios in ETSI TR 103 972 (DVB-I service delivery over 5G Systems; Deployment Guidelines).
-
-## Deployment Configurations
-
-### DVB-I Services over 5G Systems: 5GMSd with 5G Broadcast
-
-The diagram below shows the DVB-I over 5G reference architecture combining a 5G Media Streaming downlink (5GMSd) unicast path with a 5G Broadcast path, so the same service can be delivered over either or both.
-
-<img loading="lazy" src={useBaseUrl('/assets/images/projects/dvb_diagram.png')} alt="DVB-I over 5G reference architecture showing 5GMSd unicast delivery alongside a 5G Broadcast path, with links to the contributing component repositories" style={{width: '80%'}}/>
-
-- [5G Media Streaming](../5gms/)
-- [DVB-I Services](../dvb-i/)
-- [5G Broadcast](../5g-broadcast/)
-- [Content Delivery Protocols](../content-delivery/)
-- [3GPP RAN and Core Platforms](../3gpp-platforms/)
-- [Common Tools](../common-tools/)
-
-## Reference tools
-
-The reference tools cover DVB-I service discovery and selection, bootstrap procedures, and integration with both the 5GMS unicast path and the 5G Broadcast path, so that a hybrid broadcast and broadband TV experience can be demonstrated end to end. See [Repositories & Releases](/reference-tools/dvb-i#repositories--releases) on the project index for the available repositories and [Developer Updates](/reference-tools/dvb-i#developer-updates) for planned work.
-
-### How the tools map to the standard
-
-The DVB-I over 5G tools implement the discovery and selection layer and glue it to the transport that 5G-MAG's other reference tools provide:
-
-- **Service discovery and selection** (DVB A177 / ETSI TS 103 770): fetching and parsing a service list, evaluating the service instances on each service, and choosing a delivery instance. This includes the bootstrap flow via a Service List Registry where one is used.
-- **Programme metadata**: retrieving and presenting content-guide data for the selected services.
-- **Unicast delivery**: handing a DVB-DASH service instance to the 5G Media Streaming client path. The 5GMS behaviour itself lives in the [5G Media Streaming reference tools](../5gms/).
-- **Broadcast delivery**: acquiring a broadcast service instance over the LTE-based 5G Broadcast path. The receiver/modem behaviour lives in the [5G Broadcast reference tools](../5g-broadcast/).
-- **Concurrent / hybrid operation**: presenting both instances for a service so the client can select or switch between broadcast and unicast.
-
-This mapping mirrors the DVB-I-over-5G reference architecture in ETSI TR 103 972 clause 5.1: DVB-I stays the service layer, DVB-DASH stays the media layer, and the 3GPP/ETSI systems stay the transport layer.
+<FigurePair
+  figures={[
+    {
+      label: 'DVB-I',
+      src: '/img/tech/dvb-i/generated/ts103770-fig1-status.svg',
+      width: 943, height: 1275,
+      title: 'DVB-I components and interfaces, with Reference Tools status',
+      source: 'Based on ETSI TS 103 770 V1.2.1, figure 1; status from the code audit of 2026-10-02 against TS 103 770 V1.2.1',
+      alt: 'The DVB-I components of TS 103 770 with the repository behind each one. The DVB-I client, Content Guide Servers, Service List Servers, Service List Registry, MPD Servers and Stream Servers are provided; Application Servers and Playlist Servers are not. Interfaces A, B, F and G are partial and C is implemented; D, E and the provider-side interfaces are not covered by the audit.',
+    },
+  ]}
+  note="Click a figure to enlarge it."
+/>
 
 ## Implementation status
 
-Each feature of ETSI TS 103 770 V1.2.1, split into its requirements and each requirement into the cases its clause defines: what works, what does not, and why, for the client, the provider, the registry and the Exo DVB-I Player. Filter by component; open a feature, then a requirement.
+Each feature of TS 103 770, split into its requirements and each requirement into the cases its clause defines: what works, what does not, and why. Filter by component; open a feature, then a requirement.
 
-<ImplementationCases data={AUDIT} />
+<ImplementationCases data={DVBI} />
 
-### DVB-I over 5G
+## DVB-I over 5G status
 
-ETSI TR 103 972 V1.1.1 (2023-07), *DVB-I service delivery over 5G Systems; Deployment Guidelines*, is an informative technical report: it places no requirement on a DVB-I client, service list provider or registry, so nothing in this section is scored. It describes three scenarios (5G Broadcast, 5G Media Streaming, and both at once) and records the gaps the DVB and 3GPP specifications leave. What the reference tools do towards them:
+DVB-I services delivered over 5G Broadcast, over 5G Media Streaming, and over both together, judged against TS 103 770 clause 9.3, 3GPP TS 26.347 V18.1.0 and ETSI TR 103 972 V1.1.1. TR 103 972 is informative: its cases are guidelines, marked as such, not normative requirements.
 
-- **5G Broadcast instances use an existing DVB-I element.** TS 103 770 V1.2.1 clause 9.3.3 acts on "a DVB-I service instance with an mbms:// locator" without naming the element that carries it, and TR 103 972 clause 6.2.4 asks for "an extension" for it. The provider puts the `mbms://` URL in `IdentifierBasedDeliveryParameters`, which table 16 defines as "An identifier in the form of a locator (URL) or name (URN) that contains the parameters of the relevant delivery system for this service instance." No clause names that element for MBMS, so this is a reading, and the "new set of service delivery parameters" the TR also asks for has no home. The list validates against the published schema, and the provider refuses a locator that is not an MBMS URL by ETSI TS 126 347 clause 8.2.2.
-- **The registry** says nothing about 5G: TS 103 770 gives it no element or `Delivery` value for it.
-- **The client** cannot receive over MBMS from a browser, so it checks the signalling instead: a 5G badge shows the locator, its priority and the MBMS User Service it names, or what is wrong with it. It plays the service from a DASH or HLS instance where one exists.
-- **5G Media Streaming:** no component yet carries 5GMS Service Access Information, which TR 103 972 clause 6.3.3.2 says a service list "needs to convey" and clause 6.3.4 lists as a gap. The Exo DVB-I Player hands an intercepted DASH address to ExoPlayer, without a Media Session Handler.
+<FigurePair
+  figures={[
+    {
+      label: 'DVB-I over 5G',
+      src: '/img/tech/dvb-i/generated/tr103972-fig5.1-1-status.svg',
+      width: 1200, height: 1072,
+      title: 'DVB-I services over 5G systems, with Reference Tools status',
+      source: 'Based on ETSI TR 103 972 V1.1.1, figure 5.1-1; status from the code audit of 2026-10-02 against TS 103 770 V1.2.1, TS 26.347 V18.1.0 and TR 103 972 V1.1.1',
+      alt: 'The DVB-I over 5G architecture of TR 103 972. The DVB-I and DVB-DASH clients and the Content Guide, Service List, MPD and Segment Servers are provided; the Playlist Server is not. Interfaces A and B are partial, C is implemented and the MBMS-API is not implemented. The 5G System is not covered by the audit.',
+    },
+  ]}
+  note="Click a figure to enlarge it."
+/>
 
-TS 103 770 clause 9.3 (carriage in an MBMS system) is part of the status above, under *Service instance selection and delivery*.
+Filter by component or specification; open a scenario, then a requirement.
+
+<ImplementationCases data={OVER5G} />
 
 :::info[Full audit for members]
 
@@ -95,29 +99,66 @@ This page summarises a requirement-by-requirement audit of the code. The full au
 
 :::
 
-## Getting Started
+## Components
 
-1. Read the [Standards: DVB-I Services over 5G Systems](/standards/dvb-i) page for the specification landscape, and the [Tech: DVB-I Services over 5G Systems](/tech/dvb-i) page for the architecture and procedures.
-2. Review the reference architecture diagram above to see which component repositories provide each part of the chain.
-3. Pick a scenario (unicast via 5GMS, broadcast via 5G Broadcast, or concurrent/hybrid) and clone the relevant repositories from [Repositories & Releases](/reference-tools/dvb-i#repositories--releases) on the project index.
-4. Check the [Application Showcase](./tutorials) page for demo videos and repository pointers, and [Repositories & Releases](/reference-tools/dvb-i#repositories--releases) for versioned builds.
+### DVB-I client
 
-Technical documentation providing context to this project can be found in the link below.
+<RepoCards slugs={['rt-dvb-i-application']} />
 
-[Streaming & Media Delivery](/tech/5gms)
+- **Built against:** TS 103 770 V1.2.1 (stated in the README; no build pin).
+- **Implemented:** queries to a Service List Registry, with regulator lists first and a regulator list the default whenever there is one; Delivery, Language, TargetCountry and logos acted on; ServiceListId checked. One LCN table chosen by region, @visible, @selectable and LCNRange honoured, with target regions, subscription packages, parental ratings and linked applications. Service instances selected by clause 5.2.13, with @priority and its default of 0; caching and conditional requests. Content guide sources found by clause 6.1, with aligned 12 hour, now/next and pid requests, More Episodes and Box Sets with pagination, and programme ratings enforced. DASH instances and DVB-I Playlists played with dash.js.
+- **Partial:** the XML AIT platform profile is not applied; codecs and the encryption scheme are not checked in advance; after a 401 or 403 there are no credentials to present; plain HTTP endpoints are fetched with a warning, not only on the same private subnet; a service list on a local Media Server loads only when the deployment names that server as an exception.
+- **Not implemented:** carriage in MBMS (clause 9.3) and the TS 26.347 MBMS Client APIs: for now no MBMS Client is reached from the browser. The client reads, checks and shows the 5G Broadcast signalling and plays a unicast instance of the service instead. It passes no MPD address to a 5GMSd-Aware Application.
 
-[Tech: 5G Broadcast: TV, Radio and Emergency Alerts](/tech/5g-broadcast)
+### Application Provider (service list and content guide)
 
-A list of relevant specifications can be found in the link below.
+<RepoCards slugs={['rt-dvb-i-application-provider']} />
 
-[Standards: DVB-I Services over 5G Systems](/standards/dvb-i)
+- **Built against:** TS 103 770 V1.2.1; output checked against its schemas.
+- **Implemented:** schema-valid service lists published as `application/vnd.dvb.dvbisl+xml`, with a new version on every change, JPEG or PNG logos, image variants, subscription packages, one LCN table per region and region selection by regionID. Delivery signalling, including a 5G Broadcast instance as `IdentifierBasedDeliveryParameters` holding its `mbms://` URL, and @priority where one is configured. Content guide: ContentGuideSourceRef, timestamp, now/next and programme information requests, and the metadata profile, including a deep-linked XML AIT for on-demand programmes.
+- **Partial:** served over TLS when a certificate is configured, otherwise plain HTTP with a warning. The `mbms://` locator is checked against TS 26.347 when a list is saved, but not on start-up or restore. A 5G Broadcast instance is told apart from a unicast one only by its element and URL scheme.
+- **Not implemented:** DVB-I Playlists, and 5GMS Service Access Information, which no DVB or 3GPP element yet carries in a service list.
+- **Specification inconsistent:** the empty Schedule element and the programme image HowRelated term, where TS 103 770 contradicts itself.
+
+### Service List Registry
+
+<RepoCards slugs={['rt-dvb-i-service-list-registry']} />
+
+- **Built against:** TS 103 770 V1.2.1; responses checked against `dvbi_service_list_discovery_v1.6.xsd`.
+- **Implemented:** queries answered with schema-valid Service List Entry Points for every offering type, including offerings that leave a filter unspecified; invalid TargetCountry, Language and Genre values refused; the service list media type and @regulatorListFlag written; the Delivery values kept to those TS 103 770 defines.
+- **Partial:** served over TLS when configured, otherwise plain HTTP with a warning.
+- **Specification inconsistent:** the image_variant query parameter, where TS 103 770 contradicts itself.
+
+### Exo DVB-I Player
+
+<RepoCards slugs={['rt-5gms-application']} />
+
+- **Built against:** ExoPlayer r2.18.2; no DVB-I version stated. Audited at release v1.3.0.
+- **What it is:** an Android WebView around an external DVB-I frontend, which is not 5G-MAG code, with ExoPlayer playing the DASH addresses the frontend requests.
+- **Implemented:** playback of the intercepted MPD address; no retry after a 400 or 406.
+- **Partial:** the service list is fetched from a fixed `http://` address, with no conditional request and Cache-Control not honoured.
+- **Not implemented:** registry queries, service list handling, service instance selection and the content guide, which the external frontend does; MBMS carriage, the TS 26.347 APIs and 5G Media Streaming.
+
+### Supporting repositories
+
+These support the components above; the table does not rate them.
+
+<RepoCards slugs={['rt-dvb-i-examples']} />
+
+- **Examples:** runnable examples that bring the DVB-I repositories up together on one machine, publishing and playing a service list.
+- **Media origin:** the examples use rt-media-origin, which packages each channel as live DASH and serves it. It is not yet public.
+
+## Used with other projects
+
+<ul>
+{AUDIT.dependencies.map((d) => (
+  <li key={d.what}><strong>{d.project}</strong>: {d.what}. <em>{d.status}.</em></li>
+))}
+</ul>
 
 ## Related
 
+- [Technical Analysis: DVB-I Services over 5G Systems](/tech/dvb-i) and [DVB-I over 5G: Requirements, Specifications and Gaps](/tech/dvb-i/analysis-dvb-i-over-5g-gaps)
+- [Application Showcase](/reference-tools/dvb-i/tutorials)
 - [Repositories & Releases](/reference-tools/dvb-i#repositories--releases)
 - [Slide deck: DVB-I Services over 5G Systems overview](pathname:///docs/Reference_Tools_DVB_I_over_5G.pdf)
-- Implementation Blueprint: [DVB-I service discovery bootstrap](/tech/dvb-i/analysis-dvb-i-over-5g-gaps#implementation-blueprint) — the step-by-step procedure this tool implements
-- Related project: [5G Broadcast - TV and Radio Services](../5g-broadcast) — the underlying broadcast transport
-:::note
-Refer to the [DVB-I repositories](https://github.com/5G-MAG) on GitHub to use or contribute to these Reference Tools. See [How to Contribute](/contributing) for the process.
-:::

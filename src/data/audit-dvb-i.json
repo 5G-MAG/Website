@@ -3,12 +3,20 @@
  "title": "DVB-I Services over 5G Systems",
  "audited": "2026-10-02",
  "tier": "T0",
- "method": "code read at the commits listed, nothing built or run for the verdicts (the repositories' own tests pass at these commits). Read at 7a9ae28, 003ce59 and 97721a6; moved to 32d8344, f06e618 and 8708485 (development, 2026-10-02), which replace the local 5G extension with IdentifierBasedDeliveryParameters: evidence lines remapped through the diff, and the entries on the changed code re-read. The audit was then moved to fa1a63c, bb46926 and 1f33245 (development) after the compliance work, and all cases of the provider, client and registry were re-judged by a second reader on 2026-10-02 against the code at those commits, with the repositories' test suites run and passing. The audit was then moved to 1bee9af, 1416c9d and 893d068 (development) after the owner decisions D6 to D8 (D6: plain HTTP with a warning where no certificate is configured; D7: Genre terms always checked by the registry; D8: a regulator list always the default in the client), and the affected cases re-judged on 2026-10-02. Evidence then moved to 272eb70, 733290f and c05d531, which add licence headers (code unchanged; line numbers remapped) and, in the client, show an application as unavailable when its XML AIT has none it can run (7ce6c39).",
+ "method": "code read at the commits listed, nothing built or run for the verdicts (the repositories' own tests pass at these commits). Read at 7a9ae28, 003ce59 and 97721a6; moved to 32d8344, f06e618 and 8708485 (development, 2026-10-02), which replace the local 5G extension with IdentifierBasedDeliveryParameters: evidence lines remapped through the diff, and the entries on the changed code re-read. The audit was then moved to fa1a63c, bb46926 and 1f33245 (development) after the compliance work, and all cases of the provider, client and registry were re-judged by a second reader on 2026-10-02 against the code at those commits, with the repositories' test suites run and passing. The audit was then moved to 1bee9af, 1416c9d and 893d068 (development) after the owner decisions D6 to D8 (D6: plain HTTP with a warning where no certificate is configured; D7: Genre terms always checked by the registry; D8: a regulator list always the default in the client), and the affected cases re-judged on 2026-10-02. Evidence then moved to 272eb70, 733290f and c05d531, which add licence headers (code unchanged; line numbers remapped) and, in the client, show an application as unavailable when its XML AIT has none it can run (7ce6c39). On 2026-10-02 the feature DVB-I over 5G was added at the same commits: every obligation of plans/5g-obligations.md re-judged per case against TS 103 770 V1.2.1, TS 26.347 V18.1.0 (with TS 26.346 V18.2.0) and TR 103 972 V1.1.1, the last read as informative guidelines, with TS 26.501 and TS 26.512 V17.10.0 used to check its Release 16 wording.",
  "releases": {
-  "V121": "ETSI TS 103 770 V1.2.1 (2024-09), Service Discovery and Programme Metadata for DVB-I, with its schemas (annex B)"
+  "V121": "ETSI TS 103 770 V1.2.1 (2024-09), Service Discovery and Programme Metadata for DVB-I, with its schemas (annex B)",
+  "TR972": "ETSI TR 103 972 V1.1.1 (2023-07), DVB-I service delivery over 5G Systems; Deployment Guidelines (informative: it obliges no one)",
+  "TS26347": "3GPP TS 26.347 V18.1.0 (Release 18), MBMS Application Programming Interface and URL",
+  "TS26346": "3GPP TS 26.346 V18.2.0 (Release 18), MBMS Protocols and codecs (cited inside cases: partial file responses, service announcement)",
+  "TS26512": "3GPP TS 26.512 V17.10.0 (Release 17), 5G Media Streaming Protocols (used to check the Release 16 wording of TR 103 972)"
  },
  "releaseNames": {
-  "V121": "TS 103 770 V1.2.1"
+  "V121": "TS 103 770 V1.2.1",
+  "TR972": "TR 103 972 V1.1.1 (informative)",
+  "TS26347": "TS 26.347 V18.1.0",
+  "TS26346": "TS 26.346 V18.2.0",
+  "TS26512": "TS 26.512 V17.10.0"
  },
  "dependencies": [
   {
@@ -25,7 +33,7 @@
    "repos": [
     {
      "repo": "rt-dvb-i-application",
-     "commit": "733290f",
+     "commit": "000e460",
      "version": ""
     }
    ]
@@ -37,7 +45,7 @@
    "repos": [
     {
      "repo": "rt-dvb-i-application-provider",
-     "commit": "272eb70",
+     "commit": "1f7f727",
      "version": ""
     }
    ]
@@ -1565,7 +1573,7 @@
   },
   {
    "name": "Service instance selection and delivery",
-   "summary": "The browser client selects instances by clause 5.2.13: per-instance availability, re-evaluation when hours change or an application exits, and @priority with its default of 0; it reads every DRM and CA system, shows DisplayName, caches and makes conditional requests, does not retry 400 or 406, backs off at random and fetches plain HTTP endpoints with a warning, not only on the same private subnet. It does not yet check codecs or the encryption scheme in advance, and after a 401 or 403 has no credentials to present. The provider writes schema-valid delivery signalling, including a 5G Broadcast instance as IdentifierBasedDeliveryParameters, and serves over TLS when a certificate is configured, otherwise plain HTTP with a warning. No component implements MBMS carriage (clause 9.3): the client checks and shows the 5G Broadcast signalling, but nothing calls an MBMS Client. The Exo wrapper leaves selection to an external frontend.",
+   "summary": "The browser client selects instances by clause 5.2.13: per-instance availability, re-evaluation when hours change or an application exits, and @priority with its default of 0; it reads every DRM and CA system, shows DisplayName, caches and makes conditional requests, does not retry 400 or 406, backs off at random and fetches plain HTTP endpoints with a warning, not only on the same private subnet. It does not yet check codecs or the encryption scheme in advance, and after a 401 or 403 has no credentials to present. The provider writes schema-valid delivery signalling, including a 5G Broadcast instance as IdentifierBasedDeliveryParameters, and serves over TLS when a certificate is configured, otherwise plain HTTP with a warning. Carriage over 5G Broadcast (clause 9.3) is judged under DVB-I over 5G. The Exo wrapper leaves selection to an external frontend.",
    "requirements": [
     {
      "id": "4.3-app",
@@ -1918,57 +1926,6 @@
      ]
     },
     {
-     "id": "9.3.3-app",
-     "name": "Carriage in MBMS: DVB-I client behaviour",
-     "release": "V121",
-     "component": "app",
-     "spec": {
-      "doc": "TS 103 770",
-      "version": "V1.2.1",
-      "locator": "clause 9.3.3"
-     },
-     "repos": [
-      "rt-dvb-i-application"
-     ],
-     "cases": [
-      {
-       "case": "Start reception of the MBMS Service Announcement Channel",
-       "verdict": "absent",
-       "what": "The client has no interface to an MBMS Client.",
-       "locator": "clause 9.3.3"
-      },
-      {
-       "case": "Acquire the service list from an MBMS User Service when there is no unicast connection",
-       "verdict": "absent",
-       "what": "The client loads service lists over HTTP only.",
-       "locator": "clause 9.3.3"
-      },
-      {
-       "case": "On selecting an instance with an mbms:// locator, start reception of the MBMS User Service",
-       "verdict": "absent",
-       "what": "No MBMS User Service is ever started.",
-       "locator": "clause 9.3.3"
-      },
-      {
-       "case": "Pass the entry point document from the User Service Description to the player",
-       "verdict": "absent",
-       "what": "The player is only given URLs taken from the service list.",
-       "locator": "clause 9.3.3"
-      },
-      {
-       "case": "Subscribe to MBMS Client update notifications for metadata acquired over MBMS, and re-acquire new versions",
-       "verdict": "absent",
-       "what": "No MBMS Client is used, so no update notifications are subscribed to; this applies once metadata is acquired over MBMS, which does not happen today.",
-       "locator": "clause 9.3.3"
-      }
-     ],
-     "exists": "The client reads the mbms:// locator of a 5G Broadcast instance from IdentifierBasedDeliveryParameters, checks it against TS 26.347 clause 8.2.2, and shows it with the MBMS User Service it names; it plays any other instance the service has. A browser has no MBMS Client, so no reception is started.",
-     "noted": [
-      "The repositories carry 5G broadcast (MBMS) delivery in a local extension, urn:5g-mag:metadata:dvbi-5g:2026, inside OtherDeliveryParameters. It is not part of TS 103 770 and is not judged here.",
-      "Clause 9.3.3 refers to a service instance with an mbms:// locator, but the document does not say which element carries such a locator. This does not change any case here: the client has no interface to an MBMS Client at all. The procedures of ETSI TS 126 346 and TS 126 347 that the clause cites were not obtained and no verdict depends on them."
-     ]
-    },
-    {
      "id": "4.3-provider",
      "name": "HTTP responses for service list access (server)",
      "release": "V121",
@@ -2254,10 +2211,238 @@
      "noted": [
       "Whether the playback meets the DVB-DASH profiles that clause 8.5.2 requires depends on ETSI TS 103 285, which was not obtained; it is not part of any verdict here."
      ]
+    }
+   ]
+  },
+  {
+   "name": "DVB-I over 5G",
+   "summary": "TS 103 770 clause 9.3 has the DVB-I client work through an MBMS Client, which falls on the 3GPP APIs of TS 26.347; TR 103 972 adds deployment guidelines for 5G Broadcast, 5G Media Streaming and both together, and is informative (clause 2.1: \"Normative references are not applicable in the present document.\"; the NOTE under its requirement tables: \"Modal verbs appearing in this table are non-normative in the context of the present document.\"), so its rows are judged as guidelines, not obligations. The provider publishes the service list for pull ingest with a new version on every change, a 5G Broadcast instance as an mbms:// locator it checks against TS 26.347 when saved, but not on start-up or restore, and @priority on every instance; the registry keeps the Delivery values closed, as TS 103 770 requires. The browser client reads, checks and shows the 5G Broadcast signalling and plays a unicast instance of the service, DVB-I Playlists included, but calls no MBMS Client (owner decision: none is reached from the web for now) and no 5GMSd-Aware Application; no component carries 5GMS Service Access Information, which no DVB or 3GPP element yet holds (owner decision: nothing invented). The Exo DVB-I Player leaves all of this to an external frontend.",
+   "requirements": [
+    {
+     "id": "9.3.3-app",
+     "name": "5G Broadcast: carriage in MBMS, DVB-I client behaviour",
+     "release": "V121",
+     "component": "app",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 9.3.3"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "Start reception of the MBMS Service Announcement Channel",
+       "verdict": "absent",
+       "what": "The client has no interface to an MBMS Client. By owner decision no MBMS Client is reached from the browser for now; the client checks and shows the 5G Broadcast signalling instead.",
+       "locator": "clause 9.3.3"
+      },
+      {
+       "case": "Acquire the service list from an MBMS User Service when there is no unicast connection",
+       "verdict": "absent",
+       "what": "The client loads service lists over HTTP only and does not detect a missing unicast connection.",
+       "locator": "clause 9.3.3"
+      },
+      {
+       "case": "On selecting an instance with an mbms:// locator, start reception of the MBMS User Service",
+       "verdict": "absent",
+       "what": "Selecting a service never starts an MBMS User Service; the client reads and checks the mbms:// locator and plays another instance of the service if one is listed.",
+       "locator": "clause 9.3.3"
+      },
+      {
+       "case": "Pass the entry point document from the User Service Description to the player",
+       "verdict": "absent",
+       "what": "The player is only given addresses taken from the service list or a DVB-I Playlist, never an entry point document from a User Service Description.",
+       "locator": "clause 9.3.3"
+      },
+      {
+       "case": "Subscribe to MBMS Client update notifications for metadata acquired over MBMS, and re-acquire new versions",
+       "verdict": "absent",
+       "what": "No MBMS Client is used, so no update notifications are subscribed to; this applies once metadata is acquired over MBMS, which does not happen.",
+       "locator": "clause 9.3.3"
+      }
+     ],
+     "exists": "The client reads the mbms:// locator of a 5G Broadcast instance from IdentifierBasedDeliveryParameters, checks it against TS 26.347 clause 8.2.2, and shows it on a 5G badge with its priority and the MBMS User Service it names, or says what is wrong with it; it plays any other instance the service has.",
+     "noted": [
+      "Clause 9.3.3 acts on a service instance with an mbms:// locator but names no element that carries it. The provider and client use IdentifierBasedDeliveryParameters, which table 16 defines as an identifier in the form of a locator for the relevant delivery system; no clause names it for MBMS, so this is a reading, not a verdict.",
+      "Only the first 5G Broadcast instance of a service is read and shown.",
+      "The client marks an MBMS URL with &name=value pairs outside the Receive-only Mode form as wrong. TS 26.347 clause 8.2.2 says such pairs \"shall not be present in URLs and shall be ignored if present\"; ignoring them is the MBMS URL handler's part, which this client does not have. It also reports a scheme written in capitals as wrong, although URL schemes are not case sensitive."
+     ]
+    },
+    {
+     "id": "5gb-26347-6.2.3-app",
+     "name": "5G Broadcast: File Delivery API use by the MBMS-Aware Application",
+     "release": "TS26347",
+     "component": "app",
+     "spec": {
+      "doc": "3GPP TS 26.347",
+      "version": "V18.1.0",
+      "locator": "clause 6.2.3.4.5"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "Register with the service classes of interest (descriptive)",
+       "verdict": "absent",
+       "what": "The client makes no MBMS Client API call. By owner decision no MBMS Client is reached from the browser for now; the client checks and shows the 5G Broadcast signalling instead.",
+       "locator": "clause 6.2.3.2.4"
+      },
+      {
+       "case": "Get the File Delivery service list after registration or an update notification (should)",
+       "verdict": "absent",
+       "what": "The client makes no MBMS Client API call. By owner decision no MBMS Client is reached from the browser for now; the client checks and shows the 5G Broadcast signalling instead.",
+       "locator": "clause 6.2.3.4.5"
+      },
+      {
+       "case": "Use the serviceId in later calls for that service",
+       "verdict": "absent",
+       "what": "The client makes no MBMS Client API call. By owner decision no MBMS Client is reached from the browser for now; the client checks and shows the 5G Broadcast signalling instead."
+      },
+      {
+       "case": "Read a notified file before its availabilityDeadline (should)",
+       "verdict": "absent",
+       "what": "The client makes no MBMS Client API call. By owner decision no MBMS Client is reached from the browser for now; the client checks and shows the 5G Broadcast signalling instead.",
+       "locator": "clause 6.2.3.8.5"
+      }
+     ],
+     "noted": [
+      "For DVB-I the service classes are the three identifiers of TS 103 770 table 106 (service list, content guide, service instance), which clause 9.3.1 requires on every MBMS User Service that carries DVB-I.",
+      "TS 26.347 defines these interfaces in IDL only and notes, in clause 6.1.1, \"It is understood that in some application development frameworks (e.g., HTML/Web Applications), linking a programmatic library to the MAA is not possible.\" A browser client would need a binding no 3GPP document defines.",
+      "TR 103 972 (informative) adds that the filter limiting the response to DVB-I services is passed between the MBMS-Aware Application and the DVB-I client in a way it calls not standardized (clause 6.2.3.3, NOTE 2)."
+     ]
+    },
+    {
+     "id": "5gb-26347-6.3.3-app",
+     "name": "5G Broadcast: Media Streaming API use by the MBMS-Aware Application",
+     "release": "TS26347",
+     "component": "app",
+     "spec": {
+      "doc": "3GPP TS 26.347",
+      "version": "V18.1.0",
+      "locator": "clause 6.3.3.2.4"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "Register with the service classes of interest (descriptive)",
+       "verdict": "absent",
+       "what": "The client makes no MBMS Client API call. By owner decision no MBMS Client is reached from the browser for now; the client checks and shows the 5G Broadcast signalling instead."
+      },
+      {
+       "case": "Get the streaming service list after registration or an update notification (should)",
+       "verdict": "absent",
+       "what": "The client makes no MBMS Client API call. By owner decision no MBMS Client is reached from the browser for now; the client checks and shows the 5G Broadcast signalling instead.",
+       "locator": "clause 6.3.3.4.5"
+      },
+      {
+       "case": "Use the serviceId in later calls for that service (should)",
+       "verdict": "absent",
+       "what": "The client makes no MBMS Client API call. By owner decision no MBMS Client is reached from the browser for now; the client checks and shows the 5G Broadcast signalling instead.",
+       "locator": "clause 6.3.3.4.5"
+      },
+      {
+       "case": "Start playback from the ManifestURI (should)",
+       "verdict": "absent",
+       "what": "The client makes no MBMS Client API call. By owner decision no MBMS Client is reached from the browser for now; the client checks and shows the 5G Broadcast signalling instead.",
+       "locator": "clause 6.3.3.4.5"
+      },
+      {
+       "case": "Stop the streaming service when no longer interested (should)",
+       "verdict": "absent",
+       "what": "The client makes no MBMS Client API call. By owner decision no MBMS Client is reached from the browser for now; the client checks and shows the 5G Broadcast signalling instead.",
+       "locator": "clause 6.3.3.7.4"
+      }
+     ],
+     "noted": [
+      "For DVB-I the service classes are the three identifiers of TS 103 770 table 106 (service list, content guide, service instance), which clause 9.3.1 requires on every MBMS User Service that carries DVB-I.",
+      "TS 26.347 defines these interfaces in IDL only and notes, in clause 6.1.1, \"It is understood that in some application development frameworks (e.g., HTML/Web Applications), linking a programmatic library to the MAA is not possible.\" A browser client would need a binding no 3GPP document defines."
+     ]
+    },
+    {
+     "id": "5gb-26347-7-app",
+     "name": "5G Broadcast: HTTP and DASH interfaces to the MBMS Client",
+     "release": "TS26347",
+     "component": "app",
+     "spec": {
+      "doc": "3GPP TS 26.347",
+      "version": "V18.1.0",
+      "locator": "clause 7.3"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "Partial-file-accept requests and partial file responses (should)",
+       "verdict": "absent",
+       "what": "No request signals that partial file responses are accepted, and none is handled; the client talks to no MBMS Client. By owner decision no MBMS Client is reached from the browser for now; the client checks and shows the 5G Broadcast signalling instead."
+      }
+     ],
+     "noted": [
+      "The relay that fetches service lists for the browser asks for application/xml,*/* and media is fetched by dash.js directly.",
+      "Clause 7.4.4 requires that \"The DASH client of the MBMS aware application shall support general DASH client functionalities as required in TS 26.247 [7].\" TS 26.247 at Release 18 was not obtained, so this is unverified and has no case; the DASH client here is dash.js, a library, not code in this repository."
+     ]
+    },
+    {
+     "id": "5gb-tr-6.2.3-app",
+     "name": "5G Broadcast: hand-off between the MBMS-Aware Application and the DVB-I client, guideline (informative)",
+     "release": "TR972",
+     "component": "app",
+     "spec": {
+      "doc": "ETSI TR 103 972",
+      "version": "V1.1.1",
+      "locator": "clause 6.2.3.3, step 31; clause 6.2.3.4, step 33; clause 6.2.3.5, step 49"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "Take the service list location at launch (step 31)",
+       "verdict": "implemented",
+       "what": "The client takes a service list address from its start-up address and loads that list.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 6.2.3.3, step 31"
+      },
+      {
+       "case": "Launched by an MBMS-Aware Application (step 31)",
+       "verdict": "absent",
+       "what": "Nothing launches the client from an MBMS-Aware Application; there is none. By owner decision no MBMS Client is reached from the browser for now; the client checks and shows the 5G Broadcast signalling instead.",
+       "locator": "clause 6.2.3.3, step 31"
+      },
+      {
+       "case": "Retrieve the list from the local Media Server (step 32)",
+       "verdict": "differs",
+       "what": "The client fetches a list at another address through its relay, which by default refuses loopback and private addresses, so a list on a local Media Server loads only when the deployment names that server's origin as an exception; the step has the client retrieve it from the location passed.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 6.2.3.3, step 32"
+      },
+      {
+       "case": "On selection, pass the MBMS URL to the MBMS-Aware Application (step 33)",
+       "verdict": "absent",
+       "what": "Selecting a 5G Broadcast service hands its locator to nothing; the client shows it and plays another instance if one is listed. By owner decision no MBMS Client is reached from the browser for now; the client checks and shows the 5G Broadcast signalling instead.",
+       "locator": "clause 6.2.3.4, step 33"
+      },
+      {
+       "case": "On reselection, pass the new MBMS URL and tear down the previous session (step 49)",
+       "verdict": "absent",
+       "what": "Changing service stops dash.js only; no MBMS session exists to tear down.",
+       "locator": "clause 6.2.3.5, step 49"
+      }
+     ],
+     "exists": "The client reads, checks and shows the mbms:// locator of a 5G Broadcast instance, which is what it would pass on.",
+     "noted": [
+      "TR 103 972 is informative and obliges no one: its clause 2.1 says \"Normative references are not applicable in the present document.\" This requirement is judged against the guideline text so that the reader can see how far the tools follow it; a case that is not implemented is not a failure against a normative clause."
+     ]
     },
     {
      "id": "9.3.3-exo",
-     "name": "Carriage in MBMS: DVB-I client behaviour",
+     "name": "5G Broadcast: carriage in MBMS, DVB-I client behaviour",
      "release": "V121",
      "component": "exo",
      "spec": {
@@ -2284,7 +2469,7 @@
       {
        "case": "On selecting an instance with an mbms:// locator, start reception of the MBMS User Service",
        "verdict": "absent",
-       "what": "Only WebView requests whose URL contains .mpd are intercepted; an mbms:// locator is not handled.",
+       "what": "Only WebView requests whose address contains .mpd are intercepted; an mbms:// locator is not handled.",
        "locator": "clause 9.3.3"
       },
       {
@@ -2300,7 +2485,663 @@
        "locator": "clause 9.3.3"
       }
      ],
+     "exists": "The wrapper loads an external, third-party DVB-I frontend in a WebView, which is not 5G-MAG code, downloads one fixed service list it never reads, and starts ExoPlayer with the first request whose address contains .mpd.",
      "noted": []
+    },
+    {
+     "id": "5gb-26347-6.2.3-exo",
+     "name": "5G Broadcast: File Delivery API use by the MBMS-Aware Application",
+     "release": "TS26347",
+     "component": "exo",
+     "spec": {
+      "doc": "3GPP TS 26.347",
+      "version": "V18.1.0",
+      "locator": "clause 6.2.3.4.5"
+     },
+     "repos": [
+      "rt-5gms-application"
+     ],
+     "cases": [
+      {
+       "case": "Register with the service classes of interest (descriptive)",
+       "verdict": "absent",
+       "what": "The wrapper makes no MBMS Client API call.",
+       "locator": "clause 6.2.3.2.4"
+      },
+      {
+       "case": "Get the File Delivery service list after registration or an update notification (should)",
+       "verdict": "absent",
+       "what": "The wrapper makes no MBMS Client API call.",
+       "locator": "clause 6.2.3.4.5"
+      },
+      {
+       "case": "Use the serviceId in later calls for that service",
+       "verdict": "absent",
+       "what": "The wrapper makes no MBMS Client API call."
+      },
+      {
+       "case": "Read a notified file before its availabilityDeadline (should)",
+       "verdict": "absent",
+       "what": "The wrapper makes no MBMS Client API call.",
+       "locator": "clause 6.2.3.8.5"
+      }
+     ],
+     "exists": "The wrapper loads an external, third-party DVB-I frontend in a WebView, which is not 5G-MAG code, downloads one fixed service list it never reads, and starts ExoPlayer with the first request whose address contains .mpd.",
+     "noted": [
+      "For DVB-I the service classes are the three identifiers of TS 103 770 table 106 (service list, content guide, service instance), which clause 9.3.1 requires on every MBMS User Service that carries DVB-I."
+     ]
+    },
+    {
+     "id": "5gb-26347-6.3.3-exo",
+     "name": "5G Broadcast: Media Streaming API use by the MBMS-Aware Application",
+     "release": "TS26347",
+     "component": "exo",
+     "spec": {
+      "doc": "3GPP TS 26.347",
+      "version": "V18.1.0",
+      "locator": "clause 6.3.3.2.4"
+     },
+     "repos": [
+      "rt-5gms-application"
+     ],
+     "cases": [
+      {
+       "case": "Register with the service classes of interest (descriptive)",
+       "verdict": "absent",
+       "what": "The wrapper makes no MBMS Client API call."
+      },
+      {
+       "case": "Get the streaming service list after registration or an update notification (should)",
+       "verdict": "absent",
+       "what": "The wrapper makes no MBMS Client API call.",
+       "locator": "clause 6.3.3.4.5"
+      },
+      {
+       "case": "Use the serviceId in later calls for that service (should)",
+       "verdict": "absent",
+       "what": "The wrapper makes no MBMS Client API call.",
+       "locator": "clause 6.3.3.4.5"
+      },
+      {
+       "case": "Start playback from the ManifestURI (should)",
+       "verdict": "absent",
+       "what": "The wrapper makes no MBMS Client API call.",
+       "locator": "clause 6.3.3.4.5"
+      },
+      {
+       "case": "Stop the streaming service when no longer interested (should)",
+       "verdict": "absent",
+       "what": "The wrapper makes no MBMS Client API call.",
+       "locator": "clause 6.3.3.7.4"
+      }
+     ],
+     "exists": "The wrapper loads an external, third-party DVB-I frontend in a WebView, which is not 5G-MAG code, downloads one fixed service list it never reads, and starts ExoPlayer with the first request whose address contains .mpd.",
+     "noted": [
+      "For DVB-I the service classes are the three identifiers of TS 103 770 table 106 (service list, content guide, service instance), which clause 9.3.1 requires on every MBMS User Service that carries DVB-I."
+     ]
+    },
+    {
+     "id": "5gb-26347-7-exo",
+     "name": "5G Broadcast: HTTP and DASH interfaces to the MBMS Client",
+     "release": "TS26347",
+     "component": "exo",
+     "spec": {
+      "doc": "3GPP TS 26.347",
+      "version": "V18.1.0",
+      "locator": "clause 7.3"
+     },
+     "repos": [
+      "rt-5gms-application"
+     ],
+     "cases": [
+      {
+       "case": "Partial-file-accept requests and partial file responses (should)",
+       "verdict": "absent",
+       "what": "The wrapper talks to no MBMS Client and sends no such request."
+      }
+     ],
+     "noted": [
+      "Clause 7.4.4 requires that \"The DASH client of the MBMS aware application shall support general DASH client functionalities as required in TS 26.247 [7].\" TS 26.247 at Release 18 was not obtained, so this is unverified and has no case; the DASH client here is ExoPlayer r2.18.2, a library, not code in this repository."
+     ]
+    },
+    {
+     "id": "5gb-tr-6.2.3-exo",
+     "name": "5G Broadcast: hand-off between the MBMS-Aware Application and the DVB-I client, guideline (informative)",
+     "release": "TR972",
+     "component": "exo",
+     "spec": {
+      "doc": "ETSI TR 103 972",
+      "version": "V1.1.1",
+      "locator": "clause 6.2.3.3, step 31; clause 6.2.3.4, step 33; clause 6.2.3.5, step 49"
+     },
+     "repos": [
+      "rt-5gms-application"
+     ],
+     "cases": [
+      {
+       "case": "Take the service list location at launch (step 31)",
+       "verdict": "absent",
+       "what": "The landing page and the service list address are fixed in the code.",
+       "locator": "clause 6.2.3.3, step 31"
+      },
+      {
+       "case": "Launched by an MBMS-Aware Application (step 31)",
+       "verdict": "absent",
+       "what": "Nothing launches the wrapper from an MBMS-Aware Application.",
+       "locator": "clause 6.2.3.3, step 31"
+      },
+      {
+       "case": "Retrieve the list from the local Media Server (step 32)",
+       "verdict": "absent",
+       "what": "The wrapper downloads one fixed list from a third-party host and never reads it.",
+       "locator": "clause 6.2.3.3, step 32"
+      },
+      {
+       "case": "On selection, pass the MBMS URL to the MBMS-Aware Application (step 33)",
+       "verdict": "absent",
+       "what": "Only requests whose address contains .mpd are intercepted; an mbms:// locator is not handled.",
+       "locator": "clause 6.2.3.4, step 33"
+      },
+      {
+       "case": "On reselection, pass the new MBMS URL and tear down the previous session (step 49)",
+       "verdict": "absent",
+       "what": "No MBMS session exists to tear down.",
+       "locator": "clause 6.2.3.5, step 49"
+      }
+     ],
+     "exists": "The wrapper loads an external, third-party DVB-I frontend in a WebView, which is not 5G-MAG code, downloads one fixed service list it never reads, and starts ExoPlayer with the first request whose address contains .mpd.",
+     "noted": [
+      "TR 103 972 is informative and obliges no one: its clause 2.1 says \"Normative references are not applicable in the present document.\" This requirement is judged against the guideline text so that the reader can see how far the tools follow it; a case that is not implemented is not a failure against a normative clause."
+     ]
+    },
+    {
+     "id": "5gb-tr-6.2.3.1-provider",
+     "name": "5G Broadcast: service list pull ingest by the BM-SC, guideline (informative)",
+     "release": "TR972",
+     "component": "provider",
+     "spec": {
+      "doc": "ETSI TR 103 972",
+      "version": "V1.1.1",
+      "locator": "clause 6.2.3.1, step 9"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "List available for pull at a Service List address (step 9)",
+       "verdict": "implemented",
+       "what": "Serves the current service list at one fixed address on every GET, as application/vnd.dvb.dvbisl+xml with Last-Modified and conditional GET, so a BM-SC can pull it.",
+       "repo": "rt-dvb-i-application-provider"
+      },
+      {
+       "case": "Version number signals a changed list (NOTE 6)",
+       "verdict": "implemented",
+       "what": "Every path that publishes sets @version to the last published number plus one, so a BM-SC watching the list can tell it changed.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 6.2.3.1, NOTE 6"
+      }
+     ],
+     "noted": [
+      "TR 103 972 is informative and obliges no one: its clause 2.1 says \"Normative references are not applicable in the present document.\" This requirement is judged against the guideline text so that the reader can see how far the tools follow it; a case that is not implemented is not a failure against a normative clause."
+     ]
+    },
+    {
+     "id": "5gb-26347-8.2.2-provider",
+     "name": "5G Broadcast: MBMS URL in the published locator",
+     "release": "TS26347",
+     "component": "provider",
+     "spec": {
+      "doc": "3GPP TS 26.347",
+      "version": "V18.1.0",
+      "locator": "clause 8.2.2"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "Locator has the MBMS URL form (scheme, authority, optional path, no \"&\" in the prefix)",
+       "verdict": "implemented",
+       "what": "The locator is checked against the clause 8.2.2 form, with the authority and path matched to the RFC 3986 character classes and no \"&\" in the prefix: saving from the editor or the API and restoring a saved copy refuse an invalid one, and an instance with an invalid locator is never written into the published list (a list loaded at start-up keeps running, with the instance named in the log).",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 8.2.2"
+      },
+      {
+       "case": "No mid-part pairs outside the Receive-only Mode form",
+       "verdict": "implemented",
+       "what": "&name=value pairs are refused on any authority other than the Receive-only Mode one, on save and restore, and an instance carrying them is never published.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 8.2.2"
+      }
+     ],
+     "noted": [
+      "Whether the prefix equals the serviceId of the MBMS User Service on the BM-SC cannot be checked by the provider; the editor tells the operator it must.",
+      "The URL is written in IdentifierBasedDeliveryParameters, an element TS 103 770 table 16 defines for a locator of the relevant delivery system; no clause names it for MBMS, so the choice is a reading (owner decision: nothing invented).",
+      "The prose of clause 8.2.2 reads \"mbms://\" followed by a further \"//\", while its grammar gives mbms: followed by one \"//\"; the provider follows the grammar."
+     ]
+    },
+    {
+     "id": "5gb-5.3.6.1-registry",
+     "name": "5G Broadcast: no Delivery query value for 5G",
+     "release": "V121",
+     "component": "registry",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.3.6.1, Table 12b"
+     },
+     "repos": [
+      "rt-dvb-i-service-list-registry"
+     ],
+     "cases": [
+      {
+       "case": "A Delivery value for MBMS or 5G delivery is refused",
+       "verdict": "implemented",
+       "what": "Accepts only the six values of table 12b, none of which is for MBMS or 5G, and answers any other value, such as 5g or 5g-mbms, with 400.",
+       "repo": "rt-dvb-i-service-list-registry"
+      }
+     ],
+     "noted": [
+      "Because table 12b has no value for it, a client cannot ask a registry for lists delivered over 5G; this is a gap in the specification, not in the code. Responses carry no 5G marker (owner decision: nothing invented)."
+     ]
+    },
+    {
+     "id": "5gms-tr-6.3.3.2-app",
+     "name": "5G Media Streaming: service discovery, guideline (informative)",
+     "release": "TR972",
+     "component": "app",
+     "spec": {
+      "doc": "ETSI TR 103 972",
+      "version": "V1.1.1",
+      "locator": "clause 6.3.3.2, step 8"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "Acquire the list over B1 and B2 and take the MPD address from UriBasedLocation (step 8)",
+       "verdict": "implemented",
+       "what": "Loads service lists over HTTP and takes the MPD address of each DASH instance from DASHDeliveryParameters/UriBasedLocation.",
+       "repo": "rt-dvb-i-application"
+      }
+     ],
+     "noted": [
+      "TR 103 972 is informative and obliges no one: its clause 2.1 says \"Normative references are not applicable in the present document.\" This requirement is judged against the guideline text so that the reader can see how far the tools follow it; a case that is not implemented is not a failure against a normative clause."
+     ]
+    },
+    {
+     "id": "5gms-tr-6.3.3.3-app",
+     "name": "5G Media Streaming: service selection, guideline (informative)",
+     "release": "TR972",
+     "component": "app",
+     "spec": {
+      "doc": "ETSI TR 103 972",
+      "version": "V1.1.1",
+      "locator": "clause 6.3.3.3, steps 11 and 12"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "Acquire the DVB-I Playlist when the instance references one (step 11)",
+       "verdict": "implemented",
+       "what": "When an instance's UriBasedLocation is of type application/xml, fetches the DVB-I Playlist over HTTP on selection and plays its entries in order.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 6.3.3.3, step 11"
+      },
+      {
+       "case": "Pass the MPD address to a 5GMSd-Aware Application (step 12)",
+       "verdict": "absent",
+       "what": "The client plays the MPD itself with dash.js; a browser has no 5GMSd-Aware Application or Media Session Handler to hand it to.",
+       "locator": "clause 6.3.3.3, step 12"
+      },
+      {
+       "case": "Pass the baseline Service Access Information (step 12)",
+       "verdict": "absent",
+       "what": "The client has no Service Access Information to pass: the service list carries none. By owner decision the tools follow the specifications and invent nothing, and no DVB or 3GPP element yet carries 5GMS Service Access Information in a service list.",
+       "locator": "clause 6.3.3.3, step 12"
+      }
+     ],
+     "noted": [
+      "TR 103 972 is informative and obliges no one: its clause 2.1 says \"Normative references are not applicable in the present document.\" This requirement is judged against the guideline text so that the reader can see how far the tools follow it; a case that is not implemented is not a failure against a normative clause.",
+      "The TR says this hand-over \"is internal to the Application and is not standardized\" (clause 6.3.3.3, NOTE 2), and 3GPP does not define the 5GMSd-Aware Application (TS 26.501 clause 4.2.1)."
+     ]
+    },
+    {
+     "id": "5gms-tr-6.3.3.2-exo",
+     "name": "5G Media Streaming: service discovery, guideline (informative)",
+     "release": "TR972",
+     "component": "exo",
+     "spec": {
+      "doc": "ETSI TR 103 972",
+      "version": "V1.1.1",
+      "locator": "clause 6.3.3.2, step 8"
+     },
+     "repos": [
+      "rt-5gms-application"
+     ],
+     "cases": [
+      {
+       "case": "Acquire the list over B1 and B2 and take the MPD address from UriBasedLocation (step 8)",
+       "verdict": "absent",
+       "what": "No code in this repository reads a service list; the external frontend does."
+      }
+     ],
+     "exists": "The wrapper loads an external, third-party DVB-I frontend in a WebView, which is not 5G-MAG code, downloads one fixed service list it never reads, and starts ExoPlayer with the first request whose address contains .mpd.",
+     "noted": [
+      "TR 103 972 is informative and obliges no one: its clause 2.1 says \"Normative references are not applicable in the present document.\" This requirement is judged against the guideline text so that the reader can see how far the tools follow it; a case that is not implemented is not a failure against a normative clause."
+     ]
+    },
+    {
+     "id": "5gms-tr-6.3.3.3-exo",
+     "name": "5G Media Streaming: service selection, guideline (informative)",
+     "release": "TR972",
+     "component": "exo",
+     "spec": {
+      "doc": "ETSI TR 103 972",
+      "version": "V1.1.1",
+      "locator": "clause 6.3.3.3, steps 11 and 12"
+     },
+     "repos": [
+      "rt-5gms-application"
+     ],
+     "cases": [
+      {
+       "case": "Acquire the DVB-I Playlist when the instance references one (step 11)",
+       "verdict": "absent",
+       "what": "No code in this repository reads service instances or playlists.",
+       "locator": "clause 6.3.3.3, step 11"
+      },
+      {
+       "case": "Pass the MPD address to a 5GMSd-Aware Application (step 12)",
+       "verdict": "absent",
+       "what": "The intercepted address goes to ExoPlayer's demo player, not to a 5GMSd-Aware Application or Media Session Handler.",
+       "locator": "clause 6.3.3.3, step 12"
+      },
+      {
+       "case": "Pass the baseline Service Access Information (step 12)",
+       "verdict": "absent",
+       "what": "No Service Access Information is read or passed. By owner decision the tools follow the specifications and invent nothing, and no DVB or 3GPP element yet carries 5GMS Service Access Information in a service list.",
+       "locator": "clause 6.3.3.3, step 12"
+      }
+     ],
+     "exists": "The wrapper loads an external, third-party DVB-I frontend in a WebView, which is not 5G-MAG code, downloads one fixed service list it never reads, and starts ExoPlayer with the first request whose address contains .mpd.",
+     "noted": [
+      "TR 103 972 is informative and obliges no one: its clause 2.1 says \"Normative references are not applicable in the present document.\" This requirement is judged against the guideline text so that the reader can see how far the tools follow it; a case that is not implemented is not a failure against a normative clause.",
+      "The TR says this hand-over \"is internal to the Application and is not standardized\" (clause 6.3.3.3, NOTE 2), and 3GPP does not define the 5GMSd-Aware Application (TS 26.501 clause 4.2.1)."
+     ]
+    },
+    {
+     "id": "5gms-tr-6.3.3.1-provider",
+     "name": "5G Media Streaming: service list acquired by the 5GMSd Application Provider, guideline (informative)",
+     "release": "TR972",
+     "component": "provider",
+     "spec": {
+      "doc": "ETSI TR 103 972",
+      "version": "V1.1.1",
+      "locator": "clause 6.3.3.1, step 1"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "List available for pull at a Service List address (step 1)",
+       "verdict": "implemented",
+       "what": "Serves the current service list at one fixed address on every GET, as application/vnd.dvb.dvbisl+xml, so a 5GMSd Application Provider can fetch it.",
+       "repo": "rt-dvb-i-application-provider"
+      }
+     ],
+     "noted": [
+      "TR 103 972 is informative and obliges no one: its clause 2.1 says \"Normative references are not applicable in the present document.\" This requirement is judged against the guideline text so that the reader can see how far the tools follow it; a case that is not implemented is not a failure against a normative clause.",
+      "The step cites clause 5.1.2 of ETSI TS 103 720, which was not obtained; the same fetch in clause 6.2.3.1 step 9 cites clause 5.1.2 of TS 103 770, which is what this case is judged against."
+     ]
+    },
+    {
+     "id": "5gms-tr-6.3.3.2-provider",
+     "name": "5G Media Streaming: service announcement in the service list, guideline (informative)",
+     "release": "TR972",
+     "component": "provider",
+     "spec": {
+      "doc": "ETSI TR 103 972",
+      "version": "V1.1.1",
+      "locator": "clause 6.3.3.2, step 8"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "MPD address of the 5GMS service in UriBasedLocation (step 8)",
+       "verdict": "implemented",
+       "what": "Writes the configured MPD address of each DASH instance into UriBasedLocation as given, so an operator can enter the 5GMS distribution address; nothing links it to 5GMS provisioning.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 6.3.3.2, step 8"
+      },
+      {
+       "case": "Baseline Service Access Information: AF host addresses and Provisioning Session identifier (step 8)",
+       "verdict": "absent",
+       "what": "The service list carries no Service Access Information. By owner decision the tools follow the specifications and invent nothing, and no DVB or 3GPP element yet carries 5GMS Service Access Information in a service list."
+      }
+     ],
+     "noted": [
+      "TR 103 972 is informative and obliges no one: its clause 2.1 says \"Normative references are not applicable in the present document.\" This requirement is judged against the guideline text so that the reader can see how far the tools follow it; a case that is not implemented is not a failure against a normative clause.",
+      "The TR itself records the missing element as a gap (clause 6.3.3.2, NOTE). In Release 17, TS 26.512 clause 4.7.2.1 lets the Media Session Handler obtain Service Access Information \"from either the 5GMSd-Aware Application (via M6d) or the 5GMSd AF (via M5d)\"."
+     ]
+    },
+    {
+     "id": "5gms-tr-6.3.3.3-provider",
+     "name": "5G Media Streaming: Service Access Information in Playlist entries, guideline (informative)",
+     "release": "TR972",
+     "component": "provider",
+     "spec": {
+      "doc": "ETSI TR 103 972",
+      "version": "V1.1.1",
+      "locator": "clause 6.3.3.3, step 11"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "Baseline Service Access Information in each PlaylistEntry (step 11)",
+       "verdict": "absent",
+       "what": "The provider produces no DVB-I Playlists and writes every DASH instance as an MPD, so no entry carries anything. By owner decision the tools follow the specifications and invent nothing, and no DVB or 3GPP element yet carries 5GMS Service Access Information in a service list."
+      }
+     ],
+     "noted": [
+      "TR 103 972 is informative and obliges no one: its clause 2.1 says \"Normative references are not applicable in the present document.\" This requirement is judged against the guideline text so that the reader can see how far the tools follow it; a case that is not implemented is not a failure against a normative clause.",
+      "The TR records the missing attribute as a gap (clause 6.3.3.3, NOTE 1)."
+     ]
+    },
+    {
+     "id": "hyb-tr-6.4.3.2-app",
+     "name": "5G Broadcast and unicast: discovery and selection, guideline (informative)",
+     "release": "TR972",
+     "component": "app",
+     "spec": {
+      "doc": "ETSI TR 103 972",
+      "version": "V1.1.1",
+      "locator": "clause 6.4.3.2"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "Service list over the unicast connection (steps 8 and 9)",
+       "verdict": "implemented",
+       "what": "Loads service lists, and the content guide, over HTTP on the device's ordinary connection.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 6.4.3.2"
+      },
+      {
+       "case": "DVB-I Playlist over the unicast connection (step 11)",
+       "verdict": "implemented",
+       "what": "Fetches a DVB-I Playlist over HTTP on selection when an instance references one.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 6.4.3.2"
+      },
+      {
+       "case": "5G Broadcast selection, steps 33 to 48",
+       "verdict": "absent",
+       "what": "No MBMS Client is invoked; the client shows the 5G Broadcast instance and plays a unicast instance of the same service instead. By owner decision no MBMS Client is reached from the browser for now; the client checks and shows the 5G Broadcast signalling instead."
+      }
+     ],
+     "noted": [
+      "TR 103 972 is informative and obliges no one: its clause 2.1 says \"Normative references are not applicable in the present document.\" This requirement is judged against the guideline text so that the reader can see how far the tools follow it; a case that is not implemented is not a failure against a normative clause.",
+      "The TR allows the client to choose between a 5G Broadcast and a unicast instance (clause 6.4.3.1, \"may\"). The client plays the unicast instance of a service that has both, since it cannot receive 5G Broadcast, and says so on the 5G badge."
+     ]
+    },
+    {
+     "id": "hyb-tr-6.4.4.2-app",
+     "name": "5G Broadcast and unicast: hybrid DASH reception, guideline (informative)",
+     "release": "TR972",
+     "component": "app",
+     "spec": {
+      "doc": "ETSI TR 103 972",
+      "version": "V1.1.1",
+      "locator": "clause 6.4.4.2, step 17"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "DASH client checks whether MBMS User Service data is available (step 17)",
+       "verdict": "absent",
+       "what": "Nothing in the client steers dash.js between a local Media Server and the network. By owner decision no MBMS Client is reached from the browser for now; the client checks and shows the 5G Broadcast signalling instead."
+      }
+     ],
+     "noted": [
+      "TR 103 972 is informative and obliges no one: its clause 2.1 says \"Normative references are not applicable in the present document.\" This requirement is judged against the guideline text so that the reader can see how far the tools follow it; a case that is not implemented is not a failure against a normative clause.",
+      "What dash.js itself does with several BaseURLs was not assessed; it is library behaviour."
+     ]
+    },
+    {
+     "id": "hyb-tr-6.4.3.2-exo",
+     "name": "5G Broadcast and unicast: discovery and selection, guideline (informative)",
+     "release": "TR972",
+     "component": "exo",
+     "spec": {
+      "doc": "ETSI TR 103 972",
+      "version": "V1.1.1",
+      "locator": "clause 6.4.3.2"
+     },
+     "repos": [
+      "rt-5gms-application"
+     ],
+     "cases": [
+      {
+       "case": "Service list over the unicast connection (steps 8 and 9)",
+       "verdict": "absent",
+       "what": "The wrapper downloads one fixed list over HTTP but never reads it; the external frontend loads its own.",
+       "locator": "clause 6.4.3.2"
+      },
+      {
+       "case": "DVB-I Playlist over the unicast connection (step 11)",
+       "verdict": "absent",
+       "what": "No code in this repository reads service instances or playlists.",
+       "locator": "clause 6.4.3.2"
+      },
+      {
+       "case": "5G Broadcast selection, steps 33 to 48",
+       "verdict": "absent",
+       "what": "No MBMS Client is invoked; an mbms:// locator is not handled."
+      }
+     ],
+     "exists": "The wrapper loads an external, third-party DVB-I frontend in a WebView, which is not 5G-MAG code, downloads one fixed service list it never reads, and starts ExoPlayer with the first request whose address contains .mpd.",
+     "noted": [
+      "TR 103 972 is informative and obliges no one: its clause 2.1 says \"Normative references are not applicable in the present document.\" This requirement is judged against the guideline text so that the reader can see how far the tools follow it; a case that is not implemented is not a failure against a normative clause."
+     ]
+    },
+    {
+     "id": "hyb-tr-6.4.4.2-exo",
+     "name": "5G Broadcast and unicast: hybrid DASH reception, guideline (informative)",
+     "release": "TR972",
+     "component": "exo",
+     "spec": {
+      "doc": "ETSI TR 103 972",
+      "version": "V1.1.1",
+      "locator": "clause 6.4.4.2, step 17"
+     },
+     "repos": [
+      "rt-5gms-application"
+     ],
+     "cases": [
+      {
+       "case": "DASH client checks whether MBMS User Service data is available (step 17)",
+       "verdict": "absent",
+       "what": "Nothing in the wrapper steers ExoPlayer between a local Media Server and the network."
+      }
+     ],
+     "noted": [
+      "TR 103 972 is informative and obliges no one: its clause 2.1 says \"Normative references are not applicable in the present document.\" This requirement is judged against the guideline text so that the reader can see how far the tools follow it; a case that is not implemented is not a failure against a normative clause.",
+      "What ExoPlayer r2.18.2 itself does with several BaseURLs was not assessed."
+     ]
+    },
+    {
+     "id": "hyb-tr-6.4.3.3-provider",
+     "name": "5G Broadcast and unicast: instance signalling, guideline (informative)",
+     "release": "TR972",
+     "component": "provider",
+     "spec": {
+      "doc": "ETSI TR 103 972",
+      "version": "V1.1.1",
+      "locator": "clause 6.4.3.3"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "Instances say whether they are unicast or 5G Broadcast without further parsing",
+       "verdict": "differs",
+       "what": "A 5G Broadcast instance is a separate instance holding its mbms:// URL in IdentifierBasedDeliveryParameters, while unicast instances carry DASH or HLS parameters, so a receiver tells them apart by element and URL scheme; that element is generic and the guideline asks for an indication that needs no further parsing, which no TS 103 770 V1.2.1 element gives (owner decision: nothing invented).",
+       "repo": "rt-dvb-i-application-provider"
+      },
+      {
+       "case": "Relative priority of the instances",
+       "verdict": "implemented",
+       "what": "Writes ServiceInstance@priority for every instance that has one configured and leaves it out, meaning the default 0, when not; a value that is not a non-negative integer is refused.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 6.4.3.3"
+      }
+     ],
+     "noted": [
+      "TR 103 972 is informative and obliges no one: its clause 2.1 says \"Normative references are not applicable in the present document.\" This requirement is judged against the guideline text so that the reader can see how far the tools follow it; a case that is not implemented is not a failure against a normative clause.",
+      "The TR allows the 5G Broadcast instance to be given the higher priority (clause 6.4.3.2, \"may\"); the editor lets the operator set any priority on any instance.",
+      "The TR contradicts itself on where a 5G Broadcast instance goes: clause 6.4.3.2 places its MBMS URL in DASHDeliveryParameters/UriBasedLocation, clause 6.3.3.2 step 8 says every instance with DASHDeliveryParameters is available via unicast, and clause 6.4.3.3 discourages the first option. The provider keeps the 5G Broadcast instance separate from the DASH ones."
+     ]
+    },
+    {
+     "id": "hyb-tr-6.4.4.4-provider",
+     "name": "5G Broadcast and unicast: hybrid policy in the service list, guideline (informative)",
+     "release": "TR972",
+     "component": "provider",
+     "spec": {
+      "doc": "ETSI TR 103 972",
+      "version": "V1.1.1",
+      "locator": "clause 6.4.4.4"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "Which instance has priority, with existing signalling",
+       "verdict": "implemented",
+       "what": "Writes ServiceInstance@priority, the existing TS 103 770 attribute for which instance is preferred.",
+       "repo": "rt-dvb-i-application-provider"
+      }
+     ],
+     "noted": [
+      "TR 103 972 is informative and obliges no one: its clause 2.1 says \"Normative references are not applicable in the present document.\" This requirement is judged against the guideline text so that the reader can see how far the tools follow it; a case that is not implemented is not a failure against a normative clause.",
+      "The same clause asks for new signalling that two instances are identical and time-aligned; no DVB-I element exists for it, so it is not a case here (owner decision: nothing invented)."
+     ]
     }
    ]
   },
