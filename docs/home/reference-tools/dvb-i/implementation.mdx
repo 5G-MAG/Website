@@ -110,14 +110,14 @@ This page summarises a requirement-by-requirement audit of the code. The full au
 - **Partial:** the XML AIT platform profile is not applied; codecs and the encryption scheme are not checked in advance; after a 401 or 403 there are no credentials to present; plain HTTP endpoints are fetched with a warning, not only on the same private subnet; a service list on a local Media Server loads only when the deployment names that server as an exception.
 - **Not implemented:** carriage in MBMS (clause 9.3) and the TS 26.347 MBMS Client APIs: for now no MBMS Client is reached from the browser. The client reads, checks and shows the 5G Broadcast signalling and plays a unicast instance of the service instead. It passes no MPD address to a 5GMSd-Aware Application.
 
-### DVB-I Android Application
+### 5G-MAGflix for DVB-I (Android)
 
 <RepoCards slugs={['rt-dvb-i-android-application']} />
 
-- **Built against:** TS 103 770 V1.2.1 (stated in the README); Media3 ExoPlayer 1.10.0.
-- **What it is:** a native Android DVB-I client that ports the logic of the DVB-I client above. It is not yet part of the code audit, and has not yet been run on a device; its 81 unit tests pass.
-- **Implemented:** service lists from a URL or a Service List Registry query, with a regulator list the default whenever there is one; LCN tables by region; service instances selected by clause 5.2.13; DASH and HLS played; the HTTP rules of clause 4.3; now/next, schedules and programme information; plain HTTP only to the hosts named at build time, with a warning.
-- **Not implemented:** linked applications and XML AIT, playlist servers, More Episodes, Box Sets and on-demand programmes. 5G Broadcast signalling is read, checked and shown; the app is built in three variants: plain DVB-I, DVB-I as the MBMS-Aware Application through the 5G-MAG MBMS Middleware for Android (which does not yet expose an interface to bind to), and DVB-I as a 5GMSd-Aware Application. The two 5G variants are skeletons for now.
+- **Built against:** TS 103 770 V1.2.1 (stated in the README); Media3 ExoPlayer 1.10.0. The user interface is based on the design of 5G-MAGflix, the 5GMSd Aware Application in rt-5gms-application, by Daniel Silhavy (Fraunhofer FOKUS).
+- **What it is:** a native Android DVB-I client that ports the logic of the DVB-I client above. It is not yet part of the code audit; it has been run on a phone over Wi-Fi against the DVB-I examples, and its 101 unit tests pass.
+- **Implemented:** service lists from a URL or a Service List Registry query, with a regulator list the default whenever there is one; LCN tables by region; service instances selected by clause 5.2.13; DASH and HLS played, with live and on-demand controls; access services, ratings and delivery shown as icons; the HTTP rules of clause 4.3; now/next, schedules, a programme guide grid and programme information; More Episodes, Box Sets and on-demand programmes; linked applications and DVB-I Playlists; plain HTTP only to the hosts named at build time, with a warning.
+- **Not implemented:** HbbTV applications and the TS 102 796 platform profile check, Restart links, and a PIN for restricted content. 5G Broadcast signalling is read, checked and shown; the app is built in three variants: plain DVB-I, DVB-I as the MBMS-Aware Application through the 5G-MAG MBMS Middleware for Android (which does not yet expose an interface to bind to), and DVB-I as a 5GMSd-Aware Application. The two 5G variants are placeholders for now.
 
 ### Application Provider (service list and content guide)
 

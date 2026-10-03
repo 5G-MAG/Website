@@ -1695,8 +1695,8 @@
       },
       {
         "repo_slug": "rt-dvb-i-android-application",
-        "display_name": "DVB-I Android Application",
-        "description": "A native Android DVB-I client that discovers a service list, presents its channels with their content guide, and plays them with Media3 ExoPlayer, per ETSI TS 103 770.",
+        "display_name": "5G-MAGflix for DVB-I",
+        "description": "A native Android DVB-I client in the 5G-MAGflix design: it discovers a service list, presents its channels with their content guide, and plays them with Media3 ExoPlayer, per ETSI TS 103 770.",
         "repo_url": "https://github.com/5G-MAG/rt-dvb-i-android-application",
         "branch": "main",
         "license": "5G-MAG PL v1.0",
