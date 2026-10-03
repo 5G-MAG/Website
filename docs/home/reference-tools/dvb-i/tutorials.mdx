@@ -2,7 +2,7 @@
 title: Application Showcase
 hide_title: true
 sidebar_position: 2
-description: Walkthrough for standing up the DVB-I-aware 5GMS application and verifying DVB-I service discovery, plus demo videos and repository pointers.
+description: Walkthroughs for running DVB-I on a phone over Wi-Fi with 5G-MAGflix for DVB-I, and for the DVB-I-aware 5GMS application, plus demo videos and repository pointers.
 ---
 
 import ProjectVideos from '@site/src/components/ProjectVideos';
@@ -20,7 +20,66 @@ export const projectVideos = youtubePlaylists.projects?.['dvb-i']?.videos || [];
 </div>
 </div>
 
-This tutorial stands up a DVB-I-aware 5GMS application and walks through verifying that DVB-I service discovery is working, on top of the plain 5GMS end-to-end deployment. For background on the specifications and architecture it exercises, see the [Implementation Detail](./implementation) page; for the underlying repositories, see [Repositories & Releases](/reference-tools/dvb-i#repositories--releases) on the project index.
+The first walkthrough runs the DVB-I chain on a laptop and plays it on a phone over Wi-Fi with the Android DVB-I client. The second stands up a DVB-I-aware 5GMS application and walks through verifying that DVB-I service discovery is working, on top of the plain 5GMS end-to-end deployment. For background on the specifications and architecture it exercises, see the [Implementation Detail](./implementation) page; for the underlying repositories, see [Repositories & Releases](/reference-tools/dvb-i#repositories--releases) on the project index.
+
+## DVB-I on a phone over Wi-Fi
+
+**What you will build:** the DVB-I chain of [rt-dvb-i-examples](https://github.com/5G-MAG/rt-dvb-i-examples) on a laptop (a Service List Registry, the Application Provider with its service list and content guide, and a media origin encoding your own files live as DASH), with 5G-MAGflix for DVB-I, the Android client of [rt-dvb-i-android-application](https://github.com/5G-MAG/rt-dvb-i-android-application), discovering the list and playing the channels on a phone on the same Wi-Fi network.
+
+:::note[Media origin not yet public]
+The demo serves its media from rt-media-origin, which is not yet public. Until it is, the steps below cannot be run end to end from the public repositories alone.
+:::
+
+### 1. Prerequisites
+
+- On the laptop: Node.js 18 or newer with npm, ffmpeg (with ffprobe), python3 and curl, and the repositories checked out side by side as the demo's README lists them. Your own H.264/AAC MP4 files, in the directory `CONTENT_ROOT` in `env.sh` points at.
+- The genre classification schemes the registry needs, in `GENRE_CS_DIR` (the registry's README says where each comes from).
+- To build the app: a JDK 17 or 21 and the Android SDK with platform `android-37.0` and build-tools `37.0.0`, installed as the app's README shows.
+- A phone with Android 10 or newer, on the same Wi-Fi network as the laptop.
+
+### 2. Start the DVB-I chain on the laptop's Wi-Fi address
+
+Set `DEMO_HOST` to the laptop's own address on the Wi-Fi network:
+
+```sh
+cd rt-dvb-i-examples/scripts/dvbi-live-demo
+DEMO_HOST=192.168.1.202 ./start-all.sh
+```
+
+The media origin then also listens on the network, and the service list, the logos, the content guide endpoints and the registry give out that address instead of `localhost`. `./status.sh` shows every channel as `LIVE` once its encoder is publishing.
+
+### 3. Build and install the app
+
+```sh
+cd rt-dvb-i-android-application/
+./gradlew assembleDvbiDebug    # app/build/outputs/apk/dvbi/debug/app-dvbi-debug.apk
+```
+
+```sh
+adb devices
+adb install -r app/build/outputs/apk/dvbi/debug/app-dvbi-debug.apk
+```
+
+The app reaches plain HTTP only on the hosts named at build time. The default is `192.168.1.202`; for another address, build with `-PdvbiCleartextHosts=<address>`, and set the default endpoints with `-PdvbiServiceListUrl=...` and `-PdvbiRegistryUrl=...`.
+
+### 4. Discover the list and play
+
+On the phone, the defaults point at the laptop: the service list at `http://192.168.1.202:4000/service-list.xml` and the Service List Registry at `http://192.168.1.202:7000/query`. In **Settings**, *Query the registry and pick a list* sends the query and offers the lists with the default marked; *Save* installs the chosen one.
+
+- The home screen shows the services with their channel numbers, now and next, and badges for ratings, access services and delivery.
+- Selecting a service plays it with Media3 ExoPlayer; the schedule, the programme guide and programme information come from the provider's content guide.
+- While the endpoints are reached without TLS, a notice under the top bar says so; a tap opens the warning. ETSI TS 103 770 V1.2.1 clause 7.3: "For the specific case that a DVB-I client connects to a DVB-I metadata endpoint located on the same private subnet (see clause 3 of IETF RFC 1918 [27]), HTTP may be used without TLS."
+
+When you are done, stop the chain with the same `DEMO_HOST`:
+
+```sh
+DEMO_HOST=192.168.1.202 ./stop-all.sh
+```
+
+<div class="tutorial-complete">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2l4 -4" /><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9" /></svg>
+<div><strong>You now have a phone discovering a DVB-I service list and playing its channels from your own media.</strong></div>
+</div>
 
 ## Standing up the DVB-I-aware 5GMS application
 

@@ -65,7 +65,7 @@ The DVB-I components and interfaces of TS 103 770, with the parts the Reference 
 
 ## Implementation status
 
-Each feature of TS 103 770, split into its requirements and each requirement into the cases its clause defines: what works, what does not, and why. Filter by component; open a feature, then a requirement.
+Each feature of TS 103 770, and the obligations it hands to ETSI TS 102 796 V1.8.1 (HTTP caching, the TLS profile, launch locations, the XML AIT and image formats), split into its requirements and each requirement into the cases its clause defines: what works, what does not, and why. Filter by component; open a feature, then a requirement.
 
 <ImplementationCases data={DVBI} />
 
@@ -107,7 +107,9 @@ This page summarises a requirement-by-requirement audit of the code. The full au
 
 - **Built against:** TS 103 770 V1.2.1 (stated in the README; no build pin).
 - **Implemented:** queries to a Service List Registry, with regulator lists first and a regulator list the default whenever there is one; Delivery, Language, TargetCountry and logos acted on; ServiceListId checked. One LCN table chosen by region, @visible, @selectable and LCNRange honoured, with target regions, subscription packages, parental ratings and linked applications. Service instances selected by clause 5.2.13, with @priority and its default of 0; caching and conditional requests. Content guide sources found by clause 6.1, with aligned 12 hour, now/next and pid requests, More Episodes and Box Sets with pagination, and programme ratings enforced. DASH instances and DVB-I Playlists played with dash.js.
-- **Partial:** the XML AIT platform profile is not applied; codecs and the encryption scheme are not checked in advance; after a 401 or 403 there are no credentials to present; plain HTTP endpoints are fetched with a warning, not only on the same private subnet; a service list on a local Media Server loads only when the deployment names that server as an exception.
+- **TS 102 796:** HTTP caching by RFC 7234 (no-store, freshness from Age and Date) with conditional requests; the clause 11.2 TLS profile for every metadata connection (TLS 1.3 and 1.2, the table 15a suites, no forbidden signature, root keys of at least 112 bits); the launch location of linked applications and of XML AIT requests; XML AIT applications chosen by application type and the table 5 platform profile.
+- **Specification inconsistent:** a response with both no-cache and max-age. RFC 7234 has it validated before each reuse, TS 103 770 clause 4.3.2.1 forbids a request before max-age has passed; this client follows TS 103 770.
+- **Partial:** codecs and the encryption scheme are not checked in advance; after a 401 or 403 there are no credentials to present; plain HTTP endpoints are fetched with a warning, not only on the same private subnet; a service list on a local Media Server loads only when the deployment names that server as an exception.
 - **Not implemented:** carriage in MBMS (clause 9.3) and the TS 26.347 MBMS Client APIs: for now no MBMS Client is reached from the browser. The client reads, checks and shows the 5G Broadcast signalling and plays a unicast instance of the service instead. It passes no MPD address to a 5GMSd-Aware Application.
 
 ### 5G-MAGflix for DVB-I (Android)
@@ -115,17 +117,21 @@ This page summarises a requirement-by-requirement audit of the code. The full au
 <RepoCards slugs={['rt-dvb-i-android-application']} />
 
 - **Built against:** TS 103 770 V1.2.1 (stated in the README); Media3 ExoPlayer 1.10.0. The user interface is based on the design of 5G-MAGflix, the 5GMSd Aware Application in rt-5gms-application, by Daniel Silhavy (Fraunhofer FOKUS).
-- **What it is:** a native Android DVB-I client that ports the logic of the DVB-I client above. It is not yet part of the code audit; it has been run on a phone over Wi-Fi against the DVB-I examples, and its 101 unit tests pass.
+- **What it is:** a native Android DVB-I client that ports the logic of the DVB-I client above, audited with the other components. It has been run on a phone over Wi-Fi against the DVB-I examples, and its 122 unit tests pass.
 - **Implemented:** service lists from a URL or a Service List Registry query, with a regulator list the default whenever there is one; LCN tables by region; service instances selected by clause 5.2.13; DASH and HLS played, with live and on-demand controls; access services, ratings and delivery shown as icons; the HTTP rules of clause 4.3; now/next, schedules, a programme guide grid and programme information; More Episodes, Box Sets and on-demand programmes; linked applications and DVB-I Playlists; plain HTTP only to the hosts named at build time, with a warning.
-- **Not implemented:** HbbTV applications and the TS 102 796 platform profile check, Restart links, and a PIN for restricted content. 5G Broadcast signalling is read, checked and shown; the app is built in three variants: plain DVB-I, DVB-I as the MBMS-Aware Application through the 5G-MAG MBMS Middleware for Android (which does not yet expose an interface to bind to), and DVB-I as a 5GMSd-Aware Application. The two 5G variants are placeholders for now.
+- **TS 102 796:** HTTP caching by RFC 7234 with conditional requests; the clause 11.2 TLS profile for metadata connections (TLS 1.3 and 1.2, the table 15a suites, certificates with an RSA key under 2 048 bits, a root under 112 bits or an MD5 or SHA-1 signature refused); the launch location of linked applications and of XML AIT requests; XML AIT applications chosen by application type and the table 5 platform profile; only JPEG and PNG images shown.
+- **Partial:** in TLS 1.2 the platform still offers the rsa_pkcs1_sha1 signature algorithm, which table 15b forbids.
+- **Specification inconsistent:** a response with both no-cache and max-age, as for the browser client; this client follows RFC 7234 and validates it before each reuse.
+- **Not implemented:** HbbTV applications, Restart links, and a PIN for restricted content. 5G Broadcast signalling is read, checked and shown; the app is built in three variants: plain DVB-I, DVB-I as the MBMS-Aware Application through the 5G-MAG MBMS Middleware for Android (which does not yet expose an interface to bind to), and DVB-I as a 5GMSd-Aware Application. The two 5G variants are placeholders for now.
 
 ### Application Provider (service list and content guide)
 
 <RepoCards slugs={['rt-dvb-i-application-provider']} />
 
 - **Built against:** TS 103 770 V1.2.1; output checked against its schemas.
-- **Implemented:** schema-valid service lists published as `application/vnd.dvb.dvbisl+xml`, with a new version on every change, JPEG or PNG logos, image variants, subscription packages, one LCN table per region and region selection by regionID. Delivery signalling, including a 5G Broadcast instance as `IdentifierBasedDeliveryParameters` holding its `mbms://` URL, and @priority where one is configured. Content guide: ContentGuideSourceRef, timestamp, now/next and programme information requests, and the metadata profile, including a deep-linked XML AIT for on-demand programmes.
-- **Partial:** served over TLS when a certificate is configured, otherwise plain HTTP with a warning. The `mbms://` locator is checked against TS 26.347 when a list is saved, but not on start-up or restore. A 5G Broadcast instance is told apart from a unicast one only by its element and URL scheme.
+- **Implemented:** schema-valid service lists published as `application/vnd.dvb.dvbisl+xml`, with a new version on every change, JPEG or PNG logos, image variants, subscription packages, one LCN table per region and region selection by regionID. Delivery signalling, including a 5G Broadcast instance as `IdentifierBasedDeliveryParameters` holding its `mbms://` URL, checked against the TS 26.347 URL form on save and on restore so that an invalid one is never published, and @priority where one is configured. Content guide: ContentGuideSourceRef, timestamp, now/next and programme information requests, and the metadata profile, including a deep-linked XML AIT for on-demand programmes.
+- **TS 102 796:** the clause 11.2 TLS profile when served over TLS, with ECDHE suites preferred; the content deep-linked XML AIT of clause 7.2.3.2 (application type, control code, one transport, length limits, media type); images only as JPEG or PNG, no GIF.
+- **Partial:** served over TLS when a certificate is configured, otherwise plain HTTP with a warning. An `http:` URLBase in an XML AIT is published with a warning, where clause 11.9 advises `https:`. The XML AIT version fields are written as configured, any of the eight versions a terminal launches, where table 5 sets them to 1.8.1. A 5G Broadcast instance is told apart from a unicast one only by its element and URL scheme.
 - **Not implemented:** DVB-I Playlists, and 5GMS Service Access Information, which no DVB or 3GPP element yet carries in a service list.
 - **Specification inconsistent:** the empty Schedule element and the programme image HowRelated term, where TS 103 770 contradicts itself.
 
@@ -135,6 +141,7 @@ This page summarises a requirement-by-requirement audit of the code. The full au
 
 - **Built against:** TS 103 770 V1.2.1; responses checked against `dvbi_service_list_discovery_v1.6.xsd`.
 - **Implemented:** queries answered with schema-valid Service List Entry Points for every offering type, including offerings that leave a filter unspecified; invalid TargetCountry, Language and Genre values refused; the service list media type and @regulatorListFlag written; the Delivery values kept to those TS 103 770 defines.
+- **TS 102 796:** the clause 11.2 TLS profile when served over TLS, with ECDHE suites preferred.
 - **Partial:** served over TLS when configured, otherwise plain HTTP with a warning.
 - **Specification inconsistent:** the image_variant query parameter, where TS 103 770 contradicts itself.
 

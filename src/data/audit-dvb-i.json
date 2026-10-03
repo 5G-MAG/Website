@@ -3,20 +3,22 @@
  "title": "DVB-I Services over 5G Systems",
  "audited": "2026-10-02",
  "tier": "T0",
- "method": "code read at the commits listed, nothing built or run for the verdicts (the repositories' own tests pass at these commits). Read at 7a9ae28, 003ce59 and 97721a6; moved to 32d8344, f06e618 and 8708485 (development, 2026-10-02), which replace the local 5G extension with IdentifierBasedDeliveryParameters: evidence lines remapped through the diff, and the entries on the changed code re-read. The audit was then moved to fa1a63c, bb46926 and 1f33245 (development) after the compliance work, and all cases of the provider, client and registry were re-judged by a second reader on 2026-10-02 against the code at those commits, with the repositories' test suites run and passing. The audit was then moved to 1bee9af, 1416c9d and 893d068 (development) after the owner decisions D6 to D8 (D6: plain HTTP with a warning where no certificate is configured; D7: Genre terms always checked by the registry; D8: a regulator list always the default in the client), and the affected cases re-judged on 2026-10-02. Evidence then moved to 272eb70, 733290f and c05d531, which add licence headers (code unchanged; line numbers remapped) and, in the client, show an application as unavailable when its XML AIT has none it can run (7ce6c39). On 2026-10-02 the feature DVB-I over 5G was added at the same commits: every obligation of plans/5g-obligations.md re-judged per case against TS 103 770 V1.2.1, TS 26.347 V18.1.0 (with TS 26.346 V18.2.0) and TR 103 972 V1.1.1, the last read as informative guidelines, with TS 26.501 and TS 26.512 V17.10.0 used to check its Release 16 wording.",
+ "method": "code read at the commits listed, nothing built or run for the verdicts (the repositories' own tests pass at these commits). Read at 7a9ae28, 003ce59 and 97721a6; moved to 32d8344, f06e618 and 8708485 (development, 2026-10-02), which replace the local 5G extension with IdentifierBasedDeliveryParameters: evidence lines remapped through the diff, and the entries on the changed code re-read. The audit was then moved to fa1a63c, bb46926 and 1f33245 (development) after the compliance work, and all cases of the provider, client and registry were re-judged by a second reader on 2026-10-02 against the code at those commits, with the repositories' test suites run and passing. The audit was then moved to 1bee9af, 1416c9d and 893d068 (development) after the owner decisions D6 to D8 (D6: plain HTTP with a warning where no certificate is configured; D7: Genre terms always checked by the registry; D8: a regulator list always the default in the client), and the affected cases re-judged on 2026-10-02. Evidence then moved to 272eb70, 733290f and c05d531, which add licence headers (code unchanged; line numbers remapped) and, in the client, show an application as unavailable when its XML AIT has none it can run (7ce6c39). On 2026-10-02 the feature DVB-I over 5G was added at the same commits: every obligation of plans/5g-obligations.md re-judged per case against TS 103 770 V1.2.1, TS 26.347 V18.1.0 (with TS 26.346 V18.2.0) and TR 103 972 V1.1.1, the last read as informative guidelines, with TS 26.501 and TS 26.512 V17.10.0 used to check its Release 16 wording. On 2026-10-03 the evidence moved to 88a0ed3, 01e7349 and 3851c11, which change one README line each (code unchanged), and the feature DVB-I over 5G was re-judged per case by a second reader at those commits and at 6536205 for the Exo DVB-I Player; the Android client 5G-MAGflix for DVB-I (rt-dvb-i-android-application bc680cb) was added for every client-side requirement of that feature, read in code; its library unit tests and the build of its three variants passed in the repository's own CI at that commit, and the plain variant was looked at on a phone against the demo list. 2026-10-03: TS 102 796 V1.8.1 feature added, cases re-judged at these commits (17c3dd2, 7456fd7, 40bd4aa, 156ec8c; the Exo DVB-I Player unchanged at 6536205), by the auditor in code, evidence remapped through the diffs. An independent A5 reader re-checked the TS 102 796 feature and the three requirements whose verdicts changed at these commits (sl-5.2.4-app, 5gb-26347-6.3.3-android, 5gb-26347-8.2.2-provider) on 2026-10-03; the other requirements remapped at these commits were not independently reviewed.",
  "releases": {
   "V121": "ETSI TS 103 770 V1.2.1 (2024-09), Service Discovery and Programme Metadata for DVB-I, with its schemas (annex B)",
   "TR972": "ETSI TR 103 972 V1.1.1 (2023-07), DVB-I service delivery over 5G Systems; Deployment Guidelines (informative: it obliges no one)",
   "TS26347": "3GPP TS 26.347 V18.1.0 (Release 18), MBMS Application Programming Interface and URL",
   "TS26346": "3GPP TS 26.346 V18.2.0 (Release 18), MBMS Protocols and codecs (cited inside cases: partial file responses, service announcement)",
-  "TS26512": "3GPP TS 26.512 V17.10.0 (Release 17), 5G Media Streaming Protocols (used to check the Release 16 wording of TR 103 972)"
+  "TS26512": "3GPP TS 26.512 V17.10.0 (Release 17), 5G Media Streaming Protocols (used to check the Release 16 wording of TR 103 972)",
+  "TS102796": "ETSI TS 102 796 V1.8.1 (2026-09), Hybrid Broadcast Broadband TV, reference [21] of TS 103 770 V1.2.1 (undated, so its latest issue applies), with what it refers on to: TS 102 809 V1.3.1, IETF RFC 7230 and RFC 7234, RFC 8446, NIST SP 800-57 Part 1 Rev 5 and OIPF Release 2 volume 2 V2.3"
  },
  "releaseNames": {
   "V121": "TS 103 770 V1.2.1",
   "TR972": "TR 103 972 V1.1.1 (informative)",
   "TS26347": "TS 26.347 V18.1.0",
   "TS26346": "TS 26.346 V18.2.0",
-  "TS26512": "TS 26.512 V17.10.0"
+  "TS26512": "TS 26.512 V17.10.0",
+  "TS102796": "TS 102 796 V1.8.1"
  },
  "dependencies": [
   {
@@ -33,7 +35,7 @@
    "repos": [
     {
      "repo": "rt-dvb-i-application",
-     "commit": "000e460",
+     "commit": "17c3dd2",
      "version": ""
     }
    ]
@@ -45,7 +47,7 @@
    "repos": [
     {
      "repo": "rt-dvb-i-application-provider",
-     "commit": "1f7f727",
+     "commit": "7456fd7",
      "version": ""
     }
    ]
@@ -57,7 +59,7 @@
    "repos": [
     {
      "repo": "rt-dvb-i-service-list-registry",
-     "commit": "c05d531",
+     "commit": "40bd4aa",
      "version": ""
     }
    ]
@@ -71,6 +73,18 @@
      "repo": "rt-5gms-application",
      "commit": "6536205",
      "version": "v1.3.0"
+    }
+   ]
+  },
+  "android": {
+   "short": "Android",
+   "name": "5G-MAGflix for DVB-I (Android client)",
+   "builtAgainst": "TS 103 770 V1.2.1 (stated in the README); Media3 ExoPlayer 1.10.0",
+   "repos": [
+    {
+     "repo": "rt-dvb-i-android-application",
+     "commit": "156ec8c",
+     "version": ""
     }
    ]
   }
@@ -371,13 +385,13 @@
       {
        "case": "Server supports TLS 1.2 (and should support TLS 1.3)",
        "verdict": "implemented",
-       "what": "The HTTPS server uses the runtime's default TLS range, TLS 1.2 to TLS 1.3, and refuses to start if the configured range excludes TLS 1.2, warning if it excludes TLS 1.3; handshakes with TLS 1.2 only and TLS 1.3 only both succeed in the repository test.",
+       "what": "With a key and certificate configured the registry's https server is set to TLS 1.2 through TLS 1.3 explicitly, whatever the runtime's defaults or command-line options; the repository tests make TLS 1.2 and TLS 1.3 handshakes and refuse TLS 1.0 and 1.1.",
        "repo": "rt-dvb-i-service-list-registry",
        "locator": "clause 7.3"
       }
      ],
      "noted": [
-      "The TLS profile the clause takes from ETSI TS 102 796 clause 11.2 (root certificates, cipher suites, signature algorithms, key sizes, curves) is not applied; the runtime defaults are used.",
+      "The TLS profile the clause takes from ETSI TS 102 796 clause 11.2 is now set on the server and is judged under the feature TS 102 796.",
       "The shipped registry data lists the provider's service list at an http:// URL on localhost."
      ]
     },
@@ -469,7 +483,7 @@
       {
        "case": "RelatedMaterial (Table 83)",
        "verdict": "implemented",
-       "what": "Reads the service list logo (HowRelatedCS:2021:1001.1) of each offering and shows it beside the offering name; a logo that fails to load is removed.",
+       "what": "Reads the service list logo (HowRelatedCS:2021:1001.1) of each offering, its first MediaUri signalled as image/jpeg or image/png, and shows it beside the offering name; a logo that fails to load is removed.",
        "repo": "rt-dvb-i-application",
        "locator": "clause 8.5.3.2, Table 83, row RelatedMaterial"
       },
@@ -549,7 +563,7 @@
   },
   {
    "name": "Service lists and services",
-   "summary": "The provider publishes schema-valid service lists as application/vnd.dvb.dvbisl+xml, with a new version on every change, JPEG or PNG logos, image variants, subscription packages, one LCN table per region and region selection by regionID. The client chooses one LCN table by region, honours @visible, @selectable and LCNRange, every target region, subscription packages, parental ratings and linked applications, and reads XML AITs; it does not apply the XML AIT platform profile, and shows an application as unavailable, without an error, when its XML AIT has none it can run. The Exo player leaves all of this to an external frontend.",
+   "summary": "The provider publishes schema-valid service lists as application/vnd.dvb.dvbisl+xml, with a new version on every change, JPEG or PNG logos, image variants, subscription packages, one LCN table per region and region selection by regionID. The client chooses one LCN table by region, honours @visible, @selectable and LCNRange, every target region, subscription packages, parental ratings and linked applications, and reads XML AITs, choosing an application by its type, its platform profile and its priority, and shows an application as unavailable, without an error, when its XML AIT has none it can run. The Exo player leaves all of this to an external frontend.",
    "requirements": [
     {
      "id": "sl-5.1.2-provider",
@@ -755,13 +769,13 @@
       {
        "case": "At least one logo as image/jpeg or image/png",
        "verdict": "implemented",
-       "what": "A service logo is signalled only when it is image/jpeg or image/png (from the file extension, or the media type of a data URL), uploads accept PNG and JPEG only, and the generated placeholder is not signalled, so every signalled logo is JPEG or PNG; a service without such a logo has no logo RelatedMaterial, which tables 14 and 15 allow.",
+       "what": "A service logo is signalled only when it is image/jpeg or image/png (from the file extension, or the media type of a data URL whose bytes must then be that format), uploads accept PNG and JPEG only and are kept only when their bytes are a PNG or JFIF JPEG image, and the generated placeholder is not signalled, so every signalled logo is JPEG or PNG; a service without such a logo has no logo RelatedMaterial, which tables 14 and 15 allow.",
        "repo": "rt-dvb-i-application-provider",
        "locator": "clause 5.2.6.2"
       }
      ],
      "noted": [
-      "The logo @contentType comes from the media type of a data URL or from the file extension; a logo URL without a recognised extension is not signalled. No out of service image (1000.1) or content finished image (1000.2) can be signalled.",
+      "The logo @contentType comes from the media type of a data URL, whose bytes are checked, or from the file extension; a logo URL without a recognised extension is not signalled, and a logo at another server is signalled from its extension without being fetched. No out of service image (1000.1) or content finished image (1000.2) can be signalled.",
       "No service list logo (HowRelatedCS:2021:1001.1), content guide source logo (1002.1) or service banner (1001.3) can be configured or emitted. Clauses 5.2.6.1, 5.2.6.3 and 5.2.6.4 say how each is signalled when it is provided, and RelatedMaterial is optional in tables 14 and 15, so leaving them out is not a departure."
      ]
     },
@@ -1305,7 +1319,7 @@
       }
      ],
      "noted": [
-      "The application URL is opened with an added sid parameter carrying the client's own session identifier and no launch location. Clause 5.2.3.1 says the context of invocation may be passed and, for broadcast-independent HbbTV applications, refers to ETSI TS 102 796 (not opened in this audit), so the launch location sentences are not judged here.",
+      "The application URL is opened with an added sid parameter carrying the client's own session identifier, and with the launch location clause 5.2.3.1 gives each LinkedApplicationCS term; the launch location is judged under the feature TS 102 796.",
       "The LinkedApplicationCS terms are told apart: 1.1 is offered from the toolbar, a service-level term 3 application is offered there when the instance has no 1.1, 1.2 presents the service, and 2 is started when the service is off air. A 1.1 application is only opened on request, never started automatically.",
       "Applications of a type other than an HTML page or an XML AIT are ignored, which clause 5.2.3.1 permits, except an application controlling media presentation, which is kept so that its instance is discarded."
      ]
@@ -1326,8 +1340,8 @@
      "cases": [
       {
        "case": "XML AIT (application/vnd.dvb.ait+xml) processed to choose the application",
-       "verdict": "differs",
-       "what": "Fetches the XML AIT and starts, from its URLBase and applicationLocation, the application with the highest priority whose type is text/html or application/xhtml+xml; the platform profile in mhpVersion is not checked, and HbbTV applications are never chosen as this client has no HbbTV engine, while clause 5.2.4.2 makes the type and the platform profile together decide the application.",
+       "verdict": "implemented",
+       "what": "Fetches the XML AIT and starts, from its URLBase and applicationLocation, the application with the highest mhp:priority, read as the hexadecimal value the XML AIT schema types it as, among those whose type is text/html or application/xhtml+xml and whose mhpVersion signals the basic profile and one of the eight versions table 5 of ETSI TS 102 796 V1.8.1 has a terminal launch; an application without mhpVersion, or with other values, is ignored.",
        "repo": "rt-dvb-i-application"
       },
       {
@@ -1339,7 +1353,8 @@
       }
      ],
      "noted": [
-      "Content guide deep links (ProgramURL, AuxiliaryURL, Template XML AIT) are left to the content guide feature."
+      "Content guide deep links (ProgramURL, AuxiliaryURL, Template XML AIT) are left to the content guide feature.",
+      "Applications of type application/vnd.hbbtv.xhtml+xml meet both criteria of the clause but are passed over, since this client has no HbbTV engine to execute them; the clause's next sentence speaks of the client being \"unable to determine an executable application\", which this reading follows."
      ]
     },
     {
@@ -1385,7 +1400,7 @@
       {
        "case": "Service logo taken from HowRelatedCS:2021:1001.2",
        "verdict": "implemented",
-       "what": "Shows the MediaUri of the first RelatedMaterial whose HowRelated is the service logo term.",
+       "what": "Shows the first MediaUri signalled as image/jpeg or image/png in the first RelatedMaterial whose HowRelated is the service logo term that has one.",
        "repo": "rt-dvb-i-application"
       },
       {
@@ -1396,7 +1411,7 @@
       }
      ],
      "noted": [
-      "Among several MediaLocator elements the first is used, whatever its @contentType; no image_variant or width is requested. The logo term is recognised by the text 1001.2 anywhere in HowRelated@href."
+      "Among several MediaLocator elements the first JPEG or PNG one is used, by MediaUri@contentType; one in another format, or without @contentType, is not shown. No image_variant or width is requested. The logo term is recognised by the text 1001.2 anywhere in HowRelated@href."
      ]
     },
     {
@@ -1422,7 +1437,7 @@
       {
        "case": "Content finished image at the end (should)",
        "verdict": "implemented",
-       "what": "When a VoD MPD, or the last entry of a playlist, has played out, the content finished image (HowRelatedCS:2021:1000.2) of the instance, else of the service, is shown, in the preferred language where there is one, else the first JPEG or PNG.",
+       "what": "When a VoD MPD, or the last entry of a playlist, has played out, the content finished image (HowRelatedCS:2021:1000.2) of the instance, else of the service, is shown: of its JPEG and PNG images, the one in the preferred language where there is one, else the first; an image in another format is not shown.",
        "repo": "rt-dvb-i-application",
        "locator": "clause 5.2.7.3"
       }
@@ -1605,7 +1620,7 @@
       {
        "case": "Cache-Control max-age honoured",
        "verdict": "implemented",
-       "what": "Reads Cache-Control max-age on every response, answers a repeated request from its local copy while it is fresh, and polls the current list no sooner than the later of 30 seconds and the end of max-age; the proxy passes the header on. The daily check and any reload go through the same cache.",
+       "what": "Reads Cache-Control max-age on every response, answers a repeated request from its local copy while the response is fresh, its age counted from the Age and Date headers, which the proxy now passes back, and polls the current list no sooner than the later of 30 seconds and the end of max-age; the proxy passes the header on. The daily check and any reload go through the same cache.",
        "repo": "rt-dvb-i-application",
        "locator": "clause 4.3.2.1"
       },
@@ -1685,7 +1700,7 @@
       "After every URI of a list fails on first load the client does not retry automatically; the periodic refresh starts only once a list has loaded.",
       "Besides the periodic refresh, the client checks the current list once a day at a time drawn at random, through the same HTTP client, so a list still fresh by its max-age is not requested; the daily update check of clause 5.1.7 is judged under Service lists.",
       "After a 404 or another failure that clause 4.3.3 gives no rule for, the periodic refresh applies the back-off wait as well, a client choice.",
-      "Clause 4.3.2.1 says \"The DVB-I client shall follow the cache control requirements in clause 7.3.2.6 of ETSI TS 102 796\"; reference [21] is undated and V1.8.1 is the issue held. That clause also asks for the HTTP/1.1 caching rules in general and for an HTTP cache for content accessed by the browser; only max-age and the two conditional headers are judged here."
+      "Clause 4.3.2.1 says \"The DVB-I client shall follow the cache control requirements in clause 7.3.2.6 of ETSI TS 102 796\"; reference [21] is undated and V1.8.1 is its latest issue. Only max-age and the two conditional headers are judged here; the HTTP/1.1 caching rules and the HTTP cache of that clause are judged under the feature TS 102 796."
      ]
     },
     {
@@ -1712,7 +1727,7 @@
       {
        "case": "Client supports TLS 1.3 and TLS 1.2",
        "verdict": "implemented",
-       "what": "Relies on the browser for same-origin requests and on Node.js fetch in the proxy for the rest; Node.js allows TLS 1.2 to TLS 1.3 by default (observed on Node.js 24.19.0 in the first pass; the container image uses Node.js 22, not checked).",
+       "what": "The proxy connects to https:// endpoints with the TLS versions set explicitly to TLS 1.2 through TLS 1.3, whatever the runtime's defaults; the repository test negotiates TLS 1.2 and TLS 1.3 and refuses TLS 1.1. Same-origin requests are left to the browser.",
        "repo": "rt-dvb-i-application",
        "locator": "clause 7.3"
       }
@@ -1720,7 +1735,7 @@
      "noted": [
       "The client server itself listens on plain HTTP unless a key and certificate are configured, and falls back to HTTP if they cannot be read; that hop is between the browser and the client's own server, not a DVB-I metadata endpoint.",
       "A plain-HTTP endpoint on a private address, the only case the clause allows, is still refused by the proxy's private-address guard unless its origin is named in PROXY_ALLOW_ORIGINS, while one on a public address is fetched; same-origin requests are made by the browser directly and are not logged.",
-      "Clause 7.3 takes root certificates, cipher suites, signature algorithms, key sizes and elliptic curves from clause 11.2 of ETSI TS 102 796, now held as V1.8.1; the proxy uses the Node.js defaults and that profile is not judged here."
+      "Clause 7.3 takes root certificates, cipher suites, signature algorithms, key sizes and elliptic curves from clause 11.2 of ETSI TS 102 796 V1.8.1; the proxy now sets them, and they are judged under the feature TS 102 796."
      ]
     },
     {
@@ -1989,14 +2004,14 @@
       {
        "case": "Server supports TLS 1.2 (and should support TLS 1.3)",
        "verdict": "implemented",
-       "what": "With a key and certificate configured it uses the Node.js https server with its default TLS versions; the repository test makes a TLS 1.2 and a TLS 1.3 handshake and both succeed (the container image's Node.js 22 was not checked).",
+       "what": "With a key and certificate configured the https server is set to TLS 1.2 through TLS 1.3 explicitly, whatever the runtime's defaults; the repository tests make TLS 1.2 and TLS 1.3 handshakes and refuse TLS 1.0 and 1.1.",
        "repo": "rt-dvb-i-application-provider",
        "locator": "clause 7.3"
       }
      ],
      "noted": [
       "The proxy mode, which writes https:// endpoint URLs for a TLS-terminating proxy in front, rests on the operator's declaration: the presence of a proxy is not detected.",
-      "The TLS profile that clause 7.3 takes from clause 11.2 of ETSI TS 102 796 is not judged (the server sets no cipher suites, certificates or key sizes beyond Node.js defaults).",
+      "The TLS profile that clause 7.3 takes from clause 11.2 of ETSI TS 102 796 is now set on the server and is judged under the feature TS 102 796.",
       "The container image starts the server with no TLS settings, so as built it serves plain HTTP with the warning.",
       "A per-service content guide URL entered by the operator is written as given, http:// included; it points at another Content Guide Server."
      ]
@@ -2216,7 +2231,7 @@
   },
   {
    "name": "DVB-I over 5G",
-   "summary": "TS 103 770 clause 9.3 has the DVB-I client work through an MBMS Client, which falls on the 3GPP APIs of TS 26.347; TR 103 972 adds deployment guidelines for 5G Broadcast, 5G Media Streaming and both together, and is informative (clause 2.1: \"Normative references are not applicable in the present document.\"; the NOTE under its requirement tables: \"Modal verbs appearing in this table are non-normative in the context of the present document.\"), so its rows are judged as guidelines, not obligations. The provider publishes the service list for pull ingest with a new version on every change, a 5G Broadcast instance as an mbms:// locator it checks against TS 26.347 when saved, but not on start-up or restore, and @priority on every instance; the registry keeps the Delivery values closed, as TS 103 770 requires. The browser client reads, checks and shows the 5G Broadcast signalling and plays a unicast instance of the service, DVB-I Playlists included, but calls no MBMS Client (owner decision: none is reached from the web for now) and no 5GMSd-Aware Application; no component carries 5GMS Service Access Information, which no DVB or 3GPP element yet holds (owner decision: nothing invented). The Exo DVB-I Player leaves all of this to an external frontend.",
+   "summary": "TS 103 770 clause 9.3 has the DVB-I client work through an MBMS Client, which falls on the 3GPP APIs of TS 26.347; TR 103 972 adds deployment guidelines for 5G Broadcast, 5G Media Streaming and both together, and is informative (clause 2.1: \"Normative references are not applicable in the present document.\"; the NOTE under its requirement tables: \"Modal verbs appearing in this table are non-normative in the context of the present document.\"), so its rows are judged as guidelines, not obligations. The provider publishes the service list for pull ingest with a new version on every change, a 5G Broadcast instance as an mbms:// locator it checks against TS 26.347 on save and restore and never publishes when invalid, and @priority on every instance; the registry keeps the Delivery values closed, as TS 103 770 requires. The browser client reads, checks and shows the 5G Broadcast signalling and plays a unicast instance of the service, DVB-I Playlists included, but calls no MBMS Client (owner decision: none is reached from the web for now) and no 5GMSd-Aware Application. The Android client 5G-MAGflix for DVB-I does the same and also makes the calls a DVB-I client makes on an MBMS Client, but in every build they reach a stand-in that answers that none is available, as the MBMS Middleware for Android offers no interface to bind to yet; its 5G Media Streaming variant starts no 5GMS session. No component carries 5GMS Service Access Information, which no DVB or 3GPP element yet holds (owner decision: nothing invented). The Exo DVB-I Player leaves all of this to an external frontend.",
    "requirements": [
     {
      "id": "9.3.3-app",
@@ -2267,7 +2282,7 @@
      "noted": [
       "Clause 9.3.3 acts on a service instance with an mbms:// locator but names no element that carries it. The provider and client use IdentifierBasedDeliveryParameters, which table 16 defines as an identifier in the form of a locator for the relevant delivery system; no clause names it for MBMS, so this is a reading, not a verdict.",
       "Only the first 5G Broadcast instance of a service is read and shown.",
-      "The client marks an MBMS URL with &name=value pairs outside the Receive-only Mode form as wrong. TS 26.347 clause 8.2.2 says such pairs \"shall not be present in URLs and shall be ignored if present\"; ignoring them is the MBMS URL handler's part, which this client does not have. It also reports a scheme written in capitals as wrong, although URL schemes are not case sensitive."
+      "The client marks an MBMS URL with &name=value pairs outside the Receive-only Mode form as wrong. TS 26.347 clause 8.2.2 says such pairs \"shall not be present in URLs and shall be ignored if present\"; ignoring them is the MBMS URL handler's part, which this client does not have. It also reports a scheme written in capitals as wrong, although URL schemes are not case sensitive. A bracketed host is checked against the IP-literal grammar of RFC 3986 clause 3.2.2, an IPv6 address or the IPvFuture form."
      ]
     },
     {
@@ -2489,6 +2504,62 @@
      "noted": []
     },
     {
+     "id": "9.3.3-android",
+     "name": "5G Broadcast: carriage in MBMS, DVB-I client behaviour",
+     "release": "V121",
+     "component": "android",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 9.3.3"
+     },
+     "repos": [
+      "rt-dvb-i-android-application"
+     ],
+     "cases": [
+      {
+       "case": "Start reception of the MBMS Service Announcement Channel",
+       "verdict": "differs",
+       "what": "When its first view opens the client registers once through its MBMS Client interface with the service class TS 103 770 table 106 gives DVB-I service instances, the nearest TS 26.347 call; in every build that interface reaches only a stand-in that answers that no MBMS Client is available (the 5G Broadcast variant's adapter hands every call to it), so no Service Announcement Channel is received. The clause has the client invoke an MBMS Client to start receiving it.",
+       "repo": "rt-dvb-i-android-application",
+       "locator": "clause 9.3.3"
+      },
+      {
+       "case": "Acquire the service list from an MBMS User Service when there is no unicast connection",
+       "verdict": "absent",
+       "what": "The client loads service lists over HTTP only and does not check whether it has a unicast connection; it registers for the service instance class only, not for the service list class.",
+       "locator": "clause 9.3.3"
+      },
+      {
+       "case": "On selecting an instance with an mbms:// locator, start reception of the MBMS User Service",
+       "verdict": "differs",
+       "what": "A valid mbms:// instance becomes a candidate only once an MBMS Client has accepted the registration; selecting it then asks the MBMS Client interface to start the MBMS User Service the locator names, stopping one started before. In every build that interface reaches only a stand-in that answers that no MBMS Client is available (the 5G Broadcast variant's adapter hands every call to it), so the instance is set aside with the reason shown and another instance of the service plays; no MBMS User Service is received.",
+       "repo": "rt-dvb-i-android-application",
+       "locator": "clause 9.3.3"
+      },
+      {
+       "case": "Pass the entry point document from the User Service Description to the player",
+       "verdict": "differs",
+       "what": "When the MBMS Client interface reports the service started, the client takes that User Service's entry point from the streaming service list, a DASH MPD first, and gives it to the player; no build reaches this, since registration always fails, and the app's network policy permits plain HTTP only to hosts named when it is built, so an entry point on the device's own Media Server over plain HTTP needs its host named in the build.",
+       "repo": "rt-dvb-i-android-application",
+       "locator": "clause 9.3.3"
+      },
+      {
+       "case": "Subscribe to MBMS Client update notifications for metadata acquired over MBMS, and re-acquire new versions",
+       "verdict": "absent",
+       "what": "No metadata is acquired over MBMS. The client's MBMS session reads the streaming service list again on each update notification of its MBMS Client interface, which concerns the services it can start, not DVB-I metadata documents.",
+       "locator": "clause 9.3.3"
+      }
+     ],
+     "noted": [
+      "The app is built in three variants from one DVB-I code base: the plain DVB-I client, the DVB-I client acting as MBMS-Aware Application (5G Broadcast) and the DVB-I client acting as 5GMSd-Aware Application (5G Media Streaming). Each variant supplies the MBMS Client the app uses through one interface named after the TS 26.347 Media Streaming API; the plain and 5G Media Streaming variants use a stand-in that refuses registration, and the 5G Broadcast variant links an adapter for the MBMS Middleware for Android that hands every call to the same stand-in. The 5G Media Streaming adapter holds only a status. All three variants therefore behave as the plain client.",
+      "The MBMS Middleware for Android (5G-MAG rt-mbms-mw-android) offers no interface another app can bind to: the bind method of its middleware service reads TODO(\"Not yet implemented\") on main 03a4a63 and on development cf85791 (read on GitHub, 2026-10-03). Until it does, the 5G Broadcast variant cannot reach an MBMS Client.",
+      "The client shows a 5G Broadcast badge for a service with an mbms:// instance, with its priority and the MBMS User Service it names, and marks it in red when the locator is not an MBMS URL; the player lists every 5G Broadcast instance with its check and why it is not received. Observed 2026-10-03 on an Android phone running the plain variant against the demo list, which has no 5G Broadcast instance: neither the 5G Broadcast nor the 5G Media Streaming badge appears on the home screen or in the player, and the service plays over DASH. The badges for a valid and an invalid locator were not seen on the phone, since the demo list has neither; the locator check and the instance selection on the 5G fixtures are covered by the library's unit tests, the badge code itself is not under test, and the build installed on the phone was not matched to the commit.",
+      "Clause 9.3.3 acts on a service instance with an mbms:// locator but names no element that carries it. The client reads it from IdentifierBasedDeliveryParameters, as the browser client and the provider do; this is a reading, not a verdict.",
+      "The locator check is the browser client's, ported: it marks &name=value pairs outside the Receive-only Mode form as wrong (TS 26.347 clause 8.2.2 also has a handler ignore them) and refuses a scheme in capitals; a bracketed host is checked against the IP-literal grammar of RFC 3986 clause 3.2.2, as in the browser client. Only the first 5G Broadcast instance of a service is shown on its badge."
+     ]
+    },
+    {
      "id": "5gb-26347-6.2.3-exo",
      "name": "5G Broadcast: File Delivery API use by the MBMS-Aware Application",
      "release": "TS26347",
@@ -2529,6 +2600,50 @@
      "exists": "The wrapper loads an external, third-party DVB-I frontend in a WebView, which is not 5G-MAG code, downloads one fixed service list it never reads, and starts ExoPlayer with the first request whose address contains .mpd.",
      "noted": [
       "For DVB-I the service classes are the three identifiers of TS 103 770 table 106 (service list, content guide, service instance), which clause 9.3.1 requires on every MBMS User Service that carries DVB-I."
+     ]
+    },
+    {
+     "id": "5gb-26347-6.2.3-android",
+     "name": "5G Broadcast: File Delivery API use by the MBMS-Aware Application",
+     "release": "TS26347",
+     "component": "android",
+     "spec": {
+      "doc": "3GPP TS 26.347",
+      "version": "V18.1.0",
+      "locator": "clause 6.2.3.4.5"
+     },
+     "repos": [
+      "rt-dvb-i-android-application"
+     ],
+     "cases": [
+      {
+       "case": "Register with the service classes of interest (descriptive)",
+       "verdict": "absent",
+       "what": "The client has no interface to the File Delivery API; its MBMS Client interface covers part of the Media Streaming API only.",
+       "locator": "clause 6.2.3.2.4"
+      },
+      {
+       "case": "Get the File Delivery service list after registration or an update notification (should)",
+       "verdict": "absent",
+       "what": "The client has no interface to the File Delivery API; its MBMS Client interface covers part of the Media Streaming API only.",
+       "locator": "clause 6.2.3.4.5"
+      },
+      {
+       "case": "Use the serviceId in later calls for that service",
+       "verdict": "absent",
+       "what": "The client has no interface to the File Delivery API; its MBMS Client interface covers part of the Media Streaming API only."
+      },
+      {
+       "case": "Read a notified file before its availabilityDeadline (should)",
+       "verdict": "absent",
+       "what": "The client has no interface to the File Delivery API; its MBMS Client interface covers part of the Media Streaming API only.",
+       "locator": "clause 6.2.3.8.5"
+      }
+     ],
+     "exists": "The client's MBMS Client interface covers part of the Media Streaming API (registration, the streaming service list, start and stop of a service), not the File Delivery API; in every build that interface reaches only a stand-in that answers that no MBMS Client is available (the 5G Broadcast variant's adapter hands every call to it).",
+     "noted": [
+      "For DVB-I the service classes are the three identifiers of TS 103 770 table 106 (service list, content guide, service instance), which clause 9.3.1 requires on every MBMS User Service that carries DVB-I.",
+      "TR 103 972 (informative) adds that the filter limiting the response to DVB-I services is passed between the MBMS-Aware Application and the DVB-I client in a way it calls not standardized (clause 6.2.3.3, NOTE 2)."
      ]
     },
     {
@@ -2581,6 +2696,62 @@
      ]
     },
     {
+     "id": "5gb-26347-6.3.3-android",
+     "name": "5G Broadcast: Media Streaming API use by the MBMS-Aware Application",
+     "release": "TS26347",
+     "component": "android",
+     "spec": {
+      "doc": "3GPP TS 26.347",
+      "version": "V18.1.0",
+      "locator": "clause 6.3.3.2.4"
+     },
+     "repos": [
+      "rt-dvb-i-android-application"
+     ],
+     "cases": [
+      {
+       "case": "Register with the service classes of interest (descriptive)",
+       "verdict": "differs",
+       "what": "The client registers once, when its first view opens, and again only after deregistering, with its package name and the service class TS 103 770 table 106 gives DVB-I service instances, through its MBMS Client interface; in every build that interface reaches only a stand-in that answers that no MBMS Client is available (the 5G Broadcast variant's adapter hands every call to it), so it registers with no MBMS Client.",
+       "repo": "rt-dvb-i-android-application"
+      },
+      {
+       "case": "Get the streaming service list after registration or an update notification (should)",
+       "verdict": "differs",
+       "what": "The client asks for the streaming service list right after a successful registration response and after each service list update notification, as the clause has it, and again when a service is reported started; in every build registration fails at the stand-in, so no MBMS Client ever receives the call.",
+       "repo": "rt-dvb-i-android-application",
+       "locator": "clause 6.3.3.4.5"
+      },
+      {
+       "case": "Use the serviceId in later calls for that service (should)",
+       "verdict": "differs",
+       "what": "The client starts the User Service under the serviceId it takes from the locator's prefix (TS 26.347 clause 8.2.2), and stops it and finds its entry point by that serviceId; in every build that interface reaches only a stand-in that answers that no MBMS Client is available (the 5G Broadcast variant's adapter hands every call to it), so no MBMS Client receives the calls.",
+       "repo": "rt-dvb-i-android-application",
+       "locator": "clause 6.3.3.4.5"
+      },
+      {
+       "case": "Start playback from the ManifestURI (should)",
+       "verdict": "differs",
+       "what": "Once the service is reported started, the client plays the ManifestURI of that service, a DASH MPD first, with Media3 ExoPlayer; no build reaches this, since registration always fails, and plain HTTP is permitted only to hosts named when the app is built.",
+       "repo": "rt-dvb-i-android-application",
+       "locator": "clause 6.3.3.4.5"
+      },
+      {
+       "case": "Stop the streaming service when no longer interested (should)",
+       "verdict": "differs",
+       "what": "The client asks to stop the started User Service when another instance or service is played, when an instance that is not 5G Broadcast, or none, is played, and when the player is left; in every build registration fails at the stand-in, so no service is ever started or stopped on an MBMS Client.",
+       "repo": "rt-dvb-i-android-application",
+       "locator": "clause 6.3.3.7.4"
+      }
+     ],
+     "noted": [
+      "For DVB-I the service classes are the three identifiers of TS 103 770 table 106 (service list, content guide, service instance), which clause 9.3.1 requires on every MBMS User Service that carries DVB-I.",
+      "The client deregisters when its last view is closed other than to be recreated, after stopping a started service, as TS 26.347 clause 6.3.3.10.4 says (\"MAA registered with the MBMS client via the registerStreamingApp() API should invoke the deregisterStreamingApp() before exiting.\"); Android gives an app no exit notice, so the last view closing is taken as exiting. It no longer registers a second time on selecting a 5G Broadcast instance. Neither is reached in any build.",
+      "TS 26.347 defines these interfaces in IDL only. The client's interface uses the IDL method names inside the app; how an Android MBMS Client exposes them to another app is not defined by 3GPP and not yet offered by the MBMS Middleware for Android.",
+      "The examples of TS 26.347 annex E (informative) place the entry point on the device itself: \"the MBMS client offers the MPD at a localhost URL as http://localhost/MPD2.mpd\" (clause E.2.4). The app permits plain HTTP only to the hosts named when it is built (by default the demo address)."
+     ]
+    },
+    {
      "id": "5gb-26347-7-exo",
      "name": "5G Broadcast: HTTP and DASH interfaces to the MBMS Client",
      "release": "TS26347",
@@ -2602,6 +2773,30 @@
      ],
      "noted": [
       "Clause 7.4.4 requires that \"The DASH client of the MBMS aware application shall support general DASH client functionalities as required in TS 26.247 [7].\" TS 26.247 at Release 18 was not obtained, so this is unverified and has no case; the DASH client here is ExoPlayer r2.18.2, a library, not code in this repository."
+     ]
+    },
+    {
+     "id": "5gb-26347-7-android",
+     "name": "5G Broadcast: HTTP and DASH interfaces to the MBMS Client",
+     "release": "TS26347",
+     "component": "android",
+     "spec": {
+      "doc": "3GPP TS 26.347",
+      "version": "V18.1.0",
+      "locator": "clause 7.3"
+     },
+     "repos": [
+      "rt-dvb-i-android-application"
+     ],
+     "cases": [
+      {
+       "case": "Partial-file-accept requests and partial file responses (should)",
+       "verdict": "absent",
+       "what": "No request signals that partial file responses are accepted, and none is handled; no build reaches an MBMS Client."
+      }
+     ],
+     "noted": [
+      "Clause 7.4.4 requires that \"The DASH client of the MBMS aware application shall support general DASH client functionalities as required in TS 26.247 [7].\" TS 26.247 at Release 18 was not obtained, so this is unverified and has no case; the DASH client here is Media3 ExoPlayer, a library, not code in this repository."
      ]
     },
     {
@@ -2655,6 +2850,59 @@
      ]
     },
     {
+     "id": "5gb-tr-6.2.3-android",
+     "name": "5G Broadcast: hand-off between the MBMS-Aware Application and the DVB-I client, guideline (informative)",
+     "release": "TR972",
+     "component": "android",
+     "spec": {
+      "doc": "ETSI TR 103 972",
+      "version": "V1.1.1",
+      "locator": "clause 6.2.3.3, step 31; clause 6.2.3.4, step 33; clause 6.2.3.5, step 49"
+     },
+     "repos": [
+      "rt-dvb-i-android-application"
+     ],
+     "cases": [
+      {
+       "case": "Take the service list location at launch (step 31)",
+       "verdict": "absent",
+       "what": "The client takes the service list address from its settings or from a registry query, not from whoever launches it; it is started from the launcher only.",
+       "locator": "clause 6.2.3.3, step 31"
+      },
+      {
+       "case": "Launched by an MBMS-Aware Application (step 31)",
+       "verdict": "absent",
+       "what": "Nothing launches the client from an MBMS-Aware Application; in its 5G Broadcast variant the client takes that role itself, as TS 103 770 clause 9.3.3 has it.",
+       "locator": "clause 6.2.3.3, step 31"
+      },
+      {
+       "case": "Retrieve the list from the local Media Server (step 32)",
+       "verdict": "differs",
+       "what": "The client fetches the list at the address in its settings directly, over HTTPS to any host and over plain HTTP only to hosts named when the app is built (by default the demo address), so a list on the device's own Media Server over plain HTTP loads only when the build names it; no location is passed to the client, and the step has it retrieve the list from the local Media Server at the location passed.",
+       "repo": "rt-dvb-i-android-application",
+       "locator": "clause 6.2.3.3, step 32"
+      },
+      {
+       "case": "On selection, pass the MBMS URL to the MBMS-Aware Application (step 33)",
+       "verdict": "differs",
+       "what": "The client has no separate MBMS-Aware Application: in its 5G Broadcast variant it takes that role and, on selection, turns the MBMS URL into the serviceId it asks its MBMS Client interface to start; in every build that interface reaches only a stand-in that answers that no MBMS Client is available (the 5G Broadcast variant's adapter hands every call to it), so the instance is set aside and another instance of the service plays.",
+       "repo": "rt-dvb-i-android-application",
+       "locator": "clause 6.2.3.4, step 33"
+      },
+      {
+       "case": "On reselection, pass the new MBMS URL and tear down the previous session (step 49)",
+       "verdict": "differs",
+       "what": "Selecting another service starts it in the same way, and the User Service started before is asked to stop first, as the step has the previous streaming session torn down; no build reaches an MBMS Client.",
+       "repo": "rt-dvb-i-android-application",
+       "locator": "clause 6.2.3.5, step 49"
+      }
+     ],
+     "noted": [
+      "TR 103 972 is informative and obliges no one: its clause 2.1 says \"Normative references are not applicable in the present document.\" This requirement is judged against the guideline text so that the reader can see how far the tools follow it; a case that is not implemented is not a failure against a normative clause.",
+      "The TR draws the MBMS-Aware Application and the DVB-I Client as two applications that hand over to each other (steps 31 and 33); TS 103 770 clause 9.3.3 has \"the DVB-I client (acting as an MBMS-Aware Application)\". The Android client follows TS 103 770 and takes both roles, so the hand-over is inside the app."
+     ]
+    },
+    {
      "id": "5gb-tr-6.2.3.1-provider",
      "name": "5G Broadcast: service list pull ingest by the BM-SC, guideline (informative)",
      "release": "TR972",
@@ -2703,7 +2951,7 @@
       {
        "case": "Locator has the MBMS URL form (scheme, authority, optional path, no \"&\" in the prefix)",
        "verdict": "implemented",
-       "what": "The locator is checked against the clause 8.2.2 form, with the authority and path matched to the RFC 3986 character classes and no \"&\" in the prefix: saving from the editor or the API and restoring a saved copy refuse an invalid one, and an instance with an invalid locator is never written into the published list (a list loaded at start-up keeps running, with the instance named in the log).",
+       "what": "The locator is checked against the clause 8.2.2 form on saving from the editor or the API and on restoring a saved copy, and an instance with an invalid locator is never published; host names, paths and \"&\" are matched to the RFC 3986 character classes, and a bracketed host must be an IPv6 address or the IPvFuture form, as RFC 3986 clause 3.2.2 has it.",
        "repo": "rt-dvb-i-application-provider",
        "locator": "clause 8.2.2"
       },
@@ -2836,6 +3084,31 @@
      ]
     },
     {
+     "id": "5gms-tr-6.3.3.2-android",
+     "name": "5G Media Streaming: service discovery, guideline (informative)",
+     "release": "TR972",
+     "component": "android",
+     "spec": {
+      "doc": "ETSI TR 103 972",
+      "version": "V1.1.1",
+      "locator": "clause 6.3.3.2, step 8"
+     },
+     "repos": [
+      "rt-dvb-i-android-application"
+     ],
+     "cases": [
+      {
+       "case": "Acquire the list over B1 and B2 and take the MPD address from UriBasedLocation (step 8)",
+       "verdict": "implemented",
+       "what": "Loads service lists over HTTP and takes the MPD address of each DASH instance from DASHDeliveryParameters/UriBasedLocation.",
+       "repo": "rt-dvb-i-android-application"
+      }
+     ],
+     "noted": [
+      "TR 103 972 is informative and obliges no one: its clause 2.1 says \"Normative references are not applicable in the present document.\" This requirement is judged against the guideline text so that the reader can see how far the tools follow it; a case that is not implemented is not a failure against a normative clause."
+     ]
+    },
+    {
      "id": "5gms-tr-6.3.3.3-exo",
      "name": "5G Media Streaming: service selection, guideline (informative)",
      "release": "TR972",
@@ -2872,6 +3145,46 @@
      "noted": [
       "TR 103 972 is informative and obliges no one: its clause 2.1 says \"Normative references are not applicable in the present document.\" This requirement is judged against the guideline text so that the reader can see how far the tools follow it; a case that is not implemented is not a failure against a normative clause.",
       "The TR says this hand-over \"is internal to the Application and is not standardized\" (clause 6.3.3.3, NOTE 2), and 3GPP does not define the 5GMSd-Aware Application (TS 26.501 clause 4.2.1)."
+     ]
+    },
+    {
+     "id": "5gms-tr-6.3.3.3-android",
+     "name": "5G Media Streaming: service selection, guideline (informative)",
+     "release": "TR972",
+     "component": "android",
+     "spec": {
+      "doc": "ETSI TR 103 972",
+      "version": "V1.1.1",
+      "locator": "clause 6.3.3.3, steps 11 and 12"
+     },
+     "repos": [
+      "rt-dvb-i-android-application"
+     ],
+     "cases": [
+      {
+       "case": "Acquire the DVB-I Playlist when the instance references one (step 11)",
+       "verdict": "implemented",
+       "what": "When an instance's UriBasedLocation is of type application/xml, fetches the DVB-I Playlist over HTTP on selection and plays its entries in order.",
+       "repo": "rt-dvb-i-android-application",
+       "locator": "clause 6.3.3.3, step 11"
+      },
+      {
+       "case": "Pass the MPD address to a 5GMSd-Aware Application (step 12)",
+       "verdict": "absent",
+       "what": "The client plays the MPD itself with Media3 ExoPlayer; its 5G Media Streaming variant builds, but the adapter for the 5G-MAG 5GMS client libraries holds only a status and links no library, so nothing reaches a 5GMSd Client or Media Session Handler.",
+       "locator": "clause 6.3.3.3, step 12"
+      },
+      {
+       "case": "Pass the baseline Service Access Information (step 12)",
+       "verdict": "absent",
+       "what": "The client has no Service Access Information to pass: the service list carries none. By owner decision the tools follow the specifications and invent nothing, and no DVB or 3GPP element yet carries 5GMS Service Access Information in a service list.",
+       "locator": "clause 6.3.3.3, step 12"
+      }
+     ],
+     "noted": [
+      "TR 103 972 is informative and obliges no one: its clause 2.1 says \"Normative references are not applicable in the present document.\" This requirement is judged against the guideline text so that the reader can see how far the tools follow it; a case that is not implemented is not a failure against a normative clause.",
+      "The TR says this hand-over \"is internal to the Application and is not standardized\" (clause 6.3.3.3, NOTE 2), and 3GPP does not define the 5GMSd-Aware Application (TS 26.501 clause 4.2.1).",
+      "The 5G Media Streaming badge is shown in the player only while the variant reports a 5GMS session, which no build does: the plain and 5G Broadcast variants report none, and the 5G Media Streaming variant's adapter always reports none. The About screen lists the badge in its legend, as not available yet. Observed 2026-10-03 on an Android phone running the plain variant: no 5G Media Streaming badge on the home screen or in the player."
      ]
     },
     {
@@ -3059,6 +3372,46 @@
      ]
     },
     {
+     "id": "hyb-tr-6.4.3.2-android",
+     "name": "5G Broadcast and unicast: discovery and selection, guideline (informative)",
+     "release": "TR972",
+     "component": "android",
+     "spec": {
+      "doc": "ETSI TR 103 972",
+      "version": "V1.1.1",
+      "locator": "clause 6.4.3.2"
+     },
+     "repos": [
+      "rt-dvb-i-android-application"
+     ],
+     "cases": [
+      {
+       "case": "Service list over the unicast connection (steps 8 and 9)",
+       "verdict": "implemented",
+       "what": "Loads service lists over HTTP on the device's ordinary connection.",
+       "repo": "rt-dvb-i-android-application",
+       "locator": "clause 6.4.3.2"
+      },
+      {
+       "case": "DVB-I Playlist over the unicast connection (step 11)",
+       "verdict": "implemented",
+       "what": "Fetches a DVB-I Playlist over HTTP on selection when an instance references one.",
+       "repo": "rt-dvb-i-android-application",
+       "locator": "clause 6.4.3.2"
+      },
+      {
+       "case": "5G Broadcast selection, steps 33 to 48",
+       "verdict": "differs",
+       "what": "With an MBMS Client registered, a valid 5G Broadcast instance would be taken in priority order, started through the MBMS Client interface and its entry point played; in every build that interface reaches only a stand-in that answers that no MBMS Client is available (the 5G Broadcast variant's adapter hands every call to it), so the client plays a unicast instance of the same service instead.",
+       "repo": "rt-dvb-i-android-application"
+      }
+     ],
+     "noted": [
+      "TR 103 972 is informative and obliges no one: its clause 2.1 says \"Normative references are not applicable in the present document.\" This requirement is judged against the guideline text so that the reader can see how far the tools follow it; a case that is not implemented is not a failure against a normative clause.",
+      "The TR allows the client to choose between a 5G Broadcast and a unicast instance (clause 6.4.3.1, \"may\"). The client plays the unicast instance of a service that has both, since it reaches no MBMS Client, and says so on the 5G Broadcast badge."
+     ]
+    },
+    {
      "id": "hyb-tr-6.4.4.2-exo",
      "name": "5G Broadcast and unicast: hybrid DASH reception, guideline (informative)",
      "release": "TR972",
@@ -3081,6 +3434,31 @@
      "noted": [
       "TR 103 972 is informative and obliges no one: its clause 2.1 says \"Normative references are not applicable in the present document.\" This requirement is judged against the guideline text so that the reader can see how far the tools follow it; a case that is not implemented is not a failure against a normative clause.",
       "What ExoPlayer r2.18.2 itself does with several BaseURLs was not assessed."
+     ]
+    },
+    {
+     "id": "hyb-tr-6.4.4.2-android",
+     "name": "5G Broadcast and unicast: hybrid DASH reception, guideline (informative)",
+     "release": "TR972",
+     "component": "android",
+     "spec": {
+      "doc": "ETSI TR 103 972",
+      "version": "V1.1.1",
+      "locator": "clause 6.4.4.2, step 17"
+     },
+     "repos": [
+      "rt-dvb-i-android-application"
+     ],
+     "cases": [
+      {
+       "case": "DASH client checks whether MBMS User Service data is available (step 17)",
+       "verdict": "absent",
+       "what": "Nothing in the client steers Media3 ExoPlayer between a local Media Server and the network; no build reaches an MBMS Client."
+      }
+     ],
+     "noted": [
+      "TR 103 972 is informative and obliges no one: its clause 2.1 says \"Normative references are not applicable in the present document.\" This requirement is judged against the guideline text so that the reader can see how far the tools follow it; a case that is not implemented is not a failure against a normative clause.",
+      "What Media3 ExoPlayer itself does with several BaseURLs was not assessed; it is library behaviour."
      ]
     },
     {
@@ -3473,7 +3851,7 @@
       {
        "case": "Programme image: one RelatedMaterial, image/jpeg or image/png",
        "verdict": "implemented",
-       "what": "At most one RelatedMaterial is written for a programme image, with @contentType, and only when the image is image/jpeg or image/png; other images are not signalled.",
+       "what": "At most one RelatedMaterial is written for a programme image, with @contentType, and only when the image is image/jpeg or image/png, a data: image only when its bytes are that format; other images are not signalled.",
        "repo": "rt-dvb-i-application-provider",
        "locator": "clause 6.10.13, table 59, row MediaLocator"
       },
@@ -3628,7 +4006,7 @@
       {
        "case": "<api_endpoint_URL>[?<query_params>]",
        "verdict": "implemented",
-       "what": "Query parameters are appended to the endpoint URL from the service list with ? or &, before any proxy wrapping.",
+       "what": "Query parameters are added to the query of the endpoint URL from the service list with ? or &, before any fragment, before any proxy wrapping.",
        "repo": "rt-dvb-i-application"
       },
       {
@@ -3913,14 +4291,14 @@
       {
        "case": "OnDemandProgram ProgramURL used as an XML AIT to launch the player",
        "verdict": "implemented",
-       "what": "An on-demand item is offered only when its ProgramURL is an XML AIT; it is started by fetching that XML AIT, choosing its HTML5 application and launching it in the player area.",
+       "what": "An on-demand item is offered only when its ProgramURL is an XML AIT; it is started by fetching that XML AIT, choosing its HTML5 application of a platform profile the client launches, and launching it in the player area.",
        "repo": "rt-dvb-i-application",
        "locator": "clause 6.10.8.2, table 52, row ProgramURL"
       },
       {
        "case": "RelatedMaterial not referring to an image ignored",
        "verdict": "implemented",
-       "what": "Only RelatedMaterial with HowRelated term 19 (or the older 1001) is used as the programme image; other RelatedMaterial is ignored.",
+       "what": "Only RelatedMaterial with HowRelated term 19 (or the older 1001) is used as the programme image, and of it only a MediaUri signalled as image/jpeg or image/png; other RelatedMaterial is ignored.",
        "repo": "rt-dvb-i-application",
        "locator": "clause 6.10.5.2, table 42, row RelatedMaterial"
       },
@@ -3966,6 +4344,859 @@
      ],
      "exists": "An Android WebView loads a third-party DVB-I frontend from a fixed URL and passes any request for a .mpd, .m3u8, .mp4 or .ts URL to ExoPlayer.",
      "noted": []
+    }
+   ]
+  },
+  {
+   "name": "TS 102 796 (HbbTV, via TS 103 770)",
+   "summary": "TS 103 770 hands eleven obligations to TS 102 796 V1.8.1 (its undated reference [21], whose latest issue applies). The browser and Android clients follow the HTTP/1.1 caching rules it leads to (no-store, freshness from Age and Date) and make conditional requests; where RFC 7234 has a no-cache response validated and TS 103 770 forbids a request before max-age has passed, the specification is inconsistent, and the two clients took opposite sides. Both use the clause 11.2 TLS profile for metadata connections, except that Android still lets a TLS 1.2 server sign with SHA-1, and both launch linked applications with the clause 6.2.2.6.2 launch location and XML AIT applications only of a platform profile table 5 admits. The provider and registry serve with that TLS profile and ECDHE preferred; the provider writes the XML AIT of its catch-up player to table 7, warns but still publishes an http: URLBase, accepts versions other than the 1.8.1 table 5 sets, and signals only JPEG and PNG images whose bytes it checks where it holds them. Whether the trust stores match the HbbTV root certificate list is not judged. The Exo DVB-I Player makes no conditional request and keeps no cache, and makes no TLS connection; the DSM-CC carousel and the AppInformation URNs of annex H apply to no component (no broadcast tuner, no access service signalled through a linked application).",
+   "requirements": [
+    {
+     "id": "796-o1-app",
+     "name": "O1 HTTP caching rules and HTTP cache",
+     "release": "TS102796",
+     "component": "app",
+     "spec": {
+      "doc": "TS 102 796",
+      "version": "V1.8.1",
+      "locator": "clause 7.3.2.6 (through TS 103 770 V1.2.1 clause 4.3.2.1)"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "C1.1a A no-store response is not stored",
+       "verdict": "implemented",
+       "what": "A response carrying no-store is not kept, and a copy already held for that address is dropped, also when a 304 answer carries it.",
+       "repo": "rt-dvb-i-application",
+       "locator": "IETF RFC 7234 clause 5.2.2.3"
+      },
+      {
+       "case": "C1.1b A stored response is reused only while fresh, its age taken from Age and Date",
+       "verdict": "implemented",
+       "what": "A stored response answers a repeated request without contacting the server only while its max-age exceeds its age, counted from the Age and Date headers, which the proxy passes back; a response with no max-age, or more than one, is validated with a conditional request instead.",
+       "repo": "rt-dvb-i-application",
+       "locator": "IETF RFC 7234 clauses 4.2, 4.2.1 and 4.2.3"
+      },
+      {
+       "case": "C1.1c no-cache together with max-age",
+       "verdict": "inconsistent",
+       "what": "A response with no-cache and max-age is answered from the local copy until max-age has passed, as TS 103 770 asks; RFC 7234 has it validated before every reuse. A no-cache response without max-age is validated on every request.",
+       "repo": "rt-dvb-i-application",
+       "conflict": "IETF RFC 7234 clause 5.2.2.2: \"The \"no-cache\" response directive indicates that the response MUST NOT be used to satisfy a subsequent request without successful validation on the origin server.\" against TS 103 770 V1.2.1 clause 4.3.2.1: \"If the max-age header is present, the DVB-I client shall only request updates after the duration signalled in the header has passed.\" RFC 7234 is reached through TS 102 796 V1.8.1 clause 7.3.2.6 and RFC 7230 clause 2.4.",
+       "locator": "IETF RFC 7234 clause 5.2.2.2; TS 103 770 V1.2.1 clause 4.3.2.1"
+      },
+      {
+       "case": "C1.2 If-Modified-Since where the server gave Last-Modified",
+       "verdict": "implemented",
+       "what": "The Last-Modified time held for a document is sent as If-Modified-Since on the next request for it, and left out when none is held; the proxy forwards it upstream.",
+       "repo": "rt-dvb-i-application"
+      },
+      {
+       "case": "C1.3 If-None-Match where the server gave an ETag",
+       "verdict": "implemented",
+       "what": "The ETag held for a document is sent as If-None-Match on the next request for it, and left out when none is held; a new ETag on a 304 replaces it; the proxy forwards the header upstream and the ETag back.",
+       "repo": "rt-dvb-i-application"
+      },
+      {
+       "case": "C1.4 An HTTP cache for the content the client accesses",
+       "verdict": "implemented",
+       "what": "One in-memory cache serves every request to a DVB-I endpoint (service lists, the registry, the content guide, XML AITs); images are loaded by the browser through its own HTTP cache.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 7.3.2.6"
+      }
+     ],
+     "noted": [
+      "Reached through TS 103 770 V1.2.1 clause 4.3.2.1: \"The DVB-I client shall follow the cache control requirements in clause 7.3.2.6 of ETSI TS 102 796 [21].\" Reference [21] is undated; V1.8.1 is its latest issue. Its reference [6] is IETF RFC 7230, whose clause 2.4 reads \"HTTP requirements for cache behavior and cacheable responses are defined in Section 2 of [RFC7234].\", so the caching rules are read in RFC 7234, of the same series.",
+      "Which status codes may be stored without explicit freshness (RFC 7234 clause 3, \"a status code that is defined as cacheable by default\", listed in RFC 7231 clause 6.1) and how Vary selects a stored response (RFC 7234 clause 4.1, Vary defined in RFC 7231 clause 7.1.4) are not judged: RFC 7231 is not held.",
+      "A 304 answer without Cache-Control leaves the stored response stale, so the next request for it is validated again; RFC 7234 clause 4.3.4 keeps the stored header fields a 304 does not replace. Validating sooner is always allowed, so no case fails on it.",
+      "Expires is not used as a freshness lifetime: a response with Expires and no max-age is validated before reuse, which RFC 7234 permits; Expires still sets when a Template XML AIT result is refreshed (TS 103 770 clause 5.2.4.4.5)."
+     ]
+    },
+    {
+     "id": "796-o1-android",
+     "name": "O1 HTTP caching rules and HTTP cache",
+     "release": "TS102796",
+     "component": "android",
+     "spec": {
+      "doc": "TS 102 796",
+      "version": "V1.8.1",
+      "locator": "clause 7.3.2.6 (through TS 103 770 V1.2.1 clause 4.3.2.1)"
+     },
+     "repos": [
+      "rt-dvb-i-android-application"
+     ],
+     "cases": [
+      {
+       "case": "C1.1a A no-store response is not stored",
+       "verdict": "implemented",
+       "what": "A response carrying no-store is not kept and a copy already held for that address is dropped, also when a 304 answer carries it.",
+       "repo": "rt-dvb-i-android-application",
+       "locator": "IETF RFC 7234 clause 5.2.2.3"
+      },
+      {
+       "case": "C1.1b A stored response is reused only while fresh, its age taken from Age and Date",
+       "verdict": "implemented",
+       "what": "A stored response answers a repeated request without contacting the server only while its freshness lifetime, max-age or else Expires minus Date, exceeds its age counted from the Age and Date headers; a repeated max-age, or no lifetime, means the response is validated instead. A 304 replaces the stored header fields it carries before freshness is worked out again.",
+       "repo": "rt-dvb-i-android-application",
+       "locator": "IETF RFC 7234 clauses 4.2, 4.2.1, 4.2.3 and 4.3.4"
+      },
+      {
+       "case": "C1.1c no-cache together with max-age",
+       "verdict": "inconsistent",
+       "what": "A response with no-cache is validated with a conditional request every time, as RFC 7234 asks, even when it carries max-age, so a request is sent before max-age has passed, which TS 103 770 forbids.",
+       "repo": "rt-dvb-i-android-application",
+       "conflict": "IETF RFC 7234 clause 5.2.2.2: \"The \"no-cache\" response directive indicates that the response MUST NOT be used to satisfy a subsequent request without successful validation on the origin server.\" against TS 103 770 V1.2.1 clause 4.3.2.1: \"If the max-age header is present, the DVB-I client shall only request updates after the duration signalled in the header has passed.\" RFC 7234 is reached through TS 102 796 V1.8.1 clause 7.3.2.6 and RFC 7230 clause 2.4.",
+       "locator": "IETF RFC 7234 clause 5.2.2.2; TS 103 770 V1.2.1 clause 4.3.2.1"
+      },
+      {
+       "case": "C1.2 If-Modified-Since where the server gave Last-Modified",
+       "verdict": "implemented",
+       "what": "The Last-Modified time held for a document is sent as If-Modified-Since on the next request for it, and left out when none is held.",
+       "repo": "rt-dvb-i-android-application"
+      },
+      {
+       "case": "C1.3 If-None-Match where the server gave an ETag",
+       "verdict": "implemented",
+       "what": "The ETag held for a document is sent as If-None-Match on the next request for it, and left out when none is held; a new ETag on a 304 replaces it.",
+       "repo": "rt-dvb-i-android-application"
+      },
+      {
+       "case": "C1.4 An HTTP cache for the content the client accesses",
+       "verdict": "implemented",
+       "what": "An in-memory cache serves every request to a DVB-I endpoint; logos and programme images are loaded by the image library, whose own caching was not checked.",
+       "repo": "rt-dvb-i-android-application",
+       "locator": "clause 7.3.2.6"
+      }
+     ],
+     "noted": [
+      "Reached through TS 103 770 V1.2.1 clause 4.3.2.1: \"The DVB-I client shall follow the cache control requirements in clause 7.3.2.6 of ETSI TS 102 796 [21].\" Reference [21] is undated; V1.8.1 is its latest issue. Its reference [6] is IETF RFC 7230, whose clause 2.4 reads \"HTTP requirements for cache behavior and cacheable responses are defined in Section 2 of [RFC7234].\", so the caching rules are read in RFC 7234, of the same series.",
+      "Which status codes may be stored without explicit freshness (RFC 7234 clause 3, \"a status code that is defined as cacheable by default\", listed in RFC 7231 clause 6.1) and how Vary selects a stored response (RFC 7234 clause 4.1, Vary defined in RFC 7231 clause 7.1.4) are not judged: RFC 7231 is not held.",
+      "Any 2xx answer without no-store is stored; whether that is allowed for a status not cacheable by default needs RFC 7231 (see the note above). Such a response with no lifetime is never reused without validation."
+     ]
+    },
+    {
+     "id": "796-o1-exo",
+     "name": "O1 HTTP caching rules and HTTP cache",
+     "release": "TS102796",
+     "component": "exo",
+     "spec": {
+      "doc": "TS 102 796",
+      "version": "V1.8.1",
+      "locator": "clause 7.3.2.6 (through TS 103 770 V1.2.1 clause 4.3.2.1)"
+     },
+     "repos": [
+      "rt-5gms-application"
+     ],
+     "cases": [
+      {
+       "case": "C1.2 If-Modified-Since where the server gave Last-Modified",
+       "verdict": "differs",
+       "what": "The wrapper makes its own request for the service list, a plain GET at every start, and keeps no Last-Modified time, so the request is never conditional; the same finding as 4.3-exo.",
+       "repo": "rt-5gms-application"
+      },
+      {
+       "case": "C1.3 If-None-Match where the server gave an ETag",
+       "verdict": "differs",
+       "what": "The same plain GET keeps no ETag, so no request carries If-None-Match.",
+       "repo": "rt-5gms-application"
+      },
+      {
+       "case": "C1.4 An HTTP cache for the content the client accesses",
+       "verdict": "absent",
+       "what": "The wrapper's own request goes through no HTTP cache: the list is written to a file that is never read, and each start downloads it again. Requests made by the external frontend in the web view are outside this repository.",
+       "repo": "rt-5gms-application",
+       "locator": "clause 7.3.2.6"
+      }
+     ],
+     "noted": [
+      "Reached through TS 103 770 V1.2.1 clause 4.3.2.1: \"The DVB-I client shall follow the cache control requirements in clause 7.3.2.6 of ETSI TS 102 796 [21].\" Reference [21] is undated; V1.8.1 is its latest issue. Its reference [6] is IETF RFC 7230, whose clause 2.4 reads \"HTTP requirements for cache behavior and cacheable responses are defined in Section 2 of [RFC7234].\", so the caching rules are read in RFC 7234, of the same series.",
+      "C1.1 (the RFC 7234 rules on storing and reusing responses) is not judged: the wrapper never reuses a response, so the rules have nothing to apply to.",
+      "C1.4 is judged on the wrapper's own download. Content the WebView loads goes through the platform WebView's own HTTP cache, with no cache mode set by the wrapper; whether that cache meets clause 7.3.2.6 rests on platform documentation that is not held, so it is not judged."
+     ]
+    },
+    {
+     "id": "796-o2-app",
+     "name": "O2 TLS profile of connections to DVB-I metadata endpoints",
+     "release": "TS102796",
+     "component": "app",
+     "spec": {
+      "doc": "TS 102 796",
+      "version": "V1.8.1",
+      "locator": "clauses 11.2.2 to 11.2.5, to which TS 103 770 V1.2.1 refers from its clause 7.3"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "C2.1 TLS 1.2 mandatory suites of table 15a offered",
+       "verdict": "implemented",
+       "what": "Every request the proxy makes over TLS offers exactly the five TLS 1.2 suites of table 15a, in its order, the three mandatory ones among them; the repository test negotiates each of the five.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 11.2.2, table 15a"
+      },
+      {
+       "case": "C2.2 No suite with anonymous key exchange, NULL encryption or RC4",
+       "verdict": "implemented",
+       "what": "No TLS 1.2 suite other than those five is offered, so none the table forbids can be negotiated; the test refuses an anonymous, a NULL and two unlisted suites.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 11.2.2, table 15a"
+      },
+      {
+       "case": "C2.3 No suite offering less than 112 bits of security",
+       "verdict": "implemented",
+       "what": "The TLS 1.2 suites offered use AES with 128 or 256 bit keys, and the runtime is held to a 112-bit security level for keys and signatures, so an RSA key exchange with a key under 2 048 bits is refused (repository test).",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 11.2.2, table 15a, row \"less than 112 bits of security\"; NIST SP 800-57 Part 1 Rev 5 clause 5.6.1.1, table 2"
+      },
+      {
+       "case": "C2.4 TLS 1.3 mandatory suite of RFC 8446 clause 9.1",
+       "verdict": "implemented",
+       "what": "TLS_AES_128_GCM_SHA256 is offered over TLS 1.3, with the two suites RFC 8446 recommends; the test negotiates it.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 11.2.2; IETF RFC 8446 clause 9.1"
+      },
+      {
+       "case": "C2.7 No root certificate with a key under 112 bits trusted",
+       "verdict": "implemented",
+       "what": "The 112-bit security level applies to the certificate chain, and the test refuses a chain to a root with a 1 024-bit RSA key.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 11.2.3"
+      },
+      {
+       "case": "C2.9 No signature with a forbidden algorithm of table 15b trusted",
+       "verdict": "implemented",
+       "what": "The handshake signature algorithms offered are the nine table 15b marks mandatory or optional, without the three it forbids; a certificate signed with SHA-1 and a TLS 1.2 handshake signed with rsa_pkcs1_sha1 are refused in the test.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 11.2.4, table 15b"
+      },
+      {
+       "case": "C2.10 RSA keys of 2 048 to 4 096 bits supported, RSA signatures under 2 048 bits not trusted",
+       "verdict": "implemented",
+       "what": "Server keys of 2 048 and 4 096 bits are accepted and a 1 024-bit key is refused, over TLS 1.2 and 1.3 (repository test).",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 11.2.5"
+      },
+      {
+       "case": "C2.11 Curves P-256 and P-384 for signatures and key exchange",
+       "verdict": "implemented",
+       "what": "P-256, P-384 and P-521 are offered for key exchange, with X25519, and the ECDSA signature algorithms for P-256 and P-384; the test exchanges keys on each curve over TLS 1.2 and 1.3 and accepts P-256 and P-384 certificates.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 11.2.5, table 15c"
+      }
+     ],
+     "noted": [
+      "Reached through TS 103 770 V1.2.1 clause 7.3: \"All HTTP transactions and connections between the DVB-I client and DVB-I metadata endpoints, specifically Service List Registries, Service List Servers, Content Guide Servers, described in the present document shall be performed using HTTP over TLS as defined in IETF RFC 9110 [14], using root certificates, cipher suites, signature algorithms, key sizes and elliptic curves as defined in clause 11.2 of ETSI TS 102 796 [21], as applicable for the TLS version used.\" Reference [21] is undated; V1.8.1 is its latest issue.",
+      "Not judged: whether every root certificate the list marks mandatory is trusted, and no other (\"Terminals shall trust all root certificates identified as mandatory and may support those certificates identified as optional on that list, subject to the conditions in this clause.\" and \"Terminals should not trust any other root certificates.\"). Clause 11.2.3 names the list: \"A list of root certificates is maintained at http://www.hbbtv.org/spec/certificates.html.\" The list obtained (an xlsx dated 2023-11-15) marks mandatory and optional by cell colour, which has not been read out, so the trust store has not been compared with it.",
+      "C2.8 does not apply to this code: \"Terminals shall support a means by which the device manufacturer can remove or distrust root certificates after manufacture.\" A means to remove or distrust roots belongs to the platform (the runtime release and its root store), not to the client.",
+      "C2.12 and C2.13 bind servers (\"Servers should use one of the above ECDHE cipher suites in preference\"); the client's own listener is not a DVB-I metadata endpoint.",
+      "The options apply to the requests the proxy makes; requests to the client's own origin are made by the browser, whose TLS settings this code does not set. No ALPN is offered upstream (clause 11.2.1, outside what clause 7.3 takes from clause 11.2). X25519 is offered as RFC 8446 clause 9.1 recommends; table 15c lists it neither as mandatory nor as forbidden."
+     ]
+    },
+    {
+     "id": "796-o2-android",
+     "name": "O2 TLS profile of connections to DVB-I metadata endpoints",
+     "release": "TS102796",
+     "component": "android",
+     "spec": {
+      "doc": "TS 102 796",
+      "version": "V1.8.1",
+      "locator": "clauses 11.2.2 to 11.2.5, to which TS 103 770 V1.2.1 refers from its clause 7.3"
+     },
+     "repos": [
+      "rt-dvb-i-android-application"
+     ],
+     "cases": [
+      {
+       "case": "C2.1 TLS 1.2 mandatory suites of table 15a offered",
+       "verdict": "implemented",
+       "what": "Connections to DVB-I endpoints, image requests included, use TLS 1.3 and 1.2 with a suite list that holds the three mandatory and two recommended suites of table 15a; what is offered is that list as far as the device's TLS provider has it (observed on one Android 12 phone: all five offered, and TLS_RSA_WITH_AES_128_CBC_SHA negotiated with a server offering only it).",
+       "repo": "rt-dvb-i-android-application",
+       "locator": "clause 11.2.2, table 15a"
+      },
+      {
+       "case": "C2.2 No suite with anonymous key exchange, NULL encryption or RC4",
+       "verdict": "implemented",
+       "what": "The suite list is fixed and holds none of those.",
+       "repo": "rt-dvb-i-android-application",
+       "locator": "clause 11.2.2, table 15a"
+      },
+      {
+       "case": "C2.3 No suite offering less than 112 bits of security",
+       "verdict": "implemented",
+       "what": "Every TLS 1.2 suite in the list uses AES-128, AES-256 or three-key triple DES, which NIST SP 800-57 Part 1 Rev 5 table 2 puts at 128, 256 and 112 bits; the TLS 1.2 ChaCha20 suites, whose strength no document held gives, are left out. The phone did not offer the triple DES suite.",
+       "repo": "rt-dvb-i-android-application",
+       "locator": "clause 11.2.2, table 15a, row \"less than 112 bits of security\"; NIST SP 800-57 Part 1 Rev 5 clause 5.6.1.1, table 2"
+      },
+      {
+       "case": "C2.4 TLS 1.3 mandatory suite of RFC 8446 clause 9.1",
+       "verdict": "implemented",
+       "what": "TLS_AES_128_GCM_SHA256 is in the list with the two suites RFC 8446 recommends; the phone negotiated TLS 1.3.",
+       "repo": "rt-dvb-i-android-application",
+       "locator": "clause 11.2.2; IETF RFC 8446 clause 9.1"
+      },
+      {
+       "case": "C2.7 No root certificate with a key under 112 bits trusted",
+       "verdict": "implemented",
+       "what": "A connection whose validated chain ends at a root with less than 112 bits of security (RSA under 2 048 bits, or an elliptic curve key under 224 bits) fails before the request is sent.",
+       "repo": "rt-dvb-i-android-application",
+       "locator": "clause 11.2.3"
+      },
+      {
+       "case": "C2.9 No signature with a forbidden algorithm of table 15b trusted",
+       "verdict": "differs",
+       "what": "A certificate in the chain signed with MD5 or SHA-1 makes the connection fail, but the TLS 1.2 signature algorithms the platform offers still include rsa_pkcs1_sha1, which the app does not remove, so a TLS 1.2 server may sign its key exchange with it and be trusted; table 15b forbids rsa_pkcs1_sha1.",
+       "repo": "rt-dvb-i-android-application",
+       "locator": "clause 11.2.4, table 15b"
+      },
+      {
+       "case": "C2.10 RSA keys of 2 048 to 4 096 bits supported, RSA signatures under 2 048 bits not trusted",
+       "verdict": "implemented",
+       "what": "Any RSA key under 2 048 bits in the validated chain makes the connection fail; keys of 2 048 to 4 096 bits are left to the platform, which accepted a 2 048-bit server key on the phone.",
+       "repo": "rt-dvb-i-android-application",
+       "locator": "clause 11.2.5"
+      },
+      {
+       "case": "C2.11 Curves P-256 and P-384 for signatures and key exchange",
+       "verdict": "implemented",
+       "what": "Left to the platform, which offered secp256r1 and secp384r1 for key exchange and the ECDSA signature algorithms for both on the phone (with x25519); the app sets no curve.",
+       "locator": "clause 11.2.5, table 15c"
+      }
+     ],
+     "noted": [
+      "Reached through TS 103 770 V1.2.1 clause 7.3: \"All HTTP transactions and connections between the DVB-I client and DVB-I metadata endpoints, specifically Service List Registries, Service List Servers, Content Guide Servers, described in the present document shall be performed using HTTP over TLS as defined in IETF RFC 9110 [14], using root certificates, cipher suites, signature algorithms, key sizes and elliptic curves as defined in clause 11.2 of ETSI TS 102 796 [21], as applicable for the TLS version used.\" Reference [21] is undated; V1.8.1 is its latest issue.",
+      "Not judged: whether every root certificate the list marks mandatory is trusted, and no other (\"Terminals shall trust all root certificates identified as mandatory and may support those certificates identified as optional on that list, subject to the conditions in this clause.\" and \"Terminals should not trust any other root certificates.\"). Clause 11.2.3 names the list: \"A list of root certificates is maintained at http://www.hbbtv.org/spec/certificates.html.\" The list obtained (an xlsx dated 2023-11-15) marks mandatory and optional by cell colour, which has not been read out, so the trust store has not been compared with it.",
+      "C2.8 does not apply to this code: \"Terminals shall support a means by which the device manufacturer can remove or distrust root certificates after manufacture.\" On Android that is the platform's system updates, not the app.",
+      "C2.12 and C2.13 bind servers; the app runs none.",
+      "The suites are offered in the platform's order, not that of table 15a (\"Terminals should prioritize these cipher suites in the order shown.\"). The device observations are of one phone (Xiaomi 220733SG, Android 12) running the debug build against local test servers, with a test root trusted only for that run; another device can offer a different subset."
+     ]
+    },
+    {
+     "id": "796-o2-provider",
+     "name": "O2 TLS profile of the server",
+     "release": "TS102796",
+     "component": "provider",
+     "spec": {
+      "doc": "TS 102 796",
+      "version": "V1.8.1",
+      "locator": "clause 11.2.2 (through TS 103 770 V1.2.1 clause 7.3)"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "C2.12 ECDHE suites used in preference (should)",
+       "verdict": "implemented",
+       "what": "The server offers the four ECDHE suites of table 15a before TLS_RSA_WITH_AES_128_CBC_SHA and applies its own order, so a client offering both gets an ECDHE suite (repository test).",
+       "repo": "rt-dvb-i-application-provider"
+      },
+      {
+       "case": "C2.14 Versions, suites, curves and signature algorithms the server accepts are those of clause 11.2",
+       "verdict": "implemented",
+       "what": "TLS 1.2 and 1.3 only; for TLS 1.2 the five suites of table 15a, for TLS 1.3 the three of RFC 8446 clause 9.1; the curves P-256, P-384 and P-521 of table 15c; the signature algorithms of table 15b that are not forbidden. The test refuses anonymous, NULL and unlisted suites, X25519, rsa_pkcs1_sha1, TLS 1.0 and 1.1.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clauses 11.2.2, 11.2.4 and 11.2.5"
+      },
+      {
+       "case": "C2.13a The server's keys within clause 11.2.5",
+       "verdict": "implemented",
+       "what": "The server does not start with a key, or a certificate key in its chain, that is RSA outside 2 048 to 4 096 bits, an elliptic curve key on a curve not in table 15c, or any other key type.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 11.2.5"
+      },
+      {
+       "case": "C2.13b The certificates signed with an algorithm table 15b allows",
+       "verdict": "implemented",
+       "what": "The server does not start when a certificate in its chain, other than a self-signed one, is signed with an algorithm that is not a table 15b one marked mandatory or optional; a self-signed certificate's own signature is not required to be verified (clause 11.2.1, NOTE 4).",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "clause 11.2.4, table 15b"
+      }
+     ],
+     "noted": [
+      "Reached through TS 103 770 V1.2.1 clause 7.3: \"All HTTP transactions and connections between the DVB-I client and DVB-I metadata endpoints, specifically Service List Registries, Service List Servers, Content Guide Servers, described in the present document shall be performed using HTTP over TLS as defined in IETF RFC 9110 [14], using root certificates, cipher suites, signature algorithms, key sizes and elliptic curves as defined in clause 11.2 of ETSI TS 102 796 [21], as applicable for the TLS version used.\" Reference [21] is undated; V1.8.1 is its latest issue.",
+      "Not judged: whether the certificate chains to a root on the HbbTV root certificate list (clause 11.2.3), which is the operator's choice of certificate authority and the list's mandatory and optional marks have not been read out. The hash of an RSASSA-PSS certificate signature is not checked.",
+      "The cases C2.1 to C2.11 bind terminals (\"Terminals shall ...\"), not the server. C2.14 is added to the trace's cases: clause 7.3 of TS 103 770 has every transaction use the clause 11.2 profile, which the server's settings now make checkable."
+     ]
+    },
+    {
+     "id": "796-o2-registry",
+     "name": "O2 TLS profile of the server",
+     "release": "TS102796",
+     "component": "registry",
+     "spec": {
+      "doc": "TS 102 796",
+      "version": "V1.8.1",
+      "locator": "clause 11.2.2 (through TS 103 770 V1.2.1 clause 7.3)"
+     },
+     "repos": [
+      "rt-dvb-i-service-list-registry"
+     ],
+     "cases": [
+      {
+       "case": "C2.12 ECDHE suites used in preference (should)",
+       "verdict": "implemented",
+       "what": "The server offers the four ECDHE suites of table 15a before TLS_RSA_WITH_AES_128_CBC_SHA and applies its own order, so a client offering both gets an ECDHE suite (repository test).",
+       "repo": "rt-dvb-i-service-list-registry"
+      },
+      {
+       "case": "C2.14 Versions, suites, curves and signature algorithms the server accepts are those of clause 11.2",
+       "verdict": "implemented",
+       "what": "TLS 1.2 and 1.3 only; for TLS 1.2 the five suites of table 15a, for TLS 1.3 the three of RFC 8446 clause 9.1; the curves P-256, P-384 and P-521 of table 15c; the signature algorithms of table 15b that are not forbidden. The test refuses anonymous, NULL and unlisted suites, X25519, rsa_pkcs1_sha1, TLS 1.0 and 1.1.",
+       "repo": "rt-dvb-i-service-list-registry",
+       "locator": "clauses 11.2.2, 11.2.4 and 11.2.5"
+      },
+      {
+       "case": "C2.13a The server's keys within clause 11.2.5",
+       "verdict": "implemented",
+       "what": "The server does not start with a key, or a certificate key in its chain, that is RSA outside 2 048 to 4 096 bits, an elliptic curve key on a curve not in table 15c, or any other key type.",
+       "repo": "rt-dvb-i-service-list-registry",
+       "locator": "clause 11.2.5"
+      },
+      {
+       "case": "C2.13b The certificates signed with an algorithm table 15b allows",
+       "verdict": "implemented",
+       "what": "The server does not start when a certificate in its chain, other than a self-signed one, is signed with an algorithm that is not a table 15b one marked mandatory or optional; a self-signed certificate's own signature is not required to be verified (clause 11.2.1, NOTE 4).",
+       "repo": "rt-dvb-i-service-list-registry",
+       "locator": "clause 11.2.4, table 15b"
+      }
+     ],
+     "noted": [
+      "Reached through TS 103 770 V1.2.1 clause 7.3: \"All HTTP transactions and connections between the DVB-I client and DVB-I metadata endpoints, specifically Service List Registries, Service List Servers, Content Guide Servers, described in the present document shall be performed using HTTP over TLS as defined in IETF RFC 9110 [14], using root certificates, cipher suites, signature algorithms, key sizes and elliptic curves as defined in clause 11.2 of ETSI TS 102 796 [21], as applicable for the TLS version used.\" Reference [21] is undated; V1.8.1 is its latest issue.",
+      "Not judged: whether the certificate chains to a root on the HbbTV root certificate list (clause 11.2.3), which is the operator's choice of certificate authority and the list's mandatory and optional marks have not been read out. The hash of an RSASSA-PSS certificate signature is not checked.",
+      "The cases C2.1 to C2.11 bind terminals (\"Terminals shall ...\"), not the server. C2.14 is added to the trace's cases: clause 7.3 of TS 103 770 has every transaction use the clause 11.2 profile, which the server's settings now make checkable."
+     ]
+    },
+    {
+     "id": "796-o5-app",
+     "name": "O5 Launch location of linked applications",
+     "release": "TS102796",
+     "component": "app",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.2.3.1, referring to TS 102 796 V1.8.1 clause 6.2.2.6.2"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "C5.1 Term 1.2: launch location \"service\" (should)",
+       "verdict": "implemented",
+       "what": "An application controlling media presentation is opened, or its XML AIT requested, with lloc=service added.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 5.2.3.1"
+      },
+      {
+       "case": "C5.2 Term 2: launch location \"availability\" (should)",
+       "verdict": "implemented",
+       "what": "The application for when the service is not available is opened, or its XML AIT requested, with lloc=availability.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 5.2.3.1"
+      },
+      {
+       "case": "C5.3 Term 1.1: no launch location",
+       "verdict": "implemented",
+       "what": "An application with media in parallel is opened without lloc.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 5.2.3.1"
+      },
+      {
+       "case": "C5.4 Term 3: \"epg\" from a content guide, \"channellist\" from a list of services, otherwise a table 2a term",
+       "verdict": "implemented",
+       "what": "The service's home page application is offered from the player only, and carries lloc=other, the table 2a term for a view that falls within none of its categories; the player is neither a content guide nor a list of services.",
+       "repo": "rt-dvb-i-application",
+       "locator": "clause 5.2.3.1; TS 102 796 V1.8.1 clause 6.2.2.6.2, table 2a"
+      },
+      {
+       "case": "C5.5 lloc added before the first \"#\"",
+       "verdict": "implemented",
+       "what": "The parameter is added to the query before any fragment, with \"?\" or \"&\" as the URL already has a query or not.",
+       "repo": "rt-dvb-i-application",
+       "locator": "TS 102 796 V1.8.1 clause 6.2.2.6.2"
+      }
+     ],
+     "noted": [
+      "TS 103 770 V1.2.1 clause 5.2.3.1: \"For broadcast-independent HbbTV applications, this is defined in clause 6.2.2.6.2 of ETSI TS 102 796 [21].\" Clause 6.2.2.6.2 is headed \"(informative)\" in TS 102 796; TS 103 770 gives its values force. The values \"service\" and \"availability\" are not in table 2a, which allows \"Other local or platform specific values\".",
+      "Which table 2a term fits the player screen is a reading: \"miniguide\" is a view \"within the terminal's electronic programme guide\", which the player is not, so \"other\" is used. Both clients take the same reading.",
+      "The XML AIT of a linked application is requested with lloc but without the regionID[] parameters of clause 5.2.4.4.6, which names \"Template XML AIT, OnDemand Deep-linked XML AIT or Service Deep-linked XML AIT\"; whether it reaches a linked application XML AIT is a reading not taken here."
+     ]
+    },
+    {
+     "id": "796-o5-android",
+     "name": "O5 Launch location of linked applications",
+     "release": "TS102796",
+     "component": "android",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.2.3.1, referring to TS 102 796 V1.8.1 clause 6.2.2.6.2"
+     },
+     "repos": [
+      "rt-dvb-i-android-application"
+     ],
+     "cases": [
+      {
+       "case": "C5.1 Term 1.2: launch location \"service\" (should)",
+       "verdict": "implemented",
+       "what": "An application controlling media presentation is opened, or its XML AIT requested, with lloc=service added.",
+       "repo": "rt-dvb-i-android-application",
+       "locator": "clause 5.2.3.1"
+      },
+      {
+       "case": "C5.2 Term 2: launch location \"availability\" (should)",
+       "verdict": "implemented",
+       "what": "The application for when the service is not available is opened, or its XML AIT requested, with lloc=availability.",
+       "repo": "rt-dvb-i-android-application",
+       "locator": "clause 5.2.3.1"
+      },
+      {
+       "case": "C5.3 Term 1.1: no launch location",
+       "verdict": "implemented",
+       "what": "An application with media in parallel is opened without lloc.",
+       "repo": "rt-dvb-i-android-application",
+       "locator": "clause 5.2.3.1"
+      },
+      {
+       "case": "C5.4 Term 3: \"epg\" from a content guide, \"channellist\" from a list of services, otherwise a table 2a term",
+       "verdict": "implemented",
+       "what": "The service's home page application is offered from the player only, and carries lloc=other, the table 2a term for a view that falls within none of its categories; the player is neither a content guide nor a list of services.",
+       "repo": "rt-dvb-i-android-application",
+       "locator": "clause 5.2.3.1; TS 102 796 V1.8.1 clause 6.2.2.6.2, table 2a"
+      },
+      {
+       "case": "C5.5 lloc added before the first \"#\"",
+       "verdict": "implemented",
+       "what": "The parameter is added to the query before any fragment, with \"?\" or \"&\" as the URL already has a query or not.",
+       "repo": "rt-dvb-i-android-application",
+       "locator": "TS 102 796 V1.8.1 clause 6.2.2.6.2"
+      }
+     ],
+     "noted": [
+      "TS 103 770 V1.2.1 clause 5.2.3.1: \"For broadcast-independent HbbTV applications, this is defined in clause 6.2.2.6.2 of ETSI TS 102 796 [21].\" Clause 6.2.2.6.2 is headed \"(informative)\" in TS 102 796; TS 103 770 gives its values force. The values \"service\" and \"availability\" are not in table 2a, which allows \"Other local or platform specific values\".",
+      "Which table 2a term fits the player screen is a reading: \"miniguide\" is a view \"within the terminal's electronic programme guide\", which the player is not, so \"other\" is used. Both clients take the same reading."
+     ]
+    },
+    {
+     "id": "796-o6-provider",
+     "name": "O6 Content deep-linked XML AIT, HbbTV application type",
+     "release": "TS102796",
+     "component": "provider",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.2.4.1, referring to TS 102 796 V1.8.1 clause 7.2.3.2"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "C6.1 OtherApp is one of the three MIME types",
+       "verdict": "implemented",
+       "what": "The catch-up player's type must be application/vnd.hbbtv.xhtml+xml, text/html or application/xhtml+xml, and is written as OtherApp.",
+       "repo": "rt-dvb-i-application-provider"
+      },
+      {
+       "case": "C6.2 HbbTV type: controlCode AUTOSTART, visibility VISIBLE_ALL, serviceBound false",
+       "verdict": "implemented",
+       "what": "For the HbbTV type any other value is refused on save, so none is published.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "TS 102 796 V1.8.1 clause 7.2.3.2, table 7"
+      },
+      {
+       "case": "C6.3 priority present",
+       "verdict": "implemented",
+       "what": "priority is required, as one or two hexadecimal digits, and always written.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "TS 102 796 V1.8.1 clause 7.2.3.2, table 7"
+      },
+      {
+       "case": "C6.4 One HTTPTransportType applicationTransport; URLBase ends with \"/\" (HbbTV type); no URLExtension",
+       "verdict": "implemented",
+       "what": "One applicationTransport of type HTTPTransportType with a URLBase and no URLExtension is written; for the HbbTV type a URLBase not ending with \"/\" is refused.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "TS 102 796 V1.8.1 clause 7.2.3.2, table 7"
+      },
+      {
+       "case": "C6.5 No DOCTYPE",
+       "verdict": "implemented",
+       "what": "The document has no document type declaration.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "TS 102 796 V1.8.1 clause 7.2.3.2"
+      },
+      {
+       "case": "C6.6 One discovery record, the same orgId and appId",
+       "verdict": "implemented",
+       "what": "One ApplicationDiscovery with one Application, so orgId and appId are the same throughout.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "TS 102 796 V1.8.1 clause 7.2.3.2"
+      },
+      {
+       "case": "C6.7 URLBase and applicationLocation together 2 048 characters or less (HbbTV type)",
+       "verdict": "implemented",
+       "what": "For the HbbTV type a programme whose URLBase and applicationLocation together exceed 2 048 characters is refused on save and not offered on demand.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "TS 102 796 V1.8.1 clause 7.2.3.2, table 7, NOTE 2"
+      },
+      {
+       "case": "C6.8 Delivered as application/vnd.dvb.ait+xml",
+       "verdict": "implemented",
+       "what": "The XML AIT is served with that media type.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "TS 102 796 V1.8.1 clause 7.2.3.2"
+      },
+      {
+       "case": "C6.9 https rather than http (should)",
+       "verdict": "differs",
+       "what": "An http: URLBase for the HbbTV type is published, with a warning in the log at start-up and on every save, in the save and restore responses and in the editor; the clause advises https://.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "TS 102 796 V1.8.1 clause 11.9, reached from clause 7.2.3.2"
+      }
+     ],
+     "noted": [
+      "The browser client, the Android client and the registry write no XML AIT, so this obligation does not apply to them. The rows of table 7 bind the HbbTV application type (\"Shall be \"application/vnd.hbbtv.xhtml+xml\" for HbbTV® applications\"); for text/html and application/xhtml+xml the provider writes the same structure."
+     ]
+    },
+    {
+     "id": "796-o7-app",
+     "name": "O7 Application type criterion of the XML AIT",
+     "release": "TS102796",
+     "component": "app",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.2.4.2, referring to TS 102 796 V1.8.1 clause 7.2.3.2"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "C7.1 Only the three types considered, others ignored",
+       "verdict": "implemented",
+       "what": "Of the three types only text/html and application/xhtml+xml are started, as the client has no HbbTV engine; any other type is ignored.",
+       "repo": "rt-dvb-i-application"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "796-o7-android",
+     "name": "O7 Application type criterion of the XML AIT",
+     "release": "TS102796",
+     "component": "android",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.2.4.2, referring to TS 102 796 V1.8.1 clause 7.2.3.2"
+     },
+     "repos": [
+      "rt-dvb-i-android-application"
+     ],
+     "cases": [
+      {
+       "case": "C7.1 Only the three types considered, others ignored",
+       "verdict": "implemented",
+       "what": "Of the three types only text/html and application/xhtml+xml are started, as the client has no HbbTV engine; any other type is ignored.",
+       "repo": "rt-dvb-i-android-application"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "796-o8-provider",
+     "name": "O8 Platform profile written in the XML AIT",
+     "release": "TS102796",
+     "component": "provider",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.2.4.2, referring to TS 102 796 V1.8.1 clause 7.2.3.1, table 5"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "C8.1 Profile is 0x0000, or a combination of 0x0001 and 0x0002",
+       "verdict": "implemented",
+       "what": "The profile must be 0, 1, 2 or 3 in hexadecimal, and is written as configured.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "TS 102 796 V1.8.1 clause 7.2.3.1, table 5, row 5.2.5"
+      },
+      {
+       "case": "C8.2 Version fields as table 5 sets them",
+       "verdict": "differs",
+       "what": "Any of the eight versions a terminal launches, 1.1.1 to 1.8.1, is accepted and written as configured; table 5 says the version fields shall be set to 1.8.1, and table 7 has the XML AIT carry the same values as table 5.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "TS 102 796 V1.8.1 clause 7.2.3.1, table 5, row 5.2.5; clause 7.2.3.2, table 7, row mhpVersion"
+      }
+     ],
+     "noted": [
+      "Two readings were recorded for C8.2 (repository COMPLIANCE.md, caaf6f8). TS 102 809 V1.3.1 clause 5.2.5.1: \"These fields define the minimum platform profile and version of that profile required by the application.\" On that reading a producer may write the minimum version an application needs, and any of the eight is what the provider accepts. Table 5 reads \"The version fields shall be set as follows\" (version.major = 1, version.minor = 8, version.micro = 1), and table 7, row mhpVersion, column \"Requirement on XML AIT file\": \"Shall be the same values as defined for the MPEG-2 encoding of the AIT under \"platform profiles\" in Table 5.\" Writing 1.8.1 meets both, so the two do not contradict each other on what a producer may write, and the case is judged on table 5. The owner can settle it by confining the check to 1.8.1."
+     ]
+    },
+    {
+     "id": "796-o8-app",
+     "name": "O8 Platform profile criterion of the XML AIT",
+     "release": "TS102796",
+     "component": "app",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.2.4.2, referring to TS 102 796 V1.8.1 clause 7.2.3.1, table 5"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "C8.3 Launch only the versions table 5 lists, ignore others",
+       "verdict": "implemented",
+       "what": "An application is chosen only when its mhpVersion signals one of the eight versions 1.1.1 to 1.8.1; one with another version, or with no mhpVersion, is ignored, for linked applications, on-demand players and Template XML AITs alike.",
+       "repo": "rt-dvb-i-application",
+       "locator": "TS 102 796 V1.8.1 clause 7.2.3.1, table 5, row 5.2.5"
+      },
+      {
+       "case": "C8.4 Launch only profiles the client supports, at least the basic profile",
+       "verdict": "implemented",
+       "what": "Only the basic profile 0x0000 is accepted, the client having neither the A/V content download nor the PVR feature.",
+       "repo": "rt-dvb-i-application",
+       "locator": "TS 102 796 V1.8.1 clause 7.2.3.1, table 5, row 5.2.5"
+      }
+     ],
+     "noted": [
+      "The versions are applied as an exact set, not as a minimum: TS 103 770 clause 5.2.4.2 has the client \"ignore applications listed with other values\". Version and profile fields are read as hexadecimal, as mis_xmlait.xsd types them."
+     ]
+    },
+    {
+     "id": "796-o8-android",
+     "name": "O8 Platform profile criterion of the XML AIT",
+     "release": "TS102796",
+     "component": "android",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.2.4.2, referring to TS 102 796 V1.8.1 clause 7.2.3.1, table 5"
+     },
+     "repos": [
+      "rt-dvb-i-android-application"
+     ],
+     "cases": [
+      {
+       "case": "C8.3 Launch only the versions table 5 lists, ignore others",
+       "verdict": "implemented",
+       "what": "An application is chosen only when its mhpVersion signals one of the eight versions 1.1.1 to 1.8.1; one with another version, or with no mhpVersion, is ignored, for linked applications, on-demand players and Template XML AITs alike.",
+       "repo": "rt-dvb-i-android-application",
+       "locator": "TS 102 796 V1.8.1 clause 7.2.3.1, table 5, row 5.2.5"
+      },
+      {
+       "case": "C8.4 Launch only profiles the client supports, at least the basic profile",
+       "verdict": "implemented",
+       "what": "Only the basic profile 0x0000 is accepted, the client having neither the A/V content download nor the PVR feature.",
+       "repo": "rt-dvb-i-android-application",
+       "locator": "TS 102 796 V1.8.1 clause 7.2.3.1, table 5, row 5.2.5"
+      }
+     ],
+     "noted": [
+      "The versions are applied as an exact set, not as a minimum: TS 103 770 clause 5.2.4.2 has the client \"ignore applications listed with other values\". Version and profile fields are read as hexadecimal, as mis_xmlait.xsd types them."
+     ]
+    },
+    {
+     "id": "796-o9-app",
+     "name": "O9 launch_location on Template and content deep-linked XML AIT requests",
+     "release": "TS102796",
+     "component": "app",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.2.4.4.6, referring to TS 102 796 V1.8.1 clause 6.2.2.6.2"
+     },
+     "repos": [
+      "rt-dvb-i-application"
+     ],
+     "cases": [
+      {
+       "case": "C9.1 lloc on Template and content deep-linked XML AIT requests, with a table 2a value",
+       "verdict": "implemented",
+       "what": "Both requests carry lloc=epg, the table 2a term for a full-screen view within the guide, with the regionID[] values.",
+       "repo": "rt-dvb-i-application",
+       "locator": "TS 102 796 V1.8.1 clause 6.2.2.6.2, table 2a, row epg"
+      }
+     ],
+     "noted": [
+      "Both clients send \"epg\" also when the programme is opened from the browse view; table 2a row browse reads \"Any view showing browsable content choices and which does not fall within the categories defined above.\" Which term fits that view best is a judgement."
+     ]
+    },
+    {
+     "id": "796-o9-android",
+     "name": "O9 launch_location on Template and content deep-linked XML AIT requests",
+     "release": "TS102796",
+     "component": "android",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.2.4.4.6, referring to TS 102 796 V1.8.1 clause 6.2.2.6.2"
+     },
+     "repos": [
+      "rt-dvb-i-android-application"
+     ],
+     "cases": [
+      {
+       "case": "C9.1 lloc on Template and content deep-linked XML AIT requests, with a table 2a value",
+       "verdict": "implemented",
+       "what": "Both requests carry lloc=epg, the table 2a term for a full-screen view within the guide, with the regionID[] values.",
+       "repo": "rt-dvb-i-android-application",
+       "locator": "TS 102 796 V1.8.1 clause 6.2.2.6.2, table 2a, row epg"
+      }
+     ],
+     "noted": [
+      "Both clients send \"epg\" also when the programme is opened from the browse view; table 2a row browse reads \"Any view showing browsable content choices and which does not fall within the categories defined above.\" Which term fits that view best is a judgement."
+     ]
+    },
+    {
+     "id": "796-o10-provider",
+     "name": "O10 Image formats",
+     "release": "TS102796",
+     "component": "provider",
+     "spec": {
+      "doc": "TS 103 770",
+      "version": "V1.2.1",
+      "locator": "clause 5.2.8.3, referring to TS 102 796 V1.8.1 clause 7.1.1"
+     },
+     "repos": [
+      "rt-dvb-i-application-provider"
+     ],
+     "cases": [
+      {
+       "case": "C10.1 Images signalled are JPEG or PNG, the type in MediaUri@contentType",
+       "verdict": "implemented",
+       "what": "Service logos and programme images are signalled only as image/jpeg or image/png, in MediaUri@contentType; an uploaded logo, or an image given as a data: URL, only when its bytes are that format.",
+       "repo": "rt-dvb-i-application-provider"
+      },
+      {
+       "case": "C10.2 No GIF",
+       "verdict": "implemented",
+       "what": "GIF is never signalled, and an upload in GIF, or under another format's extension, is refused.",
+       "repo": "rt-dvb-i-application-provider"
+      },
+      {
+       "case": "C10.3 Graphics formats as OIPF Release 2 volume 2 clause 9.1 gives them",
+       "verdict": "implemented",
+       "what": "The media types are those clause 9.1 names, image/jpeg and image/png; an image the provider holds (an upload, a data: URL) is checked to be a PNG datastream or a JFIF JPEG, the formats clause 9.1 names.",
+       "repo": "rt-dvb-i-application-provider",
+       "locator": "TS 102 796 V1.8.1 clause 7.1.1; OIPF Release 2 Specification volume 2 V2.3 clause 9.1.3"
+      }
+     ],
+     "noted": [
+      "An image at another server is signalled from its file extension and never fetched, so its bytes are not checked; that server is the one returning it. Logos uploaded before e3bb3a1 are not checked again.",
+      "TS 102 796 V1.8.1 clause 7.1.1: \"The graphics formats used shall comply with clause 9.1 of the OIPF media formats specification [2].\" The clients and the registry return no images, so the obligation does not apply to them; the clients now show only JPEG and PNG images (judged under the TS 103 770 features).",
+      "Not judged here (TS 103 770's own part of the sentence, \"of the required dimensions\"): the logo endpoint ignores w, as recorded under image requests."
+     ]
     }
    ]
   }
