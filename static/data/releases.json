@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-02 02:40 UTC",
+  "updated_at": "2026-10-03 02:26 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -218,8 +218,17 @@
       "tagline": "Multicast and Broadcast delivery for 5G-NR-based terrestrial and non-terrestrial networks",
       "releases_slug": "#repositories--releases",
       "image": "/assets/images/projects/5g-mbs.png",
-      "latest_date": "2026-09-01",
+      "latest_date": "2026-10-02",
       "releases": [
+        {
+          "repo": "rt-mbs-examples",
+          "branch": null,
+          "tag": "rt-mbs-examples-v0.4.0",
+          "date": "2026-10-02",
+          "url": "https://github.com/5G-MAG/rt-mbs-examples/releases/tag/rt-mbs-examples-v0.4.0",
+          "author_login": "dsilhavy",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
+        },
         {
           "repo": "rt-libflute",
           "branch": null,
@@ -255,15 +264,6 @@
           "url": "https://github.com/5G-MAG/srsRAN_Project_mbs/releases/tag/v0.1.4-5mbs-srsRAN_Project",
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4"
-        },
-        {
-          "repo": "rt-mbs-examples",
-          "branch": null,
-          "tag": "rt-mbs-examples-v0.3.0",
-          "date": "2026-07-06",
-          "url": "https://github.com/5G-MAG/rt-mbs-examples/releases/tag/rt-mbs-examples-v0.3.0",
-          "author_login": "dsilhavy",
-          "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
         },
         {
           "repo": "rt-mbs-function",
