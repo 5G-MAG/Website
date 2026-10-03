@@ -47,7 +47,7 @@
    "repos": [
     {
      "repo": "rt-dvb-i-application-provider",
-     "commit": "7456fd7",
+     "commit": "d6dfab5",
      "version": ""
     }
    ]
@@ -5030,14 +5030,15 @@
       },
       {
        "case": "C8.2 Version fields as table 5 sets them",
-       "verdict": "differs",
-       "what": "Any of the eight versions a terminal launches, 1.1.1 to 1.8.1, is accepted and written as configured; table 5 says the version fields shall be set to 1.8.1, and table 7 has the XML AIT carry the same values as table 5.",
+       "verdict": "implemented",
+       "what": "Only 1.8.1 is accepted for the version fields, and a player configured with another version is refused on save and offers no programme on demand, so every XML AIT written carries 1.8.1, as table 5 sets it.",
        "repo": "rt-dvb-i-application-provider",
        "locator": "TS 102 796 V1.8.1 clause 7.2.3.1, table 5, row 5.2.5; clause 7.2.3.2, table 7, row mhpVersion"
       }
      ],
      "noted": [
-      "Two readings were recorded for C8.2 (repository COMPLIANCE.md, caaf6f8). TS 102 809 V1.3.1 clause 5.2.5.1: \"These fields define the minimum platform profile and version of that profile required by the application.\" On that reading a producer may write the minimum version an application needs, and any of the eight is what the provider accepts. Table 5 reads \"The version fields shall be set as follows\" (version.major = 1, version.minor = 8, version.micro = 1), and table 7, row mhpVersion, column \"Requirement on XML AIT file\": \"Shall be the same values as defined for the MPEG-2 encoding of the AIT under \"platform profiles\" in Table 5.\" Writing 1.8.1 meets both, so the two do not contradict each other on what a producer may write, and the case is judged on table 5. The owner can settle it by confining the check to 1.8.1."
+      "Two readings were recorded for C8.2 (repository COMPLIANCE.md, caaf6f8). TS 102 809 V1.3.1 clause 5.2.5.1: \"These fields define the minimum platform profile and version of that profile required by the application.\" On that reading a producer may write the minimum version an application needs, and any of the eight is what the provider accepts. Table 5 reads \"The version fields shall be set as follows\" (version.major = 1, version.minor = 8, version.micro = 1), and table 7, row mhpVersion, column \"Requirement on XML AIT file\": \"Shall be the same values as defined for the MPEG-2 encoding of the AIT under \"platform profiles\" in Table 5.\" Writing 1.8.1 meets both, so the two do not contradict each other on what a producer may write, and the case is judged on table 5. The owner can settle it by confining the check to 1.8.1.",
+      "applicationDescriptor/version: table 7 replaces ipi:Version with mhp:unsignedInt31Bit for both the file and the terminal. That type is defined in none of the schemas held (mis_xmlait.xsd, the TS 102 796 V1.8.1 electronic attachments); the provider checks the ipi:Version form. Not judged: unverified, could not obtain the schema that defines mhp:unsignedInt31Bit (the oipf/imports/mis_xmlait.xsd that hbbtv_application_descriptor.xsd imports)."
      ]
     },
     {
