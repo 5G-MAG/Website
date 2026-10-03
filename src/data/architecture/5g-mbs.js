@@ -4,8 +4,8 @@
 // Entities, layers and reference points are taken from the specifications, not
 // from how the tools happen to be packaged: the map should still be readable by
 // someone who has never seen this codebase. `component` links an entity to the
-// implementation board in src/data/implementation/5g-mbs.js, so its state is
-// derived from the same audit rows rather than restated here and left to drift.
+// code audit (src/data/audit-5g-mbs.json, rolled up on the project page), so its
+// state is derived from the same cases rather than restated here and left to drift.
 export const MBS_ARCHITECTURE = {
   spec: '3GPP TS 23.247 (system architecture) and TS 26.502 (user services)',
   layers: [
@@ -48,6 +48,7 @@ export const MBS_ARCHITECTURE = {
       spec: 'TS 26.502',
       repo: 'rt-mbs-application-provider',
       repoUrl: 'https://github.com/5G-MAG/rt-mbs-application-provider',
+      component: 'Provider',
     },
     {
       id: 'mbsf',
@@ -72,8 +73,8 @@ export const MBS_ARCHITECTURE = {
       label: 'MB-SMF',
       layer: 'core',
       spec: 'TS 23.247, Nmb1 per TS 29.532',
-      repo: 'open5gs (5mbs)',
-      repoUrl: 'https://github.com/5G-MAG/open5gs/tree/5mbs',
+      repo: 'open5gs',
+      repoUrl: 'https://github.com/5G-MAG/open5gs',
       component: 'MB-SMF',
     },
     {
@@ -81,16 +82,17 @@ export const MBS_ARCHITECTURE = {
       label: 'MB-UPF',
       layer: 'core',
       spec: 'TS 23.247, N4mb per TS 29.244',
-      repo: 'open5gs (5mbs)',
-      repoUrl: 'https://github.com/5G-MAG/open5gs/tree/5mbs',
+      repo: 'open5gs',
+      repoUrl: 'https://github.com/5G-MAG/open5gs',
+      component: 'MB-UPF',
     },
     {
       id: 'amf',
       label: 'AMF',
       layer: 'core',
       spec: 'Namf_MBSBroadcast per TS 29.518',
-      repo: 'open5gs (5mbs)',
-      repoUrl: 'https://github.com/5G-MAG/open5gs/tree/5mbs',
+      repo: 'open5gs',
+      repoUrl: 'https://github.com/5G-MAG/open5gs',
       component: 'AMF',
     },
     {
@@ -122,8 +124,8 @@ export const MBS_ARCHITECTURE = {
       label: 'gNB (CU-CP, CU-UP, DU)',
       layer: 'ran',
       spec: 'TS 38.413, TS 38.463, TS 38.473',
-      repo: 'rt-srsRAN_Project (5mbs)',
-      repoUrl: 'https://github.com/5G-MAG/rt-srsRAN_Project/tree/5mbs',
+      repo: 'srsRAN_Project_mbs',
+      repoUrl: 'https://github.com/5G-MAG/srsRAN_Project_mbs',
       component: 'gNB',
     },
     {
@@ -131,9 +133,9 @@ export const MBS_ARCHITECTURE = {
       label: 'UE modem',
       layer: 'ue',
       spec: 'TS 38.331 (SIB20, MCCH, MTCH)',
-      repo: 'srsRAN_4G (5mbs)',
-      repoUrl: 'https://github.com/5G-MAG/srsRAN_4G/tree/5mbs',
-      component: 'Uu radio (gNB + UE)',
+      repo: 'srsRAN_4G_mbs',
+      repoUrl: 'https://github.com/5G-MAG/srsRAN_4G_mbs',
+      component: 'UE',
     },
     {
       id: 'mbs-client',
@@ -142,6 +144,7 @@ export const MBS_ARCHITECTURE = {
       spec: 'TS 26.502, MBS-4-MC reception',
       repo: 'rt-mbs-client',
       repoUrl: 'https://github.com/5G-MAG/rt-mbs-client',
+      component: 'MBS Client',
     },
     {
       id: 'mbs-app',
@@ -150,7 +153,8 @@ export const MBS_ARCHITECTURE = {
       spec: 'TS 26.502, MBS-6 and MBS-7 consumer',
       repo: 'rt-mbs-application',
       repoUrl: 'https://github.com/5G-MAG/rt-mbs-application',
+      component: 'MBS-Aware Application',
     },
   ],
-  note: 'The chain above is the MBS Broadcast delivery mode. MBS Multicast is defined by the same architecture: its MB-SMF/MB-UPF data path (N6mb ingest, shared GTP-U delivery) already exists, but the UE session join via the SMF, PTP/PTM switching and group paging do not yet.',
+  note: 'The map shows MBS Broadcast. MBS Multicast is defined by the same architecture; its status is on the Implementation Detail page.',
 };
