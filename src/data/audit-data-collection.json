@@ -3,7 +3,7 @@
  "title": "UE Data Collection, Reporting and Event Exposure",
  "audited": "2026-10-02",
  "tier": "T0",
- "method": "code read at the commits listed, nothing built or run",
+ "method": "code read, nothing built or run",
  "releases": {
   "R18": "Data collection framework, Release 18: TS 26.531 V18.2.0, TS 26.532 V18.3.0 (provisioning API V18.2.0) and TS 29.517 V18.6.0, as the build pins",
   "R17": "5GMS integration, Release 17: TS 26.501 V17.10.0 and TS 26.512 V17.10.0, as the 5GMS AF pins",
@@ -29,7 +29,6 @@
    "repos": [
     {
      "repo": "rt-data-collection-application-function",
-     "commit": "cef77bc",
      "version": ""
     }
    ]
@@ -41,7 +40,6 @@
    "repos": [
     {
      "repo": "rt-data-collection-application-function",
-     "commit": "cef77bc",
      "version": ""
     }
    ]
@@ -53,7 +51,6 @@
    "repos": [
     {
      "repo": "rt-data-collection-application-function",
-     "commit": "cef77bc",
      "version": ""
     }
    ]
@@ -65,19 +62,17 @@
    "repos": [
     {
      "repo": "rt-5gms-application-function",
-     "commit": "ce8d19e",
      "version": "v1.4.7"
     }
    ]
   },
   "msaf-branch": {
    "short": "5GMS AF (DCAF branches)",
-   "name": "5GMS AF, unmerged branches Feature/DCAF (9ffb2dd, the code) and feature/Integrate-DCAF (f01710f, development plus an integration plan only)",
-   "builtAgainst": "the AF pins unchanged, plus the DCAF library wrap at 4800883 (cef77bc plus build-file changes only)",
+   "name": "5GMS AF, unmerged branches Feature/DCAF (the code) and feature/Integrate-DCAF (development plus an integration plan only)",
+   "builtAgainst": "the AF pins unchanged, plus the DCAF library wrap (the audited library plus build-file changes only)",
    "repos": [
     {
      "repo": "rt-5gms-application-function",
-     "commit": "9ffb2dd",
      "version": "Feature/DCAF"
     }
    ]
@@ -89,7 +84,6 @@
    "repos": [
     {
      "repo": "rt-5gms-application-server",
-     "commit": "6ab1109",
      "version": "1.2.5"
     }
    ]
@@ -101,12 +95,10 @@
    "repos": [
     {
      "repo": "rt-5gms-media-session-handler",
-     "commit": "0a2f54c",
      "version": "v1.3.0"
     },
     {
      "repo": "rt-5gms-media-stream-handler",
-     "commit": "ffae70a",
      "version": "v1.3.0"
     }
    ]
@@ -118,7 +110,6 @@
    "repos": [
     {
      "repo": "rt-5gms-application-provider",
-     "commit": "297c7be",
      "version": "1.3.0"
     }
    ]
@@ -3299,7 +3290,7 @@
      ],
      "noted": [
       "Library initialisation runs whether or not the dcafIntegration setting is true, and runs a second time when it is true.",
-      "The second branch, feature/Integrate-DCAF (f01710f), adds only an integration plan document and no code."
+      "The second branch, feature/Integrate-DCAF, adds only an integration plan document and no code."
      ]
     },
     {

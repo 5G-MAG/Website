@@ -3,7 +3,7 @@
  "title": "5G Media Streaming (5GMS)",
  "audited": "2026-10-02",
  "tier": "T0",
- "method": "code read on the development branches at the commits listed, nothing built or run",
+ "method": "code read on the development branches, nothing built or run",
  "releases": {
   "R17": "Release 17: TS 26.512 V17.10.0 and its OpenAPI files",
   "R19": "Release 18/19: TS 26.510 V19.2.0 and TS 26.512 V19.3.0"
@@ -42,7 +42,6 @@
    "repos": [
     {
      "repo": "rt-5gms-application-function",
-     "commit": "ce8d19e",
      "version": "v1.4.7"
     }
    ]
@@ -50,11 +49,10 @@
   "as": {
    "short": "AS",
    "name": "5GMS Application Server",
-   "builtAgainst": "5G_APIs floating REL-17 branch (identical to V17.10.0 on 2026-10-01); M3: 5G-MAG /3gpp-m3/v1 from rt-common-shared 401b015",
+   "builtAgainst": "5G_APIs floating REL-17 branch (identical to V17.10.0 on 2026-10-01); M3: 5G-MAG /3gpp-m3/v1 from rt-common-shared, at the commit the build pins",
    "repos": [
     {
      "repo": "rt-5gms-application-server",
-     "commit": "6ab1109",
      "version": "1.2.5"
     }
    ]
@@ -66,22 +64,18 @@
    "repos": [
     {
      "repo": "rt-5gms-media-session-handler",
-     "commit": "0a2f54c",
      "version": "v1.3.0"
     },
     {
      "repo": "rt-5gms-media-stream-handler",
-     "commit": "ffae70a",
      "version": "v1.3.0"
     },
     {
      "repo": "rt-5gms-common-android-library",
-     "commit": "d1e5abb",
      "version": "v1.3.0"
     },
     {
      "repo": "rt-5gms-application",
-     "commit": "6536205",
      "version": "v1.3.0"
     }
    ]
@@ -93,7 +87,6 @@
    "repos": [
     {
      "repo": "rt-5gms-application-provider",
-     "commit": "297c7be",
      "version": "1.3.0"
     }
    ]
@@ -5971,8 +5964,8 @@
      "component": "af",
      "spec": {
       "doc": "5G-MAG M3",
-      "version": "/3gpp-m3/v1 at rt-common-shared 401b015 (M3_ContentHostingProvisioning.yaml info.version 0.1.0, M3_ServerCertificatesProvisioning.yaml info.version 0.0.0)",
-      "locator": "rt-common-shared 401b015, 5gms/5G_APIs-overrides/M3_ContentHostingProvisioning.yaml and M3_ServerCertificatesProvisioning.yaml (server {apiRoot}/3gpp-m3/v1)"
+      "version": "/3gpp-m3/v1 in rt-common-shared (M3_ContentHostingProvisioning.yaml info.version 0.1.0, M3_ServerCertificatesProvisioning.yaml info.version 0.0.0)",
+      "locator": "rt-common-shared, 5gms/5G_APIs-overrides/M3_ContentHostingProvisioning.yaml and M3_ServerCertificatesProvisioning.yaml (server {apiRoot}/3gpp-m3/v1)"
      },
      "repos": [
       "rt-5gms-application-function"
@@ -6047,7 +6040,8 @@
       "When the AS answers a destroy request with an error (for example 404, or 409 for a certificate still in use), the request stays at the head of the queue and the AF sends it again straight away, with no limit on retries.",
       "The AF accepts enumeration entries either as bare identifiers or as resource paths, keeping the last path element.",
       "The AF names certificates on M3 as \"{provisioningSessionId}:{certificateId}\" so that identifiers are unique across Provisioning Sessions.",
-      "The AF talks M3 to each configured AS one request at a time, driven by a queue per AS (certificates first, then configurations, then deletions, then purges)."
+      "The AF talks M3 to each configured AS one request at a time, driven by a queue per AS (certificates first, then configurations, then deletions, then purges).",
+      "The M3 API is read in rt-common-shared, at the commit the build pins."
      ]
     },
     {
@@ -6057,8 +6051,8 @@
      "component": "as",
      "spec": {
       "doc": "5G-MAG M3",
-      "version": "/3gpp-m3/v1 at rt-common-shared 401b015 (M3_ContentHostingProvisioning.yaml info.version 0.1.0, M3_ServerCertificatesProvisioning.yaml info.version 0.0.0)",
-      "locator": "rt-common-shared 401b015, 5gms/5G_APIs-overrides/M3_ContentHostingProvisioning.yaml and M3_ServerCertificatesProvisioning.yaml (server {apiRoot}/3gpp-m3/v1)"
+      "version": "/3gpp-m3/v1 in rt-common-shared (M3_ContentHostingProvisioning.yaml info.version 0.1.0, M3_ServerCertificatesProvisioning.yaml info.version 0.0.0)",
+      "locator": "rt-common-shared, 5gms/5G_APIs-overrides/M3_ContentHostingProvisioning.yaml and M3_ServerCertificatesProvisioning.yaml (server {apiRoot}/3gpp-m3/v1)"
      },
      "repos": [
       "rt-5gms-application-server"
@@ -6126,7 +6120,8 @@
       "A purge request without a pattern purges every cached entry for that Content Hosting Configuration.",
       "An unchanged Content Hosting Configuration update is answered 204 through the error path, so the 204 is built with a problem+json body.",
       "Content Hosting Configurations are keyed by the provisioning session identifier, so the AS holds at most one per Provisioning Session.",
-      "The M3 server is generated from a merged 5G-MAG definition titled \"Prototype 5GMS AS M3 API\", version 0.0.0."
+      "The M3 server is generated from a merged 5G-MAG definition titled \"Prototype 5GMS AS M3 API\", version 0.0.0.",
+      "The M3 API is read in rt-common-shared, at the commit the build pins."
      ]
     },
     {

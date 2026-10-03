@@ -166,7 +166,7 @@ export default function ImplementationCases({ data, only }) {
             {c.repos.map((r, i) => (
               <React.Fragment key={r.repo}>
                 {i > 0 && ', '}
-                <a href={`https://github.com/5G-MAG/${r.repo}`} target="_blank" rel="noreferrer">{r.repo}</a> {r.commit}
+                <a href={`https://github.com/5G-MAG/${r.repo}`} target="_blank" rel="noreferrer">{r.repo}</a>{r.version ? ` ${r.version}` : ''}
               </React.Fragment>
             ))}
             {c.builtAgainst ? `. Built against: ${c.builtAgainst}.` : '.'}

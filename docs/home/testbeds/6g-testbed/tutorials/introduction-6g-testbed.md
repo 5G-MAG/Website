@@ -185,7 +185,7 @@ An introduction to the network emulator and the AI traffic characterization fram
 
 - **Steps, extension and vLLM:** TR 26.870 V0.6.1, annex B.1 and B.3.
 - **Network emulator:** TR 26.870 V0.6.1, annex E.1 and listing 4.4.3-1.
-- **Commands, requirements, Docker and `run_full_tests.sh`:** the README files of the 6G-Testbed repository (root and `aitestbed/`), `development` branch at commit d505a20.
+- **Commands, requirements, Docker and `run_full_tests.sh`:** the README files of the 6G-Testbed repository (root and `aitestbed/`), `development` branch.
 - **Token and real-time video scenarios:** TR 26.870 V0.6.1, clauses D.1.2.1, D.1.2.5 and C.8.6.2; commands from `aitestbed/README.md` on the `development` branch.
 
 </details>

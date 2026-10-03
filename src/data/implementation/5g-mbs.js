@@ -60,7 +60,7 @@ export const MBS_SECTIONS = [
       {
         feature: "MBS User Service: retrieve collection (GET `/mbs-user-services`)",
         status: "yes",
-        note: "returns the full JSON array of active User Services; this reached the release branch since the earlier 400-rejection behaviour was recorded (release-branch commit 4780a25)",
+        note: "returns the full JSON array of active User Services; this reached the release branch since the earlier 400-rejection behaviour was recorded",
       },
       {
         feature: "MBS User Service: update (PUT)",
@@ -69,7 +69,7 @@ export const MBS_SECTIONS = [
       {
         feature: "MBS User Service: modify (PATCH, RFC 7396)",
         status: "yes",
-        note: "reached the release branch (commit b37a022), superseding the earlier hold pending [Standards#182](https://github.com/5G-MAG/Standards/issues/182) ([issue #45](https://github.com/5G-MAG/rt-mbs-function/issues/45))",
+        note: "reached the release branch, superseding the earlier hold pending [Standards#182](https://github.com/5G-MAG/Standards/issues/182) ([issue #45](https://github.com/5G-MAG/rt-mbs-function/issues/45))",
       },
       {
         feature: "MBS User Service: delete",
@@ -101,7 +101,7 @@ export const MBS_SECTIONS = [
       {
         feature: "ModifyIndMBSUserDataIngSession (PATCH, RFC 7396)",
         status: "partial",
-        note: "add/update of `mbsDisSessInfos` map entries now merges key-by-key rather than replacing the whole map (release-branch commit f3cf170); but the clause's own delete-via-null-entry case (TS 29.580 §5.3.2.4.2: \"if an existing MBS Distribution Session shall be deleted, the AF shall include the corresponding map entry set to the value 'NULL'\") is explicitly rejected with 400 — a stated non-implementation, not a bug",
+        note: "add/update of `mbsDisSessInfos` map entries now merges key-by-key rather than replacing the whole map; but the clause's own delete-via-null-entry case (TS 29.580 §5.3.2.4.2: \"if an existing MBS Distribution Session shall be deleted, the AF shall include the corresponding map entry set to the value 'NULL'\") is explicitly rejected with 400 — a stated non-implementation, not a bug",
       },
       {
         feature: "DeleteIndMBSUserDataIngSession",

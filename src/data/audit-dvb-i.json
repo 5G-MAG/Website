@@ -3,7 +3,7 @@
  "title": "DVB-I Services over 5G Systems",
  "audited": "2026-10-02",
  "tier": "T0",
- "method": "code read at the commits listed, nothing built or run for the verdicts (the repositories' own tests pass at these commits). Read at 7a9ae28, 003ce59 and 97721a6; moved to 32d8344, f06e618 and 8708485 (development, 2026-10-02), which replace the local 5G extension with IdentifierBasedDeliveryParameters: evidence lines remapped through the diff, and the entries on the changed code re-read. The audit was then moved to fa1a63c, bb46926 and 1f33245 (development) after the compliance work, and all cases of the provider, client and registry were re-judged by a second reader on 2026-10-02 against the code at those commits, with the repositories' test suites run and passing. The audit was then moved to 1bee9af, 1416c9d and 893d068 (development) after the owner decisions D6 to D8 (D6: plain HTTP with a warning where no certificate is configured; D7: Genre terms always checked by the registry; D8: a regulator list always the default in the client), and the affected cases re-judged on 2026-10-02. Evidence then moved to 272eb70, 733290f and c05d531, which add licence headers (code unchanged; line numbers remapped) and, in the client, show an application as unavailable when its XML AIT has none it can run (7ce6c39). On 2026-10-02 the feature DVB-I over 5G was added at the same commits: every obligation of plans/5g-obligations.md re-judged per case against TS 103 770 V1.2.1, TS 26.347 V18.1.0 (with TS 26.346 V18.2.0) and TR 103 972 V1.1.1, the last read as informative guidelines, with TS 26.501 and TS 26.512 V17.10.0 used to check its Release 16 wording. On 2026-10-03 the evidence moved to 88a0ed3, 01e7349 and 3851c11, which change one README line each (code unchanged), and the feature DVB-I over 5G was re-judged per case by a second reader at those commits and at 6536205 for the Exo DVB-I Player; the Android client 5G-MAGflix for DVB-I (rt-dvb-i-android-application bc680cb) was added for every client-side requirement of that feature, read in code; its library unit tests and the build of its three variants passed in the repository's own CI at that commit, and the plain variant was looked at on a phone against the demo list. 2026-10-03: TS 102 796 V1.8.1 feature added, cases re-judged at these commits (17c3dd2, 7456fd7, 40bd4aa, 156ec8c; the Exo DVB-I Player unchanged at 6536205), by the auditor in code, evidence remapped through the diffs. An independent A5 reader re-checked the TS 102 796 feature and the three requirements whose verdicts changed at these commits (sl-5.2.4-app, 5gb-26347-6.3.3-android, 5gb-26347-8.2.2-provider) on 2026-10-03; the other requirements remapped at these commits were not independently reviewed.",
+ "method": "code read on the development branch of each repository, nothing built or run for the verdicts (the repositories' own tests pass); re-read after each change to the code, with an independent reader re-checking the TS 102 796 feature and the requirements whose verdicts changed",
  "releases": {
   "V121": "ETSI TS 103 770 V1.2.1 (2024-09), Service Discovery and Programme Metadata for DVB-I, with its schemas (annex B)",
   "TR972": "ETSI TR 103 972 V1.1.1 (2023-07), DVB-I service delivery over 5G Systems; Deployment Guidelines (informative: it obliges no one)",
@@ -35,7 +35,6 @@
    "repos": [
     {
      "repo": "rt-dvb-i-application",
-     "commit": "17c3dd2",
      "version": ""
     }
    ]
@@ -47,7 +46,6 @@
    "repos": [
     {
      "repo": "rt-dvb-i-application-provider",
-     "commit": "688de42",
      "version": ""
     }
    ]
@@ -59,7 +57,6 @@
    "repos": [
     {
      "repo": "rt-dvb-i-service-list-registry",
-     "commit": "7003ba5",
      "version": ""
     }
    ]
@@ -71,7 +68,6 @@
    "repos": [
     {
      "repo": "rt-5gms-application",
-     "commit": "6536205",
      "version": "v1.3.0"
     }
    ]
@@ -83,7 +79,6 @@
    "repos": [
     {
      "repo": "rt-dvb-i-android-application",
-     "commit": "156ec8c",
      "version": ""
     }
    ]
@@ -2553,7 +2548,7 @@
      ],
      "noted": [
       "The app is built in three variants from one DVB-I code base: the plain DVB-I client, the DVB-I client acting as MBMS-Aware Application (5G Broadcast) and the DVB-I client acting as 5GMSd-Aware Application (5G Media Streaming). Each variant supplies the MBMS Client the app uses through one interface named after the TS 26.347 Media Streaming API; the plain and 5G Media Streaming variants use a stand-in that refuses registration, and the 5G Broadcast variant links an adapter for the MBMS Middleware for Android that hands every call to the same stand-in. The 5G Media Streaming adapter holds only a status. All three variants therefore behave as the plain client.",
-      "The MBMS Middleware for Android (5G-MAG rt-mbms-mw-android) offers no interface another app can bind to: the bind method of its middleware service reads TODO(\"Not yet implemented\") on main 03a4a63 and on development cf85791 (read on GitHub, 2026-10-03). Until it does, the 5G Broadcast variant cannot reach an MBMS Client.",
+      "The MBMS Middleware for Android (5G-MAG rt-mbms-mw-android) offers no interface another app can bind to: the bind method of its middleware service reads TODO(\"Not yet implemented\") on its main and development branches (read on GitHub, 2026-10-03). Until it does, the 5G Broadcast variant cannot reach an MBMS Client.",
       "The client shows a 5G Broadcast badge for a service with an mbms:// instance, with its priority and the MBMS User Service it names, and marks it in red when the locator is not an MBMS URL; the player lists every 5G Broadcast instance with its check and why it is not received. Observed 2026-10-03 on an Android phone running the plain variant against the demo list, which has no 5G Broadcast instance: neither the 5G Broadcast nor the 5G Media Streaming badge appears on the home screen or in the player, and the service plays over DASH. The badges for a valid and an invalid locator were not seen on the phone, since the demo list has neither; the locator check and the instance selection on the 5G fixtures are covered by the library's unit tests, the badge code itself is not under test, and the build installed on the phone was not matched to the commit.",
       "Clause 9.3.3 acts on a service instance with an mbms:// locator but names no element that carries it. The client reads it from IdentifierBasedDeliveryParameters, as the browser client and the provider do; this is a reading, not a verdict.",
       "The locator check is the browser client's, ported: it marks &name=value pairs outside the Receive-only Mode form as wrong (TS 26.347 clause 8.2.2 also has a handler ignore them) and refuses a scheme in capitals; a bracketed host is checked against the IP-literal grammar of RFC 3986 clause 3.2.2, as in the browser client. Only the first 5G Broadcast instance of a service is shown on its badge."
@@ -5037,7 +5032,7 @@
       }
      ],
      "noted": [
-      "Two readings were recorded for C8.2 (repository COMPLIANCE.md, caaf6f8). TS 102 809 V1.3.1 clause 5.2.5.1: \"These fields define the minimum platform profile and version of that profile required by the application.\" On that reading a producer may write the minimum version an application needs, and any of the eight is what the provider accepts. Table 5 reads \"The version fields shall be set as follows\" (version.major = 1, version.minor = 8, version.micro = 1), and table 7, row mhpVersion, column \"Requirement on XML AIT file\": \"Shall be the same values as defined for the MPEG-2 encoding of the AIT under \"platform profiles\" in Table 5.\" Writing 1.8.1 meets both, so the two do not contradict each other on what a producer may write, and the case is judged on table 5. The owner can settle it by confining the check to 1.8.1.",
+      "Two readings were recorded for C8.2 (the repository's COMPLIANCE.md). TS 102 809 V1.3.1 clause 5.2.5.1: \"These fields define the minimum platform profile and version of that profile required by the application.\" On that reading a producer may write the minimum version an application needs, and any of the eight is what the provider accepts. Table 5 reads \"The version fields shall be set as follows\" (version.major = 1, version.minor = 8, version.micro = 1), and table 7, row mhpVersion, column \"Requirement on XML AIT file\": \"Shall be the same values as defined for the MPEG-2 encoding of the AIT under \"platform profiles\" in Table 5.\" Writing 1.8.1 meets both, so the two do not contradict each other on what a producer may write, and the case is judged on table 5. By owner decision the provider now accepts only 1.8.1.",
       "applicationDescriptor/version: table 7 replaces ipi:Version with mhp:unsignedInt31Bit for both the file and the terminal. That type is defined in none of the schemas held (mis_xmlait.xsd, the TS 102 796 V1.8.1 electronic attachments); the provider checks the ipi:Version form. Not judged: unverified, could not obtain the schema that defines mhp:unsignedInt31Bit (the oipf/imports/mis_xmlait.xsd that hbbtv_application_descriptor.xsd imports)."
      ]
     },
@@ -5194,7 +5189,7 @@
       }
      ],
      "noted": [
-      "An image at another server is signalled from its file extension and never fetched, so its bytes are not checked; that server is the one returning it. Logos uploaded before e3bb3a1 are not checked again.",
+      "An image at another server is signalled from its file extension and never fetched, so its bytes are not checked; that server is the one returning it. Logos uploaded before the check was added are not checked again.",
       "TS 102 796 V1.8.1 clause 7.1.1: \"The graphics formats used shall comply with clause 9.1 of the OIPF media formats specification [2].\" The clients and the registry return no images, so the obligation does not apply to them; the clients now show only JPEG and PNG images (judged under the TS 103 770 features).",
       "Not judged here (TS 103 770's own part of the sentence, \"of the required dimensions\"): the logo endpoint ignores w, as recorded under image requests."
      ]
