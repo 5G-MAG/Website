@@ -32,7 +32,7 @@ For mobility handling specific to this scenario, see also [Analysis of Mobility 
 
 MBS Multicast over NTN combines two existing pieces without inventing a new service layer:
 
-- **MBS delivery mode 1 (multicast)** — this site's shorthand for the "Multicast MBS session" of [TS 23.247](https://www.3gpp.org/dynareport/23247.htm) (see [MBS Architecture](/tech/5g-mbs/architecture)) — targets sessions that need higher QoS and is available to devices in RRC_CONNECTED. The RAN can switch a device between point-to-point (PTP) and point-to-multipoint (PTM) delivery of the same multicast session; that autonomous switching is the central mechanism on this page. The MBS user-service layer above the transport is specified by SA4 in [TS 26.502](https://www.3gpp.org/dynareport/26502.htm), and 5G Media Streaming, which MBS user services extend, in [TS 26.501](https://www.3gpp.org/dynareport/26501.htm).
+- **MBS delivery mode 1 (multicast)** — this site's shorthand for the "Multicast MBS session" of [TS 23.247](https://www.3gpp.org/dynareport/23247.htm) (see [MBS Architecture](/tech/5g-mbs/architecture-system)) — targets sessions that need higher QoS and is available to devices in RRC_CONNECTED. The RAN can switch a device between point-to-point (PTP) and point-to-multipoint (PTM) delivery of the same multicast session; that autonomous switching is the central mechanism on this page. The MBS user-service layer above the transport is specified by SA4 in [TS 26.502](https://www.3gpp.org/dynareport/26502.htm), and 5G Media Streaming, which MBS user services extend, in [TS 26.501](https://www.3gpp.org/dynareport/26501.htm).
 - **NTN access**, defined at radio level in [TS 38.300](https://www.3gpp.org/dynareport/38300.htm) and [TS 38.331](https://www.3gpp.org/dynareport/38331.htm) (with the study background in [TR 38.811](https://www.3gpp.org/dynareport/38811.htm) and [TR 38.821](https://www.3gpp.org/dynareport/38821.htm)), which the multicast session simply runs over. The gNB referred to below is deployed either at a ground station, with the satellite acting as a transparent relay (Transparent Payload), or on board the satellite itself (Regenerative Payload) — TS 38.300's own term for the on-board node, in either case, is "NTN payload".
 
 The reason MBS Multicast fits NTN well is spectral efficiency: satellite spectrum is scarce, so serving many concurrent devices from one PTM transmission is attractive, while PTP remains available for the few or for reliability during handover.
@@ -50,7 +50,7 @@ The figure below shows the MBS Multicast over NTN scenario: an Application Servi
 
 :::warning
 To be checked: Provision of MBS Multicast services over the 5G Network with traffic originally coming from a streaming service available over the internet and to client applications already deployed in user equipment.
-Note that this is an aspect related to MBS and it is captured here: [MBS Architecture](../5g-mbs/architecture)
+Note that this is an aspect related to MBS and it is captured here: [MBS Architecture](../5g-mbs/architecture-system)
 :::
 
 ### Network and access to services
@@ -65,7 +65,7 @@ Note that this is an aspect related to MBS and it is captured here: [MBS Archite
 
 :::warning
 To be checked: Provision of MBS Multicast services which can be delivered either by means of point-to-point or point-to-multipoint and the mechanism by which concurrent consumption of a service by multiple users and session counting is performed.
-Note that this is an aspect related to MBS and it is captured here: [MBS Architecture](../5g-mbs/architecture)
+Note that this is an aspect related to MBS and it is captured here: [MBS Architecture](../5g-mbs/architecture-system)
 :::
 
 ### Device considerations
@@ -105,9 +105,9 @@ The requirement that switching be interruption-free is what ties this to reliabi
 | Mobility for the multicast group over NTN             | [Mobility for MBS Multicast over NTN](./analysis-mobility-mbs-multicast-over-ntn)                                                                                      |
 
 :::note[Partially verified against primary sources]
-Checked directly against TS 23.247 V19.3.0: Clause 4.1 ("Overview of multicast and broadcast communication") confirms that PTP/PTM switching for MBS multicast is supported and that "NG-RAN is the decision point for switching between PTP and PTM delivery methods" — matching this page's "autonomous switching by the gNB" framing. A specific "session counting" clause or algorithm was not found in TS 23.247; the exact trigger mechanism for switching appears to be left to RAN implementation (consistent with the equivalent finding on the terrestrial [MBS Architecture](../5g-mbs/architecture) page — "the specifications leave the exact algorithm to implementation"). TS 26.502's title and the release placement of MBS-over-NTN features (broadcast/multicast, GSO/NGSO) remain unconfirmed, since a full clause-by-clause reading of TS 23.247 for NTN-specific content was not performed.
+Checked directly against TS 23.247 V19.3.0: Clause 4.1 ("Overview of multicast and broadcast communication") confirms that PTP/PTM switching for MBS multicast is supported and that "NG-RAN is the decision point for switching between PTP and PTM delivery methods" — matching this page's "autonomous switching by the gNB" framing. A specific "session counting" clause or algorithm was not found in TS 23.247; the exact trigger mechanism for switching appears to be left to RAN implementation (consistent with the equivalent finding on the terrestrial [MBS Architecture](../5g-mbs/architecture-system) page — "the specifications leave the exact algorithm to implementation"). TS 26.502's title and the release placement of MBS-over-NTN features (broadcast/multicast, GSO/NGSO) remain unconfirmed, since a full clause-by-clause reading of TS 23.247 for NTN-specific content was not performed.
 :::
 
 ## Related
 
-- [MBS Architecture](../5g-mbs/architecture): the terrestrial PTP and PTM decision this page builds on
+- [MBS Architecture](../5g-mbs/architecture-system): the terrestrial PTP and PTM decision this page builds on

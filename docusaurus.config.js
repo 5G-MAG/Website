@@ -87,11 +87,13 @@ const config = {
           { from: '/tech/standards/5g-mbs-standards-evolution', to: '/standards/5g-mbs/evolution' },
           { from: '/tech/standards/5gms', to: '/standards/5gms' },
           { from: '/tech/5gms/features-5gmsd', to: '/tech/5gms/features' },
-          // 5G MBS Technical Analysis rebuilt on overview / architecture / features
-          // (2026-10-03); the three earlier pages were folded into architecture.
-          { from: '/tech/5g-mbs/mbs-service-layer', to: '/tech/5g-mbs/architecture' },
-          { from: '/tech/5g-mbs/mbs-service-system-aspects', to: '/tech/5g-mbs/architecture' },
-          { from: '/tech/5g-mbs/ran-aspects', to: '/tech/5g-mbs/architecture' },
+          // 5G MBS Technical Analysis rebuilt on overview / architecture / features (2026-10-03).
+          { from: '/tech/5g-mbs/mbs-service-layer', to: '/tech/5g-mbs/architecture-user-services' },
+          { from: '/tech/5g-mbs/mbs-service-system-aspects', to: '/tech/5g-mbs/architecture-system' },
+          { from: '/tech/5g-mbs/ran-aspects', to: '/tech/5g-mbs/architecture-system' },
+          // Architecture and Features split into an MBS User Services page and an MBS System page (2026-10-04)
+          { from: '/tech/5g-mbs/architecture', to: '/tech/5g-mbs/architecture-user-services' },
+          { from: '/tech/5g-mbs/features', to: '/tech/5g-mbs/features-user-services' },
           { from: '/tech/standards/6g', to: '/standards/6g' },
           { from: '/tech/standards/ai-ml', to: '/standards/ai-ml' },
           { from: '/tech/standards/avatar', to: '/standards/avatar' },

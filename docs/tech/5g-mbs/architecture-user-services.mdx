@@ -1,10 +1,12 @@
 ---
-title: Architecture
+title: "Architecture: MBS User Services"
+sidebar_label: Architecture - MBS User Services
 sidebar_position: 1
 hide_title: true
-description: The functions, reference points, services and delivery methods of MBS User Services (TS 26.502, TS 26.517) and of MBS in the 5G System and NG-RAN (TS 23.247, TS 38.300, TS 38.413).
+description: "The functions, reference points, services, distribution methods and sessions of MBS User Services (TS 26.502, TS 26.517, TS 29.580, TS 29.581)."
 ---
 
+import SpecFigure from '@site/src/components/SpecFigure';
 import JumpMenu from '@site/src/components/JumpMenu';
 
 <div class="topic-banner">
@@ -14,7 +16,7 @@ import JumpMenu from '@site/src/components/JumpMenu';
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Multicast Broadcast Services (MBS)</span>
-<h1>Architecture</h1>
+<h1>Architecture: MBS User Services</h1>
 </div>
 </div>
 
@@ -22,16 +24,12 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 - **MBS User Services:** the MBSF (control plane) and MBSTF (user plane) in the network, the optional MBS AF, MBS AS and MBSSF, and the MBS Client in the UE. TS 26.502 adds reference points MBS-1 to MBS-11 to the Nmb reference points of TS 23.247.
 - **APIs:** Nmbsf (TS 29.580) at Nmb10 and Nmb5, Nmbstf (TS 29.581) at Nmb2; the announcement, repair and key retrieval protocols at MBS-1, MBS-5, MBS-4-UC and MBS-10 are in TS 26.517.
-- **MBS:** the MB-SMF and MB-UPF, with MBS extensions to the AMF, SMF, UPF, PCF, NEF, NRF, UDM and NG-RAN. New reference points include N3mb, N4mb, N6mb and N19mb.
-- **Delivery:** 5GC Shared delivery (one copy to each NG-RAN node) is used for broadcast and multicast; 5GC Individual delivery (one copy per UE, in a PDU Session) only for multicast. Over the radio, NG-RAN uses PTM or PTP.
 
 :::
 
-<JumpMenu items={[["MBS User Services", "mbs-user-services"], ["Functions", "functions"], ["Reference points", "reference-points"], ["Services and APIs", "services-and-apis"], ["Distribution methods", "distribution-methods"], ["Sessions and their life cycle", "sessions-and-their-life-cycle"], ["How a User Service is provisioned and announced", "how-a-user-service-is-provisioned-and-announced"], ["MBS", "mbs"], ["Functions in the 5G System", "functions-in-the-5g-system"], ["Reference points and interfaces", "reference-points-and-interfaces"], ["Delivery methods", "delivery-methods"], ["NG-RAN", "ng-ran"], ["Multicast session states", "multicast-session-states"]]} />
+<JumpMenu items={[["Functions", "functions"], ["Reference points", "reference-points"], ["Services and APIs", "services-and-apis"], ["Distribution methods", "distribution-methods"], ["Sessions and their life cycle", "sessions-and-their-life-cycle"], ["How a User Service is provisioned and announced", "how-a-user-service-is-provisioned-and-announced"]]} />
 
-## MBS User Services
-
-### Functions
+## Functions
 
 - **MBSF:** receives provisioning and control from the MBS Application Provider, directly at Nmb10 or through the NEF at Nmb5. It invokes MBS Session operations on the MB-SMF at Nmb1 and configures the MBSTF at Nmb2. It compiles the User Service Announcement for each MBS User Data Ingest Session and manages its updates.
 - **MBSTF:** receives user plane data at Nmb8 and sends MBS data packets to the MB-UPF at Nmb9. It acts as a user plane anchor when it sources IP multicast traffic. It receives its Distribution Session configurations from the MBSF at Nmb2 and sends notification events back, for example data ingest failure, session terminated or delivery started. For the Object Distribution Method its subfunctions are object ingest, object segmentation into payload units, optional Application Layer FEC (AL-FEC), packetisation and packet scheduling to a target bit rate.
@@ -44,7 +42,9 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 The functions are shown as standalone. In deployments they may be co-located with other functions.
 
-### Reference points
+## Reference points
+
+<SpecFigure src="/img/tech/5g-mbs/generated/ts26502-fig4.3.1-1.svg" width={1191} height={752} spec="TS 26.502 V18.6.0" figure="4.3.1-1" title="MBS User Service reference architecture" alt="The UE holds the MBS-Aware Application and the MBS Client, which contains the MBSF Client and the MBSTF Client with its Media Server, joined at MBS-6 and MBS-7. In the DN, the MBSF, MBS AF, MBSSF, MBS AS and MBSTF, with the NEF, PCF and MB-SMF at Nmb5, Nmb12 and Nmb1, and the MBS Application Provider (AF/AS) at Nmb10, MBS-1 and Nmb8. Between UE and DN: MBS-5, MBS-10, MBS-4-UC and MBS-4-MC; MBS-8 joins the MBS-Aware Application and the MBS Application Provider. Exposed APIs are marked, and the key distinguishes MBS User Services, 5GS and External parts and their scopes." />
 
 TS 26.502 reuses seven reference points of TS 23.247 (Nmb1, Nmb2, Nmb5, Nmb8, Nmb9, Nmb10 and Nmb12) and adds its own.
 
@@ -76,7 +76,7 @@ Two more reference points, MBS-6′ and MBS-7′, sit inside the MBS Client betw
 
 </details>
 
-### Services and APIs
+## Services and APIs
 
 The MBSF exposes two services and the MBSTF one. An MBS Application Provider outside the trusted data network reaches the MBSF services through the NEF, as Nnef_MBSUserService and Nnef_MBSUserDataIngestSession. The protocol and data model of each service are specified in TS 29.580 (Nmbsf) and TS 29.581 (Nmbstf); TS 29.580 calls the Destroy operation of TS 26.502 "Delete".
 
@@ -99,7 +99,7 @@ The MBSF exposes two services and the MBSTF one. An MBS Application Provider out
 
 </details>
 
-### Distribution methods
+## Distribution methods
 
 | Method | What it delivers | Operating modes (TS 26.502 tables 6.1-1 and 6.2-1) |
 | --- | --- | --- |
@@ -110,11 +110,19 @@ When FLUTE realises the Object Distribution Method, the MBS Distribution Session
 
 For the Object Distribution Method, ingest at Nmb8 is pull-based (the MBSTF fetches objects from the MBS Application Provider) or push-based (the MBS Application Provider sends them).
 
-### Sessions and their life cycle
+<SpecFigure src="/img/tech/5g-mbs/generated/ts26502-fig4.3.3.2-1.svg" width={1189} height={1117} spec="TS 26.502 V18.6.0" figure="4.3.3.2-1" title="MBSTF architecture overview for Object Distribution Method" alt="Inside the MBSTF, Object ingest (fed at MBS-11, Nmb2 and Nmb8), Object segmentation, Application Layer FEC, Packetisation and Packet scheduling in a chain ending at Nmb9. Each stage is attached to a bus; Control, reached at Nmb2, sends Configuration to the bus and receives Events from it." />
+
+<SpecFigure src="/img/tech/5g-mbs/generated/ts26502-fig4.3.3.3-1.svg" width={1189} height={946} spec="TS 26.502 V18.6.0" figure="4.3.3.3-1" title="MBSTF architecture overview for Packet Distribution Method" alt="Inside the MBSTF, Packet ingest (fed at Nmb8), Application Layer FEC, Packetisation and Packet scheduling in a chain ending at Nmb9. Each stage is attached to a bus; Control, reached at Nmb2, sends Configuration to the bus and receives Events from it." />
+
+## Sessions and their life cycle
 
 An MBS Application Provider provisions an **MBS User Service**, and within it time-bound **MBS User Data Ingest Sessions**. Each ingest session has one or more **MBS Distribution Sessions**; an ingest session without any is not valid. A Distribution Session uses an MBS Session for delivery, identified by a TMGI or a Source-Specific Multicast (SSM) address. It has one MBS Session Context, unless several target service areas are specified.
 
+<SpecFigure src="/img/tech/5g-mbs/generated/ts26502-fig4.5.1-1.svg" width={1191} height={573} spec="TS 26.502 V18.6.0" figure="4.5.1-1" title="MBS User Services domain model" alt="Sessions between the UE, holding the MBS-Aware Application and the MBS Client (MBSF Client and MBSTF Client), and the DN, holding the MBSF, the MBSTF and the MBS Application Provider (AF/AS): MBS Application Session, MBS Application Data Session, MBS User Service Control, MBS User Service Session (MBSF Client to MBSF), MBS Distribution Session (MBSTF Client to MBSTF), MBS User Service Provisioning (MBSF) and MBS User Data Ingest Session (MBSTF), with numbered markers 1 to 9. A key marks MBS User Services and External." />
+
 An ingest session may carry a set of active periods. If none is given, it and its Distribution Sessions are active until further notice. The Service type (multicast or broadcast) of an MBS User Service cannot be changed; the other parameters assigned by the provider can be updated at any time.
+
+<SpecFigure src="/img/tech/5g-mbs/generated/ts26502-fig4.6.1-1.svg" width={706} height={511} spec="TS 26.502 V18.6.0" figure="4.6.1-1" title="Life-cycle model for MBS Distribution Session" alt="States INACTIVE, ESTABLISHED, ACTIVE and DEACTIVATING. Provision (1) enters INACTIVE; Shortly before start date-time, Establish (2) leads to ESTABLISHED; Error returns to INACTIVE; Start date-time, Activate (3) leads to ACTIVE; Fatal error, Release (4) and End date-time, Release (5) lead to DEACTIVATING, which returns to INACTIVE. Provisioning error and Expiry leave INACTIVE for the final state." />
 
 | State of a Distribution Session | What happens (TS 26.502 clause 4.6.1) |
 | --- | --- |
@@ -123,7 +131,7 @@ An ingest session may carry a set of active periods. If none is given, it and it
 | **ACTIVE** | At the start time, the MBSTF starts sending MBS data packets to the MB-UPF at Nmb9, and MBS Clients that activated reception start receiving at MBS-4-MC |
 | **DEACTIVATING** | At the end time, or on a severe error, the MBSF stops advertising the session, deactivates and releases it in the MBSTF, and releases the resources with the MB-SMF |
 
-### How a User Service is provisioned and announced
+## How a User Service is provisioned and announced
 
 TS 26.502 clauses 5.3 to 5.5, condensed, with the step numbers:
 
@@ -137,165 +145,6 @@ TS 26.502 clauses 5.3 to 5.5, condensed, with the step numbers:
 8. **Reception (clause 5.5.2).** The MBS-Aware Application asks the MBSF Client at MBS-6 to activate the User Service; the MBSTF Client receives the MBS data at MBS-4-MC.
 9. **Deactivation (clause 5.5.4).** At the end time, the MBSF tears down the MBS Session for a broadcast service, or for the last period. For a multicast service with further periods, it only deactivates the MBS Session.
 
-## MBS
-
-### Functions in the 5G System
-
-<details>
-<summary>Functions and their MBS roles (TS 23.247 clause 5.3.2)</summary>
-
-| Function | MBS role, as TS 23.247 lists it |
-| --- | --- |
-| **MB-SMF** | MBS session management, including QoS control; configures the MB-UPF; allocates and de-allocates TMGIs; for broadcast, controls shared delivery through the AMF; for multicast, provides MBS Session Context information to the SMF and controls the MB-UPF for individual delivery |
-| **MB-UPF** | Processes incoming downlink multicast and broadcast packets; enforces QoS; delivers data to NG-RAN nodes for 5GC Shared delivery, and multicast data to the UPF for 5GC Individual delivery |
-| **SMF** | Discovers the MB-SMF for a Multicast MBS session; authorises join requests if needed; interacts with RAN and UPF for individual delivery. The SMF and MB-SMF may be co-located |
-| **UPF** | Receives multicast data from the MB-UPF and delivers it to UEs through PDU Sessions, for individual delivery |
-| **AMF** | Signalling with NG-RAN and the MB-SMF for MBS Session management; selects the NG-RAN nodes for broadcast distribution and for multicast activation notification of UEs in CM-IDLE |
-| **NG-RAN** | Delivers MBS data over radio with PTM or PTP; controls switching between PTM and PTP per UE; supports multicast service continuity at Xn and N2 handover; group paging; may move multicast UEs to RRC_INACTIVE |
-| **UE** | Receives multicast with PTM or PTP in RRC_CONNECTED, and if supported with PTM in RRC_INACTIVE; receives broadcast with PTM; joins and leaves Multicast MBS sessions |
-| **AF** | Requests multicast or broadcast service with service information, including QoS requirements |
-| **NEF** | Interface to AFs for MBS service provisioning, session and QoS management; selects the MB-SMF |
-| **MBSF** | Service level functionality and interworking with LTE MBMS; selects the MB-SMF; controls the MBSTF if used |
-| **MBSTF** | Media anchor; sourcing of IP multicast; packet transport functions such as framing and FEC; delivery of input files as objects or object flows |
-| **PCF** | QoS handling and policy information for the MBS Session, when dynamic PCC is needed |
-| **UDM, UDR** | MBS subscription data for authorising UEs for multicast MBS sessions |
-| **NRF** | The MB-SMF and MBSF NF types; MB-SMF discovery |
-
-</details>
-
-### Reference points and interfaces
-
-<details>
-<summary>New reference points (TS 23.247 clause 5.3.1)</summary>
-
-| Reference point | Between |
-| --- | --- |
-| **N3mb** | RAN and MB-UPF |
-| **N4mb** | MB-SMF and MB-UPF (protocols in TS 29.244) |
-| **N6mb** | MB-UPF and AF/AS |
-| **N7mb** | MB-SMF and PCF |
-| **N11mb** | AMF and MB-SMF |
-| **N16mb** | SMF and MB-SMF |
-| **N19mb** | UPF and MB-UPF |
-| **N29mb** | MB-SMF and NEF |
-| **Nmb1** | MB-SMF and MBSF |
-| **Nmb2** | MBSF and MBSTF |
-| **Nmb5** | MBSF and NEF |
-| **Nmb8** | MBSTF and AF/AS |
-| **Nmb9** | MB-UPF and MBSTF |
-| **Nmb10** | MBSF and AF/AS |
-| **Nmb12** | MBSF and PCF |
-| **Nmb13** | MB-SMF and AF/AS |
-| **Nmb14** | NEF and MBSTF |
-| **N101** | MB-SMF and CHF |
-
-In functionality, Nmb13, N29mb and Nmb1 are identical, Nmb5 and Nmb10 are identical, and Nmb9 and N6mb are identical. The existing reference points N1, N2, N4, N5, N10, N11, N30, N33 and N40 are enhanced for MBS. Between NG-RAN and the MB-SMF, the AMF relays the N2 SM information transparently.
-
-</details>
-
-<details>
-<summary>Service-based interfaces and their services (TS 23.247 clause 9)</summary>
-
-| Interface | Service | Operations | Consumers |
-| --- | --- | --- | --- |
-| **Nmbsmf** (MB-SMF) | Nmbsmf_TMGI | Allocate, Deallocate | NEF, MBSF, AF |
-| | Nmbsmf_MBSSession | Create, Update, Delete, StatusSubscribe, StatusUnsubscribe, StatusNotify | MBSF, NEF, AF |
-| | | ContextStatusSubscribe, ContextStatusUnsubscribe, ContextStatusNotify | SMF |
-| | | ContextUpdate | AMF, SMF |
-| **Npcf** (PCF) | Npcf_MBSPolicyControl | Create, Update, Delete | MB-SMF |
-| | Npcf_MBSPolicyAuthorization | Create, Update, Delete | AF, NEF, MBSF |
-| **Namf** (AMF) | Namf_MBSBroadcast | ContextCreate, ContextUpdate, ContextRelease, ContextStatusNotify | MB-SMF |
-| | Namf_MBSCommunication | N2MessageTransfer | MB-SMF |
-| **Nnef** (NEF) | Nnef_MBSTMGI | Allocate, Deallocate, ExpiryNotify | AF |
-| | Nnef_MBSSession | Create, Update, Delete, StatusNotify, StatusSubscribe, StatusUnsubscribe | AF |
-| | Nnef_MBSGroupMsgDelivery | Create, Update, Delete, StatusNotify | AF |
-| **Nmbsf** (MBSF) | defined in TS 26.502 | | |
-
-</details>
-
-<details>
-<summary>NGAP procedures between NG-RAN and the AMF (TS 38.413 clauses 8.17 and 8.18)</summary>
-
-| Procedure | Purpose |
-| --- | --- |
-| **Broadcast Session Setup** | Set up MBS session resources in the NG-RAN node for a broadcast MBS session |
-| **Broadcast Session Modification** | Update the resources or the area of a broadcast MBS session |
-| **Broadcast Session Release** | Release the resources of a broadcast MBS session |
-| **Broadcast Session Release Required** | Lets the NG-RAN node trigger the AMF to release a broadcast MBS session |
-| **Broadcast Session Transport** | Assign NG-U resources for a broadcast MBS session |
-| **Distribution Setup** | Assign NG-U resources for a multicast MBS session |
-| **Distribution Release** | Release the NG-U resources of a multicast MBS session, or of one area session of it |
-| **Multicast Session Activation** | Activate the resources of a multicast MBS session in an NG-RAN node |
-| **Multicast Session Deactivation** | Deactivate them |
-| **Multicast Session Update** | Update the resources or the area of a multicast MBS session |
-
-All of them use non-UE-associated signalling.
-
-</details>
-
-### Delivery methods
-
-Between the 5G Core and NG-RAN there are two delivery methods. TS 23.247 does not call them unicast, multicast or broadcast:
-
-- **5GC Shared MBS traffic delivery:** the 5G Core receives a single copy of the MBS data packets and delivers a single copy to an NG-RAN node, which delivers it to one or more UEs. It is used for broadcast and multicast MBS sessions, and is required in all MBS deployments.
-- **5GC Individual MBS traffic delivery:** the 5G Core delivers separate copies to individual UEs, each through a PDU Session associated with the Multicast MBS session. It is used only for multicast, and is required for mobility where NG-RAN nodes do not all support MBS.
-
-Over the radio, NG-RAN has two delivery methods:
-
-- **Point-to-Multipoint (PTM):** a single copy over the radio interface to multiple UEs.
-- **Point-to-Point (PTP):** separate copies over the radio interface to individual UEs.
-
-NG-RAN may combine PTP and PTM. For a broadcast service only 5GC Shared delivery with PTM applies. For a multicast service, an NG-RAN node that supports MBS is served with 5GC Shared delivery; the same multicast session may be delivered with Shared delivery to some UEs and Individual delivery to others.
-
-| | 5GC Shared | 5GC Individual |
-| --- | --- | --- |
-| **MBS sessions** | Broadcast and multicast | Multicast only |
-| **From the MB-UPF to** | NG-RAN nodes, at N3mb | UPFs, at N19mb; the UPF forwards the data in the N3 tunnel of each associated PDU Session |
-| **Transport** | A common GTP-U tunnel per MBS session with IP multicast, otherwise a GTP-U tunnel per MBS session per NG-RAN node | A common GTP-U tunnel per MBS session with IP multicast, otherwise one per MBS session per UPF |
-| **Shared by** | All UEs that joined the multicast session through that NG-RAN node (one tunnel per session, MBS service area and node) | All associated PDU Sessions served by that UPF |
-| **Radio** | PTM or PTP | Unicast radio bearers of the associated PDU Session |
-
-The MB-UPF is the MBS Session Anchor. When the MBSTF is involved, the MBSTF is the media anchor. The MB-UPF adds a sequence number to the MBS data of each MBS QoS Flow.
-
-### NG-RAN
-
-The overall NG-RAN architecture applies to NR MBS. The Layer 2 stack for MBS uses the same sublayers, with a reduced set of functions: SDAP maps MBS QoS flows to MBS Radio Bearers (MRBs), and PDCP keeps transfer, sequence numbers, header compression, reordering and duplicate discarding.
-
-<details>
-<summary>MBS Radio Bearers (TS 38.300 clause 16.10.3)</summary>
-
-| Session | UE state | MRB configurations |
-| --- | --- | --- |
-| **Multicast** | RRC_CONNECTED, by dedicated RRC signalling | RLC-UM or RLC-AM for PTP; DL-only RLC-UM for PTM; or two or three RLC entities that combine a PTP leg (RLC-UM or RLC-AM) with a PTM leg (DL-only RLC-UM). The gNB may change the MRB type |
-| **Multicast** | RRC_INACTIVE, by broadcast and/or dedicated RRC signalling | DL-only RLC-UM for PTM |
-| **Broadcast** | RRC_IDLE, RRC_INACTIVE and RRC_CONNECTED, by broadcast RRC signalling | One DL-only RLC-UM entity for PTM |
-
-</details>
-
-| Item | Role (TS 38.300) |
-| --- | --- |
-| **MTCH** (MBS Traffic Channel) | PTM downlink channel for the data of a multicast or broadcast session |
-| **DTCH** | PTP channel for the data of a multicast session |
-| **MCCH** (MBS Control Channel) | PTM downlink channel for broadcast or multicast control information. Broadcast MCCH and multicast MCCH are independent channels; the multicast MCCH is used only for reception in RRC_INACTIVE |
-| **G-RNTI** | Identifies dynamically scheduled PTM transmissions of MTCH |
-| **G-CS-RNTI** | Identifies PTM transmissions of MTCH scheduled with a configured grant |
-| **MCCH-RNTI** | Identifies MCCH transmissions and change notifications for broadcast |
-| **Multicast MCCH-RNTI** | Identifies MCCH transmissions and change notifications for multicast in RRC_INACTIVE |
-| **SIB20, SIB21** | MCCH configuration, and service continuity information, for broadcast |
-| **SIB24** | Information to acquire the multicast MCCH and MTCH configuration for RRC_INACTIVE |
-
-In a PTP transmission, the gNB schedules a UE-specific PDSCH with a PDCCH whose CRC is scrambled by a UE-specific RNTI, such as the C-RNTI. In a PTM transmission, it schedules a group-common PDSCH with a group-common PDCCH whose CRC is scrambled by a group-common RNTI. When a UE has both a PTM and a PTP leg, the gNB decides dynamically which to use, based on information such as the session QoS requirements, the number of joined UEs and the UE feedback on reception quality. The same QoS requirements apply whichever it chooses.
-
-### Multicast session states
-
-| State | In TS 23.247 clause 4.3 |
-| --- | --- |
-| **Configured** | Information about the session (for example QoS) is held in the 5G Core, but no user plane resources towards NG-RAN are reserved and no data can be sent. A TMGI can be allocated |
-| **Active** | The session is established and data can be sent to the UEs that joined it. Radio resources are established |
-| **Inactive** | The session is established but no data is sent. Radio resources are released |
-
-The first accepted join request establishes the session towards NG-RAN and the UE. For a broadcast MBS session, TS 23.247 clause 4.2.2 describes phases: MBS Session Creation and establishment by the AF, service announcement, data transfer, and Session Release, at which the 5G System releases the resources and deletes the session.
-
 <details>
 <summary>Sources for this page</summary>
 
@@ -303,9 +152,6 @@ The first accepted join request establishes the session towards NG-RAN and the U
 - **Services and APIs:** TS 26.502 V18.6.0, clause 7 and tables 7.2-1 and 7.3-1; TS 29.580 V18.8.0, clauses 1, 5.2, 5.3, 6.1.3 and 6.2.3; TS 29.581 V18.6.0, clauses 1, 4.1 and 6.1.3; TS 26.517 V18.6.0, clauses 8.2.1.3, 8A, 9, 10 and 11.
 - **Distribution methods:** TS 26.502 V18.6.0, clauses 3.1, 4.3.3.2, 6.1 and 6.2; TS 26.517 V18.6.0, clauses 6.2.1, 6.2.3.5 and 7.2.1.
 - **Sessions and their life cycle; provisioning and announcement:** TS 26.502 V18.6.0, clauses 3.1, 4.5.2 to 4.5.6, 4.6.1, 5.3, 5.3A, 5.4, 5.5.1, 5.5.2 and 5.5.4.
-- **MBS, functions, reference points and services:** TS 23.247 V18.8.0, clauses 5.1, 5.3.0, 5.3.1, 5.3.2, 8.1 and 9; TS 38.413 V18.11.0, clauses 8.17 and 8.18.
-- **Delivery methods:** TS 23.247 V18.8.0, clauses 3.1, 4.1, 6.7 and 7.2.1.3.
-- **NG-RAN:** TS 38.300 V18.11.0, clauses 3.1, 7.3.1, 8.1, 16.10.2 to 16.10.4 and 16.10.5.4.
-- **Multicast session states:** TS 23.247 V18.8.0, clauses 4.2.2, 4.3 and 7.2.1.1.
+- **Figures:** TS 26.502 V18.6.0, figures 4.3.1-1 (the second of the two drawings above its caption), 4.3.3.2-1, 4.3.3.3-1, 4.5.1-1 and 4.6.1-1.
 
 </details>

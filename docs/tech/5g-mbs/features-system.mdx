@@ -1,8 +1,9 @@
 ---
-title: Features
-sidebar_position: 2
+title: "Features: MBS System"
+sidebar_label: Features - MBS System
+sidebar_position: 2.5
 hide_title: true
-description: The features of MBS User Services (TS 26.502, TS 26.517) and of MBS in the 5G System and NG-RAN (TS 23.247, TS 38.300), each with the clause and the service, API or procedure that realises it.
+description: "The features of MBS in the 5G System and NG-RAN (TS 23.247, TS 38.300), each with the clause and the procedure that realises it, and whether it applies to MBS Broadcast or MBS Multicast."
 ---
 
 import JumpMenu from '@site/src/components/JumpMenu';
@@ -14,183 +15,22 @@ import JumpMenu from '@site/src/components/JumpMenu';
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">5G Multicast Broadcast Services (MBS)</span>
-<h1>Features</h1>
+<h1>Features: MBS System</h1>
 </div>
 </div>
 
 :::tip[At a glance]
 
-- **MBS User Services:** provisioning through the MBSF, object and packet distribution by the MBSTF, User Service Announcement, object repair, AL-FEC, security, location-dependent and multiplexed sessions, status notifications, eMBMS interworking and conformance profiles. Reception reporting and the QoS model are for further study.
 - **MBS:** broadcast sessions, multicast join and leave, multicast activation and deactivation, mobility with switching between shared and individual delivery, multicast reception in RRC_INACTIVE (added in Release 18), local and location dependent services, QoS and policy, frequency selection, power saving, RedCap UEs, resource sharing, group message delivery and security.
 - **Each feature** shows the clause that defines it and, folded, the services, APIs or procedures that realise it.
 
 :::
 
-<JumpMenu items={[["MBS User Services", "mbs-user-services"], ["MBS", "mbs"]]} />
-
-## MBS User Services
-
-### Provisioning of MBS User Services
-
-**Defined in** TS 26.502 clauses 4.5 and 7.2 · **procedure** clause 5.3
-
-The MBS Application Provider provisions an MBS User Service, then MBS User Data Ingest Sessions within it, each with one or more MBS Distribution Sessions. It does so at Nmb10, or through the NEF at N33 and Nmb5. The MBSF then creates an MBS Session in the MB-SMF and the Distribution Session in the MBSTF.
-
-<details>
-<summary>Services and APIs</summary>
-
-| Reference point | Service | Operations | Stage 3 |
-| --- | --- | --- | --- |
-| Nmb10, Nmb5 | Nmbsf_MBSUserService | Create, Retrieve, Update, Destroy | TS 29.580 cl. 5.2 and 6.1 |
-| Nmb10, Nmb5 | Nmbsf_MBSUserDataIngestSession | Create, Retrieve, Update, Destroy, StatusSubscribe, StatusUnsubscribe, StatusNotify, StatusSubscribeMod | TS 29.580 cl. 5.3 and 6.2 |
-| N33 | Nnef_MBSUserService, Nnef_MBSUserDataIngestSession | the same, for an AF/AS outside the trusted data network | TS 29.522 (referred to by TS 26.502) |
-| Nmb13 | Nmbsmf_TMGI_Allocate | optional TMGI pre-allocation by the provider | TS 23.247 cl. 9.1.2.2 |
-| Nmb1 | Nmbsmf_TMGI_Allocate, Nmbsmf_MBSSession_Create | invoked by the MBSF | TS 23.247 cl. 9.1.2.2 and 9.1.3.6 |
-
-</details>
-
-### Distribution Session control in the MBSTF
-
-**Defined in** TS 26.502 clauses 4.3.3 and 7.3 · **procedures** clauses 4.6.1, 5.3 and 5.5
-
-The MBSF creates, updates and destroys MBS Distribution Sessions in the MBSTF at Nmb2. The MBSTF mirrors the MBSF entity and notifies the MBSF of events.
-
-<details>
-<summary>Services and APIs</summary>
-
-| Reference point | Service | Operations | Stage 3 |
-| --- | --- | --- | --- |
-| Nmb2 | Nmbstf_MBSDistributionSession | Create, Retrieve, Update, Destroy, StatusSubscribe, StatusUnsubscribe, StatusNotify, StatusSubscribeMod | TS 29.581 cl. 5.2 and 6.1 |
-
-</details>
-
-### Object Distribution Method
-
-**Defined in** TS 26.502 clause 6.1 · **protocols** TS 26.517 clause 6
-
-Delivers discrete binary objects over an MBS Session, in four operating modes: single object, collection, carousel and streaming. With FLUTE, the MBSTF describes the objects currently transmitted with the Profiled FDT Schema of TS 26.346. The objects of the collection and carousel modes are listed in an object manifest.
-
-<details>
-<summary>Clauses</summary>
-
-| Aspect | TS 26.502 | TS 26.517 |
-| --- | --- | --- |
-| Operating modes OBJECT_SINGLE, OBJECT_COLLECTION, OBJECT_CAROUSEL, OBJECT_STREAMING | table 6.1-1 | cl. 6.2.3 |
-| Object manifest | cl. 4.5.10 | cl. 6.1.2, annex D.1 |
-| Pull-based and push-based ingest at Nmb8 | cl. 4.3.3.2 | cl. 8.2.1.3 |
-| Use of FLUTE | | cl. 6.2.1, 6.2.2 |
-
-</details>
-
-### Packet Distribution Method
-
-**Defined in** TS 26.502 clause 6.2 · **protocols** TS 26.517 clause 7
-
-Delivers packet streams over an MBS Session. TS 26.502 states it is particularly useful for IP-based services whose content delivery protocols are defined outside the MBS specifications. The MBSTF may add packet sequence numbering and FEC redundancy. Two operating modes: forward-only (Layer 3 proxying) and proxy (Layer 4 proxying).
-
-<details>
-<summary>Clauses</summary>
-
-| Aspect | TS 26.502 | TS 26.517 |
-| --- | --- | --- |
-| Operating modes PACKET_FORWARD_ONLY, PACKET_PROXY | table 6.2-1 | cl. 7.2.1 |
-| Packet ingest parameters | table 4.5.6-3 | |
-| Session Description | | cl. 7.2.3 |
-
-</details>
-
-### User Service Announcement
-
-**Defined in** TS 26.502 clauses 4.2.4, 4.5.7 and 4.5.8 · **procedures** clauses 5.3A and 5.4 · **format** TS 26.517 clause 5
-
-The MBSF compiles an MBS User Service Announcement that describes the current Distribution Sessions. It reaches the MBS Client by unicast at MBS-5, in the MBS User Service Announcement Channel at MBS-4-MC (an MBS Distribution Session in OBJECT_CAROUSEL mode), or through the MBS Application Provider at MBS-8. The User Service Descriptions document is a JSON document, delivered with its dependent resources as a multipart/related bundle.
-
-<details>
-<summary>Reference points and APIs</summary>
-
-| Reference point | API or delivery | TS 26.517 |
-| --- | --- | --- |
-| MBS-5 | User Service Description retrieval API, exposed by the MBS AF | cl. 9, 5.3.3 |
-| MBS-4-MC | Bundle in an object carousel (the Announcement Channel) | cl. 5.3.2 |
-| MBS-1 | User Service Description retrieval API, exposed by the MBSF to the provider | cl. 8A |
-| MBS-11, Nmb2 | Object manifest pulled from the MBS AF, or pushed by the MBSF | TS 26.502 cl. 4.3.3.2, 5.3A |
-
-</details>
-
-### Object repair
-
-**Defined in** TS 26.502 clauses 4.2.6 and 4.3.4 · **procedure** clause 5.6 · **protocols** TS 26.517 clauses 6.2.4 and 10
-
-With the Object Distribution Method, an MBS Client can retrieve from the MBS AS, at MBS-4-UC, the missing portions of objects not received intact at MBS-4-MC. The MBSF decides whether to enable it. Post-session repair, with a randomised back-off, is defined; in-session repair is for further study. Repair is not used with the OBJECT_STREAMING mode in Release 18. The MBSTF Client sends an HTTP GET, or a partial GET with byte ranges, for each damaged object.
-
-<details>
-<summary>Clauses</summary>
-
-| Aspect | Clause |
-| --- | --- |
-| Post-session repair procedure | TS 26.517 cl. 6.2.4.2 |
-| Location of the repair object, byte ranges | TS 26.517 cl. 6.2.4.4, 6.2.4.5 |
-| Back-off time | TS 26.517 cl. 10.2.2.3 |
-| Repair requests and MBS AS requirements | TS 26.517 cl. 10.2.2.4, 10.2.3 |
-| Repair parameters in the Distribution Session | TS 26.502 table 4.5.6-2 |
-
-</details>
-
-### Application Layer FEC
-
-**Defined in** TS 26.502 clauses 4.3.3.2 and 4.3.3.3, table 4.5.6-1
-
-The MBSTF has an optional AL-FEC subfunction for both distribution methods. The FEC configuration of a Distribution Session identifies the scheme with a term from the RMT vocabulary of FEC Encoding IDs, and gives the overhead as a proportion of the MBS data.
-
-### Security
-
-**Defined in** TS 26.502 clauses 4.3.4A and 4.8 · **protocol** TS 26.517 clause 11
-
-Security protection of MBS traffic uses a control plane procedure, for multicast only, or a user plane procedure, for multicast and broadcast, as defined in TS 33.501 annex W. The MBSSF, co-located with the MBSF or the MBSTF, generates, manages and distributes the MBS Service Keys and MBS Traffic Keys. The MBS Application Provider requests protection with the Transport security protection flag of a Distribution Session. At MBS-10, the MBSF Client retrieves the MBS Service Key from the MBSSF with the protocol of TS 33.246 clause 6.3.
-
-### Service areas, location-dependent and multiplexed sessions
-
-**Defined in** TS 26.502 clause 4.5.2 and table 4.5.6-1
-
-A Distribution Session may specify target service areas, outside which MBS data is not transmitted. Location-dependent variants of a service share the same MBS Session Identifier with disjoint target service areas. With the Multiplexed service flag, Distribution Sessions with the same (or empty) target service areas are multiplexed onto one MBS Session. Target UE classes state whether a broadcast session is intended for reduced capability (RedCap) UEs, full capability UEs or both.
-
-### Status notifications
-
-**Defined in** TS 26.502 clause 4.6.2, table 4.6.2-1
-
-The MBSF notifies the MBS Application Provider, or the NEF, of events such as session started, Distribution Session established or activated, user data ingest failure and User Service advertisement. Events may originate in the MB-SMF, the PCF, the MBSTF or the MBSF itself.
-
-<details>
-<summary>Services</summary>
-
-| Reference point | Service operation |
-| --- | --- |
-| Nmb10, Nmb5 | Nmbsf_MBSUserDataIngestSession_StatusSubscribe, StatusNotify, StatusSubscribeMod, StatusUnsubscribe |
-| Nmb2 | Nmbstf_MBSDistributionSession_StatusSubscribe, StatusNotify, StatusSubscribeMod, StatusUnsubscribe |
-
-</details>
-
-### Interworking with eMBMS
-
-**Defined in** TS 26.502 clause 4.9
-
-A common TMGI is used in the MBS System and in the eMBMS System. The User Service Announcement can signal that the same service is also available over eMBMS, so a UE with both clients may choose either network and switch between them as reception conditions vary.
-
-### Conformance profiles
-
-**Defined in** TS 26.517 clause 12
-
-Conformance profiles enable interoperability and signal which features a Distribution Session uses. The Baseline MBS Distribution Session Profile is identified by `urn:3GPP:26517:17:baseline`.
-
-### For further study
-
-Reception reporting by the MBS Client (TS 26.502 clauses 4.2.5 and 4.5.4) and the use of the network QoS primitives by MBS User Services (clause 4.7) are for further study in Release 18.
-
-## MBS
+<JumpMenu items={[["Broadcast MBS session", "broadcast-mbs-session"], ["Multicast join and leave", "multicast-join-and-leave"], ["Multicast session activation and deactivation", "multicast-session-activation-and-deactivation"], ["Mobility and switching between shared and individual delivery", "mobility-and-switching-between-shared-and-individual-delivery"], ["Multicast reception in RRC_INACTIVE", "multicast-reception-in-rrc_inactive"], ["Local and location dependent MBS", "local-and-location-dependent-mbs"], ["QoS and policy control", "qos-and-policy-control"], ["Authorisation and identifiers", "authorisation-and-identifiers"], ["Frequency selection for broadcast", "frequency-selection-for-broadcast"], ["Service announcement and pre-configuration", "service-announcement-and-pre-configuration"], ["Power saving", "power-saving"], ["Broadcast for RedCap UEs", "broadcast-for-redcap-ues"], ["Resource sharing in network sharing", "resource-sharing-in-network-sharing"], ["Group message delivery", "group-message-delivery"], ["Security", "security"], ["Interworking with EPS and QoE", "interworking-with-eps-and-qoe"]]} />
 
 TS 23.247 groups the MBS procedures in three: a "Common procedure for Multicast and Broadcast" (clause 7.1), "MBS procedures for multicast Session" (clause 7.2) and "MBS procedures for broadcast Session" (clause 7.3). Each feature below says which of MBS Broadcast and MBS Multicast it applies to, from the clauses that define it.
 
-### Broadcast MBS session
+## Broadcast MBS session
 
 **Applies to:** MBS Broadcast · **Defined in** TS 23.247 clauses 4.2.2 and 6 · **procedure** clause 7.3.1 · **NG-RAN** TS 38.300 clause 16.10.6
 
@@ -208,7 +48,7 @@ The AF starts a broadcast MBS session with TMGI allocation and MBS Session Creat
 
 </details>
 
-### Multicast join and leave
+## Multicast join and leave
 
 **Applies to:** MBS Multicast · **Defined in** TS 23.247 clauses 4.2.1 and 6.1 · **procedures** clauses 7.2.1 and 7.2.2
 
@@ -225,7 +65,7 @@ A UE joins a Multicast MBS session with a PDU Session Modification Request on an
 
 </details>
 
-### Multicast session activation and deactivation
+## Multicast session activation and deactivation
 
 **Applies to:** MBS Multicast · **Defined in** TS 23.247 clause 4.3 · **procedures** clause 7.2.5 · **NG-RAN** TS 38.300 clause 16.10.5.2
 
@@ -241,7 +81,7 @@ Activation and deactivation apply to multicast only. The MB-SMF triggers them on
 
 </details>
 
-### Mobility and switching between shared and individual delivery
+## Mobility and switching between shared and individual delivery
 
 **Applies to:** MBS Multicast (TS 23.247 clause 6.3.1); MBS Broadcast mobility is clause 6.3.2 · **Defined in** TS 23.247 clause 6.3 · **procedures** clause 7.2.3 · **NG-RAN** TS 38.300 clause 16.10.5.3
 
@@ -259,19 +99,19 @@ Multicast mobility is supported between NG-RAN nodes that both support MBS, and 
 
 </details>
 
-### Multicast reception in RRC_INACTIVE
+## Multicast reception in RRC_INACTIVE
 
 **Applies to:** MBS Multicast · **Added in Release 18** · **defined in** TS 23.247 clause 6.17 · **NG-RAN** TS 38.300 clauses 16.10.5.2 and 16.10.5.3.5, TS 38.331 clause 5.10
 
 To provide a multicast service to more UEs in a cell, NG-RAN may move UEs that can receive in RRC_INACTIVE out of RRC_CONNECTED. The gNB decides in which state the UE receives. In RRC_INACTIVE, multicast uses PTM only, without HARQ feedback. The configuration comes in the RRCRelease message and on the multicast MCCH, whose scheduling is in SIB24. TS 38.331 V17.17.0 has no SIB24 and no clause 5.10; they appear in Release 18.
 
-### Local and location dependent MBS
+## Local and location dependent MBS
 
 **Applies to:** MBS Broadcast and MBS Multicast · **Defined in** TS 23.247 clause 6.2 · **procedures** clauses 7.2.4 and 7.3.4
 
 A local MBS service is provided in one MBS service area: only UEs in it receive the content. A location dependent MBS service distributes different content to different MBS service areas, with the same MBS Session ID and a different Area Session ID for each area.
 
-### QoS and policy control
+## QoS and policy control
 
 **Applies to:** MBS Broadcast and MBS Multicast · **Defined in** TS 23.247 clauses 6.6 and 6.10 · **services** clause 9.2
 
@@ -287,7 +127,7 @@ The network supports QoS control per MBS session, with one or more GBR or non-GB
 
 </details>
 
-### Authorisation and identifiers
+## Authorisation and identifiers
 
 **Applies to:** MBS Broadcast and MBS Multicast · **Defined in** TS 23.247 clauses 6.1, 6.4 and 6.5 · **services** clauses 9.1.2 and 9.4.2
 
@@ -303,49 +143,49 @@ The 5G Core authorises a UE for multicast: whether it may use the Multicast serv
 
 </details>
 
-### Frequency selection for broadcast
+## Frequency selection for broadcast
 
 **Applies to:** MBS Broadcast · **Defined in** TS 23.247 clause 6.5.4 · **NG-RAN** TS 38.300 clause 16.10.6.5, SIB21 in TS 38.331
 
 The MBS Frequency Selection Area (FSA) ID guides the UE's frequency selection for a broadcast session. It is sent in the service announcement, and the UE compares it with the FSA IDs in the SIBs. NR MBS supports frequency layer prioritisation for broadcast sessions.
 
-### Service announcement and pre-configuration
+## Service announcement and pre-configuration
 
 **Applies to:** MBS Broadcast and MBS Multicast · **Defined in** TS 23.247 clause 6.11 · TS 24.575 clause 4
 
 The service announcement describes the services delivered in an MBS session. It may be encoded as defined in TS 26.517 or in an application-specific format. A UE may also be pre-configured, per PLMN, with the information to discover and receive services.
 
-### Power saving
+## Power saving
 
 **Applies to:** MBS Broadcast and MBS Multicast · **Defined in** TS 23.247 clause 6.16 · **procedures** clauses 7.2.10 and 7.3.8
 
 UEs that use power saving functions wake up at coordinated times. The service announcement gives them a start time and/or scheduled activation times of the MBS session.
 
-### Broadcast for RedCap UEs
+## Broadcast for RedCap UEs
 
 **Applies to:** MBS Broadcast · **Defined in** TS 23.247 clause 6.19 · **NG-RAN** TS 38.300 clause 16.10.6.6
 
 The AF provides the "NR RedCap UE Information" parameter at MBS Session Creation, and the MB-SMF forwards it to NG-RAN. NG-RAN may configure an additional RedCap common frequency resource when the default one is wider than the RedCap UE capability.
 
-### Resource sharing in network sharing
+## Resource sharing in network sharing
 
 **Applies to:** MBS Broadcast · **Defined in** TS 23.247 clause 6.18 · **NG-RAN** TS 38.300 clause 16.10.6.8
 
 When the AF creates broadcast MBS sessions with the same content through several core networks, the shared NG-RAN allocates radio resources for only one of them.
 
-### Group message delivery
+## Group message delivery
 
 **Applies to:** MBS Broadcast · **Defined in** TS 23.247 clause 6.15 · **procedures** clause 7.5 · **service** Nnef_MBSGroupMsgDelivery
 
 An AF can deliver a payload to a group of UEs in a geographical area through a broadcast MBS session. It uses the Object Distribution Method of the MBSTF.
 
-### Security
+## Security
 
 **Applies to:** MBS Broadcast and MBS Multicast · **Defined in** TS 23.247 clause 6.13
 
 The MBS security function is implemented in the MBSF and MBSTF, so it applies only with configuration options 2 and 3.
 
-### Interworking with EPS and QoE
+## Interworking with EPS and QoE
 
 **Defined in** TS 23.247 clauses 5.2, 6.8 and 6.20
 
@@ -354,7 +194,6 @@ Interworking between MBS and eMBMS applies at the service layer when the same se
 <details>
 <summary>Sources for this page</summary>
 
-- **MBS User Services:** TS 26.502 V18.6.0, clauses 4.2.4 to 4.2.6, 4.3.3 to 4.3.4A, 4.5, 4.6, 4.7, 4.8, 4.9, 5.3 to 5.6, 6 and 7; TS 26.517 V18.6.0, clauses 5, 6, 7, 8.2.1.3, 8A, 9, 10, 11 and 12; TS 29.580 V18.8.0, clauses 5 and 6; TS 29.581 V18.6.0, clauses 5 and 6.
 - **MBS:** TS 23.247 V18.8.0, clauses 4.2, 4.3, 5.2, 6.1 to 6.20, 7.1.1, 7.2, 7.3, 7.5 and 9; TS 38.300 V18.11.0, clauses 16.10.1, 16.10.5 and 16.10.6; TS 38.413 V18.11.0, clauses 8.17 and 8.18; TS 38.331 V18.11.0, clauses 5.9, 5.10 and 6.3.1, compared with TS 38.331 V17.17.0; TS 24.575 V18.3.0, clause 4.
 
 </details>

@@ -6,6 +6,7 @@ hide_title: true
 description: The main functions of MBS User Services and of MBS in the 5G System and NG-RAN, and how the two fit together, based on TS 26.502, TS 23.247 and TS 38.300.
 ---
 
+import SpecFigure from '@site/src/components/SpecFigure';
 import JumpMenu from '@site/src/components/JumpMenu';
 
 <div class="topic-banner">
@@ -39,6 +40,8 @@ MBS User Services let high-level applications use the low-level features of the 
 
 The **MBS Application Provider** plays the role of the Application Function and Application Server (AF/AS). On the device, the **MBS Client** is a function of the User Equipment (UE). An **MBS-Aware Application** uses the MBS Client through its APIs, which let it activate or deactivate reception of MBS User Services. TS 26.502 does not define the MBS-Aware Application itself.
 
+<SpecFigure src="/img/tech/5g-mbs/generated/ts26502-fig4.2.2-1.svg" width={847} height={716} spec="TS 26.502 V18.6.0" figure="4.2.2-1" title="MBS User Services network architecture" alt="The MBSF, holding User Services provisioning and User Service Announcement compilation, with Nmb1 to MB-SMF, Nmb12 to PCF, Nmb10 and MBS-1 to the MBS Application Provider (AF/AS), and Nmb5 through the NEF and N33. Below it the MBS AF (User Service Announcement serving, MBS-5 to the MBSF Client, MBS-3 to the MBSF), the MBSSF (User Plane client authentication, MBS-10 to the MBSF Client) and the MBS AS (Object repair, MBS-4-UC to the MBSTF Client), and the MBSTF (User Services Distribution Methods) with Nmb9 to MB-UPF, MBS-4-MC to the MBSTF Client, Nmb8 to the MBS Application Provider, Nmb2 to the MBSF, MBS-11 to the MBS AF and MBS-9 between the MBSF and the MBS AS." />
+
 The service layer delivers data with two **distribution methods**, the Object Distribution Method and the Packet Distribution Method. Either can use a multicast or a broadcast MBS Session. They provide security and key distribution, reliability control by means of Forward Erasure Correction (FEC), and the associated delivery procedures.
 
 An **MBS User Service Announcement** gives the MBS Client the service access information it needs to discover an MBS User Service and activate its reception. TS 26.517 defines the protocols and formats used by MBS User Services. Reporting by the MBS Client to the MBSF is for further study.
@@ -59,6 +62,10 @@ Two communication services are defined:
 
 Two functions are added to the 5G Core: the **MB-SMF**, which manages MBS sessions and allocates TMGIs, and the **MB-UPF**, which handles the multicast and broadcast data. Existing functions are extended, among them the AMF, SMF, UPF, PCF, NEF, NRF and UDM, and NG-RAN and the UE. NG-RAN is the decision point for switching between PTP and PTM. MBS for roaming is not supported in Release 18.
 
+<SpecFigure src="/img/tech/5g-mbs/generated/ts23247-fig5.1-2.svg" width={939} height={431} spec="TS 23.247 V18.8.0" figure="5.1-2" title="5G System architecture for Multicast and Broadcast Service in reference point representation" alt="UE, NG-RAN, AMF, SMF, UPF, UDM, MB-SMF, MB-UPF, PCF, NEF, MBSF, MBSTF and AF/AS connected by their reference points: Uu, N1, N2, N3, N4, N10, N11 and N19mb, N3mb from NG-RAN to the MB-UPF, N4mb, N11mb, N16mb, N7mb, N29mb, N30, N5, N33 and N6mb, and the MBS reference points Nmb1, Nmb2, Nmb5, Nmb8, Nmb9, Nmb10, Nmb12, Nmb13 and Nmb14." />
+
+<SpecFigure src="/img/tech/5g-mbs/generated/ts23247-fig4.1-1.svg" width={719} height={453} spec="TS 23.247 V18.8.0" figure="4.1-1" title="Delivery methods" alt="MBS traffic enters Replication in the 5GC. One tube, 5GC Shared MBS Traffic delivery over Shared Transport, goes to NG-RAN, which serves two UEs with PTM or PTP over radio. Two other tubes, each a PDU Session, carry 5GC Individual MBS Traffic Delivery through NG-RAN to one UE each." />
+
 ## How the two parts fit
 
 In the 5G System, the MBSF and the MBSTF are optional. TS 23.247 annex A defines three configuration options:
@@ -78,6 +85,7 @@ When the service layer is used, the MBSF invokes MBS Session operations on the M
 
 - **MBS User Services:** TS 26.502 V18.6.0, clauses 4.2.2, 4.2.3, 4.2.4, 4.2.5, 4.3.1, 4.3.5 and 4.3.6; TS 26.517 V18.6.0, clause 1.
 - **MBS:** TS 23.247 V18.8.0, clauses 3.1, 4.1 and 5.3.2; TS 38.300 V18.11.0, clause 16.10.1.
+- **Figures:** TS 26.502 V18.6.0, figure 4.2.2-1; TS 23.247 V18.8.0, figures 5.1-2 and 4.1-1.
 - **How the two parts fit:** TS 23.247 V18.8.0, clause 5.1, clause 6.7 and annex A; TS 26.502 V18.6.0, clauses 4.2.2, 4.3.2 and 4.3.3.1.
 
 </details>
