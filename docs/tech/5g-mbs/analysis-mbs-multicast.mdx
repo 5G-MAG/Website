@@ -1,0 +1,301 @@
+---
+title: MBS Multicast - End-to-End Procedures
+sidebar_label: MBS Multicast - End-to-End Procedures
+sidebar_position: 3.5
+hide_title: true
+description: How an MBS Multicast session is provisioned and created in the 5G Core, joined by a UE through its PDU Session, established towards NG-RAN with shared or individual delivery, configured over the radio in RRC_CONNECTED, activated, deactivated, left and released, based on TS 23.247, TS 26.502, TS 29.532, TS 29.518, TS 29.244, TS 38.413, TS 38.401, TS 38.473, TS 37.483, TS 38.331, TS 38.213 and TS 38.300 Release 18.
+---
+
+import JumpMenu from '@site/src/components/JumpMenu';
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M12 12l0 .01"/><path d="M14.828 9.172a4 4 0 0 1 0 5.656"/><path d="M17.657 6.343a8 8 0 0 1 0 11.314"/><path d="M9.168 14.828a4 4 0 0 1 0 -5.656"/><path d="M6.337 17.657a8 8 0 0 1 0 -11.314"/></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">5G Multicast Broadcast Services (MBS)</span>
+<h1>MBS Multicast - End-to-End Procedures</h1>
+</div>
+</div>
+
+:::tip[At a glance]
+
+- **How MBS Multicast differs:** the content goes to a dedicated set of UEs, each of which joins the session. The UE receives it in RRC_CONNECTED by PTM and/or PTP, with HARQ feedback possible on both, or in RRC_INACTIVE by PTM only.
+- **Network set-up:** the same common procedures as for broadcast, with the MBS service type multicast. The session can be created active or inactive; the session establishment triggered by UE joins reserves the resources towards NG-RAN.
+- **Join:** a PDU Session Modification Request on the associated PDU Session carries the MBS Session IDs and the join request. The SMF authorises it and subscribes to the session context at the MB-SMF.
+- **Delivery:** an NG-RAN node that supports MBS gets 5GC Shared delivery, set up with NGAP Distribution Setup; otherwise the UE's PDU Session carries the data (5GC Individual delivery).
+- **Activation:** an inactive session is activated by downlink data or by the AF; UEs in RRC_IDLE and RRC_INACTIVE are reached by group paging with the MBS session ID.
+
+:::
+
+In MBS Multicast, the same service and the same content are provided simultaneously to a dedicated set of UEs; not all UEs in the MBS service area are authorised to receive them. To receive the service, the UE performs the MBS Session Join procedure, and the first accepted join triggers the establishment of the multicast session towards NG-RAN and the UE. A UE can receive multicast in RRC_CONNECTED, by PTP and/or PTM, and in RRC_INACTIVE, by PTM only; HARQ feedback and retransmission can be applied to PTP and PTM in RRC_CONNECTED. The gNB decides in which of the two states the UE receives.
+
+<JumpMenu items={[["Steps", "the-steps"], ["Implementation blueprint", "implementation-blueprint"], ["Network set-up", "network-set-up"], ["Join and session establishment", "join-and-session-establishment"], ["Radio configuration", "radio-configuration-in-rrc_connected"], ["Activation and deactivation", "activation-and-deactivation"], ["User plane", "user-plane"], ["Leave and release", "leave-and-release"]]} />
+
+This page follows an MBS Multicast session from its provisioning to the reception of its data by UEs in RRC_CONNECTED, then its deactivation, update and release, in Release 18. Each step names the functions, the message or service, and the clause that defines it. Mobility of a UE receiving a multicast session is TS 23.247 clause 7.2.3 and TS 38.300 clause 16.10.5.3; reception in RRC_INACTIVE is TS 23.247 clause 6.17.
+
+## The steps
+
+Network set-up (TS 23.247 clause 7.1):
+
+- N1. Provisioning by the AF or the MBS Application Provider
+- N2. TMGI allocation
+- N3. MBS Session creation at the MB-SMF
+- N4. MB-UPF configuration
+- N5. Service announcement
+
+Join and session establishment (TS 23.247 clause 7.2.1):
+
+- J1. The associated PDU Session
+- J2. Join request
+- J3. MB-SMF discovery and session context
+- J4. Authorisation
+- J5. N2 SM information towards NG-RAN
+- J6. Shared delivery towards the NG-RAN node
+- J7. Inside the gNB: E1AP and F1AP
+- J8. Response, and 5GC Individual delivery
+
+Radio configuration in RRC_CONNECTED:
+
+- 1\. RRCReconfiguration with multicast MRBs
+- 2\. PTM and PTP legs
+- 3\. G-RNTI, HARQ feedback, DRX and common frequency resource
+- 4\. Receiving PTM and PTP
+
+Life cycle:
+
+- A1. Activation, with group paging
+- A2. Deactivation
+- A3. Session update
+- U. User plane, 5GC Shared and 5GC Individual delivery
+- L1. Leave requested by the UE
+- L2. Leave requested by the network, and session release
+- L3. Release of shared delivery
+
+## Implementation blueprint
+
+<details>
+<summary>The whole chain, step by step (Step, Function(s), Interface and message or service, Clause)</summary>
+
+| Step | Function(s) | Interface and message or service | Clause |
+| --- | --- | --- | --- |
+| N1. Provisioning | MBS Application Provider, MBSF | Nmb10 (or N33 and Nmb5): Nmbsf_MBSUserService_Create, Nmbsf_MBSUserDataIngestSession_Create; or the AF directly towards the NEF/MBSF | TS 26.502 cl. 5.2, 5.3; TS 23.247 cl. 7.1.1.1 |
+| N2. TMGI allocation | AF, NEF/MBSF, MB-SMF | Nnef_MBSTMGI_Allocate; Nmbsmf_TMGI_Allocate (HTTP POST on `/tmgi`), when a TMGI is the MBS Session ID | TS 23.247 cl. 7.1.1.2; TS 29.532 cl. 5.2.2.2 |
+| N3. MBS Session creation | AF, NEF/MBSF, MB-SMF, PCF (if dynamic PCC) | Nnef_MBSSession_Create; Nmbsmf_MBSSession_Create with MBS service type multicast, session state, Any UE indication (HTTP POST on `/mbs-sessions`); MB-SMF profile in the NRF | TS 23.247 cl. 7.1.1.2, 7.1.1.3, 7.1.2; TS 29.532 cl. 5.3.2.2 |
+| N4. MB-UPF | MB-SMF, MB-UPF | N4mb: PFCP Session Establishment Request; the join of the multicast tree may be deferred | TS 23.247 cl. 7.1.1.2; TS 29.244 cl. 5.34.2.2 |
+| N5. Announcement | AF or MBSF, UE | Service announcement with the MBS Session ID; MBSF activates the Multicast MBS Session so that UEs can join | TS 23.247 cl. 7.1.1.2, 7.2.1.3; TS 26.502 cl. 5.4, 5.5.1 |
+| J1. Associated PDU Session | UE, AMF, SMF, UDM | PDU Session Establishment with the DNN and S-NSSAI for multicast; Nudm_SDM_Get for MBS subscription data | TS 23.247 cl. 7.2.1.2 |
+| J2. Join | UE, AMF, SMF | PDU Session Modification Request with MBS Session IDs and join request; Nsmf_PDUSession_UpdateSMContext | TS 23.247 cl. 7.2.1.3 |
+| J3. Session context | SMF, NRF, MB-SMF | Nnrf_NFDiscovery_Request with the MBS Session ID; Nmbsmf_MBSSession_ContextStatusSubscribe (HTTP POST on `/mbs-sessions/contexts/subscriptions`) | TS 23.247 cl. 7.1.2, 7.2.1.3; TS 29.532 cl. 5.3.2.9, table 6.2.3.1-1 |
+| J4. Authorisation | SMF | MBS subscription data and Any UE indication | TS 23.247 cl. 7.2.1.3 |
+| J5. N2 towards NG-RAN | SMF, AMF, NG-RAN | N2 SM information with MBS Session ID and QoS flow mapping; NGAP PDU Session Resource Modify Request Transfer, MBS Session Setup or Modify Request List | TS 23.247 cl. 7.2.1.3; TS 38.413 cl. 9.3.1.212, 9.3.4.3 |
+| J6. Shared delivery | NG-RAN, AMF, MB-SMF, MB-UPF | DISTRIBUTION SETUP REQUEST and RESPONSE; Nmbsmf_MBSSession_ContextUpdate (HTTP POST on `/mbs-sessions/contexts/update`); N4mb; join of the LL SSM | TS 23.247 cl. 7.2.1.4; TS 38.413 cl. 8.18.1; TS 29.532 cl. 5.3.2.5; TS 29.244 cl. 5.34.2.2 |
+| J7. Inside the gNB | gNB-CU-CP, gNB-CU-UP, gNB-DU | E1AP MC Bearer Context Setup and Modification; NGAP Distribution Setup; F1AP Multicast Context Setup, UE context management, Multicast Distribution Setup | TS 38.401 cl. 8.15.1.2; TS 37.483 cl. 8.6.2.1, 8.6.2.2; TS 38.473 cl. 8.14.6, 8.14.10 |
+| J8. Response; individual delivery | NG-RAN, AMF, SMF, UPF, MB-SMF, MB-UPF | MBS Support Indicator in the response; N4 to the UPF; N19mb tunnel through Nmbsmf_MBSSession_ContextUpdate | TS 23.247 cl. 7.2.1.3; TS 38.413 cl. 9.3.1.210, 9.3.4.4; TS 29.244 cl. 5.34.3 |
+| 1. RRCReconfiguration | gNB, UE | `mrb-ToAddModList` with `MRB-ToAddMod` (`mbs-SessionId`, `mrb-Identity`, `pdcp-Config`); SDAP entity per `mbs-SessionId` | TS 38.300 cl. 16.10.5.2; TS 38.331 cl. 5.3.5.6.7, 6.3.2 |
+| 2. PTM and PTP legs | gNB, UE | `MulticastRLC-BearerConfig` (`servedMBS-RadioBearer`, `isPTM-Entity`); RLC-UM or RLC-AM for PTP, DL-only RLC-UM for PTM | TS 38.300 cl. 16.10.3; TS 38.331 cl. 6.3.2 |
+| 3. G-RNTI, HARQ, DRX, CFR | gNB, UE | `MBS-RNTI-SpecificConfig` (G-RNTI or G-CS-RNTI, `drx-ConfigPTM`, `harq-FeedbackEnablerMulticast`, `harq-FeedbackOptionMulticast`); `cfr-ConfigMulticast` | TS 38.331 cl. 6.3.2; TS 38.213 cl. 18; TS 38.300 cl. 16.10.5.6, 16.10.5.7 |
+| 4. PTM and PTP reception | gNB, UE | Group-common PDCCH and PDSCH with the G-RNTI (DCI formats 4_1, 4_2); UE-specific PDCCH and PDSCH with the C-RNTI | TS 38.300 cl. 16.10.5.4; TS 38.212 cl. 7.3.1.5.2, 7.3.1.5.3; TS 38.321 cl. 5.3.1 |
+| A1. Activation | AF or MB-UPF, MB-SMF, SMF, AMF, NG-RAN, UE | N4mb report; Nmbsmf_MBSSession_ContextStatusNotify; Namf_MT_EnableGroupReachability; MULTICAST GROUP PAGING; Namf_MBSCommunication_N2MessageTransfer; MULTICAST SESSION ACTIVATION; N4mb Session Modification | TS 23.247 cl. 7.2.5.2; TS 29.518 cl. 5.4.2.4, 5.7.2.2; TS 38.413 cl. 8.5.2, 8.18.3; TS 29.244 cl. 5.34.2.3, 5.34.2.4; TS 38.300 cl. 16.10.5.2 |
+| A2. Deactivation | AF or MB-UPF, MB-SMF, SMF, AMF, NG-RAN | N4mb Session Modification (stop forwarding, buffer); Nmbsmf_MBSSession_ContextStatusNotify; MULTICAST SESSION DEACTIVATION | TS 23.247 cl. 7.2.5.3; TS 29.244 cl. 5.34.2.4; TS 38.413 cl. 8.18.4 |
+| A3. Update | AF, MB-SMF, AMF, NG-RAN | Nmbsmf_MBSSession Update; MULTICAST SESSION UPDATE | TS 23.247 cl. 7.1.1.6, 7.2.6; TS 38.413 cl. 8.18.5 |
+| U. User plane | AF or MBSTF, MB-UPF, NG-RAN, UPF, UE | N6mb or Nmb9; N3mb (shared) or N19mb then N3 (individual); MRB with PTM or PTP, or the PDU Session's radio bearers | TS 23.247 cl. 7.2.1.3, 6.7; TS 29.244 cl. 5.34.3 |
+| L1. UE leave | UE, AMF, SMF, UPF, MB-SMF, NG-RAN | PDU Session Modification Request with leave indication; Nmbsmf_MBSSession_ContextStatusUnsubscribe when the last UE leaves | TS 23.247 cl. 7.2.2.2 |
+| L2. Network leave, release | AF, MB-SMF, SMF, AMF, NG-RAN, UE | Nmbsmf_MBSSession_ContextStatusNotify (multicast session release); Namf_Communication_N1N2MessageTransfer; PDU Session Modification Command | TS 23.247 cl. 7.1.1.4, 7.2.2.3 |
+| L3. Release of shared delivery | NG-RAN, AMF, MB-SMF, MB-UPF | DISTRIBUTION RELEASE REQUEST and RESPONSE; Nmbsmf_MBSSession_ContextUpdate with leave indication; N4mb; F1AP and E1AP release | TS 23.247 cl. 7.2.2.4; TS 38.413 cl. 8.18.2; TS 38.473 cl. 8.14.7, 8.14.11; TS 37.483 cl. 8.6.2.4 |
+
+</details>
+
+## Network set-up
+
+The common procedures for multicast and broadcast (TS 23.247 clause 7.1) are used with the MBS service type set to multicast. As for broadcast, the "NEF/MBSF" of the call flows stands for the NEF, the MBSF or both, depending on the deployment.
+
+### N1. Provisioning
+
+The AF starts the MBS Session towards the 5G Core with TMGI allocation and MBS Session creation (TS 23.247 clause 7.1.1.2). With MBS User Services, the MBS Application Provider provisions an MBS User Service on the MBSF, and the MBSF provisions the MBS Distribution Sessions on the MBSTF and creates the MBS Session on the MB-SMF (TS 26.502 clauses 5.2 and 5.3). For an MBS Distribution Session of Service type multicast, at the start time the MBSF activates or reactivates the Multicast MBS Session in the MB-SMF, so that UEs can join it (TS 26.502 clause 5.5.1, step 1).
+
+### N2. TMGI allocation
+
+For multicast, TMGI allocation applies if a TMGI is used as MBS Session ID. It follows the same steps as for broadcast: Nnef_MBSTMGI_Allocate from the AF, then Nmbsmf_TMGI_Allocate from the NEF/MBSF to the MB-SMF (TS 23.247 clause 7.1.1.2, steps 1 to 6), an HTTP POST on `/tmgi` (TS 29.532 clause 5.2.2.2). If no TMGI was allocated beforehand, the AF may provide an SSM as MBS Session ID, or ask the network to allocate a TMGI (TS 23.247 clause 7.1.1.2, step 8).
+
+### N3. MBS Session creation at the MB-SMF
+
+For multicast, the AF may also provide the Any UE indication, which says whether the session is open to any UE, the start and end times and the MBS session state, active or inactive (TS 23.247 clause 7.1.1.2, step 8). If the MBSF acts as the MBS security function for multicast, it provides a multicast session security context in Nmbsmf_MBSSession_Create (step 11). The MB-SMF derives the QoS parameters from the MBS Service Information (step 13). At the MB-SMF, the operation is the same HTTP POST on `/mbs-sessions`; for a multicast session, the request may carry the session activity status, the any-UE indication and the security context (TS 29.532 clause 5.3.2.2).
+
+When a Multicast MBS session is created and its MBS Session ID is not yet in the MB-SMF profile, the MB-SMF updates its profile in the NRF with the MBS Session ID (TS 23.247 clause 7.1.2). After creation, depending on configuration, UEs can join the MBS Session (clause 7.1.1.2, step 22).
+
+### N4. MB-UPF configuration
+
+The MB-SMF selects the MB-UPF and configures it on N4mb as for broadcast (TS 23.247 clause 7.1.1.2, steps 14 and 15; TS 29.244 clause 5.34.2.2). For multicast, the MB-SMF may defer the join of the multicast tree from the content provider, for example because the session is inactive, until the first query for the session during the establishment procedure, or until a request to activate it (TS 23.247 clause 7.1.1.2, step 14).
+
+### N5. Service announcement
+
+The AF informs UEs of the MBS Session ID, for example the TMGI or the SSM, and possibly of the MBS service area and session description information (TS 23.247 clause 7.1.1.2, step 7). Before it joins, the UE knows at least the MBS Session ID of a multicast group it can join, for example from the service announcement (clause 7.2.1.3). With MBS User Services, the MBSF compiles and distributes the MBS User Service Announcement as specified in TS 26.502 clause 5.4.
+
+## Join and session establishment
+
+The MBS Session Join procedure is how a UE informs the 5G Core of its interest in a multicast MBS session; the first accepted join request triggers the establishment of the multicast MBS session towards NG-RAN and the UE (TS 23.247 clause 7.2.1.1).
+
+### J1. The associated PDU Session
+
+A PDU Session associated with multicast MBS sessions, the associated PDU Session, is established with the PDU Session Establishment procedure of TS 23.502, with differences (TS 23.247 clause 7.2.1.2). Its DNN and S-NSSAI are those used for the operations on multicast MBS sessions, join and leave. The AMF selects an SMF capable of handling multicast MBS sessions. If the SMF does not have the MBS subscription data of the UE, it retrieves it with Nudm_SDM_Get and subscribes to its changes with Nudm_SDM_Subscribe.
+
+### J2. Join request
+
+To join, the UE sends a PDU Session Modification Request over the associated PDU Session, with one or several MBS Session IDs and a join request. Without a suitable PDU Session, it sends a PDU Session Establishment Request with the MBS Session IDs and the join request instead (TS 23.247 clause 7.2.1.3, step 1). UEs can join before the session start time if the service announcement provides it, so that joins at the start time are not rejected for their number (NOTE 1). From the MBS Session ID and the join request, the SMF determines that this is an MBS Session join request (step 2).
+
+### J3. MB-SMF discovery and session context
+
+If the SMF has no information about the MBS Session Context, it discovers and selects the MB-SMF through the NRF (TS 23.247 clause 7.2.1.3, step 2): it queries the NRF with the MBS Session ID, and the NRF returns the MB-SMF currently serving the session (clause 7.1.2). If the SMF has not yet subscribed to the MBS Session Context, it invokes Nmbsmf_MBSSession_ContextStatusSubscribe. The MB-SMF answers with the multicast QoS flow information and, if available, the start time, the session state, the Any UE indication, the multicast DL tunnel information and the multicast session security context (clause 7.2.1.3, step 3).
+
+The first such subscription tells the MB-SMF that the first UE is joining. If the MB-UPF has not joined the multicast tree at creation, the MB-SMF then asks it to join the multicast tree towards the AF/MBSF (step 3). At the MB-SMF, ContextStatusSubscribe is an HTTP POST on the subscriptions collection for MBS contexts, `/mbs-sessions/contexts/subscriptions` (TS 29.532 clause 5.3.2.9, table 6.2.3.1-1).
+
+### J4. Authorisation
+
+The SMF considers the UE authorised if the UE is authorised to use multicast MBS services and the MBS Session ID is in its MBS subscription data, or if the Any UE indication was received. Otherwise it rejects the join with a cause value (TS 23.247 clause 7.2.1.3, step 4). Before the start time, the SMF may accept the join and indicate the start time, or reject it with a cause and optionally a back-off timer. While the session is inactive, the SMF accepts the join.
+
+### J5. N2 SM information towards NG-RAN
+
+If it accepts the join, the SMF answers the AMF with Nsmf_PDUSession_UpdateSMContext. The N2 SM information creates an MBS Session Context in the RAN if none exists, and relates it to the UE's PDU Session context through the MBS Session ID and the mapping between multicast and associated QoS flows. The N1 SM container holds the PDU Session Modification Command (TS 23.247 clause 7.2.1.3, step 5). Based on operator policy, the SMF may prepare for fall-back to 5GC Individual delivery: it maps the multicast QoS flows to unicast QoS flows of the PDU Session, with unused QFIs and the same QoS (step 5).
+
+The N2 message carries the MBS Session IDs the UE joined and, if applicable, the associated QoS flows (step 6). In NGAP, the MBS Session Setup or Modify Request List provides information on the MBS sessions joined by the UE: per session the MBS Session ID, the associated MBS QoS flows with their associated unicast QoS flow identifiers, and the MBS Assistance Information (TS 38.413 clause 9.3.1.212). It is an IE of the PDU Session Resource Modify Request Transfer (clause 9.3.4.3); at PDU Session establishment, the MBS Session Setup Request List of the PDU Session Resource Setup Request Transfer plays the same role (clauses 9.3.1.211 and 9.3.4.1).
+
+If the NG-RAN node supports MBS, 5GC Shared MBS traffic delivery is adopted, and the node uses the MBS Session ID to associate the PDU Session with the multicast MBS session. If it does not, 5GC Individual delivery is used, if the PDU Session's unicast QoS flows include QoS flows for the multicast session (TS 23.247 clause 7.2.1.3, step 6).
+
+### J6. Shared delivery towards the NG-RAN node
+
+If no shared tunnel exists yet for the session towards the NG-RAN node, the node establishes shared delivery (TS 23.247 clause 7.2.1.3, step 7). It does so when it serves at least one UE of the multicast session (clause 7.2.1.4, step 1), and regardless of the state of the session (NOTE 2).
+
+1. The NG-RAN node sends an N2 MBS Session request towards the AMF. With unicast transport, it allocates a GTP tunnel endpoint and provides the unicast DL tunnel information (TS 23.247 clause 7.2.1.4, step 2). In NGAP this is DISTRIBUTION SETUP REQUEST, non-UE-associated (TS 38.413 clause 8.18.1).
+2. The AMF selects the MB-SMF serving the session and invokes Nmbsmf_MBSSession_ContextUpdate with the N2 SM information and the NG-RAN Node ID (TS 23.247 clause 7.2.1.4, step 3). At the MB-SMF this is an HTTP POST on `/mbs-sessions/contexts/update`, carrying the MBS Distribution Setup Request Transfer IE (TS 29.532 clause 5.3.2.5).
+3. With unicast DL tunnel information, the MB-SMF configures the MB-UPF to send the session's data towards that GTP tunnel endpoint; where NG-RAN nodes share a common user plane entity, only if the shared tunnel is not yet established (TS 23.247 clause 7.2.1.4, step 4). In PFCP, this is the FAR with MBSU and Add MBS Unicast Parameters (TS 29.244 clause 5.34.2.2).
+4. The MB-SMF answers with the TMGI, the multicast QoS flow information, the session state and, without unicast tunnel information, the multicast DL tunnel information: a transport multicast address, for example an LL SSM, and a GTP tunnel endpoint (TS 23.247 clause 7.2.1.4, step 6).
+5. The AMF sends the N2 MBS Session response to the NG-RAN node, which joins the multicast transport distribution if it received the multicast DL tunnel information (step 7). In NGAP, if the request carried no Shared NG-U Unicast TNL Information, the MB-SMF interprets that IP multicast is used and includes the Shared NG-U Multicast TNL Information in the response (TS 38.413 clause 8.18.1.2).
+
+### J7. Inside the gNB: E1AP and F1AP
+
+TS 38.401 gives an example of the interaction of NGAP, E1AP, F1AP and RRC when a UE joins an active multicast session as the first UE in its serving gNB (clause 8.15.1.2):
+
+1. The gNB-CU-CP establishes the multicast bearer context in the gNB-CU-UP; for unicast NG-U transport it retrieves the GTP DL TEID. In E1AP this is MC Bearer Context Setup (TS 37.483 clause 8.6.2.1).
+2. The gNB-CU-CP triggers the NGAP Distribution Setup procedure; the 5G Core provides the multicast address information, for multicast NG-U transport, and the multicast session QoS parameters.
+3. The gNB-CU-CP sets up the MRB resources with E1AP MC Bearer Context Modification (TS 37.483 clause 8.6.2.2).
+4. The gNB-CU-CP establishes the Multicast Context in the gNB-DU, providing the MRB configuration. In F1AP this is Multicast Context Setup (TS 38.473 clause 8.14.6).
+5. The gNB-CU-CP retrieves the MRB configuration for the joined UE from the gNB-DU through the F1 UE Context Management procedures.
+6. The gNB-DU triggers the establishment of F1-U resources, per gNB-DU, per cell or per MBS Area Session ID; in F1AP this is Multicast Distribution Setup (TS 38.473 clause 8.14.10). The gNB-CU-UP side of F1-U is established with E1AP MC Bearer Context Modification.
+7. With NG-U multicast transport, the gNB-CU-UP joins the NG-U multicast group.
+8. The gNB terminates the NGAP procedure, and the gNB-CU-CP configures with RRC each UE that joined.
+
+### J8. Response, and 5GC Individual delivery
+
+If the session is active, the NG-RAN node configures the radio resources for the session and configures the UE through AN specific signalling, which delivers the PDU Session Modification Command (TS 23.247 clause 7.2.1.3, steps 7a and 8). Its response to the SMF includes, if it supports MBS, an indication of MBS support, and whether it supports multicast reception in RRC_INACTIVE (step 9). In NGAP, the MBS Support Indicator takes the values "multicast supported" and "multicast supported with reception in RRC inactive" (TS 38.413 clause 9.3.1.210) and is an IE of the PDU Session Resource Modify Response Transfer (clause 9.3.4.4). From it, the SMF determines whether 5GC Individual MBS traffic delivery is used (TS 23.247 clause 7.2.1.3, step 10).
+
+For 5GC Individual delivery, if no shared tunnel exists between the UPF (PSA) and the MB-UPF for the session, the SMF asks the UPF to create one. The UPF either allocates a DL N19mb tunnel endpoint, with unicast transport over N19mb, or joins the multicast distribution. With unicast transport, the SMF gives the tunnel to the MB-SMF in Nmbsmf_MBSSession_ContextUpdate, and the MB-SMF configures the MB-UPF towards the UPF. The SMF then configures the UPF to forward the data within the PDU Session (TS 23.247 clause 7.2.1.3, steps 11a to 11e). On N4, the SMF associates the PDU Session with the multicast MBS session through the MBS Session N4 Control Information IE and new downlink PDRs (TS 29.244 clause 5.34.3.2).
+
+## Radio configuration in RRC_CONNECTED
+
+If a UE that joined a multicast session is in RRC_CONNECTED when the session is activated, the gNB may send an RRCReconfiguration message with the relevant MBS configuration (TS 38.300 clause 16.10.5.2). As long as a UE receives the multicast data in RRC_CONNECTED, the NG-RAN does not release its radio connection only because no unicast traffic is received for it (TS 23.247 clause 7.2.5.2, step 13).
+
+### Step 1: RRCReconfiguration with multicast MRBs
+
+In the radio bearer configuration, `mrb-ToAddModList` lists the multicast MRBs to add or modify, and `mrb-ToReleaseList` those to release. Each `MRB-ToAddMod-r17` holds `mbs-SessionId-r17`, the multicast MBS session the bearer is associated with, `mrb-Identity-r17`, and a `pdcp-Config` (TS 38.331 clause 6.3.2). For a multicast MRB that is not part of the UE configuration, the UE establishes a PDCP entity, associates the MRB with its `mbs-SessionId`, and establishes an SDAP entity for that `mbs-SessionId` if none exists (TS 38.331 clause 5.3.5.6.7). On release, it releases the PDCP entity and the `mrb-Identity` (clause 5.3.5.6.6).
+
+### Step 2: PTM and PTP legs
+
+| UE state | Multicast MRB configurations (TS 38.300 clause 16.10.3) |
+| --- | --- |
+| RRC_CONNECTED, by dedicated RRC signalling | DL-only or bidirectional RLC-UM for PTP; RLC-AM for PTP; DL-only RLC-UM for PTM; two RLC-UM entities, one DL-only for PTP and one DL-only for PTM; three RLC-UM entities, one DL and one UL for PTP and one DL-only for PTM; RLC-AM for PTP with DL-only RLC-UM for PTM |
+| RRC_INACTIVE, by broadcast and/or dedicated RRC signalling | DL-only RLC-UM for PTM |
+
+The gNB may change the MRB type of a UE in RRC_CONNECTED with RRC signalling (TS 38.300 clause 16.10.3). In the cell group configuration, `MulticastRLC-BearerConfig-r17` associates an RLC bearer with a multicast MRB through `servedMBS-RadioBearer`, and `isPTM-Entity` marks the RLC entity used for PTM reception; without it, the entity is used for PTP (TS 38.331 clause 6.3.2). To limit data loss at an MRB type change, the gNB may configure the UE to send a PDCP status report (TS 38.300 clause 16.10.5.3.4).
+
+### Step 3: G-RNTI, HARQ feedback, DRX and common frequency resource
+
+| Item | What applies | Clause |
+| --- | --- | --- |
+| G-RNTI and G-CS-RNTI | `MBS-RNTI-SpecificConfig-r17`, in `g-RNTI-ConfigToAddModList` of `MAC-CellGroupConfig`, sets a G-RNTI, which scrambles the scheduling and transmission of PTM for one or more multicast services, or a G-CS-RNTI for SPS group-common PDSCH. Up to 8 G-RNTIs can be configured, based on the UE capability | TS 38.331 cl. 6.3.2 |
+| HARQ feedback | `harq-FeedbackEnablerMulticast`: feedback always (`enabled`) or as indicated by the DCI (`dci-enabler`). `harq-FeedbackOptionMulticast`: `ack-nack` is the first HARQ-ACK reporting mode, `nack-only` the second, in which the UE does not send a PUCCH carrying only ACKs | TS 38.331 cl. 6.3.2; TS 38.213 cl. 18; TS 38.300 cl. 16.10.5.7 |
+| DRX | For PTM, multicast DRX per G-RNTI or G-CS-RNTI (`drx-ConfigPTM`), independent of UE-specific DRX. For PTP, UE-specific DRX; a PTM retransmission via PTP is monitored with the C-RNTI or CS-RNTI during the UE-specific DRX Active Time | TS 38.300 cl. 16.10.5.6; TS 38.331 cl. 6.3.2 |
+| Repetition | `pdsch-AggregationFactor`: number of repetitions for dynamically scheduled multicast data; 1 when absent for a G-RNTI | TS 38.331 cl. 6.3.2 |
+| Common frequency resource | `cfr-ConfigMulticast`: a UE-specific CFR for multicast in one dedicated BWP, within at most one serving cell. The CFR is an MBS frequency region of contiguous PRBs within the DL BWP and with its numerology | TS 38.331 cl. 6.3.2; TS 38.300 cl. 16.10.5.7; TS 38.213 cl. 18 |
+
+### Step 4: Receiving PTM and PTP
+
+For PTP, the gNB schedules a UE-specific PDSCH with a UE-specific PDCCH whose CRC is scrambled by a UE-specific RNTI, such as the C-RNTI. For PTM, it schedules a group-common PDSCH with a group-common PDCCH scrambled by a group-common RNTI. When a UE has both legs, the gNB decides dynamically which to use, based on information such as the session QoS requirements, the number of joined UEs and the UE feedback on reception quality (TS 38.300 clause 16.10.5.4). DCI formats 4_1 and 4_2 are used for the scheduling of PDSCH for multicast (TS 38.212 clauses 7.3.1.5.2 and 7.3.1.5.3). The MAC entity acts on downlink assignments received for its C-RNTI or for a G-RNTI configured for multicast MTCH (TS 38.321 clause 5.3.1). The UE receives multicast data from the PCell or from a single SCell at a time (TS 38.300 clause 16.10.5.5).
+
+## Activation and deactivation
+
+Activation and deactivation apply to multicast only. The MB-SMF triggers activation when the MB-UPF notifies it of downlink data, or on a request from the AF, directly or through the NEF; the session then moves from Inactive to Active. It triggers deactivation when the MB-UPF notifies it that there has been no downlink data for some duration, or on a request from the AF; the session moves from Active to Inactive (TS 23.247 clause 7.2.5.1).
+
+### A1. Activation, with group paging
+
+1. The MB-UPF, as instructed by the MB-SMF at deactivation, sends an N4mb notification when downlink data arrives, or the AF sends an activation request (TS 23.247 clause 7.2.5.2, step 1). In PFCP, the MB-UPF reports downlink data with a PFCP Session Report Request carrying a Downlink Data Report IE (TS 29.244 clause 5.34.2.3).
+2. The MB-SMF sends Nmbsmf_MBSSession_ContextStatusNotify with the state Active to the SMFs. Each SMF finds the UEs that joined the session (TS 23.247 clause 7.2.5.2, step 2).
+3. The SMF invokes Namf_MT_EnableGroupReachability towards the AMFs with the list of UEs (step 3). The AMF answers with the UEs in CM-CONNECTED (TS 29.518 clause 5.4.2.4), for which the SMF sends the N2 SM information (TS 23.247 clause 7.2.5.2, step 4b).
+4. For UEs in CM-IDLE, the AMF sends a Multicast Group paging request with the UE list and the TMGI to the NG-RAN nodes of the paging area that support MBS, or per-UE paging to nodes that do not (step 5). In NGAP this is MULTICAST GROUP PAGING (TS 38.413 clause 8.5.2), and in F1AP the gNB-CU passes it to the gNB-DU in a MULTICAST GROUP PAGING message (TS 38.473 clause 8.14.5). Paged UEs send a Service Request (TS 23.247 clause 7.2.5.2, step 6).
+5. If the MB-SMF finds shared tunnels, it invokes Namf_MBSCommunication_N2MessageTransfer with an activation for the NG-RAN nodes that have one, in parallel with step 2 (TS 23.247 clause 7.2.5.2, step 11; TS 29.518 clause 5.7.2.2). The AMF sends the NGAP activation request, MULTICAST SESSION ACTIVATION REQUEST (TS 38.413 clause 8.18.3). The NG-RAN nodes perform RAN paging for joined UEs in RRC_INACTIVE (TS 23.247 clause 7.2.5.2, step 12), and establish the radio resources (step 13).
+6. The MB-SMF asks the MB-UPF, with N4mb Session Modification, to forward the MBS packets (step 15). In PFCP, it sets the FAR Apply Action back to FSSM and/or MBSU (TS 29.244 clause 5.34.2.4).
+
+In NG-RAN, the group notification is addressed with the P-RNTI on the PDCCH. Its paging message contains the MBS session ID and pages all UEs in RRC_IDLE and RRC_INACTIVE that joined the session, without paging them individually (TS 38.300 clause 16.10.5.2). In RRC_IDLE, the UE forwards each TMGI of `pagingGroupList` that matches a session it joined to the upper layers (TS 38.331 clause 5.3.2.3). Unless the notification indicates that reception in RRC_INACTIVE is allowed, the UEs reconnect or resume and move to RRC_CONNECTED (TS 38.300 clause 16.10.5.2).
+
+### A2. Deactivation
+
+1. The MB-UPF notifies the MB-SMF that no data is received for the session, or the AF sends a deactivation request (TS 23.247 clause 7.2.5.3, step 1).
+2. The MB-SMF sends an N4mb Session Modification Request to the MB-UPF, with Buffered Downlink Traffic detection when activation is to follow incoming data (step 2). In PFCP, the FAR Apply Action changes from FSSM and/or MBSU to BUFF and NOCP, or to DROP or BUFF when the AF requested the deactivation (TS 29.244 clause 5.34.2.4).
+3. The MB-SMF notifies the SMFs, which set the session to Inactive and, for UEs with 5GC Individual delivery, remove the associated QoS flows (TS 23.247 clause 7.2.5.3, steps 3 and 4a).
+4. For the NG-RAN nodes with a shared tunnel over N3mb, the MB-SMF sends Namf_MBSCommunication_N2MessageTransfer with a deactivation, and the AMF sends the NGAP deactivation request (steps 5 and 6), MULTICAST SESSION DEACTIVATION REQUEST (TS 38.413 clause 8.18.4).
+5. The NG-RAN node keeps the multicast MBS Session Context and the N3mb shared tunnel (TS 23.247 clause 7.2.5.3, step 7).
+
+There is no explicit deactivation indication to the UE (TS 23.247 clause 7.2.5.3, NOTE 3). When a multicast session is deactivated, the gNB may move a UE in RRC_CONNECTED to RRC_IDLE or RRC_INACTIVE (TS 38.300 clause 16.10.5.2). In a split gNB, the gNB-CU-CP can ask the gNB-CU-UP to suspend the downlink transmission and buffer arriving data; the gNB-CU-UP then reports downlink data arrival with MC Bearer Notification (TS 37.483 clauses 8.6.2.1 and 8.6.2.6).
+
+### A3. Session update
+
+The AF updates the MBS service area or the MBS Service Information with MBS Session Update, and can also activate or deactivate the session with it (TS 23.247 clause 7.1.1.6, step 1). For multicast, the MB-SMF continues towards the AMF and NG-RAN with clause 7.2.5 for activation and deactivation, and clause 7.2.6 for QoS and service area updates (clause 7.1.1.6, step 7). In NGAP, the AMF sends MULTICAST SESSION UPDATE REQUEST, with which the NG-RAN node updates the MBS QoS profile and/or the MBS Service Area (TS 38.413 clause 8.18.5).
+
+## User plane
+
+The MB-UPF receives the multicast PDUs either directly from the content provider or through the MBSTF (TS 23.247 clause 7.2.1.3, step 13). When the MBSF is involved, the tunnel between the MBSTF and the MB-UPF is established at MBS Session creation (NOTE 11).
+
+| | 5GC Shared delivery | 5GC Individual delivery |
+| --- | --- | --- |
+| **From the MB-UPF** | In the N3mb tunnel of the session to the NG-RAN node; one tunnel per multicast session, MBS service area and NG-RAN node, shared by all UEs that joined through that node (step 14) | In the N19mb tunnel of the session to the UPF; one tunnel per multicast session and UPF, shared by all its associated PDU Sessions (step 17) |
+| **Then** | | The UPF forwards the data in the N3 tunnel of each associated PDU Session (step 18) |
+| **Over the radio** | The MBS Radio Bearer, with PTP or PTM (step 16) | The radio bearers of the associated QoS flows of the PDU Session (step 19) |
+
+The UPF allocates only one N19mb downlink tunnel per multicast session, with unicast transport over N19mb, or joins the multicast group, with multicast transport. The SMF may instruct the UPF to change the QFI of the downlink packets of a multicast QoS flow to the QFI of the associated unicast QoS flow (TS 29.244 clauses 5.34.3.1 and 5.34.3.2). In the UE, SDAP maps MBS QoS flows to MRBs without an SDAP header, and the PDCP entity of an MRB can use header compression (TS 37.324 clause 4.2.2; TS 38.323 clause 4.2.2).
+
+## Leave and release
+
+### L1. Leave requested by the UE
+
+The UE sends a PDU Session Modification Request with a leave indication and the MBS Session ID (TS 23.247 clause 7.2.2.2, step 1). With 5GC Individual delivery, the SMF reconfigures the UPF to stop distributing the data in the PDU Session, and the UPF releases the N19mb tunnel or leaves the multicast tree when no PDU Session needs it (steps 3a and 3b). With 5GC Shared delivery, the SMF tells NG-RAN to remove the UE from the session (step 7), and the NG-RAN node removes it (step 10).
+
+If the UE was the last joined UE served by the SMF, the SMF unsubscribes from the MBS Session Context with Nmbsmf_MBSSession_ContextStatusUnsubscribe. For the last UE leaving the session, the MB-SMF asks the MB-UPF to stop forwarding and may ask it to leave the multicast tree (TS 23.247 clause 7.2.2.2, step 12). If the UE was the last one of the session in the NG-RAN node, the node releases shared delivery (step 13). In the radio configuration, the multicast MRBs are released through `mrb-ToReleaseList`, and the UE releases the SDAP entities of multicast sessions left without a multicast MRB (TS 38.331 clause 5.3.5.6.1). Release of the associated PDU Session implicitly leaves its multicast sessions (TS 23.247 clause 7.2.2.2, NOTE).
+
+### L2. Leave requested by the network, and session release
+
+When the AF deletes the session, the MB-SMF triggers the release towards the SMFs (TS 23.247 clause 7.1.1.4, step 5). It notifies each SMF with Nmbsmf_MBSSession_ContextStatusNotify (multicast session release), and the SMF removes all joined UEs from the session (clause 7.2.2.3, step 1a). The SMF can also remove one UE, for example on a subscription change from the UDM (clause 7.2.2.3). For UEs with an activated user plane, the SMF uses Namf_Communication_N1N2MessageTransfer: the N1 SM container tells the UE it was removed and why, and the N2 SM information tells NG-RAN to remove the UE (step 3). For an active session, the MB-SMF may first deactivate the session in NG-RAN to release the radio resources early (clause 7.2.2.3).
+
+### L3. Release of shared delivery
+
+The NG-RAN node may release shared delivery when the last UE leaves the context of the session, at handover of the last UE, or at MBS session deletion. While the session is inactive, shared delivery is not released if at least one UE of the session is in RRC_CONNECTED (TS 23.247 clause 7.2.2.4).
+
+1. The NG-RAN node sends an N2 MBS Session release request to the AMF, with the unicast DL tunnel information if unicast transport is used (TS 23.247 clause 7.2.2.4, step 2). In NGAP this is DISTRIBUTION RELEASE REQUEST (TS 38.413 clause 8.18.2).
+2. The AMF invokes Nmbsmf_MBSSession_ContextUpdate, with a leave indication if this is the last NG-RAN node it controls for the session (TS 23.247 clause 7.2.2.4, step 3).
+3. With unicast transport, if no other NG-RAN node uses the DL GTP tunnel, the MB-SMF releases the N3mb tunnel in the MB-UPF with N4mb Session Modification (step 4).
+4. The AMF answers the NG-RAN node, which deletes the GTP tunnel information or leaves the multicast distribution tree, and releases its local resources (step 7).
+
+In the gNB, F1AP Multicast Distribution Release lets the gNB-DU release the F1-U tunnels, Multicast Context Release lets the gNB-CU release the multicast context in the gNB-DU (TS 38.473 clauses 8.14.11 and 8.14.7), and E1AP MC Bearer Context Release releases the resources in the gNB-CU-UP (TS 37.483 clause 8.6.2.4).
+
+<details>
+<summary>Sources for this page</summary>
+
+- **How MBS Multicast differs:** TS 38.300 V18.11.0, clauses 16.10.1 and 16.10.5.2; TS 23.247 V18.8.0, clause 7.2.1.1.
+- **Network set-up:** TS 23.247 V18.8.0, clauses 7.1.1.1 to 7.1.1.4, 7.1.1.6 and 7.1.2; TS 26.502 V18.6.0, clauses 5.2 to 5.5.1; TS 29.532 V18.6.0, clauses 5.2.2.2 and 5.3.2.2; TS 29.244 V18.10.0, clause 5.34.2.2.
+- **Join and session establishment:** TS 23.247 V18.8.0, clauses 7.2.1.1 to 7.2.1.4; TS 29.532 V18.6.0, clauses 5.3.2.5 and 5.3.2.9, table 6.2.3.1-1; TS 38.413 V18.11.0, clauses 8.18.1, 9.3.1.210 to 9.3.1.212, 9.3.4.1, 9.3.4.3 and 9.3.4.4; TS 38.401 V18.7.0, clause 8.15.1.2; TS 37.483 V18.6.0, clauses 8.6.2.1 and 8.6.2.2; TS 38.473 V18.11.0, clauses 8.14.6 and 8.14.10; TS 29.244 V18.10.0, clauses 5.34.3.1 and 5.34.3.2.
+- **Radio configuration:** TS 38.300 V18.11.0, clauses 16.10.3, 16.10.5.2, 16.10.5.3.4 and 16.10.5.4 to 16.10.5.7; TS 38.331 V18.11.0, clauses 5.3.5.6.1, 5.3.5.6.6, 5.3.5.6.7 and 6.3.2; TS 38.213 V18.9.0, clause 18; TS 38.212 V18.8.0, clauses 7.3.1.5.2 and 7.3.1.5.3; TS 38.321 V18.10.0, clause 5.3.1.
+- **Activation, deactivation and update:** TS 23.247 V18.8.0, clauses 7.1.1.6 and 7.2.5; TS 29.518 V18.15.0, clauses 5.4.2.4 and 5.7.2.2; TS 29.244 V18.10.0, clauses 5.34.2.3 and 5.34.2.4; TS 38.413 V18.11.0, clauses 8.5.2 and 8.18.3 to 8.18.5; TS 38.473 V18.11.0, clause 8.14.5; TS 37.483 V18.6.0, clauses 8.6.2.1 and 8.6.2.6; TS 38.300 V18.11.0, clause 16.10.5.2; TS 38.331 V18.11.0, clause 5.3.2.3.
+- **User plane:** TS 23.247 V18.8.0, clause 7.2.1.3; TS 29.244 V18.10.0, clauses 5.34.3.1 and 5.34.3.2; TS 37.324 V18.0.0, clause 4.2.2; TS 38.323 V18.5.0, clause 4.2.2.
+- **Leave and release:** TS 23.247 V18.8.0, clauses 7.1.1.4 and 7.2.2; TS 38.413 V18.11.0, clause 8.18.2; TS 38.473 V18.11.0, clauses 8.14.7 and 8.14.11; TS 37.483 V18.6.0, clause 8.6.2.4; TS 38.331 V18.11.0, clause 5.3.5.6.1.
+
+</details>
