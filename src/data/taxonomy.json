@@ -610,6 +610,7 @@
       "repos": [
         "rt-libflute",
         "rt-media-origin",
+        "rt-media-android-application",
         "rt-cmmf-encoder"
       ],
       "releases_slug": "#repositories--releases",
@@ -1834,6 +1835,26 @@
         ],
         "public": false,
         "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-media-android-application",
+        "display_name": "Reference Media Application",
+        "description": "An Android test app and a laptop test rig that check every delivery method of rt-media-origin arrives on a phone and plays as configured.",
+        "repo_url": "https://github.com/5G-MAG/rt-media-android-application",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "IETF"
+        ],
+        "dependencies": [
+          "rt-media-origin"
+        ],
+        "software": [
+          "Android",
+          "Linux"
+        ],
+        "public": false,
+        "is_auxiliary": true
       },
       {
         "repo_slug": "rt-cmmf-encoder",
