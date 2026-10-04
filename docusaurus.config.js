@@ -94,6 +94,8 @@ const config = {
           // Architecture and Features split into an MBS User Services page and an MBS System page (2026-10-04)
           { from: '/tech/5g-mbs/architecture', to: '/tech/5g-mbs/architecture-user-services' },
           { from: '/tech/5g-mbs/features', to: '/tech/5g-mbs/features-user-services' },
+          // MBS Multicast in RRC_INACTIVE folded into the MBS Multicast page (2026-10-04)
+          { from: '/tech/5g-mbs/analysis-mbs-multicast-inactive-ran', to: '/tech/5g-mbs/analysis-mbs-multicast' },
           { from: '/tech/standards/6g', to: '/standards/6g' },
           { from: '/tech/standards/ai-ml', to: '/standards/ai-ml' },
           { from: '/tech/standards/avatar', to: '/standards/avatar' },

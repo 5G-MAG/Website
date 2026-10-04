@@ -32,7 +32,7 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 In MBS Broadcast, the same service and the same content are provided simultaneously to all UEs in a geographical area, and a UE can receive it in RRC_IDLE, RRC_INACTIVE and RRC_CONNECTED. For broadcast, the MBS Session creation triggers the procedure that reserves resources towards NG-RAN. A UE needs to know whether a service is broadcast or multicast to decide whether to join; for broadcast, a UE that holds the needed configuration does not need to interact with the network.
 
-<JumpMenu items={[["Steps", "the-steps"], ["Implementation blueprint", "implementation-blueprint"], ["Network set-up", "network-set-up"], ["Radio acquisition", "step-0-pre-configuration"], ["User plane", "user-plane"], ["Update and release", "update-and-release"]]} />
+<JumpMenu items={[["Steps", "the-steps"], ["Implementation blueprint", "implementation-blueprint"], ["Network set-up", "network-set-up"], ["RRC states", "rrc-states"], ["Radio acquisition", "step-0-pre-configuration"], ["User plane", "user-plane"], ["Update and release", "update-and-release"]]} />
 
 This page follows an MBS Broadcast session from its provisioning to the reception of its data by the UE, then its update and release, in Release 18. Each step names the functions, the message or service, and the clause that defines it. Field names on the radio side are those of the TS 38.331 ASN.1; the clause given for each is where the full definition is.
 
@@ -180,6 +180,10 @@ To receive a broadcast service, the UE is either pre-configured (step 0 below) o
 
 The FSA IDs of a broadcast MBS session are communicated in the service announcement; the UE compares them with the FSA IDs in the SIBs to select a frequency (TS 23.247 clause 7.3.1, step 1). Based on OAM configuration, the RAN nodes announce in SIBs the FSA IDs and the frequencies of neighbouring cells (step 0). With MBS User Services, the MBSF compiles and distributes the MBS User Service Announcement as specified in TS 26.502 clause 5.4. At the start time, the MBSF sets each MBS Distribution Session to ACTIVE in the MBSTF with Nmbstf_MBSDistributionSession_Update (TS 26.502 clause 5.5.1). Using the start and stop times in the USD to decide when to start monitoring the MCCH is left to the UE (TS 38.300 clause 16.10.6.2).
 
+## RRC states
+
+A UE receives MBS broadcast in all three RRC states, with no join and no state change. TS 38.300 V18.11.0 clause 16.10.6.2: "MBS broadcast can be received by UEs in RRC_IDLE, RRC_INACTIVE and RRC_CONNECTED state." and "A UE can receive the MBS configuration for broadcast session (e.g., parameters needed for MTCH reception) via MCCH in RRC_IDLE, RRC_INACTIVE and RRC_CONNECTED state."
+
 ## Step 0: Pre-configuration
 
 A UE may be pre-configured with information for MBS services. It then discovers and receives the services with that configuration. The pre-configuration lists PLMNs, and for each PLMN gives:
@@ -288,5 +292,6 @@ When NG-RAN cannot continue to provide the broadcast MBS session, for example fo
 - **Physical layer:** TS 38.212 V18.8.0, clause 7.3.1.5.1; TS 38.213 V18.9.0, clause 10.1; TS 38.214 V18.11.0, clause 5.1; TS 38.300 V18.11.0, clause 16.10.6.6.
 - **User plane:** TS 23.247 V18.8.0, clause 7.3.1; TS 26.502 V18.6.0, clause 5.5.1; TS 37.324 V18.0.0, clauses 4.2.1, 4.2.2 and 5.1.1; TS 38.323 V18.5.0, clause 4.2.2; TS 38.300 V18.11.0, clause 16.10.3.
 - **Neighbour cells and the USD:** TS 38.300 V18.11.0, clauses 16.10.6.2 and 16.10.6.5.1.
+- **RRC states:** TS 38.300 V18.11.0, clause 16.10.6.2.
 
 </details>
