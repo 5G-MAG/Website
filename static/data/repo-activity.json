@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-03 02:27 UTC",
+  "updated_at": "2026-10-04 02:57 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -38,8 +38,17 @@
           "description": "5GMS-Aware Application",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-09-29",
+          "pushed_at": "2026-10-03",
           "pulls": [
+            {
+              "number": 55,
+              "title": "dvbi-client: native Android DVB-I client (fivegmag_DVBIClient)",
+              "url": "https://github.com/5G-MAG/rt-5gms-application/pull/55",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-03",
+              "base": "development"
+            },
             {
               "number": 53,
               "title": "docs: apply the 5G-MAG README format",
@@ -60,6 +69,14 @@
             }
           ],
           "issues": [
+            {
+              "number": 54,
+              "title": "Native Android DVB-I client following ETSI TS 103 770 V1.2.1",
+              "url": "https://github.com/5G-MAG/rt-5gms-application/issues/54",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-03",
+              "labels": []
+            },
             {
               "number": 48,
               "title": "Add stop button to terminate QoE Metrics and Consumption Reporting",
@@ -107,6 +124,11 @@
               "name": "main",
               "default": true,
               "last_commit": "2026-05-26"
+            },
+            {
+              "name": "feature/dvbi-client",
+              "default": false,
+              "last_commit": "2026-10-03"
             },
             {
               "name": "fix/apply-new-format",
@@ -1307,7 +1329,7 @@
           "description": "FLUTE Protocol and Profiles",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-02",
+          "pushed_at": "2026-10-03",
           "pulls": [
             {
               "number": 113,
@@ -1365,36 +1387,6 @@
             }
           ],
           "issues": [
-            {
-              "number": 111,
-              "title": "FDT logging reads past the end of the received buffer",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/111",
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-16",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 110,
-              "title": "Content-Type is not always carried in the FDT under the 3GPP profiles",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/110",
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-16",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 109,
-              "title": "Every packet is sent twice when a UDP tunnel endpoint is configured",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/109",
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-07",
-              "labels": [
-                "bug"
-              ]
-            },
             {
               "number": 108,
               "title": "Merge order for #62, #61 and #68: no single branch carries the receiver API rt-mbs-client builds against",
@@ -1464,26 +1456,6 @@
               ]
             },
             {
-              "number": 101,
-              "title": "An unrecognised FEC Encoding ID from the network is accepted",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/101",
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-04",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 100,
-              "title": "FDT Instance expiry is read before it is set",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/100",
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-04",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
               "number": 99,
               "title": "Document the three FLUTE profiles: what each is, who selects it, and where they differ",
               "url": "https://github.com/5G-MAG/rt-libflute/issues/99",
@@ -1494,26 +1466,6 @@
               ]
             },
             {
-              "number": 97,
-              "title": "The UDP tunnel send path is IPv4-only and throws on an IPv6 destination",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/97",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 96,
-              "title": "IPsec sets up an encryption-only ESP association, with no packet authentication",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/96",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
               "number": 86,
               "title": "No way to ask an incomplete object which source symbols are missing",
               "url": "https://github.com/5G-MAG/rt-libflute/issues/86",
@@ -1521,36 +1473,6 @@
               "created_at": "2026-08-22",
               "labels": [
                 "enhancement"
-              ]
-            },
-            {
-              "number": 85,
-              "title": "IPsec configuration is IPv4-only and accepts an IPv6 destination it cannot express",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/85",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 83,
-              "title": "The IPsec netlink socket is never released, leaking a descriptor on every call",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/83",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 82,
-              "title": "The send socket is not bound to the configured source address when a tunnel is set",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/82",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug"
               ]
             },
             {
@@ -1604,78 +1526,6 @@
               ]
             },
             {
-              "number": 76,
-              "title": "ctest at the build root discovers no tests and exits successfully",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/76",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug",
-                "good first issue"
-              ]
-            },
-            {
-              "number": 75,
-              "title": "No support for the FDT Complete attribute or the LCT Close Session and Close Object flags",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/75",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "enhancement"
-              ]
-            },
-            {
-              "number": 74,
-              "title": "Packets for a TOI are discarded when they arrive before the FDT that describes them",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/74",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 73,
-              "title": "TSI is truncated to 16 bits, and the FDT Instance ID never wraps",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/73",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 72,
-              "title": "ALC/LCT header parse: out-of-bounds read, infinite loop, and two misread fields",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/72",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 71,
-              "title": "FEC-OTI-FEC-Instance-ID is emitted for a Fully-Specified FEC scheme",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/71",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug",
-                "good first issue"
-              ]
-            },
-            {
-              "number": 70,
-              "title": "The library cannot produce an MBMS Download Profile conformant FDT",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/70",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
               "number": 66,
               "title": "Add tunnelled operation to Receiver class",
               "url": "https://github.com/5G-MAG/rt-libflute/issues/66",
@@ -1694,14 +1544,6 @@
               "labels": [
                 "enhancement"
               ]
-            },
-            {
-              "number": 27,
-              "title": "flute-receiver example writes files insecurely and may crash",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/27",
-              "author": "ypo",
-              "created_at": "2025-09-24",
-              "labels": []
             },
             {
               "number": 14,
@@ -1729,12 +1571,12 @@
               "last_commit": "2026-08-21"
             },
             {
-              "name": "development",
+              "name": "feature/issue66-receiver-tunnel-mode",
               "default": false,
-              "last_commit": "2026-10-02"
+              "last_commit": "2026-10-03"
             },
             {
-              "name": "feature/issue66-receiver-tunnel-mode",
+              "name": "development",
               "default": false,
               "last_commit": "2026-10-02"
             },
@@ -3663,7 +3505,7 @@
           "description": "FLUTE Protocol and Profiles",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-02",
+          "pushed_at": "2026-10-03",
           "pulls": [
             {
               "number": 113,
@@ -3721,36 +3563,6 @@
             }
           ],
           "issues": [
-            {
-              "number": 111,
-              "title": "FDT logging reads past the end of the received buffer",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/111",
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-16",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 110,
-              "title": "Content-Type is not always carried in the FDT under the 3GPP profiles",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/110",
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-16",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 109,
-              "title": "Every packet is sent twice when a UDP tunnel endpoint is configured",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/109",
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-07",
-              "labels": [
-                "bug"
-              ]
-            },
             {
               "number": 108,
               "title": "Merge order for #62, #61 and #68: no single branch carries the receiver API rt-mbs-client builds against",
@@ -3820,26 +3632,6 @@
               ]
             },
             {
-              "number": 101,
-              "title": "An unrecognised FEC Encoding ID from the network is accepted",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/101",
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-04",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 100,
-              "title": "FDT Instance expiry is read before it is set",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/100",
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-04",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
               "number": 99,
               "title": "Document the three FLUTE profiles: what each is, who selects it, and where they differ",
               "url": "https://github.com/5G-MAG/rt-libflute/issues/99",
@@ -3850,26 +3642,6 @@
               ]
             },
             {
-              "number": 97,
-              "title": "The UDP tunnel send path is IPv4-only and throws on an IPv6 destination",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/97",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 96,
-              "title": "IPsec sets up an encryption-only ESP association, with no packet authentication",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/96",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
               "number": 86,
               "title": "No way to ask an incomplete object which source symbols are missing",
               "url": "https://github.com/5G-MAG/rt-libflute/issues/86",
@@ -3877,36 +3649,6 @@
               "created_at": "2026-08-22",
               "labels": [
                 "enhancement"
-              ]
-            },
-            {
-              "number": 85,
-              "title": "IPsec configuration is IPv4-only and accepts an IPv6 destination it cannot express",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/85",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 83,
-              "title": "The IPsec netlink socket is never released, leaking a descriptor on every call",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/83",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 82,
-              "title": "The send socket is not bound to the configured source address when a tunnel is set",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/82",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug"
               ]
             },
             {
@@ -3960,78 +3702,6 @@
               ]
             },
             {
-              "number": 76,
-              "title": "ctest at the build root discovers no tests and exits successfully",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/76",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug",
-                "good first issue"
-              ]
-            },
-            {
-              "number": 75,
-              "title": "No support for the FDT Complete attribute or the LCT Close Session and Close Object flags",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/75",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "enhancement"
-              ]
-            },
-            {
-              "number": 74,
-              "title": "Packets for a TOI are discarded when they arrive before the FDT that describes them",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/74",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 73,
-              "title": "TSI is truncated to 16 bits, and the FDT Instance ID never wraps",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/73",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 72,
-              "title": "ALC/LCT header parse: out-of-bounds read, infinite loop, and two misread fields",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/72",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 71,
-              "title": "FEC-OTI-FEC-Instance-ID is emitted for a Fully-Specified FEC scheme",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/71",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug",
-                "good first issue"
-              ]
-            },
-            {
-              "number": 70,
-              "title": "The library cannot produce an MBMS Download Profile conformant FDT",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/70",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
               "number": 66,
               "title": "Add tunnelled operation to Receiver class",
               "url": "https://github.com/5G-MAG/rt-libflute/issues/66",
@@ -4050,14 +3720,6 @@
               "labels": [
                 "enhancement"
               ]
-            },
-            {
-              "number": 27,
-              "title": "flute-receiver example writes files insecurely and may crash",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/27",
-              "author": "ypo",
-              "created_at": "2025-09-24",
-              "labels": []
             },
             {
               "number": 14,
@@ -4085,12 +3747,12 @@
               "last_commit": "2026-08-21"
             },
             {
-              "name": "development",
+              "name": "feature/issue66-receiver-tunnel-mode",
               "default": false,
-              "last_commit": "2026-10-02"
+              "last_commit": "2026-10-03"
             },
             {
-              "name": "feature/issue66-receiver-tunnel-mode",
+              "name": "development",
               "default": false,
               "last_commit": "2026-10-02"
             },
@@ -5327,12 +4989,34 @@
       "doc_url": "/reference-tools/dvb-i/",
       "repos": [
         {
+          "repo": "rt-dvb-i-android-application",
+          "url": "https://github.com/5G-MAG/rt-dvb-i-android-application",
+          "description": "Native Android DVB-I client following ETSI TS 103 770, with Media3 ExoPlayer",
+          "auxiliary": false,
+          "private": false,
+          "pushed_at": "2026-10-03",
+          "pulls": [],
+          "issues": [],
+          "branches": [
+            {
+              "name": "main",
+              "default": true,
+              "last_commit": "2026-10-03"
+            },
+            {
+              "name": "development",
+              "default": false,
+              "last_commit": "2026-10-03"
+            }
+          ]
+        },
+        {
           "repo": "rt-dvb-i-application",
           "url": "https://github.com/5G-MAG/rt-dvb-i-application",
           "description": "A browser DVB-I client that discovers a service list, presents its channels with their content guide, and plays them, per ETSI TS 103 770.",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-02",
+          "pushed_at": "2026-10-03",
           "pulls": [],
           "issues": [],
           "branches": [
@@ -5344,7 +5028,7 @@
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-02"
+              "last_commit": "2026-10-03"
             }
           ]
         },
@@ -5354,7 +5038,7 @@
           "description": "Publishes a DVB-I service list and its content guide, and gives an editor for maintaining them, per ETSI TS 103 770.",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-02",
+          "pushed_at": "2026-10-03",
           "pulls": [],
           "issues": [],
           "branches": [
@@ -5366,7 +5050,7 @@
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-02"
+              "last_commit": "2026-10-03"
             }
           ]
         },
@@ -5376,7 +5060,7 @@
           "description": "Answers DVB-I client queries with a list of Service List Entry Points, per ETSI TS 103 770 V1.2.1 clause 5.1.3.2.",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-02",
+          "pushed_at": "2026-10-03",
           "pulls": [],
           "issues": [],
           "branches": [
@@ -5388,7 +5072,7 @@
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-02"
+              "last_commit": "2026-10-03"
             }
           ]
         },
@@ -5398,7 +5082,7 @@
           "description": "Runnable examples that bring the DVB-I repositories up together on one machine, publishing and playing a service list per ETSI TS 103 770.",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-10-02",
+          "pushed_at": "2026-10-03",
           "pulls": [],
           "issues": [],
           "branches": [
@@ -5410,7 +5094,7 @@
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-02"
+              "last_commit": "2026-10-03"
             }
           ]
         }
@@ -5463,7 +5147,7 @@
           "description": "FLUTE Protocol and Profiles",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-02",
+          "pushed_at": "2026-10-03",
           "pulls": [
             {
               "number": 113,
@@ -5521,36 +5205,6 @@
             }
           ],
           "issues": [
-            {
-              "number": 111,
-              "title": "FDT logging reads past the end of the received buffer",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/111",
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-16",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 110,
-              "title": "Content-Type is not always carried in the FDT under the 3GPP profiles",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/110",
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-16",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 109,
-              "title": "Every packet is sent twice when a UDP tunnel endpoint is configured",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/109",
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-07",
-              "labels": [
-                "bug"
-              ]
-            },
             {
               "number": 108,
               "title": "Merge order for #62, #61 and #68: no single branch carries the receiver API rt-mbs-client builds against",
@@ -5620,26 +5274,6 @@
               ]
             },
             {
-              "number": 101,
-              "title": "An unrecognised FEC Encoding ID from the network is accepted",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/101",
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-04",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 100,
-              "title": "FDT Instance expiry is read before it is set",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/100",
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-04",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
               "number": 99,
               "title": "Document the three FLUTE profiles: what each is, who selects it, and where they differ",
               "url": "https://github.com/5G-MAG/rt-libflute/issues/99",
@@ -5650,26 +5284,6 @@
               ]
             },
             {
-              "number": 97,
-              "title": "The UDP tunnel send path is IPv4-only and throws on an IPv6 destination",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/97",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 96,
-              "title": "IPsec sets up an encryption-only ESP association, with no packet authentication",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/96",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
               "number": 86,
               "title": "No way to ask an incomplete object which source symbols are missing",
               "url": "https://github.com/5G-MAG/rt-libflute/issues/86",
@@ -5677,36 +5291,6 @@
               "created_at": "2026-08-22",
               "labels": [
                 "enhancement"
-              ]
-            },
-            {
-              "number": 85,
-              "title": "IPsec configuration is IPv4-only and accepts an IPv6 destination it cannot express",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/85",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 83,
-              "title": "The IPsec netlink socket is never released, leaking a descriptor on every call",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/83",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 82,
-              "title": "The send socket is not bound to the configured source address when a tunnel is set",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/82",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug"
               ]
             },
             {
@@ -5760,78 +5344,6 @@
               ]
             },
             {
-              "number": 76,
-              "title": "ctest at the build root discovers no tests and exits successfully",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/76",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug",
-                "good first issue"
-              ]
-            },
-            {
-              "number": 75,
-              "title": "No support for the FDT Complete attribute or the LCT Close Session and Close Object flags",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/75",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "enhancement"
-              ]
-            },
-            {
-              "number": 74,
-              "title": "Packets for a TOI are discarded when they arrive before the FDT that describes them",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/74",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 73,
-              "title": "TSI is truncated to 16 bits, and the FDT Instance ID never wraps",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/73",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 72,
-              "title": "ALC/LCT header parse: out-of-bounds read, infinite loop, and two misread fields",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/72",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 71,
-              "title": "FEC-OTI-FEC-Instance-ID is emitted for a Fully-Specified FEC scheme",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/71",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug",
-                "good first issue"
-              ]
-            },
-            {
-              "number": 70,
-              "title": "The library cannot produce an MBMS Download Profile conformant FDT",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/70",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
               "number": 66,
               "title": "Add tunnelled operation to Receiver class",
               "url": "https://github.com/5G-MAG/rt-libflute/issues/66",
@@ -5850,14 +5362,6 @@
               "labels": [
                 "enhancement"
               ]
-            },
-            {
-              "number": 27,
-              "title": "flute-receiver example writes files insecurely and may crash",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/27",
-              "author": "ypo",
-              "created_at": "2025-09-24",
-              "labels": []
             },
             {
               "number": 14,
@@ -5885,12 +5389,12 @@
               "last_commit": "2026-08-21"
             },
             {
-              "name": "development",
+              "name": "feature/issue66-receiver-tunnel-mode",
               "default": false,
-              "last_commit": "2026-10-02"
+              "last_commit": "2026-10-03"
             },
             {
-              "name": "feature/issue66-receiver-tunnel-mode",
+              "name": "development",
               "default": false,
               "last_commit": "2026-10-02"
             },
