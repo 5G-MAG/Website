@@ -124,7 +124,7 @@ const sidebars = {
   // still one level deeper and differently worded than everything else.
   // The per-category demo pages were folded into each project's Application
   // Showcase page (2026-10-01); only the unlisted authoring template remains here.
-  showcaseSidebar: [{ type: 'link', label: 'All Showcases', href: '/showcase' }],
+  showcaseSidebar: [{ type: 'link', label: 'All Tutorials', href: '/tutorials' }],
 
   // testbeds/index itself is deliberately NOT part of this sidebar (no
   // `link` on the outer category below) — it's a shallow hub page that now

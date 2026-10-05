@@ -161,7 +161,7 @@ export default function Home() {
             <p className={styles.sectionSubtitle} style={{ marginTop: '1.5rem' }}>
               See it built: browse the <Link to="/reference-tools">Reference Tools</Link> behind
               these specifications, evaluate them on a <Link to="/testbeds">Testbed</Link>, or
-              explore <Link to="/showcase">Application Showcases</Link> built from them.
+              follow the <Link to="/tutorials">Tutorials</Link> to run them.
             </p>
           </div>
         </section>

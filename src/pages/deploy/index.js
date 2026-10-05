@@ -8,15 +8,26 @@ import VideoGrid from '@site/src/components/VideoGrid';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 import styles from '../tech/index.module.css';
 import useAnchors from '@site/src/utils/useAnchors';
+import { AssetTiles } from '@site/src/components/ProjectDeploy';
+import { ALL_PROJECTS, isTestbed } from '@site/src/data/baskets';
+import { CATEGORIES as PROJECT_CATEGORIES, CategoryCard, topicFor } from '../reference-tools';
 
-const INTEROP_ICON_PATH = (
+// Every project's Deploy page, in the Reference Tools boxes plus one for the testbeds; each card opens
+// /deploy/<project>.
+const toDeploy = (t) => ({ ...t, href: `/deploy/${t.href.split('/').pop()}` });
+const DEPLOY_CATEGORIES = [
+  ...PROJECT_CATEGORIES.map((c) => ({ ...c, topics: c.topics.map(toDeploy) })),
+  { title: 'Testbeds', desc: 'Testbeds and evaluation frameworks.', topics: ALL_PROJECTS.filter(isTestbed).map(topicFor).map(toDeploy) },
+].filter((c) => c.topics.length > 0);
+
+// The package: what a product team takes away from here (the same icon as the navbar's Deploy entry).
+const DEPLOY_ICON_PATH = (
   <>
-    <path d="M7 12l5 5l-1.5 1.5a3.536 3.536 0 1 1 -5 -5l1.5 -1.5" />
-    <path d="M17 12l-5 -5l1.5 -1.5a3.536 3.536 0 1 1 5 5l-1.5 1.5" />
-    <path d="M3 21l2.5 -2.5" />
-    <path d="M18.5 5.5l2.5 -2.5" />
-    <path d="M10 11l-2 2" />
-    <path d="M13 14l-2 2" />
+    <path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" />
+    <path d="M12 12l8 -4.5" />
+    <path d="M12 12l0 9" />
+    <path d="M12 12l-8 -4.5" />
+    <path d="M16 5.25l-8 4.5" />
   </>
 );
 
@@ -30,6 +41,15 @@ const ACTIVITIES = [
   { title: 'Interoperability Events and Plugfests', body: 'With shared code, so interop does not start from scratch at plugfests.' },
   { title: 'Showcase at Industry Events and Trials', body: 'Promotion and demonstration of value, not just specs.' },
 ];
+
+// A stack: the assets.
+const ASSETS_ICON = (
+  <>
+    <path d="M12 4l-8 4l8 4l8 -4l-8 -4" />
+    <path d="M4 12l8 4l8 -4" />
+    <path d="M4 16l8 4l8 -4" />
+  </>
+);
 
 const PILLARS = [
   {
@@ -85,14 +105,14 @@ const PILLARS = [
   },
 ];
 
-// "What You'll Find Here" -- In Action only gives access to two things:
-// recorded Demos and Testing Events (e.g. the PlugFest). Nothing here
-// hands off to Reference Tools or Testbeds -- that's Developer's territory.
+// "What You'll Find Here": demos, plugfests and the assets to onboard
+// into a product. Nothing here hands off to Reference Tools or Testbeds -- that's
+// the Software Accelerator's territory.
 const WHATS_HERE = [
   {
     title: 'Demos',
     desc: 'Recorded plugfest and trade-show demonstrations.',
-    href: '/action#demonstrators',
+    href: '/deploy#demos',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M15 10l4.553 -2.069a1 1 0 0 1 1.447 .894v6.35a1 1 0 0 1 -1.447 .894l-4.553 -2.069v-4" />
@@ -101,9 +121,9 @@ const WHATS_HERE = [
     ),
   },
   {
-    title: 'Testing Events',
+    title: 'Plugfests',
     desc: 'Interoperability plugfests where reference code is tested side by side.',
-    href: '/action#testing-events',
+    href: '/deploy#plugfests',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
@@ -113,6 +133,12 @@ const WHATS_HERE = [
       </svg>
     ),
   },
+  {
+    title: 'Assets',
+    desc: 'Packages, modules, Docker images and apps to onboard into your product. Coming soon.',
+    href: '/deploy#assets',
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{ASSETS_ICON}</svg>,
+  },
 ];
 
 // Testing Events -- just the PlugFest today, structured to hold more cards
@@ -121,7 +147,7 @@ const TESTING_EVENTS = [
   {
     title: '5G Broadcast PlugFest 2026',
     body: 'Multi-vendor interoperability testing against ETSI TS 103 720, hosted by Fraunhofer FOKUS in Berlin.',
-    href: '/action/5g-broadcast-plugfest',
+    href: '/deploy/5g-broadcast-plugfest',
   },
 ];
 
@@ -146,12 +172,12 @@ function ActionEventCard({ title, body, href }) {
 }
 
 function DemosSection() {
-  useAnchors('demonstrators');
+  useAnchors('demos');
   const videos = youtubePlaylists.demos?.videos || [];
   if (!videos.length) return null;
 
   return (
-    <section id="demonstrators" className={`${styles.section} ${styles.sectionAlt}`} style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}>
+    <section id="demos" className={`${styles.section} ${styles.sectionAlt}`} style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}>
       <div className="container">
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
           <div>
@@ -166,34 +192,53 @@ function DemosSection() {
             Browse all 5G-MAG videos &rarr;
           </Link>
         </div>
-        <VideoGrid videos={videos} />
+        <VideoGrid videos={videos} kicker="Demo" />
       </div>
     </section>
   );
 }
 
-export default function Action() {
-  useAnchors('testing-events');
+function AssetsSection() {
+  useAnchors('assets');
+  return (
+    <section id="assets" className={`${styles.section} ${styles.sectionAlt}`} style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}>
+      <div className="container">
+        <h2 className={styles.sectionTitle}>Assets</h2>
+        <p className={styles.sectionSubtitle}>
+          What you can onboard into your product, project by project. Coming soon.
+        </p>
+        <AssetTiles />
+        <div className={styles.categoryColumns} style={{ marginTop: '2rem' }}>
+          {DEPLOY_CATEGORIES.map((c) => (
+            <CategoryCard key={c.title} {...c} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default function Deploy() {
+  useAnchors('plugfests');
   const plugfestImg = useBaseUrl('/assets/images/gallery/5g-broadcast-plugfest-2026.jpg');
   const tradeshowImg = useBaseUrl('/assets/images/gallery/tradeshow-booth-demo.jpg');
   return (
     <Layout
-      title="In Action"
-      description="Plugfests and demonstrators to prove 5G-MAG implementations and value."
+      title="Deploy"
+      description="Demos, interop plugfests and assets to onboard 5G-MAG technology into products."
     >
       <HubHero
-        title="Validation, Interop Plugfests, Demos and Applications"
-        icon={INTEROP_ICON_PATH}
+        title="Deploy"
+        icon={DEPLOY_ICON_PATH}
         actions={[
-          <a key="demos" className="button button--primary" href="#demonstrators">
+          <a key="demos" className="button button--primary" href="#demos">
             See Demos
           </a>,
-          <a
-            key="events"
-            className="button button--outline button--primary"
-            href="#testing-events"
-          >
-            Testing Events
+          <a key="plugfests" className="button button--outline button--primary" href="#plugfests">
+            Plugfests
+          </a>,
+          <a key="assets" className="button button--outline button--primary" href="#assets">
+            Assets
           </a>,
         ]}
       />
@@ -208,8 +253,8 @@ export default function Action() {
           <div className="container">
             <h2 className={styles.sectionTitle}>What You&apos;ll Find Here</h2>
             <p className={styles.sectionSubtitle}>
-              Every destination on this hub, in one place. For the real, assembled scenarios built
-              from these tools, see <Link to="/showcase">Showcases</Link>.
+              From the Reference Tools to your products: see them demonstrated, tested at
+              plugfests, and onboard them. To run the tools yourself, see the <Link to="/tutorials">Tutorials</Link>.
             </p>
             <div className={styles.activityGrid}>
               {WHATS_HERE.map((r) => (
@@ -272,7 +317,7 @@ export default function Action() {
                   loading="lazy"
                 />
                 <p className={styles.photoCaption}>
-                  <Link to="/action/5g-broadcast-plugfest">5G Broadcast Plugfest 2026</Link> —
+                  <Link to="/deploy/5g-broadcast-plugfest">5G Broadcast Plugfest 2026</Link> —
                   hosted by Fraunhofer FOKUS, Berlin.
                 </p>
               </figure>
@@ -294,14 +339,14 @@ export default function Action() {
 
         <DemosSection />
 
-        {/* Testing Events */}
+        {/* Plugfests */}
         <section
-          id="testing-events"
+          id="plugfests"
           className={styles.section}
           style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}
         >
           <div className="container">
-            <h2 className={styles.sectionTitle}>Testing Events</h2>
+            <h2 className={styles.sectionTitle}>Plugfests</h2>
             <p className={styles.sectionSubtitle}>
               Multi-vendor interoperability events where 5G-MAG reference code is tested side by
               side with other implementations.
@@ -314,7 +359,9 @@ export default function Action() {
           </div>
         </section>
 
-        <JoinTheEffort alt />
+        <AssetsSection />
+
+        <JoinTheEffort />
       </main>
     </Layout>
   );

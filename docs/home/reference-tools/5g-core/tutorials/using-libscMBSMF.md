@@ -341,4 +341,4 @@ The key confirmation lines in the tool output are `MBS Session 1 [...] created`,
 ## Next steps
 
 - [Using libscPCF](./using-libscPCF): the recommended worked example, which also exercises libscBSF.
-- [Application Showcase](.): the full set of 5G Core Service Consumer tutorials.
+- [Tutorials](.): the full set of 5G Core Service Consumer tutorials.

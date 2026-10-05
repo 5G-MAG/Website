@@ -5,7 +5,7 @@
 // - HOME_WORK: the homepage's cards under "At the intersection of Media and
 //   Connectivity", wording chosen by the site owner (2026-09-30).
 // Both follow the top navigation's order (Technology, Standardisation,
-// Software Accelerator, In Action) and link to the same section hubs.
+// Software Accelerator, Deploy) and link to the same section hubs.
 import { MEDIA_SYMBOL_PATHS } from '@site/src/components/MediaConnectivityDiagram';
 
 export const DISCOVER_WORK = [
@@ -42,9 +42,9 @@ export const DISCOVER_WORK = [
     ),
   },
   {
-    title: 'Validation & Demos In Action',
-    body: 'Validation, interop plugfests, demos and applications proving what these tools can do.',
-    href: '/action',
+    title: 'Deploy',
+    body: 'Demos, interop plugfests and assets to onboard into your products.',
+    href: '/deploy',
     icon: (
       <>
         <path d="M7 12l5 5l-1.5 1.5a3.536 3.536 0 1 1 -5 -5l1.5 -1.5" />
@@ -94,10 +94,10 @@ export const HOME_WORK = [
     ),
   },
   {
-    title: 'In Action',
+    title: 'Deploy',
     body: 'Plugfests, demos and trials that prove interoperability before products launch.',
-    href: '/action',
-    cta: 'In Action',
+    href: '/deploy',
+    cta: 'Deploy',
     icon: (
       <>
         <path d="M7 12l5 5l-1.5 1.5a3.536 3.536 0 1 1 -5 -5l1.5 -1.5" />

@@ -16,7 +16,7 @@ import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import VideoGrid from '@site/src/components/VideoGrid';
 import { icon } from '@site/src/components/GodeeperCard';
 import styles from './index.module.css';
-// Shared with /reference-tools and /showcase/testbeds; see the comment
+// Shared with /reference-tools, /tutorials and /testbeds; see the comment
 // there for why (2026-08-24 findability audit; extended here for the
 // All Repositories section's own filter bar).
 import filterStyles from '../reference-tools/styles.module.css';
@@ -71,9 +71,9 @@ const PRODUCT_TYPES = [
   },
   {
     icon: 'Applications',
-    label: 'Application Showcases',
-    description: 'Use-case driven implementations towards real-world applications.',
-    href: '/showcase',
+    label: 'Tutorials',
+    description: 'Step-by-step guides to run and test the Reference Tools.',
+    href: '/tutorials',
   },
 ];
 
@@ -250,7 +250,7 @@ export default function Home() {
           <div className="container">
             <h2 className={styles.sectionTitle}>What You&apos;ll Find Here</h2>
             <p className={styles.sectionSubtitle}>
-              Reference Tools, Testbeds and Evaluation Frameworks, and Application Showcases —
+              Reference Tools, Testbeds and Evaluation Frameworks, and Tutorials —
               under one open developer community.
             </p>
             <div className={styles.productGrid}>

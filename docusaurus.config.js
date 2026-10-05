@@ -60,6 +60,28 @@ const config = {
   clientModules: [require.resolve('./src/clientModules/openDetailsOnHash.js')],
 
   plugins: [
+    // One Deploy page per project, /deploy/<slug>, where <slug> is the last segment of the project's Reference
+    // Tools or testbed page (projectSlugOf in src/data/baskets.js). Placeholders until assets are published.
+    function projectDeployPages(context) {
+      return {
+        name: 'project-deploy-pages',
+        async contentLoaded({ actions }) {
+          const fs = await import('node:fs');
+          const path = await import('node:path');
+          const taxonomy = JSON.parse(fs.readFileSync(path.join(context.siteDir, 'src/data/taxonomy.json'), 'utf8'));
+          for (const p of taxonomy.projects) {
+            if (!p.doc_url) continue;
+            const slug = p.doc_url.replace(/\/$/, '').split('/').pop();
+            actions.addRoute({
+              path: `/deploy/${slug}`,
+              component: '@site/src/components/ProjectDeploy/index.jsx',
+              exact: true,
+              props: { slug },
+            });
+          }
+        },
+      };
+    },
     // Redirect map cut down (2026-07-29): the large PREFIX_MAP this plugin
     // used to carry only protected against bookmarks/search-engine links to
     // this Docusaurus site's OWN old internal paths from its pre-launch
@@ -173,15 +195,19 @@ const config = {
           // /testing renamed to /action (2026-08-24): live on www.5g-mag.com
           // since the 2026-07-28 cutover, so bookmarks/search-engine
           // indexing may still point at the old path.
-          { from: '/testing', to: '/action' },
-          { from: '/testing/5g-broadcast-plugfest', to: '/action/5g-broadcast-plugfest' },
+          { from: '/testing', to: '/deploy' },
+          { from: '/testing/5g-broadcast-plugfest', to: '/deploy/5g-broadcast-plugfest' },
+          // /action ("In Action") renamed to /deploy ("Deploy") on 2026-10-05.
+          { from: '/action', to: '/deploy' },
+          { from: '/action/5g-broadcast-plugfest', to: '/deploy/5g-broadcast-plugfest' },
           // /applications renamed to /showcase (2026-09-23): bookmarks and
           // search-engine indexing may still point at the old path. The
           // per-category demo pages it also covered were folded into each
           // project's Application Showcase page and removed, so only the hub
           // and the unlisted authoring template still have a target.
-          { from: '/applications', to: '/showcase' },
-          { from: '/applications/streaming/sample-multi-angle-replay', to: '/showcase/streaming/sample-multi-angle-replay' },
+          // /showcase ("Showcases") renamed to /tutorials ("Tutorials") on 2026-10-05.
+          { from: ['/applications', '/showcase'], to: '/tutorials' },
+          { from: ['/applications/streaming/sample-multi-angle-replay', '/showcase/streaming/sample-multi-angle-replay'], to: '/tutorials/streaming/sample-multi-angle-replay' },
           // "Multimedia Delivery Protocols" topic renamed to "Content Delivery
           // Protocols" (2026-09-10): the lead concept is the transport, not
           // the media type it happens to carry -- rt-libflute (FLUTE/ROUTE,
@@ -378,7 +404,7 @@ const config = {
           items: [
             { label: 'Overview', to: '/developer' },
             { label: 'Reference Tools', to: '/reference-tools' },
-            { label: 'Showcases', to: '/showcase' },
+            { label: 'Tutorials', to: '/tutorials' },
             { label: 'Testbeds', to: '/testbeds' },
             { label: 'Developer Exchanges', to: '/developer/exchanges' },
             { label: 'Early Access', to: '/early-access' },
@@ -387,8 +413,8 @@ const config = {
           ],
         },
         {
-          title: 'In Action',
-          items: [{ label: 'Overview', to: '/action' }],
+          title: 'Deploy',
+          items: [{ label: 'Overview', to: '/deploy' }],
         },
         {
           title: 'Videos',

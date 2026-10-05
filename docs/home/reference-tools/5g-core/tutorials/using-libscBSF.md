@@ -32,4 +32,4 @@ You do not need to wait for it to see libscBSF in action: the [Using libscPCF](.
 ## Next steps
 
 - [Using libscPCF](./using-libscPCF): the recommended worked example, which already exercises libscBSF.
-- [Application Showcase](.): the full set of 5G Core Service Consumer tutorials.
+- [Tutorials](.): the full set of 5G Core Service Consumer tutorials.

@@ -47,8 +47,8 @@ export const DEV_ITEM = {
 };
 
 export const INTEROP_ITEM = {
-  to: '/action',
-  label: 'In Action',
+  to: '/deploy',
+  label: 'Deploy',
   position: 'left',
   className: styles.primaryNavItem,
 };

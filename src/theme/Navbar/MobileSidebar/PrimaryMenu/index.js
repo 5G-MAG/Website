@@ -15,7 +15,7 @@ import { SECTION_NAV, SOLUTIONS_ITEMS, TECHNOLOGY_GROUPS } from '../../../../dat
 // The desktop nav's hover flyout (Navbar/Content) shows each pillar's own
 // `subtitle` (SECTION_NAV) on hover/focus -- a newcomer on mobile never
 // gets that (no hover, and this menu had no flyout mechanism at all), so
-// "Standardisation"/"Software Accelerator"/"In Action" read as
+// "Standardisation"/"Software Accelerator"/"Deploy" read as
 // unglossed internal jargon here (2026-09-27, member-acquisition clarity
 // audit). Shown as a plain-text line under the item instead, derived from
 // the same SECTION_NAV data the desktop flyout already uses, not a second

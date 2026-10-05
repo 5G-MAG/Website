@@ -42,4 +42,4 @@ The video covers the main steps:
 ## Next steps
 
 - For written, per-extension instructions on authoring assets in Blender, see [Creation of MPEG-I Scene Description Test Assets](./creating-test-assets).
-- Return to the [Application Showcase](.).
+- Return to the [Tutorials](.).

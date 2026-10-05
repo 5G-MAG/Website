@@ -5,7 +5,7 @@ import HubHero from '@site/src/components/HubHero';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import { ALL_PROJECTS, BASKET_ACCENT, isTestbed } from '@site/src/data/baskets';
 import styles from '../tech/index.module.css';
-// Shared with /reference-tools and /showcase; see the comment there
+// Shared with /reference-tools and /tutorials; see the comment there
 // for why (2026-08-24 findability audit; extended here 2026-08-25).
 import filterStyles from '../reference-tools/styles.module.css';
 // The exact same gradient-header-plus-grid card, topic-building function

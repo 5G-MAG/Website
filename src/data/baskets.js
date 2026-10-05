@@ -190,6 +190,21 @@ export function isTestbed(project) {
   return Boolean(project.doc_url && project.doc_url.startsWith('/testbeds/'));
 }
 
+// A project's slug: the last segment of its Reference Tools or testbed page (`/reference-tools/5gms/` -> '5gms').
+// Its Deploy page is /deploy/<slug>; docusaurus.config.js creates one per project with this same rule.
+export function projectSlugOf(project) {
+  return project.doc_url ? project.doc_url.replace(/\/$/, '').split('/').pop() : null;
+}
+
+export function deployUrlOf(project) {
+  const slug = projectSlugOf(project);
+  return slug ? `/deploy/${slug}` : null;
+}
+
+export function projectBySlug(slug) {
+  return ALL_PROJECTS.find((p) => projectSlugOf(p) === slug);
+}
+
 // The name a link to a project's Technology page carries. A testbed's display name names the testbed, so
 // its Technology page is labelled with the project name (AI Traffic Characterization, not the 6G AI Traffic
 // Characterization Testbed).

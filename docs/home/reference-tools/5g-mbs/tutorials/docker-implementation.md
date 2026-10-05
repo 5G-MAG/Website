@@ -164,4 +164,4 @@ sendip -p ipv4 -is <af_as_container_ip> -id <n6mb_ip_multicast_destination_addre
 
 - [Initial support of MBS in the 5GC](./mbs-in-5gc): walk through creating an MBS session and observing multicast traffic through the core.
 - [Managing MBS Sessions and TMGIs](./managing-mbs-sessions-tmgi): the MB-SMF session and TMGI operations used above.
-- [Application Showcase](.): the full set of MBS tutorials.
+- [Tutorials](.): the full set of MBS tutorials.

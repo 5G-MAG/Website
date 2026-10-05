@@ -212,8 +212,8 @@ export function topicFor(project) {
 // Consumers) are not a basket topic -- see their own `excludedReason` in
 // taxonomy.json -- so they get one explicit residual group rather than
 // being silently dropped by the per-basket grouping below.
-// Exported for /showcase, which lists the same projects in the same boxes, each card opening the
-// project's Application Showcase instead of its Reference Tools page.
+// Exported for /tutorials, which lists the same projects in the same boxes, each card opening the
+// project's Tutorials page instead of its Reference Tools page.
 export const CATEGORIES = [
   ...BASKETS.map((b) => ({
     title: b.title,

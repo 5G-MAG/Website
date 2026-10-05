@@ -15,7 +15,7 @@ import { ALL_TOPICS } from '../../techTopics.js';
 // section is never named two different ways across the page.
 //
 // `subtitle`, present only on the four pillar entries (Software
-// Accelerator, Technology, Standardisation, In Action), is the
+// Accelerator, Technology, Standardisation, Deploy), is the
 // plain-language one-liner the top navbar's mega-menu
 // (src/theme/Navbar/Content/index.js) shows on hover/focus (2026-08-24
 // design audit: these four labels are 5G-MAG's internal vocabulary, not
@@ -117,7 +117,7 @@ export const SECTION_NAV = [
       '/developer',
       '/reference-tools',
       '/testbeds',
-      '/showcase',
+      '/tutorials',
       '/early-access',
       '/community',
       '/contributing',
@@ -128,8 +128,8 @@ export const SECTION_NAV = [
     menuTitle: 'Media Connectivity Software Accelerator',
     titleHref: '/developer',
     subtitle: 'Open-source developer community.',
-    // Reference Tools / Testbeds / Showcases are this section's three real
-    // destinations (real code, real environments, real assembled scenarios)
+    // Reference Tools / Testbeds / Tutorials are this section's three real
+    // destinations (real code, real environments, step-by-step guides)
     // -- `featured: true` renders them as solid chips in PageNav, distinct
     // from the plain outline chips below them, which are secondary/meta
     // pages (exchanges, access, community process) rather than destinations
@@ -145,7 +145,7 @@ export const SECTION_NAV = [
     items: [
       { label: 'Reference Tools', href: '/reference-tools', featured: true },
       { label: 'Testbeds', href: '/testbeds', featured: true },
-      { label: 'Showcases', href: '/showcase', featured: true },
+      { label: 'Tutorials', href: '/tutorials', featured: true },
       { label: 'Developer Community', href: '/community' },
       { label: 'Community Activity', href: '/community/activity' },
       { label: 'License', href: '/license' },
@@ -216,16 +216,18 @@ export const SECTION_NAV = [
     ],
   },
   {
-    prefixes: ['/action'],
-    title: 'In Action',
-    titleHref: '/action',
-    subtitle: 'Validation, demos and real deployments.',
-    // Demos is the activity layer (plugfests, demos, trials) — it does not
-    // own or gatekeep Testbeds or Reference Tools, so beyond its own
-    // plugfest write-ups it has no sub-items pointing back at those.
+    prefixes: ['/deploy'],
+    title: 'Deploy',
+    titleHref: '/deploy',
+    subtitle: 'Demos, plugfests and assets to onboard into your products.',
+    // From the tools to products: demos, interop plugfests, and the assets:
+    // packages, modules, Docker images and apps. It does not own Testbeds or
+    // Reference Tools, so it has no sub-items pointing back at those.
     items: [
-      { label: '5G Broadcast PlugFest 2026', href: '/action/5g-broadcast-plugfest' },
-      { label: 'Demonstrators', href: '/action#demonstrators' },
+      { label: 'Demos', href: '/deploy#demos' },
+      { label: 'Plugfests', href: '/deploy#plugfests' },
+      { label: '5G Broadcast PlugFest 2026', href: '/deploy/5g-broadcast-plugfest' },
+      { label: 'Assets', href: '/deploy#assets' },
     ],
   },
   {

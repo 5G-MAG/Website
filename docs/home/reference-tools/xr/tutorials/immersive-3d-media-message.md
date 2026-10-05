@@ -76,4 +76,4 @@ Example: Ikea offers furniture on their webpage that you can request. They share
 
 - [Requirements](./requirements): supported devices.
 - [Android build tutorial](./xr-player-android): build and configure the player.
-- [Application Showcase](.): all XR tutorials.
+- [Tutorials](.): all XR tutorials.

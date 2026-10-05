@@ -400,7 +400,7 @@ Hide color mode toggle in small viewports
   color: #fff;
 }
 
-/* The pillar dropdowns (Standardisation, Software Accelerator, In Action, News): two columns of icon rows. */
+/* The pillar dropdowns (Standardisation, Software Accelerator, Deploy, News): two columns of icon rows. */
 .navAreasMenu {
   width: min(560px, calc(100vw - 2rem));
   max-width: none;

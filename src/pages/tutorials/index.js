@@ -5,19 +5,19 @@ import HubHero from '@site/src/components/HubHero';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import { CATEGORIES as PROJECT_CATEGORIES, CategoryCard as ProjectCategoryCard, filterCategories as filterProjectCategories } from '../reference-tools';
 
-// The Reference Tools project boxes, for the projects that have an Application Showcase page (their
-// list of Application Showcases, at <Reference Tools page>/tutorials); each card opens that page.
-const APPLICATION_SHOWCASE_SLUGS = [
+// The Reference Tools project boxes, for the projects that have a Tutorials page (at
+// <Reference Tools page>/tutorials); each card opens that page.
+const TUTORIAL_SLUGS = [
   '5gms', 'data-collection', 'content-delivery', '5g-broadcast', 'emergency-alerts', 'dvb-i', '5g-mbs',
   'xr', 'v3c', 'vdmc', 'avatar', 'network-apis', '5g-core', '3gpp-platforms',
 ];
-const SHOWCASE_CATEGORIES = PROJECT_CATEGORIES.map((c) => ({
+const TUTORIAL_CATEGORIES = PROJECT_CATEGORIES.map((c) => ({
   ...c,
   topics: c.topics
-    .filter((t) => APPLICATION_SHOWCASE_SLUGS.includes(t.href.replace('/reference-tools/', '')))
+    .filter((t) => TUTORIAL_SLUGS.includes(t.href.replace('/reference-tools/', '')))
     .map((t) => ({ ...t, href: `${t.href}/tutorials` })),
 })).filter((c) => c.topics.length > 0);
-const SHOWCASE_PROJECT_COUNT = SHOWCASE_CATEGORIES.reduce((n, c) => n + c.topics.length, 0);
+const TUTORIAL_PROJECT_COUNT = TUTORIAL_CATEGORIES.reduce((n, c) => n + c.topics.length, 0);
 import styles from '../tech/index.module.css';
 // Shared with /reference-tools, which the filter bar pattern below was
 // first built for (2026-08-24 findability audit); reused here rather than
@@ -25,7 +25,7 @@ import styles from '../tech/index.module.css';
 // import above (../tech/index.module.css).
 import filterStyles from '../reference-tools/styles.module.css';
 
-// The Application Showcases rocket (src/data/projectIcons.js).
+// The Tutorials rocket (src/data/projectIcons.js).
 const APPS_ICON_PATH = (
   <>
     <path d="M4.5 16.5c-1.5 1.26 -2 5 -2 5s3.74 -.5 5 -2c.71 -.84 .7 -2.13 -.09 -2.91a2.18 2.18 0 0 0 -2.91 -.09z" />
@@ -35,18 +35,18 @@ const APPS_ICON_PATH = (
   </>
 );
 
-export default function Applications() {
+export default function Tutorials() {
   const [projectQuery, setProjectQuery] = useState('');
-  const filteredProjects = useMemo(() => filterProjectCategories(SHOWCASE_CATEGORIES, projectQuery), [projectQuery]);
+  const filteredProjects = useMemo(() => filterProjectCategories(TUTORIAL_CATEGORIES, projectQuery), [projectQuery]);
   const shownProjects = useMemo(() => filteredProjects.reduce((n, c) => n + c.topics.length, 0), [filteredProjects]);
 
   return (
     <Layout
-      title="Showcases"
-      description="Overview of 5G-MAG’s application areas: streaming, broadcast, multicast, XR, volumetric video, and network APIs."
+      title="Tutorials"
+      description="Step-by-step tutorials to run and test the 5G-MAG Reference Tools, project by project."
     >
       <HubHero
-        title="Application Showcases"
+        title="Tutorials"
         icon={APPS_ICON_PATH}
         actions={[
           <Link key="contribute" className="button button--primary" to="/contributing">
@@ -64,19 +64,19 @@ export default function Applications() {
       <main>
         <section className={styles.section}>
           <div className="container">
-            <p className={filterStyles.filterLabel}>Each project&apos;s Application Showcases</p>
+            <p className={filterStyles.filterLabel}>Each project&apos;s tutorials</p>
             <div className={filterStyles.filterBar}>
               <input
                 type="search"
                 className={filterStyles.filterInput}
-                placeholder={`Filter ${SHOWCASE_PROJECT_COUNT} projects by name or technology…`}
+                placeholder={`Filter ${TUTORIAL_PROJECT_COUNT} projects by name or technology…`}
                 value={projectQuery}
                 onChange={(e) => setProjectQuery(e.target.value)}
-                aria-label="Filter Application Showcases by project"
+                aria-label="Filter tutorials by project"
               />
               {projectQuery && (
                 <span className={filterStyles.filterCount}>
-                  {shownProjects} of {SHOWCASE_PROJECT_COUNT}
+                  {shownProjects} of {TUTORIAL_PROJECT_COUNT}
                 </span>
               )}
             </div>

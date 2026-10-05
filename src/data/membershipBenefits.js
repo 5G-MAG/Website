@@ -28,7 +28,7 @@ export const BENEFITS = [
   {
     title: 'Prepare for plugfests & interop',
     body: 'Test your implementation in advance and build reference vector traces.',
-    href: '/action',
+    href: '/deploy#plugfests',
     icon: (
       <>
         <path d="M7 12l5 5l-1.5 1.5a3.536 3.536 0 1 1 -5 -5l1.5 -1.5" />
