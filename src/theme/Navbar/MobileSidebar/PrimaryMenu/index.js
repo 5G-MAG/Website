@@ -59,6 +59,18 @@ export default function NavbarMobilePrimaryMenu() {
                     </React.Fragment>
                   );
                 })}
+                {TECHNOLOGY_GROUPS.filter((g) => !SOLUTIONS_ITEMS.some((sub) => sub.href === g.href)).map((g) => (
+                  // Testbeds: in the menu, but not an area page
+                  <React.Fragment key={g.href}>
+                    <NavbarItem mobile to={g.href} label={g.title}
+                      className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
+                    {g.items.map((p) => (
+                      <NavbarItem key={p.href} mobile to={p.href} label={p.label}
+                        className="padding-left--lg margin-left--md" style={{ fontSize: '0.85rem' }}
+                        onClick={() => mobileSidebar.toggle()} />
+                    ))}
+                  </React.Fragment>
+                ))}
                 <NavbarItem mobile to="/tech" label="All technology"
                   className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
               </>

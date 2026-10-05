@@ -1,4 +1,4 @@
-import { TOPIC_BASKETS, BASKET_PAGE, BASKET_ACCENT, PROJECTS, techLabelOf } from './baskets';
+import { BASKETS, TOPIC_BASKETS, BASKET_PAGE, BASKET_ACCENT, PROJECTS, techLabelOf } from './baskets';
 import { ALL_TOPICS } from '../../techTopics.js';
 
 // Canonical per-section nav items, keyed by the route prefix(es) they
@@ -65,7 +65,18 @@ export const TECHNOLOGY_GROUPS = TOPIC_BASKETS.map((b) => {
     accent: BASKET_ACCENT[b.key],
     items: items.length ? items : b.tech_url ? [{ label: b.title, href: b.tech_url, icon: b.icon }] : [],
   };
-}).filter((g) => g.items.length);
+}).filter((g) => g.items.length).concat(
+  // Testbeds is not an area, but the menu lists it last as one: its title opens /testbeds, and each
+  // testbed opens its Technical Analysis page, or its testbed page when it has none.
+  BASKETS.filter((b) => b.key === 'testbeds').map((b) => ({
+    title: b.title,
+    href: '/testbeds',
+    icon: b.icon,
+    accent: BASKET_ACCENT[b.key],
+    items: PROJECTS.filter((p) => p.basket === b.key && (p.tech_url || p.doc_url))
+      .map((p) => ({ label: techLabelOf(p), href: p.tech_url || p.doc_url.replace(/\/$/, ''), icon: p.icon })),
+  })).filter((g) => g.items.length)
+);
 
 // The area pages, in taxonomy order: the Solutions menu and the Solutions bar on each area page.
 export const SOLUTIONS_ITEMS = TOPIC_BASKETS.map((b) => ({ label: b.title, href: BASKET_PAGE[b.key], icon: b.icon, accent: BASKET_ACCENT[b.key] })).filter((i) => i.href);
