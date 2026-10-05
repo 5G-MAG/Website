@@ -81,7 +81,7 @@ Handover in NTN follows the terrestrial principle unless TS 38.300 states otherw
 
 ### Conditional handover
 
-A conditional handover (CHO) is a handover that the UE executes when one or more handover execution conditions are met (TS 38.300 clause 9.2.3.4.1). NTN supports three additional trigger conditions upon which the UE may execute CHO to a candidate cell: the RRM measurement-based event A4, a time-based trigger condition and a location-based trigger condition (TS 38.300 clause 16.14.3.2.2). TS 38.331 defines them as conditional events (clause 6.3.2, ReportConfigNR):
+A conditional handover (CHO) is a handover that the UE executes when one or more handover execution conditions are met (TS 38.300 clause 9.2.3.4.1). NTN supports three additional trigger conditions upon which the UE may execute CHO to a candidate cell: the RRM measurement-based event A4, a time-based trigger condition and a location-based trigger condition (TS 38.300 clause 16.14.3.2.2). For NTN, the CHO principles of clause 9.2.3.4 apply "unless hereunder specified" (TS 38.300 clause 16.14.3.2.2). In general, CHO is not supported for NG-C based handover (TS 38.300 clause 9.2.3.4.1); for NTN, when a time-based trigger condition is used, the source gNB may signal the corresponding parameters to a target gNB in an NG-C based handover or an Xn based handover (TS 38.300 clause 16.14.3.2.2). TS 38.331 defines them as conditional events (clause 6.3.2, ReportConfigNR):
 
 | Conditional event | Condition |
 | --- | --- |

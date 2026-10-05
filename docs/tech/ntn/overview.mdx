@@ -37,25 +37,28 @@ scenarios.
 
 ### NTN system model and terminology
 
-- **Feeder link / service link.** The feeder link connects the satellite to
-  the ground gateway; the service link connects the satellite to the device (UE).
-  One-way propagation delay accumulates over both, which is why GEO round trips are
-  large.
-- **Transparent vs regenerative payload.** In a transparent (bent-pipe)
-  payload the gNB, in NTN terms the *Satellite Access Node (SAN)*, is on the
-  ground and the satellite only relays and frequency-translates. In a regenerative
-  payload the gNB (or its lower layers) is on board the spacecraft. Release 17
-  standardised the transparent case; regenerative deployments are addressed in later
-  releases. See
-  [TS 38.300](https://www.3gpp.org/dynareport/38300.htm).
-- **Beam / cell / mapped cell.** A satellite radiates one or more beams. A
-  beam maps to an NR cell on the ground. As NGSO satellites move, the beam either stays
-  pointed at a fixed ground area for a while (quasi-Earth-fixed beam) or sweeps across
-  the ground (earth-moving beam). This distinction drives the handover models on the
+- **Feeder link / service link.** The service link is the wireless link between the
+  NTN payload and the UE; the feeder link is the wireless transport link between the NTN
+  Gateway and the NTN payload (TS 38.300 clause 3.1). To accommodate the propagation delay,
+  several timing relationships are enhanced by a Common Timing Advance and configured
+  offsets (TS 38.300 clause 16.14.2.1).
+- **Transparent vs regenerative payload.** The NTN payload, on board a satellite or high
+  altitude platform station, is a TNL node (transparent payload) or a gNB (regenerative
+  payload) (TS 38.300 clause 3.1). The transparent payload forwards the radio protocol
+  between the service link and the feeder link; the regenerative payload terminates the
+  Uu, NG and Xn interfaces, and may terminate inter-satellite links towards other
+  regenerative payloads (TS 38.300 clause 16.14.1).
+- **Cells and service links.** NTN can provide Earth-moving, quasi-Earth-fixed and
+  Earth-fixed cells, supported by three types of service link: Earth-fixed beams cover
+  the same area all the time (e.g. GSO satellites); quasi-Earth-fixed beams cover one
+  area for a limited period and another area later (e.g. NGSO satellites with steerable
+  beams); Earth-moving beams slide over the Earth surface (e.g. NGSO satellites with
+  fixed beams). A Tracking Area corresponds to a fixed geographical area, and a Mapped
+  Cell ID corresponds to a fixed geographical area (TS 38.300 clauses 3.1 and 16.14.1).
+  These cell types drive the handover models on the
   [Mobility Aspects for NTN](/tech/ntn/analysis-mobility-ntn) page.
-- **GNSS at the UE.** NTN assumes the device has GNSS so it can compute its
-  own timing advance and Doppler pre-compensation from its position and the satellite
-  ephemeris.
+- **GNSS at the UE.** In this release, the UE supporting NTN is GNSS-capable, and NTN
+  is only applicable to FDD (TS 38.300 clause 16.14.1).
 
 ### Radio-layer adaptations for NTN
 
@@ -121,3 +124,12 @@ over NR non-terrestrial networks:
 · [5G Broadcast - TV and Radio Services](/tech/5g-broadcast) ·
 [Standards: 5G Multicast & Broadcast Services](/standards/5g-mbs)
 · [Standards: 5G Broadcast - TV, Radio and Emergency Alerts](/standards/5g-broadcast)
+
+<details>
+<summary>Sources for this page (NTN terms)</summary>
+
+- **Feeder link, service link, NTN payload, Mapped Cell ID:** TS 38.300 V19.4.0, clause 3.1.
+- **Transparent and regenerative payload, cells and service links, Tracking Area, GNSS, FDD:** TS 38.300 V19.4.0, clause 16.14.1.
+- **Timing:** TS 38.300 V19.4.0, clause 16.14.2.1.
+
+</details>
