@@ -57,7 +57,7 @@ export const CMC = count(MCAST);
 
 :::tip[In short]
 
-- **Which specifications the code is judged against:** the latest Release 18 issue of each: for MBS User Services, 3GPP TS 26.502 V18.6.0, TS 26.517 V18.6.0, TS 29.580 V18.8.0 and TS 29.581 V18.6.0; for MBS, TS 23.247 V18.8.0 with TS 29.532 V18.6.0, TS 29.518 V18.15.0 and TS 29.244 V18.10.0, and for NG-RAN TS 38.300, TS 38.331, TS 38.413 and TS 38.473 V18.11.0. What each component is built against is given under Components.
+- **Which specifications the code is judged against:** the latest Release 19 issue of each: for MBS User Services, 3GPP TS 26.502 V19.5.0, TS 26.517 V19.2.0, TS 29.580 V19.6.0 and TS 29.581 V19.3.0; for MBS, TS 23.247 V19.3.0 with TS 29.532 V19.3.0, TS 29.518 V19.8.0 and TS 29.244 V19.6.0, and for NG-RAN TS 38.300, TS 38.331, TS 38.413 and TS 38.473 V19.4.0. The code mostly follows Release 18; what each component is built against is given under Components, and Release 19 additions it does not have count as not implemented.
 - **[MBS User Services](#mbs-user-services):** {CUS.reqs} requirements in {CUS.cases} cases: {CUS.implemented} implemented, {CUS.differs} differ from the specification, {CUS.absent} not implemented, and {CUS.inconsistent} where the specification contradicts itself.
 - **[MBS](#mbs) (5G System and NG-RAN):** {CSYS.reqs} requirements in {CSYS.cases} cases, grouped as TS 23.247 groups its procedures:
   - [common to broadcast and multicast](#common-to-broadcast-and-multicast): {CCOM.cases} cases, {CCOM.implemented} implemented, {CCOM.differs} differ, {CCOM.absent} not implemented;
@@ -80,8 +80,8 @@ The MBS User Services architecture of TS 26.502, with the parts the Reference To
       src: '/img/tech/5g-mbs/generated/ts26502-fig4.2.2-1-status.svg',
       width: 1195, height: 1111,
       title: 'MBS User Services network architecture, with Reference Tools status',
-      source: 'Based on 3GPP TS 26.502 V18.6.0, figure 4.2.2-1; status from the code audit of 2026-10-03',
-      alt: 'The MBS User Services architecture of TS 26.502. The MBSF, the MBS AF, the MBSTF and the MBS Application Provider are provided; the MBSSF is not. Nmb10, MBS-1, Nmb2, Nmb8, Nmb9, Nmb1, MBS-5, MBS-4-MC and MBS-4-UC are partial; MBS-10 is not implemented. The other reference points are not covered by the audit.',
+      source: 'Based on 3GPP TS 26.502 V19.5.0, figure 4.2.2-1; status from the code audit of 2026-10-03, judged against Release 19',
+      alt: 'The MBS User Services architecture of TS 26.502. The MBSF, the MBS AF, the MBSTF and the MBS Application Provider are provided; the MBSSF is not. Nmb10, MBS-1, Nmb2, Nmb8, Nmb9, Nmb1, MBS-5, MBS-4-MC and MBS-4-UC are partial; MBS-10 and MBS-12 are not implemented. The other reference points are not covered by the audit.',
     },
   ]}
   note="Click a figure to enlarge it."
@@ -102,14 +102,14 @@ The 5G System architecture for MBS of TS 23.247, with the parts the Reference To
       src: '/img/tech/5g-mbs/generated/ts23247-fig5.1-2-status.svg',
       width: 924, height: 574,
       title: '5G System architecture for MBS, with Reference Tools status',
-      source: 'Based on 3GPP TS 23.247 V18.8.0, figure 5.1-2; status from the code audit of 2026-10-03',
+      source: 'Based on 3GPP TS 23.247 V19.3.0, figure 5.1-2; status from the code audit of 2026-10-03, judged against Release 19',
       alt: 'The 5G System architecture for MBS of TS 23.247 in reference point representation. The UE, NG-RAN, AMF, SMF, MB-SMF, MB-UPF, MBSF, MBSTF and AF/AS are provided. N2, Uu, N3mb, N4mb, N11mb, Nmb1, Nmb2, Nmb8, Nmb9 and Nmb10 are partial; N16mb is not implemented. The other reference points are not covered by the audit.',
     },
   ]}
   note="Click a figure to enlarge it."
 />
 
-TS 23.247 V18.8.0 clause 7 groups the MBS procedures as "Common procedure for Multicast and Broadcast" (clause 7.1), "MBS procedures for multicast Session" (clause 7.2) and "MBS procedures for broadcast Session" (clause 7.3). The status below follows the same grouping; the NG-RAN features fall under broadcast or multicast.
+TS 23.247 V19.3.0 clause 7 groups the MBS procedures as "Common procedure for Multicast and Broadcast" (clause 7.1), "MBS procedures for multicast Session" (clause 7.2) and "MBS procedures for broadcast Session" (clause 7.3). The status below follows the same grouping; the NG-RAN features fall under broadcast or multicast.
 
 ### Common to broadcast and multicast
 
@@ -145,10 +145,11 @@ This page summarises a requirement-by-requirement audit of the code. The full au
 
 <RepoCards slugs={['rt-mbs-function']} />
 
-- **Built against:** 5G_APIs tag TSG111-Rel18: Nmbsf MBSUserService 1.1.0 and MBSUserDataIngestSession 1.1.2 (TS 29.580 V18.7.0), Nmbstf 1.1.1 (TS 29.581 V18.6.0); judged against TS 29.580 V18.8.0.
+- **Built against:** 5G_APIs tag TSG111-Rel18: Nmbsf MBSUserService 1.1.0 and MBSUserDataIngestSession 1.1.2 (TS 29.580 V18.7.0), Nmbstf 1.1.1 (TS 29.581 V18.6.0); judged against TS 29.580 V19.6.0.
 - **Implemented:** both Nmbsf APIs at Nmb10, every resource and method, with status subscriptions and notifications; the Nmbstf requests towards the MBSTF at Nmb2; the User Service Description, Session Description documents, the User Service Descriptions bundle and the announcement channel; the co-located MBS AF serving announcements at MBS-5; TMGI allocation and MBS session creation towards the MB-SMF at Nmb1.
-- **Partial:** the enhanced PATCH of TS 29.580 V18.8.0 is not supported; four status events can be subscribed to but are never raised; the Distribution Session life-cycle differs from TS 26.502 clause 4.6.1; several Distribution Session and schedule attributes are not written; the announcement passed back to the Application Provider at MBS-1 carries a URL instead of the identifiers.
+- **Partial:** the enhanced PATCH of TS 29.580 is not supported; four status events can be subscribed to but are never raised; the Distribution Session life-cycle differs from TS 26.502 clause 4.6.1; several Distribution Session and schedule attributes are not written; the announcement passed back to the Application Provider at MBS-1 carries a URL instead of the identifiers.
 - **Specification inconsistent:** the repair locator attribute, and an empty discovery result at MBS-5, where the TS 26.517 text contradicts itself.
+- **Release 19, not yet supported:** the announcement media type version Rel19, `targetServiceAreas` in place of the deprecated `mbsServiceAreas`, and the in-session repair and time synchronization parameters of the announcement.
 
 #### MBS Transport Function (MBSTF)
 
@@ -157,7 +158,8 @@ This page summarises a requirement-by-requirement audit of the code. The full au
 - **Built against:** 5G_APIs tag TSG111-Rel18 (TS 29.581 V18.6.0); FLUTE through rt-libflute.
 - **Implemented:** the Nmbstf_MBSDistributionSession API at Nmb2, every resource and method, with StatusNotify; the Object Distribution Method operating modes; object ingest at Nmb8 by pull and push; transmission towards the MB-UPF at Nmb9.
 - **Partial:** collection objects are distributed again on every refresh; pull fetches have no address when no ingest base URL is given; streaming segments are fetched too late for their deadline; manifest and update-interval rules differ; the Distribution Session life-cycle follows only what the MBSF requests.
-- **Not implemented:** DSCP marking, FEC for packet sessions, and HTTPS on the push ingest endpoint.
+- **Not implemented:** DSCP marking, FEC for packet sessions, and HTTPS on the push ingest endpoint; from Release 19, repair content towards the MBS AS at MBS-12.
+- **Specification inconsistent (Release 19):** whether a single pushed object carries an acquisition identifier: TS 29.581 table 6.1.6.2.5-1 NOTE 7 and TS 26.502 table 6.1-1 say none, the TS 29.581 OpenAPI requires one.
 - **Specification inconsistent:** the API name, who nominates the push ingest URL, and whether the SSM port is the source or the destination port.
 
 #### MBS Client
@@ -167,14 +169,14 @@ This page summarises a requirement-by-requirement audit of the code. The full au
 - **Built against:** TS 26.517 V18.6.0 annex A.2 (announcement parsing written by hand); FLUTE through rt-libflute.
 - **Implemented:** User Service Description acquisition, reception activation and termination, Session Description handling, post-session object repair at MBS-4-UC, and delivery to the MBS-Aware Application at MBS-7.
 - **Partial:** object repair opens a connection and sends a request per range, and draws the repair server again for each object; retrieval by identifier at MBS-5 is written but not called.
-- **Not implemented:** MBS Service Key retrieval from the MBSSF at MBS-10, the Packet Distribution Method, and a User-Agent on the client's requests.
+- **Not implemented:** MBS Service Key retrieval from the MBSSF at MBS-10, the Packet Distribution Method, and a User-Agent on the client's requests; from Release 19, most of in-session object repair and time synchronization.
 
 #### MBS Application Provider and MBS-Aware Application
 
 <RepoCards slugs={['rt-mbs-application-provider', 'rt-mbs-application']} />
 
 - **Application Provider, implemented:** MBS User Service and MBS User Data Ingest Session provisioning at Nmb10, adding and removing Distribution Sessions through its API, status subscriptions, and content ingest at Nmb8.
-- **Application Provider, partial:** it sends attributes that only the MBSF may set or that may not be changed, does not check the object acquisition identifiers against the operating mode, and connects to the MBSF without TLS; the enhanced PATCH of TS 29.580 V18.8.0 is not used.
+- **Application Provider, partial:** it sends attributes that only the MBSF may set or that may not be changed, does not check the object acquisition identifiers against the operating mode, and connects to the MBSF without TLS; the enhanced PATCH of TS 29.580 is not used.
 - **MBS-Aware Application:** it lists announced services and activates reception through the MBS Client; it activates only by external service identifier, with no way to pass a full announcement.
 
 ### MBS
@@ -183,21 +185,21 @@ This page summarises a requirement-by-requirement audit of the code. The full au
 
 <RepoCards slugs={['open5gs', 'rt-5gc-service-consumers']} />
 
-- **Built against:** OpenAPI models generated from the Release 17 files (TS 29.532 V17.3.0, TS 29.518 V17.9.0), with some Release 18 fields added by hand; NGAP ASN.1 V17.3.0; PFCP from TS 29.244 V17.7.1. The audit judges against Release 18.
+- **Built against:** OpenAPI models generated from the Release 17 files (TS 29.532 V17.3.0, TS 29.518 V17.9.0), with some Release 18 fields added by hand; NGAP ASN.1 V17.3.0; PFCP from TS 29.244 V17.7.1. The audit judges against Release 19.
 - **Implemented:** TMGI allocation and deallocation at the MB-SMF; MBS session creation and release; the N4mb PFCP session between MB-SMF and MB-UPF; the AMF broadcast context and NGAP Broadcast Session Setup towards NG-RAN; the MB-SMF client library used by the MBSF.
 - **Partial:** the MB-SMF stores the wrong cells of a service area and sets up a larger area than it reports; the AMF sends Broadcast Session Setup to every connected gNB; one QoS flow per session; the TEID signalled to NG-RAN is byte-reversed against the one in the GTP-U header.
-- **Not implemented:** status subscriptions at the MB-SMF, several session update fields, N3mb unicast transport and PFCP Session Modification, NGAP Broadcast Session Release Required and Transport at the AMF, and MBS Multicast (session join and leave, Distribution Setup and Release).
+- **Not implemented:** status subscriptions at the MB-SMF, several session update fields, N3mb unicast transport and PFCP Session Modification, NGAP Broadcast Session Release Required and Transport at the AMF, and MBS Multicast (session join and leave, Distribution Setup and Release); from Release 19, the NR NTN Intended Service Area in the MB-SMF and AMF.
 
 #### NG-RAN and UE with MBS components
 
 <RepoCards slugs={['srsRAN_Project_mbs', 'srsRAN_4G_mbs']} />
 
-- **Built against:** generated codecs NGAP v17.4.0, F1AP v17.4.1, E1AP v18.5.0 and RRC v17.4.0 in the gNB, with some Release 18 content added by hand; in the UE, MBS types added by hand to its RRC codec. The audit judges against the latest Release 18 issues.
+- **Built against:** generated codecs NGAP v17.4.0, F1AP v17.4.1, E1AP v18.5.0 and RRC v17.4.0 in the gNB, with some Release 18 content added by hand; in the UE, MBS types added by hand to its RRC codec. The audit judges against the latest Release 19 issues.
 - **gNB, implemented:** NGAP Broadcast Session Setup, Modification and Release; the F1AP broadcast context and E1AP broadcast bearer context procedures; SIB1, SIB20 and MCCH scheduling with the modification period; DCI format 4_0; MTCH on its G-RNTI.
 - **gNB, partial:** MCCH is sent with no MAC subheader and no RLC header; its repetition period is not used; failure messages leave out their cause or the failed bearers; the N3mb TEID is byte-reversed to match the 5G Core.
 - **UE, implemented:** SIB20 acquisition, DCI format 4_0 reception, broadcast MRB establishment and release, RLC UM and PDCP for MTCH.
 - **UE, partial:** MCCH is read without its MAC and RLC headers, and its change notification is not read; default PDCP and RLC timers differ from TS 38.331 clause 9.1.1.7; MRBs are told apart by logical channel alone.
-- **Not implemented:** NGAP Broadcast Session Release Required and Transport, F1AP Broadcast Context Release Request and Broadcast Transport Resource Request, the Release 18 Supported UE Type List and Associated Session ID, broadcast DRX, and MBS Multicast in the RAN, including multicast in RRC_INACTIVE.
+- **Not implemented:** NGAP Broadcast Session Release Required and Transport, F1AP Broadcast Context Release Request and Broadcast Transport Resource Request, the Release 18 Supported UE Type List and Associated Session ID, broadcast DRX, and MBS Multicast in the RAN, including multicast in RRC_INACTIVE; from Release 19, the NR NTN Intended Service Area (NGAP list, SIB27, the MCCH session area list, and MRB start and stop at the UE).
 - **gNB, also partial:** the Broadcast Area Scope is not returned to the gNB-CU, and the MBS Service Area on modification is ignored.
 
 ### Supporting repositories

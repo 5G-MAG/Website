@@ -5,14 +5,14 @@
  "tier": "T0",
  "method": "code read in each repository, nothing built or run for the verdicts",
  "releases": {
-  "US18": "MBS User Services, Release 18 (latest issues): TS 26.502 V18.6.0, TS 26.517 V18.6.0, TS 29.580 V18.8.0, TS 29.581 V18.6.0, TS 26.346 V18.2.0",
-  "SYS18": "MBS system, Release 18 (latest issues): TS 23.247 V18.8.0, TS 29.532 V18.6.0, TS 29.518 V18.15.0, TS 29.244 V18.10.0, and TS 38.413 V18.11.0 for the AMF's NGAP messages",
-  "RAN": "NG-RAN, Release 18 (latest issues): TS 38.300 V18.11.0, TS 38.331 V18.11.0, TS 38.321 V18.10.0, TS 38.322 V18.2.0, TS 38.323 V18.5.0, TS 38.413 V18.11.0, TS 38.473 V18.11.0, TS 37.483 V18.6.0"
+  "US18": "MBS User Services, Release 19 (latest issues): TS 26.502 V19.5.0, TS 26.517 V19.2.0, TS 29.580 V19.6.0, TS 29.581 V19.3.0, TS 26.346 V19.3.0, with TS 29.500 V19.7.1 and TS 33.246 V19.0.0 where cases quote them",
+  "SYS18": "MBS system, Release 19 (latest issues): TS 23.247 V19.3.0, TS 29.532 V19.3.0, TS 29.518 V19.8.0, TS 29.244 V19.6.0, and TS 38.413 V19.4.0 for the AMF's NGAP messages",
+  "RAN": "NG-RAN, Release 19 (latest issues): TS 38.300 V19.4.0, TS 38.331 V19.4.0, TS 38.321 V19.4.0, TS 38.322 V19.3.0, TS 38.323 V19.1.0, TS 38.413 V19.4.0, TS 38.473 V19.4.0, TS 37.483 V19.4.0"
  },
  "releaseNames": {
-  "US18": "User Services (Rel-18)",
-  "SYS18": "System (Rel-18)",
-  "RAN": "NG-RAN (Rel-18)"
+  "US18": "User Services (Rel-19)",
+  "SYS18": "System (Rel-19)",
+  "RAN": "NG-RAN (Rel-19)"
  },
  "dependencies": [
   {
@@ -25,7 +25,7 @@
   "mbsf": {
    "short": "MBSF",
    "name": "MBS Function",
-   "builtAgainst": "5G_APIs tag TSG111-Rel18 (meson options fiveg_api_release=18, fiveg_api_approval=111, latest_apis=false): Nmbsf MBSUserService 1.1.0, MBSUserDataIngestSession 1.1.2 (TS 29.580 V18.7.0), Nmbstf 1.1.1 (TS 29.581 V18.6.0), MBS User Service Announcement 2.1.0 (TS 26.517 V18.3.0), Object Manifest 2.0.0; OpenAPI generator 7.23.0. The audit judges Nmbsf against TS 29.580 V18.8.0 (MBSUserDataIngestSession 1.1.3; MBSUserService unchanged at 1.1.0) and the announcement against TS 26.517 V18.6.0, the latest Release 18 issues",
+   "builtAgainst": "5G_APIs tag TSG111-Rel18 (meson options fiveg_api_release=18, fiveg_api_approval=111, latest_apis=false): Nmbsf MBSUserService 1.1.0, MBSUserDataIngestSession 1.1.2 (TS 29.580 V18.7.0), Nmbstf 1.1.1 (TS 29.581 V18.6.0), MBS User Service Announcement 2.1.0 (TS 26.517 V18.3.0), Object Manifest 2.0.0; OpenAPI generator 7.23.0. The audit judges against the latest Release 19 issues: Nmbsf against TS 29.580 V19.6.0 (MBSUserService 1.2.0, MBSUserDataIngestSession 1.2.2), Nmbstf against TS 29.581 V19.3.0 (1.2.1), the announcement against TS 26.517 V19.2.0 (MBS User Service Announcement 2.2.2), and TS 26.502 V19.5.0 and TS 23.247 V19.3.0",
    "repos": [
     {
      "repo": "rt-mbs-function",
@@ -36,7 +36,7 @@
   "mbstf": {
    "short": "MBSTF",
    "name": "MBS Transport Function",
-   "builtAgainst": "5G_APIs tag TSG111-Rel18 (meson options fiveg_api_release=18, fiveg_api_approval=111, latest_apis=false), OpenAPI generator 7.23.0; rt-libflute through its wrap, not pinned to a release tag",
+   "builtAgainst": "5G_APIs tag TSG111-Rel18 (meson options fiveg_api_release=18, fiveg_api_approval=111, latest_apis=false), OpenAPI generator 7.23.0; rt-libflute through its wrap, not pinned to a release tag. The audit judges against the latest Release 19 issues: TS 29.581 V19.3.0 (Nmbstf 1.2.1), TS 26.502 V19.5.0 and TS 26.517 V19.2.0",
    "repos": [
     {
      "repo": "rt-mbs-transport-function",
@@ -47,7 +47,7 @@
   "client": {
    "short": "MBS Client",
    "name": "MBS Client (UE)",
-   "builtAgainst": "Hand-written announcement parsing against TS 26.517 V18.6.0 Annex A.2 (no generated OpenAPI); CMake, C++17; rt-libflute as a submodule; MBS-5 path 3gpp-mbs-user-service-discovery/v1; conformance profile urn:3GPP:26517:17:baseline",
+   "builtAgainst": "Hand-written announcement parsing against TS 26.517 V18.6.0 Annex A.2 (no generated OpenAPI); CMake, C++17; rt-libflute as a submodule; MBS-5 path 3gpp-mbs-user-service-discovery/v1; conformance profile urn:3GPP:26517:17:baseline. The audit judges against the latest Release 19 issues: TS 26.502 V19.5.0, TS 26.517 V19.2.0, TS 26.346 V19.3.0 and TS 33.246 V19.0.0",
    "repos": [
     {
      "repo": "rt-mbs-client",
@@ -58,7 +58,7 @@
   "app": {
    "short": "MBS-Aware App",
    "name": "MBS-Aware Application (dashboard)",
-   "builtAgainst": "Node.js 18 or later; Express 4, dash.js 5, hls.js 1; uses the MBS Client local API, no 3GPP API version pinned",
+   "builtAgainst": "Node.js 18 or later; Express 4, dash.js 5, hls.js 1; uses the MBS Client local API, no 3GPP API version pinned. The audit judges against TS 26.502 V19.5.0, the latest Release 19 issue",
    "repos": [
     {
      "repo": "rt-mbs-application",
@@ -69,7 +69,7 @@
   "provider": {
    "short": "Provider",
    "name": "MBS Application Provider (portal)",
-   "builtAgainst": "Node.js 18 or later; Express 4; Nmbsf paths nmbsf-mbs-us/v1 and nmbsf-mbs-ud-ingest/v1 over HTTP/2 with prior knowledge; no OpenAPI version pinned in code",
+   "builtAgainst": "Node.js 18 or later; Express 4; Nmbsf paths nmbsf-mbs-us/v1 and nmbsf-mbs-ud-ingest/v1 over HTTP/2 with prior knowledge; no OpenAPI version pinned in code. The audit judges against the latest Release 19 issues: TS 29.580 V19.6.0, TS 29.500 V19.7.1, TS 26.502 V19.5.0 and TS 26.517 V19.2.0",
    "repos": [
     {
      "repo": "rt-mbs-application-provider",
@@ -80,7 +80,7 @@
   "consumers": {
    "short": "MB-SMF client",
    "name": "5GC service consumers (MB-SMF client library)",
-   "builtAgainst": "The SBI library and OpenAPI models of the 5G-MAG open5gs fork (TS 29.532 V17.3.0 models, Nmbsmf_TMGI 1.0.1 and Nmbsmf_MBSSession 1.1.1, with the hand-added Release 18 fields), fetched by a Meson wrap that follows a branch rather than a fixed commit",
+   "builtAgainst": "The SBI library and OpenAPI models of the 5G-MAG open5gs fork (TS 29.532 V17.3.0 models, Nmbsmf_TMGI 1.0.1 and Nmbsmf_MBSSession 1.1.1, with the hand-added Release 18 fields), fetched by a Meson wrap that follows a branch rather than a fixed commit. The audit judges against TS 29.532 V19.3.0 (Nmbsmf_TMGI 1.1.0, Nmbsmf_MBSSession 1.3.0), the latest Release 19 issue",
    "repos": [
     {
      "repo": "rt-5gc-service-consumers",
@@ -91,7 +91,7 @@
   "core": {
    "short": "5G Core",
    "name": "5G Core with MBS components (AMF, MB-SMF, MB-UPF)",
-   "builtAgainst": "OpenAPI models generated with OpenAPI Generator 6.4.0 from the Release 17 files TS 29.532 V17.3.0 (Nmbsmf_TMGI 1.0.1, Nmbsmf_MBSSession 1.1.1), TS 29.518 V17.9.0 (Namf_MBSBroadcast 1.0.3) and TS 29.518 V17.8.0 (Namf_MBSCommunication 1.0.1), with redMbsServArea and UpdateRspData added by hand from Release 18; NGAP codec from the TS 38.413 V17.3.0 ASN.1; PFCP IEs generated from TS 29.244 V17.7.1",
+   "builtAgainst": "OpenAPI models generated with OpenAPI Generator 6.4.0 from the Release 17 files TS 29.532 V17.3.0 (Nmbsmf_TMGI 1.0.1, Nmbsmf_MBSSession 1.1.1), TS 29.518 V17.9.0 (Namf_MBSBroadcast 1.0.3) and TS 29.518 V17.8.0 (Namf_MBSCommunication 1.0.1), with redMbsServArea and UpdateRspData added by hand from Release 18; NGAP codec from the TS 38.413 V17.3.0 ASN.1; PFCP IEs generated from TS 29.244 V17.7.1. The audit judges against the latest Release 19 issues: TS 23.247 V19.3.0, TS 29.532 V19.3.0 (Nmbsmf_TMGI 1.1.0, Nmbsmf_MBSSession 1.3.0), TS 29.518 V19.8.0 (Namf_MBSBroadcast and Namf_MBSCommunication 1.2.0), TS 29.244 V19.6.0 and TS 38.413 V19.4.0",
    "repos": [
     {
      "repo": "open5gs",
@@ -102,7 +102,7 @@
   "gnb": {
    "short": "gNB",
    "name": "gNodeB with support for MBS",
-   "builtAgainst": "Generated ASN.1 codecs in the repository: NGAP v17.4.0 (TS 38.413, with the Release 18 Broadcast Session Transport procedure and the Release 18 IEs Associated Session ID, Supported UE Type List and MBS NG-U Failure Indication added from V18.10.0), F1AP v17.4.1 (TS 38.473, with the Release 18 Broadcast Transport Resource Request message and the Broadcast Area Scope, Supported UE Type List and Associated Session ID IEs added from V18.10.0), E1AP v18.5.0 (TS 37.483), RRC NR v17.4.0 (TS 38.331, with the Release 18 SIB20 extension added from V18.10.0). No pin exists for the hand-written MAC, RLC and PDCP code. The audit judges every case against the latest Release 18 issues: TS 38.413 V18.11.0, TS 38.473 V18.11.0, TS 37.483 V18.6.0, TS 38.331 V18.11.0, TS 38.300 V18.11.0, TS 38.321 V18.10.0, TS 38.322 V18.2.0, TS 38.323 V18.5.0 and TS 38.212 V18.8.0.",
+   "builtAgainst": "Generated ASN.1 codecs in the repository: NGAP v17.4.0 (TS 38.413, with the Release 18 Broadcast Session Transport procedure and the Release 18 IEs Associated Session ID, Supported UE Type List and MBS NG-U Failure Indication added from V18.10.0), F1AP v17.4.1 (TS 38.473, with the Release 18 Broadcast Transport Resource Request message and the Broadcast Area Scope, Supported UE Type List and Associated Session ID IEs added from V18.10.0), E1AP v18.5.0 (TS 37.483), RRC NR v17.4.0 (TS 38.331, with the Release 18 SIB20 extension added from V18.10.0). No pin exists for the hand-written MAC, RLC and PDCP code. The audit judges every case against the latest Release 19 issues: TS 38.413 V19.4.0, TS 38.473 V19.4.0, TS 37.483 V19.4.0, TS 38.331 V19.4.0, TS 38.300 V19.4.0, TS 38.321 V19.4.0, TS 38.322 V19.3.0, TS 38.323 V19.1.0 and TS 38.212 V19.4.0.",
    "repos": [
     {
      "repo": "srsRAN_Project_mbs",
@@ -113,7 +113,7 @@
   "ue": {
    "short": "UE",
    "name": "UE with support for MBS",
-   "builtAgainst": "The RRC NR codec is labelled v15.11.0 and carries hand-added Release 17 MBS types (SIB20, SIB21, MCCH-Config, MBSBroadcastConfiguration, MBS-SessionInfo), so no generated pin exists; MAC, RLC, PDCP and DCI code is hand-written with no pin. The audit judges every case against the latest Release 18 issues: TS 38.331 V18.11.0, TS 38.300 V18.11.0, TS 38.321 V18.10.0, TS 38.322 V18.2.0, TS 38.323 V18.5.0 and TS 38.212 V18.8.0.",
+   "builtAgainst": "The RRC NR codec is labelled v15.11.0 and carries hand-added Release 17 MBS types (SIB20, SIB21, MCCH-Config, MBSBroadcastConfiguration, MBS-SessionInfo), so no generated pin exists; MAC, RLC, PDCP and DCI code is hand-written with no pin. The audit judges every case against the latest Release 19 issues: TS 38.331 V19.4.0, TS 38.300 V19.4.0, TS 38.321 V19.4.0, TS 38.322 V19.3.0, TS 38.323 V19.1.0 and TS 38.212 V19.4.0.",
    "repos": [
     {
      "repo": "srsRAN_4G_mbs",
@@ -134,7 +134,7 @@
      "component": "mbsf",
      "spec": {
       "doc": "TS 29.580",
-      "version": "V18.8.0",
+      "version": "V19.6.0",
       "locator": "clause 6.1.3.1, table 6.1.3.1-1; clauses 5.2.2.2.2 to 5.2.2.5.2; TS29580_Nmbsf_MBSUserService.yaml"
      },
      "repos": [
@@ -146,7 +146,7 @@
        "verdict": "implemented",
        "what": "Serves the API under nmbsf-mbs-us with version v1 and refuses any other version with 400.",
        "repo": "rt-mbs-function",
-       "locator": "TS 29.580 V18.8.0 clause 6.1.1"
+       "locator": "TS 29.580 V19.6.0 clause 6.1.1"
       },
       {
        "case": "Retrieve all active MBS User Services (GET /mbs-user-services)",
@@ -186,7 +186,7 @@
        "verdict": "implemented",
        "what": "Replaces the representation after checking the target exists (404), the content type (415) and If-Match (412), and answers 200 with the updated MBSUserService.",
        "repo": "rt-mbs-function",
-       "locator": "TS 29.580 V18.8.0 clause 5.2.2.4.2 step 2"
+       "locator": "TS 29.580 V19.6.0 clause 5.2.2.4.2 step 2"
       },
       {
        "case": "Modify (PATCH, application/merge-patch+json): 200 or 204",
@@ -228,7 +228,7 @@
      "component": "mbsf",
      "spec": {
       "doc": "TS 29.580",
-      "version": "V18.8.0",
+      "version": "V19.6.0",
       "locator": "clause 6.2.3.1, table 6.2.3.1-1; clauses 5.3.2.2.2 to 5.3.2.5.2; TS29580_Nmbsf_MBSUserDataIngestSession.yaml"
      },
      "repos": [
@@ -286,7 +286,7 @@
        "verdict": "implemented",
        "what": "Replaces the session after checking the target, If-Match, content type and body, and answers 200 with the updated representation once the MB-SMF and MBSTF have answered for any change.",
        "repo": "rt-mbs-function",
-       "locator": "TS 29.580 V18.8.0 clause 5.3.2.4.2 step 2"
+       "locator": "TS 29.580 V19.6.0 clause 5.3.2.4.2 step 2"
       },
       {
        "case": "Modify (PATCH) with MBSUserDataIngSessionPatch (merge patch)",
@@ -299,7 +299,7 @@
        "verdict": "absent",
        "what": "The MBSF negotiates only features 2 and 3 (MBSEventsExt and MBSErrorHandling), so MBSPatchEnh is never agreed, and a PATCH body is parsed only as MBSUserDataIngSessionPatch from the pinned API 1.1.2, which has no MBSUserDataIngSessionPatchEnh.",
        "repo": "rt-mbs-function",
-       "locator": "TS 29.580 V18.8.0 clause 5.3.2.4.2 step 1; table 6.2.8-1, feature 4"
+       "locator": "TS 29.580 V19.6.0 clause 5.3.2.4.2 step 1; table 6.2.8-1, feature 4"
       },
       {
        "case": "mbsSessionId, mbsDistSessionId and locationDependent never updated",
@@ -313,7 +313,7 @@
        "verdict": "differs",
        "what": "Applies mbsServInfo, mbsFSAId and tgtServAreas at any time, as clause 5.3.2.4.2 allows, but also applies extTgtServAreas and nrRedCapUeInfo while the MBS Distribution Session is not INACTIVE; any other attribute change is refused unless the session is INACTIVE.",
        "repo": "rt-mbs-function",
-       "locator": "TS 29.580 V18.8.0 clause 5.3.2.4.2 step 1"
+       "locator": "TS 29.580 V19.6.0 clause 5.3.2.4.2 step 1"
       },
       {
        "case": "Add a Distribution Session with a new map key",
@@ -338,7 +338,7 @@
      "noted": [
       "An MBS Distribution Session given an mbsSessionId already used by another session is refused with 400, or reported in failedDistSessions where MBSErrorHandling is negotiated.",
       "mbsUserServiceAnmt is filled in the create response as well as in update responses when the service is provisioned PASSED_BACK and every Distribution Session is ESTABLISHED or ACTIVE; table 6.2.6.2.2-1 allows it only in a PUT or PATCH response.",
-      "TS 29.580 V18.8.0 clause 5.3.2.4.2 step 1 names MBSUserDataIngSessionPatchEnh as the PATCH body without condition, while the next sentence and table 6.2.3.3.3.3-2 make it conditional on MBSPatchEnh and keep MBSUserDataIngSessionPatch; Annex A.1 gives the OpenAPI precedence on encoding (\"This Annex takes precedence when being discrepant to other parts of the specification with respect to the encoding of information elements and methods within the API(s).\"), and its PATCH body is anyOf the two types, so the PATCH case with MBSUserDataIngSessionPatch is judged against that."
+      "TS 29.580 V19.6.0 clause 5.3.2.4.2 step 1 names MBSUserDataIngSessionPatchEnh as the PATCH body without condition, while the next sentence and table 6.2.3.3.3.3-2 make it conditional on MBSPatchEnh and keep MBSUserDataIngSessionPatch; Annex A.1 gives the OpenAPI precedence on encoding (\"This Annex takes precedence when being discrepant to other parts of the specification with respect to the encoding of information elements and methods within the API(s).\"), and its PATCH body is anyOf the two types, so the PATCH case with MBSUserDataIngSessionPatch is judged against that."
      ]
     },
     {
@@ -348,7 +348,7 @@
      "component": "mbsf",
      "spec": {
       "doc": "TS 29.580",
-      "version": "V18.8.0",
+      "version": "V19.6.0",
       "locator": "clause 6.2.3.1, table 6.2.3.1-1; clauses 5.3.2.6.2 to 5.3.2.9.2"
      },
      "repos": [
@@ -372,7 +372,7 @@
        "verdict": "implemented",
        "what": "The generated model refuses a body missing any of the three, and a subscription naming an unknown ingest session or Distribution Session is refused with 400.",
        "repo": "rt-mbs-function",
-       "locator": "TS 29.580 V18.8.0 clause 5.3.2.6.2 step 1"
+       "locator": "TS 29.580 V19.6.0 clause 5.3.2.6.2 step 1"
       },
       {
        "case": "Retrieve (GET /status-subscriptions/{subscriptionId})",
@@ -392,7 +392,7 @@
        "verdict": "implemented",
        "what": "Applies eventSubscs and notifUri from an application/merge-patch+json body through MBSUserDataIngStatSubscPatch and answers 200.",
        "repo": "rt-mbs-function",
-       "locator": "TS 29.580 V18.8.0 clause 5.3.2.7.2 step 2"
+       "locator": "TS 29.580 V19.6.0 clause 5.3.2.7.2 step 2"
       },
       {
        "case": "Delete (DELETE): 204",
@@ -432,8 +432,8 @@
      "component": "mbsf",
      "spec": {
       "doc": "TS 26.502",
-      "version": "V18.6.0",
-      "locator": "clause 4.6.2, table 4.6.2-1; TS 29.580 V18.8.0 clause 6.2.6.3.4, table 6.2.6.3.4-1"
+      "version": "V19.5.0",
+      "locator": "clause 4.6.2, table 4.6.2-1; TS 29.580 V19.6.0 clause 6.2.6.3.4, table 6.2.6.3.4-1"
      },
      "repos": [
       "rt-mbs-function"
@@ -556,7 +556,7 @@
      "component": "mbsf",
      "spec": {
       "doc": "TS 26.502",
-      "version": "V18.6.0",
+      "version": "V19.5.0",
       "locator": "clause 4.6.1 steps 1 to 5; clauses 5.3, 5.5.1, 5.5.4"
      },
      "repos": [
@@ -588,7 +588,7 @@
        "verdict": "implemented",
        "what": "Moves the session to ESTABLISHED a configured number of seconds before each start time and tells the MBSTF.",
        "repo": "rt-mbs-function",
-       "locator": "TS 26.502 V18.6.0 clause 4.6.1 step 2"
+       "locator": "TS 26.502 V19.5.0 clause 4.6.1 step 2"
       },
       {
        "case": "MBS System resources reserved at the ESTABLISHED transition",
@@ -648,7 +648,7 @@
      "component": "mbsf",
      "spec": {
       "doc": "TS 29.580",
-      "version": "V18.8.0",
+      "version": "V19.6.0",
       "locator": "clauses 6.1.2.1, 6.1.2.2.2, 6.2.2.1, 6.2.2.2.2"
      },
      "repos": [
@@ -672,7 +672,7 @@
        "verdict": "implemented",
        "what": "Accepts only application/merge-patch+json on PATCH and refuses others with 415 and Accept-Patch.",
        "repo": "rt-mbs-function",
-       "locator": "TS 29.580 V18.8.0 clauses 6.1.2.2.2 and 6.2.2.2.2"
+       "locator": "TS 29.580 V19.6.0 clauses 6.1.2.2.2 and 6.2.2.2.2"
       },
       {
        "case": "application/problem+json for errors",
@@ -690,7 +690,7 @@
      "component": "provider",
      "spec": {
       "doc": "TS 29.580",
-      "version": "V18.8.0",
+      "version": "V19.6.0",
       "locator": "clause 5.2.2.2.2, step 1"
      },
      "repos": [
@@ -735,14 +735,14 @@
        "verdict": "implemented",
        "what": "The form sends one servNameDescs entry carrying language, and the server refuses a missing list or any entry without language.",
        "repo": "rt-mbs-application-provider",
-       "locator": "TS 29.580 V18.8.0 clause 6.1.6.2.3, table 6.1.6.2.3-1, row language"
+       "locator": "TS 29.580 V19.6.0 clause 6.1.6.2.3, table 6.1.6.2.3-1, row language"
       },
       {
        "case": "each servNameDescs entry carries at least one of servName and servDescrip",
        "verdict": "implemented",
        "what": "The form always sends both servName and servDescrip in the entry, so at least one is always present.",
        "repo": "rt-mbs-application-provider",
-       "locator": "TS 29.580 V18.8.0 clause 6.1.6.2.3, table 6.1.6.2.3-1, NOTE"
+       "locator": "TS 29.580 V19.6.0 clause 6.1.6.2.3, table 6.1.6.2.3-1, NOTE"
       },
       {
        "case": "mainServLang optional",
@@ -770,7 +770,7 @@
        "verdict": "implemented",
        "what": "The portal's own API forwards a PATCH body to the MBSF with Content-Type application/merge-patch+json; the bundled web form does not offer PATCH.",
        "repo": "rt-mbs-application-provider",
-       "locator": "TS 29.580 V18.8.0 clause 6.1.2.2.2"
+       "locator": "TS 29.580 V19.6.0 clause 6.1.2.2.2"
       },
       {
        "case": "servType is never changed by an update",
@@ -796,7 +796,7 @@
      ],
      "noted": [
       "The portal never calls GET on the MBS User Services collection: it lists the services it created itself from a local registry, refreshing each one with the individual GET and dropping any that answer 404. Its own comments say the running MBSF answers 400 to the collection GET.",
-      "No suppFeat is sent on MBSUserService. TS 29.580 V18.8.0 table 6.1.8-1 lists no features for this API, so no feature negotiation applies.",
+      "No suppFeat is sent on MBSUserService. TS 29.580 V19.6.0 table 6.1.8-1 lists no features for this API, so no feature negotiation applies.",
       "When the name and description fields are both left blank, the entry is sent with servName and servDescrip as empty strings; this meets the schema's anyOf but carries neither a name nor a description.",
       "Deleting a service first deletes the ingest sessions and status subscriptions the portal recorded under it. No clause requires this; the portal does it because it does not rely on the MBSF's own cascade.",
       "Three of the four example templates in rt-mbs-examples (single-file-download, carousel-file-set, packet-forwarding) have a service block without servAnnModes, so creating their service through the portal is refused by its own mandatory-field check."
@@ -809,7 +809,7 @@
      "component": "provider",
      "spec": {
       "doc": "TS 29.580",
-      "version": "V18.8.0",
+      "version": "V19.6.0",
       "locator": "clause 5.3.2.2.2, step 1"
      },
      "repos": [
@@ -847,7 +847,7 @@
        "verdict": "implemented",
        "what": "The form builds only the parameter set that matches the chosen distribution method, never both.",
        "repo": "rt-mbs-application-provider",
-       "locator": "TS 29.580 V18.8.0 clause 6.2.6.2.3, table 6.2.6.2.3-1, NOTE 3"
+       "locator": "TS 29.580 V19.6.0 clause 6.2.6.2.3, table 6.2.6.2.3-1, NOTE 3"
       },
       {
        "case": "objDistrInfo carries operatingMode, objAcqMethod and objAcqIds",
@@ -858,16 +858,16 @@
       {
        "case": "objAcqIds value determined as TS 26.502 clause 6.1 requires",
        "verdict": "differs",
-       "what": "The form sends whatever identifiers are typed, an empty list included, for every operating mode and acquisition method, and neither the form nor the portal server checks the list against TS 26.502 V18.6.0 table 6.1-1 (one or more identifiers for PULL OBJECT_SINGLE, an empty set for PUSH OBJECT_SINGLE, a single manifest URL for OBJECT_COLLECTION).",
+       "what": "The form sends whatever identifiers are typed, an empty list included, for every operating mode and acquisition method, and neither the form nor the portal server checks the list against TS 26.502 V19.5.0 table 6.1-1 (one or more identifiers for PULL OBJECT_SINGLE, an empty set for PUSH OBJECT_SINGLE, a single manifest URL for OBJECT_COLLECTION).",
        "repo": "rt-mbs-application-provider",
-       "locator": "TS 29.580 V18.8.0 clause 6.2.6.2.5, table 6.2.6.2.5-1, NOTE 4"
+       "locator": "TS 29.580 V19.6.0 clause 6.2.6.2.5, table 6.2.6.2.5-1, NOTE 4"
       },
       {
        "case": "objIngUri sent by the Application Provider for PULL only",
        "verdict": "implemented",
        "what": "objIngUri is added only when the acquisition method is PULL; for PUSH it is left for the MBSF to return.",
        "repo": "rt-mbs-application-provider",
-       "locator": "TS 29.580 V18.8.0 clause 6.2.6.2.5, table 6.2.6.2.5-1, NOTE 2"
+       "locator": "TS 29.580 V19.6.0 clause 6.2.6.2.5, table 6.2.6.2.5-1, NOTE 2"
       },
       {
        "case": "pckDistrInfo carries operatingMode, pckIngMethod and ingEndpointAddrs",
@@ -880,7 +880,7 @@
        "verdict": "implemented",
        "what": "Choosing PACKET_FORWARD_ONLY disables the MULTICAST option and forces UNICAST.",
        "repo": "rt-mbs-application-provider",
-       "locator": "TS 29.580 V18.8.0 clause 6.2.6.2.6, table 6.2.6.2.6-1, row pckIngMethod"
+       "locator": "TS 29.580 V19.6.0 clause 6.2.6.2.6, table 6.2.6.2.6-1, row pckIngMethod"
       },
       {
        "case": "actPeriods or actPeriodsRepRule, never both",
@@ -908,28 +908,28 @@
        "verdict": "differs",
        "what": "The form sends mbsDistSessState in every create and PUT body unless Active periods or a repetition rule are given, and uses it as the activation control; the clause makes it a response-only attribute.",
        "repo": "rt-mbs-application-provider",
-       "locator": "TS 29.580 V18.8.0 clause 6.2.6.2.3, table 6.2.6.2.3-1, row mbsDistSessState"
+       "locator": "TS 29.580 V19.6.0 clause 6.2.6.2.3, table 6.2.6.2.3-1, row mbsDistSessState"
       },
       {
        "case": "mbsDistSessionId not sent in requests",
        "verdict": "differs",
        "what": "On PUT the form echoes back the mbsDistSessionId it loaded, because the running MBSF refuses a PUT without it; the clause makes it a response-only attribute.",
        "repo": "rt-mbs-application-provider",
-       "locator": "TS 29.580 V18.8.0 clause 6.2.6.2.3, table 6.2.6.2.3-1, row mbsDistSessionId"
+       "locator": "TS 29.580 V19.6.0 clause 6.2.6.2.3, table 6.2.6.2.3-1, row mbsDistSessionId"
       },
       {
        "case": "objRepairUri not sent in requests",
        "verdict": "differs",
        "what": "For PULL sessions the form sends objRepairUri when the field is filled; the clause allows it only in responses.",
        "repo": "rt-mbs-application-provider",
-       "locator": "TS 29.580 V18.8.0 clause 6.2.6.2.5, table 6.2.6.2.5-1, row objRepairUri"
+       "locator": "TS 29.580 V19.6.0 clause 6.2.6.2.5, table 6.2.6.2.5-1, row objRepairUri"
       },
       {
        "case": "tgtServAreas and extTgtServAreas not both",
        "verdict": "differs",
        "what": "Both fields are free JSON inputs and both are sent when both are filled; nothing refuses the combination.",
        "repo": "rt-mbs-application-provider",
-       "locator": "TS 29.580 V18.8.0 clause 6.2.6.2.3, table 6.2.6.2.3-1, NOTE 4"
+       "locator": "TS 29.580 V19.6.0 clause 6.2.6.2.3, table 6.2.6.2.3-1, NOTE 4"
       },
       {
        "case": "Retrieve an individual ingest session with GET",
@@ -950,14 +950,14 @@
        "verdict": "implemented",
        "what": "The portal's own API forwards a PATCH body unchanged to the MBSF with Content-Type application/merge-patch+json; the bundled web form does not offer PATCH.",
        "repo": "rt-mbs-application-provider",
-       "locator": "TS 29.580 V18.8.0 clause 6.2.2.2.2"
+       "locator": "TS 29.580 V19.6.0 clause 6.2.2.2.2"
       },
       {
        "case": "PATCH body MBSUserDataIngSessionPatchEnh when MBSPatchEnh is supported",
        "verdict": "absent",
        "what": "Every ingest session is sent with suppFeat \"3\" (features 1 and 2), so MBSPatchEnh (feature 4) is never signalled; the portal has no MBSUserDataIngSessionPatchEnh body of its own and its PATCH API forwards the caller's body as given.",
        "repo": "rt-mbs-application-provider",
-       "locator": "TS 29.580 V18.8.0 clause 5.3.2.4.2 step 1; table 6.2.8-1, feature 4"
+       "locator": "TS 29.580 V19.6.0 clause 5.3.2.4.2 step 1; table 6.2.8-1, feature 4"
       },
       {
        "case": "mbsSessionId and mbsDistSessionId never changed by an update",
@@ -1006,15 +1006,15 @@
        "verdict": "implemented",
        "what": "The portal takes the session identifier from the Location header, records it under its parent service, and the page opens the session from it.",
        "repo": "rt-mbs-application-provider",
-       "locator": "TS 29.580 V18.8.0 clause 5.3.2.2.2, step 2"
+       "locator": "TS 29.580 V19.6.0 clause 5.3.2.2.2, step 2"
       }
      ],
      "noted": [
-      "Under a MULTICAST service the form always sends an SSM pair as mbsSessionId; it cannot nominate a TMGI or leave the identifier to the MBSF. TS 26.502 V18.6.0 clause 5.3 step 3 makes TMGI nomination optional, so this is a limitation, not a failed case.",
+      "Under a MULTICAST service the form always sends an SSM pair as mbsSessionId; it cannot nominate a TMGI or leave the identifier to the MBSF. TS 26.502 V19.5.0 clause 5.3 step 3 makes TMGI nomination optional, so this is a limitation, not a failed case.",
       "The template loader builds an SSM mbsSessionId for every template session, including under a BROADCAST service, unlike the form.",
       "When active periods are given, the form removes mbsDistSessState from every entry because the MBSF refuses the combination. That rule comes from the MBSF's own message, not from a clause read here.",
       "The form edits only the first map entry of a session; a PUT of a session that holds several Distribution Sessions sends only that one entry. TS 29.580 says removal is by a NULL entry and does not say, in the clauses read, what a PUT omitting an entry does.",
-      "The code comment on the PACKET_FORWARD_ONLY rule cites 'TS 29.580 V18.8.0, table 5.6.2.8-1'; the sentence it quotes is in table 6.2.6.2.6-1 of that document.",
+      "The code comment on the PACKET_FORWARD_ONLY rule cites 'TS 29.580 V19.6.0, table 5.6.2.8-1'; the sentence it quotes is in table 6.2.6.2.6-1 of that document.",
       "The read-only announcement URL field shows mbsUserServiceAnmtUrl when the MBSF returns it."
      ]
     },
@@ -1025,7 +1025,7 @@
      "component": "provider",
      "spec": {
       "doc": "TS 29.580",
-      "version": "V18.8.0",
+      "version": "V19.6.0",
       "locator": "clause 5.3.2.6.2, step 1"
      },
      "repos": [
@@ -1077,20 +1077,20 @@
        "verdict": "implemented",
        "what": "A USER_SER_AD notification is stored like any other and shown highlighted on the page with its statusAddInfo text; nothing parses that text further.",
        "repo": "rt-mbs-application-provider",
-       "locator": "TS 29.580 V18.8.0 clause 6.2.6.3.4, table 6.2.6.3.4-1, row USER_SER_AD"
+       "locator": "TS 29.580 V19.6.0 clause 6.2.6.3.4, table 6.2.6.3.4-1, row USER_SER_AD"
       },
       {
        "case": "Retrieval of the composite announcement at MBS-1 using the URL from USER_SER_AD",
        "verdict": "absent",
        "what": "No code fetches the announcement from the URL a USER_SER_AD notification carries.",
        "repo": "rt-mbs-application-provider",
-       "locator": "TS 26.502 V18.6.0 clause 5.4, step 2 C"
+       "locator": "TS 26.502 V19.5.0 clause 5.4, step 2 C"
       }
      ],
-     "exists": "The notification text, which for USER_SER_AD can carry the announcement URL (TS 26.517 V18.6.0 clause 8A.2), is shown on the page.",
+     "exists": "The notification text, which for USER_SER_AD can carry the announcement URL (TS 26.517 V19.2.0 clause 8A.2), is shown on the page.",
      "noted": [
-      "MBS-8 (the provider telling the MBS-Aware Application about the service) is beyond the scope of 3GPP specification (TS 26.502 V18.6.0 clause 4.4.1, MBS-8 item), so no verdict is given. The portal has no MBS-8 path; in the examples the dashboard learns the service from the MBS Client instead.",
-      "PUT and PATCH on a subscription are forwarded as given; the portal does not check that only eventSubscs and notifUri change (TS 29.580 V18.8.0 clause 5.3.2.7.2 step 1).",
+      "MBS-8 (the provider telling the MBS-Aware Application about the service) is beyond the scope of 3GPP specification (TS 26.502 V19.5.0 clause 4.4.1, MBS-8 item), so no verdict is given. The portal has no MBS-8 path; in the examples the dashboard learns the service from the MBS Client instead.",
+      "PUT and PATCH on a subscription are forwarded as given; the portal does not check that only eventSubscs and notifUri change (TS 29.580 V19.6.0 clause 5.3.2.7.2 step 1).",
       "The default notification URI in the form is http://127.0.0.1:8000/notifications, while the portal listens on port 8081 by default (8091 in the demo scripts); the /config route that reports the notification path is not used by the page. A subscription made with the default URI does not reach this portal. The example templates carry the same port 8000 URI.",
       "The demo provisioning scripts create the service and ingest session through the portal but never create a status subscription, so in the demo the portal receives no notifications.",
       "The optional mbsSessionId of an EventNotification is not kept."
@@ -1103,7 +1103,7 @@
      "component": "provider",
      "spec": {
       "doc": "TS 29.580",
-      "version": "V18.8.0",
+      "version": "V19.6.0",
       "locator": "clause 6.1.2.1 (and clause 6.2.2.1)"
      },
      "repos": [
@@ -1121,32 +1121,32 @@
        "verdict": "differs",
        "what": "The client opens only cleartext HTTP/2 connections (http scheme) and has no option for HTTPS; the clause requires every NF to support TLS.",
        "repo": "rt-mbs-application-provider",
-       "locator": "TS 29.500 V18.10.0 clause 5.1"
+       "locator": "TS 29.500 V19.7.1 clause 5.1"
       },
       {
        "case": "Content-Type application/json on POST and PUT bodies",
        "verdict": "implemented",
        "what": "Any request with a body is sent with Content-Type application/json unless the caller overrides it.",
        "repo": "rt-mbs-application-provider",
-       "locator": "TS 29.580 V18.8.0 clause 6.1.2.2.2 (and 6.2.2.2.2)"
+       "locator": "TS 29.580 V19.6.0 clause 6.1.2.2.2 (and 6.2.2.2.2)"
       },
       {
        "case": "Content-Type application/merge-patch+json on PATCH",
        "verdict": "implemented",
        "what": "All three PATCH operations pass application/merge-patch+json as the content type.",
        "repo": "rt-mbs-application-provider",
-       "locator": "TS 29.580 V18.8.0 clause 6.1.2.2.2 (and 6.2.2.2.2)"
+       "locator": "TS 29.580 V19.6.0 clause 6.1.2.2.2 (and 6.2.2.2.2)"
       },
       {
        "case": "User-Agent identifying the NF type on every request",
        "verdict": "absent",
        "what": "No User-Agent header is set on Nmb10 requests (a recommendation in the clause, not a requirement, for direct communication).",
        "repo": "rt-mbs-application-provider",
-       "locator": "TS 29.500 V18.10.0 clause 5.2.2.2, table 5.2.2.2-1, row User-Agent"
+       "locator": "TS 29.500 V19.7.1 clause 5.2.2.2, table 5.2.2.2-1, row User-Agent"
       }
      ],
      "noted": [
-      "OAuth2 access to both Nmbsf APIs is optional, 'based on local configuration' (TS 29.580 V18.8.0 clauses 6.1.9 and 6.2.9); the portal has no support for it, so it can only be used where the MBSF does not require it.",
+      "OAuth2 access to both Nmbsf APIs is optional, 'based on local configuration' (TS 29.580 V19.6.0 clauses 6.1.9 and 6.2.9); the portal has no support for it, so it can only be used where the MBSF does not require it.",
       "Requests time out after 30 s by default (MBSF_REQUEST_TIMEOUT_MS) because the MBSF delays its answer to DELETE until the MBSTF confirms. The bound is an operator setting; no clause gives one.",
       "A non-JSON response body from the MBSF is reported as an error (502 to the page) rather than parsed."
      ]
@@ -1155,7 +1155,7 @@
   },
   {
    "name": "MBS Distribution Sessions (Nmb2)",
-   "summary": "The MBSTF serves every method of the Nmbstf API with its notifications, and the MBSF creates, updates, deletes and subscribes to MBS Distribution Sessions with it; the MBSTF returns no expiry time it chose, keeps notifying an old URI after a subscription update, reports deactivation and ingest establishment at the wrong moments, waits for the MBSF before attempting ingest and keeps accepting pushed objects when INACTIVE, and the specifications disagree on the API name spelling and who nominates the push ingest URL.",
+   "summary": "The MBSTF serves every method of the Nmbstf API with its notifications, and the MBSF creates, updates, deletes and subscribes to MBS Distribution Sessions with it; the MBSTF returns no expiry time it chose, keeps notifying an old URI after a subscription update, reports deactivation and ingest establishment at the wrong moments, waits for the MBSF before attempting ingest and keeps accepting pushed objects when INACTIVE, and the specifications disagree on the API name spelling and who nominates the push ingest URL. Against Release 19, the OpenAPI requires exactly one acquisition identifier where the attribute table requires none for SINGLE with PUSH, and the MBSF never sends an MBS AS ingest endpoint for repair.",
    "requirements": [
     {
      "id": "US-D01-mbstf",
@@ -1164,7 +1164,7 @@
      "component": "mbstf",
      "spec": {
       "doc": "TS 29.581",
-      "version": "V18.6.0",
+      "version": "V19.3.0",
       "locator": "clause 6.1.3.1, table 6.1.3.1-1; clause 5.2.2"
      },
      "repos": [
@@ -1288,7 +1288,7 @@
        "verdict": "inconsistent",
        "what": "The MBSTF serves the API only under the lower-case name nmbstf-distsession; a request using the mixed-case name in the resource URI definitions is passed on as an unknown service.",
        "repo": "rt-mbs-transport-function",
-       "conflict": "TS 29.581 V18.6.0 clause 6.1.1: \"-The &lt;apiName&gt; shall be \"nmbstf-distsession\".\" TS 29.581 V18.6.0 clause 6.1.3.2.2 (also 6.1.3.3.2 and 6.1.3.4.2): \"Resource URI: {apiRoot}/nmbstf-distSession/&lt;apiVersion&gt;/dist-sessions\"",
+       "conflict": "TS 29.581 V19.3.0 clause 6.1.1: \"-The &lt;apiName&gt; shall be \"nmbstf-distsession\".\" TS 29.581 V19.3.0 clause 6.1.3.2.2 (also 6.1.3.3.2 and 6.1.3.4.2): \"Resource URI: {apiRoot}/nmbstf-distSession/&lt;apiVersion&gt;/dist-sessions\"",
        "locator": "clause 6.1.1"
       },
       {
@@ -1318,6 +1318,14 @@
        "what": "Error responses are built as ProblemDetails and sent with the problem content type.",
        "repo": "rt-mbs-transport-function",
        "locator": "clause 6.1.2.2.2"
+      },
+      {
+       "case": "ObjDistributionData: exactly one of objAcquisitionIdsPull and objAcquisitionIdPush (Release 19 OpenAPI), or neither for SINGLE with PUSH (NOTE 7)",
+       "verdict": "inconsistent",
+       "what": "Sessions in the manifest operating modes and SINGLE sessions with PULL are refused without their acquisition identifier, and a SINGLE session with PUSH is accepted with neither identifier, as NOTE 7 and TS 26.502 require. A SINGLE session with PUSH that carries objAcquisitionIdPush, the only form the Release 19 OpenAPI accepts, is refused.",
+       "repo": "rt-mbs-transport-function",
+       "conflict": "TS 29.581 V19.3.0 clause 6.1.6.2.5, table 6.1.6.2.5-1: \"NOTE 7:When the \"objDistributionOperatingMode\" is set to \"SINGLE\" and the \"objAcquisitionMethod\" is set to \"PUSH\", the \"objAcquisitionIdsPull\" attribute and the \"objAcquisitionIdPush\" attribute shall be omitted.\" TS 29.581 V19.3.0 Annex A.2 (TS29581_Nmbstf_DistSession.yaml, ObjDistributionData) makes the two attributes a oneOf of \"required: [ objAcquisitionIdsPull ]\" and \"required: [ objAcquisitionIdPush ]\", so a body with neither does not validate; clause A.1: \"This Annex takes precedence when being discrepant to other parts of the specification with respect to the encoding of information elements and methods within the API(s).\" TS 26.502 V19.5.0 clause 6.1, table 6.1-1, row OBJECT_SINGLE: \"When the push-based object acquisition method is provisioned, the set of Object acquisition identifiers shall be empty.\" The Release 18 OpenAPI forbade only the presence of both.",
+       "locator": "clause 6.1.6.2.5, table 6.1.6.2.5-1, NOTE 7; Annex A.2, TS29581_Nmbstf_DistSession.yaml, ObjDistributionData"
       }
      ],
      "noted": [
@@ -1327,7 +1335,7 @@
       "An Update may change any attribute in any state (the running session is reconfigured), and the subscription PATCH also accepts a single PatchItem object rather than an array.",
       "A subscription whose expiryTime is already in the past is created, answered 201 and removed at once; the expiry string is parsed only in the form YYYY-MM-DDThh:mm:ssZ.",
       "mbmsGwTunAddr and maxDelay are accepted and stored but never read.",
-      "TS 29.581 V18.6.0 clause 5.2.2.6.2 step 2a lists \"the Distribution Session Identifier\" in StatusSubscribeRspData, which table 6.1.6.2.8-1 and Annex A define with only subscription and reportList. Annex A.1 settles it: \"This Annex takes precedence when being discrepant to other parts of the specification with respect to the encoding of information elements and methods within the API(s).\" The case is judged on Annex A. Raised by the A5 reader, 2026-10-03.",
+      "TS 29.581 V19.3.0 clause 5.2.2.6.2 step 2a lists \"the Distribution Session Identifier\" in StatusSubscribeRspData, which table 6.1.6.2.8-1 and Annex A define with only subscription and reportList. Annex A.1 settles it: \"This Annex takes precedence when being discrepant to other parts of the specification with respect to the encoding of information elements and methods within the API(s).\" The case is judged on Annex A. Raised by the A5 reader, 2026-10-03.",
       "On the API name, the OpenAPI file of Annex A (servers url {apiRoot}/nmbstf-distsession/v1) agrees with clause 6.1.1; the resource URIs of clauses 6.1.3.2.2 to 6.1.3.4.2 spell it nmbstf-distSession. The case stays inconsistent because a resource URI is not plainly an information element or method encoding, the scope of the Annex A.1 precedence rule."
      ]
     },
@@ -1338,7 +1346,7 @@
      "component": "mbstf",
      "spec": {
       "doc": "TS 29.581",
-      "version": "V18.6.0",
+      "version": "V19.3.0",
       "locator": "clause 5.2.2.8.1"
      },
      "repos": [
@@ -1428,7 +1436,7 @@
      "component": "mbstf",
      "spec": {
       "doc": "TS 26.502",
-      "version": "V18.6.0",
+      "version": "V19.5.0",
       "locator": "clause 4.6.1, step 1"
      },
      "repos": [
@@ -1502,7 +1510,7 @@
        "verdict": "inconsistent",
        "what": "For push the MBSTF starts its push ingest server at creation and writes its own URL (host, port and a per-session path segment or ephemeral port) into objIngestBaseUrl, replacing any value the MBSF supplied, and the Create response carries it; the value is unique within this MBSTF.",
        "repo": "rt-mbs-transport-function",
-       "conflict": "TS 26.502 V18.6.0 clause 5.3, step 10: \"-In the case of the Object Distribution Method with push-based Object acquisition method, the response includes additional content ingest parameters chosen by the MBSTF for this MBS Distribution Session (see Object ingest base URL in table 4.5.62).\" TS 26.502 V18.6.0 clause 4.5.6, table 4.5.6-2, row Object ingest base URL: \"In this case, the value shall be nominated by the MBSF and shall be unique for all MBS Distribution Sessions within the MBS System.\"",
+       "conflict": "TS 26.502 V19.5.0 clause 5.3, step 10: \"-In the case of the Object Distribution Method with push-based Object acquisition method, the response includes additional content ingest parameters chosen by the MBSTF for this MBS Distribution Session (see Object ingest base URL in table 4.5.6-2).\" TS 26.502 V19.5.0 clause 4.5.6, table 4.5.6-2, row Object ingest base URL: \"In this case, the value shall be nominated by the MBSF and shall be unique for all MBS Distribution Sessions within the MBS System.\"",
        "locator": "clause 5.3, step 10"
       },
       {
@@ -1525,7 +1533,7 @@
      "component": "mbsf",
      "spec": {
       "doc": "TS 29.581",
-      "version": "V18.6.0",
+      "version": "V19.3.0",
       "locator": "clause 5.2.2.2.1 to 5.2.2.4.1; table 6.1.3.1-1"
      },
      "repos": [
@@ -1568,15 +1576,24 @@
        "verdict": "implemented",
        "what": "Copies trafficMarkingInfo to dscpMarking, fecConfig to fecInformation and maxContDelay to maxDelay.",
        "repo": "rt-mbs-function"
+      },
+      {
+       "case": "MBS AS ingest endpoint (objRepairIngestBaseUrl) sent when the MBS AS ingests objects by push at MBS-12 (Release 19)",
+       "verdict": "absent",
+       "what": "The Create request carries no Object Repair ingest endpoint; the MBSF has no MBS-12 configuration.",
+       "repo": "rt-mbs-function",
+       "locator": "clause 5.3, step 10"
       }
      ],
-     "noted": []
+     "noted": [
+      "For a SINGLE session with PUSH the MBSF sends neither objAcquisitionIdsPull nor objAcquisitionIdPush, as TS 29.581 V19.3.0 table 6.1.6.2.5-1 NOTE 7 requires, which the Release 19 OpenAPI of the same document does not allow; the contradiction is judged once, at the MBSTF."
+     ]
     }
    ]
   },
   {
    "name": "Object and packet distribution (Nmb8, MBS-4-MC)",
-   "summary": "The MBSTF ingests objects by pull and push in all four operating modes, handles object manifests, forwards packets in proxy and forward-only mode, and sends towards the MB-UPF tunnel at the configured rate with User-Agent MBSTF on pulls; collections are refetched instead of sent once, manifest refetch rules differ, the FDT describes only the objects handed to the transmitter, an empty ingest base URL leaves pulls unfetched, and DSCP marking, packet FEC, TLS and the Server header on the push endpoint are absent. The Application Provider side relies on a mock origin for pull and pushes without TLS. FLUTE/ALC itself is in rt-libflute, audited separately.",
+   "summary": "The MBSTF ingests objects by pull and push in all four operating modes, handles object manifests, forwards packets in proxy and forward-only mode, and sends towards the MB-UPF tunnel at the configured rate with User-Agent MBSTF on pulls; collections are refetched instead of sent once, manifest refetch rules differ, the FDT describes only the objects handed to the transmitter, an empty ingest base URL leaves pulls unfetched, and DSCP marking, packet FEC, TLS and the Server header on the push endpoint are absent. The Application Provider side relies on a mock origin for pull and pushes without TLS. FLUTE/ALC itself is in rt-libflute, audited separately. The Release 19 Object Repair ingest by the MBS AS at MBS-12 is absent.",
    "requirements": [
     {
      "id": "US-O01-mbstf",
@@ -1585,7 +1602,7 @@
      "component": "mbstf",
      "spec": {
       "doc": "TS 26.502",
-      "version": "V18.6.0",
+      "version": "V19.5.0",
       "locator": "clause 6.1, table 6.1-1"
      },
      "repos": [
@@ -1604,7 +1621,7 @@
        "verdict": "differs",
        "what": "Relative identifiers are appended to objIngestBaseUrl; when objIngestBaseUrl is absent the fetch URL is left empty, so the object is never retrieved, and an absolute identifier given with an objIngestBaseUrl is dropped. The same construction is used for the manifest of COLLECTION, CAROUSEL and STREAMING sessions.",
        "repo": "rt-mbs-transport-function",
-       "locator": "TS 26.502 V18.6.0 clause 4.5.6, table 4.5.6-2, row Object ingest base URL"
+       "locator": "TS 26.502 V19.5.0 clause 4.5.6, table 4.5.6-2, row Object ingest base URL"
       },
       {
        "case": "OBJECT_SINGLE push with empty acquisition identifiers",
@@ -1625,7 +1642,7 @@
        "verdict": "differs",
        "what": "The listed objects are pulled and queued, but every object is kept after sending and is fetched again when its cache lifetime ends (10 s when the origin gives none) or after keepUpdatedInterval; each refetch, including a 304, raises an update event that queues the object for transmission again, so objects are distributed repeatedly.",
        "repo": "rt-mbs-transport-function",
-       "locator": "TS 26.517 V18.6.0 clause 6.2.3.3"
+       "locator": "TS 26.517 V19.2.0 clause 6.2.3.3"
       },
       {
        "case": "OBJECT_COLLECTION and OBJECT_CAROUSEL push mode: only the manifest is pushed, the objects are pulled",
@@ -1653,7 +1670,7 @@
        "verdict": "implemented",
        "what": "A new manifest is merged into the current one, objects it no longer lists are removed from the carousel and the store, and new ones are scheduled for fetching.",
        "repo": "rt-mbs-transport-function",
-       "locator": "TS 26.517 V18.6.0 clause 6.2.3.4"
+       "locator": "TS 26.517 V19.2.0 clause 6.2.3.4"
       },
       {
        "case": "OBJECT_STREAMING: a single Application Service Entry Point URL of each type",
@@ -1667,26 +1684,26 @@
        "verdict": "implemented",
        "what": "The DASH handler lists the segments each MPD makes available, schedules each for fetching at its availability start time and records its availability start and end times on the ingested object.",
        "repo": "rt-mbs-transport-function",
-       "locator": "TS 26.517 V18.6.0 clause 6.2.3.5"
+       "locator": "TS 26.517 V19.2.0 clause 6.2.3.5"
       },
       {
        "case": "OBJECT_STREAMING: an updated MPD reflected at the soonest opportunity",
        "verdict": "implemented",
        "what": "The MPD is refetched at its minimumUpdatePeriod (pull) or accepted when pushed, replaces the current MPD when it differs, and is itself resent at the configured mpdRepetitionRate.",
        "repo": "rt-mbs-transport-function",
-       "locator": "TS 26.517 V18.6.0 clause 6.2.3.5"
+       "locator": "TS 26.517 V19.2.0 clause 6.2.3.5"
       },
       {
        "case": "OBJECT_STREAMING: last packet of each object at the MBSTF Client no later than its availability start time",
        "verdict": "differs",
        "what": "Each segment is fetched only at the availability start time the MPD gives (past times are moved to now), and that same time is used as its transmission deadline with no distribution offset added, so transmission necessarily completes after it.",
        "repo": "rt-mbs-transport-function",
-       "locator": "TS 26.517 V18.6.0 clause 6.2.3.5"
+       "locator": "TS 26.517 V19.2.0 clause 6.2.3.5"
       }
      ],
      "noted": [
       "The MBSTF has no Object Repair configuration of its own (no repair attribute reaches it in DistSession), so the rule that repair is not used with OBJECT_STREAMING (TS 26.517 clause 6.2.3.1) gives it nothing to do.",
-      "TS 26.502 V18.6.0 table 6.1-1 row OBJECT_STREAMING says the content type of each Application Service Entry Point \"shall be explicitly indicated\", but TS 29.581 V18.6.0 table 6.1.6.2.5-1 gives objAcquisitionIdsPull no attribute to carry it, so the MBSTF cannot receive it at Nmb2. This is a gap at stage 3, not a contradiction, and the sentence binds whoever provisions the session, so no verdict is given. The MBSTF takes the type from the Content-Type the origin returns."
+      "TS 26.502 V19.5.0 table 6.1-1 row OBJECT_STREAMING says the content type of each Application Service Entry Point \"shall be explicitly indicated\", but TS 29.581 V19.3.0 table 6.1.6.2.5-1 gives objAcquisitionIdsPull no attribute to carry it, so the MBSTF cannot receive it at Nmb2. This is a gap at stage 3, not a contradiction, and the sentence binds whoever provisions the session, so no verdict is given. The MBSTF takes the type from the Content-Type the origin returns."
      ]
     },
     {
@@ -1696,7 +1713,7 @@
      "component": "mbstf",
      "spec": {
       "doc": "TS 26.502",
-      "version": "V18.6.0",
+      "version": "V19.5.0",
       "locator": "clause 4.3.3.2"
      },
      "repos": [
@@ -1743,34 +1760,34 @@
        "verdict": "implemented",
        "what": "Every pull request carries User-Agent \"MBSTF/18\" followed by the implementation's own product identifier and version, the 18 coming from the fiveg_api_release build option.",
        "repo": "rt-mbs-transport-function",
-       "locator": "TS 26.517 V18.6.0 clause 8.2.3.2.3"
+       "locator": "TS 26.517 V19.2.0 clause 8.2.3.2.3"
       },
       {
        "case": "Server header MBSTF-<host>/<version> on push acknowledgements",
        "verdict": "absent",
        "what": "The push ingest server adds only a Content-Type header to its responses; no Server header is set.",
        "repo": "rt-mbs-transport-function",
-       "locator": "TS 26.517 V18.6.0 clause 8.2.3.3.3"
+       "locator": "TS 26.517 V19.2.0 clause 8.2.3.3.3"
       },
       {
        "case": "Push endpoint exposes HTTP/1.1",
        "verdict": "implemented",
        "what": "The push ingest server is a libmicrohttpd daemon, an HTTP/1.1 server.",
        "repo": "rt-mbs-transport-function",
-       "locator": "TS 26.517 V18.6.0 clause 8.2.1.1 (applied to the MBSTF push endpoints by clause 8.2.1.3)"
+       "locator": "TS 26.517 V19.2.0 clause 8.2.1.1 (applied to the MBSTF push endpoints by clause 8.2.1.3)"
       },
       {
        "case": "Push endpoint supports TLS",
        "verdict": "absent",
        "what": "The push ingest server is started without TLS and its ingest URL is always http://.",
        "repo": "rt-mbs-transport-function",
-       "locator": "TS 26.517 V18.6.0 clause 8.2.1.1"
+       "locator": "TS 26.517 V19.2.0 clause 8.2.1.1"
       }
      ],
      "noted": [
       "Pull requests ask libcurl for HTTP/2; a pulled object without Cache-Control max-age is treated as fresh for 10 s, and a fetch without a deadline times out after 10 s (constants, no clause).",
       "The push server also accepts the non-standard method PUSH alongside PUT and POST.",
-      "TS 26.502 V18.6.0 table 4.5.6-2 row Object acquisition method distinguishes retrieving objects once at the start of each active period from checking their validity periodically, but the ObjAcquisitionMethod enumeration of TS 29.581 V18.6.0 clause 6.1.6.3.5 has only PULL and PUSH, so the indication cannot reach the MBSTF. This is a gap at stage 3, not a contradiction, so no verdict is given. SINGLE sessions fetch each object once per entry to ESTABLISHED; manifest sessions revalidate on cache expiry or keepUpdatedInterval."
+      "TS 26.502 V19.5.0 table 4.5.6-2 row Object acquisition method distinguishes retrieving objects once at the start of each active period from checking their validity periodically, but the ObjAcquisitionMethod enumeration of TS 29.581 V19.3.0 clause 6.1.6.3.5 has only PULL and PUSH, so the indication cannot reach the MBSTF. This is a gap at stage 3, not a contradiction, so no verdict is given. SINGLE sessions fetch each object once per entry to ESTABLISHED; manifest sessions revalidate on cache expiry or keepUpdatedInterval."
      ]
     },
     {
@@ -1780,7 +1797,7 @@
      "component": "mbstf",
      "spec": {
       "doc": "TS 26.517",
-      "version": "V18.6.0",
+      "version": "V19.2.0",
       "locator": "clause 6.1.2, table 6.1.2-1"
      },
      "repos": [
@@ -1820,7 +1837,7 @@
        "verdict": "differs",
        "what": "A pulled object manifest without updateInterval is never fetched again, so changes to it at the origin are not picked up.",
        "repo": "rt-mbs-transport-function",
-       "locator": "TS 26.502 V18.6.0 clause 4.5.6, table 4.5.6-2, row Object acquisition method"
+       "locator": "TS 26.502 V19.5.0 clause 4.5.6, table 4.5.6-2, row Object acquisition method"
       },
       {
        "case": "repetitionInterval used for the carousel, MBSTF chooses when omitted",
@@ -1883,7 +1900,7 @@
        "verdict": "implemented",
        "what": "A push-based manifest session accepts the manifest at its objAcquisitionIdPush path on the push ingest server and applies each new version pushed there.",
        "repo": "rt-mbs-transport-function",
-       "locator": "TS 26.502 V18.6.0 clause 4.3.3.2"
+       "locator": "TS 26.502 V19.5.0 clause 4.3.3.2"
       }
      ],
      "noted": []
@@ -1895,7 +1912,7 @@
      "component": "mbstf",
      "spec": {
       "doc": "TS 26.517",
-      "version": "V18.6.0",
+      "version": "V19.2.0",
       "locator": "clause 6.2.1"
      },
      "repos": [
@@ -1963,7 +1980,7 @@
      "component": "mbstf",
      "spec": {
       "doc": "TS 26.502",
-      "version": "V18.6.0",
+      "version": "V19.5.0",
       "locator": "clause 6.2, table 6.2-1; clause 4.5.6, table 4.5.6-3"
      },
      "repos": [
@@ -1982,8 +1999,8 @@
        "verdict": "inconsistent",
        "what": "The afSsm port number is bound as the local, destination UDP port of the multicast ingest socket.",
        "repo": "rt-mbs-transport-function",
-       "conflict": "TS 26.502 V18.6.0 clause 4.5.6, table 4.5.6-3, row MBSTF ingest endpoint addresses: \"In the case of Proxy mode, this shall be the Source-Specific Multicast (SSM) endpoint addresses (including the source IP address, destination multicast group address and destination UDP port) nominated by the MBS Application Provider or else by the MBSF.\" TS 29.581 V18.6.0 clause 6.1.6.2.15, table 6.1.6.2.15-1, row portNumber (ExtSsm): \"Source Port\"",
-       "locator": "TS 29.581 V18.6.0 clause 6.1.6.2.15, table 6.1.6.2.15-1, row portNumber"
+       "conflict": "TS 26.502 V19.5.0 clause 4.5.6, table 4.5.6-3, row MBSTF ingest endpoint addresses: \"In the case of Proxy mode, this shall be the Source-Specific Multicast (SSM) endpoint addresses (including the source IP address, destination multicast group address and destination UDP port) nominated by the MBS Application Provider or else by the MBSF.\" TS 29.581 V19.3.0 clause 6.1.6.2.15, table 6.1.6.2.15-1, row portNumber (ExtSsm): \"Source Port\"",
+       "locator": "TS 29.581 V19.3.0 clause 6.1.6.2.15, table 6.1.6.2.15-1, row portNumber"
       },
       {
        "case": "Unicast ingest (proxy and forward-only): allocate a listening address and port and return it",
@@ -1997,7 +2014,7 @@
        "verdict": "implemented",
        "what": "The ingest socket is connected to afEgressTunAddr and each received datagram's source is compared with it before it is accepted.",
        "repo": "rt-mbs-transport-function",
-       "locator": "TS 29.581 V18.6.0 clause 6.1.6.2.14, table 6.1.6.2.14-1, row afEgressTunAddr"
+       "locator": "TS 29.581 V19.3.0 clause 6.1.6.2.14, table 6.1.6.2.14-1, row afEgressTunAddr"
       },
       {
        "case": "PACKET_PROXY: UDP payloads forwarded in new UDP packets",
@@ -2011,7 +2028,7 @@
        "verdict": "implemented",
        "what": "Forward-only sessions treat each datagram from the ingest tunnel as an encapsulated IP packet and pass it to the MB-UPF tunnel unmodified; a forward-only session that carries upTrafficFlowInfo is refused.",
        "repo": "rt-mbs-transport-function",
-       "locator": "TS 26.502 V18.6.0 clause 4.5.6, table 4.5.6-1, row User Plane traffic flow information"
+       "locator": "TS 26.502 V19.5.0 clause 4.5.6, table 4.5.6-1, row User Plane traffic flow information"
       },
       {
        "case": "Multicast ingest refused for forward-only",
@@ -2033,7 +2050,7 @@
      "component": "mbstf",
      "spec": {
       "doc": "TS 26.502",
-      "version": "V18.6.0",
+      "version": "V19.5.0",
       "locator": "clause 4.5.6, table 4.5.6-1; clause 4.3.3.2"
      },
      "repos": [
@@ -2103,13 +2120,51 @@
      ]
     },
     {
+     "id": "US-O07-mbstf",
+     "name": "Object Repair ingest by the MBS AS (MBS-12, Release 19)",
+     "release": "US18",
+     "component": "mbstf",
+     "spec": {
+      "doc": "TS 26.502",
+      "version": "V19.5.0",
+      "locator": "clause 4.3.3.2"
+     },
+     "repos": [
+      "rt-mbs-transport-function"
+     ],
+     "cases": [
+      {
+       "case": "Pull-based egest: objects exposed to the MBS AS at an endpoint returned as objRepairExpBaseUrl",
+       "verdict": "absent",
+       "what": "The MBSTF exposes no endpoint from which the MBS AS can fetch ingested objects, and its Nmbstf model, generated from the Release 18 OpenAPI, has no objRepairExpBaseUrl.",
+       "locator": "clause 6.1.6.2.5, table 6.1.6.2.5-1, row objRepairExpBaseUrl"
+      },
+      {
+       "case": "Push-based egest: ingested objects forwarded to the MBS AS endpoint given in objRepairIngestBaseUrl",
+       "verdict": "absent",
+       "what": "Ingested objects go only to the FLUTE transmitter; objRepairIngestBaseUrl is neither read nor acted on.",
+       "locator": "clause 4.3.3.2"
+      },
+      {
+       "case": "Object Repair ingest session established with the MBS AS",
+       "verdict": "absent",
+       "what": "No session with an MBS AS is set up at MBS-12.",
+       "locator": "clause 5.3, step 10b"
+      }
+     ],
+     "noted": [
+      "Configuration of the MBS AS by the MBSF at MBS-9 (TS 26.502 V19.5.0 clause 5.3 steps 9a, 10a and 10c) is \"not further defined in this release\", so it is not judged.",
+      "TS 26.517 V19.2.0 clause 6.2.3.1 still forbids the Object Repair mechanism with the OBJECT_STREAMING mode, while TS 26.502 V19.5.0 clause 4.2.6 describes in-session repair of objects in streaming distribution; no case here depends on which applies."
+     ]
+    },
+    {
      "id": "US-P09-provider",
      "name": "Content ingest at Nmb8 (Application Provider side)",
      "release": "US18",
      "component": "provider",
      "spec": {
       "doc": "TS 26.502",
-      "version": "V18.6.0",
+      "version": "V19.5.0",
       "locator": "clause 4.3.3.2"
      },
      "repos": [
@@ -2121,56 +2176,56 @@
        "verdict": "implemented",
        "what": "The Content Ingest tab lists the objIngUri the MBSF returned for each PUSH Distribution Session, the user appends the object path, and the portal sends the object bytes to that URL.",
        "repo": "rt-mbs-application-provider",
-       "locator": "TS 26.502 V18.6.0 table 4.5.6-2, row Object ingest base URL"
+       "locator": "TS 26.502 V19.5.0 table 4.5.6-2, row Object ingest base URL"
       },
       {
        "case": "Ingest parameters taken from the session representation (or the Distribution Session starting event)",
        "verdict": "implemented",
        "what": "Push targets are read from objIngUri in the ingest-session representation returned by the MBSF; DIST_SESS_STARTING notifications are shown but not used for this.",
        "repo": "rt-mbs-application-provider",
-       "locator": "TS 29.580 V18.8.0 clause 6.2.6.2.5, table 6.2.6.2.5-1, NOTE 2"
+       "locator": "TS 29.580 V19.6.0 clause 6.2.6.2.5, table 6.2.6.2.5-1, NOTE 2"
       },
       {
        "case": "Push client uses HTTPS when the MBSTF offers it",
        "verdict": "differs",
        "what": "The push client always opens a plain HTTP/1.1 connection whatever the URL scheme and has no HTTPS path; the clause asks clients to prefer HTTPS where it is available.",
        "repo": "rt-mbs-application-provider",
-       "locator": "TS 26.517 V18.6.0 clause 8.2.1.1"
+       "locator": "TS 26.517 V19.2.0 clause 8.2.1.1"
       },
       {
        "case": "Pull-based origin hosting at Nmb8",
        "verdict": "implemented",
        "what": "Two origins exist: the portal serves files under /content without its login, and rt-mbs-examples' express-mock-media-server serves its public directory; the demo scripts point objIngUri at the mock server, not at the portal.",
        "repo": "rt-mbs-application-provider",
-       "locator": "TS 26.502 V18.6.0 clause 4.3.3.2"
+       "locator": "TS 26.502 V19.5.0 clause 4.3.3.2"
       },
       {
        "case": "Object ingest base URL for PULL nominated by the Application Provider",
        "verdict": "implemented",
        "what": "For PULL sessions the form and the demo scripts send objIngUri set to the origin's base URL.",
        "repo": "rt-mbs-application-provider",
-       "locator": "TS 26.502 V18.6.0 table 4.5.6-2, row Object ingest base URL"
+       "locator": "TS 26.502 V19.5.0 table 4.5.6-2, row Object ingest base URL"
       },
       {
        "case": "Object manifests served with the registered media type and version parameter",
        "verdict": "implemented",
        "what": "The portal labels every .json file under /content, and the mock server labels its carousel and collection manifest files, as application/3gpp-mbs-object-manifest+json;version=\"Rel17\".",
        "repo": "rt-mbs-application-provider",
-       "locator": "TS 26.517 V18.6.0 clause D.1"
+       "locator": "TS 26.517 V19.2.0 clause D.1"
       },
       {
        "case": "Packet ingest towards the MBSTF ingest endpoint",
        "verdict": "absent",
        "what": "Neither the portal nor rt-mbs-examples sends a packet stream to the ingest endpoint provisioned for a PACKET session; the portal only provisions PACKET sessions and shows the returned addresses, and the one packet sender in rt-mbs-examples streams to a fixed multicast group, not to a provisioned endpoint.",
        "repo": "rt-mbs-application-provider",
-       "locator": "TS 26.502 V18.6.0 clause 5.5.1, step 6"
+       "locator": "TS 26.502 V19.5.0 clause 5.5.1, step 6"
       }
      ],
      "noted": [
-      "Objects are pushed with HTTP PUT. Only the informative Annex B of TS 26.502 V18.6.0 (figure B.2.2-1, 'HTTP PUT') shows a method; no normative clause read fixes it.",
-      "Both pull origins answer over cleartext HTTP/1.1 only. TS 26.517 V18.6.0 clause 8.2.1.1 asks for TLS on 'content interfaces at reference points specified in the present document'; whether the Application Provider's pull origin at Nmb8 is one of them is not stated in the clauses read.",
-      "Both origins send ETag and Last-Modified and honour conditional requests; the portal sets max-age=30 on everything, the mock server sets no-cache on MPDs. The ETag/Last-Modified obligations in TS 26.517 V18.6.0 clause 8.2.1.4 are addressed to the MBS AF, not to the Application Provider.",
-      "TS 26.502 V18.6.0 clause 5.3 step 11 has the Distribution Session starting event carry the chosen ingest parameters, but EventNotification in TS 29.580 V18.8.0 table 6.2.6.2.10-1 has no attribute for them other than the free-text statusAddInfo.",
+      "Objects are pushed with HTTP PUT. Only the informative Annex B of TS 26.502 V19.5.0 (figure B.2.2-1, 'HTTP PUT') shows a method; no normative clause read fixes it.",
+      "Both pull origins answer over cleartext HTTP/1.1 only. TS 26.517 V19.2.0 clause 8.2.1.1 asks for TLS on 'Content interfaces at reference points specified in the present document'; whether the Application Provider's pull origin at Nmb8 is one of them is not stated in the clauses read.",
+      "Both origins send ETag and Last-Modified and honour conditional requests; the portal sets max-age=30 on everything, the mock server sets no-cache on MPDs. The ETag/Last-Modified obligations in TS 26.517 V19.2.0 clause 8.2.1.4 are addressed to the MBS AF, not to the Application Provider.",
+      "TS 26.502 V19.5.0 clause 5.3 step 11 has the Distribution Session starting event carry the chosen ingest parameters, but EventNotification in TS 29.580 V19.6.0 table 6.2.6.2.10-1 has no attribute for them other than the free-text statusAddInfo.",
       "The docker compose setup in rt-mbs-examples (mbs-docker-setup) runs the core, MBSF, MBSTF and RAN images but neither the portal, the dashboard nor the mock media server; the mock server has its own compose file on port 3004. The portal, dashboard and mock server run only through the bash demo scripts.",
       "The mock server requires the etag module but does not declare it in its package.json; it resolves only through express's own dependency."
      ]
@@ -2179,7 +2234,7 @@
   },
   {
    "name": "MBS User Service Announcement",
-   "summary": "The MBSF writes User Service Descriptions, Session Description documents and multipart bundles, serves the MBS-5 retrieval API with entity tags and conditional requests, and runs the announcement channel by pushing an object manifest; the bundle on the channel carries a single description where a descriptions document is required, there is no document version, main language, radio parameters, security description or cancelled schedule, the MBS AF has no TLS or Cache-Control and a non-conformant Server header, the bundle URL for MBS-1 reaches the Application Provider only with the announcement channel, and the specifications disagree on the repair locator and the empty discovery result.",
+   "summary": "The MBSF writes User Service Descriptions, Session Description documents and multipart bundles, serves the MBS-5 retrieval API with entity tags and conditional requests, and runs the announcement channel by pushing an object manifest; the bundle on the channel carries a single description where a descriptions document is required, there is no document version, main language, radio parameters, security description or cancelled schedule, the MBS AF has no TLS or Cache-Control and a non-conformant Server header, the bundle URL for MBS-1 reaches the Application Provider only with the announcement channel, and the specifications disagree on the repair locator and the empty discovery result. Against Release 19, the documents carry version Rel18 instead of Rel19 and the service areas in the deprecated mbsServiceAreas, and no in-session repair or time synchronization parameters are written.",
    "requirements": [
     {
      "id": "US-A01-mbsf",
@@ -2188,8 +2243,8 @@
      "component": "mbsf",
      "spec": {
       "doc": "TS 26.517",
-      "version": "V18.6.0",
-      "locator": "clauses 5.1, 5.1A, 5.2.2, 5.2.3; Annex A.2.1; TS 26.502 V18.6.0 table 4.5.7-1"
+      "version": "V19.2.0",
+      "locator": "clauses 5.1, 5.1A, 5.2.2, 5.2.3; Annex A.2.1; TS 26.502 V19.5.0 table 4.5.7-1"
      },
      "repos": [
       "rt-mbs-function"
@@ -2238,7 +2293,7 @@
        "verdict": "absent",
        "what": "mainServLang is not passed to the announcement, so serviceLanguage is never written.",
        "repo": "rt-mbs-function",
-       "locator": "TS 26.502 V18.6.0 clause 4.5.7, table 4.5.7-1, row Main service language"
+       "locator": "TS 26.502 V19.5.0 clause 4.5.7, table 4.5.7-1, row Main service language"
       },
       {
        "case": "distributionSessionDescriptions: one per MBS Distribution Session",
@@ -2251,12 +2306,12 @@
        "verdict": "implemented",
        "what": "Writes one Service Schedule Description per active period, or one with a repetition rule, and none when no period is provisioned.",
        "repo": "rt-mbs-function",
-       "locator": "TS 26.502 V18.6.0 clause 4.6.0"
+       "locator": "TS 26.502 V19.5.0 clause 4.6.0"
       },
       {
-       "case": "Media type with profiles and version=\"Rel18\"",
-       "verdict": "implemented",
-       "what": "Labels the document application/3gpp-mbs-user-service-descriptions+json with profiles=\"urn:3GPP:26517:17:baseline\" and version=\"Rel18\".",
+       "case": "Media type with profiles and version=\"Rel19\"",
+       "verdict": "differs",
+       "what": "Labels the document application/3gpp-mbs-user-service-descriptions+json with profiles=\"urn:3GPP:26517:17:baseline\" and version=\"Rel18\"; Release 19 requires the version value Rel19.",
        "repo": "rt-mbs-function",
        "locator": "Annex A.2.1"
       }
@@ -2270,7 +2325,7 @@
      "component": "mbsf",
      "spec": {
       "doc": "TS 26.517",
-      "version": "V18.6.0",
+      "version": "V19.2.0",
       "locator": "clause 5.2.4, table 5.2.4-1; clauses 5.2.6, 5.2.8, 5.2.9, 5.2.10"
      },
      "repos": [
@@ -2315,14 +2370,28 @@
        "verdict": "inconsistent",
        "what": "Writes a single objectRepairBaseLocator, the form the Annex A.2.1 schema defines.",
        "repo": "rt-mbs-function",
-       "conflict": "TS 26.517 V18.6.0 clause 5.2.8, table 5.2.8-1 defines the property \"object‌Repair‌BaseLocators\" of type \"array(AbsoluteUrl)\"; Annex A.2.1 (TS26517_MBSUserServiceAnnouncement.yaml, ObjectRepairParameters) defines \"objectRepairBaseLocator\" with a single AbsoluteUrl. Clause 6.2.4.2 step 3: \"The MBS Client shall select an MBS AS instance repair URL randomly from the list of object‌Repair‌BaseLocators if present in the ObjectRepair object defined in table 5.2.8-1.\"",
+       "conflict": "TS 26.517 V19.2.0 clause 5.2.8, table 5.2.8-1 defines the property \"object‌Repair‌BaseLocators\" of type \"array(AbsoluteUrl)\"; Annex A.2.1 (TS26517_MBSUserServiceAnnouncement.yaml, ObjectRepairParameters) defines \"objectRepairBaseLocator\" with a single AbsoluteUrl. Clause 6.2.4.2 step 3: \"The MBS Client shall select an MBS AS instance repair URL randomly from the list of object‌Repair‌BaseLocators if present in the ObjectRepair object defined in table 5.2.8-1.\"",
        "locator": "clause 5.2.8, table 5.2.8-1"
       },
       {
-       "case": "availabilityInfos: mbsServiceAreas and mbsFSAId",
+       "case": "inSessionObjectRepairParameters (Release 19)",
+       "verdict": "absent",
+       "what": "No in-session Object Repair parameters are written; only postSessionObjectRepairParameters is set.",
+       "repo": "rt-mbs-function",
+       "locator": "clause 5.2.4, table 5.2.4-1, row inSessionObjectRepairParameters"
+      },
+      {
+       "case": "availabilityInfos: mbsFSAId",
        "verdict": "implemented",
-       "what": "Writes the target service areas and the FSA identifier of the MBS Distribution Session.",
+       "what": "Writes the FSA identifier of the MBS Distribution Session.",
        "repo": "rt-mbs-function"
+      },
+      {
+       "case": "availabilityInfos: target service areas in targetServiceAreas, mbsServiceAreas absent (Release 19)",
+       "verdict": "differs",
+       "what": "Writes the service areas in mbsServiceAreas, which Release 19 deprecates and requires to be absent, and never writes targetServiceAreas.",
+       "repo": "rt-mbs-function",
+       "locator": "clause 5.2.9, table 5.2.9-1, row mbsServiceAreas"
       },
       {
        "case": "availabilityInfos: nrParameters for a broadcast session",
@@ -2342,7 +2411,14 @@
        "verdict": "absent",
        "what": "No SecurityDescription is written; the MBSF has no MBSSF interaction.",
        "repo": "rt-mbs-function",
-       "locator": "TS 26.502 V18.6.0 clause 4.5.2 step 2"
+       "locator": "TS 26.502 V19.5.0 clause 4.5.2 step 2"
+      },
+      {
+       "case": "timeSynchronizationParameters (Release 19)",
+       "verdict": "absent",
+       "what": "No Time Synchronization Parameters object is written, so neither the use of SIB9 nor a time service endpoint is signalled.",
+       "repo": "rt-mbs-function",
+       "locator": "clause 5.2.4, table 5.2.4-1, row timeSynchronizationParameters"
       }
      ],
      "noted": [
@@ -2356,7 +2432,7 @@
      "component": "mbsf",
      "spec": {
       "doc": "TS 26.517",
-      "version": "V18.6.0",
+      "version": "V19.2.0",
       "locator": "clause 5.2.7, tables 5.2.7-1 and 5.2.7-2"
      },
      "repos": [
@@ -2404,7 +2480,7 @@
      "component": "mbsf",
      "spec": {
       "doc": "TS 26.517",
-      "version": "V18.6.0",
+      "version": "V19.2.0",
       "locator": "clauses 5.2.5, 6.2.2.1, 6.2.2.2, 7.2.3.1"
      },
      "repos": [
@@ -2443,7 +2519,7 @@
        "verdict": "implemented",
        "what": "Writes no a=lang attribute.",
        "repo": "rt-mbs-function",
-       "locator": "TS 26.517 V18.6.0 clause 6.2.2.1, Restrictions"
+       "locator": "TS 26.517 V19.2.0 clause 6.2.2.1, Restrictions"
       },
       {
        "case": "FLUTE/UDP media line, flute-tsi and source-filter for the Object Distribution Method",
@@ -2462,7 +2538,7 @@
        "verdict": "implemented",
        "what": "Declares FEC-declaration with the encoding ID taken from fecScheme and FEC-redundancy-level from fecOverHead only when FEC is configured.",
        "repo": "rt-mbs-function",
-       "locator": "TS 26.517 V18.6.0 clause 6.2.2.1"
+       "locator": "TS 26.517 V19.2.0 clause 6.2.2.1"
       },
       {
        "case": "Packet Distribution Method SDP",
@@ -2481,7 +2557,7 @@
      "component": "mbsf",
      "spec": {
       "doc": "TS 26.517",
-      "version": "V18.6.0",
+      "version": "V19.2.0",
       "locator": "clause 5.3.1A"
      },
      "repos": [
@@ -2499,7 +2575,7 @@
        "verdict": "implemented",
        "what": "Sets the type parameter of the multipart entity to application/3gpp-mbs-user-service-descriptions+json.",
        "repo": "rt-mbs-function",
-       "locator": "TS 26.517 V18.6.0 clause 5.3.1A"
+       "locator": "TS 26.517 V19.2.0 clause 5.3.1A"
       },
       {
        "case": "Root body part first, no start parameter",
@@ -2518,14 +2594,14 @@
        "verdict": "implemented",
        "what": "Includes the Session Description document of every MBS Distribution Session of the matching ingest session.",
        "repo": "rt-mbs-function",
-       "locator": "TS 26.517 V18.6.0 clause 5.3.1A"
+       "locator": "TS 26.517 V19.2.0 clause 5.3.1A"
       },
       {
        "case": "A User Service with several active ingest sessions",
        "verdict": "differs",
        "what": "Only the first ingest session with an available bundle describes a User Service at MBS-5, so the Distribution Sessions of any other active ingest session are not announced there.",
        "repo": "rt-mbs-function",
-       "locator": "TS 26.502 V18.6.0 clause 5.4 step 1"
+       "locator": "TS 26.502 V19.5.0 clause 5.4 step 1"
       }
      ],
      "noted": []
@@ -2537,8 +2613,8 @@
      "component": "mbsf",
      "spec": {
       "doc": "TS 26.502",
-      "version": "V18.6.0",
-      "locator": "clause 5.3A steps 1 to 6; clause 5.4 step 2B; TS 26.517 V18.6.0 clause 5.3.2"
+      "version": "V19.5.0",
+      "locator": "clause 5.3A steps 1 to 6; clause 5.4 step 2B; TS 26.517 V19.2.0 clause 5.3.2"
      },
      "repos": [
       "rt-mbs-function"
@@ -2568,7 +2644,7 @@
        "verdict": "implemented",
        "what": "Creates the channel at the MBSTF with PUSH acquisition and the single acquisition identifier \"carousel\", retrying when the MBSTF does not answer.",
        "repo": "rt-mbs-function",
-       "locator": "TS 26.502 V18.6.0 clause 5.3A step 3"
+       "locator": "TS 26.502 V19.5.0 clause 5.3A step 3"
       },
       {
        "case": "Subscription to MBSTF status (step 4)",
@@ -2588,7 +2664,7 @@
        "verdict": "implemented",
        "what": "Lists one bundle per ingest session with an available announcement, each with the configured repetition interval and keep-updated interval.",
        "repo": "rt-mbs-function",
-       "locator": "TS 26.502 V18.6.0 clause 5.4 step 2B"
+       "locator": "TS 26.502 V19.5.0 clause 5.4 step 2B"
       },
       {
        "case": "Channel active only while there is something to announce",
@@ -2608,7 +2684,7 @@
      "component": "mbsf",
      "spec": {
       "doc": "TS 26.517",
-      "version": "V18.6.0",
+      "version": "V19.2.0",
       "locator": "clause 9.2.2, tables 9.2.2-1 and 9.2.2-2; clauses 9.2.3, 8.2.1.1, 8.2.1.4, 8.2.3.3.4, 8.2.3.4; TS26517_MBSUserServiceAnnouncement.yaml"
      },
      "repos": [
@@ -2645,7 +2721,7 @@
        "verdict": "inconsistent",
        "what": "Answers 204 with no body when nothing matches.",
        "repo": "rt-mbs-function",
-       "conflict": "TS 26.517 V18.6.0 table 9.2.2-1: \"A User Service Descriptions Bundle (see clause 9.2.3.1) is returned containing User Service Descriptions matching all of the specified filtering criteria and their dependent resources, which may be empty if none match all of the criteria.\" TS26517_MBSUserServiceAnnouncement.yaml (Annex A.2.1), GET /user-service-descriptions, responses: \"204: No Matches Found\"; and a User Service Descriptions document requires at least one userServiceDescriptions item (minItems: 1), so an empty bundle cannot be valid.",
+       "conflict": "TS 26.517 V19.2.0 table 9.2.2-1: \"A User Service Descriptions Bundle (see clause 9.2.3.1) is returned containing User Service Descriptions matching all of the specified filtering criteria and their dependent resources, which may be empty if none match all of the criteria.\" TS26517_MBSUserServiceAnnouncement.yaml (Annex A.2.1), GET /user-service-descriptions, responses: \"204: No Matches Found\"; and a User Service Descriptions document requires at least one userServiceDescriptions item (minItems: 1), so an empty bundle cannot be valid.",
        "locator": "clause 9.2.2, table 9.2.2-1, row Discover User Service Descriptions"
       },
       {
@@ -2706,8 +2782,8 @@
      "component": "mbsf",
      "spec": {
       "doc": "TS 26.517",
-      "version": "V18.6.0",
-      "locator": "clause 8A.2; TS 29.580 V18.8.0 clause 6.2.6.2.2, table 6.2.6.2.2-1"
+      "version": "V19.2.0",
+      "locator": "clause 8A.2; TS 29.580 V19.6.0 clause 6.2.6.2.2, table 6.2.6.2.2-1"
      },
      "repos": [
       "rt-mbs-function"
@@ -2718,14 +2794,14 @@
        "verdict": "differs",
        "what": "No URL attribute can be given on the session, since mbsUserServiceAnmtUrlExt is not defined in TS 29.580 (noted). The User Service Description is put inline in mbsUserServiceAnmt for PASSED_BACK, and the USER_SER_AD notification carries the bundle URL only when the User Service Announcement Channel is deployed.",
        "repo": "rt-mbs-function",
-       "locator": "TS 26.517 V18.6.0 clause 8A.2"
+       "locator": "TS 26.517 V19.2.0 clause 8A.2"
       },
       {
        "case": "mbsUserServiceAnmtUrl for VIA_MBS_5",
        "verdict": "absent",
        "what": "The attribute is never set.",
        "repo": "rt-mbs-function",
-       "locator": "TS 29.580 V18.8.0 clause 6.2.6.2.2, table 6.2.6.2.2-1, row mbsUserServiceAnmtUrl"
+       "locator": "TS 29.580 V19.6.0 clause 6.2.6.2.2, table 6.2.6.2.2-1, row mbsUserServiceAnmtUrl"
       },
       {
        "case": "statusAddInfo of USER_SER_AD carries the bundle URL",
@@ -2742,14 +2818,14 @@
       }
      ],
      "noted": [
-      "TS 26.517 V18.6.0 clause 8A.2 names \"the mbsUserServiceAnmtUrlExt attribute of the MBSUserDataIngSession data type, per clause 6.2.6.2.2 of TS 29.580\", but neither TS 29.580 V18.8.0 nor the V18.7.0 the build pins defines that attribute; its row mbsUserServiceAnmtUrl applies to the VIA_MBS_5 mode only. This is a missing definition, not a contradiction, so it is noted rather than judged; the clause's other route (statusAddInfo of USER_SER_AD) is judged."
+      "TS 26.517 V19.2.0 clause 8A.2 names \"The mbsUserServiceAnmtUrlExt attribute of the MBSUserDataIngSession data type, per clause 6.2.6.2.2 of TS 29.580 [17].\", but neither TS 29.580 V19.6.0 nor the V18.7.0 the build pins defines that attribute; its row mbsUserServiceAnmtUrl applies to the VIA_MBS_5 mode only. This is a missing definition, not a contradiction, so it is noted rather than judged; the clause's other route (statusAddInfo of USER_SER_AD) is judged."
      ]
     }
    ]
   },
   {
    "name": "MBS Client",
-   "summary": "The client acquires announcements from the announcement channel and by MBS-5 discovery, activates and deactivates reception by external service identifier within the announced schedule, receives the Object Distribution Method and serves received objects to the application, and runs post-session repair; retrieval by identifier, User-Agent headers, packet distribution and MBS-10 key retrieval are absent, and repair differs in its request pattern and end-of-session detection.",
+   "summary": "The client acquires announcements from the announcement channel and by MBS-5 discovery, activates and deactivates reception by external service identifier within the announced schedule, receives the Object Distribution Method and serves received objects to the application, and runs post-session repair; retrieval by identifier, User-Agent headers, packet distribution and MBS-10 key retrieval are absent, and repair differs in its request pattern and end-of-session detection. The Release 19 in-session repair is not configured from its own parameters and differs in when it starts, how many objects it repairs and its HTTP sessions, and Release 19 time synchronization is absent.",
    "requirements": [
     {
      "id": "US-C01-client",
@@ -2758,7 +2834,7 @@
      "component": "client",
      "spec": {
       "doc": "TS 26.502",
-      "version": "V18.6.0",
+      "version": "V19.5.0",
       "locator": "clause 4.3.5"
      },
      "repos": [
@@ -2777,21 +2853,21 @@
        "verdict": "implemented",
        "what": "The Discover request is sent as GET {apiRoot}/3gpp-mbs-user-service-discovery/v1/user-service-descriptions with the service-class query parameter, and the returned bundle replaces the list of known services.",
        "repo": "rt-mbs-client",
-       "locator": "TS 26.517 V18.6.0 clause 9.2.2, table 9.2.2-2, row Service class"
+       "locator": "TS 26.517 V19.2.0 clause 9.2.2, table 9.2.2-2, row Service class"
       },
       {
        "case": "Discovery is never sent without a query parameter",
        "verdict": "implemented",
        "what": "The local API runs a Discover only when the application supplies a service-class value, and the Discover request always carries that parameter.",
        "repo": "rt-mbs-client",
-       "locator": "TS 26.517 V18.6.0 clause 9.2.2, table 9.2.2-1, row Discover User Service Descriptions"
+       "locator": "TS 26.517 V19.2.0 clause 9.2.2, table 9.2.2-1, row Discover User Service Descriptions"
       },
       {
        "case": "Acquisition from the User Service Announcement Channel at MBS-4-MC (carousel objects)",
        "verdict": "implemented",
        "what": "The client joins the announcement channel from a pre-configured service announcement USD or a configured fallback, and every received object whose content type is multipart/related is fed into the list of known services.",
        "repo": "rt-mbs-client",
-       "locator": "TS 26.517 V18.6.0 clause 5.3.2"
+       "locator": "TS 26.517 V19.2.0 clause 5.3.2"
       },
       {
        "case": "USD passed in by the MBS-Aware Application (MBS-8 route, 26.502 clause 5.4 C)",
@@ -2805,56 +2881,56 @@
        "verdict": "implemented",
        "what": "The bundle is split with a MIME parser and the first body part is parsed as the User Service Descriptions JSON document, on both the MBS-5 and the MBS-4-MC paths.",
        "repo": "rt-mbs-client",
-       "locator": "TS 26.517 V18.6.0 clause 5.3.1A"
+       "locator": "TS 26.517 V19.2.0 clause 5.3.1A"
       },
       {
        "case": "Other body parts matched to the Session Description by Content-Location",
        "verdict": "differs",
        "what": "A bundled Session Description is looked up by exact Content-Location match only when sessionDescriptionLocator is not an http(s) URL; for an absolute locator, which table 5.2.4-1 requires, the bundle is not searched and the Session Description is fetched over the network instead, and a relative Content-Location is not resolved against the base URI before matching.",
        "repo": "rt-mbs-client",
-       "locator": "TS 26.517 V18.6.0 clause 5.3.1A"
+       "locator": "TS 26.517 V19.2.0 clause 5.3.1A"
       },
       {
        "case": "User Service Descriptions document read according to the schema of clause A.2 (userServiceDescriptions array required)",
        "verdict": "differs",
        "what": "A root document without the userServiceDescriptions wrapper is also accepted and read as a single User Service Description object, which the schema does not allow.",
        "repo": "rt-mbs-client",
-       "locator": "TS 26.517 V18.6.0 clause 5.1A"
+       "locator": "TS 26.517 V19.2.0 clause 5.1A"
       },
       {
        "case": "USD document media type application/3gpp-mbs-user-service-descriptions+json handled",
        "verdict": "implemented",
        "what": "The root part is parsed as a User Service Descriptions document whatever its declared type, and a bare pre-configured document is ingested under this media type; the type's version and profiles parameters are not inspected.",
        "repo": "rt-mbs-client",
-       "locator": "TS 26.517 V18.6.0 clause A.2.1"
+       "locator": "TS 26.517 V19.2.0 clause A.2.1"
       },
       {
        "case": "Version rule: higher version overwrites; absent version means the latest delivered document overwrites",
        "verdict": "implemented",
        "what": "A bundle with a version lower than the highest already merged is ignored, a bundle without a version always replaces matching services, and services are merged by shared service identifier.",
        "repo": "rt-mbs-client",
-       "locator": "TS 26.517 V18.6.0 clause 5.2.2, table 5.2.2-1, row version"
+       "locator": "TS 26.517 V19.2.0 clause 5.2.2, table 5.2.2-1, row version"
       },
       {
        "case": "User-Agent with product identifier MBSFClient and release suffix at MBS-5",
        "verdict": "absent",
        "what": "The MBS-5 requests set no User-Agent header.",
        "repo": "rt-mbs-client",
-       "locator": "TS 26.517 V18.6.0 clause 8.2.3.2.4"
+       "locator": "TS 26.517 V19.2.0 clause 8.2.3.2.4"
       },
       {
        "case": "No conditional revalidation before the indicated time-to-live",
        "verdict": "implemented",
        "what": "No conditional GET is ever sent, so a User Service Description is never revalidated before its time-to-live; it is not refreshed afterwards either.",
        "repo": "rt-mbs-client",
-       "locator": "TS 26.517 V18.6.0 clause 8.2.3.4"
+       "locator": "TS 26.517 V19.2.0 clause 8.2.3.4"
       },
       {
        "case": "HTTP version at MBS-5 chosen among those the MBS AF must offer",
        "verdict": "implemented",
        "what": "Each MBS-5 request is tried over cleartext HTTP/2 first and repeated over HTTP/1.1 if that fails, so an MBS AF offering only the mandatory HTTP/1.1 is reached.",
        "repo": "rt-mbs-client",
-       "locator": "TS 26.517 V18.6.0 clause 8.2.1.1"
+       "locator": "TS 26.517 V19.2.0 clause 8.2.1.1"
       }
      ],
      "exists": "A Retrieve request to user-service-descriptions/{externalServiceId} exists in the client but has no caller.",
@@ -2865,7 +2941,7 @@
       "No Accept-Encoding is sent and a gzip Content-Encoding on individual body parts is not decoded.",
       "The default MBS-5 API root is cleartext http; clause 8.2.1.1 says a client should prefer HTTPS where the option exists.",
       "The version used for the overwrite rule is tracked once for all bundles ingested, not per announcement source.",
-      "A retrieved User Service Description is never refreshed or revalidated. TS 26.517 V18.6.0 clause 8.2.3.4 obliges servers (ETag, Last-Modified, max-age, conditional requests) and only discourages early revalidation by clients (\"API clients should not attempt to revalidate their cached copy of a resource using a conditional GET request before the indicated time-to-live period has elapsed.\"); no sentence read obliges an MBSF Client to refresh, so this is a scope limit, not a verdict."
+      "A retrieved User Service Description is never refreshed or revalidated. TS 26.517 V19.2.0 clause 8.2.3.4 obliges servers (ETag, Last-Modified, max-age, conditional requests) and only discourages early revalidation by clients (\"API clients should not attempt to revalidate their cached copy of a resource using a conditional GET request before the indicated time-to-live period has elapsed.\"); no sentence read obliges an MBSF Client to refresh, so this is a scope limit, not a verdict."
      ]
     },
     {
@@ -2875,7 +2951,7 @@
      "component": "client",
      "spec": {
       "doc": "TS 26.502",
-      "version": "V18.6.0",
+      "version": "V19.5.0",
       "locator": "clause 5.5.2, step 12"
      },
      "repos": [
@@ -2921,35 +2997,35 @@
        "verdict": "implemented",
        "what": "Activation is refused unless the current time falls in a start/stop window or a repetition-rule occurrence of a schedule entry; a service with no schedule is not gated.",
        "repo": "rt-mbs-client",
-       "locator": "TS 26.517 V18.6.0 clause 5.2.7"
+       "locator": "TS 26.517 V19.2.0 clause 5.2.7"
       },
       {
        "case": "A schedule instance marked cancelled is not joined",
        "verdict": "implemented",
        "what": "A cancelled schedule instance never grants activation, even inside its own window.",
        "repo": "rt-mbs-client",
-       "locator": "TS 26.517 V18.6.0 clause 5.2.7, table 5.2.7-1, row cancelled"
+       "locator": "TS 26.517 V19.2.0 clause 5.2.7, table 5.2.7-1, row cancelled"
       },
       {
        "case": "A cancelled mark received for an ongoing instance terminates its procedures (reception, repair)",
        "verdict": "absent",
        "what": "An updated announcement marking an active instance cancelled only replaces the stored service; reception and repair already running are not stopped.",
        "repo": "rt-mbs-client",
-       "locator": "TS 26.517 V18.6.0 clause 5.2.7, table 5.2.7-1, row cancelled"
+       "locator": "TS 26.517 V19.2.0 clause 5.2.7, table 5.2.7-1, row cancelled"
       },
       {
        "case": "Schedule entry with the highest version takes priority",
        "verdict": "implemented",
        "what": "Among schedule entries with the same id, only the one with the highest version is considered.",
        "repo": "rt-mbs-client",
-       "locator": "TS 26.517 V18.6.0 clause 5.2.7"
+       "locator": "TS 26.517 V19.2.0 clause 5.2.7"
       },
       {
        "case": "Schedule takes precedence over SDP t/r lines",
        "verdict": "implemented",
        "what": "Only the schedule gates activation; the SDP t= line is parsed but not used for any decision.",
        "repo": "rt-mbs-client",
-       "locator": "TS 26.517 V18.6.0 clause 5.2.7"
+       "locator": "TS 26.517 V19.2.0 clause 5.2.7"
       }
      ],
      "noted": [
@@ -2966,7 +3042,7 @@
      "component": "client",
      "spec": {
       "doc": "TS 26.517",
-      "version": "V18.6.0",
+      "version": "V19.2.0",
       "locator": "clause 5.2.5"
      },
      "repos": [
@@ -3004,21 +3080,21 @@
        "verdict": "absent",
        "what": "No code reads a Packet Distribution Method Session Description; such sessions are refused before their SDP is read.",
        "repo": "rt-mbs-client",
-       "locator": "TS 26.517 V18.6.0 clause 12.4"
+       "locator": "TS 26.517 V19.2.0 clause 12.4"
       },
       {
        "case": "distributionMethod OBJECT routed to object (FLUTE) reception",
        "verdict": "implemented",
        "what": "A Distribution Session with distributionMethod OBJECT is received with FLUTE.",
        "repo": "rt-mbs-client",
-       "locator": "TS 26.517 V18.6.0 clause 12.4"
+       "locator": "TS 26.517 V19.2.0 clause 12.4"
       },
       {
        "case": "distributionMethod PACKET routed to packet reception",
        "verdict": "absent",
        "what": "A PACKET Distribution Session is refused with a warning; the packet reception class is an empty placeholder.",
        "repo": "rt-mbs-client",
-       "locator": "TS 26.517 V18.6.0 clause 12.4"
+       "locator": "TS 26.517 V19.2.0 clause 12.4"
       }
      ],
      "noted": [
@@ -3034,7 +3110,7 @@
      "component": "client",
      "spec": {
       "doc": "TS 26.517",
-      "version": "V18.6.0",
+      "version": "V19.2.0",
       "locator": "clause 6.2.4.1"
      },
      "repos": [
@@ -3107,7 +3183,7 @@
        "verdict": "implemented",
        "what": "The back-off is offsetTime plus a uniformly drawn fraction of randomTimePeriod, truncated to whole seconds.",
        "repo": "rt-mbs-client",
-       "locator": "TS 26.346 V18.2.0 clause 9.3.4.2"
+       "locator": "TS 26.346 V19.3.0 clause 9.3.4.2"
       },
       {
        "case": "No repair request before the back-off has elapsed",
@@ -3174,7 +3250,7 @@
       }
      ],
      "noted": [
-      "Repair is also started when a single object is closed during the session; TS 26.346 V18.2.0 clause 9.3.2 lets a client start on an end-of-object flag, while TS 26.517 clause 6.2.4.3 leaves in-session repair for future study.",
+      "Repair is also started when a single object is closed during the session; TS 26.346 V19.3.0 clause 9.3.2 lets a client start on an end-of-object flag, which TS 26.517 V19.2.0 clause 6.2.4.3 now specifies as in-session repair (judged at US-C09; it was for future study in V18.6.0).",
       "Clause 6.2.3.1 forbids repair with OBJECT_STREAMING; the USD gives the client no operating mode, and the client repairs whenever repair parameters are present.",
       "A running back-off is not reset when an updated announcement changes the repair parameters (TS 26.346 clause 9.3.4.4).",
       "objectRepairBaseLocator (Annex A.2 schema, scalar) and objectRepairBaseLocators (table 5.2.8-1, array) are both accepted, as string or array."
@@ -3187,7 +3263,7 @@
      "component": "client",
      "spec": {
       "doc": "TS 26.517",
-      "version": "V18.6.0",
+      "version": "V19.2.0",
       "locator": "clause 11.2.1"
      },
      "repos": [
@@ -3234,7 +3310,7 @@
        "verdict": "absent",
        "what": "No MSK request is sent, because the shipped client never creates its MBSSF client component; that component would post a TS 33.246 MSK request listing one Key Domain ID and MSK ID pair.",
        "repo": "rt-mbs-client",
-       "locator": "TS 33.246 V18.0.0 clause 6.3.2.2.1"
+       "locator": "TS 33.246 V19.0.0 clause 6.3.2.2.1"
       },
       {
        "case": "MSK delivered to the client (TS 33.246 clause 6.3.2.3.1) and used to enable reception",
@@ -3271,7 +3347,7 @@
      "component": "client",
      "spec": {
       "doc": "TS 26.502",
-      "version": "V18.6.0",
+      "version": "V19.5.0",
       "locator": "clause 5.2, step 12"
      },
      "repos": [
@@ -3283,21 +3359,21 @@
        "verdict": "implemented",
        "what": "Each complete object is stored under the path of its FDT Content-Location and served on the local API at that same path, with its content type.",
        "repo": "rt-mbs-client",
-       "locator": "TS 26.517 V18.6.0 clause 6.2.3.5"
+       "locator": "TS 26.517 V19.2.0 clause 6.2.3.5"
       },
       {
        "case": "Application Service Entry Point (e.g. DASH MPD) offered to the application",
        "verdict": "implemented",
        "what": "The service listing includes each Distribution Session's entryPointLocator and content type, and an entry point document delivered as an object is served at its path.",
        "repo": "rt-mbs-client",
-       "locator": "TS 26.517 V18.6.0 clause 5.1.1"
+       "locator": "TS 26.517 V19.2.0 clause 5.1.1"
       },
       {
        "case": "Unified DASH manifest used, keeping Representations available via unicast",
        "verdict": "differs",
        "what": "The served MPD drops every Representation for which no segment is held locally, so Representations meant for unicast retrieval disappear from the manifest the application receives.",
        "repo": "rt-mbs-client",
-       "locator": "TS 26.517 V18.6.0 clause 5.2.6A"
+       "locator": "TS 26.517 V19.2.0 clause 5.2.6A"
       },
       {
        "case": "Packet Distribution Method proxy mode: UDP payloads made available to the application",
@@ -3311,18 +3387,18 @@
        "verdict": "implemented",
        "what": "Only objects the FLUTE receiver reports complete, or that repair completes, are stored and served.",
        "repo": "rt-mbs-client",
-       "locator": "TS 26.517 V18.6.0 clause 6.2.3.5"
+       "locator": "TS 26.517 V19.2.0 clause 6.2.3.5"
       },
       {
        "case": "Object no longer served after its availability end time (Cache-Control@Expires)",
        "verdict": "implemented",
        "what": "Objects whose Cache-Control@Expires time has passed are dropped from the store whenever a new object is stored.",
        "repo": "rt-mbs-client",
-       "locator": "TS 26.517 V18.6.0 clause 6.2.3.5"
+       "locator": "TS 26.517 V19.2.0 clause 6.2.3.5"
       }
      ],
      "noted": [
-      "TS 26.502 V18.6.0 clause 4.4.1 defines MBS-6 and MBS-7 as APIs exposed by the MBSF Client and MBSTF Client, but neither TS 26.502 nor TS 26.517 V18.6.0 specifies these APIs; the local HTTP API (/services, /services/activate, /services/deactivate, /content/...) is this project's own, judged here only against the procedure steps.",
+      "TS 26.502 V19.5.0 clause 4.4.1 defines MBS-6 and MBS-7 as APIs exposed by the MBSF Client and MBSTF Client, but neither TS 26.502 nor TS 26.517 V19.2.0 specifies these APIs; the local HTTP API (/services, /services/activate, /services/deactivate, /content/...) is this project's own, judged here only against the procedure steps.",
       "MPD rewriting (no TS 26.502 or TS 26.517 clause governs it): when serving a .mpd, the client rebuilds each $Number$ SegmentTimeline from the segments it holds, extends a uniform-duration timeline past its last entry over held segments, advertises the newest contiguous run of at least min_run_segments (default 3) or else the longest, and sets startNumber to match; the code cites ISO/IEC 23009-1 clause 5.3.9.5.3 for this.",
       "Objects are evicted least-recently-used once the store exceeds max_stored_objects (default 500), an operator setting with no clause behind it.",
       "Project extensions outside MBS-7: PUT /content/... stores a body as if received, and x-5gmag-reception-config / x-5gmag-ue-pre-configuration read and change client settings.",
@@ -3336,7 +3412,7 @@
      "component": "client",
      "spec": {
       "doc": "TS 26.517",
-      "version": "V18.6.0",
+      "version": "V19.2.0",
       "locator": "clause 12.3"
      },
      "repos": [
@@ -3380,7 +3456,7 @@
      "component": "client",
      "spec": {
       "doc": "TS 26.502",
-      "version": "V18.6.0",
+      "version": "V19.5.0",
       "locator": "clause 4.3.5"
      },
      "repos": [
@@ -3426,6 +3502,105 @@
      "noted": [
       "AL-FEC (bullet 'Using AL-FEC to recover packets or objects'): the client passes each FLUTE session to rt-libflute, which takes the FEC scheme from each object's FEC OTI; the client itself only parses a=FEC-redundancy-level, without using it. Left out as resting on rt-libflute."
      ]
+    },
+    {
+     "id": "US-C09-client",
+     "name": "In-session Object Repair (MBS-4-UC, Release 19)",
+     "release": "US18",
+     "component": "client",
+     "spec": {
+      "doc": "TS 26.517",
+      "version": "V19.2.0",
+      "locator": "clause 10.3.3"
+     },
+     "repos": [
+      "rt-mbs-client"
+     ],
+     "cases": [
+      {
+       "case": "In-session repair parameters taken from inSessionObjectRepairParameters (table 10.3.2-1)",
+       "verdict": "absent",
+       "what": "Only postSessionObjectRepairParameters is parsed; inSessionObjectRepairParameters and its repairLimitPercentage are not read, so in-session repair is never configured as such.",
+       "repo": "rt-mbs-client",
+       "locator": "clause 10.3.2"
+      },
+      {
+       "case": "Non-completion declared once no more packets will be received for an object (clause 6.2.4.3.4)",
+       "verdict": "differs",
+       "what": "An incomplete object is passed to repair when a Close Object signal arrives for it, and otherwise only when the whole session closes; an expired FDT Instance and the sequential-sending rules are not used to declare non-completion during the session.",
+       "repo": "rt-mbs-client",
+       "locator": "clause 6.2.4.3.4"
+      },
+      {
+       "case": "No repair request before repairStartTime (File@RepairStart, else first packet plus offsetTime, else FDT expiry; plus RandomTime)",
+       "verdict": "differs",
+       "what": "The wait before repair is the post-session back-off, offsetTime plus a random time counted from the close signal; File@RepairStart and the reception time of the first packet are not used.",
+       "repo": "rt-mbs-client",
+       "locator": "clause 6.2.4.3.2"
+      },
+      {
+       "case": "At most repairLimitPercentage repairs over the last 100 objects",
+       "verdict": "absent",
+       "what": "Every incomplete object is repaired; no count of repairs over recent objects is kept.",
+       "repo": "rt-mbs-client",
+       "locator": "clause 6.2.4.3.3, step 2"
+      },
+      {
+       "case": "Repair base URL selected randomly from the object repair base locators",
+       "verdict": "implemented",
+       "what": "A repair base URL is drawn uniformly at random from the announced list for each object to be repaired.",
+       "repo": "rt-mbs-client",
+       "locator": "clause 6.2.4.3.3, step 3"
+      },
+      {
+       "case": "Repair requests for one object in a single HTTP session",
+       "verdict": "differs",
+       "what": "Each byte range is requested in its own GET on its own HTTP client handle, so an object needing several ranges is repaired over several HTTP sessions.",
+       "repo": "rt-mbs-client",
+       "locator": "clause 6.2.4.3.5"
+      }
+     ],
+     "noted": [
+      "The range request pattern, the If-Match header and the recovery of the object are the same code as for post-session repair and are judged once, under post-session Object Repair."
+     ]
+    },
+    {
+     "id": "US-C10-client",
+     "name": "Time synchronization with the 5G System (Release 19)",
+     "release": "US18",
+     "component": "client",
+     "spec": {
+      "doc": "TS 26.502",
+      "version": "V19.5.0",
+      "locator": "clause 4.3.5"
+     },
+     "repos": [
+      "rt-mbs-client"
+     ],
+     "cases": [
+      {
+       "case": "timeSynchronizationParameters read from the Distribution Session Description",
+       "verdict": "absent",
+       "what": "The Distribution Session Description model has no Time Synchronization Parameters; the property is not parsed.",
+       "repo": "rt-mbs-client",
+       "locator": "clause 5.2.4, table 5.2.4-1, row timeSynchronizationParameters"
+      },
+      {
+       "case": "Clock synchronised from NR SIB9 when the network transmits it",
+       "verdict": "absent",
+       "what": "The client neither obtains SIB9 time information nor adjusts any clock from it.",
+       "locator": "clause 4.2.7, item 1"
+      },
+      {
+       "case": "Clock synchronised from an MBS AS time service endpoint",
+       "verdict": "absent",
+       "what": "No time service endpoint is queried; the client uses the host clock as it is.",
+       "locator": "clause 4.2.7, item 2"
+      }
+     ],
+     "noted": [
+      "Whether the host clock is itself synchronised (for example by the operating system) is outside the client and was not examined."
+     ]
     }
    ]
   },
@@ -3440,7 +3615,7 @@
      "component": "app",
      "spec": {
       "doc": "TS 26.502",
-      "version": "V18.6.0",
+      "version": "V19.5.0",
       "locator": "clause 5.5.2, step 11"
      },
      "repos": [
@@ -3452,46 +3627,46 @@
        "verdict": "implemented",
        "what": "The Play link calls the MBS Client's activate operation with the first external service identifier of the chosen service.",
        "repo": "rt-mbs-application",
-       "locator": "TS 26.502 V18.6.0 clause 5.5.2, step 11"
+       "locator": "TS 26.502 V19.5.0 clause 5.5.2, step 11"
       },
       {
        "case": "Activation passing a full MBS User Service Announcement (MBS-8 route)",
        "verdict": "absent",
        "what": "The dashboard has no way to receive an announcement from the Application Provider or to pass one to the MBS Client.",
        "repo": "rt-mbs-application",
-       "locator": "TS 26.502 V18.6.0 clause 5.5.2, step 11"
+       "locator": "TS 26.502 V19.5.0 clause 5.5.2, step 11"
       },
       {
        "case": "Deactivation by external service identifier (MBS-6)",
        "verdict": "implemented",
        "what": "The Deactivate link calls the MBS Client's deactivate operation with the service's first external service identifier.",
        "repo": "rt-mbs-application",
-       "locator": "TS 26.502 V18.6.0 clause 5.5.3, step 14"
+       "locator": "TS 26.502 V19.5.0 clause 5.5.3, step 14"
       },
       {
        "case": "Application-facing parameters (service class, names) shown from the announcement",
        "verdict": "implemented",
        "what": "Each announced service is shown with its names, service class, language, distribution method, session count and entry point, as listed by the MBS Client.",
        "repo": "rt-mbs-application",
-       "locator": "TS 26.502 V18.6.0 clause 4.5.1, step 7"
+       "locator": "TS 26.502 V19.5.0 clause 4.5.1, step 7"
       },
       {
        "case": "Selection of an announced service",
        "verdict": "implemented",
        "what": "The user picks a service from the list the MBS Client reports, and that choice drives the activation call.",
        "repo": "rt-mbs-application",
-       "locator": "TS 26.502 V18.6.0 clause 4.5.1, step 8"
+       "locator": "TS 26.502 V19.5.0 clause 4.5.1, step 8"
       },
       {
        "case": "Receives data from the MBSTF Client (MBS-7) as an MBS Application Data Session",
        "verdict": "implemented",
        "what": "Received objects are fetched from the MBS Client's content endpoint and passed to a DASH or HLS player; the object cache is also listed.",
        "repo": "rt-mbs-application",
-       "locator": "TS 26.502 V18.6.0 clause 4.5.1, step 9"
+       "locator": "TS 26.502 V19.5.0 clause 4.5.1, step 9"
       }
      ],
      "noted": [
-      "MBS-6 and MBS-7 have no specified API: TS 26.502 V18.6.0 clause 4.3.6 says the MBS-Aware Application 'is not defined within the present document', and TS 26.517 V18.6.0 defines APIs only at MBS-1, MBS-5 and the internal MBS7' (User Service Description retrieval). The calls checked here are the MBS Client's own local API, so verdicts cover only whether the step is done, not its form.",
+      "MBS-6 and MBS-7 have no specified API: TS 26.502 V19.5.0 clause 4.3.6 says the MBS-Aware Application 'is not defined within the present document', and TS 26.517 V19.2.0 defines APIs only at MBS-1, MBS-5 and the internal MBS7' (User Service Description retrieval). The calls checked here are the MBS Client's own local API, so verdicts cover only whether the step is done, not its form.",
       "Activation and deactivation are sent as GET requests that change state; no clause governs the method because MBS-6 is unspecified.",
       "Before handing a DASH MPD to the player, the dashboard removes Representations whose initialisation segment is not in the client's cache. No clause governs this.",
       "The dashboard can ask the MBS Client for services of a given service class, and shows the last received User Service Descriptions bundle."
@@ -3511,7 +3686,7 @@
      "component": "core",
      "spec": {
       "doc": "TS 29.532",
-      "version": "V18.6.0",
+      "version": "V19.3.0",
       "locator": "clause 5.2.2.2.1 step 2a; Table 6.1.3.2.3.1-3; TS29532_Nmbsmf_TMGI.yaml, POST /tmgi"
      },
      "repos": [
@@ -3573,7 +3748,7 @@
      "component": "core",
      "spec": {
       "doc": "TS 29.532",
-      "version": "V18.6.0",
+      "version": "V19.3.0",
       "locator": "clause 5.2.2.3.1 steps 1 and 2a; Table 6.1.3.2.3.2-1 and -3; TS29532_Nmbsmf_TMGI.yaml, DELETE /tmgi"
      },
      "repos": [
@@ -3614,7 +3789,7 @@
      "component": "consumers",
      "spec": {
       "doc": "TS 29.532",
-      "version": "V18.6.0",
+      "version": "V19.3.0",
       "locator": "clause 5.2.2.2.1 and clause 5.2.2.3.1; TS29532_Nmbsmf_TMGI.yaml"
      },
      "repos": [
@@ -3667,7 +3842,7 @@
      "component": "core",
      "spec": {
       "doc": "TS 29.532",
-      "version": "V18.6.0",
+      "version": "V19.3.0",
       "locator": "clause 5.3.2.2.1 steps 1 and 2a; Table 6.2.3.2.3.1-3; TS29532_Nmbsmf_MBSSession.yaml, POST /mbs-sessions"
      },
      "repos": [
@@ -3700,7 +3875,7 @@
        "verdict": "differs",
        "what": "A multicast session identified by an SSM must also carry an existing TMGI or tmgiAllocReq, and is otherwise answered 400; TS 23.247 has the MB-SMF allocate a TMGI whenever an SSM is the MBS Session ID.",
        "repo": "open5gs",
-       "locator": "TS 23.247 V18.8.0 clause 7.1.1.2 step 11"
+       "locator": "TS 23.247 V19.3.0 clause 7.1.1.2 step 11"
       },
       {
        "case": "ingressTunAddrReq: MB-UPF ingress tunnel returned",
@@ -3720,7 +3895,7 @@
        "case": "MBS FSA IDs selected from local configuration when none received",
        "verdict": "absent",
        "what": "No MBS FSA ID configuration exists; a broadcast session created without FSA IDs has none.",
-       "locator": "TS 23.247 V18.8.0 clause 7.1.1.2 step 11"
+       "locator": "TS 23.247 V19.3.0 clause 7.1.1.2 step 11"
       },
       {
        "case": "MBS service area: TAI list",
@@ -3775,7 +3950,7 @@
        "verdict": "implemented",
        "what": "Takes the 5QI of each media component in mbsServInfo as one MBS QoS flow, with a single 5QI 9 flow when none is given.",
        "repo": "open5gs",
-       "locator": "TS 23.247 V18.8.0 clause 7.1.1.2 step 13"
+       "locator": "TS 23.247 V19.3.0 clause 7.1.1.2 step 13"
       },
       {
        "case": "Multicast session activity status",
@@ -3799,7 +3974,7 @@
        "case": "NRF profile updated with the SSM MBS Session ID",
        "verdict": "absent",
        "what": "The MB-SMF profile at the NRF is not updated when an SSM is the MBS Session ID.",
-       "locator": "TS 23.247 V18.8.0 clause 7.1.1.2 step 16a"
+       "locator": "TS 23.247 V19.3.0 clause 7.1.1.2 step 16a"
       }
      ],
      "noted": [
@@ -3823,7 +3998,7 @@
      "component": "core",
      "spec": {
       "doc": "TS 29.532",
-      "version": "V18.6.0",
+      "version": "V19.3.0",
       "locator": "clause 5.3.2.3.1 steps 1, 2a and 2b; TS29532_Nmbsmf_MBSSession.yaml, PATCH /mbs-sessions/{mbsSessionRef}"
      },
      "repos": [
@@ -3918,8 +4093,8 @@
      "component": "core",
      "spec": {
       "doc": "TS 29.532",
-      "version": "V18.6.0",
-      "locator": "clause 5.3.2.4.1 steps 1 and 2a; TS 23.247 V18.8.0 clause 7.3.2 step 3; TS29532_Nmbsmf_MBSSession.yaml, DELETE /mbs-sessions/{mbsSessionRef}"
+      "version": "V19.3.0",
+      "locator": "clause 5.3.2.4.1 steps 1 and 2a; TS 23.247 V19.3.0 clause 7.3.2 step 3; TS29532_Nmbsmf_MBSSession.yaml, DELETE /mbs-sessions/{mbsSessionRef}"
      },
      "repos": [
       "open5gs"
@@ -3942,7 +4117,7 @@
        "verdict": "implemented",
        "what": "For a session that has an AMF context, sends DELETE on the stored mbsContextRef to the AMF.",
        "repo": "open5gs",
-       "locator": "TS 23.247 V18.8.0 clause 7.3.2 step 3"
+       "locator": "TS 23.247 V19.3.0 clause 7.3.2 step 3"
       }
      ],
      "noted": [
@@ -3957,8 +4132,8 @@
      "component": "core",
      "spec": {
       "doc": "TS 29.532",
-      "version": "V18.6.0",
-      "locator": "clauses 5.3.2.6, 5.3.2.7 and 5.3.2.8; TS 23.247 V18.8.0 clause 7.3.5; TS29532_Nmbsmf_MBSSession.yaml, /mbs-sessions/subscriptions"
+      "version": "V19.3.0",
+      "locator": "clauses 5.3.2.6, 5.3.2.7 and 5.3.2.8; TS 23.247 V19.3.0 clause 7.3.5; TS29532_Nmbsmf_MBSSession.yaml, /mbs-sessions/subscriptions"
      },
      "repos": [
       "open5gs"
@@ -3986,7 +4161,7 @@
        "case": "StatusNotify: broadcast delivery status (STARTED, TERMINATED)",
        "verdict": "absent",
        "what": "The MB-SMF sends no notification when a broadcast session starts or ends.",
-       "locator": "TS 23.247 V18.8.0 clause 7.3.1 steps 8a-8b"
+       "locator": "TS 23.247 V19.3.0 clause 7.3.1 steps 8a-8b"
       },
       {
        "case": "StatusNotify: ingress tunnel added or changed",
@@ -4005,7 +4180,7 @@
      "component": "core",
      "spec": {
       "doc": "TS 29.532",
-      "version": "V18.6.0",
+      "version": "V19.3.0",
       "locator": "clause 6.2.8, Table 6.2.8-1"
      },
      "repos": [
@@ -4039,7 +4214,7 @@
      "component": "core",
      "spec": {
       "doc": "TS 29.244",
-      "version": "V18.10.0",
+      "version": "V19.6.0",
       "locator": "clause 5.34.2.2; clause 5.34.2.1A; clause 7.5.2.5"
      },
      "repos": [
@@ -4133,7 +4308,7 @@
      "component": "core",
      "spec": {
       "doc": "TS 29.244",
-      "version": "V18.10.0",
+      "version": "V19.6.0",
       "locator": "clause 5.34.2.2; clause 5.34.2.1A; clause 8.2.209; clause 8.2.216"
      },
      "repos": [
@@ -4170,7 +4345,7 @@
       {
        "case": "IQFISN: insert the DL MBS QFI Sequence Number",
        "verdict": "absent",
-       "what": "No DL MBS QFI Sequence Number is ever inserted in the PDU Session Container.",
+       "what": "No DL MBS QFI Sequence Number is ever inserted in the GTP-U PDU Session Container extension header.",
        "locator": "clause 8.2.216, octet 5 bit 1"
       },
       {
@@ -4193,8 +4368,8 @@
      "component": "core",
      "spec": {
       "doc": "TS 29.244",
-      "version": "V18.10.0",
-      "locator": "clause 5.34.2.2; clause 5.34.2.1A; TS 23.247 V18.8.0 clause 7.3.1 step 8"
+      "version": "V19.6.0",
+      "locator": "clause 5.34.2.2; clause 5.34.2.1A; TS 23.247 V19.3.0 clause 7.3.1 step 8"
      },
      "repos": [
       "open5gs"
@@ -4214,7 +4389,7 @@
        "case": "Shared tunnel established towards the NG-RAN DL endpoint",
        "verdict": "absent",
        "what": "N3mb uses multicast transport only.",
-       "locator": "TS 23.247 V18.8.0 clause 7.3.1 step 8"
+       "locator": "TS 23.247 V19.3.0 clause 7.3.1 step 8"
       }
      ],
      "exists": "The PFCP library already encodes and decodes the Add MBS Unicast Parameters IE and the MBSU flag.",
@@ -4224,7 +4399,7 @@
   },
   {
    "name": "Broadcast session start, update and release towards NG-RAN",
-   "summary": "For a broadcast session the MB-SMF creates and releases an AMF broadcast context carrying the N2 SM information it builds (lower-layer SSM, C-TEID, QoS flows, FSA IDs), and the AMF sends Broadcast Session Setup, Modification and Release Requests and answers after the first NG-RAN response; the AMF sends to every connected gNB, can send cells the request never named, never reports completion in its first response, does not identify the NG-RAN in notifications, and does not handle Broadcast Session Release Response, Release Required or Transport, while the MB-SMF never sends ContextUpdate and ignores the N3mb tunnel information returned.",
+   "summary": "For a broadcast session the MB-SMF creates and releases an AMF broadcast context carrying the N2 SM information it builds (lower-layer SSM, C-TEID, QoS flows, FSA IDs), and the AMF sends Broadcast Session Setup, Modification and Release Requests and answers after the first NG-RAN response; the AMF sends to every connected gNB, can send cells the request never named, never reports completion in its first response, does not identify the NG-RAN in notifications, and does not handle Broadcast Session Release Response, Release Required or Transport, while the MB-SMF never sends ContextUpdate and ignores the N3mb tunnel information returned. The Release 19 NR NTN intended service area is neither carried by the MB-SMF nor sent by the AMF.",
    "mode": "broadcast",
    "requirements": [
     {
@@ -4234,8 +4409,8 @@
      "component": "core",
      "spec": {
       "doc": "TS 23.247",
-      "version": "V18.8.0",
-      "locator": "clause 7.3.1 steps 2, 7, 8 and 11; clause 7.3.3 step 2; TS 29.518 V18.15.0 clause 5.6.2.2 step 1"
+      "version": "V19.3.0",
+      "locator": "clause 7.3.1 steps 2, 7, 8 and 11; clause 7.3.3 step 2; TS 29.518 V19.8.0 clause 5.6.2.2 step 1"
      },
      "repos": [
       "open5gs"
@@ -4253,7 +4428,7 @@
        "verdict": "implemented",
        "what": "Sends the TMGI, the requested TAIs and cells as mbsServiceArea (or as mbsServiceAreaInfoList with the Area Session ID for a location dependent session), the N2 SM information as a multipart NGAP part, its own notification URI and the first configured S-NSSAI.",
        "repo": "open5gs",
-       "locator": "TS 29.518 V18.15.0 clause 5.6.2.2 step 1"
+       "locator": "TS 29.518 V19.8.0 clause 5.6.2.2 step 1"
       },
       {
        "case": "mbsContextRef taken from the 201 Location header",
@@ -4272,7 +4447,7 @@
        "verdict": "implemented",
        "what": "Accepts the notification on its callback URI, finds the session by TMGI and answers 204 No Content; the content is only logged.",
        "repo": "open5gs",
-       "locator": "TS 29.518 V18.15.0 clause 5.6.2.5 step 2a"
+       "locator": "TS 29.518 V19.8.0 clause 5.6.2.5 step 2a"
       },
       {
        "case": "ContextUpdate on MBS Session Update for broadcast",
@@ -4284,7 +4459,14 @@
        "case": "Associated Session ID in ContextCreate",
        "verdict": "absent",
        "what": "The request model has no associatedSessionId.",
-       "locator": "TS 23.247 V18.8.0 clause 7.3.1a, step 2"
+       "locator": "TS 23.247 V19.3.0 clause 7.3.1a, step 2"
+      },
+      {
+       "case": "NR NTN Intended Service Area forwarded to the AMF in the MBS service area (Release 19)",
+       "verdict": "absent",
+       "what": "The MB-SMF's MBS service area model holds only cell and TAI lists, so no NR NTN Intended Service Area can be received or forwarded.",
+       "repo": "open5gs",
+       "locator": "clause 7.3.1, step 2"
       }
      ],
      "noted": [
@@ -4300,8 +4482,8 @@
      "component": "core",
      "spec": {
       "doc": "TS 29.518",
-      "version": "V18.15.0",
-      "locator": "clause 5.6.2.2 step 1; TS 38.413 V18.11.0 clause 9.3.5.3"
+      "version": "V19.8.0",
+      "locator": "clause 5.6.2.2 step 1; TS 38.413 V19.4.0 clause 9.3.5.3"
      },
      "repos": [
       "open5gs"
@@ -4312,7 +4494,7 @@
        "verdict": "implemented",
        "what": "Carries the lower-layer multicast and source addresses returned by the MB-UPF, and a C-TEID, as Shared NG-U Multicast TNL Information; the value of the C-TEID is judged under SYS-N01, where it is found byte-reversed.",
        "repo": "open5gs",
-       "locator": "TS 23.247 V18.8.0 clause 7.3.1 step 4"
+       "locator": "TS 23.247 V19.3.0 clause 7.3.1 step 4"
       },
       {
        "case": "MBS QoS Flows To Be Setup List",
@@ -4325,13 +4507,13 @@
        "verdict": "implemented",
        "what": "Sent when FSA IDs were received, at most 64, and left out otherwise.",
        "repo": "open5gs",
-       "locator": "TS 38.413 V18.11.0 clause 8.17.1.2"
+       "locator": "TS 38.413 V19.4.0 clause 8.17.1.2"
       },
       {
        "case": "NR RedCap UE information (Supported UE Type List)",
        "verdict": "absent",
        "what": "The transfer is encoded with the Release 17 ASN.1, which has no such IE.",
-       "locator": "TS 23.247 V18.8.0 clause 7.3.1 step 2"
+       "locator": "TS 23.247 V19.3.0 clause 7.3.1 step 2"
       }
      ],
      "noted": [
@@ -4345,7 +4527,7 @@
      "component": "core",
      "spec": {
       "doc": "TS 29.518",
-      "version": "V18.15.0",
+      "version": "V19.8.0",
       "locator": "clause 5.6.2.2 steps 1, 2a and 2b; TS29518_Namf_MBSBroadcast.yaml, POST /mbs-contexts"
      },
      "repos": [
@@ -4370,7 +4552,7 @@
        "verdict": "differs",
        "what": "Sends the request to every connected gNB, whatever its tracking areas or MBS support.",
        "repo": "open5gs",
-       "locator": "TS 23.247 V18.8.0 clause 7.3.1 step 3"
+       "locator": "TS 23.247 V19.3.0 clause 7.3.1 step 3"
       },
       {
        "case": "201 Created with Location and MBS session identifier after the first successful NG-RAN response",
@@ -4397,7 +4579,7 @@
        "verdict": "differs",
        "what": "The first BROADCAST SESSION SETUP FAILURE is answered to the MB-SMF as 500, even when other gNBs have not yet answered.",
        "repo": "open5gs",
-       "locator": "TS 23.247 V18.8.0 clause 7.3.1 step 7"
+       "locator": "TS 23.247 V19.3.0 clause 7.3.1 step 7"
       },
       {
        "case": "Incompletion reported when maxResponseTime elapses",
@@ -4419,7 +4601,7 @@
      "component": "core",
      "spec": {
       "doc": "TS 29.518",
-      "version": "V18.15.0",
+      "version": "V19.8.0",
       "locator": "clauses 5.6.2.3 and 5.6.2.4; TS29518_Namf_MBSBroadcast.yaml, POST /mbs-contexts/{mbsContextRef}/update and DELETE /mbs-contexts/{mbsContextRef}"
      },
      "repos": [
@@ -4477,7 +4659,7 @@
      "component": "core",
      "spec": {
       "doc": "TS 29.518",
-      "version": "V18.15.0",
+      "version": "V19.8.0",
       "locator": "clause 5.6.2.5 step 1; TS29518_Namf_MBSBroadcast.yaml, callback contextStatusNotification"
      },
      "repos": [
@@ -4525,7 +4707,7 @@
      "component": "core",
      "spec": {
       "doc": "TS 38.413",
-      "version": "V18.11.0",
+      "version": "V19.4.0",
       "locator": "clauses 8.17.1 to 8.17.5; clauses 9.2.16.1 to 9.2.16.12"
      },
      "repos": [
@@ -4544,6 +4726,13 @@
        "what": "When the request names only TAIs, the cell list is filled with a cell identity made from each connected gNB identifier; when it names no TAI, the TAIs of the connected gNBs are used.",
        "repo": "open5gs",
        "locator": "clause 8.17.1.2"
+      },
+      {
+       "case": "MBS Intended Service Area List sent to NG-RAN (Release 19, NR NTN)",
+       "verdict": "absent",
+       "what": "The NGAP codec of the AMF is generated from the Release 17 ASN.1, whose MBS Service Area Information has only the cell and TAI lists, so no intended service area can be sent.",
+       "repo": "open5gs",
+       "locator": "clause 7.3.1, step 3"
       },
       {
        "case": "Associated Session ID",
@@ -4607,7 +4796,7 @@
      "component": "core",
      "spec": {
       "doc": "TS 23.247",
-      "version": "V18.8.0",
+      "version": "V19.3.0",
       "locator": "clauses 7.2.1.3 and 7.2.2.2"
      },
      "repos": [
@@ -4648,7 +4837,7 @@
      "component": "core",
      "spec": {
       "doc": "TS 29.532",
-      "version": "V18.6.0",
+      "version": "V19.3.0",
       "locator": "clauses 5.3.2.5, 5.3.2.9, 5.3.2.10 and 5.3.2.11; TS29532_Nmbsmf_MBSSession.yaml, /mbs-sessions/contexts/update and /mbs-sessions/contexts/subscriptions"
      },
      "repos": [
@@ -4694,7 +4883,7 @@
      "component": "core",
      "spec": {
       "doc": "TS 38.413",
-      "version": "V18.11.0",
+      "version": "V19.4.0",
       "locator": "clauses 8.18.1 and 8.18.2"
      },
      "repos": [
@@ -4730,8 +4919,8 @@
      "component": "core",
      "spec": {
       "doc": "TS 29.518",
-      "version": "V18.15.0",
-      "locator": "clauses 5.7.2.2 and 5.7.2.3; TS29518_Namf_MBSCommunication.yaml, POST /n2-messages/transfer; TS 23.247 V18.8.0 clauses 7.2.5 and 7.2.6; TS 38.413 V18.11.0 clauses 8.18.3 to 8.18.5"
+      "version": "V19.8.0",
+      "locator": "clauses 5.7.2.2 and 5.7.2.3; TS29518_Namf_MBSCommunication.yaml, POST /n2-messages/transfer; TS 23.247 V19.3.0 clauses 7.2.5 and 7.2.6; TS 38.413 V19.4.0 clauses 8.18.3 to 8.18.5"
      },
      "repos": [
       "open5gs"
@@ -4741,7 +4930,7 @@
        "case": "MB-SMF invokes Namf_MBSCommunication N2MessageTransfer",
        "verdict": "absent",
        "what": "The MB-SMF never calls Namf_MBSCommunication.",
-       "locator": "TS 23.247 V18.8.0 clause 7.2.5.2 step 11"
+       "locator": "TS 23.247 V19.3.0 clause 7.2.5.2 step 11"
       },
       {
        "case": "AMF: N2MessageTransfer request handling",
@@ -4768,7 +4957,7 @@
        "verdict": "implemented",
        "what": "Each is encoded with the MBS Session ID and its transfer, and the update with the MBS Area Session ID when one is given.",
        "repo": "open5gs",
-       "locator": "TS 38.413 V18.11.0 clause 8.18.3.2"
+       "locator": "TS 38.413 V19.4.0 clause 8.18.3.2"
       },
       {
        "case": "NGAP multicast session responses and failures",
@@ -4780,7 +4969,7 @@
        "case": "MB-SMF: activation and deactivation over N4mb",
        "verdict": "absent",
        "what": "No N4mb Session Modification changes the FAR on activation or deactivation.",
-       "locator": "TS 29.244 V18.10.0 clause 5.34.2.4"
+       "locator": "TS 29.244 V19.6.0 clause 5.34.2.4"
       }
      ],
      "noted": [
@@ -4801,7 +4990,7 @@
      "component": "consumers",
      "spec": {
       "doc": "TS 29.532",
-      "version": "V18.6.0",
+      "version": "V19.3.0",
       "locator": "clauses 5.3.2.2 to 5.3.2.8; TS29532_Nmbsmf_MBSSession.yaml"
      },
      "repos": [
@@ -4896,7 +5085,7 @@
      "component": "mbsf",
      "spec": {
       "doc": "TS 23.247",
-      "version": "V18.8.0",
+      "version": "V19.3.0",
       "locator": "clause 7.1.1.2 steps 11 and 20; clause 7.3.5 step 1"
      },
      "repos": [
@@ -4944,7 +5133,7 @@
   },
   {
    "name": "NGAP broadcast session management at the gNB",
-   "summary": "The gNB-CU-CP answers Broadcast Session Setup, Modification and Release from the AMF, drives the E1AP and F1AP procedures behind each, and returns its own N3mb endpoint; it does not use the MBS service area or the MBS FSA IDs to choose cells, does not act on the Release 18 Supported UE Type List or Associated Session ID, does not answer a Release for an unknown session, never initiates Broadcast Session Release Required, and has the Release 18 Broadcast Session Transport procedure coded but never started.",
+   "summary": "The gNB-CU-CP answers Broadcast Session Setup, Modification and Release from the AMF, drives the E1AP and F1AP procedures behind each, and returns its own N3mb endpoint; it does not use the MBS service area or the MBS FSA IDs to choose cells, does not act on the Release 18 Supported UE Type List or Associated Session ID, does not answer a Release for an unknown session, never initiates Broadcast Session Release Required, and has the Release 18 Broadcast Session Transport procedure coded but never started. The Release 19 MBS intended service area for NTN operation is not decoded.",
    "mode": "broadcast",
    "requirements": [
     {
@@ -4954,7 +5143,7 @@
      "component": "gnb",
      "spec": {
       "doc": "TS 38.413",
-      "version": "V18.11.0",
+      "version": "V19.4.0",
       "locator": "clause 8.17.1.2"
      },
      "repos": [
@@ -4984,6 +5173,13 @@
        "case": "MBS Service Area taken into account",
        "verdict": "differs",
        "what": "The service area is decoded and copied into the F1AP Broadcast Context Setup Request, but no part of the gNB uses it to choose cells: the DU serves the first of its own cells named in the CU-to-DU cell list; the clause requires the area to be taken into account as TS 23.247 specifies.",
+       "repo": "srsRAN_Project_mbs",
+       "locator": "clause 8.17.1.2"
+      },
+      {
+       "case": "MBS Intended Service Area List taken into account for NTN operation (Release 19)",
+       "verdict": "absent",
+       "what": "The NGAP codec has no MBS Intended Service Area List in MBS Service Area Information, so the list is not decoded, and the gNB has no NTN operation.",
        "repo": "srsRAN_Project_mbs",
        "locator": "clause 8.17.1.2"
       },
@@ -5028,7 +5224,7 @@
      "component": "gnb",
      "spec": {
       "doc": "TS 38.413",
-      "version": "V18.11.0",
+      "version": "V19.4.0",
       "locator": "clause 8.17.2.2"
      },
      "repos": [
@@ -5045,6 +5241,13 @@
        "case": "Update the MBS service area",
        "verdict": "differs",
        "what": "A new MBS service area is forwarded to the DU in the F1AP Broadcast Context Modification Request, but the DU does not read it, so the area served does not change.",
+       "repo": "srsRAN_Project_mbs",
+       "locator": "clause 8.17.2.2"
+      },
+      {
+       "case": "Intended service area information updated for NTN operation (if supported, Release 19)",
+       "verdict": "absent",
+       "what": "The intended service area is not decoded and the gNB has no NTN operation, so nothing is updated.",
        "repo": "srsRAN_Project_mbs",
        "locator": "clause 8.17.2.2"
       },
@@ -5072,7 +5275,7 @@
      "component": "gnb",
      "spec": {
       "doc": "TS 38.413",
-      "version": "V18.11.0",
+      "version": "V19.4.0",
       "locator": "clause 8.17.3.2"
      },
      "repos": [
@@ -5107,7 +5310,7 @@
      "component": "gnb",
      "spec": {
       "doc": "TS 38.413",
-      "version": "V18.11.0",
+      "version": "V19.4.0",
       "locator": "clause 8.17.4.2"
      },
      "repos": [
@@ -5129,7 +5332,7 @@
      "component": "gnb",
      "spec": {
       "doc": "TS 38.413",
-      "version": "V18.11.0",
+      "version": "V19.4.0",
       "locator": "clause 8.17.5.2"
      },
      "repos": [
@@ -5159,7 +5362,7 @@
      "component": "gnb",
      "spec": {
       "doc": "TS 38.413",
-      "version": "V18.11.0",
+      "version": "V19.4.0",
       "locator": "clause 9.3.2.16"
      },
      "repos": [
@@ -5197,7 +5400,7 @@
      "component": "gnb",
      "spec": {
       "doc": "TS 38.323",
-      "version": "V18.5.0",
+      "version": "V19.1.0",
       "locator": "clause 5.8"
      },
      "repos": [
@@ -5215,7 +5418,7 @@
        "verdict": "implemented",
        "what": "The CU-CP requests an 18-bit DL SN and t-Reordering ms0 for every MRB, and the PDCP configuration it sends in MRB-PDCP-ConfigBroadcast-r17 leaves both fields absent so the same defaults apply at the UE.",
        "repo": "srsRAN_Project_mbs",
-       "locator": "TS 38.331 V18.11.0, clause 9.1.1.7"
+       "locator": "TS 38.331 V19.4.0, clause 9.1.1.7"
       }
      ],
      "noted": []
@@ -5234,7 +5437,7 @@
      "component": "gnb",
      "spec": {
       "doc": "TS 38.473",
-      "version": "V18.11.0",
+      "version": "V19.4.0",
       "locator": "clause 8.14.1.2"
      },
      "repos": [
@@ -5313,7 +5516,7 @@
      "component": "gnb",
      "spec": {
       "doc": "TS 38.473",
-      "version": "V18.11.0",
+      "version": "V19.4.0",
       "locator": "clause 8.14.4.2"
      },
      "repos": [
@@ -5398,7 +5601,7 @@
      "component": "gnb",
      "spec": {
       "doc": "TS 38.473",
-      "version": "V18.11.0",
+      "version": "V19.4.0",
       "locator": "clause 8.14.2.2"
      },
      "repos": [
@@ -5421,7 +5624,7 @@
      "component": "gnb",
      "spec": {
       "doc": "TS 38.473",
-      "version": "V18.11.0",
+      "version": "V19.4.0",
       "locator": "clause 8.14.3.2"
      },
      "repos": [
@@ -5449,7 +5652,7 @@
      "component": "gnb",
      "spec": {
       "doc": "TS 38.473",
-      "version": "V18.11.0",
+      "version": "V19.4.0",
       "locator": "clause 8.14.14.2"
      },
      "repos": [
@@ -5485,7 +5688,7 @@
      "component": "gnb",
      "spec": {
       "doc": "TS 37.483",
-      "version": "V18.6.0",
+      "version": "V19.4.0",
       "locator": "clause 8.6.1.1.2"
      },
      "repos": [
@@ -5533,7 +5736,7 @@
      "component": "gnb",
      "spec": {
       "doc": "TS 37.483",
-      "version": "V18.6.0",
+      "version": "V19.4.0",
       "locator": "clause 8.6.1.2.2"
      },
      "repos": [
@@ -5575,7 +5778,7 @@
      "component": "gnb",
      "spec": {
       "doc": "TS 37.483",
-      "version": "V18.6.0",
+      "version": "V19.4.0",
       "locator": "clause 8.6.1.3.2"
      },
      "repos": [
@@ -5603,7 +5806,7 @@
      "component": "gnb",
      "spec": {
       "doc": "TS 37.483",
-      "version": "V18.6.0",
+      "version": "V19.4.0",
       "locator": "clause 8.6.1.4.2"
      },
      "repos": [
@@ -5626,7 +5829,7 @@
      "component": "gnb",
      "spec": {
       "doc": "TS 37.483",
-      "version": "V18.6.0",
+      "version": "V19.4.0",
       "locator": "clause 8.6.1.5.2"
      },
      "repos": [
@@ -5651,7 +5854,7 @@
   },
   {
    "name": "MCCH and SIB20 broadcast signalling at the gNB",
-   "summary": "The DU advertises SIB20 and SIB21 in SIB1, broadcasts SIB20 from operator settings, sends MCCH on PDCCH addressed to MCCH-RNTI with DCI format 4_0 inside the configured window, changes MCCH only at modification-period boundaries and signals the change, with no Release 18 (e)RedCap CFR; it sends MCCH every radio frame whatever repetition period SIB20 advertises, can flag a new service as an \"other modification\", and sends MCCH as a bare RRC message without the MAC subheader and RLC header the logical channel requires.",
+   "summary": "The DU advertises SIB20 and SIB21 in SIB1, broadcasts SIB20 from operator settings, sends MCCH on PDCCH addressed to MCCH-RNTI with DCI format 4_0 inside the configured window, changes MCCH only at modification-period boundaries and signals the change, with no Release 18 (e)RedCap CFR; it sends MCCH every radio frame whatever repetition period SIB20 advertises, can flag a new service as an \"other modification\", and sends MCCH as a bare RRC message without the MAC subheader and RLC header the logical channel requires. The Release 19 SIB27 and the per-session intended service areas for NTN cells are not sent.",
    "mode": "broadcast",
    "requirements": [
     {
@@ -5661,7 +5864,7 @@
      "component": "gnb",
      "spec": {
       "doc": "TS 38.331",
-      "version": "V18.11.0",
+      "version": "V19.4.0",
       "locator": "clause 5.9.1.1"
      },
      "repos": [
@@ -5698,7 +5901,13 @@
        "verdict": "absent",
        "what": "The RRC codec carries the SIB20 Release 18 extension (cfr-ConfigMCCH-MTCH-RedCap, mcch-ConfigRedCap), but the DU never fills it, so no separate RedCap CFR is configured.",
        "repo": "srsRAN_Project_mbs",
-       "locator": "TS 38.300 V18.11.0, clause 16.10.6.6"
+       "locator": "TS 38.300 V19.4.0, clause 16.10.6.6"
+      },
+      {
+       "case": "SIB27 with the intended service areas of MBS broadcast services in an NTN cell (Release 19)",
+       "verdict": "absent",
+       "what": "SIB27 is neither encoded nor scheduled; the gNB has no NTN operation.",
+       "locator": "clause 6.3.1, SIB27"
       }
      ],
      "noted": [
@@ -5714,7 +5923,7 @@
      "component": "gnb",
      "spec": {
       "doc": "TS 38.331",
-      "version": "V18.11.0",
+      "version": "V19.4.0",
       "locator": "clause 5.9.1.2"
      },
      "repos": [
@@ -5753,7 +5962,7 @@
      "component": "gnb",
      "spec": {
       "doc": "TS 38.331",
-      "version": "V18.11.0",
+      "version": "V19.4.0",
       "locator": "clause 5.9.1.3"
      },
      "repos": [
@@ -5795,7 +6004,7 @@
      "component": "gnb",
      "spec": {
       "doc": "TS 38.212",
-      "version": "V18.8.0",
+      "version": "V19.4.0",
       "locator": "clause 7.3.1.5.1"
      },
      "repos": [
@@ -5824,7 +6033,7 @@
      "component": "gnb",
      "spec": {
       "doc": "TS 38.321",
-      "version": "V18.10.0",
+      "version": "V19.4.0",
       "locator": "clause 6.1.4"
      },
      "repos": [
@@ -5842,7 +6051,7 @@
        "verdict": "differs",
        "what": "No RLC entity carries MCCH, so the message has no UMD header.",
        "repo": "srsRAN_Project_mbs",
-       "locator": "TS 38.322 V18.2.0, clause 4.2.1.2.1"
+       "locator": "TS 38.322 V19.3.0, clause 4.2.1.2.1"
       }
      ],
      "noted": []
@@ -5854,7 +6063,7 @@
      "component": "gnb",
      "spec": {
       "doc": "TS 38.331",
-      "version": "V18.11.0",
+      "version": "V19.4.0",
       "locator": "clause 6.3.6, MBS-SessionInfoList"
      },
      "repos": [
@@ -5886,6 +6095,13 @@
        "what": "At most four MRBs per session are listed; further MRBs are carried on MTCH but left out of MCCH.",
        "repo": "srsRAN_Project_mbs",
        "locator": "clause 6.3.6, MBS-SessionInfoList field descriptions, mrb-listBroadcast"
+      },
+      {
+       "case": "mbs-SessionAreaList: intended service areas of a session in an NTN cell (Release 19)",
+       "verdict": "absent",
+       "what": "The RRC codec has no MBSBroadcastConfiguration-v1900 extension, so no intended service area is ever listed.",
+       "repo": "srsRAN_Project_mbs",
+       "locator": "clause 6.3.6, MBS-SessionInfoList field descriptions, mbs-SessionAreaList"
       }
      ],
      "noted": [
@@ -5900,7 +6116,7 @@
      "component": "gnb",
      "spec": {
       "doc": "TS 38.331",
-      "version": "V18.11.0",
+      "version": "V19.4.0",
       "locator": "clause 6.3.1, SIB21"
      },
      "repos": [
@@ -5935,7 +6151,7 @@
      "component": "gnb",
      "spec": {
       "doc": "TS 38.321",
-      "version": "V18.10.0",
+      "version": "V19.4.0",
       "locator": "clause 6.2.1, Table 6.2.1-1c"
      },
      "repos": [
@@ -5959,7 +6175,7 @@
        "verdict": "differs",
        "what": "A statically configured session is advertised on MCCH with its MRB and LCID (default 1, any of 1 to 32), but it never enters the DU session database, so no MRB, RLC entity or scheduler session is created for it and no MTCH is sent for it; the MTCH scheduler would in any case serve only LCIDs 21 to 32.",
        "repo": "srsRAN_Project_mbs",
-       "locator": "TS 38.331 V18.11.0, clause 5.9.3.3"
+       "locator": "TS 38.331 V19.4.0, clause 5.9.3.3"
       }
      ],
      "noted": [
@@ -5974,7 +6190,7 @@
      "component": "gnb",
      "spec": {
       "doc": "TS 38.300",
-      "version": "V18.11.0",
+      "version": "V19.4.0",
       "locator": "clause 16.10.6.6"
      },
      "repos": [
@@ -6012,7 +6228,7 @@
      "component": "gnb",
      "spec": {
       "doc": "TS 38.300",
-      "version": "V18.11.0",
+      "version": "V19.4.0",
       "locator": "clause 16.10.6.4"
      },
      "repos": [
@@ -6032,7 +6248,7 @@
   },
   {
    "name": "UE broadcast reception",
-   "summary": "The UE reads SIB20, decodes MCCH on MCCH-RNTI inside the window, joins every advertised session, decodes MTCH on the G-RNTIs and delivers packets through RLC UM and PDCP with the correct start-of-reception rules; it ignores the repetition period and the change notification, never re-reads SIB20, expects MCCH without MAC and RLC headers, applies its own defaults instead of the specified ones when PDCP t-Reordering and RLC t-Reassembly are absent, has no SDAP, broadcast DRX or MBS Interest Indication, and keys MRBs by LCID alone.",
+   "summary": "The UE reads SIB20, decodes MCCH on MCCH-RNTI inside the window, joins every advertised session, decodes MTCH on the G-RNTIs and delivers packets through RLC UM and PDCP with the correct start-of-reception rules; it ignores the repetition period and the change notification, never re-reads SIB20, expects MCCH without MAC and RLC headers, applies its own defaults instead of the specified ones when PDCP t-Reordering and RLC t-Reassembly are absent, has no SDAP, broadcast DRX or MBS Interest Indication, and keys MRBs by LCID alone. The Release 19 intended service areas for NTN cells are not used.",
    "mode": "broadcast",
    "requirements": [
     {
@@ -6042,7 +6258,7 @@
      "component": "ue",
      "spec": {
       "doc": "TS 38.331",
-      "version": "V18.11.0",
+      "version": "V19.4.0",
       "locator": "clause 5.9.2.2"
      },
      "repos": [
@@ -6083,7 +6299,7 @@
      "component": "ue",
      "spec": {
       "doc": "TS 38.331",
-      "version": "V18.11.0",
+      "version": "V19.4.0",
       "locator": "clause 5.9.2.3"
      },
      "repos": [
@@ -6134,7 +6350,7 @@
        "verdict": "differs",
        "what": "The UE decodes the transport block directly as an MCCH-Message with no MAC subheader and no RLC entity, mirroring the gNB; a standard MCCH would not decode.",
        "repo": "srsRAN_4G_mbs",
-       "locator": "TS 38.321 V18.10.0, clause 6.1.4"
+       "locator": "TS 38.321 V19.4.0, clause 6.1.4"
       },
       {
        "case": "searchSpaceMCCH",
@@ -6153,7 +6369,7 @@
      "component": "ue",
      "spec": {
       "doc": "TS 38.212",
-      "version": "V18.8.0",
+      "version": "V19.4.0",
       "locator": "clause 7.3.1.5.1"
      },
      "repos": [
@@ -6176,7 +6392,7 @@
      "component": "ue",
      "spec": {
       "doc": "TS 38.331",
-      "version": "V18.11.0",
+      "version": "V19.4.0",
       "locator": "clause 5.9.3.3"
      },
      "repos": [
@@ -6232,6 +6448,12 @@
        "verdict": "implemented",
        "what": "Every advertised G-RNTI is searched each slot and its PDSCH decoded.",
        "repo": "srsRAN_4G_mbs"
+      },
+      {
+       "case": "Broadcast MRB established or released on entering or leaving an intended service area (NTN-capable UE, Release 19)",
+       "verdict": "absent",
+       "what": "The UE decodes neither SIB27 nor mbs-SessionAreaList and has no notion of intended service areas.",
+       "locator": "clause 5.9.3.2"
       }
      ],
      "noted": [
@@ -6247,7 +6469,7 @@
      "component": "ue",
      "spec": {
       "doc": "TS 38.331",
-      "version": "V18.11.0",
+      "version": "V19.4.0",
       "locator": "clause 5.9.3.4"
      },
      "repos": [
@@ -6278,7 +6500,7 @@
      "component": "ue",
      "spec": {
       "doc": "TS 38.321",
-      "version": "V18.10.0",
+      "version": "V19.4.0",
       "locator": "clause 5.3.1"
      },
      "repos": [
@@ -6344,7 +6566,7 @@
      "component": "ue",
      "spec": {
       "doc": "TS 38.322",
-      "version": "V18.2.0",
+      "version": "V19.3.0",
       "locator": "clause 7.1, RX_Next_Highest"
      },
      "repos": [
@@ -6374,7 +6596,7 @@
      "component": "ue",
      "spec": {
       "doc": "TS 38.323",
-      "version": "V18.5.0",
+      "version": "V19.1.0",
       "locator": "clause 7.1, RX_NEXT"
      },
      "repos": [
@@ -6404,7 +6626,7 @@
      "component": "ue",
      "spec": {
       "doc": "TS 38.331",
-      "version": "V18.11.0",
+      "version": "V19.4.0",
       "locator": "clause 5.9.4.1"
      },
      "repos": [
@@ -6445,7 +6667,7 @@
      "component": "gnb",
      "spec": {
       "doc": "TS 38.413",
-      "version": "V18.11.0",
+      "version": "V19.4.0",
       "locator": "clause 8.18.1.2"
      },
      "repos": [
@@ -6492,7 +6714,7 @@
      "component": "gnb",
      "spec": {
       "doc": "TS 38.473",
-      "version": "V18.11.0",
+      "version": "V19.4.0",
       "locator": "clause 8.14.6.2"
      },
      "repos": [
@@ -6514,7 +6736,7 @@
        "case": "E1AP MC Bearer Context procedures",
        "verdict": "absent",
        "what": "Only the E1AP ID extraction helpers know the MC message types; no procedure exists.",
-       "locator": "TS 37.483 V18.6.0, clause 8.6.2.1.2"
+       "locator": "TS 37.483 V19.4.0, clause 8.6.2.1.2"
       },
       {
        "case": "F1AP Release 18 multicast procedures: Multicast Context Notification, Multicast Common Configuration, MBS Multicast Configuration query",
@@ -6533,7 +6755,7 @@
      "component": "ue",
      "spec": {
       "doc": "TS 38.300",
-      "version": "V18.11.0",
+      "version": "V19.4.0",
       "locator": "clause 16.10.3"
      },
      "repos": [
@@ -6549,19 +6771,19 @@
        "case": "DCI formats 4_1 and 4_2, G-CS-RNTI",
        "verdict": "absent",
        "what": "The DCI format list ends at 4_0 and there is no G-CS-RNTI type.",
-       "locator": "TS 38.212 V18.8.0, clause 7.3.1.5.2"
+       "locator": "TS 38.212 V19.4.0, clause 7.3.1.5.2"
       },
       {
        "case": "Multicast MCCH acquisition in RRC_INACTIVE (Release 18)",
        "verdict": "absent",
        "what": "The UE has no multicast MCCH, no Multicast MCCH-RNTI and no MBSMulticastConfiguration message.",
-       "locator": "TS 38.331 V18.11.0, clause 5.10.2.3"
+       "locator": "TS 38.331 V19.4.0, clause 5.10.2.3"
       },
       {
        "case": "Multicast MRB establishment in RRC_INACTIVE (Release 18)",
        "verdict": "absent",
        "what": "No path sets up a multicast MRB from MBSMulticastConfiguration.",
-       "locator": "TS 38.331 V18.11.0, clause 5.10.3.2"
+       "locator": "TS 38.331 V19.4.0, clause 5.10.3.2"
       }
      ],
      "noted": []
@@ -6573,7 +6795,7 @@
      "component": "gnb",
      "spec": {
       "doc": "TS 38.331",
-      "version": "V18.11.0",
+      "version": "V19.4.0",
       "locator": "clause 5.10.1.2"
      },
      "repos": [
