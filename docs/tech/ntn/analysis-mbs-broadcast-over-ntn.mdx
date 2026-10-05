@@ -2,8 +2,10 @@
 title: MBS Broadcast NTN
 sidebar_position: 3
 hide_title: true
-description: MBS Broadcast over NTN reuses terrestrial delivery-mode-2 procedures, adding SIB19 assistance data and SIB27 service-area signalling.
+description: How a broadcast MBS session is delivered over NR NTN in Release 19, from the NR NTN Intended Service Area in the 5G Core to SIB27 and the MCCH, based on TS 23.247, TS 38.413, TS 38.300, TS 38.331 and TS 38.304 Release 19.
 ---
+
+import JumpMenu from '@site/src/components/JumpMenu';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -20,58 +22,105 @@ description: MBS Broadcast over NTN reuses terrestrial delivery-mode-2 procedure
 This documentation is currently **under development and subject to change**. If you are interested in becoming a member of the 5G-MAG and actively participating in shaping this work, please contact the [Project Office](/contact)
 :::
 
-## Analysis - MBS Delivery Mode 2 (Broadcast) over NTN
+:::tip[At a glance]
 
-MBS Broadcast over an NTN reuses the terrestrial MBS Broadcast procedures almost unchanged. The NTN-specific parts are the two System Information Blocks (SIBs) that a device reads from the broadcast signal: SIB19, which carries NTN assistance information, and SIB27, which conveys the service area for MBS in an NTN cell. Everything else is the same as the terrestrial case.
+- **What is supported:** transmission of a broadcast MBS session over NR non-terrestrial networks (NTN). The NTN additions were made in Release 19.
+- **What stays the same:** a broadcast MBS session uses 5GC Shared MBS traffic delivery with PTM delivery only, and the UE receives it in RRC_IDLE, RRC_INACTIVE or RRC_CONNECTED.
+- **What NTN adds:** an Intended Service Area (ISA), a geographical area signalled for MBS broadcast services. It can denote an area smaller than a cell.
+- **Where the ISA travels:** from the NEF/MBSF, inside the MBS service area, through the MB-SMF and the AMF to NG-RAN, then to the UE in SIB27, with each session linked to its ISAs in the MCCH.
+- **What the UE does with it:** inside an ISA it may start receiving the session and prioritise its frequency; on leaving the ISA it may stop. How the UE decides whether it is inside an ISA is left to the UE implementation.
+- **Not supported:** location-dependent MBS services for broadcast over NR NTN.
 
-Procedures for MBS Broadcast over NTN are those defined for MBS Broadcast in [Analysis MBS Broadcast - RAN Procedures](../5g-mbs/analysis-mbs-broadcast-ran)
-
-## Standards background
-
-MBS Broadcast — this site's "delivery mode 2" (see [MBS Architecture](/tech/5g-mbs/architecture-system)) — is the "Broadcast MBS session" of [TS 23.247](https://www.3gpp.org/dynareport/23247.htm): a one-to-many session that a device can receive in RRC_IDLE and RRC_INACTIVE as well as RRC_CONNECTED, with no per-device signalling and no uplink required to receive. That property is exactly what makes it reusable over NTN almost unchanged. The device tunes to the broadcast, reads the system information and receives; the satellite path does not alter the broadcast procedure itself.
-
-The NTN-specific parts live in NR system information, defined in [TS 38.331](https://www.3gpp.org/dynareport/38331.htm):
-
-- The terrestrial MBS Broadcast SIBs (SIB20 and SIB21) apply as on the ground.
-- SIB19 adds the NTN assistance information the device needs to acquire and track the satellite cell.
-- SIB27, in the Release 19 analysis on this page, carries the Intended Service Area for MBS in an NTN cell.
-
-Because a device does not need to be in RRC_CONNECTED, delivery mode 2 over a wide GEO beam is a natural fit for wide-area linear TV and radio. The alternative broadcast waveform for GEO linear services, ETSI TS 103 720 (LTE-based 5G Broadcast), is discussed on the [standards page](/standards/ntn); the two are different systems and should not be conflated.
-
-:::note
-In theory SIB19 is designed for mobility and cell reselection, therefore the delivery of SIB19 would not be required for MBS Broadcast.
 :::
 
-Concretely, SIB19 carries satellite ephemeris (position and velocity) and the timing/frequency pre-compensation parameters a device needs to acquire and track the cell. SIB27 conveys the Intended Service Area (ISA), telling the device the geographic area over which a given broadcast service is intended to apply.
+<JumpMenu items={[["Broadcast over NTN", "broadcast-mbs-sessions-over-ntn"], ["Implementation blueprint", "implementation-blueprint"], ["In the 5G Core", "the-intended-service-area-in-the-5g-core"], ["NGAP", "ngap-from-the-amf-to-ng-ran"], ["System information", "system-information-sib19-sib27-and-the-mcch"], ["RRC states", "rrc-states"], ["UE behaviour", "ue-behaviour"]]} />
 
-### SIB 27 - Intended Service Area (ISA) for MBS Broadcast in NTN Cell
+## Broadcast MBS sessions over NTN
 
-SIB27 carries a list of Intended Service Areas (`intendedServiceAreaList-r19`), each entry giving an MBS area identifier (`intendedServiceAreaId-r19`) and its coverage shape (`areaCoordinates-r19`) as either a **polygon** (an opaque octet string encoding an arbitrary boundary) or a **circle** (a centre reference location plus a radius). Full ASN.1 in **[3GPP TS 38.331](https://www.3gpp.org/dynareport/38331.htm) Clause 6.3.1** ("System information blocks").
+Release 19 states that transmission of a Broadcast MBS Session is supported over NR non-terrestrial networks, and that TS 38.300 specifies the additional NG-RAN procedures for it (TS 23.247 clauses 4.1 and 6.21). Release 18 of TS 23.247 has no NTN text.
 
-:::note[About the field summary above]
-This describes SIB27 by field name and purpose rather than reproducing its ASN.1 definition in full — the structure, field types and encoding are 3GPP's copyrighted text. Consult TS 38.331 Clause 6.3.1 directly for anything you need to implement against.
-:::
+The broadcast MBS session itself is the one described in [MBS Broadcast - End-to-End Procedures](/tech/5g-mbs/analysis-mbs-broadcast-ran): the same service and content go to all UEs in a geographical area. For MBS broadcast, only the 5GC Shared MBS traffic delivery method with PTM delivery applies (TS 23.247 clause 4.1). The functions involved are those of the [MBS System architecture](/tech/5g-mbs/architecture-system).
 
-### Why the Intended Service Area matters over NTN
+What NTN adds is the Intended Service Area (ISA). An ISA is a geographical area that can be signalled for MBS broadcast services. It is broadcast in SIB27 and associated with MBS broadcast services by their ISA identifiers in the MCCH. It may also be included in the User Service Description (USD) within the target service area (TS 38.300 clause 16.14.12). In the 5G Core, the same information is called the NR NTN Intended Service Area: the "MBS Intended Service Area List" of TS 38.413 and TS 38.331 (TS 23.247 clause 3.1).
 
-On the ground, a broadcast cell covers a well-defined, small area, so where a service applies is largely a matter of which cells carry it. Over NTN a single beam can illuminate a very large footprint that spans many rights territories, languages and regulatory regimes, and, for NGSO, that footprint moves. The ISA lets the network tell the device the geographic area a given broadcast service is intended for, independently of the beam's raw coverage. A device that knows its own position (it has GNSS for NTN in any case) can then determine whether it is inside the intended area for a service and behave accordingly. This is the mechanism that keeps content within its intended geography even when the physical coverage is far larger, which is a distinctly non-terrestrial requirement.
+## Implementation blueprint
 
-The circle form (a reference centre plus a radius) is compact and cheap to broadcast; the polygon form is carried as an opaque octet string so that an arbitrary boundary can be described when a circle is too coarse. Both are keyed by an MBS area identifier so that several services can each carry their own area in the same cell.
+<details>
+<summary>The NTN-specific steps (Step, Function(s), Interface and message or service, Clause)</summary>
 
-## Standards mapping
+Every other step of a broadcast MBS session is as in [MBS Broadcast - End-to-End Procedures](/tech/5g-mbs/analysis-mbs-broadcast-ran).
 
-| Aspect on this page                         | Where it is specified                                                                                                                                                             |
-| ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Broadcast MBS session (this site's "delivery mode 2") | TS 23.247 (MBS architectural enhancements)                                                                                                                                        |
-| Broadcast SIBs (SIB20, SIB21) and NTN SIB19 | TS 38.331 Clause 6.3.1 (all four SIBs are defined in the same clause)                                                                                                              |
-| Intended Service Area in SIB27 (Release 19) | TS 38.331 Clause 6.3.1                                                                                                                                                            |
-| Broadcast RAN procedures reused unchanged   | [Analysis MBS Broadcast - RAN Procedures](../5g-mbs/analysis-mbs-broadcast-ran)                                                                                                   |
-| NTN radio access and assistance information | [TS 38.300](https://www.3gpp.org/dynareport/38300.htm), TS 38.331; [TR 38.811](https://www.3gpp.org/dynareport/38811.htm), [TR 38.821](https://www.3gpp.org/dynareport/38821.htm) |
+| Step | Function(s) | Interface and message or service | Clause |
+| --- | --- | --- | --- |
+| 1. Service area from the AF | AF, NEF/MBSF | Nnef_MBSSession_Create with an MBS service area given as geographical area information | TS 23.247 cl. 6.21, 7.1.1.2 step 8 |
+| 2. NR NTN ISA derived | NEF/MBSF, MB-SMF | Nmbsmf_MBSSession_Create; the MBS service area carries the NR NTN Intended Service Area with a TAI list and/or cell ID list | TS 23.247 cl. 6.21, 7.1.1.2 steps 8 and 11 |
+| 3. AMF selection | MB-SMF, AMF | Namf_MBSBroadcast_ContextCreate with the MBS service area; AMFs selected on the TAIs | TS 23.247 cl. 7.3.1 step 2 |
+| 4. NG-RAN selection and set-up | AMF, NG-RAN | NGAP BROADCAST SESSION SETUP REQUEST; MBS Service Area IE with the MBS Intended Service Area List | TS 23.247 cl. 7.3.1 step 3; TS 38.413 cl. 8.17.1.2, 9.3.1.209, 9.3.1.273 |
+| 5. ISA broadcast to the UE | gNB, UE | RRC: SIB27 `intendedServiceAreaList-r19`; MCCH MBSBroadcastConfiguration, `mbs-SessionAreaList-r19` per session | TS 23.247 cl. 7.3.1 step 9; TS 38.300 cl. 16.14.12; TS 38.331 cl. 6.3.1, 6.3.6 |
+| 6. NTN access | gNB, UE | RRC: valid SIB19 held in RRC_IDLE and RRC_INACTIVE when accessing NR via NTN | TS 38.331 cl. 5.2.2.1; TS 38.300 cl. 7.3.1, 16.14.2.2 |
+| 7. Reception inside the ISA | UE | RRC: broadcast MRB establishment on entering an ISA, release on leaving it | TS 38.300 cl. 16.14.12; TS 38.331 cl. 5.9.3.1, 5.9.3.2 |
+| 8. Frequency priority | UE | Cell reselection: highest priority for the MBS frequency inside the ISA, lowest priority for frequencies without the service outside it | TS 38.304 cl. 5.2.4.1 |
+| 9. Session update | MB-SMF, AMF, NG-RAN | Namf_MBSBroadcast_ContextUpdate; NGAP BROADCAST SESSION MODIFICATION REQUEST, intended service area updated | TS 23.247 cl. 7.3.3 steps 2 and 3; TS 38.413 cl. 8.17.2.2 |
 
-:::note[Verified against primary sources]
-Checked directly against TS 38.331 V19.3.0 (the current published version). SIB27's Release 19 tag, ASN.1 structure and clause placement are all confirmed as described above. SIB19 is also confirmed at Clause 6.3.1, described in the spec as containing "satellite assistance information for NTN access" — matching this page's description of ephemeris and timing/frequency pre-compensation data; note that SIB19 itself is tagged `r17` (introduced in Release 17 for NTN generally, not new in Release 19 — it is SIB27 that is the new Release 19 addition, layered on top of the pre-existing SIB19). SIB20/SIB21's assignment to MBS broadcast was already verified on the [Broadcast RAN procedures page](../5g-mbs/analysis-mbs-broadcast-ran). The TS 23.247 delivery-mode-2 citation was not re-checked on this page specifically but is consistent with the verified Standards page ([5g-mbs.md](/standards/5g-mbs)).
-:::
+</details>
 
-## Related
+## The Intended Service Area in the 5G Core
 
-- [Analysis of RAN Procedures for MBS Broadcast](../5g-mbs/analysis-mbs-broadcast-ran): the terrestrial broadcast procedures reused here
+For NR NTN, an MBS service area in the 5G Core may be denoted with an NR NTN Intended Service Area together with a TAI list and/or a cell ID list, for instance to denote an area smaller than a cell. NG-RAN uses the NR NTN Intended Service Area to further restrict the MBS service area denoted by the TAIs and/or cell IDs (TS 23.247 clause 6.21).
+
+- **AF and NEF/MBSF.** Based on local configuration, the NEF may determine that an MBS session targets an NR NTN network, derive the NR NTN Intended Service Area from the geographical area information, and include it in the MBS service area it gives the MB-SMF at MBS session creation (TS 23.247 clause 6.21). TS 23.247 recommends that, based on service agreement, the AF uses a geographic area in an encoding compatible with TS 38.413 (clause 6.21, NOTE 1). The derivation is part of step 8, and its inclusion towards the MB-SMF part of step 11, of MBS Session Creation (clause 7.1.1.2).
+- **Cell IDs.** For NR NTN, the cell IDs in the MBS service area can be mapped cell IDs (TS 23.247 clause 7.1.1.2, NOTE 5). The Cell Identity used for MBS broadcast service corresponds to a Mapped Cell ID (TS 38.300 clause 16.14.5).
+- **MB-SMF and AMF.** The NR NTN Intended Service Area is transparently transmitted in the 5G Core: the MB-SMF selects the AMFs based on TAIs, and the AMF selects the NG-RAN nodes in the same manner (TS 23.247 clause 6.21, NOTE 2). At MBS Session Start for broadcast, the MB-SMF forwards the MBS service area including the NR NTN Intended Service Area to the selected AMFs (clause 7.3.1, step 2).
+- **Not supported.** Location-dependent MBS services for broadcast over NR NTN are not supported in this release (TS 23.247 clause 6.21, NOTE 3).
+
+## NGAP, from the AMF to NG-RAN
+
+The AMF provides the MBS service area information towards the NG-RAN nodes as a cell ID list, a TAI list and/or an MBS intended service area list (TS 23.247 clause 7.3.1, step 3; TS 38.300 clause 16.14.5). In NGAP, the MBS Service Area Information IE carries an MBS Intended Service Area List, and each entry's Intended Service Area Coordinates IE includes the `areaCoordinates` of the `IntendedServiceAreaInfo` IE of TS 38.331 (TS 38.413 clauses 9.3.1.209 and 9.3.1.273).
+
+If the MBS Service Area IE is in the BROADCAST SESSION SETUP REQUEST, the NG-RAN node takes it into account as specified in TS 23.247, and in TS 38.300 for NTN operation (TS 38.413 clause 8.17.1.2). On a BROADCAST SESSION MODIFICATION REQUEST, for NTN operation, the NG-RAN node updates the intended service area information, if supported (clause 8.17.2.2). This follows MBS Session Update for broadcast, where the MB-SMF and the AMF handle the NR NTN Intended Service Area as at session start (TS 23.247 clause 7.3.3, steps 2 and 3).
+
+## System information: SIB19, SIB27 and the MCCH
+
+| Block | What it carries | Clause |
+| --- | --- | --- |
+| SIB19 | Satellite assistance information for NTN access: NTN-specific parameters for the serving cell and, optionally, for neighbour cells | TS 38.331 cl. 6.3.1; TS 38.300 cl. 7.3.1 |
+| SIB20 | The information required to acquire the MCCH/MTCH configuration for MBS broadcast | TS 38.331 cl. 6.3.1 |
+| SIB21 | The mapping between the current and/or neighbouring carrier frequencies and MBS Frequency Selection Area Identities (FSAI) | TS 38.331 cl. 6.3.1 |
+| SIB27 | The intended service areas of MBS broadcast services in an NTN cell | TS 38.331 cl. 6.3.1; TS 38.300 cl. 7.3.1 |
+
+The network broadcasts valid ephemeris information and Common TA parameters for the serving cell, and the UE must have a valid GNSS position, ephemeris and Common TA before connecting to an NTN cell (TS 38.300 clause 16.14.2.2). A UE in RRC_IDLE or RRC_INACTIVE that is accessing NR via NTN access must hold a valid version of SIB19, alongside the MIB and SIB1 to SIB4 (TS 38.331 clause 5.2.2.1).
+
+### SIB27
+
+SIB27 holds `intendedServiceAreaList-r19`, a list of intended service areas, each associated with one or more MBS broadcast services provided in the NTN cell. Each `IntendedServiceAreaInfo-r19` entry has an identifier, `intendedServiceAreaId-r19`, and its area, `areaCoordinates-r19`, given as one of (TS 38.331 clause 6.3.1):
+
+- `polygonArea-r19`: the parameter type Polygon defined in TS 37.355;
+- `circleArea-r19`: a centre, `center-r19`, and a radius, `radius-r19`, where each step represents 50 m.
+
+A cell can signal up to 32 MBS broadcast intended service areas (TS 38.331 clause 6.4, `maxNrofMBS-Area-r19`). TS 38.331 sets no UE requirement on the contents of SIB27 beyond those in the procedures and field descriptions that use it (clause 5.2.2.4.29). SIB27 can also be delivered in RRCReconfiguration, in `dedicatedSystemInformationDelivery`, to a UE whose active BWP has no common search space configured (TS 38.331 clause 6.2.2).
+
+### The session-to-ISA link in the MCCH
+
+In the MBSBroadcastConfiguration message on the MCCH, each session's `mbs-SessionAreaList-r19` lists the intended service areas associated with that MBS broadcast session in the NTN cell. If the field is absent, the session can be received within the MBS Service Area (TS 38.331 clause 6.3.6). TS 38.331 clause 5.9.1.1 names SIB27 among the system information used for MBS broadcast, for the ISAs of MBS broadcast services for NTN.
+
+## RRC states
+
+The RRC states do not change over NTN: a UE can receive a broadcast communication service in RRC_IDLE, RRC_INACTIVE and RRC_CONNECTED (TS 38.300 clause 16.10.1). The broadcast MRB configuration procedure applies to UEs in those states and, for an MBS ISA capable UE, while it is located within the ISA associated with the MBS service, if any (TS 38.331 clause 5.9.3.1).
+
+## UE behaviour
+
+- **Starting and stopping reception.** An NTN-capable UE supporting MBS broadcast may initiate the broadcast MRB establishment procedure when it is inside an ISA, and the broadcast MRB release procedure when it leaves the ISA (TS 38.300 clause 16.14.12). In TS 38.331, entering the ISAs associated with an MBS broadcast service the UE is interested in is one of the occasions for broadcast MRB establishment, and leaving them one of the occasions for release (clause 5.9.3.2).
+- **Frequency priority in cell reselection.** An MBS ISA capable UE camping on an NTN cell where ISAs are provided, inside the ISA of a service it receives or wants and able to receive it only on a given frequency, may consider that frequency the highest priority during the MBS broadcast session. Outside the ISA, it may consider candidate frequencies on which it cannot receive the service to be of the lowest priority (TS 38.304 clause 5.2.4.1).
+- **ISA in SIB27 or target service area in the USD.** The UE may use either. Using them to avoid acquiring the MCCH outside the MBS service area, and to decide on broadcast MRB configuration in NTN, is left to the UE implementation (TS 38.331 clauses 5.9.2.2 and 5.9.3.1, NOTE 2; TS 38.304 clause 5.2.4.1, NOTE 0j).
+- **Being inside an ISA.** How the UE determines whether it is in the ISA of an MBS broadcast service is up to the UE implementation (TS 38.300 clause 16.14.12, NOTE). The NG-RAN delivers the NR NTN Intended Service Area to the UE, and the UE handles it as specified in TS 38.331 (TS 23.247 clause 7.3.1, step 9).
+
+<details>
+<summary>Sources for this page</summary>
+
+- **Broadcast MBS sessions over NTN, delivery methods:** TS 23.247 V19.3.0, clauses 3.1, 4.1 and 6.21; TS 38.300 V19.4.0, clause 16.14.12. Release 18 comparison: TS 23.247 V18.8.0, TS 38.300 V18.11.0, TS 38.331 V18.11.0 and TS 38.413 V18.11.0 have no ISA text.
+- **The Intended Service Area in the 5G Core:** TS 23.247 V19.3.0, clauses 6.21, 7.1.1.2 (steps 8 and 11, NOTE 5), 7.3.1 (steps 2, 3 and 9) and 7.3.3 (steps 2 and 3); TS 38.300 V19.4.0, clause 16.14.5.
+- **NGAP:** TS 38.413 V19.4.0, clauses 8.17.1.2, 8.17.2.2, 9.3.1.209 and 9.3.1.273.
+- **System information:** TS 38.300 V19.4.0, clauses 7.3.1 and 16.14.2.2; TS 38.331 V19.4.0, clauses 5.2.2.1, 5.2.2.4.29, 5.9.1.1, 6.2.2, 6.3.1, 6.3.6 and 6.4.
+- **RRC states and UE behaviour:** TS 38.300 V19.4.0, clauses 16.10.1 and 16.14.12; TS 38.331 V19.4.0, clauses 5.9.2.2, 5.9.3.1 and 5.9.3.2; TS 38.304 V19.3.0, clause 5.2.4.1.
+
+</details>

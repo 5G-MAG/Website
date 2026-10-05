@@ -2,10 +2,11 @@
 title: MBS Multicast NTN
 sidebar_position: 1
 hide_title: true
-description: MBS Multicast over NTN, autonomous PTP/PTM switching by the gNB, and device, subscription and mobility requirements.
+description: Requirements for delivering a multicast MBS session over NTN, and what Release 19 specifies for them, based on TS 23.247, TS 38.300, TS 38.321 and TS 38.331 Release 19.
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import JumpMenu from '@site/src/components/JumpMenu';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -22,92 +23,124 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 This documentation is currently **under development and subject to change**. If you are interested in becoming a member of the 5G-MAG and actively participating in shaping this work, please contact the [Project Office](/contact)
 :::
 
-## Analysis - MBS Delivery Mode 1 (Multicast) over NTN
+:::tip[At a glance]
 
-This page sets out the requirements for delivering MBS Multicast content over a Non-Terrestrial Network (NTN). A satellite base station (the gNB) can switch each device on its own between point-to-point (PTP, a dedicated per-device channel) and point-to-multipoint (PTM, a shared channel serving many devices), depending on how many devices are receiving the service. The page covers the roles of the Application Service Provider and the NTN, device and subscription considerations, and mobility requirements.
+- **The requirement:** deliver multicast content over an NTN, with the gNB switching each UE between point-to-point (PTP) and point-to-multipoint (PTM) delivery.
+- **What 3GPP provides:** the multicast MBS session of TS 23.247. NG-RAN is the decision point for switching between PTP and PTM, and the gNB decides per UE based on information such as the QoS requirements and the number of joined UEs.
+- **What Release 19 says about NTN:** its MBS-specific NTN text is about the broadcast MBS session (the Intended Service Area). TS 23.247 states NTN support for the Broadcast MBS Session and has no NTN clause for the multicast MBS session.
+- **What exists for multicast on NTN radio:** a MAC timer, HARQ-RTT-TimerDL-PTM-NTN, which adds the UE-gNB round trip to the multicast DRX HARQ timer. It has been in TS 38.321 since Release 17.
+- **States:** RRC_CONNECTED with PTP and/or PTM, or RRC_INACTIVE with PTM only.
 
-For mobility handling specific to this scenario, see also [Analysis of Mobility aspects for MBS Multicast over NTN](./analysis-mobility-mbs-multicast-over-ntn).
+:::
 
-## Standards background
+<JumpMenu items={[["Requirements", "requirements"], ["What Release 19 specifies", "what-release-19-specifies-for-multicast-over-ntn"], ["PTP and PTM", "ptp-and-ptm-switching"], ["Implementation blueprint", "implementation-blueprint"], ["RRC states", "rrc-states"], ["Mobility and reliability", "mobility-and-reliability"], ["Requirements against the specification", "requirements-against-the-specification"]]} />
 
-MBS Multicast over NTN combines two existing pieces without inventing a new service layer:
+This page sets out requirements for delivering multicast content over a Non-Terrestrial Network (NTN), with the gNB switching each UE between PTP and PTM delivery, and then sets each requirement against what the Release 19 specifications provide. The multicast MBS session itself, from the join to the release, is described in [MBS Multicast - End-to-End Procedures](/tech/5g-mbs/analysis-mbs-multicast). Mobility is analysed further in [MBS Multicast NTN - Mobility](/tech/ntn/analysis-mobility-mbs-multicast-over-ntn) and [NTN - Mobility](/tech/ntn/analysis-mobility-ntn).
 
-- **MBS delivery mode 1 (multicast)** — this site's shorthand for the "Multicast MBS session" of [TS 23.247](https://www.3gpp.org/dynareport/23247.htm) (see [MBS Architecture](/tech/5g-mbs/architecture-system)) — targets sessions that need higher QoS and is available to devices in RRC_CONNECTED. The RAN can switch a device between point-to-point (PTP) and point-to-multipoint (PTM) delivery of the same multicast session; that autonomous switching is the central mechanism on this page. The MBS user-service layer above the transport is specified by SA4 in [TS 26.502](https://www.3gpp.org/dynareport/26502.htm), and 5G Media Streaming, which MBS user services extend, in [TS 26.501](https://www.3gpp.org/dynareport/26501.htm).
-- **NTN access**, defined at radio level in [TS 38.300](https://www.3gpp.org/dynareport/38300.htm) and [TS 38.331](https://www.3gpp.org/dynareport/38331.htm) (with the study background in [TR 38.811](https://www.3gpp.org/dynareport/38811.htm) and [TR 38.821](https://www.3gpp.org/dynareport/38821.htm)), which the multicast session simply runs over. The gNB referred to below is deployed either at a ground station, with the satellite acting as a transparent relay (Transparent Payload), or on board the satellite itself (Regenerative Payload) — TS 38.300's own term for the on-board node, in either case, is "NTN payload".
+## Requirements
 
-The reason MBS Multicast fits NTN well is spectral efficiency: satellite spectrum is scarce, so serving many concurrent devices from one PTM transmission is attractive, while PTP remains available for the few or for reliability during handover.
+The requirements below are those of this analysis. They are not 3GPP text; the section [Requirements against the specification](#requirements-against-the-specification) gives what 3GPP specifies for each.
 
-## Requirements and Overview for the delivery of multicast content with autonomous RAN switching between point-to-point and point-to-multipoint
-
-The figure below shows the MBS Multicast over NTN scenario: an Application Service Provider feeds multicast services into the 5G Core of the NTN, and the gNB delivers them to devices over PTP or PTM.
+An Application Service Provider feeds multicast services into the 5G Core of the NTN, and the gNB delivers them to UEs over PTP or PTM.
 
 <img loading="lazy" src={useBaseUrl('/img/tech/ntn/figure_MBS_Multicast_NTN.png')} width="80%" alt="MBS Multicast over NTN: an Application Service Provider provisions multicast services into the NTN 5G Core, which the gNB delivers to UEs over point-to-point or point-to-multipoint." />
 
 ### Application Service Provider
 
-- An Application Service Provider makes available over the Internet services (e.g. TV, radio, any linear/live streaming service) which users can access through an application installed on their devices (e.g. a smartphone, a smart TV, tablet, etc.).
-- The Application Service Provider additionally provisions these as multicast services in the 5G Core of the NTN.
-
-:::warning
-To be checked: Provision of MBS Multicast services over the 5G Network with traffic originally coming from a streaming service available over the internet and to client applications already deployed in user equipment.
-Note that this is an aspect related to MBS and it is captured here: [MBS Architecture](../5g-mbs/architecture-system)
-:::
+- R1. An Application Service Provider makes services (for example TV, radio or other linear and live streaming services) available over the Internet to applications installed on UEs.
+- R2. The Application Service Provider additionally provisions these as multicast services in the 5G Core of the NTN.
 
 ### Network and access to services
 
-- The gNB serving the NTN is deployed either at the ground station (Transparent Payload architecture) or on board the spacecraft (Regenerative Payload, not illustrated).
-- The NTN operator offers mobile broadband access to their subscribed users.
-- The NTN supports multicast user services.
-- A set of multicast services is provisioned in the NTN that deliver content to UEs using either point-to-point or point-to-multipoint multicast communication, at the discretion of the gNB.
-- Optionally, the NTN operator may collaborate with the Application Service Provider to ensure the delivery of content with a desired Quality of Service, including the provision of network assistance and/or UE data collection and reporting, among other functionalities.
-- The NTN has the ability to detect concurrent consumption of services by multiple users and may use parameters such as session counting to trigger unicast-to-multicast switching at upper layers.
-- The gNB is able to autonomously switch the delivery mode of multicast packets between point-to-point and point-to-multipoint according to the number of UEs attempting to receive multicast user services concurrently.
-
-:::warning
-To be checked: Provision of MBS Multicast services which can be delivered either by means of point-to-point or point-to-multipoint and the mechanism by which concurrent consumption of a service by multiple users and session counting is performed.
-Note that this is an aspect related to MBS and it is captured here: [MBS Architecture](../5g-mbs/architecture-system)
-:::
+- R3. The gNB serving the NTN is deployed either at the ground station (transparent payload) or on board the spacecraft (regenerative payload, not illustrated).
+- R4. The NTN operator offers mobile broadband access to its subscribed users, and the NTN supports multicast services.
+- R5. A set of multicast services is provisioned in the NTN that deliver content to UEs by either PTP or PTM, at the discretion of the gNB.
+- R6. Optionally, the NTN operator collaborates with the Application Service Provider to deliver content with a desired Quality of Service, including network assistance and/or UE data collection and reporting.
+- R7. The NTN detects concurrent consumption of a service by multiple users, and may use parameters such as session counting to trigger unicast-to-multicast switching at upper layers.
+- R8. The gNB switches the delivery of multicast packets between PTP and PTM according to the number of UEs receiving the multicast service concurrently.
 
 ### Device considerations
 
-- User Equipment directly connected to the NTN (including UEs or a Relay Node on a moving platform, e.g. a train, aircraft or vessel) requires subscription and registration with the NTN operator in order to obtain mobile broadband connectivity and access to the desired services.
-- In addition, the NTN operator authorises UEs that are able to consume multicast user services.
-- In order to obtain network connectivity and access to the desired services, User Equipment connected to a Relay Node on a moving platform requires either subscription and registration with the moving platform network operator (which could be the same as or different from the NTN operator) or directly with the NTN operator.
+- R9. A UE directly connected to the NTN (including UEs or a relay node on a moving platform such as a train, aircraft or vessel) requires subscription and registration with the NTN operator.
+- R10. The NTN operator authorises the UEs that can consume multicast services.
+- R11. A UE connected to a relay node on a moving platform requires subscription and registration either with the moving platform network operator (which may or may not be the NTN operator) or directly with the NTN operator.
 
-### Mobility, handover, service interruption and reliability requirements
+### Mobility, handover, service interruption and reliability
 
-- The delivery of multicast data packets using point-to-point or point-to-multipoint transmission should rely on mechanisms that ensure reliability and in-sequence delivery. User Equipment should be able to request repair of faulty or lost multicast data packets to increase delivery reliability.
-- For critical applications, lossless mobility without interruption should be guaranteed when UEs transit across different satellite coverage areas, even when those different coverage areas are served by different NTNs operated by the same NTN operator (e.g. from LEO to GEO with a common 5G Core). Interruption-free multicast user service should be guaranteed when a UE is served from a gNB which switches multicast packet delivery from point-to-multipoint to point-to-point communication and vice versa.
-- For services with less stringent requirements, some level of multicast user service interruption may be tolerable when a UE transits across different coverage areas, including when those different coverage areas are served by different NTNs. Some level of interruption may be tolerable when a UE is served from a gNB which switches multicast packet delivery from point-to-multipoint to point-to-point communication and vice versa.
+- R12. Delivery of multicast packets over PTP or PTM relies on mechanisms that ensure reliability and in-sequence delivery, and a UE can request repair of lost or faulty packets.
+- R13. For critical applications, mobility is lossless and without interruption when UEs move across satellite coverage areas, including areas served by different NTNs of the same operator with a common 5G Core (for example from LEO to GEO), and when the gNB switches a UE between PTM and PTP.
+- R14. For less stringent services, some interruption is tolerable in the same cases.
 
-:::warning
-To be checked: Mobility aspects in relation to NTN are captured here: [Aspects on Mobility for NTN](../ntn/analysis-mobility-ntn). Mobility aspects in relation to MBS are captured here: [Aspects on Mobility for MBS Multicast Services](../5g-mbs/mobility-mbs-multicast). Mobility aspects in relation to MBS and NTN are captured here: [Aspects on Mobility for MBS Multicast over NTN](../ntn/analysis-mobility-mbs-multicast-over-ntn)
-:::
+## What Release 19 specifies for multicast over NTN
 
-## Autonomous PTP/PTM switching
+- **The 5G System.** TS 23.247 states that transmission of a Broadcast MBS Session is supported over NR non-terrestrial networks (clause 4.1). Its NTN clause, 6.21, is titled "Support of Broadcast MBS Session over NR non-terrestrial networks". TS 23.247 has no NTN clause for the multicast MBS session.
+- **NG-RAN.** The MBS item in the NTN clause of TS 38.300, clause 16.14.12, is the support of the Intended Service Area for MBS broadcast; see [MBS Broadcast NTN](/tech/ntn/analysis-mbs-broadcast-over-ntn). Clause 16.10, which describes MBS multicast, has no NTN-specific text.
+- **MAC.** For multicast DRX, TS 38.321 defines a timer used in a non-terrestrial network, HARQ-RTT-TimerDL-PTM-NTN: the minimum duration before a downlink multicast assignment for HARQ retransmission is expected (clause 5.7b). When a multicast MAC PDU is received on a non-terrestrial network and the UE supports `harq-RTT-TimerDL-ForNTN-MulticastMBS-r17`, the UE sets it to `drx-HARQ-RTT-TimerDL-PTM` plus the latest available UE-gNB RTT. The UE-gNB RTT is, for non-terrestrial networks, the sum of the UE's Timing Advance and `kmac` (clause 3.1). For multicast in RRC_INACTIVE, the same timer applies to a UE that supports `ptm-RetransmissionInactive` (clause 5.7b). This text is in TS 38.321 V17.15.0 and V18.10.0: it predates Release 19.
+- **Access.** The NTN payload is transparent, or regenerative and hosting a gNB. The transparent payload forwards the radio protocol between the UE and the NTN Gateway; the regenerative payload terminates the Uu, NG and Xn interfaces (TS 38.300 clause 16.14.1). The UE supporting NTN is GNSS-capable (clause 16.14.1).
 
-The defining feature of this scenario is that the gNB decides, on its own, whether to deliver a multicast session over a shared PTM channel or a dedicated PTP channel, and can move a device between the two without the application being aware.
+## PTP and PTM switching
 
-- **When PTM is used.** When enough devices in the same beam are receiving the same session, one PTM transmission serves them all and is by far the most efficient use of the scarce satellite spectrum. This is the normal state for popular content in a wide beam.
-- **When PTP is used.** When only one or very few devices are receiving, PTP can be more efficient and gives per-device link adaptation and retransmission. PTP is also used deliberately during handover to protect a device that is about to lose its beam (see the mobility page).
-- **What triggers a switch.** The network detects concurrent consumption, for example by session counting at upper layers, and switches unicast-to-multicast or the reverse. Over NTN, geometry adds a second trigger: an imminent beam change known from the ephemeris can justify moving a device to PTP before the handover rather than waiting for the radio to degrade.
+Between the 5G Core and NG-RAN, a multicast MBS session uses one of two delivery methods (TS 23.247 clause 4.1):
 
-The requirement that switching be interruption-free is what ties this to reliability: a device must not lose or reorder packets when it moves between PTP and PTM. This is why the page calls for mechanisms that ensure reliability and in-sequence delivery, and why application-layer repair (a device requesting retransmission of lost objects) is important over satellite paths where lower-layer retransmission is expensive.
+- **5GC Shared MBS traffic delivery:** the 5G Core delivers a single copy of the MBS data packets to an NG-RAN node, which delivers them to one or several UEs. It applies to broadcast and multicast MBS sessions and is required in all MBS deployments.
+- **5GC Individual MBS traffic delivery:** the 5G Core delivers separate copies to individual UEs over per-UE PDU sessions. It applies only to multicast MBS sessions and is required for mobility where NG-RAN support of MBS is not homogeneous.
 
-## Standards mapping
+Between NG-RAN and the UE, NG-RAN uses PTP (separate copies to individual UEs) or PTM (a single copy to several UEs), or a combination of the two (TS 23.247 clause 4.1). For a multicast MBS session, switching between PTP and PTM for 5GC Shared MBS traffic delivery is supported, and NG-RAN is the decision point (clause 4.1). If a UE is configured with both, the gNB dynamically decides whether to deliver multicast data by the PTM leg and/or the PTP leg for that UE, based on information such as the MBS session QoS requirements, the number of joined UEs, UE feedback on reception quality and other criteria. The same QoS requirements apply whatever the decision (TS 38.300 clause 16.10.5.4).
 
-| Aspect on this page                                   | Where it is specified                                                                                                                                                  |
-| ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Multicast MBS session (this site's "delivery mode 1"), PTP/PTM switching | TS 23.247 (MBS architectural enhancements)                                                                                                                             |
-| MBS user services and media formats above transport   | TS 26.502; TS 26.501 (5G Media Streaming)                                                                                                                              |
-| NTN radio access and system information               | TS 38.300, TS 38.331; TR 38.811, TR 38.821                                                                                                                             |
-| Satellite access in the 5G system architecture        | [TR 23.737](https://www.3gpp.org/dynareport/23737.htm); [TS 23.501](https://www.3gpp.org/dynareport/23501.htm), [TS 23.502](https://www.3gpp.org/dynareport/23502.htm) |
-| Mobility for the multicast group over NTN             | [Mobility for MBS Multicast over NTN](./analysis-mobility-mbs-multicast-over-ntn)                                                                                      |
+## Implementation blueprint
 
-:::note[Partially verified against primary sources]
-Checked directly against TS 23.247 V19.3.0: Clause 4.1 ("Overview of multicast and broadcast communication") confirms that PTP/PTM switching for MBS multicast is supported and that "NG-RAN is the decision point for switching between PTP and PTM delivery methods" — matching this page's "autonomous switching by the gNB" framing. A specific "session counting" clause or algorithm was not found in TS 23.247; the exact trigger mechanism for switching appears to be left to RAN implementation (consistent with the equivalent finding on the terrestrial [MBS Architecture](../5g-mbs/architecture-system) page — "the specifications leave the exact algorithm to implementation"). TS 26.502's title and the release placement of MBS-over-NTN features (broadcast/multicast, GSO/NGSO) remain unconfirmed, since a full clause-by-clause reading of TS 23.247 for NTN-specific content was not performed.
-:::
+<details>
+<summary>Multicast over NTN, step by step (Step, Function(s), Interface and message or service, Clause)</summary>
 
-## Related
+The full chain, from MBS session creation to release, is in [MBS Multicast - End-to-End Procedures](/tech/5g-mbs/analysis-mbs-multicast). The rows below are the steps the requirements on this page rely on.
 
-- [MBS Architecture](../5g-mbs/architecture-system): the terrestrial PTP and PTM decision this page builds on
+| Step | Function(s) | Interface and message or service | Clause |
+| --- | --- | --- | --- |
+| 1. Multicast MBS session | AF, NEF/MBSF, MB-SMF | Nnef_MBSSession_Create, Nmbsmf_MBSSession_Create with MBS service type multicast | TS 23.247 cl. 7.1.1.2 |
+| 2. Join and authorisation | UE, SMF, MB-SMF | PDU Session Modification Request over the associated PDU session; the SMF checks that the user is authorised to join | TS 23.247 cl. 7.2.1.3 |
+| 3. Delivery towards NG-RAN | MB-SMF, MB-UPF, NG-RAN | 5GC Shared MBS traffic delivery; 5GC Individual MBS traffic delivery towards a node without MBS support | TS 23.247 cl. 4.1 |
+| 4. MRB configuration | gNB, UE | RRC dedicated signalling: multicast MRB for PTP (RLC-UM or RLC-AM), PTM (DL RLC-UM), or both | TS 38.300 cl. 16.10.3 |
+| 5. PTP or PTM per UE | gNB | Dynamic choice of the PTM leg and/or PTP leg | TS 23.247 cl. 4.1; TS 38.300 cl. 16.10.5.4 |
+| 6. HARQ and DRX over NTN | gNB, UE | MAC: multicast DRX with HARQ-RTT-TimerDL-PTM-NTN, set from the UE-gNB RTT | TS 38.321 cl. 3.1, 5.7b |
+| 7. Handover | Source and target gNB, 5G Core | Handover between multicast-supporting cells; switch to 5GC Individual delivery towards a non-supporting cell | TS 38.300 cl. 16.10.5.3.2, 16.10.5.3.3 |
+
+</details>
+
+## RRC states
+
+A UE can receive a multicast communication service in RRC_CONNECTED, with PTP and/or PTM delivery, or in RRC_INACTIVE with PTM delivery. HARQ feedback and retransmission can be applied to both PTP and PTM in RRC_CONNECTED (TS 38.300 clause 16.10.1). PTP transmission is not supported for multicast reception in RRC_INACTIVE (clause 16.10.5.4), and neither is HARQ feedback (clause 16.10.5.7). Neither TS 38.300 nor TS 23.247 states anything NTN-specific about these states for multicast.
+
+## Mobility and reliability
+
+The mobility text of TS 38.300 for multicast is not specific to NTN:
+
+- **Between multicast-supporting cells.** After handover the UE continues to receive the multicast service via PTM or PTP in the new cell. Lossless handover is supported if the UE is configured with a PTP RLC AM entity in the target cell MRB. For it, the network ensures DL PDCP COUNT synchronisation and continuity between source and target cells; data forwarding and the PDCP status report can be used (TS 38.300 clause 16.10.5.3.2).
+- **Towards a cell without multicast support.** The target gNB sets up PDU session resources mapped to the multicast session, and the 5G Core switches to 5GC Individual MBS traffic delivery (TS 38.300 clause 16.10.5.3.3).
+- **Layer 2.** For multicast, PDCP provides reordering and in-order delivery and duplicate discarding (TS 38.300 clause 16.10.3).
+
+## Requirements against the specification
+
+| Requirement | What the specification provides | Clause |
+| --- | --- | --- |
+| R2. Provisioning as multicast services | The AF creates a multicast MBS session at the MB-SMF through the NEF/MBSF | TS 23.247 cl. 7.1.1.2 |
+| R3. gNB on the ground or on board | Transparent payload, or regenerative payload hosting a gNB | TS 38.300 cl. 16.14.1 |
+| R4. Multicast over NTN | No NTN clause for the multicast MBS session in TS 23.247; NTN support is stated for the Broadcast MBS Session | TS 23.247 cl. 4.1, 6.21 |
+| R5, R8. PTP or PTM at the gNB's discretion | NG-RAN is the decision point; the gNB decides per UE using the QoS requirements, the number of joined UEs, UE feedback and other criteria | TS 23.247 cl. 4.1; TS 38.300 cl. 16.10.5.4 |
+| R7. Session counting, unicast-to-multicast switching at upper layers | Neither TS 23.247 nor TS 38.300 uses the term session counting. TS 23.247 notes that "unicast delivery" over a PDU session is not equivalent to 5GC Individual MBS traffic delivery | TS 23.247 cl. 4.1 |
+| R10. Authorisation | Not all UEs in the MBS service area are authorised to receive the data of a multicast communication service | TS 38.300 cl. 16.10.1 |
+| R12. Reliability, in-sequence delivery, repair | HARQ feedback and retransmission for PTP and PTM in RRC_CONNECTED; PTP RLC AM; PDCP reordering and in-order delivery; on NTN, the multicast HARQ RTT timer includes the UE-gNB RTT | TS 38.300 cl. 16.10.1, 16.10.3; TS 38.321 cl. 5.7b |
+| R13, R14. Mobility without loss or interruption | Lossless handover between multicast-supporting cells with a PTP RLC AM entity in the target cell; no NTN-specific multicast handover text | TS 38.300 cl. 16.10.5.3.2 |
+
+R1, R6, R9 and R11 concern services, business arrangements and subscriptions, which this page does not set against the specifications.
+
+<details>
+<summary>Sources for this page</summary>
+
+- **NTN support for MBS:** TS 23.247 V19.3.0, clauses 4.1 and 6.21; TS 38.300 V19.4.0, clauses 16.10 and 16.14.12.
+- **Delivery methods, PTP and PTM, join:** TS 23.247 V19.3.0, clauses 4.1, 7.1.1.2 and 7.2.1.3; TS 38.300 V19.4.0, clauses 16.10.1, 16.10.3 and 16.10.5.4.
+- **NTN access:** TS 38.300 V19.4.0, clause 16.14.1.
+- **MAC over NTN:** TS 38.321 V19.4.0, clauses 3.1 and 5.7b. Present in TS 38.321 V17.15.0 and V18.10.0, clause 5.7b.
+- **RRC states:** TS 38.300 V19.4.0, clauses 16.10.1, 16.10.5.4 and 16.10.5.7.
+- **Mobility and reliability:** TS 38.300 V19.4.0, clauses 16.10.3, 16.10.5.3.2 and 16.10.5.3.3.
+
+</details>
