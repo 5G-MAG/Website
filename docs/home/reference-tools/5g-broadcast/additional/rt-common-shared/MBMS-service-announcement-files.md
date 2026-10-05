@@ -24,7 +24,7 @@ description: Documents the three MBMS Service Announcement (bootstrap.multipart)
 
 The `ServiceAnnouncement(SA)` file, also referred to as `bootstrap.multipart` in the context of Reference Tools, contains the information a receiver needs to find and play the available broadcast and unicast streams. The middleware (`rt-mbms-mw`) reads it at startup. The Reference Tools support three main formats. The target format needs to be configured before starting the `rt-mbms-mw` process, as automated format detection at runtime is currently not supported.
 
-Examples of the different SA formats can be found in the [rt-common-shared project](https://github.com/5G-MAG/rt-common-shared/tree/feature/mbms/mbms/bootstrap_examples).
+Examples of the different SA formats can be found in the [rt-common-shared project](https://github.com/5G-MAG/rt-common-shared/tree/main/mbms/bootstrap_examples).
 
 The three formats below share the same overall structure (an envelope, an SDP session description, HLS playlists, a user service description and a schedule); they differ mainly in the MIME boundary string and in how the broadcast and unicast base patterns are written. You do not need to compare the full XML blocks line by line; the notes on each format point out what is specific to it.
 

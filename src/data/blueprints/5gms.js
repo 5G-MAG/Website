@@ -175,7 +175,7 @@ export const FIVEGMS_FEATURES = [
 
 // Groups FIVEGMS_FEATURES into the {spec, title, component, rows} shape
 // ImplementationBoard and ArchitectureMap's deriveStates() already expect
-// (see src/data/implementation/5g-mbs.js for the precedent this follows).
+// (the shape src/data/implementation/5g-broadcast.js also uses).
 // One section per spec clause range keeps the board's own collapsible
 // grouping meaningful instead of dumping all 8 rows in one undifferentiated
 // list; `component: 'AF'` reflects that all 8 features are provisioned and/or

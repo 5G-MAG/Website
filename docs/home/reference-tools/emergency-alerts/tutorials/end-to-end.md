@@ -22,7 +22,7 @@ This tutorial describes a basic setup to deliver emergency alerts compliant with
 
 <a class="repo-card repo-card--inline" href="https://github.com/5G-MAG/rt-mbms-tx-for-qrd-and-crd">
 <span class="repo-card__name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" /></svg>rt-mbms-tx-for-qrd-and-crd</span>
-<span class="repo-card__role">5G Broadcast transmitter used throughout this tutorial, built from the <code>emergency-alerts</code> branch.</span>
+<span class="repo-card__role">5G Broadcast transmitter used throughout this tutorial.</span>
 </a>
 
 :::tip[In short]
@@ -48,7 +48,7 @@ The following components are required to set up the end-to-end chain for emergen
 
 ## Architecture
 
-The setup consists of a 5G Broadcast transmitter (rt-mbms-tx-for-qrd-and-crd running the `emergency-alerts` branch) connected to a Software Defined Radio (SDR). A QRD or CRD device receives the broadcast signal and decodes the Cell Broadcast Service (CBS) alert messages. The transmitter reads alert content from a configuration file and encodes it as CBS messages compliant with 3GPP TS 23.041.
+The setup consists of a 5G Broadcast transmitter (rt-mbms-tx-for-qrd-and-crd) connected to a Software Defined Radio (SDR). A QRD or CRD device receives the broadcast signal and decodes the Cell Broadcast Service (CBS) alert messages. The transmitter reads alert content from a configuration file and encodes it as CBS messages compliant with 3GPP TS 23.041.
 
 ## Installation
 
@@ -56,10 +56,10 @@ The setup consists of a 5G Broadcast transmitter (rt-mbms-tx-for-qrd-and-crd run
 
 Install the dependencies and SDR drivers for the transmitter as documented [here](https://github.com/5G-MAG/rt-mbms-tx-for-qrd-and-crd).
 
-Next, clone the transmitter repository using the `emergency-alerts` branch:
+Next, clone the transmitter repository:
 
 ```bash
-git clone --recurse-submodules -b emergency-alerts https://github.com/5G-MAG/rt-mbms-tx-for-qrd-and-crd.git rt-mbms-tx-for-qrd-and-crd-emergency-alerts
+git clone --recurse-submodules https://github.com/5G-MAG/rt-mbms-tx-for-qrd-and-crd.git rt-mbms-tx-for-qrd-and-crd-emergency-alerts
 ```
 
 Now build the transmitter running the following commands:

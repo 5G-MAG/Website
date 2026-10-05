@@ -24,7 +24,7 @@ description: How to install and run the 6G AI Traffic Characterization Testbed, 
 
 :::tip[In short]
 
-- **Get it:** the `development` branch of the [5G-MAG/6G-Testbed](https://github.com/5G-MAG/6G-Testbed/tree/development) repository, which adds the chat with token IDs and real-time video understanding scenarios and the lossy profile. It needs Linux, Python 3.10 or later, and the right to configure traffic control (sudo, or Docker with `NET_ADMIN`).
+- **Get it:** the [5G-MAG/6G-Testbed](https://github.com/5G-MAG/6G-Testbed) repository, with the chat with token IDs and real-time video understanding scenarios and the lossy profile. It needs Linux, Python 3.10 or later, and the right to configure traffic control (sudo, or Docker with `NET_ADMIN`).
 - **Configure:** scenarios and models in `configs/scenarios.yaml`, network profiles in `configs/profiles.yaml`.
 - **Run:** one scenario over one profile, or the full matrix; add packet capture for network-layer metrics.
 - **Reproduce SA4 results:** `run_full_tests.sh` runs the full matrix with capture and the complete report pipeline.
@@ -34,7 +34,7 @@ description: How to install and run the 6G AI Traffic Characterization Testbed, 
 ## Quick start
 
 ```bash
-git clone -b development https://github.com/5G-MAG/6G-Testbed.git
+git clone https://github.com/5G-MAG/6G-Testbed.git
 ```
 
 Install the testbed (open **Install** below), then, from the `aitestbed` folder, run one scenario over one network profile:
@@ -185,7 +185,7 @@ An introduction to the network emulator and the AI traffic characterization fram
 
 - **Steps, extension and vLLM:** TR 26.870 V0.6.1, annex B.1 and B.3.
 - **Network emulator:** TR 26.870 V0.6.1, annex E.1 and listing 4.4.3-1.
-- **Commands, requirements, Docker and `run_full_tests.sh`:** the README files of the 6G-Testbed repository (root and `aitestbed/`), `development` branch.
-- **Token and real-time video scenarios:** TR 26.870 V0.6.1, clauses D.1.2.1, D.1.2.5 and C.8.6.2; commands from `aitestbed/README.md` on the `development` branch.
+- **Commands, requirements, Docker and `run_full_tests.sh`:** the README files of the 6G-Testbed repository (root and `aitestbed/`).
+- **Token and real-time video scenarios:** TR 26.870 V0.6.1, clauses D.1.2.1, D.1.2.5 and C.8.6.2; commands from `aitestbed/README.md`.
 
 </details>

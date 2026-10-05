@@ -67,7 +67,7 @@ const pr = (p) => (
     <span className={`${styles.dot} ${ageClass(ageDays(p.created_at))}`} title={`Open for ${ageDays(p.created_at)} days`} />
     <a href={p.url} target="_blank" rel="noreferrer">#{p.number} {p.title}</a>
     <span className={styles.meta}>
-      {p.draft && <span className={styles.draft}>Draft</span>} {p.author} · {p.created_at} ({ageDays(p.created_at)} days) · into <code>{p.base}</code>
+      {p.draft && <span className={styles.draft}>Draft</span>} {p.author} · {p.created_at} ({ageDays(p.created_at)} days)
     </span>
   </li>
 );

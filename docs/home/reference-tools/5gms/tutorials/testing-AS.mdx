@@ -77,19 +77,19 @@ sudo dnf -y install git java-latest-openjdk python3 wget python3-pip python3-ven
 ## Checking out the project code
 
 Since this will be used for development and testing, the instructions here will show you how to check out the latest
-development branch. Pick the path that matches what you're doing:
+version. Pick the path that matches what you're doing:
 
 <div class="community-tiles community-tiles--even">
 <a class="community-tile" href="#checkout-for-development">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M17 7m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M12 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M7 9v1a3 3 0 0 0 3 3h4a3 3 0 0 0 3 -3v-1" /><path d="M12 13l0 4" /></svg>
 <strong>Checkout for development</strong>
-<span class="tile-desc">Fork the repository (keeping the `development` branch as default), then clone your fork.</span>
+<span class="tile-desc">Fork the repository, then clone your fork.</span>
 <span class="tile-cta">For contributing back →</span>
 </a>
 <a class="community-tile" href="#checkout-for-testing-only">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /><path d="M7 11l5 5l5 -5" /><path d="M12 4l0 12" /></svg>
 <strong>Checkout for testing only</strong>
-<span class="tile-desc">Clone the 5G-MAG repository directly on the `development` branch.</span>
+<span class="tile-desc">Clone the 5G-MAG repository directly.</span>
 <span class="tile-cta">Quickest path →</span>
 </a>
 </div>
@@ -101,11 +101,7 @@ development branch. Pick the path that matches what you're doing:
       and [set an SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
       if you haven't already done so).
    1. On the main [GitHub project page](https://github.com/5G-MAG/rt-5gms-application-server) click on the "Fork" label
-      in the top right of the page, then untick "Copy the `main` branch only" on the page that appears and select the "
-      Create fork" button.
-   1. On your new fork page select the `Settings` option just below the main repository title. Then select "Branches"
-      under the "Code and automation" topic from the sections on the left, and edit the "Default branch" to change it
-      to `development`.
+      in the top right of the page, then select the "Create fork" button.
    1. Clone the repository
       ```bash
       cd
@@ -118,7 +114,7 @@ development branch. Pick the path that matches what you're doing:
 1. **Clone the 5G-MAG repository**
    ```bash
    cd
-   git clone -b development --recurse-submodules https://github.com/5G-MAG/rt-5gms-application-server.git
+   git clone --recurse-submodules https://github.com/5G-MAG/rt-5gms-application-server.git
    ```
 
 ## Creating the virtual Python environment

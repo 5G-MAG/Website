@@ -41,7 +41,7 @@ Running the modem service once and then stopping it generates or refreshes the c
 2. `sudo systemctl stop 5gmag-rt-modem`
 
 Make sure that you have the latest nginx config enabled in `/etc/nginx/sites-enabled/5gmag-rt-wui`. Compare it to the
-config that is provided [here](https://github.com/5G-MAG/rt-common-shared/blob/feature/mbms/mbms/common-config/5gmag-rt-wui)
+config that is provided [here](https://github.com/5G-MAG/rt-common-shared/blob/main/mbms/common-config/5gmag-rt-wui)
 
 ## Different SA formats
 

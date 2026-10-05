@@ -86,27 +86,25 @@ sudo python3 -m pip install build meson
 
 ## Retrieving the source
 
-When developing always use the `development` branch of the 5GMSd Application Function.
-
 If you are intending to commit code back to the project, create your own "Fork" of the repository at <https://github.com/5G-MAG/rt-5gms-application-function>, and work on your own fork.
 
 To clone the source use:
 
 ```bash
 cd
-git clone -b development --recurse-submodules git@github.com:${github_username}/rt-5gms-application-function.git
+git clone --recurse-submodules git@github.com:${github_username}/rt-5gms-application-function.git
 ```
 
 Where `${github_username}` is your GitHub user name.
 
-If you are not intending committing changes back to the repository (only testing the latest development version) then you can obtain a clone using:
+If you are not intending committing changes back to the repository (only testing the latest version) then you can obtain a clone using:
 
 ```bash
 cd
-git clone -b development --recurse-submodules https://github.com/5G-MAG/rt-5gms-application-function.git
+git clone --recurse-submodules https://github.com/5G-MAG/rt-5gms-application-function.git
 ```
 
-If you wish to commit back changes then these should be pushed to a branch on your fork and PR raised to submit the changes back to the development branch of the 5G-MAG repository.
+If you wish to commit back changes then these should be pushed to a branch on your fork and PR raised to submit the changes back to the 5G-MAG repository.
 
 ## Building
 

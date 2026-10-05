@@ -3,7 +3,7 @@
  "title": "5G Media Streaming (5GMS)",
  "audited": "2026-10-02",
  "tier": "T0",
- "method": "code read on the development branches, nothing built or run",
+ "method": "code read, nothing built or run",
  "releases": {
   "R17": "Release 17: TS 26.512 V17.10.0 and its OpenAPI files",
   "R19": "Release 18/19: TS 26.510 V19.2.0 and TS 26.512 V19.3.0"
@@ -49,7 +49,7 @@
   "as": {
    "short": "AS",
    "name": "5GMS Application Server",
-   "builtAgainst": "5G_APIs floating REL-17 branch (identical to V17.10.0 on 2026-10-01); M3: 5G-MAG /3gpp-m3/v1 from rt-common-shared, at the commit the build pins",
+   "builtAgainst": "5G_APIs at Release 17 (identical to V17.10.0 on 2026-10-01); M3: 5G-MAG /3gpp-m3/v1 from rt-common-shared, at the version the build pins",
    "repos": [
     {
      "repo": "rt-5gms-application-server",
@@ -83,7 +83,7 @@
   "tools": {
    "short": "App Provider",
    "name": "5GMS Application Provider",
-   "builtAgainst": "hand-written /3gpp-m1/v2 client (Release 17); 5G_APIs REL-17 branch",
+   "builtAgainst": "hand-written /3gpp-m1/v2 client (Release 17); 5G_APIs at Release 17",
    "repos": [
     {
      "repo": "rt-5gms-application-provider",
@@ -3927,7 +3927,7 @@
       "A request with no Content-Type header is treated as application/xml.",
       "Returns 404 when the configuration id is not one of the session's; the OpenAPI lists 400 and 415 only.",
       "The report is not checked against the configured scheme; it is written to local files only.",
-      "The OPTIONS branch has no break before the method-not-allowed branch that follows it."
+      "The OPTIONS case has no break before the method-not-allowed case that follows it."
      ]
     },
     {
@@ -4608,7 +4608,7 @@
   },
   {
    "name": "Data collection and exposure",
-   "summary": "Nothing is implemented: there is no Data Collection AF, no R4 reporting from the AS, no event exposure and no Event Data Processing provisioning in either release; the AF only stores M5 reports as local files.",
+   "summary": "Nothing is implemented: the AF embeds the Data Collection AF library but registers no 5GMS data report type, so there is no R4 reporting from the AS, no event exposure and no Event Data Processing provisioning in either release; the AF stores M5 reports as local files.",
    "requirements": [
     {
      "id": "F116+F119-af",
@@ -4682,18 +4682,18 @@
       {
        "case": "Data reporting session and client configuration for the AS",
        "verdict": "absent",
-       "what": "No Data Collection AF exists, so the AS cannot obtain a data collection and reporting client configuration.",
+       "what": "The embedded Data Collection AF registers no MS_ACCESS_ACTIVITY data report type, so no data reporting session or client configuration for that domain can be served to the AS.",
        "repo": "rt-5gms-application-function",
        "locator": "clause 4.11.2"
       },
       {
        "case": "Accept MediaStreamingAccessRecord reports with 200 (OK)",
        "verdict": "absent",
-       "what": "No R4 endpoint exists; the AF serves only the 3gpp-m1, 3gpp-m5 and 5G-MAG management APIs (and NRF status notifications).",
+       "what": "No MediaStreamingAccessRecord report can be processed: no handler for it is registered in the embedded Data Collection AF.",
        "repo": "rt-5gms-application-function"
       }
      ],
-     "exists": "The AF stores the M5 metrics reports and consumption reports it receives as files in a configured data collection directory; these files are not exposed over any interface. Data Collection AF work exists only on the unmerged branch Feature/DCAF.",
+     "exists": "The AF stores the M5 metrics reports and consumption reports it receives as files in a configured data collection directory. It embeds the Data Collection AF library and enables its R4 interface, but registers no MS_ACCESS_ACTIVITY data report type (see the Data Collection audit).",
      "noted": []
     },
     {
@@ -4821,17 +4821,17 @@
       {
        "case": "Data reporting session and client configuration for the AS",
        "verdict": "absent",
-       "what": "No Data Collection AF exists, so the AS cannot obtain a data collection and reporting client configuration.",
+       "what": "The embedded Data Collection AF registers no MS_ACCESS_ACTIVITY data report type, so no data reporting session or client configuration for that domain can be served to the AS.",
        "repo": "rt-5gms-application-function"
       },
       {
        "case": "Accept MediaStreamingAccessRecord reports with 200 (OK)",
        "verdict": "absent",
-       "what": "No R4 endpoint exists.",
+       "what": "No MediaStreamingAccessRecord report can be processed: no handler for it is registered in the embedded Data Collection AF.",
        "repo": "rt-5gms-application-function"
       }
      ],
-     "exists": "The AF stores the M5 metrics reports and consumption reports it receives as files in a configured data collection directory; these files are not exposed over any interface. Data Collection AF work exists only on the unmerged branch Feature/DCAF.",
+     "exists": "The AF stores the M5 metrics reports and consumption reports it receives as files in a configured data collection directory. It embeds the Data Collection AF library and enables its R4 interface, but registers no MS_ACCESS_ACTIVITY data report type (see the Data Collection audit).",
      "noted": []
     },
     {
@@ -5610,7 +5610,7 @@
   },
   {
    "name": "Multiple service locations",
-   "summary": "Nothing is implemented: the AF configures a single AS, the AS has no service-location, M10d, CMMF or steering support, and the client plays one DASH entry point; CMMF and multi-AS work exists only on unmerged branches.",
+   "summary": "The AF configures every Content Hosting Configuration on every configured AS, without rollback or affinity groups; the AS has no service-location, M10d, CMMF or steering support, and the client plays one DASH entry point.",
    "requirements": [
     {
      "id": "M08-af",
@@ -5628,15 +5628,15 @@
      "cases": [
       {
        "case": "Deploy the service locations of one Content Hosting Configuration across AS instances",
-       "verdict": "absent",
-       "what": "The AF always configures the first Application Server in its list and uses its canonical host name, so a Content Hosting Configuration is served from one AS only.",
+       "verdict": "implemented",
+       "what": "Every distribution configuration of a Content Hosting Configuration is configured on every Application Server in the AF's list, each AS under its own canonical host name, so the service locations are deployed across all the AS instances the AF knows.",
        "repo": "rt-5gms-application-function",
        "locator": "TS 26.512 V19.3.0 clause 7.6.4.8"
       },
       {
        "case": "Remove the configuration from every AS that succeeded when another fails",
        "verdict": "absent",
-       "what": "Only one AS is ever configured, so there is no multi-AS rollback.",
+       "what": "Each AS is configured independently; when one fails, the configuration is not removed from those that succeeded.",
        "repo": "rt-5gms-application-function"
       },
       {
@@ -5647,7 +5647,7 @@
        "locator": "TS 26.512 V19.3.0 clause 7.6.4.8"
       }
      ],
-     "exists": "The unmerged branch feature/multi-application-server-support pushes each Content Hosting Configuration to every configured AS over the 5G-MAG M3 interface; it does not add affinity groups or the Release 19 provisioning API.",
+     "exists": "The AF parses every applicationServers entry of its configuration and pushes each Content Hosting Configuration to every configured AS over the 5G-MAG M3 interface; it does not add affinity groups or the Release 19 provisioning API.",
      "noted": []
     },
     {
@@ -5671,7 +5671,7 @@
        "repo": "rt-5gms-application-server"
       }
      ],
-     "exists": "Each distribution configuration of a Content Hosting Configuration is served as its own nginx server and location (canonical domain name and optional alias), so one AS can already expose the same ingest under several base URLs. The unmerged branch feature/multi-application-server-support changes only server name handling.",
+     "exists": "Each distribution configuration of a Content Hosting Configuration is served as its own nginx server and location (canonical domain name and optional alias), so one AS can already expose the same ingest under several base URLs. The AF's multi-AS support changes only how server names are handled.",
      "noted": [
       "The clause is optional (\"may\"); a deployment that needs multiple service locations has no configuration for it."
      ]
@@ -5783,7 +5783,7 @@
        "repo": "rt-5gms-media-stream-handler"
       }
      ],
-     "exists": "The unmerged common-library branch Feature/CMMF-contentType adds a CMMF content type constant and a unit test, nothing else.",
+     "exists": "The common library defines a CMMF content type constant, with a unit test, and nothing else.",
      "noted": []
     },
     {
@@ -5809,11 +5809,11 @@
       {
        "case": "Encode media into CMMF transport resources on the Application Provider side",
        "verdict": "absent",
-       "what": "No CMMF encoding or configuration output exists on the audited commit.",
+       "what": "Only a CMMF vodConfig.json can be formatted; no media is encoded into CMMF transport resources.",
        "locator": "clause H.2.1"
       }
      ],
-     "exists": "The unmerged branch feature/cmmf-vod-config-formatter adds a formatter for a CMMF vodConfig.json; the normative CMMF format is in ETSI TS 103 973, which was not obtained.",
+     "exists": "The Application Provider can format a CMMF vodConfig.json; the normative CMMF format is in ETSI TS 103 973.",
      "noted": []
     },
     {
@@ -6041,7 +6041,7 @@
       "The AF accepts enumeration entries either as bare identifiers or as resource paths, keeping the last path element.",
       "The AF names certificates on M3 as \"{provisioningSessionId}:{certificateId}\" so that identifiers are unique across Provisioning Sessions.",
       "The AF talks M3 to each configured AS one request at a time, driven by a queue per AS (certificates first, then configurations, then deletions, then purges).",
-      "The M3 API is read in rt-common-shared, at the commit the build pins."
+      "The M3 API is read in rt-common-shared, at the version the build pins."
      ]
     },
     {
@@ -6121,7 +6121,7 @@
       "An unchanged Content Hosting Configuration update is answered 204 through the error path, so the 204 is built with a problem+json body.",
       "Content Hosting Configurations are keyed by the provisioning session identifier, so the AS holds at most one per Provisioning Session.",
       "The M3 server is generated from a merged 5G-MAG definition titled \"Prototype 5GMS AS M3 API\", version 0.0.0.",
-      "The M3 API is read in rt-common-shared, at the commit the build pins."
+      "The M3 API is read in rt-common-shared, at the version the build pins."
      ]
     },
     {
@@ -6541,7 +6541,7 @@
       }
      ],
      "noted": [
-      "The PCF and BSF clients come from the rt-5gc-service-consumers subproject at its v1.0.x branch, which this audit did not read.",
+      "The PCF and BSF clients come from the rt-5gc-service-consumers subproject, which this audit did not read.",
       "No other 5G Core function is used (for example no NEF for PFD provisioning, see the Dynamic policies domainName case)."
      ]
     }

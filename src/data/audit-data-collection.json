@@ -18,7 +18,7 @@
   {
    "project": "5G Media Streaming (5GMS)",
    "what": "the 5GMS AF is meant to embed the Data Collection AF library",
-   "status": "on the unmerged AF branch Feature/DCAF only"
+   "status": "embedded in the AF, which registers no 5GMS data report type yet"
   }
  ],
  "components": {
@@ -57,30 +57,19 @@
   },
   "msaf": {
    "short": "5GMS AF",
-   "name": "5GMS AF, development",
-   "builtAgainst": "TS 26.512 V17.10.0 (5G_APIs tag TSG109-Rel17)",
+   "name": "5GMS AF, with the Data Collection AF library embedded",
+   "builtAgainst": "TS 26.512 V17.10.0 (5G_APIs tag TSG109-Rel17), plus the Data Collection AF library of this audit",
    "repos": [
     {
      "repo": "rt-5gms-application-function",
-     "version": "v1.4.7"
-    }
-   ]
-  },
-  "msaf-branch": {
-   "short": "5GMS AF (DCAF branches)",
-   "name": "5GMS AF, unmerged branches Feature/DCAF (the code) and feature/Integrate-DCAF (development plus an integration plan only)",
-   "builtAgainst": "the AF pins unchanged, plus the DCAF library wrap (the audited library plus build-file changes only)",
-   "repos": [
-    {
-     "repo": "rt-5gms-application-function",
-     "version": "Feature/DCAF"
+     "version": ""
     }
    ]
   },
   "msas": {
    "short": "5GMS AS",
    "name": "5GMS AS",
-   "builtAgainst": "5G_APIs branch REL-17",
+   "builtAgainst": "5G_APIs at Release 17",
    "repos": [
     {
      "repo": "rt-5gms-application-server",
@@ -1015,7 +1004,7 @@
       {
        "case": "Client obtains a configuration before reporting",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in the repository or its branches."
+       "what": "No Data Collection Client exists in the repository."
       }
      ],
      "exists": "The regression scripts create a Data Reporting Session and then submit reports on it.",
@@ -1061,7 +1050,7 @@
       {
        "case": "Client invokes CreateSession",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in the repository or its branches."
+       "what": "No Data Collection Client exists in the repository."
       }
      ],
      "exists": "The regression scripts send CreateSession with externalApplicationId and supportedDomains to the direct data reporting address.",
@@ -1107,7 +1096,7 @@
       {
        "case": "Client invokes CreateSession",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in the repository or its branches."
+       "what": "No Data Collection Client exists in the repository."
       }
      ],
      "noted": []
@@ -1152,7 +1141,7 @@
       {
        "case": "Client invokes CreateSession",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in the repository or its branches."
+       "what": "No Data Collection Client exists in the repository."
       }
      ],
      "noted": []
@@ -1294,7 +1283,7 @@
       {
        "case": "Client disables collection for a domain with an empty array",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in the repository or its branches."
+       "what": "No Data Collection Client exists in the repository."
       }
      ],
      "noted": []
@@ -1339,7 +1328,7 @@
       {
        "case": "Client disables reporting for a domain with an empty array",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in the repository or its branches."
+       "what": "No Data Collection Client exists in the repository."
       }
      ],
      "noted": []
@@ -1498,7 +1487,7 @@
       {
        "case": "Application Server applies an updated DataReportingSession",
        "verdict": "absent",
-       "what": "No Application Server reporter exists in the repository or its branches."
+       "what": "No Application Server reporter exists in the repository."
       }
      ],
      "noted": []
@@ -1601,7 +1590,7 @@
       {
        "case": "Request Content-Type other than application/json (415)",
        "verdict": "differs",
-       "what": "A report whose Content-Type is not application/json, or that has no Content-Type, is not answered with 415 Unsupported Media Type, although a 415 branch exists in the handler; the OpenAPI lists 415 for this operation and TS 29.500 requires an HTTP server to be able to generate it for POST.",
+       "what": "A report whose Content-Type is not application/json, or that has no Content-Type, is not answered with 415 Unsupported Media Type, although the handler has a 415 path; the OpenAPI lists 415 for this operation and TS 29.500 requires an HTTP server to be able to generate it for POST.",
        "repo": "rt-data-collection-application-function",
        "locator": "TS 29.500 V18.10.0 clause 5.2.7.2 and table 5.2.7.1-1, row 415 Unsupported Media Type (applied by TS 26.532 V18.3.0 table 7.2.3.4.1-4 NOTE)"
       }
@@ -1627,7 +1616,7 @@
       {
        "case": "Direct Data Collection Client sends DataReports at R2",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts."
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts."
       }
      ],
      "exists": "A regression test script posts a communicationRecords DataReport to the R2 report sub-resource and accepts 200 or 204.",
@@ -1835,7 +1824,7 @@
       {
        "case": "Records cite the contextIds of the sampling rule that caused them",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts."
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts."
       }
      ],
      "exists": "The regression test script puts the Data Reporting Configuration identifier in contextIds of each record it posts.",
@@ -2039,18 +2028,18 @@
       {
        "case": "samplingPeriod",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts."
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts."
       },
       {
        "case": "locationFilter combined with samplingPeriod",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts.",
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts.",
        "locator": "table 5.4.2.1-1, NOTE"
       },
       {
        "case": "No sampling rule: default frequency in all locations",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts.",
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts.",
        "locator": "table 6.3.2.2-1, row dataSamplingRules"
       }
      ],
@@ -2074,24 +2063,24 @@
       {
        "case": "INTERVAL: report every period",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts.",
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts.",
        "locator": "table 5.4.2.1A-1, row period"
       },
       {
        "case": "THRESHOLD with reportWhenBelow true",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts."
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts."
       },
       {
        "case": "THRESHOLD with reportWhenBelow false",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts.",
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts.",
        "locator": "table 5.4.2.1A-1, row reportWhenBelow"
       },
       {
        "case": "EVENT with eventTrigger",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts."
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts."
       }
      ],
      "exists": "The DCAF library copies provisioned dataReportingConditions into the reportingConditions of each matching Data Reporting Session.",
@@ -2114,12 +2103,12 @@
       {
        "case": "Default of 100 percent when omitted",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts."
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts."
       },
       {
        "case": "Random draw on each occurrence of the reporting condition",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts.",
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts.",
        "locator": "table 5.4.2.2-1, row reportingProbability"
       }
      ],
@@ -2143,18 +2132,18 @@
       {
        "case": "Default reporting format assumed",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts."
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts."
       },
       {
        "case": "Packaging strategy when dataPackagingStrategy is absent",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts.",
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts.",
        "locator": "table 5.4.2.2-1, row dataPackagingStrategy"
       },
       {
        "case": "No reporting rule: report whenever the condition is met",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts.",
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts.",
        "locator": "table 6.3.2.2-1, row dataReportingRules"
       }
      ],
@@ -3001,7 +2990,7 @@
   },
   {
    "name": "UE client API (R7)",
-   "summary": "No Direct Data Collection Client or R7 API exists in this repository or its branches; the specification gives the client identifier no property in the session it must be sent in.",
+   "summary": "No Direct Data Collection Client or R7 API exists in this repository; the specification gives the client identifier no property in the session it must be sent in.",
    "requirements": [
     {
      "id": "G132-dc-client",
@@ -3020,7 +3009,7 @@
       {
        "case": "Dedicated client context per UE Application instance",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts."
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts."
       }
      ],
      "noted": []
@@ -3042,7 +3031,7 @@
       {
        "case": "Generate a globally unique, stable opaque identifier when consent is not given",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts."
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts."
       },
       {
        "case": "Carry the GPSI or the opaque identifier in CreateSession",
@@ -3071,7 +3060,7 @@
       {
        "case": "Destroy and recreate the session on setUserConsent",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts."
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts."
       }
      ],
      "noted": []
@@ -3093,7 +3082,7 @@
       {
        "case": "Destroy the session and create a replacement with a new identifier on resetClientReportingIdentifier",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts."
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts."
       }
      ],
      "noted": []
@@ -3115,12 +3104,12 @@
       {
        "case": "Flush unreported UE data",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts."
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts."
       },
       {
        "case": "Destroy the Data Reporting Session",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts."
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts."
       }
      ],
      "noted": []
@@ -3142,7 +3131,7 @@
       {
        "case": "Forward expedited UE data immediately",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts."
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts."
       }
      ],
      "noted": []
@@ -3164,68 +3153,68 @@
       {
        "case": "Start on registration over R7",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts."
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts."
       },
       {
        "case": "Stop on deregistration, impending failure or timeout",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts."
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts."
       },
       {
        "case": "registerUeApplication method",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts."
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts."
       },
       {
        "case": "deregisterUeApplication method",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts."
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts."
       },
       {
        "case": "setUserConsent method",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts."
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts."
       },
       {
        "case": "getDataCollectionAndReportingConfiguration method",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts."
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts."
       },
       {
        "case": "reportUeData method",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts."
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts."
       },
       {
        "case": "resetClientReportingIdentifier method",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts."
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts."
       },
       {
        "case": "uEApplicationBusy method",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts."
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts."
       },
       {
        "case": "impendingUeApplicationFailure method",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts."
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts."
       },
       {
        "case": "dataCollectionAndReportingConfigurationChanged notification",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts."
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts."
       },
       {
        "case": "dataCollectionClientBusy notification",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts.",
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts.",
        "locator": "table 8.3.1-2"
       },
       {
        "case": "impendingDataCollectionClientFailure notification",
        "verdict": "absent",
-       "what": "No Data Collection Client exists in this repository or its branches; the repository holds only the Data Collection AF and test scripts.",
+       "what": "No Data Collection Client exists in this repository; the repository holds only the Data Collection AF and test scripts.",
        "locator": "table 8.3.1-2"
       }
      ],
@@ -3235,7 +3224,7 @@
   },
   {
    "name": "Data Collection AF in the 5GMS AF",
-   "summary": "The development AF has no Data Collection AF; the unmerged branch links the library and correctly leaves R1 and R3 out, but starts it without any data report type, so it does not run; Event Data Processing provisioning is absent in the AF, the branch and the Application Provider.",
+   "summary": "The AF links the Data Collection AF library and correctly leaves R1 and R3 out, but starts it without any data report type, so it does not run; Event Data Processing provisioning is absent in the AF and the Application Provider.",
    "requirements": [
     {
      "id": "M01-msaf",
@@ -3248,37 +3237,13 @@
       "locator": "clause 4.7.1"
      },
      "repos": [
-      "rt-5gms-application-function"
-     ],
-     "cases": [
-      {
-       "case": "Data Collection AF function in the 5GMS AF",
-       "verdict": "absent",
-       "what": "The development AF contains no Data Collection AF and does not link the Data Collection AF library; it serves only the M1, M5 and 5G-MAG management APIs.",
-       "repo": "rt-5gms-application-function"
-      }
-     ],
-     "exists": "The AF writes the M5 QoE metrics reports and consumption reports it receives to files in a configured data collection directory; nothing reads them back, processes them or exposes them.",
-     "noted": []
-    },
-    {
-     "id": "M01-msaf-branch",
-     "name": "Data Collection AF instantiated in the 5GMS AF",
-     "release": "R17",
-     "component": "msaf-branch",
-     "spec": {
-      "doc": "TS 26.501",
-      "version": "V17.10.0",
-      "locator": "clause 4.7.1"
-     },
-     "repos": [
       "rt-data-collection-application-function"
      ],
      "cases": [
       {
        "case": "Data Collection AF library linked into the AF",
        "verdict": "implemented",
-       "what": "Adds the Data Collection AF repository as a Meson subproject, pinned at commit 4800883, and links its library into the AF.",
+       "what": "Includes the Data Collection AF repository as a Meson subproject and links its library into the AF.",
        "repo": "rt-data-collection-application-function"
       },
       {
@@ -3289,8 +3254,7 @@
       }
      ],
      "noted": [
-      "Library initialisation runs whether or not the dcafIntegration setting is true, and runs a second time when it is true.",
-      "The second branch, feature/Integrate-DCAF, adds only an integration plan document and no code."
+      "Library initialisation runs whether or not the dcafIntegration setting is true, and runs a second time when it is true."
      ]
     },
     {
@@ -3298,35 +3262,6 @@
      "name": "Provisioning at M1 instead of R1",
      "release": "R17",
      "component": "msaf",
-     "spec": {
-      "doc": "TS 26.501",
-      "version": "V17.10.0",
-      "locator": "clause 4.7.1"
-     },
-     "repos": [
-      "rt-5gms-application-function"
-     ],
-     "cases": [
-      {
-       "case": "No R1 provisioning interface",
-       "verdict": "implemented",
-       "what": "Offers no Ndcaf_DataReportingProvisioning (R1) API; the AF serves only the M1, M5 and 5G-MAG management APIs.",
-       "repo": "rt-5gms-application-function"
-      },
-      {
-       "case": "QoE metrics and consumption reporting provisioned at M1",
-       "verdict": "implemented",
-       "what": "Accepts Metrics Reporting Configurations and a Consumption Reporting Configuration as M1 sub-resources of a Provisioning Session; their operations are judged in the 5GMS audit.",
-       "repo": "rt-5gms-application-function"
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "M02-msaf-branch",
-     "name": "Provisioning at M1 instead of R1",
-     "release": "R17",
-     "component": "msaf-branch",
      "spec": {
       "doc": "TS 26.501",
       "version": "V17.10.0",
@@ -3346,13 +3281,13 @@
       {
        "case": "QoE metrics and consumption reporting provisioned at M1",
        "verdict": "implemented",
-       "what": "Keeps the development AF's M1 handling unchanged: Metrics Reporting Configurations and a Consumption Reporting Configuration are accepted as M1 sub-resources of a Provisioning Session; their operations are judged in the 5GMS audit.",
+       "what": "Keeps the AF's M1 handling: Metrics Reporting Configurations and a Consumption Reporting Configuration are accepted as M1 sub-resources of a Provisioning Session; their operations are judged in the 5GMS audit.",
        "repo": "rt-5gms-application-function"
       },
       {
        "case": "M1 reporting configurations passed to the Data Collection AF",
        "verdict": "absent",
-       "what": "Metrics and Consumption Reporting Configurations received at M1 are not passed to the embedded Data Collection AF; the branch changes no M1 code."
+       "what": "Metrics and Consumption Reporting Configurations received at M1 are not passed to the embedded Data Collection AF; the M1 code does not pass them on."
       }
      ],
      "noted": [
@@ -3383,10 +3318,10 @@
      "noted": []
     },
     {
-     "id": "M03-msaf-branch",
+     "id": "M03-msaf",
      "name": "Indirect Data Collection Client not instantiated",
      "release": "R17",
-     "component": "msaf-branch",
+     "component": "msaf",
      "spec": {
       "doc": "TS 26.501",
       "version": "V17.10.0",
@@ -3418,104 +3353,43 @@
       "locator": "clause 5.3.1"
      },
      "repos": [
-      "rt-5gms-application-function"
-     ],
-     "cases": [
-      {
-       "case": "Create (POST), 201 Created with Location",
-       "verdict": "absent",
-       "what": "There is no event-data-processing-configurations resource; a POST to it under a known Provisioning Session is answered 404 as an unknown sub-resource.",
-       "repo": "rt-5gms-application-function",
-       "locator": "TS 26.512 V17.10.0, clause 4.3.11.2"
-      },
-      {
-       "case": "Read (GET)",
-       "verdict": "absent",
-       "what": "Not offered: there is no Event Data Processing Configuration resource.",
-       "locator": "TS 26.512 V17.10.0, clause 4.3.11.3"
-      },
-      {
-       "case": "Update (PUT, PATCH)",
-       "verdict": "absent",
-       "what": "Not offered: there is no Event Data Processing Configuration resource.",
-       "locator": "TS 26.512 V17.10.0, clause 4.3.11.3A"
-      },
-      {
-       "case": "Destroy (DELETE)",
-       "verdict": "absent",
-       "what": "Not offered: there is no Event Data Processing Configuration resource.",
-       "locator": "TS 26.512 V17.10.0, clause 4.3.11.4"
-      },
-      {
-       "case": "Destroy processes outstanding UE data and deletes client configurations",
-       "verdict": "absent",
-       "what": "Not offered, and there is no Data Collection AF holding UE data or client configurations.",
-       "locator": "TS 26.512 V17.10.0, clause 4.3.11.4"
-      },
-      {
-       "case": "EventDataProcessingConfiguration with an eventId and Data Access Profiles",
-       "verdict": "absent",
-       "what": "The resource type is not modelled: its OpenAPI file is not among the APIs the build generates bindings for.",
-       "repo": "rt-5gms-application-function",
-       "locator": "TS 26.512 V17.10.0, table 7.11.3-1, row eventId"
-      },
-      {
-       "case": "eventDataProcessingConfigurationIds in the Provisioning Session",
-       "verdict": "absent",
-       "what": "The Provisioning Session is created with this list empty and nothing sets it.",
-       "repo": "rt-5gms-application-function"
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "M04+M06+M07+M08+M09+M10+M11+M12+M13-msaf-branch",
-     "name": "M1 Event Data Processing Provisioning",
-     "release": "R17",
-     "component": "msaf-branch",
-     "spec": {
-      "doc": "TS 26.501",
-      "version": "V17.10.0",
-      "locator": "clause 5.3.1"
-     },
-     "repos": [
       "rt-data-collection-application-function"
      ],
      "cases": [
       {
        "case": "Create (POST), 201 Created with Location",
        "verdict": "absent",
-       "what": "The branch adds no Event Data Processing resource at M1.",
+       "what": "The AF has no Event Data Processing resource at M1.",
        "locator": "TS 26.512 V17.10.0, clause 4.3.11.2"
       },
       {
        "case": "Read (GET)",
        "verdict": "absent",
-       "what": "Not offered on the branch.",
+       "what": "Not offered.",
        "locator": "TS 26.512 V17.10.0, clause 4.3.11.3"
       },
       {
        "case": "Update (PUT, PATCH)",
        "verdict": "absent",
-       "what": "Not offered on the branch.",
+       "what": "Not offered.",
        "locator": "TS 26.512 V17.10.0, clause 4.3.11.3A"
       },
       {
        "case": "Destroy (DELETE)",
        "verdict": "absent",
-       "what": "Not offered on the branch.",
+       "what": "Not offered.",
        "locator": "TS 26.512 V17.10.0, clause 4.3.11.4"
       },
       {
        "case": "Destroy processes outstanding UE data and deletes client configurations",
        "verdict": "absent",
-       "what": "Not offered; nothing on the branch passes Event Data Processing Configurations to the embedded library.",
+       "what": "Not offered; nothing in the AF passes Event Data Processing Configurations to the embedded library.",
        "locator": "TS 26.512 V17.10.0, clause 4.3.11.4"
       },
       {
        "case": "EventDataProcessingConfiguration with an eventId and Data Access Profiles",
        "verdict": "absent",
-       "what": "The branch does not model the resource type and passes no Data Access Profiles to the embedded library.",
+       "what": "The AF does not model the resource type and passes no Data Access Profiles to the embedded library.",
        "locator": "TS 26.512 V17.10.0, table 7.11.3-1, row eventId"
       }
      ],
@@ -3557,41 +3431,13 @@
       "locator": "clause 4.7.3.1"
      },
      "repos": [
-      "rt-5gms-application-function"
-     ],
-     "cases": [
-      {
-       "case": "Restrictions and aggregation from the Data Access Profile applied before exposure",
-       "verdict": "absent",
-       "what": "No Data Access Profile can be provisioned and no UE data is processed or exposed."
-      },
-      {
-       "case": "Only the aggregation functions listed per event type (Mean, Maximum, Minimum and Sum for QoE metrics only; Count for every type)",
-       "verdict": "absent",
-       "what": "No aggregation is performed.",
-       "locator": "clause 4.7.3.1 and table 4.7.3.1-1"
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "M14-msaf-branch",
-     "name": "UE data processing before exposure",
-     "release": "R17",
-     "component": "msaf-branch",
-     "spec": {
-      "doc": "TS 26.501",
-      "version": "V17.10.0",
-      "locator": "clause 4.7.3.1"
-     },
-     "repos": [
       "rt-data-collection-application-function"
      ],
      "cases": [
       {
        "case": "Restrictions and aggregation from the Data Access Profile applied before exposure",
        "verdict": "absent",
-       "what": "The branch provisions no Data Access Profile into the embedded library and registers no 5GMS data report type to process."
+       "what": "The AF provisions no Data Access Profile into the embedded library and registers no 5GMS data report type to process."
       },
       {
        "case": "Only the aggregation functions listed per event type (Mean, Maximum, Minimum and Sum for QoE metrics only; Count for every type)",
@@ -3620,41 +3466,13 @@
       {
        "case": "Event reporting parameters limited by the Event Data Processing Configuration",
        "verdict": "absent",
-       "what": "No event subscription is accepted and no Event Data Processing Configuration exists.",
+       "what": "The embedded library can take event subscriptions, but the AF provisions no Event Data Processing Configuration to limit them.",
        "locator": "clause 5.11.3"
       },
       {
        "case": "UE targeting limited by the Data Access Profiles",
        "verdict": "absent",
-       "what": "No event subscription is accepted and no Data Access Profile exists."
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "M15+M16-msaf-branch",
-     "name": "Event subscriptions limited by the Event Data Processing Configuration",
-     "release": "R17",
-     "component": "msaf-branch",
-     "spec": {
-      "doc": "TS 26.501",
-      "version": "V17.10.0",
-      "locator": "clause 5.11.3"
-     },
-     "repos": [
-      "rt-5gms-application-function"
-     ],
-     "cases": [
-      {
-       "case": "Event reporting parameters limited by the Event Data Processing Configuration",
-       "verdict": "absent",
-       "what": "The embedded library can take event subscriptions, but the branch provisions no Event Data Processing Configuration to limit them.",
-       "locator": "clause 5.11.3"
-      },
-      {
-       "case": "UE targeting limited by the Data Access Profiles",
-       "verdict": "absent",
-       "what": "The branch provisions no Data Access Profile to limit UE targeting."
+       "what": "The AF provisions no Data Access Profile to limit UE targeting."
       }
      ],
      "noted": []
@@ -3765,49 +3583,13 @@
       "locator": "clause 4.11.3"
      },
      "repos": [
-      "rt-5gms-application-function"
-     ],
-     "cases": [
-      {
-       "case": "Data reporting session and client configuration offered to the AS",
-       "verdict": "absent",
-       "what": "No Data Collection AF exists, so the AS cannot obtain a data collection client configuration.",
-       "repo": "rt-5gms-application-function",
-       "locator": "clause 4.11.2"
-      },
-      {
-       "case": "Client configuration requests MS_ACCESS_ACTIVITY with INTERVAL, THRESHOLD or OFF",
-       "verdict": "absent",
-       "what": "No client configuration is produced.",
-       "locator": "clause 4.11.2"
-      },
-      {
-       "case": "Access report acknowledged with 200 (OK)",
-       "verdict": "absent",
-       "what": "There is no R4 endpoint.",
-       "repo": "rt-5gms-application-function"
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "M17+M19+M22-msaf-branch",
-     "name": "R4 Data Collection AF side",
-     "release": "R17",
-     "component": "msaf-branch",
-     "spec": {
-      "doc": "TS 26.512",
-      "version": "V17.10.0",
-      "locator": "clause 4.11.3"
-     },
-     "repos": [
       "rt-data-collection-application-function"
      ],
      "cases": [
       {
        "case": "Data reporting session and client configuration offered to the AS",
        "verdict": "absent",
-       "what": "The branch leaves the library's R4 interface enabled and configures a listener for it, but registers no MS_ACCESS_ACTIVITY data report type, so no session for that domain can be served.",
+       "what": "The AF leaves the library's R4 interface enabled and configures a listener for it, but registers no MS_ACCESS_ACTIVITY data report type, so no session for that domain can be served.",
        "locator": "clause 4.11.2"
       },
       {
@@ -3819,11 +3601,11 @@
       {
        "case": "Access report acknowledged with 200 (OK)",
        "verdict": "absent",
-       "what": "No MediaStreamingAccessRecord report can be processed: the branch registers no handler for it, and the embedded library passes only communication records to handlers and answers an accepted report with 204 (No Content), where this clause requires 200 (OK) from the Data Collection AF instantiated in the 5GMS AF.",
+       "what": "No MediaStreamingAccessRecord report can be processed: the AF registers no handler for it, and the embedded library passes only communication records to handlers and answers an accepted report with 204 (No Content), where this clause requires 200 (OK) from the Data Collection AF instantiated in the 5GMS AF.",
        "repo": "rt-data-collection-application-function"
       }
      ],
-     "exists": "The library maps the MS_ACCESS_ACTIVITY domain to the mediaStreamingAccessRecords property of a DataReport and carries the MediaStreamingAccessRecord model; the branch configures an applicationServerDataReporting listener and leaves R4 enabled.",
+     "exists": "The library maps the MS_ACCESS_ACTIVITY domain to the mediaStreamingAccessRecords property of a DataReport and carries the MediaStreamingAccessRecord model; the AF configures an applicationServerDataReporting listener and leaves R4 enabled.",
      "noted": []
     },
     {
@@ -3875,50 +3657,19 @@
       "locator": "clause 4.7.1, reference point R2"
      },
      "repos": [
-      "rt-5gms-application-function"
-     ],
-     "cases": [
-      {
-       "case": "QoE metrics reports passed to the Data Collection AF",
-       "verdict": "absent",
-       "what": "The AF accepts QoE metrics reports at M5 and writes them to files; there is no Data Collection AF to pass them to.",
-       "repo": "rt-5gms-application-function",
-       "locator": "clause 4.7.2.1, item 1"
-      },
-      {
-       "case": "Consumption reports passed to the Data Collection AF",
-       "verdict": "absent",
-       "what": "The AF accepts consumption reports at M5 and writes them to files; there is no Data Collection AF to pass them to.",
-       "repo": "rt-5gms-application-function",
-       "locator": "clause 4.7.2.1, item 2"
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "M28+M29+M30-msaf-branch",
-     "name": "M5 reports passed to the subordinate Data Collection AF",
-     "release": "R17",
-     "component": "msaf-branch",
-     "spec": {
-      "doc": "TS 26.501",
-      "version": "V17.10.0",
-      "locator": "clause 4.7.1, reference point R2"
-     },
-     "repos": [
       "rt-data-collection-application-function"
      ],
      "cases": [
       {
        "case": "QoE metrics reports passed to the Data Collection AF",
        "verdict": "absent",
-       "what": "The branch leaves the M5 report handlers unchanged, so QoE metrics reports still go only to files and never reach the embedded library.",
+       "what": "The AF leaves the M5 report handlers unchanged, so QoE metrics reports still go only to files and never reach the embedded library.",
        "locator": "clause 4.7.2.1, item 1"
       },
       {
        "case": "Consumption reports passed to the Data Collection AF",
        "verdict": "absent",
-       "what": "The branch leaves the M5 report handlers unchanged, so consumption reports still go only to files and never reach the embedded library.",
+       "what": "The AF leaves the M5 report handlers unchanged, so consumption reports still go only to files and never reach the embedded library.",
        "locator": "clause 4.7.2.1, item 2"
       },
       {
@@ -3948,42 +3699,12 @@
       {
        "case": "Dynamic policy invocations logged and reported",
        "verdict": "absent",
-       "what": "The AF handles the invocation without logging it to any data collection function.",
-       "repo": "rt-5gms-application-function"
+       "what": "The AF leaves this handler unchanged, so the invocation is not reported to the embedded library."
       },
       {
        "case": "AF-based Network Assistance invocations logged and reported",
        "verdict": "absent",
-       "what": "The AF handles the invocation without logging it to any data collection function.",
-       "repo": "rt-5gms-application-function",
-       "locator": "clause 4.7.2.1, item 4"
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "M31+M32-msaf-branch",
-     "name": "AF invocations logged into the Data Collection AF",
-     "release": "R17",
-     "component": "msaf-branch",
-     "spec": {
-      "doc": "TS 26.501",
-      "version": "V17.10.0",
-      "locator": "clause 4.7.2.1, item 3"
-     },
-     "repos": [
-      "rt-5gms-application-function"
-     ],
-     "cases": [
-      {
-       "case": "Dynamic policy invocations logged and reported",
-       "verdict": "absent",
-       "what": "The branch leaves this handler unchanged, so the invocation is not reported to the embedded library."
-      },
-      {
-       "case": "AF-based Network Assistance invocations logged and reported",
-       "verdict": "absent",
-       "what": "The branch leaves this handler unchanged, so the invocation is not reported to the embedded library.",
+       "what": "The AF leaves this handler unchanged, so the invocation is not reported to the embedded library.",
        "locator": "clause 4.7.2.1, item 4"
       }
      ],
@@ -4041,43 +3762,13 @@
       "locator": "clause 4.11A.3"
      },
      "repos": [
-      "rt-5gms-application-function"
-     ],
-     "cases": [
-      {
-       "case": "R2 client configuration for MS_ANBR_NETWORK_ASSISTANCE (EVENT or OFF)",
-       "verdict": "absent",
-       "what": "No Data Collection AF exists, so no R2 configuration is offered.",
-       "repo": "rt-5gms-application-function",
-       "locator": "clause 4.11A.2"
-      },
-      {
-       "case": "ANBR invocation report acknowledged with 200 (OK)",
-       "verdict": "absent",
-       "what": "There is no R2 endpoint.",
-       "repo": "rt-5gms-application-function"
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "M33+M34-msaf-branch",
-     "name": "R2 Data Collection AF side for ANBR-based Network Assistance",
-     "release": "R19",
-     "component": "msaf-branch",
-     "spec": {
-      "doc": "TS 26.512",
-      "version": "V19.3.0",
-      "locator": "clause 4.11A.3"
-     },
-     "repos": [
       "rt-data-collection-application-function"
      ],
      "cases": [
       {
        "case": "R2 client configuration for MS_ANBR_NETWORK_ASSISTANCE (EVENT or OFF)",
        "verdict": "absent",
-       "what": "The branch disables the library's R2 interface, as its Release 17 baseline instantiates no R2.",
+       "what": "The AF disables the library's R2 interface, as its Release 17 baseline instantiates no R2.",
        "locator": "clause 4.11A.2"
       },
       {
@@ -4086,7 +3777,7 @@
        "what": "No R2 endpoint is enabled and no ANBR data report type is registered."
       }
      ],
-     "exists": "The library has an R2 reporting interface (disabled by the branch) and carries the ANBRNetworkAssistanceInvocationRecord model.",
+     "exists": "The library has an R2 reporting interface (disabled in the AF) and carries the ANBRNetworkAssistanceInvocationRecord model.",
      "noted": []
     },
     {
@@ -4122,10 +3813,10 @@
   },
   {
    "name": "5GMS events exposed",
-   "summary": "No 5GMS event is generated or exposed in either release: the development AF has no event exposure, the branch advertises only the UE Communication feature and sets no event generation callback, and the Application Provider has no Event Consumer AF.",
+   "summary": "No 5GMS event is generated or exposed: the AF advertises only the UE Communication feature and sets no event generation callback, and the Application Provider has no Event Consumer AF.",
    "requirements": [
     {
-     "id": "M39+M40+M42-msaf",
+     "id": "M42-msaf",
      "name": "Naf_EventExposure for 5GMS events",
      "release": "R17",
      "component": "msaf",
@@ -4135,35 +3826,24 @@
       "locator": "clause 18"
      },
      "repos": [
-      "rt-5gms-application-function"
+      "rt-data-collection-application-function"
      ],
      "cases": [
       {
-       "case": "Subscription to the five 5GMS event types (MS_QOE_METRICS, MS_CONSUMPTION, MS_NET_ASSIST_INVOCATION, MS_DYN_POLICY_INVOCATION, MS_ACCESS_ACTIVITY)",
-       "verdict": "absent",
-       "what": "The AF offers no Naf_EventExposure service.",
-       "repo": "rt-5gms-application-function"
-      },
-      {
-       "case": "Negotiation of the 5GMS optional features",
-       "verdict": "absent",
-       "what": "No supported features are advertised or negotiated.",
-       "locator": "clause 18"
-      },
-      {
        "case": "Subscribe input and output parameters as in TS 23.502",
-       "verdict": "absent",
-       "what": "No subscription operation exists.",
+       "verdict": "implemented",
+       "what": "The embedded library's Naf_EventExposure Subscribe operation takes the AfEventExposureSubsc of TS 29.517 and answers 201 Created with it; its handling is judged under the Data Collection AF library.",
+       "repo": "rt-data-collection-application-function",
        "locator": "clause 4.12.2"
       }
      ],
      "noted": []
     },
     {
-     "id": "M39+M40-msaf-branch",
+     "id": "M39+M40-msaf",
      "name": "Naf_EventExposure for 5GMS events",
      "release": "R17",
-     "component": "msaf-branch",
+     "component": "msaf",
      "spec": {
       "doc": "TS 26.512",
       "version": "V17.10.0",
@@ -4176,7 +3856,7 @@
       {
        "case": "Subscription to the five 5GMS event types (MS_QOE_METRICS, MS_CONSUMPTION, MS_NET_ASSIST_INVOCATION, MS_DYN_POLICY_INVOCATION, MS_ACCESS_ACTIVITY)",
        "verdict": "absent",
-       "what": "The branch leaves the library's event exposure interfaces enabled but sets no event generation callback, so no 5GMS event can be produced."
+       "what": "The AF leaves the library's event exposure interfaces enabled but sets no event generation callback, so no 5GMS event can be produced."
       },
       {
        "case": "Negotiation of the 5GMS optional features",
@@ -4229,35 +3909,7 @@
       {
        "case": "Exposure to the NWDAF and the Event Consumer AF",
        "verdict": "absent",
-       "what": "No event exposure service exists for any consumer.",
-       "locator": "clause 4.3.11.1"
-      },
-      {
-       "case": "Exposure to the NEF",
-       "verdict": "absent",
-       "what": "No event exposure service exists for any consumer."
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "M05+M41-msaf-branch",
-     "name": "Eligible consumers of 5GMS events",
-     "release": "R17",
-     "component": "msaf-branch",
-     "spec": {
-      "doc": "TS 26.512",
-      "version": "V17.10.0",
-      "locator": "clause 4.12.1"
-     },
-     "repos": [
-      "rt-5gms-application-function"
-     ],
-     "cases": [
-      {
-       "case": "Exposure to the NWDAF and the Event Consumer AF",
-       "verdict": "absent",
-       "what": "The branch configures one listener for the NWDAF and one for the Event Consumer AF, but no 5GMS event is produced for either.",
+       "what": "The AF configures one listener for the NWDAF and one for the Event Consumer AF, but no 5GMS event is produced for either.",
        "locator": "clause 4.3.11.1"
       },
       {
@@ -4266,7 +3918,7 @@
        "what": "No listener for the NEF is configured."
       }
      ],
-     "exists": "The branch leaves both event exposure interfaces of the library enabled and declares a listener for each.",
+     "exists": "The AF leaves both event exposure interfaces of the library enabled and declares a listener for each.",
      "noted": []
     },
     {
@@ -4280,86 +3932,38 @@
       "locator": "clause 4.7.4.1"
      },
      "repos": [
-      "rt-5gms-application-function"
-     ],
-     "cases": [
-      {
-       "case": "QoE metrics events from Media Session Handler reports",
-       "verdict": "absent",
-       "what": "No event is generated: there is no Data Collection AF and no source feeds one."
-      },
-      {
-       "case": "Consumption events from Media Session Handler reports",
-       "verdict": "absent",
-       "what": "No event is generated: there is no Data Collection AF and no source feeds one."
-      },
-      {
-       "case": "Dynamic policy invocation events from the AF",
-       "verdict": "absent",
-       "what": "No event is generated: there is no Data Collection AF and no source feeds one."
-      },
-      {
-       "case": "AF-based Network Assistance invocation events from the AF",
-       "verdict": "absent",
-       "what": "No event is generated: there is no Data Collection AF and no source feeds one."
-      },
-      {
-       "case": "Media streaming access events from AS reports",
-       "verdict": "absent",
-       "what": "No event is generated: there is no Data Collection AF and no source feeds one."
-      },
-      {
-       "case": "Event payload in the MSEventExposure attributes (msQoeMetrics, msConsumpRpts, msNetAssistInvs, msDynPlyInvs, msAccesses)",
-       "verdict": "absent",
-       "what": "No event is generated: there is no Data Collection AF and no source feeds one.",
-       "locator": "TS 29.517 V18.6.0, clause 4.2.4.2, list item b) 15)"
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "M43+M44-msaf-branch",
-     "name": "5GMS event types, sources and payload",
-     "release": "R17",
-     "component": "msaf-branch",
-     "spec": {
-      "doc": "TS 26.501",
-      "version": "V17.10.0",
-      "locator": "clause 4.7.4.1"
-     },
-     "repos": [
       "rt-data-collection-application-function"
      ],
      "cases": [
       {
        "case": "QoE metrics events from Media Session Handler reports",
        "verdict": "absent",
-       "what": "No event is generated: the branch registers no data report type and no event generation callback, and no report source feeds the embedded library."
+       "what": "No event is generated: the AF registers no data report type and no event generation callback, and no report source feeds the embedded library."
       },
       {
        "case": "Consumption events from Media Session Handler reports",
        "verdict": "absent",
-       "what": "No event is generated: the branch registers no data report type and no event generation callback, and no report source feeds the embedded library."
+       "what": "No event is generated: the AF registers no data report type and no event generation callback, and no report source feeds the embedded library."
       },
       {
        "case": "Dynamic policy invocation events from the AF",
        "verdict": "absent",
-       "what": "No event is generated: the branch registers no data report type and no event generation callback, and no report source feeds the embedded library."
+       "what": "No event is generated: the AF registers no data report type and no event generation callback, and no report source feeds the embedded library."
       },
       {
        "case": "AF-based Network Assistance invocation events from the AF",
        "verdict": "absent",
-       "what": "No event is generated: the branch registers no data report type and no event generation callback, and no report source feeds the embedded library."
+       "what": "No event is generated: the AF registers no data report type and no event generation callback, and no report source feeds the embedded library."
       },
       {
        "case": "Media streaming access events from AS reports",
        "verdict": "absent",
-       "what": "No event is generated: the branch registers no data report type and no event generation callback, and no report source feeds the embedded library."
+       "what": "No event is generated: the AF registers no data report type and no event generation callback, and no report source feeds the embedded library."
       },
       {
        "case": "Event payload in the MSEventExposure attributes (msQoeMetrics, msConsumpRpts, msNetAssistInvs, msDynPlyInvs, msAccesses)",
        "verdict": "absent",
-       "what": "No event is generated: the branch registers no data report type and no event generation callback, and no report source feeds the embedded library.",
+       "what": "No event is generated: the AF registers no data report type and no event generation callback, and no report source feeds the embedded library.",
        "locator": "TS 29.517 V18.6.0, clause 4.2.4.2, list item b) 15)"
       }
      ],
@@ -4371,46 +3975,6 @@
      "name": "Release 19 exposed event content",
      "release": "R19",
      "component": "msaf",
-     "spec": {
-      "doc": "TS 26.501",
-      "version": "V19.4.0",
-      "locator": "clause 4.7.4.3"
-     },
-     "repos": [
-      "rt-5gms-application-function"
-     ],
-     "cases": [
-      {
-       "case": "Common baseline parameters in each exposed event",
-       "verdict": "absent",
-       "what": "No event is exposed."
-      },
-      {
-       "case": "UE identity and location exposed only when the exposure restrictions permit",
-       "verdict": "absent",
-       "what": "No event is exposed.",
-       "locator": "TS 26.512 V19.3.0, table 18.2.2-1, row ueIdentification"
-      },
-      {
-       "case": "Abstract base types (BaseEventCollection, BaseEventRecord) never exposed directly",
-       "verdict": "absent",
-       "what": "No event is exposed.",
-       "locator": "TS 26.512 V19.3.0, clause 18.2.1"
-      },
-      {
-       "case": "Per-event parameter sets (QoE metrics, consumption, dynamic policy, Network Assistance, media streaming access)",
-       "verdict": "absent",
-       "what": "No event is exposed.",
-       "locator": "clause 4.7.4.8"
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "M45+M46+M47+M48-msaf-branch",
-     "name": "Release 19 exposed event content",
-     "release": "R19",
-     "component": "msaf-branch",
      "spec": {
       "doc": "TS 26.501",
       "version": "V19.4.0",

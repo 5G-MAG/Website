@@ -196,7 +196,7 @@ export const SHOWCASE_BASKETS = {
           status: 'available',
           features: [
             { name: 'AI service scenarios (TR 26.870 annex D.1)', status: 'yes' }, // table D.1.1: defined in the testbed's configs/scenarios.yaml; AI gateway (D.1.2.11) not yet defined
-            { name: 'Network profiles (annex D.3)', status: 'yes' }, // development branch: all eleven profiles of table D.3.1-1, lossy at a fixed 10 %
+            { name: 'Network profiles (annex D.3)', status: 'yes' }, // all eleven profiles of table D.3.1-1, lossy at a fixed 10 %
             { name: 'Traffic, response-time, service and task metrics (annex D.4)', status: 'yes' }, // D.4.1: the metrics produced by the testbed
           ],
           tutorial: { label: 'Run the testbed', to: '/testbeds/6g-testbed/tutorials/introduction-6g-testbed' },

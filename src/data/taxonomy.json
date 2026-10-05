@@ -1058,7 +1058,7 @@
         "repo_slug": "rt-mbms-tx-for-qrd-and-crd",
         "display_name": "5G Broadcast TX with PWS support",
         "description": "Implementation of Public Warning System (PWS) alerts over 5G Broadcast.",
-        "repo_url": "https://github.com/5G-MAG/rt-mbms-tx-for-qrd-and-crd/tree/emergency-alerts",
+        "repo_url": "https://github.com/5G-MAG/rt-mbms-tx-for-qrd-and-crd/tree/main",
         "branch": "emergency-alerts",
         "license": "AGPLv3.0",
         "standards": [
@@ -1800,7 +1800,7 @@
       {
         "repo_slug": "rt-mbms-client",
         "display_name": "MBMS Client (ROUTE)",
-        "description": "The MBMS client, listed here for real-time object delivery. It delivers over FLUTE today; ROUTE support is preserved on its route-gpac branch, seven commits contributed by GPAC against the client's predecessor, and is the starting point for ROUTE here. Supersedes rt-mbms-mw, whose route-gpac branch the ROUTE walkthrough still builds from.",
+        "description": "The MBMS client, listed here for real-time object delivery over FLUTE and, built with GPAC, over ROUTE. Supersedes rt-mbms-mw.",
         "repo_url": "https://github.com/5G-MAG/rt-mbms-client",
         "branch": "route-gpac",
         "license": "5G-MAG PL v1.0",

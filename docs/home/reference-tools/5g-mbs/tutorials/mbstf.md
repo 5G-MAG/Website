@@ -247,7 +247,7 @@ You can install and run the _Express_ simple media server directly or via Docker
 
    ```bash
    cd ~
-   git clone -b development https://github.com/5G-MAG/rt-mbs-examples.git
+   git clone https://github.com/5G-MAG/rt-mbs-examples.git
    ```
 
 2. Prepare the _Express_ server for running:
@@ -270,7 +270,7 @@ The media server is now running on TCP port 3004 and ready to serve objects for 
 1. Clone the rt-mbs-examples repository:
    ```bash
    cd ~
-   git clone -b development https://github.com/5G-MAG/rt-mbs-examples.git
+   git clone https://github.com/5G-MAG/rt-mbs-examples.git
    ```
 2. Navigate to the Docker directory:
    ```bash

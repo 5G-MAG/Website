@@ -474,7 +474,8 @@ export default function Home() {
                       <a href={r.url} target="_blank" rel="noreferrer" className={styles.repoName}>
                         {r.name}
                       </a>
-                      {r.branch && <span className={styles.repoBranch}>{r.branch}</span>}
+                      {/* only the MBS branch is named on the site; every other entry is read as its main branch */}
+                      {r.branch === '5mbs' && <span className={styles.repoBranch}>{r.branch}</span>}
                       {r.description && <p className={styles.repoDesc}>{r.description}</p>}
                     </div>
                     <div className={styles.repoMeta}>

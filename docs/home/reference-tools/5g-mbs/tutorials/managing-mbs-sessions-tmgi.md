@@ -23,7 +23,7 @@ description: Shows how to create, refresh and manage MBS Broadcast Sessions, TMG
 This page shows how to create and manage MBS sessions and their identifiers on the MB-SMF. An MBS session groups the devices that receive the same content; a **TMGI (Temporary Mobile Group Identity)** names that session, and an **SSM (Source-Specific Multicast address)** identifies the source and destination of the multicast traffic that feeds it.
 
 :::note
-See [MBS support in the 5GC (Docker deployment)](./docker-implementation) for which branch this tutorial's Docker deployment builds by default, and its bearing on this exact TMGI/session code path.
+See [MBS support in the 5GC (Docker deployment)](./docker-implementation) for what this tutorial's Docker deployment builds by default.
 :::
 
 MBS Sessions can be of two different types, Broadcast MBS Sessions and Multicast MBS Sessions. Broadcast MBS Sessions

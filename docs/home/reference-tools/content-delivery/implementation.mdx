@@ -5,8 +5,6 @@ sidebar_position: 2
 description: Specifications and architecture diagrams for delivering DASH, HLS, and CMAF content over FLUTE and ROUTE in 5G Broadcast and 5G MBS.
 ---
 
-import ImplementationBoard from '@site/src/components/ImplementationBoard';
-import { LIBFLUTE_COMPONENTS, LIBFLUTE_SECTIONS } from '@site/src/data/implementation/content-delivery';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <div class="topic-banner">
@@ -60,26 +58,9 @@ The diagram below shows the same delivery protocol tools used with 5G Multicast 
 - [3GPP RAN and Core Platforms](../3gpp-platforms/)
 - [Common Tools](../common-tools/)
 
-## rt-libflute: what's implemented, feature by feature
+## rt-libflute
 
-The rest of this project's specification set (ROUTE, DASH/HLS/CMAF) is tracked at the role level above. FLUTE is 5G-MAG's own library, [rt-libflute](https://github.com/5G-MAG/rt-libflute), so it gets a rigorous, per-feature audit against TS 26.346 and the FLUTE RFCs instead. The board below groups the audit by protocol area, so you can jump straight to the one you care about.
-
-:::note[Key terms]
-- **FLUTE**: File Delivery over Unidirectional Transport &mdash; the protocol this library implements. **ALC** / **LCT**: the two lower-level building blocks FLUTE is built on (congestion control and packet framing, respectively).
-- **FDT**: File Delivery Table &mdash; a special FLUTE object (always sent with TOI 0) listing every file currently available in the session and how to decode it. Resent repeatedly ("carousel") so a receiver joining mid-session can still discover everything.
-- **TOI** / **TSI**: Transport Object Identifier (which file a packet belongs to) and Transport Session Identifier (which session). Every FLUTE packet carries both.
-- **FEC**: Forward Error Correction &mdash; redundant data that lets a receiver reconstruct a file even if some packets are lost, without a return channel to ask for a resend.
-:::
-
-:::note[Audit baseline]
-This describes the `rt-libflute` `development` branch as of 2026-08-11. It is a source-level reading of the code against the specification text, not a maintainer sign-off.
-:::
-
-:::caution[This is the gap that matters most]
-**Raptor FEC** (RFC 5053; TS 26.346 &sect;7.2.2, &sect;7.2.12, Annex B) &mdash; TS 26.346 &sect;7.2.2 states: "A UE that supports MBMS User Services **shall** support a decoder for the Raptor FEC scheme." That decoder does not exist in `development` today. Everything else in this audit is either done or a narrower gap; this is the one place the implementation falls short of a hard MUST-level requirement central to what MBMS/MBS download is for &mdash; without it, every download relies solely on Compact No-Code FEC.
-:::
-
-<ImplementationBoard components={LIBFLUTE_COMPONENTS} sections={LIBFLUTE_SECTIONS} />
+[rt-libflute](https://github.com/5G-MAG/rt-libflute) implements FLUTE in its three profiles: unprofiled FLUTE, MBMS download and MBS Object Distribution. Its audit case by case against Release 19 is in preparation and will be published here. What each profile requires is on the [Features](/tech/content-delivery/features) page of the Technical Analysis.
 
 ## Coded Multisource Media Format (CMMF)
 
