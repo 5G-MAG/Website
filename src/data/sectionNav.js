@@ -52,14 +52,15 @@ export function stripBaseUrl(pathname, baseUrl) {
 // id={b.key}).
 const TECHNOLOGY_ITEMS = TOPIC_BASKETS.map((b) => ({ label: b.title, href: `/tech#${b.key}` }));
 
-// The Technology mega menu: every project with its own page, grouped under its area (taxonomy order).
-// An area with no project yet but its own page lists that page instead.
+// The Solutions mega menu's lower part: every project with its own Technical Analysis page, grouped
+// under its area (taxonomy order); each group's title links to the area page. An area with no project
+// yet but its own page lists that page instead.
 export const TECHNOLOGY_GROUPS = TOPIC_BASKETS.map((b) => {
   const items = PROJECTS.filter((p) => p.basket === b.key && p.tech_url)
     .map((p) => ({ label: techLabelOf(p), href: p.tech_url, icon: p.icon }));
   return {
     title: b.title,
-    href: `/tech#${b.key}`,
+    href: BASKET_PAGE[b.key] || `/tech#${b.key}`,
     icon: b.icon,
     accent: BASKET_ACCENT[b.key],
     items: items.length ? items : b.tech_url ? [{ label: b.title, href: b.tech_url, icon: b.icon }] : [],

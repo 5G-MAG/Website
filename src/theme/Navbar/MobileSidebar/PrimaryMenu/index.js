@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavbarMobileSidebar } from '@docusaurus/theme-common/internal';
 import NavbarItem from '@theme/NavbarItem';
 import { useNavbarItems, MOBILE_GLOBAL_ITEMS } from '../../../navItems';
-import { SECTION_NAV, SOLUTIONS_ITEMS } from '../../../../data/sectionNav';
+import { SECTION_NAV, SOLUTIONS_ITEMS, TECHNOLOGY_GROUPS } from '../../../../data/sectionNav';
 
 // Docusaurus's stock PrimaryMenu reads items straight from
 // useThemeConfig().navbar.items (a static config array) — since the
@@ -15,7 +15,7 @@ import { SECTION_NAV, SOLUTIONS_ITEMS } from '../../../../data/sectionNav';
 // The desktop nav's hover flyout (Navbar/Content) shows each pillar's own
 // `subtitle` (SECTION_NAV) on hover/focus -- a newcomer on mobile never
 // gets that (no hover, and this menu had no flyout mechanism at all), so
-// "Technology"/"Standardisation"/"Software Accelerator"/"In Action" read as
+// "Standardisation"/"Software Accelerator"/"In Action" read as
 // unglossed internal jargon here (2026-09-27, member-acquisition clarity
 // audit). Shown as a plain-text line under the item instead, derived from
 // the same SECTION_NAV data the desktop flyout already uses, not a second
@@ -39,15 +39,28 @@ export default function NavbarMobilePrimaryMenu() {
           // its own sibling <li>, both direct children of this <ul>.
           <React.Fragment key={i}>
             {item.solutionsMenu ? (
-              // Solutions has no page: a heading, then its area pages as indented links.
+              // Solutions has no page: a heading, then each area page with its projects' Technical
+              // Analysis indented under it (the desktop mega menu's two parts), then the /tech hub.
               <>
                 <li className="menu__list-item">
                   <span className={`menu__link ${item.className || ''}`}>{item.label}</span>
                 </li>
-                {SOLUTIONS_ITEMS.map((sub) => (
-                  <NavbarItem key={sub.href} mobile to={sub.href} label={sub.label}
-                    className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
-                ))}
+                {SOLUTIONS_ITEMS.map((sub) => {
+                  const group = TECHNOLOGY_GROUPS.find((g) => g.href === sub.href);
+                  return (
+                    <React.Fragment key={sub.href}>
+                      <NavbarItem mobile to={sub.href} label={sub.label}
+                        className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
+                      {(group?.items || []).map((p) => (
+                        <NavbarItem key={p.href} mobile to={p.href} label={p.label}
+                          className="padding-left--lg margin-left--md" style={{ fontSize: '0.85rem' }}
+                          onClick={() => mobileSidebar.toggle()} />
+                      ))}
+                    </React.Fragment>
+                  );
+                })}
+                <NavbarItem mobile to="/tech" label="All technology"
+                  className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
               </>
             ) : (
               <NavbarItem mobile {...item} onClick={() => mobileSidebar.toggle()} />

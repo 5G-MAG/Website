@@ -198,11 +198,20 @@ Hide color mode toggle in small viewports
 }
 
 .navDropdownWrapper:hover .navDropdownMenu,
-.navDropdownWrapper:focus-within .navDropdownMenu {
+.navDropdownWrapper:focus-within .navDropdownMenu,
+.navDropdownOpen .navDropdownMenu {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
   transform: translate(-50%, 0);
+}
+
+/* While the Solutions panel is held open (the pointer crossing a neighbouring item on its way into the
+   wide panel), the neighbours' own flyouts stay closed, so they cannot cover the panel. */
+.navGroup:has(.navDropdownOpen) .navDropdownWrapper:not(.navDropdownOpen) .navDropdownMenu {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .navDropdownSubtitle {
@@ -289,18 +298,58 @@ Hide color mode toggle in small viewports
   padding: 0.7rem 0.75rem 0.6rem;
 }
 
+/* The area title is a link to the area page: drawn as a tinted band in the area's colour with an
+   arrow, which fills with the colour on hover, so it reads as clickable apart from the project rows. */
 .navMegaArea {
   display: flex;
   align-items: center;
   gap: 0.55rem;
+  margin: -0.25rem -0.3rem 0;
+  padding: 0.35rem 0.5rem 0.35rem 0.35rem;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--accent, var(--ifm-color-primary)) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent, var(--ifm-color-primary)) 35%, transparent);
   font-size: 0.92rem;
   font-weight: 700;
   line-height: 1.25;
   color: var(--ifm-color-emphasis-900) !important;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
-.navMegaArea:hover {
+.navMegaAreaTitle {
+  flex: 1;
+}
+
+.navMegaAreaArrow {
+  flex: none;
+  color: var(--accent, var(--ifm-color-primary));
+  font-weight: 700;
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.navMegaArea:hover,
+.navMegaArea:focus-visible {
+  background: var(--accent, var(--ifm-color-primary));
+  color: #fff !important;
   text-decoration: none;
+}
+
+.navMegaArea:hover .navMegaAreaArrow,
+.navMegaArea:focus-visible .navMegaAreaArrow {
+  color: #fff;
+  transform: translateX(3px);
+}
+
+.navMegaArea:hover .navAreaIcon,
+.navMegaArea:focus-visible .navAreaIcon {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navMegaArea,
+  .navMegaAreaArrow {
+    transition: none;
+  }
 }
 
 .navMegaList {
@@ -351,7 +400,7 @@ Hide color mode toggle in small viewports
   color: #fff;
 }
 
-/* Solutions: the nine areas as two columns of icon rows. */
+/* The pillar dropdowns (Standardisation, Software Accelerator, In Action, News): two columns of icon rows. */
 .navAreasMenu {
   width: min(560px, calc(100vw - 2rem));
   max-width: none;
@@ -603,3 +652,25 @@ See https://github.com/facebook/docusaurus/pull/11142
     display: none;
   }
 }
+
+/* Solutions: the wide panel (.navMegaMenu), one card per area in three columns (.navMegaGroups). On a
+   short screen the cards scroll inside the panel. The scroll sits on the cards, not on the panel: an
+   overflow on the panel would clip its ::before bridge, and the pointer would lose :hover in the gap
+   between the navbar item and the panel. */
+.navSolutionsScroll {
+  max-height: calc(100vh - var(--ifm-navbar-height) - 7.5rem);
+  overflow-y: auto;
+}
+
+.navHeadAction {
+  flex: none;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ifm-color-primary);
+  white-space: nowrap;
+}
+
+.navHeadAction:hover {
+  text-decoration: underline;
+}
+

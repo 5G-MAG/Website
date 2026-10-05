@@ -3,7 +3,7 @@ import { SLACK_INVITE_URL } from '../data/socialLinks';
 
 // Shared between the desktop nav (Navbar/Content) and the mobile drawer
 // (Navbar/MobileSidebar/PrimaryMenu) — the navbar renders identically on
-// every route (matching the homepage), plain links only, no dropdowns.
+// every route (matching the homepage); Navbar/Content adds the flyouts.
 // About's/Tech's own sub-pages still get a left sidebar on their actual doc
 // content pages via sidebars-home.js / sidebars-tech.js (Docusaurus's own
 // doc sidebar). Developer's own remaining docs (how-to-use, guidelines,
@@ -21,19 +21,14 @@ export const NEWS_ITEM = { to: '/news', label: 'News', position: 'left' };
 // stand out with bolder, brand-colored text rather than blending in as just
 // another menu entry. Spacing between every item (including this cluster's
 // neighbors) is uniform — see .navGroup's `gap` in Navbar/Content/styles.module.css.
-// Solutions: a menu of the area pages (src/data/sectionNav.js SOLUTIONS_ITEMS), with no page of its own.
+// Solutions: one menu with the area pages (SOLUTIONS_ITEMS) and, under them, every project's Technical
+// Analysis grouped by area (TECHNOLOGY_GROUPS), both in src/data/sectionNav.js. It has no page of its own
+// and replaces the former separate Technology item; /tech stays reachable from the menu.
 // Navbar/Content and the mobile drawer render it themselves; it is never passed to NavbarItem.
 export const SOLUTIONS_ITEM = {
   label: 'Solutions',
   position: 'left',
   solutionsMenu: true,
-  className: styles.primaryNavItem,
-};
-
-export const PROFILES_ITEM = {
-  to: '/tech',
-  label: 'Technology',
-  position: 'left',
   className: styles.primaryNavItem,
 };
 
@@ -63,7 +58,6 @@ export function useNavbarItems() {
     ABOUT_ITEM,
     MEMBERSHIP_ITEM,
     SOLUTIONS_ITEM,
-    PROFILES_ITEM,
     FEEDBACK_ITEM,
     DEV_ITEM,
     INTEROP_ITEM,

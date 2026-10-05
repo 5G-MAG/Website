@@ -193,7 +193,9 @@ function SlidingIndicatorGroup({ items }) {
   const settleOnActive = () => {
     const container = containerRef.current;
     const sectionHref = resolveSectionHref(pathname);
-    const onAreaPage = SOLUTIONS_ITEMS.some((i) => matchesPrefix(pathname, i.href));
+    // Solutions covers the area pages and the Technical Analysis (the /tech section, including the
+    // per-topic Standards pages that SECTION_NAV files under it).
+    const onAreaPage = SOLUTIONS_ITEMS.some((i) => matchesPrefix(pathname, i.href)) || sectionHref === '/tech';
     const activeEl =
       (onAreaPage ? container?.querySelector('[data-solutions-trigger]') : null) ??
       findLinkByHref(container, sectionHref, siteConfig.baseUrl) ??
@@ -248,7 +250,7 @@ function SlidingIndicatorGroup({ items }) {
 }
 
 // Which top-level navbar items open a small flyout on hover/focus, and what
-// it shows. The four pillar items (Software Accelerator, Technology,
+// it shows. The pillar items (Software Accelerator,
 // Standardisation, In Action) carry a `subtitle` on their matching
 // SECTION_NAV entry (2026-08-24 design audit: those labels are 5G-MAG's own
 // internal vocabulary, not self-explanatory from the navbar alone before a
@@ -259,7 +261,7 @@ function SlidingIndicatorGroup({ items }) {
 // the pill sub-nav bar itself already renders from; deliberately explicit
 // (which items open a flyout) rather than "every navbar item whose
 // SECTION_NAV entry happens to have items", most of which don't want one.
-const NAV_DROPDOWN_HREFS = ['/tech', '/standards', '/developer', '/action', '/news'];
+const NAV_DROPDOWN_HREFS = ['/standards', '/developer', '/action', '/news'];
 const NAV_DROPDOWNS = new Map(
   NAV_DROPDOWN_HREFS.map((href) => [href, SECTION_NAV.find((s) => s.titleHref === href)])
 );
@@ -289,7 +291,7 @@ ${JSON.stringify(item, null, 2)}`,
 // the two aria-* keys) straight onto the underlying <Link>/<a>, so this
 // needs no swizzle of that component. `preview.subtitle` is optional (News
 // has none) so the paragraph is only rendered when there is one to show.
-function NavDropdownItem({ item, preview, groups }) {
+function NavDropdownItem({ item, preview }) {
   const [expanded, setExpanded] = useState(false);
   const link = renderNavbarItem({ ...item, 'aria-haspopup': 'true', 'aria-expanded': expanded });
   return (
@@ -304,61 +306,34 @@ function NavDropdownItem({ item, preview, groups }) {
     >
       {link}
       <div
-        className={clsx(styles.navDropdownMenu, groups ? styles.navMegaMenu : styles.navAreasMenu, !groups && preview.items.length <= 4 && styles.navAreasMenuNarrow)}
+        className={clsx(styles.navDropdownMenu, styles.navAreasMenu, preview.items.length <= 4 && styles.navAreasMenuNarrow)}
         aria-label={`${preview.title} quick links`}
       >
-        {!groups && (
-          <>
-            <SectionHeadCard title={preview.menuTitle || preview.title} subtitle={preview.subtitle} href={preview.titleHref} icon={SECTION_ICONS[preview.titleHref]} />
-            {/* `featured` entries (the section's main destinations, solid chips in its pill row) come
-                first as larger cards; the rest follow as icon rows. */}
-            {preview.items.some((sub) => sub.featured) && (
-              <ul className={styles.navFeatured}>
-                {preview.items.filter((sub) => sub.featured).map((sub) => (
-                  <li key={sub.href}>
-                    <Link to={sub.href} className={styles.navFeaturedCard}>
-                      <span className={clsx(styles.navAreaIcon, styles.navHeadIcon)}><NavItemIcon href={sub.href} size={20} /></span>
-                      {sub.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            )}
-            <ul className={clsx(styles.navAreaGrid, preview.items.length <= 4 && styles.navAreaGridSingle)}>
-              {preview.items.filter((sub) => !sub.featured).map((sub) => (
-                <li key={sub.href}>
-                  <Link to={sub.href} className={styles.navAreaLink}>
-                    <span className={styles.navAreaIcon}><NavItemIcon href={sub.href} /></span>
-                    {sub.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </>
-        )}
-        {groups && <SectionHeadCard title={preview.menuTitle || preview.title} subtitle={preview.subtitle} href={preview.titleHref} icon={SECTION_ICONS[preview.titleHref]} />}
-        {groups && (
-          <div className={styles.navMegaGroups}>
-            {groups.map((g) => (
-              <div key={g.title} className={styles.navMegaCard} style={{ '--accent': g.accent }}>
-                <Link to={g.href} className={styles.navMegaArea}>
-                  <span className={styles.navAreaIcon}><CatalogIcon name={g.icon} size={17} /></span>
-                  {g.title}
+        <SectionHeadCard title={preview.menuTitle || preview.title} subtitle={preview.subtitle} href={preview.titleHref} icon={SECTION_ICONS[preview.titleHref]} />
+        {/* `featured` entries (the section's main destinations, solid chips in its pill row) come
+            first as larger cards; the rest follow as icon rows. */}
+        {preview.items.some((sub) => sub.featured) && (
+          <ul className={styles.navFeatured}>
+            {preview.items.filter((sub) => sub.featured).map((sub) => (
+              <li key={sub.href}>
+                <Link to={sub.href} className={styles.navFeaturedCard}>
+                  <span className={clsx(styles.navAreaIcon, styles.navHeadIcon)}><NavItemIcon href={sub.href} size={20} /></span>
+                  {sub.label}
                 </Link>
-                <ul className={styles.navMegaList}>
-                  {g.items.map((sub) => (
-                    <li key={sub.href}>
-                      <Link to={sub.href}>
-                        <CatalogIcon name={sub.icon} size={16} />
-                        {sub.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         )}
+        <ul className={clsx(styles.navAreaGrid, preview.items.length <= 4 && styles.navAreaGridSingle)}>
+          {preview.items.filter((sub) => !sub.featured).map((sub) => (
+            <li key={sub.href}>
+              <Link to={sub.href} className={styles.navAreaLink}>
+                <span className={styles.navAreaIcon}><NavItemIcon href={sub.href} /></span>
+                {sub.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </span>
   );
@@ -398,10 +373,9 @@ const NAV_ITEM_ICONS = {
   '/magazine': ['M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0', 'M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0', 'M3 6l0 13', 'M12 6l0 13', 'M21 6l0 13'],
 };
 
-// Each section's own hub-page icon (the HubHero icon on /tech, /standards, /developer, /action, /news),
+// Each section's own hub-page icon (the HubHero icon on /standards, /developer, /action, /news),
 // shown on that section's header card at the top of its dropdown.
 const SECTION_ICONS = {
-  '/tech': ['M14 3v4a1 1 0 0 0 1 1h4', 'M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2', 'M9 17l0 -5', 'M12 17l0 -1', 'M15 17l0 -3'],
   '/standards': ['M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1'],
   '/developer': ['M7 8l-4 4l4 4', 'M17 8l4 4l-4 4', 'M14 4l-4 16'],
   '/action': ['M7 12l5 5l-1.5 1.5a3.536 3.536 0 1 1 -5 -5l1.5 -1.5', 'M17 12l-5 -5l1.5 -1.5a3.536 3.536 0 1 1 5 5l-1.5 1.5', 'M3 21l2.5 -2.5', 'M18.5 5.5l2.5 -2.5', 'M10 11l-2 2', 'M13 14l-2 2'],
@@ -414,7 +388,7 @@ const SOLUTIONS_ICON = ['M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7',
 
 // The header card: the section's icon, name and one-line description. It links to the section's
 // hub page when there is one (`href`), and is plain text otherwise (Solutions).
-function SectionHeadCard({ title, subtitle, href, icon }) {
+function SectionHeadCard({ title, subtitle, href, icon, action }) {
   const body = (
     <>
       <span className={clsx(styles.navAreaIcon, styles.navHeadIcon)}>
@@ -430,7 +404,10 @@ function SectionHeadCard({ title, subtitle, href, icon }) {
   return href ? (
     <Link to={href} className={styles.navHeadCard}>{body}</Link>
   ) : (
-    <div className={clsx(styles.navHeadCard, styles.navHeadStatic)}>{body}</div>
+    <div className={clsx(styles.navHeadCard, styles.navHeadStatic)}>
+      {body}
+      {action && <Link to={action.href} className={styles.navHeadAction}>{action.label} →</Link>}
+    </div>
   );
 }
 
@@ -440,16 +417,29 @@ function NavItemIcon({ href, size = 18 }) {
   return typeof icon === 'string' ? <CatalogIcon name={icon} size={size} /> : <CatalogIcon paths={icon} size={size} />;
 }
 
-// Solutions has no page of its own: its trigger is a button that only opens the
-// list of area pages, in the same flyout the pillar items use.
+// Solutions has no page of its own: its trigger is a button that opens one wide panel with one card per
+// area: the card title opens the area page, the lines under it each project's Technical Analysis (this
+// replaces the former separate Technology menu).
 function SolutionsMenu({ item }) {
   const [expanded, setExpanded] = useState(false);
+  // The panel is wide: a pointer heading for a card on its far side crosses the neighbouring navbar
+  // items first. Closing is therefore delayed briefly, so the panel stays open while the pointer travels.
+  const closeTimer = useRef(null);
+  const open = () => {
+    clearTimeout(closeTimer.current);
+    setExpanded(true);
+  };
+  const closeSoon = () => {
+    clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setExpanded(false), 350);
+  };
+  useEffect(() => () => clearTimeout(closeTimer.current), []);
   return (
     <span
-      className={styles.navDropdownWrapper}
-      onMouseEnter={() => setExpanded(true)}
-      onMouseLeave={() => setExpanded(false)}
-      onFocus={() => setExpanded(true)}
+      className={clsx(styles.navDropdownWrapper, expanded && styles.navDropdownOpen)}
+      onMouseEnter={open}
+      onMouseLeave={closeSoon}
+      onFocus={open}
       onBlur={(e) => {
         if (!e.currentTarget.contains(e.relatedTarget)) setExpanded(false);
       }}
@@ -463,18 +453,30 @@ function SolutionsMenu({ item }) {
       >
         {item.label}
       </button>
-      <div className={clsx(styles.navDropdownMenu, styles.navAreasMenu)} aria-label="Solutions">
-        <SectionHeadCard title="Areas" subtitle="What you can build, area by area." icon={SOLUTIONS_ICON} />
-        <ul className={styles.navAreaGrid}>
-          {SOLUTIONS_ITEMS.map((sub) => (
-            <li key={sub.href}>
-              <Link to={sub.href} className={styles.navAreaLink} style={{ '--accent': sub.accent }}>
-                <span className={styles.navAreaIcon}><CatalogIcon name={sub.icon} size={18} /></span>
-                {sub.label}
+      <div className={clsx(styles.navDropdownMenu, styles.navMegaMenu)} aria-label="Solutions">
+        <SectionHeadCard title="Solutions" subtitle="What you can build, area by area, and the technology behind it."
+          icon={SOLUTIONS_ICON} action={{ label: 'All technology', href: '/tech' }} />
+        <div className={clsx(styles.navMegaGroups, styles.navSolutionsScroll)}>
+          {TECHNOLOGY_GROUPS.map((g) => (
+            <div key={g.title} className={styles.navMegaCard} style={{ '--accent': g.accent }}>
+              <Link to={g.href} className={styles.navMegaArea}>
+                <span className={styles.navAreaIcon}><CatalogIcon name={g.icon} size={17} /></span>
+                <span className={styles.navMegaAreaTitle}>{g.title}</span>
+                <span className={styles.navMegaAreaArrow} aria-hidden="true">→</span>
               </Link>
-            </li>
+              <ul className={styles.navMegaList}>
+                {g.items.map((sub) => (
+                  <li key={sub.href}>
+                    <Link to={sub.href}>
+                      <CatalogIcon name={sub.icon} size={16} />
+                      {sub.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     </span>
   );
@@ -488,7 +490,7 @@ function NavbarItems({ items }) {
         const preview = NAV_DROPDOWNS.get(item.to);
         if (!preview) return <React.Fragment key={i}>{renderNavbarItem(item)}</React.Fragment>;
         return (
-          <NavDropdownItem key={i} item={item} preview={preview} groups={item.to === '/tech' ? TECHNOLOGY_GROUPS : null} />
+          <NavDropdownItem key={i} item={item} preview={preview} />
         );
       })}
     </>
