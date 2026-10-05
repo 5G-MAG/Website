@@ -1,0 +1,108 @@
+---
+title: CMMF
+sidebar_position: 4
+hide_title: true
+description: "The Coded Multisource Media Format (ETSI TS 103 973 V1.2.2): why multisource coding, how a bitstream is created and decoded, its code types, the delivery architecture and its reference points, and the content delivery protocols it defines, including an FDT-based one."
+---
+
+import JumpMenu from '@site/src/components/JumpMenu';
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M12 3l8 4.5v9l-8 4.5l-8 -4.5v-9z" />
+  <path d="M12 12l8 -4.5" />
+  <path d="M12 12v9" />
+  <path d="M12 12l-8 -4.5" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Content Delivery Protocols</span>
+<h1>CMMF</h1>
+</div>
+</div>
+
+:::tip[At a glance]
+
+- **What it is:** the Coded Multisource Media Format, a container for media in one or more coded representations, specified in ETSI TS 103 973 (V1.2.2, May 2026). The same document specifies the xCD-1 linear code.
+- **Why:** several sources, such as CDN servers or storage locations, each hold a different, useful coded version of the same media, so a client can draw from all of them at once instead of one copy at a time.
+- **Not a new media format:** a CMMF encoder takes an already packaged format, such as ISO BMFF or CMAF, as its source. CMMF is agnostic to how that source was prepared and to how the bitstreams are stored and transported.
+- **Delivery:** annex D defines content delivery protocol instantiations, one based on a File Delivery Table with TS 26.346 extensions, one based on URL translation.
+
+:::
+
+<JumpMenu items={[["Why multisource", "why-multisource"], ["Creating and decoding", "creating-and-decoding-a-cmmf-bitstream"], ["Code types", "code-types"], ["Delivery architecture", "delivery-architecture"], ["Content delivery protocols", "content-delivery-protocols"], ["Profiles", "bitstream-profiles"]]} />
+
+## Why multisource
+
+Media delivery today relies on a single representation of the coded media across storage, distribution and delivery. CDNs copy media to many points of presence, but a client is usually served through one network path from one CDN until it switches, and switching is not always seamless. Services that use several CDNs replicate identical representations in each of them.
+
+CMMF moves from a single encoded version of the source media to multiple coded representations, each a unique, useful version. A client can then balance its load across the best-performing paths and sources, and less redundant information is stored and transmitted. One CMMF bitstream may hold everything needed to reconstruct the source; in other uses, several bitstreams are needed.
+
+CMMF is designed as an additional, independent layer in the media delivery stack. It supplements packaged formats, and does not replace them.
+
+## Creating and decoding a CMMF bitstream
+
+**Encoding**, in real time or from a file:
+
+1. Partition the source data into source blocks.
+2. Partition each source block into source symbols of equal size, padding the last symbol with zeros if necessary.
+3. Encode the source symbols with the chosen code type into coded symbols, together with the coding parameters a decoder needs, such as the symbol index, the block index, a coefficient vector or a pseudo-random number generator seed.
+
+Coded and repair symbols can be packaged one by one, grouped by block, or grouped across several blocks. Besides block coding, CMMF supports sliding-window constructions for use cases with strict latency, where the source is not available in full at once.
+
+**Decoding** reverses the steps: decode each block's coded symbols into source symbols, concatenate them and remove the padding, then concatenate the blocks into the original media.
+
+## Code types
+
+| code_type | Code |
+| :---: | --- |
+| 0 | xCD-1, defined in annex A of TS 103 973 |
+| 1 | Raptor, RFC 5053 |
+| 5 | Reed-Solomon over GF(2^8), RFC 5510 |
+| 6 | RaptorQ, RFC 6330 |
+
+Client devices decode at least one of the supported code types. Raptor is also the FEC scheme of MBMS download, and RaptorQ that of ROUTE Repair Flows. When CMMF is used as a content delivery protocol in the sense of RFC 5052, the data is partitioned with the algorithm of RFC 5052 section 9.1, and the FEC Object Transmission Information is carried in the bitstream.
+
+## Delivery architecture
+
+TS 103 973 gives a notional reference architecture with four components:
+
+- **Application Provider:** produces the source media and configures the service. It holds the source transport objects (for example CMAF, DASH or HLS segments), the media information (such as manifests) and, where it is aware of CMMF, the CMMF configuration information.
+- **CMMF Bitstream Generator/Source:** generates CMMF bitstreams of coded representations of the source transport objects. There may be one, next to the Application Provider, or one at each point of presence, creating bitstreams in real time or offline.
+- **CMMF Receiver:** obtains CMMF bitstreams from one or more generators, decodes them and recovers the source media. It needs no single bitstream in full, only enough data from all of them; it may also combine parts of source objects with coded ones.
+- **Media Application/Client:** plays back the recovered media, and may steer the receiver.
+
+Reference points join them: C1 to C6 for media and configuration information, S1 to S3 for unmodified source transport objects, R1 for coded and repair transport objects, and M1 for control from the client to the receiver.
+
+Objects are organised as transport objects in a delivery session made of one or more transport sessions, identified, for example, by a TOI and a TSI, as in FLUTE.
+
+## Content delivery protocols
+
+Annex D of TS 103 973 maps CMMF to the FEC building block principles of RFC 5052, and defines two content delivery protocol (CDP) instantiations:
+
+- **FDT-based:** the configuration information is a File Delivery Table as defined in RFC 6726, with minimum extensions for CMMF: the Extended FDT (EFDT). It reuses FDT extensions from TS 26.346.
+- **URL translation-based:** a CMMF configuration information document gives the procedures that map the URL of a source object to the URLs of its CMMF transport objects.
+
+## Bitstream profiles
+
+Annex F defines bitstream profiles. A set of bitstreams for the same source conforms to a profile for a code type when every bitstream conforms and the set holds enough coded symbols for a decoder of that code type to rebuild the source.
+
+<details>
+<summary>The text is not consistent on the code types</summary>
+
+ETSI TS 103 973 V1.2.2, Introduction: "This format supports multiple types of codes (currently xCD-1, RaptorQ, and Reed-Solomon) and can be optimized for a range of networks and use cases." Table 40 in clause 6.1.4.5 also assigns code_type 1 to Raptor (RFC 5053), and annex F gives required fields for code_type 1. This page lists table 40.
+
+</details>
+
+<details>
+<summary>Sources for this page</summary>
+
+- **At a glance:** ETSI TS 103 973 V1.2.2, Scope (clause 1), Introduction, clauses 4.0 and 4.1, annex D (clause D.0), History.
+- **Why multisource:** clauses 4.0 and 4.1.
+- **Creating and decoding:** clauses 4.2.1 to 4.2.3.
+- **Code types:** clause 6.1.4.5 (table 40) and clause 6.1.4.6; TS 26.346 V19.3.0, clause 7.2.12.1; RFC 9223, section 2.4.
+- **Delivery architecture:** clauses 4.3.2 and 4.3.3.
+- **Content delivery protocols:** clauses D.0, D.2.1 and D.3.
+- **Bitstream profiles:** clause F.0.
+
+</details>

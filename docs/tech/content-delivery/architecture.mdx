@@ -1,0 +1,94 @@
+---
+title: Architecture
+sidebar_position: 1
+hide_title: true
+description: "Where FLUTE sits in each of its three profiles: a FLUTE file delivery session over UDP/IP, the MBMS download delivery method from the BM-SC, and the MBS Object Distribution Method from the MBSTF, based on RFC 3926, TS 26.346, TS 26.502 and TS 26.517."
+---
+
+import SpecFigure from '@site/src/components/SpecFigure';
+import JumpMenu from '@site/src/components/JumpMenu';
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M12 3l8 4.5v9l-8 4.5l-8 -4.5v-9z" />
+  <path d="M12 12l8 -4.5" />
+  <path d="M12 12v9" />
+  <path d="M12 12l-8 -4.5" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Content Delivery Protocols</span>
+<h1>Architecture</h1>
+</div>
+</div>
+
+:::tip[At a glance]
+
+- **Unprofiled FLUTE:** a file delivery session is an ALC/LCT session: one sender, one or more channels, identified by the sender's IP address and the TSI.
+- **MBMS download:** the BM-SC sends files over MBMS bearers with FLUTE; the MBMS Client receives them. The same method carries DASH segments and MPDs.
+- **MBS Object Distribution:** the MBSTF ingests objects, segments them, optionally adds FEC and packetises them; the MBSTF Client receives them over FLUTE. The MBS AS serves missing portions for repair.
+
+:::
+
+<JumpMenu items={[["Unprofiled FLUTE", "unprofiled-flute-a-file-delivery-session"], ["MBMS download", "mbms-download-from-the-bm-sc"], ["MBS Object Distribution", "mbs-object-distribution-from-the-mbstf"]]} />
+
+## Unprofiled FLUTE: a file delivery session
+
+When FLUTE is used for file delivery over ALC, the ALC/LCT session is called the file delivery session.
+
+- **The session:** a set of logically grouped ALC/LCT channels, associated with a single sender sending packets with ALC/LCT headers for one or more objects. The pair of the source IP address and the Transport Session Identifier (TSI) uniquely identifies the session.
+- **Channels:** a channel is the combination of a sender and an address the sender associates with it. A receiver joins a channel to start receiving its packets and leaves it to stop.
+- **Files and the FDT:** each file in the session is associated with a Transport Object Identifier (TOI). Each session has an FDT that provides a file description entry for every file it delivers; TOI 0 is reserved for the FDT Instances.
+
+RFC 3926 envisages four ways to use channels and congestion control: a single channel with single-rate congestion control; multiple channels with multiple-rate congestion control; and a single channel, or multiple channels, without the congestion control of ALC, but only in a controlled network where flow and congestion control are provided by other means.
+
+## MBMS download from the BM-SC
+
+<SpecFigure src="/img/tech/content-delivery/generated/ts26346-fig9.svg" width={1127} height={335} spec="TS 26.346 V19.3.0" figure="9" title="Protocol stack view of the MBMS User Services for Streaming and Download Delivery" alt="Two stacks. Left, over a ptp bearer, IP unicast, TCP and UDP: HTTP(S) with HTTP-digest and MIKEY, carrying service announcement and metadata, associated-delivery procedures (ptp file repair, reception reporting) and MBMS security (registration, key distribution MSK). Right, over MBMS or ptp bearers, IP multicast or unicast, UDP/TCP: FLUTE with FEC carrying download of 3GPP files, binary data, still images and text, ptm file repair and service announcement; RTP/RTCP with SRTP and FEC for streaming codecs; HTTP(S) with HTTP digest for 3GP-DASH; MBMS security (key distribution MTK, MIKEY)." />
+
+The figure shows the protocols MBMS User Services use for streaming and download delivery. The grey-shaded protocols and functions are outside the scope of TS 26.346.
+
+- **The download delivery method** uses FLUTE (RFC 3926) when it delivers content over MBMS bearers. Over other bearers it may use OMA Push.
+- **Files:** a file may contain any type of MBMS data, for example 3GPP audio and video files, binary data, still images, text or Service Announcement metadata. The term file covers every object FLUTE carries, except the FDT Instances.
+- **Getting files from the FLUTE receiver:** UE applications instruct it to receive all files available (promiscuous), one copy of specific files (one-copy), or specific files and every update to them (keep-updated).
+- **Reliability:** MBMS download delivery defines several methods to increase reliability, such as FEC and file repair.
+- **The MBMS Download Profile** sets the usage of the FDT attributes and elements by the BM-SC, as the FLUTE sender, and their support by the MBMS Client, as the FLUTE receiver.
+
+### DASH over MBMS download
+
+The download delivery method also carries 3GP-DASH Segments, Media Presentation Descriptions (MPDs) and the other objects an MPD references. When a Segment is delivered as a FLUTE object:
+
+- the last packet of the delivered object is available at the UE at its segment availability start time at the latest, as announced in the MPD;
+- the Content-Location element in the FDT for the delivered object matches the Segment URL in the MPD.
+
+## MBS Object Distribution from the MBSTF
+
+<SpecFigure src="/img/tech/5g-mbs/generated/ts26502-fig4.3.3.2-1.svg" width={1166} height={925} spec="TS 26.502 V19.5.0" figure="4.3.3.2-1" title="MBSTF architecture overview for Object Distribution Method" alt="Inside the MBSTF, Object ingest (fed at MBS-11, Nmb2 and Nmb8), Object segmentation, Application Layer FEC, Packetisation and Packet scheduling in sequence towards Nmb9, with a Control subfunction at Nmb2 and egest towards the MBS AS at MBS-12." />
+
+The Object Distribution Method distributes discrete binary objects, including media segments, to MBS Clients as part of an MBS Session, in real time or not. Inside the MBSTF:
+
+- **Object ingest** takes objects from the MBS Application Provider at Nmb8, pulled or pushed, and objects for the User Service Announcement Channel from the MBS AF at MBS-11. To support object repair, it can make ingested objects available to the MBS AS at MBS-12.
+- **Object segmentation** partitions an object into payload units suitable for MBS transmission.
+- **Application Layer FEC**, optional, supports object recovery when some packets are not received.
+- **Packetisation** places the payload units, and optionally the FEC data, into Nmb9 transmission packets.
+- **Packet scheduling** schedules the outgoing packet stream according to the target bit rate configuration.
+
+When FLUTE realises the Object Distribution Method, the MBSTF describes the objects it is currently transmitting with the profiled FDT schema of TS 26.346 annex L.6. To fetch missing portions of an object, the MBS Client may use the Object Repair mechanism for FLUTE, which the MBS AS provides at reference point MBS-4-UC.
+
+### Segment streaming
+
+The OBJECT_STREAMING operating mode is recommended for streaming DASH or HLS content to a Media Player in the UE. In it, as in DASH over MBMS download:
+
+- the MBSTF transmits each object so that the last packet of the FLUTE transmission object, FEC repair packets included, is available at the MBSTF Client no later than its availability start time;
+- the Content-Location element in the FDT Instance matches the URL of the corresponding object in the object list.
+
+<details>
+<summary>Sources for this page</summary>
+
+- **Unprofiled FLUTE:** RFC 3926, sections 3.1 and 4.
+- **MBMS download:** TS 26.346 V19.3.0, clauses 5.5, 5.6, 7.1, 7.2.0 and L.4.1.
+- **Figure (MBMS):** redrawn from TS 26.346 V19.3.0, figure 9.
+- **MBS Object Distribution:** TS 26.502 V19.5.0, clauses 3.1 (Object Distribution Method) and 4.3.3.2; TS 26.517 V19.2.0, clauses 6.2.1 and 6.2.3.5.
+- **Figure (MBS):** redrawn from TS 26.502 V19.5.0, figure 4.3.3.2-1.
+
+</details>

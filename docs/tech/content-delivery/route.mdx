@@ -1,0 +1,103 @@
+---
+title: ROUTE
+sidebar_position: 3
+hide_title: true
+description: "ROUTE (RFC 9223), real-time object delivery over unidirectional transport: its status, data model, delivery object modes, FEC repair flows, relation to FLUTE, and the services that profile it."
+---
+
+import JumpMenu from '@site/src/components/JumpMenu';
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M12 3l8 4.5v9l-8 4.5l-8 -4.5v-9z" />
+  <path d="M12 12l8 -4.5" />
+  <path d="M12 12v9" />
+  <path d="M12 12l-8 -4.5" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Content Delivery Protocols</span>
+<h1>ROUTE</h1>
+</div>
+</div>
+
+:::tip[At a glance]
+
+- **What it is:** Real-Time Transport Object Delivery over Unidirectional Transport, for robust delivery of application objects, including objects with real-time constraints such as DASH or HLS segments and CMAF chunks.
+- **Status:** RFC 9223 (April 2022) is an Informational, independent submission. It is not an IETF specification and has no IETF consensus.
+- **Relation to FLUTE:** aligned with FLUTE (RFC 6726) and the MBMS extensions, with some principles of FCAST. All its packets are LCT packets (RFC 5651).
+- **Who profiles it:** ATSC 3.0 specifies ROUTE with its services layer, and DVB profiles that in DVB-MABR. TS 26.346 and TS 26.517 do not use ROUTE.
+
+:::
+
+<JumpMenu items={[["What it delivers", "what-it-delivers"], ["Data model", "data-model"], ["Delivery object modes", "delivery-object-modes"], ["FEC and repair", "fec-and-repair-flows"], ["Relation to FLUTE", "relation-to-flute"], ["Profiles", "profiles"]]} />
+
+## What it delivers
+
+ROUTE delivers application objects to receivers over a unidirectional transport. An application object is data with a meaning to the application: a file, a DASH video segment, a WAV audio clip, a CMAF addressable resource, an MPEG-4 video clip.
+
+- **Real-time delivery:** ROUTE is designed to deliver sequences of related application objects in a timely manner, for example the DASH segments of one Representation or the CMAF addressable resources of one CMAF Track.
+- **Low latency:** it supports chunked delivery of real-time objects, and low-latency delivery of DASH and HLS content with CMAF Chunks.
+- **Non-real-time content:** it also delivers content not rendered as it is received, such as a downloaded application or data for a DRM client.
+- **Caching model:** objects are recovered into a cache at the receiver, from which applications may fetch them with standard HTTP requests.
+
+ROUTE operates over UDP/IP. Its session metadata may be delivered out of band or in band.
+
+## Data model
+
+- **Application Object:** data that has meaning to the application using ROUTE.
+- **Delivery Object:** an object on its way to the application, from the ROUTE sender to the ROUTE receiver.
+- **Transport Object:** an object identified by an LCT Transport Object Identifier (TOI); a source or a repair object, depending on whether a Source Flow or a Repair Flow carries it.
+- **Transport Session:** an LCT channel, identified by its Transport Session Identifier (TSI). For media, it typically carries one media component, such as a DASH Representation.
+- **ROUTE Session:** one or more Transport Sessions, associated with an IP address and port.
+- **Source Flow:** a Transport Session carrying source data. A receiver may use it without the Repair Flows.
+- **Repair Flow:** a Transport Session carrying repair data for one or more Source Flows.
+
+## Delivery object modes
+
+The mode is signalled per object, in the LCT Codepoint.
+
+- **File Mode:** an out-of-band Extended FDT (EFDT) describes the delivery objects. It is optimised for DASH content using Segment Template with number substitution: a File Template in the EFDT avoids sending the metadata repeatedly.
+- **Entity Mode:** the object's metadata travels with it, as HTTP entity headers. It suits addressing that changes with time, such as time substitution and segment timeline, and can carry part of a file with HTTP Partial Content headers.
+- **Unsigned Package Mode:** a group of files packaged together for delivery as Multipart MIME, which the client unpacks.
+- **Signed Package Mode:** the same, with one or more signatures for validation.
+
+## FEC and repair flows
+
+- **Protection of objects:** the ROUTE repair protocol is FEC-based. Unlike the FEC Framework of RFC 6363, it protects delivery objects rather than packets. As an extension to FLUTE, one source block may protect several delivery objects.
+- **Separate flows:** a Repair Flow protects delivery objects from one or more Source Flows. Receivers not capable of FEC can ignore the repair packets.
+- **FEC scheme:** the FEC Payload ID for Repair Flows is specified in RFC 6330 (RaptorQ). In Source Flows, the FEC Payload ID of the Compact No-Code FEC scheme is a 32-bit start_offset: the position of the fragment in the delivery object.
+- **Telling source from repair:** by different ROUTE sessions, by different LCT channels (TSI values), or, on the same LCT channel, by the most significant PSI bit.
+
+## Relation to FLUTE
+
+ROUTE is aligned with FLUTE as defined in RFC 6726, and with the MBMS extensions to it. It reuses several basic FLUTE protocol features, and adds optimisations and restrictions for real-time delivery of media data. It also uses some principles of FCAST (RFC 6968), for example sending object metadata and object content together in a compound object.
+
+Among others, ROUTE enables or enhances:
+
+- real-time delivery of object-based media data;
+- flexible packetisation, media-aware as well as transport-aware;
+- independence of application objects and delivery objects: a delivery object may be part of a file, or a group of files.
+
+## Profiles
+
+Services may define ROUTE profiles in their own standards organisations. RFC 9223 names two:
+
+- **ATSC 3.0** specifies ROUTE integrated with an ATSC 3.0 services layer (ATSC-ROUTE).
+- **DVB** has specified a profile of ATSC-ROUTE in DVB Adaptive Media Streaming over IP Multicast (DVB-MABR).
+
+A profile may restrict LCT header values and extensions, Codepoints and signalling attributes, and add its own. It does not redefine the semantics of the ROUTE attributes RFC 9223 specifies, so that profiles stay interoperable.
+
+<details>
+<summary>Sources for this page</summary>
+
+- **At a glance and status:** RFC 9223, header, Abstract and section 1.1.
+- **What it delivers:** RFC 9223, sections 1.1 and 1.2.
+- **Data model:** RFC 9223, section 1.3.
+- **Delivery object modes:** RFC 9223, sections 4 to 4.4 and 9.1.
+- **FEC and repair flows:** RFC 9223, sections 2.3, 2.4, 5.5 and 9.4.
+- **Relation to FLUTE:** RFC 9223, sections 1.1 and 9.4.
+- **Profiles:** RFC 9223, sections 1.1 and 8.
+- **Not in 3GPP MBMS or MBS:** "ROUTE" does not occur in TS 26.346 V19.3.0 or TS 26.517 V19.2.0.
+
+</details>

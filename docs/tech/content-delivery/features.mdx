@@ -1,0 +1,275 @@
+---
+title: Features
+sidebar_position: 2
+hide_title: true
+description: "FLUTE feature by feature in its three profiles, unprofiled FLUTE (RFC 3926), MBMS download (TS 26.346 clause 7.2 and the MBMS Download Profile) and the MBS Object Distribution Method (TS 26.517 clause 6.2), at Release 19, with the inconsistencies found in the text."
+---
+
+import JumpMenu from '@site/src/components/JumpMenu';
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M12 3l8 4.5v9l-8 4.5l-8 -4.5v-9z" />
+  <path d="M12 12l8 -4.5" />
+  <path d="M12 12v9" />
+  <path d="M12 12l-8 -4.5" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Content Delivery Protocols</span>
+<h1>Features</h1>
+</div>
+</div>
+
+The three FLUTE profiles side by side: what each one requires, permits or excludes. MBS Object Distribution conforms to the MBMS Download Profile, so its column lists only what TS 26.517 adds or changes; "As MBMS" means it inherits the MBMS column.
+
+:::tip[At a glance]
+
+- **Unprofiled FLUTE** leaves most choices open: FEC beyond Compact No-Code, content encoding, channels. Its one heavy obligation is congestion control, which ALC requires.
+- **MBMS download** narrows FLUTE for a controlled network: no congestion control, a single channel, fixed LCT header sizes, an extended FDT, Raptor FEC in every UE, gzip only, and file repair over unicast.
+- **MBS Object Distribution** takes the MBMS Download Profile as it is, and adds the profiled FDT schema, four operating modes, its own session description attribute and Object Repair.
+- **The text is not always consistent:** three places where the documents disagree with themselves or each other are listed at the end, with both sentences quoted.
+
+:::
+
+<JumpMenu items={[["All features", "the-features"], ["FDT", "the-file-delivery-table"], ["FEC", "fec-and-blocking"], ["Congestion control", "congestion-control-and-channels"], ["LCT headers", "lct-headers-and-extensions"], ["Content encoding", "content-encoding"], ["Session description", "session-description"], ["Operating modes", "operating-modes"], ["Repair", "repair"], ["Inconsistencies", "inconsistencies-in-the-text"]]} />
+
+## The features
+
+| Feature | Unprofiled FLUTE | MBMS download | MBS Object Distribution |
+| --- | --- | --- | --- |
+| **Base documents** | RFC 3926, RFC 3450, RFC 3451 | The same, plus TS 26.346 clause 7.2 and annex L.4 | MBMS Download Profile, plus TS 26.517 clause 6.2 |
+| **FDT schema** | RFC 3926 | Extended FLUTE FDT schema, schemaVersion 5 | Profiled FLUTE FDT schema of annex L.6, schemaVersion 3 |
+| **Mandatory FDT data** | Expires; per file TOI and Content-Location | Also Content-Length, Content-Type, FEC Encoding ID and FEC Object Transmission Information | As MBMS; Content-MD5 and File-ETag optional |
+| **FEC** | Compact No-Code required at the receiver | Compact No-Code, and Raptor (FEC Encoding ID 1) decoded by every UE | As MBMS |
+| **Congestion control** | Required: multiple-rate, feedback-free | Not used: one channel, single rate | As MBMS |
+| **LCT header** | As RFC 3451 | CCI of 32 bits set to zero, 16-bit TSI, TOI 0 only for FDT Instances, T and R set to zero | As MBMS |
+| **Content encoding** | Optional, for files and FDT Instances | gzip only, for files; never for FDT Instances; every UE decodes gzip | As MBMS |
+| **FDT expiry** | Receiver should not use an expired FDT Instance | UE shall not | The expiry of the latest FDT Instance is the end of an object's transmission |
+| **Session description** | Parameters listed; their discovery out of scope | SDP, with the profile of table L.4.8-1 | SDP with restrictions, and the `mbs-servicetype` attribute |
+| **Operating modes** | Not defined | Promiscuous, one-copy and keep-updated reception | OBJECT_SINGLE, OBJECT_COLLECTION, OBJECT_CAROUSEL, OBJECT_STREAMING |
+| **Repair** | Not defined | Post-delivery and, from Release 19, in-session unicast file repair | Post-session and, from Release 19, in-session Object Repair |
+
+## The File Delivery Table
+
+<details>
+<summary>Unprofiled FLUTE</summary>
+
+- The FDT is local to its file delivery session, and provides a file description entry mapped to a TOI for each file in the session.
+- The FDT-Instance element contains the Expires attribute. Each File element contains at least the TOI and Content-Location attributes.
+- Other attributes describe the file: its length, type, encoding and message digest. Some are mandatory for a file description entry, others optional.
+
+</details>
+
+<details>
+<summary>MBMS download</summary>
+
+- **Schema:** the extended FLUTE FDT instance schema of TS 26.346 clause 7.2.10.1, based on the RFC 3926 schema, shall be used. It imports 3GPP extensions from Releases 6, 7, 8, 9, 11, 13 and 19. The network sets its schemaVersion element to 5.
+- **Mandatory beyond RFC 3926:** Content-Length, Content-Type, the FEC Encoding ID, and the FEC Object Transmission Information of the FEC scheme in use. They are optional in the schema to stay aligned with the IETF schema. With Compact No-Code FEC, the maximum source block length does not exceed 65535.
+- **Optional:** Complete, Content-Encoding, Content-MD5 (indicated when several versions of a file are expected), IndependentUnitPositions, File-ETag, and, added in Release 19, Repair-Start and Repair-Limit-Percentage for unicast repair.
+- **3GPP extensions:** file grouping (clause 7.2.6), the MBMS session identity of a file (7.2.11), caching directives (7.2.13), FullFDT for a full snapshot of the objects scheduled (7.2.14), the decryption key of a protected file (7.2.15), and the FEC redundancy level of a file (7.2.16).
+- **The MBMS Download Profile** (annex L.4) constrains this set:
+  - the sender carries Content-Type and the FEC Object Transmission Information, at the FDT-Instance or File level, and Content-Location, TOI and Content-Length for every file;
+  - Content-MD5 should be included for non-DASH services and may be included for DASH Segments;
+  - the sender does not use Content-Encoding other than gzip, FEC-OTI-FEC-Instance-ID, Group, Complete, FullFDT, MBMS-Session-Identity-Expiry, Transfer-Length, Decryption-KEY-URI, FEC-Redundancy-Level or MBMS-Session-Identity.
+
+</details>
+
+<details>
+<summary>MBS Object Distribution</summary>
+
+- The MBSTF describes the objects currently transmitted with the profiled FDT schema of TS 26.346 annex L.6, which consolidates the schema extensions relevant to annex L. The BM-SC sets its schemaVersion to 3.
+- Objects are described in an FDT Instance with the Expires attribute. Content-MD5 and File-ETag are optional; File-ETag carries the HTTP entity tag, and may also serve as the version identifier of the object.
+- In OBJECT_STREAMING mode, the Content-Location of each object matches its URL in the object list, File@Expires is no later than its latest availability start time, and Cache-Control@Expires gives its availability end time.
+
+</details>
+
+## FEC and blocking
+
+<details>
+<summary>Unprofiled FLUTE</summary>
+
+- The Compact No-Code algorithm (FEC Encoding ID 0) is required at the client and is the default at the server; other FEC building blocks are undefined optional plug-ins.
+- The FLUTE blocking algorithm is required at the client and strongly recommended at the server.
+- The receiver supports FEC Object Transmission Information delivered in the EXT_FTI header extension for FDT Instances, and both in EXT_FTI and in the FDT for files.
+
+</details>
+
+<details>
+<summary>MBMS download</summary>
+
+- The Compact No-Code FEC scheme of RFC 3695 (FEC Encoding ID 0) shall be supported.
+- A UE that supports MBMS User Services supports a decoder for the Raptor FEC scheme of RFC 5053, identified by FEC Encoding ID 1. Given a mathematically sufficient set of encoding symbols, the decoder recovers the entire source block.
+- Blocking: the RFC 3926 algorithm with Compact No-Code, the RFC 5053 algorithm with Raptor; the sub-block size is below 256 KB.
+- In the MBMS Download Profile, both schemes are optional to implement by the BM-SC and mandatory to support by the UE.
+
+</details>
+
+<details>
+<summary>MBS Object Distribution</summary>
+
+- As MBMS. The repair procedures handle both schemes: with Compact No-Code the MBS Client considers the source symbols already received, with Raptor the source and repair symbols already received.
+- An MBS Distribution Session is provisioned for the bit rate of the object flow, including the FEC redundancy, if configured.
+
+</details>
+
+## Congestion control and channels
+
+<details>
+<summary>Unprofiled FLUTE</summary>
+
+- Implementors of ALC must implement a multiple-rate, feedback-free congestion control building block in accordance with RFC 2357, applied to all packets of a session.
+- RFC 3926 allows a single channel, or multiple channels, without the congestion control of ALC only in a controlled network where flow and congestion control are provided by other means.
+
+</details>
+
+<details>
+<summary>MBMS download and MBS Object Distribution</summary>
+
+- Congestion control is not appropriate in the environment MBMS download is provided in, and is not used.
+- FLUTE channelization is a single FLUTE channel with single rate transport. The SDP profile allows only one FLUTE channel per FLUTE session.
+
+</details>
+
+## LCT headers and extensions
+
+<details>
+<summary>Unprofiled FLUTE</summary>
+
+- The LCT header is as RFC 3451 defines it. The TOI field is included in the ALC packets of a FLUTE session, and TOI 0 is reserved for the FDT Instances, which carry EXT_FDT.
+
+</details>
+
+<details>
+<summary>MBMS download and MBS Object Distribution</summary>
+
+- **Header fields:** a 32-bit CCI with value zero, a 16-bit TSI, a TOI that should be 16 bits, and TOI 0 used only for FDT Instances.
+- **Flags:** the Close Session (A) and Close Object (B) flags may signal the end of a session and of an object. The A flag is set to 0 when a Schedule Description fragment is present. The Sender Current Time (T) and Expected Residual Time (R) flags are set to zero.
+- **Extensions:** EXT_FDT and EXT_FTI in every packet carrying an FDT Instance, never in packets carrying files. In the MBMS Download Profile, the FEC Object Transmission Information of files should be conveyed in the FDT.
+
+</details>
+
+## Content encoding
+
+<details>
+<summary>Unprofiled FLUTE</summary>
+
+- FDT Instances and other files may be content encoded. EXT_CENC signals the encoding of an FDT Instance.
+
+</details>
+
+<details>
+<summary>MBMS download and MBS Object Distribution</summary>
+
+- Files may be gzip encoded for transport, and UEs support gzip decoding. FDT Instances are not content encoded, so EXT_CENC is not used.
+- The MBMS Download Profile excludes any Content-Encoding other than gzip.
+- In MBS, the repair object of a gzip-encoded object is hosted on the MBS AS in its gzip form, with a ".gz" extension added to its location.
+
+</details>
+
+## Session description
+
+<details>
+<summary>Unprofiled FLUTE</summary>
+
+- RFC 3926 lists what a receiver needs before joining: the source IP address, the number of channels, the destination address and port of each channel, the TSI and an indication that the session is a FLUTE session; optionally, the start and end times of the session. How the receiver discovers them is out of its scope.
+
+</details>
+
+<details>
+<summary>MBMS download</summary>
+
+- An SDP file describes the session (TS 26.346 clause 7.3). Table L.4.8-1 of the MBMS Download Profile lists which SDP parameters are required, optional or not applicable, and allows one FLUTE channel per session.
+
+</details>
+
+<details>
+<summary>MBS Object Distribution</summary>
+
+- The Session Description document follows TS 26.346 clause 7.3 with restrictions: no mode of MBMS bearer per media, no QoE metrics, no service language and no alternative TMGI.
+- The `mbs-servicetype` attribute declares whether the MBS Distribution Session uses a broadcast or a multicast MBS Session, with the TMGI, for example `a=mbs-servicetype:broadcast 123869108302929`.
+
+</details>
+
+## Operating modes
+
+<details>
+<summary>MBMS download</summary>
+
+- A UE application instructs the FLUTE receiver to receive every file available (promiscuous), one copy of specific files (one-copy), or specific files and every update to them (keep-updated).
+
+</details>
+
+<details>
+<summary>MBS Object Distribution</summary>
+
+- **OBJECT_SINGLE:** a single object.
+- **OBJECT_COLLECTION:** several objects listed in an object manifest, each distributed once. Each FDT Instance should describe all objects of the collection.
+- **OBJECT_CAROUSEL:** one or more objects from an object manifest, distributed repeatedly; the manifest may be replaced over time.
+- **OBJECT_STREAMING:** a sequence of objects, typically timed segments, recommended for DASH or HLS. The last packet of each object reaches the MBSTF Client by its availability start time.
+
+</details>
+
+## Repair
+
+<details>
+<summary>MBMS download</summary>
+
+- **Post-delivery file repair** (TS 26.346 clause 9.3): MBMS Download receivers support it. It repairs lost or corrupted file fragments, and spreads the repair requests in time and across servers.
+- **In-session unicast file repair** (clause 9.4B, Release 19): MBMS Download receivers support it if the UE permits concurrent use of MBMS bearer services and unicast reception. Its procedures are those of TS 26.517 clause 6.2.4.3.
+
+</details>
+
+<details>
+<summary>MBS Object Distribution</summary>
+
+- **Post-session Object Repair:** the MBS Client supports it. It is aligned with the file repair of TS 26.346 clause 9.3, and uses byte-range requests to the MBS AS.
+- **In-session object repair** (Release 19): the object delivery client requests missing data, or the whole object, over HTTP from the object repair server once a repair start time is reached, within a limit of repairs per 100 objects.
+- **Not with OBJECT_STREAMING:** the Object Repair mechanism is not used with the OBJECT_STREAMING mode in this release.
+
+</details>
+
+## Inconsistencies in the text
+
+Three places where the Release 19 text disagrees with itself. Both sentences are quoted; this page does not choose between them.
+
+<details>
+<summary>1. FEC-Redundancy-Level in the MBMS Download Profile</summary>
+
+- TS 26.346 V19.3.0 clause L.4.4 lists `mbms2012:FEC-Redundancy-Level` under "The following attributes shall not be carried in the FDT sent by the FLUTE sender".
+- TS 26.346 V19.3.0 clause L.6.2, on the profiled schema: "The attribute FEC-Redundancy-Level is defined in clause 7.2.10.6." TS 26.517 V19.2.0 clause 6.2.4.3.2 uses it for in-session repair, on an FDT as defined in clauses L.4 and L.6: "File@FEC-Redundancy-Level: indicating the level of FEC redundancy used for the delivery of this transmission object."
+
+</details>
+
+<details>
+<summary>2. Repair attribute names that the FDT schema does not define</summary>
+
+- TS 26.517 V19.2.0 clause 6.2.4.3.2 takes the repair limit from "the value of the File@RepairMaxAttempts attribute in the FDT Instance for the associated transmission object, if present, else", and the repair start time from File@RepairStart.
+- TS 26.346 V19.3.0 clause 7.2.9 and the profiled schema name these attributes Repair-Limit-Percentage and Repair-Start. TS 26.517 clause 6.2.4.3.4 also refers to File@FEC-Content-Length, which neither schema defines.
+
+</details>
+
+<details>
+<summary>3. Clause references that point to the wrong clause</summary>
+
+- TS 26.517 V19.2.0 clause 6.2.1 refers to the session description "as defined in clause 6.2.3" and to the operating modes in "clause 6.2.4"; they are clauses 6.2.2 and 6.2.3. Its clause 6.2.4.2 refers to clauses 6.4.2.4, 6.4.2.5 and 6.4.2.6, which do not exist; clauses 6.2.4.4 to 6.2.4.6 carry those subjects.
+- TS 26.346 V19.3.0 clause L.6.3 refers to "the FDT schema specified in clause 6.1" for the schema of clause L.6.1, and clause 9.1 requires the in-session unicast file repair procedure "as defined in clause 9.6", which is clause 9.4B.
+
+</details>
+
+<details>
+<summary>Sources for this page</summary>
+
+- **Base documents:** TS 26.346 V19.3.0, clause 7.2.0; TS 26.517 V19.2.0, clause 6.2.1 and reference [12].
+- **The File Delivery Table:** RFC 3926, sections 3.2, 3.3 and 3.4.2; TS 26.346 V19.3.0, clauses 7.2.6, 7.2.9, 7.2.10.1, 7.2.11, 7.2.13 to 7.2.16, L.4.2 to L.4.4, L.6.1 to L.6.3; TS 26.517 V19.2.0, clauses 6.2.1 and 6.2.3.5.
+- **FEC and blocking:** TS 26.346 V19.3.0, clauses 7.2.1 to 7.2.3, 7.2.12.1, L.4.7, annex A (table A.1); RFC 3926, section 5; TS 26.517 V19.2.0, clauses 6.1.1 and 6.2.4.5.
+- **Congestion control:** RFC 3450, section 2.2; RFC 3926, section 4; TS 26.346 V19.3.0, clauses 7.1, 7.2.4, L.4.7 and table L.4.8-1.
+- **LCT headers:** RFC 3926, sections 3.1 and 3.3; TS 26.346 V19.3.0, clauses 7.2.7, 7.2.8, L.4.7 and annex A (note).
+- **Content encoding:** RFC 3926, section 3.4.3; TS 26.346 V19.3.0, annex A (table A.1); clauses 7.2.5, 7.2.8 and L.4.2 of the same; TS 26.517 V19.2.0, clause 6.2.4.4.
+- **Session description:** RFC 3926, section 6; TS 26.346 V19.3.0, clause 7.3 and table L.4.8-1; TS 26.517 V19.2.0, clauses 6.2.2.1 and 6.2.2.2.
+- **Operating modes:** TS 26.346 V19.3.0, clause 7.2.0; TS 26.517 V19.2.0, clauses 6.2.3.2 to 6.2.3.5.
+- **FDT expiry:** RFC 3926, section 3.3; TS 26.346 V19.3.0, clause 7.2.9; TS 26.517 V19.2.0, clause 6.2.1.
+- **Repair:** TS 26.346 V19.3.0, clauses 9.1, 9.3.1 and 9.4B.1; TS 26.517 V19.2.0, clauses 6.2.3.1, 6.2.4.1 to 6.2.4.3.
+- **Inconsistencies:** as quoted.
+
+</details>
