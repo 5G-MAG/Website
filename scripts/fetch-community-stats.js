@@ -17,6 +17,13 @@
 // reading its own previous output and folding in each complete day once —
 // the same approach the original Jekyll script used, since there's no API
 // that returns true lifetime totals.
+//
+// Clones are counted as unique cloners per day (`total_unique_clones`), not
+// as clone operations: GitHub's clone `count` includes every repeated and
+// automated clone (one repository showed 578 clones by 13 cloners in 14 days).
+// That running total starts from the first run of this rule (5 October 2026),
+// seeded with the complete days still inside GitHub's 14-day window, and is
+// what the site shows. `total_clones` (operations) is kept as before.
 const https = require('https');
 const fs = require('fs');
 const path = require('path');
@@ -75,18 +82,18 @@ async function apiGetTrafficOrNull(urlPath) {
 // already folded in (`through`), and never today, whose count is still
 // growing. Adding "the latest day" on every run instead counted a day again
 // whenever the workflow ran more than once that day.
-function newCompleteDays(trafficResp, key, through, today) {
+function newCompleteDays(trafficResp, key, through, today, field = 'count') {
   if (!trafficResp || !Array.isArray(trafficResp[key])) return 0;
   return trafficResp[key]
     .filter((d) => {
       const day = (d.timestamp || '').slice(0, 10);
       return day > through && day < today;
     })
-    .reduce((n, d) => n + (d.count || 0), 0);
+    .reduce((n, d) => n + (d[field] || 0), 0);
 }
 
 function loadPreviousStats() {
-  const previous = new Map(); // repo -> { total_views, total_clones, traffic_counted_through }
+  const previous = new Map(); // repo -> { total_views, total_clones, total_unique_clones, ... }
   try {
     const raw = JSON.parse(fs.readFileSync(OUTPUT, 'utf8'));
     // Files written before traffic_counted_through existed had already added
@@ -98,6 +105,9 @@ function loadPreviousStats() {
           total_views: repo.total_views || 0,
           total_clones: repo.total_clones || 0,
           traffic_counted_through: repo.traffic_counted_through || lastRun,
+          total_unique_clones: repo.total_unique_clones || 0,
+          // empty before the unique-cloner rule existed: the first run takes the whole 14-day window
+          unique_clones_counted_through: repo.unique_clones_counted_through || '',
         });
       }
     }
@@ -122,10 +132,13 @@ async function statsForRepo(repo, previous) {
   ]);
   const views14d = views ? views.count || 0 : 0;
   const clones14d = clones ? clones.count || 0 : 0;
-  const prev = previous.get(repo) || { total_views: 0, total_clones: 0, traffic_counted_through: '' };
+  const prev = previous.get(repo) || {
+    total_views: 0, total_clones: 0, traffic_counted_through: '', total_unique_clones: 0, unique_clones_counted_through: '',
+  };
   const today = new Date().toISOString().slice(0, 10);
   const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
   const through = prev.traffic_counted_through || '';
+  const uniqueThrough = prev.unique_clones_counted_through || '';
 
   return {
     repo,
@@ -139,11 +152,15 @@ async function statsForRepo(repo, previous) {
     // 14-day window — see the module comment above.
     total_views: Math.max(views14d, prev.total_views + newCompleteDays(views, 'views', through, today)),
     total_clones: Math.max(clones14d, prev.total_clones + newCompleteDays(clones, 'clones', through, today)),
+    unique_clones_14d: clones ? clones.uniques || 0 : 0,
+    // Sum of daily unique cloners over the complete days counted so far; see the module comment.
+    total_unique_clones: prev.total_unique_clones + newCompleteDays(clones, 'clones', uniqueThrough, today, 'uniques'),
     // false when the token could not read this repo's traffic (401/403), so a
     // 0 above is not mistaken for a real zero.
     traffic_ok: Boolean(views && clones),
     // Last day folded into the totals above; a failed traffic call keeps the old marker.
     traffic_counted_through: views && clones ? (yesterday > through ? yesterday : through) : through,
+    unique_clones_counted_through: clones ? (yesterday > uniqueThrough ? yesterday : uniqueThrough) : uniqueThrough,
     repo_url: `https://github.com/${ORG}/${repo}`,
   };
 }

@@ -15,7 +15,7 @@ export const FACT_REPOSITORIES = {
   label: 'Project repositories, public and early access',
   sub: `${siteStats.repositories.public} public, ${siteStats.repositories.earlyAccess} early access`,
 };
-export const FACT_CLONES = { value: fmt(siteStats.clones), label: 'Clones: developers pulling the code' };
+export const FACT_CLONES = { value: fmt(siteStats.clones), label: 'Clones: unique cloners per day, since 5 October 2026' };
 export const FACT_SPEC_ISSUES = { value: fmt(siteStats.specIssues), label: 'Issues raised on specifications through GitHub' };
 export const FACT_PROJECTS = { value: fmt(siteStats.projects), label: 'Projects across media and connectivity' };
 export const FACT_REFERENCE_TOOLS = { value: fmt(siteStats.referenceTools), label: 'Reference Tools projects' };

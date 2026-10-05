@@ -14,7 +14,8 @@
 //                   archived ones excluded. Pseudo-projects without a
 //                   doc_url ("Dependency", website/org infrastructure) are
 //                   not projects and do not count.
-//   clones          sum of total_clones in community-stats.json over the same
+//   clones          sum of total_unique_clones (daily unique cloners, counted
+//                   since 5 October 2026) in community-stats.json over the same
 //                   project repositories, each once. Run this after
 //                   fetch-community-stats.js.
 //   specIssues      issues (open and closed) in 5G-MAG/Standards that carry a
@@ -155,7 +156,7 @@ function clones() {
     const r = byRepo.get(n);
     if (!r) continue;
     if (r.traffic_ok === false) noAccess.push(r.repo);
-    total += r.total_clones || 0;
+    total += r.total_unique_clones || 0;
   }
   // A repo whose traffic the token could not read reports 0; publishing a
   // total that silently misses it would be wrong, so fail and keep the last value.

@@ -189,7 +189,7 @@ function RepoStatsTable({ repos }) {
             <th>Forks</th>
             <th>Issues</th>
             <th>Views</th>
-            <th>Clones</th>
+            <th title="Unique cloners per day, counted since 5 October 2026">Clones</th>
             <th>Status</th>
           </tr>
         </thead>
@@ -207,7 +207,7 @@ function RepoStatsTable({ repos }) {
                 <td className={styles.numCell}>{repo.forks}</td>
                 <td className={styles.numCell}>{repo.open_issues}</td>
                 <td className={styles.numCell}>{repo.total_views}</td>
-                <td className={styles.numCell}>{repo.total_clones}</td>
+                <td className={styles.numCell}>{repo.total_unique_clones ?? 0}</td>
                 <td>
                   <span className={`${styles.statusPill} ${STATUS_CLASSES[status]}`}>{status}</span>
                 </td>

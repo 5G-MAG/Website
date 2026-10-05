@@ -5,7 +5,7 @@ import styles from './styles.module.css';
 // scripts/fetch-site-stats.js), closing the homepage intro.
 const TILES = [
   { ...FACT_REPOSITORIES, label: 'project repositories' },
-  { ...FACT_CLONES, label: 'clones', sub: 'developers pulling the code' },
+  { ...FACT_CLONES, label: 'clones', sub: 'unique cloners per day, since 5 Oct 2026' },
   { ...FACT_SPEC_ISSUES, label: 'issues raised on specifications', sub: 'through GitHub' },
   { ...FACT_SDO_INPUTS, label: 'inputs and liaison statements', sub: 'sent to standards bodies' },
 ];

@@ -13,7 +13,7 @@ export default function CommunityStats({ name }) {
             <th style={{ width: '10%' }}>Stars</th>
             <th style={{ width: '10%' }}>Forks</th>
             <th style={{ width: '15%' }}>Views (Total)</th>
-            <th style={{ width: '20%' }}>Clones (Total)</th>
+            <th style={{ width: '20%' }}>Clones (unique per day)</th>
             <th style={{ width: '20%' }}>Activity</th>
           </tr>
         </thead>
@@ -42,7 +42,7 @@ export default function CommunityStats({ name }) {
             <th style={{ width: '10%' }}>Stars</th>
             <th style={{ width: '10%' }}>Forks</th>
             <th style={{ width: '15%' }}>Views (Total)</th>
-            <th style={{ width: '20%' }}>Clones (Total)</th>
+            <th style={{ width: '20%' }}>Clones (unique per day)</th>
             <th style={{ width: '20%' }}>Activity</th>
           </tr>
         </thead>
@@ -57,7 +57,7 @@ export default function CommunityStats({ name }) {
               <td>{repo.stars}</td>
               <td>{repo.forks}</td>
               <td>{repo.total_views}</td>
-              <td>{repo.total_clones}</td>
+              <td>{repo.total_unique_clones ?? 0}</td>
               <td>{activityLabel(repo.pushed_at)}</td>
             </tr>
           ))}
