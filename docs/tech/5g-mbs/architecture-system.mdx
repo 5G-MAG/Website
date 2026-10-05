@@ -31,7 +31,7 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 ## Functions in the 5G System
 
-<SpecFigure src="/img/tech/5g-mbs/generated/ts23247-fig5.1-1.svg" width={1180} height={536} spec="TS 23.247 V18.8.0" figure="5.1-1" title="5G System architecture for Multicast and Broadcast Service" alt="Service-based representation: PCF, NRF and UDM above a service bus, and below it AMF, SMF, MB-SMF, MBSF, NEF and AF/AS with their interfaces Npcf, Nnrf, Nudm, Namf, Nsmf, Nmbsmf, Nmbsf, Nnef and Naf. Underneath, the UE (N1 and Uu), NG-RAN (N2, N3 and N3mb), UPF (N4, N19mb), MB-UPF (N4mb, Nmb9, N6mb) and MBSTF (Nmb2, Nmbstf, Nmb14, Nmb8)." />
+<SpecFigure src="/img/tech/5g-mbs/generated/ts23247-fig5.1-1.svg" width={1180} height={536} spec="TS 23.247 V19.3.0" figure="5.1-1" title="5G System architecture for Multicast and Broadcast Service" alt="Service-based representation: PCF, NRF and UDM above a service bus, and below it AMF, SMF, MB-SMF, MBSF, NEF and AF/AS with their interfaces Npcf, Nnrf, Nudm, Namf, Nsmf, Nmbsmf, Nmbsf, Nnef and Naf. Underneath, the UE (N1 and Uu), NG-RAN (N2, N3 and N3mb), UPF (N4, N19mb), MB-UPF (N4mb, Nmb9, N6mb) and MBSTF (Nmb2, Nmbstf, Nmb14, Nmb8)." />
 
 <details>
 <summary>Functions and their MBS roles (TS 23.247 clause 5.3.2)</summary>
@@ -132,7 +132,7 @@ Between the 5G Core and NG-RAN there are two delivery methods. TS 23.247 does no
 - **5GC Shared MBS traffic delivery:** the 5G Core receives a single copy of the MBS data packets and delivers a single copy to an NG-RAN node, which delivers it to one or more UEs. It is used for broadcast and multicast MBS sessions, and is required in all MBS deployments.
 - **5GC Individual MBS traffic delivery:** the 5G Core delivers separate copies to individual UEs, each through a PDU Session associated with the Multicast MBS session. It is used only for multicast, and is required for mobility where NG-RAN nodes do not all support MBS.
 
-<SpecFigure src="/img/tech/5g-mbs/generated/ts23247-fig6.7-1.svg" width={870} height={490} spec="TS 23.247 V18.8.0" figure="6.7-1" title="Schematic showing user plane data transmission" alt="Incoming MBS traffic reaches the MB-UPF. 5GC Shared MBS traffic delivery: N3mb transmission from the MB-UPF to NG-RAN 1, which serves UE 1 and UE 2 by PTP (only for multicast) or PTM over radio. 5GC Individual MBS traffic delivery: N19mb transmission from the MB-UPF to a UPF, which serves UE 3 through NG-RAN 2 in PDU Session A and UE 4 through NG-RAN 3 in PDU Session B." />
+<SpecFigure src="/img/tech/5g-mbs/generated/ts23247-fig6.7-1.svg" width={870} height={490} spec="TS 23.247 V19.3.0" figure="6.7-1" title="Schematic showing user plane data transmission" alt="Incoming MBS traffic reaches the MB-UPF. 5GC Shared MBS traffic delivery: N3mb transmission from the MB-UPF to NG-RAN 1, which serves UE 1 and UE 2 by PTP (only for multicast) or PTM over radio. 5GC Individual MBS traffic delivery: N19mb transmission from the MB-UPF to a UPF, which serves UE 3 through NG-RAN 2 in PDU Session A and UE 4 through NG-RAN 3 in PDU Session B." />
 
 Over the radio, NG-RAN has two delivery methods:
 
@@ -155,9 +155,9 @@ The MB-UPF is the MBS Session Anchor. When the MBSTF is involved, the MBSTF is t
 
 The overall NG-RAN architecture applies to NR MBS. The Layer 2 stack for MBS uses the same sublayers, with a reduced set of functions: SDAP maps MBS QoS flows to MBS Radio Bearers (MRBs), and PDCP keeps transfer, sequence numbers, header compression, reordering and duplicate discarding.
 
-<SpecFigure src="/img/tech/5g-mbs/generated/ts38300-fig16.10.3-1.svg" width={977} height={694} spec="TS 38.300 V18.11.0" figure="16.10.3-1" title="Downlink Layer 2 Architecture for Multicast Session" alt="SDAP, PDCP, RLC and MAC layers between QoS Flows, Radio Bearers, RLC Channels, Logical Channels and Transport Channels. For the Multicast Session, QoS flow handling feeds MRB1, MRB2 and MRB3, each with ROHC; for the PDU Session, it feeds a DRB with ROHC and Security. In RLC, Segm. entities on MTCH serve PTM, and Segm. or Segm. ARQ entities on DTCH serve UE1 and UEn; MRB2 has both kinds. In MAC, Scheduling/Priority Handling, Multiplexing and HARQ for each MTCH, and Unicast Scheduling / Priority Handling with Multiplexing UE1 and Multiplexing UEn for the DTCHs, end on DL-SCH." />
+<SpecFigure src="/img/tech/5g-mbs/generated/ts38300-fig16.10.3-1.svg" width={977} height={694} spec="TS 38.300 V19.4.0" figure="16.10.3-1" title="Downlink Layer 2 Architecture for Multicast Session" alt="SDAP, PDCP, RLC and MAC layers between QoS Flows, Radio Bearers, RLC Channels, Logical Channels and Transport Channels. For the Multicast Session, QoS flow handling feeds MRB1, MRB2 and MRB3, each with ROHC; for the PDU Session, it feeds a DRB with ROHC and Security. In RLC, Segm. entities on MTCH serve PTM, and Segm. or Segm. ARQ entities on DTCH serve UE1 and UEn; MRB2 has both kinds. In MAC, Scheduling/Priority Handling, Multiplexing and HARQ for each MTCH, and Unicast Scheduling / Priority Handling with Multiplexing UE1 and Multiplexing UEn for the DTCHs, end on DL-SCH." />
 
-<SpecFigure src="/img/tech/5g-mbs/generated/ts38300-fig16.10.3-2.svg" width={898} height={746} spec="TS 38.300 V18.11.0" figure="16.10.3-2" title="Downlink Layer 2 Architecture for Broadcast Session" alt="SDAP, PDCP, RLC and MAC layers for the Broadcast session: QoS flow handling feeds two radio bearers with ROHC and Segm., carried on MTCH; MCCH is segmented separately. One Scheduling / Priority Handling and two Multiplexing blocks lead to DL-SCH." />
+<SpecFigure src="/img/tech/5g-mbs/generated/ts38300-fig16.10.3-2.svg" width={898} height={746} spec="TS 38.300 V19.4.0" figure="16.10.3-2" title="Downlink Layer 2 Architecture for Broadcast Session" alt="SDAP, PDCP, RLC and MAC layers for the Broadcast session: QoS flow handling feeds two radio bearers with ROHC and Segm., carried on MTCH; MCCH is segmented separately. One Scheduling / Priority Handling and two Multiplexing blocks lead to DL-SCH." />
 
 <details>
 <summary>MBS Radio Bearers (TS 38.300 clause 16.10.3)</summary>
@@ -181,12 +181,13 @@ The overall NG-RAN architecture applies to NR MBS. The Layer 2 stack for MBS use
 | **Multicast MCCH-RNTI** | Identifies MCCH transmissions and change notifications for multicast in RRC_INACTIVE |
 | **SIB20, SIB21** | MCCH configuration, and service continuity information, for broadcast |
 | **SIB24** | Information to acquire the multicast MCCH and MTCH configuration for RRC_INACTIVE |
+| **SIB27** | The intended service areas (ISAs) of MBS broadcast services in an NTN cell. Added in Release 19 |
 
 In a PTP transmission, the gNB schedules a UE-specific PDSCH with a PDCCH whose CRC is scrambled by a UE-specific RNTI, such as the C-RNTI. In a PTM transmission, it schedules a group-common PDSCH with a group-common PDCCH whose CRC is scrambled by a group-common RNTI. When a UE has both a PTM and a PTP leg, the gNB decides dynamically which to use, based on information such as the session QoS requirements, the number of joined UEs and the UE feedback on reception quality. The same QoS requirements apply whichever it chooses.
 
 ## Multicast session states
 
-<SpecFigure src="/img/tech/5g-mbs/generated/ts23247-fig4.3-1.svg" width={757} height={347} spec="TS 23.247 V18.8.0" figure="4.3-1" title="Multicast session states and state transitions" alt="Start (NULL) leads by Creation to Configured Multicast Session, or by Establishment directly to Active Multicast Session. From Configured, Establishment leads to Active or Inactive Multicast Session, and Release returns from either. Activation and Deactivation move between Inactive and Active. Deletion leads from Active, Inactive or Configured to End (NULL)." />
+<SpecFigure src="/img/tech/5g-mbs/generated/ts23247-fig4.3-1.svg" width={757} height={347} spec="TS 23.247 V19.3.0" figure="4.3-1" title="Multicast session states and state transitions" alt="Start (NULL) leads by Creation to Configured Multicast Session, or by Establishment directly to Active Multicast Session. From Configured, Establishment leads to Active or Inactive Multicast Session, and Release returns from either. Activation and Deactivation move between Inactive and Active. Deletion leads from Active, Inactive or Configured to End (NULL)." />
 
 | State | In TS 23.247 clause 4.3 |
 | --- | --- |
@@ -199,10 +200,10 @@ The first accepted join request establishes the session towards NG-RAN and the U
 <details>
 <summary>Sources for this page</summary>
 
-- **MBS, functions, reference points and services:** TS 23.247 V18.8.0, clauses 5.1, 5.3.0, 5.3.1, 5.3.2, 8.1 and 9; TS 38.413 V18.11.0, clauses 8.17 and 8.18.
-- **Delivery methods:** TS 23.247 V18.8.0, clauses 3.1, 4.1, 6.7 and 7.2.1.3.
-- **NG-RAN:** TS 38.300 V18.11.0, clauses 3.1, 7.3.1, 8.1, 16.10.2 to 16.10.4 and 16.10.5.4.
-- **Multicast session states:** TS 23.247 V18.8.0, clauses 4.2.2, 4.3 and 7.2.1.1.
-- **Figures:** TS 23.247 V18.8.0, figures 5.1-1, 6.7-1 and 4.3-1; TS 38.300 V18.11.0, figures 16.10.3-1 and 16.10.3-2.
+- **MBS, functions, reference points and services:** TS 23.247 V19.3.0, clauses 5.1, 5.3.0, 5.3.1, 5.3.2, 8.1 and 9; TS 38.413 V19.4.0, clauses 8.17 and 8.18.
+- **Delivery methods:** TS 23.247 V19.3.0, clauses 3.1, 4.1, 6.7 and 7.2.1.3.
+- **NG-RAN:** TS 38.300 V19.4.0, clauses 3.1, 7.3.1, 8.1, 16.10.2 to 16.10.4 and 16.10.5.4; SIB27 compared with TS 38.300 V18.11.0, clause 7.3.1.
+- **Multicast session states:** TS 23.247 V19.3.0, clauses 4.2.2, 4.3 and 7.2.1.1.
+- **Figures:** TS 23.247 V19.3.0, figures 5.1-1, 6.7-1 and 4.3-1; TS 38.300 V19.4.0, figures 16.10.3-1 and 16.10.3-2.
 
 </details>

@@ -96,6 +96,8 @@ const config = {
           { from: '/tech/5g-mbs/features', to: '/tech/5g-mbs/features-user-services' },
           // MBS Multicast in RRC_INACTIVE folded into the MBS Multicast page (2026-10-04)
           { from: '/tech/5g-mbs/analysis-mbs-multicast-inactive-ran', to: '/tech/5g-mbs/analysis-mbs-multicast' },
+          // MBS Multicast mobility folded into the MBS Multicast page (2026-10-05)
+          { from: '/tech/5g-mbs/mobility-mbs-multicast', to: '/tech/5g-mbs/analysis-mbs-multicast' },
           { from: '/tech/standards/6g', to: '/standards/6g' },
           { from: '/tech/standards/ai-ml', to: '/standards/ai-ml' },
           { from: '/tech/standards/avatar', to: '/standards/avatar' },

@@ -21,12 +21,12 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 :::tip[At a glance]
 
-- **MBS:** broadcast sessions, multicast join and leave, multicast activation and deactivation, mobility with switching between shared and individual delivery, multicast reception in RRC_INACTIVE (added in Release 18), local and location dependent services, QoS and policy, frequency selection, power saving, RedCap UEs, resource sharing, group message delivery and security.
+- **MBS:** broadcast sessions, multicast join and leave, multicast activation and deactivation, mobility with switching between shared and individual delivery, multicast reception in RRC_INACTIVE (added in Release 18), local and location dependent services, QoS and policy, frequency selection, power saving, RedCap UEs, broadcast over NR non-terrestrial networks (added in Release 19), resource sharing, group message delivery and security.
 - **Each feature** shows the clause that defines it and, folded, the services, APIs or procedures that realise it.
 
 :::
 
-<JumpMenu items={[["Broadcast MBS session", "broadcast-mbs-session"], ["Multicast join and leave", "multicast-join-and-leave"], ["Multicast session activation and deactivation", "multicast-session-activation-and-deactivation"], ["Mobility and switching between shared and individual delivery", "mobility-and-switching-between-shared-and-individual-delivery"], ["Multicast reception in RRC_INACTIVE", "multicast-reception-in-rrc_inactive"], ["Local and location dependent MBS", "local-and-location-dependent-mbs"], ["QoS and policy control", "qos-and-policy-control"], ["Authorisation and identifiers", "authorisation-and-identifiers"], ["Frequency selection for broadcast", "frequency-selection-for-broadcast"], ["Service announcement and pre-configuration", "service-announcement-and-pre-configuration"], ["Power saving", "power-saving"], ["Broadcast for RedCap UEs", "broadcast-for-redcap-ues"], ["Resource sharing in network sharing", "resource-sharing-in-network-sharing"], ["Group message delivery", "group-message-delivery"], ["Security", "security"], ["Interworking with EPS and QoE", "interworking-with-eps-and-qoe"]]} />
+<JumpMenu items={[["Broadcast MBS session", "broadcast-mbs-session"], ["Multicast join and leave", "multicast-join-and-leave"], ["Multicast session activation and deactivation", "multicast-session-activation-and-deactivation"], ["Mobility and switching between shared and individual delivery", "mobility-and-switching-between-shared-and-individual-delivery"], ["Multicast reception in RRC_INACTIVE", "multicast-reception-in-rrc_inactive"], ["Local and location dependent MBS", "local-and-location-dependent-mbs"], ["QoS and policy control", "qos-and-policy-control"], ["Authorisation and identifiers", "authorisation-and-identifiers"], ["Frequency selection for broadcast", "frequency-selection-for-broadcast"], ["Service announcement and pre-configuration", "service-announcement-and-pre-configuration"], ["Power saving", "power-saving"], ["Broadcast for RedCap UEs", "broadcast-for-redcap-ues"], ["Broadcast over NR NTN", "broadcast-over-nr-ntn"], ["Resource sharing in network sharing", "resource-sharing-in-network-sharing"], ["Group message delivery", "group-message-delivery"], ["Security", "security"], ["Interworking with EPS and QoE", "interworking-with-eps-and-qoe"]]} />
 
 TS 23.247 groups the MBS procedures in three: a "Common procedure for Multicast and Broadcast" (clause 7.1), "MBS procedures for multicast Session" (clause 7.2) and "MBS procedures for broadcast Session" (clause 7.3). Each feature below says which of MBS Broadcast and MBS Multicast it applies to, from the clauses that define it.
 
@@ -167,6 +167,12 @@ UEs that use power saving functions wake up at coordinated times. The service an
 
 The AF provides the "NR RedCap UE Information" parameter at MBS Session Creation, and the MB-SMF forwards it to NG-RAN. NG-RAN may configure an additional RedCap common frequency resource when the default one is wider than the RedCap UE capability.
 
+## Broadcast over NR NTN
+
+**Applies to:** MBS Broadcast · **Added in Release 19** · **Defined in** TS 23.247 clause 6.21 · **NG-RAN** TS 38.300 clause 16.14.12, SIB27 in TS 38.331
+
+A broadcast MBS session can be transmitted over NR non-terrestrial networks (NTN). For NR NTN, the MBS service area in the 5G Core may be given as an NR NTN Intended Service Area together with a TAI list and/or a cell ID list, for instance to denote an area smaller than a cell; NG-RAN uses it to further restrict the MBS service area. The 5G Core carries it transparently: the MB-SMF selects the AMFs, and the AMF the NG-RAN nodes, from the TAIs. NG-RAN broadcasts the intended service areas (ISAs) in SIB27 and associates them with broadcast services in the MCCH. A UE inside an ISA may establish the broadcast MRB and prioritise the frequency that provides the service, and may release it and stop prioritising that frequency when it leaves the ISA. Location dependent MBS services are not supported for broadcast over NR NTN in this release.
+
 ## Resource sharing in network sharing
 
 **Applies to:** MBS Broadcast · **Defined in** TS 23.247 clause 6.18 · **NG-RAN** TS 38.300 clause 16.10.6.8
@@ -194,6 +200,7 @@ Interworking between MBS and eMBMS applies at the service layer when the same se
 <details>
 <summary>Sources for this page</summary>
 
-- **MBS:** TS 23.247 V18.8.0, clauses 4.2, 4.3, 5.2, 6.1 to 6.20, 7.1.1, 7.2, 7.3, 7.5 and 9; TS 38.300 V18.11.0, clauses 16.10.1, 16.10.5 and 16.10.6; TS 38.413 V18.11.0, clauses 8.17 and 8.18; TS 38.331 V18.11.0, clauses 5.9, 5.10 and 6.3.1, compared with TS 38.331 V17.17.0; TS 24.575 V18.3.0, clause 4.
+- **MBS:** TS 23.247 V19.3.0, clauses 4.2, 4.3, 5.2, 6.1 to 6.20, 7.1.1, 7.2, 7.3, 7.5 and 9; TS 38.300 V19.4.0, clauses 16.10.1, 16.10.5 and 16.10.6; TS 38.413 V19.4.0, clauses 8.17 and 8.18; TS 38.331 V19.4.0, clauses 5.9, 5.10 and 6.3.1, and TS 38.331 V18.11.0 compared with TS 38.331 V17.17.0 for the Release 18 addition; TS 24.575 V19.0.0, clause 4.
+- **Broadcast over NR NTN:** TS 23.247 V19.3.0, clause 6.21; TS 38.300 V19.4.0, clauses 7.3.1 and 16.14.12; TS 38.331 V19.4.0, clauses 5.9.3.2 and 6.3.1 (SIB27). Compared with TS 23.247 V18.8.0 and TS 38.300 V18.11.0, which have neither.
 
 </details>
