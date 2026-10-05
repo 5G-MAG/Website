@@ -30,10 +30,11 @@ This documentation is currently **under development and subject to change**. If 
 - **What Release 19 says about NTN:** its MBS-specific NTN text is about the broadcast MBS session (the Intended Service Area). TS 23.247 states NTN support for the Broadcast MBS Session and has no NTN clause for the multicast MBS session.
 - **What exists for multicast on NTN radio:** a MAC timer, HARQ-RTT-TimerDL-PTM-NTN, which adds the UE-gNB round trip to the multicast DRX HARQ timer. It has been in TS 38.321 since Release 17.
 - **States:** RRC_CONNECTED with PTP and/or PTM, or RRC_INACTIVE with PTM only.
+- **5G-MAG analysis (beyond Release 19):** autonomous PTP and PTM switching over NTN, with the ephemeris as an extra trigger to move a device to PTP before a beam change, and application-layer repair for reliability.
 
 :::
 
-<JumpMenu items={[["Requirements", "requirements"], ["What Release 19 specifies", "what-release-19-specifies-for-multicast-over-ntn"], ["PTP and PTM", "ptp-and-ptm-switching"], ["Implementation blueprint", "implementation-blueprint"], ["RRC states", "rrc-states"], ["Mobility and reliability", "mobility-and-reliability"], ["Requirements against the specification", "requirements-against-the-specification"]]} />
+<JumpMenu items={[["Requirements", "requirements"], ["What Release 19 specifies", "what-release-19-specifies-for-multicast-over-ntn"], ["PTP and PTM", "ptp-and-ptm-switching"], ["Implementation blueprint", "implementation-blueprint"], ["RRC states", "rrc-states"], ["Mobility and reliability", "mobility-and-reliability"], ["Requirements against the specification", "requirements-against-the-specification"], ["5G-MAG analysis", "5g-mag-analysis-autonomous-ptp-and-ptm-switching-over-ntn"]]} />
 
 This page sets out requirements for delivering multicast content over a Non-Terrestrial Network (NTN), with the gNB switching each UE between PTP and PTM delivery, and then sets each requirement against what the Release 19 specifications provide. The multicast MBS session itself, from the join to the release, is described in [MBS Multicast - End-to-End Procedures](/tech/5g-mbs/analysis-mbs-multicast). Mobility is analysed further in [MBS Multicast NTN - Mobility](/tech/ntn/analysis-mobility-mbs-multicast-over-ntn) and [NTN - Mobility](/tech/ntn/analysis-mobility-ntn).
 
@@ -118,6 +119,20 @@ The mobility text of TS 38.300 for multicast is not specific to NTN:
 - **Towards a cell without multicast support.** The target gNB sets up PDU session resources mapped to the multicast session, and the 5G Core switches to 5GC Individual MBS traffic delivery (TS 38.300 clause 16.10.5.3.3).
 - **Layer 2.** For multicast, PDCP provides reordering and in-order delivery and duplicate discarding (TS 38.300 clause 16.10.3).
 
+## 5G-MAG analysis: autonomous PTP and PTM switching over NTN
+
+:::note[5G-MAG analysis, beyond Release 19]
+This section is 5G-MAG's own analysis of how PTP and PTM switching could be used over NTN, on top of what Release 19 provides. It is not 3GPP text. In Release 19 the gNB decides PTM and/or PTP per UE (TS 38.300 clause 16.10.5.4), with no NTN-specific trigger.
+:::
+
+The defining feature of this approach is that the gNB decides, on its own, whether to deliver a multicast session over a shared PTM channel or a dedicated PTP channel, and can move a device between the two without the application being aware.
+
+- **When PTM is used.** When enough devices in the same beam are receiving the same session, one PTM transmission serves them all and is by far the most efficient use of the scarce satellite spectrum. This is the normal state for popular content in a wide beam.
+- **When PTP is used.** When only one or very few devices are receiving, PTP can be more efficient and gives per-device link adaptation and retransmission. PTP is also used deliberately during handover to protect a device that is about to lose its beam (see the mobility page).
+- **What triggers a switch.** The network detects concurrent consumption, for example by session counting at upper layers, and switches unicast-to-multicast or the reverse. Over NTN, geometry adds a second trigger: an imminent beam change known from the ephemeris can justify moving a device to PTP before the handover rather than waiting for the radio to degrade.
+
+The requirement that switching be interruption-free is what ties this to reliability: a device must not lose or reorder packets when it moves between PTP and PTM. This is why the page calls for mechanisms that ensure reliability and in-sequence delivery, and why application-layer repair (a device requesting retransmission of lost objects) is important over satellite paths where lower-layer retransmission is expensive.
+
 ## Requirements against the specification
 
 | Requirement | What the specification provides | Clause |
@@ -142,5 +157,6 @@ R1, R6, R9 and R11 concern services, business arrangements and subscriptions, wh
 - **MAC over NTN:** TS 38.321 V19.4.0, clauses 3.1 and 5.7b. Present in TS 38.321 V17.15.0 and V18.10.0, clause 5.7b.
 - **RRC states:** TS 38.300 V19.4.0, clauses 16.10.1, 16.10.5.4 and 16.10.5.7.
 - **Mobility and reliability:** TS 38.300 V19.4.0, clauses 16.10.3, 16.10.5.3.2 and 16.10.5.3.3.
+- **5G-MAG analysis:** this page's own analysis, not 3GPP text; the Release 19 baseline it builds on is TS 38.300 V19.4.0, clause 16.10.5.4.
 
 </details>

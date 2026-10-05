@@ -1,0 +1,225 @@
+---
+title: NTN - Mobility
+sidebar_position: 0
+hide_title: true
+description: Mobility over NTN in Release 19 (cell reselection, conditional handover with time- and location-based triggers, satellite switch with re-synchronization, feeder link switchover) applied to three deployment models, based on TS 38.300, TS 38.331, TS 38.304 and TS 23.247 Release 19.
+---
+
+import JumpMenu from '@site/src/components/JumpMenu';
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M3.707 6.293l2.586 -2.586a1 1 0 0 1 1.414 0l5 5a1 1 0 0 1 0 1.414l-2.586 2.586a1 1 0 0 1 -1.414 0l-5 -5a1 1 0 0 1 0 -1.414z"/><path d="M6 10l-3 3l3 3l3 -3"/><path d="M10 6l3 -3l3 3l-3 3"/><path d="M14 17a3 3 0 0 0 3 -3"/><path d="M20 13a9 9 0 0 0 -9 9"/></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Non-Terrestrial Networks in 5G Systems</span>
+<h1>NTN - Mobility</h1>
+</div>
+</div>
+
+:::warning
+This documentation is currently **under development and subject to change**. If you are interested in becoming a member of the 5G-MAG and actively participating in shaping this work, please contact the [Project Office](/contact)
+:::
+
+:::tip[At a glance]
+
+- **NTN cells:** Earth-fixed, quasi-Earth-fixed or Earth-moving, depending on the service link. With NGSO satellites the gNB provides a quasi-Earth-fixed or an Earth-moving service link.
+- **What the UE is told:** SIB19 carries the satellite assistance information, including the ephemeris, the time when the cell stops serving its area (`t-Service`) and the cell's reference location.
+- **Handover:** conditional handover in NTN adds three trigger conditions: event A4, a time-based condition and a location-based condition. DAPS handover is not supported for NTN.
+- **Without a handover:** for a transparent payload and a quasi-Earth-fixed cell, the satellite switch with re-synchronization keeps the same PCI, which avoids L3 mobility for the UEs in the cell.
+- **5G-MAG analysis (beyond Release 19):** a comparison of the deployment models, with soft and hard beam switches, PTP protection of the affected UEs during a switch, and the roaming options between independent operators.
+- **Multicast:** Release 19 has no NTN-specific text for multicast mobility. The generic MBS mobility of TS 23.247 and TS 38.300 applies. MBS for roaming is not supported.
+
+:::
+
+<JumpMenu items={[["NTN cells", "ntn-cells-and-service-links"], ["Idle and inactive", "mobility-in-rrc_idle-and-rrc_inactive"], ["Handover", "handover-in-rrc_connected"], ["Satellite switch", "satellite-switch-with-re-synchronization"], ["Feeder link", "feeder-link-switchover"], ["Deployment models", "deployment-models"], ["5G-MAG analysis", "5g-mag-analysis-the-deployment-models-compared"], ["Multicast", "multicast-mbs-sessions-during-ntn-mobility"]]} />
+
+This page sets out the mobility procedures that Release 19 specifies for a Non-Terrestrial Network (NTN), and then applies them to three deployment models: a single NTN operator, a common NTN and terrestrial network (TN) operator, and independent NTN and TN operators. The three deployment models are this page's own way of organising the analysis; they are not 3GPP terms. Mobility of a multicast MBS session over NTN is analysed further in [MBS Multicast NTN - Mobility](/tech/ntn/analysis-mobility-mbs-multicast-over-ntn).
+
+## NTN cells and service links
+
+An NTN payload is transparent, or regenerative and hosting a gNB. The transparent payload forwards the radio protocol between the UE and the NTN Gateway; the regenerative payload terminates the Uu, NG and Xn interfaces (TS 38.300 clause 16.14.1). The UE supporting NTN is GNSS-capable (clause 16.14.1).
+
+NTN can provide coverage with three types of service link (TS 38.300 clause 16.14.1):
+
+| Service link | Coverage | Example given by TS 38.300 |
+| --- | --- | --- |
+| Earth-fixed | Beam(s) continuously covering the same geographical areas all the time | GSO satellites |
+| Quasi-Earth-fixed | Beam(s) covering one geographic area for a limited period and a different area during another period | NGSO satellites generating steerable beams |
+| Earth-moving | Beam(s) whose coverage area slides over the Earth surface | NGSO satellites generating fixed or non-steerable beams |
+
+With NGSO satellites, the gNB provides either a quasi-Earth-fixed or an Earth-moving service link; with a GSO satellite, an Earth-fixed or a quasi-Earth-fixed service link (clause 16.14.1).
+
+O&M provides the gNB with ephemeris information for the NTN payload of the serving cell, and optionally of neighbour cells; the ephemeris may also be used for mobility management (TS 38.300 clause 16.14.7). The UE receives the NTN ephemeris in SIB19: the serving cell's NTN payload ephemeris and optionally that of neighbouring cells (TS 38.300 clause 16.14.3.1). SIB19 contains satellite assistance information for NTN access (TS 38.331 clause 6.3.1). The SIB19 fields used for mobility are:
+
+- `ntn-Config`: the parameters the UE needs to access NR via NTN, such as ephemeris data, common TA parameters, k_offset, validity duration for UL sync information and epoch time.
+- `t-Service`: when a cell provided via NTN is going to stop serving the area it is currently covering. It applies to service link switches in a quasi-Earth-fixed cell, and to feeder link switches in both quasi-Earth-fixed and Earth-moving cells.
+- `referenceLocation`: the reference location of a (quasi-)Earth-fixed serving cell. `movingReferenceLocation`: the reference location of an Earth-moving serving cell at a time reference.
+- `satSwitchWithReSync`: its presence indicates that satellite switch without PCI change is supported in the cell.
+
+(TS 38.331 clause 6.3.1, SIB19 field descriptions.)
+
+## Mobility in RRC_IDLE and RRC_INACTIVE
+
+The same principles as for terrestrial NR apply unless TS 38.300 states otherwise (clause 16.14.3.1). What it adds for NTN:
+
+- **Time-based measurement initiation.** Timing information refers to the UTC time when the serving cell stops serving the current geographical area (TS 38.300 clause 16.14.3.3). If `t-Service` is present in SIB19 and the UE supports time-based measurement initiation, the UE performs measurements before `t-Service`, whatever its distance from the reference location or the serving cell's signal level; the exact start time is up to the UE implementation (TS 38.304 clause 5.2.4.2).
+- **Location-based measurement initiation.** If the UE is closer to the serving cell's reference location than `distanceThresh`, it may not perform intra-frequency measurements. For an Earth-moving cell the reference location is derived from `movingReferenceLocation` (TS 38.304 clause 5.2.4.2).
+- **NTN and TN.** For NTN-TN mobility, the network may broadcast information on NR TN and E-UTRA TN coverage areas in SIB25, and the UE can skip TN measurements based on it (TS 38.300 clause 16.14.3.1). The UE may also be redirected by an NTN cell to an NR TN or E-UTRAN TN cell (clause 16.14.3.1).
+
+## Handover in RRC_CONNECTED
+
+Handover in NTN follows the terrestrial principle unless TS 38.300 states otherwise (clause 16.14.3.2.1). The NTN-specific statements are:
+
+- During mobility between NTN and TN, a UE is not required to connect to both NTN and TN at the same time.
+- DAPS handover is not supported for NTN in this release.
+- A UE may support mobility between gNBs operating with NTN payloads, transparent and/or regenerative, in different orbits (for example GSO, and NGSO at different altitudes).
+- RACH-less handover is supported in NTNs.
+
+(TS 38.300 clause 16.14.3.2.1.)
+
+### Conditional handover
+
+A conditional handover (CHO) is a handover that the UE executes when one or more handover execution conditions are met (TS 38.300 clause 9.2.3.4.1). NTN supports three additional trigger conditions upon which the UE may execute CHO to a candidate cell: the RRM measurement-based event A4, a time-based trigger condition and a location-based trigger condition (TS 38.300 clause 16.14.3.2.2). TS 38.331 defines them as conditional events (clause 6.3.2, ReportConfigNR):
+
+| Conditional event | Condition |
+| --- | --- |
+| CondEvent A4 | Conditional reconfiguration candidate becomes better than an absolute threshold |
+| CondEvent T1 | Time measured at the UE becomes more than `t1-Threshold` but less than `t1-Threshold` + `duration` |
+| CondEvent D1 | Distance between the UE and `referenceLocation1` becomes larger than a threshold, and distance between the UE and the candidate's `referenceLocation2` becomes shorter than a threshold |
+| CondEvent D2 | As D1, with moving reference locations: the serving cell's from `movingReferenceLocation` in SIB19, the candidate's from its reference location, ephemeris and epoch time |
+
+Time-based or location-based trigger conditions may be configured independently of the RRM measurement-based conditions in some cases, for example when the service discontinuity gap is zero or negligible (TS 38.300 clause 16.14.3.2.2). Except for a CHO configured with only CondEvent D1, D2 or T1, a network that configures one of them for a candidate cell also configures CondEvent A3, A4 or A5 for that cell; it configures at most one of D1, D2 and T1 per candidate cell (TS 38.331 clause 6.3.2, `condExecutionCond`). How the UE evaluates the time- or location-based condition together with the RRM measurement-based event is up to the UE implementation (TS 38.300 clause 16.14.3.2.2).
+
+When a time-based trigger condition is used, the source NG-RAN node should consider the time indicated to the UE to decide when to start early data forwarding to the target, and time-based CHO can be performed via RACH-less (TS 38.300 clause 16.14.3.2.2).
+
+## Satellite switch with re-synchronization
+
+For a transparent payload, when the satellite serving a quasi-Earth-fixed cell changes with the same SSB frequency and the same gNB, the satellite switch with re-synchronization procedure is supported. It avoids L3 mobility for the UEs in the cell by keeping the same PCI on the geographical area covered by the quasi-Earth-fixed beam (TS 38.300 clause 16.14.3.2.3).
+
+| | Soft satellite switch | Hard satellite switch |
+| --- | --- | --- |
+| When the UE synchronises with the target satellite | It can start before the source satellite ends serving the cell | Only after the source satellite ends serving the cell |
+| SIB19 timing | `t-ServiceStart` (when the target satellite starts serving the area) and `t-Service` | `t-Service` |
+
+(TS 38.300 clause 16.14.3.2.3; TS 38.331 clauses 5.7.19 and 6.3.1.)
+
+A UE capable of the hard satellite switch in RRC_CONNECTED initiates the procedure when `SatSwitchWithReSync` and `t-Service` are included in SIB19. At `t-Service` it informs the lower layers that UL synchronisation is lost and synchronises to the downlink of the target satellite (TS 38.331 clause 5.7.19). For the re-synchronization, random access can be triggered by a PDCCH order via the target satellite (TS 38.300 clause 16.14.3.2.3). When both CHO and the satellite switch are configured and both are triggered simultaneously, which procedure to initiate is up to the UE implementation (clause 16.14.3.2.3).
+
+## Feeder link switchover
+
+A feeder link switchover changes the feeder link from a source NTN Gateway to a target NTN Gateway for an NTN payload; it is a Transport Network Layer procedure (TS 38.300 clause 16.14.4.1). It may result in transferring the established connection of the affected UEs between two gNBs (clause 16.14.4.2). In a soft feeder link switchover the payload can connect to more than one NTN Gateway for a period, so a temporary overlap can be ensured; in a hard one it connects to only one at a time, so a radio link interruption may occur (clause 16.14.4.2).
+
+## Deployment models
+
+### Single NTN operator
+
+One operator manages the satellite infrastructure, and mobility is between the satellites and beams of that operator. How the procedures above apply depends on the service link:
+
+| | Quasi-Earth-fixed cell | Earth-moving cell |
+| --- | --- | --- |
+| Coverage | One geographic area for a limited period | Slides over the Earth surface |
+| `t-Service` in SIB19 | Service link switches and feeder link switches | Feeder link switches |
+| Reference location in SIB19 | `referenceLocation` | `movingReferenceLocation` |
+| Location-based CHO | CondEvent D1 | CondEvent D2 |
+| Time-based CHO | CondEvent T1 | CondEvent T1 |
+| Satellite change without handover | Satellite switch with re-synchronization (transparent payload, same gNB and SSB frequency, same PCI) | Not specified |
+
+(TS 38.300 clauses 16.14.1, 16.14.3.2.2, 16.14.3.2.3; TS 38.331 clause 6.3.1 and 6.3.2.)
+
+### Common NTN and TN operator
+
+The same operator owns the TN and NTN infrastructure, and one 5G Core serves both access networks. Mobility between them is NTN-TN handover, in both directions (TS 38.300 clause 16.14.3.2.1). In RRC_CONNECTED the UE is not required to connect to NTN and TN at the same time, and DAPS handover is not supported for NTN (clause 16.14.3.2.1). In RRC_IDLE and RRC_INACTIVE, the TN coverage information of SIB25 lets the UE skip TN measurements (clause 16.14.3.1). Release 19 states nothing about the difference in round-trip time between the TN and NTN legs during the handover.
+
+### Independent NTN and TN operators
+
+Two operators own the TN and NTN infrastructure, each with its own 5G Core. Two arrangements between them are considered here: an interface between the two Core Networks (roaming), or radio access network sharing. NG-RAN supports radio access network sharing as defined in TS 23.501 (TS 38.300 clause 4.6). For multicast and broadcast, roaming is excluded: Multicast/Broadcast Service for roaming is not supported in this release (TS 23.247 clause 4.1). The roaming and network sharing procedures themselves are defined in TS 23.501 and are not analysed on this page.
+
+### Summary
+
+| Deployment model | Core network | Mobility procedures in Release 19 | MBS |
+| --- | --- | --- | --- |
+| Single NTN operator | One 5G Core | Cell reselection with time- and location-based measurement initiation; CHO with T1, D1 or D2; satellite switch with re-synchronization; feeder link switchover | Generic MBS mobility |
+| Common NTN and TN operator | One shared 5G Core | NTN-TN handover; SIB25 TN coverage information; no DAPS | Generic MBS mobility |
+| Independent NTN and TN operators | Two 5G Cores | Roaming or radio access network sharing (TS 23.501, not analysed here) | Not supported for roaming |
+
+## 5G-MAG analysis: the deployment models compared
+
+:::note[5G-MAG analysis, beyond Release 19]
+This section is 5G-MAG's own analysis of how the deployment models above behave and of potential solutions on top of what Release 19 provides. It is not 3GPP text. Its comparison of soft and hard switches uses its own model of a beam switch: TS 38.300 clause 16.14.3.2.3 supports the satellite switch with re-synchronization for both hard and soft satellite switch over with the same SSB frequency, whereas the soft switch described here serves the cell with two beams on different carrier frequencies.
+:::
+
+### Single NTN operator
+
+The two beam models differ in what triggers the handover, how much of the multicast group moves at once, where the complexity sits, the switch mechanics and resulting service interruption, and how radio resources and PTM/PTP delivery are handled during the switch:
+
+| Aspect                                                                               | Quasi-Earth fixed beam                                                                                                                                                                                                                                                                                                                                        | Earth-moving beam                                                                                                                                                                                                                                                                                       |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Handover trigger                                                                     | Time-based (fixed beam re-pointed periodically)                                                                                                                                                                                                                                                                                                               | Location-based: the UE begins handover once at distance d from the Beam Reference Centre, where D1 ≤ d ≤ D2                                                                                                                                                                                             |
+| Group handover                                                                       | Whole multicast group handed over together                                                                                                                                                                                                                                                                                                                    | Only edge UEs hand over; handover is gradual                                                                                                                                                                                                                                                            |
+| Handover frequency                                                                   | Frequent                                                                                                                                                                                                                                                                                                                                                      | More frequent                                                                                                                                                                                                                                                                                           |
+| Onboard satellite complexity                                                         | Higher (steerable beamforming)                                                                                                                                                                                                                                                                                                                                | Lower                                                                                                                                                                                                                                                                                                   |
+| End-to-end network complexity (mobility handling and beam/frequency-plan allocation) | Lower                                                                                                                                                                                                                                                                                                                                                         | Higher                                                                                                                                                                                                                                                                                                  |
+| Service interruption                                                                 | Soft switch: negligible, on the order of milliseconds; hard switch: can exceed hundreds of ms in the worst case, to allow beam layout configuration, radio baseband resource association to beam, and UE downlink synchronization                                                                                                                             | Hundreds of ms in the best case                                                                                                                                                                                                                                                                         |
+| Switch types                                                                         | a) Soft switch: Mapped Cell served by two overlapping beams on different carrier frequencies during the switching phase; b) hard switch: Mapped Cell served by only one beam at any point in time                                                                                                                                                             | Single handover procedure (no soft/hard switch distinction)                                                                                                                                                                                                                                             |
+| Radio resource use                                                                   | Soft switch needs additional margin resources (extra feeder-link and service-link carrier frequencies) to support the overlapping beam; hard switch reuses the same resources between the switching beams                                                                                                                                                     | N/A                                                                                                                                                                                                                                                                                                     |
+| IP continuity                                                                        | Preserved                                                                                                                                                                                                                                                                                                                                                     | Preserved                                                                                                                                                                                                                                                                                               |
+| PTM/PTP behaviour under poor radio conditions                                        | Whole multicast group is affected at once (source satellite close to the minimum elevation angle for all UEs); PTM UEs are switched to PTP at a chosen instant (T1 + ΔT) during the switching phase to guarantee reliable, in-sequence delivery. Suited to applications intolerant of packet loss; congestion-avoidance mechanisms should also be implemented | Only the edge UE(s) are affected (source satellite close to the minimum elevation angle for that UE); edge UEs switch to PTP while the rest of the group stays in PTM. Requires the gNodeB to know each multicast PDU session's packet-loss tolerance. Suited to applications intolerant of packet loss |
+
+In both models, the deployment type determines whether the handover needs dedicated signalling (a different gNodeB, in Regenerative Payload) or can rely on common signalling (the same gNodeB, in Transparent Payload or for intra-satellite beam handover within the same satellite); common signalling reduces both the service interruption time and the signalling overhead, since it involves only the Physical and MAC layers for uplink synchronization and time alignment.
+
+### Common NTN and TN operator
+
+#### TN-NTN or NTN-TN handover for PTM
+
+In terms of service interruption, i.e., the time taken to switch from one access network to another, this is suitable for real-time multicast applications that are sensitive to non-availability of the access network and that need to receive packets reliably (i.e., without any loss) and in the correct order. The network Round-Trip Time (RTT) between a Terrestrial Radio Access base station and a Non-Terrestrial Radio Access base station needs to be assessed. Dual connectivity UEs may also be considered.
+
+Because the two access networks share a common 5G Core, the handover is an intra-system Xn or NG based handover rather than a change of operator, and the PDU session and its IP address are preserved. That keeps a reliable multicast transport (for example FLUTE over ALC/LCT) intact across the transition, so an application that needs in-sequence, lossless delivery does not have to re-establish its logical channel. The main quantity to assess is the difference in RTT between the terrestrial and non-terrestrial legs: a device moving from a low-latency TN cell to a GEO NTN cell sees the round trip grow by hundreds of milliseconds, which affects buffering, HARQ and any acknowledgement-based behaviour. For a device with dual connectivity, the terrestrial and non-terrestrial legs can overlap during the transition, allowing a make-before-break style switch that reduces or removes the interruption. As in the single-operator case, the gNB can deliver to the device being handed over by PTP to protect reliability, then return it to PTM on the target access.
+
+### Independent NTN and TN operators
+
+#### Roaming between different Network Operators for TN and NTN
+
+In this model, mobility always crosses an operator boundary, which is the main difference from the common-operator model above; the roaming and interconnect arrangements are a business as well as a technical matter and should be confirmed against the applicable system architecture and roaming specifications. Two options are envisaged for roaming:
+
+| Aspect     | a) Core Network roaming interface                                                                                                                                                                                                                                                                                                                                                               | b) RAN sharing agreement                                                                                                                                                                                                                                                                                 |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Trigger    | An interface between the Core Networks of the two systems                                                                                                                                                                                                                                                                                                                                       | Both Core Networks have direct interfaces with both TN and NTN radio infrastructure, enabling a roaming agreement                                                                                                                                                                                        |
+| Behaviour  | UE mobility requires registration and authentication with the target core. Applications needing end-to-end delivery of in-sequence, loss-free data with session continuity (e.g. reliable multicast protocols where a logical channel is established between peers before exchanging data, such as FLUTE over ALC/LCT) may require a home-routed roaming architecture to maintain IP continuity | The UE does not need to register and authenticate again and IP continuity is preserved; suitable for applications that require in-sequence data delivery for application session continuity. The network RTT between the Terrestrial and Non-Terrestrial Radio Access base stations needs to be assessed |
+| Complexity | Loosely coupled systems (only a Core Network interface)                                                                                                                                                                                                                                                                                                                                         | More tightly coupled systems (Core Networks directly interfaced with both radio access networks)                                                                                                                                                                                                         |
+| Latency    | Additional latency from UE registration and authentication at each mobility procedure                                                                                                                                                                                                                                                                                                           | Lower latency for mobility between the two access networks, since no re-registration/re-authentication is needed                                                                                                                                                                                         |
+
+The trade-off between the two options is essentially latency against coupling: option a) stays loosely coupled at the cost of a registration/authentication delay (mitigated, for reliable multicast, by a home-routed architecture), while option b) couples the systems more tightly to avoid that delay and any break in IP continuity.
+
+### Summary
+
+| Deployment model                 | Core network          | Mobility procedure                                               | IP / session continuity                         | Best suited to                                                      |
+| -------------------------------- | --------------------- | ---------------------------------------------------------------- | ----------------------------------------------- | ------------------------------------------------------------------- |
+| Single NTN operator              | One 5G Core           | Intra-system beam/satellite handover, predictable from ephemeris | IP preserved                                    | Continuous NTN coverage with frequent, schedulable handovers        |
+| Common NTN & TN operator         | One shared 5G Core    | Intra-system TN-NTN handover, no operator boundary               | IP preserved (PDU session kept)                 | Seamless satellite/terrestrial coverage for reliable multicast      |
+| Independent NTN and TN operators | Two separate 5G Cores | Roaming (core interface) or RAN sharing                          | Preserved only with home-routing or RAN sharing | Cross-operator coverage where a roaming or sharing agreement exists |
+
+The recurring design pattern across all three models is the same: use the predictability of satellite motion to prepare the target beam or cell in advance (conditional handover), and protect the reliability of a multicast session during the transition by temporarily switching the affected devices to PTP where lossless delivery is required.
+
+## Multicast MBS sessions during NTN mobility
+
+Release 19 has no NTN-specific text for the mobility of a multicast MBS session: the NTN clauses of TS 38.300 (16.14) do not mention multicast, the MBS clause (16.10) has no NTN text, and the only NTN clause of TS 23.247 (6.21) concerns the Broadcast MBS Session. The generic MBS mobility applies:
+
+- **5G System.** Multicast mobility is supported between NG-RAN nodes that both support MBS, and between a node that supports MBS and one that does not, in either direction (TS 23.247 clause 6.3.1). Towards a node without MBS support, the delivery method is switched from 5GC Shared to 5GC Individual MBS traffic delivery (clause 6.3.1).
+- **NG-RAN.** Multicast mobility builds on the existing NR mobility functions, and the UE continues to receive its multicast services via PTM or PTP in the new cell after handover (TS 38.300 clauses 16.10.5.3.1 and 16.10.5.3.2). Whether to deliver by the PTM leg and/or the PTP leg is decided by the gNB per UE (TS 38.300 clause 16.10.5.4); Release 19 defines no NTN-specific trigger for this decision.
+
+The full multicast procedures are in [MBS Multicast - End-to-End Procedures](/tech/5g-mbs/analysis-mbs-multicast#mobility), and broadcast mobility in [MBS Broadcast - End-to-End Procedures](/tech/5g-mbs/analysis-mbs-broadcast-ran#mobility).
+
+<details>
+<summary>Sources for this page</summary>
+
+- **NTN cells and service links:** TS 38.300 V19.4.0, clauses 16.14.1 and 16.14.7; TS 38.331 V19.4.0, clause 6.3.1 (SIB19).
+- **Mobility in RRC_IDLE and RRC_INACTIVE:** TS 38.300 V19.4.0, clauses 16.14.3.1 and 16.14.3.3; TS 38.304 V19.3.0, clause 5.2.4.2.
+- **Handover and conditional handover:** TS 38.300 V19.4.0, clauses 9.2.3.4.1, 16.14.3.2.1 and 16.14.3.2.2; TS 38.331 V19.4.0, clause 6.3.2 (ReportConfigNR, CondReconfigToAddModList).
+- **Satellite switch with re-synchronization:** TS 38.300 V19.4.0, clause 16.14.3.2.3; TS 38.331 V19.4.0, clauses 5.7.19 and 6.3.1.
+- **Feeder link switchover:** TS 38.300 V19.4.0, clauses 16.14.4.1 and 16.14.4.2.
+- **Deployment models:** TS 38.300 V19.4.0, clauses 4.6 and 16.14.3; TS 23.247 V19.3.0, clause 4.1. The three deployment models and the section "5G-MAG analysis" are this page's own organisation and analysis, not 3GPP text.
+- **Multicast:** TS 23.247 V19.3.0, clauses 6.3.1 and 6.21; TS 38.300 V19.4.0, clauses 16.10.5.3.1, 16.10.5.3.2 and 16.10.5.4.
+
+</details>

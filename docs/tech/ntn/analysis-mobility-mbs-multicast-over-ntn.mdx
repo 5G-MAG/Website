@@ -1,0 +1,111 @@
+---
+title: MBS Multicast NTN - Mobility
+sidebar_position: 2
+hide_title: true
+description: Keeping a multicast MBS session going for a group of UEs when NTN coverage changes, and what Release 19 specifies for it, based on TS 23.247, TS 38.300, TS 38.304 and TS 38.331 Release 19.
+---
+
+import JumpMenu from '@site/src/components/JumpMenu';
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M3.707 6.293l2.586 -2.586a1 1 0 0 1 1.414 0l5 5a1 1 0 0 1 0 1.414l-2.586 2.586a1 1 0 0 1 -1.414 0l-5 -5a1 1 0 0 1 0 -1.414z"/><path d="M6 10l-3 3l3 3l3 -3"/><path d="M10 6l3 -3l3 3l-3 3"/><path d="M14 17a3 3 0 0 0 3 -3"/><path d="M20 13a9 9 0 0 0 -9 9"/></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Non-Terrestrial Networks in 5G Systems</span>
+<h1>MBS Multicast NTN - Mobility</h1>
+</div>
+</div>
+
+:::warning
+This documentation is currently **under development and subject to change**. If you are interested in becoming a member of the 5G-MAG and actively participating in shaping this work, please contact the [Project Office](/contact)
+:::
+
+:::tip[At a glance]
+
+- **The question:** how a group of UEs receiving a multicast MBS session keeps receiving it, ideally without loss, when NTN coverage changes because the satellite moves or because the UEs move.
+- **What Release 19 specifies for this combination:** nothing NTN-specific. TS 23.247 has no NTN clause for the multicast MBS session, and the MBS clause of TS 38.300 has no NTN text. The generic MBS mobility applies, together with the NTN mobility procedures.
+- **No group handover:** Release 19 has no handover procedure for a group of UEs. Each UE in RRC_CONNECTED is handed over on its own; UEs in RRC_INACTIVE receiving PTM reselect cells on their own.
+- **Lossless handover:** supported between multicast-supporting cells if the UE is configured with a PTP RLC AM entity in the target cell MRB. Whether to deliver by PTM and/or PTP is the gNB's decision per UE; Release 19 has no NTN-specific trigger for it.
+- **Without a handover:** for a quasi-Earth-fixed cell with a transparent payload, the satellite switch with re-synchronization keeps the same PCI and avoids L3 mobility for the UEs in the cell.
+- **Proposed approach (5G-MAG analysis, beyond Release 19):** use the predictability of satellite motion to prepare the target in advance, move to PTP only the UEs that need protection during the change, and return the group to PTM on the target beam.
+
+:::
+
+<JumpMenu items={[["The question", "the-question"], ["What Release 19 specifies", "what-release-19-specifies"], ["Satellite-triggered mobility", "mobility-triggered-by-satellite-motion"], ["UE-triggered mobility", "mobility-triggered-by-the-ues"], ["Lossless delivery", "lossless-delivery-across-the-change"], ["Proposed approach", "proposed-approach-keeping-a-multicast-group-continuous"]]} />
+
+## The question
+
+This page looks at a group of UEs receiving the same multicast MBS session from an NTN cell, and at two ways in which their serving cell can change:
+
+- **Mobility triggered by satellite motion:** coverage of the serving satellite or beam ends, and the whole group is then served by another satellite or beam.
+- **Mobility triggered by the UEs:** one UE, several UEs or the whole group move out of the coverage of the serving satellite or beam.
+
+In both, the aim of this analysis is that the group keeps receiving the session with as little interruption and loss as possible. That aim is this page's own requirement (R13 and R14 on [MBS Multicast NTN](/tech/ntn/analysis-mbs-multicast-over-ntn)), not 3GPP text. The sections below set out what Release 19 provides for it. The NTN procedures themselves are described in [NTN - Mobility](/tech/ntn/analysis-mobility-ntn), and the multicast mobility procedures in [MBS Multicast - End-to-End Procedures](/tech/5g-mbs/analysis-mbs-multicast#mobility).
+
+## What Release 19 specifies
+
+- **No NTN text for multicast mobility.** The only NTN clause of TS 23.247, clause 6.21, concerns the Broadcast MBS Session. The NTN clauses of TS 38.300 (16.14) do not mention multicast, and the MBS clause (16.10) has no NTN text. Neither TS 38.300 nor TS 23.247 defines a handover procedure for a group of UEs.
+- **Generic MBS mobility, 5G System.** Mobility of a multicast MBS session is supported between NG-RAN nodes that both support MBS, and between a node that supports MBS and one that does not, in either direction; minimisation of data loss should be supported (TS 23.247 clause 6.3.1). For it, the MB-UPF adds a sequence number to each data packet of each MBS QoS flow (TS 23.247 clause 7.2.3.5).
+- **Generic MBS mobility, NG-RAN.** Multicast mobility builds on the existing NR mobility functions, and the UE continues to receive its multicast services via PTM or PTP in the new cell after handover (TS 38.300 clauses 16.10.5.3.1 and 16.10.5.3.2).
+- **NTN mobility.** Conditional handover with time-based and location-based trigger conditions, time- and location-based measurement initiation for cell reselection, satellite switch with re-synchronization, and feeder link switchover (TS 38.300 clause 16.14.3 and 16.14.4; see [NTN - Mobility](/tech/ntn/analysis-mobility-ntn)).
+
+## Mobility triggered by satellite motion
+
+When the serving satellite stops covering the area, SIB19 tells the UEs in advance: `t-Service` gives the time when the cell is going to stop serving the area it currently covers, for service link switches in a quasi-Earth-fixed cell and for feeder link switches (TS 38.331 clause 6.3.1). What happens next depends on the cell:
+
+- **Satellite switch with re-synchronization.** For a transparent payload and a quasi-Earth-fixed cell, with the same SSB frequency and the same gNB, the satellite switch with re-synchronization keeps the same PCI on the area covered by the beam, which avoids L3 mobility for the UEs in the cell (TS 38.300 clause 16.14.3.2.3). A UE capable of it initiates the procedure when `SatSwitchWithReSync` and `t-Service` are included in SIB19, and switches to the target satellite at the time given by `t-Service` (TS 38.331 clause 5.7.19). Release 19 states nothing about multicast reception during the switch.
+- **Handover of UEs in RRC_CONNECTED.** Otherwise each UE is handed over. Conditional handover can use a time-based trigger condition (CondEvent T1), and when it does, the source NG-RAN node should consider the time indicated to the UE to decide when to start early data forwarding to the target (TS 38.300 clause 16.14.3.2.2). The multicast handover is then the generic one, UE by UE: the source gNB transfers the MBS multicast sessions the UE has joined to the target gNB in the UE context; the target gNB sets up MBS user plane resources towards the 5G Core for a session for which it has none; and the source gNB may release them once no joined UE remains (TS 38.300 clause 16.10.5.3.2).
+- **Reselection of UEs in RRC_INACTIVE receiving PTM.** A UE that supports time-based measurement initiation performs measurements before `t-Service` (TS 38.304 clause 5.2.4.2). After cell reselection the UE continues to receive the multicast session without resuming the RRC connection if it can acquire the PTM configuration of the new cell from the multicast MCCH; otherwise it resumes the connection (TS 38.300 clause 16.10.5.3.5).
+
+## Mobility triggered by the UEs
+
+When the UEs move, the trigger is their own position or radio measurements rather than the satellite schedule. The procedures are the same, applied to the UEs that move, while the others stay in the serving cell:
+
+- **RRC_CONNECTED.** Conditional handover in NTN can use event A4 or a location-based trigger condition: CondEvent D1 with fixed reference locations, or CondEvent D2 with the moving reference location of an Earth-moving cell (TS 38.300 clause 16.14.3.2.2; TS 38.331 clause 6.3.2). How the UE evaluates the location-based condition together with the measurement-based event is up to the UE implementation (TS 38.300 clause 16.14.3.2.2).
+- **RRC_INACTIVE.** If the UE is closer to the serving cell's reference location than `distanceThresh`, it may not perform intra-frequency measurements (TS 38.304 clause 5.2.4.2). After cell reselection, reception continues as above (TS 38.300 clause 16.10.5.3.5).
+- **Towards a cell without multicast support:** the target gNB sets up PDU Session resources mapped to the multicast session, and the 5G Core switches to 5GC Individual MBS traffic delivery (TS 38.300 clause 16.10.5.3.3; TS 23.247 clause 6.3.1).
+
+## Lossless delivery across the change
+
+Release 19 provides lossless delivery per UE, not per group:
+
+- **Lossless handover.** Supported between multicast-supporting cells if the UE is configured with a PTP RLC AM entity in the target cell MRB, whether or not it had one in the source cell. The network ensures DL PDCP COUNT synchronisation and continuity between source and target cells, and data forwarding and the PDCP status report can be used (TS 38.300 clause 16.10.5.3.2).
+- **PTM and PTP.** If a UE is configured with both, the gNB decides dynamically whether to deliver by the PTM leg and/or the PTP leg, based on information such as the MBS session QoS requirements, the number of joined UEs and UE feedback on reception quality (TS 38.300 clause 16.10.5.4). The gNB may reconfigure the MRB's RLC entities with RRCReconfiguration, and may ask the UE for a PDCP status report during an MRB type change to minimise data loss (TS 38.300 clause 16.10.5.3.4). Release 19 defines no NTN-specific trigger, such as `t-Service`, for these decisions.
+- **RRC_INACTIVE.** The gNB may indicate in RRCRelease that all cells within the RNA are synchronised in PDCP COUNT for an MBS session; on reselection to such a cell the UE does not initialise its PDCP state variables (TS 38.300 clause 16.10.5.3.5). PTP is not supported for multicast reception in RRC_INACTIVE (TS 38.300 clause 16.10.5.4).
+
+Moving every UE of the group to PTP before a satellite-triggered change, and back to PTM afterwards, is therefore possible with these per-UE mechanisms, but Release 19 does not describe it, and while it lasts the gNB delivers separate copies of the data to each UE (TS 38.300 clause 16.10.5.4). Release 19 has no mechanism for moving a whole multicast group between satellites or beams; where the satellite switch with re-synchronization applies, it avoids the handover for the UEs in the cell.
+
+## Proposed approach: keeping a multicast group continuous
+
+:::note[5G-MAG analysis, beyond Release 19]
+This section is a proposal for analysis: a potential solution on top of what Release 19 provides, described above. It is not 3GPP text, and Release 19 does not specify it.
+:::
+
+### Satellite-triggered mobility: why the PTP-then-PTM detour is the fallback, not the goal
+
+The straightforward way to keep each device lossless would be to move every member of the group to PTP, run the NTN handover per device, and put everyone back on PTM in the target beam. It works, but it defeats the point of multicast: for the duration of the handover the network carries one dedicated flow per device instead of one shared flow, which is exactly the load that a wide satellite beam cannot afford. Hence it is described as not resource-efficient.
+
+The preferred approach exploits the one advantage NTN mobility has over terrestrial mobility: it is predictable. Because OAM can compute from the ephemeris when the source beam will fade and the target beam will illuminate the same ground area, the network can:
+
+1. prepare the target beam or satellite in advance and configure Conditional Handover for the group, with execution conditions tied to the geometry rather than to a late radio measurement;
+2. switch only where reliability demands it to PTP during the preparation and execution window, so that in-sequence, lossless delivery is protected while the radio is weakest (near the minimum elevation angle);
+3. return the group to PTM on the target beam once synchronisation is established.
+
+For a quasi-Earth-fixed beam the whole group tends to hand over together (a single scheduled event), whereas for an earth-moving beam only the edge devices hand over at a time, so the switch to PTP can be limited to those devices. This is where the gNodeB needs to know each multicast session's packet-loss tolerance, so it can decide which members genuinely need the PTP protection and which can ride out the switch on PTM.
+
+### UE-triggered mobility
+
+Conceptually this is closer to the terrestrial multicast-mobility case, because the trigger is the device, but the NTN setting still changes it. The moving device (or the subset of devices moving together, for example passengers on the same train or aircraft) may cross a beam or satellite boundary while the rest of the group stays put, so the group must not be disrupted for the sake of the few that move. As for satellite-triggered mobility, the tools are PTP/PTM switching for the moving members and conditional handover, but the geometry is no longer the sole predictor of when the handover happens, so radio measurements re-enter the decision. The detailed treatment is still to be developed.
+
+<details>
+<summary>Sources for this page</summary>
+
+- **What Release 19 specifies:** TS 23.247 V19.3.0, clauses 6.3.1, 6.21 and 7.2.3.5; TS 38.300 V19.4.0, clauses 16.10.5.3.1, 16.10.5.3.2, 16.14.3 and 16.14.4. The absence of NTN multicast text and of a group handover procedure is from a search of TS 23.247 V19.3.0, TS 38.300 V19.4.0 and TS 38.331 V19.4.0.
+- **Mobility triggered by satellite motion:** TS 38.331 V19.4.0, clauses 5.7.19 and 6.3.1 (SIB19); TS 38.300 V19.4.0, clauses 16.10.5.3.2, 16.10.5.3.5, 16.14.3.2.2 and 16.14.3.2.3; TS 38.304 V19.3.0, clause 5.2.4.2.
+- **Mobility triggered by the UEs:** TS 38.300 V19.4.0, clauses 16.10.5.3.3, 16.10.5.3.5 and 16.14.3.2.2; TS 38.331 V19.4.0, clause 6.3.2; TS 38.304 V19.3.0, clause 5.2.4.2; TS 23.247 V19.3.0, clause 6.3.1.
+- **Lossless delivery:** TS 38.300 V19.4.0, clauses 16.10.5.3.2, 16.10.5.3.4, 16.10.5.3.5 and 16.10.5.4.
+- The two triggers, the aim of lossless delivery for the group and the proposed approach are this page's own analysis, not 3GPP text.
+
+</details>
