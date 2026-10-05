@@ -5,7 +5,7 @@ import Link from '@docusaurus/Link';
 import ShowcaseDiagram from '@site/src/components/ShowcaseDiagram';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import { SHOWCASE_BASKETS, SHOWCASE_STATUS, FEATURE_STATUS } from '@site/src/data/showcases';
-import { BASKETS, ICON_CATALOG, projectsInBasket, techLabelOf } from '@site/src/data/baskets';
+import { BASKETS, ICON_CATALOG, projectsInBasket, techLabelOf, projectBySlug, deployUrlOf } from '@site/src/data/baskets';
 import { CATEGORIES as PROJECT_CATEGORIES } from '@site/src/pages/reference-tools';
 import boxStyles from '@site/src/pages/tech/index.module.css';
 
@@ -94,27 +94,87 @@ function Showcase({ topic }) {
             </span>
           ))}
         </div>
-        {/* only a showcase that is available can be tried; an early-stage one shows no button */}
-        {s.status === 'available' && s.tutorial && !s.tutorial.inPreparation && (
-          <div className={styles.tutorial}>
-            <Link className="button button--primary" to={s.tutorial.to}>Try it →</Link>
-          </div>
-        )}
       </div>
     </article>
   );
 }
 
-function Pipeline({ items }) {
+// The "What you can build" heading's icon: the Tutorials rocket (src/data/projectIcons.js).
+const ROCKET = [
+  'M4.5 16.5c-1.5 1.26 -2 5 -2 5s3.74 -.5 5 -2c.71 -.84 .7 -2.13 -.09 -2.91a2.18 2.18 0 0 0 -2.91 -.09z',
+  'M12 15l-3 -3a22 22 0 0 1 2 -3.95a12.88 12.88 0 0 1 10 -5.93c0 2.72 -.78 7.5 -6 11a22.35 22.35 0 0 1 -4 2z',
+  'M9 12h-4s.55 -3.03 2 -4c1.62 -1.08 5 0 5 0',
+  'M12 15v5s3.03 -.55 4 -2c1.08 -1.62 0 -5 0 -5',
+];
+
+// "Not yet possible": a wrench, things still to build.
+const NOT_YET_ICON = ['M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5'];
+
+// The three things a visitor can do with an item, each on the item's main project.
+const PATHS = [
+  { key: 'learn', title: 'Learn', hint: 'How it works and the specifications',
+    icon: ['M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0', 'M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0', 'M3 6l0 13', 'M12 6l0 13', 'M21 6l0 13'] },
+  { key: 'implement', title: 'Implement', hint: 'The project’s Reference Tools',
+    icon: ['M7 8l-4 4l4 4', 'M17 8l4 4l-4 4', 'M14 4l-4 16'] },
+  { key: 'deploy', title: 'Deploy', hint: 'Assets to onboard into your product',
+    icon: ['M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5', 'M12 12l8 -4.5', 'M12 12l0 9', 'M12 12l-8 -4.5', 'M16 5.25l-8 4.5'] },
+];
+
+function pathTargets(project) {
+  return project ? { learn: project.tech_url, implement: project.doc_url, deploy: deployUrlOf(project) } : {};
+}
+
+function Paths({ topic }) {
+  const project = projectBySlug(topic.project);
+  const to = pathTargets(project);
+  return (
+    <nav className={styles.paths} aria-label={`${topic.title}: what would you like to do?`}>
+      <p className={styles.pathsTitle}>What would you like to do?</p>
+      {project && (
+        <p className={styles.pathsProject}>
+          Main project: <b>{techLabelOf(project)}</b>
+        </p>
+      )}
+      <div className={styles.pathGrid}>
+        {PATHS.map((p) => {
+          const inner = (
+            <>
+              <span className={styles.pathIcon}>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor"
+                  strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  {p.icon.map((d) => <path key={d} d={d} />)}
+                </svg>
+              </span>
+              <span className={styles.pathText}>
+                <b>{p.title}</b>
+                <span className={styles.pathHint}>{to[p.key] ? p.hint : 'In preparation'}</span>
+              </span>
+              {to[p.key] && <span className={styles.pathArrow} aria-hidden="true">→</span>}
+            </>
+          );
+          return to[p.key] ? (
+            <Link key={p.key} className={styles.path} to={to[p.key]}>{inner}</Link>
+          ) : (
+            <span key={p.key} className={`${styles.path} ${styles.pathOff}`} aria-disabled="true">{inner}</span>
+          );
+        })}
+      </div>
+    </nav>
+  );
+}
+
+function Pipeline({ items, label, head }) {
   return (
     <div className={styles.pipe}>
-      <span className={styles.smallLabel}>Also possible</span>
+      <span className={styles.smallLabel}>{label}</span>
       <ul className={styles.plist}>
-        <li className={styles.phead} aria-hidden="true">
-          <span>What you could build</span>
-          <span>Needs</span>
-          <span>In the Reference Tools</span>
-        </li>
+        {head && (
+          <li className={styles.phead} aria-hidden="true">
+            <span>What you could build</span>
+            <span>Needs</span>
+            <span>In the Reference Tools</span>
+          </li>
+        )}
         {items.map((p) => (
           <li key={p.title}>
             <span className={styles.pname}>{p.title}</span>
@@ -126,14 +186,6 @@ function Pipeline({ items }) {
     </div>
   );
 }
-
-// The "What you can build" heading's icon: the Application Showcases rocket (src/data/projectIcons.js).
-const ROCKET = [
-  'M4.5 16.5c-1.5 1.26 -2 5 -2 5s3.74 -.5 5 -2c.71 -.84 .7 -2.13 -.09 -2.91a2.18 2.18 0 0 0 -2.91 -.09z',
-  'M12 15l-3 -3a22 22 0 0 1 2 -3.95a12.88 12.88 0 0 1 10 -5.93c0 2.72 -.78 7.5 -6 11a22.35 22.35 0 0 1 -4 2z',
-  'M9 12h-4s.55 -3.03 2 -4c1.62 -1.08 5 0 5 0',
-  'M12 15v5s3.03 -.55 4 -2c1.08 -1.62 0 -5 0 -5',
-];
 
 const PLACEHOLDER_LEAD = 'What you can build in this area is in preparation. The projects below show where the work stands today.';
 
@@ -246,10 +298,42 @@ export default function AreaPage({ basketKey }) {
                 <Heading as="h2" id={t.id} className={styles.topicTitle}>{t.title}</Heading>
               </div>
               {t.showcase ? <Showcase topic={t} /> : <p className={styles.muted}>Nothing to try yet in the Reference Tools.</p>}
-              {t.pipeline.length > 0 && <Pipeline items={t.pipeline} />}
+              <Paths topic={t} />
             </div>
           </section>
         ))}
+        {/* What cannot be built yet, gathered from every topic, with the call to join and contribute. */}
+        {topics.some((t) => t.pipeline.length > 0) && (
+          <section className={`${styles.topic} ${topics.length % 2 ? styles.topicAlt : ''}`}>
+            <div className="container">
+              <div className={styles.topicHead}>
+                <span className={styles.topicIcon}>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor"
+                    strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    {NOT_YET_ICON.map((d) => <path key={d} d={d} />)}
+                  </svg>
+                </span>
+                <Heading as="h2" id="not-yet-possible" className={styles.topicTitle}>Not yet possible</Heading>
+              </div>
+              <p className={styles.muted}>
+                These need features that the Reference Tools do not implement yet, or that are still being specified.
+              </p>
+              {topics.filter((t) => t.pipeline.length > 0).map((t, i) => (
+                <Pipeline key={t.id} items={t.pipeline} label={t.title} head={i === 0} />
+              ))}
+              <div className={boxStyles.inviteBlock}>
+                <h3 className={boxStyles.inviteTitle}>Want to make one of these possible?</h3>
+                <p className={boxStyles.inviteBody}>
+                  5G-MAG&apos;s members decide what the Reference Tools do next. Join to bring your topic, or contribute the missing features.
+                </p>
+                <div className={boxStyles.inviteLinks}>
+                  <Link to="/membership#request-membership" className={boxStyles.inviteLink}>Join 5G-MAG &rarr;</Link>
+                  <Link to="/contributing" className={boxStyles.inviteLink}>Contribute to the Reference Tools &rarr;</Link>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
         {topics.length === 0 && (
           // The same place this part takes on a finished area page, marked as in preparation.
           <section className={styles.topic}>

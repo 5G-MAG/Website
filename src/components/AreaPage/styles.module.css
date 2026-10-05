@@ -357,12 +357,116 @@
   border: 2px solid #9aabb4;
 }
 
-.tutorial {
+/* Learn / Implement / Deploy under each item: an invitation, then three large gradient cards. */
+.paths {
+  margin-top: 2rem;
+}
+
+.pathsTitle {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.pathsProject {
+  margin: 0.2rem 0 0;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.pathGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 0.9rem;
+}
+
+.path {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px 12px;
+  gap: 14px;
   align-items: center;
-  margin-top: 0.4rem;
+  padding: 20px 22px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--ifm-color-primary-darkest) 0%, var(--ifm-color-primary) 100%);
+  color: #fff;
+  line-height: 1.3;
+  box-shadow: 0 10px 28px rgba(11, 43, 63, 0.18);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+a.path:hover,
+a.path:focus-visible {
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px rgba(11, 43, 63, 0.28);
+}
+
+.path b {
+  display: block;
+  font-size: 1.2rem;
+}
+
+.pathIcon {
+  width: 48px;
+  height: 48px;
+  flex: none;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+.pathText {
+  flex: 1;
+}
+
+.pathHint {
+  display: block;
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.pathArrow {
+  font-size: 1.4rem;
+  font-weight: 700;
+  transition: transform 0.15s ease;
+}
+
+a.path:hover .pathArrow,
+a.path:focus-visible .pathArrow {
+  transform: translateX(4px);
+}
+
+.pathOff {
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-700);
+  box-shadow: none;
+  cursor: default;
+}
+
+.pathOff .pathIcon {
+  background: var(--ifm-color-emphasis-100);
+  color: var(--ifm-color-emphasis-600);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .path,
+  .pathArrow {
+    transition: none;
+  }
+  a.path:hover,
+  a.path:focus-visible,
+  a.path:hover .pathArrow,
+  a.path:focus-visible .pathArrow {
+    transform: none;
+  }
+}
+
+@media (max-width: 996px) {
+  .pathGrid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .prep {

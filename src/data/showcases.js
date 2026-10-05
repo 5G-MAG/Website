@@ -1,11 +1,14 @@
 // Showcases by basket: what a business can build, the spec features that realise it, and one tutorial.
 //
-// Three layers, kept apart (the page shows only the first two plus the tutorial link):
+// Three layers, kept apart (the page shows only the first two, then the item's paths):
 //   - the showcase: the business use, as a headline and one paragraph;
 //   - `features`: the spec functionality that realises it, each with its implementation status as stated on the
 //     project's implementation page ('yes', 'partial' or 'no');
 //   - the tutorial: the one page that shows how to run it. Tools (AF, AS, Application Provider UI, Docker,
 //     Postman, a 5G network) belong inside the tutorial, never here.
+//
+// `project` names each topic's main project by its slug (the last segment of its Reference Tools or testbed page).
+// The topic's Learn, Implement and Deploy buttons open that project's Technology, Reference Tools and Deploy pages.
 //
 // `status` is 'available' or 'early' for a topic's showcase. `pipeline` lists what else could be built (shown as
 // "Also possible"), with the feature each needs (`needs: null` when none is identified) and its Reference Tools status.
@@ -37,12 +40,13 @@ export const SHOWCASE_BASKETS = {
     title: 'Content Delivery and Streaming',
     headline: 'Better streaming services, end to end',
     description:
-      'What you can build for content delivery and streaming: QoE and audience analytics, CDN and edge delivery, network-assisted streaming, with the spec features behind each and one tutorial to try it.',
+      'What you can build for content delivery and streaming: QoE and audience analytics, CDN and edge delivery, network-assisted streaming, with the spec features behind each and where to learn, implement, test and deploy it.',
     lead:
       'Media services may need more from networks than a bit pipe: insight into what viewers experience, help when the network can give it, delivery at scale, and a way to bring content in and keep it protected.\n\nEach showcase below starts from that problem, follows with the technology that supports a solution and what you can build with Reference Tools.',
     topics: [
       {
         id: 'insight',
+        project: '5gms',
         title: 'QoE and audience analytics',
         diagram: 'insight',
         showcase: {
@@ -66,6 +70,7 @@ export const SHOWCASE_BASKETS = {
       },
       {
         id: 'cdn',
+        project: '5gms',
         title: 'CDN and edge delivery',
         diagram: 'cdn',
         showcase: {
@@ -91,6 +96,7 @@ export const SHOWCASE_BASKETS = {
       },
       {
         id: 'quality',
+        project: '5gms',
         title: 'Network-assisted streaming',
         diagram: 'network',
         showcase: {
@@ -125,6 +131,7 @@ export const SHOWCASE_BASKETS = {
     topics: [
       {
         id: 'contribution',
+        project: '5gms', // its features are 5GMS uplink (content publishing)
         title: 'Live contribution',
         diagram: null,
         showcase: null,
@@ -143,6 +150,7 @@ export const SHOWCASE_BASKETS = {
     topics: [
       {
         id: 'hybrid',
+        project: '5g-broadcast',
         icon: 'antenna-signal',
         title: 'Hybrid broadcast and unicast delivery',
         diagram: 'broadcast',
@@ -176,6 +184,7 @@ export const SHOWCASE_BASKETS = {
     topics: [
       {
         id: 'ai-traffic',
+        project: '6g-testbed',
         icon: 'code-ai',
         title: 'AI traffic characterization',
         diagram: 'ai',
@@ -202,6 +211,7 @@ export const SHOWCASE_BASKETS = {
     topics: [
       {
         id: 'converged',
+        project: '5g-mbs',
         icon: 'broadcast-waves',
         title: 'Converged unicast and multicast delivery',
         diagram: null,
