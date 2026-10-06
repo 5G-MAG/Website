@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-05 02:31 UTC",
+  "updated_at": "2026-10-06 03:25 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -4780,8 +4780,17 @@
           "description": "CAMARA API Tools and Examples",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-09-29",
+          "pushed_at": "2026-10-05",
           "pulls": [
+            {
+              "number": 10,
+              "title": "docs: one API versions table in the root README; fix the README claims",
+              "url": "https://github.com/5G-MAG/rt-camara-examples/pull/10",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-05",
+              "base": "development"
+            },
             {
               "number": 8,
               "title": "feat(dedicated-networks): GeoJSON area links, link-display rule, tests and docs",
@@ -4789,24 +4798,6 @@
               "draft": false,
               "author": "aaronmontilla",
               "created_at": "2026-10-02",
-              "base": "development"
-            },
-            {
-              "number": 7,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/rt-camara-examples/pull/7",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
-              "base": "development"
-            },
-            {
-              "number": 6,
-              "title": "fix: redesign Dedicated Networks Portal for a more consistent flow across the 4 APIs",
-              "url": "https://github.com/5G-MAG/rt-camara-examples/pull/6",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-20",
               "base": "development"
             }
           ],
@@ -4818,14 +4809,19 @@
               "last_commit": "2026-05-13"
             },
             {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-09-29"
-            },
-            {
               "name": "development",
               "default": false,
-              "last_commit": "2026-09-20"
+              "last_commit": "2026-10-05"
+            },
+            {
+              "name": "docs/api-versions-and-readmes",
+              "default": false,
+              "last_commit": "2026-10-05"
+            },
+            {
+              "name": "feat/portal-callbacks",
+              "default": false,
+              "last_commit": "2026-10-05"
             }
           ]
         }
@@ -4994,7 +4990,7 @@
           "description": "Native Android DVB-I client following ETSI TS 103 770, with Media3 ExoPlayer",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-03",
+          "pushed_at": "2026-10-05",
           "pulls": [],
           "issues": [],
           "branches": [
@@ -5006,7 +5002,7 @@
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-03"
+              "last_commit": "2026-10-05"
             }
           ]
         },
@@ -5016,7 +5012,7 @@
           "description": "A browser DVB-I client that discovers a service list, presents its channels with their content guide, and plays them, per ETSI TS 103 770.",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-03",
+          "pushed_at": "2026-10-05",
           "pulls": [],
           "issues": [],
           "branches": [
@@ -5028,7 +5024,7 @@
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-03"
+              "last_commit": "2026-10-05"
             }
           ]
         },
@@ -5038,7 +5034,7 @@
           "description": "Publishes a DVB-I service list and its content guide, and gives an editor for maintaining them, per ETSI TS 103 770.",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-03",
+          "pushed_at": "2026-10-05",
           "pulls": [],
           "issues": [],
           "branches": [
@@ -5050,7 +5046,7 @@
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-03"
+              "last_commit": "2026-10-05"
             }
           ]
         },
@@ -5060,7 +5056,7 @@
           "description": "Answers DVB-I client queries with a list of Service List Entry Points, per ETSI TS 103 770 V1.2.1 clause 5.1.3.2.",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-03",
+          "pushed_at": "2026-10-05",
           "pulls": [],
           "issues": [],
           "branches": [
@@ -5072,7 +5068,7 @@
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-03"
+              "last_commit": "2026-10-05"
             }
           ]
         },
@@ -5082,7 +5078,7 @@
           "description": "Runnable examples that bring the DVB-I repositories up together on one machine, publishing and playing a service list per ETSI TS 103 770.",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-10-03",
+          "pushed_at": "2026-10-05",
           "pulls": [],
           "issues": [],
           "branches": [
@@ -5094,7 +5090,7 @@
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-03"
+              "last_commit": "2026-10-05"
             }
           ]
         }
