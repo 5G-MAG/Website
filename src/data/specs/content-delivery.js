@@ -157,7 +157,7 @@ export const CONTENT_DELIVERY_SPECS = [
     url: 'https://www.3gpp.org/dynareport/26517.htm',
     layer: '3GPP',
     release: '17',
-    note: 'Latest Release 19 issue: V19.2.0. Clause 6.2 defines the Object Distribution Method over FLUTE and binds it to the MBMS Download Profile of TS 26.346',
+    note: 'Latest Release 19 issue: V19.3.0. Clause 6.2 defines the Object Distribution Method over FLUTE and binds it to the MBMS Download Profile of TS 26.346',
   },
   {
     id: 'TS 26.502',

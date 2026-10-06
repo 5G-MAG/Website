@@ -64,7 +64,7 @@ Taken from the change history of TS 26.346 V19.3.0, which lists Change Requests 
 
 - **IETF documents:** the header of each RFC.
 - **TS 26.346:** change history of TS 26.346 V19.3.0.
-- **TS 26.517:** change history of TS 26.517 V19.2.0.
+- **TS 26.517:** change history of TS 26.517 V19.3.0.
 - **ETSI TS 103 973:** History of ETSI TS 103 973 V1.2.2.
 
 </details>

@@ -91,6 +91,7 @@ const ALL_TOPICS = [
     techOverviewDoc: 'content-delivery/overview',
     standards: [
       { doc: 'standards/content-delivery', label: 'Standards: Content Delivery Protocols' },
+      { doc: 'standards/content-delivery-flute', label: 'Standards: FLUTE - Requirements by Profile', sidebarLabel: 'FLUTE requirements by profile' },
       {
         doc: 'standards/content-delivery-standards-evolution',
         label: 'Standards: Content Delivery - Standards Evolution',
