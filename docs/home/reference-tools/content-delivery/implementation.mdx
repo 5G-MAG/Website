@@ -2,7 +2,7 @@
 title: Implementation Detail
 hide_title: true
 sidebar_position: 2
-description: "What the Content Delivery Protocols Reference Tools implement: rt-libflute against the three FLUTE profiles at Release 19, case by case, and what rt-media-origin packages, delivers and checks."
+description: "What the Content Delivery Protocols Reference Tools implement: rt-libflute against the three FLUTE profiles at Release 18, case by case, and what rt-media-origin packages, delivers and checks."
 ---
 
 import ImplementationCases from '@site/src/components/ImplementationCases';
@@ -24,10 +24,10 @@ import AUDIT from '@site/src/data/audit-content-delivery.json';
 
 :::tip[In short]
 
-- **rt-libflute:** a FLUTE sender and receiver for the three profiles: unprofiled FLUTE, MBMS download and MBS Object Distribution. Judged at Release 19 (TS 26.346 V19.3.0, TS 26.517 V19.2.0), case by case.
+- **rt-libflute:** a FLUTE sender and receiver for the three profiles: unprofiled FLUTE, MBMS download and MBS Object Distribution. Judged at Release 18 (TS 26.346 V18.2.0, TS 26.517 V18.6.0), the issues the code is built against, case by case.
 - **What works:** the FDT elements each profile requires and none the MBMS Download Profile excludes; Compact No-Code on both sides and Raptor sending; the LCT header and extensions; expiry; gzip decoding; and the WEBRC sender for unprofiled FLUTE.
-- **What differs at Release 19:** the FDT schema version (Release 18 values), the schema version namespace and delimiters of the extended schema, and Cache-Control and File-ETag written and read in the extension namespaces rather than in the profiled schema's own.
-- **What differs in every release:** the Raptor decoder ignores the block structure the sender signals; the WEBRC receiver never leaves a wave channel; a changed object description keeps its TOI; without a named source the receiver checks the TSI only; and the max-stale caching directive is not read.
+- **What differs:** the schema version namespace and delimiters of the extended schema; Cache-Control and File-ETag written and read in the extension namespaces rather than in the profiled schema's own; the Raptor decoder ignores the block structure the sender signals; the WEBRC receiver never leaves a wave channel; a changed object description keeps its TOI; without a named source the receiver checks the TSI only; and the max-stale caching directive is not read.
+- **Release 19:** TS 26.346 V19.3.0 raises the FDT schema versions to 5 (extended) and 3 (profiled); the code writes the Release 18 values, 4 and 2.
 - **Source of this page:** a code audit of the repository, each requirement split into the cases its clause defines, then re-checked by a second reader.
 
 :::

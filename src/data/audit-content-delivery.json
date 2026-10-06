@@ -6,8 +6,8 @@
  "method": "code read, every open change read as merged into main, nothing built or run for the verdicts; the library's own tests pass. Session descriptions, object repair, the MBS operating modes and object manifests belong to the MBMS and MBS Clients and the MBSTF, not to this library, and are not judged here.",
  "releases": {
   "U": "Unprofiled FLUTE: RFC 3926 (FLUTE version 1), RFC 3450 (ALC), RFC 3451 (LCT)",
-  "M": "MBMS download: TS 26.346 V19.3.0 clause 7.2 and the MBMS Download Profile of annex L.4",
-  "B": "MBS Object Distribution: TS 26.517 V19.2.0 clause 6.2, with the profiled FDT schema of TS 26.346 V19.3.0 annex L.6"
+  "M": "MBMS download: TS 26.346 V18.2.0 clause 7.2 and the MBMS Download Profile of annex L.4",
+  "B": "MBS Object Distribution: TS 26.517 V18.6.0 clause 6.2, with the profiled FDT schema of TS 26.346 V18.2.0 annex L.6"
  },
  "releaseNames": {
   "U": "Unprofiled FLUTE",
@@ -30,7 +30,7 @@
   "tx": {
    "short": "Sender",
    "name": "FLUTE sender (Transmitter and FDT writer)",
-   "builtAgainst": "RFC 3926, RFC 3450 and RFC 3451; TS 26.346 and TS 26.517 cited at Release 18 in the code, judged here at Release 19",
+   "builtAgainst": "RFC 3926, RFC 3450 and RFC 3451; TS 26.346 and TS 26.517 at Release 18 (TS 26.346 V18.2.0, TS 26.517 V18.6.0), the versions the code cites",
    "repos": [
     {
      "repo": "rt-libflute",
@@ -53,7 +53,7 @@
  "features": [
   {
    "name": "File Delivery Table",
-   "summary": "The sender writes every element the three profiles require and none the MBMS Download Profile excludes, but at Release 19 it writes schemaVersion 4 and 2 where 5 and 3 are required, the extended schema without its schema-version namespace and delimiters, and Cache-Control and File-ETag in the extension namespaces rather than the profiled one, which the receiver also only reads there. A changed description of an object keeps its TOI, and the receiver does not read the max-stale caching directive.",
+   "summary": "The sender writes every element the three profiles require and none the MBMS Download Profile excludes, but writes the extended schema without its schema-version namespace and delimiters, and Cache-Control and File-ETag in the extension namespaces rather than the profiled one, which the receiver also only reads there. A changed description of an object keeps its TOI, and the receiver does not read the max-stale caching directive.",
    "requirements": [
     {
      "id": "U01-tx",
@@ -161,7 +161,7 @@
      "component": "tx",
      "spec": {
       "doc": "TS 26.346",
-      "version": "V19.3.0",
+      "version": "V18.2.0",
       "locator": "clause 7.2.9"
      },
      "repos": [
@@ -175,9 +175,9 @@
        "repo": "rt-libflute"
       },
       {
-       "case": "schemaVersion set to 5",
-       "verdict": "differs",
-       "what": "The schemaVersion element is set to 4, the Release 18 value; Release 19 requires 5.",
+       "case": "schemaVersion set to 4",
+       "verdict": "implemented",
+       "what": "The schemaVersion element is set to 4.",
        "repo": "rt-libflute",
        "locator": "clause 7.2.10.1"
       },
@@ -186,10 +186,12 @@
        "verdict": "differs",
        "what": "The schemaVersion element is written without a namespace prefix, so it falls in the FDT namespace, and no delimiter element is written; the clause 7.2.10.1 schema takes both from the schema version namespace (sv:schemaVersion, sv:delimiter) and its sequences require the delimiter elements.",
        "repo": "rt-libflute",
-       "locator": "clause 7.2.10.1"
+       "locator": "clause L.4.5"
       }
      ],
-     "noted": []
+     "noted": [
+      "TS 26.346 V19.3.0 (Release 19) raises the schemaVersion of the extended schema to 5; the code writes the Release 18 value."
+     ]
     },
     {
      "id": "M02-tx",
@@ -198,7 +200,7 @@
      "component": "tx",
      "spec": {
       "doc": "TS 26.346",
-      "version": "V19.3.0",
+      "version": "V18.2.0",
       "locator": "clause 7.2.9"
      },
      "repos": [
@@ -247,7 +249,7 @@
        "verdict": "inconsistent",
        "what": "Never written. Neither scheme in use defines it as part of its Object Transmission Information, but table A.1 lists it as required of an MBMS FLUTE server.",
        "repo": "rt-libflute",
-       "conflict": "TS 26.346 V19.3.0 clause 7.2.9, NOTE 4: \"The FEC Object Transmission Information elements used are dependent on the FEC scheme, as indicated by the FEC Encoding ID.\" RFC 3926 section 5.2: \"\"FEC-OTI-Max-Number-of-Encoding-Symbols\" is semantically equivalent with the field \"Maximum Number of Encoding Symbols\" of EXT_FTI for FEC Encoding ID 129.\" TS 26.346 V19.3.0 annex A, table A.1, row FEC-OTI-Max-Number-of-Encoding-Symbols: \"Required\" in the column \"MBMS FLUTE Server use requirement as per present document\"."
+       "conflict": "TS 26.346 V18.2.0 clause 7.2.9, NOTE 4: \"The FEC Object Transmission Information elements used are dependent on the FEC scheme, as indicated by the FEC Encoding ID.\" RFC 3926 section 5.2: \"\"FEC-OTI-Max-Number-of-Encoding-Symbols\" is semantically equivalent with the field \"Maximum Number of Encoding Symbols\" of EXT_FTI for FEC Encoding ID 129.\" TS 26.346 V18.2.0 annex A, table A.1, row FEC-OTI-Max-Number-of-Encoding-Symbols: \"Required\" in the column \"MBMS FLUTE Server use requirement as per present document\"."
       }
      ],
      "noted": []
@@ -259,7 +261,7 @@
      "component": "tx",
      "spec": {
       "doc": "TS 26.346",
-      "version": "V19.3.0",
+      "version": "V18.2.0",
       "locator": "clause L.4.4"
      },
      "repos": [
@@ -302,7 +304,7 @@
      "component": "rx",
      "spec": {
       "doc": "TS 26.346",
-      "version": "V19.3.0",
+      "version": "V18.2.0",
       "locator": "clause L.4.2"
      },
      "repos": [
@@ -365,7 +367,7 @@
      "component": "tx",
      "spec": {
       "doc": "TS 26.517",
-      "version": "V19.2.0",
+      "version": "V18.6.0",
       "locator": "clause 6.2.1"
      },
      "repos": [
@@ -379,11 +381,11 @@
        "repo": "rt-libflute"
       },
       {
-       "case": "schemaVersion set to 3",
-       "verdict": "differs",
-       "what": "The schemaVersion element is set to 2, the Release 18 value; Release 19 requires 3.",
+       "case": "schemaVersion set to 2",
+       "verdict": "implemented",
+       "what": "The schemaVersion element is set to 2.",
        "repo": "rt-libflute",
-       "locator": "TS 26.346 V19.3.0 clause L.6.3"
+       "locator": "TS 26.346 V18.2.0 clause L.6.3"
       },
       {
        "case": "Cache-Control in the profiled namespace",
@@ -405,7 +407,9 @@
        "locator": "clause 6.2.1"
       }
      ],
-     "noted": []
+     "noted": [
+      "TS 26.346 V19.3.0 (Release 19) raises the schemaVersion of the profiled schema to 3; the code writes the Release 18 value."
+     ]
     },
     {
      "id": "B02-rx",
@@ -414,7 +418,7 @@
      "component": "rx",
      "spec": {
       "doc": "TS 26.517",
-      "version": "V19.2.0",
+      "version": "V18.6.0",
       "locator": "clause 6.2.4.2"
      },
      "repos": [
@@ -484,7 +488,7 @@
      "component": "tx",
      "spec": {
       "doc": "TS 26.346",
-      "version": "V19.3.0",
+      "version": "V18.2.0",
       "locator": "clause 7.2.2"
      },
      "repos": [
@@ -507,7 +511,7 @@
      "component": "rx",
      "spec": {
       "doc": "TS 26.346",
-      "version": "V19.3.0",
+      "version": "V18.2.0",
       "locator": "clause 7.2.2"
      },
      "repos": [
@@ -530,7 +534,7 @@
      "component": "rx",
      "spec": {
       "doc": "TS 26.346",
-      "version": "V19.3.0",
+      "version": "V18.2.0",
       "locator": "clause 7.2.2"
      },
      "repos": [
@@ -558,7 +562,7 @@
      "component": "tx",
      "spec": {
       "doc": "TS 26.346",
-      "version": "V19.3.0",
+      "version": "V18.2.0",
       "locator": "clause 7.2.7"
      },
      "repos": [
@@ -581,7 +585,7 @@
      "component": "tx",
      "spec": {
       "doc": "TS 26.346",
-      "version": "V19.3.0",
+      "version": "V18.2.0",
       "locator": "clause 7.2.3"
      },
      "repos": [
@@ -610,7 +614,7 @@
      "component": "tx",
      "spec": {
       "doc": "TS 26.346",
-      "version": "V19.3.0",
+      "version": "V18.2.0",
       "locator": "clause 7.2.3"
      },
      "repos": [
@@ -696,7 +700,7 @@
      "component": "tx",
      "spec": {
       "doc": "TS 26.346",
-      "version": "V19.3.0",
+      "version": "V18.2.0",
       "locator": "clause 7.2.4"
      },
      "repos": [
@@ -777,7 +781,7 @@
      "component": "tx",
      "spec": {
       "doc": "TS 26.346",
-      "version": "V19.3.0",
+      "version": "V18.2.0",
       "locator": "clause 7.2.7"
      },
      "repos": [
@@ -825,7 +829,7 @@
      "component": "tx",
      "spec": {
       "doc": "TS 26.346",
-      "version": "V19.3.0",
+      "version": "V18.2.0",
       "locator": "clause 7.2.8"
      },
      "repos": [
@@ -862,7 +866,7 @@
      "component": "tx",
      "spec": {
       "doc": "TS 26.346",
-      "version": "V19.3.0",
+      "version": "V18.2.0",
       "locator": "clause L.4.7"
      },
      "repos": [
@@ -885,7 +889,7 @@
      "component": "rx",
      "spec": {
       "doc": "TS 26.346",
-      "version": "V19.3.0",
+      "version": "V18.2.0",
       "locator": "clause L.4.7"
      },
      "repos": [
@@ -937,7 +941,7 @@
      "component": "rx",
      "spec": {
       "doc": "TS 26.346",
-      "version": "V19.3.0",
+      "version": "V18.2.0",
       "locator": "clause 7.2.9"
      },
      "repos": [
@@ -960,7 +964,7 @@
      "component": "rx",
      "spec": {
       "doc": "TS 26.346",
-      "version": "V19.3.0",
+      "version": "V18.2.0",
       "locator": "clause 7.2.5"
      },
      "repos": [
