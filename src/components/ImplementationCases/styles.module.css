@@ -1,7 +1,7 @@
 .wrap {
   --ok: #2e8a52; --ok-soft: #e3f4ea; --diff: #a46400; --diff-soft: #fdf0d9;
   --off: #66737c; --off-soft: #edf0f2; --note: #48607a; --note-soft: #eef2f7; --inc: #6a4fb0; --inc-soft: #efeafb;
-  margin: 1rem 0 2rem; display: grid; gap: 1rem;
+  margin: 1rem 0 2rem; display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem;
 }
 [data-theme='dark'] .wrap {
   --ok: #5cc98a; --ok-soft: #133826; --diff: #f0b44c; --diff-soft: #3b2c10;
@@ -61,6 +61,8 @@
   .fhead, .head { grid-template-columns: 1fr; }
   .right { justify-items: start; }
   .strip { justify-content: flex-start; }
+  .count, .pill { white-space: normal; }
+  .bar { width: 100%; max-width: 220px; }
 }
 .repos { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.3rem; }
 .repo { display: inline-flex; align-items: center; gap: 0.3rem; font-family: var(--ifm-font-family-monospace); font-size: 0.78rem;
