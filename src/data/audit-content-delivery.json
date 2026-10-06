@@ -1,36 +1,104 @@
 {
  "area": "content-delivery",
- "title": "Content Delivery Protocols",
+ "title": "Content Delivery Protocols: FLUTE",
  "audited": "2026-10-06",
  "tier": "T0",
- "method": "code read, every open change read as merged into main, nothing built or run for the verdicts; the library's own tests pass. Session descriptions, object repair, the MBS operating modes and object manifests belong to the MBMS and MBS Clients and the MBSTF, not to this library, and are not judged here.",
+ "method": "code read against every requirement of the FLUTE documents in the library's scope, every open change read as merged into main, nothing built or run for the verdicts",
  "releases": {
-  "U": "Unprofiled FLUTE: RFC 3926 (FLUTE version 1), RFC 3450 (ALC), RFC 3451 (LCT)",
-  "M": "MBMS download: TS 26.346 V18.2.0 clause 7.2 and the MBMS Download Profile of annex L.4",
-  "B": "MBS Object Distribution: TS 26.517 V18.6.0 clause 6.2, with the profiled FDT schema of TS 26.346 V18.2.0 annex L.6"
+  "U": "Unprofiled FLUTE: RFC 3926 (FLUTE version 1), RFC 3450 (ALC), RFC 3451 (LCT), RFC 5052 and RFC 3695 (FEC), RFC 5053 and RFC 6330 (Raptor, RaptorQ), RFC 3738 (WEBRC)",
+  "V2": "FLUTE version 2: RFC 6726, RFC 5775 (ALC), RFC 5651 (LCT)",
+  "M": "MBMS download: TS 26.346 V18.2.0 clause 7.2 and annex A",
+  "L": "MBMS Download Profile: TS 26.346 V18.2.0 annex L.4, followed by both MBMS download and MBS Object Distribution",
+  "B": "MBS Object Distribution: TS 26.517 V18.6.0 clause 6.2, with the Profiled FDT Schema of TS 26.346 V18.2.0 annex L.6"
  },
  "releaseNames": {
   "U": "Unprofiled FLUTE",
+  "V2": "FLUTE version 2",
   "M": "MBMS download",
+  "L": "MBMS Download Profile",
   "B": "MBS Object Distribution"
  },
  "dependencies": [
   {
    "project": "5G Multicast Broadcast Services (MBS)",
-   "what": "the MBSTF and MBS Client send and receive with this library under the MBS profile",
+   "what": "the MBSTF (rt-mbs-transport-function) sends and the MBS Client (rt-mbs-client, its MBSTF Client) receives with this library under the MBS profile",
    "status": "used"
   },
   {
    "project": "5G Broadcast - TV and Radio Services",
-   "what": "the MBMS Client receives with this library under the MBMS download profile",
+   "what": "the BM-SC (rt-mbms-bmsc) sends and the MBMS Client (rt-mbms-client) receives with this library under the MBMS download profile",
    "status": "used"
   }
  ],
+ "releaseStatus": {
+  "baseline": "18",
+  "issues": {
+   "17": "TS 26.346 V17.6.0, TS 26.517 V17.11.0",
+   "18": "TS 26.346 V18.2.0, TS 26.517 V18.6.0",
+   "19": "TS 26.346 V19.3.0, TS 26.517 V19.3.0"
+  },
+  "profiles": [
+   {
+    "key": "M",
+    "includes": [
+     "L"
+    ]
+   },
+   {
+    "key": "B",
+    "includes": [
+     "L"
+    ]
+   }
+  ],
+  "matrix": {
+   "M": {
+    "17": {
+     "implemented": 56,
+     "differs": 6,
+     "absent": 2,
+     "inconsistent": 2
+    },
+    "18": {
+     "implemented": 56,
+     "differs": 6,
+     "absent": 2,
+     "inconsistent": 2
+    },
+    "19": {
+     "implemented": 55,
+     "differs": 7,
+     "absent": 2,
+     "inconsistent": 2
+    }
+   },
+   "B": {
+    "17": {
+     "implemented": 26,
+     "differs": 7,
+     "absent": 1,
+     "inconsistent": 0
+    },
+    "18": {
+     "implemented": 26,
+     "differs": 7,
+     "absent": 1,
+     "inconsistent": 0
+    },
+    "19": {
+     "implemented": 25,
+     "differs": 8,
+     "absent": 1,
+     "inconsistent": 0
+    }
+   }
+  }
+ },
  "components": {
   "tx": {
    "short": "Sender",
    "name": "FLUTE sender (Transmitter and FDT writer)",
-   "builtAgainst": "RFC 3926, RFC 3450 and RFC 3451; TS 26.346 and TS 26.517 at Release 18 (TS 26.346 V18.2.0, TS 26.517 V18.6.0), the versions the code cites",
+   "builtAgainst": "RFC 3926, RFC 3450 and RFC 3451; RFC 6726 for version 2; TS 26.346 and TS 26.517 at Release 18",
    "repos": [
     {
      "repo": "rt-libflute",
@@ -52,702 +120,56 @@
  },
  "features": [
   {
-   "name": "File Delivery Table",
-   "summary": "The sender writes every element the three profiles require and none the MBMS Download Profile excludes, but writes the extended schema without its schema-version namespace and delimiters, and Cache-Control and File-ETag in the extension namespaces rather than the profiled one, which the receiver also only reads there. A changed description of an object keeps its TOI, and the receiver does not read the max-stale caching directive.",
+   "name": "Sessions, objects and packets",
+   "summary": "The TSI and TOI are carried and checked as ALC and LCT require; the receiver checks the sender address only when the session names its source, and never leaves a session it cannot process.",
    "requirements": [
     {
-     "id": "U01-tx",
-     "name": "FDT mandatory elements",
-     "release": "U",
-     "component": "tx",
-     "spec": {
-      "doc": "RFC 3926",
-      "version": "October 2004",
-      "locator": "section 3.4.2"
-     },
-     "repos": [
-      "rt-libflute"
-     ],
-     "cases": [
-      {
-       "case": "FDT-Instance carries Expires",
-       "verdict": "implemented",
-       "what": "Every FDT Instance written carries the Expires attribute.",
-       "repo": "rt-libflute"
-      },
-      {
-       "case": "Each File carries TOI and Content-Location",
-       "verdict": "implemented",
-       "what": "Every File element carries the TOI and Content-Location attributes.",
-       "repo": "rt-libflute",
-       "locator": "section 3.4.2"
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "U02-tx",
-     "name": "TOI 0 for FDT Instances",
-     "release": "U",
-     "component": "tx",
-     "spec": {
-      "doc": "RFC 3926",
-      "version": "October 2004",
-      "locator": "section 3.3"
-     },
-     "repos": [
-      "rt-libflute"
-     ],
-     "cases": [
-      {
-       "case": "FDT Instances on TOI 0 only",
-       "verdict": "implemented",
-       "what": "FDT Instances are sent on TOI 0, and a file is never given TOI 0.",
-       "repo": "rt-libflute"
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "U03-tx",
-     "name": "FDT expiry in the future",
-     "release": "U",
-     "component": "tx",
-     "spec": {
-      "doc": "RFC 3926",
-      "version": "October 2004",
-      "locator": "section 3.3"
-     },
-     "repos": [
-      "rt-libflute"
-     ],
-     "cases": [
-      {
-       "case": "An expiry time not in the future is refused",
-       "verdict": "implemented",
-       "what": "Setting an FDT expiry at or before the current time is refused, and the sender sets it ahead of the current time.",
-       "repo": "rt-libflute"
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "U09-tx",
-     "name": "FDT parameters fixed for a TOI",
-     "release": "U",
-     "component": "tx",
-     "spec": {
-      "doc": "RFC 3926",
-      "version": "October 2004",
-      "locator": "section 3.3"
-     },
-     "repos": [
-      "rt-libflute"
-     ],
-     "cases": [
-      {
-       "case": "A changed description gets a new TOI",
-       "verdict": "differs",
-       "what": "A new TOI is assigned when the content changes, but a change of content location, content type, expiry or entity tag on an object already described replaces its FDT entry under the same TOI.",
-       "repo": "rt-libflute"
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "M01-tx",
-     "name": "Extended FDT schema",
-     "release": "M",
-     "component": "tx",
-     "spec": {
-      "doc": "TS 26.346",
-      "version": "V18.2.0",
-      "locator": "clause 7.2.9"
-     },
-     "repos": [
-      "rt-libflute"
-     ],
-     "cases": [
-      {
-       "case": "Target namespace of the extended schema",
-       "verdict": "implemented",
-       "what": "Under the MBMS download profile the FDT Instance is written in the urn:IETF:metadata:2005:FLUTE:FDT namespace of the clause 7.2.10.1 schema.",
-       "repo": "rt-libflute"
-      },
-      {
-       "case": "schemaVersion set to 4",
-       "verdict": "implemented",
-       "what": "The schemaVersion element is set to 4.",
-       "repo": "rt-libflute",
-       "locator": "clause 7.2.10.1"
-      },
-      {
-       "case": "schemaVersion and delimiter elements of the schema version namespace",
-       "verdict": "differs",
-       "what": "The schemaVersion element is written without a namespace prefix, so it falls in the FDT namespace, and no delimiter element is written; the clause 7.2.10.1 schema takes both from the schema version namespace (sv:schemaVersion, sv:delimiter) and its sequences require the delimiter elements.",
-       "repo": "rt-libflute",
-       "locator": "clause L.4.5"
-      }
-     ],
-     "noted": [
-      "TS 26.346 V19.3.0 (Release 19) raises the schemaVersion of the extended schema to 5; the code writes the Release 18 value."
-     ]
-    },
-    {
-     "id": "M02-tx",
-     "name": "FDT data mandatory for MBMS",
-     "release": "M",
-     "component": "tx",
-     "spec": {
-      "doc": "TS 26.346",
-      "version": "V18.2.0",
-      "locator": "clause 7.2.9"
-     },
-     "repos": [
-      "rt-libflute"
-     ],
-     "cases": [
-      {
-       "case": "Content-Location, TOI and Expires",
-       "verdict": "implemented",
-       "what": "All three are always written.",
-       "repo": "rt-libflute"
-      },
-      {
-       "case": "Content-Length",
-       "verdict": "implemented",
-       "what": "Every File element carries Content-Length.",
-       "repo": "rt-libflute"
-      },
-      {
-       "case": "Content-Type",
-       "verdict": "implemented",
-       "what": "A file without a content type is refused under the 3GPP profiles, so every File element carries Content-Type.",
-       "repo": "rt-libflute",
-       "locator": "clause L.4.2"
-      },
-      {
-       "case": "FEC Encoding ID",
-       "verdict": "implemented",
-       "what": "FEC-OTI-FEC-Encoding-ID is written on the FDT-Instance, and on a File whose scheme differs.",
-       "repo": "rt-libflute"
-      },
-      {
-       "case": "Maximum source block length and encoding symbol length",
-       "verdict": "implemented",
-       "what": "Both are written on the FDT-Instance, and on a File whose values differ; the maximum source block length is refused above 65535 with Compact No-Code.",
-       "repo": "rt-libflute"
-      },
-      {
-       "case": "FEC-OTI-Scheme-Specific-Info for Raptor",
-       "verdict": "implemented",
-       "what": "Written, base64 encoded, when the scheme is Raptor; Compact No-Code defines none.",
-       "repo": "rt-libflute"
-      },
-      {
-       "case": "FEC-OTI-Max-Number-of-Encoding-Symbols",
-       "verdict": "inconsistent",
-       "what": "Never written. Neither scheme in use defines it as part of its Object Transmission Information, but table A.1 lists it as required of an MBMS FLUTE server.",
-       "repo": "rt-libflute",
-       "conflict": "TS 26.346 V18.2.0 clause 7.2.9, NOTE 4: \"The FEC Object Transmission Information elements used are dependent on the FEC scheme, as indicated by the FEC Encoding ID.\" RFC 3926 section 5.2: \"\"FEC-OTI-Max-Number-of-Encoding-Symbols\" is semantically equivalent with the field \"Maximum Number of Encoding Symbols\" of EXT_FTI for FEC Encoding ID 129.\" TS 26.346 V18.2.0 annex A, table A.1, row FEC-OTI-Max-Number-of-Encoding-Symbols: \"Required\" in the column \"MBMS FLUTE Server use requirement as per present document\"."
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "M03-tx",
-     "name": "Attributes the MBMS Download Profile excludes",
-     "release": "M",
-     "component": "tx",
-     "spec": {
-      "doc": "TS 26.346",
-      "version": "V18.2.0",
-      "locator": "clause L.4.4"
-     },
-     "repos": [
-      "rt-libflute"
-     ],
-     "cases": [
-      {
-       "case": "Transfer-Length not carried",
-       "verdict": "implemented",
-       "what": "Transfer-Length is written only outside the 3GPP profiles.",
-       "repo": "rt-libflute"
-      },
-      {
-       "case": "Decryption-KEY-URI, FEC-Redundancy-Level and MBMS-Session-Identity not carried",
-       "verdict": "implemented",
-       "what": "None of the three is ever written.",
-       "repo": "rt-libflute"
-      },
-      {
-       "case": "Complete, FullFDT and MBMS-Session-Identity-Expiry not used",
-       "verdict": "implemented",
-       "what": "Complete is written only outside the 3GPP profiles; FullFDT and MBMS-Session-Identity-Expiry are never written.",
-       "repo": "rt-libflute",
-       "locator": "clause L.4.3"
-      },
-      {
-       "case": "Content-Encoding other than gzip, FEC-OTI-FEC-Instance-ID and Group not used",
-       "verdict": "implemented",
-       "what": "A Content-Encoding other than gzip is refused under the 3GPP profiles; FEC-OTI-FEC-Instance-ID and Group are never written.",
-       "repo": "rt-libflute",
-       "locator": "clause L.4.2"
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "M04-rx",
-     "name": "FDT parameters the receiver supports",
-     "release": "M",
-     "component": "rx",
-     "spec": {
-      "doc": "TS 26.346",
-      "version": "V18.2.0",
-      "locator": "clause L.4.2"
-     },
-     "repos": [
-      "rt-libflute"
-     ],
-     "cases": [
-      {
-       "case": "Content-Type and the FEC Object Transmission Information read",
-       "verdict": "implemented",
-       "what": "Read at both levels; an Encoding ID naming no implemented scheme is refused.",
-       "repo": "rt-libflute"
-      },
-      {
-       "case": "Complete read",
-       "verdict": "implemented",
-       "what": "The Complete attribute of the FDT-Instance is read.",
-       "repo": "rt-libflute",
-       "locator": "clause L.4.3"
-      },
-      {
-       "case": "Transfer-Length read",
-       "verdict": "implemented",
-       "what": "Transfer-Length is read; without it, Content-Length stands in for an object that is not content encoded.",
-       "repo": "rt-libflute",
-       "locator": "clause L.4.4"
-      },
-      {
-       "case": "Cache-Control no-cache read",
-       "verdict": "implemented",
-       "what": "The no-cache directive of the mbms2007:Cache-Control element is read.",
-       "repo": "rt-libflute"
-      },
-      {
-       "case": "Cache-Control Expires read",
-       "verdict": "implemented",
-       "what": "The Expires directive of the mbms2007:Cache-Control element is read.",
-       "repo": "rt-libflute"
-      },
-      {
-       "case": "Cache-Control max-stale read",
-       "verdict": "absent",
-       "what": "The max-stale directive is not read, so an object marked max-stale is treated as carrying no caching directive.",
-       "repo": "rt-libflute",
-       "locator": "clause 7.2.13"
-      },
-      {
-       "case": "Content-MD5 read and checked",
-       "verdict": "implemented",
-       "what": "Content-MD5 is read from the FDT and the reassembled object is checked against it.",
-       "repo": "rt-libflute",
-       "locator": "clause L.4.4"
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "B01-tx",
-     "name": "Profiled FDT schema",
-     "release": "B",
-     "component": "tx",
-     "spec": {
-      "doc": "TS 26.517",
-      "version": "V18.6.0",
-      "locator": "clause 6.2.1"
-     },
-     "repos": [
-      "rt-libflute"
-     ],
-     "cases": [
-      {
-       "case": "Target namespace of the profiled schema",
-       "verdict": "implemented",
-       "what": "Under the MBS profile the FDT Instance is written in the urn:3GPP:metadata:2022:FLUTE:FDT namespace of the clause L.6.1 schema.",
-       "repo": "rt-libflute"
-      },
-      {
-       "case": "schemaVersion set to 2",
-       "verdict": "implemented",
-       "what": "The schemaVersion element is set to 2.",
-       "repo": "rt-libflute",
-       "locator": "TS 26.346 V18.2.0 clause L.6.3"
-      },
-      {
-       "case": "Cache-Control in the profiled namespace",
-       "verdict": "differs",
-       "what": "Cache-Control is written as mbms2007:Cache-Control, in the 2007 extension namespace; the profiled schema declares Cache-Control, with no-cache, max-stale and Expires, in its own namespace, so a receiver of the profiled schema does not find it. The document still validates, since the profiled schema admits elements of other namespaces, and clause L.4.4 names mbms2007:Cache-Control as optional for the sender; writing the profiled element would meet both.",
-       "repo": "rt-libflute"
-      },
-      {
-       "case": "File-ETag as the profiled schema declares it",
-       "verdict": "differs",
-       "what": "File-ETag is written as mbms2012:File-ETag; the profiled schema declares File-ETag as a plain, unprefixed attribute of File.",
-       "repo": "rt-libflute"
-      },
-      {
-       "case": "Objects described with Expires",
-       "verdict": "implemented",
-       "what": "Every FDT Instance carries Expires, and a File carries its own Expires when one is set.",
-       "repo": "rt-libflute",
-       "locator": "clause 6.2.1"
-      }
-     ],
-     "noted": [
-      "TS 26.346 V19.3.0 (Release 19) raises the schemaVersion of the profiled schema to 3; the code writes the Release 18 value."
-     ]
-    },
-    {
-     "id": "B02-rx",
-     "name": "Profiled FDT read by the receiver",
-     "release": "B",
-     "component": "rx",
-     "spec": {
-      "doc": "TS 26.517",
-      "version": "V18.6.0",
-      "locator": "clause 6.2.4.2"
-     },
-     "repos": [
-      "rt-libflute"
-     ],
-     "cases": [
-      {
-       "case": "Profiled namespace recognised",
-       "verdict": "implemented",
-       "what": "An FDT Instance in the urn:3GPP:metadata:2022:FLUTE:FDT namespace is parsed.",
-       "repo": "rt-libflute"
-      },
-      {
-       "case": "File-ETag of the profiled schema read",
-       "verdict": "differs",
-       "what": "File-ETag is read only in the mbms2012 namespace, so the plain File-ETag attribute of a profiled FDT from another sender is not read.",
-       "repo": "rt-libflute"
-      },
-      {
-       "case": "Cache-Control of the profiled schema read",
-       "verdict": "differs",
-       "what": "Cache-Control is looked up only in the mbms2007 namespace, so the Cache-Control element of a profiled FDT from another sender is not read.",
-       "repo": "rt-libflute"
-      }
-     ],
-     "noted": []
-    }
-   ]
-  },
-  {
-   "name": "FEC and blocking",
-   "summary": "Compact No-Code and Raptor are sent as the 3GPP profiles require, Compact No-Code is received, FEC Object Transmission Information is read from EXT_FTI or the FDT, and Raptor sub-blocks stay under 256 KB. The Raptor decoder ignores the block structure the sender signals, so it recovers only objects partitioned the way this library partitions them.",
-   "requirements": [
-    {
-     "id": "U04-rx",
-     "name": "FEC Object Transmission Information delivery",
-     "release": "U",
-     "component": "rx",
-     "spec": {
-      "doc": "RFC 3926",
-      "version": "October 2004",
-      "locator": "section 5"
-     },
-     "repos": [
-      "rt-libflute"
-     ],
-     "cases": [
-      {
-       "case": "EXT_FTI for FDT Instances",
-       "verdict": "implemented",
-       "what": "EXT_FTI is parsed on FDT packets.",
-       "repo": "rt-libflute"
-      },
-      {
-       "case": "EXT_FTI or the FDT for files",
-       "verdict": "implemented",
-       "what": "A file's FEC Object Transmission Information is taken from EXT_FTI when present, otherwise from the FDT.",
-       "repo": "rt-libflute"
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "M05-tx",
-     "name": "Compact No-Code supported, sender",
-     "release": "M",
-     "component": "tx",
-     "spec": {
-      "doc": "TS 26.346",
-      "version": "V18.2.0",
-      "locator": "clause 7.2.2"
-     },
-     "repos": [
-      "rt-libflute"
-     ],
-     "cases": [
-      {
-       "case": "Sent with Compact No-Code",
-       "verdict": "implemented",
-       "what": "Encoding ID 0 is the default scheme, with a 16-bit SBN then a 16-bit ESI as FEC Payload ID.",
-       "repo": "rt-libflute"
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "M05-rx",
-     "name": "Compact No-Code supported, receiver",
-     "release": "M",
-     "component": "rx",
-     "spec": {
-      "doc": "TS 26.346",
-      "version": "V18.2.0",
-      "locator": "clause 7.2.2"
-     },
-     "repos": [
-      "rt-libflute"
-     ],
-     "cases": [
-      {
-       "case": "Received with Compact No-Code",
-       "verdict": "implemented",
-       "what": "Encoding ID 0 is decoded, its FEC Payload ID read as a 16-bit SBN then a 16-bit ESI.",
-       "repo": "rt-libflute"
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "M06-rx",
-     "name": "Raptor decoder in the UE",
-     "release": "M",
-     "component": "rx",
-     "spec": {
-      "doc": "TS 26.346",
-      "version": "V18.2.0",
-      "locator": "clause 7.2.2"
-     },
-     "repos": [
-      "rt-libflute"
-     ],
-     "cases": [
-      {
-       "case": "Raptor (FEC Encoding ID 1) decoded",
-       "verdict": "differs",
-       "what": "Raptor is decoded when the sender uses one sub-block and the source block count this receiver derives from the maximum source block length; the Z, N and Al signalled in the Object Transmission Information are overwritten, so an object a sender partitions otherwise is not recovered.",
-       "repo": "rt-libflute",
-       "locator": "clause 7.2.2"
-      }
-     ],
-     "noted": [
-      "RaptorQ (RFC 6330) is implemented but refused under both 3GPP profiles, which name only Compact No-Code and Raptor; it is available outside them.",
-      "Outside the profiles, the RaptorQ FEC Payload ID is written and read as a 16-bit SBN and a 16-bit ESI, where RFC 6330 section 3.2 gives an 8-bit SBN and a 24-bit ESI.",
-      "Outside the profiles, the sender writes the Compact No-Code EXT_FTI layout for Raptor and RaptorQ, while the receiver parses the Raptor layout."
-     ]
-    },
-    {
-     "id": "M14-tx",
-     "name": "Raptor FEC Payload ID",
-     "release": "M",
-     "component": "tx",
-     "spec": {
-      "doc": "TS 26.346",
-      "version": "V18.2.0",
-      "locator": "clause 7.2.7"
-     },
-     "repos": [
-      "rt-libflute"
-     ],
-     "cases": [
-      {
-       "case": "16-bit SBN and 16-bit ESI written and read",
-       "verdict": "implemented",
-       "what": "For Raptor the FEC Payload ID is a 16-bit source block number followed by a 16-bit encoding symbol ID, on sending and on receiving.",
-       "repo": "rt-libflute"
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "M15-tx",
-     "name": "Blocking algorithm",
-     "release": "M",
-     "component": "tx",
-     "spec": {
-      "doc": "TS 26.346",
-      "version": "V18.2.0",
-      "locator": "clause 7.2.3"
-     },
-     "repos": [
-      "rt-libflute"
-     ],
-     "cases": [
-      {
-       "case": "Compact No-Code blocking",
-       "verdict": "implemented",
-       "what": "Compact No-Code objects are partitioned with the RFC 3926 algorithm.",
-       "repo": "rt-libflute"
-      },
-      {
-       "case": "Raptor blocking on sending",
-       "verdict": "implemented",
-       "what": "Raptor objects are partitioned with the RFC 5053 Partition function, with one sub-block.",
-       "repo": "rt-libflute"
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "M07-tx",
-     "name": "Sub-block size under 256 KB",
-     "release": "M",
-     "component": "tx",
-     "spec": {
-      "doc": "TS 26.346",
-      "version": "V18.2.0",
-      "locator": "clause 7.2.3"
-     },
-     "repos": [
-      "rt-libflute"
-     ],
-     "cases": [
-      {
-       "case": "Raptor sub-blocks bounded",
-       "verdict": "implemented",
-       "what": "With Raptor under a 3GPP profile the maximum source block length is capped so that a sub-block stays under 256 KB, and a larger one is refused.",
-       "repo": "rt-libflute"
-      }
-     ],
-     "noted": []
-    }
-   ]
-  },
-  {
-   "name": "Congestion control and channels",
-   "summary": "Unprofiled FLUTE runs WEBRC on both sides and refuses to join without it; the 3GPP profiles use one channel at one rate and refuse WEBRC. The WEBRC receiver joins wave channels but never leaves one, and the loop is not verified against another implementation.",
-   "requirements": [
-    {
-     "id": "U05-tx",
-     "name": "Multiple rate congestion control, sender",
+     "id": "U-TSI-tx",
+     "name": "Transport Session Identifier",
      "release": "U",
      "component": "tx",
      "spec": {
       "doc": "RFC 3450",
       "version": "December 2002",
-      "locator": "section 2.2"
+      "locator": "section 2.1"
      },
      "repos": [
       "rt-libflute"
      ],
      "cases": [
       {
-       "case": "WEBRC sender schedule over several channels",
+       "case": "A TSI in every packet",
        "verdict": "implemented",
-       "what": "The sender runs WEBRC (RFC 3738) over the session's channels, at the rate the schedule sets for each, and keeps the FDT on the base channel.",
+       "what": "Every packet carries the TSI in the LCT header, as a 16-bit half-word, with an extra 32-bit word when the TSI needs it.",
        "repo": "rt-libflute"
-      }
-     ],
-     "noted": [
-      "Not verified against another implementation: every test checks a formula against RFC 3738, which a rate-control loop cannot be validated by."
-     ]
-    },
-    {
-     "id": "U05-rx",
-     "name": "Multiple rate congestion control, receiver",
-     "release": "U",
-     "component": "rx",
-     "spec": {
-      "doc": "RFC 3450",
-      "version": "December 2002",
-      "locator": "section 2.2"
-     },
-     "repos": [
-      "rt-libflute"
-     ],
-     "cases": [
-      {
-       "case": "WEBRC receiver control loop",
-       "verdict": "differs",
-       "what": "The receiver runs the RFC 3738 rate estimator and joins wave channels, but never leaves a wave channel when it goes quiescent and does not act on the time slot index.",
-       "repo": "rt-libflute",
-       "locator": "RFC 3738 (April 2004) section 3"
       },
       {
-       "case": "No join without congestion control",
+       "case": "TSI length non-zero",
        "verdict": "implemented",
-       "what": "Outside the 3GPP profiles a receiver without WEBRC channels refuses to join.",
-       "repo": "rt-libflute"
-      }
-     ],
-     "noted": [
-      "Not verified against another implementation."
-     ]
-    },
-    {
-     "id": "M08-tx",
-     "name": "Single channel, single rate",
-     "release": "M",
-     "component": "tx",
-     "spec": {
-      "doc": "TS 26.346",
-      "version": "V18.2.0",
-      "locator": "clause 7.2.4"
-     },
-     "repos": [
-      "rt-libflute"
-     ],
-     "cases": [
+       "what": "The half-word flag is always set, so S=0 and H=0 is never sent.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3450 (December 2002) section 4.2"
+      },
       {
-       "case": "One channel at one rate under the 3GPP profiles",
+       "case": "The same TSI for every packet of the session",
        "verdict": "implemented",
-       "what": "Under a 3GPP profile the session uses one channel, and enabling WEBRC is refused.",
-       "repo": "rt-libflute"
-      }
-     ],
-     "noted": []
-    }
-   ]
-  },
-  {
-   "name": "LCT headers and extensions",
-   "summary": "EXT_FDT, EXT_FTI, the 32-bit zero CCI, 16-bit TSI and TOI, zero T and R flags and the header length are as the profiles require, and the receiver demultiplexes on sender and TSI when the session names its source; without one it checks the TSI only.",
-   "requirements": [
-    {
-     "id": "U06-tx",
-     "name": "EXT_FDT on FDT packets",
-     "release": "U",
-     "component": "tx",
-     "spec": {
-      "doc": "RFC 3926",
-      "version": "October 2004",
-      "locator": "section 3.3"
-     },
-     "repos": [
-      "rt-libflute"
-     ],
-     "cases": [
+       "what": "The TSI is fixed when the sender is created and used for every packet, the close-session packet included.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3450 (December 2002) section 4.4"
+      },
       {
-       "case": "EXT_FDT with FLUTE version 1",
+       "case": "TSI unique among the sender's sessions",
        "verdict": "implemented",
-       "what": "Every TOI 0 packet carries EXT_FDT with version 1 and the FDT Instance ID; a received version other than 1 is refused.",
-       "repo": "rt-libflute"
+       "what": "The TSI is the value the caller configures; the library does not choose or reuse one.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3450 (December 2002) section 4.2"
       }
      ],
      "noted": []
     },
     {
-     "id": "U07-rx",
-     "name": "Demultiplexing on sender and TSI",
+     "id": "U-TSI-rx",
+     "name": "Demultiplexing on sender address and TSI",
      "release": "U",
      "component": "rx",
      "spec": {
@@ -770,12 +192,479 @@
        "verdict": "differs",
        "what": "When the caller names no source address, only the TSI is checked, so packets with the session TSI from any sender are processed together.",
        "repo": "rt-libflute"
+      },
+      {
+       "case": "Header validated, invalid packets discarded",
+       "verdict": "implemented",
+       "what": "The LCT header is parsed and checked (version, header length, field presence, extension lengths); a packet that fails is discarded and logged.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3450 (December 2002) section 4.5"
+      },
+      {
+       "case": "Leaving after repeated unparseable or foreign packets",
+       "verdict": "absent",
+       "what": "The receiver discards such packets one by one but never leaves the session, however many arrive.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3450 (December 2002) section 4.5"
       }
      ],
      "noted": []
     },
     {
-     "id": "M09-tx",
+     "id": "U-TOI-tx",
+     "name": "Transport Object Identifier at the sender",
+     "release": "U",
+     "component": "tx",
+     "spec": {
+      "doc": "RFC 3926",
+      "version": "October 2004",
+      "locator": "section 3.1"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "A TOI greater than 0 for each file",
+       "verdict": "implemented",
+       "what": "Files get TOIs from a counter that starts at 1 and skips 0 when it wraps.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "The TOI in every packet",
+       "verdict": "implemented",
+       "what": "Every packet carries a 16-bit TOI; only the data-less close-session packet omits it, as RFC 3926 requires.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3926 (October 2004) section 3.1"
+      },
+      {
+       "case": "The same TOI for all packets of an object",
+       "verdict": "implemented",
+       "what": "Every packet of an object is built from that object's file entry and its TOI.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3450 (December 2002) section 4.4"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "U-TOI-rx",
+     "name": "Transport Object Identifier at the receiver",
+     "release": "U",
+     "component": "rx",
+     "spec": {
+      "doc": "RFC 3450",
+      "version": "December 2002",
+      "locator": "section 2.1"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "Packets associated with objects by TOI",
+       "verdict": "implemented",
+       "what": "Received symbols are placed in the object kept under the packet's TOI.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Packets for an unknown TOI",
+       "verdict": "implemented",
+       "what": "A packet whose TOI no FDT entry describes and which carries no EXT_FTI is discarded.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3450 (December 2002) section 4.5"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "U-JOIN-rx",
+     "name": "Joining a session",
+     "release": "U",
+     "component": "rx",
+     "spec": {
+      "doc": "RFC 3450",
+      "version": "December 2002",
+      "locator": "section 4.5"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "Session parameters before joining",
+       "verdict": "implemented",
+       "what": "The receiver is created with the address, port, TSI and, optionally, the source of the session it joins.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3451 (December 2002) section 6.1"
+      },
+      {
+       "case": "Header processed, payload processed",
+       "verdict": "implemented",
+       "what": "The ALC header is parsed and the payload placed by its FEC Payload ID.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Dropping from a session it cannot process",
+       "verdict": "differs",
+       "what": "A packet the receiver cannot process is discarded, but the receiver stays joined; it never drops from the session.",
+       "repo": "rt-libflute"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "U-MUX-tx",
+     "name": "FDT Instances in sequence",
+     "release": "U",
+     "component": "tx",
+     "spec": {
+      "doc": "RFC 3926",
+      "version": "October 2004",
+      "locator": "section 3.5"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "FDT Instances not interleaved",
+       "verdict": "implemented",
+       "what": "Only one FDT Instance is in flight at a time: a new instance replaces the one being sent, and a repeat of the same instance waits for it to finish.",
+       "repo": "rt-libflute"
+      }
+     ],
+     "noted": [
+      "A new instance abandons the one in flight, restarting from its first symbol, so a table that changes faster than it can be sent never completes."
+     ]
+    },
+    {
+     "id": "V2-DEMUX",
+     "name": "Telling versions apart",
+     "release": "V2",
+     "component": "rx",
+     "spec": {
+      "doc": "RFC 6726",
+      "version": "November 2012",
+      "locator": "section 3.1"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "Version taken from EXT_FDT and the session",
+       "verdict": "implemented",
+       "what": "A receiver configured for one version refuses FDT packets carrying the other.",
+       "repo": "rt-libflute"
+      }
+     ],
+     "noted": []
+    }
+   ]
+  },
+  {
+   "name": "LCT header and extensions",
+   "summary": "The default LCT header and the extensions FLUTE uses are written and parsed as required, with the 3GPP specialisations (zero 32-bit CCI, 16-bit TSI and TOI, no SCT or ERT) under the profiles.",
+   "requirements": [
+    {
+     "id": "U-LCT-tx",
+     "name": "Default LCT header at the sender",
+     "release": "U",
+     "component": "tx",
+     "spec": {
+      "doc": "RFC 3450",
+      "version": "December 2002",
+      "locator": "section 2.1"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "Version 1 header",
+       "verdict": "implemented",
+       "what": "The version field is 1 and the default header layout is used.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Reserved bits set to zero",
+       "verdict": "implemented",
+       "what": "The header is built in a zeroed buffer and reserved bits are never set.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3450 (December 2002) section 4.2"
+      },
+      {
+       "case": "Header length in 32-bit words",
+       "verdict": "implemented",
+       "what": "HDR_LEN counts the base header, CCI, TSI, TOI and the extensions in 32-bit words.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3450 (December 2002) section 4.2"
+      },
+      {
+       "case": "CCI length matching C",
+       "verdict": "implemented",
+       "what": "C is 0 and a 32-bit CCI word is written.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3450 (December 2002) section 4.2"
+      },
+      {
+       "case": "SCT and ERT only with T and R",
+       "verdict": "implemented",
+       "what": "T and R are never set and neither field is written.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3450 (December 2002) section 4.2"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "U-LCT-rx",
+     "name": "Default LCT header at the receiver",
+     "release": "U",
+     "component": "rx",
+     "spec": {
+      "doc": "RFC 3450",
+      "version": "December 2002",
+      "locator": "section 4.1"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "Version 1 header parsed",
+       "verdict": "implemented",
+       "what": "A packet whose LCT version is not 1 is refused; the default layout is walked with lengths validated against the packet.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Reserved bits ignored",
+       "verdict": "implemented",
+       "what": "Reserved bits are not tested.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "SCT and ERT present only with T and R",
+       "verdict": "implemented",
+       "what": "The two words are stepped over exactly when their flags are set.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "CCI of any length C allows",
+       "verdict": "implemented",
+       "what": "C=0 is read as the WEBRC short format; other lengths are refused.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3450 (December 2002) section 4.2"
+      }
+     ],
+     "noted": [
+      "The Codepoint is read as the FEC Encoding ID, a mapping the session description is supposed to carry; this library does not generate or read session descriptions."
+     ]
+    },
+    {
+     "id": "U-CLOSE-tx",
+     "name": "Close Session and Close Object flags at the sender",
+     "release": "U",
+     "component": "tx",
+     "spec": {
+      "doc": "RFC 3450",
+      "version": "December 2002",
+      "locator": "section 4.2"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "A set on every packet after the first",
+       "verdict": "implemented",
+       "what": "Once the session is closing, every packet carries A; a data-less packet carries it when nothing is left to send.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "B set on every packet of a closing object",
+       "verdict": "implemented",
+       "what": "Once an object is marked closing, every later packet of it carries B.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3450 (December 2002) section 4.2"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "U-CLOSE-rx",
+     "name": "Close Session and Close Object flags at the receiver",
+     "release": "U",
+     "component": "rx",
+     "spec": {
+      "doc": "RFC 3450",
+      "version": "December 2002",
+      "locator": "section 4.2"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "A and B reported",
+       "verdict": "implemented",
+       "what": "Either flag is passed to the application through the close callback with the TOI.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Data-less close packet handled",
+       "verdict": "implemented",
+       "what": "A packet with no payload ends processing without being taken for an FDT packet.",
+       "repo": "rt-libflute"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "U-ERT-tx",
+     "name": "Expected Residual Time",
+     "release": "U",
+     "component": "tx",
+     "spec": {
+      "doc": "RFC 3450",
+      "version": "December 2002",
+      "locator": "section 4.2"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "R not set beyond the bound",
+       "verdict": "implemented",
+       "what": "R is never set.",
+       "repo": "rt-libflute"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "U-EXT-rx",
+     "name": "Header extensions at the receiver",
+     "release": "U",
+     "component": "rx",
+     "spec": {
+      "doc": "RFC 3450",
+      "version": "December 2002",
+      "locator": "section 4.3"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "Extensions processed before acceptance",
+       "verdict": "implemented",
+       "what": "Every extension is walked and checked while the header is parsed, before the packet is used.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "HEL only for variable-length extensions",
+       "verdict": "implemented",
+       "what": "HEL is read for HET 0 to 127; HET 128 to 255 is one fixed word.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3450 (December 2002) section 4.3"
+      },
+      {
+       "case": "EXT_NOP supported, EXT_AUTH recognised",
+       "verdict": "implemented",
+       "what": "Both are recognised and their content ignored.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3450 (December 2002) section 4.3"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "U-EXT-tx",
+     "name": "Header extensions at the sender",
+     "release": "U",
+     "component": "tx",
+     "spec": {
+      "doc": "RFC 3450",
+      "version": "December 2002",
+      "locator": "section 4.3"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "Extension lengths in 32-bit words",
+       "verdict": "implemented",
+       "what": "EXT_FDT is one word and EXT_FTI four, with HEL 4.",
+       "repo": "rt-libflute"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "V2-LCT",
+     "name": "Version 2 on ALC and LCT of RFC 5775 and RFC 5651",
+     "release": "V2",
+     "component": "tx",
+     "spec": {
+      "doc": "RFC 6726",
+      "version": "November 2012",
+      "locator": "section 3.1"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "FLUTE version 2 in EXT_FDT",
+       "verdict": "implemented",
+       "what": "A session set to version 2 writes 2 in the EXT_FDT version field.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "SCT and ERT fields not used",
+       "verdict": "implemented",
+       "what": "Under version 2 the T and R flags add no header words and are never set by the sender.",
+       "repo": "rt-libflute",
+       "locator": "RFC 6726 (November 2012) section 11.1"
+      },
+      {
+       "case": "Not under the 3GPP profiles",
+       "verdict": "implemented",
+       "what": "Version 2 is refused under the MBMS and MBS profiles, which are defined on RFC 3926.",
+       "repo": "rt-libflute"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "V2-EXT",
+     "name": "EXT_TIME and the version 2 extensions",
+     "release": "V2",
+     "component": "rx",
+     "spec": {
+      "doc": "RFC 5651",
+      "version": "October 2009",
+      "locator": "section 5.2.1"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "EXT_TIME recognised",
+       "verdict": "implemented",
+       "what": "EXT_TIME is recognised and skipped.",
+       "repo": "rt-libflute"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "M-LCT-tx",
      "name": "LCT header for MBMS download",
      "release": "M",
      "component": "tx",
@@ -789,42 +678,69 @@
      ],
      "cases": [
       {
-       "case": "CCI of 32 bits, zero",
+       "case": "32-bit CCI set to zero",
        "verdict": "implemented",
-       "what": "C is 0 and the 32-bit CCI is left at zero; a received C other than 0 is refused.",
-       "repo": "rt-libflute"
-      },
-      {
-       "case": "TSI of 16 bits",
-       "verdict": "implemented",
-       "what": "Under a 3GPP profile a TSI above 65535 is refused, so the TSI is 16 bits with S=0, H=1.",
-       "repo": "rt-libflute"
-      },
-      {
-       "case": "TOI of 16 bits, TOI 0 only for FDT Instances",
-       "verdict": "implemented",
-       "what": "The TOI is a 16-bit field and TOI 0 is used only for FDT Instances.",
+       "what": "C is 0 and the CCI word is zero.",
        "repo": "rt-libflute",
-       "locator": "clause 7.2.7"
+       "locator": "TS 26.346 V18.2.0 clause 7.2.7"
+      },
+      {
+       "case": "16-bit TSI in data packets",
+       "verdict": "implemented",
+       "what": "Under the 3GPP profiles a TSI above 65535 is refused, so every data packet carries the 16-bit half-word (S=0, H=1).",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause 7.2.7"
+      },
+      {
+       "case": "16-bit TSI in the data-less Close Session packet",
+       "verdict": "inconsistent",
+       "what": "That packet carries no TOI, which needs H=0, so its TSI is 32 bits (S=1, H=0).",
+       "repo": "rt-libflute",
+       "conflict": "RFC 3926 section 3.1: ALC packets \"with the Close Session (A) flag set to 1 (signaling the end of the session) and that contain no payload (carrying no information for any file or FDT) SHALL NOT carry the TOI\". RFC 3451 section 5.1 gives the TSI field as \"32*S + 16*H bits in length\" and the TOI field as \"32*O + 16*H bits in length\", so with no TOI H is 0. TS 26.346 V18.2.0 clause 7.2.7: \"The Transmission Session Identifier (TSI) field shall be of length 16 bits (S=0, H=1, 16 bits).\""
+      },
+      {
+       "case": "16-bit TOI",
+       "verdict": "implemented",
+       "what": "The TOI is a 16-bit half-word (O=0, H=1).",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause 7.2.7"
+      },
+      {
+       "case": "TOI 0 only for FDT Instances",
+       "verdict": "implemented",
+       "what": "Only the FDT goes on TOI 0.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause 7.2.7"
       },
       {
        "case": "T and R set to zero",
        "verdict": "implemented",
-       "what": "The send buffer is zeroed and neither flag is ever set.",
-       "repo": "rt-libflute"
+       "what": "Neither flag is ever set.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause 7.2.7"
       },
       {
        "case": "HDR_LEN in 32-bit words",
        "verdict": "implemented",
-       "what": "HDR_LEN is the header length in words, extensions included.",
-       "repo": "rt-libflute"
+       "what": "HDR_LEN is the whole header, extensions included, in words.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause 7.2.7"
+      },
+      {
+       "case": "EXT_TIME carries the ERT if included",
+       "verdict": "implemented",
+       "what": "EXT_TIME is never included.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause 7.2.7"
       }
      ],
-     "noted": []
+     "noted": [
+      "TS 26.346 annex A sets the A flag to zero at the server when a Schedule Description is present; the library knows of no Schedule Description and sets A only when its caller closes the session."
+     ]
     },
     {
-     "id": "M10-tx",
-     "name": "Header extensions for MBMS download",
+     "id": "M-EXT-tx",
+     "name": "FLUTE extension headers for MBMS download",
      "release": "M",
      "component": "tx",
      "spec": {
@@ -840,29 +756,30 @@
        "case": "EXT_FTI on every FDT packet",
        "verdict": "implemented",
        "what": "Every TOI 0 packet carries EXT_FTI.",
-       "repo": "rt-libflute"
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause 7.2.8"
       },
       {
        "case": "No EXT_FTI on file packets",
        "verdict": "implemented",
-       "what": "Under the 3GPP profiles a packet carrying a file never carries EXT_FTI.",
+       "what": "Under the 3GPP profiles content packets never carry EXT_FTI.",
        "repo": "rt-libflute",
-       "locator": "clause 7.2.8"
+       "locator": "TS 26.346 V18.2.0 clause 7.2.8"
       },
       {
-       "case": "FDT Instances not content encoded, no EXT_CENC",
+       "case": "FDT not encoded, no EXT_CENC",
        "verdict": "implemented",
-       "what": "FDT Instances are written uncompressed and EXT_CENC is never sent.",
+       "what": "FDT Instances are never encoded and EXT_CENC is never sent.",
        "repo": "rt-libflute",
-       "locator": "clause 7.2.8"
+       "locator": "TS 26.346 V18.2.0 clause 7.2.8"
       }
      ],
      "noted": []
     },
     {
-     "id": "M11",
-     "name": "Timing fields not used",
-     "release": "M",
+     "id": "L-LCT",
+     "name": "Extension headers and timing in the MBMS Download Profile",
+     "release": "L",
      "component": "tx",
      "spec": {
       "doc": "TS 26.346",
@@ -874,18 +791,32 @@
      ],
      "cases": [
       {
-       "case": "SCT and ERT not sent",
+       "case": "EXT_FTI for FDT Instances",
        "verdict": "implemented",
-       "what": "T and R are never set and EXT_TIME is never sent.",
+       "what": "Every FDT packet carries EXT_FTI.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause L.4.7"
+      },
+      {
+       "case": "File OTI in the FDT",
+       "verdict": "implemented",
+       "what": "The OTI of files is carried in the FDT, never in their packets.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause L.4.7"
+      },
+      {
+       "case": "SCT and ERT not used",
+       "verdict": "implemented",
+       "what": "T, R and EXT_TIME are never sent.",
        "repo": "rt-libflute"
       }
      ],
      "noted": []
     },
     {
-     "id": "M11-rx",
-     "name": "Timing fields ignored",
-     "release": "M",
+     "id": "L-LCT-rx",
+     "name": "Timing fields ignored by the UE",
+     "release": "L",
      "component": "rx",
      "spec": {
       "doc": "TS 26.346",
@@ -897,9 +828,9 @@
      ],
      "cases": [
       {
-       "case": "SCT and ERT ignored on receipt",
+       "case": "SCT, ERT and EXT_TIME ignored",
        "verdict": "implemented",
-       "what": "When present, both fields are stepped over.",
+       "what": "The fields are stepped over and EXT_TIME skipped; none is used.",
        "repo": "rt-libflute"
       }
      ],
@@ -908,12 +839,277 @@
    ]
   },
   {
-   "name": "Content encoding and FDT expiry",
-   "summary": "Expired FDT Instances are not used, and gzip-encoded files are decoded.",
+   "name": "File Delivery Table",
+   "summary": "The FDT carries what each profile requires and none of what the MBMS Download Profile excludes, but the extended schema lacks its schema-version namespace and delimiters, the profiled schema's Cache-Control and File-ETag are written and read in the extension namespaces, a changed description keeps its TOI, Content-MD5 covers the unencoded file, FDT-Instance Content-Type and Content-Encoding are not applied to files, and numbering starts from 1.",
    "requirements": [
     {
-     "id": "U08-rx",
-     "name": "Expired FDT Instance",
+     "id": "U-FDT-tx",
+     "name": "The FDT of a session",
+     "release": "U",
+     "component": "tx",
+     "spec": {
+      "doc": "RFC 3926",
+      "version": "October 2004",
+      "locator": "section 3.2"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "An entry for every file",
+       "verdict": "implemented",
+       "what": "Every file sent is added to the session's table before its first packet.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Each entry with TOI and URI",
+       "verdict": "implemented",
+       "what": "Every File element carries TOI and Content-Location.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3926 (October 2004) section 3.2"
+      },
+      {
+       "case": "Every file described in at least one instance",
+       "verdict": "implemented",
+       "what": "The table is published on change and on its repeat timer.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3926 (October 2004) section 3.3"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "U-FDT0-tx",
+     "name": "FDT Instances on TOI 0 at the sender",
+     "release": "U",
+     "component": "tx",
+     "spec": {
+      "doc": "RFC 3926",
+      "version": "October 2004",
+      "locator": "section 3.3"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "TOI 0 reserved",
+       "verdict": "implemented",
+       "what": "Only the FDT is sent on TOI 0; files never get it.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "EXT_FDT on every FDT packet, version 1",
+       "verdict": "implemented",
+       "what": "Every TOI 0 packet carries EXT_FDT with version 1 and the instance ID.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3926 (October 2004) section 3.4.1"
+      },
+      {
+       "case": "EXT_FTI on the FDT",
+       "verdict": "implemented",
+       "what": "Every TOI 0 packet carries EXT_FTI.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3926 (October 2004) section 5.1"
+      },
+      {
+       "case": "Instance IDs wrap at 2^20-1",
+       "verdict": "implemented",
+       "what": "Instance IDs count up and restart from 0 after 2^20-1.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Numbering starts from 0",
+       "verdict": "differs",
+       "what": "The first FDT Instance of a session has ID 1.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3926 (October 2004) section 3.4.1"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "U-FDT0-rx",
+     "name": "FDT Instances on TOI 0 at the receiver",
+     "release": "U",
+     "component": "rx",
+     "spec": {
+      "doc": "RFC 3926",
+      "version": "October 2004",
+      "locator": "section 3.4"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "FDT reassembled per instance",
+       "verdict": "implemented",
+       "what": "TOI 0 packets are reassembled per FDT Instance ID; a new ID restarts reassembly.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Version 1 only",
+       "verdict": "implemented",
+       "what": "An EXT_FDT with a version other than 1 is refused.",
+       "repo": "rt-libflute"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "U-SYNTAX-tx",
+     "name": "FDT Instance syntax at the sender",
+     "release": "U",
+     "component": "tx",
+     "spec": {
+      "doc": "RFC 3926",
+      "version": "October 2004",
+      "locator": "section 3.4.2"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "Expires on every instance",
+       "verdict": "implemented",
+       "what": "Every instance carries Expires.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "TOI and Content-Location on every File",
+       "verdict": "implemented",
+       "what": "Both are always written.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3926 (October 2004) section 3.4.2"
+      },
+      {
+       "case": "Content-Length and Content-Type as HTTP defines them",
+       "verdict": "implemented",
+       "what": "Content-Length is the length of the file before any encoding; Content-Type is written when known.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3926 (October 2004) section 3.4.2"
+      },
+      {
+       "case": "Content-Encoding as HTTP defines it",
+       "verdict": "implemented",
+       "what": "gzip and deflate are applied with the framing their names mean, and declared.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3926 (October 2004) section 3.4.2"
+      },
+      {
+       "case": "Content-MD5 as HTTP defines it",
+       "verdict": "differs",
+       "what": "Content-MD5 is computed over the file before content encoding; HTTP/1.1 defines it over the entity-body as transferred, so an encoded file carries the digest of the wrong bytes.",
+       "repo": "rt-libflute",
+       "locator": "RFC 2616 (June 1999) section 14.15"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "U-SYNTAX-rx",
+     "name": "FDT Instance syntax at the receiver",
+     "release": "U",
+     "component": "rx",
+     "spec": {
+      "doc": "RFC 3926",
+      "version": "October 2004",
+      "locator": "section 3.4.2"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "Expires, TOI and Content-Location read",
+       "verdict": "implemented",
+       "what": "Expires is read, and a File without TOI or Content-Location is refused.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Content-Length, Content-Type, Content-Encoding read",
+       "verdict": "implemented",
+       "what": "Read, with Content-Length used as the transfer length only when no encoding is applied.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Content-MD5 checked as HTTP defines it",
+       "verdict": "differs",
+       "what": "The digest is checked over the decoded file, so a sender that computes it over the encoded entity-body, as HTTP/1.1 defines it, has its encoded files rejected.",
+       "repo": "rt-libflute",
+       "locator": "RFC 2616 (June 1999) section 14.15"
+      },
+      {
+       "case": "FDT-Instance Content-Type and Content-Encoding applied to files",
+       "verdict": "differs",
+       "what": "Content-Type and Content-Encoding are read only on File elements; values a sender gives on the FDT-Instance for all its files are not applied.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3926 (October 2004) section 3.4.2"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "U-EXTEND-tx",
+     "name": "Extensions to the FDT schema",
+     "release": "U",
+     "component": "tx",
+     "spec": {
+      "doc": "RFC 3926",
+      "version": "October 2004",
+      "locator": "section 3.4.2"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "Per-file descriptors on File, common ones on FDT-Instance",
+       "verdict": "implemented",
+       "what": "Per-file extensions (File-ETag, Cache-Control) are written on File; FEC defaults and schemaVersion on FDT-Instance.",
+       "repo": "rt-libflute"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "U-DYN-tx",
+     "name": "FDT dynamics at the sender",
+     "release": "U",
+     "component": "tx",
+     "spec": {
+      "doc": "RFC 3926",
+      "version": "October 2004",
+      "locator": "section 3.3"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "Expiry in the future at creation",
+       "verdict": "implemented",
+       "what": "An expiry at or before the current time is refused; the sender sets it twice the repeat interval ahead.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "A described TOI never changes",
+       "verdict": "differs",
+       "what": "A changed content location, type, expiry or entity tag replaces the description of an object already described, under the same TOI; only a change of content gets a new TOI.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3926 (October 2004) section 3.3"
+      }
+     ],
+     "noted": [
+      "A repeat re-sends the serialised instance unchanged, Expires included, until the table changes; a long-unchanged table can therefore be repeated after its own expiry. Not observed in a run."
+     ]
+    },
+    {
+     "id": "U-DYN-rx",
+     "name": "FDT expiry at the receiver",
      "release": "U",
      "component": "rx",
      "spec": {
@@ -926,17 +1122,265 @@
      ],
      "cases": [
       {
-       "case": "Expired FDT Instance not used",
+       "case": "Expired instance not used",
        "verdict": "implemented",
-       "what": "An expired FDT Instance is dropped before later packets are interpreted.",
+       "what": "The held instance is dropped once expired, and packets it described wait for a fresh one.",
        "repo": "rt-libflute"
       }
      ],
      "noted": []
     },
     {
-     "id": "M12-rx",
-     "name": "Expired FDT Instance, MBMS",
+     "id": "U-RELIAB-tx",
+     "name": "Sending the FDT reliably",
+     "release": "U",
+     "component": "tx",
+     "spec": {
+      "doc": "RFC 3926",
+      "version": "October 2004",
+      "locator": "section 3.3"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "FDT sent before the file it describes",
+       "verdict": "implemented",
+       "what": "The table is queued on TOI 0, which is sent before any file.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3926 (October 2004) section 3.3"
+      },
+      {
+       "case": "FDT repeated",
+       "verdict": "implemented",
+       "what": "The FDT is re-sent on its own repeat timer.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "FEC protection for an FDT over one packet",
+       "verdict": "differs",
+       "what": "The FDT is always sent with Compact No-Code, whatever its length, so a lost packet loses the instance until the next repeat.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3926 (October 2004) section 3.3"
+      },
+      {
+       "case": "FDT on the base channel",
+       "verdict": "implemented",
+       "what": "With WEBRC, FDT packets go to the base channel only, which every receiver joins.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3926 (October 2004) section 4"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "V2-FDT-tx",
+     "name": "FDT at a version 2 sender",
+     "release": "V2",
+     "component": "tx",
+     "spec": {
+      "doc": "RFC 6726",
+      "version": "November 2012",
+      "locator": "section 3.4.1"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "No reuse of a live FDT Instance ID",
+       "verdict": "implemented",
+       "what": "After 2^20-1, the lowest ID whose instance has expired is reused; with none expired the sender refuses rather than reuse a live one.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Version 2 namespace",
+       "verdict": "differs",
+       "what": "The RFC 6726 namespace can be written, but choosing version 2 does not select it: the default is no namespace.",
+       "repo": "rt-libflute",
+       "locator": "RFC 6726 (November 2012) section 3.4.2"
+      },
+      {
+       "case": "Content-Type included",
+       "verdict": "implemented",
+       "what": "Content-Type is written whenever the caller sets one; it is not required outside the 3GPP profiles.",
+       "repo": "rt-libflute",
+       "locator": "RFC 6726 (November 2012) section 3.4.2"
+      },
+      {
+       "case": "Content-Encoding whenever encoding is applied",
+       "verdict": "implemented",
+       "what": "An encoded file always declares its encoding.",
+       "repo": "rt-libflute",
+       "locator": "RFC 6726 (November 2012) section 3.4.2"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "V2-FDT-rx",
+     "name": "FDT at a version 2 receiver",
+     "release": "V2",
+     "component": "rx",
+     "spec": {
+      "doc": "RFC 6726",
+      "version": "November 2012",
+      "locator": "section 3.3"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "Expired instance not used",
+       "verdict": "implemented",
+       "what": "An expired instance is dropped and not used to interpret later packets.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Expiry in the nearest 136-year era",
+       "verdict": "implemented",
+       "what": "The 32-bit Expires is placed in the era nearest the current time.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Newer declaration of a Content-Location wins",
+       "verdict": "implemented",
+       "what": "Of two files with one Content-Location, the one declared by the higher FDT Instance ID is kept.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Reuse of a live FDT Instance ID treated as an error",
+       "verdict": "absent",
+       "what": "An instance arriving under the ID of a live one is not detected; its packets are ignored as belonging to an object already completed.",
+       "repo": "rt-libflute",
+       "locator": "RFC 6726 (November 2012) section 3.4.1"
+      },
+      {
+       "case": "FDT not decoded under an unsupported FEC scheme",
+       "verdict": "implemented",
+       "what": "A packet naming a scheme the library does not implement is refused before its symbols are used.",
+       "repo": "rt-libflute",
+       "locator": "RFC 6726 (November 2012) section 3.3"
+      },
+      {
+       "case": "Unsupported private elements ignored",
+       "verdict": "implemented",
+       "what": "Elements and attributes the parser does not know are passed over.",
+       "repo": "rt-libflute",
+       "locator": "RFC 6726 (November 2012) section 3.4.2"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "M-FDT-tx",
+     "name": "FDT data for MBMS download",
+     "release": "M",
+     "component": "tx",
+     "spec": {
+      "doc": "TS 26.346",
+      "version": "V18.2.0",
+      "locator": "clause 7.2.9"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "Extended schema namespace",
+       "verdict": "implemented",
+       "what": "Under the MBMS download profile the FDT is written in the urn:IETF:metadata:2005:FLUTE:FDT namespace of clause 7.2.10.1.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause 7.2.9"
+      },
+      {
+       "case": "Content-Location, TOI and Expires",
+       "verdict": "implemented",
+       "what": "Always written.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause 7.2.9"
+      },
+      {
+       "case": "Content-Length and Content-Type",
+       "verdict": "implemented",
+       "what": "Content-Length always; a file without a content type is refused.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "FEC Encoding ID, maximum source block length, symbol length, scheme-specific information",
+       "verdict": "implemented",
+       "what": "Written on the FDT-Instance, and on a File whose values differ; Raptor writes its Z, N and Al.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Compact No-Code maximum source block length at most 65535",
+       "verdict": "implemented",
+       "what": "A larger value is refused under the 3GPP profiles.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause 7.2.9"
+      },
+      {
+       "case": "FEC-OTI-Max-Number-of-Encoding-Symbols",
+       "verdict": "absent",
+       "what": "Never written, although clause 7.2.9 makes it mandatory FDT data and annex A requires it of the server. Neither scheme in use defines it as part of its Object Transmission Information, so it is unclear what value it should carry; the sender holds one but does not write it.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause 7.2.9"
+      },
+      {
+       "case": "Content-MD5 when several versions are expected",
+       "verdict": "implemented",
+       "what": "Every file carries Content-MD5.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause 7.2.9"
+      }
+     ],
+     "noted": [
+      "Release 19 adds Repair-Start and Repair-Limit-Percentage to the FDT data that may or may not be included, for unicast repair; they are not written or read, and repair is judged on the 5G Broadcast and 5G MBS pages."
+     ]
+    },
+    {
+     "id": "M-SCHEMA-tx",
+     "name": "Extended FDT schema version",
+     "release": "M",
+     "component": "tx",
+     "spec": {
+      "doc": "TS 26.346",
+      "version": "V18.2.0",
+      "locator": "clause 7.2.10.1"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "schemaVersion set to 4",
+       "verdict": "implemented",
+       "what": "The schemaVersion element is set to 4.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause 7.2.10.1",
+       "byRelease": {
+        "19": {
+         "verdict": "differs",
+         "what": "The schemaVersion element is set to 4, the Release 18 value; Release 19 requires 5.",
+         "locator": "TS 26.346 V19.3.0 clause 7.2.10.1"
+        }
+       }
+      },
+      {
+       "case": "schemaVersion and delimiter elements of the schema version namespace",
+       "verdict": "differs",
+       "what": "schemaVersion is written without a prefix, in the FDT namespace, and no delimiter element is written; the listing takes both from the schema version namespace (sv:schemaVersion, sv:delimiter) and its sequences require the delimiters.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause L.4.5"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "M-FDT-rx",
+     "name": "FDT at the MBMS UE",
      "release": "M",
      "component": "rx",
      "spec": {
@@ -949,17 +1393,1164 @@
      ],
      "cases": [
       {
-       "case": "Expired FDT Instance not used",
+       "case": "Expired FDT not used",
        "verdict": "implemented",
-       "what": "An expired FDT Instance is dropped before later packets are interpreted.",
+       "what": "The held instance is dropped once expired; packets it described wait for a fresh one.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Schema version selection",
+       "verdict": "implemented",
+       "what": "The receiver supports one schema version and parses every instance with it, ignoring schemaVersion and delimiter content.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause 7.2.10.1"
+      },
+      {
+       "case": "Files of requested groups",
+       "verdict": "implemented",
+       "what": "The receiver takes every file the FDT describes, so all files of any group are received.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause 7.2.6"
+      }
+     ],
+     "noted": [
+      "Clause 7.2 also defines FullFDT, the MBMS session identity, the decryption key URI and the FEC redundancy level of a file. The MBMS Download Profile excludes them from the sender's FDT and leaves their support optional at the receiver; the receiver does not read them."
+     ]
+    },
+    {
+     "id": "L-FDT-tx",
+     "name": "FDT in the MBMS Download Profile, sender",
+     "release": "L",
+     "component": "tx",
+     "spec": {
+      "doc": "TS 26.346",
+      "version": "V18.2.0",
+      "locator": "clause L.4.2"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "Content-Type and FEC OTI carried",
+       "verdict": "implemented",
+       "what": "Content-Type on every File; FEC Encoding ID, maximum source block length, symbol length and Raptor scheme-specific information on the FDT-Instance.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Content-Encoding other than gzip, FEC-OTI-FEC-Instance-ID and Group not used",
+       "verdict": "implemented",
+       "what": "Other encodings are refused; the instance ID and Group are never written.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause L.4.2"
+      },
+      {
+       "case": "Complete, FullFDT and MBMS-Session-Identity-Expiry not used",
+       "verdict": "implemented",
+       "what": "Complete is written only outside the 3GPP profiles; the others never.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause L.4.3"
+      },
+      {
+       "case": "Content-Location, TOI, Content-Length and Content-MD5 on every File",
+       "verdict": "implemented",
+       "what": "All four always written.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause L.4.4"
+      },
+      {
+       "case": "File-level Content-Type and FEC OTI only to override",
+       "verdict": "differs",
+       "what": "The FEC OTI is written on a File only when it differs from the FDT-Instance, but Content-Type is written on every File and never on the FDT-Instance, so it does not override anything.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause L.4.4"
+      },
+      {
+       "case": "Transfer-Length, Decryption-KEY-URI, FEC-Redundancy-Level and MBMS-Session-Identity not carried",
+       "verdict": "implemented",
+       "what": "Transfer-Length is written only outside the 3GPP profiles; the others never.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause L.4.4"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "L-FDT-rx",
+     "name": "FDT in the MBMS Download Profile, receiver",
+     "release": "L",
+     "component": "rx",
+     "spec": {
+      "doc": "TS 26.346",
+      "version": "V18.2.0",
+      "locator": "clause L.4.4"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "FEC OTI supported at both levels",
+       "verdict": "implemented",
+       "what": "Read at the FDT-Instance level and overridden per File.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Content-Type and Content-Encoding supported at both levels",
+       "verdict": "differs",
+       "what": "Read only on File elements. A sender that gives Content-Type on the FDT-Instance, where clause L.4.4 puts it unless a File overrides it, leaves every file without a content type here.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Complete supported",
+       "verdict": "implemented",
+       "what": "Read on the FDT-Instance.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause L.4.3"
+      },
+      {
+       "case": "Transfer-Length supported",
+       "verdict": "implemented",
+       "what": "Read when present.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Content-MD5 supported",
+       "verdict": "implemented",
+       "what": "Read and checked on the reassembled file.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Cache-Control: no-cache",
+       "verdict": "implemented",
+       "what": "Read.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause L.4.4"
+      },
+      {
+       "case": "Cache-Control: Expires",
+       "verdict": "implemented",
+       "what": "Read.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Cache-Control: max-stale",
+       "verdict": "absent",
+       "what": "Not read, so an object marked max-stale is treated as carrying no caching directive.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause 7.2.13"
+      },
+      {
+       "case": "Delimiter content ignored",
+       "verdict": "implemented",
+       "what": "Delimiter elements are not read.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause L.4.5"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "A-FDT",
+     "name": "Annex A: FDT attributes at the MBMS client and server",
+     "release": "M",
+     "component": "rx",
+     "spec": {
+      "doc": "TS 26.346",
+      "version": "V18.2.0",
+      "locator": "annex A (table A.1)"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "Content-Location, TOI, Expires, Complete at the client",
+       "verdict": "implemented",
+       "what": "All read.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Maximum source block length, symbol length, maximum number of encoding symbols at the client",
+       "verdict": "implemented",
+       "what": "All read, at either level.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Scheme-specific information at the client",
+       "verdict": "implemented",
+       "what": "Read and decoded per scheme.",
        "repo": "rt-libflute"
       }
      ],
      "noted": []
     },
     {
-     "id": "M13-rx",
-     "name": "GZip decoding",
+     "id": "B-FDT-tx",
+     "name": "Profiled FDT Schema, sender",
+     "release": "B",
+     "component": "tx",
+     "spec": {
+      "doc": "TS 26.517",
+      "version": "V18.6.0",
+      "locator": "clause 6.2.1"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "Profiled schema namespace",
+       "verdict": "implemented",
+       "what": "Under the MBS profile the FDT is written in the urn:3GPP:metadata:2022:FLUTE:FDT namespace of clause L.6.1.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "MBMS Download Profile followed",
+       "verdict": "implemented",
+       "what": "The MBS profile applies every restriction of the MBMS Download Profile listed above.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.517 V18.6.0 clause 6.2.1"
+      },
+      {
+       "case": "schemaVersion set to 2",
+       "verdict": "implemented",
+       "what": "The schemaVersion element is set to 2.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause L.6.3",
+       "byRelease": {
+        "19": {
+         "verdict": "differs",
+         "what": "The schemaVersion element is set to 2, the Release 18 value; Release 19 requires 3.",
+         "locator": "TS 26.346 V19.3.0 clause L.6.3"
+        }
+       }
+      },
+      {
+       "case": "Objects described with Expires",
+       "verdict": "implemented",
+       "what": "Every FDT Instance carries Expires.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.517 V18.6.0 clause 6.2.1"
+      },
+      {
+       "case": "Cache-Control as the profiled schema declares it",
+       "verdict": "differs",
+       "what": "Cache-Control is written as mbms2007:Cache-Control, in the 2007 extension namespace; the profiled schema declares it in its own namespace, so a receiver of the profiled schema does not find it. The document still validates, since the schema admits elements of other namespaces.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "File-ETag as the profiled schema declares it",
+       "verdict": "differs",
+       "what": "File-ETag is written as mbms2012:File-ETag; the profiled schema declares it as a plain attribute of File.",
+       "repo": "rt-libflute"
+      }
+     ],
+     "noted": [
+      "Release 19 removes File@Expires from the profiled schema, with the sentence giving it precedence over FDT@Expires; the code still writes File@Expires when one is set, which the schema admits as an attribute it does not declare."
+     ]
+    },
+    {
+     "id": "B-FDT-rx",
+     "name": "Profiled FDT Schema, receiver",
+     "release": "B",
+     "component": "rx",
+     "spec": {
+      "doc": "TS 26.346",
+      "version": "V18.2.0",
+      "locator": "clause L.6.3"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "Profiled namespace recognised",
+       "verdict": "implemented",
+       "what": "An FDT in the profiled namespace is parsed.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "File@Expires takes precedence",
+       "verdict": "implemented",
+       "what": "A File's own Expires is read, and an accessor gives it precedence over the FDT-Instance one.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause L.6.2"
+      },
+      {
+       "case": "File-ETag of the profiled schema read",
+       "verdict": "differs",
+       "what": "File-ETag is looked for only in the 2012 extension namespace, so the plain attribute of the profiled schema is not found.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Cache-Control of the profiled schema read",
+       "verdict": "differs",
+       "what": "Cache-Control is looked for only in the 2007 extension namespace, so the profiled element is not found.",
+       "repo": "rt-libflute"
+      }
+     ],
+     "noted": []
+    }
+   ]
+  },
+  {
+   "name": "FEC and blocking",
+   "summary": "Compact No-Code, Raptor and RaptorQ are sent and received, and blocking follows the documents; the decoder ignores the block structure the sender signals, a packet can mix source blocks, a short last symbol in a multi-symbol packet is lost, and RaptorQ's payload ID and EXT_FTI use the wrong field widths.",
+   "requirements": [
+    {
+     "id": "U-PID-tx",
+     "name": "FEC Payload ID at the sender",
+     "release": "U",
+     "component": "tx",
+     "spec": {
+      "doc": "RFC 3450",
+      "version": "December 2002",
+      "locator": "section 2.3"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "An FEC Payload ID in every data packet",
+       "verdict": "implemented",
+       "what": "Every packet with symbols starts its payload with the SBN and ESI of its first symbol.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "One FEC Encoding ID per object",
+       "verdict": "implemented",
+       "what": "An object keeps the scheme it was created with for all its packets.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3452 (December 2002) section 3"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "U-PID-rx",
+     "name": "FEC Payload ID at the receiver",
+     "release": "U",
+     "component": "rx",
+     "spec": {
+      "doc": "RFC 3450",
+      "version": "December 2002",
+      "locator": "section 2.3"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "Symbols placed by SBN and ESI",
+       "verdict": "implemented",
+       "what": "Each symbol is placed by its source block number and encoding symbol ID, out-of-range values refused.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Several symbols in one packet",
+       "verdict": "differs",
+       "what": "A payload holding several symbols is split into consecutive ESIs, but the remaining length is not reduced as it goes, so a short last symbol is taken as a full one: nothing is copied, yet it is marked received.",
+       "repo": "rt-libflute"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "U-OTI-tx",
+     "name": "FEC Object Transmission Information at the sender",
+     "release": "U",
+     "component": "tx",
+     "spec": {
+      "doc": "RFC 3926",
+      "version": "October 2004",
+      "locator": "section 5"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "OTI in band, in the FDT",
+       "verdict": "implemented",
+       "what": "Encoding ID, maximum source block length, symbol length and the Raptor scheme-specific information are in the FDT.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Same OTI in EXT_FTI and the FDT",
+       "verdict": "differs",
+       "what": "For Raptor and RaptorQ objects sent with EXT_FTI, the extension carries the Compact No-Code layout (maximum source block length) where the FDT carries Z, N and Al.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3926 (October 2004) section 5"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "U-OTI-rx",
+     "name": "FEC Object Transmission Information at the receiver",
+     "release": "U",
+     "component": "rx",
+     "spec": {
+      "doc": "RFC 3926",
+      "version": "October 2004",
+      "locator": "section 5"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "EXT_FTI for FDT Instances",
+       "verdict": "implemented",
+       "what": "EXT_FTI is parsed on TOI 0 packets.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3926 (October 2004) section 5"
+      },
+      {
+       "case": "EXT_FTI or the FDT for Compact No-Code files",
+       "verdict": "implemented",
+       "what": "A file is started from its FDT entry, or from its packets' EXT_FTI when no entry has arrived.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "EXT_FTI for Raptor and RaptorQ files",
+       "verdict": "differs",
+       "what": "For these schemes EXT_FTI gives no maximum source block length, so an object started from EXT_FTI alone fails to partition and is never received.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "EXT_FTI preferred to the FDT",
+       "verdict": "differs",
+       "what": "Whichever source arrives first wins: an object started from its FDT entry ignores EXT_FTI, and one started from EXT_FTI keeps it.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3926 (October 2004) section 5"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "U-BLOCK-tx",
+     "name": "Symbols and blocking at the sender",
+     "release": "U",
+     "component": "tx",
+     "spec": {
+      "doc": "RFC 3926",
+      "version": "October 2004",
+      "locator": "section 5.1.2.2"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "Equal symbol length, last one shorter",
+       "verdict": "implemented",
+       "what": "Every symbol has the encoding symbol length except the last of the object.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "The recommended blocking algorithm",
+       "verdict": "implemented",
+       "what": "Compact No-Code objects are partitioned with the RFC 3926 / RFC 5052 algorithm.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3926 (October 2004) section 5.1.2.1"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "U-BLOCK-rx",
+     "name": "Symbols and blocking at the receiver",
+     "release": "U",
+     "component": "rx",
+     "spec": {
+      "doc": "RFC 3926",
+      "version": "October 2004",
+      "locator": "section 5.1.2.2"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "Same partitioning as the sender",
+       "verdict": "implemented",
+       "what": "The receiver partitions with the same algorithm from the same OTI.",
+       "repo": "rt-libflute"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "U-CNC",
+     "name": "Compact No-Code FEC scheme (FEC Encoding ID 0)",
+     "release": "U",
+     "component": "tx",
+     "spec": {
+      "doc": "RFC 3695",
+      "version": "February 2004",
+      "locator": "section 3.1"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "Sent and received",
+       "verdict": "implemented",
+       "what": "The default scheme: 16-bit SBN and ESI, source symbols only.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Unique SBN mode",
+       "verdict": "implemented",
+       "what": "Every source block of an object gets its own SBN, so no mapping needs communicating.",
+       "repo": "rt-libflute"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "U-RAPTOR",
+     "name": "Raptor FEC scheme (FEC Encoding ID 1)",
+     "release": "U",
+     "component": "rx",
+     "spec": {
+      "doc": "RFC 5053",
+      "version": "October 2007",
+      "locator": "section 3.2.1"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "Encoding ID 1, 4-octet payload ID",
+       "verdict": "implemented",
+       "what": "Raptor is selected by FEC Encoding ID 1, with a 16-bit SBN and 16-bit ESI.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Partitioning at the sender",
+       "verdict": "implemented",
+       "what": "Objects are partitioned with the Partition function, Z from the maximum source block length, one sub-block and Al of 1.",
+       "repo": "rt-libflute",
+       "locator": "RFC 5053 (October 2007) section 5.3.1.2"
+      },
+      {
+       "case": "A packet holds symbols of one source block, all source or all repair",
+       "verdict": "differs",
+       "what": "When the symbol length is under half the payload, one packet can take symbols from more than one source block, or source and repair symbols together, and is labelled with the first symbol's SBN and ESI only.",
+       "repo": "rt-libflute",
+       "locator": "RFC 5053 (October 2007) section 5.3.2"
+      },
+      {
+       "case": "Encoding and repair symbols",
+       "verdict": "implemented",
+       "what": "Source and repair symbols are generated by the RFC 5053 encoder.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Decoding with the signalled block structure",
+       "verdict": "differs",
+       "what": "The receiver recomputes Z from the maximum source block length and forces one sub-block and Al of 1, overwriting the Z, N and Al the sender signals; an object partitioned otherwise is not recovered.",
+       "repo": "rt-libflute",
+       "locator": "RFC 5053 (October 2007) section 5.3.1.2"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "U-RAPTORQ",
+     "name": "RaptorQ FEC scheme (FEC Encoding ID 6)",
+     "release": "U",
+     "component": "rx",
+     "spec": {
+      "doc": "RFC 6330",
+      "version": "August 2011",
+      "locator": "section 3.3.1"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "Encoding ID 6",
+       "verdict": "implemented",
+       "what": "RaptorQ is selected by FEC Encoding ID 6 outside the 3GPP profiles.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "FEC Payload ID format",
+       "verdict": "differs",
+       "what": "The payload ID is written and read as a 16-bit SBN and 16-bit ESI; RFC 6330 gives an 8-bit SBN and a 24-bit ESI.",
+       "repo": "rt-libflute",
+       "locator": "RFC 6330 (August 2011) section 3.2"
+      },
+      {
+       "case": "Encoded Common FEC OTI",
+       "verdict": "differs",
+       "what": "EXT_FTI is written and read with a 48-bit transfer length and 16 reserved bits; RFC 6330 encodes a 40-bit transfer length and 8 reserved bits.",
+       "repo": "rt-libflute",
+       "locator": "RFC 6330 (August 2011) section 3.3.2"
+      },
+      {
+       "case": "Packets with several symbols",
+       "verdict": "differs",
+       "what": "Split into consecutive ESIs, but a short last symbol is taken as a full one and not copied.",
+       "repo": "rt-libflute",
+       "locator": "RFC 6330 (August 2011) section 4.3"
+      },
+      {
+       "case": "Decoding with the signalled block structure",
+       "verdict": "differs",
+       "what": "As for Raptor, the signalled Z and N are overwritten by the receiver's own partitioning.",
+       "repo": "rt-libflute"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "U-OPTSCHEMES",
+     "name": "Other FEC schemes",
+     "release": "U",
+     "component": "rx",
+     "spec": {
+      "doc": "RFC 3695",
+      "version": "February 2004",
+      "locator": "section 2.3"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "Compact FEC scheme (FEC Encoding ID 130)",
+       "verdict": "absent",
+       "what": "Not implemented; a packet or FDT naming it is refused.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Basic FEC schemes of RFC 5445 (IDs 128, 129)",
+       "verdict": "absent",
+       "what": "Not implemented; refused like any scheme the library does not know.",
+       "repo": "rt-libflute"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "V2-CP",
+     "name": "FEC Encoding ID in the Codepoint",
+     "release": "V2",
+     "component": "tx",
+     "spec": {
+      "doc": "RFC 6726",
+      "version": "November 2012",
+      "locator": "section 5"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "Codepoint equal to the FEC Encoding ID",
+       "verdict": "implemented",
+       "what": "The sender writes the scheme's FEC Encoding ID in the Codepoint and the receiver reads it from there.",
+       "repo": "rt-libflute"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "M-PID",
+     "name": "FEC Payload ID for MBMS download",
+     "release": "M",
+     "component": "tx",
+     "spec": {
+      "doc": "TS 26.346",
+      "version": "V18.2.0",
+      "locator": "clause 7.2.7"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "Compact No-Code: 16-bit SBN, 16-bit ESI",
+       "verdict": "implemented",
+       "what": "Written and read as two 16-bit fields.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "MBMS FEC scheme: clause 7.2.12.1",
+       "verdict": "implemented",
+       "what": "Raptor uses the same 16-bit SBN and 16-bit ESI.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause 7.2.7"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "M-FEC-rx",
+     "name": "FEC schemes at the MBMS UE",
+     "release": "M",
+     "component": "rx",
+     "spec": {
+      "doc": "TS 26.346",
+      "version": "V18.2.0",
+      "locator": "clause 7.2.2"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "Compact No-Code supported",
+       "verdict": "implemented",
+       "what": "Received and reassembled.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause 7.2.2"
+      },
+      {
+       "case": "Raptor decoder",
+       "verdict": "implemented",
+       "what": "Received Raptor symbols are decoded once enough have arrived.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Any RFC 5053-encoded source block recovered",
+       "verdict": "differs",
+       "what": "The decoder ignores the Z, N and Al the sender signals and recomputes the partitioning, so a block a sender partitioned otherwise is not recovered.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause 7.2.2"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "M-BLOCK-tx",
+     "name": "Blocking at the MBMS sender",
+     "release": "M",
+     "component": "tx",
+     "spec": {
+      "doc": "TS 26.346",
+      "version": "V18.2.0",
+      "locator": "clause 7.2.3"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "RFC 3926 algorithm for Compact No-Code",
+       "verdict": "implemented",
+       "what": "Compact No-Code objects are partitioned with that algorithm.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause 7.2.3"
+      },
+      {
+       "case": "RFC 5053 algorithm for Raptor",
+       "verdict": "implemented",
+       "what": "Raptor objects are partitioned with the Partition function.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause 7.2.3"
+      },
+      {
+       "case": "Sub-blocks under 256 KB",
+       "verdict": "implemented",
+       "what": "The maximum source block length is capped so a sub-block stays under 256 KB, and a larger one refused.",
+       "repo": "rt-libflute"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "L-FEC",
+     "name": "FEC schemes in the MBMS Download Profile",
+     "release": "L",
+     "component": "rx",
+     "spec": {
+      "doc": "TS 26.346",
+      "version": "V18.2.0",
+      "locator": "clause L.4.7"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "Compact No-Code at the UE",
+       "verdict": "implemented",
+       "what": "Supported.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Raptor at the UE",
+       "verdict": "differs",
+       "what": "Supported only for objects partitioned with one sub-block and the source block count this receiver derives; the signalled block structure is not used.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Schemes optional at the sender",
+       "verdict": "implemented",
+       "what": "The sender offers both and refuses any other scheme under the 3GPP profiles.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Blocking per RFC 3695 and RFC 5053",
+       "verdict": "implemented",
+       "what": "As at the MBMS sender.",
+       "repo": "rt-libflute",
+       "locator": "TS 26.346 V18.2.0 clause L.4.7"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "A-FEC",
+     "name": "Annex A: blocking and symbol encoding",
+     "release": "M",
+     "component": "rx",
+     "spec": {
+      "doc": "TS 26.346",
+      "version": "V18.2.0",
+      "locator": "annex A (table A.1)"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "Blocking algorithm at client and server",
+       "verdict": "implemented",
+       "what": "Both sides partition with the FLUTE blocking algorithm.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "MBMS Forward Error Correction at the client",
+       "verdict": "differs",
+       "what": "Required at the client; the Raptor decoder does not use the signalled block structure.",
+       "repo": "rt-libflute"
+      }
+     ],
+     "noted": []
+    }
+   ]
+  },
+  {
+   "name": "Congestion control and channels",
+   "summary": "WEBRC runs on both sides outside the 3GPP profiles, whose single channel at a single rate is kept; the WEBRC receiver is never fed the measurements it needs, so it never joins a wave channel, and would not leave one.",
+   "requirements": [
+    {
+     "id": "U-CC-tx",
+     "name": "Multiple-rate congestion control at the sender",
+     "release": "U",
+     "component": "tx",
+     "spec": {
+      "doc": "RFC 3450",
+      "version": "December 2002",
+      "locator": "section 2.2"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "A multiple-rate building block",
+       "verdict": "implemented",
+       "what": "WEBRC is implemented for sessions outside the 3GPP profiles.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "CCI in every packet, C fixed for the session",
+       "verdict": "implemented",
+       "what": "Every packet carries the 32-bit short-format CCI: time slot index, channel number and sequence number.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3450 (December 2002) section 4.2"
+      },
+      {
+       "case": "Packets at the dictated rates",
+       "verdict": "implemented",
+       "what": "Packets are spread over the base and active wave channels in proportion to their scheduled rates.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3450 (December 2002) section 4.4"
+      },
+      {
+       "case": "Absolute channel rates",
+       "verdict": "differs",
+       "what": "The schedule sets each channel's share of the packets, not its absolute rate; the aggregate follows the rate limit rather than the wave rates.",
+       "repo": "rt-libflute"
+      }
+     ],
+     "noted": [
+      "Without the WEBRC line, a session outside the 3GPP profiles is sent on one channel with C=0 and no congestion control."
+     ]
+    },
+    {
+     "id": "U-CC-rx",
+     "name": "Multiple-rate congestion control at the receiver",
+     "release": "U",
+     "component": "rx",
+     "spec": {
+      "doc": "RFC 3450",
+      "version": "December 2002",
+      "locator": "section 4.5"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "No join without congestion control",
+       "verdict": "implemented",
+       "what": "A receiver outside the 3GPP profiles is refused unless WEBRC is configured.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "CCI processed and acted on",
+       "verdict": "differs",
+       "what": "Loss events come from per-channel sequence numbers, but the receiver never reports the first base-channel packet, round-trip times or reception rates to the controller, so it never joins a wave channel.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3450 (December 2002) section 4.5"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "U-WEBRC-tx",
+     "name": "WEBRC sender",
+     "release": "U",
+     "component": "tx",
+     "spec": {
+      "doc": "RFC 3738",
+      "version": "April 2004",
+      "locator": "section 5"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "Short-format CCI",
+       "verdict": "implemented",
+       "what": "The 32-bit short format is used.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "At most 255 wave channels",
+       "verdict": "implemented",
+       "what": "Parameters that would need more than 255 are refused.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3738 (April 2004) section 5.1"
+      },
+      {
+       "case": "Wave rates fall by P per time slot",
+       "verdict": "implemented",
+       "what": "Wave rates follow the exponential decay across slots.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3738 (April 2004) section 3.1.2"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "U-WEBRC-rx",
+     "name": "WEBRC receiver",
+     "release": "U",
+     "component": "rx",
+     "spec": {
+      "doc": "RFC 3738",
+      "version": "April 2004",
+      "locator": "section 3"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "Base channel joined first",
+       "verdict": "implemented",
+       "what": "The receiver joins the session's own group, the base channel, at start.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3738 (April 2004) section 3.2.1"
+      },
+      {
+       "case": "Join rules",
+       "verdict": "implemented",
+       "what": "No join before the first base packet, during a loss event or a join in progress, at N waves, or when the target rate is too low; as wired, the first condition is never cleared, so the receiver never joins a wave.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3738 (April 2004) section 3.2.3.6"
+      },
+      {
+       "case": "Slow start",
+       "verdict": "absent",
+       "what": "The controller implements the slow-start exits, but the receiver never feeds it join delays or reception rates, so none can fire.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3738 (April 2004) section 3.2.2.6"
+      },
+      {
+       "case": "Leaving a quiescent wave channel",
+       "verdict": "differs",
+       "what": "Wave channels are joined but never left; the leave function exists but nothing calls it.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Time slot index",
+       "verdict": "absent",
+       "what": "The current time slot index carried in the CCI is not acted on, so no slot change leaves the lowest wave.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Exceptional timeouts",
+       "verdict": "absent",
+       "what": "No timeout makes the receiver leave the session when reception goes far from normal.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3738 (April 2004) section 3.2.3.8"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "V2-WEBRC",
+     "name": "WEBRC supported",
+     "release": "V2",
+     "component": "tx",
+     "spec": {
+      "doc": "RFC 5775",
+      "version": "April 2010",
+      "locator": "section 2.2"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "WEBRC",
+       "verdict": "implemented",
+       "what": "WEBRC is implemented for sessions outside the 3GPP profiles.",
+       "repo": "rt-libflute"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "M-CC",
+     "name": "One channel at one rate",
+     "release": "M",
+     "component": "tx",
+     "spec": {
+      "doc": "TS 26.346",
+      "version": "V18.2.0",
+      "locator": "clause 7.2.4"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "No congestion control under the 3GPP profiles",
+       "verdict": "implemented",
+       "what": "Under the 3GPP profiles the sender uses one channel and refuses to enable WEBRC; the receiver joins without it.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Single rate",
+       "verdict": "implemented",
+       "what": "One destination, paced only by the configured rate limit.",
+       "repo": "rt-libflute"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "L-CC",
+     "name": "Congestion control in the MBMS Download Profile",
+     "release": "L",
+     "component": "tx",
+     "spec": {
+      "doc": "TS 26.346",
+      "version": "V18.2.0",
+      "locator": "clause L.4.7"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "Not used; single channel",
+       "verdict": "implemented",
+       "what": "As for MBMS download.",
+       "repo": "rt-libflute"
+      }
+     ],
+     "noted": []
+    }
+   ]
+  },
+  {
+   "name": "Content encoding",
+   "summary": "gzip files are decoded; under the 3GPP profiles the sender does not encode, since the profile leaves no way to carry the transfer length.",
+   "requirements": [
+    {
+     "id": "U-CENC-tx",
+     "name": "Content encoding of FDT Instances at the sender",
+     "release": "U",
+     "component": "tx",
+     "spec": {
+      "doc": "RFC 3926",
+      "version": "October 2004",
+      "locator": "section 3.4.3"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "EXT_CENC only with an encoded FDT",
+       "verdict": "implemented",
+       "what": "FDT Instances are not content encoded and EXT_CENC is never sent.",
+       "repo": "rt-libflute",
+       "locator": "RFC 3926 (October 2004) section 3.4.3"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "U-CENC-rx",
+     "name": "Content encoding of FDT Instances at the receiver",
+     "release": "U",
+     "component": "rx",
+     "spec": {
+      "doc": "RFC 3926",
+      "version": "October 2004",
+      "locator": "section 3.4.3"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "EXT_CENC read",
+       "verdict": "implemented",
+       "what": "EXT_CENC is read; an encoding the library cannot decode is refused.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "An encoded FDT Instance decoded",
+       "verdict": "absent",
+       "what": "The encoding read from EXT_CENC is not applied to the FDT: zlib and deflate instances are refused, and a gzip instance reaches the XML parser undecoded.",
+       "repo": "rt-libflute"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "M-GZIP",
+     "name": "gzip for files",
      "release": "M",
      "component": "rx",
      "spec": {
@@ -976,13 +2567,47 @@
        "verdict": "implemented",
        "what": "A file with Content-Encoding gzip is inflated after reception.",
        "repo": "rt-libflute"
+      },
+      {
+       "case": "Sizing a gzip file from a conformant sender",
+       "verdict": "inconsistent",
+       "what": "The receiver needs the transfer length of an encoded file; it waits for EXT_FTI when the FDT lacks it, which a sender under the profile does not send.",
+       "repo": "rt-libflute",
+       "conflict": "TS 26.346 V18.2.0 clause L.4.2: \"The following FDT attribute, defined at both the FDT-Instance and File levels, may be carried in the FDT sent by the FLUTE sender, under either the File-Instance or File element, and shall be supported by the FLUTE receiver:\" (Content-Encoding set to gzip). Clause L.4.4 lists Transfer-Length under \"The following attributes shall not be carried in the FDT sent by the FLUTE sender:\", and clause 7.2.8: \"FLUTE packets carrying symbols of files (not FDT Instances) shall not include an EXT_FTI.\" Raised as 5G-MAG Standards issue 212."
       }
      ],
      "noted": [
-      "The sender does not content encode under the 3GPP profiles, which the profile permits; a request to do so is refused.",
-      "Inflation is sized from the transfer length. Under the profile a sender may carry it neither in the FDT (clause L.4.4) nor in EXT_FTI (clause 7.2.8), so a gzip object from such a sender cannot be sized; the contradiction is raised as Standards issue 212.",
-      "Content-MD5 is checked only for objects that are not content encoded."
+      "The sender does not content encode under the 3GPP profiles, which the profile permits (\"may be carried\"); a request to do so is refused."
      ]
+    },
+    {
+     "id": "A-ENC",
+     "name": "Annex A: content encoding",
+     "release": "M",
+     "component": "tx",
+     "spec": {
+      "doc": "TS 26.346",
+      "version": "V18.2.0",
+      "locator": "annex A (table A.1)"
+     },
+     "repos": [
+      "rt-libflute"
+     ],
+     "cases": [
+      {
+       "case": "FDT Instances not encoded by the server",
+       "verdict": "implemented",
+       "what": "Never encoded.",
+       "repo": "rt-libflute"
+      },
+      {
+       "case": "Files decoded at the client",
+       "verdict": "implemented",
+       "what": "gzip is decoded.",
+       "repo": "rt-libflute"
+      }
+     ],
+     "noted": []
     }
    ]
   }

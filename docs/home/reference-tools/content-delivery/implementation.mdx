@@ -2,12 +2,67 @@
 title: Implementation Detail
 hide_title: true
 sidebar_position: 2
-description: "What the Content Delivery Protocols Reference Tools implement: rt-libflute against the three FLUTE profiles at Release 18, case by case, and what rt-media-origin packages, delivers and checks."
+description: "What the Content Delivery Protocols Reference Tools implement: rt-libflute against every requirement of FLUTE, profile by profile (unprofiled, version 2, MBMS download, MBS Object Distribution), and what rt-media-origin packages, delivers and checks."
 ---
 
 import ImplementationCases from '@site/src/components/ImplementationCases';
 import { RepoCards } from '@site/src/components/ProjectRepoSection';
 import AUDIT from '@site/src/data/audit-content-delivery.json';
+
+{/* One section per profile: only the requirements, components and baselines that profile uses. A 3GPP profile also
+    takes the unprofiled requirements it does not replace; those are counted with it, and shown once, under Unprofiled FLUTE. */}
+export const SUMMARY = {
+  V2: {
+    'Sessions, objects and packets': 'The receiver tells versions apart by the EXT_FDT version field.',
+    'LCT header and extensions': 'Version 2 is written in EXT_FDT, the version 1 SCT and ERT fields are dropped, and version 2 is refused under the 3GPP profiles.',
+    'File Delivery Table': 'Instance IDs are never reused while live, expiry is read in the nearest era and the newer declaration of a file wins; choosing version 2 does not select its namespace, and reuse of a live ID is not detected at the receiver.',
+    'FEC and blocking': 'The FEC Encoding ID is carried in the Codepoint.',
+    'Congestion control and channels': 'WEBRC, which version 2 requires, is implemented.',
+  },
+  M: {
+    'LCT header and extensions': 'The header specialisations of clause 7.2.7, EXT_FTI only on FDT packets and no SCT or ERT are applied; the data-less Close Session packet cannot carry both no TOI and a 16-bit TSI, and the documents do not say which wins.',
+    'File Delivery Table': 'Every element the profile requires is carried and none it excludes, except FEC-OTI-Max-Number-of-Encoding-Symbols; the extended schema lacks its schema-version namespace and delimiters, Content-Type is written on every File instead of only to override, and the receiver reads neither FDT-Instance Content-Type nor max-stale.',
+    'FEC and blocking': 'Compact No-Code and Raptor are sent with the required blocking; the Raptor decoder ignores the block structure the sender signals.',
+    'Congestion control and channels': 'One channel at one rate, with WEBRC refused.',
+    'Content encoding': 'gzip is decoded; the profile gives a sender no way to carry an encoded file\'s transfer length.',
+  },
+  B: {
+    'LCT header and extensions': 'EXT_FTI only on FDT packets and no SCT or ERT, as the MBMS Download Profile requires.',
+    'File Delivery Table': 'The Profiled FDT Schema is used, but Cache-Control and File-ETag are written and read in the extension namespaces instead of the profiled one, Content-Type is written on every File instead of only to override, and the receiver reads neither FDT-Instance Content-Type nor max-stale.',
+    'FEC and blocking': 'Both schemes are offered at the sender; the Raptor decoder ignores the block structure the sender signals.',
+    'Congestion control and channels': 'One channel at one rate.',
+  },
+};
+export const part = (keys, profile) => {
+  const features = AUDIT.features
+    .map((f) => ({ ...f, summary: profile ? ((SUMMARY[profile] || {})[f.name] || '') : f.summary,
+                   requirements: f.requirements.filter((r) => keys.includes(r.release)) }))
+    .filter((f) => f.requirements.length);
+  const pick = (o) => Object.fromEntries(Object.entries(o).filter(([k]) => keys.includes(k)));
+  return { ...AUDIT, features, releases: pick(AUDIT.releases), releaseNames: pick(AUDIT.releaseNames || {}) };
+};
+export const UNPROFILED = part(['U']);
+export const V2 = part(['V2'], 'V2');
+export const MBMS = part(['M', 'L'], 'M');
+export const MBS = part(['L', 'B'], 'B');
+export const NOT_IN = {
+  M: ['U-CC-tx', 'U-CC-rx', 'U-WEBRC-tx', 'U-WEBRC-rx', 'U-RAPTORQ', 'U-OPTSCHEMES', 'U-ERT-tx', 'U-CENC-tx', 'U-CENC-rx', 'U-DYN-rx'],
+  B: ['U-CC-tx', 'U-CC-rx', 'U-WEBRC-tx', 'U-WEBRC-rx', 'U-RAPTORQ', 'U-OPTSCHEMES', 'U-ERT-tx'],
+};
+export const count = (data, rel, inherit) => {
+  let reqs = data.features.flatMap((f) => f.requirements);
+  if (inherit) reqs = reqs.concat(UNPROFILED.features.flatMap((f) => f.requirements).filter((r) => !NOT_IN[inherit].includes(r.id)));
+  const cases = reqs.flatMap((r) => r.cases).map((c) => (rel && c.byRelease && c.byRelease[rel] ? { ...c, ...c.byRelease[rel] } : c));
+  const n = (v) => cases.filter((c) => c.verdict === v).length;
+  return { reqs: reqs.length, cases: cases.length, implemented: n('implemented'), differs: n('differs'), absent: n('absent'), inconsistent: n('inconsistent') };
+};
+export const tally = (c) => [`${c.implemented} implemented`, c.differs && `${c.differs} differ${c.differs === 1 ? 's' : ''} from the specification`, c.absent && `${c.absent} not implemented`, c.inconsistent && `${c.inconsistent} where the specification contradicts itself`].filter(Boolean).join(', ');
+export const CU = count(UNPROFILED);
+export const CV2 = count(V2);
+export const CM = count(MBMS, null, 'M');
+export const CM19 = count(MBMS, '19', 'M');
+export const CB = count(MBS, null, 'B');
+export const CB19 = count(MBS, '19', 'B');
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -24,25 +79,64 @@ import AUDIT from '@site/src/data/audit-content-delivery.json';
 
 :::tip[In short]
 
-- **rt-libflute:** a FLUTE sender and receiver for the three profiles: unprofiled FLUTE, MBMS download and MBS Object Distribution. Judged at Release 18 (TS 26.346 V18.2.0, TS 26.517 V18.6.0), the issues the code is built against, case by case.
-- **What works:** the FDT elements each profile requires and none the MBMS Download Profile excludes; Compact No-Code on both sides and Raptor sending; the LCT header and extensions; expiry; gzip decoding; and the WEBRC sender for unprofiled FLUTE.
-- **What differs:** the schema version namespace and delimiters of the extended schema; Cache-Control and File-ETag written and read in the extension namespaces rather than in the profiled schema's own; the Raptor decoder ignores the block structure the sender signals; the WEBRC receiver never leaves a wave channel; a changed object description keeps its TOI; without a named source the receiver checks the TSI only; and the max-stale caching directive is not read.
-- **Release 19:** TS 26.346 V19.3.0 raises the FDT schema versions to 5 (extended) and 3 (profiled); the code writes the Release 18 values, 4 and 2.
-- **Source of this page:** a code audit of the repository, each requirement split into the cases its clause defines, then re-checked by a second reader.
+- **rt-libflute** is a FLUTE sender and receiver. It is judged against every requirement of the FLUTE documents that falls on a sender or a receiver, in each of the four ways FLUTE is specified:
+  - **[Unprofiled FLUTE](#unprofiled-flute)** (RFC 3926 and its building blocks): {CU.reqs} requirements in {CU.cases} cases: {tally(CU)}.
+  - **[FLUTE version 2](#flute-version-2)** (RFC 6726): {CV2.cases} cases: {tally(CV2)}.
+  - **[MBMS download](#mbms-download)** (TS 26.346, with the unprofiled requirements it keeps): {CM.cases} cases: {tally(CM)}.
+  - **[MBS Object Distribution](#mbs-object-distribution)** (TS 26.517 and the MBMS Download Profile, with the unprofiled requirements they keep): {CB.cases} cases: {tally(CB)}.
+- **Releases:** the 3GPP profiles are judged at Release 18 (TS 26.346 V18.2.0, TS 26.517 V18.6.0), the issues the code is built against; Release 17 gives the same result. At Release 19 (TS 26.346 V19.3.0, TS 26.517 V19.3.0), MBMS download has {CM19.implemented} of {CM19.cases} cases implemented and MBS Object Distribution {CB19.implemented} of {CB19.cases}: the code writes the Release 18 FDT schema versions, 4 and 2, where Release 19 requires 5 and 3.
+- **Not judged here:** session descriptions, reception and operating modes, caching policy and repair belong to the components that use the library: the MBS Client (rt-mbs-client) and the MBSTF (rt-mbs-transport-function) for MBS, the MBMS Client (rt-mbms-client) and the BM-SC (rt-mbms-bmsc) for MBMS; [see below](#judged-with-the-clients-and-the-mbstf).
+- **Source of this page:** a code audit of the repository, every open change read as merged: each requirement split into the cases its clauses define, then re-checked by a second reader.
 
 :::
 
-For what the specifications define, see the [Technical Analysis](/tech/content-delivery/features). For how to run the tools, see the [Tutorials](/reference-tools/content-delivery/tutorials).
+For what the specifications define, see the [Standards page](/standards/content-delivery/flute) and the [Technical Analysis](/tech/content-delivery/features). For how to run the tools, see the [Tutorials](/reference-tools/content-delivery/tutorials).
 
-## rt-libflute: FLUTE in three profiles
+## Unprofiled FLUTE
 
-Each feature, split into its requirements and each requirement into the cases its clause defines: what works, what does not, and why. The filter selects a profile. Session descriptions, object repair, the MBS operating modes and object manifests belong to the MBMS and MBS Clients and the MBSTF, not to this library.
+FLUTE version 1 as the IETF defines it: RFC 3926 on ALC and LCT, the FEC building block and schemes, and WEBRC congestion control. The 3GPP profiles keep most of these requirements as they are; the sections below give only what they change or add. Filter by component; open a feature, then a requirement.
 
-<ImplementationCases data={AUDIT} />
+<ImplementationCases data={UNPROFILED} />
+
+## FLUTE version 2
+
+What RFC 6726, with ALC (RFC 5775) and LCT (RFC 5651), changes from version 1. Neither 3GPP profile uses it.
+
+<ImplementationCases data={V2} />
+
+## MBMS download
+
+What TS 26.346 adds to FLUTE for MBMS download (clause 7.2 and annex A), and the MBMS Download Profile of annex L.4. Congestion control, RaptorQ, the other optional FEC schemes, the ERT bound and FDT content encoding are replaced by the profile, so the unprofiled cases for them do not count here.
+
+<ImplementationCases data={MBMS} />
+
+## MBS Object Distribution
+
+The MBMS Download Profile, which the MBS Distribution Session follows, and what TS 26.517 and the Profiled FDT Schema of annex L.6 add.
+
+<ImplementationCases data={MBS} />
+
+## Judged with the clients and the MBSTF
+
+rt-libflute is the FLUTE layer of four Reference Tools, one sender and one receiver for each 3GPP profile:
+
+| Profile | Sender | Receiver |
+| --- | --- | --- |
+| MBMS download | BM-SC (rt-mbms-bmsc) | MBMS Client (rt-mbms-client) |
+| MBS Object Distribution | MBSTF ([rt-mbs-transport-function](https://github.com/5G-MAG/rt-mbs-transport-function)) | MBS Client, its MBSTF Client (rt-mbs-client) |
+
+These requirements of the same documents fall on those components rather than on the library:
+
+| Feature | Documents | MBS Object Distribution | MBMS download |
+| --- | --- | --- | --- |
+| Session description | RFC 3926 section 6; TS 26.346 clause 7.3 and table L.4.8-1; TS 26.517 clause 6.2.2 | MBS Client and MBSTF: [5G MBS implementation](/reference-tools/5g-mbs/implementation) | MBMS Client and BM-SC: not yet audited case by case |
+| Reception and operating modes | TS 26.346 clause 7.2.0; TS 26.517 clause 6.2.3 | MBSTF: [5G MBS implementation](/reference-tools/5g-mbs/implementation) | MBMS Client: not yet audited case by case |
+| Caching policy | TS 26.346 clause 7.2.13 | MBS Client; the library reads the directives (above) | MBMS Client; the library reads the directives (above) |
+| Repair and reception reporting | TS 26.346 clauses 9.3, 9.4 and 9.4B; TS 26.517 clause 6.2.4 | MBS Client: [5G MBS implementation](/reference-tools/5g-mbs/implementation) | MBMS Client: not yet audited case by case |
 
 :::info[Full audit for members]
 
-This page summarises a requirement-by-requirement audit of the code. The full audit (each requirement with its clause quoted, the code that meets or misses it, and the findings) is available to 5G-MAG members through Standards2Deployments.
+This page summarises a requirement-by-requirement audit of the code. The full audit (each requirement with its clauses quoted, the code that meets or misses it, and the findings) is available to 5G-MAG members through Standards2Deployments.
 
 [Become a member](/membership) · [Request access](/early-access)
 
