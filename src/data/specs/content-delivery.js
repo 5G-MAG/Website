@@ -109,10 +109,10 @@ export const CONTENT_DELIVERY_SPECS = [
   },
   {
     id: 'RFC 9223',
-    title: 'ROUTE - Real-time Object delivery over Unidirectional Transport',
+    title: 'Real-Time Transport Object Delivery over Unidirectional Transport (ROUTE)',
     url: 'https://datatracker.ietf.org/doc/rfc9223/',
-    layer: 'IETF (normative)',
-    note: 'The real-time object transport, alongside FLUTE',
+    layer: 'IETF (reference only)',
+    note: 'Informational, independent submission (April 2022); not used by TS 26.346 or TS 26.517',
   },
   {
     id: 'RFC 6968',
@@ -132,10 +132,10 @@ export const CONTENT_DELIVERY_SPECS = [
   // --- 3GPP -------------------------------------------------------------
   {
     id: 'TS 26.346',
-    title: 'MBMS; Protocols and codecs',
+    title: 'Multimedia Broadcast/Multicast Service (MBMS); Protocols and codecs',
     url: 'https://www.3gpp.org/dynareport/26346.htm',
     layer: '3GPP',
-    note: 'The central specification for FLUTE-based delivery. Clause 7.2 covers FLUTE usage for MBMS download (header specializations, FDT schema and 3GPP FDT extensions, FEC schemes, content encoding); clause 7.2.12 and Annex B the MBMS FEC scheme (Raptor, RFC 5053); clause 7.3 SDP for the download delivery method; clause 9 associated delivery procedures, file repair and reception reporting; Annex L the MBMS Download Profile and User Service profiles.',
+    note: 'Latest Release 19 issue: V19.3.0. The central specification for FLUTE-based delivery. Clause 7.2 covers FLUTE usage for MBMS download (header specializations, FDT schema and 3GPP FDT extensions, FEC schemes, content encoding); clause 7.2.12 and Annex B the MBMS FEC scheme (Raptor, RFC 5053); clause 7.3 SDP for the download delivery method; clause 9 associated delivery procedures, file repair and reception reporting; Annex L the MBMS Download Profile and User Service profiles.',
   },
   {
     id: 'TS 26.347',
@@ -156,7 +156,8 @@ export const CONTENT_DELIVERY_SPECS = [
     title: '5G Multicast-Broadcast User Services; Protocols and Formats',
     url: 'https://www.3gpp.org/dynareport/26517.htm',
     layer: '3GPP',
-    note: 'Clause 6.2 defines the Object Distribution Method over FLUTE and binds it to the MBMS Download Profile of TS 26.346',
+    release: '17',
+    note: 'Latest Release 19 issue: V19.2.0. Clause 6.2 defines the Object Distribution Method over FLUTE and binds it to the MBMS Download Profile of TS 26.346',
   },
   {
     id: 'TS 26.502',
@@ -192,7 +193,7 @@ export const CONTENT_DELIVERY_SPECS = [
     title: 'Dynamic Adaptive Streaming over HTTP (DASH)',
     url: 'https://www.iso.org/standard/89027.html',
     layer: 'Media formats',
-    note: 'links the incoming edition\'s own catalogue page (89027), not the superseded 2022 edition (83314); at FDIS stage targeting June 2026 publication as of this check (September 2026) -- iso.org blocks automated fetches, so its exact current status could not be confirmed directly',
+    note: 'Media presentation and segment formats',
   },
   {
     id: 'ISO/IEC 23000-19',
@@ -212,9 +213,9 @@ export const CONTENT_DELIVERY_SPECS = [
   {
     id: 'ETSI TS 103 973',
     title: 'Coded Multisource Media Format (CMMF) for Content Distribution and Delivery',
-    url: 'https://www.etsi.org/deliver/etsi_ts/103900_103999/103973/01.01.01_60/ts_103973v010101p.pdf',
+    url: 'https://www.etsi.org/deliver/etsi_ts/103900_103999/103973/01.02.02_60/ts_103973v010202p.pdf',
     layer: 'Multisource delivery',
-    note: 'V1.1.1 (2024-10); a separate container carrying coded media from more than one network source at once, with no manifest of its own',
+    note: 'V1.2.2 (2026-05); a container for coded media from more than one source, with content delivery protocol instantiations in annex D',
   },
 ];
 

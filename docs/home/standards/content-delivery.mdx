@@ -2,10 +2,11 @@
 hide_title: true
 title: Content Delivery Protocols
 slug: /standards/content-delivery
-description: Overview of FLUTE and ROUTE, the one-way transports carrying DASH, HLS and CMAF media over broadcast and multicast networks.
+description: "The specifications behind FLUTE and its three profiles (unprofiled, MBMS download, MBS Object Distribution), ROUTE and CMMF, and which profile uses which, at Release 19."
 ---
 
 import SpecIndex from '@site/src/components/SpecIndex';
+import JumpMenu from '@site/src/components/JumpMenu';
 import { CONTENT_DELIVERY_SPECS, CONTENT_DELIVERY_LAYER_ORDER } from '@site/src/data/specs/content-delivery';
 
 <div class="topic-banner">
@@ -19,56 +20,61 @@ import { CONTENT_DELIVERY_SPECS, CONTENT_DELIVERY_LAYER_ORDER } from '@site/src/
 </div>
 </div>
 
-## Overview
+FLUTE and its building blocks are specified by the IETF. 3GPP SA4 profiles FLUTE for MBMS download in TS 26.346 and for the MBS Object Distribution Method in TS 26.517. This page lists the documents and which profile uses which.
 
-5G-MAG tracks FLUTE and ROUTE, the two unidirectional transport protocols that carry DASH, HLS and CMAF media over broadcast and multicast networks without a return channel. For the technical analysis of how these transports work, see the Tech page linked below. For the release-by-release work-item history behind these specifications, see [Standards Evolution](/standards/content-delivery/evolution).
+The page follows the latest Release 19 issues: TS 26.346 V19.3.0 and TS 26.517 V19.2.0.
 
-5G-MAG tracks these transport and format specifications and their use across its 5G Broadcast and 5G MBS work. Contributions to this documentation are made through the [5G-MAG Standards repository](https://github.com/5G-MAG/Standards/).
+:::tip[At a glance]
 
-## Specifications by role
+- **FLUTE version 1:** RFC 3926, with ALC (RFC 3450) and LCT (RFC 3451). Both 3GPP profiles refer to it. FLUTE version 2 (RFC 6726, with RFC 5775 and RFC 5651) is current IETF text, not used by them.
+- **FEC schemes:** Compact No-Code (RFC 3695) in every profile; Raptor (RFC 5053) decoded by every MBMS and MBS client.
+- **3GPP profiles:** MBMS download in TS 26.346 clause 7.2 and annex L.4; MBS Object Distribution in TS 26.517 clause 6.2, which conforms to the MBMS Download Profile.
+- **Also tracked:** ROUTE (RFC 9223), not used by either 3GPP profile, and CMMF (ETSI TS 103 973 V1.2.2), which has its own page.
 
-| Role                                         | Protocol / format | Defining specification                                                                                                                                                   |
-| -------------------------------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Unidirectional transport (files)             | FLUTE             | IETF [RFC 3926](https://www.rfc-editor.org/rfc/rfc3926) (version 1, 3GPP-mandated) / [RFC 6726](https://datatracker.ietf.org/doc/rfc6726/) (version 2, reference only)   |
-| Unidirectional transport (real-time objects) | ROUTE             | IETF [RFC 9223](https://datatracker.ietf.org/doc/rfc9223/)                                                                                                               |
-| Transport building blocks                    | LCT, ALC, FCAST   | IETF [RFC 3451](https://www.rfc-editor.org/rfc/rfc3451) / [RFC 5651](https://datatracker.ietf.org/doc/rfc5651/), [RFC 3450](https://www.rfc-editor.org/rfc/rfc3450) / [RFC 5775](https://datatracker.ietf.org/doc/rfc5775/), [RFC 6968](https://datatracker.ietf.org/doc/rfc6968/) |
-| Adaptive streaming format                    | DASH              | [ISO/IEC 23009-1](https://www.iso.org/standard/83314.html)                                                                                                               |
-| Adaptive streaming format                    | HLS               | IETF [RFC 8216](https://datatracker.ietf.org/doc/rfc8216/)                                                                                                               |
-| Segmented media container                    | CMAF              | [ISO/IEC 23000-19](https://www.iso.org/standard/85623.html)                                                                                                              |
-| 3GPP DASH profile                            | 3GP-DASH          | [TS 26.247](https://www.3gpp.org/dynareport/26247.htm)                                                                                                                   |
-| DVB DASH profile                             | DVB-DASH          | [ETSI TS 103 285](https://www.etsi.org/deliver/etsi_ts/103200_103299/103285/)                                                                                            |
-| 3GPP broadcast delivery (uses FLUTE)         | MBMS              | [TS 26.346](https://www.3gpp.org/dynareport/26346.htm)                                                                                                                   |
+:::
 
-## FLUTE: which version, and why
+<JumpMenu items={[["Which profile uses which", "which-profile-uses-which"], ["Specifications", "specifications"], ["Related", "related"]]} />
 
-5G-MAG's FLUTE implementation (the [rt-libflute](https://github.com/5G-MAG/rt-libflute) library) targets **FLUTE version 1**, not the newer version 2, because 3GPP's own profile mandates it. The applicable version is reached through this dependency chain:
+## Which profile uses which
 
-1. **TS 26.517, clause 6.2.1** &mdash; if FLUTE realises the Object Distribution Method, the MBS Distribution Session *shall conform to* the MBMS Download Profile of TS 26.346 clause L.4.
-2. **TS 26.346, clause L.4** &mdash; the Download Profile constrains the FDT parameters of clause 7.2, defined by RFC 3926 and the 3GPP FDT extensions.
-3. **TS 26.346, clause 7.2.0** &mdash; clients and servers *shall implement* RFC 3926 (FLUTE), RFC 3450 (ALC) and RFC 3451 (LCT).
-4. **RFC 3926** &mdash; "This document specifies FLUTE version 1"; every FDT-carrying packet MUST set the version field to 1.
+A tick means the profile requires the document, directly or through the profile it builds on.
 
-FLUTE version 1 (RFC 3926 and its companion RFCs 3450/3451) is normative for all 3GPP uses of rt-libflute. The revised IETF generation (RFC 6726 FLUTE v2, RFC 5651, RFC 5775) is reference material only for 3GPP purposes, tracked here because it's still the current IETF text for non-3GPP FLUTE deployments.
+| Document | Used for | Unprofiled FLUTE | MBMS download | MBS Object Distribution |
+| --- | --- | :---: | :---: | :---: |
+| RFC 3926 | FLUTE version 1 | ✓ | ✓ | ✓ |
+| RFC 3450 | ALC | ✓ | ✓ | ✓ |
+| RFC 3451 | LCT | ✓ | ✓ | ✓ |
+| RFC 3695 | Compact No-Code FEC (FEC Encoding ID 0) | ✓ | ✓ | ✓ |
+| RFC 5053 | Raptor FEC (FEC Encoding ID 1) | — | ✓ | ✓ |
+| RFC 1952 | GZip content encoding | — | ✓ | ✓ |
+| TS 26.346, clause 7.2 and annex L.4 | FLUTE usage for MBMS download; the MBMS Download Profile | — | ✓ | ✓ |
+| TS 26.346, annex L.6 | Profiled FLUTE FDT schema | — | — | ✓ |
+| TS 26.517, clause 6.2 | FLUTE for the Object Distribution Method | — | — | ✓ |
 
-## Specifications in scope
+- **Unprofiled FLUTE:** RFC 3926 builds on RFC 3450 and RFC 3451, and refers to RFC 3695 for FEC Encoding ID 0. It allows content encoding, GZip among others, without requiring it.
+- **MBMS download:** clients and servers implement RFC 3926 with the ALC and LCT features it inherits. Compact No-Code is supported, every UE decodes Raptor, and UEs support GZip decoding.
+- **MBS Object Distribution:** the MBS Distribution Session conforms to the MBMS Download Profile, and the MBSTF uses the profiled FDT schema of annex L.6.
 
-Every specification behind FLUTE, ROUTE and the media formats they carry. The layer
-filter separates what is normative for 3GPP use from the revised IETF generation that
-is valid text but not the mandated profile, which is the distinction the section above
-turns on.
+What each profile requires, row by row, is in the [Technical Analysis](/tech/content-delivery/features).
+
+## Specifications
 
 <SpecIndex specs={CONTENT_DELIVERY_SPECS} layerOrder={CONTENT_DELIVERY_LAYER_ORDER} />
 
-<details>
-<summary>References to verify</summary>
+For the release-by-release history, see [Standards Evolution](/standards/content-delivery/evolution).
 
-The ISO/IEC 23009-1 (DASH) link was updated during this pass to the incoming edition's own catalogue page (iso.org/standard/89027.html), replacing the superseded 2022 edition (iso.org/standard/83314.html). Independent sources place it at FDIS stage targeting June 2026 publication; iso.org itself blocks automated fetches, so its exact current status could not be confirmed directly. The ISO/IEC 23000-19 (CMAF) link is confirmed as the current 2024 (3rd) edition, and the ETSI TS 103 285 (DVB-DASH) link is confirmed against the ETSI publication listing (latest published version v1.4.1; this page deliberately links the version directory rather than one version). The protocol-to-RFC mappings (FLUTE = RFC 3926/6726, ROUTE = RFC 9223, HLS = RFC 8216, and the LCT/ALC/FCAST building blocks), the TS 26.346/26.517 normative chain, and the FEC scheme identifiers were confirmed against primary spec text.
+<details>
+<summary>Sources for this page</summary>
+
+- **Which profile uses which:** RFC 3926, section 5.1.2.1 and Normative References [2], [3], [7] and [17]; TS 26.346 V19.3.0, clauses 7.2.0, 7.2.2, 7.2.5, L.4.7 and L.6.1; TS 26.517 V19.2.0, clause 6.2.1.
+- **FLUTE version 2:** RFC 6726, section 11.1.
+- **ROUTE:** RFC 9223, header and section 1.1.
 
 </details>
 
-## Related Standards Work
+## Related
 
+- [Technical Analysis: Content Delivery Protocols](/tech/content-delivery/overview)
+- [Standards: CMMF (Multisource Delivery)](/standards/cmmf)
 - [Standards: 5G Broadcast](/standards/5g-broadcast)
 - [Standards: 5G Multicast Broadcast Services (MBS)](/standards/5g-mbs)
-- [Standards: DVB-I over 5G](/standards/dvb-i)
-- [Standardisation](/standards): how 5G-MAG submits feedback and requirements to SDOs
