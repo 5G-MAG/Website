@@ -34,7 +34,7 @@ Every requirement the documents place on FLUTE, grouped by feature, and for each
 
 ## How to read the tables
 
-- **Each row is one requirement,** gathered from the sentences of one or more documents that state it. The cell names the sections or clauses, and the strongest keyword they use: *shall* (MUST, SHALL, REQUIRED), *should* (SHOULD, RECOMMENDED), *may* (MAY, OPTIONAL). *If used* marks an FEC scheme or a congestion control scheme, whose rules apply when it is chosen.
+- **Each row is one requirement,** gathered from the sentences of one or more documents that state it. The cell names the sections or clauses, and the strongest keyword they use: *shall* (MUST, SHALL, REQUIRED, or a plain statement that something is mandatory, supported or contained), *shall not* (including a statement that something is not used or excluded), *should* (SHOULD, RECOMMENDED), *may* (MAY, OPTIONAL). *If used* marks an FEC scheme or a congestion control scheme, whose rules apply when it is chosen.
 - **Unprofiled FLUTE** lists the sections of FLUTE version 1 (v1) and version 2 (v2).
 - **On an IETF row,** the 3GPP columns say whether the profile takes the requirement *as the RFC* has it, or which clause *changes*, *strengthens* or replaces it (*not used*). *Not named in the profile* marks an FEC scheme the profile does not list.
 - **A 3GPP row** applies only where its clause is given; a dash means the profile does not carry it.
@@ -74,14 +74,16 @@ The fields of the LCT header and the header extensions FLUTE uses.
 | --- | --- | --- | --- | --- | --- |
 | Default LCT header, version 1, its field lengths and reserved bits | Sender and receiver | v1: RFC 3450 sections 2, 2.1, 4.1, 4.2; RFC 3451 sections 5, 5.1 · v2: RFC 6726 sections 3.1, 11.1; RFC 5775 sections 2, 4.1; RFC 5651 sections 5, 5.1 (shall) | Changed by TS 26.346 clause 7.2.7 | As the RFC | |
 | Close Session (A) and Close Object (B) flags | Sender and receiver | v1: RFC 3450 section 4.2; RFC 3451 section 5.1 (should) | Changed by TS 26.346 clause 7.2.7 | As the RFC | |
-| Expected Residual Time bound | Sender | v1: RFC 3450 section 4.2; RFC 3451 sections 5, 5.1 (shall not) | Changed by TS 26.346 clause 7.2.7 | As the RFC | |
+| Expected Residual Time bound | Sender | v1: RFC 3450 section 4.2; RFC 3451 sections 5, 5.1 (shall not) | Changed by TS 26.346 clauses 7.2.7, L.4.7 | Changed by TS 26.346 clause L.4.7 | |
 | Header extensions: processed before acceptance, EXT_NOP supported, EXT_AUTH recognised | Sender and receiver | v1: RFC 3450 section 4.3; RFC 3451 section 5.2 · v2: RFC 5651 sections 5.2.1, 5.2.2 (shall) | As the RFC | As the RFC | |
 | Codepoint field | Sender and receiver | v1: RFC 3450 section 2.1 (may) | As the RFC | As the RFC | |
 | ALC/LCT header specialisations: 32-bit zero CCI, 16-bit TSI, 16-bit TOI, TOI 0 for FDT Instances, T and R zero, HDR_LEN | Sender and receiver | – | TS 26.346 clause 7.2.7 (shall) | – |  |
 | Close Session and Close Object flags may signal the end of session and of object | Sender | – | TS 26.346 clause 7.2.7 (may) | – |  |
 | EXT_TIME, when included, carries the Expected Residual Time | Sender | – | TS 26.346 clause 7.2.7 (shall) | – |  |
 | EXT_FTI in every packet of an FDT Instance and never in packets of files; no EXT_CENC | Sender | – | TS 26.346 clause 7.2.8 (shall) | – |  |
-| MBMS Download Profile: EXT_FTI for FDT Instances, FDT for files; header flags and fields set to zero and ignored | Sender and receiver | – | TS 26.346 clause L.4.7 (should) | TS 26.346 clause L.4.7 (should) |  |
+| MBMS Download Profile: EXT_FTI for FDT Instances, the FDT for the FEC Object Transmission Information of files | Sender and receiver | – | TS 26.346 clause L.4.7 (should) | TS 26.346 clause L.4.7 (should) |  |
+| MBMS Download Profile: Sender Current Time and Expected Residual Time not used (T and R flags, EXT_TIME); set to zero, ignored by the UE | Sender and receiver | – | TS 26.346 clause L.4.7 (shall not) | TS 26.346 clause L.4.7 (shall not) |  |
+| Annex A: A, B, T and R flags at the MBMS client and server | Sender and receiver | – | TS 26.346 table A.1 (shall) | – |  |
 
 </details>
 
@@ -116,6 +118,7 @@ The in-band table that describes each file: its instances, syntax, schema, expir
 | MBMS Session Identity in the FDT | Sender and receiver | – | TS 26.346 clause 7.2.11 | – |  |
 | Extended FDT schema listing and its 3GPP extension schemas | Sender and receiver | – | TS 26.346 clause 7.2.10 | – |  |
 | Profiled FDT schema listing | Sender and receiver | – | – | TS 26.346 clause L.6.1 |  |
+| Annex A: FDT attributes and FEC OTI elements required at the MBMS client and server | Sender and receiver | – | TS 26.346 table A.1 (shall) | – |  |
 
 </details>
 
@@ -133,17 +136,19 @@ How files are split into source blocks and encoding symbols, the FEC schemes, an
 | An FEC Payload ID in every packet, used by the receiver to place the symbols | Sender and receiver | v1: RFC 3450 sections 2.3, 4.4; RFC 3452 section 3; RFC 5052 sections 6, 6.1 · v2: RFC 5775 section 2.3 (shall) | Changed by TS 26.346 clause 7.2.7 | As the RFC | |
 | FEC Object Transmission Information delivered in band, by EXT_FTI and the FDT, identical in both | Sender and receiver | v1: RFC 3926 sections 5, 5.2; RFC 3450 sections 2.3, 4.4, 4.5 · v2: RFC 6726 section 5 (shall) | Changed by TS 26.346 clauses 7.2.8, L.4.7 | Changed by TS 26.346 clause L.4.7 | |
 | Encoding symbol length and the source block structure algorithm | Sender and receiver | v1: RFC 3926 sections 5.1.2.1, 5.1.2.2 (shall) | Changed by TS 26.346 clauses 7.2.3, L.4.7 | Changed by TS 26.346 clause L.4.7 | |
-| Compact No-Code FEC scheme (FEC Encoding ID 0) | Sender and receiver | v1: RFC 3695 sections 2.1, 2.2, 3.1, 3.2 (shall) | Changed by TS 26.346 clauses 7.2.1, 7.2.2 | As the RFC | |
+| Compact No-Code FEC scheme (FEC Encoding ID 0) | Sender and receiver | v1: RFC 3695 sections 2.1, 2.2, 3.1, 3.2 (shall) | Changed by TS 26.346 clauses 7.2.1, 7.2.2, L.4.7 | Changed by TS 26.346 clause L.4.7 | |
 | Compact FEC scheme (FEC Encoding ID 130) | Sender and receiver | v1: RFC 3695 section 2.3 (if used) | Not named in the profile | Not named in the profile | |
-| Raptor FEC scheme (FEC Encoding ID 1) | Sender and receiver | v1: RFC 5053 sections 3.1, 3.2.1, 4.1, 5.2, 5.3.1.2, 5.3.2, 5.4.1, 5.5.2.1 (if used) | Changed by TS 26.346 clauses 7.2.1, 7.2.2 | As the RFC | |
+| Raptor FEC scheme (FEC Encoding ID 1) | Sender and receiver | v1: RFC 5053 sections 3.1, 3.2.1, 4.1, 5.2, 5.3.1.2, 5.3.2, 5.4.1, 5.5.2.1 (if used) | Changed by TS 26.346 clauses 7.2.1, 7.2.2, L.4.7 | Changed by TS 26.346 clause L.4.7 | |
 | RaptorQ FEC scheme (FEC Encoding ID 6) | Sender and receiver | v1: RFC 6330 sections 3.2, 3.3.1, 4.2, 4.3, 4.4.1.2, 4.4.2, 5.3.2, 5.8 (if used) | Not named in the profile | Not named in the profile | |
 | Basic FEC schemes of RFC 5445 (Compact No-Code, Small Block Large Block Expandable) | Sender and receiver | v1: RFC 5445 sections 3.2.1, 3.2.2.2, 3.3, 3.4.2, 4.2.2.3, 4.3, 5.2.2.2, 5.2.2.3, 5.3, 6.2.1, 6.2.2.3, 6.3 (if used) | Not named in the profile | Not named in the profile | |
 | FEC Payload ID: 16-bit SBN and 16-bit ESI for Compact No-Code; clause 7.2.12.1 for the MBMS FEC scheme | Sender and receiver | – | TS 26.346 clause 7.2.7 (shall) | – |  |
 | Compact No-Code supported; every UE decodes Raptor and recovers any source block RFC 5053 encodes | Sender and receiver | – | TS 26.346 clauses 7.2.1, 7.2.2 (shall) | – |  |
 | Blocking: RFC 3926 algorithm for Compact No-Code, RFC 5053 for Raptor; sub-blocks under 256 KB | Sender | – | TS 26.346 clause 7.2.3 (shall) | – |  |
-| MBMS Download Profile: blocking per RFC 3695 for Compact No-Code and RFC 5053 for Raptor | Sender | – | TS 26.346 clause L.4.7 (should) | TS 26.346 clause L.4.7 (should) |  |
+| MBMS Download Profile: Compact No-Code and Raptor optional to implement by the BM-SC, mandatory to support by the UE | Sender and receiver | – | TS 26.346 clause L.4.7 (shall) | TS 26.346 clause L.4.7 (shall) |  |
+| MBMS Download Profile: blocking per RFC 3695 for Compact No-Code and RFC 5053 for Raptor | Sender | – | TS 26.346 clause L.4.7 (shall) | TS 26.346 clause L.4.7 (shall) |  |
 | FEC-Redundancy-Level of individual transport objects in the FDT | Sender and receiver | – | TS 26.346 clause 7.2.16 (may) | – |  |
 | MBMS FEC scheme definition (Raptor, FEC Encoding ID 1): FEC Payload ID and OTI | Sender and receiver | – | TS 26.346 clause 7.2.12 | – |  |
+| Annex A: blocking and symbol encoding required at the MBMS client and server | Sender and receiver | – | TS 26.346 table A.1 (shall) | – |  |
 
 </details>
 
@@ -158,13 +163,14 @@ Multiple-rate congestion control, which FLUTE requires and the 3GPP profiles rep
 
 | Requirement | Side | Unprofiled FLUTE | MBMS download | MBS Object Distribution | Releases |
 | --- | --- | --- | --- | --- | --- |
-| A multiple-rate, feedback-free congestion control building block, applied to every packet | Sender and receiver | v1: RFC 3450 sections 2.1, 2.2, 4.1, 4.2; RFC 3451 sections 3, 4, 7; RFC 3452 sections 4, 6; RFC 5052 sections 5, 10 · v2: RFC 6726 section 1.1.4; RFC 5775 section 2.2; RFC 5651 sections 3, 4.3, 7 (shall) | Not used (TS 26.346 clauses 7.2.4, L.4.7) | Not used (TS 26.346 clause L.4.7) | |
-| Sender fills the CCI and sends at the rates the building block dictates | Sender | v1: RFC 3450 section 4.4; RFC 3451 section 6.1 (shall) | Not used (TS 26.346 clauses 7.2.4, L.4.7) | Not used (TS 26.346 clause L.4.7) | |
-| Receiver runs the congestion control on each session, or does not join | Receiver | v1: RFC 3450 section 4.5; RFC 3451 section 6.2 (shall) | Not used (TS 26.346 clauses 7.2.4, L.4.7) | Not used (TS 26.346 clause L.4.7) | |
-| WEBRC sender: waves, rates and the CCI formats | Sender | v1: RFC 3738 sections 3.1.1, 3.1.2, 4.1, 5, 5.1, 5.2 (if used) | Not used (TS 26.346 clauses 7.2.4, L.4.7) | Not used (TS 26.346 clause L.4.7) | |
-| WEBRC receiver: joining, leaving, rate estimation and timeouts | Receiver | v1: RFC 3738 sections 3, 3.2.1, 3.2.2.1, 3.2.2.2, 3.2.2.4, 3.2.2.5, 3.2.2.6, 3.2.3.3, 3.2.3.4, 3.2.3.6, 3.2.3.7, 3.2.3.8 (if used) | Not used (TS 26.346 clauses 7.2.4, L.4.7) | Not used (TS 26.346 clause L.4.7) | |
-| No congestion control: a single FLUTE channel at a single rate | Sender | – | TS 26.346 clause 7.2.4 (shall) | – |  |
-| MBMS Download Profile: congestion control not used, a single channel at a single rate | Sender | – | TS 26.346 clause L.4.7 (should) | TS 26.346 clause L.4.7 (should) |  |
+| A multiple-rate, feedback-free congestion control building block, applied to every packet | Sender and receiver | v1: RFC 3450 sections 2.1, 2.2, 4.1, 4.2; RFC 3451 sections 3, 4, 7; RFC 3452 sections 4, 6; RFC 5052 sections 5, 10 · v2: RFC 6726 section 1.1.4; RFC 5775 section 2.2; RFC 5651 sections 3, 4.3, 7 (shall) | Not used (TS 26.346 clauses 7.1, 7.2.4, L.4.7) | Not used (TS 26.346 clause L.4.7) | |
+| Sender fills the CCI and sends at the rates the building block dictates | Sender | v1: RFC 3450 section 4.4; RFC 3451 section 6.1 (shall) | Not used (TS 26.346 clauses 7.1, 7.2.4, L.4.7) | Not used (TS 26.346 clause L.4.7) | |
+| Receiver runs the congestion control on each session, or does not join | Receiver | v1: RFC 3450 section 4.5; RFC 3451 section 6.2 (shall) | Not used (TS 26.346 clauses 7.1, 7.2.4, L.4.7) | Not used (TS 26.346 clause L.4.7) | |
+| WEBRC sender: waves, rates and the CCI formats | Sender | v1: RFC 3738 sections 3.1.1, 3.1.2, 4.1, 5, 5.1, 5.2 (if used) | Not used (TS 26.346 clauses 7.1, 7.2.4, L.4.7) | Not used (TS 26.346 clause L.4.7) | |
+| WEBRC receiver: joining, leaving, rate estimation and timeouts | Receiver | v1: RFC 3738 sections 3, 3.2.1, 3.2.2.1, 3.2.2.2, 3.2.2.4, 3.2.2.5, 3.2.2.6, 3.2.3.3, 3.2.3.4, 3.2.3.6, 3.2.3.7, 3.2.3.8 (if used) | Not used (TS 26.346 clauses 7.1, 7.2.4, L.4.7) | Not used (TS 26.346 clause L.4.7) | |
+| No congestion control: a single FLUTE channel at a single rate | Sender | – | TS 26.346 clauses 7.1, 7.2.4 (shall) | – |  |
+| MBMS Download Profile: congestion control not used, a single channel at a single rate | Sender | – | TS 26.346 clause L.4.7 (shall not) | TS 26.346 clause L.4.7 (shall not) |  |
+| Annex A: single channel support required at the MBMS client and server | Sender and receiver | – | TS 26.346 table A.1 (shall) | – |  |
 
 </details>
 
@@ -182,6 +188,7 @@ Compression of files and of FDT Instances before transport.
 | Content encoding of FDT Instances, signalled by EXT_CENC | Sender and receiver | v1: RFC 3926 section 3.4.3 · v2: RFC 6726 section 3.4.3 (shall) | Not used (TS 26.346 clause 7.2.8) | As the RFC | |
 | Files may be gzip encoded for transport; every UE decodes gzip | Sender and receiver | – | TS 26.346 clause 7.2.5 (shall) | – |  |
 | FDT Instances are not content encoded and EXT_CENC is not used | Sender | – | TS 26.346 clause 7.2.8 (shall not) | – |  |
+| Annex A: content encoding of files required at the MBMS client; FDT Instances not encoded by the server | Sender and receiver | – | TS 26.346 table A.1 (shall) | – |  |
 
 </details>
 
@@ -196,9 +203,10 @@ What a receiver obtains before joining, and the SDP the 3GPP profiles define for
 
 | Requirement | Side | Unprofiled FLUTE | MBMS download | MBS Object Distribution | Releases |
 | --- | --- | --- | --- | --- | --- |
-| Session description content and its delivery before joining | Session description | v1: RFC 3926 section 6; RFC 3450 sections 2.4, 4.2, 4.4; RFC 3451 sections 4, 6.1 · v2: RFC 6726 section 6; RFC 5775 section 2.4; RFC 5651 section 4 (shall) | Changed by TS 26.346 clauses 7.3.2.0, 7.3.2.1, 7.3.2.3, 7.3.2.4, 7.3.2.5, 7.3.2.6, 7.3.2.7, 7.3.2.8, 7.3.2.10, 7.3.2.11, 7.3.2.12, 7.3.2.13, 7.3.2.14, L.4.8 | Changed by TS 26.346 clauses 7.3.2.0, 7.3.2.1, 7.3.2.3, 7.3.2.4, 7.3.2.5, 7.3.2.6, 7.3.2.7, 7.3.2.8, 7.3.2.10, 7.3.2.11, 7.3.2.12, 7.3.2.13, 7.3.2.14, L.4.8; TS 26.517 clauses 6.2.2.1, 6.2.2.2 | |
+| Session description content and its delivery before joining | Session description | v1: RFC 3926 section 6; RFC 3450 sections 2.4, 4.2, 4.4; RFC 3451 sections 4, 6.1 · v2: RFC 6726 section 6; RFC 5775 section 2.4; RFC 5651 section 4 (shall) | Changed by TS 26.346 clauses 7.3.2.0, 7.3.2.1, 7.3.2.3, 7.3.2.4, 7.3.2.5, 7.3.2.6, 7.3.2.7, 7.3.2.8, 7.3.2.10, 7.3.2.11, 7.3.2.12, 7.3.2.13, 7.3.2.14, L.4.7, L.4.8 | Changed by TS 26.346 clauses 7.3.2.0, 7.3.2.1, 7.3.2.3, 7.3.2.4, 7.3.2.5, 7.3.2.6, 7.3.2.7, 7.3.2.8, 7.3.2.10, 7.3.2.11, 7.3.2.12, 7.3.2.13, 7.3.2.14, L.4.7, L.4.8; TS 26.517 clauses 6.2.2.1, 6.2.2.2 | |
 | SDP for a FLUTE session: source address, channels, TSI, timing, bearer mode, FEC, bandwidth, protocol and media | Session description | – | TS 26.346 clauses 7.3.2.0, 7.3.2.1, 7.3.2.3, 7.3.2.4, 7.3.2.5, 7.3.2.6, 7.3.2.7, 7.3.2.8, 7.3.2.10, 7.3.2.11, 7.3.2.12, 7.3.2.13, 7.3.2.14 (shall) | TS 26.346 clauses 7.3.2.0, 7.3.2.1, 7.3.2.3, 7.3.2.4, 7.3.2.5, 7.3.2.6, 7.3.2.7, 7.3.2.8, 7.3.2.10, 7.3.2.11, 7.3.2.12, 7.3.2.13, 7.3.2.14 (shall) | added in Release 19 |
-| MBMS Download Profile: SDP parameters mandatory, optional or not applicable (table L.4.8-1) | Session description | – | TS 26.346 clause L.4.8 (shall) | TS 26.346 clause L.4.8 (shall) |  |
+| MBMS Download Profile: SDP parameters mandatory, optional or not applicable (table L.4.8-1) | Session description | – | TS 26.346 clauses L.4.7, L.4.8 (shall) | TS 26.346 clauses L.4.7, L.4.8 (shall) |  |
+| MBMS Download Profile: OMA Push and RTSP excluded | Session description | – | TS 26.346 clause L.4.1 (shall not) | TS 26.346 clause L.4.1 (shall not) |  |
 | Transparent delivery services: announcement profile | Session description | – | TS 26.346 clause L.5 (shall) | – |  |
 | OMA Push over other bearers | Session description | – | TS 26.346 clause 7.1 (may) | – |  |
 | MBS session description: restrictions on TS 26.346 clause 7.3 and the mbs-servicetype attribute | Session description | – | – | TS 26.517 clauses 6.2.2.1, 6.2.2.2 (shall) |  |
@@ -290,7 +298,7 @@ The IETF documents do not change with the 3GPP releases.
 <summary>Sources for this page</summary>
 
 - **IETF:** RFC 3926, RFC 3450, RFC 3451, RFC 3452, RFC 3695, RFC 3738, RFC 5052, RFC 5053, RFC 5445, RFC 6330, RFC 6726, RFC 5775 and RFC 5651; every MUST, SHALL, SHOULD, RECOMMENDED, MAY and OPTIONAL sentence outside the conventions, IANA and reference sections.
-- **3GPP:** TS 26.346 V17.6.0, V18.2.0 and V19.3.0, clauses 7.1 to 7.3, L.4, L.5 and L.6, and clauses 9.3, 9.4 and 9.4B by title; TS 26.517 V17.11.0, V18.6.0, V18.7.0 and V19.3.0, clause 6.2; every sentence with shall, should or may, and the lists they introduce. Schema listings and table L.4.8-1 are listed by clause.
+- **3GPP:** TS 26.346 V17.6.0, V18.2.0 and V19.3.0, clauses 7.1 to 7.3, L.4, L.5 and L.6 and annex A (table A.1), and clauses 9.3, 9.4 and 9.4B by title; TS 26.517 V17.11.0, V18.6.0, V18.7.0 and V19.3.0, clause 6.2; every sentence with shall, should or may, or stating that something is mandatory, supported, not used or excluded, and the lists they introduce. Schema listings and table L.4.8-1 are listed by clause.
 - **Not on this page:** rules addressed to the authors of FEC schemes and content delivery protocols (RFC 3452 and RFC 5052, what a scheme specification must define), and the IANA and conventions sections.
 
 </details>
