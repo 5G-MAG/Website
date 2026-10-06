@@ -2,10 +2,12 @@
 title: Implementation Detail
 hide_title: true
 sidebar_position: 2
-description: Specifications and architecture diagrams for delivering DASH, HLS, and CMAF content over FLUTE and ROUTE in 5G Broadcast and 5G MBS.
+description: "What the Content Delivery Protocols Reference Tools implement: rt-libflute against the three FLUTE profiles at Release 19, case by case, and what rt-media-origin packages, delivers and checks."
 ---
 
-import useBaseUrl from '@docusaurus/useBaseUrl';
+import ImplementationCases from '@site/src/components/ImplementationCases';
+import { RepoCards } from '@site/src/components/ProjectRepoSection';
+import AUDIT from '@site/src/data/audit-content-delivery.json';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -20,69 +22,70 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 </div>
 </div>
 
-See also: <a href={useBaseUrl('/reference-tools/content-delivery/tutorials#developer-exchange')}>Developer Exchange</a>.
+:::tip[In short]
 
-**Category:** IETF Implementations
+- **rt-libflute:** a FLUTE sender and receiver for the three profiles: unprofiled FLUTE, MBMS download and MBS Object Distribution. Judged at Release 19 (TS 26.346 V19.3.0, TS 26.517 V19.2.0), case by case.
+- **What works:** the FDT elements each profile requires and none the MBMS Download Profile excludes; Compact No-Code on both sides and Raptor sending; the LCT header and extensions; expiry; gzip decoding; and the WEBRC sender for unprofiled FLUTE.
+- **What differs at Release 19:** the FDT schema version (Release 18 values), the schema version namespace and delimiters of the extended schema, and Cache-Control and File-ETag written and read in the extension namespaces rather than in the profiled schema's own.
+- **What differs in every release:** the Raptor decoder ignores the block structure the sender signals; the WEBRC receiver never leaves a wave channel; a changed object description keeps its TOI; without a named source the receiver checks the TSI only; and the max-stale caching directive is not read.
+- **Source of this page:** a code audit of the repository, each requirement split into the cases its clause defines, then re-checked by a second reader.
 
-## What This Project Implements
+:::
 
-Content delivery protocols carry media files and segments to receivers over broadcast and multicast networks, where there is no per-receiver return channel. 5G-MAG provides reference tools for these application-layer protocols (including FLUTE and ROUTE for file and object delivery) so that content packaged as DASH, HLS or CMAF can be delivered efficiently over both 5G Broadcast and 5G Multicast Broadcast Services (MBS). This page lists the specifications in scope and shows how the tools fit into the broader broadcast and multicast architectures. It is aimed at developers integrating these delivery protocols into a 5G media chain.
+For what the specifications define, see the [Technical Analysis](/tech/content-delivery/features). For how to run the tools, see the [Tutorials](/reference-tools/content-delivery/tutorials).
 
-The content delivery reference tools implement two of these application-layer transports:
+## rt-libflute: FLUTE in three profiles
 
-- **FLUTE** (File Delivery over Unidirectional Transport) - the file-delivery transport, including the File Delivery Table (FDT) handling and FEC-based recovery. 5G-MAG maintains an open-source FLUTE library used in the 5G Broadcast tools.
-- **ROUTE** (Real-Time Transport Object Delivery over Unidirectional Transport) - the real-time object transport, with Source and Repair Flows for low-latency segment delivery.
+Each feature, split into its requirements and each requirement into the cases its clause defines: what works, what does not, and why. The filter selects a profile. Session descriptions, object repair, the MBS operating modes and object manifests belong to the MBMS and MBS Clients and the MBSTF, not to this library.
 
-The tools sit above the media format: they carry DASH/HLS/CMAF segments and manifests as transport objects and are largely agnostic to the codec inside each segment.
+<ImplementationCases data={AUDIT} />
 
-## Deployment Configurations
+:::info[Full audit for members]
 
-### 5G Broadcast with Content Delivery Protocols
+This page summarises a requirement-by-requirement audit of the code. The full audit (each requirement with its clause quoted, the code that meets or misses it, and the findings) is available to 5G-MAG members through Standards2Deployments.
 
-The diagram below shows the content delivery protocol tools used with the LTE-based 5G Broadcast system, with links to the contributing component repositories.
+[Become a member](/membership) · [Request access](/early-access)
 
-<img loading="lazy" src={useBaseUrl('/assets/images/projects/5gbc_diagram.png')} alt="Architecture combining the content delivery protocol tools with the 5G Broadcast system" style={{width: '80%'}}/>
+:::
 
-- [5G Broadcast](../5g-broadcast/)
-- [Content Delivery Protocols](../content-delivery/)
-- [Common Tools](../common-tools/)
+## rt-media-origin: packaging and delivery
 
-### 5G Multicast Broadcast Services (MBS) with Content Delivery Protocols
+A config-driven media origin: it packages each channel with ffmpeg as DASH, HLS or CMAF, and delivers it over HTTP or a push transport.
 
-The diagram below shows the same delivery protocol tools used with 5G Multicast Broadcast Services (MBS), with links to the contributing component repositories.
+| Transport | Document it follows | What the receiving side needs |
+| --- | --- | --- |
+| `http` | HTTP | A DASH or HLS player |
+| `rtsp` | RFC 2326 (RTSP 1.0) | A server that accepts RTSP 1.0 publishing (ANNOUNCE and RECORD), such as MediaMTX; RFC 7826 (RTSP 2.0) removed both |
+| `rtmp` | Adobe RTMP 1.0 with FLV 10.1 | For HEVC, VP9, AV1 or VVC, Enhanced RTMP and a server that supports it |
+| `srt` | draft-sharabayko-srt-01 (expired) | A Stream ID declaring the mode when publishing to a relay |
+| `rist` | VSF TR-06-1:2020 (Simple Profile) | An even media port, RTCP on the next one |
+| `rtp` | RFC 2250 over RFC 3550 | A receiver for MPEG-TS over RTP, payload type 33 |
+| `moq` | draft-lcurley-moq-lite | A moq-lite relay, such as moq-dev's `moq-relay` |
+| `flute` | rt-media-origin API | FLUTE transmission is done by rt-libflute-based tooling; the origin publishes the session metadata |
 
-<img loading="lazy" src={useBaseUrl('/assets/images/projects/mbs_diagram.png')} alt="Architecture combining the content delivery protocol tools with 5G Multicast Broadcast Services (MBS)" style={{width: '80%'}}/>
+It checks the manifests it produces against these named profiles. The checks cover manifest and segment signalling and structure, not codec or bitstream conformance.
 
-- [5G Multicast Broadcast Services](../5g-mbs/)
-- [Content Delivery Protocols](../content-delivery/)
-- [3GPP RAN and Core Platforms](../3gpp-platforms/)
-- [Common Tools](../common-tools/)
-
-## rt-libflute
-
-[rt-libflute](https://github.com/5G-MAG/rt-libflute) implements FLUTE in its three profiles: unprofiled FLUTE, MBMS download and MBS Object Distribution. Its audit case by case against Release 19 is in preparation and will be published here. What each profile requires is on the [Features](/tech/content-delivery/features) page of the Technical Analysis.
+| Profile | Specification |
+| --- | --- |
+| DASH-IF | ISO/IEC 23009-1, isoff-live-2011 |
+| DVB-DASH | ETSI TS 103 285 |
+| 5GMS DASH IOP | TS 26.247 clause 7.3.11 |
+| CMAF | ISO/IEC 23009-1, urn:mpeg:dash:profile:cmaf:2019 |
+| TV 720p HD | TS 26.116 |
+| VR/OMAF Basic | TS 26.118 |
+| DASH-IF Low-Latency | DASH-IF IOP v5 |
+| HLS | RFC 8216 |
 
 ## Coded Multisource Media Format (CMMF)
 
-[rt-cmmf-encoder](https://github.com/5G-MAG/rt-cmmf-encoder) is an early-stage reference
-implementation of ETSI TS 103 973 (Coded Multisource Media Format), packaging content
-for delivery from more than one network source at once. It is not yet feature-complete
-against the published standard — this is one of this project's more open areas, so
-check the repository's own issues and README for current status, and open an issue or
-pull request there if you want to help close the gap.
+[rt-cmmf-encoder](https://github.com/5G-MAG/rt-cmmf-encoder) is an early-stage reference implementation of ETSI TS 103 973, packaging content for delivery from more than one network source at once. It is not yet audited against the published standard.
 
-## Getting Started
+## Components
 
-1. Choose a transport for your delivery model: FLUTE for a file/download model (as in MBMS), ROUTE for a real-time segment model.
-2. Package your content as DASH or HLS using CMAF segments so a single set of segments can serve both.
-3. Feed the segments and manifest through the delivery tool for your target system (5G Broadcast or 5G MBS), following the architectures above.
-4. Build from the [content delivery repositories](/reference-tools/content-delivery#repositories--releases); the [Tutorials](./tutorials) page has a demo video and repository pointers.
+<RepoCards slugs={['rt-libflute', 'rt-media-origin', 'rt-media-android-application', 'rt-cmmf-encoder']} />
 
 ## Related
 
-- [Repositories & Releases](/reference-tools/content-delivery#repositories--releases)
-- [Slide deck: Content Delivery Protocols overview](pathname:///docs/Reference_Tools_Multimedia_delivery_protocols.pdf)
-- Tech: [5G Broadcast: TV, Radio and Emergency Alerts](/tech/5g-broadcast) and [Multicast &amp; Broadcast in 5G](/tech/5g-mbs) &mdash; the delivery systems these transports run over
-:::note
-Refer to the [content delivery repositories](https://github.com/5G-MAG) on GitHub to use or contribute to these Reference Tools. See [How to Contribute](/contributing) for the process.
-:::
+- [Technical Analysis: Content Delivery Protocols](/tech/content-delivery/overview)
+- [Standards: Content Delivery Protocols](/standards/content-delivery)
+- [Tutorials](/reference-tools/content-delivery/tutorials)
