@@ -406,7 +406,8 @@
       "tagline": "6G testbed and AI-driven traffic characterization",
       "basket": "towards-6g",
       "repos": [
-        "6G-Testbed"
+        "6G-Testbed",
+        "netemu-dashboard"
       ],
       "releases_slug": "resources",
       "contributors": [
@@ -1537,6 +1538,22 @@
         ],
         "public": true,
         "is_auxiliary": false
+      },
+      {
+        "repo_slug": "netemu-dashboard",
+        "display_name": "Network Emulator Dashboard",
+        "description": "A web dashboard and REST API for applying, creating and scheduling network impairment profiles (delay, jitter, loss, bandwidth caps) with the 6G-Testbed's netemu.",
+        "repo_url": "https://github.com/5G-MAG/netemu-dashboard",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [],
+        "dependencies": [],
+        "software": [
+          "Linux",
+          "Web"
+        ],
+        "public": true,
+        "is_auxiliary": true
       }
     ],
     "ai-ml": [
