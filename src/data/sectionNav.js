@@ -1,4 +1,4 @@
-import { BASKETS, TOPIC_BASKETS, BASKET_PAGE, BASKET_ACCENT, PROJECTS, techLabelOf } from './baskets';
+import { BASKETS, TOPIC_BASKETS, BASKET_PAGE, BASKET_ACCENT, PROJECTS, techLabelOf, isTestbed, displayNameOf } from './baskets';
 import { ALL_TOPICS } from '../../techTopics.js';
 
 // Canonical per-section nav items, keyed by the route prefix(es) they
@@ -67,14 +67,15 @@ export const TECHNOLOGY_GROUPS = TOPIC_BASKETS.map((b) => {
   };
 }).filter((g) => g.items.length).concat(
   // Testbeds is not an area, but the menu lists it last as one: its title opens /testbeds, and each
-  // testbed opens its Technical Analysis page, or its testbed page when it has none.
+  // entry opens a testbed's page, for every project with pages under /testbeds/ whatever its area
+  // (the 6G AI Traffic Characterization Testbed is in Towards 6G Media).
   BASKETS.filter((b) => b.key === 'testbeds').map((b) => ({
     title: b.title,
     href: '/testbeds',
     icon: b.icon,
     accent: BASKET_ACCENT[b.key],
-    items: PROJECTS.filter((p) => p.basket === b.key && (p.tech_url || p.doc_url))
-      .map((p) => ({ label: techLabelOf(p), href: p.tech_url || p.doc_url.replace(/\/$/, ''), icon: p.icon })),
+    items: PROJECTS.filter(isTestbed)
+      .map((p) => ({ label: displayNameOf(p), href: p.doc_url.replace(/\/$/, ''), icon: p.icon })),
   })).filter((g) => g.items.length)
 );
 
