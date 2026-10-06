@@ -163,23 +163,29 @@ function Paths({ topic }) {
   );
 }
 
-function Pipeline({ items, label, head }) {
+// One item's place in the Reference Tools, as a coloured pill.
+const PILL = { no: styles.pillNo, partial: styles.pillPartial, early: styles.pillPartial, unknown: styles.pillUnknown, yes: styles.pillYes };
+
+// What cannot be built yet under one topic: a card per item, saying what it would need.
+function NotYetGroup({ topic }) {
   return (
-    <div className={styles.pipe}>
-      <span className={styles.smallLabel}>{label}</span>
-      <ul className={styles.plist}>
-        {head && (
-          <li className={styles.phead} aria-hidden="true">
-            <span>What you could build</span>
-            <span>Needs</span>
-            <span>In the Reference Tools</span>
-          </li>
-        )}
-        {items.map((p) => (
-          <li key={p.title}>
-            <span className={styles.pname}>{p.title}</span>
-            {p.needs ? <span className={styles.muted}>{p.needs}</span> : <span className={styles.tbd}>Feature to be identified</span>}
-            <span className={styles.pstatus}>{p.needs ? FEATURE_STATUS[p.status] : ''}</span>
+    <div className={styles.notYetGroup}>
+      <h3 className={styles.notYetTopic}>
+        <span className={styles.notYetTopicIcon}><Icon id={topic.id} iconKey={topic.icon} size={20} /></span>
+        {topic.title}
+      </h3>
+      <ul className={styles.notYetGrid}>
+        {topic.pipeline.map((p) => (
+          <li key={p.title} className={styles.notYetCard}>
+            <span className={styles.notYetTitle}>{p.title}</span>
+            <span className={styles.notYetNeeds}>
+              <b>Needs:</b> {p.needs || <em>a feature still to be identified</em>}
+            </span>
+            {p.needs && (
+              <span className={`${styles.notYetPill} ${PILL[p.status] || styles.pillUnknown}`}>
+                In the Reference Tools: {FEATURE_STATUS[p.status]}
+              </span>
+            )}
           </li>
         ))}
       </ul>
@@ -315,11 +321,12 @@ export default function AreaPage({ basketKey }) {
                 </span>
                 <Heading as="h2" id="not-yet-possible" className={styles.topicTitle}>Not yet possible</Heading>
               </div>
-              <p className={styles.muted}>
-                These need features that the Reference Tools do not implement yet, or that are still being specified.
+              <p className={styles.notYetLead}>
+                What could be built next in this area. Each needs a feature that the Reference Tools do not
+                implement yet, or that is still being specified.
               </p>
-              {topics.filter((t) => t.pipeline.length > 0).map((t, i) => (
-                <Pipeline key={t.id} items={t.pipeline} label={t.title} head={i === 0} />
+              {topics.filter((t) => t.pipeline.length > 0).map((t) => (
+                <NotYetGroup key={t.id} topic={t} />
               ))}
               <div className={boxStyles.inviteBlock}>
                 <h3 className={boxStyles.inviteTitle}>Want to make one of these possible?</h3>
