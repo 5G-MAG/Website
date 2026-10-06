@@ -467,6 +467,75 @@ This next screenshot shows the FLUTE packet for **TOI 1**, the ingested media ob
 
 ![Wireshark capture showing the file packet (TOI 1) for the first object from the PULL SINGLE Distribution Session](/assets/images/5mbs/wireshark-object1-file.png)
 
+### Step 5a: (Optional) Protecting the objects with AL-FEC
+
+A Distribution Session can ask the MBSTF to protect its objects with Application Layer FEC (AL-FEC) through
+`fecInformation`. The MBSTF accepts the two schemes the MBMS Download Profile admits: Compact No-Code
+(`urn:ietf:rmt:fec:encoding:0`), which sends no repair symbols, and Raptor (`urn:ietf:rmt:fec:encoding:1`), which adds
+`fecOverHead` percent of repair symbols to each source block. Any other scheme, RaptorQ included, is refused: the
+session is created but nothing is sent.
+
+With the same processes running as in Step 5, copy the following into a file called `DistSession-PULL-FEC-request.json`.
+It pulls `fec-object`, a 16384-byte object from the _Express_ server, large enough to span several FLUTE packets:
+
+```json
+{
+  "distSession": {
+    "distSessionId": "5a1f0e2c-7b3d-4f61-9c2e-1d4b8a6f3e01",
+    "distSessionState": "ACTIVE",
+    "mbUpfTunAddr": {
+      "ipv4Addr": "127.0.0.7",
+      "portNumber": 5678
+    },
+    "upTrafficFlowInfo": {
+      "transportSessionId": 1234,
+      "srcIpAddr": {
+        "ipv4Addr": "127.0.0.7"
+      },
+      "destIpAddr": {
+        "ipv4Addr": "232.0.0.1"
+      },
+      "portNumber": 5000
+    },
+    "mbr": "10 Mbps",
+    "fecInformation": {
+      "fecScheme": "urn:ietf:rmt:fec:encoding:1",
+      "fecOverHead": 25
+    },
+    "objDistributionData": {
+      "objDistributionOperatingMode": "SINGLE",
+      "objAcquisitionMethod": "PULL",
+      "objAcquisitionIdsPull": ["fec-object"],
+      "objIngestBaseUrl": "http://127.0.0.1:3004/",
+      "objDistributionBaseUrl": "http://127.0.0.2/"
+    }
+  }
+}
+```
+
+Make the same tunnel address changes as in Step 5 if you are using a running MB-SMF/MB-UPF, then send it to the MBSTF:
+
+```bash
+curl --http2-prior-knowledge -H 'Content-Type: application/json' --data-binary @DistSession-PULL-FEC-request.json http://127.0.0.62:7777/nmbstf-distsession/v1/dist-sessions
+```
+
+The same request is in the Insomnia collection as _DistSession-PULL-FEC-Raptor-request_, next to
+_DistSession-PULL-FEC-CompactNoCode-request_ and _DistSession-PULL-FEC-RaptorQ-refused-request_.
+
+In _Wireshark_, compare this session with Step 5:
+
+1. The FDT Instance (TOI 0) declares `FEC-OTI-FEC-Encoding-ID="1"` (Raptor) instead of `"0"`, together with
+   `FEC-OTI-Encoding-Symbol-Length` and `FEC-OTI-Scheme-Specific-Info`.
+2. The object (TOI 1) is sent as 15 packets instead of 12: the 12 source symbols that carry the 16384 bytes, and 3 repair
+   symbols (25% of 12), with encoding symbol IDs 0 to 14.
+
+A receiver that misses some of those packets rebuilds the object from the ones it has whenever they are enough to solve
+for it; how many losses that covers depends on which packets are lost, not only on how many. For this object, 13 of the
+15 possible single losses and 68 of the 105 possible pairs are recoverable. Raise `fecOverHead` for more protection.
+
+With `urn:ietf:rmt:fec:encoding:0` instead, the FDT declares `FEC-OTI-FEC-Encoding-ID="0"` and the object goes out as its
+12 source packets only.
+
 ---
 
 ## Step 6: Testing a SINGLE shot MBS Distribution Session for PUSH operation
