@@ -33,13 +33,23 @@ export const SUMMARY = {
     'Congestion control and channels': 'One channel at one rate.',
   },
 };
+export const REPOS = {
+  // the library, and the components that send and receive with it under each profile
+  U: ['rt-libflute'], V2: ['rt-libflute'],
+  M: ['rt-libflute', 'rt-mbms-bmsc', 'rt-mbms-client'],
+  B: ['rt-libflute', 'rt-mbs-transport-function', 'rt-mbs-client'],
+};
 export const part = (keys, profile) => {
+  const repos = REPOS[profile || 'U'];
   const features = AUDIT.features
     .map((f) => ({ ...f, summary: profile ? ((SUMMARY[profile] || {})[f.name] || '') : f.summary,
-                   requirements: f.requirements.filter((r) => keys.includes(r.release)) }))
+                   requirements: f.requirements.filter((r) => keys.includes(r.release))
+                     .map((r) => ({ ...r, repos: (r.repos || []).filter((x) => repos.includes(x)) })) }))
     .filter((f) => f.requirements.length);
   const pick = (o) => Object.fromEntries(Object.entries(o).filter(([k]) => keys.includes(k)));
-  return { ...AUDIT, features, releases: pick(AUDIT.releases), releaseNames: pick(AUDIT.releaseNames || {}) };
+  const components = Object.fromEntries(Object.entries(AUDIT.components).map(([k, c]) =>
+    [k, { ...c, repos: c.repos.filter((x) => repos.includes(x.repo)) }]));
+  return { ...AUDIT, features, components, releases: pick(AUDIT.releases), releaseNames: pick(AUDIT.releaseNames || {}) };
 };
 export const UNPROFILED = part(['U']);
 export const V2 = part(['V2'], 'V2');

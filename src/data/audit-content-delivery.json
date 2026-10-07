@@ -97,22 +97,38 @@
  "components": {
   "tx": {
    "short": "Sender",
-   "name": "FLUTE sender (Transmitter and FDT writer)",
+   "name": "FLUTE sender (Transmitter and FDT writer), and the senders built on it",
    "builtAgainst": "RFC 3926, RFC 3450 and RFC 3451; RFC 6726 for version 2; TS 26.346 and TS 26.517 at Release 18",
    "repos": [
     {
      "repo": "rt-libflute",
+     "version": ""
+    },
+    {
+     "repo": "rt-mbs-transport-function",
+     "version": ""
+    },
+    {
+     "repo": "rt-mbms-bmsc",
      "version": ""
     }
    ]
   },
   "rx": {
    "short": "Receiver",
-   "name": "FLUTE receiver (Receiver, FDT parser and file reassembly)",
+   "name": "FLUTE receiver (Receiver, FDT parser and file reassembly), and the clients built on it",
    "builtAgainst": "the same",
    "repos": [
     {
      "repo": "rt-libflute",
+     "version": ""
+    },
+    {
+     "repo": "rt-mbs-client",
+     "version": ""
+    },
+    {
+     "repo": "rt-mbms-client",
      "version": ""
     }
    ]
@@ -674,7 +690,8 @@
       "locator": "clause 7.2.7"
      },
      "repos": [
-      "rt-libflute"
+      "rt-libflute",
+      "rt-mbms-bmsc"
      ],
      "cases": [
       {
@@ -749,7 +766,8 @@
       "locator": "clause 7.2.8"
      },
      "repos": [
-      "rt-libflute"
+      "rt-libflute",
+      "rt-mbms-bmsc"
      ],
      "cases": [
       {
@@ -787,7 +805,9 @@
       "locator": "clause L.4.7"
      },
      "repos": [
-      "rt-libflute"
+      "rt-libflute",
+      "rt-mbms-bmsc",
+      "rt-mbs-transport-function"
      ],
      "cases": [
       {
@@ -824,7 +844,9 @@
       "locator": "clause L.4.7"
      },
      "repos": [
-      "rt-libflute"
+      "rt-libflute",
+      "rt-mbms-client",
+      "rt-mbs-client"
      ],
      "cases": [
       {
@@ -1285,7 +1307,8 @@
       "locator": "clause 7.2.9"
      },
      "repos": [
-      "rt-libflute"
+      "rt-libflute",
+      "rt-mbms-bmsc"
      ],
      "cases": [
       {
@@ -1351,7 +1374,8 @@
       "locator": "clause 7.2.10.1"
      },
      "repos": [
-      "rt-libflute"
+      "rt-libflute",
+      "rt-mbms-bmsc"
      ],
      "cases": [
       {
@@ -1389,7 +1413,8 @@
       "locator": "clause 7.2.9"
      },
      "repos": [
-      "rt-libflute"
+      "rt-libflute",
+      "rt-mbms-client"
      ],
      "cases": [
       {
@@ -1428,7 +1453,9 @@
       "locator": "clause L.4.2"
      },
      "repos": [
-      "rt-libflute"
+      "rt-libflute",
+      "rt-mbms-bmsc",
+      "rt-mbs-transport-function"
      ],
      "cases": [
       {
@@ -1486,7 +1513,9 @@
       "locator": "clause L.4.4"
      },
      "repos": [
-      "rt-libflute"
+      "rt-libflute",
+      "rt-mbms-client",
+      "rt-mbs-client"
      ],
      "cases": [
       {
@@ -1561,7 +1590,8 @@
       "locator": "annex A (table A.1)"
      },
      "repos": [
-      "rt-libflute"
+      "rt-libflute",
+      "rt-mbms-client"
      ],
      "cases": [
       {
@@ -1596,7 +1626,8 @@
       "locator": "clause 6.2.1"
      },
      "repos": [
-      "rt-libflute"
+      "rt-libflute",
+      "rt-mbs-transport-function"
      ],
      "cases": [
       {
@@ -1661,7 +1692,8 @@
       "locator": "clause L.6.3"
      },
      "repos": [
-      "rt-libflute"
+      "rt-libflute",
+      "rt-mbs-client"
      ],
      "cases": [
       {
@@ -2075,7 +2107,8 @@
       "locator": "clause 7.2.7"
      },
      "repos": [
-      "rt-libflute"
+      "rt-libflute",
+      "rt-mbms-bmsc"
      ],
      "cases": [
       {
@@ -2105,7 +2138,8 @@
       "locator": "clause 7.2.2"
      },
      "repos": [
-      "rt-libflute"
+      "rt-libflute",
+      "rt-mbms-client"
      ],
      "cases": [
       {
@@ -2142,7 +2176,8 @@
       "locator": "clause 7.2.3"
      },
      "repos": [
-      "rt-libflute"
+      "rt-libflute",
+      "rt-mbms-bmsc"
      ],
      "cases": [
       {
@@ -2179,7 +2214,9 @@
       "locator": "clause L.4.7"
      },
      "repos": [
-      "rt-libflute"
+      "rt-libflute",
+      "rt-mbms-client",
+      "rt-mbs-client"
      ],
      "cases": [
       {
@@ -2221,7 +2258,8 @@
       "locator": "annex A (table A.1)"
      },
      "repos": [
-      "rt-libflute"
+      "rt-libflute",
+      "rt-mbms-client"
      ],
      "cases": [
       {
@@ -2448,7 +2486,8 @@
       "locator": "clause 7.2.4"
      },
      "repos": [
-      "rt-libflute"
+      "rt-libflute",
+      "rt-mbms-bmsc"
      ],
      "cases": [
       {
@@ -2477,7 +2516,9 @@
       "locator": "clause L.4.7"
      },
      "repos": [
-      "rt-libflute"
+      "rt-libflute",
+      "rt-mbms-bmsc",
+      "rt-mbs-transport-function"
      ],
      "cases": [
       {
@@ -2559,7 +2600,8 @@
       "locator": "clause 7.2.5"
      },
      "repos": [
-      "rt-libflute"
+      "rt-libflute",
+      "rt-mbms-client"
      ],
      "cases": [
       {
@@ -2591,7 +2633,8 @@
       "locator": "annex A (table A.1)"
      },
      "repos": [
-      "rt-libflute"
+      "rt-libflute",
+      "rt-mbms-bmsc"
      ],
      "cases": [
       {
