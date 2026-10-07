@@ -404,7 +404,7 @@
       "standards_url": "/standards/6g",
       "image": "/assets/images/projects/6g-testbed.png",
       "tagline": "6G testbed and AI-driven traffic characterization",
-      "basket": "towards-6g",
+      "basket": "testbeds",
       "repos": [
         "6G-Testbed",
         "netemu-dashboard"
@@ -424,6 +424,9 @@
       "icon": "code-ai",
       "sdos": [
         "3GPP"
+      ],
+      "relatedBaskets": [
+        "towards-6g"
       ]
     },
     {

@@ -14,7 +14,7 @@ import styles from '../index.module.css';
 const AI_TRAFFIC_PROJECT = ALL_PROJECTS.find((p) => p.tech_url === '/tech/6g');
 
 // The area's title, not the project's: this page is the 6G media study as a whole, and AI Traffic
-// Characterization (basket towards-6g) is the part of it 5G-MAG works on.
+// Characterization (a testbed project, linked from Towards 6G Media) is the part of it 5G-MAG works on.
 const BASKET_TITLE = BASKETS.find((b) => b.key === 'towards-6g').title;
 
 // A per-project "flagship" page, following the 5gms pilot (src/pages/tech/5gms/index.js). Copy restates
