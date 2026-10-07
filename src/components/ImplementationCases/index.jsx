@@ -185,7 +185,7 @@ export default function ImplementationCases({ data, only }) {
             {c.builtAgainst ? `. Built against: ${c.builtAgainst}.` : '.'}
           </li>
         ))}
-        <li><b>Source:</b> {data.method}, {data.audited} (tier {data.tier}).</li>
+        <li><b>Source:</b> {data.method}, {data.audited}.</li>
       </ul>
 
       <div className={styles.filters}>
