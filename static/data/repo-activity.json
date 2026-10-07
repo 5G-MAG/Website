@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-06 03:25 UTC",
+  "updated_at": "2026-10-07 02:49 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -171,6 +171,16 @@
             }
           ],
           "issues": [
+            {
+              "number": 204,
+              "title": "Add DCAF handler for Consumption Reporting",
+              "url": "https://github.com/5G-MAG/rt-5gms-application-function/issues/204",
+              "author": "ErikGaida",
+              "created_at": "2026-10-06",
+              "labels": [
+                "feature"
+              ]
+            },
             {
               "number": 176,
               "title": "Advanced Media Delivery (AMD) - In-band reporting of CMCD information - CMCD configuration on 5GMSd AS",
@@ -4009,7 +4019,7 @@
           "description": "MBS Transport Function (MBSTF)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-02",
+          "pushed_at": "2026-10-06",
           "pulls": [
             {
               "number": 76,
@@ -4113,7 +4123,7 @@
             {
               "name": "feature/mbs-compliance-fixes",
               "default": false,
-              "last_commit": "2026-10-02"
+              "last_commit": "2026-10-06"
             },
             {
               "name": "fix/apply-new-format",
@@ -4158,7 +4168,7 @@
           "description": "MBS Tools and Examples",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-10-02",
+          "pushed_at": "2026-10-06",
           "pulls": [
             {
               "number": 36,
@@ -4198,7 +4208,7 @@
             {
               "name": "feature/mbs-compliance-fixes",
               "default": false,
-              "last_commit": "2026-10-01"
+              "last_commit": "2026-10-06"
             },
             {
               "name": "fix/apply-new-format",
@@ -4730,16 +4740,7 @@
               "base": "development"
             }
           ],
-          "issues": [
-            {
-              "number": 9,
-              "title": "Request for adding physical AI use case",
-              "url": "https://github.com/5G-MAG/6G-Testbed/issues/9",
-              "author": "lkundu-nvd",
-              "created_at": "2026-07-13",
-              "labels": []
-            }
-          ],
+          "issues": [],
           "branches": [
             {
               "name": "main",
@@ -4767,6 +4768,23 @@
               "last_commit": "2026-09-04"
             }
           ]
+        },
+        {
+          "repo": "netemu-dashboard",
+          "url": "https://github.com/5G-MAG/netemu-dashboard",
+          "description": "Network Emulator Dashboard: web UI and REST API for network impairment profiles with the 6G-Testbed netemu",
+          "auxiliary": true,
+          "private": false,
+          "pushed_at": "2026-10-06",
+          "pulls": [],
+          "issues": [],
+          "branches": [
+            {
+              "name": "main",
+              "default": true,
+              "last_commit": "2026-10-06"
+            }
+          ]
         }
       ]
     },
@@ -4780,7 +4798,7 @@
           "description": "CAMARA API Tools and Examples",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-05",
+          "pushed_at": "2026-10-06",
           "pulls": [
             {
               "number": 10,
@@ -4789,15 +4807,6 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-05",
-              "base": "development"
-            },
-            {
-              "number": 8,
-              "title": "feat(dedicated-networks): GeoJSON area links, link-display rule, tests and docs",
-              "url": "https://github.com/5G-MAG/rt-camara-examples/pull/8",
-              "draft": false,
-              "author": "aaronmontilla",
-              "created_at": "2026-10-02",
               "base": "development"
             }
           ],
@@ -4811,12 +4820,12 @@
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-05"
+              "last_commit": "2026-10-06"
             },
             {
               "name": "docs/api-versions-and-readmes",
               "default": false,
-              "last_commit": "2026-10-05"
+              "last_commit": "2026-10-06"
             },
             {
               "name": "feat/portal-callbacks",
@@ -4990,7 +4999,7 @@
           "description": "Native Android DVB-I client following ETSI TS 103 770, with Media3 ExoPlayer",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-05",
+          "pushed_at": "2026-10-06",
           "pulls": [],
           "issues": [],
           "branches": [
@@ -5002,7 +5011,7 @@
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-05"
+              "last_commit": "2026-10-06"
             }
           ]
         },
