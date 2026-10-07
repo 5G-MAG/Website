@@ -175,6 +175,9 @@ covered are Create, Update, Retrieve and Delete. For that purpose, the `curl` co
 HTTP requests to the API. However, if you prefer a graphical user interface to trigger the calls, an
 Insomnia collection is also offered. You can find the collection [here](https://github.com/5G-MAG/rt-mbs-examples/tree/main/insomnia).
 
+The example responses below were captured from the MBS broadcast demo in `rt-mbs-examples`, where the MBSF listens on
+127.0.0.67 and also serves User Service Announcements; with the configuration above the address is 127.0.0.68.
+
 ### Create MBS User Service
 
 This operation sends an _MBSUserService_ ([TS 29.580](https://www.3gpp.org/dynareport/29580.htm) Clause 6.1.6.2.2), to create a new MBS User Service, to the API with a `.../nmbsf-mbs-us/v1/mbs-user-services` path suffix. If the Create operation is successful then a _201 Created_ response will be sent with the new MBS User Service resource location in the `Location` HTTP header.
@@ -184,7 +187,7 @@ Create a `mbs-user-service.json` file with the following contents:
 ```json
 {
   "extServiceIds": ["https://example.broadcaster.com/services/first-service"],
-  "servType": "MULTICAST",
+  "servType": "BROADCAST",
   "servClass": "urn:oma:bcast:oma_bsc:st:1.0",
   "servAnnModes": ["VIA_MBS_5", "VIA_MBS_DISTRIBUTION_SESSION", "PASSED_BACK"],
   "servNameDescs": [
@@ -230,19 +233,19 @@ If the MBSF is working correctly the response will look like:
 
 ```
 < HTTP/2 201
-< server: Open5GS v2.6.4-563-g4342250
-< date: Wed, 17 Dec 2025 16:10:01 GMT
+< server: Open5GS v2.6.4-605-g16c5a86+
+< date: Wed, 07 Oct 2026 09:47:43 GMT
 < content-length: 445
-< etag: b2adb87203ec4e63b16fbd2f7e4b7dd8581870ab604af93f873e78994cc6a360
-< last-modified: Wed, 17 Dec 2025 16:10:01 UTC
-< cache-control: max-age=60
-< server: MBSF-localhost/18 (info.title=nmbsf-mbs-us; info.version=1.1.0) rt-mbs-function/0.1.0
-< location: /nmbsf-mbs-us/v1/mbs-user-services/d72a4394-db62-41f0-8e26-9174558de382
+< location: http://127.0.0.67:7777/nmbsf-mbs-us/v1/mbs-user-services/249b83be-c234-41f1-b5c1-8d5021cb2248
 < content-type: application/json
+< etag: "696b5a720ba887d73d2bb14f01668c28176f9a122708a726e327fe9c4396a43e"
+< last-modified: Wed, 07 Oct 2026 09:47:43 UTC
+< cache-control: max-age=60
+< server: MBSF-localhost/18 (info.title=nmbsf-mbs-us; info.version=1.1.0) rt-mbs-function/1.1.1
 <
 {
 	"extServiceIds":	["https://example.broadcaster.com/services/first-service"],
-	"servType":	"MULTICAST",
+	"servType":	"BROADCAST",
 	"servClass":	"urn:oma:bcast:oma_bsc:st:1.0",
 	"servAnnModes":	["VIA_MBS_5", "VIA_MBS_DISTRIBUTION_SESSION", "PASSED_BACK"],
 	"servNameDescs":	[{
@@ -257,7 +260,7 @@ If the MBSF is working correctly the response will look like:
 Make a note of the MBS User Service Id, which is found in the `location:` header. To make it easier for later commands, store the Id in a shell variable. So for the example response above this would be:
 
 ```bash
-mbs_user_service_id=d72a4394-db62-41f0-8e26-9174558de382
+mbs_user_service_id=249b83be-c234-41f1-b5c1-8d5021cb2248
 ```
 
 ### Updating an MBS User Service
@@ -276,19 +279,19 @@ The response will look like:
 
 ```
 < HTTP/2 200
-< server: Open5GS v2.6.4-563-g4342250
-< date: Wed, 17 Dec 2025 16:43:59 GMT
+< server: Open5GS v2.6.4-605-g16c5a86+
+< date: Wed, 07 Oct 2026 09:47:43 GMT
 < content-length: 390
-< server: MBSF-localhost/18 (info.title=nmbsf-mbs-us; info.version=1.1.0) rt-mbs-function/0.1.0
-< location: /nmbsf-mbs-us/v1/mbs-user-services/d72a4394-db62-41f0-8e26-9174558de382
+< location: /nmbsf-mbs-us/v1/mbs-user-services/249b83be-c234-41f1-b5c1-8d5021cb2248
 < content-type: application/json
-< etag: b2adb87203ec4e63b16fbd2f7e4b7dd8581870ab604af93f873e78994cc6a360
-< last-modified: Wed, 17 Dec 2025 16:10:01 UTC
+< etag: "696b5a720ba887d73d2bb14f01668c28176f9a122708a726e327fe9c4396a43e"
+< last-modified: Wed, 07 Oct 2026 09:47:43 UTC
 < cache-control: max-age=60
+< server: MBSF-localhost/18 (info.title=nmbsf-mbs-us; info.version=1.1.0) rt-mbs-function/1.1.1
 <
 {
 	"extServiceIds":	["https://example.broadcaster.com/services/first-service"],
-	"servType":	"MULTICAST",
+	"servType":	"BROADCAST",
 	"servClass":	"urn:oma:bcast:oma_bsc:st:1.0",
 	"servAnnModes":	["VIA_MBS_5", "VIA_MBS_DISTRIBUTION_SESSION", "PASSED_BACK"],
 	"servNameDescs":	[{
@@ -314,19 +317,19 @@ The response will look like:
 
 ```
 < HTTP/2 200
-< server: Open5GS v2.6.4-563-g4342250
-< date: Wed, 17 Dec 2025 16:48:37 GMT
+< server: Open5GS v2.6.4-605-g16c5a86+
+< date: Wed, 07 Oct 2026 09:47:43 GMT
 < content-length: 390
-< etag: b2adb87203ec4e63b16fbd2f7e4b7dd8581870ab604af93f873e78994cc6a360
-< last-modified: Wed, 17 Dec 2025 16:10:01 UTC
+< etag: "696b5a720ba887d73d2bb14f01668c28176f9a122708a726e327fe9c4396a43e"
+< last-modified: Wed, 07 Oct 2026 09:47:43 UTC
 < cache-control: max-age=60
-< server: MBSF-localhost/18 (info.title=nmbsf-mbs-us; info.version=1.1.0) rt-mbs-function/0.1.0
-< location: /nmbsf-mbs-us/v1/mbs-user-services/d72a4394-db62-41f0-8e26-9174558de382
+< server: MBSF-localhost/18 (info.title=nmbsf-mbs-us; info.version=1.1.0) rt-mbs-function/1.1.1
+< location: /nmbsf-mbs-us/v1/mbs-user-services/249b83be-c234-41f1-b5c1-8d5021cb2248
 < content-type: application/json
 <
 {
 	"extServiceIds":	["https://example.broadcaster.com/services/first-service"],
-	"servType":	"MULTICAST",
+	"servType":	"BROADCAST",
 	"servClass":	"urn:oma:bcast:oma_bsc:st:1.0",
 	"servAnnModes":	["VIA_MBS_5", "VIA_MBS_DISTRIBUTION_SESSION", "PASSED_BACK"],
 	"servNameDescs":	[{
@@ -352,9 +355,9 @@ Upon successful deletion of the MBS User Service, the response will be a _204 No
 
 ```
 < HTTP/2 204
-< server: Open5GS v2.6.4-563-g4342250
-< date: Wed, 17 Dec 2025 16:53:15 GMT
-< server: MBSF-localhost/18 (info.title=nmbsf-mbs-us; info.version=1.1.0) rt-mbs-function/0.1.0
+< server: Open5GS v2.6.4-605-g16c5a86+
+< date: Wed, 07 Oct 2026 09:47:51 GMT
+< server: MBSF-localhost/18 (info.title=nmbsf-mbs-us; info.version=1.1.0) rt-mbs-function/1.1.1
 <
 ```
 
@@ -388,36 +391,28 @@ The resulting response should be a _201 Created_ HTTP status code with the body 
 
 ```
 < HTTP/2 201
-< server: Open5GS v2.6.4-563-g4342250
-< date: Thu, 18 Dec 2025 15:10:20 GMT
-< content-length: 779
-< etag: 57cfa61265f7b63f996499206b58bfa7b968acad27aa9435505aef5d1618ae69
-< last-modified: Thu, 18 Dec 2025 15:10:20 UTC
+< server: Open5GS v2.6.4-605-g16c5a86+
+< date: Wed, 07 Oct 2026 09:47:43 GMT
+< content-length: 678
+< etag: "f053535eed226777178c6cc8af186d8af860139507b09beb3847f5d33cfc3414"
+< last-modified: Wed, 07 Oct 2026 09:47:43 UTC
 < cache-control: max-age=60
-< server: MBSF-localhost/18 (info.title=nmbsf-mbs-ud-ingest; info.version=1.1.2) rt-mbs-function/0.1.0
-< location: /nmbsf-mbs-ud-ingest/v1/sessions/ab8ca684-dc23-41f0-8261-a322be7890ea
+< server: MBSF-localhost/18 (info.title=nmbsf-mbs-ud-ingest; info.version=1.1.2) rt-mbs-function/1.1.1
+< location: http://127.0.0.67:7777/nmbsf-mbs-ud-ingest/v1/sessions/24b9b988-c234-41f1-b5c1-8d5021cb2248
 < content-type: application/json
 <
 {
-	"mbsUserServId":	"d72a4394-db62-41f0-8e26-9174558de382",
+	"mbsUserServId":	"249b83be-c234-41f1-b5c1-8d5021cb2248",
 	"mbsDisSessInfos":	{
 		"AP_MBS_SESSION_1":	{
-			"mbsDistSessionId":	"99ba10f3-a37b-4d0c-bea5-023af9da4acb",
+			"mbsDistSessionId":	"0450b3dc-a45a-4b07-b7b4-265e9d1430af",
 			"mbsDistSessState":	"INACTIVE",
 			"mbsSessionId":	{
 				"tmgi":	{
-					"mbsServiceId":	"7CF398",
+					"mbsServiceId":	"E36EC6",
 					"plmnId":	{
-						"mcc":	"000",
-						"mnc":	"000"
-					}
-				},
-				"ssm":	{
-					"sourceIpAddr":	{
-						"ipv4Addr":	"127.0.0.5"
-					},
-					"destIpAddr":	{
-						"ipv4Addr":	"232.10.0.5"
+						"mcc":	"001",
+						"mnc":	"01"
 					}
 				}
 			},
@@ -427,7 +422,8 @@ The resulting response should be a _201 Created_ HTTP status code with the body 
 				"operatingMode":	"STREAMING",
 				"objAcqMethod":	"PULL",
 				"objAcqIds":	["stream.mpd"],
-				"objIngUri":	"https://livesim2.dashif.org/livesim2/WAVE/vectors/cfhd_sets/12.5_25_50/t1/2022-10-17/"
+				"objIngUri":	"https://livesim2.dashif.org/livesim2/WAVE/vectors/cfhd_sets/12.5_25_50/t1/2022-10-17/",
+				"objDistrUri":	"http://127.0.0.2/"
 			}
 		}
 	}
@@ -437,7 +433,7 @@ The resulting response should be a _201 Created_ HTTP status code with the body 
 The `location:` HTTP header in the response contains the MBS User Data Ingest Session Id; capture this in a shell variable for later use, e.g. from the example response above:
 
 ```bash
-mbs_user_data_ing_session_id=ab8ca684-dc23-41f0-8261-a322be7890ea
+mbs_user_data_ing_session_id=24b9b988-c234-41f1-b5c1-8d5021cb2248
 ```
 
 ### Update an MBS User Data Ingest Session
@@ -456,36 +452,28 @@ If successful, the response will be a _200 OK_ response with the new _MBSUserDat
 
 ```
 < HTTP/2 200
-< server: Open5GS v2.6.4-563-g4342250
-< date: Thu, 18 Dec 2025 15:37:35 GMT
-< content-length: 777
-< last-modified: Thu, 18 Dec 2025 15:10:20 UTC
-< cache-control: max-age=60
-< server: MBSF-localhost/18 (info.title=nmbsf-mbs-ud-ingest; info.version=1.1.2) rt-mbs-function/0.1.0
-< location: /nmbsf-mbs-ud-ingest/v1/sessions/ab8ca684-dc23-41f0-8261-a322be7890ea
+< server: Open5GS v2.6.4-605-g16c5a86+
+< date: Wed, 07 Oct 2026 09:47:46 GMT
+< content-length: 1402
+< server: MBSF-localhost/18 (info.title=nmbsf-mbs-ud-ingest; info.version=1.1.2) rt-mbs-function/1.1.1
+< location: /nmbsf-mbs-ud-ingest/v1/sessions/24b9b988-c234-41f1-b5c1-8d5021cb2248
 < content-type: application/json
-< etag: 57cfa61265f7b63f996499206b58bfa7b968acad27aa9435505aef5d1618ae69
+< etag: "f053535eed226777178c6cc8af186d8af860139507b09beb3847f5d33cfc3414"
+< last-modified: Wed, 07 Oct 2026 09:47:43 UTC
+< cache-control: max-age=60
 <
 {
-	"mbsUserServId":	"d72a4394-db62-41f0-8e26-9174558de382",
+	"mbsUserServId":	"249b83be-c234-41f1-b5c1-8d5021cb2248",
 	"mbsDisSessInfos":	{
 		"AP_MBS_SESSION_1":	{
-			"mbsDistSessionId":	"99ba10f3-a37b-4d0c-bea5-023af9da4acb",
+			"mbsDistSessionId":	"0450b3dc-a45a-4b07-b7b4-265e9d1430af",
 			"mbsDistSessState":	"ACTIVE",
 			"mbsSessionId":	{
 				"tmgi":	{
-					"mbsServiceId":	"7CF398",
+					"mbsServiceId":	"E36EC6",
 					"plmnId":	{
-						"mcc":	"000",
-						"mnc":	"000"
-					}
-				},
-				"ssm":	{
-					"sourceIpAddr":	{
-						"ipv4Addr":	"127.0.0.5"
-					},
-					"destIpAddr":	{
-						"ipv4Addr":	"232.10.0.5"
+						"mcc":	"001",
+						"mnc":	"01"
 					}
 				}
 			},
@@ -495,9 +483,30 @@ If successful, the response will be a _200 OK_ response with the new _MBSUserDat
 				"operatingMode":	"STREAMING",
 				"objAcqMethod":	"PULL",
 				"objAcqIds":	["stream.mpd"],
-				"objIngUri":	"https://livesim2.dashif.org/livesim2/WAVE/vectors/cfhd_sets/12.5_25_50/t1/2022-10-17/"
+				"objIngUri":	"https://livesim2.dashif.org/livesim2/WAVE/vectors/cfhd_sets/12.5_25_50/t1/2022-10-17/",
+				"objDistrUri":	"http://127.0.0.2/"
 			}
 		}
+	},
+	"mbsUserServiceAnmt":	{
+		"serviceIds":	["https://example.broadcaster.com/services/first-service"],
+		"class":	"urn:oma:bcast:oma_bsc:st:1.0",
+		"names":	[{
+				"name":	"First Service",
+				"lang":	"eng"
+			}],
+		"descriptions":	[{
+				"description":	"The description has been changed!",
+				"lang":	"eng"
+			}],
+		"distributionSessionDescriptions":	[{
+				"distributionMethod":	"OBJECT",
+				"sessionDescriptionLocator":	"http://127.0.0.67:8888/x-5gmag-service-announcements/v1/user-data-ingest-session/24b9b988-c234-41f1-b5c1-8d5021cb2248/AP_MBS_SESSION_1.sdp",
+				"applicationServiceDescriptions":	[{
+						"entryPointLocator":	"http://127.0.0.2/stream.mpd",
+						"contentType":	"application/dash+xml"
+					}]
+			}]
 	}
 }
 ```
@@ -518,36 +527,28 @@ For example:
 
 ```
 < HTTP/2 200
-< server: Open5GS v2.6.4-563-g4342250
-< date: Thu, 18 Dec 2025 15:46:06 GMT
-< content-length: 777
-< server: MBSF-localhost/18 (info.title=nmbsf-mbs-ud-ingest; info.version=1.1.2) rt-mbs-function/0.1.0
-< location: /nmbsf-mbs-ud-ingest/v1/sessions/ab8ca684-dc23-41f0-8261-a322be7890ea
+< server: Open5GS v2.6.4-605-g16c5a86+
+< date: Wed, 07 Oct 2026 09:47:49 GMT
+< content-length: 1402
+< server: MBSF-localhost/18 (info.title=nmbsf-mbs-ud-ingest; info.version=1.1.2) rt-mbs-function/1.1.1
+< location: /nmbsf-mbs-ud-ingest/v1/sessions/24b9b988-c234-41f1-b5c1-8d5021cb2248
 < content-type: application/json
-< etag: 57cfa61265f7b63f996499206b58bfa7b968acad27aa9435505aef5d1618ae69
-< last-modified: Thu, 18 Dec 2025 15:10:20 UTC
+< etag: "f053535eed226777178c6cc8af186d8af860139507b09beb3847f5d33cfc3414"
+< last-modified: Wed, 07 Oct 2026 09:47:43 UTC
 < cache-control: max-age=60
 <
 {
-	"mbsUserServId":	"d72a4394-db62-41f0-8e26-9174558de382",
+	"mbsUserServId":	"249b83be-c234-41f1-b5c1-8d5021cb2248",
 	"mbsDisSessInfos":	{
 		"AP_MBS_SESSION_1":	{
-			"mbsDistSessionId":	"99ba10f3-a37b-4d0c-bea5-023af9da4acb",
+			"mbsDistSessionId":	"0450b3dc-a45a-4b07-b7b4-265e9d1430af",
 			"mbsDistSessState":	"ACTIVE",
 			"mbsSessionId":	{
 				"tmgi":	{
-					"mbsServiceId":	"7CF398",
+					"mbsServiceId":	"E36EC6",
 					"plmnId":	{
-						"mcc":	"000",
-						"mnc":	"000"
-					}
-				},
-				"ssm":	{
-					"sourceIpAddr":	{
-						"ipv4Addr":	"127.0.0.5"
-					},
-					"destIpAddr":	{
-						"ipv4Addr":	"232.10.0.5"
+						"mcc":	"001",
+						"mnc":	"01"
 					}
 				}
 			},
@@ -557,9 +558,30 @@ For example:
 				"operatingMode":	"STREAMING",
 				"objAcqMethod":	"PULL",
 				"objAcqIds":	["stream.mpd"],
-				"objIngUri":	"https://livesim2.dashif.org/livesim2/WAVE/vectors/cfhd_sets/12.5_25_50/t1/2022-10-17/"
+				"objIngUri":	"https://livesim2.dashif.org/livesim2/WAVE/vectors/cfhd_sets/12.5_25_50/t1/2022-10-17/",
+				"objDistrUri":	"http://127.0.0.2/"
 			}
 		}
+	},
+	"mbsUserServiceAnmt":	{
+		"serviceIds":	["https://example.broadcaster.com/services/first-service"],
+		"class":	"urn:oma:bcast:oma_bsc:st:1.0",
+		"names":	[{
+				"name":	"First Service",
+				"lang":	"eng"
+			}],
+		"descriptions":	[{
+				"description":	"The description has been changed!",
+				"lang":	"eng"
+			}],
+		"distributionSessionDescriptions":	[{
+				"distributionMethod":	"OBJECT",
+				"sessionDescriptionLocator":	"http://127.0.0.67:8888/x-5gmag-service-announcements/v1/user-data-ingest-session/24b9b988-c234-41f1-b5c1-8d5021cb2248/AP_MBS_SESSION_1.sdp",
+				"applicationServiceDescriptions":	[{
+						"entryPointLocator":	"http://127.0.0.2/stream.mpd",
+						"contentType":	"application/dash+xml"
+					}]
+			}]
 	}
 }
 ```
@@ -578,9 +600,9 @@ The response, if the MBS User Data Ingest Session can be found, will be an HTTP 
 
 ```
 < HTTP/2 204
-< server: Open5GS v2.6.4-563-g4342250
-< date: Thu, 18 Dec 2025 15:49:20 GMT
-< server: MBSF-localhost/18 (info.title=nmbsf-mbs-ud-ingest; info.version=1.1.2) rt-mbs-function/0.1.0
+< server: Open5GS v2.6.4-605-g16c5a86+
+< date: Wed, 07 Oct 2026 09:47:49 GMT
+< server: MBSF-localhost/18 (info.title=nmbsf-mbs-ud-ingest; info.version=1.1.2) rt-mbs-function/1.1.1
 <
 ```
 
@@ -627,16 +649,6 @@ Note: in the example below the `mbsUserServId` value is a placeholder; replace i
   "mbsUserServId": "{<mbs_user_data_ing_session_id>}",
   "mbsDisSessInfos": {
     "AP_MBS_SESSION_1": {
-      "mbsSessionId": {
-        "ssm": {
-          "sourceIpAddr": {
-            "ipv4Addr": "127.0.0.5"
-          },
-          "destIpAddr": {
-            "ipv4Addr": "232.10.0.7"
-          }
-        }
-      },
       "mbsDistSessState": "ACTIVE",
       "maxContBitRate": "10 Mbps",
       "distrMethod": "OBJECT",
