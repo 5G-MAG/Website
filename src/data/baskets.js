@@ -267,6 +267,7 @@ const SHARED_REPO_OWNERS = {
   'rt-mbms-application': ['5G Broadcast - TV and Radio Services'],
   'rt-mbms-tx': ['5G Broadcast - TV and Radio Services'],
   'rt-mbms-tx-for-qrd-and-crd': ['5G Broadcast - TV and Radio Services', '5G Broadcast - Emergency Alerts'],
+  'rt-5gms-application': ['5G Media Streaming (5GMS)'],
 };
 
 // Build-time-only self-check (code-derived, no spec claim): a repo slug

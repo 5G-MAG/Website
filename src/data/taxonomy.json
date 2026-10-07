@@ -239,7 +239,8 @@
         "rt-mbs-client",
         "rt-mbs-application",
         "srsRAN_4G_mbs",
-        "srsRAN_Project_mbs"
+        "srsRAN_Project_mbs",
+        "rt-5gc-service-consumers"
       ],
       "releases_slug": "#repositories--releases",
       "contributors": [
@@ -577,7 +578,8 @@
         "rt-dvb-i-android-application",
         "rt-dvb-i-application-provider",
         "rt-dvb-i-service-list-registry",
-        "rt-dvb-i-examples"
+        "rt-dvb-i-examples",
+        "rt-5gms-application"
       ],
       "releases_slug": "#repositories--releases",
       "contributors": [
@@ -1001,7 +1003,7 @@
         "display_name": "MBMS Client",
         "description": "MBMS client: reads the service announcement, reassembles FLUTE objects from the bearer, and republishes them to a local player as an HLS or DASH presentation. Supersedes rt-mbms-mw.",
         "repo_url": "https://github.com/5G-MAG/rt-mbms-client",
-        "branch": "development",
+        "branch": "main",
         "license": "5G-MAG PL v1.0",
         "standards": [
           "3GPP"
@@ -1521,7 +1523,7 @@
           "Linux"
         ],
         "public": true,
-        "is_auxiliary": false
+        "is_auxiliary": true
       }
     ],
     "6g-testbed": [
@@ -1675,7 +1677,7 @@
         "description": "This repository holds applications that can be used to test and demonstrate other 5G-MAG Reference Tools related to 5GMS. Current applications available include: 5GMSd-Aware Application; Exo DVB-I Player.",
         "repo_url": "https://github.com/5G-MAG/rt-5gms-application",
         "branch": "main",
-        "license": "5G-MAG PL v1.0",
+        "license": "Multiple",
         "standards": [
           "DVBI",
           "3GPP"
@@ -1818,32 +1820,12 @@
         "icon": "package"
       },
       {
-        "repo_slug": "rt-mbms-client",
-        "display_name": "MBMS Client (ROUTE)",
-        "description": "The MBMS client, listed here for real-time object delivery over FLUTE and, built with GPAC, over ROUTE. Supersedes rt-mbms-mw.",
-        "repo_url": "https://github.com/5G-MAG/rt-mbms-client",
-        "branch": "route-gpac",
-        "license": "5G-MAG PL v1.0",
-        "standards": [
-          "3GPP"
-        ],
-        "dependencies": [
-          "GPAC",
-          "rt-libflute"
-        ],
-        "software": [
-          "Linux"
-        ],
-        "public": false,
-        "is_auxiliary": false
-      },
-      {
         "repo_slug": "rt-media-origin",
         "display_name": "Media Origin Server and Packager",
         "description": "A media origin server component for Content Delivery Protocols testing (JavaScript/TypeScript web application). No public description has been published on GitHub yet.",
         "repo_url": "https://github.com/5G-MAG/rt-media-origin",
         "branch": "main",
-        "license": null,
+        "license": "5G-MAG PL v1.0",
         "standards": [
           "IETF",
           "3GPP",
@@ -1882,7 +1864,7 @@
         "description": "Reference implementation of a CMMF Encoder according to ETSI TS 103 973.",
         "repo_url": "https://github.com/5G-MAG/rt-cmmf-encoder",
         "branch": "main",
-        "license": null,
+        "license": "5G-MAG PL v1.0",
         "standards": [
           "ETSI"
         ],
@@ -2135,7 +2117,7 @@
         "description": "Web-based decoder and player for Dynamic Mesh Coding (V-DMC) content. Repository is new; no public description has been published on GitHub yet.",
         "repo_url": "https://github.com/5G-MAG/rt-vdmc-web-decoder-player",
         "branch": "main",
-        "license": null,
+        "license": "5G-MAG PL v1.0",
         "standards": [
           "MPEG (ISO/IEC)"
         ],
@@ -2145,25 +2127,6 @@
         ],
         "public": true,
         "is_auxiliary": false
-      }
-    ],
-    "rt-xr-maf-plugin": [
-      {
-        "repo_slug": "rt-xr-maf-plugin",
-        "display_name": "Media Access Function (MAF) API Unity3D packager",
-        "description": "",
-        "repo_url": "https://github.com/5G-MAG/rt-xr-maf-plugin",
-        "branch": "main",
-        "license": null,
-        "standards": [
-          "MPEG (ISO/IEC)"
-        ],
-        "dependencies": [],
-        "software": [
-          "Android"
-        ],
-        "public": true,
-        "is_auxiliary": null
       }
     ],
     "vops": [
