@@ -653,6 +653,34 @@ Note: in the example below the `mbsUserServId` value is a placeholder; replace i
 }
 ```
 
+### MBS User Data Ingest Session request body with AL-FEC
+
+A Distribution Session can ask for Application Layer FEC with `fecConfig`. The MBSF passes it to the MBSTF unchanged, as the
+Distribution Session's `fecInformation`, and declares it in the session's SDP in the User Service Announcement. Add it to the
+Distribution Session, next to `objDistrInfo`:
+
+```json
+"fecConfig": {
+  "fecScheme": "urn:ietf:rmt:fec:encoding:1",
+  "fecOverHead": 20
+}
+```
+
+`urn:ietf:rmt:fec:encoding:1` is Raptor; `urn:ietf:rmt:fec:encoding:0` is Compact No-Code, which sends no repair symbols. The
+MBSTF accepts no other scheme. `fecOverHead` is the percentage of repair symbols added to each source block.
+
+The announced SDP for such a session then carries:
+
+```text
+a=FEC-declaration:0 encoding-id=1
+a=FEC-redundancy-level:0 redundancy-level=20
+a=FEC:0
+```
+
+The Insomnia collection has this as _Create Carousel MBS User Data Ingest Session with AL-FEC_, a carousel of `fec-object` and
+`object1` from the mock media server's `carousel-file-set` object manifest. What the MBSTF then sends is described in the MBSTF
+tutorial, Step 5a.
+
 ## Analysing MBS User Service Announcements
 
 An MBS AF is co-located with the MBSF to serve User Service Announcement bundles:
