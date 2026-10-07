@@ -143,13 +143,26 @@ export default function ImplementationCases({ data, only }) {
   const rels = Object.entries(data.releases).filter(([k]) => used.has(k));
   const [comp, setComp] = useState('all');
   const [rel, setRel] = useState('all');
+  // The 3GPP releases the same cases are judged at (releaseStatus): a case counts at a release only if its statement
+  // is valid there (`releases`), with that release's verdict where it differs (`byRelease`).
+  // Only the profiles releaseStatus names depend on a 3GPP release (unprofiled RFC requirements do not).
+  const rsKeys = new Set((data.releaseStatus ? data.releaseStatus.profiles : [])
+    .flatMap((p) => (typeof p === 'string' ? [p] : [p.key, ...(p.includes || [])])));
+  const rs = data.releaseStatus && data.features.some((f) => f.requirements.some((r) => keep(r.component) && rsKeys.has(r.release)))
+    ? data.releaseStatus : null;
+  const issues = rs ? Object.entries(rs.issues) : [];
+  const [at, setAt] = useState(rs ? rs.baseline : null);
+  const atRelease = (c) => (c.byRelease && c.byRelease[at] ? { ...c, ...c.byRelease[at] } : c);
   const brokenLinks = useBrokenLinks();
   data.features.forEach((f) => brokenLinks.collectAnchor(slug(f.name)));
   const relShort = (k) => (data.releaseNames && data.releaseNames[k]) || data.releases[k].split(':')[0];
   const features = useMemo(() => data.features.map((f) => ({
     ...f,
-    shown: f.requirements.filter((r) => keep(r.component) && (comp === 'all' || r.component === comp) && (rel === 'all' || r.release === rel)),
-  })).filter((f) => f.shown.length), [data, comp, rel, only]);
+    shown: f.requirements
+      .filter((r) => keep(r.component) && (comp === 'all' || r.component === comp) && (rel === 'all' || r.release === rel))
+      .map((r) => (at && rsKeys.has(r.release) ? { ...r, cases: r.cases.filter((c) => !c.releases || c.releases.includes(at)).map(atRelease) } : r))
+      .filter((r) => r.cases.length),
+  })).filter((f) => f.shown.length), [data, comp, rel, only, at]);
   const all = features.flatMap((f) => f.shown.flatMap((r) => r.cases));
   // a link to one feature (#content-hosting) opens it
   useEffect(() => {
@@ -181,11 +194,19 @@ export default function ImplementationCases({ data, only }) {
             <button key={k} type="button" className={styles.chip} aria-pressed={comp === k} onClick={() => setComp(k)}>{label}</button>
           ))}
         </div>
-        <div className={styles.group} role="group" aria-label="Release">
-          {rels.length > 1 && [['all', 'All releases'], ...rels.map(([k]) => [k, relShort(k)])].map(([k, label]) => (
+        <div className={styles.group} role="group" aria-label={rs ? 'Profile' : 'Release'}>
+          {rels.length > 1 && [['all', rs ? 'All profiles' : 'All releases'], ...rels.map(([k]) => [k, relShort(k)])].map(([k, label]) => (
             <button key={k} type="button" className={styles.chip} aria-pressed={rel === k} onClick={() => setRel(k)}>{label}</button>
           ))}
         </div>
+        {issues.length > 1 && (
+          <div className={styles.group} role="group" aria-label="3GPP release">
+            <span className={styles.over} style={{ alignSelf: 'center' }}>3GPP release</span>
+            {issues.map(([k, docs]) => (
+              <button key={k} type="button" className={styles.chip} aria-pressed={at === k} title={docs} onClick={() => setAt(k)}>Release {k}</button>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className={styles.total}>
