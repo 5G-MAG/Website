@@ -156,7 +156,7 @@
       "repos": [
         {
           "name": "rt-mbms-tx-for-qrd-and-crd",
-          "branch": "emergency-alerts"
+          "branch": "main"
         },
         "rt-pws-cbc",
         "rt-mbms-tx",
@@ -826,7 +826,7 @@
         "display_name": "5G-MAG's fork of srsRAN_4G",
         "description": "5G-MAG maintains a fork of srsRAN_4G for the development and adaptation of NG-RAN procedures to support other Reference Tools.",
         "repo_url": "https://github.com/5G-MAG/srsRAN_4G",
-        "branch": "master",
+        "branch": "main",
         "license": "AGPLv3.0",
         "standards": [
           "3GPP"
@@ -845,7 +845,7 @@
         "display_name": "5G-MAG's fork of srsRAN (discontinued version prior to srsRAN_4G)",
         "description": "Fork of the discontinued srsRAN suite, kept for reference. Superseded by srsRAN_4G for LTE and by rt-srsRAN_Project for 5G NR.",
         "repo_url": "https://github.com/5G-MAG/srsRAN",
-        "branch": "main_srsran_4g",
+        "branch": "main",
         "license": "AGPLv3.0",
         "standards": [
           "3GPP"
@@ -963,7 +963,7 @@
         "display_name": "MBMS Gateway",
         "description": "MBMS Gateway for an LTE-based 5G Terrestrial Broadcast deployment: takes content from the BM-SC and delivers it onto the M1-U bearer, driving the MBMS session lifecycle towards the MME over Sm (GTPv2-C).",
         "repo_url": "https://github.com/5G-MAG/rt-mbms-gw",
-        "branch": "development",
+        "branch": "main",
         "license": "5G-MAG PL v1.0",
         "standards": [
           "3GPP"
@@ -982,7 +982,7 @@
         "display_name": "Broadcast-Multicast Service Center (BM-SC)",
         "description": "BM-SC for MBMS user services: ingests content over xMB (TS 26.348), announces it, and delivers it with FLUTE under the TS 26.346 profile.",
         "repo_url": "https://github.com/5G-MAG/rt-mbms-bmsc",
-        "branch": "development",
+        "branch": "main",
         "license": "5G-MAG PL v1.0",
         "standards": [
           "3GPP"
@@ -1023,7 +1023,7 @@
         "display_name": "MBMS-Aware Application",
         "description": "Receive-side web application: plays what the MBMS client received over the air, and shows the modem's radio state, the decoded system information and any cell broadcast warning. Supersedes rt-wui.",
         "repo_url": "https://github.com/5G-MAG/rt-mbms-application",
-        "branch": "development",
+        "branch": "main",
         "license": "5G-MAG PL v1.0",
         "standards": [
           "3GPP"
@@ -1043,7 +1043,7 @@
         "display_name": "5G Broadcast Application Provider",
         "description": "Content provider portal: provisions xMB (TS 26.348) services and sessions on the BM-SC, and drives the transmitter's and MBMS Gateway's own control interfaces.",
         "repo_url": "https://github.com/5G-MAG/rt-mbms-application-provider",
-        "branch": "development",
+        "branch": "main",
         "license": "5G-MAG PL v1.0",
         "standards": [
           "3GPP"
@@ -1065,7 +1065,7 @@
         "display_name": "5G Broadcast TX with PWS support",
         "description": "Implementation of Public Warning System (PWS) alerts over 5G Broadcast.",
         "repo_url": "https://github.com/5G-MAG/rt-mbms-tx-for-qrd-and-crd/tree/main",
-        "branch": "emergency-alerts",
+        "branch": "main",
         "license": "AGPLv3.0",
         "standards": [
           "3GPP"
@@ -1085,7 +1085,7 @@
         "display_name": "Cell Broadcast Centre (CBC)",
         "description": "Cell Broadcast Centre for the Public Warning System: accepts a warning message from an alert originator and emits it to the MME over SBc-AP, so it reaches handsets as ETWS or CMAS. Independent of any MBMS bearer.",
         "repo_url": "https://github.com/5G-MAG/rt-pws-cbc",
-        "branch": "development",
+        "branch": "main",
         "license": "5G-MAG PL v1.0",
         "standards": [
           "3GPP"
@@ -1221,7 +1221,7 @@
         "display_name": "5GMS Application Provider",
         "description": "This repository provides multiple tools to interact with the 5GMS Application Function: Command Line Interface Tool; Management UI; Postman Collection; QoE Metrics Reporting UI.",
         "repo_url": "https://github.com/5G-MAG/rt-5gms-application-provider",
-        "branch": "master",
+        "branch": "main",
         "license": "5G-MAG PL v1.0",
         "standards": [
           "3GPP"
