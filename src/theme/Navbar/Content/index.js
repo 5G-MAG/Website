@@ -15,7 +15,7 @@ import NavbarSearch from '@theme/Navbar/Search';
 import { GITHUB_ICON, SLACK_ICON, LINKEDIN_ICON, LOCK_ICON, SEARCH_ICON } from '../../socialIcons';
 import { SLACK_INVITE_URL, SOCIAL_LINKS } from '../../../data/socialLinks';
 import { useNavbarItems } from '../../navItems';
-import { SECTION_NAV, SOLUTIONS_ITEMS, TECHNOLOGY_GROUPS, HALF_AREAS, ACCELERATOR_GROUPS, ACCELERATOR_AREAS, stripBaseUrl } from '../../../data/sectionNav';
+import { SECTION_NAV, SOLUTIONS_ITEMS, TECHNOLOGY_GROUPS, HALF_AREAS, ACCELERATOR_GROUPS, ACCELERATOR_TOOL_AREAS, ACCELERATOR_TESTBED_AREAS, stripBaseUrl } from '../../../data/sectionNav';
 import { ICON_CATALOG } from '../../../data/baskets';
 import styles from './styles.module.css';
 
@@ -567,16 +567,17 @@ function MenuList({ items }) {
 // only its content on the right, so one list is on screen at a time. Each rail item and the panel's own
 // "View all" link open the destination's page. `preview` is the section's SECTION_NAV entry.
 const ACCEL_RAIL = [
-  { key: 'projects', title: 'Reference Tools and Testbeds', subtitle: 'Open-source code and test environments, area by area.', href: '/reference-tools' },
+  { key: 'tools', title: 'Reference Tools', subtitle: 'Open-source code, project by project.', href: '/reference-tools' },
+  { key: 'testbeds', title: 'Testbeds', subtitle: 'Test environments and evaluation frameworks.', href: '/testbeds' },
   { key: 'assets', title: 'Developer Tools', subtitle: 'Tools for members, from standards to deployments.', href: '/developer-tools' },
   { key: 'community', title: 'Community', subtitle: 'Join, license, early access.', href: '/community' },
 ];
 
-// One card per area; each project is a row with what it offers as small links.
-function AreaCards() {
+// One card per area, in the area's colour, with its projects as rows.
+function AreaCards({ areas }) {
   return (
     <div className={styles.navBigCols}>
-      {dealColumns(ACCELERATOR_AREAS).map((col, k) => (
+      {dealColumns(areas).map((col, k) => (
         <div key={k} className={styles.navBigCol}>
           {col.map((g) => (
             <div key={g.title} className={styles.navAreaCard} style={{ '--accent': g.accent }}>
@@ -584,16 +585,7 @@ function AreaCards() {
                 <CatalogIcon name={g.icon} size={15} />
                 {g.title}
               </div>
-              <ul className={styles.navMegaList}>
-                {g.items.map((it) => (
-                  <li key={it.label} className={styles.navProjectRow}>
-                    <Link to={it.href} className={styles.navProjectName}><CatalogIcon name={it.icon} size={16} />{it.label}</Link>
-                    {it.tags.map((t) => (
-                      <Link key={t.href} to={t.href} className={styles.navOfferTb}>{t.label}</Link>
-                    ))}
-                  </li>
-                ))}
-              </ul>
+              <MenuList items={g.items} />
             </div>
           ))}
         </div>
@@ -603,17 +595,14 @@ function AreaCards() {
 }
 
 function AcceleratorMenu({ item, preview }) {
-  const [active, setActive] = useState('projects');
+  const [active, setActive] = useState('tools');
   const community = preview.items.filter((sub) => !sub.featured);
   const current = ACCEL_RAIL.find((r) => r.key === active);
   let detail;
-  if (active === 'projects') {
-    detail = (
-      <>
-        <p className={styles.navLegend}>A project name opens its Reference Tools. A purple tag opens a testbed.</p>
-        <AreaCards />
-      </>
-    );
+  if (active === 'tools') {
+    detail = <AreaCards areas={ACCELERATOR_TOOL_AREAS} />;
+  } else if (active === 'testbeds') {
+    detail = <AreaCards areas={ACCELERATOR_TESTBED_AREAS} />;
   } else if (active === 'assets') {
     detail = (
       <ul className={styles.navAssetList}>
@@ -660,14 +649,7 @@ function AcceleratorMenu({ item, preview }) {
         <div className={styles.navMDDetail}>
           <div className={styles.navMDHead}>
             <b>{current.title}</b>
-            {active === 'projects' ? (
-              <span className={styles.navMDLinks}>
-                <Link to="/reference-tools">All Reference Tools →</Link>
-                <Link to="/testbeds">All Testbeds →</Link>
-              </span>
-            ) : (
-              <Link to={current.href}>View all →</Link>
-            )}
+            <Link to={current.href}>View all →</Link>
           </div>
           <div className={styles.navAcceleratorScroll}>{detail}</div>
         </div>

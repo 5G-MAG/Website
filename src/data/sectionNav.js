@@ -58,28 +58,24 @@ const TECHNOLOGY_ITEMS = TOPIC_BASKETS.map((b) => ({ label: b.title, href: `/tec
 // The Software Accelerator menu, area by area: each area is one card, each project in it one row with what it
 // offers, Reference Tools and/or its testbeds, as links. An area with nothing to offer yet is not listed.
 const stripSlash = (u) => u.replace(/\/$/, '');
-// A project row: its name opens its Reference Tools (or, with testbeds only, its testbed or its landing page);
-// purple tags open its testbeds.
-const areaItem = (p) => {
-  const hasRt = (p.doc_url || '').startsWith('/reference-tools/') && !p.auxiliary && (p.repos || []).length > 0;
-  const hosted = ALL_PROJECTS.filter((c) => c.parent === p.name && c.doc_url);
-  if (isTestbed(p)) hosted.push(p);
-  const tags = hosted.map((c) => ({ label: hosted.length > 1 ? displayNameOf(c) : 'Testbed', href: stripSlash(c.doc_url) }));
-  if (!hasRt && !tags.length) return null;
-  const href = hasRt ? stripSlash(p.doc_url) : hosted.length === 1 ? stripSlash(hosted[0].doc_url) : p.tech_url;
-  return { label: displayNameOf(p), icon: p.icon, href, tags };
-};
-export const ACCELERATOR_AREAS = TOPIC_BASKETS.map((b) => ({
+// The Software Accelerator menu, area by area. One set of cards for Reference Tools (the projects that have code)
+// and one for Testbeds (each testbed, under the area of the project that hosts it).
+const cardsBy = (projects, rows) => TOPIC_BASKETS.map((b) => ({
   title: b.title,
   icon: b.icon,
   accent: BASKET_ACCENT[b.key],
-  items: PROJECTS.filter((p) => p.basket === b.key).map(areaItem).filter(Boolean),
-})).filter((g) => g.items.length).concat([{
+  items: projects.filter((p) => p.basket === b.key).map(rows).filter(Boolean),
+})).filter((g) => g.items.length);
+const toolRow = (p) => ((p.doc_url || '').startsWith('/reference-tools/') && !p.auxiliary && (p.repos || []).length
+  ? { label: displayNameOf(p), icon: p.icon, href: stripSlash(p.doc_url) } : null);
+const testbedRow = (p) => (isTestbed(p) ? { label: displayNameOf(p), icon: p.icon, href: stripSlash(p.doc_url) } : null);
+export const ACCELERATOR_TOOL_AREAS = cardsBy(PROJECTS, toolRow).concat([{
   title: 'Platforms and shared tools',
   icon: 'tool',
   accent: '#7a8795',
-  items: ALL_PROJECTS.filter((p) => !p.basket && !p.auxiliary).map(areaItem).filter(Boolean),
+  items: ALL_PROJECTS.filter((p) => !p.basket && !p.auxiliary).map(toolRow).filter(Boolean),
 }].filter((g) => g.items.length));
+export const ACCELERATOR_TESTBED_AREAS = cardsBy(ALL_PROJECTS, testbedRow);
 
 // The two areas with a single project each, shown as half-height cards stacked in one column of the Solutions menu.
 export const HALF_AREAS = ['ntn', 'towards-6g'];
