@@ -986,3 +986,54 @@ See https://github.com/facebook/docusaurus/pull/11142
 .navAreaCard .navMegaLabel {
   min-height: 2.6em;
 }
+
+/* Developer Tools and Community panels: equal feature cards that fill the panel. */
+.navCardGrid2,
+.navCardGrid3 {
+  display: grid;
+  gap: 0.7rem;
+  grid-auto-rows: 1fr;
+}
+
+.navCardGrid2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.navCardGrid3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.navFeatureCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-height: 7.5rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-top: 3px solid var(--ifm-color-primary);
+  border-radius: 10px;
+  background: var(--ifm-color-emphasis-100);
+  color: var(--ifm-color-emphasis-900);
+  text-decoration: none;
+}
+
+.navFeatureCard svg {
+  color: var(--ifm-color-primary);
+}
+
+.navFeatureCard b {
+  font-size: 1rem;
+}
+
+.navFeatureCard small {
+  font-size: 0.85rem;
+  line-height: 1.35;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.navFeatureCard:hover,
+.navFeatureCard:focus-visible {
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-emphasis-900);
+  text-decoration: none;
+}

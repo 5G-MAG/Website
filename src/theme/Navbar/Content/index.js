@@ -590,6 +590,15 @@ function AreaCards({ areas }) {
   );
 }
 
+// One short line for each community destination.
+const COMMUNITY_HINTS = {
+  '/community': 'Join the developers and see how to contribute.',
+  '/community/activity': 'Releases, pull requests and repository statistics.',
+  '/license': 'The 5G-MAG Public License and the contributor agreements.',
+  '/early-access': 'Ask for access to repositories still in development.',
+  '/developer/exchanges': 'Recordings of the developer exchanges.',
+};
+
 function AcceleratorMenu({ item, preview }) {
   const [active, setActive] = useState('tools');
   const community = preview.items.filter((sub) => !sub.featured);
@@ -601,29 +610,27 @@ function AcceleratorMenu({ item, preview }) {
     detail = <AreaCards areas={ACCELERATOR_TESTBED_AREAS} />;
   } else if (active === 'assets') {
     detail = (
-      <ul className={styles.navAssetList}>
+      <div className={styles.navCardGrid2}>
         {DEVELOPER_TOOLS.map((a) => (
-          <li key={a.id}>
-            <Link to={`/developer-tools#${a.id}`}>
-              <b><CatalogIcon name={a.icon} size={16} /> {a.title}</b>
-              <small>{a.summary}</small>
-            </Link>
-          </li>
+          <Link key={a.id} to={`/developer-tools#${a.id}`} className={styles.navFeatureCard}>
+            <CatalogIcon name={a.icon} size={26} />
+            <b>{a.title}</b>
+            <small>{a.short}</small>
+          </Link>
         ))}
-      </ul>
+      </div>
     );
   } else {
     detail = (
-      <ul className={styles.navAccelCommunity}>
+      <div className={styles.navCardGrid3}>
         {community.map((sub) => (
-          <li key={sub.href}>
-            <Link to={sub.href}>
-              <NavItemIcon href={sub.href} size={18} />
-              {sub.label}
-            </Link>
-          </li>
+          <Link key={sub.href} to={sub.href} className={styles.navFeatureCard}>
+            <NavItemIcon href={sub.href} size={26} />
+            <b>{sub.label}</b>
+            <small>{COMMUNITY_HINTS[sub.href]}</small>
+          </Link>
         ))}
-      </ul>
+      </div>
     );
   }
   return (
