@@ -120,7 +120,6 @@ export default function NTN() {
               accent={ACCENT}
               analysisHref="/tech/ntn/analysis-mobility-ntn"
               standardsHref="/standards/ntn"
-              softwareHref="/reference-tools/ntn"
             />
           </div>
         </section>

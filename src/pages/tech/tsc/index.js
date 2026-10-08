@@ -116,7 +116,6 @@ export default function TSC() {
               accent={ACCENT}
               analysisHref="/tech/tsc/overview"
               standardsHref="/standards/tsc"
-              softwareHref="/reference-tools/tsc"
             />
           </div>
         </section>

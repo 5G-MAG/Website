@@ -1,3 +1,4 @@
+import Link from '@docusaurus/Link';
 import HubDestinationCard from '@site/src/components/HubDestinationCard';
 import { icon } from '@site/src/components/GodeeperCard';
 import { ICON_CATALOG } from '@site/src/data/baskets';
@@ -78,7 +79,10 @@ export default function ProjectDestinationCards({
             <h3>Software Accelerator</h3>
           </div>
           <div className="godeeper-card__body">
-            <p>No dedicated Reference Tools page yet for this topic.</p>
+            <p>There are no Reference Tools for this topic yet.</p>
+            <p>
+              <Link to="/contributing">Contribute to build them &rarr;</Link>
+            </p>
             {softwarePlaceholderRepo && (
               <p>
                 <a href={softwarePlaceholderRepo.href}>{softwarePlaceholderRepo.name}</a>

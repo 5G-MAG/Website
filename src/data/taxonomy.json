@@ -543,6 +543,19 @@
       "icon": "brain-network"
     },
     {
+      "name": "Video Operation Points",
+      "doc_url": null,
+      "tech_url": null,
+      "standards_url": "/standards/vops",
+      "tagline": "Video capabilities and operation points of 3GPP TS 26.265, and the conformance validator for them",
+      "basket": "content-delivery",
+      "repos": [],
+      "sdos": [
+        "3GPP"
+      ],
+      "icon": "certificate"
+    },
+    {
       "name": "VOPS Conformance Validator",
       "displayName": "VOPS Conformance Validator",
       "doc_url": "/testbeds/vops/",
@@ -550,6 +563,7 @@
       "standards_url": "/standards/vops",
       "tagline": "Validates video bitstreams against the operation points of 3GPP TS 26.265",
       "basket": "content-delivery",
+      "parent": "Video Operation Points",
       "repos": [
         "vops-conformance-validator"
       ],
@@ -738,7 +752,7 @@
     },
     {
       "name": "Non-Terrestrial Networks in 5G Systems",
-      "doc_url": "/reference-tools/ntn/",
+      "doc_url": null,
       "image": "/assets/images/projects/ntn.png",
       "releases_slug": "#repositories--releases",
       "tech_url": "/tech/ntn",
@@ -760,7 +774,7 @@
     },
     {
       "name": "Non-Public Networks",
-      "doc_url": "/reference-tools/npn/",
+      "doc_url": null,
       "image": "/assets/images/projects/npn.png",
       "releases_slug": "#repositories--releases",
       "tech_url": "/tech/npn",
@@ -782,7 +796,7 @@
     },
     {
       "name": "Time-Sensitive Communications (TSC)",
-      "doc_url": "/reference-tools/tsc/",
+      "doc_url": null,
       "image": "/assets/images/projects/tsc.png",
       "releases_slug": "#repositories--releases",
       "tech_url": "/tech/tsc",
@@ -1940,7 +1954,9 @@
         "standards": [
           "MPEG"
         ],
-        "dependencies": [],
+        "dependencies": [
+          "rt-common-shared"
+        ],
         "software": [
           "Windows",
           "Android"
@@ -1958,7 +1974,9 @@
         "standards": [
           "MPEG"
         ],
-        "dependencies": [],
+        "dependencies": [
+          "rt-common-shared"
+        ],
         "software": [
           "Windows",
           "Android"

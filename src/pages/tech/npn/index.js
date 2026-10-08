@@ -115,7 +115,6 @@ export default function NPN() {
               accent={ACCENT}
               analysisHref="/tech/npn/overview"
               standardsHref="/standards/npn"
-              softwareHref="/reference-tools/npn"
             />
           </div>
         </section>
