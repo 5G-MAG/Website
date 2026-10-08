@@ -55,10 +55,13 @@ const TECHNOLOGY_ITEMS = TOPIC_BASKETS.map((b) => ({ label: b.title, href: `/tec
 // The Solutions mega menu: every project with its own Technical Analysis page, grouped under its area
 // (taxonomy order); each group's title links to the area page. An area with no project yet but its own
 // page lists that page instead. Testbeds are not listed here: they are in the Software Accelerator menu.
+// The two areas with a single project each, shown as half-height cards stacked in one column of the Solutions menu.
+export const HALF_AREAS = ['ntn', 'towards-6g'];
 export const TECHNOLOGY_GROUPS = TOPIC_BASKETS.map((b) => {
   const items = PROJECTS.filter((p) => p.basket === b.key && p.tech_url)
     .map((p) => ({ label: techLabelOf(p), href: p.tech_url, icon: p.icon, tag: isTestbed(p) ? 'Testbed' : undefined }));
   return {
+    key: b.key,
     title: b.title,
     href: BASKET_PAGE[b.key] || `/tech#${b.key}`,
     icon: b.icon,

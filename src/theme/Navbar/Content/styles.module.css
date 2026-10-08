@@ -893,3 +893,15 @@ See https://github.com/facebook/docusaurus/pull/11142
   color: var(--ifm-color-primary);
   background: color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
 }
+
+/* Two single-project areas share one cell of the Solutions grid, each at half its height. */
+.navMegaStack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.navMegaStack > .navMegaCard {
+  flex: 1;
+}
