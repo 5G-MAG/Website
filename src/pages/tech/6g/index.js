@@ -28,7 +28,7 @@ const CHIP_ICON = (
 );
 
 // The study page's own accent.
-const ACCENT = '#c4622f';
+const ACCENT = '#2e9e5b';
 
 export default function Towards6GMedia() {
   const coverImg = useBaseUrl('/assets/images/projects/6g-testbed.png');

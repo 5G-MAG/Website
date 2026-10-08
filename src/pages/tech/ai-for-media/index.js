@@ -25,7 +25,7 @@ const BRAIN_ICON = (
 );
 
 // BASKET_ACCENT['towards-6g'] in src/data/baskets.js.
-const ACCENT = '#c4622f';
+const ACCENT = '#2e9e5b';
 
 export default function AIForMedia() {
   const coverImg = useBaseUrl('/assets/images/projects/ai-ml.png');

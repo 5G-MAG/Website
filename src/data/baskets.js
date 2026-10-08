@@ -78,7 +78,7 @@ export const BASKET_ACCENT = {
   'connected-media-production': '#d1477a',
   rtc: '#4f63d6',
   ntn: '#1a9e93',
-  'towards-6g': '#c4622f',
+  'towards-6g': '#2e9e5b',
   testbeds: '#4a6b8a',
 };
 

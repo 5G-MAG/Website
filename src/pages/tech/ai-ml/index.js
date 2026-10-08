@@ -44,7 +44,7 @@ const BRAIN_ICON = (
 // src/data/baskets.js) -- a plain literal here rather than importing the
 // whole map for one color, same reasoning as the 5gms and content-delivery
 // pages' own ACCENT.
-const ACCENT = '#c4622f';
+const ACCENT = '#2e9e5b';
 
 export default function AiMl() {
   const coverImg = useBaseUrl('/assets/images/projects/ai-ml.png');
