@@ -70,7 +70,7 @@ const config = {
           const path = await import('node:path');
           const taxonomy = JSON.parse(fs.readFileSync(path.join(context.siteDir, 'src/data/taxonomy.json'), 'utf8'));
           for (const p of taxonomy.projects) {
-            if (!p.doc_url) continue;
+            if (!p.doc_url || p.auxiliary) continue;
             const slug = p.doc_url.replace(/\/$/, '').split('/').pop();
             actions.addRoute({
               path: `/deploy/${slug}`,
@@ -196,6 +196,7 @@ const config = {
           // since the 2026-07-28 cutover, so bookmarks/search-engine
           // indexing may still point at the old path.
           { from: '/community/developer-assets', to: '/developer-assets' },
+          { from: '/reference-tools/standards2deployments', to: '/developer-assets' },
           { from: '/ai-for-media', to: '/towards-6g-media' },
           { from: '/testing', to: '/deploy' },
           { from: '/testing/5g-broadcast-plugfest', to: '/deploy/5g-broadcast-plugfest' },

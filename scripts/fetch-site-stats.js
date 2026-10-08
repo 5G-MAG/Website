@@ -70,7 +70,7 @@ function apiGet(urlPath) {
 const repoSlug = (r) => (typeof r === 'string' ? r : r.repo_slug || r.name || r.repo);
 
 function projects() {
-  const n = readJson('src/data/taxonomy.json').projects.filter((p) => p.doc_url).length;
+  const n = readJson('src/data/taxonomy.json').projects.filter((p) => p.doc_url && !p.parent && !p.auxiliary).length;
   if (!n) throw new Error('projects: counted 0');
   return n;
 }
@@ -101,7 +101,7 @@ function referenceTools() {
 }
 
 function testbeds() {
-  const n = readJson('src/data/taxonomy.json').projects.filter((p) => (p.doc_url || '').startsWith('/testbeds/')).length;
+  const n = readJson('src/data/taxonomy.json').projects.filter((p) => (p.doc_url || '').startsWith('/testbeds/') && !p.parent).length;
   if (!n) throw new Error('testbeds: counted 0');
   return n;
 }

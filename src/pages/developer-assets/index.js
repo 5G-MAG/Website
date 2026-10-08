@@ -29,7 +29,7 @@ export default function DeveloperAssets() {
   return (
     <Layout
       title="Developer Assets"
-      description="Tools and rules for going from a 3GPP specification to a working implementation: the 3GPP Explorer, the AI Development Guidelines, the Spec API Validator and the exploration tools."
+      description="Assets for 5G-MAG members that support the transition of standards into deployments: tools, rules and working records for going from a specification to a working implementation."
     >
       <HubHero
         title="Developer Assets"
@@ -48,7 +48,7 @@ export default function DeveloperAssets() {
         <section className={hubStyles.section}>
           <div className="container">
             <p className={styles.lead}>
-              The tools and rules for getting from a specification to a working implementation. In Early Access.
+              Assets for 5G-MAG members that support the transition of standards into deployments. In Early Access.
             </p>
             <div className={styles.grid}>
               {DEVELOPER_ASSETS.map((a) => (

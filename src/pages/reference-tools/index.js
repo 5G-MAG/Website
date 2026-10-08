@@ -159,7 +159,7 @@ const BASKET_DESC = {
 // here). Grouped by basket, same taxonomy and same order as tech/index.js's
 // TECH_GROUPS, so a project's basket move or a new project with a doc_url
 // picks up here automatically -- no second hand-maintained array to drift.
-const REFTOOLS_PROJECTS = ALL_PROJECTS.filter((p) => p.doc_url && !isTestbed(p));
+const REFTOOLS_PROJECTS = ALL_PROJECTS.filter((p) => p.doc_url && !isTestbed(p) && !p.auxiliary);
 
 // Build-time-only self-check (code-derived, no spec claim): TOPIC_META is
 // hand-maintained, unlike REFTOOLS_PROJECTS' own filter above -- a new

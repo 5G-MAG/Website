@@ -26,7 +26,9 @@ function earlyAccessEntry(p) {
   return {
     name: p.name,
     href: p.doc_url.replace(/\/$/, ''),
-    desc: all
+    desc: p.auxiliary
+      ? p.tagline
+      : all
       ? gated.length === 1
         ? 'Its repository is in early access.'
         : `All ${gated.length} of its repositories are in early access.`
@@ -36,12 +38,4 @@ function earlyAccessEntry(p) {
 
 export const EARLY_ACCESS_PROJECTS = [
   ...taxonomy.projects.filter((p) => p.doc_url).map(earlyAccessEntry).filter(Boolean),
-  {
-    // Deliberately absent from the /reference-tools hub grid and sidebar:
-    // this is Early Access auxiliary tooling, and this entry (plus the
-    // Early Access callout on /developer) is its intended entry point.
-    name: 'Standards2Deployments',
-    href: '/reference-tools/standards2deployments',
-    desc: 'Auxiliary tooling for members and contributors working from specifications: a 3GPP Work Plan and Change Request explorer, guidelines for AI-assisted development, and specification conformance audits and coverage records.',
-  },
 ];

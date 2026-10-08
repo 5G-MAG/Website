@@ -581,6 +581,18 @@
       ]
     },
     {
+      "name": "Developer Assets",
+      "doc_url": "/developer-assets",
+      "tagline": "Assets for 5G-MAG members that support the transition of standards into deployments: tools, rules and working records for going from a specification to a working implementation.",
+      "basket": null,
+      "auxiliary": true,
+      "excludedReason": "Tools, rules and working records for members, not a technology topic.",
+      "repos": [
+        "Standards2Deployments"
+      ],
+      "icon": "route"
+    },
+    {
       "name": "DVB-I Services over 5G Systems",
       "doc_url": "/reference-tools/dvb-i/",
       "tech_url": "/tech/dvb-i",
@@ -2068,6 +2080,20 @@
         ],
         "public": true,
         "is_auxiliary": false
+      }
+    ],
+    "developer-assets": [
+      {
+        "repo_slug": "Standards2Deployments",
+        "display_name": "Developer Assets",
+        "description": "Assets for 5G-MAG members that support the transition of standards into deployments: tools, rules and working records for going from a specification to a working implementation.",
+        "repo_url": "https://github.com/5G-MAG/Standards2Deployments",
+        "branch": "main",
+        "standards": [],
+        "dependencies": [],
+        "software": [],
+        "public": false,
+        "is_auxiliary": true
       }
     ],
     "common-tools": [

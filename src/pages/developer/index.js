@@ -76,7 +76,7 @@ const PRODUCT_TYPES = [
   {
     icon: 'Developer Assets',
     label: 'Developer Assets',
-    description: 'The tools and rules for going from a specification to a working implementation.',
+    description: 'Assets for 5G-MAG members that support the transition of standards into deployments.',
     href: '/developer-assets',
   },
 ];

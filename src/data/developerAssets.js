@@ -1,5 +1,5 @@
-// The Standards2Deployments tooling shown on /developer-assets and in the Software Accelerator menu.
-// Descriptions restate the repository's own READMEs.
+// The tools of the Developer Assets repository (Standards2Deployments), shown on /developer-assets and in the
+// Software Accelerator menu. Descriptions restate the repository's own READMEs.
 export const DEVELOPER_ASSETS = [
   {
     id: '3gpp-explorer',
