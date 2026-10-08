@@ -421,23 +421,14 @@ function NavItemIcon({ href, size = 18 }) {
 
 // The wide panel shared by the Solutions and Software Accelerator menus: one card per area, the card
 // title opening the area's page, the lines under it each a project.
-// `plainHeading`: the area's title is a small label, not a link (the Software Accelerator menu: the
-// area pages are in Solutions, and the destinations are the cards above).
-function MegaCard({ g, plainHeading = false }) {
+function MegaCard({ g }) {
   return (
     <div className={styles.navMegaCard} style={{ '--accent': g.accent }}>
-      {plainHeading ? (
-        <div className={styles.navMegaLabel}>
-          <CatalogIcon name={g.icon} size={15} />
-          {g.title}
-        </div>
-      ) : (
-        <Link to={g.href} className={styles.navMegaArea}>
-          <span className={styles.navAreaIcon}><CatalogIcon name={g.icon} size={17} /></span>
-          <span className={styles.navMegaAreaTitle}>{g.title}</span>
-          <span className={styles.navMegaAreaArrow} aria-hidden="true">→</span>
-        </Link>
-      )}
+      <Link to={g.href} className={styles.navMegaArea}>
+        <span className={styles.navAreaIcon}><CatalogIcon name={g.icon} size={17} /></span>
+        <span className={styles.navMegaAreaTitle}>{g.title}</span>
+        <span className={styles.navMegaAreaArrow} aria-hidden="true">→</span>
+      </Link>
       <ul className={styles.navMegaList}>
         {g.items.map((sub) => (
           <li key={sub.href}>
@@ -452,10 +443,10 @@ function MegaCard({ g, plainHeading = false }) {
   );
 }
 
-function MegaGroups({ groups, scrollClass = styles.navSolutionsScroll, plainHeading = false }) {
+function MegaGroups({ groups }) {
   return (
-    <div className={clsx(styles.navMegaGroups, scrollClass)}>
-      {groups.map((g) => <MegaCard key={g.title} g={g} plainHeading={plainHeading} />)}
+    <div className={clsx(styles.navMegaGroups, styles.navSolutionsScroll)}>
+      {groups.map((g) => <MegaCard key={g.title} g={g} />)}
     </div>
   );
 }
@@ -519,29 +510,78 @@ function SolutionsMenu({ item }) {
   );
 }
 
-// Software Accelerator: the section's header card and its two destinations (Reference Tools, Testbeds), then every project
-// community links as a row of buttons, then every project with code in the same layout as Solutions (each
-// opening its Reference Tools or Testbed page). `preview` is the section's SECTION_NAV entry.
+// One big card for a destination: its title (a link to the destination's page) over the projects. The areas
+// of the Reference Tools card are small labels, not links; they are dealt, in order, into columns of about
+// the same height (a label plus one line per project).
+function BigCard({ title, subtitle, href, accent, groups, flat = false }) {
+  const weight = (g) => g.items.length + 2;
+  const target = groups.reduce((a, g) => a + weight(g), 0) / 3;
+  const cols = [[], [], []];
+  let before = 0;
+  groups.forEach((g) => {
+    cols[Math.min(2, Math.floor((before + weight(g) / 2) / target))].push(g);
+    before += weight(g);
+  });
+  const list = (items) => (
+    <ul className={styles.navMegaList}>
+      {items.map((sub) => (
+        <li key={sub.href}>
+          <Link to={sub.href}>
+            <CatalogIcon name={sub.icon} size={16} />
+            {sub.label}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+  return (
+    <div className={styles.navBigCard} style={{ '--accent': accent }}>
+      <Link to={href} className={styles.navBigHead}>
+        <span className={clsx(styles.navAreaIcon, styles.navHeadIcon)}><NavItemIcon href={href} size={20} /></span>
+        <span className={styles.navHeadText}>
+          <b>{title}</b>
+          <small>{subtitle}</small>
+        </span>
+        <span className={styles.navMegaAreaArrow} aria-hidden="true">→</span>
+      </Link>
+      {flat ? (
+        <div className={styles.navBigFlat}>{list(groups.flatMap((g) => g.items))}</div>
+      ) : (
+        <div className={styles.navBigCols}>
+          {cols.map((col, k) => (
+            <div key={k} className={styles.navBigCol}>
+              {col.map((g) => (
+                <div key={g.title} style={{ '--accent': g.accent }}>
+                  <div className={styles.navMegaLabel}>
+                    <CatalogIcon name={g.icon} size={15} />
+                    {g.title}
+                  </div>
+                  {list(g.items)}
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Software Accelerator: the section's header card, its community links as a row of buttons, then two big
+// cards, Reference Tools (every project with code, by area) and Testbeds, each project opening its page.
+// `preview` is the section's SECTION_NAV entry.
 function AcceleratorMenu({ item, preview }) {
-  // Tutorials is not in this menu (it stays on the section's page bar)
-  const featured = preview.items.filter((sub) => sub.featured && sub.href !== '/tutorials');
-  const others = preview.items.filter((sub) => !sub.featured);
+  const community = preview.items.filter((sub) => !sub.featured);
+  const testbeds = ACCELERATOR_GROUPS.filter((g) => g.href === '/testbeds');
+  const tools = ACCELERATOR_GROUPS.filter((g) => g.href !== '/testbeds');
   return (
     <MegaMenu
       label={`${preview.title} quick links`}
       trigger={(expanded) => renderNavbarItem({ ...item, 'aria-haspopup': 'true', 'aria-expanded': expanded })}
     >
-      <div className={styles.navAccelTop}>
-        <SectionHeadCard title={preview.menuTitle || preview.title} subtitle={preview.subtitle} href={preview.titleHref} icon={SECTION_ICONS[preview.titleHref]} />
-        {featured.map((sub) => (
-          <Link key={sub.href} to={sub.href} className={styles.navAccelDest}>
-            <span className={clsx(styles.navAreaIcon, styles.navHeadIcon)}><NavItemIcon href={sub.href} size={20} /></span>
-            {sub.label}
-          </Link>
-        ))}
-      </div>
+      <SectionHeadCard title={preview.menuTitle || preview.title} subtitle={preview.subtitle} href={preview.titleHref} icon={SECTION_ICONS[preview.titleHref]} />
       <ul className={styles.navAccelCommunity}>
-        {others.map((sub) => (
+        {community.map((sub) => (
           <li key={sub.href}>
             <Link to={sub.href}>
               <NavItemIcon href={sub.href} size={18} />
@@ -550,7 +590,12 @@ function AcceleratorMenu({ item, preview }) {
           </li>
         ))}
       </ul>
-      <MegaGroups groups={ACCELERATOR_GROUPS} scrollClass={styles.navAcceleratorScroll} plainHeading />
+      <div className={styles.navAcceleratorScroll}>
+        <BigCard title="Reference Tools" subtitle="Open-source code, project by project." href="/reference-tools"
+          accent="#00a0d2" groups={tools} />
+        <BigCard title="Testbeds" subtitle="Test environments and evaluation frameworks." href="/testbeds"
+          accent="#4a6b8a" groups={testbeds} flat />
+      </div>
     </MegaMenu>
   );
 }

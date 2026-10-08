@@ -659,29 +659,59 @@ See https://github.com/facebook/docusaurus/pull/11142
    between the navbar item and the panel. */
 /* Software Accelerator: the header card and the two destinations on one row, the project cards in three
    columns of about equal height, and the community links as a row of buttons. */
-.navAccelTop {
-  display: grid;
-  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr) minmax(0, 1fr);
-  gap: 0.6rem;
+/* Software Accelerator: two big cards (Reference Tools, Testbeds); the areas inside are plain labels. */
+.navBigCard {
+  margin-top: 0.6rem;
+  padding: 0.6rem 0.75rem 0.7rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-left: 3px solid var(--accent, var(--ifm-color-primary));
+  border-radius: 10px;
 }
 
-.navAccelDest {
+.navBigHead {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.65rem 0.8rem;
-  border-radius: 10px;
-  border: 1px solid var(--ifm-color-emphasis-300);
-  font-size: 0.92rem;
-  font-weight: 700;
-  line-height: 1.25;
-  color: var(--ifm-color-emphasis-900);
+  gap: 0.7rem;
+  margin: -0.15rem -0.2rem 0;
+  padding: 0.45rem 0.65rem 0.45rem 0.45rem;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--accent, var(--ifm-color-primary)) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent, var(--ifm-color-primary)) 35%, transparent);
+  color: var(--ifm-color-emphasis-900) !important;
 }
 
-.navAccelDest:hover {
-  border-color: var(--ifm-color-primary);
-  color: var(--ifm-color-primary);
+.navBigHead:hover,
+.navBigHead:focus-visible {
+  border-color: var(--accent, var(--ifm-color-primary));
   text-decoration: none;
+}
+
+.navBigHead .navHeadText b {
+  font-size: 1.02rem;
+}
+
+.navBigCols {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin-top: 0.7rem;
+}
+
+.navBigCol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.navBigFlat {
+  margin-top: 0.5rem;
+}
+
+.navBigFlat .navMegaList {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0 0.9rem;
 }
 
 /* A card's heading as a plain label in the area's colour, not a link. */
@@ -736,8 +766,8 @@ See https://github.com/facebook/docusaurus/pull/11142
 }
 
 .navAcceleratorScroll {
-  /* below the header row and the community buttons */
-  max-height: calc(100vh - var(--ifm-navbar-height) - 14.5rem);
+  /* below the header card and the community buttons */
+  max-height: calc(100vh - var(--ifm-navbar-height) - 11rem);
   overflow-y: auto;
 }
 
