@@ -69,6 +69,7 @@ export const BASKET_PAGE = {
   'ntn': '/non-terrestrial-networks',
   'immersive-media': '/immersive-media',
   'connected-media-production': '/connected-media-production',
+  'ai-for-media': '/ai-for-media',
   'towards-6g': '/towards-6g-media',
 };
 
@@ -80,6 +81,7 @@ export const BASKET_ACCENT = {
   'connected-media-production': '#d1477a',
   rtc: '#4f63d6',
   ntn: '#1a9e93',
+  'ai-for-media': '#b07d1f',
   'towards-6g': '#c4622f',
   testbeds: '#4a6b8a',
 };

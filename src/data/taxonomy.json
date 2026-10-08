@@ -36,6 +36,13 @@
       "icon": "video-camera"
     },
     {
+      "key": "ai-for-media",
+      "title": "AI for Media",
+      "icon": "brain-network",
+      "tech_url": "/tech/ai-ml",
+      "stages": {"under-study": true, "technical-analysis": true, "basic": true, "advanced": false, "showcase": false}
+    },
+    {
       "key": "towards-6g",
       "title": "Towards 6G Media",
       "icon": "chip",
@@ -492,7 +499,7 @@
       "standards_url": "/standards/ai-ml",
       "image": "/assets/images/projects/ai-ml.png",
       "tagline": "Evaluation framework for AI/ML models in media processing for 3GPP systems",
-      "basket": "towards-6g",
+      "basket": "ai-for-media",
       "repos": [
         "rt-ai-ml-evaluation-framework"
       ],

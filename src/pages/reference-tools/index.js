@@ -144,6 +144,7 @@ const BASKET_DESC = {
   'immersive-media': 'Reference implementations of MPEG scene-description, avatar and volumetric-video standards.',
   multicast: 'Reference implementations of native multicast delivery over 5G.',
   'connected-media-production': 'Reference implementations of CAMARA telco network APIs for connected production.',
+  'ai-for-media': 'Evaluation of AI and ML in 5G media services.',
   rtc: 'Reference implementations for interactive, low-latency, real-time media communication.',
   ntn: 'Reference implementations for content delivery over satellite and HAPS non-terrestrial networks.',
 };
