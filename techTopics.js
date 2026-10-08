@@ -300,7 +300,14 @@ const ALL_TOPICS = [
     techHref: '/tech/ai-for-media',
     autogen: 'ai-for-media',
     techOverviewDoc: 'ai-for-media/overview',
-    standards: [],
+    standards: [{ doc: 'standards/ai-for-media', label: 'Standards: AI for Media' }],
+  },
+  {
+    label: 'Video Operation Points',
+    techHref: '/tech/vops',
+    autogen: 'vops',
+    techOverviewDoc: 'vops/overview',
+    standards: [{ doc: 'standards/vops', label: 'Standards: Video Operation Points' }],
   },
   {
     label: 'AI/ML Evaluation Framework',

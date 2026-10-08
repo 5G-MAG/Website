@@ -418,7 +418,7 @@
       "name": "AI for Media",
       "doc_url": null,
       "tech_url": "/tech/ai-for-media",
-      "standards_url": null,
+      "standards_url": "/standards/ai-for-media",
       "image": "/assets/images/projects/ai-ml.png",
       "tagline": "Evaluating AI and ML for media, and the traffic of AI media services",
       "basket": "towards-6g",
@@ -567,11 +567,18 @@
     {
       "name": "Video Operation Points",
       "doc_url": null,
-      "tech_url": null,
+      "tech_url": "/tech/vops",
       "standards_url": "/standards/vops",
       "tagline": "Video capabilities and operation points of 3GPP TS 26.265, and the conformance validator for them",
       "basket": "content-delivery",
       "repos": [],
+      "stages": {
+        "under-study": false,
+        "technical-analysis": true,
+        "basic": true,
+        "advanced": false,
+        "showcase": false
+      },
       "sdos": [
         "3GPP"
       ],
@@ -581,7 +588,7 @@
       "name": "VOPS Conformance Validator",
       "displayName": "VOPS Conformance Validator",
       "doc_url": "/testbeds/vops/",
-      "tech_url": null,
+      "tech_url": "/tech/vops",
       "standards_url": "/standards/vops",
       "tagline": "Validates video bitstreams against the operation points of 3GPP TS 26.265",
       "basket": "content-delivery",
