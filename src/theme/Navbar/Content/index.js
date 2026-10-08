@@ -506,11 +506,12 @@ function SolutionsMenu({ item }) {
   );
 }
 
-// Software Accelerator: the section's header card and three destinations as before, then every project
+// Software Accelerator: the section's header card and its two destinations (Reference Tools, Testbeds), then every project
 // with code in the same layout as Solutions (each opening its Reference Tools or Testbed page), then the
 // community links on one line. `preview` is the section's SECTION_NAV entry.
 function AcceleratorMenu({ item, preview }) {
-  const featured = preview.items.filter((sub) => sub.featured);
+  // Tutorials is not in this menu (it stays on the section's page bar)
+  const featured = preview.items.filter((sub) => sub.featured && sub.href !== '/tutorials');
   const others = preview.items.filter((sub) => !sub.featured);
   return (
     <MegaMenu
@@ -518,7 +519,7 @@ function AcceleratorMenu({ item, preview }) {
       trigger={(expanded) => renderNavbarItem({ ...item, 'aria-haspopup': 'true', 'aria-expanded': expanded })}
     >
       <SectionHeadCard title={preview.menuTitle || preview.title} subtitle={preview.subtitle} href={preview.titleHref} icon={SECTION_ICONS[preview.titleHref]} />
-      <ul className={styles.navFeatured}>
+      <ul className={styles.navFeatured} style={{ gridTemplateColumns: `repeat(${featured.length}, minmax(0, 1fr))` }}>
         {featured.map((sub) => (
           <li key={sub.href}>
             <Link to={sub.href} className={styles.navFeaturedCard}>

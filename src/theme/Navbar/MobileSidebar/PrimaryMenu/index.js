@@ -63,13 +63,11 @@ export default function NavbarMobilePrimaryMenu() {
                   className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
               </>
             ) : item.to === '/developer' ? (
-              // Software Accelerator: its own page, Tutorials, then each area (or Testbeds, or shared tools)
+              // Software Accelerator: its own page, Reference Tools, then each area (or Testbeds, or shared tools)
               // with its projects indented under it, as on desktop.
               <>
                 <NavbarItem mobile {...item} onClick={() => mobileSidebar.toggle()} />
                 <NavbarItem mobile to="/reference-tools" label="Reference Tools"
-                  className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
-                <NavbarItem mobile to="/tutorials" label="Tutorials"
                   className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
                 {ACCELERATOR_GROUPS.map((g) => (
                   <React.Fragment key={g.title}>
