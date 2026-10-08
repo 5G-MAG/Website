@@ -566,9 +566,9 @@
       "standards_url": "/standards/dvb-i",
       "image": "/assets/images/projects/dvb-i.png",
       "tagline": "DVB-I service discovery combined with 5GMS and 5G Broadcast delivery",
-      "basket": "5g-broadcast",
+      "basket": "content-delivery",
       "relatedBaskets": [
-        "content-delivery"
+        "5g-broadcast"
       ],
       "relatedProjects": [
         "5G Media Streaming (5GMS)"
