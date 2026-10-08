@@ -41,7 +41,7 @@ export default function Towards6GMedia() {
         icon={CHIP_ICON}
         actions={[
           <p key="subtitle" style={{ color: 'var(--cta-accent)', fontSize: '1.05rem', fontWeight: 600, margin: 0 }}>
-            Media aspects for 6G, at the study stage
+            Study on Media Aspects for 6G System (TR 26.870)
           </p>,
         ]}
       />
@@ -52,14 +52,14 @@ export default function Towards6GMedia() {
             <div className={styles.introGrid}>
               <div style={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
                 <p>
-                  Media for 6G is at the study stage in 3GPP. The SA4 study, TR 26.870 (Study on Media Aspects
-                  for 6G System, Release 20), identifies media-related opportunities and gaps in the context of 6G.
-                  It builds on the service requirements defined by SA1 and the architectural enhancements defined
-                  by SA2, and its conclusions will form the basis for further studies and normative work.
+                  This study aims to identify media-related opportunities and gaps in the context of 6G. It
+                  builds on service requirements defined by SA1 and architectural enhancements defined by SA2.
+                  The conclusions of this study will form the basis for further detailed studies as well as
+                  normative work.
                 </p>
                 <p>
-                  One of its topics is the traffic of AI media services, relevant to the design of 6G radio and
-                  service architectures. The study measures it with the 6G AI Traffic Characterization Testbed.
+                  Annexes C and D of the study document the evaluation of AI traffic characteristics and the
+                  testbed for it, which is the 6G AI Traffic Characterization Testbed.
                 </p>
                 {AI_TRAFFIC_PROJECT.sdos?.length > 0 && (
                   <div className={styles.capabilityTags}>

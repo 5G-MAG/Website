@@ -18,6 +18,13 @@ export const AI_ML_SPECS = [
     note: 'NWDAF integration',
   },
   {
+    id: 'TS 26.531',
+    title: 'Data Collection and Reporting; General Description and Architecture',
+    url: 'https://www.3gpp.org/dynareport/26531.htm',
+    layer: 'Network analytics (SA2)',
+    note: 'Data collected by the NWDAF from UE applications (clause 4.1)',
+  },
+  {
     id: 'TR 26.847',
     title: 'Evaluation of AI and ML in 5G media services',
     url: 'https://www.3gpp.org/dynareport/26847.htm',
