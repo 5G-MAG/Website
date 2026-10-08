@@ -9,16 +9,6 @@ import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 import styles from '../tech/index.module.css';
 import useAnchors from '@site/src/utils/useAnchors';
 import { AssetTiles } from '@site/src/components/ProjectDeploy';
-import { ALL_PROJECTS, isTestbed } from '@site/src/data/baskets';
-import { CATEGORIES as PROJECT_CATEGORIES, CategoryCard, topicFor } from '../reference-tools';
-
-// Every project's Deploy page, in the Reference Tools boxes plus one for the testbeds; each card opens
-// /deploy/<project>.
-const toDeploy = (t) => ({ ...t, href: `/deploy/${t.href.split('/').pop()}` });
-const DEPLOY_CATEGORIES = [
-  ...PROJECT_CATEGORIES.map((c) => ({ ...c, topics: c.topics.map(toDeploy) })),
-  { title: 'Testbeds', desc: 'Testbeds and evaluation frameworks.', topics: ALL_PROJECTS.filter(isTestbed).map(topicFor).map(toDeploy) },
-].filter((c) => c.topics.length > 0);
 
 // The package: what a product team takes away from here (the same icon as the navbar's Deploy entry).
 const DEPLOY_ICON_PATH = (
@@ -205,14 +195,9 @@ function AssetsSection() {
       <div className="container">
         <h2 className={styles.sectionTitle}>Deployable Assets</h2>
         <p className={styles.sectionSubtitle}>
-          What you can onboard into your product, project by project. Coming soon.
+          What you can onboard into your product. Coming soon.
         </p>
         <AssetTiles />
-        <div className={styles.categoryColumns} style={{ marginTop: '2rem' }}>
-          {DEPLOY_CATEGORIES.map((c) => (
-            <CategoryCard key={c.title} {...c} />
-          ))}
-        </div>
       </div>
     </section>
   );
