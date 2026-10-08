@@ -43,31 +43,7 @@ If you wish to contribute code to the projects please download the CLA or CCLA a
 
 ## Developer Assets
 
-Standards2Deployments is a different kind of repository from the Reference Tools. It holds the tools and rules that 5G-MAG developers use to get from a specification to a working implementation, and it is currently in [Early Access](/early-access). It contains four things.
-
-### 3GPP Explorer
-
-A small local web application for following 3GPP work. It downloads the current 3GPP Work Plan and lets you filter work items by keyword, release, TSG group and study or normative status. For the work items you select, it collects the change requests filed against them, finds the TSG document of each agreed change request and downloads them together as one zip or into a folder. Everything runs on your machine; the only requests that leave it go to 3gpp.org.
-
-### AI Development Guidelines
-
-The rules for working against specifications, whether by people or by AI assistants. Every claim must cite the specification, version and clause it rests on, and say whether it comes from the specification, the code or an observation. The set includes:
-
-- the numbered rules, the order of work and the checks to pass before anything is submitted;
-- how to audit an implementation against a specification, case by case, reporting what works as well as what does not;
-- templates for a repository's working record, a published conformance statement, an audit and a pull request;
-- `verify-citations`, a check that fails when a quoted sentence is not found in the specification it cites;
-- an `/audit` skill that runs a code audit step by step.
-
-### Spec API Validator
-
-Checks OpenAPI YAML against the API definitions of 3GPP specifications. It reads the operation tables, the procedure sentences that oblige a status code, the data type tables and the enumerations, and compares each with the YAML, quoting the specification for every result. It can also compare two YAML files, and send requests built from the YAML to a running implementation to check the answers. It has a web interface and a command line, and is under development.
-
-### Exploration tools
-
-Start from a project's specifications and work towards its code. They collect the statements of the specifications in scope, classify them by feature, role, profile and release, prepare the reading of each repository against them, and draw the figures. These tools feed the implementation pages of this website.
-
-[Request Early Access](/early-access)
+Standards2Deployments holds the tools and rules 5G-MAG developers use to get from a specification to a working implementation: the 3GPP Explorer, the AI Development Guidelines, the Spec API Validator and the exploration tools. [See the Developer Assets](/developer-assets).
 
 ## Where to Go Next
 

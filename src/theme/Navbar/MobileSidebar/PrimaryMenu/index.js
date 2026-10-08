@@ -80,6 +80,8 @@ export default function NavbarMobilePrimaryMenu() {
                     ))}
                   </React.Fragment>
                 ))}
+                <NavbarItem mobile to="/developer-assets" label="Developer Assets"
+                  className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
               </>
             ) : (
               <NavbarItem mobile {...item} onClick={() => mobileSidebar.toggle()} />

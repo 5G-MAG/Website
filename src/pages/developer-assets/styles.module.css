@@ -1,0 +1,35 @@
+.lead {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  max-width: 62rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.card {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-top: 4px solid var(--ifm-color-primary);
+  border-radius: 12px;
+  padding: 1.5rem;
+  background: var(--ifm-background-surface-color);
+}
+
+.icon {
+  display: inline-flex;
+  color: var(--ifm-color-primary);
+}
+
+.title {
+  scroll-margin-top: calc(var(--ifm-navbar-height) + 1rem);
+  font-size: 1.3rem;
+  margin: 0.5rem 0;
+}
+
+.summary {
+  font-weight: 600;
+}

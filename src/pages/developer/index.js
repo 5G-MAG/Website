@@ -75,6 +75,12 @@ const PRODUCT_TYPES = [
     description: 'Step-by-step guides to run and test the Reference Tools.',
     href: '/tutorials',
   },
+  {
+    icon: 'Developer Assets',
+    label: 'Developer Assets',
+    description: 'The tools and rules for going from a specification to a working implementation.',
+    href: '/developer-assets',
+  },
 ];
 
 const PILLARS = [
@@ -250,7 +256,7 @@ export default function Home() {
           <div className="container">
             <h2 className={styles.sectionTitle}>What You&apos;ll Find Here</h2>
             <p className={styles.sectionSubtitle}>
-              Reference Tools, Testbeds and Evaluation Frameworks, and Tutorials —
+              Reference Tools, Testbeds and Evaluation Frameworks, Tutorials and Developer Assets —
               under one open developer community.
             </p>
             <div className={styles.productGrid}>

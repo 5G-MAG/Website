@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import { useLocation } from '@docusaurus/router';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { DEVELOPER_ASSETS } from '@site/src/data/developerAssets';
 import { ErrorCauseBoundary, ThemeClassNames } from '@docusaurus/theme-common';
 import { splitNavbarItems, useNavbarMobileSidebar } from '@docusaurus/theme-common/internal';
 import NavbarItem from '@theme/NavbarItem';
@@ -355,6 +356,7 @@ function CatalogIcon({ name, paths, size = 16 }) {
 const NAV_ITEM_ICONS = {
   '/reference-tools': ['M7 8l-4 4l4 4', 'M17 8l4 4l-4 4', 'M14 4l-4 16'],
   '/testbeds': 'flask',
+  '/developer-assets': 'route',
   '/tutorials': ['M4.5 16.5c-1.5 1.26 -2 5 -2 5s3.74 -.5 5 -2c.71 -.84 .7 -2.13 -.09 -2.91a2.18 2.18 0 0 0 -2.91 -.09z', 'M12 15l-3 -3a22 22 0 0 1 2 -3.95a12.88 12.88 0 0 1 10 -5.93c0 2.72 -.78 7.5 -6 11a22.35 22.35 0 0 1 -4 2z', 'M9 12h-4s.55 -3.03 2 -4c1.62 -1.08 5 0 5 0', 'M12 15v5s3.03 -.55 4 -2c1.08 -1.62 0 -5 0 -5'],
   '/community': ['M5 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0', 'M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2', 'M16 3.13a4 4 0 0 1 0 7.75', 'M21 21v-2a4 4 0 0 0 -3 -3.85'],
   // the Community Activity page's own banner icon
@@ -614,6 +616,9 @@ function AcceleratorMenu({ item, preview }) {
           accent="#00a0d2" groups={tools} />
         <BigCard title="Testbeds" subtitle="Test environments and evaluation frameworks." href="/testbeds"
           accent="#4a6b8a" groups={testbeds} flat />
+        <BigCard title="Developer Assets" subtitle="Tools and rules from specification to implementation." href="/developer-assets"
+          accent="#2f7d6d" flat
+          groups={[{ title: 'Developer Assets', items: DEVELOPER_ASSETS.map((a) => ({ label: a.title, href: `/developer-assets#${a.id}`, icon: a.icon })) }]} />
       </div>
     </MegaMenu>
   );
