@@ -134,7 +134,7 @@ const WHATS_HERE = [
     ),
   },
   {
-    title: 'Assets',
+    title: 'Deployable Assets',
     desc: 'Packages, modules, Docker images and apps to onboard into your product. Coming soon.',
     href: '/deploy#assets',
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{ASSETS_ICON}</svg>,
@@ -203,7 +203,7 @@ function AssetsSection() {
   return (
     <section id="assets" className={`${styles.section} ${styles.sectionAlt}`} style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}>
       <div className="container">
-        <h2 className={styles.sectionTitle}>Assets</h2>
+        <h2 className={styles.sectionTitle}>Deployable Assets</h2>
         <p className={styles.sectionSubtitle}>
           What you can onboard into your product, project by project. Coming soon.
         </p>
@@ -225,7 +225,7 @@ export default function Deploy() {
   return (
     <Layout
       title="Deploy"
-      description="Demos, interop plugfests and assets to onboard 5G-MAG technology into products."
+      description="Demos, interop plugfests and deployable assets to onboard 5G-MAG technology into products."
     >
       <HubHero
         title="Deploy"
@@ -238,7 +238,7 @@ export default function Deploy() {
             Plugfests
           </a>,
           <a key="assets" className="button button--outline button--primary" href="#assets">
-            Assets
+            Deployable Assets
           </a>,
         ]}
       />
