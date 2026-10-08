@@ -541,7 +541,7 @@
 }
 
 /* Left-aligned variant, for tiles that carry a paragraph of description
-   (e.g. a project's Application Showcase list) rather than a short line. */
+   (e.g. a project's list of tutorials) rather than a short line. */
 .community-tiles--left .community-tile {
   align-items: flex-start;
   text-align: left;

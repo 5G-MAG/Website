@@ -136,7 +136,7 @@
 }
 
 /* Solid, slightly larger chip for a section's real destinations (e.g.
-   Reference Tools/Testbeds/Showcases), so they read as more prominent than
+   Reference Tools/Testbeds/Tutorials), so they read as more prominent than
    the plain outline chips around them without needing the "you are here"
    active state. --ifm-color-primary (not -darkest, which .navChipActive
    already owns) keeps the two states visually distinct from each other. */

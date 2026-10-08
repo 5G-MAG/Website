@@ -160,7 +160,7 @@ export const SHOWCASE_BASKETS = {
             'Broadcast delivers what is common to all viewers; unicast handles what is individual, personalised, unavailable or interactive. An Android device plays a stream over 5G Broadcast and falls back to unicast when the broadcast signal is unavailable.', // slide 18; 5G Broadcast tutorial
           status: 'early',
           features: [
-            { name: 'Seamless switching between unicast and 5G Broadcast (Android)', status: 'yes' }, // 5G Broadcast Application Showcase
+            { name: 'Seamless switching between unicast and 5G Broadcast (Android)', status: 'yes' }, // 5G Broadcast Tutorials
           ],
           tutorial: {
             label: 'Seamless Switching between Unicast and Broadcast',

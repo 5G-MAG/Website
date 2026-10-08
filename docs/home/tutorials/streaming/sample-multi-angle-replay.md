@@ -96,4 +96,4 @@ Once it's running, this is where a showcase invites tinkering rather than just r
 
 - [5GMSd (with Docker)](/reference-tools/5gms/tutorials/end-to-end)
 - [5G Media Streaming with Consumption Reporting](/reference-tools/5gms/tutorials/consumption-reporting)
-- [Back to the 5GMS Application Showcases](/reference-tools/5gms/tutorials)
+- [Back to the 5GMS Tutorials](/reference-tools/5gms/tutorials)

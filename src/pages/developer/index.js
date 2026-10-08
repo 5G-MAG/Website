@@ -51,11 +51,9 @@ const DEV_HERO_ICON_PATH = (
 
 // Labels and descriptions sourced from the 5G-MAG Portfolio Slides (slide 9:
 // "The Media Connectivity Software Accelerator") rather than written from
-// scratch -- except Applications' own label, deliberately changed from the
-// deck's "Application Prototypes" (2026-09-16): every page under this
-// product type is a real, working, already-built scenario, not a
-// prototype-stage one, so that word undersold what the section actually
-// shows.
+// scratch -- except the Tutorials card, whose label the deck calls "Application
+// Prototypes": every page under it is a real, working, already-built walkthrough,
+// not a prototype-stage one.
 const PRODUCT_TYPES = [
   {
     icon: 'Reference Tools',
@@ -70,7 +68,7 @@ const PRODUCT_TYPES = [
     href: '/testbeds',
   },
   {
-    icon: 'Applications',
+    icon: 'Tutorials',
     label: 'Tutorials',
     description: 'Step-by-step guides to run and test the Reference Tools.',
     href: '/tutorials',
@@ -251,7 +249,7 @@ export default function Home() {
         </section>
 
         {/* Product Types -- the actual browsable destinations (Reference
-            Tools, Testbeds, Applications), the 3 cards after Why It Matters. */}
+            Tools, Testbeds, Tutorials, Developer Assets), the cards after Why It Matters. */}
         <section className={clsx(styles.section, styles.sectionAlt)}>
           <div className="container">
             <h2 className={styles.sectionTitle}>What You&apos;ll Find Here</h2>
