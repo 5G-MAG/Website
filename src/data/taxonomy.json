@@ -364,8 +364,35 @@
       "icon": "signal-5g"
     },
     {
+      "name": "Beyond 2D Video Experiences",
+      "doc_url": null,
+      "tech_url": "/tech/beyond-2d",
+      "standards_url": "/standards/beyond-2d",
+      "image": "/assets/images/projects/beyond-2d.png",
+      "tagline": "Evaluating video formats beyond 2D: stereoscopic, multi-view plus depth, point clouds and dynamic meshes",
+      "basket": "immersive-media",
+      "repos": [],
+      "relatedProjects": [
+        "MPEG V3C Immersive Platform",
+        "Dynamic Mesh Coding",
+        "5G Media Streaming (5GMS)"
+      ],
+      "stages": {
+        "under-study": true,
+        "technical-analysis": true,
+        "basic": true,
+        "advanced": false,
+        "showcase": false
+      },
+      "icon": "virtual-space",
+      "sdos": [
+        "3GPP"
+      ]
+    },
+    {
       "name": "Beyond 2D Evaluation Framework",
-      "displayName": "Beyond 2D Video Experiences",
+      "displayName": "Beyond 2D Evaluation Framework",
+      "parent": "Beyond 2D Video Experiences",
       "doc_url": "/testbeds/beyond-2d/",
       "tech_url": "/tech/beyond-2d",
       "standards_url": "/standards/beyond-2d",
