@@ -385,7 +385,7 @@ function FullTimeline({ projects }) {
 // default per-project view, plus an optional full cross-project release
 // timeline for anyone who wants the flat chronological feed.
 // `kind`: 'tools' (every area but Testbeds) or 'testbeds': the page shows the two apart.
-const inKind = (cluster, kind) => (kind === 'testbeds' ? cluster.key === 'testbeds' : cluster.key !== 'testbeds');
+const inKind = (cluster, kind) => (kind === 'all' ? true : kind === 'testbeds' ? cluster.key === 'testbeds' : cluster.key !== 'testbeds');
 
 export default function CommunityProjects({ kind = 'tools' }) {
   const [showTimeline, setShowTimeline] = useState(false);
@@ -426,26 +426,42 @@ export default function CommunityProjects({ kind = 'tools' }) {
 }
 
 
-// Repository statistics for every project, on their own below the project list: the totals, then one table per
-// project, grouped by area like the project list.
-export function CommunityRepoStats({ kind = 'tools' }) {
+// Stars, forks, views and clones of the repositories of one kind ('tools', 'testbeds' or 'all'). Clones are unique
+// cloners, the same count as the home page. Repositories are counted once and only those on the hub dashboard.
+export function CommunityTotals({ kind = 'all' }) {
   const projects = buildMergedProjects();
   if (statsData.updated_at === null) return null;
   const ofKind = projects.filter((p) => inKind({ key: BASKET_OF[p.name] }, kind));
   const hubTrackedRepos = [...new Map(ofKind.flatMap((p) => p.repos).map((r) => [r.repo, r])).values()]
     .filter((r) => !NOT_ON_HUB_DASHBOARD.has(r.repo));
   const totals = hubTrackedRepos.reduce(
-    (acc, r) => ({ stars: acc.stars + (r.stars || 0), forks: acc.forks + (r.forks || 0), views: acc.views + (r.total_views || 0) }),
-    { stars: 0, forks: 0, views: 0 }
+    (acc, r) => ({
+      stars: acc.stars + (r.stars || 0),
+      forks: acc.forks + (r.forks || 0),
+      views: acc.views + (r.total_views || 0),
+      clones: acc.clones + (r.total_unique_clones || 0),
+    }),
+    { stars: 0, forks: 0, views: 0, clones: 0 }
   );
+  return (
+    <div className={styles.summaryContainer}>
+      <div className={styles.summaryCard}><h3>Total Stars</h3><span className={styles.summaryValue}>&#11088; {totals.stars}</span></div>
+      <div className={styles.summaryCard}><h3>Total Forks</h3><span className={styles.summaryValue}>&#127811; {totals.forks}</span></div>
+      <div className={styles.summaryCard}><h3>Total Views</h3><span className={styles.summaryValue}>&#128064; {totals.views}</span></div>
+      <div className={styles.summaryCard}><h3>Total Clones</h3><span className={styles.summaryValue}>&#128230; {totals.clones}</span></div>
+    </div>
+  );
+}
+
+// Repository statistics for every project, on their own below the project list: the totals, then one table per
+// project, grouped by area like the project list.
+export function CommunityRepoStats({ kind = 'tools' }) {
+  const projects = buildMergedProjects();
+  if (statsData.updated_at === null) return null;
   return (
     <>
       <p>Updated: {statsData.updated_at}.</p>
-      <div className={styles.summaryContainer}>
-        <div className={styles.summaryCard}><h3>Total Stars</h3><span className={styles.summaryValue}>&#11088; {totals.stars}</span></div>
-        <div className={styles.summaryCard}><h3>Total Forks</h3><span className={styles.summaryValue}>&#127811; {totals.forks}</span></div>
-        <div className={styles.summaryCard}><h3>Total Views</h3><span className={styles.summaryValue}>&#128064; {totals.views}</span></div>
-      </div>
+      <CommunityTotals kind={kind} />
       {CLUSTERS.filter((c) => inKind(c, kind)).map((c) => {
         const ps = projects.filter((p) => BASKET_OF[p.name] === c.key && p.repos.length);
         if (!ps.length) return null;
