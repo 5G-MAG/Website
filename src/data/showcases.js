@@ -171,23 +171,24 @@ export const SHOWCASE_BASKETS = {
       },
     ],
   },
-  'towards-6g': {
-    basket: 'towards-6g',
-    title: 'Towards 6G Media',
-    headline: 'Media for 6G, at the study stage',
-    heroDiagram: 'sixg',
+  'ai-for-media': {
+    basket: 'ai-for-media',
+    title: 'AI for Media',
+    headline: 'Evaluating AI and ML for media',
+    heroDiagram: 'ai',
     description:
-      'Media for 6G in 3GPP: the SA4 study on media aspects for 6G (TR 26.870), its work topics, and the measured traffic of AI media services.',
-    // TR 26.870 V0.6.1: Introduction, clause 1 and the work topics of clause 6
+      'AI and ML in 5G media services: the SA4 reports TR 26.927 and TR 26.847, the AI/ML Evaluation Framework, and the measured traffic of AI media services.',
+    // 3GPP portal: TR 26.927 "Study on Artificial Intelligence and Machine learning in 5G media services";
+    // TR 26.847 "Evaluation of Artificial Intelligence and Machine learning in 5G media services"
     lead:
-      'Media for 6G is at the study stage in 3GPP. The SA4 study, TR 26.870, identifies media-related opportunities and gaps in the context of 6G, to improve existing services and support new ones.\n\nIts work topics range from the media delivery architecture and 6G media to media for ubiquitous access, trusted and private communication, software and asset management, and real-time communication. Its conclusions will form the basis for further studies and normative work.',
+      'AI and ML in 5G media services are studied and evaluated in 3GPP SA4, in TR 26.927 and TR 26.847.\n\n5G-MAG builds the AI/ML Evaluation Framework, an implementation of the evaluation framework defined in TR 26.927, and the 6G AI Traffic Characterization Testbed, which measures the traffic of AI media services for the 6G media study (TR 26.870).',
     topics: [
       {
         id: 'ai-traffic',
         project: '6g-testbed',
         icon: 'code-ai',
         title: 'AI traffic characterization',
-        diagram: 'ai',
+        diagram: null,
         showcase: {
           title: 'Characterise the Traffic of AI Media Services',
           // TR 26.870 V0.6.1 annex B.1, C.1, D.1.1

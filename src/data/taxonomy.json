@@ -41,15 +41,6 @@
       "icon": "brain-network",
       "tech_url": "/tech/ai-ml",
       "stages": {"under-study": true, "technical-analysis": true, "basic": true, "advanced": false, "showcase": false}
-    },
-    {
-      "key": "towards-6g",
-      "title": "Towards 6G Media",
-      "icon": "chip",
-      "tech_url": "/tech/6g",
-      "stages": {
-        "under-study": true
-      }
     }
   ],
   "projects": [
@@ -407,7 +398,7 @@
       "standards_url": "/standards/6g",
       "image": "/assets/images/projects/6g-testbed.png",
       "tagline": "6G testbed and AI-driven traffic characterization",
-      "basket": "towards-6g",
+      "basket": "ai-for-media",
       "repos": [
         "6G-Testbed",
         "netemu-dashboard"

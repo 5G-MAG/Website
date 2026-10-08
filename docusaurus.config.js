@@ -196,6 +196,7 @@ const config = {
           // since the 2026-07-28 cutover, so bookmarks/search-engine
           // indexing may still point at the old path.
           { from: '/community/developer-assets', to: '/developer-assets' },
+          { from: '/towards-6g-media', to: '/standards/6g' },
           { from: '/testing', to: '/deploy' },
           { from: '/testing/5g-broadcast-plugfest', to: '/deploy/5g-broadcast-plugfest' },
           // /action ("In Action") renamed to /deploy ("Deploy") on 2026-10-05.

@@ -5,7 +5,7 @@ import ProjectDestinationCards from '@site/src/components/ProjectDestinationCard
 import ProjectRepoSection from '@site/src/components/ProjectRepoSection';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import ProjectContributors from '@site/src/components/ProjectContributors';
-import { ALL_PROJECTS, BASKETS, displayNameOf } from '@site/src/data/baskets';
+import { ALL_PROJECTS, displayNameOf } from '@site/src/data/baskets';
 import styles from '../index.module.css';
 
 // ProjectRepoSection matches against ALL_REPOS's own projectName field,
@@ -13,9 +13,9 @@ import styles from '../index.module.css';
 // taxonomy data rather than hardcoding it.
 const AI_TRAFFIC_PROJECT = ALL_PROJECTS.find((p) => p.tech_url === '/tech/6g');
 
-// The area's title, not the project's: this page is the 6G media study as a whole, and AI Traffic
-// Characterization (a testbed project, linked from Towards 6G Media) is the part of it 5G-MAG works on.
-const BASKET_TITLE = BASKETS.find((b) => b.key === 'towards-6g').title;
+// The study's title, not the project's: this page is the 6G media study as a whole, and AI Traffic
+// Characterization (a testbed project of the AI for Media area) is the part of it 5G-MAG works on.
+const BASKET_TITLE = 'Towards 6G Media';
 
 // A per-project "flagship" page, following the 5gms pilot (src/pages/tech/5gms/index.js). Copy restates
 // TR 26.870 V0.6.1: Introduction, clause 1, clause 6.3.3.1 and annex B.
@@ -26,7 +26,7 @@ const CHIP_ICON = (
   </>
 );
 
-// BASKET_ACCENT['towards-6g'] in src/data/baskets.js.
+// The study page's own accent.
 const ACCENT = '#c4622f';
 
 export default function Towards6GMedia() {
