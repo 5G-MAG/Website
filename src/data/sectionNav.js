@@ -282,7 +282,6 @@ export const SECTION_NAV = [
     items: [
       { label: 'Demos', href: '/deploy#demos' },
       { label: 'Plugfests', href: '/deploy#plugfests' },
-      { label: '5G Broadcast PlugFest 2026', href: '/deploy/5g-broadcast-plugfest' },
       { label: 'Deployable Assets', href: '/deploy#assets' },
     ],
   },

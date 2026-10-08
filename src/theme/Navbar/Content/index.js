@@ -576,7 +576,7 @@ const ACCEL_RAIL = [
 // One card per area, in the area's colour, with its projects as rows.
 function AreaCards({ areas }) {
   return (
-    <div className={styles.navAreaGrid}>
+    <div className={styles.navAreaCardGrid}>
       {areas.map((g) => (
         <div key={g.title} className={styles.navAreaCard} style={{ '--accent': g.accent }}>
           <div className={styles.navMegaLabel}>
