@@ -4,7 +4,7 @@ import Heading from '@theme/Heading';
 import HubHero from '@site/src/components/HubHero';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import { ICON_CATALOG } from '@site/src/data/baskets';
-import { DEVELOPER_ASSETS } from '@site/src/data/developerAssets';
+import { DEVELOPER_TOOLS } from '@site/src/data/developerTools';
 import hubStyles from '../tech/index.module.css';
 import styles from './styles.module.css';
 
@@ -28,11 +28,11 @@ function AssetIcon({ name }) {
 export default function DeveloperAssets() {
   return (
     <Layout
-      title="Developer Assets"
+      title="Developer Tools"
       description="Assets for 5G-MAG members that support the transition of standards into deployments: tools, rules and working records for going from a specification to a working implementation."
     >
       <HubHero
-        title="Developer Assets"
+        title="Developer Tools"
         icon={ROUTE_ICON_PATH}
         actions={[
           <Link key="early-access" className="button button--primary" to="/early-access">
@@ -51,7 +51,7 @@ export default function DeveloperAssets() {
               Assets for 5G-MAG members that support the transition of standards into deployments. In Early Access.
             </p>
             <div className={styles.grid}>
-              {DEVELOPER_ASSETS.map((a) => (
+              {DEVELOPER_TOOLS.map((a) => (
                 <article key={a.id} className={styles.card}>
                   <span className={styles.icon}><AssetIcon name={a.icon} /></span>
                   <Heading as="h2" id={a.id} className={styles.title}>{a.title}</Heading>

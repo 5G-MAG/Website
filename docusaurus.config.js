@@ -195,8 +195,9 @@ const config = {
           // /testing renamed to /action (2026-08-24): live on www.5g-mag.com
           // since the 2026-07-28 cutover, so bookmarks/search-engine
           // indexing may still point at the old path.
-          { from: '/community/developer-assets', to: '/developer-assets' },
-          { from: '/reference-tools/standards2deployments', to: '/developer-assets' },
+          { from: '/community/developer-assets', to: '/developer-tools' },
+          { from: '/developer-assets', to: '/developer-tools' },
+          { from: '/reference-tools/standards2deployments', to: '/developer-tools' },
           { from: '/ai-for-media', to: '/towards-6g-media' },
           { from: '/testing', to: '/deploy' },
           { from: '/testing/5g-broadcast-plugfest', to: '/deploy/5g-broadcast-plugfest' },

@@ -74,10 +74,10 @@ const PRODUCT_TYPES = [
     href: '/tutorials',
   },
   {
-    icon: 'Developer Assets',
-    label: 'Developer Assets',
+    icon: 'Developer Tools',
+    label: 'Developer Tools',
     description: 'Assets for 5G-MAG members that support the transition of standards into deployments.',
-    href: '/developer-assets',
+    href: '/developer-tools',
   },
 ];
 
@@ -249,12 +249,12 @@ export default function Home() {
         </section>
 
         {/* Product Types -- the actual browsable destinations (Reference
-            Tools, Testbeds, Tutorials, Developer Assets), the cards after Why It Matters. */}
+            Tools, Testbeds, Tutorials, Developer Tools), the cards after Why It Matters. */}
         <section className={clsx(styles.section, styles.sectionAlt)}>
           <div className="container">
             <h2 className={styles.sectionTitle}>What You&apos;ll Find Here</h2>
             <p className={styles.sectionSubtitle}>
-              Reference Tools, Testbeds and Evaluation Frameworks, Tutorials and Developer Assets —
+              Reference Tools, Testbeds and Evaluation Frameworks, Tutorials and Developer Tools —
               under one open developer community.
             </p>
             <div className={styles.productGrid}>

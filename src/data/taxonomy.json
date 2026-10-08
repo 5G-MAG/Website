@@ -581,8 +581,8 @@
       ]
     },
     {
-      "name": "Developer Assets",
-      "doc_url": "/developer-assets",
+      "name": "Developer Tools",
+      "doc_url": "/developer-tools",
       "tagline": "Assets for 5G-MAG members that support the transition of standards into deployments: tools, rules and working records for going from a specification to a working implementation.",
       "basket": null,
       "auxiliary": true,
@@ -2082,10 +2082,10 @@
         "is_auxiliary": false
       }
     ],
-    "developer-assets": [
+    "developer-tools": [
       {
         "repo_slug": "Standards2Deployments",
-        "display_name": "Developer Assets",
+        "display_name": "Developer Tools",
         "description": "Assets for 5G-MAG members that support the transition of standards into deployments: tools, rules and working records for going from a specification to a working implementation.",
         "repo_url": "https://github.com/5G-MAG/Standards2Deployments",
         "branch": "main",

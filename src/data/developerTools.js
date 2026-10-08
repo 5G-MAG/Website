@@ -1,6 +1,6 @@
-// The tools of the Developer Assets repository (Standards2Deployments), shown on /developer-assets and in the
+// The tools of the Developer Tools repository (Standards2Deployments), shown on /developer-tools and in the
 // Software Accelerator menu. Descriptions restate the repository's own READMEs.
-export const DEVELOPER_ASSETS = [
+export const DEVELOPER_TOOLS = [
   {
     id: '3gpp-explorer',
     title: '3GPP Explorer',
