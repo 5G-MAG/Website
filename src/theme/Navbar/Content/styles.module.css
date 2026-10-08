@@ -657,29 +657,87 @@ See https://github.com/facebook/docusaurus/pull/11142
    short screen the cards scroll inside the panel. The scroll sits on the cards, not on the panel: an
    overflow on the panel would clip its ::before bridge, and the pointer would lose :hover in the gap
    between the navbar item and the panel. */
-.navMegaFoot {
-  list-style: none;
-  margin: 0.75rem 0 0;
-  padding: 0.6rem 0 0;
-  border-top: 1px solid var(--ifm-color-emphasis-200);
+/* Software Accelerator: the header card and the two destinations on one row, the project cards in three
+   columns of about equal height, and the community links as a row of buttons. */
+.navAccelTop {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0.6rem;
+}
+
+.navAccelDest {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem 1.25rem;
-  font-size: 0.85rem;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 0.8rem;
+  border-radius: 10px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--ifm-color-emphasis-900);
 }
 
-.navMegaFoot a {
-  color: var(--ifm-color-emphasis-700);
-}
-
-.navMegaFoot a:hover,
-.navMegaFoot a:focus-visible {
+.navAccelDest:hover {
+  border-color: var(--ifm-color-primary);
   color: var(--ifm-color-primary);
+  text-decoration: none;
+}
+
+/* A card's heading as a plain label in the area's colour, not a link. */
+.navMegaLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0 0 0.35rem;
+  padding: 0 0.1rem 0.35rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent, var(--ifm-color-primary)) 30%, transparent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.25;
+  color: var(--accent, var(--ifm-color-primary));
+}
+
+/* The community links: one row of buttons straight under the header row, wider where the label is longer. */
+.navAccelCommunity {
+  list-style: none;
+  margin: 0.6rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1.35fr 1.25fr 0.8fr 0.95fr 1.4fr;
+  gap: 0.6rem;
+}
+
+.navAccelCommunity a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 100%;
+  padding: 0.55rem 0.5rem;
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 35%, transparent);
+  background: color-mix(in srgb, var(--ifm-color-primary) 8%, transparent);
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--ifm-color-emphasis-900);
+}
+
+.navAccelCommunity a:hover,
+.navAccelCommunity a:focus-visible {
+  background: color-mix(in srgb, var(--ifm-color-primary) 16%, transparent);
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+  text-decoration: none;
 }
 
 .navAcceleratorScroll {
-  /* below the header card and the three destinations, above the community line */
-  max-height: calc(100vh - var(--ifm-navbar-height) - 15rem);
+  /* below the header row and the community buttons */
+  max-height: calc(100vh - var(--ifm-navbar-height) - 14.5rem);
   overflow-y: auto;
 }
 
