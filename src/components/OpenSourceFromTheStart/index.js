@@ -67,7 +67,7 @@ export default function OpenSourceFromTheStart({ id = 'standards-and-open-source
         </div>
 
         <h3 className={styles.proposalTitle}>
-          Make open-source software and evaluation platforms work-plan deliverables, not optional extras
+          We make open-source software and evaluation platforms work-plan deliverables, not optional extras
         </h3>
         <ol className={styles.steps}>
           {STEPS.map((s, i) => (

@@ -57,9 +57,10 @@
 
 .proposalTitle {
   text-align: center;
-  font-size: 1.25rem;
-  margin: 0 auto 1.25rem;
-  max-width: 44ch;
+  font-size: 1.5rem;
+  line-height: 1.35;
+  margin: 2.5rem auto 2rem;
+  max-width: 62ch;
   text-wrap: balance;
 }
 
