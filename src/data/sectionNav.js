@@ -245,7 +245,6 @@ export const SECTION_NAV = [
       { label: 'Feedback to SDOs', href: '/standards#feedback' },
       { label: 'Liaison Statements & Inputs', href: '/ls' },
       { label: 'Workshops for Standards', href: '/workshops' },
-      { label: 'Towards 6G Media (study)', href: '/standards/6g' },
     ],
   },
   {

@@ -36,11 +36,13 @@
       "icon": "video-camera"
     },
     {
-      "key": "ai-for-media",
-      "title": "AI for Media",
-      "icon": "brain-network",
-      "tech_url": "/tech/ai-ml",
-      "stages": {"under-study": true, "technical-analysis": true, "basic": true, "advanced": false, "showcase": false}
+      "key": "towards-6g",
+      "title": "Towards 6G Media",
+      "icon": "chip",
+      "tech_url": "/tech/6g",
+      "stages": {
+        "under-study": true
+      }
     }
   ],
   "projects": [
@@ -391,6 +393,33 @@
       "icon": "virtual-space"
     },
     {
+      "name": "AI for Media",
+      "doc_url": "/testbeds/ai-for-media/",
+      "tech_url": "/tech/ai-for-media",
+      "standards_url": null,
+      "image": "/assets/images/projects/ai-ml.png",
+      "tagline": "Evaluating AI and ML for media, and the traffic of AI media services",
+      "basket": "towards-6g",
+      "repos": [],
+      "releases_slug": "resources",
+      "contributors": [
+        "Qualcomm",
+        "Huawei",
+        "InterDigital"
+      ],
+      "stages": {
+        "under-study": true,
+        "technical-analysis": true,
+        "basic": true,
+        "advanced": false,
+        "showcase": false
+      },
+      "icon": "brain-network",
+      "sdos": [
+        "3GPP"
+      ]
+    },
+    {
       "name": "AI Traffic Characterization",
       "displayName": "6G AI Traffic Characterization Testbed",
       "doc_url": "/testbeds/6g-testbed/",
@@ -398,7 +427,8 @@
       "standards_url": "/standards/6g",
       "image": "/assets/images/projects/6g-testbed.png",
       "tagline": "6G testbed and AI-driven traffic characterization",
-      "basket": "ai-for-media",
+      "basket": "towards-6g",
+      "parent": "AI for Media",
       "repos": [
         "6G-Testbed",
         "netemu-dashboard"
@@ -490,7 +520,8 @@
       "standards_url": "/standards/ai-ml",
       "image": "/assets/images/projects/ai-ml.png",
       "tagline": "Evaluation framework for AI/ML models in media processing for 3GPP systems",
-      "basket": "ai-for-media",
+      "basket": "towards-6g",
+      "parent": "AI for Media",
       "repos": [
         "rt-ai-ml-evaluation-framework"
       ],

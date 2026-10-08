@@ -171,20 +171,20 @@ export const SHOWCASE_BASKETS = {
       },
     ],
   },
-  'ai-for-media': {
-    basket: 'ai-for-media',
-    title: 'AI for Media',
-    headline: 'Media for 6G, at the study stage',
+  'towards-6g': {
+    basket: 'towards-6g',
+    title: 'Towards 6G Media',
+    headline: 'The 3GPP study of media for 6G',
     heroDiagram: 'sixg',
     description:
       'Media for 6G in 3GPP: the SA4 study on media aspects for 6G (TR 26.870), its work topics, and the measured traffic of AI media services.',
     // TR 26.870 V0.6.1: Introduction, clause 1 and the work topics of clause 6
     lead:
-      'Media for 6G is at the study stage in 3GPP. The SA4 study, TR 26.870, identifies media-related opportunities and gaps in the context of 6G, to improve existing services and support new ones.\n\nIts work topics range from the media delivery architecture and 6G media to media for ubiquitous access, trusted and private communication, software and asset management, and real-time communication. Its conclusions will form the basis for further studies and normative work.',
+      'Media for 6G is at the study stage in 3GPP. The SA4 study, TR 26.870, identifies media-related opportunities and gaps in the context of 6G, to improve existing services and support new ones.\n\nIts work topics range from the media delivery architecture and 6G media to media for ubiquitous access, trusted and private communication, software and asset management, and real-time communication. Its conclusions will form the basis for further studies and normative work.\n\nThe part 5G-MAG builds is AI for Media, with two testbeds: the 6G AI Traffic Characterization Testbed, which measures the traffic of AI media services for the study, and the AI/ML Evaluation Framework, which implements TR 26.927 (AI and ML in 5G media services).',
     topics: [
       {
         id: 'ai-traffic',
-        project: '6g-testbed',
+        project: 'ai-for-media',
         icon: 'code-ai',
         title: 'AI traffic characterization',
         diagram: 'ai',

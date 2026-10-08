@@ -74,7 +74,7 @@ function iconForCatalogKey(key) {
 // the invitation this section makes (see .standInvite below), not
 // something to filter out.
 const STAND_BASKETS = TOPIC_BASKETS.map((b) => {
-  const basketProjects = projectsData.filter((p) => p.basket === b.key);
+  const basketProjects = projectsData.filter((p) => p.basket === b.key && !p.parent);
   return {
     ...b,
     accent: BASKET_ACCENT[b.key] || '#00a0d2',
@@ -188,7 +188,7 @@ const USE_CASE_PHOTOS = [
 // (external forks/dependencies 5G-MAG maintains, not a first-class
 // reference-tool project with its own page -- see its own tagline).
 const PROJECT_CARDS = projectsData
-  .filter((p) => p.image && p.doc_url)
+  .filter((p) => p.image && p.doc_url && !p.parent)
   .map((p) => ({ type: 'project', src: p.image, alt: p.name, href: p.doc_url }));
 
 const SHOWCASE_SLIDES = [...USE_CASE_PHOTOS, ...PROJECT_CARDS];

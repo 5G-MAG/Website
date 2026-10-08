@@ -69,7 +69,7 @@ export const BASKET_PAGE = {
   'ntn': '/non-terrestrial-networks',
   'immersive-media': '/immersive-media',
   'connected-media-production': '/connected-media-production',
-  'ai-for-media': '/ai-for-media',
+  'towards-6g': '/towards-6g-media',
 };
 
 export const BASKET_ACCENT = {
@@ -80,7 +80,7 @@ export const BASKET_ACCENT = {
   'connected-media-production': '#d1477a',
   rtc: '#4f63d6',
   ntn: '#1a9e93',
-  'ai-for-media': '#b07d1f',
+  'towards-6g': '#c4622f',
   testbeds: '#4a6b8a',
 };
 
@@ -161,7 +161,8 @@ export function displayNameOf(project) {
 // Every real topic project, in taxonomy.json's own order -- excludes the
 // `basket: null` entries (shared infrastructure, external forks, bare
 // reference-consumer repos; see EXCLUDED below for those).
-export const PROJECTS = ALL_PROJECTS.filter((p) => p.basket);
+// A testbed that is part of another project (`parent`) is listed with that project, not on its own.
+export const PROJECTS = ALL_PROJECTS.filter((p) => p.basket && !p.parent);
 
 // Where We Stand's rows on /tech: one per basket, in taxonomy order, with
 // the projects that have a `stages` entry. A basket with no such project
@@ -185,7 +186,7 @@ export const EXCLUDED = ALL_PROJECTS.filter((p) => !p.basket);
 
 // Every project in a given basket, in taxonomy.json's own order.
 // A testbed is a project whose own pages are under /testbeds/, whatever its
-// area: the 6G AI Traffic Characterization Testbed is in AI for Media.
+// area: the AI/ML Evaluation Framework and the 6G testbed are testbeds of AI for Media, in Towards 6G Media.
 export function isTestbed(project) {
   return Boolean(project.doc_url && project.doc_url.startsWith('/testbeds/'));
 }

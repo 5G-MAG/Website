@@ -296,6 +296,13 @@ const ALL_TOPICS = [
     ],
   },
   {
+    label: 'AI for Media',
+    techHref: '/tech/ai-for-media',
+    autogen: 'ai-for-media',
+    techOverviewDoc: 'ai-for-media/overview',
+    standards: [],
+  },
+  {
     label: 'AI/ML Evaluation Framework',
     techHref: '/tech/ai-ml',
     autogen: 'ai-ml',
@@ -337,7 +344,7 @@ taxonomyData.projects.forEach((p) => {
 // place that decides which basket a topic belongs to.
 const basketForHref = {};
 taxonomyData.projects.forEach((p) => {
-  if (p.tech_url) basketForHref[p.tech_url] = p.basket;
+  if (p.tech_url && !p.parent) basketForHref[p.tech_url] = p.basket;
 });
 
 // Attach each topic's own refTools destination (computed above) so every

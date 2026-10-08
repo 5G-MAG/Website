@@ -26,7 +26,7 @@ const TESTBEDS_ICON_PATH = (
 // hand-maintained array to drift" reasoning as reference-tools/index.js's
 // own REFTOOLS_PROJECTS, and the exact complement of that filter, so a
 // project can never silently vanish from both pages or appear on neither.
-const TESTBED_PROJECTS = ALL_PROJECTS.filter(isTestbed).map(topicFor);
+const TESTBED_PROJECTS = ALL_PROJECTS.filter((p) => isTestbed(p) && !p.parent).map(topicFor);
 
 export default function Testbeds() {
   const [query, setQuery] = useState('');
