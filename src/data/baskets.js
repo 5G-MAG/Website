@@ -161,7 +161,8 @@ export function displayNameOf(project) {
 // Every real topic project, in taxonomy.json's own order -- excludes the
 // `basket: null` entries (shared infrastructure, external forks, bare
 // reference-consumer repos; see EXCLUDED below for those).
-// A testbed that is part of another project (`parent`) is listed with that project, not on its own.
+// A testbed that is part of a project (`parent`) is listed under Testbeds, and the project in its area; the
+// project is not a testbed itself.
 export const PROJECTS = ALL_PROJECTS.filter((p) => p.basket && !p.parent);
 
 // Where We Stand's rows on /tech: one per basket, in taxonomy order, with

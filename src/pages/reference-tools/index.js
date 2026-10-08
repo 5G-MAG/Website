@@ -121,10 +121,6 @@ const TOPIC_META = {
   // could silently drift from taxonomy.json the way a project's own
   // `basket`/`doc_url` already can't here (REFTOOLS_PROJECTS' own filter
   // picks up a new project automatically; /testbeds' filter below does too).
-  'AI for Media': {
-    desc: 'Evaluating AI and ML for media, and the traffic of AI media services.',
-    tags: ['Linux'],
-  },
   'AI Traffic Characterization': {
     desc: 'AI traffic profiling and 5G-to-6G migration testbed.',
     tags: ['Linux'],
@@ -169,7 +165,7 @@ const REFTOOLS_PROJECTS = ALL_PROJECTS.filter((p) => p.doc_url && !isTestbed(p) 
 // Guarded to the Node-side build/SSR pass only, same as baskets.js's own
 // SHARED_REPO_OWNERS check.
 if (typeof window === 'undefined') {
-  const testbedProjects = ALL_PROJECTS.filter((p) => isTestbed(p) && !p.parent);
+  const testbedProjects = ALL_PROJECTS.filter(isTestbed);
   const missing = [...REFTOOLS_PROJECTS, ...testbedProjects]
     .filter((p) => !TOPIC_META[p.name])
     .map((p) => p.name);

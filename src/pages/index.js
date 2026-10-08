@@ -188,7 +188,7 @@ const USE_CASE_PHOTOS = [
 // (external forks/dependencies 5G-MAG maintains, not a first-class
 // reference-tool project with its own page -- see its own tagline).
 const PROJECT_CARDS = projectsData
-  .filter((p) => p.image && p.doc_url && !p.parent)
+  .filter((p) => p.image && p.doc_url)
   .map((p) => ({ type: 'project', src: p.image, alt: p.name, href: p.doc_url }));
 
 const SHOWCASE_SLIDES = [...USE_CASE_PHOTOS, ...PROJECT_CARDS];

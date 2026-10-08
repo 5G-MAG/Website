@@ -184,7 +184,7 @@ export const SHOWCASE_BASKETS = {
     topics: [
       {
         id: 'ai-traffic',
-        project: 'ai-for-media',
+        project: '6g-testbed',
         icon: 'code-ai',
         title: 'AI traffic characterization',
         diagram: 'ai',

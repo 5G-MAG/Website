@@ -85,7 +85,7 @@ export const ACCELERATOR_GROUPS = TOPIC_BASKETS.map((b) => ({
     href: '/testbeds',
     icon: 'flask',
     accent: BASKET_ACCENT.testbeds,
-    items: PROJECTS.filter(isTestbed).map((p) => ({ label: displayNameOf(p), href: stripSlash(p.doc_url), icon: p.icon })),
+    items: ALL_PROJECTS.filter(isTestbed).map((p) => ({ label: displayNameOf(p), href: stripSlash(p.doc_url), icon: p.icon })),
   }].filter((g) => g.items.length),
   [{
     title: 'Platforms and shared tools',

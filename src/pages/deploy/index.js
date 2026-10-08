@@ -17,7 +17,7 @@ import { CATEGORIES as PROJECT_CATEGORIES, CategoryCard, topicFor } from '../ref
 const toDeploy = (t) => ({ ...t, href: `/deploy/${t.href.split('/').pop()}` });
 const DEPLOY_CATEGORIES = [
   ...PROJECT_CATEGORIES.map((c) => ({ ...c, topics: c.topics.map(toDeploy) })),
-  { title: 'Testbeds', desc: 'Testbeds and evaluation frameworks.', topics: ALL_PROJECTS.filter((p) => isTestbed(p) && !p.parent).map(topicFor).map(toDeploy) },
+  { title: 'Testbeds', desc: 'Testbeds and evaluation frameworks.', topics: ALL_PROJECTS.filter(isTestbed).map(topicFor).map(toDeploy) },
 ].filter((c) => c.topics.length > 0);
 
 // The package: what a product team takes away from here (the same icon as the navbar's Deploy entry).
