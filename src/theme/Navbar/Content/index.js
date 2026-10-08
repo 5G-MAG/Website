@@ -539,11 +539,9 @@ function dealColumns(groups, n = 3) {
   return cols.filter((c) => c.length);
 }
 
-// One big card for a destination: its title (a link to the destination's page) over the projects. The areas
-// of the Reference Tools card are small labels, not links.
-function BigCard({ title, subtitle, href, accent, groups, flat = false }) {
-  const cols = flat ? [] : dealColumns(groups);
-  const list = (items) => (
+// A list of project links, with its small icons.
+function MenuList({ items }) {
+  return (
     <ul className={styles.navMegaList}>
       {items.map((sub) => (
         <li key={sub.href}>
@@ -555,52 +553,60 @@ function BigCard({ title, subtitle, href, accent, groups, flat = false }) {
       ))}
     </ul>
   );
-  return (
-    <div className={styles.navBigCard} style={{ '--accent': accent }}>
-      <Link to={href} className={styles.navBigHead}>
-        <span className={clsx(styles.navAreaIcon, styles.navHeadIcon)}><NavItemIcon href={href} size={20} /></span>
-        <span className={styles.navHeadText}>
-          <b>{title}</b>
-          <small>{subtitle}</small>
-        </span>
-        <span className={styles.navMegaAreaArrow} aria-hidden="true">→</span>
-      </Link>
-      {flat ? (
-        <div className={styles.navBigFlat}>{list(groups.flatMap((g) => g.items))}</div>
-      ) : (
-        <div className={styles.navBigCols}>
-          {cols.map((col, k) => (
-            <div key={k} className={styles.navBigCol}>
-              {col.map((g) => (
-                <div key={g.title} style={{ '--accent': g.accent }}>
-                  <div className={styles.navMegaLabel}>
-                    <CatalogIcon name={g.icon} size={15} />
-                    {g.title}
-                  </div>
-                  {list(g.items)}
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
 }
 
-// Software Accelerator: the section's header card, its community links as a row of buttons, then two big
-// cards, Reference Tools (every project with code, by area) and Testbeds, each project opening its page.
-// `preview` is the section's SECTION_NAV entry.
+// Software Accelerator: master and detail. The left rail names the destinations; hovering or focusing one shows
+// only its content on the right, so one list is on screen at a time. Each rail item and the panel's own
+// "View all" link open the destination's page. `preview` is the section's SECTION_NAV entry.
+const ACCEL_RAIL = [
+  { key: 'tools', title: 'Reference Tools', subtitle: 'Open-source code, project by project.', href: '/reference-tools' },
+  { key: 'testbeds', title: 'Testbeds', subtitle: 'Test environments and evaluation frameworks.', href: '/testbeds' },
+  { key: 'assets', title: 'Developer Assets', subtitle: 'Tools and rules from specification to implementation.', href: '/developer-assets' },
+  { key: 'community', title: 'Community', subtitle: 'Join, license, early access.', href: '/community' },
+];
+
 function AcceleratorMenu({ item, preview }) {
+  const [active, setActive] = useState('tools');
   const community = preview.items.filter((sub) => !sub.featured);
-  const testbeds = ACCELERATOR_GROUPS.filter((g) => g.href === '/testbeds');
+  const testbeds = ACCELERATOR_GROUPS.filter((g) => g.href === '/testbeds').flatMap((g) => g.items);
   const tools = ACCELERATOR_GROUPS.filter((g) => g.href !== '/testbeds');
-  return (
-    <MegaMenu
-      label={`${preview.title} quick links`}
-      trigger={(expanded) => renderNavbarItem({ ...item, 'aria-haspopup': 'true', 'aria-expanded': expanded })}
-    >
-      <SectionHeadCard title={preview.menuTitle || preview.title} subtitle={preview.subtitle} href={preview.titleHref} icon={SECTION_ICONS[preview.titleHref]} />
+  const current = ACCEL_RAIL.find((r) => r.key === active);
+  let detail;
+  if (active === 'tools') {
+    detail = (
+      <div className={styles.navBigCols}>
+        {dealColumns(tools).map((col, k) => (
+          <div key={k} className={styles.navBigCol}>
+            {col.map((g) => (
+              <div key={g.title} style={{ '--accent': g.accent }}>
+                <div className={styles.navMegaLabel}>
+                  <CatalogIcon name={g.icon} size={15} />
+                  {g.title}
+                </div>
+                <MenuList items={g.items} />
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    );
+  } else if (active === 'testbeds') {
+    detail = <div className={styles.navBigFlat}><MenuList items={testbeds} /></div>;
+  } else if (active === 'assets') {
+    detail = (
+      <ul className={styles.navAssetList}>
+        {DEVELOPER_ASSETS.map((a) => (
+          <li key={a.id}>
+            <Link to={`/developer-assets#${a.id}`}>
+              <b><CatalogIcon name={a.icon} size={16} /> {a.title}</b>
+              <small>{a.summary}</small>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    );
+  } else {
+    detail = (
       <ul className={styles.navAccelCommunity}>
         {community.map((sub) => (
           <li key={sub.href}>
@@ -611,14 +617,31 @@ function AcceleratorMenu({ item, preview }) {
           </li>
         ))}
       </ul>
-      <div className={styles.navAcceleratorScroll}>
-        <BigCard title="Reference Tools" subtitle="Open-source code, project by project." href="/reference-tools"
-          accent="#00a0d2" groups={tools} />
-        <BigCard title="Testbeds" subtitle="Test environments and evaluation frameworks." href="/testbeds"
-          accent="#4a6b8a" groups={testbeds} flat />
-        <BigCard title="Developer Assets" subtitle="Tools and rules from specification to implementation." href="/developer-assets"
-          accent="#2f7d6d" flat
-          groups={[{ title: 'Developer Assets', items: DEVELOPER_ASSETS.map((a) => ({ label: a.title, href: `/developer-assets#${a.id}`, icon: a.icon })) }]} />
+    );
+  }
+  return (
+    <MegaMenu
+      label={`${preview.title} quick links`}
+      trigger={(expanded) => renderNavbarItem({ ...item, 'aria-haspopup': 'true', 'aria-expanded': expanded })}
+    >
+      <div className={styles.navMD}>
+        <ul className={styles.navMDRail}>
+          {ACCEL_RAIL.map((r) => (
+            <li key={r.key} onMouseEnter={() => setActive(r.key)} onFocus={() => setActive(r.key)}>
+              <Link to={r.href} className={clsx(styles.navMDRailItem, r.key === active && styles.navMDRailOn)}>
+                <b>{r.title}</b>
+                <small>{r.subtitle}</small>
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <div className={styles.navMDDetail}>
+          <div className={styles.navMDHead}>
+            <b>{current.title}</b>
+            <Link to={current.href}>View all →</Link>
+          </div>
+          <div className={styles.navAcceleratorScroll}>{detail}</div>
+        </div>
       </div>
     </MegaMenu>
   );

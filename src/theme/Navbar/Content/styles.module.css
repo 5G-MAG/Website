@@ -733,10 +733,10 @@ See https://github.com/facebook/docusaurus/pull/11142
 /* The community links: one row of buttons straight under the header row, wider where the label is longer. */
 .navAccelCommunity {
   list-style: none;
-  margin: 0.6rem 0 0;
+  margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: 1.35fr 1.25fr 0.8fr 0.95fr 1.4fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.6rem;
 }
 
@@ -766,8 +766,8 @@ See https://github.com/facebook/docusaurus/pull/11142
 }
 
 .navAcceleratorScroll {
-  /* below the header card and the community buttons */
-  max-height: calc(100vh - var(--ifm-navbar-height) - 11rem);
+  /* below the detail panel's heading */
+  max-height: calc(100vh - var(--ifm-navbar-height) - 8rem);
   overflow-y: auto;
 }
 
@@ -788,3 +788,98 @@ See https://github.com/facebook/docusaurus/pull/11142
   text-decoration: underline;
 }
 
+
+/* Software Accelerator: master and detail. */
+.navMD {
+  display: grid;
+  grid-template-columns: 15rem minmax(0, 1fr);
+  gap: 1rem;
+}
+
+.navMDRail {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.navMDRailItem {
+  display: block;
+  padding: 0.6rem 0.8rem;
+  border-radius: 10px;
+  color: var(--ifm-color-emphasis-900);
+  text-decoration: none;
+}
+
+.navMDRailItem b {
+  display: block;
+}
+
+.navMDRailItem small {
+  display: block;
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.78rem;
+  line-height: 1.3;
+}
+
+.navMDRailItem:hover,
+.navMDRailItem:focus-visible,
+.navMDRailOn {
+  background: color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
+  color: var(--ifm-color-emphasis-900);
+  text-decoration: none;
+}
+
+.navMDDetail {
+  min-width: 0;
+  min-height: 22rem;
+  border-left: 1px solid var(--ifm-color-emphasis-200);
+  padding-left: 1rem;
+}
+
+.navMDHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.6rem;
+  font-size: 1.05rem;
+}
+
+.navMDHead a {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.navAssetList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.navAssetList a {
+  display: block;
+  height: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 10px;
+  color: var(--ifm-color-emphasis-900);
+  text-decoration: none;
+}
+
+.navAssetList a:hover,
+.navAssetList a:focus-visible {
+  border-color: var(--ifm-color-primary);
+}
+
+.navAssetList small {
+  display: block;
+  margin-top: 0.2rem;
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
