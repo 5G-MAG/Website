@@ -304,7 +304,13 @@ export default function AreaPage({ basketKey }) {
                 <span className={styles.topicIcon}><Icon id={t.id} iconKey={t.icon} size={26} /></span>
                 <Heading as="h2" id={t.id} className={styles.topicTitle}>{t.title}</Heading>
               </div>
-              {t.showcase ? <Showcase topic={t} /> : <p className={styles.muted}>Nothing to try yet in the Reference Tools.</p>}
+              {t.showcase ? <Showcase topic={t} /> : (
+                <p className={styles.muted}>
+                  {t.pipeline?.length
+                    ? 'This topic is not possible with the Reference Tools yet. What it needs is listed under Not yet possible, below.'
+                    : 'No showcase for this topic yet.'}
+                </p>
+              )}
               <Paths topic={t} />
             </div>
           </section>
