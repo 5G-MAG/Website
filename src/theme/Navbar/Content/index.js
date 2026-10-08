@@ -437,6 +437,7 @@ function MegaCard({ g }) {
             <Link to={sub.href}>
               <CatalogIcon name={sub.icon} size={16} />
               {sub.label}
+              {sub.tag && <span className={styles.navTag}>{sub.tag}</span>}
             </Link>
           </li>
         ))}

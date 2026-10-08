@@ -618,3 +618,13 @@ a.path:focus-visible .pathArrow {
     grid-template-columns: 1fr;
   }
 }
+
+.tileTag {
+  margin-left: auto;
+  padding: 0 0.4rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--ifm-color-primary);
+  background: color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
+}

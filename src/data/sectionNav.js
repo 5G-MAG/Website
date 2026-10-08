@@ -57,7 +57,7 @@ const TECHNOLOGY_ITEMS = TOPIC_BASKETS.map((b) => ({ label: b.title, href: `/tec
 // page lists that page instead. Testbeds are not listed here: they are in the Software Accelerator menu.
 export const TECHNOLOGY_GROUPS = TOPIC_BASKETS.map((b) => {
   const items = PROJECTS.filter((p) => p.basket === b.key && p.tech_url)
-    .map((p) => ({ label: techLabelOf(p), href: p.tech_url, icon: p.icon }));
+    .map((p) => ({ label: techLabelOf(p), href: p.tech_url, icon: p.icon, tag: isTestbed(p) ? 'Testbed' : undefined }));
   return {
     title: b.title,
     href: BASKET_PAGE[b.key] || `/tech#${b.key}`,
