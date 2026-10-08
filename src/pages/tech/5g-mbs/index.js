@@ -34,11 +34,11 @@ const BROADCAST_ICON = (
   </>
 );
 
-// This project's own basket accent (BASKET_ACCENT['multicast'] in
+// This project's own basket accent (BASKET_ACCENT['broadcast-multicast'] in
 // src/data/baskets.js) -- a plain literal here rather than importing the
 // whole map for one color, since this page only ever needs its own single
 // project's accent.
-const ACCENT = '#2e9e5b';
+const ACCENT = '#e07b1a';
 
 export default function FiveGMBS() {
   const coverImg = useBaseUrl('/assets/images/projects/5g-mbs.png');

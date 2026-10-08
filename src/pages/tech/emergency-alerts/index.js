@@ -28,7 +28,7 @@ const SOS_ICON = (
   </>
 );
 
-// This basket's own accent (BASKET_ACCENT['5g-broadcast'] in
+// This basket's own accent (BASKET_ACCENT['broadcast-multicast'] in
 // src/data/baskets.js) -- same basket, and the same accent, as the sibling
 // /tech/5g-broadcast page this was split out of.
 const ACCENT = '#e07b1a';

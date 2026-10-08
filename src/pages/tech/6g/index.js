@@ -1,3 +1,4 @@
+import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
@@ -51,6 +52,9 @@ export default function Towards6GMedia() {
           <div className="container">
             <div className={styles.introGrid}>
               <div style={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
+                <p>
+                  The 6G AI Traffic Characterization Testbed is a testbed of the <Link to="/tech/ai-for-media">AI for Media</Link> project.
+                </p>
                 <p>
                   This study aims to identify media-related opportunities and gaps in the context of 6G. It
                   builds on service requirements defined by SA1 and architectural enhancements defined by SA2.

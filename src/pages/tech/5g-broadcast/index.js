@@ -35,7 +35,7 @@ const ANTENNA_ICON = (
   </>
 );
 
-// This basket's own accent (BASKET_ACCENT['5g-broadcast'] in
+// This basket's own accent (BASKET_ACCENT['broadcast-multicast'] in
 // src/data/baskets.js) -- a plain literal here rather than importing the
 // whole map, same reasoning as the 5gms page's own ACCENT constant: this
 // page only ever needs its own basket's color.

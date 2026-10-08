@@ -40,11 +40,11 @@ const BRAIN_ICON = (
   </>
 );
 
-// This project's own basket accent (BASKET_ACCENT['testbeds'] in
+// This project's own basket accent (BASKET_ACCENT['towards-6g'] in
 // src/data/baskets.js) -- a plain literal here rather than importing the
 // whole map for one color, same reasoning as the 5gms and content-delivery
 // pages' own ACCENT.
-const ACCENT = '#4a6b8a';
+const ACCENT = '#c4622f';
 
 export default function AiMl() {
   const coverImg = useBaseUrl('/assets/images/projects/ai-ml.png');
@@ -68,6 +68,9 @@ export default function AiMl() {
           <div className="container">
             <div className={styles.introGrid}>
               <div style={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
+                <p>
+                  A testbed of the <Link to="/tech/ai-for-media">AI for Media</Link> project.
+                </p>
                 <p>
                   3GPP covers AI/ML for 5G media in two places. <strong>SA2</strong> (system
                   architecture) defines the Network Data Analytics Function (NWDAF), which

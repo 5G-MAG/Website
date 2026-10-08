@@ -32,11 +32,11 @@ const TV_ICON = (
   </>
 );
 
-// This project's own basket accent (BASKET_ACCENT['5g-broadcast'] in
+// This project's own basket accent (BASKET_ACCENT['content-delivery'] in
 // src/data/baskets.js) -- a plain literal here rather than importing the
 // whole map for one color, since this page only ever needs its own single
 // project's accent.
-const ACCENT = '#e07b1a';
+const ACCENT = '#00a0d2';
 
 export default function DvbI() {
   const coverImg = useBaseUrl('/assets/images/projects/dvb-i.png');

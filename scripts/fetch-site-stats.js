@@ -70,7 +70,9 @@ function apiGet(urlPath) {
 const repoSlug = (r) => (typeof r === 'string' ? r : r.repo_slug || r.name || r.repo);
 
 function projects() {
-  const n = readJson('src/data/taxonomy.json').projects.filter((p) => p.doc_url && !p.auxiliary).length;
+  // A project is a top-level entry with an offering page of its own, or that hosts testbeds with pages.
+  const all = readJson('src/data/taxonomy.json').projects;
+  const n = all.filter((p) => !p.parent && !p.auxiliary && (p.doc_url || all.some((c) => c.parent === p.name && c.doc_url))).length;
   if (!n) throw new Error('projects: counted 0');
   return n;
 }

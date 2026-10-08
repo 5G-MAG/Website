@@ -1,6 +1,6 @@
 import Link from '@docusaurus/Link';
 import { icon } from '@site/src/components/GodeeperCard';
-import { ALL_REPOS, ICON_CATALOG, STAGE_GROUPS, displayNameOf } from '@site/src/data/baskets';
+import { ALL_PROJECTS, ALL_REPOS, ICON_CATALOG, STAGE_GROUPS, displayNameOf } from '@site/src/data/baskets';
 import styles from '@site/src/pages/tech/index.module.css';
 
 // Extracted from /tech/index.js's own "Where We Stand" chart (2026-09-27)
@@ -56,9 +56,11 @@ function bubblesForGroup(project, groupKey) {
     return b;
   }
   if (groupKey === 'software') {
-    const repoCount = ALL_REPOS.filter((r) => r.projectName === displayNameOf(project)).length;
+    const hosted = ALL_PROJECTS.filter((c) => c.parent === project.name).map(displayNameOf);
+    const names = [displayNameOf(project), ...hosted];
+    const repoCount = ALL_REPOS.filter((r) => names.includes(r.projectName)).length;
     return [
-      { label: `${repoCount} ${repoCount === 1 ? 'repository' : 'repositories'}`, href: project.doc_url || null },
+      { label: `${repoCount} ${repoCount === 1 ? 'repository' : 'repositories'}`, href: project.doc_url || (hosted.length ? project.tech_url : null) },
     ];
   }
   return [];

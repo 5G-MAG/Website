@@ -321,7 +321,9 @@ if (typeof window === 'undefined') {
 }
 
 export function reposFor(project) {
-  return (project.repos || [])
+  // A project that hosts testbeds counts their repositories as its own.
+  const hosted = ALL_PROJECTS.filter((c) => c.parent === project.name).flatMap((c) => c.repos || []);
+  return [...(project.repos || []), ...hosted]
     .map((r) => (typeof r === 'string' ? r : r.name))
     .filter((name) => !(name in SHARED_REPO_OWNERS) || SHARED_REPO_OWNERS[name].includes(project.name));
 }
