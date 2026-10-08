@@ -143,7 +143,8 @@ function buildMergedProjects() {
   const releasesByName = new Map(releasesData.projects.map((p) => [p.name, p]));
   const prsByName = new Map(pullRequestsData.projects.map((p) => [p.name, p]));
 
-  return statsData.projects.map((statsProject) => {
+  const hasPage = new Set(projectsData.filter((p) => p.doc_url).map((p) => p.name));
+  return statsData.projects.filter((sp) => hasPage.has(sp.name)).map((statsProject) => {
     const releaseProject = releasesByName.get(statsProject.name);
     const prProject = prsByName.get(statsProject.name);
     const releases = releaseProject
@@ -383,7 +384,10 @@ function FullTimeline({ projects }) {
 // together. This merges all three by project name into one collapsed-by-
 // default per-project view, plus an optional full cross-project release
 // timeline for anyone who wants the flat chronological feed.
-export default function CommunityProjects() {
+// `kind`: 'tools' (every area but Testbeds) or 'testbeds': the page shows the two apart.
+const inKind = (cluster, kind) => (kind === 'testbeds' ? cluster.key === 'testbeds' : cluster.key !== 'testbeds');
+
+export default function CommunityProjects({ kind = 'tools' }) {
   const [showTimeline, setShowTimeline] = useState(false);
   const projects = buildMergedProjects();
 
@@ -394,7 +398,7 @@ export default function CommunityProjects() {
   return (
     <>
       <p>Updated: {statsData.updated_at}.</p>
-      {CLUSTERS.map((c) => {
+      {CLUSTERS.filter((c) => inKind(c, kind)).map((c) => {
         const ps = projects.filter((p) => BASKET_OF[p.name] === c.key);
         if (!ps.length) return null;
         return (
@@ -424,10 +428,11 @@ export default function CommunityProjects() {
 
 // Repository statistics for every project, on their own below the project list: the totals, then one table per
 // project, grouped by area like the project list.
-export function CommunityRepoStats() {
+export function CommunityRepoStats({ kind = 'tools' }) {
   const projects = buildMergedProjects();
   if (statsData.updated_at === null) return null;
-  const hubTrackedRepos = [...new Map(projects.flatMap((p) => p.repos).map((r) => [r.repo, r])).values()]
+  const ofKind = projects.filter((p) => inKind({ key: BASKET_OF[p.name] }, kind));
+  const hubTrackedRepos = [...new Map(ofKind.flatMap((p) => p.repos).map((r) => [r.repo, r])).values()]
     .filter((r) => !NOT_ON_HUB_DASHBOARD.has(r.repo));
   const totals = hubTrackedRepos.reduce(
     (acc, r) => ({ stars: acc.stars + (r.stars || 0), forks: acc.forks + (r.forks || 0), views: acc.views + (r.total_views || 0) }),
@@ -441,7 +446,7 @@ export function CommunityRepoStats() {
         <div className={styles.summaryCard}><h3>Total Forks</h3><span className={styles.summaryValue}>&#127811; {totals.forks}</span></div>
         <div className={styles.summaryCard}><h3>Total Views</h3><span className={styles.summaryValue}>&#128064; {totals.views}</span></div>
       </div>
-      {CLUSTERS.map((c) => {
+      {CLUSTERS.filter((c) => inKind(c, kind)).map((c) => {
         const ps = projects.filter((p) => BASKET_OF[p.name] === c.key && p.repos.length);
         if (!ps.length) return null;
         return (

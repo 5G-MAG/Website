@@ -479,7 +479,7 @@ export default function Home() {
                 </h2>
                 <p className={styles.releasesUpdated}>Updated: {releasesData.updated_at}</p>
               </div>
-              <Link className={styles.releasesViewAll} to="/community/activity#projects">
+              <Link className={styles.releasesViewAll} to="/community/activity#reference-tools">
                 View all releases &rarr;
               </Link>
             </div>

@@ -2,7 +2,7 @@
 title: Community Activity
 hide_title: true
 slug: /community/activity
-description: Every 5G-MAG project grouped by area, with its releases and open pull requests, and the statistics of every repository.
+description: Every 5G-MAG Reference Tools project grouped by area and every testbed, with releases, open pull requests and repository statistics.
 ---
 
 import CommunityProjects, { CommunityRepoStats } from '@site/src/components/CommunityProjects';
@@ -18,16 +18,28 @@ import CommunityProjects, { CommunityRepoStats } from '@site/src/components/Comm
 </div>
 </div>
 
-Live data from across the 5G-MAG Reference Tools repositories.
+Live data from across the 5G-MAG repositories, with Reference Tools and Testbeds kept apart.
 
-## Projects
+## Reference Tools
 
-Every project, grouped by area. Open a project for its latest releases and the open pull requests of each repository. Repository statistics are in their own section below.
+Every Reference Tools project, grouped by area. Open a project for its latest releases and the open pull requests of each repository. Repository statistics follow.
 
-<CommunityProjects />
+<CommunityProjects kind="tools" />
 
-## Repository statistics
+## Reference Tools: repository statistics
 
-Stars, forks, open issues, views and clones of every repository, by project.
+Stars, forks, open issues, views and clones of every Reference Tools repository, by project.
 
-<CommunityRepoStats />
+<CommunityRepoStats kind="tools" />
+
+## Testbeds
+
+Every testbed and evaluation framework, with its latest releases and open pull requests.
+
+<CommunityProjects kind="testbeds" />
+
+## Testbeds: repository statistics
+
+Stars, forks, open issues, views and clones of every testbed repository, by project.
+
+<CommunityRepoStats kind="testbeds" />
