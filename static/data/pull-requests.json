@@ -1,11 +1,24 @@
 {
-  "updated_at": "2026-10-07 02:48 UTC",
+  "updated_at": "2026-10-08 03:06 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
       "doc_url": "/reference-tools/5gms/",
       "tagline": "Driving collaboration between mobile networks and media applications",
       "pulls": [
+        {
+          "repo": "rt-5gms-examples",
+          "branch": null,
+          "number": 46,
+          "title": "Add standalone recipe-cmmf docker-compose recipe with CMMF Entry Point and HTTPS/HTTP2 support",
+          "url": "https://github.com/5G-MAG/rt-5gms-examples/pull/46",
+          "draft": true,
+          "author_login": "sygupt",
+          "author_avatar": "https://avatars.githubusercontent.com/u/268783277?v=4",
+          "created_at": "2026-10-08",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "rt-media-origin",
           "branch": null,
@@ -737,6 +750,32 @@
           "last_comment_date": null
         },
         {
+          "repo": "rt-5gc-service-consumers",
+          "branch": null,
+          "number": 35,
+          "title": "docs: apply the 5G-MAG README format",
+          "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/35",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-09-29",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-5gc-service-consumers",
+          "branch": null,
+          "number": 31,
+          "title": "MBS compliance fixes: SSM/session handling, NCGI/TAI, session-area updates",
+          "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/31",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-09-22",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
           "repo": "rt-mbs-examples",
           "branch": null,
           "number": 33,
@@ -1135,21 +1174,7 @@
       "name": "CAMARA Connectivity Quality Management APIs",
       "doc_url": "/reference-tools/network-apis/",
       "tagline": "Requesting, monitoring, and managing dynamic network resources and QoS",
-      "pulls": [
-        {
-          "repo": "rt-camara-examples",
-          "branch": null,
-          "number": 10,
-          "title": "docs: one API versions table in the root README; fix the README claims",
-          "url": "https://github.com/5G-MAG/rt-camara-examples/pull/10",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-10-05",
-          "last_comment_by": null,
-          "last_comment_date": null
-        }
-      ]
+      "pulls": []
     },
     {
       "name": "Conversational Avatar Communication with MPEG ARF",
@@ -1273,7 +1298,47 @@
       "name": "DVB-I Services over 5G Systems",
       "doc_url": "/reference-tools/dvb-i/",
       "tagline": "DVB-I service discovery combined with 5GMS and 5G Broadcast delivery",
-      "pulls": []
+      "pulls": [
+        {
+          "repo": "rt-5gms-application",
+          "branch": null,
+          "number": 55,
+          "title": "dvbi-client: native Android DVB-I client (fivegmag_DVBIClient)",
+          "url": "https://github.com/5G-MAG/rt-5gms-application/pull/55",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-03",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-5gms-application",
+          "branch": null,
+          "number": 53,
+          "title": "docs: apply the 5G-MAG README format",
+          "url": "https://github.com/5G-MAG/rt-5gms-application/pull/53",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-09-29",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-5gms-application",
+          "branch": null,
+          "number": 52,
+          "title": "Fixing instructions",
+          "url": "https://github.com/5G-MAG/rt-5gms-application/pull/52",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-05-21",
+          "last_comment_by": null,
+          "last_comment_date": null
+        }
+      ]
     },
     {
       "name": "Content Delivery Protocols",

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-07 02:49 UTC",
+  "updated_at": "2026-10-08 03:07 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -158,7 +158,7 @@
           "description": "5GMS Application Function (AF)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-04",
+          "pushed_at": "2026-10-07",
           "pulls": [
             {
               "number": 203,
@@ -389,6 +389,11 @@
               "last_commit": "2026-10-04"
             },
             {
+              "name": "feature/multi-application-server-https-support",
+              "default": false,
+              "last_commit": "2026-09-30"
+            },
+            {
               "name": "fix/apply-new-format",
               "default": false,
               "last_commit": "2026-09-29"
@@ -555,7 +560,7 @@
           "description": "5GMS Application Server (AS)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-09-29",
+          "pushed_at": "2026-10-07",
           "pulls": [
             {
               "number": 113,
@@ -704,14 +709,14 @@
               "last_commit": "2026-08-03"
             },
             {
+              "name": "feature/multi-application-server-support",
+              "default": false,
+              "last_commit": "2026-09-30"
+            },
+            {
               "name": "fix/apply-new-format",
               "default": false,
               "last_commit": "2026-09-29"
-            },
-            {
-              "name": "feature/multi-application-server-support",
-              "default": false,
-              "last_commit": "2026-09-24"
             },
             {
               "name": "development",
@@ -1228,8 +1233,17 @@
           "description": "5GMS Tools and Examples",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-09-30",
+          "pushed_at": "2026-10-08",
           "pulls": [
+            {
+              "number": 46,
+              "title": "Add standalone recipe-cmmf docker-compose recipe with CMMF Entry Point and HTTPS/HTTP2 support",
+              "url": "https://github.com/5G-MAG/rt-5gms-examples/pull/46",
+              "draft": true,
+              "author": "sygupt",
+              "created_at": "2026-10-08",
+              "base": "feature/cmmf-dev/docker-example"
+            },
             {
               "number": 45,
               "title": "docs: apply the 5G-MAG README format",
@@ -1283,7 +1297,7 @@
             {
               "name": "feature/cmmf-dev/cmmf-recipe",
               "default": false,
-              "last_commit": "2026-09-30"
+              "last_commit": "2026-10-08"
             },
             {
               "name": "fix/apply-new-format",
@@ -3239,7 +3253,7 @@
           "description": "5G-MAG's fork of Open5GS",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-09-29",
+          "pushed_at": "2026-10-07",
           "pulls": [
             {
               "number": 55,
@@ -3473,17 +3487,17 @@
               "last_commit": "2025-08-13"
             },
             {
+              "name": "feature/mbs-compliance-fixes",
+              "default": false,
+              "last_commit": "2026-10-07"
+            },
+            {
               "name": "fix/apply-new-format",
               "default": false,
               "last_commit": "2026-09-29"
             },
             {
               "name": "bbc-patches",
-              "default": false,
-              "last_commit": "2026-09-22"
-            },
-            {
-              "name": "feature/mbs-compliance-fixes",
               "default": false,
               "last_commit": "2026-09-22"
             },
@@ -3809,7 +3823,7 @@
           "description": "MBS Function (MBSF)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-01",
+          "pushed_at": "2026-10-07",
           "pulls": [
             {
               "number": 60,
@@ -3831,6 +3845,17 @@
             }
           ],
           "issues": [
+            {
+              "number": 62,
+              "title": "MBSF does not announce nrParameters (freqBandIndicator, aRFCNValue) for Broadcast sessions",
+              "url": "https://github.com/5G-MAG/rt-mbs-function/issues/62",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-07",
+              "labels": [
+                "bug",
+                "MBSF"
+              ]
+            },
             {
               "number": 59,
               "title": "MBSF: nominate the Nmb9 inside-tunnel multicast destination per Distribution Session, not once per MBSF",
@@ -3892,7 +3917,7 @@
             },
             {
               "number": 52,
-              "title": "MBSF: User Service Announcement for PACKET distribution mode",
+              "title": "MBSF: User Service Announcement for PACKET distribution method",
               "url": "https://github.com/5G-MAG/rt-mbs-function/issues/52",
               "author": "davidjwbbc",
               "created_at": "2026-09-03",
@@ -3994,7 +4019,7 @@
             {
               "name": "feature/mbs-compliance-fixes",
               "default": false,
-              "last_commit": "2026-10-01"
+              "last_commit": "2026-10-07"
             },
             {
               "name": "fix/apply-new-format",
@@ -4019,7 +4044,7 @@
           "description": "MBS Transport Function (MBSTF)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-06",
+          "pushed_at": "2026-10-07",
           "pulls": [
             {
               "number": 76,
@@ -4041,6 +4066,17 @@
             }
           ],
           "issues": [
+            {
+              "number": 77,
+              "title": "MBSTF applies no FEC to Packet Distribution Sessions (setPacketFEC is a stub)",
+              "url": "https://github.com/5G-MAG/rt-mbs-transport-function/issues/77",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-07",
+              "labels": [
+                "enhancement",
+                "MBSTF"
+              ]
+            },
             {
               "number": 75,
               "title": "405 responses do not carry the Allow header they are required to",
@@ -4123,7 +4159,7 @@
             {
               "name": "feature/mbs-compliance-fixes",
               "default": false,
-              "last_commit": "2026-10-06"
+              "last_commit": "2026-10-07"
             },
             {
               "name": "fix/apply-new-format",
@@ -4163,12 +4199,114 @@
           ]
         },
         {
+          "repo": "rt-5gc-service-consumers",
+          "url": "https://github.com/5G-MAG/rt-5gc-service-consumers",
+          "description": "5G Core Service Consumers",
+          "auxiliary": true,
+          "private": false,
+          "pushed_at": "2026-10-01",
+          "pulls": [
+            {
+              "number": 35,
+              "title": "docs: apply the 5G-MAG README format",
+              "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/35",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-09-29",
+              "base": "development"
+            },
+            {
+              "number": 31,
+              "title": "MBS compliance fixes: SSM/session handling, NCGI/TAI, session-area updates",
+              "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/31",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-09-22",
+              "base": "development"
+            }
+          ],
+          "issues": [
+            {
+              "number": 34,
+              "title": "NCGI TAI cell-list unimplemented; NCGI Network Id shared on copy",
+              "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/issues/34",
+              "author": "jordijoangimenez",
+              "created_at": "2026-09-22",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 32,
+              "title": "MbsSession redMbsServArea is read; extRedMbsServArea (location-dependent) is not",
+              "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/issues/32",
+              "author": "jordijoangimenez",
+              "created_at": "2026-09-22",
+              "labels": [
+                "enhancement"
+              ]
+            },
+            {
+              "number": 6,
+              "title": "PCF PolicyAuthorization test app: Add demo view and controls",
+              "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/issues/6",
+              "author": "davidjwbbc",
+              "created_at": "2023-08-10",
+              "labels": [
+                "enhancement"
+              ]
+            }
+          ],
+          "branches": [
+            {
+              "name": "main",
+              "default": true,
+              "last_commit": "2026-05-27"
+            },
+            {
+              "name": "feature/mbs-compliance-fixes",
+              "default": false,
+              "last_commit": "2026-10-01"
+            },
+            {
+              "name": "fix/apply-new-format",
+              "default": false,
+              "last_commit": "2026-09-29"
+            },
+            {
+              "name": "feature/mnc-length-aware-plmn-id",
+              "default": false,
+              "last_commit": "2026-09-22"
+            },
+            {
+              "name": "development",
+              "default": false,
+              "last_commit": "2026-05-27"
+            },
+            {
+              "name": "v2.1.x",
+              "default": false,
+              "last_commit": "2026-05-27"
+            },
+            {
+              "name": "v2.0.x",
+              "default": false,
+              "last_commit": "2025-10-24"
+            },
+            {
+              "name": "v1.0.x",
+              "default": false,
+              "last_commit": "2023-12-15"
+            }
+          ]
+        },
+        {
           "repo": "rt-mbs-examples",
           "url": "https://github.com/5G-MAG/rt-mbs-examples",
           "description": "MBS Tools and Examples",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-10-06",
+          "pushed_at": "2026-10-07",
           "pulls": [
             {
               "number": 36,
@@ -4208,7 +4346,7 @@
             {
               "name": "feature/mbs-compliance-fixes",
               "default": false,
-              "last_commit": "2026-10-06"
+              "last_commit": "2026-10-07"
             },
             {
               "name": "fix/apply-new-format",
@@ -4798,18 +4936,8 @@
           "description": "CAMARA API Tools and Examples",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-06",
-          "pulls": [
-            {
-              "number": 10,
-              "title": "docs: one API versions table in the root README; fix the README claims",
-              "url": "https://github.com/5G-MAG/rt-camara-examples/pull/10",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-05",
-              "base": "development"
-            }
-          ],
+          "pushed_at": "2026-10-07",
+          "pulls": [],
           "issues": [],
           "branches": [
             {
@@ -4820,7 +4948,7 @@
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-06"
+              "last_commit": "2026-10-07"
             },
             {
               "name": "docs/api-versions-and-readmes",
@@ -4993,6 +5121,126 @@
       "name": "DVB-I Services over 5G Systems",
       "doc_url": "/reference-tools/dvb-i/",
       "repos": [
+        {
+          "repo": "rt-5gms-application",
+          "url": "https://github.com/5G-MAG/rt-5gms-application",
+          "description": "5GMS-Aware Application",
+          "auxiliary": false,
+          "private": false,
+          "pushed_at": "2026-10-03",
+          "pulls": [
+            {
+              "number": 55,
+              "title": "dvbi-client: native Android DVB-I client (fivegmag_DVBIClient)",
+              "url": "https://github.com/5G-MAG/rt-5gms-application/pull/55",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-03",
+              "base": "development"
+            },
+            {
+              "number": 53,
+              "title": "docs: apply the 5G-MAG README format",
+              "url": "https://github.com/5G-MAG/rt-5gms-application/pull/53",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-09-29",
+              "base": "development"
+            },
+            {
+              "number": 52,
+              "title": "Fixing instructions",
+              "url": "https://github.com/5G-MAG/rt-5gms-application/pull/52",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-05-21",
+              "base": "development"
+            }
+          ],
+          "issues": [
+            {
+              "number": 54,
+              "title": "Native Android DVB-I client following ETSI TS 103 770 V1.2.1",
+              "url": "https://github.com/5G-MAG/rt-5gms-application/issues/54",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-03",
+              "labels": []
+            },
+            {
+              "number": 48,
+              "title": "Add stop button to terminate QoE Metrics and Consumption Reporting",
+              "url": "https://github.com/5G-MAG/rt-5gms-application/issues/48",
+              "author": "dsilhavy",
+              "created_at": "2025-02-26",
+              "labels": [
+                "bug",
+                "enhancement"
+              ]
+            },
+            {
+              "number": 27,
+              "title": "DVB-I Service using 5G Media Streaming - Reference service list",
+              "url": "https://github.com/5G-MAG/rt-5gms-application/issues/27",
+              "author": "dsilhavy",
+              "created_at": "2023-09-07",
+              "labels": [
+                "enhancement"
+              ]
+            },
+            {
+              "number": 26,
+              "title": "5GMSd Aware Application - DVB-I Service List Acquisition",
+              "url": "https://github.com/5G-MAG/rt-5gms-application/issues/26",
+              "author": "dsilhavy",
+              "created_at": "2023-09-07",
+              "labels": [
+                "enhancement"
+              ]
+            },
+            {
+              "number": 2,
+              "title": "Relevant specifications for 5GMS-Aware Application",
+              "url": "https://github.com/5G-MAG/rt-5gms-application/issues/2",
+              "author": "dsilhavy",
+              "created_at": "2022-08-26",
+              "labels": [
+                "documentation"
+              ]
+            }
+          ],
+          "branches": [
+            {
+              "name": "main",
+              "default": true,
+              "last_commit": "2026-05-26"
+            },
+            {
+              "name": "feature/dvbi-client",
+              "default": false,
+              "last_commit": "2026-10-03"
+            },
+            {
+              "name": "fix/apply-new-format",
+              "default": false,
+              "last_commit": "2026-09-29"
+            },
+            {
+              "name": "development",
+              "default": false,
+              "last_commit": "2026-05-26"
+            },
+            {
+              "name": "feature/fusecoForum",
+              "default": false,
+              "last_commit": "2024-11-05"
+            },
+            {
+              "name": "feature/5gms-aware-app",
+              "default": false,
+              "last_commit": "2023-03-06"
+            }
+          ]
+        },
         {
           "repo": "rt-dvb-i-android-application",
           "url": "https://github.com/5G-MAG/rt-dvb-i-android-application",
@@ -5452,7 +5700,7 @@
           "description": "5G-MAG's fork of Open5GS",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-09-29",
+          "pushed_at": "2026-10-07",
           "pulls": [
             {
               "number": 55,
@@ -5686,17 +5934,17 @@
               "last_commit": "2025-08-13"
             },
             {
+              "name": "feature/mbs-compliance-fixes",
+              "default": false,
+              "last_commit": "2026-10-07"
+            },
+            {
               "name": "fix/apply-new-format",
               "default": false,
               "last_commit": "2026-09-29"
             },
             {
               "name": "bbc-patches",
-              "default": false,
-              "last_commit": "2026-09-22"
-            },
-            {
-              "name": "feature/mbs-compliance-fixes",
               "default": false,
               "last_commit": "2026-09-22"
             },
