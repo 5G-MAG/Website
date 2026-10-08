@@ -415,6 +415,7 @@ const config = {
             { label: 'Reference Tools', to: '/reference-tools' },
             { label: 'Tutorials', to: '/tutorials' },
             { label: 'Testbeds', to: '/testbeds' },
+            { label: 'Developer Tools', to: '/developer-tools' },
             { label: 'Developer Exchanges', to: '/developer/exchanges' },
             { label: 'Early Access', to: '/early-access' },
             { label: 'Developer Community', to: '/community' },

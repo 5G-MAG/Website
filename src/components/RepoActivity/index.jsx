@@ -30,7 +30,7 @@ export const BASKET_OF = Object.fromEntries(ALL_PROJECTS.map((p) => [p.name, isT
 export const CLUSTERS = [
   ...BASKETS.map((b) => ({ key: b.key, title: b.title, icon: basketIcon(b), accent: BASKET_ACCENT[b.key] })),
   { key: 'testbeds', title: 'Testbeds & Evaluation Frameworks', icon: basketIcon({ icon: 'flask' }), accent: BASKET_ACCENT.testbeds },
-  { key: null, title: 'Shared libraries and platforms', icon: ICONS.repo, accent: '#587180' },
+  { key: null, title: 'Shared libraries and platforms', icon: ICONS.repo, accent: '#7a8795' },
 ];
 
 function Items({ items, render }) {

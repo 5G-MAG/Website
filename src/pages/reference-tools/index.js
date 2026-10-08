@@ -227,9 +227,8 @@ export const CATEGORIES = [
   {
     title: 'Shared Infrastructure',
     desc: 'Shared infrastructure and reference-consumer repositories other Reference Tools projects build on or exercise.',
-    // No real basket, so no accent -- CategoryCard falls back to the
-    // site's normal blue, same as every basket-less card already does
-    // elsewhere.
+    // No area: the neutral grey the menus use for "Platforms and shared tools".
+    accent: '#7a8795',
     topics: REFTOOLS_PROJECTS.filter((p) => !p.basket).map(topicFor),
   },
 ].filter((c) => c.topics.length > 0);
