@@ -51,7 +51,7 @@ export default function AiMl() {
   return (
     <Layout
       title={PROJECT_NAME}
-      description="How 3GPP's two AI/ML tracks fit together for media -- NWDAF network-side analytics (SA2) and UE-side data collection and reporting (SA4) -- and the reference tools evaluating AI/ML models for media."
+      description="AI/ML for media in 3GPP: NWDAF network-side analytics (SA2), the SA4 studies on AI/ML in 5G media services, and the reference tools evaluating AI/ML models for media."
     >
       <HubHero
         title={PROJECT_NAME}
@@ -69,15 +69,11 @@ export default function AiMl() {
             <div className={styles.introGrid}>
               <div style={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
                 <p>
-                  3GPP standardises AI/ML for 5G media along two complementary tracks, owned by
-                  different working groups. <strong>SA2</strong> (system architecture) defines the
-                  Network Data Analytics Function (NWDAF), which collects data from network
-                  functions in the 5G core and produces analytics and predictions that other
-                  functions can consume. <strong>SA4</strong> (media codecs and delivery) defines
-                  the Data Collection and Reporting framework, which standardises how data is
-                  gathered from User Equipment (UE) and media clients. A media-aware AI/ML use case
-                  (for example, predicting a QoS drop before it affects a live stream) typically
-                  needs both tracks feeding in together.
+                  3GPP covers AI/ML for 5G media in two places. <strong>SA2</strong> (system
+                  architecture) defines the Network Data Analytics Function (NWDAF), which
+                  collects data from network functions in the 5G core and produces analytics and
+                  predictions that other functions can consume. <strong>SA4</strong> (media codecs
+                  and delivery) studies AI and ML in 5G media services, in TR 26.927 and TR 26.847.
                 </p>
                 <p>
                   5G-MAG&apos;s <Link to="/testbeds/ai-ml/">AI/ML Evaluation Framework</Link>{' '}

@@ -2,7 +2,7 @@
 hide_title: true
 title: AI/ML Evaluation Framework
 slug: /standards/ai-ml
-description: 3GPP specifications for AI/ML in 5G media - NWDAF network-side analytics (SA2) and UE-side data collection (SA4) - with related studies and release mapping.
+description: 3GPP specifications and study reports for AI/ML in 5G media, with the release mapping.
 ---
 
 import SpecIndex from '@site/src/components/SpecIndex';
@@ -21,39 +21,19 @@ import { AI_ML_SPECS, AI_ML_LAYER_ORDER } from '@site/src/data/specs/ai-ml';
 
 ## Overview
 
-5G-MAG investigates the application of Artificial Intelligence (AI) and Machine Learning (ML) to media delivery, network optimisation and quality of experience within 5G systems. This covers two complementary tracks in 3GPP, one working group focused on system architecture (SA2) and one on media (SA4):
-
-- **Network-side analytics**, where the Network Data Analytics Function (NWDAF, defined by the 3GPP working group SA2) collects data from network functions and produces analytics and predictions that other functions can consume (for example to anticipate load or Quality of Service (QoS) changes affecting a media session).
-- **UE-side data collection**, where the Data Collection and Reporting framework from SA4 (the media codec and delivery working group) standardises how data is gathered from User Equipment (UE) and media clients and exposed for analytics, training and inference.
-
-Together these allow media-aware decisions (such as proactive session management or content-aware delivery) to be driven by measured data rather than static configuration.
-The two tracks differ in where the data comes from and what they produce, as summarised below.
-
-| Track                   | Data source                           | 3GPP framework                      | Example output                                                                                           |
-| ----------------------- | ------------------------------------- | ----------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| Network-side analytics  | Network functions in the 5G core      | NWDAF (SA2)                         | Load and Quality of Service (QoS) predictions for a media session                                        |
-| UE-side data collection | User Equipment (UE) and media clients | Data Collection and Reporting (SA4) | Consumption, quality-of-experience (QoE) metrics and reports for analytics, model training and inference |
+5G-MAG investigates the application of Artificial Intelligence (AI) and Machine Learning (ML) to media delivery, network optimisation and quality of experience within 5G systems. In 3GPP, SA2 (system architecture) defines network-side analytics through the Network Data Analytics Function (NWDAF), which collects data from network functions and produces analytics and predictions that other functions can consume. SA4 (the media codec and delivery working group) studies AI and ML in 5G media services, in TR 26.927 and TR 26.847.
 
 For the release-by-release work-item history behind these specifications, see [Standards Evolution](/standards/ai-ml/evolution).
 
-5G-MAG tracks both tracks, contributing primarily on the media side (SA4) and following the SA2 analytics work for the parts that affect media sessions. See [Standards: UE Data Collection, Reporting and Event Exposure](/standards/data-collection) for the related SA4 framework, and [Tech: AI/ML Evaluation Framework](/tech/ai-ml) for the implementer-facing analysis.
-
-## Specifications by track
-
-| Aspect               | NWDAF (SA2)                              | Data Collection and Reporting (SA4)                                                |
-| -------------------- | ---------------------------------------- | ---------------------------------------------------------------------------------- |
-| Owning group         | SA2 (system architecture)                | SA4 (media codecs and delivery)                                                    |
-| Internal structure   | AnLF (analytics) + MTLF (model training), per TS 23.288 | Data Collection AF plus reporting interfaces                                       |
-| Core specifications  | TS 23.288, TS 23.501                     | TS 26.531, TS 26.532                                                               |
+5G-MAG contributes primarily on the media side (SA4) and follows the SA2 analytics work for the parts that affect media sessions.
 
 ## Specifications in scope
 
-The specifications and study reports in scope of AI/ML for 5G media, filterable by track: network-side analytics in SA2, UE-side data collection in SA4, and the studies behind both.
+The specifications and study reports in scope of AI/ML for 5G media, filterable by track: network-side analytics in SA2, and the studies behind it.
 
 <SpecIndex specs={AI_ML_SPECS} layerOrder={AI_ML_LAYER_ORDER} />
 
 ## Related Standards Work
 
-- [Standards: UE Data Collection, Reporting and Event Exposure](/standards/data-collection)
 - [Standards: 5G Media Streaming](/standards/5gms)
 - [Meetings with 3GPP SA4](/standards/3gpp-issue-tracking): the live tracker for 3GPP feedback issues in this area

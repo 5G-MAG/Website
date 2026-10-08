@@ -2,8 +2,7 @@
 //
 // Merges the "Study reports" and "Key 3GPP Specifications" bullet lists this
 // page used to carry into one searchable table (see src/components/SpecIndex).
-// `layer` keeps the two 3GPP tracks the page is built around (network-side
-// analytics in SA2, UE-side data collection in SA4) apart from the studies.
+// `layer` keeps the network-side analytics specifications (SA2) apart from the studies.
 export const AI_ML_SPECS = [
   {
     id: 'TS 23.288',
@@ -17,18 +16,6 @@ export const AI_ML_SPECS = [
     url: 'https://www.3gpp.org/dynareport/23501.htm',
     layer: 'Network analytics (SA2)',
     note: 'NWDAF integration',
-  },
-  {
-    id: 'TS 26.531',
-    title: 'Data Collection and Reporting; General Description and Architecture',
-    url: 'https://www.3gpp.org/dynareport/26531.htm',
-    layer: 'UE data collection (SA4)',
-  },
-  {
-    id: 'TS 26.532',
-    title: 'Data Collection and Reporting; Protocols and Formats',
-    url: 'https://www.3gpp.org/dynareport/26532.htm',
-    layer: 'UE data collection (SA4)',
   },
   {
     id: 'TR 26.847',
@@ -73,6 +60,5 @@ export const AI_ML_SPECS = [
   },
 ];
 
-// Network-side track first, then the UE-side track, then the studies behind
-// both, matching the order the page introduces them in.
-export const AI_ML_LAYER_ORDER = ['Network analytics (SA2)', 'UE data collection (SA4)', 'Studies'];
+// Network-side track first, then the studies, matching the order the page introduces them in.
+export const AI_ML_LAYER_ORDER = ['Network analytics (SA2)', 'Studies'];
