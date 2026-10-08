@@ -43,11 +43,6 @@
       "stages": {
         "under-study": true
       }
-    },
-    {
-      "key": "testbeds",
-      "title": "Testbeds & Evaluation Frameworks",
-      "icon": "flask"
     }
   ],
   "projects": [
@@ -376,7 +371,7 @@
       "standards_url": "/standards/beyond-2d",
       "image": "/assets/images/projects/beyond-2d.png",
       "tagline": "Evaluation framework for beyond-2D video experiences",
-      "basket": "testbeds",
+      "basket": "immersive-media",
       "repos": [
         "rt-beyond2d-evaluation-framework"
       ],
@@ -405,7 +400,7 @@
       "standards_url": "/standards/6g",
       "image": "/assets/images/projects/6g-testbed.png",
       "tagline": "6G testbed and AI-driven traffic characterization",
-      "basket": "testbeds",
+      "basket": "towards-6g",
       "repos": [
         "6G-Testbed",
         "netemu-dashboard"
@@ -425,9 +420,6 @@
       "icon": "code-ai",
       "sdos": [
         "3GPP"
-      ],
-      "relatedBaskets": [
-        "towards-6g"
       ]
     },
     {
@@ -500,7 +492,7 @@
       "standards_url": "/standards/ai-ml",
       "image": "/assets/images/projects/ai-ml.png",
       "tagline": "Evaluation framework for AI/ML models in media processing for 3GPP systems",
-      "basket": "testbeds",
+      "basket": "towards-6g",
       "repos": [
         "rt-ai-ml-evaluation-framework"
       ],
@@ -528,7 +520,7 @@
       "tech_url": null,
       "standards_url": "/standards/vops",
       "tagline": "Validates video bitstreams against the operation points of 3GPP TS 26.265",
-      "basket": "testbeds",
+      "basket": "content-delivery",
       "repos": [
         "vops-conformance-validator"
       ],

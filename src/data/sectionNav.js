@@ -80,13 +80,13 @@ export const ACCELERATOR_GROUPS = TOPIC_BASKETS.map((b) => ({
   items: PROJECTS.filter((p) => p.basket === b.key && p.doc_url && !isTestbed(p) && p.repos.length)
     .map((p) => ({ label: displayNameOf(p), href: stripSlash(p.doc_url), icon: p.icon })),
 })).filter((g) => g.items.length).concat(
-  BASKETS.filter((b) => b.key === 'testbeds').map((b) => ({
-    title: b.title,
+  [{
+    title: 'Testbeds & Evaluation Frameworks',
     href: '/testbeds',
-    icon: b.icon,
-    accent: BASKET_ACCENT[b.key],
+    icon: 'flask',
+    accent: BASKET_ACCENT.testbeds,
     items: PROJECTS.filter(isTestbed).map((p) => ({ label: displayNameOf(p), href: stripSlash(p.doc_url), icon: p.icon })),
-  })).filter((g) => g.items.length),
+  }].filter((g) => g.items.length),
   [{
     title: 'Platforms and shared tools',
     href: '/reference-tools',

@@ -52,9 +52,9 @@ import releasesData from '../../static/data/releases.json';
 
 export const BASKETS = taxonomyData.baskets;
 
-// The baskets shown as technology topics and Solutions areas. Testbeds & Evaluation Frameworks is a
-// basket in the data, but it is its own section of the site (/testbeds), not a topic.
-export const TOPIC_BASKETS = BASKETS.filter((b) => b.key !== 'testbeds');
+// The baskets shown as technology topics and Solutions areas. Testbeds are not a basket: a testbed belongs to a
+// technology area like any other project and is a testbed by its type (`isTestbed`, below).
+export const TOPIC_BASKETS = BASKETS;
 
 // Accent color per basket -- originally Where We Stand's own chart-row
 // color (src/pages/tech/index.js), lifted here as the single source once
@@ -171,7 +171,7 @@ export const PROJECTS = ALL_PROJECTS.filter((p) => p.basket);
 // than borrowing a project from another basket. Shared so the jump tiles
 // above the chart and on the homepage count what the chart shows.
 export const WHERE_WE_STAND_ROWS = TOPIC_BASKETS.map((b) => {
-  const projects = PROJECTS.filter((p) => p.stages && p.basket === b.key);
+  const projects = PROJECTS.filter((p) => p.stages && p.basket === b.key && !isTestbed(p));
   const areaRow =
     projects.length === 0 && b.stages
       ? { name: b.title, tech_url: b.tech_url, icon: b.icon, stages: b.stages }
@@ -185,7 +185,7 @@ export const EXCLUDED = ALL_PROJECTS.filter((p) => !p.basket);
 
 // Every project in a given basket, in taxonomy.json's own order.
 // A testbed is a project whose own pages are under /testbeds/, whatever its
-// basket: the 6G AI Traffic Characterization Testbed is in Towards 6G Media.
+// area: the 6G AI Traffic Characterization Testbed is in Towards 6G Media.
 export function isTestbed(project) {
   return Boolean(project.doc_url && project.doc_url.startsWith('/testbeds/'));
 }

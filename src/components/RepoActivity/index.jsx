@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import Link from '@docusaurus/Link';
 import data from '@site/static/data/repo-activity.json';
-import { ALL_PROJECTS, BASKETS, BASKET_ACCENT, ICON_CATALOG } from '@site/src/data/baskets';
+import { ALL_PROJECTS, BASKETS, BASKET_ACCENT, ICON_CATALOG, isTestbed } from '@site/src/data/baskets';
 import ProjectIcon from '@site/src/components/ProjectIcon';
 import styles from './styles.module.css';
 
@@ -26,9 +26,10 @@ const basketIcon = (b) => (ICON_CATALOG[b.icon] || []).map((d) => `<path d="${d}
 
 // Clusters: one per taxonomy area (basket), in the taxonomy's order, then the projects that belong to no area.
 // Repositories no taxonomy project lists are not shown.
-export const BASKET_OF = Object.fromEntries(ALL_PROJECTS.map((p) => [p.name, p.basket || null]));
+export const BASKET_OF = Object.fromEntries(ALL_PROJECTS.map((p) => [p.name, isTestbed(p) ? 'testbeds' : p.basket || null]));
 export const CLUSTERS = [
   ...BASKETS.map((b) => ({ key: b.key, title: b.title, icon: basketIcon(b), accent: BASKET_ACCENT[b.key] })),
+  { key: 'testbeds', title: 'Testbeds & Evaluation Frameworks', icon: basketIcon({ icon: 'flask' }), accent: BASKET_ACCENT.testbeds },
   { key: null, title: 'Shared libraries and platforms', icon: ICONS.repo, accent: '#587180' },
 ];
 
