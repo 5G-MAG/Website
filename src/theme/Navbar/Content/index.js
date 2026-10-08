@@ -643,8 +643,11 @@ function AcceleratorMenu({ item, preview }) {
           {ACCEL_RAIL.map((r) => (
             <li key={r.key} onMouseEnter={() => setActive(r.key)} onFocus={() => setActive(r.key)}>
               <Link to={r.href} className={clsx(styles.navMDRailItem, r.key === active && styles.navMDRailOn)}>
-                <b>{r.title}</b>
-                <small>{r.subtitle}</small>
+                <span className={styles.navMDRailIcon}><NavItemIcon href={r.href} size={22} /></span>
+                <span className={styles.navMDRailText}>
+                  <b>{r.title}</b>
+                  <small>{r.subtitle}</small>
+                </span>
               </Link>
             </li>
           ))}

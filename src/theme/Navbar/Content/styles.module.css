@@ -1037,3 +1037,21 @@ See https://github.com/facebook/docusaurus/pull/11142
   color: var(--ifm-color-emphasis-900);
   text-decoration: none;
 }
+
+/* Software Accelerator rail: the destination's icon beside its name. */
+.navMDRailItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+
+.navMDRailIcon {
+  display: inline-flex;
+  flex: none;
+  margin-top: 0.1rem;
+  color: var(--ifm-color-primary);
+}
+
+.navMDRailText {
+  min-width: 0;
+}
