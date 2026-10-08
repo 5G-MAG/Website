@@ -576,18 +576,14 @@ const ACCEL_RAIL = [
 // One card per area, in the area's colour, with its projects as rows.
 function AreaCards({ areas }) {
   return (
-    <div className={styles.navBigCols}>
-      {dealColumns(areas).map((col, k) => (
-        <div key={k} className={styles.navBigCol}>
-          {col.map((g) => (
-            <div key={g.title} className={styles.navAreaCard} style={{ '--accent': g.accent }}>
-              <div className={styles.navMegaLabel}>
-                <CatalogIcon name={g.icon} size={15} />
-                {g.title}
-              </div>
-              <MenuList items={g.items} />
-            </div>
-          ))}
+    <div className={styles.navAreaGrid}>
+      {areas.map((g) => (
+        <div key={g.title} className={styles.navAreaCard} style={{ '--accent': g.accent }}>
+          <div className={styles.navMegaLabel}>
+            <CatalogIcon name={g.icon} size={15} />
+            {g.title}
+          </div>
+          <MenuList items={g.items} />
         </div>
       ))}
     </div>

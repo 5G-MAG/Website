@@ -974,3 +974,15 @@ See https://github.com/facebook/docusaurus/pull/11142
   font-size: 0.78rem;
   color: var(--ifm-color-emphasis-700);
 }
+
+/* Software Accelerator: the area cards share one size, three to a row. */
+.navAreaGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 0.6rem;
+}
+
+.navAreaCard .navMegaLabel {
+  min-height: 2.6em;
+}
