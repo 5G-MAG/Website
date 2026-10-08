@@ -562,7 +562,7 @@ function MenuList({ items }) {
 const ACCEL_RAIL = [
   { key: 'tools', title: 'Reference Tools', subtitle: 'Open-source code, project by project.', href: '/reference-tools' },
   { key: 'testbeds', title: 'Testbeds', subtitle: 'Test environments and evaluation frameworks.', href: '/testbeds' },
-  { key: 'assets', title: 'Developer Tools', subtitle: 'Assets for members, from standards to deployments.', href: '/developer-tools' },
+  { key: 'assets', title: 'Developer Tools', subtitle: 'Tools for members, from standards to deployments.', href: '/developer-tools' },
   { key: 'community', title: 'Community', subtitle: 'Join, license, early access.', href: '/community' },
 ];
 

@@ -29,7 +29,7 @@ export default function DeveloperAssets() {
   return (
     <Layout
       title="Developer Tools"
-      description="Assets for 5G-MAG members that support the transition of standards into deployments: tools, rules and working records for going from a specification to a working implementation."
+      description="Tools for 5G-MAG members that support the transition of standards into deployments: tools, rules and working records for going from a specification to a working implementation."
     >
       <HubHero
         title="Developer Tools"
@@ -48,7 +48,7 @@ export default function DeveloperAssets() {
         <section className={hubStyles.section}>
           <div className="container">
             <p className={styles.lead}>
-              Assets for 5G-MAG members that support the transition of standards into deployments. In Early Access.
+              Tools for 5G-MAG members that support the transition of standards into deployments. In Early Access.
             </p>
             <div className={styles.grid}>
               {DEVELOPER_TOOLS.map((a) => (
