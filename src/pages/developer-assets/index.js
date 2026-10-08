@@ -48,9 +48,7 @@ export default function DeveloperAssets() {
         <section className={hubStyles.section}>
           <div className="container">
             <p className={styles.lead}>
-              Standards2Deployments is a different kind of repository from the Reference Tools. It holds the
-              tools and rules that 5G-MAG developers use to get from a specification to a working
-              implementation. It is currently in Early Access.
+              The tools and rules for getting from a specification to a working implementation. In Early Access.
             </p>
             <div className={styles.grid}>
               {DEVELOPER_ASSETS.map((a) => (
@@ -58,7 +56,6 @@ export default function DeveloperAssets() {
                   <span className={styles.icon}><AssetIcon name={a.icon} /></span>
                   <Heading as="h2" id={a.id} className={styles.title}>{a.title}</Heading>
                   <p className={styles.summary}>{a.summary}</p>
-                  {a.body.map((t) => <p key={t}>{t}</p>)}
                 </article>
               ))}
             </div>
