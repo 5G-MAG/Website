@@ -40,7 +40,6 @@ export const DEVELOPER_ASSETS = [
     summary: 'From the specifications in scope to the code of a project\'s repositories.',
     body: [
       'Collect the statements of the specifications a project covers, classify them by feature, role, profile and release, prepare the reading of each repository against them, and draw the figures.',
-      'These tools feed the implementation pages of this website.',
     ],
   },
 ];
