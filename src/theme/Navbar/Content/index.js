@@ -510,18 +510,37 @@ function SolutionsMenu({ item }) {
   );
 }
 
+// Deals the areas into `n` columns so the columns end at about the same height: every assignment is tried
+// (there are only a handful of areas) and the one with the lowest tallest column wins, then the most even
+// one. A card is a label (two lines' worth) plus one line per project, two for a long name. Within a column
+// the areas keep the taxonomy order.
+function dealColumns(groups, n = 3) {
+  const weight = (g) => 2 + g.items.reduce((a, it) => a + (it.label.length > 38 ? 2 : 1), 0);
+  const w = groups.map(weight);
+  let best = null;
+  const assign = new Array(groups.length).fill(0);
+  const walk = (i) => {
+    if (i === groups.length) {
+      const h = new Array(n).fill(0);
+      assign.forEach((c, k) => { h[c] += w[k]; });
+      const score = [Math.max(...h), h.reduce((a, x) => a + x * x, 0)];
+      if (!best || score[0] < best.score[0] || (score[0] === best.score[0] && score[1] < best.score[1])) {
+        best = { score, assign: assign.slice() };
+      }
+      return;
+    }
+    for (let c = 0; c < n; c++) { assign[i] = c; walk(i + 1); }
+  };
+  walk(0);
+  const cols = Array.from({ length: n }, () => []);
+  groups.forEach((g, k) => cols[best.assign[k]].push(g));
+  return cols.filter((c) => c.length);
+}
+
 // One big card for a destination: its title (a link to the destination's page) over the projects. The areas
-// of the Reference Tools card are small labels, not links; they are dealt, in order, into columns of about
-// the same height (a label plus one line per project).
+// of the Reference Tools card are small labels, not links.
 function BigCard({ title, subtitle, href, accent, groups, flat = false }) {
-  const weight = (g) => g.items.length + 2;
-  const target = groups.reduce((a, g) => a + weight(g), 0) / 3;
-  const cols = [[], [], []];
-  let before = 0;
-  groups.forEach((g) => {
-    cols[Math.min(2, Math.floor((before + weight(g) / 2) / target))].push(g);
-    before += weight(g);
-  });
+  const cols = flat ? [] : dealColumns(groups);
   const list = (items) => (
     <ul className={styles.navMegaList}>
       {items.map((sub) => (
