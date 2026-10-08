@@ -55,6 +55,32 @@ const TECHNOLOGY_ITEMS = TOPIC_BASKETS.map((b) => ({ label: b.title, href: `/tec
 // The Solutions mega menu: every project with its own Technical Analysis page, grouped under its area
 // (taxonomy order); each group's title links to the area page. An area with no project yet but its own
 // page lists that page instead. Testbeds are not listed here: they are in the Software Accelerator menu.
+// The Software Accelerator menu, area by area: each area is one card, each project in it one row with what it
+// offers, Reference Tools and/or its testbeds, as links. An area with nothing to offer yet is not listed.
+const stripSlash = (u) => u.replace(/\/$/, '');
+// A project row: its name opens its Reference Tools (or, with testbeds only, its testbed or its landing page);
+// purple tags open its testbeds.
+const areaItem = (p) => {
+  const hasRt = (p.doc_url || '').startsWith('/reference-tools/') && !p.auxiliary && (p.repos || []).length > 0;
+  const hosted = ALL_PROJECTS.filter((c) => c.parent === p.name && c.doc_url);
+  if (isTestbed(p)) hosted.push(p);
+  const tags = hosted.map((c) => ({ label: hosted.length > 1 ? displayNameOf(c) : 'Testbed', href: stripSlash(c.doc_url) }));
+  if (!hasRt && !tags.length) return null;
+  const href = hasRt ? stripSlash(p.doc_url) : hosted.length === 1 ? stripSlash(hosted[0].doc_url) : p.tech_url;
+  return { label: displayNameOf(p), icon: p.icon, href, tags };
+};
+export const ACCELERATOR_AREAS = TOPIC_BASKETS.map((b) => ({
+  title: b.title,
+  icon: b.icon,
+  accent: BASKET_ACCENT[b.key],
+  items: PROJECTS.filter((p) => p.basket === b.key).map(areaItem).filter(Boolean),
+})).filter((g) => g.items.length).concat([{
+  title: 'Platforms and shared tools',
+  icon: 'tool',
+  accent: '#7a8795',
+  items: ALL_PROJECTS.filter((p) => !p.basket && !p.auxiliary).map(areaItem).filter(Boolean),
+}].filter((g) => g.items.length));
+
 // The two areas with a single project each, shown as half-height cards stacked in one column of the Solutions menu.
 export const HALF_AREAS = ['ntn', 'towards-6g'];
 export const TECHNOLOGY_GROUPS = TOPIC_BASKETS.map((b) => {
@@ -74,7 +100,6 @@ export const TECHNOLOGY_GROUPS = TOPIC_BASKETS.map((b) => {
 // order, colours and icons) but each project opens its Reference Tools page; Testbeds is its own group
 // (each opens a testbed's page) and the tools that are not an area's (platforms, shared libraries) come last.
 // A project without a repository yet (NTN, NPN, TSC) is not listed until it has one.
-const stripSlash = (u) => u.replace(/\/$/, '');
 export const ACCELERATOR_GROUPS = TOPIC_BASKETS.map((b) => ({
   title: b.title,
   href: BASKET_PAGE[b.key] || `/tech#${b.key}`,
