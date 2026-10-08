@@ -77,6 +77,17 @@ export default function Towards6GMedia() {
                 style={{ width: '100%', borderRadius: '16px', boxShadow: '0 12px 40px rgba(0,0,0,0.25)' }}
               />
             </div>
+            <div className={styles.whyMattersBlock}>
+              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
+              <p className={styles.whyMattersBody}>
+                The traffic characteristics of media services are relevant to the design of 6G radio and
+                service architectures, and for AI media services the study obtains them itself. Its five
+                initial findings are that AI traffic is uplink heavy in some scenarios, that it is bursty,
+                that round-trip delay determines responsiveness, that traffic varies within one
+                application, and that some traffic is structured in tokens. The findings are to be updated
+                as more measurement results become available, which is what the testbed produces.
+              </p>
+            </div>
           </div>
         </section>
 
