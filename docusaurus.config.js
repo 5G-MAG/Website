@@ -202,6 +202,8 @@ const config = {
           { from: '/developer-assets', to: '/developer-tools' },
           { from: '/reference-tools/standards2deployments', to: '/developer-tools' },
           { from: '/ai-for-media', to: '/towards-6g-media' },
+          { from: '/broadcast', to: '/broadcast-and-multicast' },
+          { from: '/point-to-multipoint', to: '/broadcast-and-multicast' },
           { from: '/testing', to: '/deploy' },
           { from: '/testing/5g-broadcast-plugfest', to: '/deploy/5g-broadcast-plugfest' },
           // /action ("In Action") renamed to /deploy ("Deploy") on 2026-10-05.

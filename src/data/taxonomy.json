@@ -11,14 +11,9 @@
       "icon": "webrtc-arrows"
     },
     {
-      "key": "5g-broadcast",
-      "title": "Broadcast",
+      "key": "broadcast-multicast",
+      "title": "Broadcast and Multicast",
       "icon": "antenna-signal"
-    },
-    {
-      "key": "multicast",
-      "title": "Point-to-Multipoint Communication",
-      "icon": "broadcast-waves"
     },
     {
       "key": "ntn",
@@ -101,7 +96,7 @@
       "standards_url": "/standards/5g-broadcast",
       "image": "/assets/images/projects/5g-broadcast.png",
       "tagline": "The 3GPP-based broadcast delivery system bridging OTT streaming and broadcasting",
-      "basket": "5g-broadcast",
+      "basket": "broadcast-multicast",
       "repos": [
         "rt-mbms-modem",
         "rt-mbms-tx",
@@ -147,7 +142,7 @@
       "standards_url": "/standards/emergency-alerts",
       "image": "/assets/images/projects/emergency-alerts.png",
       "tagline": "Emergency warnings delivered over 5G Broadcast",
-      "basket": "5g-broadcast",
+      "basket": "broadcast-multicast",
       "repos": [
         {
           "name": "rt-mbms-tx-for-qrd-and-crd",
@@ -219,7 +214,7 @@
       "standards_url": "/standards/5g-mbs",
       "image": "/assets/images/projects/5g-mbs.png",
       "tagline": "Multicast and Broadcast delivery for 5G-NR-based terrestrial and non-terrestrial networks",
-      "basket": "multicast",
+      "basket": "broadcast-multicast",
       "repos": [
         "rt-mbs-function",
         "rt-mbs-transport-function",
@@ -642,7 +637,7 @@
       "tagline": "DVB-I service discovery combined with 5GMS and 5G Broadcast delivery",
       "basket": "content-delivery",
       "relatedBaskets": [
-        "5g-broadcast"
+        "broadcast-multicast"
       ],
       "relatedProjects": [
         "5G Media Streaming (5GMS)"
@@ -684,8 +679,7 @@
       "tagline": "Content delivery origin, packaging, protocols and related tools",
       "basket": "content-delivery",
       "relatedBaskets": [
-        "5g-broadcast",
-        "multicast"
+        "broadcast-multicast"
       ],
       "repos": [
         "rt-libflute",

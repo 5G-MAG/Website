@@ -140,9 +140,8 @@ const TOPIC_META = {
 
 const BASKET_DESC = {
   'content-delivery': 'Reference implementations for delivering and streaming media over broadband networks.',
-  '5g-broadcast': 'Reference implementations of LTE-based 5G Broadcast for TV, radio and emergency alerts.',
+  'broadcast-multicast': 'Reference implementations of LTE-based 5G Broadcast for TV, radio and emergency alerts, and of native multicast delivery over 5G.',
   'immersive-media': 'Reference implementations of MPEG scene-description, avatar and volumetric-video standards.',
-  multicast: 'Reference implementations of native multicast delivery over 5G.',
   'connected-media-production': 'Reference implementations of CAMARA telco network APIs for connected production.',
   rtc: 'Reference implementations for interactive, low-latency, real-time media communication.',
   ntn: 'Reference implementations for content delivery over satellite and HAPS non-terrestrial networks.',

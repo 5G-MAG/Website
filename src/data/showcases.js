@@ -144,9 +144,9 @@ export const SHOWCASE_BASKETS = {
       },
     ],
   },
-  '5g-broadcast': {
-    basket: '5g-broadcast',
-    title: 'Broadcast',
+  'broadcast-multicast': {
+    basket: 'broadcast-multicast',
+    title: 'Broadcast and Multicast',
     topics: [
       {
         id: 'hybrid',
@@ -168,6 +168,18 @@ export const SHOWCASE_BASKETS = {
           },
         },
         pipeline: [],
+      },
+      {
+        id: 'converged',
+        project: '5g-mbs',
+        icon: 'broadcast-waves',
+        title: 'Converged unicast and multicast delivery',
+        diagram: null,
+        showcase: null,
+        pipeline: [
+          { title: 'In-Session Unicast Repair for MBS/MBMS Object Distribution', needs: 'Object Repair (TS 26.502 clause 4.2.6)', status: 'unknown' }, // slide 8
+          { title: 'Broadcast What Is Common, Use Unicast Where Needed, over 5G MBS', needs: 'Combined unicast, multicast and broadcast delivery (Release 20, in progress)', status: 'no' }, // slide 18; AMD page
+        ],
       },
     ],
   },
@@ -202,24 +214,6 @@ export const SHOWCASE_BASKETS = {
           tutorial: { label: 'Run the testbed', to: '/testbeds/6g-testbed/tutorials/introduction-6g-testbed' },
         },
         pipeline: [],
-      },
-    ],
-  },
-  multicast: {
-    basket: 'multicast',
-    title: 'Point-to-Multipoint Communication',
-    topics: [
-      {
-        id: 'converged',
-        project: '5g-mbs',
-        icon: 'broadcast-waves',
-        title: 'Converged unicast and multicast delivery',
-        diagram: null,
-        showcase: null,
-        pipeline: [
-          { title: 'In-Session Unicast Repair for MBS/MBMS Object Distribution', needs: 'Object Repair (TS 26.502 clause 4.2.6)', status: 'unknown' }, // slide 8
-          { title: 'Broadcast What Is Common, Use Unicast Where Needed, over 5G MBS', needs: 'Combined unicast, multicast and broadcast delivery (Release 20, in progress)', status: 'no' }, // slide 18; AMD page
-        ],
       },
     ],
   },

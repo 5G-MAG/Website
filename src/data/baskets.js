@@ -64,8 +64,7 @@ export const TOPIC_BASKETS = BASKETS;
 export const BASKET_PAGE = {
   'content-delivery': '/content-delivery-and-streaming',
   'rtc': '/real-time-communications',
-  '5g-broadcast': '/broadcast',
-  'multicast': '/point-to-multipoint',
+  'broadcast-multicast': '/broadcast-and-multicast',
   'ntn': '/non-terrestrial-networks',
   'immersive-media': '/immersive-media',
   'connected-media-production': '/connected-media-production',
@@ -74,8 +73,7 @@ export const BASKET_PAGE = {
 
 export const BASKET_ACCENT = {
   'content-delivery': '#00a0d2',
-  '5g-broadcast': '#e07b1a',
-  multicast: '#2e9e5b',
+  'broadcast-multicast': '#e07b1a',
   'immersive-media': '#8355c7',
   'connected-media-production': '#d1477a',
   rtc: '#4f63d6',
