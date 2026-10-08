@@ -14,7 +14,7 @@ import NavbarSearch from '@theme/Navbar/Search';
 import { GITHUB_ICON, SLACK_ICON, LINKEDIN_ICON, LOCK_ICON, SEARCH_ICON } from '../../socialIcons';
 import { SLACK_INVITE_URL, SOCIAL_LINKS } from '../../../data/socialLinks';
 import { useNavbarItems } from '../../navItems';
-import { SECTION_NAV, SOLUTIONS_ITEMS, TECHNOLOGY_GROUPS, stripBaseUrl } from '../../../data/sectionNav';
+import { SECTION_NAV, SOLUTIONS_ITEMS, TECHNOLOGY_GROUPS, ACCELERATOR_GROUPS, stripBaseUrl } from '../../../data/sectionNav';
 import { ICON_CATALOG } from '../../../data/baskets';
 import styles from './styles.module.css';
 
@@ -419,13 +419,39 @@ function NavItemIcon({ href, size = 18 }) {
   return typeof icon === 'string' ? <CatalogIcon name={icon} size={size} /> : <CatalogIcon paths={icon} size={size} />;
 }
 
-// Solutions has no page of its own: its trigger is a button that opens one wide panel with one card per
-// area: the card title opens the area page, the lines under it each project's Technical Analysis (this
-// replaces the former separate Technology menu).
-function SolutionsMenu({ item }) {
+// The wide panel shared by the Solutions and Software Accelerator menus: one card per area, the card
+// title opening the area's page, the lines under it each a project.
+function MegaGroups({ groups, scrollClass = styles.navSolutionsScroll }) {
+  return (
+    <div className={clsx(styles.navMegaGroups, scrollClass)}>
+      {groups.map((g) => (
+        <div key={g.title} className={styles.navMegaCard} style={{ '--accent': g.accent }}>
+          <Link to={g.href} className={styles.navMegaArea}>
+            <span className={styles.navAreaIcon}><CatalogIcon name={g.icon} size={17} /></span>
+            <span className={styles.navMegaAreaTitle}>{g.title}</span>
+            <span className={styles.navMegaAreaArrow} aria-hidden="true">→</span>
+          </Link>
+          <ul className={styles.navMegaList}>
+            {g.items.map((sub) => (
+              <li key={sub.href}>
+                <Link to={sub.href}>
+                  <CatalogIcon name={sub.icon} size={16} />
+                  {sub.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// Opens a wide panel on hover or focus. The panel is wide: a pointer heading for a card on its far side
+// crosses the neighbouring navbar items first, so closing is delayed briefly and the panel stays open
+// while the pointer travels. `trigger(expanded)` draws the item that opens it.
+function MegaMenu({ trigger, label, children }) {
   const [expanded, setExpanded] = useState(false);
-  // The panel is wide: a pointer heading for a card on its far side crosses the neighbouring navbar
-  // items first. Closing is therefore delayed briefly, so the panel stays open while the pointer travels.
   const closeTimer = useRef(null);
   const open = () => {
     clearTimeout(closeTimer.current);
@@ -446,41 +472,69 @@ function SolutionsMenu({ item }) {
         if (!e.currentTarget.contains(e.relatedTarget)) setExpanded(false);
       }}
     >
-      <button
-        type="button"
-        data-solutions-trigger
-        className={clsx('navbar__item navbar__link clean-btn', item.className)}
-        aria-haspopup="true"
-        aria-expanded={expanded}
-      >
-        {item.label}
-      </button>
-      <div className={clsx(styles.navDropdownMenu, styles.navMegaMenu)} aria-label="Solutions">
-        <SectionHeadCard title="Solutions" subtitle="What you can build, area by area, and the technology behind it."
-          icon={SOLUTIONS_ICON} action={{ label: 'All technology', href: '/tech' }} />
-        <div className={clsx(styles.navMegaGroups, styles.navSolutionsScroll)}>
-          {TECHNOLOGY_GROUPS.map((g) => (
-            <div key={g.title} className={styles.navMegaCard} style={{ '--accent': g.accent }}>
-              <Link to={g.href} className={styles.navMegaArea}>
-                <span className={styles.navAreaIcon}><CatalogIcon name={g.icon} size={17} /></span>
-                <span className={styles.navMegaAreaTitle}>{g.title}</span>
-                <span className={styles.navMegaAreaArrow} aria-hidden="true">→</span>
-              </Link>
-              <ul className={styles.navMegaList}>
-                {g.items.map((sub) => (
-                  <li key={sub.href}>
-                    <Link to={sub.href}>
-                      <CatalogIcon name={sub.icon} size={16} />
-                      {sub.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+      {trigger(expanded)}
+      <div className={clsx(styles.navDropdownMenu, styles.navMegaMenu)} aria-label={label}>
+        {children}
       </div>
     </span>
+  );
+}
+
+// Solutions has no page of its own: its trigger is a button that opens one wide panel with one card per
+// area: the card title opens the area page, the lines under it each project's Technical Analysis (this
+// replaces the former separate Technology menu).
+function SolutionsMenu({ item }) {
+  return (
+    <MegaMenu
+      label="Solutions"
+      trigger={(expanded) => (
+        <button
+          type="button"
+          data-solutions-trigger
+          className={clsx('navbar__item navbar__link clean-btn', item.className)}
+          aria-haspopup="true"
+          aria-expanded={expanded}
+        >
+          {item.label}
+        </button>
+      )}
+    >
+      <SectionHeadCard title="Solutions" subtitle="What you can build, area by area, and the technology behind it."
+        icon={SOLUTIONS_ICON} action={{ label: 'All technology', href: '/tech' }} />
+      <MegaGroups groups={TECHNOLOGY_GROUPS} />
+    </MegaMenu>
+  );
+}
+
+// Software Accelerator: the section's header card and three destinations as before, then every project
+// with code in the same layout as Solutions (each opening its Reference Tools or Testbed page), then the
+// community links on one line. `preview` is the section's SECTION_NAV entry.
+function AcceleratorMenu({ item, preview }) {
+  const featured = preview.items.filter((sub) => sub.featured);
+  const others = preview.items.filter((sub) => !sub.featured);
+  return (
+    <MegaMenu
+      label={`${preview.title} quick links`}
+      trigger={(expanded) => renderNavbarItem({ ...item, 'aria-haspopup': 'true', 'aria-expanded': expanded })}
+    >
+      <SectionHeadCard title={preview.menuTitle || preview.title} subtitle={preview.subtitle} href={preview.titleHref} icon={SECTION_ICONS[preview.titleHref]} />
+      <ul className={styles.navFeatured}>
+        {featured.map((sub) => (
+          <li key={sub.href}>
+            <Link to={sub.href} className={styles.navFeaturedCard}>
+              <span className={clsx(styles.navAreaIcon, styles.navHeadIcon)}><NavItemIcon href={sub.href} size={20} /></span>
+              {sub.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+      <MegaGroups groups={ACCELERATOR_GROUPS} scrollClass={styles.navAcceleratorScroll} />
+      <ul className={styles.navMegaFoot}>
+        {others.map((sub) => (
+          <li key={sub.href}><Link to={sub.href}>{sub.label}</Link></li>
+        ))}
+      </ul>
+    </MegaMenu>
   );
 }
 
@@ -491,6 +545,7 @@ function NavbarItems({ items }) {
         if (item.solutionsMenu) return <SolutionsMenu key={i} item={item} />;
         const preview = NAV_DROPDOWNS.get(item.to);
         if (!preview) return <React.Fragment key={i}>{renderNavbarItem(item)}</React.Fragment>;
+        if (item.to === '/developer') return <AcceleratorMenu key={i} item={item} preview={preview} />;
         return (
           <NavDropdownItem key={i} item={item} preview={preview} />
         );

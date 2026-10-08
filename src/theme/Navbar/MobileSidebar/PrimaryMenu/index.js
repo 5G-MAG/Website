@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavbarMobileSidebar } from '@docusaurus/theme-common/internal';
 import NavbarItem from '@theme/NavbarItem';
 import { useNavbarItems, MOBILE_GLOBAL_ITEMS } from '../../../navItems';
-import { SECTION_NAV, SOLUTIONS_ITEMS, TECHNOLOGY_GROUPS } from '../../../../data/sectionNav';
+import { SECTION_NAV, SOLUTIONS_ITEMS, TECHNOLOGY_GROUPS, ACCELERATOR_GROUPS } from '../../../../data/sectionNav';
 
 // Docusaurus's stock PrimaryMenu reads items straight from
 // useThemeConfig().navbar.items (a static config array) — since the
@@ -59,9 +59,20 @@ export default function NavbarMobilePrimaryMenu() {
                     </React.Fragment>
                   );
                 })}
-                {TECHNOLOGY_GROUPS.filter((g) => !SOLUTIONS_ITEMS.some((sub) => sub.href === g.href)).map((g) => (
-                  // Testbeds: in the menu, but not an area page
-                  <React.Fragment key={g.href}>
+                <NavbarItem mobile to="/tech" label="All technology"
+                  className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
+              </>
+            ) : item.to === '/developer' ? (
+              // Software Accelerator: its own page, Tutorials, then each area (or Testbeds, or shared tools)
+              // with its projects indented under it, as on desktop.
+              <>
+                <NavbarItem mobile {...item} onClick={() => mobileSidebar.toggle()} />
+                <NavbarItem mobile to="/reference-tools" label="Reference Tools"
+                  className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
+                <NavbarItem mobile to="/tutorials" label="Tutorials"
+                  className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
+                {ACCELERATOR_GROUPS.map((g) => (
+                  <React.Fragment key={g.title}>
                     <NavbarItem mobile to={g.href} label={g.title}
                       className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
                     {g.items.map((p) => (
@@ -71,8 +82,6 @@ export default function NavbarMobilePrimaryMenu() {
                     ))}
                   </React.Fragment>
                 ))}
-                <NavbarItem mobile to="/tech" label="All technology"
-                  className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
               </>
             ) : (
               <NavbarItem mobile {...item} onClick={() => mobileSidebar.toggle()} />

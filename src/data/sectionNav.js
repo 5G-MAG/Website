@@ -1,4 +1,4 @@
-import { BASKETS, TOPIC_BASKETS, BASKET_PAGE, BASKET_ACCENT, PROJECTS, techLabelOf, isTestbed, displayNameOf } from './baskets';
+import { BASKETS, TOPIC_BASKETS, BASKET_PAGE, BASKET_ACCENT, PROJECTS, ALL_PROJECTS, techLabelOf, isTestbed, displayNameOf } from './baskets';
 import { ALL_TOPICS } from '../../techTopics.js';
 
 // Canonical per-section nav items, keyed by the route prefix(es) they
@@ -52,9 +52,9 @@ export function stripBaseUrl(pathname, baseUrl) {
 // id={b.key}).
 const TECHNOLOGY_ITEMS = TOPIC_BASKETS.map((b) => ({ label: b.title, href: `/tech#${b.key}` }));
 
-// The Solutions mega menu's lower part: every project with its own Technical Analysis page, grouped
-// under its area (taxonomy order); each group's title links to the area page. An area with no project
-// yet but its own page lists that page instead.
+// The Solutions mega menu: every project with its own Technical Analysis page, grouped under its area
+// (taxonomy order); each group's title links to the area page. An area with no project yet but its own
+// page lists that page instead. Testbeds are not listed here: they are in the Software Accelerator menu.
 export const TECHNOLOGY_GROUPS = TOPIC_BASKETS.map((b) => {
   const items = PROJECTS.filter((p) => p.basket === b.key && p.tech_url)
     .map((p) => ({ label: techLabelOf(p), href: p.tech_url, icon: p.icon }));
@@ -65,18 +65,36 @@ export const TECHNOLOGY_GROUPS = TOPIC_BASKETS.map((b) => {
     accent: BASKET_ACCENT[b.key],
     items: items.length ? items : b.tech_url ? [{ label: b.title, href: b.tech_url, icon: b.icon }] : [],
   };
-}).filter((g) => g.items.length).concat(
-  // Testbeds is not an area, but the menu lists it last as one: its title opens /testbeds, and each
-  // entry opens a testbed's page, for every project with pages under /testbeds/ whatever its area
-  // (the 6G AI Traffic Characterization Testbed is in Towards 6G Media).
+}).filter((g) => g.items.length);
+
+// The Software Accelerator mega menu: every project that has code, laid out like Solutions (same areas,
+// order, colours and icons) but each project opens its Reference Tools page; Testbeds is its own group
+// (each opens a testbed's page) and the tools that are not an area's (platforms, shared libraries) come last.
+// A project without a repository yet (NTN, NPN, TSC) is not listed until it has one.
+const stripSlash = (u) => u.replace(/\/$/, '');
+export const ACCELERATOR_GROUPS = TOPIC_BASKETS.map((b) => ({
+  title: b.title,
+  href: BASKET_PAGE[b.key] || `/tech#${b.key}`,
+  icon: b.icon,
+  accent: BASKET_ACCENT[b.key],
+  items: PROJECTS.filter((p) => p.basket === b.key && p.doc_url && !isTestbed(p) && p.repos.length)
+    .map((p) => ({ label: displayNameOf(p), href: stripSlash(p.doc_url), icon: p.icon })),
+})).filter((g) => g.items.length).concat(
   BASKETS.filter((b) => b.key === 'testbeds').map((b) => ({
     title: b.title,
     href: '/testbeds',
     icon: b.icon,
     accent: BASKET_ACCENT[b.key],
-    items: PROJECTS.filter(isTestbed)
-      .map((p) => ({ label: displayNameOf(p), href: p.doc_url.replace(/\/$/, ''), icon: p.icon })),
-  })).filter((g) => g.items.length)
+    items: PROJECTS.filter(isTestbed).map((p) => ({ label: displayNameOf(p), href: stripSlash(p.doc_url), icon: p.icon })),
+  })).filter((g) => g.items.length),
+  [{
+    title: 'Platforms and shared tools',
+    href: '/reference-tools',
+    icon: 'tool',
+    accent: '#7a8795',
+    items: ALL_PROJECTS.filter((p) => !p.basket && p.doc_url && p.doc_url.startsWith('/reference-tools/') && p.repos.length)
+      .map((p) => ({ label: displayNameOf(p), href: stripSlash(p.doc_url), icon: p.icon })),
+  }].filter((g) => g.items.length)
 );
 
 // The area pages, in taxonomy order: the Solutions menu and the Solutions bar on each area page.
