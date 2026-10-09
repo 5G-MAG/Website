@@ -2,7 +2,7 @@
 title: Scope
 hide_title: true
 sidebar_position: 0
-description: Explains the AI/ML Evaluation Framework's focus areas, repositories, and its relationship to 3GPP standards and the 6G AI Traffic Characterization Testbed.
+description: Explains the AI/ML Evaluation Framework's scenarios, repositories, and its relationship to 3GPP standards and the 6G AI Traffic Characterization Testbed.
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -27,32 +27,32 @@ See also: <a href={useBaseUrl('/testbeds/ai-ml/tutorials#developer-exchange')}>D
 
 **Category:** Evaluation Testbeds
 
-This page sets out what the AI/ML Evaluation Framework covers: its current focus areas, the repositories it is built from, and how it relates to 5G-MAG's standards work.
+This page sets out what the AI/ML Evaluation Framework covers: its scenarios, the repositories it is built from, and how it relates to 5G-MAG's standards work.
 
 ## What This Project Implements
 
 :::note
-This introduction reflects 5G-MAG's current focus areas for AI/ML and may evolve as the work progresses.
+This page restates the repository README and may change as the work progresses.
 :::
 
-The AI/ML Evaluation Framework provides open-source reference tools for assessing how Artificial Intelligence and Machine Learning models behave in media-over-5G contexts. Rather than producing standards text, the project builds practical tooling (benchmarks, datasets, and traffic-evaluation harnesses) that lets researchers and engineers measure AI/ML performance for media use cases under realistic, reproducible conditions.
+The repository README describes the project as "the implementation of the AI/ML evaluation framework as defined in 3GPP SA4 TR26.927", used "for the evaluation of scenarios collected for the FS_AI4Media study". The evaluation testbed architectures, anchors and metrics are in 3GPP TR 26.847 V19.0.0 (clause 4 is titled "AI/ML Evaluation Testbed Architectures and Anchors"), whose reference [16] is this repository; TR 26.927 holds the use cases and the media service architecture. The README names TR 26.927; the clause that defines the framework is in TR 26.847. The README documents "common testbed architectures and anchors, metrics (e.g. AI/ML task metrics, feasibility/performance metrics), and specific details (such as test configuration and constraints) for each scenario evaluation".
 
-Current focus areas include:
+The scenarios listed in the README are:
 
-- Evaluating ML models for media quality enhancement and content-aware encoding
-- Adaptive bitrate (ABR) optimisation informed by network-side and UE-side data
-- Traffic classification and characterisation for AI-driven media services
+- Transmission of compressed AI/ML model data for automatic speech recognition
+- Split inferencing for human pose estimation
+- Split inferencing for object detection and labeling
+- Split inferencing for hand gesture recognition
+- Video super resolution in video call
+- Federated learning
+
+The repository holds datasets, models, evaluation scripts (one folder per scenario) and a Docker environment for running them. The README marks the project as under development; the hand gesture recognition and federated learning scenarios have no description in it yet.
 
 The hands-on traffic characterisation work (network emulation and an AI traffic testbed) currently lives in the 6G AI Traffic Characterization Testbed reference implementation, which the AI/ML activity shares and builds on. See [6G AI Traffic Characterization Testbed](../6g-testbed/scope) for the testbed itself.
 
-It helps to be precise about the boundary between this project and 3GPP.
+The traffic characterisation and network emulation tooling is not part of this repository's README. It is the [6G AI Traffic Characterization Testbed](../6g-testbed/scope), which this activity shares, and that is the code you run today.
 
-- **This project does not implement a 3GPP specification.** It is an evaluation harness that measures how AI/ML models and AI-driven media services behave over realistic network conditions, so results can inform standards work.
-- **The network-conditioning and AI-traffic measurement lives in the 6G AI Traffic Characterization Testbed.** The hands-on tooling (network emulator plus AI traffic characterisation) is the [6G AI Traffic Characterization Testbed](../6g-testbed/scope), which this activity shares. That is the code you run.
-
-In short: the standards define the scenarios and interfaces; the 6G AI Traffic Characterization Testbed lets you reproduce network conditions and measure behaviour; and this AI/ML activity is the framing that turns those measurements into evaluation of AI/ML for media.
-
-These tools are complementary to, not a replacement for, the standardisation activity. 5G-MAG contributes media-specific AI/ML requirements and use cases to 3GPP (primarily SA4 for media aspects, with SA2 for network data analytics), while the reference tools provide an experimental platform to validate and inform that work. In practice the relationship is two-way: the studies and specifications (for example 3GPP [TR 26.927](https://www.3gpp.org/dynareport/26927.htm), the Release 19 study on AI/ML in 5G media services, its companion Release 19 evaluation report [TR 26.847](https://www.3gpp.org/dynareport/26847.htm)) define the scenarios and interfaces the tools evaluate, and results from the tools can feed back into 5G-MAG positions and future contributions.
+The scenario list above is the README's. TR 26.847 V19.0.0 clause 1 states its scope: "The present document provides details on feasibility evaluations for a given set of scenarios related to AI/ML in media services."
 
 ### Key GitHub repositories
 

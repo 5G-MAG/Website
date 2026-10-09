@@ -80,9 +80,9 @@ export default function AiMl() {
                 </p>
                 <p>
                   5G-MAG&apos;s <Link to="/testbeds/ai-ml/">AI/ML Evaluation Framework</Link>{' '}
-                  provides benchmarks and datasets for evaluating AI/ML models applied to media
-                  quality, adaptive bitrate selection and traffic classification, aligned with
-                  SA4&apos;s study work covered below.
+                  is the repository cited by TR 26.847 for the AI4Media evaluations, with the
+                  scenarios collected for the FS_AI4Media study. It is described in the repository
+                  README and covered below.
                 </p>
                 {PROJECT.sdos?.length > 0 && (
                   <div className={styles.capabilityTags}>

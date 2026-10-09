@@ -147,6 +147,10 @@ export const SHOWCASE_BASKETS = {
   'broadcast-multicast': {
     basket: 'broadcast-multicast',
     title: 'Broadcast and Multicast',
+    description: 'The 3GPP specifications for multicast and broadcast delivery, and the 5G Broadcast and 5G MBS projects.',
+    // TS 23.247 V19.3.0 and TS 26.346 V19.3.0, clause 1 Scope
+    lead:
+      'TS 23.247 "specifies architectural enhancements to the 5G system using NR to support multicast and broadcast communication services". TS 26.346 "defines a set of media codecs, formats and transport/application protocols to enable the deployment of MBMS user services either over the MBMS bearer service or other UMTS Bearer Services within the 3GPP system".\n\n5G-MAG works on both through two projects: 5G Broadcast and 5G MBS.',
     topics: [
       {
         id: 'hybrid',
@@ -192,7 +196,7 @@ export const SHOWCASE_BASKETS = {
       'The 3GPP SA4 study on media aspects for 6G (TR 26.870, Release 20), its work topics, and the AI in Media Services project.',
     // TR 26.870 V0.6.1 (2026-09): title page, Introduction, clause 1 Scope and the headings of clause 6
     lead:
-      'This study aims to identify media-related opportunities and gaps in the context of 6G. It builds on service requirements defined by SA1 and architectural enhancements defined by SA2.\n\nIts work topics are Media Delivery Architecture, 6G media, Media aspects related to SA2 topics, Media for ubiquitous access, Trusted and private communication for media, Software and asset management, and Real-time communication system enhancements. The conclusions of the study will form the basis for further detailed studies as well as normative work.\n\nThe part 5G-MAG builds is AI in Media Services, with two testbeds: the 6G AI Traffic Characterization Testbed, which measures the traffic of AI media services for the study, and the AI/ML Evaluation Framework, which implements TR 26.927 (AI and ML in 5G media services).',
+      'This study aims to identify media-related opportunities and gaps in the context of 6G. It builds on service requirements defined by SA1 and architectural enhancements defined by SA2.\n\nIts work topics are Media Delivery Architecture, 6G media, Media aspects related to SA2 topics, Media for ubiquitous access, Trusted and private communication for media, Software and asset management, and Real-time communication system enhancements. The conclusions of the study will form the basis for further detailed studies as well as normative work.\n\nThe part 5G-MAG builds is AI in Media Services, with two testbeds: the 6G AI Traffic Characterization Testbed, which measures the traffic of AI media services for the study, and the AI/ML Evaluation Framework, which evaluates the scenarios of TR 26.847 (AI and ML in 5G media services).',
     topics: [
       {
         id: 'ai-traffic',

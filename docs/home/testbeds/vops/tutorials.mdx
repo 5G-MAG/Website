@@ -1,0 +1,62 @@
+---
+title: Tutorials
+hide_title: true
+sidebar_position: 3
+description: How to install and run the VOPS Conformance Validator, taken from its repository README.
+---
+
+
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M12 15a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+  <path d="M13 17.5v4.5l2 -1.5l2 1.5v-4.5" />
+  <path d="M10 19h-5a2 2 0 0 1 -2 -2v-10c0 -1.1 .9 -2 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -1 1.73" />
+  <path d="M6 9l12 0" />
+  <path d="M6 12l3 0" />
+  <path d="M6 15l2 0" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">VOPS Conformance Validator</span>
+<h1>Tutorials, Tests and Examples</h1>
+</div>
+</div>
+
+The commands below are taken from the repository README. The README does not yet provide test bitstreams, so each operation point still needs testing with its conformance bitstreams.
+
+## Install
+
+```bash
+cd ~
+git clone https://github.com/5G-MAG/vops-conformance-validator.git
+cd vops-conformance-validator
+```
+
+```shell
+python -m pip install -r requirements.txt
+```
+
+## Validate a bitstream
+
+```shell
+# Validate bitstream against predefined operation point with JSON report
+$ python -m sa4_bitstream_validator validate bitstream_path 3GPP-MV-HEVC-Main-Stereo --report report.json
+
+# Validate AVC bitstream against operation point (codec auto-detected)
+$ python -m sa4_bitstream_validator validate bitstream_path 3GPP-AVC-HD --report report.json
+```
+
+## Inspect the XML description
+
+```shell
+# Dump bitstream to XML format
+$ python -m sa4_bitstream_validator dump bitstream_path description.xml
+
+# Check XML description against XSD schemas (console output only)
+$ python -m sa4_bitstream_validator check description.xml bitstream_rules/3gpp-mv-hevc_stereo.xsd
+```
+
+`config.yaml` maps each operation point to the XSD schemas in `bitstream_rules/`. The repository README lists every option.
+
+See the [Scope](./scope) page for what the validator covers.
