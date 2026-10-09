@@ -185,7 +185,7 @@ export const EXCLUDED = ALL_PROJECTS.filter((p) => !p.basket);
 
 // Every project in a given basket, in taxonomy.json's own order.
 // A testbed is a project whose own pages are under /testbeds/, whatever its
-// area: the AI/ML Evaluation Framework and the 6G testbed are testbeds of AI for Media, in Towards 6G Media.
+// area: the AI/ML Evaluation Framework and the 6G testbed are testbeds of AI and Media Traffic, in Towards 6G Media.
 export function isTestbed(project) {
   return Boolean(project.doc_url && project.doc_url.startsWith('/testbeds/'));
 }

@@ -202,6 +202,8 @@ const config = {
           { from: '/developer-assets', to: '/developer-tools' },
           { from: '/reference-tools/standards2deployments', to: '/developer-tools' },
           { from: '/ai-for-media', to: '/towards-6g-media' },
+          { from: '/tech/ai-for-media', to: '/tech/ai-and-media-traffic' },
+          { from: '/standards/ai-for-media', to: '/standards/ai-and-media-traffic' },
           { from: '/broadcast', to: '/broadcast-and-multicast' },
           { from: '/point-to-multipoint', to: '/broadcast-and-multicast' },
           { from: '/testing', to: '/deploy' },

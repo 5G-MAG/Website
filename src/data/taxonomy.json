@@ -415,10 +415,10 @@
       "icon": "virtual-space"
     },
     {
-      "name": "AI for Media",
+      "name": "AI and Media Traffic",
       "doc_url": null,
-      "tech_url": "/tech/ai-for-media",
-      "standards_url": "/standards/ai-for-media",
+      "tech_url": "/tech/ai-and-media-traffic",
+      "standards_url": "/standards/ai-and-media-traffic",
       "image": "/assets/images/projects/ai-ml.png",
       "tagline": "Evaluating AI and ML for media, and the traffic of AI media services",
       "basket": "towards-6g",
@@ -450,7 +450,7 @@
       "image": "/assets/images/projects/6g-testbed.png",
       "tagline": "6G testbed and AI-driven traffic characterization",
       "basket": "towards-6g",
-      "parent": "AI for Media",
+      "parent": "AI and Media Traffic",
       "repos": [
         "6G-Testbed",
         "netemu-dashboard"
@@ -543,7 +543,7 @@
       "image": "/assets/images/projects/ai-ml.png",
       "tagline": "Evaluation framework for AI/ML models in media processing for 3GPP systems",
       "basket": "towards-6g",
-      "parent": "AI for Media",
+      "parent": "AI and Media Traffic",
       "repos": [
         "rt-ai-ml-evaluation-framework"
       ],
