@@ -626,6 +626,7 @@
     {
       "name": "Developer Tools",
       "doc_url": "/developer-tools",
+      "releases_slug": "",
       "tagline": "Tools for 5G-MAG members that support the transition of standards into deployments: tools, rules and working records for going from a specification to a working implementation.",
       "basket": null,
       "auxiliary": true,
