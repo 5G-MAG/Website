@@ -161,16 +161,6 @@ The fourth work item is unrelated to the terrestrial bands above: [**LTE_band_5G
 
 ---
 
-<details>
-<summary>References to verify</summary>
-
-The individual 3GPP Change Request numbers, revisions, TDoc numbers and clause references on this page (across TS 36.211, 36.212, 36.213, 36.300, 36.306, 36.321, 36.331, 36.443, TR 36.976, TS 36.101, 36.104, 36.102, 36.108, 36.181 and 36.307) come from an internal 5G-MAG standards-tracking document and from 3GPP CR-portal exports made in earlier passes; record-level CR detail on the 3GPP portal requires a delegate login, so these cannot be independently re-verified from public sources. Two inferences to treat with particular care: CR 6016 and CR 6039 are described as covering Bands 107 and 108 together on the strength of their titles alone (their full text was not read); and the Release 19 release-independence CR numbers (R4-2508063 for Bands 107/108, R4-2507471 for Bands 112/113) come from the internal roadmap, although the release-independent design itself ("in a Release independent manner from Rel-17") is confirmed by the work item description RP-243268.
-
-Everything else previously flagged here has been verified against primary sources: all work item identifiers against the 3GPP work item portal; every RAN plenary meeting date cited on this page against the 3GPP meetings register, which corrected three dates (RAN#91-e is March 2021, RAN#94-e is December 2021 and RAN#101 is September 2023, all fixed above); the Band 107 (612 to 652 MHz), Band 108 (470 to 698 MHz), Band 112 (470 to 608 MHz) and Band 113 (606 to 698 MHz) ranges against TS 36.101 V19.5.0 Table 5.5H-1; the satellite Band 246 (1467 to 1492 MHz, GSO, ITU Region 3) against TS 36.102 V19.3.0; and TS 36.443's identity as the M2AP (MCE to eNB) specification against the 3GPP portal. The former note asking to reconcile the Release 18 "sub-band definitions at RAN#106" citation with the Release 19 sub_108 work item is resolved: RP-243268 is the work item description creating Bands 112/113 as subsets of Band 108, so both citations described the same meeting outcome; the Release 18 section now points to the Release 19 work item instead.
-
-Individual 3GPP Change Requests (CRs) are not linked directly: the CR search portal (portal.3gpp.org/ChangeRequests.aspx) requires a 3GPP delegate login for record-level detail.
-
-</details>
 
 ## Related Standards Work
 

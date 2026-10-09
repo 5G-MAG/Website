@@ -1,5 +1,4 @@
-// Specification catalogue for the VOPS Conformance Validator (placeholder
-// Standards page). Only the specification the validator is built against;
+// Specification catalogue for the VOPS Conformance Validator. Only the specification the validator is built against;
 // see src/components/SpecIndex.
 export const VOPS_SPECS = [
   {
@@ -8,7 +7,7 @@ export const VOPS_SPECS = [
     url: 'https://www.3gpp.org/dynareport/26265.htm',
     layer: 'Specification',
     release: '19',
-    note: 'defines the video operation points the validator checks bitstreams against; V19.2.0, March 2026',
+    note: 'defines the video operation points the validator checks bitstreams against; the validator is built against V19.2.0 (March 2026); V19.3.0 (September 2026) is the latest version',
   },
 ];
 

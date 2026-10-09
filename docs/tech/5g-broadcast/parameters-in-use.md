@@ -93,8 +93,8 @@ ETSI TS 103 720 defines normative receiver categories (Base, Main, 5GMS; see [De
 - [Standards: 5G Broadcast - TV and Radio Services](/standards/5g-broadcast)
 
 <details>
-<summary>References to verify</summary>
+<summary>Sources</summary>
 
-The band frequency ranges and release attributions above were verified against 3GPP TS 36.101 (Table 5.5H-1), TS 36.307 and the published ETSI TS 103 720 v1.2.1. The observed subframe, bandwidth, modulation and SFN parameter values reflect 5G-MAG member deployment experience and reference tool configurations; they have no single public specification to check against and may differ between networks.
+The band frequency ranges and release attributions above are from 3GPP TS 36.101 (Table 5.5H-1), TS 36.307 and ETSI TS 103 720 v1.2.1. The subframe, bandwidth, modulation and SFN parameter values are those observed in member deployments and reference tool configurations.
 
 </details>

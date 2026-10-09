@@ -10,7 +10,7 @@ import styles from '../index.module.css';
 const PROJECT = ALL_PROJECTS.find((p) => p.tech_url === '/tech/vops' && !p.parent);
 const TESTBEDS = ALL_PROJECTS.filter((p) => p.parent === PROJECT.name);
 
-// Placeholder landing page. Copy restates TS 26.265 V19.3.0, clause 1 (Scope), clause 3.1 (Operation Point) and
+// Copy restates TS 26.265 V19.3.0, clause 1 (Scope), clause 3.1 (Operation Point) and
 // annex B.2.3 as the Standards page already cites it. BASKET_ACCENT['content-delivery'] in src/data/baskets.js.
 const ACCENT = '#00a0d2';
 const CERT_ICON = (

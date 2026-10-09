@@ -25,7 +25,7 @@ import { BROADCAST_SPECS, BROADCAST_LAYER_ORDER } from '@site/src/data/specs/5g-
 
 5G-MAG maintains ETSI TS 103 720 itself rather than only tracking it: it undertook the specification's maintenance in 2021, contributing the requirements and fixes that shape each new version, agreed among members on the [Kanban board](https://github.com/orgs/5G-MAG/projects/32). Current focus:
 
-- **ETSI TS 103 720 v1.3.1 (in progress):** 3GPP Release 18 update, extending to Release 19 (see "Updates towards ETSI TS 103 720 v1.3.1" below).
+- **ETSI TS 103 720 v1.3.1 (in progress):** 3GPP Release 18 update (see "Updates towards ETSI TS 103 720 v1.3.1" below).
 - **Implementer-driven fixes:** bugs, clarification questions and new requirements raised by implementors, in particular 5G-MAG.
 - **Completed:** Release 17 alignment (v1.2.1, 2023).
 
@@ -51,11 +51,11 @@ The table summarises the version-to-Release-to-status mapping; the sections belo
 | ------- | ----------- | --------------------------- | -------------- |
 | v1.1.1  | 12-2020     | Rel-16 baseline             | Published      |
 | v1.2.1  | 06-2023     | Rel-17                      | Published      |
-| v1.3.1  | in progress | Rel-18, extending to Rel-19 | Work item open |
+| v1.3.1  | in progress | Rel-18                      | Work item open |
 
 ### Updates towards ETSI TS 103 720 v1.3.1
 
-5G-MAG is now conducting the updates towards the new version of the specification. In 2024, it kicked off the new work item to update the specification according to 3GPP Release 18, extending it to also cover Release 19.
+5G-MAG is now conducting the updates towards the new version of the specification. In 2024, it kicked off the new work item to update the specification according to 3GPP Release 18. The ETSI work item (WKI_ID 72978) scope lists extensions in 3GPP Release 18, bug fixes and clarifications, support for DVB-I over 5G Broadcast aligned with ETSI TR 103 972, band support for receivers including Band 108 (UHF), 5G Broadcast as a PWS improvement, deployment guidelines on concurrent support of 5G Broadcast and 5G Unicast, support for 3GPP Service URLs, deployment receiver profiles including a RAN-only profile, and low-latency distribution.
 
 The additions, discussed and agreed among members on the Kanban board, include:
 
@@ -124,16 +124,6 @@ MBMS has three named network interfaces, distinct from the M1-M8 reference point
 | M2        | TS 36.443 (M2AP)            | Control plane | MCE to eNB     |
 | M3        | TS 36.444 (M3AP)            | Control plane | MME to MCE     |
 
-<details>
-<summary>References to verify</summary>
-
-One item on this page remains unconfirmed against the primary record: the v1.3.1 row of "Version history at a glance" describes the update as "Rel-18, extending to Rel-19". The Release 18 scope is confirmed by the ETSI work item page (WKI_ID 72978), but the Release 19 extension comes from 5G-MAG's own work programme and does not appear in the ETSI work item scope text; confirm before citing.
-
-Everything else previously flagged here has been verified against primary sources: all 3GPP spec titles in the sections above (including TS 22.101, TS 23.122, TS 29.274, TS 29.281, TS 24.117, TS 26.348, TS 36.133, TS 36.304, TS 36.413, TS 36.306, TS 36.443) against the 3GPP specification portal; the M1/M2/M3 interface roles and endpoints against ETSI TS 136 440 V19.0.0 itself; TR 36.776's status (under change control, not withdrawn) against the 3GPP portal; and the v1.1.1 (12-2020, Release 16) and v1.2.1 (06-2023, Release 17) rows against the published ETSI TS 103 720 PDFs. One upstream erratum, now confirmed from the V1.2.1 PDF and worth reporting to ETSI: TS 103 720 V1.2.1's reference clause swaps the titles of TS 36.306 and TS 36.443; this page uses the correct titles.
-
-Individual 3GPP Change Requests (CRs) are not linked directly: the CR search portal (portal.3gpp.org/ChangeRequests.aspx) requires a 3GPP delegate login for record-level detail.
-
-</details>
 
 ## Related Standards Work
 
