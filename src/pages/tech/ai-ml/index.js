@@ -69,7 +69,7 @@ export default function AiMl() {
             <div className={styles.introGrid}>
               <div style={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
                 <p>
-                  A testbed of the <Link to="/tech/ai-and-media-traffic">AI and Media Traffic</Link> project.
+                  A testbed of the <Link to="/tech/ai-in-media-services">AI in Media Services</Link> project.
                 </p>
                 <p>
                   3GPP covers AI/ML for 5G media in two places. <strong>SA2</strong> (system

@@ -296,11 +296,11 @@ const ALL_TOPICS = [
     ],
   },
   {
-    label: 'AI and Media Traffic',
-    techHref: '/tech/ai-and-media-traffic',
-    autogen: 'ai-and-media-traffic',
-    techOverviewDoc: 'ai-and-media-traffic/overview',
-    standards: [{ doc: 'standards/ai-and-media-traffic', label: 'Standards: AI and Media Traffic' }],
+    label: 'AI in Media Services',
+    techHref: '/tech/ai-in-media-services',
+    autogen: 'ai-in-media-services',
+    techOverviewDoc: 'ai-in-media-services/overview',
+    standards: [{ doc: 'standards/ai-in-media-services', label: 'Standards: AI in Media Services' }],
   },
   {
     label: 'Video Operation Points',

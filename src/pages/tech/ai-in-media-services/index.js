@@ -8,7 +8,7 @@ import ProjectContributors from '@site/src/components/ProjectContributors';
 import { ALL_PROJECTS, displayNameOf } from '@site/src/data/baskets';
 import styles from '../index.module.css';
 
-const PROJECT = ALL_PROJECTS.find((p) => p.tech_url === '/tech/ai-and-media-traffic');
+const PROJECT = ALL_PROJECTS.find((p) => p.tech_url === '/tech/ai-in-media-services');
 const TESTBEDS = ALL_PROJECTS.filter((p) => p.parent === PROJECT.name);
 
 // Copy restates the 3GPP portal's titles of TR 26.927 and TR 26.847, TR 26.870 as the site already restates it,

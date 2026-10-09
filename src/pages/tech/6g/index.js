@@ -15,7 +15,7 @@ import styles from '../index.module.css';
 const AI_TRAFFIC_PROJECT = ALL_PROJECTS.find((p) => p.tech_url === '/tech/6g');
 
 // The study's title, not the project's: this page is the 6G media study as a whole, and AI Traffic
-// Characterization (a testbed project of the AI and Media Traffic area) is the part of it 5G-MAG works on.
+// Characterization (a testbed project of the AI in Media Services area) is the part of it 5G-MAG works on.
 const BASKET_TITLE = 'Towards 6G Media';
 
 // A per-project "flagship" page, following the 5gms pilot (src/pages/tech/5gms/index.js). Copy restates
@@ -53,7 +53,7 @@ export default function Towards6GMedia() {
             <div className={styles.introGrid}>
               <div style={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
                 <p>
-                  The 6G AI Traffic Characterization Testbed is a testbed of the <Link to="/tech/ai-and-media-traffic">AI and Media Traffic</Link> project.
+                  The 6G AI Traffic Characterization Testbed is a testbed of the <Link to="/tech/ai-in-media-services">AI in Media Services</Link> project.
                 </p>
                 <p>
                   This study aims to identify media-related opportunities and gaps in the context of 6G. It
