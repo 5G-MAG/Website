@@ -2,7 +2,7 @@
 hide_title: true
 title: Volumetric Video Experiences - Standards Evolution
 slug: /standards/v3c/evolution
-description: Release-by-release 3GPP work item and Change Request history behind MPEG V3C Immersive Platform.
+description: Edition and stage history of the ISO/IEC specifications behind MPEG V3C Immersive Platform.
 ---
 
 <div class="topic-banner">
@@ -16,8 +16,8 @@ description: Release-by-release 3GPP work item and Change Request history behind
 </div>
 </div>
 
-This page is the detailed, release-by-release companion to [Standards: MPEG V3C Immersive Platform](/standards/v3c): the 3GPP work items and Change Requests behind each release. See that page for the full specification list and current scope.
+This page is the companion to [Standards: MPEG V3C Immersive Platform](/standards/v3c) for its ISO/IEC specifications: ISO/IEC 23090-5, ISO/IEC 23090-10, ISO/IEC 23090-12, ISO/IEC 23090-20, ISO/IEC 23090-25. ISO/IEC specifications are not 3GPP releases, so their history is the sequence of editions, amendments and stage codes in the ISO catalogue, not 3GPP work items and change requests.
 
-## Release-by-release summary
+## Edition and stage history
 
-**Not yet populated.** No verified, release-by-release work-item or Change Request history for ISO/IEC 23090-5, ISO/IEC 23090-10, ISO/IEC 23090-12, ISO/IEC 23090-20, ISO/IEC 23090-25 has been researched for this page yet. Populating it means checking each specification's own "Related Work Items" entry against the 3GPP work item portal (portal.3gpp.org) and its Change Request history against the public 3GPP CR database — the same approach used for [5G MBS - Standards Evolution](/standards/5g-mbs/evolution) and [5G Broadcast - Standards Evolution](/standards/5g-broadcast/evolution). Not done as part of this pass.
+**Not populated.** unverified: could not obtain the ISO catalogue pages for these specifications. iso.org returned HTTP 403 to automated requests on 9 October 2026. The edition statements on the [Standards page](/standards/v3c) have not been checked against the catalogue. Populating this page needs, for each part, the edition, amendment and stage data and the publication dates from the ISO catalogue.

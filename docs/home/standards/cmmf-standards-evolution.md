@@ -19,4 +19,19 @@ This page is the detailed, version-by-version companion to [Standards: CMMF (Mul
 
 ## Version history
 
-**Not yet populated.** CMMF is a single ETSI specification maintained through ETSI's own work item process, not a 3GPP work item: its version history is tracked through ETSI's portal (work item pages and successive TS editions), not the 3GPP work item/CR databases used for [5G MBS - Standards Evolution](/standards/5g-mbs/evolution). No verified prior-version or amendment history for ETSI TS 103 973 (currently V1.1.1, October 2024) has been researched for this page yet. Not done as part of this pass.
+The History of ETSI TS 103 973 V1.2.2 (2026-05) lists three publications.
+
+| Version | Published |
+| --- | --- |
+| V1.1.1 | October 2024 |
+| V1.2.1 | March 2026 |
+| V1.2.2 | May 2026 |
+
+CMMF is specified by ETSI, not by a 3GPP release, so its history is the list of ETSI publications and not a set of 3GPP work items and change requests. The same list is part of [Content Delivery Protocols - Standards Evolution](/standards/content-delivery/evolution). The History of the document does not describe what changed between these versions.
+
+<details>
+<summary>Sources for this page</summary>
+
+- ETSI TS 103 973 V1.2.2 (2026-05), History.
+
+</details>
