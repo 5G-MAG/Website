@@ -28,14 +28,9 @@ This page is the detailed, release-by-release companion to [Standards: Non-Publi
 
 :::
 
-Work items as listed in the 3GPP work plan of 28 September 2026. Change requests are the ones implemented in a version, as recorded in the 3GPP Change Request database of 25 September 2026; versions without a change request are from the change history of TS 22.263 V19.0.0, TR 28.807 V17.0.0, TS 28.557 V19.0.0, TR 28.907 V19.0.0, TR 23.700-07 V17.0.0, TR 33.857 V17.1.0, TR 26.805 V17.0.1, TR 23.700-08 V18.0.0, TR 33.858 V18.1.0, TR 33.757 V19.0.0.
+Sources: the 3GPP work plan of 28 September 2026, the 3GPP Change Request database of 25 September 2026, and the change history of TS 22.263 V19.0.0, TR 28.807 V17.0.0, TS 28.557 V19.0.0, TR 28.907 V19.0.0, TR 23.700-07 V17.0.0, TR 33.857 V17.1.0, TR 26.805 V17.0.1, TR 23.700-08 V18.0.0, TR 33.858 V18.1.0, TR 33.757 V19.0.0.
 
-**Scope of this page**
-
-- Specifications covered: [TS 22.263](https://www.3gpp.org/dynareport/22263.htm), [TR 28.807](https://www.3gpp.org/dynareport/28807.htm), [TS 28.557](https://www.3gpp.org/dynareport/28557.htm), [TR 28.907](https://www.3gpp.org/dynareport/28907.htm), [TR 23.700-07](https://www.3gpp.org/dynareport/23700-07.htm), [TR 33.857](https://www.3gpp.org/dynareport/33857.htm), [TR 26.805](https://www.3gpp.org/dynareport/26805.htm), [TR 23.700-08](https://www.3gpp.org/dynareport/23700-08.htm), [TR 33.858](https://www.3gpp.org/dynareport/33858.htm), [TR 33.757](https://www.3gpp.org/dynareport/33757.htm).
-- Shared specifications whose change histories cover every feature of the 5G system and are not reproduced (see the specifications themselves): [TS 22.261](https://www.3gpp.org/dynareport/22261.htm), [TS 23.501](https://www.3gpp.org/dynareport/23501.htm), [TS 23.502](https://www.3gpp.org/dynareport/23502.htm), [TS 24.501](https://www.3gpp.org/dynareport/24501.htm), [TS 24.502](https://www.3gpp.org/dynareport/24502.htm), [TS 33.501](https://www.3gpp.org/dynareport/33501.htm).
-- Work items: those that name one of the specifications covered as impacted in the work plan, and those whose title matches "Non-Public", "NPN" or "SNPN", which may change only the shared specifications.
-- Type: Study where the acronym starts with FS_ or the title starts with "Study", Normative otherwise.
+This page covers [TS 22.263](https://www.3gpp.org/dynareport/22263.htm), [TR 28.807](https://www.3gpp.org/dynareport/28807.htm), [TS 28.557](https://www.3gpp.org/dynareport/28557.htm), [TR 28.907](https://www.3gpp.org/dynareport/28907.htm), [TR 23.700-07](https://www.3gpp.org/dynareport/23700-07.htm), [TR 33.857](https://www.3gpp.org/dynareport/33857.htm), [TR 26.805](https://www.3gpp.org/dynareport/26805.htm), [TR 23.700-08](https://www.3gpp.org/dynareport/23700-08.htm), [TR 33.858](https://www.3gpp.org/dynareport/33858.htm), [TR 33.757](https://www.3gpp.org/dynareport/33757.htm). The work items are those that name these specifications in the 3GPP work plan, and those whose title contains "Non-Public", "NPN" or "SNPN". The change requests are those recorded in the 3GPP Change Request database as implemented in a version.
 
 ### Release 20
 

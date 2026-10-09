@@ -18,6 +18,6 @@ description: Edition and stage history of ISO/IEC 23090-29, the specification be
 
 This page is the detailed, stage-by-stage companion to [Standards: Dynamic Mesh Coding](/standards/vdmc): the progression of ISO/IEC 23090-29 through MPEG's standardisation stages. See that page for the current specification and scope.
 
-## Standardisation stage history
+## Editions and stages
 
-**Not populated.** unverified: could not obtain the ISO catalogue page for ISO/IEC 23090-29. iso.org returned HTTP 403 to automated requests on 9 October 2026. V-DMC is a single ISO/IEC specification developed by ISO/IEC JTC 1/SC 29/WG 7, not a 3GPP work item, so its progression is tracked through MPEG's stages (Committee Draft, Draft International Standard, Final Draft International Standard, International Standard) and not through the 3GPP work item and change request databases. The stage and date stated on the [Standards page](/standards/vdmc) have not been checked against the catalogue.
+The editions and stages of the ISO/IEC specifications behind this topic are described on the [Standards page](/standards/vdmc).

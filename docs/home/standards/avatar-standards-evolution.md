@@ -25,15 +25,9 @@ This page is the detailed, release-by-release companion to [Standards: Conversat
 
 :::
 
-Work items as listed in the 3GPP work plan of 28 September 2026. Change requests are the ones implemented in a version, as recorded in the 3GPP Change Request database of 25 September 2026; versions without a change request are from the change history of TR 26.813 V20.0.0.
+Sources: the 3GPP work plan of 28 September 2026, the 3GPP Change Request database of 25 September 2026, and the change history of TR 26.813 V20.0.0.
 
-**Scope of this page**
-
-- Specifications covered: [TR 26.813](https://www.3gpp.org/dynareport/26813.htm).
-- Shared specifications whose change histories cover every feature of the 5G system and are not reproduced (see the specifications themselves): [TS 26.114](https://www.3gpp.org/dynareport/26114.htm), [TS 26.506](https://www.3gpp.org/dynareport/26506.htm), [TR 26.928](https://www.3gpp.org/dynareport/26928.htm), [TS 26.250](https://www.3gpp.org/dynareport/26250.htm), [TS 26.251](https://www.3gpp.org/dynareport/26251.htm), [TS 26.252](https://www.3gpp.org/dynareport/26252.htm), [TS 26.253](https://www.3gpp.org/dynareport/26253.htm), [TS 26.254](https://www.3gpp.org/dynareport/26254.htm), [TS 26.255](https://www.3gpp.org/dynareport/26255.htm), [TS 26.256](https://www.3gpp.org/dynareport/26256.htm), [TS 26.258](https://www.3gpp.org/dynareport/26258.htm).
-- Work items: those that name one of the specifications covered as impacted in the work plan.
-- Type: Study where the acronym starts with FS_ or the title starts with "Study", Normative otherwise.
-- ISO/IEC 23090-39, ISO/IEC 23090-14 and its Amendment 2 are ISO/IEC specifications whose stage history was not obtained (unverified: could not obtain the ISO catalogue pages, HTTP 403 on 9 October 2026), and draft-ietf-avtcore-rtp-avatar is an IETF draft not covered here.
+This page covers [TR 26.813](https://www.3gpp.org/dynareport/26813.htm). The work items are those that name these specifications in the 3GPP work plan. The change requests are those recorded in the 3GPP Change Request database as implemented in a version.
 
 ### Release 20
 

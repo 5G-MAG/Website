@@ -24,15 +24,9 @@ This page is the detailed, release-by-release companion to [Standards: Beyond 2D
 
 :::
 
-Work items as listed in the 3GPP work plan of 28 September 2026. Change requests are the ones implemented in a version, as recorded in the 3GPP Change Request database of 25 September 2026; versions without a change request are from the change history of TR 26.956 V19.0.1.
+Sources: the 3GPP work plan of 28 September 2026, the 3GPP Change Request database of 25 September 2026, and the change history of TR 26.956 V19.0.1.
 
-**Scope of this page**
-
-- Specifications covered: [TR 26.956](https://www.3gpp.org/dynareport/26956.htm).
-- Shared specifications whose change histories cover every feature of the 5G system and are not reproduced (see the specifications themselves): [TS 26.501](https://www.3gpp.org/dynareport/26501.htm), [TS 26.512](https://www.3gpp.org/dynareport/26512.htm).
-- Work items: those that name one of the specifications covered as impacted in the work plan.
-- Type: Study where the acronym starts with FS_ or the title starts with "Study", Normative otherwise.
-- ISO/IEC 23090-9, ISO/IEC 23090-29 and ISO/IEC 23000-19 are ISO/IEC specifications whose stage history was not obtained (unverified: could not obtain the ISO catalogue pages, HTTP 403 on 9 October 2026).
+This page covers [TR 26.956](https://www.3gpp.org/dynareport/26956.htm). The work items are those that name these specifications in the 3GPP work plan. The change requests are those recorded in the 3GPP Change Request database as implemented in a version.
 
 ### Release 19
 

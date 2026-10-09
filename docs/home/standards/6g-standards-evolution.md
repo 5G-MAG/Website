@@ -28,13 +28,9 @@ This page is the detailed, release-by-release companion to [Standards: Towards 6
 
 :::
 
-Work items as listed in the 3GPP work plan of 28 September 2026. Change requests are the ones implemented in a version, as recorded in the 3GPP Change Request database of 25 September 2026; versions without a change request are from the change history of TR 22.870 V20.0.0, TR 26.870 V0.6.1, TR 26.925 V19.0.0, TR 38.914 V20.1.0.
+Sources: the 3GPP work plan of 28 September 2026, the 3GPP Change Request database of 25 September 2026, and the change history of TR 22.870 V20.0.0, TR 26.870 V0.6.1, TR 26.925 V19.0.0, TR 38.914 V20.1.0.
 
-**Scope of this page**
-
-- Specifications covered: [TR 22.870](https://www.3gpp.org/dynareport/22870.htm), [TR 26.870](https://www.3gpp.org/dynareport/26870.htm), [TR 26.925](https://www.3gpp.org/dynareport/26925.htm), [TR 38.914](https://www.3gpp.org/dynareport/38914.htm).
-- Work items: those that name one of the specifications covered as impacted in the work plan.
-- Type: Study where the acronym starts with FS_ or the title starts with "Study", Normative otherwise.
+This page covers [TR 22.870](https://www.3gpp.org/dynareport/22870.htm), [TR 26.870](https://www.3gpp.org/dynareport/26870.htm), [TR 26.925](https://www.3gpp.org/dynareport/26925.htm), [TR 38.914](https://www.3gpp.org/dynareport/38914.htm). The work items are those that name these specifications in the 3GPP work plan. The change requests are those recorded in the 3GPP Change Request database as implemented in a version.
 
 ### Release 20
 

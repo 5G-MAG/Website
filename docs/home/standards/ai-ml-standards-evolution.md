@@ -25,13 +25,9 @@ This page is the detailed, release-by-release companion to [Standards: AI/ML Eva
 
 :::
 
-Work items as listed in the 3GPP work plan of 28 September 2026. Change requests are the ones implemented in a version, as recorded in the 3GPP Change Request database of 25 September 2026; versions without a change request are from the change history of TR 22.874 V18.2.0, TR 23.700-80 V18.0.0, TR 23.700-81 V18.0.0, TR 26.847 V19.0.0, TR 26.927 V19.0.0.
+Sources: the 3GPP work plan of 28 September 2026, the 3GPP Change Request database of 25 September 2026, and the change history of TR 22.874 V18.2.0, TR 23.700-80 V18.0.0, TR 23.700-81 V18.0.0, TR 26.847 V19.0.0, TR 26.927 V19.0.0.
 
-**Scope of this page**
-
-- Specifications covered: [TR 22.874](https://www.3gpp.org/dynareport/22874.htm), [TR 23.700-80](https://www.3gpp.org/dynareport/23700-80.htm), [TR 23.700-81](https://www.3gpp.org/dynareport/23700-81.htm), [TR 26.847](https://www.3gpp.org/dynareport/26847.htm), [TR 26.927](https://www.3gpp.org/dynareport/26927.htm).
-- Work items: those that name one of the specifications covered as impacted in the work plan.
-- Type: Study where the acronym starts with FS_ or the title starts with "Study", Normative otherwise.
+This page covers [TR 22.874](https://www.3gpp.org/dynareport/22874.htm), [TR 23.700-80](https://www.3gpp.org/dynareport/23700-80.htm), [TR 23.700-81](https://www.3gpp.org/dynareport/23700-81.htm), [TR 26.847](https://www.3gpp.org/dynareport/26847.htm), [TR 26.927](https://www.3gpp.org/dynareport/26927.htm). The work items are those that name these specifications in the 3GPP work plan. The change requests are those recorded in the 3GPP Change Request database as implemented in a version.
 
 ### Release 19
 

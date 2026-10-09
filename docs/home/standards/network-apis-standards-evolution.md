@@ -29,16 +29,9 @@ This page is the detailed, release-by-release companion to [Standards: Network A
 
 :::
 
-Work items as listed in the 3GPP work plan of 28 September 2026. Change requests are the ones implemented in a version, as recorded in the 3GPP Change Request database of 25 September 2026; versions without a change request are from the change history of TS 23.222 V20.1.0, TS 29.222 V20.1.0, TS 23.434 V20.1.0, TS 24.549 V19.2.0.
+Sources: the 3GPP work plan of 28 September 2026, the 3GPP Change Request database of 25 September 2026, and the change history of TS 23.222 V20.1.0, TS 29.222 V20.1.0, TS 23.434 V20.1.0, TS 24.549 V19.2.0.
 
-**Scope of this page**
-
-- Specifications covered: [TS 23.222](https://www.3gpp.org/dynareport/23222.htm), [TS 29.222](https://www.3gpp.org/dynareport/29222.htm), [TS 23.434](https://www.3gpp.org/dynareport/23434.htm), [TS 24.549](https://www.3gpp.org/dynareport/24549.htm).
-- Shared specifications whose change histories cover every feature of the 5G system and are not reproduced (see the specifications themselves): [TS 23.501](https://www.3gpp.org/dynareport/23501.htm), [TS 29.522](https://www.3gpp.org/dynareport/29522.htm), [TS 29.517](https://www.3gpp.org/dynareport/29517.htm), [TS 29.514](https://www.3gpp.org/dynareport/29514.htm), [TS 29.554](https://www.3gpp.org/dynareport/29554.htm), [TS 26.512](https://www.3gpp.org/dynareport/26512.htm), [TS 26.501](https://www.3gpp.org/dynareport/26501.htm).
-- Work items: those that name one of the specifications covered as impacted in the work plan.
-- Type: Study where the acronym starts with FS_ or the title starts with "Study", Normative otherwise.
-- The Change Request database lists implemented change requests that the change history of the specification does not: TS 23.222 (47 more), TS 29.222 (71 more), TS 23.434 (48 more), TS 24.549 (3 more). The tables use the database.
-- The CAMARA APIs are not 3GPP documents; their history is the CAMARA releases section above the 3GPP tables.
+This page covers [TS 23.222](https://www.3gpp.org/dynareport/23222.htm), [TS 29.222](https://www.3gpp.org/dynareport/29222.htm), [TS 23.434](https://www.3gpp.org/dynareport/23434.htm), [TS 24.549](https://www.3gpp.org/dynareport/24549.htm). The work items are those that name these specifications in the 3GPP work plan. The change requests are those recorded in the 3GPP Change Request database as implemented in a version. The CAMARA APIs are not 3GPP documents. Their release history is in the CAMARA releases section above.
 
 ## CAMARA releases
 
