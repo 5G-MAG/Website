@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavbarMobileSidebar } from '@docusaurus/theme-common/internal';
 import NavbarItem from '@theme/NavbarItem';
 import { useNavbarItems, MOBILE_GLOBAL_ITEMS } from '../../../navItems';
-import { SECTION_NAV, SOLUTIONS_ITEMS, TECHNOLOGY_GROUPS, ACCELERATOR_GROUPS } from '../../../../data/sectionNav';
+import { SECTION_NAV, SOLUTIONS_ITEMS, TECHNOLOGY_GROUPS, ACCELERATOR_TOOL_AREAS, ACCELERATOR_TESTBED_AREAS } from '../../../../data/sectionNav';
 
 // Docusaurus's stock PrimaryMenu reads items straight from
 // useThemeConfig().navbar.items (a static config array) — since the
@@ -67,20 +67,30 @@ export default function NavbarMobilePrimaryMenu() {
               // with its projects indented under it, as on desktop.
               <>
                 <NavbarItem mobile {...item} onClick={() => mobileSidebar.toggle()} />
-                <NavbarItem mobile to="/reference-tools" label="Reference Tools"
-                  className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
-                {ACCELERATOR_GROUPS.map((g) => (
-                  <React.Fragment key={g.title}>
-                    <NavbarItem mobile to={g.href} label={g.title}
+                {[['Reference Tools', '/reference-tools', ACCELERATOR_TOOL_AREAS], ['Testbeds', '/testbeds', ACCELERATOR_TESTBED_AREAS]].map(([title, href, areas]) => (
+                  <React.Fragment key={title}>
+                    <NavbarItem mobile to={href} label={title}
                       className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
-                    {g.items.map((p) => (
-                      <NavbarItem key={p.href} mobile to={p.href} label={p.label}
-                        className="padding-left--lg margin-left--md" style={{ fontSize: '0.85rem' }}
-                        onClick={() => mobileSidebar.toggle()} />
+                    {areas.map((g) => (
+                      <React.Fragment key={g.title}>
+                        <li className="menu__list-item">
+                          <span className="menu__link padding-left--lg margin-left--md"
+                            style={{ fontSize: '0.78rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em', color: g.accent }}>
+                            {g.title}
+                          </span>
+                        </li>
+                        {g.items.map((p) => (
+                          <NavbarItem key={p.href} mobile to={p.href} label={p.label}
+                            className="padding-left--lg margin-left--lg" style={{ fontSize: '0.85rem' }}
+                            onClick={() => mobileSidebar.toggle()} />
+                        ))}
+                      </React.Fragment>
                     ))}
                   </React.Fragment>
                 ))}
                 <NavbarItem mobile to="/developer-tools" label="Developer Tools"
+                  className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
+                <NavbarItem mobile to="/community" label="Community"
                   className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
               </>
             ) : (
