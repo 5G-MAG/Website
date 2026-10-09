@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-08 03:06 UTC",
+  "updated_at": "2026-10-09 03:13 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -1011,6 +1011,240 @@
       "tagline": "Volumetric video platform for immersive experiences",
       "pulls": [
         {
+          "repo": "rt-v3c-unity-player",
+          "branch": null,
+          "number": 17,
+          "title": "stats panel: show the decoder counters",
+          "url": "https://github.com/5G-MAG/rt-v3c-unity-player/pull/17",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-08",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-v3c-unity-player",
+          "branch": null,
+          "number": 16,
+          "title": "stadium backdrop chosen per title",
+          "url": "https://github.com/5G-MAG/rt-v3c-unity-player/pull/16",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-08",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-v3c-unity-player",
+          "branch": null,
+          "number": 15,
+          "title": "branding: product name V3C Immersive Player and a launcher icon",
+          "url": "https://github.com/5G-MAG/rt-v3c-unity-player/pull/15",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-08",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-v3c-unity-player",
+          "branch": null,
+          "number": 14,
+          "title": "V-PCC: frame the content from its own points",
+          "url": "https://github.com/5G-MAG/rt-v3c-unity-player/pull/14",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-08",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-v3c-unity-player",
+          "branch": null,
+          "number": 13,
+          "title": "player UI: title and source on screen, loading and error states, library, settings",
+          "url": "https://github.com/5G-MAG/rt-v3c-unity-player/pull/13",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-08",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-v3c-unity-player",
+          "branch": null,
+          "number": 12,
+          "title": "V3CDecoder package: declare the Unity version the project uses",
+          "url": "https://github.com/5G-MAG/rt-v3c-unity-player/pull/12",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-08",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-v3c-unity-player",
+          "branch": null,
+          "number": 11,
+          "title": "Build.Android: report the build result and exit non-zero on failure",
+          "url": "https://github.com/5G-MAG/rt-v3c-unity-player/pull/11",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-08",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-v3c-unity-player",
+          "branch": null,
+          "number": 10,
+          "title": "haptics: vibrate only while time remains",
+          "url": "https://github.com/5G-MAG/rt-v3c-unity-player/pull/10",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-08",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-v3c-decoder-plugin",
+          "branch": null,
+          "number": 17,
+          "title": "decoder: export playback counters (GetDecoderStats)",
+          "url": "https://github.com/5G-MAG/rt-v3c-decoder-plugin/pull/17",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-08",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-v3c-decoder-plugin",
+          "branch": null,
+          "number": 16,
+          "title": "iloj Android config: link libz through the toolchain, not a Windows NDK path",
+          "url": "https://github.com/5G-MAG/rt-v3c-decoder-plugin/pull/16",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-08",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-v3c-decoder-plugin",
+          "branch": null,
+          "number": 15,
+          "title": "android scripts: use the lower-case folder name for Libraries/iloj",
+          "url": "https://github.com/5G-MAG/rt-v3c-decoder-plugin/pull/15",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-08",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-v3c-decoder-plugin",
+          "branch": null,
+          "number": 14,
+          "title": "build_android.sh: take the NDK from the environment and default the SDK per host",
+          "url": "https://github.com/5G-MAG/rt-v3c-decoder-plugin/pull/14",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-08",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-v3c-decoder-plugin",
+          "branch": null,
+          "number": 13,
+          "title": "scripts: download and run the ninja that matches the host",
+          "url": "https://github.com/5G-MAG/rt-v3c-decoder-plugin/pull/13",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-08",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-v3c-decoder-plugin",
+          "branch": null,
+          "number": 12,
+          "title": "scripts: make the build scripts executable",
+          "url": "https://github.com/5G-MAG/rt-v3c-decoder-plugin/pull/12",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-08",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-v3c-decoder-plugin",
+          "branch": null,
+          "number": 11,
+          "title": "dash client: log unknown streamer and network codes instead of aborting",
+          "url": "https://github.com/5G-MAG/rt-v3c-decoder-plugin/pull/11",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-08",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-v3c-content",
+          "branch": null,
+          "number": 7,
+          "title": "library.json: optional Title, Description and Environment per title",
+          "url": "https://github.com/5G-MAG/rt-v3c-content/pull/7",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-08",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-v3c-content",
+          "branch": null,
+          "number": 6,
+          "title": "README: unzip each package into its own folder",
+          "url": "https://github.com/5G-MAG/rt-v3c-content/pull/6",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-08",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-v3c-content",
+          "branch": null,
+          "number": 5,
+          "title": "README: say that the test content needs Git LFS",
+          "url": "https://github.com/5G-MAG/rt-v3c-content/pull/5",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-08",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
           "repo": "rt-media-origin",
           "branch": null,
           "number": 2,
@@ -1118,6 +1352,12 @@
       ]
     },
     {
+      "name": "Beyond 2D Video Experiences",
+      "doc_url": null,
+      "tagline": "Evaluating video formats beyond 2D: stereoscopic, multi-view plus depth, point clouds and dynamic meshes",
+      "pulls": []
+    },
+    {
       "name": "Beyond 2D Evaluation Framework",
       "doc_url": "/testbeds/beyond-2d/",
       "tagline": "Evaluation framework for beyond-2D video experiences",
@@ -1136,6 +1376,12 @@
           "last_comment_date": null
         }
       ]
+    },
+    {
+      "name": "AI for Media",
+      "doc_url": null,
+      "tagline": "Evaluating AI and ML for media, and the traffic of AI media services",
+      "pulls": []
     },
     {
       "name": "AI Traffic Characterization",
@@ -1159,7 +1405,7 @@
           "repo": "6G-Testbed",
           "branch": null,
           "number": 10,
-          "title": "netemu measurement package, agentic scenarios, Markov traffic models",
+          "title": "netemu measurement package and agentic scenarios",
           "url": "https://github.com/5G-MAG/6G-Testbed/pull/10",
           "draft": false,
           "author_login": "ibouazizi",
@@ -1269,6 +1515,12 @@
       ]
     },
     {
+      "name": "Video Operation Points",
+      "doc_url": null,
+      "tagline": "Video capabilities and operation points of 3GPP TS 26.265, and the conformance validator for them",
+      "pulls": []
+    },
+    {
       "name": "VOPS Conformance Validator",
       "doc_url": "/testbeds/vops/",
       "tagline": "Validates video bitstreams against the operation points of 3GPP TS 26.265",
@@ -1282,6 +1534,19 @@
         {
           "repo": "rt-common-shared",
           "branch": null,
+          "number": 78,
+          "title": "avcodec-build: README sends the libraries to rt-v3c-decoder-plugin",
+          "url": "https://github.com/5G-MAG/rt-common-shared/pull/78",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-08",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-common-shared",
+          "branch": null,
           "number": 75,
           "title": "docs: apply the 5G-MAG README format",
           "url": "https://github.com/5G-MAG/rt-common-shared/pull/75",
@@ -1289,6 +1554,26 @@
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-09-29",
+          "last_comment_by": null,
+          "last_comment_date": null
+        }
+      ]
+    },
+    {
+      "name": "Developer Tools",
+      "doc_url": "/developer-tools",
+      "tagline": "Tools for 5G-MAG members that support the transition of standards into deployments: tools, rules and working records for going from a specification to a working implementation.",
+      "pulls": [
+        {
+          "repo": "Standards2Deployments",
+          "branch": null,
+          "number": 2,
+          "title": "Refactor validator into library and WebUI with automatic DOCX comparison",
+          "url": "https://github.com/5G-MAG/Standards2Deployments/pull/2",
+          "draft": false,
+          "author_login": "ErikGaida",
+          "author_avatar": "https://avatars.githubusercontent.com/u/144566652?v=4",
+          "created_at": "2026-10-08",
           "last_comment_by": null,
           "last_comment_date": null
         }
@@ -1551,19 +1836,19 @@
     },
     {
       "name": "Non-Terrestrial Networks in 5G Systems",
-      "doc_url": "/reference-tools/ntn/",
+      "doc_url": null,
       "tagline": "Expanding network connectivity via satellite and HAPS for content delivery",
       "pulls": []
     },
     {
       "name": "Non-Public Networks",
-      "doc_url": "/reference-tools/npn/",
+      "doc_url": null,
       "tagline": "Private networks replacing legacy COFDM and RF-based contribution links",
       "pulls": []
     },
     {
       "name": "Time-Sensitive Communications (TSC)",
-      "doc_url": "/reference-tools/tsc/",
+      "doc_url": null,
       "tagline": "Deterministic, low-jitter transport for tightly synchronised professional media",
       "pulls": []
     },

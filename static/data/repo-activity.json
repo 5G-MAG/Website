@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-08 03:07 UTC",
+  "updated_at": "2026-10-09 03:13 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -3823,7 +3823,7 @@
           "description": "MBS Function (MBSF)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-07",
+          "pushed_at": "2026-10-08",
           "pulls": [
             {
               "number": 60,
@@ -3845,6 +3845,72 @@
             }
           ],
           "issues": [
+            {
+              "number": 68,
+              "title": "MBSF segfaults in UserServiceAnnChannel::processClientResponse reading an unrelated response as a request record",
+              "url": "https://github.com/5G-MAG/rt-mbs-function/issues/68",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "labels": [
+                "bug",
+                "MBSF"
+              ]
+            },
+            {
+              "number": 67,
+              "title": "MBSF aborts after about 63 Distribution Sessions: a new ephemeral notification server is created for each",
+              "url": "https://github.com/5G-MAG/rt-mbs-function/issues/67",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "labels": [
+                "bug",
+                "MBSF"
+              ]
+            },
+            {
+              "number": 66,
+              "title": "MBSF aborts intermittently: the announcement channel thread uses the SBI client off the main thread",
+              "url": "https://github.com/5G-MAG/rt-mbs-function/issues/66",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "labels": [
+                "bug",
+                "MBSF"
+              ]
+            },
+            {
+              "number": 65,
+              "title": "SBI clients created for notification and push addresses are never removed",
+              "url": "https://github.com/5G-MAG/rt-mbs-function/issues/65",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "labels": [
+                "bug",
+                "MBSF"
+              ]
+            },
+            {
+              "number": 64,
+              "title": "A refused Ingest Session create keeps the MBS Session IDs of sessions it never built",
+              "url": "https://github.com/5G-MAG/rt-mbs-function/issues/64",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "labels": [
+                "bug",
+                "MBSF"
+              ]
+            },
+            {
+              "number": 63,
+              "title": "DELETE of an MBS User Service with an Ingest Session is never answered",
+              "url": "https://github.com/5G-MAG/rt-mbs-function/issues/63",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "labels": [
+                "bug",
+                "MBSF"
+              ]
+            },
             {
               "number": 62,
               "title": "MBSF does not announce nrParameters (freqBandIndicator, aRFCNValue) for Broadcast sessions",
@@ -4019,7 +4085,7 @@
             {
               "name": "feature/mbs-compliance-fixes",
               "default": false,
-              "last_commit": "2026-10-07"
+              "last_commit": "2026-10-08"
             },
             {
               "name": "fix/apply-new-format",
@@ -4044,7 +4110,7 @@
           "description": "MBS Transport Function (MBSTF)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-07",
+          "pushed_at": "2026-10-08",
           "pulls": [
             {
               "number": 76,
@@ -4066,6 +4132,17 @@
             }
           ],
           "issues": [
+            {
+              "number": 78,
+              "title": "MBSTF aborts after about 64 distinct notification addresses: SBI clients are never removed",
+              "url": "https://github.com/5G-MAG/rt-mbs-transport-function/issues/78",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "labels": [
+                "bug",
+                "MBSTF"
+              ]
+            },
             {
               "number": 77,
               "title": "MBSTF applies no FEC to Packet Distribution Sessions (setPacketFEC is a stub)",
@@ -4159,7 +4236,7 @@
             {
               "name": "feature/mbs-compliance-fixes",
               "default": false,
-              "last_commit": "2026-10-07"
+              "last_commit": "2026-10-08"
             },
             {
               "name": "fix/apply-new-format",
@@ -4306,7 +4383,7 @@
           "description": "MBS Tools and Examples",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-10-07",
+          "pushed_at": "2026-10-08",
           "pulls": [
             {
               "number": 36,
@@ -4346,7 +4423,7 @@
             {
               "name": "feature/mbs-compliance-fixes",
               "default": false,
-              "last_commit": "2026-10-07"
+              "last_commit": "2026-10-08"
             },
             {
               "name": "fix/apply-new-format",
@@ -4535,6 +4612,33 @@
           "pushed_at": "2026-09-29",
           "pulls": [
             {
+              "number": 7,
+              "title": "library.json: optional Title, Description and Environment per title",
+              "url": "https://github.com/5G-MAG/rt-v3c-content/pull/7",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "base": "development"
+            },
+            {
+              "number": 6,
+              "title": "README: unzip each package into its own folder",
+              "url": "https://github.com/5G-MAG/rt-v3c-content/pull/6",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "base": "development"
+            },
+            {
+              "number": 5,
+              "title": "README: say that the test content needs Git LFS",
+              "url": "https://github.com/5G-MAG/rt-v3c-content/pull/5",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "base": "development"
+            },
+            {
               "number": 1,
               "title": "docs: apply the 5G-MAG README format",
               "url": "https://github.com/5G-MAG/rt-v3c-content/pull/1",
@@ -4544,7 +4648,32 @@
               "base": "development"
             }
           ],
-          "issues": [],
+          "issues": [
+            {
+              "number": 4,
+              "title": "library.json: optional Title, Description and Environment per title",
+              "url": "https://github.com/5G-MAG/rt-v3c-content/issues/4",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "labels": []
+            },
+            {
+              "number": 3,
+              "title": "Unzipping the three packages into one folder overwrites stream.mpd",
+              "url": "https://github.com/5G-MAG/rt-v3c-content/issues/3",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "labels": []
+            },
+            {
+              "number": 2,
+              "title": "README does not say the test content needs Git LFS",
+              "url": "https://github.com/5G-MAG/rt-v3c-content/issues/2",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "labels": []
+            }
+          ],
           "branches": [
             {
               "name": "main",
@@ -4572,6 +4701,69 @@
           "pushed_at": "2026-09-29",
           "pulls": [
             {
+              "number": 17,
+              "title": "decoder: export playback counters (GetDecoderStats)",
+              "url": "https://github.com/5G-MAG/rt-v3c-decoder-plugin/pull/17",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "base": "development"
+            },
+            {
+              "number": 16,
+              "title": "iloj Android config: link libz through the toolchain, not a Windows NDK path",
+              "url": "https://github.com/5G-MAG/rt-v3c-decoder-plugin/pull/16",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "base": "development"
+            },
+            {
+              "number": 15,
+              "title": "android scripts: use the lower-case folder name for Libraries/iloj",
+              "url": "https://github.com/5G-MAG/rt-v3c-decoder-plugin/pull/15",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "base": "development"
+            },
+            {
+              "number": 14,
+              "title": "build_android.sh: take the NDK from the environment and default the SDK per host",
+              "url": "https://github.com/5G-MAG/rt-v3c-decoder-plugin/pull/14",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "base": "development"
+            },
+            {
+              "number": 13,
+              "title": "scripts: download and run the ninja that matches the host",
+              "url": "https://github.com/5G-MAG/rt-v3c-decoder-plugin/pull/13",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "base": "development"
+            },
+            {
+              "number": 12,
+              "title": "scripts: make the build scripts executable",
+              "url": "https://github.com/5G-MAG/rt-v3c-decoder-plugin/pull/12",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "base": "development"
+            },
+            {
+              "number": 11,
+              "title": "dash client: log unknown streamer and network codes instead of aborting",
+              "url": "https://github.com/5G-MAG/rt-v3c-decoder-plugin/pull/11",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "base": "development"
+            },
+            {
               "number": 4,
               "title": "docs: apply the 5G-MAG README format",
               "url": "https://github.com/5G-MAG/rt-v3c-decoder-plugin/pull/4",
@@ -4582,6 +4774,54 @@
             }
           ],
           "issues": [
+            {
+              "number": 10,
+              "title": "An unknown DASH streamer or network code aborts the app (std::map::at)",
+              "url": "https://github.com/5G-MAG/rt-v3c-decoder-plugin/issues/10",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "labels": []
+            },
+            {
+              "number": 9,
+              "title": "ilojConfig.cmake (Android) links libz from the windows-x86_64 NDK folder",
+              "url": "https://github.com/5G-MAG/rt-v3c-decoder-plugin/issues/9",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "labels": []
+            },
+            {
+              "number": 8,
+              "title": "Android scripts use Libraries/iloj/Release but the folder is named release",
+              "url": "https://github.com/5G-MAG/rt-v3c-decoder-plugin/issues/8",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "labels": []
+            },
+            {
+              "number": 7,
+              "title": "build_android.sh hard-codes a Windows SDK path and prompts for the NDK",
+              "url": "https://github.com/5G-MAG/rt-v3c-decoder-plugin/issues/7",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "labels": []
+            },
+            {
+              "number": 6,
+              "title": "dl_deps.sh downloads the Windows build of ninja on every platform",
+              "url": "https://github.com/5G-MAG/rt-v3c-decoder-plugin/issues/6",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "labels": []
+            },
+            {
+              "number": 5,
+              "title": "Scripts are not executable, so the README commands fail on Linux and macOS",
+              "url": "https://github.com/5G-MAG/rt-v3c-decoder-plugin/issues/5",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "labels": []
+            },
             {
               "number": 3,
               "title": "Teardown deadlock: video decoder threads joined without wake-up sentinel in DecoderInterface::stopVideoDecoders()",
@@ -4628,6 +4868,78 @@
           "pushed_at": "2026-09-29",
           "pulls": [
             {
+              "number": 17,
+              "title": "stats panel: show the decoder counters",
+              "url": "https://github.com/5G-MAG/rt-v3c-unity-player/pull/17",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "base": "development"
+            },
+            {
+              "number": 16,
+              "title": "stadium backdrop chosen per title",
+              "url": "https://github.com/5G-MAG/rt-v3c-unity-player/pull/16",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "base": "development"
+            },
+            {
+              "number": 15,
+              "title": "branding: product name V3C Immersive Player and a launcher icon",
+              "url": "https://github.com/5G-MAG/rt-v3c-unity-player/pull/15",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "base": "development"
+            },
+            {
+              "number": 14,
+              "title": "V-PCC: frame the content from its own points",
+              "url": "https://github.com/5G-MAG/rt-v3c-unity-player/pull/14",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "base": "development"
+            },
+            {
+              "number": 13,
+              "title": "player UI: title and source on screen, loading and error states, library, settings",
+              "url": "https://github.com/5G-MAG/rt-v3c-unity-player/pull/13",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "base": "development"
+            },
+            {
+              "number": 12,
+              "title": "V3CDecoder package: declare the Unity version the project uses",
+              "url": "https://github.com/5G-MAG/rt-v3c-unity-player/pull/12",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "base": "development"
+            },
+            {
+              "number": 11,
+              "title": "Build.Android: report the build result and exit non-zero on failure",
+              "url": "https://github.com/5G-MAG/rt-v3c-unity-player/pull/11",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "base": "development"
+            },
+            {
+              "number": 10,
+              "title": "haptics: vibrate only while time remains",
+              "url": "https://github.com/5G-MAG/rt-v3c-unity-player/pull/10",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "base": "development"
+            },
+            {
               "number": 2,
               "title": "docs: apply the 5G-MAG README format",
               "url": "https://github.com/5G-MAG/rt-v3c-unity-player/pull/2",
@@ -4637,7 +4949,64 @@
               "base": "development"
             }
           ],
-          "issues": [],
+          "issues": [
+            {
+              "number": 9,
+              "title": "Product name and launcher icon",
+              "url": "https://github.com/5G-MAG/rt-v3c-unity-player/issues/9",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "labels": []
+            },
+            {
+              "number": 8,
+              "title": "Optional stadium backdrop chosen per title",
+              "url": "https://github.com/5G-MAG/rt-v3c-unity-player/issues/8",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "labels": []
+            },
+            {
+              "number": 7,
+              "title": "Frame V-PCC content from its own bounds",
+              "url": "https://github.com/5G-MAG/rt-v3c-unity-player/issues/7",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "labels": []
+            },
+            {
+              "number": 6,
+              "title": "Player UI: title and source on screen, loading and error states, library, settings",
+              "url": "https://github.com/5G-MAG/rt-v3c-unity-player/issues/6",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "labels": []
+            },
+            {
+              "number": 5,
+              "title": "Haptics: zero or negative vibration duration throws on Android",
+              "url": "https://github.com/5G-MAG/rt-v3c-unity-player/issues/5",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "labels": []
+            },
+            {
+              "number": 4,
+              "title": "V3CDecoder package.json requires Unity 2020.3, the project needs 6000.0.25f1",
+              "url": "https://github.com/5G-MAG/rt-v3c-unity-player/issues/4",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "labels": []
+            },
+            {
+              "number": 3,
+              "title": "Build.Android reports success when the build failed",
+              "url": "https://github.com/5G-MAG/rt-v3c-unity-player/issues/3",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "labels": []
+            }
+          ],
           "branches": [
             {
               "name": "main",
@@ -4857,7 +5226,7 @@
           "description": "6G AI Traffic Characterization Testbed",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-09-29",
+          "pushed_at": "2026-10-08",
           "pulls": [
             {
               "number": 11,
@@ -4870,7 +5239,7 @@
             },
             {
               "number": 10,
-              "title": "netemu measurement package, agentic scenarios, Markov traffic models",
+              "title": "netemu measurement package and agentic scenarios",
               "url": "https://github.com/5G-MAG/6G-Testbed/pull/10",
               "draft": false,
               "author": "ibouazizi",
@@ -4886,6 +5255,11 @@
               "last_commit": "2026-04-24"
             },
             {
+              "name": "refactor",
+              "default": false,
+              "last_commit": "2026-10-08"
+            },
+            {
               "name": "fix/apply-new-format",
               "default": false,
               "last_commit": "2026-09-29"
@@ -4894,11 +5268,6 @@
               "name": "copilot/refactor-remove-training-subfolder",
               "default": false,
               "last_commit": "2026-09-26"
-            },
-            {
-              "name": "refactor",
-              "default": false,
-              "last_commit": "2026-09-21"
             },
             {
               "name": "development",
@@ -5010,6 +5379,15 @@
           "pushed_at": "2026-10-01",
           "pulls": [
             {
+              "number": 78,
+              "title": "avcodec-build: README sends the libraries to rt-v3c-decoder-plugin",
+              "url": "https://github.com/5G-MAG/rt-common-shared/pull/78",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "base": "development"
+            },
+            {
               "number": 75,
               "title": "docs: apply the 5G-MAG README format",
               "url": "https://github.com/5G-MAG/rt-common-shared/pull/75",
@@ -5020,6 +5398,14 @@
             }
           ],
           "issues": [
+            {
+              "number": 77,
+              "title": "avcodec-build README sends the FFmpeg libraries to rt-v3c-unity-player instead of rt-v3c-decoder-plugin",
+              "url": "https://github.com/5G-MAG/rt-common-shared/issues/77",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-08",
+              "labels": []
+            },
             {
               "number": 76,
               "title": "Upstream OpenAPI Generator changes from 5G-MAG",
@@ -5116,6 +5502,11 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Developer Tools",
+      "doc_url": "/developer-tools",
+      "repos": []
     },
     {
       "name": "DVB-I Services over 5G Systems",
