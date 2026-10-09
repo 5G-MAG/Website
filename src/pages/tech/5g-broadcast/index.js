@@ -24,7 +24,7 @@ import styles from '../index.module.css';
 // (Deployment Profiles, Operational Parameters in Use) stay as real docs
 // under docs/tech/5g-broadcast/.
 const PROJECT = ALL_PROJECTS.find((p) => p.tech_url === '/tech/5g-broadcast');
-const PROJECT_NAME = PROJECT.name;
+const PROJECT_NAME = displayNameOf(PROJECT);
 const ANTENNA_ICON = (
   <>
     <path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />

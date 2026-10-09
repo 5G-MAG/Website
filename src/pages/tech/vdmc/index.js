@@ -16,7 +16,7 @@ import styles from '../index.module.css';
 // displayNameOf(), not from `name` (same value here, but derived properly
 // so a later taxonomy.json displayName addition doesn't silently break it).
 const PROJECT = ALL_PROJECTS.find((p) => p.tech_url === '/tech/vdmc');
-const PROJECT_NAME = PROJECT.name;
+const PROJECT_NAME = displayNameOf(PROJECT);
 
 // A per-project "flagship" page, following the 5gms pilot
 // (src/pages/tech/5gms/index.js) -- replacing the former docs/tech/vdmc.md

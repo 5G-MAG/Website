@@ -17,7 +17,7 @@ description: Device requirements for running the V3C Unity player on Android, in
   <path d="M8 10v4.5l4 2.5" /></svg>
 </div>
 <div class="topic-banner__text">
-<span class="topic-banner__kicker">MPEG V3C Immersive Platform</span>
+<span class="topic-banner__kicker">Volumetric Video Experiences</span>
 <h1>Requirements</h1>
 </div>
 </div>

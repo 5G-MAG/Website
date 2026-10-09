@@ -11,7 +11,7 @@ description: 'Operational parameter values seen in live and trial LTE-based 5G B
   <path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M16.616 13.924a5 5 0 1 0 -9.23 0"/><path d="M20.307 15.469a9 9 0 1 0 -16.615 0"/><path d="M9 21l3 -9l3 9"/><path d="M10 19h4"/></svg>
 </div>
 <div class="topic-banner__text">
-<span class="topic-banner__kicker">5G Broadcast - TV, Radio and Emergency Alerts</span>
+<span class="topic-banner__kicker">5G Broadcast - TV and Radio Services</span>
 <h1>Operational Parameters in Use</h1>
 </div>
 </div>
@@ -90,7 +90,7 @@ ETSI TS 103 720 defines normative receiver categories (Base, Main, 5GMS; see [De
 
 - [ETSI TS 103 720](https://www.etsi.org/deliver/etsi_ts/103700_103799/103720/): 5G Broadcast System for linear TV and radio services
 - [5G Broadcast Deployment Profiles](./deployment-profiles)
-- [Standards: 5G Broadcast - TV, Radio and Emergency Alerts](/standards/5g-broadcast)
+- [Standards: 5G Broadcast - TV and Radio Services](/standards/5g-broadcast)
 
 <details>
 <summary>References to verify</summary>

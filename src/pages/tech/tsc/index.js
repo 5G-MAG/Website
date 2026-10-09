@@ -5,7 +5,7 @@ import HubHero from '@site/src/components/HubHero';
 import ProjectDestinationCards from '@site/src/components/ProjectDestinationCards';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import ProjectContributors from '@site/src/components/ProjectContributors';
-import { ALL_PROJECTS } from '@site/src/data/baskets';
+import { ALL_PROJECTS, displayNameOf } from '@site/src/data/baskets';
 import styles from '../index.module.css';
 
 // The page title/H1 uses taxonomy.json's own `name` field directly (direct
@@ -13,7 +13,7 @@ import styles from '../index.module.css';
 // former hand-typed title ("Time Sensitive Communications") dropped the
 // taxonomy string's hyphen and "(TSC)" suffix.
 const PROJECT = ALL_PROJECTS.find((p) => p.tech_url === '/tech/tsc');
-const PROJECT_NAME = PROJECT.name;
+const PROJECT_NAME = displayNameOf(PROJECT);
 
 // A per-project "flagship" page, following the 5gms pilot
 // (src/pages/tech/5gms/index.js) -- replacing the former

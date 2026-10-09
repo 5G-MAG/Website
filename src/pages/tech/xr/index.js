@@ -16,7 +16,7 @@ import styles from '../index.module.css';
 // matches against ALL_REPOS's own projectName field, which baskets.js
 // builds from displayNameOf(), not from `name`.
 const PROJECT = ALL_PROJECTS.find((p) => p.tech_url === '/tech/xr');
-const PROJECT_NAME = PROJECT.name;
+const PROJECT_NAME = displayNameOf(PROJECT);
 
 // A per-project "flagship" page, replacing the former docs/tech/xr.mdx doc --
 // same treatment as /tech/5gms (src/pages/tech/5gms/index.js), the validated

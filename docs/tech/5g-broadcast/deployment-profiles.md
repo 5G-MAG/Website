@@ -11,7 +11,7 @@ description: Defines LTE-based 5G Broadcast receiver capability profiles, includ
   <path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M16.616 13.924a5 5 0 1 0 -9.23 0"/><path d="M20.307 15.469a9 9 0 1 0 -16.615 0"/><path d="M9 21l3 -9l3 9"/><path d="M10 19h4"/></svg>
 </div>
 <div class="topic-banner__text">
-<span class="topic-banner__kicker">5G Broadcast - TV, Radio and Emergency Alerts</span>
+<span class="topic-banner__kicker">5G Broadcast - TV and Radio Services</span>
 <h1>Deployment Profiles</h1>
 </div>
 </div>
@@ -42,7 +42,7 @@ Alongside the deployment-oriented example profile below, ETSI TS 103 720 v1.2.1 
 - **Main Receiver** must support all five numerologies and is the target for mobile and portable devices.
 - **5GMS Receiver** adds the 5G Media Streaming requirements on top of the Main Receiver.
 
-The published v1.2.1 does not include specific frequency bands: its clause 8 (Spectrum and Frequency Bands, informative) notes that 3GPP work on frequency bands was ongoing and defers them to a future revision. The 3GPP Release 18 band additions (such as Band 108, 470 to 698 MHz) and the Release 19 PMCH enhancements are therefore expected in a later ETSI TS 103 720 version. For the release-by-release mapping, see [Standards: 5G Broadcast - TV, Radio and Emergency Alerts](/standards/5g-broadcast).
+The published v1.2.1 does not include specific frequency bands: its clause 8 (Spectrum and Frequency Bands, informative) notes that 3GPP work on frequency bands was ongoing and defers them to a future revision. The 3GPP Release 18 band additions (such as Band 108, 470 to 698 MHz) and the Release 19 PMCH enhancements are therefore expected in a later ETSI TS 103 720 version. For the release-by-release mapping, see [Standards: 5G Broadcast - TV and Radio Services](/standards/5g-broadcast).
 
 ## 5G Broadcast Receiver Profile A (example)
 

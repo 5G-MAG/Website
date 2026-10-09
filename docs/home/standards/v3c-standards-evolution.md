@@ -1,6 +1,6 @@
 ---
 hide_title: true
-title: MPEG V3C Immersive Platform - Standards Evolution
+title: Volumetric Video Experiences - Standards Evolution
 slug: /standards/v3c/evolution
 description: Release-by-release 3GPP work item and Change Request history behind MPEG V3C Immersive Platform.
 ---
@@ -12,7 +12,7 @@ description: Release-by-release 3GPP work item and Change Request history behind
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Standards</span>
-<h1>MPEG V3C Immersive Platform - Standards Evolution</h1>
+<h1>Volumetric Video Experiences - Standards Evolution</h1>
 </div>
 </div>
 

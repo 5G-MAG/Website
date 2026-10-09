@@ -5,13 +5,13 @@ import HubHero from '@site/src/components/HubHero';
 import ProjectDestinationCards from '@site/src/components/ProjectDestinationCards';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import ProjectContributors from '@site/src/components/ProjectContributors';
-import { ALL_PROJECTS } from '@site/src/data/baskets';
+import { ALL_PROJECTS, displayNameOf } from '@site/src/data/baskets';
 import styles from '../index.module.css';
 
 // The page title/H1 uses taxonomy.json's own `name` field directly (direct
 // instruction: "the name should be the one in the taxonomy").
 const PROJECT = ALL_PROJECTS.find((p) => p.tech_url === '/tech/npn');
-const PROJECT_NAME = PROJECT.name;
+const PROJECT_NAME = displayNameOf(PROJECT);
 
 // A per-project "flagship" page (same 2026-09-25 pilot as /tech/5gms,
 // /tech/rtc and /tech/ntn), replacing the former docs/tech/npn.md doc. Same

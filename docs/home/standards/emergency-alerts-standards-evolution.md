@@ -1,6 +1,6 @@
 ---
 hide_title: true
-title: 5G Broadcast - Emergency Alerts - Standards Evolution
+title: Public Warning Systems - Standards Evolution
 slug: /standards/emergency-alerts/evolution
 description: Release-by-release 3GPP work item and Change Request history behind 5G Broadcast - Emergency Alerts.
 ---
@@ -12,7 +12,7 @@ description: Release-by-release 3GPP work item and Change Request history behind
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Standards</span>
-<h1>5G Broadcast - Emergency Alerts - Standards Evolution</h1>
+<h1>Public Warning Systems - Standards Evolution</h1>
 </div>
 </div>
 

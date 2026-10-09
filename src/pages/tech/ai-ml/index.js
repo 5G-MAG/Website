@@ -16,7 +16,7 @@ import styles from '../index.module.css';
 // it matches against ALL_REPOS's own projectName field, which baskets.js
 // builds from displayNameOf(), not from `name`.
 const PROJECT = ALL_PROJECTS.find((p) => p.tech_url === '/tech/ai-ml');
-const PROJECT_NAME = PROJECT.name;
+const PROJECT_NAME = displayNameOf(PROJECT);
 
 // A per-project "flagship" page, following the 5gms pilot
 // (src/pages/tech/5gms/index.js) -- replacing the former docs/tech/ai-ml.md

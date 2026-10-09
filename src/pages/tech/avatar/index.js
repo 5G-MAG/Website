@@ -16,7 +16,7 @@ import styles from '../index.module.css';
 // own projectName field, which baskets.js builds from displayNameOf(), not
 // from `name`.
 const PROJECT = ALL_PROJECTS.find((p) => p.tech_url === '/tech/avatar');
-const PROJECT_NAME = PROJECT.name;
+const PROJECT_NAME = displayNameOf(PROJECT);
 
 // A per-project "flagship" page, following the 5gms pilot
 // (src/pages/tech/5gms/index.js) -- replacing the former

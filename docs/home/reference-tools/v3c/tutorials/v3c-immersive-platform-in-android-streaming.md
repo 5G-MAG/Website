@@ -17,7 +17,7 @@ description: Step-by-step tutorial to build the V3C Unity player for Android and
   <path d="M8 10v4.5l4 2.5" /></svg>
 </div>
 <div class="topic-banner__text">
-<span class="topic-banner__kicker">MPEG V3C Immersive Platform</span>
+<span class="topic-banner__kicker">Volumetric Video Experiences</span>
 <h1>V3C Unity Player for Android with DASH Streaming Server</h1>
 </div>
 </div>

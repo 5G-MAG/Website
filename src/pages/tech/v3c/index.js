@@ -17,7 +17,7 @@ import styles from '../index.module.css';
 // projectName field, which baskets.js builds from displayNameOf(), not
 // from `name`.
 const PROJECT = ALL_PROJECTS.find((p) => p.tech_url === '/tech/v3c');
-const PROJECT_NAME = PROJECT.name;
+const PROJECT_NAME = displayNameOf(PROJECT);
 
 // A per-project "flagship" page (following the 5GMS pilot, src/pages/tech/5gms/index.js),
 // replacing the former docs/tech/volumetric.mdx doc -- same Layout/HubHero every hub

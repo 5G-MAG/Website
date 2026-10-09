@@ -15,7 +15,7 @@ import styles from '../index.module.css';
 // displayNameOf(), not from `name` (same value here, but derived properly
 // so a later taxonomy.json displayName addition doesn't silently break it).
 const PROJECT = ALL_PROJECTS.find((p) => p.tech_url === '/tech/5g-mbs');
-const PROJECT_NAME = PROJECT.name;
+const PROJECT_NAME = displayNameOf(PROJECT);
 
 // A per-project "flagship" page (same 2026-09-25 pilot as /tech/5gms),
 // replacing the former docs/tech/5g-mbs.mdx doc. Same Layout/HubHero every

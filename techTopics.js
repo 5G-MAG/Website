@@ -173,14 +173,14 @@ const ALL_TOPICS = [
     ],
   },
   {
-    label: '5G Broadcast - Emergency Alerts',
+    label: 'Public Warning Systems',
     techHref: '/tech/emergency-alerts',
     autogen: 'emergency-alerts',
     techOverviewDoc: 'emergency-alerts/overview',
     standards: [
       {
         doc: 'standards/emergency-alerts',
-        label: 'Standards: 5G Broadcast - Emergency Alerts',
+        label: 'Standards: Public Warning Systems',
       },
       {
         doc: 'standards/emergency-alerts-standards-evolution',
@@ -189,16 +189,16 @@ const ALL_TOPICS = [
     ],
   },
   {
-    label: 'Conversational Avatar Communication with MPEG ARF',
+    label: 'Conversational Avatar Communication',
     techHref: '/tech/avatar',
     autogen: 'avatar',
     techOverviewDoc: 'avatar/overview',
     standards: [
-      { doc: 'standards/avatar', label: 'Standards: Conversational Avatar Communication with MPEG ARF' },
+      { doc: 'standards/avatar', label: 'Standards: Conversational Avatar Communication' },
     ],
   },
   {
-    label: 'MPEG V3C Immersive Platform',
+    label: 'Volumetric Video Experiences',
     techHref: '/tech/v3c',
     autogen: 'volumetric',
     // Added 2026-09-28 (consistency audit: every project needs a working
@@ -208,7 +208,7 @@ const ALL_TOPICS = [
     // separate Beyond 2D project's own content, not V3C's.
     techOverviewDoc: 'volumetric/v3c-overview',
     standards: [
-      { doc: 'standards/v3c', label: 'Standards: MPEG V3C Immersive Platform' },
+      { doc: 'standards/v3c', label: 'Standards: Volumetric Video Experiences' },
       { doc: 'standards/v3c-standards-evolution', label: 'Standards: V3C - Standards Evolution' },
     ],
   },
@@ -233,7 +233,7 @@ const ALL_TOPICS = [
     standards: [{ doc: 'standards/beyond-2d', label: 'Standards: Beyond 2D Video Experiences' }],
   },
   {
-    label: 'XR/3D Scenes with MPEG-I Scene Description',
+    label: 'XR Media & 3D Scenes',
     techHref: '/tech/xr',
     autogen: 'xr',
     // Added 2026-09-28 (direct instruction: every project needs a real
@@ -242,7 +242,7 @@ const ALL_TOPICS = [
     // several, just wiring the header link to the content that already
     // exists.
     techOverviewDoc: 'xr/mpeg-i-scene-description',
-    standards: [{ doc: 'standards/xr', label: 'Standards: XR/3D Scenes with MPEG-I Scene Description' }],
+    standards: [{ doc: 'standards/xr', label: 'Standards: XR Media & 3D Scenes' }],
   },
   {
     label: 'Dynamic Mesh Coding',
@@ -255,7 +255,7 @@ const ALL_TOPICS = [
     ],
   },
   {
-    label: 'CAMARA Connectivity Quality Management APIs',
+    label: 'Network APIs for Connectivity Quality',
     techHref: '/tech/network-apis',
     autogen: 'network-apis',
     // Added 2026-09-28 (direct instruction: every project needs a real
@@ -267,7 +267,7 @@ const ALL_TOPICS = [
     standards: [
       {
         doc: 'standards/network-apis',
-        label: 'Standards: CAMARA Connectivity Quality Management APIs',
+        label: 'Standards: Network APIs for Connectivity Quality',
       },
       {
         doc: 'standards/network-apis-standards-evolution',

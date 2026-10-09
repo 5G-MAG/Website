@@ -18,7 +18,7 @@ import styles from '../index.module.css';
 // two already-published docs (docs/home/standards/emergency-alerts.mdx,
 // docs/home/reference-tools/emergency-alerts/implementation.mdx), not invented here.
 const PROJECT = ALL_PROJECTS.find((p) => p.tech_url === '/tech/emergency-alerts');
-const PROJECT_NAME = PROJECT.name;
+const PROJECT_NAME = displayNameOf(PROJECT);
 
 const SOS_ICON = (
   <>

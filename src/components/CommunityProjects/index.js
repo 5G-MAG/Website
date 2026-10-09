@@ -248,7 +248,9 @@ function OpenPRList({ pulls }) {
 }
 
 function ProjectDetails({ project }) {
-  const releaseUrl = project.doc_url ? project.doc_url + (project.releases_slug ?? 'resources') : null;
+  // Only Reference Tools and testbed pages have a releases section; Developer Tools has none.
+  const hasReleases = /^\/(reference-tools|testbeds)\//.test(project.doc_url || '');
+  const releaseUrl = hasReleases ? project.doc_url + (project.releases_slug ?? 'resources') : null;
   const latestDays = project.latestRelease ? daysSince(project.latestRelease.date) : 9999;
 
   return (
