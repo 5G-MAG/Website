@@ -19,9 +19,9 @@ description: "Video Operation Points: the video capabilities and operation point
 </div>
 </div>
 
-:::note
-This is a placeholder. The Technical Analysis is in preparation.
-:::
+## Why the specification exists
+
+TS 26.265 V19.2.0, clause 4.1: "Video capabilities are predominantly independent of the service in use." The same clause says the specification defines video capabilities and operation points "such that 3GPP service specifications as well as third-party service providers can refer to the interoperability points defined in this specification."
 
 ## What an operation point is
 
@@ -29,11 +29,44 @@ TS 26.265, clause 3.1: "Operation Point: A collection of discrete combinations o
 
 TS 26.265, clause 3.1: "Receiver: A device capable of decoding and rendering any bitstream that is conforming to a certain Operation Point."
 
-## The testbed
+TS 26.265 V19.2.0, clause 4.2: "Receivers conforming to an Operation Point are able to decode the bitstream and render the included video signal together with the provided metadata."
 
-The [VOPS Conformance Validator](/testbeds/vops) checks a video bitstream for conformance against an operation point.
+## Reference architecture
+
+Clause 4.2 (figure 4.2-1) describes a video encoder that turns a video signal into a bitstream, and a decoder that passes the decoded signal and its metadata to rendering. Both can be configured through APIs, which are not normative: "These APIs are not normatively specified but serve as an example reference to configure encoders and decoders as documented in Annex A."
+
+Figure 4.2-2 extends this to a multi-layer bitstream, where "a receiver conforming to Operation Point 1 is able to extract the relevant data and access units of the entire video bitstream to decode video signal 1."
+
+## Capabilities and operation points
+
+Clause 4.3 defines a video decoding capability and a video encoding capability. Clause 5.1, NOTE: "These clause does not specify whether these capabilities are required, recommended or suggested to be supported." Service specifications decide that.
+
+Clause 6.1, table 6.1-1 gives seven operation points, each with a video format and a decoding capability:
+
+| Operation point | Video format |
+| --- | --- |
+| 3GPP-AVC-HD | 3GPP-HD |
+| 3GPP-HEVC-HD | 3GPP-HD |
+| 3GPP-HEVC-HD-HDR | 3GPP-HDR |
+| 3GPP-HEVC-UHD-HDR | 3GPP-HDR |
+| 3GPP-HEVC-Stereo | 3GPP-Stereo |
+| 3GPP-MV-HEVC-Main-Stereo | 3GPP-Stereo |
+| 3GPP-MV-HEVC-Ext-Stereo | 3GPP-Stereo |
+
+## What is still open
+
+- Clauses 7.2.2 and 7.2.3: "The definitions for AVC are for further study." and "The definitions for HEVC are for further study."
+- Annex A.2.3, mapping to an encoder API: "This work is for further study."
+- Annex B.2.3, the validator's report: "The detailed semantics and the format of the report is for further study."
+
+## Conformance and the testbed
+
+Annex B.1 lists the conformance functions: annotated video test signals, reference encoders and configurations, a conformance validator, conforming decoders and conformance bitstreams. Annex B.3: "the conformance validator may be used to test bitstreams claiming to be conformant to an operation point indeed are conforming, or if not, which test assertions are not fulfilled."
+
+The [VOPS Conformance Validator](/testbeds/vops) is 5G-MAG's validator for these operation points. It is built against V19.2.0 and still needs testing with conformance bitstreams. TS 26.265 V19.3.0 changes the dual-layer HEVC capability (clause 5.3.3), so the validator's MV-HEVC operation points will need rechecking against it.
 
 ## Sources
 
-- 3GPP TS 26.265 V19.3.0, clause 3.1 (definitions of Operation Point and Receiver).
+- 3GPP TS 26.265 V19.2.0 (2026-03), clauses 3.1, 4.1, 4.2, 4.3, 5.1, 6.1, 7.2.2, 7.2.3 and annexes A.2.3, B.1, B.2.3 and B.3.
+- 3GPP TS 26.265 V19.3.0, clause 5.3.3 (renamed "Dual-layer HEVC Decoding Capabilities", output layer sets), checked against V19.2.0 as baseline.
 - [Standards: Video Operation Points](/standards/vops)
