@@ -16,7 +16,7 @@ description: Revision history of DVB A177 (ETSI TS 103 770) and ETSI TR 103 972,
 </div>
 </div>
 
-This page is the detailed, revision-by-revision companion to [Standards: DVB-I Services over 5G Systems](/standards/dvb-i). DVB-I is specified by DVB and published by ETSI, not by a 3GPP release; its history is therefore the document history of each specification, not 3GPP work items and change requests. The 3GPP parts that DVB-I uses over 5G follow the 3GPP release process and are covered on [Standards Evolution: 5G Media Streaming](/standards/5gms/evolution), [5G MBS](/standards/5g-mbs/evolution) and [5G Broadcast](/standards/5g-broadcast/evolution).
+This page is the detailed, revision-by-revision companion to [Standards: DVB-I Services over 5G Systems](/standards/dvb-i). DVB-I is specified by DVB and published by ETSI; its history is the document history of each specification. The 3GPP parts that DVB-I uses over 5G follow the 3GPP release process and are covered on [Standards Evolution: 5G Media Streaming](/standards/5gms/evolution), [5G MBS](/standards/5g-mbs/evolution) and [5G Broadcast](/standards/5g-broadcast/evolution).
 
 :::tip[At a glance]
 

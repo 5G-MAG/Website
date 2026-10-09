@@ -31,7 +31,7 @@ This page is the detailed, release-by-release companion to [Standards: Time-Sens
 
 Sources: the 3GPP work plan of 28 September 2026, the 3GPP Change Request database of 25 September 2026, and the change history of TS 22.104 V19.2.0, TR 22.804 V16.3.0, TS 29.565 V20.1.0, TR 23.700-25 V18.1.0.
 
-This page covers [TS 22.104](https://www.3gpp.org/dynareport/22104.htm), [TR 22.804](https://www.3gpp.org/dynareport/22804.htm), [TS 29.565](https://www.3gpp.org/dynareport/29565.htm), [TR 23.700-25](https://www.3gpp.org/dynareport/23700-25.htm). The work items are those that name these specifications in the 3GPP work plan, and those whose title contains "Time Sensitive", "TSN", "Timing Resiliency" or "Deterministic Network". The change requests are those recorded in the 3GPP Change Request database as implemented in a version. The IEEE and SMPTE specifications on the Standards page are not 3GPP documents.
+This page covers [TS 22.104](https://www.3gpp.org/dynareport/22104.htm), [TR 22.804](https://www.3gpp.org/dynareport/22804.htm), [TS 29.565](https://www.3gpp.org/dynareport/29565.htm), [TR 23.700-25](https://www.3gpp.org/dynareport/23700-25.htm). The work items are those that name these specifications in the 3GPP work plan, and those whose title contains "Time Sensitive", "TSN", "Timing Resiliency" or "Deterministic Network". The change requests are those recorded in the 3GPP Change Request database as implemented in a version.
 
 ### Release 20
 

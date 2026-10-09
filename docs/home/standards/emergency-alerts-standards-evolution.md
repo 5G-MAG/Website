@@ -46,7 +46,7 @@ This page is the detailed, release-by-release companion to [Standards: Public Wa
 
 Sources: the 3GPP work plan of 28 September 2026, the 3GPP Change Request database of 25 September 2026, and the change history of TS 22.268 V21.0.0, TS 23.041 V20.0.0, TS 29.168 V19.0.0, TR 36.976 V19.0.0.
 
-This page covers [TS 22.268](https://www.3gpp.org/dynareport/22268.htm), [TS 23.041](https://www.3gpp.org/dynareport/23041.htm), [TS 29.168](https://www.3gpp.org/dynareport/29168.htm), [TR 36.976](https://www.3gpp.org/dynareport/36976.htm). The work items are those that name these specifications in the 3GPP work plan, and those whose title contains "Public Warning", "PWS" or "Cell Broadcast". The change requests are those recorded in the 3GPP Change Request database as implemented in a version. ETSI TS 103 720, ETSI TS 102 900 and OASIS CAP are not 3GPP documents.
+This page covers [TS 22.268](https://www.3gpp.org/dynareport/22268.htm), [TS 23.041](https://www.3gpp.org/dynareport/23041.htm), [TS 29.168](https://www.3gpp.org/dynareport/29168.htm), [TR 36.976](https://www.3gpp.org/dynareport/36976.htm). The work items are those that name these specifications in the 3GPP work plan, and those whose title contains "Public Warning", "PWS" or "Cell Broadcast". The change requests are those recorded in the 3GPP Change Request database as implemented in a version.
 
 ### Release 21
 

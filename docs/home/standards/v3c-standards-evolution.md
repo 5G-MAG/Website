@@ -16,7 +16,7 @@ description: Edition and stage history of the ISO/IEC specifications behind MPEG
 </div>
 </div>
 
-This page is the companion to [Standards: MPEG V3C Immersive Platform](/standards/v3c) for its ISO/IEC specifications: ISO/IEC 23090-5, ISO/IEC 23090-10, ISO/IEC 23090-12, ISO/IEC 23090-20, ISO/IEC 23090-25. ISO/IEC specifications are not 3GPP releases, so their history is the sequence of editions, amendments and stage codes in the ISO catalogue, not 3GPP work items and change requests.
+This page is the companion to [Standards: MPEG V3C Immersive Platform](/standards/v3c) for its ISO/IEC specifications: ISO/IEC 23090-5, ISO/IEC 23090-10, ISO/IEC 23090-12, ISO/IEC 23090-20, ISO/IEC 23090-25.
 
 ## Editions and stages
 

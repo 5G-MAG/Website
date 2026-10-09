@@ -31,7 +31,7 @@ This page is the detailed, release-by-release companion to [Standards: Network A
 
 Sources: the 3GPP work plan of 28 September 2026, the 3GPP Change Request database of 25 September 2026, and the change history of TS 23.222 V20.1.0, TS 29.222 V20.1.0, TS 23.434 V20.1.0, TS 24.549 V19.2.0.
 
-This page covers [TS 23.222](https://www.3gpp.org/dynareport/23222.htm), [TS 29.222](https://www.3gpp.org/dynareport/29222.htm), [TS 23.434](https://www.3gpp.org/dynareport/23434.htm), [TS 24.549](https://www.3gpp.org/dynareport/24549.htm). The work items are those that name these specifications in the 3GPP work plan. The change requests are those recorded in the 3GPP Change Request database as implemented in a version. The CAMARA APIs are not 3GPP documents. Their release history is in the CAMARA releases section above.
+This page covers [TS 23.222](https://www.3gpp.org/dynareport/23222.htm), [TS 29.222](https://www.3gpp.org/dynareport/29222.htm), [TS 23.434](https://www.3gpp.org/dynareport/23434.htm), [TS 24.549](https://www.3gpp.org/dynareport/24549.htm). The work items are those that name these specifications in the 3GPP work plan. The change requests are those recorded in the 3GPP Change Request database as implemented in a version.
 
 ## CAMARA releases
 
