@@ -11,6 +11,8 @@ pagination_next: null
 import SpecIndex from '@site/src/components/SpecIndex';
 import { FIVEGMS_SPECS, FIVEGMS_LAYER_ORDER } from '@site/src/data/specs/5gms';
 import JumpMenu from '@site/src/components/JumpMenu';
+import SpecReleases, { SpecTopics } from '@site/src/components/SpecReleases';
+import SPECMAP from '@site/src/data/specmap/5gms.json';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -35,13 +37,25 @@ The page covers Release 16 to Release 19. Release 20 work is in progress.
 
 :::
 
-<JumpMenu items={[["Specifications", "specifications"], ["Specifications from other bodies", "specifications-from-other-bodies"], ["Related", "related"]]} />
+<JumpMenu items={[["Specifications", "specifications"], ["Release by release", "release-by-release"], ["Topics", "topics"], ["Specifications from other bodies", "specifications-from-other-bodies"], ["Related", "related"]]} />
 
 ## Specifications
 
 The Rel column is the release of each document's first version. Titles are each document's cover title; the notes summarise its Scope clause.
 
 <SpecIndex specs={FIVEGMS_SPECS} layerOrder={FIVEGMS_LAYER_ORDER} />
+
+## Release by release
+
+Choose a release to see the issue of each specification in force, whether the release published a new issue, and the 3GPP work items behind it.
+
+<SpecReleases map={SPECMAP} />
+
+## Topics
+
+The specifications cover the same topics as the [Technical Analysis](/tech/5gms). This table shows where each specification's requirements fall.
+
+<SpecTopics map={SPECMAP} />
 
 ## Specifications from other bodies
 

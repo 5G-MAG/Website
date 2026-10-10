@@ -1,0 +1,1538 @@
+{
+ "project": "5G Media Streaming (5GMS)",
+ "slug": "5gms",
+ "standardsUrl": "/standards/5gms",
+ "generated": "2026-10-10",
+ "tool": "specmap.py 4",
+ "releases": {
+  "analysed": [
+   "16",
+   "17",
+   "18",
+   "19",
+   "20"
+  ],
+  "baseline": "20",
+  "tracking": [],
+  "open": [
+   "20"
+  ]
+ },
+ "inputs": {
+  "workPlan": "https://www.3gpp.org/ftp/Information/WORK_PLAN/Work_plan_3gpp_2026_09_28.xlsx",
+  "workPlanFetched": 1791633649442,
+  "issuesAnalysed": {
+   "TS 26.501": {
+    "16": "V16.15.0",
+    "17": "V17.10.0",
+    "18": "V18.9.0",
+    "19": "V19.4.0",
+    "20": "V20.0.0"
+   },
+   "TS 26.512": {
+    "16": "V16.12.0",
+    "17": "V17.10.0",
+    "18": "V18.7.0",
+    "19": "V19.3.0",
+    "20": "V19.3.0"
+   },
+   "TS 26.510": {
+    "18": "V18.5.0",
+    "19": "V19.2.0",
+    "20": "V19.2.0"
+   },
+   "TS 26.511": {
+    "16": "V16.3.0",
+    "17": "V17.2.0",
+    "18": "V18.2.0",
+    "19": "V19.0.0",
+    "20": "V19.0.0"
+   },
+   "TS 26.117": {
+    "16": "V16.2.0",
+    "17": "V17.2.0",
+    "18": "V18.5.0",
+    "19": "V19.2.0",
+    "20": "V19.2.0"
+   }
+  },
+  "websiteCommit": "66ceea4",
+  "rules": "projects/5gms/explore.yaml"
+ },
+ "topicList": [
+  "Content hosting",
+  "Content preparation",
+  "Network assistance",
+  "Dynamic policies",
+  "Remote control",
+  "Consumption reporting",
+  "QoE metrics reporting",
+  "Edge processing",
+  "eMBMS delivery",
+  "Data collection, reporting and exposure",
+  "Service URL handling",
+  "Content publishing",
+  "MBS delivery",
+  "M3 between AF and AS",
+  "5G Core interaction",
+  "Media session handling APIs",
+  "Provisioning",
+  "Profiles, codecs and formats",
+  "General"
+ ],
+ "documents": [
+  {
+   "id": "TS 26.501",
+   "title": "5G Media Streaming (5GMS); General description and architecture",
+   "url": "https://www.3gpp.org/dynareport/26501.htm",
+   "layer": "5GMS",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "firstRelease": "16",
+   "releases": {
+    "16": {
+     "release": "16",
+     "version": "V16.15.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 258,
+     "statementsAtCreation": 258,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": [
+      {
+       "wid": 820002,
+       "acronym": "5GMSA",
+       "name": "Media streaming architecture",
+       "completion": 1,
+       "ref": "SP-180984"
+      }
+     ]
+    },
+    "17": {
+     "release": "17",
+     "version": "V17.10.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 451,
+     "statementsAtCreation": null,
+     "statementsAdded": 207,
+     "statementsRemoved": 14,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 960051,
+       "acronym": "EVEX",
+       "name": "5GMS AF Event Exposure",
+       "completion": 1,
+       "ref": "SP-210374"
+      },
+      {
+       "wid": 920008,
+       "acronym": "EVEX",
+       "name": "Stage 2 of EVEX",
+       "completion": 1,
+       "ref": "SP-210374"
+      },
+      {
+       "wid": 920009,
+       "acronym": "5GMS_EDGE",
+       "name": "Edge Extensions to the 5G Media Streaming Architecture",
+       "completion": 1,
+       "ref": "SP-210375"
+      },
+      {
+       "wid": 920010,
+       "acronym": "5MBUSA",
+       "name": "5G Multicast-Broadcast User Service Architecture and related 5GMS Extensions",
+       "completion": 1,
+       "ref": "SP-210376"
+      }
+     ]
+    },
+    "18": {
+     "release": "18",
+     "version": "V18.9.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 887,
+     "statementsAtCreation": null,
+     "statementsAdded": 506,
+     "statementsRemoved": 70,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 960047,
+       "acronym": "5GMS_Ph2",
+       "name": "5G Media Streaming Architecture Phase 2",
+       "completion": 1,
+       "ref": "SP-230164"
+      }
+     ]
+    },
+    "19": {
+     "release": "19",
+     "version": "V19.4.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 1076,
+     "statementsAtCreation": null,
+     "statementsAdded": 242,
+     "statementsRemoved": 53,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 1060069,
+       "acronym": "AMD-ARCH-MED",
+       "name": "Stage 2 for Advanced Media Delivery",
+       "completion": 1,
+       "ref": "SP-241963"
+      }
+     ]
+    },
+    "20": {
+     "release": "20",
+     "version": "V20.0.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 1110,
+     "statementsAtCreation": null,
+     "statementsAdded": 37,
+     "statementsRemoved": 3,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 1120097,
+       "acronym": "Energy_ARCH-MED",
+       "name": "System architecture for application energy consumption information collection and reporting Stage 2",
+       "completion": 1,
+       "ref": "SP-260418"
+      },
+      {
+       "wid": 1120098,
+       "acronym": "AMD_ARCH_Ph2-MED",
+       "name": "Architectural Updates for Advanced Media Delivery Phase 2",
+       "completion": 0.51,
+       "ref": "SP-260973"
+      }
+     ]
+    }
+   },
+   "baselineIssue": {
+    "release": "20",
+    "version": "V20.0.0"
+   },
+   "latestIssue": {
+    "release": "20",
+    "version": "V20.0.0"
+   },
+   "titleFrom": "cover",
+   "scope": {
+    "text": "The present document specifies the 5G Media Streaming (5GMS) architecture. The 5GMS supported services include MNO and third-party Downlink Media Streaming Services, and MNO and third-party Uplink Media Streaming Services. The 5GMS architecture supports related network and UE functions and APIs, backwards compatible functions for EUTRAN deployments (with and without MBMS) and 5G specific features.",
+    "clause": "1",
+    "version": "V20.0.0"
+   },
+   "topics": [
+    {
+     "name": "Data collection, reporting and exposure",
+     "statements": 184,
+     "share": 0.166
+    },
+    {
+     "name": "Dynamic policies",
+     "statements": 147,
+     "share": 0.132
+    },
+    {
+     "name": "MBS delivery",
+     "statements": 124,
+     "share": 0.112
+    },
+    {
+     "name": "General",
+     "statements": 105,
+     "share": 0.095
+    },
+    {
+     "name": "Content publishing",
+     "statements": 89,
+     "share": 0.08
+    },
+    {
+     "name": "Content hosting",
+     "statements": 79,
+     "share": 0.071
+    },
+    {
+     "name": "Media session handling APIs",
+     "statements": 66,
+     "share": 0.059
+    },
+    {
+     "name": "eMBMS delivery",
+     "statements": 63,
+     "share": 0.057
+    },
+    {
+     "name": "Edge processing",
+     "statements": 59,
+     "share": 0.053
+    },
+    {
+     "name": "Network assistance",
+     "statements": 52,
+     "share": 0.047
+    },
+    {
+     "name": "Consumption reporting",
+     "statements": 40,
+     "share": 0.036
+    },
+    {
+     "name": "QoE metrics reporting",
+     "statements": 38,
+     "share": 0.034
+    },
+    {
+     "name": "Service URL handling",
+     "statements": 23,
+     "share": 0.021
+    },
+    {
+     "name": "Provisioning",
+     "statements": 18,
+     "share": 0.016
+    },
+    {
+     "name": "M3 between AF and AS",
+     "statements": 15,
+     "share": 0.014
+    },
+    {
+     "name": "Content preparation",
+     "statements": 5,
+     "share": 0.005
+    },
+    {
+     "name": "Remote control",
+     "statements": 3,
+     "share": 0.003
+    }
+   ]
+  },
+  {
+   "id": "TS 26.512",
+   "title": "5G Media Streaming (5GMS); Protocols",
+   "url": "https://www.3gpp.org/dynareport/26512.htm",
+   "layer": "5GMS",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "firstRelease": "16",
+   "releases": {
+    "16": {
+     "release": "16",
+     "version": "V16.12.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 874,
+     "statementsAtCreation": 874,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": [
+      {
+       "wid": 840001,
+       "acronym": "5GMS3",
+       "name": "5G Media Streaming stage 3",
+       "completion": 1,
+       "ref": "SP-190464"
+      }
+     ]
+    },
+    "17": {
+     "release": "17",
+     "version": "V17.10.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 1106,
+     "statementsAtCreation": null,
+     "statementsAdded": 280,
+     "statementsRemoved": 48,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 940008,
+       "acronym": "5MBP3",
+       "name": "5G Multicast-Broadcast Protocols",
+       "completion": 1,
+       "ref": "SP-211335"
+      },
+      {
+       "wid": 940009,
+       "acronym": "5GMS_EDGE_3",
+       "name": "Edge Extensions to 5GMS Stage 3",
+       "completion": 1,
+       "ref": "SP-211336"
+      },
+      {
+       "wid": 960051,
+       "acronym": "EVEX",
+       "name": "5GMS AF Event Exposure",
+       "completion": 1,
+       "ref": "SP-210374"
+      },
+      {
+       "wid": 920008,
+       "acronym": "EVEX",
+       "name": "Stage 2 of EVEX",
+       "completion": 1,
+       "ref": "SP-210374"
+      }
+     ]
+    },
+    "18": {
+     "release": "18",
+     "version": "V18.7.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 861,
+     "statementsAtCreation": null,
+     "statementsAdded": 652,
+     "statementsRemoved": 897,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 80,
+     "workItems": [
+      {
+       "wid": 1000018,
+       "acronym": "5GMS_Pro_Ph2",
+       "name": "5G Media Streaming Protocols Phase 2",
+       "completion": 1,
+       "ref": "SP-230976"
+      }
+     ]
+    },
+    "19": {
+     "release": "19",
+     "version": "V19.3.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 1170,
+     "statementsAtCreation": null,
+     "statementsAdded": 418,
+     "statementsRemoved": 109,
+     "statementsMovedIn": 1,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 1070057,
+       "acronym": "AMD_PRO-MED",
+       "name": "Stage 3 for Advanced Media Delivery",
+       "completion": 1,
+       "ref": "SP-250265"
+      }
+     ]
+    },
+    "20": {
+     "release": "20",
+     "version": "V19.3.0",
+     "newIssue": false,
+     "analysed": true,
+     "statementsInForce": 1170,
+     "statementsAtCreation": null,
+     "statementsAdded": 0,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 1130006,
+       "acronym": "Energy_PRO-MED",
+       "name": "Protocols, network APIs and data types for application energy consumption information collection, reporting and exposure Stage 3",
+       "completion": 0,
+       "ref": "SP-261003"
+      }
+     ]
+    }
+   },
+   "baselineIssue": {
+    "release": "19",
+    "version": "V19.3.0"
+   },
+   "latestIssue": {
+    "release": "19",
+    "version": "V19.3.0"
+   },
+   "titleFrom": "cover",
+   "scope": {
+    "text": "The present document specifies the set of protocols and APIs for 5G Media Streaming (5GMS) services based on the 5G Media Streaming Architecture (5GMSA). 5GMS supports services including MNO and third-party Downlink Media Streaming Services, and MNO and third-party Uplink Media Streaming Services.",
+    "clause": "1",
+    "version": "V19.3.0"
+   },
+   "topics": [
+    {
+     "name": "Content hosting",
+     "statements": 376,
+     "share": 0.321
+    },
+    {
+     "name": "Media session handling APIs",
+     "statements": 137,
+     "share": 0.117
+    },
+    {
+     "name": "QoE metrics reporting",
+     "statements": 114,
+     "share": 0.097
+    },
+    {
+     "name": "Data collection, reporting and exposure",
+     "statements": 105,
+     "share": 0.09
+    },
+    {
+     "name": "Content publishing",
+     "statements": 92,
+     "share": 0.079
+    },
+    {
+     "name": "General",
+     "statements": 83,
+     "share": 0.071
+    },
+    {
+     "name": "M3 between AF and AS",
+     "statements": 52,
+     "share": 0.044
+    },
+    {
+     "name": "Service URL handling",
+     "statements": 41,
+     "share": 0.035
+    },
+    {
+     "name": "Content preparation",
+     "statements": 39,
+     "share": 0.033
+    },
+    {
+     "name": "Dynamic policies",
+     "statements": 29,
+     "share": 0.025
+    },
+    {
+     "name": "Consumption reporting",
+     "statements": 29,
+     "share": 0.025
+    },
+    {
+     "name": "Network assistance",
+     "statements": 27,
+     "share": 0.023
+    },
+    {
+     "name": "eMBMS delivery",
+     "statements": 14,
+     "share": 0.012
+    },
+    {
+     "name": "MBS delivery",
+     "statements": 13,
+     "share": 0.011
+    },
+    {
+     "name": "Provisioning",
+     "statements": 12,
+     "share": 0.01
+    },
+    {
+     "name": "Profiles, codecs and formats",
+     "statements": 4,
+     "share": 0.003
+    },
+    {
+     "name": "Edge processing",
+     "statements": 3,
+     "share": 0.003
+    }
+   ]
+  },
+  {
+   "id": "TS 26.510",
+   "title": "Media delivery; interactions and APIs for provisioning and media session handling",
+   "url": "https://www.3gpp.org/dynareport/26510.htm",
+   "layer": "5GMS",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "firstRelease": "18",
+   "releases": {
+    "18": {
+     "release": "18",
+     "version": "V18.5.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 1457,
+     "statementsAtCreation": 1457,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": [
+      {
+       "wid": 1000018,
+       "acronym": "5GMS_Pro_Ph2",
+       "name": "5G Media Streaming Protocols Phase 2",
+       "completion": 1,
+       "ref": "SP-230976"
+      }
+     ]
+    },
+    "19": {
+     "release": "19",
+     "version": "V19.2.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 1595,
+     "statementsAtCreation": null,
+     "statementsAdded": 229,
+     "statementsRemoved": 91,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 1070057,
+       "acronym": "AMD_PRO-MED",
+       "name": "Stage 3 for Advanced Media Delivery",
+       "completion": 1,
+       "ref": "SP-250265"
+      },
+      {
+       "wid": 1060021,
+       "acronym": "5G_RTP_Ph2",
+       "name": "5G Real-time Transport Protocol Configurations, Phase 2",
+       "completion": 1,
+       "ref": "SP-241961"
+      }
+     ]
+    },
+    "20": {
+     "release": "20",
+     "version": "V19.2.0",
+     "newIssue": false,
+     "analysed": true,
+     "statementsInForce": 1595,
+     "statementsAtCreation": null,
+     "statementsAdded": 0,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 1130006,
+       "acronym": "Energy_PRO-MED",
+       "name": "Protocols, network APIs and data types for application energy consumption information collection, reporting and exposure Stage 3",
+       "completion": 0,
+       "ref": "SP-261003"
+      }
+     ]
+    }
+   },
+   "baselineIssue": {
+    "release": "19",
+    "version": "V19.2.0"
+   },
+   "latestIssue": {
+    "release": "19",
+    "version": "V19.2.0"
+   },
+   "titleFrom": "cover",
+   "scope": {
+    "text": "The present document specifies:",
+    "clause": "1",
+    "version": "V19.2.0"
+   },
+   "topics": [
+    {
+     "name": "Dynamic policies",
+     "statements": 349,
+     "share": 0.219
+    },
+    {
+     "name": "Content hosting",
+     "statements": 218,
+     "share": 0.137
+    },
+    {
+     "name": "QoE metrics reporting",
+     "statements": 156,
+     "share": 0.098
+    },
+    {
+     "name": "Provisioning",
+     "statements": 145,
+     "share": 0.091
+    },
+    {
+     "name": "Network assistance",
+     "statements": 126,
+     "share": 0.079
+    },
+    {
+     "name": "Media session handling APIs",
+     "statements": 115,
+     "share": 0.072
+    },
+    {
+     "name": "Consumption reporting",
+     "statements": 102,
+     "share": 0.064
+    },
+    {
+     "name": "General",
+     "statements": 99,
+     "share": 0.062
+    },
+    {
+     "name": "Content publishing",
+     "statements": 88,
+     "share": 0.055
+    },
+    {
+     "name": "Edge processing",
+     "statements": 70,
+     "share": 0.044
+    },
+    {
+     "name": "Data collection, reporting and exposure",
+     "statements": 47,
+     "share": 0.029
+    },
+    {
+     "name": "Content preparation",
+     "statements": 45,
+     "share": 0.028
+    },
+    {
+     "name": "M3 between AF and AS",
+     "statements": 19,
+     "share": 0.012
+    },
+    {
+     "name": "Service URL handling",
+     "statements": 13,
+     "share": 0.008
+    },
+    {
+     "name": "5G Core interaction",
+     "statements": 1,
+     "share": 0.001
+    },
+    {
+     "name": "eMBMS delivery",
+     "statements": 1,
+     "share": 0.001
+    },
+    {
+     "name": "MBS delivery",
+     "statements": 1,
+     "share": 0.001
+    }
+   ]
+  },
+  {
+   "id": "TS 26.511",
+   "title": "5G Media Streaming (5GMS); Profiles, Codecs and Formats",
+   "url": "https://www.3gpp.org/dynareport/26511.htm",
+   "layer": "5GMS",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "firstRelease": "16",
+   "releases": {
+    "16": {
+     "release": "16",
+     "version": "V16.3.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 193,
+     "statementsAtCreation": 193,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": [
+      {
+       "wid": 840001,
+       "acronym": "5GMS3",
+       "name": "5G Media Streaming stage 3",
+       "completion": 1,
+       "ref": "SP-190464"
+      }
+     ]
+    },
+    "17": {
+     "release": "17",
+     "version": "V17.2.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 205,
+     "statementsAtCreation": null,
+     "statementsAdded": 13,
+     "statementsRemoved": 1,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 890009,
+       "acronym": "8K_VR_5G",
+       "name": "Points for 8K VR 360 Video over 5G",
+       "completion": 1,
+       "ref": "SP-200667"
+      },
+      {
+       "wid": 920011,
+       "acronym": "8K_TV_5G",
+       "name": "8K Television over 5G",
+       "completion": 1,
+       "ref": "SP-210381"
+      }
+     ]
+    },
+    "18": {
+     "release": "18",
+     "version": "V18.2.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 226,
+     "statementsAtCreation": null,
+     "statementsAdded": 30,
+     "statementsRemoved": 9,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 950015,
+       "acronym": "MeCAR",
+       "name": "Media Capabilities for Augmented Reality",
+       "completion": 1,
+       "ref": "SP-220242"
+      },
+      {
+       "wid": 980009,
+       "acronym": "5GMS_Audio_Ph2",
+       "name": "5G Media Streaming Audio codec phase 2 for 5G-Advanced",
+       "completion": 1,
+       "ref": "SP-221033"
+      }
+     ]
+    },
+    "19": {
+     "release": "19",
+     "version": "V19.0.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 233,
+     "statementsAtCreation": null,
+     "statementsAdded": 7,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 1030002,
+       "acronym": "VOPS",
+       "name": "Video Operating Points - Harmonization and Stereo MV-HEVC",
+       "completion": 1,
+       "ref": "SP-250818"
+      },
+      {
+       "wid": 1070057,
+       "acronym": "AMD_PRO-MED",
+       "name": "Stage 3 for Advanced Media Delivery",
+       "completion": 1,
+       "ref": "SP-250265"
+      }
+     ]
+    },
+    "20": {
+     "release": "20",
+     "version": "V19.0.0",
+     "newIssue": false,
+     "analysed": true,
+     "statementsInForce": 233,
+     "statementsAtCreation": null,
+     "statementsAdded": 0,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    }
+   },
+   "baselineIssue": {
+    "release": "19",
+    "version": "V19.0.0"
+   },
+   "latestIssue": {
+    "release": "19",
+    "version": "V19.0.0"
+   },
+   "titleFrom": "cover",
+   "scope": {
+    "text": "The present document specifies the profiles, codecs and formats for 5G Media Streaming (5GMS) services based on the 5G Media Streaming Architecture (5GMSA) including both unicast downlink and unicast uplink. The codec and format recommendations defined for each profile apply to the 5GMSd Client components in the User Equipment (UE) as well as the Media Application Server (AS). Profiles are defined to address specific service scenarios. A default profile is defined in the case no other profile is claimed to be supported. 5G Media Streaming protocols and formats are defined based on the Common Media Application Format (CMAF).",
+    "clause": "1",
+    "version": "V19.0.0"
+   },
+   "topics": [
+    {
+     "name": "Profiles, codecs and formats",
+     "statements": 217,
+     "share": 0.931
+    },
+    {
+     "name": "Content hosting",
+     "statements": 14,
+     "share": 0.06
+    },
+    {
+     "name": "General",
+     "statements": 2,
+     "share": 0.009
+    }
+   ]
+  },
+  {
+   "id": "TS 26.117",
+   "title": "5G Media Streaming (5GMS); Speech and audio profiles",
+   "url": "https://www.3gpp.org/dynareport/26117.htm",
+   "layer": "5GMS",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "firstRelease": "16",
+   "releases": {
+    "16": {
+     "release": "16",
+     "version": "V16.2.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 97,
+     "statementsAtCreation": 97,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": [
+      {
+       "wid": 840001,
+       "acronym": "5GMS3",
+       "name": "5G Media Streaming stage 3",
+       "completion": 1,
+       "ref": "SP-190464"
+      }
+     ]
+    },
+    "17": {
+     "release": "17",
+     "version": "V17.2.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 97,
+     "statementsAtCreation": null,
+     "statementsAdded": 1,
+     "statementsRemoved": 1,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    },
+    "18": {
+     "release": "18",
+     "version": "V18.5.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 136,
+     "statementsAtCreation": null,
+     "statementsAdded": 49,
+     "statementsRemoved": 10,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 950015,
+       "acronym": "MeCAR",
+       "name": "Media Capabilities for Augmented Reality",
+       "completion": 1,
+       "ref": "SP-220242"
+      },
+      {
+       "wid": 980009,
+       "acronym": "5GMS_Audio_Ph2",
+       "name": "5G Media Streaming Audio codec phase 2 for 5G-Advanced",
+       "completion": 1,
+       "ref": "SP-221033"
+      }
+     ]
+    },
+    "19": {
+     "release": "19",
+     "version": "V19.2.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 136,
+     "statementsAtCreation": null,
+     "statementsAdded": 2,
+     "statementsRemoved": 2,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 1040021,
+       "acronym": "IVAS_Codec_Ph2",
+       "name": "EVS Codec Extension for Immersive Voice and Audio Services, Phase 2",
+       "completion": 1,
+       "ref": "SP-250262"
+      }
+     ]
+    },
+    "20": {
+     "release": "20",
+     "version": "V19.2.0",
+     "newIssue": false,
+     "analysed": true,
+     "statementsInForce": 136,
+     "statementsAtCreation": null,
+     "statementsAdded": 0,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    }
+   },
+   "baselineIssue": {
+    "release": "19",
+    "version": "V19.2.0"
+   },
+   "latestIssue": {
+    "release": "19",
+    "version": "V19.2.0"
+   },
+   "titleFrom": "cover",
+   "scope": {
+    "text": "The present document specifies speech and audio media capabilities, operation points and media profiles for 5G Media Streaming in the context of 3GPP services and deployments. Speech and audio media capabilities, operation points and media profiles are also provided for usage in other streaming applications.",
+    "clause": "1",
+    "version": "V19.2.0"
+   },
+   "topics": [
+    {
+     "name": "Profiles, codecs and formats",
+     "statements": 135,
+     "share": 0.993
+    },
+    {
+     "name": "General",
+     "statements": 1,
+     "share": 0.007
+    }
+   ]
+  },
+  {
+   "id": "TS 26.531",
+   "title": "Data Collection and Reporting; General Description and Architecture",
+   "url": "https://www.3gpp.org/dynareport/26531.htm",
+   "layer": "Data collection",
+   "kind": "TS",
+   "explored": false,
+   "scopeNote": "its layer (Data collection) is another project",
+   "firstRelease": "17",
+   "releases": {
+    "17": {
+     "release": "17",
+     "version": "V17.3.0",
+     "newIssue": true,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": [
+      {
+       "wid": 960051,
+       "acronym": "EVEX",
+       "name": "5GMS AF Event Exposure",
+       "completion": 1,
+       "ref": "SP-210374"
+      },
+      {
+       "wid": 920008,
+       "acronym": "EVEX",
+       "name": "Stage 2 of EVEX",
+       "completion": 1,
+       "ref": "SP-210374"
+      }
+     ]
+    },
+    "18": {
+     "release": "18",
+     "version": "V18.2.0",
+     "newIssue": true,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": []
+    },
+    "19": {
+     "release": "19",
+     "version": "V19.0.0",
+     "newIssue": true,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": []
+    },
+    "20": {
+     "release": "20",
+     "version": "V19.0.0",
+     "newIssue": false,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": []
+    }
+   },
+   "baselineIssue": {
+    "release": "19",
+    "version": "V19.0.0"
+   },
+   "latestIssue": {
+    "release": "19",
+    "version": "V19.0.0"
+   },
+   "titleFrom": "cover",
+   "scope": {
+    "text": "The present document defines a generic architecture for collecting and reporting data in the 5G System as defined in TS 23.501 [2], TS 23.502 [3] , TS 23.288 [4] and TS 29.517 [5].",
+    "clause": "1",
+    "version": "V19.0.0"
+   },
+   "topics": []
+  },
+  {
+   "id": "TS 26.532",
+   "title": "Data Collection and Reporting; Protocols and Formats",
+   "url": "https://www.3gpp.org/dynareport/26532.htm",
+   "layer": "Data collection",
+   "kind": "TS",
+   "explored": false,
+   "scopeNote": "its layer (Data collection) is another project",
+   "firstRelease": "17",
+   "releases": {
+    "17": {
+     "release": "17",
+     "version": "V17.3.0",
+     "newIssue": true,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": [
+      {
+       "wid": 960051,
+       "acronym": "EVEX",
+       "name": "5GMS AF Event Exposure",
+       "completion": 1,
+       "ref": "SP-210374"
+      },
+      {
+       "wid": 920008,
+       "acronym": "EVEX",
+       "name": "Stage 2 of EVEX",
+       "completion": 1,
+       "ref": "SP-210374"
+      }
+     ]
+    },
+    "18": {
+     "release": "18",
+     "version": "V18.5.0",
+     "newIssue": true,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": [
+      {
+       "wid": 1000018,
+       "acronym": "5GMS_Pro_Ph2",
+       "name": "5G Media Streaming Protocols Phase 2",
+       "completion": 1,
+       "ref": "SP-230976"
+      }
+     ]
+    },
+    "19": {
+     "release": "19",
+     "version": "V19.1.0",
+     "newIssue": true,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": [
+      {
+       "wid": 1070057,
+       "acronym": "AMD_PRO-MED",
+       "name": "Stage 3 for Advanced Media Delivery",
+       "completion": 1,
+       "ref": "SP-250265"
+      }
+     ]
+    },
+    "20": {
+     "release": "20",
+     "version": "V19.1.0",
+     "newIssue": false,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": []
+    }
+   },
+   "baselineIssue": {
+    "release": "19",
+    "version": "V19.1.0"
+   },
+   "latestIssue": {
+    "release": "19",
+    "version": "V19.1.0"
+   },
+   "titleFrom": "Standards page entry",
+   "scope": {
+    "text": "The present document specifies the set of APIs and associated resource structures and data models pertaining to the collection and reporting of UE-related data (synonymously “UE data”) by the Data Collection Application Function (AF) in the 5G System for subsequent event exposure services offered to network consumer entities, as defined in 3GPP TS 23.501 [2], TS 23.502 [3], TS 23.288 [4], TS 29.517 [5], TS 29.510 [6] and TS 26.531 [7] .",
+    "clause": "1",
+    "version": "V19.1.0"
+   },
+   "topics": []
+  },
+  {
+   "id": "TR 26.804",
+   "title": "Study on 5G media streaming extensions",
+   "url": "https://www.3gpp.org/dynareport/26804.htm",
+   "layer": "Studies",
+   "kind": "TR",
+   "explored": false,
+   "scopeNote": "a Technical Report: informative",
+   "firstRelease": "17",
+   "releases": {
+    "17": {
+     "release": "17",
+     "version": "V17.1.0",
+     "newIssue": true,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": [
+      {
+       "wid": 900029,
+       "acronym": "FS_5GMS_EXT",
+       "name": "Study on 5G media streaming extensions",
+       "completion": 1,
+       "ref": "SP-200937"
+      }
+     ]
+    },
+    "18": {
+     "release": "18",
+     "version": "V18.1.0",
+     "newIssue": true,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": []
+    },
+    "19": {
+     "release": "19",
+     "version": "V19.1.0",
+     "newIssue": true,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": [
+      {
+       "wid": 1030006,
+       "acronym": "FS_AMD",
+       "name": "Study on Advanced Media Delivery",
+       "completion": 1,
+       "ref": "SP-241011"
+      }
+     ]
+    },
+    "20": {
+     "release": "20",
+     "version": "V20.1.0",
+     "newIssue": true,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": [
+      {
+       "wid": 1090046,
+       "acronym": "FS_AMD_Ph2",
+       "name": "Study on Advanced Media Delivery Phase 2",
+       "completion": 1,
+       "ref": "SP-251265"
+      }
+     ]
+    }
+   },
+   "baselineIssue": {
+    "release": "20",
+    "version": "V20.1.0"
+   },
+   "latestIssue": {
+    "release": "20",
+    "version": "V20.1.0"
+   },
+   "titleFrom": "cover",
+   "scope": {
+    "text": "This Technical Report identifies and evaluates a set of potential improvements and extensions, referred to as key topics. The initial set of key topics were:",
+    "clause": "1",
+    "version": "V20.1.0"
+   },
+   "topics": []
+  },
+  {
+   "id": "TR 26.802",
+   "title": "Multicast Architecture Enhancement for 5G Media Streaming",
+   "url": "https://www.3gpp.org/dynareport/26802.htm",
+   "layer": "Studies",
+   "kind": "TR",
+   "explored": false,
+   "scopeNote": "a Technical Report: informative",
+   "firstRelease": "17",
+   "releases": {
+    "17": {
+     "release": "17",
+     "version": "V17.0.0",
+     "newIssue": true,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": []
+    },
+    "18": {
+     "release": "18",
+     "version": "V17.0.0",
+     "newIssue": false,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": []
+    },
+    "19": {
+     "release": "19",
+     "version": "V19.2.0",
+     "newIssue": true,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": [
+      {
+       "wid": 1030006,
+       "acronym": "FS_AMD",
+       "name": "Study on Advanced Media Delivery",
+       "completion": 1,
+       "ref": "SP-241011"
+      }
+     ]
+    },
+    "20": {
+     "release": "20",
+     "version": "V20.0.0",
+     "newIssue": true,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": [
+      {
+       "wid": 1090046,
+       "acronym": "FS_AMD_Ph2",
+       "name": "Study on Advanced Media Delivery Phase 2",
+       "completion": 1,
+       "ref": "SP-251265"
+      }
+     ]
+    }
+   },
+   "baselineIssue": {
+    "release": "20",
+    "version": "V20.0.0"
+   },
+   "latestIssue": {
+    "release": "20",
+    "version": "V20.0.0"
+   },
+   "titleFrom": "Standards page entry",
+   "scope": {
+    "text": "The present document identifies and evaluates potential enhancements to the 5G Media Streaming (5GMS) [1] in order to provide multicast-broadcast media streaming services. It has the following objectives:",
+    "clause": "1",
+    "version": "V20.0.0"
+   },
+   "topics": []
+  },
+  {
+   "id": "TR 26.941",
+   "title": "Network Slicing Extensions for 5G media services",
+   "url": "https://www.3gpp.org/dynareport/26941.htm",
+   "layer": "Studies",
+   "kind": "TR",
+   "explored": false,
+   "scopeNote": "a Technical Report: informative",
+   "firstRelease": "18",
+   "releases": {
+    "18": {
+     "release": "18",
+     "version": "V18.1.0",
+     "newIssue": true,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": [
+      {
+       "wid": 960048,
+       "acronym": "FS_MS_NS_Ph2",
+       "name": "Study on Media Streaming aspects of Network Slicing Phase 2",
+       "completion": 1,
+       "ref": "SP-220675"
+      }
+     ]
+    },
+    "19": {
+     "release": "19",
+     "version": "V19.0.1",
+     "newIssue": true,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": []
+    },
+    "20": {
+     "release": "20",
+     "version": "V20.0.0",
+     "newIssue": true,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": [
+      {
+       "wid": 1090046,
+       "acronym": "FS_AMD_Ph2",
+       "name": "Study on Advanced Media Delivery Phase 2",
+       "completion": 1,
+       "ref": "SP-251265"
+      }
+     ]
+    }
+   },
+   "baselineIssue": {
+    "release": "20",
+    "version": "V20.0.0"
+   },
+   "latestIssue": {
+    "release": "20",
+    "version": "V20.0.0"
+   },
+   "titleFrom": "cover",
+   "scope": {
+    "text": "The present document identifies standardization needs and potential standards gaps relevant to media streaming while using 5G network slicing. In specific, the following aspects are addressed in this document:",
+    "clause": "1",
+    "version": "V20.0.0"
+   },
+   "topics": []
+  }
+ ],
+ "problems": [],
+ "notes": [
+  "A release with no issue of a document leaves the issue of the earlier release in force.",
+  "Statement counts are by wording: a reworded statement counts as one removed and one added; the moved counts are the part that is the same text in another document of the project.",
+  "A count is null where the release was not analysed (a tracked release, or a document that is not explored)."
+ ]
+}
