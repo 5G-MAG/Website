@@ -10,6 +10,66 @@ import styles from './styles.module.css';
 
 const label = (r) => `Release ${r}`;
 
+const clamp = (t, n = 240) => {
+  if (!t || t.length <= n) return t;
+  const cut = t.slice(0, n).replace(/\s+\S*$/, '');
+  return `${cut} ...`;
+};
+
+// Adapter: the specification map as the entries SpecIndex reads. The note is the first sentence of the
+// document's Scope clause, verbatim (shortened with "..." when long).
+export function specsFromMap(map) {
+  return map.documents.map((d) => ({
+    id: d.id,
+    title: d.title,
+    url: d.url,
+    layer: d.layer,
+    release: d.firstRelease,
+    note: d.scope ? clamp(d.scope.firstSentence) : undefined,
+  }));
+}
+
+const list = (items) =>
+  items.length <= 1 ? items.join('') : `${items.slice(0, -1).join(', ')} and ${items[items.length - 1]}`;
+
+// What the map says at a glance: how many documents, of which kind, and what each release did.
+export function SpecGlance({ map }) {
+  const docs = map.documents;
+  const ts = docs.filter((d) => d.kind === 'TS').map((d) => d.id);
+  const tr = docs.filter((d) => d.kind === 'TR').map((d) => d.id);
+  const open = map.releases.open || [];
+  const rels = [...map.releases.analysed, ...map.releases.tracking];
+  const lines = rels
+    .map((r) => {
+      const created = docs.filter((d) => d.firstRelease === r).map((d) => d.id);
+      const issued = docs
+        .filter((d) => d.firstRelease !== r && d.releases && d.releases[r] && d.releases[r].newIssue)
+        .map((d) => d.id);
+      const parts = [];
+      if (created.length) parts.push(`creates ${list(created)}`);
+      if (issued.length) parts.push(`publishes new issues of ${list(issued)}`);
+      return parts.length ? { r, text: parts.join('; ') } : null;
+    })
+    .filter(Boolean);
+  return (
+    <ul>
+      <li>
+        <strong>{docs.length} documents:</strong> {ts.length} specifications ({list(ts)}) and {tr.length} reports ({list(tr)}).
+      </li>
+      <li>
+        <strong>By release:</strong>
+        <ul>
+          {lines.map(({ r, text }) => (
+            <li key={r}>
+              Release {r}{open.includes(r) ? ' (in progress)' : ''} {text}.
+            </li>
+          ))}
+        </ul>
+      </li>
+    </ul>
+  );
+}
+
 function happened(row, firstRelease) {
   if (row.release === firstRelease) return 'New document';
   if (row.newIssue) return 'New issue';
@@ -158,6 +218,57 @@ export function SpecTopics({ map, minShare = 0.1 }) {
         statements are not listed. Specifications that are reports, or belong to another project, are not
         analysed here.
       </p>
+    </div>
+  );
+}
+
+// Documents of other bodies listed in the normative references (clause 2) of the project's specifications, with the
+// releases that list them. A tick means the document is in clause 2 of the issue in force in that release.
+export function SpecOtherBodies({ map }) {
+  const ob = map.otherBodies;
+  const rels = map.releases.analysed;
+  const bodies = [...new Set(ob.references.map((r) => r.body))];
+  return (
+    <div className={indexStyles.wrap}>
+      <p className={styles.lead}>
+        Read from clause 2 of {ob.from.join(', ')}. {ob.references.length} documents of other bodies are listed.
+      </p>
+      {bodies.map((b) => {
+        const rows = ob.references.filter((r) => r.body === b);
+        return (
+          <details key={b} open={rows.length <= 12} className={styles.group}>
+            <summary>
+              {b} <span className={styles.ref}>({rows.length})</span>
+            </summary>
+            <div className={indexStyles.tableScroll}>
+              <table className={indexStyles.table}>
+                <thead>
+                  <tr>
+                    <th scope="col">Document</th>
+                    <th scope="col">Title in the reference</th>
+                    {rels.map((r) => (
+                      <th key={r} scope="col">Rel-{r}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {rows.map((r) => (
+                    <tr key={r.key}>
+                      <th scope="row" className={indexStyles.specCell}>{r.label === r.title ? r.title : r.label}</th>
+                      <td>{r.label === r.title ? '' : r.title}</td>
+                      {rels.map((x) => (
+                        <td key={x} className={indexStyles.rel} title={(r.by[x] || []).join(', ')}>
+                          {r.releases.includes(x) ? '\u2713' : '\u2014'}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </details>
+        );
+      })}
     </div>
   );
 }

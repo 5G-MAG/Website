@@ -39,3 +39,13 @@
   font-size: 0.875rem;
   color: var(--ifm-color-emphasis-600);
 }
+
+.group {
+  margin: 0.75rem 0;
+}
+
+.group > summary {
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0.3rem 0;
+}
