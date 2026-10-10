@@ -44,15 +44,15 @@
      "inconsistent": 0
     },
     "19": {
-     "implemented": 274,
+     "implemented": 273,
      "differs": 50,
-     "absent": 1038,
+     "absent": 1039,
      "inconsistent": 2
     },
     "20": {
-     "implemented": 279,
+     "implemented": 278,
      "differs": 50,
-     "absent": 1045,
+     "absent": 1046,
      "inconsistent": 2
     }
    },
@@ -608,7 +608,7 @@
       {
        "case": "Remove the configuration from every AS that succeeded when another fails",
        "verdict": "absent",
-       "what": "Each AS is configured independently; when one fails, the configuration is not removed from those that succeeded.",
+       "what": "The AF configures only the first Application Server of its configuration, so a partial failure across several Application Server instances cannot arise and no rollback across instances exists.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -737,7 +737,7 @@
       {
        "case": "Remove the configuration from every AS that succeeded when another fails",
        "verdict": "absent",
-       "what": "Each AS is configured independently; when one fails, the configuration is not removed from those that succeeded.",
+       "what": "The AF configures only the first Application Server of its configuration, so a partial failure across several Application Server instances cannot arise and no rollback across instances exists.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "19",
@@ -6956,8 +6956,8 @@
      "cases": [
       {
        "case": "Deploy the service locations of one Content Hosting Configuration across AS instances",
-       "verdict": "implemented",
-       "what": "Every distribution configuration of a Content Hosting Configuration is configured on every Application Server in the AF's list, each AS under its own canonical host name, so the service locations are deployed across all the AS instances the AF knows.",
+       "verdict": "absent",
+       "what": "The AF configures every distribution configuration of a Content Hosting Configuration on the first configured Application Server only, so the service locations are not deployed across Application Server instances.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "19",
