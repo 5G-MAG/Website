@@ -3,7 +3,7 @@
  "slug": "5gms",
  "standardsUrl": "/standards/5gms",
  "generated": "2026-10-10",
- "tool": "specmap.py 6",
+ "tool": "specmap.py 7",
  "releases": {
   "analysed": [
    "16",
@@ -56,7 +56,7 @@
     "20": "V19.2.0"
    }
   },
-  "websiteCommit": "c428bee",
+  "websiteCommit": "317bc3c",
   "rules": "projects/5gms/explore.yaml"
  },
  "topicList": [
@@ -129,6 +129,13 @@
      "18",
      "19",
      "20"
+    ],
+    "listedIn": [
+     "16",
+     "17",
+     "18",
+     "19",
+     "20"
     ]
    },
    {
@@ -155,6 +162,13 @@
     },
     "label": "ISO/IEC 14496-14",
     "releases": [
+     "16",
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
      "16",
      "17",
      "18",
@@ -191,26 +205,10 @@
      "18",
      "19",
      "20"
-    ]
-   },
-   {
-    "key": "ISO/IEC 14496-3",
-    "body": "ISO/IEC",
-    "id": "ISO/IEC 14496-3",
-    "title": "Information technology — Coding of audio-visual objects — Part 3: Audio",
-    "by": {
-     "18": [
-      "TS 26.117"
-     ],
-     "19": [
-      "TS 26.117"
-     ],
-     "20": [
-      "TS 26.117"
-     ]
-    },
-    "label": "ISO/IEC 14496-3",
-    "releases": [
+    ],
+    "listedIn": [
+     "16",
+     "17",
      "18",
      "19",
      "20"
@@ -245,6 +243,13 @@
      "18",
      "19",
      "20"
+    ],
+    "listedIn": [
+     "16",
+     "17",
+     "18",
+     "19",
+     "20"
     ]
    },
    {
@@ -254,12 +259,10 @@
     "title": "Information Technology Multimedia Application Format (MPEG-A) – Part 19: Common Media Application Format (CMAF) for segmented media",
     "by": {
      "16": [
-      "TS 26.512",
       "TS 26.511",
       "TS 26.117"
      ],
      "17": [
-      "TS 26.512",
       "TS 26.511",
       "TS 26.117"
      ],
@@ -284,6 +287,13 @@
     },
     "label": "ISO/IEC 23000-19",
     "releases": [
+     "16",
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
      "16",
      "17",
      "18",
@@ -320,6 +330,13 @@
      "18",
      "19",
      "20"
+    ],
+    "listedIn": [
+     "16",
+     "17",
+     "18",
+     "19",
+     "20"
     ]
    },
    {
@@ -343,6 +360,11 @@
      "18",
      "19",
      "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
     ]
    },
    {
@@ -363,6 +385,11 @@
     },
     "label": "ISO/IEC 23003-4",
     "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
      "18",
      "19",
      "20"
@@ -410,6 +437,13 @@
      "18",
      "19",
      "20"
+    ],
+    "listedIn": [
+     "16",
+     "17",
+     "18",
+     "19",
+     "20"
     ]
    },
    {
@@ -425,20 +459,24 @@
       "TS 26.512"
      ],
      "18": [
-      "TS 26.512",
       "TS 26.510"
      ],
      "19": [
-      "TS 26.512",
       "TS 26.510"
      ],
      "20": [
-      "TS 26.512",
       "TS 26.510"
      ]
     },
     "label": "ISO 3166-1",
     "releases": [
+     "16",
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
      "16",
      "17",
      "18",
@@ -459,20 +497,24 @@
       "TS 26.512"
      ],
      "18": [
-      "TS 26.512",
       "TS 26.510"
      ],
      "19": [
-      "TS 26.512",
       "TS 26.510"
      ],
      "20": [
-      "TS 26.512",
       "TS 26.510"
      ]
     },
     "label": "ISO 3166-2",
     "releases": [
+     "16",
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
      "16",
      "17",
      "18",
@@ -509,6 +551,13 @@
      "18",
      "19",
      "20"
+    ],
+    "listedIn": [
+     "16",
+     "17",
+     "18",
+     "19",
+     "20"
     ]
    },
    {
@@ -535,6 +584,13 @@
     },
     "label": "ITU-T H.265",
     "releases": [
+     "16",
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
      "16",
      "17",
      "18",
@@ -574,6 +630,13 @@
      "18",
      "19",
      "20"
+    ],
+    "listedIn": [
+     "16",
+     "17",
+     "18",
+     "19",
+     "20"
     ]
    },
    {
@@ -591,6 +654,10 @@
     },
     "label": "ETSI TS 103 799",
     "releases": [
+     "19",
+     "20"
+    ],
+    "listedIn": [
      "19",
      "20"
     ]
@@ -612,6 +679,10 @@
     "releases": [
      "19",
      "20"
+    ],
+    "listedIn": [
+     "19",
+     "20"
     ]
    },
    {
@@ -631,35 +702,8 @@
     "releases": [
      "19",
      "20"
-    ]
-   },
-   {
-    "key": "IETF RFC 1034",
-    "body": "IETF",
-    "id": "IETF RFC 1034",
-    "title": "Domain names - concepts and facilities",
-    "by": {
-     "16": [
-      "TS 26.501"
-     ],
-     "17": [
-      "TS 26.501"
-     ],
-     "18": [
-      "TS 26.501"
-     ],
-     "19": [
-      "TS 26.501"
-     ],
-     "20": [
-      "TS 26.501"
-     ]
-    },
-    "label": "IETF RFC 1034",
-    "releases": [
-     "16",
-     "17",
-     "18",
+    ],
+    "listedIn": [
      "19",
      "20"
     ]
@@ -685,91 +729,8 @@
      "18",
      "19",
      "20"
-    ]
-   },
-   {
-    "key": "IETF RFC 2474",
-    "body": "IETF",
-    "id": "IETF RFC 2474",
-    "title": "Definition of the Differentiated Services Field (DS Field) in the IPv4 and IPv6 Headers",
-    "by": {
-     "18": [
-      "TS 26.510"
-     ],
-     "19": [
-      "TS 26.510"
-     ],
-     "20": [
-      "TS 26.510"
-     ]
-    },
-    "label": "IETF RFC 2474",
-    "releases": [
-     "18",
-     "19",
-     "20"
-    ]
-   },
-   {
-    "key": "IETF RFC 2597",
-    "body": "IETF",
-    "id": "IETF RFC 2597",
-    "title": "Assured Forwarding PHB Group",
-    "by": {
-     "18": [
-      "TS 26.510"
-     ],
-     "19": [
-      "TS 26.510"
-     ],
-     "20": [
-      "TS 26.510"
-     ]
-    },
-    "label": "IETF RFC 2597",
-    "releases": [
-     "18",
-     "19",
-     "20"
-    ]
-   },
-   {
-    "key": "IETF RFC 3168",
-    "body": "IETF",
-    "id": "IETF RFC 3168",
-    "title": "The Addition of Explicit Congestion Notification (ECN) to IP",
-    "by": {
-     "19": [
-      "TS 26.501"
-     ],
-     "20": [
-      "TS 26.501"
-     ]
-    },
-    "label": "IETF RFC 3168",
-    "releases": [
-     "19",
-     "20"
-    ]
-   },
-   {
-    "key": "IETF RFC 3246",
-    "body": "IETF",
-    "id": "IETF RFC 3246",
-    "title": "An Expedited Forwarding PHB (Per-Hop Behavior)",
-    "by": {
-     "18": [
-      "TS 26.510"
-     ],
-     "19": [
-      "TS 26.510"
-     ],
-     "20": [
-      "TS 26.510"
-     ]
-    },
-    "label": "IETF RFC 3246",
-    "releases": [
+    ],
+    "listedIn": [
      "18",
      "19",
      "20"
@@ -782,20 +743,22 @@
     "title": "Date and Time on the Internet: Timestamps",
     "by": {
      "18": [
-      "TS 26.512",
       "TS 26.510"
      ],
      "19": [
-      "TS 26.512",
       "TS 26.510"
      ],
      "20": [
-      "TS 26.512",
       "TS 26.510"
      ]
     },
     "label": "IETF RFC 3339",
     "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
      "18",
      "19",
      "20"
@@ -833,6 +796,13 @@
      "18",
      "19",
      "20"
+    ],
+    "listedIn": [
+     "16",
+     "17",
+     "18",
+     "19",
+     "20"
     ]
    },
    {
@@ -853,6 +823,11 @@
     },
     "label": "IETF RFC 4122",
     "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
      "18",
      "19",
      "20"
@@ -887,23 +862,11 @@
      "18",
      "19",
      "20"
-    ]
-   },
-   {
-    "key": "IETF RFC 5053",
-    "body": "IETF",
-    "id": "IETF RFC 5053",
-    "title": "Raptor Forward Error Correction Scheme for Object Delivery",
-    "by": {
-     "19": [
-      "TS 26.512"
-     ],
-     "20": [
-      "TS 26.512"
-     ]
-    },
-    "label": "IETF RFC 5053",
-    "releases": [
+    ],
+    "listedIn": [
+     "16",
+     "17",
+     "18",
      "19",
      "20"
     ]
@@ -925,6 +888,10 @@
     "releases": [
      "16",
      "17"
+    ],
+    "listedIn": [
+     "16",
+     "17"
     ]
    },
    {
@@ -940,20 +907,24 @@
       "TS 26.512"
      ],
      "18": [
-      "TS 26.512",
       "TS 26.510"
      ],
      "19": [
-      "TS 26.512",
       "TS 26.510"
      ],
      "20": [
-      "TS 26.512",
       "TS 26.510"
      ]
     },
     "label": "IETF RFC 5280",
     "releases": [
+     "16",
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
      "16",
      "17",
      "18",
@@ -990,6 +961,13 @@
      "18",
      "19",
      "20"
+    ],
+    "listedIn": [
+     "16",
+     "17",
+     "18",
+     "19",
+     "20"
     ]
    },
    {
@@ -1021,6 +999,13 @@
      "18",
      "19",
      "20"
+    ],
+    "listedIn": [
+     "16",
+     "17",
+     "18",
+     "19",
+     "20"
     ]
    },
    {
@@ -1047,23 +1032,9 @@
      "18",
      "19",
      "20"
-    ]
-   },
-   {
-    "key": "IETF RFC 6897",
-    "body": "IETF",
-    "id": "IETF RFC 6897",
-    "title": "Multipath TCP (MPTCP) Application Interface Considerations",
-    "by": {
-     "19": [
-      "TS 26.501"
-     ],
-     "20": [
-      "TS 26.501"
-     ]
-    },
-    "label": "IETF RFC 6897",
-    "releases": [
+    ],
+    "listedIn": [
+     "18",
      "19",
      "20"
     ]
@@ -1079,19 +1050,14 @@
      ],
      "17": [
       "TS 26.512"
-     ],
-     "18": [
-      "TS 26.510"
-     ],
-     "19": [
-      "TS 26.510"
-     ],
-     "20": [
-      "TS 26.510"
      ]
     },
     "label": "IETF RFC 7230",
     "releases": [
+     "16",
+     "17"
+    ],
+    "listedIn": [
      "16",
      "17",
      "18",
@@ -1116,61 +1082,8 @@
     "releases": [
      "16",
      "17"
-    ]
-   },
-   {
-    "key": "IETF RFC 7232",
-    "body": "IETF",
-    "id": "IETF RFC 7232",
-    "title": "Hypertext Transfer Protocol (HTTP/1.1): Conditional Requests",
-    "by": {
-     "16": [
-      "TS 26.512"
-     ],
-     "17": [
-      "TS 26.512"
-     ]
-    },
-    "label": "IETF RFC 7232",
-    "releases": [
-     "16",
-     "17"
-    ]
-   },
-   {
-    "key": "IETF RFC 7233",
-    "body": "IETF",
-    "id": "IETF RFC 7233",
-    "title": "Hypertext Transfer Protocol (HTTP/1.1): Range Requests",
-    "by": {
-     "16": [
-      "TS 26.512"
-     ],
-     "17": [
-      "TS 26.512"
-     ]
-    },
-    "label": "IETF RFC 7233",
-    "releases": [
-     "16",
-     "17"
-    ]
-   },
-   {
-    "key": "IETF RFC 7234",
-    "body": "IETF",
-    "id": "IETF RFC 7234",
-    "title": "Hypertext Transfer Protocol (HTTP/1.1): Caching",
-    "by": {
-     "16": [
-      "TS 26.512"
-     ],
-     "17": [
-      "TS 26.512"
-     ]
-    },
-    "label": "IETF RFC 7234",
-    "releases": [
+    ],
+    "listedIn": [
      "16",
      "17"
     ]
@@ -1192,21 +1105,10 @@
     "releases": [
      "16",
      "17"
-    ]
-   },
-   {
-    "key": "IETF RFC 7285",
-    "body": "IETF",
-    "id": "IETF RFC 7285",
-    "title": "IETF Application-Layer Traffic Optimization (ALTO) Protocol",
-    "by": {
-     "20": [
-      "TS 26.501"
-     ]
-    },
-    "label": "IETF RFC 7285",
-    "releases": [
-     "20"
+    ],
+    "listedIn": [
+     "16",
+     "17"
     ]
    },
    {
@@ -1222,20 +1124,24 @@
       "TS 26.512"
      ],
      "18": [
-      "TS 26.512",
       "TS 26.510"
      ],
      "19": [
-      "TS 26.512",
       "TS 26.510"
      ],
      "20": [
-      "TS 26.512",
       "TS 26.510"
      ]
     },
     "label": "IETF RFC 7468",
     "releases": [
+     "16",
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
      "16",
      "17",
      "18",
@@ -1264,6 +1170,11 @@
      "18",
      "19",
      "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
     ]
    },
    {
@@ -1281,6 +1192,10 @@
     },
     "label": "IETF RFC 7540",
     "releases": [
+     "16",
+     "17"
+    ],
+    "listedIn": [
      "16",
      "17"
     ]
@@ -1317,6 +1232,13 @@
      "18",
      "19",
      "20"
+    ],
+    "listedIn": [
+     "16",
+     "17",
+     "18",
+     "19",
+     "20"
     ]
    },
    {
@@ -1332,7 +1254,6 @@
       "TS 26.512"
      ],
      "18": [
-      "TS 26.512",
       "TS 26.510"
      ],
      "19": [
@@ -1346,6 +1267,13 @@
     },
     "label": "IETF RFC 8259",
     "releases": [
+     "16",
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
      "16",
      "17",
      "18",
@@ -1385,6 +1313,13 @@
      "18",
      "19",
      "20"
+    ],
+    "listedIn": [
+     "16",
+     "17",
+     "18",
+     "19",
+     "20"
     ]
    },
    {
@@ -1408,6 +1343,11 @@
      "18",
      "19",
      "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
     ]
    },
    {
@@ -1425,6 +1365,10 @@
     },
     "label": "IETF RFC 8684",
     "releases": [
+     "19",
+     "20"
+    ],
+    "listedIn": [
      "19",
      "20"
     ]
@@ -1450,6 +1394,11 @@
      "18",
      "19",
      "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
     ]
    },
    {
@@ -1470,6 +1419,11 @@
     },
     "label": "IETF RFC 9001",
     "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
      "18",
      "19",
      "20"
@@ -1499,6 +1453,11 @@
      "18",
      "19",
      "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
     ]
    },
    {
@@ -1508,20 +1467,22 @@
     "title": "HTTP Caching",
     "by": {
      "18": [
-      "TS 26.512",
       "TS 26.510"
      ],
      "19": [
-      "TS 26.512",
       "TS 26.510"
      ],
      "20": [
-      "TS 26.512",
       "TS 26.510"
      ]
     },
     "label": "IETF RFC 9111",
     "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
      "18",
      "19",
      "20"
@@ -1551,6 +1512,11 @@
      "18",
      "19",
      "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
     ]
    },
    {
@@ -1577,6 +1543,11 @@
      "18",
      "19",
      "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
     ]
    },
    {
@@ -1600,6 +1571,11 @@
      "18",
      "19",
      "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
     ]
    },
    {
@@ -1619,6 +1595,10 @@
     "releases": [
      "19",
      "20"
+    ],
+    "listedIn": [
+     "19",
+     "20"
     ]
    },
    {
@@ -1628,18 +1608,20 @@
     "title": "Low Latency, Low Loss, Scalable Throughput (L4S) Internet Service: Architecture",
     "by": {
      "19": [
-      "TS 26.501",
       "TS 26.512",
       "TS 26.510"
      ],
      "20": [
-      "TS 26.501",
       "TS 26.512",
       "TS 26.510"
      ]
     },
     "label": "IETF RFC 9330",
     "releases": [
+     "19",
+     "20"
+    ],
+    "listedIn": [
      "19",
      "20"
     ]
@@ -1651,18 +1633,20 @@
     "title": "Explicit Congestion Notification (ECN) Protocol for Very Low Queuing Delay (L4S)",
     "by": {
      "19": [
-      "TS 26.501",
       "TS 26.512",
       "TS 26.510"
      ],
      "20": [
-      "TS 26.501",
       "TS 26.512",
       "TS 26.510"
      ]
     },
     "label": "IETF RFC 9331",
     "releases": [
+     "19",
+     "20"
+    ],
+    "listedIn": [
      "19",
      "20"
     ]
@@ -1674,18 +1658,20 @@
     "title": "Dual-Queue Coupled Active Queue Management (AQM) for Low Latency, Low Loss, and Scalable Throughput (L4S)",
     "by": {
      "19": [
-      "TS 26.501",
       "TS 26.512",
       "TS 26.510"
      ],
      "20": [
-      "TS 26.501",
       "TS 26.512",
       "TS 26.510"
      ]
     },
     "label": "IETF RFC 9332",
     "releases": [
+     "19",
+     "20"
+    ],
+    "listedIn": [
      "19",
      "20"
     ]
@@ -1714,6 +1700,11 @@
      "18",
      "19",
      "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
     ]
    },
    {
@@ -1723,16 +1714,18 @@
     "title": "Multipath Extension for QUIC",
     "by": {
      "19": [
-      "TS 26.501",
       "TS 26.512"
      ],
      "20": [
-      "TS 26.501",
       "TS 26.512"
      ]
     },
     "label": "IETF Internet-Draft draft-ietf-quic-multipath",
     "releases": [
+     "19",
+     "20"
+    ],
+    "listedIn": [
      "19",
      "20"
     ]
@@ -1761,6 +1754,13 @@
     },
     "label": "CTA-5000-B",
     "releases": [
+     "16",
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
      "16",
      "17",
      "18",
@@ -1802,6 +1802,13 @@
      "18",
      "19",
      "20"
+    ],
+    "listedIn": [
+     "16",
+     "17",
+     "18",
+     "19",
+     "20"
     ]
    },
    {
@@ -1822,6 +1829,11 @@
     },
     "label": "CTA-5004",
     "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
      "18",
      "19",
      "20"
@@ -1851,6 +1863,11 @@
      "18",
      "19",
      "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
     ]
    },
    {
@@ -1868,6 +1885,10 @@
     },
     "label": "DASH-IF Interoperability Points; Part 6: Content protection and security",
     "releases": [
+     "19",
+     "20"
+    ],
+    "listedIn": [
      "19",
      "20"
     ]
@@ -1890,6 +1911,11 @@
     },
     "label": "Low-latency Modes for DASH",
     "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
      "18",
      "19",
      "20"
@@ -1919,6 +1945,13 @@
     },
     "label": "Specification of Live Media Ingest",
     "releases": [
+     "16",
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
      "16",
      "17",
      "18",
@@ -1955,6 +1988,13 @@
      "18",
      "19",
      "20"
+    ],
+    "listedIn": [
+     "16",
+     "17",
+     "18",
+     "19",
+     "20"
     ]
    },
    {
@@ -1981,6 +2021,13 @@
     },
     "label": "W3C Media Capabilities",
     "releases": [
+     "16",
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
      "16",
      "17",
      "18",
@@ -2017,42 +2064,11 @@
      "18",
      "19",
      "20"
-    ]
-   },
-   {
-    "key": "GSMA 5gnetworkslicing",
-    "body": "GSMA",
-    "id": "5G Network Slicing",
-    "title": "5G Network Slicing",
-    "by": {
-     "19": [
-      "TS 26.501"
-     ],
-     "20": [
-      "TS 26.501"
-     ]
-    },
-    "label": "5G Network Slicing",
-    "releases": [
-     "19",
-     "20"
-    ]
-   },
-   {
-    "key": "GSMA networkslicingnorthamericasperspectivecurrentversion10",
-    "body": "GSMA",
-    "id": "Network Slicing: North America’s Perspective (Current) Version 1.0",
-    "title": "Network Slicing: North America’s Perspective (Current) Version 1.0",
-    "by": {
-     "19": [
-      "TS 26.501"
-     ],
-     "20": [
-      "TS 26.501"
-     ]
-    },
-    "label": "Network Slicing: North America’s Perspective (Current) Version 1.0",
-    "releases": [
+    ],
+    "listedIn": [
+     "16",
+     "17",
+     "18",
      "19",
      "20"
     ]
@@ -2086,6 +2102,13 @@
      "18",
      "19",
      "20"
+    ],
+    "listedIn": [
+     "16",
+     "17",
+     "18",
+     "19",
+     "20"
     ]
    },
    {
@@ -2106,6 +2129,11 @@
     },
     "label": "MQTT Version 5.0",
     "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
      "18",
      "19",
      "20"
@@ -2138,6 +2166,13 @@
     },
     "label": "ECMAScript Language Specification",
     "releases": [
+     "16",
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
      "16",
      "17",
      "18",
@@ -2177,42 +2212,131 @@
      "18",
      "19",
      "20"
+    ],
+    "listedIn": [
+     "16",
+     "17",
+     "18",
+     "19",
+     "20"
     ]
-   },
+   }
+  ],
+  "listedButNeverCited": [
    {
-    "key": "Other 5gnetworkslicingandroiddocumentation",
-    "body": "Other",
-    "id": "5G Network Slicing: Android documentation",
-    "title": "5G Network Slicing: Android documentation",
-    "by": {
-     "19": [
-      "TS 26.501"
-     ],
-     "20": [
-      "TS 26.501"
-     ]
-    },
-    "label": "5G Network Slicing: Android documentation",
-    "releases": [
+    "label": "ISO/IEC 14496-3",
+    "listedIn": [
+     "18",
      "19",
      "20"
     ]
    },
    {
-    "key": "Other appledevicesupportforprivate5gandltenetworks",
-    "body": "Other",
-    "id": "Apple device support for private 5G and LTE networks",
-    "title": "Apple device support for private 5G and LTE networks",
-    "by": {
-     "19": [
-      "TS 26.501"
-     ],
-     "20": [
-      "TS 26.501"
-     ]
-    },
+    "label": "IETF RFC 1034",
+    "listedIn": [
+     "16",
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 2474",
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 2597",
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 3168",
+    "listedIn": [
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 3246",
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 5053",
+    "listedIn": [
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 6897",
+    "listedIn": [
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 7232",
+    "listedIn": [
+     "16",
+     "17"
+    ]
+   },
+   {
+    "label": "IETF RFC 7233",
+    "listedIn": [
+     "16",
+     "17"
+    ]
+   },
+   {
+    "label": "IETF RFC 7234",
+    "listedIn": [
+     "16",
+     "17"
+    ]
+   },
+   {
+    "label": "IETF RFC 7285",
+    "listedIn": [
+     "20"
+    ]
+   },
+   {
+    "label": "5G Network Slicing",
+    "listedIn": [
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "Network Slicing: North America’s Perspective (Current) Version 1.0",
+    "listedIn": [
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "5G Network Slicing: Android documentation",
+    "listedIn": [
+     "19",
+     "20"
+    ]
+   },
+   {
     "label": "Apple device support for private 5G and LTE networks",
-    "releases": [
+    "listedIn": [
      "19",
      "20"
     ]

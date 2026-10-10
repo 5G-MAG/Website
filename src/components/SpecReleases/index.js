@@ -136,7 +136,6 @@ export default function SpecReleases({ map }) {
               <th scope="col">Specification</th>
               <th scope="col">Issue in force</th>
               <th scope="col">In this release</th>
-              <th scope="col">Statements in force</th>
             </tr>
           </thead>
           <tbody>
@@ -159,11 +158,6 @@ export default function SpecReleases({ map }) {
                   </span>
                   <WorkItems items={row.workItems} />
                 </td>
-                <td className={indexStyles.rel}>
-                  {row.statementsInForce === null || row.statementsInForce === undefined
-                    ? 'not analysed'
-                    : row.statementsInForce}
-                </td>
               </tr>
             ))}
           </tbody>
@@ -173,8 +167,7 @@ export default function SpecReleases({ map }) {
       <p className={styles.source}>
         Issues from the 3GPP archive; work items from the 3GPP work plan
         {map.inputs.workPlan ? ` (${map.inputs.workPlan.split('/').pop()})` : ''}. A release with no new issue of a
-        specification leaves the earlier issue in force. Statements are the sentences and table rows of the issue
-        that carry a normative keyword.{map.releases.tracking.length > 0 ? ` Releases after Release ${map.releases.baseline} are not analysed.` : ''}
+        specification leaves the earlier issue in force.{map.releases.tracking.length > 0 ? ` Releases after Release ${map.releases.baseline} are not covered.` : ''}
       </p>
     </div>
   );
@@ -231,7 +224,9 @@ export function SpecOtherBodies({ map }) {
   return (
     <div className={indexStyles.wrap}>
       <p className={styles.lead}>
-        Read from clause 2 of {ob.from.join(', ')}. {ob.references.length} documents of other bodies are listed.
+        {ob.references.length} documents of other bodies are cited in the normative text of {ob.from.join(', ')}. A tick means the
+        document is cited, outside notes, definitions and informative clauses, in the issue in force in that release.
+        Documents that clause 2 lists but the normative text never cites are left out.
       </p>
       {bodies.map((b) => {
         const rows = ob.references.filter((r) => r.body === b);
