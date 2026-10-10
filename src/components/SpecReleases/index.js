@@ -173,8 +173,8 @@ export default function SpecReleases({ map }) {
   );
 }
 
-// Topics: for each specification, the Technical Analysis features its statements fall under, in the issue in
-// force at the baseline release.
+// Topics: for each specification, the Technical Analysis features its requirements fall under, in the issue in
+// force at the baseline release, largest first. The counts behind it stay in the data file; they are not shown.
 export function SpecTopics({ map, minShare = 0.1 }) {
   const docs = map.documents.filter((d) => d.topics && d.topics.length > 0);
   return (
@@ -184,7 +184,7 @@ export function SpecTopics({ map, minShare = 0.1 }) {
           <thead>
             <tr>
               <th scope="col">Specification</th>
-              <th scope="col">Main topics (statements)</th>
+              <th scope="col">Main topics</th>
             </tr>
           </thead>
           <tbody>
@@ -196,7 +196,7 @@ export function SpecTopics({ map, minShare = 0.1 }) {
                     .filter((t) => t.share >= minShare)
                     .map((t) => (
                       <span key={t.name} className={indexStyles.layer} style={{ marginRight: '0.3rem' }}>
-                        {t.name} ({t.statements})
+                        {t.name}
                       </span>
                     ))}
                 </td>
@@ -206,10 +206,10 @@ export function SpecTopics({ map, minShare = 0.1 }) {
         </table>
       </div>
       <p className={styles.source}>
-        Counts are the statements of the Release {map.releases.baseline} issue in force, placed under the
-        Technical Analysis feature headings; topics under {Math.round(minShare * 100)}% of a specification's
-        statements are not listed. Specifications that are reports, or belong to another project, are not
-        analysed here.
+        Topics are the Technical Analysis feature headings that the requirements of the Release {map.releases.baseline}
+        issue in force fall under, the largest first; a topic with under {Math.round(minShare * 100)}% of a
+        specification's requirements is not listed. Reports, and specifications that belong to another project, are
+        not shown here.
       </p>
     </div>
   );
