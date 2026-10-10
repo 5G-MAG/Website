@@ -136,7 +136,7 @@ Media content is published by the 5GMSu Client to a network-side component of th
 | --- | --- | --- | --- |
 | M1u | Content Protocols Discovery API | cl. 7.5 | `TS26512_M1_ContentProtocolsDiscovery.yaml` |
 
-TS 26.512 V17.10.0 table 5.2-1 has no content publishing row; for uplink it lists content protocols discovery only. The Content Publication Provisioning API (clause 7.6A) is listed from V18.7.0.
+TS 26.512 V17.10.0 table 5.2-1 has no content publishing row. The Content Publication Provisioning API (clause 7.6A) is listed in V18.7.0 (Release 18).
 
 </details>
 
@@ -297,9 +297,9 @@ Media consumption in downlink sessions is logged and exposed for analysis. When 
 
 ### QoE metrics reporting
 
-**Downlink (see note)** · added in Release 16 · defined in TS 26.501 clause 4.0.9 · procedures in clause 5.5
+**Downlink** · added in Release 16 · defined in TS 26.501 clause 4.0.9 · procedures in clause 5.5
 
-The Quality of Experience (QoE) of sessions is logged and exposed for analysis. Two mechanisms: RAN-based, with reports sent to the OAM via the RAN, and AF-based, with reports sent to network-side components of the 5GMS System. Data in AF-based reports may be exposed as events. TS 26.501 clause 4.0.9 limits the feature to downlink in the current release, while TS 26.512 table 5.2-1 lists uplink metrics reporting APIs and TS 26.501 clause 4.3.1 includes QoE metrics reporting at M5u; both are shown below. For uplink, TS 26.512 clause 7.8.1 adds that no standardised metrics schemes are defined for uplink media streaming.
+The Quality of Experience (QoE) of sessions is logged and exposed for analysis. Two mechanisms: RAN-based, with reports sent to the OAM via the RAN, and AF-based, with reports sent to network-side components of the 5GMS System. Data in AF-based reports may be exposed as events. TS 26.501 clause 4.0.9 limits the feature to downlink in the current release. TS 26.512 clause 7.8.1 states that no standardised metrics schemes are defined for uplink media streaming.
 
 <SpecFigure src="/img/tech/5gms/generated/ts26501-fig4.0.9-1.svg" width={840} height={302} spec="TS 26.501 V19.4.0" figure="4.0.9-1" title="High-level arrangement for QoE metrics reporting feature" alt="The 5GMSd Client submits AF-based QoE metrics reports to the 5GMS network services, provisioned by the 5GMSd Application Provider, and RAN-based QoE metrics reports through the RAN to the OAM." />
 
