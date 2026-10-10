@@ -27,7 +27,7 @@ TS 26.501 defines a set of high-level features for supporting enhanced media str
 - **13 features:** eight from Release 16, three added in Release 17, two in Release 18, none in Release 19.
 - **Directions:** content hosting, consumption reporting, QoE metrics reporting and delivery via eMBMS and MBS are downlink; content publishing and remote control are uplink; the others apply to both.
 - **APIs:** up to Release 17, TS 26.512 specifies each API with its own OpenAPI file. From Release 18 they are TS 26.510 services that TS 26.512 refers to. Each feature shows both, folded.
-- **Added in Release 19** in the API tables: content redistribution at M10 and metrics reporting at M3d. TS 26.512 V19.3.0 also adds in-band CMCD reporting at M4d (clause 10.5), which its table 4.2-1 does not list.
+- **Added in Release 19** in the API tables: content redistribution at M10 and metrics reporting at M3d. TS 26.512 V19.3.0 also adds in-band CMCD reporting at M4d (clause 10.5).
 
 :::
 
@@ -40,7 +40,7 @@ TS 26.501 defines a set of high-level features for supporting enhanced media str
 | **Content hosting** | ✓ |  | Release 16 | A service equivalent to a Content Delivery Network (CDN), inside or outside the trusted data network | 5.4 |
 | **Content publishing** |  | ✓ | Release 16 | Media from the device is published to the network, which may cache it and prepare it according to templates | 6.2.3 |
 | **Content preparation** | ✓ | ✓ | Release 16 | Network-side processing from provisioned templates: encoding, transcoding, packaging, encryption, DRM | Not defined |
-| **Network assistance** | ✓ | ✓ | Release 16 | The device asks about, or changes, the network Quality of Service for an ongoing session | 5.9 (d); 6.5, 6.7 (u) in table 4.0.1-1, or 6.1, 6.5, 6.7 (u) in clause 4.0.5 |
+| **Network assistance** | ✓ | ✓ | Release 16 | The device asks about, or changes, the network Quality of Service for an ongoing session | 5.9 (d); 6.5, 6.7 (u) |
 | **Dynamic policies** | ✓ | ✓ | Release 16 | The device changes how the network handles the traffic of an ongoing session | 5.8, 5.7.6 (d); 6.9 (u) |
 | **Remote control** |  | ✓ | Release 16 | Not further defined in this release | 6.6 |
 | **Consumption reporting** | ✓ |  | Release 16 | Media consumption is logged and exposed for analysis | 5.6 |
@@ -51,7 +51,7 @@ TS 26.501 defines a set of high-level features for supporting enhanced media str
 | **Service URL handling** | ✓ | ✓ | Release 18 | A 3GPP Service URL, shared in an app, web page or message, launches the service on the device | 9, 5.10.7 (d); 9 (u) |
 | **MBS delivery** | ✓ |  | Release 18 | Downlink content is delivered through MBS User Service sessions | 5.12 |
 
-(d) is downlink and (u) is uplink. For network assistance in uplink, TS 26.501 V19.4.0 table 4.0.1-1 lists clauses 6.5 and 6.7, while clause 4.0.5 lists 6.1, 6.5 and 6.7; both are shown.
+(d) is downlink and (u) is uplink.
 
 Consumption and QoE metrics reporting apply to downlink only in the current release. Release 16 (TS 26.501 V16.15.0) defines eight features. Release 17 adds edge processing, eMBMS delivery, and data collection, reporting and exposure. Release 18 adds Service URL handling and MBS delivery. Release 19 adds none to this list.
 
@@ -379,7 +379,7 @@ TS 26.512 V17.10.0 table 4.2-1 leaves the reference point of the downlink Edge R
 
 **Downlink** · added in Release 17 · defined in TS 26.501 clause 4.0.11 · procedures in clause 5.10
 
-The 5GMS System provisions the delivery of downlink content via eMBMS User Services sessions. Defined in TS 26.501 clause 4.6. TS 26.512 V19.3.0 table 4.2-1 has two groups of 5GMS via eMBMS rows ("via eMBMS and MBMS User Services" and "via eMBMS"), and TS 26.512 V17.10.0 table 4.2-1 has one ("via eMBMS"); the two V19.3.0 groups are merged below.
+The 5GMS System provisions the delivery of downlink content via eMBMS User Services sessions. Defined in TS 26.501 clause 4.6.
 
 <details>
 <summary><b>Up to Release 17</b> · TS 26.512 V17.10.0, which specifies each API itself</summary>
