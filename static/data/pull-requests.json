@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-09 03:13 UTC",
+  "updated_at": "2026-10-10 02:52 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -172,19 +172,6 @@
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-5gc-service-consumers",
-          "branch": null,
-          "number": 31,
-          "title": "MBS compliance fixes: SSM/session handling, NCGI/TAI, session-area updates",
-          "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/31",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-22",
           "last_comment_by": null,
           "last_comment_date": null
         },
@@ -430,19 +417,6 @@
           "last_comment_date": null
         },
         {
-          "repo": "rt-libflute",
-          "branch": null,
-          "number": 61,
-          "title": "RFC 5053 Raptor FEC scheme: codec, FLUTE integration, and the missing-symbol accessor",
-          "url": "https://github.com/5G-MAG/rt-libflute/pull/61",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-08-06",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
           "repo": "rt-mbms-modem",
           "branch": null,
           "number": 53,
@@ -521,19 +495,6 @@
       "doc_url": "/reference-tools/xr/",
       "tagline": "Composing, positioning, and temporally synchronizing dynamic 3D visual and audio objects for XR",
       "pulls": [
-        {
-          "repo": "rt-xr-unity-player",
-          "branch": null,
-          "number": 95,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-xr-unity-player/pull/95",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
         {
           "repo": "rt-xr-maf-native",
           "branch": null,
@@ -619,6 +580,32 @@
       "doc_url": "/reference-tools/5g-mbs/",
       "tagline": "Multicast and Broadcast delivery for 5G-NR-based terrestrial and non-terrestrial networks",
       "pulls": [
+        {
+          "repo": "rt-mbs-function",
+          "branch": null,
+          "number": 71,
+          "title": "mbsf: send the request that was waiting for an MBSTF discovery",
+          "url": "https://github.com/5G-MAG/rt-mbs-function/pull/71",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-09",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-mbs-function",
+          "branch": null,
+          "number": 69,
+          "title": "mbsf: MBS5 answers carry Cache-Control max-age, and a 405 carries Allow",
+          "url": "https://github.com/5G-MAG/rt-mbs-function/pull/69",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-09",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "rt-media-origin",
           "branch": null,
@@ -763,19 +750,6 @@
           "last_comment_date": null
         },
         {
-          "repo": "rt-5gc-service-consumers",
-          "branch": null,
-          "number": 31,
-          "title": "MBS compliance fixes: SSM/session handling, NCGI/TAI, session-area updates",
-          "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/31",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-22",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
           "repo": "rt-mbs-examples",
           "branch": null,
           "number": 33,
@@ -798,19 +772,6 @@
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-08-23",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-mbs-function",
-          "branch": null,
-          "number": 49,
-          "title": "Fix MBS Broadcast distribution session lifecycle and Service Announcement crashes",
-          "url": "https://github.com/5G-MAG/rt-mbs-function/pull/49",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-08-11",
           "last_comment_by": null,
           "last_comment_date": null
         },
@@ -930,19 +891,6 @@
           "created_at": "2026-08-11",
           "last_comment_by": null,
           "last_comment_date": null
-        },
-        {
-          "repo": "rt-libflute",
-          "branch": null,
-          "number": 61,
-          "title": "RFC 5053 Raptor FEC scheme: codec, FLUTE integration, and the missing-symbol accessor",
-          "url": "https://github.com/5G-MAG/rt-libflute/pull/61",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-08-06",
-          "last_comment_by": null,
-          "last_comment_date": null
         }
       ]
     },
@@ -1010,6 +958,32 @@
       "doc_url": "/reference-tools/v3c/",
       "tagline": "Volumetric video platform for immersive experiences",
       "pulls": [
+        {
+          "repo": "rt-v3c-unity-player",
+          "branch": null,
+          "number": 20,
+          "title": "Quest: run the player in a Meta Quest headset (rig, interface, multiview)",
+          "url": "https://github.com/5G-MAG/rt-v3c-unity-player/pull/20",
+          "draft": true,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-09",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-v3c-decoder-plugin",
+          "branch": null,
+          "number": 19,
+          "title": "reader, scheduler: sleep while waiting instead of spinning on the clock",
+          "url": "https://github.com/5G-MAG/rt-v3c-decoder-plugin/pull/19",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-09",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "rt-v3c-unity-player",
           "branch": null,
@@ -1335,19 +1309,6 @@
           "created_at": "2026-09-29",
           "last_comment_by": null,
           "last_comment_date": null
-        },
-        {
-          "repo": "rt-5gc-service-consumers",
-          "branch": null,
-          "number": 31,
-          "title": "MBS compliance fixes: SSM/session handling, NCGI/TAI, session-area updates",
-          "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/31",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-22",
-          "last_comment_by": null,
-          "last_comment_date": null
         }
       ]
     },
@@ -1378,7 +1339,7 @@
       ]
     },
     {
-      "name": "AI for Media",
+      "name": "AI in Media Services",
       "doc_url": null,
       "tagline": "Evaluating AI and ML for media, and the traffic of AI media services",
       "pulls": []
@@ -1430,26 +1391,39 @@
         {
           "repo": "rt-avatar-content",
           "branch": null,
-          "number": 6,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-avatar-content/pull/6",
+          "number": 7,
+          "title": "content supporting rt-avatar-call v0.10.154",
+          "url": "https://github.com/5G-MAG/rt-avatar-content/pull/7",
           "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
+          "author_login": "nlsdvl",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2748737?v=4",
+          "created_at": "2026-10-09",
           "last_comment_by": null,
           "last_comment_date": null
         },
         {
-          "repo": "rt-3gpp-swap",
+          "repo": "rt-avatar-call",
           "branch": null,
-          "number": 10,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-3gpp-swap/pull/10",
+          "number": 53,
+          "title": "Update UnityARF to 1.1.0.155",
+          "url": "https://github.com/5G-MAG/rt-avatar-call/pull/53",
           "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
+          "author_login": "nlsdvl",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2748737?v=4",
+          "created_at": "2026-10-09",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-avatar-call",
+          "branch": null,
+          "number": 52,
+          "title": "rt-avatar-call v0.10.154",
+          "url": "https://github.com/5G-MAG/rt-avatar-call/pull/52",
+          "draft": false,
+          "author_login": "nlsdvl",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2748737?v=4",
+          "created_at": "2026-10-09",
           "last_comment_by": null,
           "last_comment_date": null
         },
@@ -1459,23 +1433,10 @@
           "number": 9,
           "title": "Close TS 26.113 §13.2.4 (SWAP) conformance gaps; add license",
           "url": "https://github.com/5G-MAG/rt-3gpp-swap/pull/9",
-          "draft": true,
-          "author_login": "nlsdvl",
-          "author_avatar": "https://avatars.githubusercontent.com/u/2748737?v=4",
-          "created_at": "2026-09-17",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-avatar-content",
-          "branch": null,
-          "number": 5,
-          "title": "Blendshapes for mouth open and head joints",
-          "url": "https://github.com/5G-MAG/rt-avatar-content/pull/5",
           "draft": false,
           "author_login": "nlsdvl",
           "author_avatar": "https://avatars.githubusercontent.com/u/2748737?v=4",
-          "created_at": "2026-06-23",
+          "created_at": "2026-09-17",
           "last_comment_by": null,
           "last_comment_date": null
         }
@@ -1720,19 +1681,6 @@
           "created_at": "2026-08-11",
           "last_comment_by": null,
           "last_comment_date": null
-        },
-        {
-          "repo": "rt-libflute",
-          "branch": null,
-          "number": 61,
-          "title": "RFC 5053 Raptor FEC scheme: codec, FLUTE integration, and the missing-symbol accessor",
-          "url": "https://github.com/5G-MAG/rt-libflute/pull/61",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-08-06",
-          "last_comment_by": null,
-          "last_comment_date": null
         }
       ]
     },
@@ -1809,23 +1757,10 @@
         {
           "repo": "rt-3gpp-swap",
           "branch": null,
-          "number": 10,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-3gpp-swap/pull/10",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-3gpp-swap",
-          "branch": null,
           "number": 9,
           "title": "Close TS 26.113 §13.2.4 (SWAP) conformance gaps; add license",
           "url": "https://github.com/5G-MAG/rt-3gpp-swap/pull/9",
-          "draft": true,
+          "draft": false,
           "author_login": "nlsdvl",
           "author_avatar": "https://avatars.githubusercontent.com/u/2748737?v=4",
           "created_at": "2026-09-17",

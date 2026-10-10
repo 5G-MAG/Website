@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-09 03:12 UTC",
+  "updated_at": "2026-10-10 02:52 UTC",
   "repo_count": 42,
   "contributors": [
     {
@@ -13,15 +13,15 @@
       "login": "jordijoangimenez",
       "avatar_url": "https://avatars.githubusercontent.com/u/87380947?v=4",
       "html_url": "https://github.com/jordijoangimenez",
-      "contributions": 528,
+      "contributions": 530,
       "repo_count": 36
     },
     {
       "login": "dsilhavy",
       "avatar_url": "https://avatars.githubusercontent.com/u/2427039?v=4",
       "html_url": "https://github.com/dsilhavy",
-      "contributions": 409,
-      "repo_count": 23
+      "contributions": 411,
+      "repo_count": 24
     },
     {
       "login": "nlsdvl",
@@ -122,6 +122,13 @@
       "repo_count": 2
     },
     {
+      "login": "KurtKrauss",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17783052?v=4",
+      "html_url": "https://github.com/KurtKrauss",
+      "contributions": 5,
+      "repo_count": 2
+    },
+    {
       "login": "lelievres",
       "avatar_url": "https://avatars.githubusercontent.com/u/114588711?v=4",
       "html_url": "https://github.com/lelievres",
@@ -136,17 +143,17 @@
       "repo_count": 3
     },
     {
+      "login": "gcris-dolby",
+      "avatar_url": "https://avatars.githubusercontent.com/u/119052809?v=4",
+      "html_url": "https://github.com/gcris-dolby",
+      "contributions": 4,
+      "repo_count": 2
+    },
+    {
       "login": "fontainepid",
       "avatar_url": "https://avatars.githubusercontent.com/u/123976417?v=4",
       "html_url": "https://github.com/fontainepid",
       "contributions": 4,
-      "repo_count": 1
-    },
-    {
-      "login": "KurtKrauss",
-      "avatar_url": "https://avatars.githubusercontent.com/u/17783052?v=4",
-      "html_url": "https://github.com/KurtKrauss",
-      "contributions": 3,
       "repo_count": 1
     },
     {
@@ -176,13 +183,6 @@
       "html_url": "https://github.com/Neolomoxem",
       "contributions": 2,
       "repo_count": 2
-    },
-    {
-      "login": "gcris-dolby",
-      "avatar_url": "https://avatars.githubusercontent.com/u/119052809?v=4",
-      "html_url": "https://github.com/gcris-dolby",
-      "contributions": 2,
-      "repo_count": 1
     },
     {
       "login": "andreasdotzler",
