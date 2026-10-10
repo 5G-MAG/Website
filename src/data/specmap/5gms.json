@@ -56,7 +56,7 @@
     "20": "V19.2.0"
    }
   },
-  "websiteCommit": "317bc3c",
+  "websiteCommit": "05e60c2",
   "rules": "projects/5gms/explore.yaml"
  },
  "topicList": [
@@ -2443,10 +2443,10 @@
      "version": "V19.4.0",
      "newIssue": true,
      "analysed": true,
-     "statementsInForce": 1076,
+     "statementsInForce": 1094,
      "statementsAtCreation": null,
-     "statementsAdded": 242,
-     "statementsRemoved": 53,
+     "statementsAdded": 259,
+     "statementsRemoved": 52,
      "statementsMovedIn": 0,
      "statementsMovedOut": 0,
      "workItems": [
@@ -2464,7 +2464,7 @@
      "version": "V20.0.0",
      "newIssue": true,
      "analysed": true,
-     "statementsInForce": 1110,
+     "statementsInForce": 1128,
      "statementsAtCreation": null,
      "statementsAdded": 37,
      "statementsRemoved": 3,
@@ -2506,33 +2506,28 @@
    "topics": [
     {
      "name": "Data collection, reporting and exposure",
-     "statements": 184,
-     "share": 0.166
+     "statements": 219,
+     "share": 0.194
     },
     {
      "name": "Dynamic policies",
      "statements": 147,
-     "share": 0.132
-    },
-    {
-     "name": "MBS delivery",
-     "statements": 124,
-     "share": 0.112
+     "share": 0.13
     },
     {
      "name": "General",
-     "statements": 105,
+     "statements": 107,
      "share": 0.095
     },
     {
      "name": "Content publishing",
-     "statements": 89,
-     "share": 0.08
+     "statements": 99,
+     "share": 0.088
     },
     {
      "name": "Content hosting",
-     "statements": 79,
-     "share": 0.071
+     "statements": 87,
+     "share": 0.077
     },
     {
      "name": "Media session handling APIs",
@@ -2542,22 +2537,27 @@
     {
      "name": "eMBMS delivery",
      "statements": 63,
-     "share": 0.057
+     "share": 0.056
     },
     {
      "name": "Edge processing",
      "statements": 59,
-     "share": 0.053
+     "share": 0.052
+    },
+    {
+     "name": "Consumption reporting",
+     "statements": 59,
+     "share": 0.052
+    },
+    {
+     "name": "MBS delivery",
+     "statements": 53,
+     "share": 0.047
     },
     {
      "name": "Network assistance",
      "statements": 52,
-     "share": 0.047
-    },
-    {
-     "name": "Consumption reporting",
-     "statements": 40,
-     "share": 0.036
+     "share": 0.046
     },
     {
      "name": "QoE metrics reporting",
@@ -2567,7 +2567,12 @@
     {
      "name": "Service URL handling",
      "statements": 23,
-     "share": 0.021
+     "share": 0.02
+    },
+    {
+     "name": "Content preparation",
+     "statements": 18,
+     "share": 0.016
     },
     {
      "name": "Provisioning",
@@ -2577,17 +2582,17 @@
     {
      "name": "M3 between AF and AS",
      "statements": 15,
-     "share": 0.014
-    },
-    {
-     "name": "Content preparation",
-     "statements": 5,
-     "share": 0.005
+     "share": 0.013
     },
     {
      "name": "Remote control",
      "statements": 3,
      "share": 0.003
+    },
+    {
+     "name": "Profiles, codecs and formats",
+     "statements": 2,
+     "share": 0.002
     }
    ]
   },
@@ -3509,7 +3514,7 @@
     "release": "19",
     "version": "V19.1.0"
    },
-   "titleFrom": "Standards page entry",
+   "titleFrom": "cover",
    "scope": {
     "text": "The present document specifies the set of APIs and associated resource structures and data models pertaining to the collection and reporting of UE-related data (synonymously “UE data”) by the Data Collection Application Function (AF) in the 5G System for subsequent event exposure services offered to network consumer entities, as defined in 3GPP TS 23.501 [2], TS 23.502 [3], TS 23.288 [4], TS 29.517 [5], TS 29.510 [6] and TS 26.531 [7] .",
     "firstSentence": "The present document specifies the set of APIs and associated resource structures and data models pertaining to the collection and reporting of UE-related data (synonymously “UE data”) by the Data Collection Application Function (AF) in the 5G System for subsequent event exposure services offered to network consumer entities, as defined in 3GPP TS 23.501 [2], TS 23.502 [3], TS 23.288 [4], TS 29.517 [5], TS 29.510 [6] and TS 26.531 [7] .",
