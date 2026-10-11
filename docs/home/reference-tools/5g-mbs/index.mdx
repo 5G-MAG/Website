@@ -12,13 +12,15 @@ import CommunityStats from '@site/src/components/CommunityStats';
 import ArchitectureMap from '@site/src/components/ArchitectureMap';
 import { MBS_ARCHITECTURE } from '@site/src/data/architecture/5g-mbs';
 import AUDIT from '@site/src/data/audit-5g-mbs.json';
+import US_AUDIT from '@site/src/data/audit-5g-mbs-us.json';
 
 {/* The map's states, rolled up from the code audit's cases: one section per entity of the map. */}
 export const ENTITY_OF = (r) => r.component === 'core'
   ? (/^SYS-(B|M03)/.test(r.id) ? 'AMF' : /^SYS-N/.test(r.id) ? 'MB-UPF' : 'MB-SMF')
   : { mbsf: 'MBSF', mbstf: 'MBSTF', provider: 'Provider', client: 'MBS Client', app: 'MBS-Aware Application', gnb: 'gNB', ue: 'UE', consumers: 'MBSF' }[r.component];
 export const STATE_OF = { implemented: 'yes', differs: 'partial', absent: 'no' };
-export const MBS_STATUS = AUDIT.features.flatMap((f) => f.requirements).map((r) => ({
+// MBS User Services from the verified audit; the 5G System and NG-RAN part from the 2026-10-03 audit.
+export const MBS_STATUS = [...US_AUDIT.features, ...AUDIT.features.filter((f) => f.requirements.some((r) => r.release !== 'US18'))].flatMap((f) => f.requirements).map((r) => ({
   component: ENTITY_OF(r),
   rows: [{ statuses: r.cases.map((c) => STATE_OF[c.verdict]).filter(Boolean) }],
 }));

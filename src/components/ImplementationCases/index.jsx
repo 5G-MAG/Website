@@ -203,7 +203,7 @@ export default function ImplementationCases({ data, only }) {
         ))}
         <li><b>Source:</b> {data.method}, {data.audited}.</li>
         {data.held && data.held.cases ? (
-          <li><b>Not shown:</b> {data.held.cases.toLocaleString('en')} further cases that state no behaviour a component could meet, depend on the player library or on a specification or code outside this audit, or could not be settled.</li>
+          <li><b>Not shown:</b> {data.held.cases.toLocaleString('en')} further cases ({(data.held.reasons || []).join('; ')}).</li>
         ) : null}
       </ul>
 
