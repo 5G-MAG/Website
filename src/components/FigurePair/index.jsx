@@ -40,6 +40,8 @@ export default function FigurePair({ figures, note }) {
         ))}
       </div>
       {note && <p className={styles.note}>{note}</p>}
+      {/* Backdrop click is a convenience; Escape closes the dialog natively. */}
+      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */}
       <dialog ref={dialog} className={styles.dialog} onClose={() => setOpen(null)}
         onClick={(e) => { if (e.target === dialog.current) setOpen(null); }} aria-label={open ? open.title : 'Figure'}>
         {open && (
