@@ -5,7 +5,6 @@ sidebar_position: 2
 description: What the 5G Media Streaming (5GMS) Reference Tools implement, component by component, from a code audit of the repositories against the specifications.
 ---
 
-import FigurePair from '@site/src/components/FigurePair';
 import ImplementationCases from '@site/src/components/ImplementationCases';
 import AUDIT from '@site/src/data/audit-5gms.json';
 
@@ -19,54 +18,17 @@ import AUDIT from '@site/src/data/audit-5gms.json';
 </div>
 </div>
 
-:::tip[In short]
-
-- **Release 16:** 804 of 1623 cases implemented, 116 differ from the specification, 676 absent, 27 where the specification is inconsistent (TS 26.501 V16.15.0, TS 26.512 V16.12.0, TS 26.511 V16.3.0, TS 26.117 V16.2.0).
-- **Release 17:** 913 of 2240 cases implemented, 128 differ from the specification, 1171 absent, 28 where the specification is inconsistent (TS 26.501 V17.10.0, TS 26.512 V17.10.0, TS 26.511 V17.2.0, TS 26.117 V17.2.0).
-- **Release 18:** 528 of 4347 cases implemented, 109 differ from the specification, 3699 absent, 11 where the specification is inconsistent (TS 26.501 V18.9.0, TS 26.512 V18.7.0, TS 26.510 V18.5.0, TS 26.511 V18.2.0, TS 26.117 V18.5.0).
-- **Release 19 (latest):** 628 of 5370 cases implemented, 123 differ from the specification, 4606 absent, 13 where the specification is inconsistent (TS 26.501 V19.4.0, TS 26.512 V19.3.0, TS 26.510 V19.2.0, TS 26.511 V19.0.0, TS 26.117 V19.2.0).
-- **Built against:** AF: 3GPP Forge 5G_APIs tag TSG109-Rel17 (identical to TS 26.512 V17.10.0); M3 client: 5G-MAG /3gpp-m3/v1; AS: 5G_APIs at Release 17 (identical to V17.10.0 on 2026-10-01); M3: 5G-MAG /3gpp-m3/v1 from rt-common-shared, at the version the build pins; Client: not determinable from the build (hand-written Release 17 models; Media3 ExoPlayer 1.10.0); App Provider: hand-written /3gpp-m1/v2 client (Release 17); 5G_APIs at Release 17.
-- **Source of this page:** code read against every statement of the specifications on the project page; statements a component cannot meet by construction marked absent by group; 35 cases held because a document they rest on was not obtained, 2026-10-07: each requirement split into the cases its clause defines.
-
-:::
-
 For what the specifications define, see the [Technical Analysis](/tech/5gms). For how to run the tools, see the [Tutorials](/reference-tools/5gms/tutorials).
-
-## Architecture
-
-The architecture of each release, with the parts the Reference Tools provide and the status of each reference point.
-
-<FigurePair
-  figures={[
-    {
-      label: 'Release 17',
-      src: '/img/tech/5gms/generated/ts26501-v17-fig4.1-2-status-rel17.svg',
-      width: 1200, height: 690,
-      title: "Architecture, with Reference Tools status",
-      source: 'Based on TS 26.501 V17.10.0, figure 4.1-2',
-      alt: "The architecture of TS 26.501 V17.10.0 figure 4.1-2 with the repository behind each component and the status of each reference point.",
-    },
-    {
-      label: 'Release 19',
-      src: '/img/tech/5gms/generated/ts26501-fig4.1.1-2-status-rel19.svg',
-      width: 1200, height: 721,
-      title: "Architecture, with Reference Tools status",
-      source: 'Based on TS 26.501 V19.4.0, figure 4.1.1-2',
-      alt: "The architecture of TS 26.501 V19.4.0 figure 4.1.1-2 with the repository behind each component and the status of each reference point.",
-    },
-  ]}
-  note="Click a figure to enlarge it."
-/>
 
 ## Implementation status
 
-Each feature, split into its requirements and each requirement into the cases its clause defines: what works, what does not, and why. Filter by component, profile and release; open a feature, then a requirement.
+Open a feature, then a requirement, to see each case and why. Filter by component, profile and release.
 
 <ImplementationCases data={AUDIT} />
 
 :::info[Full audit for members]
 
-This page summarises a requirement-by-requirement audit of the code. The full audit (each requirement with its clause quoted, the code that meets or misses it, and the findings) is available to 5G-MAG members through [Developer Tools](/developer-tools) (the Standards2Deployments repository).
+The full audit, with the code behind each verdict, is available to 5G-MAG members through [Developer Tools](/developer-tools).
 
 [Become a member](/membership) · [Request access](/early-access)
 
