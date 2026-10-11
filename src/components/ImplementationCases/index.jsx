@@ -152,7 +152,15 @@ export default function ImplementationCases({ data, only }) {
     ? data.releaseStatus : null;
   const issues = rs ? Object.entries(rs.issues) : [];
   const [at, setAt] = useState(rs ? rs.baseline : null);
-  const atRelease = (c) => (c.byRelease && c.byRelease[at] ? { ...c, ...c.byRelease[at] } : c);
+  const atRelease = (c) => {
+    const x = c.byRelease && c.byRelease[at] ? { ...c, ...c.byRelease[at] } : c;
+    return c.locatorAt && c.locatorAt[at] ? { ...x, locator: c.locatorAt[at] } : x;
+  };
+  // the issue of each document in force at the selected release, and the clause of the case in that issue
+  const issueAt = (doc) => {
+    const m = rs && rs.issues[at] ? rs.issues[at].match(new RegExp(`${doc.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')} (V[\\d.]+)`)) : null;
+    return m ? m[1] : null;
+  };
   const brokenLinks = useBrokenLinks();
   data.features.forEach((f) => brokenLinks.collectAnchor(slug(f.name)));
   const relShort = (k) => (data.releaseNames && data.releaseNames[k]) || data.releases[k].split(':')[0];
@@ -160,7 +168,15 @@ export default function ImplementationCases({ data, only }) {
     ...f,
     shown: f.requirements
       .filter((r) => keep(r.component) && (comp === 'all' || r.component === comp) && (rel === 'all' || r.release === rel))
-      .map((r) => (at && rsKeys.has(r.release) ? { ...r, cases: r.cases.filter((c) => !c.releases || c.releases.includes(at)).map(atRelease) } : r))
+      .map((r) => {
+        if (!(at && rsKeys.has(r.release))) return r;
+        const cs = r.cases.filter((c) => !c.releases || c.releases.includes(at)).map(atRelease);
+        // the clauses of the shown cases in the issue of this release (a clause can be renumbered between releases)
+        const clauses = [...new Set(cs.map((c) => c.locator || r.spec.locator))];
+        const locator = clauses.length > 3 ? `${clauses.slice(0, 3).join(', ').replace(/clause /g, '')} and ${clauses.length - 3} more`.replace(/^/, 'clauses ')
+          : clauses.length > 1 ? `clauses ${clauses.map((x) => x.replace('clause ', '')).join(', ')}` : clauses[0] || r.spec.locator;
+        return { ...r, cases: cs, spec: { ...r.spec, version: issueAt(r.spec.doc) || r.spec.version, locator } };
+      })
       .filter((r) => r.cases.length),
   })).filter((f) => f.shown.length), [data, comp, rel, only, at]);
   const all = features.flatMap((f) => f.shown.flatMap((r) => r.cases));
@@ -186,6 +202,9 @@ export default function ImplementationCases({ data, only }) {
           </li>
         ))}
         <li><b>Source:</b> {data.method}, {data.audited}.</li>
+        {data.held && data.held.cases ? (
+          <li><b>Not shown:</b> {data.held.cases.toLocaleString('en')} further cases that state no behaviour a component could meet, depend on the player library or on a specification or code outside this audit, or could not be settled.</li>
+        ) : null}
       </ul>
 
       <div className={styles.filters}>
