@@ -81,12 +81,6 @@ const issue = (i) => (
     </span>
   </li>
 );
-const branchItem = (repo) => (b) => (
-  <li key={b.name}>
-    <a href={`${repo.url}/tree/${encodeURIComponent(b.name)}`} target="_blank" rel="noreferrer"><code>{b.name}</code></a>
-    <span className={styles.meta}>{b.default && <span className={styles.def}>Default</span>} last commit {b.last_commit}</span>
-  </li>
-);
 
 export function Repo({ r }) {
   // pull requests listed in full, oldest first; issues and branches link straight to GitHub
