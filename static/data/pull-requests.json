@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-12 02:45 UTC",
+  "updated_at": "2026-10-13 04:02 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -495,6 +495,58 @@
       "doc_url": "/reference-tools/xr/",
       "tagline": "Composing, positioning, and temporally synchronizing dynamic 3D visual and audio objects for XR",
       "pulls": [
+        {
+          "repo": "rt-xr-unity-player",
+          "branch": null,
+          "number": 126,
+          "title": "XR Scene Player: smartphone app, media control and compliance work",
+          "url": "https://github.com/5G-MAG/rt-xr-unity-player/pull/126",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-12",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-xr-maf-native",
+          "branch": null,
+          "number": 33,
+          "title": "Decode timed metadata tracks and report the buffer format",
+          "url": "https://github.com/5G-MAG/rt-xr-maf-native/pull/33",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-12",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-xr-content",
+          "branch": null,
+          "number": 41,
+          "title": "Reference scenes follow ISO/IEC 23090-14:2024(E)",
+          "url": "https://github.com/5G-MAG/rt-xr-content/pull/41",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-12",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-xr-gITFast",
+          "branch": null,
+          "number": 16,
+          "title": "MPEG-I scene description extensions and interactivity fixes (ISO/IEC 23090-14:2024(E))",
+          "url": "https://github.com/5G-MAG/rt-xr-gITFast/pull/16",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-12",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "rt-xr-maf-native",
           "branch": null,
