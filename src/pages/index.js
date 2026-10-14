@@ -189,13 +189,10 @@ function pickKind() {
 // assignment so hydration has something stable to match, and setInterval
 // only starts after mount.
 function FadingSlideRow({ slides }) {
-  // The first paint is a fixed photo, animation and project card, the same on the server and in the browser. Once
-  // the page is mounted, the three tiles move to a random photo, animation and project card (below), so every visit
-  // opens differently; the first ones fade out while the random ones fade in.
-  const firstPhotoIdx = slides.findIndex((s) => s.type === 'photo');
-  const firstAnimationIdx = slides.findIndex((s) => s.type === 'animation');
-  const firstProjectIdx = slides.findIndex((s) => s.type === 'project');
-  const initial = [firstPhotoIdx, firstAnimationIdx, firstProjectIdx].map((i) => (i === -1 ? 0 : i));
+  // Nothing shows on the server's first paint (-1). Once the page is in the browser the three tiles pick a random
+  // photo, animation and project card and fade in, so there is no swap from a fixed set to a random one a second
+  // or two after the page loads. (Choosing at random during the first render would not match what the server sent.)
+  const initial = [-1, -1, -1];
   const [active, setActive] = useState(initial);
   // The slide that has just left each slot, kept mounted until its fade-out has finished.
   const [leaving, setLeaving] = useState([null, null, null]);
@@ -221,8 +218,6 @@ function FadingSlideRow({ slides }) {
     const start = [bags.draw('photo'), bags.draw('animation'), bags.draw('project')];
     activeRef.current = start;
     setActive(start);
-    setLeaving([...initial]);
-    later(() => setLeaving([null, null, null]), 2600);
     const step = (slot) => {
       const prev = activeRef.current;
       const next = bags.draw(pickKind(), prev);
