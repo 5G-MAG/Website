@@ -288,8 +288,7 @@ export default function Home() {
           <div className="container">
             <h2 className={styles.sectionTitle}>Replay</h2>
             <p className={styles.sectionSubtitle}>
-              Recorded talks, demos and calls from across all of 5G-MAG&apos;s work — Developer
-              Exchanges, Public Calls, workshops and more.
+              Recorded talks, demos and calls from across all of 5G-MAG&apos;s work
             </p>
             <VideoGrid videos={videos} kicker="Replay" singleRow />
             <div className={styles.onAirMore}>
