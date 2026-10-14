@@ -87,12 +87,9 @@
      brand blue (reads as "clickable" everywhere else) and not the
      existing RC/status amber (#fcd34d family, already means Draft/
      Maintenance) -- a distinct lighter tint of the true gold hue instead. */
-  /* Direction C: section bands cycle through pale blue, pale lilac and pale mint; cards cycle through the brand
+  /* Direction C: cards cycle through the brand
      blue, teal, purple and orange (borders and icons use --cyc-*, filled bands with white text use --cyc-fill-*,
      which are darker so the white text stays readable). */
-  --band-tint-blue: #dcf0f9;
-  --band-tint-lilac: #e9e1f7;
-  --band-tint-mint: #d9f1e8;
   --cyc-1: #00a0d2;
   --cyc-2: #1a9e93;
   --cyc-3: #8355c7;
@@ -132,9 +129,6 @@
   --ifm-color-primary-textsafe: #007a9e;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
   /* Swapped from the light pairing above, same gold hue, darkened wash. */
-  --band-tint-blue: #12394c;
-  --band-tint-lilac: #2b2142;
-  --band-tint-mint: #12382e;
   --cyc-2: #35c2b5;
   --cyc-3: #a98ae0;
   --cyc-4: #f09a45;
@@ -1714,17 +1708,6 @@
 }
 
 /* Direction C. The Home page hero is not touched. */
-
-/* Alternate section bands cycle through three tints (pale blue, pale lilac, pale mint) instead of one grey. */
-main section[class*='sectionAlt']:nth-of-type(3n + 1) {
-  background: var(--band-tint-blue);
-}
-main section[class*='sectionAlt']:nth-of-type(3n + 2) {
-  background: var(--band-tint-lilac);
-}
-main section[class*='sectionAlt']:nth-of-type(3n + 3) {
-  background: var(--band-tint-mint);
-}
 
 /* Figure tiles cycle their top rule through blue, teal, purple and orange. */
 .summary-card:nth-child(4n + 2) {
