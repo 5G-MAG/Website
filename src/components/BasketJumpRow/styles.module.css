@@ -1,7 +1,7 @@
 /* Up to eight tiles (the topic areas, TOPIC_BASKETS) in one row where the
-   container allows it, 4 across below that. Tiles keep one fixed width and
-   a short row is centred, so a count that is not a multiple of the columns
-   (seven areas today) is not left lopsided. */
+   container allows it, 4 across below that. In one row the tiles share the
+   full width, whatever their count (seven areas today). In the 4-across
+   layout they keep one width and a short last row is centred. */
 .row {
   --gap: 0.6rem;
   --cols: 8;
@@ -19,7 +19,7 @@
 }
 
 .tile {
-  flex: 0 0 calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols));
+  flex: 1 1 calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols));
   min-width: 0;
   box-sizing: border-box;
   display: flex;
@@ -37,6 +37,13 @@
   transition:
     box-shadow 0.2s ease,
     transform 0.15s ease;
+}
+
+@media (max-width: 1100px) {
+  /* Four across: keep every tile the same width, so a short last row is centred rather than stretched. */
+  .tile {
+    flex-grow: 0;
+  }
 }
 
 .tile:hover,

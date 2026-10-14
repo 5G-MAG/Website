@@ -75,7 +75,7 @@ export const HOME_WORK = [
   },
   {
     title: 'Shaping Specifications',
-    body: 'Bringing requirements and implementation feedback to standards development organizations.',
+    body: 'Requirements and implementation feedback to standards development organizations.',
     href: '/standards',
     cta: 'Standardisation',
     icon: <path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" />,
