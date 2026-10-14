@@ -22,3 +22,15 @@ export function activityLabel(pushedAt) {
   if (days <= 90) return 'Maintenance';
   return 'Quiet';
 }
+
+// Unique cloners per day, counted since 5 October 2026, summed over the given projects. A repository shared by
+// several projects counts once, and repositories the hub dashboard leaves out (`excluded`, a Set of repo names)
+// do not count. One definition for the Community Activity totals and for the clone figure on the home page.
+export function totalUniqueClones(projects, excluded = new Set()) {
+  const repos = new Map(projects.flatMap((p) => p.repos).map((r) => [r.repo, r]));
+  let total = 0;
+  for (const r of repos.values()) {
+    if (!excluded.has(r.repo)) total += r.total_unique_clones || 0;
+  }
+  return total;
+}

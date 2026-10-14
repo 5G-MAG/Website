@@ -7,7 +7,7 @@ import releasesData from '@site/static/data/releases.json';
 import statsData from '@site/static/data/community-stats.json';
 import pullRequestsData from '@site/static/data/pull-requests.json';
 import { ALL_PROJECTS as projectsData, CONTRIBUTORS, isTestbed } from '@site/src/data/baskets';
-import { activityLabel } from '@site/src/utils/communityStats';
+import { activityLabel, totalUniqueClones } from '@site/src/utils/communityStats';
 import styles from './styles.module.css';
 import ProjectIcon from '@site/src/components/ProjectIcon';
 import { AgeKey, Icon, Repo, CLUSTERS, BASKET_OF, ACTIVITY_BY_PROJECT, clusterStyles } from '@site/src/components/RepoActivity';
@@ -441,10 +441,10 @@ export function CommunityTotals({ kind = 'all' }) {
       stars: acc.stars + (r.stars || 0),
       forks: acc.forks + (r.forks || 0),
       views: acc.views + (r.total_views || 0),
-      clones: acc.clones + (r.total_unique_clones || 0),
     }),
-    { stars: 0, forks: 0, views: 0, clones: 0 }
+    { stars: 0, forks: 0, views: 0 }
   );
+  totals.clones = totalUniqueClones(ofKind, NOT_ON_HUB_DASHBOARD);
   return (
     <>
     <div className={styles.summaryContainer}>

@@ -6,6 +6,10 @@
 // scripts/fetch-site-stats.js (see that file for exactly what each count
 // includes), so every page shows the same, current value.
 import siteStats from '@site/static/data/site-stats.json';
+import communityStats from '@site/static/data/community-stats.json';
+import notOnHubDashboard from '@site/src/data/notOnHubDashboard.json';
+import { ALL_PROJECTS } from '@site/src/data/baskets';
+import { totalUniqueClones } from '@site/src/utils/communityStats';
 
 const fmt = (n) => n.toLocaleString('en-US');
 
@@ -15,7 +19,13 @@ export const FACT_REPOSITORIES = {
   label: 'Project repositories, public and early access',
   sub: `${siteStats.repositories.public} public, ${siteStats.repositories.earlyAccess} early access`,
 };
-export const FACT_CLONES = { value: fmt(siteStats.clones), label: 'Clones: unique cloners per day, since 5 October 2026' };
+// The clone figure is the Community Activity total (same function, same projects, same exclusions), not a separate count.
+const PROJECTS_WITH_PAGE = new Set(ALL_PROJECTS.filter((p) => p.doc_url).map((p) => p.name));
+const COMMUNITY_CLONES = totalUniqueClones(
+  communityStats.projects.filter((p) => PROJECTS_WITH_PAGE.has(p.name)),
+  new Set(notOnHubDashboard)
+);
+export const FACT_CLONES = { value: fmt(COMMUNITY_CLONES), label: 'Clones: unique cloners per day, since 5 October 2026' };
 export const FACT_SPEC_ISSUES = { value: fmt(siteStats.specIssues), label: 'Issues raised on specifications through GitHub' };
 export const FACT_PROJECTS = { value: fmt(siteStats.projects), label: 'Projects across media and connectivity' };
 export const FACT_REFERENCE_TOOLS = { value: fmt(siteStats.referenceTools), label: 'Reference Tools projects' };
