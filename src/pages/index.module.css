@@ -324,7 +324,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
-  margin: 0 0 2.5rem;
+  margin: 0;
 }
 
 /* One column from 768px down, and only the first slot: three stacked
