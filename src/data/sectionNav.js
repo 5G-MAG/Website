@@ -148,7 +148,6 @@ export const SECTION_NAV = [
       { label: 'Partnerships', href: '/partnerships' },
       { label: 'Contact', href: '/contact' },
       { label: 'Subscribe', href: '/subscribe' },
-      { label: 'Privacy Notice', href: '/privacy' },
     ],
   },
   {
