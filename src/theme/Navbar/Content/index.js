@@ -262,7 +262,7 @@ function SlidingIndicatorGroup({ items }) {
 // the pill sub-nav bar itself already renders from; deliberately explicit
 // (which items open a flyout) rather than "every navbar item whose
 // SECTION_NAV entry happens to have items", most of which don't want one.
-const NAV_DROPDOWN_HREFS = ['/standards', '/developer', '/deploy', '/news'];
+const NAV_DROPDOWN_HREFS = ['/about', '/standards', '/developer', '/deploy', '/news'];
 const NAV_DROPDOWNS = new Map(
   NAV_DROPDOWN_HREFS.map((href) => [href, SECTION_NAV.find((s) => s.titleHref === href)])
 );
@@ -373,6 +373,11 @@ const NAV_ITEM_ICONS = {
   '/deploy#demos': ['M7 4v16l13 -8l-13 -8'],
   '/deploy#plugfests': ['M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0', 'M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2', 'M16 3.13a4 4 0 0 1 0 7.75', 'M21 21v-2a4 4 0 0 0 -3 -3.85'],
   '/deploy#assets': ['M12 4l-8 4l8 4l8 -4l-8 -4', 'M4 12l8 4l8 -4', 'M4 16l8 4l8 -4'],
+  '/structure': ['M3 15m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z', 'M15 15m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z', 'M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z', 'M6 15v-1a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v1', 'M12 9l0 3'],
+  '/partnerships': ['M9 15l6 -6', 'M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464', 'M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463'],
+  '/contact': ['M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z', 'M3 7l9 6l9 -6'],
+  '/subscribe': ['M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6', 'M9 17v1a3 3 0 0 0 6 0v-1'],
+  '/privacy': ['M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3'],
   '/podcast': ['M9 5a3 3 0 0 1 6 0v5a3 3 0 0 1 -6 0z', 'M5 10a7 7 0 0 0 14 0', 'M8 21l8 0', 'M12 17l0 4'],
   '/magazine': ['M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0', 'M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0', 'M3 6l0 13', 'M12 6l0 13', 'M21 6l0 13'],
 };
@@ -380,6 +385,7 @@ const NAV_ITEM_ICONS = {
 // Each section's own hub-page icon (the HubHero icon on /standards, /developer, /deploy, /news),
 // shown on that section's header card at the top of its dropdown.
 const SECTION_ICONS = {
+  '/about': ['M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0', 'M3.6 9h16.8', 'M3.6 15h16.8', 'M11.5 3a17 17 0 0 0 0 18', 'M12.5 3a17 17 0 0 1 0 18'],
   '/standards': ['M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1'],
   '/developer': ['M7 8l-4 4l4 4', 'M17 8l4 4l-4 4', 'M14 4l-4 16'],
   '/deploy': ['M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5', 'M12 12l8 -4.5', 'M12 12l0 9', 'M12 12l-8 -4.5', 'M16 5.25l-8 4.5'],

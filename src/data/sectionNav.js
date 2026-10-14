@@ -142,6 +142,7 @@ export const SECTION_NAV = [
     prefixes: ['/about', '/contact', '/partnerships', '/structure', '/subscribe', '/privacy'],
     title: 'About Us',
     titleHref: '/about',
+    subtitle: 'A neutral, non-profit association for media and connectivity.',
     items: [
       { label: 'Structure', href: '/structure' },
       { label: 'Partnerships', href: '/partnerships' },

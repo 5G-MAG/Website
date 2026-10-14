@@ -17,16 +17,22 @@ import BasketJumpRow from '@site/src/components/BasketJumpRow';
 import ReleaseCard from '@site/src/components/ReleaseCard';
 import { EventsAgendaPreview } from '@site/src/components/EventsAgenda';
 import { EVENTS_AGENDA } from '@site/src/data/eventsAgenda';
-import { NEWS_PREVIEW } from '@site/src/data/newsPreview';
-import { ALL_PROJECTS as projectsData, BASKET_ACCENT, ICON_CATALOG, STAGE_GROUPS, basketStageReach, displayNameOf, reposFor, TOPIC_BASKETS } from '@site/src/data/baskets';
+import { ALL_PROJECTS as projectsData } from '@site/src/data/baskets';
 import { sampleRandom } from '@site/src/utils/random';
 import { sortByLatestRelease } from '@site/src/utils/releases';
 import styles from './index.module.css';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 import releasesData from '@site/static/data/releases.json';
+import newsData from '@site/static/data/news.json';
 
 const LATEST_RELEASE_PROJECTS = sortByLatestRelease(releasesData.projects);
-const LATEST_NEWS = [...NEWS_PREVIEW].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(0, 3);
+// Built from blog/ on every dev and build run (scripts/build-news-data.js), so a new post appears
+// here without editing this page. Posts without a cover image are skipped: the cards are image cards.
+const LATEST_NEWS = [...newsData.posts]
+  .filter((post) => post.image)
+  .sort((a, b) => (a.date < b.date ? 1 : -1))
+  .slice(0, 3)
+  .map((post) => ({ title: post.title, image: post.image, href: `/news/${post.slug}` }));
 
 const VIDEO_COUNT = 5;
 
@@ -50,100 +56,6 @@ const ALL_CHANNEL_VIDEOS = (() => {
   }
   return [...byId.values()];
 })();
-
-// A basket's own icon, same catalog Where We Stand itself reads (tech/
-// index.js's iconForCatalogKey) -- a one-line local copy rather than an
-// export from that page, same pattern reference-tools/testbeds already
-// each keep their own copy of.
-function iconForCatalogKey(key) {
-  const paths = key && ICON_CATALOG[key];
-  if (!paths || !paths.length) return null;
-  return icon(
-    <>
-      {paths.map((d, i) => (
-        <path key={i} d={d} />
-      ))}
-    </>
-  );
-}
-
-// Where We Stand, rolled up to one row per basket instead of the full
-// per-project chart -- basketStageReach() is true for a stage once ANY
-// of that basket's own projects reached it. Every basket, even one
-// with no project past Under Study yet: an empty-looking row is itself
-// the invitation this section makes (see .standInvite below), not
-// something to filter out.
-const STAND_BASKETS = TOPIC_BASKETS.map((b) => {
-  const basketProjects = projectsData.filter((p) => p.basket === b.key && !p.parent);
-  return {
-    ...b,
-    accent: BASKET_ACCENT[b.key] || '#00a0d2',
-    reach: basketStageReach(basketProjects, b.stages),
-    repoCount: basketProjects.reduce((n, p) => n + reposFor(p).length, 0),
-    projects: basketProjects,
-  };
-});
-
-// One card per basket -- icon, name and a checklist spelling out every
-// stage in STAGE_GROUPS by name, checked or not (tried as an unlabeled
-// segment bar first, with a shared axis header naming the columns once
-// -- still read as "meaningless" once a reader reached a row with no
-// label of its own, raised directly). The head+checklist link to that
-// basket's own spot on the full chart at /tech#where-we-stand
-// (tech/index.js's basketBlock carries id={b.key}).
-//
-// Below that, one icon+name row per project in the basket -- raised
-// directly ("add a row with the icons of the actual projects so we can
-// jump directly to the landing tech page of each project") -- each
-// jumping straight to that project's own tech_url, skipping the
-// basket-level chart entirely. A first pass showed the icon alone with
-// the name only as a hover tooltip; raised directly ("the icon alone
-// doesn't say much") that the name itself needed to be visible, not
-// just discoverable on hover -- so this is a vertical list (a row of
-// icon-only tiles has no room for a name at 3-per-line card width)
-// with the name printed next to its icon. Every basketed project has a
-// tech_url and a valid icon key (checked against taxonomy.json
-// directly), so no fallback rendering is needed for either. This list
-// sits outside the basket Link (nested <a> tags are invalid HTML), as
-// its own sibling.
-function StandCard({ basket }) {
-  return (
-    <div className={styles.standCard} style={{ '--accent': basket.accent }}>
-      <Link to={`/tech#${basket.key}`} className={styles.standCardLink}>
-        <div className={styles.standCardHead}>
-          <span className={styles.standIcon}>{iconForCatalogKey(basket.icon)}</span>
-          <span className={styles.standName}>{basket.title}</span>
-        </div>
-        <div className={styles.standChecklist}>
-          {STAGE_GROUPS.map((g, i) => {
-            const done = basket.reach[i];
-            const withCount = g.key === 'software' && done && basket.repoCount > 0;
-            return (
-              <div
-                key={g.key}
-                className={clsx(styles.standCheckRow, done && styles.standCheckRowDone)}
-              >
-                <span className={clsx(styles.standDot, done && styles.standDotDone)} />
-                {g.label}
-                {withCount && ` (${basket.repoCount} ${basket.repoCount === 1 ? 'repository' : 'repositories'})`}
-              </div>
-            );
-          })}
-        </div>
-      </Link>
-      {basket.projects.length > 0 && (
-        <div className={styles.standProjectList}>
-          {basket.projects.map((p) => (
-            <Link key={p.name} to={p.tech_url} className={styles.standProjectItem}>
-              <span className={styles.standProjectIcon}>{iconForCatalogKey(p.icon)}</span>
-              <span className={styles.standProjectName}>{displayNameOf(p)}</span>
-            </Link>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
 
 // Real photos of the technologies named just above (in DOMAIN_PILLARS and
 // DISCOVER_WORK) actually running -- not stock imagery, same convention
@@ -291,12 +203,27 @@ export default function Home() {
           already does live-as-you-type suggestions on its own. */}
       <div className={styles.homeSearchWrap}>
         <div className="container">
-          <p className={styles.homeSearchLabel}>Looking for specific software or technology?</p>
+          <p className={styles.homeSearchLabel}>Looking for specific software or solutions?</p>
           <div className={styles.homeSearchBox}>
             <SearchBar />
           </div>
-          <p className={styles.homeJumpLabel}>Or go straight to a solution</p>
           <BasketJumpRow label="Solutions" />
+
+          {/* Same invite banner as Where We Stand's own full chart
+              (tech/index.js's .inviteBlock): right under the solution areas, because the
+              landscape is set by 5G-MAG's members, not the other way around. */}
+          <div className={styles.inviteBlock}>
+            <h3 className={styles.inviteTitle}>Don&apos;t see your topic here?</h3>
+            <p className={styles.inviteBody}>5G-MAG&apos;s members set this landscape.</p>
+            <div className={styles.inviteLinks}>
+              <Link to="/membership#request-membership" className={styles.inviteLink}>
+                Bring your topic or project &rarr;
+              </Link>
+              <Link to="/contributing" className={styles.inviteLink}>
+                See how to build together &rarr;
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -308,8 +235,7 @@ export default function Home() {
             the cards between the mission lines and the diagram, the diagram
             sat on its own with no flow. First thing after the hero/search
             band (2026-09-27: swapped ahead of Where We Stand, at direct
-            request, so Where We Stand sits immediately before On Air
-            instead of two sections away). */}
+            request). Where We Stand now lives on the Tech page only. */}
         <section className={clsx(styles.section, styles.sectionAlt)}>
           <div className="container">
             <div className={styles.introSplit}>
@@ -319,13 +245,10 @@ export default function Home() {
                   <span className={styles.noWrap}>Media and Connectivity</span>
                 </h2>
                 <p className={styles.introLead}>
-                  Technology moves fast: global players shape it, the internet makes it borderless, and it soon becomes a commodity.
+                  Driving the future of connected media experiences with open specifications and open-source software.
                 </p>
                 <p className={styles.introLine}>
-                  We work with our members to shape global standards and turn them into deployable solutions, through open specifications and open-source software.
-                </p>
-                <p className={styles.introLine}>
-                  A neutral, not-for-profit platform to enable collaboration, share resources and efforts, and bring new media experiences to users faster.
+                  We are a neutral, non-profit association enabling organizations to collaborate, share development efforts, scale software projects, and bring open technologies to market faster.
                 </p>
                 <div className={styles.introLinks}>
                   <Link to="/about">Learn more about us &rarr;</Link>
@@ -360,48 +283,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Where We Stand -- its own section, collapsed to basket level
-            on purpose: the full per-project chart is one click away at
-            /tech#where-we-stand, and each card here links straight to
-            its own spot there. Plain-tinted (2026-09-27: moved to sit
-            directly before On Air, at direct request) so the two still
-            alternate against each other. */}
-        <section className={styles.section}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>Where We Stand</h2>
-            <p className={styles.sectionSubtitle}>
-              How far each technology area has come, from under study to software — the full
-              breakdown, project by project, is at{' '}
-              <Link to="/tech#where-we-stand">Where We Stand</Link>.
-            </p>
-            <div className={styles.standGrid}>
-              {STAND_BASKETS.map((b) => (
-                <StandCard key={b.key} basket={b} />
-              ))}
-            </div>
-
-            {/* Same invite banner as Where We Stand's own full chart
-                (tech/index.js's .inviteBlock) -- this landscape is set by
-                5G-MAG's members, not the other way around. */}
-            <div className={styles.inviteBlock}>
-              <h3 className={styles.inviteTitle}>Don&apos;t see your topic here?</h3>
-              <p className={styles.inviteBody}>5G-MAG&apos;s members set this landscape.</p>
-              <div className={styles.inviteLinks}>
-                <Link to="/membership#request-membership" className={styles.inviteLink}>
-                  Bring your topic or project &rarr;
-                </Link>
-                <Link to="/contributing" className={styles.inviteLink}>
-                  See how to build together &rarr;
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Developer Exchanges */}
+        {/* Replay: recorded talks, demos and calls (formerly On Air) */}
         <section className={clsx(styles.section, styles.sectionAlt)}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>On Air</h2>
+            <h2 className={styles.sectionTitle}>Replay</h2>
             <p className={styles.sectionSubtitle}>
               Recorded talks, demos and calls from across all of 5G-MAG&apos;s work — Developer
               Exchanges, Public Calls, workshops and more.
