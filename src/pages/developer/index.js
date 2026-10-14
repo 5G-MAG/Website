@@ -228,7 +228,7 @@ export default function Home() {
             then the 3 cards"). */}
         <section className={styles.section}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Why It Matters</h2>
+            <h2 className={styles.sectionTitle}>Why Open Source, and Why Now</h2>
             <p className={styles.sectionSubtitle}>
               Media and network technologies move fast, and open source usually arrives only
               after a standard is frozen — with additional cost at every stage along the way. The
@@ -252,7 +252,7 @@ export default function Home() {
             Tools, Testbeds, Tutorials, Developer Tools), the cards after Why It Matters. */}
         <section className={clsx(styles.section, styles.sectionAlt)}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>What You&apos;ll Find Here</h2>
+            <h2 className={styles.sectionTitle}>Tools, Testbeds and Tutorials</h2>
             <p className={styles.sectionSubtitle}>
               Reference Tools, Testbeds and Evaluation Frameworks, Tutorials and Developer Tools —
               under one open developer community.

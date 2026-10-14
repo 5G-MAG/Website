@@ -318,7 +318,7 @@ export default function Standards() {
             decided"). */}
         <section className={styles.section}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Why It Matters</h2>
+            <h2 className={styles.sectionTitle}>Why We Engage</h2>
             <p className={styles.sectionSubtitle}>
               Advancing standardization with implementation and experience-based feedback.
             </p>
@@ -342,7 +342,7 @@ export default function Standards() {
             we decided"). */}
         <section className={`${styles.section} ${styles.sectionAlt}`}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>What You&apos;ll Find Here</h2>
+            <h2 className={styles.sectionTitle}>Requirements, Feedback and Liaisons</h2>
             <p className={styles.sectionSubtitle}>Every feedback and requirements destination, in one place.</p>
             <div className={styles.activityGrid}>
               {WHATS_HERE.map((r) => (

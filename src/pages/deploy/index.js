@@ -236,7 +236,7 @@ export default function Deploy() {
             past "Why It Matters" first every time. */}
         <section className={`${styles.section} ${styles.sectionAlt}`}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>What You&apos;ll Find Here</h2>
+            <h2 className={styles.sectionTitle}>See It, Test It, Onboard It</h2>
             <p className={styles.sectionSubtitle}>
               From the Reference Tools to your products: see them demonstrated, tested at
               plugfests, and onboard them. To run the tools yourself, see the <Link to="/tutorials">Tutorials</Link>.
@@ -255,7 +255,7 @@ export default function Deploy() {
             maybe examples and videos"). */}
         <section className={styles.section}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Why It Matters</h2>
+            <h2 className={styles.sectionTitle}>From Code to Product</h2>
             <p className={styles.sectionSubtitle}>
               Making the value proposition tangible to the industry — through interoperability,
               early testing and plugfests.
