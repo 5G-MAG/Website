@@ -209,12 +209,6 @@ export default function Home() {
           </div>
           <BasketJumpRow label="Solutions" />
 
-          {/* Real photos alternating with icon+title banner cover-slides
-              for every DOMAIN_PILLARS topic -- see SHOWCASE_SLIDES' own
-              comment for why, and why this rotates rather than showing a
-              grid. Right under the solution areas. */}
-          <FadingSlideRow slides={showcaseSlides} />
-
           {/* Same invite banner as Where We Stand's own full chart
               (tech/index.js's .inviteBlock): right under the solution areas, because the
               landscape is set by 5G-MAG's members, not the other way around. */}
@@ -230,6 +224,12 @@ export default function Home() {
               </Link>
             </div>
           </div>
+
+          {/* Real photos alternating with icon+title banner cover-slides
+              for every DOMAIN_PILLARS topic -- see SHOWCASE_SLIDES' own
+              comment for why, and why this rotates rather than showing a
+              grid. Under the invitation banner. */}
+          <FadingSlideRow slides={showcaseSlides} />
         </div>
       </div>
 

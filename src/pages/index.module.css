@@ -272,7 +272,7 @@
    rather than a cross-file import. Shown under the solution areas in the
    search band. */
 .inviteBlock {
-  margin-top: 1.5rem;
+  margin: 1.5rem 0;
   padding: 1.1rem 1.5rem;
   border-radius: 10px;
   background: linear-gradient(135deg, var(--ifm-color-primary-darkest) 0%, var(--ifm-color-primary) 100%);
