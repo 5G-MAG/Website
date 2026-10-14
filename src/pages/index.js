@@ -1,5 +1,5 @@
 import SiteStats from '@site/src/components/SiteStats';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import { useBaseUrlUtils } from '@docusaurus/useBaseUrl';
@@ -18,7 +18,8 @@ import BasketJumpRow from '@site/src/components/BasketJumpRow';
 import ReleaseCard from '@site/src/components/ReleaseCard';
 import { EventsAgendaPreview } from '@site/src/components/EventsAgenda';
 import { EVENTS_AGENDA } from '@site/src/data/eventsAgenda';
-import { ALL_PROJECTS as projectsData } from '@site/src/data/baskets';
+import { ALL_PROJECTS as projectsData, BASKET_PAGE } from '@site/src/data/baskets';
+import ShowcaseDiagram from '@site/src/components/ShowcaseDiagram';
 import { sampleRandom } from '@site/src/utils/random';
 import { sortByLatestRelease } from '@site/src/utils/releases';
 import styles from './index.module.css';
@@ -104,7 +105,37 @@ const PROJECT_CARDS = projectsData
   .filter((p) => p.image && p.doc_url)
   .map((p) => ({ type: 'project', src: p.image, alt: p.name, href: p.doc_url }));
 
-const SHOWCASE_SLIDES = [...USE_CASE_PHOTOS, ...PROJECT_CARDS];
+// The hero animations of the solution pages, each opening its page. They are only mounted while they show (and
+// while they fade out): an animated diagram that is hidden still runs, and seven of them in three slots would be
+// twenty-one at once.
+const ANIMATION_SLIDES = [
+  { name: 'hero', basket: 'content-delivery', alt: 'Animation: media flowing from a service through the network to viewers, with what they experience flowing back' },
+  { name: 'rtc', basket: 'rtc', alt: 'Animation: two callers talking live through a 5G network' },
+  { name: 'bcast', basket: 'broadcast-multicast', alt: 'Animation: one transmission reaching many receivers, with unicast where needed' },
+  { name: 'ntn', basket: 'ntn', alt: 'Animation: satellites passing overhead and connecting a remote area' },
+  { name: 'imm', basket: 'immersive-media', alt: 'Animation: a 3D scene streamed to a person in a headset, with their movement flowing back' },
+  { name: 'prod', basket: 'connected-media-production', alt: 'Animation: live cameras sending video over a 5G uplink to a production hub' },
+  { name: 'sixg', basket: 'towards-6g', alt: 'Animation: media services reaching existing and new services over a 6G system' },
+].map((a) => ({ type: 'animation', name: a.name, alt: a.alt, href: BASKET_PAGE[a.basket] }));
+
+const SHOWCASE_SLIDES = [...USE_CASE_PHOTOS, ...ANIMATION_SLIDES, ...PROJECT_CARDS];
+
+// How often each kind of slide is chosen when a slot moves on: the animations are the new thing, so they come up
+// more often than their share of the pool.
+const KIND_WEIGHT = { animation: 0.4, photo: 0.3, project: 0.3 };
+
+// Seconds a slot stays on a slide before it moves on. Animations stay long enough to be watched.
+const DWELL = { still: 7000, animation: 13000 };
+
+function pickKind() {
+  const r = Math.random();
+  let acc = 0;
+  for (const [kind, w] of Object.entries(KIND_WEIGHT)) {
+    acc += w;
+    if (r < acc) return kind;
+  }
+  return 'photo';
+}
 
 // A 3-slot row where each slot independently cycles through SHOWCASE_SLIDES
 // (real demo photos and real per-project cover cards alike) and crossfades
@@ -124,31 +155,47 @@ function FadingSlideRow({ slides }) {
   // shows until the first swap fires several seconds in (raised in
   // review: banners weren't visibly appearing at all).
   const firstPhotoIdx = slides.findIndex((s) => s.type === 'photo');
+  const firstAnimationIdx = slides.findIndex((s) => s.type === 'animation');
   const firstProjectIdx = slides.findIndex((s) => s.type === 'project');
-  const secondPhotoIdx = slides.findIndex((s, i) => s.type === 'photo' && i !== firstPhotoIdx);
-  const initial = [firstPhotoIdx, firstProjectIdx, secondPhotoIdx].map((i) => (i === -1 ? 0 : i));
+  const initial = [firstPhotoIdx, firstAnimationIdx, firstProjectIdx].map((i) => (i === -1 ? 0 : i));
   const [active, setActive] = useState(initial);
+  // The slide that has just left each slot, kept mounted until its fade-out has finished.
+  const [leaving, setLeaving] = useState([null, null, null]);
+  const activeRef = useRef(initial);
 
   useEffect(() => {
     if (slides.length <= 3) return undefined;
-    const timers = active.map((_, slot) =>
-      setInterval(
-        () => {
-          setActive((prev) => {
-            let next;
-            do {
-              next = Math.floor(Math.random() * slides.length);
-            } while (next === prev[slot] || prev.includes(next));
-            const copy = [...prev];
-            copy[slot] = next;
-            return copy;
-          });
-        },
-        3000 + slot * 1200
-      )
-    );
-    return () => timers.forEach(clearInterval);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const timers = new Set();
+    let stopped = false;
+    const later = (fn, ms) => {
+      const id = setTimeout(() => {
+        timers.delete(id);
+        if (!stopped) fn();
+      }, ms);
+      timers.add(id);
+    };
+    // How long a slot stays on what it shows: long enough to take in a photo, and for an animation to run through
+    // its whole cycle (8 to 12 seconds). The slots are staggered so they do not all change together.
+    const dwell = (idx) => (slides[idx].type === 'animation' ? DWELL.animation : DWELL.still);
+    const step = (slot) => {
+      const prev = activeRef.current;
+      const kind = pickKind();
+      const pool = slides.map((x, i) => i).filter((i) => slides[i].type === kind && !prev.includes(i));
+      const choices = pool.length ? pool : slides.map((x, i) => i).filter((i) => !prev.includes(i));
+      const next = choices[Math.floor(Math.random() * choices.length)];
+      const copy = [...prev];
+      copy[slot] = next;
+      activeRef.current = copy;
+      setActive(copy);
+      setLeaving((l) => l.map((v, k) => (k === slot ? prev[slot] : v)));
+      later(() => setLeaving((l) => l.map((v, k) => (k === slot ? null : v))), 1400);
+      later(() => step(slot), dwell(next) + slot * 700);
+    };
+    activeRef.current.forEach((idx, slot) => later(() => step(slot), dwell(idx) + slot * 2500));
+    return () => {
+      stopped = true;
+      timers.forEach(clearTimeout);
+    };
   }, []);
 
   return (
@@ -158,6 +205,14 @@ function FadingSlideRow({ slides }) {
           {slides.map((s, i) => {
             const isActive = i === activeIdx;
             const wrapperClass = clsx(styles.fadingImgWrap, isActive && styles.fadingImgActive);
+            if (s.type === 'animation') {
+              if (!isActive && leaving[slot] !== i) return null;
+              return (
+                <Link key={s.name} to={s.href} className={clsx(wrapperClass, styles.fadingAnim,)} aria-label={s.alt} aria-hidden={!isActive} tabIndex={isActive ? undefined : -1}>
+                  <ShowcaseDiagram name={s.name} className={styles.fadingAnimArt} />
+                </Link>
+              );
+            }
             const img = <img src={s.src} alt={isActive ? s.alt : ''} loading="lazy" className={styles.fadingImg} />;
             return s.href ? (
               <Link key={s.src} to={s.href} className={wrapperClass} aria-hidden={!isActive} tabIndex={isActive ? undefined : -1}>

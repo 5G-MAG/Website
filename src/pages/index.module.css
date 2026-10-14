@@ -393,6 +393,23 @@
   z-index: 1;
 }
 
+/* An animated hero diagram (480 x 310) shows whole in the 16:9 slot; the sides take the diagram's own gradient.
+   The slide is mounted only while it shows and during its fade-out (see FadingSlideRow). */
+.fadingAnim {
+  background: linear-gradient(135deg, #0e4a66, #0b7fa8);
+}
+
+.fadingAnimArt {
+  width: 100%;
+  height: 100%;
+}
+
+.fadingAnimArt svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .fadingImg {
   width: 100%;
   height: 100%;
