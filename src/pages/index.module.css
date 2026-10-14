@@ -291,7 +291,7 @@
    rather than a cross-file import. Shown under the solution areas in the
    search band. */
 .inviteBlock {
-  margin: 1.5rem 0;
+  margin: 1.5rem 0 0;
   padding: 1.1rem 1.5rem;
   border-radius: 10px;
   background: linear-gradient(120deg, #006f92 0%, #7448b8 100%);
@@ -422,6 +422,7 @@
   flex: 1 1 auto;
   display: flex;
   align-items: center;
+  gap: 0.55rem;
   padding: 0 0.85rem;
   background: #00203f;
   color: #fff;
@@ -431,6 +432,22 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.fadingCaptionIcon {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 6px;
+  color: #fff;
+}
+
+.fadingCaptionIcon svg {
+  width: 1rem;
+  height: 1rem;
 }
 
 .fadingAnimArt {

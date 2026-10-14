@@ -18,7 +18,7 @@ import BasketJumpRow from '@site/src/components/BasketJumpRow';
 import ReleaseCard from '@site/src/components/ReleaseCard';
 import { EventsAgendaPreview } from '@site/src/components/EventsAgenda';
 import { EVENTS_AGENDA } from '@site/src/data/eventsAgenda';
-import { ALL_PROJECTS as projectsData, BASKET_PAGE, BASKETS } from '@site/src/data/baskets';
+import { ALL_PROJECTS as projectsData, BASKET_ACCENT, BASKET_PAGE, BASKETS, ICON_CATALOG } from '@site/src/data/baskets';
 import ShowcaseDiagram from '@site/src/components/ShowcaseDiagram';
 import { sampleRandom } from '@site/src/utils/random';
 import { sortByLatestRelease } from '@site/src/utils/releases';
@@ -116,7 +116,18 @@ const ANIMATION_SLIDES = [
   { name: 'imm', basket: 'immersive-media', alt: 'Animation: a 3D scene streamed to a person in a headset, with their movement flowing back' },
   { name: 'prod', basket: 'connected-media-production', alt: 'Animation: live cameras sending video over a 5G uplink to a production hub' },
   { name: 'sixg', basket: 'towards-6g', alt: 'Animation: media services reaching existing and new services over a 6G system' },
-].map((a) => ({ type: 'animation', name: a.name, alt: a.alt, href: BASKET_PAGE[a.basket], title: BASKETS.find((b) => b.key === a.basket).title }));
+].map((a) => {
+  const basket = BASKETS.find((b) => b.key === a.basket);
+  return {
+    type: 'animation',
+    name: a.name,
+    alt: a.alt,
+    href: BASKET_PAGE[a.basket],
+    title: basket.title,
+    icon: ICON_CATALOG[basket.icon] || [],
+    accent: BASKET_ACCENT[a.basket] || '#00a0d2',
+  };
+});
 
 const SHOWCASE_SLIDES = [...USE_CASE_PHOTOS, ...ANIMATION_SLIDES, ...PROJECT_CARDS];
 
@@ -125,7 +136,36 @@ const SHOWCASE_SLIDES = [...USE_CASE_PHOTOS, ...ANIMATION_SLIDES, ...PROJECT_CAR
 const KIND_WEIGHT = { animation: 0.4, photo: 0.3, project: 0.3 };
 
 // Seconds a slot stays on a slide before it moves on. Animations stay long enough to be watched.
-const DWELL = { still: 7000, animation: 13000 };
+const DWELL = { still: 9000, animation: 17000 };
+
+// A shuffled bag per kind of slide: each slide is shown once before any comes round again, in an order that is
+// different on every visit.
+function shuffle(list) {
+  const a = [...list];
+  for (let i = a.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function makeBags(slides) {
+  const bags = {};
+  const refill = (kind) => {
+    bags[kind] = shuffle(slides.map((s, i) => i).filter((i) => slides[i].type === kind));
+  };
+  const draw = (kind, exclude = []) => {
+    if (!bags[kind] || bags[kind].length === 0) refill(kind);
+    const at = bags[kind].findIndex((i) => !exclude.includes(i));
+    if (at === -1) {
+      refill(kind);
+      const retry = bags[kind].findIndex((i) => !exclude.includes(i));
+      return bags[kind].splice(retry === -1 ? 0 : retry, 1)[0];
+    }
+    return bags[kind].splice(at, 1)[0];
+  };
+  return { draw };
+}
 
 function pickKind() {
   const r = Math.random();
@@ -149,11 +189,9 @@ function pickKind() {
 // assignment so hydration has something stable to match, and setInterval
 // only starts after mount.
 function FadingSlideRow({ slides }) {
-  // One demo photo and one project card from the start (rather than
-  // slides[0,1,2], which is always 3 photos since USE_CASE_PHOTOS is
-  // listed first in SHOWCASE_SLIDES) -- otherwise a project card never
-  // shows until the first swap fires several seconds in (raised in
-  // review: banners weren't visibly appearing at all).
+  // The first paint is a fixed photo, animation and project card, the same on the server and in the browser. Once
+  // the page is mounted, the three tiles move to a random photo, animation and project card (below), so every visit
+  // opens differently; the first ones fade out while the random ones fade in.
   const firstPhotoIdx = slides.findIndex((s) => s.type === 'photo');
   const firstAnimationIdx = slides.findIndex((s) => s.type === 'animation');
   const firstProjectIdx = slides.findIndex((s) => s.type === 'project');
@@ -177,12 +215,17 @@ function FadingSlideRow({ slides }) {
     // How long a slot stays on what it shows: long enough to take in a photo, and for an animation to run through
     // its whole cycle (8 to 12 seconds). The slots are staggered so they do not all change together.
     const dwell = (idx) => (slides[idx].type === 'animation' ? DWELL.animation : DWELL.still);
+    const bags = makeBags(slides);
+    // The first paint is the same on the server and in the browser; once mounted, the three tiles start from a
+    // random photo, animation and project card, so every visit opens differently.
+    const start = [bags.draw('photo'), bags.draw('animation'), bags.draw('project')];
+    activeRef.current = start;
+    setActive(start);
+    setLeaving([...initial]);
+    later(() => setLeaving([null, null, null]), 2600);
     const step = (slot) => {
       const prev = activeRef.current;
-      const kind = pickKind();
-      const pool = slides.map((x, i) => i).filter((i) => slides[i].type === kind && !prev.includes(i));
-      const choices = pool.length ? pool : slides.map((x, i) => i).filter((i) => !prev.includes(i));
-      const next = choices[Math.floor(Math.random() * choices.length)];
+      const next = bags.draw(pickKind(), prev);
       const copy = [...prev];
       copy[slot] = next;
       activeRef.current = copy;
@@ -191,11 +234,12 @@ function FadingSlideRow({ slides }) {
       later(() => setLeaving((l) => l.map((v, k) => (k === slot ? null : v))), 2600);
       later(() => step(slot), dwell(next) + slot * 700);
     };
-    activeRef.current.forEach((idx, slot) => later(() => step(slot), dwell(idx) + slot * 2500));
+    start.forEach((idx, slot) => later(() => step(slot), dwell(idx) + slot * 2500));
     return () => {
       stopped = true;
       timers.forEach(clearTimeout);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -210,7 +254,14 @@ function FadingSlideRow({ slides }) {
               return (
                 <Link key={s.name} to={s.href} className={clsx(wrapperClass, styles.fadingAnim,)} aria-label={s.alt} aria-hidden={!isActive} tabIndex={isActive ? undefined : -1}>
                   <ShowcaseDiagram name={s.name} className={styles.fadingAnimArt} wide />
-                  <span className={styles.fadingCaption}>{s.title} &rarr;</span>
+                  <span className={styles.fadingCaption}>
+                    <span className={styles.fadingCaptionIcon} style={{ background: s.accent }}>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        {s.icon.map((d) => <path key={d} d={d} />)}
+                      </svg>
+                    </span>
+                    {s.title} &rarr;
+                  </span>
                 </Link>
               );
             }
@@ -269,8 +320,14 @@ export default function Home() {
           </div>
           <BasketJumpRow label="Solutions" />
 
+          {/* Real photos alternating with icon+title banner cover-slides
+              for every DOMAIN_PILLARS topic -- see SHOWCASE_SLIDES' own
+              comment for why, and why this rotates rather than showing a
+              grid. Right under the solution areas. */}
+          <FadingSlideRow slides={showcaseSlides} />
+
           {/* Same invite banner as Where We Stand's own full chart
-              (tech/index.js's .inviteBlock): right under the solution areas, because the
+              (tech/index.js's .inviteBlock): after the photo row, because the
               landscape is set by 5G-MAG's members, not the other way around. */}
           <div className={styles.inviteBlock}>
             <h3 className={styles.inviteTitle}>Don&apos;t see your topic here?</h3>
@@ -284,12 +341,6 @@ export default function Home() {
               </Link>
             </div>
           </div>
-
-          {/* Real photos alternating with icon+title banner cover-slides
-              for every DOMAIN_PILLARS topic -- see SHOWCASE_SLIDES' own
-              comment for why, and why this rotates rather than showing a
-              grid. Under the invitation banner. */}
-          <FadingSlideRow slides={showcaseSlides} />
         </div>
       </div>
 
