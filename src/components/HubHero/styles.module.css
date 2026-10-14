@@ -1,7 +1,6 @@
 .hero {
-  background:
-    linear-gradient(to right, rgba(0, 0, 0, 0.62) 45%, rgba(0, 0, 0, 0.18) 100%),
-    linear-gradient(to right, #003580 0%, #00a0d2 100%);
+  /* Direction C: navy through brand blue to teal. */
+  background: linear-gradient(120deg, #00203f 0%, #006f92 55%, #1a9e93 100%);
   padding: 2.25rem 0;
 }
 

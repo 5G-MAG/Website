@@ -227,10 +227,25 @@
   border-radius: 0 8px 8px 0;
 }
 
+.pillarCard:nth-child(4n + 2) {
+  border-left-color: var(--cyc-2);
+  --pillar-icon: var(--cyc-2);
+}
+
+.pillarCard:nth-child(4n + 3) {
+  border-left-color: var(--cyc-3);
+  --pillar-icon: var(--cyc-3);
+}
+
+.pillarCard:nth-child(4n + 4) {
+  border-left-color: var(--cyc-4);
+  --pillar-icon: var(--cyc-4);
+}
+
 .pillarIcon {
   width: 36px;
   height: 36px;
-  color: var(--ifm-color-primary);
+  color: var(--pillar-icon, var(--ifm-color-primary));
   margin-bottom: 1rem;
 }
 
@@ -901,11 +916,7 @@ a.chartBubble:hover {
   margin-top: 2.5rem;
   padding: 2rem 1.75rem;
   border-radius: 12px;
-  background: linear-gradient(
-    135deg,
-    var(--ifm-color-primary-darkest) 0%,
-    var(--ifm-color-primary) 100%
-  );
+  background: linear-gradient(120deg, #006f92 0%, #7448b8 100%);
   text-align: center;
 }
 

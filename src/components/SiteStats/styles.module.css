@@ -18,6 +18,18 @@
   background: var(--ifm-background-surface-color);
 }
 
+.tile:nth-child(4n + 2) {
+  border-top-color: var(--cyc-2);
+}
+
+.tile:nth-child(4n + 3) {
+  border-top-color: var(--cyc-3);
+}
+
+.tile:nth-child(4n + 4) {
+  border-top-color: var(--cyc-4);
+}
+
 .num {
   font-size: 2.2rem;
   font-weight: 700;

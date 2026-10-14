@@ -100,6 +100,25 @@
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
 
+.themeCard:nth-child(4n + 2) {
+  --cyc-fill: #17877e;
+  border-top: 3px solid var(--cyc-2);
+}
+
+.themeCard:nth-child(4n + 3) {
+  --cyc-fill: #7448b8;
+  border-top: 3px solid var(--cyc-3);
+}
+
+.themeCard:nth-child(4n + 4) {
+  --cyc-fill: #b85c0a;
+  border-top: 3px solid var(--cyc-4);
+}
+
+.themeCard:nth-child(4n + 1) {
+  border-top: 3px solid var(--cyc-1);
+}
+
 .themeIcon {
   display: flex;
   align-items: center;
@@ -107,7 +126,7 @@
   width: 44px;
   height: 44px;
   border-radius: 10px;
-  background: var(--ifm-color-primary);
+  background: var(--cyc-fill, var(--ifm-color-primary));
 }
 
 .themeIcon svg {
@@ -275,7 +294,7 @@
   margin: 1.5rem 0;
   padding: 1.1rem 1.5rem;
   border-radius: 10px;
-  background: linear-gradient(135deg, var(--ifm-color-primary-darkest) 0%, var(--ifm-color-primary) 100%);
+  background: linear-gradient(120deg, #006f92 0%, #7448b8 100%);
   text-align: center;
 }
 

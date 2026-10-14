@@ -1,0 +1,944 @@
+{
+ "project": "UE Data Collection, Reporting and Event Exposure",
+ "slug": "data-collection",
+ "standardsUrl": "/standards/data-collection",
+ "generated": "2026-10-14",
+ "tool": "specmap.py 7",
+ "releases": {
+  "analysed": [
+   "17",
+   "18",
+   "19",
+   "20"
+  ],
+  "baseline": "20",
+  "tracking": [],
+  "open": []
+ },
+ "inputs": {
+  "workPlan": "https://www.3gpp.org/ftp/Information/WORK_PLAN/Work_plan_3gpp_2026_09_28.xlsx",
+  "workPlanFetched": 1792002426712,
+  "issuesAnalysed": {
+   "TS 26.531": {
+    "17": "V17.3.0",
+    "18": "V18.2.0",
+    "19": "V19.0.0",
+    "20": "V19.0.0"
+   },
+   "TS 26.532": {
+    "17": "V17.3.0",
+    "18": "V18.5.0",
+    "19": "V19.1.0",
+    "20": "V19.1.0"
+   }
+  },
+  "websiteCommit": "61920c5",
+  "rules": "projects/data-collection/explore.yaml"
+ },
+ "topicList": [
+  "Provisioning",
+  "Data Access Profiles",
+  "Sampling and reporting rules",
+  "Consent, security and precedence",
+  "Event exposure",
+  "In 5G Media Streaming",
+  "Data reports and data domains",
+  "Client configuration and reporting sessions",
+  "The features",
+  "General"
+ ],
+ "otherBodies": {
+  "from": [
+   "TS 26.531",
+   "TS 26.532"
+  ],
+  "clause": "2",
+  "references": [
+   {
+    "key": "ISO 8601-1",
+    "body": "ISO",
+    "id": "ISO 8601-1",
+    "title": "Date and time – Representations for information interchange – Part 1: Basic rules",
+    "by": {
+     "17": [
+      "TS 26.532"
+     ],
+     "18": [
+      "TS 26.532"
+     ],
+     "19": [
+      "TS 26.532"
+     ],
+     "20": [
+      "TS 26.532"
+     ]
+    },
+    "label": "ISO 8601-1",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 6750",
+    "body": "IETF",
+    "id": "IETF RFC 6750",
+    "title": "The OAuth 2.0 Authorization Framework: Bearer Token Usage",
+    "by": {
+     "17": [
+      "TS 26.532"
+     ],
+     "18": [
+      "TS 26.532"
+     ],
+     "19": [
+      "TS 26.532"
+     ],
+     "20": [
+      "TS 26.532"
+     ]
+    },
+    "label": "IETF RFC 6750",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 7230",
+    "body": "IETF",
+    "id": "IETF RFC 7230",
+    "title": "Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing",
+    "by": {
+     "17": [
+      "TS 26.532"
+     ]
+    },
+    "label": "IETF RFC 7230",
+    "releases": [
+     "17"
+    ],
+    "listedIn": [
+     "17"
+    ]
+   },
+   {
+    "key": "IETF RFC 7231",
+    "body": "IETF",
+    "id": "IETF RFC 7231",
+    "title": "Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content",
+    "by": {
+     "17": [
+      "TS 26.532"
+     ]
+    },
+    "label": "IETF RFC 7231",
+    "releases": [
+     "17"
+    ],
+    "listedIn": [
+     "17"
+    ]
+   },
+   {
+    "key": "IETF RFC 7232",
+    "body": "IETF",
+    "id": "IETF RFC 7232",
+    "title": "Hypertext Transfer Protocol (HTTP/1.1): Conditional Requests",
+    "by": {
+     "17": [
+      "TS 26.532"
+     ]
+    },
+    "label": "IETF RFC 7232",
+    "releases": [
+     "17"
+    ],
+    "listedIn": [
+     "17"
+    ]
+   },
+   {
+    "key": "IETF RFC 7233",
+    "body": "IETF",
+    "id": "IETF RFC 7233",
+    "title": "Hypertext Transfer Protocol (HTTP/1.1): Range Requests",
+    "by": {
+     "17": [
+      "TS 26.532"
+     ]
+    },
+    "label": "IETF RFC 7233",
+    "releases": [
+     "17"
+    ],
+    "listedIn": [
+     "17"
+    ]
+   },
+   {
+    "key": "IETF RFC 7234",
+    "body": "IETF",
+    "id": "IETF RFC 7234",
+    "title": "Hypertext Transfer Protocol (HTTP/1.1): Caching",
+    "by": {
+     "17": [
+      "TS 26.532"
+     ]
+    },
+    "label": "IETF RFC 7234",
+    "releases": [
+     "17"
+    ],
+    "listedIn": [
+     "17"
+    ]
+   },
+   {
+    "key": "IETF RFC 7235",
+    "body": "IETF",
+    "id": "IETF RFC 7235",
+    "title": "Hypertext Transfer Protocol (HTTP/1.1): Authentication",
+    "by": {
+     "17": [
+      "TS 26.532"
+     ]
+    },
+    "label": "IETF RFC 7235",
+    "releases": [
+     "17"
+    ],
+    "listedIn": [
+     "17"
+    ]
+   },
+   {
+    "key": "IETF RFC 7540",
+    "body": "IETF",
+    "id": "IETF RFC 7540",
+    "title": "Hypertext Transfer Protocol Version 2 (HTTP/2)",
+    "by": {
+     "17": [
+      "TS 26.532"
+     ]
+    },
+    "label": "IETF RFC 7540",
+    "releases": [
+     "17"
+    ],
+    "listedIn": [
+     "17"
+    ]
+   },
+   {
+    "key": "IETF RFC 8259",
+    "body": "IETF",
+    "id": "IETF RFC 8259",
+    "title": "The JavaScript Object Notation (JSON) Data Interchange Format",
+    "by": {
+     "17": [
+      "TS 26.532"
+     ],
+     "18": [
+      "TS 26.532"
+     ],
+     "19": [
+      "TS 26.532"
+     ],
+     "20": [
+      "TS 26.532"
+     ]
+    },
+    "label": "IETF RFC 8259",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 9110",
+    "body": "IETF",
+    "id": "IETF RFC 9110",
+    "title": "HTTP Semantics",
+    "by": {
+     "18": [
+      "TS 26.532"
+     ],
+     "19": [
+      "TS 26.532"
+     ],
+     "20": [
+      "TS 26.532"
+     ]
+    },
+    "label": "IETF RFC 9110",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 9111",
+    "body": "IETF",
+    "id": "IETF RFC 9111",
+    "title": "HTTP Caching",
+    "by": {
+     "18": [
+      "TS 26.532"
+     ],
+     "19": [
+      "TS 26.532"
+     ],
+     "20": [
+      "TS 26.532"
+     ]
+    },
+    "label": "IETF RFC 9111",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 9112",
+    "body": "IETF",
+    "id": "IETF RFC 9112",
+    "title": "HTTP/1.1",
+    "by": {
+     "18": [
+      "TS 26.532"
+     ],
+     "19": [
+      "TS 26.532"
+     ],
+     "20": [
+      "TS 26.532"
+     ]
+    },
+    "label": "IETF RFC 9112",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 9113",
+    "body": "IETF",
+    "id": "IETF RFC 9113",
+    "title": "HTTP/2",
+    "by": {
+     "18": [
+      "TS 26.532"
+     ],
+     "19": [
+      "TS 26.532"
+     ],
+     "20": [
+      "TS 26.532"
+     ]
+    },
+    "label": "IETF RFC 9113",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "OpenAPI Initiative openapi",
+    "body": "OpenAPI Initiative",
+    "id": "OpenAPI",
+    "title": "OpenAPI 3.0.0 Specification",
+    "by": {
+     "17": [
+      "TS 26.532"
+     ],
+     "18": [
+      "TS 26.532"
+     ],
+     "19": [
+      "TS 26.532"
+     ],
+     "20": [
+      "TS 26.532"
+     ]
+    },
+    "label": "OpenAPI 3.0.0 Specification",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other corscrossoriginresourcesharing",
+    "body": "Other",
+    "id": "CORS (Cross-Origin Resource Sharing)",
+    "title": "CORS (Cross-Origin Resource Sharing)",
+    "by": {
+     "17": [
+      "TS 26.532"
+     ],
+     "18": [
+      "TS 26.532"
+     ],
+     "19": [
+      "TS 26.532"
+     ],
+     "20": [
+      "TS 26.532"
+     ]
+    },
+    "label": "CORS (Cross-Origin Resource Sharing)",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   }
+  ],
+  "listedButNeverCited": []
+ },
+ "documents": [
+  {
+   "id": "TS 26.531",
+   "title": "Data Collection and Reporting; General Description and Architecture",
+   "url": "https://www.3gpp.org/dynareport/26531.htm",
+   "layer": "Specifications",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "firstRelease": "17",
+   "releases": {
+    "17": {
+     "release": "17",
+     "version": "V17.3.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 87,
+     "statementsAtCreation": 87,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": [
+      {
+       "wid": 960051,
+       "acronym": "EVEX",
+       "name": "5GMS AF Event Exposure",
+       "completion": 1,
+       "ref": "SP-210374"
+      },
+      {
+       "wid": 920008,
+       "acronym": "EVEX",
+       "name": "Stage 2 of EVEX",
+       "completion": 1,
+       "ref": "SP-210374"
+      }
+     ]
+    },
+    "18": {
+     "release": "18",
+     "version": "V18.2.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 90,
+     "statementsAtCreation": null,
+     "statementsAdded": 4,
+     "statementsRemoved": 1,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    },
+    "19": {
+     "release": "19",
+     "version": "V19.0.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 90,
+     "statementsAtCreation": null,
+     "statementsAdded": 0,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    },
+    "20": {
+     "release": "20",
+     "version": "V19.0.0",
+     "newIssue": false,
+     "analysed": true,
+     "statementsInForce": 90,
+     "statementsAtCreation": null,
+     "statementsAdded": 0,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    }
+   },
+   "baselineIssue": {
+    "release": "19",
+    "version": "V19.0.0"
+   },
+   "latestIssue": {
+    "release": "19",
+    "version": "V19.0.0"
+   },
+   "titleFrom": "cover",
+   "scope": {
+    "text": "The present document defines a generic architecture for collecting and reporting data in the 5G System as defined in TS 23.501 [2], TS 23.502 [3] , TS 23.288 [4] and TS 29.517 [5].",
+    "firstSentence": "The present document defines a generic architecture for collecting and reporting data in the 5G System as defined in TS 23.501 [2], TS 23.502 [3] , TS 23.288 [4] and TS 29.517 [5].",
+    "clause": "1",
+    "version": "V19.0.0"
+   },
+   "topics": [
+    {
+     "name": "The features",
+     "statements": 23,
+     "share": 0.256
+    },
+    {
+     "name": "Consent, security and precedence",
+     "statements": 19,
+     "share": 0.211
+    },
+    {
+     "name": "Event exposure",
+     "statements": 16,
+     "share": 0.178
+    },
+    {
+     "name": "Provisioning",
+     "statements": 9,
+     "share": 0.1
+    },
+    {
+     "name": "Client configuration and reporting sessions",
+     "statements": 9,
+     "share": 0.1
+    },
+    {
+     "name": "Data reports and data domains",
+     "statements": 5,
+     "share": 0.056
+    },
+    {
+     "name": "General",
+     "statements": 4,
+     "share": 0.044
+    },
+    {
+     "name": "Sampling and reporting rules",
+     "statements": 4,
+     "share": 0.044
+    },
+    {
+     "name": "Data Access Profiles",
+     "statements": 1,
+     "share": 0.011
+    }
+   ]
+  },
+  {
+   "id": "TS 26.532",
+   "title": "Data Collection and Reporting; Protocols and Formats",
+   "url": "https://www.3gpp.org/dynareport/26532.htm",
+   "layer": "Specifications",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "firstRelease": "17",
+   "releases": {
+    "17": {
+     "release": "17",
+     "version": "V17.3.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 276,
+     "statementsAtCreation": 276,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": [
+      {
+       "wid": 960051,
+       "acronym": "EVEX",
+       "name": "5GMS AF Event Exposure",
+       "completion": 1,
+       "ref": "SP-210374"
+      },
+      {
+       "wid": 920008,
+       "acronym": "EVEX",
+       "name": "Stage 2 of EVEX",
+       "completion": 1,
+       "ref": "SP-210374"
+      }
+     ]
+    },
+    "18": {
+     "release": "18",
+     "version": "V18.5.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 290,
+     "statementsAtCreation": null,
+     "statementsAdded": 28,
+     "statementsRemoved": 14,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 1000018,
+       "acronym": "5GMS_Pro_Ph2",
+       "name": "5G Media Streaming Protocols Phase 2",
+       "completion": 1,
+       "ref": "SP-230976"
+      }
+     ]
+    },
+    "19": {
+     "release": "19",
+     "version": "V19.1.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 290,
+     "statementsAtCreation": null,
+     "statementsAdded": 0,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 1070057,
+       "acronym": "AMD_PRO-MED",
+       "name": "Stage 3 for Advanced Media Delivery",
+       "completion": 1,
+       "ref": "SP-250265"
+      }
+     ]
+    },
+    "20": {
+     "release": "20",
+     "version": "V19.1.0",
+     "newIssue": false,
+     "analysed": true,
+     "statementsInForce": 290,
+     "statementsAtCreation": null,
+     "statementsAdded": 0,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    }
+   },
+   "baselineIssue": {
+    "release": "19",
+    "version": "V19.1.0"
+   },
+   "latestIssue": {
+    "release": "19",
+    "version": "V19.1.0"
+   },
+   "titleFrom": "cover",
+   "scope": {
+    "text": "The present document specifies the set of APIs and associated resource structures and data models pertaining to the collection and reporting of UE-related data (synonymously “UE data”) by the Data Collection Application Function (AF) in the 5G System for subsequent event exposure services offered to network consumer entities, as defined in 3GPP TS 23.501 [2], TS 23.502 [3], TS 23.288 [4], TS 29.517 [5], TS 29.510 [6] and TS 26.531 [7] .",
+    "firstSentence": "The present document specifies the set of APIs and associated resource structures and data models pertaining to the collection and reporting of UE-related data (synonymously “UE data”) by the Data Collection Application Function (AF) in the 5G System for subsequent event exposure services offered to network consumer entities, as defined in 3GPP TS 23.501 [2], TS 23.502 [3], TS 23.288 [4], TS 29.517 [5], TS 29.510 [6] and TS 26.531 [7] .",
+    "clause": "1",
+    "version": "V19.1.0"
+   },
+   "topics": [
+    {
+     "name": "Provisioning",
+     "statements": 109,
+     "share": 0.376
+    },
+    {
+     "name": "Data reports and data domains",
+     "statements": 103,
+     "share": 0.355
+    },
+    {
+     "name": "Sampling and reporting rules",
+     "statements": 25,
+     "share": 0.086
+    },
+    {
+     "name": "Client configuration and reporting sessions",
+     "statements": 19,
+     "share": 0.066
+    },
+    {
+     "name": "General",
+     "statements": 16,
+     "share": 0.055
+    },
+    {
+     "name": "Consent, security and precedence",
+     "statements": 6,
+     "share": 0.021
+    },
+    {
+     "name": "Data Access Profiles",
+     "statements": 5,
+     "share": 0.017
+    },
+    {
+     "name": "The features",
+     "statements": 4,
+     "share": 0.014
+    },
+    {
+     "name": "Event exposure",
+     "statements": 3,
+     "share": 0.01
+    }
+   ]
+  },
+  {
+   "id": "TS 29.517",
+   "title": "5G System; Application Function Event Exposure Service; Stage 3",
+   "url": "https://www.3gpp.org/dynareport/29517.htm",
+   "layer": "5G System specifications they build on",
+   "kind": "TS",
+   "explored": false,
+   "scopeNote": "context (5G System specifications they build on)",
+   "firstRelease": "16",
+   "releases": {
+    "17": {
+     "release": "17",
+     "version": "V17.11.0",
+     "newIssue": true,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": [
+      {
+       "wid": 940049,
+       "acronym": "eCryptPr",
+       "name": "Stage 3 CT3 for eCryptPr",
+       "completion": 1,
+       "ref": "CP-213083"
+      },
+      {
+       "wid": 910012,
+       "acronym": "eNA_Ph2",
+       "name": "CT aspects of eNA_Ph2",
+       "completion": 1,
+       "ref": "CP-211191"
+      },
+      {
+       "wid": 960021,
+       "acronym": "EVEX",
+       "name": "Stage 3 (CT3) of EVEX",
+       "completion": 1,
+       "ref": "CP-222128"
+      },
+      {
+       "wid": 880053,
+       "acronym": "SBIProtoc17",
+       "name": "CT3 aspects of SBIProtoc17",
+       "completion": 1,
+       "ref": "CP-211088"
+      }
+     ]
+    },
+    "18": {
+     "release": "18",
+     "version": "V18.11.0",
+     "newIssue": true,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": [
+      {
+       "wid": 980039,
+       "acronym": "eNetAE",
+       "name": "Enhancement of Network Automation Enablers",
+       "completion": 1,
+       "ref": "CP-231191"
+      },
+      {
+       "wid": 960052,
+       "acronym": "SBIProtoc18",
+       "name": "Service Based Interface Protocol Improvements Release 18",
+       "completion": 1,
+       "ref": "CP-221083"
+      },
+      {
+       "wid": 960060,
+       "acronym": "SBIProtoc18",
+       "name": "CT3 aspects of SBIProtoc18",
+       "completion": 1,
+       "ref": "CP-221083"
+      }
+     ]
+    },
+    "19": {
+     "release": "19",
+     "version": "V19.7.0",
+     "newIssue": true,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": [
+      {
+       "wid": 1050013,
+       "acronym": "UAS_Ph3",
+       "name": "CT aspects of UAS, UAV and UAM Phase 3",
+       "completion": 1,
+       "ref": "CP-253016"
+      },
+      {
+       "wid": 1050010,
+       "acronym": "eNetAE19",
+       "name": "Rel-19 Enhancements of Network Automation Enablers",
+       "completion": 1,
+       "ref": "CP-243078"
+      }
+     ]
+    },
+    "20": {
+     "release": "20",
+     "version": "V20.1.0",
+     "newIssue": true,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": [
+      {
+       "wid": 1120028,
+       "acronym": "AIML_CN_Ph2-CT",
+       "name": "CT aspects for Core Network Enhanced Support for Artificial Intelligence (AI) / Machine Learning (ML) Phase 2",
+       "completion": 0.9,
+       "ref": "CP-262196"
+      },
+      {
+       "wid": 1120076,
+       "acronym": "AIML_CN_Ph2-CT",
+       "name": "CT3 aspects for Core Network Enhanced Support for Artificial Intelligence (AI) / Machine Learning (ML) Phase 2",
+       "completion": 0.9,
+       "ref": "CP-262196"
+      },
+      {
+       "wid": 1120077,
+       "acronym": "AIML_CN_Ph2-CT",
+       "name": "CT4 aspects for Core Network Enhanced Support for Artificial Intelligence (AI) / Machine Learning (ML) Phase 2",
+       "completion": 0.9,
+       "ref": "CP-262196"
+      },
+      {
+       "wid": 1110017,
+       "acronym": "eNetAE20-CT",
+       "name": "Rel-20 Enhancement of Network Automation Enablers",
+       "completion": 0.599999999999999,
+       "ref": "CP-260170"
+      }
+     ]
+    }
+   },
+   "baselineIssue": {
+    "release": "20",
+    "version": "V20.1.0"
+   },
+   "latestIssue": {
+    "release": "20",
+    "version": "V20.1.0"
+   },
+   "titleFrom": "Standards page entry",
+   "scope": {
+    "text": "The present document specifies the stage 3 protocol and data model for the Application Function Event Exposure Service of the 5G System. It provides stage 3 protocol definitions, message flows and specifies the API for the Naf_EventExposure service.",
+    "firstSentence": "The present document specifies the stage 3 protocol and data model for the Application Function Event Exposure Service of the 5G System.",
+    "clause": "1",
+    "version": "V20.1.0"
+   },
+   "topics": []
+  }
+ ],
+ "problems": [],
+ "notes": [
+  "A release with no issue of a document leaves the issue of the earlier release in force.",
+  "Statement counts are by wording: a reworded statement counts as one removed and one added; the moved counts are the part that is the same text in another document of the project.",
+  "A count is null where the release was not analysed (a tracked release, or a document that is not explored)."
+ ]
+}
