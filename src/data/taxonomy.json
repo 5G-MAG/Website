@@ -346,6 +346,7 @@
       "standards_url": null,
       "image": "/assets/images/projects/5g-core.png",
       "tagline": "Reference consumers for 5G Core capability exposure APIs",
+      "standards_url": "/standards/5g-core",
       "basket": null,
       "excludedReason": "Reference consumer repo, not a topic in its own right.",
       "repos": [
