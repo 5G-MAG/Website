@@ -87,6 +87,10 @@
      brand blue (reads as "clickable" everywhere else) and not the
      existing RC/status amber (#fcd34d family, already means Draft/
      Maintenance) -- a distinct lighter tint of the true gold hue instead. */
+  /* Tints of the alternate section bands: pale brand blue and pale gold, never a topic hue (the topic colours
+     in baskets.js each mean one technology area). The third band in the cycle keeps the neutral grey. */
+  --band-tint-blue: #eaf5fa;
+  --band-tint-gold: #fff8e1;
   --badge-new-background: #fdf1cf;
   --badge-new-foreground: #6b4f00;
   /* Standards tag on the per-project Repositories list — teal so it reads
@@ -122,6 +126,8 @@
   --ifm-color-primary-textsafe: #007a9e;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
   /* Swapped from the light pairing above, same gold hue, darkened wash. */
+  --band-tint-blue: #0f2631;
+  --band-tint-gold: #2a2410;
   --badge-new-background: #3d2e00;
   --badge-new-foreground: #ffcd3d;
   /* Swapped from the light pairing above, same teal. */
@@ -1695,4 +1701,14 @@
 .button.button--primary.button--tab-current:hover {
   --ifm-button-background-color: var(--ifm-color-primary);
   --ifm-button-border-color: var(--ifm-color-primary);
+}
+
+/* Alternate section bands cycle through three tints (pale blue, grey, pale gold) instead of one grey, so a long page
+   has rhythm without any new hue. The cycle runs over the alternate bands of a page in order. The hero, banners and
+   cards are not touched. */
+main section[class*='sectionAlt']:nth-of-type(3n + 1) {
+  background: var(--band-tint-blue);
+}
+main section[class*='sectionAlt']:nth-of-type(3n + 3) {
+  background: var(--band-tint-gold);
 }
