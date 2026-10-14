@@ -89,8 +89,8 @@
      Maintenance) -- a distinct lighter tint of the true gold hue instead. */
   /* Tints of the alternate section bands: pale brand blue and pale gold, never a topic hue (the topic colours
      in baskets.js each mean one technology area). The third band in the cycle keeps the neutral grey. */
-  --band-tint-blue: #eaf5fa;
-  --band-tint-gold: #fff8e1;
+  --band-tint-blue: #d4ecf8;
+  --band-tint-gold: #ffeab0;
   --badge-new-background: #fdf1cf;
   --badge-new-foreground: #6b4f00;
   /* Standards tag on the per-project Repositories list — teal so it reads
@@ -126,8 +126,8 @@
   --ifm-color-primary-textsafe: #007a9e;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
   /* Swapped from the light pairing above, same gold hue, darkened wash. */
-  --band-tint-blue: #0f2631;
-  --band-tint-gold: #2a2410;
+  --band-tint-blue: #12394c;
+  --band-tint-gold: #3d3211;
   --badge-new-background: #3d2e00;
   --badge-new-foreground: #ffcd3d;
   /* Swapped from the light pairing above, same teal. */
