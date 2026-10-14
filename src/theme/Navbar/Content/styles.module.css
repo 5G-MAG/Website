@@ -206,6 +206,19 @@ Hide color mode toggle in small viewports
   transform: translate(-50%, 0);
 }
 
+/* The first navbar item (About Us) sits near the left edge of the window: a panel centred on it would run off the
+   left side, so its panel starts at the item's own left edge instead. */
+.navDropdownMenuStart {
+  left: 0;
+  transform: translate(0, -6px);
+}
+
+.navDropdownWrapper:hover .navDropdownMenuStart,
+.navDropdownWrapper:focus-within .navDropdownMenuStart,
+.navDropdownOpen .navDropdownMenuStart {
+  transform: translate(0, 0);
+}
+
 /* While the Solutions panel is held open (the pointer crossing a neighbouring item on its way into the
    wide panel), the neighbours' own flyouts stay closed, so they cannot cover the panel. */
 .navGroup:has(.navDropdownOpen) .navDropdownWrapper:not(.navDropdownOpen) .navDropdownMenu {

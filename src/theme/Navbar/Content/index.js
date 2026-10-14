@@ -307,7 +307,7 @@ function NavDropdownItem({ item, preview }) {
     >
       {link}
       <div
-        className={clsx(styles.navDropdownMenu, styles.navAreasMenu, preview.items.length <= 4 && styles.navAreasMenuNarrow)}
+        className={clsx(styles.navDropdownMenu, styles.navAreasMenu, preview.items.length <= 4 && styles.navAreasMenuNarrow, preview.titleHref === '/about' && styles.navDropdownMenuStart)}
         aria-label={`${preview.title} quick links`}
       >
         <SectionHeadCard title={preview.menuTitle || preview.title} subtitle={preview.subtitle} href={preview.titleHref} icon={SECTION_ICONS[preview.titleHref]} />
