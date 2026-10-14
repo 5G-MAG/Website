@@ -343,7 +343,6 @@
       "name": "5G Core Service Consumers",
       "doc_url": "/reference-tools/5g-core/",
       "tech_url": null,
-      "standards_url": null,
       "image": "/assets/images/projects/5g-core.png",
       "tagline": "Reference consumers for 5G Core capability exposure APIs",
       "standards_url": "/standards/5g-core",
