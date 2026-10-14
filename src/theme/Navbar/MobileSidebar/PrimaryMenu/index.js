@@ -59,7 +59,7 @@ export default function NavbarMobilePrimaryMenu() {
                     </React.Fragment>
                   );
                 })}
-                <NavbarItem mobile to="/tech" label="All technology"
+                <NavbarItem mobile to="/tech" label="Where we stand"
                   className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
               </>
             ) : item.to === '/developer' ? (

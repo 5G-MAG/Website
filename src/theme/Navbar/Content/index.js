@@ -519,7 +519,7 @@ function SolutionsMenu({ item }) {
       )}
     >
       <SectionHeadCard title="Solutions" subtitle="What you can build, area by area, and the technology behind it."
-        icon={SOLUTIONS_ICON} action={{ label: 'All technology', href: '/tech' }} />
+        icon={SOLUTIONS_ICON} action={{ label: 'Where we stand', href: '/tech' }} />
       <MegaGroups groups={TECHNOLOGY_GROUPS} />
     </MegaMenu>
   );
