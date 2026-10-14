@@ -109,21 +109,29 @@ const PROJECT_CARDS = projectsData
 // while they fade out): an animated diagram that is hidden still runs, and seven of them in three slots would be
 // twenty-one at once.
 const ANIMATION_SLIDES = [
+  // The hero animation of each solution area, opening the area's page.
   { name: 'hero', basket: 'content-delivery', alt: 'Animation: media flowing from a service through the network to viewers, with what they experience flowing back' },
   { name: 'rtc', basket: 'rtc', alt: 'Animation: two callers talking live through a 5G network' },
   { name: 'bcast', basket: 'broadcast-multicast', alt: 'Animation: one transmission reaching many receivers, with unicast where needed' },
   { name: 'ntn', basket: 'ntn', alt: 'Animation: satellites passing overhead and connecting a remote area' },
   { name: 'imm', basket: 'immersive-media', alt: 'Animation: a 3D scene streamed to a person in a headset, with their movement flowing back' },
   { name: 'prod', basket: 'connected-media-production', alt: 'Animation: live cameras sending video over a 5G uplink to a production hub' },
-  { name: 'sixg', basket: 'towards-6g', alt: 'Animation: media services reaching existing and new services over a 6G system' },
+  { name: 'sixgai', basket: 'towards-6g', alt: 'Animation: devices with AI features and AI models working together over a 6G system' },
+  // The pictures of the topics inside the areas, opening that topic.
+  { name: 'insight', basket: 'content-delivery', anchor: 'insight', title: 'QoE and audience analytics', alt: 'Picture: a player reporting quality of experience metrics to a dashboard' },
+  { name: 'cdn', basket: 'content-delivery', anchor: 'cdn', title: 'CDN and edge delivery', alt: 'Picture: content hosted at the edge of the mobile network' },
+  { name: 'network', basket: 'content-delivery', anchor: 'quality', title: 'Network-assisted streaming', alt: 'Picture: a phone and the network helping each other for better streaming' },
+  { name: 'broadcast', basket: 'broadcast-multicast', anchor: 'hybrid', title: 'Hybrid broadcast and unicast delivery', alt: 'Picture: broadcast for what is common and unicast where needed' },
+  { name: 'ai', basket: 'towards-6g', anchor: 'ai-traffic', title: 'AI traffic characterization', alt: 'Animation: an AI app talking to a model over an emulated network while the traffic is captured' },
+  { name: 'vops', basket: 'content-delivery', href: '/testbeds/vops', title: 'Video Operation Points', alt: 'Picture: a video bitstream checked against an operation point, with a pass or fail for every assertion' },
 ].map((a) => {
   const basket = BASKETS.find((b) => b.key === a.basket);
   return {
     type: 'animation',
     name: a.name,
     alt: a.alt,
-    href: BASKET_PAGE[a.basket],
-    title: basket.title,
+    href: a.href || (a.anchor ? `${BASKET_PAGE[a.basket]}#${a.anchor}` : BASKET_PAGE[a.basket]),
+    title: a.title || basket.title,
     icon: ICON_CATALOG[basket.icon] || [],
     accent: BASKET_ACCENT[a.basket] || '#00a0d2',
   };

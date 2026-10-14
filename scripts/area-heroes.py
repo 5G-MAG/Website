@@ -256,7 +256,54 @@ def prod():
     return sd.svg(body, '0 0 480 310')
 
 
-SCENES = {'rtc': rtc, 'bcast': bcast, 'ntn': ntn, 'imm': imm, 'prod': prod}
+# ---------------------------------------------------------------- Towards 6G Media
+CLOUD = 'M118 96 a17 17 0 0 1 3 -34 a24 24 0 0 1 45 -9 a19 19 0 0 1 32 19 a15 15 0 0 1 -5 24 z'
+
+
+def sparkle(x, y, s=1, col=A, begin=0):
+    d = (f'M{x} {y-6*s} L{x+1.8*s} {y-1.8*s} L{x+6*s} {y} L{x+1.8*s} {y+1.8*s} L{x} {y+6*s} '
+         f'L{x-1.8*s} {y+1.8*s} L{x-6*s} {y} L{x-1.8*s} {y-1.8*s}Z')
+    return f'<path d="{d}" fill="{col}"><animate attributeName="opacity" values="1;.25;1" dur="1.6s" begin="{begin}s" repeatCount="indefinite"/></path>'
+
+
+def glasses(x, y, s=1):
+    return (f'<g transform="translate({x} {y}) scale({s})"><rect x="0" y="0" width="22" height="16" rx="7" fill="{D}" stroke="{W}" stroke-width="2"/>'
+            f'<rect x="30" y="0" width="22" height="16" rx="7" fill="{D}" stroke="{W}" stroke-width="2"/>'
+            f'<path d="M22 6 Q 26 2 30 6" stroke="{W}" stroke-width="2" fill="none"/>'
+            f'<circle cx="11" cy="8" r="3.5" fill="{C}"/><circle cx="41" cy="8" r="3.5" fill="{C}"/>'
+            f'<path d="M0 6 L-8 3 M52 6 L60 3" stroke="{W}" stroke-width="2" stroke-linecap="round"/></g>')
+
+
+def sixg():
+    """AI media services over a 6G system (the part of the 6G work 5G-MAG builds): devices with AI features send
+    media and requests over the network, AI models at the edge and in the cloud process them and send the results
+    back, and a panel stands for the traffic being observed. The panel carries no label."""
+    up = 'M80 112 C 150 84, 290 84, 392 112'
+    up_g = 'M62 188 C 130 190, 190 140, 226 112'
+    down = 'M392 138 C 300 168, 160 168, 84 140'
+    bars = ''.join(
+        f'<rect x="{168 + i * 24}" y="288" width="9" height="0" rx="2" fill="{C}"><animate attributeName="height" values="6;{h};6" dur="{2.2 + i * .3:.1f}s" repeatCount="indefinite"/>'
+        f'<animate attributeName="y" values="296;{296 - h};296" dur="{2.2 + i * .3:.1f}s" repeatCount="indefinite"/></rect>'
+        f'<rect x="{178 + i * 24}" y="288" width="9" height="0" rx="2" fill="{G}"><animate attributeName="height" values="{g};5;{g}" dur="{2.6 + i * .25:.1f}s" repeatCount="indefinite"/>'
+        f'<animate attributeName="y" values="{296 - g};296;{296 - g}" dur="{2.6 + i * .25:.1f}s" repeatCount="indefinite"/></rect>'
+        for i, (h, g) in enumerate(((14, 22), (26, 10), (10, 24), (22, 16), (8, 26), (20, 12))))
+    body = (zone(148, 40, 176, 190)
+            + t(236, 222, '6G system', 11)
+            + route(up) + route(up_g) + route(down, A, '3 6')
+            + packets(up, 4, 2.6) + packets(up_g, 3, 2.2) + packets(down, 4, 2.6, A, 3.6)
+            + tower(236, 62, .8)
+            + ''.join(f'<rect x="{x}" y="150" width="34" height="22" rx="7" fill="{D}" stroke="{W}" stroke-opacity=".8" stroke-width="2"/>'
+                      + t(x + 17, 165, 'AI', 11, op='1', bold=True) for x in (160, 276))
+            + phone(24, 70, .8, play=False) + sparkle(62, 84, 1.1) + sparkle(36, 130, .8, begin=.6)
+            + glasses(20, 182, .9) + sparkle(46, 176, .7, begin=1)
+            + t(50, 262, 'devices', 11)
+            + f'<g transform="translate(334 18)"><path d="{CLOUD}" transform="translate(-118 -30) scale(1.15)" fill="{D}" stroke="{W}" stroke-opacity=".75" stroke-width="2"/></g>'
+            + t(399, 88, 'AI models', 11, op='1', bold=True) + sparkle(428, 64, 1.1, begin=.3)
+            + f'<rect x="138" y="244" width="206" height="58" rx="10" fill="{D}" stroke="{W}" stroke-opacity=".5"/>' + bars)
+    return sd.svg(body, '0 0 480 310')
+
+
+SCENES = {'rtc': rtc, 'bcast': bcast, 'ntn': ntn, 'imm': imm, 'prod': prod, 'sixgai': sixg}
 
 
 def build():

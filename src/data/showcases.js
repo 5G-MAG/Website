@@ -191,7 +191,7 @@ export const SHOWCASE_BASKETS = {
     basket: 'towards-6g',
     title: 'Towards 6G Media',
     headline: 'Study on Media Aspects for 6G System',
-    heroDiagram: 'sixg',
+    heroDiagram: 'sixgai',
     description:
       'The 3GPP SA4 study on media aspects for 6G (TR 26.870, Release 20), its work topics, and the AI in Media Services project.',
     // TR 26.870 V0.6.1 (2026-09): title page, Introduction, clause 1 Scope and the headings of clause 6
