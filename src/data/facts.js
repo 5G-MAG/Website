@@ -9,7 +9,7 @@ import siteStats from '@site/static/data/site-stats.json';
 import communityStats from '@site/static/data/community-stats.json';
 import notOnHubDashboard from '@site/src/data/notOnHubDashboard.json';
 import { ALL_PROJECTS } from '@site/src/data/baskets';
-import { totalUniqueClones } from '@site/src/utils/communityStats';
+import { communityTotals } from '@site/src/utils/communityStats';
 
 const fmt = (n) => n.toLocaleString('en-US');
 
@@ -21,11 +21,15 @@ export const FACT_REPOSITORIES = {
 };
 // The clone figure is the Community Activity total (same function, same projects, same exclusions), not a separate count.
 const PROJECTS_WITH_PAGE = new Set(ALL_PROJECTS.filter((p) => p.doc_url).map((p) => p.name));
-const COMMUNITY_CLONES = totalUniqueClones(
+const COMMUNITY = communityTotals(
   communityStats.projects.filter((p) => PROJECTS_WITH_PAGE.has(p.name)),
   new Set(notOnHubDashboard)
 );
-export const FACT_CLONES = { value: fmt(COMMUNITY_CLONES), label: 'Clones: unique cloners per day, since 5 October 2026' };
+export const FACT_CLONES = { value: fmt(COMMUNITY.clones), label: 'Clones: unique cloners, counted daily' };
+export const FACT_STARS = { value: fmt(COMMUNITY.stars), label: 'Stars on GitHub, all repositories' };
+export const FACT_FORKS = { value: fmt(COMMUNITY.forks), label: 'Forks of our repositories' };
+export const FACT_VIEWS = { value: fmt(COMMUNITY.views), label: 'Repository page views' };
+export const COMMUNITY_UPDATED = communityStats.updated_at;
 export const FACT_SPEC_ISSUES = { value: fmt(siteStats.specIssues), label: 'Issues raised on specifications through GitHub' };
 export const FACT_PROJECTS = { value: fmt(siteStats.projects), label: 'Projects across media and connectivity' };
 export const FACT_REFERENCE_TOOLS = { value: fmt(siteStats.referenceTools), label: 'Reference Tools projects' };

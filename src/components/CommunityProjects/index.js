@@ -7,7 +7,7 @@ import releasesData from '@site/static/data/releases.json';
 import statsData from '@site/static/data/community-stats.json';
 import pullRequestsData from '@site/static/data/pull-requests.json';
 import { ALL_PROJECTS as projectsData, CONTRIBUTORS, isTestbed } from '@site/src/data/baskets';
-import { activityLabel, totalUniqueClones } from '@site/src/utils/communityStats';
+import { activityLabel, communityTotals } from '@site/src/utils/communityStats';
 import styles from './styles.module.css';
 import ProjectIcon from '@site/src/components/ProjectIcon';
 import { AgeKey, Icon, Repo, CLUSTERS, BASKET_OF, ACTIVITY_BY_PROJECT, clusterStyles } from '@site/src/components/RepoActivity';
@@ -190,7 +190,7 @@ function RepoStatsTable({ repos }) {
             <th>Forks</th>
             <th>Issues</th>
             <th>Views</th>
-            <th title="Unique cloners per day, counted since 5 October 2026">Clones</th>
+            <th title="Unique cloners, counted daily and added up">Clones</th>
             <th>Status</th>
           </tr>
         </thead>
@@ -434,17 +434,7 @@ export function CommunityTotals({ kind = 'all' }) {
   const projects = buildMergedProjects();
   if (statsData.updated_at === null) return null;
   const ofKind = projects.filter((p) => inKind({ key: BASKET_OF[p.name] }, kind));
-  const hubTrackedRepos = [...new Map(ofKind.flatMap((p) => p.repos).map((r) => [r.repo, r])).values()]
-    .filter((r) => !NOT_ON_HUB_DASHBOARD.has(r.repo));
-  const totals = hubTrackedRepos.reduce(
-    (acc, r) => ({
-      stars: acc.stars + (r.stars || 0),
-      forks: acc.forks + (r.forks || 0),
-      views: acc.views + (r.total_views || 0),
-    }),
-    { stars: 0, forks: 0, views: 0 }
-  );
-  totals.clones = totalUniqueClones(ofKind, NOT_ON_HUB_DASHBOARD);
+  const totals = communityTotals(ofKind, NOT_ON_HUB_DASHBOARD);
   return (
     <>
     <div className={styles.summaryContainer}>
@@ -453,7 +443,7 @@ export function CommunityTotals({ kind = 'all' }) {
       <div className={styles.summaryCard}><h3>Total Views</h3><span className={styles.summaryValue}>&#128064; {totals.views}</span></div>
       <div className={styles.summaryCard}><h3>Total Clones</h3><span className={styles.summaryValue}>&#128230; {totals.clones}</span></div>
     </div>
-    <p><small>{hubTrackedRepos.length} repositories, each counted once, including those shared by several projects.</small></p>
+    <p><small>{totals.repositories} repositories, each counted once, including those shared by several projects.</small></p>
     </>
   );
 }

@@ -23,7 +23,7 @@ export function activityLabel(pushedAt) {
   return 'Quiet';
 }
 
-// Unique cloners per day, counted since 5 October 2026, summed over the given projects. A repository shared by
+// Unique cloners, counted daily and added up, summed over the given projects. A repository shared by
 // several projects counts once, and repositories the hub dashboard leaves out (`excluded`, a Set of repo names)
 // do not count. One definition for the Community Activity totals and for the clone figure on the home page.
 export function totalUniqueClones(projects, excluded = new Set()) {
@@ -33,4 +33,21 @@ export function totalUniqueClones(projects, excluded = new Set()) {
     if (!excluded.has(r.repo)) total += r.total_unique_clones || 0;
   }
   return total;
+}
+
+// Stars, forks, views and unique cloners of the repositories of the given projects, each repository counted once and
+// the repositories the hub dashboard leaves out (`excluded`) skipped. Used by the Community Activity totals and by
+// the figures on the Membership page, so both show the same numbers.
+export function communityTotals(projects, excluded = new Set()) {
+  const repos = [...new Map(projects.flatMap((p) => p.repos).map((r) => [r.repo, r])).values()].filter(
+    (r) => !excluded.has(r.repo)
+  );
+  const sum = (field) => repos.reduce((n, r) => n + (r[field] || 0), 0);
+  return {
+    repositories: repos.length,
+    stars: sum('stars'),
+    forks: sum('forks'),
+    views: sum('total_views'),
+    clones: totalUniqueClones(projects, excluded),
+  };
 }

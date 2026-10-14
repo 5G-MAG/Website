@@ -1,3 +1,4 @@
+import Link from '@docusaurus/Link';
 import BalancedLogo from '@site/src/components/BalancedLogo';
 import { useBaseUrlUtils } from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
@@ -8,8 +9,9 @@ import GodeeperCard from '@site/src/components/GodeeperCard';
 import {
   FACT_REPOSITORIES,
   FACT_CLONES,
-  FACT_LARGE_EVENTS,
-  FACT_YEARLY_CONFERENCE,
+  FACT_STARS,
+  FACT_FORKS,
+  FACT_VIEWS,
   FACT_SDO_INPUTS,
   FACT_REFERENCE_TOOLS,
   FACT_TESTBEDS,
@@ -35,13 +37,15 @@ const FEE_TIERS = [
   { tier: 'Micro', revenue: '< €5 million', fee: '€ 2,000' },
 ];
 
+// The same repository figures as Community Activity (one shared function), then the project and standards counts.
 const FACTS = [
   FACT_REPOSITORIES,
   FACT_CLONES,
+  FACT_STARS,
+  FACT_FORKS,
+  FACT_VIEWS,
   FACT_REFERENCE_TOOLS,
   FACT_TESTBEDS,
-  FACT_LARGE_EVENTS,
-  FACT_YEARLY_CONFERENCE,
   FACT_SDO_INPUTS,
 ];
 
@@ -97,7 +101,10 @@ export default function Membership() {
         <section className={`${styles.section} ${styles.sectionAlt}`}>
           <div className="container">
             <h2 className={styles.sectionTitle}>Our work at a glance</h2>
-            <p className={styles.sectionSubtitle}>Some numbers and examples of our work.</p>
+            <p className={styles.sectionSubtitle}>
+              Live figures from our repositories and standards work, updated daily.{' '}
+              <Link to="/community/activity">See the full activity &rarr;</Link>
+            </p>
             <div className="summary-container summary-container--centered">
               {FACTS.map((f) => (
                 <div key={f.label} className="summary-card">
