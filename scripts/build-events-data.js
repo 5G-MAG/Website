@@ -87,13 +87,24 @@ function addEvent(file, data, kind) {
   events.push(event);
 }
 
+// A broken frontmatter block (for example a title with an unquoted colon) is reported with its file name.
+function frontmatterOf(file) {
+  try {
+    return matter(fs.readFileSync(file, 'utf8')).data;
+  } catch (e) {
+    errors.push(`${path.relative(ROOT, file)}: the frontmatter cannot be read (${String(e.message).split('\n')[0]}). Quote values that contain a colon.`);
+    return null;
+  }
+}
+
 for (const file of fs.readdirSync(BLOG_DIR).filter((f) => /\.mdx?$/.test(f))) {
   const full = path.join(BLOG_DIR, file);
-  addEvent(full, matter(fs.readFileSync(full, 'utf8')).data, 'post');
+  const data = frontmatterOf(full);
+  if (data) addEvent(full, data, 'post');
 }
 for (const file of walk(DOCS_DIR, [])) {
-  const { data } = matter(fs.readFileSync(file, 'utf8'));
-  if (data.agenda) addEvent(file, data, 'page');
+  const data = frontmatterOf(file);
+  if (data && data.agenda) addEvent(file, data, 'page');
 }
 
 const seen = new Set();

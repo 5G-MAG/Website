@@ -6,6 +6,7 @@ import { useBaseUrlUtils } from '@docusaurus/useBaseUrl';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HeroSlideshow from '@site/src/components/HeroSlideshow';
+import NextUp from '@site/src/components/NextUp';
 import MediaConnectivityDiagram from '@site/src/components/MediaConnectivityDiagram';
 import { HOME_WORK } from '@site/src/data/discoverWork';
 import MembersMarquee from '@site/src/components/MembersMarquee';
@@ -193,6 +194,9 @@ export default function Home() {
       description="5G-MAG is a not-for-profit association bridging media and connectivity standards to working implementations, from specification analysis to open-source reference tools."
     >
       <HeroSlideshow />
+
+      {/* What is coming up next, filled from the events agenda. */}
+      <NextUp />
 
       {/* A dedicated, prominent search band right below the hero -- modeled
           on dvb.org's homepage, which puts search here rather than leaving
