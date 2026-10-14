@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-11 02:21 UTC",
+  "updated_at": "2026-10-14 02:17 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -1334,7 +1334,7 @@
           "description": "FLUTE Protocol and Profiles",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-09",
+          "pushed_at": "2026-10-13",
           "pulls": [
             {
               "number": 113,
@@ -1347,25 +1347,16 @@
             },
             {
               "number": 98,
-              "title": "WEBRC congestion control (RFC 3738), unverified: no conformance claimed",
+              "title": "For Profile None: WEBRC congestion control (RFC 3738), unverified: no conformance claimed",
               "url": "https://github.com/5G-MAG/rt-libflute/pull/98",
-              "draft": true,
+              "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-08-23",
               "base": "development"
             },
             {
-              "number": 68,
-              "title": "Tunnel-mode reception, and five object-handling fixes (compression, partitioning, transfer length)",
-              "url": "https://github.com/5G-MAG/rt-libflute/pull/68",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-11",
-              "base": "development"
-            },
-            {
               "number": 65,
-              "title": "FLUTE version 2 (RFC 6726) signalling, off by default: step one of three, no conformance claimed",
+              "title": "For Profile None: FLUTE version 2 (RFC 6726) signalling, off by default: step one of three, no conformance claimed",
               "url": "https://github.com/5G-MAG/rt-libflute/pull/65",
               "draft": false,
               "author": "jordijoangimenez",
@@ -1374,7 +1365,7 @@
             },
             {
               "number": 64,
-              "title": "RFC 6330 RaptorQ FEC scheme (not 3GPP-mandated, offered as reference work)",
+              "title": "For Profile None: RFC 6330 RaptorQ FEC scheme (not 3GPP-mandated, offered as reference work)",
               "url": "https://github.com/5G-MAG/rt-libflute/pull/64",
               "draft": false,
               "author": "jordijoangimenez",
@@ -1529,12 +1520,7 @@
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-09"
-            },
-            {
-              "name": "feature/issue66-receiver-tunnel-mode",
-              "default": false,
-              "last_commit": "2026-10-09"
+              "last_commit": "2026-10-13"
             },
             {
               "name": "feature/mbs-profile",
@@ -2604,6 +2590,46 @@
           ],
           "issues": [
             {
+              "number": 22,
+              "title": "Application trackables are written with the key id instead of trackableId",
+              "url": "https://github.com/5G-MAG/rt-xr-blender-exporter/issues/22",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 21,
+              "title": "The aligned option of MPEG_anchor is never written",
+              "url": "https://github.com/5G-MAG/rt-xr-blender-exporter/issues/21",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 20,
+              "title": "Misspelled byte_offet: header views never get an offset when a buffer holds several headers",
+              "url": "https://github.com/5G-MAG/rt-xr-blender-exporter/issues/20",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 19,
+              "title": "The exporter sizes a circular buffer for one frame, not for count frames",
+              "url": "https://github.com/5G-MAG/rt-xr-blender-exporter/issues/19",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
               "number": 17,
               "title": "Update blender exporter to add KHR_material_unlit",
               "url": "https://github.com/5G-MAG/rt-xr-blender-exporter/issues/17",
@@ -2677,8 +2703,17 @@
           "description": "XR/3D Scenes and Test Content",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-09-29",
+          "pushed_at": "2026-10-13",
           "pulls": [
+            {
+              "number": 41,
+              "title": "Reference scenes follow ISO/IEC 23090-14:2024(E)",
+              "url": "https://github.com/5G-MAG/rt-xr-content/pull/41",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "base": "main"
+            },
             {
               "number": 34,
               "title": "docs: apply the 5G-MAG README format",
@@ -2699,6 +2734,86 @@
             }
           ],
           "issues": [
+            {
+              "number": 43,
+              "title": "Anchored awards and video plane scenes set requiresAnchoring to false and show before anchoring",
+              "url": "https://github.com/5G-MAG/rt-xr-content/issues/43",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-13",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 42,
+              "title": "awards_floor_anchoring.gltf places the statuette 1.25 m above the floor",
+              "url": "https://github.com/5G-MAG/rt-xr-content/issues/42",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-13",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 40,
+              "title": "The UseCase_03 user input trigger uses a path that is not an OpenXR input path",
+              "url": "https://github.com/5G-MAG/rt-xr-content/issues/40",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 39,
+              "title": "Timed accessors without a header bufferView carry no immutable flag",
+              "url": "https://github.com/5G-MAG/rt-xr-content/issues/39",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 38,
+              "title": "anchorTest_floor_n_a.gltf uses MPEG_scene_interactivity without listing it in extensionsUsed",
+              "url": "https://github.com/5G-MAG/rt-xr-content/issues/38",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 37,
+              "title": "autoplayGroup is written as a boolean",
+              "url": "https://github.com/5G-MAG/rt-xr-content/issues/37",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 36,
+              "title": "Audio source type \"object\" and attenuation \"inverse_distance\" are not specified values",
+              "url": "https://github.com/5G-MAG/rt-xr-content/issues/36",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 35,
+              "title": "Geospatial scenes hold latitude before longitude",
+              "url": "https://github.com/5G-MAG/rt-xr-content/issues/35",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
             {
               "number": 33,
               "title": "Add sample assets combining KHR_material_unlit and MPEG media",
@@ -2743,6 +2858,11 @@
               "last_commit": "2025-07-08"
             },
             {
+              "name": "feature/xr_smartphone_app",
+              "default": false,
+              "last_commit": "2026-10-13"
+            },
+            {
               "name": "fix/apply-new-format",
               "default": false,
               "last_commit": "2026-09-29"
@@ -2780,8 +2900,17 @@
           "description": "glTF Extensions",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-09-29",
+          "pushed_at": "2026-10-12",
           "pulls": [
+            {
+              "number": 16,
+              "title": "MPEG-I scene description extensions and interactivity fixes (ISO/IEC 23090-14:2024(E))",
+              "url": "https://github.com/5G-MAG/rt-xr-gITFast/pull/16",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "base": "rt-xr/unity-player-v1.1.x"
+            },
             {
               "number": 15,
               "title": "docs: apply the 5G-MAG README format",
@@ -2807,6 +2936,11 @@
               "name": "rt-xr/development",
               "default": true,
               "last_commit": "2025-10-28"
+            },
+            {
+              "name": "feature/xr_smartphone_app",
+              "default": false,
+              "last_commit": "2026-10-11"
             },
             {
               "name": "fix/apply-new-format",
@@ -2906,8 +3040,17 @@
           "description": "XR Media Pipelines",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-09-29",
+          "pushed_at": "2026-10-12",
           "pulls": [
+            {
+              "number": 33,
+              "title": "Decode timed metadata tracks and report the buffer format",
+              "url": "https://github.com/5G-MAG/rt-xr-maf-native/pull/33",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "base": "main"
+            },
             {
               "number": 21,
               "title": "docs: apply the 5G-MAG README format",
@@ -2919,6 +3062,116 @@
             }
           ],
           "issues": [
+            {
+              "number": 32,
+              "title": "Timed metadata tracks (mett) are not decoded",
+              "url": "https://github.com/5G-MAG/rt-xr-maf-native/issues/32",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "enhancement"
+              ]
+            },
+            {
+              "number": 31,
+              "title": "Timing and view information are stored and never used",
+              "url": "https://github.com/5G-MAG/rt-xr-maf-native/issues/31",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "enhancement"
+              ]
+            },
+            {
+              "number": 30,
+              "title": "The MAF never allocates buffers; releaseFrame and destroy are missing",
+              "url": "https://github.com/5G-MAG/rt-xr-maf-native/issues/30",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "enhancement"
+              ]
+            },
+            {
+              "number": 29,
+              "title": "The audio decoder writes the accessor header into the frame data although the Buffer API is used; video frames carry no header",
+              "url": "https://github.com/5G-MAG/rt-xr-maf-native/issues/29",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 28,
+              "title": "Frame availability uses a counter, not read_idx and write_idx",
+              "url": "https://github.com/5G-MAG/rt-xr-maf-native/issues/28",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 27,
+              "title": "Frames before the read index are unreachable by timestamp",
+              "url": "https://github.com/5G-MAG/rt-xr-maf-native/issues/27",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 26,
+              "title": "With no tracks given the MAF does not access all components",
+              "url": "https://github.com/5G-MAG/rt-xr-maf-native/issues/26",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 25,
+              "title": "Several tracks cannot feed one buffer",
+              "url": "https://github.com/5G-MAG/rt-xr-maf-native/issues/25",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 24,
+              "title": "stopFetching keeps the state lock and the state-change callback is never invoked",
+              "url": "https://github.com/5G-MAG/rt-xr-maf-native/issues/24",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 23,
+              "title": "Audio resampling is compiled out, so a format or channel mismatch throws",
+              "url": "https://github.com/5G-MAG/rt-xr-maf-native/issues/23",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 22,
+              "title": "The video path ignores BufferInfo and always outputs packed RGB24",
+              "url": "https://github.com/5G-MAG/rt-xr-maf-native/issues/22",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
             {
               "number": 18,
               "title": "Support building the MAF API and media pipelines on windows",
@@ -2945,6 +3198,11 @@
               "last_commit": "2025-08-04"
             },
             {
+              "name": "feature/xr_smartphone_app",
+              "default": false,
+              "last_commit": "2026-10-11"
+            },
+            {
               "name": "fix/apply-new-format",
               "default": false,
               "last_commit": "2026-09-29"
@@ -2967,9 +3225,319 @@
           "description": "XR Unity Player",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-09",
-          "pulls": [],
+          "pushed_at": "2026-10-13",
+          "pulls": [
+            {
+              "number": 126,
+              "title": "XR Scene Player: smartphone app, media control and compliance work",
+              "url": "https://github.com/5G-MAG/rt-xr-unity-player/pull/126",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "base": "main"
+            }
+          ],
           "issues": [
+            {
+              "number": 125,
+              "title": "XR Scene Player: a smartphone app with a scene library, AR placement and an extension lab",
+              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/125",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "enhancement"
+              ]
+            },
+            {
+              "number": 124,
+              "title": "MPEG_texture_video: the declared format is ignored and the actual picture size is not used",
+              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/124",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 123,
+              "title": "Frame availability is decided from a frame count, not from read_idx and write_idx",
+              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/123",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 122,
+              "title": "The Presentation Engine passes every media alternative to the MAF instead of selecting one",
+              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/122",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 121,
+              "title": "Objects with timed media are rendered before T0 + Tinit",
+              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/121",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "enhancement"
+              ]
+            },
+            {
+              "number": 120,
+              "title": "[rt-xr-gITFast] Core scene capabilities of TS 26.119: KHR_materials_specular and EXT_lights_image_based are not supported",
+              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/120",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "enhancement"
+              ]
+            },
+            {
+              "number": 119,
+              "title": "[rt-xr-gITFast] MPEG_haptic: haptic data is not rendered",
+              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/119",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "enhancement"
+              ]
+            },
+            {
+              "number": 118,
+              "title": "[rt-xr-gITFast] MPEG_lights_punctual and MPEG_lights_texture_based are not parsed",
+              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/118",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "enhancement"
+              ]
+            },
+            {
+              "number": 117,
+              "title": "[rt-xr-gITFast] MPEG_animation_timing is not implemented",
+              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/117",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "enhancement"
+              ]
+            },
+            {
+              "number": 116,
+              "title": "[rt-xr-gITFast] MPEG_viewport_recommended is not implemented",
+              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/116",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "enhancement"
+              ]
+            },
+            {
+              "number": 115,
+              "title": "[rt-xr-gITFast] MPEG_scene_dynamic: scene updates are not applied",
+              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/115",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "enhancement"
+              ]
+            },
+            {
+              "number": 114,
+              "title": "[rt-xr-gITFast] MPEG_accessor_timed: header presence, immutable, header configuration and update rate are not honoured",
+              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/114",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 113,
+              "title": "[rt-xr-gITFast] Controller trackable is a stub and the aligned property is never applied",
+              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/113",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "enhancement"
+              ]
+            },
+            {
+              "number": 112,
+              "title": "[rt-xr-gITFast] Anchored scenes: placement, actions and node TRS are not applied relative to the trackable space",
+              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/112",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 111,
+              "title": "[rt-xr-gITFast] Geospatial anchor coordinates are read latitude first; the clause gives longitude first",
+              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/111",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 110,
+              "title": "[rt-xr-gITFast] minimumRequiredSpace is compared per axis with an invented 2.5 m height and the assets are not skipped",
+              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/110",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 109,
+              "title": "[rt-xr-gITFast] requiresAnchoring is not applied: assets are shown before the pose of the anchor is known",
+              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/109",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 108,
+              "title": "[rt-xr-gITFast] Interactivity data not applied: collision precision, boundary, collider mesh and material, occlusion options",
+              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/108",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "enhancement"
+              ]
+            },
+            {
+              "number": 107,
+              "title": "[rt-xr-gITFast] Behavior priority is parsed and ignored",
+              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/107",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "enhancement"
+              ]
+            },
+            {
+              "number": 106,
+              "title": "[rt-xr-gITFast] User input trigger does not map OpenXR input paths",
+              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/106",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 105,
+              "title": "[rt-xr-gITFast] Visibility trigger treats the nodes array as nodes to test, not nodes to ignore as occluders",
+              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/105",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 104,
+              "title": "[rt-xr-gITFast] Node-level proximity limits start at zero and are scaled, so the node is only near at distance zero",
+              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/104",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 103,
+              "title": "[rt-xr-gITFast] Scene-level proximity trigger overwrites its reference node with the camera",
+              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/103",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 102,
+              "title": "[rt-xr-gITFast] A node with only a node-level collision trigger is not used for detection; usePhysics does not gate the rigid body",
+              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/102",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 101,
+              "title": "[rt-xr-gITFast] Scene-level collision trigger fires only when all detectors collide",
+              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/101",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 100,
+              "title": "[rt-xr-gITFast] Trigger combination control: negation, parentheses and trigger indices are not interpreted",
+              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/100",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 99,
+              "title": "[rt-xr-gITFast] Trigger activation control: FIRST_ENTER and FIRST_EXIT are overridden by EACH_*; ON is reported late",
+              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/99",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 98,
+              "title": "[rt-xr-gITFast] ACTION_MEDIA is a stub and ANIMATION_PAUSE throws",
+              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/98",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 97,
+              "title": "[rt-xr-gITFast] ACTION_TRANSFORM throws NotImplementedException from its Delay property",
+              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/97",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 96,
+              "title": "[rt-xr-gITFast] ACTION_ACTIVATE applies activationStatus inverted",
+              "url": "https://github.com/5G-MAG/rt-xr-unity-player/issues/96",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-12",
+              "labels": [
+                "bug"
+              ]
+            },
             {
               "number": 93,
               "title": "Update reference content to use KHR_material_unlit along video textures",
@@ -3120,6 +3688,11 @@
               "name": "main",
               "default": true,
               "last_commit": "2025-06-03"
+            },
+            {
+              "name": "feature/xr_smartphone_app",
+              "default": false,
+              "last_commit": "2026-10-13"
             },
             {
               "name": "development",
@@ -3434,7 +4007,7 @@
           "description": "FLUTE Protocol and Profiles",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-09",
+          "pushed_at": "2026-10-13",
           "pulls": [
             {
               "number": 113,
@@ -3447,25 +4020,16 @@
             },
             {
               "number": 98,
-              "title": "WEBRC congestion control (RFC 3738), unverified: no conformance claimed",
+              "title": "For Profile None: WEBRC congestion control (RFC 3738), unverified: no conformance claimed",
               "url": "https://github.com/5G-MAG/rt-libflute/pull/98",
-              "draft": true,
+              "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-08-23",
               "base": "development"
             },
             {
-              "number": 68,
-              "title": "Tunnel-mode reception, and five object-handling fixes (compression, partitioning, transfer length)",
-              "url": "https://github.com/5G-MAG/rt-libflute/pull/68",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-11",
-              "base": "development"
-            },
-            {
               "number": 65,
-              "title": "FLUTE version 2 (RFC 6726) signalling, off by default: step one of three, no conformance claimed",
+              "title": "For Profile None: FLUTE version 2 (RFC 6726) signalling, off by default: step one of three, no conformance claimed",
               "url": "https://github.com/5G-MAG/rt-libflute/pull/65",
               "draft": false,
               "author": "jordijoangimenez",
@@ -3474,7 +4038,7 @@
             },
             {
               "number": 64,
-              "title": "RFC 6330 RaptorQ FEC scheme (not 3GPP-mandated, offered as reference work)",
+              "title": "For Profile None: RFC 6330 RaptorQ FEC scheme (not 3GPP-mandated, offered as reference work)",
               "url": "https://github.com/5G-MAG/rt-libflute/pull/64",
               "draft": false,
               "author": "jordijoangimenez",
@@ -3629,12 +4193,7 @@
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-09"
-            },
-            {
-              "name": "feature/issue66-receiver-tunnel-mode",
-              "default": false,
-              "last_commit": "2026-10-09"
+              "last_commit": "2026-10-13"
             },
             {
               "name": "feature/mbs-profile",
@@ -3710,6 +4269,17 @@
             }
           ],
           "issues": [
+            {
+              "number": 72,
+              "title": "MBSF: User Service Description document may contain a different entry point to FLUTE stream",
+              "url": "https://github.com/5G-MAG/rt-mbs-function/issues/72",
+              "author": "davidjwbbc",
+              "created_at": "2026-10-12",
+              "labels": [
+                "enhancement",
+                "MBSF"
+              ]
+            },
             {
               "number": 70,
               "title": "MBSF drops the MBSTF request when the MBSTF has to be discovered: the first Ingest Session POST after a start is never answered",
@@ -3883,6 +4453,17 @@
             }
           ],
           "issues": [
+            {
+              "number": 79,
+              "title": "MBSTF: Objects from origin with immediate expiry may not be cached by the client",
+              "url": "https://github.com/5G-MAG/rt-mbs-transport-function/issues/79",
+              "author": "davidjwbbc",
+              "created_at": "2026-10-12",
+              "labels": [
+                "enhancement",
+                "MBSTF"
+              ]
+            },
             {
               "number": 78,
               "title": "MBSTF aborts after about 64 distinct notification addresses: SBI clients are never removed",
@@ -5546,7 +6127,7 @@
           "description": "FLUTE Protocol and Profiles",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-09",
+          "pushed_at": "2026-10-13",
           "pulls": [
             {
               "number": 113,
@@ -5559,25 +6140,16 @@
             },
             {
               "number": 98,
-              "title": "WEBRC congestion control (RFC 3738), unverified: no conformance claimed",
+              "title": "For Profile None: WEBRC congestion control (RFC 3738), unverified: no conformance claimed",
               "url": "https://github.com/5G-MAG/rt-libflute/pull/98",
-              "draft": true,
+              "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-08-23",
               "base": "development"
             },
             {
-              "number": 68,
-              "title": "Tunnel-mode reception, and five object-handling fixes (compression, partitioning, transfer length)",
-              "url": "https://github.com/5G-MAG/rt-libflute/pull/68",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-11",
-              "base": "development"
-            },
-            {
               "number": 65,
-              "title": "FLUTE version 2 (RFC 6726) signalling, off by default: step one of three, no conformance claimed",
+              "title": "For Profile None: FLUTE version 2 (RFC 6726) signalling, off by default: step one of three, no conformance claimed",
               "url": "https://github.com/5G-MAG/rt-libflute/pull/65",
               "draft": false,
               "author": "jordijoangimenez",
@@ -5586,7 +6158,7 @@
             },
             {
               "number": 64,
-              "title": "RFC 6330 RaptorQ FEC scheme (not 3GPP-mandated, offered as reference work)",
+              "title": "For Profile None: RFC 6330 RaptorQ FEC scheme (not 3GPP-mandated, offered as reference work)",
               "url": "https://github.com/5G-MAG/rt-libflute/pull/64",
               "draft": false,
               "author": "jordijoangimenez",
@@ -5741,12 +6313,7 @@
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-09"
-            },
-            {
-              "name": "feature/issue66-receiver-tunnel-mode",
-              "default": false,
-              "last_commit": "2026-10-09"
+              "last_commit": "2026-10-13"
             },
             {
               "name": "feature/mbs-profile",
