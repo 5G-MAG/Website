@@ -24,6 +24,13 @@
 // That running total starts from the first run of this rule (5 October 2026),
 // seeded with the complete days still inside GitHub's 14-day window, and is
 // what the site shows. `total_clones` (operations) is kept as before.
+//
+// Days are folded in only once they are final. GitHub's traffic API is not complete for the most recent days
+// when the daily job runs (shortly after midnight UTC): from 29 September, when the job began adding each day
+// once, up to 14 October no run added anything to any repository's running total, while the "counted through"
+// marker still moved forward one day per run, so those days were skipped for good. A day is therefore folded
+// only when it is more than LAG_DAYS full days old, and the marker moves only to the last such day, never to
+// "yesterday", so a day can neither be counted twice nor be skipped.
 const https = require('https');
 const fs = require('fs');
 const path = require('path');
@@ -79,15 +86,19 @@ async function apiGetTrafficOrNull(urlPath) {
 }
 
 // Adds each complete UTC day exactly once: only days after the last one
-// already folded in (`through`), and never today, whose count is still
-// growing. Adding "the latest day" on every run instead counted a day again
+// already folded in (`through`), and only final ones (see LAG_DAYS), whose count
+// can no longer change. Adding "the latest day" on every run instead counted a day again
 // whenever the workflow ran more than once that day.
-function newCompleteDays(trafficResp, key, through, today, field = 'count') {
+const LAG_DAYS = 2;
+const DAY_MS = 86400000;
+const isoDay = (ms) => new Date(ms).toISOString().slice(0, 10);
+
+function newCompleteDays(trafficResp, key, through, lastFinal, field = 'count') {
   if (!trafficResp || !Array.isArray(trafficResp[key])) return 0;
   return trafficResp[key]
     .filter((d) => {
       const day = (d.timestamp || '').slice(0, 10);
-      return day > through && day < today;
+      return day > through && day <= lastFinal;
     })
     .reduce((n, d) => n + (d[field] || 0), 0);
 }
@@ -135,8 +146,8 @@ async function statsForRepo(repo, previous) {
   const prev = previous.get(repo) || {
     total_views: 0, total_clones: 0, traffic_counted_through: '', total_unique_clones: 0, unique_clones_counted_through: '',
   };
-  const today = new Date().toISOString().slice(0, 10);
-  const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+  // The last day that may be folded in: more than LAG_DAYS full days old (see the module comment).
+  const lastFinal = isoDay(Date.now() - (LAG_DAYS + 1) * DAY_MS);
   const through = prev.traffic_counted_through || '';
   const uniqueThrough = prev.unique_clones_counted_through || '';
 
@@ -150,17 +161,17 @@ async function statsForRepo(repo, previous) {
     clones_14d: clones14d,
     // Running estimate of lifetime totals, since /traffic only exposes a
     // 14-day window — see the module comment above.
-    total_views: Math.max(views14d, prev.total_views + newCompleteDays(views, 'views', through, today)),
-    total_clones: Math.max(clones14d, prev.total_clones + newCompleteDays(clones, 'clones', through, today)),
+    total_views: Math.max(views14d, prev.total_views + newCompleteDays(views, 'views', through, lastFinal)),
+    total_clones: Math.max(clones14d, prev.total_clones + newCompleteDays(clones, 'clones', through, lastFinal)),
     unique_clones_14d: clones ? clones.uniques || 0 : 0,
     // Sum of daily unique cloners over the complete days counted so far; see the module comment.
-    total_unique_clones: prev.total_unique_clones + newCompleteDays(clones, 'clones', uniqueThrough, today, 'uniques'),
+    total_unique_clones: prev.total_unique_clones + newCompleteDays(clones, 'clones', uniqueThrough, lastFinal, 'uniques'),
     // false when the token could not read this repo's traffic (401/403), so a
     // 0 above is not mistaken for a real zero.
     traffic_ok: Boolean(views && clones),
     // Last day folded into the totals above; a failed traffic call keeps the old marker.
-    traffic_counted_through: views && clones ? (yesterday > through ? yesterday : through) : through,
-    unique_clones_counted_through: clones ? (yesterday > uniqueThrough ? yesterday : uniqueThrough) : uniqueThrough,
+    traffic_counted_through: views && clones ? (lastFinal > through ? lastFinal : through) : through,
+    unique_clones_counted_through: clones ? (lastFinal > uniqueThrough ? lastFinal : uniqueThrough) : uniqueThrough,
     repo_url: `https://github.com/${ORG}/${repo}`,
   };
 }
@@ -201,6 +212,21 @@ async function main() {
       repos,
     });
   }
+
+  // What this run added to the running totals, so a run that adds nothing is visible in the job log.
+  const sum = (field, list) => list.reduce((n, r) => n + (r[field] || 0), 0);
+  const seen = new Map();
+  for (const project of projects) for (const r of project.repos) seen.set(r.repo, r);
+  let before = { total_unique_clones: 0, total_clones: 0, total_views: 0 };
+  for (const r of previous.values()) {
+    for (const k of Object.keys(before)) before[k] += r[k] || 0;
+  }
+  const after = [...seen.values()];
+  console.log(
+    `Running totals added by this run: unique cloners +${sum('total_unique_clones', after) - before.total_unique_clones}, ` +
+      `clones +${sum('total_clones', after) - before.total_clones}, views +${sum('total_views', after) - before.total_views} ` +
+      `(days up to ${isoDay(Date.now() - (LAG_DAYS + 1) * DAY_MS)} are final)`
+  );
 
   const output = {
     updated_at: formatTimestamp(new Date()),
