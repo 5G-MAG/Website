@@ -193,6 +193,15 @@ function NotYetGroup({ topic }) {
   );
 }
 
+// The hero animation of each area that has no `heroDiagram` in showcases.js (scripts/area-heroes.py draws them).
+const AREA_HERO = {
+  rtc: 'rtc',
+  'broadcast-multicast': 'bcast',
+  ntn: 'ntn',
+  'immersive-media': 'imm',
+  'connected-media-production': 'prod',
+};
+
 const PLACEHOLDER_LEAD = 'What you can build in this area is in preparation. The projects below show where the work stands today.';
 
 export default function AreaPage({ basketKey }) {
@@ -208,6 +217,7 @@ export default function AreaPage({ basketKey }) {
   // with no box there (Towards 6G Media) keeps the small row.
   const category = PROJECT_CATEGORIES.find((c) => c.title === basket.title);
   const topics = content?.topics || [];
+  const heroDiagram = content?.heroDiagram || AREA_HERO[basketKey];
   const lead = content?.lead || PLACEHOLDER_LEAD;
   return (
     <Layout
@@ -231,8 +241,8 @@ export default function AreaPage({ basketKey }) {
               <p key={para} className={styles.heroLead}>{para}</p>
             ))}
           </div>
-          {content?.heroDiagram ? (
-            <ShowcaseDiagram name={content.heroDiagram} className={styles.heroPic} />
+          {heroDiagram ? (
+            <ShowcaseDiagram name={heroDiagram} className={styles.heroPic} />
           ) : (
             // Where the area's diagram will go: its icon, marked as a placeholder.
             <div className={styles.heroPlaceholder} aria-hidden="true">
