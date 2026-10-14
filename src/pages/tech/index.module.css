@@ -287,8 +287,8 @@
   justify-content: center;
   background: linear-gradient(
     135deg,
-    color-mix(in srgb, var(--accent) 80%, black) 0%,
-    var(--accent) 100%
+    color-mix(in srgb, var(--accent, var(--ifm-color-primary)) 80%, black) 0%,
+    var(--accent, var(--ifm-color-primary)) 100%
   );
 }
 
