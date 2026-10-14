@@ -10,14 +10,13 @@ import styles from '../tech/index.module.css';
 import useAnchors from '@site/src/utils/useAnchors';
 import { AssetTiles } from '@site/src/components/ProjectDeploy';
 
-// The package: what a product team takes away from here (the same icon as the navbar's Deploy entry).
+// The rocket: the same icon as Tutorials and the navbar's Deploy entry.
 const DEPLOY_ICON_PATH = (
   <>
-    <path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" />
-    <path d="M12 12l8 -4.5" />
-    <path d="M12 12l0 9" />
-    <path d="M12 12l-8 -4.5" />
-    <path d="M16 5.25l-8 4.5" />
+    <path d="M4.5 16.5c-1.5 1.26 -2 5 -2 5s3.74 -.5 5 -2c.71 -.84 .7 -2.13 -.09 -2.91a2.18 2.18 0 0 0 -2.91 -.09z" />
+    <path d="M12 15l-3 -3a22 22 0 0 1 2 -3.95a12.88 12.88 0 0 1 10 -5.93c0 2.72 -.78 7.5 -6 11a22.35 22.35 0 0 1 -4 2z" />
+    <path d="M9 12h-4s.55 -3.03 2 -4c1.62 -1.08 5 0 5 0" />
+    <path d="M12 15v5s3.03 -.55 4 -2c1.08 -1.62 0 -5 0 -5" />
   </>
 );
 
