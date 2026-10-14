@@ -27,10 +27,10 @@ TS 26.531 defines a generic reference architecture for data collection, reportin
 
 :::tip[At a glance]
 
-- **Reference points:** R1 provisioning, R2 to R4 data reporting, R5 and R6 event exposure, R7 a client API on the UE. R8 is outside 3GPP standardisation.
+- **Reference points:** R1 provisioning, R2 to R4 configuration and data reporting, R5 and R6 event exposure, R7 a client API on the UE (TS 26.531 V19.0.0 clause 4.3). R8 is outside 3GPP standardisation (TS 26.531 V19.0.0 clause 4.3, NOTE 5).
 - **Services:** Ndcaf_DataReportingProvisioning (R1) and Ndcaf_DataReporting (R2 to R4), specified in TS 26.532; Naf_EventExposure (R5, R6), specified in TS 29.517.
-- **Deployment:** the Data Collection AF may sit inside or outside the trusted domain. Outside it, the NEF mediates its services.
-- **In 5GMS:** the Data Collection AF sits in the 5GMS AF; provisioning moves to M1, and QoE and consumption reports travel over M5.
+- **Deployment:** the Data Collection AF may sit inside or outside the trusted domain (TS 26.531 V19.0.0 clause 4.2 (item 2)). Outside it, the NEF exposes the Data Collection AF's Naf_EventExposure service to Network Functions inside the trusted domain as Nnef_EventExposure (TS 26.531 V19.0.0 clause 4.7.1 and annex A clause A.5).
+- **In 5GMS:** the Data Collection AF sits in the 5GMS AF; provisioning moves to M1, and QoE and consumption reports travel over M5 (TS 26.501 V19.4.0 clause 4.7.1).
 
 :::
 
@@ -62,29 +62,29 @@ TS 26.531 defines a generic reference architecture for data collection, reportin
 
 | Function | Role |
 | --- | --- |
-| **Data Collection AF** | Manages the provisioning state for data collection and reporting, processes collected UE data, and realises the Event Exposure Service. When its provisioning state changes, it updates its NF profiles in the NRF. |
-| **Provisioning AF** | Provisions data collection and reporting at R1. It belongs to the Application Service Provider and may be deployed inside or outside the trusted domain. |
-| **Direct Data Collection Client** | Collects relevant data in the UE and sends data reports at R2, according to a configuration it first obtains at R2. It can be a common middleware component or part of each UE Application. |
-| **UE Application** | Shares relevant data with the Direct Data Collection Client at R7. |
-| **Indirect Data Collection Client** | A subfunction of the Application Service Provider that sends data reports at R3, for data the provider collected from UE Applications at R8. It may modify the collected data to meet its configuration. |
-| **Application Server (AS)** | Collects data and reports it at R4. It plays the role of a Network Function when it does so. |
-| **NWDAF** | The primary consumer of processed UE data (R5). |
-| **Event Consumer AF** | Receives data reporting events at R6. It resides in the Application Service Provider. |
+| **Data Collection AF** | Manages the provisioning state for data collection and reporting, processes collected UE data, and realises the Event Exposure Service (TS 26.531 V19.0.0 clause 4.2 (item 2)). When its provisioning state changes, it updates its NF profiles in the NRF. |
+| **Provisioning AF** | Provisions data collection and reporting at R1 (TS 26.531 V19.0.0 clause 4.2 (item 1)). It belongs to the Application Service Provider and may be deployed inside or outside the trusted domain. |
+| **Direct Data Collection Client** | Collects relevant data in the UE and sends data reports at R2, according to a configuration it first obtains at R2 (TS 26.531 V19.0.0 clause 4.2 (item 3)) (TS 26.531 V19.0.0 clause 4.2 (item 3, NOTE 7)). It can be a common middleware component or part of each UE Application. |
+| **UE Application** | Shares relevant data with the Direct Data Collection Client at R7 (TS 26.531 V19.0.0 clause 4.2 (item 4)). |
+| **Indirect Data Collection Client** | A subfunction of the Application Service Provider that sends data reports at R3, for data the provider collected from UE Applications at R8 (TS 26.531 V19.0.0 clause 4.2 (item 5)) (TS 26.531 V19.0.0 clause 4.2 (item 5, NOTE 10)). It may modify the collected data to meet its configuration. |
+| **Application Server (AS)** | Collects data and reports it at R4 (TS 26.531 V19.0.0 clause 4.2 (item 6) and clause 4.3, NOTE 3). It plays the role of a Network Function when it does so. |
+| **NWDAF** | The primary consumer of processed UE data (R5) (TS 26.531 V19.0.0 clause 4.2 (item 7)). |
+| **Event Consumer AF** | Receives data reporting events at R6 (TS 26.531 V19.0.0 clause 4.2 (item 8)). It resides in the Application Service Provider. |
 
 ## Reference points
 
 | Reference point | Between | Purpose | Service |
 | --- | --- | --- | --- |
-| R1 | Provisioning AF and Data Collection AF | What data is collected, how it is sampled and reported, how it is processed, and how it is exposed to event subscribers | Ndcaf_DataReportingProvisioning |
-| R2 | Direct Data Collection Client and Data Collection AF | Obtain the configuration, then send data reports. An encrypted data transfer protocol is required. | Ndcaf_DataReporting |
-| R3 | Indirect Data Collection Client and Data Collection AF | Obtain the configuration, then send data reports | Ndcaf_DataReporting |
-| R4 | AS and Data Collection AF | Obtain the configuration, then send data reports | Ndcaf_DataReporting |
-| R5 | NWDAF and Data Collection AF | Subscribe to data reporting events and receive notifications | Naf_EventExposure (or Nnef_EventExposure across trust domains) |
-| R6 | Event Consumer AF and Data Collection AF | Subscribe to data reporting events and receive notifications | Naf_EventExposure |
+| R1 | Provisioning AF and Data Collection AF (TS 26.531 V19.0.0 clause 4.3 (R1 bullet)) | What data is collected, how it is sampled and reported, how it is processed, and how it is exposed to event subscribers (TS 26.531 V19.0.0 clause 4.3 (R1 bullet)) | Ndcaf_DataReportingProvisioning |
+| R2 | Direct Data Collection Client and Data Collection AF | Obtain the configuration, then send data reports (TS 26.531 V19.0.0 clause 4.3 (R2 bullet)) (TS 26.531 V19.0.0 clause 4.3 (R2 bullet) and clause 4.5.1). An encrypted data transfer protocol is required. | Ndcaf_DataReporting |
+| R3 | Indirect Data Collection Client and Data Collection AF (TS 26.531 V19.0.0 clause 4.3 (R3 bullet)) | Obtain the configuration, then send data reports (TS 26.531 V19.0.0 clause 4.3 (R3 bullet)) | Ndcaf_DataReporting |
+| R4 | AS and Data Collection AF (TS 26.531 V19.0.0 clause 4.3 (R4 bullet)) | Obtain the configuration, then send data reports (TS 26.531 V19.0.0 clause 4.3 (R4 bullet)) | Ndcaf_DataReporting |
+| R5 | NWDAF and Data Collection AF (TS 26.531 V19.0.0 clause 4.3 (R5 bullet)) | Subscribe to data reporting events and receive notifications (TS 26.531 V19.0.0 clause 4.3 (R5 bullets)) | Naf_EventExposure (or Nnef_EventExposure across trust domains) (TS 26.531 V19.0.0 clause 4.3 (R5 bullets) and clause 4.4 (item 4)) |
+| R6 | Event Consumer AF and Data Collection AF (TS 26.531 V19.0.0 clause 4.3 (R6 bullet)) | Subscribe to data reporting events and receive notifications (TS 26.531 V19.0.0 clause 4.3 (R6 bullets)) | Naf_EventExposure |
 | R7 | UE Application and Direct Data Collection Client | A client API on the UE. Not used when the client is embedded in the UE Application. | Specified in TS 26.532, clause 8 |
-| R8 | UE Application and Application Service Provider server | Data collection between the application and its provider | Beyond 3GPP standardisation |
+| R8 | UE Application and Application Service Provider server (TS 26.531 V19.0.0 clause 4.3 (R8 bullet)) | Data collection between the application and its provider (TS 26.531 V19.0.0 clause 4.3 (R8 bullet)) | Beyond 3GPP standardisation |
 
-R2 runs in the user plane, so it does not traverse the 5G System service bus.
+R2 runs in the user plane, so it does not traverse the 5G System service bus (TS 26.531 V19.0.0 clause 4.4, NOTE 2).
 
 ## Where the Data Collection AF is deployed
 
@@ -92,13 +92,13 @@ TS 26.531 documents five collaboration scenarios. Reference point R2 traverses t
 
 | Scenario | Deployment |
 | --- | --- |
-| A | All functions inside the trusted domain. |
-| B | The Application Service Provider functions outside the trusted domain; their interactions with the Data Collection AF are mediated by the NEF. |
-| C | As B, with the AS also outside the trusted domain. |
-| D | The Data Collection AF itself outside the trusted domain; it registers with the NRF via the NEF, and the NWDAF uses Nnef_EventExposure to subscribe to its events. |
-| E | The Direct Data Collection Client deployed as a subfunction of the UE Application. It can be combined with any of the other scenarios. |
+| A | All functions inside the trusted domain (TS 26.531 V19.0.0 clause A.2). |
+| B | The Application Service Provider functions outside the trusted domain; their interactions with the Data Collection AF are mediated by the NEF (TS 26.531 V19.0.0 clause A.3). |
+| C | As B, with the AS also outside the trusted domain (TS 26.531 V19.0.0 clause A.4). |
+| D | The Data Collection AF itself outside the trusted domain; it registers with the NRF via the NEF, and the NWDAF uses Nnef_EventExposure to subscribe to its events (TS 26.531 V19.0.0 clause A.5). |
+| E | The Direct Data Collection Client deployed as a subfunction of the UE Application (TS 26.531 V19.0.0 clause A.6). It can be combined with any of the other scenarios. |
 
-When a function is outside the trusted domain, the NEF exposes the services under its own names: Nnef_DataReportingProvisioning to Provisioning AFs, Nnef_DataReporting to Indirect Data Collection Clients and Application Servers, and Nnef_EventExposure to Event Consumer AFs. When the Data Collection AF itself is outside the trusted domain, the interactions at R1′, R3′, R4′ and R6′ are outside the scope of 3GPP and are expected to be functionally equivalent to those at R1, R3, R4 and R6.
+When a function is outside the trusted domain, the NEF exposes the services under its own names: Nnef_DataReportingProvisioning to Provisioning AFs, Nnef_DataReporting to Indirect Data Collection Clients and Application Servers, and Nnef_EventExposure to Event Consumer AFs (TS 26.531 V19.0.0 clause 4.7.1). When the Data Collection AF itself is outside the trusted domain, the interactions at R1′, R3′, R4′ and R6′ are outside the scope of 3GPP and are expected to be functionally equivalent to those at R1, R3, R4 and R6 (TS 26.531 V19.0.0 clause A.5 and clause 4.4).
 
 ## In 5G Media Streaming
 

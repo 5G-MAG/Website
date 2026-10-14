@@ -24,10 +24,10 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 :::tip[At a glance]
 
-- **The cycle:** a Provisioning AF provisions what to collect; clients obtain a configuration and report; the Data Collection AF processes the reports and exposes events to subscribers.
-- **Control of exposure:** Data Access Profiles define the processing applied before any event leaves the Data Collection AF, along time, user and location.
+- **The cycle:** a Provisioning AF provisions what to collect; clients obtain a configuration and report; the Data Collection AF processes the reports and exposes events to subscribers (TS 26.532 V19.1.0 clause 4.1 (items 2, 4, 5, 6); TS 26.531 V19.0.0 clauses 5.2, 5.4, 5.5, 5.6).
+- **Control of exposure:** Data Access Profiles define the processing applied before any event leaves the Data Collection AF, along time, user and location (TS 26.531 V19.0.0 clause 4.5.2).
 - **APIs:** TS 26.532 specifies Ndcaf_DataReportingProvisioning, Ndcaf_DataReporting and the R7 client API; event exposure uses Naf_EventExposure from TS 29.517.
-- **In 5GMS:** QoE metrics, consumption, dynamic policy and Network Assistance invocations, and media streaming access activity, exposed as five media streaming event types.
+- **In 5GMS:** QoE metrics, consumption, dynamic policy and Network Assistance invocations, and media streaming access activity, exposed as five media streaming event types (TS 29.517 V18.6.0 clause 4.1.1 and clause 5.6.3.3 (table 5.6.3.3-1)).
 
 :::
 
@@ -44,9 +44,9 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 ## Provisioning
 
-The Provisioning AF provisions sets of provisioning information in the Data Collection AF at R1, one for each Event ID it is to expose. This provisioning information embodies the Service Level Agreement between the network operator and the Application Service Provider. The combination of external application identifier and Event ID is unique for a given Data Collection AF.
+The Provisioning AF provisions sets of provisioning information in the Data Collection AF at R1, one for each Event ID it is to expose (TS 26.531 V19.0.0 clause 4.6.1 and clause 4.6.2). This provisioning information embodies the Service Level Agreement between the network operator and the Application Service Provider (TS 26.531 V19.0.0 clause 4.6.2). The combination of external application identifier and Event ID is unique for a given Data Collection AF (TS 26.531 V19.0.0 clause 4.6.1).
 
-Before provisioning, the Provisioning AF creates a Provisioning Session. Under it, it creates Data Reporting Configurations, each for one type of data collection client: Direct, Indirect or Application Server. Destroying a Provisioning Session releases its resources, purges cached data and deletes all its configurations.
+Before provisioning, the Provisioning AF creates a Provisioning Session (TS 26.532 V19.1.0 clause 4.2.3.2.1). Under it, it creates Data Reporting Configurations, each for one type of data collection client: Direct, Indirect or Application Server (TS 26.532 V19.1.0 clause 4.1 (item 2) and clause 4.2.3.3.2). Destroying a Provisioning Session releases its resources, purges cached data and deletes all its configurations (TS 26.532 V19.1.0 clause 4.2.3.2.5).
 
 <details>
 <summary>Ndcaf_DataReportingProvisioning resources (TS 26.532 V19.1.0, table 6.2.1-1)</summary>
@@ -54,19 +54,19 @@ Before provisioning, the Provisioning AF creates a Provisioning Session. Under i
 | Resource | Operations |
 | --- | --- |
 | `/sessions` | CreateSession (POST) |
-| `/sessions/{sessionId}` | RetrieveSession (GET), DestroySession (DELETE) |
+| `/sessions/{sessionId}` | RetrieveSession (GET), DestroySession (DELETE) (TS 26.532 V19.1.0 clause 6.2.1 (table 6.2.1-1)) |
 | `/sessions/{sessionId}/configurations` | CreateConfiguration (POST) |
-| `/sessions/{sessionId}/configurations/{configurationId}` | RetrieveConfiguration (GET), UpdateConfiguration (PUT, PATCH), DestroyConfiguration (DELETE) |
+| `/sessions/{sessionId}/configurations/{configurationId}` | RetrieveConfiguration (GET), UpdateConfiguration (PUT, PATCH), DestroyConfiguration (DELETE) (TS 26.532 V19.1.0 clause 6.2.1 (table 6.2.1-1)) |
 
-The API root is `{apiRoot}/3gpp-ndcaf_data-reporting-provisioning/{apiVersion}`. In Release 17 a configuration was created with POST on `/sessions/{sessionId}/configurations/{configurationId}`.
+The API root is `{apiRoot}/3gpp-ndcaf_data-reporting-provisioning/{apiVersion}` (TS 26.532 V19.1.0 clause 6.2.2.2). In TS 26.532 V17.3.0 the OpenAPI of annex B.3 defines CreateConfiguration as POST on `/sessions/{sessionId}/configurations/{configurationId}`; from V18.5.0 annex B.3 has POST on `/sessions/{sessionId}/configurations` (TS 26.532 V17.3.0 annex B.3 (OpenAPI, CreateConfiguration)).
 
 </details>
 
 ## Client configuration and reporting sessions
 
-Every data collection client first obtains a data collection and reporting configuration from the Data Collection AF, at R2, R3 or R4, before it reports. Whenever the provisioning information or the set of event exposure subscriptions changes, the Data Collection AF makes a new configuration available to clients.
+Every data collection client first obtains a data collection and reporting configuration from the Data Collection AF, at R2, R3 or R4, before it reports (TS 26.531 V19.0.0 clause 4.6.3). Whenever the provisioning information or the set of event exposure subscriptions changes, the Data Collection AF makes a new configuration available to clients (TS 26.531 V19.0.0 clause 5.4).
 
-A client opens a Data Reporting Session, declaring the data domains it is able to report. The session carries the sampling rules, reporting conditions and reporting rules that apply. A session cannot be updated.
+A client opens a Data Reporting Session, declaring the data domains it is able to report (TS 26.532 V19.1.0 clause 7.2.1 (table 7.2.1-1) and clause 7.3.2.1 (supportedDomains)). The session carries the sampling rules, reporting conditions and reporting rules that apply (TS 26.532 V19.1.0 clause 7.3.2.1 (table 7.3.2.1-1)). The Update operation is not permitted on a Data Reporting Session; a client gets an up-to-date configuration with RetrieveSession or from the response to a report (TS 26.532 V19.1.0 clause 7.2.3.3.2 and clause 4.3.2.3.1).
 
 <details>
 <summary>Ndcaf_DataReporting resources (TS 26.532 V19.1.0, table 7.2.1-1)</summary>
@@ -74,24 +74,24 @@ A client opens a Data Reporting Session, declaring the data domains it is able t
 | Resource | Operations |
 | --- | --- |
 | `/sessions` | CreateSession (POST) |
-| `/sessions/{sessionId}` | RetrieveSession (GET), DestroySession (DELETE) |
+| `/sessions/{sessionId}` | RetrieveSession (GET), DestroySession (DELETE) (TS 26.532 V19.1.0 clause 7.2.1 (table 7.2.1-1)) |
 | `/sessions/{sessionId}/report` | Report (POST) |
 
-The API root is `{apiRoot}/3gpp-ndcaf_data-reporting/{apiVersion}`.
+The API root is `{apiRoot}/3gpp-ndcaf_data-reporting/{apiVersion}` (TS 26.532 V19.1.0 clause 7.2.2.2).
 
 </details>
 
 ## Sampling and reporting rules
 
-- **Data sampling rules** say how the parameters associated with the Event ID are collected, for example the sampling period and a location filter.
-- **Data reporting conditions** say when to report: at a regular interval, when a threshold is passed, or on an event such as entering a new location.
-- **Data reporting rules** say how to report, for example the reporting probability (100 percent if omitted) and the data packaging strategy.
+- **Data sampling rules** say how the parameters associated with the Event ID are collected, for example the sampling period and a location filter (TS 26.531 V19.0.0 clause 4.6.1; TS 26.532 V19.1.0 clause 5.4.2.1).
+- **Data reporting conditions** say when to report: at a regular interval, when a threshold is passed, or on an event such as entering a new location (TS 26.532 V19.1.0 clause 5.4.3.2 and clause 5.4.3.3).
+- **Data reporting rules** say how to report, for example the reporting probability (100 percent if omitted) and the data packaging strategy (TS 26.531 V19.0.0 clause 4.6.1; TS 26.532 V19.1.0 clause 5.4.2.2).
 
-Each rule carries the reporting context identifiers that the Data Collection AF assigns to its configurations, so it can apply the matching data exposure restrictions to the data reported.
+Each rule carries the reporting context identifiers that the Data Collection AF assigns to its configurations, so it can apply the matching data exposure restrictions to the data reported (TS 26.532 V19.1.0 clause 4.1).
 
 ## Data reports and data domains
 
-Each data report carries the external application identifier and a non-empty list of records with the parameters collected. Each type of UE data belongs to a logical UE data domain, owned either by the 5G System (the MNO) or by the Application Service Provider.
+Each data report carries the external application identifier and a non-empty list of records with the parameters collected (TS 26.531 V19.0.0 clause 4.6.1 and clause 4.6.4). Each type of UE data belongs to a logical UE data domain, owned either by the 5G System (the MNO) or by the Application Service Provider (TS 26.531 V19.0.0 clause 4.1 and annex B (clause B.2)).
 
 | Data domain (TS 26.532) | Content |
 | --- | --- |
@@ -100,30 +100,30 @@ Each data report carries the external application identifier and a non-empty lis
 | MS_ACCESS_ACTIVITY | 5GMS access activity data |
 | MS_ANBR_NETWORK_ASSISTANCE | ANBR-based Network Assistance invocation data |
 
-A Direct Data Collection Client may flag a report as needing expedited processing. Indirect reporting may be used when no Direct Data Collection Client is available in the UE, or when the Indirect Data Collection Client needs to modify the collected data to meet its configuration.
+A Direct Data Collection Client may flag a report as needing expedited processing (TS 26.531 V19.0.0 clause 5.5 (step 14); TS 26.532 V19.1.0 clause 7.3.2.3). Indirect reporting may be used when no Direct Data Collection Client is available in the UE, or when the Indirect Data Collection Client needs to modify the collected data to meet its configuration (TS 26.531 V19.0.0 clause 5.5).
 
 ## Data Access Profiles
 
-The Provisioning AF restricts the exposure of UE data at R5 and R6 by configuring Data Access Profiles for each Event ID. A Data Access Profile specifies the processing the Data Collection AF performs on the collected UE data to synthesise the event data exposed to the NWDAF and the Event Consumer AF.
+The Provisioning AF restricts the exposure of UE data at R5 and R6 by configuring Data Access Profiles for each Event ID (TS 26.531 V19.0.0 clause 4.5.2). A Data Access Profile specifies the processing the Data Collection AF performs on the collected UE data to synthesise the event data exposed to the NWDAF and the Event Consumer AF (TS 26.531 V19.0.0 clause 4.5.2).
 
-- **Time:** aggregation over a duration. The coarsest level aggregates all event data along the time axis into a single value.
-- **User:** restriction by groups of users.
-- **Location:** restriction by the location of the data collection client during the event.
+- **Time:** aggregation over a duration (TS 26.532 V19.1.0 clause 6.3.2.3 (table 6.3.2.3-1, timeAccessRestrictions)). The coarsest level aggregates all event data along the time axis into a single value (TS 26.531 V19.0.0 clause 4.5.2).
+- **User:** restriction by groups of users (TS 26.531 V19.0.0 clause 4.5.2; TS 26.532 V19.1.0 clause 6.3.2.3 (groupIds)).
+- **Location:** restriction by the location of the data collection client during the event (TS 26.531 V19.0.0 clause 4.5.2).
 
-The aggregation functions are None, Count, Mean, Maximum, Minimum and Sum. With None, all reported records are exposed as individual events. A profile can also restrict which consumer types may receive the events: NWDAF, Event Consumer AF or NEF.
+The aggregation functions are None, Count, Mean, Maximum, Minimum and Sum (TS 26.531 V19.0.0 clause 4.5.2 (table 4.5.2-1)). With None, all reported records are exposed as individual events (TS 26.531 V19.0.0 clause 4.5.2 (table 4.5.2-1)). A profile can also restrict which consumer types may receive the events: NWDAF, Event Consumer AF or NEF (TS 26.532 V19.1.0 clause 6.3.2.3 (targetEventConsumerTypes)).
 
 ## Event exposure
 
-An event consumer, the NWDAF or an Event Consumer AF, subscribes to a type of event exposed by the Data Collection AF. It may add user, location or application filters to see only a subset of what the Data Access Profiles permit. Subscribing to an event type that is not yet provisioned is allowed, but yields no notifications until it is provisioned.
+An event consumer, the NWDAF or an Event Consumer AF, subscribes to a type of event exposed by the Data Collection AF (TS 26.531 V19.0.0 clause 4.6.1). It may add user, location or application filters to see only a subset of what the Data Access Profiles permit (TS 26.531 V19.0.0 clause 4.6.1). Subscribing to an event type that is not yet provisioned is allowed, but yields no notifications until it is provisioned (TS 26.531 V19.0.0 clause 4.6.1).
 
-The Data Collection AF exposes a batch of recent events to consumers as an event exposure notification. When an event is synthesised from several records, its timestamp says when it was synthesised. When a subscription request has no valid access token, it is redirected to an authorisation server, which performs the authorisation for the requested Data Access Profile.
+The Data Collection AF exposes a batch of recent events to consumers as an event exposure notification (TS 26.531 V19.0.0 clause 4.6.1). When an event is synthesised from several records, its timestamp says when it was synthesised (TS 26.531 V19.0.0 clause 4.6.1). When an authorization URL is present in the data exposure restrictions, a subscription request without a valid access token is redirected to an authorization server, which performs the authorization for the requested Data Access Profile (TS 26.531 V19.0.0 clause 4.5.2 and clause 5.8 (step 3)).
 
 ## Consent, security and precedence
 
-- **Consent:** the user is presumed to have consented to the collection, reporting and exposure of its UE data, by means outside the specification. A UE Application may consent to a UE identifier being included in reports; otherwise the client uses a stable, opaque reporting identifier.
-- **Security:** an encrypted data transfer protocol is required at R2. Resource access is authorised with OAuth 2.0 access tokens.
-- **Location data:** collection, reporting and exposure of location-based UE data is expected to comply with regional regulation, and may be further limited by MNO policy.
-- **Precedence:** when operator preconfiguration and Application Service Provider provisioning conflict, the owner of the UE data domain decides. Operator preconfiguration wins for 5G System domains, and Application Service Provider provisioning wins for application-specific domains.
+- **Consent:** the user is presumed to have consented to the collection, reporting and exposure of its UE data, by means outside the specification (TS 26.531 V19.0.0 clause 4.1, NOTE 1). A UE Application may consent to a UE identifier being included in reports; otherwise the client uses a stable, opaque reporting identifier (TS 26.532 V19.1.0 clause 4.4.2; TS 26.531 V19.0.0 clause 5.4 (step 9)).
+- **Security:** an encrypted data transfer protocol is required at R2 (TS 26.531 V19.0.0 clause 4.5.1). Resource access is authorised with OAuth 2.0 access tokens (TS 26.532 V19.1.0 clause 9 (item 3b)).
+- **Location data:** collection, reporting and exposure of location-based UE data is expected to comply with regional regulation, and may be further limited by MNO policy (TS 26.531 V19.0.0 clause 4.1, NOTE 2).
+- **Precedence:** when operator preconfiguration and Application Service Provider provisioning conflict, the owner of the UE data domain decides (TS 26.531 V19.0.0 clause 4.5.4.1). Operator preconfiguration wins for 5G System domains, and Application Service Provider provisioning wins for application-specific domains (TS 26.531 V19.0.0 clauses 4.5.4.2 and 4.5.4.3; annex B clause B.2).
 
 ## In 5G Media Streaming
 
@@ -133,24 +133,24 @@ The Data Collection AF exposes a batch of recent events to consumers as an event
 | --- | --- | --- |
 | QoE metrics (downlink) | Media Session Handler | M5 |
 | Consumption (downlink) | Media Session Handler | M5 |
-| Dynamic policy invocations (downlink) | Logged by the 5GMSd AF | Inside the 5GMS AF |
-| AF-based Network Assistance invocations (downlink, uplink) | Logged by the 5GMS AF | Inside the 5GMS AF |
-| ANBR-based Network Assistance invocations (downlink, uplink) | Media Session Handler | R2 |
-| Media streaming access activity (downlink, uplink) | 5GMS AS | R4 |
+| Dynamic policy invocations (downlink) (TS 26.501 V19.4.0 clause 4.7.2.1 (item 3)) | Logged by the 5GMSd AF (TS 26.501 V19.4.0 clause 4.7.2.1 (item 3)) | Inside the 5GMS AF (TS 26.501 V19.4.0 clause 4.7.2.1 (item 3)) |
+| AF-based Network Assistance invocations (downlink, uplink) (TS 26.501 V19.4.0 clause 4.7.2.1 (item 4) and clause 4.7.2.2 (item 1)) | Logged by the 5GMS AF (TS 26.501 V19.4.0 clause 4.7.2.1 (item 4) and clause 4.7.2.2 (item 1)) | Inside the 5GMS AF (TS 26.501 V19.4.0 clause 4.7.2.1 (item 4)) |
+| ANBR-based Network Assistance invocations (downlink, uplink) (TS 26.501 V19.4.0 clause 4.7.2.1 (item 6) and clause 4.7.2.2 (item 2)) | Media Session Handler | R2 |
+| Media streaming access activity (downlink, uplink) (TS 26.501 V19.4.0 clause 4.7.2.1 (item 5) and clause 4.7.2.2 (item 3)) | 5GMS AS | R4 |
 
-The 5GMS AS obtains its data collection client configuration at R4 when it initialises, and refreshes it periodically. It reports each logged access as a single record, and declares support for the MS_ACCESS_ACTIVITY data domain.
+The 5GMS AS obtains its data collection client configuration at R4 when it initialises, and refreshes it periodically (TS 26.501 V19.4.0 clause 5.11.1 and clause 6.8.1). It reports each logged access as a single record, and declares support for the MS_ACCESS_ACTIVITY data domain (TS 26.501 V19.4.0 clause 5.11.2 and clause 6.8.2; TS 26.512 V19.3.0 clause 4.11.2).
 
 ### What may be processed
 
-A Data Access Profile in a 5GMSd Provisioning Session may apply the time, user and location restriction dimensions to every data type. The aggregation functions allowed differ by data type.
+A Data Access Profile in a 5GMSd Provisioning Session may apply the time, user and location restriction dimensions to every data type (TS 26.501 V19.4.0 clause 4.7.3.1 (table 4.7.3.1-1)). The aggregation functions allowed differ by data type (TS 26.501 V19.4.0 clause 4.7.3.1 (table 4.7.3.1-1)).
 
 | Data type (downlink) | Count | Mean, Maximum, Minimum | Sum |
 | --- | :---: | :---: | :---: |
 | QoE metrics | Yes | Yes | Yes |
-| Consumption | Yes, number of sessions | No | No |
-| Dynamic policy invocations | Yes, number of invocations | No | No |
-| AF-based and ANBR-based Network Assistance invocations | Yes, number of invocations | Yes, on bit rate recommendations | No |
-| Media streaming access activity | Yes, number of sessions | No | No |
+| Consumption | Yes, number of sessions (TS 26.501 V19.4.0 clause 4.7.3.1 (table 4.7.3.1-1, Consumption row, NOTE 2)) | No | No |
+| Dynamic policy invocations | Yes, number of invocations (TS 26.501 V19.4.0 clause 4.7.3.1 (table 4.7.3.1-1, dynamic policy row, NOTE 3)) | No | No |
+| AF-based and ANBR-based Network Assistance invocations (TS 26.501 V19.4.0 clause 4.7.3.1 (table 4.7.3.1-1)) | Yes, number of invocations (TS 26.501 V19.4.0 clause 4.7.3.1 (table 4.7.3.1-1, NOTE 3)) | Yes, on bit rate recommendations (TS 26.501 V19.4.0 clause 4.7.3.1 (table 4.7.3.1-1, NOTE 4)) | No |
+| Media streaming access activity (TS 26.501 V19.4.0 clause 4.7.3.1 (table 4.7.3.1-1)) | Yes, number of sessions (TS 26.501 V19.4.0 clause 4.7.3.1 (table 4.7.3.1-1, NOTE 2)) | No | No |
 
 ### What is exposed
 
@@ -162,7 +162,7 @@ The Data Collection AF in the 5GMS AF exposes these event types, with the Event 
 | Consumption | MS_CONSUMPTION |
 | Network Assistance invocation | MS_NET_ASSIST_INVOCATION |
 | Dynamic policy invocation | MS_DYN_POLICY_INVOCATION |
-| Media streaming access activity | MS_ACCESS_ACTIVITY |
+| Media streaming access activity (TS 29.517 V18.6.0 clause 5.6.3.3 (table 5.6.3.3-1)) | MS_ACCESS_ACTIVITY |
 
 Eligible consumers are the NWDAF, the NEF and the Event Consumer AF of the 5GMS Application Provider (TS 26.501 V19.4.0 clause 5.11.3, TS 26.512 V19.3.0 clause 4.12.1). TS 29.517 V18.6.0 clause 4.2.2.1 lists the NWDAF only for Media Streaming QoE metrics; consumption, Network Assistance invocation, dynamic policy invocation and access activity it lists for the Event Consumer AF or NEF. Each event carries common baseline parameters, such as collection timestamps, sample count and streaming direction. The UE identification is present only for individual records, and only when the data exposure restrictions permit it.
 
