@@ -25,7 +25,7 @@ const COMMUNITY = communityTotals(
   communityStats.projects.filter((p) => PROJECTS_WITH_PAGE.has(p.name)),
   new Set(notOnHubDashboard)
 );
-export const FACT_CLONES = { value: fmt(COMMUNITY.clones), label: 'Clones: unique cloners, counted daily' };
+export const FACT_CLONES = { value: fmt(COMMUNITY.clones), label: 'Clones: developers pulling the code' };
 export const FACT_STARS = { value: fmt(COMMUNITY.stars), label: 'Stars on GitHub, all repositories' };
 export const FACT_FORKS = { value: fmt(COMMUNITY.forks), label: 'Forks of our repositories' };
 export const FACT_VIEWS = { value: fmt(COMMUNITY.views), label: 'Repository page views' };

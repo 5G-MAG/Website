@@ -18,12 +18,10 @@
 // the same approach the original Jekyll script used, since there's no API
 // that returns true lifetime totals.
 //
-// Clones are counted as unique cloners per day (`total_unique_clones`), not
-// as clone operations: GitHub's clone `count` includes every repeated and
-// automated clone (one repository showed 578 clones by 13 cloners in 14 days).
-// That running total starts from the first run of this rule (5 October 2026),
-// seeded with the complete days still inside GitHub's 14-day window, and is
-// what the site shows. `total_clones` (operations) is kept as before.
+// Two clone totals are kept per repository: `total_clones` (every clone operation, the figure the site shows) and
+// `total_unique_clones` (daily unique cloners added up, from 5 October 2026, not shown on the site). GitHub's clone
+// `count` includes repeated and automated clones (one repository showed 578 clones by 13 cloners in 14 days), which
+// is why the unique total is kept alongside.
 //
 // Days are folded in only once they are final. GitHub's traffic API is not complete for the most recent days
 // when the daily job runs (shortly after midnight UTC): from 29 September, when the job began adding each day
