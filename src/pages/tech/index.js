@@ -144,7 +144,7 @@ export default function Home() {
             StandardsLoopDiagram). */}
         <section className={styles.section}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Why It Matters</h2>
+            <h2 className={styles.sectionTitle}>From Specifications to Practice</h2>
             <p className={styles.sectionSubtitle}>
               Understand it. Prove its value. Scale it. Resources produced by 5G-MAG members —
               covering the full cycle from reading a spec to shaping the next one.
