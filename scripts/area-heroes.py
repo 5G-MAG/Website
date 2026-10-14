@@ -64,21 +64,21 @@ def rtc():
 # ---------------------------------------------------------------- Broadcast and Multicast
 def bcast():
     rings = ''.join(
-        f'<circle cx="240" cy="78" r="10" fill="none" stroke="{C}" stroke-width="2.5" opacity="0">'
+        f'<circle cx="240" cy="88" r="10" fill="none" stroke="{C}" stroke-width="2.5" opacity="0">'
         f'<animate attributeName="r" from="10" to="150" dur="3.6s" begin="{-i*1.2:.1f}s" repeatCount="indefinite"/>'
         f'<animate attributeName="opacity" values=".7;0" dur="3.6s" begin="{-i*1.2:.1f}s" repeatCount="indefinite"/></circle>' for i in range(3))
     targets = [(78, 214), (176, 222), (270, 222), (372, 214)]
     r_to = [f'M240 112 C {240 + (x - 240) * .2:.0f} 150, {x + 20} 170, {x + 20} 206' for x, _ in targets]
     r_srv = 'M96 84 L 208 84'
     r_rep = 'M60 170 C 70 262, 200 262, 276 244'
-    body = (f'<clipPath id="cp"><rect width="480" height="310"/></clipPath><g clip-path="url(#cp)">{rings}</g>'
+    body = (f'<clipPath id="cp"><rect x="-300" y="-30" width="1080" height="370"/></clipPath><g clip-path="url(#cp)">{rings}</g>'
             + ''.join(route(r) for r in r_to) + route(r_srv) + route(r_rep, A, '3 6')
             + ''.join(packets(r, 3, 2.4) for r in r_to) + packets(r_srv, 3, 1.8) + packets(r_rep, 3, 3.4, A, 3.5)
             + server(14, 62, .6) + t(38, 130, 'media service', 10)
-            + tower(240, 54, .85)
+            + tower(240, 66, .85)
             + tv(46, 214) + phone(166, 204, .5) + phone(260, 204, .5) + tv(344, 214)
             + f'<circle cx="287" cy="236" r="9" fill="{A}"/><path d="M283 236 l3 3 l6 -7" stroke="{D}" stroke-width="2.4" fill="none" stroke-linecap="round"/>'
-            + t(240, 24, 'broadcast what is common', 11, op='1', bold=True)
+            + t(240, 28, 'broadcast what is common', 11, op='1', bold=True)
             + f'<rect x="66" y="270" width="126" height="20" rx="10" fill="{A}"/>' + t(129, 284, 'unicast where needed', 10, col=D, op='1', bold=True)
             + t(400, 296, 'everyone receives the same', 10))
     return sd.svg(body, '0 0 480 310')
@@ -133,8 +133,11 @@ def ntn():
 
     stars = ''.join(f'<circle cx="{x}" cy="{y}" r="1.6" fill="{W}" opacity=".4">{blink(2 + (x % 3) * .7, .1, -(x % 5) * .4)}</circle>'
                     for x, y in ((60, 30), (118, 52), (196, 24), (290, 44), (352, 22), (416, 40), (452, 20), (24, 62)))
-    ground = (f'<path d="M0 262 Q 240 214 480 262 L480 310 L0 310Z" fill="{D}" fill-opacity=".55"/>'
-              f'<path d="M0 262 Q 240 214 480 262" stroke="{W}" stroke-opacity=".5" stroke-width="2" fill="none"/>')
+    # The ground and the stars reach well past the 480 px frame, so they still fill a wider card.
+    ground = (f'<path d="M-200 275 Q 240 200 680 275 L680 360 L-200 360Z" fill="{D}" fill-opacity=".55"/>'
+              f'<path d="M-200 275 Q 240 200 680 275" stroke="{W}" stroke-opacity=".5" stroke-width="2" fill="none"/>')
+    stars += ''.join(f'<circle cx="{x}" cy="{y}" r="1.6" fill="{W}" opacity=".4">{blink(2.4 + (abs(x) % 3) * .6, .1, -(abs(x) % 5) * .4)}</circle>'
+                     for x, y in ((-70, 40), (-30, 80), (-96, 120), (510, 36), (540, 70), (580, 28), (520, 118), (-60, 18)))
     body = (stars + ground
             + f'<path d="{path}" stroke="{W}" stroke-opacity=".16" stroke-width="1.5" stroke-dasharray="2 7" fill="none"/>'
             + ''.join(beam(ph, 150, 176) + beam(ph, 372, 214) + beam(ph, 300, 232, A) for ph in phases)
