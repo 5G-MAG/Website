@@ -18,7 +18,7 @@ import BasketJumpRow from '@site/src/components/BasketJumpRow';
 import ReleaseCard from '@site/src/components/ReleaseCard';
 import { EventsAgendaPreview } from '@site/src/components/EventsAgenda';
 import { EVENTS_AGENDA } from '@site/src/data/eventsAgenda';
-import { ALL_PROJECTS as projectsData, BASKET_PAGE } from '@site/src/data/baskets';
+import { ALL_PROJECTS as projectsData, BASKET_PAGE, BASKETS } from '@site/src/data/baskets';
 import ShowcaseDiagram from '@site/src/components/ShowcaseDiagram';
 import { sampleRandom } from '@site/src/utils/random';
 import { sortByLatestRelease } from '@site/src/utils/releases';
@@ -116,7 +116,7 @@ const ANIMATION_SLIDES = [
   { name: 'imm', basket: 'immersive-media', alt: 'Animation: a 3D scene streamed to a person in a headset, with their movement flowing back' },
   { name: 'prod', basket: 'connected-media-production', alt: 'Animation: live cameras sending video over a 5G uplink to a production hub' },
   { name: 'sixg', basket: 'towards-6g', alt: 'Animation: media services reaching existing and new services over a 6G system' },
-].map((a) => ({ type: 'animation', name: a.name, alt: a.alt, href: BASKET_PAGE[a.basket] }));
+].map((a) => ({ type: 'animation', name: a.name, alt: a.alt, href: BASKET_PAGE[a.basket], title: BASKETS.find((b) => b.key === a.basket).title }));
 
 const SHOWCASE_SLIDES = [...USE_CASE_PHOTOS, ...ANIMATION_SLIDES, ...PROJECT_CARDS];
 
@@ -188,7 +188,7 @@ function FadingSlideRow({ slides }) {
       activeRef.current = copy;
       setActive(copy);
       setLeaving((l) => l.map((v, k) => (k === slot ? prev[slot] : v)));
-      later(() => setLeaving((l) => l.map((v, k) => (k === slot ? null : v))), 1400);
+      later(() => setLeaving((l) => l.map((v, k) => (k === slot ? null : v))), 2600);
       later(() => step(slot), dwell(next) + slot * 700);
     };
     activeRef.current.forEach((idx, slot) => later(() => step(slot), dwell(idx) + slot * 2500));
@@ -209,7 +209,8 @@ function FadingSlideRow({ slides }) {
               if (!isActive && leaving[slot] !== i) return null;
               return (
                 <Link key={s.name} to={s.href} className={clsx(wrapperClass, styles.fadingAnim,)} aria-label={s.alt} aria-hidden={!isActive} tabIndex={isActive ? undefined : -1}>
-                  <ShowcaseDiagram name={s.name} className={styles.fadingAnimArt} />
+                  <ShowcaseDiagram name={s.name} className={styles.fadingAnimArt} wide />
+                  <span className={styles.fadingCaption}>{s.title} &rarr;</span>
                 </Link>
               );
             }

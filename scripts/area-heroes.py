@@ -99,7 +99,7 @@ def ntn():
         pts.append((x, y))
     path = f'M{p0[0]} {p0[1]} C {p1[0]} {p1[1]}, {p2[0]} {p2[1]}, {p3[0]} {p3[1]}'
     kt = ';'.join(f'{k / n:.4f}' for k in range(n + 1))
-    phases = [0, 1 / 3, 2 / 3]
+    phases = [0, .25, .5, .75]
 
     def rot(seq, ph):
         k = int(round(ph * n)) % n
@@ -107,8 +107,14 @@ def ntn():
         r = full[k:] + full[:k]
         return r + [r[0]]
 
+    def ramp(x, lo, hi, edge):
+        """0 outside [lo, hi], rising and falling over `edge` pixels, so a change of satellite is a cross-fade."""
+        return max(0.0, min(1.0, (x - lo) / edge, (hi - x) / edge))
+
     def satellite(ph):
+        fade = ';'.join(f'{ramp(x, -10, 490, 60):.2f}' for x, _ in pts)
         return (f'<g><animateMotion dur="{dur}s" begin="{-ph * dur:.2f}s" repeatCount="indefinite" path="{path}"/>'
+                f'<animate attributeName="opacity" values="{fade}" keyTimes="{kt}" dur="{dur}s" begin="{-ph * dur:.2f}s" repeatCount="indefinite"/>'
                 f'<rect x="-8" y="-5" width="16" height="10" rx="2" fill="{D}" stroke="{W}" stroke-width="1.5"/>'
                 f'<rect x="-27" y="-3.5" width="17" height="7" rx="1.5" fill="{C}" fill-opacity=".9" stroke="{W}" stroke-opacity=".7"/>'
                 f'<rect x="10" y="-3.5" width="17" height="7" rx="1.5" fill="{C}" fill-opacity=".9" stroke="{W}" stroke-opacity=".7"/>'
@@ -118,11 +124,11 @@ def ntn():
         xs = rot([x for x, _ in pts], ph)
         ys = rot([y for _, y in pts], ph)
         # the beam is drawn only while the satellite is over the middle of the sky
-        vis = [1 if 150 < x < 330 else 0 for x in xs]
+        vis = [round(ramp(x, 120, 360, 70), 2) for x in xs]
         return (f'<line x1="{xs[0]:.1f}" y1="{ys[0]:.1f}" x2="{tx}" y2="{ty}" stroke="{col}" stroke-width="2" stroke-dasharray="5 6" stroke-opacity=".85">'
                 f'<animate attributeName="x1" values="{";".join(f"{v:.1f}" for v in xs)}" keyTimes="{kt}" dur="{dur}s" repeatCount="indefinite"/>'
                 f'<animate attributeName="y1" values="{";".join(f"{v:.1f}" for v in ys)}" keyTimes="{kt}" dur="{dur}s" repeatCount="indefinite"/>'
-                f'<animate attributeName="opacity" values="{";".join(str(v) for v in vis)}" keyTimes="{kt}" dur="{dur}s" calcMode="discrete" repeatCount="indefinite"/>'
+                f'<animate attributeName="opacity" values="{";".join(str(v) for v in vis)}" keyTimes="{kt}" dur="{dur}s" repeatCount="indefinite"/>'
                 f'<animate attributeName="stroke-dashoffset" from="0" to="-22" dur="1s" repeatCount="indefinite"/></line>')
 
     stars = ''.join(f'<circle cx="{x}" cy="{y}" r="1.6" fill="{W}" opacity=".4">{blink(2 + (x % 3) * .7, .1, -(x % 5) * .4)}</circle>'
@@ -130,6 +136,7 @@ def ntn():
     ground = (f'<path d="M0 262 Q 240 214 480 262 L480 310 L0 310Z" fill="{D}" fill-opacity=".55"/>'
               f'<path d="M0 262 Q 240 214 480 262" stroke="{W}" stroke-opacity=".5" stroke-width="2" fill="none"/>')
     body = (stars + ground
+            + f'<path d="{path}" stroke="{W}" stroke-opacity=".16" stroke-width="1.5" stroke-dasharray="2 7" fill="none"/>'
             + ''.join(beam(ph, 150, 176) + beam(ph, 372, 214) + beam(ph, 300, 232, A) for ph in phases)
             + ''.join(satellite(ph) for ph in phases)
             + tower(150, 168, .6) + t(150, 276, 'ground station', 10)
