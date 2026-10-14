@@ -4,7 +4,7 @@ import HubHero from '@site/src/components/HubHero';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import VideoGrid from '@site/src/components/VideoGrid';
 import { ChartRow, iconForCatalogKey } from '@site/src/components/ProjectStatus';
-import BasketJumpRow from '@site/src/components/BasketJumpRow';
+import StandCards from '@site/src/components/StandCards';
 import { BASKET_ACCENT, BASKET_PAGE, STAGE_GROUPS, WHERE_WE_STAND_ROWS } from '@site/src/data/baskets';
 import styles from './index.module.css';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
@@ -183,7 +183,9 @@ export default function Home() {
           <div className="container">
             <h2 className={styles.sectionTitle}>Where We Stand</h2>
             <p className={styles.sectionSubtitle}>What we are working on, and how far along it is.</p>
-            <BasketJumpRow inPage />
+            {/* The overview: one card per area, linking to its block of the full chart below. It replaces the
+                row of area tiles that used to sit here, since each card jumps to the same block. */}
+            <StandCards />
             {STAGE_BASKET_ROWS.map((b) => {
               // 2026-09-27, direct instruction: "only the banner per basket
               // will have color" -- the basket accent now tints only the

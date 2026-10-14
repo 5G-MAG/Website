@@ -1,0 +1,180 @@
+/* One card per technology area, each spelling out every stage by name (a checklist, not a bar), with the area's
+   projects listed below. Moved from the home page to the Technology page. */
+/* Three cards per row (two, then one, on narrower screens); a short last
+   row is centred rather than left-aligned. */
+.standGrid {
+  --stand-cols: 3;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.5rem 0 2.5rem;
+}
+
+.standGrid > * {
+  flex: 0 0 calc((100% - (var(--stand-cols) - 1) * 1rem) / var(--stand-cols));
+  min-width: 0;
+}
+
+@media (max-width: 900px) {
+  .standGrid {
+    --stand-cols: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .standGrid {
+    --stand-cols: 1;
+  }
+}
+
+.standCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-top: 3px solid var(--accent, var(--ifm-color-primary));
+  border-radius: 10px;
+  padding: 0.9rem 1rem 1rem;
+  background: var(--ifm-background-surface-color);
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
+}
+
+.standCard:hover {
+  box-shadow: var(--card-hover-shadow);
+  transform: translateY(-3px);
+}
+
+/* Wraps just the head+checklist (not the whole card anymore, now that
+   the project-icon row below is its own set of links -- an <a> can't
+   nest another <a>). */
+.standCardLink {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+.standCardHead {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.standIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 9px;
+  background: var(--accent, var(--ifm-color-primary));
+}
+
+.standIcon svg {
+  width: 22px;
+  height: 22px;
+  color: #fff;
+}
+
+.standName {
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: var(--ifm-heading-color);
+  line-height: 1.3;
+}
+
+.standChecklist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.standCheckRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--ifm-color-emphasis-500);
+}
+
+.standCheckRowDone {
+  font-weight: 700;
+  color: var(--ifm-heading-color);
+}
+
+.standDot {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 2px solid var(--ifm-color-emphasis-400);
+}
+
+.standDotDone {
+  border-color: var(--accent, var(--ifm-color-primary));
+  background: var(--accent, var(--ifm-color-primary));
+}
+
+/* One icon+name row per project in the basket, each a direct link to
+   that project's own tech_url -- sits below the checklist, separated
+   by a rule, as its own list of link targets outside standCardLink. */
+.standProjectList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-top: 0.15rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.standProjectItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.15rem 0.3rem;
+  margin: 0 -0.3rem;
+  border-radius: 6px;
+  color: inherit !important;
+  text-decoration: none !important;
+  transition: background 0.15s ease;
+}
+
+.standProjectItem:hover {
+  background: var(--ifm-color-emphasis-100);
+  text-decoration: none !important;
+}
+
+.standProjectIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--accent, var(--ifm-color-primary));
+}
+
+.standProjectIcon svg {
+  width: 15px;
+  height: 15px;
+}
+
+.standProjectName {
+  min-width: 0;
+  font-size: 0.875rem;
+  color: var(--ifm-color-emphasis-700);
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.standProjectItem:hover .standProjectName {
+  color: var(--ifm-heading-color);
+}
+
