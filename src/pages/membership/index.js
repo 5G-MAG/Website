@@ -98,7 +98,7 @@ export default function Membership() {
           <div className="container">
             <h2 className={styles.sectionTitle}>Our work at a glance</h2>
             <p className={styles.sectionSubtitle}>Some numbers and examples of our work.</p>
-            <div className="summary-container">
+            <div className="summary-container summary-container--centered">
               {FACTS.map((f) => (
                 <div key={f.label} className="summary-card">
                   <h3>{f.label}</h3>

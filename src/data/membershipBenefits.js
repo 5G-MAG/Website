@@ -42,7 +42,7 @@ export const BENEFITS = [
   },
   {
     title: 'Mutualised effort to grow your project',
-    body: 'From idea to reference code to demo and trial, on shared effort.',
+    body: 'Build once, together, instead of funding the same work alone.',
     icon: (
       <>
         <path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
@@ -56,7 +56,7 @@ export const BENEFITS = [
   },
   {
     title: 'Exposure at events, demos and trials',
-    body: 'Build once, together, instead of funding the same work alone.',
+    body: 'From idea to reference code to demo and trial, on shared effort.',
     href: '/events',
     icon: (
       <>

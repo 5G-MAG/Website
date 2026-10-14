@@ -399,6 +399,65 @@
   margin-top: 5px;
 }
 
+/* Centred figure tiles (Membership, "Our work at a glance"): the number first and large on one line across a row, the
+   label under it, the content centred horizontally in every tile, and short last rows centred instead of left-aligned. Four across, then three, then
+   two. Other pages keep the plain summary-card style above. */
+.summary-container--centered {
+  --tile-cols: 4;
+  justify-content: center;
+  gap: 1.25rem;
+  margin: 1.75rem 0 0;
+}
+.summary-container--centered .summary-card {
+  flex: 0 0 calc((100% - (var(--tile-cols) - 1) * 1.25rem) / var(--tile-cols));
+  min-width: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.35rem;
+  min-height: 9.5rem;
+  padding: 1.6rem 1rem 1.25rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+}
+.summary-container--centered .summary-value {
+  order: -1;
+  margin: 0;
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+.summary-container--centered .summary-card h3 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  line-height: 1.35;
+}
+.summary-container--centered .stats-sub {
+  font-size: 0.8rem;
+}
+@media (max-width: 1000px) {
+  .summary-container--centered {
+    --tile-cols: 3;
+  }
+}
+@media (max-width: 640px) {
+  .summary-container--centered {
+    --tile-cols: 2;
+    gap: 0.75rem;
+  }
+  .summary-container--centered .summary-card {
+    flex-basis: calc((100% - 0.75rem) / 2);
+    min-height: 8rem;
+  }
+  .summary-container--centered .summary-value {
+    font-size: 2rem;
+  }
+}
+
 /* All-caps labels ("MEMBERS AND DEVELOPERS COMBINED") wrap to three lines
    at phone widths, spending most of the card's height on the label
    instead of the number (2026-08-24 design audit). Sentence case instead
