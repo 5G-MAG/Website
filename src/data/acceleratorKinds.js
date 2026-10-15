@@ -45,8 +45,8 @@ export const KINDS = [
   {
     id: 'playgrounds',
     title: 'Playgrounds',
-    desc: 'Try a technology with nothing to install.',
-    disabled: true,
+    desc: 'Try a technology with nothing to install. Coming soon.',
+    href: '/playgrounds',
     icon: svg(['M7 4v16l13 -8l-13 -8']),
   },
   {

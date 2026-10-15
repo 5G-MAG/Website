@@ -123,7 +123,7 @@ const ANIMATION_SLIDES = [
   { name: 'network', basket: 'content-delivery', anchor: 'quality', title: 'Network-assisted streaming', alt: 'Picture: a phone and the network helping each other for better streaming' },
   { name: 'broadcast', basket: 'broadcast-multicast', anchor: 'hybrid', title: 'Hybrid broadcast and unicast delivery', alt: 'Picture: broadcast for what is common and unicast where needed' },
   { name: 'ai', basket: 'towards-6g', anchor: 'ai-traffic', title: 'AI traffic characterization', alt: 'Animation: an AI app talking to a model over an emulated network while the traffic is captured' },
-  { name: 'vops', basket: 'content-delivery', href: '/testbeds/vops', title: 'Video Operation Points', alt: 'Picture: a video bitstream checked against an operation point, with a pass or fail for every assertion' },
+  { name: 'vops', basket: 'content-delivery', href: '/validation/vops', title: 'Video Operation Points', alt: 'Picture: a video bitstream checked against an operation point, with a pass or fail for every assertion' },
 ].map((a) => {
   const basket = BASKETS.find((b) => b.key === a.basket);
   return {

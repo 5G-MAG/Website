@@ -5743,7 +5743,7 @@
     },
     {
       "name": "VOPS Conformance Validator",
-      "doc_url": "/testbeds/vops/",
+      "doc_url": "/validation/vops/",
       "repos": [
         {
           "repo": "vops-conformance-validator",

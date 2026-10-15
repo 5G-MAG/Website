@@ -606,7 +606,7 @@
       "name": "VOPS Conformance Validator",
       "type": "validation-tool",
       "displayName": "VOPS Conformance Validator",
-      "doc_url": "/testbeds/vops/",
+      "doc_url": "/validation/vops/",
       "tech_url": "/tech/vops",
       "standards_url": "/standards/vops",
       "tagline": "Validates video bitstreams against the operation points of 3GPP TS 26.265",

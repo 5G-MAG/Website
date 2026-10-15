@@ -291,6 +291,17 @@ ${JSON.stringify(item, null, 2)}`,
 // the two aria-* keys) straight onto the underlying <Link>/<a>, so this
 // needs no swizzle of that component. `preview.subtitle` is optional (News
 // has none) so the paragraph is only rendered when there is one to show.
+// The items of a section menu in the order given, split where `group` changes (items without one stay together).
+function itemGroups(items) {
+  const out = [];
+  items.forEach((it) => {
+    const last = out[out.length - 1];
+    if (last && last.name === (it.group || null)) last.items.push(it);
+    else out.push({ name: it.group || null, items: [it] });
+  });
+  return out;
+}
+
 function NavDropdownItem({ item, preview }) {
   const [expanded, setExpanded] = useState(false);
   const link = renderNavbarItem({ ...item, 'aria-haspopup': 'true', 'aria-expanded': expanded });
@@ -310,16 +321,21 @@ function NavDropdownItem({ item, preview }) {
         aria-label={`${preview.title} quick links`}
       >
         <SectionHeadCard title={preview.menuTitle || preview.title} subtitle={preview.subtitle} href={preview.titleHref} icon={SECTION_ICONS[preview.titleHref]} />
-        <ul className={styles.navFeatured}>
-          {preview.items.map((sub) => (
-            <li key={sub.href}>
-              <Link to={sub.href} className={styles.navFeaturedCard}>
-                <span className={clsx(styles.navAreaIcon, styles.navHeadIcon)}><NavItemIcon href={sub.href} size={20} /></span>
-                {sub.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        {itemGroups(preview.items).map((grp) => (
+          <React.Fragment key={grp.name || 'all'}>
+            {grp.name && <div className={styles.navGroupLabel}>{grp.name}</div>}
+            <ul className={styles.navFeatured}>
+              {grp.items.map((sub) => (
+                <li key={sub.href}>
+                  <Link to={sub.href} className={styles.navFeaturedCard}>
+                    <span className={clsx(styles.navAreaIcon, styles.navHeadIcon)}><NavItemIcon href={sub.href} size={20} /></span>
+                    {sub.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </React.Fragment>
+        ))}
       </div>
     </span>
   );
@@ -356,7 +372,7 @@ const NAV_ITEM_ICONS = {
   '/workshops': ['M3 4l18 0', 'M4 4v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-10', 'M12 16l0 4', 'M9 20l6 0', 'M8 12l3 -3l2 2l3 -3'],
   '/deploy/5g-broadcast-plugfest': 'antenna-signal',
   '/validation': ['M9.615 20h-2.615a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8', 'M14 19l2 2l4 -4', 'M9 8h4', 'M9 12h2'],
-  '/developer#playgrounds': ['M7 4v16l13 -8l-13 -8'],
+  '/playgrounds': ['M7 4v16l13 -8l-13 -8'],
   '/kits': ['M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5', 'M12 12l8 -4.5', 'M12 12l0 9', 'M12 12l-8 -4.5', 'M16 5.25l-8 4.5'],
   '/developer#platforms': 'tool',
   '/deploy/testing': ['M9.615 20h-2.615a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8', 'M14 19l2 2l4 -4', 'M9 8h4', 'M9 12h2'],

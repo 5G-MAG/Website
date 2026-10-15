@@ -498,6 +498,21 @@ Hide color mode toggle in small viewports
   color: var(--ifm-color-emphasis-900);
 }
 
+.navGroupLabel {
+  margin: 0.85rem 0 0.4rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.navGroupLabel + .navFeatured {
+  margin-top: 0;
+}
+
 .navFeaturedCard:hover {
   border-color: var(--ifm-color-primary);
   color: var(--ifm-color-primary);
