@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavbarMobileSidebar } from '@docusaurus/theme-common/internal';
 import NavbarItem from '@theme/NavbarItem';
 import { useNavbarItems, MOBILE_GLOBAL_ITEMS } from '../../../navItems';
-import { SECTION_NAV, SOLUTIONS_ITEMS, TECHNOLOGY_GROUPS, FACTORY_TOOL_AREAS, FACTORY_VALIDATION_AREAS, FACTORY_TESTBED_AREAS, FACTORY_PLATFORM_AREAS } from '../../../../data/sectionNav';
+import { SECTION_NAV, SOLUTIONS_ITEMS, TECHNOLOGY_GROUPS, FACTORY_TOOL_AREAS, FACTORY_VALIDATION_AREAS, FACTORY_TESTBED_AREAS } from '../../../../data/sectionNav';
 
 // Docusaurus's stock PrimaryMenu reads items straight from
 // useThemeConfig().navbar.items (a static config array) — since the
@@ -71,7 +71,6 @@ export default function NavbarMobilePrimaryMenu() {
                   ['Reference Tools', '/reference-tools', FACTORY_TOOL_AREAS],
                   ['Validation Tools', '/validation', FACTORY_VALIDATION_AREAS],
                   ['Testbeds', '/testbeds', FACTORY_TESTBED_AREAS],
-                  ['Platforms', '/software#platforms', FACTORY_PLATFORM_AREAS],
                 ].map(([title, href, areas]) => (
                   <React.Fragment key={title}>
                     <NavbarItem mobile to={href} label={title}
@@ -100,8 +99,6 @@ export default function NavbarMobilePrimaryMenu() {
                 <NavbarItem mobile to="/kits" label="Deployment Kits (coming soon)"
                   className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
                 <NavbarItem mobile to="/developer-tools" label="Developer Tools"
-                  className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
-                <NavbarItem mobile to="/tutorials" label="Tutorials"
                   className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
               </>
             ) : item.to === '/developer' ? (

@@ -72,19 +72,10 @@ const toolRow = (p) => (isReferenceTool(p) && hasCode(p)
 const validationRow = (p) => (isValidationTool(p) && p.doc_url
   ? { label: displayNameOf(p), icon: p.icon, href: stripSlash(p.doc_url) } : null);
 const testbedRow = (p) => (isTestbed(p) ? { label: displayNameOf(p), icon: p.icon, href: stripSlash(p.doc_url) } : null);
-// The Software Factory menu, kind by kind. Reference Tools, Validation Tools and Testbeds are laid out area by area;
-// Platforms is one card (3GPP RAN and Core Platforms, with the 5G Core Service Consumers inside it, and Common Tools,
-// the holding area whose repositories move into the projects). Playgrounds and Deployment Kits do not exist yet.
+// The Software Factory's kinds, area by area, for the mobile menu. Playgrounds and Deployment Kits do not exist yet.
 export const FACTORY_TOOL_AREAS = cardsBy(PROJECTS, toolRow);
 export const FACTORY_VALIDATION_AREAS = cardsBy(ALL_PROJECTS, validationRow);
 export const FACTORY_TESTBED_AREAS = cardsBy(ALL_PROJECTS, testbedRow);
-export const FACTORY_PLATFORM_AREAS = [{
-  title: 'Platforms',
-  icon: 'tool',
-  accent: '#7a8795',
-  items: ALL_PROJECTS.filter((p) => (isPlatform(p) && !p.partOf) || isCommonTools(p))
-    .map((p) => (p.doc_url ? { label: displayNameOf(p), icon: p.icon, href: stripSlash(p.doc_url) } : null)).filter(Boolean),
-}].filter((g) => g.items.length);
 
 // The two areas with a single project each, shown as half-height cards stacked in one column of the Solutions menu.
 export const HALF_AREAS = ['ntn', 'towards-6g'];
@@ -150,9 +141,7 @@ export const SECTION_NAV = [
       { label: 'Reference Tools', href: '/reference-tools', featured: true },
       { label: 'Validation Tools', href: '/validation', featured: true },
       { label: 'Testbeds', href: '/testbeds', featured: true },
-      { label: 'Platforms', href: '/software#platforms', featured: true },
       { label: 'Developer Tools', href: '/developer-tools', featured: true },
-      { label: 'Tutorials', href: '/tutorials', featured: true },
       { label: 'Playgrounds (coming soon)', href: '/software#playgrounds' },
       { label: 'Deployment Kits (coming soon)', href: '/kits' },
     ],
