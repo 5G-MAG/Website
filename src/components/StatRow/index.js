@@ -9,7 +9,7 @@ export default function StatRow({ title, subtitle, facts, alt = false, id }) {
       <div className="container">
         <h2 className={styles.sectionTitle}>{title}</h2>
         {subtitle && <p className={styles.sectionSubtitle}>{subtitle}</p>}
-        <div className="summary-container">
+        <div className="summary-container summary-container--centered">
           {facts.map((f) => (
             <div key={f.label} className="summary-card">
               <h3>{f.label}</h3>

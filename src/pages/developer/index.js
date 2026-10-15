@@ -75,7 +75,7 @@ const PRODUCT_TYPES = [
   },
   {
     icon: 'Licences',
-    label: 'Licences',
+    label: 'Licence Model',
     description: 'The 5G-MAG Public License and the contributor agreements.',
     href: '/license',
   },
