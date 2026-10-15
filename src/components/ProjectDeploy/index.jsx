@@ -43,7 +43,7 @@ export default function ProjectDeploy({ slug }) {
             <Link key="learn" className="button button--primary" to={project.tech_url}>Learn</Link>
           ),
           <Link key="implement" className="button button--outline button--primary" to={project.doc_url}>Implement</Link>,
-          <Link key="all" className="button button--outline button--primary" to="/software#kits">All Deployment Kits</Link>,
+          <Link key="all" className="button button--outline button--primary" to="/kits">All Deployment Kits</Link>,
         ].filter(Boolean)}
       />
       <main>

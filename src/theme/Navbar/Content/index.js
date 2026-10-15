@@ -371,7 +371,7 @@ const NAV_ITEM_ICONS = {
   '/deploy/5g-broadcast-plugfest': 'antenna-signal',
   '/validation': ['M9.615 20h-2.615a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8', 'M14 19l2 2l4 -4', 'M9 8h4', 'M9 12h2'],
   '/software#playgrounds': ['M7 4v16l13 -8l-13 -8'],
-  '/software#kits': ['M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5', 'M12 12l8 -4.5', 'M12 12l0 9', 'M12 12l-8 -4.5', 'M16 5.25l-8 4.5'],
+  '/kits': ['M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5', 'M12 12l8 -4.5', 'M12 12l0 9', 'M12 12l-8 -4.5', 'M16 5.25l-8 4.5'],
   '/software#platforms': 'tool',
   '/deploy/testing': ['M9.615 20h-2.615a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8', 'M14 19l2 2l4 -4', 'M9 8h4', 'M9 12h2'],
   '/deploy#demos': ['M7 4v16l13 -8l-13 -8'],
@@ -582,7 +582,7 @@ const FACTORY_RAIL = [
   { key: 'validation', title: 'Validation Tools', subtitle: 'Check conformance to a specification.', href: '/validation' },
   { key: 'testbeds', title: 'Testbeds and Evaluation Frameworks', subtitle: 'Test environments and evaluation frameworks.', href: '/testbeds' },
   { key: 'playgrounds', title: 'Playgrounds', subtitle: 'Try a technology with nothing to install.', href: '/software#playgrounds' },
-  { key: 'kits', title: 'Deployment Kits', subtitle: 'Packages and images to put into a product.', href: '/software#kits' },
+  { key: 'kits', title: 'Deployment Kits', subtitle: 'Packages and images to put into a product.', href: '/kits' },
   { key: 'platforms', title: 'Platforms', subtitle: '3GPP RAN and Core Platforms, Common Tools.', href: '/software#platforms' },
   { key: 'tutorials', title: 'Tutorials', subtitle: 'How to run the tools.', href: '/tutorials' },
 ];

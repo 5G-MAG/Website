@@ -97,7 +97,7 @@ export default function NavbarMobilePrimaryMenu() {
                 ))}
                 <NavbarItem mobile to="/software#playgrounds" label="Playgrounds (coming soon)"
                   className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
-                <NavbarItem mobile to="/software#kits" label="Deployment Kits (coming soon)"
+                <NavbarItem mobile to="/kits" label="Deployment Kits (coming soon)"
                   className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
                 <NavbarItem mobile to="/tutorials" label="Tutorials"
                   className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
