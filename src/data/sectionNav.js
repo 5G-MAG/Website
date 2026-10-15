@@ -142,7 +142,7 @@ export const SECTION_NAV = [
   // The Software Factory: what 5G-MAG builds, kind by kind. Reference Tools and Testbeds keep their own hubs; the
   // Software Factory page lists every kind. Tutorials explain how to run the tools, so they sit here.
   {
-    prefixes: ['/software', '/reference-tools', '/testbeds', '/validation', '/kits', '/tutorials'],
+    prefixes: ['/software', '/reference-tools', '/testbeds', '/validation', '/kits', '/developer-tools', '/tutorials'],
     title: 'Software Factory',
     titleHref: '/software',
     subtitle: 'Open-source software and tools built from the specifications.',
@@ -150,20 +150,20 @@ export const SECTION_NAV = [
       { label: 'Reference Tools', href: '/reference-tools', featured: true },
       { label: 'Validation Tools', href: '/validation', featured: true },
       { label: 'Testbeds and Evaluation Frameworks', href: '/testbeds', featured: true },
+      { label: 'Developer Tools', href: '/developer-tools', featured: true },
       { label: 'Tutorials', href: '/tutorials', featured: true },
     ],
   },
   // The Software Accelerator Programme: the community and the process that build the Software Factory. Its long
   // name, Media Connectivity Software Accelerator, heads the panel of the top bar.
   {
-    prefixes: ['/developer', '/developer-tools', '/early-access', '/community', '/contributing', '/license'],
+    prefixes: ['/developer', '/early-access', '/community', '/contributing', '/license'],
     title: 'Software Accelerator',
     menuTitle: 'Media Connectivity Software Accelerator',
     titleHref: '/developer',
     subtitle: 'The programme and community that build the Software Factory.',
     items: [
       { label: 'Developer Community', href: '/community', featured: true },
-      { label: 'Developer Tools', href: '/developer-tools', featured: true },
       { label: 'Early Access', href: '/early-access', featured: true },
       { label: 'License', href: '/license' },
       { label: 'Community Activity', href: '/community/activity' },

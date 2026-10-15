@@ -584,6 +584,7 @@ const FACTORY_RAIL = [
   { key: 'playgrounds', title: 'Playgrounds', subtitle: 'Try a technology with nothing to install.', href: '/software#playgrounds' },
   { key: 'kits', title: 'Deployment Kits', subtitle: 'Packages and images to put into a product.', href: '/kits' },
   { key: 'platforms', title: 'Platforms', subtitle: '3GPP RAN and Core Platforms, Common Tools.', href: '/software#platforms' },
+  { key: 'devtools', title: 'Developer Tools', subtitle: 'Tools that help developers do their work.', href: '/developer-tools' },
   { key: 'tutorials', title: 'Tutorials', subtitle: 'How to run the tools.', href: '/tutorials' },
 ];
 
@@ -624,6 +625,16 @@ function FactoryMenu({ item, preview }) {
     detail = <AreaCards areas={FACTORY_TESTBED_AREAS} />;
   } else if (active === 'platforms') {
     detail = <AreaCards areas={FACTORY_PLATFORM_AREAS} />;
+  } else if (active === 'devtools') {
+    detail = (
+      <div className={styles.navCardGrid3}>
+        <Link to="/developer-tools" className={styles.navFeatureCard}>
+          <NavItemIcon href="/developer-tools" size={26} />
+          <b>Developer Tools</b>
+          <small>Tools for 5G-MAG members that support the transition of standards into deployments.</small>
+        </Link>
+      </div>
+    );
   } else if (active === 'tutorials') {
     detail = (
       <div className={styles.navCardGrid3}>

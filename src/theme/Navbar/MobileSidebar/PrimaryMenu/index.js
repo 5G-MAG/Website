@@ -99,6 +99,8 @@ export default function NavbarMobilePrimaryMenu() {
                   className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
                 <NavbarItem mobile to="/kits" label="Deployment Kits (coming soon)"
                   className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
+                <NavbarItem mobile to="/developer-tools" label="Developer Tools"
+                  className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
                 <NavbarItem mobile to="/tutorials" label="Tutorials"
                   className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
               </>

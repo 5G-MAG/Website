@@ -80,12 +80,6 @@ const PRODUCT_TYPES = [
     href: '/license',
   },
   {
-    icon: 'Developer Tools',
-    label: 'Developer Tools',
-    description: 'Tools for 5G-MAG members that support the transition of standards into deployments.',
-    href: '/developer-tools',
-  },
-  {
     icon: 'Developer Exchanges',
     label: 'Developer Exchanges',
     description: 'Recordings of the developer exchanges.',
@@ -261,7 +255,7 @@ export default function Home() {
         </section>
 
         {/* Product Types -- the actual browsable destinations (Reference
-            Tools, Testbeds, Tutorials, Developer Tools), the cards after Why It Matters. */}
+            Tools, Testbeds, Tutorials), the cards after Why It Matters. */}
         <section className={clsx(styles.section, styles.sectionAlt)}>
           <div className="container">
             <h2 className={styles.sectionTitle}>The programme</h2>

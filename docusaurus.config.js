@@ -414,7 +414,6 @@ const config = {
           title: 'Software Accelerator',
           items: [
             { label: 'Overview', to: '/developer' },
-            { label: 'Developer Tools', to: '/developer-tools' },
             { label: 'Developer Exchanges', to: '/developer/exchanges' },
             { label: 'Early Access', to: '/early-access' },
             { label: 'Developer Community', to: '/community' },
@@ -428,6 +427,7 @@ const config = {
             { label: 'Reference Tools', to: '/reference-tools' },
             { label: 'Validation Tools', to: '/validation' },
             { label: 'Testbeds', to: '/testbeds' },
+            { label: 'Developer Tools', to: '/developer-tools' },
             { label: 'Tutorials', to: '/tutorials' },
           ],
         },

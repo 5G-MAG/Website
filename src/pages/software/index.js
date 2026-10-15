@@ -80,6 +80,13 @@ const KINDS = [
     icon: svg(['M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5']),
   },
   {
+    id: 'devtools',
+    title: 'Developer Tools',
+    desc: 'Tools for 5G-MAG members that support the transition of standards into deployments. Not a platform, and not part of a project.',
+    href: '/developer-tools',
+    icon: svg(['M3 19a2 2 0 1 0 4 0a2 2 0 0 0 -4 0', 'M19 7a2 2 0 1 0 0 -4a2 2 0 0 0 0 4', 'M11 19h5.5a3.5 3.5 0 0 0 0 -7h-8a3.5 3.5 0 0 1 0 -7h4.5']),
+  },
+  {
     id: 'tutorials',
     title: 'Tutorials',
     desc: 'Step-by-step guides to run the Reference Tools.',
