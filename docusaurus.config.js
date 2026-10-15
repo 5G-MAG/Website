@@ -398,7 +398,6 @@ const config = {
             { label: 'Partnerships', to: '/partnerships' },
             { label: 'Contact', to: '/contact' },
             { label: 'Membership', to: '/membership' },
-            { label: 'Privacy Notice', to: '/privacy' },
           ],
         },
         {
@@ -415,7 +414,6 @@ const config = {
             { label: 'Overview', to: '/standards' },
             { label: 'Requirements towards SDOs', to: '/standards/requirements' },
             { label: 'Liaison Statements & Inputs', to: '/ls' },
-            { label: 'GitHub Standards', href: 'https://github.com/5G-MAG/Standards' },
           ],
         },
         {
