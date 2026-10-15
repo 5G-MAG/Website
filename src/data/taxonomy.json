@@ -113,7 +113,15 @@
         "rt-mbms-application",
         "rt-mbms-application-provider",
         "rt-mbms-bmsc",
-        "rt-mbms-gw"
+        "rt-mbms-gw",
+        {
+          "name": "rt-mbms-mw",
+          "branch": "development"
+        },
+        {
+          "name": "rt-wui",
+          "branch": "development"
+        }
       ],
       "releases_slug": "#repositories--releases",
       "contributors": [
@@ -1180,6 +1188,40 @@
           "Linux"
         ],
         "public": false,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-mbms-mw",
+        "display_name": "MBMS Middleware",
+        "description": "This repository holds the MBMS Middleware.",
+        "repo_url": "https://github.com/5G-MAG/rt-mbms-mw",
+        "branch": "development",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [],
+        "software": [
+          "Linux"
+        ],
+        "public": true,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-wui",
+        "display_name": "MBMS Web User Interface",
+        "description": "A graphical web interface with a control display for the MBMS Modem and MBMS Middleware, with basic browser-based HLS playback of the manifest and segments provided by the middleware, using hls.js.",
+        "repo_url": "https://github.com/5G-MAG/rt-wui",
+        "branch": "development",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [],
+        "software": [
+          "Web"
+        ],
+        "public": true,
         "is_auxiliary": false
       }
     ],
