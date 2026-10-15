@@ -749,7 +749,7 @@
       "name": "3GPP RAN and Core Platforms",
       "type": "platform",
       "doc_url": "/reference-tools/3gpp-platforms/",
-      "tech_url": null,
+      "tech_url": "/tech/5g-core/overview",
       "standards_url": "/standards/5g-core",
       "image": "/assets/images/projects/3gpp-platforms.png",
       "releases_slug": "#repositories--releases",

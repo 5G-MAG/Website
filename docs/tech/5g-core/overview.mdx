@@ -1,0 +1,49 @@
+---
+title: 5G Core Service Consumers Overview
+sidebar_position: 0
+sidebar_label: Overview
+hide_title: true
+description: The 5G Core service APIs that 5G-MAG components consume, which Network Function offers each, and where each is specified.
+---
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+  <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />
+  <path d="M9 17l0 -5" />
+  <path d="M12 17l0 -1" />
+  <path d="M15 17l0 -3" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Technical Analysis</span>
+<h1>5G Core Service Consumers</h1>
+</div>
+</div>
+
+The 5G Core is made of Network Functions, each offering services through service-based interfaces. A component that needs one of those services acts as the **NF service consumer** of it. The 5G Core Service Consumers libraries package that consumer side so that different 5G-MAG components can reuse it, for example an Application Function calling the PCF, or the MBS Function calling the MB-SMF. Only the Network Functions that 5G Media Streaming and 5G MBS use are covered.
+
+## The services consumed
+
+| Network Function | Service | Specification | Service operations |
+| --- | --- | --- | --- |
+| PCF | `Npcf_PolicyAuthorization` | TS 29.514 V20.1.0 clause 4.2 | Create, Update, Delete, Notify, Subscribe and Unsubscribe (clauses 4.2.2 to 4.2.7) |
+| BSF | `Nbsf_Management` | TS 29.521 V20.1.0 clause 4.2 | Register, Deregister, Discovery, Update, Subscribe, Unsubscribe and Notify (clauses 4.2.2 to 4.2.8) |
+| MB-SMF | `Nmbsmf_TMGI` | TS 29.532 V20.0.0 clause 5.2.2 | TMGI Allocate and TMGI Deallocate (clauses 5.2.2.2 and 5.2.2.3) |
+| MB-SMF | `Nmbsmf_MBSSession` | TS 29.532 V20.0.0 clause 5.3.2 | Create, Update, Release, ContextUpdate, StatusSubscribe, StatusUnsubscribe, StatusNotify, ContextStatusSubscribe, ContextStatusUnSubscribe and ContextStatusNotify (clauses 5.3.2.2 to 5.3.2.11) |
+| NRF | `Nnrf_NFDiscovery` | TS 29.510 V19.8.0 clause 5.3.2 | NFDiscover, SCPDomainRoutingInfoGet, SCPDomainRoutingInfoSubscribe, SCPDomainRoutingInfoNotify and SCPDomainRoutingInfoUnSubscribe (clauses 5.3.2.2 to 5.3.2.6) |
+
+## What each library consumes
+
+- **PCF library** (`libscpcf`): an Application Function asks the PCF to change the network routing policy of the traffic flows of a UE's PDU session by creating an application session context, with `Npcf_PolicyAuthorization` at reference point N5.
+- **BSF library** (`libscbsf`): finds which PCF manages the PDU session of a UE, identified by its IP address, with `Nbsf_Management`; the BSF itself is found by asking the NRF.
+- **MB-SMF library** (`libscmbsmf`): allocates and deallocates TMGIs with `Nmbsmf_TMGI`, and creates, modifies and destroys MBS Sessions and subscribes to their events with `Nmbsmf_MBSSession`, at reference point Nmb1.
+
+These three descriptions are those of the project's own README; the specifications above define the services.
+
+## Related
+
+- [Standards: 5G Core Service Consumers](/standards/5g-core)
+- [Implementation Detail](/reference-tools/3gpp-platforms/implementation)
+- [Technical Analysis: 5G Media Streaming](/tech/5gms)
+- [Technical Analysis: 5G Multicast Broadcast Services](/tech/5g-mbs)

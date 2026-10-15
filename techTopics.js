@@ -303,6 +303,13 @@ const ALL_TOPICS = [
     standards: [{ doc: 'standards/ai-in-media-services', label: 'Standards: AI in Media Services' }],
   },
   {
+    label: '5G Core Service Consumers',
+    techHref: '/tech/5g-core/overview',
+    autogen: '5g-core',
+    techOverviewDoc: '5g-core/overview',
+    standards: [{ doc: 'standards/5g-core', label: 'Standards: 5G Core Service Consumers' }],
+  },
+  {
     label: 'Video Operation Points',
     techHref: '/tech/vops',
     autogen: 'vops',
