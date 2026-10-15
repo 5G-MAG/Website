@@ -429,12 +429,8 @@ const config = {
             { label: 'Reference Tools', to: '/reference-tools' },
             { label: 'Validation Tools', to: '/validation' },
             { label: 'Testbeds', to: '/testbeds' },
-            { label: 'Developer Tools', to: '/developer-tools' },
-            { label: 'Tutorials', to: '/tutorials' },
-            { label: 'Developer Exchanges', to: '/developer/exchanges' },
-            { label: 'Early Access', to: '/early-access' },
             { label: 'Developer Community', to: '/community' },
-            { label: 'Open-Source Licenses', to: '/license' },
+            { label: 'Early Access', to: '/early-access' },
           ],
         },
         {
@@ -446,9 +442,7 @@ const config = {
           items: [
             { label: 'All Videos', to: '/videos' },
             { label: 'Workshops', to: '/workshops' },
-            { label: 'Developer Exchanges', to: '/developer/exchanges' },
             { label: 'Dev Public Call', to: '/public-call' },
-            { label: 'Technology Exchange', to: '/tech/exchanges' },
           ],
         },
         {
@@ -456,7 +450,6 @@ const config = {
           items: [
             { label: 'Events', to: '/events' },
             { label: 'News', to: '/news' },
-            { label: 'News RSS feed', href: 'https://www.5g-mag.com/news/rss.xml' },
             { label: 'Podcast', to: '/podcast' },
             { label: 'Magazine', to: '/magazine' },
             { label: 'Subscribe for Updates', to: '/subscribe' },
