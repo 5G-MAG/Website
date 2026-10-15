@@ -235,7 +235,9 @@ export const CATEGORIES = [
 // this same gradient-header-plus-grid box rather than a second copy of
 // it (that page's own basket happens to be just one, but the shared
 // look is the point, not the count).
-export function CategoryCard({ title, desc, accent, topics, showStatus = false }) {
+// One simple card per tool: icon, name and one line. Standards, platforms, status and repository counts are on the
+// tool's own page.
+export function CategoryCard({ title, desc, accent, topics }) {
   return (
     <div className={styles.categoryCard}>
       <div className={styles.categoryHeader} style={{ '--accent': accent || 'var(--ifm-color-primary)' }}>
@@ -248,17 +250,10 @@ export function CategoryCard({ title, desc, accent, topics, showStatus = false }
             key={t.href}
             compact
             largeTitle
-            big
             icon={t.icon}
             title={t.title}
             desc={t.desc}
             href={t.href}
-            standards={t.standards}
-            tags={t.tags}
-            repoCount={t.repoCount}
-            accent={t.accent}
-            basketLabel={t.basketLabel}
-            status={showStatus ? t.status : undefined}
           />
         ))}
       </div>
@@ -341,7 +336,7 @@ export default function ReferenceTools() {
             ) : (
               <div className={styles.categoryColumns}>
                 {filtered.map((c) => (
-                  <CategoryCard key={c.title} {...c} showStatus />
+                  <CategoryCard key={c.title} {...c} />
                 ))}
               </div>
             )}

@@ -17,6 +17,7 @@ import VideoGrid from '@site/src/components/VideoGrid';
 import { icon } from '@site/src/components/GodeeperCard';
 import useAnchors from '@site/src/utils/useAnchors';
 import { KINDS } from '@site/src/data/acceleratorKinds';
+import ToolsByKind from '@site/src/components/ToolsByKind';
 import styles from './index.module.css';
 // Shared with /reference-tools, /tutorials and /testbeds; see the comment
 // there for why (2026-08-24 findability audit; extended here for the
@@ -270,6 +271,14 @@ export default function Home() {
         </section>
 
         <section className={styles.section}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>All the tools, by kind</h2>
+            <p className={styles.sectionSubtitle}>Every tool of the programme, in one list.</p>
+            <ToolsByKind />
+          </div>
+        </section>
+
+        <section className={clsx(styles.section, styles.sectionAlt)}>
           <div className="container">
             <h2 className={styles.sectionTitle}>The programme</h2>
             <p className={styles.sectionSubtitle}>
