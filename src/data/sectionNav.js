@@ -133,7 +133,7 @@ export const SECTION_NAV = [
   // The Software Accelerator: the programme and what it builds, kind by kind. Its long name, Media Connectivity
   // Software Accelerator, heads the panel of the top bar. Tutorials explain how to run the tools, so they sit here too.
   {
-    prefixes: ['/developer', '/reference-tools', '/testbeds', '/validation', '/playgrounds', '/kits', '/developer-tools', '/tutorials', '/early-access', '/community', '/contributing', '/license'],
+    prefixes: ['/developer', '/reference-tools', '/testbeds', '/validation', '/playgrounds', '/kits', '/developer-tools', '/early-access', '/community', '/contributing', '/license'],
     title: 'Software Accelerator',
     menuTitle: 'Media Connectivity Software Accelerator',
     titleHref: '/developer',

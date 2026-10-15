@@ -49,7 +49,7 @@ export const KINDS = [
   {
     id: 'playgrounds',
     title: 'Playgrounds',
-    desc: 'Try a technology with nothing to install. Coming soon.',
+    desc: 'Try a technology yourself: step-by-step tutorials and ready environments.',
     href: '/playgrounds',
     paths: ['M7 4v16l13 -8l-13 -8'],
   },
@@ -66,13 +66,6 @@ export const KINDS = [
     desc: `The 3GPP RAN and Core Platforms the tools run on. ${ALL_PROJECTS.filter((p) => (isPlatform(p) && !p.partOf) || isCommonTools(p)).length} entries.`,
     href: '/reference-tools/3gpp-platforms',
     paths: ['M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5'],
-  },
-  {
-    id: 'tutorials',
-    title: 'Tutorials',
-    desc: 'Step-by-step guides to run the Reference Tools.',
-    href: '/tutorials',
-    paths: ['M4.5 16.5c-1.5 1.26 -2 5 -2 5s3.74 -.5 5 -2c.71 -.84 .7 -2.13 -.09 -2.91a2.18 2.18 0 0 0 -2.91 -.09z', 'M12 15l-3 -3a22 22 0 0 1 2 -3.95a12.88 12.88 0 0 1 10 -5.93c0 2.72 -.78 7.5 -6 11a22.35 22.35 0 0 1 -4 2z'],
   },
 ];
 

@@ -40,7 +40,7 @@ export default function DeploymentKits() {
               A Deployment Kit is a package, a container image or an app from a 5G-MAG project, ready to put into a
               product. Each kit will belong to a project and be listed here with the project it comes from. None is
               published yet. Until then, the <Link to="/reference-tools">Reference Tools</Link> and the{' '}
-              <Link to="/tutorials">Tutorials</Link> show how to build and run the software.
+              <Link to="/playgrounds">Playgrounds</Link> show how to build and run the software.
             </p>
           </div>
         </section>

@@ -5,7 +5,7 @@ import Link from '@docusaurus/Link';
 import ShowcaseDiagram from '@site/src/components/ShowcaseDiagram';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import { SHOWCASE_BASKETS, SHOWCASE_STATUS, FEATURE_STATUS } from '@site/src/data/showcases';
-import { ALL_PROJECTS, BASKETS, ICON_CATALOG, projectsInBasket, techLabelOf, projectBySlug, deployUrlOf, isTestbed, isValidationTool, PROJECT_TYPES, typeOf } from '@site/src/data/baskets';
+import { ALL_PROJECTS, BASKETS, ICON_CATALOG, projectsInBasket, techLabelOf, projectBySlug, isTestbed, isValidationTool, PROJECT_TYPES, typeOf } from '@site/src/data/baskets';
 import { CATEGORIES as PROJECT_CATEGORIES } from '@site/src/pages/reference-tools';
 import boxStyles from '@site/src/pages/tech/index.module.css';
 
@@ -112,23 +112,36 @@ const ROCKET = [
 // "Not yet possible": a wrench, things still to build.
 const NOT_YET_ICON = ['M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5'];
 
-// The three things a visitor can do with an item, each on the item's main project.
+// The four things a visitor can do with an item, each on the item's main project: learn about it, implement it,
+// experiment with it in a Playground, and deploy it.
 const PATHS = [
-  { key: 'learn', title: 'Learn', hint: 'Documentation: how it works, and the specifications',
+  { key: 'learn', title: 'Learn', hint: 'How it works, and the specifications',
     icon: ['M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0', 'M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0', 'M3 6l0 13', 'M12 6l0 13', 'M21 6l0 13'] },
   { key: 'implement', title: 'Implement', hint: 'The project’s Software Accelerator tools',
     icon: ['M7 8l-4 4l4 4', 'M17 8l4 4l-4 4', 'M14 4l-4 16'] },
-  { key: 'deploy', title: 'Deploy', hint: 'Deployment Kits for your product',
+  { key: 'experiment', title: 'Experiment', hint: 'Try it yourself in a Playground',
+    icon: ['M7 4v16l13 -8l-13 -8'] },
+  { key: 'deploy', title: 'Deploy', hint: 'Plugfests, demos and trials',
     icon: ['M4.5 16.5c-1.5 1.26 -2 5 -2 5s3.74 -.5 5 -2c.71 -.84 .7 -2.13 -.09 -2.91a2.18 2.18 0 0 0 -2.91 -.09z', 'M12 15l-3 -3a22 22 0 0 1 2 -3.95a12.88 12.88 0 0 1 10 -5.93c0 2.72 -.78 7.5 -6 11a22.35 22.35 0 0 1 -4 2z', 'M9 12h-4s.55 -3.03 2 -4c1.62 -1.08 5 0 5 0', 'M12 15v5s3.03 -.55 4 -2c1.08 -1.62 0 -5 0 -5'] },
 ];
 
-function pathTargets(project) {
-  return project ? { learn: project.tech_url, implement: project.doc_url, deploy: deployUrlOf(project) } : {};
+// Where each action goes. Experiment opens the use case's own tutorial in the Playgrounds when it has one that
+// exists, otherwise the project's tutorials, otherwise the Playgrounds page. Deploy opens the Deploy hub.
+function pathTargets(project, topic) {
+  if (!project) return {};
+  const tutorial = topic.tutorial && !topic.tutorial.inPreparation ? topic.tutorial.to : null;
+  const projectTutorials = project.doc_url ? `${project.doc_url.replace(/\/$/, '')}/tutorials` : null;
+  return {
+    learn: project.tech_url,
+    implement: project.doc_url,
+    experiment: tutorial || projectTutorials || '/playgrounds',
+    deploy: '/deploy',
+  };
 }
 
 function Paths({ topic }) {
   const project = projectBySlug(topic.project);
-  const to = pathTargets(project);
+  const to = pathTargets(project, topic);
   return (
     <nav className={styles.paths} aria-label={`${topic.title}: what would you like to do?`}>
       <p className={styles.pathsTitle}>What would you like to do?</p>

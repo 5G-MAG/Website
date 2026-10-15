@@ -228,8 +228,8 @@ const config = {
           // per-category demo pages it also covered were folded into each
           // project's Application Showcase page and removed, so only the hub
           // and the unlisted authoring template still have a target.
-          // /showcase ("Showcases") renamed to /tutorials ("Tutorials") on 2026-10-05.
-          { from: ['/applications', '/showcase'], to: '/tutorials' },
+          // /showcase ("Showcases") renamed to /tutorials ("Tutorials") on 2026-10-05; the tutorials now live in the Playgrounds.
+          { from: ['/applications', '/showcase', '/tutorials'], to: '/playgrounds' },
           { from: ['/applications/streaming/sample-multi-angle-replay', '/showcase/streaming/sample-multi-angle-replay'], to: '/tutorials/streaming/sample-multi-angle-replay' },
           // "Multimedia Delivery Protocols" topic renamed to "Content Delivery
           // Protocols" (2026-09-10): the lead concept is the transport, not
