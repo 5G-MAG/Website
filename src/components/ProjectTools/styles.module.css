@@ -61,6 +61,15 @@ a.row:hover {
   font-weight: 700;
 }
 
+.sectionHead {
+  margin: 1.5rem 0 0.1rem;
+  font-size: 1.1rem;
+}
+
+.sectionHead:first-child {
+  margin-top: 0.75rem;
+}
+
 .sep {
   margin-top: 0.75rem;
   font-size: 0.78rem;

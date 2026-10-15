@@ -80,7 +80,7 @@ export default function ProjectTools({ only }) {
   );
   return (
     <>
-      <div className={styles.sep}>Software Accelerator tools</div>
+      <h3 className={styles.sectionHead}>Software Accelerator</h3>
       {rows.length === 0 ? (
         <p style={{ margin: 0, color: 'var(--ifm-color-emphasis-700)' }}>
           No tool has been published for this project yet. See the{' '}
