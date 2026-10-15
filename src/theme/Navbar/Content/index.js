@@ -310,26 +310,15 @@ function NavDropdownItem({ item, preview }) {
         aria-label={`${preview.title} quick links`}
       >
         <SectionHeadCard title={preview.menuTitle || preview.title} subtitle={preview.subtitle} href={preview.titleHref} icon={SECTION_ICONS[preview.titleHref]} />
-        {/* `featured` entries (the section's main destinations, solid chips in its pill row) come
-            first as larger cards; the rest follow as icon rows. */}
-        {preview.items.some((sub) => sub.featured) && (
-          <ul className={styles.navFeatured}>
-            {preview.items.filter((sub) => sub.featured).map((sub) => (
-              <li key={sub.href}>
-                <Link to={sub.href} className={styles.navFeaturedCard}>
-                  <span className={clsx(styles.navAreaIcon, styles.navHeadIcon)}><NavItemIcon href={sub.href} size={20} /></span>
-                  {sub.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        )}
-        <ul className={clsx(styles.navAreaGrid, preview.items.length <= 4 && styles.navAreaGridSingle)}>
-          {preview.items.filter((sub) => !sub.featured).map((sub) => (
+        <ul className={styles.navFeatured}>
+          {preview.items.map((sub) => (
             <li key={sub.href}>
-              <Link to={sub.href} className={styles.navAreaLink}>
-                <span className={styles.navAreaIcon}><NavItemIcon href={sub.href} /></span>
-                {sub.label}
+              <Link to={sub.href} className={styles.navFeaturedCard}>
+                <span className={clsx(styles.navAreaIcon, styles.navHeadIcon)}><NavItemIcon href={sub.href} size={20} /></span>
+                <span className={styles.navFeaturedText}>
+                  {sub.label.replace(/ \(coming soon\)$/, '')}
+                  {/\(coming soon\)$/.test(sub.label) && <small>Coming soon</small>}
+                </span>
               </Link>
             </li>
           ))}
