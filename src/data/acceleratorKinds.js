@@ -23,10 +23,27 @@ const count = (filter, noun) => {
 export const KINDS = [
   {
     id: 'tools',
+    prominent: true,
     title: 'Reference Tools',
     desc: `Open-source reference implementations of the specifications, project by project. ${count(isReferenceTool, 'project')}.`,
     href: '/reference-tools',
     icon: svg(['M7 8l-4 4l4 4', 'M17 8l4 4l-4 4', 'M14 4l-4 16']),
+  },
+  {
+    id: 'testbeds',
+    prominent: true,
+    title: 'Testbeds and Evaluation Frameworks',
+    desc: `Environments and frameworks to measure or evaluate something. ${count(isTestbed, 'entry').replace('entrys', 'entries')}.`,
+    href: '/testbeds',
+    icon: svg(['M9 3l6 0', 'M10 9l4 0', 'M10 3v6l-4 11a.7 .7 0 0 0 .5 1h11a.7 .7 0 0 0 .5 -1l-4 -11v-6']),
+  },
+  {
+    id: 'kits',
+    prominent: true,
+    title: 'Deployment Kits',
+    desc: 'Packages, images and apps to put into a product. Coming soon.',
+    href: '/kits',
+    icon: svg(['M4.5 16.5c-1.5 1.26 -2 5 -2 5s3.74 -.5 5 -2c.71 -.84 .7 -2.13 -.09 -2.91a2.18 2.18 0 0 0 -2.91 -.09z', 'M12 15l-3 -3a22 22 0 0 1 2 -3.95a12.88 12.88 0 0 1 10 -5.93c0 2.72 -.78 7.5 -6 11a22.35 22.35 0 0 1 -4 2z', 'M9 12h-4s.55 -3.03 2 -4c1.62 -1.08 5 0 5 0', 'M12 15v5s3.03 -.55 4 -2c1.08 -1.62 0 -5 0 -5']),
   },
   {
     id: 'validation',
@@ -36,25 +53,11 @@ export const KINDS = [
     icon: svg(['M9.615 20h-2.615a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8', 'M14 19l2 2l4 -4', 'M9 8h4', 'M9 12h2']),
   },
   {
-    id: 'testbeds',
-    title: 'Testbeds and Evaluation Frameworks',
-    desc: `Environments and frameworks to measure or evaluate something. ${count(isTestbed, 'entry').replace('entrys', 'entries')}.`,
-    href: '/testbeds',
-    icon: svg(['M9 3l6 0', 'M10 9l4 0', 'M10 3v6l-4 11a.7 .7 0 0 0 .5 1h11a.7 .7 0 0 0 .5 -1l-4 -11v-6']),
-  },
-  {
     id: 'playgrounds',
     title: 'Playgrounds',
     desc: 'Try a technology with nothing to install. Coming soon.',
     href: '/playgrounds',
     icon: svg(['M7 4v16l13 -8l-13 -8']),
-  },
-  {
-    id: 'kits',
-    title: 'Deployment Kits',
-    desc: 'Packages, images and apps to put into a product. Coming soon.',
-    href: '/kits',
-    icon: svg(['M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5', 'M12 12l8 -4.5', 'M12 12l0 9', 'M12 12l-8 -4.5']),
   },
   {
     id: 'platforms',

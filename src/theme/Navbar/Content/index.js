@@ -327,7 +327,7 @@ function NavDropdownItem({ item, preview }) {
             <ul className={styles.navFeatured}>
               {grp.items.map((sub) => (
                 <li key={sub.href}>
-                  <Link to={sub.href} className={styles.navFeaturedCard}>
+                  <Link to={sub.href} className={clsx(styles.navFeaturedCard, sub.prominent && styles.navFeaturedStrong)}>
                     <span className={clsx(styles.navAreaIcon, styles.navHeadIcon)}><NavItemIcon href={sub.href} size={20} /></span>
                     {sub.label}
                   </Link>
@@ -373,7 +373,7 @@ const NAV_ITEM_ICONS = {
   '/deploy/5g-broadcast-plugfest': 'antenna-signal',
   '/validation': ['M9.615 20h-2.615a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8', 'M14 19l2 2l4 -4', 'M9 8h4', 'M9 12h2'],
   '/playgrounds': ['M7 4v16l13 -8l-13 -8'],
-  '/kits': ['M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5', 'M12 12l8 -4.5', 'M12 12l0 9', 'M12 12l-8 -4.5', 'M16 5.25l-8 4.5'],
+  '/kits': ['M4.5 16.5c-1.5 1.26 -2 5 -2 5s3.74 -.5 5 -2c.71 -.84 .7 -2.13 -.09 -2.91a2.18 2.18 0 0 0 -2.91 -.09z', 'M12 15l-3 -3a22 22 0 0 1 2 -3.95a12.88 12.88 0 0 1 10 -5.93c0 2.72 -.78 7.5 -6 11a22.35 22.35 0 0 1 -4 2z', 'M9 12h-4s.55 -3.03 2 -4c1.62 -1.08 5 0 5 0', 'M12 15v5s3.03 -.55 4 -2c1.08 -1.62 0 -5 0 -5'],
   '/developer#platforms': 'tool',
   '/deploy/testing': ['M9.615 20h-2.615a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8', 'M14 19l2 2l4 -4', 'M9 8h4', 'M9 12h2'],
   '/deploy#demos': ['M7 4v16l13 -8l-13 -8'],
