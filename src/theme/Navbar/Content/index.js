@@ -14,7 +14,7 @@ import NavbarSearch from '@theme/Navbar/Search';
 import { GITHUB_ICON, SLACK_ICON, LINKEDIN_ICON, LOCK_ICON, SEARCH_ICON } from '../../socialIcons';
 import { SLACK_INVITE_URL, SOCIAL_LINKS } from '../../../data/socialLinks';
 import { useNavbarItems } from '../../navItems';
-import { SECTION_NAV, SOLUTIONS_ITEMS, TECHNOLOGY_GROUPS, HALF_AREAS, FACTORY_TOOL_AREAS, FACTORY_VALIDATION_AREAS, FACTORY_TESTBED_AREAS, FACTORY_PLATFORM_AREAS, stripBaseUrl } from '../../../data/sectionNav';
+import { SECTION_NAV, SOLUTIONS_ITEMS, TECHNOLOGY_GROUPS, HALF_AREAS, stripBaseUrl } from '../../../data/sectionNav';
 import { ICON_CATALOG } from '../../../data/baskets';
 import styles from './styles.module.css';
 
@@ -529,151 +529,33 @@ function SolutionsMenu({ item }) {
   );
 }
 
-// Deals the areas into `n` columns so the columns end at about the same height: every assignment is tried
-// (there are only a handful of areas) and the one with the lowest tallest column wins, then the most even
-// one. A card is a label (two lines' worth) plus one line per project, two for a long name. Within a column
-// the areas keep the taxonomy order.
-function dealColumns(groups, n = 3) {
-  const weight = (g) => 2 + g.items.reduce((a, it) => a + (it.label.length > 38 ? 2 : 1), 0);
-  const w = groups.map(weight);
-  let best = null;
-  const assign = new Array(groups.length).fill(0);
-  const walk = (i) => {
-    if (i === groups.length) {
-      const h = new Array(n).fill(0);
-      assign.forEach((c, k) => { h[c] += w[k]; });
-      const score = [Math.max(...h), h.reduce((a, x) => a + x * x, 0)];
-      if (!best || score[0] < best.score[0] || (score[0] === best.score[0] && score[1] < best.score[1])) {
-        best = { score, assign: assign.slice() };
-      }
-      return;
-    }
-    for (let c = 0; c < n; c++) { assign[i] = c; walk(i + 1); }
-  };
-  walk(0);
-  const cols = Array.from({ length: n }, () => []);
-  groups.forEach((g, k) => cols[best.assign[k]].push(g));
-  return cols.filter((c) => c.length);
-}
-
-// A list of project links, with its small icons.
-function MenuList({ items }) {
-  return (
-    <ul className={styles.navMegaList}>
-      {items.map((sub) => (
-        <li key={sub.href}>
-          <Link to={sub.href}>
-            <CatalogIcon name={sub.icon} size={16} />
-            {sub.label}
-          </Link>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-// Software Accelerator: master and detail. The left rail names the destinations; hovering or focusing one shows
-// only its content on the right, so one list is on screen at a time. Each rail item and the panel's own
-// "View all" link open the destination's page. `preview` is the section's SECTION_NAV entry.
-// The Software Factory menu: one entry per kind of software, with what exists in it, area by area. Playgrounds and
-// Deployment Kits do not exist yet and say so.
+// The Software Factory menu: one card per kind of software, linking to its page. Playgrounds and Deployment Kits
+// do not exist yet and say so.
 const FACTORY_RAIL = [
   { key: 'tools', title: 'Reference Tools', subtitle: 'Open-source code, project by project.', href: '/reference-tools' },
   { key: 'validation', title: 'Validation Tools', subtitle: 'Check conformance to a specification.', href: '/validation' },
   { key: 'testbeds', title: 'Testbeds', subtitle: 'Test environments and evaluation frameworks.', href: '/testbeds' },
-  { key: 'playgrounds', title: 'Playgrounds', subtitle: 'Try a technology with nothing to install.', href: '/software#playgrounds' },
-  { key: 'kits', title: 'Deployment Kits', subtitle: 'Packages and images to put into a product.', href: '/kits' },
+  { key: 'playgrounds', title: 'Playgrounds', subtitle: 'Try a technology with nothing to install. Coming soon.', href: '/software#playgrounds' },
+  { key: 'kits', title: 'Deployment Kits', subtitle: 'Packages and images to put into a product. Coming soon.', href: '/kits' },
   { key: 'platforms', title: 'Platforms', subtitle: '3GPP RAN and Core Platforms, Common Tools.', href: '/software#platforms' },
   { key: 'devtools', title: 'Developer Tools', subtitle: 'Tools that help developers do their work.', href: '/developer-tools' },
   { key: 'tutorials', title: 'Tutorials', subtitle: 'How to run the tools.', href: '/tutorials' },
 ];
 
-function AreaCards({ areas }) {
-  return (
-    <div className={styles.navAreaCardGrid}>
-      {areas.map((g) => (
-        <div key={g.title} className={styles.navAreaCard} style={{ '--accent': g.accent }}>
-          <div className={styles.navMegaLabel}>
-            <CatalogIcon name={g.icon} size={15} />
-            {g.title}
-          </div>
-          <MenuList items={g.items} />
-        </div>
-      ))}
-    </div>
-  );
-}
-
-// One short line for each community destination.
-const COMMUNITY_HINTS = {
-  '/community': 'Join the developers and see how to contribute.',
-  '/community/activity': 'Releases, pull requests and repository statistics.',
-  '/license': 'The 5G-MAG Public License and the contributor agreements.',
-  '/early-access': 'Ask for access to repositories still in development.',
-  '/developer/exchanges': 'Recordings of the developer exchanges.',
-};
-
 function FactoryMenu({ item, preview }) {
-  const [active, setActive] = useState('tools');
-  const current = FACTORY_RAIL.find((r) => r.key === active);
-  let detail;
-  if (active === 'tools') {
-    detail = <AreaCards areas={FACTORY_TOOL_AREAS} />;
-  } else if (active === 'validation') {
-    detail = <AreaCards areas={FACTORY_VALIDATION_AREAS} />;
-  } else if (active === 'testbeds') {
-    detail = <AreaCards areas={FACTORY_TESTBED_AREAS} />;
-  } else if (active === 'platforms') {
-    detail = <AreaCards areas={FACTORY_PLATFORM_AREAS} />;
-  } else if (active === 'devtools') {
-    detail = (
-      <div className={styles.navCardGrid3}>
-        <Link to="/developer-tools" className={styles.navFeatureCard}>
-          <NavItemIcon href="/developer-tools" size={26} />
-          <b>Developer Tools</b>
-          <small>Tools for 5G-MAG members that support the transition of standards into deployments.</small>
-        </Link>
-      </div>
-    );
-  } else if (active === 'tutorials') {
-    detail = (
-      <div className={styles.navCardGrid3}>
-        <Link to="/tutorials" className={styles.navFeatureCard}>
-          <NavItemIcon href="/tutorials" size={26} />
-          <b>Tutorials</b>
-          <small>Step-by-step guides to run the Reference Tools.</small>
-        </Link>
-      </div>
-    );
-  } else {
-    detail = <p className={styles.navMDSoon}>Coming soon. Nothing is published in this kind yet.</p>;
-  }
   return (
     <MegaMenu
       label={`${preview.title} quick links`}
       trigger={(expanded) => renderNavbarItem({ ...item, 'aria-haspopup': 'true', 'aria-expanded': expanded })}
     >
-      <div className={styles.navMD}>
-        <ul className={styles.navMDRail}>
-          {FACTORY_RAIL.map((r) => (
-            <li key={r.key} onMouseEnter={() => setActive(r.key)} onFocus={() => setActive(r.key)}>
-              <Link to={r.href} className={clsx(styles.navMDRailItem, r.key === active && styles.navMDRailOn)}>
-                <span className={styles.navMDRailIcon}><NavItemIcon href={r.href} size={22} /></span>
-                <span className={styles.navMDRailText}>
-                  <b>{r.title}</b>
-                  <small>{r.subtitle}</small>
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <div className={styles.navMDDetail}>
-          <div className={styles.navMDHead}>
-            <b>{current.title}</b>
-            <Link to={current.href}>View all →</Link>
-          </div>
-          <div className={styles.navAcceleratorScroll}>{detail}</div>
-        </div>
+      <div className={styles.navCardGrid4}>
+        {FACTORY_RAIL.map((r) => (
+          <Link key={r.key} to={r.href} className={styles.navFeatureCard}>
+            <NavItemIcon href={r.href} size={26} />
+            <b>{r.title}</b>
+            <small>{r.subtitle}</small>
+          </Link>
+        ))}
       </div>
     </MegaMenu>
   );
