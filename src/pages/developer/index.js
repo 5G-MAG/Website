@@ -172,7 +172,7 @@ function ProductTypeCard({ icon, label, description, href }) {
 }
 
 export default function Home() {
-  useAnchors(...KINDS.map((k) => k.id));
+  useAnchors('all-the-tools', ...KINDS.map((k) => k.id));
   const demoRigImg = useBaseUrl('/assets/images/gallery/reference-tools-demo-rig.jpg');
   const camaraDemoImg = useBaseUrl('/assets/images/gallery/camara-dedicated-networks-demo.png');
   // Hooks can't be called inside the CONTRIBUTORS.map callback below
@@ -216,6 +216,33 @@ export default function Home() {
       />
 
       <main>
+        {/* The developer's first three steps, before anything else. */}
+        <section className={styles.section}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>Get started in three steps</h2>
+            <RowList>
+              <ListRow
+                href="#all-the-tools"
+                title="1. Pick a tool"
+                desc="Reference Tools, Testbeds and Validation Tools, project by project."
+                iconPaths={['M7 8l-4 4l4 4', 'M17 8l4 4l-4 4', 'M14 4l-4 16']}
+              />
+              <ListRow
+                href="/playgrounds"
+                title="2. Experiment"
+                desc="Run it yourself with the step-by-step tutorials in the Playgrounds."
+                iconPaths={['M7 4v16l13 -8l-13 -8']}
+              />
+              <ListRow
+                href="/community"
+                title="3. Ask, or contribute"
+                desc="Join the developer community, come to the Dev Public Call, or send a pull request."
+                iconPaths={['M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0', 'M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1', 'M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0', 'M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0']}
+              />
+            </RowList>
+          </div>
+        </section>
+
         {/* Why It Matters, first -- why this exists, before the browsable
             destinations below (raised directly: "motivation first and
             then the 3 cards"). */}
@@ -260,7 +287,7 @@ export default function Home() {
 
         <section className={styles.section}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>All the tools, by kind</h2>
+            <h2 id="all-the-tools" className={styles.sectionTitle}>All the tools, by kind</h2>
             <p className={styles.sectionSubtitle}>Every tool of the programme, in one list.</p>
             <ToolsByKind />
           </div>
