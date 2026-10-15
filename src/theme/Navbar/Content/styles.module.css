@@ -77,6 +77,27 @@ Hide color mode toggle in small viewports
   }
 }
 
+/* Nine top items now: the tightest range needs one more step. */
+@media (min-width: 997px) and (max-width: 1120px) {
+  .navGroup {
+    gap: 0.2rem;
+  }
+
+  .navGroup :global(.navbar__link) {
+    font-size: 0.8rem;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+  }
+}
+
+@media (min-width: 997px) and (max-width: 1040px) {
+  .navGroup :global(.navbar__link) {
+    font-size: 0.74rem;
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+  }
+}
+
 /* Room to breathe once the viewport is wide enough that the tighter values
    above leave a lot of unused space on either side of the item group. Below
    1360px the logo's own wrapped text collides with "About Us" if the gap
