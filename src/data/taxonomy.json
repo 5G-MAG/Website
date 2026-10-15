@@ -717,6 +717,24 @@
       "icon": "package"
     },
     {
+      "name": "FLUTE Conformance Validator",
+      "displayName": "FLUTE Conformance Validator",
+      "doc_url": null,
+      "tech_url": "/tech/content-delivery",
+      "standards_url": "/standards/content-delivery",
+      "tagline": "Tests a FLUTE implementation against the FLUTE profiles of RFC 3926, 3GPP TS 26.346 and 3GPP TS 26.517",
+      "basket": "content-delivery",
+      "parent": "Content Delivery Protocols",
+      "repos": [
+        "flute-conformance-validator"
+      ],
+      "sdos": [
+        "IETF",
+        "3GPP"
+      ],
+      "icon": "package"
+    },
+    {
       "name": "3GPP RAN and Core Platforms",
       "doc_url": "/reference-tools/3gpp-platforms/",
       "tech_url": null,
@@ -1907,6 +1925,24 @@
         "dependencies": [],
         "software": [],
         "public": true,
+        "is_auxiliary": false
+      },
+      {
+        "repo_slug": "flute-conformance-validator",
+        "display_name": "FLUTE Conformance Validator",
+        "description": "Tests a FLUTE implementation against the FLUTE profiles of RFC 3926, 3GPP TS 26.346 and 3GPP TS 26.517.",
+        "repo_url": "https://github.com/5G-MAG/flute-conformance-validator",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "IETF",
+          "3GPP"
+        ],
+        "dependencies": [],
+        "software": [
+          "Linux"
+        ],
+        "public": false,
         "is_auxiliary": false
       }
     ],
