@@ -27,14 +27,14 @@ export function AssetTiles() {
   );
 }
 
-// One project's Deploy page (/deploy/<slug>, routed from docusaurus.config.js): the assets of that project to
+// One project's Deploy page (/deploy/<slug>, routed from docusaurus.config.js): the Deployment Kits of that project to
 // onboard into a product. Placeholders for now.
 export default function ProjectDeploy({ slug }) {
   const project = projectBySlug(slug);
   const name = displayNameOf(project);
   const icon = (ICON_CATALOG[project.icon] || []).map((d) => <path key={d} d={d} />);
   return (
-    <Layout title={`${name}: Deploy`} description={`Assets of ${name} to onboard into your product.`}>
+    <Layout title={`${name}: Deploy`} description={`Deployment Kits of ${name} to onboard into your product.`}>
       <HubHero
         title={name}
         icon={icon}
@@ -43,15 +43,15 @@ export default function ProjectDeploy({ slug }) {
             <Link key="learn" className="button button--primary" to={project.tech_url}>Learn</Link>
           ),
           <Link key="implement" className="button button--outline button--primary" to={project.doc_url}>Implement</Link>,
-          <Link key="all" className="button button--outline button--primary" to="/deploy#assets">All projects</Link>,
+          <Link key="all" className="button button--outline button--primary" to="/software-factory#kits">All Deployment Kits</Link>,
         ].filter(Boolean)}
       />
       <main>
         <section className={`${styles.section} ${styles.sectionAlt}`}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Deploy: assets to onboard into your product</h2>
+            <h2 className={styles.sectionTitle}>Deployment Kits to onboard into your product</h2>
             <p className={styles.sectionSubtitle}>
-              Coming soon: the {name} assets you can onboard into your product will be listed here.
+              Coming soon: the {name} Deployment Kits you can onboard into your product will be listed here.
             </p>
             <AssetTiles />
           </div>

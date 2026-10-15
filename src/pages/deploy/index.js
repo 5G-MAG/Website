@@ -8,7 +8,6 @@ import VideoGrid from '@site/src/components/VideoGrid';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 import styles from '../tech/index.module.css';
 import useAnchors from '@site/src/utils/useAnchors';
-import { AssetTiles } from '@site/src/components/ProjectDeploy';
 
 // The rocket: the same icon as Tutorials and the navbar's Deploy entry.
 const DEPLOY_ICON_PATH = (
@@ -30,15 +29,6 @@ const ACTIVITIES = [
   { title: 'Interoperability Events and Plugfests', body: 'With shared code, so interop does not start from scratch at plugfests.' },
   { title: 'Showcase at Industry Events and Trials', body: 'Promotion and demonstration of value, not just specs.' },
 ];
-
-// A stack: the assets.
-const ASSETS_ICON = (
-  <>
-    <path d="M12 4l-8 4l8 4l8 -4l-8 -4" />
-    <path d="M4 12l8 4l8 -4" />
-    <path d="M4 16l8 4l8 -4" />
-  </>
-);
 
 const PILLARS = [
   {
@@ -135,12 +125,6 @@ const WHATS_HERE = [
       </svg>
     ),
   },
-  {
-    title: 'Deployable Assets',
-    desc: 'Packages, modules, Docker images and apps to onboard into your product. Coming soon.',
-    href: '/deploy#assets',
-    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{ASSETS_ICON}</svg>,
-  },
 ];
 
 // Testing Events -- just the PlugFest today, structured to hold more cards
@@ -200,21 +184,6 @@ function DemosSection() {
   );
 }
 
-function AssetsSection() {
-  useAnchors('assets');
-  return (
-    <section id="assets" className={`${styles.section} ${styles.sectionAlt}`} style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}>
-      <div className="container">
-        <h2 className={styles.sectionTitle}>Deployable Assets</h2>
-        <p className={styles.sectionSubtitle}>
-          What you can onboard into your product. Coming soon.
-        </p>
-        <AssetTiles />
-      </div>
-    </section>
-  );
-}
-
 export default function Deploy() {
   useAnchors('plugfests');
   const plugfestImg = useBaseUrl('/assets/images/gallery/5g-broadcast-plugfest-2026.jpg');
@@ -222,7 +191,7 @@ export default function Deploy() {
   return (
     <Layout
       title="Deploy"
-      description="Demos, interop plugfests and deployable assets to onboard 5G-MAG technology into products."
+      description="Demos, interoperability plugfests and trials that help 5G-MAG technology reach deployment."
     >
       <HubHero
         title="Deploy"
@@ -233,9 +202,6 @@ export default function Deploy() {
           </a>,
           <a key="plugfests" className="button button--outline button--primary" href="#plugfests">
             Plugfests
-          </a>,
-          <a key="assets" className="button button--outline button--primary" href="#assets">
-            Deployable Assets
           </a>,
         ]}
       />
@@ -248,10 +214,9 @@ export default function Deploy() {
             past "Why It Matters" first every time. */}
         <section className={`${styles.section} ${styles.sectionAlt}`}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>See It, Test It, Onboard It</h2>
+            <h2 className={styles.sectionTitle}>See It, Test It, Take It Further</h2>
             <p className={styles.sectionSubtitle}>
-              From the Reference Tools to your products: see them demonstrated, tested at
-              plugfests, and onboard them. To run the tools yourself, see the <Link to="/tutorials">Tutorials</Link>.
+              See the technology demonstrated and tested together at plugfests. The tools themselves, the validators and the Deployment Kits are in the <Link to="/software-factory">Software Factory</Link>; to run them yourself, see the <Link to="/tutorials">Tutorials</Link>.
             </p>
             <div className={styles.activityGrid}>
               {WHATS_HERE.map((r) => (
@@ -356,7 +321,6 @@ export default function Deploy() {
           </div>
         </section>
 
-        <AssetsSection />
 
         <JoinTheEffort />
       </main>

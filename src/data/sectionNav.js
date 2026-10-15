@@ -236,15 +236,14 @@ export const SECTION_NAV = [
     prefixes: ['/deploy'],
     title: 'Deploy',
     titleHref: '/deploy',
-    subtitle: 'Demos, plugfests and deployable assets to onboard into your products.',
-    // From the tools to products: demos, interop plugfests, and the assets:
-    // packages, modules, Docker images and apps. It does not own Testbeds or
+    subtitle: 'Demos, plugfests and interoperability events that help technology reach deployment.',
+    // Activities only: demos, interop plugfests and testing events. Software
+    // (tools, validators, Deployment Kits) lives in the Software Factory. It does not own Testbeds or
     // Reference Tools, so it has no sub-items pointing back at those.
     items: [
       { label: 'Demos', href: '/deploy#demos' },
       { label: 'Plugfests', href: '/deploy#plugfests' },
       { label: 'Testing and interoperability', href: '/deploy/testing' },
-      { label: 'Deployable Assets', href: '/deploy#assets' },
     ],
   },
   {
