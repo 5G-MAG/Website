@@ -31,7 +31,7 @@ export const DISCOVER_WORK = [
   },
   {
     title: 'Software Accelerator',
-    body: 'The programme that builds the Software Factory: open-source tools turning specs into working code.',
+    body: 'Open-source tools, validators and testbeds turning specs into working code.',
     href: '/developer',
     icon: (
       <>

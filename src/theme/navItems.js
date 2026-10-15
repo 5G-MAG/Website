@@ -39,14 +39,6 @@ export const FEEDBACK_ITEM = {
   className: styles.primaryNavItem,
 };
 
-// The Software Factory: what 5G-MAG builds, in one mega menu by kind of software (Navbar/Content renders it).
-export const FACTORY_ITEM = {
-  to: '/software',
-  label: 'Software Factory',
-  position: 'left',
-  className: styles.primaryNavItem,
-};
-
 export const DEV_ITEM = {
   to: '/developer',
   label: 'Software Accelerator',
@@ -65,10 +57,8 @@ export function useNavbarItems() {
   return [
     ABOUT_ITEM,
     MEMBERSHIP_ITEM,
-    // What 5G-MAG covers and builds, then the process that takes it into use: Standardisation, Software
-    // Accelerator, Deploy.
+    // What 5G-MAG covers, then the process that takes it into use: Standardisation, Software Accelerator, Deploy.
     SOLUTIONS_ITEM,
-    FACTORY_ITEM,
     FEEDBACK_ITEM,
     DEV_ITEM,
     INTEROP_ITEM,

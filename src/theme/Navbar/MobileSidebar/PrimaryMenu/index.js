@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavbarMobileSidebar } from '@docusaurus/theme-common/internal';
 import NavbarItem from '@theme/NavbarItem';
 import { useNavbarItems, MOBILE_GLOBAL_ITEMS } from '../../../navItems';
-import { SECTION_NAV, SOLUTIONS_ITEMS, TECHNOLOGY_GROUPS, FACTORY_TOOL_AREAS, FACTORY_VALIDATION_AREAS, FACTORY_TESTBED_AREAS } from '../../../../data/sectionNav';
+import { SECTION_NAV, SOLUTIONS_ITEMS, TECHNOLOGY_GROUPS } from '../../../../data/sectionNav';
 
 // Docusaurus's stock PrimaryMenu reads items straight from
 // useThemeConfig().navbar.items (a static config array) — since the
@@ -60,45 +60,6 @@ export default function NavbarMobilePrimaryMenu() {
                   );
                 })}
                 <NavbarItem mobile to="/tech" label="Where we stand"
-                  className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
-              </>
-            ) : item.to === '/software' ? (
-              // Software Factory: its own page, then each kind of software with its areas and projects indented under
-              // it, as on desktop. Playgrounds and Deployment Kits are listed as coming soon.
-              <>
-                <NavbarItem mobile {...item} onClick={() => mobileSidebar.toggle()} />
-                {[
-                  ['Reference Tools', '/reference-tools', FACTORY_TOOL_AREAS],
-                  ['Validation Tools', '/validation', FACTORY_VALIDATION_AREAS],
-                  ['Testbeds', '/testbeds', FACTORY_TESTBED_AREAS],
-                ].map(([title, href, areas]) => (
-                  <React.Fragment key={title}>
-                    <NavbarItem mobile to={href} label={title}
-                      className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
-                    {areas.map((g) => (
-                      <React.Fragment key={g.title}>
-                        {areas.length > 1 && (
-                          <li className="menu__list-item">
-                            <span className="menu__link padding-left--lg margin-left--md"
-                              style={{ fontSize: '0.78rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em', color: g.accent }}>
-                              {g.title}
-                            </span>
-                          </li>
-                        )}
-                        {g.items.map((p) => (
-                          <NavbarItem key={p.href} mobile to={p.href} label={p.label}
-                            className="padding-left--lg margin-left--lg" style={{ fontSize: '0.85rem' }}
-                            onClick={() => mobileSidebar.toggle()} />
-                        ))}
-                      </React.Fragment>
-                    ))}
-                  </React.Fragment>
-                ))}
-                <NavbarItem mobile to="/software#playgrounds" label="Playgrounds"
-                  className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
-                <NavbarItem mobile to="/kits" label="Deployment Kits"
-                  className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
-                <NavbarItem mobile to="/developer-tools" label="Developer Tools"
                   className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
               </>
             ) : item.to === '/developer' ? (

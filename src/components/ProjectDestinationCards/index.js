@@ -34,7 +34,7 @@ import { ICON_CATALOG } from '@site/src/data/baskets';
 // the one real repo some of those still have with no dedicated page of
 // their own (e.g. RTC's rt-3gpp-swap) -- shown as a link on the
 // placeholder instead of silently hiding it. `softwareIsTestbed`: true
-// renders "Software Factory" with the Testbeds icon/desc instead of
+// renders "Software Accelerator" with the Testbeds icon/desc instead of
 // Reference Tools' -- raised directly ("given we have testbeds maybe
 // make clear if it is reference tools or testbed").
 export default function ProjectDestinationCards({
@@ -62,7 +62,7 @@ export default function ProjectDestinationCards({
       />
       {softwareHref ? (
         <HubDestinationCard
-          title="Software Factory"
+          title="Software Accelerator"
           desc={
             softwareIsTestbed
               ? 'Built by the community, putting the specification to the test.'
@@ -76,7 +76,7 @@ export default function ProjectDestinationCards({
         <div className="godeeper-card godeeper-card--static">
           <div className="godeeper-card__band" style={{ background: 'var(--ifm-color-emphasis-500)' }}>
             {icon(iconPaths('code'))}
-            <h3>Software Factory</h3>
+            <h3>Software Accelerator</h3>
           </div>
           <div className="godeeper-card__body">
             <p>There are no Reference Tools for this topic yet.</p>

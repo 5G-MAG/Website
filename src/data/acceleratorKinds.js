@@ -1,8 +1,3 @@
-import Link from '@docusaurus/Link';
-import Layout from '@theme/Layout';
-import HubHero from '@site/src/components/HubHero';
-import HubDestinationCard from '@site/src/components/HubDestinationCard';
-import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import {
   ALL_PROJECTS,
   isReferenceTool,
@@ -10,21 +5,10 @@ import {
   isTestbed,
   isPlatform,
   isCommonTools,
-} from '@site/src/data/baskets';
-import useAnchors from '@site/src/utils/useAnchors';
-import styles from '../tech/index.module.css';
+} from './baskets';
 
-// The Software Factory: everything 5G-MAG builds as software and tooling from the specifications, kind by kind.
-// The Software Accelerator Programme is how it is built (community, licences, early access); this page is what
-// comes out. The counts come from the `type` of each entry in taxonomy.json.
-const FACTORY_ICON_PATH = (
-  <>
-    <path d="M3 21h18" />
-    <path d="M5 21v-12l5 4v-4l5 4h4a2 2 0 0 1 2 2v6" />
-    <path d="M19 13v-6a1 1 0 0 1 1 -1h-2a1 1 0 0 1 -1 1v6" />
-  </>
-);
-
+// The kinds of software the Software Accelerator offers, as cards for its hub page. The counts come from the `type`
+// of each entry in taxonomy.json.
 const svg = (paths) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     {paths.map((d) => <path key={d} d={d} />)}
@@ -36,7 +20,7 @@ const count = (filter, noun) => {
   return `${n} ${n === 1 ? noun : `${noun}s`}`;
 };
 
-const KINDS = [
+export const KINDS = [
   {
     id: 'tools',
     title: 'Reference Tools',
@@ -94,50 +78,3 @@ const KINDS = [
     icon: svg(['M4.5 16.5c-1.5 1.26 -2 5 -2 5s3.74 -.5 5 -2c.71 -.84 .7 -2.13 -.09 -2.91a2.18 2.18 0 0 0 -2.91 -.09z', 'M12 15l-3 -3a22 22 0 0 1 2 -3.95a12.88 12.88 0 0 1 10 -5.93c0 2.72 -.78 7.5 -6 11a22.35 22.35 0 0 1 -4 2z']),
   },
 ];
-
-export default function SoftwareFactory() {
-  // Registers the kind anchors with the broken-link checker, as the other custom pages do.
-  useAnchors(...KINDS.map((k) => k.id));
-  return (
-    <Layout
-      title="Software Factory"
-      description="The open-source software and tools 5G-MAG builds from the specifications: Reference Tools, Validation Tools, Testbeds and Evaluation Frameworks, and more."
-    >
-      <HubHero
-        title="Software Factory"
-        icon={FACTORY_ICON_PATH}
-        actions={[
-          <Link key="tools" className="button button--primary" to="/reference-tools">
-            Reference Tools
-          </Link>,
-          <Link key="programme" className="button button--outline button--primary" to="/developer">
-            Software Accelerator
-          </Link>,
-          <Link key="early" className="button button--outline button--primary" to="/early-access">
-            Early Access
-          </Link>,
-        ]}
-      />
-      <main>
-        <section className={styles.section}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>What 5G-MAG builds</h2>
-            <p className={styles.sectionSubtitle}>
-              Open-source software and tools built from the specifications, kind by kind. The{' '}
-              <Link to="/developer">Software Accelerator Programme</Link> is how they are built: the community, the
-              licences and early access.
-            </p>
-            <div className={styles.activityGrid}>
-              {KINDS.map((k) => (
-                <div key={k.id} id={k.id} style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}>
-                  <HubDestinationCard icon={k.icon} title={k.title} desc={k.desc} href={k.href} disabled={k.disabled} />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-        <JoinTheEffort alt />
-      </main>
-    </Layout>
-  );
-}

@@ -72,7 +72,7 @@ const toolRow = (p) => (isReferenceTool(p) && hasCode(p)
 const validationRow = (p) => (isValidationTool(p) && p.doc_url
   ? { label: displayNameOf(p), icon: p.icon, href: stripSlash(p.doc_url) } : null);
 const testbedRow = (p) => (isTestbed(p) ? { label: displayNameOf(p), icon: p.icon, href: stripSlash(p.doc_url) } : null);
-// The Software Factory's kinds, area by area, for the mobile menu. Playgrounds and Deployment Kits do not exist yet.
+// The kinds of software, area by area. Playgrounds and Deployment Kits do not exist yet.
 export const FACTORY_TOOL_AREAS = cardsBy(PROJECTS, toolRow);
 export const FACTORY_VALIDATION_AREAS = cardsBy(ALL_PROJECTS, validationRow);
 export const FACTORY_TESTBED_AREAS = cardsBy(ALL_PROJECTS, testbedRow);
@@ -130,31 +130,21 @@ export const SECTION_NAV = [
       { label: 'Our Members', href: '/membership#our-members' },
     ],
   },
-  // The Software Factory: what 5G-MAG builds, kind by kind. Reference Tools and Testbeds keep their own hubs; the
-  // Software Factory page lists every kind. Tutorials explain how to run the tools, so they sit here.
+  // The Software Accelerator: the programme and what it builds, kind by kind. Its long name, Media Connectivity
+  // Software Accelerator, heads the panel of the top bar. Tutorials explain how to run the tools, so they sit here too.
   {
-    prefixes: ['/software', '/reference-tools', '/testbeds', '/validation', '/kits', '/developer-tools', '/tutorials'],
-    title: 'Software Factory',
-    titleHref: '/software',
-    subtitle: 'Open-source software and tools built from the specifications.',
+    prefixes: ['/developer', '/reference-tools', '/testbeds', '/validation', '/kits', '/developer-tools', '/tutorials', '/early-access', '/community', '/contributing', '/license'],
+    title: 'Software Accelerator',
+    menuTitle: 'Media Connectivity Software Accelerator',
+    titleHref: '/developer',
+    subtitle: 'The programme and community that build open-source software from the specifications.',
     items: [
       { label: 'Reference Tools', href: '/reference-tools', featured: true },
       { label: 'Validation Tools', href: '/validation', featured: true },
       { label: 'Testbeds', href: '/testbeds', featured: true },
       { label: 'Developer Tools', href: '/developer-tools', featured: true },
-      { label: 'Playgrounds', href: '/software#playgrounds' },
+      { label: 'Playgrounds', href: '/developer#playgrounds' },
       { label: 'Deployment Kits', href: '/kits' },
-    ],
-  },
-  // The Software Accelerator Programme: the community and the process that build the Software Factory. Its long
-  // name, Media Connectivity Software Accelerator, heads the panel of the top bar.
-  {
-    prefixes: ['/developer', '/early-access', '/community', '/contributing', '/license'],
-    title: 'Software Accelerator',
-    menuTitle: 'Media Connectivity Software Accelerator',
-    titleHref: '/developer',
-    subtitle: 'The programme and community that build the Software Factory.',
-    items: [
       { label: 'Developer Community', href: '/community', featured: true },
       { label: 'Early Access', href: '/early-access', featured: true },
       { label: 'License', href: '/license' },
@@ -230,7 +220,7 @@ export const SECTION_NAV = [
     titleHref: '/deploy',
     subtitle: 'Demos, plugfests and interoperability events that help technology reach deployment.',
     // Activities only: demos, interop plugfests and testing events. Software
-    // (tools, validators, Deployment Kits) lives in the Software Factory. It does not own Testbeds or
+    // (tools, validators, Deployment Kits) lives in the Software Accelerator. It does not own Testbeds or
     // Reference Tools, so it has no sub-items pointing back at those.
     items: [
       { label: 'Demos', href: '/deploy#demos' },

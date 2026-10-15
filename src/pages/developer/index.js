@@ -15,6 +15,8 @@ import HubDestinationCard from '@site/src/components/HubDestinationCard';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import VideoGrid from '@site/src/components/VideoGrid';
 import { icon } from '@site/src/components/GodeeperCard';
+import useAnchors from '@site/src/utils/useAnchors';
+import { KINDS } from '@site/src/data/acceleratorKinds';
 import styles from './index.module.css';
 // Shared with /reference-tools, /tutorials and /testbeds; see the comment
 // there for why (2026-08-24 findability audit; extended here for the
@@ -55,12 +57,6 @@ const DEV_HERO_ICON_PATH = (
 // Prototypes": every page under it is a real, working, already-built walkthrough,
 // not a prototype-stage one.
 const PRODUCT_TYPES = [
-  {
-    icon: 'Software Factory',
-    label: 'Software Factory',
-    description: 'What the programme builds: Reference Tools, Validation Tools, Testbeds and Evaluation Frameworks, and more.',
-    href: '/software',
-  },
   {
     icon: 'Developer Community',
     label: 'Developer Community',
@@ -180,6 +176,7 @@ function ProductTypeCard({ icon, label, description, href }) {
 }
 
 export default function Home() {
+  useAnchors(...KINDS.map((k) => k.id));
   const demoRigImg = useBaseUrl('/assets/images/gallery/reference-tools-demo-rig.jpg');
   const camaraDemoImg = useBaseUrl('/assets/images/gallery/camara-dedicated-networks-demo.png');
   // Hooks can't be called inside the CONTRIBUTORS.map callback below
@@ -248,14 +245,29 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Product Types -- the actual browsable destinations (Reference
-            Tools, Testbeds, Tutorials), the cards after Why It Matters. */}
+        {/* What the programme builds, kind by kind: the browsable destinations after Why It Matters. */}
         <section className={clsx(styles.section, styles.sectionAlt)}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>What the programme builds</h2>
+            <p className={styles.sectionSubtitle}>
+              Open-source software and tools built from the specifications, kind by kind.
+            </p>
+            <div className={styles.productGrid}>
+              {KINDS.map((k) => (
+                <div key={k.id} id={k.id} style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}>
+                  <HubDestinationCard icon={k.icon} title={k.title} desc={k.desc} href={k.href} disabled={k.disabled} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.section}>
           <div className="container">
             <h2 className={styles.sectionTitle}>The programme</h2>
             <p className={styles.sectionSubtitle}>
-              The Software Accelerator Programme is the community and the process that build the Software Factory:
-              how to join, contribute, licence and get early access.
+              The community and the process behind the software: how to join, contribute, licence and get early
+              access.
             </p>
             <div className={styles.productGrid}>
               {PRODUCT_TYPES.map((item) => (

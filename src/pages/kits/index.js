@@ -23,8 +23,8 @@ export default function DeploymentKits() {
         title="Deployment Kits"
         icon={KITS_ICON_PATH}
         actions={[
-          <Link key="sw" className="button button--primary" to="/software">
-            Software Factory
+          <Link key="sw" className="button button--primary" to="/developer">
+            Software Accelerator
           </Link>,
           <Link key="ref" className="button button--outline button--primary" to="/reference-tools">
             Reference Tools
