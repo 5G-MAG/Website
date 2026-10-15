@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-14 02:17 UTC",
+  "updated_at": "2026-10-15 01:58 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -158,7 +158,7 @@
           "description": "5GMS Application Function (AF)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-07",
+          "pushed_at": "2026-10-14",
           "pulls": [
             {
               "number": 203,
@@ -386,7 +386,7 @@
             {
               "name": "Feature/DCAF",
               "default": false,
-              "last_commit": "2026-10-04"
+              "last_commit": "2026-10-14"
             },
             {
               "name": "feature/multi-application-server-https-support",
@@ -451,18 +451,8 @@
           "description": "5GMS Application Provider",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-09-29",
-          "pulls": [
-            {
-              "number": 112,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/rt-5gms-application-provider/pull/112",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
-              "base": "development"
-            }
-          ],
+          "pushed_at": "2026-10-14",
+          "pulls": [],
           "issues": [
             {
               "number": 107,
@@ -533,6 +523,11 @@
               "last_commit": "2026-08-03"
             },
             {
+              "name": "development",
+              "default": false,
+              "last_commit": "2026-10-14"
+            },
+            {
               "name": "fix/apply-new-format",
               "default": false,
               "last_commit": "2026-09-29"
@@ -541,11 +536,6 @@
               "name": "feature/cmmf-vod-config-formatter",
               "default": false,
               "last_commit": "2026-09-24"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-08-03"
             },
             {
               "name": "featute/increaseVersionNumber",
@@ -1214,7 +1204,7 @@
           "description": "5GMS Tools and Examples",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-10-08",
+          "pushed_at": "2026-10-14",
           "pulls": [
             {
               "number": 46,
@@ -1278,7 +1268,7 @@
             {
               "name": "feature/cmmf-dev/cmmf-recipe",
               "default": false,
-              "last_commit": "2026-10-08"
+              "last_commit": "2026-10-14"
             },
             {
               "name": "fix/apply-new-format",
@@ -1334,8 +1324,17 @@
           "description": "FLUTE Protocol and Profiles",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-13",
+          "pushed_at": "2026-10-14",
           "pulls": [
+            {
+              "number": 115,
+              "title": "Transmitter: update the FDT before queueing an object in send(FileDescription)",
+              "url": "https://github.com/5G-MAG/rt-libflute/pull/115",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-14",
+              "base": "development"
+            },
             {
               "number": 113,
               "title": "docs: apply the 5G-MAG README format",
@@ -1374,6 +1373,16 @@
             }
           ],
           "issues": [
+            {
+              "number": 114,
+              "title": "Transmitter: an object queued while the session runs can be sent before the FDT Instance describing it",
+              "url": "https://github.com/5G-MAG/rt-libflute/issues/114",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-14",
+              "labels": [
+                "bug"
+              ]
+            },
             {
               "number": 108,
               "title": "Merge order for #62, #61 and #68: no single branch carries the receiver API rt-mbs-client builds against",
@@ -1516,6 +1525,11 @@
               "name": "main",
               "default": true,
               "last_commit": "2026-08-21"
+            },
+            {
+              "name": "feature/issue114-fdt-before-object",
+              "default": false,
+              "last_commit": "2026-10-14"
             },
             {
               "name": "development",
@@ -2703,8 +2717,17 @@
           "description": "XR/3D Scenes and Test Content",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-13",
+          "pushed_at": "2026-10-14",
           "pulls": [
+            {
+              "number": 45,
+              "title": "tools: add the MPEG-I Scene Description - XR/3D Scene Validator",
+              "url": "https://github.com/5G-MAG/rt-xr-content/pull/45",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-14",
+              "base": "development"
+            },
             {
               "number": 41,
               "title": "Reference scenes follow ISO/IEC 23090-14:2024(E)",
@@ -2734,6 +2757,16 @@
             }
           ],
           "issues": [
+            {
+              "number": 44,
+              "title": "Add a validator for the scenes against ISO/IEC 23090-14",
+              "url": "https://github.com/5G-MAG/rt-xr-content/issues/44",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-14",
+              "labels": [
+                "enhancement"
+              ]
+            },
             {
               "number": 43,
               "title": "Anchored awards and video plane scenes set requiresAnchoring to false and show before anchoring",
@@ -2856,6 +2889,11 @@
               "name": "main",
               "default": true,
               "last_commit": "2025-07-08"
+            },
+            {
+              "name": "feature/scene-validator",
+              "default": false,
+              "last_commit": "2026-10-14"
             },
             {
               "name": "feature/xr_smartphone_app",
@@ -4007,8 +4045,17 @@
           "description": "FLUTE Protocol and Profiles",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-13",
+          "pushed_at": "2026-10-14",
           "pulls": [
+            {
+              "number": 115,
+              "title": "Transmitter: update the FDT before queueing an object in send(FileDescription)",
+              "url": "https://github.com/5G-MAG/rt-libflute/pull/115",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-14",
+              "base": "development"
+            },
             {
               "number": 113,
               "title": "docs: apply the 5G-MAG README format",
@@ -4047,6 +4094,16 @@
             }
           ],
           "issues": [
+            {
+              "number": 114,
+              "title": "Transmitter: an object queued while the session runs can be sent before the FDT Instance describing it",
+              "url": "https://github.com/5G-MAG/rt-libflute/issues/114",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-14",
+              "labels": [
+                "bug"
+              ]
+            },
             {
               "number": 108,
               "title": "Merge order for #62, #61 and #68: no single branch carries the receiver API rt-mbs-client builds against",
@@ -4189,6 +4246,11 @@
               "name": "main",
               "default": true,
               "last_commit": "2026-08-21"
+            },
+            {
+              "name": "feature/issue114-fdt-before-object",
+              "default": false,
+              "last_commit": "2026-10-14"
             },
             {
               "name": "development",
@@ -4816,7 +4878,7 @@
             },
             {
               "number": 32,
-              "title": "Add end-to-end CRUD integration coverage for DCAF R1, R2, and R6 APIs",
+              "title": "ci: run DCAF regression tests automatically and fix test expectations",
               "url": "https://github.com/5G-MAG/rt-data-collection-application-function/pull/32",
               "draft": false,
               "author": "ErikGaida",
@@ -6127,8 +6189,17 @@
           "description": "FLUTE Protocol and Profiles",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-13",
+          "pushed_at": "2026-10-14",
           "pulls": [
+            {
+              "number": 115,
+              "title": "Transmitter: update the FDT before queueing an object in send(FileDescription)",
+              "url": "https://github.com/5G-MAG/rt-libflute/pull/115",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-14",
+              "base": "development"
+            },
             {
               "number": 113,
               "title": "docs: apply the 5G-MAG README format",
@@ -6167,6 +6238,16 @@
             }
           ],
           "issues": [
+            {
+              "number": 114,
+              "title": "Transmitter: an object queued while the session runs can be sent before the FDT Instance describing it",
+              "url": "https://github.com/5G-MAG/rt-libflute/issues/114",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-14",
+              "labels": [
+                "bug"
+              ]
+            },
             {
               "number": 108,
               "title": "Merge order for #62, #61 and #68: no single branch carries the receiver API rt-mbs-client builds against",
@@ -6309,6 +6390,11 @@
               "name": "main",
               "default": true,
               "last_commit": "2026-08-21"
+            },
+            {
+              "name": "feature/issue114-fdt-before-object",
+              "default": false,
+              "last_commit": "2026-10-14"
             },
             {
               "name": "development",
