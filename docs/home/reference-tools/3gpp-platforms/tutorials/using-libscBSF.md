@@ -1,7 +1,7 @@
 ---
 title: Using libscBSF
 hide_title: true
-sidebar_position: 2
+sidebar_position: 4
 description: Introduces libscBSF, the BSF service consumer library, noting its dedicated tutorial is in progress and pointing to the libscPCF tutorial instead.
 ---
 

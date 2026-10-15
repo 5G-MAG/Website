@@ -348,27 +348,6 @@
       "icon": "icosahedron"
     },
     {
-      "name": "5G Core Service Consumers",
-      "type": "platform",
-      "partOf": "3GPP RAN and Core Platforms",
-      "doc_url": "/reference-tools/5g-core/",
-      "tech_url": null,
-      "image": "/assets/images/projects/5g-core.png",
-      "tagline": "Reference consumers for 5G Core capability exposure APIs",
-      "standards_url": "/standards/5g-core",
-      "basket": null,
-      "excludedReason": "Reference consumer repo, not a topic in its own right.",
-      "repos": [
-        "rt-5gc-service-consumers"
-      ],
-      "releases_slug": "#repositories--releases",
-      "contributors": [
-        "BBC - British Broadcasting Corporation",
-        "Fraunhofer FOKUS"
-      ],
-      "icon": "signal-5g"
-    },
-    {
       "name": "Beyond 2D Video Experiences",
       "type": "project",
       "doc_url": null,
@@ -763,13 +742,14 @@
       "type": "platform",
       "doc_url": "/reference-tools/3gpp-platforms/",
       "tech_url": null,
-      "standards_url": null,
+      "standards_url": "/standards/5g-core",
       "image": "/assets/images/projects/3gpp-platforms.png",
       "releases_slug": "#repositories--releases",
       "tagline": "Lab-ready 5G RAN and Core built on Open-Source platforms",
       "basket": null,
       "excludedReason": "Infrastructure other projects run on, not a topic.",
       "repos": [
+        "rt-5gc-service-consumers",
         "srsRAN_4G",
         "srsRAN",
         "rt-srsRAN_Project",
@@ -983,6 +963,25 @@
         ],
         "public": true,
         "is_auxiliary": false
+      },
+      {
+        "repo_slug": "rt-5gc-service-consumers",
+        "display_name": "5G Core Service Consumers",
+        "description": "This repository contains a collection of reusable service consumer libraries designed to interact with the 5GC Network Functions using service interfaces.",
+        "repo_url": "https://github.com/5G-MAG/rt-5gc-service-consumers",
+        "branch": "main",
+        "license": "5G-MAG PL v1.0",
+        "standards": [
+          "3GPP"
+        ],
+        "dependencies": [
+          "Open5GS"
+        ],
+        "software": [
+          "Linux"
+        ],
+        "public": true,
+        "is_auxiliary": true
       }
     ],
     "5g-broadcast": [
@@ -1588,27 +1587,6 @@
         ],
         "public": false,
         "is_auxiliary": false
-      }
-    ],
-    "5g-core": [
-      {
-        "repo_slug": "rt-5gc-service-consumers",
-        "display_name": "5G Core Service Consumers",
-        "description": "This repository contains a collection of reusable service consumer libraries designed to interact with the 5GC Network Functions using service interfaces.",
-        "repo_url": "https://github.com/5G-MAG/rt-5gc-service-consumers",
-        "branch": "main",
-        "license": "5G-MAG PL v1.0",
-        "standards": [
-          "3GPP"
-        ],
-        "dependencies": [
-          "Open5GS"
-        ],
-        "software": [
-          "Linux"
-        ],
-        "public": true,
-        "is_auxiliary": true
       }
     ],
     "6g-testbed": [

@@ -9,7 +9,7 @@ import { CATEGORIES as PROJECT_CATEGORIES, CategoryCard as ProjectCategoryCard, 
 // <Reference Tools page>/tutorials); each card opens that page.
 const TUTORIAL_SLUGS = [
   '5gms', 'data-collection', 'content-delivery', '5g-broadcast', 'emergency-alerts', 'dvb-i', '5g-mbs',
-  'xr', 'v3c', 'vdmc', 'avatar', 'network-apis', '5g-core', '3gpp-platforms',
+  'xr', 'v3c', 'vdmc', 'avatar', 'network-apis', '3gpp-platforms',
 ];
 const TUTORIAL_CATEGORIES = PROJECT_CATEGORIES.map((c) => ({
   ...c,

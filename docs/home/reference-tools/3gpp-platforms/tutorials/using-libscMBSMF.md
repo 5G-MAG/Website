@@ -1,7 +1,7 @@
 ---
 title: Using libscMBSMF
 hide_title: true
-sidebar_position: 1
+sidebar_position: 3
 description: Run the tmgi-tool and mbs-service-tool CLI tools against an MB-SMF to allocate a TMGI and create an MBS Session.
 ---
 

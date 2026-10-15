@@ -167,7 +167,6 @@ const PROJECT_TYPE_MAP = {
   'Content Delivery Protocols': 'Reference Tools',
   'DVB-I Services over 5G Systems': 'Reference Tools',
   '5G Broadcast - Emergency Alerts': 'Reference Tools',
-  '5G Core Service Consumers': 'Reference Tools',
   'Conversational Avatar Communication with MPEG ARF': 'Reference Tools',
   'Beyond 2D Evaluation Framework': 'Testbed',
   'CAMARA Connectivity Quality Management APIs': 'Reference Tools',

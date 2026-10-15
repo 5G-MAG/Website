@@ -286,12 +286,7 @@ export function projectsInBasket(basketKey) {
 // the content-delivery basket's own aggregate doesn't double-count it),
 // and MPEG V3C Immersive Platform (a different basket, immersive-media,
 // so it counts there too via V3C, its only representative in that
-// basket). rt-5gc-service-consumers (part of the basket-less "5G Core
-// Service Consumers" reference-consumer project, raised the same way)
-// is now also listed under 5GMS's own `repos` for display on its page,
-// but only counts toward its original owner -- 5G Core Service
-// Consumers has no basket of its own, so this has no aggregate to
-// double into regardless, kept for consistency with the pattern above.
+// basket).
 //
 // releaseInfoFor below also reads reposFor(project), so MBS's own
 // release feed still excludes any open5gs release the same way it did
@@ -300,8 +295,8 @@ export function projectsInBasket(basketKey) {
 // yet, so its own release feed is unaffected too, for now.
 const SHARED_REPO_OWNERS = {
   open5gs: ['3GPP RAN and Core Platforms'],
+  'rt-5gc-service-consumers': ['3GPP RAN and Core Platforms'],
   'rt-media-origin': ['Content Delivery Protocols', 'MPEG V3C Immersive Platform', '5G Multicast Broadcast Services (MBS)'],
-  'rt-5gc-service-consumers': ['5G Core Service Consumers'],
   'rt-cmmf-encoder': ['Content Delivery Protocols'],
   'rt-libflute': ['Content Delivery Protocols', '5G Broadcast - TV and Radio Services', '5G Multicast Broadcast Services (MBS)'],
   'rt-3gpp-swap': ['Conversational Avatar Communication with MPEG ARF', 'Real-time Media Communication (RTC) Architecture'],

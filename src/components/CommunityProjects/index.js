@@ -62,7 +62,6 @@ const SDO_TO_CATEGORY = {
 };
 const EXPLICIT_CATEGORY = {
   '3GPP RAN and Core Platforms': '3GPP Implementations',
-  '5G Core Service Consumers': '3GPP Implementations',
   'Common Tools': 'Shared Tools',
 };
 const PROJECT_BY_NAME = new Map(projectsData.map((p) => [p.name, p]));

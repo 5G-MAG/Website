@@ -56,10 +56,6 @@ const TOPIC_META = {
     desc: 'LTE-based transmitter, middleware and modem for TV & radio broadcast over 5G.',
     tags: ['Linux', 'Android', 'Docker', 'Web', 'Cloud'],
   },
-  '5G Core Service Consumers': {
-    desc: 'Reference consumer implementations for 5G Core (5GC) capability exposure APIs.',
-    tags: ['Linux'],
-  },
   '5G Media Streaming (5GMS)': {
     desc: '3GPP AF/AS implementation for adaptive media delivery over 5G.',
     tags: ['Linux', 'Android', 'Docker', 'Web', 'API', 'Cloud'],
