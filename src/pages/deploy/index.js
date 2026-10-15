@@ -2,7 +2,7 @@ import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
-import HubDestinationCard from '@site/src/components/HubDestinationCard';
+import ListRow, { RowList } from '@site/src/components/ListRow';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import VideoGrid from '@site/src/components/VideoGrid';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
@@ -137,7 +137,7 @@ const TESTING_EVENTS = [
 ];
 
 function ActivityCard({ title, desc, href, icon: cardIcon }) {
-  return <HubDestinationCard icon={cardIcon} title={title} desc={desc} href={href} />;
+  return <ListRow iconNode={cardIcon} title={title} desc={desc} href={href} />;
 }
 
 // Same calendar icon as /events (EVENTS_ICON_PATH there) -- a testing
@@ -153,7 +153,7 @@ const TESTING_EVENT_ICON = (
 );
 
 function ActionEventCard({ title, body, href }) {
-  return <HubDestinationCard icon={TESTING_EVENT_ICON} title={title} desc={body} href={href} linkLabel="Read more" />;
+  return <ListRow iconNode={TESTING_EVENT_ICON} title={title} desc={body} href={href} />;
 }
 
 function DemosSection() {
@@ -217,11 +217,11 @@ export default function Deploy() {
             <p className={styles.sectionSubtitle}>
               See the technology demonstrated and tested together at plugfests. The tools themselves, the validators and the Deployment Kits are in the <Link to="/developer">Software Accelerator</Link>; to run them yourself, see the <Link to="/tutorials">Tutorials</Link>.
             </p>
-            <div className={styles.activityGrid}>
+            <RowList>
               {WHATS_HERE.map((r) => (
                 <ActivityCard key={r.href} {...r} />
               ))}
-            </div>
+            </RowList>
           </div>
         </section>
 
@@ -312,11 +312,11 @@ export default function Deploy() {
               Multi-vendor interoperability events where 5G-MAG reference code is tested side by
               side with other implementations.
             </p>
-            <div className={styles.pillarGrid3}>
+            <RowList>
               {TESTING_EVENTS.map((e) => (
                 <ActionEventCard key={e.href} {...e} />
               ))}
-            </div>
+            </RowList>
           </div>
         </section>
 

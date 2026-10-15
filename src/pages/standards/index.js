@@ -3,7 +3,7 @@ import { FACT_SPEC_ISSUES, FACT_3GPP_MRP, FACT_SDO_INPUTS, FACT_WORKSHOP_INPUTS 
 import StatRow from '@site/src/components/StatRow';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
-import HubDestinationCard from '@site/src/components/HubDestinationCard';
+import ListRow, { RowList } from '@site/src/components/ListRow';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import PhotoGallery from '@site/src/components/PhotoGallery';
 import { icon } from '@site/src/components/GodeeperCard';
@@ -253,7 +253,7 @@ const WHATS_HERE = [
 ];
 
 function ActivityCard({ title, desc, href, icon: cardIcon }) {
-  return <HubDestinationCard icon={cardIcon} title={title} desc={desc} href={href} />;
+  return <ListRow iconNode={cardIcon} title={title} desc={desc} href={href} />;
 }
 
 function CategoryCard({ title, desc, topics }) {
@@ -265,7 +265,7 @@ function CategoryCard({ title, desc, topics }) {
       </div>
       <div className={styles.categoryTopicGrid}>
         {topics.map((t) => (
-          <HubDestinationCard key={t.href} compact icon={t.icon} title={t.title} desc={t.desc} href={t.href} />
+          <ListRow key={t.href} iconNode={t.icon} title={t.title} desc={t.desc} href={t.href} />
         ))}
       </div>
     </div>
@@ -344,11 +344,11 @@ export default function Standards() {
           <div className="container">
             <h2 className={styles.sectionTitle}>Requirements, Feedback and Liaisons</h2>
             <p className={styles.sectionSubtitle}>Every feedback and requirements destination, in one place.</p>
-            <div className={styles.activityGrid}>
+            <RowList>
               {WHATS_HERE.map((r) => (
                 <ActivityCard key={r.href} {...r} />
               ))}
-            </div>
+            </RowList>
           </div>
         </section>
 

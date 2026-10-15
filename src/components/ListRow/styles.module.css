@@ -37,6 +37,11 @@ a.row:hover {
   color: #fff;
 }
 
+.chip svg {
+  width: 20px;
+  height: 20px;
+}
+
 .title {
   font-weight: 700;
 }

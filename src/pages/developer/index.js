@@ -11,7 +11,6 @@ import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
 import EarlyAccessCallout from '@site/src/components/EarlyAccessCallout';
 import ProjectIcon from '@site/src/components/ProjectIcon';
-import HubDestinationCard from '@site/src/components/HubDestinationCard';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import VideoGrid from '@site/src/components/VideoGrid';
 import { icon } from '@site/src/components/GodeeperCard';
@@ -168,12 +167,7 @@ function PillarCard({ title, body, icon }) {
 
 function ProductTypeCard({ icon, label, description, href }) {
   return (
-    <HubDestinationCard
-      icon={<ProjectIcon name={icon} />}
-      title={label}
-      desc={description}
-      href={href}
-    />
+    <ListRow iconNode={<ProjectIcon name={icon} />} title={label} desc={description} href={href} />
   );
 }
 
@@ -279,11 +273,11 @@ export default function Home() {
               The community and the process behind the software: how to join, contribute, licence and get early
               access.
             </p>
-            <div className={styles.productGrid}>
+            <RowList>
               {PRODUCT_TYPES.map((item) => (
                 <ProductTypeCard key={item.href} {...item} />
               ))}
-            </div>
+            </RowList>
           </div>
         </section>
 

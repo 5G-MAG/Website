@@ -1,10 +1,10 @@
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
-import Heading from '@theme/Heading';
 import HubHero from '@site/src/components/HubHero';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import { ICON_CATALOG } from '@site/src/data/baskets';
 import { DEVELOPER_TOOLS } from '@site/src/data/developerTools';
+import ListRow, { RowList } from '@site/src/components/ListRow';
 import hubStyles from '../tech/index.module.css';
 import styles from './styles.module.css';
 
@@ -50,16 +50,14 @@ export default function DeveloperAssets() {
             <p className={styles.lead}>
               Tools for 5G-MAG members that support the transition of standards into deployments. In Early Access.
             </p>
-            <div className={styles.grid}>
+            <RowList>
               {DEVELOPER_TOOLS.map((a) => (
-                <article key={a.id} className={styles.card}>
-                  <span className={styles.icon}><AssetIcon name={a.icon} /></span>
-                  <Heading as="h2" id={a.id} className={styles.title}>{a.title}</Heading>
-                  <p className={styles.summary}>{a.summary}</p>
-                </article>
+                <div key={a.id} id={a.id} style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}>
+                  <ListRow iconNode={<AssetIcon name={a.icon} />} title={a.title} desc={a.summary} plain />
+                </div>
               ))}
-            </div>
-            <p>
+            </RowList>
+            <p style={{ marginTop: '1.5rem' }}>
               <Link className="button button--primary" to="/early-access">Request Early Access</Link>
             </p>
           </div>

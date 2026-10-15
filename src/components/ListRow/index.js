@@ -53,13 +53,11 @@ export function Icon({ paths, size = 20 }) {
   );
 }
 
-export default function ListRow({ href, title, desc, kind, iconKey, iconPaths, arrow = true }) {
+export default function ListRow({ href, title, desc, kind, iconKey, iconPaths, iconNode, arrow = true, plain = false }) {
   const paths = iconPaths || ICON_CATALOG[iconKey] || [];
   const body = (
     <>
-      <span className={styles.chip}>
-        <Icon paths={paths} />
-      </span>
+      <span className={styles.chip}>{iconNode || <Icon paths={paths} />}</span>
       <span>
         <div className={styles.title}>{title}</div>
         {desc && <div className={styles.desc}>{desc}</div>}
@@ -81,7 +79,7 @@ export default function ListRow({ href, title, desc, kind, iconKey, iconPaths, a
       {body}
     </Link>
   ) : (
-    <div className={`${styles.row} ${styles.rowStatic}`}>{body}</div>
+    <div className={plain ? styles.row : `${styles.row} ${styles.rowStatic}`}>{body}</div>
   );
 }
 
