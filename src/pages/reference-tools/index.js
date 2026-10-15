@@ -1,3 +1,4 @@
+import { implementationStatus } from '@site/src/data/implementationStatus';
 import { useMemo, useState } from 'react';
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
@@ -203,6 +204,7 @@ export function topicFor(project) {
     // stays; it's real information (which basket this project belongs to),
     // not a color choice.
     basketLabel: basket?.title,
+    status: project.doc_url.startsWith('/reference-tools/') ? implementationStatus(project.doc_url) : undefined,
   };
 }
 
@@ -237,7 +239,7 @@ export const CATEGORIES = [
 // this same gradient-header-plus-grid box rather than a second copy of
 // it (that page's own basket happens to be just one, but the shared
 // look is the point, not the count).
-export function CategoryCard({ title, desc, accent, topics }) {
+export function CategoryCard({ title, desc, accent, topics, showStatus = false }) {
   return (
     <div className={styles.categoryCard}>
       <div className={styles.categoryHeader} style={{ '--accent': accent || 'var(--ifm-color-primary)' }}>
@@ -260,6 +262,7 @@ export function CategoryCard({ title, desc, accent, topics }) {
             repoCount={t.repoCount}
             accent={t.accent}
             basketLabel={t.basketLabel}
+            status={showStatus ? t.status : undefined}
           />
         ))}
       </div>
@@ -342,7 +345,7 @@ export default function ReferenceTools() {
             ) : (
               <div className={styles.categoryColumns}>
                 {filtered.map((c) => (
-                  <CategoryCard key={c.title} {...c} />
+                  <CategoryCard key={c.title} {...c} showStatus />
                 ))}
               </div>
             )}

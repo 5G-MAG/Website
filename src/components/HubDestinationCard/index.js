@@ -80,6 +80,7 @@ export default function HubDestinationCard({
   basketLabel,
   largeTitle = false,
   big = false,
+  status,
 }) {
   const accentStyle = accent ? { '--accent': accent, '--accent-dark': darken(accent) } : undefined;
   // Standards (the real SDOs this project's specifications and repos
@@ -97,6 +98,9 @@ export default function HubDestinationCard({
   );
   const tagNodes = (
     <>
+      {status && (
+        <span className={clsx(styles.status, status.state === 'soon' ? styles.statusSoon : styles.statusAudited)}>{status.label}</span>
+      )}
       {tag && <span className={styles.tag}>{tag}</span>}
       {tags && tags.length > 0 && (
         <div className={styles.tagRow}>

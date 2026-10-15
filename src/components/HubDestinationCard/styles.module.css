@@ -366,3 +366,25 @@
 .secondaryLink:hover {
   text-decoration: underline !important;
 }
+
+/* The implementation status of a project, on the Reference Tools cards: audited (with its Release) or coming soon. */
+.status {
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: 0.45rem;
+  padding: 0.12rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.statusAudited {
+  background: color-mix(in srgb, var(--ifm-color-success) 18%, transparent);
+  color: var(--ifm-color-success-darkest, #14532d);
+}
+
+.statusSoon {
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-800);
+}
