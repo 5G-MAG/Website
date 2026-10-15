@@ -70,7 +70,7 @@ export default function NavbarMobilePrimaryMenu() {
                 {[
                   ['Reference Tools', '/reference-tools', FACTORY_TOOL_AREAS],
                   ['Validation Tools', '/validation', FACTORY_VALIDATION_AREAS],
-                  ['Testbeds and Evaluation Frameworks', '/testbeds', FACTORY_TESTBED_AREAS],
+                  ['Testbeds', '/testbeds', FACTORY_TESTBED_AREAS],
                   ['Platforms', '/software#platforms', FACTORY_PLATFORM_AREAS],
                 ].map(([title, href, areas]) => (
                   <React.Fragment key={title}>

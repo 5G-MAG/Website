@@ -580,7 +580,7 @@ function MenuList({ items }) {
 const FACTORY_RAIL = [
   { key: 'tools', title: 'Reference Tools', subtitle: 'Open-source code, project by project.', href: '/reference-tools' },
   { key: 'validation', title: 'Validation Tools', subtitle: 'Check conformance to a specification.', href: '/validation' },
-  { key: 'testbeds', title: 'Testbeds and Evaluation Frameworks', subtitle: 'Test environments and evaluation frameworks.', href: '/testbeds' },
+  { key: 'testbeds', title: 'Testbeds', subtitle: 'Test environments and evaluation frameworks.', href: '/testbeds' },
   { key: 'playgrounds', title: 'Playgrounds', subtitle: 'Try a technology with nothing to install.', href: '/software#playgrounds' },
   { key: 'kits', title: 'Deployment Kits', subtitle: 'Packages and images to put into a product.', href: '/kits' },
   { key: 'platforms', title: 'Platforms', subtitle: '3GPP RAN and Core Platforms, Common Tools.', href: '/software#platforms' },

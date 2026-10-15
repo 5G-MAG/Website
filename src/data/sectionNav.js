@@ -149,7 +149,7 @@ export const SECTION_NAV = [
     items: [
       { label: 'Reference Tools', href: '/reference-tools', featured: true },
       { label: 'Validation Tools', href: '/validation', featured: true },
-      { label: 'Testbeds and Evaluation Frameworks', href: '/testbeds', featured: true },
+      { label: 'Testbeds', href: '/testbeds', featured: true },
       { label: 'Developer Tools', href: '/developer-tools', featured: true },
       { label: 'Tutorials', href: '/tutorials', featured: true },
     ],
