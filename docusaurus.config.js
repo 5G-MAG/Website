@@ -424,9 +424,9 @@ const config = {
         {
           title: 'Software Factory',
           items: [
-            { label: 'Overview', to: '/software-factory' },
+            { label: 'Overview', to: '/software' },
             { label: 'Reference Tools', to: '/reference-tools' },
-            { label: 'Validation Tools', to: '/validation-tools' },
+            { label: 'Validation Tools', to: '/validation' },
             { label: 'Testbeds', to: '/testbeds' },
             { label: 'Tutorials', to: '/tutorials' },
           ],

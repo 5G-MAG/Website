@@ -62,16 +62,16 @@ export default function NavbarMobilePrimaryMenu() {
                 <NavbarItem mobile to="/tech" label="Where we stand"
                   className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
               </>
-            ) : item.to === '/software-factory' ? (
+            ) : item.to === '/software' ? (
               // Software Factory: its own page, then each kind of software with its areas and projects indented under
               // it, as on desktop. Playgrounds and Deployment Kits are listed as coming soon.
               <>
                 <NavbarItem mobile {...item} onClick={() => mobileSidebar.toggle()} />
                 {[
                   ['Reference Tools', '/reference-tools', FACTORY_TOOL_AREAS],
-                  ['Validation Tools', '/validation-tools', FACTORY_VALIDATION_AREAS],
+                  ['Validation Tools', '/validation', FACTORY_VALIDATION_AREAS],
                   ['Testbeds and Evaluation Frameworks', '/testbeds', FACTORY_TESTBED_AREAS],
-                  ['Platforms', '/software-factory#platforms', FACTORY_PLATFORM_AREAS],
+                  ['Platforms', '/software#platforms', FACTORY_PLATFORM_AREAS],
                 ].map(([title, href, areas]) => (
                   <React.Fragment key={title}>
                     <NavbarItem mobile to={href} label={title}
@@ -95,9 +95,9 @@ export default function NavbarMobilePrimaryMenu() {
                     ))}
                   </React.Fragment>
                 ))}
-                <NavbarItem mobile to="/software-factory#playgrounds" label="Playgrounds (coming soon)"
+                <NavbarItem mobile to="/software#playgrounds" label="Playgrounds (coming soon)"
                   className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
-                <NavbarItem mobile to="/software-factory#kits" label="Deployment Kits (coming soon)"
+                <NavbarItem mobile to="/software#kits" label="Deployment Kits (coming soon)"
                   className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
                 <NavbarItem mobile to="/tutorials" label="Tutorials"
                   className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />

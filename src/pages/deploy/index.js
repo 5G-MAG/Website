@@ -216,7 +216,7 @@ export default function Deploy() {
           <div className="container">
             <h2 className={styles.sectionTitle}>See It, Test It, Take It Further</h2>
             <p className={styles.sectionSubtitle}>
-              See the technology demonstrated and tested together at plugfests. The tools themselves, the validators and the Deployment Kits are in the <Link to="/software-factory">Software Factory</Link>; to run them yourself, see the <Link to="/tutorials">Tutorials</Link>.
+              See the technology demonstrated and tested together at plugfests. The tools themselves, the validators and the Deployment Kits are in the <Link to="/software">Software Factory</Link>; to run them yourself, see the <Link to="/tutorials">Tutorials</Link>.
             </p>
             <div className={styles.activityGrid}>
               {WHATS_HERE.map((r) => (

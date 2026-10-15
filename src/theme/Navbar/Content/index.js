@@ -261,7 +261,7 @@ function SlidingIndicatorGroup({ items }) {
 // the pill sub-nav bar itself already renders from; deliberately explicit
 // (which items open a flyout) rather than "every navbar item whose
 // SECTION_NAV entry happens to have items", most of which don't want one.
-const NAV_DROPDOWN_HREFS = ['/about', '/standards', '/software-factory', '/developer', '/deploy', '/news'];
+const NAV_DROPDOWN_HREFS = ['/about', '/standards', '/software', '/developer', '/deploy', '/news'];
 const NAV_DROPDOWNS = new Map(
   NAV_DROPDOWN_HREFS.map((href) => [href, SECTION_NAV.find((s) => s.titleHref === href)])
 );
@@ -369,14 +369,13 @@ const NAV_ITEM_ICONS = {
   '/ls': ['M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z', 'M3 7l9 6l9 -6'],
   '/workshops': ['M3 4l18 0', 'M4 4v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-10', 'M12 16l0 4', 'M9 20l6 0', 'M8 12l3 -3l2 2l3 -3'],
   '/deploy/5g-broadcast-plugfest': 'antenna-signal',
-  '/validation-tools': ['M9.615 20h-2.615a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8', 'M14 19l2 2l4 -4', 'M9 8h4', 'M9 12h2'],
-  '/software-factory#playgrounds': ['M7 4v16l13 -8l-13 -8'],
-  '/software-factory#kits': ['M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5', 'M12 12l8 -4.5', 'M12 12l0 9', 'M12 12l-8 -4.5', 'M16 5.25l-8 4.5'],
-  '/software-factory#platforms': 'tool',
+  '/validation': ['M9.615 20h-2.615a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8', 'M14 19l2 2l4 -4', 'M9 8h4', 'M9 12h2'],
+  '/software#playgrounds': ['M7 4v16l13 -8l-13 -8'],
+  '/software#kits': ['M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5', 'M12 12l8 -4.5', 'M12 12l0 9', 'M12 12l-8 -4.5', 'M16 5.25l-8 4.5'],
+  '/software#platforms': 'tool',
   '/deploy/testing': ['M9.615 20h-2.615a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8', 'M14 19l2 2l4 -4', 'M9 8h4', 'M9 12h2'],
   '/deploy#demos': ['M7 4v16l13 -8l-13 -8'],
   '/deploy#plugfests': ['M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0', 'M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2', 'M16 3.13a4 4 0 0 1 0 7.75', 'M21 21v-2a4 4 0 0 0 -3 -3.85'],
-  '/software-factory#kits': ['M12 4l-8 4l8 4l8 -4l-8 -4', 'M4 12l8 4l8 -4', 'M4 16l8 4l8 -4'],
   '/structure': ['M3 15m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z', 'M15 15m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z', 'M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z', 'M6 15v-1a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v1', 'M12 9l0 3'],
   '/partnerships': ['M9 15l6 -6', 'M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464', 'M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463'],
   '/contact': ['M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z', 'M3 7l9 6l9 -6'],
@@ -388,7 +387,7 @@ const NAV_ITEM_ICONS = {
 // Each section's own hub-page icon (the HubHero icon on /standards, /developer, /deploy, /news),
 // shown on that section's header card at the top of its dropdown.
 const SECTION_ICONS = {
-  '/software-factory': ['M3 21h18', 'M5 21v-12l5 4v-4l5 4h4a2 2 0 0 1 2 2v6', 'M19 13v-6a1 1 0 0 1 1 -1h-2a1 1 0 0 1 -1 1v6'],
+  '/software': ['M3 21h18', 'M5 21v-12l5 4v-4l5 4h4a2 2 0 0 1 2 2v6', 'M19 13v-6a1 1 0 0 1 1 -1h-2a1 1 0 0 1 -1 1v6'],
   '/about': ['M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0', 'M3.6 9h16.8', 'M3.6 15h16.8', 'M11.5 3a17 17 0 0 0 0 18', 'M12.5 3a17 17 0 0 1 0 18'],
   '/standards': ['M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1'],
   '/developer': ['M7 8l-4 4l4 4', 'M17 8l4 4l-4 4', 'M14 4l-4 16'],
@@ -580,11 +579,11 @@ function MenuList({ items }) {
 // Deployment Kits do not exist yet and say so.
 const FACTORY_RAIL = [
   { key: 'tools', title: 'Reference Tools', subtitle: 'Open-source code, project by project.', href: '/reference-tools' },
-  { key: 'validation', title: 'Validation Tools', subtitle: 'Check conformance to a specification.', href: '/validation-tools' },
+  { key: 'validation', title: 'Validation Tools', subtitle: 'Check conformance to a specification.', href: '/validation' },
   { key: 'testbeds', title: 'Testbeds and Evaluation Frameworks', subtitle: 'Test environments and evaluation frameworks.', href: '/testbeds' },
-  { key: 'playgrounds', title: 'Playgrounds', subtitle: 'Try a technology with nothing to install.', href: '/software-factory#playgrounds' },
-  { key: 'kits', title: 'Deployment Kits', subtitle: 'Packages and images to put into a product.', href: '/software-factory#kits' },
-  { key: 'platforms', title: 'Platforms', subtitle: '3GPP RAN and Core Platforms, Common Tools.', href: '/software-factory#platforms' },
+  { key: 'playgrounds', title: 'Playgrounds', subtitle: 'Try a technology with nothing to install.', href: '/software#playgrounds' },
+  { key: 'kits', title: 'Deployment Kits', subtitle: 'Packages and images to put into a product.', href: '/software#kits' },
+  { key: 'platforms', title: 'Platforms', subtitle: '3GPP RAN and Core Platforms, Common Tools.', href: '/software#platforms' },
   { key: 'tutorials', title: 'Tutorials', subtitle: 'How to run the tools.', href: '/tutorials' },
 ];
 
@@ -676,7 +675,7 @@ function NavbarItems({ items }) {
         if (item.solutionsMenu) return <SolutionsMenu key={i} item={item} />;
         const preview = NAV_DROPDOWNS.get(item.to);
         if (!preview) return <React.Fragment key={i}>{renderNavbarItem(item)}</React.Fragment>;
-        if (item.to === '/software-factory') return <FactoryMenu key={i} item={item} preview={preview} />;
+        if (item.to === '/software') return <FactoryMenu key={i} item={item} preview={preview} />;
         return (
           <NavDropdownItem key={i} item={item} preview={preview} />
         );

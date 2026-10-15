@@ -142,13 +142,13 @@ export const SECTION_NAV = [
   // The Software Factory: what 5G-MAG builds, kind by kind. Reference Tools and Testbeds keep their own hubs; the
   // Software Factory page lists every kind. Tutorials explain how to run the tools, so they sit here.
   {
-    prefixes: ['/software-factory', '/reference-tools', '/testbeds', '/validation-tools', '/tutorials'],
+    prefixes: ['/software', '/reference-tools', '/testbeds', '/validation', '/tutorials'],
     title: 'Software Factory',
-    titleHref: '/software-factory',
+    titleHref: '/software',
     subtitle: 'Open-source software and tools built from the specifications.',
     items: [
       { label: 'Reference Tools', href: '/reference-tools', featured: true },
-      { label: 'Validation Tools', href: '/validation-tools', featured: true },
+      { label: 'Validation Tools', href: '/validation', featured: true },
       { label: 'Testbeds and Evaluation Frameworks', href: '/testbeds', featured: true },
       { label: 'Tutorials', href: '/tutorials', featured: true },
     ],

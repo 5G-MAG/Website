@@ -59,7 +59,7 @@ const PRODUCT_TYPES = [
     icon: 'Software Factory',
     label: 'Software Factory',
     description: 'What the programme builds: Reference Tools, Validation Tools, Testbeds and Evaluation Frameworks, and more.',
-    href: '/software-factory',
+    href: '/software',
   },
   {
     icon: 'Developer Community',
