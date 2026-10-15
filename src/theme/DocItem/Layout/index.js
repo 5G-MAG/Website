@@ -9,6 +9,7 @@ import DocBreadcrumbs from '@theme/DocBreadcrumbs';
 import ContentVisibility from '@theme/ContentVisibility';
 import { useSidebarToggle } from '@theme/DocRoot/Layout/SidebarToggleContext';
 import { translate } from '@docusaurus/Translate';
+import ProjectStrip from '@site/src/components/ProjectStrip';
 import styles from './styles.module.css';
 
 function SidebarToggleIcon() {
@@ -84,6 +85,7 @@ export default function DocItemLayout({ children }) {
                 <DocBreadcrumbs />
               </div>
             </div>
+            <ProjectStrip />
             <DocVersionBadge />
             <DocItemContent>{children}</DocItemContent>
             <DocItemFooter />
