@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import VideoCard from '../VideoCard';
 import styles from './styles.module.css';
 
-export default function VideoGrid({ videos, kicker = 'In Action', singleRow = false }) {
+export default function VideoGrid({ videos, kicker = 'Video', singleRow = false }) {
   const [playingId, setPlayingId] = useState(null);
 
   return (

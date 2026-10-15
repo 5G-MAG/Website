@@ -17,7 +17,7 @@ function slugify(title) {
     .replace(/\s+/g, '-');
 }
 
-export default function VideoCard({ video, isPlaying, onPlay, kicker = 'In Action' }) {
+export default function VideoCard({ video, isPlaying, onPlay, kicker = 'Video' }) {
   const id = slugify(video.title);
   useAnchors(id);
   return (

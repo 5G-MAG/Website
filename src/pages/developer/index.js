@@ -401,10 +401,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Our Work In Action: photos + videos together */}
+        {/* Our work in the field: photos + videos together */}
         <section className={clsx(styles.section, styles.sectionAlt)}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Our Work In Action</h2>
+            <h2 className={styles.sectionTitle}>Our work in the field</h2>
             <p className={styles.sectionSubtitle}>
               Reference Tools running on real hardware, at real events — and recent demos and
               tutorials from the developer community.
