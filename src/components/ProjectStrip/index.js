@@ -1,27 +1,8 @@
 import Link from '@docusaurus/Link';
 import { useLocation } from '@docusaurus/router';
-import { ALL_PROJECTS, displayNameOf, typeOf, isTestbed } from '@site/src/data/baskets';
+import { familyForPath } from '@site/src/utils/projectFamily';
+import { displayNameOf, typeOf, isTestbed } from '@site/src/data/baskets';
 import styles from './styles.module.css';
-
-const lastSegment = (url) => (url ? url.replace(/\/$/, '').split('/').pop() : null);
-
-// The pages of one project, as one strip across all of them: Technology, Specifications and its Software
-// (Reference Tools, a testbed or a validation tool). The project is found from the first segment after the
-// section (/tech/5gms/features -> '5gms'); a testbed or validator that shares its project's Technology and
-// Specifications pages joins the same strip.
-const SECTIONS = ['tech', 'standards', 'reference-tools', 'testbeds', 'validation'];
-
-function familyFor(pathname) {
-  const parts = pathname.split('/').filter(Boolean);
-  if (parts.length < 2 || !SECTIONS.includes(parts[0])) return [];
-  const slug = parts[1];
-  return ALL_PROJECTS.filter(
-    (p) =>
-      lastSegment(p.tech_url) === slug ||
-      lastSegment(p.standards_url) === slug ||
-      lastSegment(p.doc_url) === slug,
-  );
-}
 
 function softwareLabel(p) {
   const t = typeOf(p);
@@ -32,7 +13,7 @@ function softwareLabel(p) {
 
 export default function ProjectStrip({ contained = false }) {
   const { pathname } = useLocation();
-  const family = familyFor(pathname);
+  const family = familyForPath(pathname);
   if (family.length === 0) return null;
   const lead = family.find((p) => p.type === 'project') || family[0];
   const tech = family.find((p) => p.tech_url)?.tech_url;

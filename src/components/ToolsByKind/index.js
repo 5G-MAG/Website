@@ -13,15 +13,16 @@ import styles from './styles.module.css';
 
 // Every tool that has a page, grouped by kind. One compact link per tool: the same list wherever a page shows
 // "all the tools", so the classification is the same everywhere.
-const withPage = (p) => p.doc_url && !p.partOf;
-const KINDS = [
+export const withPage = (p) => p.doc_url && !p.partOf;
+// The kinds that list tools, with their page and test.
+export const TOOL_KINDS = [
   { title: 'Reference Tools', href: '/reference-tools', test: isReferenceTool },
   { title: 'Testbeds and Evaluation Frameworks', href: '/testbeds', test: isTestbed },
   { title: 'Validation Tools', href: '/validation', test: isValidationTool },
   { title: 'Platforms', href: '/reference-tools/3gpp-platforms', test: (p) => isPlatform(p) || isCommonTools(p) },
 ];
 
-function Chip({ project }) {
+export function ToolCard({ project }) {
   const paths = ICON_CATALOG[project.icon] || [];
   return (
     <Link to={project.doc_url.replace(/\/$/, '')} className={styles.chip}>
@@ -38,7 +39,7 @@ function Chip({ project }) {
 export default function ToolsByKind() {
   return (
     <div className={styles.kinds}>
-      {KINDS.map((k) => {
+      {TOOL_KINDS.map((k) => {
         const tools = ALL_PROJECTS.filter((p) => k.test(p) && withPage(p));
         if (tools.length === 0) return null;
         return (
@@ -47,7 +48,7 @@ export default function ToolsByKind() {
               <Link to={k.href}>{k.title}</Link>
             </h3>
             <div className={styles.chips}>
-              {tools.map((p) => <Chip key={p.name} project={p} />)}
+              {tools.map((p) => <ToolCard key={p.name} project={p} />)}
             </div>
           </div>
         );

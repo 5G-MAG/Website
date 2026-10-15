@@ -53,7 +53,7 @@ export default function ProjectRepoSection({ projectNames, accent, isTestbed = f
 
   return (
     <>
-      <h2 className={styles.sectionTitle}>{isTestbed ? 'Testbeds' : 'Reference Tools'} for This Project</h2>
+      <h2 className={styles.sectionTitle}>Repositories of This Project</h2>
       <p className={styles.sectionSubtitle}>
         The real, running software for this technology — {repos.length}{' '}
         {repos.length === 1 ? 'repository' : 'repositories'}.
