@@ -79,12 +79,6 @@ const PRODUCT_TYPES = [
     description: 'The 5G-MAG Public License and the contributor agreements.',
     href: '/license',
   },
-  {
-    icon: 'Developer Exchanges',
-    label: 'Developer Exchanges',
-    description: 'Recordings of the developer exchanges.',
-    href: '/developer/exchanges',
-  },
 ];
 
 const PILLARS = [
