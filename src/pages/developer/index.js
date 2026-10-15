@@ -255,14 +255,14 @@ export default function Home() {
             </p>
             <div className={clsx(styles.kindsGrid, styles.kindsGrid3)}>
               {KINDS.filter((k) => k.prominent).map((k) => (
-                <div key={k.id} id={k.id} className={clsx(styles.kindCell, k.prominent && styles.kindProminent)} style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}>
+                <div key={k.id} id={k.id} className={styles.kindCell} style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}>
                   <HubDestinationCard icon={k.icon} title={k.title} desc={k.desc} href={k.href} disabled={k.disabled} />
                 </div>
               ))}
             </div>
             <div className={clsx(styles.kindsGrid, styles.kindsGrid4)}>
               {KINDS.filter((k) => !k.prominent && k.id !== 'tutorials').map((k) => (
-                <div key={k.id} id={k.id} className={clsx(styles.kindCell, k.prominent && styles.kindProminent)} style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}>
+                <div key={k.id} id={k.id} className={styles.kindCell} style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}>
                   <HubDestinationCard icon={k.icon} title={k.title} desc={k.desc} href={k.href} disabled={k.disabled} />
                 </div>
               ))}

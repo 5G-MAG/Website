@@ -90,11 +90,6 @@
   margin: 0;
 }
 
-.kindProminent > a,
-.kindProminent > div {
-  box-shadow: 0 0 0 2px var(--ifm-color-primary);
-}
-
 .productGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
