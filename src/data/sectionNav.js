@@ -282,6 +282,7 @@ export const SECTION_NAV = [
     items: [
       { label: 'Demos', href: '/deploy#demos' },
       { label: 'Plugfests', href: '/deploy#plugfests' },
+      { label: 'Testing and interoperability', href: '/deploy/testing' },
       { label: 'Deployable Assets', href: '/deploy#assets' },
     ],
   },
