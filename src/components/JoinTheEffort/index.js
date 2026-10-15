@@ -127,7 +127,7 @@ export default function JoinTheEffort({ id, alt = false }) {
             Become a member
           </Link>
         </div>
-        <div className="community-tiles community-tiles--even">
+        <div className="community-tiles community-tiles--even community-tiles--cols-3">
           {TILES.map(({ key, ...t }) => (
             <Tile key={key} {...t} />
           ))}
