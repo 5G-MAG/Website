@@ -6,7 +6,7 @@ import HubHero from '@site/src/components/HubHero';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import { icon } from '@site/src/components/GodeeperCard';
 import HubDestinationCard from '@site/src/components/HubDestinationCard';
-import { ALL_PROJECTS, BASKETS, BASKET_ACCENT, ICON_CATALOG, reposFor, isTestbed } from '@site/src/data/baskets';
+import { ALL_PROJECTS, BASKETS, BASKET_ACCENT, ICON_CATALOG, reposFor, isTestbed, isReferenceTool, isPlatform, isCommonTools } from '@site/src/data/baskets';
 import styles from '../tech/index.module.css';
 import filterStyles from './styles.module.css';
 
@@ -155,7 +155,7 @@ const BASKET_DESC = {
 // here). Grouped by basket, same taxonomy and same order as tech/index.js's
 // TECH_GROUPS, so a project's basket move or a new project with a doc_url
 // picks up here automatically -- no second hand-maintained array to drift.
-const REFTOOLS_PROJECTS = ALL_PROJECTS.filter((p) => p.doc_url && !isTestbed(p) && !p.auxiliary);
+const REFTOOLS_PROJECTS = ALL_PROJECTS.filter((p) => p.doc_url && (isReferenceTool(p) || isPlatform(p) || isCommonTools(p)));
 
 // Build-time-only self-check (code-derived, no spec claim): TOPIC_META is
 // hand-maintained, unlike REFTOOLS_PROJECTS' own filter above -- a new

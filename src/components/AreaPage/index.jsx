@@ -5,7 +5,7 @@ import Link from '@docusaurus/Link';
 import ShowcaseDiagram from '@site/src/components/ShowcaseDiagram';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import { SHOWCASE_BASKETS, SHOWCASE_STATUS, FEATURE_STATUS } from '@site/src/data/showcases';
-import { BASKETS, ICON_CATALOG, projectsInBasket, techLabelOf, projectBySlug, deployUrlOf, isTestbed } from '@site/src/data/baskets';
+import { BASKETS, ICON_CATALOG, projectsInBasket, techLabelOf, projectBySlug, deployUrlOf, isTestbed, isValidationTool, PROJECT_TYPES, typeOf } from '@site/src/data/baskets';
 import { CATEGORIES as PROJECT_CATEGORIES } from '@site/src/pages/reference-tools';
 import boxStyles from '@site/src/pages/tech/index.module.css';
 
@@ -275,7 +275,7 @@ export default function AreaPage({ basketKey }) {
                         </svg>
                       </span>
                       <b>{techLabelOf(p)}</b>
-                      {isTestbed(p) && <span className={styles.tileTag}>Testbed</span>}
+                      {(isTestbed(p) || isValidationTool(p)) && <span className={styles.tileTag}>{PROJECT_TYPES[typeOf(p)]}</span>}
                     </Link>
                   ))}
                 </div>

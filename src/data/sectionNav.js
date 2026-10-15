@@ -1,4 +1,4 @@
-import { BASKETS, TOPIC_BASKETS, BASKET_PAGE, BASKET_ACCENT, PROJECTS, ALL_PROJECTS, techLabelOf, isTestbed, displayNameOf } from './baskets';
+import { BASKETS, TOPIC_BASKETS, BASKET_PAGE, BASKET_ACCENT, PROJECTS, ALL_PROJECTS, techLabelOf, isTestbed, isReferenceTool, isPlatform, isCommonTools, displayNameOf, typeOf, PROJECT_TYPES } from './baskets';
 import { ALL_TOPICS } from '../../techTopics.js';
 
 // Canonical per-section nav items, keyed by the route prefix(es) they
@@ -66,14 +66,15 @@ const cardsBy = (projects, rows) => TOPIC_BASKETS.map((b) => ({
   accent: BASKET_ACCENT[b.key],
   items: projects.filter((p) => p.basket === b.key).map(rows).filter(Boolean),
 })).filter((g) => g.items.length);
-const toolRow = (p) => ((p.doc_url || '').startsWith('/reference-tools/') && !p.auxiliary && (p.repos || []).length
+const hasCode = (p) => p.doc_url && (p.repos || []).length;
+const toolRow = (p) => ((isReferenceTool(p) || isPlatform(p) || isCommonTools(p)) && hasCode(p)
   ? { label: displayNameOf(p), icon: p.icon, href: stripSlash(p.doc_url) } : null);
 const testbedRow = (p) => (isTestbed(p) ? { label: displayNameOf(p), icon: p.icon, href: stripSlash(p.doc_url) } : null);
 export const ACCELERATOR_TOOL_AREAS = cardsBy(PROJECTS, toolRow).concat([{
   title: 'Platforms and shared tools',
   icon: 'tool',
   accent: '#7a8795',
-  items: ALL_PROJECTS.filter((p) => !p.basket && !p.auxiliary).map(toolRow).filter(Boolean),
+  items: ALL_PROJECTS.filter((p) => !p.basket && (isPlatform(p) || isCommonTools(p))).map(toolRow).filter(Boolean),
 }].filter((g) => g.items.length));
 export const ACCELERATOR_TESTBED_AREAS = cardsBy(ALL_PROJECTS, testbedRow);
 
@@ -81,7 +82,7 @@ export const ACCELERATOR_TESTBED_AREAS = cardsBy(ALL_PROJECTS, testbedRow);
 export const HALF_AREAS = ['ntn', 'towards-6g'];
 export const TECHNOLOGY_GROUPS = TOPIC_BASKETS.map((b) => {
   const items = PROJECTS.filter((p) => p.basket === b.key && p.tech_url)
-    .map((p) => ({ label: techLabelOf(p), href: p.tech_url, icon: p.icon, tag: isTestbed(p) ? 'Testbed' : undefined }));
+    .map((p) => ({ label: techLabelOf(p), href: p.tech_url, icon: p.icon, tag: ['testbed', 'evaluation-framework', 'validation-tool'].includes(typeOf(p)) ? PROJECT_TYPES[typeOf(p)] : undefined }));
   return {
     key: b.key,
     title: b.title,
@@ -101,7 +102,7 @@ export const ACCELERATOR_GROUPS = TOPIC_BASKETS.map((b) => ({
   href: BASKET_PAGE[b.key] || `/tech#${b.key}`,
   icon: b.icon,
   accent: BASKET_ACCENT[b.key],
-  items: PROJECTS.filter((p) => p.basket === b.key && p.doc_url && !isTestbed(p) && p.repos.length)
+  items: PROJECTS.filter((p) => p.basket === b.key && isReferenceTool(p) && p.doc_url && p.repos.length)
     .map((p) => ({ label: displayNameOf(p), href: stripSlash(p.doc_url), icon: p.icon })),
 })).filter((g) => g.items.length).concat(
   [{
@@ -116,7 +117,7 @@ export const ACCELERATOR_GROUPS = TOPIC_BASKETS.map((b) => ({
     href: '/reference-tools',
     icon: 'tool',
     accent: '#7a8795',
-    items: ALL_PROJECTS.filter((p) => !p.basket && p.doc_url && p.doc_url.startsWith('/reference-tools/') && p.repos.length)
+    items: ALL_PROJECTS.filter((p) => !p.basket && (isPlatform(p) || isCommonTools(p)) && p.doc_url && p.repos.length)
       .map((p) => ({ label: displayNameOf(p), href: stripSlash(p.doc_url), icon: p.icon })),
   }].filter((g) => g.items.length)
 );

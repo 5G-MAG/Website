@@ -75,7 +75,7 @@ ALL_TOPICS.forEach((topic) => {
     const folder = topic.refTools.href.replace(/^\//, '');
     items.push({
       type: 'category',
-      label: topic.refTools.isTestbed ? 'Testbed' : 'Reference Tools',
+      label: topic.refTools.label || (topic.refTools.isTestbed ? 'Testbed' : 'Reference Tools'),
       collapsed: true,
       items: deriveLinkItems(`docs/home/${folder}`, topic.refTools.href),
     });

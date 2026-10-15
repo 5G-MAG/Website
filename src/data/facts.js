@@ -34,6 +34,7 @@ export const FACT_SPEC_ISSUES = { value: fmt(siteStats.specIssues), label: 'Issu
 export const FACT_PROJECTS = { value: fmt(siteStats.projects), label: 'Projects across media and connectivity' };
 export const FACT_REFERENCE_TOOLS = { value: fmt(siteStats.referenceTools), label: 'Reference Tools projects' };
 export const FACT_TESTBEDS = { value: fmt(siteStats.testbeds), label: 'Testbeds and Evaluation Frameworks' };
+export const FACT_VALIDATION_TOOLS = { value: fmt(siteStats.validationTools), label: 'Validation Tools' };
 export const FACT_WORKSHOP_INPUTS = { value: fmt(siteStats.workshopInputs), label: 'Presentations at 3GPP requirements workshops' };
 // Static: 5G-MAG's role in 3GPP (docs/home/partnerships.mdx: "5G-MAG is a 3GPP Market Representation Partner (MRP)").
 export const FACT_3GPP_MRP = { value: '3GPP', label: 'Engagement as Market Representation Partner' };

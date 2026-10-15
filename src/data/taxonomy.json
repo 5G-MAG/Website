@@ -43,6 +43,7 @@
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
+      "type": "reference-tool",
       "displayName": "5G Media Streaming (5GMS)",
       "doc_url": "/reference-tools/5gms/",
       "tech_url": "/tech/5gms",
@@ -91,6 +92,7 @@
     },
     {
       "name": "5G Broadcast - TV and Radio Services",
+      "type": "reference-tool",
       "doc_url": "/reference-tools/5g-broadcast/",
       "tech_url": "/tech/5g-broadcast",
       "standards_url": "/standards/5g-broadcast",
@@ -137,6 +139,7 @@
     },
     {
       "name": "5G Broadcast - Emergency Alerts",
+      "type": "reference-tool",
       "doc_url": "/reference-tools/emergency-alerts/",
       "tech_url": "/tech/emergency-alerts",
       "standards_url": "/standards/emergency-alerts",
@@ -174,6 +177,7 @@
     },
     {
       "name": "XR/3D Scenes with MPEG-I Scene Description",
+      "type": "reference-tool",
       "displayName": "XR Media & 3D Scenes",
       "doc_url": "/reference-tools/xr/",
       "tech_url": "/tech/xr",
@@ -209,6 +213,7 @@
     },
     {
       "name": "5G Multicast Broadcast Services (MBS)",
+      "type": "reference-tool",
       "doc_url": "/reference-tools/5g-mbs/",
       "tech_url": "/tech/5g-mbs",
       "standards_url": "/standards/5g-mbs",
@@ -252,6 +257,7 @@
     },
     {
       "name": "UE Data Collection, Reporting and Event Exposure",
+      "type": "reference-tool",
       "doc_url": "/reference-tools/data-collection/",
       "tech_url": "/tech/data-collection",
       "standards_url": "/standards/data-collection",
@@ -282,6 +288,7 @@
     },
     {
       "name": "MPEG V3C Immersive Platform",
+      "type": "reference-tool",
       "displayName": "Volumetric Video Experiences",
       "doc_url": "/reference-tools/v3c/",
       "tech_url": "/tech/v3c",
@@ -315,6 +322,7 @@
     },
     {
       "name": "Dynamic Mesh Coding",
+      "type": "reference-tool",
       "displayName": "Dynamic Mesh Coding",
       "doc_url": "/reference-tools/vdmc/",
       "tech_url": "/tech/vdmc",
@@ -341,6 +349,8 @@
     },
     {
       "name": "5G Core Service Consumers",
+      "type": "platform",
+      "partOf": "3GPP RAN and Core Platforms",
       "doc_url": "/reference-tools/5g-core/",
       "tech_url": null,
       "image": "/assets/images/projects/5g-core.png",
@@ -360,6 +370,7 @@
     },
     {
       "name": "Beyond 2D Video Experiences",
+      "type": "project",
       "doc_url": null,
       "tech_url": "/tech/beyond-2d",
       "standards_url": "/standards/beyond-2d",
@@ -386,6 +397,7 @@
     },
     {
       "name": "Beyond 2D Evaluation Framework",
+      "type": "evaluation-framework",
       "displayName": "Beyond 2D Evaluation Framework",
       "parent": "Beyond 2D Video Experiences",
       "doc_url": "/testbeds/beyond-2d/",
@@ -416,6 +428,7 @@
     },
     {
       "name": "AI in Media Services",
+      "type": "project",
       "doc_url": null,
       "tech_url": "/tech/ai-in-media-services",
       "standards_url": "/standards/ai-in-media-services",
@@ -443,6 +456,7 @@
     },
     {
       "name": "AI Traffic Characterization",
+      "type": "testbed",
       "displayName": "6G AI Traffic Characterization Testbed",
       "doc_url": "/testbeds/6g-testbed/",
       "tech_url": "/tech/6g",
@@ -474,6 +488,7 @@
     },
     {
       "name": "CAMARA Connectivity Quality Management APIs",
+      "type": "reference-tool",
       "displayName": "Network APIs for Connectivity Quality",
       "doc_url": "/reference-tools/network-apis/",
       "tech_url": "/tech/network-apis",
@@ -503,6 +518,7 @@
     },
     {
       "name": "Conversational Avatar Communication with MPEG ARF",
+      "type": "reference-tool",
       "displayName": "Conversational Avatar Communication",
       "doc_url": "/reference-tools/avatar/",
       "tech_url": "/tech/avatar",
@@ -537,6 +553,7 @@
     },
     {
       "name": "AI/ML Evaluation Framework",
+      "type": "evaluation-framework",
       "doc_url": "/testbeds/ai-ml/",
       "tech_url": "/tech/ai-ml",
       "standards_url": "/standards/ai-ml",
@@ -566,6 +583,7 @@
     },
     {
       "name": "Video Operation Points",
+      "type": "project",
       "doc_url": null,
       "tech_url": "/tech/vops",
       "standards_url": "/standards/vops",
@@ -586,6 +604,7 @@
     },
     {
       "name": "VOPS Conformance Validator",
+      "type": "validation-tool",
       "displayName": "VOPS Conformance Validator",
       "doc_url": "/testbeds/vops/",
       "tech_url": "/tech/vops",
@@ -604,6 +623,7 @@
     },
     {
       "name": "Common Tools",
+      "type": "common-tools",
       "doc_url": "/reference-tools/common-tools/",
       "tech_url": null,
       "standards_url": null,
@@ -625,6 +645,7 @@
     },
     {
       "name": "Developer Tools",
+      "type": "developer-tools",
       "doc_url": "/developer-tools",
       "releases_slug": "",
       "tagline": "Tools for 5G-MAG members that support the transition of standards into deployments: tools, rules and working records for going from a specification to a working implementation.",
@@ -638,6 +659,7 @@
     },
     {
       "name": "DVB-I Services over 5G Systems",
+      "type": "reference-tool",
       "doc_url": "/reference-tools/dvb-i/",
       "tech_url": "/tech/dvb-i",
       "standards_url": "/standards/dvb-i",
@@ -680,6 +702,7 @@
     },
     {
       "name": "Content Delivery Protocols",
+      "type": "reference-tool",
       "doc_url": "/reference-tools/content-delivery/",
       "tech_url": "/tech/content-delivery",
       "standards_url": "/standards/content-delivery",
@@ -718,6 +741,7 @@
     },
     {
       "name": "FLUTE Conformance Validator",
+      "type": "validation-tool",
       "displayName": "FLUTE Conformance Validator",
       "doc_url": null,
       "tech_url": "/tech/content-delivery",
@@ -736,6 +760,7 @@
     },
     {
       "name": "3GPP RAN and Core Platforms",
+      "type": "platform",
       "doc_url": "/reference-tools/3gpp-platforms/",
       "tech_url": null,
       "standards_url": null,
@@ -761,6 +786,7 @@
     },
     {
       "name": "Dependency",
+      "type": "infrastructure",
       "doc_url": null,
       "tech_url": null,
       "standards_url": null,
@@ -771,6 +797,7 @@
     },
     {
       "name": "Real-time Media Communication (RTC) Architecture",
+      "type": "reference-tool",
       "doc_url": "/reference-tools/rtc/",
       "image": "/assets/images/projects/rtc.png",
       "releases_slug": "#repositories--releases",
@@ -799,6 +826,7 @@
     },
     {
       "name": "Non-Terrestrial Networks in 5G Systems",
+      "type": "project",
       "doc_url": null,
       "image": "/assets/images/projects/ntn.png",
       "releases_slug": "#repositories--releases",
@@ -821,6 +849,7 @@
     },
     {
       "name": "Non-Public Networks",
+      "type": "project",
       "doc_url": null,
       "image": "/assets/images/projects/npn.png",
       "releases_slug": "#repositories--releases",
@@ -843,6 +872,7 @@
     },
     {
       "name": "Time-Sensitive Communications (TSC)",
+      "type": "project",
       "doc_url": null,
       "image": "/assets/images/projects/tsc.png",
       "releases_slug": "#repositories--releases",
@@ -865,6 +895,7 @@
     },
     {
       "name": "5G-MAG Website & Org Infrastructure",
+      "type": "infrastructure",
       "doc_url": null,
       "tech_url": null,
       "standards_url": null,

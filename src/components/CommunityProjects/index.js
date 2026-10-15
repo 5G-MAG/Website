@@ -6,7 +6,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import releasesData from '@site/static/data/releases.json';
 import statsData from '@site/static/data/community-stats.json';
 import pullRequestsData from '@site/static/data/pull-requests.json';
-import { ALL_PROJECTS as projectsData, CONTRIBUTORS, isTestbed } from '@site/src/data/baskets';
+import { ALL_PROJECTS as projectsData, CONTRIBUTORS, isTestbed, isValidationTool } from '@site/src/data/baskets';
 import { activityLabel, communityTotals } from '@site/src/utils/communityStats';
 import styles from './styles.module.css';
 import ProjectIcon from '@site/src/components/ProjectIcon';
@@ -34,6 +34,7 @@ const CATEGORY_ORDER = [
   'CAMARA Project Implementations',
   'Shared Tools',
   'Testbeds & Evaluation Frameworks',
+  'Validation Tools',
   'Other',
 ];
 
@@ -70,6 +71,7 @@ function categoryOf(name) {
   const project = PROJECT_BY_NAME.get(name);
   if (!project) return 'Other';
   if (isTestbed(project)) return 'Testbeds & Evaluation Frameworks';
+  if (isValidationTool(project)) return 'Validation Tools';
   const [firstSdo] = project.sdos || [];
   return SDO_TO_CATEGORY[firstSdo] || EXPLICIT_CATEGORY[name] || 'Other';
 }

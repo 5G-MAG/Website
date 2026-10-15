@@ -183,11 +183,53 @@ export const WHERE_WE_STAND_ROWS = TOPIC_BASKETS.map((b) => {
 // topic" listing) that needs to show they exist and why.
 export const EXCLUDED = ALL_PROJECTS.filter((p) => !p.basket);
 
-// Every project in a given basket, in taxonomy.json's own order.
-// A testbed is a project whose own pages are under /testbeds/, whatever its
-// area: the AI/ML Evaluation Framework and the 6G testbed are testbeds of AI in Media Services, in Towards 6G Media.
+// What each taxonomy entry is (the `type` field in taxonomy.json):
+//   project               analysis and specifications only, no software of its own
+//   reference-tool        open-source reference implementation of a specification
+//   validation-tool       checks conformance and nothing else
+//   testbed               an environment to measure something
+//   evaluation-framework  a framework to evaluate something
+//   platform              a platform the tools run on (3GPP RAN and Core, with the 5G Core Service Consumers)
+//   common-tools          a holding area whose repositories move into projects over time
+//   developer-tools       tools that help developers do their work (not a platform, not a project product)
+//   infrastructure        the website, the organisation, external dependencies (never shown as a product)
+export const PROJECT_TYPES = {
+  project: 'Project',
+  'reference-tool': 'Reference Tool',
+  'validation-tool': 'Validation Tool',
+  testbed: 'Testbed',
+  'evaluation-framework': 'Evaluation Framework',
+  platform: 'Platform',
+  'common-tools': 'Common Tools',
+  'developer-tools': 'Developer Tools',
+  infrastructure: 'Infrastructure',
+};
+
+// Function declarations, so they can be used while this module is still loading.
+export function typeOf(project) {
+  return project.type || 'project';
+}
+export function isReferenceTool(project) {
+  return typeOf(project) === 'reference-tool';
+}
+export function isValidationTool(project) {
+  return typeOf(project) === 'validation-tool';
+}
+export function isPlatform(project) {
+  return typeOf(project) === 'platform';
+}
+export function isCommonTools(project) {
+  return typeOf(project) === 'common-tools';
+}
+export function isDeveloperTools(project) {
+  return typeOf(project) === 'developer-tools';
+}
+
+// A testbed here is a testbed or an evaluation framework, whatever its area: the AI/ML Evaluation Framework and the
+// 6G testbed belong to AI in Media Services, in Towards 6G Media. (A validation tool is not one: it only checks
+// conformance, see isValidationTool.)
 export function isTestbed(project) {
-  return Boolean(project.doc_url && project.doc_url.startsWith('/testbeds/'));
+  return typeOf(project) === 'testbed' || typeOf(project) === 'evaluation-framework';
 }
 
 // A project's slug: the last segment of its Reference Tools or testbed page (`/reference-tools/5gms/` -> '5gms').

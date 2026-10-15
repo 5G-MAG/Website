@@ -342,7 +342,9 @@ taxonomyData.projects.forEach((p) => {
   if (p.tech_url && p.doc_url) {
     refToolsForHref[p.tech_url] = {
       href: p.doc_url.replace(/\/$/, ''),
-      isTestbed: p.doc_url.startsWith('/testbeds/'),
+      isTestbed: p.type === 'testbed' || p.type === 'evaluation-framework',
+      // The sidebar group of a project's software pages, by what the entry is (see PROJECT_TYPES in baskets.js).
+      label: { testbed: 'Testbed', 'evaluation-framework': 'Testbed', 'validation-tool': 'Validation Tool' }[p.type] || 'Reference Tools',
     };
   }
 });

@@ -6,8 +6,9 @@
 //   projects        projects with their own page in taxonomy.json (doc_url):
 //                   Reference Tools and Testbeds, shared infrastructure
 //                   included.
-//   referenceTools  projects with a Reference Tools page.
-//   testbeds        projects with a Testbeds page.
+//   referenceTools  entries of type reference-tool.
+//   testbeds        entries of type testbed or evaluation-framework.
+//   validationTools entries of type validation-tool.
 //   repositories    repositories that belong to a project page in
 //                   taxonomy.json (each project's `repos` plus its
 //                   repoMetadata group), public and Early Access (private),
@@ -95,15 +96,24 @@ function projectRepos() {
   return { names, meta };
 }
 
+// Counted by the `type` of each taxonomy entry (see PROJECT_TYPES in src/data/baskets.js), not by where its page is.
+const countType = (types) => readJson('src/data/taxonomy.json').projects.filter((p) => types.includes(p.type)).length;
+
 function referenceTools() {
-  const n = readJson('src/data/taxonomy.json').projects.filter((p) => (p.doc_url || '').startsWith('/reference-tools/')).length;
+  const n = countType(['reference-tool']);
   if (!n) throw new Error('referenceTools: counted 0');
   return n;
 }
 
 function testbeds() {
-  const n = readJson('src/data/taxonomy.json').projects.filter((p) => (p.doc_url || '').startsWith('/testbeds/')).length;
+  const n = countType(['testbed', 'evaluation-framework']);
   if (!n) throw new Error('testbeds: counted 0');
+  return n;
+}
+
+function validationTools() {
+  const n = countType(['validation-tool']);
+  if (!n) throw new Error('validationTools: counted 0');
   return n;
 }
 
@@ -232,7 +242,7 @@ function sdoInputs() {
   const previous = fs.existsSync(OUTPUT) ? JSON.parse(fs.readFileSync(OUTPUT, 'utf8')) : {};
   const next = { ...previous };
   let failed = false;
-  const steps = { projects, referenceTools, repositories, clones, specIssues, sdoInputs, workshopInputs, testbeds };
+  const steps = { projects, referenceTools, repositories, clones, specIssues, sdoInputs, workshopInputs, testbeds, validationTools };
   for (const [key, fn] of Object.entries(steps)) {
     try {
       next[key] = await fn();
