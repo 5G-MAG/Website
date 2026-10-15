@@ -29,7 +29,7 @@ export const SOLUTIONS_ITEM = {
   label: 'Solutions',
   position: 'left',
   solutionsMenu: true,
-  className: styles.primaryNavItem,
+  className: `${styles.primaryNavItem} ${styles.featuredNavItem}`,
 };
 
 export const FEEDBACK_ITEM = {
@@ -44,7 +44,7 @@ export const FACTORY_ITEM = {
   to: '/software',
   label: 'Software Factory',
   position: 'left',
-  className: styles.primaryNavItem,
+  className: `${styles.primaryNavItem} ${styles.featuredNavItem}`,
 };
 
 export const DEV_ITEM = {

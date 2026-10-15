@@ -152,6 +152,29 @@ Hide color mode toggle in small viewports
   color: var(--ifm-color-primary);
 }
 
+/* Solutions and Software Factory: the two entries into the content, drawn as filled buttons on desktop so they stand
+   out from the process items beside them. */
+@media (min-width: 997px) {
+  .featuredNavItem {
+    background: var(--ifm-color-primary);
+    color: #fff !important;
+    border-radius: 999px;
+    padding: 0.35rem 0.9rem;
+  }
+
+  .featuredNavItem:hover,
+  .featuredNavItem:focus-visible {
+    background: var(--ifm-color-primary-darker);
+    color: #fff !important;
+  }
+}
+
+@media (min-width: 997px) and (max-width: 1120px) {
+  .featuredNavItem {
+    padding: 0.3rem 0.55rem;
+  }
+}
+
 /* Mega-menu preview, originally on the four pillar items only (2026-08-24
    design audit: a plain-language one-liner plus that section's own
    sub-page list, surfaced on hover/focus so a first-time visitor doesn't
