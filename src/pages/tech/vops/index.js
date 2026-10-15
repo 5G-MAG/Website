@@ -52,7 +52,7 @@ export default function VideoOperationPoints() {
                 resolutions, colour mapping, transfer functions, and the encoding format.
               </p>
               <p>
-                The VOPS Conformance Validator is the testbed of this project. It checks video bitstreams for
+                The VOPS Conformance Validator is the validation tool of this project. It checks video bitstreams for
                 conformance against the operation points of the specification.
               </p>
               <div className={styles.capabilityTags}>

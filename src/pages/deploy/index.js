@@ -84,9 +84,8 @@ const PILLARS = [
   },
 ];
 
-// "What You'll Find Here": demos, plugfests and the assets to onboard
-// into a product. Nothing here hands off to Reference Tools or Testbeds -- that's
-// the Software Accelerator's territory.
+// "What You'll Find Here": demos, plugfests and trials.
+// Nothing here hands off to Reference Tools or Testbeds -- that's the Software Factory's territory.
 const WHATS_HERE = [
   {
     title: 'Demos',

@@ -31,7 +31,7 @@ export const DISCOVER_WORK = [
   },
   {
     title: 'Software Accelerator',
-    body: 'Open-source reference tools turning specs into working code.',
+    body: 'The programme that builds the Software Factory: open-source tools turning specs into working code.',
     href: '/developer',
     icon: (
       <>
@@ -43,7 +43,7 @@ export const DISCOVER_WORK = [
   },
   {
     title: 'Deploy',
-    body: 'Demos, interop plugfests and assets to onboard into your products.',
+    body: 'Demos, interoperability plugfests and trials that bring the technology into use.',
     href: '/deploy',
     icon: (
       <>
@@ -80,7 +80,7 @@ export const HOME_WORK = [
   },
   {
     title: 'Open Source Software',
-    body: 'Reference tools and testbeds that turn specifications into working code.',
+    body: 'Reference tools, validators and testbeds that turn specifications into working code.',
     href: '/developer',
     cta: 'Software Accelerator',
     icon: (

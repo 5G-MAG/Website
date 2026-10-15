@@ -28,6 +28,9 @@ export default function NotFoundContent({ className }) {
             <Link className="button button--outline button--primary button--lg" to="/standards">
               Standardisation
             </Link>
+            <Link className="button button--outline button--primary button--lg" to="/software">
+              Software Factory
+            </Link>
             <Link className="button button--outline button--primary button--lg" to="/developer">
               Software Accelerator
             </Link>
