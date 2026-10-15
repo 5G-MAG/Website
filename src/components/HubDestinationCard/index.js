@@ -81,6 +81,7 @@ export default function HubDestinationCard({
   largeTitle = false,
   big = false,
   status,
+  disabled = false,
 }) {
   const accentStyle = accent ? { '--accent': accent, '--accent-dark': darken(accent) } : undefined;
   // Standards (the real SDOs this project's specifications and repos
@@ -191,6 +192,16 @@ export default function HubDestinationCard({
             </CardLink>
           ))}
         </div>
+      </div>
+    );
+  }
+
+  // A destination that does not exist yet: the same card, not a link, marked as coming soon.
+  if (disabled) {
+    return (
+      <div className={clsx(styles.card, styles.cardDisabled)} style={accentStyle}>
+        {mainContent}
+        <div className={styles.footer}>Coming soon</div>
       </div>
     );
   }

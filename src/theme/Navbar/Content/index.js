@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import { useLocation } from '@docusaurus/router';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import { DEVELOPER_TOOLS } from '@site/src/data/developerTools';
 import { ErrorCauseBoundary, ThemeClassNames } from '@docusaurus/theme-common';
 import { splitNavbarItems, useNavbarMobileSidebar } from '@docusaurus/theme-common/internal';
 import NavbarItem from '@theme/NavbarItem';
@@ -15,7 +14,7 @@ import NavbarSearch from '@theme/Navbar/Search';
 import { GITHUB_ICON, SLACK_ICON, LINKEDIN_ICON, LOCK_ICON, SEARCH_ICON } from '../../socialIcons';
 import { SLACK_INVITE_URL, SOCIAL_LINKS } from '../../../data/socialLinks';
 import { useNavbarItems } from '../../navItems';
-import { SECTION_NAV, SOLUTIONS_ITEMS, TECHNOLOGY_GROUPS, HALF_AREAS, ACCELERATOR_GROUPS, ACCELERATOR_TOOL_AREAS, ACCELERATOR_TESTBED_AREAS, stripBaseUrl } from '../../../data/sectionNav';
+import { SECTION_NAV, SOLUTIONS_ITEMS, TECHNOLOGY_GROUPS, HALF_AREAS, FACTORY_TOOL_AREAS, FACTORY_VALIDATION_AREAS, FACTORY_TESTBED_AREAS, FACTORY_PLATFORM_AREAS, stripBaseUrl } from '../../../data/sectionNav';
 import { ICON_CATALOG } from '../../../data/baskets';
 import styles from './styles.module.css';
 
@@ -262,7 +261,7 @@ function SlidingIndicatorGroup({ items }) {
 // the pill sub-nav bar itself already renders from; deliberately explicit
 // (which items open a flyout) rather than "every navbar item whose
 // SECTION_NAV entry happens to have items", most of which don't want one.
-const NAV_DROPDOWN_HREFS = ['/about', '/standards', '/developer', '/deploy', '/news'];
+const NAV_DROPDOWN_HREFS = ['/about', '/standards', '/software-factory', '/developer', '/deploy', '/news'];
 const NAV_DROPDOWNS = new Map(
   NAV_DROPDOWN_HREFS.map((href) => [href, SECTION_NAV.find((s) => s.titleHref === href)])
 );
@@ -370,6 +369,10 @@ const NAV_ITEM_ICONS = {
   '/ls': ['M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z', 'M3 7l9 6l9 -6'],
   '/workshops': ['M3 4l18 0', 'M4 4v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-10', 'M12 16l0 4', 'M9 20l6 0', 'M8 12l3 -3l2 2l3 -3'],
   '/deploy/5g-broadcast-plugfest': 'antenna-signal',
+  '/validation-tools': ['M9.615 20h-2.615a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8', 'M14 19l2 2l4 -4', 'M9 8h4', 'M9 12h2'],
+  '/software-factory#playgrounds': ['M7 4v16l13 -8l-13 -8'],
+  '/software-factory#kits': ['M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5', 'M12 12l8 -4.5', 'M12 12l0 9', 'M12 12l-8 -4.5', 'M16 5.25l-8 4.5'],
+  '/software-factory#platforms': 'tool',
   '/deploy/testing': ['M9.615 20h-2.615a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8', 'M14 19l2 2l4 -4', 'M9 8h4', 'M9 12h2'],
   '/deploy#demos': ['M7 4v16l13 -8l-13 -8'],
   '/deploy#plugfests': ['M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0', 'M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2', 'M16 3.13a4 4 0 0 1 0 7.75', 'M21 21v-2a4 4 0 0 0 -3 -3.85'],
@@ -385,6 +388,7 @@ const NAV_ITEM_ICONS = {
 // Each section's own hub-page icon (the HubHero icon on /standards, /developer, /deploy, /news),
 // shown on that section's header card at the top of its dropdown.
 const SECTION_ICONS = {
+  '/software-factory': ['M3 21h18', 'M5 21v-12l5 4v-4l5 4h4a2 2 0 0 1 2 2v6', 'M19 13v-6a1 1 0 0 1 1 -1h-2a1 1 0 0 1 -1 1v6'],
   '/about': ['M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0', 'M3.6 9h16.8', 'M3.6 15h16.8', 'M11.5 3a17 17 0 0 0 0 18', 'M12.5 3a17 17 0 0 1 0 18'],
   '/standards': ['M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1'],
   '/developer': ['M7 8l-4 4l4 4', 'M17 8l4 4l-4 4', 'M14 4l-4 16'],
@@ -572,14 +576,18 @@ function MenuList({ items }) {
 // Software Accelerator: master and detail. The left rail names the destinations; hovering or focusing one shows
 // only its content on the right, so one list is on screen at a time. Each rail item and the panel's own
 // "View all" link open the destination's page. `preview` is the section's SECTION_NAV entry.
-const ACCEL_RAIL = [
+// The Software Factory menu: one entry per kind of software, with what exists in it, area by area. Playgrounds and
+// Deployment Kits do not exist yet and say so.
+const FACTORY_RAIL = [
   { key: 'tools', title: 'Reference Tools', subtitle: 'Open-source code, project by project.', href: '/reference-tools' },
-  { key: 'testbeds', title: 'Testbeds', subtitle: 'Test environments and evaluation frameworks.', href: '/testbeds' },
-  { key: 'assets', title: 'Developer Tools', subtitle: 'Tools for members, from standards to deployments.', href: '/developer-tools' },
-  { key: 'community', title: 'Community', subtitle: 'Join, license, early access.', href: '/community' },
+  { key: 'validation', title: 'Validation Tools', subtitle: 'Check conformance to a specification.', href: '/validation-tools' },
+  { key: 'testbeds', title: 'Testbeds and Evaluation Frameworks', subtitle: 'Test environments and evaluation frameworks.', href: '/testbeds' },
+  { key: 'playgrounds', title: 'Playgrounds', subtitle: 'Try a technology with nothing to install.', href: '/software-factory#playgrounds' },
+  { key: 'kits', title: 'Deployment Kits', subtitle: 'Packages and images to put into a product.', href: '/software-factory#kits' },
+  { key: 'platforms', title: 'Platforms', subtitle: '3GPP RAN and Core Platforms, Common Tools.', href: '/software-factory#platforms' },
+  { key: 'tutorials', title: 'Tutorials', subtitle: 'How to run the tools.', href: '/tutorials' },
 ];
 
-// One card per area, in the area's colour, with its projects as rows.
 function AreaCards({ areas }) {
   return (
     <div className={styles.navAreaCardGrid}>
@@ -605,39 +613,30 @@ const COMMUNITY_HINTS = {
   '/developer/exchanges': 'Recordings of the developer exchanges.',
 };
 
-function AcceleratorMenu({ item, preview }) {
+function FactoryMenu({ item, preview }) {
   const [active, setActive] = useState('tools');
-  const community = preview.items.filter((sub) => !sub.featured);
-  const current = ACCEL_RAIL.find((r) => r.key === active);
+  const current = FACTORY_RAIL.find((r) => r.key === active);
   let detail;
   if (active === 'tools') {
-    detail = <AreaCards areas={ACCELERATOR_TOOL_AREAS} />;
+    detail = <AreaCards areas={FACTORY_TOOL_AREAS} />;
+  } else if (active === 'validation') {
+    detail = <AreaCards areas={FACTORY_VALIDATION_AREAS} />;
   } else if (active === 'testbeds') {
-    detail = <AreaCards areas={ACCELERATOR_TESTBED_AREAS} />;
-  } else if (active === 'assets') {
+    detail = <AreaCards areas={FACTORY_TESTBED_AREAS} />;
+  } else if (active === 'platforms') {
+    detail = <AreaCards areas={FACTORY_PLATFORM_AREAS} />;
+  } else if (active === 'tutorials') {
     detail = (
-      <div className={styles.navCardGrid2}>
-        {DEVELOPER_TOOLS.map((a) => (
-          <Link key={a.id} to={`/developer-tools#${a.id}`} className={styles.navFeatureCard}>
-            <CatalogIcon name={a.icon} size={26} />
-            <b>{a.title}</b>
-            <small>{a.short}</small>
-          </Link>
-        ))}
+      <div className={styles.navCardGrid3}>
+        <Link to="/tutorials" className={styles.navFeatureCard}>
+          <NavItemIcon href="/tutorials" size={26} />
+          <b>Tutorials</b>
+          <small>Step-by-step guides to run the Reference Tools.</small>
+        </Link>
       </div>
     );
   } else {
-    detail = (
-      <div className={styles.navCardGrid3}>
-        {community.map((sub) => (
-          <Link key={sub.href} to={sub.href} className={styles.navFeatureCard}>
-            <NavItemIcon href={sub.href} size={26} />
-            <b>{sub.label}</b>
-            <small>{COMMUNITY_HINTS[sub.href]}</small>
-          </Link>
-        ))}
-      </div>
-    );
+    detail = <p className={styles.navMDSoon}>Coming soon. Nothing is published in this kind yet.</p>;
   }
   return (
     <MegaMenu
@@ -646,7 +645,7 @@ function AcceleratorMenu({ item, preview }) {
     >
       <div className={styles.navMD}>
         <ul className={styles.navMDRail}>
-          {ACCEL_RAIL.map((r) => (
+          {FACTORY_RAIL.map((r) => (
             <li key={r.key} onMouseEnter={() => setActive(r.key)} onFocus={() => setActive(r.key)}>
               <Link to={r.href} className={clsx(styles.navMDRailItem, r.key === active && styles.navMDRailOn)}>
                 <span className={styles.navMDRailIcon}><NavItemIcon href={r.href} size={22} /></span>
@@ -677,7 +676,7 @@ function NavbarItems({ items }) {
         if (item.solutionsMenu) return <SolutionsMenu key={i} item={item} />;
         const preview = NAV_DROPDOWNS.get(item.to);
         if (!preview) return <React.Fragment key={i}>{renderNavbarItem(item)}</React.Fragment>;
-        if (item.to === '/developer') return <AcceleratorMenu key={i} item={item} preview={preview} />;
+        if (item.to === '/software-factory') return <FactoryMenu key={i} item={item} preview={preview} />;
         return (
           <NavDropdownItem key={i} item={item} preview={preview} />
         );

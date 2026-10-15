@@ -1068,3 +1068,11 @@ See https://github.com/facebook/docusaurus/pull/11142
 .navMDRailText {
   min-width: 0;
 }
+
+/* A kind of software that has nothing in it yet, in the Software Factory menu. */
+.navMDSoon {
+  margin: 0;
+  padding: 0.75rem 0.25rem;
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.9rem;
+}

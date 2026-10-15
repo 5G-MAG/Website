@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavbarMobileSidebar } from '@docusaurus/theme-common/internal';
 import NavbarItem from '@theme/NavbarItem';
 import { useNavbarItems, MOBILE_GLOBAL_ITEMS } from '../../../navItems';
-import { SECTION_NAV, SOLUTIONS_ITEMS, TECHNOLOGY_GROUPS, ACCELERATOR_TOOL_AREAS, ACCELERATOR_TESTBED_AREAS } from '../../../../data/sectionNav';
+import { SECTION_NAV, SOLUTIONS_ITEMS, TECHNOLOGY_GROUPS, FACTORY_TOOL_AREAS, FACTORY_VALIDATION_AREAS, FACTORY_TESTBED_AREAS, FACTORY_PLATFORM_AREAS } from '../../../../data/sectionNav';
 
 // Docusaurus's stock PrimaryMenu reads items straight from
 // useThemeConfig().navbar.items (a static config array) — since the
@@ -62,23 +62,30 @@ export default function NavbarMobilePrimaryMenu() {
                 <NavbarItem mobile to="/tech" label="Where we stand"
                   className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
               </>
-            ) : item.to === '/developer' ? (
-              // Software Accelerator: its own page, Reference Tools, then each area (or Testbeds, or shared tools)
-              // with its projects indented under it, as on desktop.
+            ) : item.to === '/software-factory' ? (
+              // Software Factory: its own page, then each kind of software with its areas and projects indented under
+              // it, as on desktop. Playgrounds and Deployment Kits are listed as coming soon.
               <>
                 <NavbarItem mobile {...item} onClick={() => mobileSidebar.toggle()} />
-                {[['Reference Tools', '/reference-tools', ACCELERATOR_TOOL_AREAS], ['Testbeds', '/testbeds', ACCELERATOR_TESTBED_AREAS]].map(([title, href, areas]) => (
+                {[
+                  ['Reference Tools', '/reference-tools', FACTORY_TOOL_AREAS],
+                  ['Validation Tools', '/validation-tools', FACTORY_VALIDATION_AREAS],
+                  ['Testbeds and Evaluation Frameworks', '/testbeds', FACTORY_TESTBED_AREAS],
+                  ['Platforms', '/software-factory#platforms', FACTORY_PLATFORM_AREAS],
+                ].map(([title, href, areas]) => (
                   <React.Fragment key={title}>
                     <NavbarItem mobile to={href} label={title}
                       className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
                     {areas.map((g) => (
                       <React.Fragment key={g.title}>
-                        <li className="menu__list-item">
-                          <span className="menu__link padding-left--lg margin-left--md"
-                            style={{ fontSize: '0.78rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em', color: g.accent }}>
-                            {g.title}
-                          </span>
-                        </li>
+                        {areas.length > 1 && (
+                          <li className="menu__list-item">
+                            <span className="menu__link padding-left--lg margin-left--md"
+                              style={{ fontSize: '0.78rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em', color: g.accent }}>
+                              {g.title}
+                            </span>
+                          </li>
+                        )}
                         {g.items.map((p) => (
                           <NavbarItem key={p.href} mobile to={p.href} label={p.label}
                             className="padding-left--lg margin-left--lg" style={{ fontSize: '0.85rem' }}
@@ -88,10 +95,21 @@ export default function NavbarMobilePrimaryMenu() {
                     ))}
                   </React.Fragment>
                 ))}
-                <NavbarItem mobile to="/developer-tools" label="Developer Tools"
+                <NavbarItem mobile to="/software-factory#playgrounds" label="Playgrounds (coming soon)"
                   className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
-                <NavbarItem mobile to="/community" label="Community"
+                <NavbarItem mobile to="/software-factory#kits" label="Deployment Kits (coming soon)"
                   className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
+                <NavbarItem mobile to="/tutorials" label="Tutorials"
+                  className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
+              </>
+            ) : item.to === '/developer' ? (
+              // Software Accelerator Programme: its own page, then the programme pages.
+              <>
+                <NavbarItem mobile {...item} onClick={() => mobileSidebar.toggle()} />
+                {(SECTION_NAV.find((n) => n.titleHref === '/developer')?.items || []).map((sub) => (
+                  <NavbarItem key={sub.href} mobile to={sub.href} label={sub.label}
+                    className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
+                ))}
               </>
             ) : (
               <NavbarItem mobile {...item} onClick={() => mobileSidebar.toggle()} />

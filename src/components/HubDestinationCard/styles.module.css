@@ -388,3 +388,14 @@
   background: var(--ifm-color-emphasis-200);
   color: var(--ifm-color-emphasis-800);
 }
+
+/* A card for something that does not exist yet: quieter, and not a link. */
+.cardDisabled {
+  opacity: 0.78;
+  cursor: default;
+}
+
+.cardDisabled:hover {
+  transform: none;
+  box-shadow: none;
+}

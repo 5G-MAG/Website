@@ -56,28 +56,40 @@ const DEV_HERO_ICON_PATH = (
 // not a prototype-stage one.
 const PRODUCT_TYPES = [
   {
-    icon: 'Reference Tools',
-    label: 'Reference Tools',
-    description: 'Standards, turned into open code anyone can build on.',
-    href: '/reference-tools',
+    icon: 'Software Factory',
+    label: 'Software Factory',
+    description: 'What the programme builds: Reference Tools, Validation Tools, Testbeds and Evaluation Frameworks, and more.',
+    href: '/software-factory',
   },
   {
-    icon: 'Testbeds',
-    label: 'Testbeds & Evaluation Frameworks',
-    description: 'Reproducible test environments and benchmark frameworks.',
-    href: '/testbeds',
+    icon: 'Developer Community',
+    label: 'Developer Community',
+    description: 'Join the developers and see how to contribute.',
+    href: '/community',
   },
   {
-    icon: 'Tutorials',
-    label: 'Tutorials',
-    description: 'Step-by-step guides to run and test the Reference Tools.',
-    href: '/tutorials',
+    icon: 'Early Access',
+    label: 'Early Access',
+    description: 'Ask for access to repositories still in development.',
+    href: '/early-access',
+  },
+  {
+    icon: 'Licences',
+    label: 'Licences',
+    description: 'The 5G-MAG Public License and the contributor agreements.',
+    href: '/license',
   },
   {
     icon: 'Developer Tools',
     label: 'Developer Tools',
     description: 'Tools for 5G-MAG members that support the transition of standards into deployments.',
     href: '/developer-tools',
+  },
+  {
+    icon: 'Developer Exchanges',
+    label: 'Developer Exchanges',
+    description: 'Recordings of the developer exchanges.',
+    href: '/developer/exchanges',
   },
 ];
 
@@ -252,10 +264,10 @@ export default function Home() {
             Tools, Testbeds, Tutorials, Developer Tools), the cards after Why It Matters. */}
         <section className={clsx(styles.section, styles.sectionAlt)}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Tools, Testbeds and Tutorials</h2>
+            <h2 className={styles.sectionTitle}>The programme</h2>
             <p className={styles.sectionSubtitle}>
-              Reference Tools, Testbeds and Evaluation Frameworks, Tutorials and Developer Tools —
-              under one open developer community.
+              The Software Accelerator Programme is the community and the process that build the Software Factory:
+              how to join, contribute, licence and get early access.
             </p>
             <div className={styles.productGrid}>
               {PRODUCT_TYPES.map((item) => (

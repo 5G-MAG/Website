@@ -1,4 +1,4 @@
-import { BASKETS, TOPIC_BASKETS, BASKET_PAGE, BASKET_ACCENT, PROJECTS, ALL_PROJECTS, techLabelOf, isTestbed, isReferenceTool, isPlatform, isCommonTools, displayNameOf, typeOf, PROJECT_TYPES } from './baskets';
+import { BASKETS, TOPIC_BASKETS, BASKET_PAGE, BASKET_ACCENT, PROJECTS, ALL_PROJECTS, techLabelOf, isTestbed, isReferenceTool, isValidationTool, isPlatform, isCommonTools, displayNameOf, typeOf, PROJECT_TYPES } from './baskets';
 import { ALL_TOPICS } from '../../techTopics.js';
 
 // Canonical per-section nav items, keyed by the route prefix(es) they
@@ -67,16 +67,24 @@ const cardsBy = (projects, rows) => TOPIC_BASKETS.map((b) => ({
   items: projects.filter((p) => p.basket === b.key).map(rows).filter(Boolean),
 })).filter((g) => g.items.length);
 const hasCode = (p) => p.doc_url && (p.repos || []).length;
-const toolRow = (p) => ((isReferenceTool(p) || isPlatform(p) || isCommonTools(p)) && hasCode(p)
+const toolRow = (p) => (isReferenceTool(p) && hasCode(p)
+  ? { label: displayNameOf(p), icon: p.icon, href: stripSlash(p.doc_url) } : null);
+const validationRow = (p) => (isValidationTool(p) && p.doc_url
   ? { label: displayNameOf(p), icon: p.icon, href: stripSlash(p.doc_url) } : null);
 const testbedRow = (p) => (isTestbed(p) ? { label: displayNameOf(p), icon: p.icon, href: stripSlash(p.doc_url) } : null);
-export const ACCELERATOR_TOOL_AREAS = cardsBy(PROJECTS, toolRow).concat([{
-  title: 'Platforms and shared tools',
+// The Software Factory menu, kind by kind. Reference Tools, Validation Tools and Testbeds are laid out area by area;
+// Platforms is one card (3GPP RAN and Core Platforms, with the 5G Core Service Consumers inside it, and Common Tools,
+// the holding area whose repositories move into the projects). Playgrounds and Deployment Kits do not exist yet.
+export const FACTORY_TOOL_AREAS = cardsBy(PROJECTS, toolRow);
+export const FACTORY_VALIDATION_AREAS = cardsBy(ALL_PROJECTS, validationRow);
+export const FACTORY_TESTBED_AREAS = cardsBy(ALL_PROJECTS, testbedRow);
+export const FACTORY_PLATFORM_AREAS = [{
+  title: 'Platforms',
   icon: 'tool',
   accent: '#7a8795',
-  items: ALL_PROJECTS.filter((p) => !p.basket && (isPlatform(p) || isCommonTools(p))).map(toolRow).filter(Boolean),
-}].filter((g) => g.items.length));
-export const ACCELERATOR_TESTBED_AREAS = cardsBy(ALL_PROJECTS, testbedRow);
+  items: ALL_PROJECTS.filter((p) => (isPlatform(p) && !p.partOf) || isCommonTools(p))
+    .map((p) => (p.doc_url ? { label: displayNameOf(p), icon: p.icon, href: stripSlash(p.doc_url) } : null)).filter(Boolean),
+}].filter((g) => g.items.length);
 
 // The two areas with a single project each, shown as half-height cards stacked in one column of the Solutions menu.
 export const HALF_AREAS = ['ntn', 'towards-6g'];
@@ -92,35 +100,6 @@ export const TECHNOLOGY_GROUPS = TOPIC_BASKETS.map((b) => {
     items: items.length ? items : b.tech_url ? [{ label: b.title, href: b.tech_url, icon: b.icon }] : [],
   };
 }).filter((g) => g.items.length);
-
-// The Software Accelerator mega menu: every project that has code, laid out like Solutions (same areas,
-// order, colours and icons) but each project opens its Reference Tools page; Testbeds is its own group
-// (each opens a testbed's page) and the tools that are not an area's (platforms, shared libraries) come last.
-// A project without a repository yet (NTN, NPN, TSC) is not listed until it has one.
-export const ACCELERATOR_GROUPS = TOPIC_BASKETS.map((b) => ({
-  title: b.title,
-  href: BASKET_PAGE[b.key] || `/tech#${b.key}`,
-  icon: b.icon,
-  accent: BASKET_ACCENT[b.key],
-  items: PROJECTS.filter((p) => p.basket === b.key && isReferenceTool(p) && p.doc_url && p.repos.length)
-    .map((p) => ({ label: displayNameOf(p), href: stripSlash(p.doc_url), icon: p.icon })),
-})).filter((g) => g.items.length).concat(
-  [{
-    title: 'Testbeds & Evaluation Frameworks',
-    href: '/testbeds',
-    icon: 'flask',
-    accent: BASKET_ACCENT.testbeds,
-    items: ALL_PROJECTS.filter(isTestbed).map((p) => ({ label: displayNameOf(p), href: stripSlash(p.doc_url), icon: p.icon })),
-  }].filter((g) => g.items.length),
-  [{
-    title: 'Platforms and shared tools',
-    href: '/reference-tools',
-    icon: 'tool',
-    accent: '#7a8795',
-    items: ALL_PROJECTS.filter((p) => !p.basket && (isPlatform(p) || isCommonTools(p)) && p.doc_url && p.repos.length)
-      .map((p) => ({ label: displayNameOf(p), href: stripSlash(p.doc_url), icon: p.icon })),
-  }].filter((g) => g.items.length)
-);
 
 // The area pages, in taxonomy order: the Solutions menu and the Solutions bar on each area page.
 export const SOLUTIONS_ITEMS = TOPIC_BASKETS.map((b) => ({ label: b.title, href: BASKET_PAGE[b.key], icon: b.icon, accent: BASKET_ACCENT[b.key] })).filter((i) => i.href);
@@ -160,53 +139,34 @@ export const SECTION_NAV = [
       { label: 'Our Members', href: '/membership#our-members' },
     ],
   },
-  // Every route under the Software Accelerator umbrella shares this one
-  // entry (2026-07-23) — previously /showcase, /reference-tools and
-  // /testbeds each carried their own separate, shorter, self-excluding item
-  // list (missing Early Access and License, and drifting further any time
-  // one list was updated but not the others), and /early-access matched no
-  // prefix at all so it got no bar whatsoever. One shared entry, matched by
-  // every prefix in the section, is the only way this can't drift again.
+  // The Software Factory: what 5G-MAG builds, kind by kind. Reference Tools and Testbeds keep their own hubs; the
+  // Software Factory page lists every kind. Tutorials explain how to run the tools, so they sit here.
   {
-    prefixes: [
-      '/developer',
-      '/reference-tools',
-      '/testbeds',
-      '/tutorials',
-      '/developer-tools',
-      '/early-access',
-      '/community',
-      '/contributing',
-      '/license',
-    ],
-    title: 'Software Accelerator',
-    // The full name, shown on the header card inside the top bar's dropdown only.
-    menuTitle: 'Media Connectivity Software Accelerator',
-    titleHref: '/developer',
-    subtitle: 'Open-source developer community.',
-    // Reference Tools / Testbeds / Tutorials are this section's three real
-    // destinations (real code, real environments, step-by-step guides)
-    // -- `featured: true` renders them as solid chips in PageNav, distinct
-    // from the plain outline chips below them, which are secondary/meta
-    // pages (exchanges, access, community process) rather than destinations
-    // in their own right.
-    // Order past the 3 featured destinations follows direct instruction
-    // (2026-09-26): "order of importance after reference tools, testbeds
-    // and showcase is: Developer Community, License, Early Access,
-    // Developer Exchanges." Contributing is deliberately NOT its own pill
-    // here — it's reached via Developer Community instead. Community's own
-    // "Where to Go Next" tile links to /contributing (the code workflow);
-    // the developer hub's "Become a contributor" link points at Community's
-    // own Becoming a Contributor section instead (the CLA/joining side).
+    prefixes: ['/software-factory', '/reference-tools', '/testbeds', '/validation-tools', '/tutorials'],
+    title: 'Software Factory',
+    titleHref: '/software-factory',
+    subtitle: 'Open-source software and tools built from the specifications.',
     items: [
       { label: 'Reference Tools', href: '/reference-tools', featured: true },
-      { label: 'Testbeds', href: '/testbeds', featured: true },
+      { label: 'Validation Tools', href: '/validation-tools', featured: true },
+      { label: 'Testbeds and Evaluation Frameworks', href: '/testbeds', featured: true },
       { label: 'Tutorials', href: '/tutorials', featured: true },
+    ],
+  },
+  // The Software Accelerator Programme: the community and the process that build the Software Factory. Its long
+  // name, Media Connectivity Software Accelerator, heads the panel of the top bar.
+  {
+    prefixes: ['/developer', '/developer-tools', '/early-access', '/community', '/contributing', '/license'],
+    title: 'Software Accelerator',
+    menuTitle: 'Media Connectivity Software Accelerator',
+    titleHref: '/developer',
+    subtitle: 'The programme and community that build the Software Factory.',
+    items: [
+      { label: 'Developer Community', href: '/community', featured: true },
       { label: 'Developer Tools', href: '/developer-tools', featured: true },
-      { label: 'Developer Community', href: '/community' },
-      { label: 'Community Activity', href: '/community/activity' },
+      { label: 'Early Access', href: '/early-access', featured: true },
       { label: 'License', href: '/license' },
-      { label: 'Early Access', href: '/early-access' },
+      { label: 'Community Activity', href: '/community/activity' },
       { label: 'Developer Exchanges', href: '/developer/exchanges' },
     ],
   },
