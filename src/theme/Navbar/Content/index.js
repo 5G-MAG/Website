@@ -455,16 +455,9 @@ function MegaCard({ g }) {
   );
 }
 
-// The order of the area cards in the Solutions menu (areas not listed follow in taxonomy order).
-const MENU_AREA_ORDER = ['content-delivery', 'immersive-media', 'broadcast-multicast', 'rtc', 'connected-media-production'];
-
 function MegaGroups({ groups }) {
-  const rank = (g) => {
-    const i = MENU_AREA_ORDER.indexOf(g.key);
-    return i === -1 ? MENU_AREA_ORDER.length : i;
-  };
   const halves = groups.filter((g) => HALF_AREAS.includes(g.key));
-  const full = groups.filter((g) => !HALF_AREAS.includes(g.key)).sort((x, y) => rank(x) - rank(y));
+  const full = groups.filter((g) => !HALF_AREAS.includes(g.key));
   return (
     <div className={clsx(styles.navMegaGroups, styles.navSolutionsScroll)}>
       {full.map((g) => <MegaCard key={g.title} g={g} />)}

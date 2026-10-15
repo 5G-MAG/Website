@@ -6,9 +6,9 @@
       "icon": "play"
     },
     {
-      "key": "rtc",
-      "title": "Real-Time Communications (RTC)",
-      "icon": "webrtc-arrows"
+      "key": "immersive-media",
+      "title": "Immersive Media",
+      "icon": "cube"
     },
     {
       "key": "broadcast-multicast",
@@ -16,19 +16,19 @@
       "icon": "antenna-signal"
     },
     {
-      "key": "ntn",
-      "title": "Non-Terrestrial Networks (NTN)",
-      "icon": "satellite-link"
-    },
-    {
-      "key": "immersive-media",
-      "title": "Immersive Media",
-      "icon": "cube"
+      "key": "rtc",
+      "title": "Real-Time Communications (RTC)",
+      "icon": "webrtc-arrows"
     },
     {
       "key": "connected-media-production",
       "title": "Connected Media Production",
       "icon": "video-camera"
+    },
+    {
+      "key": "ntn",
+      "title": "Non-Terrestrial Networks (NTN)",
+      "icon": "satellite-link"
     },
     {
       "key": "towards-6g",
