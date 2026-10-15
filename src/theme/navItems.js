@@ -65,9 +65,11 @@ export function useNavbarItems() {
   return [
     ABOUT_ITEM,
     MEMBERSHIP_ITEM,
+    // What 5G-MAG covers and builds, then the process that takes it into use: Standardisation, Software
+    // Accelerator, Deploy.
     SOLUTIONS_ITEM,
-    FEEDBACK_ITEM,
     FACTORY_ITEM,
+    FEEDBACK_ITEM,
     DEV_ITEM,
     INTEROP_ITEM,
     EVENTS_ITEM,
