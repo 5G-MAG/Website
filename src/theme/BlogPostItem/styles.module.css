@@ -10,3 +10,17 @@
   border-radius: 12px;
   margin-bottom: 1.75rem;
 }
+
+/* The kind of post, above the title in the list view. */
+.typeLabel {
+  display: inline-block;
+  margin-bottom: 0.4rem;
+  padding: 0.1rem 0.6rem;
+  border-radius: 999px;
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-800);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}

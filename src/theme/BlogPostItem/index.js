@@ -55,12 +55,23 @@ function BlogPostItemHeroImage() {
   );
 }
 
+// What kind of post it is, in the list view: the post's own `type` frontmatter (for example Press release or
+// Article), else its first tag, else News. A small label above the title, so the kinds can be told apart as the
+// list grows.
+function BlogPostItemTypeLabel() {
+  const { metadata, frontMatter, isBlogPostPage } = useBlogPost();
+  if (isBlogPostPage) return null;
+  const label = frontMatter.type || metadata.tags?.[0]?.label || 'News';
+  return <span className={styles.typeLabel}>{label}</span>;
+}
+
 export default function BlogPostItem({ children, className }) {
   const containerClassName = useContainerClassName();
   return (
     <BlogPostItemContainer className={clsx(containerClassName, className)}>
       <BlogPostItemThumbnail />
       <BlogPostItemHeroImage />
+      <BlogPostItemTypeLabel />
       <BlogPostItemHeader />
       <BlogPostItemContent>{children}</BlogPostItemContent>
       <BlogPostItemFooter />

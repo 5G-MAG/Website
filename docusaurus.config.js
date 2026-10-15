@@ -443,6 +443,7 @@ const config = {
           items: [
             { label: 'Events', to: '/events' },
             { label: 'News', to: '/news' },
+            { label: 'News RSS feed', href: 'https://www.5g-mag.com/news/rss.xml' },
             { label: 'Podcast', to: '/podcast' },
             { label: 'Magazine', to: '/magazine' },
             { label: 'Subscribe for Updates', to: '/subscribe' },
