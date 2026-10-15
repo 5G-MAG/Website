@@ -13,6 +13,7 @@ import filterStyles from '../reference-tools/styles.module.css';
 // copied, so the two can't drift apart (direct instruction: "same
 // format... same search bar and everything").
 import { CategoryCard, topicFor } from '../reference-tools';
+import { KIND_INTRO } from '@site/src/data/acceleratorKinds';
 
 const TESTBEDS_ICON_PATH = (
   <>
@@ -48,7 +49,7 @@ export default function Testbeds() {
       description="Overview of 5G-MAG testbeds and evaluation frameworks for 6G traffic characterization, AI/ML, and beyond-2D video quality assessment."
     >
       <HubHero
-        title="Testbeds & Evaluation Frameworks"
+        title="Testbeds and Evaluation Frameworks"
         icon={TESTBEDS_ICON_PATH}
         actions={[
           <Link key="contribute" className="button button--primary" to="/contributing">
@@ -66,6 +67,7 @@ export default function Testbeds() {
       <main>
         <section className={styles.section}>
           <div className="container">
+            <p className={styles.sectionSubtitle}>{KIND_INTRO.testbeds}</p>
             <p className={filterStyles.filterLabel}>Looking for a specific testbed or technology?</p>
             <div className={filterStyles.filterBar}>
               <input
@@ -90,7 +92,7 @@ export default function Testbeds() {
             ) : (
               <div className={styles.categoryColumns}>
                 <CategoryCard
-                  title="Testbeds & Evaluation Frameworks"
+                  title="Testbeds and Evaluation Frameworks"
                   accent={BASKET_ACCENT.testbeds}
                   desc={
                     <>

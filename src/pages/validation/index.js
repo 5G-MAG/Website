@@ -5,6 +5,8 @@ import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import { ALL_PROJECTS, BASKET_ACCENT, isValidationTool } from '@site/src/data/baskets';
 import styles from '../tech/index.module.css';
 import { CategoryCard, topicFor } from '../reference-tools';
+import { RowList } from '@site/src/components/ListRow';
+import { ToolRow } from '@site/src/components/ToolsByKind';
 
 const VALIDATION_ICON_PATH = (
   <>
@@ -55,9 +57,13 @@ export default function ValidationTools() {
               />
             </div>
             {WITHOUT_PAGE.length > 0 && (
-              <p className={styles.sectionSubtitle} style={{ marginTop: '1.5rem' }}>
-                Coming soon: {WITHOUT_PAGE.map((p) => p.displayName || p.name).join(', ')}.
-              </p>
+              <div style={{ marginTop: '1rem' }}>
+                <RowList>
+                  {WITHOUT_PAGE.map((p) => (
+                    <ToolRow key={p.name} project={p} />
+                  ))}
+                </RowList>
+              </div>
             )}
           </div>
         </section>

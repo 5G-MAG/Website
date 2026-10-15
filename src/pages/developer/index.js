@@ -18,6 +18,7 @@ import { icon } from '@site/src/components/GodeeperCard';
 import useAnchors from '@site/src/utils/useAnchors';
 import { KINDS } from '@site/src/data/acceleratorKinds';
 import ToolsByKind from '@site/src/components/ToolsByKind';
+import ListRow, { RowList } from '@site/src/components/ListRow';
 import styles from './index.module.css';
 // Shared with /reference-tools, /tutorials and /testbeds; see the comment
 // there for why (2026-08-24 findability audit; extended here for the
@@ -253,20 +254,13 @@ export default function Home() {
             <p className={styles.sectionSubtitle}>
               Open-source software and tools built from the specifications, kind by kind.
             </p>
-            <div className={clsx(styles.kindsGrid, styles.kindsGrid3)}>
-              {KINDS.filter((k) => k.prominent).map((k) => (
-                <div key={k.id} id={k.id} className={styles.kindCell} style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}>
-                  <HubDestinationCard icon={k.icon} title={k.title} desc={k.desc} href={k.href} disabled={k.disabled} />
+            <RowList>
+              {KINDS.filter((k) => k.id !== 'tutorials').map((k) => (
+                <div key={k.id} id={k.id} style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}>
+                  <ListRow href={k.href} title={k.title} desc={k.desc} iconPaths={k.paths} />
                 </div>
               ))}
-            </div>
-            <div className={clsx(styles.kindsGrid, styles.kindsGrid4)}>
-              {KINDS.filter((k) => !k.prominent && k.id !== 'tutorials').map((k) => (
-                <div key={k.id} id={k.id} className={styles.kindCell} style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}>
-                  <HubDestinationCard icon={k.icon} title={k.title} desc={k.desc} href={k.href} disabled={k.disabled} />
-                </div>
-              ))}
-            </div>
+            </RowList>
           </div>
         </section>
 

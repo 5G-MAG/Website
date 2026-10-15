@@ -34,62 +34,6 @@
 
 /* ── Product Type Cards ────────────────────────────────────────────── */
 
-.kindsGrid {
-  display: grid;
-  gap: 1.5rem;
-}
-
-.kindsGrid3 {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.kindsGrid4 {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  margin-top: 1.5rem;
-}
-
-@media (max-width: 1100px) {
-  .kindsGrid4 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 800px) {
-  .kindsGrid3 {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 600px) {
-  .kindsGrid4 {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Every kind is the same card: same band height, two lines of text, same footer. */
-.kindCell {
-  display: flex;
-}
-
-.kindCell > a,
-.kindCell > div {
-  flex: 1;
-}
-
-.kindCell > a > div:first-child,
-.kindCell > div > div:first-child {
-  min-height: 8.5rem;
-}
-
-.kindCell p {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
-  min-height: 2.9em;
-  margin: 0;
-}
-
 .productGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));

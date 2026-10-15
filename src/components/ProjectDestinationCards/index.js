@@ -1,4 +1,5 @@
-import ProjectTools, { ProjectRow } from '@site/src/components/ProjectTools';
+import ProjectTools from '@site/src/components/ProjectTools';
+import ListRow, { RowList } from '@site/src/components/ListRow';
 import styles from '@site/src/components/ProjectTools/styles.module.css';
 
 // The block every per-project /tech page opens its "How It Works, Today" section with, as two sections of rows: Documentation (Technology and
@@ -12,10 +13,10 @@ export default function ProjectDestinationCards({
   softwareIsTestbed = false,
 }) {
   return (
-    <div className={styles.list}>
+    <RowList>
       <h3 className={styles.sectionHead}>Documentation</h3>
       {analysisHref && (
-        <ProjectRow
+        <ListRow
           href={analysisHref}
           title="Technology"
           desc="How this technology works, and what it is good for."
@@ -23,7 +24,7 @@ export default function ProjectDestinationCards({
         />
       )}
       {standardsHref && (
-        <ProjectRow
+        <ListRow
           href={standardsHref}
           title="Specifications"
           desc="The real specifications this technology is built on."
@@ -31,6 +32,6 @@ export default function ProjectDestinationCards({
         />
       )}
       <ProjectTools only={softwareIsTestbed ? softwareHref : undefined} />
-    </div>
+    </RowList>
   );
 }

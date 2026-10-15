@@ -14,7 +14,7 @@ import NavbarSearch from '@theme/Navbar/Search';
 import { GITHUB_ICON, SLACK_ICON, LINKEDIN_ICON, LOCK_ICON, SEARCH_ICON } from '../../socialIcons';
 import { SLACK_INVITE_URL, SOCIAL_LINKS } from '../../../data/socialLinks';
 import { useNavbarItems } from '../../navItems';
-import { SECTION_NAV, SOLUTIONS_ITEMS, TECHNOLOGY_GROUPS, HALF_AREAS, stripBaseUrl } from '../../../data/sectionNav';
+import { SECTION_NAV, SOLUTIONS_ITEMS, TECHNOLOGY_GROUPS, stripBaseUrl } from '../../../data/sectionNav';
 import { ICON_CATALOG } from '../../../data/baskets';
 import styles from './styles.module.css';
 
@@ -456,16 +456,10 @@ function MegaCard({ g }) {
 }
 
 function MegaGroups({ groups }) {
-  const halves = groups.filter((g) => HALF_AREAS.includes(g.key));
-  const full = groups.filter((g) => !HALF_AREAS.includes(g.key));
+  // Every area is the same card, in a grid of equal rows.
   return (
     <div className={clsx(styles.navMegaGroups, styles.navSolutionsScroll)}>
-      {full.map((g) => <MegaCard key={g.title} g={g} />)}
-      {halves.length > 0 && (
-        <div className={styles.navMegaStack}>
-          {halves.map((g) => <MegaCard key={g.title} g={g} />)}
-        </div>
-      )}
+      {groups.map((g) => <MegaCard key={g.title} g={g} />)}
     </div>
   );
 }

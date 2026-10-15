@@ -7,7 +7,7 @@
 
 .kindTitle {
   margin: 0 0 0.6rem;
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
 .kindTitle a {
@@ -17,62 +17,4 @@
 .kindTitle a:hover {
   color: var(--ifm-color-primary);
   text-decoration: none;
-}
-
-.chips {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-  gap: 0.7rem;
-}
-
-.chip {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  padding: 0.6rem 0.75rem;
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 10px;
-  background: var(--ifm-background-surface-color);
-  font-size: 0.95rem;
-  font-weight: 700;
-  line-height: 1.25;
-  color: var(--ifm-color-emphasis-900);
-}
-
-.chipIcon {
-  flex: none;
-  display: grid;
-  place-items: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 9px;
-  background: var(--ifm-color-primary);
-  color: #fff;
-}
-
-.chip:hover {
-  border-color: var(--ifm-color-primary);
-  color: var(--ifm-color-primary);
-  text-decoration: none;
-}
-
-.chipSoon {
-  display: block;
-  font-size: 0.72rem;
-  font-weight: 500;
-  color: var(--ifm-color-emphasis-600);
-}
-
-.chipStatic {
-  background: transparent;
-  border-style: dashed;
-}
-
-.tools {
-  margin-top: 1.75rem;
-}
-
-.toolsNone {
-  margin: 0;
-  color: var(--ifm-color-emphasis-700);
 }

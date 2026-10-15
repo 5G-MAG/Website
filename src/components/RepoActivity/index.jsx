@@ -29,7 +29,7 @@ const basketIcon = (b) => (ICON_CATALOG[b.icon] || []).map((d) => `<path d="${d}
 export const BASKET_OF = Object.fromEntries(ALL_PROJECTS.map((p) => [p.name, isTestbed(p) ? 'testbeds' : p.basket || null]));
 export const CLUSTERS = [
   ...BASKETS.map((b) => ({ key: b.key, title: b.title, icon: basketIcon(b), accent: BASKET_ACCENT[b.key] })),
-  { key: 'testbeds', title: 'Testbeds & Evaluation Frameworks', icon: basketIcon({ icon: 'flask' }), accent: BASKET_ACCENT.testbeds },
+  { key: 'testbeds', title: 'Testbeds and Evaluation Frameworks', icon: basketIcon({ icon: 'flask' }), accent: BASKET_ACCENT.testbeds },
   { key: null, title: 'Shared libraries and platforms', icon: ICONS.repo, accent: '#7a8795' },
 ];
 

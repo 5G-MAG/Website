@@ -33,7 +33,7 @@ const CATEGORY_ORDER = [
   'IETF Implementations',
   'CAMARA Project Implementations',
   'Shared Tools',
-  'Testbeds & Evaluation Frameworks',
+  'Testbeds and Evaluation Frameworks',
   'Validation Tools',
   'Other',
 ];
@@ -69,7 +69,7 @@ const PROJECT_BY_NAME = new Map(projectsData.map((p) => [p.name, p]));
 function categoryOf(name) {
   const project = PROJECT_BY_NAME.get(name);
   if (!project) return 'Other';
-  if (isTestbed(project)) return 'Testbeds & Evaluation Frameworks';
+  if (isTestbed(project)) return 'Testbeds and Evaluation Frameworks';
   if (isValidationTool(project)) return 'Validation Tools';
   const [firstSdo] = project.sdos || [];
   return SDO_TO_CATEGORY[firstSdo] || EXPLICIT_CATEGORY[name] || 'Other';

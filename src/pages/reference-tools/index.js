@@ -5,7 +5,8 @@ import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import { icon } from '@site/src/components/GodeeperCard';
-import HubDestinationCard from '@site/src/components/HubDestinationCard';
+import ListRow, { RowList } from '@site/src/components/ListRow';
+import { KIND_INTRO } from '@site/src/data/acceleratorKinds';
 import { ALL_PROJECTS, BASKETS, BASKET_ACCENT, ICON_CATALOG, reposFor, isTestbed, isReferenceTool, isPlatform, isCommonTools } from '@site/src/data/baskets';
 import styles from '../tech/index.module.css';
 import filterStyles from './styles.module.css';
@@ -192,6 +193,7 @@ export function topicFor(project) {
     standards: project.sdos,
     tags: meta.tags,
     icon: iconForProject(project),
+    iconKey: project.icon,
     repoCount: reposFor(project).length,
     // No longer accent-tinted (2026-09-27, direct instruction: "only the
     // repositories will keep the color" -- these per-project tiles aren't
@@ -244,18 +246,12 @@ export function CategoryCard({ title, desc, accent, topics }) {
         <h3 className={styles.categoryTitle}>{title}</h3>
         <p className={styles.categoryDesc}>{desc}</p>
       </div>
-      <div className={styles.categoryTopicGrid}>
-        {topics.map((t) => (
-          <HubDestinationCard
-            key={t.href}
-            compact
-            largeTitle
-            icon={t.icon}
-            title={t.title}
-            desc={t.desc}
-            href={t.href}
-          />
-        ))}
+      <div className={styles.categoryRows}>
+        <RowList>
+          {topics.map((t) => (
+            <ListRow key={t.href} href={t.href} title={t.title} desc={t.desc} iconKey={t.iconKey} />
+          ))}
+        </RowList>
       </div>
     </div>
   );
@@ -312,6 +308,7 @@ export default function ReferenceTools() {
       <main>
         <section className={styles.section}>
           <div className="container">
+            <p className={styles.sectionSubtitle}>{KIND_INTRO.tools}</p>
             <p className={filterStyles.filterLabel}>Looking for a specific project or technology?</p>
             <div className={filterStyles.filterBar}>
               <input

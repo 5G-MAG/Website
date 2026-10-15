@@ -321,6 +321,10 @@
   line-height: 1.6;
 }
 
+.categoryRows {
+  padding: 0.75rem;
+}
+
 .categoryTopicGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
