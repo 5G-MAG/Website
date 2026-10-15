@@ -18,13 +18,13 @@ import JumpMenu from '@site/src/components/JumpMenu';
 </div>
 </div>
 
-Advanced Media Delivery (AMD) is the line of 3GPP SA4 work that extends 5G Media Streaming from Release 19.
+Advanced Media Delivery (AMD) is the line of 3GPP SA4 work that extends 5G Media Streaming from Release 19 (SP-241011 clause 3; SP-250265 clause 2.2; SP-251265 clause 2.3).
 
 :::tip[At a glance]
 
-- **Focus:** delivery of segmented media objects in the media plane, at reference points M2, M4 and M7.
-- **Release 19:** CMCD, multi-access delivery, delivery from multiple service locations, encrypted content, improved QoS support and network slicing.
-- **Release 20:** a second study, complete, and a stage 2 work item, in progress.
+- **Focus:** delivery of segmented media objects in the media plane, at reference points M2, M4 and M7 (SP-241011 clause 3).
+- **Release 19:** CMCD, multi-access delivery, delivery from multiple service locations, encrypted content, improved QoS support and network slicing (SP-241963 clauses 3 and 4; SP-250265 clauses 3 and 4).
+- **Release 20: a second study (FS_AMD_Ph2) led to a stage 2 work item with target completion at SA#114 (Dec-26) (SP-260973 clauses 3 and 5).
 - **For developers:** each Release 19 feature lists the TS 26.501, TS 26.510 and TS 26.512 clauses to read, and marks those new in Release 19.
 
 :::
@@ -38,19 +38,19 @@ The Release 19 study (FS_AMD) starts from the view that mobile media delivery is
 <details>
 <summary>The study's 13 key topics</summary>
 
-- Common Client Metadata
-- Common server- and network-assisted streaming
-- Multi-CDN and multi-access media delivery
-- Modem usage optimised media streaming
-- DRM and conditional access
-- In-session unicast repair for MBS object distribution
-- MBS User Service and delivery protocols for eMBMS
-- Selected MBMS functionalities not supported in MBS
-- DASH/HLS interoperability
-- Further harmonisation of RTC and streaming
-- Issues identified by Market Representation Partners, including 5G-MAG
-- Improved QoS support
-- Impacts and opportunities of QUIC for segmented content delivery
+- Common Client Metadata (SP-241011 clause 4 (objective 1, item a))
+- Common server- and network-assisted streaming (SP-241011 clause 4 (objective 1, item b))
+- Multi-CDN and multi-access media delivery (SP-241011 clause 4 (objective 1, item c))
+- Modem usage optimised media streaming (SP-241011 clause 4 (objective 1, item d))
+- DRM and conditional access (SP-241011 clause 4 (objective 1, item e))
+- In-session unicast repair for MBS object distribution (SP-241011 clause 4 (objective 1, item f))
+- MBS User Service and delivery protocols for eMBMS (SP-241011 clause 4 (objective 1, item g))
+- Selected MBMS functionalities not supported in MBS (SP-241011 clause 4 (objective 1, item h))
+- DASH/HLS interoperability (SP-241011 clause 4 (objective 1, item i))
+- Further harmonisation of RTC and streaming (SP-241011 clause 4 (objective 1, item j))
+- Issues identified by Market Representation Partners, including 5G-MAG (SP-241011 clause 4 (objective 1, item k))
+- Improved QoS support (SP-241011 clause 4 (objective 1, item l))
+- Impacts and opportunities of QUIC for segmented content delivery (SP-241011 clause 4 (objective 1, item m))
 
 </details>
 
@@ -58,13 +58,13 @@ The Release 19 study (FS_AMD) starts from the view that mobile media delivery is
 
 Two work items took up the recommendations of this study and of the network slicing study (TR 26.941): stage 2 (AMD-ARCH-MED) primarily in TS 26.501 and TS 26.502, stage 3 (AMD_PRO-MED) primarily in TS 26.510, TS 26.512 and TS 26.517. For each feature: what the two work items set out to specify for 5GMS, then what the Release 19 specifications contain. "New in Release 19" means the text is not in TS 26.501 V18.9.0, TS 26.510 V18.5.0 or TS 26.512 V18.7.0.
 
-The MBS topics (unicast repair, MBS User Services for eMBMS, and selected MBMS functions) are covered under [5G Multicast Broadcast Services](/tech/5g-mbs).
+The MBS topics (unicast repair, MBS User Services for eMBMS, and selected MBMS functions) are covered under [5G Multicast Broadcast Services](/tech/5g-mbs) (SP-241963 clause 3 (TR 26.802 key issues 8, 9 and 10)).
 
 ### Common Media Client Data (CMCD)
 
 **Downlink** · CTA-5004, referenced by TS 26.512
 
-- **Set out to specify, stage 2:** changes to the AF, AS, Media Player and Media Session Handler.
+- **Set out to specify, stage 2:** changes to the AF, AS, Media Player and Media Session Handler (SP-241963 clause 4 (objective 2a, items i to iv)).
 - **Set out to specify, stage 3:** CMCD in TS 26.247, TS 26.512 and TS 26.532, and in TS 26.510 if needed.
 
 In the Release 19 specifications:
@@ -78,7 +78,7 @@ In the Release 19 specifications:
 
 ### Multi-access media delivery
 
-- **Set out to specify, stage 2:** an informative annex mapping the ATSSS architecture into 5GMS.
+- **Set out to specify, stage 2:** an informative annex mapping the ATSSS architecture into 5GMS (SP-241963 clause 4 (objective 2b, item i)).
 - **Set out to specify, stage 3:** Media Session Handling Client API changes in TS 26.510.
 
 In the Release 19 specifications:
@@ -88,7 +88,7 @@ In the Release 19 specifications:
 
 ### Delivery from multiple service locations
 
-- **Set out to specify, stage 2:** M10 brought into scope; hierarchical or peer-to-peer content distributions; multi-source information in the Media Entry Point.
+- **Set out to specify, stage 2:** M10 brought into scope; hierarchical or peer-to-peer content distributions; multi-source information in the Media Entry Point (SP-241963 clause 4 (objective 2c, items ii, iii and iv)).
 - **Set out to specify, stage 3:** CMMF in TS 26.511 as a format for multiple service locations; Content Steering as an M4 API in TS 26.512.
 
 In the Release 19 specifications:
@@ -100,7 +100,7 @@ In the Release 19 specifications:
 
 ### Encrypted and high-value content
 
-- **Set out to specify, stage 2:** the AS ingests, delivers and contributes encrypted content, and can decrypt and re-encrypt it.
+- **Set out to specify, stage 2:** the AS ingests, delivers and contributes encrypted content, and can decrypt and re-encrypt it (SP-241963 clause 4 (objective 2d, item i)).
 - **Set out to specify, stage 3:** CPIX (ETSI TS 103 799) at M2d; DASH-IF IOP Part 6 at M4d for DASH and HLS.
 
 In the Release 19 specifications:
@@ -111,17 +111,17 @@ In the Release 19 specifications:
 
 ### Improved QoS support
 
-- **Set out to specify, stage 2:** ECN marking for L4S, and QoS monitoring, for downlink and uplink.
+- **Set out to specify, stage 2:** ECN marking for L4S, and QoS monitoring, for downlink and uplink (SP-241963 clause 4 (objective 2e, items i and ii)).
 - **Set out to specify, stage 3:** ECN marking for L4S and QoS monitoring in the TS 26.510 procedures, for downlink and uplink.
 
-In the Release 19 specifications, all new in Release 19:
+In the Release 19 specifications (and absent from TS 26.501 V18.9.0, TS 26.510 V18.5.0 and TS 26.512 V18.7.0):
 
 - **ECN marking for L4S.** Procedures in TS 26.501 clauses 5.7.9 (downlink) and 6.9.8 (uplink), TS 26.510 clause 5.3.3.3A.1, and TS 26.512 clauses 4.6.0.1 and 5.6.2. A Policy Template may carry an L4S enablement preference (TS 26.501, clause 4.0.6).
 - **QoS monitoring.** Procedures in TS 26.501 clauses 5.7.10 (downlink) and 6.9.9 (uplink), and TS 26.510 clause 5.3.3.3A.2. A Policy Template may carry a QoS monitoring configuration (TS 26.501, clause 4.0.6).
 
 ### Network slicing
 
-- **Set out to specify, stage 2:** policy provisioning for several network slices or data networks.
+- **Set out to specify, stage 2:** policy provisioning for several network slices or data networks (SP-241963 clause 4 (objective 2f, item i)).
 - **Set out to specify, stage 3:** Policy Template changes in TS 26.510.
 
 In the Release 19 specifications:
@@ -130,18 +130,18 @@ In the Release 19 specifications:
 
 ## Release 20: AMD Phase 2
 
-The Release 20 study (FS_AMD_Ph2) continues where the Release 19 normative work stopped. Its work topics are:
+The Release 20 study (FS_AMD_Ph2) continues where the Release 19 normative work stopped (SP-251265 clause 3). Its work topics are:
 
-- Common Client Metadata phase 2 (CMCD version 2)
-- Server- and network-assisted media streaming
-- Multiple service locations phase 2
-- Combined unicast, multicast and broadcast
-- 5G System-independent media streaming
-- Latency measurement and control
-- Network slicing phase 3
-- Multi-access media delivery phase 2
+- Common Client Metadata phase 2 (CMCD version 2) (SP-251265 clauses 3 and 4 (WT#1))
+- Server- and network-assisted media streaming (SP-251265 clauses 3 and 4 (WT#2))
+- Multiple service locations phase 2 (SP-251265 clauses 3 and 4 (WT#3))
+- Combined unicast, multicast and broadcast (SP-251265 clauses 3 and 4 (WT#4))
+- 5G System-independent media streaming (SP-251265 clauses 3 and 4 (WT#5))
+- Latency measurement and control (SP-251265 clauses 3 and 4 (WT#6))
+- Network slicing phase 3 (SP-251265 clauses 3 and 4 (WT#7))
+- Multi-access media delivery phase 2 (SP-251265 clauses 3 and 4 (WT#8))
 
-The study has led to a Release 20 stage 2 work item (AMD_ARCH_Ph2-MED), in progress. Its topics include CMCD version 2, in-band signalling of rate limits, combined unicast, multicast and broadcast delivery, 5G System-independent media streaming, latency measurement and control, and application-driven multi-access delivery with priority for uplink.
+The study has led to a Release 20 stage 2 work item (SP-260973), with target completion at SA#114 (Dec-26). Its topics include CMCD version 2, in-band signalling of rate limits, combined unicast, multicast and broadcast delivery, 5G System-independent media streaming, latency measurement and control, and application-driven multi-access delivery with priority for uplink (SP-260973 clauses 3, 4 and 5). Its topics include CMCD version 2, in-band signalling of rate limits, combined unicast, multicast and broadcast delivery, 5G System-independent media streaming, latency measurement and control, and application-driven multi-access delivery with priority for uplink.
 
 <details>
 <summary>Sources for this page</summary>
