@@ -253,16 +253,9 @@ export default function Home() {
             <p className={styles.sectionSubtitle}>
               Open-source software and tools built from the specifications, kind by kind.
             </p>
-            <div className={styles.kindsMain}>
-              {KINDS.filter((k) => k.prominent).map((k) => (
-                <div key={k.id} id={k.id} style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}>
-                  <HubDestinationCard icon={k.icon} title={k.title} desc={k.desc} href={k.href} disabled={k.disabled} />
-                </div>
-              ))}
-            </div>
-            <div className={styles.kindsRest}>
-              {KINDS.filter((k) => !k.prominent).map((k) => (
-                <div key={k.id} id={k.id} style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}>
+            <div className={styles.kindsGrid}>
+              {KINDS.map((k) => (
+                <div key={k.id} id={k.id} className={clsx(styles.kindCell, k.prominent && styles.kindProminent)} style={{ scrollMarginTop: 'calc(var(--ifm-navbar-height) + 0.5rem)' }}>
                   <HubDestinationCard icon={k.icon} title={k.title} desc={k.desc} href={k.href} disabled={k.disabled} />
                 </div>
               ))}
