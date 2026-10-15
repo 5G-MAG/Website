@@ -148,8 +148,6 @@ export const SECTION_NAV = [
       { label: 'Developer Community', href: '/community', featured: true, group: 'The programme' },
       { label: 'Early Access', href: '/early-access', featured: true, group: 'The programme' },
       { label: 'License', href: '/license', group: 'The programme' },
-      { label: 'Community Activity', href: '/community/activity', group: 'The programme' },
-      { label: 'Developer Exchanges', href: '/developer/exchanges', group: 'The programme' },
     ],
   },
   {
