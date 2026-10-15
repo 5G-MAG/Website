@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-14 02:17 UTC",
+  "updated_at": "2026-10-15 01:57 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -124,19 +124,6 @@
           "last_comment_date": null
         },
         {
-          "repo": "rt-5gms-application-provider",
-          "branch": null,
-          "number": 112,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-5gms-application-provider/pull/112",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
           "repo": "rt-5gms-examples",
           "branch": null,
           "number": 45,
@@ -208,6 +195,19 @@
       "doc_url": "/reference-tools/5g-broadcast/",
       "tagline": "The 3GPP-based broadcast delivery system bridging OTT streaming and broadcasting",
       "pulls": [
+        {
+          "repo": "rt-libflute",
+          "branch": null,
+          "number": 115,
+          "title": "Transmitter: update the FDT before queueing an object in send(FileDescription)",
+          "url": "https://github.com/5G-MAG/rt-libflute/pull/115",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-14",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "rt-mbms-modem",
           "branch": null,
@@ -483,6 +483,19 @@
       "tagline": "Composing, positioning, and temporally synchronizing dynamic 3D visual and audio objects for XR",
       "pulls": [
         {
+          "repo": "rt-xr-content",
+          "branch": null,
+          "number": 45,
+          "title": "tools: add the MPEG-I Scene Description - XR/3D Scene Validator",
+          "url": "https://github.com/5G-MAG/rt-xr-content/pull/45",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-14",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
           "repo": "rt-xr-unity-player",
           "branch": null,
           "number": 126,
@@ -619,6 +632,19 @@
       "doc_url": "/reference-tools/5g-mbs/",
       "tagline": "Multicast and Broadcast delivery for 5G-NR-based terrestrial and non-terrestrial networks",
       "pulls": [
+        {
+          "repo": "rt-libflute",
+          "branch": null,
+          "number": 115,
+          "title": "Transmitter: update the FDT before queueing an object in send(FileDescription)",
+          "url": "https://github.com/5G-MAG/rt-libflute/pull/115",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-14",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "rt-mbs-function",
           "branch": null,
@@ -955,7 +981,7 @@
           "repo": "rt-data-collection-application-function",
           "branch": null,
           "number": 32,
-          "title": "Add end-to-end CRUD integration coverage for DCAF R1, R2, and R6 APIs",
+          "title": "ci: run DCAF regression tests automatically and fix test expectations",
           "url": "https://github.com/5G-MAG/rt-data-collection-application-function/pull/32",
           "draft": false,
           "author_login": "ErikGaida",
@@ -1617,6 +1643,19 @@
       "doc_url": "/reference-tools/content-delivery/",
       "tagline": "Content delivery origin, packaging, protocols and related tools",
       "pulls": [
+        {
+          "repo": "rt-libflute",
+          "branch": null,
+          "number": 115,
+          "title": "Transmitter: update the FDT before queueing an object in send(FileDescription)",
+          "url": "https://github.com/5G-MAG/rt-libflute/pull/115",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-14",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
         {
           "repo": "rt-media-origin",
           "branch": null,
