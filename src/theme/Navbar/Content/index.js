@@ -438,7 +438,6 @@ function MegaCard({ g }) {
       <Link to={g.href} className={styles.navMegaArea}>
         <span className={clsx(styles.navAreaIcon, styles.navHeadIcon)}><CatalogIcon name={g.icon} size={20} /></span>
         <span className={styles.navMegaAreaTitle}>{g.title}</span>
-        <span className={styles.navMegaAreaArrow} aria-hidden="true">→</span>
       </Link>
       <ul className={styles.navMegaList}>
         {g.items.map((sub) => (
