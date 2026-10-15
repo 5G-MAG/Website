@@ -529,38 +529,6 @@ function SolutionsMenu({ item }) {
   );
 }
 
-// The Software Factory menu: one card per kind of software, linking to its page. Playgrounds and Deployment Kits
-// do not exist yet and say so.
-const FACTORY_RAIL = [
-  { key: 'tools', title: 'Reference Tools', subtitle: 'Open-source code, project by project.', href: '/reference-tools' },
-  { key: 'validation', title: 'Validation Tools', subtitle: 'Check conformance to a specification.', href: '/validation' },
-  { key: 'testbeds', title: 'Testbeds', subtitle: 'Test environments and evaluation frameworks.', href: '/testbeds' },
-  { key: 'playgrounds', title: 'Playgrounds', subtitle: 'Try a technology with nothing to install. Coming soon.', href: '/software#playgrounds' },
-  { key: 'kits', title: 'Deployment Kits', subtitle: 'Packages and images to put into a product. Coming soon.', href: '/kits' },
-  { key: 'platforms', title: 'Platforms', subtitle: '3GPP RAN and Core Platforms, Common Tools.', href: '/software#platforms' },
-  { key: 'devtools', title: 'Developer Tools', subtitle: 'Tools that help developers do their work.', href: '/developer-tools' },
-  { key: 'tutorials', title: 'Tutorials', subtitle: 'How to run the tools.', href: '/tutorials' },
-];
-
-function FactoryMenu({ item, preview }) {
-  return (
-    <MegaMenu
-      label={`${preview.title} quick links`}
-      trigger={(expanded) => renderNavbarItem({ ...item, 'aria-haspopup': 'true', 'aria-expanded': expanded })}
-    >
-      <div className={styles.navCardGrid4}>
-        {FACTORY_RAIL.map((r) => (
-          <Link key={r.key} to={r.href} className={styles.navFeatureCard}>
-            <NavItemIcon href={r.href} size={26} />
-            <b>{r.title}</b>
-            <small>{r.subtitle}</small>
-          </Link>
-        ))}
-      </div>
-    </MegaMenu>
-  );
-}
-
 function NavbarItems({ items }) {
   return (
     <>
@@ -568,7 +536,6 @@ function NavbarItems({ items }) {
         if (item.solutionsMenu) return <SolutionsMenu key={i} item={item} />;
         const preview = NAV_DROPDOWNS.get(item.to);
         if (!preview) return <React.Fragment key={i}>{renderNavbarItem(item)}</React.Fragment>;
-        if (item.to === '/software') return <FactoryMenu key={i} item={item} preview={preview} />;
         return (
           <NavDropdownItem key={i} item={item} preview={preview} />
         );
