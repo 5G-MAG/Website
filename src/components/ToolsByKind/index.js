@@ -24,14 +24,40 @@ export const TOOL_KINDS = [
 
 export function ToolCard({ project }) {
   const paths = ICON_CATALOG[project.icon] || [];
-  return (
-    <Link to={project.doc_url.replace(/\/$/, '')} className={styles.chip}>
+  const body = (
+    <>
       <span className={styles.chipIcon}>
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           {paths.map((d) => <path key={d} d={d} />)}
         </svg>
       </span>
-      {displayNameOf(project)}
+      <span>
+        {displayNameOf(project)}
+        {!project.doc_url && <small className={styles.chipSoon}>Coming soon</small>}
+      </span>
+    </>
+  );
+  // A tool that has no page yet is listed under its project, but is not a link.
+  return project.doc_url ? (
+    <Link to={project.doc_url.replace(/\/$/, '')} className={styles.chip}>
+      {body}
+    </Link>
+  ) : (
+    <div className={`${styles.chip} ${styles.chipStatic}`}>{body}</div>
+  );
+}
+
+// The same card for a plain link with an icon from the catalog (a project's Technology and Specifications).
+export function LinkCard({ href, label, iconKey }) {
+  const paths = ICON_CATALOG[iconKey] || [];
+  return (
+    <Link to={href} className={styles.chip}>
+      <span className={styles.chipIcon}>
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          {paths.map((d) => <path key={d} d={d} />)}
+        </svg>
+      </span>
+      {label}
     </Link>
   );
 }

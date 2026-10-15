@@ -56,8 +56,20 @@
   text-decoration: none;
 }
 
+.chipSoon {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.chipStatic {
+  background: transparent;
+  border-style: dashed;
+}
+
 .tools {
-  margin-top: 0.5rem;
+  margin-top: 1.75rem;
 }
 
 .toolsNone {

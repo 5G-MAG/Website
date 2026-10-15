@@ -23,7 +23,7 @@ export default function ProjectStrip({ contained = false }) {
     tech && { label: 'Technology', to: tech },
     spec && { label: 'Specifications', to: spec },
     ...software.map((p) => ({
-      label: software.length > 1 || softwareLabel(p) !== 'Reference Tools' ? softwareLabel(p) : 'Software',
+      label: softwareLabel(p) !== 'Reference Tools' || software.length > 1 ? displayNameOf(p) : 'Software',
       to: p.doc_url,
     })),
   ].filter(Boolean);

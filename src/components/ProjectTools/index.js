@@ -1,7 +1,7 @@
 import Link from '@docusaurus/Link';
 import { useLocation } from '@docusaurus/router';
 import { familyForPath } from '@site/src/utils/projectFamily';
-import { ToolCard, TOOL_KINDS, withPage } from '@site/src/components/ToolsByKind';
+import { ToolCard, TOOL_KINDS } from '@site/src/components/ToolsByKind';
 import styles from '@site/src/components/ToolsByKind/styles.module.css';
 
 // The Software Accelerator tools of the project whose page this is, by kind. The same cards and the same kinds as the
@@ -11,7 +11,7 @@ export default function ProjectTools() {
   const family = familyForPath(pathname);
   const groups = TOOL_KINDS.map((k) => ({
     ...k,
-    tools: family.filter((p) => k.test(p) && withPage(p)),
+    tools: family.filter((p) => k.test(p) && !p.partOf),
   })).filter((g) => g.tools.length > 0);
   return (
     <div className={styles.tools}>
