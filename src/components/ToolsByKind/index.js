@@ -25,9 +25,11 @@ function Chip({ project }) {
   const paths = ICON_CATALOG[project.icon] || [];
   return (
     <Link to={project.doc_url.replace(/\/$/, '')} className={styles.chip}>
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        {paths.map((d) => <path key={d} d={d} />)}
-      </svg>
+      <span className={styles.chipIcon}>
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          {paths.map((d) => <path key={d} d={d} />)}
+        </svg>
+      </span>
       {displayNameOf(project)}
     </Link>
   );
