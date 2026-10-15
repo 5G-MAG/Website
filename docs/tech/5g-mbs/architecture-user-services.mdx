@@ -31,16 +31,16 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 ## Functions
 
-- **MBSF:** receives provisioning and control from the MBS Application Provider, directly at Nmb10 or through the NEF at Nmb5. It invokes MBS Session operations on the MB-SMF at Nmb1 and configures the MBSTF at Nmb2. It compiles the User Service Announcement for each MBS User Data Ingest Session and manages its updates.
-- **MBSTF:** receives user plane data at Nmb8 and sends MBS data packets to the MB-UPF at Nmb9. It acts as a user plane anchor when it sources IP multicast traffic. It receives its Distribution Session configurations from the MBSF at Nmb2 and sends notification events back, for example data ingest failure, session terminated or delivery started. For the Object Distribution Method its subfunctions are object ingest, object segmentation into payload units, optional Application Layer FEC (AL-FEC), packetisation and packet scheduling to a target bit rate. To support Object Repair, it may also forward ingested objects to the MBS AS, or let the MBS AS fetch them, at MBS-12 (added in Release 19).
+- **MBSF:** receives provisioning and control from the MBS Application Provider, directly at Nmb10 or through the NEF at Nmb5. It invokes MBS Session operations on the MB-SMF at Nmb1 and configures the MBSTF at Nmb2. It compiles the User Service Announcement for each MBS User Data Ingest Session and manages its updates (TS 26.502 V19.5.0 clause 4.3.2, 4.3.1).
+- **MBSTF:** receives user plane data at Nmb8 and sends MBS data packets to the MB-UPF at Nmb9. It acts as a user plane anchor when it sources IP multicast traffic. It receives its Distribution Session configurations from the MBSF at Nmb2 and sends notification events back, for example data ingest failure, session terminated or delivery started. For the Object Distribution Method its subfunctions are object ingest, object segmentation into payload units, optional Application Layer FEC (AL-FEC), packetisation and packet scheduling to a target bit rate. To support Object Repair, it may also forward ingested objects to the MBS AS, or let the MBS AS fetch them, at MBS-12 (added in Release 19) (TS 26.502 V19.5.0 clause 4.3.1, 4.3.3.1, 4.3.3.2, 4.3.4; TS 26.502 V18.7.0 clause 4.3.4 (comparison)).
 - **MBS AF** (optional): serves User Service Announcements to the MBSF Client by unicast at MBS-5, and object manifests and announcements to the MBSTF at MBS-11. The MBSF configures it at MBS-3, an interaction TS 26.502 does not define further.
-- **MBS AS** (optional): provides a byte-range Object Repair service to the MBSTF Client at MBS-4-UC, for the Object Distribution Method. To support it, the MBS AS may be configured for each MBS Distribution Session to ingest content from the MBSTF at MBS-12, by pull or by push. It also hosts a time service the MBS Client may use to synchronise its clock. Both are added in Release 19. It may stand alone or be co-located with the MBSTF or with a 5GMS AS.
+- **MBS AS** (optional): provides a byte-range Object Repair service to the MBSTF Client at MBS-4-UC, for the Object Distribution Method. To support it, the MBS AS may be configured for each MBS Distribution Session to ingest content from the MBSTF at MBS-12, by pull or by push. It also hosts a time service the MBS Client may use to synchronise its clock. Both are added in Release 19. It may stand alone or be co-located with the MBSTF or with a 5GMS AS (TS 26.502 V19.5.0 clause 4.3.4, 4.2.7, 4.3.1; TS 26.502 V18.7.0 clause 4.3.4 (comparison)).
 - **MBSSF** (optional): the MBS Security Function. It provides a security anchor at MBS-10, realising the user plane security procedure of TS 33.501, and may be co-located with the MBSF or the MBSTF.
-- **MBS Client**, in the UE, split into two subfunctions. The **MBSF Client** communicates with the MBS AF at MBS-5 on User Service control, and with the MBSSF at MBS-10. The **MBSTF Client** receives from the MBSTF at MBS-4-MC and from the MBS AS at MBS-4-UC, and provides an MBS Application Data Session to the application.
-- **MBS-Aware Application:** uses the MBS Client at MBS-6 and MBS-7.
-- **MBS Application Provider:** plays the role of the AF/AS. Outside the trusted data network it reaches the MBSF through the NEF at N33 instead of Nmb10.
+- **MBS Client**, in the UE, split into two subfunctions. The **MBSF Client** communicates with the MBS AF at MBS-5 on User Service control, and with the MBSSF at MBS-10. The **MBSTF Client** receives from the MBSTF at MBS-4-MC and from the MBS AS at MBS-4-UC, and provides an MBS Application Data Session to the application (TS 26.502 V19.5.0 clause 4.3.5).
+- **MBS-Aware Application:** uses the MBS Client at MBS-6 and MBS-7 (TS 26.502 V19.5.0 clause 4.3.6).
+- **MBS Application Provider:** plays the role of the AF/AS. Outside the trusted data network it reaches the MBSF through the NEF at N33 instead of Nmb10 (TS 26.502 V19.5.0 clause 4.2.2, 4.3.1 note).
 
-The functions are shown as standalone. In deployments they may be co-located with other functions.
+The functions are shown as standalone. In deployments they may be co-located with other functions (TS 26.502 V19.5.0 clause 4.3.1).
 
 ## Reference points
 
@@ -61,19 +61,19 @@ TS 26.502 reuses seven reference points of TS 23.247 (Nmb1, Nmb2, Nmb5, Nmb8, Nm
 | **Nmb9** | MBSTF and MB-UPF | MBS data packets towards the MB-UPF | TS 23.247 cl. 5.3.1 |
 | **Nmb12** | MBSF and PCF | QoS for the MBS Session, set from the provisioned 5QI | TS 26.502 table 4.5.6-1 |
 | **MBS-1** | MBSF and MBS Application Provider | Exposure of the User Service Announcement for private advertisement at MBS-8 | TS 26.517 cl. 8A |
-| **MBS-3** | MBSF and MBS AF | Configuration of the MBS AF and publication of announcements to it. Not described further | none |
+| **MBS-3** | MBSF and MBS AF | Configuration of the MBS AF and publication of announcements to it (TS 26.502 V19.5.0 clause 4.4.1). Not described further | none |
 | **MBS-4-MC** | MBSTF and MBS Client | Unidirectional multicast distribution of content | TS 26.517 cl. 6 and 7 |
 | **MBS-4-UC** | MBSTF Client and MBS AS | Time synchronization and file-based unicast repair | TS 26.517 cl. 5.2.11 and 10 |
 | **MBS-5** | MBSF Client and MBS AF | User plane interactions for control and service handling | TS 26.517 cl. 9 |
-| **MBS-6** | MBS-Aware Application and MBSF Client | API to manage and control MBS User Services | none |
-| **MBS-7** | MBS-Aware Application and MBSTF Client | API to receive the distributed user data | none |
-| **MBS-8** | MBS Application Provider and MBS-Aware Application | Announcement of MBS User Services. Beyond the scope of 3GPP | none |
-| **MBS-9** | MBSF and MBS AS | Configuration of the MBS AS. Not described further | none |
+| **MBS-6** | MBS-Aware Application and MBSF Client | API to manage and control MBS User Services | none (TS 26.502 V19.5.0 clause 4.4.1) |
+| **MBS-7** | MBS-Aware Application and MBSTF Client | API to receive the distributed user data | none (TS 26.502 V19.5.0 clause 4.4.1) |
+| **MBS-8** | MBS Application Provider and MBS-Aware Application | Announcement of MBS User Services (TS 26.502 V19.5.0 clause 4.4.1). Beyond the scope of 3GPP | none |
+| **MBS-9** | MBSF and MBS AS | Configuration of the MBS AS (TS 26.502 V19.5.0 clause 4.4.1). Not described further | none |
 | **MBS-10** | MBSF Client and MBSSF | Authorisation of access to security-protected MBS data | TS 26.517 cl. 11 |
 | **MBS-11** | MBSTF and MBS AF | Retrieval of object manifests and the announcements they list | TS 26.502 cl. 4.3.3.2 |
 | **MBS-12** | MBS AS and MBSTF | Ingest of objects by the MBS AS from the MBSTF, to support unicast Object Repair. Added in Release 19 | TS 26.502 cl. 4.3.4 |
 
-Two more reference points, MBS-6′ and MBS-7′, sit inside the MBS Client between the MBSF Client and the MBSTF Client. They are outside the scope of MBS User Services.
+Two more reference points, MBS-6′ and MBS-7′, sit inside the MBS Client between the MBSF Client and the MBSTF Client. They are outside the scope of MBS User Services (TS 26.502 V19.5.0 clause 4.4.1).
 
 </details>
 
@@ -110,7 +110,7 @@ The MBSF exposes two services and the MBSTF one. An MBS Application Provider out
 
 When FLUTE realises the Object Distribution Method, the MBS Distribution Session conforms to the MBMS Download Profile of TS 26.346 clause L.4, with the additions of TS 26.517 clause 6.2. TS 26.517 recommends the OBJECT_STREAMING mode for streaming DASH or HLS content to a Media Player in the UE. The Packet Distribution Method combines three delivery methods of TS 26.346, the MBMS Streaming, Group Communication and Transparent Delivery Methods, with modifications.
 
-For the Object Distribution Method, ingest at Nmb8 is pull-based (the MBSTF fetches objects from the MBS Application Provider) or push-based (the MBS Application Provider sends them).
+For the Object Distribution Method, ingest at Nmb8 is pull-based (the MBSTF fetches objects from the MBS Application Provider) or push-based (the MBS Application Provider sends them) (TS 26.502 V19.5.0 clause 4.3.3.2).
 
 <SpecFigure src="/img/tech/5g-mbs/generated/ts26502-fig4.3.3.2-1.svg" width={1166} height={925} spec="TS 26.502 V19.5.0" figure="4.3.3.2-1" title="MBSTF architecture overview for Object Distribution Method" alt="Inside the MBSTF, Object ingest (fed at MBS-11, Nmb2 and Nmb8), Object segmentation, Application Layer FEC, Packetisation and Packet scheduling in a chain ending at Nmb9; Object ingest also sends out at MBS-12. Each stage is attached to a bus; Control, reached at Nmb2, sends Configuration to the bus and receives Events from it." />
 
@@ -118,11 +118,11 @@ For the Object Distribution Method, ingest at Nmb8 is pull-based (the MBSTF fetc
 
 ## Sessions and their life cycle
 
-An MBS Application Provider provisions an **MBS User Service**, and within it time-bound **MBS User Data Ingest Sessions**. Each ingest session has one or more **MBS Distribution Sessions**; an ingest session without any is not valid. A Distribution Session uses an MBS Session for delivery, identified by a TMGI or a Source-Specific Multicast (SSM) address. It has one MBS Session Context, unless several target service areas are specified.
+An MBS Application Provider provisions an **MBS User Service**, and within it time-bound **MBS User Data Ingest Sessions**. Each ingest session has one or more **MBS Distribution Sessions**; an ingest session without any is not valid. A Distribution Session uses an MBS Session for delivery, identified by a TMGI or a Source-Specific Multicast (SSM) address. It has one MBS Session Context, unless several target service areas are specified (TS 26.502 V19.5.0 clause 4.5.2, 4.5.5, 4.5.6).
 
 <SpecFigure src="/img/tech/5g-mbs/generated/ts26502-fig4.5.1-1.svg" width={1191} height={573} spec="TS 26.502 V19.5.0" figure="4.5.1-1" title="MBS User Services domain model" alt="Sessions between the UE, holding the MBS-Aware Application and the MBS Client (MBSF Client and MBSTF Client), and the DN, holding the MBSF, the MBSTF and the MBS Application Provider (AF/AS): MBS Application Session, MBS Application Data Session, MBS User Service Control, MBS User Service Session (MBSF Client to MBSF), MBS Distribution Session (MBSTF Client to MBSTF), MBS User Service Provisioning (MBSF) and MBS User Data Ingest Session (MBSTF), with numbered markers 1 to 9. A key marks MBS User Services and External." />
 
-An ingest session may carry a set of active periods. If none is given, it and its Distribution Sessions are active until further notice. The Service type (multicast or broadcast) of an MBS User Service cannot be changed; the other parameters assigned by the provider can be updated at any time.
+An ingest session may carry a set of active periods. If none is given, it and its Distribution Sessions are active until further notice. The Service type (multicast or broadcast) of an MBS User Service cannot be changed; the other parameters assigned by the provider can be updated at any time (TS 26.502 V19.5.0 clause 4.5.3, 4.5.5).
 
 <SpecFigure src="/img/tech/5g-mbs/generated/ts26502-fig4.6.1-1.svg" width={706} height={511} spec="TS 26.502 V19.5.0" figure="4.6.1-1" title="Life-cycle model for MBS Distribution Session" alt="States INACTIVE, ESTABLISHED, ACTIVE and DEACTIVATING. Provision (1) enters INACTIVE; Shortly before start date-time, Establish (2) leads to ESTABLISHED; Error returns to INACTIVE; Start date-time, Activate (3) leads to ACTIVE; Fatal error, Release (4) and End date-time, Release (5) lead to DEACTIVATING, which returns to INACTIVE. Provisioning error and Expiry leave INACTIVE for the final state." />
 
@@ -137,15 +137,15 @@ An ingest session may carry a set of active periods. If none is given, it and it
 
 TS 26.502 clauses 5.3 to 5.5, condensed, with the step numbers:
 
-1. **Optional TMGI pre-allocation (step 1).** The MBS Application Provider may pre-allocate a TMGI with Nmbsmf_TMGI_Allocate on the MB-SMF at Nmb13 (or N33+N29mb through the NEF).
-2. **User Service (step 2).** It invokes Nmbsf_MBSUserService_Create at Nmb10 (or N33+Nmb5).
-3. **Ingest session (steps 3 and 4).** It invokes Nmbsf_MBSUserDataIngestSession_Create, with the details of one or more Distribution Sessions, and subscribes to its status events.
-4. **MBS Session (steps 6 to 9).** Shortly before the active period, the MBSF may allocate a TMGI, then invokes Nmbsmf_MBSSession_Create on the MB-SMF at Nmb1. The MB-SMF can allocate the TMGI as a side effect.
-5. **Distribution Session in the MBSTF (steps 10 to 15).** The MBSF invokes Nmbstf_MBSDistributionSession_Create at Nmb2, a mirror of its own entity. The MBSTF tries to establish content ingest at Nmb8; on success the session becomes ESTABLISHED. Where Object Repair is configured, the MBSF also configures the MBS AS at MBS-9 (step 9a or 10a), and the MBSTF and the MBS AS establish an Object Repair ingest session at MBS-12 (step 10b). These steps are added in Release 19.
-6. **Announcement (clause 5.4).** The MBSF compiles an MBS User Service Announcement describing the current Distribution Sessions. It is delivered by unicast at MBS-5, in the MBS User Service Announcement Channel at MBS-4-MC (an MBS Distribution Session in OBJECT_CAROUSEL mode), or passed back to the provider for private advertisement at MBS-8.
-7. **Activation (clause 5.5.1).** At the start time, for a multicast service, the MBSF activates the Multicast MBS Session in the MB-SMF so that UEs can join. It then sets the Distribution Session to ACTIVE in the MBSTF with Nmbstf_MBSDistributionSession_Update.
-8. **Reception (clause 5.5.2).** The MBS-Aware Application asks the MBSF Client at MBS-6 to activate the User Service; the MBSTF Client receives the MBS data at MBS-4-MC.
-9. **Deactivation (clause 5.5.4).** At the end time, the MBSF tears down the MBS Session for a broadcast service, or for the last period. For a multicast service with further periods, it only deactivates the MBS Session.
+1. **Optional TMGI pre-allocation (step 1).** The MBS Application Provider may pre-allocate a TMGI with Nmbsmf_TMGI_Allocate on the MB-SMF at Nmb13 (or N33+N29mb through the NEF) (TS 26.502 V19.5.0 clause 5.3 step 1).
+2. **User Service (step 2).** It invokes Nmbsf_MBSUserService_Create at Nmb10 (or N33+Nmb5) (TS 26.502 V19.5.0 clause 5.3 step 2).
+3. **Ingest session (steps 3 and 4).** It invokes Nmbsf_MBSUserDataIngestSession_Create, with the details of one or more Distribution Sessions, and subscribes to its status events (TS 26.502 V19.5.0 clause 5.3 steps 3 and 4).
+4. **MBS Session (steps 6 to 9).** Shortly before the active period, the MBSF may allocate a TMGI, then invokes Nmbsmf_MBSSession_Create on the MB-SMF at Nmb1. The MB-SMF can allocate the TMGI as a side effect (TS 26.502 V19.5.0 clause 5.3 steps 6 to 9).
+The MBSF invokes Nmbstf_MBSDistributionSession_Create at Nmb2, a mirror of its own entity. For the Packet Distribution Method and pull-based Object acquisition, the MBSTF tries to establish content ingest at Nmb8; on success the session becomes ESTABLISHED (TS 26.502 V19.5.0 clause 5.3 steps 10 to 15, 10a, 10b, 9a).
+6. **Announcement (clause 5.4).** The MBSF compiles an MBS User Service Announcement describing the current Distribution Sessions. It is delivered by unicast at MBS-5, in the MBS User Service Announcement Channel at MBS-4-MC (an MBS Distribution Session in OBJECT_CAROUSEL mode), or passed back to the provider for private advertisement at MBS-8 (TS 26.502 V19.5.0 clause 5.4, 4.2.4, 5.3A).
+7. **Activation (clause 5.5.1).** At the start time, for a multicast service, the MBSF activates the Multicast MBS Session in the MB-SMF so that UEs can join. It then sets the Distribution Session to ACTIVE in the MBSTF with Nmbstf_MBSDistributionSession_Update (TS 26.502 V19.5.0 clause 5.5.1 steps 1 and 3).
+8. **Reception (clause 5.5.2).** The MBS-Aware Application asks the MBSF Client at MBS-6 to activate the User Service; the MBSTF Client receives the MBS data at MBS-4-MC (TS 26.502 V19.5.0 clause 5.5.2 steps 11 and 13).
+9. **Deactivation (clause 5.5.4).** At the end time, the MBSF tears down the MBS Session for a broadcast service, or for the last period. For a multicast service with further periods, it only deactivates the MBS Session (TS 26.502 V19.5.0 clause 5.5.4 steps 20 and 21).
 
 <details>
 <summary>Sources for this page</summary>

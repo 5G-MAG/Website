@@ -21,17 +21,17 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 :::tip[At a glance]
 
-- **How MBS Broadcast differs:** there is no join. The same content goes to all UEs in a geographical area, and the UE receives it in RRC_IDLE, RRC_INACTIVE or RRC_CONNECTED.
-- **Network set-up:** the AF, or the MBSF on behalf of an MBS Application Provider, obtains a TMGI and creates the MBS Session at the MB-SMF. The MB-SMF configures the MB-UPF and asks the AMFs, which set up the session in every NG-RAN node that supports MBS in the MBS service area.
-- **The radio chain:** MIB, then SIB1, which schedules SIB20; SIB20 configures the MCCH; the MCCH carries the MBSBroadcastConfiguration message, which lists the sessions with their G-RNTI and MTCH scheduling; the UE then receives the MTCH.
-- **States:** a UE can acquire the MCCH and receive broadcast in RRC_IDLE, RRC_INACTIVE and RRC_CONNECTED.
-- **Identifiers:** MCCH-RNTI (FFFD) for the MCCH, a G-RNTI per session for the MTCH; both scheduled with DCI format 4_0.
-- **No feedback:** broadcast has no HARQ-ACK feedback and uses dynamic scheduling only; slot-level repetition is supported for MTCH.
-- **Mobility:** the same session must be established in the target node with 5GC Shared delivery; the UE finds the frequency of a service from the USD and SIB21, and in RRC_CONNECTED reports its interest to the gNB; in NTN cells, the intended service areas of SIB27 apply (Release 19).
+- **How MBS Broadcast differs:** there is no join. The same content goes to all UEs in a geographical area, and the UE receives it in RRC_IDLE, RRC_INACTIVE or RRC_CONNECTED (TS 38.300 V19.4.0 clause 16.10.6.2; TS 23.247 V19.3.0 clause 3.1).
+- **Network set-up:** the AF, or the MBSF on behalf of an MBS Application Provider, obtains a TMGI and creates the MBS Session at the MB-SMF. The MB-SMF configures the MB-UPF and asks the AMFs, which set up the session in every NG-RAN node that supports MBS in the MBS service area (TS 23.247 V19.3.0 clause 7.1.1.2 steps 1 to 11, 14 to 17, 7.3.1 steps 2 and 3).
+- **The radio chain:** MIB, then SIB1, which schedules SIB20; SIB20 configures the MCCH; the MCCH carries the MBSBroadcastConfiguration message, which lists the sessions with their G-RNTI and MTCH scheduling; the UE then receives the MTCH (TS 38.331 V19.4.0 clause 5.9.1.1, 6.3.2; TS 38.300 V19.4.0 clause 16.10.6.2).
+- **States:** a UE can acquire the MCCH and receive broadcast in RRC_IDLE, RRC_INACTIVE and RRC_CONNECTED (TS 38.300 V19.4.0 clause 16.10.6.2).
+- **Identifiers:** MCCH-RNTI (FFFD) for the MCCH, a G-RNTI per session for the MTCH; both scheduled with DCI format 4_0 (TS 38.321 V19.4.0 clause 7.1; TS 38.212 V19.4.0 clause 7.3.1, 7.3.1.5.1).
+- **No feedback:** broadcast has no HARQ-ACK feedback and uses dynamic scheduling only; slot-level repetition is supported for MTCH (TS 38.300 V19.4.0 clause 16.10.6.6).
+- **Mobility:** the same session must be established in the target node with 5GC Shared delivery; the UE finds the frequency of a service from the USD and SIB21, and in RRC_CONNECTED reports its interest to the gNB; in NTN cells, the intended service areas of SIB27 apply (Release 19) (TS 23.247 V19.3.0 clause 6.3.2; TS 38.300 V19.4.0 clause 16.10.6.5.1, 16.10.6.5.2, 16.14.12; TS 38.331 V19.4.0 clause 5.9.1.1).
 
 :::
 
-In MBS Broadcast, the same service and the same content are provided simultaneously to all UEs in a geographical area, and a UE can receive it in RRC_IDLE, RRC_INACTIVE and RRC_CONNECTED. For broadcast, the MBS Session creation triggers the procedure that reserves resources towards NG-RAN. A UE needs to know whether a service is broadcast or multicast to decide whether to join; for broadcast, a UE that holds the needed configuration does not need to interact with the network.
+In MBS Broadcast, the same service and the same content are provided simultaneously to all UEs in a geographical area, and a UE can receive it in RRC_IDLE, RRC_INACTIVE and RRC_CONNECTED. For broadcast, the MBS Session creation triggers the procedure that reserves resources towards NG-RAN. A UE needs to know whether a service is broadcast or multicast to decide whether to join; for broadcast, a UE that holds the needed configuration does not need to interact with the network (TS 23.247 V19.3.0 clause 3.1, 7.1.1.2, 7.3.1; TS 38.300 V19.4.0 clause 16.10.6.2).
 
 <JumpMenu items={[["Steps", "the-steps"], ["Implementation blueprint", "implementation-blueprint"], ["Network set-up", "network-set-up"], ["RRC states", "rrc-states"], ["Radio acquisition", "step-0-pre-configuration"], ["Mobility", "mobility"], ["User plane", "user-plane"], ["Update and release", "update-and-release"]]} />
 
@@ -39,37 +39,37 @@ This page follows an MBS Broadcast session from its provisioning to the receptio
 
 ## The steps
 
-Network set-up:
+Network set-up: (TS 23.247 V19.3.0 clause 7.1.1.2, 7.3.1)
 
-- N1. Provisioning by the AF or the MBS Application Provider
-- N2. TMGI allocation
-- N3. MBS Session creation at the MB-SMF
-- N4. MB-UPF and MBSTF configuration
-- N5. Broadcast context in the AMFs
-- N6. NGAP Broadcast Session Setup
-- N7. Inside the gNB: E1AP and F1AP
-- N8. N3mb transport
-- N9. Session started
-- N10. Service announcement
+- N1 (TS 23.247 V19.3.0 clause 7.1.1.1, 7.1.1.2). Provisioning by the AF or the MBS Application Provider
+- N2 (TS 23.247 V19.3.0 clause 7.1.1.2 steps 1 to 6). TMGI allocation
+- N3 (TS 23.247 V19.3.0 clause 7.1.1.2 steps 8 to 13, 7.3.1). MBS Session creation at the MB-SMF
+- N4 (TS 23.247 V19.3.0 clause 7.1.1.2 steps 14 to 18; TS 29.244 V19.6.0 clause 5.34.2.2). MB-UPF and MBSTF configuration
+- N5 (TS 23.247 V19.3.0 clause 7.3.1 step 2). Broadcast context in the AMFs
+- N6 (TS 23.247 V19.3.0 clause 7.3.1 step 3; TS 38.413 V19.4.0 clause 8.17.1). NGAP Broadcast Session Setup
+- N7 (TS 38.401 V19.3.0 clause 8.15.1.1; TS 37.483 V19.4.0 clause 8.6.1.1, 8.6.1.2; TS 38.473 V19.4.0 clause 8.14.1). Inside the gNB: E1AP and F1AP
+- N8 (TS 23.247 V19.3.0 clause 7.3.1 steps 5a, 5b, 6, 8; TS 38.413 V19.4.0 clause 8.17.5; TS 29.244 V19.6.0 clause 5.34.2.2). N3mb transport
+- N9 (TS 23.247 V19.3.0 clause 7.3.1 steps 8a, 8b, 9, 7.3.5). Session started
+- N10 (TS 23.247 V19.3.0 clause 7.3.1, 7.1.1.2 step 7). Service announcement
 
-Radio acquisition:
+Radio acquisition: (TS 38.331 V19.4.0 clause 5.9.1.1, 5.9.2.2, 5.9.3.3)
 
-- 0\. Pre-configuration (optional)
-- 1\. Obtain the MIB
-- 2\. Obtain SIB1, which schedules SIB20
-- 3\. SIB20 configures the MCCH
-- 4\. Receive the MCCH, scheduled with MCCH-RNTI
-- 5\. The MCCH carries MBSBroadcastConfiguration
-- 6\. The session list gives each session's G-RNTI and MTCH configuration
-- 7\. Receive the MTCH, scheduled with the G-RNTI
-- M. Mobility: service continuity across cells
+- 0\. Pre-configuration (optional) (TS 24.575 V19.0.0 clause 4)
+- 1\. Obtain the MIB (TS 38.331 V19.4.0 clause 5.2.2.4.1, 6.2.2)
+- 2\. Obtain SIB1, which schedules SIB20 (TS 38.331 V19.4.0 clause 5.9.1.1, 6.3.2)
+- 3\. SIB20 configures the MCCH (TS 38.331 V19.4.0 clause 5.9.1.1, 6.3.1)
+- 4\. Receive the MCCH, scheduled with MCCH-RNTI (TS 38.331 V19.4.0 clause 5.9.1.2; TS 38.321 V19.4.0 clause 7.1; TS 38.212 V19.4.0 clause 7.3.1.5.1)
+- 5\. The MCCH carries MBSBroadcastConfiguration (TS 38.331 V19.4.0 clause 5.9.1.1, 6.2.2)
+- 6\. The session list gives each session's G-RNTI and MTCH configuration (TS 38.331 V19.4.0 clause 6.2.2, 6.3.6)
+- 7\. Receive the MTCH, scheduled with the G-RNTI (TS 38.331 V19.4.0 clause 5.9.3.3; TS 38.321 V19.4.0 clause 5.3.1, 6.2.1-1c; TS 38.212 V19.4.0 clause 7.3.1.5.1)
+- M (TS 23.247 V19.3.0 clause 6.3.2; TS 38.300 V19.4.0 clause 16.10.6.5.1, 16.10.6.5.2, 16.14.12; TS 38.304 V19.3.0 clause 5.2.4.1). Mobility: service continuity across cells
 
-Data and life cycle:
+Data and life cycle: (TS 23.247 V19.3.0 clause 7.3.1, 7.3.2, 7.3.3, 7.3.6)
 
-- D1. User plane, from the AF or MBSTF to the UE
-- D2. Session update
-- D3. Session release
-- D4. Release required by NG-RAN
+- D1 (TS 23.247 V19.3.0 clause 7.3.1 steps 13 to 15; TS 38.300 V19.4.0 clause 16.10.3; TS 37.324 V19.0.0 clause 4.2.1, 4.2.2; TS 38.323 V19.1.0 clause 4.2.2). User plane, from the AF or MBSTF to the UE
+- D2 (TS 23.247 V19.3.0 clause 7.3.3; TS 38.413 V19.4.0 clause 8.17.2). Session update
+- D3 (TS 23.247 V19.3.0 clause 7.3.2; TS 38.413 V19.4.0 clause 8.17.3). Session release
+- D4 (TS 23.247 V19.3.0 clause 7.3.6; TS 38.413 V19.4.0 clause 8.17.4). Release required by NG-RAN
 
 ## Implementation blueprint
 
@@ -136,9 +136,9 @@ The MB-SMF selects the MB-UPF. If an ingress transport address was requested, it
 
 On N4mb, the MB-SMF sends a PFCP Session Establishment Request to set up a PFCP session for the MBS Session (TS 29.244 clause 5.34.2.2). For each MBS QoS flow it provisions:
 
-- a downlink PDR with an ingress tunnel for Nmb9, or for N6mb with unicast transport, or with an IP multicast address for N6mb multicast transport;
-- a QER whose IQFISN flag makes the MB-UPF insert the DL MBS QFI Sequence Number;
-- a FAR whose Apply Action is FSSM when multicast transport is used over N3mb, or DROP when only unicast transport is used and no N3mb DL F-TEID is known yet.
+- a downlink PDR with an ingress tunnel for Nmb9, or for N6mb with unicast transport, or with an IP multicast address for N6mb multicast transport; (TS 29.244 V19.6.0 clause 5.34.2.2)
+- a QER whose IQFISN flag makes the MB-UPF insert the DL MBS QFI Sequence Number; (TS 29.244 V19.6.0 clause 5.34.2.2, 7.5.2.5)
+- a FAR whose Apply Action is FSSM when multicast transport is used over N3mb, or DROP when only unicast transport is used and no N3mb DL F-TEID is known yet (TS 29.244 V19.6.0 clause 5.34.2.2).
 
 The MB-SMF returns the possibly allocated ingress address to the NEF/MBSF, and for broadcast the FSA IDs it selected (TS 23.247 clause 7.1.1.2, step 16). If the MBSF uses an MBSTF, it provides that ingress address to the MBSTF as downlink destination (step 18). The MBSF creates the MBS Distribution Session in the MBSTF at Nmb2, as a mirror of its own entity (TS 26.502 clause 5.3, step 10). Added in Release 19, for the Object Distribution Method the MBSF may configure Object Repair for the MBS Distribution Session in the MBS AS at MBS-9, and the MBSTF and the MBS AS then establish an Object Repair ingest session, push- or pull-based, at MBS-12 (TS 26.502 clause 5.3, steps 9a to 10c).
 
@@ -161,11 +161,11 @@ The AMF should answer the MB-SMF with success when it receives the first success
 TS 38.401 gives an example of the interaction of NGAP, E1AP, F1AP and RRC at Broadcast MBS Session Setup, in a gNB split into gNB-CU-CP, gNB-CU-UP and gNB-DU (clause 8.15.1.1):
 
 1. The gNB-CU-CP sets up the broadcast bearer context in the gNB-CU-UP, providing the NG-U transport information from the 5G Core. It receives the NG-U GTP DL TEID, when NG-U unicast transport was selected, and an F1-U GTP UL TEID per MRB. In E1AP this is BC Bearer Context Setup (TS 37.483 clause 8.6.1.1).
-2. With NG-U multicast transport, the gNB-CU-UP joins the NG-U multicast group.
+2. With NG-U multicast transport, the gNB-CU-UP joins the NG-U multicast group (TS 38.401 V19.3.0 clause 8.15.1.1 step 4).
 3. The gNB-CU-CP establishes the Broadcast MBS Session Context in the gNB-DU, providing the MRB configuration and the F1-U GTP UL TEID, and receives the F1-U GTP DL TEID. In F1AP this is Broadcast Context Setup (TS 38.473 clause 8.14.1).
 4. The gNB-CU-CP gives the F1-U GTP DL TEID to the gNB-CU-UP with BC Bearer Context Modification (TS 37.483 clause 8.6.1.2).
-5. The gNB-DU configures the broadcast resources and provides the broadcast configuration to the UEs on the MCCH.
-6. The gNB-CU-CP terminates the NGAP Broadcast Session Setup procedure; with NG-U unicast transport, it provides the NG-U GTP DL TEID to the 5G Core.
+5. The gNB-DU configures the broadcast resources and provides the broadcast configuration to the UEs on the MCCH (TS 38.401 V19.3.0 clause 8.15.1.1 step 9).
+6. The gNB-CU-CP terminates the NGAP Broadcast Session Setup procedure; with NG-U unicast transport, it provides the NG-U GTP DL TEID to the 5G Core (TS 38.401 V19.3.0 clause 8.15.1.1 step 10).
 
 In F1AP Broadcast Context Setup, the gNB-DU reports the broadcast MRBs that were set up and those that failed. When the request included an MBS Service Area, or when the gNB-DU could not establish resources in all its cells, it includes the Broadcast Area Scope to indicate the cells where they were established (TS 38.473 clause 8.14.1.2).
 
@@ -191,19 +191,19 @@ A UE receives MBS broadcast in all three RRC states, with no join and no state c
 
 ## Step 0: Pre-configuration
 
-A UE may be pre-configured with information for MBS services. It then discovers and receives the services with that configuration. The pre-configuration lists PLMNs, and for each PLMN gives:
+A UE may be pre-configured with information for MBS services. It then discovers and receives the services with that configuration (TS 24.575 V19.0.0 clause 4). The pre-configuration lists PLMNs, and for each PLMN gives:
 
-- the PLMN ID;
-- the NR-ARFCN on which the broadcast communication service is available;
-- the TMGIs on which the broadcast service is available, each with its User Service Description (USD) information;
-- the TMGIs on which the service announcement is available, with their USD information;
-- a default DNN and S-NSSAI pair for the PDU sessions used to join multicast sessions.
+- the PLMN ID; (TS 24.575 V19.0.0 clause 4 item a)
+- the NR-ARFCN on which the broadcast communication service is available; (TS 24.575 V19.0.0 clause 4 item b)
+- the TMGIs on which the broadcast service is available, each with its User Service Description (USD) information; (TS 24.575 V19.0.0 clause 4 item c)
+- the TMGIs on which the service announcement is available, with their USD information; (TS 24.575 V19.0.0 clause 4 item d)
+- a default DNN and S-NSSAI pair for the PDU sessions used to join multicast sessions (TS 24.575 V19.0.0 clause 4 item e).
 
 ## Steps 1 and 2: MIB and SIB1
 
-The MIB is not specific to MBS. Its field `pdcch-ConfigSIB1` gives the PDCCH configuration the UE uses to receive SIB1. On receiving the MIB, the UE stores it.
+The MIB is not specific to MBS. Its field `pdcch-ConfigSIB1` gives the PDCCH configuration the UE uses to receive SIB1. On receiving the MIB, the UE stores it (TS 38.331 V19.4.0 clause 5.2.2.4.1, 6.2.2).
 
-In SIB1, the field `si-SchedulingInfo-v1700` holds a list of `SchedulingInfo2-r17` entries. Each gives the periodicity and window position of one SI message, and a `sib-MappingInfo-r17` list of `SIB-TypeInfo-v1700` entries, whose `type1-r17` values include `sibType20`. This is how the UE finds the SI message that carries SIB20.
+In SIB1, the field `si-SchedulingInfo-v1700` holds a list of `SchedulingInfo2-r17` entries. Each gives the periodicity and window position of one SI message, and a `sib-MappingInfo-r17` list of `SIB-TypeInfo-v1700` entries, whose `type1-r17` values include `sibType20`. This is how the UE finds the SI message that carries SIB20 (TS 38.331 V19.4.0 clause 6.3.2).
 
 ## Step 3: SIB20
 
@@ -213,7 +213,7 @@ TS 38.331 clause 5.9.1.1 states that the configuration the UE needs to receive t
 
 ### SIB21: service continuity
 
-SIB21 contains the mapping between the current and neighbouring carrier frequencies and the MBS Frequency Selection Area Identities (FSAI). Its fields are `mbs-FSAI-IntraFreq-r17` and `mbs-FSAI-InterFreqList-r17`. How the UE uses it is under Mobility below.
+SIB21 contains the mapping between the current and neighbouring carrier frequencies and the MBS Frequency Selection Area Identities (FSAI). Its fields are `mbs-FSAI-IntraFreq-r17` and `mbs-FSAI-InterFreqList-r17`. How the UE uses it is under Mobility below (TS 38.331 V19.4.0 clause 6.3.1).
 
 ### SIB27: intended service areas in NTN
 
@@ -221,7 +221,7 @@ Added in Release 19, SIB27 contains the information of the intended service area
 
 ## Step 4: Receiving the MCCH
 
-The MCCH is transmitted periodically, with a configurable repetition period, within a configured transmission window. Its transmissions are indicated by a PDCCH addressed to the MCCH-RNTI. If `searchSpaceMCCH` is zero, the PDCCH monitoring occasions for the MCCH are those of SIB1.
+The MCCH is transmitted periodically, with a configurable repetition period, within a configured transmission window. Its transmissions are indicated by a PDCCH addressed to the MCCH-RNTI. If `searchSpaceMCCH` is zero, the PDCCH monitoring occasions for the MCCH are those of SIB1 (TS 38.331 V19.4.0 clause 5.9.1.2).
 
 | Layer | What applies | Clause |
 | --- | --- | --- |
@@ -230,7 +230,7 @@ The MCCH is transmitted periodically, with a configurable repetition period, wit
 | Physical layer | The PDCCH uses DCI format 4_0 with CRC scrambled by the MCCH-RNTI, in a Type0 or Type0B PDCCH common search space set (`searchSpaceMCCH`) | TS 38.212 cl. 7.3.1.5.1; TS 38.213 cl. 10.1 |
 | Physical layer | The time-domain allocation, MCS table, overhead and rate matching of the PDSCH come from `pdsch-ConfigMCCH` | TS 38.214 cl. 5.1 |
 
-MCCH information changes only at the boundary of a modification period. The network notifies the change with a 2-bit bitmap: its most significant bit indicates the start of new MBS services, its least significant bit other modifications. A UE acquires the MCCH when it becomes interested in MBS broadcast, on entering a cell that provides SIB20, and on these notifications. Each acquisition overwrites the stored MCCH information: delta configuration does not apply.
+MCCH information changes only at the boundary of a modification period. The network notifies the change with a 2-bit bitmap: its most significant bit indicates the start of new MBS services, its least significant bit other modifications. A UE acquires the MCCH when it becomes interested in MBS broadcast, on entering a cell that provides SIB20, and on these notifications. Each acquisition overwrites the stored MCCH information: delta configuration does not apply (TS 38.331 V19.4.0 clause 5.9.1.3, 5.9.2.2).
 
 ## Steps 5 and 6: MBSBroadcastConfiguration and the session list
 
@@ -238,7 +238,7 @@ The MBSBroadcastConfiguration message contains the control information applicabl
 
 `MBS-SessionInfoList` gives the ongoing broadcast sessions and, for each, its G-RNTI and scheduling information. Each `MBS-SessionInfo-r17` holds `mbs-SessionId-r17` (a TMGI), `g-RNTI-r17`, `mrb-ListBroadcast-r17` and optional MTCH scheduling, neighbour cell, PDSCH index and SSB mapping fields. Each `MRB-InfoBroadcast-r17` holds a PDCP and an RLC configuration (TS 38.331 clause 6.3.6).
 
-The MCCH may also list neighbour cells that provide the same broadcast services.
+The MCCH may also list neighbour cells that provide the same broadcast services (TS 38.331 V19.4.0 clause 5.9.1.1, 6.2.2).
 
 Added in Release 19, `mbs-SessionInfoList-v1900` extends MBSBroadcastConfiguration with, per session and in the same order as `mbs-SessionInfoList-r17`, an `mbs-SessionAreaList-r19`: the list of intended service areas associated with the broadcast session in an NTN cell. If it is absent, the session can be received within the MBS Service Area (TS 38.331 clauses 6.2.2 and 6.3.6).
 

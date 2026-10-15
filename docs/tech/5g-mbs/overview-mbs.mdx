@@ -22,10 +22,10 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 :::tip[At a glance]
 
-- **Two parts:** MBS User Services, a service layer made of the MBSF and the MBSTF; and MBS in the 5G System and NG-RAN, with the MB-SMF and MB-UPF in the core and multicast and broadcast radio bearers in NR.
-- **Two communication services:** broadcast, for all UEs in a geographical area, and multicast, for a dedicated set of UEs.
-- **Delivery:** between the 5G Core and NG-RAN, 5GC Shared or 5GC Individual MBS traffic delivery; over the radio, point-to-multipoint (PTM) or point-to-point (PTP).
-- **Optional service layer:** the MBSF and MBSTF are optional in the 5G System. Without them, MBS transports the data without modifying it.
+- **Two parts:** MBS User Services, a service layer made of the MBSF and the MBSTF; and MBS in the 5G System and NG-RAN, with the MB-SMF and MB-UPF in the core and multicast and broadcast radio bearers in NR (TS 26.502 V19.5.0 clause 4.2.2; TS 23.247 V19.3.0 clause 5.3.2.2, 5.3.2.4; TS 38.300 V19.4.0 clause 3.2).
+- **Two communication services:** broadcast, for all UEs in a geographical area, and multicast, for a dedicated set of UEs (TS 23.247 V19.3.0 clause 3.1; TS 38.300 V19.4.0 clause 16.10.1).
+- **Delivery:** between the 5G Core and NG-RAN, 5GC Shared or 5GC Individual MBS traffic delivery; over the radio, point-to-multipoint (PTM) or point-to-point (PTP) (TS 23.247 V19.3.0 clause 4.1).
+- **Optional service layer:** the MBSF and MBSTF are optional in the 5G System. Without them, MBS transports the data without modifying it (TS 23.247 V19.3.0 clause 5.1 note 1, annex A; TS 23.247 V19.3.0 clause 3.1).
 
 :::
 
@@ -33,16 +33,16 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 ## MBS User Services
 
-MBS User Services let high-level applications use the low-level features of the MBS System. An MBS User Service is provided by two functions working together:
+MBS User Services let high-level applications use the low-level features of the MBS System (TS 26.502 V19.5.0 clause 4.2.2). An MBS User Service is provided by two functions working together:
 
-- **MBSF (Multicast/Broadcast Service Function):** the control plane function. It receives provisioning from the MBS Application Provider and controls the MBSTF.
-- **MBSTF (Multicast/Broadcast Service Transport Function):** the user plane function. It ingests content from the MBS Application Provider and sends MBS data packets towards the 5G Core.
+- **MBSF (Multicast/Broadcast Service Function):** the control plane function. It receives provisioning from the MBS Application Provider and controls the MBSTF (TS 26.502 V19.5.0 clause 4.3.2).
+MBSTF: the user plane function. It ingests content from the MBS Application Provider at Nmb8 and sends MBS data packets to the MB-UPF at Nmb9 (TS 26.502 V19.5.0 clause 4.3.1, 4.3.3.1).
 
 The **MBS Application Provider** plays the role of the Application Function and Application Server (AF/AS). On the device, the **MBS Client** is a function of the User Equipment (UE). An **MBS-Aware Application** uses the MBS Client through its APIs, which let it activate or deactivate reception of MBS User Services. TS 26.502 does not define the MBS-Aware Application itself.
 
 <SpecFigure src="/img/tech/5g-mbs/generated/ts26502-fig4.2.2-1.svg" width={760} height={643} spec="TS 26.502 V19.5.0" figure="4.2.2-1" title="MBS User Services network architecture" alt="The MBSF, holding User Services provisioning and User Service Announcement compilation, with Nmb1 to MB-SMF, Nmb12 to PCF, Nmb10 and MBS-1 to the MBS Application Provider (AF/AS), and Nmb5 through the NEF and N33. Below it the MBS AF (User Service Announcement serving, MBS-5 to the MBSF Client, MBS-3 to the MBSF), the MBSSF (User Plane client authentication, MBS-10 to the MBSF Client) and the MBS AS (Object repair, MBS-4-UC to the MBSTF Client, MBS-12 to the MBSTF), and the MBSTF (User Services Distribution Methods) with Nmb9 to MB-UPF, MBS-4-MC to the MBSTF Client, Nmb8 to the MBS Application Provider, Nmb2 to the MBSF, MBS-11 to the MBS AF and MBS-9 between the MBSF and the MBS AS." />
 
-The service layer delivers data with two **distribution methods**, the Object Distribution Method and the Packet Distribution Method. Either can use a multicast or a broadcast MBS Session. They provide security and key distribution, reliability control by means of Forward Erasure Correction (FEC), and the associated delivery procedures.
+The service layer delivers data with two **distribution methods**, the Object Distribution Method and the Packet Distribution Method. Either can use a multicast or a broadcast MBS Session. They provide security and key distribution, reliability control by means of Forward Erasure Correction (FEC), and the associated delivery procedures (TS 26.502 V19.5.0 clause 4.2.3, 3.1).
 
 An **MBS User Service Announcement** gives the MBS Client the service access information it needs to discover an MBS User Service and activate its reception. TS 26.517 defines the protocols and formats used by MBS User Services. Reporting by the MBS Client to the MBSF is for further study.
 
@@ -50,17 +50,17 @@ An **MBS User Service Announcement** gives the MBS Client the service access inf
 
 MBS is a point-to-multipoint service: data is transmitted from a single source to multiple recipients, either to all users in a broadcast service area or to the users in a multicast group. TS 23.247 states what its architecture provides:
 
-- efficient usage of radio access and core network resources, with an emphasis on radio interface efficiency;
-- efficient transport for a variety of multicast and broadcast services.
+- efficient usage of radio access and core network resources, with an emphasis on radio interface efficiency; (TS 23.247 V19.3.0 clause 4.1)
+- efficient transport for a variety of multicast and broadcast services (TS 23.247 V19.3.0 clause 4.1).
 
 The architecture follows the 5G System principles of TS 23.501. It distributes MBS data from the 5G System ingress to the NG-RAN nodes and then to the UE. TS 38.300 states that the NR system enables resource efficient delivery of multicast and broadcast services.
 
-Two communication services are defined:
+Two communication services are defined: (TS 23.247 V19.3.0 clause 3.1; TS 38.300 V19.4.0 clause 16.10.1)
 
-- **Broadcast communication service:** the same content is provided at the same time to all UEs in a geographical area. The content provider and the network may not be aware whether the UEs are actually receiving it. A UE can receive it in RRC_IDLE, RRC_INACTIVE and RRC_CONNECTED.
-- **Multicast communication service:** the same content is provided at the same time to a dedicated set of UEs. The content provider and the network can be aware whether the UEs are actually receiving it. A UE can receive it in RRC_CONNECTED, with PTP and/or PTM delivery, and in RRC_INACTIVE, with PTM delivery.
+- **Broadcast communication service:** the same content is provided at the same time to all UEs in a geographical area. The content provider and the network may not be aware whether the UEs are actually receiving it. A UE can receive it in RRC_IDLE, RRC_INACTIVE and RRC_CONNECTED (TS 23.247 V19.3.0 clause 3.1 (definition and note 1); TS 38.300 V19.4.0 clause 16.10.1).
+- **Multicast communication service:** the same content is provided at the same time to a dedicated set of UEs. The content provider and the network can be aware whether the UEs are actually receiving it. A UE can receive it in RRC_CONNECTED, with PTP and/or PTM delivery, and in RRC_INACTIVE, with PTM delivery (TS 23.247 V19.3.0 clause 3.1 (definition and note 3); TS 38.300 V19.4.0 clause 16.10.1).
 
-Two functions are added to the 5G Core: the **MB-SMF**, which manages MBS sessions and allocates TMGIs, and the **MB-UPF**, which handles the multicast and broadcast data. Existing functions are extended, among them the AMF, SMF, UPF, PCF, NEF, NRF and UDM, and NG-RAN and the UE. NG-RAN is the decision point for switching between PTP and PTM. MBS for roaming is not supported in Release 19. Added in Release 19, a broadcast MBS session can also be transmitted over NR non-terrestrial networks (NTN).
+Two functions are added to the 5G Core: the **MB-SMF**, which manages MBS sessions and allocates TMGIs, and the **MB-UPF**, which handles the multicast and broadcast data. Existing functions are extended, among them the AMF, SMF, UPF, PCF, NEF, NRF and UDM, and NG-RAN and the UE. NG-RAN is the decision point for switching between PTP and PTM. MBS for roaming is not supported in Release 19. Added in Release 19, a broadcast MBS session can also be transmitted over NR non-terrestrial networks (NTN) (TS 23.247 V19.3.0 clause 5.3.2.1 to 5.3.2.15, 4.1; TS 23.247 V18.8.0 clause 4.1 (comparison)).
 
 <SpecFigure src="/img/tech/5g-mbs/generated/ts23247-fig5.1-2.svg" width={939} height={431} spec="TS 23.247 V19.3.0" figure="5.1-2" title="5G System architecture for Multicast and Broadcast Service in reference point representation" alt="UE, NG-RAN, AMF, SMF, UPF, UDM, MB-SMF, MB-UPF, PCF, NEF, MBSF, MBSTF and AF/AS connected by their reference points: Uu, N1, N2, N3, N4, N10, N11 and N19mb, N3mb from NG-RAN to the MB-UPF, N4mb, N11mb, N16mb, N7mb, N29mb, N30, N5, N33 and N6mb, and the MBS reference points Nmb1, Nmb2, Nmb5, Nmb8, Nmb9, Nmb10, Nmb12, Nmb13 and Nmb14." />
 
@@ -72,13 +72,13 @@ In the 5G System, the MBSF and the MBSTF are optional. TS 23.247 annex A defines
 
 | Option | Service layer | Control plane entry point for the AF | User plane entry point for the AF |
 | --- | --- | --- | --- |
-| **1** | No MBSF. Transport Only Mode: MBS transports the data without modifying it | NEF at N33 (an AF in the trusted domain may use the core interfaces directly) | MB-UPF at N6mb |
-| **2** | MBSF, reached through the NEF | NEF at N33 | MBSTF at Nmb8 (or MB2-U, xMB-U) |
-| **3** | MBSF, reached directly | MBSF at Nmb10 (or MB2-C, xMB-C) | MBSTF at Nmb8 (or MB2-U, xMB-U) |
+| **1** | No MBSF (TS 23.247 V19.3.0 clause annex A (Configuration Option 1)). Transport Only Mode: MBS transports the data without modifying it | NEF at N33 (an AF in the trusted domain may use the core interfaces directly) | MB-UPF at N6mb |
+| **2** | MBSF, reached through the NEF | NEF at N33 | MBSTF at Nmb8 (or MB2-U, xMB-U) (TS 23.247 V19.3.0 clause annex A (Configuration Option 2)) |
+| **3** | MBSF, reached directly | MBSF at Nmb10 (or MB2-C, xMB-C) | MBSTF at Nmb8 (or MB2-U, xMB-U) (TS 23.247 V19.3.0 clause annex A (Configuration Option 3)) |
 
 For Service Mode, in which the service layer may modify the data, the MBSF is used: option 2 or option 3. MBS User Services support options 2 and 3, and TS 26.502 does not address deployments without an MBSTF.
 
-When the service layer is used, the MBSF invokes MBS Session operations on the MB-SMF at reference point Nmb1, and the MBSTF sends MBS data packets to the MB-UPF at Nmb9. In every option, the MB-UPF receives only one copy of the MBS data packets, from the AF or from the MBSTF.
+When the service layer is used, the MBSF invokes MBS Session operations on the MB-SMF at reference point Nmb1, and the MBSTF sends MBS data packets to the MB-UPF at Nmb9. In every option, the MB-UPF receives only one copy of the MBS data packets, from the AF or from the MBSTF (TS 26.502 V19.5.0 clause 4.3.2, 4.3.3.1; TS 23.247 V19.3.0 clause 6.7, 5.3.1).
 
 <details>
 <summary>Sources for this page</summary>

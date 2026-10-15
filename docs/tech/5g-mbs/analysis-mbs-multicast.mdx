@@ -21,17 +21,17 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 :::tip[At a glance]
 
-- **How MBS Multicast differs:** the content goes to a dedicated set of UEs, each of which joins the session. The UE receives it in RRC_CONNECTED by PTM and/or PTP, with HARQ feedback possible on both, or in RRC_INACTIVE by PTM only.
-- **Network set-up:** the same common procedures as for broadcast, with the MBS service type multicast. The session can be created active or inactive; the session establishment triggered by UE joins reserves the resources towards NG-RAN.
-- **Join:** a PDU Session Modification Request on the associated PDU Session carries the MBS Session IDs and the join request. The SMF authorises it and subscribes to the session context at the MB-SMF.
-- **Delivery:** an NG-RAN node that supports MBS gets 5GC Shared delivery, set up with NGAP Distribution Setup; otherwise the UE's PDU Session carries the data (5GC Individual delivery).
-- **Activation:** an inactive session is activated by downlink data or by the AF; UEs in RRC_IDLE and RRC_INACTIVE are reached by group paging with the MBS session ID.
+- **How MBS Multicast differs:** the content goes to a dedicated set of UEs, each of which joins the session. The UE receives it in RRC_CONNECTED by PTM and/or PTP, with HARQ feedback possible on both, or in RRC_INACTIVE by PTM only (TS 38.300 V19.4.0 clause 16.10.1, 16.10.5.7; TS 23.247 V19.3.0 clause 3.1).
+- **Network set-up:** the same common procedures as for broadcast, with the MBS service type multicast. The session can be created active or inactive; the session establishment triggered by UE joins reserves the resources towards NG-RAN (TS 23.247 V19.3.0 clause 7.1.1.2 steps 8 and 22, 7.1.1.2 (text on common procedures)).
+- **Join:** a PDU Session Modification Request on the associated PDU Session carries the MBS Session IDs and the join request. The SMF authorises it and subscribes to the session context at the MB-SMF (TS 23.247 V19.3.0 clause 7.2.1.3 steps 1 to 4).
+- **Delivery:** an NG-RAN node that supports MBS gets 5GC Shared delivery, set up with NGAP Distribution Setup; otherwise the UE's PDU Session carries the data (5GC Individual delivery) (TS 23.247 V19.3.0 clause 7.2.1.3 step 6, 7.2.1.4; TS 38.413 V19.4.0 clause 8.18.1; TS 38.401 V19.3.0 clause 8.15.1.2 step 4/5).
+- **Activation:** an inactive session is activated by downlink data or by the AF; UEs in RRC_IDLE and RRC_INACTIVE are reached by group paging with the MBS session ID (TS 23.247 V19.3.0 clause 7.2.5.1, 6.17; TS 38.300 V19.4.0 clause 16.10.5.2).
 
-- **RRC states:** multicast data is received in RRC_CONNECTED or, from Release 18, in RRC_INACTIVE (PTM only), never in RRC_IDLE; a UE in RRC_IDLE or RRC_INACTIVE that joined is reached by group paging.
-- **Mobility:** at Xn or N2 handover, the MBS support indication of the target node tells the SMF whether to use 5GC Shared or 5GC Individual delivery; a target that supports MBS sets up shared delivery if it has none. A UE in RRC_INACTIVE keeps receiving in a new cell of the RNA if it gets the PTM configuration there, and otherwise resumes.
+- **RRC states:** multicast data is received in RRC_CONNECTED or, from Release 18, in RRC_INACTIVE (PTM only), never in RRC_IDLE; a UE in RRC_IDLE or RRC_INACTIVE that joined is reached by group paging (TS 38.300 V19.4.0 clause 16.10.5.2; TS 38.331 V19.4.0 clause 6.3.1).
+- **Mobility:** at Xn or N2 handover, the MBS support indication of the target node tells the SMF whether to use 5GC Shared or 5GC Individual delivery; a target that supports MBS sets up shared delivery if it has none. A UE in RRC_INACTIVE keeps receiving in a new cell of the RNA if it gets the PTM configuration there, and otherwise resumes (TS 23.247 V19.3.0 clause 7.2.3.2, 7.2.3.3, 7.2.3.7; TS 38.300 V19.4.0 clause 16.10.5.3.2, 16.10.5.3.5).
 :::
 
-In MBS Multicast, the same service and the same content are provided simultaneously to a dedicated set of UEs; not all UEs in the MBS service area are authorised to receive them. To receive the service, the UE performs the MBS Session Join procedure, and the first accepted join triggers the establishment of the multicast session towards NG-RAN and the UE. A UE can receive multicast in RRC_CONNECTED, by PTP and/or PTM, and in RRC_INACTIVE, by PTM only; HARQ feedback and retransmission can be applied to PTP and PTM in RRC_CONNECTED. The gNB decides in which of the two states the UE receives.
+In MBS Multicast, the same service and the same content are provided simultaneously to a dedicated set of UEs; not all UEs in the MBS service area are authorised to receive them. To receive the service, the UE performs the MBS Session Join procedure, and the first accepted join triggers the establishment of the multicast session towards NG-RAN and the UE. A UE can receive multicast in RRC_CONNECTED, by PTP and/or PTM, and in RRC_INACTIVE, by PTM only; HARQ feedback and retransmission can be applied to PTP and PTM in RRC_CONNECTED. The gNB decides in which of the two states the UE receives (TS 23.247 V19.3.0 clause 3.1, 7.2.1.1, 6.17; TS 38.300 V19.4.0 clause 16.10.1, 16.10.5.1).
 
 <JumpMenu items={[["Steps", "the-steps"], ["Implementation blueprint", "implementation-blueprint"], ["Network set-up", "network-set-up"], ["Join and session establishment", "join-and-session-establishment"], ["Radio configuration", "radio-configuration-in-rrc_connected"], ["RRC states", "rrc-states"], ["Reception in RRC_INACTIVE", "reception-in-rrc_inactive"], ["Activation and deactivation", "activation-and-deactivation"], ["User plane", "user-plane"], ["Leave and release", "leave-and-release"], ["Mobility", "mobility"]]} />
 
@@ -41,47 +41,47 @@ This page follows an MBS Multicast session from its provisioning to the receptio
 
 Network set-up (TS 23.247 clause 7.1):
 
-- N1. Provisioning by the AF or the MBS Application Provider
-- N2. TMGI allocation
-- N3. MBS Session creation at the MB-SMF
-- N4. MB-UPF configuration
-- N5. Service announcement
+- N1 (TS 23.247 V19.3.0 clause 7.1.1.1, 7.1.1.2). Provisioning by the AF or the MBS Application Provider
+- N2 (TS 23.247 V19.3.0 clause 7.1.1.2 steps 1 to 6). TMGI allocation
+- N3 (TS 23.247 V19.3.0 clause 7.1.1.2 steps 8 to 13, 7.1.2). MBS Session creation at the MB-SMF
+- N4 (TS 23.247 V19.3.0 clause 7.1.1.2 steps 14 and 15; TS 29.244 V19.6.0 clause 5.34.2.2). MB-UPF configuration
+- N5 (TS 23.247 V19.3.0 clause 7.1.1.2 step 7, 7.2.1.3). Service announcement
 
 Join and session establishment (TS 23.247 clause 7.2.1):
 
-- J1. The associated PDU Session
-- J2. Join request
-- J3. MB-SMF discovery and session context
-- J4. Authorisation
-- J5. N2 SM information towards NG-RAN
-- J6. Shared delivery towards the NG-RAN node
-- J7. Inside the gNB: E1AP and F1AP
-- J8. Response, and 5GC Individual delivery
+- J1 (TS 23.247 V19.3.0 clause 7.2.1.2). The associated PDU Session
+- J2 (TS 23.247 V19.3.0 clause 7.2.1.3 step 1). Join request
+- J3 (TS 23.247 V19.3.0 clause 7.1.2, 7.2.1.3 steps 2 and 3). MB-SMF discovery and session context
+- J4 (TS 23.247 V19.3.0 clause 7.2.1.3 step 4). Authorisation
+- J5 (TS 23.247 V19.3.0 clause 7.2.1.3 steps 5 and 6; TS 38.413 V19.4.0 clause 9.3.1.212). N2 SM information towards NG-RAN
+- J6 (TS 23.247 V19.3.0 clause 7.2.1.3 step 7, 7.2.1.4; TS 38.413 V19.4.0 clause 8.18.1). Shared delivery towards the NG-RAN node
+- J7 (TS 38.401 V19.3.0 clause 8.15.1.2; TS 37.483 V19.4.0 clause 8.6.2.1, 8.6.2.2; TS 38.473 V19.4.0 clause 8.14.6, 8.14.10). Inside the gNB: E1AP and F1AP
+- J8 (TS 23.247 V19.3.0 clause 7.2.1.3 steps 7a to 11e). Response, and 5GC Individual delivery
 
 Radio configuration in RRC_CONNECTED:
 
-- 1\. RRCReconfiguration with multicast MRBs
-- 2\. PTM and PTP legs
-- 3\. G-RNTI, HARQ feedback, DRX and common frequency resource
-- 4\. Receiving PTM and PTP
+- 1\. RRCReconfiguration with multicast MRBs (TS 38.300 V19.4.0 clause 16.10.5.2; TS 38.331 V19.4.0 clause 5.3.5.6.7, 6.3.2)
+- 2\. PTM and PTP legs (TS 38.300 V19.4.0 clause 16.10.3; TS 38.331 V19.4.0 clause 6.3.2)
+- 3\. G-RNTI, HARQ feedback, DRX and common frequency resource (TS 38.331 V19.4.0 clause 6.3.2; TS 38.300 V19.4.0 clause 16.10.5.6, 16.10.5.7; TS 38.213 V19.5.0 clause 18)
+- 4\. Receiving PTM and PTP (TS 38.300 V19.4.0 clause 16.10.5.4; TS 38.212 V19.4.0 clause 7.3.1.5.2, 7.3.1.5.3; TS 38.321 V19.4.0 clause 5.3.1)
 
 Life cycle:
 
-- A1. Activation, with group paging
-- A2. Deactivation
-- A3. Session update
-- U. User plane, 5GC Shared and 5GC Individual delivery
-- L1. Leave requested by the UE
-- L2. Leave requested by the network, and session release
-- L3. Release of shared delivery
+- A1 (TS 23.247 V19.3.0 clause 7.2.5.2; TS 38.413 V19.4.0 clause 8.5.2, 8.18.3; TS 38.300 V19.4.0 clause 16.10.5.2). Activation, with group paging
+- A2 (TS 23.247 V19.3.0 clause 7.2.5.3; TS 38.413 V19.4.0 clause 8.18.4). Deactivation
+- A3 (TS 23.247 V19.3.0 clause 7.1.1.6, 7.2.6; TS 38.413 V19.4.0 clause 8.18.5). Session update
+- U (TS 23.247 V19.3.0 clause 7.2.1.3 steps 13 to 19). User plane, 5GC Shared and 5GC Individual delivery
+- L1 (TS 23.247 V19.3.0 clause 7.2.2.2). Leave requested by the UE
+- L2 (TS 23.247 V19.3.0 clause 7.1.1.4, 7.2.2.3). Leave requested by the network, and session release
+- L3 (TS 23.247 V19.3.0 clause 7.2.2.4; TS 38.413 V19.4.0 clause 8.18.2). Release of shared delivery
 
 Mobility (TS 23.247 clause 7.2.3):
 
-- H. Handover between nodes that support MBS, Xn or N2
-- T. Handover to a node that does not support MBS
-- F. Handover from a node that does not support MBS
-- I. Handover of an inactive session
-- R. UEs in RRC_INACTIVE
+- H (TS 23.247 V19.3.0 clause 7.2.3.2, 7.2.3.3; TS 38.300 V19.4.0 clause 16.10.5.3.2). Handover between nodes that support MBS, Xn or N2
+- T (TS 23.247 V19.3.0 clause 6.3.1, 7.2.3.2, 7.2.3.3; TS 38.300 V19.4.0 clause 16.10.5.3.3). Handover to a node that does not support MBS
+- F (TS 23.247 V19.3.0 clause 7.2.3.4; TS 38.300 V19.4.0 clause 16.10.5.3.3). Handover from a node that does not support MBS
+- I (TS 23.247 V19.3.0 clause 7.2.3.6). Handover of an inactive session
+- R (TS 23.247 V19.3.0 clause 7.2.3.7, 7.2.3.8.1; TS 38.300 V19.4.0 clause 16.10.5.3.5). UEs in RRC_INACTIVE
 
 ## Implementation blueprint
 
@@ -188,13 +188,13 @@ If no shared tunnel exists yet for the session towards the NG-RAN node, the node
 TS 38.401 gives an example of the interaction of NGAP, E1AP, F1AP and RRC when a UE joins an active multicast session as the first UE in its serving gNB (clause 8.15.1.2):
 
 1. The gNB-CU-CP establishes the multicast bearer context in the gNB-CU-UP; for unicast NG-U transport it retrieves the GTP DL TEID. In E1AP this is MC Bearer Context Setup (TS 37.483 clause 8.6.2.1).
-2. The gNB-CU-CP triggers the NGAP Distribution Setup procedure; the 5G Core provides the multicast address information, for multicast NG-U transport, and the multicast session QoS parameters.
+2. The gNB-CU-CP triggers the NGAP Distribution Setup procedure; the 5G Core provides the multicast address information, for multicast NG-U transport, and the multicast session QoS parameters (TS 38.401 V19.3.0 clause 8.15.1.2 step 4/5).
 3. The gNB-CU-CP sets up the MRB resources with E1AP MC Bearer Context Modification (TS 37.483 clause 8.6.2.2).
 4. The gNB-CU-CP establishes the Multicast Context in the gNB-DU, providing the MRB configuration. In F1AP this is Multicast Context Setup (TS 38.473 clause 8.14.6).
-5. The gNB-CU-CP retrieves the MRB configuration for the joined UE from the gNB-DU through the F1 UE Context Management procedures.
+5. The gNB-CU-CP retrieves the MRB configuration for the joined UE from the gNB-DU through the F1 UE Context Management procedures (TS 38.401 V19.3.0 clause 8.15.1.2 step 8/9).
 6. The gNB-DU triggers the establishment of F1-U resources, per gNB-DU, per cell or per MBS Area Session ID; in F1AP this is Multicast Distribution Setup (TS 38.473 clause 8.14.10). The gNB-CU-UP side of F1-U is established with E1AP MC Bearer Context Modification.
-7. With NG-U multicast transport, the gNB-CU-UP joins the NG-U multicast group.
-8. The gNB terminates the NGAP procedure, and the gNB-CU-CP configures with RRC each UE that joined.
+7. With NG-U multicast transport, the gNB-CU-UP joins the NG-U multicast group (TS 38.401 V19.3.0 clause 8.15.1.2 step 14).
+8. The gNB terminates the NGAP procedure, and the gNB-CU-CP configures with RRC each UE that joined (TS 38.401 V19.3.0 clause 8.15.1.2 steps 15 and 16).
 
 ### J8. Response, and 5GC Individual delivery
 
@@ -241,16 +241,16 @@ A UE that joined an MBS multicast session receives its data in RRC_CONNECTED or,
 
 In MBS Multicast in RRC_INACTIVE, a UE that joined a multicast session keeps receiving it after the gNB releases it from RRC_CONNECTED; this page gives only what differs from MBS Multicast. To provide a multicast service to more UEs in a cell, NG-RAN may move UEs that can receive multicast in RRC_INACTIVE out of RRC_CONNECTED. PTP transmission, SPS and HARQ feedback are not supported for multicast reception in RRC_INACTIVE, so the UE receives by PTM only. In the 5G Core it uses the multicast procedures: NG-RAN may decide to enable reception in RRC_INACTIVE during the join or the activation procedure, or later (TS 23.247 clauses 7.2.1.3 and 7.2.5.2).
 
-- 0\. Join the multicast session and be configured for RRC_INACTIVE (in RRC_CONNECTED): 0a. join, 0b. the gNB decision, 0c. RRCRelease
-- 1\. Obtain the MIB
-- 2\. Obtain SIB1, which schedules SIB24
-- 3\. SIB24 configures the multicast MCCH
-- 4\. Receive the multicast MCCH, scheduled with Multicast MCCH-RNTI
-- 5\. The multicast MCCH carries MBSMulticastConfiguration
-- 6\. The session list gives each session's G-RNTI and MTCH configuration
-- 7\. Receive the MTCH, scheduled with the G-RNTI
-- A. Activation and data notification by group paging
-- R. Resuming the RRC connection
+- 0\. Join the multicast session and be configured for RRC_INACTIVE (in RRC_CONNECTED): 0a. join, 0b. the gNB decision, 0c (TS 23.247 V19.3.0 clause 6.17, 7.2.1.3; TS 38.300 V19.4.0 clause 16.10.5.2; TS 38.331 V19.4.0 clause 5.3.8.3, 6.2.2). RRCRelease
+- 1\. Obtain the MIB (TS 38.331 V19.4.0 clause 5.2.2.4.1)
+- 2\. Obtain SIB1, which schedules SIB24 (TS 38.331 V19.4.0 clause 6.3.2)
+- 3\. SIB24 configures the multicast MCCH (TS 38.331 V19.4.0 clause 5.10.1.1, 6.3.1)
+- 4\. Receive the multicast MCCH, scheduled with Multicast MCCH-RNTI (TS 38.331 V19.4.0 clause 5.10.1.2; TS 38.321 V19.4.0 clause 7.1)
+- 5\. The multicast MCCH carries MBSMulticastConfiguration (TS 38.331 V19.4.0 clause 5.10.1.1, 6.2.2)
+- 6\. The session list gives each session's G-RNTI and MTCH configuration (TS 38.331 V19.4.0 clause 6.3.6)
+- 7\. Receive the MTCH, scheduled with the G-RNTI (TS 38.331 V19.4.0 clause 5.10.3.2; TS 38.321 V19.4.0 clause 5.3.1; TS 38.212 V19.4.0 clause 7.3.1.5.2)
+- A (TS 23.247 V19.3.0 clause 6.17, 7.2.5.2; TS 38.300 V19.4.0 clause 16.10.5.2). Activation and data notification by group paging
+- R (TS 38.300 V19.4.0 clause 16.10.5.2, 16.10.5.3.5; TS 23.247 V19.3.0 clause 7.2.3.7). Resuming the RRC connection
 
 <details>
 <summary>Reception in RRC_INACTIVE, step by step (Step, Function(s), Interface and message or service, Clause)</summary>
@@ -283,11 +283,11 @@ In MBS Multicast in RRC_INACTIVE, a UE that joined a multicast session keeps rec
 
 ### Steps 1 to 3: SIB24
 
-SIB1 schedules SIB24 in the same way as SIB20, through a `SIB-TypeInfo-v1700` entry whose value is `sibType24-v1800`. SIB24 contains the information required to acquire the multicast MCCH/MTCH configuration for MBS multicast reception in RRC_INACTIVE. Its fields are `multicastMCCH-Config-r18`, of the type `MCCH-Config-r17` used for broadcast, and `cfr-ConfigMCCH-MTCH-r18`, of the type `CFR-ConfigMCCH-MTCH-r17`.
+SIB1 schedules SIB24 in the same way as SIB20, through a `SIB-TypeInfo-v1700` entry whose value is `sibType24-v1800`. SIB24 contains the information required to acquire the multicast MCCH/MTCH configuration for MBS multicast reception in RRC_INACTIVE. Its fields are `multicastMCCH-Config-r18`, of the type `MCCH-Config-r17` used for broadcast, and `cfr-ConfigMCCH-MTCH-r18`, of the type `CFR-ConfigMCCH-MTCH-r17` (TS 38.331 V19.4.0 clause 6.2.2, 6.3.1, 6.3.2).
 
 ### Step 4: Receiving the multicast MCCH
 
-The multicast MCCH is transmitted periodically within a configured transmission window. Its transmissions are indicated by a PDCCH addressed to the Multicast MCCH-RNTI. If `searchSpaceMulticastMCCH` is zero, the monitoring occasions are those of SIB1.
+The multicast MCCH is transmitted periodically within a configured transmission window. Its transmissions are indicated by a PDCCH addressed to the Multicast MCCH-RNTI. If `searchSpaceMulticastMCCH` is zero, the monitoring occasions are those of SIB1 (TS 38.331 V19.4.0 clause 5.10.1.2).
 
 | Layer | What applies | Clause |
 | --- | --- | --- |
@@ -296,15 +296,15 @@ The multicast MCCH is transmitted periodically within a configured transmission 
 | Physical layer | DCI format 4_0 with CRC scrambled by the Multicast MCCH-RNTI (`searchSpaceMulticastMCCH`) | TS 38.212 cl. 7.3.1.5.1; TS 38.213 cl. 10.1 |
 | Physical layer | PDSCH parameters from `pdsch-ConfigMCCH` for MBS multicast | TS 38.214 cl. 5.1 |
 
-Multicast MCCH information changes only at the boundary of a modification period. In the 2-bit change notification, the most significant bit is reserved; the least significant bit indicates a modification, for example of an ongoing session's configuration or of G-RNTI monitoring. The UE acquires the multicast MCCH on a change notification, on selecting or reselecting a cell that provides SIB24, after group paging, or when RRCRelease lacks the PTM configuration of a session it still monitors.
+The UE acquires the multicast MCCH on a change notification, on selecting a new cell (different from the one configured in RRC_CONNECTED) or reselecting a cell that provides SIB24, after group paging, or when RRCRelease lacks the PTM configuration of a session it still monitors (TS 38.331 V19.4.0 clause 5.10.1.3, 5.10.2.2, 5.10.2.3).
 
 ### Steps 5 and 6: MBSMulticastConfiguration and the session list
 
 The `MulticastMCCH-Message` class is the set of RRC messages sent on the multicast MCCH (TS 38.331 clause 6.2.1). Its message, MBSMulticastConfiguration, contains the control information for multicast services transmitted via multicast MRBs to UEs in RRC_INACTIVE (clause 6.2.2). Its fields are `mbs-SessionInfoListMulticast-r18`, `mbs-NeighbourCellList-r18`, `drx-ConfigPTM-List-r18`, `pdsch-ConfigMTCH-r18`, `mtch-SSB-MappingWindowList-r18` and `thresholdMBS-List-r18`, the list of reception quality thresholds for RRC connection resume.
 
-`MBS-SessionInfoListMulticast` gives the multicast sessions and, for each, its G-RNTI and scheduling information (clause 6.3.6). Compared with the broadcast entry, `MBS-SessionInfoMulticast-r18` adds `thresholdIndex-r18`, `pdcp-SyncIndicator-r18` and `stopMonitoringRNTI-r18`. In `MRB-RLC-ConfigMulticast-r18`, the logical channel identity is a choice of `logicalChannelIdentitymulticast-r18` and `logicalChannelIdentityExt-r18`.
+`MBS-SessionInfoListMulticast` gives the multicast sessions and, for each, its G-RNTI and scheduling information (clause 6.3.6). Compared with the broadcast entry, `MBS-SessionInfoMulticast-r18` adds `thresholdIndex-r18`, `pdcp-SyncIndicator-r18` and `stopMonitoringRNTI-r18`. In `MRB-RLC-ConfigMulticast-r18`, the logical channel identity is a choice of `logicalChannelIdentitymulticast-r18` and `logicalChannelIdentityExt-r18` (TS 38.331 V19.4.0 clause 6.3.6).
 
-When there is temporarily no data for an active multicast session, or when it is deactivated, the network tells the UE to stop monitoring the G-RNTI through MBSMulticastConfiguration.
+When there is temporarily no data for an active multicast session, or when it is deactivated, the network tells the UE to stop monitoring the G-RNTI through MBSMulticastConfiguration (TS 38.331 V19.4.0 clause 5.10.1.1).
 
 ### Step 7: Receiving the MTCH
 
@@ -326,10 +326,10 @@ TS 38.300 also states for RRC_INACTIVE: PTP transmission, SPS and HARQ feedback 
 
 ### Moving between cells in RRC_INACTIVE
 
-- A UE in RRC_INACTIVE continues receiving without resuming the RRC connection if it can acquire the PTM configuration of the new cell from its multicast MCCH. Otherwise, during an active session, it resumes the connection.
+- A UE in RRC_INACTIVE continues receiving without resuming the RRC connection if it can acquire the PTM configuration of the new cell from its multicast MCCH. Otherwise, during an active session, it resumes the connection (TS 38.300 V19.4.0 clause 16.10.5.3.5).
 - The gNB may indicate that the cells of the RAN Notification Area (RNA) are synchronised in PDCP COUNT for a session. On reselecting such a cell, the UE does not initialise the PDCP state variables. In TS 38.323, the initial value of RX_DELIV of a multicast MRB is set by `initialRX-DELIV` if provided.
-- The UE resets MAC on cell selection or reselection. On a transition from RRC_CONNECTED to RRC_INACTIVE in the same cell, it can keep the multicast MRBs it used, with the same LCIDs.
-- The UE resumes the RRC connection when the latest measured RSRP or RSRQ of the serving cell falls below the threshold configured by the network, per session, in RRCRelease or on the multicast MCCH.
+- The UE resets MAC on cell selection or reselection. On a transition from RRC_CONNECTED to RRC_INACTIVE in the same cell, it can keep the multicast MRBs it used, with the same LCIDs (TS 38.331 V19.4.0 clause 5.10.3.1).
+- The UE resumes the RRC connection when the latest measured RSRP or RSRQ of the serving cell falls below the threshold configured by the network, per session, in RRCRelease or on the multicast MCCH (TS 38.300 V19.4.0 clause 16.10.5.3.5).
 
 ## Activation and deactivation
 
@@ -368,9 +368,9 @@ The MB-UPF receives the multicast PDUs either directly from the content provider
 
 | | 5GC Shared delivery | 5GC Individual delivery |
 | --- | --- | --- |
-| **From the MB-UPF** | In the N3mb tunnel of the session to the NG-RAN node; one tunnel per multicast session, MBS service area and NG-RAN node, shared by all UEs that joined through that node (step 14) | In the N19mb tunnel of the session to the UPF; one tunnel per multicast session and UPF, shared by all its associated PDU Sessions (step 17) |
-| **Then** | | The UPF forwards the data in the N3 tunnel of each associated PDU Session (step 18) |
-| **Over the radio** | The MBS Radio Bearer, with PTP or PTM (step 16) | The radio bearers of the associated QoS flows of the PDU Session (step 19) |
+| **From the MB-UPF** | In the N3mb tunnel of the session to the NG-RAN node; one tunnel per multicast session, MBS service area and NG-RAN node, shared by all UEs that joined through that node (step 14) | In the N19mb tunnel of the session to the UPF; one tunnel per multicast session and UPF, shared by all its associated PDU Sessions (step 17) (TS 23.247 V19.3.0 clause 7.2.1.3 steps 14 and 17) |
+| **Then** | | The UPF forwards the data in the N3 tunnel of each associated PDU Session (step 18) (TS 23.247 V19.3.0 clause 7.2.1.3 step 18) |
+| **Over the radio** | The MBS Radio Bearer, with PTP or PTM (step 16) | The radio bearers of the associated QoS flows of the PDU Session (step 19) (TS 23.247 V19.3.0 clause 7.2.1.3 steps 16 and 19) |
 
 The UPF allocates only one N19mb downlink tunnel per multicast session, with unicast transport over N19mb, or joins the multicast group, with multicast transport. The SMF may instruct the UPF to change the QFI of the downlink packets of a multicast QoS flow to the QFI of the associated unicast QoS flow (TS 29.244 clauses 5.34.3.1 and 5.34.3.2). In the UE, SDAP maps MBS QoS flows to MRBs without an SDAP header, and the PDCP entity of an MRB can use header compression (TS 37.324 clause 4.2.2; TS 38.323 clause 4.2.2).
 
@@ -392,8 +392,8 @@ The NG-RAN node may release shared delivery when the last UE leaves the context 
 
 1. The NG-RAN node sends an N2 MBS Session release request to the AMF, with the unicast DL tunnel information if unicast transport is used (TS 23.247 clause 7.2.2.4, step 2). In NGAP this is DISTRIBUTION RELEASE REQUEST (TS 38.413 clause 8.18.2).
 2. The AMF invokes Nmbsmf_MBSSession_ContextUpdate, with a leave indication if this is the last NG-RAN node it controls for the session (TS 23.247 clause 7.2.2.4, step 3).
-3. With unicast transport, if no other NG-RAN node uses the DL GTP tunnel, the MB-SMF releases the N3mb tunnel in the MB-UPF with N4mb Session Modification (step 4).
-4. The AMF answers the NG-RAN node, which deletes the GTP tunnel information or leaves the multicast distribution tree, and releases its local resources (step 7).
+3. With unicast transport, if no other NG-RAN node uses the DL GTP tunnel, the MB-SMF releases the N3mb tunnel in the MB-UPF with N4mb Session Modification (step 4) (TS 23.247 V19.3.0 clause 7.2.2.4 step 4).
+4. The AMF answers the NG-RAN node, which deletes the GTP tunnel information or leaves the multicast distribution tree, and releases its local resources (step 7) (TS 23.247 V19.3.0 clause 7.2.2.4 step 7).
 
 In the gNB, F1AP Multicast Distribution Release lets the gNB-DU release the F1-U tunnels, Multicast Context Release lets the gNB-CU release the multicast context in the gNB-DU (TS 38.473 clauses 8.14.11 and 8.14.7), and E1AP MC Bearer Context Release releases the resources in the gNB-CU-UP (TS 37.483 clause 8.6.2.4).
 
@@ -401,11 +401,11 @@ In the gNB, F1AP Multicast Distribution Release lets the gNB-DU release the F1-U
 
 A UE may move from one NG-RAN node to another after it has joined a multicast session. TS 23.247 supports multicast mobility between NG-RAN nodes that both support MBS, and between a node that supports MBS and one that does not, in either direction; in both cases minimisation of data loss should be supported (TS 23.247 clauses 6.3.1 and 7.2.3.1). During an active session, mobility between a node that supports MBS and one that does not requires the mobility procedure to provide the appropriate MBS traffic delivery method at the target node. The procedures add to the Xn and N2 handover procedures of TS 23.502 (clauses 7.2.3.2 and 7.2.3.3). In NG-RAN, mobility builds on the existing functions of TS 38.300 clause 9.2, and lets the UE continue receiving its multicast services via PTM or PTP in the new cell after handover (TS 38.300 clauses 16.10.5.3.1 and 16.10.5.3.2).
 
-- H. Handover between nodes that support MBS: Xn (X1 to X7) or N2 (N1 to N4)
-- T. Handover to a node that does not support MBS (T1 to T3)
-- F. Handover from a node that does not support MBS (F1 to F3)
-- I. Handover of an inactive session
-- R. UEs in RRC_INACTIVE: within the RNA, out of the RNA, out of the Registration Area, and resume in another node
+- H (TS 23.247 V19.3.0 clause 7.2.3.2, 7.2.3.3; TS 38.300 V19.4.0 clause 16.10.5.3.2). Handover between nodes that support MBS: Xn (X1 to X7) or N2 (N1 to N4)
+- T (TS 23.247 V19.3.0 clause 6.3.1, 7.2.3.2, 7.2.3.3; TS 38.300 V19.4.0 clause 16.10.5.3.3). Handover to a node that does not support MBS (T1 to T3)
+- F (TS 23.247 V19.3.0 clause 7.2.3.4; TS 38.300 V19.4.0 clause 16.10.5.3.3). Handover from a node that does not support MBS (F1 to F3)
+- I (TS 23.247 V19.3.0 clause 7.2.3.6). Handover of an inactive session
+- R (TS 23.247 V19.3.0 clause 7.2.3.8.1, 7.2.3.8.2, 7.2.3.8.3, 7.2.3.8.4, 7.2.3.7). UEs in RRC_INACTIVE: within the RNA, out of the RNA, out of the Registration Area, and resume in another node
 
 <details>
 <summary>Mobility, step by step (Step, Function(s), Interface and message or service, Clause)</summary>
@@ -443,10 +443,10 @@ A UE may move from one NG-RAN node to another after it has joined a multicast se
 
 During handover preparation, the source gNB tells the target gNB, in the UE context information, which multicast sessions the UE has joined. For a local multicast service with location dependent content, service area information per Area Session ID may be provided for each active session (TS 38.300 clause 16.10.5.3.2). In TS 23.247, the source NG-RAN has already been given the MBS Session Resource information, and the UE context holds the mapping between the multicast QoS flows and the unicast QoS flows of the associated PDU Session; that mapping is provided when the UE joins the session (TS 23.247 clauses 7.2.3.2 and 6.3.1).
 
-The source gNB may propose data forwarding for some MRBs to minimise data loss, and may exchange their PDCP sequence numbers with the target gNB:
+The source gNB may propose data forwarding for some MRBs to minimise data loss, and may exchange their PDCP sequence numbers with the target gNB: (TS 38.300 V19.4.0 clause 16.10.5.3.2)
 
-- Lossless handover is supported between cells that support MBS if the UE is configured with a PTP RLC AM entity in the target cell MRB, whether or not it had one in the source cell.
-- For lossless handover, the network has to ensure DL PDCP COUNT value synchronisation and continuity between the source and the target cell. Data forwarding and a PDCP status report from the UE can also be used.
+- Lossless handover is supported between cells that support MBS if the UE is configured with a PTP RLC AM entity in the target cell MRB, whether or not it had one in the source cell (TS 38.300 V19.4.0 clause 16.10.5.3.2).
+- For lossless handover, the network has to ensure DL PDCP COUNT value synchronisation and continuity between the source and the target cell. Data forwarding and a PDCP status report from the UE can also be used (TS 38.300 V19.4.0 clause 16.10.5.3.2).
 
 For each session with ongoing data and no MBS Session Resources at the target gNB, the target sets up the MBS user plane resources towards the 5G Core with the NGAP Distribution Setup procedure. With unicast transport, the target gives the MB-SMF its tunnel endpoint; with multicast transport, it receives the IP multicast address from the MB-SMF (TS 38.300 clause 16.10.5.3.2).
 
@@ -496,16 +496,16 @@ If the MBS session is in the Inactive state, the target NG-RAN is given the MBS 
 How a UE in RRC_INACTIVE keeps receiving when it changes cells (multicast MCCH of the new cell, PDCP COUNT synchronisation within the RNA, the resume threshold) is under Reception in RRC_INACTIVE above (TS 38.300 clause 16.10.5.3.5). In the 5G Core, TS 23.247 distinguishes three cases for a UE in CM-CONNECTED with RRC_INACTIVE that receives multicast data (clause 7.2.3.8.1):
 
 - **Within the RAN Notification Area (RNA):** the UE may keep receiving in RRC_INACTIVE, or resume the connection, as specified in TS 38.300 (clause 7.2.3.8.2).
-- **Out of the RNA, within the Registration Area (RA):** the UE resumes the connection as in clause 7.2.3.7 (clause 7.2.3.8.3).
-- **Out of the RA:** the UE performs the Mobility Registration Update procedure, which activates the associated PDU Sessions, so that shared or individual delivery can be established towards the new NG-RAN node (clause 7.2.3.8.4).
+- **Out of the RNA, within the Registration Area (RA):** the UE resumes the connection as in clause 7.2.3.7 (clause 7.2.3.8.3) (TS 23.247 V19.3.0 clause 7.2.3.8.3).
+- **Out of the RA:** the UE performs the Mobility Registration Update procedure, which activates the associated PDU Sessions, so that shared or individual delivery can be established towards the new NG-RAN node (clause 7.2.3.8.4) (TS 23.247 V19.3.0 clause 7.2.3.8.4).
 
 When the UE resumes in another NG-RAN node and the context retrieval succeeds (TS 23.247 clause 7.2.3.7):
 
-- in a node that supports MBS, if the retrieved UE context holds MBS session information, the node establishes 5GC Shared delivery if it does not have it, then sends a Path Switch Request with the MBS support information;
-- in a node that supports MBS, if the context holds no MBS session information, the Path Switch Request carries the MBS support information, and the SMF then provides the MBS information and any associated QoS flows, after which the node establishes 5GC Shared delivery;
-- in a node that does not support MBS, the Path Switch Request carries no MBS support information; if the session is still inactive, the SMF removes the associated QoS flow information.
+- in a node that supports MBS, if the retrieved UE context holds MBS session information, the node establishes 5GC Shared delivery if it does not have it, then sends a Path Switch Request with the MBS support information; (TS 23.247 V19.3.0 clause 7.2.3.7)
+- in a node that supports MBS, if the context holds no MBS session information, the Path Switch Request carries the MBS support information, and the SMF then provides the MBS information and any associated QoS flows, after which the node establishes 5GC Shared delivery; (TS 23.247 V19.3.0 clause 7.2.3.7)
+- in a node that does not support MBS, the Path Switch Request carries no MBS support information; if the session is still inactive, the SMF removes the associated QoS flow information (TS 23.247 V19.3.0 clause 7.2.3.7).
 
-If the context retrieval fails, the UE moves to RRC_IDLE and starts NAS signalling recovery, including the activation of its PDU Sessions (clause 7.2.3.7).
+If the context retrieval fails, the UE moves to RRC_IDLE and starts NAS signalling recovery, including the activation of its PDU Sessions (clause 7.2.3.7) (TS 23.247 V19.3.0 clause 7.2.3.7).
 
 For delivery to UEs in RRC_INACTIVE, the handover and resume procedures above have additions (TS 23.247 clause 7.2.3.8.1). A target node that supports multicast reception in RRC_INACTIVE indicates it to the SMF in the N2 SM information of the Path Switch Request (Xn) or the Handover Request Ack (N2); in NGAP, the MBS Support Indicator then has the value "multicast supported with reception in RRC inactive" (TS 38.413 clause 9.3.1.210). If MBS assistance information is available for a session the UE joined, the SMF includes it in the N2 SM information it sends to the target. After an Xn handover or a resume towards a node that supports reception in RRC_INACTIVE from one that does not, the SMF modifies the associated PDU Session to provide it; at Xn handover or resume, the source node also passes the MBS assistance information it holds to the target.
 
