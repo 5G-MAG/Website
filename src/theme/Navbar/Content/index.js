@@ -315,10 +315,7 @@ function NavDropdownItem({ item, preview }) {
             <li key={sub.href}>
               <Link to={sub.href} className={styles.navFeaturedCard}>
                 <span className={clsx(styles.navAreaIcon, styles.navHeadIcon)}><NavItemIcon href={sub.href} size={20} /></span>
-                <span className={styles.navFeaturedText}>
-                  {sub.label.replace(/ \(coming soon\)$/, '')}
-                  {/\(coming soon\)$/.test(sub.label) && <small>Coming soon</small>}
-                </span>
+                {sub.label}
               </Link>
             </li>
           ))}

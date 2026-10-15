@@ -94,9 +94,9 @@ export default function NavbarMobilePrimaryMenu() {
                     ))}
                   </React.Fragment>
                 ))}
-                <NavbarItem mobile to="/software#playgrounds" label="Playgrounds (coming soon)"
+                <NavbarItem mobile to="/software#playgrounds" label="Playgrounds"
                   className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
-                <NavbarItem mobile to="/kits" label="Deployment Kits (coming soon)"
+                <NavbarItem mobile to="/kits" label="Deployment Kits"
                   className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
                 <NavbarItem mobile to="/developer-tools" label="Developer Tools"
                   className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />

@@ -142,8 +142,8 @@ export const SECTION_NAV = [
       { label: 'Validation Tools', href: '/validation', featured: true },
       { label: 'Testbeds', href: '/testbeds', featured: true },
       { label: 'Developer Tools', href: '/developer-tools', featured: true },
-      { label: 'Playgrounds (coming soon)', href: '/software#playgrounds' },
-      { label: 'Deployment Kits (coming soon)', href: '/kits' },
+      { label: 'Playgrounds', href: '/software#playgrounds' },
+      { label: 'Deployment Kits', href: '/kits' },
     ],
   },
   // The Software Accelerator Programme: the community and the process that build the Software Factory. Its long

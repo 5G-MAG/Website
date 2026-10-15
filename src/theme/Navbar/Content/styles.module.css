@@ -498,16 +498,6 @@ Hide color mode toggle in small viewports
   color: var(--ifm-color-emphasis-900);
 }
 
-.navFeaturedText {
-  display: grid;
-}
-
-.navFeaturedText small {
-  font-size: 0.72rem;
-  font-weight: 500;
-  color: var(--ifm-color-emphasis-600);
-}
-
 .navFeaturedCard:hover {
   border-color: var(--ifm-color-primary);
   color: var(--ifm-color-primary);
