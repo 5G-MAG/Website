@@ -8,9 +8,10 @@
   "clones": 23244,
   "specIssues": 207,
   "sdoInputs": 35,
-  "updated_at": "2026-10-15 17:49 UTC",
+  "updated_at": "2026-10-15 19:24 UTC",
   "projects": 19,
-  "referenceTools": 16,
-  "testbeds": 4,
-  "workshopInputs": 6
+  "referenceTools": 13,
+  "testbeds": 3,
+  "workshopInputs": 6,
+  "validationTools": 2
 }
