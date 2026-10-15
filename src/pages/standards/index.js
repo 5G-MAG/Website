@@ -320,7 +320,7 @@ export default function Standards() {
           <div className="container">
             <h2 className={styles.sectionTitle}>Why We Engage</h2>
             <p className={styles.sectionSubtitle}>
-              Advancing standardization with implementation and experience-based feedback.
+              Advancing standardisation with implementation and experience-based feedback.
             </p>
             <div className={styles.pillarGrid3}>
               {MOTIVATION.map((p) => (
