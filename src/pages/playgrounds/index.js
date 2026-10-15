@@ -8,16 +8,13 @@ import {
   CategoryCard as ProjectCategoryCard,
   filterCategories as filterProjectCategories,
 } from '../reference-tools';
+import { TUTORIAL_SLUGS } from '@site/src/data/playgrounds';
 import styles from '../tech/index.module.css';
 import filterStyles from '../reference-tools/styles.module.css';
 
 // Playgrounds: where you try a technology yourself. Today each entry is a project's step-by-step tutorials; ready
 // environments with nothing to install will join the same list. Each entry opens that project's tutorials page
 // (at <Reference Tools page>/tutorials).
-const TUTORIAL_SLUGS = [
-  '5gms', 'data-collection', 'content-delivery', '5g-broadcast', 'emergency-alerts', 'dvb-i', '5g-mbs',
-  'xr', 'v3c', 'vdmc', 'avatar', 'network-apis', '3gpp-platforms',
-];
 const PLAYGROUND_CATEGORIES = PROJECT_CATEGORIES.map((c) => ({
   ...c,
   desc: 'Step-by-step tutorials for the projects in this area.',
