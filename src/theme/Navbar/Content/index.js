@@ -436,7 +436,7 @@ function MegaCard({ g }) {
   return (
     <div className={styles.navMegaCard} style={{ '--accent': g.accent }}>
       <Link to={g.href} className={styles.navMegaArea}>
-        <span className={styles.navAreaIcon}><CatalogIcon name={g.icon} size={17} /></span>
+        <span className={clsx(styles.navAreaIcon, styles.navHeadIcon)}><CatalogIcon name={g.icon} size={20} /></span>
         <span className={styles.navMegaAreaTitle}>{g.title}</span>
         <span className={styles.navMegaAreaArrow} aria-hidden="true">→</span>
       </Link>
@@ -444,7 +444,7 @@ function MegaCard({ g }) {
         {g.items.map((sub) => (
           <li key={sub.href}>
             <Link to={sub.href}>
-              <CatalogIcon name={sub.icon} size={16} />
+              <span className={styles.navAreaIcon}><CatalogIcon name={sub.icon} size={14} /></span>
               {sub.label}
               {sub.tag && <span className={styles.navTag}>{sub.tag}</span>}
             </Link>
