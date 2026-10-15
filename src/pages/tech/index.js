@@ -182,7 +182,10 @@ export default function Home() {
         >
           <div className="container">
             <h2 className={styles.sectionTitle}>Where We Stand</h2>
-            <p className={styles.sectionSubtitle}>What we are working on, and how far along it is.</p>
+            <p className={styles.sectionSubtitle}>
+              What we are working on, and how far along it is. This is the work of 5G-MAG members, a selection of the
+              field and not a complete map of it.
+            </p>
             {/* The overview: one card per area, linking to its block of the full chart below. It replaces the
                 row of area tiles that used to sit here, since each card jumps to the same block. */}
             <StandCards />

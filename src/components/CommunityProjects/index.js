@@ -443,7 +443,7 @@ export function CommunityTotals({ kind = 'all' }) {
       <div className={styles.summaryCard}><h3>Total Views</h3><span className={styles.summaryValue}>&#128064; {totals.views}</span></div>
       <div className={styles.summaryCard}><h3>Total Clones</h3><span className={styles.summaryValue}>&#128230; {totals.clones}</span></div>
     </div>
-    <p><small>{totals.repositories} repositories, each counted once, including those shared by several projects.</small></p>
+    <p><small>{totals.repositories} repositories, each counted once, including those shared by several projects. Source: GitHub, updated daily.</small></p>
     </>
   );
 }

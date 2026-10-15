@@ -102,7 +102,7 @@ export default function Membership() {
           <div className="container">
             <h2 className={styles.sectionTitle}>Our work at a glance</h2>
             <p className={styles.sectionSubtitle}>
-              Live figures from our repositories and standards work, updated daily.{' '}
+              Counted from GitHub and 5G-MAG&apos;s own records, updated daily.{' '}
               <Link to="/community/activity">See the full activity &rarr;</Link>
             </p>
             <div className="summary-container summary-container--centered">

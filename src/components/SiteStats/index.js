@@ -26,7 +26,7 @@ export default function SiteStats() {
           </div>
         ))}
       </div>
-      {date && <p className={styles.foot}>Updated daily · {date}</p>}
+      {date && <p className={styles.foot}>Source: GitHub and 5G-MAG records, counted daily · updated {date}</p>}
     </div>
   );
 }
