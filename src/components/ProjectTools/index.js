@@ -12,12 +12,21 @@ const KIND_LABEL = {
   Platforms: 'Platform',
 };
 
-function Icon({ paths }) {
+// The icon of each kind, the same as in the Software Accelerator menu.
+const KIND_ICON = {
+  'Reference Tool': ['M7 8l-4 4l4 4', 'M17 8l4 4l-4 4', 'M14 4l-4 16'],
+  Testbed: ['M9 3l6 0', 'M10 9l4 0', 'M10 3v6l-4 11a.7 .7 0 0 0 .5 1h11a.7 .7 0 0 0 .5 -1l-4 -11v-6'],
+  'Evaluation Framework': ['M9 3l6 0', 'M10 9l4 0', 'M10 3v6l-4 11a.7 .7 0 0 0 .5 1h11a.7 .7 0 0 0 .5 -1l-4 -11v-6'],
+  'Validation Tool': ['M9.615 20h-2.615a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8', 'M14 19l2 2l4 -4', 'M9 8h4', 'M9 12h2'],
+  Platform: ['M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5'],
+};
+
+function Icon({ paths, size = 20 }) {
   return (
     <svg
       viewBox="0 0 24 24"
-      width="20"
-      height="20"
+      width={size}
+      height={size}
       fill="none"
       stroke="currentColor"
       strokeWidth="2"
@@ -45,7 +54,14 @@ export function ProjectRow({ href, title, desc, kind, iconKey, iconPaths }) {
         <div className={styles.title}>{title}</div>
         <div className={styles.desc}>{desc}</div>
       </span>
-      {kind ? <span className={styles.kind}>{kind}</span> : <span className={styles.arrow}>→</span>}
+      {kind ? (
+        <span className={styles.kind}>
+          {KIND_ICON[kind] && <Icon paths={KIND_ICON[kind]} size={16} />}
+          {kind}
+        </span>
+      ) : (
+        <span className={styles.arrow}>→</span>
+      )}
     </>
   );
   return href ? (
