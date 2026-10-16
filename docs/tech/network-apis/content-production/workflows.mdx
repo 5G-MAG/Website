@@ -350,10 +350,11 @@ A media production requires 4 devices (e.g. cameras, smartphones). The output vi
 Therefore, first step is to define such QoS profiles which cameras can use.
 
 <table>
-  <tr>
-    <td markdown="span" align="left"><b>QoS Profile name</b></td>
-    <td markdown="span" align="left"><b>Parameters</b></td>
-  </tr>
+  <thead><tr>
+    <th scope="col" markdown="span" align="left"><b>QoS Profile name</b></th>
+    <th scope="col" markdown="span" align="left"><b>Parameters</b></th>
+  </tr></thead>
+<tbody>
   <tr>
     <td markdown="span" align="left">QoS_OnAir - QoS Profile for High Quality Video</td>
     <td markdown="span" align="left">Uplink throughput = 10 Mbps</td>
@@ -366,6 +367,7 @@ Therefore, first step is to define such QoS profiles which cameras can use.
     <td markdown="span" align="left">QoS_Standby - QoS Profile for Standby</td>
     <td markdown="span" align="left">Uplink throughput = 2 Mbps</td>
   </tr>
+</tbody>
 </table>
 
 #### Basic example: Identification of eligible devices-profiles
@@ -377,10 +379,11 @@ Among the 4 devices:
 - Cameras, which are providing their video “just” to the production gallery, are assigned with QoS_Standby profile.
 
 <table>
-  <tr>
-    <td markdown="span" align="left"><b>Device</b></td>
-    <td markdown="span" align="left"><b>Eligible QoS Profiles</b></td>
-  </tr>
+  <thead><tr>
+    <th scope="col" markdown="span" align="left"><b>Device</b></th>
+    <th scope="col" markdown="span" align="left"><b>Eligible QoS Profiles</b></th>
+  </tr></thead>
+<tbody>
   <tr>
     <td markdown="span" align="left">Device C1</td>
     <td markdown="span" align="left">QoS_OnAir, QoS_Preview and QoS_Standby</td>
@@ -397,6 +400,7 @@ Among the 4 devices:
     <td markdown="span" align="left">Device C4</td>
     <td markdown="span" align="left">QoS_OnAir, QoS_Preview and QoS_Standby</td>
   </tr>
+</tbody>
 </table>
 
 Note that the intention of this pre-booking is to make sure that 4 devices can be attached to 3 different QoS profiles during runtime. However not all the devices and profiles are used concurrently.

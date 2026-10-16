@@ -42,10 +42,11 @@ The [Workflows](./workflows) also identify a **Geofencing** need (verifying whet
 The following APIs from the Content Production analysis are the most relevant to Live Media Distribution. Each links to its reference page in this portal.
 
 <table>
-  <tr>
-    <td markdown="span" align="left"><b>API</b></td>
-    <td markdown="span" align="left"><b>Role in Live Media Distribution</b></td>
-  </tr>
+  <thead><tr>
+    <th scope="col" markdown="span" align="left"><b>API</b></th>
+    <th scope="col" markdown="span" align="left"><b>Role in Live Media Distribution</b></th>
+  </tr></thead>
+<tbody>
   <tr>
     <td markdown="span" align="left"><a href="../camara-quality-on-demand">Quality on Demand</a></td>
     <td markdown="span" align="left">Requests stable latency or prioritised throughput for the connection used to deliver media segments to a device.</td>
@@ -66,6 +67,7 @@ The following APIs from the Content Production analysis are the most relevant to
     <td markdown="span" align="left"><a href="../camara-connectivity-insights-subscriptions">Connectivity Insights Subscriptions</a></td>
     <td markdown="span" align="left">Event-subscription variant of Connectivity Insights, for regular network-quality notifications during a session.</td>
   </tr>
+</tbody>
 </table>
 
 ## Mapping to the workflow phases

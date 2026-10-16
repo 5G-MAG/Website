@@ -46,12 +46,13 @@ The actors involved are:
 The purpose of the scenario is to make the observability boundaries explicit, because they are what a Network API would have to bridge. The table below maps each link of the distribution chain to the actor (or actors) that can see it.
 
 <table>
-  <tr>
-    <td markdown="span" align="left"><b>Link in the chain</b></td>
-    <td markdown="span" align="left"><b>Content provider</b></td>
-    <td markdown="span" align="left"><b>Network operator</b></td>
-    <td markdown="span" align="left"><b>How</b></td>
-  </tr>
+  <thead><tr>
+    <th scope="col" markdown="span" align="left"><b>Link in the chain</b></th>
+    <th scope="col" markdown="span" align="left"><b>Content provider</b></th>
+    <th scope="col" markdown="span" align="left"><b>Network operator</b></th>
+    <th scope="col" markdown="span" align="left"><b>How</b></th>
+  </tr></thead>
+<tbody>
   <tr>
     <td markdown="span" align="left">CDN / origin (source)</td>
     <td markdown="span" align="left">Yes</td>
@@ -76,6 +77,7 @@ The purpose of the scenario is to make the observability boundaries explicit, be
     <td markdown="span" align="left">No (for third-party OTT)</td>
     <td markdown="span" align="left">In-app instrumentation: per-segment time to last byte (TTLB), rebuffering events, errors.</td>
   </tr>
+</tbody>
 </table>
 
 The gap is the diagonal: the content provider cannot see the operator's core and transport (only their aggregate effect), and the operator cannot see the client app of a third-party service. A failure such as uplink interference that prevents a segment request from reaching the network falls into both blind spots at once, because the provider only observes a slow or failed segment (a high or infinite TTLB) while the operator observes no request at all. Sharing app-side data (TTLB, radio indicators, error events) with the operator, and network-side context back to the provider, is what a Network API such as Connectivity Insights would enable.

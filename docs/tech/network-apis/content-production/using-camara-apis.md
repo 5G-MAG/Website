@@ -39,14 +39,15 @@ Each cell states what a given API does (or "N/A") for that phase. Several APIs h
 ## Summary of available CAMARA APIs
 
 <table>
-  <tr>
-    <td markdown="span" align="left"><b>API</b></td>
-    <td markdown="span" align="left"><b>DISCOVERY</b></td>
-    <td markdown="span" align="left"><b>RESERVATION</b></td>
-    <td markdown="span" align="left"><b>ASSIGNMENT</b></td>
-    <td markdown="span" align="left"><b>USAGE</b></td>
-    <td markdown="span" align="left"><b>NOTIFICATIONS</b></td>
-  </tr>
+  <thead><tr>
+    <th scope="col" markdown="span" align="left"><b>API</b></th>
+    <th scope="col" markdown="span" align="left"><b>DISCOVERY</b></th>
+    <th scope="col" markdown="span" align="left"><b>RESERVATION</b></th>
+    <th scope="col" markdown="span" align="left"><b>ASSIGNMENT</b></th>
+    <th scope="col" markdown="span" align="left"><b>USAGE</b></th>
+    <th scope="col" markdown="span" align="left"><b>NOTIFICATIONS</b></th>
+  </tr></thead>
+<tbody>
   <tr>
     <td markdown="span" align="left">Application Profiles</td>
     <td markdown="span" align="left">N/A</td>
@@ -127,6 +128,7 @@ Each cell states what a given API does (or "N/A") for that phase. Several APIs h
     <td markdown="span" align="left">Automatic for the device invoking the creation.</td>
     <td markdown="span" align="left">NO</td>
   </tr>
+</tbody>
 </table>
 
 ## SERVICE AREA API
@@ -151,15 +153,17 @@ There is no equivalent service area lookup API in the other CAMARA QoS-related A
 ## DISCOVERY API
 
 <table>
-  <tr>
-    <td markdown="span" align="left"><b>Mechanism to obtain available QoS profiles</b></td>
-  </tr>
+  <thead><tr>
+    <th scope="col" markdown="span" align="left"><b>Mechanism to obtain available QoS profiles</b></th>
+  </tr></thead>
+<tbody>
   <tr>
     <td markdown="span" align="left">The <b><a href="../camara-qos-profiles">QoS Profiles API</a></b> retrieves the QoS profile parameters available in the network. No information about the service area is linked to such a request.</td>
   </tr>
   <tr>
     <td markdown="span" align="left">The <b><a href="../camara-dedicated-networks">Dedicated Networks - Network Profiles API</a></b> obtains the list of available Network Profiles, which link the QoS Profile with additional information on the aggregated UL/DL throughput for a maximum number of devices.</td>
   </tr>
+</tbody>
 </table>
 
 :::warning
@@ -167,12 +171,14 @@ There are some limitations as the information on the name of the QoS profile nee
 :::
 
 <table>
-  <tr>
-    <td markdown="span" align="left"><b>Identification of a service area and/or time/duration</b></td>
-  </tr>
+  <thead><tr>
+    <th scope="col" markdown="span" align="left"><b>Identification of a service area and/or time/duration</b></th>
+  </tr></thead>
+<tbody>
   <tr>
     <td markdown="span" align="left">In general the available profiles are listed for the network, not for a specific location or time/duration. It is only when booking the resources for the specific area and duration when information about the success will be available.</td>
   </tr>
+</tbody>
 </table>
 
 :::warning
@@ -187,9 +193,10 @@ It should be possible to book QoS (to reserve network resources) for a given app
 - The previous mechanism including already information about the application server and/or device.
 
 <table>
-  <tr>
-    <td markdown="span" align="left"><b>Mechanism to create a booking linking a profile to a service area and time/duration</b></td>
-  </tr>
+  <thead><tr>
+    <th scope="col" markdown="span" align="left"><b>Mechanism to create a booking linking a profile to a service area and time/duration</b></th>
+  </tr></thead>
+<tbody>
   <tr>
     <td markdown="span" align="left">The <b><a href="../camara-dedicated-networks">Dedicated Networks - Network Profiles API</a></b> requests the creation of a dedicated network linking a QoS profile with a service area and time/duration. This comprises the booking of resources for a specific QoS Profile, a maximum number of devices which can make use of it, the service area and the time/duration.</td>
   </tr>
@@ -199,6 +206,7 @@ It should be possible to book QoS (to reserve network resources) for a given app
   <tr>
     <td markdown="span" align="left">The <b><a href="../camara-qos-booking-assignment">QoS Booking & Assignment - QoS Booking API</a></b> requests the creation of a QoS booking specifying the QoS profile, number of devices, service area and time/duration.</td>
   </tr>
+</tbody>
 </table>
 
 :::warning
@@ -206,9 +214,10 @@ The **Quality on Demand API** lacks information about the service area. Potentia
 :::
 
 <table>
-  <tr>
-    <td markdown="span" align="left"><b>The previous mechanism including already information about the application server and/or device</b></td>
-  </tr>
+  <thead><tr>
+    <th scope="col" markdown="span" align="left"><b>The previous mechanism including already information about the application server and/or device</b></th>
+  </tr></thead>
+<tbody>
   <tr>
     <td markdown="span" align="left">The <b><a href="../camara-qos-booking">QoS Booking API</a></b> requests the creation of a QoS booking specifying the QoS profile, application server details, device details, service area and time/duration.</td>
   </tr>
@@ -218,6 +227,7 @@ The **Quality on Demand API** lacks information about the service area. Potentia
   <tr>
     <td markdown="span" align="left">The <b><a href="../camara-quality-on-demand">Quality on Demand API</a></b> requests the creation of a QoS booking specifying the QoS profile, application server details, device details, and time/duration. No information about the service area is provided.</td>
   </tr>
+</tbody>
 </table>
 
 :::warning
@@ -238,15 +248,17 @@ First step is to have booked the network resources either for any device, a give
 - Direct usage of the network resources when a device just connects to the network
 
 <table>
-  <tr>
-    <td markdown="span" align="left"><b>Assignment of the booked network resources to a particular device</b></td>
-  </tr>
+  <thead><tr>
+    <th scope="col" markdown="span" align="left"><b>Assignment of the booked network resources to a particular device</b></th>
+  </tr></thead>
+<tbody>
   <tr>
     <td markdown="span" align="left">The <b><a href="../camara-qos-booking-assignment">QoS Booking and Assignment - Device Assignment API</a></b> assigns a device to an existing QoS booking.</td>
   </tr>
   <tr>
     <td markdown="span" align="left">The <b><a href="../camara-dedicated-networks">Dedicated Network - Accesses API</a></b> assigns a device to an existing network profile.</td>
   </tr>
+</tbody>
 </table>
 
 :::warning
@@ -259,9 +271,10 @@ In the event that a device needs to be exchanged or the booked resources should 
 - Separation of the QoS booking w.r.t. the device, enabling re-assignment of QoS booking.
 
 <table>
-  <tr>
-    <td markdown="span" align="left"><b>Creating a new booking for a new device before releasing the current device</b></td>
-  </tr>
+  <thead><tr>
+    <th scope="col" markdown="span" align="left"><b>Creating a new booking for a new device before releasing the current device</b></th>
+  </tr></thead>
+<tbody>
   <tr>
     <td markdown="span" align="left">With the <b><a href="../camara-qos-booking">QoS Booking API</a></b>, a new booking for a specific device should be created.</td>
   </tr>
@@ -271,6 +284,7 @@ In the event that a device needs to be exchanged or the booked resources should 
   <tr>
     <td markdown="span" align="left">With the <b><a href="../camara-quality-on-demand">Quality on Demand API</a></b>, a new booking for a specific device should be created.</td>
   </tr>
+</tbody>
 </table>
 
 :::warning
@@ -278,9 +292,10 @@ With the previous mechanisms there is no guarantee that new resources are availa
 :::
 
 <table>
-  <tr>
-    <td markdown="span" align="left"><b>Separation of the QoS booking w.r.t. the device, enabling re-assignment of QoS booking</b></td>
-  </tr>
+  <thead><tr>
+    <th scope="col" markdown="span" align="left"><b>Separation of the QoS booking w.r.t. the device, enabling re-assignment of QoS booking</b></th>
+  </tr></thead>
+<tbody>
   <tr>
     <td markdown="span" align="left">The <b><a href="../camara-dedicated-networks">Dedicated Network - Accesses API</a></b> can request the assignment or release of a device to an existing network profile.</td>
   </tr>
@@ -290,6 +305,7 @@ With the previous mechanisms there is no guarantee that new resources are availa
   <tr>
     <td markdown="span" align="left">The <b><a href="../camara-qos-booking-assignment">QoS Booking & Assignment - Device Assignment API</a></b> can request the assignment or release of a device to an existing QoS booking.</td>
   </tr>
+</tbody>
 </table>
 
 :::warning
@@ -299,9 +315,10 @@ The mechanisms which detach the booking of network resources from a particular d
 ## USAGE API
 
 <table>
-  <tr>
-    <td markdown="span" align="left"><b>Direct usage of the network resources when a device just connects to the network</b></td>
-  </tr>
+  <thead><tr>
+    <th scope="col" markdown="span" align="left"><b>Direct usage of the network resources when a device just connects to the network</b></th>
+  </tr></thead>
+<tbody>
   <tr>
     <td markdown="span" align="left">With the <b><a href="../camara-network-slice-booking">Network Slice Booking API</a></b>, the network resources are used as soon as a device connects to the network.</td>
   </tr>
@@ -314,6 +331,7 @@ The mechanisms which detach the booking of network resources from a particular d
   <tr>
     <td markdown="span" align="left">With the <b><a href="../camara-quality-on-demand">Quality on Demand API</a></b>, the network resources are used as soon as a device connects to the network.</td>
   </tr>
+</tbody>
 </table>
 
 :::warning
