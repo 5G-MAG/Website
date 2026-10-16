@@ -127,7 +127,7 @@ export default function TSC() {
           </div>
         </section>
 
-        <JoinTheEffort alt />
+        <JoinTheEffort alt variant="tool" />
       </main>
     </Layout>
   );

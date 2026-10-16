@@ -555,7 +555,7 @@ export default function Home() {
           </div>
         </section>
 
-        <JoinTheEffort id="community" alt />
+        <JoinTheEffort id="community" alt variant="tool" />
       </main>
     </Layout>
   );

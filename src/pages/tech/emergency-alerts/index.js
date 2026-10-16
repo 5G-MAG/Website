@@ -126,7 +126,7 @@ export default function EmergencyAlerts() {
         </section>
 
 
-        <JoinTheEffort alt />
+        <JoinTheEffort alt variant="tool" />
       </main>
     </Layout>
   );

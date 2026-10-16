@@ -141,7 +141,7 @@ export default function VDMC() {
           </div>
         </section>
 
-        <JoinTheEffort alt />
+        <JoinTheEffort alt variant="tool" />
       </main>
     </Layout>
   );

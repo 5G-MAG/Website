@@ -79,7 +79,7 @@ export default function Surveys() {
           </section>
         )}
 
-        <JoinTheEffort alt />
+        <JoinTheEffort alt variant="standards" />
       </main>
     </Layout>
   );

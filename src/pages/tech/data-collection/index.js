@@ -125,7 +125,7 @@ export default function DataCollection() {
           </div>
         </section>
 
-        <JoinTheEffort alt />
+        <JoinTheEffort alt variant="tool" />
       </main>
     </Layout>
   );

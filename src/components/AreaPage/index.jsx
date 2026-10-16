@@ -414,7 +414,7 @@ export default function AreaPage({ basketKey }) {
           </section>
         )}
       </main>
-      <JoinTheEffort alt />
+      <JoinTheEffort alt variant="tool" />
     </Layout>
   );
 }

@@ -124,7 +124,7 @@ export default function RTC() {
         </section>
 
 
-        <JoinTheEffort alt />
+        <JoinTheEffort alt variant="tool" />
       </main>
     </Layout>
   );

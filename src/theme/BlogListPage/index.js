@@ -132,7 +132,7 @@ export default function BlogListPage(props) {
         {isFirstPage && (
           <>
             <PodcastPromo />
-            <JoinTheEffort alt />
+            <JoinTheEffort alt variant="event" />
           </>
         )}
       </Layout>

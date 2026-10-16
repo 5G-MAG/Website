@@ -137,7 +137,7 @@ export default function NetworkAPIs() {
           </div>
         </section>
 
-        <JoinTheEffort alt />
+        <JoinTheEffort alt variant="tool" />
       </main>
     </Layout>
   );

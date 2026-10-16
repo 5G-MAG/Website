@@ -141,7 +141,7 @@ export default function AiMl() {
           </div>
         </section>
 
-        <JoinTheEffort alt />
+        <JoinTheEffort alt variant="tool" />
       </main>
     </Layout>
   );

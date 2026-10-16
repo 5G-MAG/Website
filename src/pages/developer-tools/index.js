@@ -62,7 +62,7 @@ export default function DeveloperAssets() {
             </p>
           </div>
         </section>
-        <JoinTheEffort alt />
+        <JoinTheEffort alt variant="tool" />
       </main>
     </Layout>
   );

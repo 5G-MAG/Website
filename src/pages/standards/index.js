@@ -386,7 +386,7 @@ export default function Standards() {
           </div>
         </section>
 
-        <JoinTheEffort alt />
+        <JoinTheEffort alt variant="standards" />
       </main>
     </Layout>
   );

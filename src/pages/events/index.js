@@ -238,7 +238,7 @@ export default function Events() {
           </div>
         </section>
 
-        <JoinTheEffort />
+        <JoinTheEffort variant="event" />
       </main>
     </Layout>
   );

@@ -44,7 +44,7 @@ export default function DeploymentKits() {
             </p>
           </div>
         </section>
-        <JoinTheEffort alt />
+        <JoinTheEffort alt variant="tool" />
       </main>
     </Layout>
   );

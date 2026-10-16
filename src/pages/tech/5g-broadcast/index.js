@@ -136,7 +136,7 @@ export default function FiveGBroadcast() {
         </section>
 
 
-        <JoinTheEffort alt />
+        <JoinTheEffort alt variant="tool" />
       </main>
     </Layout>
   );

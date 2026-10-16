@@ -56,7 +56,7 @@ export default function ProjectDeploy({ slug }) {
             <AssetTiles />
           </div>
         </section>
-        <JoinTheEffort />
+        <JoinTheEffort variant="tool" />
       </main>
     </Layout>
   );

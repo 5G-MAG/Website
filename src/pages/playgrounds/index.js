@@ -36,7 +36,7 @@ export default function Playgrounds() {
             </p>
           </div>
         </section>
-        <JoinTheEffort alt />
+        <JoinTheEffort alt variant="tool" />
       </main>
     </Layout>
   );

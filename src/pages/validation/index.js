@@ -67,7 +67,7 @@ export default function ValidationTools() {
             )}
           </div>
         </section>
-        <JoinTheEffort alt />
+        <JoinTheEffort alt variant="tool" />
       </main>
     </Layout>
   );

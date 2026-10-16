@@ -321,7 +321,7 @@ export default function Deploy() {
         </section>
 
 
-        <JoinTheEffort />
+        <JoinTheEffort variant="event" />
       </main>
     </Layout>
   );

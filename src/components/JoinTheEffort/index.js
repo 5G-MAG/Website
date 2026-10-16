@@ -88,6 +88,30 @@ const TILES = [
   },
 ];
 
+// The tiles are the same six everywhere, but the three most relevant to the page come first. A standards page also
+// swaps the Early Access tile for the requirements.
+const REQUIREMENTS_TILE = {
+  key: 'requirements',
+  to: '/standards/requirements',
+  icon: PLUS_ICON,
+  title: 'Requirements towards SDOs',
+  desc: 'See the requirements 5G-MAG brings to standards bodies, and add yours.',
+  cta: 'Read',
+};
+
+const ORDER = {
+  tool: ['early-access', 'github', 'developers', 'topic', 'subscribe', 'linkedin'],
+  standards: ['topic', 'requirements', 'developers', 'subscribe', 'github', 'linkedin'],
+  event: ['subscribe', 'developers', 'linkedin', 'topic', 'early-access', 'github'],
+};
+
+function tilesFor(variant) {
+  const order = ORDER[variant];
+  if (!order) return TILES;
+  const pool = [...TILES, REQUIREMENTS_TILE];
+  return order.map((k) => pool.find((t) => t.key === k));
+}
+
 function Tile({ to, href, icon, title, desc, cta }) {
   const content = (
     <>
@@ -113,7 +137,7 @@ function Tile({ to, href, icon, title, desc, cta }) {
 // News). Replaces each page's previous bespoke "Join the Community" button
 // row / "Get Involved" tiles so the site ends on one consistent call to
 // action rather than a different one per section.
-export default function JoinTheEffort({ id, alt = false }) {
+export default function JoinTheEffort({ id, alt = false, variant = 'default' }) {
   return (
     <section id={id} className={alt ? `${styles.section} ${styles.sectionAlt}` : styles.section}>
       <div className="container">
@@ -128,7 +152,7 @@ export default function JoinTheEffort({ id, alt = false }) {
           </Link>
         </div>
         <div className="community-tiles community-tiles--even community-tiles--cols-3">
-          {TILES.map(({ key, ...t }) => (
+          {tilesFor(variant).map(({ key, ...t }) => (
             <Tile key={key} {...t} />
           ))}
         </div>
