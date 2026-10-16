@@ -22,6 +22,7 @@ export default function ProjectHome({
   standardsHref,
   softwareHref,
   softwareIsTestbed,
+  cover,
   whyTitle = 'The Problem It Solves',
   why,
   children,
@@ -29,7 +30,7 @@ export default function ProjectHome({
   const project = ALL_PROJECTS.find((p) => p.tech_url === techUrl);
   const name = displayNameOf(project);
   const slug = techUrl.split('/').pop();
-  const coverImg = useBaseUrl(`/assets/images/projects/${slug}.png`);
+  const coverImg = useBaseUrl(`/assets/images/projects/${cover || slug}.png`);
   const learn = TECH_OVERVIEW[techUrl] || analysisHref;
   const hasRepos = ALL_REPOS.some((r) => r.projectName === name);
 
@@ -54,9 +55,9 @@ export default function ProjectHome({
               </Link>
             )}
             {hasRepos && (
-              <Link className="button button--outline button--primary" to="#repositories">
+              <a className="button button--outline button--primary" href="#repositories">
                 Software
-              </Link>
+              </a>
             )}
           </div>,
         ]}
