@@ -216,7 +216,7 @@ export const SECTION_NAV = [
     prefixes: ['/deployments'],
     title: 'Deployments',
     titleHref: '/deployments',
-    subtitle: 'Demos, plugfests and interoperability events that help technology reach deployment.',
+    subtitle: 'Helping technology reach deployment.',
     // Activities only: demos, interop plugfests and testing events. Software
     // (tools, validators, Deployment Kits) lives in the Software Accelerator. It does not own Testbeds or
     // Reference Tools, so it has no sub-items pointing back at those.
