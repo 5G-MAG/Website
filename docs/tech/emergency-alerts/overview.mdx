@@ -20,78 +20,78 @@ description: Placeholder for the 5G Broadcast - Emergency Alerts technical analy
 
 ## How it works
 
-An alert is passed to the transmitter, encoded as a Cell Broadcast Service (CBS) message
-carried in a System Information Block, broadcast over the FeMBMS carrier, and received
-and presented on a device -- reusing the 5G Broadcast receiver rather than requiring an
-alert-specific one.
+An alert reaches the 5G Broadcast Transmitter as a CAP v1.2 message on the CBE-CBC interface, and the Cell Broadcast Centre in the transmitter generates the CMAS message from it (ETSI TS 103 720 V1.2.1 clause 5.15.3.2; ETSI TS 103 720 V1.2.1 clause 5.15.4)
+the message is carried in a System Information Block (SIB12 for CMAS) broadcast on the E-UTRAN Uu downlink of an MBMS-dedicated or FeMBMS/Unicast-mixed cell, and received by a 5G Broadcast Receiver (ETSI TS 103 720 V1.2.1 clause 5.15.3.3; TS 36.331 V19.4.0 clause 5.2.1.3; TR 36.976 V19.0.0 clause 1)
+The receiver is a 5G Broadcast Receiver that includes a PWS Client for processing and presenting warnings (ETSI TS 103 720 V1.2.1 clause 5.15.1; ETSI TS 103 720 V1.2.1 clause 7.6)
+alert-specific one (ETSI TS 103 720 V1.2.1 clause 5.15.1).
 
 **Key specifications:** ETSI TS 103 720 (5G Broadcast System for linear TV
-and radio services -- clause 5.15.3.3 defines PWS support, the delivery of warning
-messages via SIB broadcast on the E-UTRAN Uu downlink), 3GPP
+and radio services -- clause 5.15.3.3 defines PWS support, the delivery of warning (ETSI TS 103 720 V1.2.1 clause 5.15.3.3)
+messages via SIB broadcast on the E-UTRAN Uu downlink), 3GPP (ETSI TS 103 720 V1.2.1 clause 5.15.3.3)
 [TS 23.041](https://www.3gpp.org/dynareport/23041.htm) (Technical realization
-of Cell Broadcast Service, CBS: message structure, message identifiers, serial numbers
-and data coding for ETWS and CMAS), 3GPP
+of Cell Broadcast Service, CBS: message structure, message identifiers, serial numbers (TS 23.041 V20.0.0 clause 1; TS 23.041 V20.0.0 clause 9.4)
+and data coding for ETWS and CMAS), 3GPP (TS 23.041 V20.0.0 clause 9.4.1.2; TS 23.041 V20.0.0 clause 9.4.3)
 [TS 36.331](https://www.3gpp.org/dynareport/36331.htm) (defines
-`SystemInformationBlockType12` and the UE actions on receiving a
-warning-message SIB), 3GPP
+`SystemInformationBlockType12` and the UE actions on receiving a (TS 36.331 V19.4.0 clause 6.3.1; TS 36.331 V19.4.0 clause 5.2.2.19)
+warning-message SIB), 3GPP (TS 36.331 V19.4.0 clause 5.2.2.19)
 [TR 36.976](https://www.3gpp.org/dynareport/36976.htm) (overall description of
-LTE-based 5G broadcast).
+LTE-based 5G broadcast) (TR 36.976 V19.0.0 clause 1).
 
-Public warning here follows the Public Warning System (PWS) approach: CBS is the
-delivery mechanism, and the alert types it can carry include the Earthquake and Tsunami
-Warning System (ETWS) and the Commercial Mobile Alert System (CMAS).
+Public warning here follows the Public Warning System (PWS) approach: CBS is the delivery mechanism, and PWS covers ETWS, CMAS, KPAS and EU-Alert warning messages (TS 23.041 V20.0.0 clause 2; ETSI TS 103 720 V1.2.1 clause 4.2.5)
+delivery mechanism, and the alert types it can carry include the Earthquake and Tsunami (TS 23.041 V20.0.0 clause 2; ETSI TS 103 720 V1.2.1 clause 4.2.5)
+Warning System (ETWS) and the Commercial Mobile Alert System (CMAS) (TS 23.041 V20.0.0 clause 2; TS 22.268 V20.3.0 clause 3.1).
 
 ### Transmit and receive roles
 
-The Emergency Alerts feature set sits on the LTE-based 5G Broadcast transmit chain, in
-the roles the standard itself defines:
+The Emergency Alerts feature set sits on the LTE-based 5G Broadcast transmit chain, in (ETSI TS 103 720 V1.2.1 clause 5.15.1)
+the roles the standard itself defines: (ETSI TS 103 720 V1.2.1 clause 5.15.1)
 
-- **RAN / physical-layer transmitter.** The 5G Broadcast transmitter builds
-  the E-UTRA system information carried on the broadcast carrier. For public warning,
-  this is where the warning-message System Information Blocks are scheduled and encoded
+RAN / physical-layer transmitter. The 5G Broadcast Transmitter (an eNodeB) builds the E-UTRA system information carried on the broadcast carrier, and the CBC in it handles CAP warnings from the CBE (ETSI TS 103 720 V1.2.1 clause 5.15.3.3; ETSI TS 103 720 V1.2.1 clause 5.15.1; TS 36.331 V19.4.0 clause 5.2.1.1)
+  the E-UTRA system information carried on the broadcast carrier (ETSI TS 103 720 V1.2.1 clause 5.15.3.3; TS 36.331 V19.4.0 clause 5.2.1.1). For public warning,
+  this is where the warning-message System Information Blocks are scheduled and encoded (TS 36.331 V19.4.0 clause 5.2.1.1; TS 36.331 V19.4.0 clause 6.2.2; ETSI TS 103 720 V1.2.1 clause 5.15.6)
   onto the radio frame, so that a connected 5G Broadcast device receives the SIB12
-  message that triggers a CMAS alert.
-- **SIB12 encoding.** The transmitter constructs the SIB12 message body from
-  a set of CBS fields (message identifier, serial number, data coding scheme, and the
-  warning-message segment carrying the alert text) — the fields a standards-conformant
+  message that triggers a CMAS alert (ETSI TS 103 720 V1.2.1 clause 5.15.6; TS 36.331 V19.4.0 clause 5.2.2.19).
+- **SIB12 encoding.** The transmitter constructs the SIB12 message body from (ETSI TS 103 720 V1.2.1 clause 5.15.3.3; TS 36.331 V19.4.0 clause 6.3.1)
+  a set of CBS fields (message identifier, serial number, data coding scheme, and the (TS 36.331 V19.4.0 clause 6.3.1; ETSI TS 103 720 V1.2.1 clause 5.15.3.3)
+  the fields the transmitter populates in SIB12 to broadcast a CMAS warning (for example an Extreme or Severe alert, or a presidential-level or EU-Alert Level 1 alert) (TS 36.331 V19.4.0 clause 6.3.1; TS 23.041 V20.0.0 clause 9.4.1.2.2)
   transmitter needs to populate to broadcast a given alert (for example a tsunami or
   earthquake warning).
-- **Receiver / device.** A 5G Broadcast capable device tuned to the carrier
-  decodes the system information, detects the warning-message SIB, decodes the CBS
+Receiver / device. A 5G Broadcast Receiver tuned to the carrier acquires the system information, (ETSI TS 103 720 V1.2.1 clause 5.15.5.1; ETSI TS 103 720 V1.2.1 clause 7.2; TS 36.331 V19.4.0 clause 5.2.2.4)
+  decodes the system information, detects the warning-message SIB, decodes the CBS (ETSI TS 103 720 V1.2.1 clause 5.15.5.1; ETSI TS 103 720 V1.2.1 clause 5.15.6; TS 36.331 V19.4.0 clause 5.2.2.19)
   payload, and presents the alert. 3GPP does not define an alert-specific receiver: the
-  same procedure that decodes ordinary system information also decodes SIB10/11/12, so
-  a warning is just another scheduled SIB.
+  the same system information acquisition procedure also covers SIB10, SIB11 and SIB12, so (TS 36.331 V19.4.0 clause 5.2.2.1; TS 36.331 V19.4.0 clause 5.2.2.4; TS 36.331 V19.4.0 clause 5.2.2.17 to 5.2.2.19)
+  a warning is carried in SIB10, SIB11 or SIB12, scheduled through the schedulingInfoList like other SIBs; changes are signalled by Direct Indication FeMBMS rather than systemInfoValueTag (TS 36.331 V19.4.0 clause 5.2.1.5; TS 36.331 V19.4.0 clause 5.2.1.3; TS 36.331 V19.4.0 clause 6.2.2).
 
-The mapping to the standard: the transmitter plays the role of the E-UTRAN cell (the eNB
-in a live network); the SIB12 it emits is the same warning-message structure a live
-network would broadcast; and the device applies the standard UE procedure for acquiring
-and acting on warning-message system information.
+The mapping to the standard: the transmitter plays the role of the E-UTRAN cell (the eNB (ETSI TS 103 720 V1.2.1 clause 5.15.3.3; ETSI TS 103 720 V1.2.1 clause 5.15.1)
+in a live network); the SIB12 it emits is the same warning-message structure a live (ETSI TS 103 720 V1.2.1 clause 5.15.3.3; TS 36.331 V19.4.0 clause 6.3.1)
+network would broadcast; and the device applies the standard UE procedure for acquiring (ETSI TS 103 720 V1.2.1 clause 5.15.5.1; TS 36.331 V19.4.0 clause 5.2.2.19)
+and acting on warning-message system information (TS 36.331 V19.4.0 clause 5.2.2.17 to 5.2.2.19; ETSI TS 103 720 V1.2.1 clause 5.15.5.1).
 
 ### The CBS message model on the transmit side
 
-CBS carries a warning message as a short, self-contained data structure rather than as an
-IP flow, which is what lets it reach idle and non-attached devices. The main fields a
-developer will encounter when configuring or extending the transmitter are:
+CBS carries a warning message as one or more pages of 82 octets (up to 15 pages) rather than as application data (TS 23.041 V20.0.0 clause 2; ETSI TS 103 720 V1.2.1 clause 5.15.3.3)
+which lets it reach devices in idle mode, without authentication with a PLMN (TS 23.041 V20.0.0 clause 2; TS 22.268 V20.3.0 clause 4.2; ETSI TS 103 720 V1.2.1 clause 4.2.5). The main fields a
+The main fields of the SIB12 warning message are: (TS 36.331 V19.4.0 clause 6.3.1; ETSI TS 103 720 V1.2.1 clause 5.15.3.3)
 
 | CBS field | Role | Notes |
 | --- | --- | --- |
 | Message Identifier | Identifies the warning type / source (for example a CMAS or ETWS category) | Assigned in 3GPP TS 23.041 clause 9.4.1.2.2; the reference transmitter's default configuration uses the fixed identifier 0x1102, which TS 23.041 assigns to the ETWS combined earthquake and tsunami warning. |
-| Serial Number | Distinguishes and versions a message (geographical scope, message code, update number) | Changing the update number signals an updated message for the same event. |
+| Serial Number | Distinguishes and versions a message (geographical scope, message code, update number) | Changing the update number signals an updated message for the same event (TS 23.041 V20.0.0 clause 9.4.1.2.1; TS 23.041 V20.0.0 clause 8.2). |
 | Data Coding Scheme | Selects the character set / language of the message body | Follows the CBS data coding scheme rules in TS 23.041. |
-| Warning Message Segment | Carries the alert text, possibly split across segments | The transmitter marks the last segment and sets the segment number; the payload is the encoded warning text. |
+| Segment type and number mark the last segment and the segment position; the payload is the warning message content (CB data) (TS 36.331 V19.4.0 clause 6.3.1; TS 23.041 V20.0.0 clause 9.4.3.2.4). |
 
-For CMAS-style alerts the message is carried in **SIB12**. For ETWS the
-notification and body are carried in **SIB10** and **SIB11**
+For CMAS-style alerts the message is carried in **SIB12** (TS 36.331 V19.4.0 clause 5.2.1.5; TS 36.331 V19.4.0 clause 6.3.1; ETSI TS 103 720 V1.2.1 clause 5.15.3.3). For ETWS the
+For ETWS, the primary notification is carried in SIB10 and the secondary notification in SIB11; SIB11 uses the same segment fields as SIB12, SIB10 does not (TS 36.331 V19.4.0 clause 5.2.1.4; TS 36.331 V19.4.0 clause 6.3.1)
 respectively, each following the same scheduling and encoding model as SIB12.
 
 ### The complete public warning chain
 
-A live Public Warning System has more upstream steps than the broadcast hop this page
-focuses on: a Cell Broadcast Entity feeds a Cell Broadcast Centre, which runs the
-CBC-to-MME Write-Replace Warning procedure, and the MME distributes the warning to the
-relevant eNBs. This page's analysis covers the last hop of that chain — network to
-device over the broadcast carrier — which is where CBS/SIB12 delivery and the standard
-UE procedure for acting on it are defined.
+A live Public Warning System has more upstream steps than the broadcast hop this page (TS 23.041 V20.0.0 clause 3.3; TS 23.041 V20.0.0 clause 9.1.3.4.2; ETSI TS 103 720 V1.2.1 clause 5.15.1)
+focuses on: a Cell Broadcast Entity feeds a Cell Broadcast Centre, which runs the (TS 23.041 V20.0.0 clause 9.1.3.4.2; TS 23.041 V20.0.0 clause 3.3)
+CBC-to-MME Write-Replace Warning procedure, and the MME distributes the warning to the (TS 23.041 V20.0.0 clause 9.1.3.4.2; TS 29.168 V19.0.0 clause 4.3.3.2)
+relevant eNBs (TS 23.041 V20.0.0 clause 9.1.3.4.2; TS 29.168 V19.0.0 clause 4.3.3.2). This page's analysis covers the last hop of that chain — network to
+device over the broadcast carrier — which is where CBS/SIB12 delivery and the standard (TS 23.041 V20.0.0 clause 9.1.3.4.2; TS 36.331 V19.4.0 clause 6.3.1; ETSI TS 103 720 V1.2.1 clause 5.15.3.3)
+UE procedure for acting on it are defined (TS 36.331 V19.4.0 clause 5.2.2.19; TS 23.041 V20.0.0 clause 9.1.3.4.2).
 
 5G-MAG's own
 [reference tools overview slide deck](pathname:///docs/Reference_Tools_Emergency_Alerts_5G_Broadcast.pdf)
@@ -103,6 +103,6 @@ board tracks the underlying developer issues.
 
 **Related:**
 [5G Broadcast - TV and Radio Services](/tech/5g-broadcast) (the underlying
-transmit and receive platform this extends) ·
+transmit and receive platform this extends) · (ETSI TS 103 720 V1.2.1 clause 5.15.1)
 [Standards: 5G Broadcast - TV and Radio Services](/standards/5g-broadcast)
 (the full specification set, including ETSI TS 103 720, that this builds on)

@@ -1,0 +1,1363 @@
+{
+ "project": "Public Warning Systems",
+ "slug": "emergency-alerts",
+ "standardsUrl": "/standards/emergency-alerts",
+ "generated": "2026-10-16",
+ "tool": "specmap.py 7",
+ "releases": {
+  "analysed": [
+   "17",
+   "18",
+   "19",
+   "20"
+  ],
+  "baseline": "20",
+  "tracking": [],
+  "open": []
+ },
+ "inputs": {
+  "workPlan": "https://www.3gpp.org/ftp/Information/WORK_PLAN/Work_plan_3gpp_2026_09_28.xlsx",
+  "workPlanFetched": 1792137428804,
+  "issuesAnalysed": {
+   "TS 22.268": {
+    "17": "V17.2.1",
+    "18": "V18.5.1",
+    "19": "V19.3.0",
+    "20": "V20.3.0"
+   },
+   "TS 23.041": {
+    "17": "V17.6.0",
+    "18": "V18.8.0",
+    "19": "V19.4.0",
+    "20": "V20.0.0"
+   },
+   "TS 29.168": {
+    "17": "V17.1.0",
+    "18": "V18.0.0",
+    "19": "V19.0.0",
+    "20": "V19.0.0"
+   },
+   "TS 36.331": {
+    "17": "V17.16.0",
+    "18": "V18.11.0",
+    "19": "V19.4.0",
+    "20": "V19.4.0"
+   },
+   "TS 36.523-1": {},
+   "ETSI TS 103 720": {
+    "17": "V1.2.1",
+    "18": "V1.2.1",
+    "19": "V1.2.1",
+    "20": "V1.2.1"
+   },
+   "ETSI TS 102 900": {
+    "17": "V1.4.1",
+    "18": "V1.4.1",
+    "19": "V1.4.1",
+    "20": "V1.4.1"
+   },
+   "OASIS CAP v1.2": {
+    "17": "v1.2",
+    "18": "v1.2",
+    "19": "v1.2",
+    "20": "v1.2"
+   }
+  },
+  "websiteCommit": "955c88a",
+  "rules": "projects/emergency-alerts/explore.yaml"
+ },
+ "topicList": [
+  "General"
+ ],
+ "otherBodies": {
+  "from": [
+   "TS 22.268",
+   "TS 23.041",
+   "TS 29.168",
+   "TS 36.331"
+  ],
+  "clause": "2",
+  "references": [
+   {
+    "key": "ITU-T X.680",
+    "body": "ITU-T",
+    "id": "ITU-T X.680",
+    "title": "Information Technology - Abstract Syntax Notation One (ASN.1): Specification of basic notation",
+    "by": {
+     "17": [
+      "TS 29.168",
+      "TS 36.331"
+     ],
+     "18": [
+      "TS 29.168",
+      "TS 36.331"
+     ],
+     "19": [
+      "TS 29.168",
+      "TS 36.331"
+     ],
+     "20": [
+      "TS 29.168",
+      "TS 36.331"
+     ]
+    },
+    "label": "ITU-T X.680",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "ITU-T X.681",
+    "body": "ITU-T",
+    "id": "ITU-T X.681",
+    "title": "Information Technology - Abstract Syntax Notation One (ASN.1): Information object specification",
+    "by": {
+     "17": [
+      "TS 29.168",
+      "TS 36.331"
+     ],
+     "18": [
+      "TS 29.168",
+      "TS 36.331"
+     ],
+     "19": [
+      "TS 29.168",
+      "TS 36.331"
+     ],
+     "20": [
+      "TS 29.168",
+      "TS 36.331"
+     ]
+    },
+    "label": "ITU-T X.681",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "ITU-T X.691",
+    "body": "ITU-T",
+    "id": "ITU-T X.691",
+    "title": "Information technology - ASN.1 encoding rules: Specification of Packed Encoding Rules (PER)",
+    "by": {
+     "17": [
+      "TS 29.168",
+      "TS 36.331"
+     ],
+     "18": [
+      "TS 29.168",
+      "TS 36.331"
+     ],
+     "19": [
+      "TS 29.168",
+      "TS 36.331"
+     ],
+     "20": [
+      "TS 29.168",
+      "TS 36.331"
+     ]
+    },
+    "label": "ITU-T X.691",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "ETSI TS 102 900",
+    "body": "ETSI",
+    "id": "ETSI TS 102 900",
+    "title": "European Public Warning System (EU-ALE) using the Cell Broadcast Service",
+    "by": {
+     "17": [
+      "TS 22.268"
+     ],
+     "18": [
+      "TS 22.268"
+     ],
+     "19": [
+      "TS 22.268"
+     ],
+     "20": [
+      "TS 22.268"
+     ]
+    },
+    "label": "ETSI TS 102 900",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 4960",
+    "body": "IETF",
+    "id": "IETF RFC 4960",
+    "title": "Stream Control Transmission Protocol",
+    "by": {
+     "17": [
+      "TS 29.168"
+     ],
+     "18": [
+      "TS 29.168"
+     ],
+     "19": [
+      "TS 29.168"
+     ],
+     "20": [
+      "TS 29.168"
+     ]
+    },
+    "label": "IETF RFC 4960",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 791",
+    "body": "IETF",
+    "id": "IETF RFC 791",
+    "title": "Internet Protocol",
+    "by": {
+     "17": [
+      "TS 29.168"
+     ],
+     "18": [
+      "TS 29.168"
+     ],
+     "19": [
+      "TS 29.168"
+     ],
+     "20": [
+      "TS 29.168"
+     ]
+    },
+    "label": "IETF RFC 791",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 8200",
+    "body": "IETF",
+    "id": "IETF RFC 8200",
+    "title": "Internet Protocol, Version 6 (IPv6) Specification",
+    "by": {
+     "17": [
+      "TS 29.168"
+     ],
+     "18": [
+      "TS 29.168"
+     ],
+     "19": [
+      "TS 29.168"
+     ],
+     "20": [
+      "TS 29.168"
+     ]
+    },
+    "label": "IETF RFC 8200",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IEEE ieee802112012part11",
+    "body": "IEEE",
+    "id": "IEEE 802.11-2012, Part 11",
+    "title": "IEEE 802.11-2012, Part 11: Wireless LAN Medium Access Control (MAC) and Physical Layer (PHY) specifications, IEEE Std",
+    "by": {
+     "17": [
+      "TS 36.331"
+     ],
+     "18": [
+      "TS 36.331"
+     ],
+     "19": [
+      "TS 36.331"
+     ],
+     "20": [
+      "TS 36.331"
+     ]
+    },
+    "label": "IEEE 802.11-2012, Part 11: Wireless LAN Medium Access Control (MAC) and Physical Layer (PHY) specifications, IEEE Std",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other bluetoothcorespecificationv50",
+    "body": "Other",
+    "id": "Bluetooth Core Specification v5.0",
+    "title": "Bluetooth Core Specification v5.0",
+    "by": {
+     "17": [
+      "TS 36.331"
+     ],
+     "18": [
+      "TS 36.331"
+     ],
+     "19": [
+      "TS 36.331"
+     ],
+     "20": [
+      "TS 36.331"
+     ]
+    },
+    "label": "Bluetooth Core Specification v5.0",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other fcc16127federalcommunicationscommissionreportandorderandfurt",
+    "body": "Other",
+    "id": "FCC 16-127, Federal Communications Commission Report and Order and Further Notice of Proposed Rulemaking In the Matter of Wireless Emergency Alerts Amendments to Part 11 of the Commission’s Rules Regarding the Emergency Alert System; September 29, 2016",
+    "title": "FCC 16-127, Federal Communications Commission Report and Order and Further Notice of Proposed Rulemaking In the Matter of Wireless Emergency Alerts Amendments to Part 11 of the Commission’s Rules Rega",
+    "by": {
+     "17": [
+      "TS 22.268"
+     ],
+     "18": [
+      "TS 22.268"
+     ],
+     "19": [
+      "TS 22.268"
+     ],
+     "20": [
+      "TS 22.268"
+     ]
+    },
+    "label": "FCC 16-127, Federal Communications Commission Report and Order and Further Notice of Proposed Rulemaking In the Matter of Wireless Emergency Alerts Amendments to Part 11 of the Commission’s Rules Rega",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other fcc184federalcommunicationscommissionsecondreportandorderand",
+    "body": "Other",
+    "id": "FCC 18-4, Federal Communications Commission Second Report and Order and Second Order on Reconsideration In the Matter of Wireless Emergency Alerts and Amendments to Part 11 of the Commission’s Rules Regarding the Emergency Alert System; January 30, 2018",
+    "title": "FCC 18-4, Federal Communications Commission Second Report and Order and Second Order on Reconsideration In the Matter of Wireless Emergency Alerts and Amendments to Part 11 of the Commission’s Rules R",
+    "by": {
+     "17": [
+      "TS 22.268"
+     ],
+     "18": [
+      "TS 22.268"
+     ],
+     "19": [
+      "TS 22.268"
+     ],
+     "20": [
+      "TS 22.268"
+     ]
+    },
+    "label": "FCC 18-4, Federal Communications Commission Second Report and Order and Second Order on Reconsideration In the Matter of Wireless Emergency Alerts and Amendments to Part 11 of the Commission’s Rules R",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other fcc2514federalcommunicationscommissionreportandorderonsilent",
+    "body": "Other",
+    "id": "FCC 25-14, Federal Communications Commission Report and Order on silent alerting; March 18, 2025",
+    "title": "FCC 25-14, Federal Communications Commission Report and Order on silent alerting; March 18, 2025",
+    "by": {
+     "20": [
+      "TS 22.268"
+     ]
+    },
+    "label": "FCC 25-14, Federal Communications Commission Report and Order on silent alerting; March 18, 2025",
+    "releases": [
+     "20"
+    ],
+    "listedIn": [
+     "20"
+    ]
+   },
+   {
+    "key": "Other federalcommunicationscommissionfirstreportandorderinthematte",
+    "body": "Other",
+    "id": "Federal Communications Commission First Report and Order In the Matter of The Commercial Alert System",
+    "title": "Federal Communications Commission First Report and Order In the Matter of The Commercial Alert System",
+    "by": {
+     "17": [
+      "TS 22.268"
+     ],
+     "18": [
+      "TS 22.268"
+     ],
+     "19": [
+      "TS 22.268"
+     ],
+     "20": [
+      "TS 22.268"
+     ]
+    },
+    "label": "Federal Communications Commission First Report and Order In the Matter of The Commercial Alert System",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other federalcommunicationscommissionsecondreportandorderandfurthe",
+    "body": "Other",
+    "id": "Federal Communications Commission Second Report and Order and Further Notice of Proposed Rulemaking In the Matter of The Commercial Mobile Alert System",
+    "title": "Federal Communications Commission Second Report and Order and Further Notice of Proposed Rulemaking In the Matter of The Commercial Mobile Alert System",
+    "by": {
+     "17": [
+      "TS 22.268"
+     ],
+     "18": [
+      "TS 22.268"
+     ],
+     "19": [
+      "TS 22.268"
+     ],
+     "20": [
+      "TS 22.268"
+     ]
+    },
+    "label": "Federal Communications Commission Second Report and Order and Further Notice of Proposed Rulemaking In the Matter of The Commercial Mobile Alert System",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other federalcommunicationscommissionthirdreportandorderandfurther",
+    "body": "Other",
+    "id": "Federal Communications Commission Third Report and Order and Further Notice of Proposed Rulemaking In the Matter of The Commercial Mobile Alert System",
+    "title": "Federal Communications Commission Third Report and Order and Further Notice of Proposed Rulemaking In the Matter of The Commercial Mobile Alert System",
+    "by": {
+     "17": [
+      "TS 22.268"
+     ],
+     "18": [
+      "TS 22.268"
+     ],
+     "19": [
+      "TS 22.268"
+     ],
+     "20": [
+      "TS 22.268"
+     ]
+    },
+    "label": "Federal Communications Commission Third Report and Order and Further Notice of Proposed Rulemaking In the Matter of The Commercial Mobile Alert System",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other jointatistiacmasmobiledevicebehaviorspecification",
+    "body": "Other",
+    "id": "Joint ATIS/TIA-CMAS Mobile Device Behavior Specification",
+    "title": "Joint ATIS/TIA-CMAS Mobile Device Behavior Specification",
+    "by": {
+     "17": [
+      "TS 22.268"
+     ],
+     "18": [
+      "TS 22.268"
+     ],
+     "19": [
+      "TS 22.268"
+     ],
+     "20": [
+      "TS 22.268"
+     ]
+    },
+    "label": "Joint ATIS/TIA-CMAS Mobile Device Behavior Specification",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other koreanpublicalertsystemoverltenetwork",
+    "body": "Other",
+    "id": "Korean Public Alert System over LTE network",
+    "title": "Korean Public Alert System over LTE network",
+    "by": {
+     "17": [
+      "TS 22.268"
+     ]
+    },
+    "label": "Korean Public Alert System over LTE network",
+    "releases": [
+     "17"
+    ],
+    "listedIn": [
+     "17"
+    ]
+   },
+   {
+    "key": "Other militarystandarddepartmentofdefenceworldgeodeticsystemwgs",
+    "body": "Other",
+    "id": "Military Standard Department of Defence World Geodetic System (WGS)",
+    "title": "Military Standard Department of Defence World Geodetic System (WGS)",
+    "by": {
+     "17": [
+      "TS 36.331"
+     ],
+     "18": [
+      "TS 36.331"
+     ],
+     "19": [
+      "TS 36.331"
+     ],
+     "20": [
+      "TS 36.331"
+     ]
+    },
+    "label": "Military Standard Department of Defence World Geodetic System (WGS)",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other recommendationforspacedatasystemstandardsorbitdatamessages",
+    "body": "Other",
+    "id": "Recommendation for Space Data System Standards: ORBIT DATA MESSAGES",
+    "title": "Recommendation for Space Data System Standards: ORBIT DATA MESSAGES",
+    "by": {
+     "17": [
+      "TS 36.331"
+     ],
+     "18": [
+      "TS 36.331"
+     ],
+     "19": [
+      "TS 36.331"
+     ],
+     "20": [
+      "TS 36.331"
+     ]
+    },
+    "label": "Recommendation for Space Data System Standards: ORBIT DATA MESSAGES",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other requirementsandmessageformatforkoreanpublicalertsystemovermo",
+    "body": "Other",
+    "id": "Requirements and Message Format for Korean Public Alert System over Mobile Network",
+    "title": "Requirements and Message Format for Korean Public Alert System over Mobile Network",
+    "by": {
+     "18": [
+      "TS 22.268"
+     ],
+     "19": [
+      "TS 22.268"
+     ],
+     "20": [
+      "TS 22.268"
+     ]
+    },
+    "label": "Requirements and Message Format for Korean Public Alert System over Mobile Network",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other wea30devicebasedgeofencing",
+    "body": "Other",
+    "id": "WEA 3.0: Device-Based Geo-Fencing",
+    "title": "WEA 3.0: Device-Based Geo-Fencing",
+    "by": {
+     "17": [
+      "TS 36.331"
+     ],
+     "18": [
+      "TS 36.331"
+     ],
+     "19": [
+      "TS 36.331"
+     ],
+     "20": [
+      "TS 36.331"
+     ]
+    },
+    "label": "WEA 3.0: Device-Based Geo-Fencing",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other wifialliancetechnicalcommitteehotspot20technicaltaskgrouphot",
+    "body": "Other",
+    "id": "Wi-Fi Alliance® Technical Committee, Hotspot 2.0 Technical Task Group Hotspot 2.0 (Release 2) Technical Specification Version 3.11",
+    "title": "Wi-Fi Alliance® Technical Committee, Hotspot 2.0 Technical Task Group Hotspot 2.0 (Release 2) Technical Specification Version 3.11",
+    "by": {
+     "17": [
+      "TS 36.331"
+     ],
+     "18": [
+      "TS 36.331"
+     ],
+     "19": [
+      "TS 36.331"
+     ],
+     "20": [
+      "TS 36.331"
+     ]
+    },
+    "label": "Wi-Fi Alliance® Technical Committee, Hotspot 2.0 Technical Task Group Hotspot 2.0 (Release 2) Technical Specification Version 3.11",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other wirelessemergencyalertsandtheemergencyalertsystem",
+    "body": "Other",
+    "id": "Wireless Emergency Alerts and the Emergency Alert System",
+    "title": "Wireless Emergency Alerts and the Emergency Alert System",
+    "by": {
+     "20": [
+      "TS 22.268"
+     ]
+    },
+    "label": "Wireless Emergency Alerts and the Emergency Alert System",
+    "releases": [
+     "20"
+    ],
+    "listedIn": [
+     "20"
+    ]
+   }
+  ],
+  "listedButNeverCited": [
+   {
+    "label": "Navstar GPS Space Segment/Navigation User Segment Interfaces",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   }
+  ]
+ },
+ "documents": [
+  {
+   "id": "ETSI TS 103 720",
+   "title": "5G Broadcast System for linear TV and radio services",
+   "url": "https://www.etsi.org/deliver/etsi_ts/103700_103799/103720/01.02.01_60/ts_103720v010201p.pdf",
+   "layer": "System specification",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "source": "Standards page entry (not a 3GPP document)",
+   "releases": {},
+   "topics": []
+  },
+  {
+   "id": "TS 22.268",
+   "title": "Public Warning System (PWS) requirements",
+   "url": "https://www.3gpp.org/dynareport/22268.htm",
+   "layer": "Service requirements",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "firstRelease": "10",
+   "releases": {
+    "17": {
+     "release": "17",
+     "version": "V17.2.1",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 122,
+     "statementsAtCreation": null,
+     "statementsAdded": 122,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    },
+    "18": {
+     "release": "18",
+     "version": "V18.5.1",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 139,
+     "statementsAtCreation": null,
+     "statementsAdded": 22,
+     "statementsRemoved": 5,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    },
+    "19": {
+     "release": "19",
+     "version": "V19.3.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 141,
+     "statementsAtCreation": null,
+     "statementsAdded": 4,
+     "statementsRemoved": 2,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    },
+    "20": {
+     "release": "20",
+     "version": "V20.3.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 144,
+     "statementsAtCreation": null,
+     "statementsAdded": 10,
+     "statementsRemoved": 7,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 1130012,
+       "acronym": "MLT-REQ",
+       "name": "Stage 1 for Multilingual Template-based alerts",
+       "completion": 0,
+       "ref": "SP-261004"
+      }
+     ]
+    }
+   },
+   "baselineIssue": {
+    "release": "20",
+    "version": "V20.3.0"
+   },
+   "latestIssue": {
+    "release": "20",
+    "version": "V20.3.0"
+   },
+   "titleFrom": "Standards page entry",
+   "scope": {
+    "text": "This Technical Specification defines the stage one description of the Public Warning System (PWS) Requirements. Stage one is the set of requirements seen primarily from the users’ and service providers’ points of view.",
+    "firstSentence": "This Technical Specification defines the stage one description of the Public Warning System (PWS) Requirements.",
+    "clause": "1",
+    "version": "V20.3.0"
+   },
+   "topics": [
+    {
+     "name": "General",
+     "statements": 144,
+     "share": 1.0
+    }
+   ]
+  },
+  {
+   "id": "TS 23.041",
+   "title": "Technical realization of Cell Broadcast Service (CBS)",
+   "url": "https://www.3gpp.org/dynareport/23041.htm",
+   "layer": "Warning message realisation",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "firstRelease": "10",
+   "releases": {
+    "17": {
+     "release": "17",
+     "version": "V17.6.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 332,
+     "statementsAtCreation": null,
+     "statementsAdded": 332,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 880019,
+       "acronym": "5GProtoc17",
+       "name": "Stage-3 5GS NAS protocol development 17",
+       "completion": 1,
+       "ref": "CP-201163"
+      },
+      {
+       "wid": 880045,
+       "acronym": "5GProtoc17-non3GPP",
+       "name": "Stage-3 5GS NAS protocol development 17 non-IETF aspects",
+       "completion": 1,
+       "ref": "CP-201163"
+      }
+     ]
+    },
+    "18": {
+     "release": "18",
+     "version": "V18.8.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 328,
+     "statementsAtCreation": null,
+     "statementsAdded": 9,
+     "statementsRemoved": 13,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 960055,
+       "acronym": "5GProtoc18",
+       "name": "Stage-3 5GS NAS protocol development 18",
+       "completion": 1,
+       "ref": "CP-221268"
+      },
+      {
+       "wid": 960007,
+       "acronym": "5GProtoc18",
+       "name": "Stage-3 5GS NAS protocol development 18 general aspects",
+       "completion": 1,
+       "ref": "CP-221268"
+      },
+      {
+       "wid": 960056,
+       "acronym": "5GProtoc18-non3GPP",
+       "name": "Stage-3 5GS NAS protocol development 18 non 3GPP aspects",
+       "completion": 1,
+       "ref": "CP-221268"
+      }
+     ]
+    },
+    "19": {
+     "release": "19",
+     "version": "V19.4.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 335,
+     "statementsAtCreation": null,
+     "statementsAdded": 12,
+     "statementsRemoved": 5,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 1050026,
+       "acronym": "VMR_Ph2",
+       "name": "CT aspects of Vehicle Mounted Relays Phase 2",
+       "completion": 1,
+       "ref": "CP-251221"
+      },
+      {
+       "wid": 1070009,
+       "acronym": "PWS_NTN",
+       "name": "Support for PWS in Satellite E-UTRAN and Satellite NG-RAN",
+       "completion": 1,
+       "ref": "CP-251222"
+      }
+     ]
+    },
+    "20": {
+     "release": "20",
+     "version": "V20.0.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 335,
+     "statementsAtCreation": null,
+     "statementsAdded": 0,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 1110012,
+       "acronym": "CPAS-CT",
+       "name": "CT aspects of CPAS",
+       "completion": 0.9,
+       "ref": "CP-260046"
+      }
+     ]
+    }
+   },
+   "baselineIssue": {
+    "release": "20",
+    "version": "V20.0.0"
+   },
+   "latestIssue": {
+    "release": "20",
+    "version": "V20.0.0"
+   },
+   "titleFrom": "Standards page entry",
+   "scope": {
+    "text": "The present document describes the Cell Broadcast short message service (CBS) for GSM and UMTS.",
+    "firstSentence": "The present document describes the Cell Broadcast short message service (CBS) for GSM and UMTS.",
+    "clause": "1",
+    "version": "V20.0.0"
+   },
+   "topics": [
+    {
+     "name": "General",
+     "statements": 335,
+     "share": 1.0
+    }
+   ]
+  },
+  {
+   "id": "TS 29.168",
+   "title": "Cell Broadcast Centre interfaces with the Evolved Packet Core; Stage 3",
+   "url": "https://www.3gpp.org/dynareport/29168.htm",
+   "layer": "Warning message realisation",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "firstRelease": "10",
+   "releases": {
+    "17": {
+     "release": "17",
+     "version": "V17.1.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 167,
+     "statementsAtCreation": null,
+     "statementsAdded": 167,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    },
+    "18": {
+     "release": "18",
+     "version": "V18.0.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 167,
+     "statementsAtCreation": null,
+     "statementsAdded": 0,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    },
+    "19": {
+     "release": "19",
+     "version": "V19.0.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 167,
+     "statementsAtCreation": null,
+     "statementsAdded": 0,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    },
+    "20": {
+     "release": "20",
+     "version": "V19.0.0",
+     "newIssue": false,
+     "analysed": true,
+     "statementsInForce": 167,
+     "statementsAtCreation": null,
+     "statementsAdded": 0,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    }
+   },
+   "baselineIssue": {
+    "release": "19",
+    "version": "V19.0.0"
+   },
+   "latestIssue": {
+    "release": "19",
+    "version": "V19.0.0"
+   },
+   "titleFrom": "cover",
+   "scope": {
+    "text": "The present document specifies the procedures and the SBc Application Part (SBc-AP) messages used on the SBc-AP interface between the Mobility Management Entity (MME) and the Cell Broadcast Centre (CBC), and between the Public Warning System – Inter Working Function (PWS-IWF) and the CBC.",
+    "firstSentence": "The present document specifies the procedures and the SBc Application Part (SBc-AP) messages used on the SBc-AP interface between the Mobility Management Entity (MME) and the Cell Broadcast Centre (CBC), and between the Public Warning System – Inter Working Function (PWS-IWF) and the CBC.",
+    "clause": "1",
+    "version": "V19.0.0"
+   },
+   "topics": [
+    {
+     "name": "General",
+     "statements": 167,
+     "share": 1.0
+    }
+   ]
+  },
+  {
+   "id": "ETSI TS 102 900",
+   "title": "Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service",
+   "url": "https://www.etsi.org/deliver/etsi_ts/102900_102999/102900/01.04.01_60/ts_102900v010401p.pdf",
+   "layer": "Warning message realisation",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "source": "Standards page entry (not a 3GPP document)",
+   "releases": {},
+   "topics": []
+  },
+  {
+   "id": "OASIS CAP v1.2",
+   "title": "Common Alerting Protocol",
+   "url": "https://docs.oasis-open.org/emergency/cap/v1.2/CAP-v1.2-os.pdf",
+   "layer": "Warning message realisation",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "source": "Standards page entry (not a 3GPP document)",
+   "releases": {},
+   "topics": []
+  },
+  {
+   "id": "TS 36.331",
+   "title": "Evolved Universal Terrestrial Radio Access (E-UTRA); Radio Resource Control (RRC); Protocol specification",
+   "url": "https://www.3gpp.org/dynareport/36331.htm",
+   "layer": "Radio interface",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "firstRelease": "10",
+   "releases": {
+    "17": {
+     "release": "17",
+     "version": "V17.16.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 49,
+     "statementsAtCreation": null,
+     "statementsAdded": 49,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    },
+    "18": {
+     "release": "18",
+     "version": "V18.11.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 49,
+     "statementsAtCreation": null,
+     "statementsAdded": 0,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    },
+    "19": {
+     "release": "19",
+     "version": "V19.4.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 50,
+     "statementsAtCreation": null,
+     "statementsAdded": 47,
+     "statementsRemoved": 46,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    },
+    "20": {
+     "release": "20",
+     "version": "V19.4.0",
+     "newIssue": false,
+     "analysed": true,
+     "statementsInForce": 50,
+     "statementsAtCreation": null,
+     "statementsAdded": 0,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    }
+   },
+   "baselineIssue": {
+    "release": "19",
+    "version": "V19.4.0"
+   },
+   "latestIssue": {
+    "release": "19",
+    "version": "V19.4.0"
+   },
+   "titleFrom": "Standards page entry",
+   "scope": {
+    "text": "The present document specifies the Radio Resource Control protocol for the radio interface between UE and E-UTRAN as well as for the radio interface between RN and E-UTRAN.",
+    "firstSentence": "The present document specifies the Radio Resource Control protocol for the radio interface between UE and E-UTRAN as well as for the radio interface between RN and E-UTRAN.",
+    "clause": "1",
+    "version": "V19.4.0"
+   },
+   "topics": [
+    {
+     "name": "General",
+     "statements": 50,
+     "share": 1.0
+    }
+   ]
+  },
+  {
+   "id": "TS 36.523-1",
+   "title": "Evolved Universal Terrestrial Radio Access (E-UTRA) and Evolved Packet Core (EPC); User Equipment (UE) conformance specification; Part 1: Protocol conformance specification",
+   "url": "https://www.3gpp.org/dynareport/36523-1.htm",
+   "layer": "Conformance testing",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "source": "no issue listed in the 3GPP archive",
+   "releases": {},
+   "topics": []
+  },
+  {
+   "id": "TR 36.976",
+   "title": "Overall description of LTE-based 5G broadcast",
+   "url": "https://www.3gpp.org/dynareport/36976.htm",
+   "layer": "Overview",
+   "kind": "TR",
+   "explored": false,
+   "scopeNote": "a Technical Report: informative",
+   "firstRelease": "16",
+   "releases": {
+    "17": {
+     "release": "17",
+     "version": "V17.0.0",
+     "newIssue": true,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": []
+    },
+    "18": {
+     "release": "18",
+     "version": "V18.0.0",
+     "newIssue": true,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": []
+    },
+    "19": {
+     "release": "19",
+     "version": "V19.0.0",
+     "newIssue": true,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": []
+    },
+    "20": {
+     "release": "20",
+     "version": "V19.0.0",
+     "newIssue": false,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": []
+    }
+   },
+   "baselineIssue": {
+    "release": "19",
+    "version": "V19.0.0"
+   },
+   "latestIssue": {
+    "release": "19",
+    "version": "V19.0.0"
+   },
+   "titleFrom": "cover",
+   "scope": {
+    "text": "The present document provides an overview and overall description of the LTE-based 5G terrestrial broadcast comprising: a service delivering Free To Air content [2];",
+    "firstSentence": "The present document provides an overview and overall description of the LTE-based 5G terrestrial broadcast comprising: a service delivering Free To Air content [2];",
+    "clause": "1",
+    "version": "V19.0.0"
+   },
+   "topics": []
+  }
+ ],
+ "problems": [],
+ "notes": [
+  "A release with no issue of a document leaves the issue of the earlier release in force.",
+  "Statement counts are by wording: a reworded statement counts as one removed and one added; the moved counts are the part that is the same text in another document of the project.",
+  "A count is null where the release was not analysed (a tracked release, or a document that is not explored)."
+ ]
+}
