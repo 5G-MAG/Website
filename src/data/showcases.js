@@ -221,4 +221,119 @@ export const SHOWCASE_BASKETS = {
       },
     ],
   },
+  'non-terrestrial-networks': {
+    basket: 'ntn',
+    title: 'Non-Terrestrial Networks (NTN)',
+    description: 'Satellite and high-altitude platform access for media: what it means for multicast and broadcast delivery.',
+    // docs/tech/ntn (overview and MBS Broadcast NTN analysis): Release 17 NTN; Release 19 broadcast MBS over NR NTN
+    lead:
+      '5G coverage by satellite and high-altitude platforms, standardised in 3GPP Release 17, reaches areas that terrestrial networks do not serve.\n\nFor media, NTN is not a system of its own: it is a delivery layer under existing 5G services such as MBS Multicast and MBS Broadcast. There is no dedicated NTN reference tool; the 5G MBS tools are the relevant software.',
+    topics: [
+      {
+        id: 'mbs-over-ntn',
+        project: '5g-mbs', // there is no NTN tool; the MBS Reference Tools are the relevant software
+        learn: '/tech/ntn',
+        projectLabel: 'Non-Terrestrial Networks in 5G Systems, with 5G Multicast Broadcast Services (MBS)',
+        icon: 'satellite-link',
+        title: 'Multicast and broadcast over satellite',
+        diagram: null,
+        showcase: {
+          title: 'Broadcast reaches where terrestrial networks do not',
+          about:
+            'Release 19 supports a broadcast MBS session over NR non-terrestrial networks. The session works as it does terrestrially; NTN adds an Intended Service Area, a geographical area signalled for the broadcast service, so a device can start or stop receiving it as it enters or leaves the area.',
+          status: 'early',
+          features: [
+            { name: 'Broadcast MBS session over NR NTN (Release 19)', status: 'unknown' },
+            { name: 'Intended Service Area for MBS broadcast', status: 'unknown' },
+          ],
+        },
+        pipeline: [],
+      },
+    ],
+  },
+  'immersive-media': {
+    basket: 'immersive-media',
+    title: 'Immersive Media',
+    description: 'Immersive media over 5G: 3D scenes, volumetric video, dynamic meshes, avatars and the formats that lead to them, one topic per project.',
+    // the projects' own taglines and landing pages
+    lead:
+      'Media that goes beyond flat video: dynamic 3D scenes, volumetric video, compressed 3D meshes, conversational avatars, and the evaluation of the formats that lead to them.\n\nEach topic below belongs to one project, with what the Reference Tools offer today.',
+    topics: [
+      {
+        id: 'xr-scenes',
+        project: 'xr',
+        icon: 'ar-frame',
+        title: 'XR and 3D scenes',
+        diagram: null,
+        showcase: {
+          title: 'Compose and deliver dynamic 3D scenes',
+          about:
+            'Composing, positioning and temporally synchronising dynamic 3D visual and audio objects for XR. The tools deliver scenes made of glTF objects, spatial audio and haptic elements through 5G Media Streaming.',
+          status: 'early',
+          features: [],
+        },
+        pipeline: [],
+      },
+      {
+        id: 'volumetric-video',
+        project: 'v3c',
+        icon: 'virtual-space',
+        title: 'Volumetric video',
+        diagram: null,
+        showcase: {
+          title: 'Move freely around volumetric content',
+          about:
+            'An end-to-end pipeline for 3D object and scene delivery, so viewers can move freely around volumetric video.',
+          status: 'early',
+          features: [],
+        },
+        pipeline: [],
+      },
+      {
+        id: 'dynamic-meshes',
+        project: 'vdmc',
+        icon: 'icosahedron',
+        title: 'Dynamic meshes',
+        diagram: null,
+        showcase: {
+          title: 'Compress moving 3D surfaces for real-time use',
+          about:
+            'Compressing moving 3D surface meshes for real-time immersive environments. The reference tool, a web decoder and player for V-DMC content, is in early development.',
+          status: 'early',
+          features: [],
+        },
+        pipeline: [],
+      },
+      {
+        id: 'beyond-2d',
+        project: 'beyond-2d',
+        icon: 'cube',
+        title: 'Beyond 2D video',
+        diagram: null,
+        showcase: {
+          title: 'Evaluate formats that go beyond flat video',
+          about:
+            'Evaluating and characterising stereoscopic video, multi-view video, video plus depth, point clouds and dynamic meshes, with an evaluation framework.',
+          status: 'early',
+          features: [],
+        },
+        pipeline: [],
+      },
+      {
+        id: 'avatars',
+        project: 'avatar',
+        icon: 'avatar-figure',
+        title: 'Conversational avatars',
+        diagram: null,
+        showcase: {
+          title: 'Real-time avatar calls',
+          about:
+            'Avatars are digital representations of participants, animated in real time from audio and video input, for immersive calls and virtual presence. The tools provide codec, rendering and streaming for avatar communication over 5G.',
+          status: 'early',
+          features: [],
+        },
+        pipeline: [],
+      },
+    ],
+  },
 };

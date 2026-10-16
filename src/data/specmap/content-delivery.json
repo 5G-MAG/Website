@@ -1,0 +1,5303 @@
+{
+ "project": "Content Delivery Protocols",
+ "slug": "content-delivery",
+ "standardsUrl": "/standards/content-delivery",
+ "generated": "2026-10-16",
+ "tool": "specmap.py 7",
+ "releases": {
+  "analysed": [
+   "17",
+   "18",
+   "19",
+   "20"
+  ],
+  "baseline": "20",
+  "tracking": [],
+  "open": []
+ },
+ "inputs": {
+  "workPlan": "https://www.3gpp.org/ftp/Information/WORK_PLAN/Work_plan_3gpp_2026_09_28.xlsx",
+  "workPlanFetched": 1792137428804,
+  "issuesAnalysed": {
+   "TS 26.346": {
+    "17": "V17.6.0",
+    "18": "V18.2.0",
+    "19": "V19.3.0",
+    "20": "V19.3.0"
+   },
+   "TS 26.347": {
+    "17": "V17.2.0",
+    "18": "V18.1.0",
+    "19": "V19.0.0",
+    "20": "V19.0.0"
+   },
+   "TS 23.246": {
+    "17": "V17.0.0",
+    "18": "V18.0.0",
+    "19": "V19.0.0",
+    "20": "V19.0.0"
+   },
+   "TS 26.517": {
+    "17": "V17.11.0",
+    "18": "V18.7.0",
+    "19": "V19.3.0",
+    "20": "V19.3.0"
+   },
+   "TS 26.502": {
+    "17": "V17.13.0",
+    "18": "V18.7.0",
+    "19": "V19.6.0",
+    "20": "V19.6.0"
+   },
+   "TS 23.247": {
+    "17": "V17.12.0",
+    "18": "V18.8.0",
+    "19": "V19.3.0",
+    "20": "V20.0.0"
+   },
+   "TS 29.581": {
+    "17": "V17.7.0",
+    "18": "V18.6.0",
+    "19": "V19.3.0",
+    "20": "V20.0.0"
+   },
+   "TS 26.247": {
+    "17": "V17.4.2",
+    "18": "V18.5.0",
+    "19": "V19.1.0",
+    "20": "V19.1.0"
+   },
+   "RFC 3926": {
+    "17": "RFC 3926",
+    "18": "RFC 3926",
+    "19": "RFC 3926",
+    "20": "RFC 3926"
+   },
+   "RFC 3450": {
+    "17": "RFC 3450",
+    "18": "RFC 3450",
+    "19": "RFC 3450",
+    "20": "RFC 3450"
+   },
+   "RFC 3451": {
+    "17": "RFC 3451",
+    "18": "RFC 3451",
+    "19": "RFC 3451",
+    "20": "RFC 3451"
+   },
+   "RFC 5052": {
+    "17": "RFC 5052",
+    "18": "RFC 5052",
+    "19": "RFC 5052",
+    "20": "RFC 5052"
+   },
+   "RFC 3695": {
+    "17": "RFC 3695",
+    "18": "RFC 3695",
+    "19": "RFC 3695",
+    "20": "RFC 3695"
+   },
+   "RFC 5053": {
+    "17": "RFC 5053",
+    "18": "RFC 5053",
+    "19": "RFC 5053",
+    "20": "RFC 5053"
+   },
+   "RFC 1952": {
+    "17": "RFC 1952",
+    "18": "RFC 1952",
+    "19": "RFC 1952",
+    "20": "RFC 1952"
+   },
+   "RFC 4607": {
+    "17": "RFC 4607",
+    "18": "RFC 4607",
+    "19": "RFC 4607",
+    "20": "RFC 4607"
+   },
+   "RFC 4570": {
+    "17": "RFC 4570",
+    "18": "RFC 4570",
+    "19": "RFC 4570",
+    "20": "RFC 4570"
+   },
+   "RFC 5905": {
+    "17": "RFC 5905",
+    "18": "RFC 5905",
+    "19": "RFC 5905",
+    "20": "RFC 5905"
+   },
+   "RFC 8216": {
+    "17": "RFC 8216",
+    "18": "RFC 8216",
+    "19": "RFC 8216",
+    "20": "RFC 8216"
+   },
+   "ETSI TS 103 285": {
+    "17": "V1.4.1",
+    "18": "V1.4.1",
+    "19": "V1.4.1",
+    "20": "V1.4.1"
+   },
+   "ETSI TS 103 973": {
+    "17": "V1.2.2",
+    "18": "V1.2.2",
+    "19": "V1.2.2",
+    "20": "V1.2.2"
+   }
+  },
+  "websiteCommit": "7d66bd6",
+  "rules": "projects/content-delivery/explore.yaml"
+ },
+ "topicList": [
+  "The features",
+  "Sessions, objects and packets",
+  "LCT header and extensions",
+  "The File Delivery Table",
+  "FEC and blocking",
+  "Congestion control and channels",
+  "Content encoding",
+  "Session description",
+  "Reception and operating modes",
+  "Caching directives",
+  "Repair",
+  "Security",
+  "FLUTE version 2",
+  "By release",
+  "Inconsistencies in the text",
+  "General"
+ ],
+ "otherBodies": {
+  "from": [
+   "TS 23.246",
+   "TS 23.247",
+   "TS 26.247",
+   "TS 26.346",
+   "TS 26.347",
+   "TS 26.502",
+   "TS 26.517",
+   "TS 29.581"
+  ],
+  "clause": "2",
+  "references": [
+   {
+    "key": "ISO/IEC 10646-1",
+    "body": "ISO/IEC",
+    "id": "ISO/IEC 10646-1",
+    "title": "Information technology - Universal Multiple-Octet Coded Character Set (UCS) - Part 1: Architecture and Basic Multilingual Plane",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "ISO/IEC 10646-1",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "ISO/IEC 14496-12",
+    "body": "ISO/IEC",
+    "id": "ISO/IEC 14496-12",
+    "title": "Information technology - Coding of audio-visual objects - Part 12: ISO base media file format",
+    "by": {
+     "17": [
+      "TS 26.247"
+     ],
+     "18": [
+      "TS 26.247"
+     ],
+     "19": [
+      "TS 26.247"
+     ],
+     "20": [
+      "TS 26.247"
+     ]
+    },
+    "label": "ISO/IEC 14496-12",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "ISO/IEC 23001-7",
+    "body": "ISO/IEC",
+    "id": "ISO/IEC 23001-7",
+    "title": "Information technology -- MPEG systems technologies -- Part 7: Common encryption in ISO base media file format files",
+    "by": {
+     "17": [
+      "TS 26.247"
+     ],
+     "18": [
+      "TS 26.247"
+     ],
+     "19": [
+      "TS 26.247"
+     ],
+     "20": [
+      "TS 26.247"
+     ]
+    },
+    "label": "ISO/IEC 23001-7",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "ISO/IEC 23009-1",
+    "body": "ISO/IEC",
+    "id": "ISO/IEC 23009-1",
+    "title": "Information technology — Dynamic adaptive streaming over HTTP (DASH) — Part 1: Media presentation description and segment formats",
+    "by": {
+     "17": [
+      "TS 26.346",
+      "TS 26.247"
+     ],
+     "18": [
+      "TS 26.346",
+      "TS 26.247"
+     ],
+     "19": [
+      "TS 26.346",
+      "TS 26.517",
+      "TS 26.247"
+     ],
+     "20": [
+      "TS 26.346",
+      "TS 26.517",
+      "TS 26.247"
+     ]
+    },
+    "label": "ISO/IEC 23009-1",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "ISO/IEC 23009-2",
+    "body": "ISO/IEC",
+    "id": "ISO/IEC 23009-2",
+    "title": "Information technology — Dynamic adaptive streaming over HTTP (DASH) — Part 2: Conformance and Reference Software",
+    "by": {
+     "17": [
+      "TS 26.247"
+     ],
+     "18": [
+      "TS 26.247"
+     ],
+     "19": [
+      "TS 26.247"
+     ],
+     "20": [
+      "TS 26.247"
+     ]
+    },
+    "label": "ISO/IEC 23009-2",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "ISO/IEC 23009-3",
+    "body": "ISO/IEC",
+    "id": "ISO/IEC 23009-3",
+    "title": "Information technology — Dynamic adaptive streaming over HTTP (DASH) — Part 3: Implementation and Deployment Guidelines",
+    "by": {
+     "17": [
+      "TS 26.247"
+     ],
+     "18": [
+      "TS 26.247"
+     ],
+     "19": [
+      "TS 26.247"
+     ],
+     "20": [
+      "TS 26.247"
+     ]
+    },
+    "label": "ISO/IEC 23009-3",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "ISO/IEC 23009-5",
+    "body": "ISO/IEC",
+    "id": "ISO/IEC 23009-5",
+    "title": "Information Technology — Dynamic adaptive streaming over HTTP (DASH) — Part 5: Server and network assisted DASH (SAND)",
+    "by": {
+     "17": [
+      "TS 26.247"
+     ],
+     "18": [
+      "TS 26.247"
+     ],
+     "19": [
+      "TS 26.247"
+     ],
+     "20": [
+      "TS 26.247"
+     ]
+    },
+    "label": "ISO/IEC 23009-5",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "ISO 3166",
+    "body": "ISO",
+    "id": "ISO 3166",
+    "title": "Codes for the representation of names of countries and their subdivisions",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "ISO 3166",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "ITU-T H.264",
+    "body": "ITU-T",
+    "id": "ITU-T H.264",
+    "title": "Advanced video coding for generic audiovisual services",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "ITU-T H.264",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "ITU-T H.265",
+    "body": "ITU-T",
+    "id": "ITU-T H.265",
+    "title": "High efficiency video coding",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "ITU-T H.265",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "ETSI TS 103 720",
+    "body": "ETSI",
+    "id": "ETSI TS 103 720",
+    "title": "5G Broadcast System for linear TV and radio services; LTE-based 5G terrestrial broadcast system",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "ETSI TS 103 720",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 1035",
+    "body": "IETF",
+    "id": "IETF RFC 1035",
+    "title": "Domain Names – Implementation and Specification",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "IETF RFC 1035",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 1952",
+    "body": "IETF",
+    "id": "IETF RFC 1952",
+    "title": "GZIP file format specification",
+    "by": {
+     "17": [
+      "TS 26.346",
+      "TS 26.517",
+      "TS 26.247"
+     ],
+     "18": [
+      "TS 26.346",
+      "TS 26.517",
+      "TS 26.247"
+     ],
+     "19": [
+      "TS 26.346",
+      "TS 26.517",
+      "TS 26.247"
+     ],
+     "20": [
+      "TS 26.346",
+      "TS 26.517",
+      "TS 26.247"
+     ]
+    },
+    "label": "IETF RFC 1952",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 2083",
+    "body": "IETF",
+    "id": "IETF RFC 2083",
+    "title": "PNG (Portable Networks Graphics) Specification Version 1.0",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "IETF RFC 2083",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 2326",
+    "body": "IETF",
+    "id": "IETF RFC 2326",
+    "title": "Real Time Streaming Protocol (RTSP)",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "IETF RFC 2326",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 2387",
+    "body": "IETF",
+    "id": "IETF RFC 2387",
+    "title": "The MIME Multipart/Related Content-type",
+    "by": {
+     "17": [
+      "TS 26.517"
+     ],
+     "18": [
+      "TS 26.517"
+     ],
+     "19": [
+      "TS 26.517"
+     ],
+     "20": [
+      "TS 26.517"
+     ]
+    },
+    "label": "IETF RFC 2387",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 2557",
+    "body": "IETF",
+    "id": "IETF RFC 2557",
+    "title": "MIME Encapsulation of Aggregate Documents, such as HTML (MHTML)",
+    "by": {
+     "17": [
+      "TS 26.346",
+      "TS 26.517"
+     ],
+     "18": [
+      "TS 26.346",
+      "TS 26.517"
+     ],
+     "19": [
+      "TS 26.346",
+      "TS 26.517"
+     ],
+     "20": [
+      "TS 26.346",
+      "TS 26.517"
+     ]
+    },
+    "label": "IETF RFC 2557",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 2616",
+    "body": "IETF",
+    "id": "IETF RFC 2616",
+    "title": "Hypertext Transfer Protocol – HTTP/1.1",
+    "by": {
+     "17": [
+      "TS 26.247"
+     ]
+    },
+    "label": "IETF RFC 2616",
+    "releases": [
+     "17"
+    ],
+    "listedIn": [
+     "17"
+    ]
+   },
+   {
+    "key": "IETF RFC 2818",
+    "body": "IETF",
+    "id": "IETF RFC 2818",
+    "title": "HTTP Over TLS",
+    "by": {
+     "17": [
+      "TS 26.247"
+     ],
+     "18": [
+      "TS 26.247"
+     ],
+     "19": [
+      "TS 26.247"
+     ],
+     "20": [
+      "TS 26.247"
+     ]
+    },
+    "label": "IETF RFC 2818",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 3048",
+    "body": "IETF",
+    "id": "IETF RFC 3048",
+    "title": "Reliable Multicast Transport Building Blocks for One-to-Many Bulk-Data Transfer",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "IETF RFC 3048",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 3066",
+    "body": "IETF",
+    "id": "IETF RFC 3066",
+    "title": "Tags for the Identification of Languages",
+    "by": {
+     "17": [
+      "TS 26.347"
+     ],
+     "18": [
+      "TS 26.347"
+     ],
+     "19": [
+      "TS 26.347"
+     ],
+     "20": [
+      "TS 26.347"
+     ]
+    },
+    "label": "IETF RFC 3066",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 3095",
+    "body": "IETF",
+    "id": "IETF RFC 3095",
+    "title": "RObust Header Compression (ROHC): Framework and four profiles: RTP, UDP, ESP, and uncompressed",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "IETF RFC 3095",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 3376",
+    "body": "IETF",
+    "id": "IETF RFC 3376",
+    "title": "Internet Group Management Protocol, Version 3",
+    "by": {
+     "17": [
+      "TS 23.246"
+     ],
+     "18": [
+      "TS 23.246"
+     ],
+     "19": [
+      "TS 23.246"
+     ],
+     "20": [
+      "TS 23.246"
+     ]
+    },
+    "label": "IETF RFC 3376",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 3450",
+    "body": "IETF",
+    "id": "IETF RFC 3450",
+    "title": "Asynchronous Layered Coding (ALC) Protocol Instantiation",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "IETF RFC 3450",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 3451",
+    "body": "IETF",
+    "id": "IETF RFC 3451",
+    "title": "Layered Coding Transport (LCT) Building Block",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "IETF RFC 3451",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 3629",
+    "body": "IETF",
+    "id": "IETF RFC 3629",
+    "title": "UTF-8, a transformation format of ISO 10646",
+    "by": {
+     "17": [
+      "TS 26.517"
+     ],
+     "18": [
+      "TS 26.517"
+     ],
+     "19": [
+      "TS 26.517"
+     ],
+     "20": [
+      "TS 26.517"
+     ]
+    },
+    "label": "IETF RFC 3629",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 3640",
+    "body": "IETF",
+    "id": "IETF RFC 3640",
+    "title": "RTP Payload Format for Transport of MPEG-4 Elementary Streams",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "IETF RFC 3640",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 3695",
+    "body": "IETF",
+    "id": "IETF RFC 3695",
+    "title": "Compact Forward Error Correction (FEC) Schemes",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "IETF RFC 3695",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 3810",
+    "body": "IETF",
+    "id": "IETF RFC 3810",
+    "title": "Multicast Listener Discovery Version 2 (MLDv2) for IPv6",
+    "by": {
+     "17": [
+      "TS 23.246"
+     ],
+     "18": [
+      "TS 23.246"
+     ],
+     "19": [
+      "TS 23.246"
+     ],
+     "20": [
+      "TS 23.246"
+     ]
+    },
+    "label": "IETF RFC 3810",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 3890",
+    "body": "IETF",
+    "id": "IETF RFC 3890",
+    "title": "A Transport Independent Bandwidth Modifier for the Session Description Protocol (SDP)",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "IETF RFC 3890",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 3926",
+    "body": "IETF",
+    "id": "IETF RFC 3926",
+    "title": "FLUTE - File Delivery over Unidirectional Transport",
+    "by": {
+     "17": [
+      "TS 26.346",
+      "TS 26.517"
+     ],
+     "18": [
+      "TS 26.346",
+      "TS 26.517"
+     ],
+     "19": [
+      "TS 26.346",
+      "TS 26.517"
+     ],
+     "20": [
+      "TS 26.346",
+      "TS 26.517"
+     ]
+    },
+    "label": "IETF RFC 3926",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 3986",
+    "body": "IETF",
+    "id": "IETF RFC 3986",
+    "title": "Uniform Resource Identifiers (URI): Generic Syntax",
+    "by": {
+     "17": [
+      "TS 26.346",
+      "TS 26.347",
+      "TS 26.517",
+      "TS 26.247"
+     ],
+     "18": [
+      "TS 26.346",
+      "TS 26.347",
+      "TS 26.517",
+      "TS 26.247"
+     ],
+     "19": [
+      "TS 26.346",
+      "TS 26.347",
+      "TS 26.517",
+      "TS 26.247"
+     ],
+     "20": [
+      "TS 26.346",
+      "TS 26.347",
+      "TS 26.517",
+      "TS 26.247"
+     ]
+    },
+    "label": "IETF RFC 3986",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 4352",
+    "body": "IETF",
+    "id": "IETF RFC 4352",
+    "title": "RTP Payload Format for the Extended Adaptive Multi-Rate Wideband (AMR-WB+) Audio Codec",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "IETF RFC 4352",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 4396",
+    "body": "IETF",
+    "id": "IETF RFC 4396",
+    "title": "RTP Payload Format for 3rd Generation Partnership Project (3GPP) Timed Text",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "IETF RFC 4396",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 4566",
+    "body": "IETF",
+    "id": "IETF RFC 4566",
+    "title": "SDP: Session Description Protocol",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "IETF RFC 4566",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 4570",
+    "body": "IETF",
+    "id": "IETF RFC 4570",
+    "title": "Session Description Protocol (SDP) Source Filters",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "IETF RFC 4570",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 4604",
+    "body": "IETF",
+    "id": "IETF RFC 4604",
+    "title": "Using Internet Group Management Protocol Version 3 (IGMPv3) and Multicast Listener Discovery Protocol Version 2 (MLDv2) for Source specific Multicast",
+    "by": {
+     "17": [
+      "TS 23.246"
+     ],
+     "18": [
+      "TS 23.246"
+     ],
+     "19": [
+      "TS 23.246"
+     ],
+     "20": [
+      "TS 23.246"
+     ]
+    },
+    "label": "IETF RFC 4604",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 4607",
+    "body": "IETF",
+    "id": "IETF RFC 4607",
+    "title": "Source-Specific Multicast for IP",
+    "by": {
+     "17": [
+      "TS 23.246"
+     ],
+     "18": [
+      "TS 23.246"
+     ],
+     "19": [
+      "TS 23.246"
+     ],
+     "20": [
+      "TS 23.246"
+     ]
+    },
+    "label": "IETF RFC 4607",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 4646",
+    "body": "IETF",
+    "id": "IETF RFC 4646",
+    "title": "Tags for the Identification of Languages",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "IETF RFC 4646",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 4648",
+    "body": "IETF",
+    "id": "IETF RFC 4648",
+    "title": "The Base16, Base32, and Base64 Data Encodings",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "IETF RFC 4648",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 4867",
+    "body": "IETF",
+    "id": "IETF RFC 4867",
+    "title": "RTP Payload Format and File Storage Format for the Adaptive Multi-Rate (AMR) and Adaptive Multi-Rate Wideband (AMR-WB) Audio Codecs",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "IETF RFC 4867",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 5052",
+    "body": "IETF",
+    "id": "IETF RFC 5052",
+    "title": "Forward Error Correction (FEC) Building Block",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "IETF RFC 5052",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 5053",
+    "body": "IETF",
+    "id": "IETF RFC 5053",
+    "title": "Raptor Forward Error Correction Scheme for Object Delivery",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "IETF RFC 5053",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 5234",
+    "body": "IETF",
+    "id": "IETF RFC 5234",
+    "title": "Augmented BNF for Syntax Specifications: ABNF",
+    "by": {
+     "17": [
+      "TS 26.346",
+      "TS 26.247"
+     ],
+     "18": [
+      "TS 26.346",
+      "TS 26.247"
+     ],
+     "19": [
+      "TS 26.346",
+      "TS 26.247"
+     ],
+     "20": [
+      "TS 26.346",
+      "TS 26.247"
+     ]
+    },
+    "label": "IETF RFC 5234",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 5285",
+    "body": "IETF",
+    "id": "IETF RFC 5285",
+    "title": "A General Mechanism for RTP Header Extensions",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "IETF RFC 5285",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 5651",
+    "body": "IETF",
+    "id": "IETF RFC 5651",
+    "title": "Layered Coding Transport (LCT) Building Block",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "IETF RFC 5651",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 5795",
+    "body": "IETF",
+    "id": "IETF RFC 5795",
+    "title": "The Robust Header Compression (ROHC) Framework",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "IETF RFC 5795",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 5905",
+    "body": "IETF",
+    "id": "IETF RFC 5905",
+    "title": "Network Time Protocol Version 4: Protocol and Algorithms Specification",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "IETF RFC 5905",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 6184",
+    "body": "IETF",
+    "id": "IETF RFC 6184",
+    "title": "RTP Payload Format for H.264 Video",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "IETF RFC 6184",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 6335",
+    "body": "IETF",
+    "id": "IETF RFC 6335",
+    "title": "Internet Assigned Numbers Authority (IANA) Procedures for the Management of the Service Name and Transport Protocol Port Number Registry",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "IETF RFC 6335",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 6363",
+    "body": "IETF",
+    "id": "IETF RFC 6363",
+    "title": "Forward Error Correction (FEC) Framework",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "IETF RFC 6363",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 6381",
+    "body": "IETF",
+    "id": "IETF RFC 6381",
+    "title": "The 'Codecs' and 'Profiles' Parameters for",
+    "by": {
+     "17": [
+      "TS 26.517",
+      "TS 26.247"
+     ],
+     "18": [
+      "TS 26.517",
+      "TS 26.247"
+     ],
+     "19": [
+      "TS 26.517",
+      "TS 26.247"
+     ],
+     "20": [
+      "TS 26.517",
+      "TS 26.247"
+     ]
+    },
+    "label": "IETF RFC 6381",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 6455",
+    "body": "IETF",
+    "id": "IETF RFC 6455",
+    "title": "The WebSocket Protocol",
+    "by": {
+     "17": [
+      "TS 26.247"
+     ],
+     "18": [
+      "TS 26.247"
+     ],
+     "19": [
+      "TS 26.247"
+     ],
+     "20": [
+      "TS 26.247"
+     ]
+    },
+    "label": "IETF RFC 6455",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 6681",
+    "body": "IETF",
+    "id": "IETF RFC 6681",
+    "title": "Raptor FEC Schemes for FECFRAME",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "IETF RFC 6681",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 6749",
+    "body": "IETF",
+    "id": "IETF RFC 6749",
+    "title": "The OAuth 2.0 Authorization Framework",
+    "by": {
+     "17": [
+      "TS 29.581"
+     ],
+     "18": [
+      "TS 29.581"
+     ],
+     "19": [
+      "TS 29.581"
+     ],
+     "20": [
+      "TS 29.581"
+     ]
+    },
+    "label": "IETF RFC 6749",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 7230",
+    "body": "IETF",
+    "id": "IETF RFC 7230",
+    "title": "Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing",
+    "by": {
+     "17": [
+      "TS 26.347"
+     ],
+     "18": [
+      "TS 26.347"
+     ],
+     "19": [
+      "TS 26.347"
+     ],
+     "20": [
+      "TS 26.347"
+     ]
+    },
+    "label": "IETF RFC 7230",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 7540",
+    "body": "IETF",
+    "id": "IETF RFC 7540",
+    "title": "Hypertext Transfer Protocol Version 2 (HTTP/2)",
+    "by": {
+     "17": [
+      "TS 29.581"
+     ]
+    },
+    "label": "IETF RFC 7540",
+    "releases": [
+     "17"
+    ],
+    "listedIn": [
+     "17"
+    ]
+   },
+   {
+    "key": "IETF RFC 7553",
+    "body": "IETF",
+    "id": "IETF RFC 7553",
+    "title": "The Uniform Resource Identifier (URI) DNS Resource Record",
+    "by": {
+     "17": [
+      "TS 26.347"
+     ],
+     "18": [
+      "TS 26.347"
+     ],
+     "19": [
+      "TS 26.347"
+     ],
+     "20": [
+      "TS 26.347"
+     ]
+    },
+    "label": "IETF RFC 7553",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 7798",
+    "body": "IETF",
+    "id": "IETF RFC 7798",
+    "title": "RTP Payload Format for High Efficiency Video Coding (HEVC)",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "IETF RFC 7798",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 7807",
+    "body": "IETF",
+    "id": "IETF RFC 7807",
+    "title": "Problem Details for HTTP APIs",
+    "by": {
+     "17": [
+      "TS 29.581"
+     ]
+    },
+    "label": "IETF RFC 7807",
+    "releases": [
+     "17"
+    ],
+    "listedIn": [
+     "17"
+    ]
+   },
+   {
+    "key": "IETF RFC 8141",
+    "body": "IETF",
+    "id": "IETF RFC 8141",
+    "title": "Uniform Resource Names (URNs)",
+    "by": {
+     "17": [
+      "TS 26.517"
+     ],
+     "18": [
+      "TS 26.517"
+     ],
+     "19": [
+      "TS 26.517"
+     ],
+     "20": [
+      "TS 26.517"
+     ]
+    },
+    "label": "IETF RFC 8141",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 8216",
+    "body": "IETF",
+    "id": "IETF RFC 8216",
+    "title": "HTTP Live Streaming",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "IETF RFC 8216",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 8259",
+    "body": "IETF",
+    "id": "IETF RFC 8259",
+    "title": "The JavaScript Object Notation (JSON) Data Interchange Format",
+    "by": {
+     "17": [
+      "TS 29.581"
+     ],
+     "18": [
+      "TS 29.581"
+     ],
+     "19": [
+      "TS 29.581"
+     ],
+     "20": [
+      "TS 29.581"
+     ]
+    },
+    "label": "IETF RFC 8259",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 8446",
+    "body": "IETF",
+    "id": "IETF RFC 8446",
+    "title": "The Transport Layer Security (TLS) Protocol Version 1.3",
+    "by": {
+     "17": [
+      "TS 26.517"
+     ],
+     "18": [
+      "TS 26.517"
+     ],
+     "19": [
+      "TS 26.517"
+     ],
+     "20": [
+      "TS 26.517"
+     ]
+    },
+    "label": "IETF RFC 8446",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 8866",
+    "body": "IETF",
+    "id": "IETF RFC 8866",
+    "title": "Session Description Protocol",
+    "by": {
+     "17": [
+      "TS 26.517"
+     ],
+     "18": [
+      "TS 26.517"
+     ],
+     "19": [
+      "TS 26.517"
+     ],
+     "20": [
+      "TS 26.517"
+     ]
+    },
+    "label": "IETF RFC 8866",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 9110",
+    "body": "IETF",
+    "id": "IETF RFC 9110",
+    "title": "HTTP Semantics",
+    "by": {
+     "17": [
+      "TS 26.346",
+      "TS 26.517"
+     ],
+     "18": [
+      "TS 26.346",
+      "TS 26.517"
+     ],
+     "19": [
+      "TS 26.346",
+      "TS 26.517"
+     ],
+     "20": [
+      "TS 26.346",
+      "TS 26.517"
+     ]
+    },
+    "label": "IETF RFC 9110",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 9111",
+    "body": "IETF",
+    "id": "IETF RFC 9111",
+    "title": "HTTP Caching",
+    "by": {
+     "17": [
+      "TS 26.517"
+     ],
+     "18": [
+      "TS 26.517"
+     ],
+     "19": [
+      "TS 26.517"
+     ],
+     "20": [
+      "TS 26.517"
+     ]
+    },
+    "label": "IETF RFC 9111",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 9112",
+    "body": "IETF",
+    "id": "IETF RFC 9112",
+    "title": "HTTP/1.1",
+    "by": {
+     "17": [
+      "TS 26.346",
+      "TS 26.517"
+     ],
+     "18": [
+      "TS 26.346",
+      "TS 26.347",
+      "TS 26.517",
+      "TS 26.247"
+     ],
+     "19": [
+      "TS 26.346",
+      "TS 26.347",
+      "TS 26.517",
+      "TS 26.247"
+     ],
+     "20": [
+      "TS 26.346",
+      "TS 26.347",
+      "TS 26.517",
+      "TS 26.247"
+     ]
+    },
+    "label": "IETF RFC 9112",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 9113",
+    "body": "IETF",
+    "id": "IETF RFC 9113",
+    "title": "HTTP/2",
+    "by": {
+     "17": [
+      "TS 26.517"
+     ],
+     "18": [
+      "TS 26.517",
+      "TS 29.581"
+     ],
+     "19": [
+      "TS 26.517",
+      "TS 29.581"
+     ],
+     "20": [
+      "TS 26.517",
+      "TS 29.581"
+     ]
+    },
+    "label": "IETF RFC 9113",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 9457",
+    "body": "IETF",
+    "id": "IETF RFC 9457",
+    "title": "Problem Details for HTTP APIs",
+    "by": {
+     "18": [
+      "TS 29.581"
+     ],
+     "19": [
+      "TS 29.581"
+     ],
+     "20": [
+      "TS 29.581"
+     ]
+    },
+    "label": "IETF RFC 9457",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "DASH-IF dashlowlatencymodes",
+    "body": "DASH-IF",
+    "id": "DASH Low Latency Modes",
+    "title": "DASH Low Latency Modes",
+    "by": {
+     "17": [
+      "TS 26.247"
+     ],
+     "18": [
+      "TS 26.247"
+     ],
+     "19": [
+      "TS 26.247"
+     ],
+     "20": [
+      "TS 26.247"
+     ]
+    },
+    "label": "DASH Low Latency Modes",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "DASH-IF dashplayersapplicationeventsandtimedmetadataprocessingmodela",
+    "body": "DASH-IF",
+    "id": "DASH Player’s Application Events and Timed Metadata Processing Model and APIs",
+    "title": "DASH Player’s Application Events and Timed Metadata Processing Model and APIs",
+    "by": {
+     "17": [
+      "TS 26.247"
+     ],
+     "18": [
+      "TS 26.247"
+     ],
+     "19": [
+      "TS 26.247"
+     ],
+     "20": [
+      "TS 26.247"
+     ]
+    },
+    "label": "DASH Player’s Application Events and Timed Metadata Processing Model and APIs",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "W3C recommendation04february2004",
+    "body": "W3C",
+    "id": "W3C Recommendation 04 February 2004",
+    "title": "Extensible Markup Language (XML) 1.1",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "W3C Recommendation 04 February 2004",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "W3C recommendation28october2004",
+    "body": "W3C",
+    "id": "W3C Recommendation 28 October 2004",
+    "title": "XML Schema Part 2: Datatypes Second Edition",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "W3C Recommendation 28 October 2004",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "W3C workingdraft13august2004",
+    "body": "W3C",
+    "id": "W3C Working Draft 13 August 2004",
+    "title": "Mobile SVG Profile: SVG Tiny, Version 1.2",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "W3C Working Draft 13 August 2004",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "W3C workingdraft27october2004",
+    "body": "W3C",
+    "id": "W3C Working Draft 27 October 2004",
+    "title": "Scalable Vector Graphics (SVG) 1.2",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "W3C Working Draft 27 October 2004",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IEEE ieee100312008ieeestandardforinformationtechnologyportableope",
+    "body": "IEEE",
+    "id": "IEEE 1003.1-2008 IEEE Standard for Information Technology - Portable Operating",
+    "title": "IEEE Standard for Information Technology - Portable Operating System Interface (POSIX(R))",
+    "by": {
+     "17": [
+      "TS 26.247"
+     ],
+     "18": [
+      "TS 26.247"
+     ],
+     "19": [
+      "TS 26.247"
+     ],
+     "20": [
+      "TS 26.247"
+     ]
+    },
+    "label": "IEEE Standard for Information Technology - Portable Operating System Interface (POSIX(R))",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Ecma standardecma262",
+    "body": "Ecma",
+    "id": "Standard ECMA-262",
+    "title": "Standard ECMA-262, 5.1 Edition / June 2011, ECMAScript Language Specification",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "Standard ECMA-262, 5.1 Edition / June 2011, ECMAScript Language Specification",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Ecma standardecma327june2001",
+    "body": "Ecma",
+    "id": "Standard ECMA-327 (June 2001)",
+    "title": "ECMAScript 3rd Edition Compact Profile",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "ECMAScript 3rd Edition Compact Profile",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "OpenAPI Initiative openapi",
+    "body": "OpenAPI Initiative",
+    "id": "OpenAPI",
+    "title": "OpenAPI Specification Version 3.0.0",
+    "by": {
+     "17": [
+      "TS 26.517",
+      "TS 29.581"
+     ],
+     "18": [
+      "TS 26.517",
+      "TS 29.581"
+     ],
+     "19": [
+      "TS 26.517",
+      "TS 29.581"
+     ],
+     "20": [
+      "TS 26.517",
+      "TS 29.581"
+     ]
+    },
+    "label": "OpenAPI Specification Version 3.0.0",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other codesfortherepresentationofnamesoflanguages",
+    "body": "Other",
+    "id": "Codes for the representation of names of languages",
+    "title": "Codes for the representation of names of languages",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "Codes for the representation of names of languages",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other codesfortherepresentationofnamesoflanguagespart2alpha3code",
+    "body": "Other",
+    "id": "Codes for the representation of names of languages - Part 2: Alpha-3 code",
+    "title": "Codes for the representation of names of languages - Part 2: Alpha-3 code",
+    "by": {
+     "17": [
+      "TS 26.517"
+     ],
+     "18": [
+      "TS 26.517"
+     ],
+     "19": [
+      "TS 26.517"
+     ],
+     "20": [
+      "TS 26.517"
+     ]
+    },
+    "label": "Codes for the representation of names of languages - Part 2: Alpha-3 code",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other drmcontentformatv20",
+    "body": "Other",
+    "id": "DRM Content Format V 2.0",
+    "title": "DRM Content Format V 2.0",
+    "by": {
+     "17": [
+      "TS 26.247"
+     ],
+     "18": [
+      "TS 26.247"
+     ],
+     "19": [
+      "TS 26.247"
+     ],
+     "20": [
+      "TS 26.247"
+     ]
+    },
+    "label": "DRM Content Format V 2.0",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other drmcontentformatv21",
+    "body": "Other",
+    "id": "DRM Content Format V 2.1",
+    "title": "DRM Content Format V 2.1",
+    "by": {
+     "17": [
+      "TS 26.247"
+     ],
+     "18": [
+      "TS 26.247"
+     ],
+     "19": [
+      "TS 26.247"
+     ],
+     "20": [
+      "TS 26.247"
+     ]
+    },
+    "label": "DRM Content Format V 2.1",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other enablerreleasedefinitionforomadevicemanagement",
+    "body": "Other",
+    "id": "Enabler Release Definition for OMA Device Management",
+    "title": "Enabler Release Definition for OMA Device Management",
+    "by": {
+     "17": [
+      "TS 26.247"
+     ],
+     "18": [
+      "TS 26.247"
+     ],
+     "19": [
+      "TS 26.247"
+     ],
+     "20": [
+      "TS 26.247"
+     ]
+    },
+    "label": "Enabler Release Definition for OMA Device Management",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other enablerreleasedefinitionforomadevicemanagementapprovedversio",
+    "body": "Other",
+    "id": "Enabler Release Definition for OMA Device Management, Approved Version 1.2",
+    "title": "Enabler Release Definition for OMA Device Management, Approved Version 1.2",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "Enabler Release Definition for OMA Device Management, Approved Version 1.2",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other gifgraphicsinterchangeformatastandarddefiningamechanismforth",
+    "body": "Other",
+    "id": "GIF Graphics Interchange Format: A Standard defining a mechanism for the storage and transmission of raster-based graphics information",
+    "title": "GIF Graphics Interchange Format: A Standard defining a mechanism for the storage and transmission of raster-based graphics information",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "GIF Graphics Interchange Format: A Standard defining a mechanism for the storage and transmission of raster-based graphics information",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other graphicsinterchangeformatversion89a",
+    "body": "Other",
+    "id": "Graphics Interchange Format: Version 89a",
+    "title": "Graphics Interchange Format: Version 89a",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "Graphics Interchange Format: Version 89a",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other informationtechnologydigitalcompressionandcodingofcontinuous",
+    "body": "Other",
+    "id": "Information technology - Digital compression and coding of continuous-tone still images - Requirements and guidelines",
+    "title": "Information technology - Digital compression and coding of continuous-tone still images - Requirements and guidelines",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "Information technology - Digital compression and coding of continuous-tone still images - Requirements and guidelines",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other jpegfileinterchangeformat",
+    "body": "Other",
+    "id": "JPEG File Interchange Format",
+    "title": "JPEG File Interchange Format",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "JPEG File Interchange Format",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other mobiledlsmmaspecificationv10rp41losangelescausa2004",
+    "body": "Other",
+    "id": "Mobile DLS, MMA specification v1.0, RP-41 Los Angeles, CA, USA. 2004",
+    "title": "Mobile DLS, MMA specification v1.0, RP-41 Los Angeles, CA, USA. 2004",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "Mobile DLS, MMA specification v1.0, RP-41 Los Angeles, CA, USA. 2004",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other mobilelocationprotocolmlp",
+    "body": "Other",
+    "id": "Mobile Location Protocol (MLP)",
+    "title": "Mobile Location Protocol (MLP)",
+    "by": {
+     "17": [
+      "TS 26.346",
+      "TS 26.247"
+     ],
+     "18": [
+      "TS 26.346",
+      "TS 26.247"
+     ],
+     "19": [
+      "TS 26.346",
+      "TS 26.247"
+     ],
+     "20": [
+      "TS 26.346",
+      "TS 26.247"
+     ]
+    },
+    "label": "Mobile Location Protocol (MLP)",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other mobilexmfcontentformatspecificationmmaspecificationv10rp42lo",
+    "body": "Other",
+    "id": "Mobile XMF Content Format Specification, MMA specification v1.0, RP-42, Los Angeles, CA, USA. 2004",
+    "title": "Mobile XMF Content Format Specification, MMA specification v1.0, RP-42, Los Angeles, CA, USA. 2004",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "Mobile XMF Content Format Specification, MMA specification v1.0, RP-42, Los Angeles, CA, USA. 2004",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other omaomnaregisteredpushapplicationidlist",
+    "body": "Other",
+    "id": "OMA OMNA Registered PUSH Application ID list",
+    "title": "OMA OMNA Registered PUSH Application ID list",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "OMA OMNA Registered PUSH Application ID list",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other omapushotaprotocol25april2001wap235pushota20010425a",
+    "body": "Other",
+    "id": "OMA Push OTA Protocol (25-April-2001): WAP-235-PushOTA-20010425-a",
+    "title": "OMA Push OTA Protocol (25-April-2001): WAP-235-PushOTA-20010425-a",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "OMA Push OTA Protocol (25-April-2001): WAP-235-PushOTA-20010425-a",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other omnabcastserviceclassregistry",
+    "body": "Other",
+    "id": "OMNA BCAST Service Class Registry",
+    "title": "OMNA BCAST Service Class Registry",
+    "by": {
+     "17": [
+      "TS 26.517",
+      "TS 26.502"
+     ],
+     "18": [
+      "TS 26.517",
+      "TS 26.502"
+     ],
+     "19": [
+      "TS 26.517",
+      "TS 26.502"
+     ],
+     "20": [
+      "TS 26.517",
+      "TS 26.502"
+     ]
+    },
+    "label": "OMNA BCAST Service Class Registry",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other parametricbitstreambasedqualityassessmentofprogressivedownlo",
+    "body": "Other",
+    "id": "Parametric bitstream-based quality assessment of progressive download and adaptive audiovisual streaming services over reliable transport",
+    "title": "Parametric bitstream-based quality assessment of progressive download and adaptive audiovisual streaming services over reliable transport",
+    "by": {
+     "17": [
+      "TS 26.247"
+     ],
+     "18": [
+      "TS 26.247"
+     ],
+     "19": [
+      "TS 26.247"
+     ],
+     "20": [
+      "TS 26.247"
+     ]
+    },
+    "label": "Parametric bitstream-based quality assessment of progressive download and adaptive audiovisual streaming services over reliable transport",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other reliablemulticasttransportrmtfecencodingidsandfecinstanceids",
+    "body": "Other",
+    "id": "Reliable Multicast Transport (RMT) FEC Encoding IDs and FEC Instance IDs",
+    "title": "Reliable Multicast Transport (RMT) FEC Encoding IDs and FEC Instance IDs",
+    "by": {
+     "17": [
+      "TS 26.502"
+     ],
+     "18": [
+      "TS 26.502"
+     ],
+     "19": [
+      "TS 26.502"
+     ],
+     "20": [
+      "TS 26.502"
+     ]
+    },
+    "label": "Reliable Multicast Transport (RMT) FEC Encoding IDs and FEC Instance IDs",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other scalablepolyphonymididevice5to24noteprofilefor3gppversion10r",
+    "body": "Other",
+    "id": "Scalable Polyphony MIDI Device 5-to-24 Note Profile for 3GPP Version 1.0, RP-35, MIDI Manufacturers Association, Los Angeles, CA, February 2002",
+    "title": "Scalable Polyphony MIDI Device 5-to-24 Note Profile for 3GPP Version 1.0, RP-35, MIDI Manufacturers Association, Los Angeles, CA, February 2002",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "Scalable Polyphony MIDI Device 5-to-24 Note Profile for 3GPP Version 1.0, RP-35, MIDI Manufacturers Association, Los Angeles, CA, February 2002",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other scalablepolyphonymidispecificationversion10rp34midimanufactu",
+    "body": "Other",
+    "id": "Scalable Polyphony MIDI Specification Version 1.0, RP-34, MIDI Manufacturers Association, Los Angeles, CA, February 2002",
+    "title": "Scalable Polyphony MIDI Specification Version 1.0, RP-34, MIDI Manufacturers Association, Los Angeles, CA, February 2002",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "Scalable Polyphony MIDI Specification Version 1.0, RP-34, MIDI Manufacturers Association, Los Angeles, CA, February 2002",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other serviceguideformobilebroadcastservices",
+    "body": "Other",
+    "id": "Service Guide for Mobile Broadcast Services",
+    "title": "Service Guide for Mobile Broadcast Services",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "Service Guide for Mobile Broadcast Services",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other standardmidifiles10",
+    "body": "Other",
+    "id": "Standard MIDI Files 1.0",
+    "title": "Standard MIDI Files 1.0",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "Standard MIDI Files 1.0",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other subjectivevideoqualityassessmentmethodsformultimediaapplicat",
+    "body": "Other",
+    "id": "Subjective video quality assessment methods for multimedia applications",
+    "title": "Subjective video quality assessment methods for multimedia applications",
+    "by": {
+     "17": [
+      "TS 26.247"
+     ],
+     "18": [
+      "TS 26.247"
+     ],
+     "19": [
+      "TS 26.247"
+     ],
+     "20": [
+      "TS 26.247"
+     ]
+    },
+    "label": "Subjective video quality assessment methods for multimedia applications",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other theunicodestandard",
+    "body": "Other",
+    "id": "The Unicode Standard",
+    "title": "The Unicode Standard",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "The Unicode Standard",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other unifiedmodelinglanguageumlversion15",
+    "body": "Other",
+    "id": "Unified Modeling Language (UML), version 1.5",
+    "title": "Unified Modeling Language (UML), version 1.5",
+    "by": {
+     "17": [
+      "TS 26.346"
+     ],
+     "18": [
+      "TS 26.346"
+     ],
+     "19": [
+      "TS 26.346"
+     ],
+     "20": [
+      "TS 26.346"
+     ]
+    },
+    "label": "Unified Modeling Language (UML), version 1.5",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   }
+  ],
+  "listedButNeverCited": [
+   {
+    "label": "ISO/IEC 23000-19",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 0768",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 0791",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 1738",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 2017",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 2045",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 2046",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 2231",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 2250",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 3023",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 3550",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 3551",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 3556",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 3711",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 4288",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 4337",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 5124",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 5225",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 5646",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 5775",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 6064",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 6347",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 6902",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 7164",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 7595",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF Internet-Draft draft-wright-json-schema",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IEEE Standard for Information Technology - Portable Operating System Interface (POSIX), Base Specifications",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IANA Multicast IPv4 Address Space Registry",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IANA Multicast IPv6 Address Space Registry",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IANA Service Name and Transport Protocol Port Number Registry",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "Interface Definition Language™ (IDL™) 4.0",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IPv4 Multicast Address Space Registry",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IPv6 Multicast Address Space Registry",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "Open Mobile Alliance, Service and Content Protection for Mobile Broadcast Services, Approved Version 1.0, February 2009",
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "Open Mobile , Service and Content Protection for Broadcast Services, Approved Version 1.0, February 2009",
+    "listedIn": [
+     "17"
+    ]
+   },
+   {
+    "label": "Reserved for future use",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "Transmission Control Protocol",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   }
+  ]
+ },
+ "documents": [
+  {
+   "id": "RFC 3926",
+   "title": "FLUTE - File Delivery over Unidirectional Transport",
+   "url": "https://www.rfc-editor.org/rfc/rfc3926",
+   "layer": "IETF (normative)",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "source": "Standards page entry (not a 3GPP document)",
+   "releases": {},
+   "topics": []
+  },
+  {
+   "id": "RFC 3450",
+   "title": "Asynchronous Layered Coding (ALC) Protocol Instantiation",
+   "url": "https://www.rfc-editor.org/rfc/rfc3450",
+   "layer": "IETF (normative)",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "source": "Standards page entry (not a 3GPP document)",
+   "releases": {},
+   "topics": []
+  },
+  {
+   "id": "RFC 3451",
+   "title": "Layered Coding Transport (LCT) Building Block",
+   "url": "https://www.rfc-editor.org/rfc/rfc3451",
+   "layer": "IETF (normative)",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "source": "Standards page entry (not a 3GPP document)",
+   "releases": {},
+   "topics": []
+  },
+  {
+   "id": "RFC 5052",
+   "title": "Forward Error Correction (FEC) Building Block",
+   "url": "https://www.rfc-editor.org/rfc/rfc5052",
+   "layer": "IETF (normative)",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "source": "Standards page entry (not a 3GPP document)",
+   "releases": {},
+   "topics": []
+  },
+  {
+   "id": "RFC 3695",
+   "title": "Compact No-Code FEC scheme",
+   "url": "https://www.rfc-editor.org/rfc/rfc3695",
+   "layer": "IETF (normative)",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "source": "Standards page entry (not a 3GPP document)",
+   "releases": {},
+   "topics": []
+  },
+  {
+   "id": "RFC 5053",
+   "title": "Raptor FEC scheme",
+   "url": "https://www.rfc-editor.org/rfc/rfc5053",
+   "layer": "IETF (normative)",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "source": "Standards page entry (not a 3GPP document)",
+   "releases": {},
+   "topics": []
+  },
+  {
+   "id": "RFC 1952",
+   "title": "GZIP file format",
+   "url": "https://www.rfc-editor.org/rfc/rfc1952",
+   "layer": "IETF (normative)",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "source": "Standards page entry (not a 3GPP document)",
+   "releases": {},
+   "topics": []
+  },
+  {
+   "id": "RFC 4607",
+   "title": "Source-Specific Multicast (SSM)",
+   "url": "https://www.rfc-editor.org/rfc/rfc4607",
+   "layer": "IETF (normative)",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "source": "Standards page entry (not a 3GPP document)",
+   "releases": {},
+   "topics": []
+  },
+  {
+   "id": "RFC 4570",
+   "title": "SDP Source Filters",
+   "url": "https://www.rfc-editor.org/rfc/rfc4570",
+   "layer": "IETF (normative)",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "source": "Standards page entry (not a 3GPP document)",
+   "releases": {},
+   "topics": []
+  },
+  {
+   "id": "RFC 5905",
+   "title": "Network Time Protocol",
+   "url": "https://www.rfc-editor.org/rfc/rfc5905",
+   "layer": "IETF (normative)",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "source": "Standards page entry (not a 3GPP document)",
+   "releases": {},
+   "topics": []
+  },
+  {
+   "id": "RFC 6726",
+   "title": "FLUTE version 2",
+   "url": "https://www.rfc-editor.org/rfc/rfc6726",
+   "layer": "IETF (reference only)",
+   "kind": "TS",
+   "explored": false,
+   "scopeNote": "marked reference only",
+   "source": "Standards page entry (not a 3GPP document)",
+   "releases": {},
+   "topics": []
+  },
+  {
+   "id": "RFC 5651",
+   "title": "LCT (revised)",
+   "url": "https://www.rfc-editor.org/rfc/rfc5651",
+   "layer": "IETF (reference only)",
+   "kind": "TS",
+   "explored": false,
+   "scopeNote": "marked reference only",
+   "source": "Standards page entry (not a 3GPP document)",
+   "releases": {},
+   "topics": []
+  },
+  {
+   "id": "RFC 5775",
+   "title": "ALC (revised)",
+   "url": "https://www.rfc-editor.org/rfc/rfc5775",
+   "layer": "IETF (reference only)",
+   "kind": "TS",
+   "explored": false,
+   "scopeNote": "marked reference only",
+   "source": "Standards page entry (not a 3GPP document)",
+   "releases": {},
+   "topics": []
+  },
+  {
+   "id": "RFC 6330",
+   "title": "RaptorQ FEC scheme",
+   "url": "https://www.rfc-editor.org/rfc/rfc6330",
+   "layer": "IETF (reference only)",
+   "kind": "TS",
+   "explored": false,
+   "scopeNote": "marked reference only",
+   "source": "Standards page entry (not a 3GPP document)",
+   "releases": {},
+   "topics": []
+  },
+  {
+   "id": "RFC 9223",
+   "title": "Real-Time Transport Object Delivery over Unidirectional Transport (ROUTE)",
+   "url": "https://datatracker.ietf.org/doc/rfc9223/",
+   "layer": "IETF (reference only)",
+   "kind": "TS",
+   "explored": false,
+   "scopeNote": "marked reference only",
+   "source": "Standards page entry (not a 3GPP document)",
+   "releases": {},
+   "topics": []
+  },
+  {
+   "id": "RFC 6968",
+   "title": "FCAST object delivery",
+   "url": "https://datatracker.ietf.org/doc/rfc6968/",
+   "layer": "IETF (reference only)",
+   "kind": "TS",
+   "explored": false,
+   "scopeNote": "marked reference only",
+   "source": "Standards page entry (not a 3GPP document)",
+   "releases": {},
+   "topics": []
+  },
+  {
+   "id": "RFC 8216",
+   "title": "HTTP Live Streaming (HLS)",
+   "url": "https://datatracker.ietf.org/doc/rfc8216/",
+   "layer": "IETF (normative)",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "source": "Standards page entry (not a 3GPP document)",
+   "releases": {},
+   "topics": []
+  },
+  {
+   "id": "TS 26.346",
+   "title": "Multimedia Broadcast/Multicast Service (MBMS); Protocols and codecs",
+   "url": "https://www.3gpp.org/dynareport/26346.htm",
+   "layer": "3GPP",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "firstRelease": "10",
+   "releases": {
+    "17": {
+     "release": "17",
+     "version": "V17.6.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 1501,
+     "statementsAtCreation": null,
+     "statementsAdded": 1501,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 940008,
+       "acronym": "5MBP3",
+       "name": "5G Multicast-Broadcast Protocols",
+       "completion": 1,
+       "ref": "SP-211335"
+      }
+     ]
+    },
+    "18": {
+     "release": "18",
+     "version": "V18.2.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 1501,
+     "statementsAtCreation": null,
+     "statementsAdded": 0,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    },
+    "19": {
+     "release": "19",
+     "version": "V19.3.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 1516,
+     "statementsAtCreation": null,
+     "statementsAdded": 19,
+     "statementsRemoved": 4,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    },
+    "20": {
+     "release": "20",
+     "version": "V19.3.0",
+     "newIssue": false,
+     "analysed": true,
+     "statementsInForce": 1516,
+     "statementsAtCreation": null,
+     "statementsAdded": 0,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    }
+   },
+   "baselineIssue": {
+    "release": "19",
+    "version": "V19.3.0"
+   },
+   "latestIssue": {
+    "release": "19",
+    "version": "V19.3.0"
+   },
+   "titleFrom": "Standards page entry",
+   "scope": {
+    "text": "The present document defines a set of media codecs, formats and transport/application protocols to enable the deployment of MBMS user services either over the MBMS bearer service or other UMTS Bearer Services within the 3GPP system.",
+    "firstSentence": "The present document defines a set of media codecs, formats and transport/application protocols to enable the deployment of MBMS user services either over the MBMS bearer service or other UMTS Bearer Services within the 3GPP system.",
+    "clause": "1",
+    "version": "V19.3.0"
+   },
+   "topics": [
+    {
+     "name": "General",
+     "statements": 1214,
+     "share": 0.801
+    },
+    {
+     "name": "Repair",
+     "statements": 178,
+     "share": 0.117
+    },
+    {
+     "name": "Session description",
+     "statements": 96,
+     "share": 0.063
+    },
+    {
+     "name": "Security",
+     "statements": 16,
+     "share": 0.011
+    },
+    {
+     "name": "Content encoding",
+     "statements": 6,
+     "share": 0.004
+    },
+    {
+     "name": "Caching directives",
+     "statements": 5,
+     "share": 0.003
+    },
+    {
+     "name": "The File Delivery Table",
+     "statements": 1,
+     "share": 0.001
+    }
+   ]
+  },
+  {
+   "id": "TS 26.347",
+   "title": "Multimedia Broadcast/Multicast Service (MBMS); Application Programming Interface and URL",
+   "url": "https://www.3gpp.org/dynareport/26347.htm",
+   "layer": "3GPP",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "firstRelease": "14",
+   "releases": {
+    "17": {
+     "release": "17",
+     "version": "V17.2.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 381,
+     "statementsAtCreation": null,
+     "statementsAdded": 381,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 940008,
+       "acronym": "5MBP3",
+       "name": "5G Multicast-Broadcast Protocols",
+       "completion": 1,
+       "ref": "SP-211335"
+      }
+     ]
+    },
+    "18": {
+     "release": "18",
+     "version": "V18.1.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 383,
+     "statementsAtCreation": null,
+     "statementsAdded": 10,
+     "statementsRemoved": 8,
+     "statementsMovedIn": 4,
+     "statementsMovedOut": 5,
+     "workItems": []
+    },
+    "19": {
+     "release": "19",
+     "version": "V19.0.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 383,
+     "statementsAtCreation": null,
+     "statementsAdded": 0,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    },
+    "20": {
+     "release": "20",
+     "version": "V19.0.0",
+     "newIssue": false,
+     "analysed": true,
+     "statementsInForce": 383,
+     "statementsAtCreation": null,
+     "statementsAdded": 0,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    }
+   },
+   "baselineIssue": {
+    "release": "19",
+    "version": "V19.0.0"
+   },
+   "latestIssue": {
+    "release": "19",
+    "version": "V19.0.0"
+   },
+   "titleFrom": "cover",
+   "scope": {
+    "text": "The present document provides application methods and interfaces between an MBMS-aware application and the UE MBMS Client to access 3GPP MBMS User services. The purpose of the document is the definition of enablers in order to simplify the usage of MBMS in web-centric as well as app-based service environments.",
+    "firstSentence": "The present document provides application methods and interfaces between an MBMS-aware application and the UE MBMS Client to access 3GPP MBMS User services.",
+    "clause": "1",
+    "version": "V19.0.0"
+   },
+   "topics": [
+    {
+     "name": "General",
+     "statements": 380,
+     "share": 0.992
+    },
+    {
+     "name": "Repair",
+     "statements": 3,
+     "share": 0.008
+    }
+   ]
+  },
+  {
+   "id": "TS 23.246",
+   "title": "Multimedia Broadcast/Multicast Service (MBMS); Architecture and functional description",
+   "url": "https://www.3gpp.org/dynareport/23246.htm",
+   "layer": "3GPP",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "firstRelease": "10",
+   "releases": {
+    "17": {
+     "release": "17",
+     "version": "V17.0.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 319,
+     "statementsAtCreation": null,
+     "statementsAdded": 319,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    },
+    "18": {
+     "release": "18",
+     "version": "V18.0.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 319,
+     "statementsAtCreation": null,
+     "statementsAdded": 0,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    },
+    "19": {
+     "release": "19",
+     "version": "V19.0.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 319,
+     "statementsAtCreation": null,
+     "statementsAdded": 0,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    },
+    "20": {
+     "release": "20",
+     "version": "V19.0.0",
+     "newIssue": false,
+     "analysed": true,
+     "statementsInForce": 319,
+     "statementsAtCreation": null,
+     "statementsAdded": 0,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    }
+   },
+   "baselineIssue": {
+    "release": "19",
+    "version": "V19.0.0"
+   },
+   "latestIssue": {
+    "release": "19",
+    "version": "V19.0.0"
+   },
+   "titleFrom": "cover",
+   "scope": {
+    "text": "The present document describes the stage 2 description (architectural solution and functionalities) for the MBMS Bearer Service, which includes, together with MBMS User Services defined in TS 26.346 [7], all the elements necessary to realise the stage 1 requirements in TS 22.146 [2] and TS 22.246 [6]. This document encompasses both GPRS and EPS.",
+    "firstSentence": "The present document describes the stage 2 description (architectural solution and functionalities) for the MBMS Bearer Service, which includes, together with MBMS User Services defined in TS 26.346 [7], all the elements necessary to realise the stage 1 requirements in TS 22.146 [2] and TS 22.246 [6].",
+    "clause": "1",
+    "version": "V19.0.0"
+   },
+   "topics": [
+    {
+     "name": "General",
+     "statements": 312,
+     "share": 0.978
+    },
+    {
+     "name": "Security",
+     "statements": 4,
+     "share": 0.013
+    },
+    {
+     "name": "Session description",
+     "statements": 2,
+     "share": 0.006
+    },
+    {
+     "name": "Repair",
+     "statements": 1,
+     "share": 0.003
+    }
+   ]
+  },
+  {
+   "id": "TS 26.517",
+   "title": "5G Multicast-Broadcast User Services; Protocols and Formats",
+   "url": "https://www.3gpp.org/dynareport/26517.htm",
+   "layer": "3GPP",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "firstRelease": "17",
+   "releases": {
+    "17": {
+     "release": "17",
+     "version": "V17.11.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 299,
+     "statementsAtCreation": 299,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": []
+    },
+    "18": {
+     "release": "18",
+     "version": "V18.7.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 304,
+     "statementsAtCreation": null,
+     "statementsAdded": 28,
+     "statementsRemoved": 23,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 1000018,
+       "acronym": "5GMS_Pro_Ph2",
+       "name": "5G Media Streaming Protocols Phase 2",
+       "completion": 1,
+       "ref": "SP-230976"
+      }
+     ]
+    },
+    "19": {
+     "release": "19",
+     "version": "V19.3.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 353,
+     "statementsAtCreation": null,
+     "statementsAdded": 57,
+     "statementsRemoved": 8,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 1070057,
+       "acronym": "AMD_PRO-MED",
+       "name": "Stage 3 for Advanced Media Delivery",
+       "completion": 1,
+       "ref": "SP-250265"
+      }
+     ]
+    },
+    "20": {
+     "release": "20",
+     "version": "V19.3.0",
+     "newIssue": false,
+     "analysed": true,
+     "statementsInForce": 353,
+     "statementsAtCreation": null,
+     "statementsAdded": 0,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    }
+   },
+   "baselineIssue": {
+    "release": "19",
+    "version": "V19.3.0"
+   },
+   "latestIssue": {
+    "release": "19",
+    "version": "V19.3.0"
+   },
+   "titleFrom": "cover",
+   "scope": {
+    "text": "The present document defines protocols and formats for User Services as defined in TS 26.502 [6] and conveyed using the 5G multicast–broadcast capabilities of the 5G System defined in TS 23.501 [2], TS 23.502 [3] and TS 23.247 [5].",
+    "firstSentence": "The present document defines protocols and formats for User Services as defined in TS 26.502 [6] and conveyed using the 5G multicast–broadcast capabilities of the 5G System defined in TS 23.501 [2], TS 23.502 [3] and TS 23.247 [5].",
+    "clause": "1",
+    "version": "V19.3.0"
+   },
+   "topics": [
+    {
+     "name": "General",
+     "statements": 214,
+     "share": 0.606
+    },
+    {
+     "name": "Repair",
+     "statements": 86,
+     "share": 0.244
+    },
+    {
+     "name": "Session description",
+     "statements": 35,
+     "share": 0.099
+    },
+    {
+     "name": "Security",
+     "statements": 17,
+     "share": 0.048
+    },
+    {
+     "name": "Content encoding",
+     "statements": 1,
+     "share": 0.003
+    }
+   ]
+  },
+  {
+   "id": "TS 26.502",
+   "title": "5G multicast-broadcast services; User service architecture",
+   "url": "https://www.3gpp.org/dynareport/26502.htm",
+   "layer": "3GPP",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "firstRelease": "17",
+   "releases": {
+    "17": {
+     "release": "17",
+     "version": "V17.13.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 177,
+     "statementsAtCreation": 177,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": [
+      {
+       "wid": 920010,
+       "acronym": "5MBUSA",
+       "name": "5G Multicast-Broadcast User Service Architecture and related 5GMS Extensions",
+       "completion": 1,
+       "ref": "SP-210376"
+      }
+     ]
+    },
+    "18": {
+     "release": "18",
+     "version": "V18.7.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 191,
+     "statementsAtCreation": null,
+     "statementsAdded": 22,
+     "statementsRemoved": 8,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    },
+    "19": {
+     "release": "19",
+     "version": "V19.6.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 197,
+     "statementsAtCreation": null,
+     "statementsAdded": 30,
+     "statementsRemoved": 24,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 1060069,
+       "acronym": "AMD-ARCH-MED",
+       "name": "Stage 2 for Advanced Media Delivery",
+       "completion": 1,
+       "ref": "SP-241963"
+      }
+     ]
+    },
+    "20": {
+     "release": "20",
+     "version": "V19.6.0",
+     "newIssue": false,
+     "analysed": true,
+     "statementsInForce": 197,
+     "statementsAtCreation": null,
+     "statementsAdded": 0,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 1120098,
+       "acronym": "AMD_ARCH_Ph2-MED",
+       "name": "Architectural Updates for Advanced Media Delivery Phase 2",
+       "completion": 0.51,
+       "ref": "SP-260973"
+      }
+     ]
+    }
+   },
+   "baselineIssue": {
+    "release": "19",
+    "version": "V19.6.0"
+   },
+   "latestIssue": {
+    "release": "19",
+    "version": "V19.6.0"
+   },
+   "titleFrom": "cover",
+   "scope": {
+    "text": "The present document defines an architecture and high-level procedures for User Services conveyed using the 5G multicast–broadcast capabilities of the 5G System defined in TS 23.501 [2], TS 23.502 [3] and TS 23.247 [5].",
+    "firstSentence": "The present document defines an architecture and high-level procedures for User Services conveyed using the 5G multicast–broadcast capabilities of the 5G System defined in TS 23.501 [2], TS 23.502 [3] and TS 23.247 [5].",
+    "clause": "1",
+    "version": "V19.6.0"
+   },
+   "topics": [
+    {
+     "name": "General",
+     "statements": 172,
+     "share": 0.873
+    },
+    {
+     "name": "Repair",
+     "statements": 21,
+     "share": 0.107
+    },
+    {
+     "name": "Security",
+     "statements": 3,
+     "share": 0.015
+    },
+    {
+     "name": "Session description",
+     "statements": 1,
+     "share": 0.005
+    }
+   ]
+  },
+  {
+   "id": "TS 23.247",
+   "title": "Architectural enhancements for 5G multicast-broadcast services; Stage 2",
+   "url": "https://www.3gpp.org/dynareport/23247.htm",
+   "layer": "3GPP",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "firstRelease": "17",
+   "releases": {
+    "17": {
+     "release": "17",
+     "version": "V17.12.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 262,
+     "statementsAtCreation": 262,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": []
+    },
+    "18": {
+     "release": "18",
+     "version": "V18.8.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 315,
+     "statementsAtCreation": null,
+     "statementsAdded": 72,
+     "statementsRemoved": 19,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 989999,
+       "acronym": "5MBS_Ph2",
+       "name": "5G multicast-broadcast services Phase 2",
+       "completion": 1,
+       "ref": "SP-221131"
+      },
+      {
+       "wid": 980013,
+       "acronym": "5MBS_Ph2",
+       "name": "(Stage 2 of 5MBS_Ph2) Architectural enhancements for 5G multicast-broadcast services Phase 2",
+       "completion": 1,
+       "ref": "SP-230099"
+      }
+     ]
+    },
+    "19": {
+     "release": "19",
+     "version": "V19.3.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 320,
+     "statementsAtCreation": null,
+     "statementsAdded": 6,
+     "statementsRemoved": 1,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    },
+    "20": {
+     "release": "20",
+     "version": "V20.0.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 324,
+     "statementsAtCreation": null,
+     "statementsAdded": 4,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 1110025,
+       "acronym": "TEI20_5MBS_Roam-ARC",
+       "name": "5MBS consumption by Roaming UEs",
+       "completion": 1,
+       "ref": "SP-260330"
+      }
+     ]
+    }
+   },
+   "baselineIssue": {
+    "release": "20",
+    "version": "V20.0.0"
+   },
+   "latestIssue": {
+    "release": "20",
+    "version": "V20.0.0"
+   },
+   "titleFrom": "cover",
+   "scope": {
+    "text": "The present document specifies architectural enhancements to the 5G system using NR to support multicast and broadcast communication services, complying to the requirements in TS 22.146 [2], TS 22.246 [3] and TS 22.261 [4]. This document encompasses support for functions such as how to deliver multicast and broadcast communications including support within certain location areas, mobility, MBS session management, policy control and QoS, and support for features e.g. group message delivery.",
+    "firstSentence": "The present document specifies architectural enhancements to the 5G system using NR to support multicast and broadcast communication services, complying to the requirements in TS 22.146 [2], TS 22.246 [3] and TS 22.261 [4].",
+    "clause": "1",
+    "version": "V20.0.0"
+   },
+   "topics": [
+    {
+     "name": "General",
+     "statements": 313,
+     "share": 0.966
+    },
+    {
+     "name": "Security",
+     "statements": 9,
+     "share": 0.028
+    },
+    {
+     "name": "Session description",
+     "statements": 2,
+     "share": 0.006
+    }
+   ]
+  },
+  {
+   "id": "TS 29.581",
+   "title": "5G System; Multicast/Broadcast Service Transport Services; Stage 3",
+   "url": "https://www.3gpp.org/dynareport/29581.htm",
+   "layer": "3GPP",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "firstRelease": "17",
+   "releases": {
+    "17": {
+     "release": "17",
+     "version": "V17.7.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 179,
+     "statementsAtCreation": 179,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": [
+      {
+       "wid": 910002,
+       "acronym": "5MBS",
+       "name": "CT4 aspect of 5MBS",
+       "completion": 1,
+       "ref": "CP-220402"
+      }
+     ]
+    },
+    "18": {
+     "release": "18",
+     "version": "V18.6.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 182,
+     "statementsAtCreation": null,
+     "statementsAdded": 27,
+     "statementsRemoved": 24,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    },
+    "19": {
+     "release": "19",
+     "version": "V19.3.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 184,
+     "statementsAtCreation": null,
+     "statementsAdded": 12,
+     "statementsRemoved": 10,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 1080004,
+       "acronym": "AMD_PRO-MED-CT",
+       "name": "CT aspects of Advanced Media Delivery",
+       "completion": 1,
+       "ref": "CP-252191"
+      },
+      {
+       "wid": 1080033,
+       "acronym": "AMD_PRO-MED-CT",
+       "name": "DELETED - CT3 aspects of Advanced Media Delivery",
+       "completion": 1,
+       "ref": "CP-252191"
+      },
+      {
+       "wid": 1080034,
+       "acronym": "AMD_PRO-MED-CT",
+       "name": "CT4 aspects of Advanced Media Delivery",
+       "completion": 1,
+       "ref": "CP-252191"
+      }
+     ]
+    },
+    "20": {
+     "release": "20",
+     "version": "V20.0.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 184,
+     "statementsAtCreation": null,
+     "statementsAdded": 28,
+     "statementsRemoved": 28,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    }
+   },
+   "baselineIssue": {
+    "release": "20",
+    "version": "V20.0.0"
+   },
+   "latestIssue": {
+    "release": "20",
+    "version": "V20.0.0"
+   },
+   "titleFrom": "cover",
+   "scope": {
+    "text": "The present document specifies the stage 3 protocol and data model for the Nmbstf Service Based Interface. It provides stage 3 protocol definitions and message flows, and specifies the API for each service offered by the MBSTF.",
+    "firstSentence": "The present document specifies the stage 3 protocol and data model for the Nmbstf Service Based Interface.",
+    "clause": "1",
+    "version": "V20.0.0"
+   },
+   "topics": [
+    {
+     "name": "General",
+     "statements": 179,
+     "share": 0.973
+    },
+    {
+     "name": "Repair",
+     "statements": 3,
+     "share": 0.016
+    },
+    {
+     "name": "Security",
+     "statements": 2,
+     "share": 0.011
+    }
+   ]
+  },
+  {
+   "id": "TS 26.247",
+   "title": "3GP-DASH; Transparent end-to-end packet-switched streaming service",
+   "url": "https://www.3gpp.org/dynareport/26247.htm",
+   "layer": "3GPP",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "firstRelease": "10",
+   "releases": {
+    "17": {
+     "release": "17",
+     "version": "V17.4.2",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 734,
+     "statementsAtCreation": null,
+     "statementsAdded": 734,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 0,
+       "acronym": "-",
+       "name": "Rel-17 NR enhancements",
+       "completion": 1,
+       "ref": "-"
+      },
+      {
+       "wid": 0,
+       "acronym": "-",
+       "name": "Rel-17 Self-Organizing (SON)/Autonomous Networks",
+       "completion": 1,
+       "ref": "-"
+      },
+      {
+       "wid": 0,
+       "acronym": "-",
+       "name": "Rel-17 Multicast-broadcast Services (MBS) and Mission Critical (MC)",
+       "completion": 1,
+       "ref": "-"
+      },
+      {
+       "wid": 0,
+       "acronym": "-",
+       "name": "Rel-17 Edge computing",
+       "completion": 1,
+       "ref": "-"
+      },
+      {
+       "wid": 0,
+       "acronym": "-",
+       "name": "Rel-17 Slicing",
+       "completion": 1,
+       "ref": "-"
+      },
+      {
+       "wid": 0,
+       "acronym": "-",
+       "name": "Rel-17 Multi-(U)SIM",
+       "completion": 1,
+       "ref": "-"
+      },
+      {
+       "wid": 0,
+       "acronym": "-",
+       "name": "Rel-17 other cross-TSG Features",
+       "completion": 1,
+       "ref": "-"
+      },
+      {
+       "wid": 0,
+       "acronym": "-",
+       "name": "Rel-17 Management-only Features",
+       "completion": 1,
+       "ref": "-"
+      },
+      {
+       "wid": 0,
+       "acronym": "-",
+       "name": "Rel-17 Other NR-only improvements",
+       "completion": 1,
+       "ref": "-"
+      },
+      {
+       "wid": 0,
+       "acronym": "-",
+       "name": "Rel-17 NR Carrier Aggregation",
+       "completion": 1,
+       "ref": "-"
+      },
+      {
+       "wid": 0,
+       "acronym": "-",
+       "name": "Rel-17 NR intra band Carrier Aggregation (itrabCA)",
+       "completion": 1,
+       "ref": "-"
+      },
+      {
+       "wid": 0,
+       "acronym": "-",
+       "name": "Rel-17 NR inter band Carrier Aggregation (iterbCA)",
+       "completion": 1,
+       "ref": "-"
+      },
+      {
+       "wid": 0,
+       "acronym": "-",
+       "name": "Rel-17 NR and LTE",
+       "completion": 1,
+       "ref": "-"
+      },
+      {
+       "wid": 0,
+       "acronym": "-",
+       "name": "Rel-17 NR new/modified bands",
+       "completion": 1,
+       "ref": "-"
+      },
+      {
+       "wid": 0,
+       "acronym": "-",
+       "name": "Rel-17 LTE new/modified bands",
+       "completion": 1,
+       "ref": "-"
+      },
+      {
+       "wid": 0,
+       "acronym": "-",
+       "name": "Rel-17 LTE inter-band Carrier Aggregation (LTE iterbCA)",
+       "completion": 1,
+       "ref": "-"
+      }
+     ]
+    },
+    "18": {
+     "release": "18",
+     "version": "V18.5.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 737,
+     "statementsAtCreation": null,
+     "statementsAdded": 15,
+     "statementsRemoved": 12,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 1000018,
+       "acronym": "5GMS_Pro_Ph2",
+       "name": "5G Media Streaming Protocols Phase 2",
+       "completion": 1,
+       "ref": "SP-230976"
+      }
+     ]
+    },
+    "19": {
+     "release": "19",
+     "version": "V19.1.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 737,
+     "statementsAtCreation": null,
+     "statementsAdded": 0,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 1070057,
+       "acronym": "AMD_PRO-MED",
+       "name": "Stage 3 for Advanced Media Delivery",
+       "completion": 1,
+       "ref": "SP-250265"
+      }
+     ]
+    },
+    "20": {
+     "release": "20",
+     "version": "V19.1.0",
+     "newIssue": false,
+     "analysed": true,
+     "statementsInForce": 737,
+     "statementsAtCreation": null,
+     "statementsAdded": 0,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    }
+   },
+   "baselineIssue": {
+    "release": "19",
+    "version": "V19.1.0"
+   },
+   "latestIssue": {
+    "release": "19",
+    "version": "V19.1.0"
+   },
+   "titleFrom": "Standards page entry",
+   "scope": {
+    "text": "The present document specifies Progressive Download and Dynamic Adaptive Streaming over HTTP (3GP-DASH). This specification is part of Packet-switched Streaming Service (PSS) and 5G Media Streaming. HTTP-based progressive download and dynamic adaptive streaming had initially been separated from TS 26.234 to differentiate from RTP-based streaming that is maintained in TS 26.234. HTTP-based progressive download and dynamic adaptive streaming may be deployed independently from RTP-based PSS, for example by using standard HTTP/1.1 servers for hosting data formatted as defined in the present document, and in particular together with 5G Media Streaming.",
+    "firstSentence": "The present document specifies Progressive Download and Dynamic Adaptive Streaming over HTTP (3GP-DASH).",
+    "clause": "1",
+    "version": "V19.1.0"
+   },
+   "topics": [
+    {
+     "name": "General",
+     "statements": 729,
+     "share": 0.989
+    },
+    {
+     "name": "The features",
+     "statements": 7,
+     "share": 0.009
+    },
+    {
+     "name": "Content encoding",
+     "statements": 1,
+     "share": 0.001
+    }
+   ]
+  },
+  {
+   "id": "ISO/IEC 23009-1",
+   "title": "Dynamic Adaptive Streaming over HTTP (DASH)",
+   "url": "https://www.iso.org/standard/89027.html",
+   "layer": "Media formats",
+   "kind": "TS",
+   "explored": false,
+   "scopeNote": "unverified: could not obtain ISO/IEC 23009-1 (FileNotFoundError)",
+   "source": "Standards page entry (not a 3GPP document)",
+   "releases": {},
+   "topics": []
+  },
+  {
+   "id": "ISO/IEC 23000-19",
+   "title": "Common Media Application Format (CMAF)",
+   "url": "https://www.iso.org/standard/85623.html",
+   "layer": "Media formats",
+   "kind": "TS",
+   "explored": false,
+   "scopeNote": "unverified: could not obtain ISO/IEC 23000-19 (FileNotFoundError)",
+   "source": "Standards page entry (not a 3GPP document)",
+   "releases": {},
+   "topics": []
+  },
+  {
+   "id": "ETSI TS 103 285",
+   "title": "DVB-DASH",
+   "url": "https://www.etsi.org/deliver/etsi_ts/103200_103299/103285/",
+   "layer": "Media formats",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "source": "Standards page entry (not a 3GPP document)",
+   "releases": {},
+   "topics": []
+  },
+  {
+   "id": "ETSI TS 103 973",
+   "title": "Coded Multisource Media Format (CMMF) for Content Distribution and Delivery",
+   "url": "https://www.etsi.org/deliver/etsi_ts/103900_103999/103973/01.02.02_60/ts_103973v010202p.pdf",
+   "layer": "Multisource delivery",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "source": "Standards page entry (not a 3GPP document)",
+   "releases": {},
+   "topics": []
+  }
+ ],
+ "problems": [],
+ "notes": [
+  "A release with no issue of a document leaves the issue of the earlier release in force.",
+  "Statement counts are by wording: a reworded statement counts as one removed and one added; the moved counts are the part that is the same text in another document of the project.",
+  "A count is null where the release was not analysed (a tracked release, or a document that is not explored)."
+ ]
+}

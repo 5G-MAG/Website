@@ -79,14 +79,15 @@ const DOT = { yes: styles.dotYes, partial: styles.dotPartial, early: styles.dotP
 function Showcase({ topic }) {
   const s = topic.showcase;
   return (
-    <article className={styles.feat}>
-      <ShowcaseDiagram name={topic.diagram} className={styles.featPic} />
+    <article className={styles.feat} style={topic.diagram ? undefined : { gridTemplateColumns: 'minmax(0, 1fr)' }}>
+      {topic.diagram && <ShowcaseDiagram name={topic.diagram} className={styles.featPic} />}
       <div className={styles.featBody}>
         <span className={`${styles.badge} ${s.status === 'available' ? styles.badgeYes : styles.badgePartial}`}>
           {SHOWCASE_STATUS[s.status]}
         </span>
         <Heading as="h3" className={styles.featTitle}>{s.title}</Heading>
         <p className={styles.muted}>{s.about}</p>
+        {s.features.length > 0 && (
         <div className={styles.features}>
           <span className={styles.smallLabel}>Features</span>
           {s.features.map((f) => (
@@ -96,6 +97,7 @@ function Showcase({ topic }) {
             </span>
           ))}
         </div>
+        )}
       </div>
     </article>
   );
@@ -126,10 +128,10 @@ const PATHS = [
 ];
 
 // Where each action goes. Experiment opens the Playgrounds and Deploy opens the Deployment Kits.
-function pathTargets(project) {
+function pathTargets(project, topic) {
   if (!project) return {};
   return {
-    learn: project.tech_url,
+    learn: topic.learn || project.tech_url,
     implement: project.doc_url,
     experiment: '/playgrounds',
     deploy: '/kits',
@@ -138,13 +140,13 @@ function pathTargets(project) {
 
 function Paths({ topic }) {
   const project = projectBySlug(topic.project);
-  const to = pathTargets(project);
+  const to = pathTargets(project, topic);
   return (
     <nav className={styles.paths} aria-label={`${topic.title}: what would you like to do?`}>
       <p className={styles.pathsTitle}>What would you like to do?</p>
       {project && (
         <p className={styles.pathsProject}>
-          Main project: <b>{techLabelOf(project)}</b>
+          Main project: <b>{topic.projectLabel || techLabelOf(project)}</b>
         </p>
       )}
       <div className={styles.pathGrid}>
