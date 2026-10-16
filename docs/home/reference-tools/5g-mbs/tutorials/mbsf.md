@@ -84,7 +84,7 @@ This tutorial assumes that you have cloned and built the [rt-mbs-function reposi
 
 A 5G Core with UDP tunnelling should be running for these examples (unless using the _netcat_ package to fake an MB-UPF UDP tunnel) with at least the NRF, SCP, MB-SMF, MB-UPF and MB-AMF Network Functions (see the instructions in the [Open5GS 5MBS branch](https://github.com/5G-MAG/open5gs/tree/5mbs)).
 
-For convenience, a bash script is provided that starts all required components including the MBSTF, 5GC NFs and Media Server using [tmux](https://github.com/5G-MAG/rt-mbs-examples/blob/main/scripts/tmux). The instructions to use the script can be found [here](https://github.com/5G-MAG/rt-mbs-examples/tree/main/scripts/tmux#mbsf-tutorial-startup-script). If you use the script you can omit some of the steps in this tutorial.
+For convenience, a bash script is provided that starts all required components including the MBSTF, 5GC NFs and Media Server using [tmux](https://github.com/5G-MAG/rt-mbs-examples/blob/main/scripts/tmux). The instructions to use the script can be found in [the MBSF tutorial startup script](https://github.com/5G-MAG/rt-mbs-examples/tree/main/scripts/tmux#mbsf-tutorial-startup-script). If you use the script you can omit some of the steps in this tutorial.
 
 ## Description
 
@@ -173,7 +173,7 @@ With an MBS aware 5G Core running, and an MBSTF running (see above in [Prerequis
 The following sections cover the operations that can be performed on MBS User Services via the Nmb10 API. The operations
 covered are Create, Update, Retrieve and Delete. For that purpose, the `curl` command line tool is used to send
 HTTP requests to the API. However, if you prefer a graphical user interface to trigger the calls, an
-Insomnia collection is also offered. You can find the collection [here](https://github.com/5G-MAG/rt-mbs-examples/tree/main/insomnia).
+Insomnia collection is also offered. You can find it in [the Insomnia collection in rt-mbs-examples](https://github.com/5G-MAG/rt-mbs-examples/tree/main/insomnia).
 
 The example responses below were captured from the MBS broadcast demo in `rt-mbs-examples`, where the MBSF listens on
 127.0.0.67 and also serves User Service Announcements; with the configuration above the address is 127.0.0.68.

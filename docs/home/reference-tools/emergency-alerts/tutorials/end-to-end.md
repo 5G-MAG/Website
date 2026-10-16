@@ -54,7 +54,7 @@ The setup consists of a 5G Broadcast transmitter (rt-mbms-tx-for-qrd-and-crd) co
 
 ### Step 1: Install the 5G Broadcast Transmitter
 
-Install the dependencies and SDR drivers for the transmitter as documented [here](https://github.com/5G-MAG/rt-mbms-tx-for-qrd-and-crd).
+Install the dependencies and SDR drivers for the transmitter as documented in [the transmitter repository](https://github.com/5G-MAG/rt-mbms-tx-for-qrd-and-crd).
 
 Next, clone the transmitter repository:
 
@@ -76,7 +76,7 @@ ninja
 
 ### Step 2: Configuration of the 5G Broadcast Transmitter
 
-Follow the configuration instructions documented [here](https://github.com/5G-MAG/rt-mbms-tx-for-qrd-and-crd?tab=readme-ov-file#configuration-after-installation).
+Follow the configuration instructions documented in [the transmitter README, section "Configuration after installation"](https://github.com/5G-MAG/rt-mbms-tx-for-qrd-and-crd?tab=readme-ov-file#configuration-after-installation).
 Make sure to adjust the `dl_freq` and the `dl_earfcn` in the `enb.conf` based on the frequency that your CRD or QRD device is operating on. To derive the right `dl_earfcn` you can use
 this [tool](https://5g-tools.com/4g-lte-earfcn-calculator/). Note also that SoapySDR might detect the wrong output (e.g. an audio device instead of your SDR.). In that case make sure to use `device_name` and `device_args` to select the right output device.
 

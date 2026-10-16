@@ -74,7 +74,7 @@ This tutorial assumes that you have cloned and built the [rt-mbs-transport-funct
 
 A 5G Core with UDP tunnelling should be running for these examples (unless using the _netcat_ package to fake an MB-UPF UDP tunnel) with at least the NRF, SCP, MB-SMF, MB-UPF and MB-AMF Network Functions (see the instructions in the [Open5GS 5MBS branch](https://github.com/5G-MAG/open5gs/tree/5mbs) README).
 
-For convenience, a bash script is provided that starts all required components including the MBSTF, 5GC NFs and Media Server using [tmux](https://github.com/5G-MAG/rt-mbs-examples/blob/main/scripts/tmux). The instructions to use the script can be found [here](https://github.com/5G-MAG/rt-mbs-examples/tree/main/scripts/tmux#mbstf-tutorial-startup-script). If you use the script you can omit the steps 2 and 3 in this tutorial.
+For convenience, a bash script is provided that starts all required components including the MBSTF, 5GC NFs and Media Server using [tmux](https://github.com/5G-MAG/rt-mbs-examples/blob/main/scripts/tmux). The instructions to use the script can be found in [the MBSTF tutorial startup script](https://github.com/5G-MAG/rt-mbs-examples/tree/main/scripts/tmux#mbstf-tutorial-startup-script). If you use the script you can omit the steps 2 and 3 in this tutorial.
 
 For these examples you will also need Wireshark, to view the results.
 

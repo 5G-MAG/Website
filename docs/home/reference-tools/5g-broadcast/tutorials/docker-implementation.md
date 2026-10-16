@@ -74,7 +74,7 @@ The installation has four steps, matching the sections below:
 locally to start working with docker.
 
 **Alternatively**, easy to use shell script can be
-found [here](https://github.com/5G-MAG/rt-mbms-modem/blob/main/dockerPrereq.sh)!
+found in [the dockerPrereq.sh script in the MBMS Modem repository](https://github.com/5G-MAG/rt-mbms-modem/blob/main/dockerPrereq.sh)!
 
 ### Step 2: Build the images
 

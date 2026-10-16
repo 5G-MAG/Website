@@ -33,7 +33,7 @@ The examples below use the `-e debug` option, so they include verbose output. Th
 
 ## Setup the relevant Open5GS network functions
 
-We recommend a local installation of Open5GS following the instructions provided [here](../../3gpp-platforms/tutorials/5gnetwork).
+We recommend a local installation of Open5GS following the instructions provided in [the 5G network tutorial](../../3gpp-platforms/tutorials/5gnetwork).
 
 Note that the **TMGI Allocation/Deallocation tool** and the **MBS Service tool** require the MBS components under the `5mbs` branch of 5G-MAG's Open5GS repository. This can be cloned with: `git clone --recurse-submodules -b 5mbs https://github.com/5G-MAG/open5gs.git ~/open5gs`. The MBS Transport Function can be installed from the [rt-mbs-transport-function](https://github.com/5G-MAG/rt-mbs-transport-function) repository.
 

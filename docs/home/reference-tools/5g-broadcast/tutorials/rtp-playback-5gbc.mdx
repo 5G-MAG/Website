@@ -58,13 +58,13 @@ The output of the SDR or the sample file serves as the input for the MBMS Modem.
 
 ## Step 2: Configure multicast routing
 
-Follow the detailed instructions on how to configure multicast routing provided [here](https://github.com/5G-MAG/rt-mbms-modem?tab=readme-ov-file#running-the-mbms-modem).
+Follow the detailed instructions on how to configure multicast routing provided in [the MBMS Modem README, section "Running the MBMS Modem"](https://github.com/5G-MAG/rt-mbms-modem?tab=readme-ov-file#running-the-mbms-modem).
 
 Start and then stop the MBMS Modem service. Starting it generates or updates the required configuration files; stopping it frees the modem so you can run it in the foreground against a sample file in the next step. This may be needed again after a reboot. - `systemctl start 5gmag-rt-modem` - `systemctl stop 5gmag-rt-modem`
 
 ## Step 3: Start the MBMS Modem
 
-Start the MBMS Modem with a sample as specified [here](https://github.com/5G-MAG/rt-mbms-modem?tab=readme-ov-file#run-a-sample-file). It is important to provide the right bandwidth to the MBMS Modem. Consequently, for a 5 MHz bandwidth sample file, the command looks like this:
+Start the MBMS Modem with a sample as specified in [the MBMS Modem README, section "Run a sample file"](https://github.com/5G-MAG/rt-mbms-modem?tab=readme-ov-file#run-a-sample-file). It is important to provide the right bandwidth to the MBMS Modem. Consequently, for a 5 MHz bandwidth sample file, the command looks like this:
 
 ```bash
 cd rt-mbms-modem/build

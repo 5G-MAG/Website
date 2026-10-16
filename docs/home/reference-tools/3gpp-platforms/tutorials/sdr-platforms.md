@@ -94,7 +94,7 @@ sudo ldconfig
 
 ## Using HackRF One with Soapy
 
-It should be noted that the HackRF One is a half-duplex SDR and has issues synchronising using the internal clock, documented [here](https://hackrf.readthedocs.io/en/latest/external_clock_interface.html). Synchronisation can be achieved by providing an external CLKIN signal using e.g. Keysight 33120A configured to output a 10 MHz sine wave with amplitude 1.5 Vpp and offset 0.75 V (as it is a high impedance input). Alternatively, a simpler option is to install [this component](https://www.nooelec.com/store/tiny-tcxo.html) following [these instructions](https://f1atb.fr/en/tcxo-installation-on-hackrf/). You may also want to install some [RF shielding](https://hackaday.io/project/158323/instructions).
+It should be noted that the HackRF One is a half-duplex SDR and has issues synchronising using the internal clock, documented [the HackRF external clock documentation](https://hackrf.readthedocs.io/en/latest/external_clock_interface.html). Synchronisation can be achieved by providing an external CLKIN signal using e.g. Keysight 33120A configured to output a 10 MHz sine wave with amplitude 1.5 Vpp and offset 0.75 V (as it is a high impedance input). Alternatively, a simpler option is to install [this component](https://www.nooelec.com/store/tiny-tcxo.html) following [these instructions](https://f1atb.fr/en/tcxo-installation-on-hackrf/). You may also want to install some [RF shielding](https://hackaday.io/project/158323/instructions).
 
 For HackRF One , install by running:
 

@@ -213,7 +213,7 @@ set to `"watchfolder/hls/"`.
 ### Step 3: Configure rt-mbms-tx-for-qrd-and-crd
 
 Now configure the 5G Broadcast transmitter. Follow the
-instructions [here](https://github.com/5G-MAG/rt-mbms-tx-for-qrd-and-crd?tab=readme-ov-file#configuration-after-installation).
+instructions in [the transmitter README, section "Configuration after installation"](https://github.com/5G-MAG/rt-mbms-tx-for-qrd-and-crd?tab=readme-ov-file#configuration-after-installation).
 Make sure to set the right downlink frequency based on the frequency that your CRD/QRD device is operating on. For
 instance, for a frequency of 626MHz using a BladeRF SDR these are the required settings
 in `/root/.config/srsran/enb.conf`:
@@ -288,7 +288,7 @@ stream_0.m3u8
 
 Next, start the 5G Broadcast transmitter. This requires starting three different processes. In addition, the `sgi_mb`
 interface needs to be created. Follow the steps
-described [here](https://github.com/5G-MAG/rt-mbms-tx-for-qrd-and-crd?tab=readme-ov-file#running) to start everything.
+described in [the transmitter README, section "Running"](https://github.com/5G-MAG/rt-mbms-tx-for-qrd-and-crd?tab=readme-ov-file#running) to start everything.
 
 ### Step 4: Start flute-ffmpeg
 
@@ -308,7 +308,7 @@ files written to the watchfolder are processed:
 ### Step 5: Start the rt-mbms-mw-android
 
 The final step is to start the Android Middleware to receive the files now being broadcast with the transmitter.
-Follow the instructions [here](https://github.com/5G-MAG/rt-mbms-mw-android) to deploy the Android Middleware to your
+Follow the instructions in [the MBMS Middleware for Android repository](https://github.com/5G-MAG/rt-mbms-mw-android) to deploy the Android Middleware to your
 QRD/CRD device. As an alternative, the Android Middleware can also be deployed to the device using Android Studio.
 
 The phones will have to retrieve the manifest over unicast. For this make sure they have access e.g. over WiFi to the watchfolder where the manifest is located. This can be done by opening a hotspot on the same PC running the watchfolder or by means of a router serving all the equipment.
