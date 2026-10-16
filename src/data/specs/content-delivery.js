@@ -1,4 +1,4 @@
-// Specification catalogue for the Content Delivery Protocols topic (FLUTE, ROUTE).
+// Specification catalogue for the Content Delivery Protocols and Tools topic (FLUTE, ROUTE).
 //
 // `layer` carries the distinction this topic turns on: which IETF generation is
 // normative for 3GPP use. FLUTE version 1 (RFC 3926 and its companions) is what

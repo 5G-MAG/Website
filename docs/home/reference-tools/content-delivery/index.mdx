@@ -1,7 +1,7 @@
 ---
 hide_title: true
 sidebar_class_name: project-index-link
-title: Content Delivery Protocols
+title: Content Delivery Protocols and Tools
 sidebar_position: -1
 description: Landing page for the DASH, HLS, and CMAF content delivery reference tools, with links to implementation detail, roadmap, repositories, and releases.
 ---
@@ -25,11 +25,11 @@ export const REPO_COUNT = (REPO_METADATA['content-delivery'] || []).length;
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Reference Tools</span>
-<h1>Content Delivery Protocols</h1>
+<h1>Content Delivery Protocols and Tools</h1>
 </div>
 </div>
 
-<ProjectSlide image="/assets/images/projects/content-delivery-reference-tools.png" alt="Content Delivery Protocols: Reference Tools slide">
+<ProjectSlide image="/assets/images/projects/content-delivery-reference-tools.png" alt="Content Delivery Protocols and Tools: Reference Tools slide">
 
 These tools address the application-layer delivery protocols that sit above the 5G transport, ensuring interoperability across content formats, packaging standards, and player implementations. The project is designed to support any delivery protocol; it currently implements FLUTE and ROUTE, used respectively for file and real-time object delivery over 5G Broadcast and 5G Multicast Broadcast Services (MBS). Useful for developers validating DASH/HLS players, packagers, and Content Delivery Network (CDN) integrations in 5G environments. For the architectures these transports plug into and the per-feature FLUTE audit, see [Implementation Detail](./implementation).
 
@@ -98,7 +98,7 @@ These tools address the application-layer delivery protocols that sit above the 
 
 **Implemented specifications:** IETF RFC 3926/RFC 6726 (FLUTE) and RFC 9223 (ROUTE) — the transports the tools implement. DASH (ISO/IEC 23009-1), HLS (RFC 8216) and CMAF (ISO/IEC 23000-19) are the formats these transports carry as opaque segments and manifests, not something the tools implement themselves.
 
-See [Content Delivery Protocols on the Standards portal](/standards/content-delivery) for the full specification list.
+See [Content Delivery Protocols and Tools on the Standards portal](/standards/content-delivery) for the full specification list.
 
 ## Contributors & How to Contribute
 
@@ -110,15 +110,15 @@ See [Content Delivery Protocols on the Standards portal](/standards/content-deli
 
 ## Developer Updates
 
-<CommunityStats name="Content Delivery Protocols" />
+<CommunityStats name="Content Delivery Protocols and Tools" />
 
 ### Open Pull Requests
 
-<ProjectOpenPRs name="Content Delivery Protocols" />
+<ProjectOpenPRs name="Content Delivery Protocols and Tools" />
 
 This page links to the public roadmap boards tracking work on the content delivery protocol tools, including transport support for the Multimedia Broadcast Multicast Service (MBMS) delivery protocols ROUTE and FLUTE.
 
-**General Project Roadmap:** the Kanban board below tracks the planned and in-progress work for Content Delivery Protocols (ROUTE and FLUTE transport support for the 5G Broadcast components). It is maintained live on GitHub.
+**General Project Roadmap:** the Kanban board below tracks the planned and in-progress work for Content Delivery Protocols and Tools (ROUTE and FLUTE transport support for the 5G Broadcast components). It is maintained live on GitHub.
 
 [Kanban board: Roadmap](https://github.com/orgs/5G-MAG/projects/48/views/14)
 

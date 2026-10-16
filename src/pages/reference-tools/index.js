@@ -89,7 +89,7 @@ const TOPIC_META = {
     desc: 'Web-based decoder and player for V-DMC (ISO/IEC 23090-29) content, in progress.',
     tags: ['Web'],
   },
-  'Content Delivery Protocols': {
+  'Content Delivery Protocols and Tools': {
     desc: 'Multi-CDN tooling and protocol implementations for media delivery.',
     tags: ['Linux'],
   },

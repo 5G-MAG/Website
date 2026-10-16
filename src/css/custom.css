@@ -1371,7 +1371,7 @@
 }
 
 /* "What We Work On" domain-pillar cards (/about) -- the sub-topics inside
-   each pillar, e.g. Multicast's MBS/NTN/Content Delivery Protocols. */
+   each pillar, e.g. Multicast's MBS/NTN/Content Delivery Protocols and Tools. */
 .domain-pillar-chips {
   display: flex;
   flex-wrap: wrap;

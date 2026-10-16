@@ -281,8 +281,8 @@ export function projectsInBasket(basketKey) {
 // just one) -- rt-media-origin (2026-09-25, raised directly: "the
 // rt-media-origin is part of 5gms" / "the media-origin is also for the
 // V3C") is genuinely shared across three projects spanning two baskets:
-// its original owner Content Delivery Protocols, 5G Media Streaming
-// (5GMS, same basket as Content Delivery Protocols -- excluded here so
+// its original owner Content Delivery Protocols and Tools, 5G Media Streaming
+// (5GMS, same basket as Content Delivery Protocols and Tools -- excluded here so
 // the content-delivery basket's own aggregate doesn't double-count it),
 // and MPEG V3C Immersive Platform (a different basket, immersive-media,
 // so it counts there too via V3C, its only representative in that
@@ -296,9 +296,9 @@ export function projectsInBasket(basketKey) {
 const SHARED_REPO_OWNERS = {
   open5gs: ['3GPP RAN and Core Platforms'],
   'rt-5gc-service-consumers': ['3GPP RAN and Core Platforms'],
-  'rt-media-origin': ['Content Delivery Protocols', 'MPEG V3C Immersive Platform', '5G Multicast Broadcast Services (MBS)'],
-  'rt-cmmf-encoder': ['Content Delivery Protocols'],
-  'rt-libflute': ['Content Delivery Protocols', '5G Broadcast - TV and Radio Services', '5G Multicast Broadcast Services (MBS)'],
+  'rt-media-origin': ['Content Delivery Protocols and Tools', 'MPEG V3C Immersive Platform', '5G Multicast Broadcast Services (MBS)'],
+  'rt-cmmf-encoder': ['Content Delivery Protocols and Tools'],
+  'rt-libflute': ['Content Delivery Protocols and Tools', '5G Broadcast - TV and Radio Services', '5G Multicast Broadcast Services (MBS)'],
   'rt-3gpp-swap': ['Conversational Avatar Communication with MPEG ARF', 'Real-time Media Communication (RTC) Architecture'],
   'cmcd-toolkit': ['5G Media Streaming (5GMS)'],
   'rt-mbms-application': ['5G Broadcast - TV and Radio Services'],

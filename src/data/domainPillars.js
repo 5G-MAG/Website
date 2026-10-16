@@ -11,7 +11,7 @@
 // under Multicast any more than under Content Delivery. Two topics are
 // deliberately not listed under any single pillar below, because each
 // serves two of these pillars at once: DVB-I over 5G Systems (Content
-// Delivery and 5G Broadcast) and Content Delivery Protocols/FLUTE+ROUTE
+// Delivery and 5G Broadcast) and Content Delivery Protocols and Tools (FLUTE and ROUTE)
 // (Multicast and 5G Broadcast, per its own real description: "for one-way
 // delivery ... over broadcast and multicast").
 //

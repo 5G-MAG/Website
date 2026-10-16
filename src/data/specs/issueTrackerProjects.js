@@ -38,7 +38,7 @@ export const ISSUE_TRACKER_GROUPS = [
   },
   {
     key: 'content-delivery',
-    label: 'Content Delivery Protocols',
+    label: 'Content Delivery Protocols and Tools',
     match: ['26.247', '26.346', 'flute', 'route'],
   },
   {

@@ -27,7 +27,7 @@ The History of ETSI TS 103 973 V1.2.2 (2026-05) lists three publications.
 | V1.2.1 | March 2026 |
 | V1.2.2 | May 2026 |
 
-CMMF is specified by ETSI, not by a 3GPP release, so its history is the list of ETSI publications and not a set of 3GPP work items and change requests. The same list is part of [Content Delivery Protocols - Standards Evolution](/standards/content-delivery/evolution). The History of the document does not describe what changed between these versions.
+CMMF is specified by ETSI, not by a 3GPP release, so its history is the list of ETSI publications and not a set of 3GPP work items and change requests. The same list is part of [Content Delivery Protocols and Tools - Standards Evolution](/standards/content-delivery/evolution). The History of the document does not describe what changed between these versions.
 
 <details>
 <summary>Sources for this page</summary>

@@ -688,7 +688,7 @@
       "icon": "device-tv"
     },
     {
-      "name": "Content Delivery Protocols",
+      "name": "Content Delivery Protocols and Tools",
       "type": "reference-tool",
       "doc_url": "/reference-tools/content-delivery/",
       "tech_url": "/tech/content-delivery",
@@ -735,7 +735,7 @@
       "standards_url": "/standards/content-delivery",
       "tagline": "Tests a FLUTE implementation against the FLUTE profiles of RFC 3926, 3GPP TS 26.346 and 3GPP TS 26.517",
       "basket": "content-delivery",
-      "parent": "Content Delivery Protocols",
+      "parent": "Content Delivery Protocols and Tools",
       "repos": [
         "flute-conformance-validator"
       ],
@@ -1927,7 +1927,7 @@
       {
         "repo_slug": "rt-media-origin",
         "display_name": "Media Origin Server and Packager",
-        "description": "A media origin server component for Content Delivery Protocols testing (JavaScript/TypeScript web application). No public description has been published on GitHub yet.",
+        "description": "A media origin server component for Content Delivery Protocols and Tools testing (JavaScript/TypeScript web application). No public description has been published on GitHub yet.",
         "repo_url": "https://github.com/5G-MAG/rt-media-origin",
         "branch": "main",
         "license": "5G-MAG PL v1.0",

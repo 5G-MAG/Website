@@ -21,7 +21,7 @@ import styles from '@site/src/pages/tech/index.module.css';
 // Clustered by true origin (raised directly: "I prefer if the repos are
 // just clustered") -- this project's own repos first with no heading,
 // then one small heading per OTHER real owner (e.g. 5GMS's page showing
-// "Also used by Content Delivery Protocols"), grouping its repos
+// "Also used by Content Delivery Protocols and Tools"), grouping its repos
 // together, using that repo's real originIcon/originName (baskets.js)
 // rather than this page's own icon -- raised directly ("you are not
 // using the right icons... automatically retrieved from the taxonomy").

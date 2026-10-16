@@ -1,8 +1,8 @@
 ---
 hide_title: true
-title: Content Delivery Protocols - Standards Evolution
+title: Content Delivery Protocols and Tools - Standards Evolution
 slug: /standards/content-delivery/evolution
-description: Release-by-release 3GPP work item and Change Request history behind Content Delivery Protocols.
+description: Release-by-release 3GPP work item and Change Request history behind Content Delivery Protocols and Tools.
 ---
 
 <div class="topic-banner">
@@ -12,11 +12,11 @@ description: Release-by-release 3GPP work item and Change Request history behind
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Standards</span>
-<h1>Content Delivery Protocols - Standards Evolution</h1>
+<h1>Content Delivery Protocols and Tools - Standards Evolution</h1>
 </div>
 </div>
 
-This page is the release-by-release companion to [Standards: Content Delivery Protocols](/standards/content-delivery): when each document was published, and the Change Requests to TS 26.346 and TS 26.517 that touch FLUTE delivery.
+This page is the release-by-release companion to [Standards: Content Delivery Protocols and Tools](/standards/content-delivery): when each document was published, and the Change Requests to TS 26.346 and TS 26.517 that touch FLUTE delivery.
 
 ## IETF documents
 

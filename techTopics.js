@@ -85,12 +85,12 @@ const ALL_TOPICS = [
     standards: [{ doc: 'standards/dvb-i', label: 'Standards: DVB-I Services over 5G Systems' }],
   },
   {
-    label: 'Content Delivery Protocols',
+    label: 'Content Delivery Protocols and Tools',
     techHref: '/tech/content-delivery',
     autogen: 'content-delivery',
     techOverviewDoc: 'content-delivery/overview',
     standards: [
-      { doc: 'standards/content-delivery', label: 'Standards: Content Delivery Protocols' },
+      { doc: 'standards/content-delivery', label: 'Standards: Content Delivery Protocols and Tools' },
       { doc: 'standards/content-delivery-flute', label: 'Standards: FLUTE - Requirements by Profile', sidebarLabel: 'FLUTE requirements by profile' },
       {
         doc: 'standards/content-delivery-standards-evolution',

@@ -1,6 +1,6 @@
 {
  "area": "content-delivery",
- "title": "Content Delivery Protocols: FLUTE",
+ "title": "Content Delivery Protocols and Tools: FLUTE",
  "audited": "2026-10-06",
  "tier": "T0",
  "method": "code read against every requirement of the FLUTE documents in the library's scope, every open change read as merged into main, nothing built or run for the verdicts",

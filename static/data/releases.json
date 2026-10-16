@@ -427,7 +427,7 @@
       ]
     },
     {
-      "name": "Content Delivery Protocols",
+      "name": "Content Delivery Protocols and Tools",
       "doc_url": "/reference-tools/content-delivery/",
       "tagline": "Content delivery origin, packaging, protocols and related tools",
       "releases_slug": "#repositories--releases",

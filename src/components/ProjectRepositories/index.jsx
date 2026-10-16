@@ -30,7 +30,7 @@ function formatAge(days) {
 
 // Project name -> basket, so a repo's card can be tinted with the
 // technology area it really belongs to (its origin project's basket, e.g.
-// 5GMS's own repos vs. a cross-referenced Content Delivery Protocols repo
+// 5GMS's own repos vs. a cross-referenced Content Delivery Protocols and Tools repo
 // shown under "Also used by"). A project with `basket: null` (real,
 // documented case -- shared infra/reference-consumer repos with no domain
 // of their own, e.g. 5G Core Service Consumers) has no accent to give it;
