@@ -137,7 +137,7 @@ export const SECTION_NAV = [
     title: 'Software Accelerator',
     menuTitle: 'Media Connectivity Software Accelerator',
     titleHref: '/developer',
-    subtitle: 'The programme and community that build open-source software from the specifications.',
+    subtitle: 'The programme and community that build open-source software.',
     items: [
       { label: 'Reference Tools', href: '/reference-tools', featured: true, prominent: true, group: 'What it builds' },
       { label: 'Testbeds', href: '/testbeds', featured: true, prominent: true, group: 'What it builds' },

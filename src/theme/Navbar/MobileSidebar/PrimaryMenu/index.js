@@ -40,11 +40,10 @@ export default function NavbarMobilePrimaryMenu() {
           <React.Fragment key={i}>
             {item.solutionsMenu ? (
               // Solutions has no page: a heading, then each area page with its projects' Technical
-              // Analysis indented under it (the desktop mega menu's two parts), then the /tech hub.
+              // Analysis indented under it (the desktop mega menu's two parts). The heading itself opens the /tech hub.
               <>
-                <li className="menu__list-item">
-                  <span className={`menu__link ${item.className || ''}`}>{item.label}</span>
-                </li>
+                <NavbarItem mobile to="/tech" label={item.label} className={item.className}
+                  onClick={() => mobileSidebar.toggle()} />
                 {SOLUTIONS_ITEMS.map((sub) => {
                   const group = TECHNOLOGY_GROUPS.find((g) => g.href === sub.href);
                   return (
@@ -59,8 +58,6 @@ export default function NavbarMobilePrimaryMenu() {
                     </React.Fragment>
                   );
                 })}
-                <NavbarItem mobile to="/tech" label="Where we stand"
-                  className="padding-left--lg" onClick={() => mobileSidebar.toggle()} />
               </>
             ) : item.to === '/developer' ? (
               // Software Accelerator Programme: its own page, then the programme pages.

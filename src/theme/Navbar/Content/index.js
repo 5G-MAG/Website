@@ -496,7 +496,7 @@ function MegaMenu({ trigger, label, children }) {
   );
 }
 
-// Solutions has no page of its own: its trigger is a button that opens one wide panel with one card per
+// Solutions opens one wide panel with one card per area, and its own link goes to /tech (Where we stand). The panel has one card per
 // area: the card title opens the area page, the lines under it each project's Technical Analysis (this
 // replaces the former separate Technology menu).
 function SolutionsMenu({ item }) {
@@ -504,15 +504,15 @@ function SolutionsMenu({ item }) {
     <MegaMenu
       label="Solutions"
       trigger={(expanded) => (
-        <button
-          type="button"
+        <Link
+          to="/tech"
           data-solutions-trigger
-          className={clsx('navbar__item navbar__link clean-btn', item.className)}
+          className={clsx('navbar__item navbar__link', item.className)}
           aria-haspopup="true"
           aria-expanded={expanded}
         >
           {item.label}
-        </button>
+        </Link>
       )}
     >
       <SectionHeadCard title="Solutions" subtitle="What you can build, area by area, and the technology behind it."
