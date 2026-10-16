@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-15 01:58 UTC",
+  "updated_at": "2026-10-16 01:48 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -1324,7 +1324,7 @@
           "description": "FLUTE Protocol and Profiles",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-14",
+          "pushed_at": "2026-10-15",
           "pulls": [
             {
               "number": 115,
@@ -1333,15 +1333,6 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-14",
-              "base": "development"
-            },
-            {
-              "number": 113,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/rt-libflute/pull/113",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
               "base": "development"
             },
             {
@@ -1527,24 +1518,19 @@
               "last_commit": "2026-08-21"
             },
             {
+              "name": "development",
+              "default": false,
+              "last_commit": "2026-10-15"
+            },
+            {
               "name": "feature/issue114-fdt-before-object",
               "default": false,
               "last_commit": "2026-10-14"
             },
             {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-10-13"
-            },
-            {
               "name": "feature/mbs-profile",
               "default": false,
               "last_commit": "2026-10-02"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-09-29"
             },
             {
               "name": "feature/raptor-raptorq-fec",
@@ -1836,6 +1822,219 @@
               "name": "gh-pages",
               "default": false,
               "last_commit": "2025-10-31"
+            }
+          ]
+        },
+        {
+          "repo": "rt-mbms-mw",
+          "url": "https://github.com/5G-MAG/rt-mbms-mw",
+          "description": "MBMS Middleware",
+          "auxiliary": false,
+          "private": false,
+          "pushed_at": "2025-10-31",
+          "pulls": [
+            {
+              "number": 18,
+              "title": "ROUTE support using GPAC",
+              "url": "https://github.com/5G-MAG/rt-mbms-mw/pull/18",
+              "draft": false,
+              "author": "rbouqueau",
+              "created_at": "2021-11-30",
+              "base": "development"
+            },
+            {
+              "number": 15,
+              "title": "readme: propose to install in /usr/local instead of /usr (which is a …",
+              "url": "https://github.com/5G-MAG/rt-mbms-mw/pull/15",
+              "draft": false,
+              "author": "rbouqueau",
+              "created_at": "2021-10-23",
+              "base": "development"
+            }
+          ],
+          "issues": [
+            {
+              "number": 46,
+              "title": "Middleware Aborted",
+              "url": "https://github.com/5G-MAG/rt-mbms-mw/issues/46",
+              "author": "Barbiecy",
+              "created_at": "2023-12-04",
+              "labels": [
+                "question"
+              ]
+            },
+            {
+              "number": 45,
+              "title": "Support for the latest SA format of the R&S transmitter",
+              "url": "https://github.com/5G-MAG/rt-mbms-mw/issues/45",
+              "author": "dsilhavy",
+              "created_at": "2023-11-17",
+              "labels": [
+                "enhancement"
+              ]
+            },
+            {
+              "number": 41,
+              "title": "Problem with mw",
+              "url": "https://github.com/5G-MAG/rt-mbms-mw/issues/41",
+              "author": "OIVJasminka",
+              "created_at": "2023-03-06",
+              "labels": []
+            },
+            {
+              "number": 38,
+              "title": "Multiple MTCH streaming",
+              "url": "https://github.com/5G-MAG/rt-mbms-mw/issues/38",
+              "author": "lreggian",
+              "created_at": "2022-12-01",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 37,
+              "title": "Problem with SA in the mw version 0.10.0",
+              "url": "https://github.com/5G-MAG/rt-mbms-mw/issues/37",
+              "author": "alessandro-lucco",
+              "created_at": "2022-11-29",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 36,
+              "title": "Sample recordings with new SA format",
+              "url": "https://github.com/5G-MAG/rt-mbms-mw/issues/36",
+              "author": "dsilhavy",
+              "created_at": "2022-11-25",
+              "labels": [
+                "enhancement"
+              ]
+            },
+            {
+              "number": 35,
+              "title": "DASH streaming",
+              "url": "https://github.com/5G-MAG/rt-mbms-mw/issues/35",
+              "author": "lreggian",
+              "created_at": "2022-11-24",
+              "labels": [
+                "bug",
+                "Awaiting Feedback"
+              ]
+            },
+            {
+              "number": 22,
+              "title": "some build issues",
+              "url": "https://github.com/5G-MAG/rt-mbms-mw/issues/22",
+              "author": "jonniebeeb",
+              "created_at": "2022-02-25",
+              "labels": [
+                "bug"
+              ]
+            },
+            {
+              "number": 16,
+              "title": "Support for ROUTE",
+              "url": "https://github.com/5G-MAG/rt-mbms-mw/issues/16",
+              "author": "dsilhavy",
+              "created_at": "2021-11-18",
+              "labels": [
+                "enhancement"
+              ]
+            },
+            {
+              "number": 14,
+              "title": "DRM support",
+              "url": "https://github.com/5G-MAG/rt-mbms-mw/issues/14",
+              "author": "dsilhavy",
+              "created_at": "2021-10-07",
+              "labels": [
+                "enhancement",
+                "Investigation"
+              ]
+            },
+            {
+              "number": 12,
+              "title": "File and media content preposition",
+              "url": "https://github.com/5G-MAG/rt-mbms-mw/issues/12",
+              "author": "dsilhavy",
+              "created_at": "2021-10-07",
+              "labels": [
+                "enhancement",
+                "Investigation"
+              ]
+            },
+            {
+              "number": 10,
+              "title": "Support for other content (2nd audio/language)",
+              "url": "https://github.com/5G-MAG/rt-mbms-mw/issues/10",
+              "author": "dsilhavy",
+              "created_at": "2021-10-07",
+              "labels": [
+                "enhancement"
+              ]
+            },
+            {
+              "number": 9,
+              "title": "Support for the MBMS API",
+              "url": "https://github.com/5G-MAG/rt-mbms-mw/issues/9",
+              "author": "dsilhavy",
+              "created_at": "2021-10-07",
+              "labels": [
+                "enhancement"
+              ]
+            },
+            {
+              "number": 4,
+              "title": " Broadcast on Demand",
+              "url": "https://github.com/5G-MAG/rt-mbms-mw/issues/4",
+              "author": "dsilhavy",
+              "created_at": "2021-09-22",
+              "labels": [
+                "enhancement"
+              ]
+            },
+            {
+              "number": 2,
+              "title": "Low latency support",
+              "url": "https://github.com/5G-MAG/rt-mbms-mw/issues/2",
+              "author": "dsilhavy",
+              "created_at": "2021-09-22",
+              "labels": [
+                "enhancement"
+              ]
+            }
+          ],
+          "branches": [
+            {
+              "name": "development",
+              "default": true,
+              "last_commit": "2025-10-31"
+            },
+            {
+              "name": "gh-pages",
+              "default": false,
+              "last_commit": "2025-10-31"
+            },
+            {
+              "name": "fix/githubModule",
+              "default": false,
+              "last_commit": "2023-06-19"
+            },
+            {
+              "name": "main",
+              "default": false,
+              "last_commit": "2023-02-27"
+            },
+            {
+              "name": "feature/ubuntu22",
+              "default": false,
+              "last_commit": "2022-07-18"
+            },
+            {
+              "name": "route-gpac",
+              "default": false,
+              "last_commit": "2021-12-08"
             }
           ]
         },
@@ -2191,6 +2390,40 @@
               "name": "feature/docker",
               "default": false,
               "last_commit": "2025-04-08"
+            }
+          ]
+        },
+        {
+          "repo": "rt-wui",
+          "url": "https://github.com/5G-MAG/rt-wui",
+          "description": "A graphical webinterface with a control display for MBMS Modem, MBMS Middleware. The webinterface provides basic browser-based HLS playback of the HLS manifest and segments provided by the MBMS Middleware using hls.js.",
+          "auxiliary": false,
+          "private": false,
+          "pushed_at": "2025-08-08",
+          "pulls": [],
+          "issues": [
+            {
+              "number": 3,
+              "title": "Support for multicast TS",
+              "url": "https://github.com/5G-MAG/rt-wui/issues/3",
+              "author": "dsilhavy",
+              "created_at": "2021-10-07",
+              "labels": [
+                "enhancement",
+                "Investigate"
+              ]
+            }
+          ],
+          "branches": [
+            {
+              "name": "development",
+              "default": true,
+              "last_commit": "2025-08-08"
+            },
+            {
+              "name": "main",
+              "default": false,
+              "last_commit": "2023-02-27"
             }
           ]
         },
@@ -4045,7 +4278,7 @@
           "description": "FLUTE Protocol and Profiles",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-14",
+          "pushed_at": "2026-10-15",
           "pulls": [
             {
               "number": 115,
@@ -4054,15 +4287,6 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-14",
-              "base": "development"
-            },
-            {
-              "number": 113,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/rt-libflute/pull/113",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
               "base": "development"
             },
             {
@@ -4248,24 +4472,19 @@
               "last_commit": "2026-08-21"
             },
             {
+              "name": "development",
+              "default": false,
+              "last_commit": "2026-10-15"
+            },
+            {
               "name": "feature/issue114-fdt-before-object",
               "default": false,
               "last_commit": "2026-10-14"
             },
             {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-10-13"
-            },
-            {
               "name": "feature/mbs-profile",
               "default": false,
               "last_commit": "2026-10-02"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-09-29"
             },
             {
               "name": "feature/raptor-raptorq-fec",
@@ -4300,8 +4519,17 @@
           "description": "MBS Function (MBSF)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-09",
+          "pushed_at": "2026-10-15",
           "pulls": [
+            {
+              "number": 74,
+              "title": "mbsf: do not request an MBS Distribution Session again while its creation is waiting",
+              "url": "https://github.com/5G-MAG/rt-mbs-function/pull/74",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-15",
+              "base": "development"
+            },
             {
               "number": 71,
               "title": "mbsf: send the request that was waiting for an MBSTF discovery",
@@ -4331,6 +4559,14 @@
             }
           ],
           "issues": [
+            {
+              "number": 73,
+              "title": "Announcement Channel create is retried after 5 s while the first is still outstanding: the MBSTF creates a second Distribution Session",
+              "url": "https://github.com/5G-MAG/rt-mbs-function/issues/73",
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-15",
+              "labels": []
+            },
             {
               "number": 72,
               "title": "MBSF: User Service Description document may contain a different entry point to FLUTE stream",
@@ -4461,17 +4697,22 @@
               "last_commit": "2026-07-03"
             },
             {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-10-09"
-            },
-            {
               "name": "feature/mbs5-announcement",
               "default": false,
-              "last_commit": "2026-10-09"
+              "last_commit": "2026-10-15"
             },
             {
               "name": "fix/mbsf-first-request",
+              "default": false,
+              "last_commit": "2026-10-15"
+            },
+            {
+              "name": "fix/mbsf-usac-create-retry",
+              "default": false,
+              "last_commit": "2026-10-15"
+            },
+            {
+              "name": "development",
               "default": false,
               "last_commit": "2026-10-09"
             },
@@ -5488,95 +5729,6 @@
       ]
     },
     {
-      "name": "5G Core Service Consumers",
-      "doc_url": "/reference-tools/5g-core/",
-      "repos": [
-        {
-          "repo": "rt-5gc-service-consumers",
-          "url": "https://github.com/5G-MAG/rt-5gc-service-consumers",
-          "description": "5G Core Service Consumers",
-          "auxiliary": true,
-          "private": false,
-          "pushed_at": "2026-10-09",
-          "pulls": [
-            {
-              "number": 35,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/35",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
-              "base": "development"
-            }
-          ],
-          "issues": [
-            {
-              "number": 32,
-              "title": "MbsSession redMbsServArea is read; extRedMbsServArea (location-dependent) is not",
-              "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/issues/32",
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-22",
-              "labels": [
-                "enhancement"
-              ]
-            },
-            {
-              "number": 6,
-              "title": "PCF PolicyAuthorization test app: Add demo view and controls",
-              "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/issues/6",
-              "author": "davidjwbbc",
-              "created_at": "2023-08-10",
-              "labels": [
-                "enhancement"
-              ]
-            }
-          ],
-          "branches": [
-            {
-              "name": "main",
-              "default": true,
-              "last_commit": "2026-05-27"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-10-09"
-            },
-            {
-              "name": "feature/mbs-compliance-fixes",
-              "default": false,
-              "last_commit": "2026-10-01"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-09-29"
-            },
-            {
-              "name": "feature/mnc-length-aware-plmn-id",
-              "default": false,
-              "last_commit": "2026-09-22"
-            },
-            {
-              "name": "v2.1.x",
-              "default": false,
-              "last_commit": "2026-05-27"
-            },
-            {
-              "name": "v2.0.x",
-              "default": false,
-              "last_commit": "2025-10-24"
-            },
-            {
-              "name": "v1.0.x",
-              "default": false,
-              "last_commit": "2023-12-15"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "Beyond 2D Evaluation Framework",
       "doc_url": "/testbeds/beyond-2d/",
       "repos": [
@@ -6189,7 +6341,7 @@
           "description": "FLUTE Protocol and Profiles",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-14",
+          "pushed_at": "2026-10-15",
           "pulls": [
             {
               "number": 115,
@@ -6198,15 +6350,6 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-14",
-              "base": "development"
-            },
-            {
-              "number": 113,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/rt-libflute/pull/113",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
               "base": "development"
             },
             {
@@ -6392,24 +6535,19 @@
               "last_commit": "2026-08-21"
             },
             {
+              "name": "development",
+              "default": false,
+              "last_commit": "2026-10-15"
+            },
+            {
               "name": "feature/issue114-fdt-before-object",
               "default": false,
               "last_commit": "2026-10-14"
             },
             {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-10-13"
-            },
-            {
               "name": "feature/mbs-profile",
               "default": false,
               "last_commit": "2026-10-02"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-09-29"
             },
             {
               "name": "feature/raptor-raptorq-fec",
@@ -6439,6 +6577,11 @@
           ]
         }
       ]
+    },
+    {
+      "name": "FLUTE Conformance Validator",
+      "doc_url": null,
+      "repos": []
     },
     {
       "name": "3GPP RAN and Core Platforms",
@@ -7007,6 +7150,89 @@
               "name": "fembms",
               "default": false,
               "last_commit": "2022-02-08"
+            }
+          ]
+        },
+        {
+          "repo": "rt-5gc-service-consumers",
+          "url": "https://github.com/5G-MAG/rt-5gc-service-consumers",
+          "description": "5G Core Service Consumers",
+          "auxiliary": true,
+          "private": false,
+          "pushed_at": "2026-10-09",
+          "pulls": [
+            {
+              "number": 35,
+              "title": "docs: apply the 5G-MAG README format",
+              "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/35",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-09-29",
+              "base": "development"
+            }
+          ],
+          "issues": [
+            {
+              "number": 32,
+              "title": "MbsSession redMbsServArea is read; extRedMbsServArea (location-dependent) is not",
+              "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/issues/32",
+              "author": "jordijoangimenez",
+              "created_at": "2026-09-22",
+              "labels": [
+                "enhancement"
+              ]
+            },
+            {
+              "number": 6,
+              "title": "PCF PolicyAuthorization test app: Add demo view and controls",
+              "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/issues/6",
+              "author": "davidjwbbc",
+              "created_at": "2023-08-10",
+              "labels": [
+                "enhancement"
+              ]
+            }
+          ],
+          "branches": [
+            {
+              "name": "main",
+              "default": true,
+              "last_commit": "2026-05-27"
+            },
+            {
+              "name": "development",
+              "default": false,
+              "last_commit": "2026-10-09"
+            },
+            {
+              "name": "feature/mbs-compliance-fixes",
+              "default": false,
+              "last_commit": "2026-10-01"
+            },
+            {
+              "name": "fix/apply-new-format",
+              "default": false,
+              "last_commit": "2026-09-29"
+            },
+            {
+              "name": "feature/mnc-length-aware-plmn-id",
+              "default": false,
+              "last_commit": "2026-09-22"
+            },
+            {
+              "name": "v2.1.x",
+              "default": false,
+              "last_commit": "2026-05-27"
+            },
+            {
+              "name": "v2.0.x",
+              "default": false,
+              "last_commit": "2025-10-24"
+            },
+            {
+              "name": "v1.0.x",
+              "default": false,
+              "last_commit": "2023-12-15"
             }
           ]
         }

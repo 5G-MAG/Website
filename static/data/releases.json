@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-15 01:57 UTC",
+  "updated_at": "2026-10-16 01:47 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -351,25 +351,6 @@
       ]
     },
     {
-      "name": "5G Core Service Consumers",
-      "doc_url": "/reference-tools/5g-core/",
-      "tagline": "Reference consumers for 5G Core capability exposure APIs",
-      "releases_slug": "#repositories--releases",
-      "image": "/assets/images/projects/5g-core.png",
-      "latest_date": "2026-06-05",
-      "releases": [
-        {
-          "repo": "rt-5gc-service-consumers",
-          "branch": null,
-          "tag": "rt-5gc-service-consumers-2.1.1",
-          "date": "2026-06-05",
-          "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/releases/tag/rt-5gc-service-consumers-2.1.1",
-          "author_login": "davidjwbbc",
-          "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4"
-        }
-      ]
-    },
-    {
       "name": "Beyond 2D Evaluation Framework",
       "doc_url": "/testbeds/beyond-2d/",
       "tagline": "Evaluation framework for beyond-2D video experiences",
@@ -461,6 +442,25 @@
           "url": "https://github.com/5G-MAG/rt-libflute/releases/tag/rt-libflute-0.12.4",
           "author_login": "dsilhavy",
           "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4"
+        }
+      ]
+    },
+    {
+      "name": "3GPP RAN and Core Platforms",
+      "doc_url": "/reference-tools/3gpp-platforms/",
+      "tagline": "Lab-ready 5G RAN and Core built on Open-Source platforms",
+      "releases_slug": "#repositories--releases",
+      "image": "/assets/images/projects/3gpp-platforms.png",
+      "latest_date": "2026-06-05",
+      "releases": [
+        {
+          "repo": "rt-5gc-service-consumers",
+          "branch": null,
+          "tag": "rt-5gc-service-consumers-2.1.1",
+          "date": "2026-06-05",
+          "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/releases/tag/rt-5gc-service-consumers-2.1.1",
+          "author_login": "davidjwbbc",
+          "author_avatar": "https://avatars.githubusercontent.com/u/9946409?v=4"
         }
       ]
     }
