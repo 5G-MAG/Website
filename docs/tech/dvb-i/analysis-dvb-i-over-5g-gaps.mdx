@@ -68,7 +68,7 @@ enumerate them individually: (DVB C100 clause 2.2.4; DVB C100 clause 2.5.4; DVB 
 | Fast start | Fast start-up while efficient delivery is kept, possibly using unicast (DVB C100 clause 2.5.9) |
 | Error recovery | Unicast repair when broadcast reception is lossy (DVB C100 clause 2.6.14) |
 
-Each of these is a separate requirement in DVB BlueBook C100, and each is a reason a broadcaster
+Seven of these (all but service continuity and extended coverage) are separate requirements in DVB BlueBook C100 (clauses 2.5.4 to 2.5.9 and 2.6.14); service continuity and extended coverage come from the hybrid use case in clause 5.7. Each is a reason a broadcaster
 would want the service layer to span both bearers rather than running two products.
 
 ### The six guiding use cases
@@ -84,7 +84,7 @@ TR 103 972 clause 4.1.2:
 6 (ETSI TR 103 972 V1.1.1 clause 4.1.2; DVB C100 clause 1.5). DVB-I hybrid service over 5G
 
 TR 103 972 clause 4.1.2 titles use case 3 "5G Broadcast standalone with Unicast for EPG". Its full
-description is in DVB BlueBook C100, which is not held here.
+description is in DVB BlueBook C100 clause 5.4.
 
 ## Part 2: The requirements, and the specifications that address them
 
@@ -276,7 +276,7 @@ them in a 3GPP document that did not exist in its current form when the report w
 
 The asymmetry matters more than the count. The 3GPP-derived documents account for six of the seven
 closures. The DVB side has been reissued once in the same period, closing the seventh, and added no
-5G-specific signalling.
+5G-specific signalling to the service list itself (ETSI TS 103 770 V1.2.1 clause 9.3.1).
 
 ### 5G Broadcast scenario (TR 103 972 clause 6.2.4)
 
@@ -396,9 +396,9 @@ Every status above was checked against the document that owns the requirement or
 listed under "Versions checked", not against a summary or an earlier issue. Where a clause number in
 the report no longer resolves, the current location is given.
 
-Three limits are worth stating. DVB BlueBook C100 is not held by the authors: the requirements are
-quoted as TR 103 972 reproduces them in its tables 6.2.1-1, 6.3.1-1 and 6.4.1-1, and the numbering
-is C100's. The form of the `mbms://` URL was checked in 3GPP TS 26.347 V18.1.0 clause 8.2.2; TS 103
+Three points are worth stating. DVB BlueBook C100 numbers the requirements; the page quotes them as
+TR 103 972 reproduces them in its tables 6.2.1-1, 6.3.1-1 and 6.4.1-1, and the numbering was checked
+against C100 clause 2 (DVB C100 clause 2). The form of the `mbms://` URL was checked in 3GPP TS 26.347 V18.1.0 clause 8.2.2; TS 103
 770 clause 9.3.2 refers to its clause 6.2, which is the File Delivery Application Service API (ETSI TS 103 770 V1.2.1 clause 9.3.2; TS 26.347 V18.1.0 clause 6.2). And
 nothing here establishes whether DVB intends
 to close the remaining gaps in a future issue: the A177r8 draft does not, but a draft is not a plan
