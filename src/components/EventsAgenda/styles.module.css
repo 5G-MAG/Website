@@ -124,3 +124,26 @@
   color: var(--ifm-color-emphasis-600);
   margin: 0;
 }
+
+.cardWithCalendar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.cardWithCalendar > a {
+  flex: 1;
+}
+
+.calendar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.7rem;
+  font-size: 0.82rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.calendar a {
+  font-weight: 700;
+}

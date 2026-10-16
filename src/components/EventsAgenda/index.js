@@ -1,6 +1,7 @@
 import Link from '@docusaurus/Link';
 import { useBaseUrlUtils } from '@docusaurus/useBaseUrl';
 import clsx from 'clsx';
+import { googleCalendarUrl, icsDataUrl } from '@site/src/utils/calendar';
 import styles from './styles.module.css';
 
 const MONTH_ABBR = [
@@ -24,10 +25,26 @@ function formatDateBadge(dateStr, endDateStr) {
   return { month, day: `${day} ${month}-${end.getUTCDate()} ${MONTH_ABBR[end.getUTCMonth()]}` };
 }
 
-function EventCard({ event }) {
+// Two small links under an upcoming event's card: Google Calendar, and a calendar file for the other calendars.
+function CalendarLinks({ event }) {
+  const pageUrl = `https://www.5g-mag.com${event.href}`;
+  return (
+    <div className={styles.calendar}>
+      <span>Add to calendar:</span>
+      <a href={googleCalendarUrl(event, pageUrl)} target="_blank" rel="noopener noreferrer">
+        Google
+      </a>
+      <a href={icsDataUrl(event, pageUrl)} download={`${event.href.split('/').pop()}.ics`}>
+        Apple, Outlook
+      </a>
+    </div>
+  );
+}
+
+function EventCard({ event, calendar = false }) {
   const { withBaseUrl } = useBaseUrlUtils();
   const badge = formatDateBadge(event.date, event.endDate);
-  return (
+  const card = (
     <Link to={event.href} className={styles.card}>
       {event.image && (
         <div className={styles.cardImageWrap}>
@@ -49,6 +66,13 @@ function EventCard({ event }) {
         <p className={styles.cardLocation}>{event.location}</p>
       </div>
     </Link>
+  );
+  if (!calendar) return card;
+  return (
+    <div className={styles.cardWithCalendar}>
+      {card}
+      <CalendarLinks event={event} />
+    </div>
   );
 }
 
@@ -94,7 +118,7 @@ export function UpcomingAgenda({ events }) {
   return (
     <div className={styles.grid}>
       {upcoming.map((e) => (
-        <EventCard key={e.href} event={e} />
+        <EventCard key={e.href} event={e} calendar />
       ))}
     </div>
   );
@@ -125,7 +149,7 @@ export default function EventsAgenda({ events }) {
           <p className={styles.groupLabel}>Upcoming</p>
           <div className={styles.grid}>
             {upcoming.map((e) => (
-              <EventCard key={e.href} event={e} />
+              <EventCard key={e.href} event={e} calendar />
             ))}
           </div>
         </div>
