@@ -5,14 +5,12 @@ import Link from '@docusaurus/Link';
 import ShowcaseDiagram from '@site/src/components/ShowcaseDiagram';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import { SHOWCASE_BASKETS, SHOWCASE_STATUS, FEATURE_STATUS } from '@site/src/data/showcases';
-import { ALL_PROJECTS, BASKETS, ICON_CATALOG, projectsInBasket, techLabelOf, projectBySlug, isTestbed, isValidationTool, PROJECT_TYPES, typeOf } from '@site/src/data/baskets';
+import { BASKETS, ICON_CATALOG, projectsInBasket, techLabelOf, projectBySlug, isTestbed, isValidationTool, PROJECT_TYPES, typeOf } from '@site/src/data/baskets';
 import { CATEGORIES as PROJECT_CATEGORIES } from '@site/src/pages/reference-tools';
 import boxStyles from '@site/src/pages/tech/index.module.css';
 
 // One area (taxonomy basket) page. An area with content in showcases.js gets the full page; any other area
 // gets the same layout and its projects, with its "What you can build" part marked in preparation.
-import { ToolRow } from '@site/src/components/ToolsByKind';
-import { RowList, kindLabelOf } from '@site/src/components/ListRow';
 import styles from './styles.module.css';
 
 
@@ -230,11 +228,6 @@ export default function AreaPage({ basketKey }) {
   // same tiles as the topic buttons: icon and name, each opening the project's Technology page. An area
   // with no box there (Towards 6G Media) keeps the small row.
   const category = PROJECT_CATEGORIES.find((c) => c.title === basket.title);
-  // The area's Software Accelerator tools, by kind: the tools of its projects, and their testbeds and validators.
-  const ownNames = new Set(own.map((p) => p.name));
-  const tools = ALL_PROJECTS.filter(
-    (p) => kindLabelOf(p) && !p.partOf && (p.basket === basketKey || ownNames.has(p.parent)),
-  );
   const topics = content?.topics || [];
   const heroDiagram = content?.heroDiagram || AREA_HERO[basketKey];
   const lead = content?.lead || PLACEHOLDER_LEAD;
@@ -304,18 +297,6 @@ export default function AreaPage({ basketKey }) {
             )}
           </div>
         </section>
-        {tools.length > 0 && (
-          <section className={styles.projectBand}>
-            <div className="container">
-              <h2 style={{ margin: '0 0 0.75rem', fontSize: '1.3rem' }}>Software Accelerator</h2>
-              <RowList>
-                {tools.map((p) => (
-                  <ToolRow key={p.name} project={p} />
-                ))}
-              </RowList>
-            </div>
-          </section>
-        )}
         {/* With a single topic, its own heading opens the part; the outer heading and buttons are for two or more. */}
         {topics.length > 1 && (
           <div className="container">
