@@ -17,6 +17,7 @@ import { icon } from '@site/src/components/GodeeperCard';
 import useAnchors from '@site/src/utils/useAnchors';
 import { KINDS } from '@site/src/data/acceleratorKinds';
 import ToolsByKind from '@site/src/components/ToolsByKind';
+import WhatsNew from '@site/src/components/WhatsNew';
 import ListRow, { RowList } from '@site/src/components/ListRow';
 import styles from './index.module.css';
 // Shared with /reference-tools, /tutorials and /testbeds; see the comment
@@ -240,6 +241,14 @@ export default function Home() {
                 iconPaths={['M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0', 'M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1', 'M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0', 'M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0']}
               />
             </RowList>
+          </div>
+        </section>
+
+        <section className={clsx(styles.section, styles.sectionAlt)}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>What is new</h2>
+            <p className={styles.sectionSubtitle}>Releases, the next event and the latest news.</p>
+            <WhatsNew />
           </div>
         </section>
 
