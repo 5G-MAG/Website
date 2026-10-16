@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-15 01:57 UTC",
+  "updated_at": "2026-10-16 01:48 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -274,19 +274,6 @@
           "last_comment_date": null
         },
         {
-          "repo": "rt-libflute",
-          "branch": null,
-          "number": 113,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-libflute/pull/113",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
           "repo": "rt-mbms-examples",
           "branch": null,
           "number": 20,
@@ -426,6 +413,32 @@
           "author_login": "dsilhavy",
           "author_avatar": "https://avatars.githubusercontent.com/u/2427039?v=4",
           "created_at": "2025-08-27",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-mbms-mw",
+          "branch": "development",
+          "number": 18,
+          "title": "ROUTE support using GPAC",
+          "url": "https://github.com/5G-MAG/rt-mbms-mw/pull/18",
+          "draft": false,
+          "author_login": "rbouqueau",
+          "author_avatar": "https://avatars.githubusercontent.com/u/1917976?v=4",
+          "created_at": "2021-11-30",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-mbms-mw",
+          "branch": "development",
+          "number": 15,
+          "title": "readme: propose to install in /usr/local instead of /usr (which is a …",
+          "url": "https://github.com/5G-MAG/rt-mbms-mw/pull/15",
+          "draft": false,
+          "author_login": "rbouqueau",
+          "author_avatar": "https://avatars.githubusercontent.com/u/1917976?v=4",
+          "created_at": "2021-10-23",
           "last_comment_by": null,
           "last_comment_date": null
         }
@@ -633,6 +646,19 @@
       "tagline": "Multicast and Broadcast delivery for 5G-NR-based terrestrial and non-terrestrial networks",
       "pulls": [
         {
+          "repo": "rt-mbs-function",
+          "branch": null,
+          "number": 74,
+          "title": "mbsf: do not request an MBS Distribution Session again while its creation is waiting",
+          "url": "https://github.com/5G-MAG/rt-mbs-function/pull/74",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-15",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
           "repo": "rt-libflute",
           "branch": null,
           "number": 115,
@@ -716,19 +742,6 @@
           "number": 36,
           "title": "docs: apply the 5G-MAG README format",
           "url": "https://github.com/5G-MAG/rt-mbs-examples/pull/36",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-libflute",
-          "branch": null,
-          "number": 113,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-libflute/pull/113",
           "draft": false,
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
@@ -1345,26 +1358,6 @@
       ]
     },
     {
-      "name": "5G Core Service Consumers",
-      "doc_url": "/reference-tools/5g-core/",
-      "tagline": "Reference consumers for 5G Core capability exposure APIs",
-      "pulls": [
-        {
-          "repo": "rt-5gc-service-consumers",
-          "branch": null,
-          "number": 35,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/35",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        }
-      ]
-    },
-    {
       "name": "Beyond 2D Video Experiences",
       "doc_url": null,
       "tagline": "Evaluating video formats beyond 2D: stereoscopic, multi-view plus depth, point clouds and dynamic meshes",
@@ -1670,19 +1663,6 @@
           "last_comment_date": null
         },
         {
-          "repo": "rt-libflute",
-          "branch": null,
-          "number": 113,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-libflute/pull/113",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
           "repo": "rt-cmmf-encoder",
           "branch": null,
           "number": 2,
@@ -1737,6 +1717,26 @@
       ]
     },
     {
+      "name": "FLUTE Conformance Validator",
+      "doc_url": null,
+      "tagline": "Tests a FLUTE implementation against the FLUTE profiles of RFC 3926, 3GPP TS 26.346 and 3GPP TS 26.517",
+      "pulls": [
+        {
+          "repo": "flute-conformance-validator",
+          "branch": null,
+          "number": 2,
+          "title": "FLUTE Conformance Validator: test rt-libflute against the FLUTE profiles of RFC 3926, TS 26.346 and TS 26.517",
+          "url": "https://github.com/5G-MAG/flute-conformance-validator/pull/2",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-15",
+          "last_comment_by": null,
+          "last_comment_date": null
+        }
+      ]
+    },
+    {
       "name": "3GPP RAN and Core Platforms",
       "doc_url": "/reference-tools/3gpp-platforms/",
       "tagline": "Lab-ready 5G RAN and Core built on Open-Source platforms",
@@ -1751,6 +1751,19 @@
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-09-30",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-5gc-service-consumers",
+          "branch": null,
+          "number": 35,
+          "title": "docs: apply the 5G-MAG README format",
+          "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/35",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-09-29",
           "last_comment_by": null,
           "last_comment_date": null
         },
