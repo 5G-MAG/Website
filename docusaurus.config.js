@@ -1,6 +1,7 @@
 // @ts-check
 import { themes as prismThemes } from 'prism-react-renderer';
 import { SOCIAL_LINKS } from './src/data/socialLinks.js';
+import remarkToolStartHere from './src/plugins/remark-tool-start-here.mjs';
 
 // Docusaurus footer columns only render plain text links; this builds an
 // icon+label link via the `html` escape hatch (column items support
@@ -295,6 +296,8 @@ const config = {
         routeBasePath: '',
         sidebarPath: './sidebars-home.js',
         breadcrumbs: false,
+        // Puts the Start here block under the banner of every tool landing page.
+        remarkPlugins: [remarkToolStartHere],
       },
     ],
   ],

@@ -10,7 +10,6 @@ import ContentVisibility from '@theme/ContentVisibility';
 import { useSidebarToggle } from '@theme/DocRoot/Layout/SidebarToggleContext';
 import { translate } from '@docusaurus/Translate';
 import ProjectStrip from '@site/src/components/ProjectStrip';
-import ToolStartHere from '@site/src/components/ToolStartHere';
 import styles from './styles.module.css';
 
 function SidebarToggleIcon() {
@@ -87,7 +86,6 @@ export default function DocItemLayout({ children }) {
               </div>
             </div>
             <ProjectStrip />
-            <ToolStartHere />
             <DocVersionBadge />
             <DocItemContent>{children}</DocItemContent>
             <DocItemFooter />
