@@ -11,6 +11,7 @@ import { useSidebarToggle } from '@theme/DocRoot/Layout/SidebarToggleContext';
 import { translate } from '@docusaurus/Translate';
 import ProjectStrip from '@site/src/components/ProjectStrip';
 import ToolStartHere from '@site/src/components/ToolStartHere';
+import CheckedOn from '@site/src/components/CheckedOn';
 import styles from './styles.module.css';
 
 function SidebarToggleIcon() {
@@ -57,7 +58,7 @@ function HeaderToggleButton({ icon, label, titleId, defaultMessage, onClick }) {
 }
 
 export default function DocItemLayout({ children }) {
-  const { metadata } = useDoc();
+  const { metadata, frontMatter } = useDoc();
   const sidebarToggle = useSidebarToggle();
   const showSidebarToggle = Boolean(sidebarToggle?.hasSidebar);
   // The sidebar now starts OPEN on every doc page (see DocRoot/Layout), but
@@ -90,6 +91,7 @@ export default function DocItemLayout({ children }) {
             <ToolStartHere />
             <DocVersionBadge />
             <DocItemContent>{children}</DocItemContent>
+            <CheckedOn checked={frontMatter.checked} against={frontMatter.checkedAgainst} />
             <DocItemFooter />
           </article>
           <DocItemPaginator />
