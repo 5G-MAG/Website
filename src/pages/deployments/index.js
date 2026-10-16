@@ -90,7 +90,7 @@ const WHATS_HERE = [
   {
     title: 'Demos',
     desc: 'Recorded plugfest and trade-show demonstrations.',
-    href: '/deploy#demos',
+    href: '/deployments#demos',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M15 10l4.553 -2.069a1 1 0 0 1 1.447 .894v6.35a1 1 0 0 1 -1.447 .894l-4.553 -2.069v-4" />
@@ -101,7 +101,7 @@ const WHATS_HERE = [
   {
     title: 'Plugfests',
     desc: 'Interoperability plugfests where reference code is tested side by side.',
-    href: '/deploy#plugfests',
+    href: '/deployments#plugfests',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
@@ -114,7 +114,7 @@ const WHATS_HERE = [
   {
     title: 'Testing and interoperability',
     desc: 'How to check that an implementation works, and works with others: PlugFests, conformance validators and implementation status.',
-    href: '/deploy/testing',
+    href: '/deployments/testing',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M9.615 20h-2.615a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8" />
@@ -132,7 +132,7 @@ const TESTING_EVENTS = [
   {
     title: '5G Broadcast PlugFest 2026',
     body: 'Multi-vendor interoperability testing against ETSI TS 103 720, hosted by Fraunhofer FOKUS in Berlin.',
-    href: '/deploy/5g-broadcast-plugfest',
+    href: '/deployments/5g-broadcast-plugfest',
   },
 ];
 
@@ -278,7 +278,7 @@ export default function Deploy() {
                   loading="lazy"
                 />
                 <p className={styles.photoCaption}>
-                  <Link to="/deploy/5g-broadcast-plugfest">5G Broadcast Plugfest 2026</Link> —
+                  <Link to="/deployments/5g-broadcast-plugfest">5G Broadcast Plugfest 2026</Link> —
                   hosted by Fraunhofer FOKUS, Berlin.
                 </p>
               </figure>

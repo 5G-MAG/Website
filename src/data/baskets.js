@@ -233,14 +233,14 @@ export function isTestbed(project) {
 }
 
 // A project's slug: the last segment of its Reference Tools or testbed page (`/reference-tools/5gms/` -> '5gms').
-// Its Deploy page is /deploy/<slug>; docusaurus.config.js creates one per project with this same rule.
+// Its Deploy page is /deployments/<slug>; docusaurus.config.js creates one per project with this same rule.
 export function projectSlugOf(project) {
   return project.doc_url ? project.doc_url.replace(/\/$/, '').split('/').pop() : null;
 }
 
 export function deployUrlOf(project) {
   const slug = projectSlugOf(project);
-  return slug ? `/deploy/${slug}` : null;
+  return slug ? `/deployments/${slug}` : null;
 }
 
 export function projectBySlug(slug) {

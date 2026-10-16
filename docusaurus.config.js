@@ -60,7 +60,7 @@ const config = {
   clientModules: [require.resolve('./src/clientModules/openDetailsOnHash.js')],
 
   plugins: [
-    // One Deploy page per project, /deploy/<slug>, where <slug> is the last segment of the project's Reference
+    // One Deploy page per project, /deployments/<slug>, where <slug> is the last segment of the project's Reference
     // Tools or testbed page (projectSlugOf in src/data/baskets.js). Placeholders until assets are published.
     function projectDeployPages(context) {
       return {
@@ -73,7 +73,7 @@ const config = {
             if (!p.doc_url || p.auxiliary) continue;
             const slug = p.doc_url.replace(/\/$/, '').split('/').pop();
             actions.addRoute({
-              path: `/deploy/${slug}`,
+              path: `/deployments/${slug}`,
               component: '@site/src/components/ProjectDeploy/index.jsx',
               exact: true,
               props: { slug },
@@ -218,11 +218,11 @@ const config = {
           { from: '/standards/ai-for-media', to: '/standards/ai-in-media-services' },
           { from: '/broadcast', to: '/broadcast-and-multicast' },
           { from: '/point-to-multipoint', to: '/broadcast-and-multicast' },
-          { from: '/testing', to: '/deploy' },
-          { from: '/testing/5g-broadcast-plugfest', to: '/deploy/5g-broadcast-plugfest' },
-          // /action ("In Action") renamed to /deploy ("Deploy") on 2026-10-05, and titled "Deployments" from 2026-10-16.
-          { from: '/action', to: '/deploy' },
-          { from: '/action/5g-broadcast-plugfest', to: '/deploy/5g-broadcast-plugfest' },
+          { from: '/testing', to: '/deployments' },
+          { from: '/testing/5g-broadcast-plugfest', to: '/deployments/5g-broadcast-plugfest' },
+          // /action ("In Action") renamed to /deployments ("Deploy") on 2026-10-05, and titled "Deployments" from 2026-10-16.
+          { from: '/action', to: '/deployments' },
+          { from: '/action/5g-broadcast-plugfest', to: '/deployments/5g-broadcast-plugfest' },
           // /applications renamed to /showcase (2026-09-23): bookmarks and
           // search-engine indexing may still point at the old path. The
           // per-category demo pages it also covered were folded into each
@@ -433,7 +433,7 @@ const config = {
         },
         {
           title: 'Deployments',
-          items: [{ label: 'Overview', to: '/deploy' }],
+          items: [{ label: 'Overview', to: '/deployments' }],
         },
         {
           title: 'Videos',

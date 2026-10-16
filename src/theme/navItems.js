@@ -47,7 +47,7 @@ export const DEV_ITEM = {
 };
 
 export const INTEROP_ITEM = {
-  to: '/deploy',
+  to: '/deployments',
   label: 'Deployments',
   position: 'left',
   className: styles.primaryNavItem,

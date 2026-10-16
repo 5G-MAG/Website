@@ -27,7 +27,7 @@ export function AssetTiles() {
   );
 }
 
-// One project's Deploy page (/deploy/<slug>, routed from docusaurus.config.js): the Deployment Kits of that project to
+// One project's Deploy page (/deployments/<slug>, routed from docusaurus.config.js): the Deployment Kits of that project to
 // onboard into a product. Placeholders for now.
 export default function ProjectDeploy({ slug }) {
   const project = projectBySlug(slug);

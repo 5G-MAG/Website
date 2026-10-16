@@ -32,7 +32,7 @@ export default function ValidationTools() {
         title="Validation Tools"
         icon={VALIDATION_ICON_PATH}
         actions={[
-          <Link key="testing" className="button button--primary" to="/deploy/testing">
+          <Link key="testing" className="button button--primary" to="/deployments/testing">
             Testing and interoperability
           </Link>,
           <Link key="license" className="button button--outline button--primary" to="/license">

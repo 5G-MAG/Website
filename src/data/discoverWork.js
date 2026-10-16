@@ -44,7 +44,7 @@ export const DISCOVER_WORK = [
   {
     title: 'Deployments',
     body: 'Demos, interoperability plugfests and trials that bring the technology into use.',
-    href: '/deploy',
+    href: '/deployments',
     icon: (
       <>
         <path d="M4.5 16.5c-1.5 1.26 -2 5 -2 5s3.74 -.5 5 -2c.71 -.84 .7 -2.13 -.09 -2.91a2.18 2.18 0 0 0 -2.91 -.09z" />
@@ -94,7 +94,7 @@ export const HOME_WORK = [
   {
     title: 'Deployments',
     body: 'Technology into production through ready-to-use software, plugfests, demos and trials.',
-    href: '/deploy',
+    href: '/deployments',
     cta: 'Deployments',
     icon: (
       <>
