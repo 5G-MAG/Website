@@ -30,10 +30,10 @@ import JumpMenu from '@site/src/components/JumpMenu';
 :::tip[At a glance]
 
 - **What it is:** an architecture for real-time media communication integrated into the 5G System (TS 26.506), with its procedures, APIs and protocols (TS 26.113).
-- **Real-time media communication:** the delivery of delay-sensitive media from one peer to another with support of the 5G network.
-- **Based on 5GMS and on WebRTC:** the control plane follows 5G Media Streaming, with an RTC AF and an RTC AS; media is carried with a subset of the WebRTC protocol stack.
-- **Operator and third-party services:** four collaboration scenarios, from a fully over-the-top session that the operator supports with QoS and reporting, to sessions the operator hosts itself.
-- **Releases:** created in Release 18; Release 19 adds PDU handling and marking enhancements, media capabilities and metadata.
+- **Real-time media communication:** the delivery of delay-sensitive media from one peer to another with support of the 5G network (TS 26.506 V19.2.0 clause 4.1.1).
+- **Based on 5GMS and on WebRTC:** the control plane follows 5G Media Streaming, with an RTC AF and an RTC AS; media is carried with a subset of the WebRTC protocol stack (TS 26.506 V19.2.0 clauses 1, 4.1.2.1, 3.1; TS 26.113 V19.2.0 clause 1).
+- **Operator and third-party services:** four collaboration scenarios, from a fully over-the-top session that the operator supports with QoS and reporting, to sessions the operator hosts itself (TS 26.506 V19.2.0 annex A.1).
+- **Releases:** created in Release 18; Release 19 adds PDU handling and marking enhancements, media capabilities and metadata (TS 26.506 V19.2.0 annex C; TS 26.113 V19.2.0 annex D (CR 0011, 0012, 0013)).
 
 :::
 
@@ -43,7 +43,7 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 In 5G Media Streaming, the separation of the data plane and the control plane, and the access it gives third-party services to 5G System functionality, was seen as a major benefit. 3GPP set out to extend these 5GMS principles to any type of service, including real-time communication and split rendering. The basic control plane is similar to 5GMS, while the media plane is generic, so that different operator and third-party services can be supported by the 5G System.
 
-Beyond traditional MTSI services, real-time transport of media over 5G is needed for immersive media in XR conferencing, and between third-party applications in the device and the network. For this, 3GPP defines WebRTC-based components that are integrated into, and optimised for, the 5G System.
+Beyond traditional MTSI services, 3GPP defines WebRTC-based components, integrated into the 5G System, for real-time media communication between peers (TS 26.506 V19.2.0 clause 4.1.1).
 
 ## The main functions
 
@@ -70,10 +70,10 @@ Beyond traditional MTSI services, real-time transport of media over 5G is needed
 />
 
 - **RTC AF:** an Application Function, as defined in TS 26.501, dedicated to real-time media communication. Its Provisioning Function lets an RTC Application Provider provision QoS, charging, consumption and QoE reporting, ICE and the WebRTC Signalling Function. Its Configuration Function makes WebRTC-related configuration accessible to the UE. Its Network Support Function requests QoS from the network for a starting or modified session.
-- **RTC AS:** an Application Server dedicated to real-time media communication. It may hold an ICE Function (STUN and TURN services for NAT and firewall traversal), a WebRTC Signalling Function that handles the offer/answer exchange, a Media Function that is itself an RTC endpoint, and functions for web support, cross-operator transport and interworking.
-- **RTC Client:** a UE function comprising an RTC Access Function, which sends and receives media and offers client APIs, and an RTC Media Session Handler, which assists with the integration of the RTC Application.
-- **RTC Application:** a Native WebRTC App, which uses the RTC client APIs, or a Web App, which runs in a web browser and uses the W3C-defined WebRTC APIs.
-- **RTC endpoint:** an entity that participates in an RTC session by incorporating an instance of the WebRTC Framework, a defined subset of the WebRTC protocol stack. It is typically a UE, but an RTC AS may also play the role.
+- **RTC AS:** an Application Server dedicated to real-time media communication. It may hold an ICE Function (STUN and TURN services for NAT and firewall traversal), a WebRTC Signalling Function that handles the offer/answer exchange, a Media Function that is itself an RTC endpoint, and functions for web support, cross-operator transport and interworking (TS 26.506 V19.2.0 clauses 4.1.1, 4.2.6 to 4.2.11).
+- **RTC Client:** a UE function comprising an RTC Access Function, which sends and receives media and offers client APIs, and an RTC Media Session Handler, which assists with the integration of the RTC Application (TS 26.506 V19.2.0 clauses 3.1, 4.2.4, 4.2.12).
+- **RTC Application:** a Native WebRTC App, which uses the RTC client APIs, or a Web App, which runs in a web browser and uses the W3C-defined WebRTC APIs (TS 26.506 V19.2.0 clause 4.1.1).
+- **RTC endpoint:** an entity that participates in an RTC session by incorporating an instance of the WebRTC Framework, a defined subset of the WebRTC protocol stack. It is typically a UE, but an RTC AS may also play the role (TS 26.506 V19.2.0 clauses 3.1, 4.1.1).
 
 ## Operator and third-party collaboration
 
@@ -81,10 +81,10 @@ TS 26.506 defines four collaboration scenarios, based on which functions are in 
 
 | Scenario | What the operator provides |
 | --- | --- |
-| 1. Over the top WebRTC | The session runs completely over the top. The operator may offer QoS allocation, bit rate recommendations and QoE report collection, on request by the UE. |
-| 2. MNO-provided WebRTC functions | In addition, an ICE Function in the RTC AS. |
-| 3. MNO-facilitated WebRTC services | The operator hosts and facilitates RTC sessions with a WebRTC Signalling Function, which may also offer 5G network assistance. |
-| 4. Interoperable WebRTC services | Scenario 3 extended with functions for interoperability between operators. Some of its details are for future study. |
+| 1. Over the top WebRTC | The session runs completely over the top. The operator may offer QoS allocation, bit rate recommendations and QoE report collection, on request by the UE (TS 26.506 V19.2.0 annex A.1). |
+| 2. MNO-provided WebRTC functions | In addition, an ICE Function in the RTC AS (TS 26.506 V19.2.0 annex A.1). |
+| 3. MNO-facilitated WebRTC services | The operator hosts and facilitates RTC sessions with a WebRTC Signalling Function, which may also offer 5G network assistance (TS 26.506 V19.2.0 annex A.1). |
+| 4. Interoperable WebRTC services | Scenario 3 extended with functions for interoperability between operators. Some of its details are for future study (TS 26.506 V19.2.0 annex A.1 and its NOTE). |
 
 ## Relation to 5G Media Streaming
 
@@ -95,7 +95,7 @@ The shared building blocks are specified once, in TS 26.510: provisioning sessio
 ## How it grew
 
 - **Release 18:** the GA4RTAR work item creates the architecture (TS 26.506, approved June 2023). The iRTCW work item creates the procedures, APIs and protocols (TS 26.113, approved June 2024), with media session handling relying on the 5GMS_Pro_Ph2 work on TS 26.510. Later Release 18 changes add reference point RTC-11 in the UE, make RTC functions general Media Functions, and add PDU Set-based QoS handling.
-- **Release 19:** 5G_RTP_Ph2 adds PDU Set Importance for N6-unmarked PDUs, data burst size, time to next burst, expedited transfer and multiplexed media to dynamic policies. iRTCW adds media capability requirements for immersive real-time communication and timed metadata over the data channel. The generalised architecture gains reference point M13.
+- **Release 19:** 5G_RTP_Ph2 adds PDU Set Importance for N6-unmarked PDUs, data burst size, time to next burst, expedited transfer and multiplexed media to dynamic policies. iRTCW adds media capability requirements for immersive real-time communication and timed metadata over the data channel. The generalised architecture gains reference point M13 (TS 26.113 V19.2.0 annex D (CR 0013 5G_RTP_Ph2; CR 0011 and 0012 iRTCW); TS 26.506 V19.2.0 annex C (CR 0009), clause 4.1.2.4).
 
 <details>
 <summary>Sources for this page</summary>
