@@ -74,10 +74,10 @@ export default function ArchitectureMap({ architecture, status }) {
           if (inLayer.length === 0) return null;
           return (
             <section key={layer.id} className={styles.band}>
-              <h4 className={styles.bandLabel}>
+              <h3 className={styles.bandLabel}>
                 {layer.label}
                 {layer.spec && <span className={styles.bandSpec}>{layer.spec}</span>}
-              </h4>
+              </h3>
               <div className={styles.entities}>
                 {inLayer.map((e) => {
                   const state = e.state || derived[e.component];

@@ -29,7 +29,7 @@ Sources: the 3GPP work plan of 28 September 2026, the 3GPP Change Request databa
 
 This page covers [TR 26.813](https://www.3gpp.org/dynareport/26813.htm). The work items are those that name these specifications in the 3GPP work plan. The change requests are those recorded in the 3GPP Change Request database as implemented in a version.
 
-### Release 20
+## Release 20
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -39,7 +39,7 @@ This page covers [TR 26.813](https://www.3gpp.org/dynareport/26813.htm). The wor
 | --- | --- | --- | --- | --- |
 | TR 26.813 | 20.0.0 | 0002 | [FS_avatar_ph2_MED] Consolidated CR | FS_Avatar_Ph2_MED |
 
-### Release 19
+## Release 19
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -51,7 +51,7 @@ This page covers [TR 26.813](https://www.3gpp.org/dynareport/26813.htm). The wor
 | TR 26.813 | 19.1.0 | 0001 | Editorial corrections and increasing readability of text in Figures | FS_AVATAR |
 | TR 26.813 | 19.2.0 | 0003 | Corrective CR for 26.813 | FS_AVATAR |
 
-### TR 26.813 before change control
+## TR 26.813 before change control
 
 <details>
 <summary>31 versions before approval</summary>

@@ -32,14 +32,14 @@ Sources: the 3GPP work plan of 28 September 2026, the 3GPP Change Request databa
 
 This page covers [TS 22.263](https://www.3gpp.org/dynareport/22263.htm), [TR 28.807](https://www.3gpp.org/dynareport/28807.htm), [TS 28.557](https://www.3gpp.org/dynareport/28557.htm), [TR 28.907](https://www.3gpp.org/dynareport/28907.htm), [TR 23.700-07](https://www.3gpp.org/dynareport/23700-07.htm), [TR 33.857](https://www.3gpp.org/dynareport/33857.htm), [TR 26.805](https://www.3gpp.org/dynareport/26805.htm), [TR 23.700-08](https://www.3gpp.org/dynareport/23700-08.htm), [TR 33.858](https://www.3gpp.org/dynareport/33858.htm), [TR 33.757](https://www.3gpp.org/dynareport/33757.htm). The work items are those that name these specifications in the 3GPP work plan, and those whose title contains "Non-Public", "NPN" or "SNPN". The change requests are those recorded in the 3GPP Change Request database as implemented in a version.
 
-### Release 20
+## Release 20
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
 | [FS_PLMNNPN_Ph2](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1090017) | Study on security for PLMN hosting a NPN phase 2 | Study | TR 33.758 | Complete, Jun 2026 | [SP-251239](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGS_109_Beijing_2025-09/Docs/SP-251239.zip) |
 | [PLMNNPN_Ph2-SEC](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1120086) | Security for a PLMN Hosting a Non-Public Network (NPN) Phase 2 | Normative | TS 33.501 | Complete, Sep 2026 | [SP-260660](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGS_112_Singapore_2026-06/Docs/SP-260660.zip) |
 
-### Release 19
+## Release 19
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -62,7 +62,7 @@ This page covers [TS 22.263](https://www.3gpp.org/dynareport/22263.htm), [TR 28.
 | TR 28.907 | 19.0.0 |  | Update to Rel-19 version (MCC) |  |
 | TR 33.757 | 19.0.0 |  | Upgrade to change control version |  |
 
-### Release 18
+## Release 18
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -107,7 +107,7 @@ This page covers [TS 22.263](https://www.3gpp.org/dynareport/22263.htm), [TR 28.
 
 </details>
 
-### Release 17
+## Release 17
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -139,13 +139,13 @@ This page covers [TS 22.263](https://www.3gpp.org/dynareport/22263.htm), [TR 28.
 | TS 22.263 | 17.3.0 | 0012 | Update and clarification of UE reconnection time | AVPROD |
 | TS 22.263 | 17.4.0 | 0014 | Updating the definition of communication service availability | AVPROD |
 
-### Release 16
+## Release 16
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
 | [FS_OAM_NPN](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=830024) | Study on non-public networks management | Study | not listed | Complete, Jun 2020 | [SP-190137](https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGS_83/Docs/SP-190137.zip) |
 
-### TS 22.263 before change control
+## TS 22.263 before change control
 
 <details>
 <summary>8 versions before approval</summary>
@@ -165,7 +165,7 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 
 </details>
 
-### TR 28.807 before change control
+## TR 28.807 before change control
 
 <details>
 <summary>1 version before approval</summary>
@@ -178,7 +178,7 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 
 </details>
 
-### TS 28.557 before change control
+## TS 28.557 before change control
 
 <details>
 <summary>1 version before approval</summary>
@@ -191,7 +191,7 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 
 </details>
 
-### TR 28.907 before change control
+## TR 28.907 before change control
 
 <details>
 <summary>8 versions before approval</summary>
@@ -211,7 +211,7 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 
 </details>
 
-### TR 23.700-07 before change control
+## TR 23.700-07 before change control
 
 <details>
 <summary>11 versions before approval</summary>
@@ -234,7 +234,7 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 
 </details>
 
-### TR 33.857 before change control
+## TR 33.857 before change control
 
 <details>
 <summary>11 versions before approval</summary>
@@ -257,7 +257,7 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 
 </details>
 
-### TR 26.805 before change control
+## TR 26.805 before change control
 
 <details>
 <summary>14 versions before approval</summary>
@@ -283,7 +283,7 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 
 </details>
 
-### TR 23.700-08 before change control
+## TR 23.700-08 before change control
 
 <details>
 <summary>11 versions before approval</summary>
@@ -306,7 +306,7 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 
 </details>
 
-### TR 33.858 before change control
+## TR 33.858 before change control
 
 <details>
 <summary>10 versions before approval</summary>
@@ -328,7 +328,7 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 
 </details>
 
-### TR 33.757 before change control
+## TR 33.757 before change control
 
 <details>
 <summary>9 versions before approval</summary>

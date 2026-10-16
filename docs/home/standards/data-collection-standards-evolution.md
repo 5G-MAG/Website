@@ -29,7 +29,7 @@ pagination_next: null
 
 Work items as listed in the 3GPP work plan of 28 September 2026. Change requests as listed in the change history of TS 26.531 V19.0.0 and TS 26.532 V19.1.0.
 
-### Release 19
+## Release 19
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -43,7 +43,7 @@ The work plan lists TS 26.532 for AMD_PRO-MED; the change history of TS 26.532 V
 | TS 26.532 | 19.0.0 | | Update to Rel-19 version (MCC) |
 | TS 26.532 | 19.1.0 | 0016 | Update of info and externalDocs fields |
 
-### Release 18
+## Release 18
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -67,7 +67,7 @@ The other Release 18 change requests are tagged EVEX and TEI18 ("(Small) Technic
 | TS 26.532 | 18.4.0 | 0014 | Update of info and externalDocs fields |
 | TS 26.532 | 18.5.0 | 0015 | Update of info and externalDocs fields |
 
-### Release 17
+## Release 17
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |

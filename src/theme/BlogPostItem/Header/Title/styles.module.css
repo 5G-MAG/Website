@@ -11,7 +11,7 @@
   text-decoration: none;
 }
 .titleList a:hover {
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
 }
 
 @media (max-width: 576px) {

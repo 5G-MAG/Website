@@ -73,7 +73,7 @@ export default function AIForMedia() {
               />
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
+              <h2 className={styles.whyMattersTitle}>The Problem It Solves</h2>
               <p className={styles.whyMattersBody}>
                 The evaluation framework establishes a common way to evaluate the scenarios collected for the
                 FS_AI4Media study, with shared testbed architectures, metrics and test configurations for each

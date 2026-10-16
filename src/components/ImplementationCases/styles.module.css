@@ -13,7 +13,7 @@
 .group { display: flex; flex-wrap: wrap; gap: 0.35rem; }
 .chip { font: inherit; font-size: 0.8rem; padding: 0.2rem 0.75rem; border-radius: 999px; cursor: pointer;
   border: 1px solid var(--ifm-color-emphasis-300); background: var(--ifm-background-surface-color); color: var(--ifm-font-color-base); }
-.chip[aria-pressed='true'] { background: var(--ifm-color-primary); border-color: var(--ifm-color-primary); color: #fff; }
+.chip[aria-pressed='true'] { background: var(--brand-solid); border-color: var(--ifm-color-primary); color: #fff; }
 .chip:focus-visible, .head:focus-visible, .fhead:focus-visible { outline: 3px solid var(--ifm-color-primary); outline-offset: 2px; }
 .total { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.9rem; font-size: 0.9rem; }
 .over { color: var(--ifm-color-emphasis-700); font-size: 0.85rem; }

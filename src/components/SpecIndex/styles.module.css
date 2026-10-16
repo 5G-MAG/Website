@@ -54,11 +54,11 @@
 
 .chip:hover {
   border-color: var(--ifm-color-primary);
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
 }
 
 .chipOn {
-  background: var(--ifm-color-primary);
+  background: var(--brand-solid);
   border-color: var(--ifm-color-primary);
   color: #fff;
   font-weight: 600;
@@ -82,7 +82,7 @@
   background: none;
   border: none;
   padding: 0;
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
   cursor: pointer;
   text-decoration: underline;
 }

@@ -90,7 +90,7 @@ export default function ContentDelivery() {
               />
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
+              <h2 className={styles.whyMattersTitle}>The Problem It Solves</h2>
               <p className={styles.whyMattersBody}>
                 A broadcast or multicast bearer has no return channel, so a receiver can never ask for
                 a retransmission — reliability has to come from somewhere else, and Forward Error

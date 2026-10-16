@@ -281,7 +281,7 @@ export default function AreaPage({ basketKey }) {
             {category && projects.length > 0 ? (
               <div className={`${boxStyles.categoryCard} ${styles.projectBox}`}>
                 <div className={boxStyles.categoryHeader} style={{ '--accent': category.accent || 'var(--ifm-color-primary)' }}>
-                  <h3 className={boxStyles.categoryTitle}>Projects in this area</h3>
+                  <h2 className={boxStyles.categoryTitle}>Projects in this area</h2>
                 </div>
                 <div className={styles.projectTiles}>
                   {projects.map((p) => (

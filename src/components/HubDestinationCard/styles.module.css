@@ -130,7 +130,7 @@
   padding: 0.65rem 1.1rem;
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
   border-top: 1px solid var(--ifm-color-emphasis-200);
 }
 
@@ -359,7 +359,7 @@
   margin-top: -0.15rem;
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
   text-decoration: none !important;
 }
 

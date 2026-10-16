@@ -137,7 +137,7 @@ export default function HubDestinationCard({
     <>
       <div className={clsx(styles.iconBandCompact, big && styles.iconBandCompactLg)}>{icon}</div>
       <div className={styles.bodyCompact}>
-        <h4 className={clsx(styles.bandTitleCompact, largeTitle && styles.bandTitleCompactLg)}>{title}</h4>
+        <h3 className={clsx(styles.bandTitleCompact, largeTitle && styles.bandTitleCompactLg)}>{title}</h3>
         {basketLabel && <div className={styles.basketLabelCompact}>{basketLabel}</div>}
         <p className={styles.descCompact}>{desc}</p>
         {standardsNodes}

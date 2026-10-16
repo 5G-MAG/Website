@@ -29,7 +29,7 @@ pagination_next: null
 
 Work items as listed in the 3GPP work plan of 28 September 2026. Change requests as listed in the change history of TS 26.506 V19.2.0 and V18.6.0 and TS 26.113 V19.2.0 and V18.4.0.
 
-### Release 20
+## Release 20
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -39,7 +39,7 @@ Work items as listed in the 3GPP work plan of 28 September 2026. Change requests
 
 The Release 20 changes to TS 26.506 and TS 26.113 are not covered here.
 
-### Release 19
+## Release 19
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -62,7 +62,7 @@ The Release 20 changes to TS 26.506 and TS 26.113 are not covered here.
 | TS 26.113 | 19.2.0 | 0014 | CR on SWAP schema inconsistencies |
 | TS 26.113 | 19.2.0 | 0015 | CR on handling of close operation in SWAP |
 
-### Release 18
+## Release 18
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |

@@ -32,5 +32,5 @@
 .pill:hover,
 .pill:focus-visible {
   border-color: var(--ifm-color-primary);
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
 }

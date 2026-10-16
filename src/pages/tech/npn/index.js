@@ -94,7 +94,7 @@ export default function NPN() {
               />
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
+              <h2 className={styles.whyMattersTitle}>The Problem It Solves</h2>
               <p className={styles.whyMattersBody}>
                 A broadcaster deploying its own private 5G network doesn&apos;t want to become a full
                 mobile operator with its own subscriber database — NPN avoids that: the Release 17

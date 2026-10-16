@@ -93,7 +93,7 @@ export default function RTC() {
               />
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
+              <h2 className={styles.whyMattersTitle}>The Problem It Solves</h2>
               <p className={styles.whyMattersBody}>
                 Beyond traditional telephony, real-time media is needed for immersive XR conferencing and
                 between third-party applications in the device and the network. 3GPP extended the 5G Media

@@ -243,7 +243,7 @@ export function CategoryCard({ title, desc, accent, topics }) {
   return (
     <div className={styles.categoryCard}>
       <div className={styles.categoryHeader} style={{ '--accent': accent || 'var(--ifm-color-primary)' }}>
-        <h3 className={styles.categoryTitle}>{title}</h3>
+        <h2 className={styles.categoryTitle}>{title}</h2>
         <p className={styles.categoryDesc}>{desc}</p>
       </div>
       <div className={styles.categoryRows}>

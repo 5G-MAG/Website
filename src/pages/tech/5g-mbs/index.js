@@ -95,7 +95,7 @@ export default function FiveGMBS() {
               />
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
+              <h2 className={styles.whyMattersTitle}>The Problem It Solves</h2>
               <p className={styles.whyMattersBody}>
                 Sending the same content to a stadium full of devices as separate unicast streams
                 consumes network capacity proportional to the audience size, however large it gets.

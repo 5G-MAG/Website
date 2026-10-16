@@ -95,7 +95,7 @@ export default function TSC() {
               />
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
+              <h2 className={styles.whyMattersTitle}>The Problem It Solves</h2>
               <p className={styles.whyMattersBody}>
                 Deterministic, time-synchronised delivery normally means joining a full IEEE 802.1 TSN
                 bridge with a Centralized Network Configuration controller — infrastructure most media

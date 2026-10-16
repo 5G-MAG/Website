@@ -19,6 +19,7 @@
   text-align: center;
 }
 
+.summaryCard h2,
 .summaryCard h3 {
   margin: 0;
   color: var(--ifm-font-color-base);
@@ -31,7 +32,7 @@
   display: block;
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
   margin-top: 0.35rem;
   font-variant-numeric: tabular-nums;
 }
@@ -387,7 +388,7 @@
   cursor: pointer;
   background: none;
   border: none;
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
   padding: 0;
 }
 

@@ -97,7 +97,7 @@ export default function V3C() {
               />
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
+              <h2 className={styles.whyMattersTitle}>The Problem It Solves</h2>
               <p className={styles.whyMattersBody}>
                 Volumetric content (point clouds, multi-view-plus-depth) has no dedicated hardware
                 codec of its own, and building one is not practical on mobile-class devices. V3C

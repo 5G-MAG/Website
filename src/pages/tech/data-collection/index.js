@@ -90,7 +90,7 @@ export default function DataCollection() {
               />
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
+              <h2 className={styles.whyMattersTitle}>The Problem It Solves</h2>
               <p className={styles.whyMattersBody}>
                 Devices and media services know a lot about how a service performs: what was played, and
                 with what quality. 3GPP defined one common way to collect that data, process it, and share it

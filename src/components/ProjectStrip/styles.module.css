@@ -35,12 +35,12 @@
 
 .item:hover {
   border-color: var(--ifm-color-primary);
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
   text-decoration: none;
 }
 
 .active {
-  background: var(--ifm-color-primary);
+  background: var(--brand-solid);
   border-color: var(--ifm-color-primary);
   color: #fff;
 }

@@ -15,6 +15,6 @@
 }
 
 .kindTitle a:hover {
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
   text-decoration: none;
 }

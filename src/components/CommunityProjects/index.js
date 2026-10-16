@@ -439,10 +439,10 @@ export function CommunityTotals({ kind = 'all' }) {
   return (
     <>
     <div className={styles.summaryContainer}>
-      <div className={styles.summaryCard}><h3>Total Stars</h3><span className={styles.summaryValue}>&#11088; {totals.stars}</span></div>
-      <div className={styles.summaryCard}><h3>Total Forks</h3><span className={styles.summaryValue}>&#127811; {totals.forks}</span></div>
-      <div className={styles.summaryCard}><h3>Total Views</h3><span className={styles.summaryValue}>&#128064; {totals.views}</span></div>
-      <div className={styles.summaryCard}><h3>Total Clones</h3><span className={styles.summaryValue}>&#128230; {totals.clones}</span></div>
+      <div className={styles.summaryCard}><h2>Total Stars</h2><span className={styles.summaryValue}>&#11088; {totals.stars}</span></div>
+      <div className={styles.summaryCard}><h2>Total Forks</h2><span className={styles.summaryValue}>&#127811; {totals.forks}</span></div>
+      <div className={styles.summaryCard}><h2>Total Views</h2><span className={styles.summaryValue}>&#128064; {totals.views}</span></div>
+      <div className={styles.summaryCard}><h2>Total Clones</h2><span className={styles.summaryValue}>&#128230; {totals.clones}</span></div>
     </div>
     <p><small>{totals.repositories} repositories, each counted once, including those shared by several projects. Source: GitHub, updated daily.</small></p>
     </>

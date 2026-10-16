@@ -50,7 +50,7 @@
   .headerToggleButton:hover,
   .headerToggleButton:focus {
     border-color: var(--ifm-color-primary);
-    color: var(--ifm-color-primary);
+    color: var(--brand-text);
   }
 
   /* Present only while the sidebar is actually hidden (see DocItem/Layout's
@@ -68,6 +68,6 @@
     padding: 0 0.65rem 0 0.55rem;
     background: color-mix(in srgb, var(--ifm-color-primary) 8%, var(--ifm-background-surface-color));
     border-color: var(--ifm-color-primary);
-    color: var(--ifm-color-primary);
+    color: var(--brand-text);
   }
 }

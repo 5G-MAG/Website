@@ -31,7 +31,7 @@ Hide color mode toggle in small viewports
 
 .colorModeToggle button:hover {
   background: var(--ifm-color-emphasis-100);
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
 }
 
 /* ── Sliding active/hover indicator ──────────────────────────────
@@ -149,7 +149,7 @@ Hide color mode toggle in small viewports
 }
 
 .primaryNavItem:hover {
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
 }
 
 /* Mega-menu preview, originally on the four pillar items only (2026-08-24
@@ -273,7 +273,7 @@ Hide color mode toggle in small viewports
 }
 
 .navDropdownList a:hover {
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
   text-decoration: none;
 }
 
@@ -402,7 +402,7 @@ Hide color mode toggle in small viewports
 
 .navMegaList a:hover {
   border-color: var(--ifm-color-primary);
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
   text-decoration: none;
 }
 
@@ -478,7 +478,7 @@ Hide color mode toggle in small viewports
 }
 
 .navHeadArrow {
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
   font-weight: 700;
 }
 
@@ -536,7 +536,7 @@ Hide color mode toggle in small viewports
 
 .navFeaturedCard:hover {
   border-color: var(--ifm-color-primary);
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
   text-decoration: none;
 }
 
@@ -565,7 +565,7 @@ Hide color mode toggle in small viewports
 
 .navAreaLink:hover {
   background: var(--ifm-color-emphasis-100);
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
   text-decoration: none;
 }
 
@@ -615,7 +615,7 @@ See https://github.com/facebook/docusaurus/pull/11142
 }
 
 .navIconLink:hover {
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
   background: var(--ifm-color-emphasis-100);
   text-decoration: none;
 }
@@ -801,7 +801,7 @@ See https://github.com/facebook/docusaurus/pull/11142
 .navAccelCommunity a:focus-visible {
   background: color-mix(in srgb, var(--ifm-color-primary) 16%, transparent);
   border-color: var(--ifm-color-primary);
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
   text-decoration: none;
 }
 
@@ -820,7 +820,7 @@ See https://github.com/facebook/docusaurus/pull/11142
   flex: none;
   font-size: 0.82rem;
   font-weight: 700;
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
   white-space: nowrap;
 }
 
@@ -930,7 +930,7 @@ See https://github.com/facebook/docusaurus/pull/11142
   border-radius: 4px;
   font-size: 0.68rem;
   font-weight: 700;
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
   background: color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
 }
 
@@ -976,7 +976,7 @@ See https://github.com/facebook/docusaurus/pull/11142
 
 .navProjectName:hover,
 .navProjectName:focus-visible {
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
   text-decoration: none;
 }
 
@@ -1058,7 +1058,7 @@ See https://github.com/facebook/docusaurus/pull/11142
 }
 
 .navFeatureCard svg {
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
 }
 
 .navFeatureCard b {
@@ -1089,7 +1089,7 @@ See https://github.com/facebook/docusaurus/pull/11142
   display: inline-flex;
   flex: none;
   margin-top: 0.1rem;
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
 }
 
 .navMDRailText {

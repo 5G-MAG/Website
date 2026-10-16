@@ -195,7 +195,7 @@ export default function ProjectRepositories({ project }) {
     <>
       {clusters.map((cluster) => (
         <div key={cluster.label || 'own'} className={cluster.label ? styles.repoCluster : undefined}>
-          {cluster.label && <h4 className={styles.clusterHeading}>Also used by {cluster.label}</h4>}
+          {cluster.label && <h3 className={styles.clusterHeading}>Also used by {cluster.label}</h3>}
           <div className={styles.repoGrid}>
             {cluster.repos.map((entry) => (
               <RepoCard key={entry.key} entry={entry} meta={repoMetaFor(entry.slug)} />

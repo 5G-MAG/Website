@@ -101,7 +101,7 @@ export default function AiMl() {
               />
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
+              <h2 className={styles.whyMattersTitle}>The Problem It Solves</h2>
               <p className={styles.whyMattersBody}>
                 A claim that an AI/ML model improves media quality, ABR selection or traffic
                 classification is only useful if it can be checked against a common baseline —

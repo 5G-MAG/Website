@@ -24,7 +24,7 @@
 }
 
 .headStart {
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
 }
 
 .stage {
@@ -127,7 +127,7 @@
   font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
   margin-bottom: 0.25rem;
 }
 
@@ -157,7 +157,7 @@
 
   .start::before {
     content: 'From the start';
-    color: var(--ifm-color-primary);
+    color: var(--brand-text);
   }
 
   .steps {

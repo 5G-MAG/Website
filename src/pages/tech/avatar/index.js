@@ -104,7 +104,7 @@ export default function Avatar() {
               />
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
+              <h2 className={styles.whyMattersTitle}>The Problem It Solves</h2>
               <p className={styles.whyMattersBody}>
                 Before ARF, an avatar-based call needed the sender&apos;s capture/tracking system and
                 the receiver&apos;s rendering engine to come from the same vendor&apos;s proprietary

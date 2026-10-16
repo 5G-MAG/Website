@@ -102,7 +102,7 @@ export default function VDMC() {
               />
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
+              <h2 className={styles.whyMattersTitle}>The Problem It Solves</h2>
               <p className={styles.whyMattersBody}>
                 A moving 3D mesh — an animated character or a performance capture — has geometry,
                 connectivity and attributes that all change per frame, and coding that directly has no

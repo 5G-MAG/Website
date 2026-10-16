@@ -21,7 +21,7 @@
 
 .icon {
   display: inline-flex;
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
 }
 
 .title {

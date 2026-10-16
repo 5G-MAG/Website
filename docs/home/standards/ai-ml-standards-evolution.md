@@ -29,7 +29,7 @@ Sources: the 3GPP work plan of 28 September 2026, the 3GPP Change Request databa
 
 This page covers [TR 22.874](https://www.3gpp.org/dynareport/22874.htm), [TR 23.700-80](https://www.3gpp.org/dynareport/23700-80.htm), [TR 23.700-81](https://www.3gpp.org/dynareport/23700-81.htm), [TR 26.847](https://www.3gpp.org/dynareport/26847.htm), [TR 26.927](https://www.3gpp.org/dynareport/26927.htm). The work items are those that name these specifications in the 3GPP work plan. The change requests are those recorded in the 3GPP Change Request database as implemented in a version.
 
-### Release 19
+## Release 19
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -40,7 +40,7 @@ This page covers [TR 22.874](https://www.3gpp.org/dynareport/22874.htm), [TR 23.
 | TR 26.847 | 19.0.0 |  | Version 19.0.0 created by MCC upon approval in SA#108 |  |
 | TR 26.927 | 19.0.0 |  | Version 19.0.0 created by MCC upon approval in SA#108 |  |
 
-### Release 18
+## Release 18
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -58,7 +58,7 @@ This page covers [TR 22.874](https://www.3gpp.org/dynareport/22874.htm), [TR 23.
 | TR 22.874 | 18.1.0 | 0002 | FS_AMMT update to clause 7.4 Group performance Flocking Use Case | AIML_MT |
 | TR 22.874 | 18.2.0 | 0003 | FS_AMMT update to CPR tables with new format | FS_AIML_MT |
 
-### TR 22.874 before change control
+## TR 22.874 before change control
 
 <details>
 <summary>6 versions before approval</summary>
@@ -76,7 +76,7 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 
 </details>
 
-### TR 23.700-80 before change control
+## TR 23.700-80 before change control
 
 <details>
 <summary>3 versions before approval</summary>
@@ -91,7 +91,7 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 
 </details>
 
-### TR 23.700-81 before change control
+## TR 23.700-81 before change control
 
 <details>
 <summary>3 versions before approval</summary>
@@ -106,7 +106,7 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 
 </details>
 
-### TR 26.847 before change control
+## TR 26.847 before change control
 
 <details>
 <summary>11 versions before approval</summary>
@@ -129,7 +129,7 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 
 </details>
 
-### TR 26.927 before change control
+## TR 26.927 before change control
 
 <details>
 <summary>19 versions before approval</summary>

@@ -127,7 +127,11 @@ export default function BlogListPage(props) {
       <BlogListPageMetadata {...props} />
       <BlogListPageStructuredData {...props} />
       <Layout>
-        {isFirstPage && <NewsHero />}
+        {isFirstPage ? <NewsHero /> : (
+          <h1 className="container" style={{ margin: '1.5rem auto 0', fontSize: '1.6rem' }}>
+            News, page {props.metadata.page}
+          </h1>
+        )}
         <BlogListPageContent {...props} />
         {isFirstPage && (
           <>

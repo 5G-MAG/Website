@@ -28,7 +28,7 @@
    own .button--outline behavior, so this pill and an Infima outline button
    give the same feedback shape. */
 .filterChip:hover {
-  background: var(--ifm-color-primary);
+  background: var(--brand-solid);
   border-color: var(--ifm-color-primary);
   color: #fff;
 }

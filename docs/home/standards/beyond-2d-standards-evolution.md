@@ -28,7 +28,7 @@ Sources: the 3GPP work plan of 28 September 2026, the 3GPP Change Request databa
 
 This page covers [TR 26.956](https://www.3gpp.org/dynareport/26956.htm). The work items are those that name these specifications in the 3GPP work plan. The change requests are those recorded in the 3GPP Change Request database as implemented in a version.
 
-### Release 19
+## Release 19
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -39,7 +39,7 @@ This page covers [TR 26.956](https://www.3gpp.org/dynareport/26956.htm). The wor
 | TR 26.956 | 19.0.0 |  | Version 19.0.0 created by MCC for publishing upon approval in TSG SA |  |
 | TR 26.956 | 19.0.1 |  | Editorial corrections (auto numbering removed from code lines) |  |
 
-### TR 26.956 before change control
+## TR 26.956 before change control
 
 <details>
 <summary>14 versions before approval</summary>

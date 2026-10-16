@@ -90,7 +90,7 @@ export default function DvbI() {
               />
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
+              <h2 className={styles.whyMattersTitle}>The Problem It Solves</h2>
               <p className={styles.whyMattersBody}>
                 Without DVB-I, a broadcaster&apos;s 5G Broadcast service and its 5GMS unicast service
                 would look like two unrelated things to a device, discovered separately with no

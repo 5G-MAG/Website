@@ -60,7 +60,7 @@ export default function VideoOperationPoints() {
               </div>
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
+              <h2 className={styles.whyMattersTitle}>The Problem It Solves</h2>
               <p className={styles.whyMattersBody}>
                 Video encoders and decoders on 3GPP User Equipment also provide interoperability points for
                 third-party services, and video capabilities are predominantly independent of the service in

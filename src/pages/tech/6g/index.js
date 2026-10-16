@@ -82,7 +82,7 @@ export default function Towards6GMedia() {
               />
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
+              <h2 className={styles.whyMattersTitle}>The Problem It Solves</h2>
               <p className={styles.whyMattersBody}>
                 The traffic characteristics of media services are relevant to the design of 6G radio and
                 service architectures, and for AI media services the study obtains them itself. Its five

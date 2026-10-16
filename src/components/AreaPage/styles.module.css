@@ -77,7 +77,7 @@
   border-radius: 10px;
   display: grid;
   place-items: center;
-  background: var(--ifm-color-primary);
+  background: var(--brand-solid);
   color: #fff;
 }
 
@@ -237,7 +237,7 @@
   border-radius: 13px;
   display: grid;
   place-items: center;
-  background: var(--ifm-color-primary);
+  background: var(--brand-solid);
   color: #fff;
 }
 
@@ -631,6 +631,6 @@ a.path:focus-visible .pathArrow {
   border-radius: 4px;
   font-size: 0.7rem;
   font-weight: 700;
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
   background: color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
 }

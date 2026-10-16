@@ -32,7 +32,7 @@ Sources: the 3GPP work plan of 28 September 2026, the 3GPP Change Request databa
 
 This page covers [TR 22.870](https://www.3gpp.org/dynareport/22870.htm), [TR 26.870](https://www.3gpp.org/dynareport/26870.htm), [TR 26.925](https://www.3gpp.org/dynareport/26925.htm), [TR 38.914](https://www.3gpp.org/dynareport/38914.htm). The work items are those that name these specifications in the 3GPP work plan. The change requests are those recorded in the 3GPP Change Request database as implemented in a version.
 
-### Release 20
+## Release 20
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -47,13 +47,13 @@ This page covers [TR 22.870](https://www.3gpp.org/dynareport/22870.htm), [TR 26.
 | TR 38.914 | 20.0.0 |  | TR 38.914 as approved by RAN #112 |  |
 | TR 38.914 | 20.1.0 | 0001 | CR on editorials for TR 38.914 | FS_6G_RAN_Scen_Req |
 
-### Release 19
+## Release 19
 
 | Specification | Version | CR | Subject | Work item |
 | --- | --- | --- | --- | --- |
 | TR 26.925 | 19.0.0 | 0005 | Haptics media traffic characteristics | FS_TyTrac |
 
-### Release 18
+## Release 18
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -65,7 +65,7 @@ This page covers [TR 22.870](https://www.3gpp.org/dynareport/22870.htm), [TR 26.
 | TR 26.925 | 18.0.0 | 0003 | XR Traffic Characteristics | FS_XRTraffic |
 | TR 26.925 | 18.1.0 | 0004 | [FS_XRTraffic] Application Layer FEC Traffic characteristics | FS_XRTraffic |
 
-### Release 17
+## Release 17
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -77,13 +77,13 @@ This page covers [TR 22.870](https://www.3gpp.org/dynareport/22870.htm), [TR 26.
 | TR 26.925 | 17.0.0 | 0001 | Typical Traffic Characteristics | 8K_VR_5G |
 | TR 26.925 | 17.1.0 | 0002 | 8K TV Traffic Characteristics | 8K_TV_5G |
 
-### Release 16
+## Release 16
 
 | Specification | Version | CR | Subject | Work item |
 | --- | --- | --- | --- | --- |
 | TR 26.925 | 16.0.0 |  | Approved by TSG SA#87-e |  |
 
-### TR 22.870 before change control
+## TR 22.870 before change control
 
 <details>
 <summary>15 versions before approval</summary>
@@ -110,7 +110,7 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 
 </details>
 
-### TR 26.870 before change control
+## TR 26.870 before change control
 
 <details>
 <summary>12 versions before approval</summary>
@@ -134,7 +134,7 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 
 </details>
 
-### TR 26.925 before change control
+## TR 26.925 before change control
 
 <details>
 <summary>3 versions before approval</summary>
@@ -149,7 +149,7 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 
 </details>
 
-### TR 38.914 before change control
+## TR 38.914 before change control
 
 <details>
 <summary>10 versions before approval</summary>

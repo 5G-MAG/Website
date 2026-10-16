@@ -96,7 +96,7 @@ export default function XR() {
               />
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
+              <h2 className={styles.whyMattersTitle}>The Problem It Solves</h2>
               <p className={styles.whyMattersBody}>
                 Without a common scene format, an XR application&apos;s rendering engine and its media
                 pipeline are locked together — swapping either one means rebuilding the other. MPEG-I

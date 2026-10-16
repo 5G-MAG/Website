@@ -33,7 +33,7 @@ Sources: the 3GPP work plan of 28 September 2026, the 3GPP Change Request databa
 
 This page covers [TS 22.104](https://www.3gpp.org/dynareport/22104.htm), [TR 22.804](https://www.3gpp.org/dynareport/22804.htm), [TS 29.565](https://www.3gpp.org/dynareport/29565.htm), [TR 23.700-25](https://www.3gpp.org/dynareport/23700-25.htm). The work items are those that name these specifications in the 3GPP work plan, and those whose title contains "Time Sensitive", "TSN", "Timing Resiliency" or "Deterministic Network". The change requests are those recorded in the 3GPP Change Request database as implemented in a version.
 
-### Release 20
+## Release 20
 
 | Specification | Version | CR | Subject | Work item |
 | --- | --- | --- | --- | --- |
@@ -43,7 +43,7 @@ This page covers [TS 22.104](https://www.3gpp.org/dynareport/22104.htm), [TR 22.
 | TS 29.565 | 20.1.0 | 0197 | Miscellaneous corrections to the TSC QoSandTSCAssistance API | TEI20, IIoT, TRS_URLLC, SBIProtoc20-CT |
 | TS 29.565 | 20.1.0 | 0198 | Update of info and externalDocs fields | TEI20 |
 
-### Release 19
+## Release 19
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -93,7 +93,7 @@ This page covers [TS 22.104](https://www.3gpp.org/dynareport/22104.htm), [TR 22.
 
 </details>
 
-### Release 18
+## Release 18
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -240,7 +240,7 @@ This page covers [TS 22.104](https://www.3gpp.org/dynareport/22104.htm), [TR 22.
 
 </details>
 
-### Release 17
+## Release 17
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -344,7 +344,7 @@ This page covers [TS 22.104](https://www.3gpp.org/dynareport/22104.htm), [TR 22.
 
 </details>
 
-### Release 16
+## Release 16
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -390,13 +390,13 @@ This page covers [TS 22.104](https://www.3gpp.org/dynareport/22104.htm), [TR 22.
 
 </details>
 
-### Release 14
+## Release 14
 
 | Specification | Version | CR | Subject | Work item |
 | --- | --- | --- | --- | --- |
 | TR 22.804 | 14.1.0 | 0001 | Remove requirement in MCData TS 22.282 that has been added to MCCoRe TS 22.280. |  |
 
-### TS 22.104 before change control
+## TS 22.104 before change control
 
 <details>
 <summary>5 versions before approval</summary>
@@ -413,7 +413,7 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 
 </details>
 
-### TR 22.804 before change control
+## TR 22.804 before change control
 
 <details>
 <summary>8 versions before approval</summary>
@@ -433,7 +433,7 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 
 </details>
 
-### TS 29.565 before change control
+## TS 29.565 before change control
 
 <details>
 <summary>10 versions before approval</summary>
@@ -455,7 +455,7 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 
 </details>
 
-### TR 23.700-25 before change control
+## TR 23.700-25 before change control
 
 <details>
 <summary>3 versions before approval</summary>

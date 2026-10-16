@@ -99,7 +99,7 @@ export default function NetworkAPIs() {
               />
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
+              <h2 className={styles.whyMattersTitle}>The Problem It Solves</h2>
               <p className={styles.whyMattersBody}>
                 Without CAMARA, a media application that wants a specific network guarantee — a
                 low-latency contribution link, a reserved slice for an event — has to integrate

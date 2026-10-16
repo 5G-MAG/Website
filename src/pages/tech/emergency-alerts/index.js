@@ -86,7 +86,7 @@ export default function EmergencyAlerts() {
               />
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
+              <h2 className={styles.whyMattersTitle}>The Problem It Solves</h2>
               <p className={styles.whyMattersBody}>
                 A warning delivered only over a data connection fails exactly when it matters most:
                 when the cellular network is congested with everyone trying to check on each other, or

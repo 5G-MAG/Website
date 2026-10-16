@@ -33,7 +33,7 @@ Sources: the 3GPP work plan of 28 September 2026, the 3GPP Change Request databa
 
 This page covers [TS 26.265](https://www.3gpp.org/dynareport/26265.htm). The work items are those that name these specifications in the 3GPP work plan. The change requests are those recorded in the 3GPP Change Request database as implemented in a version.
 
-### Release 19
+## Release 19
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -48,7 +48,7 @@ This page covers [TS 26.265](https://www.3gpp.org/dynareport/26265.htm). The wor
 | TS 26.265 | 19.2.0 | 0004 | [VOPS] Conformance Updates | VOPS |
 | TS 26.265 | 19.3.0 | 0006 | [VOPS] MV-HEVC profile and OLS handling | VOPS |
 
-### TS 26.265 before change control
+## TS 26.265 before change control
 
 <details>
 <summary>15 versions before approval</summary>

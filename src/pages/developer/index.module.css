@@ -84,7 +84,7 @@
 .pillarIcon {
   width: 36px;
   height: 36px;
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
   margin-bottom: 1rem;
 }
 
@@ -249,7 +249,7 @@
   height: 36px;
   flex-shrink: 0;
   margin-top: 1px;
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
   display: flex;
   align-items: center;
 }
@@ -400,7 +400,7 @@
   height: 24px;
   flex-shrink: 0;
   margin-top: 2px;
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
   display: flex;
   align-items: center;
 }

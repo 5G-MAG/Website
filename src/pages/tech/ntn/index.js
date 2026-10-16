@@ -99,7 +99,7 @@ export default function NTN() {
               />
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
+              <h2 className={styles.whyMattersTitle}>The Problem It Solves</h2>
               <p className={styles.whyMattersBody}>
                 Terrestrial infrastructure doesn&apos;t reach every area a broadcaster needs to serve,
                 and building a separate service layer for satellite delivery would mean maintaining

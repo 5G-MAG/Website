@@ -333,7 +333,7 @@ export default function Home() {
               (tech/index.js's .inviteBlock): after the photo row, because the
               landscape is set by 5G-MAG's members, not the other way around. */}
           <div className={styles.inviteBlock}>
-            <h3 className={styles.inviteTitle}>Don&apos;t see your topic here?</h3>
+            <h2 className={styles.inviteTitle}>Don&apos;t see your topic here?</h2>
             <p className={styles.inviteBody}>5G-MAG&apos;s members set this landscape.</p>
             <div className={styles.inviteLinks}>
               <Link to="/membership#request-membership" className={styles.inviteLink}>

@@ -67,6 +67,11 @@
   /* Darker than --ifm-color-primary specifically so white text on top of it
      meets WCAG AA (4.5:1); --ifm-color-primary itself only reaches ~3:1. */
   --ifm-color-primary-textsafe: #007a9e;
+  /* Text and links, and fills that carry white text: the brand blue itself is only 3:1 on white. */
+  --brand-text: #00749a;
+  --brand-solid: #00749a;
+  --ifm-link-color: #00749a;
+  --ifm-link-hover-color: #006f92;
   /* Site-wide type scale nudged down a step (16px -> 15px base) — everything
      sized in rem (which is most of the site, via Infima) shrinks with it. */
   --ifm-font-size-base: 93.75%;
@@ -127,6 +132,10 @@
   --ifm-color-primary-lighter: #1db6e8;
   --ifm-color-primary-lightest: #47c8f0;
   --ifm-color-primary-textsafe: #007a9e;
+  --brand-text: #00a0d2;
+  --brand-solid: #00749a;
+  --ifm-link-color: #00a0d2;
+  --ifm-link-hover-color: #47c8f0;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
   /* Swapped from the light pairing above, same gold hue, darkened wash. */
   --cyc-2: #35c2b5;
@@ -405,7 +414,7 @@
   display: block;
   font-size: 1.5em;
   font-weight: bold;
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
   margin-top: 5px;
 }
 
@@ -566,7 +575,7 @@
 .community-tile svg {
   width: 40px;
   height: 40px;
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
   margin-bottom: 0.75rem;
   flex-shrink: 0;
 }
@@ -594,7 +603,7 @@
 .community-tile .tile-cta {
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
   display: block;
 }
 
@@ -1209,7 +1218,7 @@
 .spec-chip svg {
   width: 15px;
   height: 15px;
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
   flex-shrink: 0;
 }
 
@@ -1402,7 +1411,7 @@
   padding: 0.3rem 0.85rem;
   border-radius: 999px;
   background: var(--ifm-color-emphasis-100);
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
   border: 1px solid var(--ifm-color-primary);
 }
 

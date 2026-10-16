@@ -151,7 +151,7 @@
   margin-top: auto;
   font-size: 0.9rem;
   font-weight: 700;
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
 }
 
 @media (max-width: 520px) {
@@ -621,7 +621,7 @@
 .releasesViewAll {
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
   text-decoration: none;
   white-space: nowrap;
   flex-shrink: 0;

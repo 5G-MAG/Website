@@ -48,13 +48,13 @@ Sources: the 3GPP work plan of 28 September 2026, the 3GPP Change Request databa
 
 This page covers [TS 22.268](https://www.3gpp.org/dynareport/22268.htm), [TS 23.041](https://www.3gpp.org/dynareport/23041.htm), [TS 29.168](https://www.3gpp.org/dynareport/29168.htm), [TR 36.976](https://www.3gpp.org/dynareport/36976.htm). The work items are those that name these specifications in the 3GPP work plan, and those whose title contains "Public Warning", "PWS" or "Cell Broadcast". The change requests are those recorded in the 3GPP Change Request database as implemented in a version.
 
-### Release 21
+## Release 21
 
 | Specification | Version | CR | Subject | Work item |
 | --- | --- | --- | --- | --- |
 | TS 22.268 | 21.0.0 | 0101 | Update PWS specification for 6G (admin rev of S1-263380) | 6G-REQ |
 
-### Release 20
+## Release 20
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -77,7 +77,7 @@ This page covers [TS 22.268](https://www.3gpp.org/dynareport/22268.htm), [TS 23.
 | TS 22.268 | 20.3.0 | 0098 | Support of template-based multilingual CMAS alerts | DUMMY |
 | TS 22.268 | 20.3.0 | 0100 | Support CMAS silent alerts | TEI20 |
 
-### Release 19
+## Release 19
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -105,7 +105,7 @@ This page covers [TS 22.268](https://www.3gpp.org/dynareport/22268.htm), [TS 23.
 | TS 23.041 | 19.3.0 | 0271 | Correcting numbering and references to tables and figures in TS 23.041 | TEI19 |
 | TS 23.041 | 19.4.0 | 0287 | PWS over LTE-M in E-UTRAN | TEI19 |
 
-### Release 18
+## Release 18
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -142,7 +142,7 @@ This page covers [TS 22.268](https://www.3gpp.org/dynareport/22268.htm), [TS 23.
 
 </details>
 
-### Release 17
+## Release 17
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -171,7 +171,7 @@ This page covers [TS 22.268](https://www.3gpp.org/dynareport/22268.htm), [TS 23.
 | TS 23.041 | 17.5.0 | 0268 | Introduction of support for PWS over satellite NG-RAN | 5GSAT_ARCH-CT |
 | TS 23.041 | 17.6.0 | 0274 | Support for PWS for eMTC NTN | TEI17 |
 
-### Release 16
+## Release 16
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -219,7 +219,7 @@ This page covers [TS 22.268](https://www.3gpp.org/dynareport/22268.htm), [TS 23.
 
 </details>
 
-### Release 15
+## Release 15
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -265,7 +265,7 @@ This page covers [TS 22.268](https://www.3gpp.org/dynareport/22268.htm), [TS 23.
 
 </details>
 
-### Release 14
+## Release 14
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -281,7 +281,7 @@ This page covers [TS 22.268](https://www.3gpp.org/dynareport/22268.htm), [TS 23.
 | TS 23.041 | 14.2.0 | 0165 | Correction to the Data Coding Scheme clause in support of NA regulatory requirement | TEI14 |
 | TS 29.168 | 14.2.0 | 0069 | Introduction of New types of eNB ID | TEI14, LTE_FNBID-Core |
 
-### Release 13
+## Release 13
 
 | Specification | Version | CR | Subject | Work item |
 | --- | --- | --- | --- | --- |
@@ -302,7 +302,7 @@ This page covers [TS 22.268](https://www.3gpp.org/dynareport/22268.htm), [TS 23.
 | TS 23.041 | 13.3.0 | 0159 | Failed cell list parameter content correction | WSR_EPS |
 | TS 29.168 | 13.3.0 | 0067 | Restarted Cell List in PWS RESTART INDICATION | TEI12, REP_WMD |
 
-### Release 12
+## Release 12
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -367,7 +367,7 @@ This page covers [TS 22.268](https://www.3gpp.org/dynareport/22268.htm), [TS 23.
 
 </details>
 
-### Release 11
+## Release 11
 
 <details>
 <summary>43 change requests and 1 version without one</summary>
@@ -421,7 +421,7 @@ This page covers [TS 22.268](https://www.3gpp.org/dynareport/22268.htm), [TS 23.
 
 </details>
 
-### Release 10
+## Release 10
 
 | Specification | Version | CR | Subject | Work item |
 | --- | --- | --- | --- | --- |
@@ -446,7 +446,7 @@ This page covers [TS 22.268](https://www.3gpp.org/dynareport/22268.htm), [TS 23.
 | TS 23.041 | 10.6.0 | 0110 | Correcting handling of unused security parameters for warning messages | ETWS |
 | TS 23.041 | 10.6.0 | 0114 | Correction of reference to GSMA document Coding of Cell Broadcast Functions | TEI8 |
 
-### Release 9
+## Release 9
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -515,7 +515,7 @@ This page covers [TS 22.268](https://www.3gpp.org/dynareport/22268.htm), [TS 23.
 
 </details>
 
-### Release 8
+## Release 8
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -562,13 +562,13 @@ This page covers [TS 22.268](https://www.3gpp.org/dynareport/22268.htm), [TS 23.
 
 </details>
 
-### Release 7
+## Release 7
 
 | Specification | Version | CR | Subject | Work item |
 | --- | --- | --- | --- | --- |
 | TS 23.041 | 7.0.0 | 0017 | CBS - Reference correction | TEI7 |
 
-### Release 6
+## Release 6
 
 | Specification | Version | CR | Subject | Work item |
 | --- | --- | --- | --- | --- |
@@ -576,14 +576,14 @@ This page covers [TS 22.268](https://www.3gpp.org/dynareport/22268.htm), [TS 23.
 | TS 23.041 | 6.1.0 | 0014 | CB Data length | TEI6 |
 | TS 23.041 | 6.2.0 | 0016 | CB Data structure | TEI5 |
 
-### Release 5
+## Release 5
 
 | Specification | Version | CR | Subject | Work item |
 | --- | --- | --- | --- | --- |
 | TS 23.041 | 5.1.0 | 0013 | CB Data length | TEI5 |
 | TS 23.041 | 5.2.0 | 0015 | CB Data structure | TEI5 |
 
-### Release 4
+## Release 4
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -596,7 +596,7 @@ This page covers [TS 22.268](https://www.3gpp.org/dynareport/22268.htm), [TS 23.
 | TS 23.041 | 4.3.0 | 0010 | Update of references | TEI4 |
 | TS 23.041 | 4.4.0 | 0012 | CB Data length | TEI4 |
 
-### Release 99
+## Release 99
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -612,7 +612,7 @@ This page covers [TS 22.268](https://www.3gpp.org/dynareport/22268.htm), [TS 23.
 | TS 23.041 | 3.4.0 | 0006 | Clarification of Geographical Scope | TEI |
 | TS 23.041 | 3.5.0 | 0009 | Update of references | TEI |
 
-### TR 36.976 before change control
+## TR 36.976 before change control
 
 <details>
 <summary>7 versions before approval</summary>

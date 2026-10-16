@@ -90,7 +90,7 @@
    own .button--outline behavior (e.g. the project sub-nav buttons), so a
    plain pill and an Infima outline button give the same feedback shape. */
 .navChip:hover {
-  background: var(--ifm-color-primary);
+  background: var(--brand-solid);
   border-color: var(--ifm-color-primary);
   color: #fff;
   text-decoration: none;
@@ -141,7 +141,7 @@
    active state. --ifm-color-primary (not -darkest, which .navChipActive
    already owns) keeps the two states visually distinct from each other. */
 .navChipFeatured {
-  background: var(--ifm-color-primary);
+  background: var(--brand-solid);
   border-color: var(--ifm-color-primary);
   color: #fff;
   font-weight: 700;

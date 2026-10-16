@@ -33,13 +33,13 @@ Sources: the 3GPP work plan of 28 September 2026, the 3GPP Change Request databa
 
 This page covers [TR 38.811](https://www.3gpp.org/dynareport/38811.htm), [TR 38.821](https://www.3gpp.org/dynareport/38821.htm), [TR 38.863](https://www.3gpp.org/dynareport/38863.htm), [TR 22.822](https://www.3gpp.org/dynareport/22822.htm), [TR 23.737](https://www.3gpp.org/dynareport/23737.htm). The work items are those that name these specifications in the 3GPP work plan. The change requests are those recorded in the 3GPP Change Request database as implemented in a version.
 
-### Release 20
+## Release 20
 
 | Specification | Version | CR | Subject | Work item |
 | --- | --- | --- | --- | --- |
 | TR 38.863 | 20.0.0 | 0076 | : Introduction of the 3MHz channel bandwidth and PC2/PC1 for n250, n251, n252, n253 | NTN_bands_Features_R20-Core |
 
-### Release 19
+## Release 19
 
 <details>
 <summary>26 change requests and 1 version without one</summary>
@@ -76,7 +76,7 @@ This page covers [TR 38.811](https://www.3gpp.org/dynareport/38811.htm), [TR 38.
 
 </details>
 
-### Release 18
+## Release 18
 
 | Specification | Version | CR | Subject | Work item |
 | --- | --- | --- | --- | --- |
@@ -95,7 +95,7 @@ This page covers [TR 38.811](https://www.3gpp.org/dynareport/38811.htm), [TR 38.
 | TR 38.863 | 18.7.0 | 0034 | (NR_NTN_solutions-Core) Clarification of the NR NTN band n256 out-of-band blocking requirements | NR_NTN_solutions-Core |
 | TR 38.863 | 18.8.0 | 0063 | Addition of ETSI requirements for the MSS L- and S-band | NR_NTN_solutions-Core |
 
-### Release 17
+## Release 17
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -133,7 +133,7 @@ This page covers [TR 38.811](https://www.3gpp.org/dynareport/38811.htm), [TR 38.
 
 </details>
 
-### Release 16
+## Release 16
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -145,7 +145,7 @@ This page covers [TR 38.811](https://www.3gpp.org/dynareport/38811.htm), [TR 38.
 | TR 22.822 | 16.0.0 |  | Raised to v.16.0.0 following one-step-approval at SA |  |
 | TR 38.821 | 16.2.0 | 0002 | Corrections to abbreviations, figures and table header | FS_NR_NTN_solutions |
 
-### Release 15
+## Release 15
 
 | Work item | Title | Type | Specifications | Status | WID |
 | --- | --- | --- | --- | --- | --- |
@@ -163,7 +163,7 @@ This page covers [TR 38.811](https://www.3gpp.org/dynareport/38811.htm), [TR 38.
 | TR 38.811 | 15.4.0 | 0007 | Corrected implementation for inconsistent shadow fading parameters in NTN rural scenario | FS_NR_nonterr_nw |
 | TR 38.811 | 15.4.0 | 0008 | Correction to NTN channel model | FS_NR_nonterr_nw |
 
-### TR 38.811 before change control
+## TR 38.811 before change control
 
 <details>
 <summary>7 versions before approval</summary>
@@ -182,7 +182,7 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 
 </details>
 
-### TR 38.821 before change control
+## TR 38.821 before change control
 
 <details>
 <summary>2 versions before approval</summary>
@@ -196,7 +196,7 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 
 </details>
 
-### TR 38.863 before change control
+## TR 38.863 before change control
 
 <details>
 <summary>4 versions before approval</summary>
@@ -212,7 +212,7 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 
 </details>
 
-### TR 22.822 before change control
+## TR 22.822 before change control
 
 <details>
 <summary>5 versions before approval</summary>
@@ -229,7 +229,7 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 
 </details>
 
-### TR 23.737 before change control
+## TR 23.737 before change control
 
 <details>
 <summary>2 versions before approval</summary>

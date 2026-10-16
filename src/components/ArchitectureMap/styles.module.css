@@ -98,7 +98,7 @@
 }
 
 .repo a {
-  color: var(--ifm-color-primary);
+  color: var(--brand-text);
 }
 
 .repoNone {

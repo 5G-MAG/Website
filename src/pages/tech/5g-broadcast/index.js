@@ -96,7 +96,7 @@ export default function FiveGBroadcast() {
               />
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
+              <h2 className={styles.whyMattersTitle}>The Problem It Solves</h2>
               <p className={styles.whyMattersBody}>
                 A cellular unicast stream costs more network capacity the bigger its audience gets, no
                 matter how popular the content. Broadcast TV and radio don&apos;t work that way, and

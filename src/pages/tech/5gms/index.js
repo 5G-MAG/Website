@@ -85,7 +85,7 @@ export default function FiveGMS() {
               />
             </div>
             <div className={styles.whyMattersBlock}>
-              <h3 className={styles.whyMattersTitle}>The Problem It Solves</h3>
+              <h2 className={styles.whyMattersTitle}>The Problem It Solves</h2>
               <p className={styles.whyMattersBody}>
                 Before 5GMS, 3GPP&apos;s streaming architecture was the Packet Switched Streaming
                 architecture in TS 26.233, mainly developed for RTSP streaming. When the Release 16 work
