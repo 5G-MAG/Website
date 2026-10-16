@@ -1,0 +1,27 @@
+// The page each project's Technology button opens: its overview. Taken from techOverviewDoc in techTopics.js; keep
+// the two in step when a project's overview page changes.
+export const TECH_OVERVIEW = {
+  '/tech/5g-broadcast': '/tech/5g-broadcast/overview',
+  '/tech/5g-core': '/tech/5g-core/overview',
+  '/tech/5g-mbs': '/tech/5g-mbs/overview-mbs',
+  '/tech/5gms': '/tech/5gms/overview',
+  '/tech/6g': '/tech/6g/overview',
+  '/tech/ai-in-media-services': '/tech/ai-in-media-services/overview',
+  '/tech/ai-ml': '/tech/ai-ml/overview',
+  '/tech/avatar': '/tech/avatar/overview',
+  '/tech/beyond-2d': '/tech/beyond-2d',
+  '/tech/content-delivery': '/tech/content-delivery/overview',
+  '/tech/data-collection': '/tech/data-collection/overview',
+  '/tech/dvb-i': '/tech/dvb-i/analysis-dvb-i-over-5g-gaps',
+  '/tech/emergency-alerts': '/tech/emergency-alerts/overview',
+  '/tech/network-apis': '/tech/network-apis/network-api-initiatives',
+  '/tech/npn': '/tech/npn/overview',
+  '/tech/ntn': '/tech/ntn/overview',
+  '/tech/rtc': '/tech/rtc/overview',
+  '/tech/tsc': '/tech/tsc/overview',
+  '/tech/v3c': '/tech/volumetric/v3c-overview',
+  '/tech/vdmc': '/tech/vdmc/overview',
+  '/tech/vops': '/tech/vops/overview',
+  '/tech/xr': '/tech/xr/mpeg-i-scene-description',
+  '/tech/5g-core/overview': '/tech/5g-core/overview',
+};

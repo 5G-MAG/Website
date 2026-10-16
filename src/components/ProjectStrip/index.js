@@ -1,6 +1,7 @@
 import Link from '@docusaurus/Link';
 import { useLocation } from '@docusaurus/router';
 import { familyForPath } from '@site/src/utils/projectFamily';
+import { TECH_OVERVIEW } from '@site/src/data/techOverviews';
 import { displayNameOf, typeOf, isTestbed } from '@site/src/data/baskets';
 import styles from './styles.module.css';
 
@@ -20,7 +21,7 @@ export default function ProjectStrip({ contained = false }) {
   const spec = family.find((p) => p.standards_url)?.standards_url;
   const software = family.filter((p) => p.doc_url);
   const items = [
-    tech && { label: 'Technology', to: tech },
+    tech && { label: 'Technology', to: TECH_OVERVIEW[tech] || tech, base: tech },
     spec && { label: 'Specifications', to: spec },
     ...software.map((p) => ({
       label: softwareLabel(p) !== 'Reference Tools' || software.length > 1 ? displayNameOf(p) : 'Software',
@@ -29,9 +30,9 @@ export default function ProjectStrip({ contained = false }) {
   ].filter(Boolean);
   if (items.length < 2) return null;
   const active = items.reduce((best, it) => {
-    const base = it.to.replace(/\/$/, '');
+    const base = (it.base || it.to).replace(/\/$/, '');
     const hit = pathname === base || pathname.startsWith(base + '/');
-    return hit && (!best || base.length > best.to.replace(/\/$/, '').length) ? it : best;
+    return hit && (!best || base.length > (best.base || best.to).replace(/\/$/, '').length) ? it : best;
   }, null);
   const strip = (
     <nav className={styles.strip} aria-label="Pages of this project">
