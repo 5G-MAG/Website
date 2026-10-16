@@ -30,11 +30,14 @@ export default function ValidationTools() {
         title="Validation Tools"
         icon={VALIDATION_ICON_PATH}
         actions={[
-          <Link key="testing" className="button button--primary" to="/deployments/testing">
-            Testing and interoperability
+          <Link key="contribute" className="button button--primary" to="/contributing">
+            Contribute
           </Link>,
           <Link key="license" className="button button--outline button--primary" to="/license">
             License Model
+          </Link>,
+          <Link key="early-access" className="button button--outline button--primary" to="/early-access">
+            Early Access
           </Link>,
         ]}
       />
@@ -44,7 +47,8 @@ export default function ValidationTools() {
           <div className="container">
             <p className={styles.sectionSubtitle}>
               A validation tool checks that an implementation or a stream conforms to a specification. It does not
-              simulate a network and runs no experiments.
+              simulate a network and runs no experiments. For how validators are used at plugfests and in
+              interoperability work, see <Link to="/deployments/testing">Testing and interoperability</Link>.
             </p>
             <div className={styles.categoryColumns}>
               <CategoryCard
