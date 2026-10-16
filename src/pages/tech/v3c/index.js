@@ -78,7 +78,7 @@ export default function V3C() {
                   encoding, streaming, and rendering V3C content over 5G networks. The related{' '}
                   <Link to="/tech/beyond-2d">Beyond 2D Video Experiences</Link> work extends this to evaluation
                   frameworks for next-generation visual experiences (stereoscopic, multi-view, depth
-                  and point-cloud formats) — closely related to V3C but tracked as its own topic.
+                  and point-cloud formats): closely related to V3C but tracked as its own topic.
                 </p>
                 {PROJECT.sdos?.length > 0 && (
                   <div className={styles.capabilityTags}>

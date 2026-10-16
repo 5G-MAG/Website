@@ -91,7 +91,7 @@ export default function EmergencyAlerts() {
                 A warning delivered only over a data connection fails exactly when it matters most:
                 when the cellular network is congested with everyone trying to check on each other, or
                 down entirely. Carrying the alert as a Cell Broadcast message on the same free-to-air
-                broadcast carrier as TV and radio sidesteps that — it needs no SIM, no subscription and
+                broadcast carrier as TV and radio sidesteps that: it needs no SIM, no subscription and
                 no return channel, so it reaches idle, roaming and otherwise unattached devices the
                 same way it reaches every other receiver in coverage. Layering this on the existing 5G
                 Broadcast chain, rather than building a separate alerting stack, also means no new

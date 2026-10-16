@@ -101,8 +101,8 @@ export default function NetworkAPIs() {
             <div className={styles.whyMattersBlock}>
               <h2 className={styles.whyMattersTitle}>The Problem It Solves</h2>
               <p className={styles.whyMattersBody}>
-                Without CAMARA, a media application that wants a specific network guarantee — a
-                low-latency contribution link, a reserved slice for an event — has to integrate
+                Without CAMARA, a media application that wants a specific network guarantee: a
+                low-latency contribution link, a reserved slice for an event: has to integrate
                 directly against each operator&apos;s own 3GPP-exposed interfaces (NEF, then PCF for
                 policy), a separate integration per operator. CAMARA hides that chain behind one
                 small, operator-agnostic REST resource, so a developer builds against a single API

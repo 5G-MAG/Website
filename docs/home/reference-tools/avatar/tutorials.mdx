@@ -37,17 +37,17 @@ A base avatar loaded and bound in the Unity presentation, animated either from t
 
 Repository: [Avatar Content](https://github.com/5G-MAG/rt-avatar-content) (`rt-avatar-content`)
 
-This repository "holds reference MPEG ARF content for real time avatar communication": pre-built base avatars and recorded animation streams. Start here rather than with a live capture rig — it lets you validate the presentation and call path against known-good data before adding live tracking. This project's own docs do not document the exact file layout or how to load a sample asset, so check the repository's own README for that.
+This repository "holds reference MPEG ARF content for real time avatar communication": pre-built base avatars and recorded animation streams. Start here rather than with a live capture rig: it lets you validate the presentation and call path against known-good data before adding live tracking. This project's own docs do not document the exact file layout or how to load a sample asset, so check the repository's own README for that.
 
 ## 2. Bring up the call / transport path
 
 Repository: [Avatar Call](https://github.com/5G-MAG/rt-avatar-call) (`rt-avatar-call`)
 
-This repository "supports the development of a reference framework for avatar communication", with the stated goal of demonstrating "WebRTC communication using the MPEG ARF and related animation compression". This is the transport/packaging component from Implementation Detail: it exchanges Animation Stream Format data between the two ends of a call. As with the sample content, this project's own docs do not spell out the exact build steps, dependencies, or how to run it (standalone service, Docker setup, or a library integrated into the Unity presentation) — confirm all of that from the repository's README before proceeding.
+This repository "supports the development of a reference framework for avatar communication", with the stated goal of demonstrating "WebRTC communication using the MPEG ARF and related animation compression". This is the transport/packaging component from Implementation Detail: it exchanges Animation Stream Format data between the two ends of a call. As with the sample content, this project's own docs do not spell out the exact build steps, dependencies, or how to run it (standalone service, Docker setup, or a library integrated into the Unity presentation): confirm all of that from the repository's README before proceeding.
 
 ## 3. Load and render the base avatar
 
-Per Implementation Detail, the Unity-based presentation loads a base avatar from its container, places it in a scene using the MPEG-I Scene Description avatar node (the `MPEG_avatar` glTF extension), and applies the incoming animation stream to render it. Neither Implementation Detail nor the repository list identifies a repository dedicated solely to this presentation role — check whether it ships as part of one of the repositories below (most likely [Avatar Unity Tracker](https://github.com/5G-MAG/rt-avatar-unity-tracker), since it is the only Unity-based repository listed) or is not yet published separately.
+Per Implementation Detail, the Unity-based presentation loads a base avatar from its container, places it in a scene using the MPEG-I Scene Description avatar node (the `MPEG_avatar` glTF extension), and applies the incoming animation stream to render it. Neither Implementation Detail nor the repository list identifies a repository dedicated solely to this presentation role: check whether it ships as part of one of the repositories below (most likely [Avatar Unity Tracker](https://github.com/5G-MAG/rt-avatar-unity-tracker), since it is the only Unity-based repository listed) or is not yet published separately.
 
 ## 4. Add live tracking
 
@@ -57,7 +57,7 @@ This is a "Sample OpenXR tracker for ARF avatar animation in Unity". This is the
 
 ## Where rt-3gpp-swap fits
 
-The [3GPP SWAP](https://github.com/5G-MAG/rt-3gpp-swap) (`rt-3gpp-swap`) repository is also listed in the repository set for this project, but its own description only says it "is related to Conversational Avatar Real-Time Communications", without stating which of the four components above it covers. We could not confirm its role from this project's own docs, so it is not placed in the sequence above — check the repository directly if you need it.
+The [3GPP SWAP](https://github.com/5G-MAG/rt-3gpp-swap) (`rt-3gpp-swap`) repository is also listed in the repository set for this project, but its own description only says it "is related to Conversational Avatar Real-Time Communications", without stating which of the four components above it covers. We could not confirm its role from this project's own docs, so it is not placed in the sequence above: check the repository directly if you need it.
 
 ## Putting it together
 

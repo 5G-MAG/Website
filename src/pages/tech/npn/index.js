@@ -97,7 +97,7 @@ export default function NPN() {
               <h2 className={styles.whyMattersTitle}>The Problem It Solves</h2>
               <p className={styles.whyMattersBody}>
                 A broadcaster deploying its own private 5G network doesn&apos;t want to become a full
-                mobile operator with its own subscriber database — NPN avoids that: the Release 17
+                mobile operator with its own subscriber database: NPN avoids that: the Release 17
                 Credentials Holder split lets a broadcaster&apos;s existing central identity system
                 authenticate devices onto a venue-operated SNPN directly, and UE onboarding lets a
                 whole fleet of cameras and devices be provisioned automatically rather than configured

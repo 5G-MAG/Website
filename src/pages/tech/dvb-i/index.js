@@ -95,8 +95,8 @@ export default function DvbI() {
                 Without DVB-I, a broadcaster&apos;s 5G Broadcast service and its 5GMS unicast service
                 would look like two unrelated things to a device, discovered separately with no
                 common presentation. DVB-I&apos;s service instance model fixes that: one logical
-                service can carry several delivery instances — a broadcast instance and a unicast
-                instance for the same channel — and the device picks between them by priority, or, for
+                service can carry several delivery instances: a broadcast instance and a unicast
+                instance for the same channel: and the device picks between them by priority, or, for
                 a hybrid device already tuned to the broadcast signal directly, de-duplicates the two
                 so the same channel doesn&apos;t appear twice. That is what lets broadcast and
                 broadband content sit in one combined service list instead of two separate discovery

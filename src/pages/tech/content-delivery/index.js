@@ -93,7 +93,7 @@ export default function ContentDelivery() {
               <h2 className={styles.whyMattersTitle}>The Problem It Solves</h2>
               <p className={styles.whyMattersBody}>
                 A broadcast or multicast bearer has no return channel, so a receiver can never ask for
-                a retransmission — reliability has to come from somewhere else, and Forward Error
+                a retransmission: reliability has to come from somewhere else, and Forward Error
                 Correction carried by FLUTE and ROUTE is that mechanism. Keeping the media format
                 (DASH, HLS, CMAF) and the transport (FLUTE for files, ROUTE for real-time objects)
                 strictly separate is what lets the same packaged content run over either one: a

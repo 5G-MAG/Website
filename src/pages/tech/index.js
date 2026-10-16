@@ -36,7 +36,7 @@ function StageTable({ projects }) {
 
 // Sourced from the grey "motivation" strip on the 5G-MAG Portfolio Slides
 // (slide 6: "Explainers and Profiles of Standards Specifications"), not the
-// dark-card row below it — "Profiles and Blueprints" / "Tech Documentation
+// dark-card row below it: "Profiles and Blueprints" / "Tech Documentation
 // and Explainers" is the real section content, not motivation framing.
 const PILLARS = [
   {
@@ -146,7 +146,7 @@ export default function Home() {
           <div className="container">
             <h2 className={styles.sectionTitle}>From Specifications to Practice</h2>
             <p className={styles.sectionSubtitle}>
-              Understand it. Prove its value. Scale it. Resources produced by 5G-MAG members —
+              Understand it. Prove its value. Scale it. Resources produced by 5G-MAG members,
               covering the full cycle from reading a spec to shaping the next one.
             </p>
             <div className={styles.pillarGrid3}>
@@ -221,8 +221,8 @@ export default function Home() {
                           is to go to the project page". */}
                       <p className={styles.basketMeta}>
                         {b.areaRow
-                          ? 'Technology area under study — click its name to open its page'
-                          : <>{b.projects.length} {b.projects.length === 1 ? 'project' : 'projects'} —
+                          ? 'Technology area under study: click its name to open its page'
+                          : <>{b.projects.length} {b.projects.length === 1 ? 'project' : 'projects'}:
                             click a project&apos;s name to open its own page</>}
                       </p>
                     </div>

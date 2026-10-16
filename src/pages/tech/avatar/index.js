@@ -108,7 +108,7 @@ export default function Avatar() {
               <p className={styles.whyMattersBody}>
                 Before ARF, an avatar-based call needed the sender&apos;s capture/tracking system and
                 the receiver&apos;s rendering engine to come from the same vendor&apos;s proprietary
-                avatar format — there was no common way to describe the avatar asset itself or the
+                avatar format: there was no common way to describe the avatar asset itself or the
                 animation stream driving it. ARF standardises both once: the base avatar (stored and
                 exchanged as an ISOBMFF or Zip-based asset) and the animation stream (a sequence of
                 compact Avatar Animation Units) are separate, interoperable formats, so a conforming

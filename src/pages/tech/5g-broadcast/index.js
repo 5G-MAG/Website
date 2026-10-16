@@ -101,7 +101,7 @@ export default function FiveGBroadcast() {
                 A cellular unicast stream costs more network capacity the bigger its audience gets, no
                 matter how popular the content. Broadcast TV and radio don&apos;t work that way, and
                 5G Broadcast keeps that property: a receiver bootstraps entirely from the broadcast
-                signal itself — no SIM, no return channel, no prior connection to the network — by
+                signal itself, no SIM, no return channel, no prior connection to the network, by
                 first synchronising on the narrowband Cell Acquisition Subframe, then following the
                 system information it carries out to the wider PMCH payload. One transmission reaches
                 every receiver in coverage simultaneously, so the network cost of reaching a million

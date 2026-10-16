@@ -98,7 +98,7 @@ export default function TSC() {
               <h2 className={styles.whyMattersTitle}>The Problem It Solves</h2>
               <p className={styles.whyMattersBody}>
                 Deterministic, time-synchronised delivery normally means joining a full IEEE 802.1 TSN
-                bridge with a Centralized Network Configuration controller — infrastructure most media
+                bridge with a Centralized Network Configuration controller: infrastructure most media
                 productions have no reason to run. A Release 17 outcome removes that requirement:
                 deterministic QoS and time synchronisation can be requested directly through the
                 TSCTSF and NEF, without configuring the 5G system as part of a wired TSN network at

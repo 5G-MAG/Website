@@ -77,7 +77,7 @@ export default function NTN() {
                 <p>
                   <strong>No dedicated reference tool exists for NTN.</strong> The 5G-MAG MBS reference
                   tools (for Multicast and Broadcast) are the relevant software for NTN deployment
-                  scenarios — see{' '}
+                  scenarios: see{' '}
                   <Link to="/tech/5g-mbs">5G Multicast Broadcast Services (MBS)</Link>. For satellite broadcast
                   delivery using the FeMBMS (5G Broadcast) waveform, see{' '}
                   <Link to="/tech/5g-broadcast">5G Broadcast - TV and Radio Services</Link>.
@@ -104,8 +104,8 @@ export default function NTN() {
                 Terrestrial infrastructure doesn&apos;t reach every area a broadcaster needs to serve,
                 and building a separate service layer for satellite delivery would mean maintaining
                 two parallel stacks. NTN avoids that: it standardises only the radio-layer adaptations
-                a long, variable-delay satellite path needs — a large UE-specific timing advance,
-                Doppler pre-compensation, the k-offset scheduling adjustment — so the existing MBS
+                a long, variable-delay satellite path needs: a large UE-specific timing advance,
+                Doppler pre-compensation, the k-offset scheduling adjustment: so the existing MBS
                 Multicast and Broadcast user-service and streaming layers can run over a satellite or
                 HAPS access exactly as they do terrestrially, reaching areas outside terrestrial
                 coverage without a second, incompatible delivery system.

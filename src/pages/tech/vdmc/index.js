@@ -104,13 +104,13 @@ export default function VDMC() {
             <div className={styles.whyMattersBlock}>
               <h2 className={styles.whyMattersTitle}>The Problem It Solves</h2>
               <p className={styles.whyMattersBody}>
-                A moving 3D mesh — an animated character or a performance capture — has geometry,
+                A moving 3D mesh, an animated character or a performance capture, has geometry,
                 connectivity and attributes that all change per frame, and coding that directly has no
                 practical hardware path. V-DMC reduces each frame to a simplified basemesh plus
                 per-frame displacement offsets and a texture atlas, then hands that data to existing
                 video codecs (HEVC, VVC) rather than defining a new one. That reuse is what makes
                 dynamic mesh content deliverable at all on mobile-class hardware, for the specific
-                case — well-parameterized mesh surfaces — where the point-cloud approach V3C uses is
+                case, well-parameterized mesh surfaces, where the point-cloud approach V3C uses is
                 less efficient.
               </p>
             </div>

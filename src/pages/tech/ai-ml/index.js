@@ -104,7 +104,7 @@ export default function AiMl() {
               <h2 className={styles.whyMattersTitle}>The Problem It Solves</h2>
               <p className={styles.whyMattersBody}>
                 A claim that an AI/ML model improves media quality, ABR selection or traffic
-                classification is only useful if it can be checked against a common baseline —
+                classification is only useful if it can be checked against a common baseline;
                 without one, every vendor&apos;s benchmark is measured on its own datasets and its own
                 terms, and results can&apos;t be compared. The Evaluation Framework provides that
                 common basis: shared benchmarks and datasets that let different AI/ML approaches be

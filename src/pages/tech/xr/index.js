@@ -99,7 +99,7 @@ export default function XR() {
               <h2 className={styles.whyMattersTitle}>The Problem It Solves</h2>
               <p className={styles.whyMattersBody}>
                 Without a common scene format, an XR application&apos;s rendering engine and its media
-                pipeline are locked together — swapping either one means rebuilding the other. MPEG-I
+                pipeline are locked together: swapping either one means rebuilding the other. MPEG-I
                 Scene Description avoids that by splitting the two roles cleanly: the Presentation
                 Engine renders the scene and knows nothing about how media gets decoded, while the
                 Media Access Function (MAF) is transport- and codec-agnostic, building whatever
