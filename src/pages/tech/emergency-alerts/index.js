@@ -81,7 +81,7 @@ export default function EmergencyAlerts() {
               </div>
               <img
                 src={coverImg}
-                alt={`${PROJECT_NAME}, project cover image`}
+                alt={`${PROJECT_NAME}, project cover`}
                 style={{ width: '100%', borderRadius: '16px', boxShadow: '0 12px 40px rgba(0,0,0,0.25)' }}
               />
             </div>

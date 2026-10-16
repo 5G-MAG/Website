@@ -68,7 +68,7 @@ export default function AIForMedia() {
               </div>
               <img
                 src={coverImg}
-                alt={`${PROJECT.name}, project cover image`}
+                alt={`${PROJECT.name}, project cover`}
                 style={{ width: '100%', borderRadius: '16px', boxShadow: '0 12px 40px rgba(0,0,0,0.25)' }}
               />
             </div>

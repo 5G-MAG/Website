@@ -77,7 +77,7 @@ export default function Towards6GMedia() {
               </div>
               <img
                 src={coverImg}
-                alt={`${BASKET_TITLE}, project cover image`}
+                alt={`${BASKET_TITLE}, project cover`}
                 style={{ width: '100%', borderRadius: '16px', boxShadow: '0 12px 40px rgba(0,0,0,0.25)' }}
               />
             </div>
