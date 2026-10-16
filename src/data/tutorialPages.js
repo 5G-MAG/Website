@@ -15,3 +15,16 @@ export function tutorialsUrlFor(docUrl) {
   const has = base.startsWith('/reference-tools/') ? TUTORIAL_SLUGS.includes(slug) : OTHER_TUTORIALS.includes(base);
   return has ? `${base}/tutorials` : null;
 }
+
+// The Reference Tools that have an Implementation Detail page (at <Reference Tools page>/implementation).
+const IMPLEMENTATION_SLUGS = [
+  '3gpp-platforms', '5g-broadcast', '5g-mbs', '5gms', 'avatar', 'common-tools', 'content-delivery', 'data-collection',
+  'dvb-i', 'emergency-alerts', 'network-apis', 'v3c', 'vdmc', 'xr',
+];
+
+export function implementationUrlFor(docUrl) {
+  if (!docUrl) return null;
+  const base = docUrl.replace(/\/$/, '');
+  if (!base.startsWith('/reference-tools/')) return null;
+  return IMPLEMENTATION_SLUGS.includes(base.replace('/reference-tools/', '')) ? `${base}/implementation` : null;
+}

@@ -1,7 +1,7 @@
 import Link from '@docusaurus/Link';
 import { useLocation } from '@docusaurus/router';
 import { projectBySlug, reposFor, repoMetaFor, releaseInfoFor, displayNameOf } from '@site/src/data/baskets';
-import { tutorialsUrlFor } from '@site/src/data/tutorialPages';
+import { tutorialsUrlFor, implementationUrlFor } from '@site/src/data/tutorialPages';
 import styles from './styles.module.css';
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -29,6 +29,7 @@ export default function ToolStartHere() {
   const { count, latestDate } = releaseInfoFor(project);
   const latest = formatDate(latestDate);
   const tutorials = tutorialsUrlFor(project.doc_url);
+  const implementation = implementationUrlFor(project.doc_url);
 
   const rows = [
     project.tagline && ['What it is', project.tagline],
@@ -64,17 +65,14 @@ export default function ToolStartHere() {
             Tutorials
           </Link>
         )}
-        {match[1] === 'reference-tools' ? (
-          <Link className="button button--outline button--primary button--sm" to="#repositories--releases">
-            Repositories
+        {implementation && (
+          <Link className="button button--outline button--primary button--sm" to={implementation}>
+            Implementation detail
           </Link>
-        ) : (
-          metas[0]?.repo_url && (
-            <Link className="button button--outline button--primary button--sm" href={metas[0].repo_url}>
-              Repository
-            </Link>
-          )
         )}
+        <Link className="button button--outline button--primary button--sm" to="#repositories--releases">
+          Repositories
+        </Link>
         <Link className="button button--outline button--primary button--sm" to="/community">
           Ask the community
         </Link>
