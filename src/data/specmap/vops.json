@@ -1,0 +1,371 @@
+{
+ "project": "VOPS Conformance Validator",
+ "slug": "vops",
+ "standardsUrl": "/standards/vops",
+ "generated": "2026-10-16",
+ "tool": "specmap.py 7",
+ "releases": {
+  "analysed": [
+   "17",
+   "18",
+   "19",
+   "20"
+  ],
+  "baseline": "20",
+  "tracking": [],
+  "open": []
+ },
+ "inputs": {
+  "workPlan": "https://www.3gpp.org/ftp/Information/WORK_PLAN/Work_plan_3gpp_2026_09_28.xlsx",
+  "workPlanFetched": 1792137428804,
+  "issuesAnalysed": {
+   "TS 26.265": {
+    "19": "V19.3.0",
+    "20": "V19.3.0"
+   }
+  },
+  "websiteCommit": "5937746",
+  "rules": "projects/vops/explore.yaml"
+ },
+ "topicList": [
+  "General"
+ ],
+ "otherBodies": {
+  "from": [
+   "TS 26.265"
+  ],
+  "clause": "2",
+  "references": [
+   {
+    "key": "ISO/IEC 23000-19",
+    "body": "ISO/IEC",
+    "id": "ISO/IEC 23000-19",
+    "title": "Information Technology Multimedia Application Format (MPEG-A) – Part 19: Common Media Application Format (CMAF) for segmented media",
+    "by": {
+     "19": [
+      "TS 26.265"
+     ],
+     "20": [
+      "TS 26.265"
+     ]
+    },
+    "label": "ISO/IEC 23000-19",
+    "releases": [
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "ITU-T H.264",
+    "body": "ITU-T",
+    "id": "ITU-T H.264",
+    "title": "Advanced video coding for generic audiovisual services",
+    "by": {
+     "19": [
+      "TS 26.265"
+     ],
+     "20": [
+      "TS 26.265"
+     ]
+    },
+    "label": "ITU-T H.264",
+    "releases": [
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "ITU-T H.265",
+    "body": "ITU-T",
+    "id": "ITU-T H.265",
+    "title": "High efficiency video coding",
+    "by": {
+     "19": [
+      "TS 26.265"
+     ],
+     "20": [
+      "TS 26.265"
+     ]
+    },
+    "label": "ITU-T H.265",
+    "releases": [
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "ITU-T H.273",
+    "body": "ITU-T",
+    "id": "ITU-T H.273",
+    "title": "Coding-independent code points for video signal type identification",
+    "by": {
+     "19": [
+      "TS 26.265"
+     ],
+     "20": [
+      "TS 26.265"
+     ]
+    },
+    "label": "ITU-T H.273",
+    "releases": [
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "ITU-T H.274",
+    "body": "ITU-T",
+    "id": "ITU-T H.274",
+    "title": "Versatile supplemental enhancement information messages for coded video bitstreams",
+    "by": {
+     "19": [
+      "TS 26.265"
+     ],
+     "20": [
+      "TS 26.265"
+     ]
+    },
+    "label": "ITU-T H.274",
+    "releases": [
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 6381",
+    "body": "IETF",
+    "id": "IETF RFC 6381",
+    "title": "Bucket",
+    "by": {
+     "19": [
+      "TS 26.265"
+     ],
+     "20": [
+      "TS 26.265"
+     ]
+    },
+    "label": "IETF RFC 6381",
+    "releases": [
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "CTA-5003",
+    "body": "CTA",
+    "id": "CTA-5003-B",
+    "title": "Web Application Video Ecosystem (WAVE): Device Playback Capabilities Specification",
+    "by": {
+     "19": [
+      "TS 26.265"
+     ],
+     "20": [
+      "TS 26.265"
+     ]
+    },
+    "label": "CTA-5003-B",
+    "releases": [
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other 3dtvproductionstandardsfirstreportoftheiturrapporteurs",
+    "body": "Other",
+    "id": "3D-TV production standards - first report of the ITU-R Rapporteurs",
+    "title": "3D-TV production standards - first report of the ITU-R Rapporteurs",
+    "by": {
+     "19": [
+      "TS 26.265"
+     ],
+     "20": [
+      "TS 26.265"
+     ]
+    },
+    "label": "3D-TV production standards - first report of the ITU-R Rapporteurs",
+    "releases": [
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other imageparametervaluesforhighdynamicrangetelevisionforuseinpro",
+    "body": "Other",
+    "id": "Image parameter values for high dynamic range television for use in production and international programme exchange",
+    "title": "Image parameter values for high dynamic range television for use in production and international programme exchange",
+    "by": {
+     "19": [
+      "TS 26.265"
+     ],
+     "20": [
+      "TS 26.265"
+     ]
+    },
+    "label": "Image parameter values for high dynamic range television for use in production and international programme exchange",
+    "releases": [
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other parametervaluesforthehdtvstandardsforproductionandinternatio",
+    "body": "Other",
+    "id": "Parameter values for the HDTV standards for production and international programme exchange",
+    "title": "Parameter values for the HDTV standards for production and international programme exchange",
+    "by": {
+     "19": [
+      "TS 26.265"
+     ],
+     "20": [
+      "TS 26.265"
+     ]
+    },
+    "label": "Parameter values for the HDTV standards for production and international programme exchange",
+    "releases": [
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other smptest20862018masteringdisplaycolorvolumemetadatasupporting",
+    "body": "Other",
+    "id": "SMPTE ST 2086:2018, Mastering Display Color Volume Metadata Supporting High Luminance and Wide Color Gamut Images",
+    "title": "SMPTE ST 2086:2018, Mastering Display Color Volume Metadata Supporting High Luminance and Wide Color Gamut Images",
+    "by": {
+     "19": [
+      "TS 26.265"
+     ],
+     "20": [
+      "TS 26.265"
+     ]
+    },
+    "label": "SMPTE ST 2086:2018, Mastering Display Color Volume Metadata Supporting High Luminance and Wide Color Gamut Images",
+    "releases": [
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "19",
+     "20"
+    ]
+   }
+  ],
+  "listedButNeverCited": []
+ },
+ "documents": [
+  {
+   "id": "TS 26.265",
+   "title": "Media Delivery: Video Capabilities and Operation Points",
+   "url": "https://www.3gpp.org/dynareport/26265.htm",
+   "layer": "Specification",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "firstRelease": "19",
+   "releases": {
+    "19": {
+     "release": "19",
+     "version": "V19.3.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 167,
+     "statementsAtCreation": 167,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": [
+      {
+       "wid": 1030002,
+       "acronym": "VOPS",
+       "name": "Video Operating Points - Harmonization and Stereo MV-HEVC",
+       "completion": 1,
+       "ref": "SP-250818"
+      }
+     ]
+    },
+    "20": {
+     "release": "20",
+     "version": "V19.3.0",
+     "newIssue": false,
+     "analysed": true,
+     "statementsInForce": 167,
+     "statementsAtCreation": null,
+     "statementsAdded": 0,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    }
+   },
+   "baselineIssue": {
+    "release": "19",
+    "version": "V19.3.0"
+   },
+   "latestIssue": {
+    "release": "19",
+    "version": "V19.3.0"
+   },
+   "titleFrom": "cover",
+   "scope": {
+    "text": "Video codecs, encoders, and decoders are core components of 3GPP services. At the same time, video encoders and decoders, residing on 3GPP User Equipment (UE) and defined in 3GPP specifications, also provide interoperability points for third-party services. Video capabilities are predominantly independent of the service in use. This specification addresses the definition of video capabilities and Operation Points such that 3GPP service specifications as well as third-party service providers can refer to the interoperability points defined in this specification.",
+    "firstSentence": "Video codecs, encoders, and decoders are core components of 3GPP services.",
+    "clause": "1",
+    "version": "V19.3.0"
+   },
+   "topics": [
+    {
+     "name": "General",
+     "statements": 167,
+     "share": 1.0
+    }
+   ]
+  }
+ ],
+ "problems": [],
+ "notes": [
+  "A release with no issue of a document leaves the issue of the earlier release in force.",
+  "Statement counts are by wording: a reworded statement counts as one removed and one added; the moved counts are the part that is the same text in another document of the project.",
+  "A count is null where the release was not analysed (a tracked release, or a document that is not explored)."
+ ]
+}
