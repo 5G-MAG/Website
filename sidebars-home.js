@@ -42,7 +42,7 @@ ALL_TOPICS.forEach((topic) => {
 
   items.push({
     type: 'category',
-    label: 'Technical Analysis',
+    label: 'Technology',
     collapsed: false,
     items: deriveLinkItems(`docs/tech/${topic.autogen}`, `/tech/${topic.autogen}`, '/tech'),
   });

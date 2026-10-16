@@ -206,7 +206,7 @@ export function SpecTopics({ map, minShare = 0.1 }) {
         </table>
       </div>
       <p className={styles.source}>
-        Topics are the Technical Analysis feature headings that the requirements of the Release {map.releases.baseline}
+        Topics are the Technology feature headings that the requirements of the Release {map.releases.baseline}
         issue in force fall under, the largest first; a topic with under {Math.round(minShare * 100)}% of a
         specification&apos;s requirements is not listed. Reports, and specifications that belong to another project, are
         not shown here.
