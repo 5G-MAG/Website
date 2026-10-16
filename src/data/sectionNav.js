@@ -214,7 +214,7 @@ export const SECTION_NAV = [
   },
   {
     prefixes: ['/deploy'],
-    title: 'Deploy',
+    title: 'Deployments',
     titleHref: '/deploy',
     subtitle: 'Demos, plugfests and interoperability events that help technology reach deployment.',
     // Activities only: demos, interop plugfests and testing events. Software

@@ -189,11 +189,11 @@ export default function Deploy() {
   const tradeshowImg = useBaseUrl('/assets/images/gallery/tradeshow-booth-demo.jpg');
   return (
     <Layout
-      title="Deploy"
+      title="Deployments"
       description="Demos, interoperability plugfests and trials that help 5G-MAG technology reach deployment."
     >
       <HubHero
-        title="Deploy"
+        title="Deployments"
         icon={DEPLOY_ICON_PATH}
         actions={[
           <a key="demos" className="button button--primary" href="#demos">

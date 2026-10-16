@@ -220,7 +220,7 @@ const config = {
           { from: '/point-to-multipoint', to: '/broadcast-and-multicast' },
           { from: '/testing', to: '/deploy' },
           { from: '/testing/5g-broadcast-plugfest', to: '/deploy/5g-broadcast-plugfest' },
-          // /action ("In Action") renamed to /deploy ("Deploy") on 2026-10-05.
+          // /action ("In Action") renamed to /deploy ("Deploy") on 2026-10-05, and titled "Deployments" from 2026-10-16.
           { from: '/action', to: '/deploy' },
           { from: '/action/5g-broadcast-plugfest', to: '/deploy/5g-broadcast-plugfest' },
           // /applications renamed to /showcase (2026-09-23): bookmarks and
@@ -432,7 +432,7 @@ const config = {
           ],
         },
         {
-          title: 'Deploy',
+          title: 'Deployments',
           items: [{ label: 'Overview', to: '/deploy' }],
         },
         {

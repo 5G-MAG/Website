@@ -32,7 +32,7 @@ export default function NotFoundContent({ className }) {
               Software Accelerator
             </Link>
             <Link className="button button--outline button--primary button--lg" to="/deploy">
-              Deploy
+              Deployments
             </Link>
             <Link className="button button--outline button--primary button--lg" to="/search">
               Search
