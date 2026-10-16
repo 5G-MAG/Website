@@ -36,13 +36,12 @@ const LATEST_NEWS = [...newsData.posts]
   .slice(0, 3)
   .map((post) => ({ title: post.title, image: post.image, href: `/news/${post.slug}` }));
 
-const VIDEO_COUNT = 5;
+const VIDEO_COUNT = 10;
 
 // A handful of the most recent Developer Exchange sessions -- shown until
 // the client-side effect below swaps in a random sample, and also the
 // server-rendered/first-paint set (so hydration has something stable to
 // match before Math.random() is allowed to run).
-const INITIAL_VIDEOS = (youtubePlaylists.developer?.videos || []).slice(0, VIDEO_COUNT);
 
 // Every video across the entire 5G-MAG YouTube channel -- the 5 named
 // category playlists plus every per-project playlist -- deduped by video
@@ -58,6 +57,14 @@ const ALL_CHANNEL_VIDEOS = (() => {
   }
   return [...byId.values()];
 })();
+
+// The Developer Exchange sessions first, then other videos until there are enough for full rows.
+const INITIAL_VIDEOS = [
+  ...(youtubePlaylists.developer?.videos || []),
+  ...ALL_CHANNEL_VIDEOS,
+]
+  .filter((v, i, all) => all.findIndex((x) => x.id === v.id) === i)
+  .slice(0, VIDEO_COUNT);
 
 // Real photos of the technologies named just above (in DOMAIN_PILLARS and
 // DISCOVER_WORK) actually running -- not stock imagery, same convention
@@ -404,7 +411,7 @@ export default function Home() {
             <p className={styles.sectionSubtitle}>
               Recorded talks, demos and calls from across all of 5G-MAG&apos;s work
             </p>
-            <VideoGrid videos={videos} kicker="Replay" singleRow />
+            <VideoGrid videos={videos} kicker="Replay" fiveUp />
             <div className={styles.onAirMore}>
               <Link to="/videos">Browse the full library &rarr;</Link>
             </div>

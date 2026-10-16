@@ -1616,6 +1616,24 @@
    longer fit -- a horizontally-scrollable strip rather than a wrapping
    grid. Cards keep the same 230px minimum width as the wrapping grid, just
    via flex-basis instead of a grid column track. */
+.video-wall__grid--five {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+@media (max-width: 1100px) {
+  .video-wall__grid--five {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 700px) {
+  .video-wall__grid--five {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 480px) {
+  .video-wall__grid--five {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
 .video-wall__grid--row {
   display: flex;
   flex-wrap: nowrap;
