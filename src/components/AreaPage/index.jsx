@@ -113,35 +113,32 @@ const ROCKET = [
 const NOT_YET_ICON = ['M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5'];
 
 // The four things a visitor can do with an item, each on the item's main project: learn about it, implement it,
-// experiment with it in a Playground, and deploy it.
+// experiment with it in the Playgrounds, and deploy it with the Deployment Kits.
 const PATHS = [
   { key: 'learn', title: 'Learn', hint: 'How it works, and the specifications',
     icon: ['M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0', 'M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0', 'M3 6l0 13', 'M12 6l0 13', 'M21 6l0 13'] },
   { key: 'implement', title: 'Implement', hint: 'The project’s Software Accelerator tools',
     icon: ['M7 8l-4 4l4 4', 'M17 8l4 4l-4 4', 'M14 4l-4 16'] },
-  { key: 'experiment', title: 'Experiment', hint: 'Try it yourself in a Playground',
+  { key: 'experiment', title: 'Experiment', hint: 'Try it in the Playgrounds',
     icon: ['M7 4v16l13 -8l-13 -8'] },
-  { key: 'deploy', title: 'Deploy', hint: 'Plugfests, demos and trials',
+  { key: 'deploy', title: 'Deploy', hint: 'Deployment Kits for your product',
     icon: ['M4.5 16.5c-1.5 1.26 -2 5 -2 5s3.74 -.5 5 -2c.71 -.84 .7 -2.13 -.09 -2.91a2.18 2.18 0 0 0 -2.91 -.09z', 'M12 15l-3 -3a22 22 0 0 1 2 -3.95a12.88 12.88 0 0 1 10 -5.93c0 2.72 -.78 7.5 -6 11a22.35 22.35 0 0 1 -4 2z', 'M9 12h-4s.55 -3.03 2 -4c1.62 -1.08 5 0 5 0', 'M12 15v5s3.03 -.55 4 -2c1.08 -1.62 0 -5 0 -5'] },
 ];
 
-// Where each action goes. Experiment opens the use case's own tutorial in the Playgrounds when it has one that
-// exists, otherwise the project's tutorials, otherwise the Playgrounds page. Deploy opens the Deploy hub.
-function pathTargets(project, topic) {
+// Where each action goes. Experiment opens the Playgrounds and Deploy opens the Deployment Kits.
+function pathTargets(project) {
   if (!project) return {};
-  const tutorial = topic.tutorial && !topic.tutorial.inPreparation ? topic.tutorial.to : null;
-  const projectTutorials = project.doc_url ? `${project.doc_url.replace(/\/$/, '')}/tutorials` : null;
   return {
     learn: project.tech_url,
     implement: project.doc_url,
-    experiment: tutorial || projectTutorials || '/playgrounds',
-    deploy: '/deploy',
+    experiment: '/playgrounds',
+    deploy: '/kits',
   };
 }
 
 function Paths({ topic }) {
   const project = projectBySlug(topic.project);
-  const to = pathTargets(project, topic);
+  const to = pathTargets(project);
   return (
     <nav className={styles.paths} aria-label={`${topic.title}: what would you like to do?`}>
       <p className={styles.pathsTitle}>What would you like to do?</p>

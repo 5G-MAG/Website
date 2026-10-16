@@ -228,9 +228,9 @@ export default function Home() {
                 iconPaths={['M7 8l-4 4l4 4', 'M17 8l4 4l-4 4', 'M14 4l-4 16']}
               />
               <ListRow
-                href="/playgrounds"
-                title="2. Experiment"
-                desc="Run it yourself with the step-by-step tutorials in the Playgrounds."
+                href="/tutorials"
+                title="2. Run it"
+                desc="Follow the step-by-step tutorials, which are on each tool's page."
                 iconPaths={['M7 4v16l13 -8l-13 -8']}
               />
               <ListRow

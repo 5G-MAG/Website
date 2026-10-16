@@ -1,5 +1,5 @@
-// The Reference Tools projects whose pages have tutorials (at <Reference Tools page>/tutorials), listed in the
-// Playgrounds; and the same check for any tool page by its address.
+// The Reference Tools projects whose pages have tutorials (at <Reference Tools page>/tutorials), and the same check
+// for any tool page by its address.
 export const TUTORIAL_SLUGS = [
   '5gms', 'data-collection', 'content-delivery', '5g-broadcast', 'emergency-alerts', 'dvb-i', '5g-mbs',
   'xr', 'v3c', 'vdmc', 'avatar', 'network-apis', '3gpp-platforms',

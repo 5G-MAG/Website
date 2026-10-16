@@ -215,7 +215,7 @@ export default function Deploy() {
           <div className="container">
             <h2 className={styles.sectionTitle}>See It, Test It, Take It Further</h2>
             <p className={styles.sectionSubtitle}>
-              See the technology demonstrated and tested together at plugfests. The tools themselves, the validators and the Deployment Kits are in the <Link to="/developer">Software Accelerator</Link>; to try them yourself, see the <Link to="/playgrounds">Playgrounds</Link>.
+              See the technology demonstrated and tested together at plugfests. The tools themselves, the validators and the Deployment Kits are in the <Link to="/developer">Software Accelerator</Link>; to run them yourself, see the <Link to="/tutorials">Tutorials</Link>.
             </p>
             <RowList>
               {WHATS_HERE.map((r) => (

@@ -1,7 +1,7 @@
 import Link from '@docusaurus/Link';
 import { useLocation } from '@docusaurus/router';
 import { projectBySlug, reposFor, repoMetaFor, releaseInfoFor, displayNameOf } from '@site/src/data/baskets';
-import { tutorialsUrlFor } from '@site/src/data/playgrounds';
+import { tutorialsUrlFor } from '@site/src/data/tutorialPages';
 import styles from './styles.module.css';
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -61,7 +61,7 @@ export default function ToolStartHere() {
       <div className={styles.actions}>
         {tutorials && (
           <Link className="button button--primary button--sm" to={tutorials}>
-            Experiment: run it
+            Tutorials
           </Link>
         )}
         {match[1] === 'reference-tools' ? (
