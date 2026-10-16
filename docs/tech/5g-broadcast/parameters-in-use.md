@@ -37,7 +37,7 @@ Terms used in the tables below: MBSFN (Multicast-Broadcast Single Frequency Netw
 | Subcarrier Spacing (CAS)  (ETSI TS 103 720 V1.2.1 clause 6.4.2) | 15 kHz                      | Standard LTE numerology; used in the Cell Acquisition Subframe |
 | | Subcarrier Spacing (PMCH) | 1.25 / 2.5 / 7.5 / 0.37 kHz (15 kHz also defined) | Numerology chosen per inter-site distance and mobility target | (ETSI TS 103 720 V1.2.1 table 6.4.4-1; ETSI TS 103 720 V1.2.1 clause 5.13) | 1.25 / 2.5 / 7.5 / 0.37 kHz | FeMBMS numerology chosen per coverage and mobility target      |
 
-The Cell Acquisition Subframe (CAS) always uses 15 kHz SCS and the standard cyclic prefix, occupying a narrow 15 or 25 PRB (3 or 5 MHz) regardless of the PMCH bandwidth; a receiver acquires on the narrowband CAS and the SIBs then signal the wider PMCH region. The CAS is transmitted with a 40 ms periodicity (MIB-MBMS in subframe 0 of radio frames with SFN mod 4 == 0) (ETSI TS 103 720 V1.2.1 clause 6.4.2; TS 36.331 V19.4.0 clause 5.2.1.2). The PMCH numerology is a deployment choice: 1.25 kHz for high-power high-tower large single-frequency networks, 7.5 kHz for standard-area broadcast, 2.5 kHz for mobile reception (up to around 250 km/h), and 0.37 kHz for the largest SFN areas.
+The Cell Acquisition Subframe (CAS) always uses 15 kHz SCS with a normal or extended cyclic prefix; for 6, 7 and 8 MHz PMCH bandwidths it occupies a narrow 15 or 25 PRB (3 or 5 MHz), a receiver acquires on the narrowband CAS and the SIBs then signal the wider PMCH bandwidth (ETSI TS 103 720 V1.2.1 clause 6.4.2; ETSI TS 103 720 V1.2.1 clause 7.3.2; ETSI TS 103 720 V1.2.1 clause 5.5.4). The CAS is transmitted with a 40 ms periodicity (MIB-MBMS in subframe 0 of radio frames with SFN mod 4 == 0) (ETSI TS 103 720 V1.2.1 clause 6.4.2; TS 36.331 V19.4.0 clause 5.2.1.2). The PMCH numerology is at the discretion of the service provider: 1.25 kHz for larger-than-cellular inter-site distances at low-to-moderate mobility, 2.5 kHz for mobile reception (up to around 250 km/h), and 0.37 kHz for the largest SFN areas (inter-site distance up to 125 km) (ETSI TS 103 720 V1.2.1 clause 5.13; TR 36.976 V19.0.0 clause 4.2).
 
 ### Channel Bandwidth
 
@@ -53,18 +53,18 @@ The 6/7/8 MHz PMCH bandwidths align with the UHF broadcast channel rasters used 
 | Parameter                 | Value                | Notes                                                                     |
 | ------------------------- | -------------------- | ------------------------------------------------------------------------- |
 | Modulation                (TS 36.211 V19.3.0 table 6.3.2-1; ETSI TS 103 720 V1.2.1 clause 11.3.1) | QPSK, 16-QAM, 64-QAM | Depends on coverage target                                                |
-| Modulation (higher-order) | up to 256-QAM        | Available on PMCH since Rel-14, selected via TS 36.213 Table 7.1.7.1-1A  |
-| Code Rate                 | Variable             | Configured per MTCH                                                       |
+| Modulation (higher-order) | up to 256-QAM        | Available on PMCH since Rel-12, selected via TS 36.213 V19.5.0 clause 11.1 (Table 7.1.7.1-1A, or Table 11.1-2 when `timeSeparation` is 4) (TS 36.213 V19.5.0 table 7.1.7.1-1A; TS 36.213 V19.5.0 clause 11.1; TS 36.211 V19.3.0 annex A) |
+| Code Rate                 | Variable             | Configured per PMCH (`dataMCS`), which carries one or more MTCHs (TS 36.331 V19.4.0 clause 6.3.7; TS 36.300 V19.2.0 clause 15.3.3) |
 | MCCH Period               | 80 ms                | Typical MBSFN area                                                        |
 
-MCS values are configured per MTCH, so a single carrier can carry several services at different robustness/throughput points. The MCCH is re-read at each modification-period boundary so the receiver picks up any TX-side configuration change (TS 36.331 V19.4.0 clause 5.8.1.3).
+MCS values are configured per PMCH (`dataMCS`), so a single carrier can carry several services at different robustness/throughput points (TS 36.331 V19.4.0 clause 6.3.7; TS 36.300 V19.2.0 clause 15.3.3). The MCCH is re-read at each modification-period boundary so the receiver picks up any TX-side configuration change (TS 36.331 V19.4.0 clause 5.8.1.3).
 
 ### SFN Synchronisation
 
 | Parameter               | Value                      |
 | ----------------------- | -------------------------- |
 | Timing Advance Guard    | Depends on SFN radius      |
-| Maximum SFN Area Radius | ~100 km (with extended CP) |
+| Maximum inter-site distance | up to 125 km (0.37 kHz numerology) (ETSI TS 103 720 V1.2.1 clause 5.13; TR 36.976 V19.0.0 clause 4.2) |
 | GPS Synchronisation     | Required for SFN alignment |
 
 ### Frequency Bands
