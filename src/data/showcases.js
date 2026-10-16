@@ -40,7 +40,7 @@ export const SHOWCASE_BASKETS = {
     title: 'Content Delivery and Streaming',
     headline: 'Better streaming services, end to end',
     description:
-      'What you can build for content delivery and streaming: QoE and audience analytics, CDN and edge delivery, network-assisted streaming, with the spec features behind each and where to learn, implement, test and deploy it.',
+      'Application showcases for content delivery and streaming: QoE and audience analytics, CDN and edge delivery, network-assisted streaming, with the spec features behind each and where to learn, implement, test and deploy it.',
     lead:
       'Media services may need more from networks than a bit pipe: insight into what viewers experience, help when the network can give it, delivery at scale, and a way to bring content in and keep it protected.\n\nEach showcase below starts from that problem, follows with the technology that supports a solution and what you can build with Reference Tools.',
     topics: [

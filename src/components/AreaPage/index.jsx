@@ -10,7 +10,7 @@ import { CATEGORIES as PROJECT_CATEGORIES } from '@site/src/pages/reference-tool
 import boxStyles from '@site/src/pages/tech/index.module.css';
 
 // One area (taxonomy basket) page. An area with content in showcases.js gets the full page; any other area
-// gets the same layout and its projects, with its "What you can build" part marked in preparation.
+// gets the same layout and its projects, with its "Application showcases" part marked in preparation.
 import styles from './styles.module.css';
 
 
@@ -101,7 +101,7 @@ function Showcase({ topic }) {
   );
 }
 
-// The "What you can build" heading's icon: the Tutorials rocket (src/data/projectIcons.js).
+// The "Application showcases" heading's icon: the Tutorials rocket (src/data/projectIcons.js).
 const ROCKET = [
   'M4.5 16.5c-1.5 1.26 -2 5 -2 5s3.74 -.5 5 -2c.71 -.84 .7 -2.13 -.09 -2.91a2.18 2.18 0 0 0 -2.91 -.09z',
   'M12 15l-3 -3a22 22 0 0 1 2 -3.95a12.88 12.88 0 0 1 10 -5.93c0 2.72 -.78 7.5 -6 11a22.35 22.35 0 0 1 -4 2z',
@@ -214,7 +214,7 @@ const AREA_HERO = {
   'connected-media-production': 'prod',
 };
 
-const PLACEHOLDER_LEAD = 'What you can build in this area is in preparation. The projects below show where the work stands today.';
+const PLACEHOLDER_LEAD = 'The application showcases for this area are in preparation. The projects below show where the work stands today.';
 
 export default function AreaPage({ basketKey }) {
   const basket = BASKETS.find((b) => b.key === basketKey);
@@ -307,7 +307,7 @@ export default function AreaPage({ basketKey }) {
                   {ROCKET.map((d) => <path key={d} d={d} />)}
                 </svg>
               </span>
-              <Heading as="h2" id="what-you-can-build" className={styles.topicTitle}>What you can build</Heading>
+              <Heading as="h2" id="application-showcases" className={styles.topicTitle}>Application showcases</Heading>
             </div>
             <nav className={styles.tiles} aria-label="Topics">
               {topics.map((t) => (
@@ -381,7 +381,7 @@ export default function AreaPage({ basketKey }) {
                     {ROCKET.map((d) => <path key={d} d={d} />)}
                   </svg>
                 </span>
-                <Heading as="h2" id="what-you-can-build" className={styles.topicTitle}>What you can build</Heading>
+                <Heading as="h2" id="application-showcases" className={styles.topicTitle}>Application showcases</Heading>
               </div>
               <div className={styles.placeholderGrid}>
                 {[1, 2, 3].map((n) => (

@@ -515,7 +515,7 @@ function SolutionsMenu({ item }) {
         </Link>
       )}
     >
-      <SectionHeadCard title="Solutions" subtitle="What you can build, area by area, and the technology behind it."
+      <SectionHeadCard title="Solutions" subtitle="Application showcases, area by area, and the technology behind them."
         icon={SOLUTIONS_ICON} action={{ label: 'Where we stand', href: '/tech' }} />
       <MegaGroups groups={TECHNOLOGY_GROUPS} />
     </MegaMenu>
