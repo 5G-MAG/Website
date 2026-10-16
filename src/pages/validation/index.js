@@ -2,11 +2,9 @@ import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
-import { ALL_PROJECTS, BASKET_ACCENT, isValidationTool } from '@site/src/data/baskets';
+import { ALL_PROJECTS, BASKET_ACCENT, displayNameOf, isValidationTool } from '@site/src/data/baskets';
 import styles from '../tech/index.module.css';
 import { CategoryCard, topicFor } from '../reference-tools';
-import { RowList } from '@site/src/components/ListRow';
-import { ToolRow } from '@site/src/components/ToolsByKind';
 
 const VALIDATION_ICON_PATH = (
   <>
@@ -53,18 +51,13 @@ export default function ValidationTools() {
                 title="Validation Tools"
                 accent={BASKET_ACCENT.testbeds}
                 desc={<>Each tool is part of a project, and its repository is public or on request; see <Link to="/early-access">Early Access</Link>.</>}
-                topics={WITH_PAGE.map(topicFor)}
+                topics={[
+                  ...WITH_PAGE.map(topicFor),
+                  // A validator without a page yet is listed in the same box, as a row that does not link.
+                  ...WITHOUT_PAGE.map((p) => ({ title: displayNameOf(p), desc: 'Coming soon.', iconKey: p.icon })),
+                ]}
               />
             </div>
-            {WITHOUT_PAGE.length > 0 && (
-              <div style={{ marginTop: '1rem' }}>
-                <RowList>
-                  {WITHOUT_PAGE.map((p) => (
-                    <ToolRow key={p.name} project={p} />
-                  ))}
-                </RowList>
-              </div>
-            )}
           </div>
         </section>
         <JoinTheEffort alt variant="tool" />

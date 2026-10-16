@@ -1033,3 +1033,9 @@ a.chartBubble:hover {
   line-height: 1.7;
 }
 
+
+/* A link in a category header sits on a coloured band: white, underlined, readable on every band colour. */
+.categoryDesc a {
+  color: #fff;
+  text-decoration: underline;
+}

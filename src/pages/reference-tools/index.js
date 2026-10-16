@@ -249,7 +249,7 @@ export function CategoryCard({ title, desc, accent, topics }) {
       <div className={styles.categoryRows}>
         <RowList>
           {topics.map((t) => (
-            <ListRow key={t.href} href={t.href} title={t.title} desc={t.desc} iconKey={t.iconKey} />
+            <ListRow key={t.href || t.title} href={t.href} title={t.title} desc={t.desc} iconKey={t.iconKey} plain />
           ))}
         </RowList>
       </div>
