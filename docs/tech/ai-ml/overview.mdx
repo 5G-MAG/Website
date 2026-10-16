@@ -23,72 +23,33 @@ description: Placeholder for the AI/ML Evaluation Framework technical analysis d
 
 ## How It Works
 
-NWDAF works from network-side data and produces analytics for network and application
-functions to consume. SA4's studies look at applying AI/ML directly to media processing
-and delivery. The sections below cover NWDAF's own structure and SA4's study work.
+NWDAF works from network-side data and produces analytics for network and application functions to consume. SA4's studies look at applying AI/ML directly to media processing and delivery. The sections below cover NWDAF's own structure and SA4's study work (TS 23.288 V20.2.0 clause 4.2.0; TS 23.288 V20.2.0 clause 5.1; TR 26.927 V19.0.0 clause 4.2; TR 26.847 V19.0.0 clause 1).
 
-**Key specifications:** 3GPP
-[TS 23.288](https://www.3gpp.org/dynareport/23288.htm) (NWDAF architecture,
-SA2),
-[TR 26.847](https://www.3gpp.org/dynareport/26847.htm) (Evaluation of AI
-and ML in 5G media services).
+**Key specifications:** 3GPP [TS 23.288](https://www.3gpp.org/dynareport/23288.htm) (NWDAF architecture, SA2), [TR 26.847](https://www.3gpp.org/dynareport/26847.htm) (Evaluation of AI and ML in 5G media services) (TR 26.847 V19.0.0 front page (title)).
 
 ### NWDAF: network-side analytics (SA2)
 
-The Network Data Analytics Function (NWDAF) is the 5G core function through which
-network functions and other data sources expose measurements, and through which
-consumers request analytics or predictions derived from that data. TS 23.288 splits
-the NWDAF's internal role in two:
+The Network Data Analytics Function (NWDAF) is the 5G core function through which network functions and other data sources expose measurements, and through which consumers request analytics or predictions derived from that data (TS 23.288 V20.2.0 clause 4.1; TS 23.288 V20.2.0 clause 4.2.0; TS 23.288 V20.2.0 clause 5.1). TS 23.288 splits the NWDAF's internal role in two:
 
-- **AnLF (Analytics Logical Function)**: produces the analytics or
-  prediction output that a consumer (for example the PCF, for QoS policy, or an
-  Application Function such as the 5GMS AF) subscribes to or requests.
-- **MTLF (Model Training Logical Function)**: trains the ML models that
-  an AnLF uses for inference, and can expose those models to other NWDAF instances.
+- **AnLF (Analytics Logical Function)**: produces the analytics or prediction output that a consumer (for example the PCF, for QoS policy, or an Application Function such as the 5GMS AF) subscribes to or requests (TS 23.288 V20.2.0 clause 5.1; TS 23.288 V20.2.0 clause 6.4.1; TS 23.288 V20.2.0 clause 6.4.4; TS 23.288 V20.2.0 clause 6.3.1).
+- **MTLF (Model Training Logical Function)**: trains the ML models that an AnLF uses for inference, and can expose those models to other NWDAF instances (TS 23.288 V20.2.0 clause 5.1; TS 23.288 V20.2.0 clause 4.2.0; TS 23.288 V20.2.0 clause 6.2A.1; TS 23.288 V20.2.0 clause 7.5).
 
-Splitting training from inference lets a model be trained once (potentially on a
-different NWDAF instance, closer to where the training data volume is largest) and
-reused for inference wherever it is needed. For a media session, a typical
-consumer-facing output is a load or QoS prediction that a function such as the 5GMS
-AF can act on ahead of time, for example by adjusting a bitrate ceiling before
-congestion actually hits. See
-[Standards: 5G Media Streaming (5GMS)](/standards/5gms) for where the 5GMS AF
-sits in that path.
+Splitting training from inference lets a model be trained once (potentially on a different NWDAF instance, closer to where the training data volume is largest) and reused for inference wherever it is needed. For a media session, a typical consumer-facing output is a load or QoS prediction that a function such as the 5GMS AF can act on ahead of time, for example by adjusting a bitrate ceiling before congestion actually hits. See [Standards: 5G Media Streaming (5GMS)](/standards/5gms) for where the 5GMS AF sits in that path (TS 23.288 V20.2.0 clause 4.2.0; TS 23.288 V20.2.0 clause 6.2A.1; TS 23.288 V20.2.0 clause 6.3.1; TS 23.288 V20.2.0 clause 6.9.1).
 
 ### Data collection for NWDAF
 
-TS 26.531, clause 4.1: “Clause 6.2.8 of TS 23.288 [4] envisages a set of high-level procedures by which data is collected by a Network Data Analytics Function (NWDAF) from UE Application(s) via an intermediary Application Function that provides an Event Exposure Service to event consumers.” The project for it is [UE Data Collection, Reporting and Event Exposure](/tech/data-collection).
+TS 26.531, clause 4.1: “Clause 6.2.8 of TS 23.288 [4] envisages a set of high-level procedures by which data is collected by a Network Data Analytics Function (NWDAF) from UE Application(s) via an intermediary Application Function that provides an Event Exposure Service to event consumers.” The project for it is [UE Data Collection, Reporting and Event Exposure](/tech/data-collection) (TS 26.531 V19.0.0 clause 4.1; TS 23.288 V20.2.0 clause 6.2.8).
 
 ### The SA4 AI/ML media studies: TR 26.927 and TR 26.847
 
-SA4's study of applying AI/ML techniques directly to media processing and
-delivery, as distinct from the network-analytics use of AI/ML in NWDAF above, is
-captured in two companion technical reports, both published at version 19.0.0 in June
-2025 (Release 19):
+SA4's study of applying AI/ML techniques directly to media processing and delivery, as distinct from the network-analytics use of AI/ML in NWDAF above, is captured in two companion technical reports, both published at version 19.0.0 in June 2025 (Release 19): (TR 26.927 V19.0.0 clause 4.2; TR 26.847 V19.0.0 clause 1; TS 23.288 V20.2.0 clause 4.2.0; TR 26.927 V19.0.0 change history; TR 26.847 V19.0.0 change history and clause 1; TR 26.927 V19.0.0 front page; TR 26.847 V19.0.0 front page)
 
-- [TR 26.927](https://www.3gpp.org/dynareport/26927.htm) (Study on
-  Artificial Intelligence and Machine Learning in 5G media services) covers the
-  functional side: media-based AI/ML use cases (object recognition in image and
-  video, video quality enhancement in streaming, crowd-sourced media capture, natural
-  language processing on speech) and the media service architecture for AI/ML,
-  including split-inference configurations and model delivery.
-- [TR 26.847](https://www.3gpp.org/dynareport/26847.htm) (Evaluation of
-  Artificial Intelligence and Machine Learning in 5G media services) is the evaluation
-  companion: testbed architectures and anchors for split inferencing and model-data
-  transmission, evaluation metrics, and scenarios such as compressed AI/ML model
-  transfer for automatic speech recognition and video quality enhancement in
-  streaming. The [AI/ML Evaluation Framework](/testbeds/ai-ml/)
-  reference tooling is aligned with this report.
+- [TR 26.927](https://www.3gpp.org/dynareport/26927.htm) (Study on Artificial Intelligence and Machine Learning in 5G media services) covers the functional side: media-based AI/ML use cases (object recognition in image and video, video quality enhancement in streaming, crowd-sourced media capture, natural language processing on speech) and the media service architecture for AI/ML, including split-inference configurations and model delivery (TR 26.927 V19.0.0 front page (title); TR 26.847 V19.0.0 clause 1; TR 26.927 V19.0.0 clause 4.2.2; TR 26.927 V19.0.0 clauses 4.2.2, 4.2.3, 4.2.4, 4.2.5; TR 26.927 V19.0.0 clause 4.2.5; clause 5; TR 26.927 V19.0.0 clause 5.1; clause 5.2.2; clause 5.2.3).
+- [TR 26.847](https://www.3gpp.org/dynareport/26847.htm) (Evaluation of Artificial Intelligence and Machine Learning in 5G media services) is the evaluation companion: testbed architectures and anchors for split inferencing and model-data transmission, evaluation metrics, and scenarios such as compressed AI/ML model transfer for automatic speech recognition, split inferencing for object detection and labelling, bit-incremental model transmission and deployment, and real-time translation over IMS (TR 26.847 V19.0.0 clauses 5.2 to 5.5). The [AI/ML Evaluation Framework](/testbeds/ai-ml/) reference tooling is aligned with this report (TR 26.847 V19.0.0 front page (title); TR 26.847 V19.0.0 clauses 4.1, 4.2, 4.3; TR 26.847 V19.0.0 clause 4.4; clause 5.2).
 
 ### Related AI/ML studies that feed 6G
 
-[TR 22.874](https://www.3gpp.org/dynareport/22874.htm) (SA1, Study on
-traffic characteristics and performance requirements for AI/ML model transfer in 5GS)
-is a companion study, on the network-transport side of AI/ML rather than the
-media-processing side: it looks at how model-transfer traffic itself behaves on the
-5G system. Both this study and TR 26.847 feed 5G-MAG's early input to 6G, where
-AI-native traffic management is one of the new IMT-2030 usage scenarios; see
-[Towards 6G Media](/tech/6g) for that wider context.
+[TR 22.874](https://www.3gpp.org/dynareport/22874.htm) (SA1, Study on traffic characteristics and performance requirements for AI/ML model transfer in 5GS) is a companion study, on the network-transport side of AI/ML rather than the media-processing side: it looks at how model-transfer traffic itself behaves on the 5G system. Both this study and TR 26.847 feed 5G-MAG's early input to 6G, where AI-native traffic management is one of the new IMT-2030 usage scenarios; see [Towards 6G Media](/tech/6g) for that wider context (TR 22.874 V18.2.0 front page (title); clause 1; TR 22.874 V18.2.0 clause 1; clause 4).
 
 **Related:**
 [Towards 6G Media](/tech/6g)

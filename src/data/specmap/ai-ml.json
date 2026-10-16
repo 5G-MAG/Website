@@ -1,0 +1,3796 @@
+{
+ "project": "AI/ML Evaluation Framework",
+ "slug": "ai-ml",
+ "standardsUrl": "/standards/ai-ml",
+ "generated": "2026-10-16",
+ "tool": "specmap.py 7",
+ "releases": {
+  "analysed": [
+   "17",
+   "18",
+   "19",
+   "20"
+  ],
+  "baseline": "20",
+  "tracking": [],
+  "open": []
+ },
+ "inputs": {
+  "workPlan": "https://www.3gpp.org/ftp/Information/WORK_PLAN/Work_plan_3gpp_2026_09_28.xlsx",
+  "workPlanFetched": 1792137428804,
+  "issuesAnalysed": {
+   "TS 23.288": {
+    "17": "V17.12.0",
+    "18": "V18.13.0",
+    "19": "V19.8.0",
+    "20": "V20.2.0"
+   },
+   "TS 23.501": {
+    "17": "V17.15.0",
+    "18": "V18.12.0",
+    "19": "V19.9.0",
+    "20": "V20.3.0"
+   },
+   "TS 26.531": {
+    "17": "V17.3.0",
+    "18": "V18.2.0",
+    "19": "V19.0.0",
+    "20": "V19.0.0"
+   }
+  },
+  "websiteCommit": "5937746",
+  "rules": "projects/ai-ml/explore.yaml"
+ },
+ "topicList": [
+  "General"
+ ],
+ "otherBodies": {
+  "from": [
+   "TS 23.288",
+   "TS 23.501",
+   "TS 26.531"
+  ],
+  "clause": "2",
+  "references": [
+   {
+    "key": "IETF RFC 2131",
+    "body": "IETF",
+    "id": "IETF RFC 2131",
+    "title": "Dynamic Host Configuration Protocol",
+    "by": {
+     "17": [
+      "TS 23.501"
+     ],
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 2131",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 2865",
+    "body": "IETF",
+    "id": "IETF RFC 2865",
+    "title": "Remote Authentication Dial In User Service (RADIUS)",
+    "by": {
+     "17": [
+      "TS 23.501"
+     ],
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 2865",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 3162",
+    "body": "IETF",
+    "id": "IETF RFC 3162",
+    "title": "RADIUS and IPv6",
+    "by": {
+     "17": [
+      "TS 23.501"
+     ],
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 3162",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 3550",
+    "body": "IETF",
+    "id": "IETF RFC 3550",
+    "title": "RTP: A Transport Protocol for Real-Time Applications",
+    "by": {
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 3550",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 3711",
+    "body": "IETF",
+    "id": "IETF RFC 3711",
+    "title": "The Secure Real-time Transport Protocol (SRTP)",
+    "by": {
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 3711",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 4191",
+    "body": "IETF",
+    "id": "IETF RFC 4191",
+    "title": "Default Router Preferences and More-Specific Routes",
+    "by": {
+     "17": [
+      "TS 23.501"
+     ],
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 4191",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 4555",
+    "body": "IETF",
+    "id": "IETF RFC 4555",
+    "title": "IKEv2 Mobility and Multihoming Protocol (MOBIKE)",
+    "by": {
+     "17": [
+      "TS 23.501"
+     ],
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 4555",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 4656",
+    "body": "IETF",
+    "id": "IETF RFC 4656",
+    "title": "A One-way Active Measurement Protocol (OWAMP)",
+    "by": {
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 4656",
+    "releases": [
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 4861",
+    "body": "IETF",
+    "id": "IETF RFC 4861",
+    "title": "Neighbor Discovery for IP version 6 (IPv6)",
+    "by": {
+     "17": [
+      "TS 23.501"
+     ],
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 4861",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 4862",
+    "body": "IETF",
+    "id": "IETF RFC 4862",
+    "title": "IPv6 Stateless Address Autoconfiguration",
+    "by": {
+     "17": [
+      "TS 23.501"
+     ],
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 4862",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 4960",
+    "body": "IETF",
+    "id": "IETF RFC 4960",
+    "title": "Stream Control Transmission Protocol",
+    "by": {
+     "17": [
+      "TS 23.501"
+     ],
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 4960",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 5357",
+    "body": "IETF",
+    "id": "IETF RFC 5357",
+    "title": "A Two-Way Active Measurement Protocol (TWAMP)",
+    "by": {
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 5357",
+    "releases": [
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 6040",
+    "body": "IETF",
+    "id": "IETF RFC 6040",
+    "title": "Tunnelling of Explicit Congestion Notification",
+    "by": {
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 6040",
+    "releases": [
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 6184",
+    "body": "IETF",
+    "id": "IETF RFC 6184",
+    "title": "RTP Payload Format for H.264 Video",
+    "by": {
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 6184",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 6241",
+    "body": "IETF",
+    "id": "IETF RFC 6241",
+    "title": "Network Configuration Protocol (NETCONF)",
+    "by": {
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 6241",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 6603",
+    "body": "IETF",
+    "id": "IETF RFC 6603",
+    "title": "Prefix Exclude Option for DHCPv6-based Prefix Delegation",
+    "by": {
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 6603",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 7224",
+    "body": "IETF",
+    "id": "IETF RFC 7224",
+    "title": "IANA Interface Type YANG Module",
+    "by": {
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 7224",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 7296",
+    "body": "IETF",
+    "id": "IETF RFC 7296",
+    "title": "Internet Key Exchange Protocol Version 2 (IKEv2)",
+    "by": {
+     "17": [
+      "TS 23.501"
+     ],
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 7296",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 7542",
+    "body": "IETF",
+    "id": "IETF RFC 7542",
+    "title": "The Network Access Identifier",
+    "by": {
+     "17": [
+      "TS 23.501"
+     ],
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 7542",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 7798",
+    "body": "IETF",
+    "id": "IETF RFC 7798",
+    "title": "RTP Payload Format for High Efficiency Video Coding (HEVC)",
+    "by": {
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 7798",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 8040",
+    "body": "IETF",
+    "id": "IETF RFC 8040",
+    "title": "RESTCONF Protocol",
+    "by": {
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 8040",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 8285",
+    "body": "IETF",
+    "id": "IETF RFC 8285",
+    "title": "A General Mechanism for RTP Header Extensions",
+    "by": {
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 8285",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 8343",
+    "body": "IETF",
+    "id": "IETF RFC 8343",
+    "title": "A YANG Data Model for Interface Management",
+    "by": {
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 8343",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 8344",
+    "body": "IETF",
+    "id": "IETF RFC 8344",
+    "title": "A YANG Data Model for IP Management",
+    "by": {
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 8344",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 8415",
+    "body": "IETF",
+    "id": "IETF RFC 8415",
+    "title": "Dynamic Host Configuration Protocol for IPv6 (DHCPv6)",
+    "by": {
+     "17": [
+      "TS 23.501"
+     ],
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 8415",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 8655",
+    "body": "IETF",
+    "id": "IETF RFC 8655",
+    "title": "Deterministic Networking Architecture",
+    "by": {
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 8655",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 8684",
+    "body": "IETF",
+    "id": "IETF RFC 8684",
+    "title": "TCP Extensions for Multipath Operation with Multiple Addresses",
+    "by": {
+     "17": [
+      "TS 23.501"
+     ],
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 8684",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 8762",
+    "body": "IETF",
+    "id": "IETF RFC 8762",
+    "title": "Simple Two-Way Active Measurement Protocol",
+    "by": {
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 8762",
+    "releases": [
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 8803",
+    "body": "IETF",
+    "id": "IETF RFC 8803",
+    "title": "0-RTT TCP Convert Protocol",
+    "by": {
+     "17": [
+      "TS 23.501"
+     ],
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 8803",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 8939",
+    "body": "IETF",
+    "id": "IETF RFC 8939",
+    "title": "Deterministic Networking (DetNet) Data Plane: IP",
+    "by": {
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 8939",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 9000",
+    "body": "IETF",
+    "id": "IETF RFC 9000",
+    "title": "QUIC: A UDP-Based Multiplexed and Secure Transport",
+    "by": {
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 9000",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 9001",
+    "body": "IETF",
+    "id": "IETF RFC 9001",
+    "title": "Using TLS to Secure QUIC",
+    "by": {
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 9001",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 9002",
+    "body": "IETF",
+    "id": "IETF RFC 9002",
+    "title": "QUIC Loss Detection and Congestion Control",
+    "by": {
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 9002",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 9114",
+    "body": "IETF",
+    "id": "IETF RFC 9114",
+    "title": "Hypertext Transfer Protocol Version 3 (HTTP/3)",
+    "by": {
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 9114",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 9143",
+    "body": "IETF",
+    "id": "IETF RFC 9143",
+    "title": "Negotiating Media Multiplexing Using the Session Description Protocol (SDP)",
+    "by": {
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 9143",
+    "releases": [
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 9220",
+    "body": "IETF",
+    "id": "IETF RFC 9220",
+    "title": "Bootstrapping WebSockets with HTTP/3",
+    "by": {
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 9220",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 9221",
+    "body": "IETF",
+    "id": "IETF RFC 9221",
+    "title": "An Unreliable Datagram Extension to QUIC",
+    "by": {
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 9221",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 9297",
+    "body": "IETF",
+    "id": "IETF RFC 9297",
+    "title": "HTTP Datagrams and the Capsule Protocol",
+    "by": {
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 9297",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 9298",
+    "body": "IETF",
+    "id": "IETF RFC 9298",
+    "title": "Proxying UDP in HTTP",
+    "by": {
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 9298",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 9330",
+    "body": "IETF",
+    "id": "IETF RFC 9330",
+    "title": "Low Latency, Low Loss, Scalable Throughput (L4S) Internet Service: Architecture",
+    "by": {
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 9330",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 9331",
+    "body": "IETF",
+    "id": "IETF RFC 9331",
+    "title": "Explicit Congestion Notification (ECN) Protocol for Very Low Queuing Delay (L4S)",
+    "by": {
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 9331",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 9332",
+    "body": "IETF",
+    "id": "IETF RFC 9332",
+    "title": "Dual-Queue Coupled Active Queue Management (AQM) for Low Latency, Low Loss and Scalable Throughput (L4S)",
+    "by": {
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 9332",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 9484",
+    "body": "IETF",
+    "id": "IETF RFC 9484",
+    "title": "Proxying IP in HTTP",
+    "by": {
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 9484",
+    "releases": [
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 9599",
+    "body": "IETF",
+    "id": "IETF RFC 9599",
+    "title": "Guidelines for Adding Congestion Notification to Protocols that Encapsulate IP",
+    "by": {
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 9599",
+    "releases": [
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 9633",
+    "body": "IETF",
+    "id": "IETF RFC 9633",
+    "title": "Deterministic Networking (DetNet) YANG Model",
+    "by": {
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 9633",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 9849",
+    "body": "IETF",
+    "id": "IETF RFC 9849",
+    "title": "TLS Encrypted Client Hello",
+    "by": {
+     "20": [
+      "TS 23.288"
+     ]
+    },
+    "label": "IETF RFC 9849",
+    "releases": [
+     "20"
+    ],
+    "listedIn": [
+     "20"
+    ]
+   },
+   {
+    "key": "IETF RFC 9868",
+    "body": "IETF",
+    "id": "IETF RFC 9868",
+    "title": "Transport Options for UDP",
+    "by": {
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF RFC 9868",
+    "releases": [
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF draft-ietf-masque-connect-ethernet",
+    "body": "IETF",
+    "id": "IETF Internet-Draft draft-ietf-masque-connect-ethernet",
+    "title": "Proxying Ethernet in HTTP",
+    "by": {
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF Internet-Draft draft-ietf-masque-connect-ethernet",
+    "releases": [
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF draft-ietf-masque-quic-proxy",
+    "body": "IETF",
+    "id": "IETF Internet-Draft draft-ietf-masque-quic-proxy",
+    "title": "QUIC-Aware Proxying Using HTTP",
+    "by": {
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF Internet-Draft draft-ietf-masque-quic-proxy",
+    "releases": [
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF draft-ietf-moq-transport",
+    "body": "IETF",
+    "id": "IETF Internet-Draft draft-ietf-moq-transport",
+    "title": "Media over QUIC Transport",
+    "by": {
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF Internet-Draft draft-ietf-moq-transport",
+    "releases": [
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IETF draft-ietf-scone-protocol",
+    "body": "IETF",
+    "id": "IETF Internet-Draft draft-ietf-scone-protocol",
+    "title": "Standard Communication with Network Elements (SCONE) Protocol",
+    "by": {
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IETF Internet-Draft draft-ietf-scone-protocol",
+    "releases": [
+     "20"
+    ],
+    "listedIn": [
+     "20"
+    ]
+   },
+   {
+    "key": "GSMA imeiallocationandapprovalprocess",
+    "body": "GSMA",
+    "id": "IMEI Allocation and Approval Process",
+    "title": "IMEI Allocation and Approval Process",
+    "by": {
+     "18": [
+      "TS 23.288"
+     ],
+     "19": [
+      "TS 23.288"
+     ],
+     "20": [
+      "TS 23.288"
+     ]
+    },
+    "label": "IMEI Allocation and Approval Process",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IEEE ieee",
+    "body": "IEEE",
+    "id": "IEEE",
+    "title": "Guidelines for Use of Extended Unique Identifier (EUI), Organizationally Unique Identifier (OUI) and Company ID (CID)",
+    "by": {
+     "17": [
+      "TS 23.501"
+     ],
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "Guidelines for Use of Extended Unique Identifier (EUI), Organizationally Unique Identifier (OUI) and Company ID (CID)",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IEEE ieeestd1588",
+    "body": "IEEE",
+    "id": "IEEE Std 1588",
+    "title": "IEEE Standard for a Precision Clock Synchronization Protocol for Networked Measurement and Control Systems",
+    "by": {
+     "17": [
+      "TS 23.501"
+     ],
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IEEE Standard for a Precision Clock Synchronization Protocol for Networked Measurement and Control Systems",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IEEE ieeestd15882008",
+    "body": "IEEE",
+    "id": "IEEE Std 1588-2008",
+    "title": "IEEE Standard for a Precision Clock Synchronization Protocol for Networked Measurement and Control Systems",
+    "by": {
+     "17": [
+      "TS 23.501"
+     ],
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IEEE Standard for a Precision Clock Synchronization Protocol for Networked Measurement and Control Systems",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IEEE ieeestd802112012",
+    "body": "IEEE",
+    "id": "IEEE Std 802.11-2012",
+    "title": "IEEE Standard for Information technology - Telecommunications and information exchange between systems - Local and metropolitan area networks - Specific requirements - Part 11: Wireless LAN Medium Acc",
+    "by": {
+     "17": [
+      "TS 23.501"
+     ],
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IEEE Standard for Information technology - Telecommunications and information exchange between systems - Local and metropolitan area networks - Specific requirements - Part 11: Wireless LAN Medium Acc",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IEEE ieeestd8021ab2016",
+    "body": "IEEE",
+    "id": "IEEE Std 802.1AB-2016",
+    "title": "IEEE Standard for Local and metropolitan area networks -- Station and Media Access Control Connectivity Discovery",
+    "by": {
+     "17": [
+      "TS 23.501"
+     ],
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IEEE Standard for Local and metropolitan area networks -- Station and Media Access Control Connectivity Discovery",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IEEE ieeestd8021as2020",
+    "body": "IEEE",
+    "id": "IEEE Std 802.1AS-2020",
+    "title": "IEEE Standard for Local and metropolitan area networks--Timing and Synchronization for Time-Sensitive Applications",
+    "by": {
+     "17": [
+      "TS 23.501"
+     ],
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IEEE Standard for Local and metropolitan area networks--Timing and Synchronization for Time-Sensitive Applications",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IEEE ieeestd8021cb2017",
+    "body": "IEEE",
+    "id": "IEEE Std 802.1CB-2017",
+    "title": "IEEE Standard for Local and metropolitan area networks-Frame Replication and Elimination for Reliability",
+    "by": {
+     "17": [
+      "TS 23.501"
+     ],
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IEEE Standard for Local and metropolitan area networks-Frame Replication and Elimination for Reliability",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IEEE ieeestd8021cbdb2021",
+    "body": "IEEE",
+    "id": "IEEE Std 802.1CBdb-2021",
+    "title": "Amendment 2: Extend Stream Identification Functions",
+    "by": {
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "Amendment 2: Extend Stream Identification Functions",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IEEE ieeestd8021q2018",
+    "body": "IEEE",
+    "id": "IEEE Std 802.1Q-2018",
+    "title": "IEEE Standard for Local and metropolitan area networks--Bridges and Bridged Networks",
+    "by": {
+     "17": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IEEE Standard for Local and metropolitan area networks--Bridges and Bridged Networks",
+    "releases": [
+     "17"
+    ],
+    "listedIn": [
+     "17"
+    ]
+   },
+   {
+    "key": "IEEE ieeestd8021q2022",
+    "body": "IEEE",
+    "id": "IEEE Std 802.1Q-2022",
+    "title": "IEEE Standard for Local and metropolitan area networks--Bridges and Bridged Networks",
+    "by": {
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IEEE Standard for Local and metropolitan area networks--Bridges and Bridged Networks",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IEEE ieeestd8021qcc2018",
+    "body": "IEEE",
+    "id": "IEEE Std 802.1Qcc-2018",
+    "title": "IEEE Standard for Local and metropolitan area networks - Bridges and Bridged Networks - Amendment: Stream Reservation Protocol (SRP) Enhancements and Performance Improvements",
+    "by": {
+     "17": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IEEE Standard for Local and metropolitan area networks - Bridges and Bridged Networks - Amendment: Stream Reservation Protocol (SRP) Enhancements and Performance Improvements",
+    "releases": [
+     "17"
+    ],
+    "listedIn": [
+     "17"
+    ]
+   },
+   {
+    "key": "IEEE ieeestd8021qdj2024",
+    "body": "IEEE",
+    "id": "IEEE Std 802.1Qdj-2024",
+    "title": "IEEE Draft Standard for Local and metropolitan area networks - Bridges and Bridged Networks - Amendment XX: Configuration Enhancements for Time-Sensitive Networking",
+    "by": {
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "IEEE Draft Standard for Local and metropolitan area networks - Bridges and Bridged Networks - Amendment XX: Configuration Enhancements for Time-Sensitive Networking",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "IEEE ieeestd8023",
+    "body": "IEEE",
+    "id": "IEEE Std 802.3",
+    "title": "Ethernet",
+    "by": {
+     "17": [
+      "TS 23.501"
+     ],
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "Ethernet",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other dataovercableserviceinterfacespecificationsdocsis31macandupp",
+    "body": "Other",
+    "id": "Data-Over-Cable Service Interface Specifications DOCSIS 3.1, MAC and Upper Layer Protocols Interface Specification",
+    "title": "Data-Over-Cable Service Interface Specifications DOCSIS 3.1, MAC and Upper Layer Protocols Interface Specification",
+    "by": {
+     "17": [
+      "TS 23.501"
+     ],
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "Data-Over-Cable Service Interface Specifications DOCSIS 3.1, MAC and Upper Layer Protocols Interface Specification",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other hotspot20release2technicalspecification",
+    "body": "Other",
+    "id": "Hotspot 2.0 (Release 2) Technical Specification",
+    "title": "Hotspot 2.0 (Release 2) Technical Specification",
+    "by": {
+     "17": [
+      "TS 23.501"
+     ],
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "Hotspot 2.0 (Release 2) Technical Specification",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other internetprotocoldatacommunicationserviceippackettransferanda",
+    "body": "Other",
+    "id": "Internet protocol data communication service - IP packet transfer and availability performance parameters",
+    "title": "Internet protocol data communication service - IP packet transfer and availability performance parameters",
+    "by": {
+     "18": [
+      "TS 23.288"
+     ],
+     "19": [
+      "TS 23.288"
+     ],
+     "20": [
+      "TS 23.288"
+     ]
+    },
+    "label": "Internet protocol data communication service - IP packet transfer and availability performance parameters",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other multipathextensionforquic",
+    "body": "Other",
+    "id": "Multipath Extension for QUIC",
+    "title": "Multipath Extension for QUIC",
+    "by": {
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "Multipath Extension for QUIC",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other parametricbitstreambasedqualityassessmentofprogressivedownlo",
+    "body": "Other",
+    "id": "Parametric bitstream-based quality assessment of progressive download and adaptive audiovisual streaming services over reliable transport - Quality integration module",
+    "title": "Parametric bitstream-based quality assessment of progressive download and adaptive audiovisual streaming services over reliable transport - Quality integration module",
+    "by": {
+     "17": [
+      "TS 23.288"
+     ],
+     "18": [
+      "TS 23.288"
+     ],
+     "19": [
+      "TS 23.288"
+     ],
+     "20": [
+      "TS 23.288"
+     ]
+    },
+    "label": "Parametric bitstream-based quality assessment of progressive download and adaptive audiovisual streaming services over reliable transport - Quality integration module",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other smptestandardsmpteprofileforuseofieee1588precisiontimeprotoc",
+    "body": "Other",
+    "id": "SMPTE Standard - SMPTE Profile for Use of IEEE-1588 Precision Time Protocol in Professional Broadcast Applications",
+    "title": "SMPTE Standard - SMPTE Profile for Use of IEEE-1588 Precision Time Protocol in Professional Broadcast Applications",
+    "by": {
+     "17": [
+      "TS 23.501"
+     ],
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "SMPTE Standard - SMPTE Profile for Use of IEEE-1588 Precision Time Protocol in Professional Broadcast Applications",
+    "releases": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "key": "Other timesensitivenetworkingprofileforindustrialautomation",
+    "body": "Other",
+    "id": "Time-Sensitive Networking Profile for Industrial Automation",
+    "title": "Time-Sensitive Networking Profile for Industrial Automation",
+    "by": {
+     "18": [
+      "TS 23.501"
+     ],
+     "19": [
+      "TS 23.501"
+     ],
+     "20": [
+      "TS 23.501"
+     ]
+    },
+    "label": "Time-Sensitive Networking Profile for Industrial Automation",
+    "releases": [
+     "18",
+     "19",
+     "20"
+    ],
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   }
+  ],
+  "listedButNeverCited": [
+   {
+    "label": "IETF RFC 3168",
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 3948",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 5279",
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 5761",
+    "listedIn": [
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 5764",
+    "listedIn": [
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 7157",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 7983",
+    "listedIn": [
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 8872",
+    "listedIn": [
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "IETF RFC 9443",
+    "listedIn": [
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "Generic Network Slice Template",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "AGF Functional Requirements",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "Definitions and terminology for synchronization networks",
+    "listedIn": [
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "FMIF Functional Requirements",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "Functional Requirements for Broadband Residential Gateway Devices",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "Method for the characterization of telecommunication services supported by an ISDN and network capabilities of an ISDN",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "Migration to Ethernet-Based Broadband Aggregation",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "Multi-service Broadband Network Architecture and Nodal Requirements",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "Operational Bulletin No. 1156",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   },
+   {
+    "label": "The unified functional methodology for the characterization of services and network capabilities",
+    "listedIn": [
+     "17",
+     "18",
+     "19",
+     "20"
+    ]
+   }
+  ]
+ },
+ "documents": [
+  {
+   "id": "TS 23.288",
+   "title": "Architecture enhancements for 5G System (5GS) to support network data analytics services",
+   "url": "https://www.3gpp.org/dynareport/23288.htm",
+   "layer": "Network analytics (SA2)",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "firstRelease": "16",
+   "releases": {
+    "17": {
+     "release": "17",
+     "version": "V17.12.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 693,
+     "statementsAtCreation": null,
+     "statementsAdded": 693,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    },
+    "18": {
+     "release": "18",
+     "version": "V18.13.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 1079,
+     "statementsAtCreation": null,
+     "statementsAdded": 488,
+     "statementsRemoved": 102,
+     "statementsMovedIn": 1,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 989997,
+       "acronym": "AIMLsys",
+       "name": "Artificial Intelligence (AI)/Machine Learning (ML)",
+       "completion": 1,
+       "ref": "SP-231278"
+      },
+      {
+       "wid": 980019,
+       "acronym": "AIMLsys",
+       "name": "(Stage 2 for AIML) System Support for AI/ML-based Services",
+       "completion": 1,
+       "ref": "SP-231278"
+      },
+      {
+       "wid": 990118,
+       "acronym": "eNA_Ph3",
+       "name": "Enablers for Network Automation for 5G phase 3",
+       "completion": 1,
+       "ref": "SP-221345"
+      },
+      {
+       "wid": 980020,
+       "acronym": "eNA_Ph3",
+       "name": "(stage 2 of eNA_Ph3) Enablers for Network Automation for 5G phase 3",
+       "completion": 1,
+       "ref": "SP-230110"
+      }
+     ]
+    },
+    "19": {
+     "release": "19",
+     "version": "V19.8.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 1259,
+     "statementsAtCreation": null,
+     "statementsAdded": 207,
+     "statementsRemoved": 27,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 1050047,
+       "acronym": "AIML_CN",
+       "name": "Core Network Enhanced Support for Artificial Intelligence (AI)/Machine Learning (ML)",
+       "completion": 1,
+       "ref": "SP-240991"
+      },
+      {
+       "wid": 1040033,
+       "acronym": "AIML_CN",
+       "name": "Stage 2 of Core Network Enhanced Support for Artificial Intelligence (AI)/Machine Learning (ML)",
+       "completion": 1,
+       "ref": "SP-240991"
+      },
+      {
+       "wid": 1040037,
+       "acronym": "UAS_Ph3",
+       "name": "(Stage 2 of) UAS, UAV and UAM Phase 3",
+       "completion": 1,
+       "ref": "SP-241287"
+      }
+     ]
+    },
+    "20": {
+     "release": "20",
+     "version": "V20.2.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 1281,
+     "statementsAtCreation": null,
+     "statementsAdded": 38,
+     "statementsRemoved": 16,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 1120116,
+       "acronym": "AIML_CN_Ph2",
+       "name": "Core Network Enhanced Support for Artificial Intelligence (AI) / Machine Learning (ML) Phase 2",
+       "completion": 0.979999999999999,
+       "ref": "SP-251669"
+      },
+      {
+       "wid": 1100001,
+       "acronym": "AIML_CN_Ph2-ARC",
+       "name": "Core Network Enhanced Support for Artificial Intelligence (AI) / Machine Learning (ML) Phase 2; Stage 2",
+       "completion": 1,
+       "ref": "SP-251669"
+      },
+      {
+       "wid": 1130029,
+       "acronym": "TEI20_eEOS",
+       "name": "Enhanced EAS/ECS Option Selection",
+       "completion": 0.949999999999999,
+       "ref": "SP-260307"
+      },
+      {
+       "wid": 1110033,
+       "acronym": "TEI20_eEOS-ARC",
+       "name": "Enhanced EAS/ECS Option Selection",
+       "completion": 1,
+       "ref": "SP-260307"
+      },
+      {
+       "wid": 1130014,
+       "acronym": "TEI20_AF_ACQ_UEIP-ARC",
+       "name": "External UE IP address exposure",
+       "completion": 1,
+       "ref": "SP-260753"
+      },
+      {
+       "wid": 1120039,
+       "acronym": "TEI20_UDCE",
+       "name": "UPF Data Collection Enhancement",
+       "completion": 0.91,
+       "ref": "SP-260298"
+      },
+      {
+       "wid": 1110026,
+       "acronym": "TEI20_UDCE-ARC",
+       "name": "UPF Data Collection Enhancement",
+       "completion": 1,
+       "ref": "SP-260298"
+      },
+      {
+       "wid": 1110082,
+       "acronym": "TEI20_Metrics",
+       "name": "Model Evaluation Metrics Enhancement",
+       "completion": 1,
+       "ref": "SP-251207"
+      },
+      {
+       "wid": 1090002,
+       "acronym": "TEI20_Metrics",
+       "name": "Model Evaluation Metrics Enhancement",
+       "completion": 1,
+       "ref": "SP-251207"
+      }
+     ]
+    }
+   },
+   "baselineIssue": {
+    "release": "20",
+    "version": "V20.2.0"
+   },
+   "latestIssue": {
+    "release": "20",
+    "version": "V20.2.0"
+   },
+   "titleFrom": "cover",
+   "scope": {
+    "text": "The present document defines the Stage 2 architecture enhancements for 5G System (5GS) to support network data analytics services in 5G Core network.",
+    "firstSentence": "The present document defines the Stage 2 architecture enhancements for 5G System (5GS) to support network data analytics services in 5G Core network.",
+    "clause": "1",
+    "version": "V20.2.0"
+   },
+   "topics": [
+    {
+     "name": "General",
+     "statements": 1281,
+     "share": 1.0
+    }
+   ]
+  },
+  {
+   "id": "TS 23.501",
+   "title": "System architecture for the 5G System (5GS); Stage 2",
+   "url": "https://www.3gpp.org/dynareport/23501.htm",
+   "layer": "Network analytics (SA2)",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "firstRelease": "15",
+   "releases": {
+    "17": {
+     "release": "17",
+     "version": "V17.15.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 3320,
+     "statementsAtCreation": null,
+     "statementsAdded": 3320,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 910065,
+       "acronym": "eNPN",
+       "name": "Enhanced support of Non-Public Networks",
+       "completion": 1,
+       "ref": "SP-200980"
+      },
+      {
+       "wid": 900015,
+       "acronym": "eNPN",
+       "name": "Stage 2 for eNPN",
+       "completion": 1,
+       "ref": "SP-200980"
+      },
+      {
+       "wid": 900014,
+       "acronym": "ID_UAS",
+       "name": "(Stage 2 of) Support of Uncrewed Aerial Systems Connectivity, Identification, and Tracking",
+       "completion": 1,
+       "ref": "SP-200979"
+      },
+      {
+       "wid": 890034,
+       "acronym": "5GSAT_ARCH",
+       "name": "Integration of satellite components in the 5G architecture",
+       "completion": 1,
+       "ref": "SP-191335"
+      },
+      {
+       "wid": 860005,
+       "acronym": "5GSAT_ARCH",
+       "name": "(Stage 2 of) Integration of satellite components in the 5G architecture",
+       "completion": 1,
+       "ref": "SP-191335"
+      },
+      {
+       "wid": 900008,
+       "acronym": "IIoT",
+       "name": "Stage 2 for IIoT",
+       "completion": 1,
+       "ref": "SP-200973"
+      },
+      {
+       "wid": 911037,
+       "acronym": "RDSSI",
+       "name": "Reliable Data Service Serialization Indication",
+       "completion": 1,
+       "ref": "SP-190446"
+      },
+      {
+       "wid": 840017,
+       "acronym": "RDSSI",
+       "name": "Stage 2 of RDSSI",
+       "completion": 1,
+       "ref": "SP-190446"
+      },
+      {
+       "wid": 840019,
+       "acronym": "5G_AIS",
+       "name": "5G System Enhancement for Advanced Interactive Services",
+       "completion": 1,
+       "ref": "SP-190564"
+      },
+      {
+       "wid": 840016,
+       "acronym": "FLADN",
+       "name": "Stopped - Supporting Flexible Local Area Data Network",
+       "completion": 1,
+       "ref": "SP-190563"
+      },
+      {
+       "wid": 920062,
+       "acronym": "MINT",
+       "name": "Stage 2 of MINT",
+       "completion": 1,
+       "ref": "SP-210582"
+      },
+      {
+       "wid": 930036,
+       "acronym": "TEI17_SE_RPS",
+       "name": "System enhancement for Redundant PDU Session",
+       "completion": 1,
+       "ref": "SP-200448"
+      },
+      {
+       "wid": 880017,
+       "acronym": "TEI17_SE_RPS",
+       "name": "Stage 2 for TEI17_SE_RPS",
+       "completion": 1,
+       "ref": "SP-200448"
+      },
+      {
+       "wid": 870005,
+       "acronym": "TEI17_DCAMP",
+       "name": "Stage 2 for TEI17_DCAMP",
+       "completion": 1,
+       "ref": "SP-200446"
+      },
+      {
+       "wid": 920041,
+       "acronym": "TEI17_N3SLICE",
+       "name": "Support of different slices over different Non 3GPP access",
+       "completion": 1,
+       "ref": "SP-200456"
+      },
+      {
+       "wid": 870008,
+       "acronym": "TEI17_N3SLICE",
+       "name": "Stage 2 for TEI17_N3SLICE",
+       "completion": 1,
+       "ref": "SP-200456"
+      },
+      {
+       "wid": 930018,
+       "acronym": "ARCH_NR_REDCAP",
+       "name": "Architecture Enhancement for NR Reduced Capability Devices",
+       "completion": 1,
+       "ref": "SP-211100"
+      }
+     ]
+    },
+    "18": {
+     "release": "18",
+     "version": "V18.12.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 4142,
+     "statementsAtCreation": null,
+     "statementsAdded": 1123,
+     "statementsRemoved": 301,
+     "statementsMovedIn": 1,
+     "statementsMovedOut": 1,
+     "workItems": [
+      {
+       "wid": 970018,
+       "acronym": "5GSATB",
+       "name": "Stage 2 of 5GSATB",
+       "completion": 1,
+       "ref": "SP-230111"
+      },
+      {
+       "wid": 989998,
+       "acronym": "5GSAT_Ph2",
+       "name": "Satellite access Phase 2",
+       "completion": 1,
+       "ref": "SP-230109"
+      },
+      {
+       "wid": 980014,
+       "acronym": "5GSAT_Ph2",
+       "name": "(Stage 2 of 5GSAT_Ph2) 5GC/EPC enhancement for satellite access Phase 2",
+       "completion": 1,
+       "ref": "SP-230109"
+      },
+      {
+       "wid": 980011,
+       "acronym": "PIN",
+       "name": "(Stage 2 of) Personal IoT Networks",
+       "completion": 1,
+       "ref": "SP-221343"
+      },
+      {
+       "wid": 980113,
+       "acronym": "NR_REDCAP_Ph2",
+       "name": "NR RedCap UE with long eDRX for RRC_INACTIVE State",
+       "completion": 1,
+       "ref": "SP-220803"
+      },
+      {
+       "wid": 970013,
+       "acronym": "NR_REDCAP_Ph2",
+       "name": "(Stage 2 of) NR RedCap UE with long eDRX for RRC_INACTIVE State",
+       "completion": 1,
+       "ref": "SP-230171"
+      },
+      {
+       "wid": 980112,
+       "acronym": "5G_ProSe_Ph2",
+       "name": "Proximity-based Services in 5GS Phase 2",
+       "completion": 1,
+       "ref": "SP-220806"
+      },
+      {
+       "wid": 970016,
+       "acronym": "5G_ProSe_Ph2",
+       "name": "(stage 2 of) Proximity-based Services in 5GS Phase 2",
+       "completion": 1,
+       "ref": "SP-230097"
+      },
+      {
+       "wid": 990109,
+       "acronym": "GMEC",
+       "name": "Generic group management, exposure and communication enhancements",
+       "completion": 1,
+       "ref": "SP-221339"
+      },
+      {
+       "wid": 970069,
+       "acronym": "GMEC",
+       "name": "Stage 2 of GMEC",
+       "completion": 1,
+       "ref": "SP-230101"
+      },
+      {
+       "wid": 989997,
+       "acronym": "AIMLsys",
+       "name": "Artificial Intelligence (AI)/Machine Learning (ML)",
+       "completion": 1,
+       "ref": "SP-231278"
+      },
+      {
+       "wid": 980019,
+       "acronym": "AIMLsys",
+       "name": "(Stage 2 for AIML) System Support for AI/ML-based Services",
+       "completion": 1,
+       "ref": "SP-231278"
+      },
+      {
+       "wid": 989999,
+       "acronym": "5MBS_Ph2",
+       "name": "5G multicast-broadcast services Phase 2",
+       "completion": 1,
+       "ref": "SP-221131"
+      },
+      {
+       "wid": 980013,
+       "acronym": "5MBS_Ph2",
+       "name": "(Stage 2 of 5MBS_Ph2) Architectural enhancements for 5G multicast-broadcast services Phase 2",
+       "completion": 1,
+       "ref": "SP-230099"
+      },
+      {
+       "wid": 980127,
+       "acronym": "eNS_Ph3",
+       "name": "Network Slicing Phase 3",
+       "completion": 1,
+       "ref": "SP-221135"
+      },
+      {
+       "wid": 980017,
+       "acronym": "eNS_Ph3",
+       "name": "Stage 2 of Network Slicing Phase 3",
+       "completion": 1,
+       "ref": "SP-230104"
+      },
+      {
+       "wid": 990110,
+       "acronym": "XRM",
+       "name": "Architecture Enhancements for XR (Extended Reality) and media service",
+       "completion": 1,
+       "ref": "SP-221326"
+      },
+      {
+       "wid": 980016,
+       "acronym": "XRM",
+       "name": "(Stage 2 for XRM) Architecture Enhancements for XR (Extended Reality) and media service",
+       "completion": 1,
+       "ref": "SP-230092"
+      },
+      {
+       "wid": 1000043,
+       "acronym": "TEI18_MBS4V2X",
+       "name": "MBS support for V2X services",
+       "completion": 1,
+       "ref": "SP-220793"
+      },
+      {
+       "wid": 970003,
+       "acronym": "TEI18_MBS4V2X",
+       "name": "(Stage 2 of) MBS support for V2X services",
+       "completion": 1,
+       "ref": "SP-220793"
+      },
+      {
+       "wid": 990111,
+       "acronym": "ATSSS_Ph3",
+       "name": "Access Traffic Steering, Switch and Splitting support in the 5G system architecture; Phase 3",
+       "completion": 1,
+       "ref": "SP-221334"
+      },
+      {
+       "wid": 970023,
+       "acronym": "ATSSS_Ph3",
+       "name": "Stage 2 of ATSSS_Ph3",
+       "completion": 1,
+       "ref": "SP-221334"
+      },
+      {
+       "wid": 990112,
+       "acronym": "UPEAS",
+       "name": "UPF enhancement for Exposure and SBA",
+       "completion": 1,
+       "ref": "SP-220809"
+      },
+      {
+       "wid": 970019,
+       "acronym": "UPEAS",
+       "name": "Stage 2 of UPEAS",
+       "completion": 1,
+       "ref": "SP-230103"
+      },
+      {
+       "wid": 970026,
+       "acronym": "EDGE_Ph2",
+       "name": "(stage 2 of) Edge Computing Phase 2",
+       "completion": 1,
+       "ref": "SP-230112"
+      },
+      {
+       "wid": 980128,
+       "acronym": "eNPN_Ph2",
+       "name": "Non-Public Networks Phase 2",
+       "completion": 1,
+       "ref": "SP-220805"
+      },
+      {
+       "wid": 970015,
+       "acronym": "eNPN_Ph2",
+       "name": "Stage 2 of Non-Public Networks Phase 2",
+       "completion": 1,
+       "ref": "SP-230096"
+      },
+      {
+       "wid": 980114,
+       "acronym": "eUEPO",
+       "name": "Enhancement of 5G UE Policy",
+       "completion": 1,
+       "ref": "SP-220980"
+      },
+      {
+       "wid": 970025,
+       "acronym": "eUEPO",
+       "name": "(Stage 2 of) Enhancement of 5G UE Policy",
+       "completion": 1,
+       "ref": "SP-230094"
+      },
+      {
+       "wid": 1000041,
+       "acronym": "TEI18_SLAMUP",
+       "name": "Spending Limits for AM and UE Policies in the 5GC",
+       "completion": 1,
+       "ref": "SP-220794"
+      },
+      {
+       "wid": 970004,
+       "acronym": "TEI18_SLAMUP",
+       "name": "Stage 2 of TEI18_SLAMUP",
+       "completion": 1,
+       "ref": "SP-220794"
+      },
+      {
+       "wid": 990113,
+       "acronym": "AMP",
+       "name": "5G AM Policy",
+       "completion": 1,
+       "ref": "SP-221335"
+      },
+      {
+       "wid": 970017,
+       "acronym": "AMP",
+       "name": "Stage 2 of 5G AM Policy",
+       "completion": 1,
+       "ref": "SP-221335"
+      },
+      {
+       "wid": 980110,
+       "acronym": "5WWC_Ph2",
+       "name": "Support for Wireless and Wireline Convergence Phase 2",
+       "completion": 1,
+       "ref": "SP-220904"
+      },
+      {
+       "wid": 970010,
+       "acronym": "5WWC_Ph2",
+       "name": "Stage 2 of 5WWC_Ph2",
+       "completion": 1,
+       "ref": "SP-230367"
+      },
+      {
+       "wid": 980129,
+       "acronym": "eNSAC",
+       "name": "Enhancement of NSAC for maximum number of UEs with at least one PDU session/PDN connection",
+       "completion": 1,
+       "ref": "SP-220988"
+      },
+      {
+       "wid": 970058,
+       "acronym": "eNSAC",
+       "name": "Stage 2 of eNSAC",
+       "completion": 1,
+       "ref": "SP-230113"
+      },
+      {
+       "wid": 980116,
+       "acronym": "SUECR",
+       "name": "Seamless UE context recovery",
+       "completion": 1,
+       "ref": "SP-220810"
+      },
+      {
+       "wid": 970020,
+       "acronym": "SUECR",
+       "name": "Stage 2 of Seamless UE context recovery",
+       "completion": 1,
+       "ref": "SP-220810"
+      },
+      {
+       "wid": 980115,
+       "acronym": "SFC",
+       "name": "5G System Enabler for Service Function Chaining",
+       "completion": 1,
+       "ref": "SP-220802"
+      },
+      {
+       "wid": 970012,
+       "acronym": "SFC",
+       "name": "Stage 2 of 5G System Enabler for Service Function Chaining",
+       "completion": 1,
+       "ref": "SP-230120"
+      },
+      {
+       "wid": 980119,
+       "acronym": "DetNet",
+       "name": "Extensions to the TSC Framework to support DetNet",
+       "completion": 1,
+       "ref": "SP-220801"
+      },
+      {
+       "wid": 970011,
+       "acronym": "DetNet",
+       "name": "Stage 2 of Extensions to the TSC Framework to support DetNet",
+       "completion": 1,
+       "ref": "SP-230172"
+      },
+      {
+       "wid": 980121,
+       "acronym": "TEI18_IPv6PD",
+       "name": "General Support of IPv6 Prefix Delegation in 5GS",
+       "completion": 1,
+       "ref": "SP-220797"
+      },
+      {
+       "wid": 970007,
+       "acronym": "TEI18_IPv6PD",
+       "name": "Stage 2  of TEI18_IPv6PD",
+       "completion": 1,
+       "ref": "SP-220797"
+      },
+      {
+       "wid": 980118,
+       "acronym": "TEI18_SDNAEPC",
+       "name": "Secondary DN Authentication and authorization in EPC IWK cases",
+       "completion": 1,
+       "ref": "SP-220798"
+      },
+      {
+       "wid": 970008,
+       "acronym": "TEI18_SDNAEPC",
+       "name": "Stage 2 of Secondary DN Authentication and authorization in EPC IWK cases",
+       "completion": 1,
+       "ref": "SP-220798"
+      },
+      {
+       "wid": 970024,
+       "acronym": "TRS_URLLC",
+       "name": "Stage 2 of Timing Resiliency and URLLC enhancements",
+       "completion": 1,
+       "ref": "SP-230107"
+      },
+      {
+       "wid": 980018,
+       "acronym": "VMR",
+       "name": "(Stage 2 for VMR) Architecture Enhancements for Vehicle Mounted Relays",
+       "completion": 1,
+       "ref": "SP-230105"
+      },
+      {
+       "wid": 940053,
+       "acronym": "MPS_WLAN",
+       "name": "Stage 2 of MPS_WLAN",
+       "completion": 1,
+       "ref": "SP-230108"
+      },
+      {
+       "wid": 990118,
+       "acronym": "eNA_Ph3",
+       "name": "Enablers for Network Automation for 5G phase 3",
+       "completion": 1,
+       "ref": "SP-221345"
+      },
+      {
+       "wid": 980020,
+       "acronym": "eNA_Ph3",
+       "name": "(stage 2 of eNA_Ph3) Enablers for Network Automation for 5G phase 3",
+       "completion": 1,
+       "ref": "SP-230110"
+      }
+     ]
+    },
+    "19": {
+     "release": "19",
+     "version": "V19.9.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 4463,
+     "statementsAtCreation": null,
+     "statementsAdded": 462,
+     "statementsRemoved": 141,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 1050112,
+       "acronym": "EnergySys",
+       "name": "Energy Efficiency and Energy Saving",
+       "completion": 1,
+       "ref": "SP-250069"
+      },
+      {
+       "wid": 1050047,
+       "acronym": "AIML_CN",
+       "name": "Core Network Enhanced Support for Artificial Intelligence (AI)/Machine Learning (ML)",
+       "completion": 1,
+       "ref": "SP-240991"
+      },
+      {
+       "wid": 1040033,
+       "acronym": "AIML_CN",
+       "name": "Stage 2 of Core Network Enhanced Support for Artificial Intelligence (AI)/Machine Learning (ML)",
+       "completion": 1,
+       "ref": "SP-240991"
+      },
+      {
+       "wid": 1070010,
+       "acronym": "AmbientIoT-ARC",
+       "name": "Architecture support of Ambient power-enabled Internet of Things",
+       "completion": 1,
+       "ref": "SP-250377"
+      },
+      {
+       "wid": 1040027,
+       "acronym": "5GSAT_Ph3-ARC",
+       "name": "Integration of satellite components in the 5G architecture Phase 3",
+       "completion": 1,
+       "ref": "SP-241386"
+      },
+      {
+       "wid": 1040032,
+       "acronym": "XRM_Ph2",
+       "name": "Extended Reality and Media service (XRM) Phase 2",
+       "completion": 1,
+       "ref": "SP-241385"
+      },
+      {
+       "wid": 1030011,
+       "acronym": "TEI19_NetShare",
+       "name": "(Stage 2 of) Indirect Network Sharing",
+       "completion": 1,
+       "ref": "SP-240488"
+      },
+      {
+       "wid": 1030013,
+       "acronym": "TEI19_RVAS",
+       "name": "Architecture support of roaming value-added services",
+       "completion": 1,
+       "ref": "SP-240119"
+      },
+      {
+       "wid": 1050097,
+       "acronym": "UPEAS_Ph2",
+       "name": "UPF enhancement for Exposure And SBA Phase 2",
+       "completion": 1,
+       "ref": "SP-240995"
+      },
+      {
+       "wid": 1040035,
+       "acronym": "UPEAS_Ph2",
+       "name": "Stage 2 of UPF enhancement for Exposure And SBA Phase 2",
+       "completion": 1,
+       "ref": "SP-240995"
+      },
+      {
+       "wid": 1050080,
+       "acronym": "TEI19_ProSe_NPN",
+       "name": "ProSe support in NPN",
+       "completion": 1,
+       "ref": "SP-240122"
+      },
+      {
+       "wid": 1030016,
+       "acronym": "TEI19_ProSe_NPN",
+       "name": "Stage 2 of ProSe support in NPN",
+       "completion": 1,
+       "ref": "SP-240122"
+      },
+      {
+       "wid": 1040036,
+       "acronym": "eEDGE_5GC_Ph3",
+       "name": "Enhancement of support for Edge Computing in 5G Core network - Phase 3",
+       "completion": 1,
+       "ref": "SP-241284"
+      },
+      {
+       "wid": 1050050,
+       "acronym": "eEDGE_5GC_Ph3",
+       "name": "Stage 2 of Enhancement of support for Edge Computing in 5G Core network - Phase 3",
+       "completion": 1,
+       "ref": "SP-241505"
+      },
+      {
+       "wid": 1050056,
+       "acronym": "MASSS",
+       "name": "Multi-Access (ATSSS_Ph4)",
+       "completion": 0.849999999999999,
+       "ref": "SP-240994"
+      },
+      {
+       "wid": 1040034,
+       "acronym": "MASSS",
+       "name": "Stage 2 of Multi-Access (ATSSS_Ph4)",
+       "completion": 1,
+       "ref": "SP-241331"
+      },
+      {
+       "wid": 1070046,
+       "acronym": "TEI19_MVOSNS",
+       "name": "MSISDN verification operation support to Nnef_UEId Service",
+       "completion": 1,
+       "ref": "SP-241498"
+      },
+      {
+       "wid": 1060028,
+       "acronym": "TEI19_MVOSNS",
+       "name": "Stage 2 of MSISDN verification operation support to Nnef_UEId Service",
+       "completion": 1,
+       "ref": "SP-241498"
+      },
+      {
+       "wid": 1070041,
+       "acronym": "TEI19_SliceSel",
+       "name": "Network Controlled Network Slice Selection",
+       "completion": 1,
+       "ref": "SP-241502"
+      },
+      {
+       "wid": 1060030,
+       "acronym": "TEI19_SliceSel",
+       "name": "Stage 2 of Network Controlled Network Slice Selection",
+       "completion": 1,
+       "ref": "SP-241502"
+      },
+      {
+       "wid": 1030012,
+       "acronym": "TEI19_MINPA",
+       "name": "Minimize the Number of Policy Associations",
+       "completion": 1,
+       "ref": "SP-240118"
+      },
+      {
+       "wid": 1050089,
+       "acronym": "TEI19_SLUPiR",
+       "name": "Spending Limits for UE Policies in Roaming scenario",
+       "completion": 1,
+       "ref": "SP-240486"
+      },
+      {
+       "wid": 1030014,
+       "acronym": "TEI19_SLUPiR",
+       "name": "Stage 2 of Spending Limits for UE Policies in Roaming scenario",
+       "completion": 1,
+       "ref": "SP-240486"
+      },
+      {
+       "wid": 1030015,
+       "acronym": "TEI19_IP_SP_EXP",
+       "name": "Enhancing Parameter Provisioning with static UE IP address and UP security policy",
+       "completion": 1,
+       "ref": "SP-240121"
+      },
+      {
+       "wid": 1030018,
+       "acronym": "TEI19_HSBO",
+       "name": "Roaming traffic offloading via session breakout in HPLMN",
+       "completion": 1,
+       "ref": "SP-240491"
+      },
+      {
+       "wid": 1050084,
+       "acronym": "TEI19_QME",
+       "name": "QoS monitoring enhancement",
+       "completion": 1,
+       "ref": "SP-240961"
+      },
+      {
+       "wid": 1030020,
+       "acronym": "TEI19_QME",
+       "name": "Stage 2 of QoS monitoring enhancement",
+       "completion": 1,
+       "ref": "SP-240961"
+      },
+      {
+       "wid": 1030022,
+       "acronym": "TEI19_VLANSUB",
+       "name": "Providing per-subscriber VLAN instructions from UDM and DN-AAA",
+       "completion": 1,
+       "ref": "SP-240128"
+      },
+      {
+       "wid": 1050076,
+       "acronym": "TEI19_NFsel_by_tPLMN",
+       "name": "NF discovery and selection by target PLMN",
+       "completion": 1,
+       "ref": "SP-240490"
+      },
+      {
+       "wid": 1030023,
+       "acronym": "TEI19_NFsel_by_tPLMN",
+       "name": "Stage 2 of NF discovery and selection by target PLMN",
+       "completion": 1,
+       "ref": "SP-240490"
+      },
+      {
+       "wid": 1060048,
+       "acronym": "5G_Femto",
+       "name": "5G NR Femto",
+       "completion": 1,
+       "ref": "SP-241327"
+      },
+      {
+       "wid": 1040028,
+       "acronym": "5G_Femto",
+       "name": "System aspects of 5G NR Femto",
+       "completion": 1,
+       "ref": "SP-241327"
+      },
+      {
+       "wid": 1050100,
+       "acronym": "VMR_Ph2",
+       "name": "Vehicle Mounted Relays Phase 2",
+       "completion": 1,
+       "ref": "SP-240989"
+      },
+      {
+       "wid": 1040031,
+       "acronym": "VMR_Ph2",
+       "name": "Stage 2 of Vehicle Mounted Relays Phase 2",
+       "completion": 1,
+       "ref": "SP-240989"
+      },
+      {
+       "wid": 1040029,
+       "acronym": "MPS4msg",
+       "name": "(stage 2 of) MPS for IMS Messaging and SMS services",
+       "completion": 1,
+       "ref": "SP-240987"
+      }
+     ]
+    },
+    "20": {
+     "release": "20",
+     "version": "V20.3.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 4519,
+     "statementsAtCreation": null,
+     "statementsAdded": 77,
+     "statementsRemoved": 21,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": [
+      {
+       "wid": 1100033,
+       "acronym": "5GSAT_Ph4-ARC",
+       "name": "Stage 2 of Integration of satellite components in the 5G architecture Phase 4",
+       "completion": 1,
+       "ref": "SP-260423"
+      },
+      {
+       "wid": 1110030,
+       "acronym": "AmbientIoT_Ph2-ARC",
+       "name": "Architecture support of Ambient power-enabled Internet of Things - Phase 2",
+       "completion": 0.949999999999999,
+       "ref": "SP-260296"
+      },
+      {
+       "wid": 1120118,
+       "acronym": "EnergySys_Ph2",
+       "name": "Energy Efficiency and Energy Saving Phase 2",
+       "completion": 0.62,
+       "ref": "SP-251670"
+      },
+      {
+       "wid": 1100002,
+       "acronym": "EnergySys_Ph2-ARC",
+       "name": "Stage 2 of Energy Efficiency and Energy Saving Phase 2",
+       "completion": 1,
+       "ref": "SP-251670"
+      },
+      {
+       "wid": 1110021,
+       "acronym": "Sensing-ARC",
+       "name": "Stage 2 of Integrated Sensing and Communication",
+       "completion": 0.969999999999999,
+       "ref": "SP-260297"
+      },
+      {
+       "wid": 1080059,
+       "acronym": "TEI20_NetShare_Ph2-ARC",
+       "name": "Stage 2 for Indirect Network Sharing Phase2",
+       "completion": 1,
+       "ref": "SP-250838"
+      },
+      {
+       "wid": 1110035,
+       "acronym": "SMS2EC-ARC",
+       "name": "Short Message Service to Emergency Response Centre",
+       "completion": 1,
+       "ref": "SP-260688"
+      },
+      {
+       "wid": 1120119,
+       "acronym": "TEI20_SCONE",
+       "name": "Operator-controlled Standard Communication with Network Elements (SCONE) support",
+       "completion": 0.959999999999999,
+       "ref": "SP-260327"
+      },
+      {
+       "wid": 1110032,
+       "acronym": "TEI20_SCONE-ARC",
+       "name": "Operator-controlled Standard Communication with Network Elements (SCONE) support",
+       "completion": 1,
+       "ref": "SP-260327"
+      },
+      {
+       "wid": 1130021,
+       "acronym": "TEI20_NSSRG_EPS",
+       "name": "Network Slice Simultaneous Registration Group (NSSRG) in EPS",
+       "completion": 1,
+       "ref": "SP-260299"
+      },
+      {
+       "wid": 1110028,
+       "acronym": "TEI20_NSSRG_EPS-ARC",
+       "name": "Network Slice Simultaneous Registration Group (NSSRG) in EPS",
+       "completion": 1,
+       "ref": "SP-260299"
+      },
+      {
+       "wid": 1120039,
+       "acronym": "TEI20_UDCE",
+       "name": "UPF Data Collection Enhancement",
+       "completion": 0.91,
+       "ref": "SP-260298"
+      },
+      {
+       "wid": 1110026,
+       "acronym": "TEI20_UDCE-ARC",
+       "name": "UPF Data Collection Enhancement",
+       "completion": 1,
+       "ref": "SP-260298"
+      },
+      {
+       "wid": 1120040,
+       "acronym": "TEI20_UPMD",
+       "name": "User Plane Media Distribution",
+       "completion": 0.239999999999999,
+       "ref": "SP-260329"
+      },
+      {
+       "wid": 1110024,
+       "acronym": "TEI20_UPMD-ARC",
+       "name": "User Plane Media Distribution",
+       "completion": 1,
+       "ref": "SP-260329"
+      },
+      {
+       "wid": 1120058,
+       "acronym": "TEI20_NRLTEREST",
+       "name": "NR to LTE mobility restriction",
+       "completion": 1,
+       "ref": "SP-251208"
+      },
+      {
+       "wid": 1090003,
+       "acronym": "TEI20_NRLTEREST",
+       "name": "NR to LTE mobility restriction",
+       "completion": 1,
+       "ref": "SP-251208"
+      },
+      {
+       "wid": 1090004,
+       "acronym": "TEI20_Eth4MWAB",
+       "name": "Support for Ethernet PDU session for backhauling of MWAB",
+       "completion": 1,
+       "ref": "SP-251209"
+      },
+      {
+       "wid": 1110074,
+       "acronym": "TEI20_NEPS",
+       "name": "Support of NSSAA in EPS",
+       "completion": 1,
+       "ref": "SP-251210"
+      },
+      {
+       "wid": 1090005,
+       "acronym": "TEI20_NEPS",
+       "name": "Support of NSSAA in EPS",
+       "completion": 1,
+       "ref": "SP-251210"
+      },
+      {
+       "wid": 1110078,
+       "acronym": "TEI20_DNU",
+       "name": "Dynamic NITZ Update",
+       "completion": 1,
+       "ref": "SP-251212"
+      },
+      {
+       "wid": 1090007,
+       "acronym": "TEI20_DNU",
+       "name": "Dynamic NITZ Update",
+       "completion": 1,
+       "ref": "SP-251212"
+      },
+      {
+       "wid": 1110081,
+       "acronym": "TEI20_MACSUB",
+       "name": "Providing per-subscriber Allowed MAC addresses from UDM",
+       "completion": 1,
+       "ref": "SP-251213"
+      },
+      {
+       "wid": 1090008,
+       "acronym": "TEI20_MACSUB",
+       "name": "Providing per-subscriber Allowed MAC addresses from UDM",
+       "completion": 1,
+       "ref": "SP-251213"
+      },
+      {
+       "wid": 1120050,
+       "acronym": "NG_RTC_Ph3",
+       "name": "Next generation real time communication services - Phase 3",
+       "completion": 0.52,
+       "ref": "SP-260104"
+      },
+      {
+       "wid": 1110031,
+       "acronym": "NG_RTC_Ph3-ARC",
+       "name": "System architecture for next generation real time communication services - Phase 3",
+       "completion": 0.989999999999999,
+       "ref": "SP-260104"
+      }
+     ]
+    }
+   },
+   "baselineIssue": {
+    "release": "20",
+    "version": "V20.3.0"
+   },
+   "latestIssue": {
+    "release": "20",
+    "version": "V20.3.0"
+   },
+   "titleFrom": "cover",
+   "scope": {
+    "text": "The present document defines the Stage 2 system architecture for the 5G System. The 5G System provides data connectivity and services.",
+    "firstSentence": "The present document defines the Stage 2 system architecture for the 5G System.",
+    "clause": "1",
+    "version": "V20.3.0"
+   },
+   "topics": [
+    {
+     "name": "General",
+     "statements": 4519,
+     "share": 1.0
+    }
+   ]
+  },
+  {
+   "id": "TS 26.531",
+   "title": "Data Collection and Reporting; General Description and Architecture",
+   "url": "https://www.3gpp.org/dynareport/26531.htm",
+   "layer": "Network analytics (SA2)",
+   "kind": "TS",
+   "explored": true,
+   "scopeNote": "explored",
+   "firstRelease": "17",
+   "releases": {
+    "17": {
+     "release": "17",
+     "version": "V17.3.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 87,
+     "statementsAtCreation": 87,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": [
+      {
+       "wid": 960051,
+       "acronym": "EVEX",
+       "name": "5GMS AF Event Exposure",
+       "completion": 1,
+       "ref": "SP-210374"
+      },
+      {
+       "wid": 920008,
+       "acronym": "EVEX",
+       "name": "Stage 2 of EVEX",
+       "completion": 1,
+       "ref": "SP-210374"
+      }
+     ]
+    },
+    "18": {
+     "release": "18",
+     "version": "V18.2.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 90,
+     "statementsAtCreation": null,
+     "statementsAdded": 4,
+     "statementsRemoved": 1,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    },
+    "19": {
+     "release": "19",
+     "version": "V19.0.0",
+     "newIssue": true,
+     "analysed": true,
+     "statementsInForce": 90,
+     "statementsAtCreation": null,
+     "statementsAdded": 0,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    },
+    "20": {
+     "release": "20",
+     "version": "V19.0.0",
+     "newIssue": false,
+     "analysed": true,
+     "statementsInForce": 90,
+     "statementsAtCreation": null,
+     "statementsAdded": 0,
+     "statementsRemoved": 0,
+     "statementsMovedIn": 0,
+     "statementsMovedOut": 0,
+     "workItems": []
+    }
+   },
+   "baselineIssue": {
+    "release": "19",
+    "version": "V19.0.0"
+   },
+   "latestIssue": {
+    "release": "19",
+    "version": "V19.0.0"
+   },
+   "titleFrom": "cover",
+   "scope": {
+    "text": "The present document defines a generic architecture for collecting and reporting data in the 5G System as defined in TS 23.501 [2], TS 23.502 [3] , TS 23.288 [4] and TS 29.517 [5].",
+    "firstSentence": "The present document defines a generic architecture for collecting and reporting data in the 5G System as defined in TS 23.501 [2], TS 23.502 [3] , TS 23.288 [4] and TS 29.517 [5].",
+    "clause": "1",
+    "version": "V19.0.0"
+   },
+   "topics": [
+    {
+     "name": "General",
+     "statements": 90,
+     "share": 1.0
+    }
+   ]
+  },
+  {
+   "id": "TR 26.847",
+   "title": "Evaluation of Artificial Intelligence and Machine Learning in 5G media services",
+   "url": "https://www.3gpp.org/dynareport/26847.htm",
+   "layer": "Studies",
+   "kind": "TR",
+   "explored": false,
+   "scopeNote": "a Technical Report: informative",
+   "firstRelease": "19",
+   "releases": {
+    "19": {
+     "release": "19",
+     "version": "V19.0.0",
+     "newIssue": true,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": [
+      {
+       "wid": 950011,
+       "acronym": "FS_AI4Media",
+       "name": "Study on Artificial Intelligence (AI) and Machine Learning (ML) for Media",
+       "completion": 1,
+       "ref": "SP-220328"
+      }
+     ]
+    },
+    "20": {
+     "release": "20",
+     "version": "V19.0.0",
+     "newIssue": false,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": []
+    }
+   },
+   "baselineIssue": {
+    "release": "19",
+    "version": "V19.0.0"
+   },
+   "latestIssue": {
+    "release": "19",
+    "version": "V19.0.0"
+   },
+   "titleFrom": "cover",
+   "scope": {
+    "text": "The present document provides details on feasibility evaluations for a given set of scenarios related to AI/ML in media services. In particular, aspects related the feasibility of split inferencing between different entities and the characteristics of the subsequent intermediate data are documented. A set of anchors and related metrics are defined to evaluate the feasibility and characteristics of such scenarios in terms of service requirements (such as service latency, inference accuracy, network bandwidth etc.). The transmission of relevant data in AI/ML media services is also considered, with evaluations on the compression technologies of data components such as AI/ML models. The functional aspects related to the AI/ML media services given in this document are presented in TR 26.927 [3].",
+    "firstSentence": "The present document provides details on feasibility evaluations for a given set of scenarios related to AI/ML in media services.",
+    "clause": "1",
+    "version": "V19.0.0"
+   },
+   "topics": []
+  },
+  {
+   "id": "TR 22.874",
+   "title": "Study on traffic characteristics and performance requirements for AI/ML model transfer in 5GS",
+   "url": "https://www.3gpp.org/dynareport/22874.htm",
+   "layer": "Studies",
+   "kind": "TR",
+   "explored": false,
+   "scopeNote": "a Technical Report: informative",
+   "firstRelease": "18",
+   "releases": {
+    "18": {
+     "release": "18",
+     "version": "V18.2.0",
+     "newIssue": true,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": [
+      {
+       "wid": 860009,
+       "acronym": "FS_AIML_MT",
+       "name": "Study on traffic characteristics and performance requirements for AI/ML model transfer in 5GS",
+       "completion": 1,
+       "ref": "SP-220441"
+      }
+     ]
+    },
+    "19": {
+     "release": "19",
+     "version": "V18.2.0",
+     "newIssue": false,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": []
+    },
+    "20": {
+     "release": "20",
+     "version": "V18.2.0",
+     "newIssue": false,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": []
+    }
+   },
+   "baselineIssue": {
+    "release": "18",
+    "version": "V18.2.0"
+   },
+   "latestIssue": {
+    "release": "18",
+    "version": "V18.2.0"
+   },
+   "titleFrom": "Standards page entry",
+   "scope": {
+    "text": "This report captures the study of the use cases and the potential performance requirements for 5G system support of Artificial Intelligence (AI)/Machine Learning (ML) model distribution and transfer (download, upload, updates, etc.), and identifies traffic characteristics of AI/ML model distribution, transfer and training for various applications, e.g. video/speech recognition, robot control, automotive, other verticals.",
+    "firstSentence": "This report captures the study of the use cases and the potential performance requirements for 5G system support of Artificial Intelligence (AI)/Machine Learning (ML) model distribution and transfer (download, upload, updates, etc.), and identifies traffic characteristics of AI/ML model distribution, transfer and training for various applications, e.g. video/speech recognition, robot control, automotive, other verticals.",
+    "clause": "1",
+    "version": "V18.2.0"
+   },
+   "topics": []
+  },
+  {
+   "id": "TR 26.927",
+   "title": "Study on Artificial Intelligence and Machine Learning in 5G media services",
+   "url": "https://www.3gpp.org/dynareport/26927.htm",
+   "layer": "Studies",
+   "kind": "TR",
+   "explored": false,
+   "scopeNote": "a Technical Report: informative",
+   "firstRelease": "19",
+   "releases": {
+    "19": {
+     "release": "19",
+     "version": "V19.0.0",
+     "newIssue": true,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": [
+      {
+       "wid": 950011,
+       "acronym": "FS_AI4Media",
+       "name": "Study on Artificial Intelligence (AI) and Machine Learning (ML) for Media",
+       "completion": 1,
+       "ref": "SP-220328"
+      }
+     ]
+    },
+    "20": {
+     "release": "20",
+     "version": "V19.0.0",
+     "newIssue": false,
+     "analysed": false,
+     "statementsInForce": null,
+     "statementsAtCreation": null,
+     "statementsAdded": null,
+     "statementsRemoved": null,
+     "statementsMovedIn": null,
+     "statementsMovedOut": null,
+     "workItems": []
+    }
+   },
+   "baselineIssue": {
+    "release": "19",
+    "version": "V19.0.0"
+   },
+   "latestIssue": {
+    "release": "19",
+    "version": "V19.0.0"
+   },
+   "titleFrom": "cover",
+   "scope": {
+    "text": "Editor’s note: to be defined based on the content of the TR",
+    "firstSentence": "Editor’s note: to be defined based on the content of the TR",
+    "clause": "1",
+    "version": "V19.0.0"
+   },
+   "topics": []
+  },
+  {
+   "id": "TR 23.700-81",
+   "title": "Study of Enablers for Network Automation for the 5G System (5GS); Phase 3",
+   "url": "https://www.3gpp.org/dynareport/23700-81.htm",
+   "layer": "Studies",
+   "kind": "TR",
+   "explored": false,
+   "scopeNote": "a Technical Report: informative",
+   "source": "no issue listed in the 3GPP archive",
+   "releases": {},
+   "topics": []
+  },
+  {
+   "id": "TR 23.700-80",
+   "title": "Study on 5G system support for AI/ML-based services",
+   "url": "https://www.3gpp.org/dynareport/23700-80.htm",
+   "layer": "Studies",
+   "kind": "TR",
+   "explored": false,
+   "scopeNote": "a Technical Report: informative",
+   "source": "no issue listed in the 3GPP archive",
+   "releases": {},
+   "topics": []
+  }
+ ],
+ "problems": [],
+ "notes": [
+  "A release with no issue of a document leaves the issue of the earlier release in force.",
+  "Statement counts are by wording: a reworded statement counts as one removed and one added; the moved counts are the part that is the same text in another document of the project.",
+  "A count is null where the release was not analysed (a tracked release, or a document that is not explored)."
+ ]
+}
