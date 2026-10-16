@@ -69,6 +69,7 @@ export const EMERGENCY_ALERTS_SPECS = [
   {
     id: 'TR 36.976',
     title: 'Overall description of LTE-based 5G broadcast',
+    release: '16',
     url: 'https://www.3gpp.org/dynareport/36976.htm',
     layer: 'Overview',
   },

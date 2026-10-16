@@ -133,7 +133,6 @@ export const CONTENT_DELIVERY_SPECS = [
   {
     id: 'TS 26.346',
     title: 'Multimedia Broadcast/Multicast Service (MBMS); Protocols and codecs',
-    release: '10',
     url: 'https://www.3gpp.org/dynareport/26346.htm',
     layer: '3GPP',
     note: 'Latest Release 19 issue: V19.3.0. The central specification for FLUTE-based delivery. Clause 7.2 covers FLUTE usage for MBMS download (header specializations, FDT schema and 3GPP FDT extensions, FEC schemes, content encoding); clause 7.2.12 and Annex B the MBMS FEC scheme (Raptor, RFC 5053); clause 7.3 SDP for the download delivery method; clause 9 associated delivery procedures, file repair and reception reporting; Annex L the MBMS Download Profile and User Service profiles.',
@@ -141,7 +140,6 @@ export const CONTENT_DELIVERY_SPECS = [
   {
     id: 'TS 26.347',
     title: 'Multimedia Broadcast/Multicast Service (MBMS); Application Programming Interface and URL',
-    release: '14',
     url: 'https://www.3gpp.org/dynareport/26347.htm',
     layer: '3GPP',
     note: 'MBMS client interface towards applications (consumer scope)',
@@ -149,7 +147,6 @@ export const CONTENT_DELIVERY_SPECS = [
   {
     id: 'TS 23.246',
     title: 'Multimedia Broadcast/Multicast Service (MBMS); Architecture and functional description',
-    release: '10',
     url: 'https://www.3gpp.org/dynareport/23246.htm',
     layer: '3GPP',
     note: 'Context',
@@ -188,7 +185,6 @@ export const CONTENT_DELIVERY_SPECS = [
   {
     id: 'TS 26.247',
     title: '3GP-DASH; Transparent end-to-end packet-switched streaming service',
-    release: '10',
     url: 'https://www.3gpp.org/dynareport/26247.htm',
     layer: '3GPP',
     note: 'The 3GPP DASH profile carried over these transports',

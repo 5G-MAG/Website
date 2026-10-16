@@ -16,7 +16,6 @@ export const BROADCAST_SPECS = [
   {
     id: 'TS 22.101',
     title: 'Service aspects; Service principles',
-    release: '10',
     url: 'https://www.3gpp.org/dynareport/22101.htm',
     layer: 'Service requirements',
   },
@@ -30,14 +29,12 @@ export const BROADCAST_SPECS = [
   {
     id: 'TR 23.746',
     title: 'Study on System Architecture Enhancements to eMBMS for Television Video Service',
-    release: '14',
     url: 'https://www.3gpp.org/dynareport/23746.htm',
     layer: 'Architecture',
   },
   {
     id: 'TS 23.246',
     title: 'Multimedia Broadcast/Multicast Service (MBMS); Architecture and functional description',
-    release: '10',
     url: 'https://www.3gpp.org/dynareport/23246.htm',
     layer: 'Architecture',
   },
@@ -45,7 +42,6 @@ export const BROADCAST_SPECS = [
     id: 'TS 36.300',
     title:
       'Evolved Universal Terrestrial Radio Access (E-UTRA) and Evolved UTRAN (E-UTRAN); Overall description',
-    release: '10',
     url: 'https://www.3gpp.org/dynareport/36300.htm',
     layer: 'Architecture',
     note: 'includes the MBMS-dedicated cell mode used for broadcast',
@@ -69,21 +65,18 @@ export const BROADCAST_SPECS = [
   {
     id: 'TS 36.211',
     title: 'Physical channels and modulation',
-    release: '10',
     url: 'https://www.3gpp.org/dynareport/36211.htm',
     layer: 'Radio and interfaces',
   },
   {
     id: 'TS 36.212',
     title: 'Multiplexing and channel coding',
-    release: '10',
     url: 'https://www.3gpp.org/dynareport/36212.htm',
     layer: 'Radio and interfaces',
   },
   {
     id: 'TS 36.213',
     title: 'Physical layer procedures',
-    release: '10',
     url: 'https://www.3gpp.org/dynareport/36213.htm',
     layer: 'Radio and interfaces',
     note: 'scheduler and link adaptation',
@@ -91,7 +84,6 @@ export const BROADCAST_SPECS = [
   {
     id: 'TS 36.321',
     title: 'Medium Access Control (MAC) protocol specification',
-    release: '10',
     url: 'https://www.3gpp.org/dynareport/36321.htm',
     layer: 'Radio and interfaces',
     note: 'touched by the Release 19 PMCH Phase 2 work item',
@@ -99,7 +91,6 @@ export const BROADCAST_SPECS = [
   {
     id: 'TS 36.331',
     title: 'Radio Resource Control (RRC) protocol specification',
-    release: '10',
     url: 'https://www.3gpp.org/dynareport/36331.htm',
     layer: 'Radio and interfaces',
     note: 'MIB-MBMS, SIB1-MBMS, MBSFN-AreaInfo and the other broadcast system-information extensions',
@@ -107,7 +98,6 @@ export const BROADCAST_SPECS = [
   {
     id: 'TS 36.440',
     title: 'Evolved Universal Terrestrial Radio Access Network (E-UTRAN); General aspects and principles for interfaces supporting Multimedia Broadcast Multicast Service (MBMS) within E-UTRAN',
-    release: '10',
     url: 'https://www.3gpp.org/dynareport/36440.htm',
     layer: 'Radio and interfaces',
     note: 'the M1, M2 and M3 interfaces',
@@ -115,7 +105,6 @@ export const BROADCAST_SPECS = [
   {
     id: 'TS 25.446',
     title: 'MBMS synchronisation protocol (SYNC)',
-    release: '10',
     url: 'https://www.3gpp.org/dynareport/25446.htm',
     layer: 'Radio and interfaces',
     note: 'used over M1 to keep content time-aligned across the eNBs of an MBSFN area',
@@ -123,7 +112,6 @@ export const BROADCAST_SPECS = [
   {
     id: 'TS 36.443',
     title: 'Evolved Universal Terrestrial Radio Access Network (E-UTRAN); M2 Application Protocol (M2AP)',
-    release: '10',
     url: 'https://www.3gpp.org/dynareport/36443.htm',
     layer: 'Radio and interfaces',
     note: 'the MCE-to-eNB control-plane interface, carrying Release 19 PMCH Phase 2 time-interleaving parameters',
@@ -131,7 +119,6 @@ export const BROADCAST_SPECS = [
   {
     id: 'TS 36.444',
     title: 'Evolved Universal Terrestrial Radio Access Network (E-UTRAN); M3 Application Protocol (M3AP)',
-    release: '10',
     url: 'https://www.3gpp.org/dynareport/36444.htm',
     layer: 'Radio and interfaces',
     note: 'the MME-to-MCE control-plane interface for MBMS session management signalling',
@@ -139,7 +126,6 @@ export const BROADCAST_SPECS = [
   {
     id: 'TS 36.413',
     title: 'S1 Application Protocol (S1AP)',
-    release: '10',
     url: 'https://www.3gpp.org/dynareport/36413.htm',
     layer: 'Radio and interfaces',
     note: 'the eNB-to-MME control-plane interface, distinct from the M1/M2/M3 MBMS-specific interfaces',
@@ -147,14 +133,12 @@ export const BROADCAST_SPECS = [
   {
     id: 'TS 36.133',
     title: 'Requirements for support of radio resource management',
-    release: '10',
     url: 'https://www.3gpp.org/dynareport/36133.htm',
     layer: 'Radio and interfaces',
   },
   {
     id: 'TS 36.304',
     title: 'User Equipment (UE) procedures in idle mode',
-    release: '10',
     url: 'https://www.3gpp.org/dynareport/36304.htm',
     layer: 'Radio and interfaces',
     note: 'relevant to SIM-free and Receive-Only Mode reception without an RRC connection',
@@ -162,21 +146,18 @@ export const BROADCAST_SPECS = [
   {
     id: 'TS 23.003',
     title: 'Numbering, addressing and identification',
-    release: '10',
     url: 'https://www.3gpp.org/dynareport/23003.htm',
     layer: 'Core network',
   },
   {
     id: 'TS 23.122',
     title: 'Non-Access-Stratum (NAS) functions related to Mobile Station (MS) in idle mode',
-    release: '10',
     url: 'https://www.3gpp.org/dynareport/23122.htm',
     layer: 'Core network',
   },
   {
     id: 'TS 23.401',
     title: 'General Packet Radio Service (GPRS) enhancements for Evolved Universal Terrestrial Radio Access Network (E-UTRAN) access',
-    release: '10',
     url: 'https://www.3gpp.org/dynareport/23401.htm',
     layer: 'Core network',
     note: 'the EPS/E-UTRAN architecture that MBMS and 5G Broadcast are built on',
@@ -184,21 +165,18 @@ export const BROADCAST_SPECS = [
   {
     id: 'TS 29.274',
     title: '3GPP Evolved Packet System (EPS); Evolved General Packet Radio Service (GPRS) Tunnelling Protocol for Control plane (GTPv2-C); Stage 3',
-    release: '10',
     url: 'https://www.3gpp.org/dynareport/29274.htm',
     layer: 'Core network',
   },
   {
     id: 'TS 29.281',
     title: 'General Packet Radio System (GPRS) Tunnelling Protocol User Plane (GTPv1-U)',
-    release: '10',
     url: 'https://www.3gpp.org/dynareport/29281.htm',
     layer: 'Core network',
   },
   {
     id: 'TS 36.101',
     title: 'User Equipment (UE) radio transmission and reception',
-    release: '10',
     url: 'https://www.3gpp.org/dynareport/36101.htm',
     layer: 'RF and devices',
     note: 'defines operating Bands 107, 108, 112 and 113',
@@ -206,7 +184,6 @@ export const BROADCAST_SPECS = [
   {
     id: 'TS 36.104',
     title: 'Evolved Universal Terrestrial Radio Access (E-UTRA); Base Station (BS) radio transmission and reception',
-    release: '10',
     url: 'https://www.3gpp.org/dynareport/36104.htm',
     layer: 'RF and devices',
     note: 'network-side counterpart to TS 36.101 for the same bands',
@@ -214,7 +191,6 @@ export const BROADCAST_SPECS = [
   {
     id: 'TS 36.306',
     title: 'User Equipment (UE) radio access capabilities',
-    release: '10',
     url: 'https://www.3gpp.org/dynareport/36306.htm',
     layer: 'RF and devices',
     note: 'includes the CAS-muting capability introduced in Release 19',
@@ -245,14 +221,12 @@ export const BROADCAST_SPECS = [
   {
     id: 'TS 36.307',
     title: 'Evolved Universal Terrestrial Radio Access (E-UTRA); Requirements on User Equipments (UEs) Supporting a release-independent frequency band',
-    release: '10',
     url: 'https://www.3gpp.org/dynareport/36307.htm',
     layer: 'RF and devices',
   },
   {
     id: 'TS 26.346',
     title: 'Multimedia Broadcast/Multicast Service (MBMS); Protocols and codecs',
-    release: '10',
     url: 'https://www.3gpp.org/dynareport/26346.htm',
     layer: 'Content delivery',
   },
@@ -260,7 +234,6 @@ export const BROADCAST_SPECS = [
     id: 'TS 26.347',
     title:
       'Multimedia Broadcast/Multicast Service (MBMS); Application Programming Interface and URL',
-    release: '14',
     url: 'https://www.3gpp.org/dynareport/26347.htm',
     layer: 'Content delivery',
   },
@@ -275,35 +248,30 @@ export const BROADCAST_SPECS = [
     id: 'TS 29.116',
     title:
       'Representational state transfer over the xMB reference point between content provider and BM-SC',
-    release: '14',
     url: 'https://www.3gpp.org/dynareport/29116.htm',
     layer: 'Content delivery',
   },
   {
     id: 'TS 24.116',
     title: 'Stage 3 aspects of system architecture enhancements for TV services',
-    release: '14',
     url: 'https://www.3gpp.org/dynareport/24116.htm',
     layer: 'Content delivery',
   },
   {
     id: 'TS 24.117',
     title: 'TV service configuration Management Object (MO)',
-    release: '14',
     url: 'https://www.3gpp.org/dynareport/24117.htm',
     layer: 'Content delivery',
   },
   {
     id: 'TS 23.041',
     title: 'Technical realization of Cell Broadcast Service (CBS)',
-    release: '10',
     url: 'https://www.3gpp.org/dynareport/23041.htm',
     layer: 'Public warning',
   },
   {
     id: 'TS 29.168',
     title: 'Cell Broadcast Centre interfaces with the Evolved Packet Core; Stage 3',
-    release: '10',
     url: 'https://www.3gpp.org/dynareport/29168.htm',
     layer: 'Public warning',
   },
@@ -346,7 +314,6 @@ export const BROADCAST_SPECS = [
   {
     id: 'TS 26.116',
     title: 'Television (TV) over 3GPP services; Video profiles',
-    release: '13',
     url: 'https://www.3gpp.org/dynareport/26116.htm',
     layer: 'Codecs',
     note: 'V19.0.0, Release 19, SA4; H.264/AVC and H.265/HEVC operation points for TV video delivered to 5G Broadcast/MBMS clients',
@@ -354,7 +321,6 @@ export const BROADCAST_SPECS = [
   {
     id: 'TS 26.401',
     title: 'General audio codec audio processing functions; Enhanced aacPlus general audio codec; General description',
-    release: '10',
     url: 'https://www.3gpp.org/dynareport/26401.htm',
     layer: 'Codecs',
     note: 'V19.0.0, Release 19, SA4; the HE-AAC/enhanced aacPlus audio codec',

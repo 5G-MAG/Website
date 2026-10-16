@@ -94,7 +94,6 @@ export const DVBI_SPECS = [
   {
     id: 'TS 29.116',
     title: 'Representational state transfer over the xMB reference point between content provider and BM-SC',
-    release: '14',
     url: 'https://www.3gpp.org/dynareport/29116.htm',
     layer: '3GPP unicast',
     note: 'the provisioning-layer spec behind 2 of the 5 open gaps this page tracks; already listed under Content delivery in the 5G Broadcast catalogue',
