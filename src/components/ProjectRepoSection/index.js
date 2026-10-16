@@ -55,7 +55,7 @@ export default function ProjectRepoSection({ projectNames, accent, isTestbed = f
     <>
       <h2 className={styles.sectionTitle}>Repositories of This Project</h2>
       <p className={styles.sectionSubtitle}>
-        The real, running software for this technology — {repos.length}{' '}
+        The real, running software for this technology: {repos.length}{' '}
         {repos.length === 1 ? 'repository' : 'repositories'}.
       </p>
       {clusters.map((cluster) => (
