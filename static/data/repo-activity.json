@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-16 01:48 UTC",
+  "updated_at": "2026-10-17 01:42 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -1093,16 +1093,6 @@
           ],
           "issues": [
             {
-              "number": 32,
-              "title": "MbsSession redMbsServArea is read; extRedMbsServArea (location-dependent) is not",
-              "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/issues/32",
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-22",
-              "labels": [
-                "enhancement"
-              ]
-            },
-            {
               "number": 6,
               "title": "PCF PolicyAuthorization test app: Add demo view and controls",
               "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/issues/6",
@@ -1324,15 +1314,15 @@
           "description": "FLUTE Protocol and Profiles",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-15",
+          "pushed_at": "2026-10-16",
           "pulls": [
             {
-              "number": 115,
-              "title": "Transmitter: update the FDT before queueing an object in send(FileDescription)",
-              "url": "https://github.com/5G-MAG/rt-libflute/pull/115",
+              "number": 116,
+              "title": "Receiver: take tunnel datagrams as they are when no packet_modifier is given",
+              "url": "https://github.com/5G-MAG/rt-libflute/pull/116",
               "draft": false,
               "author": "jordijoangimenez",
-              "created_at": "2026-10-14",
+              "created_at": "2026-10-16",
               "base": "development"
             },
             {
@@ -1364,16 +1354,6 @@
             }
           ],
           "issues": [
-            {
-              "number": 114,
-              "title": "Transmitter: an object queued while the session runs can be sent before the FDT Instance describing it",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/114",
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-14",
-              "labels": [
-                "bug"
-              ]
-            },
             {
               "number": 108,
               "title": "Merge order for #62, #61 and #68: no single branch carries the receiver API rt-mbs-client builds against",
@@ -1413,16 +1393,6 @@
               ]
             },
             {
-              "number": 99,
-              "title": "Document the three FLUTE profiles: what each is, who selects it, and where they differ",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/99",
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-04",
-              "labels": [
-                "documentation"
-              ]
-            },
-            {
               "number": 81,
               "title": "Support FLUTE version 2 (RFC 6726), which supersedes the version this library implements",
               "url": "https://github.com/5G-MAG/rt-libflute/issues/81",
@@ -1446,26 +1416,6 @@
               "number": 79,
               "title": "Content-Length is substituted for a missing Transfer-Length even for a content-encoded object",
               "url": "https://github.com/5G-MAG/rt-libflute/issues/79",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 78,
-              "title": "A zero FEC OTI divisor hangs object construction, and the receive loop never re-arms",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/78",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 77,
-              "title": "Object compression path: three defects in the zlib encode and decode loops",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/77",
               "author": "jordijoangimenez",
               "created_at": "2026-08-22",
               "labels": [
@@ -1520,12 +1470,12 @@
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-15"
+              "last_commit": "2026-10-16"
             },
             {
-              "name": "feature/issue114-fdt-before-object",
+              "name": "feature/issue66-tunnel-passthrough",
               "default": false,
-              "last_commit": "2026-10-14"
+              "last_commit": "2026-10-16"
             },
             {
               "name": "feature/mbs-profile",
@@ -4019,8 +3969,26 @@
           "description": "5G-MAG's fork of Open5GS",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-09",
+          "pushed_at": "2026-10-16",
           "pulls": [
+            {
+              "number": 57,
+              "title": "sbi: carry collocated NF instances in the NF profile",
+              "url": "https://github.com/5G-MAG/open5gs/pull/57",
+              "draft": true,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-16",
+              "base": "improvements"
+            },
+            {
+              "number": 56,
+              "title": "Port bbc-patches onto Open5GS v2.8.0",
+              "url": "https://github.com/5G-MAG/open5gs/pull/56",
+              "draft": true,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-16",
+              "base": "improvements"
+            },
             {
               "number": 55,
               "title": "docs: apply the 5G-MAG README format",
@@ -4236,6 +4204,16 @@
               "last_commit": "2025-08-13"
             },
             {
+              "name": "port/bbc-patches",
+              "default": false,
+              "last_commit": "2026-10-16"
+            },
+            {
+              "name": "port/nrf-collocation",
+              "default": false,
+              "last_commit": "2026-10-16"
+            },
+            {
               "name": "5mbs-development",
               "default": false,
               "last_commit": "2026-10-09"
@@ -4261,6 +4239,11 @@
               "last_commit": "2026-08-12"
             },
             {
+              "name": "improvements",
+              "default": false,
+              "last_commit": "2026-06-20"
+            },
+            {
               "name": "5mbs",
               "default": false,
               "last_commit": "2026-05-27"
@@ -4278,15 +4261,15 @@
           "description": "FLUTE Protocol and Profiles",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-15",
+          "pushed_at": "2026-10-16",
           "pulls": [
             {
-              "number": 115,
-              "title": "Transmitter: update the FDT before queueing an object in send(FileDescription)",
-              "url": "https://github.com/5G-MAG/rt-libflute/pull/115",
+              "number": 116,
+              "title": "Receiver: take tunnel datagrams as they are when no packet_modifier is given",
+              "url": "https://github.com/5G-MAG/rt-libflute/pull/116",
               "draft": false,
               "author": "jordijoangimenez",
-              "created_at": "2026-10-14",
+              "created_at": "2026-10-16",
               "base": "development"
             },
             {
@@ -4318,16 +4301,6 @@
             }
           ],
           "issues": [
-            {
-              "number": 114,
-              "title": "Transmitter: an object queued while the session runs can be sent before the FDT Instance describing it",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/114",
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-14",
-              "labels": [
-                "bug"
-              ]
-            },
             {
               "number": 108,
               "title": "Merge order for #62, #61 and #68: no single branch carries the receiver API rt-mbs-client builds against",
@@ -4367,16 +4340,6 @@
               ]
             },
             {
-              "number": 99,
-              "title": "Document the three FLUTE profiles: what each is, who selects it, and where they differ",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/99",
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-04",
-              "labels": [
-                "documentation"
-              ]
-            },
-            {
               "number": 81,
               "title": "Support FLUTE version 2 (RFC 6726), which supersedes the version this library implements",
               "url": "https://github.com/5G-MAG/rt-libflute/issues/81",
@@ -4400,26 +4363,6 @@
               "number": 79,
               "title": "Content-Length is substituted for a missing Transfer-Length even for a content-encoded object",
               "url": "https://github.com/5G-MAG/rt-libflute/issues/79",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 78,
-              "title": "A zero FEC OTI divisor hangs object construction, and the receive loop never re-arms",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/78",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 77,
-              "title": "Object compression path: three defects in the zlib encode and decode loops",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/77",
               "author": "jordijoangimenez",
               "created_at": "2026-08-22",
               "labels": [
@@ -4474,12 +4417,12 @@
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-15"
+              "last_commit": "2026-10-16"
             },
             {
-              "name": "feature/issue114-fdt-before-object",
+              "name": "feature/issue66-tunnel-passthrough",
               "default": false,
-              "last_commit": "2026-10-14"
+              "last_commit": "2026-10-16"
             },
             {
               "name": "feature/mbs-profile",
@@ -4519,7 +4462,7 @@
           "description": "MBS Function (MBSF)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-15",
+          "pushed_at": "2026-10-16",
           "pulls": [
             {
               "number": 74,
@@ -4528,15 +4471,6 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-15",
-              "base": "development"
-            },
-            {
-              "number": 71,
-              "title": "mbsf: send the request that was waiting for an MBSTF discovery",
-              "url": "https://github.com/5G-MAG/rt-mbs-function/pull/71",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-09",
               "base": "development"
             },
             {
@@ -4569,7 +4503,7 @@
             },
             {
               "number": 72,
-              "title": "MBSF: User Service Description document may contain a different entry point to FLUTE stream",
+              "title": "MBSF: User Service Description document may contain a different entry point to FLUTE stream (e.g. due to permanent redirects)",
               "url": "https://github.com/5G-MAG/rt-mbs-function/issues/72",
               "author": "davidjwbbc",
               "created_at": "2026-10-12",
@@ -4697,24 +4631,19 @@
               "last_commit": "2026-07-03"
             },
             {
-              "name": "feature/mbs5-announcement",
+              "name": "development",
               "default": false,
-              "last_commit": "2026-10-15"
-            },
-            {
-              "name": "fix/mbsf-first-request",
-              "default": false,
-              "last_commit": "2026-10-15"
+              "last_commit": "2026-10-16"
             },
             {
               "name": "fix/mbsf-usac-create-retry",
               "default": false,
-              "last_commit": "2026-10-15"
+              "last_commit": "2026-10-16"
             },
             {
-              "name": "development",
+              "name": "feature/mbs5-announcement",
               "default": false,
-              "last_commit": "2026-10-09"
+              "last_commit": "2026-10-15"
             },
             {
               "name": "fix/apply-new-format",
@@ -4734,8 +4663,26 @@
           "description": "MBS Transport Function (MBSTF)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-09",
+          "pushed_at": "2026-10-16",
           "pulls": [
+            {
+              "number": 81,
+              "title": "mbstf: announce an object for at least a minimum time in the FDT, whatever the origin says",
+              "url": "https://github.com/5G-MAG/rt-mbs-transport-function/pull/81",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-16",
+              "base": "development"
+            },
+            {
+              "number": 80,
+              "title": "mbstf: serve every push ingest session on the configured httpPushIngest port",
+              "url": "https://github.com/5G-MAG/rt-mbs-transport-function/pull/80",
+              "draft": false,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-16",
+              "base": "development"
+            },
             {
               "number": 76,
               "title": "docs: apply the 5G-MAG README format",
@@ -4743,15 +4690,6 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-09-29",
-              "base": "development"
-            },
-            {
-              "number": 71,
-              "title": "Fix MBS Broadcast content delivery crashes and Distribution Session bugs",
-              "url": "https://github.com/5G-MAG/rt-mbs-transport-function/pull/71",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-11",
               "base": "development"
             }
           ],
@@ -4768,17 +4706,6 @@
               ]
             },
             {
-              "number": 78,
-              "title": "MBSTF aborts after about 64 distinct notification addresses: SBI clients are never removed",
-              "url": "https://github.com/5G-MAG/rt-mbs-transport-function/issues/78",
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-08",
-              "labels": [
-                "bug",
-                "MBSTF"
-              ]
-            },
-            {
               "number": 77,
               "title": "MBSTF applies no FEC to Packet Distribution Sessions (setPacketFEC is a stub)",
               "url": "https://github.com/5G-MAG/rt-mbs-transport-function/issues/77",
@@ -4786,36 +4713,6 @@
               "created_at": "2026-10-07",
               "labels": [
                 "enhancement",
-                "MBSTF"
-              ]
-            },
-            {
-              "number": 75,
-              "title": "405 responses do not carry the Allow header they are required to",
-              "url": "https://github.com/5G-MAG/rt-mbs-transport-function/issues/75",
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-18",
-              "labels": []
-            },
-            {
-              "number": 74,
-              "title": "An object ingested with no Content-Type header leaves the MBSTF with no media type for the FDT",
-              "url": "https://github.com/5G-MAG/rt-mbs-transport-function/issues/74",
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-16",
-              "labels": [
-                "bug",
-                "MBSTF"
-              ]
-            },
-            {
-              "number": 73,
-              "title": "No multi-symbol object is deliverable: FLUTE symbols sized from the first hop, and segments re-sent under fresh TOIs",
-              "url": "https://github.com/5G-MAG/rt-mbs-transport-function/issues/73",
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-07",
-              "labels": [
-                "bug",
                 "MBSTF"
               ]
             },
@@ -4828,27 +4725,6 @@
               "labels": [
                 "enhancement",
                 "MBSTF"
-              ]
-            },
-            {
-              "number": 59,
-              "title": "Rapid refetch on failure",
-              "url": "https://github.com/5G-MAG/rt-mbs-transport-function/issues/59",
-              "author": "davidjwbbc",
-              "created_at": "2026-04-28",
-              "labels": [
-                "enhancement",
-                "MBSTF"
-              ]
-            },
-            {
-              "number": 44,
-              "title": "MBSTF: Do not send multiple MPDs on reactivation of STREAMING DistSession",
-              "url": "https://github.com/5G-MAG/rt-mbs-transport-function/issues/44",
-              "author": "davidjwbbc",
-              "created_at": "2025-12-04",
-              "labels": [
-                "bug"
               ]
             },
             {
@@ -4869,19 +4745,24 @@
               "last_commit": "2026-07-03"
             },
             {
-              "name": "feature/mbs-compliance-fixes",
+              "name": "development",
               "default": false,
-              "last_commit": "2026-10-09"
+              "last_commit": "2026-10-16"
+            },
+            {
+              "name": "fix/mbstf-minimum-fdt-expiry",
+              "default": false,
+              "last_commit": "2026-10-16"
+            },
+            {
+              "name": "fix/mbstf-push-fixed-port",
+              "default": false,
+              "last_commit": "2026-10-16"
             },
             {
               "name": "fix/apply-new-format",
               "default": false,
               "last_commit": "2026-09-29"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-09-04"
             },
             {
               "name": "backup/pre-rewrite-20260907",
@@ -4929,16 +4810,6 @@
             }
           ],
           "issues": [
-            {
-              "number": 32,
-              "title": "MbsSession redMbsServArea is read; extRedMbsServArea (location-dependent) is not",
-              "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/issues/32",
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-22",
-              "labels": [
-                "enhancement"
-              ]
-            },
             {
               "number": 6,
               "title": "PCF PolicyAuthorization test app: Add demo view and controls",
@@ -5097,7 +4968,7 @@
           "description": "Generic 3GPP Data Collection AF",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-09",
+          "pushed_at": "2026-10-16",
           "pulls": [
             {
               "number": 34,
@@ -5182,14 +5053,14 @@
               "last_commit": "2025-05-13"
             },
             {
-              "name": "feature/integration-test",
-              "default": false,
-              "last_commit": "2026-10-09"
-            },
-            {
               "name": "bugfix/dcaf-subproject-integration",
               "default": false,
-              "last_commit": "2026-10-03"
+              "last_commit": "2026-10-16"
+            },
+            {
+              "name": "feature/integration-test",
+              "default": false,
+              "last_commit": "2026-10-16"
             },
             {
               "name": "fix/apply-new-format",
@@ -6341,15 +6212,15 @@
           "description": "FLUTE Protocol and Profiles",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-15",
+          "pushed_at": "2026-10-16",
           "pulls": [
             {
-              "number": 115,
-              "title": "Transmitter: update the FDT before queueing an object in send(FileDescription)",
-              "url": "https://github.com/5G-MAG/rt-libflute/pull/115",
+              "number": 116,
+              "title": "Receiver: take tunnel datagrams as they are when no packet_modifier is given",
+              "url": "https://github.com/5G-MAG/rt-libflute/pull/116",
               "draft": false,
               "author": "jordijoangimenez",
-              "created_at": "2026-10-14",
+              "created_at": "2026-10-16",
               "base": "development"
             },
             {
@@ -6381,16 +6252,6 @@
             }
           ],
           "issues": [
-            {
-              "number": 114,
-              "title": "Transmitter: an object queued while the session runs can be sent before the FDT Instance describing it",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/114",
-              "author": "jordijoangimenez",
-              "created_at": "2026-10-14",
-              "labels": [
-                "bug"
-              ]
-            },
             {
               "number": 108,
               "title": "Merge order for #62, #61 and #68: no single branch carries the receiver API rt-mbs-client builds against",
@@ -6430,16 +6291,6 @@
               ]
             },
             {
-              "number": 99,
-              "title": "Document the three FLUTE profiles: what each is, who selects it, and where they differ",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/99",
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-04",
-              "labels": [
-                "documentation"
-              ]
-            },
-            {
               "number": 81,
               "title": "Support FLUTE version 2 (RFC 6726), which supersedes the version this library implements",
               "url": "https://github.com/5G-MAG/rt-libflute/issues/81",
@@ -6463,26 +6314,6 @@
               "number": 79,
               "title": "Content-Length is substituted for a missing Transfer-Length even for a content-encoded object",
               "url": "https://github.com/5G-MAG/rt-libflute/issues/79",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 78,
-              "title": "A zero FEC OTI divisor hangs object construction, and the receive loop never re-arms",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/78",
-              "author": "jordijoangimenez",
-              "created_at": "2026-08-22",
-              "labels": [
-                "bug"
-              ]
-            },
-            {
-              "number": 77,
-              "title": "Object compression path: three defects in the zlib encode and decode loops",
-              "url": "https://github.com/5G-MAG/rt-libflute/issues/77",
               "author": "jordijoangimenez",
               "created_at": "2026-08-22",
               "labels": [
@@ -6537,12 +6368,12 @@
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-15"
+              "last_commit": "2026-10-16"
             },
             {
-              "name": "feature/issue114-fdt-before-object",
+              "name": "feature/issue66-tunnel-passthrough",
               "default": false,
-              "last_commit": "2026-10-14"
+              "last_commit": "2026-10-16"
             },
             {
               "name": "feature/mbs-profile",
@@ -6593,8 +6424,26 @@
           "description": "5G-MAG's fork of Open5GS",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-09",
+          "pushed_at": "2026-10-16",
           "pulls": [
+            {
+              "number": 57,
+              "title": "sbi: carry collocated NF instances in the NF profile",
+              "url": "https://github.com/5G-MAG/open5gs/pull/57",
+              "draft": true,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-16",
+              "base": "improvements"
+            },
+            {
+              "number": 56,
+              "title": "Port bbc-patches onto Open5GS v2.8.0",
+              "url": "https://github.com/5G-MAG/open5gs/pull/56",
+              "draft": true,
+              "author": "jordijoangimenez",
+              "created_at": "2026-10-16",
+              "base": "improvements"
+            },
             {
               "number": 55,
               "title": "docs: apply the 5G-MAG README format",
@@ -6810,6 +6659,16 @@
               "last_commit": "2025-08-13"
             },
             {
+              "name": "port/bbc-patches",
+              "default": false,
+              "last_commit": "2026-10-16"
+            },
+            {
+              "name": "port/nrf-collocation",
+              "default": false,
+              "last_commit": "2026-10-16"
+            },
+            {
               "name": "5mbs-development",
               "default": false,
               "last_commit": "2026-10-09"
@@ -6833,6 +6692,11 @@
               "name": "backup/pre-rewrite-20260907",
               "default": false,
               "last_commit": "2026-08-12"
+            },
+            {
+              "name": "improvements",
+              "default": false,
+              "last_commit": "2026-06-20"
             },
             {
               "name": "5mbs",
@@ -7172,16 +7036,6 @@
             }
           ],
           "issues": [
-            {
-              "number": 32,
-              "title": "MbsSession redMbsServArea is read; extRedMbsServArea (location-dependent) is not",
-              "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/issues/32",
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-22",
-              "labels": [
-                "enhancement"
-              ]
-            },
             {
               "number": 6,
               "title": "PCF PolicyAuthorization test app: Add demo view and controls",

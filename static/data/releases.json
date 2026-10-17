@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-16 01:47 UTC",
+  "updated_at": "2026-10-17 01:42 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -375,14 +375,23 @@
       "tagline": "Real-time conversational avatars, animated from user to user",
       "releases_slug": "#repositories--releases",
       "image": "/assets/images/projects/avatar.png",
-      "latest_date": "2026-07-31",
+      "latest_date": "2026-10-16",
       "releases": [
+        {
+          "repo": "rt-avatar-content",
+          "branch": null,
+          "tag": "v0.10.154",
+          "date": "2026-10-16",
+          "url": "https://github.com/5G-MAG/rt-avatar-content/releases/tag/v0.10.154",
+          "author_login": "nlsdvl",
+          "author_avatar": "https://avatars.githubusercontent.com/u/2748737?v=4"
+        },
         {
           "repo": "rt-avatar-call",
           "branch": null,
-          "tag": "v0.9.1",
-          "date": "2026-07-31",
-          "url": "https://github.com/5G-MAG/rt-avatar-call/releases/tag/v0.9.1",
+          "tag": "v0.10.154",
+          "date": "2026-10-16",
+          "url": "https://github.com/5G-MAG/rt-avatar-call/releases/tag/v0.10.154",
           "author_login": "nlsdvl",
           "author_avatar": "https://avatars.githubusercontent.com/u/2748737?v=4"
         }

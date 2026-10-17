@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-16 01:48 UTC",
+  "updated_at": "2026-10-17 01:42 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -198,13 +198,13 @@
         {
           "repo": "rt-libflute",
           "branch": null,
-          "number": 115,
-          "title": "Transmitter: update the FDT before queueing an object in send(FileDescription)",
-          "url": "https://github.com/5G-MAG/rt-libflute/pull/115",
+          "number": 116,
+          "title": "Receiver: take tunnel datagrams as they are when no packet_modifier is given",
+          "url": "https://github.com/5G-MAG/rt-libflute/pull/116",
           "draft": false,
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-10-14",
+          "created_at": "2026-10-16",
           "last_comment_by": null,
           "last_comment_date": null
         },
@@ -646,6 +646,45 @@
       "tagline": "Multicast and Broadcast delivery for 5G-NR-based terrestrial and non-terrestrial networks",
       "pulls": [
         {
+          "repo": "rt-mbs-transport-function",
+          "branch": null,
+          "number": 81,
+          "title": "mbstf: announce an object for at least a minimum time in the FDT, whatever the origin says",
+          "url": "https://github.com/5G-MAG/rt-mbs-transport-function/pull/81",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-16",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-mbs-transport-function",
+          "branch": null,
+          "number": 80,
+          "title": "mbstf: serve every push ingest session on the configured httpPushIngest port",
+          "url": "https://github.com/5G-MAG/rt-mbs-transport-function/pull/80",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-16",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
+          "repo": "rt-libflute",
+          "branch": null,
+          "number": 116,
+          "title": "Receiver: take tunnel datagrams as they are when no packet_modifier is given",
+          "url": "https://github.com/5G-MAG/rt-libflute/pull/116",
+          "draft": false,
+          "author_login": "jordijoangimenez",
+          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
+          "created_at": "2026-10-16",
+          "last_comment_by": null,
+          "last_comment_date": null
+        },
+        {
           "repo": "rt-mbs-function",
           "branch": null,
           "number": 74,
@@ -655,32 +694,6 @@
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-10-15",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-libflute",
-          "branch": null,
-          "number": 115,
-          "title": "Transmitter: update the FDT before queueing an object in send(FileDescription)",
-          "url": "https://github.com/5G-MAG/rt-libflute/pull/115",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-10-14",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-mbs-function",
-          "branch": null,
-          "number": 71,
-          "title": "mbsf: send the request that was waiting for an MBSTF discovery",
-          "url": "https://github.com/5G-MAG/rt-mbs-function/pull/71",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-10-09",
           "last_comment_by": null,
           "last_comment_date": null
         },
@@ -850,19 +863,6 @@
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-08-23",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-mbs-transport-function",
-          "branch": null,
-          "number": 71,
-          "title": "Fix MBS Broadcast content delivery crashes and Distribution Session bugs",
-          "url": "https://github.com/5G-MAG/rt-mbs-transport-function/pull/71",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-08-11",
           "last_comment_by": null,
           "last_comment_date": null
         },
@@ -1436,52 +1436,13 @@
         {
           "repo": "rt-avatar-content",
           "branch": null,
-          "number": 7,
-          "title": "content supporting rt-avatar-call v0.10.154",
-          "url": "https://github.com/5G-MAG/rt-avatar-content/pull/7",
-          "draft": false,
+          "number": 8,
+          "title": "feature/unityarf 1.1.0.155",
+          "url": "https://github.com/5G-MAG/rt-avatar-content/pull/8",
+          "draft": true,
           "author_login": "nlsdvl",
           "author_avatar": "https://avatars.githubusercontent.com/u/2748737?v=4",
-          "created_at": "2026-10-09",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-avatar-call",
-          "branch": null,
-          "number": 53,
-          "title": "Update UnityARF to 1.1.0.155",
-          "url": "https://github.com/5G-MAG/rt-avatar-call/pull/53",
-          "draft": false,
-          "author_login": "nlsdvl",
-          "author_avatar": "https://avatars.githubusercontent.com/u/2748737?v=4",
-          "created_at": "2026-10-09",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-avatar-call",
-          "branch": null,
-          "number": 52,
-          "title": "rt-avatar-call v0.10.154",
-          "url": "https://github.com/5G-MAG/rt-avatar-call/pull/52",
-          "draft": false,
-          "author_login": "nlsdvl",
-          "author_avatar": "https://avatars.githubusercontent.com/u/2748737?v=4",
-          "created_at": "2026-10-09",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-3gpp-swap",
-          "branch": null,
-          "number": 9,
-          "title": "Close TS 26.113 §13.2.4 (SWAP) conformance gaps; add license",
-          "url": "https://github.com/5G-MAG/rt-3gpp-swap/pull/9",
-          "draft": false,
-          "author_login": "nlsdvl",
-          "author_avatar": "https://avatars.githubusercontent.com/u/2748737?v=4",
-          "created_at": "2026-09-17",
+          "created_at": "2026-10-16",
           "last_comment_by": null,
           "last_comment_date": null
         }
@@ -1639,13 +1600,13 @@
         {
           "repo": "rt-libflute",
           "branch": null,
-          "number": 115,
-          "title": "Transmitter: update the FDT before queueing an object in send(FileDescription)",
-          "url": "https://github.com/5G-MAG/rt-libflute/pull/115",
+          "number": 116,
+          "title": "Receiver: take tunnel datagrams as they are when no packet_modifier is given",
+          "url": "https://github.com/5G-MAG/rt-libflute/pull/116",
           "draft": false,
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-10-14",
+          "created_at": "2026-10-16",
           "last_comment_by": null,
           "last_comment_date": null
         },
@@ -1818,21 +1779,7 @@
       "name": "Real-time Media Communication (RTC) Architecture",
       "doc_url": "/reference-tools/rtc/",
       "tagline": "Interactive, low-latency, real-time media communication",
-      "pulls": [
-        {
-          "repo": "rt-3gpp-swap",
-          "branch": null,
-          "number": 9,
-          "title": "Close TS 26.113 §13.2.4 (SWAP) conformance gaps; add license",
-          "url": "https://github.com/5G-MAG/rt-3gpp-swap/pull/9",
-          "draft": false,
-          "author_login": "nlsdvl",
-          "author_avatar": "https://avatars.githubusercontent.com/u/2748737?v=4",
-          "created_at": "2026-09-17",
-          "last_comment_by": null,
-          "last_comment_date": null
-        }
-      ]
+      "pulls": []
     },
     {
       "name": "Non-Terrestrial Networks in 5G Systems",
