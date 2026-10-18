@@ -262,7 +262,7 @@ export const SHOWCASE_BASKETS = {
       {
         id: 'xr-scenes',
         project: 'xr',
-        icon: 'ar-frame',
+        icon: 'cube-spark',
         title: 'XR and 3D scenes',
         diagram: null,
         showcase: {
