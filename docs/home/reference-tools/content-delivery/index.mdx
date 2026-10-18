@@ -12,6 +12,7 @@ import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { REPO_METADATA } from '@site/src/data/baskets';
 import ProjectSlide from '@site/src/components/ProjectSlide';
+import FigurePair from '@site/src/components/FigurePair';
 
 export const REPO_COUNT = (REPO_METADATA['content-delivery'] || []).length;
 
@@ -37,7 +38,21 @@ These tools address the application-layer delivery protocols that sit above the 
 
 ## What's Built
 
-**{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
+<FigurePair
+  figures={[
+    {
+      label: 'FLUTE',
+      src: '/img/tech/content-delivery/generated/ts26346-fig10-status.svg',
+      width: 892, height: 288,
+      title: 'Building block structure of FLUTE, with Reference Tools status',
+      source: 'Based on TS 26.346 V19.3.0, figure 10',
+      alt: 'The building block structure of FLUTE: FLUTE on top of ALC, which is made of LCT, CC and FEC, with CC and FEC drawn dashed. The FLUTE library (rt-libflute) provides it. LCT is implemented; CC and FEC are partial; ALC has no status.',
+    },
+  ]}
+  note="Status from the FLUTE code audit of 6 October 2026 (unprofiled FLUTE, RFC 3926 and the documents it builds on), taken from the audit feature of the same name: implemented when every audited case is, partial when some differ from the specification or are absent. The audit has no feature for ALC, so it has none. The media origin, the reference media application, the CMMF encoder and the conformance validator are not on the figure: no specification figure shows them. Click the figure to enlarge it."
+/>
+
+**{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below. For the per-feature FLUTE audit behind the figure, see [Implementation Detail](./implementation).
 
 ## Standards implemented
 

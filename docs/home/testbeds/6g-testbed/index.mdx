@@ -9,6 +9,7 @@ description: "The testbed 3GPP SA4 uses to measure the traffic of AI media servi
 import CommunityStats from '@site/src/components/CommunityStats';
 import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
+import FigurePair from '@site/src/components/FigurePair';
 import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
@@ -47,6 +48,22 @@ The 6G media study records the traffic characteristics of AI media services from
 <img loading="lazy" style={{width: "100%", height: "auto"}} src={useBaseUrl('/img/testbeds/6g-testbed/architecture.svg')} width="1200" height="672" alt="The Scenario Orchestrator drives the scenarios (chat, agents, image, video and audio) and MCP tool servers, through the LLM client layer, L7 capture with mitmproxy and the network emulator with tc/netem profiles, to the LLM and tool APIs on the Internet. Capture and analysis: L3/L4 capture with tcpdump and L7 capture with mitmproxy feed the TrafficLogger, which feeds the MetricsCalculator (TTFT, TTLT, UL/DL, loop factor) and the visualization." />
 <figcaption>Testbed architecture, from the 6G-Testbed repository.</figcaption>
 </figure>
+
+## What's Built
+
+<FigurePair
+  figures={[
+    {
+      label: 'Metrics collection',
+      src: '/img/tech/6g-testbed/generated/tr26870-figD.4.2-1-status.svg',
+      width: 1200, height: 870,
+      title: 'Metrics collection pipeline, with Reference Tools',
+      source: 'Based on TR 26.870 V0.6.1, figure D.4.2-1',
+      alt: 'The metric collection and logging pipeline of TR 26.870: a client, the log record created in BaseScenario, the TrafficLogger, the SQLite database, the MetricsCalculator, the ScenarioMetrics object and the 3GPP-format JSON report. All seven are provided by the Reference Tools, in the 6G-Testbed repository.',
+    },
+  ]}
+  note="TR 26.870 has no architecture figure for the testbed; this pipeline is its only figure of the software, and it names classes and functions of the repository's code. No code audit covers the repository, so no part carries an implemented or partial status. The diagram above shows the whole testbed. Click the figure to enlarge it."
+/>
 
 <div class="godeeper-grid godeeper-grid--4col">
 

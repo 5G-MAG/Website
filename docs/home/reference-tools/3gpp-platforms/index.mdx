@@ -12,6 +12,7 @@ import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { REPO_METADATA } from '@site/src/data/baskets';
 import ProjectSlide from '@site/src/components/ProjectSlide';
+import FigurePair from '@site/src/components/FigurePair';
 
 export const REPO_COUNT = (REPO_METADATA['3gpp-platforms'] || []).length;
 
@@ -38,6 +39,20 @@ The project provides configurations, scripts, and integration guides for standin
 </ProjectSlide>
 
 ## What's Built
+
+<FigurePair
+  figures={[
+    {
+      label: '5G System',
+      src: '/img/tech/3gpp-platforms/generated/ts23501-fig4.2.3-2-status.svg',
+      width: 995, height: 696,
+      title: 'Non-roaming 5G System architecture in reference point representation, with Reference Tools',
+      source: 'Based on TS 23.501 V20.3.0, figure 4.2.3-2',
+      alt: 'The non-roaming 5G System architecture in reference point representation. The 5G-MAG fork of Open5GS provides the AMF, SMF, UPF, PCF, UDM, AUSF and NSSF, the fork of the srsRAN Project (rt-srsRAN_Project) provides the (R)AN, and the fork of srsRAN_4G provides the UE. The NSSAAF, NSACF and AF have no repository. No reference point carries a status.',
+    },
+  ]}
+  note="No code audit covers these platforms, so no part carries a status. The Open5GS parts are those whose source directories the fork contains. The UE follows the project's own description of srsRAN_4G as the basis of UE functions for MBS. The figure shows the 5G core and NR; the LTE-based 5G Broadcast side of srsRAN_4G has no figure here. Click the figure to enlarge it."
+/>
 
 **{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project: the 5G-MAG forks of Open5GS and srsRAN, listed below.
 

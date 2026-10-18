@@ -13,6 +13,7 @@ import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { REPO_METADATA } from '@site/src/data/baskets';
 import ProjectSlide from '@site/src/components/ProjectSlide';
+import FigurePair from '@site/src/components/FigurePair';
 
 export const REPO_COUNT = (REPO_METADATA['xr'] || []).length;
 
@@ -45,6 +46,20 @@ The tools enable delivery of dynamic 3D scenes composed of glTF (GL Transmission
 <em>Volumetric capture demo running on the 5G-MAG Reference Tools.</em>
 
 ## What's Built
+
+<FigurePair
+  figures={[
+    {
+      label: 'Baseline client',
+      src: '/img/tech/xr/generated/ts26119-fig5.1-1-status.svg',
+      width: 1200, height: 748,
+      title: 'XR Baseline terminal architecture, with Reference Tools',
+      source: 'Based on TS 26.119 V19.1.0, figure 5.1-1',
+      alt: 'The XR Baseline Client architecture: XR Runtime, XR Source Management, Presentation engine, Scene Manager, Media Access Function and Media Session handler, with the Application and the 5G System. The Presentation engine is provided by the XR Unity Player (rt-xr-unity-player), which builds on rt-xr-gITFast, and the Media Access Function by rt-xr-maf-native. The other parts have no repository.',
+    },
+  ]}
+  note="No code audit covers the XR repositories, so no part carries an implemented or partial status; parts without a repository are not provided by the Reference Tools. The tools implement ISO/IEC 23090-14, whose Presentation Engine and Media Access Function this figure names. Click the figure to enlarge it."
+/>
 
 **{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
 

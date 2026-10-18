@@ -8,6 +8,7 @@ description: The AI/ML evaluation framework used for the AI4Media scenarios of 3
 import CommunityStats from '@site/src/components/CommunityStats';
 import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
+import FigurePair from '@site/src/components/FigurePair';
 import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
@@ -44,6 +45,22 @@ The reference tooling is currently private and under testing. [Request early acc
 The repository README describes the purpose as to "establish an evaluation framework and use it for the evaluation of scenarios collected for the FS_AI4Media study", with "common testbed architectures and anchors, metrics (e.g. AI/ML task metrics, feasibility/performance metrics), and specific details (such as test configuration and constraints) for each scenario evaluation". 3GPP TR 26.847 V19.0.0 clause 4.1 states: "A common set of architectures is assumed for the evaluation framework, unless specified otherwise, irrespective of the scenario." Its reference [16] is this repository ("5G-MAG repository for AI4Media evaluations").
 
 </ProjectSlide>
+
+## What's Built
+
+<FigurePair
+  figures={[
+    {
+      label: 'Model data testbed',
+      src: '/img/tech/ai-ml/generated/ts26847-fig4.3-1-status.svg',
+      width: 1200, height: 936,
+      title: 'Model data testbed architecture, with Reference Tools',
+      source: 'Based on TR 26.847 V19.0.0, figure 4.3-1',
+      alt: 'The model data testbed architecture of TR 26.847: Test Dataset, Anchor Model, Test Configuration, Test Encoder, Test Decoder and Metrics Logs and Computation are provided by the Reference Tools (rt-ai-ml-evaluation-framework). The Test Dataset Pre-processor, Test Bitstream, Test Network, Test Model, the two Inference Output Processors and Test Metrics have no repository.',
+    },
+  ]}
+  note="No code audit covers this repository, so no part carries an implemented or partial status. The mapping of boxes to the repository is for its maintainers to confirm; the split inferencing testbed of figure 4.2-1 is not drawn. Click the figure to enlarge it."
+/>
 
 ## Repositories & Releases
 

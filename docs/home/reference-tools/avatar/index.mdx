@@ -12,6 +12,7 @@ import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { REPO_METADATA } from '@site/src/data/baskets';
 import ProjectSlide from '@site/src/components/ProjectSlide';
+import FigurePair from '@site/src/components/FigurePair';
 
 export const REPO_COUNT = (REPO_METADATA['avatar'] || []).length;
 
@@ -41,6 +42,20 @@ Avatars are synthesised digital representations of participants, animated in rea
 </ProjectSlide>
 
 ## What's Built
+
+<FigurePair
+  figures={[
+    {
+      label: 'Avatar reference architecture',
+      src: '/img/tech/avatar/generated/ts26813-fig7.1-1-status.svg',
+      width: 1200, height: 749,
+      title: 'Avatar Reference Architecture, with Reference Tools',
+      source: 'Based on TR 26.813 V20.0.0, figure 7.1-1',
+      alt: 'The avatar reference architecture: Animation Data Generation, Base Avatar Generation, Avatar Animation, Scene Management and Avatar Storage, with the data between them. Animation Data Generation and Avatar Animation are provided by rt-avatar-call (using MediaPipe and UnityARF), and the Base Avatar content by rt-avatar-content. Base Avatar Generation, Scene Management and Avatar Storage have no repository.',
+    },
+  ]}
+  note="No code audit covers the avatar repositories, so no part carries an implemented or partial status. rt-3gpp-swap (call signalling) and rt-avatar-unity-tracker (no code yet) do not appear in this figure. All avatar repositories are private today. Click the figure to enlarge it."
+/>
 
 **{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project: all private today; see [Early Access](/early-access) to request access.
 

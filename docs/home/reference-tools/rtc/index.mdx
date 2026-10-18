@@ -8,6 +8,7 @@ description: "Real-time Media Communication (RTC): there is no dedicated Referen
 
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import ProjectSlide from '@site/src/components/ProjectSlide';
+import FigurePair from '@site/src/components/FigurePair';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -25,6 +26,22 @@ import ProjectSlide from '@site/src/components/ProjectSlide';
 There is no dedicated Reference Tool for RTC yet. One related repository, the 3GPP SWAP Protocol, is already tracked and listed below. It is shared with the [Conversational Avatar Communication with MPEG ARF](/reference-tools/avatar) project, which owns it. To help build an RTC tool, see [Contributing](/contributing) or ask in the [developer community](/community).
 
 </ProjectSlide>
+
+## What's Built
+
+<FigurePair
+  figures={[
+    {
+      label: 'RTC general architecture',
+      src: '/img/tech/rtc/generated/ts26506-fig4.1.1-2-status.svg',
+      width: 1200, height: 830,
+      title: 'RTC General Architecture, with Reference Tools',
+      source: 'Based on TS 26.506 V20.0.0, figure 4.1.1-2',
+      alt: 'The RTC general architecture: RTC Application, RTC Client with the RTC Media Session Handler and RTC Access Function, RTC AF, RTC AS and the RTC Application Provider. Only the WebRTC Signalling Function in the RTC AS has a repository, rt-3gpp-swap, the reference SWAP server.',
+    },
+  ]}
+  note="There is no dedicated RTC tool yet. TS 26.113 names a SWAP server as a WebRTC Signalling Function server; rt-3gpp-swap provides SWAP signalling only. No code audit covers it, so no part carries a status. Click the figure to enlarge it."
+/>
 
 ## Repositories & Releases
 

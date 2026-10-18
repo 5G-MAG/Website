@@ -48,14 +48,23 @@ TS 26.265 defines service-independent video operation points and capabilities, w
 <figcaption>Reference architecture for video Operation points and capabilities. Redrawn from TS 26.265 V19.3.0, figure 4.2-1.</figcaption>
 </figure>
 
-## Where the validator fits
+## What's Built
 
 TS 26.265 annex B provides a set of conformance functions: annotated video test signals, reference encoders and configurations, a conformance validator, conforming decoders, and conformance bitstreams. The validator tests whether a bitstream claiming to conform to an operation point does, and if not, which test assertions fail. This testbed is that validator.
 
-<figure style={{maxWidth: '900px', margin: '1.5rem auto'}}>
-<img loading="lazy" style={{width: "100%", height: "auto"}} src={useBaseUrl('/img/testbeds/vops/ts26265-figB.1-1.svg')} width="1900" height="964" alt="The Encoder Configuration for Operation Point and the Video Signal Test Sequences with annotation feed the Reference Software Encoder. Its bitstream goes to the Conformance Validator, which returns a report and a description; coded metadata goes to the Conforming Decoder, which returns a report and an MD5. All of these, with the encoding configuration and the video signal metadata, form the Conformance Bitstream with annotation, which provides a bitstream to a decoder under test and conformance information to the decoder conformance test." />
-<figcaption>Overview of conformance functionalities provided for this specification. Redrawn from TS 26.265 V19.3.0, figure B.1-1.</figcaption>
-</figure>
+<FigurePair
+  figures={[
+    {
+      label: 'Conformance functionalities',
+      src: '/img/tech/vops/generated/ts26265-figB.1-1-status.svg',
+      width: 1200, height: 716,
+      title: 'Overview of conformance functionalities, with Reference Tools',
+      source: 'Based on TS 26.265 V19.3.0, figure B.1-1',
+      alt: 'The conformance functionalities of TS 26.265 annex B: the encoder configuration and the test sequences feed the Reference Software Encoder, whose bitstream goes to the Conformance Validator, which returns a report and a description, and coded metadata goes to the Conforming Decoder. All of these form the Conformance Bitstream with annotation, which serves a decoder under test and the decoder conformance test. Only the Conformance Validator is provided by the Reference Tools (vops-conformance-validator).',
+    },
+  ]}
+  note="Only the Conformance Validator is mapped to a repository, from the repository README. No code audit gives a status. The README lists each operation point as implemented but not yet tested with its conformance bitstreams. Click the figure to enlarge it."
+/>
 
 ## Operation points
 
@@ -126,10 +135,10 @@ See [Standards: VOPS Conformance Validator](/standards/vops) for the specificati
 <summary>Sources for this page</summary>
 
 - **At a glance and What it does:** TS 26.265 V19.3.0, Introduction, clause 4.2 (Operation Point, Conforming Receiver) and annex B.2.3.
-- **Where the validator fits:** TS 26.265 V19.3.0, annex B.1 and B.3.
+- **What's Built:** TS 26.265 V19.3.0, annex B.1 and B.3; the repository README for the mapping.
 - **Operation points:** TS 26.265 V19.3.0, table 6.1-1, clauses 6.2.2.2, 6.3.2.2 to 6.3.5.2, 6.3.6 and 6.3.4.3; validator names from the repository README.
 - **How it works:** the repository README (including the pipeline figure); TS 26.265 V19.3.0, annex B.2.3.
-- **Figures:** redrawn from TS 26.265 V19.3.0, figures 4.2-1 and B.1-1.
+- **Figures:** redrawn from TS 26.265 V19.3.0, figure 4.2-1; figure B.1-1 is the basis of the What's Built figure.
 - **Status:** the repository README (status badge and operation point table).
 
 </details>

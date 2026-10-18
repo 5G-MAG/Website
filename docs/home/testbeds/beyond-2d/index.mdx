@@ -8,6 +8,7 @@ description: Introduces the Beyond 2D Evaluation Framework for benchmarking poin
 import CommunityStats from '@site/src/components/CommunityStats';
 import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectRepositories from '@site/src/components/ProjectRepositories';
+import FigurePair from '@site/src/components/FigurePair';
 import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
@@ -35,6 +36,22 @@ See also: <a href={useBaseUrl('/testbeds/beyond-2d/tutorials#developer-exchange'
 The framework enables standardised benchmarking of encoding, streaming, and rendering pipelines for content that goes beyond traditional flat-screen delivery, feeding directly into 3GPP and MPEG standardisation of new immersive video formats.
 
 </ProjectSlide>
+
+## What's Built
+
+<FigurePair
+  figures={[
+    {
+      label: 'Evaluation framework',
+      src: '/img/tech/beyond-2d/generated/ts26956-fig6.1-1-status.svg',
+      width: 1200, height: 465,
+      title: 'B2D Evaluation framework, with Reference Tools',
+      source: 'Based on TR 26.956 V19.0.1, figure 6.1-1',
+      alt: 'The Beyond 2D evaluation framework of TR 26.956: reference sequences go through the B2D Video Encoder, pseudo packaging, pseudo unpacking and the B2D Video Decoder to the recovered sequence, with a configuration and a metrics determination step. The Configuration, B2D Video Encoder, B2D Video Decoder and Metrics Determination/Computation are provided by the Reference Tools (rt-beyond2d-evaluation-framework); the other parts have no repository.',
+    },
+  ]}
+  note="No code audit covers this repository, so no part carries an implemented or partial status. The mapping follows the repository's multi-view plus depth (MVD) scripts, which run the TMIV encoder and decoder and compute objective metrics; the repository README still marks its three scenarios as under construction, and the point cloud folder is not mapped. Click the figure to enlarge it."
+/>
 
 ## Repositories & Releases
 

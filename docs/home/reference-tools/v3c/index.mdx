@@ -12,6 +12,7 @@ import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { REPO_METADATA } from '@site/src/data/baskets';
 import ProjectSlide from '@site/src/components/ProjectSlide';
+import FigurePair from '@site/src/components/FigurePair';
 
 export const REPO_COUNT = (REPO_METADATA['v3c'] || []).length;
 
@@ -39,6 +40,20 @@ The platform provides an end-to-end pipeline for 3D object and scene delivery, a
 </ProjectSlide>
 
 ## What's Built
+
+<FigurePair
+  figures={[
+    {
+      label: 'Beyond 2D Video model',
+      src: '/img/tech/v3c/generated/ts26956-fig4.2.1-1-status.svg',
+      width: 1200, height: 568,
+      title: 'Beyond 2D Video end-to-end reference model, with Reference Tools',
+      source: 'Based on TR 26.956 V19.0.1, figure 4.2.1-1',
+      alt: 'The Beyond 2D Video end-to-end reference model, from content generation to the video encoder, the video decoder and rendering. The encoder side is provided by the tools in rt-v3c-content, the decoder by rt-v3c-decoder-plugin and the rendering by rt-v3c-unity-player. Other parts have no repository.',
+    },
+  ]}
+  note="This 3GPP study model is general to Beyond 2D formats, and V3C is one such format. No code audit covers the V3C repositories, so no part carries an implemented or partial status. Click the figure to enlarge it."
+/>
 
 **{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
 
