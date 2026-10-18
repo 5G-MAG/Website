@@ -15,7 +15,7 @@ export const XR_SPECS = [
     title: 'Coded representation of immersive media; Part 14: Scene description',
     url: 'https://www.iso.org/standard/90191.html',
     layer: 'MPEG',
-    note: 'published in 2023 as a set of extensions to Khronos glTF 2.0; the 2023 edition (Edition 1) is now withdrawn, consolidated with Amendment 1 (immersive audio, scene understanding and related extensions) into Edition 2 (2025), linked here -- Amendment 2 (anchors, interactivity, MPEG_avatar, lighting, haptics) is still a separate, not-yet-published Draft Amendment, not part of this edition -- see src/data/specs/avatar.js for that citation',
+    note: 'second edition, ISO/IEC 23090-14:2025 (2025-11): the MPEG extensions to Khronos glTF 2.0, including AR anchoring, interactivity, avatars and lighting in clause 8, support for MPEG-I media in annex G.1 and G.2 and haptics in annex G.3; Amendment 1 is a final draft (FDAM 1, 2026-05-01)',
   },
   {
     id: 'Khronos glTF 2.0',

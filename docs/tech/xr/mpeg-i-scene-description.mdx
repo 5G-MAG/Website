@@ -86,6 +86,7 @@ A third group of extensions (purple in the figure) enables the distribution of r
 - Avatar (<span style={{color: 'var(--mpeg-ext-purple)', fontWeight: 'bold'}}>MPEG_node_avatar</span>), to support the representation of 3D avatars.
 - Lighting (<span style={{color: 'var(--mpeg-ext-purple)', fontWeight: 'bold'}}>MPEG_lights_texture_based</span>, <span style={{color: 'var(--mpeg-ext-purple)', fontWeight: 'bold'}}>MPEG_light_punctual</span>), to provide a realistic user experience including shadows and lighting.
 - Haptics (<span style={{color: 'var(--mpeg-ext-purple)', fontWeight: 'bold'}}>MPEG_haptic</span>), to support haptics based on the MPEG standard for Coded representation of Haptics by attaching haptic information to a node or to a mesh.
+- MPEG-I media codecs (<span style={{color: 'var(--mpeg-ext-purple)', fontWeight: 'bold'}}>MPEG_primitive_V3C</span>, <span style={{color: 'var(--mpeg-ext-purple)', fontWeight: 'bold'}}>MPEG_sampler_YCbCr</span>), defined in annex G: the first provides the syntax of V3C objects (ISO/IEC 23090-5 or ISO/IEC 23090-12) as an extension to mesh.primitive, the second lets a video texture in YCbCr format be sampled natively on devices such as GPUs.
 
 ## How timed media reaches the renderer
 
@@ -106,14 +107,11 @@ The result is that the Presentation Engine never needs to know the transport or 
 
 ## Editions and amendments
 
-ISO/IEC 23090-14 has evolved since its first publication:
+This page follows ISO/IEC 23090-14:2025, second edition, published 2025-11. Its foreword states that it "cancels and replaces the first edition (ISO/IEC 23090-14:2023)" and "incorporates the Amendment ISO/IEC 23090-14/Amd 1:2023", and lists the main changes as "addition of the support of MPEG-I immersive media codecs, AR anchoring, interactivity, avatar, lighting and MPEG-I haptics". TS 26.143 V19.1.0 cites the AR, interactivity, avatar, lighting and haptics support as "ISO/IEC 23090-14 AMD 2".
 
-- **First edition (2023).** Established the base extensions, the MAF/Presentation Engine model and the buffer interfaces on top of glTF 2.0 (TS 26.119 V19.1.0 clause 2 lists ISO/IEC 23090-14:2023 and Amendment 1:2023).
-- **Amendment 1.** Added support for MPEG-I immersive audio, scene understanding and related extensions.
-- **Amendment 2** (in development at the time of writing). Adds support for haptics, augmented reality, avatars, interactivity, MPEG-I audio and lighting; several of the purple-group extensions above (`MPEG_anchor`, the interactivity extensions, `MPEG_node_avatar`, the lighting extensions, `MPEG_haptic`) originate here (TS 26.143 V19.1.0 clause 2; TS 26.143 V19.1.0 clause 5.8; TS 26.119 V19.1.0 clause 2).
-- **Second edition (2025).** Consolidates the base text and Amendment 1 into a single document. Amendment 2 remains a separate, not-yet-published document (in the ISO enquiry/DIS stage as this is written) rather than folded into this edition.
+Amendment 1 to the second edition, "Support of MPEG-I audio, scene understanding and other extensions", is at final draft stage (FDAM 1, dated 2026-05-01). Among its changes, it adds a recommendedSpatialComputingConfig object to the MPEG_anchor extension (clause 8.1).
 
-Because features arrived across editions and amendments, a given implementation may support only a subset of the extensions. The developer-facing support matrix for the 5G-MAG reference tools is on the [XR Implementation Detail page](/reference-tools/xr/implementation).
+A given implementation may support only a subset of the extensions. The developer-facing support matrix for the 5G-MAG reference tools is on the [XR Implementation Detail page](/reference-tools/xr/implementation).
 
 ## Relationship to 3GPP delivery
 

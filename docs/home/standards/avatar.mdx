@@ -30,8 +30,8 @@ The standardisation spans MPEG (avatar representation and scene placement) and 3
 | Role                       | Specifications                                                    |
 | -------------------------- | ------------------------------------------------------------------ |
 | Avatar representation      | ISO/IEC 23090-39 (ARF)                                             |
-| Scene placement            | ISO/IEC 23090-14 and Amendment 2 (MPEG-I Scene Description)        |
-| Real-time media transport  | TS 26.114, TS 26.506, draft-ietf-avtcore-rtp-avatar                |
+| Scene placement            | ISO/IEC 23090-14 (MPEG-I Scene Description)                         |
+| Real-time media transport  | TS 26.114, TS 26.506, TS 26.264, draft-ietf-avtcore-rtp-avatar     |
 | Immersive audio            | TS 26.250 to TS 26.258 (IVAS)                                      |
 
 For the release-by-release history behind these specifications, see [Standards Evolution](/standards/avatar/evolution).
@@ -40,12 +40,22 @@ For the release-by-release history behind these specifications, see [Standards E
 
 The MPEG, 3GPP and IETF deliverables behind avatar communications, filterable by the role they play. Search matches the specification number, its title and any scope note.
 
-ISO/IEC 23090-39 (ARF) defines interoperable storage, carriage and animation of 3D avatars, and is designed to work with MPEG-I Scene Description (ISO/IEC 23090-14; see the [XR page](/standards/xr) for the full Scene Description treatment, including the amendment that adds avatar support). See [Conversational Avatar Communication with MPEG ARF](/tech/avatar) for the ARF data model and end-to-end procedure.
+ISO/IEC 23090-39 (ARF) defines interoperable storage, carriage and animation of 3D avatars, and is designed to work with MPEG-I Scene Description (ISO/IEC 23090-14; see the [XR page](/standards/xr) for the full Scene Description treatment, including the avatar extension in clause 8.3 of the second edition). See [Conversational Avatar Communication with MPEG ARF](/tech/avatar) for the ARF data model and end-to-end procedure.
 
 IVAS is the 3GPP immersive voice and audio codec developed by working group SA4. Its deliverables span the general overview, the fixed- and floating-point C code, test material, the detailed algorithmic description (including the RTP payload format and SDP parameters used to negotiate the codec in a session), rendering, error concealment, and jitter buffer management.
 
 <SpecIndex specs={AVATAR_SPECS} layerOrder={AVATAR_LAYER_ORDER} />
 
+
+## What TS 26.264 states
+
+TS 26.264 V19.4.1 (IMS-based AR Real-Time Communication, Release 19) specifies avatar calls over the IMS data channel.
+
+- **Clause 5.6.1:** "An AR-MTSI Rx client that supports avatars shall support the ARF container in both ISO BMFF and ZIP formats." The same clause notes: "The ARF specification is still under development. Some details may change."
+- **Clause 6.3.2:** "The data channel sub-protocol shall be identified as “3gpp-ar-animation” and included in the dcmap attribute of the SDP for the corresponding data-channel m-line." Also: "Each 3gpp-ar-animation data channel message shall contain ARF animation units pertaining to exactly one animation sample." and "No compression scheme is defined for animation samples."
+- **Clause 6.4.2:** the integration of ARF avatars in a scene uses the MPEG_node_avatar extension of ISO/IEC 23090-14.
+- **Clauses 5.6.2.2 and 5.6.3.2:** the 3D and 2D avatar simple profiles, designated by the URNs "urn:3gpp:avatar:profile:3d:simple" and "urn:3gpp:avatar:profile:2d:simple".
+- **Annex A.2.3:** "Three avatar animation modes are defined for avatar call over the IMS data channel:" sender-centric, where "the sender UE animates and renders its avatar representation before sending it to the receiving UE as 2D video"; receiver-centric, where "the receiving UE animates and renders the sender UE’s avatar representation"; and network-centric, where "the MF animates and renders the sender UE’s avatar representation before sending it to the receiving UE as 2D video."
 
 ## What TR 26.813 states
 

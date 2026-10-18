@@ -19,23 +19,22 @@ export const AVATAR_SPECS = [
     title: 'Coded representation of immersive media; Part 14: Scene description',
     url: 'https://www.iso.org/standard/90191.html',
     layer: 'Scene placement',
-    note: 'published in 2023 as a set of extensions to Khronos glTF 2.0; the 2023 edition (Edition 1) is now withdrawn, consolidated with Amendment 1 into Edition 2 (2025), linked here -- Amendment 2 (avatar support, see below) is not part of this edition',
+    note: 'second edition, ISO/IEC 23090-14:2025 (2025-11); its clause 8.3 defines the MPEG_node_avatar extension and annex H the reference avatar',
   },
   {
-    // Corrected 2026-08-25: this used to claim Amendment 2 was "consolidated
-    // directly into Edition 2" with its own catalog entry "retired". Neither
-    // holds: ISO's catalogue carries Amendment 2 as an active, distinct
-    // Draft Amendment (DAmd) at the URL below, currently at the enquiry/DIS
-    // stage, not yet published and not folded into Edition 2 -- only
-    // Amendment 1 is (see the base entry above). Same correction applied to
-    // docs/tech/xr/mpeg-i-scene-description.mdx's "Editions and amendments"
-    // section, which had the identical overclaim.
-    id: 'ISO/IEC 23090-14 Amd 2',
-    title:
-      'Support for haptics, augmented reality, avatars, interactivity, MPEG-I audio, and lighting',
-    url: 'https://www.iso.org/standard/86439.html',
+    id: 'ISO/IEC 23090-14 Amd 1',
+    title: 'Support of MPEG-I audio, scene understanding and other extensions',
+    url: 'https://www.iso.org/standard/90191.html',
     layer: 'Scene placement',
-    note: 'the amendment that adds avatar support to Scene Description; still a separate Draft Amendment at the ISO enquiry stage as this is written, not yet published and not part of Edition 2 (2025) above',
+    note: 'Amendment 1 to the second edition; final draft (FDAM 1, 2026-05-01). The avatar extension and the reference avatar are in clause 8.3 and annex H of the second edition',
+  },
+  {
+    id: 'TS 26.264',
+    title: 'IMS-based AR Real-Time Communication',
+    url: 'https://www.3gpp.org/dynareport/26264.htm',
+    layer: 'Real-time media transport',
+    release: '19',
+    note: 'avatar calls over the IMS data channel: ARF container and profile requirements (clause 5.6), the avatar animation data channel (clause 6.3.2), network animation and rendering (clause 7.3.2) and the three animation modes (annex A.2.3); V19.4.1',
   },
   {
     id: 'TS 26.114',
