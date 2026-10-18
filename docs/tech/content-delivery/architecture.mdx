@@ -24,9 +24,9 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 :::tip[At a glance]
 
-- **Unprofiled FLUTE:** a file delivery session is an ALC/LCT session: one sender, one or more channels, identified by the sender's IP address and the TSI (RFC 3926 section 3.1; RFC 3450 section 2.1).
-- **MBMS download:** the BM-SC sends files over MBMS bearers with FLUTE; the MBMS Client receives them (TS 26.346 V19.3.0 clause 7.1; TS 26.346 V19.3.0 clause L.4.1). The same method carries DASH segments and MPDs (TS 26.346 V19.3.0 clause 5.6).
-- **MBS Object Distribution:** the MBSTF ingests objects, segments them, optionally adds FEC and packetises them; the MBSTF Client receives them over FLUTE (TS 26.502 V19.6.0 clause 4.3.3.2; TS 26.517 V19.3.0 clause 6.2.1). The MBS AS serves missing portions for repair (TS 26.502 V19.6.0 clause 4.2.6; TS 26.517 V19.3.0 clause 6.2.4.1).
+- **Unprofiled FLUTE:** a file delivery session is an ALC/LCT session: one sender, one or more channels, identified by the sender's IP address and the TSI.
+- **MBMS download:** the BM-SC sends files, including DASH segments and MPDs, over MBMS bearers with FLUTE.
+- **MBS Object Distribution:** the MBSTF segments objects, optionally adds FEC and sends them over FLUTE; the MBS AS serves repair.
 
 :::
 

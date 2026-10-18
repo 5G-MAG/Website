@@ -5,6 +5,8 @@ hide_title: true
 description: Indexes the CAMARA APIs 5G-MAG analyses and how they map onto underlying 3GPP NEF and PCF service-based interfaces.
 ---
 
+import JumpMenu from '@site/src/components/JumpMenu';
+
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -15,6 +17,16 @@ description: Indexes the CAMARA APIs 5G-MAG analyses and how they map onto under
 <h1>Network API Analysis</h1>
 </div>
 </div>
+
+:::tip[At a glance]
+
+- **What it is:** an index of the CAMARA network APIs 5G-MAG analyses and how they map onto the underlying 3GPP NEF and PCF interfaces.
+- **Why it matters:** a media application sees a small REST resource, while the NEF, the PCF and the user plane do the work behind it.
+- **Where it stands:** under development and subject to change, reflecting outcomes elaborated by 5G-MAG members.
+
+:::
+
+<JumpMenu items={[["Network API Initiatives under analysis", "network-api-initiatives-under-analysis"], ["CAMARA APIs for Communication Quality Management", "camara-apis-for-communication-quality-management"], ["Details on the device object", "details-on-the-device-object"], ["Details on the Application Server", "details-on-the-application-server"], ["Relevant QoS Parameters", "relevant-qos-parameters"], ["3GPP APIs for Quality of Service", "3gpp-apis-for-quality-of-service"], ["Cross-cutting CAMARA rules (Commonalities)", "cross-cutting-camara-rules-commonalities"], ["How it works", "how-it-works"]]} />
 
 :::warning
 This documentation is currently **under development and subject to change**. It reflects outcomes elaborated by 5G-MAG members. If you are interested in becoming a member of the 5G-MAG and actively participating in shaping this work, please contact the [Project Office](/contact)

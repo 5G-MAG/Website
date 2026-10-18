@@ -21,13 +21,9 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 :::tip[At a glance]
 
-- **How MBS Broadcast differs:** there is no join. The same content goes to all UEs in a geographical area, and the UE receives it in RRC_IDLE, RRC_INACTIVE or RRC_CONNECTED (TS 38.300 V19.4.0 clause 16.10.6.2; TS 23.247 V20.0.0 clause 3.1).
-- **Network set-up:** the AF, or the MBSF on behalf of an MBS Application Provider, obtains a TMGI and creates the MBS Session at the MB-SMF. The MB-SMF configures the MB-UPF and asks the AMFs, which set up the session in every NG-RAN node that supports MBS in the MBS service area (TS 23.247 V20.0.0 clause 7.1.1.2 steps 1 to 11, 14 to 17, 7.3.1 steps 2 and 3).
-- **The radio chain:** MIB, then SIB1, which schedules SIB20; SIB20 configures the MCCH; the MCCH carries the MBSBroadcastConfiguration message, which lists the sessions with their G-RNTI and MTCH scheduling; the UE then receives the MTCH (TS 38.331 V19.4.0 clause 5.9.1.1, 6.3.2; TS 38.300 V19.4.0 clause 16.10.6.2).
-- **States:** a UE can acquire the MCCH and receive broadcast in RRC_IDLE, RRC_INACTIVE and RRC_CONNECTED (TS 38.300 V19.4.0 clause 16.10.6.2).
-- **Identifiers:** MCCH-RNTI (FFFD) for the MCCH, a G-RNTI per session for the MTCH; both scheduled with DCI format 4_0 (TS 38.321 V19.4.0 clause 7.1; TS 38.212 V19.4.0 clause 7.3.1, 7.3.1.5.1).
-- **No feedback:** broadcast has no HARQ-ACK feedback and uses dynamic scheduling only; slot-level repetition is supported for MTCH (TS 38.300 V19.4.0 clause 16.10.6.6).
-- **Mobility:** the same session must be established in the target node with 5GC Shared delivery; the UE finds the frequency of a service from the USD and SIB21, and in RRC_CONNECTED reports its interest to the gNB; in NTN cells, the intended service areas of SIB27 apply (Release 19) (TS 23.247 V20.0.0 clause 6.3.2; TS 38.300 V19.4.0 clause 16.10.6.5.1, 16.10.6.5.2, 16.14.12; TS 38.331 V19.4.0 clause 5.9.1.1).
+- **How MBS Broadcast differs:** there is no join. The same content goes to all UEs in a geographical area.
+- **Network set-up:** the AF, or the MBSF on its behalf, obtains a TMGI and creates the session, which is set up in every NG-RAN node that supports MBS.
+- **Radio chain:** MIB, SIB1, SIB20, MCCH, then MTCH, received in RRC_IDLE, RRC_INACTIVE or RRC_CONNECTED.
 
 :::
 

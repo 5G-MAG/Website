@@ -25,12 +25,9 @@ This documentation is currently **under development and subject to change**. If 
 
 :::tip[At a glance]
 
-- **The requirement:** deliver multicast content over an NTN, with the gNB switching each UE between point-to-point (PTP) and point-to-multipoint (PTM) delivery.
-- **What 3GPP provides:** the multicast MBS session of TS 23.247. NG-RAN is the decision point for switching between PTP and PTM, and the gNB decides per UE based on information such as the QoS requirements and the number of joined UEs.
-- **What Release 19 says about NTN:** its MBS-specific NTN text is about the broadcast MBS session (the Intended Service Area). TS 23.247 states NTN support for the Broadcast MBS Session and has no NTN clause for the multicast MBS session.
-- **What exists for multicast on NTN radio:** a MAC timer, HARQ-RTT-TimerDL-PTM-NTN, which adds the UE-gNB round trip to the multicast DRX HARQ timer. It has been in TS 38.321 since Release 17.
-- **States:** RRC_CONNECTED with PTP and/or PTM, or RRC_INACTIVE with PTM only.
-- **5G-MAG analysis (beyond Release 19):** autonomous PTP and PTM switching over NTN, with the ephemeris as an extra trigger to move a device to PTP before a beam change, and application-layer repair for reliability.
+- **The requirement:** deliver multicast content over an NTN, with the gNB switching each UE between point-to-point (PTP) and point-to-multipoint (PTM).
+- **What Release 19 says about NTN:** its MBS-specific NTN text covers the broadcast MBS session only, with no NTN clause for multicast.
+- **5G-MAG analysis (beyond Release 19):** autonomous PTP and PTM switching over NTN, using the ephemeris as an extra trigger, plus application-layer repair.
 
 :::
 

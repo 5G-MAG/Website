@@ -21,6 +21,14 @@ description: The 5G Core service APIs that 5G-MAG components consume, which Netw
 </div>
 </div>
 
+:::tip[At a glance]
+
+- **What it is:** the 5G Core Service Consumers libraries, which package the consumer side of 5G Core services so 5G-MAG components can reuse it.
+- **Why it matters:** Components such as an Application Function can then call 5G Core Network Functions without each rebuilding the client side.
+- **In this section:** This page lists the services consumed from the PCF, BSF, MB-SMF and NRF, and what each library does.
+
+:::
+
 The 5G Core is made of Network Functions, each offering services through service-based interfaces. A component that needs one of those services acts as the **NF service consumer** of it. The 5G Core Service Consumers libraries package that consumer side so that different 5G-MAG components can reuse it, for example an Application Function calling the PCF, or the MBS Function calling the MB-SMF. Only the Network Functions that 5G Media Streaming and 5G MBS use are covered.
 
 ## The services consumed

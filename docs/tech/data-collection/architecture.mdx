@@ -27,10 +27,9 @@ TS 26.531 defines a generic reference architecture for data collection, reportin
 
 :::tip[At a glance]
 
-- **Reference points:** R1 provisioning, R2 to R4 configuration and data reporting, R5 and R6 event exposure, R7 a client API on the UE (TS 26.531 V19.0.0 clause 4.3). R8 is outside 3GPP standardisation (TS 26.531 V19.0.0 clause 4.3, NOTE 5).
-- **Services:** Ndcaf_DataReportingProvisioning (R1) and Ndcaf_DataReporting (R2 to R4), specified in TS 26.532; Naf_EventExposure (R5, R6), specified in TS 29.517.
-- **Deployment:** the Data Collection AF may sit inside or outside the trusted domain (TS 26.531 V19.0.0 clause 4.2 (item 2)). Outside it, the NEF exposes the Data Collection AF's Naf_EventExposure service to Network Functions inside the trusted domain as Nnef_EventExposure (TS 26.531 V19.0.0 clause 4.7.1 and annex A clause A.5).
-- **In 5GMS:** the Data Collection AF sits in the 5GMS AF; provisioning moves to M1, and QoE and consumption reports travel over M5 (TS 26.501 V20.0.0 clause 4.7.1).
+- **Reference points:** R1 provisioning, R2 to R4 configuration and data reporting, R5 and R6 event exposure, R7 a client API on the UE.
+- **Services and deployment:** the Data Collection AF may sit inside or outside the trusted domain; outside it, the NEF exposes its events.
+- **In 5GMS:** the Data Collection AF sits in the 5GMS AF; provisioning moves to M1, and reports travel over M5.
 
 :::
 

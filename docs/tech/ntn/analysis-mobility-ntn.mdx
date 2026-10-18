@@ -24,12 +24,9 @@ This documentation is currently **under development and subject to change**. If 
 
 :::tip[At a glance]
 
-- **NTN cells:** Earth-fixed, quasi-Earth-fixed or Earth-moving, depending on the service link. With NGSO satellites the gNB provides a quasi-Earth-fixed or an Earth-moving service link.
-- **What the UE is told:** SIB19 carries the satellite assistance information, including the ephemeris, the time when the cell stops serving its area (`t-Service`) and the cell's reference location.
-- **Handover:** conditional handover in NTN adds three trigger conditions: event A4, a time-based condition and a location-based condition. DAPS handover is not supported for NTN.
-- **Without a handover:** for a transparent payload and a quasi-Earth-fixed cell, the satellite switch with re-synchronization keeps the same PCI, which avoids L3 mobility for the UEs in the cell.
-- **5G-MAG analysis (beyond Release 19):** a comparison of the deployment models, with soft and hard beam switches, PTP protection of the affected UEs during a switch, and the roaming options between independent operators.
-- **Multicast:** Release 19 has no NTN-specific text for multicast mobility. The generic MBS mobility of TS 23.247 and TS 38.300 applies. In Release 19, MBS for roaming is not supported (TS 23.247 V19.3.0 clause 4.1); in Release 20, a roaming UE can receive the MBS of the VPLMN (TS 23.247 V20.0.0 clause 4.1).
+- **NTN cells:** Earth-fixed, quasi-Earth-fixed or Earth-moving, depending on the service link; SIB19 gives the UE the satellite assistance information.
+- **Handover:** conditional handover in NTN adds event A4, time-based and location-based triggers; DAPS handover is not supported.
+- **Multicast:** Release 19 has no NTN-specific multicast mobility text; MBS for roaming is not supported in Release 19 but is in Release 20.
 
 :::
 

@@ -24,12 +24,9 @@ This documentation is currently **under development and subject to change**. If 
 
 :::tip[At a glance]
 
-- **The question:** how a group of UEs receiving a multicast MBS session keeps receiving it, ideally without loss, when NTN coverage changes because the satellite moves or because the UEs move.
-- **What Release 19 specifies for this combination:** nothing NTN-specific. TS 23.247 has no NTN clause for the multicast MBS session, and the MBS clause of TS 38.300 has no NTN text. The generic MBS mobility applies, together with the NTN mobility procedures.
-- **No group handover:** Release 19 has no handover procedure for a group of UEs. Each UE in RRC_CONNECTED is handed over on its own; UEs in RRC_INACTIVE receiving PTM reselect cells on their own.
-- **Lossless handover:** supported between multicast-supporting cells if the UE is configured with a PTP RLC AM entity in the target cell MRB. Whether to deliver by PTM and/or PTP is the gNB's decision per UE; Release 19 has no NTN-specific trigger for it.
-- **Without a handover:** for a quasi-Earth-fixed cell with a transparent payload, the satellite switch with re-synchronization keeps the same PCI and avoids L3 mobility for the UEs in the cell.
-- **Proposed approach (5G-MAG analysis, beyond Release 19):** use the predictability of satellite motion to prepare the target in advance, move to PTP only the UEs that need protection during the change, and return the group to PTM on the target beam.
+- **The question:** how UEs receiving a multicast MBS session keep receiving it, ideally without loss, when NTN coverage changes.
+- **What Release 19 specifies:** nothing NTN-specific for this combination, and no group handover; each UE is handed over on its own.
+- **5G-MAG analysis (beyond Release 19):** use predictable satellite motion to prepare the target and protect only some UEs with PTP.
 
 :::
 

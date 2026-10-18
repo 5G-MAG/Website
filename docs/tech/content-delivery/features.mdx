@@ -31,10 +31,9 @@ Each profile takes FLUTE from a different set of documents, and the columns foll
 
 :::tip[At a glance]
 
-- **Unprofiled FLUTE** leaves most choices open: the FEC scheme beyond Compact No-Code, content encoding, the number of channels (TS 26.346 V19.3.0 clause A; RFC 3926 section 3.4.3; RFC 3926 section 4; RFC 3926 section 5). Its one heavy obligation is multiple-rate congestion control, which ALC requires, unless flow and congestion control are provided by other means in a controlled network (RFC 3450 section 2.2; RFC 3926 section 4).
-- **MBMS download** narrows FLUTE for a network without congestion control: one channel at one rate, fixed LCT header sizes, an extended FDT with more mandatory data, Raptor in every UE, gzip only, and file repair over unicast (TS 26.346 V19.3.0 clause 7.2.4; TS 26.346 V19.3.0 clause 7.2.7; TS 26.346 V19.3.0 clause 7.2.9; TS 26.346 V19.3.0 clause 7.2.2; TS 26.346 V19.3.0 clause 7.2.5; TS 26.346 V19.3.0 clause 9.3.1).
-- **MBS Object Distribution** follows the MBMS Download Profile, describes its objects with the Profiled FDT Schema, adds four operating modes, its own session description attribute and Object Repair (TS 26.517 V19.3.0 clause 6.2.1; TS 26.517 V19.3.0 clause 6.2.3.2; TS 26.517 V19.3.0 clause 6.2.2.2; TS 26.517 V19.3.0 clause 6.2.4).
-- **Releases:** Release 19 raises both FDT schema versions, adds repair attributes to the FDT and in-session unicast repair to both profiles; Release 18 changes only wording on these features (TS 26.346 V19.3.0 clause 7.2.10.1; TS 26.346 V19.3.0 clause L.6.3; TS 26.346 V19.3.0 clause 7.2.9; TS 26.346 V19.3.0 clause 9.4B; TS 26.517 V19.3.0 clause 6.2.4.3).
+- **What it covers:** how unprofiled FLUTE, MBMS download and MBS Object Distribution differ in what they require.
+- **Unprofiled FLUTE** leaves most choices open; the MBMS and MBS profiles narrow it for a network without congestion control.
+- **Releases:** Release 19 raises both FDT schema versions and adds repair features; Release 18 changes only wording.
 
 :::
 

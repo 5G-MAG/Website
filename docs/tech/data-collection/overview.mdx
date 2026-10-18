@@ -26,10 +26,9 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 :::tip[At a glance]
 
-- **What it is:** a generic architecture for collecting and reporting data in the 5G System (TS 26.531), with its APIs and data models (TS 26.532).
-- **The central function:** the Data Collection AF (TS 26.531 V19.0.0 clause 4.1). It collects UE data from data collection clients, processes it, and exposes it as events to the NWDAF and to Event Consumer AFs (TS 26.531 V19.0.0 clause 4.1 and clause 4.2 (item 2)).
-- **Generic, then instantiated:** the architecture is meant to be instantiated in domain-specific ways (TS 26.531 V19.0.0 clause 4.1). 5G Media Streaming instantiates it, with the Data Collection AF inside the 5GMS AF (TS 26.501 V20.0.0 clause 4.7.1).
-- **Releases:** created in Release 17; Release 18 adds immediate report delivery and ANBR-based Network Assistance reporting; Release 19 carries Release 18 forward (TS 26.531 V19.0.0 annex C (change history, 2022-06 'Under Change Control' 17.0.0); TS 26.532 V19.1.0 annex C) (TS 26.531 V19.0.0 annex C (CR 0007, 18.0.0); TS 26.532 V19.1.0 annex C (CR 0005, 18.0.0; CR 0004, 18.1.0)).
+- **What it is:** a generic architecture for collecting and reporting data in the 5G System, with its APIs and data models.
+- **The central function:** the Data Collection AF collects UE data from clients, processes it, and exposes events to the NWDAF and Event Consumer AFs.
+- **Releases:** created in Release 17; Release 18 adds immediate report delivery and ANBR-based Network Assistance reporting.
 
 :::
 

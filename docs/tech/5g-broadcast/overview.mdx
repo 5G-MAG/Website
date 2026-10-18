@@ -20,6 +20,14 @@ description: Placeholder for the 5G Broadcast technical analysis deep-dive; stru
 </div>
 </div>
 
+:::tip[At a glance]
+
+- **What it is:** LTE-based 5G Broadcast, a one-way system for delivering linear TV and radio to receivers with no SIM or return channel.
+- **Why it matters:** It lets broadcasters reach devices over a broadcast physical layer, without per-user connections.
+- **In this section:** This page covers how a receiver acquires a cell, the numerologies and bandwidths, and the features by release.
+
+:::
+
 ## How it works
 
 A 5G Broadcast receiver has to bootstrap itself from nothing: there's no SIM, no return channel, and no prior connection to the network. LTE-based 5G Broadcast is a one-way physical layer built on the LTE TS 36.xxx series -- a receiver acquires the cell, reads the broadcast control information, then decodes the multicast traffic channel, with no uplink and no per-user state (ETSI TS 103 720 V1.2.1 clause 7.2; ETSI TS 103 720 V1.2.1 clause 7.3.1; TR 36.976 V19.0.0 clause 1; ETSI TS 103 720 V1.2.1 clause 6.4.6).

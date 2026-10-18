@@ -26,10 +26,9 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 :::tip[At a glance]
 
-- **What it is:** protocols that deliver files and media objects in one direction, from a sender to receivers, over UDP/IP: FLUTE and ROUTE (RFC 3926 section 1; RFC 5775 Abstract; RFC 9223 section 1.1 and 1.2; ETSI TS 103 973 V1.2.2 clause 4.3.1). CMMF is a container for coded media that such protocols can carry (ETSI TS 103 973 V1.2.2 Introduction; ETSI TS 103 973 V1.2.2 clause 4.3.1).
-- **FLUTE:** built on ALC, which combines the LCT, congestion control and FEC building blocks (RFC 3450 section 2; TS 26.346 V19.3.0 clause 7.1; RFC 6726 section 1). FLUTE adds the File Delivery Table (FDT), sent in band, that describes each file. Version 1 is RFC 3926, the version 3GPP refers to; version 2 is RFC 6726.
-- **Three FLUTE profiles:** unprofiled FLUTE, as the IETF defines it; MBMS download (TS 26.346); and the MBS Object Distribution Method (TS 26.517), which conforms to the MBMS Download Profile with additional requirements.
-- **ROUTE and CMMF:** ROUTE (RFC 9223) delivers objects with real-time constraints; CMMF (ETSI TS 103 973) carries coded representations of media from several sources. Each has its own page.
+- **What it is:** protocols that deliver files and media objects in one direction, from a sender to receivers, over UDP/IP: FLUTE and ROUTE.
+- **FLUTE:** built on ALC, adding an in-band File Delivery Table; it has three profiles: unprofiled, MBMS download and MBS Object Distribution.
+- **ROUTE and CMMF:** ROUTE delivers objects with real-time constraints; CMMF carries coded media from several sources. Each has its own page.
 
 :::
 

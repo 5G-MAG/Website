@@ -24,10 +24,9 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 :::tip[At a glance]
 
-- **The cycle:** a Provisioning AF provisions what to collect; clients obtain a configuration and report; the Data Collection AF processes the reports and exposes events to subscribers (TS 26.532 V19.1.0 clause 4.1 (items 2, 4, 5, 6); TS 26.531 V19.0.0 clauses 5.2, 5.4, 5.5, 5.6).
-- **Control of exposure:** Data Access Profiles define the processing applied before any event leaves the Data Collection AF, along time, user and location (TS 26.531 V19.0.0 clause 4.5.2).
-- **APIs:** TS 26.532 specifies Ndcaf_DataReportingProvisioning, Ndcaf_DataReporting and the R7 client API; event exposure uses Naf_EventExposure from TS 29.517.
-- **In 5GMS:** QoE metrics, consumption, dynamic policy and Network Assistance invocations, and media streaming access activity, exposed as five media streaming event types (TS 29.517 V20.1.0 clause 4.1.1 and clause 5.6.3.3 (table 5.6.3.3-1)).
+- **The cycle:** a Provisioning AF provisions what to collect; clients report; the Data Collection AF processes reports and exposes events.
+- **Control of exposure:** Data Access Profiles define the processing applied before any event leaves the Data Collection AF.
+- **In 5GMS:** QoE metrics, consumption, dynamic policy, Network Assistance and access activity, exposed as five media streaming event types.
 
 :::
 

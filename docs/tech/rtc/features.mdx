@@ -29,10 +29,9 @@ import SpecFigure from '@site/src/components/SpecFigure';
 
 :::tip[At a glance]
 
-- **The cycle:** the RTC Application Provider creates a Provisioning Session in the RTC AF at RTC-1; the RTC Media Session Handler retrieves the resulting configuration at RTC-5, then uses dynamic policies, Network Assistance and reporting during the session (TS 26.506 V20.0.0 clauses 5.1, 5.2.1, 5.2.2; TS 26.113 V19.2.0 clauses 4.2.1, 4.2.2).
-- **APIs:** subsets of the TS 26.510 provisioning and media session handling APIs, plus one RTC-specific provisioning API for STUN, TURN and signalling services.
-- **Signalling and media:** SWAP over WebSocket for operator-hosted sessions; media over SRTP and data over the WebRTC data channel (TS 26.113 V19.2.0 clauses 13.2.1, 13.2.4.2, 9.2; TS 26.506 V20.0.0 annex A.1).
-- **Release 19: dynamic policies gain PDU handling and marking enhancements; RTC endpoints gain media capability requirements and may carry timed metadata over the data channel (TS 26.113 V19.2.0 annex D (CR 0011, 0012, 0013), clauses 9.2, 10.3, 16; TS 26.506 V20.0.0 annex C (CR 0010)).
+- **The cycle:** the Application Provider provisions at RTC-1; the Media Session Handler gets its configuration at RTC-5, then uses policies, Network Assistance and reporting.
+- **Signalling and media:** SWAP over WebSocket for operator-hosted sessions; media over SRTP and data over the WebRTC data channel.
+- **Release 19:** dynamic policies gain PDU handling and marking enhancements; endpoints gain media capability requirements and timed metadata.
 
 :::
 

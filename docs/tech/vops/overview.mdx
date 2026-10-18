@@ -5,6 +5,8 @@ hide_title: true
 description: "Video Operation Points: the video capabilities and operation points of 3GPP TS 26.265, and the conformance validator that checks bitstreams against them."
 ---
 
+import JumpMenu from '@site/src/components/JumpMenu';
+
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -18,6 +20,16 @@ description: "Video Operation Points: the video capabilities and operation point
 <h1>Video Operation Points</h1>
 </div>
 </div>
+
+:::tip[At a glance]
+
+- **What it is:** the video capabilities and operation points that 3GPP and third-party services can refer to, plus a conformance validator.
+- **Why it matters:** video capabilities are largely independent of the service, so one definition supports interoperability across services.
+- **Where it stands:** some AVC and HEVC definitions, an encoder API mapping and the validator report format are still for further study.
+
+:::
+
+<JumpMenu items={[["Why the specification exists", "why-the-specification-exists"], ["What an operation point is", "what-an-operation-point-is"], ["Reference architecture", "reference-architecture"], ["Capabilities and operation points", "capabilities-and-operation-points"], ["What is still open", "what-is-still-open"], ["Conformance and the validator", "conformance-and-the-validator"], ["Sources", "sources"]]} />
 
 ## Why the specification exists
 

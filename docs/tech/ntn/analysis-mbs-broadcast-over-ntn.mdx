@@ -24,11 +24,8 @@ This documentation is currently **under development and subject to change**. If 
 
 :::tip[At a glance]
 
-- **What is supported:** transmission of a broadcast MBS session over NR non-terrestrial networks (NTN). The NTN additions were made in Release 19.
-- **What stays the same:** a broadcast MBS session uses 5GC Shared MBS traffic delivery with PTM delivery only, and the UE receives it in RRC_IDLE, RRC_INACTIVE or RRC_CONNECTED.
-- **What NTN adds:** an Intended Service Area (ISA), a geographical area signalled for MBS broadcast services. It can denote an area smaller than a cell.
-- **Where the ISA travels:** from the NEF/MBSF, inside the MBS service area, through the MB-SMF and the AMF to NG-RAN, then to the UE in SIB27, with each session linked to its ISAs in the MCCH.
-- **What the UE does with it:** inside an ISA it may start receiving the session and prioritise its frequency; on leaving the ISA it may stop. How the UE decides whether it is inside an ISA is left to the UE implementation.
+- **What is supported:** transmission of a broadcast MBS session over NR non-terrestrial networks (NTN); the NTN additions were made in Release 19.
+- **What NTN adds:** an Intended Service Area (ISA), signalled to the UE in SIB27, which may start or stop reception inside or outside it.
 - **Not supported:** location-dependent MBS services for broadcast over NR NTN.
 
 :::
