@@ -162,7 +162,7 @@ The fourth work item is unrelated to the terrestrial bands above: [**LTE_band_5G
 ---
 
 
-## Related Standards Work
+## Related
 
 - [Standards: 5G Multicast Broadcast Services (MBS)](/standards/5g-mbs)
 - [Standards: 5G MBS - Standards Evolution](/standards/5g-mbs/evolution)
