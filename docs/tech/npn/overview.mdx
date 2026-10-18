@@ -35,10 +35,10 @@ operator's Public Land Mobile Network (PLMN) with private access control (Public
 Network Integrated NPN, PNI-NPN, which uses a Closed Access Group, CAG, to restrict
 which devices may connect).
 
-**Key specifications:** 3GPP [TS 23.501](https://www.3gpp.org/dynareport/23501.htm) (NPN architecture,
-clauses on SNPN and PNI-NPN), [TS 33.501](https://www.3gpp.org/dynareport/33501.htm) (NPN security),
-[TS 22.261](https://www.3gpp.org/dynareport/22261.htm) (service
-requirements for NPNs).
+**Key specifications:** 3GPP [TS 23.501](https://www.3gpp.org/dynareport/23501.htm) V20.3.0 (NPN architecture,
+clause 5.30, with SNPN in clause 5.30.2 and PNI-NPN in clause 5.30.3), [TS 33.501](https://www.3gpp.org/dynareport/33501.htm) (NPN security),
+[TS 22.261](https://www.3gpp.org/dynareport/22261.htm) V20.8.1 (service
+requirements for NPNs, clause 6.25).
 
 ### Deployment models in detail
 
@@ -60,15 +60,17 @@ itself. Release 17 decoupled these:
   credentials can be separate from the SNPN that provides access. The CH may be a
   3GPP entity (an AUSF/UDM belonging to another SNPN or a PLMN) or a non-3GPP entity
   (an external AAA server reached for authentication). When the CH is an AUSF/UDM,
-  the authentication flow resembles the roaming case; when it is an AAA server,
+  the architecture is treated as non-roaming, although some roaming reference points
+  are reused (TS 23.501 V20.3.0, clause 5.30.2.9.3); when it is an AAA server,
   key-generating EAP methods are used. This lets, for example, a broadcaster's
   central identity system authenticate devices onto a venue-operated SNPN.
 - **UE onboarding.** A UE configured only with Default UE Credentials
-  can attach to an Onboarding SNPN (ON) purely to be provisioned. The onboarding
-  network authenticates the UE against a Default Credentials Server (DCS) and then
-  hands off to a Provisioning Server, which installs the SNPN subscription
-  credentials and configuration. After provisioning, the UE deregisters from the ON
-  and registers on the target SNPN normally. This is aimed at bringing fleets of
+  can attach to an Onboarding SNPN (ON-SNPN) purely to be provisioned. Primary
+  authentication may involve a Default Credentials Server (DCS), though one
+  architecture variant does not involve the DCS at that step. The UE then reaches a
+  Provisioning Server (PVS), which installs the SNPN subscription credentials and
+  configuration. After provisioning, the UE should deregister from the ON-SNPN
+  and register on the target SNPN normally (TS 23.501 V20.3.0, clause 5.30.2.10). This is aimed at bringing fleets of
   devices onto a private network without per-device manual configuration.
 
 Security procedures for both the CH and onboarding cases are specified in the NPN
@@ -78,7 +80,9 @@ security clauses of [TS 33.501](https://www.3gpp.org/dynareport/33501.htm).
 
 An NPN device can reach the 5G core over untrusted or trusted non-3GPP access (for
 example a wired LAN, Wi-Fi, or a fixed backhaul). The stage 3 procedures for
-accessing the 5GC via non-3GPP access networks are defined in TS 24.502. This is
+accessing the 5GC via non-3GPP access networks are defined in TS 24.502. The stage 2
+description of SNPN access over untrusted, trusted and wireline access networks is in
+TS 23.501 V20.3.0, clauses 5.30.2.12 to 5.30.2.14. This is
 relevant where production equipment is cabled but still needs to be a first-class
 subscriber of the private 5G core; note the scope caution on the
 [Standards](/standards/npn) page regarding this reference.
@@ -109,13 +113,14 @@ question.
 ### Release timeline
 
 - **Release 16**: SNPN and PNI-NPN models, NID, CAG. Architecture in TS
-  23.501; security in TS 33.501; requirements in TS 22.261 and (for professional
-  media) [TS 22.263](https://www.3gpp.org/dynareport/22263.htm).
+  23.501 (clause 5.30, V20.3.0); security in TS 33.501; requirements in TS 22.261
+  (clause 6.25, V20.8.1) and (for professional media) [TS 22.263](https://www.3gpp.org/dynareport/22263.htm).
 - **Release 17**: Credentials Holder, external AAA authentication, UE
   onboarding and remote provisioning.
 - **Release 18 and later**: NPN enhancements (eNPN Phase 2): mobility and
-  service continuity between SNPNs using equivalent SNPN lists, broader non-3GPP
-  access support for SNPN, and access to localised services via a hosting network.
+  service continuity between SNPNs using equivalent SNPN lists (TS 23.501 V20.3.0,
+  clause 5.30.2.11), broader non-3GPP access support for SNPN (clauses 5.30.2.12 to
+  5.30.2.14), and access to localised services via a hosting network (Annex N).
 
 **Related:** [Time-Sensitive Communications (TSC)](/tech/tsc)
 · [Standards: Non-Public Networks](/standards/npn)

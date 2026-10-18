@@ -75,7 +75,7 @@ The Dedicated Networks repository contains several API definitions (YAML) (CAMAR
 
 ## Standardisation context
 
-Dedicated Networks is a multi-part CAMARA API (OpenAPI 3.0.3), split across four YAML definitions in the repository (Areas, Profiles, Networks, Accesses) that together describe one workflow. Its subject matter is what 3GPP frames as private or campus connectivity: a Non-Public Network (NPN) or a dedicated slice reserved for one customer within an operator's network. NPN concepts are defined in the 5G System architecture ([TS 23.501](https://www.3gpp.org/dynareport/23501.htm) clause 5.30); the CAMARA API expresses per-device QoS as QoS profile names (`qosProfiles`). The CAMARA YAML itself does not cite these 3GPP specifications; the correspondence is analysis, and an operator may realise a dedicated network through a slice, an isolated deployment, or a combination.
+Dedicated Networks is a multi-part CAMARA API (OpenAPI 3.0.3), split across four YAML definitions in the repository (Areas, Profiles, Networks, Accesses) that together describe one workflow. Its subject matter is what 3GPP frames as private or campus connectivity: a Non-Public Network (NPN) or a dedicated slice reserved for one customer within an operator's network. NPN concepts (SNPN and PNI-NPN) are defined in the 5G System architecture ([TS 23.501](https://www.3gpp.org/dynareport/23501.htm) V20.3.0 clause 5.30.1); the CAMARA API expresses per-device QoS as QoS profile names (`qosProfiles`). The CAMARA YAML itself does not cite these 3GPP specifications; the correspondence is analysis, and an operator may realise a dedicated network through a slice, an isolated deployment, or a combination.
 
 ### The four-part resource model
 

@@ -150,7 +150,7 @@ The multi-device scenario admits several network deployments, each with a differ
   </tr>
   <tr>
     <td markdown="span" align="left">PNI-NPN (Public Network Integrated NPN)</td>
-    <td markdown="span" align="left">A non-public network hosted with the help of a public operator, typically realised as a dedicated network slice or dedicated cells. See 3GPP [TS 23.501](https://www.3gpp.org/dynareport/23501.htm), clause 5.30, for the NPN definitions.</td>
+    <td markdown="span" align="left">A non-public network hosted with the help of a public operator, made available through dedicated DNNs or one or more network slice instances, optionally with Closed Access Group (CAG) cells for access control (TS 23.501 V20.3.0 clause 5.30.3.1). See 3GPP [TS 23.501](https://www.3gpp.org/dynareport/23501.htm) V20.3.0 clause 5.30, for the NPN definitions.</td>
     <td markdown="span" align="left">Devices contribute directly; dedicated resources are guaranteed locally and across the mobile network.</td>
   </tr>
   <tr>
@@ -161,7 +161,7 @@ The multi-device scenario admits several network deployments, each with a differ
 </tbody>
 </table>
 
-The distinction between NPN types (SNPN and PNI-NPN) is defined by 3GPP in TS 23.501, clause 5.30. In an SNPN the local network is self-contained, so devices attached to it do not directly reach the production centre; the local programme output is uplinked separately, which reuses the single-device contribution pattern. A PNI-NPN keeps the devices integrated with the public operator, so per-device contribution and per-flow QoS remain available end to end. These options are analysed further, from the API angle, on the [Using Dedicated Networks](./using-dedicated-networks) page.
+The distinction between NPN types (SNPN and PNI-NPN) is defined by 3GPP in TS 23.501 V20.3.0 clause 5.30. In an SNPN the local network is self-contained, so devices attached to it do not directly reach the production centre; the local programme output is uplinked separately, which reuses the single-device contribution pattern. A PNI-NPN keeps the devices integrated with the public operator, so per-device contribution and per-flow QoS remain available end to end. These options are analysed further, from the API angle, on the [Using Dedicated Networks](./using-dedicated-networks) page.
 
 ## From scenarios to APIs
 

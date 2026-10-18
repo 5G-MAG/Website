@@ -32,17 +32,19 @@ description: Placeholder for the Time-Sensitive Communications (TSC) technical a
 The 5G system is modelled as a TSN bridge, carrying deterministic traffic and shared
 timing between wired IEEE 802.1 TSN segments across a wireless hop.
 
-**Key specifications:** 3GPP [TS 23.501](https://www.3gpp.org/dynareport/23501.htm) (TSC clause: the 5G
+**Key specifications:** 3GPP [TS 23.501](https://www.3gpp.org/dynareport/23501.htm) V20.3.0 (clauses 5.27 and 5.28: the 5G
 system modelled as a TSN bridge, NW-TT/DS-TT, time synchronisation),
 [TS 23.502](https://www.3gpp.org/dynareport/23502.htm) (TSC procedures),
-[TS 38.331](https://www.3gpp.org/dynareport/38331.htm) (RRC support for time
-synchronisation), IEEE 802.1Qbv / 802.1Qcc / 802.1AS (scheduled traffic, centralized
-TSN configuration and time synchronisation, referenced by the 3GPP TSC model).
+[TS 38.331](https://www.3gpp.org/dynareport/38331.htm) V19.4.0 (RRC support for time
+synchronisation), IEEE 802.1Q, 802.1AS and IEEE 1588 (scheduled traffic, the fully
+centralized TSN configuration model, and time synchronisation, referenced by the 3GPP
+TSC model; the scheduled-traffic and centralized-configuration work formerly published
+as 802.1Qbv and 802.1Qcc is part of 802.1Q).
 
 ### The 5G-as-TSN-bridge model
 
 The integration point between 5G and wired IEEE 802.1 TSN is defined in the TSC
-clauses of TS 23.501 (clauses 5.27 and 5.28). The 5G system is modelled as one or more
+clauses of TS 23.501 V20.3.0 (clauses 5.27 and 5.28). The 5G system is modelled as one or more
 virtual TSN bridges. Each bridge has ports realised by TSN Translators:
 
 - **NW-TT (Network-side TSN Translator)** at the UPF. It terminates the
@@ -78,7 +80,8 @@ can take different roles in an IEEE 802.1AS time-aware domain and can operate as
 IEEE 1588 boundary clock or transparent clock, and so that time-synchronisation
 service can be requested and controlled through the control plane rather than being
 purely a transparent forwarding behaviour. For media, the working clock is typically
-PTP as used by SMPTE ST 2059, which is the same IEEE 1588 base, so the 5G time-sync
+PTP as used by SMPTE ST 2059, which is the same IEEE 1588 base (TS 23.501 V20.3.0,
+clause 5.27.1.1, lists the SMPTE ST 2059-2 profile among the supported profiles), so the 5G time-sync
 machinery maps onto the timing model the ST 2110 plant already uses.
 
 ### Control plane: TSCTSF, NEF and AF
@@ -97,15 +100,17 @@ size, direction, arrival time reference) that let the system optimise scheduling
 request the associated QoS, and activate or deactivate time synchronisation for
 specified UEs/ports. The TSCTSF works with the PCF to install the corresponding policy
 and with the SMF/UPF to realise it. Toward the wired TSN network, the
-bridge-management and scheduling interworking follows IEEE 802.1Qcc (fully centralized
-model), with the NW-TT presenting the 5G bridge to the CNC.
+bridge-management and scheduling interworking follows the fully centralized configuration
+model of IEEE 802.1Q (the work formerly published as 802.1Qcc), with the 5G bridge
+presented to the CNC through the TSN AF (TS 23.501 V20.3.0, clause 5.28).
 
 ### Scheduled traffic and gating
 
-Deterministic egress toward a TSN endpoint uses gate behaviour aligned with IEEE
-802.1Qbv (enhancements for scheduled traffic): the translator opens and closes
-transmission gates according to a schedule derived from the CNC configuration and the
-shared clock. Combined with the bounded latency of the 5G QoS Flow, this gives an
+Deterministic egress toward a TSN endpoint uses gate behaviour aligned with the
+scheduled traffic function of IEEE 802.1Q (formerly 802.1Qbv): the DS-TT and NW-TT
+ports apply a hold-and-forward mechanism that opens and closes transmission gates
+according to a schedule derived from the CNC configuration and the shared clock
+(TS 23.501 V20.3.0, clause 5.27.4). Combined with the bounded latency of the 5G QoS Flow, this gives an
 end-to-end path where a frame leaves the wired network, crosses the 5G segment, and is
 delivered to the wireless endpoint within a known window.
 
