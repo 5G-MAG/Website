@@ -19,7 +19,7 @@ export const MBS_ARCHITECTURE = {
       id: 'user-services',
       label: 'MBS User Services',
       spec: 'TS 26.502, TS 26.517',
-      interfaces: ['Nmb2', 'Nmb1', 'Nmb9', 'MBS-4-MC'],
+      interfaces: ['Nmb2', 'Nmb1', 'Nmb9', 'MBS-4-MC', 'MBS-4-UC'],
     },
     {
       id: 'core',
@@ -37,7 +37,7 @@ export const MBS_ARCHITECTURE = {
       id: 'ue',
       label: 'UE',
       spec: 'TS 26.502, TS 38.331',
-      interfaces: ['Uu', 'MBS-4-MC', 'MBS-6', 'MBS-7'],
+      interfaces: ['Uu', 'MBS-4-MC', 'MBS-4-UC', 'MBS-5', 'MBS-6', 'MBS-7'],
     },
   ],
   entities: [
@@ -139,9 +139,9 @@ export const MBS_ARCHITECTURE = {
     },
     {
       id: 'mbs-client',
-      label: 'MBS Client',
+      label: 'MBS Client (MBSF Client and MBSTF Client)',
       layer: 'ue',
-      spec: 'TS 26.502, MBS-4-MC reception',
+      spec: 'TS 26.502, MBS-4-MC reception; MBS-4-UC Object Repair and MBS-5 per clause 4.3',
       repo: 'rt-mbs-client',
       repoUrl: 'https://github.com/5G-MAG/rt-mbs-client',
       component: 'MBS Client',
