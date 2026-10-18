@@ -24,9 +24,9 @@ This documentation is currently **under development and subject to change**. It 
 
 ## Description
 
-The "Quality-On-Demand" (QoD) API gives developers a programmable interface to request stable latency or prioritized throughput managed by networks. It abstracts the complexity of underlying network technologies (such as mobile, fiber, cable, and other broadband networks), so developers can focus on enhancing user experiences for applications that demand high-quality network communication.
+The "Quality-On-Demand" (QoD) API gives developers a programmable interface to request stable latency or prioritized throughput managed by networks. It abstracts the complexity of underlying network technologies (for example the 4G/5G system of a mobile network), so developers can focus on enhancing user experiences for applications that demand high-quality network communication.
 
-QoD requests QoS for the duration of a single session. It depends on the [QoS Profiles API](./camara-qos-profiles): the `qosProfile` name passed to **POST /sessions** must be one the operator offers. For a persistent assignment (applied every time the device connects) see [QoS Provisioning](./camara-qos-provisioning); to reserve capacity ahead of an event see [QoS Booking](./camara-qos-booking).
+QoD requests QoS for the duration of a single session. It uses a named profile from the [QoS Profiles API](./camara-qos-profiles) or one agreed at onboarding: the `qosProfile` name passed to **POST /sessions** must be one the operator offers. For a persistent assignment (applied every time the device connects) see [QoS Provisioning](./camara-qos-provisioning); to reserve capacity ahead of an event see [QoS Booking](./camara-qos-booking).
 
 Information: [Quality on Demand project page](https://camaraproject.org/quality-on-demand/) and [GitHub repository](https://github.com/camaraproject/QualityOnDemand)
 
@@ -38,30 +38,30 @@ The Quality on Demand API definition (YAML) is available at: [quality-on-demand.
 
 ### Quality on Demand API
 
-- **POST /sessions** with the request body including a `device` object, `applicationServer` IP, `applicationServerPorts`, `devicePorts`, `qosProfile` and `duration`, it is used to create a QoS session to manage latency/throughput priorities. The response includes information about the creation of the session, with a `sessionId`.
-  - Dependency: Requires `qosProfiles` which can be retrieved from a previous call to the [**QoS Profiles API**](./camara-qos-profiles).
-- `GET /sessions/{sessionId}` - Get QoS session information
-- `DELETE /sessions/{sessionId}` - Delete a QoS session
-- `POST /sessions/{sessionId}/extend` - Extend the duration of an active session
-- **POST /retrieve-sessions** - Get QoS session information for a device
+- **POST /sessions** with the request body including a `device` object, `applicationServer` IP, `applicationServerPorts`, `devicePorts`, `qosProfile` and `duration`, it is used to create a QoS session to manage latency/throughput priorities. The response includes information about the creation of the session, with a `sessionId` (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml `/sessions` POST; schemas CreateSession, BaseSessionInfo, SessionInfo).
+  - Dependency: Needs a `qosProfile` name, which can be retrieved from the [**QoS Profiles API**](./camara-qos-profiles) or is agreed during onboarding.
+- `GET /sessions/{sessionId}` - Get QoS session information (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml `/sessions/{sessionId}` GET)
+- `DELETE /sessions/{sessionId}` - Delete a QoS session (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml `/sessions/{sessionId}` DELETE)
+- `POST /sessions/{sessionId}/extend` - Extend the duration of an active session (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml `/sessions/{sessionId}/extend` POST)
+- **POST /retrieve-sessions** - Get QoS session information for a device (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml `/retrieve-sessions` POST)
 
 ## Standardisation context
 
-Quality on Demand is the flagship QoS API of the CAMARA QualityOnDemand repository (OpenAPI 3.0.3, Commonalities-conformant). Of the CAMARA APIs 5G-MAG analyses it is the most mature: its notification event type is at `v1` (`org.camaraproject.quality-on-demand.v1.qos-status-changed`), where most of the others are still `v0`. It consumes a named profile from the [QoS Profiles API](./camara-qos-profiles).
+Quality on Demand is the flagship QoS API of the CAMARA QualityOnDemand repository (OpenAPI 3.0.3, Commonalities-conformant). Of the CAMARA APIs 5G-MAG analyses it is the most mature: its notification event type is at `v1` (`org.camaraproject.quality-on-demand.v1.qos-status-changed`), where the event types of the other APIs analysed here are still `v0`. It consumes a named profile from the [QoS Profiles API](./camara-qos-profiles) (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml info.openapi, info.x-camara-commonalities, schemas QosEventType; CAMARA QoSBooking main@4de93f1 qos-booking.yaml; QoSBooking qos-booking-and-assignment.yaml).
 
 ### Mapping to 3GPP
 
 QoD is the canonical example of a CAMARA API mapping onto 3GPP northbound exposure:
 
 1. The API provider (acting as, or on behalf of, an Application Function) calls the NEF `AsSessionWithQoS` API in [TS 29.522](https://www.3gpp.org/dynareport/29522.htm) (the RESTful form of the `Nnef_AFsessionWithQoS` service). The QoD request already carries what that API needs: the `device` (mapped to a subscriber identifier), the `applicationServer` address and the `devicePorts` / `applicationServerPorts` (which define the flow descriptors), and the `qosProfile` name (mapped to a QoS reference).
-2. The NEF forwards the request to the Policy Control Function via `Npcf_PolicyAuthorization` ([TS 29.514](https://www.3gpp.org/dynareport/29514.htm)). The PCF authorises it and installs policy on the subscriber's PDU session, enforced by the SMF and UPF.
-3. When the network can no longer sustain the QoS (or the session ends), the NEF raises a notification event, which the QoD provider surfaces to the consumer as a CloudEvent (see Event notifications). In 4G/EPC the same flow runs through an SCEF instead of a NEF.
+2. The NEF forwards the request to the Policy Control Function via `Npcf_PolicyAuthorization` ([TS 29.514](https://www.3gpp.org/dynareport/29514.htm)). The PCF authorises it and installs policy on the subscriber's PDU session, enforced by the SMF and UPF (TS 29.522 V19.7.0 clause 4.4.9.2.0; TS 29.514 V19.8.0 clause 4.1.1; TS 23.501 V19.9.0 clause 5.7.1.5).
+3. When the network can no longer sustain the QoS, the NEF raises a notification event, which the QoD provider surfaces to the consumer as a CloudEvent (see Event notifications); the QoD provider also sends an event when a session ends because its duration expired or it was deleted. In 4G/EPC the SCEF takes the role of the NEF.
 
 CAMARA does not mandate this realisation; it is the common correspondence, and an operator may implement QoD against a different southbound interface.
 
 ### Session lifecycle
 
-A session moves through the `qosStatus` values `REQUESTED` (accepted, not yet applied), `AVAILABLE` (QoS is being applied) and `UNAVAILABLE` (no longer applied). It is created with `POST /sessions` for a bounded `duration`, can be prolonged with `POST /sessions/{sessionId}/extend` (passing `requestedAdditionalDuration` in seconds), read with `GET /sessions/{sessionId}`, looked up per device with `POST /retrieve-sessions`, and torn down with `DELETE /sessions/{sessionId}`. Because there is no reservation phase, availability is only known when the session is requested; for a scheduled event where capacity must be guaranteed ahead of time, [QoS Booking](./camara-qos-booking) fits better, and for a profile that should apply on every connection, [QoS Provisioning](./camara-qos-provisioning) is the persistent option.
+A session moves through the `qosStatus` values `REQUESTED` (accepted, not yet applied), `AVAILABLE` (QoS is being applied) and `UNAVAILABLE` (the network cannot provide the requested QoS, or no longer does). It is created with `POST /sessions` for a bounded `duration`, can be prolonged with `POST /sessions/{sessionId}/extend` (passing `requestedAdditionalDuration` in seconds), read with `GET /sessions/{sessionId}`, looked up per device with `POST /retrieve-sessions`, and torn down with `DELETE /sessions/{sessionId}`. Because there is no reservation phase, availability is only established when the session is requested (`qosStatus` is `AVAILABLE`, or `REQUESTED` until the network confirms or refuses it); for a scheduled event where capacity must be guaranteed ahead of time, [QoS Booking](./camara-qos-booking) fits better, and for a profile that should apply on every connection, [QoS Provisioning](./camara-qos-provisioning) is the persistent option (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml schemas QosStatus, EventQosStatus, StatusInfo; `/sessions` POST description; `/sessions/{sessionId}/extend` POST).
 
 For a live media flow QoD is the most direct API: it is invoked at the moment the boost is needed, runs for a bounded duration that can be extended, and reports back through the `sink` when the network can no longer sustain the requested QoS so the application can adapt.
 
@@ -78,12 +78,12 @@ A user of a media application wants a QoS boost for the duration of a media flow
 
 ### Step 0: Pre-conditions
 
-- The API invoker has signed up with the API provider.
-- A `qosProfile` name has been obtained via the [QoS Profiles API](./camara-qos-profiles). Unlike Provisioning or Booking, there is no pre-booking phase; the session is created directly during operation.
+- The API invoker has signed up with the API provider (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml info.description (Authorization and authentication: flows 'agreed upon during the onboarding process'; QoS profiles agreed 'during the onboarding with the API provider')).
+- A `qosProfile` name has been obtained via the [QoS Profiles API](./camara-qos-profiles) or agreed at onboarding. Unlike QoS Booking, there is no pre-booking phase; the session is created directly during operation.
 
 ### Step 1: Create the session
 
-- **POST /sessions** passing the `device`, `applicationServer`, ports, the chosen `qosProfile` and a `duration`. The response returns a `sessionId` used to query, extend or delete the session.
+- **POST /sessions** passing the `device`, `applicationServer`, ports, the chosen `qosProfile` and a `duration`. The response returns a `sessionId` used to query, extend or delete the session (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml `/sessions` POST; schemas SessionInfo.sessionId; path parameter sessionId).
 
 ---
 
@@ -92,8 +92,8 @@ A user of a media application wants a QoS boost for the duration of a media flow
 This section records 5G-MAG's practical reading of the API and the open points it raises for media use.
 
 - QoD is the most direct of the QoS APIs for a live media flow: it is invoked at the moment the boost is needed and runs for a bounded `duration`, which can be extended with `POST /sessions/{sessionId}/extend`.
-- Because there is no reservation phase, availability is only known at request time; for a scheduled event where capacity must be guaranteed in advance, [QoS Booking](./camara-qos-booking) may be more appropriate.
-- The `sink`/notification mechanism (see Event notifications) lets the application react when the network can no longer sustain the requested QoS.
+- Because there is no reservation phase, availability is only established when the session is requested (it may stay `REQUESTED` until the network confirms or refuses); for a scheduled event where capacity must be guaranteed in advance, [QoS Booking](./camara-qos-booking) may be more appropriate.
+- The `sink`/notification mechanism (see Event notifications) lets the application react when the network can no longer sustain the requested QoS (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml `/sessions` POST description; schemas EventQosStatusChanged).
 
 ---
 
@@ -101,7 +101,7 @@ This section records 5G-MAG's practical reading of the API and the open points i
 
 ### Request the creation of a session
 
-With **POST /sessions**, to manage latency/throughput priorities. The request specifies the device, the application server and ports, the chosen QoS profile, a `sink` for notifications and a `duration`:
+With **POST /sessions**, to manage latency/throughput priorities. The request specifies the device, the application server and ports, the chosen QoS profile, a `sink` for notifications and a `duration` (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml `/sessions` POST; schemas CreateSession, BaseSessionInfo):
 
 ```json
 {
@@ -145,7 +145,7 @@ With **POST /sessions**, to manage latency/throughput priorities. The request sp
 }
 ```
 
-Type of response: Information about the **status** of the request, including the assigned `sessionId` and the initial `qosStatus`:
+Type of response: Information about the **status** of the request, including the assigned `sessionId` and the initial `qosStatus` (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml schemas SessionInfo; `/sessions` POST description):
 
 ```json
 {
@@ -162,7 +162,7 @@ Type of response: Information about the **status** of the request, including the
 
 ### Request QoS session information for a device
 
-With **POST /retrieve-sessions** and device object. The request identifies the device whose sessions are queried:
+With **POST /retrieve-sessions** and device object. The request identifies the device whose sessions are queried (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml `/retrieve-sessions` POST; schemas RetrieveSessionsInput):
 
 ```json
 {
@@ -178,7 +178,7 @@ With **POST /retrieve-sessions** and device object. The request identifies the d
 }
 ```
 
-Type of response: QoS sessions information, returned as an array (a device may have more than one session):
+Type of response: QoS sessions information, returned as an array (a device may have more than one session) (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml `/retrieve-sessions` POST 200 description; schemas RetrieveSessionsOutput):
 
 ```json
 [
@@ -199,7 +199,7 @@ Type of response: QoS sessions information, returned as an array (a device may h
 
 ### Request duration extension of an active QoS session
 
-With `POST /sessions/{sessionId}/extend` and the requested additional duration (in seconds):
+With `POST /sessions/{sessionId}/extend` and the requested additional duration (in seconds) (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml schemas ExtendSessionDuration.requestedAdditionalDuration; `/sessions/{sessionId}/extend` POST):
 
 ```json
 {
@@ -209,7 +209,7 @@ With `POST /sessions/{sessionId}/extend` and the requested additional duration (
 
 ### Obtain QoS session information
 
-With `GET /sessions/{sessionId}`. The response returns the full current state of the session:
+With `GET /sessions/{sessionId}`. The response returns the full current state of the session (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml `/sessions/{sessionId}` GET 200; schemas SessionInfo):
 
 ```json
 {
@@ -236,32 +236,32 @@ With `GET /sessions/{sessionId}`. The response returns the full current state of
 
 ## Event notifications
 
-The QoD API can notify the API consumer asynchronously when the status of a session changes (for example, when prioritised resources become available, expire, or are terminated by the network). This avoids the need to poll `GET /sessions/{sessionId}`.
+The QoD API can notify the API consumer asynchronously when the status of a session changes (for example, when prioritised resources become available, expire, or are terminated by the network). This avoids the need to poll `GET /sessions/{sessionId}` (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml `/sessions` POST description; `/sessions/{sessionId}` DELETE description; schemas StatusInfo).
 
 ### Mechanism
 
-Notifications are delivered to the callback URL supplied as the `sink` parameter when the session is created with **POST /sessions** (see the request example above). Where present, `sinkCredential` describes the credential the API provider uses to authenticate against that endpoint. The consumer's `sink` must accept HTTP POST requests carrying the notification payload.
+Notifications are delivered to the callback URL supplied as the `sink` parameter when the session is created with **POST /sessions** (see the request example above). Where present, `sinkCredential` describes the credential the API provider uses to authenticate against that endpoint. The consumer's `sink` must accept HTTP POST requests carrying the notification payload (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml `/sessions` POST callbacks notifications '{$request.body#`/sink}'`; schemas BaseSessionInfo.sink, sinkCredential; CAMARA Commonalities main@b1a9f08 CAMARA-API-Event-Subscription-and-Notification-Guide.md section 2.1).
 
-The payload follows the [CloudEvents](https://cloudevents.io/) 1.0 specification (JSON format).
+The payload follows the [CloudEvents](https://cloudevents.io/) 1.0 specification (JSON format) (CAMARA Commonalities main@b1a9f08 CAMARA-API-Event-Subscription-and-Notification-Guide.md section 3.1).
 
 ### Event types
 
-The Quality on Demand API defines a single notification event type:
+The Quality on Demand API defines a single notification event type (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml schemas QosEventType; `/sessions` POST callbacks):
 
 | Event type                                                  | Meaning                                |
 | ----------------------------------------------------------- | -------------------------------------- |
-| `org.camaraproject.quality-on-demand.v1.qos-status-changed` | The QoS status of the session changed. |
+| `org.camaraproject.quality-on-demand.v1.qos-status-changed` | The QoS status of the session changed. (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml schemas QosEventType, EventQosStatusChanged) |
 
-The change itself is conveyed in the `data` object:
+The change itself is conveyed in the `data` object (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml schemas EventQosStatusChanged.data):
 
 | Parameter    | Description                                                                                                                                                |
 | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `qosStatus`  | Indicates the new status. In notifications the value is `AVAILABLE` or `UNAVAILABLE`.                                                                      |
-| `statusInfo` | Is included when `qosStatus` is `UNAVAILABLE` and gives the reason. Documented values are `DURATION_EXPIRED`, `NETWORK_TERMINATED` and `DELETE_REQUESTED`. |
+| `qosStatus`  | Indicates the new status. In notifications the value is `AVAILABLE` or `UNAVAILABLE`. (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml schemas EventQosStatus) |
+| `statusInfo` | Is included when `qosStatus` is `UNAVAILABLE` and gives the reason. Documented values are `DURATION_EXPIRED`, `NETWORK_TERMINATED` and `DELETE_REQUESTED`. (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml schemas StatusInfo (DURATION_EXPIRED, NETWORK_TERMINATED, DELETE_REQUESTED; 'only applicable when qosStatus is UNAVAILABLE')) |
 
 ### Example notification payload
 
-A CloudEvent sent to the `sink` when a session becomes unavailable because its duration expired:
+A CloudEvent sent to the `sink` when a session becomes unavailable because its duration expired (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml components/examples QOS_STATUS_CHANGED_EXAMPLE):
 
 ```json
 {
@@ -279,7 +279,7 @@ A CloudEvent sent to the `sink` when a session becomes unavailable because its d
 ```
 
 :::note
-Event type and enum values above are taken from the CAMARA Quality on Demand API definition. Confirm the exact values against the [`quality-on-demand.yaml`](https://github.com/camaraproject/QualityOnDemand/blob/main/code/API_definitions/quality-on-demand.yaml) for the API version you are integrating against, as they can change between releases.
+Event type and enum values above are taken from the CAMARA Quality on Demand API definition. Confirm the exact values against the [`quality-on-demand.yaml`](https://github.com/camaraproject/QualityOnDemand/blob/main/code/API_definitions/quality-on-demand.yaml) for the API version you are integrating against, as they can change between releases (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml info.version; schemas QosEventType, StatusInfo).
 :::
 
 Only Dedicated Networks has a reference implementation among these CAMARA APIs today; this one does not yet.
