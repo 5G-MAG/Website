@@ -40,7 +40,7 @@ export const AVATAR_SPECS = [
   {
     id: 'TS 26.114',
     title:
-      'IP Multimedia Subsystem (IMS); Multimedia Telephony; Media handling and interaction (MTSI)',
+      'IP Multimedia Subsystem (IMS); Multimedia Telephony; Media handling and interaction',
     url: 'https://www.3gpp.org/dynareport/26114.htm',
     layer: 'Real-time media transport',
   },
@@ -115,7 +115,7 @@ export const AVATAR_SPECS = [
   },
   {
     id: 'TR 26.928',
-    title: 'Extended reality (XR) in 5G',
+    title: 'Extended Reality (XR) in 5G',
     url: 'https://www.3gpp.org/dynareport/26928.htm',
     layer: 'Studies',
     note: 'includes avatar and presence use cases',

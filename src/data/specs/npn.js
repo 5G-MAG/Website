@@ -15,14 +15,14 @@ export const NPN_SPECS = [
   },
   {
     id: 'TS 22.261',
-    title: 'Service requirements for the 5G system',
+    title: 'Service requirements for the 5G system; Stage 1',
     url: 'https://www.3gpp.org/dynareport/22261.htm',
     layer: 'Service requirements',
     note: 'general stage 1 NPN requirements (SNPN/PNI-NPN service continuity, access to subscribed PLMN services via the NPN) that TS 22.263 builds its VIAPA-specific case on top of',
   },
   {
     id: 'TS 23.501',
-    title: 'System architecture for the 5G System (5GS)',
+    title: 'System architecture for the 5G System (5GS); Stage 2',
     url: 'https://www.3gpp.org/dynareport/23501.htm',
     layer: 'System architecture',
     note: 'Non-Public Network aspects, clause 5.30',

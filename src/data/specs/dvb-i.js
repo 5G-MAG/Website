@@ -15,7 +15,7 @@
 export const DVBI_SPECS = [
   {
     id: 'ETSI TS 103 720',
-    title: '5G Broadcast System for linear TV and radio services',
+    title: '5G Broadcast System for linear TV and radio services; LTE-based 5G terrestrial broadcast system',
     url: 'https://www.etsi.org/deliver/etsi_ts/103700_103799/103720/',
     layer: 'DVB / ETSI',
   },
@@ -93,7 +93,7 @@ export const DVBI_SPECS = [
   },
   {
     id: 'TS 29.116',
-    title: 'Representational state transfer over the xMB reference point between content provider and BM-SC',
+    title: 'Representational state transfer over xMB reference point between Content Provider and BM-SC',
     url: 'https://www.3gpp.org/dynareport/29116.htm',
     layer: '3GPP unicast',
     note: 'the provisioning-layer spec behind 2 of the 5 open gaps this page tracks; already listed under Content delivery in the 5G Broadcast catalogue',

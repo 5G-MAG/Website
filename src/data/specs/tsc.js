@@ -21,7 +21,7 @@ export const TSC_SPECS = [
   },
   {
     id: 'TS 23.501',
-    title: 'System Architecture for the 5G System',
+    title: 'System architecture for the 5G System (5GS); Stage 2',
     url: 'https://www.3gpp.org/dynareport/23501.htm',
     layer: 'System architecture',
     note: 'TSN integration aspects',

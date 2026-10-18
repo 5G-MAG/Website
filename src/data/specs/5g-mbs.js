@@ -19,7 +19,7 @@ export const MBS_USER_SERVICES_SPECS = [
     layer: 'Stage 2',
     release: '17',
     note: 'the architecture and high-level procedures for User Services delivered with the 5G System multicast-broadcast capabilities',
-    versions: { 17: 'V17.12.0', 18: 'V18.6.0', 19: 'V19.5.0', 20: null },
+    versions: { 17: 'V17.13.0', 18: 'V18.7.0', 19: 'V19.6.0', 20: null },
   },
   {
     id: 'TS 26.517',
@@ -28,7 +28,7 @@ export const MBS_USER_SERVICES_SPECS = [
     layer: 'Stage 3',
     release: '17',
     note: 'the protocols and formats for the User Services of TS 26.502',
-    versions: { 17: 'V17.10.0', 18: 'V18.6.0', 19: 'V19.2.0', 20: null },
+    versions: { 17: 'V17.11.0', 18: 'V18.7.0', 19: 'V19.3.0', 20: null },
   },
   {
     id: 'TS 29.580',
@@ -196,9 +196,9 @@ export const MBS_SYSTEM_SPECS = [
     title: 'NR; Radio Resource Control (RRC) protocol specification',
     url: 'https://www.3gpp.org/dynareport/38331.htm',
     layer: 'NG-RAN',
-    release: '17',
+    release: '18',
     part: 'clauses 5.9 and 5.10',
-    note: 'clause 5.9: MBS Broadcast; clause 5.10: MBS multicast reception in RRC_INACTIVE',
+    note: 'clause 5.9: MBS Broadcast; clause 5.10: MBS multicast reception in RRC_INACTIVE (clause 5.10 is not in V17.17.0 and is first in Release 18)',
     versions: { 17: 'V17.18.0', 18: 'V18.11.0', 19: 'V19.4.0', 20: null },
   },
   {

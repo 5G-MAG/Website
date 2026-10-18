@@ -36,7 +36,7 @@ export const BEYOND_2D_SPECS = [
   },
   {
     id: 'TS 26.512',
-    title: '5G Media Streaming (5GMS); Protocols and APIs',
+    title: '5G Media Streaming (5GMS); Protocols',
     url: 'https://www.3gpp.org/dynareport/26512.htm',
     layer: 'Delivery framework',
     note: 'the framework the formats are assessed against',

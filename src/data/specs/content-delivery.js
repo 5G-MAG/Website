@@ -184,7 +184,7 @@ export const CONTENT_DELIVERY_SPECS = [
   },
   {
     id: 'TS 26.247',
-    title: '3GP-DASH; Transparent end-to-end packet-switched streaming service',
+    title: 'Transparent end-to-end Packet-switched Streaming Service (PSS); Progressive Download and Dynamic Adaptive Streaming over HTTP (3GP-DASH)',
     url: 'https://www.3gpp.org/dynareport/26247.htm',
     layer: '3GPP',
     note: 'The 3GPP DASH profile carried over these transports',
@@ -207,7 +207,7 @@ export const CONTENT_DELIVERY_SPECS = [
   },
   {
     id: 'ETSI TS 103 285',
-    title: 'DVB-DASH',
+    title: 'Digital Video Broadcasting (DVB); MPEG-DASH Profile for Transport of ISO BMFF Based DVB Services over IP Based Networks',
     url: 'https://www.etsi.org/deliver/etsi_ts/103200_103299/103285/',
     layer: 'Media formats',
     note: 'The DVB DASH profile',

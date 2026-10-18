@@ -82,13 +82,13 @@ The additions, discussed and agreed among members on the Kanban board, include:
 - Codecs and Formats with reference to 5GMS in 3GPP TS 26.511
 - Support for public warning and emergency alerts based on cell broadcast services.
 
-ETSI TS 103 720 v1.2.1 defines three normative receiver categories, signalled through MBMS Feature Values in the User Service Description:
+ETSI TS 103 720 v1.2.1, clause 10, defines four receiver categories: the Base Receiver, the Main Receiver, 5GMS via LTE-based 5G Broadcast and the Emergency Alerts Receiver. Table 10.1-1 assigns MBMS Feature Values, which signal the capability, to the first three:
 
 | Feature value | Category                                     | Mandatory SCS                          |
 | ------------- | -------------------------------------------- | -------------------------------------- |
 | 27            | LTE-based 5G Broadcast **Base Receiver**     | 1.25 kHz mandatory; other SCS optional |
 | 28            | LTE-based 5G Broadcast **Main Receiver**     | All SCS (15, 7.5, 2.5, 1.25, 0.37 kHz) |
-| 30            | **5GMS** via LTE-based 5G Broadcast Receiver | Main Receiver plus 5GMS requirements   |
+| 30            | **5GMS** via LTE-based 5G Broadcast Receiver | Not specified; clause 7 plus the 5GMS receiver requirements |
 
 The v1.2.1 specification PDF and its work item are linked under Quick access above. For the capabilities each category is aimed at, see [Deployment Profiles](/tech/5g-broadcast/deployment-profiles#standardised-receiver-categories-etsi-ts-103-720).
 

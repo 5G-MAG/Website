@@ -25,7 +25,7 @@ This page lists the device types the XR player currently supports, so you can ch
 
 ## Supported device types
 
-Below is a list of supported platforms, grouped by the device types defined in 3GPP [TS 26.119](https://www.3gpp.org/dynareport/26119.htm) (device media capabilities for XR services).
+Below is a list of supported platforms, grouped by the device types defined in 3GPP [TS 26.119](https://www.3gpp.org/dynareport/26119.htm) (Device Media Capabilities for Augmented Reality Services).
 
 See [the feature table](../implementation#features-implemented-in-the-xr-unity-player) for details.
 

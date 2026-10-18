@@ -9,7 +9,7 @@
 export const EMERGENCY_ALERTS_SPECS = [
   {
     id: 'ETSI TS 103 720',
-    title: '5G Broadcast System for linear TV and radio services',
+    title: '5G Broadcast System for linear TV and radio services; LTE-based 5G terrestrial broadcast system',
     url: 'https://www.etsi.org/deliver/etsi_ts/103700_103799/103720/01.02.01_60/ts_103720v010201p.pdf',
     layer: 'System specification',
     note: 'Maintained by 5G-MAG. PWS support, the delivery of warning messages via SIB broadcast on the E-UTRAN Uu downlink, is defined in v1.2.1 clause 5.15.3.3. Work towards v1.3.1 (aligning with 3GPP Release 18) adds further PWS-related improvements.',

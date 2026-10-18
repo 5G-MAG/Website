@@ -53,7 +53,7 @@ export const NETWORK_APIS_SPECS = [
   },
   {
     id: 'TS 29.522',
-    title: 'Network Exposure Function (NEF); Northbound APIs',
+    title: '5G System; Network Exposure Function Northbound APIs; Stage 3',
     url: 'https://www.3gpp.org/dynareport/29522.htm',
     layer: 'NEF',
     note: 'includes Nnef_AFsessionWithQoS and Nnef_ChargeableParty',
@@ -66,7 +66,7 @@ export const NETWORK_APIS_SPECS = [
   },
   {
     id: 'TS 23.501',
-    title: 'System Architecture for 5GS',
+    title: 'System architecture for the 5G System (5GS); Stage 2',
     url: 'https://www.3gpp.org/dynareport/23501.htm',
     layer: 'NEF',
     note: 'NEF architecture',
@@ -80,20 +80,20 @@ export const NETWORK_APIS_SPECS = [
   },
   {
     id: 'TS 29.554',
-    title: '5G System; Background Data Transfer (BDT) Policy Control Service; Stage 3',
+    title: '5G System; Background Data Transfer Policy Control Service; Stage 3',
     url: 'https://www.3gpp.org/dynareport/29554.htm',
     layer: 'Policy and QoS',
     note: 'Npcf_BDTPolicyControl, Nnef_BDTPNegotiation',
   },
   {
     id: 'TS 23.222',
-    title: 'Procedures for the Common API Framework for 3GPP Northbound APIs',
+    title: 'Functional architecture and information flows to support Common API Framework for 3GPP Northbound APIs; Stage 2',
     url: 'https://www.3gpp.org/dynareport/23222.htm',
     layer: 'CAPIF',
   },
   {
     id: 'TS 29.222',
-    title: 'Common API Framework for 3GPP Northbound APIs (Stage 3)',
+    title: 'Common API Framework for 3GPP Northbound APIs',
     url: 'https://www.3gpp.org/dynareport/29222.htm',
     layer: 'CAPIF',
   },
@@ -119,7 +119,7 @@ export const NETWORK_APIS_SPECS = [
   },
   {
     id: 'TS 24.549',
-    title: 'SEAL; Network Slice Capability Enablement (NSCE); Stage 3',
+    title: 'Network slice capability enablement - Service Enabler Architecture Layer for Verticals (SEAL); Protocol specification; Stage 3',
     url: 'https://www.3gpp.org/dynareport/24549.htm',
     layer: 'SEAL',
     note: 'protocol aspects',

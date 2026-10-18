@@ -8,7 +8,7 @@
 export const BROADCAST_SPECS = [
   {
     id: 'ETSI TS 103 720',
-    title: '5G Broadcast System for linear TV and radio services',
+    title: '5G Broadcast System for linear TV and radio services; LTE-based 5G terrestrial broadcast system',
     url: 'https://www.etsi.org/deliver/etsi_ts/103700_103799/103720/01.02.01_60/ts_103720v010201p.pdf',
     layer: 'System specification',
     note: 'the system this whole page profiles; current v1.2.1 (2023-06, Rel-17); a v1.3.1 (Rel-18) work item is open, not yet published',
@@ -21,7 +21,7 @@ export const BROADCAST_SPECS = [
   },
   {
     id: 'TS 22.261',
-    title: 'Service requirements for the 5G system',
+    title: 'Service requirements for the 5G system; Stage 1',
     release: '15',
     url: 'https://www.3gpp.org/dynareport/22261.htm',
     layer: 'Service requirements',
@@ -41,7 +41,7 @@ export const BROADCAST_SPECS = [
   {
     id: 'TS 36.300',
     title:
-      'Evolved Universal Terrestrial Radio Access (E-UTRA) and Evolved UTRAN (E-UTRAN); Overall description',
+      'Evolved Universal Terrestrial Radio Access (E-UTRA) and Evolved Universal Terrestrial Radio Access Network (E-UTRAN); Overall description; Stage 2',
     url: 'https://www.3gpp.org/dynareport/36300.htm',
     layer: 'Architecture',
     note: 'includes the MBMS-dedicated cell mode used for broadcast',
@@ -56,7 +56,7 @@ export const BROADCAST_SPECS = [
   },
   {
     id: 'TR 36.776',
-    title: 'Study on LTE-based 5G terrestrial broadcast',
+    title: 'Evolved Universal Terrestrial Radio Access (E-UTRA); Study on LTE-based 5G terrestrial broadcast',
     release: '16',
     url: 'https://www.3gpp.org/dynareport/36776.htm',
     layer: 'Architecture',
@@ -64,33 +64,33 @@ export const BROADCAST_SPECS = [
   },
   {
     id: 'TS 36.211',
-    title: 'Physical channels and modulation',
+    title: 'Evolved Universal Terrestrial Radio Access (E-UTRA); Physical channels and modulation',
     url: 'https://www.3gpp.org/dynareport/36211.htm',
     layer: 'Radio and interfaces',
   },
   {
     id: 'TS 36.212',
-    title: 'Multiplexing and channel coding',
+    title: 'Evolved Universal Terrestrial Radio Access (E-UTRA); Multiplexing and channel coding',
     url: 'https://www.3gpp.org/dynareport/36212.htm',
     layer: 'Radio and interfaces',
   },
   {
     id: 'TS 36.213',
-    title: 'Physical layer procedures',
+    title: 'Evolved Universal Terrestrial Radio Access (E-UTRA); Physical layer procedures',
     url: 'https://www.3gpp.org/dynareport/36213.htm',
     layer: 'Radio and interfaces',
     note: 'scheduler and link adaptation',
   },
   {
     id: 'TS 36.321',
-    title: 'Medium Access Control (MAC) protocol specification',
+    title: 'Evolved Universal Terrestrial Radio Access (E-UTRA); Medium Access Control (MAC) protocol specification',
     url: 'https://www.3gpp.org/dynareport/36321.htm',
     layer: 'Radio and interfaces',
     note: 'touched by the Release 19 PMCH Phase 2 work item',
   },
   {
     id: 'TS 36.331',
-    title: 'Radio Resource Control (RRC) protocol specification',
+    title: 'Evolved Universal Terrestrial Radio Access (E-UTRA); Radio Resource Control (RRC); Protocol specification',
     url: 'https://www.3gpp.org/dynareport/36331.htm',
     layer: 'Radio and interfaces',
     note: 'MIB-MBMS, SIB1-MBMS, MBSFN-AreaInfo and the other broadcast system-information extensions',
@@ -125,20 +125,20 @@ export const BROADCAST_SPECS = [
   },
   {
     id: 'TS 36.413',
-    title: 'S1 Application Protocol (S1AP)',
+    title: 'Evolved Universal Terrestrial Radio Access Network (E-UTRAN); S1 Application Protocol (S1AP)',
     url: 'https://www.3gpp.org/dynareport/36413.htm',
     layer: 'Radio and interfaces',
     note: 'the eNB-to-MME control-plane interface, distinct from the M1/M2/M3 MBMS-specific interfaces',
   },
   {
     id: 'TS 36.133',
-    title: 'Requirements for support of radio resource management',
+    title: 'Evolved Universal Terrestrial Radio Access (E-UTRA); Requirements for support of radio resource management',
     url: 'https://www.3gpp.org/dynareport/36133.htm',
     layer: 'Radio and interfaces',
   },
   {
     id: 'TS 36.304',
-    title: 'User Equipment (UE) procedures in idle mode',
+    title: 'Evolved Universal Terrestrial Radio Access (E-UTRA); User Equipment (UE) procedures in idle mode',
     url: 'https://www.3gpp.org/dynareport/36304.htm',
     layer: 'Radio and interfaces',
     note: 'relevant to SIM-free and Receive-Only Mode reception without an RRC connection',
@@ -176,7 +176,7 @@ export const BROADCAST_SPECS = [
   },
   {
     id: 'TS 36.101',
-    title: 'User Equipment (UE) radio transmission and reception',
+    title: 'Evolved Universal Terrestrial Radio Access (E-UTRA); User Equipment (UE) radio transmission and reception',
     url: 'https://www.3gpp.org/dynareport/36101.htm',
     layer: 'RF and devices',
     note: 'defines operating Bands 107, 108, 112 and 113',
@@ -190,7 +190,7 @@ export const BROADCAST_SPECS = [
   },
   {
     id: 'TS 36.306',
-    title: 'User Equipment (UE) radio access capabilities',
+    title: 'Evolved Universal Terrestrial Radio Access (E-UTRA); User Equipment (UE) radio access capabilities',
     url: 'https://www.3gpp.org/dynareport/36306.htm',
     layer: 'RF and devices',
     note: 'includes the CAS-muting capability introduced in Release 19',
@@ -247,7 +247,7 @@ export const BROADCAST_SPECS = [
   {
     id: 'TS 29.116',
     title:
-      'Representational state transfer over the xMB reference point between content provider and BM-SC',
+      'Representational state transfer over xMB reference point between Content Provider and BM-SC',
     url: 'https://www.3gpp.org/dynareport/29116.htm',
     layer: 'Content delivery',
   },

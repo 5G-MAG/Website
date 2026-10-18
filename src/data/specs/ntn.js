@@ -29,11 +29,11 @@ export const NTN_SPECS = [
     title: 'NR; Radio Resource Control (RRC) protocol specification',
     url: 'https://www.3gpp.org/dynareport/38331.htm',
     layer: 'NR for NTN',
-    note: 'clause 6.3.1 carries the NTN/MBS system information: SIB19 (ephemeris/timing, pre-existing, r17) and SIB27 (intendedServiceAreaList-r19, the actual Release-19 MBS-over-NTN addition) — checked against v19.3.0; the spec has since moved to v19.4.0, not re-checked',
+    note: 'clause 6.3.1 carries the NTN/MBS system information: SIB19 (ephemeris/timing, pre-existing, r17) and SIB27 (intendedServiceAreaList-r19, the actual Release-19 MBS-over-NTN addition); checked against V19.4.0',
   },
   {
     id: 'TS 38.300',
-    title: 'NR; NR and NG-RAN Overall description; Stage 2',
+    title: 'NR; NR and NG-RAN Overall Description; Stage 2',
     url: 'https://www.3gpp.org/dynareport/38300.htm',
     layer: 'NR for NTN',
   },
@@ -60,7 +60,7 @@ export const NTN_SPECS = [
   },
   {
     id: 'TS 23.501',
-    title: 'System architecture for the 5G System (5GS)',
+    title: 'System architecture for the 5G System (5GS); Stage 2',
     url: 'https://www.3gpp.org/dynareport/23501.htm',
     layer: 'System architecture',
   },
@@ -72,7 +72,7 @@ export const NTN_SPECS = [
   },
   {
     id: 'TS 23.247',
-    title: 'Architectural enhancements for 5G multicast-broadcast services',
+    title: 'Architectural enhancements for 5G multicast-broadcast services; Stage 2',
     url: 'https://www.3gpp.org/dynareport/23247.htm',
     layer: 'MBS over NTN',
   },

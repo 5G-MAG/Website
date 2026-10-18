@@ -6,13 +6,13 @@
 export const AI_ML_SPECS = [
   {
     id: 'TS 23.288',
-    title: 'Architecture enhancements for 5GS to support Network Data Analytics Services (NWDAF)',
+    title: 'Architecture enhancements for 5G System (5GS) to support network data analytics services',
     url: 'https://www.3gpp.org/dynareport/23288.htm',
     layer: 'Network analytics (SA2)',
   },
   {
     id: 'TS 23.501',
-    title: 'System Architecture for the 5G System',
+    title: 'System architecture for the 5G System (5GS); Stage 2',
     url: 'https://www.3gpp.org/dynareport/23501.htm',
     layer: 'Network analytics (SA2)',
     note: 'NWDAF integration',
@@ -26,7 +26,7 @@ export const AI_ML_SPECS = [
   },
   {
     id: 'TR 26.847',
-    title: 'Evaluation of AI and ML in 5G media services',
+    title: 'Evaluation of Artificial Intelligence and Machine Learning in 5G media services',
     url: 'https://www.3gpp.org/dynareport/26847.htm',
     layer: 'Studies',
     release: '19',
@@ -43,7 +43,7 @@ export const AI_ML_SPECS = [
   },
   {
     id: 'TR 26.927',
-    title: 'Study on Artificial Intelligence and Machine learning in 5G media services',
+    title: 'Study on Artificial Intelligence and Machine Learning in 5G media services',
     url: 'https://www.3gpp.org/dynareport/26927.htm',
     layer: 'Studies',
     release: '19',

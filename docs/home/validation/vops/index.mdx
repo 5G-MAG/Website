@@ -28,7 +28,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 :::tip[At a glance]
 
-- **What it is:** the conformance validator of 3GPP TS 26.265 (Video Capabilities and Operation Points, V19.2.0, Release 19), annex B.2.3. It checks whether an AVC or HEVC bitstream conforms to a video operation point.
+- **What it is:** the conformance validator of 3GPP TS 26.265 (Media Delivery: Video Capabilities and Operation Points, V19.3.0, Release 19), annex B.2.3. It checks whether an AVC or HEVC bitstream conforms to a video operation point.
 - **What it covers:** the seven operation points of TS 26.265, from AVC HD to MV-HEVC stereo.
 - **What it is not:** an encoder or decoder. It tests bitstreams that encoders produce.
 - **Status:** under development. Every operation point is implemented; each still needs testing with its conformance bitstreams.
@@ -45,7 +45,7 @@ TS 26.265 defines service-independent video operation points and capabilities, w
 
 <figure style={{maxWidth: '820px', margin: '1.5rem auto'}}>
 <img loading="lazy" style={{width: "100%", height: "auto"}} src={useBaseUrl('/img/testbeds/vops/ts26265-fig4.2-1.svg')} width="975" height="284" alt="A video signal enters the Video Encoder, configured through VID-ENC-API, which produces coded metadata and a video bitstream. In the receiver conforming to the operation point, the Video Decoder, configured through VID-DEC-API, passes the video signal and rendering metadata to Rendering. An Application spans both." />
-<figcaption>Reference architecture for video Operation points and capabilities. Redrawn from TS 26.265 V19.2.0, figure 4.2-1.</figcaption>
+<figcaption>Reference architecture for video Operation points and capabilities. Redrawn from TS 26.265 V19.3.0, figure 4.2-1.</figcaption>
 </figure>
 
 ## Where the validator fits
@@ -54,7 +54,7 @@ TS 26.265 annex B provides a set of conformance functions: annotated video test 
 
 <figure style={{maxWidth: '900px', margin: '1.5rem auto'}}>
 <img loading="lazy" style={{width: "100%", height: "auto"}} src={useBaseUrl('/img/testbeds/vops/ts26265-figB.1-1.svg')} width="1900" height="964" alt="The Encoder Configuration for Operation Point and the Video Signal Test Sequences with annotation feed the Reference Software Encoder. Its bitstream goes to the Conformance Validator, which returns a report and a description; coded metadata goes to the Conforming Decoder, which returns a report and an MD5. All of these, with the encoding configuration and the video signal metadata, form the Conformance Bitstream with annotation, which provides a bitstream to a decoder under test and conformance information to the decoder conformance test." />
-<figcaption>Overview of conformance functionalities provided for this specification. Redrawn from TS 26.265 V19.2.0, figure B.1-1.</figcaption>
+<figcaption>Overview of conformance functionalities provided for this specification. Redrawn from TS 26.265 V19.3.0, figure B.1-1.</figcaption>
 </figure>
 
 ## Operation points
@@ -125,11 +125,11 @@ See [Standards: VOPS Conformance Validator](/standards/vops) for the specificati
 <details>
 <summary>Sources for this page</summary>
 
-- **At a glance and What it does:** TS 26.265 V19.2.0, Introduction, clause 4.2 (Operation Point, Conforming Receiver) and annex B.2.3.
-- **Where the validator fits:** TS 26.265 V19.2.0, annex B.1 and B.3.
-- **Operation points:** TS 26.265 V19.2.0, table 6.1-1, clauses 6.2.2.2, 6.3.2.2 to 6.3.5.2, 6.3.6 and 6.3.4.3; validator names from the repository README.
-- **How it works:** the repository README (including the pipeline figure); TS 26.265 V19.2.0, annex B.2.3.
-- **Figures:** redrawn from TS 26.265 V19.2.0, figures 4.2-1 and B.1-1.
+- **At a glance and What it does:** TS 26.265 V19.3.0, Introduction, clause 4.2 (Operation Point, Conforming Receiver) and annex B.2.3.
+- **Where the validator fits:** TS 26.265 V19.3.0, annex B.1 and B.3.
+- **Operation points:** TS 26.265 V19.3.0, table 6.1-1, clauses 6.2.2.2, 6.3.2.2 to 6.3.5.2, 6.3.6 and 6.3.4.3; validator names from the repository README.
+- **How it works:** the repository README (including the pipeline figure); TS 26.265 V19.3.0, annex B.2.3.
+- **Figures:** redrawn from TS 26.265 V19.3.0, figures 4.2-1 and B.1-1.
 - **Status:** the repository README (status badge and operation point table).
 
 </details>
