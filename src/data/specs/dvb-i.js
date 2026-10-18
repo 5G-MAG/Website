@@ -89,7 +89,7 @@ export const DVBI_SPECS = [
     release: '18',
     url: 'https://www.3gpp.org/dynareport/26510.htm',
     layer: '3GPP unicast',
-    note: 'closes 3 of the 9 DVB-I-over-5GMS scenario gaps this page tracks (clauses 11.4, 11.6.2), partially addresses a 4th (clause 13.2.3.3, attachMPD())',
+    note: 'closes 3 of the 9 DVB-I-over-5GMS scenario gaps this page tracks (clauses 11.4, 11.6.2), and TS 26.512 partially addresses a 4th (clause 13.2.3.3, attachMPD())',
   },
   {
     id: 'TS 29.116',
