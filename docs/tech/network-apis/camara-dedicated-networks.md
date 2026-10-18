@@ -56,7 +56,7 @@ The Dedicated Networks repository contains several API definitions (YAML) (CAMAR
 ### Dedicated Network - Network Profiles API
 
 - **GET /profiles** - List of available network profiles. The response includes an `id`, alongside the `maxNumberOfDevices`, `aggregatedUlThroughput`, `aggregatedDlThroughput`, `qosProfiles`,.. (CAMARA DedicatedNetworks main@81bcd9d dedicated-network-profiles.yaml `/profiles` GET; NetworkProfile id, maxNumberOfDevices, aggregatedUlThroughput, aggregatedDlThroughput, qosProfiles).
-- Dependency: the `qosProfiles` are named QoS profiles re-used from the QoS Profiles API, which an API provider may offer to resolve a name into the characteristics of a QoS profile ([**QoS Profiles API**](./camara-qos-profiles)).
+  - Dependency: the `qosProfiles` are named QoS profiles re-used from the QoS Profiles API, which an API provider may offer to resolve a name into the characteristics of a QoS profile ([**QoS Profiles API**](./camara-qos-profiles)).
 - **GET /profiles/{profileId}** - Read a dedicated network profile (CAMARA DedicatedNetworks main@81bcd9d dedicated-network-profiles.yaml `/profiles/{profileId}` GET)
 
 ### Dedicated Network - Networks API

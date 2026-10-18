@@ -61,8 +61,8 @@ The Application Profiles API definition (YAML) is available at: [application-pro
   - `jitter` - this requirement aims to limit the maximum variation in round-trip packet delay for the 99th percentile of traffic, following ITU Y.1540 standards. It considers only acknowledged packets in a session, which are packets that receive a confirmation of receipt from the recipient (e.g., using TCP) (CAMARA ApplicationProfiles main@11066d6 application-profiles.yaml Jitter description).
 
 - Compute Resources (the minimum compute capacity the application needs where it runs). Values are given as a number plus a `unit`, except CPU and GPU counts which are plain numbers:
-- `targetMinCPU` - minimum number of vCPUs (fractional values allowed, e.g. 0.5).
-- `targetMinMemory` - minimum working memory (value + unit, e.g. MB) (CAMARA ApplicationProfiles main@11066d6 application-profiles.yaml ComputeUnitEnum; Compute; TargetMinMemory).
+  - `targetMinCPU` - minimum number of vCPUs (fractional values allowed, e.g. 0.5).
+  - `targetMinMemory` - minimum working memory (value + unit, e.g. MB) (CAMARA ApplicationProfiles main@11066d6 application-profiles.yaml ComputeUnitEnum; Compute; TargetMinMemory).
   - `gpuVendorType` - required GPU vendor (e.g. Nvidia) (CAMARA ApplicationProfiles main@11066d6 application-profiles.yaml GpuVendorType).
   - `gpuModelName` - required GPU model name (CAMARA ApplicationProfiles main@11066d6 application-profiles.yaml GpuModelName).
   - `targetMinGPU` - minimum number of GPUs (CAMARA ApplicationProfiles main@11066d6 application-profiles.yaml TargetMinGpu).
@@ -146,11 +146,11 @@ The request body below declares the network quality thresholds and compute resou
     },
     "targetMinDownstreamRate": {
       "value": 10,
-"unit": "Mbps"
+      "unit": "Mbps"
     },
     "targetMinUpstreamRate": {
       "value": 10,
-"unit": "Mbps"
+      "unit": "Mbps"
     },
     "packetLossErrorRate": 3,
     "jitter": {
@@ -162,22 +162,22 @@ The request body below declares the network quality thresholds and compute resou
     "targetMinCPU": 0.5,
     "targetMinMemory": {
       "value": 10,
-"unit": "MB"
+      "unit": "MB"
     },
     "gpuVendorType": "Nvidia",
     "gpuModelName": "string",
     "targetMinGPU": 1,
     "targetMinGPUMemory": {
       "value": 10,
-"unit": "MB"
+      "unit": "MB"
     },
     "targetMinEphemeralStorage": {
       "value": 10,
-"unit": "MB"
+      "unit": "MB"
     },
     "targetMinPersistentStorage": {
       "value": 10,
-"unit": "MB"
+      "unit": "MB"
     }
   }
 }
@@ -195,11 +195,11 @@ Type of response: An **applicationProfileId**. The response echoes back the stor
     },
     "targetMinDownstreamRate": {
       "value": 10,
-"unit": "Mbps"
+      "unit": "Mbps"
     },
     "targetMinUpstreamRate": {
       "value": 10,
-"unit": "Mbps"
+      "unit": "Mbps"
     },
     "packetLossErrorRate": 3,
     "jitter": {

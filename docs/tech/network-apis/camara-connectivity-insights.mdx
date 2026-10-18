@@ -97,11 +97,11 @@ Check: [**Application Profiles API**](./camara-application-profiles). The type o
     },
     "targetMinDownstreamRate": {
       "value": 10,
-"unit": "Mbps"
+      "unit": "Mbps"
     },
     "targetMinUpstreamRate": {
       "value": 10,
-"unit": "Mbps"
+      "unit": "Mbps"
     },
     "packetLossErrorRate": 3,
     "jitter": {
@@ -113,22 +113,22 @@ Check: [**Application Profiles API**](./camara-application-profiles). The type o
     "targetMinCPU": 0.5,
     "targetMinMemory": {
       "value": 10,
-"unit": "MB"
+      "unit": "MB"
     },
     "gpuVendorType": "Nvidia",
     "gpuModelName": "string",
     "targetMinGPU": 1,
     "targetMinGPUMemory": {
       "value": 10,
-"unit": "MB"
+      "unit": "MB"
     },
     "targetMinEphemeralStorage": {
       "value": 10,
-"unit": "MB"
+      "unit": "MB"
     },
     "targetMinPersistentStorage": {
       "value": 10,
-"unit": "MB"
+      "unit": "MB"
     }
   }
 }
@@ -141,7 +141,7 @@ This is how a device is defined (CAMARA QualityOnDemand main@471aa35 quality-on-
 ```json
 {
   "device": {
-"phoneNumber": "+123456789",
+    "phoneNumber": "+123456789",
     "networkAccessIdentifier": "123456789@domain.com",
     "ipv4Address": {
       "publicAddress": "84.125.93.10",
@@ -166,7 +166,7 @@ With **POST /check-network-quality** passing (CAMARA ConnectivityInsights main@d
 {
   "applicationProfileId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "device": {
-"phoneNumber": "+123456789",
+    "phoneNumber": "+123456789",
     "networkAccessIdentifier": "123456789@domain.com",
     "ipv4Address": {
       "publicAddress": "84.125.93.10",

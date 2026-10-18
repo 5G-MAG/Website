@@ -99,11 +99,11 @@ Check: [**Application Profiles API**](./camara-application-profiles). The type o
     },
     "targetMinDownstreamRate": {
       "value": 10,
-"unit": "Mbps"
+      "unit": "Mbps"
     },
     "targetMinUpstreamRate": {
       "value": 10,
-"unit": "Mbps"
+      "unit": "Mbps"
     },
     "packetLossErrorRate": 3,
     "jitter": {
@@ -115,22 +115,22 @@ Check: [**Application Profiles API**](./camara-application-profiles). The type o
     "targetMinCPU": 0.5,
     "targetMinMemory": {
       "value": 10,
-"unit": "MB"
+      "unit": "MB"
     },
     "gpuVendorType": "Nvidia",
     "gpuModelName": "string",
     "targetMinGPU": 1,
     "targetMinGPUMemory": {
       "value": 10,
-"unit": "MB"
+      "unit": "MB"
     },
     "targetMinEphemeralStorage": {
       "value": 10,
-"unit": "MB"
+      "unit": "MB"
     },
     "targetMinPersistentStorage": {
       "value": 10,
-"unit": "MB"
+      "unit": "MB"
     }
   }
 }
@@ -143,7 +143,7 @@ This is how a device is defined (CAMARA QualityOnDemand main@471aa35 quality-on-
 ```json
 {
   "device": {
-"phoneNumber": "+123456789",
+    "phoneNumber": "+123456789",
     "networkAccessIdentifier": "123456789@domain.com",
     "ipv4Address": {
       "publicAddress": "84.125.93.10",
@@ -177,7 +177,7 @@ The request below creates a subscription. The key fields are (CAMARA Connectivit
   "config": {
     "subscriptionDetail": {
       "device": {
-"phoneNumber": "+123456789",
+        "phoneNumber": "+123456789",
         "networkAccessIdentifier": "123456789@domain.com",
         "ipv4Address": {
           "publicAddress": "84.125.93.10",
@@ -211,12 +211,12 @@ Type of response: A **subscription** object. The response echoes the subscriptio
 
 ```json
 {
-"protocol": "HTTP", "sink": "https://endpoint.example.com/sink",
-"types": ["org.camaraproject.connectivity-insights-subscriptions.v0.network-quality"],
+  "protocol": "HTTP", "sink": "https://endpoint.example.com/sink",
+  "types": ["org.camaraproject.connectivity-insights-subscriptions.v0.network-quality"],
   "config": {
     "subscriptionDetail": {
       "device": {
-"phoneNumber": "+123456789",
+        "phoneNumber": "+123456789",
         "networkAccessIdentifier": "123456789@domain.com",
         "ipv4Address": {
           "publicAddress": "84.125.93.10",
@@ -243,7 +243,7 @@ Type of response: A **subscription** object. The response echoes the subscriptio
     "subscriptionMaxEvents": 5,
     "initialEvent": true
   },
-"id": "1119920371",
+  "id": "1119920371",
   "startsAt": "2023-07-03T12:27:08.312Z",
   "expiresAt": "2023-07-03T12:27:08.312Z",
   "status": "ACTIVATION_REQUESTED"
