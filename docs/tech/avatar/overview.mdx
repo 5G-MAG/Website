@@ -28,18 +28,18 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## How it works
 
-An avatar communication system combines three pieces: a representation of the avatar (its 3D model and how it is described), an animation stream that drives it in real time from a participant's audio and video, and a media transport that carries these over the network so remote participants see and hear the avatar. 5G-MAG's work looks at how these pieces map onto 5G media delivery.
+An avatar communication system combines three pieces: a representation of the avatar (its 3D model and how it is described), an animation stream that drives it in real time from a participant's audio and video, and a media transport that carries these over the network so remote participants see and hear the avatar. 5G-MAG's work looks at how these pieces map onto 5G media delivery (TR 26.813 V20.0.0 clause 4; TR 26.813 V20.0.0 clause 7.1; TR 26.813 V20.0.0 clause 8.2.2).
 
 **Key specifications:** ISO/IEC 23090-39 (MPEG Avatar Representation Format, ARF), 3GPP [TR 26.813](https://www.3gpp.org/dynareport/26813.htm) (Avatar Representation and Communication, the FS_AVATAR study item, completed in Release 19). An introductory teaser is also available on the [Technology Exchanges](/tech/exchanges#avatar-communications-in-ar-calls) page.
 
 ### The ARF data model
 
-The Avatar Representation Format (ISO/IEC 23090-39) is built from two complementary specifications:
+The Avatar Representation Format (ISO/IEC 23090-39) is built from two complementary specifications (TR 26.813 V20.0.0 clause 6.3.4):
 
-- A **Base Avatar Format** that stores the avatar asset. Its data model is composed of skeletons, meshes, blendshapes, skins, landmarks, and nodes (joints). The skeleton and joints give the avatar its articulation; meshes and skins give it surface geometry and how that geometry deforms with the skeleton; blendshapes provide expression and fine facial deformation; landmarks give named reference points used to map tracking data onto the model.
-- An **Animation Stream Format** that carries the time-varying data used to animate a base avatar. The stream is a sequence of Avatar Animation Units (AAUs). Each AAU is a self-contained packetisation unit, similar in role to a NAL unit in video coding, and consists of an AAU header followed by zero or more AAU packets. Each AAU references an Avatar ID so that, in a multi-party session, animation data can be routed to the correct avatar.
+- A **Base Avatar Format** that stores the avatar asset. Its data model is composed of skeletons, meshes, blendshapes, skins, landmarks, and nodes (joints). The skeleton and joints give the avatar its articulation; meshes and skins give it surface geometry and how that geometry deforms with the skeleton; blendshapes provide expression and fine facial deformation; landmarks give named reference points used to map tracking data onto the model (TR 26.813 V20.0.0 clause 6.3.4).
+- An **Animation Stream Format** that carries the time-varying data used to animate a base avatar. The stream is a sequence of Avatar Animation Units (AAUs). Each AAU is a self-contained packetisation unit, similar in role to a NAL unit in video coding, and consists of an AAU header followed by an AAU payload (TR 26.813 V20.0.0 clause 6.3.4; draft-ietf-avtcore-rtp-avatar-02 section 4.2). Each AAU references an Avatar ID so that, in a multi-party session, animation data can be routed to the correct avatar.
 
-The base avatar can be stored and exchanged in two container types: an ISOBMFF container (ISO/IEC 14496-12) or a Zip-based container (ISO/IEC 21320-1). Because the base avatar and the animation are separate, a client can fetch and load the model once (or reuse one it already holds) and then receive only the compact animation stream during the call.
+The base avatar can be stored and exchanged in two container types: an ISOBMFF container (ISO/IEC 14496-12) or a Zip-based container (ISO/IEC 21320-1). Because the base avatar and the animation are separate, a client can fetch and load the model once (or reuse one it already holds) and then receive only the compact animation stream during the call (TR 26.813 V20.0.0 clause 6.3.4; TR 26.813 V20.0.0 clause 7.2 step 8; TR 26.813 V20.0.0 clause 6A).
 
 ### Scene placement via MPEG-I Scene Description
 
@@ -47,16 +47,16 @@ ARF does not, by itself, position an avatar in a room; that is the job of MPEG-I
 
 ### End-to-end procedure
 
-At a high level, a conversational avatar session proceeds as follows:
+At a high level, a conversational avatar session proceeds as follows: (TR 26.813 V20.0.0 clause 7.2; TR 26.813 V20.0.0 clause 8.3.2.2)
 
 | Step | What happens |
 |---|---|
-| 1. Provisioning | Both endpoints obtain the base avatar (either a stored ARF asset or one generated for the user). Because the avatar model is shared, only animation and audio need to flow during the call. |
-| 2. Session setup | The endpoints negotiate a real-time session, over the IMS-based conversational path (MTSI) or the RTC framework; the immersive audio codec (IVAS) and any avatar animation stream are negotiated through SDP. |
-| 3. Capture and tracking | The sender tracks the participant from camera and microphone input and derives animation parameters (skeletal pose, facial blendshape weights, and similar) mapped onto the ARF landmarks and joints. |
-| 4. Encode and packetise | Animation parameters are formatted as ARF AAUs; audio is encoded with IVAS. |
-| 5. Transport | AAUs are carried over RTP. The IETF is defining an RTP payload format for ARF animations (draft-ietf-avtcore-rtp-avatar) with single-unit, fragmentation, and aggregation packet modes; IVAS audio uses its own RTP payload format. The IMS data channel is one candidate carrier for the animation data. |
-| 6. Render | The receiver's Presentation Engine applies the animation stream to the bound base avatar within the scene, and IVAS renders the spatial audio so the avatar is heard from its scene position. |
+| 1. Provisioning | Both endpoints obtain the base avatar (either a stored ARF asset or one generated for the user). Because the avatar model is shared, only animation and audio need to flow during the call (TR 26.813 V20.0.0 clause 7.2 steps 1 and 8; TR 26.813 V20.0.0 clause 8.3.2.0). |
+| 2. Session setup | The endpoints negotiate a real-time session, over the IMS-based conversational path (MTSI) or the RTC framework; the immersive audio codec (IVAS) and any avatar animation stream are negotiated through SDP (TS 26.114 V20.1.1 clause 6.2.2.2; TS 26.506 V20.0.0 clause 5.5; draft-ietf-avtcore-rtp-avatar-02 section 9; TR 26.813 V20.0.0 clause 8.2.2; TR 26.813 V20.0.0 clause 8.4.1). |
+| 3. Capture and tracking | The sender tracks the participant from camera and microphone input and derives animation parameters (skeletal pose, facial blendshape weights, landmark positions, and similar) that drive the ARF joints, blendshape sets and landmark sets (TR 26.813 V20.0.0 clause 6.2; TR 26.813 V20.0.0 clause 7.1; TR 26.813 V20.0.0 clause 6.3.4). |
+| 4. Encode and packetise | Animation parameters are formatted as ARF AAUs; audio is encoded with IVAS (TR 26.813 V20.0.0 clause 6.3.4; TS 26.114 V20.1.1 clause 5.2.1.1). |
+| 5. Transport | AAUs are carried over RTP. The IETF is defining an RTP payload format for ARF animations (draft-ietf-avtcore-rtp-avatar) with single-unit, fragmentation, and aggregation packet modes; IVAS audio uses its own RTP payload format. The IMS data channel is one candidate carrier for the animation data (draft-ietf-avtcore-rtp-avatar-02 section 5.4; TS 26.253 V19.3.0 clause A.1; TS 26.114 V20.1.1 clause 7.4.2; TR 26.813 V20.0.0 clause 8.2.1; TR 26.813 V20.0.0 clause 8.2.2). |
+| 6. Render | The receiver applies the animation stream to the downloaded base avatar and renders the scene; in the TR use case, spatial audio is rendered in the direction of each participant (TR 26.813 V20.0.0 clause 5.1; TR 26.813 V20.0.0 clause 7.2 steps 13 and 18). |
 
 ### Interfaces and interoperability
 
