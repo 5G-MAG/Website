@@ -37,7 +37,9 @@ Work items as listed in the 3GPP work plan of 28 September 2026. Change requests
 | [Energy_PRO-MED](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1130006) | Protocols, network APIs and data types for application energy consumption information collection, reporting and exposure Stage 3 | Normative | TS 26.113 (with TS 26.510, TS 26.512, TS 26.527) | In progress, target Mar 2027 | SP-261003 |
 | [FS_Q4RTC_MED](https://portal.3gpp.org/desktopmodules/WorkItem/WorkItemDetails.aspx?workitemId=1100007) | Study on QUIC-based Media Delivery for Real-time Communication | Study | TR 26.836 | In progress, target Mar 2027 | SP-251661 |
 
-The Release 20 changes to TS 26.506 and TS 26.113 are not covered here.
+| Specification | Version | CR | Subject |
+| --- | --- | --- | --- |
+| TS 26.506 | 20.0.0 | 0013 | [Energy_ARCH-MED] Instantiate energy architecture in RTC System |
 
 ## Release 19
 

@@ -27,7 +27,7 @@ pagination_next: null
 
 :::
 
-Work items as listed in the 3GPP work plan of 28 September 2026. Change requests as listed in the change history of TS 26.531 V19.0.0 and TS 26.532 V19.1.0.
+Work items as listed in the 3GPP work plan of 28 September 2026. Change requests as listed in the change history of TS 26.531 V19.0.0 and TS 26.532 V19.1.0, and in the 3GPP Change Request database of 25 September 2026.
 
 ## Release 19
 
@@ -82,6 +82,9 @@ Both specifications were placed under change control at SA#96 (June 2022) as ver
 | TS 26.531 | 17.1.0 | 0001 | Miscellaneous corrections and clarifications |
 | TS 26.531 | 17.2.0 | 0005 | Provisioning of Data Collection and Reporting Configuration |
 | TS 26.531 | 17.2.0 | 0006 | Precedence Rules on Data Collection, Reporting and Event Exposure |
+| TS 26.531 | 17.3.0 | 0009 | Data reporting domains and events |
 | TS 26.532 | 17.1.0 | 0001 | TS 26.532 PUT/PATCH corrections |
 | TS 26.532 | 17.1.0 | 0002 | Bug fixes regarding updating data collection and reporting configurations for data collection clients |
 | TS 26.532 | 17.2.0 | 0003 | Data Reporting Configuration Inclusion of Data Sampling Rules and Data Reporting Rules |
+| TS 26.532 | 17.3.0 | 0007 | Essential maintenance |
+| TS 26.532 | 17.3.0 | 0008 | Data packaging strategies |
