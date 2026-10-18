@@ -1,8 +1,8 @@
 ---
 hide_title: true
-title: Public Warning Systems - Standards Evolution
+title: 5G Broadcast - Emergency Alerts - Standards Evolution
 slug: /standards/emergency-alerts/evolution
-description: Release-by-release 3GPP work item and Change Request history behind Public Warning Systems.
+description: Release-by-release 3GPP work item and Change Request history behind 5G Broadcast - Emergency Alerts.
 ---
 
 <div class="topic-banner">
@@ -14,11 +14,11 @@ description: Release-by-release 3GPP work item and Change Request history behind
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Standards</span>
-<h1>Public Warning Systems - Standards Evolution</h1>
+<h1>5G Broadcast - Emergency Alerts - Standards Evolution</h1>
 </div>
 </div>
 
-This page is the detailed, release-by-release companion to [Standards: Public Warning Systems](/standards/emergency-alerts): the 3GPP work items and Change Requests behind each release. See that page for the full specification list and current scope.
+This page is the detailed, release-by-release companion to [Standards: 5G Broadcast - Emergency Alerts](/standards/emergency-alerts): the 3GPP work items and Change Requests behind each release. See that page for the full specification list and current scope.
 
 :::tip[At a glance]
 

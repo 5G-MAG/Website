@@ -180,13 +180,11 @@
         "3GPP",
         "ETSI"
       ],
-      "icon": "sos",
-      "displayName": "Public Warning Systems"
+      "icon": "sos"
     },
     {
       "name": "XR/3D Scenes with MPEG-I Scene Description",
       "type": "reference-tool",
-      "displayName": "XR Media & 3D Scenes",
       "doc_url": "/reference-tools/xr/",
       "tech_url": "/tech/xr",
       "standards_url": "/standards/xr",
@@ -297,7 +295,6 @@
     {
       "name": "MPEG V3C Immersive Platform",
       "type": "reference-tool",
-      "displayName": "Volumetric Video Experiences",
       "doc_url": "/reference-tools/v3c/",
       "tech_url": "/tech/v3c",
       "standards_url": "/standards/v3c",
@@ -476,7 +473,6 @@
     {
       "name": "CAMARA Connectivity Quality Management APIs",
       "type": "reference-tool",
-      "displayName": "Network APIs for Connectivity Quality",
       "doc_url": "/reference-tools/network-apis/",
       "tech_url": "/tech/network-apis",
       "standards_url": "/standards/network-apis",
@@ -506,7 +502,6 @@
     {
       "name": "Conversational Avatar Communication with MPEG ARF",
       "type": "reference-tool",
-      "displayName": "Conversational Avatar Communication",
       "doc_url": "/reference-tools/avatar/",
       "tech_url": "/tech/avatar",
       "standards_url": "/standards/avatar",

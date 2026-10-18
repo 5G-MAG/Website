@@ -1,6 +1,6 @@
 ---
 hide_title: true
-title: XR Media & 3D Scenes - Standards Evolution
+title: XR/3D Scenes with MPEG-I Scene Description - Standards Evolution
 slug: /standards/xr/evolution
 description: Editions and amendments of ISO/IEC 23090-14, MPEG-I Scene Description.
 ---
@@ -12,11 +12,11 @@ description: Editions and amendments of ISO/IEC 23090-14, MPEG-I Scene Descripti
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Standards</span>
-<h1>XR Media &amp; 3D Scenes - Standards Evolution</h1>
+<h1>XR/3D Scenes with MPEG-I Scene Description - Standards Evolution</h1>
 </div>
 </div>
 
-This page is the companion to [Standards: XR Media & 3D Scenes](/standards/xr) for ISO/IEC 23090-14, MPEG-I Scene Description.
+This page is the companion to [Standards: XR/3D Scenes with MPEG-I Scene Description](/standards/xr) for ISO/IEC 23090-14, MPEG-I Scene Description.
 
 | Document | Date | Content |
 | --- | --- | --- |
