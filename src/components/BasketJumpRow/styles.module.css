@@ -81,5 +81,5 @@
   margin-top: auto;
   font-size: 0.82rem;
   font-weight: 700;
-  color: var(--accent);
+  color: color-mix(in srgb, var(--accent) var(--accent-ink-mix), var(--accent-ink-base));
 }

@@ -774,7 +774,7 @@
 }
 
 a.chartRowName:hover {
-  color: var(--accent) !important;
+  color: color-mix(in srgb, var(--accent) var(--accent-ink-mix), var(--accent-ink-base)) !important;
   text-decoration: underline !important;
   text-decoration-color: var(--accent) !important;
   text-underline-offset: 2px;

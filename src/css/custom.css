@@ -69,6 +69,9 @@
   --ifm-color-primary-textsafe: #007a9e;
   /* Text and links, and fills that carry white text: the brand blue itself is only 3:1 on white. */
   --brand-text: #00749a;
+  /* Area accent colours as text: mixed with black (light) or white (dark) so every one is at least 4.5:1 on the page. */
+  --accent-ink-mix: 70%;
+  --accent-ink-base: #000;
   --brand-solid: #00749a;
   --ifm-link-color: #00749a;
   --ifm-link-hover-color: #006f92;
@@ -133,6 +136,8 @@
   --ifm-color-primary-lightest: #47c8f0;
   --ifm-color-primary-textsafe: #007a9e;
   --brand-text: #00a0d2;
+  --accent-ink-mix: 75%;
+  --accent-ink-base: #fff;
   --brand-solid: #00749a;
   --ifm-link-color: #00a0d2;
   --ifm-link-hover-color: #47c8f0;

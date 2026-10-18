@@ -67,7 +67,7 @@
   white-space: nowrap;
   text-decoration: none !important;
   border: 1px solid var(--repo-accent, var(--ifm-color-primary));
-  color: var(--repo-accent, var(--ifm-color-primary));
+  color: color-mix(in srgb, var(--repo-accent, var(--ifm-color-primary)) var(--accent-ink-mix), var(--accent-ink-base));
   background: transparent;
   transition:
     background 0.15s ease,

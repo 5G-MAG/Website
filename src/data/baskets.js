@@ -101,7 +101,7 @@ export const STAGE_GROUPS = [
   { key: 'under-study', label: 'Under Study', reached: (s) => !!s?.['under-study'] },
   {
     key: 'technical-analysis',
-    label: 'Technical Analysis',
+    label: 'Technology',
     reached: (s) => !!s?.['technical-analysis'],
   },
   { key: 'software', label: 'Software', reached: (s) => !!(s?.basic || s?.advanced) },
