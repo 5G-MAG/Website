@@ -52,7 +52,7 @@ In practice the implementation splits into a small number of cooperating compone
 - A **tracking / animation producer** that takes camera and microphone input, tracks the participant, and emits ARF animation data mapped onto the avatar's landmarks and joints.
 - A **transport / packaging path** that packages the animation as part of a real-time call and exchanges it with the far end.
 - **Sample content** (base avatars and recorded animation) for testing without a live capture rig.
-- A **Unity-based presentation** that loads the base avatar, places it in a scene using the MPEG-I Scene Description avatar node (the `MPEG_avatar` glTF extension, see the tech documentation), and applies the animation stream for rendering.
+- A **Unity-based presentation** that loads the base avatar, places it in a scene using the MPEG-I Scene Description avatar node (the `MPEG_node_avatar` glTF extension, see the tech documentation), and applies the animation stream for rendering.
 
 This mirrors the decoupling used elsewhere in 5G-MAG's immersive tooling: the component that produces avatar animation is kept separate from the engine that renders it, so the two can be developed and swapped independently as long as they agree on the ARF stream format. Because ARF is not yet final, expect the animation-stream and base-avatar details to change, and pin the tools to a known specification draft when building.
 
