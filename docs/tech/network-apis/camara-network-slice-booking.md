@@ -22,9 +22,9 @@ This documentation is currently **under development and subject to change**. It 
 
 ## Description
 
-The "Network Slice Booking" API gives developers a programmable interface through which industry customers can reserve and manage network slice resources within designated areas and time periods, and offer network guarantee services to end users. Developers can customize service areas (e.g., circular or polygonal regions) and time periods, set Quality of Service (QoS) parameters (e.g., throughput, latency, and terminal limits), apply for network slice resources from operators, and bind slice resources to end users, all to achieve network guarantee functions.
+The "Network Slice Booking" API gives developers a programmable interface to reserve a network slice for a selected area and period, specifying the service time, the service area (a circle or a polygon) and a slice QoS profile (maximum number of devices, rate per device and delay budgets). The Network Slice Assignment API of the same project manages the assignment of devices to a booked slice.
 
-A network slice is a logically isolated, end-to-end portion of the operator's network, dimensioned for a particular purpose (for example a slice reserved for a live event). Booking a slice differs from the [Quality on Demand API](./camara-quality-on-demand): QoD requests QoS for a single device's session on demand, whereas a slice reserves shared resources for an area and time window covering many devices. This API also overlaps with the [Dedicated Networks API](./camara-dedicated-networks); see the Self-Assessment below.
+A network slice is a logical network that provides specific network capabilities and network characteristics (for example a slice reserved for a live event). Booking a slice differs from the [Quality on Demand API](./camara-quality-on-demand): QoD requests QoS for a single device's session on demand, whereas a slice reserves shared resources for an area and time window covering many devices. This API also overlaps with the [Dedicated Networks API](./camara-dedicated-networks); see the Self-Assessment below.
 
 Information: [Network Slice Booking project page](https://camaraproject.org/network-slice-booking/) and [GitHub repository](https://github.com/camaraproject/NetworkSliceBooking)
 
@@ -36,29 +36,29 @@ The Network Slice Booking API definition (YAML) is available at: [network-slice-
 
 ### Network Slice Booking API
 
-- **POST /slices** with a request body including `serviceTime`, `serviceArea`, `sliceQosProfile`, it is used to create a new network slice booking with the expected service time, service area, and QoS profile. The response contains a `sliceId`. If expected network slice resources are not available, the API consumer will receive an error response.
-- **GET /slices/{sliceId}** - query slice resource information details.
-- **DELETE /slices/{sliceId}** - delete a Network Slice Booking.
+- **POST /slices** with a request body including `serviceTime`, `serviceArea`, `sliceQosProfile`, it is used to create a new network slice booking with the expected service time, service area, and QoS profile. The response contains a `sliceId`. If expected network slice resources are not available, the API consumer will receive an error response (CAMARA NetworkSliceBooking main@fc349ef network-slice-booking.yaml `/slices` POST (createSlice; 422 NETWORK_SLICE_BOOKING.RESOURCES_INSUFFICIENT); SliceAttributes).
+- **GET /slices/{sliceId}** - query slice resource information details (CAMARA NetworkSliceBooking main@fc349ef network-slice-booking.yaml `/slices/{sliceId}` GET).
+- **DELETE /slices/{sliceId}** - delete a Network Slice Booking (CAMARA NetworkSliceBooking main@fc349ef network-slice-booking.yaml `/slices/{sliceId}` DELETE).
 
 #### Parameters describing a Network Slice QoS Profile
 
 | Parameter                 | Description                                                                    |
 | ------------------------- | ------------------------------------------------------------------------------ |
-| `maxNumOfDevices`         | Is the maximum number of devices that can be connected to the slice.           |
-| `downStreamRatePerDevice` | Is the maximum downstream rate allowed for each device connected to the slice. |
-| `upStreamRatePerDevice`   | Is the maximum upstream rate allowed for each device connected to the slice.   |
-| `downStreamDelayBudget`   | Is the maximum allowable downlink packet transmission latency (millisecond).   |
-| `upStreamDelayBudget`     | Is the maximum allowable uplink packet transmission latency (millisecond).     |
+| `maxNumOfDevices`         | Is the maximum number of devices that can be connected to the slice. (CAMARA NetworkSliceBooking main@fc349ef network-slice-booking.yaml SliceQosProfile maxNumOfDevices) |
+| `downStreamRatePerDevice` | Is the maximum downstream rate allowed for each device connected to the slice. (CAMARA NetworkSliceBooking main@fc349ef network-slice-booking.yaml SliceQosProfile downStreamRatePerDevice) |
+| `upStreamRatePerDevice`   | Is the maximum upstream rate allowed for each device connected to the slice. (CAMARA NetworkSliceBooking main@fc349ef network-slice-booking.yaml SliceQosProfile upStreamRatePerDevice) |
+| `downStreamDelayBudget`   | Is the maximum allowable downlink packet transmission latency (millisecond). (CAMARA NetworkSliceBooking main@fc349ef network-slice-booking.yaml SliceQosProfile downStreamDelayBudget) |
+| `upStreamDelayBudget`     | Is the maximum allowable uplink packet transmission latency (millisecond). (CAMARA NetworkSliceBooking main@fc349ef network-slice-booking.yaml SliceQosProfile upStreamDelayBudget) |
 
-Both rate parameters (`downStreamRatePerDevice`, `upStreamRatePerDevice`) indicate the individual device capability required for the slice. Both delay-budget parameters (`downStreamDelayBudget`, `upStreamDelayBudget`) share the same rationale: by limiting the delay, the network can provide an acceptable level of performance for various services, such as voice calls, video streaming, and data.
+Both rate parameters (`downStreamRatePerDevice`, `upStreamRatePerDevice`) indicate the individual device capability required for the slice. Both delay-budget parameters (`downStreamDelayBudget`, `upStreamDelayBudget`) share the same rationale: by limiting the delay, the network can provide an acceptable level of performance for various services, such as voice calls, video streaming, and data (CAMARA NetworkSliceBooking main@fc349ef network-slice-booking.yaml SliceQosProfile downStreamRatePerDevice, upStreamRatePerDevice, downStreamDelayBudget, upStreamDelayBudget).
 
 ## Standardisation context
 
-Network Slice Booking is a CAMARA sandbox/incubating API (OpenAPI 3.0.3, Commonalities-conformant). It exposes, at a booking-request level, what 3GPP defines as network slicing. In the 5G System a slice is identified by a Single Network Slice Selection Assistance Information value (S-NSSAI) and is characterised, at management level, by a Network Slice Template. The management of slices (creation, allocation, deallocation) is covered by 3GPP slice management specifications, and the industry parameter template is the GSMA Generic Network Slice Template (GST). At runtime, steering a vertical's traffic onto a slice is what the SEAL Network Slice Capability Enablement (NSCE) service addresses ([TS 23.434](https://www.3gpp.org/dynareport/23434.htm)): the NSCE server acts as an Application Function and updates the S-NSSAI and DNN in the UE Route Selection Policy (URSP) rules.
+Network Slice Booking is a CAMARA API (OpenAPI 3.0.3). It exposes, at a booking-request level, what 3GPP defines as network slicing. In the 5G System a slice is identified by a Single Network Slice Selection Assistance Information value (S-NSSAI, [TS 23.501](https://www.3gpp.org/dynareport/23501.htm) clause 5.15.2.1) and is characterised, at management level, by a Network Slice Template. The management of slices (creation, allocation, deallocation) is covered by 3GPP slice management specifications, and the industry parameter template is the GSMA Generic Network Slice Template (GST). At runtime, the SEAL Network Slice Capability Enablement (NSCE) service exposes slice capabilities to vertical applications ([TS 23.434](https://www.3gpp.org/dynareport/23434.htm) clause 16; the detailed specification is TS 23.435).
 
-The CAMARA `network-slice-booking.yaml` deliberately does not adopt this 3GPP nomenclature. It exposes independent, application-facing concepts (service time, a circular or polygonal service area, and a `sliceQosProfile` of per-device rates, delay budgets and a device count) rather than S-NSSAI, GST or URSP. The 3GPP terms above are therefore background, not a normative part of the API; the correspondence is 5G-MAG analysis and an operator may implement the booking differently.
+The CAMARA `network-slice-booking.yaml` does not use this 3GPP nomenclature. It exposes independent, application-facing concepts (service time, a circular or polygonal service area, and a `sliceQosProfile` of per-device rates, delay budgets and a device count) rather than S-NSSAI, GST or URSP. The 3GPP terms above are therefore background, not a normative part of the API; the correspondence is 5G-MAG analysis and an operator may implement the booking differently.
 
-The `sliceQosProfile` here is a separate parameter set from the operator-catalogue [QoS Profiles API](./camara-qos-profiles). It expresses aggregate slice dimensioning: a `maxNumOfDevices` and per-device upstream/downstream rate and delay budgets. Note that these are per-device maxima applied across an aggregate: as 5G-MAG's Self-Assessment observes, dimensioning for the peak per-device value across all devices can over-provision the slice. The booking is bound to an area and time, not to specific devices, which is the main structural difference from the device-oriented QoS APIs and the source of the open questions below.
+The `sliceQosProfile` here is a separate parameter set from the operator-catalogue [QoS Profiles API](./camara-qos-profiles). It expresses aggregate slice dimensioning: a `maxNumOfDevices` and per-device upstream/downstream rate and delay budgets. Note that these are per-device maxima applied across an aggregate: as 5G-MAG's Self-Assessment observes, dimensioning for the peak per-device value across all devices can over-provision the slice. The booking is bound to an area and time, not to specific devices, which is the main structural difference from the device-oriented QoS APIs and the source of the open questions below (CAMARA NetworkSliceBooking main@fc349ef network-slice-booking.yaml SliceQosProfile; CAMARA QoSProfiles main@8ce8f4d qos-profiles.yaml).
 
 ---
 
@@ -67,34 +67,34 @@ The `sliceQosProfile` here is a separate parameter set from the operator-catalog
 A user of a media application would like to book the availability of a network slice for a given time area and QoS Profile. The following steps are executed:
 
 :::note
-Workflow figure to be added. It should show a single interaction: the API consumer sending **POST /slices** with a `serviceTime`, `serviceArea` and `sliceQosProfile`, and the operator returning a `sliceId` and booking `status` (there are no pre-conditions).
+Workflow figure to be added. It should show a single interaction: the API consumer sending **POST /slices** with a `serviceTime`, `serviceArea` and `sliceQosProfile`, and the operator returning the booking with its `sliceId` (there are no pre-conditions) (CAMARA NetworkSliceBooking main@fc349ef network-slice-booking.yaml `/slices` POST response 201; SliceInfo).
 :::
 
 ### Step 0: Pre-conditions
 
-- In principle none. Only after invoking the API the API consumer will receive a response whether the network slice booking can be successfully created.
+- In principle none. Only after invoking the API the API consumer will receive a response whether the network slice booking can be successfully created (CAMARA NetworkSliceBooking main@fc349ef network-slice-booking.yaml `/slices` POST).
 
 ### Step 1: Create a Network Slice Booking
 
-- **POST /slices** passing the `serviceTime`, `serviceArea` and `sliceQosProfile` parameters.
+- **POST /slices** passing the `serviceTime`, `serviceArea` and `sliceQosProfile` parameters (CAMARA NetworkSliceBooking main@fc349ef network-slice-booking.yaml `/slices` POST; SliceAttributes required serviceTime, serviceArea, sliceQosProfile).
 
 ---
 
 ## 5G-MAG's Self-Assessment
 
-The Network Slice Booking API would be used prior to the start of the event to book resources for a given time, area and QoS profile. The booking applies to a service time and area, but it is not associated with a device. The QoS Profile is defined for an aggregation of devices, each of which gets a pro-rated downstream/upstream rate value; this may assume a design of the resources for the peak values per device, which may result in overdimensioning resources. This API may also be redundant compared with the Dedicated Networks API.
+The Network Slice Booking API would be used prior to the start of the event to book resources for a given time, area and QoS profile. The booking applies to a service time and area, but it is not associated with a device. The QoS Profile is defined for an aggregation of devices, each of which is allowed a maximum downstream/upstream rate; this may assume a design of the resources for the peak values per device, which may result in overdimensioning resources. This API may also be redundant compared with the Dedicated Networks API (CAMARA NetworkSliceBooking main@fc349ef network-slice-booking.yaml SliceQosProfile downStreamRatePerDevice, upStreamRatePerDevice, maxNumOfDevices).
 
 Potential improvements:
 
 - For consistency, the definition of the QoS profile could leverage the `qosProfile` defined for other QoS-related APIs.
 - The booking could be applied per device rather than to an aggregate of devices
-- It is unclear how to associate devices to make use of the resources. As it stands, this process assumes that all devices connected to the network in such area and time window will be covered by such network slice booking.
+- Devices are associated with a booked slice through the separate Network Slice Assignment API (`network-slice-assignment.yaml`), which assigns a device to an existing slice by `sliceId` and keeps the number of devices within `maxNumOfDevices` (CAMARA NetworkSliceBooking main@fc349ef network-slice-assignment.yaml info.description; `/slices/{sliceId}/devices`).
 
 ---
 
 ## Network Slice Booking API Usage
 
-With **POST /slices** and one of the two service-area shapes below.
+With **POST /slices** and one of the two service-area shapes below (CAMARA NetworkSliceBooking main@fc349ef network-slice-booking.yaml SliceAttributes serviceArea; examples CREATE_CIRCLE, CREATE_POLYGON).
 
 A location described as a circle (a centre point plus a radius in metres):
 
@@ -160,7 +160,7 @@ or described as a polygon (an ordered list of boundary coordinates):
   },
 ```
 
-Type of response: A **sliceId** identifying the booking, plus its current `status`:
+Type of response: the booking attributes (`serviceTime`, `serviceArea`, `sliceQosProfile`) plus a **sliceId** identifying the booking (CAMARA NetworkSliceBooking main@fc349ef network-slice-booking.yaml `/slices` POST response 201; SliceInfo):
 
 ```json
 {

@@ -22,9 +22,9 @@ This documentation is currently **under development and subject to change**. It 
 
 ## Description
 
-Developers and other capabilities consumers use the "QoS Booking" (Quality of Service Booking) API to request specific network conditions from telco networks in advance, without needing in-depth knowledge of the underlying network complexity (e.g. the 4G/5G system in the case of a mobile network).
+Developers and other capabilities consumers use the "QoS Booking" (Quality of Service Booking) API to request specific network conditions from telco networks in advance, without needing in-depth knowledge of the underlying network complexity (e.g. the 4G/5G system in the case of a mobile network) (CAMARA QoSBooking main@4de93f1 qos-booking.yaml info.description).
 
-**How this differs from QoS Booking and Assignment:** this API books a QoS profile for a set of devices supplied at booking time (each booking targets specific devices). The related [QoS Booking and Assignment API](./camara-qos-booking-assignment) instead books for a device count and lets you assign and release individual devices to the booking afterwards. Use QoS Booking when the devices are known up front; use Booking and Assignment when devices join later.
+**How this differs from QoS Booking and Assignment:** this API books a QoS profile for a device supplied at booking time (each booking targets one device). The related [QoS Booking and Assignment API](./camara-qos-booking-assignment) instead books for a device count (`bookingDeviceCount`) and lets you assign and release individual devices to the booking afterwards. Use QoS Booking when the devices are known up front; use Booking and Assignment when devices join later (CAMARA QoSBooking main@4de93f1 qos-booking.yaml `/device-qos-bookings` POST; CAMARA QoSBooking main@4de93f1 qos-booking-and-assignment.yaml `/qos-bookings` POST bookingDeviceCount, `/qos-bookings/{bookingId}/devices/assign` and `/release`).
 
 Information: [QoS Booking project page](https://camaraproject.org/qos-booking/) and [GitHub repository](https://github.com/camaraproject/QoSBooking)
 
@@ -36,21 +36,21 @@ The QoS Booking API definition (YAML) is available at: [qos-booking.yaml](https:
 
 ### QoS Booking API
 
-- **POST /device-qos-bookings** with a request body containing `qosProfile`, `applicationServer`, `applicationServerPorts`, `device` object, `devicePorts`, `startTime`, `duration`, `serviceArea`, it creates a time-bounded booking of a QoS profile for the specified devices. The response includes a `bookingId`.
-  - Dependency: Requires `qosProfile` which can be retrieved from a previous call to the [**QoS Profiles API**](./camara-qos-profiles).
-- **GET /device-qos-bookings/{bookingId}** - Get QoS Booking information.
-- **DELETE /device-qos-bookings/{bookingId}** - Deletes a QoS Booking.
-- **POST /retrieve-device-qos-bookings** with a request body containing a `device` object, queries for QoS Booking resource information details for a device.
+- **POST /device-qos-bookings** with a request body containing `qosProfile`, `applicationServer`, `applicationServerPorts`, `device` object, `devicePorts`, `startTime`, `duration`, `serviceArea`, it creates a time-bounded booking of a QoS profile for the specified devices. The response includes a `bookingId` (CAMARA QoSBooking main@4de93f1 qos-booking.yaml `/device-qos-bookings` POST CreateBooking and BookingInfo).
+  - Dependency: Requires `qosProfile` which can be retrieved from a previous call to the [**QoS Profiles API**](./camara-qos-profiles) (CAMARA QoSBooking main@4de93f1 qos-booking.yaml info.description; QoSProfileName schema).
+- **GET /device-qos-bookings/{bookingId}** - Get QoS Booking information (CAMARA QoSBooking main@4de93f1 qos-booking.yaml `/device-qos-bookings/{bookingId}` GET getBookingById).
+- **DELETE /device-qos-bookings/{bookingId}** - Deletes a QoS Booking (CAMARA QoSBooking main@4de93f1 qos-booking.yaml `/device-qos-bookings/{bookingId}` DELETE deleteBooking).
+- **POST /retrieve-device-qos-bookings** with a request body containing a `device` object, queries for QoS Booking resource information details for a device (CAMARA QoSBooking main@4de93f1 qos-booking.yaml `/retrieve-device-qos-bookings` POST retrieveBookingByDevice).
 
 ## Standardisation context
 
-QoS Booking is part of the CAMARA QoSBooking repository (OpenAPI 3.0.3, Commonalities-conformant) and belongs to the QoS family that consumes a named profile from the [QoS Profiles API](./camara-qos-profiles). Like the other QoS APIs, an active booking is realised, inside the 5G Core, through the NEF `AsSessionWithQoS` operation ([TS 29.522](https://www.3gpp.org/dynareport/29522.htm)) driving `Npcf_PolicyAuthorization` on the PCF ([TS 29.514](https://www.3gpp.org/dynareport/29514.htm)). The addition on top of Quality on Demand is the advance reservation: a booking is created ahead of time (`startTime`, `duration`, `serviceArea`) so that resources are held for a scheduled event rather than requested at the moment of use.
+QoS Booking is part of the CAMARA QoSBooking repository (OpenAPI 3.0.3, Commonalities-conformant) and belongs to the QoS family that consumes a named profile from the [QoS Profiles API](./camara-qos-profiles). Like the other QoS APIs, an active booking ends up as a QoS request in the 5G Core; in the 3GPP northbound model such requests correspond to the NEF `AsSessionWithQoS` operation ([TS 29.522](https://www.3gpp.org/dynareport/29522.htm)) driving `Npcf_PolicyAuthorization` on the PCF ([TS 29.514](https://www.3gpp.org/dynareport/29514.htm)), but the CAMARA definition does not specify this mapping. The addition on top of Quality on Demand is the advance reservation: a booking is created ahead of time (`startTime`, `duration`, `serviceArea`) so that resources are held for a scheduled event rather than requested at the moment of use.
 
 ### Device-bound bookings
 
-This API binds the reservation to specific devices supplied at booking time. `POST /device-qos-bookings` takes a `device` object (or objects), the `qosProfile`, the `applicationServer` and `applicationServerPorts` / `devicePorts` that scope the flow, and the booking window, and returns a `bookingId` with a `bookingStatus` (for example `REQUESTED`, then `SCHEDULED`). `POST /retrieve-device-qos-bookings` looks up the bookings held for a given device (a device may hold several, for different times or locations), and `GET`/`DELETE /device-qos-bookings/{bookingId}` read and cancel a booking.
+This API binds the reservation to specific devices supplied at booking time. `POST /device-qos-bookings` takes an optional `device` object (omitted when a 3-legged token identifies the device), the `qosProfile`, the `applicationServer` and `applicationServerPorts` / `devicePorts` that scope the flow, and the booking window, and returns a `bookingId` with a `bookingStatus` (for example `REQUESTED`, then `SCHEDULED`). `POST /retrieve-device-qos-bookings` looks up the bookings held for a given device (a device may hold several, for different times or locations), and `GET`/`DELETE /device-qos-bookings/{bookingId}` read and cancel a booking (CAMARA QoSBooking main@4de93f1 qos-booking.yaml `/device-qos-bookings` POST CreateBooking and bookingStatus; `/retrieve-device-qos-bookings` POST 200 response; BookingStatus enum).
 
-This is the "devices known up front" variant. Where the exact devices are not known until later, the related [QoS Booking and Assignment API](./camara-qos-booking-assignment) reserves for a device count and lets devices be assigned and released afterwards. Where no reservation is wanted at all and the boost is requested at the moment of use, [Quality on Demand](./camara-quality-on-demand) is the direct session API, and [QoS Provisioning](./camara-qos-provisioning) applies a profile persistently. All four share the same QoS Profiles catalogue and, at activation, the same 3GPP northbound mapping.
+This is the "devices known up front" variant. Where the exact devices are not known until later, the related [QoS Booking and Assignment API](./camara-qos-booking-assignment) reserves for a device count and lets devices be assigned and released afterwards. Where no reservation is wanted at all and the boost is requested at the moment of use, [Quality on Demand](./camara-quality-on-demand) is the direct session API, and [QoS Provisioning](./camara-qos-provisioning) applies a profile persistently. All of these APIs take a profile name from the QoS Profiles catalogue.
 
 ---
 
@@ -60,12 +60,12 @@ A user of a media application wants to reserve a QoS profile for one or more kno
 
 ### Step 0: Pre-conditions
 
-- The API invoker has signed up with the API provider.
-- A `qosProfile` name has been obtained via the [QoS Profiles API](./camara-qos-profiles).
+- The API invoker has signed up with the API provider (CAMARA QoSBooking main@4de93f1 qos-booking.yaml info.description Authorization and authentication).
+- A `qosProfile` name has been obtained via the [QoS Profiles API](./camara-qos-profiles) (CAMARA QoSBooking main@4de93f1 qos-booking.yaml info.description QoS profiles term).
 
 ### Step 1: Create the booking
 
-- **POST /device-qos-bookings** passing the `qosProfile`, the `device` object(s), the `serviceArea`, `startTime` and `duration`. The response returns a `bookingId` used to query or cancel the booking.
+- **POST /device-qos-bookings** passing the `qosProfile`, the `device` object(s), the `serviceArea`, `startTime` and `duration`. The response returns a `bookingId` used to query or cancel the booking (CAMARA QoSBooking main@4de93f1 qos-booking.yaml `/device-qos-bookings` POST CreateBooking; BookingInfo bookingId; `/device-qos-bookings/{bookingId}` GET and DELETE).
 
 ---
 
@@ -85,7 +85,7 @@ Potential improvements:
 
 ## Note on profile names
 
-The profile-name values in the examples below (`QCI_1_voice`, `QOS_L`) are illustrative and operator-defined; the actual names come from the [QoS Profiles API](./camara-qos-profiles). Different examples on this page use different names for the same reason.
+The profile-name values in the examples below (`QCI_1_voice`, `QOS_L`) are illustrative and operator-defined; the actual names come from the [QoS Profiles API](./camara-qos-profiles). Different examples on this page use different names for the same reason (CAMARA QoSBooking main@4de93f1 qos-booking.yaml QosProfileName schema).
 
 ---
 
@@ -93,7 +93,7 @@ The profile-name values in the examples below (`QCI_1_voice`, `QOS_L`) are illus
 
 ### Request booking of QoS for a device
 
-With **POST /device-qos-bookings**, and device parameters. The request specifies the device(s), the QoS profile, the application server and ports, and the booking window:
+With **POST /device-qos-bookings**, and device parameters. The request specifies the device, the QoS profile, the application server and ports, and the booking window (CAMARA QoSBooking main@4de93f1 qos-booking.yaml `/device-qos-bookings` POST CreateBooking):
 
 ```json
 {
@@ -137,7 +137,7 @@ With **POST /device-qos-bookings**, and device parameters. The request specifies
 }
 ```
 
-Type of response: A **bookingId**
+Type of response: A **bookingId** (CAMARA QoSBooking main@4de93f1 qos-booking.yaml `/device-qos-bookings` POST 201 BookingInfo)
 
 ```json
 {
@@ -186,7 +186,7 @@ Type of response: A **bookingId**
 
 ### Obtains the existing QoS booking for a device
 
-With **POST /retrieve-device-qos-bookings**, and device parameters. The request identifies the device whose bookings are queried:
+With **POST /retrieve-device-qos-bookings**, and device parameters. The request identifies the device whose bookings are queried (CAMARA QoSBooking main@4de93f1 qos-booking.yaml `/retrieve-device-qos-bookings` POST RetrieveBookingByDevice):
 
 ```json
 {
@@ -204,7 +204,7 @@ With **POST /retrieve-device-qos-bookings**, and device parameters. The request 
 
 ### Obtains the QoS booking information
 
-With **GET /device-qos-bookings/{bookingId}**. The response returns the booking's profile, window, status and service area:
+With **GET /device-qos-bookings/{bookingId}**. The response returns the booking's profile, window, status and service area (CAMARA QoSBooking main@4de93f1 qos-booking.yaml `/device-qos-bookings/{bookingId}` GET 200 BookingInfo):
 
 ```json
 {
