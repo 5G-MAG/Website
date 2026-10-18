@@ -24,7 +24,7 @@ TS 26.501 describes 5GMS in two ways. The **5GMS architecture**, defined since R
 
 :::tip[At a glance]
 
-- **Reference points:** M1 to M8, in downlink (M1d to M8d) and uplink (M1u to M8u) (TS 26.501 V19.4.0 clause 4.1.2.4 (table 4.1.2.4-1); TS 26.501 V19.4.0 clauses 4.2.1 and 4.3.1). Release 19 adds M10 and M13 in both directions.
+- **Reference points:** M1 to M8, in downlink (M1d to M8d) and uplink (M1u to M8u) (TS 26.501 V20.0.0 clause 4.1.2.4 (table 4.1.2.4-1); TS 26.501 V20.0.0 clauses 4.2.1 and 4.3.1). Release 19 adds M10 and M13 in both directions.
 - **Where the APIs are specified:** in TS 26.512 up to Release 17. From Release 18, provisioning and media session handling are TS 26.510 services, which TS 26.512 refers to.
 - **Generalisation:** first in TS 26.501 version 18.5.0 (March 2024). The 5GMS AF and AS are realisations of the general Media AF and Media AS.
 - **For developers:** the clause for each reference point, release by release, is under Where each reference point is specified.
@@ -50,20 +50,20 @@ TS 26.501 describes 5GMS in two ways. The **5GMS architecture**, defined since R
       src: '/img/tech/5gms/generated/ts26501-fig4.1.1-2.svg',
       width: 1200, height: 551,
       title: '5G Media Streaming general architecture',
-      source: 'Redrawn from TS 26.501 V19.4.0, figure 4.1.1-2',
+      source: 'Redrawn from TS 26.501 V20.0.0, figure 4.1.1-2',
       alt: 'The 5GMS Client in the UE, with its Media Session Handler and Media Stream Handler, and the 5GMS-Aware Application; the 5GMS AF and 5GMS AS in the DN with the 5GMS Application Provider; NEF and PCF connected to the AF over N33 and N5; reference points M1 to M8, M11 and M13.',
     },
   ]}
   note="Click a figure to enlarge it. The differences between the releases are summarised under Before and after generalisation."
 />
 
-- **5GMS Application Provider:** uses 5GMS for its streaming services, and provides a 5GMS-Aware Application on the User Equipment (UE) (TS 26.501 V19.4.0 clause 4.1.1).
-- **5GMS AF: an Application Function dedicated to 5G Media Streaming. It provides various control functions to the Media Session Handler on the UE and/or to the Application Provider. It may relay or initiate a request for Policy and Charging Function (PCF) treatment, or interact with other network functions through the Network Exposure Function (NEF) (TS 26.501 V19.4.0 clause 4.2.1; TS 26.501 V19.4.0 clause 4.3.1; TS 26.501 V19.4.0 clause 4.1.1). It provides control functions to the Media Session Handler on the UE and to the Application Provider. It may relay or initiate a request for Policy and Charging Function (PCF) treatment, or interact with other network functions through the Network Exposure Function (NEF).
-- **5GMS AS:** an Application Server dedicated to 5G Media Streaming (TS 26.501 V19.4.0 clause 4.1.1).
-- **5GMS Client:** a function inside the UE dedicated to 5G Media Streaming, made of a Media Session Handler and a Media Player (downlink) or Media Streamer (uplink) (TS 26.501 V19.4.0 clause 4.1.1; TS 26.501 V19.4.0 clause 4.2.1; TS 26.501 V19.4.0 clause 4.3.1). A UE may also be implemented in a self-contained manner, so that reference points M6 and M7 are not exposed at all.
-- **5GMS-Aware Application:** the application on the UE that uses the 5GMS Client and network functions through 5GMS interfaces and APIs (TS 26.501 V19.4.0 clause 3.1; TS 26.501 V19.4.0 clause 4.1.1).
+- **5GMS Application Provider:** uses 5GMS for its streaming services, and provides a 5GMS-Aware Application on the User Equipment (UE) (TS 26.501 V20.0.0 clause 4.1.1).
+- **5GMS AF:** an Application Function dedicated to 5G Media Streaming. It provides various control functions to the Media Session Handler on the UE and/or to the Application Provider. It may relay or initiate a request for Policy and Charging Function (PCF) treatment, or interact with other network functions through the Network Exposure Function (NEF) (TS 26.501 V20.0.0 clause 4.2.1; TS 26.501 V20.0.0 clause 4.3.1; TS 26.501 V20.0.0 clause 4.1.1).
+- **5GMS AS:** an Application Server dedicated to 5G Media Streaming (TS 26.501 V20.0.0 clause 4.1.1).
+- **5GMS Client:** a function inside the UE dedicated to 5G Media Streaming, made of a Media Session Handler and a Media Player (downlink) or Media Streamer (uplink) (TS 26.501 V20.0.0 clause 4.1.1; TS 26.501 V20.0.0 clause 4.2.1; TS 26.501 V20.0.0 clause 4.3.1). A UE may also be implemented in a self-contained manner, so that reference points M6 and M7 are not exposed at all.
+- **5GMS-Aware Application:** the application on the UE that uses the 5GMS Client and network functions through 5GMS interfaces and APIs (TS 26.501 V20.0.0 clause 3.1; TS 26.501 V20.0.0 clause 4.1.1).
 
-The AF and AS are data network functions and reach the UE over N6 (TS 26.501 V19.4.0 clause 4.1.1; TS 26.501 V19.4.0 clause 4.2.1). An AF in the operator's trusted data network may communicate directly with the relevant 5G Core functions. One in an external data network may only reach them through the NEF, over N33.
+The AF and AS are data network functions and reach the UE over N6 (TS 26.501 V20.0.0 clause 4.1.1; TS 26.501 V20.0.0 clause 4.2.1). An AF in the operator's trusted data network may communicate directly with the relevant 5G Core functions. One in an external data network may only reach them through the NEF, over N33.
 
 ### Downlink (5GMSd)
 
@@ -83,19 +83,19 @@ In downlink the network is the origin of the media. The content hosting feature 
 | **M7d** | 5GMSd Media Access Client API | Media Player | Application; Media Stream Handler at M11d, as TS 26.501 clause 4.2.1 words it (clause 4.1.2.5.2 names the Media Session Handler) | Media access control |
 | **M8d** | 5GMSd Application API | Between the application and the Application Provider | | For example, Service Access Information. Not specified by 5GMS |
 
-Release 19 adds two more: M10d, which redistributes content between client-facing instances of the AS so it need not be ingested repeatedly at M2d (TS 26.501 V19.4.0 clause 4.2.1), and which TS 26.512 V19.3.0 clause 4.10A has a 5GMSd AS use to ingest content from a 5GMSd AS in another 5GMS System; and M13d, through which the Media Player reaches content the Application Provider hosts outside the 5GMS System.
+Release 19 adds two more: M10d, which redistributes content between client-facing instances of the AS so it need not be ingested repeatedly at M2d (TS 26.501 V20.0.0 clause 4.2.1), and which TS 26.512 V19.3.0 clause 4.10A has a 5GMSd AS use to ingest content from a 5GMSd AS in another 5GMS System; and M13d, through which the Media Player reaches content the Application Provider hosts outside the 5GMS System.
 
 </details>
 
-In TS 26.501 V19.4.0 (clause 4.2.2), the Media Session Handler subfunctions include Dynamic Policy, Network Assistance, Service URL Handling, and In-band client data reporting configuration.
+In TS 26.501 V20.0.0 (clause 4.2.2), the Media Session Handler subfunctions include Dynamic Policy, Network Assistance, Service URL Handling, and In-band client data reporting configuration.
 
 ### Uplink (5GMSu)
 
-In uplink the UE is the origin of the media and the network consumes it (TS 26.501 V19.4.0 clause 4.1.1). The roles mirror downlink, with a "u" suffix:
+In uplink the UE is the origin of the media and the network consumes it (TS 26.501 V20.0.0 clause 4.1.1). The roles mirror downlink, with a "u" suffix:
 
-- The **5GMSu Application Provider** receives the media, for example for storage, consumption, transcoding and redistribution (TS 26.501 V19.4.0 clause 4.3.1).
-- The **5GMSu AS** receives the media from the UE (TS 26.501 V19.4.0 clause 4.3.1).
-- The **5GMSu Client** holds a **Media Streamer** in place of the Media Player (TS 26.501 V19.4.0 clause 4.3.1; TS 26.501 V19.4.0 clause 3.1). It streams the media to the AS, and serves both the application and the Media Session Handler.
+- The **5GMSu Application Provider** receives the media, for example for storage, consumption, transcoding and redistribution (TS 26.501 V20.0.0 clause 4.3.1).
+- The **5GMSu AS** receives the media from the UE (TS 26.501 V20.0.0 clause 4.3.1).
+- The **5GMSu Client** holds a **Media Streamer** in place of the Media Player (TS 26.501 V20.0.0 clause 4.3.1; TS 26.501 V20.0.0 clause 3.1). It streams the media to the AS, and serves both the application and the Media Session Handler.
 
 <details>
 <summary>Uplink reference points (M1u to M8u)</summary>
@@ -111,7 +111,7 @@ In uplink the UE is the origin of the media and the network consumes it (TS 26.5
 | **M7u** | 5GMSu Media Access Client API | Media Streamer | Application; Media Session Handler | Media access, including configuration and collection of QoE metrics |
 | **M8u** | 5GMSu Application API | Between the application and the Application Provider | | Not specified by 5GMS |
 
-Release 19 also adds M10u and M13u to the uplink mapping (TS 26.501 V19.4.0 table 4.1.2.4-1).
+Release 19 also adds M10u and M13u to the uplink mapping (TS 26.501 V20.0.0 table 4.1.2.4-1).
 
 </details>
 
@@ -164,6 +164,7 @@ TS 26.510 specifies these services with the names of the generalised architectur
 | Release 17 | 4.5 edge computing extensions, 4.6 downlink via eMBMS, 4.7 data collection, reporting and exposure |
 | Release 18 | 4.1.1 definition of 5G Media Streaming architecture, 4.1.2 generalised Media Delivery architecture, 4.1.3 media delivery session identification, 4.3.3 service access information for uplink media streaming, 4.8 Media Players with multiple formats, 4.9 downlink via MBS, 4.10 3GPP Service URL handling, 4.11 security architecture |
 | Release 19 | No new top-level clause; reference points M13, M10d, M10u, M13d and M13u are added within clauses 4.1.2 to 4.3 |
+| Release 20 | 4.12 energy information collection, reporting and exposure (feature in 4.0.15, procedures in clause 10) |
 
 ## Before and after generalisation
 
@@ -181,18 +182,18 @@ The generalised architecture first appears in TS 26.501 version 18.5.0 (March 20
 
 | Reference point | Between | Purpose or status | In |
 | --- | --- | --- | --- |
-| **M1** (TS 26.501 V19.4.0 clause 4.1.2.4) | Media Application Provider and Media AF | Provisioning of media delivery | Release 18 on |
-| **M2** (TS 26.501 V19.4.0 clause 4.1.2.4) | Media Application Provider and Media AS | Ingest into or egest from the Media AS | Release 18 on |
-| **M3** (TS 26.501 V19.4.0 clause 4.1.2.4) | Media AF and Media AS | AS configuration and media session handling | Release 18 on |
-| **M4** (TS 26.501 V19.4.0 clause 4.1.2.4) | Media AS and Media Access Function | Downlink or uplink transport of media | Release 18 on |
-| **M5** (TS 26.501 V19.4.0 clause 4.1.2.4) | Media AF and Media Session Handler | Media session handling | Release 18 on |
-| **M6** (TS 26.501 V19.4.0 clause 4.1.2.4) | Media-aware Application and Media Session Handler | Configuring the Media Session Handler | Release 18 on |
-| **M7** (TS 26.501 V19.4.0 clause 4.1.2.4) | Media-aware Application and Media Access Function | Media access control | Release 18 on |
-| **M8** (TS 26.501 V19.4.0 clause 4.1.2.4 (M8 and NOTE 1)) | Media-aware Application and Media Application Provider | Private, beyond the scope of standardisation | Release 18 on |
-| **M9** | Media AF and Media AF | Chaining Media AF instances (TS 26.501 V19.4.0 clause 4.1.2.4 (M9 and NOTE 2)). Not defined by the 5GMS architecture | Release 18 on |
+| **M1** (TS 26.501 V20.0.0 clause 4.1.2.4) | Media Application Provider and Media AF | Provisioning of media delivery | Release 18 on |
+| **M2** (TS 26.501 V20.0.0 clause 4.1.2.4) | Media Application Provider and Media AS | Ingest into or egest from the Media AS | Release 18 on |
+| **M3** (TS 26.501 V20.0.0 clause 4.1.2.4) | Media AF and Media AS | AS configuration and media session handling | Release 18 on |
+| **M4** (TS 26.501 V20.0.0 clause 4.1.2.4) | Media AS and Media Access Function | Downlink or uplink transport of media | Release 18 on |
+| **M5** (TS 26.501 V20.0.0 clause 4.1.2.4) | Media AF and Media Session Handler | Media session handling | Release 18 on |
+| **M6** (TS 26.501 V20.0.0 clause 4.1.2.4) | Media-aware Application and Media Session Handler | Configuring the Media Session Handler | Release 18 on |
+| **M7** (TS 26.501 V20.0.0 clause 4.1.2.4) | Media-aware Application and Media Access Function | Media access control | Release 18 on |
+| **M8** (TS 26.501 V20.0.0 clause 4.1.2.4 (M8 and NOTE 1)) | Media-aware Application and Media Application Provider | Private, beyond the scope of standardisation | Release 18 on |
+| **M9** | Media AF and Media AF | Chaining Media AF instances (TS 26.501 V20.0.0 clause 4.1.2.4 (M9 and NOTE 2)). Not defined by the 5GMS architecture | Release 18 on |
 | **M10** | Media AS and Media AS | Distributed service chaining of Media AS instances (TS 26.501 V19.4.0 clause 4.1.2.4 (M10, table 4.1.2.4-1); TS 26.501 V18.9.0 clause 4.1.2.4, NOTE 3). Not defined by the 5GMS architecture in Release 18; mapped to M10d and M10u in Release 19 | Release 18 on |
-| **M11** (TS 26.501 V19.4.0 clause 4.1.2.4) | Media Session Handler and Media Access Function | Inside the Media Client: configuration and media access control | Release 18 on |
-| **M12** | Media Access Function and Media Access Function | Peer-to-peer media transport between clients (TS 26.501 V19.4.0 clause 4.1.2.4). Not defined by the 5GMS architecture | Release 18 on |
+| **M11** (TS 26.501 V20.0.0 clause 4.1.2.4) | Media Session Handler and Media Access Function | Inside the Media Client: configuration and media access control | Release 18 on |
+| **M12** | Media Access Function and Media Access Function | Peer-to-peer media transport between clients (TS 26.501 V20.0.0 clause 4.1.2.4). Not defined by the 5GMS architecture | Release 18 on |
 | **M13** | Media Access Function and Media Application Provider | Media functions or resources in the provider's domain (TS 26.501 V19.4.0 clause 4.1.2.4 (M13 and NOTE 5, table 4.1.2.4-1); TS 26.501 V18.9.0 clause 4.1.2.4 (no M13)). Private, beyond the scope of standardisation | Release 19 |
 
 </details>
@@ -203,24 +204,24 @@ TS 26.501 clause 5.2.3 specifies the procedure for DASH streaming in 19 steps. C
 
 **Before the session:** the Application Provider has provisioned the 5GMS System and set up content ingest, and the application has received the service announcement. Provisioning starts with a Provisioning Session at M1d (TS 26.512 clause 4.3.2.1).
 
-1. **Discovery (steps 1 and 2).** The application runs service announcement and content discovery, and a media content item is selected (TS 26.501 V19.4.0 clause 5.2.3 (steps 1 and 2)).
-2. **Start (step 3).** The application triggers the 5GMSd Client to start playback and gives it the Media Player Entry (TS 26.501 V19.4.0 clause 5.2.3 (step 3)).
-3. **Service Access Information (step 4, M5d).** If the application received only a reference, the Media Session Handler acquires the whole Service Access Information from the AF (TS 26.501 V19.4.0 clause 5.2.3 (step 4)).
-4. **Manifest (steps 5 to 10, M4d).** The Media Player requests, receives and processes the MPD, and notifies the Media Session Handler (TS 26.501 V19.4.0 clause 5.2.3 (steps 5 to 10)).
-5. **Preparation (steps 11 to 14).** Optionally the Media Player acquires DRM information (TS 26.501 V19.4.0 clause 5.2.3 (steps 11 to 14)). It configures the playback pipeline, establishes the transport sessions, and tells the Media Session Handler it is ready.
-6. **Playback (steps 15 to 19, M4d).** The Media Player requests initialisation information and media segments according to the MPD, and repeats this as the MPD directs (TS 26.501 V19.4.0 clause 5.2.3 (steps 15 to 19)).
+1. **Discovery (steps 1 and 2).** The application runs service announcement and content discovery, and a media content item is selected (TS 26.501 V20.0.0 clause 5.2.3 (steps 1 and 2)).
+2. **Start (step 3).** The application triggers the 5GMSd Client to start playback and gives it the Media Player Entry (TS 26.501 V20.0.0 clause 5.2.3 (step 3)).
+3. **Service Access Information (step 4, M5d).** If the application received only a reference, the Media Session Handler acquires the whole Service Access Information from the AF (TS 26.501 V20.0.0 clause 5.2.3 (step 4)).
+4. **Manifest (steps 5 to 10, M4d).** The Media Player requests, receives and processes the MPD, and notifies the Media Session Handler (TS 26.501 V20.0.0 clause 5.2.3 (steps 5 to 10)).
+5. **Preparation (steps 11 to 14).** Optionally the Media Player acquires DRM information (TS 26.501 V20.0.0 clause 5.2.3 (steps 11 to 14)). It configures the playback pipeline, establishes the transport sessions, and tells the Media Session Handler it is ready.
+6. **Playback (steps 15 to 19, M4d).** The Media Player requests initialisation information and media segments according to the MPD, and repeats this as the MPD directs (TS 26.501 V20.0.0 clause 5.2.3 (steps 15 to 19)).
 
 During a session the Media Session Handler also provides dynamic policy, network assistance, and consumption and metrics reporting (TS 26.501 clause 4.2.2).
 
 <details>
 <summary>Sources for this page</summary>
 
-- **The 5GMS architecture, downlink and uplink:** TS 26.501 V19.4.0, clauses 4.0.2, 4.1.1, 4.1.2.4, 4.1.2.5.2, 4.2.1, 4.2.2 and 4.3.1.
-- **Figures:** redrawn from TS 26.501 V19.4.0, figure 4.1.1-2, and TS 26.510 V19.2.0, figures 4.2-1 and 4.3-1.
-- **Services exposed by the Media AF and the Media Session Handler:** TS 26.510 V19.2.0, clauses 4.2 and 4.3 (tables 4.2-1 and 4.3-1); name mapping from TS 26.501 V19.4.0, table 4.1.2.3-1.
+- **The 5GMS architecture, downlink and uplink:** TS 26.501 V20.0.0, clauses 4.0.2, 4.1.1, 4.1.2.4, 4.1.2.5.2, 4.2.1, 4.2.2 and 4.3.1.
+- **Figures:** redrawn from TS 26.501 V20.0.0, figure 4.1.1-2, and TS 26.510 V19.2.0, figures 4.2-1 and 4.3-1.
+- **Services exposed by the Media AF and the Media Session Handler:** TS 26.510 V19.2.0, clauses 4.2 and 4.3 (tables 4.2-1 and 4.3-1); name mapping from TS 26.501 V20.0.0, table 4.1.2.3-1.
 - **Where each reference point is specified:** TS 26.512 V16.12.0, V17.10.0, V18.7.0 and V19.3.0, clauses 7 to 14; TS 26.510 V18.5.0 and V19.2.0, clauses 8, 9 and 11.
-- **Architecture clauses by release:** clause 4 headings of TS 26.501 V16.15.0, V17.10.0, V18.9.0 and V19.4.0.
+- **Architecture clauses by release:** clause 4 headings of TS 26.501 V16.15.0, V17.10.0, V18.9.0, V19.4.0 and V20.0.0.
 - **Before and after generalisation:** TS 26.501 V17.10.0, V18.1.0, V18.2.0 and V18.4.0 (clause 4.2.1), V18.5.0 (clause 4.1.2.1), V18.9.0 and V19.4.0 (clauses 4.1.2.1, 4.1.2.4 and change history); TS 26.512 V17.10.0 (clause 7.2), V18.7.0 and V19.3.0 (clause 4.3.2.1).
-- **How a downlink session runs:** TS 26.501 V19.4.0, clauses 4.2.2 and 5.2.3; TS 26.512 V19.3.0, clause 4.3.2.1.
+- **How a downlink session runs:** TS 26.501 V20.0.0, clauses 4.2.2 and 5.2.3; TS 26.512 V19.3.0, clause 4.3.2.1.
 
 </details>

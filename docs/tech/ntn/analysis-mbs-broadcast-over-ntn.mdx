@@ -68,7 +68,7 @@ Every other step of a broadcast MBS session is as in [MBS Broadcast - End-to-End
 
 For NR NTN, an MBS service area in the 5G Core may be denoted with an NR NTN Intended Service Area together with a TAI list and/or a cell ID list, for instance to denote an area smaller than a cell. NG-RAN uses the NR NTN Intended Service Area to further restrict the MBS service area denoted by the TAIs and/or cell IDs (TS 23.247 clause 6.21).
 
-- **AF and NEF/MBSF.** Based on local configuration, the NEF may determine that an MBS session targets an NR NTN network, derive the NR NTN Intended Service Area from the geographical area information, and include it in the MBS service area it gives the MB-SMF at MBS session creation (TS 23.247 clause 6.21). TS 23.247 recommends that, based on service agreement, the AF uses a geographic area in an encoding compatible with TS 38.413 (clause 6.21, NOTE 1). The derivation is part of step 8, and its inclusion towards the MB-SMF part of step 11, of MBS Session Creation (clause 7.1.1.2).
+- **AF and NEF/MBSF.** Based on local configuration, the NEF may determine that an MBS session targets an NR NTN network, derive the NR NTN Intended Service Area from the geographical area information, and include it in the MBS service area it gives the MB-SMF at MBS session creation (TS 23.247 clause 6.21). TS 23.247 recommends that, based on service agreement, the AF uses a geographic area in an encoding compatible with TS 38.413 (TS 23.247 clause 6.21, NOTE 1). The derivation is part of step 8, and its inclusion towards the MB-SMF part of step 11, of MBS Session Creation (TS 23.247 clause 7.1.1.2).
 - **Cell IDs.** For NR NTN, the cell IDs in the MBS service area can be mapped cell IDs (TS 23.247 clause 7.1.1.2, NOTE 5). The Cell Identity used for MBS broadcast service corresponds to a Mapped Cell ID (TS 38.300 clause 16.14.5).
 - **MB-SMF and AMF.** The NR NTN Intended Service Area is transparently transmitted in the 5G Core: the MB-SMF selects the AMFs based on TAIs, and the AMF selects the NG-RAN nodes in the same manner (TS 23.247 clause 6.21, NOTE 2). At MBS Session Start for broadcast, the MB-SMF forwards the MBS service area including the NR NTN Intended Service Area to the selected AMFs (clause 7.3.1, step 2).
 - **Not supported.** Location-dependent MBS services for broadcast over NR NTN are not supported in this release (TS 23.247 clause 6.21, NOTE 3).
@@ -117,8 +117,8 @@ The RRC states do not change over NTN: a UE can receive a broadcast communicatio
 <details>
 <summary>Sources for this page</summary>
 
-- **Broadcast MBS sessions over NTN, delivery methods:** TS 23.247 V19.3.0, clauses 3.1, 4.1 and 6.21; TS 38.300 V19.4.0, clause 16.14.12. Release 18 comparison: TS 23.247 V18.8.0, TS 38.300 V18.11.0, TS 38.331 V18.11.0 and TS 38.413 V18.11.0 have no ISA text.
-- **The Intended Service Area in the 5G Core:** TS 23.247 V19.3.0, clauses 6.21, 7.1.1.2 (steps 8 and 11, NOTE 5), 7.3.1 (steps 2, 3 and 9) and 7.3.3 (steps 2 and 3); TS 38.300 V19.4.0, clause 16.14.5.
+- **Broadcast MBS sessions over NTN, delivery methods:** TS 23.247 V20.0.0, clauses 3.1, 4.1 and 6.21; TS 38.300 V19.4.0, clause 16.14.12. Release 18 comparison: TS 23.247 V18.8.0, TS 38.300 V18.11.0, TS 38.331 V18.11.0 and TS 38.413 V18.11.0 have no ISA text.
+- **The Intended Service Area in the 5G Core:** TS 23.247 V20.0.0, clauses 6.21, 7.1.1.2 (steps 8 and 11, NOTE 5), 7.3.1 (steps 2, 3 and 9) and 7.3.3 (steps 2 and 3); TS 38.300 V19.4.0, clause 16.14.5.
 - **NGAP:** TS 38.413 V19.4.0, clauses 8.17.1.2, 8.17.2.2, 9.3.1.209 and 9.3.1.273.
 - **System information:** TS 38.300 V19.4.0, clauses 7.3.1 and 16.14.2.2; TS 38.331 V19.4.0, clauses 5.2.2.1, 5.2.2.4.29, 5.9.1.1, 6.2.2, 6.3.1, 6.3.6 and 6.4.
 - **RRC states and UE behaviour:** TS 38.300 V19.4.0, clauses 16.10.1 and 16.14.12; TS 38.331 V19.4.0, clauses 5.9.2.2, 5.9.3.1 and 5.9.3.2; TS 38.304 V19.3.0, clause 5.2.4.1.

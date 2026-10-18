@@ -22,8 +22,8 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 :::tip[At a glance]
 
-- **Functions:** the 5GMS Application Provider, AF and AS, and on the device the 5GMS Client, with a Media Session Handler and a Media Player (downlink) or Media Streamer (uplink) (TS 26.501 V19.4.0 clause 4.1.1; TS 26.501 V19.4.0 clause 4.2.1; TS 26.501 V19.4.0 clause 4.3.1).
-- **In the 5G System:** the AF and AS are data network functions that reach the device over N6 (TS 26.501 V19.4.0 clause 4.1.1). The AF reaches 5G Core functions directly from a trusted data network, or through the Network Exposure Function from an external one.
+- **Functions:** the 5GMS Application Provider, AF and AS, and on the device the 5GMS Client, with a Media Session Handler and a Media Player (downlink) or Media Streamer (uplink) (TS 26.501 V20.0.0 clause 4.1.1; TS 26.501 V20.0.0 clause 4.2.1; TS 26.501 V20.0.0 clause 4.3.1).
+- **In the 5G System:** the AF and AS are data network functions that reach the device over N6 (TS 26.501 V20.0.0 clause 4.1.1). The AF reaches 5G Core functions directly from a trusted data network, or through the Network Exposure Function from an external one.
 - **Releases:** first version in Release 16; delivery via eMBMS in Release 17; delivery via MBS, Service URL handling and TS 26.510 in Release 18; Advanced Media Delivery in Releases 19 and 20.
 
 :::
@@ -34,14 +34,14 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 <SpecFigure src="/img/tech/5gms/generated/ts26501-fig4.1.1-2.svg" width={1200} height={551} spec="TS 26.501 V20.0.0" figure="4.1.1-2" title="5G Media Streaming general architecture" alt="The 5GMS Client in the UE, with its Media Session Handler and Media Stream Handler, and the 5GMS-Aware Application; the 5GMS AF and 5GMS AS in the DN with the 5GMS Application Provider; NEF and PCF connected to the AF over N33 and N5; reference points M1 to M8, M11 and M13." />
 
-- **5GMS Application Provider:** uses 5GMS for its streaming services, and provides a 5GMS-Aware Application on the device (TS 26.501 V19.4.0 clause 4.1.1).
-- **5GMS Application Function (AF):** an Application Function dedicated to 5G Media Streaming. It provides various control functions to the Media Session Handler on the device and/or to the Application Provider (TS 26.501 V19.4.0 clause 4.2.1; TS 26.501 V19.4.0 clause 4.3.1).
-- **5GMS Application Server (AS):** an Application Server dedicated to 5G Media Streaming (TS 26.501 V19.4.0 clause 4.1.1; TS 26.501 V19.4.0 clause 4.2.1 (M4d interface); TS 26.501 V19.4.0 clause 4.3.1 (M4u interface)). In downlink it streams media to the Media Player; in uplink it receives media from the Media Streamer.
-- **5GMS Client:** a function inside the device dedicated to 5G Media Streaming (TS 26.501 V19.4.0 clause 4.1.1; TS 26.501 V19.4.0 clause 4.2.1; TS 26.501 V19.4.0 clause 4.3.1). It has a Media Session Handler and, in downlink, a Media Player or, in uplink, a Media Streamer.
+- **5GMS Application Provider:** uses 5GMS for its streaming services, and provides a 5GMS-Aware Application on the device (TS 26.501 V20.0.0 clause 4.1.1).
+- **5GMS Application Function (AF):** an Application Function dedicated to 5G Media Streaming. It provides various control functions to the Media Session Handler on the device and/or to the Application Provider (TS 26.501 V20.0.0 clause 4.2.1; TS 26.501 V20.0.0 clause 4.3.1).
+- **5GMS Application Server (AS):** an Application Server dedicated to 5G Media Streaming (TS 26.501 V20.0.0 clause 4.1.1; TS 26.501 V20.0.0 clause 4.2.1 (M4d interface); TS 26.501 V20.0.0 clause 4.3.1 (M4u interface)). In downlink it streams media to the Media Player; in uplink it receives media from the Media Streamer.
+- **5GMS Client:** a function inside the device dedicated to 5G Media Streaming (TS 26.501 V20.0.0 clause 4.1.1; TS 26.501 V20.0.0 clause 4.2.1; TS 26.501 V20.0.0 clause 4.3.1). It has a Media Session Handler and, in downlink, a Media Player or, in uplink, a Media Streamer.
 
 ## Where it sits in the 5G System
 
-The AF and the AS are data network functions that communicate with the device over the N6 reference point (TS 26.501 V19.4.0 clause 4.1.1; TS 26.501 V19.4.0 clause 4.2.1). An AF in the operator's trusted data network may communicate directly with the relevant 5G Core functions, for example the Policy and Charging Function (PCF). An AF in an external data network may only reach 5G Core functions through the Network Exposure Function.
+The AF and the AS are data network functions that communicate with the device over the N6 reference point (TS 26.501 V20.0.0 clause 4.1.1; TS 26.501 V20.0.0 clause 4.2.1). An AF in the operator's trusted data network may communicate directly with the relevant 5G Core functions, for example the Policy and Charging Function (PCF). An AF in an external data network may only reach 5G Core functions through the Network Exposure Function.
 
 ## How it grew
 
@@ -56,10 +56,10 @@ The Technology pages show what each release added, from Release 16 to Release 19
 <details>
 <summary>Sources for this page</summary>
 
-- **The main functions:** TS 26.501 V19.4.0, clauses 4.1.1, 4.2.1 and 4.3.1.
-- **Figure:** redrawn from TS 26.501 V19.4.0, figure 4.1.1-2.
-- **Where it sits in the 5G System:** TS 26.501 V19.4.0, clauses 4.1.1, 4.3.1 and 5.7.3.
-- **How it grew:** SID SP-200937 (FS_5GMS_EXT), clause 3; SID SP-241011 (FS_AMD), clause 3; SID SP-251265 (FS_AMD_Ph2), clause 3; TS 26.501 V19.4.0, clause 4.1.2.1 and change history; 3GPP work plan of 28 September 2026 (work item titles).
+- **The main functions:** TS 26.501 V20.0.0, clauses 4.1.1, 4.2.1 and 4.3.1.
+- **Figure:** redrawn from TS 26.501 V20.0.0, figure 4.1.1-2.
+- **Where it sits in the 5G System:** TS 26.501 V20.0.0, clauses 4.1.1, 4.3.1 and 5.7.3.
+- **How it grew:** SID SP-200937 (FS_5GMS_EXT), clause 3; SID SP-241011 (FS_AMD), clause 3; SID SP-251265 (FS_AMD_Ph2), clause 3; TS 26.501 V20.0.0, clause 4.1.2.1 and change history; 3GPP work plan of 28 September 2026 (work item titles).
 
 </details>
 

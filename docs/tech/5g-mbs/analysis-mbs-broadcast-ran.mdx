@@ -21,17 +21,17 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 :::tip[At a glance]
 
-- **How MBS Broadcast differs:** there is no join. The same content goes to all UEs in a geographical area, and the UE receives it in RRC_IDLE, RRC_INACTIVE or RRC_CONNECTED (TS 38.300 V19.4.0 clause 16.10.6.2; TS 23.247 V19.3.0 clause 3.1).
-- **Network set-up:** the AF, or the MBSF on behalf of an MBS Application Provider, obtains a TMGI and creates the MBS Session at the MB-SMF. The MB-SMF configures the MB-UPF and asks the AMFs, which set up the session in every NG-RAN node that supports MBS in the MBS service area (TS 23.247 V19.3.0 clause 7.1.1.2 steps 1 to 11, 14 to 17, 7.3.1 steps 2 and 3).
+- **How MBS Broadcast differs:** there is no join. The same content goes to all UEs in a geographical area, and the UE receives it in RRC_IDLE, RRC_INACTIVE or RRC_CONNECTED (TS 38.300 V19.4.0 clause 16.10.6.2; TS 23.247 V20.0.0 clause 3.1).
+- **Network set-up:** the AF, or the MBSF on behalf of an MBS Application Provider, obtains a TMGI and creates the MBS Session at the MB-SMF. The MB-SMF configures the MB-UPF and asks the AMFs, which set up the session in every NG-RAN node that supports MBS in the MBS service area (TS 23.247 V20.0.0 clause 7.1.1.2 steps 1 to 11, 14 to 17, 7.3.1 steps 2 and 3).
 - **The radio chain:** MIB, then SIB1, which schedules SIB20; SIB20 configures the MCCH; the MCCH carries the MBSBroadcastConfiguration message, which lists the sessions with their G-RNTI and MTCH scheduling; the UE then receives the MTCH (TS 38.331 V19.4.0 clause 5.9.1.1, 6.3.2; TS 38.300 V19.4.0 clause 16.10.6.2).
 - **States:** a UE can acquire the MCCH and receive broadcast in RRC_IDLE, RRC_INACTIVE and RRC_CONNECTED (TS 38.300 V19.4.0 clause 16.10.6.2).
 - **Identifiers:** MCCH-RNTI (FFFD) for the MCCH, a G-RNTI per session for the MTCH; both scheduled with DCI format 4_0 (TS 38.321 V19.4.0 clause 7.1; TS 38.212 V19.4.0 clause 7.3.1, 7.3.1.5.1).
 - **No feedback:** broadcast has no HARQ-ACK feedback and uses dynamic scheduling only; slot-level repetition is supported for MTCH (TS 38.300 V19.4.0 clause 16.10.6.6).
-- **Mobility:** the same session must be established in the target node with 5GC Shared delivery; the UE finds the frequency of a service from the USD and SIB21, and in RRC_CONNECTED reports its interest to the gNB; in NTN cells, the intended service areas of SIB27 apply (Release 19) (TS 23.247 V19.3.0 clause 6.3.2; TS 38.300 V19.4.0 clause 16.10.6.5.1, 16.10.6.5.2, 16.14.12; TS 38.331 V19.4.0 clause 5.9.1.1).
+- **Mobility:** the same session must be established in the target node with 5GC Shared delivery; the UE finds the frequency of a service from the USD and SIB21, and in RRC_CONNECTED reports its interest to the gNB; in NTN cells, the intended service areas of SIB27 apply (Release 19) (TS 23.247 V20.0.0 clause 6.3.2; TS 38.300 V19.4.0 clause 16.10.6.5.1, 16.10.6.5.2, 16.14.12; TS 38.331 V19.4.0 clause 5.9.1.1).
 
 :::
 
-In MBS Broadcast, the same service and the same content are provided simultaneously to all UEs in a geographical area, and a UE can receive it in RRC_IDLE, RRC_INACTIVE and RRC_CONNECTED. For broadcast, the MBS Session creation triggers the procedure that reserves resources towards NG-RAN. A UE needs to know whether a service is broadcast or multicast to decide whether to join; for broadcast, a UE that holds the needed configuration does not need to interact with the network (TS 23.247 V19.3.0 clause 3.1, 7.1.1.2, 7.3.1; TS 38.300 V19.4.0 clause 16.10.6.2).
+In MBS Broadcast, the same service and the same content are provided simultaneously to all UEs in a geographical area, and a UE can receive it in RRC_IDLE, RRC_INACTIVE and RRC_CONNECTED. For broadcast, the MBS Session creation triggers the procedure that reserves resources towards NG-RAN. A UE needs to know whether a service is broadcast or multicast to decide whether to join; for broadcast, a UE that holds the needed configuration does not need to interact with the network (TS 23.247 V20.0.0 clause 3.1, 7.1.1.2, 7.3.1; TS 38.300 V19.4.0 clause 16.10.6.2).
 
 <JumpMenu items={[["Steps", "the-steps"], ["Implementation blueprint", "implementation-blueprint"], ["Network set-up", "network-set-up"], ["RRC states", "rrc-states"], ["Radio acquisition", "step-0-pre-configuration"], ["Mobility", "mobility"], ["User plane", "user-plane"], ["Update and release", "update-and-release"]]} />
 
@@ -39,18 +39,18 @@ This page follows an MBS Broadcast session from its provisioning to the receptio
 
 ## The steps
 
-Network set-up: (TS 23.247 V19.3.0 clause 7.1.1.2, 7.3.1)
+Network set-up: (TS 23.247 V20.0.0 clause 7.1.1.2, 7.3.1)
 
-- N1 (TS 23.247 V19.3.0 clause 7.1.1.1, 7.1.1.2). Provisioning by the AF or the MBS Application Provider
-- N2 (TS 23.247 V19.3.0 clause 7.1.1.2 steps 1 to 6). TMGI allocation
-- N3 (TS 23.247 V19.3.0 clause 7.1.1.2 steps 8 to 13, 7.3.1). MBS Session creation at the MB-SMF
-- N4 (TS 23.247 V19.3.0 clause 7.1.1.2 steps 14 to 18; TS 29.244 V19.6.0 clause 5.34.2.2). MB-UPF and MBSTF configuration
-- N5 (TS 23.247 V19.3.0 clause 7.3.1 step 2). Broadcast context in the AMFs
-- N6 (TS 23.247 V19.3.0 clause 7.3.1 step 3; TS 38.413 V19.4.0 clause 8.17.1). NGAP Broadcast Session Setup
+- N1 (TS 23.247 V20.0.0 clause 7.1.1.1, 7.1.1.2). Provisioning by the AF or the MBS Application Provider
+- N2 (TS 23.247 V20.0.0 clause 7.1.1.2 steps 1 to 6). TMGI allocation
+- N3 (TS 23.247 V20.0.0 clause 7.1.1.2 steps 8 to 13, 7.3.1). MBS Session creation at the MB-SMF
+- N4 (TS 23.247 V20.0.0 clause 7.1.1.2 steps 14 to 18; TS 29.244 V19.6.0 clause 5.34.2.2). MB-UPF and MBSTF configuration
+- N5 (TS 23.247 V20.0.0 clause 7.3.1 step 2). Broadcast context in the AMFs
+- N6 (TS 23.247 V20.0.0 clause 7.3.1 step 3; TS 38.413 V19.4.0 clause 8.17.1). NGAP Broadcast Session Setup
 - N7 (TS 38.401 V19.3.0 clause 8.15.1.1; TS 37.483 V19.4.0 clause 8.6.1.1, 8.6.1.2; TS 38.473 V19.4.0 clause 8.14.1). Inside the gNB: E1AP and F1AP
-- N8 (TS 23.247 V19.3.0 clause 7.3.1 steps 5a, 5b, 6, 8; TS 38.413 V19.4.0 clause 8.17.5; TS 29.244 V19.6.0 clause 5.34.2.2). N3mb transport
-- N9 (TS 23.247 V19.3.0 clause 7.3.1 steps 8a, 8b, 9, 7.3.5). Session started
-- N10 (TS 23.247 V19.3.0 clause 7.3.1, 7.1.1.2 step 7). Service announcement
+- N8 (TS 23.247 V20.0.0 clause 7.3.1 steps 5a, 5b, 6, 8; TS 38.413 V19.4.0 clause 8.17.5; TS 29.244 V19.6.0 clause 5.34.2.2). N3mb transport
+- N9 (TS 23.247 V20.0.0 clause 7.3.1 steps 8a, 8b, 9, 7.3.5). Session started
+- N10 (TS 23.247 V20.0.0 clause 7.3.1, 7.1.1.2 step 7). Service announcement
 
 Radio acquisition: (TS 38.331 V19.4.0 clause 5.9.1.1, 5.9.2.2, 5.9.3.3)
 
@@ -62,14 +62,14 @@ Radio acquisition: (TS 38.331 V19.4.0 clause 5.9.1.1, 5.9.2.2, 5.9.3.3)
 - 5\. The MCCH carries MBSBroadcastConfiguration (TS 38.331 V19.4.0 clause 5.9.1.1, 6.2.2)
 - 6\. The session list gives each session's G-RNTI and MTCH configuration (TS 38.331 V19.4.0 clause 6.2.2, 6.3.6)
 - 7\. Receive the MTCH, scheduled with the G-RNTI (TS 38.331 V19.4.0 clause 5.9.3.3; TS 38.321 V19.4.0 clause 5.3.1 and table 6.2.1-1c; TS 38.212 V19.4.0 clause 7.3.1.5.1)
-- M (TS 23.247 V19.3.0 clause 6.3.2; TS 38.300 V19.4.0 clause 16.10.6.5.1, 16.10.6.5.2, 16.14.12; TS 38.304 V19.3.0 clause 5.2.4.1). Mobility: service continuity across cells
+- M (TS 23.247 V20.0.0 clause 6.3.2; TS 38.300 V19.4.0 clause 16.10.6.5.1, 16.10.6.5.2, 16.14.12; TS 38.304 V19.3.0 clause 5.2.4.1). Mobility: service continuity across cells
 
-Data and life cycle: (TS 23.247 V19.3.0 clause 7.3.1, 7.3.2, 7.3.3, 7.3.6)
+Data and life cycle: (TS 23.247 V20.0.0 clause 7.3.1, 7.3.2, 7.3.3, 7.3.6)
 
-- D1 (TS 23.247 V19.3.0 clause 7.3.1 steps 13 to 15; TS 38.300 V19.4.0 clause 16.10.3; TS 37.324 V19.0.0 clause 4.2.1, 4.2.2; TS 38.323 V19.1.0 clause 4.2.2). User plane, from the AF or MBSTF to the UE
-- D2 (TS 23.247 V19.3.0 clause 7.3.3; TS 38.413 V19.4.0 clause 8.17.2). Session update
-- D3 (TS 23.247 V19.3.0 clause 7.3.2; TS 38.413 V19.4.0 clause 8.17.3). Session release
-- D4 (TS 23.247 V19.3.0 clause 7.3.6; TS 38.413 V19.4.0 clause 8.17.4). Release required by NG-RAN
+- D1 (TS 23.247 V20.0.0 clause 7.3.1 steps 13 to 15; TS 38.300 V19.4.0 clause 16.10.3; TS 37.324 V19.0.0 clause 4.2.1, 4.2.2; TS 38.323 V19.1.0 clause 4.2.2). User plane, from the AF or MBSTF to the UE
+- D2 (TS 23.247 V20.0.0 clause 7.3.3; TS 38.413 V19.4.0 clause 8.17.2). Session update
+- D3 (TS 23.247 V20.0.0 clause 7.3.2; TS 38.413 V19.4.0 clause 8.17.3). Session release
+- D4 (TS 23.247 V20.0.0 clause 7.3.6; TS 38.413 V19.4.0 clause 8.17.4). Release required by NG-RAN
 
 ## Implementation blueprint
 
@@ -244,7 +244,7 @@ Added in Release 19, `mbs-SessionInfoList-v1900` extends MBSBroadcastConfigurati
 
 ## Step 7: Receiving the MTCH
 
-On establishing a broadcast MRB (TS 38.331 clause 5.9.3.3), the UE establishes a PDCP and an RLC entity from `MRB-InfoBroadcast`, configures MAC with `mtch-SchedulingInfo` and the physical layer with `mbs-SessionInfoList`, `searchSpaceMTCH` and `pdsch-ConfigMTCH`. If no SDAP entity exists for the `mbs-SessionId`, it establishes one (TS 37.324 clause 5.1.1). It then receives DL-SCH on that cell with the `g-RNTI` and `mtch-SchedulingInfo`. On release (clause 5.9.3.4) it releases the PDCP and RLC entities and the related MAC and physical layer configuration.
+On establishing a broadcast MRB (TS 38.331 clause 5.9.3.3), the UE establishes a PDCP and an RLC entity from `MRB-InfoBroadcast`, configures MAC with `mtch-SchedulingInfo` and the physical layer with `mbs-SessionInfoList`, `searchSpaceMTCH` and `pdsch-ConfigMTCH`. If no SDAP entity exists for the `mbs-SessionId`, it establishes one (TS 37.324 clause 5.1.1). It then receives DL-SCH on that cell with the `g-RNTI` and `mtch-SchedulingInfo`. On release (TS 38.331 clause 5.9.3.4) it releases the PDCP and RLC entities and the related MAC and physical layer configuration.
 
 | Layer | What applies | Clause |
 | --- | --- | --- |
@@ -306,20 +306,20 @@ When NG-RAN cannot continue to provide the broadcast MBS session, for example fo
 <details>
 <summary>Sources for this page</summary>
 
-- **How MBS Broadcast differs:** TS 38.300 V19.4.0, clause 16.10.1; TS 23.247 V19.3.0, clauses 7.1.1.2 and 7.3.1.
-- **Network set-up and life cycle in the 5G Core:** TS 23.247 V19.3.0, clauses 7.1.1.1 to 7.1.1.4, 7.3.1 to 7.3.3, 7.3.5 and 7.3.6.
-- **MBS User Services:** TS 26.502 V19.5.0, clauses 5.2, 5.3, 5.4, 5.5.1 and 5.5.4.
-- **Service-based interfaces:** TS 29.532 V19.3.0, clauses 5.2.2.2, 5.2.2.3, 5.3.2.2 to 5.3.2.4, tables 5.3.1-1 and 6.2.3.1-1; TS 29.518 V19.8.0, clauses 5.6.2.2 to 5.6.2.4, table 6.5.3.1-1.
+- **How MBS Broadcast differs:** TS 38.300 V19.4.0, clause 16.10.1; TS 23.247 V20.0.0, clauses 7.1.1.2 and 7.3.1.
+- **Network set-up and life cycle in the 5G Core:** TS 23.247 V20.0.0, clauses 7.1.1.1 to 7.1.1.4, 7.3.1 to 7.3.3, 7.3.5 and 7.3.6.
+- **MBS User Services:** TS 26.502 V19.6.0, clauses 5.2, 5.3, 5.4, 5.5.1 and 5.5.4.
+- **Service-based interfaces:** TS 29.532 V20.0.0, clauses 5.2.2.2, 5.2.2.3, 5.3.2.2 to 5.3.2.4, tables 5.3.1-1 and 6.2.3.1-1; TS 29.518 V19.8.0, clauses 5.6.2.2 to 5.6.2.4, table 6.5.3.1-1.
 - **N4mb (PFCP):** TS 29.244 V19.6.0, clause 5.34.2.2.
 - **NGAP, E1AP, F1AP:** TS 38.413 V19.4.0, clauses 8.17.1 to 8.17.5; TS 38.401 V19.3.0, clause 8.15.1.1; TS 37.483 V19.4.0, clauses 8.6.1.1, 8.6.1.2, 8.6.1.4 and 8.6.1.5; TS 38.473 V19.4.0, clauses 8.14.1 to 8.14.4.
 - **Pre-configuration:** TS 24.575 V19.0.0, clause 4.
 - **MIB, SIB1, SIB20, SIB21, MCCH and MRB procedures:** TS 38.331 V19.4.0, clauses 5.2.2.3.1, 5.2.2.4.1, 5.9.1 to 5.9.3, 6.2.2, 6.3.1, 6.3.2 and 6.3.6.
 - **MAC:** TS 38.321 V19.4.0, clauses 5.3.1 and 5.3.2.1, tables 6.2.1-1c, 7.1-1 and 7.1-2.
 - **Physical layer:** TS 38.212 V19.4.0, clause 7.3.1.5.1; TS 38.213 V19.5.0, clause 10.1; TS 38.214 V19.5.0, clause 5.1; TS 38.300 V19.4.0, clause 16.10.6.6.
-- **User plane:** TS 23.247 V19.3.0, clause 7.3.1; TS 26.502 V19.5.0, clause 5.5.1; TS 37.324 V19.0.0, clauses 4.2.1, 4.2.2 and 5.1.1; TS 38.323 V19.1.0, clause 4.2.2; TS 38.300 V19.4.0, clause 16.10.3.
+- **User plane:** TS 23.247 V20.0.0, clause 7.3.1; TS 26.502 V19.6.0, clause 5.5.1; TS 37.324 V19.0.0, clauses 4.2.1, 4.2.2 and 5.1.1; TS 38.323 V19.1.0, clause 4.2.2; TS 38.300 V19.4.0, clause 16.10.3.
 - **Neighbour cells and the USD:** TS 38.300 V19.4.0, clauses 16.10.6.2 and 16.10.6.5.1.
 - **RRC states:** TS 38.300 V19.4.0, clause 16.10.6.2.
-- **Mobility:** TS 23.247 V19.3.0, clause 6.3.2; TS 38.300 V19.4.0, clauses 16.10.6.5.0 to 16.10.6.5.2 and 16.14.12; TS 38.304 V19.3.0, clause 5.2.4.1; TS 38.331 V19.4.0, clause 5.9.3.2.
-- **Added in Release 19 (NR NTN, SIB27, shared NG-U path failure, Object Repair):** TS 23.247 V19.3.0, clauses 6.21, 7.1.1.2 and 7.3.1; TS 38.300 V19.4.0, clauses 16.10.6.1 and 16.14.12; TS 38.331 V19.4.0, clauses 5.9.1.1, 6.2.2, 6.3.1 and 6.3.6; TS 26.502 V19.5.0, clause 5.3; each compared with the Release 18 issue (TS 23.247 V18.8.0, TS 38.300 V18.11.0, TS 38.331 V18.11.0, TS 26.502 V18.6.0).
+- **Mobility:** TS 23.247 V20.0.0, clause 6.3.2; TS 38.300 V19.4.0, clauses 16.10.6.5.0 to 16.10.6.5.2 and 16.14.12; TS 38.304 V19.3.0, clause 5.2.4.1; TS 38.331 V19.4.0, clause 5.9.3.2.
+- **Added in Release 19 (NR NTN, SIB27, shared NG-U path failure, Object Repair):** TS 23.247 V20.0.0, clauses 6.21, 7.1.1.2 and 7.3.1; TS 38.300 V19.4.0, clauses 16.10.6.1 and 16.14.12; TS 38.331 V19.4.0, clauses 5.9.1.1, 6.2.2, 6.3.1 and 6.3.6; TS 26.502 V19.6.0, clause 5.3; each compared with the Release 18 issue (TS 23.247 V18.8.0, TS 38.300 V18.11.0, TS 38.331 V18.11.0, TS 26.502 V18.6.0).
 
 </details>

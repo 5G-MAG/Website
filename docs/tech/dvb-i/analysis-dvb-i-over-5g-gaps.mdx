@@ -191,7 +191,7 @@ document that owns it. This is an engineering assessment by 5G-MAG, not a statem
 
 **Versions checked:** ETSI TS 103 770 V1.2.1 (2024-09), ETSI TR 103 972 V1.1.1 (2023-07), ETSI
 TS 103 720 V1.2.1 (2023-06), ETSI TS 129 116 V19.0.0 (2025-10), ETSI TS 126 512 V19.3.0, ETSI
-TS 126 510 V19.2.0, 3GPP TS 26.346 V19.3.0 (2025-12), 3GPP TS 26.347 V18.1.0, and the DVB A177r8 draft of TS 103 770 V1.3.1
+TS 126 510 V19.2.0, 3GPP TS 26.346 V19.3.0 (2025-12), 3GPP TS 26.347 V19.0.0, and the DVB A177r8 draft of TS 103 770 V1.3.1
 (June 2026).
 
 ### Headline
@@ -266,7 +266,7 @@ Step 4 of the receiver procedure in Part 2 begins "a DVB-I service instance with
 - **`IdentifierBasedDeliveryParameters`** (clause 5.5.18.8), defined in clause 5.5.4, table 16, as "An identifier in the form of a locator (URL) or name (URN) that contains the parameters of the relevant delivery system for this service instance." Annex G.2.3 uses it for HLS. This needs no extension, and it is what the 5G-MAG reference tools use (ETSI TS 103 770 V1.2.1 clause 5.5.18.8; ETSI TS 103 770 V1.2.1 clause 5.5.4; ETSI TS 103 770 V1.2.1 clause G.2.3).
 - **`OtherDeliveryParameters`**, typed `ExtensionBaseType`, the extension point annex G.2.2 uses for HLS. A deployment that uses it defines its own type, outside the specification (ETSI TS 103 770 V1.2.1 clause 5.5.4; ETSI TS 103 770 V1.2.1 clause G.2.2).
 
-Neither is named for MBMS, so either is a reading. TR 103 972 clause 6.4.3.3 is worth reading before choosing. It sets out two options and discourages the first, signalling a 5G Broadcast service as DASH delivery with an added MBMS URL, because existing DVB-I clients may assume all DASH services are unicast. Both elements above avoid that (ETSI TR 103 972 V1.1.1 clause 6.4.3.3). The URL itself follows 3GPP TS 26.347 V18.1.0 clause 8.2.2, which says its prefix "is the serviceId of the service on which the resource is available."
+Neither is named for MBMS, so either is a reading. TR 103 972 clause 6.4.3.3 is worth reading before choosing. It sets out two options and discourages the first, signalling a 5G Broadcast service as DASH delivery with an added MBMS URL, because existing DVB-I clients may assume all DASH services are unicast. Both elements above avoid that (ETSI TR 103 972 V1.1.1 clause 6.4.3.3). The URL itself follows 3GPP TS 26.347 V19.0.0 clause 8.2.2, which says its prefix "is the serviceId of the service on which the resource is available."
 
 ### What would be built first
 
@@ -284,7 +284,7 @@ Every status above was checked against the document that owns the requirement or
 listed under "Versions checked", not against a summary or an earlier issue. Where a clause number in
 the report no longer resolves, the current location is given.
 
-Three points are worth stating. DVB BlueBook C100 numbers the requirements; the page quotes them as TR 103 972 reproduces them in its tables 6.2.1-1, 6.3.1-1 and 6.4.1-1, and the numbering was checked against C100 clause 2 (DVB C100 clause 2). The form of the `mbms://` URL was checked in 3GPP TS 26.347 V18.1.0 clause 8.2.2; TS 103 770 clause 9.3.2 refers to its clause 6.2, which is the File Delivery Application Service API. And nothing here establishes whether DVB intends to close the remaining gaps in a future issue: the A177r8 draft does not, but a draft is not a plan of record, and the question belongs to DVB (ETSI TS 103 770 V1.2.1 clause 9.3.2; TS 26.347 V18.1.0 clause 6.2).
+Three points are worth stating. DVB BlueBook C100 numbers the requirements; the page quotes them as TR 103 972 reproduces them in its tables 6.2.1-1, 6.3.1-1 and 6.4.1-1, and the numbering was checked against C100 clause 2 (DVB C100 clause 2). The form of the `mbms://` URL was checked in 3GPP TS 26.347 V19.0.0 clause 8.2.2; TS 103 770 clause 9.3.2 refers to its clause 6.2, which is the File Delivery Application Service API. And nothing here establishes whether DVB intends to close the remaining gaps in a future issue: the A177r8 draft does not, but a draft is not a plan of record, and the question belongs to DVB (ETSI TS 103 770 V1.2.1 clause 9.3.2; TS 26.347 V19.0.0 clause 6.2).
 :::
 
 ## How it works

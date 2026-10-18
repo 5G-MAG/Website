@@ -29,7 +29,7 @@ This documentation is currently **under development and subject to change**. If 
 - **Handover:** conditional handover in NTN adds three trigger conditions: event A4, a time-based condition and a location-based condition. DAPS handover is not supported for NTN.
 - **Without a handover:** for a transparent payload and a quasi-Earth-fixed cell, the satellite switch with re-synchronization keeps the same PCI, which avoids L3 mobility for the UEs in the cell.
 - **5G-MAG analysis (beyond Release 19):** a comparison of the deployment models, with soft and hard beam switches, PTP protection of the affected UEs during a switch, and the roaming options between independent operators.
-- **Multicast:** Release 19 has no NTN-specific text for multicast mobility. The generic MBS mobility of TS 23.247 and TS 38.300 applies. MBS for roaming is not supported.
+- **Multicast:** Release 19 has no NTN-specific text for multicast mobility. The generic MBS mobility of TS 23.247 and TS 38.300 applies. In Release 19, MBS for roaming is not supported (TS 23.247 V19.3.0 clause 4.1); in Release 20, a roaming UE can receive the MBS of the VPLMN (TS 23.247 V20.0.0 clause 4.1).
 
 :::
 
@@ -134,7 +134,7 @@ The same operator owns the TN and NTN infrastructure, and one 5G Core serves bot
 
 ### Independent NTN and TN operators
 
-Two operators own the TN and NTN infrastructure, each with its own 5G Core. Two arrangements between them are considered here: an interface between the two Core Networks (roaming), or radio access network sharing. NG-RAN supports radio access network sharing as defined in TS 23.501 (TS 38.300 clause 4.6). For multicast and broadcast, roaming is excluded: Multicast/Broadcast Service for roaming is not supported in this release (TS 23.247 clause 4.1). The roaming and network sharing procedures themselves are defined in TS 23.501 and are not analysed on this page.
+Two operators own the TN and NTN infrastructure, each with its own 5G Core. Two arrangements between them are considered here: an interface between the two Core Networks (roaming), or radio access network sharing. NG-RAN supports radio access network sharing as defined in TS 23.501 (TS 38.300 clause 4.6). For multicast and broadcast, Release 19 excludes roaming: Multicast/Broadcast Service for roaming is not supported in that release (TS 23.247 V19.3.0 clause 4.1). In Release 20, reception by roaming users of the Multicast/Broadcast Services of the VPLMN is supported, and of the HPLMN is not (TS 23.247 V20.0.0 clause 4.1). The roaming and network sharing procedures themselves are defined in TS 23.501 and are not analysed on this page.
 
 ### Summary
 
@@ -142,7 +142,7 @@ Two operators own the TN and NTN infrastructure, each with its own 5G Core. Two 
 | --- | --- | --- | --- |
 | Single NTN operator | One 5G Core | Cell reselection with time- and location-based measurement initiation; CHO with T1, D1 or D2; satellite switch with re-synchronization; feeder link switchover | Generic MBS mobility |
 | Common NTN and TN operator | One shared 5G Core | NTN-TN handover; SIB25 TN coverage information; no DAPS | Generic MBS mobility |
-| Independent NTN and TN operators | Two 5G Cores | Roaming or radio access network sharing (TS 23.501, not analysed here) | Not supported for roaming |
+| Independent NTN and TN operators | Two 5G Cores | Roaming or radio access network sharing (TS 23.501, not analysed here) | Release 19: not supported for roaming; Release 20: VPLMN services only |
 
 ## 5G-MAG analysis: the deployment models compared
 
@@ -219,7 +219,7 @@ The full multicast procedures are in [MBS Multicast - End-to-End Procedures](/te
 - **Handover and conditional handover:** TS 38.300 V19.4.0, clauses 9.2.3.4.1, 16.14.3.2.1 and 16.14.3.2.2; TS 38.331 V19.4.0, clause 6.3.2 (ReportConfigNR, CondReconfigToAddModList).
 - **Satellite switch with re-synchronization:** TS 38.300 V19.4.0, clause 16.14.3.2.3; TS 38.331 V19.4.0, clauses 5.7.19 and 6.3.1.
 - **Feeder link switchover:** TS 38.300 V19.4.0, clauses 16.14.4.1 and 16.14.4.2.
-- **Deployment models:** TS 38.300 V19.4.0, clauses 4.6 and 16.14.3; TS 23.247 V19.3.0, clause 4.1. The three deployment models and the section "5G-MAG analysis" are this page's own organisation and analysis, not 3GPP text.
-- **Multicast:** TS 23.247 V19.3.0, clauses 6.3.1 and 6.21; TS 38.300 V19.4.0, clauses 16.10.5.3.1, 16.10.5.3.2 and 16.10.5.4.
+- **Deployment models:** TS 38.300 V19.4.0, clauses 4.6 and 16.14.3; TS 23.247 V20.0.0, clause 4.1 (and V19.3.0 for the Release 19 roaming statement). The three deployment models and the section "5G-MAG analysis" are this page's own organisation and analysis, not 3GPP text.
+- **Multicast:** TS 23.247 V20.0.0, clauses 6.3.1 and 6.21; TS 38.300 V19.4.0, clauses 16.10.5.3.1, 16.10.5.3.2 and 16.10.5.4.
 
 </details>

@@ -27,7 +27,7 @@ import JumpMenu from '@site/src/components/JumpMenu';
 - **The cycle:** a Provisioning AF provisions what to collect; clients obtain a configuration and report; the Data Collection AF processes the reports and exposes events to subscribers (TS 26.532 V19.1.0 clause 4.1 (items 2, 4, 5, 6); TS 26.531 V19.0.0 clauses 5.2, 5.4, 5.5, 5.6).
 - **Control of exposure:** Data Access Profiles define the processing applied before any event leaves the Data Collection AF, along time, user and location (TS 26.531 V19.0.0 clause 4.5.2).
 - **APIs:** TS 26.532 specifies Ndcaf_DataReportingProvisioning, Ndcaf_DataReporting and the R7 client API; event exposure uses Naf_EventExposure from TS 29.517.
-- **In 5GMS:** QoE metrics, consumption, dynamic policy and Network Assistance invocations, and media streaming access activity, exposed as five media streaming event types (TS 29.517 V18.6.0 clause 4.1.1 and clause 5.6.3.3 (table 5.6.3.3-1)).
+- **In 5GMS:** QoE metrics, consumption, dynamic policy and Network Assistance invocations, and media streaming access activity, exposed as five media streaming event types (TS 29.517 V20.1.0 clause 4.1.1 and clause 5.6.3.3 (table 5.6.3.3-1)).
 
 :::
 
@@ -133,24 +133,24 @@ The Data Collection AF exposes a batch of recent events to consumers as an event
 | --- | --- | --- |
 | QoE metrics (downlink) | Media Session Handler | M5 |
 | Consumption (downlink) | Media Session Handler | M5 |
-| Dynamic policy invocations (downlink) (TS 26.501 V19.4.0 clause 4.7.2.1 (item 3)) | Logged by the 5GMSd AF (TS 26.501 V19.4.0 clause 4.7.2.1 (item 3)) | Inside the 5GMS AF (TS 26.501 V19.4.0 clause 4.7.2.1 (item 3)) |
-| AF-based Network Assistance invocations (downlink, uplink) (TS 26.501 V19.4.0 clause 4.7.2.1 (item 4) and clause 4.7.2.2 (item 1)) | Logged by the 5GMS AF (TS 26.501 V19.4.0 clause 4.7.2.1 (item 4) and clause 4.7.2.2 (item 1)) | Inside the 5GMS AF (TS 26.501 V19.4.0 clause 4.7.2.1 (item 4)) |
-| ANBR-based Network Assistance invocations (downlink, uplink) (TS 26.501 V19.4.0 clause 4.7.2.1 (item 6) and clause 4.7.2.2 (item 2)) | Media Session Handler | R2 |
-| Media streaming access activity (downlink, uplink) (TS 26.501 V19.4.0 clause 4.7.2.1 (item 5) and clause 4.7.2.2 (item 3)) | 5GMS AS | R4 |
+| Dynamic policy invocations (downlink) (TS 26.501 V20.0.0 clause 4.7.2.1 (item 3)) | Logged by the 5GMSd AF (TS 26.501 V20.0.0 clause 4.7.2.1 (item 3)) | Inside the 5GMS AF (TS 26.501 V20.0.0 clause 4.7.2.1 (item 3)) |
+| AF-based Network Assistance invocations (downlink, uplink) (TS 26.501 V20.0.0 clause 4.7.2.1 (item 4) and clause 4.7.2.2 (item 1)) | Logged by the 5GMS AF (TS 26.501 V20.0.0 clause 4.7.2.1 (item 4) and clause 4.7.2.2 (item 1)) | Inside the 5GMS AF (TS 26.501 V20.0.0 clause 4.7.2.1 (item 4)) |
+| ANBR-based Network Assistance invocations (downlink, uplink) (TS 26.501 V20.0.0 clause 4.7.2.1 (item 6) and clause 4.7.2.2 (item 2)) | Media Session Handler | R2 |
+| Media streaming access activity (downlink, uplink) (TS 26.501 V20.0.0 clause 4.7.2.1 (item 5) and clause 4.7.2.2 (item 3)) | 5GMS AS | R4 |
 
-The 5GMS AS obtains its data collection client configuration at R4 when it initialises, and refreshes it periodically (TS 26.501 V19.4.0 clause 5.11.1 and clause 6.8.1). It reports each logged access as a single record, and declares support for the MS_ACCESS_ACTIVITY data domain (TS 26.501 V19.4.0 clause 5.11.2 and clause 6.8.2; TS 26.512 V19.3.0 clause 4.11.2).
+The 5GMS AS obtains its data collection client configuration at R4 when it initialises, and refreshes it periodically (TS 26.501 V20.0.0 clause 5.11.1 and clause 6.8.1). It reports each logged access as a single record, and declares support for the MS_ACCESS_ACTIVITY data domain (TS 26.501 V20.0.0 clause 5.11.2 and clause 6.8.2; TS 26.512 V19.3.0 clause 4.11.2).
 
 ### What may be processed
 
-A Data Access Profile in a 5GMSd Provisioning Session may apply the time, user and location restriction dimensions to every data type (TS 26.501 V19.4.0 clause 4.7.3.1 (table 4.7.3.1-1)). The aggregation functions allowed differ by data type (TS 26.501 V19.4.0 clause 4.7.3.1 (table 4.7.3.1-1)).
+A Data Access Profile in a 5GMSd Provisioning Session may apply the time, user and location restriction dimensions to every data type (TS 26.501 V20.0.0 clause 4.7.3.1 (table 4.7.3.1-1)). The aggregation functions allowed differ by data type (TS 26.501 V20.0.0 clause 4.7.3.1 (table 4.7.3.1-1)).
 
 | Data type (downlink) | Count | Mean, Maximum, Minimum | Sum |
 | --- | :---: | :---: | :---: |
 | QoE metrics | Yes | Yes | Yes |
-| Consumption | Yes, number of sessions (TS 26.501 V19.4.0 clause 4.7.3.1 (table 4.7.3.1-1, Consumption row, NOTE 2)) | No | No |
-| Dynamic policy invocations | Yes, number of invocations (TS 26.501 V19.4.0 clause 4.7.3.1 (table 4.7.3.1-1, dynamic policy row, NOTE 3)) | No | No |
-| AF-based and ANBR-based Network Assistance invocations (TS 26.501 V19.4.0 clause 4.7.3.1 (table 4.7.3.1-1)) | Yes, number of invocations (TS 26.501 V19.4.0 clause 4.7.3.1 (table 4.7.3.1-1, NOTE 3)) | Yes, on bit rate recommendations (TS 26.501 V19.4.0 clause 4.7.3.1 (table 4.7.3.1-1, NOTE 4)) | No |
-| Media streaming access activity (TS 26.501 V19.4.0 clause 4.7.3.1 (table 4.7.3.1-1)) | Yes, number of sessions (TS 26.501 V19.4.0 clause 4.7.3.1 (table 4.7.3.1-1, NOTE 2)) | No | No |
+| Consumption | Yes, number of sessions (TS 26.501 V20.0.0 clause 4.7.3.1 (table 4.7.3.1-1, Consumption row, NOTE 2)) | No | No |
+| Dynamic policy invocations | Yes, number of invocations (TS 26.501 V20.0.0 clause 4.7.3.1 (table 4.7.3.1-1, dynamic policy row, NOTE 3)) | No | No |
+| AF-based and ANBR-based Network Assistance invocations (TS 26.501 V20.0.0 clause 4.7.3.1 (table 4.7.3.1-1)) | Yes, number of invocations (TS 26.501 V20.0.0 clause 4.7.3.1 (table 4.7.3.1-1, NOTE 3)) | Yes, on bit rate recommendations (TS 26.501 V20.0.0 clause 4.7.3.1 (table 4.7.3.1-1, NOTE 4)) | No |
+| Media streaming access activity (TS 26.501 V20.0.0 clause 4.7.3.1 (table 4.7.3.1-1)) | Yes, number of sessions (TS 26.501 V20.0.0 clause 4.7.3.1 (table 4.7.3.1-1, NOTE 2)) | No | No |
 
 ### What is exposed
 
@@ -162,9 +162,9 @@ The Data Collection AF in the 5GMS AF exposes these event types, with the Event 
 | Consumption | MS_CONSUMPTION |
 | Network Assistance invocation | MS_NET_ASSIST_INVOCATION |
 | Dynamic policy invocation | MS_DYN_POLICY_INVOCATION |
-| Media streaming access activity (TS 29.517 V18.6.0 clause 5.6.3.3 (table 5.6.3.3-1)) | MS_ACCESS_ACTIVITY |
+| Media streaming access activity (TS 29.517 V20.1.0 clause 5.6.3.3 (table 5.6.3.3-1)) | MS_ACCESS_ACTIVITY |
 
-Eligible consumers are the NWDAF, the NEF and the Event Consumer AF of the 5GMS Application Provider (TS 26.501 V19.4.0 clause 5.11.3, TS 26.512 V19.3.0 clause 4.12.1). TS 29.517 V18.6.0 clause 4.2.2.1 lists the NWDAF only for Media Streaming QoE metrics; consumption, Network Assistance invocation, dynamic policy invocation and access activity it lists for the Event Consumer AF or NEF. Each event carries common baseline parameters, such as collection timestamps, sample count and streaming direction. The UE identification is present only for individual records, and only when the data exposure restrictions permit it.
+Eligible consumers are the NWDAF, the NEF and the Event Consumer AF of the 5GMS Application Provider (TS 26.501 V20.0.0 clause 5.11.3, TS 26.512 V19.3.0 clause 4.12.1). TS 29.517 V20.1.0 clause 4.2.2.1 lists the NWDAF only for Media Streaming QoE metrics; consumption, Network Assistance invocation, dynamic policy invocation and access activity it lists for the Event Consumer AF or NEF. Each event carries common baseline parameters, such as collection timestamps, sample count and streaming direction. The UE identification is present only for individual records, and only when the data exposure restrictions permit it.
 
 ### How it is provisioned
 
@@ -189,7 +189,7 @@ The 5GMS Application Provider configures the collection and processing of 5GMS U
 - **Data Access Profiles:** TS 26.531 V19.0.0, clause 4.5.2, table 4.5.2-1; TS 26.532 V19.1.0, tables 6.3.2.3-1 and 6.3.3.1-1.
 - **Event exposure:** TS 26.531 V19.0.0, clauses 4.5.2 and 4.6.1.
 - **Consent, security and precedence:** TS 26.531 V19.0.0, clause 4.1 NOTE 1 and NOTE 2, clauses 4.5.1, 4.5.4.1 to 4.5.4.3 and 5.4; TS 26.532 V19.1.0, clauses 4.4.2 and 9.
-- **In 5G Media Streaming:** TS 26.501 V19.4.0, clauses 4.7.1, 4.7.2, 4.7.3 (table 4.7.3.1-1), 4.7.4, 5.11.1 and 5.11.2; TS 26.512 V19.3.0, clauses 4.3.11.1, 4.11.2, 4.12.1 and 7.11.1; TS 29.517 V18.6.0, table 5.6.3.3-1 (Event IDs; the Release 19 copy was not obtained).
+- **In 5G Media Streaming:** TS 26.501 V20.0.0, clauses 4.7.1, 4.7.2, 4.7.3 (table 4.7.3.1-1), 4.7.4, 5.11.1 and 5.11.2; TS 26.512 V19.3.0, clauses 4.3.11.1, 4.11.2, 4.12.1 and 7.11.1; TS 29.517 V20.1.0, table 5.6.3.3-1 (Event IDs).
 - **Release differences:** TS 26.501 V17.10.0 and V19.4.0; TS 26.512 V17.10.0, V18.7.0 and V19.3.0, and their change histories.
 
 </details>

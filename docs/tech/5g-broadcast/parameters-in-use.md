@@ -33,9 +33,9 @@ Terms used in the tables below: MBSFN (Multicast-Broadcast Single Frequency Netw
 | Parameter                 | Typical Value               | Notes                                                          |
 | ------------------------- | --------------------------- | -------------------------------------------------------------- |
 | MBSFN Subframe Ratio      | 6 out of 8                  | Used in dedicated broadcast mode                               |
-| | Cyclic Prefix             | Extended CP                 | PMCH cyclic prefix is 16.6 microseconds (15 kHz) to 300 microseconds (0.37 kHz), by numerology | (ETSI TS 103 720 V1.2.1 table 6.4.4-1; TS 36.211 V19.3.0 clause 6.10.2.2.1) | Extended CP                 | Required for SFN deployments                                   |
-| Subcarrier Spacing (CAS)  (ETSI TS 103 720 V1.2.1 clause 6.4.2) | 15 kHz                      | Standard LTE numerology; used in the Cell Acquisition Subframe |
-| | Subcarrier Spacing (PMCH) | 1.25 / 2.5 / 7.5 / 0.37 kHz (15 kHz also defined) | Numerology chosen per inter-site distance and mobility target | (ETSI TS 103 720 V1.2.1 table 6.4.4-1; ETSI TS 103 720 V1.2.1 clause 5.13) | 1.25 / 2.5 / 7.5 / 0.37 kHz | FeMBMS numerology chosen per coverage and mobility target      |
+| Cyclic Prefix             | Extended CP                 | Required for SFN deployments. PMCH cyclic prefix is 16.6 microseconds (15 kHz) to 300 microseconds (0.37 kHz), by numerology (ETSI TS 103 720 V1.2.1 table 6.4.4-1; TS 36.211 V19.3.0 table 6.12-1) |
+| Subcarrier Spacing (CAS)  | 15 kHz                      | Standard LTE numerology; used in the Cell Acquisition Subframe (ETSI TS 103 720 V1.2.1 clause 6.4.2) |
+| Subcarrier Spacing (PMCH) | 1.25 / 2.5 / 7.5 / 0.37 kHz (15 kHz also defined) | FeMBMS numerology chosen per inter-site distance, coverage and mobility target (ETSI TS 103 720 V1.2.1 table 6.4.4-1; ETSI TS 103 720 V1.2.1 clause 5.13) |
 
 The Cell Acquisition Subframe (CAS) always uses 15 kHz SCS with a normal or extended cyclic prefix; for 6, 7 and 8 MHz PMCH bandwidths it occupies a narrow 15 or 25 PRB (3 or 5 MHz), a receiver acquires on the narrowband CAS and the SIBs then signal the wider PMCH bandwidth (ETSI TS 103 720 V1.2.1 clause 6.4.2; ETSI TS 103 720 V1.2.1 clause 7.3.2; ETSI TS 103 720 V1.2.1 clause 5.5.4). The CAS is transmitted with a 40 ms periodicity (MIB-MBMS in subframe 0 of radio frames with SFN mod 4 == 0) (ETSI TS 103 720 V1.2.1 clause 6.4.2; TS 36.331 V19.4.0 clause 5.2.1.2). The PMCH numerology is at the discretion of the service provider: 1.25 kHz for larger-than-cellular inter-site distances at low-to-moderate mobility, 2.5 kHz for mobile reception (up to around 250 km/h), and 0.37 kHz for the largest SFN areas (inter-site distance up to 125 km) (ETSI TS 103 720 V1.2.1 clause 5.13; TR 36.976 V19.0.0 clause 4.2).
 
@@ -77,7 +77,7 @@ Bands in active use for LTE-based 5G Broadcast deployments:
 - **Band 108** (UHF, 470 to 698 MHz): Receive-only broadcast band added alongside Band 107 in 3GPP Release 18 (TS 36.101 V20.1.0 table 5.5H-1; TS 36.101 V20.1.0 annex J)
 - **Bands 112 and 113** (UHF, 470 to 608 MHz and 606 to 698 MHz): Receive-only broadcast bands added in 3GPP Release 19, release-independent from Release 17 (TS 36.101 V20.1.0 table 5.5H-1; TS 36.101 V20.1.0 annex J; TS 36.307 V20.0.0 clause 3A)
 
-All four bands are defined as standalone downlink-only (SDO) bands in Table 5.5H-1 of 3GPP TS 36.101. The published ETSI TS 103 720 v1.2.1 does not yet include specific frequency bands; its clause 8 (ETSI TS 103 720 V1.2.1 clause 8) expects band details in a future revision (TS 36.101 V20.1.0 table 5.5H-1; ETSI TS 103 720 V1.2.1 clause 8). The published ETSI TS 103 720 v1.2.1 does not yet include specific frequency bands; its clause 8 defers band configurations to a future revision.
+All four bands are defined as standalone downlink-only (SDO) bands in Table 5.5H-1 of 3GPP TS 36.101. The published ETSI TS 103 720 v1.2.1 does not yet include specific frequency bands; its clause 8 (ETSI TS 103 720 V1.2.1 clause 8) expects band details in a future revision (TS 36.101 V20.1.0 table 5.5H-1; ETSI TS 103 720 V1.2.1 clause 8).
 
 ## Receiver Profiles
 

@@ -24,8 +24,8 @@ TS 26.501 defines a set of high-level features for supporting enhanced media str
 
 :::tip[At a glance]
 
-- **13 features:** TS 26.501 V19.4.0 table 4.0.1-1 lists 13; comparing V16.15.0, V17.10.0, V18.9.0 and V19.4.0 (a derived count), eight date from Release 16, three were added in Release 17, two in Release 18 and none in Release 19.
-- **Directions:** content hosting, consumption reporting, QoE metrics reporting and delivery via eMBMS and MBS are downlink; content publishing and remote control are uplink; the others apply to both (TS 26.501 V19.4.0 clause 4.0.2; TS 26.501 V19.4.0 clause 4.0.3; TS 26.501 V19.4.0 clause 4.0.4; TS 26.501 V19.4.0 clause 4.0.5; TS 26.501 V19.4.0 clause 4.0.6; TS 26.501 V19.4.0 clause 4.0.7; TS 26.501 V19.4.0 clause 4.0.8; TS 26.501 V19.4.0 clause 4.0.9; TS 26.501 V19.4.0 clause 4.0.10; TS 26.501 V19.4.0 clause 4.0.11; TS 26.501 V19.4.0 clause 4.0.12; TS 26.501 V19.4.0 clause 4.0.13; TS 26.501 V19.4.0 clause 4.0.14).
+- **13 features:** TS 26.501 V19.4.0 table 4.0.1-1 lists 13; comparing V16.15.0, V17.10.0, V18.9.0 and V19.4.0 (a derived count), eight date from Release 16, three were added in Release 17, two in Release 18 and none in Release 19. TS 26.501 V20.0.0 table 4.0.1-1 adds a fourteenth feature in Release 20, energy information collection, reporting and exposure (clause 4.0.15), which this page does not cover.
+- **Directions:** content hosting, consumption reporting, QoE metrics reporting and delivery via eMBMS and MBS are downlink; content publishing and remote control are uplink; the others apply to both (TS 26.501 V20.0.0 clause 4.0.2; TS 26.501 V20.0.0 clause 4.0.3; TS 26.501 V20.0.0 clause 4.0.4; TS 26.501 V20.0.0 clause 4.0.5; TS 26.501 V20.0.0 clause 4.0.6; TS 26.501 V20.0.0 clause 4.0.7; TS 26.501 V20.0.0 clause 4.0.8; TS 26.501 V20.0.0 clause 4.0.9; TS 26.501 V20.0.0 clause 4.0.10; TS 26.501 V20.0.0 clause 4.0.11; TS 26.501 V20.0.0 clause 4.0.12; TS 26.501 V20.0.0 clause 4.0.13; TS 26.501 V20.0.0 clause 4.0.14).
 - **APIs:** up to Release 17, TS 26.512 specifies each API with its own OpenAPI file. From Release 18 they are TS 26.510 services that TS 26.512 refers to. Each feature shows both, folded.
 - **Added in Release 19** in the API tables: content redistribution at M10 and metrics reporting at M3d. TS 26.512 V19.3.0 also adds in-band CMCD reporting at M4d (clause 10.5).
 
@@ -53,7 +53,7 @@ TS 26.501 defines a set of high-level features for supporting enhanced media str
 
 (d) is downlink and (u) is uplink.
 
-Consumption and QoE metrics reporting apply to downlink only in the current release. Release 16 (TS 26.501 V16.15.0) defines eight features. Release 17 adds edge processing, eMBMS delivery, and data collection, reporting and exposure. Release 18 adds Service URL handling and MBS delivery. Release 19 adds none to this list.
+Consumption and QoE metrics reporting apply to downlink only in the current release. Release 16 (TS 26.501 V16.15.0) defines eight features. Release 17 adds edge processing, eMBMS delivery, and data collection, reporting and exposure. Release 18 adds Service URL handling and MBS delivery. Release 19 adds none to this list. TS 26.501 V20.0.0 (Release 20) adds energy information collection, reporting and exposure, which applies to downlink and uplink (clause 4.0.15, table 4.0.1-1; procedures in clause 10); it is not listed here.
 
 ## Feature by feature
 
@@ -68,7 +68,7 @@ The OpenAPI file is the one whose title matches the API, in that version's archi
 
 **Downlink** · added in Release 16 · defined in TS 26.501 clause 4.0.2 · procedures in clause 5.4
 
-Provides a service equivalent to a Content Delivery Network (CDN), inside or outside the trusted data network (TS 26.501 V19.4.0 clause 4.0.2). Content is ingested pull-based (retrieved from a media origin at the Application Provider) or push-based (published by the Application Provider), may be cached across one or more service locations, may be manipulated according to Content Preparation Templates, and is then retrieved by the 5GMSd Client. A provisioned Server Certificate may secure the content served.
+Provides a service equivalent to a Content Delivery Network (CDN), inside or outside the trusted data network (TS 26.501 V20.0.0 clause 4.0.2). Content is ingested pull-based (retrieved from a media origin at the Application Provider) or push-based (published by the Application Provider), may be cached across one or more service locations, may be manipulated according to Content Preparation Templates, and is then retrieved by the 5GMSd Client. A provisioned Server Certificate may secure the content served.
 
 <SpecFigure src="/img/tech/5gms/generated/ts26501-fig4.0.2-1.svg" width={840} height={289} spec="TS 26.501 V20.0.0" figure="4.0.2-1" title="High-level arrangement for content hosting feature" alt="The 5GMSd Application Provider provisions content hosting in the 5GMS network services, which ingest content pull-based or push-based and stream it downlink to the 5GMSd Client in the UE." />
 
@@ -125,7 +125,7 @@ Not in table 4.2-1: TS 26.512 V19.3.0 clause 10.5 (in-band client data reporting
 
 **Uplink** · added in Release 16 · defined in TS 26.501 clause 4.0.3 · procedures in clause 6.2.3
 
-Media content is published by the 5GMSu Client to a network-side component of the 5GMS System as part of an uplink session (TS 26.501 V19.4.0 clause 4.0.3). It may be cached for a configurable period, and manipulated according to Content Preparation Templates. A provisioned Server Certificate may secure the content published.
+Media content is published by the 5GMSu Client to a network-side component of the 5GMS System as part of an uplink session (TS 26.501 V20.0.0 clause 4.0.3). It may be cached for a configurable period, and manipulated according to Content Preparation Templates. A provisioned Server Certificate may secure the content published.
 
 <SpecFigure src="/img/tech/5gms/generated/ts26501-fig4.0.3-1.svg" width={840} height={289} spec="TS 26.501 V20.0.0" figure="4.0.3-1" title="High-level arrangement for content publishing feature" alt="The 5GMSu Client streams media uplink to the 5GMS network services, which the 5GMSu Application Provider provisions for content publishing and which egest content to it pull-based or push-based." />
 
@@ -185,7 +185,7 @@ Lets the Application Provider specify how network-side components manipulate con
 
 **Downlink and uplink** · added in Release 16 · defined in TS 26.501 clause 4.0.5 · procedures in clause 5.9 (d); 6.5, 6.7 (u) in table 4.0.1-1, or 6.1, 6.5, 6.7 (u) in clause 4.0.5
 
-Lets the 5GMS Client interrogate or manipulate the network Quality of Service (QoS) of an ongoing session (TS 26.501 V19.4.0 clause 4.0.5). It is not explicitly provisioned: whether it is available depends on system pre-configuration and policy. Two mechanisms: AF-based, through the PCF, and ANBR-based, between the UE modem and the RAN. Two sub-features: bit rate recommendation (throughput estimation), and delivery boost, a speculative request for a temporary boost to the session bit rate.
+Lets the 5GMS Client interrogate or manipulate the network Quality of Service (QoS) of an ongoing session (TS 26.501 V20.0.0 clause 4.0.5). It is not explicitly provisioned: whether it is available depends on system pre-configuration and policy. Two mechanisms: AF-based, through the PCF, and ANBR-based, between the UE modem and the RAN. Two sub-features: bit rate recommendation (throughput estimation), and delivery boost, a speculative request for a temporary boost to the session bit rate.
 
 <SpecFigure src="/img/tech/5gms/generated/ts26501-fig4.0.5-1.svg" width={840} height={375} spec="TS 26.501 V20.0.0" figure="4.0.5-1" title="High-level arrangement for network assistance feature" alt="AF-based network assistance between the 5GMS Client and the 5GMS network services, which connect to the PCF, and ANBR-based network assistance between the UE modem and the RAN." />
 
@@ -218,7 +218,7 @@ Lets the 5GMS Client interrogate or manipulate the network Quality of Service (Q
 
 **Downlink and uplink** · added in Release 16 · defined in TS 26.501 clause 4.0.6 · procedures in clause 5.8, 5.7.6 (d); 6.9 (u)
 
-Lets the 5GMS Client manipulate the network traffic handling policies of an ongoing session (TS 26.501 V19.4.0 clause 4.0.6). The Application Provider provisions Policy Templates within a Provisioning Session. Each Policy Template carries an External reference and the Network QoS parameters of one Service Operation Point (for example SD, HD or UHD), and may apply to one or more Data Networks or Network Slices. Media Entry Point documents refer to the same Service Operation Points in their Service Descriptions. Outside the trusted data network, the PCF is reached through the NEF.
+Lets the 5GMS Client manipulate the network traffic handling policies of an ongoing session (TS 26.501 V20.0.0 clause 4.0.6). The Application Provider provisions Policy Templates within a Provisioning Session. Each Policy Template carries an External reference and the Network QoS parameters of one Service Operation Point (for example SD, HD or UHD), and may apply to one or more Data Networks or Network Slices. Media Entry Point documents refer to the same Service Operation Points in their Service Descriptions. Outside the trusted data network, the PCF is reached through the NEF.
 
 <SpecFigure src="/img/tech/5gms/generated/ts26501-fig4.0.6-1.svg" width={897} height={308} spec="TS 26.501 V20.0.0" figure="4.0.6-1" title="High-level arrangement for dynamic policies" alt="The 5GMS Application Provider provisions Policy Templates in the 5GMS network services, the 5GMS Client with its L4S stack instantiates them, and an arrow leads from the 5GMS network services to the PCF." />
 
@@ -266,7 +266,7 @@ High-level procedures for integrating remote control into 5GMS are in TS 26.501 
 
 **Downlink** · added in Release 16 · defined in TS 26.501 clause 4.0.8 · procedures in clause 5.6
 
-Media consumption in downlink sessions is logged and exposed for analysis (TS 26.501 V19.4.0 clause 4.0.8). When provisioned, the 5GMSd Client reports consumption to a network-side component, and the data may be exposed as events to subscribing Application Providers. Downlink only in the current release.
+Media consumption in downlink sessions is logged and exposed for analysis (TS 26.501 V20.0.0 clause 4.0.8). When provisioned, the 5GMSd Client reports consumption to a network-side component, and the data may be exposed as events to subscribing Application Providers. Downlink only in the current release.
 
 <SpecFigure src="/img/tech/5gms/generated/ts26501-fig4.0.8-1.svg" width={840} height={216} spec="TS 26.501 V20.0.0" figure="4.0.8-1" title="High-level arrangement for consumption reporting feature" alt="The 5GMSd Application Provider provisions consumption reporting in the 5GMS network services, and the 5GMSd Client submits consumption reports." />
 
@@ -464,7 +464,7 @@ The 5GMS System provisions the delivery of downlink content via MBS User Service
 <summary>Sources for this page</summary>
 
 - **The features:** TS 26.501 V19.4.0, clauses 4.0.1 to 4.0.14 and table 4.0.1-1; "Added in" from the clause 4.0 feature lists of V16.15.0, V17.10.0, V18.9.0 and V19.4.0.
-- **Figures:** redrawn from TS 26.501 V19.4.0, figures 4.0.2-1, 4.0.2-2, 4.0.3-1, 4.0.5-1, 4.0.6-1, 4.0.8-1 and 4.0.9-1.
-- **Feature by feature:** TS 26.501 V19.4.0, clauses 4.0.2 to 4.0.14, 4.3.1 and 5.13; Up to Release 17, TS 26.512 V16.12.0 and V17.10.0, tables 4.2-1 and 5.2-1, and the OpenAPI files in the V17.10.0 archive. From Release 18, TS 26.512 V18.7.0 and V19.3.0, tables 4.2-1 and 5.2-1 and clauses 7, 9, 11, 12.4, 17 and 18; TS 26.510 V18.5.0 and V19.2.0, clauses 5.2, 5.3, 6, 8, 9 and 11; the OpenAPI files in the TS 26.510 V19.2.0 and TS 26.512 V19.3.0 archives.
+- **Figures:** redrawn from TS 26.501 V20.0.0, figures 4.0.2-1, 4.0.2-2, 4.0.3-1, 4.0.5-1, 4.0.6-1, 4.0.8-1 and 4.0.9-1.
+- **Feature by feature:** TS 26.501 V20.0.0, clauses 4.0.2 to 4.0.14, 4.3.1 and 5.13; Up to Release 17, TS 26.512 V16.12.0 and V17.10.0, tables 4.2-1 and 5.2-1, and the OpenAPI files in the V17.10.0 archive. From Release 18, TS 26.512 V18.7.0 and V19.3.0, tables 4.2-1 and 5.2-1 and clauses 7, 9, 11, 12.4, 17 and 18; TS 26.510 V18.5.0 and V19.2.0, clauses 5.2, 5.3, 6, 8, 9 and 11; the OpenAPI files in the TS 26.510 V19.2.0 and TS 26.512 V19.3.0 archives.
 
 </details>

@@ -50,7 +50,7 @@ The published v1.2.1 does not include specific frequency bands: its clause 8 (ET
 
 The supported bandwidths for LTE-based 5G Broadcast are 1.4, 3, 5, 6, 7, 8, 10, 15 and 20 MHz; Profile A uses 6, 7 and 8 MHz (ETSI TS 103 720 V1.2.1 clause 8).
 
-The published ETSI TS 103 720 v1.2.1 does not define operating bands; its clause 8 (ETSI TS 103 720 V1.2.1 clause 8) defers specific band configurations to a future revision (TS 36.101 V20.1.0 table 5.5H-1; ETSI TS 103 720 V1.2.1 clause 8). The published ETSI TS 103 720 v1.2.1 does not define operating bands; its clause 8 defers specific band configurations to a future revision.
+The published ETSI TS 103 720 v1.2.1 does not define operating bands; its clause 8 (ETSI TS 103 720 V1.2.1 clause 8) defers specific band configurations to a future revision (TS 36.101 V20.1.0 table 5.5H-1; ETSI TS 103 720 V1.2.1 clause 8).
 
 ### Radio
 

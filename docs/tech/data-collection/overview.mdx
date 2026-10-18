@@ -28,7 +28,7 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 - **What it is:** a generic architecture for collecting and reporting data in the 5G System (TS 26.531), with its APIs and data models (TS 26.532).
 - **The central function:** the Data Collection AF (TS 26.531 V19.0.0 clause 4.1). It collects UE data from data collection clients, processes it, and exposes it as events to the NWDAF and to Event Consumer AFs (TS 26.531 V19.0.0 clause 4.1 and clause 4.2 (item 2)).
-- **Generic, then instantiated:** the architecture is meant to be instantiated in domain-specific ways (TS 26.531 V19.0.0 clause 4.1). 5G Media Streaming instantiates it, with the Data Collection AF inside the 5GMS AF (TS 26.501 V19.4.0 clause 4.7.1).
+- **Generic, then instantiated:** the architecture is meant to be instantiated in domain-specific ways (TS 26.531 V19.0.0 clause 4.1). 5G Media Streaming instantiates it, with the Data Collection AF inside the 5GMS AF (TS 26.501 V20.0.0 clause 4.7.1).
 - **Releases:** created in Release 17; Release 18 adds immediate report delivery and ANBR-based Network Assistance reporting; Release 19 carries Release 18 forward (TS 26.531 V19.0.0 annex C (change history, 2022-06 'Under Change Control' 17.0.0); TS 26.532 V19.1.0 annex C) (TS 26.531 V19.0.0 annex C (CR 0007, 18.0.0); TS 26.532 V19.1.0 annex C (CR 0005, 18.0.0; CR 0004, 18.1.0)).
 
 :::
@@ -37,9 +37,9 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 ## Why it exists
 
-The 5G System defines a set of event exposure services that 5G Network Functions offer to different consumers (TS 29.517 V18.6.0 clause 4.1.2). For instance, the NWDAF collects and exposes a wide range of data for analytics purposes, and uses it to build statistical and predictive analytics information for analytics data consumers.
+The 5G System defines a set of event exposure services (SP-200937, clause 3 (Network Event usage)). The Application Function Exposure Service (Naf_EventExposure) is consumed by NF service consumers such as the NEF, NWDAF, DCCF, MFAF and the Event Consumer AF (TS 29.517 V20.1.0 clause 4.1.2). For instance, the NWDAF collects and exposes a wide range of data for analytics purposes, and uses it to build statistical and predictive analytics information for analytics data consumers.
 
-The 5G Media Streaming System logs the use of content hosting, which is equivalent to the information in CDN access logs, and QoE metrics and consumption reports are reported to its Data Collection AF (TS 26.501 V19.4.0 clause 4.0.2 and clause 4.7.2.1). SA4 proposed in the Release 17 study item (SP-200937, clause 3) that information available in the 5GMS System be offered by the 5GMS AF as events to the NWDAF and to the Application Provider; clauses 4.7.3 and 4.7.4 of TS 26.501 define the event data and its access restrictions (SP-200937 clause 3 (Network Event usage); TS 26.501 V19.4.0 clauses 4.7.3 and 4.7.4).
+The 5G Media Streaming System logs the use of content hosting, which is equivalent to the information in CDN access logs, and QoE metrics and consumption reports are reported to its Data Collection AF (TS 26.501 V20.0.0 clause 4.0.2 and clause 4.7.2.1). SA4 proposed in the Release 17 study item (SP-200937, clause 3) that information available in the 5GMS System be offered by the 5GMS AF as events to the NWDAF and to the Application Provider; clauses 4.7.3 and 4.7.4 of TS 26.501 define the event data and its access restrictions (SP-200937 clause 3 (Network Event usage); TS 26.501 V20.0.0 clauses 4.7.3 and 4.7.4).
 
 3GPP defined a generic architecture that is instantiated in domain-specific ways; 5G Media Streaming is one such instantiation (TS 26.501 clause 4.7) (TS 26.531 V19.0.0 clause 4.1 and clause 4.2, NOTE 4). Instantiations other than the one for 5G Media Streaming are beyond the scope of TS 26.531 (TS 26.531 V19.0.0 clause 4.2, NOTE 4).
 
@@ -60,7 +60,7 @@ The 5G Media Streaming System logs the use of content hosting, which is equivale
       src: '/img/tech/data-collection/generated/ts26501-fig4.7.1-1.svg',
       width: 1200, height: 868,
       title: 'Data collection and reporting architecture instantiation for 5G Media Streaming',
-      source: 'Redrawn from TS 26.501 V19.4.0, figure 4.7.1-1',
+      source: 'Redrawn from TS 26.501 V20.0.0, figure 4.7.1-1',
       alt: 'The 5GMS Client in the UE, whose Media Session Handler holds the Direct Data Collection Client with Metrics Collection & Reporting, Consumption Collection & Reporting and Network Assistance; the 5GMS AF holding the Data Collection AF, reached over M5 and R2; the 5GMS Application Provider with the Event Consumer AF (R6) and a 5GMS AS (R4), reached over M1; a second 5GMS AS (R4) and the NWDAF (R5) below the AF.',
     },
   ]}
@@ -76,11 +76,11 @@ The set of UE data collected and exposed is the intersection between the provisi
 
 ## In 5G Media Streaming
 
-5G Media Streaming instantiates the generic architecture for both downlink and uplink media streaming (TS 26.501 V19.4.0 clause 4.0.12 and clauses 4.7.2.1, 4.7.2.2). It lets the 5GMS System log data about media streaming sessions and expose it to subscribers as events (TS 26.501 V19.4.0 clause 4.0.12).
+5G Media Streaming instantiates the generic architecture for both downlink and uplink media streaming (TS 26.501 V20.0.0 clause 4.0.12 and clauses 4.7.2.1, 4.7.2.2). It lets the 5GMS System log data about media streaming sessions and expose it to subscribers as events (TS 26.501 V20.0.0 clause 4.0.12).
 
-- The Data Collection AF is instantiated in the 5GMS AF, and the Direct Data Collection Client in the Media Session Handler (TS 26.501 V19.4.0 clause 4.7.1). The 5GMS AS plays the AS role, and the Event Consumer AF sits in the 5GMS Application Provider (TS 26.501 V19.4.0 clause 4.7.1).
-- The Provisioning AF and the Indirect Data Collection Client are not instantiated (TS 26.501 V19.4.0 clause 4.7.1). Data collection is provisioned at M1 instead (TS 26.501 V19.4.0 clause 4.7.1).
-- The data reported covers QoE metrics, media consumption, dynamic policy and Network Assistance invocations, and media streaming access activity reported by the 5GMS AS (TS 26.501 V19.4.0 clause 4.7.2.1 and clause 4.7.2.2).
+- The Data Collection AF is instantiated in the 5GMS AF, and the Direct Data Collection Client in the Media Session Handler (TS 26.501 V20.0.0 clause 4.7.1). The 5GMS AS plays the AS role, and the Event Consumer AF sits in the 5GMS Application Provider (TS 26.501 V20.0.0 clause 4.7.1).
+- The Provisioning AF and the Indirect Data Collection Client are not instantiated (TS 26.501 V20.0.0 clause 4.7.1). Data collection is provisioned at M1 instead (TS 26.501 V20.0.0 clause 4.7.1).
+- The data reported covers QoE metrics, media consumption, dynamic policy and Network Assistance invocations, and media streaming access activity reported by the 5GMS AS (TS 26.501 V20.0.0 clause 4.7.2.1 and clause 4.7.2.2).
 
 ## How it grew
 
@@ -93,8 +93,8 @@ The set of UE data collected and exposed is the intersection between the provisi
 
 - **Why it exists:** WID SP-210374 (EVEX), clauses 3 and 4.
 - **The main functions:** TS 26.531 V19.0.0, clause 4.1 and clause 4.2, items 1 to 8 and NOTE 4.
-- **Figures:** redrawn from TS 26.531 V19.0.0, figure 4.2-1, and TS 26.501 V19.4.0, figure 4.7.1-1.
-- **In 5G Media Streaming:** TS 26.501 V19.4.0, clauses 4.0.12, 4.7.1 and 4.7.2.
-- **How it grew:** 3GPP work plan of 28 September 2026; TS 26.531 V19.0.0, clause 5.5 and change history; TS 26.532 V19.1.0, TS 26.501 V19.4.0 and TS 26.512 V19.3.0, change history.
+- **Figures:** redrawn from TS 26.531 V19.0.0, figure 4.2-1, and TS 26.501 V20.0.0, figure 4.7.1-1.
+- **In 5G Media Streaming:** TS 26.501 V20.0.0, clauses 4.0.12, 4.7.1 and 4.7.2.
+- **How it grew:** 3GPP work plan of 28 September 2026; TS 26.531 V19.0.0, clause 5.5 and change history; TS 26.532 V19.1.0, TS 26.501 V20.0.0 and TS 26.512 V19.3.0, change history.
 
 </details>
