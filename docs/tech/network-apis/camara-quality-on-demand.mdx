@@ -240,7 +240,7 @@ The QoD API can notify the API consumer asynchronously when the status of a sess
 
 ### Mechanism
 
-Notifications are delivered to the callback URL supplied as the `sink` parameter when the session is created with **POST /sessions** (see the request example above). Where present, `sinkCredential` describes the credential the API provider uses to authenticate against that endpoint. The consumer's `sink` must accept HTTP POST requests carrying the notification payload (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml `/sessions` POST callbacks notifications '{$request.body#`/sink}'`; schemas BaseSessionInfo.sink, sinkCredential; CAMARA Commonalities main@b1a9f08 CAMARA-API-Event-Subscription-and-Notification-Guide.md section 2.1).
+Notifications are delivered to the callback URL supplied as the `sink` parameter when the session is created with **POST /sessions** (see the request example above). Where present, `sinkCredential` describes the credential the API provider uses to authenticate against that endpoint. The consumer's `sink` must accept HTTP POST requests carrying the notification payload (CAMARA QualityOnDemand main@471aa35 quality-on-demand.yaml `/sessions` POST callbacks notifications `{$request.body#/sink}`; schemas BaseSessionInfo.sink, sinkCredential; CAMARA Commonalities main@b1a9f08 CAMARA-API-Event-Subscription-and-Notification-Guide.md section 2.1).
 
 The payload follows the [CloudEvents](https://cloudevents.io/) 1.0 specification (JSON format) (CAMARA Commonalities main@b1a9f08 CAMARA-API-Event-Subscription-and-Notification-Guide.md section 3.1).
 
