@@ -70,11 +70,11 @@ The OpenAPI file is the one whose title matches the API, in that version's archi
 
 Provides a service equivalent to a Content Delivery Network (CDN), inside or outside the trusted data network (TS 26.501 V19.4.0 clause 4.0.2). Content is ingested pull-based (retrieved from a media origin at the Application Provider) or push-based (published by the Application Provider), may be cached across one or more service locations, may be manipulated according to Content Preparation Templates, and is then retrieved by the 5GMSd Client. A provisioned Server Certificate may secure the content served.
 
-<SpecFigure src="/img/tech/5gms/generated/ts26501-fig4.0.2-1.svg" width={840} height={289} spec="TS 26.501 V19.4.0" figure="4.0.2-1" title="High-level arrangement for content hosting feature" alt="The 5GMSd Application Provider provisions content hosting in the 5GMS network services, which ingest content pull-based or push-based and stream it downlink to the 5GMSd Client in the UE." />
+<SpecFigure src="/img/tech/5gms/generated/ts26501-fig4.0.2-1.svg" width={840} height={289} spec="TS 26.501 V20.0.0" figure="4.0.2-1" title="High-level arrangement for content hosting feature" alt="The 5GMSd Application Provider provisions content hosting in the 5GMS network services, which ingest content pull-based or push-based and stream it downlink to the 5GMSd Client in the UE." />
 
 The 5GMSd Client may also be configured to report client data in band with media requests (TS 26.501 clause 5.13).
 
-<SpecFigure src="/img/tech/5gms/generated/ts26501-fig4.0.2-2.svg" width={840} height={217} spec="TS 26.501 V19.4.0" figure="4.0.2-2" title="High-level arrangement for client data in-band reporting feature" alt="The 5GMSd Application Provider provisions client data in-band reporting in the 5GMS network services, and the 5GMSd Client submits client data in band." />
+<SpecFigure src="/img/tech/5gms/generated/ts26501-fig4.0.2-2.svg" width={840} height={217} spec="TS 26.501 V20.0.0" figure="4.0.2-2" title="High-level arrangement for client data in-band reporting feature" alt="The 5GMSd Application Provider provisions client data in-band reporting in the 5GMS network services, and the 5GMSd Client submits client data in band." />
 
 <details>
 <summary><b>Up to Release 17</b> · TS 26.512 V17.10.0, which specifies each API itself</summary>
@@ -127,7 +127,7 @@ Not in table 4.2-1: TS 26.512 V19.3.0 clause 10.5 (in-band client data reporting
 
 Media content is published by the 5GMSu Client to a network-side component of the 5GMS System as part of an uplink session (TS 26.501 V19.4.0 clause 4.0.3). It may be cached for a configurable period, and manipulated according to Content Preparation Templates. A provisioned Server Certificate may secure the content published.
 
-<SpecFigure src="/img/tech/5gms/generated/ts26501-fig4.0.3-1.svg" width={840} height={289} spec="TS 26.501 V19.4.0" figure="4.0.3-1" title="High-level arrangement for content publishing feature" alt="The 5GMSu Client streams media uplink to the 5GMS network services, which the 5GMSu Application Provider provisions for content publishing and which egest content to it pull-based or push-based." />
+<SpecFigure src="/img/tech/5gms/generated/ts26501-fig4.0.3-1.svg" width={840} height={289} spec="TS 26.501 V20.0.0" figure="4.0.3-1" title="High-level arrangement for content publishing feature" alt="The 5GMSu Client streams media uplink to the 5GMS network services, which the 5GMSu Application Provider provisions for content publishing and which egest content to it pull-based or push-based." />
 
 <details>
 <summary><b>Up to Release 17</b> · TS 26.512 V17.10.0, which specifies each API itself</summary>
@@ -187,7 +187,7 @@ Lets the Application Provider specify how network-side components manipulate con
 
 Lets the 5GMS Client interrogate or manipulate the network Quality of Service (QoS) of an ongoing session (TS 26.501 V19.4.0 clause 4.0.5). It is not explicitly provisioned: whether it is available depends on system pre-configuration and policy. Two mechanisms: AF-based, through the PCF, and ANBR-based, between the UE modem and the RAN. Two sub-features: bit rate recommendation (throughput estimation), and delivery boost, a speculative request for a temporary boost to the session bit rate.
 
-<SpecFigure src="/img/tech/5gms/generated/ts26501-fig4.0.5-1.svg" width={840} height={375} spec="TS 26.501 V19.4.0" figure="4.0.5-1" title="High-level arrangement for network assistance feature" alt="AF-based network assistance between the 5GMS Client and the 5GMS network services, which connect to the PCF, and ANBR-based network assistance between the UE modem and the RAN." />
+<SpecFigure src="/img/tech/5gms/generated/ts26501-fig4.0.5-1.svg" width={840} height={375} spec="TS 26.501 V20.0.0" figure="4.0.5-1" title="High-level arrangement for network assistance feature" alt="AF-based network assistance between the 5GMS Client and the 5GMS network services, which connect to the PCF, and ANBR-based network assistance between the UE modem and the RAN." />
 
 <details>
 <summary><b>Up to Release 17</b> · TS 26.512 V17.10.0, which specifies each API itself</summary>
@@ -220,7 +220,7 @@ Lets the 5GMS Client interrogate or manipulate the network Quality of Service (Q
 
 Lets the 5GMS Client manipulate the network traffic handling policies of an ongoing session (TS 26.501 V19.4.0 clause 4.0.6). The Application Provider provisions Policy Templates within a Provisioning Session. Each Policy Template carries an External reference and the Network QoS parameters of one Service Operation Point (for example SD, HD or UHD), and may apply to one or more Data Networks or Network Slices. Media Entry Point documents refer to the same Service Operation Points in their Service Descriptions. Outside the trusted data network, the PCF is reached through the NEF.
 
-<SpecFigure src="/img/tech/5gms/generated/ts26501-fig4.0.6-1.svg" width={897} height={308} spec="TS 26.501 V19.4.0" figure="4.0.6-1" title="High-level arrangement for dynamic policies" alt="The 5GMS Application Provider provisions Policy Templates in the 5GMS network services, the 5GMS Client with its L4S stack instantiates them, and an arrow leads from the 5GMS network services to the PCF." />
+<SpecFigure src="/img/tech/5gms/generated/ts26501-fig4.0.6-1.svg" width={897} height={308} spec="TS 26.501 V20.0.0" figure="4.0.6-1" title="High-level arrangement for dynamic policies" alt="The 5GMS Application Provider provisions Policy Templates in the 5GMS network services, the 5GMS Client with its L4S stack instantiates them, and an arrow leads from the 5GMS network services to the PCF." />
 
 <details>
 <summary><b>Up to Release 17</b> · TS 26.512 V17.10.0, which specifies each API itself</summary>
@@ -268,7 +268,7 @@ High-level procedures for integrating remote control into 5GMS are in TS 26.501 
 
 Media consumption in downlink sessions is logged and exposed for analysis (TS 26.501 V19.4.0 clause 4.0.8). When provisioned, the 5GMSd Client reports consumption to a network-side component, and the data may be exposed as events to subscribing Application Providers. Downlink only in the current release.
 
-<SpecFigure src="/img/tech/5gms/generated/ts26501-fig4.0.8-1.svg" width={840} height={216} spec="TS 26.501 V19.4.0" figure="4.0.8-1" title="High-level arrangement for consumption reporting feature" alt="The 5GMSd Application Provider provisions consumption reporting in the 5GMS network services, and the 5GMSd Client submits consumption reports." />
+<SpecFigure src="/img/tech/5gms/generated/ts26501-fig4.0.8-1.svg" width={840} height={216} spec="TS 26.501 V20.0.0" figure="4.0.8-1" title="High-level arrangement for consumption reporting feature" alt="The 5GMSd Application Provider provisions consumption reporting in the 5GMS network services, and the 5GMSd Client submits consumption reports." />
 
 <details>
 <summary><b>Up to Release 17</b> · TS 26.512 V17.10.0, which specifies each API itself</summary>
@@ -301,7 +301,7 @@ Media consumption in downlink sessions is logged and exposed for analysis (TS 26
 
 The Quality of Experience (QoE) of sessions is logged and exposed for analysis. Two mechanisms: RAN-based, with reports sent to the OAM via the RAN, and AF-based, with reports sent to network-side components of the 5GMS System. Data in AF-based reports may be exposed as events. TS 26.501 clause 4.0.9 limits the feature to downlink in the current release. TS 26.512 clause 7.8.1 states that no standardised metrics schemes are defined for uplink media streaming.
 
-<SpecFigure src="/img/tech/5gms/generated/ts26501-fig4.0.9-1.svg" width={840} height={302} spec="TS 26.501 V19.4.0" figure="4.0.9-1" title="High-level arrangement for QoE metrics reporting feature" alt="The 5GMSd Client submits AF-based QoE metrics reports to the 5GMS network services, provisioned by the 5GMSd Application Provider, and RAN-based QoE metrics reports through the RAN to the OAM." />
+<SpecFigure src="/img/tech/5gms/generated/ts26501-fig4.0.9-1.svg" width={840} height={302} spec="TS 26.501 V20.0.0" figure="4.0.9-1" title="High-level arrangement for QoE metrics reporting feature" alt="The 5GMSd Client submits AF-based QoE metrics reports to the 5GMS network services, provisioned by the 5GMSd Application Provider, and RAN-based QoE metrics reports through the RAN to the OAM." />
 
 <details>
 <summary><b>Up to Release 17</b> · TS 26.512 V17.10.0, which specifies each API itself</summary>

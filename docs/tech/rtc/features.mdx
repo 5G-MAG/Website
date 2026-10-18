@@ -55,7 +55,7 @@ The RTC features and the APIs that provision and use them (TS 26.113 table 4.1-1
 
 To configure ICE candidates, dynamic policies or reporting, the RTC Application Provider creates a Provisioning Session in the RTC AF. The provisioning API at RTC-1 is a subset of the TS 26.510 provisioning APIs. The provisioning procedure is common to the different collaboration scenarios.
 
-<SpecFigure src="/img/tech/rtc/generated/ts26506-fig5.2.1-1.svg" width={480} height={248} spec="TS 26.506 V19.2.0" figure="5.2.1-1" title="Provisioning procedure" alt="A sequence chart between the Provisioning AF and the Application Provider: 1, create a provisioning session; 2, confirm creation of provisioning session; then, under Update, 3, update provisioning." />
+<SpecFigure src="/img/tech/rtc/generated/ts26506-fig5.2.1-1.svg" width={480} height={248} spec="TS 26.506 V20.0.0" figure="5.2.1-1" title="Provisioning procedure" alt="A sequence chart between the Provisioning AF and the Application Provider: 1, create a provisioning session; 2, confirm creation of provisioning session; then, under Update, 3, update provisioning." />
 
 <details>
 <summary>APIs at RTC-1 (TS 26.113 V19.2.0, table 6.1-1)</summary>
@@ -89,7 +89,7 @@ Each endpoint gives a domain name, port numbers, and optionally credentials and 
 
 The configuration procedure pre-configures the RTC Media Session Handler with information it makes available to RTC applications at RTC-6: the location and capabilities of trusted ICE functions and of trusted WebRTC Signalling Functions, and the edge configuration. After the Application Service Provider has provisioned its resources, the Media Session Handler requests the configuration from the RTC AF, optionally for a given application identifier, in a single retrieval (TS 26.506 V19.2.0 clauses 5.2.2, 4.2.3).
 
-<SpecFigure src="/img/tech/rtc/generated/ts26506-fig5.2.2-1.svg" width={760} height={251} spec="TS 26.506 V19.2.0" figure="5.2.2-1" title="Configuration procedure" alt="A sequence chart between App, RTC MSH, RTC AF and ASP: 1, provisioning step for application; a retrieval block with 2, retrieve configuration information, from the RTC MSH to the RTC AF, and 3, provide configuration information, back; then 4, retrieve configuration information, from the App to the RTC MSH." />
+<SpecFigure src="/img/tech/rtc/generated/ts26506-fig5.2.2-1.svg" width={760} height={251} spec="TS 26.506 V20.0.0" figure="5.2.2-1" title="Configuration procedure" alt="A sequence chart between App, RTC MSH, RTC AF and ASP: 1, provisioning step for application; a retrieval block with 2, retrieve configuration information, from the RTC MSH to the RTC AF, and 3, provide configuration information, back; then 4, retrieve configuration information, from the App to the RTC MSH." />
 
 The RTC AF relays this configuration to the RTC Media Session Handler at RTC-5, in the rtcClientConfiguration of the Service Access Information, which carries trusted STUN and TURN endpoints for use as ICE candidates and trusted SWAP endpoints. For RTC, the Service Access Information carries no streamingAccess object. If credentials were not provisioned at RTC-1, the AF populates a set unique to the requesting client (TS 26.113 V19.2.0 clause 10.2; TS 26.510 V19.2.0 clause 9.2.3.1, table 9.2.3.1-1).
 
@@ -165,7 +165,7 @@ An RTC Client UE reports QoE metrics for the real-time media it has received, va
 
 In the RTC Client, the RTC Media Session Handler obtains the metrics configuration from the RTC AF and configures metrics collection in the RTC Access Function. The Access Function collects QoE metrics about the real-time media it has received; the Media Session Handler receives them at RTC-11, collates them into metrics reports, and periodically submits the reports to the RTC AF. An RTC AS follows the same steps with its Media Function, reporting at RTC-3 (TS 26.506 V19.2.0 clauses 5.2.3.1, 5.2.3.2).
 
-<SpecFigure src="/img/tech/rtc/generated/ts26506-fig5.2.3.1-1.svg" width={660} height={603} spec="TS 26.506 V19.2.0" figure="5.2.3.1-1" title="Metrics reporting procedure" alt="A sequence chart between the RTC Client (RTC Access Function and RTC Media Session Handler), the RTC AF and the RTC Application Provider: 1, provisioning (RTC-1); 2, configuration retrieval at RTC-5; 3, configure QoE metrics collection procedure (RTC-11); then, in a loop, 4, collect QoE metrics, 5, QoE metrics (RTC-11), 6, collate metrics report, and 7, submit metrics report (RTC-5)." />
+<SpecFigure src="/img/tech/rtc/generated/ts26506-fig5.2.3.1-1.svg" width={660} height={603} spec="TS 26.506 V20.0.0" figure="5.2.3.1-1" title="Metrics reporting procedure" alt="A sequence chart between the RTC Client (RTC Access Function and RTC Media Session Handler), the RTC AF and the RTC Application Provider: 1, provisioning (RTC-1); 2, configuration retrieval at RTC-5; 3, configure QoE metrics collection procedure (RTC-11); then, in a loop, 4, collect QoE metrics, 5, QoE metrics (RTC-11), 6, collate metrics report, and 7, submit metrics report (RTC-5)." />
 
 | Metric (TS 26.113 clause 15.2) |
 | --- |
@@ -185,7 +185,7 @@ An RTC Client collects and reports at RTC-5 information about the real-time medi
 
 The procedure follows the same steps as metrics reporting: the RTC Media Session Handler configures collection in the RTC Access Function, receives the consumption information it collects, collates it into consumption reports and periodically submits them to the RTC AF (TS 26.506 V19.2.0 clause 5.2.4.1).
 
-<SpecFigure src="/img/tech/rtc/generated/ts26506-fig5.2.4.1-1.svg" width={680} height={594} spec="TS 26.506 V19.2.0" figure="5.2.4.1-1" title="Consumption reporting procedure" alt="A sequence chart between the RTC Client (RTC Access Function and RTC Media Session Handler), the RTC AF and the RTC Application Provider: provisioning at RTC-1, configuration retrieval at RTC-5, configuration of consumption collection at RTC-11, then in a loop collection, delivery to the Media Session Handler, collation into a consumption report, and submission at RTC-5." />
+<SpecFigure src="/img/tech/rtc/generated/ts26506-fig5.2.4.1-1.svg" width={680} height={594} spec="TS 26.506 V20.0.0" figure="5.2.4.1-1" title="Consumption reporting procedure" alt="A sequence chart between the RTC Client (RTC Access Function and RTC Media Session Handler), the RTC AF and the RTC Application Provider: provisioning at RTC-1, configuration retrieval at RTC-5, configuration of consumption collection at RTC-11, then in a loop collection, delivery to the Media Session Handler, collation into a consumption report, and submission at RTC-5." />
 
 ## Media capabilities and metadata
 

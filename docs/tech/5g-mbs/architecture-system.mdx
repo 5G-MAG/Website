@@ -31,7 +31,7 @@ import JumpMenu from '@site/src/components/JumpMenu';
 
 ## Functions in the 5G System
 
-<SpecFigure src="/img/tech/5g-mbs/generated/ts23247-fig5.1-1.svg" width={1180} height={536} spec="TS 23.247 V19.3.0" figure="5.1-1" title="5G System architecture for Multicast and Broadcast Service" alt="Service-based representation: PCF, NRF and UDM above a service bus, and below it AMF, SMF, MB-SMF, MBSF, NEF and AF/AS with their interfaces Npcf, Nnrf, Nudm, Namf, Nsmf, Nmbsmf, Nmbsf, Nnef and Naf. Underneath, the UE (N1 and Uu), NG-RAN (N2, N3 and N3mb), UPF (N4, N19mb), MB-UPF (N4mb, Nmb9, N6mb) and MBSTF (Nmb2, Nmbstf, Nmb14, Nmb8)." />
+<SpecFigure src="/img/tech/5g-mbs/generated/ts23247-fig5.1-1.svg" width={1180} height={536} spec="TS 23.247 V20.0.0" figure="5.1-1" title="5G System architecture for Multicast and Broadcast Service" alt="Service-based representation: PCF, NRF and UDM above a service bus, and below it AMF, SMF, MB-SMF, MBSF, NEF and AF/AS with their interfaces Npcf, Nnrf, Nudm, Namf, Nsmf, Nmbsmf, Nmbsf, Nnef and Naf. Underneath, the UE (N1 and Uu), NG-RAN (N2, N3 and N3mb), UPF (N4, N19mb), MB-UPF (N4mb, Nmb9, N6mb) and MBSTF (Nmb2, Nmbstf, Nmb14, Nmb8)." />
 
 <details>
 <summary>Functions and their MBS roles (TS 23.247 clause 5.3.2)</summary>
@@ -132,7 +132,7 @@ Between the 5G Core and NG-RAN there are two delivery methods. TS 23.247 does no
 - **5GC Shared MBS traffic delivery:** the 5G Core receives a single copy of the MBS data packets and delivers a single copy to an NG-RAN node, which delivers it to one or more UEs. It is used for broadcast and multicast MBS sessions, and is required in all MBS deployments (TS 23.247 V19.3.0 clause 4.1; TS 23.247 V19.3.0 clause 3.1).
 - **5GC Individual MBS traffic delivery:** the 5G Core delivers separate copies to individual UEs, each through a PDU Session associated with the Multicast MBS session. It is used only for multicast, and is required for mobility where NG-RAN nodes do not all support MBS (TS 23.247 V19.3.0 clause 4.1; TS 23.247 V19.3.0 clause 3.1).
 
-<SpecFigure src="/img/tech/5g-mbs/generated/ts23247-fig6.7-1.svg" width={870} height={490} spec="TS 23.247 V19.3.0" figure="6.7-1" title="Schematic showing user plane data transmission" alt="Incoming MBS traffic reaches the MB-UPF. 5GC Shared MBS traffic delivery: N3mb transmission from the MB-UPF to NG-RAN 1, which serves UE 1 and UE 2 by PTP (only for multicast) or PTM over radio. 5GC Individual MBS traffic delivery: N19mb transmission from the MB-UPF to a UPF, which serves UE 3 through NG-RAN 2 in PDU Session A and UE 4 through NG-RAN 3 in PDU Session B." />
+<SpecFigure src="/img/tech/5g-mbs/generated/ts23247-fig6.7-1.svg" width={870} height={490} spec="TS 23.247 V20.0.0" figure="6.7-1" title="Schematic showing user plane data transmission" alt="Incoming MBS traffic reaches the MB-UPF. 5GC Shared MBS traffic delivery: N3mb transmission from the MB-UPF to NG-RAN 1, which serves UE 1 and UE 2 by PTP (only for multicast) or PTM over radio. 5GC Individual MBS traffic delivery: N19mb transmission from the MB-UPF to a UPF, which serves UE 3 through NG-RAN 2 in PDU Session A and UE 4 through NG-RAN 3 in PDU Session B." />
 
 Over the radio, NG-RAN has two delivery methods: (TS 23.247 V19.3.0 clause 4.1)
 
@@ -187,7 +187,7 @@ In a PTP transmission, the gNB schedules a UE-specific PDSCH with a PDCCH whose 
 
 ## Multicast session states
 
-<SpecFigure src="/img/tech/5g-mbs/generated/ts23247-fig4.3-1.svg" width={757} height={347} spec="TS 23.247 V19.3.0" figure="4.3-1" title="Multicast session states and state transitions" alt="Start (NULL) leads by Creation to Configured Multicast Session, or by Establishment directly to Active Multicast Session. From Configured, Establishment leads to Active or Inactive Multicast Session, and Release returns from either. Activation and Deactivation move between Inactive and Active. Deletion leads from Active, Inactive or Configured to End (NULL)." />
+<SpecFigure src="/img/tech/5g-mbs/generated/ts23247-fig4.3-1.svg" width={757} height={347} spec="TS 23.247 V20.0.0" figure="4.3-1" title="Multicast session states and state transitions" alt="Start (NULL) leads by Creation to Configured Multicast Session, or by Establishment directly to Active Multicast Session. From Configured, Establishment leads to Active or Inactive Multicast Session, and Release returns from either. Activation and Deactivation move between Inactive and Active. Deletion leads from Active, Inactive or Configured to End (NULL)." />
 
 | State | In TS 23.247 clause 4.3 |
 | --- | --- |
