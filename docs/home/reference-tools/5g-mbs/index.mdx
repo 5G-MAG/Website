@@ -9,8 +9,7 @@ import ProjectRepositories from '@site/src/components/ProjectRepositories';
 import ProjectContributors from '@site/src/components/ProjectContributors';
 import ProjectOpenPRs from '@site/src/components/ProjectOpenPRs';
 import CommunityStats from '@site/src/components/CommunityStats';
-import ArchitectureMap from '@site/src/components/ArchitectureMap';
-import { MBS_ARCHITECTURE } from '@site/src/data/architecture/5g-mbs';
+import FigurePair from '@site/src/components/FigurePair';
 import AUDIT from '@site/src/data/audit-5g-mbs.json';
 import US_AUDIT from '@site/src/data/audit-5g-mbs-us.json';
 
@@ -55,9 +54,29 @@ If you are looking for the LTE-based, free-to-air broadcast implementation (a se
 
 ## What's Built
 
-<ArchitectureMap architecture={MBS_ARCHITECTURE} status={MBS_STATUS} />
+<FigurePair
+  figures={[
+    {
+      label: 'MBS User Services',
+      src: '/img/tech/5g-mbs/generated/ts26502-fig4.2.2-1-status.svg',
+      width: 1195, height: 1111,
+      title: 'MBS User Services network architecture, with Reference Tools status',
+      source: 'Based on TS 26.502 V19.6.0, figure 4.2.2-1',
+      alt: 'The MBS User Services architecture: the MBSF, MBS AF, MBSSF, MBS AS and MBSTF, with the MBS Application Provider. The MBSF, MBS AF and MBSTF are provided by the Reference Tools (rt-mbs-function and rt-mbs-transport-function), as is the MBS Application Provider (rt-mbs-application-provider). Most reference points are partial; MBS-10 is not implemented.',
+    },
+    {
+      label: '5G System',
+      src: '/img/tech/5g-mbs/generated/ts23247-fig5.1-2-status.svg',
+      width: 924, height: 574,
+      title: '5G System architecture for MBS, with Reference Tools status',
+      source: 'Based on TS 23.247 V20.0.0, figure 5.1-2',
+      alt: 'The 5G System architecture for multicast and broadcast in reference point representation. The AMF, SMF, MB-SMF and MB-UPF are provided by open5gs, the NG-RAN by srsRAN_Project_mbs, the UE by srsRAN_4G_mbs, and the MBSF, MBSTF and application provider by the rt-mbs repositories. Most reference points are partial; N16mb is not implemented.',
+    },
+  ]}
+  note="Status from a code audit of the MBS repositories; parts without a status are not covered by the audit. Click a figure to enlarge it."
+/>
 
-**{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below. For the per-case implementation status behind this map, see [Implementation Detail](./implementation).
+**{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below. For the per-case implementation status behind these figures, see [Implementation Detail](./implementation).
 
 ## Standards implemented
 
