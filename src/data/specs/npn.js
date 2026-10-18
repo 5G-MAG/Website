@@ -36,7 +36,7 @@ export const NPN_SPECS = [
   },
   {
     id: 'TS 24.501',
-    title: 'Non-Access-Stratum (NAS) protocol for 5GS; Stage 3',
+    title: 'Non-Access-Stratum (NAS) protocol for 5G System (5GS); Stage 3',
     url: 'https://www.3gpp.org/dynareport/24501.htm',
     layer: 'Access and authentication',
     note: 'carries the SNPN-specific registration and authentication procedures (credential-owner vs. separate credential-holder models, SUCI handling)',

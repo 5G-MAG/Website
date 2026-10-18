@@ -33,7 +33,7 @@ export const SIXG_SPECS = [
   },
   {
     id: 'TS 22.270',
-    title: '6G System Requirements',
+    title: '6G Service Requirements',
     url: 'https://www.3gpp.org/dynareport/22270.htm',
     layer: 'Use cases and requirements (SA1)',
     note: 'where the 6G system requirements developed in TR 22.870 are captured (TR 26.870 V0.6.1, clause 1); a draft (V0.3.0)',

@@ -35,7 +35,7 @@ export const AI_ML_SPECS = [
   {
     id: 'TR 22.874',
     title:
-      'Study on traffic characteristics and performance requirements for AI/ML model transfer in 5GS',
+      '5G System (5GS); Study on traffic characteristics and performance requirements for AI/ML model transfer',
     url: 'https://www.3gpp.org/dynareport/22874.htm',
     layer: 'Studies',
     release: '18',
