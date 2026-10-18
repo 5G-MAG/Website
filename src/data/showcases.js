@@ -227,7 +227,7 @@ export const SHOWCASE_BASKETS = {
     description: 'Satellite and high-altitude platform access for media: what it means for multicast and broadcast delivery.',
     // docs/tech/ntn (overview and MBS Broadcast NTN analysis): Release 17 NTN; Release 19 broadcast MBS over NR NTN
     lead:
-      '5G coverage by satellite and high-altitude platforms, standardised in 3GPP Release 17, reaches areas that terrestrial networks do not serve.\n\nFor media, NTN is not a system of its own: it is a delivery layer under existing 5G services such as MBS Multicast and MBS Broadcast. There is no dedicated NTN reference tool; the 5G MBS tools are the relevant software.',
+      '5G access by satellite and high-altitude platforms, standardised in 3GPP Release 17.\n\nFor media, NTN is not a system of its own: it is a delivery layer under existing 5G services such as MBS Multicast and MBS Broadcast. There is no dedicated NTN reference tool; the 5G MBS tools are the relevant software.',
     topics: [
       {
         id: 'mbs-over-ntn',
@@ -238,7 +238,7 @@ export const SHOWCASE_BASKETS = {
         title: 'Multicast and broadcast over satellite',
         diagram: null,
         showcase: {
-          title: 'Broadcast reaches where terrestrial networks do not',
+          title: 'Bringing Point-to-Multipoint capabilities to NTN',
           about:
             'Release 19 supports a broadcast MBS session over NR non-terrestrial networks. The session works as it does terrestrially; NTN adds an Intended Service Area, a geographical area signalled for the broadcast service, so a device can start or stop receiving it as it enters or leaves the area.',
           status: 'early',
