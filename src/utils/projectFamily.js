@@ -8,10 +8,13 @@ const lastSegment = (url) => (url ? url.replace(/\/$/, '').split('/').pop() : nu
 // Specifications pages is in the same family.
 export const PROJECT_SECTIONS = ['tech', 'standards', 'reference-tools', 'testbeds', 'validation'];
 
+// Standards pages that belong to a project but have a page of their own (the CMMF and FLUTE profiles of Content Delivery).
+const SLUG_ALIAS = { cmmf: 'content-delivery', 'content-delivery-flute': 'content-delivery' };
+
 export function familyForPath(pathname) {
   const parts = pathname.split('/').filter(Boolean);
   if (parts.length < 2 || !PROJECT_SECTIONS.includes(parts[0])) return [];
-  const slug = parts[1];
+  const slug = SLUG_ALIAS[parts[1]] || parts[1];
   const direct = ALL_PROJECTS.filter(
     (p) =>
       lastSegment(p.tech_url) === slug ||
