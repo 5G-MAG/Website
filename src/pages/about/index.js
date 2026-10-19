@@ -51,7 +51,7 @@ export default function About() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Download an Overview &#8595;
+            Download Slide Deck &#8595;
           </a>,
         ]}
       />
