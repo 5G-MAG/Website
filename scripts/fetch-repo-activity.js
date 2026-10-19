@@ -12,6 +12,12 @@ const { PROJECTS, REPO_METADATA, repoName } = require('./lib/projects');
 
 const ORG = '5G-MAG';
 const TOKEN = process.env.SYNC_TOKEN || process.env.GITHUB_TOKEN || '';
+// Commit headlines that are housekeeping, not work on the repository.
+const HOUSEKEEPING = [
+  'docs: apply the 5G-MAG README format',
+  'banner: follow the website taxonomy',
+  'README: banner alt and Part of follow the website taxonomy',
+];
 const OUTPUT = path.join(__dirname, '..', 'static', 'data', 'repo-activity.json');
 
 function request(method, urlPath, body) {
@@ -68,13 +74,22 @@ async function branches(repo) {
     const q = `query($o:String!,$r:String!,$a:String){repository(owner:$o,name:$r){
       defaultBranchRef{name}
       refs(refPrefix:"refs/heads/",first:100,after:$a){pageInfo{hasNextPage endCursor}
-        nodes{name target{... on Commit{committedDate}}}}}}`;
+        nodes{name target{... on Commit{committedDate history(first:10){nodes{committedDate messageHeadline}}}}}}}}`;
     const res = await request('POST', '/graphql', { query: q, variables: { o: ORG, r: repo, a: after } });
     const r = res.data && res.data.repository;
     if (!r) throw new Error(JSON.stringify(res.errors || res).slice(0, 200));
     const def = r.defaultBranchRef ? r.defaultBranchRef.name : null;
     for (const n of r.refs.nodes) {
-      out.push({ name: n.name, default: n.name === def, last_commit: day(n.target && n.target.committedDate) });
+      // last_work_commit: the newest commit that is not housekeeping (README and banner syncs), so that bringing a
+      // README into line with the taxonomy does not make a dormant repository look active (see build-repo-status.js)
+      const history = (n.target && n.target.history && n.target.history.nodes) || [];
+      const work = history.find((c) => !HOUSEKEEPING.some((h) => (c.messageHeadline || '').startsWith(h)));
+      out.push({
+        name: n.name,
+        default: n.name === def,
+        last_commit: day(n.target && n.target.committedDate),
+        last_work_commit: work ? day(work.committedDate) : null,
+      });
     }
     if (!r.refs.pageInfo.hasNextPage) break;
     after = r.refs.pageInfo.endCursor;
@@ -84,11 +99,13 @@ async function branches(repo) {
 }
 
 async function activity(repo, meta) {
-  const [pulls, issues, br] = await Promise.all([
+  const [pulls, issues, br, rel] = await Promise.all([
     getAllPages(`/repos/${ORG}/${repo}/pulls?state=open`),
     getAllPages(`/repos/${ORG}/${repo}/issues?state=open`),
     branches(repo),
+    request('GET', `/repos/${ORG}/${repo}/releases?per_page=10`).catch(() => []),
   ]);
+  const published = (Array.isArray(rel) ? rel : []).filter((r) => !r.draft && r.published_at);
   return {
     repo,
     url: `https://github.com/${ORG}/${repo}`,
@@ -96,9 +113,11 @@ async function activity(repo, meta) {
     auxiliary: !!meta.auxiliary,
     private: !!meta.private,
     pushed_at: day(meta.pushed_at),
+    // the newest published release, for the repository's status badge (build-repo-status.js)
+    latest_release: published.length ? day(published.map((r) => r.published_at).sort().pop()) : null,
     pulls: pulls.map((p) => ({
       number: p.number, title: p.title, url: p.html_url, draft: !!p.draft,
-      author: p.user ? p.user.login : null, created_at: day(p.created_at), base: p.base ? p.base.ref : null,
+      author: p.user ? p.user.login : null, created_at: day(p.created_at), updated_at: day(p.updated_at), base: p.base ? p.base.ref : null,
     })),
     // the issues endpoint also returns pull requests; keep issues only
     issues: issues.filter((i) => !i.pull_request).map((i) => ({

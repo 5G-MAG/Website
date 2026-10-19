@@ -1,0 +1,414 @@
+{
+  "updated_at": "2026-10-19",
+  "rule": "No release: Under Development. A release, and a non-housekeeping commit on development, a release, or an open pull request updated in the last 365 days: Actively Maintained. Otherwise Stable.",
+  "repos": {
+    "6G-Testbed": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": "2026-09-04",
+      "open_pulls_last_year": 1
+    },
+    "Standards2Deployments": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": null,
+      "open_pulls_last_year": 0
+    },
+    "cmcd-toolkit": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": "2026-02-18",
+      "open_pulls_last_year": 1
+    },
+    "flute-conformance-validator": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": null,
+      "open_pulls_last_year": 0
+    },
+    "netemu-dashboard": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": "2026-10-06",
+      "open_pulls_last_year": 0
+    },
+    "open5gs": {
+      "status": "Actively Maintained",
+      "latest_release": "2026-07-14",
+      "last_work_commit": "2026-10-09",
+      "open_pulls_last_year": 2
+    },
+    "rt-3gpp-swap": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": null,
+      "open_pulls_last_year": 0
+    },
+    "rt-5gc-service-consumers": {
+      "status": "Actively Maintained",
+      "latest_release": "2026-06-05",
+      "last_work_commit": "2026-10-09",
+      "open_pulls_last_year": 0
+    },
+    "rt-5gms-application": {
+      "status": "Actively Maintained",
+      "latest_release": "2026-05-26",
+      "last_work_commit": "2026-05-26",
+      "open_pulls_last_year": 2
+    },
+    "rt-5gms-application-function": {
+      "status": "Actively Maintained",
+      "latest_release": "2026-08-03",
+      "last_work_commit": "2026-08-03",
+      "open_pulls_last_year": 0
+    },
+    "rt-5gms-application-provider": {
+      "status": "Actively Maintained",
+      "latest_release": "2026-08-03",
+      "last_work_commit": "2026-10-14",
+      "open_pulls_last_year": 0
+    },
+    "rt-5gms-application-server": {
+      "status": "Actively Maintained",
+      "latest_release": "2026-08-03",
+      "last_work_commit": "2026-08-03",
+      "open_pulls_last_year": 0
+    },
+    "rt-5gms-common-android-library": {
+      "status": "Actively Maintained",
+      "latest_release": "2026-05-26",
+      "last_work_commit": "2026-05-26",
+      "open_pulls_last_year": 0
+    },
+    "rt-5gms-examples": {
+      "status": "Actively Maintained",
+      "latest_release": "2026-08-03",
+      "last_work_commit": "2026-08-13",
+      "open_pulls_last_year": 1
+    },
+    "rt-5gms-media-session-handler": {
+      "status": "Actively Maintained",
+      "latest_release": "2026-05-26",
+      "last_work_commit": "2026-05-26",
+      "open_pulls_last_year": 0
+    },
+    "rt-5gms-media-stream-handler": {
+      "status": "Actively Maintained",
+      "latest_release": "2026-05-26",
+      "last_work_commit": "2026-05-26",
+      "open_pulls_last_year": 0
+    },
+    "rt-ai-ml-evaluation-framework": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": null,
+      "open_pulls_last_year": 0
+    },
+    "rt-avatar-call": {
+      "status": "Actively Maintained",
+      "latest_release": "2026-10-16",
+      "last_work_commit": null,
+      "open_pulls_last_year": 0
+    },
+    "rt-avatar-content": {
+      "status": "Actively Maintained",
+      "latest_release": "2026-10-16",
+      "last_work_commit": null,
+      "open_pulls_last_year": 0
+    },
+    "rt-avatar-unity-tracker": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": null,
+      "open_pulls_last_year": 0
+    },
+    "rt-beyond2d-evaluation-framework": {
+      "status": "Stable",
+      "latest_release": "2025-07-24",
+      "last_work_commit": "2025-07-23",
+      "open_pulls_last_year": 0
+    },
+    "rt-camara-examples": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": "2026-10-07",
+      "open_pulls_last_year": 0
+    },
+    "rt-cmmf-encoder": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": "2026-09-21",
+      "open_pulls_last_year": 0
+    },
+    "rt-common-shared": {
+      "status": "Actively Maintained",
+      "latest_release": "2026-08-03",
+      "last_work_commit": "2026-08-13",
+      "open_pulls_last_year": 1
+    },
+    "rt-data-collection-application-function": {
+      "status": "Actively Maintained",
+      "latest_release": "2025-05-13",
+      "last_work_commit": "2026-08-28",
+      "open_pulls_last_year": 2
+    },
+    "rt-dvb-i-android-application": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": "2026-10-09",
+      "open_pulls_last_year": 0
+    },
+    "rt-dvb-i-application": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": "2026-10-05",
+      "open_pulls_last_year": 0
+    },
+    "rt-dvb-i-application-provider": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": "2026-10-05",
+      "open_pulls_last_year": 0
+    },
+    "rt-dvb-i-examples": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": "2026-10-05",
+      "open_pulls_last_year": 0
+    },
+    "rt-dvb-i-service-list-registry": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": "2026-10-05",
+      "open_pulls_last_year": 0
+    },
+    "rt-libflute": {
+      "status": "Actively Maintained",
+      "latest_release": "2026-09-01",
+      "last_work_commit": "2026-10-16",
+      "open_pulls_last_year": 4
+    },
+    "rt-mbms-application": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": null,
+      "open_pulls_last_year": 0
+    },
+    "rt-mbms-application-provider": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": null,
+      "open_pulls_last_year": 0
+    },
+    "rt-mbms-bmsc": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": null,
+      "open_pulls_last_year": 0
+    },
+    "rt-mbms-client": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": null,
+      "open_pulls_last_year": 0
+    },
+    "rt-mbms-examples": {
+      "status": "Actively Maintained",
+      "latest_release": "2024-11-05",
+      "last_work_commit": "2025-10-31",
+      "open_pulls_last_year": 0
+    },
+    "rt-mbms-gw": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": null,
+      "open_pulls_last_year": 0
+    },
+    "rt-mbms-modem": {
+      "status": "Actively Maintained",
+      "latest_release": "2022-06-30",
+      "last_work_commit": "2025-10-31",
+      "open_pulls_last_year": 2
+    },
+    "rt-mbms-mw": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": "2025-10-31",
+      "open_pulls_last_year": 0
+    },
+    "rt-mbms-mw-android": {
+      "status": "Actively Maintained",
+      "latest_release": "2024-09-05",
+      "last_work_commit": "2025-10-31",
+      "open_pulls_last_year": 0
+    },
+    "rt-mbms-tx": {
+      "status": "Actively Maintained",
+      "latest_release": "2023-06-21",
+      "last_work_commit": "2025-10-31",
+      "open_pulls_last_year": 0
+    },
+    "rt-mbms-tx-for-qrd-and-crd": {
+      "status": "Actively Maintained",
+      "latest_release": "2024-09-05",
+      "last_work_commit": "2025-10-31",
+      "open_pulls_last_year": 0
+    },
+    "rt-mbs-application": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": null,
+      "open_pulls_last_year": 0
+    },
+    "rt-mbs-application-provider": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": null,
+      "open_pulls_last_year": 0
+    },
+    "rt-mbs-client": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": null,
+      "open_pulls_last_year": 0
+    },
+    "rt-mbs-examples": {
+      "status": "Actively Maintained",
+      "latest_release": "2026-10-02",
+      "last_work_commit": "2026-09-20",
+      "open_pulls_last_year": 1
+    },
+    "rt-mbs-function": {
+      "status": "Actively Maintained",
+      "latest_release": "2026-07-03",
+      "last_work_commit": "2026-10-16",
+      "open_pulls_last_year": 2
+    },
+    "rt-mbs-transport-function": {
+      "status": "Actively Maintained",
+      "latest_release": "2026-07-03",
+      "last_work_commit": "2026-10-16",
+      "open_pulls_last_year": 2
+    },
+    "rt-media-android-application": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": null,
+      "open_pulls_last_year": 0
+    },
+    "rt-media-origin": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": null,
+      "open_pulls_last_year": 0
+    },
+    "rt-pws-cbc": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": null,
+      "open_pulls_last_year": 0
+    },
+    "rt-srsRAN_Project": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": "2025-10-24",
+      "open_pulls_last_year": 0
+    },
+    "rt-v3c-content": {
+      "status": "Actively Maintained",
+      "latest_release": "2025-10-09",
+      "last_work_commit": "2025-09-24",
+      "open_pulls_last_year": 3
+    },
+    "rt-v3c-decoder-plugin": {
+      "status": "Actively Maintained",
+      "latest_release": "2025-09-30",
+      "last_work_commit": "2025-09-26",
+      "open_pulls_last_year": 8
+    },
+    "rt-v3c-examples": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": null,
+      "open_pulls_last_year": 0
+    },
+    "rt-v3c-unity-player": {
+      "status": "Actively Maintained",
+      "latest_release": "2025-09-30",
+      "last_work_commit": "2025-09-26",
+      "open_pulls_last_year": 9
+    },
+    "rt-vdmc-web-decoder-player": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": "2026-09-21",
+      "open_pulls_last_year": 0
+    },
+    "rt-wui": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": "2025-08-08",
+      "open_pulls_last_year": 0
+    },
+    "rt-xr-blender-exporter": {
+      "status": "Stable",
+      "latest_release": "2025-04-16",
+      "last_work_commit": "2025-04-16",
+      "open_pulls_last_year": 0
+    },
+    "rt-xr-content": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": "2025-06-20",
+      "open_pulls_last_year": 2
+    },
+    "rt-xr-gITFast": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": "2025-10-28",
+      "open_pulls_last_year": 1
+    },
+    "rt-xr-maf-native": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": "2025-08-04",
+      "open_pulls_last_year": 1
+    },
+    "rt-xr-unity-player": {
+      "status": "Actively Maintained",
+      "latest_release": "2025-02-27",
+      "last_work_commit": "2026-10-09",
+      "open_pulls_last_year": 1
+    },
+    "srsRAN": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": "2025-08-08",
+      "open_pulls_last_year": 0
+    },
+    "srsRAN_4G": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": "2024-01-31",
+      "open_pulls_last_year": 2
+    },
+    "srsRAN_4G_mbs": {
+      "status": "Actively Maintained",
+      "latest_release": "2026-07-14",
+      "last_work_commit": null,
+      "open_pulls_last_year": 0
+    },
+    "srsRAN_Project_mbs": {
+      "status": "Actively Maintained",
+      "latest_release": "2026-07-14",
+      "last_work_commit": null,
+      "open_pulls_last_year": 0
+    },
+    "vops-conformance-validator": {
+      "status": "Under Development",
+      "latest_release": null,
+      "last_work_commit": "2026-09-30",
+      "open_pulls_last_year": 0
+    }
+  }
+}
