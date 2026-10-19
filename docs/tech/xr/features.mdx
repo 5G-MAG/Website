@@ -1,0 +1,132 @@
+---
+title: Features
+sidebar_position: 1
+hide_title: true
+description: The features ISO/IEC 23090-14 defines as glTF 2.0 extensions and interfaces, the clause that defines each, and which of them 3GPP TS 26.119 asks a device to support.
+---
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/><path d="M8 16a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2"/><path d="M3 7v-2a2 2 0 0 1 2 -2h2"/><path d="M3 17v2a2 2 0 0 0 2 2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M17 21h2a2 2 0 0 0 2 -2v-2"/></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">XR Media &amp; 3D Scenes</span>
+<h1>Features</h1>
+</div>
+</div>
+
+ISO/IEC 23090-14 "specifies extensions to existing scene description formats in order to support MPEG media, in particular immersive media" (clause 1). This page lists those extensions and the two interfaces they rely on, one feature each, with the clause that defines it and, where 3GPP names it, the device capability that covers it.
+
+:::tip[At a glance]
+
+- **17 features:** sixteen rows of glTF 2.0 extensions (three rows cover a pair of extensions), as listed in the [overview](./mpeg-i-scene-description), and the Media Access Function and buffer interfaces they rely on.
+- **Document:** ISO/IEC 23090-14:2025, second edition, published 2025-11. Clauses below are those of this text. Amendment 1 (ISO/IEC 23090-14:2025/FDAM 1, dated 2026-05-01) is at final draft stage and is not covered.
+- **3GPP:** TS 26.119 V19.1.0 clause 9.2 defines four scene processing capabilities (Core, Ext1, Ext2, Interactive). Nine of the sixteen extension rows below are named by one of them.
+- **Not named by 3GPP:** MPEG_mesh_linking, MPEG_viewport_recommended, MPEG_animation_timing, MPEG_node_avatar, MPEG_lights_punctual, MPEG_primitive_V3C, MPEG_sampler_YCbCr, MPEG_haptic and MPEG_node_interactivity.
+
+:::
+
+## The features
+
+| Feature | What it does (ISO/IEC 23090-14) | Clause | TS 26.119 V19.1.0 capability |
+| --- | --- | --- | --- |
+| **MPEG_media** | Provides an array of media items referenced in a scene description document | 5.2.1; annex C for real-time media | SD-Rendering-glTF-Ext1 |
+| **MPEG_accessor_timed** | Describes access to dynamically changing data used in the scene | 5.2.2 | SD-Rendering-glTF-Ext1 |
+| **MPEG_buffer_circular** | Extends a buffer to provide the functionality of a circular buffer | 5.2.3 | SD-Rendering-glTF-Ext1 |
+| **MPEG_scene_dynamic** | Indicates that the scene description document may be updated | 5.2.4; carriage in 7.2 | SD-Rendering-glTF-Ext1 |
+| **MPEG_texture_video** | Links a texture object to a video source | 5.3.1 | SD-Rendering-glTF-Ext1 |
+| **MPEG_mesh_linking** | Links a mesh to another mesh in a glTF asset | 5.3.2; carriage in 7.4 and 7.5; annex E | not named |
+| **MPEG_audio_spatial** | Adds support for spatial audio | 5.4.1; annex D for attenuation | SD-Rendering-glTF-Ext1 |
+| **MPEG_viewport_recommended** | Provides dynamically changing recommended viewport information | 5.5.1 | not named |
+| **MPEG_animation_timing** | Aligns media timelines with glTF animation timelines | 5.5.2; carriage in 7.6 | not named |
+| **MPEG_anchor** | Anchors a scene, or some root nodes, into the user's physical environment | 8.1 | SD-Rendering-glTF-Ext2 |
+| **MPEG_scene_interactivity and MPEG_node_interactivity** | Supports interactivity at the scene level and at the node level | 8.2 | SD-Rendering-glTF-Interactive (the scene extension) |
+| **MPEG_node_avatar** | Signals an avatar at a node level | 8.3; annex H | not named |
+| **MPEG_lights_texture_based and MPEG_lights_punctual** | Defines image-based lights, and punctual lights, in a glTF scene | 8.4 | SD-Rendering-glTF-Ext2 (the texture-based extension) |
+| **MPEG_primitive_V3C** | Supports V3C compressed objects | annex G.1 | not named |
+| **MPEG_sampler_YCbCr** | Supports video textures with a YCbCr chroma format | annex G.2 | not named |
+| **MPEG_haptic and MPEG_haptic_material** | Integrate haptics in a glTF scene | annex G.3 | not named |
+| **Media Access Function and buffer interfaces** | Decouple the Presentation Engine from the Media Access Function | 4.2; 6 | not applicable |
+
+Only clause numbers are given for the extensions' semantics and processing models; each extension's clause has a General, a Semantics and a Processing model sub-clause. The extension names are those of Table 2 of the 2025 edition.
+
+## Which devices support which
+
+TS 26.119 asks a device to support glTF-based scene description in clause 9.2. What it asks differs by device type (clauses 10.2.5 to 10.5.5):
+
+| Capability | Type 1: thin AR glasses | Type 2: AR glasses | Type 3: XR phone | Type 4: XR HMD |
+| --- | :---: | :---: | :---: | :---: |
+| SD-Rendering-glTF-Core | should | shall | shall | shall |
+| SD-Rendering-glTF-Ext1 | not stated | should | should | should |
+| SD-Rendering-glTF-Ext2 | not stated | may | should | should |
+| SD-Rendering-glTF-Interactive | not stated | may | should | should |
+
+For all four types the clause opens with "should support glTF-based scene description as defined in clause 9.2"; the rows give what applies "if gltf-based scene description is supported".
+
+## Feature by feature
+
+### Timed media framework
+
+**MPEG_media**, **MPEG_accessor_timed** and **MPEG_buffer_circular** · clauses 5.2.1 to 5.2.3
+
+"The MPEG media extension, identified by MPEG_media, provides an array of media items referenced in a scene description document." (5.2.1.1). A timed accessor "allows to describe access to dynamically changing data used in scene" (5.2.2.1), and a buffer that provides access to timed data includes the circular buffer extension (5.2.3.1: "Buffers that provide access to timed data shall include the MPEG_buffer_circular extension.").
+
+Timing: "An object that has timed media components, shall not be rendered until the indicated T0 + Tinit of these components." (4.3).
+
+**MPEG_scene_dynamic** · clause 5.2.4
+
+"MPEG_scene_dynamic extension allows to indicate that the scene description document may be updated." (5.2.4.1). Updates can be carried as samples of a track or as items (clause 7).
+
+### Dynamic and temporal media
+
+**MPEG_texture_video** · clause 5.3.1: "provides the possibility to link a texture object defined in ISO/IEC 12113 to a video source." (5.3.1.1)
+
+**MPEG_mesh_linking** · clause 5.3.2: "provides the possibility to link a mesh to another mesh in a glTF asset." (5.3.2.1)
+
+**MPEG_audio_spatial** · clause 5.4.1: "The MPEG audio extension adds support for spatial audio." (5.4.1.1). Annex D defines the audio source attenuation functions.
+
+**MPEG_viewport_recommended** · clause 5.5.1: "provides dynamically changing recommended viewport information which includes translation and rotation as well as the intrinsic camera parameter of the camera object." (5.5.1.1)
+
+**MPEG_animation_timing** · clause 5.5.2: "enables alignment between media timelines and animation timelines defined by ISO/IEC 12113." (5.5.2.1)
+
+### Real-time immersive and interactive media
+
+**MPEG_anchor** · clause 8.1: "AR anchoring allows for anchoring of a scene or some root nodes of a scene into the user’s physical environment to provide an AR experience." (8.1.1). Clause 8.1.2.1 defines eight trackable types, from TRACKABLE_FLOOR to TRACKABLE_APPLICATION.
+
+**Interactivity** · clause 8.2: "Interactivity is supported at the scene level and at the node level through the definition of two extensions MPEG_scene_interactivity and MPEG_node_interactivity." (8.2.1)
+
+**Avatar** · clause 8.3: "Signaling an avatar at a node level is achieved by the definition of the MPEG_node_avatar extension." (8.3.1). Annex H describes the reference avatar. This is the scene-level extension only: "the avatar reconstruction/animation is assumed to be independent of the avatar rendering" (8.3.1), so the avatar representation and its animation are not defined here. They belong to the [Avatar](/tech/avatar) project. The extension is named MPEG_node_avatar in clause 8.3 and Table 53. The heading of annex A.14, "JSON schema for MPEG_avatar", is a leftover of an earlier draft name; the MPEG Scene-Description repository names the schema file `MPEG_node_avatar.schema.json`.
+
+**Lighting** · clause 8.4: the document "defines types of light sources with their corresponding extensions" (8.4.1): image-based lights through MPEG_lights_texture_based and punctual lights through MPEG_lights_punctual.
+
+**MPEG_primitive_V3C** · annex G.1: "In order to support V3C compressed objects in MPEG-I scene description, the MPEG_media extension is used to refer to V3C compressed bitstreams." (G.1.1). The extension is specific to objects coded with a V3C compression scheme (ISO/IEC 23090-5 or ISO/IEC 23090-12).
+
+**MPEG_sampler_YCbCr** · annex G.2: "A sampler-level extension is described to sample a video texture natively in parallel processing devices such as GPUs." (G.2.1). It "shall be present if the format of the referencing video texture is set to YCbCr."
+
+**Haptics** · annex G.3: the extensions "provide the ability to define the integration of haptics in a glTF scene." (G.3.1)
+
+### Interfaces
+
+**Media Access Function and buffer interfaces** · clauses 4.2 and 6: "The scene description extensions are designed with the goal of decoupling the Presentation Engine from the Media Access Function." (4.2)
+
+## Where 3GPP refers to scene description
+
+| Document | Clause | What it says |
+| --- | --- | --- |
+| TS 26.119 V19.1.0 | 9.2 | Defines "client cababilities for rendering and presenting Scene Description based on glTF2.0", with extended capabilities "primarily to support real-time media based on the extensions defined in the MPEG-I Scene Description in ISO/IEC 23090-14" |
+| TS 26.143 V19.1.0 | 5.8 | Defines the capabilities 26143_SCENE_GLTF20, 26143_SCENE_GLTF20_GLB, 26143_SCENE_GLTF20_AR and 26143_SCENE_GLTF20_GLB_AR; the AR ones add the MPEG_anchor, EXT_lights_image_based and MPEG_lights_texture_based extensions |
+| TS 26.565 V19.0.0 | C.1.4.1 | "The rendering format description shall be a compliant glTF 2.0 [2] file."; both the Split Rendering Server and Client "shall comply with the SD-Rendering-Ext1 capability as defined in TS 26.119" |
+| TS 26.565 V19.0.0 | C.1.4.2 | Defines the 3GPP_node_prerendered extension, a node-level glTF extension for pre-rendered content |
+
+TS 26.565 clause C.1.4.1 writes the capability as "SD-Rendering-Ext1"; TS 26.119 clause 9.2 defines it as "SD-Rendering-glTF-Ext1".
+
+<details>
+<summary>Sources for this page</summary>
+
+- **Features, clauses and quoted sentences:** ISO/IEC 23090-14:2025, second edition, clauses 1, 4.2, 4.3, 5.1.1, 5.2.1 to 5.5.2, 6, 7, 8.1 to 8.4, and annexes C, D, E, G.1 to G.3 and H.
+- **Capabilities and device types:** 3GPP TS 26.119 V19.1.0, clauses 4.3, 9.2 and 10.2.5 to 10.5.5, and annex A.1 (the registered URNs).
+- **Other 3GPP references:** TS 26.143 V19.1.0 clause 5.8; TS 26.565 V19.0.0 clauses C.1.4.1 and C.1.4.2.
+- **Not read:** Amendment 1 (final draft, 2026-05-01); the ISO/IEC 12113 text the extensions build on (the Khronos glTF 2.0 text was read in its place), and the carriage formats' dependence on ISO/IEC 14496-12, which is not held.
+
+</details>
