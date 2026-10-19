@@ -284,7 +284,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #001331;
+  background: #e0272d;
   flex-shrink: 0;
   animation: pulse 1.8s ease-in-out infinite;
 }
@@ -428,6 +428,7 @@
 }
 
 .slideDot {
+  font-family: inherit;
   height: 13px;
   min-width: 13px;
   border-radius: 7px;
