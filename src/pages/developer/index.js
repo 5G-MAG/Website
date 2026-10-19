@@ -179,7 +179,7 @@ export default function Home() {
   // Hooks can't be called inside the CONTRIBUTORS.map callback below
   // (rules-of-hooks); resolve the directory once and concatenate.
   const contributorsBaseUrl = useBaseUrl('/assets/images/contributors/');
-  const overviewPdfUrl = useBaseUrl('/docs/Reference_Tools_Overview.pdf');
+  const overviewPdfUrl = useBaseUrl('/docs/Software_Accelerator.pdf');
   const location = useLocation();
   const [repoQuery, setRepoQuery] = useState('');
   const filteredRepos = useMemo(() => filterRepos(repoQuery), [repoQuery]);
@@ -211,7 +211,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Download Overview &#8595;
+            Download Slide Deck &#8595;
           </a>,
         ]}
       />
