@@ -15,7 +15,7 @@ description: Step-by-step setup for an end-to-end 5G Broadcast and unicast seaml
   <path d="M10 19h4" /></svg>
 </div>
 <div class="topic-banner__text">
-<span class="topic-banner__kicker">5G Broadcast - TV and Radio Services</span>
+<span class="topic-banner__kicker">5G Broadcast for TV and Radio Services</span>
 <h1>Seamless Switching between Unicast and Broadcast (Android)</h1>
 </div>
 </div>

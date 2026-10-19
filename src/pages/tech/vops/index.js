@@ -4,7 +4,7 @@ import ProjectDestinationCards from '@site/src/components/ProjectDestinationCard
 import ProjectRepoSection from '@site/src/components/ProjectRepoSection';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import ProjectContributors from '@site/src/components/ProjectContributors';
-import { ALL_PROJECTS, displayNameOf } from '@site/src/data/baskets';
+import { ALL_PROJECTS, displayNameOf, projectTitleOf } from '@site/src/data/baskets';
 import styles from '../index.module.css';
 
 const PROJECT = ALL_PROJECTS.find((p) => p.tech_url === '/tech/vops' && !p.parent);
@@ -27,11 +27,11 @@ const CERT_ICON = (
 export default function VideoOperationPoints() {
   return (
     <Layout
-      title={PROJECT.name}
+      title={projectTitleOf(PROJECT)}
       description="Video capabilities and operation points of 3GPP TS 26.265, and the conformance validator for them."
     >
       <HubHero
-        title={PROJECT.name}
+        title={projectTitleOf(PROJECT)}
         icon={CERT_ICON}
         actions={[
           <p key="subtitle" style={{ color: 'var(--cta-accent)', fontSize: '1.05rem', fontWeight: 600, margin: 0 }}>

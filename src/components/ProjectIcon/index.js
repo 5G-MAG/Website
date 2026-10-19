@@ -12,6 +12,7 @@ for (const p of ALL_PROJECTS) {
   const markup = paths.map((d) => `<path d="${d}"/>`).join('');
   PROJECT_ICON_PATHS[p.name] = markup;
   if (p.displayName) PROJECT_ICON_PATHS[p.displayName] = markup;
+  if (p.projectTitle) PROJECT_ICON_PATHS[p.projectTitle] = markup;
 }
 
 export default function ProjectIcon({ name, className }) {

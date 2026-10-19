@@ -156,6 +156,19 @@ export function displayNameOf(project) {
   return project.displayName || project.name;
 }
 
+// The name of a project as a topic (Technology, Standards, the area pages, the status chart), as opposed to the
+// name of its reference tool, testbed or validator (displayNameOf, used on the Reference Tools, Testbeds and
+// Validation pages). `projectTitle` holds it where it differs from `name`; an offering that has a parent (a testbed,
+// an evaluation framework, a validator) takes its parent's project title.
+export function projectTitleOf(project) {
+  if (project.projectTitle) return project.projectTitle;
+  if (project.parent) {
+    const parent = taxonomyData.projects.find((p) => p.name === project.parent);
+    if (parent) return projectTitleOf(parent);
+  }
+  return project.name;
+}
+
 // Every real topic project, in taxonomy.json's own order -- excludes the
 // `basket: null` entries (shared infrastructure, external forks, bare
 // reference-consumer repos; see EXCLUDED below for those).
@@ -251,7 +264,7 @@ export function projectBySlug(slug) {
 // its Technology page is labelled with the project name (AI Traffic Characterization, not the 6G AI Traffic
 // Characterization Testbed).
 export function techLabelOf(project) {
-  return isTestbed(project) ? project.name : displayNameOf(project);
+  return isTestbed(project) ? project.name : projectTitleOf(project);
 }
 
 export function projectsInBasket(basketKey) {

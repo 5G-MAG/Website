@@ -8,6 +8,7 @@ import {
   TOPIC_BASKETS,
   basketStageReach,
   displayNameOf,
+  projectTitleOf,
   reposFor,
 } from '@site/src/data/baskets';
 import styles from './styles.module.css';
@@ -56,7 +57,7 @@ function StandCard({ basket }) {
           {basket.projects.map((p) => (
             <Link key={p.name} to={p.tech_url} className={styles.standProjectItem}>
               <span className={styles.standProjectIcon}>{iconForCatalogKey(p.icon)}</span>
-              <span className={styles.standProjectName}>{displayNameOf(p)}</span>
+              <span className={styles.standProjectName}>{projectTitleOf(p)}</span>
             </Link>
           ))}
         </div>

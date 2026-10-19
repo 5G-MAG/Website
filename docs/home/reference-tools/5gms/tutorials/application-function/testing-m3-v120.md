@@ -11,7 +11,7 @@ description: Verifies the M3 interface of the 5GMSd Application Function v1.2.0 
   <path d="M7 4v16l13 -8l-13 -8" /></svg>
 </div>
 <div class="topic-banner__text">
-<span class="topic-banner__kicker">5G Media Streaming (5GMS)</span>
+<span class="topic-banner__kicker">5G Media Streaming (5GMS) Architecture</span>
 <h1>Testing: M3 Interface (5GMSd Application Function v1.2.0 and above)</h1>
 </div>
 </div>

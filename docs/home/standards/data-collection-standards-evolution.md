@@ -1,7 +1,7 @@
 ---
 hide_title: true
 sidebar_label: Evolution by release
-title: UE Data Collection, Reporting and Event Exposure - Standards Evolution
+title: User Data Collection and Reporting - Standards Evolution
 slug: /standards/data-collection/evolution
 description: Release by release, the 3GPP work items and change requests behind TS 26.531 and TS 26.532, Release 17 to Release 19.
 pagination_prev: null
@@ -15,7 +15,7 @@ pagination_next: null
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Standards</span>
-<h1>UE Data Collection, Reporting and Event Exposure - Standards Evolution</h1>
+<h1>User Data Collection and Reporting - Standards Evolution</h1>
 </div>
 </div>
 

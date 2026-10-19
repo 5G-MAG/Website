@@ -1,6 +1,6 @@
 import Link from '@docusaurus/Link';
 import { icon } from '@site/src/components/GodeeperCard';
-import { ALL_PROJECTS, ALL_REPOS, ICON_CATALOG, STAGE_GROUPS, displayNameOf } from '@site/src/data/baskets';
+import { ALL_PROJECTS, ALL_REPOS, ICON_CATALOG, STAGE_GROUPS, displayNameOf, projectTitleOf } from '@site/src/data/baskets';
 import styles from '@site/src/pages/tech/index.module.css';
 
 // Extracted from /tech/index.js's own "Where We Stand" chart (2026-09-27)
@@ -70,10 +70,10 @@ export function ChartRow({ project }) {
   const href = project.tech_url || project.doc_url || project.standards_url;
   const nameNode = href ? (
     <Link to={href} className={styles.chartRowName}>
-      {displayNameOf(project)}
+      {projectTitleOf(project)}
     </Link>
   ) : (
-    <span className={styles.chartRowName}>{displayNameOf(project)}</span>
+    <span className={styles.chartRowName}>{projectTitleOf(project)}</span>
   );
   const rowIcon = iconForCatalogKey(project.icon);
 

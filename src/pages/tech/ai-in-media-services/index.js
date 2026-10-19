@@ -18,7 +18,7 @@ export default function AIForMedia() {
       techUrl="/tech/ai-in-media-services"
       icon={ICON}
       accent="#2e9e5b"
-      description="AI and ML for media: the AI/ML Evaluation Framework and the 6G AI Traffic Characterization Testbed."
+      description="AI and ML for media: the AI/ML Evaluation Framework and 6G AI Traffic Characterization."
       softwareIsTestbed
       cover="ai-ml"
       why={

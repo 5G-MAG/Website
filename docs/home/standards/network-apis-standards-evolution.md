@@ -1,6 +1,6 @@
 ---
 hide_title: true
-title: CAMARA Connectivity Quality Management APIs - Standards Evolution
+title: Network APIs for Connectivity Quality - Standards Evolution
 slug: /standards/network-apis/evolution
 description: Release-by-release 3GPP work item and Change Request history behind CAMARA Connectivity Quality Management APIs.
 ---
@@ -12,7 +12,7 @@ description: Release-by-release 3GPP work item and Change Request history behind
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Standards</span>
-<h1>CAMARA Connectivity Quality Management APIs - Standards Evolution</h1>
+<h1>Network APIs for Connectivity Quality - Standards Evolution</h1>
 </div>
 </div>
 

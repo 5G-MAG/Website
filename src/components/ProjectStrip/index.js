@@ -2,7 +2,7 @@ import Link from '@docusaurus/Link';
 import { useLocation } from '@docusaurus/router';
 import { familyForPath } from '@site/src/utils/projectFamily';
 import { TECH_OVERVIEW } from '@site/src/data/techOverviews';
-import { displayNameOf, typeOf, isTestbed } from '@site/src/data/baskets';
+import { displayNameOf, projectTitleOf, typeOf, isTestbed } from '@site/src/data/baskets';
 import styles from './styles.module.css';
 
 function softwareLabel(p) {
@@ -36,7 +36,7 @@ export default function ProjectStrip({ contained = false }) {
   }, null);
   const strip = (
     <nav className={styles.strip} aria-label="Pages of this project">
-      <span className={styles.name}>{displayNameOf(lead)}</span>
+      <span className={styles.name}>{projectTitleOf(lead)}</span>
       <ul className={styles.list}>
         {items.map((it) => (
           <li key={it.to + it.label}>

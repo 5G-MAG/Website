@@ -11,7 +11,7 @@ description: Manual test procedures for the M1 interface of the 5GMSd Applicatio
   <path d="M7 4v16l13 -8l-13 -8" /></svg>
 </div>
 <div class="topic-banner__text">
-<span class="topic-banner__kicker">5G Media Streaming (5GMS)</span>
+<span class="topic-banner__kicker">5G Media Streaming (5GMS) Architecture</span>
 <h1>Testing: M1 Interface (5GMSd Application Function v1.3.0 to v1.4.0)</h1>
 </div>
 </div>

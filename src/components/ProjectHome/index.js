@@ -7,7 +7,7 @@ import ProjectRepoSection from '@site/src/components/ProjectRepoSection';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import ProjectContributors from '@site/src/components/ProjectContributors';
 import { TECH_OVERVIEW } from '@site/src/data/techOverviews';
-import { ALL_PROJECTS, ALL_REPOS, displayNameOf } from '@site/src/data/baskets';
+import { ALL_PROJECTS, ALL_REPOS, displayNameOf, projectTitleOf } from '@site/src/data/baskets';
 import styles from '@site/src/pages/tech/index.module.css';
 
 // The landing page every project shares (/tech/<project>): hero with the taxonomy tagline and three first actions, the
@@ -28,16 +28,17 @@ export default function ProjectHome({
   children,
 }) {
   const project = ALL_PROJECTS.find((p) => p.tech_url === techUrl);
-  const name = displayNameOf(project);
+  const name = displayNameOf(project);              // the tool's name: it matches the repositories' projectName
+  const title = projectTitleOf(project);            // the project's own name, the title of this page
   const slug = techUrl.split('/').pop();
   const coverImg = useBaseUrl(`/assets/images/projects/${cover || slug}.png`);
   const learn = TECH_OVERVIEW[techUrl] || analysisHref;
   const hasRepos = ALL_REPOS.some((r) => r.projectName === name);
 
   return (
-    <Layout title={name} description={description}>
+    <Layout title={title} description={description}>
       <HubHero
-        title={name}
+        title={title}
         icon={icon}
         actions={[
           <p key="subtitle" style={{ color: 'var(--cta-accent)', fontSize: '1.05rem', fontWeight: 600, margin: 0 }}>

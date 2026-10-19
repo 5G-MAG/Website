@@ -1,6 +1,6 @@
 ---
 hide_title: true
-title: Video Operation Points - Standards Evolution
+title: Video Interoperability Profiles - Standards Evolution
 slug: /standards/vops/evolution
 description: Release-by-release 3GPP work item and Change Request history behind Video Operation Points.
 ---
@@ -17,7 +17,7 @@ description: Release-by-release 3GPP work item and Change Request history behind
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Standards</span>
-<h1>Video Operation Points - Standards Evolution</h1>
+<h1>Video Interoperability Profiles - Standards Evolution</h1>
 </div>
 </div>
 

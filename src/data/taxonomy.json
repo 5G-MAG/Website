@@ -44,7 +44,8 @@
     {
       "name": "5G Media Streaming (5GMS)",
       "type": "reference-tool",
-      "displayName": "5G Media Streaming (5GMS)",
+      "displayName": "5G Media Streaming (5GMS) Architecture",
+      "projectTitle": "Media Streaming and Advanced Media Delivery",
       "doc_url": "/reference-tools/5gms/",
       "tech_url": "/tech/5gms",
       "standards_url": "/standards/5gms",
@@ -93,6 +94,8 @@
     {
       "name": "5G Broadcast - TV and Radio Services",
       "type": "reference-tool",
+      "displayName": "5G Broadcast for TV and Radio Services",
+      "projectTitle": "Media delivery over 5G Broadcast",
       "doc_url": "/reference-tools/5g-broadcast/",
       "tech_url": "/tech/5g-broadcast",
       "standards_url": "/standards/5g-broadcast",
@@ -142,12 +145,13 @@
         "3GPP",
         "ETSI"
       ],
-      "icon": "antenna-signal",
-      "displayName": "5G Broadcast - TV and Radio Services"
+      "icon": "antenna-signal"
     },
     {
       "name": "5G Broadcast - Emergency Alerts",
       "type": "reference-tool",
+      "displayName": "5G Broadcast for Emergency Alerts",
+      "projectTitle": "Public Warning Systems",
       "doc_url": "/reference-tools/emergency-alerts/",
       "tech_url": "/tech/emergency-alerts",
       "standards_url": "/standards/emergency-alerts",
@@ -185,6 +189,7 @@
     {
       "name": "XR/3D Scenes with MPEG-I Scene Description",
       "type": "reference-tool",
+      "projectTitle": "XR Media & 3D Scenes",
       "doc_url": "/reference-tools/xr/",
       "tech_url": "/tech/xr",
       "standards_url": "/standards/xr",
@@ -220,6 +225,7 @@
     {
       "name": "5G Multicast Broadcast Services (MBS)",
       "type": "reference-tool",
+      "projectTitle": "Media delivery over 5G MBS",
       "doc_url": "/reference-tools/5g-mbs/",
       "tech_url": "/tech/5g-mbs",
       "standards_url": "/standards/5g-mbs",
@@ -264,6 +270,7 @@
     {
       "name": "UE Data Collection, Reporting and Event Exposure",
       "type": "reference-tool",
+      "projectTitle": "User Data Collection and Reporting",
       "doc_url": "/reference-tools/data-collection/",
       "tech_url": "/tech/data-collection",
       "standards_url": "/standards/data-collection",
@@ -295,6 +302,7 @@
     {
       "name": "MPEG V3C Immersive Platform",
       "type": "reference-tool",
+      "projectTitle": "Volumetric Video Experiences",
       "doc_url": "/reference-tools/v3c/",
       "tech_url": "/tech/v3c",
       "standards_url": "/standards/v3c",
@@ -441,7 +449,7 @@
     {
       "name": "AI Traffic Characterization",
       "type": "testbed",
-      "displayName": "6G AI Traffic Characterization Testbed",
+      "displayName": "6G AI Traffic Characterization",
       "doc_url": "/testbeds/6g-testbed/",
       "tech_url": "/tech/6g",
       "standards_url": "/standards/6g",
@@ -473,6 +481,7 @@
     {
       "name": "CAMARA Connectivity Quality Management APIs",
       "type": "reference-tool",
+      "projectTitle": "Network APIs for Connectivity Quality",
       "doc_url": "/reference-tools/network-apis/",
       "tech_url": "/tech/network-apis",
       "standards_url": "/standards/network-apis",
@@ -502,6 +511,8 @@
     {
       "name": "Conversational Avatar Communication with MPEG ARF",
       "type": "reference-tool",
+      "displayName": "Conversational Avatars with MPEG ARF",
+      "projectTitle": "Conversational Avatar Communication",
       "doc_url": "/reference-tools/avatar/",
       "tech_url": "/tech/avatar",
       "standards_url": "/standards/avatar",
@@ -566,6 +577,8 @@
     {
       "name": "Video Operation Points",
       "type": "project",
+      "displayName": "Video Interoperability Profiles",
+      "projectTitle": "Video Interoperability Profiles",
       "doc_url": null,
       "tech_url": "/tech/vops",
       "standards_url": "/standards/vops",
@@ -642,6 +655,8 @@
     {
       "name": "DVB-I Services over 5G Systems",
       "type": "reference-tool",
+      "displayName": "DVB-I over 5G Systems",
+      "projectTitle": "DVB-I Services over 5G",
       "doc_url": "/reference-tools/dvb-i/",
       "tech_url": "/tech/dvb-i",
       "standards_url": "/standards/dvb-i",
@@ -781,6 +796,7 @@
     {
       "name": "Real-time Media Communication (RTC) Architecture",
       "type": "reference-tool",
+      "projectTitle": "Real-time Media Communication (RTC)",
       "doc_url": "/reference-tools/rtc/",
       "image": "/assets/images/projects/rtc.png",
       "releases_slug": "#repositories--releases",

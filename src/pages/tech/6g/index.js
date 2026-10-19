@@ -53,7 +53,7 @@ export default function Towards6GMedia() {
             <div className={styles.introGrid}>
               <div style={{ fontSize: '1.1rem', lineHeight: 1.7 }}>
                 <p>
-                  The 6G AI Traffic Characterization Testbed is a testbed of the <Link to="/tech/ai-in-media-services">AI in Media Services</Link> project.
+                  6G AI Traffic Characterization is a testbed of the <Link to="/tech/ai-in-media-services">AI in Media Services</Link> project.
                 </p>
                 <p>
                   This study aims to identify media-related opportunities and gaps in the context of 6G. It
@@ -63,7 +63,7 @@ export default function Towards6GMedia() {
                 </p>
                 <p>
                   Annexes C and D of the study document the evaluation of AI traffic characteristics and the
-                  testbed for it, which is the 6G AI Traffic Characterization Testbed.
+                  testbed for it, which is 6G AI Traffic Characterization.
                 </p>
                 {AI_TRAFFIC_PROJECT.sdos?.length > 0 && (
                   <div className={styles.capabilityTags}>
