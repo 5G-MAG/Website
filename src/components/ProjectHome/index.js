@@ -1,4 +1,3 @@
-import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import HubHero from '@site/src/components/HubHero';
@@ -6,11 +5,10 @@ import ProjectDestinationCards from '@site/src/components/ProjectDestinationCard
 import ProjectRepoSection from '@site/src/components/ProjectRepoSection';
 import JoinTheEffort from '@site/src/components/JoinTheEffort';
 import ProjectContributors from '@site/src/components/ProjectContributors';
-import { TECH_OVERVIEW } from '@site/src/data/techOverviews';
 import { ALL_PROJECTS, ALL_REPOS, displayNameOf, projectTitleOf } from '@site/src/data/baskets';
 import styles from '@site/src/pages/tech/index.module.css';
 
-// The landing page every project shares (/tech/<project>): hero with the taxonomy tagline and three first actions, the
+// The landing page every project shares (/tech/<project>): hero with the taxonomy tagline, the
 // intro with cover image, why it matters, the Documentation and Software sections, contributors, and repositories.
 // A page passes only what is its own: the intro and "why it matters" prose as children, and its icon and cover.
 export default function ProjectHome({
@@ -32,7 +30,6 @@ export default function ProjectHome({
   const title = projectTitleOf(project);            // the project's own name, the title of this page
   const slug = techUrl.split('/').pop();
   const coverImg = useBaseUrl(`/assets/images/projects/${cover || slug}.png`);
-  const learn = TECH_OVERVIEW[techUrl] || analysisHref;
   const hasRepos = ALL_REPOS.some((r) => r.projectName === name);
 
   return (
@@ -44,23 +41,6 @@ export default function ProjectHome({
           <p key="subtitle" style={{ color: 'var(--cta-accent)', fontSize: '1.05rem', fontWeight: 600, margin: 0 }}>
             {project.tagline}
           </p>,
-          <div key="start" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: '1rem' }}>
-            {learn && (
-              <Link className="button button--primary" to={learn}>
-                Learn how it works
-              </Link>
-            )}
-            {standardsHref && (
-              <Link className="button button--outline button--primary" to={standardsHref}>
-                Specifications
-              </Link>
-            )}
-            {hasRepos && (
-              <a className="button button--outline button--primary" href="#repositories">
-                Software
-              </a>
-            )}
-          </div>,
         ]}
       />
 

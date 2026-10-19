@@ -225,7 +225,7 @@
     {
       "name": "5G Multicast Broadcast Services (MBS)",
       "type": "reference-tool",
-      "projectTitle": "Media delivery over 5G MBS",
+      "projectTitle": "Media delivery over 5G Multicast/Broadcast",
       "doc_url": "/reference-tools/5g-mbs/",
       "tech_url": "/tech/5g-mbs",
       "standards_url": "/standards/5g-mbs",
@@ -336,7 +336,7 @@
     {
       "name": "Dynamic Mesh Coding",
       "type": "reference-tool",
-      "displayName": "Dynamic Mesh Coding",
+      "displayName": "Dynamic Mesh Coding with MPEG V-DMC",
       "doc_url": "/reference-tools/vdmc/",
       "tech_url": "/tech/vdmc",
       "standards_url": "/standards/vdmc",
