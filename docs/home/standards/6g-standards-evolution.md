@@ -135,6 +135,8 @@ The Foreword of the specification defines the first digit of the version: 1 mean
 
 </details>
 
+The testbed annexes appear in this history as follows. Version 0.1.0 introduced annexes B and C, "Emulator and AI test bed" (S4-260357). Version 0.2.2 removed the network emulator annex to TR 26.934. Version 0.3.0 lists S4-260860, S4-260848 and S4-260849 with the comment "Test bed left to be added", version 0.4.0 lists the same three contributions, and 0.4.1 added the mapping of test scenarios from S4-260860. Version 0.6.0 notes that S4-261440 was "to be dispositioned in next adhoc meeting"; annex E, a temporary annex on the netemu network emulator, carries the agreed content of that pCR, and an Editor's Note says it is to be dispositioned to the right section and clause. Version 0.6.1 enhanced the results workbook. The testbed itself is described on [6G AI Traffic Characterization](/testbeds/6g-testbed/).
+
 ## TR 26.925 before change control
 
 <details>

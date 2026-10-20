@@ -3,7 +3,7 @@ title: Metrics
 sidebar_label: Metrics
 hide_title: true
 sidebar_position: 1
-description: The metrics the 6G AI Traffic Characterization Testbed computes, per TR 26.870 annex D.4. Traffic characteristics, response time and errors, service metrics, and task-related QoE.
+description: The metrics the 6G AI Traffic Characterization Testbed computes, following TR 26.870 V0.6.1 clause D.4. Traffic characteristics, response time and errors, service metrics, and task-related QoE, with their definitions and output keys.
 ---
 
 <div class="topic-banner">
@@ -22,95 +22,157 @@ description: The metrics the 6G AI Traffic Characterization Testbed computes, pe
 </div>
 </div>
 
+
 :::tip[At a glance]
 
-- **Four categories:** A, traffic characteristics; B, response time and errors; C, service metrics for agents and computer use; D, task-related QoE.
+- **Four categories (clause D.4.1, table D.4.1-1):** A, traffic characteristics; B, response time and HTTP errors; C, service metrics for agents and computer use; D, task-related QoE.
 - **Two vantage points:** application-layer records logged per request, and packet captures parsed per packet and per flow.
-- **What the study groups need:** TR 26.870 maps each group of traffic characteristics it lists for other working groups (volume, temporal structure, latency, reliability, adaptivity) to these metrics.
-- **Open point:** whether and how TTFT, TTLT and tool-call latency can be used for AI traffic evaluation is for further study.
+- **What the study groups need:** TR 26.870 clause 6.3.3.3 (table 6.3.3.3-1) maps each group of traffic characteristics it lists for other working groups (volume, temporal structure, latency, reliability, adaptivity) to the analysis in annex C and to these metrics.
+- **Open point:** an Editor's Note in annex B.1 says that whether and how TTFT, TTLT and tool-call latency can be used for AI traffic evaluation is for further study.
 
 :::
 
-
-
 ## The categories
 
-| Category | Covers |
-| :---: | --- |
-| A | Traffic characteristics: byte volumes, UL/DL ratio, token throughput, streaming rate, burstiness |
-| B | Response time and HTTP errors: end-to-end latency, TTFT, TTLT, stall events, success rate, error taxonomy |
-| C | Service metrics: agent tool calling, loop factor, tool latency, computer-use actions |
-| D | Task-related QoE: video understanding accuracy. Task completion, answer quality, satisfaction and safety are for further study. |
+Clause D.4 is a reference for the metrics produced by the testbed; the TR says its implementation details are given for completeness and to help understand the metrics reported. Clause D.4.2 shows the metrics collection pipeline (figure D.4.2-1), drawn on the [overview](/testbeds/6g-testbed/) page. The names in the tables below are the output keys of the testbed.
+
+| Category | Covers | TR clause |
+| :---: | --- | :---: |
+| A | Traffic characteristics: byte volumes, UL/DL ratio, token throughput, streaming rate, burstiness | D.4.3 |
+| B | Response time and HTTP errors: end-to-end latency, TTFT, TTLT, stall events, success rate, error taxonomy | D.4.4 |
+| C | Service metrics: agent tool calling, loop factor, tool latency, computer-use actions | D.4.5 |
+| D | Task-related QoE: video understanding accuracy (clause D.4.6.1). Task completion, answer quality, satisfaction and safety are for further study. | D.4.6 |
 
 Open a category for its metrics.
 
 <details>
-<summary>A. Traffic characteristics</summary>
+<summary>A. Traffic characteristics (clause D.4.3)</summary>
 
 These describe the volume and temporal shape of AI service traffic.
 
-- **Volume and tokens:** mean uplink, downlink and total bytes; the UL/DL ratio, computed as the ratio of the means; mean input and output tokens, from the provider's usage report or estimated with a tokenizer; and the token output rate, computed per record and then averaged.
-- **Streaming throughput:** for chunked HTTP streaming, the byte rate between the first and the last token, and the mean number of content chunks.
-- **Burstiness, application layer:** the peak-to-mean ratio and the coefficient of variation of the bytes per request; and, with a configurable gap threshold (1 s by default) separating ON from OFF periods, the mean and count of ON and OFF gaps between requests.
-- **Burstiness, packet layer:** the instantaneous bit rate over short windows (1 ms to 100 ms recommended), with its mean, peak, peak-to-mean, coefficient of variation, active fraction and 95th and 99th percentiles; the packet arrival rate per window; and the inter-packet gap, with its mean, coefficient of variation and 99th percentile.
-- **Communication frequency:** application-layer interactions (requests, responses, coordination or signalling messages) per second, and the interval between them.
-- **Small packets:** the share of packets below a size threshold, 128 bytes by default.
+**Volume and tokens** (D.4.3.2, table D.4.3.2-1):
+
+| Metric | Output key | Definition |
+| --- | --- | --- |
+| Uplink bytes, mean | `uplink_bytes_mean` | Mean of `request_bytes` over the primary records; an estimate, the size of the serialised JSON |
+| Downlink bytes, mean | `downlink_bytes_mean` | Mean of `response_bytes` |
+| Total bytes, mean | `total_bytes_mean` | Sum of the two means; derived |
+| UL/DL ratio, mean | `ul_dl_ratio_mean` | Mean request bytes divided by mean response bytes (ratio of means, not per record); null or infinite if the mean response is 0 |
+| Input tokens, mean | `uplink_tokens_mean` | Mean of tokens in where above 0; from the API usage field, estimated with tiktoken if absent (Gemini streaming) |
+| Output tokens, mean | `downlink_tokens_mean` | Mean of tokens out where above 0 |
+| Token output rate, mean | `token_output_rate_per_sec` | Tokens out divided by latency per record, then averaged, which avoids the bias of a ratio of means |
+
+**Streaming throughput** (D.4.3.3, table D.4.3.3-1), for chunked HTTP streaming only: `streaming_byte_rate_per_sec`, the mean of response bytes over the time from first to last token; and `chunk_count_mean`, the mean number of SSE content-delta chunks, which excludes metadata-only events.
+
+**Burstiness, application layer** (D.4.3.4, table D.4.3.4-1). Burstiness is assessed on amplitude (byte volume variation) and on time (inter-request arrival). With `total_bytes[i]` the request plus response bytes of record i, and gaps the differences between sorted request start times:
+
+| Metric | Output key | Definition |
+| --- | --- | --- |
+| Burst peak-to-mean ratio | `burst_peak_to_mean_ratio` | max(total bytes) / mean(total bytes); 1.0 for uniform traffic, above 1.0 for bursty |
+| Burst coefficient of variation | `burst_coefficient_of_variation` | stdev(total bytes) / mean(total bytes) |
+| Burst gap threshold | `burst_gap_threshold_ms` | `burst_gap_sec` times 1000; configurable, default 1000 ms |
+| ON-gap mean and count | `burst_on_gap_mean_ms`, `burst_on_gap_count` | Gaps at or below the threshold, within a burst |
+| OFF-gap mean and count | `burst_off_gap_mean_ms`, `burst_off_gap_count` | Gaps above the threshold, silence between bursts |
+
+By default the time between bursts therefore cannot be smaller than 1.0 s in the current configuration.
+
+**Burstiness, packet layer** (D.4.3.4, table D.4.3.4-2). The instantaneous bit rate over a window of W ms is IBR(t, W) = bytes received in [t, t+W) times 8, divided by (W / 1000), in bit/s; the packet arrival rate PAR(t, W) is the packet count in the window; the inter-packet gap IPG is the time between consecutive arrivals in a flow.
+
+| Fields | Definition |
+| --- | --- |
+| `ibr_window_ms` | Window width W; recommended 1, 5, 10, 50 and 100 ms. Smaller windows show sharper peaks. |
+| `ibr_mean_bps`, `ibr_peak_bps` | Mean over windows with at least one byte; maximum over windows |
+| `ibr_peak_to_mean`, `ibr_cv` | Peak over mean; stdev over mean of the IBR series |
+| `ibr_active_fraction` | Share of windows with IBR above 0 |
+| `ibr_p95_bps`, `ibr_p99_bps` | 95th and 99th percentile of the IBR series |
+| `par_window_ms`, `par_mean`, `par_peak`, `par_peak_to_mean` | Packet-count window (recommended 1 ms); mean over non-empty windows; maximum; their ratio |
+| `ipg_mean_us`, `ipg_cv`, `ipg_p99_us` | Mean inter-packet gap in microseconds; stdev over mean; 99th percentile |
+| `ibr_empty_ms_pct`, `Pcd_empty_ms_pct` (as printed in the TR) | Percentage of empty bins not taken into account for the IBR computation, and of empty bins for the packet density calculation |
+
+Very small windows are sensitive to clock or timestamp resolution, and a few packets in a short window can give a very high IBR. Bursts can also be measured per request type or flow, since bursts to the model server may differ from bursts to external tools. A NOTE says that burst metrics for media traffic with dynamically changing characteristics are also in TR 26.823, and that the two sets of definitions are intended to remain aligned.
+
+**Communication frequency** (D.4.3.5): application-layer interactions (requests, responses, coordination or signalling messages) as `communication_frequency`, events per second, and `inter_message_interval`, the time between consecutive events. These are meant as generic metrics, also for multi-agent coordination and signalling.
+
+**Small packets** (D.4.3.6): `small_packet_ratio`, the share of packets below a size threshold, 128 bytes by default; other thresholds may be used where justified.
 
 </details>
 
 <details>
-<summary>B. Response time and errors</summary>
+<summary>B. Response time and HTTP errors (clause D.4.4)</summary>
 
-- **Response latency:** the wall-clock time from sending the request to receiving the last byte, reported as mean, median, 95th and 99th percentile, minimum, maximum and standard deviation.
-- **Time to first token (TTFT):** from sending the request to receiving the first content token, or first byte where the token is not in the first bytes. It reflects the model's initial inference latency plus the network round trip, and is the primary indicator of perceived responsiveness for streaming.
-- **Time to last token (TTLT):** from sending the request to the final content token. For non-streaming responses it equals the full latency.
-- **Streaming stalls:** a stall is a gap between chunks above a threshold, 1 s by default. Reported as stall rate, stall count and stall duration.
-- **Success and errors:** success rate, then failures classified as timeouts, rate limiting (HTTP 429), server errors (5xx), tool failures and other errors.
+| Metric | Output key | Definition |
+| --- | --- | --- |
+| Response latency | `response_latency_{mean,median,p95,p99,min,max,std}_ms` | `latency_sec`, the wall-clock time from sending the request to receiving the last byte, times 1000 (D.4.4.1) |
+| Time to first token (TTFT) | `ttft_{mean,p50,p95,p99}_ms` | `t_first_token` minus `t_request_start`, where both are present and the result is not negative (D.4.4.2) |
+| Time to last token (TTLT) | `ttlt_{mean,p50,p95,p99}_ms` | `t_last_token` minus `t_request_start`, same conditions (D.4.4.3) |
+| Stall gap threshold | `stall_gap_threshold_ms` | `stall_gap_sec` times 1000; configurable, default 1000 ms (D.4.4.4) |
+| Stall rate | `stall_rate` | Stall events divided by all inter-chunk gaps, across streaming records; null if there are no streaming records |
+| Stall events and duration | `stall_event_count`, `stall_duration_{mean,p95,p99}_ms` | Count of gaps at or above the threshold; mean and percentiles of those gaps |
+| Chunk count | `chunk_count_mean` | Repeated here for the streaming context |
+| Success rate | `success_rate_pct` | Records with success true, over the primary records, times 100 (D.4.4.5) |
+| Errors | `error_count`, `http_errors.*` | Failed records classified as `timeout`, `rate_limited_429`, `server_error_5xx` (500 to 599, with 501 excluded as non-transient), `tool_failure` (failed MCP tool calls and computer-use actions) and `other` |
 
-</details>
-
-<details>
-<summary>C. Service metrics</summary>
-
-- **Agents (MCP tool calling):** tool calls per session; the loop factor, the mean number of model turns per session, above 1 for multi-step reasoning; and tool latency, the execution time inside the tool without model inference.
-- **Computer use:** actions and steps per session, where one step is one reasoning cycle of the model; action latency, the full screenshot, action and result cycle; screenshot bytes; and the action error rate.
-
-</details>
-
-<details>
-<summary>D. Task-related QoE</summary>
-
-An AI media service delivers an inference result, often text, rather than a reconstructed media signal. There is no reference signal to compare against, so reference-based media quality metrics, including those of TR 26.944, do not apply. A task-related metric is used instead, specific to each scenario because it depends on that scenario's ground truth.
-
-For video understanding, the closed-form accuracy is the share of questions the model answers correctly in a test session. An open-ended accuracy, scored by a second model acting as judge on completeness and reliability, is for further study.
+TTFT is the time from the HTTP request to the first content token (or first byte, where the first bytes carry no token in some implementations). It reflects the model's initial inference latency plus the network round trip, and is the primary indicator of perceived responsiveness for streaming. For non-streaming responses TTLT equals the full latency. A stall is an inter-chunk gap at or above the threshold; the `inter_chunk_times` field of a streaming record holds the successive gaps in seconds.
 
 </details>
 
 <details>
-<summary>What each traffic characteristic is measured with</summary>
+<summary>C. Service metrics (clause D.4.5)</summary>
 
-TR 26.870 lists groups of traffic characteristics as relevant to other working groups, and maps each to the analysis in annex C and to these metrics.
+| Metric | Output key | Definition |
+| --- | --- | --- |
+| Tool calls per session, mean | `agent.tool_calls_mean` | Mean of the cumulative tool-call count recorded on each model turn (D.4.5.2) |
+| Loop factor | `agent.loop_factor` | Mean number of primary records per session; above 1 means multi-step reasoning, 1.0 a single turn |
+| Tool latency | `agent.tool_latency_{mean,p50,p95}_ms` | Execution time inside the tool (`tool_latency_sec`), without model inference; from tool records only |
+| Actions and steps per session | `computer_use.actions_per_session_mean`, `computer_use.steps_per_session_mean` | One step is one model reasoning cycle (D.4.5.3) |
+| Action latency | `computer_use.action_latency_{mean,p95}_ms` | The full screenshot, action and result cycle |
+| Screenshot bytes | `computer_use.screenshot_bytes_mean` | A proxy for display complexity and bandwidth cost |
+| Action error rate | `computer_use.action_error_rate` | Failed actions over all computer actions, 0 to 1 |
+
+The agent metrics apply where the model makes iterative MCP tool calls, each recorded separately with the type `mcp_tool_call`. The computer-use metrics apply only to scenarios with computer actions and do not affect latency, TTFT or byte metrics.
+
+</details>
+
+<details>
+<summary>D. Task-related QoE (clause D.4.6)</summary>
+
+An AI media service delivers an inference result, often text, rather than a reconstructed media signal. There is no reference signal to compare against, so reference-based media quality metrics, including those of TR 26.944, do not apply. A task-related metric is used instead, specific to each scenario because it depends on that scenario's ground truth (D.4.6.0).
+
+**Closed-form video understanding accuracy** (D.4.6.1.1), for the real-time and non-real-time video understanding scenarios: A_vuc = N_correct / N_total (equation D.4.6.1-1), the share of questions answered correctly in a test session, between 0 and 1. A question is a multiple-choice question tied to a timestamp in the video, with one ground-truth option, posed at that point in the stream and answerable from the content delivered so far. A_vuc is reported per network profile with N_total, and optionally per task type; non-parseable answers count as incorrect. For values to be comparable across profiles, the corpus and subset, question set and order, evaluation context, model and inference configuration (including frame sampling rate) and the number of repetitions are held constant, and only the profile varies. With four options, random selection gives an expected A_vuc of 0.25, the lower reference point for severely impaired profiles. The metric suits visual question answering; captioning and summarisation are open-ended.
+
+**Open-ended accuracy** (D.4.6.1.2) is for further study. The model's free-form answer is scored by an LLM judge on completeness and reliability, each from 0 to 5, summed to a score out of 10 (A_vuo). An Editor's Note proposes a ratio against an anchor profile, Q_vuo = A_vuo_measured / A_vuo_anchor (equation D.4.6.1-2), where 1 means unchanged answer quality. Another Editor's Note says the metric is not implemented in the testbed and no results with it are reported.
+
+Candidate task metrics listed in D.4.6.0 as for further study are task completion rate, task abandonment rate, subtask completion rate, tool success rate, time to first decisive assertion (TTFDA), media staleness at response and validity at arrival. The same clause also says that no task-based QoE metrics are defined, although D.4.6.1 then defines video understanding accuracy.
+
+</details>
+
+<details>
+<summary>What each traffic characteristic is measured with (clause 6.3.3.3)</summary>
+
+TR 26.870 lists groups of traffic characteristics as relevant to other working groups, and maps each to the analysis in annex C and to these metrics (table 6.3.3.3-1).
 
 | Group | Examples from the TR | Analysis | Metrics |
 | --- | --- | --- | --- |
-| A. Volume and directionality | Uplink and downlink volume, UL/DL asymmetry, session and flow duration | Clause C.4 | Category A |
-| B. Temporal structure | Burstiness, inter-arrival times, periodic or event-driven, streaming or request/response | Clause C.5 | Category C (clause D.4.5) |
-| C. Latency sensitivity | One-way and round-trip sensitivity, time to first media element, completion latency | Clauses C.5 and C.6 | Category B |
-| D. Reliability and continuity | Sensitivity to loss, tolerance to reordering or jitter, stalls, retransmissions | Clause C.7 | Categories B and D |
-| E. Adaptivity and dynamics | Rate adaptation, dependency on inference timing, coupling across flows or modalities, changes within a session | Clauses C.7 and C.8 | Categories A and D |
+| A. Volume and directionality | Uplink and downlink volume, UL/DL asymmetry, session and flow duration | Clause C.4 | Clause D.4.3 (category A) |
+| B. Temporal structure | Burstiness, inter-arrival times, periodic or event-driven, streaming or request/response | Clause C.5 | Clause D.4.5 (category C), as printed in the TR |
+| C. Latency sensitivity | One-way and round-trip sensitivity, time to first media element, completion latency | Clauses C.5 and C.6 | Clause D.4.4 (category B) |
+| D. Reliability and continuity | Sensitivity to loss, tolerance to reordering or jitter, stalls, retransmissions | Clause C.7 | Clauses D.4.4 and D.4.6 (categories B and D) |
+| E. Adaptivity and dynamics | Rate adaptation, dependency on inference timing, coupling across flows or modalities, changes within a session | Clauses C.7 and C.8 | Clauses D.4.3 and D.4.6 (categories A and D) |
 
-The TR lists as follow-up a careful review and detailed definition of these metrics, and the definition of how the characteristics are measured. Extending the mapping to media services other than AI is for further study.
+The TR lists as follow-up a careful review and detailed definition of these metrics, and the definition of how the characteristics are measured. Extending the mapping to media services other than AI is for further study. The burstiness descriptors that group B relates to are defined in clause D.4.3.4 (category A); the TR table points to D.4.5.
+
+The metrics each assumption of annex C uses (clauses C.4.3 to C.8.3) are listed on [Results](./results); some, such as multi-window burstiness, peak intra-burst rate and HTTP setup round-trip time, are marked in the TR as not yet complete in the testbed.
 
 </details>
 
 <details>
 <summary>Sources for this page</summary>
 
-- **At a glance and the categories:** TR 26.870 V0.6.1, clause D.4.1, table D.4.1-1; annex B.1 and its Editor's Note.
-- **A. Traffic characteristics:** TR 26.870 V0.6.1, clauses D.4.3.1 to D.4.3.6, tables D.4.3.2-1, D.4.3.3-1, D.4.3.4-1 and D.4.3.4-2.
-- **B. Response time and errors:** TR 26.870 V0.6.1, clauses D.4.4.1 to D.4.4.5 and their tables.
-- **C. Service metrics:** TR 26.870 V0.6.1, clauses D.4.5.2 and D.4.5.3, tables D.4.5.2-1 and D.4.5.3-1.
-- **D. Task-related QoE:** TR 26.870 V0.6.1, clauses D.4.6.0, D.4.6.1.0 to D.4.6.1.2.
+- **At a glance and the categories:** TR 26.870 V0.6.1, clauses D.4.1 and D.4.2, table D.4.1-1; annex B.1 and its Editor's Note.
+- **A. Traffic characteristics:** TR 26.870 V0.6.1, clauses D.4.3.1 to D.4.3.6, tables D.4.3.2-1, D.4.3.3-1, D.4.3.4-1 and D.4.3.4-2, and the NOTEs of D.4.3.4.
+- **B. Response time and HTTP errors:** TR 26.870 V0.6.1, clauses D.4.4.1 to D.4.4.5 and tables D.4.4.1-1 to D.4.4.5-1.
+- **C. Service metrics:** TR 26.870 V0.6.1, clauses D.4.5.1 to D.4.5.3, tables D.4.5.2-1 and D.4.5.3-1.
+- **D. Task-related QoE:** TR 26.870 V0.6.1, clauses D.4.6.0, D.4.6.1.0 to D.4.6.1.2, equations D.4.6.1-1 and D.4.6.1-2 and the Editor's Notes. Results with the metric are in annex D.5.1.
 - **What each characteristic is measured with:** TR 26.870 V0.6.1, clause 6.3.3.3, table 6.3.3.3-1 and its Editor's Note.
 
 </details>

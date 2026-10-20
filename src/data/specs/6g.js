@@ -51,7 +51,7 @@ export const SIXG_SPECS = [
     url: 'https://www.3gpp.org/dynareport/26870.htm',
     layer: 'Media aspects (SA4)',
     release: '20',
-    note: 'the track most relevant to 5G-MAG: media-related opportunities and gaps for 6G; its media delivery work starts from the generalized Media Delivery architecture of TS 26.501 (5G Media Streaming) and TS 26.506 (Real-Time media Communication); a draft (V0.6.1)',
+    note: 'the track most relevant to 5G-MAG: media-related opportunities and gaps for 6G; its media delivery work starts from the generalized Media Delivery architecture of TS 26.501 (5G Media Streaming) and TS 26.506 (Real-Time media Communication); a draft (V0.6.1); its annexes B to D document the AI traffic characterization testbed (annex B), the methodology and results (annex C) and the scenarios, network profiles and metrics (annex D), and annex E, a temporary annex, the netemu network emulator',
   },
   {
     id: 'TR 26.925',

@@ -24,7 +24,7 @@ description: How to install and run the 6G AI Traffic Characterization Testbed, 
 
 :::tip[In short]
 
-- **Get it:** the [5G-MAG/6G-Testbed](https://github.com/5G-MAG/6G-Testbed) repository, with the chat with token IDs and real-time video understanding scenarios and the lossy profile. It needs Linux, Python 3.10 or later, and the right to configure traffic control (sudo, or Docker with `NET_ADMIN`).
+- **Get it:** the [5G-MAG/6G-Testbed](https://github.com/5G-MAG/6G-Testbed) repository (TR 26.870 annex B.3 gives this location). It needs Linux, Python 3.10 or later, and the right to configure traffic control (sudo, or Docker with `NET_ADMIN`). At 20 October 2026 the default `main` branch does not yet list the chat with token IDs and real-time video understanding scenarios or the lossy profile; the README of the `development` branch describes them, and the OpenClaw and A2A agentic scenarios are on the `refactor` branch (open pull request 10).
 - **Configure:** scenarios and models in `configs/scenarios.yaml`, network profiles in `configs/profiles.yaml`.
 - **Run:** one scenario over one profile, or the full matrix; add packet capture for network-layer metrics.
 - **Reproduce SA4 results:** `run_full_tests.sh` runs the full matrix with capture and the complete report pipeline.
@@ -43,12 +43,12 @@ Install the testbed (open **Install** below), then, from the `aitestbed` folder,
 python orchestrator.py --scenario chat_basic --profile 5g_urban --runs 10
 ```
 
-Results are logged to an SQLite database, from which the testbed computes the [metrics](../metrics).
+Annex B.3 of the TR shows this command, and `python orchestrator.py --scenario all --runs 5` for the full matrix. Results are logged to an SQLite database, from which the testbed computes the [metrics](../metrics).
 
 <details>
 <summary>Install</summary>
 
-Prerequisites, as the repository lists them: Python 3.10 or later; Node.js 18 or later, for the MCP servers; Linux with `iproute2`, for network emulation; `tcpdump`, for packet capture; sudo access or Docker with `NET_ADMIN`; and, for the VLM scenarios, an NVIDIA GPU with about 30 GB of memory (about 2.5 GB for the VLM client and 27 GB for the VLM server) and CUDA Toolkit 12.1 or later.
+Prerequisites and steps, as the README files of the repository (`development` branch for the VLM items) list them: Python 3.10 or later; Node.js 18 or later, for the MCP servers; Linux with `iproute2`, for network emulation; `tcpdump`, for packet capture; sudo access or Docker with `NET_ADMIN`; and, for the VLM scenarios, an NVIDIA GPU with about 30 GB of memory (about 2.5 GB for the VLM client and 27 GB for the VLM server) and CUDA Toolkit 12.1 or later.
 
 From the root of the repository:
 
@@ -96,7 +96,7 @@ Results are logged to an SQLite database, from which the testbed computes the [m
 <details>
 <summary>Token and real-time video scenarios</summary>
 
-The two scenarios in which TR 26.870 observes tokenized traffic need their own setup.
+The two scenarios in which TR 26.870 observes tokenized traffic (clause C.8.6, table C.8.6-1) need their own setup. Their setup is described in the README of the `development` branch of the repository, not in the TR.
 
 **Real-time video understanding** streams video tokens over WebRTC to a locally hosted vision language model. It needs the VQGAN tokenizer and the Liquid_V1_7B model in the `aiortc-main-clean` checkpoints, and a StreamingBench dataset; the repository README lists the downloads and where to put them. Start the server, then the scenario:
 
@@ -119,7 +119,14 @@ python orchestrator.py --scenario realtime_video_understanding --profile 5g_urba
 python orchestrator.py --scenario chat_token --profile 5g_urban --runs 10
 ```
 
-Both can also be run over the `lossy` profile with packet capture; the repository README gives the full commands.
+Both can also be run over the `lossy` profile with packet capture; the repository README gives the full commands. The README sets that profile to a fixed 10 % loss with no added delay, while TR 26.870 clause D.3.1 defines it as configurable from 1 % to 30 %, as used in annex D.5.1.
+
+</details>
+
+<details>
+<summary>Agentic scenarios: personal assistant and agent-to-agent</summary>
+
+TR 26.870 defines a personal assistant agent scenario (clause D.1.2.9) and agent-to-agent collaboration scenarios (clause D.1.2.10), and reports a campaign with them in clause C.3.3. The README of the `refactor` branch lists them as `openclaw_personal_assistant`, `a2a_single_task_local` and `a2a_streaming_local`, with the OpenClaw and A2A phases for `--enable`. That branch is an open pull request and is not merged into `main`, so check it before relying on these names.
 
 </details>
 
@@ -162,7 +169,7 @@ with NetworkEmulator(interface="eth0",
 # every queueing discipline created by the emulator is cleared on exit
 ```
 
-The profiles and their parameters are on [Test design](../scope#network-profiles).
+The profiles and their parameters (TR 26.870 table D.3.1-1) are on [Test design](../scope#network-profiles), and the emulator itself (annex E) on [Test design](../scope#network-emulator).
 
 </details>
 
@@ -183,9 +190,10 @@ An introduction to the network emulator and the AI traffic characterization fram
 <details>
 <summary>Sources for this page</summary>
 
-- **Steps, extension and vLLM:** TR 26.870 V0.6.1, annex B.1 and B.3.
-- **Network emulator:** TR 26.870 V0.6.1, annex E.1 and listing 4.4.3-1.
+- **Steps, extension, vLLM and source location:** TR 26.870 V0.6.1, annex B.3. Trace logging with `TRACE_PAYLOADS=1` and the capture options: annex B.1.
+- **Network emulator:** TR 26.870 V0.6.1, annex E.1 and listing 4.4.3-1 (numbered as in the annex).
 - **Commands, requirements, Docker and `run_full_tests.sh`:** the README files of the 6G-Testbed repository (root and `aitestbed/`).
-- **Token and real-time video scenarios:** TR 26.870 V0.6.1, clauses D.1.2.1, D.1.2.5 and C.8.6.2; commands from `aitestbed/README.md`.
+- **Token and real-time video scenarios:** TR 26.870 V0.6.1, clauses D.1.2.1, D.1.2.5, C.8.6 and D.5.1; commands from `aitestbed/README.md` on the `development` branch.
+- **Agentic scenarios:** TR 26.870 V0.6.1, clauses D.1.2.9, D.1.2.10 and C.3.3; scenario names from `aitestbed/README.md` on the `refactor` branch.
 
 </details>

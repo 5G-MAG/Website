@@ -3,7 +3,7 @@ title: Results
 sidebar_label: Results
 hide_title: true
 sidebar_position: 2
-description: What the 6G AI Traffic Characterization Testbed has measured so far, per TR 26.870 annex C. The five assumptions on AI traffic, the agentic campaign, and the real-time video understanding results.
+description: What the 6G AI Traffic Characterization Testbed has measured so far, following TR 26.870 V0.6.1 annex C and clause D.5. The results workbook, the agentic campaign, the five assumptions on AI traffic and the real-time video understanding results.
 ---
 
 <div class="topic-banner">
@@ -22,127 +22,265 @@ description: What the 6G AI Traffic Characterization Testbed has measured so far
 </div>
 </div>
 
+
 :::tip[At a glance]
 
-- **The questions:** five assumptions about AI traffic raised for 6G radio and system design, each examined with its own metrics over all scenarios and network profiles.
+- **The questions:** five assumptions about AI traffic raised for 6G radio and system design (clauses C.4 to C.8), each examined with its own metrics over all scenarios and network profiles.
 - **Directionality is per scenario:** the UL/DL ratio spans about five orders of magnitude, from image generation to video understanding.
 - **Agents are not downlink heavy on the wire:** an agent turn that looks downlink heavy at the application layer is close to symmetric in the packet capture.
-- **Status:** initial results of a draft TR (TR 26.870 V0.6.1). Per-scenario data is in the workbook attached to the TR.
+- **Status:** initial results of a draft TR (TR 26.870 V0.6.1). Per-scenario data is in the workbook attached to the TR. The TR says the values for real-time video understanding are those of one implementation and will be aligned when more results and implementations are added.
 
 :::
 
-
+The sections follow the order of annex C: the results workbook (clause C.3.2), the agentic campaign (C.3.3), the five assumptions (C.4 to C.8) and the real-time video understanding results of annex D.5.
 
 ## How the results are reported
 
-The per-scenario results are in an Excel workbook attached to TR 26.870, with one sheet per scenario and separate sheets for local and remote execution. TR 26.870 maps each sheet to its test scenario, to the 6G media AI service it serves, and to the TR 22.870 use cases. The workbook is in the [TR 26.870 V0.6.1 archive](https://www.3gpp.org/ftp/Specs/archive/26_series/26.870/26870-061.zip).
+The per-scenario results are in an Excel workbook attached to TR 26.870 (clause C.3.2), with one sheet per scenario and separate sheets for local and remote execution (the two execution modes of clause C.2). The tests use the procedures of clause D.1, the metrics of clause D.4 and the network profiles of clause D.3. The workbook is in the [TR 26.870 V0.6.1 archive](https://www.3gpp.org/ftp/Specs/archive/26_series/26.870/26870-061.zip).
 
-Each assumption below follows the same structure in the TR: the metrics considered, the scenarios and network profiles (all of them, except that tokenized traffic considers the scenarios with token traffic), and initial high-level conclusions.
-
-## The five questions
-
-| Question | Initial answer | A figure behind it |
-| --- | --- | --- |
-| 1. Is AI traffic uplink heavy? | For some scenarios; directionality is stated per scenario | UL/DL ratio from about 0.000 (image generation) to about 840 to 990 (video understanding, local inference) |
-| 2. Bursts and delay sensitivity? | Bursty; delay sensitive or tolerant depending on the application | Under congestion, latency +13.7 % for chat with tokens, +889 % for non-real-time video understanding |
-| 3. Does round-trip delay matter? | Yes; connection setup adds significantly | About 171 ms median, 1.46 s at the 95th percentile, before any application data |
-| 4. Variability within an application? | Yes, on every dimension measured | Different types of data can combine in one session |
-| 5. Tokenized traffic? | On the uplink where the client tokenizes media; on the downlink when output is streamed | About 2.21 bytes per uplink video token: token identifiers, not embeddings |
-
-Open a question for what was measured and the figures in full.
+Each assumption of annex C follows the same structure: introduction, context (the methodology of clause C.2), the metrics considered, the scenarios and network profiles (all of them, except that tokenized traffic considers the scenarios with token traffic), and initial high-level conclusions. Clause 7.1 of the TR records five initial findings, one per assumption, and says they are to be updated as results become available.
 
 <details>
-<summary>1. Uplink heavy</summary>
+<summary>Which workbook sheet holds which scenario (table C.3-1)</summary>
 
-**Measured with:** uplink and downlink volume per session and their ratio; HTTP payload sizes per turn, which separate payload asymmetry from transport overhead; packet counts and mean packet size per direction; and volume per direction at 1, 10 and 100 ms granularity.
+TR 26.870 maps each scenario to its sheets, to the 6G media AI service it serves (clause D.2.2 cluster, then D.2.1 service) and to the TR 22.870 use cases. The sheet names are those printed in the TR.
 
-**Initial conclusion:** AI traffic shows increased uplink in some scenarios, specifically where a high bit-rate modality such as video is sent for inference and a low bit-rate result such as text or audio comes back, and in the agentic scenarios evaluated. Other scenarios show a heavy to very heavy downlink bias.
+| Scenario (clause) | Sheets, local execution | Sheets, remote services | 6G media AI service |
+| --- | --- | --- | --- |
+| Chat: tokens, streaming, non-streaming, reasoning (D.1.2.1) | 2.5.1 Chat Tokens; 2.5.2 Chat Streaming; 2.5.3 Chat Non-Streaming; 2.6 Reasoning | 3.2 Chat Basic; 3.3 Chat Streaming; 3.6 Chat Coding and reasoning | D.2.2.5 to D.2.1.5 |
+| AI agent with MCP (D.1.2.2) | none | 3.12 MCP Browser, Provider A | D.2.2.1 to D.2.1.1 |
+| Image generation (D.1.2.3) | none | 3.9 Image Generation, Provider A | D.2.2.2 to D.2.1.2.2 |
+| Multimodal analysis (D.1.2.4) | 2.7.2 Multimodal Non-Streaming | 3.8 Multimodal, Provider B | D.2.2.2 to D.2.1.2.1 |
+| Video understanding, real-time and non-real-time (D.1.2.5) | 2.4.1 RT Video Understanding; 2.4.1b RT Video Loss Sweep; 2.4.2 NRT Video Understanding | none | D.2.2.6 to D.2.1.2.1 and D.2.1.6 |
+| Real-time text and audio (D.1.2.6) | none | 3.15 Real-Time Audio; 3.17 Real-time Text interactive | D.2.2.3 to D.2.1.3 |
+| Direct multi-threaded web search (D.1.2.7) | none | 3.10 Web Search, Provider A | D.2.2.4 to D.2.1.4 |
+| Computer use (D.1.2.8) | none | 3.14 Computer Control, Provider A | D.2.2.1 to D.2.1.1 |
+| Multimodal analysis, live AI mode (D.1.2.12) | 2.9 Multimodal analysis live AI | 3.8 Multimodal, Provider B | D.2.2.2 to D.2.1.2.1 |
+| Personal assistant agent (D.1.2.9) | none | 3.23 Personal Assistant Agent | D.2.2.7 to D.2.1.3.1 and D.2.1.1.1 |
+| Agent-to-agent collaboration (D.1.2.10) | 2.8 A2A Collaboration | none | D.2.2.8 to D.2.1.1 |
 
-- The UL/DL ratio spans about five orders of magnitude, so directionality is stated per scenario, not in general.
-- Among remote hosted services, image generation is at about 0.000 and video understanding with local inference at about 840 to 990. MCP browser agents are at about 3.5.
-- Among local inference scenarios, real-time video understanding is at 5 to 7, non-real-time video understanding at about 300, and streaming chat at about 0.03.
-
-</details>
-
-<details>
-<summary>2. Data bursts and delay sensitivity</summary>
-
-**Measured with:** burst detection by idle gap; per-burst size, duration and peak rate; the peak-to-mean ratio at windows from 1 ms to 10 s; and the time to first and to last byte of a request. For multimodal scenarios, bursts are also reported per modality.
-
-**Initial conclusion:** the traffic is bursty, can be periodic or not, and is delay sensitive or delay tolerant depending on the application.
-
-- For local inference scenarios, the burst peak-to-mean ratio averages from about 11 (chat with tokens) to about 38 (non-streaming chat) over all profiles. The spread within one scenario is often larger than the spread between scenarios, so burst statistics are reported with their dispersion.
-- Under the congested profile, response latency rises by 13.7 % for chat with tokens and by 889 % for non-real-time video understanding, relative to no emulation.
-- Where a response is delivered incrementally, the time to first token degrades more than the session latency. For streaming multimodal analysis under the congested profile, the time to first token grows by a factor of more than 20, against about 3 for the session latency.
-
-</details>
-
-<details>
-<summary>3. Round-trip delay</summary>
-
-**Measured with:** TCP round-trip time per connection; TLS handshake time and HTTP connection setup; the gap between chunks against the round-trip time, which separates server-side generation from network-induced gaps; and end-to-end latency against the round-trip time for non-streaming scenarios.
-
-**Initial conclusion:** many AI applications are interactive, which makes round-trip delay an important factor. Connection setup (TCP and TLS) can contribute significantly to it.
-
-- Connection and security establishment take about 171 ms at the median and about 1.46 s at the 95th percentile before any application data is exchanged. Connections are reused across turns on 4.58 % of TCP flows, so this cost is paid on most turns.
-- The gap between downlink token chunks has a median of 0.116 ms, against a TCP round-trip time median of 63.21 ms. The pacing of the token stream is set by the inference engine, not by the network path.
-- Several AI applications now use QUIC instead of TCP; whether persistent connections are used is for further study.
-
-</details>
-
-<details>
-<summary>4. Variability within an application</summary>
-
-**Measured with:** distributions of request bytes, response bytes and packet counts; burst size and duration per flow or request type; time to first and last byte under congestion and loss; reliability under different loss rates; the variation of idle time between bursts; flow duration, connections per session and connection reuse; and, for agents, the number of distinct destinations and the volume per tool sub-flow.
-
-**Initial conclusion:** on every dimension measured (bursts, volume, delay, inter-arrival time and others), AI applications can have variable traffic characteristics, sometimes combining different types of data in one session.
-
-</details>
-
-<details>
-<summary>5. Tokenized traffic</summary>
-
-**Measured with:** input and output tokens per turn; the token rate at the application level; the token arrival rate against the downlink packet arrival rate; the gap between tokens per profile; and metrics of error resilience for real-time token communication.
-
-**Initial conclusion:** tokenized traffic is observed on the uplink where the client tokenizes the sampled media before sending it (the real-time video understanding scenario is the case evaluated), and on the downlink in every scenario where the model output is delivered incrementally. A scenario is therefore reported as uplink-tokenized, downlink-tokenized or both.
-
-Observations from one evaluated implementation of real-time video understanding, in which the client sends video tokens over WebRTC and receives the response over a data channel:
-
-- **Token size:** about 2.21 bytes per uplink token including packetization overhead. This is consistent with discrete token identifiers from a vocabulary of up to 65,536 entries, not with token embeddings, which are of the order of kilobytes.
-- **Token rate:** the uplink token count is the same on every network profile and up to 10 % applied uplink loss. It is set by the media sampling rate and the tokenizer, not by the transport path.
-- **Token packing:** the number of tokens per downlink chunk is the same on every profile to within 0.4 %. The downlink chunk count, observable in the network, is therefore a proxy for the downlink token count, which is not.
-- **Loss tolerance:** the task outcome shows no measurable change up to 20 % applied uplink loss, and at 30 % it cannot be distinguished from random selection. The tolerance boundary lies between 20 % and 30 %, for both models evaluated, well above the loss rates of the deployment profiles.
-
-Extending these observations to other implementations and scenarios is for further study. The loss sweep applies independent, identically distributed loss; correlated loss is for further study.
+The TR 22.870 use cases per row are those of table C.3-1; they are summarised on [Test design](./scope).
 
 </details>
 
 ## Agentic scenarios
 
-Agent traffic is close to symmetric on the wire, even when it looks downlink heavy at the application layer. Uplink provisioning and uplink grant latency directly gate it, and faster connection setup and reuse are worth more to it than additional capacity.
+Clause C.3.3 reports a measurement campaign for the personal assistant agent and agent-to-agent scenarios. Agent traffic is close to symmetric on the wire, even when it looks downlink heavy at the application layer. Uplink provisioning and uplink grant latency directly gate it, and faster connection setup and reuse are worth more to it than additional capacity.
 
 <details>
-<summary>The agentic measurement campaign</summary>
+<summary>The agentic measurement campaign (clauses C.3.3.1 to C.3.3.5)</summary>
 
-A measurement campaign ran the personal assistant agent and the agent-to-agent scenarios over the ten network profiles, with 10 or more runs per profile. The personal assistant used OpenClaw, a self-hosted agent runtime; the agent-to-agent scenarios used the Agent2Agent (A2A) protocol with deterministic agents.
+The scenarios of clauses D.1.2.9 and D.1.2.10 were measured across the ten network profiles of clause D.3, with 10 or more runs per profile (table C.3.3-1). The personal assistant used OpenClaw, an open-source, local-first, self-hosted agent runtime driven with a configurable commercial LLM through its local gateway; the agent-to-agent scenarios used the Agent2Agent (A2A) protocol, with deterministic agents that contain no LLM. The scenario definitions in annex D do not depend on either choice. Volumes are reported at the application layer and, from the packet captures, at the network layer.
 
-- **Personal assistant latency:** dominated by model inference and tool execution. The unshaped baseline is 11.4 s; the network dominates only under severe impairment, with 24.4 s on satellite_geo and 26.6 s on the congested profile. Every task succeeded on every profile, including 3 % loss.
-- **Agent-to-agent latency:** tracks the round-trip delay of the profile, from 0.002 s unshaped to 0.687 s on satellite_geo. Messages are a few hundred bytes, so bandwidth is not a factor. The TR concludes that agent interworking is a signalling workload, to be provisioned for delay and loss rather than throughput.
-- **Volume on the wire:** at the application layer, a personal-assistant turn is 144 bytes up against 20,230 bytes down. In the packet capture, its UL/DL ratio is 0.50, with about 172 kB of uplink per turn, because every agent step re-uploads the context, the system prompt and the tool definitions. Uplink provisioning and uplink grant latency therefore directly gate agentic workloads.
-- **Connections:** a single personal-assistant user appears as 2.46 TCP flows per turn towards 28 distinct destinations, with a median TLS handshake of 1.33 s. Session resumption, connection coalescing and persistent multiplexed transports are worth more to this workload than additional capacity.
-- **Reliability:** the agent runtime absorbs loss at the cost of latency. The small A2A exchanges have no redundancy: they are unaffected by delay, even at 340 ms one-way geostationary delay, but they degrade under loss, the only failures occurring on the two lossy profiles of the campaign. Agent signalling therefore needs a low packet error rate with only a moderate delay budget.
+| Scenario | Turns | Profiles | Success rate | Mean latency |
+| --- | --- | --- | --- | --- |
+| OpenClaw personal assistant | 200 | 10 | 100.0 % | 14.694 s |
+| A2A single task | 198 | 10 | 98.5 % | 0.174 s |
+| A2A streaming | 99 | 10 | 100.0 % | 0.435 s |
+| A2A multi-agent delegation | 100 | 10 | 99.0 % | 0.547 s |
+
+- **Personal assistant latency (C.3.3.2):** dominated by model inference and tool execution. The unshaped baseline is 11.4 s and 6g_itu_hrllc 9.7 s; the profiles between those and roughly 5g_urban quality are not separable from run-to-run variance (5.4 s to 31.2 s on the unshaped profile alone). The network dominates only under severe impairment, with 24.4 s on satellite_geo and 26.6 s on the congested profile, 2.3 times the unshaped baseline. Every task succeeded on every profile, including the 3 % loss case.
+- **Agent-to-agent latency (C.3.3.3):** tracks the round-trip delay of the profile, from 0.002 s for a single task unshaped to 0.687 s on satellite_geo, about one round trip. The streaming scenario adds the configured inter-chunk spacing and the multi-agent scenario a fixed orchestration cost of about 0.28 s. Messages are a few hundred bytes, so bandwidth is not a factor. The TR concludes that agent interworking is a signalling workload, to be provisioned for delay and loss rather than throughput.
+- **Volume on the wire (C.3.3.4):** at the application layer, an OpenClaw turn is 144 bytes up against 20,230 bytes down, about 1 to 140. In the packet capture, the runtime egress has a UL/DL ratio of 0.50 and about 172 kB of uplink per turn, because every agent step re-uploads the accumulated context, the system prompt and the tool definitions. The A2A scenarios show about 1,931 bytes up and 4,084 bytes down per turn on the wire, against a few hundred bytes at the application layer, because small JSON-RPC exchanges pay proportionally large transport overhead. A NOTE says that agent traffic does not follow the downlink-heavy assumption behind classical media capacity planning.
+- **Connections (C.3.3.5):** a single personal-assistant user appears as 2.46 TCP flows per turn towards 28 distinct destinations, with a median flow duration of 4.79 s and a median TLS handshake of 1.33 s, rising to 3.6 s at the 95th percentile. 0-RTT session resumption, connection coalescing and persistent multiplexed transports are worth more to this workload than additional capacity.
+- **Reliability (C.3.3.5):** the agent runtime completed every task on every profile, including 1 % and 3 % loss, at the cost of latency. The small A2A exchanges have no redundancy: they are unaffected by delay, even at 340 ms one-way geostationary delay, but they degrade under loss, the only failures occurring on the two lossy profiles. Agent signalling therefore needs a low packet error rate with only a moderate delay budget.
+
+How the TR words directionality for agents differs between clauses. Clause C.4.6 says the evaluated agentic scenarios have higher UL than DL, and finding 1 in clause 7.1 calls them uplink heavy, with a NOTE that this is observed because of retransmitted context and that whether such retransmission occurs in agentic applications is for further study. Clause C.3.3.4 reports a wire UL/DL ratio of 0.50 and describes it as close to symmetric.
+
+In the 6G-Testbed repository, the README of the `refactor` branch (open pull request 10 at 20 October 2026) lists the scenarios `openclaw_personal_assistant` and `a2a_single_task_local`; the default `main` branch does not yet list them.
+
+</details>
+
+## The five questions
+
+Clauses C.4 to C.8 each address one conjecture. Finding numbers are those of clause 7.1.
+
+| Question (clause, finding) | Initial answer | A figure behind it |
+| --- | --- | --- |
+| 1. Is AI traffic uplink heavy? (C.4, finding 1) | For some scenarios; directionality is stated per scenario | UL/DL ratio from about 0.000 (image generation) to about 840 to 990 (video understanding, local inference) |
+| 2. Bursts and delay sensitivity? (C.5, finding 2) | Bursty; delay sensitive or tolerant depending on the application | Under congestion, latency +13.7 % for chat with tokens, +889 % for non-real-time video understanding |
+| 3. Does round-trip delay matter? (C.6, finding 3) | Yes; connection setup adds significantly | About 171 ms median, 1.46 s at the 95th percentile, before any application data |
+| 4. Variability within an application? (C.7, finding 4) | Yes, on every dimension measured | Different types of data can combine in one session |
+| 5. Tokenized traffic? (C.8, finding 5) | On the uplink where the client tokenizes media; on the downlink when output is streamed | About 2.21 bytes per uplink video token: token identifiers, not embeddings |
+
+Open a question for what was measured and the figures in full.
+
+<details>
+<summary>1. Uplink heavy (clause C.4)</summary>
+
+**Measured with (C.4.3):** uplink and downlink volume per session and their ratio, per 5-tuple and per scenario; HTTP payload sizes per turn and the request to response size ratio, which separates payload asymmetry from transport overhead; packet counts and mean packet size per direction; and volume per direction at 1, 10 and 100 ms granularity (default window 1 s).
+
+**Initial conclusion (C.4.6):** AI traffic shows increased uplink in some scenarios, specifically where a high bit-rate modality such as video is sent for inference and a low bit-rate result such as text or audio comes back, and at least in the agentic scenarios evaluated. Other scenarios show a heavy to very heavy downlink bias. A NOTE says the ratio spans approximately five orders of magnitude, so a statement about directionality is made per scenario and not in general. A ratio above 1 means the uplink volume exceeds the downlink volume.
+
+| Local inference scenario (table C.4.6-1) | Turns per profile | UL/DL ratio | Comment |
+| --- | --- | --- | --- |
+| Video understanding, real-time | continuous | 5 to 7 | Bidirectional WebRTC; uplink video tokens continuous |
+| Video understanding, non-real-time | 1 request per run | about 300 | Base64-encoded video upload; small text response |
+| Chat, tokens | 1 turn | about 0.33 | Downlink heavy; token prompt small |
+| Chat, streaming | multi-turn | about 0.03 | Very downlink heavy; chunked SSE response |
+| Chat, non-streaming | multi-turn | about 0.79 | Most balanced chat variant |
+| Chat, reasoning | 1 turn | about 0.017 | Highly downlink heavy; very large generated output |
+| Multimodal analysis, streaming | per turn | about 1.1 to 1.3 | Near-symmetric; image and text uplink |
+| Multimodal analysis, non-streaming | 1 request per run | about 1.87 | Uplink heavy; fixed image and text upload |
+
+| Remote hosted service scenario (table C.4.6-2) | Turns per cell | UL/DL ratio |
+| --- | --- | --- |
+| Chat basic, Provider A | 30 | about 0.78 |
+| Chat basic, Provider C | 30 | about 0.63 |
+| Chat coding, reasoning, streaming | 20 to 30 | 0.006 to 0.030 |
+| Chat (local inference) | 30 | about 0.012 |
+| Direct web search | 20 | about 0.035 |
+| Image generation | 30 | about 0.000 |
+| Multimodal analysis | 40 | about 1.7 to 1.9 |
+| MCP browser | 270 to 310 | about 3.5 |
+| MCP market data | 168 to 184 | about 23 to 25 |
+| Realtime audio (non-WebRTC) | 30 | about 0.14 |
+| Realtime audio, WebRTC | 30 | about 1.1 to 1.5 |
+| Realtime text, multilingual | 30 to 50 | about 0.000 |
+| Realtime text, WebRTC | 20 | about 0.003 |
+| Video understanding (local inference) | 10 | about 840 to 990 |
+
+Table C.4.6-2 is titled for remote hosted services but includes two local-inference rows, as printed in the TR. Clause C.4.6 adds the agentic evidence of clause C.3.3: at the application layer a personal-assistant turn has a UL/DL ratio of about 0.007, on the wire 0.50.
+
+</details>
+
+<details>
+<summary>2. Data bursts and delay sensitivity (clause C.5)</summary>
+
+**Measured with (C.5.3):** burst detection by idle gap per direction (the testbed default is a 1.0 s burst gap, with no per-direction split); per-burst size, duration, peak intra-burst rate and the inter-burst idle distribution (p50, p95, p99); the peak-to-mean burstiness index at windows from 1 ms to 10 s; the time to the first byte of the request; and the time to the last byte, which expresses the full delay of one interaction. The TR marks that mean on and off gaps and burst counts exist but peak rate and distributions are missing, and that only a single-window peak-to-mean exists, not a multi-window one. For multimodal scenarios, burst results are also reported per modality (C.5.4).
+
+**Initial conclusion (C.5.6):** the traffic is bursty, can be periodic or not, and is delay sensitive or delay tolerant depending on the application.
+
+| Local inference scenario (table C.5.6-1) | Peak-to-mean, mean (min to max) | Coefficient of variation, mean (min to max) | ON gap, ms, mean (min to max) |
+| --- | --- | --- | --- |
+| Video understanding, real-time | 14.35 (13.91 to 14.82) | 1.62 (1.60 to 1.64) | 36.1 (34.6 to 39.7) |
+| Video understanding, non-real-time | 29.85 (6.6 to 82.9) | 2.04 (1.5 to 2.9) | 8.5 (1 to 14) |
+| Chat, tokens | 11.16 (7.06 to 17.61) | 1.27 (1.11 to 1.57) | 65.0 (60.6 to 70.3) |
+| Chat, streaming | 21.18 (9.7 to 36.7) | 1.18 (1.0 to 1.4) | 10.9 (8 to 25) |
+| Chat, non-streaming | 38.06 (31 to 79.4) | 1.75 (1.4 to 3.5) | 9.5 (9 to 10) |
+| Chat, reasoning | 24.96 (7.2 to 73.2) | 1.14 (1.0 to 1.4) | 12.0 (8 to 33) |
+| Multimodal analysis, non-streaming | 13.91 (3.1 to 79.7) | 1.61 (1.3 to 3.5) | 18.6 (3 to 29) |
+
+Each value is the mean over all network profiles tested, with the minimum and maximum across those profiles in parentheses. The spread within one scenario is in several cases larger than the spread between scenario means, so burst statistics are reported with their dispersion.
+
+| Scenario (table C.5.6-2) | Baseline latency | Cell edge, change | Congested, change | TTFT baseline | TTFT congested |
+| --- | --- | --- | --- | --- | --- |
+| Video understanding, real-time | not available | not available | not available | 1.14 s | 1.49 s |
+| Video understanding, non-real-time | 5.02 s | +295 % | +889 % | not available | not available |
+| Chat, tokens | 6.11 s | +1.5 % | +13.7 % | not available | not available |
+| Chat, streaming | 6.94 s | +15.3 % | +46.4 % | 0.35 s | 1.84 s |
+| Chat, non-streaming | 4.94 s | +6.9 % | +24.3 % | not available | not available |
+| Chat, reasoning | 15.02 s | +16.1 % | +31.3 % | 6.45 s | 8.74 s |
+| Multimodal analysis, streaming | 2.38 s | +103.8 % | +216.8 % | 0.23 s | 5.32 s |
+| Multimodal analysis, non-streaming | 9.38 s | +17.8 % | +17.3 % | not available | not available |
+
+The cell edge profile applies 120 ms delay, 30 ms jitter and 1 % loss at 5 Mbit/s; the congested profile 200 ms, 50 ms and 3 % at 1 Mbit/s (clause D.3). Where a response arrives incrementally, the time to first token degrades more than the session latency: for streaming multimodal analysis under the congested profile it grows by a factor of more than 20, against about 3 for the session latency.
+
+</details>
+
+<details>
+<summary>3. Round-trip delay (clause C.6)</summary>
+
+**Measured with (C.6.3):** TCP round-trip time per connection (minimum, median, 95th percentile) from the packet capture; TLS handshake time and HTTP connection setup round trips (the TR notes the HTTP setup round trip was missing when the clause was written); the gap between chunks against the round-trip time for streaming scenarios, to separate server-side generation from network-induced gaps; and end-to-end response latency against the round-trip time for non-streaming scenarios (image generation, search, tool calls).
+
+**Initial conclusion (C.6.6):** many AI applications are interactive, which makes round-trip delay an important factor. Connection setup (TCP and TLS) can contribute significantly to it. TTFT is defined there as the interval between submitting an input request to a (multimodal) language model and receiving the first output data.
+
+| Component (table C.6.6-1) | Observations | p50 | p95 | p99 | Mean |
+| --- | --- | --- | --- | --- | --- |
+| TCP handshake round-trip time | 33,292 | 63.21 ms | 701.17 ms | 1,386.49 ms | 234.45 ms |
+| TLS handshake | 18,604 | 107.68 ms | 758.21 ms | 1,947.50 ms | 272.74 ms |
+| HTTP setup round-trip time | 32,981 | 0.23 ms | 38.25 ms | 313.26 ms | 24.81 ms |
+
+- Connection and security establishment together take about 171 ms at the median and about 1.46 s at the 95th percentile before any application data is exchanged. Connections are reused across turns on 4.58 % of TCP flows, so this cost is paid on most turns (NOTE 1).
+- The gap between downlink token chunks has a median of 0.116 ms, against a TCP round-trip time median of 63.21 ms. The pacing of the token stream is set by the generation rate of the inference engine, not by the network path (NOTE 2).
+- Several AI applications now use QUIC instead of TCP; whether persistent connections are used is for further study (NOTE 3). Finding 3 in clause 7.1 adds that the current test setup does not include QUIC or persistent connections, which can reduce the connection establishment time.
+- The TR points to table 3.26 of the workbook for the results behind this conclusion.
+
+</details>
+
+<details>
+<summary>4. Variability within an application (clause C.7)</summary>
+
+**Measured with (C.7.3):** per-scenario distributions (minimum, p50, p95, maximum) of request bytes, response bytes and packet counts (the TR notes the packet-count distribution was missing); per-burst size and duration distributions, and burst patterns for different flow or request types within an application; delay as time to first and last byte per turn under netem profiles with congestion and packet loss; reliability of the service under different loss rates; inter-arrival time as the coefficient of variation of the inter-burst idle time; connection duration as the flow-duration distribution, TCP connections per session and the connection-reuse ratio; and, for agentic scenarios, the number of distinct destination IPs and ports per session and the volume per tool sub-flow.
+
+**Initial conclusion (C.7.6):** on every dimension measured (bursts, volume, delay, inter-arrival time and others), AI applications can have variable traffic characteristics, sometimes combining different types of data in one session. The measurements are reflected in clause C.3.
+
+</details>
+
+<details>
+<summary>5. Tokenized traffic (clause C.8)</summary>
+
+**Measured with (C.8.3):** input and output token counts per turn and scenario (provider-reported where available, tiktoken-estimated otherwise); the token rate at the application level, per scenario and netem profile; the token arrival rate against the downlink packet arrival rate, derived from chunk boundaries in the capture; the gap between tokens per profile; and metrics of error resilience and traffic characteristics for real-time token communication. The TR says suitable formats and AI transforms for real-time token communication are also studied.
+
+**Initial conclusion (C.8.6.2):** tokenized traffic is observed on the uplink where the client tokenizes the sampled media before sending it (the real-time video understanding scenario is the case evaluated), and on the downlink in every scenario where the model output is delivered incrementally. Where the client sends media in a native representation for tokenization at the server, the uplink is not tokenized and the token-based metrics apply to the downlink only. A scenario is therefore reported as uplink-tokenized, downlink-tokenized or both.
+
+| Metric (table C.8.6-1, profile with no emulation) | Video understanding, real-time | Chat, tokens |
+| --- | --- | --- |
+| Uplink token rate | 2,051 token/s | about 200 token/s |
+| Downlink output token rate | 24.1 token/s | 214 token/s |
+| Input tokens | 28.6 M per session | 434 per turn |
+| Output tokens | 326,809 | 1,316 |
+| Uplink encapsulation | RTP packets | HTTP token array |
+| Downlink encapsulation | HTTP SSE chunks | HTTP response body |
+| Uplink volume per token | about 2.5 byte | about 6.0 byte |
+| Downlink volume per token | about 0.04 byte | about 6.0 byte |
+| Burst peak-to-mean ratio | 13.91 | 16.11 |
+| Burst ON gap | 36.7 ms | 70.3 ms |
+| Burst OFF gap | 2,578 ms | 1,258 ms |
+
+The TR notes that the uplink volume per token differs because the transmitted unit differs (token identifiers in RTP payloads against within an HTTP request body), that a non-tokenized upload such as non-real-time video understanding has a per-token volume two orders of magnitude larger, and that the downlink volume per token of the real-time video scenario is small because it returns a short text response. An Editor's Note says the evaluation of token metrics is to be extended to the remaining scenarios and further implementations.
+
+Observations from one evaluated implementation of real-time video understanding, in which the client sends video tokens over WebRTC and receives the response over an RTC data channel (clause C.8.6.2). Two locally hosted vision language models were evaluated; the observations are stated for that implementation, and their extension to other implementations and scenarios is for further study.
+
+- **Token size:** a mean of 2.21 bytes per uplink token including packetization overhead, on the profile with no emulation and on profiles with loss up to 0.1 %. About 2 bytes per token is consistent with discrete token identifiers from a vocabulary of up to 65,536 entries, and not with token embeddings, which are of the order of kilobytes, about three orders of magnitude more.
+- **Token rate:** the uplink token count is the same on every network profile of clause D.3 and up to 10 % applied uplink loss. It is set by the media sampling rate and the tokenizer, not by the transport path.
+- **Token packing:** the number of tokens per downlink chunk is the same on every profile to within 0.4 %, including under 30 % applied loss. The downlink chunk count, observable in the network, is therefore a proxy for the downlink token count, which is not.
+- **Error resilience:** the delivered uplink volume falls in proportion to the applied loss up to 10 % (the ratio of volume reduction to applied rate is between 1.00 and 1.02), and faster above that (1.61 at 20 % and 2.18 at 30 %), which points to session degradation beyond independent packet loss. The TR says the task outcome shows no change resolved by the present sample up to and including 20 % applied uplink loss, and at 30 % it is not distinguishable from random selection, so the tolerance boundary lies between 20 % and 30 %, for both models. Table D.5.1-2 below gives the accuracy figures, which list drops of 14.3 % and 12.1 % against baseline at 20 % loss.
+
+The loss sweep applies independent, identically distributed loss; for a freeze-type recovery this is an upper bound on corrupted time, and correlated loss is for further study.
+
+</details>
+
+## Real-time video understanding results
+
+Annex D.5.1 gives the results for the real-time video understanding scenario, obtained on the testbed of annex B with a locally hosted model, over the profiles of clause D.3 and over the lossy profile at 1, 3, 5, 10, 20 and 30 % uplink packet loss. The TR refers to a test corpus in clause D.1.3, which does not exist (an Editor's Note); the number of videos, questions per profile, capture duration and repetitions per profile are still to be added. The accuracy metric is A_vuc of clause D.4.6.1 ([Metrics](./metrics)).
+
+<details>
+<summary>Table D.5.1-1 to D.5.1-3</summary>
+
+Uplink bytes at the capture point are 58.5 MB on the profile with no emulation against 2.76 MB downlink, a UL/DL ratio of 21.22, and 26,418,176 uplink tokens at 2.213 bytes per token (table D.5.1-1). The uplink token count is unchanged up to 10 % loss, then falls to 22,126,592 at 20 % and 12,963,840 at 30 %. The TR notes that tokens are counted at generation on the client and bytes at the capture point, so under loss the volume per token falls in proportion to the delivered share of the stream. Downlink packing is about 3.27 tokens per chunk on every profile (table D.5.1-3).
+
+| Profile (table D.5.1-2) | Liquid, correct answers | Liquid, change | Liquid, A_vuc | vila-u, correct answers | vila-u, change | vila-u, A_vuc |
+| --- | --- | --- | --- | --- | --- | --- |
+| no_emulation | 63 | none | 0.504 | 58 | none | 0.464 |
+| lossy 1 % | 63 | none | 0.504 | 58 | none | 0.464 |
+| lossy 3 % | 63 | none | 0.504 | 57 | -1.7 % | 0.456 |
+| lossy 5 % | 63 | none | 0.504 | 58 | none | 0.464 |
+| lossy 10 % | 60 | -4.8 % | 0.480 | 59 | none | 0.472 |
+| lossy 20 % | 54 | -14.3 % | 0.432 | 52 | -12.1 % | 0.416 |
+| lossy 30 % | 34 | -46.0 % | 0.272 | 25 | -56.9 % | 0.200 |
+| 6g_itu_hrllc | 59 | -6.3 % | 0.472 | 59 | none | 0.472 |
+| 5g_urban | 62 | -1.6 % | 0.496 | 60 | none | 0.480 |
+| cell_edge | 56 | -11.1 % | 0.448 | 50 | -13.8 % | 0.400 |
+| congested | 57 | -9.5 % | 0.456 | 59 | none | 0.472 |
+| 5qi_7 | 59 | -6.3 % | 0.472 | 53 | -8.6 % | 0.424 |
+| 5qi_80 | 58 | -7.9 % | 0.464 | 60 | none | 0.480 |
+
+With four options per question, random selection gives an expected A_vuc of 0.25 (NOTE 1 of clause D.4.6.1.1). The TR says that at 30 % loss the outcome is not distinguishable from random selection, and that it shows no change resolved by the present sample up to 20 %, although this table lists changes of -14.3 % (Liquid) and -12.1 % (vila-u) at 20 %. The total number of questions per profile is not given; it is among the items an Editor's Note says are still to be added.
 
 </details>
 
 <details>
 <summary>Sources for this page</summary>
 
-- **How the results are reported:** TR 26.870 V0.6.1, clause C.3.2 and table C.3-1; the workbook "Collated_AI_Traffic_Results_note_0_6_1.xlsx" in the 26870-061 archive.
-- **1. Uplink heavy:** TR 26.870 V0.6.1, clauses C.4.3 to C.4.6, tables C.4.6-1 and C.4.6-2 and NOTE.
-- **2. Data bursts and delay sensitivity:** TR 26.870 V0.6.1, clauses C.5.3 to C.5.6, tables C.5.6-1 and C.5.6-2, NOTE 1 and NOTE 3.
-- **3. Round-trip delay:** TR 26.870 V0.6.1, clauses C.6.3 to C.6.6, table C.6.6-1 and NOTE 1 to NOTE 3.
+- **How the results are reported:** TR 26.870 V0.6.1, clause C.3.2 and table C.3-1; clause 7.1; the workbook "Collated_AI_Traffic_Results_note_0_6_1.xlsx" in the 26870-061 archive.
+- **Agentic scenarios:** TR 26.870 V0.6.1, clauses C.3.3.1 to C.3.3.5, table C.3.3-1 and the NOTE in C.3.3.4; clauses C.4.6 and 7.1 (finding 1 and its NOTE). The repository branch statement is from the 6G-Testbed README files and pull request list, read on 20 October 2026.
+- **1. Uplink heavy:** TR 26.870 V0.6.1, clauses C.4.3 to C.4.6, tables C.4.6-1 and C.4.6-2 and the NOTE.
+- **2. Data bursts and delay sensitivity:** TR 26.870 V0.6.1, clauses C.5.3 to C.5.6, tables C.5.6-1 and C.5.6-2, NOTE 1 to NOTE 3.
+- **3. Round-trip delay:** TR 26.870 V0.6.1, clauses C.6.3 to C.6.6, table C.6.6-1 and NOTE 1 to NOTE 3; clause 7.1, finding 3 and its NOTE.
 - **4. Variability within an application:** TR 26.870 V0.6.1, clauses C.7.3 to C.7.6.
-- **5. Tokenized traffic:** TR 26.870 V0.6.1, clauses C.8.3 to C.8.6.2, table C.8.6-1, the NOTE in C.8.6.2 and its Editor's Notes; clause D.5.1.
-- **Agentic scenarios:** TR 26.870 V0.6.1, clauses C.3.3.1 to C.3.3.5, table C.3.3-1 and NOTE.
+- **5. Tokenized traffic:** TR 26.870 V0.6.1, clauses C.8.3 to C.8.6.2, table C.8.6-1, its NOTEs and the NOTE in C.8.6.2, and their Editor's Notes.
+- **Real-time video understanding results:** TR 26.870 V0.6.1, clause D.5.1, tables D.5.1-1 to D.5.1-3 and their NOTE and Editor's Notes. The A_vuc column headers follow the TR.
+- The Editor's Note after table C.8.6-1 says that the values for real-time video understanding in tables C.4.6-1, C.5.6-1, C.5.6-2 and C.8.6-1 are those of the initial measurement campaign of one implementation.
 
 </details>
