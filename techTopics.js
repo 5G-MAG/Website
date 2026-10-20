@@ -82,7 +82,10 @@ const ALL_TOPICS = [
     // several, just wiring the header link to the content that already
     // exists.
     techOverviewDoc: 'dvb-i/analysis-dvb-i-over-5g-gaps',
-    standards: [{ doc: 'standards/dvb-i', label: 'Standards: DVB-I Services over 5G Systems' }],
+    standards: [
+      { doc: 'standards/dvb-i', label: 'Standards: DVB-I Services over 5G Systems' },
+      { doc: 'standards/dvb-i-standards-evolution', label: 'Standards: DVB-I - Standards Evolution' },
+    ],
   },
   {
     label: 'Content Delivery Protocols and Tools',
@@ -195,6 +198,7 @@ const ALL_TOPICS = [
     techOverviewDoc: 'avatar/overview',
     standards: [
       { doc: 'standards/avatar', label: 'Standards: Conversational Avatar Communication' },
+      { doc: 'standards/avatar-standards-evolution', label: 'Standards: Avatar - Standards Evolution' },
     ],
   },
   {
@@ -207,6 +211,8 @@ const ALL_TOPICS = [
     // -- this shared folder's other real doc, beyond-2d.mdx, is the
     // separate Beyond 2D project's own content, not V3C's.
     techOverviewDoc: 'volumetric/v3c-overview',
+    // The folder is shared with Beyond 2D: each project's Technology block holds only its own overview.
+    onlyOverview: true,
     standards: [
       { doc: 'standards/v3c', label: 'Standards: Volumetric Video Experiences' },
       { doc: 'standards/v3c-standards-evolution', label: 'Standards: V3C - Standards Evolution' },
@@ -230,7 +236,11 @@ const ALL_TOPICS = [
     techHref: '/tech/beyond-2d',
     autogen: 'volumetric',
     techOverviewDoc: 'volumetric/beyond-2d',
-    standards: [{ doc: 'standards/beyond-2d', label: 'Standards: Beyond 2D Video Experiences' }],
+    onlyOverview: true,
+    standards: [
+      { doc: 'standards/beyond-2d', label: 'Standards: Beyond 2D Video Experiences' },
+      { doc: 'standards/beyond-2d-standards-evolution', label: 'Standards: Beyond 2D - Standards Evolution' },
+    ],
   },
   {
     label: 'XR Media & 3D Scenes',
@@ -242,7 +252,10 @@ const ALL_TOPICS = [
     // several, just wiring the header link to the content that already
     // exists.
     techOverviewDoc: 'xr/mpeg-i-scene-description',
-    standards: [{ doc: 'standards/xr', label: 'Standards: XR Media & 3D Scenes' }],
+    standards: [
+      { doc: 'standards/xr', label: 'Standards: XR Media & 3D Scenes' },
+      { doc: 'standards/xr-standards-evolution', label: 'Standards: XR - Standards Evolution' },
+    ],
   },
   {
     label: 'Dynamic Mesh Coding',
@@ -314,7 +327,10 @@ const ALL_TOPICS = [
     techHref: '/tech/vops',
     autogen: 'vops',
     techOverviewDoc: 'vops/overview',
-    standards: [{ doc: 'standards/vops', label: 'Standards: Video Operation Points' }],
+    standards: [
+      { doc: 'standards/vops', label: 'Standards: Video Operation Points' },
+      { doc: 'standards/vops-standards-evolution', label: 'Standards: VOPS - Standards Evolution' },
+    ],
   },
   {
     label: 'AI/ML Evaluation Framework',
@@ -351,9 +367,21 @@ taxonomyData.projects.forEach((p) => {
       href: p.doc_url.replace(/\/$/, ''),
       isTestbed: p.type === 'testbed' || p.type === 'evaluation-framework',
       // The sidebar group of a project's software pages, by what the entry is (see PROJECT_TYPES in baskets.js).
-      label: { testbed: 'Testbed', 'evaluation-framework': 'Testbed', 'validation-tool': 'Validation Tool' }[p.type] || 'Reference Tools',
+      label: { testbed: 'Testbeds', 'evaluation-framework': 'Testbeds', 'validation-tool': 'Validation Tools' }[p.type] || 'Reference Tools',
     };
   }
+});
+
+// The Specifications block of every project's menu reads the same: the specifications page is "Specifications", the
+// release history of a specification set is "Release history" (named after the set when the topic has more than
+// one, e.g. CMMF), and any other page keeps the name of its own. The project's name is not repeated: the menu
+// holds only the quick access to the project's Technology, Specifications and software.
+ALL_TOPICS.forEach((t) => {
+  (t.standards || []).forEach((s, i) => {
+    const evolution = /-standards-evolution$/.test(s.doc);
+    if (i === 0 && !evolution) s.sidebarLabel = 'Specifications';
+    else if (evolution) s.sidebarLabel = /^standards\/(cmmf)-/.test(s.doc) ? 'CMMF release history' : 'Release history';
+  });
 });
 
 // techHref -> basket key, from taxonomy.json's own projects -- the single

@@ -3,6 +3,7 @@ title: Network API Analysis
 sidebar_position: -1
 hide_title: true
 description: Indexes the CAMARA APIs 5G-MAG analyses and how they map onto underlying 3GPP NEF and PCF service-based interfaces.
+sidebar_label: Overview
 ---
 
 import JumpMenu from '@site/src/components/JumpMenu';
