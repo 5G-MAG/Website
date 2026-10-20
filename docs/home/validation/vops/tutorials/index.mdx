@@ -1,8 +1,8 @@
 ---
 title: Tutorials
 hide_title: true
-sidebar_position: 3
-description: How to install and run the VOPS Conformance Validator, taken from its repository README.
+sidebar_position: -1
+description: How to install and run the VOPS Conformance Validator, and the tutorial that checks AVC and HEVC HD bitstreams against an operation point.
 ---
 
 
@@ -22,6 +22,8 @@ description: How to install and run the VOPS Conformance Validator, taken from i
 <h1>Tutorials, Tests and Examples</h1>
 </div>
 </div>
+
+Step by step, with every command run and its result shown: [VOPS Conformance Validator - check a bitstream against an operation point](./check-a-bitstream). It installs the validator, makes an AVC and an HEVC HD stream with an encoder, validates them, and reads the report when a stream fails.
 
 The commands below are taken from the repository README. The README does not yet provide test bitstreams, so each operation point still needs testing with its conformance bitstreams.
 
@@ -59,4 +61,4 @@ $ python -m sa4_bitstream_validator check description.xml bitstream_rules/3gpp-m
 
 `config.yaml` maps each operation point to the XSD schemas in `bitstream_rules/`. The repository README lists every option.
 
-See the [Implementation Detail](./implementation) page for what the validator covers.
+See the [Implementation Detail](../implementation) page for what the validator covers.

@@ -1,0 +1,284 @@
+---
+title: "6G AI Traffic Characterization Testbed: chat test over network profiles"
+sidebar_label: "6G AI Traffic Characterization Testbed - chat test over network profiles"
+hide_title: true
+sidebar_position: 1
+description: "Step by step with the 6G AI Traffic Characterization Testbed: run one chat test over three network profiles, then read the response time, time to first token, token rate and errors in the SQLite log and the report, and compare the profiles."
+---
+
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M7 8l-4 4l4 4" />
+  <path d="M17 8l3.111 3.111" />
+  <path d="M14 4l-2.175 8.7" />
+  <path d="M14 21v-4a2 2 0 1 1 4 0v4" />
+  <path d="M14 19h4" />
+  <path d="M21 15v6" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">6G AI Traffic Characterization</span>
+<h1>6G AI Traffic Characterization Testbed</h1>
+</div>
+</div>
+
+In this tutorial you run one chat test of the 6G AI Traffic Characterization Testbed over three network profiles, then open the SQLite log and the report and read the response time, the time to first token, the token rate and the errors, and compare the profiles. The metrics are those of TR 26.870 annex D.4; the clauses are given where they apply.
+
+:::tip[Read the READMEs first]
+Read the [root README](https://github.com/5G-MAG/6G-Testbed#readme) and the [aitestbed README](https://github.com/5G-MAG/6G-Testbed/blob/main/aitestbed/README.md) before you start. The definitions of the metrics are in [METRICS.md](https://github.com/5G-MAG/6G-Testbed/blob/main/aitestbed/METRICS.md). Installing the testbed is described once, on [Run the testbed](./introduction-6g-testbed); this tutorial points to it.
+:::
+
+| Repository | What it is | Used in |
+|---|---|---|
+| [6G-Testbed](https://github.com/5G-MAG/6G-Testbed) | The testbed: `aitestbed/` runs the tests and computes the application-layer metrics, `netemu/` shapes the network | All sections |
+
+| You want | Go to |
+|---|---|
+| To pick a chat test and the profiles to compare | [1. Choose the test and the profiles](#1-choose-the-test-and-the-profiles) |
+| Results for three profiles | [2. Run the test over the profiles](#2-run-the-test-over-the-profiles) |
+| The numbers of every request | [3. Read the SQLite log](#3-read-the-sqlite-log) |
+| The aggregated metrics, and the comparison | [4. Read the report and compare the profiles](#4-read-the-report-and-compare-the-profiles) |
+| To know which TR 26.870 clause defines a number | [5. Map the metrics to TR 26.870](#5-map-the-metrics-to-tr-26870) |
+| A self-hosted model instead of a hosted provider | [6. Use a self-hosted model](#6-use-a-self-hosted-model) |
+
+**You need:** a Linux machine with Python 3.10 or later, `iproute2`, `tcpdump` and the testbed installed as in section 1 of [Run the testbed](./introduction-6g-testbed), including the step that lets your user run `tc`, `tcpdump`, `ip` and `modprobe` without a password. For the hosted route, an OpenAI API key. For the self-hosted route (section 6), an NVIDIA GPU with about 30 GB of memory and a vLLM server. Each run sends three requests, so three profiles of five runs each send 45 requests to the provider.
+
+## 1. Choose the test and the profiles
+
+Run every command from the `aitestbed` folder of the repository, with the virtual environment active. List what is configured:
+
+```bash
+cd 6G-Testbed/aitestbed
+python orchestrator.py --list-scenarios
+python orchestrator.py --list-profiles
+```
+
+The chat tests in `configs/scenarios.yaml` are:
+
+| Test | Provider and model | Response | What it gives |
+|---|---|---|---|
+| `chat_basic` | OpenAI, `gpt-5-mini` | one reply per request | latency, bytes, tokens; no time to first token |
+| `chat_streaming` | OpenAI, `gpt-5-mini` | streamed in chunks | all of the above, plus time to first token, chunk gaps and stalls |
+| `chat_vllm` | vLLM, `Qwen/Qwen3-VL-30B-A3B-Instruct` | streamed in chunks | the same as `chat_streaming`, from your own server (section 6) |
+
+Use `chat_streaming`: the time to first token and the stall metrics exist only for a streamed reply. Each run of the test sends the three prompts of the file one after the other, as one conversation, so one run writes three records. There are also `chat_gemini` and the DeepSeek chat tests, which need `GOOGLE_API_KEY` or `DEEPSEEK_API_KEY` instead.
+
+Compare three profiles from `configs/profiles.yaml`:
+
+| Profile | One-way delay | Jitter | Loss | Rate | Role |
+|---|---|---|---|---|---|
+| `no_emulation` | none | none | none | none | reference: no shaping is applied |
+| `5g_urban` | 20 ms | 5 ms | 0.1 % | 100 Mbit/s | urban terrestrial cellular |
+| `cell_edge` | 120 ms | 30 ms | 1.0 % | 5 Mbit/s | weak radio, heavy-tail jitter |
+
+The values are those of `configs/profiles.yaml` (the same ones are in TR 26.870 table D.3.1-1; see [Test design](../scope#network-profiles)). **Check:** the second command above lists all three names.
+
+## 2. Run the test over the profiles
+
+Set the key. The testbed also reads a `.env` file (copy `.env.example`), and a key in the shell takes the same effect:
+
+```bash
+export OPENAI_API_KEY="your-key"
+```
+
+Run the test once for each profile, five runs each. Give each profile its own report file:
+
+```bash
+for p in no_emulation 5g_urban cell_edge; do
+  python orchestrator.py --scenario chat_streaming --profile "$p" --runs 5 \
+    --report "results/reports/chat_streaming_$p.json"
+done
+```
+
+All three runs write their records to the same database, `logs/traffic_logs.db`, which is what lets you compare them there. The report is different: each run of `orchestrator.py` writes the report file again from its own results, so a run without `--report` replaces the report of the profile before it.
+
+The profile is applied to the interface the testbed detects (`--interface auto`) for the length of the run, in both directions, and cleared at the end. At the start of each run the log says `Applying network profile`. If it also says `Failed to apply network profile (may require sudo)`, the run continues without shaping and its numbers are those of an unshaped network: set up the passwordless `sudo` step and run again.
+
+**Check:** at the end of each run the orchestrator prints a summary headed `Results for chat_streaming with <profile>`, with the sample count, the mean and 95th percentile latency, the success rate, the bytes, the tokens and, for a streamed reply, the time to first token and the stall rate. The sample count is 15 if all five runs succeeded (five runs of three requests). Count the records of each profile:
+
+```bash
+python - <<'EOF'
+import sqlite3
+con = sqlite3.connect("logs/traffic_logs.db")
+for row in con.execute("""
+    select network_profile, count(*), sum(success)
+    from traffic_logs
+    where scenario_id = 'chat_streaming' and turn_index >= 0
+    group by network_profile"""):
+    print(row)
+EOF
+```
+
+Each row is the profile, the number of records and the number of successful ones.
+
+<details>
+<summary>Add packet capture</summary>
+
+Add `--capture-pcap` to a run to record the L3 and L4 packets with `tcpdump` in `results/captures/`, with a metadata file next to each capture. The network-layer metrics of [Shape any traffic with netemu alone](./netemu-alone) come from such captures. A capture adds a record with `turn_index` of -2 to the log, which is why the queries on this page filter on `turn_index >= 0`.
+
+</details>
+
+## 3. Read the SQLite log
+
+The log is the table `traffic_logs`, one row per request (`analysis/logger.py`). The columns used here are:
+
+| Column | Meaning |
+|---|---|
+| `network_profile` | the profile the request ran under |
+| `t_request_start`, `t_first_token`, `t_last_token` | wall-clock times of the request, of the first streamed chunk and of the last one |
+| `latency_sec` | for a streamed reply, the time from the request to the last chunk |
+| `tokens_in`, `tokens_out` | token counts: from the provider's usage field where it is returned, estimated otherwise |
+| `request_bytes`, `response_bytes` | sizes of the serialised request and response (an estimate at the application layer, not network bytes) |
+| `chunk_count`, `inter_chunk_times` | chunks received and the gaps between them, in seconds, as a JSON list |
+| `success`, `http_status`, `error_type` | outcome of the request |
+
+Print the main application-layer numbers for each profile:
+
+```bash
+python - <<'EOF'
+import sqlite3
+con = sqlite3.connect("logs/traffic_logs.db")
+print("profile  requests  ttft_s  latency_s  tokens_per_s  failed")
+for row in con.execute("""
+    select network_profile,
+           count(*),
+           round(avg(t_first_token - t_request_start), 3),
+           round(avg(latency_sec), 3),
+           round(avg(tokens_out * 1.0 / latency_sec), 1),
+           sum(1 - success)
+    from traffic_logs
+    where scenario_id = 'chat_streaming' and turn_index >= 0
+    group by network_profile"""):
+    print(row)
+EOF
+```
+
+The four numbers are the ones the repository defines as follows (`METRICS.md`):
+
+- **Time to first token** is `t_first_token` minus `t_request_start`. Only streamed replies have it.
+- **Latency** is the whole response time. For a streamed reply it ends with the last chunk, so it equals the time to last token.
+- **Tokens per second** is `tokens_out` divided by `latency_sec` for each request, then averaged. The time to first token is inside the divisor, so the figure is not the speed of the model alone: a slower network lowers it even when the model is as fast as before.
+- **Failed** counts the requests with `success` of 0. `error_type` and `http_status` say why.
+
+**Check:** the query prints one row for each profile. For `no_emulation` the time to first token is the smallest of the three, and `failed` is 0 unless the provider refused a request.
+
+To see the gaps between the chunks of one request (the data the stall metric uses), print them for a profile:
+
+```bash
+python - <<'EOF'
+import sqlite3, json
+con = sqlite3.connect("logs/traffic_logs.db")
+row = con.execute("""
+    select chunk_count, inter_chunk_times from traffic_logs
+    where scenario_id = 'chat_streaming' and network_profile = 'cell_edge' and turn_index >= 0
+    limit 1""").fetchone()
+gaps = json.loads(row[1])
+print(row[0], "chunks; largest gap", max(gaps), "s")
+EOF
+```
+
+A gap at or above 1 s counts as a stall; the threshold is `stall_gap_sec` in `configs/scenarios.yaml` (1.0 by default).
+
+## 4. Read the report and compare the profiles
+
+Each report file holds the aggregated metrics of one profile in the testbed's report format (`MetricsCalculator.to_3gpp_format`). Print the main values of the three reports side by side and the change from the reference profile:
+
+```bash
+python - <<'EOF'
+import json
+rows = {}
+for p in ["no_emulation", "5g_urban", "cell_edge"]:
+    r = json.load(open(f"results/reports/chat_streaming_{p}.json"))
+    m = r["scenarios"]["chat_streaming"][p]
+    rows[p] = m
+base = rows["no_emulation"]["qoe_metrics"]["response_latency_ms"]
+for p, m in rows.items():
+    q, t, s = m["qoe_metrics"], m["traffic_characteristics"], m["streaming_metrics"]
+    delta = 100 * (q["response_latency_ms"] - base) / base if base else 0
+    print(p, "samples", m["samples"])
+    print("  ttft ms mean/p95 :", round(q["time_to_first_token_ms"]), round(q["time_to_first_token_p95_ms"]))
+    print("  latency ms mean/p95:", round(q["response_latency_ms"]), round(q["response_latency_p95_ms"]), f"({delta:+.0f} % vs no_emulation)")
+    print("  tokens per second :", round(t["token_rate_per_sec"] or 0, 1))
+    print("  stall rate        :", s["stall_rate"])
+    print("  success rate %    :", q["success_rate_pct"])
+    print("  errors            :", m["error_taxonomy"])
+EOF
+```
+
+Where there is no sample, the report holds 0 for a time, not an empty value. A time to first token of 0 therefore means that the test streamed nothing (this is what `chat_basic` gives). The report keys of the errors are `timeout`, `rate_limited`, `server_error`, `tool_failure` and `other`.
+
+**Check:** the script prints three blocks with `samples 15` each if all runs succeeded. The reference profile, with no added delay, has the shortest times and the highest token rate. Read the others against it:
+
+- **Time to first token** grows with the delay of the profile, because the request and the first chunk each cross the shaped link; the TR describes it as the model's first inference latency plus the network round trip. `cell_edge` (120 ms each way, with jitter) shows more of it than `5g_urban` (20 ms).
+- **Latency and the token rate** depend on the whole stream. A rate limit of 5 Mbit/s and 1 % loss (`cell_edge`) can lengthen the stream and lower the tokens per second; a plain text reply is small, so the effect may be small too. Report what you see, and use more runs (`--runs 30` is the testbed's setting for a publication run) before you draw a conclusion from a difference between two profiles.
+- **Stalls and errors** show up when delay, loss or timeouts stretch the gap between chunks past the threshold, or when a request fails.
+
+What the numbers will be for your key, your model and your link is not given here, because it depends on them.
+
+<details>
+<summary>The packet-level view of the same runs</summary>
+
+The application-layer metrics above come from the log. Network-layer metrics (handshake round-trip time, retransmissions, bytes in each direction, burstiness) come from the captures and are computed by `netemu.pcap`. Run the profiles again with `--capture-pcap`, then follow [Shape any traffic with netemu alone, section 4](./netemu-alone#4-measure-a-set-of-captures) to read the files in `results/captures/`. The default capture filter holds the ports 443, 80, 8080 and 8000 and the usual WebRTC UDP ports, which covers a hosted API.
+
+</details>
+
+## 5. Map the metrics to TR 26.870
+
+The numbers above are the ones of clause D.4 of TR 26.870 V0.6.1. The output key is the key in the report; the whole list, with the formulas, is on [Metrics](../metrics).
+
+| What you read | Report key | TR 26.870 clause |
+|---|---|---|
+| Response time (latency) | `response_latency_ms`, `response_latency_p95_ms` | D.4.4.1 |
+| Time to first token | `time_to_first_token_ms`, `time_to_first_token_p95_ms` | D.4.4.2 |
+| Time to last token | `time_to_last_token_ms` | D.4.4.3 |
+| Stalls | `stall_rate`, `stall_event_count` | D.4.4.4 |
+| Success rate and errors | `success_rate_pct`, `error_taxonomy` | D.4.4.5 |
+| Tokens in and out, token rate | `token_rate_per_sec` (and `tokens_in`, `tokens_out` in the log) | D.4.3.2, table D.4.3.2-1 |
+| Bytes up and down, their ratio | `uplink_bytes_avg`, `downlink_bytes_avg`, `ul_dl_ratio` | D.4.3.2 |
+| Burstiness of the requests | the `burstiness` block | D.4.3.4, table D.4.3.4-1 |
+
+An Editor's Note in annex B.1 of the TR says that whether and how the time to first token, the time to last token and the tool-call latency can be used to evaluate AI traffic is for further study. Treat the comparison between profiles as a measurement of this testbed and this model.
+
+## 6. Use a self-hosted model
+
+To measure your own model instead of a hosted provider, run `chat_vllm`. It needs an NVIDIA GPU (the README asks for about 30 GB of memory for the default model) and Docker with the NVIDIA container toolkit, or a host install of vLLM.
+
+1. Start the server, as in the aitestbed README (it listens on `127.0.0.1:8000`):
+
+   ```bash
+   docker run -d --name vllm-testbed --gpus all --ipc=host \
+       -v ~/.cache/huggingface:/root/.cache/huggingface \
+       -p 127.0.0.1:8000:8000 \
+       vllm/vllm-openai:latest \
+       --model Qwen/Qwen3-VL-30B-A3B-Instruct \
+       --max-model-len 32768 --gpu-memory-utilization 0.95 \
+       --trust-remote-code --tensor-parallel-size 1
+   ```
+
+2. Check that it answers: `curl -s http://127.0.0.1:8000/v1/models` lists the model.
+3. Run the test over the same three profiles. The server is on this machine, so shape the loopback interface with `--interface lo`:
+
+   ```bash
+   for p in no_emulation 5g_urban cell_edge; do
+     python orchestrator.py --scenario chat_vllm --interface lo --profile "$p" --runs 5 \
+       --report "results/reports/chat_vllm_$p.json"
+   done
+   ```
+
+4. Read the log and the reports as in sections 3 and 4, with `chat_vllm` in place of `chat_streaming`.
+
+To use a server on another machine, set `VLLM_BASE_URL` (default `http://localhost:8000/v1`) and `VLLM_API_KEY` in the environment or in `.env`, and leave out `--interface lo`. The `model` of the test in `configs/scenarios.yaml` must be the model the server serves. Stop the server when you finish: `docker stop vllm-testbed && docker rm vllm-testbed`.
+
+<details>
+<summary>Sources for this page</summary>
+
+- **Test and profile names, prompts, models, streaming flags:** `aitestbed/configs/scenarios.yaml` (`chat_basic`, `chat_streaming`, `chat_vllm`) and `aitestbed/configs/profiles.yaml`, at the `refactor` branch of 5G-MAG/6G-Testbed. Profile values also in TR 26.870 V0.6.1, clause D.3.1, table D.3.1-1.
+- **Command-line options (`--scenario`, `--profile`, `--runs`, `--report`, `--db`, `--interface`, `--capture-pcap`, `--list-scenarios`, `--list-profiles`) and the end-of-run summary:** `aitestbed/orchestrator.py`. One report file per run: `generate_report` in `aitestbed/analysis/metrics.py`.
+- **Records per run, one for each prompt, and which fields are set for a streamed reply:** `aitestbed/scenarios/chat.py`. The table and its columns: `aitestbed/analysis/logger.py`.
+- **Metric definitions, the token rate formula and the report keys:** `aitestbed/METRICS.md` and `aitestbed/analysis/metrics.py` (`to_3gpp_format`, the error keys, the 0 for a missing time).
+- **TR clauses:** TR 26.870 V0.6.1, clauses D.4.3.2, D.4.3.4, D.4.4.1 to D.4.4.5 and the Editor's Note of annex B.1, as listed on [Metrics](../metrics).
+- **vLLM server and `VLLM_BASE_URL`:** the aitestbed README, section "vLLM (Self-Hosted Models)", and `aitestbed/clients/vllm_client.py`. `--interface lo` for `chat_vllm`: `aitestbed/run_full_tests.sh`, which reads `network_interface: lo` from the test entry and passes it on; only that script reads the key, so a direct call of the orchestrator needs the option.
+- **Verification: Not run.** The commands and the descriptions of the output come from the repository documentation and code at the `refactor` branch, as it stands now. They were not run for this page, and no output is shown for that reason. The page is written as if that branch were merged. Check the page on a clean machine before you rely on it.
+
+</details>

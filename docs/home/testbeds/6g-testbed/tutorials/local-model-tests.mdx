@@ -1,0 +1,316 @@
+---
+title: "6G AI Traffic Characterization Testbed: real-time video and token tests"
+sidebar_label: "6G AI Traffic Characterization Testbed - real-time video and token tests with a local model"
+hide_title: true
+sidebar_position: 3
+description: "Step by step with the 6G AI Traffic Characterization Testbed: run the real-time video understanding and chat token tests with a local model, trace them over the lossy profile with loopback capture, and read the results against TR 26.870 table C.8.6-1."
+---
+
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M7 8l-4 4l4 4" />
+  <path d="M17 8l3.111 3.111" />
+  <path d="M14 4l-2.175 8.7" />
+  <path d="M14 21v-4a2 2 0 1 1 4 0v4" />
+  <path d="M14 19h4" />
+  <path d="M21 15v6" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">6G AI Traffic Characterization</span>
+<h1>6G AI Traffic Characterization Testbed</h1>
+</div>
+</div>
+
+In this tutorial you run the two tests of the 6G AI Traffic Characterization Testbed in which TR 26.870 observes tokenized traffic (clause C.8.6, table C.8.6-1): the real-time video understanding test, which streams video over WebRTC to a vision language model on your machine, and the chat test with token IDs, which sends the prompt as token identifiers to an OpenAI-compatible server. You get the assets and the tokenizer files, run each test over a lossy network profile with the packets captured on the loopback interface, run the scripts that repeat a test over a list of profiles, and read the traced results.
+
+:::tip[Read the READMEs first]
+Read the [aitestbed README](https://github.com/5G-MAG/6G-Testbed/blob/main/aitestbed/README.md), in particular its sections on the VLM and token ID assets and on running these tests, and the [netemu README](https://github.com/5G-MAG/6G-Testbed/blob/main/netemu/README.md) for section 5. Installing the testbed is described once, on [Run the testbed](./introduction-6g-testbed); this tutorial points to it.
+:::
+
+| Repository | What it is | Used in |
+|---|---|---|
+| [6G-Testbed](https://github.com/5G-MAG/6G-Testbed) | The testbed: the tests, the VLM server, the modified `aiortc` (`aiortc-main-clean/`) and `netemu/` | All sections |
+
+| You want | Go to |
+|---|---|
+| The machine ready, with the GPU checked | [1. Prepare the machine](#1-prepare-the-machine) |
+| The model, the tokenizer files and the dataset for the video test | [2. Get the assets of the video test](#2-get-the-assets-of-the-video-test) |
+| A first real-time video run | [3. Run the real-time video test](#3-run-the-real-time-video-test) |
+| A trace over the lossy profile | [4. Trace the video test over the lossy profile](#4-trace-the-video-test-over-the-lossy-profile) |
+| To read the capture, the log and the report | [5. Read the traced results](#5-read-the-traced-results) |
+| The video test over a list of profiles | [6. Run the video test over a list of profiles](#6-run-the-video-test-over-a-list-of-profiles) |
+| The chat test with token IDs | [7. Run the chat test with token IDs](#7-run-the-chat-test-with-token-ids) |
+| The token metrics, next to table C.8.6-1 | [8. Read the token metrics](#8-read-the-token-metrics) |
+
+**You need:** a Linux machine with an NVIDIA GPU of about 30 GB of memory (the README gives about 2.5 GB for the video client and 27 GB for the server) and CUDA Toolkit 12.1 or later; Python 3.10 or later, `iproute2`, `tcpdump`; the testbed installed as in section 1 of [Run the testbed](./introduction-6g-testbed), including the step that lets your user run `tc`, `tcpdump`, `ip` and `modprobe` without a password. The model and dataset files are large, so allow plenty of disk space (their sizes are on the Hugging Face pages linked below). For the chat test, an OpenAI-compatible server that runs an open-source model, on this machine or another. No API key from a hosted provider is needed.
+
+## 1. Prepare the machine
+
+Install the modified `aiortc` that the video test uses, from the root of the repository, with the virtual environment of the install active:
+
+```bash
+cd 6G-Testbed
+pip install -e aiortc-main-clean
+```
+
+**Check:** the GPU and PyTorch see each other.
+
+```bash
+nvidia-smi
+python -c "import torch; print(torch.cuda.is_available())"
+```
+
+The last line prints `True`. The pinned versions are `torch==2.4.1` and `transformers==4.44.2` in `aitestbed/requirements.txt`.
+
+## 2. Get the assets of the video test
+
+The video test needs the tokenizer files, the model and a dataset of videos with questions. Do all of this from the root of the repository.
+
+1. Tokenizer files, into `aiortc-main-clean/src/aiortc/liquid/checkpoints/chameleon`:
+
+   ```bash
+   D=aiortc-main-clean/src/aiortc/liquid/checkpoints/chameleon
+   mkdir -p $D
+   curl -L -o $D/vqgan.ckpt https://huggingface.co/spaces/Junfeng5/Liquid_demo/resolve/main/chameleon/vqgan.ckpt
+   curl -L -o $D/vqgan.yaml https://huggingface.co/spaces/Junfeng5/Liquid_demo/resolve/main/chameleon/vqgan.yaml
+   ```
+
+2. The model: download all files of [Liquid_V1_7B](https://huggingface.co/Junfeng5/Liquid_V1_7B/tree/main) into `aiortc-main-clean/src/aiortc/liquid/checkpoints/model`.
+3. The dataset (StreamingBench, task class `real`), unzipped into `aitestbed/examples/assets/dataset_real`:
+
+   ```bash
+   curl -L -o real-time-visual-understanding.zip "https://huggingface.co/datasets/mjuicem/StreamingBench/resolve/main/Real-Time%20Visual%20Understanding_1-50.zip"
+   unzip real-time-visual-understanding.zip -d aitestbed/examples/assets/dataset_real
+   ```
+
+**Check:** the folders `sample_1` to `sample_50` sit directly in `dataset_real`, and each holds a video next to its `questions.json`. The test reads the `.mp4` files of these folders.
+
+```bash
+ls aitestbed/examples/assets/dataset_real/sample_1
+ls aiortc-main-clean/src/aiortc/liquid/checkpoints/model
+```
+
+The first listing shows `questions.json` and an `.mp4` file; the second shows the model files you downloaded.
+
+The test entry `realtime_video_understanding` in `aitestbed/configs/scenarios.yaml` is set to `task_class: "real"` and this dataset. The other class, `proactive_output`, is in the fold below.
+
+<details>
+<summary>The proactive output class</summary>
+
+Download [Proactive Output_1-25.zip](https://huggingface.co/datasets/mjuicem/StreamingBench/blob/main/Proactive%20Output_1-25.zip) and unzip it into `aitestbed/examples/assets/dataset`. In `configs/scenarios.yaml`, change the entry to `task_class: "proactive_output"` with `results_dir` and `video_paths` set to `examples/assets/dataset/`; a commented example is in the file.
+
+</details>
+
+## 3. Run the real-time video test
+
+The test needs two processes. In the first terminal, start the model server, from the `aitestbed` folder. It loads the model before it accepts a connection:
+
+```bash
+cd 6G-Testbed/aitestbed
+python ./server/realtime_vlm_server.py
+```
+
+**Check:** once the model is loaded, the server log says `Listening on 127.0.0.1:1234`. This is the signalling port of the test.
+
+In a second terminal, from the same folder, run one run with no network emulation and the packets captured:
+
+```bash
+python orchestrator.py --scenario realtime_video_understanding \
+  --profile no_emulation --runs 1 \
+  --capture-pcap --capture-dir results/captures/vlm/first
+```
+
+**Check:** the run ends with a summary of samples, latency and success rate, and the server log shows the connection and, at the end, `Benchmark results saved`. The capture folder holds two captures, because the test declares that it uses the loopback interface (`uses_loopback`) and the testbed then starts a second capture on `lo`:
+
+```bash
+ls results/captures/vlm/first
+```
+
+One file is the primary capture, `capture_<date>_<time>.pcap`; the other is `capture_lo_<date>_<time>.pcap`. The server and the client are on the same machine, and ICE offers no `127.0.0.1` candidate, so the video media goes between the address of the primary interface and itself, over `lo`: it is in the `capture_lo` file, not in the primary one.
+
+## 4. Trace the video test over the lossy profile
+
+The profile `lossy` of `configs/profiles.yaml` adds no delay and drops 10 % of the packets at random, with no rate limit. TR 26.870 defines the profile as a loss between 1 % and 30 % (clause D.3.1) and uses it at 1, 3, 5, 10, 20 and 30 % in annex D.5.1; to run another value, add a profile with another `loss_pct` to `configs/profiles.yaml` and use its name. Keep the server of section 3 running, and run:
+
+```bash
+PROFILE=lossy
+python orchestrator.py \
+  --scenario realtime_video_understanding \
+  --profile $PROFILE \
+  --runs 20 \
+  --interface lo \
+  --capture-pcap \
+  --capture-dir results/captures/vlm/${PROFILE} \
+  --report results/reports/experiment_report_realtime_video_understanding_${PROFILE}.json \
+  --db logs/traffic_logs_vlm_${PROFILE}.db \
+  --egress-only
+```
+
+`--interface lo` names the interface that is shaped and captured; `--egress-only` shapes the outgoing direction only. The test shapes all UDP on `lo` plus the TCP signalling port with the active profile for the length of each run, and clears it at the end. The report, the database and the captures have their own names for this profile, so that another profile does not overwrite them.
+
+**Check:** the capture folder holds `.pcap` files with a `.metadata.json` next to each, the database `logs/traffic_logs_vlm_lossy.db` exists, and the end-of-run summary lists the success rate. Then check that the media is in the capture, with the parser of netemu (run from `aitestbed`):
+
+```bash
+python - <<'EOF'
+import glob
+from netemu import analyze_pcap
+for f in sorted(glob.glob("results/captures/vlm/lossy/*.pcap")):
+    m = analyze_pcap(f)
+    print(f.split("/")[-1], "UDP flows:", m.udp_flows, "UL/DL bytes:", m.ul_bytes_total, m.dl_bytes_total)
+EOF
+```
+
+A capture with the video has UDP flows and a large uplink volume. If every capture shows no UDP flow or almost no bytes, the media is missing. With `--interface lo` the testbed does not start the second capture on `lo` (it does so only when the primary interface is another one), and the primary capture uses a default filter that holds ports 443, 80, 8080 and 8000 and the usual WebRTC service ports 3478, 3479, 5349, 5350 and 19302, which the media ports negotiated by ICE are not part of. Run again with `--capture-filter ""` added, an empty filter that captures all traffic (`--help` of the orchestrator), or leave out `--interface lo` and use the `capture_lo` file as in section 3. These two remedies come from reading the code, not from a run.
+
+How the result reads: each inference call uses only the most recent frame it has received, and the questions are part of the client's request, not timed to the video. The test measures the traffic shape and volume of a continuous uplink video stream against the downlink answers, not the accuracy of video understanding over several frames (aitestbed README).
+
+## 5. Read the traced results
+
+Three places hold the results of a profile.
+
+**The log.** One record is a connection (`turn_index` -1: the sizes of the SDP offer and answer and the connection setup time, in `metadata`), one record is the analysis of a video (`turn_index` 0 and up), and one is the capture (`turn_index` -2). For each video:
+
+```bash
+python - <<'EOF'
+import sqlite3, json
+con = sqlite3.connect("logs/traffic_logs_vlm_lossy.db")
+for r in con.execute("""
+    select success, latency_sec, t_first_token - t_request_start, chunk_count,
+           request_bytes, response_bytes, tokens_in, tokens_out, metadata
+    from traffic_logs
+    where scenario_id = 'realtime_video_understanding' and turn_index >= 0"""):
+    meta = json.loads(r[8])
+    print(r[:8], meta["video_frames_sent"], meta["video_upload_rate_mbps"])
+EOF
+```
+
+`request_bytes` is the video bytes sent and `response_bytes` the text bytes received. `tokens_in` is an estimate, 1024 tokens for each frame sent (`scenarios/realtime_video.py`); `tokens_out` is the token count of the answer. `video_frames_sent` and `video_upload_rate_mbps` are in the record's `metadata`.
+
+**The report.** Open `results/reports/experiment_report_realtime_video_understanding_lossy.json`. Besides the metrics of [the chat tutorial](./chat-test-over-profiles), it has a `task_accuracy` block: `real_total`, `real_correct` and `real_accuracy` are the questions asked, the questions answered correctly and their share for the task class `real` (clause D.4.6.1.1 of the TR). The accuracy is computed from the files `questions_results_<profile>.json`, which the server writes next to each `questions.json` (for example `examples/assets/dataset_real/sample_1/questions_results_lossy.json`).
+
+**The capture.** `netemu.pcap` gives the volume in each direction, the flows and the burst structure of the media. Compare the uplink bytes of a `lossy` run with a `no_emulation` run of the same video count: the TR reports, for the implementation it evaluated, that the delivered uplink volume falls in proportion to the applied loss up to 10 % and faster above it (clause C.8.6.2 and annex D.5.1, as summarised on [Results](../results)). Your numbers may differ, and the comparison needs the same number of runs and the same videos in both.
+
+## 6. Run the video test over a list of profiles
+
+`run_vlm_test.sh` repeats the video test over eight profiles, `congested`, `no_emulation`, `lossy`, `6g_itu_hrllc`, `5g_urban`, `cell_edge`, `5qi_7` and `5qi_80`, with the options of section 4, one profile after the other, and `--egress-only`. Keep the server running and, from `aitestbed`, run:
+
+```bash
+bash run_vlm_test.sh
+```
+
+The variables at the top of the script set `RUNS` (2 runs for each profile) and `PROFILE_INTERVAL` (20 seconds between profiles); edit them for more runs or a longer pause. For each profile it writes `logs/traffic_logs_vlm_<profile>.db`, `results/reports/experiment_report_realtime_video_understanding_<profile>.json` and the captures in `results/captures/vlm/<profile>`, and at the end it copies captures, reports and logs to `archived_results/<date>_<time>/` and a `results_<date>_<time>.tar.gz` file.
+
+:::tip[What the script does to your machine]
+Before each profile the script deletes that profile's old database, report, capture folder and `questions_results_<profile>.json` files, so a second run replaces the files of the first; the archive of the first run stays. When it is interrupted, and at its end, it calls `sudo pkill -9 -f tcpdump` (which stops every `tcpdump` on the machine) and, on an interruption, `sudo pkill -9 -f orchestrator`, and it clears the rules on `lo`. `pkill` is not among the commands of the passwordless `sudo` entry in the README, so `sudo` may ask for your password then.
+:::
+
+**Check:** after the last profile, `ls logs/traffic_logs_vlm_*.db` lists eight databases and `archived_results/` holds the archive. Read each profile as in section 5.
+
+## 7. Run the chat test with token IDs
+
+The `chat_token` test (TR 26.870 clause D.1.2.1) tokenizes the conversation with the tokenizer of your model, sends the token IDs as the prompt to the completions endpoint of an OpenAI-compatible server, and records the response and the tokens.
+
+1. Start an OpenAI-compatible server that runs an open-source model, on this machine or another. The vLLM server of [the chat tutorial, section 6](./chat-test-over-profiles) is one; its default address is `http://127.0.0.1:8000/v1`.
+2. Copy the tokenizer files of that model to a folder. They are the files that `AutoTokenizer.from_pretrained` reads from a folder, with the chat template of the model; the test loads them without network access.
+3. Set four values in `.env`, in `aitestbed` or in the root of the repository (copy `aitestbed/.env.example`, which has a commented block for this test), or in the shell:
+
+   ```bash
+   OPENAI_BASE_URL=http://<server>:<port>/v1
+   OPENAI_API_KEY=<a key your server accepts>
+   MODEL_NAME=<the model name your server serves>
+   TOK_PATH=<the folder with the tokenizer files>
+   ```
+
+   `<server>` and `<port>` are those of your server. The test sends `enable_thinking: false` to the server, which is meant for Qwen models, and asks for at most 2 048 tokens.
+4. Run the test once over the reference profile:
+
+   ```bash
+   cd 6G-Testbed/aitestbed
+   python orchestrator.py --scenario chat_token --profile no_emulation --runs 2
+   ```
+
+**Check:** the run ends with the summary, and the log holds records for `chat_token` with `tokens_in` above 0 (the number of token IDs sent) and `tokens_out`:
+
+```bash
+python - <<'EOF'
+import sqlite3
+con = sqlite3.connect("logs/traffic_logs.db")
+for r in con.execute("""
+    select network_profile, turn_index, success, tokens_in, tokens_out, request_bytes, response_bytes
+    from traffic_logs where scenario_id = 'chat_token' and turn_index >= 0"""):
+    print(r)
+EOF
+```
+
+If the run fails at the start with `Tokenizer init failed`, `TOK_PATH` does not point to a folder of tokenizer files.
+
+Trace the lossy profile. Replace `<iface>` with the interface that reaches your server (`lo` when the server is on this machine):
+
+```bash
+PROFILE=lossy
+python orchestrator.py \
+  --scenario chat_token \
+  --profile $PROFILE \
+  --runs 10 \
+  --interface <iface> \
+  --capture-pcap \
+  --capture-dir results/captures/${PROFILE} \
+  --report results/reports/experiment_report_chat_token_${PROFILE}.json \
+  --db logs/traffic_logs${PROFILE}.db
+```
+
+The default capture filter holds the ports 443, 80, 8080 and 8000. If your server listens on another port, add `--capture-filter "port <port>"`.
+
+`bash run_chat_test.sh` repeats the test over the same eight profiles as the video script, with 10 runs each (`RUNS`), 20 seconds between profiles and `--interface lo`, which suits a server on the same machine; edit the script for a remote server. It writes `logs/traffic_logs__chat_token_<profile>.db` (two underscores), a report for each profile and captures in `results/captures/chat_token/<profile>`, and it does not pass `--egress-only`. It makes the same changes to your machine as the video script (section 6).
+
+**Check:** the capture folder of each profile holds one capture for each run of the script, with a `.metadata.json` file next to it, and each database holds the records of its profile.
+
+## 8. Read the token metrics
+
+Table C.8.6-1 of TR 26.870 lists, for real-time video understanding and for chat with tokens, the token rates, the token counts, the encapsulation, the volume per token and the burst figures (the values are on [Results](../results)). The repository computes the following for tokenized traffic (`METRICS.md`, "RAN2 Q5"). From the root of `aitestbed`, run them on a profile's database:
+
+```bash
+python - <<'EOF'
+import sqlite3, json
+from analysis.ran2_metrics import compute_ran2_metrics
+con = sqlite3.connect("logs/traffic_logs_vlm_lossy.db")
+con.row_factory = sqlite3.Row
+records = [dict(r) for r in con.execute("select * from traffic_logs")]
+q5 = compute_ran2_metrics(records, None, "configs/profiles.yaml")["Q5"]
+print(json.dumps(q5["token_counts_by_scenario"], indent=2))
+print(json.dumps(q5["token_to_bytes_regression_by_scenario"], indent=2))
+print(json.dumps(q5["inter_token_gap_by_profile"], indent=2))
+EOF
+```
+
+Use `logs/traffic_logs__chat_token_lossy.db` for the chat test. Without captures, the metrics that come from the log alone are filled; the packet-based ones are empty (`n` of 0). The results are:
+
+| Result | What it is | Closest entry in table C.8.6-1 |
+|---|---|---|
+| `token_counts_by_scenario` | distributions of `tokens_in`, `tokens_out` and tokens per second (`tokens_out` over `latency_sec`) for each test | input tokens, output tokens, downlink output token rate |
+| `token_to_bytes_regression_by_scenario` | least-squares fit of the request bytes on the input tokens and of the response bytes on the output tokens: the slope is bytes per token | uplink and downlink volume per token (application-layer bytes) |
+| `inter_token_gap_by_profile` | gap between received chunks, per profile, for streamed replies | none; the gap between tokens is a measurement of C.8.3 |
+
+What each number means and what it leaves out:
+
+- For the video test, `tokens_in` is the 1024 tokens per frame estimate, so its rate and the slope derived from it are estimates, not counts from the model.
+- The TR's volume per token includes packetization overhead and is measured on the wire. For a figure on the same footing, divide the uplink IP-payload bytes of a capture (`ul_bytes_total` of `netemu.pcap`) by the tokens sent. The uplink token rate of the table, tokens sent per second of the session, is not an output key that I found in the repository; compute it from the same two numbers.
+- The encapsulation is read from the capture: the video media is RTP over UDP, and the chat tokens are in HTTP bodies over TCP. `udp_flows` and `tcp_flows` of `analyze_pcap` show which is which.
+- The burst figures: the report's `burstiness` block gives the peak-to-mean ratio and the ON and OFF gaps of the requests (clause D.4.3.4); `netemu.pcap` gives bursts of packets at 10 ms and 100 ms. Clause C.8.6 states the basis of the TR's values; check it before comparing.
+- The TR says its values for real-time video understanding are those of an initial measurement campaign of one implementation; yours are for your model, machine and videos.
+
+<details>
+<summary>Sources for this page</summary>
+
+- **Hardware, install, assets, URLs, folders, the dataset classes, the commented `proactive_output` entry:** the aitestbed README (its installation section and the sections on the VLM and token ID assets and on running these tests) and `aitestbed/configs/scenarios.yaml`, `refactor` branch of 5G-MAG/6G-Testbed; `aitestbed/requirements.txt` for the pinned versions.
+- **Server, signalling port 1234, results files:** `aitestbed/server/realtime_vlm_server.py` (default `--signaling-host 127.0.0.1`, `--signaling-port 1234`, the result file name with the profile) and `aitestbed/analysis/metrics.py` (`load_task_results`). The log lines quoted in the checks are from the same file; their exact wording is to be confirmed in a run.
+- **Loopback capture and shaping, the `capture_lo` file, the default filter and its ports, the empty filter:** `aitestbed/orchestrator.py` (the condition for the second capture, `--capture-filter`), `aitestbed/configs/__init__.py` (the default filter), `aitestbed/scenarios/realtime_video.py` (`uses_loopback`, shaping of `lo`), and the netemu README, "Loopback Shaping".
+- **Commands for the lossy trace, the scripts, their profile lists, defaults and clean-up behaviour:** the aitestbed README and `aitestbed/run_vlm_test.sh`, `aitestbed/run_chat_test.sh`.
+- **What a video record holds, the 1024 tokens per frame estimate:** `aitestbed/scenarios/realtime_video.py`. **The token ID test (tokenizer, completions endpoint, `enable_thinking`, 2 048 tokens, `Tokenizer init failed`):** `aitestbed/scenarios/chat_token.py`, `aitestbed/clients/openai_token_client.py`, `aitestbed/.env.example`.
+- **Token metrics:** `aitestbed/METRICS.md`, section "RAN2 Q5", and `aitestbed/analysis/ran2_metrics.py` (`compute_ran2_metrics`, `_q5_tokenized`).
+- **TR clauses:** TR 26.870 V0.6.1, clauses D.1.2.1, D.1.2.5, D.3.1, D.4.3.4, D.4.6.1.1, C.8.6 (table C.8.6-1 and clause C.8.6.2) and annex D.5.1, as summarised on [Results](../results) and [Test design](../scope).
+- **Verification: Not run.** The commands and the descriptions of what to look for come from the repository documentation and code at its current state. They were not run for this page (this needs an NVIDIA GPU), and no output is shown for that reason. Check them on a clean machine before you rely on them.
+
+</details>

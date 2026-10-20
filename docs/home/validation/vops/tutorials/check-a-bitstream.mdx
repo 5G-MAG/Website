@@ -1,0 +1,476 @@
+---
+title: "Tutorial: VOPS Conformance Validator"
+sidebar_label: "VOPS Conformance Validator - check a bitstream against an operation point"
+hide_title: true
+sidebar_position: 1
+description: "Step by step with the VOPS Conformance Validator: install it, make AVC HD and HEVC HD streams with an encoder, check them against their operation point, break them on purpose, and read the JSON report and the XML description."
+---
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M12 15a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+  <path d="M13 17.5v4.5l2 -1.5l2 1.5v-4.5" />
+  <path d="M10 19h-5a2 2 0 0 1 -2 -2v-10c0 -1.1 .9 -2 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -1 1.73" />
+  <path d="M6 9l12 0" />
+  <path d="M6 12l3 0" />
+  <path d="M6 15l2 0" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Validation Tools</span>
+<h1>Tutorial: VOPS Conformance Validator</h1>
+</div>
+</div>
+
+The [VOPS Conformance Validator](https://github.com/5G-MAG/vops-conformance-validator) reads an AVC or HEVC video bitstream, writes an XML description of it, and checks that description against the rules of a 3GPP TS 26.265 operation point. In this tutorial you install it, make an AVC HD stream and an HEVC HD stream with an encoder, check each one against its operation point, break them on purpose, and read what the validator tells you.
+
+:::tip[Read the READMEs first]
+The repository below has a README that lists the commands and the options. Read [vops-conformance-validator](https://github.com/5G-MAG/vops-conformance-validator#readme) before you start.
+:::
+
+| Repository | What it is | Used in |
+|---|---|---|
+| [vops-conformance-validator](https://github.com/5G-MAG/vops-conformance-validator) | The validator: the parsers, the XSD rules for each operation point and `config.yaml` | All sections |
+
+| You want | Go to |
+|---|---|
+| The validator installed and working | [1. Install the validator](#1-install-the-validator) |
+| An AVC HD stream that passes | [2. Make an AVC HD stream and validate it](#2-make-an-avc-hd-stream-and-validate-it) |
+| To see what a failing stream looks like, and how to read the JSON report | [3. Break the operation point on purpose](#3-break-the-operation-point-on-purpose) |
+| The XML description of a stream, and one schema checked on its own | [4. Look inside: the XML description](#4-look-inside-the-xml-description) |
+| The same for HEVC HD, with a "shall" and a "should" failing | [5. HEVC HD](#5-hevc-hd) |
+
+**You need:** a Linux machine with `git`, `python3` with the `venv` module (on Ubuntu, `sudo apt install python3-venv`) and `ffmpeg` with the `libx264` and `libx265` encoders; about 100 MB of disk. Check the encoders with `ffmpeg -hide_banner -encoders | grep -E "libx264|libx265"`; both lines must appear.
+
+:::note[Operation points in this tutorial]
+The tutorial covers `3GPP-AVC-HD` and `3GPP-HEVC-HD`. The other operation points (HEVC HDR, UHD, UHD HDR, Stereo and the two MV-HEVC ones) are not covered: no stream for them was available to test with. The README says each operation point still needs testing with its conformance bitstreams, so a result from the validator is a result of its current rules, not a statement of conformance.
+:::
+
+## 1. Install the validator
+
+```bash
+cd ~
+git clone https://github.com/5G-MAG/vops-conformance-validator.git
+cd vops-conformance-validator
+python3 -m venv .venv
+. .venv/bin/activate
+python -m pip install -r requirements.txt
+python -m sa4_bitstream_validator --version
+```
+
+The last command prints the version of the validator; the run for this page printed:
+
+```text
+SA4 Bitstream Validator version 0.0.1b0
+```
+
+List the operation points the validator knows:
+
+```bash
+grep -n "^  3GPP" config.yaml
+```
+
+```text
+5:  3GPP-AVC-HD:
+11:  3GPP-HEVC-HD:
+20:  3GPP-HEVC-HDR:
+29:  3GPP-HEVC-UHD:
+36:  3GPP-HEVC-UHD-HDR:
+44:  3GPP-HEVC-Stereo:
+51:  3GPP-MV-HEVC-Main-Stereo:
+61:  3GPP-MV-HEVC-Ext-Stereo:
+```
+
+:::tip[Run from the repository folder]
+`validate` reads `config.yaml` and the schemas in `bitstream_rules/` by relative path. Run every command in this tutorial from `~/vops-conformance-validator`, with the virtual environment active (`. .venv/bin/activate`). From another folder it stops with `Error: Configuration file 'config.yaml' not found`.
+:::
+
+A plain `git clone` is all you need; the `external/HTM` submodule is not used by the commands below.
+
+Make a folder for the streams and the reports:
+
+```bash
+mkdir streams
+```
+
+## 2. Make an AVC HD stream and validate it
+
+`config.yaml` describes `3GPP-AVC-HD` as "High Progressive Profile, Level 4.0 with rate constraints". The rules are two schemas: `3gpp-avc-hd-op.xsd` (profile, the Progressive High flag, level) and `3gpp-avc_rate_constraints.xsd`.
+
+### 2.1 Encode the stream
+
+```bash
+ffmpeg -loglevel error -f lavfi -i testsrc2=size=1920x1080:rate=25:duration=4 \
+  -c:v libx264 -profile:v high -level:v 4.0 -pix_fmt yuv420p \
+  -x264-params mvrange=128 -f h264 streams/avc-hd.264
+```
+
+This makes a 4 second, 1920x1080, 25 frames per second test pattern as a raw H.264 stream. `-x264-params mvrange=128` keeps the vertical motion vectors short enough for the "should" rule on `log2_max_mv_length_vertical` (section 3.4 explains "should").
+
+### 2.2 Validate it
+
+```bash
+python -m sa4_bitstream_validator validate streams/avc-hd.264 3GPP-AVC-HD --report streams/avc-hd.json
+```
+
+The first schema fails:
+
+```text
+=== Validating against schema 1/2: bitstream_rules/3gpp-avc-hd-op.xsd ===
+[FAILED] Validation failed with 1 error(s)
+  Error 1: assertion test is false at path NALUnit/SequenceParameterSet/constraint_set4_flag = 1
+
+  Failing assertions (1/6):
+    1. NALUnit/SequenceParameterSet/constraint_set4_flag = 1
+       Error: assertion test is false
+```
+
+The profile (`profile_idc = 100`, High) and the level (`level_idc = 40`) passed. What fails is `constraint_set4_flag`, the flag that marks the stream as Progressive High. The encoder (x264 core 164, as built in the ffmpeg used for this page) writes `profile_idc` 100 and leaves that flag at 0.
+
+### 2.3 Set the flag the encoder leaves out
+
+The stream is progressive and has frames only (`frame_mbs_only_flag` is 1, which you check in section 4), so Progressive High is true of it. This script sets the flag in the sequence parameter set; it does not touch the video. Save it as `streams/set_cs4.py`:
+
+```bash
+cat > streams/set_cs4.py <<'EOF'
+"""Set constraint_set4_flag in every AVC SPS of an Annex B stream (Progressive High signalling)."""
+import sys
+
+data = bytearray(open(sys.argv[1], "rb").read())
+patched = 0
+i = 0
+while True:
+    i = data.find(b"\x00\x00\x01", i)
+    if i < 0:
+        break
+    h = i + 3
+    if data[h] & 0x1F == 7 and data[h + 1] == 100:   # SPS, High profile
+        data[h + 2] |= 0x08                            # constraint_set4_flag
+        patched += 1
+    i = h
+open(sys.argv[2], "wb").write(data)
+print("SPS patched:", patched)
+EOF
+python streams/set_cs4.py streams/avc-hd.264 streams/avc-hd-ps.264
+python -m sa4_bitstream_validator validate streams/avc-hd-ps.264 3GPP-AVC-HD --report streams/avc-hd-ps.json
+```
+
+The script prints `SPS patched: 1`. Now the first schema passes:
+
+```text
+=== Validating against schema 1/2: bitstream_rules/3gpp-avc-hd-op.xsd ===
+[PASSED] Validation passed
+  All 6 assertions passed
+
+=== Validating against schema 2/2: bitstream_rules/3gpp-avc_rate_constraints.xsd ===
+[FAILED] Validation failed with 1 error(s)
+  Error 1: assertion test is false at path exists(NALUnit/SequenceParameterSet/InternalVariables/MaxPictureSliceCount) and         NALUnit/SequenceParameterSet/InternalVariables/MaxPictureSliceCount <= 16
+
+=== Overall Validation Result ===
+[SUCCESS] All validations passed
+```
+
+:::caution[The second schema and the last line, on version 0.0.1b0]
+On the validator as cloned for this page (version 0.0.1b0, commit `053171f`), the second schema reports the `MaxPictureSliceCount` error for every AVC stream made here, with or without `--include-internal-vars`. The AVC parser adds that value to the description after the description file has been written (`bitstream_to_xml` in `sa4_bitstream_validator/parsers/avc_parser.py`), so the rule cannot find it. The last line also says `SUCCESS` although the schema above it printed an error, and the command ends with exit code 0 whether the stream passes or not. So read the result schema by schema, as in section 3.3, and in a script read the JSON report, not the exit code.
+:::
+
+**Check:** the first schema, the one with profile and level, passes with all 6 assertions. The stream also decodes: `ffmpeg -loglevel error -i streams/avc-hd-ps.264 -f null -` prints nothing.
+
+## 3. Break the operation point on purpose
+
+### 3.1 Another level
+
+Encode the same picture at Level 4.1 instead of 4.0, set the flag, and validate:
+
+```bash
+ffmpeg -loglevel error -f lavfi -i testsrc2=size=1920x1080:rate=25:duration=4 \
+  -c:v libx264 -profile:v high -level:v 4.1 -pix_fmt yuv420p \
+  -x264-params mvrange=128 -f h264 streams/avc-l41-raw.264
+python streams/set_cs4.py streams/avc-l41-raw.264 streams/avc-l41.264
+python -m sa4_bitstream_validator validate streams/avc-l41.264 3GPP-AVC-HD --report streams/avc-l41.json
+```
+
+### 3.2 Read the console
+
+Only the level assertion fails:
+
+```text
+=== Validating against schema 1/2: bitstream_rules/3gpp-avc-hd-op.xsd ===
+[FAILED] Validation failed with 1 error(s)
+  Error 1: assertion test is false at path NALUnit/SequenceParameterSet/level_idc = 40
+
+  Failing assertions (1/6):
+    1. NALUnit/SequenceParameterSet/level_idc = 40
+       Error: assertion test is false
+```
+
+Each assertion is an XPath test on the XML description. `NALUnit/SequenceParameterSet/level_idc = 40` says: the `level_idc` of the sequence parameter set equals 40, which is Level 4.0. A stream of High profile at Level 4.1 fails it. A stream of Main profile fails `profile_idc = 100` the same way (run with `-profile:v main -level:v 4.1`: three assertions fail, profile, flag and level).
+
+### 3.3 Read the JSON report
+
+The report is the file given to `--report`. Print what matters:
+
+```bash
+python - <<'EOF'
+import json
+r = json.load(open("streams/avc-l41.json"))
+v = r["validation_results"]
+print({k: v[k] for k in v if k != "schema_details"})
+for s in v["schema_details"]:
+    a = s["assertion_results"]
+    print(s["schema_path"], "validation_success", s["validation_success"], "error_count", s["error_count"],
+          "passing", len(a["passing_assertions"]), "failing", len(a["failing_assertions"]), "warning", len(a["warning_assertions"]))
+print(json.dumps(v["schema_details"][0]["assertion_results"]["failing_assertions"], indent=2))
+EOF
+```
+
+```text
+{'overall_success': False, 'total_schemas_tested': 2, 'schemas_passed': 1, 'schemas_failed': 1}
+bitstream_rules/3gpp-avc-hd-op.xsd validation_success False error_count 1 passing 5 failing 1 warning 0
+bitstream_rules/3gpp-avc_rate_constraints.xsd validation_success True error_count 1 passing 3 failing 0 warning 0
+[
+  {
+    "test": "NALUnit/SequenceParameterSet/level_idc = 40",
+    "description": "NALUnit/SequenceParameterSet/level_idc = 40",
+    "schema_path": "bitstream_rules/3gpp-avc-hd-op.xsd",
+    "provision": "requirement",
+    "error": "assertion test is false",
+    "error_path": "NALUnit/SequenceParameterSet/level_idc = 40"
+  }
+]
+```
+
+| Field | What it holds |
+|---|---|
+| `validator_version`, `generated_at`, `operation_point` | The validator version, the time (UTC) and the operation point you asked for |
+| `bitstream.path`, `bitstream.md5` | The stream that was checked and its MD5, so the report can be tied to the file |
+| `validation_results.overall_success` | `false` when any assertion marked "shall" failed |
+| `schema_details[]` | One entry for each schema of the operation point; an entry of `type` `or_group` holds a list of alternatives, one of which must pass |
+| `errors[]` | What the XSD check reported for that schema: a `reason` and the `path` (the test) |
+| `assertion_results.failing_assertions` | Assertions marked "shall" that failed, each with its `test` and `provision` `requirement` |
+| `assertion_results.warning_assertions` | Assertions marked "should" that failed, with `provision` `recommendation` |
+| `assertion_results.passing_assertions` | The other assertions of the schema |
+
+Here `overall_success` is `false`, the first schema has one failing assertion, and the second schema shows `validation_success` true with `error_count` 1. That second entry is the `MaxPictureSliceCount` error of section 2.3: it is in `errors`, but the validator does not list it among the failing assertions. When you read a report, look at `error_count` and `errors` as well.
+
+### 3.4 "Shall" and "should"
+
+A rule written with "shall" in the specification is an assertion without a `provision` attribute (or with `provision="requirement"`); when it fails, the schema fails and `overall_success` is `false`. A rule written with "should" carries `provision="recommendation"`; when it fails, it is reported as a warning and does not make `overall_success` false. The README describes both ([Recommendation Support](https://github.com/5G-MAG/vops-conformance-validator#features)). The AVC rate constraints have two "should" rules, on `log2_max_mv_length_horizontal` and `log2_max_mv_length_vertical`; section 5.2 shows one failing on an HEVC stream, where the report lists it as a warning.
+
+## 4. Look inside: the XML description
+
+### 4.1 Dump the description
+
+```bash
+python -m sa4_bitstream_validator dump streams/avc-hd-ps.264 streams/avc-hd-ps.xml --codec avc
+```
+
+`dump` takes the codec with `--codec` (`hevc` is the default); `validate` picks the parser from the operation point name. The file has one `NALUnit` element for each NAL unit of the stream (103 for this stream).
+
+### 4.2 Find the fields the assertions use
+
+```bash
+grep -n -E "<profile_idc>|<constraint_set4_flag>|<level_idc>|<frame_mbs_only_flag>|log2_max_mv_length" streams/avc-hd-ps.xml
+```
+
+```text
+10:      <profile_idc>100</profile_idc>
+15:      <constraint_set4_flag>1</constraint_set4_flag>
+17:      <level_idc>40</level_idc>
+31:      <frame_mbs_only_flag>1</frame_mbs_only_flag>
+56:        <log2_max_mv_length_horizontal>9</log2_max_mv_length_horizontal>
+57:        <log2_max_mv_length_vertical>9</log2_max_mv_length_vertical>
+```
+
+These are the fields of `3gpp-avc-hd-op.xsd` (`profile_idc`, `constraint_set4_flag`, `level_idc`) and `3gpp-avc_rate_constraints.xsd` (`log2_max_mv_length_*`). To see an assertion, open the schema: `less bitstream_rules/3gpp-avc-hd-op.xsd`.
+
+### 4.3 Check the description against one schema
+
+```bash
+python -m sa4_bitstream_validator check streams/avc-hd-ps.xml bitstream_rules/3gpp-avc-hd-op.xsd
+```
+
+```text
+Start validation of streams/avc-hd-ps.xml against 1 schema(s)
+
+=== Validating against schema 1/1: bitstream_rules/3gpp-avc-hd-op.xsd ===
+[PASSED] Validation passed
+  All 6 assertions passed
+
+=== Overall Validation Result ===
+[SUCCESS] All validations passed
+```
+
+`check` takes one or more schemas and prints to the console only; it writes no report. It is the quick way to test one rule set, or to re-check a description after you edit it by hand.
+
+## 5. HEVC HD
+
+`config.yaml` describes `3GPP-HEVC-HD` as "Main 10 Profile, Main Tier, Level 4.1 with SDR representation". It has five schemas: VUI constraints, progressive constraints, Main 10 Main Tier Level 4.1, HD common (4:2:0, square samples) and SDR colour (BT.709).
+
+### 5.1 Make the stream and validate it
+
+```bash
+ffmpeg -loglevel error -f lavfi -i testsrc2=size=1920x1080:rate=25:duration=4 \
+  -c:v libx265 -profile:v main10 -pix_fmt yuv420p10le \
+  -x265-params "level-idc=4.1:high-tier=0:sar=1:colorprim=bt709:transfer=bt709:colormatrix=bt709:chromaloc=0:range=limited:log-level=error" \
+  -f hevc streams/hevc-hd-raw.265
+python -m sa4_bitstream_validator validate streams/hevc-hd-raw.265 3GPP-HEVC-HD --report streams/hevc-hd-raw.json
+```
+
+The encoder writes the picture format, the VUI colour fields and the aspect ratio that the schemas need. One rule fails, in `3gpp-hevc_progressive_constraints.xsd`:
+
+```text
+Error 1: assertion test is false at path string(NALUnit[nuh_layer_id=0]/SequenceParameterSet/general_non_packed_constraint_flag) = '1'
+```
+
+The encoder leaves `general_non_packed_constraint_flag` at 0 (x265 3.5+1, as built in the ffmpeg used for this page). The flag says that the stream has no frame-packed pictures, which is true of this one. Set it in the video and sequence parameter sets with a second script, saved as `streams/set_non_packed.py`:
+
+```bash
+cat > streams/set_non_packed.py <<'EOF'
+"""Set general_non_packed_constraint_flag in every HEVC VPS and SPS of an Annex B stream."""
+import re
+import sys
+
+data = open(sys.argv[1], "rb").read()
+starts = [m.start() for m in re.finditer(b"\x00\x00\x01", data)]
+out, patched = bytearray(data[:starts[0]]), 0
+for n, s in enumerate(starts):
+    end = starts[n + 1] if n + 1 < len(starts) else len(data)
+    nal = data[s + 3:end]
+    nal_type = (nal[0] >> 1) & 0x3F
+    if nal_type in (32, 33):
+        rbsp = nal.replace(b"\x00\x00\x03", b"\x00\x00")      # remove emulation prevention
+        ptl = 6 if nal_type == 32 else 3                       # start of profile_tier_level
+        flags = bytearray(rbsp)
+        flags[ptl + 5] |= 0x20                                 # general_non_packed_constraint_flag
+        esc = bytearray()
+        for b in flags:                                        # put emulation prevention back
+            if len(esc) >= 2 and esc[-1] == 0 and esc[-2] == 0 and b <= 3:
+                esc.append(3)
+            esc.append(b)
+        nal, patched = bytes(esc), patched + 1
+    out += b"\x00\x00\x01" + nal
+open(sys.argv[2], "wb").write(out)
+print("parameter sets patched:", patched)
+EOF
+python streams/set_non_packed.py streams/hevc-hd-raw.265 streams/hevc-hd.265
+python -m sa4_bitstream_validator validate streams/hevc-hd.265 3GPP-HEVC-HD --report streams/hevc-hd.json
+```
+
+The script prints `parameter sets patched: 2`. All five schemas pass:
+
+```text
+=== Validating against schema 1/5: bitstream_rules/3gpp-hevc_vui_constraints.xsd ===
+[PASSED] Validation passed
+  All 14 assertions passed
+...
+=== Validating against schema 5/5: bitstream_rules/3gpp-hevc-sdr-hd-colour.xsd ===
+[PASSED] Validation passed
+  All 8 assertions passed
+
+=== Overall Validation Result ===
+[SUCCESS] All validations passed
+```
+
+**Check:** `overall_success` is `true` in `streams/hevc-hd.json`, and `ffmpeg -loglevel error -i streams/hevc-hd.265 -f null -` decodes the stream without a message.
+
+### 5.2 Break it: a "shall" and a "should"
+
+Encode the stream at Level 5.0 and without the aspect ratio in the VUI (`level-idc=5.0`, `sar=0`):
+
+```bash
+ffmpeg -loglevel error -f lavfi -i testsrc2=size=1920x1080:rate=25:duration=4 \
+  -c:v libx265 -profile:v main10 -pix_fmt yuv420p10le \
+  -x265-params "level-idc=5.0:high-tier=0:sar=0:colorprim=bt709:transfer=bt709:colormatrix=bt709:chromaloc=0:range=limited:log-level=error" \
+  -f hevc streams/hevc-bad-raw.265
+python streams/set_non_packed.py streams/hevc-bad-raw.265 streams/hevc-bad.265
+python -m sa4_bitstream_validator validate streams/hevc-bad.265 3GPP-HEVC-HD --report streams/hevc-bad.json
+```
+
+Three schemas report a problem. The "shall" failures are listed as failing assertions:
+
+```text
+=== Validating against schema 3/5: bitstream_rules/3gpp-hevc-main10-main-41.xsd ===
+[FAILED] Validation failed with 1 error(s)
+  Failing assertions (1/4):
+    1. NALUnit[nuh_layer_id=0]/SequenceParameterSet/general_level_idc = 123
+...
+=== Validating against schema 4/5: bitstream_rules/3gpp-hevc-hd-common.xsd ===
+[FAILED] Validation failed with 2 error(s)
+  Failing assertions (2/4):
+    1. exists(NALUnit[nuh_layer_id=0]/SequenceParameterSet/aspect_ratio_idc)
+    2. NALUnit[nuh_layer_id=0]/SequenceParameterSet/aspect_ratio_idc = 1
+```
+
+`general_level_idc = 123` is Level 4.1 (30 times the level number); Level 5.0 is 150. The "should" failure is in the first schema, and it is printed as a warning:
+
+```text
+=== Validating against schema 1/5: bitstream_rules/3gpp-hevc_vui_constraints.xsd ===
+[FAILED] Validation failed with 1 error(s)
+  Error 1: assertion test is false at path string(NALUnit[nuh_layer_id=0]/SequenceParameterSet/aspect_ratio_info_present_flag) = '1'
+  Warnings (1):
+    1. string(NALUnit[nuh_layer_id=0]/SequenceParameterSet/aspect_ratio_info_present_flag) = '1' (recommendation)
+       Warning: assertion test is false
+```
+
+In the JSON report, the same three schemas read:
+
+```text
+3gpp-hevc_vui_constraints.xsd          validation_success True   error_count 1  passing 13  failing 0  warning 1
+3gpp-hevc-main10-main-41.xsd           validation_success False  error_count 1  passing 3   failing 1  warning 0
+3gpp-hevc-hd-common.xsd                validation_success False  error_count 2  passing 2   failing 2  warning 0
+```
+
+The first schema stays `validation_success` true: a "should" that fails is a warning in `warning_assertions` (with `"provision": "recommendation"`) and does not fail the schema. The other two schemas fail, and `overall_success` is `false`.
+
+### 5.3 Inspect the description and check one schema
+
+```bash
+python -m sa4_bitstream_validator dump streams/hevc-hd.265 streams/hevc-hd.xml
+sed -n '/<SequenceParameterSet>/,/<\/SequenceParameterSet>/p' streams/hevc-hd.xml | grep -E "<general_(tier_flag|profile_idc|level_idc|progressive_source_flag|interlaced_source_flag|non_packed_constraint_flag|frame_only_constraint_flag)>|<aspect_ratio_idc>|<colour_primaries>|<transfer_characteristics>|<matrix_coeffs>"
+```
+
+```text
+      <general_tier_flag>0</general_tier_flag>
+      <general_profile_idc>2</general_profile_idc>
+      <general_progressive_source_flag>1</general_progressive_source_flag>
+      <general_interlaced_source_flag>0</general_interlaced_source_flag>
+      <general_non_packed_constraint_flag>1</general_non_packed_constraint_flag>
+      <general_frame_only_constraint_flag>1</general_frame_only_constraint_flag>
+      <general_level_idc>123</general_level_idc>
+      <aspect_ratio_idc>1</aspect_ratio_idc>
+      <colour_primaries>1</colour_primaries>
+      <transfer_characteristics>1</transfer_characteristics>
+      <matrix_coeffs>1</matrix_coeffs>
+```
+
+`general_profile_idc` 2 is Main 10, `general_tier_flag` 0 is Main Tier, and `general_level_idc` 123 is Level 4.1. The assertions select the base layer with `NALUnit[nuh_layer_id=0]`.
+
+Now check the description of the broken stream against the VUI schema alone, to see the warning on its own:
+
+```bash
+python -m sa4_bitstream_validator dump streams/hevc-bad.265 streams/hevc-bad.xml
+python -m sa4_bitstream_validator check streams/hevc-bad.xml bitstream_rules/3gpp-hevc_vui_constraints.xsd
+```
+
+The output is the same warning block as in 5.2, with only the "should" failing and nothing in the failing list. Use `check` with two schemas in the same way, for example `check streams/hevc-hd.xml bitstream_rules/3gpp-hevc_vui_constraints.xsd bitstream_rules/3gpp-hevc-main10-main-41.xsd`.
+
+## 6. Clean up
+
+```bash
+deactivate
+rm -rf ~/vops-conformance-validator/streams
+```
+
+`validate` removes the intermediate `.xml` file it writes in the current folder. To remove the validator, delete `~/vops-conformance-validator`.
+
+<details>
+<summary>What was run for this page</summary>
+
+Every command above was run, in this order, on a clean clone of the repository (`main`, commit `053171f`) on Ubuntu Linux with Python 3.14.4 in a virtual environment. Versions: SA4 Bitstream Validator 0.0.1b0; bitstring 4.3.1, click 8.2.1, xmlschema 4.3.1, PyYAML 6.0.3 (from `requirements.txt`); ffmpeg 7.0.2 (static build) with x264 core 164 and x265 3.5+1. The validator version comes from `sa4_bitstream_validator/__init__.py`; the specification version the repository builds against, TS 26.265 V19.2.0, is in its README and its `REFERENCE` file.
+
+Section by section: 1 (install, version, operation point list) run; 2 (AVC HD encode, validate, set the flag, validate) run; 3 (Level 4.1 stream, console, JSON report) run, and the Main profile variant in 3.2 run once; 4 (dump, grep, check) run; 5 (HEVC HD encode, validate, set the flag, validate, Level 5.0 stream without aspect ratio, JSON report, dump, check) run. The `PASSED` output of the HEVC schemas 2 to 4 is cut in the listing above with `...`; the full run printed all five.
+
+A pass means the stream met the rules in the validator's schemas; it is not a statement of conformance to TS 26.265, and the AVC rate-constraint schema does not complete cleanly (section 2.3).
+
+</details>

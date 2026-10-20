@@ -124,8 +124,10 @@ python orchestrator.py --list-profiles       # the network profiles
 # one test over one profile
 python orchestrator.py --scenario chat_basic --profile 5g_urban --runs 10
 
-# one test over every profile
-python orchestrator.py --scenario chat_basic --profile all --runs 10
+# one test over several profiles: one command for each profile (--profile takes one name)
+for p in 5g_urban cell_edge; do
+  python orchestrator.py --scenario chat_basic --profile "$p" --runs 10
+done
 
 # the full matrix, as in TR 26.870 annex B.3
 python orchestrator.py --scenario all --runs 5

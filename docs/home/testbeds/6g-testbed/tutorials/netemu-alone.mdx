@@ -1,0 +1,331 @@
+---
+title: "Network Emulator (netemu): shape and measure any traffic"
+sidebar_label: "Network Emulator (netemu) - shape and measure any traffic"
+hide_title: true
+sidebar_position: 2
+description: "Step by step with netemu on its own: apply a network profile such as cell_edge to an interface from Python and from the dashboard, capture with tcpdump, parse the capture and read the network-layer metrics."
+---
+
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M7 8l-4 4l4 4" />
+  <path d="M17 8l3.111 3.111" />
+  <path d="M14 4l-2.175 8.7" />
+  <path d="M14 21v-4a2 2 0 1 1 4 0v4" />
+  <path d="M14 19h4" />
+  <path d="M21 15v6" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">6G AI Traffic Characterization</span>
+<h1>Network Emulator (netemu)</h1>
+</div>
+</div>
+
+In this tutorial you use the network emulator of the 6G AI Traffic Characterization Testbed, `netemu`, on its own, for any program and not only the AI tests. You shape an interface with a profile such as `cell_edge`, capture the traffic with `tcpdump`, parse the capture and read the network-layer metrics, repeat that for a set of captures, and drive the same shaping from a web dashboard. Annex E of TR 26.870 describes netemu.
+
+:::tip[Read the READMEs first]
+Read the [netemu README](https://github.com/5G-MAG/6G-Testbed/blob/main/netemu/README.md) before you start. It documents the Python interface, the metrics and the sudo set-up. Read the [netemu-dashboard README](https://github.com/5G-MAG/netemu-dashboard#readme) before section 5.
+:::
+
+| Repository | What it is | Used in |
+|---|---|---|
+| [6G-Testbed](https://github.com/5G-MAG/6G-Testbed) | Holds the `netemu/` package: shaping, capture, parsing and aggregation | All sections |
+| [netemu-dashboard](https://github.com/5G-MAG/netemu-dashboard) | A web page and REST API that apply, create and schedule profiles with netemu | [5. Shape with the dashboard](#5-shape-with-the-dashboard) |
+
+| You want | Go to |
+|---|---|
+| netemu installed and the machine ready | [1. Install netemu and prepare the machine](#1-install-netemu-and-prepare-the-machine) |
+| To put an interface behind a profile and see it work | [2. Apply a profile and clear it](#2-apply-a-profile-and-clear-it) |
+| Packet metrics of one capture, shaped and not shaped | [3. Capture and read the network-layer metrics](#3-capture-and-read-the-network-layer-metrics) |
+| Distributions over many captures | [4. Measure a set of captures](#4-measure-a-set-of-captures) |
+| A web page to switch profiles | [5. Shape with the dashboard](#5-shape-with-the-dashboard) |
+| Your own profile, other directions, local traffic | [6. Your own profiles, directions and local traffic](#6-your-own-profiles-directions-and-local-traffic) |
+
+**You need:** a Linux machine with Python 3.10 or later, `iproute2` (for `tc`), `tcpdump`, `curl`, and the kernel modules `sch_netem`, `sch_htb` and `ifb`, which are part of Ubuntu and Debian. The right to configure traffic control: passwordless `sudo` for `tc`, `ip`, `modprobe` and `tcpdump` (section 1), or Docker with the `NET_ADMIN` capability. A machine you may shape and capture on; the shaping applies to every program that uses the interface while it lasts.
+
+## 1. Install netemu and prepare the machine
+
+Install the tools, make a virtual environment and install netemu with the `pcap` extra, which brings the packet parser (`dpkt`). The first line is for Debian and Ubuntu:
+
+```bash
+sudo apt install python3 python3-venv git iproute2 tcpdump curl
+python3 -m venv venv
+source venv/bin/activate
+pip install "netemu[pcap] @ git+https://github.com/5G-MAG/6G-Testbed.git#subdirectory=netemu"
+```
+
+netemu runs `tc`, `ip`, `modprobe` and `tcpdump` through `sudo`. Find their paths, then allow them without a password:
+
+```bash
+which tc ip modprobe tcpdump
+sudo visudo -f /etc/sudoers.d/netemu
+```
+
+Add one line, with your user name and the paths that `which` printed (these are the usual ones on Debian and Ubuntu):
+
+```
+<your-username> ALL=(ALL) NOPASSWD: /usr/sbin/tc, /usr/sbin/ip, /usr/sbin/modprobe, /usr/bin/tcpdump
+```
+
+Find the interface your traffic leaves by:
+
+```bash
+ip route get 1.1.1.1
+```
+
+The name after `dev` is the interface, for example `eth0`. The scripts below use `interface="auto"`, which takes the interface that holds the default route; on a machine with several interfaces, check that this is the one you mean.
+
+**Check:** these four commands finish without asking for a password, and the import prints the version.
+
+```bash
+sudo -n tc qdisc show
+sudo -n ip link show
+sudo -n modprobe -n ifb
+sudo -n tcpdump --version
+python -c "import netemu; print(netemu.__version__, netemu.HAS_DPKT)"
+```
+
+The last line prints the version and `True`. `False` means `dpkt` is missing: install it with `pip install "netemu[pcap]"`.
+
+<details>
+<summary>In Docker instead</summary>
+
+The testbed image has netemu, `tcpdump` and `iproute2` installed, and lets its user run `tc`, `ip`, `modprobe` and `tcpdump` through `sudo`. Build it from the root of the repository and start a shell with the capability that traffic control needs:
+
+```bash
+docker build -t 6g-ai-testbed -f aitestbed/Dockerfile .
+docker run -it --rm --cap-add=NET_ADMIN 6g-ai-testbed:latest --shell
+```
+
+The scripts below then run inside that shell. The interface is the one of the container.
+
+</details>
+
+## 2. Apply a profile and clear it
+
+A profile is a set of impairments: delay, jitter, loss, a rate cap and more. Save the `cell_edge` profile of the testbed in a file named `my_profiles.yaml`. The values are those of `aitestbed/configs/profiles.yaml` (TR 26.870 table D.3.1-1: 120 ms, 30 ms, 1.0 %, 5 Mbit/s):
+
+```yaml
+profiles:
+  cell_edge:
+    description: "Weak radio and heavy-tail jitter case"
+    delay_ms: 120
+    jitter_ms: 30
+    delay_distribution: paretonormal
+    loss_model: gemodel
+    loss_pct: 1.0
+    loss_correlation_pct: 35
+    reorder_pct: 0.1
+    reorder_correlation_pct: 50
+    duplicate_pct: 0.05
+    limit_packets: 400
+    rate_mbit: 5
+```
+
+Save this script as `shape.py`. It applies the profile and waits, so that you can look at the interface from a second terminal:
+
+```python
+from netemu import NetworkEmulator
+
+with NetworkEmulator(interface="auto", profiles_path="my_profiles.yaml") as emu:
+    if not emu.check_sudo():
+        raise SystemExit("passwordless sudo for tc is not set up")
+    if not emu.apply_profile("cell_edge"):
+        raise SystemExit("the profile could not be applied")
+    print("interface:", emu.interface)
+    print(emu.get_status()["egress_tc_output"])
+    input("cell_edge is active. Press Enter to clear it. ")
+# leaving the block removes every queueing discipline netemu created
+```
+
+Run `python shape.py`.
+
+**Check.** In a second terminal, while the script waits, the shaped interface lists the rules, and a ping shows the delay. Replace `<iface>` with the interface the script printed:
+
+```bash
+tc qdisc show dev <iface>
+ping -c 10 1.1.1.1
+```
+
+`tc` lists a `netem` and an `htb` queueing discipline (a rate cap uses HTB; the delay and loss sit in the netem one). The profile shapes both directions by default, so the round trip of the ping is about twice the one-way delay (about 240 ms) on top of the usual round trip, with jitter. Press Enter in the first terminal. Run `tc qdisc show dev <iface>` again: the `netem` and `htb` lines are gone.
+
+If you need a profile that is not in your file, `emu.list_profiles()` lists the names that were loaded. A name that is not loaded raises `ProfileNotFoundError`.
+
+## 3. Capture and read the network-layer metrics
+
+`netemu.capture` runs `tcpdump` on the interface and writes a pcap with a JSON file next to it. `netemu.pcap` parses the pcap. Save this script as `measure.py`. It measures the same workload twice, once with no shaping and once with `cell_edge`; the workload is five requests to a web server over HTTPS, which you can replace by your own program:
+
+```python
+import subprocess
+from netemu import NetworkEmulator, capture_to, analyze_pcap
+
+URL = "https://www.5g-mag.com/"      # any HTTPS address you may request
+
+
+def workload():
+    for _ in range(5):
+        subprocess.run(["curl", "-s", "-o", "/dev/null", URL], check=False)
+
+
+def measure(label, profile=None):
+    pcap = f"captures/{label}.pcap"
+    with NetworkEmulator(interface="auto", profiles_path="my_profiles.yaml") as emu:
+        if profile and not emu.apply_profile(profile):
+            raise SystemExit(f"could not apply {profile}")
+        with capture_to(pcap, interface=emu.interface, filter_expr="port 443"):
+            workload()
+    return analyze_pcap(pcap, target_ports=[443])
+
+
+if __name__ == "__main__":
+    for label, profile in [("baseline", None), ("cell_edge", "cell_edge")]:
+        m = measure(label, profile)
+        print(label)
+        print("  packets, TCP flows:", m.total_packets, m.tcp_flows)
+        print("  handshake RTT mean, p95 (ms):", m.rtt_mean_ms, m.rtt_p95_ms)
+        print("  retransmission rate:", m.retransmission_rate)
+        print("  UL bytes, DL bytes:", m.ul_bytes_total, m.dl_bytes_total)
+        print("  burstiness at 100 ms:", m.burstiness_by_window.get("100ms"))
+```
+
+Run `python measure.py`.
+
+**Check.** The script prints two blocks. Each shows a non-zero packet count and at least 5 TCP flows (one for each `curl` call). The files `captures/baseline.pcap` and `captures/cell_edge.pcap` exist, each with a `.metadata.json` file next to it that holds the interface, the filter and the start and end time. A packet count of 0 means that nothing matched: check the interface and that `curl` reached the address.
+
+How to read the numbers (netemu README, "PCAP Processing"):
+
+- **Handshake RTT** is the time from the SYN to the final ACK of the TCP handshake, one sample for each connection that completed a handshake. It samples the network once for each connection, so a program that reuses connections gives few samples. The capture sits on the shaping host, after the egress shaping and before the ingress shaping is undone, so the emulated delay may not show in full in this number. Compare the two blocks with each other and do not expect the profile's delay to equal the RTT you read.
+- **Retransmission rate** is retransmitted payload ranges over all TCP packets, acknowledgements included.
+- **UL and DL bytes** are IP-payload bytes, uplink (client to server) and downlink. Direction follows the port you pass in `target_ports`.
+- **Burstiness at 100 ms** is the peak rate over the mean rate in 100 ms windows; 1.0 is perfectly smooth. The report has it for the windows 1 ms, 10 ms, 100 ms, 1 s and 10 s.
+
+The metrics are defined in annex E of TR 26.870 V0.6.1 (E.4 to E.7 for what is extracted from a capture); see [Test design](../scope#network-emulator).
+
+## 4. Measure a set of captures
+
+One capture is one observation. To describe a profile, repeat the measurement and aggregate the captures into distributions. Save this script as `campaign.py`, next to `measure.py`:
+
+```python
+from netemu import analyze_multiple_pcaps, compute_packet_metrics
+from measure import measure
+
+for label, profile in [("baseline", None), ("cell_edge", "cell_edge")]:
+    for i in range(5):
+        measure(f"{label}_{i}", profile)
+
+    captures = analyze_multiple_pcaps("captures/", pattern=f"{label}_*.pcap", target_ports=[443])
+    report = compute_packet_metrics(captures)
+    print(label, "captures:", len(captures))
+    print("  TCP handshake RTT mean, p95 (ms):",
+          report.connection.tcp_handshake_rtt_ms.mean, report.connection.tcp_handshake_rtt_ms.p95)
+    print("  connection setup p95 (ms):", report.connection.connection_setup_ms.p95)
+    print("  UL/DL byte ratio:", report.direction.ul_dl_byte_ratio)
+    print("  flows with retransmissions:", report.reliability.flow_retransmission_ratio)
+```
+
+Run `python campaign.py`.
+
+**Check.** Each block says `captures: 5`. Every distribution carries its sample size `n`, mean, minimum, maximum, 50th, 95th and 99th percentile, standard deviation and coefficient of variation; percentiles are nearest-rank, so each is a value that was observed. A family without data has `n` of 0 and `None` elsewhere, which is not the same as a measured 0. To keep a report, write `report.to_dict()` to a file with `json.dump`.
+
+The report has five families: connection, direction, burst, throughput and reliability. The connection and reliability families are filled from TCP flows only. The meaning of every field is in the netemu README, section "Packet Metrics", and in annex E.8 of the TR.
+
+## 5. Shape with the dashboard
+
+The [netemu-dashboard](https://github.com/5G-MAG/netemu-dashboard) puts a web page and a REST API on top of netemu. It is a separate repository and installs netemu itself. Use it when you want to change the profile while a device or program is running, or to cycle through profiles on a timer.
+
+Clone it and start it. The first start creates `.venv` and installs the requirements, including netemu. The dashboard asks for `sudo` only for `tc`, `ip` and `modprobe`; your capture in this tutorial also needs `tcpdump`, which the line you added in section 1 allows.
+
+```bash
+cd ~
+git clone https://github.com/5G-MAG/netemu-dashboard.git
+cd netemu-dashboard
+NETEMU_CONTROL_INTERFACE=<iface> ./run.sh
+```
+
+Replace `<iface>` with your interface. Without it, the dashboard uses the interface of the default route, which on a machine with several interfaces may not be the one you mean. Open `http://<host>:8090/`, where `<host>` is the address of the machine (`localhost` on the same machine).
+
+1. Read the **Interface & status** panel: it shows the shaped interface, whether egress and ingress shaping are active, and whether `sudo` works.
+2. In **Impairment profiles**, click the card `poor_cellular` (120 ms delay, 30 ms jitter, 1 % loss, 5 Mbit/s, the nearest built-in to `cell_edge`). The card is marked "✓ Active".
+3. Check it in the **Raw status** panel, which shows the live `tc qdisc show` output, and from a terminal:
+
+   ```bash
+   curl -s http://localhost:8090/api/status
+   ```
+
+   The reply names the interface and `current_profile`, and its `egress_active` is `true`.
+4. Measure while the dashboard holds the shaping. Save this script as `capture_only.py`. It does not use `NetworkEmulator`, because leaving that block would clear the rules the dashboard set:
+
+   ```python
+   import subprocess
+   from netemu import capture_to, analyze_pcap
+
+   with capture_to("captures/dashboard.pcap", interface="<iface>", filter_expr="port 443"):
+       for _ in range(5):
+           subprocess.run(["curl", "-s", "-o", "/dev/null", "https://www.5g-mag.com/"], check=False)
+
+   m = analyze_pcap("captures/dashboard.pcap", target_ports=[443])
+   print(m.total_packets, m.tcp_flows, m.rtt_mean_ms, m.retransmission_rate)
+   ```
+
+   Replace `<iface>` and run `python capture_only.py` in the environment where netemu is installed (the one of section 1).
+5. Click **Clear impairments**. The card is no longer active, and `curl -s http://localhost:8090/api/status` shows `egress_active` as `false`.
+
+**Automated pattern.** Add profiles as steps, set the interval in seconds and click **Start pattern**. With **Loop** the sequence repeats; without it, the dashboard clears the impairments after one pass. Clicking a card or **Clear impairments** stops a running pattern. **+ New profile** creates your own profile, which the dashboard saves; custom profiles have an edit and a delete button.
+
+<details>
+<summary>The same from a script (REST API)</summary>
+
+| Call | Effect |
+|---|---|
+| `GET /api/profiles` | all profiles |
+| `GET /api/status` | interface, active rules, `sudo_ok`, pattern state |
+| `POST /api/apply` with `{"profile": "poor_cellular"}` | apply a profile |
+| `POST /api/clear` | remove all impairments |
+| `POST /api/pattern` with `{"sequence": ["good_wifi", "poor_cellular"], "interval_s": 30, "loop": true}` | start cycling |
+| `POST /api/pattern/stop` | stop cycling and clear |
+
+```bash
+curl -s -X POST http://localhost:8090/api/apply \
+  -H 'Content-Type: application/json' -d '{"profile": "poor_cellular"}'
+curl -s -X POST http://localhost:8090/api/clear
+```
+
+</details>
+
+Stop the dashboard with Ctrl+C in its terminal. Clear the impairments first, so that no rule stays on the interface.
+
+## 6. Your own profiles, directions and local traffic
+
+- **Settings without a profile file.** `emu.apply_settings(delay_ms=100, loss_pct=1.0, rate_mbit=10)` shapes the interface with these values; `emu.clear()` removes them.
+- **A profile file of your own.** Add entries under `profiles:` in your YAML file; the fields are those of `NetworkProfile` (delay, jitter, distribution, loss and loss model, rate, corruption, reordering, duplication, queue length). The repository has an example file, `netemu/examples/profiles.yaml`.
+- **Different uplink and downlink.** `emu.apply_profile("good_wifi", ingress_profile="poor_cellular")` uses one profile for egress and another for ingress. With `ingress_profile="none"`, only egress is shaped; `NetworkEmulator(..., bidirectional=False)` does the same for the whole object. The example file has `good_wifi` and `poor_cellular`.
+- **Two programs on one machine.** Their traffic crosses `lo`, not the shaped interface. `emu.apply_profile_to_loopback("poor_cellular", 8080)` shapes the TCP traffic of one port; `selectors=[("udp", None), ("tcp", 1234)]` shapes all UDP plus a TCP port, which is what a local WebRTC session needs; `emu.clear_loopback()` removes the rules. A one-way delay on `lo` gives a round trip of about twice that value. To capture that traffic, run the capture on `lo`, and pass `unfiltered_name_patterns` to `analyze_pcap` for a file name that has no known server port.
+- **Shell scripts.** `netemu/scripts/apply_profile.sh <interface> <delay_ms> <loss_pct> [rate_mbit]` and `netemu/scripts/clear_profile.sh <interface>` shape and clear an interface without Python.
+
+## 7. Clear what is left
+
+Leaving the `with NetworkEmulator(...)` block clears the rules, also when the block raised an error. If a process was killed instead (for example with `SIGKILL`), remove the rules by hand. Replace `<iface>` with your interface:
+
+```bash
+sudo tc qdisc del dev <iface> root
+sudo tc qdisc del dev <iface> ingress
+sudo tc qdisc del dev ifb0 root
+sudo ip link set dev ifb0 down
+sudo tc qdisc del dev lo root
+```
+
+`RTNETLINK answers: No such file or directory` means that there was nothing to remove. **Check:** `tc qdisc show dev <iface>` no longer lists `netem` or `htb`.
+
+<details>
+<summary>Sources for this page</summary>
+
+- **Install, requirements, sudoers line, checks, API, metrics and their definitions, loopback shaping, scripts, troubleshooting:** `netemu/README.md` of 5G-MAG/6G-Testbed, `refactor` branch; the signatures and fields `NetworkEmulator`, `check_sudo`, `get_status`, `capture_to`, `analyze_pcap`, `analyze_multiple_pcaps`, `compute_packet_metrics`, `PcapMetrics` in `netemu/src/netemu/emulator.py`, `capture.py`, `pcap.py` and `metrics.py`; `netemu/pyproject.toml` for Python 3.10 and the `pcap` extra.
+- **The `cell_edge` values:** `aitestbed/configs/profiles.yaml` and TR 26.870 V0.6.1, clause D.3.1, table D.3.1-1 (see [Test design](../scope#network-profiles)). The profile file in section 2 is a copy of that entry, written because the netemu example file has no `cell_edge`; with `NetworkEmulator(interface="eth0")` and no profile file, `apply_profile("cell_edge")` raises `ProfileNotFoundError`, because profiles are loaded only from a file.
+- **Docker:** `aitestbed/Dockerfile` (netemu, `tcpdump`, `iproute2`, the sudoers entry) and the `--shell` option of `aitestbed/docker/entrypoint.sh`; the `NET_ADMIN` capability from the aitestbed README.
+- **Dashboard:** the README, `run.sh`, `config.example.yaml`, `profiles.yaml` and `server.py` of 5G-MAG/netemu-dashboard, `main` branch (built-in profile `poor_cellular`, the panels, the buttons, the REST calls, `NETEMU_CONTROL_INTERFACE`, port 8090, the `egress_active` and `current_profile` fields of the status).
+- **TR clauses:** TR 26.870 V0.6.1, annex E.1 to E.8 (a temporary annex), as summarised on [Test design](../scope#network-emulator).
+- **Verification: Not run.** The commands and the descriptions of what to look for come from the repository documentation and code at its current state. They were not run for this page, and no output is shown for that reason. Check them on a clean machine before you rely on them. The ping check and the remark about where the capture sits relative to the shaping are readings of the netemu README (sections "Bidirectional Shaping" and "Loopback Shaping"), not measurements.
+
+</details>
