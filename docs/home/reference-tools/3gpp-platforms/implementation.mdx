@@ -6,6 +6,8 @@ description: Explains which RAN and Core components 5G-MAG builds, and how the s
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import ImplementationCases from '@site/src/components/ImplementationCases';
+import AUDIT from '@site/src/data/audit-3gpp-platforms.json';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -215,6 +217,22 @@ The three libraries split by what you are trying to do:
 - If you need to **create and manage multicast/broadcast sessions** (the MBS case), use **libscmbsmf** to talk to the MB-SMF via `Nmbsmf_TMGI` (allocate/deallocate a TMGI) and `Nmbsmf_MBSSession` (create, modify, release a session and subscribe to its events).
 
 Each library implements only the consumer (client) side of its APIs, so it assumes a running 5G Core that produces those services. The libraries handle NRF-based discovery where relevant (for example, libscbsf discovers the BSF), which means an application usually only needs an entry point address and the session or UE identity, not the full topology of the core.
+
+### Implementation status of the service consumer libraries
+
+This status comes from an audit of the `main` branch of `rt-5gc-service-consumers` on 2026-10-21. Each requirement of the 5G Core service specifications is split into the cases its clause defines, and each case was read against the code by one reader and then independently by a second, with a third reading where they disagreed. It covers **libscbsf** (BSF), **libscmbsmf** (MB-SMF) and the NRF discovery they use. **libscpcf** (PCF, `Npcf_PolicyAuthorization`) is not yet audited. Cases that only the Open5GS stack decides (HTTP/2, content types, the discovery request itself and the generated data models) are not shown, because Open5GS is not part of this repository.
+
+- **libscbsf:** looks up the PCF binding of a UE with a GET on `pcfBindings` by IPv4 address or IPv6 prefix. It has no query by SUPI, GPSI, DNN or S-NSSAI, and no register, update, deregister or subscribe operation. Any reply other than 200 is reported to the application as "no binding".
+- **libscmbsmf, sessions:** create, update and delete an MBS session; create, update and delete a status subscription; receive the StatusNotify notification. ContextUpdate and the context status operations, multipart content and OAuth2 are not implemented.
+- **libscmbsmf, TMGIs:** allocate and deallocate TMGIs. Refreshing a TMGI is in the code but no public call reaches it.
+- **Needs fix:**
+  - Updating a status subscription sends the session's changes, not the subscription's.
+  - A subscription created on its own, after the session, carries no notification URI.
+  - The notification receiver answers 200 where TS 29.532 gives 204.
+  - Errors from update, delete and subscription requests, and a failed allocation of a new TMGI, are not reported to the application.
+- **NRF discovery:** the libraries set the service name, the Service-Map requester feature and, for MBS session creation with a TMGI, the target PLMN. The BSF discovery sets no options. Every other discovery parameter, stored search and SCP domain routing is not used.
+
+<ImplementationCases data={AUDIT} only={['consumers']} />
 
 ### Getting Started
 
