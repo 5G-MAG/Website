@@ -6,26 +6,9 @@ description: What the 5G MBS Reference Tools implement, for MBS User Services an
 ---
 
 import ImplementationCases from '@site/src/components/ImplementationCases';
-import AUDIT from '@site/src/data/audit-5g-mbs.json';
 import US_AUDIT from '@site/src/data/audit-5g-mbs-us.json';
 
-{/* One section per part: only the features, components and baselines that part uses. */}
-export const part = (keep) => {
-  const features = AUDIT.features.filter(keep);
-  const reqs = features.flatMap((f) => f.requirements);
-  const pick = (o, keys) => Object.fromEntries(Object.entries(o).filter(([k]) => keys.has(k)));
-  return {
-    ...AUDIT,
-    features,
-    components: pick(AUDIT.components, new Set(reqs.map((r) => r.component))),
-    releases: pick(AUDIT.releases, new Set(reqs.map((r) => r.release))),
-    releaseNames: pick(AUDIT.releaseNames || {}, new Set(reqs.map((r) => r.release))),
-  };
-};
 export const US = US_AUDIT;
-export const COMMON = part((f) => f.mode === 'common');
-export const BCAST = part((f) => f.mode === 'broadcast');
-export const MCAST = part((f) => f.mode === 'multicast');
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -42,6 +25,14 @@ export const MCAST = part((f) => f.mode === 'multicast');
 </div>
 </div>
 
+:::tip[In short]
+
+- **MBS User Services** (MBSF, MBSTF, MBS Client, MBS-Aware Application, Application Provider): audited against the Release 17 to 20 specifications (the view opens at Release 20). The code is built against the Release 18 interfaces.
+- **MBS in the 5G System and NG-RAN:** not yet audited.
+- **Source of this page:** an audit of the `main` branch of each repository on 2026-10-11: each requirement split into the cases its clause defines, each case read against the code by one reader and then independently by a second, with a third reading where they disagreed. Cases that reading the code cannot settle are not shown.
+
+:::
+
 For what the specifications define, see the [Technology](/tech/5g-mbs). For how to run the tools, see the [Tutorials](/reference-tools/5g-mbs/tutorials).
 
 ## Implementation status
@@ -54,19 +45,7 @@ Open a feature, then a requirement, to see each case and why. Filter by componen
 
 ### MBS in the 5G System and NG-RAN
 
-Grouped as TS 23.247 groups its procedures. Code audit of 2026-10-03, not yet verified case by case.
-
-#### Common to broadcast and multicast
-
-<ImplementationCases data={COMMON} />
-
-#### MBS Broadcast
-
-<ImplementationCases data={BCAST} />
-
-#### MBS Multicast
-
-<ImplementationCases data={MCAST} />
+Not yet audited. The MB-SMF, MB-UPF, AMF, gNB and UE code for MBS is in forks of Open5GS and srsRAN; their READMEs state no MBS-specific status.
 
 :::info[Full audit for members]
 
@@ -78,11 +57,8 @@ The full audit, with the code behind each verdict, is available to 5G-MAG member
 
 ## Used with other projects
 
-<ul>
-{AUDIT.dependencies.map((d) => (
-  <li key={d.what}><strong>{d.project}</strong>: {d.what}. <em>{d.status}.</em></li>
-))}
-</ul>
+- **FLUTE** (rt-libflute): the MBSTF and the MBS Client use it for object delivery. See [Content Delivery](/reference-tools/content-delivery/implementation).
+- **5GC Service Consumers** (rt-5gc-service-consumers): the MBSF reaches the MB-SMF through its MB-SMF library. See [3GPP Platforms](/reference-tools/3gpp-platforms/implementation).
 
 ## Related
 

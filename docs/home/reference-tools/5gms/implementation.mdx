@@ -18,6 +18,14 @@ import AUDIT from '@site/src/data/audit-5gms.json';
 </div>
 </div>
 
+:::tip[In short]
+
+- **What is covered:** the 5GMS Application Function, Application Server, Media Session Handler, Media Stream Handler, common Android library, 5GMS-Aware Application and Application Provider.
+- **Which release:** the code is built against the Release 17 APIs (TS 26.512 V17.10.0). The view below opens at Release 20, so many cases read as not implemented because the code predates that release. Filter by release to judge it against the release it targets.
+- **Source of this page:** an audit of the `main` branch of each repository on 2026-10-10, at the released version listed for each component: each requirement split into the cases its clause defines, each case read against the code by one reader and then independently by a second, with a third reading where they disagreed. Cases that reading the code cannot settle are not shown.
+
+:::
+
 For what the specifications define, see the [Technology](/tech/5gms). For how to run the tools, see the [Tutorials](/reference-tools/5gms/tutorials).
 
 ## Implementation status
@@ -34,8 +42,14 @@ The full audit, with the code behind each verdict, is available to 5G-MAG member
 
 :::
 
+## Used with other projects
+
+- **5GC Service Consumers** ([rt-5gc-service-consumers](/reference-tools/3gpp-platforms)): the 5GMS Application Function reaches the PCF and the BSF through its libraries.
+
 ## Related
 
 - [Technology](/tech/5gms)
+- [Specifications: 5G Media Streaming](/standards/5gms)
 - [Tutorials](/reference-tools/5gms/tutorials)
-- [Repositories & Releases](/reference-tools/5gms/#repositories--releases)
+- [Repositories & Releases](/reference-tools/5gms#repositories--releases)
+- [Slide deck: 5G Media Streaming overview](pathname:///docs/Reference_Tools_5G_Media_Streaming.pdf)

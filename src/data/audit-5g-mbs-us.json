@@ -1313,13 +1313,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.1",
-       "locatorAt": {
-        "17": "clause 4.6",
-        "18": "clause 4.6",
-        "19": "clause 4.6.1",
-        "20": "clause 4.6.1"
-       }
+       "locator": "clause 4.6.1"
       }
      ],
      "noted": []
@@ -1349,13 +1343,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.2",
-       "locatorAt": {
-        "17": "clause 4.6",
-        "18": "clause 4.6",
-        "19": "clause 4.6.2",
-        "20": "clause 4.6.2"
-       }
+       "locator": "clause 4.6.2"
       },
       {
        "case": "SNTP at most once every 24 hours",
@@ -1368,13 +1356,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.2",
-       "locatorAt": {
-        "17": "clause 4.6",
-        "18": "clause 4.6",
-        "19": "clause 4.6.2",
-        "20": "clause 4.6.2"
-       }
+       "locator": "clause 4.6.2"
       },
       {
        "case": "Randomise SNTP requests over 1 hour",
@@ -1387,13 +1369,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.2",
-       "locatorAt": {
-        "17": "clause 4.6",
-        "18": "clause 4.6",
-        "19": "clause 4.6.2",
-        "20": "clause 4.6.2"
-       }
+       "locator": "clause 4.6.2"
       },
       {
        "case": "SNTP anycast or unicast",
@@ -1406,13 +1382,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.2",
-       "locatorAt": {
-        "17": "clause 4.6",
-        "18": "clause 4.6",
-        "19": "clause 4.6.2",
-        "20": "clause 4.6.2"
-       }
+       "locator": "clause 4.6.2"
       },
       {
        "case": "UE selects the SNTP mode",
@@ -1425,13 +1395,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.2",
-       "locatorAt": {
-        "17": "clause 4.6",
-        "18": "clause 4.6",
-        "19": "clause 4.6.2",
-        "20": "clause 4.6.2"
-       }
+       "locator": "clause 4.6.2"
       },
       {
        "case": "Attempt SNTP anycast first",
@@ -1444,13 +1408,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.2",
-       "locatorAt": {
-        "17": "clause 4.6",
-        "18": "clause 4.6",
-        "19": "clause 4.6.2",
-        "20": "clause 4.6.2"
-       }
+       "locator": "clause 4.6.2"
       },
       {
        "case": "Keep using anycast after success",
@@ -1463,13 +1421,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.2",
-       "locatorAt": {
-        "17": "clause 4.6",
-        "18": "clause 4.6",
-        "19": "clause 4.6.2",
-        "20": "clause 4.6.2"
-       }
+       "locator": "clause 4.6.2"
       },
       {
        "case": "Fall back to SNTP unicast",
@@ -1482,13 +1434,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.2",
-       "locatorAt": {
-        "17": "clause 4.6",
-        "18": "clause 4.6",
-        "19": "clause 4.6.2",
-        "20": "clause 4.6.2"
-       }
+       "locator": "clause 4.6.2"
       },
       {
        "case": "Restart at step 1 on access network change",
@@ -1501,13 +1447,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.6.2",
-       "locatorAt": {
-        "17": "clause 4.6",
-        "18": "clause 4.6",
-        "19": "clause 4.6.2",
-        "20": "clause 4.6.2"
-       }
+       "locator": "clause 4.6.2"
       },
       {
        "case": "UE uses SIB16 instead of SNTP",
@@ -2305,7 +2245,7 @@
       {
        "case": "Do not use FDT Instance beyond its expiry",
        "verdict": "absent",
-       "what": "libflute parses the FDT Instance Expires attribute  but nothing reads it; Receiver keeps the last FDT and keeps starting and receiving files from it, with no comparison with the current time.",
+       "what": "libflute parses the FDT Instance Expires attribute but nothing reads it; Receiver keeps the last FDT and keeps starting and receiving files from it, with no comparison with the current time.",
        "repo": "rt-mbs-client",
        "releases": [
         "17",
@@ -2917,7 +2857,7 @@
       {
        "case": "Request the .gz URL when Content-Encoding is gzip",
        "verdict": "absent",
-       "what": "The client makes no repair request and adds no .gz extension.",
+       "what": "The client makes no repair request and adds no.gz extension.",
        "repo": "rt-mbs-client",
        "releases": [
         "17",
@@ -3469,13 +3409,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.6.1",
-       "locatorAt": {
-        "17": "clause 5.6",
-        "18": "clause 5.6",
-        "19": "clause 5.6.1",
-        "20": "clause 5.6.1"
-       }
+       "locator": "clause 5.6.1"
       }
      ],
      "noted": []
@@ -5014,7 +4948,7 @@
       {
        "case": "In particular, after the steps described in clause 5.5.2 and figure 5.5-2, in case ...",
        "verdict": "absent",
-       "what": "The client implements none of the in-session object repair steps (13a to 13d): the repair class is a stub returning false.",
+       "what": "The client implements none of the in-session object repair steps: the repair class is a stub returning false.",
        "repo": "rt-mbs-client",
        "releases": [
         "19",
@@ -5271,7 +5205,7 @@
       {
        "case": "In particular, after the steps described in clause 5.5.3 and figure 5.5.3-1, in case ...",
        "verdict": "absent",
-       "what": "The client implements none of the post-session repair steps (16a to 16f).",
+       "what": "The client implements none of the post-session repair steps.",
        "repo": "rt-mbs-client",
        "releases": [
         "19",
@@ -6513,7 +6447,7 @@
       {
        "case": "Nmbsf_MBSUserService access authorized by OAuth2",
        "verdict": "absent",
-       "what": "The MBSF does not authorize access to its Nmbsf_MBSUserService API with OAuth2 access tokens; requests are served without token checks.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-mbs-function",
        "releases": [
         "17",
@@ -6543,7 +6477,7 @@
       {
        "case": "Nmbsf_MBSUserDataIngestSession access authorized by OAuth2",
        "verdict": "absent",
-       "what": "The MBSF does not authorize access to its Nmbsf_MBSUserDataIngestSession API with OAuth2 access tokens.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-mbs-function",
        "releases": [
         "17",
@@ -6573,7 +6507,7 @@
       {
        "case": "MBSF as consumer obtains a token before using Nmbstf-distsession",
        "verdict": "absent",
-       "what": "The condition 'OAuth2 is used' is not met: the MBSF never requests an access token before calling the MBSTF.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-mbs-function",
        "releases": [
         "17",
@@ -6585,7 +6519,7 @@
       {
        "case": "MBSF as consumer obtains a token before using Nmbstf-distsession (Release 20 text)",
        "verdict": "absent",
-       "what": "The condition 'OAuth2 is used' is not met: the MBSF never requests an access token before calling the MBSTF.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-mbs-function",
        "releases": [
         "20"
@@ -6612,7 +6546,7 @@
       {
        "case": "OAuth2 client-credentials authorisation of the Nmbstf-distsession API",
        "verdict": "absent",
-       "what": "The MBSTF code does not validate access tokens or consult an authorisation server.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-mbs-transport-function",
        "releases": [
         "17",
@@ -6624,7 +6558,7 @@
       {
        "case": "OAuth2 client-credentials authorisation of the Nmbstf-distsession API",
        "verdict": "absent",
-       "what": "The MBSTF code does not validate access tokens or consult an authorisation server.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-mbs-transport-function",
        "releases": [
         "20"
@@ -7140,7 +7074,7 @@
       {
        "case": "OAuth2 authorization of access to Nmbsf_MBSUserService",
        "verdict": "absent",
-       "what": "The provider calls the MBS User Service API without any OAuth2 authorization; its requests carry no access token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "releases": [
         "17",
         "18",
@@ -7152,7 +7086,7 @@
       {
        "case": "Obtain token via Access Token Request before using MBS User Service API",
        "verdict": "absent",
-       "what": "The provider never requests an access token from an authorization server.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "releases": [
         "17",
         "18",
@@ -7181,7 +7115,7 @@
       {
        "case": "OAuth2 authorization of access to Nmbsf_MBSUserDataIngestSession",
        "verdict": "absent",
-       "what": "The provider calls the ingest session API without any OAuth2 authorization; its requests carry no access token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "releases": [
         "17",
         "18",
@@ -7193,7 +7127,7 @@
       {
        "case": "Obtain token via Access Token Request before using the ingest session API",
        "verdict": "absent",
-       "what": "The provider never requests an access token from an authorization server.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "releases": [
         "17",
         "18",
@@ -7287,7 +7221,7 @@
       {
        "case": "The product identifier token shall be set to the value MBSSF.",
        "verdict": "absent",
-       "what": "The MBSF code sets no MBSSF product token anywhere (its only HTTP server identifies as MBSAF).",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-mbs-function",
        "releases": [
         "17",
@@ -7398,7 +7332,7 @@
       {
        "case": "The product identifier token shall be set to the value MBSSF.",
        "verdict": "absent",
-       "what": "No MBSSF is built: neither repository has key retrieval, security descriptions or an MBS-10 endpoint, so nothing sets a Server token MBSSF.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-mbs-transport-function",
        "releases": [
         "17",
@@ -9049,7 +8983,7 @@
       {
        "case": "Language of a service description as ISO 639-2 alpha-3",
        "verdict": "differs",
-       "what": "The description list takes each provisioned servNameDescs language string unchanged (no ISO 639-2 alpha-3 check or conversion), and it reads servDescrip with an unchecked value() after only a servName guard, so a servName-only entry raises.",
+       "what": "The description list takes each provisioned servNameDescs language string unchanged (no ISO 639-2 alpha-3 check or conversion), and it reads servDescrip with an unchecked value after only a servName guard, so a servName-only entry raises.",
        "repo": "rt-mbs-function",
        "releases": [
         "17",
@@ -10207,7 +10141,7 @@
       {
        "case": "This response message shall conform to the following requirements:",
        "verdict": "absent",
-       "what": "The MBSF has no MBS-5 User Service Descriptions discovery service; the HTTP bundle at /x-5gmag-service-announcements is a different endpoint .",
+       "what": "The MBSF has no MBS-5 User Service Descriptions discovery service; the HTTP bundle at /x-5gmag-service-announcements is a different endpoint.",
        "repo": "rt-mbs-function",
        "releases": [
         "17",
@@ -10344,7 +10278,7 @@
       {
        "case": "The URL through which each MBS User Service Announcement bundle is exposed at ...",
        "verdict": "absent",
-       "what": "The MBSF never sets a URL attribute for the bundle; for PASSED_BACK it passes the description inline in mbsUserServiceAnmt (-1497).",
+       "what": "The MBSF never sets a URL attribute for the bundle; for PASSED_BACK it passes the description inline in mbsUserServiceAnmt.",
        "repo": "rt-mbs-function",
        "releases": [
         "17",
@@ -10559,7 +10493,7 @@
       {
        "case": "User-Agent on pull-based ingest requests",
        "verdict": "differs",
-       "what": "Pull requests carry User-Agent \"MBSTF/<project version>\" (product token MBSTF, but the suffix is the software version 1.4.0, not the 3GPP release or specification version the clause requires).",
+       "what": "Differs from the requirement; the details are in the members-only section.",
        "repo": "rt-mbs-transport-function",
        "releases": [
         "17",
@@ -14470,7 +14404,7 @@
       {
        "case": "JSON as content type of HTTP bodies",
        "verdict": "implemented",
-       "what": "Request bodies must be application/json (415 otherwise) and response bodies are sent as JSON.",
+       "what": "Request bodies must be application/json and response bodies are sent as JSON.",
        "repo": "rt-mbs-function",
        "releases": [
         "17",
@@ -14895,7 +14829,7 @@
       {
        "case": "Mandatory HTTP error status codes for POST",
        "verdict": "differs",
-       "what": "POST answers 400 (bad body, unusable announcement setup) and 415 (wrong content type) but the code does not itself produce the other mandatory codes (401, 403, 404, 411, 413, 429, 500, 502, 503).",
+       "what": "POST answers 400 (bad body, unusable announcement setup) and 415 (wrong content type) but the code does not itself produce the other mandatory codes.",
        "repo": "rt-mbs-function",
        "releases": [
         "17",
@@ -15105,7 +15039,7 @@
       {
        "case": "Mandatory HTTP error status codes for PUT",
        "verdict": "differs",
-       "what": "PUT answers 404 (unknown service), 415 (wrong content type) and 400 (unparsable JSON) but the code does not itself produce the other mandatory codes (401, 403, 411, 413, 429, 500, 502, 503), and a body that parses but fails model validation raises an uncaught exception instead of 400.",
+       "what": "PUT answers 404 (unknown service), 415 (wrong content type) and 400 (unparsable JSON) but the code does not itself produce the other mandatory codes, and a body that parses but fails model validation raises an uncaught exception instead of 400.",
        "repo": "rt-mbs-function",
        "releases": [
         "18",
@@ -15255,7 +15189,7 @@
       {
        "case": "Mandatory HTTP error status codes for DELETE",
        "verdict": "differs",
-       "what": "DELETE answers 404 for an unknown or already-deleting service but the code does not itself produce the other mandatory codes (400, 401, 403, 429, 500, 502, 503).",
+       "what": "DELETE answers 404 for an unknown or already-deleting service but the code does not itself produce the other mandatory codes.",
        "repo": "rt-mbs-function",
        "releases": [
         "18",
@@ -15336,7 +15270,7 @@
       {
        "case": "servNameDescs: per language name and description sets",
        "verdict": "differs",
-       "what": "servNameDescs are stored and returned, but building the announcement names and descriptions fails for entries the API allows: an entry with servName and no servDescrip makes getServDescrip().value() throw, and an entry with only servDescrip is dropped from the descriptions.",
+       "what": "servNameDescs are stored and returned, but building the announcement names and descriptions fails for entries the API allows: an entry with servName and no servDescrip makes getServDescrip.value throw, and an entry with only servDescrip is dropped from the descriptions.",
        "repo": "rt-mbs-function",
        "releases": [
         "17",
@@ -15985,7 +15919,7 @@
       {
        "case": "Mandatory HTTP error status codes and failure cases for POST (sessions, second note)",
        "verdict": "differs",
-       "what": "POST answers 400, 403, 404 (relayed from the MB-SMF), 415 and some 5xx, but the code does not itself produce the other mandatory codes (401, 411, 413, 429, 502, 503).",
+       "what": "POST answers 400, 403, 404 (relayed from the MB-SMF), 415 and some 5xx, but the code does not itself produce the other mandatory codes.",
        "repo": "rt-mbs-function",
        "releases": [
         "20"
@@ -16228,7 +16162,7 @@
       {
        "case": "Mandatory HTTP error status codes and failure cases for PUT (session)",
        "verdict": "differs",
-       "what": "PUT answers 400 (unparsable JSON), 403, 404 and 415 but the code does not itself produce the other mandatory codes (401, 411, 413, 429, 500, 502, 503), and a model validation failure raises an uncaught exception instead of 400.",
+       "what": "PUT answers 400 (unparsable JSON), 403, 404 and 415 but the code does not itself produce the other mandatory codes, and a model validation failure raises an uncaught exception instead of 400.",
        "repo": "rt-mbs-function",
        "releases": [
         "18",
@@ -17135,7 +17069,7 @@
       {
        "case": "mbsUserServiceAnmt returned only in PUT/PATCH responses when all sessions are ESTABLISHED/ACTIVE and PASSED_BACK is provisioned",
        "verdict": "differs",
-       "what": "The announcement is set only when PASSED_BACK is provisioned and every distribution session is ESTABLISHED or ACTIVE, but it is also returned in the POST (201) response and, being stored in the session object, in GET responses.",
+       "what": "The announcement is set only when PASSED_BACK is provisioned and every distribution session is ESTABLISHED or ACTIVE, but it is also returned in the POST response and, being stored in the session object, in GET responses.",
        "repo": "rt-mbs-function",
        "releases": [
         "17",
@@ -17275,7 +17209,7 @@
       {
        "case": "mbsUserServiceAnmt returned only in PUT/PATCH responses (Rel-20 text)",
        "verdict": "differs",
-       "what": "The announcement is set only when PASSED_BACK is provisioned and every distribution session is ESTABLISHED or ACTIVE, but it is also returned in the POST (201) response and in GET responses.",
+       "what": "The announcement is set only when PASSED_BACK is provisioned and every distribution session is ESTABLISHED or ACTIVE, but it is also returned in the POST response and in GET responses.",
        "repo": "rt-mbs-function",
        "releases": [
         "20"
@@ -23662,7 +23596,7 @@
       {
        "case": "Scope nmbsf-mbs-us used for a trusted or internal AF",
        "verdict": "absent",
-       "what": "The portal requests no OAuth2 access token and sends no scope or Authorization header to the MBSF.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-mbs-application-provider",
        "releases": [
         "17",
@@ -23675,7 +23609,7 @@
       {
        "case": "OAuth2 token URI for Nmbsf_MBSUserService",
        "verdict": "absent",
-       "what": "The portal does not retrieve OAuth2 access tokens; it calls the MBSF without any token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-mbs-application-provider",
        "releases": [
         "17",
@@ -23720,7 +23654,7 @@
       {
        "case": "Token URI {nrfApiRoot}/oauth2/token",
        "verdict": "absent",
-       "what": "The portal contacts no NRF and fetches no OAuth2 token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-mbs-application-provider",
        "releases": [
         "19",
@@ -23878,7 +23812,7 @@
       {
        "case": "OAuth2 scope nmbsf-mbs-ud-ingest",
        "verdict": "absent",
-       "what": "The portal does not request OAuth2 tokens, so the scope nmbsf-mbs-ud-ingest is never used.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-mbs-application-provider",
        "releases": [
         "17",
@@ -24011,7 +23945,7 @@
       {
        "case": "Scope nmbsf-mbs-ud-ingest",
        "verdict": "absent",
-       "what": "The portal requests no token and no scope for the ingest API.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-mbs-application-provider",
        "releases": [
         "19",
@@ -24022,7 +23956,7 @@
       {
        "case": "Token URI {nrfApiRoot}/oauth2/token for the ingest API",
        "verdict": "absent",
-       "what": "The portal contacts no NRF and fetches no OAuth2 token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-mbs-application-provider",
        "releases": [
         "19",
@@ -30567,7 +30501,7 @@
       {
        "case": "Failure response with ProblemDetails and cause for Update",
        "verdict": "implemented",
-       "what": "On failure the MBSTF returns an HTTP error (400 for bad input, 404 for an unknown session or subscription, 405 for an unsupported method) with an application/problem+json ProblemDetails body whose cause is set from the error.",
+       "what": "On failure the MBSTF returns an HTTP error with an application/problem+json ProblemDetails body whose cause is set from the error.",
        "repo": "rt-mbs-transport-function",
        "releases": [
         "17",
@@ -30654,7 +30588,7 @@
       {
        "case": "Failure response with ProblemDetails and cause for Destroy",
        "verdict": "implemented",
-       "what": "On failure the MBSTF returns an HTTP error (400 for bad input, 404 for an unknown session or subscription, 405 for an unsupported method) with an application/problem+json ProblemDetails body whose cause is set from the error.",
+       "what": "On failure the MBSTF returns an HTTP error with an application/problem+json ProblemDetails body whose cause is set from the error.",
        "repo": "rt-mbs-transport-function",
        "releases": [
         "17",
@@ -30741,7 +30675,7 @@
       {
        "case": "Failure response with ProblemDetails and cause for Retrieve",
        "verdict": "implemented",
-       "what": "On failure the MBSTF returns an HTTP error (400 for bad input, 404 for an unknown session or subscription, 405 for an unsupported method) with an application/problem+json ProblemDetails body whose cause is set from the error.",
+       "what": "On failure the MBSTF returns an HTTP error with an application/problem+json ProblemDetails body whose cause is set from the error.",
        "repo": "rt-mbs-transport-function",
        "releases": [
         "17",
@@ -30898,7 +30832,7 @@
       {
        "case": "Failure response with ProblemDetails and cause for StatusSubscribe",
        "verdict": "implemented",
-       "what": "On failure the MBSTF returns an HTTP error (400 for bad input, 404 for an unknown session or subscription, 405 for an unsupported method) with an application/problem+json ProblemDetails body whose cause is set from the error.",
+       "what": "On failure the MBSTF returns an HTTP error with an application/problem+json ProblemDetails body whose cause is set from the error.",
        "repo": "rt-mbs-transport-function",
        "releases": [
         "17",
@@ -31023,7 +30957,7 @@
       {
        "case": "Failure response with ProblemDetails and cause for StatusSubscribe update",
        "verdict": "implemented",
-       "what": "On failure the MBSTF returns an HTTP error (400 for bad input, 404 for an unknown session or subscription, 405 for an unsupported method) with an application/problem+json ProblemDetails body whose cause is set from the error.",
+       "what": "On failure the MBSTF returns an HTTP error with an application/problem+json ProblemDetails body whose cause is set from the error.",
        "repo": "rt-mbs-transport-function",
        "releases": [
         "17",
@@ -31101,7 +31035,7 @@
       {
        "case": "Failure response with ProblemDetails and cause for StatusUnsubscribe",
        "verdict": "implemented",
-       "what": "On failure the MBSTF returns an HTTP error (400 for bad input, 404 for an unknown session or subscription, 405 for an unsupported method) with an application/problem+json ProblemDetails body whose cause is set from the error.",
+       "what": "On failure the MBSTF returns an HTTP error with an application/problem+json ProblemDetails body whose cause is set from the error.",
        "repo": "rt-mbs-transport-function",
        "releases": [
         "17",
@@ -32582,7 +32516,7 @@
       {
        "case": "mbr maximum bit rate",
        "verdict": "implemented",
-       "what": "The bit rate is parsed and applied as the token-bucket rate of the packet scheduler and passed as the rate limit of the object packagers.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-mbs-transport-function",
        "releases": [
         "17",
@@ -34938,7 +34872,7 @@
       {
        "case": "User-Agent product identifier of the client function",
        "verdict": "implemented",
-       "what": "The MBSF's own HTTP requests (the carousel manifest push) send a User-Agent whose product token is MBSF followed by its version.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-mbs-function",
        "releases": [
         "17"
@@ -34961,7 +34895,7 @@
       {
        "case": "Client identifies itself with User-Agent giving the client function type (libcurl client)",
        "verdict": "implemented",
-       "what": "The libcurl client sends a User-Agent whose product token is MBSF.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-mbs-function",
        "releases": [
         "18",
@@ -35036,7 +34970,7 @@
       {
        "case": "Server product-version suffix with at least the 3GPP release (MBSF SBI replies)",
        "verdict": "implemented",
-       "what": "The Server header ends the product token with /18, the 3GPP release the APIs are built for.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-mbs-function",
        "releases": [
         "17",
@@ -35049,7 +34983,7 @@
       {
        "case": "Server product-version suffix with at least the 3GPP release (co-located MBS AF)",
        "verdict": "differs",
-       "what": "The AF Server header names the HTTP library version and has no 3GPP release suffix on the MBSAF token.",
+       "what": "Differs from the requirement; the details are in the members-only section.",
        "repo": "rt-mbs-function",
        "releases": [
         "17",
@@ -35062,7 +34996,7 @@
       {
        "case": "Comment elements and vendor products in the Server header",
        "verdict": "implemented",
-       "what": "The MBSF's Server header adds a comment with the API title and version and a vendor product token, and the co-located MBS AF adds a comment with the HTTP library and microhttpd versions.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-mbs-function",
        "releases": [
         "17"
@@ -35072,7 +35006,7 @@
       {
        "case": "Server header with product identifier giving type and host name (MBSF SBI replies)",
        "verdict": "implemented",
-       "what": "Replies built through NfServer carry a Server header whose first product token is MBSF-<host name> with the release number as version, then the API info comment and the application product.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-mbs-function",
        "releases": [
         "18",
@@ -35125,7 +35059,7 @@
       {
        "case": "MBS AF Server product token MBSAF",
        "verdict": "implemented",
-       "what": "The co-located MBS AF names its Server header token MBSAF.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-mbs-function",
        "releases": [
         "17",
@@ -35566,7 +35500,7 @@
       {
        "case": "MBSF Client product identifier token MBSFClient",
        "verdict": "absent",
-       "what": "The MBS-5 request carries no User-Agent, so the token MBSFClient is not sent.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-mbs-client",
        "releases": [
         "17",
@@ -35596,7 +35530,7 @@
       {
        "case": "MBSTF Client product identifier token MBSTFClient",
        "verdict": "absent",
-       "what": "The session description fetch carries no User-Agent, so the token MBSTFClient is not sent.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-mbs-client",
        "releases": [
         "17",
@@ -35744,7 +35678,7 @@
       {
        "case": "All API endpoints on the MBS AF that expose the HTTP GET method shall support ...",
        "verdict": "differs",
-       "what": "Files in the co-located MBS AF docroot honour If-None-Match and If-Modified-Since (304), but the bundle (directory) endpoint returns the multipart bundle without evaluating either header and without ETag or Last-Modified.",
+       "what": "Files in the co-located MBS AF docroot honour If-None-Match and If-Modified-Since, but the bundle (directory) endpoint returns the multipart bundle without evaluating either header and without ETag or Last-Modified.",
        "repo": "rt-mbs-function",
        "releases": [
         "17"
@@ -35753,7 +35687,7 @@
       {
        "case": "All API endpoints on the MBS AF that expose the HTTP GET method shall support ...",
        "verdict": "differs",
-       "what": "Files in the co-located MBS AF docroot honour If-None-Match and If-Modified-Since (304), but the bundle (directory) endpoint returns the multipart bundle without evaluating either header and without ETag or Last-Modified.",
+       "what": "Files in the co-located MBS AF docroot honour If-None-Match and If-Modified-Since, but the bundle (directory) endpoint returns the multipart bundle without evaluating either header and without ETag or Last-Modified.",
        "repo": "rt-mbs-function",
        "releases": [
         "18",
@@ -35793,7 +35727,7 @@
       {
        "case": "The product identifier token shall be set to the value MBSAS.",
        "verdict": "absent",
-       "what": "The MBSTF code has no MBS AS endpoint and sets no MBSAS Server token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-mbs-transport-function",
        "releases": [
         "17",
@@ -35822,7 +35756,7 @@
       {
        "case": "The product identifier token shall be set to the value MBSTF.",
        "verdict": "implemented",
-       "what": "The pull ingest User-Agent product token is MBSTF.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-mbs-transport-function",
        "releases": [
         "17",
@@ -35935,7 +35869,7 @@
       {
        "case": "The optional product-version suffix shall be present and should indicate the version ...",
        "verdict": "implemented",
-       "what": "The product identifier on Nmbstf SBI responses carries the 3GPP release number (18) as its version suffix.",
+       "what": "The product identifier on Nmbstf SBI responses carries the 3GPP release number as its version suffix.",
        "repo": "rt-mbs-transport-function",
        "releases": [
         "17",
@@ -35956,7 +35890,7 @@
       {
        "case": "When one of the MBS User Services functions defined in TS 26.502 [6] responds to an ...",
        "verdict": "differs",
-       "what": "Nmbstf SBI responses carry Server: MBSTF-<host>/18 ..., but the push ingest responses (libmicrohttpd) carry no Server header.",
+       "what": "Nmbstf SBI responses carry Server: MBSTF-<host>/18..., but the push ingest responses (libmicrohttpd) carry no Server header.",
        "repo": "rt-mbs-transport-function",
        "releases": [
         "18",
@@ -35967,7 +35901,7 @@
       {
        "case": "The server type and host name shall be separated by a single hyphen ('-') character.",
        "verdict": "implemented",
-       "what": "The Server token is MBSTF-<host name>, joined with a single hyphen.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-mbs-transport-function",
        "releases": [
         "17",
@@ -35979,7 +35913,7 @@
       {
        "case": "When one of the MBS User Services functions defined in TS 26.502 [6] responds to an ...",
        "verdict": "differs",
-       "what": "Nmbstf SBI responses carry Server: MBSTF-<host>/18 ..., but the push ingest responses (libmicrohttpd) carry no Server header.",
+       "what": "Nmbstf SBI responses carry Server: MBSTF-<host>/18..., but the push ingest responses (libmicrohttpd) carry no Server header.",
        "repo": "rt-mbs-transport-function",
        "releases": [
         "17"
@@ -36176,7 +36110,7 @@
       {
        "case": "The product identifier token shall be set to the value MBSAF.",
        "verdict": "differs",
-       "what": "The co-located MBS AF Server header starts with the token MBSAF but has no host name, no hyphen and no release suffix: MBSAF (<library>; microhttpd/<version>).",
+       "what": "Differs from the requirement; the details are in the members-only section.",
        "repo": "rt-mbs-function",
        "releases": [
         "17",

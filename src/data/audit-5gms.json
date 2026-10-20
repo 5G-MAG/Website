@@ -644,7 +644,7 @@
       {
        "case": "AF obtains an API access token from an authorization server",
        "verdict": "absent",
-       "what": "The AF has no authorization server client and obtains no access token for M3.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -668,7 +668,7 @@
       {
        "case": "AF obtains an API access token from an authorization server",
        "verdict": "absent",
-       "what": "The AF has no authorization server client and obtains no access token for M3.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -929,7 +929,7 @@
       {
        "case": "Discovery of content ingest and distribution protocols per Provisioning Session",
        "verdict": "implemented",
-       "what": "GET provisioning-sessions/{id}/protocols looks up the session (404 if missing) and returns the supported ingest protocols document.",
+       "what": "GET provisioning-sessions/{id}/protocols looks up the session and returns the supported ingest protocols document.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -1619,7 +1619,7 @@
       }
      ],
      "noted": [
-      "The AF never reads the referenced certificate to compare names, and does not do wildcard matching; a certificate placed by the operator is only picked if its listing matches the canonical hostname (-310). Only the first configured AS is used."
+      "The AF never reads the referenced certificate to compare names, and does not do wildcard matching; a certificate placed by the operator is only picked if its listing matches the canonical hostname. Only the first configured AS is used."
      ]
     },
     {
@@ -1639,7 +1639,7 @@
       {
        "case": "Retrieve answers 200 with the Content Hosting Configuration",
        "verdict": "implemented",
-       "what": "GET content-hosting-configuration answers 200 with the stored Content Hosting Configuration as JSON (404 if none).",
+       "what": "GET content-hosting-configuration answers 200 with the stored Content Hosting Configuration as JSON.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -1680,7 +1680,7 @@
       {
        "case": "Replacement representation in the request body",
        "verdict": "implemented",
-       "what": "PUT content-hosting-configuration parses the request body as JSON, validates it as a Content Hosting Configuration, replaces the stored one and re-provisions the AS (400 on parse or validation failure).",
+       "what": "PUT content-hosting-configuration parses the request body as JSON, validates it as a Content Hosting Configuration, replaces the stored one and re-provisions the AS.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -1810,7 +1810,7 @@
       {
        "case": "Purge with POST and a regular expression in the body",
        "verdict": "implemented",
-       "what": "POST .../content-hosting-configuration/purge is routed and the request body is taken as the regular expression and forwarded to each AS as a POST purge request over M3.",
+       "what": "POST.../content-hosting-configuration/purge is routed and the request body is taken as the regular expression and forwarded to each AS as a POST purge request over M3.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -1834,7 +1834,7 @@
       {
        "case": "200 with the total number of purged entries across all AS instances",
        "verdict": "differs",
-       "what": "The AF sums the per-AS purge counts into one 200 body, but the AS-200 path dereferences a NULL request (request->http.headers) so the count path crashes before the total is sent, and 200 is also sent with 0 when all AS answered 204.",
+       "what": "Differs from the requirement; the details are in the members-only section.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -1899,7 +1899,7 @@
       {
        "case": "Modification timestamp in a Last-Modified header",
        "verdict": "differs",
-       "what": "Last-Modified is emitted from get_time(), which uses localtime() and %Z, so the zone is the server's local zone name rather than the literal GMT of an HTTP-date.",
+       "what": "Last-Modified is emitted from get_time, which uses localtime and %Z, so the zone is the server's local zone name rather than the literal GMT of an HTTP-date.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -1993,7 +1993,7 @@
       {
        "case": "certificates sub-resource",
        "verdict": "implemented",
-       "what": "The certificates sub-resource of a Provisioning Session exists and accepts POST (404 if the session is unknown).",
+       "what": "The certificates sub-resource of a Provisioning Session exists and accepts POST.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -2058,7 +2058,7 @@
       {
        "case": "Content protocols discovered and other features provisioned in the Provisioning Session",
        "verdict": "implemented",
-       "what": "Within a Provisioning Session the AF serves content protocol discovery (GET .../protocols) and the other features (content hosting, certificates, consumption reporting, metrics reporting, policy templates) as sub-resources.",
+       "what": "Within a Provisioning Session the AF serves content protocol discovery (GET.../protocols) and the other features (content hosting, certificates, consumption reporting, metrics reporting, policy templates) as sub-resources.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -2145,7 +2145,7 @@
       {
        "case": "Retrieve Provisioning Session (GET)",
        "verdict": "implemented",
-       "what": "GET provisioning-sessions/{id} returns the Provisioning Session as JSON (404 if unknown or marked for deletion).",
+       "what": "GET provisioning-sessions/{id} returns the Provisioning Session as JSON.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -2547,7 +2547,7 @@
      ],
      "noted": [
       "This is the earlier (Release 17, 3gpp-m1/v2) ContentProtocols resource, not the 26.510 Maf_Provisioning one; the property has the same name and form. The list is static.",
-      "Earlier form: the Release 17 M1 ContentProtocols resource served at -1009."
+      "Earlier form: the Release 17 M1 ContentProtocols resource served."
      ]
     },
     {
@@ -2954,7 +2954,7 @@
       {
        "case": "Private key not included",
        "verdict": "implemented",
-       "what": "The AF never returns the private key on M1: create returns only the public certificate, reserve returns only the CSR, and GET calls publiccert, which prints only public/<id>.pem.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -3055,7 +3055,7 @@
       {
        "case": "Purge Content Hosting cache (POST .../purge)",
        "verdict": "differs",
-       "what": "The purge request is queued to each AS, but when an AS answers 200 the M3 response handler reads request->http.headers with request still NULL, so the handler crashes and the M1 client gets no answer; a no-purge result is answered with 200 and a total, never 204.",
+       "what": "Differs from the requirement; the details are in the members-only section.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -3809,7 +3809,7 @@
       {
        "case": "Create failure: referenced certificate not found mapped to the most similar status code",
        "verdict": "differs",
-       "what": "A configuration that references a certificate the AF cannot find is answered 404, a code TS 29.500 clause 5.2.7.2 gives to a target resource that does not exist, although the target exists and the error is in the request body (400 for client errors).",
+       "what": "A configuration that references a certificate the AF cannot find is answered 404, a code TS 29.500 clause 5.2.7.2 gives to a target resource that does not exist, although the target exists and the error is in the request body.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "17"
@@ -3894,11 +3894,7 @@
         "16",
         "17"
        ],
-       "locator": "clause 4.3.3.3",
-       "locatorAt": {
-        "16": "clause 4.3.3.2",
-        "17": "clause 4.3.3.3"
-       }
+       "locator": "clause 4.3.3.3"
       },
       {
        "case": "Read failure: ProblemDetails body",
@@ -3909,11 +3905,7 @@
         "16",
         "17"
        ],
-       "locator": "clause 4.3.3.3",
-       "locatorAt": {
-        "16": "clause 4.3.3.2",
-        "17": "clause 4.3.3.3"
-       }
+       "locator": "clause 4.3.3.3"
       },
       {
        "case": "Read failure: Content-Type application/problem+json",
@@ -3924,26 +3916,18 @@
         "16",
         "17"
        ],
-       "locator": "clause 4.3.3.3",
-       "locatorAt": {
-        "16": "clause 4.3.3.2",
-        "17": "clause 4.3.3.3"
-       }
+       "locator": "clause 4.3.3.3"
       },
       {
        "case": "Read failure: cause attribute",
        "verdict": "absent",
-       "what": "Read Content Hosting Configuration failures (404) are sent with nf_server_send_error without any cause attribute.",
+       "what": "Read Content Hosting Configuration failures are sent with nf_server_send_error without any cause attribute.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "16",
         "17"
        ],
-       "locator": "clause 4.3.3.3",
-       "locatorAt": {
-        "16": "clause 4.3.3.2",
-        "17": "clause 4.3.3.3"
-       }
+       "locator": "clause 4.3.3.3"
       },
       {
        "case": "Read answers 200 with the ContentHostingConfiguration",
@@ -4089,7 +4073,7 @@
       }
      ],
      "noted": [
-      "Deleting the whole Provisioning Session also removes certificates and reporting registrations (-1707)."
+      "Deleting the whole Provisioning Session also removes certificates and reporting registrations."
      ]
     },
     {
@@ -4109,7 +4093,7 @@
       {
        "case": "Purge with POST and a regular expression in the body",
        "verdict": "implemented",
-       "what": "POST on content-hosting-configuration/purge is accepted with an application/x-www-form-urlencoded body (415 otherwise) and the body is relayed to the AS.",
+       "what": "POST on content-hosting-configuration/purge is accepted with an application/x-www-form-urlencoded body and the body is relayed to the AS.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "17"
@@ -4159,7 +4143,7 @@
       {
        "case": "Purge failure: error from the Application Server relayed",
        "verdict": "implemented",
-       "what": "An error status returned by the Application Server (400, 404, 413, 414, 415, 422, 500 or 503) is relayed with its invalidParams.",
+       "what": "An error status returned by the Application Server is relayed with its invalidParams.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "17"
@@ -5221,7 +5205,7 @@
       {
        "case": "Provisioning Session identifier substituted, sub-resource appended",
        "verdict": "implemented",
-       "what": "The session identifier in the path selects the session (404 when unknown) and the certificates sub-resource selects the API.",
+       "what": "The session identifier in the path selects the session and the certificates sub-resource selects the API.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "16",
@@ -5370,7 +5354,7 @@
       {
        "case": "Content-Type of the GET response",
        "verdict": "implemented",
-       "what": "GET certificates/{certificateId} answers 200 with Content-Type application/x-pem-file and the PEM (204 with no body when the certificate is reserved but not uploaded).",
+       "what": "GET certificates/{certificateId} answers 200 with Content-Type application/x-pem-file and the PEM.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "16",
@@ -5447,7 +5431,7 @@
       {
        "case": "Upload Server Certificate (PUT)",
        "verdict": "implemented",
-       "what": "Accepts only application/x-pem-file (415 otherwise), checks the certificate against the key made with the CSR, answers 204, and rejects a second upload with 403.",
+       "what": "Accepts only application/x-pem-file, checks the certificate against the key made with the CSR, answers 204, and rejects a second upload with 403.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "16",
@@ -5502,7 +5486,7 @@
       {
        "case": "Upload Server Certificate (PUT)",
        "verdict": "implemented",
-       "what": "Accepts only application/x-pem-file (415 otherwise), checks the certificate against the key generated with the CSR (400 on mismatch or when no CSR exists), answers 204, and rejects a second upload with 403.",
+       "what": "Accepts only application/x-pem-file, checks the certificate against the key generated with the CSR (400 on mismatch or when no CSR exists), answers 204, and rejects a second upload with 403.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "16",
@@ -5602,7 +5586,7 @@
       {
        "case": "Private key not included",
        "verdict": "implemented",
-       "what": "No M1 response carries the private key; the key made with a CSR stays in the AF certificate store.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "16",
@@ -5721,7 +5705,7 @@
       {
        "case": "Provisioning Session identifier substituted, sub-resource appended",
        "verdict": "implemented",
-       "what": "The session identifier selects the session (404 when unknown) and the protocols sub-resource selects the operation.",
+       "what": "The session identifier selects the session and the protocols sub-resource selects the operation.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "16",
@@ -5980,7 +5964,7 @@
       {
        "case": "Provisioning Session identifier substituted, sub-resource appended",
        "verdict": "implemented",
-       "what": "The session identifier selects the session (404 when unknown) and the sub-resource selects the operation.",
+       "what": "The session identifier selects the session and the sub-resource selects the operation.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "16",
@@ -6101,7 +6085,7 @@
       {
        "case": "Delete Content Hosting Configuration",
        "verdict": "implemented",
-       "what": "DELETE on the content-hosting-configuration resource removes the configuration (204), or answers 404 if none exists.",
+       "what": "DELETE on the content-hosting-configuration resource removes the configuration, or answers 404 if none exists.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "16"
@@ -6111,7 +6095,7 @@
       {
        "case": "Purge relayed to each AS hosting the session",
        "verdict": "implemented",
-       "what": "Accepts application/x-www-form-urlencoded only (415 otherwise) and queues the purge for every AS the session is assigned to.",
+       "what": "Accepts application/x-www-form-urlencoded only and queues the purge for every AS the session is assigned to.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "16",
@@ -6901,14 +6885,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 9.2.2, operation row",
-       "locatorAt": {
-        "16": "clause 7.3.2",
-        "17": "clause 7.3.2",
-        "18": "clause 9.2.2",
-        "19": "clause 9.2.2",
-        "20": "clause 9.2.2"
-       }
+       "locator": "clause 9.2.2, operation row"
       },
       {
        "case": "Invoke {apiRoot}/3gpp-mas-configuration/{apiVersion}/certificates",
@@ -7706,7 +7683,7 @@
       {
        "case": "Perform URL signature validation",
        "verdict": "absent",
-       "what": "urlSignature is ignored; no request token is checked at M4.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "16",
@@ -7823,7 +7800,7 @@
       {
        "case": "3: respond with success or failure",
        "verdict": "implemented",
-       "what": "The AS answers the create request with 201 on success and with a problem response (405, 415) when the configuration is refused.",
+       "what": "The AS answers the create request with 201 on success and with a problem response when the configuration is refused.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "18",
@@ -7939,7 +7916,7 @@
       }
      ],
      "noted": [
-      "The nginx template uses fixed proxy_cache_valid values (200 for 1d, any for 1m) not taken from the Content Hosting Configuration."
+      "The nginx template uses fixed proxy_cache_valid values not taken from the Content Hosting Configuration."
      ]
     },
     {
@@ -7971,7 +7948,7 @@
       {
        "case": "Access token presented and checked",
        "verdict": "absent",
-       "what": "No access token is required or checked on M3 requests.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "18",
@@ -8741,7 +8718,7 @@
       {
        "case": "urlSignature.urlPattern",
        "verdict": "absent",
-       "what": "The AS matches no URL pattern for token checks and serves all matching resources without a token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "releases": [
         "18"
        ],
@@ -9174,7 +9151,7 @@
       {
        "case": "urlSignature.urlPattern and token check",
        "verdict": "absent",
-       "what": "No request is refused for a missing or invalid authentication token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "19",
@@ -9186,11 +9163,11 @@
      "noted": [
       "The generated OpenAPI bindings are produced at build time and are not in the repository, so a schema-level minimum cannot be read here.",
       "The example configurations use the earlier form, a top-level entryPointPath (tests/examples/ContentHostingConfiguration_Big-Buck-Bunny_pull-ingest.json:3); the code never uses it.",
-      "The nginx template uses fixed proxy_cache_valid values (200 for 1d, any for 1m) not taken from the Content Hosting Configuration.",
-      "The nginx template uses fixed proxy_cache_valid values (200 for 1d, any for 1m) not taken from the Content Hosting Configuration.",
-      "The nginx template uses fixed proxy_cache_valid values (200 for 1d, any for 1m) not taken from the Content Hosting Configuration.",
-      "The nginx template uses fixed proxy_cache_valid values (200 for 1d, any for 1m) not taken from the Content Hosting Configuration.",
-      "The nginx template uses fixed proxy_cache_valid values (200 for 1d, any for 1m) not taken from the Content Hosting Configuration."
+      "The nginx template uses fixed proxy_cache_valid values not taken from the Content Hosting Configuration.",
+      "The nginx template uses fixed proxy_cache_valid values not taken from the Content Hosting Configuration.",
+      "The nginx template uses fixed proxy_cache_valid values not taken from the Content Hosting Configuration.",
+      "The nginx template uses fixed proxy_cache_valid values not taken from the Content Hosting Configuration.",
+      "The nginx template uses fixed proxy_cache_valid values not taken from the Content Hosting Configuration."
      ]
     },
     {
@@ -9219,7 +9196,7 @@
       }
      ],
      "noted": [
-      "The missing-baseURL check happens when the proxy configuration is written (-396), not when the M3 request is validated (-358)."
+      "The missing-baseURL check happens when the proxy configuration is written, not when the M3 request is validated."
      ]
     },
     {
@@ -10439,7 +10416,7 @@
       {
        "case": "urlSignature.urlPattern and token check",
        "verdict": "absent",
-       "what": "No request is refused for a missing or invalid authentication token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "16",
@@ -10472,7 +10449,7 @@
       {
        "case": "urlSignature.passphrase",
        "verdict": "absent",
-       "what": "URL signatures are not verified, so the shared secret is not used.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "16",
@@ -10483,7 +10460,7 @@
       {
        "case": "tokenExpiryName String",
        "verdict": "absent",
-       "what": "The AS does not read urlSignature.tokenExpiryName; no token expiry parameter is checked on M4d requests.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "16",
@@ -10494,7 +10471,7 @@
       {
        "case": "useIPAddress Boolean",
        "verdict": "absent",
-       "what": "The AS does not read urlSignature.useIPAddress and never restricts M4d access to the UE IP address bound into a token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "16",
@@ -10505,7 +10482,7 @@
       {
        "case": "ipAddressName String",
        "verdict": "absent",
-       "what": "The AS does not read urlSignature.ipAddressName; no IP address is included in any token computation.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "16",
@@ -10607,7 +10584,7 @@
       {
        "case": "Defaults when no rule matches and the origin gives no directives",
        "verdict": "differs",
-       "what": "Uses fixed defaults for all resources (200 responses kept for one day, any other status for one minute); the clause requires defaults based on the media resource type.",
+       "what": "Uses fixed defaults for all resources; the clause requires defaults based on the media resource type.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "16",
@@ -10917,7 +10894,7 @@
       {
        "case": "A caching directive shall indicate that a matching media resource is:",
        "verdict": "absent",
-       "what": "The AS parses the Release 17 ContentHostingConfiguration but never reads caching configurations; nginx uses fixed proxy_cache_valid values (200 for 1d, others 1m) for every resource.",
+       "what": "The AS parses the Release 17 ContentHostingConfiguration but never reads caching configurations; nginx uses fixed proxy_cache_valid values for every resource.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "18"
@@ -11017,7 +10994,7 @@
       {
        "case": "Verify token presence and validity before access",
        "verdict": "absent",
-       "what": "The AS has no URL signing: it never reads urlSignature from the Content Hosting Configuration and serves matching M4d requests without checking any token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "16",
@@ -11029,7 +11006,7 @@
       {
        "case": "Secret shared by AS and origin, not with the Media Player",
        "verdict": "absent",
-       "what": "The AS holds no URL signing secret.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "16",
@@ -11040,7 +11017,7 @@
       {
        "case": "Authentication token validity limited to a single UE",
        "verdict": "absent",
-       "what": "The Application Server does not verify URL signatures, so token validity is not limited to a UE.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "16",
@@ -11054,7 +11031,7 @@
       {
        "case": "UE public IP address included in the token calculation when useIPAddress is true",
        "verdict": "absent",
-       "what": "The Application Server does not verify URL signatures, so the UE address is never used in a token calculation.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "16",
@@ -11104,7 +11081,7 @@
       {
        "case": "tokenExpiry query parameter named by tokenExpiryName",
        "verdict": "absent",
-       "what": "The AS does not look for a token expiry query parameter.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "16",
@@ -11118,7 +11095,7 @@
       {
        "case": "Expiry time as POSIX seconds string",
        "verdict": "absent",
-       "what": "The AS does not parse any token expiry value.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "16",
@@ -11129,7 +11106,7 @@
       {
        "case": "Authentication token calculation",
        "verdict": "absent",
-       "what": "The AS computes no authentication token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "16",
@@ -11143,7 +11120,7 @@
       {
        "case": "token := SHA512(url&tokenExpiry&ipAddress&passphrase)",
        "verdict": "absent",
-       "what": "The AS computes no authentication token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "16",
@@ -11183,7 +11160,7 @@
       {
        "case": "Token base64url encoded",
        "verdict": "absent",
-       "what": "The AS performs no base64url encoding of any token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "16",
@@ -11197,7 +11174,7 @@
       {
        "case": "Validate query for resources matching UrlSignature.urlPattern",
        "verdict": "absent",
-       "what": "The AS has no URL signing: it never reads urlSignature from the Content Hosting Configuration and serves matching M4d requests without checking any token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "16",
@@ -11220,7 +11197,7 @@
       {
        "case": "Step 2: missing, expired or malformed token_expiry gives 403",
        "verdict": "absent",
-       "what": "The AS never answers 403 for a missing or expired token expiry; such requests are served.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "16",
@@ -11232,7 +11209,7 @@
       {
        "case": "Step 3: recompute token, mismatch gives 403",
        "verdict": "absent",
-       "what": "The AS never recomputes or compares a token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "16",
@@ -11244,7 +11221,7 @@
       {
        "case": "Step 4: valid token, 200 or appropriate error",
        "verdict": "absent",
-       "what": "With no token validation, the AS has no valid-token step; it answers every request as an unsigned one.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "16",
@@ -11256,7 +11233,7 @@
       {
        "case": "Secret shared by AS instances and origin, not with the Media Player",
        "verdict": "absent",
-       "what": "The AS holds no URL signing secret.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "18",
@@ -11292,7 +11269,7 @@
       {
        "case": "Expiry time as POSIX seconds string",
        "verdict": "absent",
-       "what": "The AS does not parse any token expiry value.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "18",
@@ -11304,7 +11281,7 @@
       {
        "case": "Verify token presence and validity before access (transport resources)",
        "verdict": "absent",
-       "what": "The AS has no URL signing: it never reads urlSignature from the Content Hosting Configuration and serves matching M4d requests without checking any token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "19",
@@ -11326,7 +11303,7 @@
       {
        "case": "Validate query for transport resources matching urlSignature.urlPattern",
        "verdict": "absent",
-       "what": "The AS has no URL signing: it never reads urlSignature from the Content Hosting Configuration and serves matching M4d requests without checking any token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "19",
@@ -11347,7 +11324,7 @@
       {
        "case": "Step 2: missing, expired or malformed token_expiry gives 403",
        "verdict": "absent",
-       "what": "The AS never answers 403 for a missing or expired token expiry; such requests are served.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "19",
@@ -11358,7 +11335,7 @@
       {
        "case": "Step 3: recompute token, mismatch gives 403",
        "verdict": "absent",
-       "what": "The AS never recomputes or compares a token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "19",
@@ -11369,7 +11346,7 @@
       {
        "case": "Step 4: valid token, 200 or appropriate error",
        "verdict": "absent",
-       "what": "With no token validation, the AS has no valid-token step.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "19",
@@ -12359,7 +12336,7 @@
       {
        "case": "Update Content Hosting Configuration (PUT)",
        "verdict": "implemented",
-       "what": "PUT on the resource replaces the stored configuration (404 if unknown, 204 if identical) and reloads the web proxy.",
+       "what": "PUT on the resource replaces the stored configuration and reloads the web proxy.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "18",
@@ -12395,7 +12372,7 @@
       {
        "case": "Purge Content Hosting cache ({afResourceId}/purge, POST)",
        "verdict": "implemented",
-       "what": "POST .../purge with a form-urlencoded pattern purges the matching cache entries of that configuration (200 with the count, 204 if none).",
+       "what": "POST.../purge with a form-urlencoded pattern purges the matching cache entries of that configuration.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "18",
@@ -13179,7 +13156,7 @@
       {
        "case": "User authenticates with the application and Application Provider at M8",
        "verdict": "absent",
-       "what": "The application does not authenticate the user at M8; it fetches the service list from a configured URL without any login step.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-common-android-library",
        "releases": [
         "18"
@@ -15552,7 +15529,7 @@
      ],
      "noted": [
       "Also -860 and -660. The code selects pull with a boolean 'pull' property, not an 'mode' attribute (earlier form). Whether the AF returns the value unchanged is AF behaviour and not judged here.",
-      "The management UI refuses push protocols (-566), and MediaEntry requires a non-empty ingest URL (-234). The AF-assigned base URL is read back after create (-106).",
+      "The management UI refuses push protocols, and MediaEntry requires a non-empty ingest URL. The AF-assigned base URL is read back after create.",
       "-881 builds HTTP and HTTPS distributions per entry point; -242 and -409 report failure when the AF does not accept. The all-or-nothing acceptance itself is AF behaviour and not judged here.",
       "Library path:,453."
      ]
@@ -16113,7 +16090,7 @@
       {
        "case": "Maf_Provisioning Content Protocols Discovery (client)",
        "verdict": "absent",
-       "what": "The client requests .../protocols under 3gpp-m1/v2; the Release 19 content-protocols path under 3gpp-maf-provisioning is not used.",
+       "what": "The client requests.../protocols under 3gpp-m1/v2; the Release 19 content-protocols path under 3gpp-maf-provisioning is not used.",
        "releases": [
         "18",
         "19",
@@ -16237,7 +16214,7 @@
       {
        "case": "ContentProtocols.geoFencingLocatorTypes",
        "verdict": "differs",
-       "what": "The CLI prints geoFencingLocatorTypes as a list of URIs, but the web UI show_protocol handler calls .items() on the array, so any non-empty value raises and returns HTTP 500.",
+       "what": "The CLI prints geoFencingLocatorTypes as a list of URIs, but the web UI show_protocol handler calls.items on the array, so any non-empty value raises and returns HTTP 500.",
        "repo": "rt-5gms-application-provider",
        "releases": [
         "18",
@@ -16270,7 +16247,7 @@
       }
      ],
      "noted": [
-      "Read at -722. The 'at least one member' rule is not checked."
+      "Read. The 'at least one member' rule is not checked."
      ]
     },
     {
@@ -16647,7 +16624,7 @@
       {
        "case": "Server Certificate resource holds only public parts",
        "verdict": "implemented",
-       "what": "The tool uploads only the signed public certificate returned by its signers; no private key is read into the upload body.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-5gms-application-provider",
        "releases": [
         "18",
@@ -16659,7 +16636,7 @@
       {
        "case": "Private key not included in the Server Certificate resource",
        "verdict": "implemented",
-       "what": "The CSR is generated by the AF and the tool signs it locally, so the private key never reaches the tool or the upload; only the certificate PEM is sent.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-5gms-application-provider",
        "releases": [
         "18",
@@ -17066,7 +17043,7 @@
       {
        "case": "urlSignature defined by the Application Provider",
        "verdict": "implemented",
-       "what": "The tool can set a URL signature scheme (pattern, token, passphrase, expiry and IP options) on a distribution configuration and sends it to the AF.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-5gms-application-provider",
        "releases": [
         "18"
@@ -17096,7 +17073,7 @@
       {
        "case": "urlSignature.tokenName",
        "verdict": "implemented",
-       "what": "urlSignature.tokenName is a mandatory non-empty string in MediaURLSignature and is sent.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-5gms-application-provider",
        "releases": [
         "18",
@@ -17132,7 +17109,7 @@
       {
        "case": "urlSignature.tokenExpiryName",
        "verdict": "implemented",
-       "what": "urlSignature.tokenExpiryName is a mandatory non-empty string in MediaURLSignature and is sent.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-5gms-application-provider",
        "releases": [
         "18",
@@ -17410,19 +17387,19 @@
      ],
      "noted": [
       "Also -860 and -325.",
-      "Earlier form: ingestConfiguration.pull (,, ).",
+      "Earlier form: ingestConfiguration.pull.",
       "Pull is signalled with 'pull': true, not mode PULL (earlier form).",
-      "Also -837. Several distributions for one ingest (for example HTTP and HTTPS) are built at -879.",
-      "Library path maps local certificate ids to AF ids at -458. Presenting the certificate at M4 is AS behaviour.",
+      "Also -837. Several distributions for one ingest (for example HTTP and HTTPS) are built.",
+      "Library path maps local certificate ids to AF ids. Presenting the certificate at M4 is AS behaviour.",
       "Library path:,453.",
       "The correct keyword is used at and the CSR path at does add the names. The tool never checks that an alias matches a certificate it did not create.",
       "-879 and -463 build distributions without baseURL. The create path of set-stream forwards a user JSON file unfiltered.",
       "Library path:,453 and -221.",
       "How the AS compares the request path is AS behaviour and not judged.",
       "The same wrong name makes from3GPPObject pass an unknown keyword. The raw M1 client and set-stream pass a user-written JSON file through unchanged.",
-      "The directive is not reaching M1 through the media entry path because of the caching_configuration name mismatch .",
-      "Fields built at -275 and :288-295. Enforcement at M4 is AS behaviour and not judged.",
-      "Earlier form: DistributionConfiguration.urlSignature.urlPattern is a mandatory string, sent as given (-185, -197)."
+      "The directive is not reaching M1 through the media entry path because of the caching_configuration name mismatch.",
+      "Fields built and :288-295. Enforcement at M4 is AS behaviour and not judged.",
+      "Earlier form: DistributionConfiguration.urlSignature.urlPattern is a mandatory string, sent as given."
      ]
     },
     {
@@ -17473,7 +17450,7 @@
       {
        "case": "Content protocols discovery used by the Application Provider",
        "verdict": "implemented",
-       "what": "The client retrieves the Content Protocols resource of a Provisioning Session (Release 17 path .../protocols) and the tools list its ingest protocols.",
+       "what": "The client retrieves the Content Protocols resource of a Provisioning Session (Release 17 path.../protocols) and the tools list its ingest protocols.",
        "repo": "rt-5gms-application-provider",
        "releases": [
         "16",
@@ -17595,7 +17572,7 @@
       {
        "case": "Create uses HTTP POST with a ContentHostingConfiguration body",
        "verdict": "implemented",
-       "what": "The request is a POST to .../content-hosting-configuration with the configuration serialised as JSON.",
+       "what": "The request is a POST to.../content-hosting-configuration with the configuration serialised as JSON.",
        "repo": "rt-5gms-application-provider",
        "releases": [
         "16",
@@ -17668,7 +17645,7 @@
       }
      ],
      "noted": [
-      "The m1-client command line passes a user-supplied JSON file through without checking baseURL (-361)."
+      "The m1-client command line passes a user-supplied JSON file through without checking baseURL."
      ]
     },
     {
@@ -17778,7 +17755,7 @@
       {
        "case": "Destroy Content Hosting Configuration with HTTP DELETE",
        "verdict": "implemented",
-       "what": "The client sends DELETE to .../content-hosting-configuration.",
+       "what": "The client sends DELETE to.../content-hosting-configuration.",
        "repo": "rt-5gms-application-provider",
        "releases": [
         "17"
@@ -18603,7 +18580,7 @@
       {
        "case": "Private key not included",
        "verdict": "implemented",
-       "what": "No private key is included in the uploaded certificate; the key pair stays with the AF that generated the CSR.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-5gms-application-provider",
        "releases": [
         "16",
@@ -19365,7 +19342,7 @@
       {
        "case": "tokenName 1..1",
        "verdict": "implemented",
-       "what": "tokenName is a mandatory non-empty string of urlSignature.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-5gms-application-provider",
        "releases": [
         "16",
@@ -19398,7 +19375,7 @@
       {
        "case": "tokenExpiryName 1..1",
        "verdict": "implemented",
-       "what": "tokenExpiryName is a mandatory non-empty string of urlSignature.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-5gms-application-provider",
        "releases": [
         "16",
@@ -19509,7 +19486,7 @@
       }
      ],
      "noted": [
-      "entryPoint.relativePath is carried as given and only checked to be a non-empty string; the relative form is not enforced (-163,169-173; -187)."
+      "entryPoint.relativePath is carried as given and only checked to be a non-empty string; the relative form is not enforced."
      ]
     },
     {
@@ -19602,7 +19579,7 @@
       {
        "case": "A caching directive shall indicate that a matching media resource is:",
        "verdict": "differs",
-       "what": "The media-configuration path that authors caching directives is broken: MediaCachingDirective declares the no_cache setter under the name relative_path, so the property is read-only and the constructor assignment self.no_cache = ... fails; MediaDistribution also maps the attribute name caching_configuration (singular) while the attribute is caching_configurations, so cachingConfigurations is never emitted to M1 and fails to load.",
+       "what": "The media-configuration path that authors caching directives is broken: MediaCachingDirective declares the no_cache setter under the name relative_path, so the property is read-only and the constructor assignment self.no_cache =... fails; MediaDistribution also maps the attribute name caching_configuration (singular) while the attribute is caching_configurations, so cachingConfigurations is never emitted to M1 and fails to load.",
        "repo": "rt-5gms-application-provider",
        "releases": [
         "18"
@@ -19715,7 +19692,7 @@
       {
        "case": "Application Provider generates the token",
        "verdict": "absent",
-       "what": "The tool provisions urlSignature but never computes an authentication token or hands a signed URL to a player.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-provider",
        "releases": [
         "16",
@@ -19776,7 +19753,7 @@
       {
        "case": "tokenExpiry query parameter in M4d URL",
        "verdict": "absent",
-       "what": "The tool never builds signed M4d URLs, so it computes no token and adds no expiry parameter.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-provider",
        "releases": [
         "16",
@@ -19790,7 +19767,7 @@
       {
        "case": "Expiry as POSIX seconds",
        "verdict": "absent",
-       "what": "The tool never builds signed M4d URLs, so it computes no token and adds no expiry parameter.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-provider",
        "releases": [
         "16",
@@ -19801,7 +19778,7 @@
       {
        "case": "Token calculation",
        "verdict": "absent",
-       "what": "The tool never builds signed M4d URLs, so it computes no token and adds no expiry parameter.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-provider",
        "releases": [
         "16",
@@ -19815,7 +19792,7 @@
       {
        "case": "SHA512 token formula",
        "verdict": "absent",
-       "what": "The tool never builds signed M4d URLs, so it computes no token and adds no expiry parameter.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-provider",
        "releases": [
         "16",
@@ -19829,7 +19806,7 @@
       {
        "case": "SHA-512 hash",
        "verdict": "absent",
-       "what": "The tool never builds signed M4d URLs, so it computes no token and adds no expiry parameter.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-provider",
        "releases": [
         "16",
@@ -19843,7 +19820,7 @@
       {
        "case": "url parameter without query and fragment",
        "verdict": "absent",
-       "what": "The tool never builds signed M4d URLs, so it computes no token and adds no expiry parameter.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-provider",
        "releases": [
         "16",
@@ -19855,7 +19832,7 @@
       {
        "case": "base64url encoding of the token",
        "verdict": "absent",
-       "what": "The tool never builds signed M4d URLs, so it computes no token and adds no expiry parameter.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-provider",
        "releases": [
         "16",
@@ -19869,7 +19846,7 @@
       {
        "case": "Signed URL query composed of token expiry and token",
        "verdict": "absent",
-       "what": "The tools can provision a urlSignature but never compute an authentication token or compose a signed URL.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-provider",
        "releases": [
         "16",
@@ -19883,7 +19860,7 @@
       {
        "case": "Passphrase in urlSignature.passphrase (Release 18 and later)",
        "verdict": "implemented",
-       "what": "The shared secret is carried in urlSignature.passphrase of the Content Hosting Configuration the tool sends.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-5gms-application-provider",
        "releases": [
         "18",
@@ -19930,7 +19907,7 @@
       {
        "case": "url parameter for transport resources (Release 19)",
        "verdict": "absent",
-       "what": "The tool never builds signed M4d URLs, so it computes no token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-provider",
        "releases": [
         "19",
@@ -25943,7 +25920,7 @@
       {
        "case": "AF application session context destroyed with the session",
        "verdict": "implemented",
-       "what": "Destroying a Network Assistance session (M5 DELETE) queues its PCF application session and sends an Npcf_PolicyAuthorization delete (POST .../app-sessions/{id}/delete) to the PCF.",
+       "what": "Destroying a Network Assistance session (M5 DELETE) queues its PCF application session and sends an Npcf_PolicyAuthorization delete (POST.../app-sessions/{id}/delete) to the PCF.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -26680,7 +26657,7 @@
       }
      ],
      "noted": [
-      "Address is only given when offerNetworkAssistance is true ."
+      "Address is only given when offerNetworkAssistance is true."
      ]
     },
     {
@@ -27399,7 +27376,7 @@
       {
        "case": "AF application session context destroyed with the session",
        "verdict": "implemented",
-       "what": "Destroying a Network Assistance session (M5 DELETE) queues its PCF application session and sends an Npcf_PolicyAuthorization delete (POST .../app-sessions/{id}/delete) to the PCF.",
+       "what": "Destroying a Network Assistance session (M5 DELETE) queues its PCF application session and sends an Npcf_PolicyAuthorization delete (POST.../app-sessions/{id}/delete) to the PCF.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "16",
@@ -29968,7 +29945,7 @@
       }
      ],
      "noted": [
-      "getStatusInformation (-217) can return throughput, buffer length and live latency, but nothing calls it; searched: ServiceDescription, M11, serviceDescription, STATUS_MESSAGE in all four repositories."
+      "getStatusInformation can return throughput, buffer length and live latency, but nothing calls it; searched: ServiceDescription, M11, serviceDescription, STATUS_MESSAGE in all four repositories."
      ]
     },
     {
@@ -30292,7 +30269,7 @@
       }
      ],
      "noted": [
-      "serverAddresses exists only inside the consumption reporting and metrics reporting configurations (-22)."
+      "serverAddresses exists only inside the consumption reporting and metrics reporting configurations."
      ]
     },
     {
@@ -31807,12 +31784,7 @@
         "17",
         "18"
        ],
-       "locator": "clause 5.7.4",
-       "locatorAt": {
-        "16": "clause 5.7.3",
-        "17": "clause 5.7.4",
-        "18": "clause 5.7.4"
-       }
+       "locator": "clause 5.7.4"
       },
       {
        "case": "Nnef_ChargeableParty for a charging Policy Template",
@@ -31824,12 +31796,7 @@
         "17",
         "18"
        ],
-       "locator": "clause 5.7.4",
-       "locatorAt": {
-        "16": "clause 5.7.3",
-        "17": "clause 5.7.4",
-        "18": "clause 5.7.4"
-       }
+       "locator": "clause 5.7.4"
       },
       {
        "case": "Nnef_AFsessionWithQoS for a QoS Policy Template",
@@ -32473,7 +32440,7 @@
       }
      ],
      "noted": [
-      "The build pins the Release 17 APIs (meson_options.txt fiveg_api_release 17): the policy template carries a single applicationSessionContext object, checked at -2752, and the dynamic policy uses serviceDataFlowDescriptions."
+      "The build pins the Release 17 APIs (meson_options.txt fiveg_api_release 17): the policy template carries a single applicationSessionContext object, checked, and the dynamic policy uses serviceDataFlowDescriptions."
      ]
     },
     {
@@ -35107,7 +35074,7 @@
       }
      ],
      "noted": [
-      "The build pins the Release 17 APIs (meson_options.txt fiveg_api_release 17): the policy template carries a single applicationSessionContext object, checked at -2752, and the dynamic policy uses serviceDataFlowDescriptions."
+      "The build pins the Release 17 APIs (meson_options.txt fiveg_api_release 17): the policy template carries a single applicationSessionContext object, checked, and the dynamic policy uses serviceDataFlowDescriptions."
      ]
     },
     {
@@ -35707,7 +35674,7 @@
       {
        "case": "Update (PUT)",
        "verdict": "implemented",
-       "what": "PUT .../consumption-reporting-configuration parses and replaces the configuration, answering 204, 404 if none exists, 400 on bad input.",
+       "what": "PUT.../consumption-reporting-configuration parses and replaces the configuration, answering 204, 404 if none exists, 400 on bad input.",
        "repo": "rt-5gms-application-function",
        "conflict": "TS 26.512 V17.10.0 clause 4.3.8.4: \"If the procedure is successful, the 5GMSd AF shall respond with a 200 (OK) reflecting the successful update operation.\" versus TS26512_M1_ConsumptionReportingProvisioning.yaml (V17.10.0), PUT .../consumption-reporting-configuration, responses: '204' only success code. TS 26.512 V17.10.0 clause C.1: \"This Annex shall take precedence when being discrepant to other parts of the present document with respect to the encoding of information elements and methods within the API(s).\" Whether C.1 covers status codes is left to the owner.",
        "releases": [
@@ -35732,7 +35699,7 @@
       {
        "case": "Delete (DELETE)",
        "verdict": "implemented",
-       "what": "DELETE .../consumption-reporting-configuration deregisters the configuration and answers 204, or 404 when none is registered.",
+       "what": "DELETE.../consumption-reporting-configuration deregisters the configuration and answers 204, or 404 when none is registered.",
        "repo": "rt-5gms-application-function",
        "conflict": "TS 26.512 V17.10.0 clause 4.3.8.5: \"If the procedure is successful, the 5GMSd AF shall respond with a 200 (OK) response message.\" versus TS26512_M1_ConsumptionReportingProvisioning.yaml (V17.10.0), DELETE .../consumption-reporting-configuration, responses: '204' only success code. TS 26.512 V17.10.0 clause C.1: \"This Annex shall take precedence when being discrepant to other parts of the present document with respect to the encoding of information elements and methods within the API(s).\" Whether C.1 covers status codes is left to the owner.",
        "releases": [
@@ -36079,7 +36046,7 @@
       }
      ],
      "noted": [
-      "The build pins Release 17: the flows are given in serviceDataFlowDescriptions and turned into PCF flow descriptions at -452."
+      "The build pins Release 17: the flows are given in serviceDataFlowDescriptions and turned into PCF flow descriptions."
      ]
     },
     {
@@ -37143,7 +37110,7 @@
       {
        "case": "externalReference unique within the Provisioning Session",
        "verdict": "differs",
-       "what": "Create refuses a second template with the same externalReference (403), but update by PUT replaces the template without checking the new value or maintaining the external-reference index, so uniqueness is not kept.",
+       "what": "Create refuses a second template with the same externalReference, but update by PUT replaces the template without checking the new value or maintaining the external-reference index, so uniqueness is not kept.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "16",
@@ -37516,7 +37483,7 @@
       {
        "case": "Update (PUT)",
        "verdict": "implemented",
-       "what": "PUT .../consumption-reporting-configuration parses and replaces the configuration, answering 204, 404 if none exists, 400 on bad input.",
+       "what": "PUT.../consumption-reporting-configuration parses and replaces the configuration, answering 204, 404 if none exists, 400 on bad input.",
        "repo": "rt-5gms-application-function",
        "conflict": "TS 26.512 V17.10.0 clause 4.3.8.4: \"If the procedure is successful, the 5GMSd AF shall respond with a 200 (OK) reflecting the successful update operation.\" versus TS26512_M1_ConsumptionReportingProvisioning.yaml (V17.10.0), PUT .../consumption-reporting-configuration, responses: '204' only success code. TS 26.512 V17.10.0 clause C.1: \"This Annex shall take precedence when being discrepant to other parts of the present document with respect to the encoding of information elements and methods within the API(s).\" Whether C.1 covers status codes is left to the owner.",
        "releases": [
@@ -37539,7 +37506,7 @@
       {
        "case": "Delete (DELETE)",
        "verdict": "implemented",
-       "what": "DELETE .../consumption-reporting-configuration deregisters the configuration and answers 204, or 404 when none is registered.",
+       "what": "DELETE.../consumption-reporting-configuration deregisters the configuration and answers 204, or 404 when none is registered.",
        "repo": "rt-5gms-application-function",
        "conflict": "TS 26.512 V17.10.0 clause 4.3.8.5: \"If the procedure is successful, the 5GMSd AF shall respond with a 200 (OK) response message.\" versus TS26512_M1_ConsumptionReportingProvisioning.yaml (V17.10.0), DELETE .../consumption-reporting-configuration, responses: '204' only success code. TS 26.512 V17.10.0 clause C.1: \"This Annex shall take precedence when being discrepant to other parts of the present document with respect to the encoding of information elements and methods within the API(s).\" Whether C.1 covers status codes is left to the owner.",
        "releases": [
@@ -43299,7 +43266,7 @@
       }
      ],
      "noted": [
-      "Earlier form: single object at -615, -114.",
+      "Earlier form: single object, -114.",
       "The library does not itself reject a session context with neither property."
      ]
     },
@@ -43618,7 +43585,7 @@
       {
        "case": "policyTemplateIds array(ResourceId)",
        "verdict": "implemented",
-       "what": "ProvisioningSession declares policyTemplateIds, the tool reads it from the AF response and returns it through policyTemplateIds(), and appends new ids on creation.",
+       "what": "ProvisioningSession declares policyTemplateIds, the tool reads it from the AF response and returns it through policyTemplateIds, and appends new ids on creation.",
        "repo": "rt-5gms-application-provider",
        "releases": [
         "18",
@@ -43788,7 +43755,7 @@
       {
        "case": "externalReference string",
        "verdict": "implemented",
-       "what": "externalReference is a mandatory PolicyTemplate key: the tool sets it from the policy id when creating and validate() raises TypeError when it is missing.",
+       "what": "externalReference is a mandatory PolicyTemplate key: the tool sets it from the policy id when creating and validate raises TypeError when it is missing.",
        "repo": "rt-5gms-application-provider",
        "releases": [
         "18",
@@ -43942,7 +43909,7 @@
       }
      ],
      "noted": [
-      "Earlier form at -120."
+      "Earlier form."
      ]
     },
     {
@@ -44194,7 +44161,7 @@
       {
        "case": "Create (POST)",
        "verdict": "implemented",
-       "what": "Sends POST .../policy-templates; on 201 it reads the Location header and fetches the new template.",
+       "what": "Sends POST.../policy-templates; on 201 it reads the Location header and fetches the new template.",
        "repo": "rt-5gms-application-provider",
        "releases": [
         "16",
@@ -45218,7 +45185,7 @@
       {
        "case": "Retrieve answers 200 with the resource",
        "verdict": "implemented",
-       "what": "GET serialises the stored configuration and answers 200 with it as body (404 if none is stored).",
+       "what": "GET serialises the stored configuration and answers 200 with it as body.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -45600,7 +45567,7 @@
       {
        "case": "Retrieve Consumption Reporting Configuration resource consumption-reporting-configuration",
        "verdict": "implemented",
-       "what": "GET serialises the stored configuration and returns it with 200, ETag and Last-Modified (404 if none).",
+       "what": "GET serialises the stored configuration and returns it with 200, ETag and Last-Modified.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -45612,7 +45579,7 @@
       {
        "case": "Update Consumption Reporting Configuration resource consumption-reporting-configuration",
        "verdict": "differs",
-       "what": "PUT replaces the stored configuration (204, or 404 if none); PATCH (modify) is not implemented and gets 403 from the default case.",
+       "what": "PUT replaces the stored configuration; PATCH (modify) is not implemented and gets 403 from the default case.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -47188,7 +47155,7 @@
       {
        "case": "15: The 5GMSd-Aware Application triggers the Media Session Handler to stop content ...",
        "verdict": "differs",
-       "what": "The application stops playback itself (ExoPlayerAdapter.stop()) and resets the adapter, which unbinds the Media Session Handler service; it sends no message asking the Media Session Handler to stop content playback.",
+       "what": "The application stops playback itself (ExoPlayerAdapter.stop) and resets the adapter, which unbinds the Media Session Handler service; it sends no message asking the Media Session Handler to stop content playback.",
        "repo": "rt-5gms-media-session-handler",
        "releases": [
         "19",
@@ -47229,7 +47196,7 @@
       }
      ],
      "noted": [
-      "Timer stopped at -134."
+      "Timer stopped."
      ]
     },
     {
@@ -48763,7 +48730,7 @@
       }
      ],
      "noted": [
-      "Redirects are followed by the data source (-47) but the resolved URL is never recorded; searched: redirect, resolvedUri, loadEventInfo.uri in rt-5gms-media-stream-handler app/src/main."
+      "Redirects are followed by the data source but the resolved URL is never recorded; searched: redirect, resolvedUri, loadEventInfo.uri in rt-5gms-media-stream-handler app/src/main."
      ]
     },
     {
@@ -50055,7 +50022,7 @@
       {
        "case": "Mutual authentication of AF and AS for AS metrics reporting",
        "verdict": "absent",
-       "what": "The AS does not report metrics to the AF, so there is no such procedure to authenticate.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "19",
@@ -52566,14 +52533,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 11.4.3; TS 26.247 V17.4.2 clause 10.6.1; 26512-ha0/TS26512_M5_MetricsReporting.yaml POST requestBody content",
-       "locatorAt": {
-        "16": "clause 11.4.3",
-        "17": "clause 11.4.3",
-        "18": "clause 11.4.3",
-        "19": "clause 11.4.3.1",
-        "20": "clause 11.4.3.1"
-       }
+       "locator": "clause 11.4.3; TS 26.247 V17.4.2 clause 10.6.1; 26512-ha0/TS26512_M5_MetricsReporting.yaml POST requestBody content"
       }
      ],
      "noted": []
@@ -52721,7 +52681,7 @@
       {
        "case": "AS as resource server, optionally authorization server, for content hosting configuration at M3d",
        "verdict": "absent",
-       "what": "The Application Server checks no access tokens and provides no authorization server.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "19",
@@ -54065,12 +54025,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 9.5.3.1",
-       "locatorAt": {
-        "18": "clause 9.5.3",
-        "19": "clause 9.5.3.1",
-        "20": "clause 9.5.3.1"
-       }
+       "locator": "clause 9.5.3.1"
       },
       {
        "case": "Content-Type of the report",
@@ -54082,12 +54037,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 9.5.3.1",
-       "locatorAt": {
-        "18": "clause 9.5.3",
-        "19": "clause 9.5.3.1",
-        "20": "clause 9.5.3.1"
-       }
+       "locator": "clause 9.5.3.1"
       }
      ],
      "noted": []
@@ -54857,13 +54807,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.9.2",
-       "locatorAt": {
-        "17": "clause 15.3",
-        "18": "clause 4.9.2",
-        "19": "clause 4.9.2",
-        "20": "clause 4.9.2"
-       }
+       "locator": "clause 4.9.2"
       },
       {
        "case": "Check manifest for metrics configuration at session start",
@@ -55277,14 +55221,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 11.4.3.1",
-       "locatorAt": {
-        "16": "clause 11.4.3",
-        "17": "clause 11.4.3",
-        "18": "clause 11.4.3",
-        "19": "clause 11.4.3.1",
-        "20": "clause 11.4.3.1"
-       }
+       "locator": "clause 11.4.3.1"
       },
       {
        "case": "Report format",
@@ -55328,14 +55265,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 11.4.3.2",
-       "locatorAt": {
-        "16": "clause 11.4.3",
-        "17": "clause 11.4.3",
-        "18": "clause 11.4.3",
-        "19": "clause 11.4.3.2",
-        "20": "clause 11.4.3.2"
-       }
+       "locator": "clause 11.4.3.2"
       },
       {
        "case": "ReceptionReport@clientID",
@@ -55347,12 +55277,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 11.4.3.2",
-       "locatorAt": {
-        "18": "clause 11.4.3",
-        "19": "clause 11.4.3.2",
-        "20": "clause 11.4.3.2"
-       }
+       "locator": "clause 11.4.3.2"
       },
       {
        "case": "QoEReport@recordingSessionId",
@@ -55364,12 +55289,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 11.4.3.2",
-       "locatorAt": {
-        "18": "clause 11.4.3",
-        "19": "clause 11.4.3.2",
-        "20": "clause 11.4.3.2"
-       }
+       "locator": "clause 11.4.3.2"
       },
       {
        "case": "QM10 reported per the quality reporting scheme",
@@ -57443,7 +57363,7 @@
       }
      ],
      "noted": [
-      "UI list at -27 includes Release 17 DASH QM10 and VR metrics and Release 19 CMCD metrics."
+      "UI list includes Release 17 DASH QM10 and VR metrics and Release 19 CMCD metrics."
      ]
     },
     {
@@ -60613,7 +60533,7 @@
       {
        "case": "27. End session: the 5GMS-Aware Application informs the Media Session Handler that the ...",
        "verdict": "differs",
-       "what": "The application sends no end-of-session message: on stop it calls ExoPlayer stop() and resets the adapter, which unbinds the Media Session Handler service, whose onUnbind resets its state.",
+       "what": "The application sends no end-of-session message: on stop it calls ExoPlayer stop and resets the adapter, which unbinds the Media Session Handler service, whose onUnbind resets its state.",
        "repo": "rt-5gms-media-session-handler",
        "releases": [
         "17",
@@ -63482,12 +63402,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.10.5",
-       "locatorAt": {
-        "18": "clause 5.12.4.1",
-        "19": "clause 5.10.5.1",
-        "20": "clause 5.10.5.1"
-       }
+       "locator": "clause 5.10.5"
       },
       {
        "case": "5: The media content is announced to the 5GMSd-Aware Application and the application ...",
@@ -64303,13 +64218,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 6.8.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "HTTP response code 1..1",
@@ -64321,13 +64230,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 6.8.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "HTTP response size 1..1",
@@ -64339,13 +64242,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 6.8.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "HTTP response body size 1..1",
@@ -64357,13 +64254,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 6.8.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "HTTP response content type 0..1",
@@ -64375,13 +64266,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 6.8.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "Processing latency 1..1",
@@ -64393,13 +64278,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 6.8.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "Expedite directive 0..1",
@@ -65065,7 +64944,7 @@
       {
        "case": "For QoE metrics reported to the 5GMSd AF by the Media Session Handler, the Data ...",
        "verdict": "absent",
-       "what": "No event exposure of QoE metrics to consumers exists in the AF; reports are only written to disk .",
+       "what": "No event exposure of QoE metrics to consumers exists in the AF; reports are only written to disk.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -65076,7 +64955,7 @@
       {
        "case": "And for each record in the collection the following parameters shall be included, ...",
        "verdict": "absent",
-       "what": "No QoE metrics event exposure exists in the AF; the QoE report is stored raw to a file .",
+       "what": "No QoE metrics event exposure exists in the AF; the QoE report is stored raw to a file.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -67202,13 +67081,7 @@
         "18",
         "19",
         "20"
-       ],
-       "locatorAt": {
-        "17": "clause 18",
-        "18": "clause 18.1",
-        "19": "clause 18.1",
-        "20": "clause 18.1"
-       }
+       ]
       },
       {
        "case": "Naf_EventExposure used to subscribe to 5GMS events",
@@ -68124,13 +67997,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 5.11.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       }
      ],
      "noted": []
@@ -68312,7 +68179,7 @@
       {
        "case": "5b: The 5GMSd AS extracts and processes client data from this request.",
        "verdict": "implemented",
-       "what": "For .mpd/.m4s/.mp4/.m4v/.m4a requests the rewrite phase calls reportToDashboard, which parses CMCD from query arguments and headers and builds a payload.",
+       "what": "For.mpd/.m4s/.mp4/.m4v/.m4a requests the rewrite phase calls reportToDashboard, which parses CMCD from query arguments and headers and builds a payload.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "19",
@@ -68701,13 +68568,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       }
      ],
      "noted": []
@@ -68955,7 +68816,7 @@
       {
        "case": "UE identity 1..1",
        "verdict": "implemented",
-       "what": "Reports carry a client identifier, the MSISDN when readable and otherwise a random UUID (reportingClientId in consumption reports, clientID in QoE reports); consumption units also carry the client IP and port when access reporting is on.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-5gms-common-android-library",
        "releases": [
         "18",
@@ -69039,13 +68900,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 5.11.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "HTTP request method 1..1",
@@ -69057,13 +68912,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 5.11.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "HTTP request URL 1..1",
@@ -69075,13 +68924,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 5.11.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "HTTP request version 1..1",
@@ -69093,13 +68936,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 5.11.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "HTTP request range 0..1",
@@ -69111,13 +68948,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 5.11.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "HTTP request size 1..1",
@@ -69129,13 +68960,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 5.11.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "HTTP User Agent 0..1",
@@ -69147,13 +68972,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 5.11.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "User identity 0..1",
@@ -69165,13 +68984,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 5.11.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "Referrer URL 0..1",
@@ -69183,13 +68996,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 5.11.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "HTTP response code 1..1",
@@ -69201,13 +69008,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 5.11.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "HTTP response size 1..1",
@@ -69219,13 +69020,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 5.11.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "HTTP response body size 1..1",
@@ -69237,13 +69032,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 5.11.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "HTTP response content type 0..1",
@@ -69255,13 +69044,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 5.11.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "Processing latency 1..1",
@@ -69273,13 +69056,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 5.11.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "Mean network round-trip time 1..1",
@@ -69291,13 +69068,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 5.11.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "Network round-trip time variance 1..1",
@@ -69309,13 +69080,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 5.11.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "Transport congestion window size 1..1",
@@ -69327,13 +69092,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 5.11.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "5GMSu AS service endpoint 1..1",
@@ -69345,13 +69104,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 6.8.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "HTTP request URL 1..1",
@@ -69363,13 +69116,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 6.8.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "HTTP request version 1..1",
@@ -69381,13 +69128,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 6.8.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "HTTP request size 1..1",
@@ -69399,13 +69140,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 6.8.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "HTTP request body size 1..1",
@@ -69417,13 +69152,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 6.8.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "HTTP request content type 0..1",
@@ -69435,13 +69164,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 6.8.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "HTTP User Agent 0..1",
@@ -69453,13 +69176,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 6.8.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "Referrer URL 0..1",
@@ -69471,13 +69188,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 6.8.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "HTTP response code 1..1",
@@ -69489,13 +69200,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 6.8.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "HTTP response size 1..1",
@@ -69507,13 +69212,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 6.8.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "HTTP response body size 1..1",
@@ -69525,13 +69224,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 6.8.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "HTTP response content type 0..1",
@@ -69543,13 +69236,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 6.8.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "Processing latency 1..1",
@@ -69561,13 +69248,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.7.2.4, property row",
-       "locatorAt": {
-        "17": "clause 6.8.4",
-        "18": "clause 4.7.2.4",
-        "19": "clause 4.7.2.4",
-        "20": "clause 4.7.2.4"
-       }
+       "locator": "clause 4.7.2.4, property row"
       },
       {
        "case": "UE data reports for downlink media streaming access activity shall include the ...",
@@ -74217,7 +73898,7 @@
       }
      ],
      "noted": [
-      "Manifest intent filters carry no URL scheme (-44)."
+      "Manifest intent filters carry no URL scheme."
      ]
     },
     {
@@ -76255,12 +75936,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.5.5.7",
-       "locatorAt": {
-        "18": "clause 4.5.4.7",
-        "19": "clause 4.5.5.7",
-        "20": "clause 4.5.5.7"
-       }
+       "locator": "clause 4.5.5.7"
       },
       {
        "case": "AF polls the configuration state after a 202",
@@ -76272,12 +75948,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.5.5.7",
-       "locatorAt": {
-        "18": "clause 4.5.4.7",
-        "19": "clause 4.5.5.7",
-        "20": "clause 4.5.5.7"
-       }
+       "locator": "clause 4.5.5.7"
       }
      ],
      "noted": []
@@ -76306,12 +75977,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.5.5.8",
-       "locatorAt": {
-        "18": "clause 4.5.4.8",
-        "19": "clause 4.5.5.8",
-        "20": "clause 4.5.5.8"
-       }
+       "locator": "clause 4.5.5.8"
       }
      ],
      "noted": []
@@ -76991,7 +76657,7 @@
       {
        "case": "5GMSu AS acts as OAuth 2.0 resource server at M3u",
        "verdict": "absent",
-       "what": "The Application Server's M3 API requires no access token; it performs no OAuth 2.0 authorisation of the AF.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "18",
@@ -77027,7 +76693,7 @@
       {
        "case": "Access token presented in the M3u request is checked",
        "verdict": "absent",
-       "what": "The Application Server checks no access token on M3 requests.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "18",
@@ -77979,12 +77645,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.5.5.7",
-       "locatorAt": {
-        "18": "clause 4.5.4.7",
-        "19": "clause 4.5.5.7",
-        "20": "clause 4.5.5.7"
-       }
+       "locator": "clause 4.5.5.7"
       },
       {
        "case": "(De)activate: 202 (Accepted) when in progress",
@@ -77996,12 +77657,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.5.5.7",
-       "locatorAt": {
-        "18": "clause 4.5.4.7",
-        "19": "clause 4.5.5.7",
-        "20": "clause 4.5.5.7"
-       }
+       "locator": "clause 4.5.5.7"
       }
      ],
      "noted": []
@@ -78030,12 +77686,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.5.5.8",
-       "locatorAt": {
-        "18": "clause 4.5.4.8",
-        "19": "clause 4.5.5.8",
-        "20": "clause 4.5.5.8"
-       }
+       "locator": "clause 4.5.5.8"
       },
       {
        "case": "Interrogate state: 410 (Gone) for a destroyed resource",
@@ -78047,12 +77698,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.5.5.8",
-       "locatorAt": {
-        "18": "clause 4.5.4.8",
-        "19": "clause 4.5.5.8",
-        "20": "clause 4.5.5.8"
-       }
+       "locator": "clause 4.5.5.8"
       }
      ],
      "noted": []
@@ -79225,14 +78871,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.3.2",
-       "locatorAt": {
-        "16": "clause 6.3",
-        "17": "clause 6.3",
-        "18": "clause 6.3.2",
-        "19": "clause 6.3.2",
-        "20": "clause 6.3.2"
-       }
+       "locator": "clause 6.3.2"
       }
      ],
      "noted": []
@@ -79254,7 +78893,7 @@
       {
        "case": "5GMSu-Aware Application refreshes the M5u access token",
        "verdict": "absent",
-       "what": "The client has no uplink session and no access token handling for M5u.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-common-android-library",
        "releases": [
         "18",
@@ -79266,7 +78905,7 @@
       {
        "case": "5GMSu-Aware Application passes the access token to the Media Session Handler at M6",
        "verdict": "absent",
-       "what": "The client passes no access token between the application and the Media Session Handler.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-common-android-library",
        "releases": [
         "18",
@@ -79278,7 +78917,7 @@
       {
        "case": "5GMSu-Aware Application acts as OAuth 2.0 client",
        "verdict": "absent",
-       "what": "The application obtains no OAuth 2.0 token; the authorisation server and resource server roles fall on the Application Provider and the 5GMSu AF.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-common-android-library",
        "releases": [
         "18",
@@ -79974,7 +79613,7 @@
       }
      ],
      "noted": [
-      "A provisioning session of type UPLINK can be created (-216) but no Content Publishing Configuration is sent."
+      "A provisioning session of type UPLINK can be created but no Content Publishing Configuration is sent."
      ]
     },
     {
@@ -81099,11 +80738,11 @@
       }
      ],
      "noted": [
-      "Only the downlink CachingConfiguration of the Content Hosting Configuration is modelled (-115).",
-      "Only the downlink CachingConfiguration of the Content Hosting Configuration is modelled (-115).",
-      "Only the downlink CachingConfiguration of the Content Hosting Configuration is modelled (-115).",
-      "Only the downlink CachingConfiguration of the Content Hosting Configuration is modelled (-115).",
-      "Only the downlink CachingConfiguration of the Content Hosting Configuration is modelled (-115)."
+      "Only the downlink CachingConfiguration of the Content Hosting Configuration is modelled.",
+      "Only the downlink CachingConfiguration of the Content Hosting Configuration is modelled.",
+      "Only the downlink CachingConfiguration of the Content Hosting Configuration is modelled.",
+      "Only the downlink CachingConfiguration of the Content Hosting Configuration is modelled.",
+      "Only the downlink CachingConfiguration of the Content Hosting Configuration is modelled."
      ]
     },
     {
@@ -82608,7 +82247,7 @@
       {
        "case": "AF authenticated by CAPIF before M3 configuration",
        "verdict": "absent",
-       "what": "CAPIF is not supported at M3; the AF does not authenticate to any CAPIF core function.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -82620,7 +82259,7 @@
       {
        "case": "AF presents a CAPIF-issued access token at M3",
        "verdict": "absent",
-       "what": "The AF presents no access token on its M3 requests.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -82786,7 +82425,7 @@
       {
        "case": "Server Certificate at M3 is a PEM bundle",
        "verdict": "implemented",
-       "what": "The certificate sent to the AS is the PEM output of certmgr servercert (public certificate then private key), posted with content type application/x-pem-file.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -82824,14 +82463,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.5.2.2",
-       "locatorAt": {
-        "16": "clause 4.3.3.3",
-        "17": "clause 4.3.3.3",
-        "18": "clause 4.5.2.2",
-        "19": "clause 4.5.2.2",
-        "20": "clause 4.5.2.2"
-       }
+       "locator": "clause 4.5.2.2"
       },
       {
        "case": "Request URL is the Server Certificates collection on the AS",
@@ -82874,14 +82506,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.5.2.3",
-       "locatorAt": {
-        "16": "clause 4.3.7.2",
-        "17": "clause 4.3.7.2",
-        "18": "clause 4.5.2.3",
-        "19": "clause 4.5.2.3",
-        "20": "clause 4.5.2.3"
-       }
+       "locator": "clause 4.5.2.3"
       },
       {
        "case": "AF creates a Server Certificate in the AS",
@@ -82898,7 +82523,7 @@
       {
        "case": "Create body: PEM bundle with private key",
        "verdict": "implemented",
-       "what": "The POST body is the certmgr servercert output (certificate and private key PEM) with header lines stripped.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -82936,14 +82561,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.5.2.5",
-       "locatorAt": {
-        "16": "clause 4.3.6.5",
-        "17": "clause 4.3.6.5",
-        "18": "clause 4.5.2.5",
-        "19": "clause 4.5.2.5",
-        "20": "clause 4.5.2.5"
-       }
+       "locator": "clause 4.5.2.5"
       },
       {
        "case": "AF replaces a Server Certificate in the AS",
@@ -82972,7 +82590,7 @@
       {
        "case": "Replace body: PEM bundle with private key",
        "verdict": "implemented",
-       "what": "The PUT body is the same PEM bundle with private key from certmgr servercert.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -83010,14 +82628,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.5.2.6",
-       "locatorAt": {
-        "16": "clause 4.3.3.5",
-        "17": "clause 4.3.3.5",
-        "18": "clause 4.5.2.6",
-        "19": "clause 4.5.2.6",
-        "20": "clause 4.5.2.6"
-       }
+       "locator": "clause 4.5.2.6"
       },
       {
        "case": "AF destroys a Server Certificate in the AS",
@@ -83175,7 +82786,7 @@
       {
        "case": "OAuth 2.0 client credentials for Mas_Configuration",
        "verdict": "absent",
-       "what": "The AF obtains and presents no OAuth 2.0 access token at M3.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -83199,7 +82810,7 @@
       {
        "case": "AF obtains an access token before Mas_Configuration (OAuth 2.0)",
        "verdict": "absent",
-       "what": "OAuth 2.0 is not a security method the AF supports at M3; it obtains no access token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -83211,7 +82822,7 @@
       {
        "case": "AF uses the client credentials grant",
        "verdict": "absent",
-       "what": "The AF obtains no access token at M3.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -83322,7 +82933,7 @@
       {
        "case": "Create Server Certificate (POST {afResourceId})",
        "verdict": "implemented",
-       "what": "The AF POSTs certificates/<provisioning session>:<cert id> (AF-nominated id) with the PEM bundle including the private key as body.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -83334,7 +82945,7 @@
       {
        "case": "Update Server Certificate (PUT)",
        "verdict": "implemented",
-       "what": "The AF PUTs certificates/<id> with the replacement PEM bundle including the private key.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -83375,7 +82986,7 @@
       {
        "case": "Server Certificate representation: PEM bundle with private key",
        "verdict": "implemented",
-       "what": "The certificate body is the certmgr servercert output (public certificate and private key PEM) with header lines before the first -----BEGIN removed.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -83404,7 +83015,7 @@
       {
        "case": "OAuth 2.0 authorisation of M3 configuration operations",
        "verdict": "absent",
-       "what": "M3 configuration requests are accepted without any access token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "18",
@@ -83481,7 +83092,7 @@
       {
        "case": "OAuth 2.0 for AS access to AF media session handling at M3",
        "verdict": "absent",
-       "what": "The Application Server never invokes the AF, so it obtains and presents no access token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "19",
@@ -83503,7 +83114,7 @@
       {
        "case": "AS presents an access token issued by CAPIF",
        "verdict": "absent",
-       "what": "The Application Server makes no requests to the AF and holds no access token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "19",
@@ -83687,14 +83298,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.5.2.2",
-       "locatorAt": {
-        "16": "clause 4.3.3.3",
-        "17": "clause 4.3.3.3",
-        "18": "clause 4.5.2.2",
-        "19": "clause 4.5.2.2",
-        "20": "clause 4.5.2.2"
-       }
+       "locator": "clause 4.5.2.2"
       },
       {
        "case": "Request URL is the Server Certificates collection",
@@ -83773,19 +83377,12 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.5.2.3",
-       "locatorAt": {
-        "16": "clause 4.3.7.2",
-        "17": "clause 4.3.7.2",
-        "18": "clause 4.5.2.3",
-        "19": "clause 4.5.2.3",
-        "20": "clause 4.5.2.3"
-       }
+       "locator": "clause 4.5.2.3"
       },
       {
        "case": "Create request body is a PEM bundle with the private key",
        "verdict": "implemented",
-       "what": "The create request takes the PEM bundle as its body, and the same file is used as both certificate and private key for TLS on M4.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "18",
@@ -83900,14 +83497,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.5.2.5",
-       "locatorAt": {
-        "16": "clause 4.3.6.5",
-        "17": "clause 4.3.6.5",
-        "18": "clause 4.5.2.5",
-        "19": "clause 4.5.2.5",
-        "20": "clause 4.5.2.5"
-       }
+       "locator": "clause 4.5.2.5"
       },
       {
        "case": "Update target indicated in the request URL",
@@ -84022,14 +83612,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.5.2.6",
-       "locatorAt": {
-        "16": "clause 4.3.3.5",
-        "17": "clause 4.3.3.5",
-        "18": "clause 4.5.2.6",
-        "19": "clause 4.5.2.6",
-        "20": "clause 4.5.2.6"
-       }
+       "locator": "clause 4.5.2.6"
       },
       {
        "case": "Destroy request body empty",
@@ -84190,7 +83773,7 @@
       {
        "case": "OAuth 2.0 client credentials for Mas_Configuration",
        "verdict": "absent",
-       "what": "No OAuth 2.0 access token is required or checked on M3 requests.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "18",
@@ -84202,7 +83785,7 @@
       {
        "case": "Authorisation per resource and method from the access token",
        "verdict": "absent",
-       "what": "No access token is evaluated, so no per-operation authorisation is made.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "18",
@@ -84226,7 +83809,7 @@
       {
        "case": "Without CAPIF: AS is authorization server and resource server",
        "verdict": "absent",
-       "what": "The Application Server issues and checks no access tokens.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "18",
@@ -84377,7 +83960,7 @@
       {
        "case": "Update Server Certificate (PUT, replacement PEM bundle)",
        "verdict": "implemented",
-       "what": "PUT replaces the stored PEM of an existing certificate (404 if absent, 204 if identical, otherwise rewrite and proxy reload).",
+       "what": "PUT replaces the stored PEM of an existing certificate.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "18",
@@ -84418,7 +84001,7 @@
       {
        "case": "Server Certificate representation: PEM bundle including private key",
        "verdict": "implemented",
-       "what": "The certificate body is accepted only as application/x-pem-file, stored unchanged and used as both ssl_certificate and ssl_certificate_key, so a bundle with the private key is what the AS consumes.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-5gms-application-server",
        "releases": [
         "18",
@@ -84856,7 +84439,7 @@
       {
        "case": "AF verifies the access token",
        "verdict": "absent",
-       "what": "The AF has no per-application authorisation of M5 operations; it carries out every M5 request without an access token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "releases": [
         "18",
         "19",
@@ -84867,7 +84450,7 @@
       {
        "case": "AF verifies token before carrying out the operation",
        "verdict": "absent",
-       "what": "The AF carries out M5 operations without verifying any per-application access token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18"
@@ -84877,7 +84460,7 @@
       {
        "case": "AF verifies the token with the Application Provider",
        "verdict": "absent",
-       "what": "The AF has no per-application authorisation of M5 operations; it carries out every M5 request without an access token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "releases": [
         "19",
         "20"
@@ -84887,7 +84470,7 @@
       {
        "case": "Operation carried out only when authorised by the token",
        "verdict": "absent",
-       "what": "The AF has no per-application authorisation of M5 operations; it carries out every M5 request without an access token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "releases": [
         "19",
         "20"
@@ -84936,7 +84519,7 @@
       {
        "case": "Redirect when authorisation is required",
        "verdict": "absent",
-       "what": "The AF has no per-application authorisation of M5 operations; it carries out every M5 request without an access token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "releases": [
         "18",
         "19",
@@ -84947,7 +84530,7 @@
       {
        "case": "Operation carried out once authorised by the presented token",
        "verdict": "absent",
-       "what": "The AF has no per-application authorisation of M5 operations; it carries out every M5 request without an access token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "releases": [
         "18",
         "19",
@@ -85086,7 +84669,7 @@
       {
        "case": "AF verifies the access token presented at M5u",
        "verdict": "absent",
-       "what": "The AF reads no access token on M5 requests and verifies none.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -85127,7 +84710,7 @@
       {
        "case": "AF carries out the operation once satisfied with the access token",
        "verdict": "absent",
-       "what": "The AF carries out M5 operations without any access token check.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -86447,7 +86030,7 @@
       {
        "case": "Cache-Control: max-age on Service Access Information responses",
        "verdict": "implemented",
-       "what": "The 200 and 304 responses carry Cache-Control: max-age from the AF configuration (60 seconds by default), with ETag and Last-Modified.",
+       "what": "The 200 and 304 responses carry Cache-Control: max-age from the AF configuration, with ETag and Last-Modified.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "16",
@@ -87442,7 +87025,7 @@
       {
        "case": "MSH authenticated by the CAPIF core function",
        "verdict": "absent",
-       "what": "The client does not support CAPIF at M5 and is not authenticated by a CAPIF core function.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-common-android-library",
        "releases": [
         "18",
@@ -87454,7 +87037,7 @@
       {
        "case": "Access token from CAPIF at M5",
        "verdict": "absent",
-       "what": "The client presents no access token at M5.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-common-android-library",
        "releases": [
         "18",
@@ -87595,7 +87178,7 @@
       {
        "case": "Access token refresh",
        "verdict": "absent",
-       "what": "The application holds and refreshes no access token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-common-android-library",
        "releases": [
         "18",
@@ -87607,7 +87190,7 @@
       {
        "case": "Application passes the access token to MSH",
        "verdict": "absent",
-       "what": "The application passes no access token to the Media Session Handler.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-common-android-library",
        "releases": [
         "18",
@@ -87619,7 +87202,7 @@
       {
        "case": "Access token passed to Media Session Handler at activation",
        "verdict": "absent",
-       "what": "No access token is passed from the application to the Media Session Handler or sent to the AF; the application passes a service list entry only.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-common-android-library",
        "releases": [
         "18"
@@ -87629,7 +87212,7 @@
       {
        "case": "Token passed when activating session handling",
        "verdict": "absent",
-       "what": "The start request carries no access token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-common-android-library",
        "releases": [
         "19",
@@ -87640,7 +87223,7 @@
       {
        "case": "Access token embeds or accompanies a user identifier",
        "verdict": "absent",
-       "what": "The client has no access token for media session handling, so it neither embeds a user identifier in one nor passes one as a separate parameter.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-common-android-library",
        "releases": [
         "19",
@@ -87651,7 +87234,7 @@
       {
        "case": "Access token on M5 requests",
        "verdict": "absent",
-       "what": "M5 requests carry only the User-Agent header added by the client, no access token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-common-android-library",
        "releases": [
         "19",
@@ -87661,7 +87244,7 @@
       }
      ],
      "noted": [
-      "The only header added to AF requests is the User-Agent (-14)."
+      "The only header added to AF requests is the User-Agent."
      ]
     },
     {
@@ -89241,7 +88824,7 @@
       }
      ],
      "noted": [
-      "Event name constants exist in the common library (-48) but are never used."
+      "Event name constants exist in the common library but are never used."
      ]
     },
     {
@@ -89643,7 +89226,7 @@
       {
        "case": "Product-version suffix present",
        "verdict": "implemented",
-       "what": "The product token carries the suffix /17.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-5gms-common-android-library",
        "releases": [
         "16",
@@ -89671,7 +89254,7 @@
       {
        "case": "Document version number in the suffix",
        "verdict": "absent",
-       "what": "The suffix gives only the release number (17), not the version of TS 26.512.",
+       "what": "The suffix gives only the release number, not the version of TS 26.512.",
        "repo": "rt-5gms-common-android-library",
        "releases": [
         "16",
@@ -89685,7 +89268,7 @@
       {
        "case": "Additional product identifiers",
        "verdict": "implemented",
-       "what": "The client adds the HTTP library product token after the 5GMSMediaSessionHandler token.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-5gms-media-session-handler",
        "releases": [
         "16",
@@ -90286,7 +89869,7 @@
       {
        "case": "By instruction of the application using M7d",
        "verdict": "implemented",
-       "what": "The application's play action calls MediaSessionHandlerAdapter.initializePlaybackByServiceListEntry, after which the stream handler attaches, preloads and plays the DASH entry point on the ExoPlayer; the application also calls stop() on the player adapter directly.",
+       "what": "The application's play action calls MediaSessionHandlerAdapter.initializePlaybackByServiceListEntry, after which the stream handler attaches, preloads and plays the DASH entry point on the ExoPlayer; the application also calls stop on the player adapter directly.",
        "repo": "rt-5gms-media-stream-handler",
        "releases": [
         "16",
@@ -90620,7 +90203,7 @@
       {
        "case": "initialize(): player created",
        "verdict": "implemented",
-       "what": "initialize() creates the player instance.",
+       "what": "initialize creates the player instance.",
        "repo": "rt-5gms-media-stream-handler",
        "releases": [
         "16",
@@ -90634,7 +90217,7 @@
       {
        "case": "attach(MPD): source URL set",
        "verdict": "implemented",
-       "what": "attach() sets the manifest URL as the player media item.",
+       "what": "attach sets the manifest URL as the player media item.",
        "repo": "rt-5gms-media-stream-handler",
        "releases": [
         "16",
@@ -90645,7 +90228,7 @@
       {
        "case": "preload(): streaming initiated",
        "verdict": "implemented",
-       "what": "preload() prepares the player, which starts loading the media.",
+       "what": "preload prepares the player, which starts loading the media.",
        "repo": "rt-5gms-media-stream-handler",
        "releases": [
         "16",
@@ -90656,7 +90239,7 @@
       {
        "case": "play(): playback initiated",
        "verdict": "implemented",
-       "what": "play() starts playback.",
+       "what": "play starts playback.",
        "repo": "rt-5gms-media-stream-handler",
        "releases": [
         "16",
@@ -90667,7 +90250,7 @@
       {
        "case": "pause(): playback paused",
        "verdict": "implemented",
-       "what": "pause() pauses playback.",
+       "what": "pause pauses playback.",
        "repo": "rt-5gms-media-stream-handler",
        "releases": [
         "16",
@@ -90681,7 +90264,7 @@
       {
        "case": "seek(): playback time altered",
        "verdict": "absent",
-       "what": "seek() is declared but not implemented; it throws.",
+       "what": "seek is declared but not implemented; it throws.",
        "repo": "rt-5gms-common-android-library",
        "releases": [
         "16",
@@ -90692,7 +90275,7 @@
       {
        "case": "reset(): media information reset",
        "verdict": "absent",
-       "what": "reset() is declared but not implemented; it throws.",
+       "what": "reset is declared but not implemented; it throws.",
        "repo": "rt-5gms-common-android-library",
        "releases": [
         "16",
@@ -90706,7 +90289,7 @@
       {
        "case": "destroy(): player information reset",
        "verdict": "differs",
-       "what": "destroy() only calls ExoPlayer.release(); the adapter keeps activeMediaItem, activeManifestUrl and the listener, so hasActiveMediaItem() and getCurrentManifestUri() still return the old media, and no IDLE state is exposed.",
+       "what": "destroy only calls ExoPlayer.release; the adapter keeps activeMediaItem, activeManifestUrl and the listener, so hasActiveMediaItem and getCurrentManifestUri still return the old media, and no IDLE state is exposed.",
        "repo": "rt-5gms-media-stream-handler",
        "releases": [
         "16",
@@ -90720,7 +90303,7 @@
       {
        "case": "destroy(): API communication stopped",
        "verdict": "differs",
-       "what": "destroy() does not stop the API communication with the Media Session Handler; that is done by the separate MediaSessionHandlerAdapter.reset() (unbind service, drop messenger), which the application calls on its own.",
+       "what": "destroy does not stop the API communication with the Media Session Handler; that is done by the separate MediaSessionHandlerAdapter.reset (unbind service, drop messenger), which the application calls on its own.",
        "repo": "rt-5gms-media-stream-handler",
        "releases": [
         "16",
@@ -90734,7 +90317,7 @@
       {
        "case": "attach(): source URL set",
        "verdict": "implemented",
-       "what": "attach() sets the manifest URL as the player media item.",
+       "what": "attach sets the manifest URL as the player media item.",
        "repo": "rt-5gms-media-stream-handler",
        "releases": [
         "18",
@@ -90746,7 +90329,7 @@
       {
        "case": "preload(): streaming initiated",
        "verdict": "implemented",
-       "what": "preload() prepares the player, which starts loading the media.",
+       "what": "preload prepares the player, which starts loading the media.",
        "repo": "rt-5gms-media-stream-handler",
        "releases": [
         "18",
@@ -90758,7 +90341,7 @@
       {
        "case": "play(): playback initiated",
        "verdict": "implemented",
-       "what": "play() starts playback.",
+       "what": "play starts playback.",
        "repo": "rt-5gms-media-stream-handler",
        "releases": [
         "18",
@@ -90770,7 +90353,7 @@
       {
        "case": "seek(): playback time altered",
        "verdict": "absent",
-       "what": "seek() is declared but not implemented; it throws.",
+       "what": "seek is declared but not implemented; it throws.",
        "repo": "rt-5gms-common-android-library",
        "releases": [
         "18",
@@ -90813,7 +90396,7 @@
       {
        "case": "initialize()",
        "verdict": "implemented",
-       "what": "initialize() creates the player; the instance is then used for the other methods.",
+       "what": "initialize creates the player; the instance is then used for the other methods.",
        "repo": "rt-5gms-media-stream-handler",
        "releases": [
         "16",
@@ -90824,7 +90407,7 @@
       {
        "case": "Creates a new Media Player instance",
        "verdict": "implemented",
-       "what": "Each call of initialize() builds a new ExoPlayer instance.",
+       "what": "Each call of initialize builds a new ExoPlayer instance.",
        "repo": "rt-5gms-media-stream-handler",
        "releases": [
         "18",
@@ -90848,7 +90431,7 @@
       {
        "case": "sessionId parameter on initialize",
        "verdict": "absent",
-       "what": "initialize() has no sessionId parameter.",
+       "what": "initialize has no sessionId parameter.",
        "repo": "rt-5gms-common-android-library",
        "releases": [
         "18",
@@ -90860,7 +90443,7 @@
       {
        "case": "Session id from the MSH used in notifications and status",
        "verdict": "absent",
-       "what": "The player does not take a session identifier from initialize() and does not use one in notifications or status.",
+       "what": "The player does not take a session identifier from initialize and does not use one in notifications or status.",
        "repo": "rt-5gms-common-android-library",
        "releases": [
         "18",
@@ -90926,7 +90509,7 @@
       {
        "case": "attachMPD() sets a source URL",
        "verdict": "implemented",
-       "what": "attach() sets the manifest URL; it is called by the Media Stream Handler on the Media Session Handler instruction rather than by the application.",
+       "what": "attach sets the manifest URL; it is called by the Media Stream Handler on the Media Session Handler instruction rather than by the application.",
        "repo": "rt-5gms-media-stream-handler",
        "releases": [
         "16",
@@ -90958,7 +90541,7 @@
       {
        "case": "Method used to load an MPD and prepare",
        "verdict": "implemented",
-       "what": "attach() loads the manifest into the player and preload() prepares playback.",
+       "what": "attach loads the manifest into the player and preload prepares playback.",
        "repo": "rt-5gms-media-stream-handler",
        "releases": [
         "16",
@@ -90972,7 +90555,7 @@
       {
        "case": "attachMPD() sets a source URL",
        "verdict": "implemented",
-       "what": "attach() sets the manifest URL on the player instance.",
+       "what": "attach sets the manifest URL on the player instance.",
        "repo": "rt-5gms-media-stream-handler",
        "releases": [
         "18",
@@ -91028,7 +90611,7 @@
       {
        "case": "preload() begins streaming",
        "verdict": "implemented",
-       "what": "preload() prepares the player, which begins loading the attached media.",
+       "what": "preload prepares the player, which begins loading the attached media.",
        "repo": "rt-5gms-media-stream-handler",
        "releases": [
         "16",
@@ -91039,7 +90622,7 @@
       {
        "case": "preload() minimises start-up time",
        "verdict": "implemented",
-       "what": "preload() prepares the player before play() is called.",
+       "what": "preload prepares the player before play is called.",
        "repo": "rt-5gms-media-stream-handler",
        "releases": [
         "16",
@@ -91053,7 +90636,7 @@
       {
        "case": "preload() on an instance",
        "verdict": "implemented",
-       "what": "preload() prepares the attached media on the player instance.",
+       "what": "preload prepares the attached media on the player instance.",
        "repo": "rt-5gms-media-stream-handler",
        "releases": [
         "18",
@@ -91083,7 +90666,7 @@
       {
        "case": "play() begins playback",
        "verdict": "implemented",
-       "what": "play() begins playback of the attached media.",
+       "what": "play begins playback of the attached media.",
        "repo": "rt-5gms-media-stream-handler",
        "releases": [
         "16",
@@ -91094,7 +90677,7 @@
       {
        "case": "play() initiates playback",
        "verdict": "implemented",
-       "what": "play() starts playback.",
+       "what": "play starts playback.",
        "repo": "rt-5gms-media-stream-handler",
        "releases": [
         "16",
@@ -91108,7 +90691,7 @@
       {
        "case": "play() precondition states",
        "verdict": "absent",
-       "what": "The adapter has no state check; play() is not limited to the INITIALIZED, READY, PRELOADED or PAUSED states.",
+       "what": "The adapter has no state check; play is not limited to the INITIALIZED, READY, PRELOADED or PAUSED states.",
        "repo": "rt-5gms-common-android-library",
        "releases": [
         "18",
@@ -91120,7 +90703,7 @@
       {
        "case": "play() on an instance",
        "verdict": "implemented",
-       "what": "play() begins playback of the attached media on the player instance.",
+       "what": "play begins playback of the attached media on the player instance.",
        "repo": "rt-5gms-media-stream-handler",
        "releases": [
         "18",
@@ -91149,7 +90732,7 @@
       {
        "case": "pause() pauses playback",
        "verdict": "implemented",
-       "what": "pause() pauses playback.",
+       "what": "pause pauses playback.",
        "repo": "rt-5gms-media-stream-handler",
        "releases": [
         "16",
@@ -91160,7 +90743,7 @@
       {
        "case": "pause() on an instance",
        "verdict": "implemented",
-       "what": "pause() pauses playback on the player instance.",
+       "what": "pause pauses playback on the player instance.",
        "repo": "rt-5gms-media-stream-handler",
        "releases": [
         "18",
@@ -91189,7 +90772,7 @@
       {
        "case": "seek() called by the application",
        "verdict": "absent",
-       "what": "seek() is declared but not implemented; it throws.",
+       "what": "seek is declared but not implemented; it throws.",
        "repo": "rt-5gms-common-android-library",
        "releases": [
         "16",
@@ -91200,7 +90783,7 @@
       {
        "case": "seek() precondition states",
        "verdict": "absent",
-       "what": "seek() is not implemented and no state check exists.",
+       "what": "seek is not implemented and no state check exists.",
        "repo": "rt-5gms-common-android-library",
        "releases": [
         "18",
@@ -91212,7 +90795,7 @@
       {
        "case": "seek() on an instance",
        "verdict": "absent",
-       "what": "seek() is declared but not implemented; it throws.",
+       "what": "seek is declared but not implemented; it throws.",
        "repo": "rt-5gms-common-android-library",
        "releases": [
         "18",
@@ -91241,7 +90824,7 @@
       {
        "case": "reset() in any state",
        "verdict": "absent",
-       "what": "reset() is declared but not implemented; it throws.",
+       "what": "reset is declared but not implemented; it throws.",
        "repo": "rt-5gms-common-android-library",
        "releases": [
         "16",
@@ -91255,7 +90838,7 @@
       {
        "case": "reset() destroys the Media Presentation",
        "verdict": "absent",
-       "what": "reset() is declared but not implemented; it throws.",
+       "what": "reset is declared but not implemented; it throws.",
        "repo": "rt-5gms-common-android-library",
        "releases": [
         "16",
@@ -91266,7 +90849,7 @@
       {
        "case": "reset() terminates playback",
        "verdict": "absent",
-       "what": "reset() is declared but not implemented; it throws.",
+       "what": "reset is declared but not implemented; it throws.",
        "repo": "rt-5gms-common-android-library",
        "releases": [
         "16",
@@ -91280,7 +90863,7 @@
       {
        "case": "reset() on an instance",
        "verdict": "absent",
-       "what": "reset() is declared but not implemented; it throws.",
+       "what": "reset is declared but not implemented; it throws.",
        "repo": "rt-5gms-common-android-library",
        "releases": [
         "18",
@@ -91309,7 +90892,7 @@
       {
        "case": "destroy() resets media and network information",
        "verdict": "differs",
-       "what": "destroy() releases the ExoPlayer but leaves the adapter's media information (activeMediaItem, activeManifestUrl) and listener state in place; the MPD reference and listener are not cleared.",
+       "what": "destroy releases the ExoPlayer but leaves the adapter's media information (activeMediaItem, activeManifestUrl) and listener state in place; the MPD reference and listener are not cleared.",
        "repo": "rt-5gms-media-stream-handler",
        "releases": [
         "16",
@@ -91320,7 +90903,7 @@
       {
        "case": "destroy() terminates playback",
        "verdict": "implemented",
-       "what": "destroy() releases the player and so ends playback.",
+       "what": "destroy releases the player and so ends playback.",
        "repo": "rt-5gms-media-stream-handler",
        "releases": [
         "16",
@@ -91334,7 +90917,7 @@
       {
        "case": "destroy() on an instance",
        "verdict": "differs",
-       "what": "destroy() releases the ExoPlayer but does not clear the adapter's media information (activeMediaItem, activeManifestUrl) or listener state.",
+       "what": "destroy releases the ExoPlayer but does not clear the adapter's media information (activeMediaItem, activeManifestUrl) or listener state.",
        "repo": "rt-5gms-media-stream-handler",
        "releases": [
         "18",
@@ -91346,7 +90929,7 @@
       {
        "case": "Instance no longer exists after destroy()",
        "verdict": "implemented",
-       "what": "After destroy() the ExoPlayer instance is released and unusable.",
+       "what": "After destroy the ExoPlayer instance is released and unusable.",
        "repo": "rt-5gms-media-stream-handler",
        "releases": [
         "18",
@@ -91998,7 +91581,7 @@
       {
        "case": "In this case, either the CAPIF core function defined in TS 23.222 [33] or the 5G",
        "verdict": "absent",
-       "what": "The tool does not act as an OAuth authorization server for the Media Session Handler (no token issuing or CAPIF integration).",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-provider",
        "releases": [
         "18",
@@ -92027,7 +91610,7 @@
       {
        "case": "The 5GMSd Application Provider provides a different access token (e.g. a random ",
        "verdict": "absent",
-       "what": "The tool issues no access tokens to 5GMSd-Aware Applications over M8.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-provider",
        "releases": [
         "18",
@@ -92051,7 +91634,7 @@
       {
        "case": "Application Provider issues access token at login",
        "verdict": "absent",
-       "what": "The tool has no login or access-token issuing logic for M5d media session handling.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-provider",
        "releases": [
         "18"
@@ -92061,7 +91644,7 @@
       {
        "case": "When the user wants to use the 5GMSd-Aware Application to consume e.g. video con",
        "verdict": "absent",
-       "what": "The tool has no user authentication at M8.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-provider",
        "releases": [
         "19",
@@ -92083,7 +91666,7 @@
       {
        "case": "According to the subscription entitlement level, the 5GMSd Application Provider ",
        "verdict": "absent",
-       "what": "The tool creates no access token and returns none in a login response.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-provider",
        "releases": [
         "19",
@@ -92140,7 +91723,7 @@
       {
        "case": "Distinct access token per 5GMSu-Aware Application via M8",
        "verdict": "absent",
-       "what": "The tools' M8 output carries no access token; it lists the M5 base URL and per-session entry points only.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-provider",
        "releases": [
         "18",
@@ -92270,7 +91853,7 @@
       {
        "case": "OAuth 2.0 authorisation of M1 provisioning operations",
        "verdict": "absent",
-       "what": "The AF accepts M1 requests without any access token or other credentials.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -92495,7 +92078,7 @@
       {
        "case": "AF acts as OAuth authorization server",
        "verdict": "absent",
-       "what": "The AF issues no access tokens and plays no authorization server role.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -93157,7 +92740,7 @@
       {
        "case": "Upload: Content-Type and body per clause 8.4.3.2",
        "verdict": "implemented",
-       "what": "PUT to a certificate requires Content-Type application/x-pem-file (415 otherwise) and takes the request body as the PEM certificate.",
+       "what": "PUT to a certificate requires Content-Type application/x-pem-file and takes the request body as the PEM certificate.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -93424,7 +93007,7 @@
       {
        "case": "Reservation resources released on destroy",
        "verdict": "implemented",
-       "what": "Destroying a reservation deletes its private key and CSR.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18",
@@ -94543,7 +94126,7 @@
       {
        "case": "Upload: body is a public-only PEM certificate",
        "verdict": "absent",
-       "what": "The uploaded body is stored without checking that it is a PEM certificate without a private key.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "16",
@@ -94715,7 +94298,7 @@
       {
        "case": "Reservation resources released on destroy",
        "verdict": "implemented",
-       "what": "Destroying a reservation deletes its private key and CSR.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "16",
@@ -94860,7 +94443,7 @@
       {
        "case": "Destroy Provisioning Session (DELETE)",
        "verdict": "implemented",
-       "what": "DELETE on provisioning-sessions/{id} destroys the session: it marks it, answers 202, removes its content hosting configuration, certificates and consumption reporting registration, and frees it (404 if unknown).",
+       "what": "DELETE on provisioning-sessions/{id} destroys the session: it marks it, answers 202, removes its content hosting configuration, certificates and consumption reporting registration, and frees it.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "16",
@@ -95237,7 +94820,7 @@
       {
        "case": "Aligned with the provisions for securing northbound APIs defined in TS 33.122 [3",
        "verdict": "absent",
-       "what": "The M1 client sends requests without any OAuth 2.0 access token or authorisation header.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "releases": [
         "18",
         "19",
@@ -95248,7 +94831,7 @@
       {
        "case": "When CAPIF is supported at reference point M1, the 5GMS Application Provider in ",
        "verdict": "absent",
-       "what": "The provider does not take part in any CAPIF authentication or authorisation.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "releases": [
         "18",
         "19",
@@ -95259,7 +94842,7 @@
       {
        "case": "To successfully invoke provisioning operations at reference point M1, the 5GMS .",
        "verdict": "absent",
-       "what": "The provider does not obtain or present an access token issued by a CAPIF core function.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "releases": [
         "18",
         "19",
@@ -97171,7 +96754,7 @@
       {
        "case": "Implementations of the 5GMS Application Provider shall comply with the authorisa",
        "verdict": "absent",
-       "what": "The provider does not follow the TS 26.510 clause 7.4.2 authorisation provisions: requests carry no access token.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "releases": [
         "18",
         "19",
@@ -97845,7 +97428,7 @@
       {
        "case": "- If isTypeSupported() for the media profile with argument <profiles> results in a ...",
        "verdict": "absent",
-       "what": "The client has no isTypeSupported() style query for media profiles.",
+       "what": "The client has no isTypeSupported style query for media profiles.",
        "repo": "rt-5gms-common-android-library",
        "releases": [
         "16",
@@ -97859,7 +97442,7 @@
       {
        "case": "- If isTypeSupported() for the media profile with argument <codecs> results in a yes, ...",
        "verdict": "absent",
-       "what": "The client has no isTypeSupported() style query for media profiles.",
+       "what": "The client has no isTypeSupported style query for media profiles.",
        "repo": "rt-5gms-common-android-library",
        "releases": [
         "16",
@@ -99459,14 +99042,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.1",
-       "locatorAt": {
-        "16": "clause 4.1",
-        "17": "clause 4.1",
-        "18": "clause 4.1.1",
-        "19": "clause 4.1.1",
-        "20": "clause 4.1.1"
-       }
+       "locator": "clause 4.1"
       },
       {
        "case": "PCF discovery through the BSF",
@@ -99480,14 +99056,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.1",
-       "locatorAt": {
-        "16": "clause 4.1",
-        "17": "clause 4.1",
-        "18": "clause 4.1.1",
-        "19": "clause 4.1.1",
-        "20": "clause 4.1.1"
-       }
+       "locator": "clause 4.1"
       },
       {
        "case": "Via the NEF over N33 (AF in an external DN)",
@@ -99499,14 +99068,7 @@
         "18",
         "19",
         "20"
-       ],
-       "locatorAt": {
-        "16": "clause 4.1",
-        "17": "clause 4.1",
-        "18": "clause 4.1.1",
-        "19": "clause 4.1.1",
-        "20": "clause 4.1.1"
-       }
+       ]
       }
      ],
      "noted": []
@@ -101251,7 +100813,7 @@
       {
        "case": "Last-Modified on GET responses with a resource body",
        "verdict": "differs",
-       "what": "Resource GET responses set Last-Modified, but the value is formatted from localtime() with the local zone abbreviation (%Z), not as an HTTP-date in GMT.",
+       "what": "Resource GET responses set Last-Modified, but the value is formatted from localtime with the local zone abbreviation (%Z), not as an HTTP-date in GMT.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "16",
@@ -102011,13 +101573,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "applicationServerEndpointAddress",
@@ -102030,13 +101586,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "requestMessage",
@@ -102049,13 +101599,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "requestMessage.method",
@@ -102068,13 +101612,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "requestMessage.url",
@@ -102087,13 +101625,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "requestMessage.protocolVersion",
@@ -102106,13 +101638,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "requestMessage.range",
@@ -102125,13 +101651,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "requestMessage.size",
@@ -102144,13 +101664,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "requestMessage.bodySize",
@@ -102163,13 +101677,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "requestMessage.contentType",
@@ -102182,13 +101690,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "requestMessage.userAgent",
@@ -102201,13 +101703,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "requestMessage.userIdentity",
@@ -102220,13 +101716,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "requestMessage.referer",
@@ -102239,13 +101729,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "responseMessage",
@@ -102258,13 +101742,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "responseMessage.responseCode",
@@ -102277,13 +101755,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "responseMessage.size",
@@ -102296,13 +101768,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "responseMessage.bodySize",
@@ -102315,13 +101781,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "responseMessage.contentType",
@@ -102334,13 +101794,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "processingLatency",
@@ -102353,13 +101807,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "connectionMetrics",
@@ -102372,13 +101820,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "connectionMetrics.meanNetworkRoundTripTime",
@@ -102391,13 +101833,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "connectionMetrics.networkRoundTripTimeVariation",
@@ -102410,13 +101846,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "connectionMetrics.congestionWindowSize",
@@ -102429,13 +101859,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       }
      ],
      "noted": []
@@ -102510,7 +101934,7 @@
       {
        "case": "authenticated and authorised provisioning",
        "verdict": "absent",
-       "what": "The AF does not authenticate or authorise M1 callers, and its SBI TLS settings are parsed but not applied.",
+       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-5gms-application-function",
        "releases": [
         "18"
@@ -103863,14 +103287,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.1.2",
-       "locatorAt": {
-        "16": "clause 6.1",
-        "17": "clause 6.1",
-        "18": "clause 6.1.2",
-        "19": "clause 6.1.2",
-        "20": "clause 6.1.2"
-       }
+       "locator": "clause 6.1.2"
       },
       {
        "case": "Resource URI structure of TS 29.501 clause 4.4.1",
@@ -103908,14 +103325,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.1.2",
-       "locatorAt": {
-        "16": "clause 6.1",
-        "17": "clause 6.1",
-        "18": "clause 6.1.2",
-        "19": "clause 6.1.2",
-        "20": "clause 6.1.2"
-       }
+       "locator": "clause 6.1.2"
       }
      ],
      "noted": []
@@ -104308,13 +103718,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "applicationServerEndpointAddress",
@@ -104327,13 +103731,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "requestMessage",
@@ -104346,13 +103744,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "requestMessage.method",
@@ -104365,13 +103757,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "requestMessage.url",
@@ -104384,13 +103770,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "requestMessage.protocolVersion",
@@ -104403,13 +103783,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "requestMessage.range",
@@ -104422,13 +103796,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "requestMessage.size",
@@ -104441,13 +103809,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "requestMessage.bodySize",
@@ -104460,13 +103822,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "requestMessage.contentType",
@@ -104479,13 +103835,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "requestMessage.userAgent",
@@ -104498,13 +103848,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "requestMessage.userIdentity",
@@ -104517,13 +103861,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "requestMessage.referer",
@@ -104536,13 +103874,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "responseMessage",
@@ -104555,13 +103887,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "responseMessage.responseCode",
@@ -104574,13 +103900,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "responseMessage.size",
@@ -104593,13 +103913,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "responseMessage.bodySize",
@@ -104612,13 +103926,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "responseMessage.contentType",
@@ -104631,13 +103939,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "processingLatency",
@@ -104650,13 +103952,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "connectionMetrics",
@@ -104669,13 +103965,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "connectionMetrics.meanNetworkRoundTripTime",
@@ -104688,13 +103978,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "connectionMetrics.networkRoundTripTimeVariation",
@@ -104707,13 +103991,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       },
       {
        "case": "connectionMetrics.congestionWindowSize",
@@ -104726,13 +104004,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.4.3.11, property row",
-       "locatorAt": {
-        "17": "clause 17.2",
-        "18": "clause 6.4.3.11",
-        "19": "clause 6.4.3.11",
-        "20": "clause 6.4.3.11"
-       }
+       "locator": "clause 6.4.3.11, property row"
       }
      ],
      "noted": []
@@ -106445,7 +105717,7 @@
       {
        "case": "MPD URL received from the application via M7d",
        "verdict": "implemented",
-       "what": "The application supplies a ServiceListEntry (optionally with entry-point locators) and the MPD locator reaches the Media Player's attach(); IExoPlayerAdapter.attach(url) is also public and exposed to the application.",
+       "what": "The application supplies a ServiceListEntry (optionally with entry-point locators) and the MPD locator reaches the Media Player's attach; IExoPlayerAdapter.attach(url) is also public and exposed to the application.",
        "repo": "rt-5gms-media-session-handler",
        "releases": [
         "16",
@@ -106468,7 +105740,7 @@
       {
        "case": "Entry (MPD) URL received from the application via M7d",
        "verdict": "implemented",
-       "what": "The application supplies a ServiceListEntry (optionally with entry-point locators) and the MPD locator reaches the Media Player's attach(); IExoPlayerAdapter.attach(url) is also public and exposed to the application.",
+       "what": "The application supplies a ServiceListEntry (optionally with entry-point locators) and the MPD locator reaches the Media Player's attach; IExoPlayerAdapter.attach(url) is also public and exposed to the application.",
        "repo": "rt-5gms-media-session-handler",
        "releases": [
         "19",
@@ -106721,7 +105993,7 @@
       {
        "case": "User-Agent with 5GMSMediaStreamHandler token at M4",
        "verdict": "implemented",
-       "what": "Media requests carry a User-Agent that starts with the product token 5GMSMediaStreamHandler.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-5gms-common-android-library",
        "releases": [
         "16",
@@ -106732,7 +106004,7 @@
       {
        "case": "Product-version suffix present",
        "verdict": "implemented",
-       "what": "The product token carries the suffix /17.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-5gms-common-android-library",
        "releases": [
         "16",
@@ -106774,7 +106046,7 @@
       {
        "case": "User-Agent with 5GMSMediaStreamHandler token at M4",
        "verdict": "implemented",
-       "what": "Media requests carry a User-Agent that starts with the product token 5GMSMediaStreamHandler.",
+       "what": "Implemented; further detail is in the members-only section.",
        "repo": "rt-5gms-common-android-library",
        "releases": [
         "18",
@@ -108869,7 +108141,7 @@
       }
      ],
      "noted": [
-      "The media configuration layer does not map maxBtrUl (-135).",
+      "The media configuration layer does not map maxBtrUl.",
       "The media configuration layer does not map maxBtrDl."
      ]
     },

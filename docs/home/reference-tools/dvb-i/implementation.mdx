@@ -2,25 +2,8 @@
 title: Implementation Detail
 hide_title: true
 sidebar_position: 2
-description: What the DVB-I Services over 5G Systems Reference Tools implement, component by component, against ETSI TS 103 770 V1.2.1 and for DVB-I over 5G, from a code audit of the repositories.
+description: Status of the DVB-I Services over 5G Systems Reference Tools; the code audit of this project is not yet done.
 ---
-
-import FigurePair from '@site/src/components/FigurePair';
-import ImplementationCases from '@site/src/components/ImplementationCases';
-import { RepoCards } from '@site/src/components/ProjectRepoSection';
-import AUDIT from '@site/src/data/audit-dvb-i.json';
-
-export const FIVEG = 'DVB-I over 5G';
-export const DVBI = { ...AUDIT, features: AUDIT.features.filter((f) => f.name !== FIVEG) };
-export const OVER5G = { ...AUDIT, features: AUDIT.features.filter((f) => f.name === FIVEG) };
-export const count = (data) => {
-  const reqs = data.features.flatMap((f) => f.requirements);
-  const cases = reqs.flatMap((r) => r.cases);
-  const n = (v) => cases.filter((c) => c.verdict === v).length;
-  return { reqs: reqs.length, cases: cases.length, implemented: n('implemented'), differs: n('differs'), absent: n('absent'), inconsistent: n('inconsistent') };
-};
-export const COUNT = count(DVBI);
-export const COUNT5G = count(OVER5G);
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -36,141 +19,36 @@ export const COUNT5G = count(OVER5G);
 
 :::tip[In short]
 
-- **Which specification the code follows:** ETSI TS 103 770 V1.2.1 (2024-09), *Service Discovery and Programme Metadata for DVB-I*, with its schemas.
-- **Status against TS 103 770:** {COUNT.reqs} requirements in {COUNT.cases} cases: {COUNT.implemented} implemented, {COUNT.differs} differ from the specification, {COUNT.absent} not implemented, and {COUNT.inconsistent} where the specification contradicts itself.
-- **DVB-I over 5G**, in [its own section](#dvb-i-over-5g-status): {COUNT5G.reqs} requirements in {COUNT5G.cases} cases, judged against TS 103 770 clause 9.3, 3GPP TS 26.347 V18.1.0 and ETSI TR 103 972 V1.1.1 (informative, so judged as guidelines): {COUNT5G.implemented} implemented, {COUNT5G.differs} differ, {COUNT5G.absent} not implemented. The client checks and shows the 5G Broadcast signalling but reaches no MBMS Client. No component carries 5GMS Service Access Information, because no DVB or 3GPP element for it exists yet.
-- **Source of this page:** a code audit of the repositories on 2026-10-02: each requirement split into the cases its clause defines, each case checked against the code, and the TS 103 770 cases of the client, provider and registry then re-checked by a second reader.
+- **Status:** not yet audited. The audit will be done on the `main` branch of each repository; until then this page shows the state described by each repository's README.
+- **Which specification the code follows:** ETSI TS 103 770, *Service Discovery and Programme Metadata for DVB-I*, with its schemas.
+- **DVB-I over 5G:** judged against TS 103 770 clause 9.3, 3GPP TS 26.347 and ETSI TR 103 972 once the audit is done.
 
 :::
 
 For what the specifications define, see the [Technology](/tech/dvb-i). For how to run the tools, see the [Tutorials](/reference-tools/dvb-i/tutorials).
 
-## Architecture
-
-The DVB-I components and interfaces of TS 103 770, with the parts the Reference Tools provide and the status of each interface. The DVB-I over 5G architecture is in [its own section](#dvb-i-over-5g-status).
-
-<FigurePair
-  figures={[
-    {
-      label: 'DVB-I',
-      src: '/img/tech/dvb-i/generated/ts103770-fig1-status.svg',
-      width: 943, height: 1275,
-      title: 'DVB-I components and interfaces, with Reference Tools',
-      source: 'Based on ETSI TS 103 770 V1.2.1, figure 1',
-      alt: 'The DVB-I components of TS 103 770 with the repository behind each one. The DVB-I client, Content Guide Servers, Service List Servers, Service List Registry, MPD Servers and Stream Servers are provided; Application Servers and Playlist Servers are not.',
-    },
-  ]}
-  note="Click a figure to enlarge it."
-/>
-
 ## Implementation status
 
-Each feature of TS 103 770, and the obligations it hands to ETSI TS 102 796 V1.8.1 (HTTP caching, the TLS profile, launch locations, the XML AIT and image formats), split into its requirements and each requirement into the cases its clause defines: what works, what does not, and why. Filter by component; open a feature, then a requirement.
+Not yet audited.
 
-<ImplementationCases data={DVBI} />
-
-## DVB-I over 5G status
-
-DVB-I services delivered over 5G Broadcast, over 5G Media Streaming, and over both together, judged against TS 103 770 clause 9.3, 3GPP TS 26.347 V18.1.0 and ETSI TR 103 972 V1.1.1. TR 103 972 is informative: its cases are guidelines, marked as such, not normative requirements.
-
-<FigurePair
-  figures={[
-    {
-      label: 'DVB-I over 5G',
-      src: '/img/tech/dvb-i/generated/tr103972-fig5.1-1-status.svg',
-      width: 1200, height: 1072,
-      title: 'DVB-I services over 5G systems, with Reference Tools',
-      source: 'Based on ETSI TR 103 972 V1.1.1, figure 5.1-1',
-      alt: 'The DVB-I over 5G architecture of TR 103 972. The DVB-I and DVB-DASH clients and the Content Guide, Service List, MPD and Segment Servers are provided; the Playlist Server is not.',
-    },
-  ]}
-  note="Click a figure to enlarge it."
-/>
-
-Filter by component or specification; open a scenario, then a requirement.
-
-<ImplementationCases data={OVER5G} />
+- **rt-dvb-i-application:** a browser DVB-I client that discovers a service list, presents its channels with their content guide, and plays them. Its README marks it as under development.
+- **rt-dvb-i-android-application:** a native Android DVB-I client that discovers a service list, presents its channels with their content guide, and plays them with Media3 ExoPlayer. Its README marks it as under development.
+- **rt-dvb-i-application-provider:** publishes a DVB-I service list and its content guide, and gives an editor for maintaining them. Its README marks it as under development.
+- **rt-dvb-i-service-list-registry:** answers DVB-I client queries with a list of Service List Entry Points. Its README marks it as under development.
+- **rt-dvb-i-examples:** runnable examples that bring the DVB-I repositories up together on one machine, publishing and playing a service list. Its README marks it as under development.
+- **Exo DVB-I Player:** an Android application that is part of rt-5gms-application; not yet audited.
 
 :::info[Full audit for members]
 
-This page summarises a requirement-by-requirement audit of the code. The full audit (each requirement with its clause quoted, the code that meets or misses it, and the findings) is available to 5G-MAG members through [Developer Tools](/developer-tools) (the Standards2Deployments repository).
+When the audit of this project is complete, the full audit, with the code behind each verdict, will be available to 5G-MAG members through [Developer Tools](/developer-tools).
 
 [Become a member](/membership) · [Request access](/early-access)
 
 :::
 
-## Components
-
-### DVB-I client
-
-<RepoCards slugs={['rt-dvb-i-application']} />
-
-- **Built against:** TS 103 770 V1.2.1 (stated in the README; no build pin).
-- **Implemented:** queries to a Service List Registry, with regulator lists first and a regulator list the default whenever there is one; Delivery, Language, TargetCountry and logos acted on; ServiceListId checked. One LCN table chosen by region, @visible, @selectable and LCNRange honoured, with target regions, subscription packages, parental ratings and linked applications. Service instances selected by clause 5.2.13, with @priority and its default of 0; caching and conditional requests. Content guide sources found by clause 6.1, with aligned 12 hour, now/next and pid requests, More Episodes and Box Sets with pagination, and programme ratings enforced. DASH instances and DVB-I Playlists played with dash.js.
-- **TS 102 796:** HTTP caching by RFC 9111 (no-store, freshness from Age and Date) with conditional requests; the clause 11.2 TLS profile for every metadata connection (TLS 1.3 and 1.2, the table 15a suites, no forbidden signature, root keys of at least 112 bits); the launch location of linked applications and of XML AIT requests; XML AIT applications chosen by application type and the table 5 platform profile.
-- **Specification inconsistent:** a response with both no-cache and max-age. RFC 9111 has it validated before each reuse, TS 103 770 clause 4.3.2.1 forbids a request before max-age has passed; this client follows TS 103 770.
-- **Partial:** codecs and the encryption scheme are not checked in advance; after a 401 or 403 there are no credentials to present; plain HTTP endpoints are fetched with a warning, not only on the same private subnet; a service list on a local Media Server loads only when the deployment names that server as an exception.
-- **Not implemented:** carriage in MBMS (clause 9.3) and the TS 26.347 MBMS Client APIs: for now no MBMS Client is reached from the browser. The client reads, checks and shows the 5G Broadcast signalling and plays a unicast instance of the service instead. It passes no MPD address to a 5GMSd-Aware Application.
-
-### DVB-I over 5G Reference App (Android)
-
-<RepoCards slugs={['rt-dvb-i-android-application']} />
-
-- **Built against:** TS 103 770 V1.2.1 (stated in the README); Media3 ExoPlayer 1.10.0. The user interface is based on the design of 5G-MAGflix, the 5GMSd Aware Application in rt-5gms-application, by Daniel Silhavy (Fraunhofer FOKUS).
-- **What it is:** a native Android DVB-I client that ports the logic of the DVB-I client above, audited with the other components. It has been run on a phone over Wi-Fi against the DVB-I examples, and its 122 unit tests pass.
-- **Implemented:** service lists from a URL or a Service List Registry query, with a regulator list the default whenever there is one; LCN tables by region; service instances selected by clause 5.2.13; DASH and HLS played, with live and on-demand controls; access services, ratings and delivery shown as icons; the HTTP rules of clause 4.3; now/next, schedules, a programme guide grid and programme information; More Episodes, Box Sets and on-demand programmes; linked applications and DVB-I Playlists; plain HTTP only to the hosts named at build time, with a warning.
-- **TS 102 796:** HTTP caching by RFC 9111 with conditional requests; the clause 11.2 TLS profile for metadata connections (TLS 1.3 and 1.2, the table 15a suites, certificates with an RSA key under 2 048 bits, a root under 112 bits or an MD5 or SHA-1 signature refused); the launch location of linked applications and of XML AIT requests; XML AIT applications chosen by application type and the table 5 platform profile; only JPEG and PNG images shown.
-- **Partial:** in TLS 1.2 the platform still offers the rsa_pkcs1_sha1 signature algorithm, which table 15b forbids.
-- **Specification inconsistent:** a response with both no-cache and max-age, as for the browser client; this client follows RFC 9111 and validates it before each reuse.
-- **Not implemented:** HbbTV applications, Restart links, and a PIN for restricted content. 5G Broadcast signalling is read, checked and shown; the app is built in three variants: plain DVB-I, DVB-I as the MBMS-Aware Application through the 5G-MAG MBMS Middleware for Android (which does not yet expose an interface to bind to), and DVB-I as a 5GMSd-Aware Application. The two 5G variants are placeholders for now.
-
-### Application Provider (service list and content guide)
-
-<RepoCards slugs={['rt-dvb-i-application-provider']} />
-
-- **Built against:** TS 103 770 V1.2.1; output checked against its schemas.
-- **Implemented:** schema-valid service lists published as `application/vnd.dvb.dvbisl+xml`, with a new version on every change, JPEG or PNG logos, image variants, subscription packages, one LCN table per region and region selection by regionID. Delivery signalling, including a 5G Broadcast instance as `IdentifierBasedDeliveryParameters` holding its `mbms://` URL, checked against the TS 26.347 URL form on save and on restore so that an invalid one is never published, and @priority where one is configured. Content guide: ContentGuideSourceRef, timestamp, now/next and programme information requests, and the metadata profile, including a deep-linked XML AIT for on-demand programmes.
-- **TS 102 796:** the clause 11.2 TLS profile when served over TLS, with ECDHE suites preferred; the content deep-linked XML AIT of clause 7.2.3.2 (application type, control code, one transport, length limits, media type), with the platform version 1.8.1 that table 5 sets; images only as JPEG or PNG, no GIF.
-- **Partial:** served over TLS when a certificate is configured, otherwise plain HTTP with a warning. An `http:` URLBase in an XML AIT is published with a warning, where clause 11.9 advises `https:`. A 5G Broadcast instance is told apart from a unicast one only by its element and URL scheme.
-- **Not implemented:** DVB-I Playlists, and 5GMS Service Access Information, which no DVB or 3GPP element yet carries in a service list.
-- **Specification inconsistent:** the empty Schedule element and the programme image HowRelated term, where TS 103 770 contradicts itself.
-
-### Service List Registry
-
-<RepoCards slugs={['rt-dvb-i-service-list-registry']} />
-
-- **Built against:** TS 103 770 V1.2.1; responses checked against `dvbi_service_list_discovery_v1.6.xsd`.
-- **Implemented:** queries answered with schema-valid Service List Entry Points for every offering type, including offerings that leave a filter unspecified; invalid TargetCountry, Language and Genre values refused; the service list media type and @regulatorListFlag written; the Delivery values kept to those TS 103 770 defines.
-- **TS 102 796:** the clause 11.2 TLS profile when served over TLS, with ECDHE suites preferred.
-- **Partial:** served over TLS when configured, otherwise plain HTTP with a warning.
-- **Specification inconsistent:** the image_variant query parameter, where TS 103 770 contradicts itself.
-
-### Exo DVB-I Player
-
-<RepoCards slugs={['rt-5gms-application']} />
-
-- **Built against:** ExoPlayer r2.18.2; no DVB-I version stated. Audited at release v1.3.0.
-- **What it is:** an Android WebView around an external DVB-I frontend, which is not 5G-MAG code, with ExoPlayer playing the DASH addresses the frontend requests.
-- **Implemented:** playback of the intercepted MPD address; no retry after a 400 or 406.
-- **Partial:** the service list is fetched from a fixed `http://` address, with no conditional request and Cache-Control not honoured.
-- **Not implemented:** registry queries, service list handling, service instance selection and the content guide, which the external frontend does; MBMS carriage, the TS 26.347 APIs and 5G Media Streaming.
-
-### Supporting repositories
-
-These support the components above; the table does not rate them.
-
-<RepoCards slugs={['rt-dvb-i-examples']} />
-
-- **Examples:** runnable examples that bring the DVB-I repositories up together on one machine, publishing and playing a service list.
-- **Media origin:** the examples use rt-media-origin, which packages each channel as live DASH and serves it. It is not yet public.
-
 ## Used with other projects
 
-<ul>
-{AUDIT.dependencies.map((d) => (
-  <li key={d.what}><strong>{d.project}</strong>: {d.what}. <em>{d.status}.</em></li>
-))}
-</ul>
+- **5G Media Streaming (5GMS):** the Exo DVB-I Player lives in rt-5gms-application. See [5G Media Streaming](/reference-tools/5gms/implementation).
 
 ## Related
 
