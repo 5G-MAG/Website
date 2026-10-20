@@ -1,5 +1,5 @@
 ---
-title: Scope
+title: Implementation Detail
 hide_title: true
 sidebar_position: 0
 description: Explains the Beyond 2D Evaluation Framework's test scenarios, codecs, and metrics for benchmarking stereoscopic, point-cloud, and multi-view-plus-depth video.
@@ -14,7 +14,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 </div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Beyond 2D Evaluation Framework</span>
-<h1>Scope</h1>
+<h1>Implementation Detail</h1>
 </div>
 </div>
 
@@ -28,7 +28,7 @@ The Beyond 2D Evaluation Framework supports the systematic assessment of next-ge
 
 From an implementer's point of view, the value here is a common, transparent test setup rather than a shipping playback product: defined test content, processing steps, and metrics that let you benchmark candidate formats and codecs on a like-for-like basis. Where volumetric coding is in scope, the framework relates to Visual Volumetric Video-based Coding (V3C, ISO/IEC 23090-5); for delivery evaluation it touches common packaging such as the Common Media Application Format (CMAF). Because this is an evaluation-focused effort tied to an active 3GPP study, the set of dedicated reference tools is smaller than for 5G-MAG's product-oriented projects, and it overlaps with the volumetric tooling; this page states that scope plainly rather than over-claiming a large standalone toolset.
 
-For the authoritative, current list of repositories and their status, see the [Resources](./resources) page; roadmap items are tracked from the [Resources](./resources). For related encoding and rendering tools, see the [MPEG V3C Immersive Platform](/reference-tools/v3c) project.
+For the authoritative, current list of repositories and their status, see the [Repositories & Releases](/testbeds/beyond-2d#repositories--releases) page; roadmap items are tracked from the [Repositories & Releases](/testbeds/beyond-2d#repositories--releases). For related encoding and rendering tools, see the [MPEG V3C Immersive Platform](/reference-tools/v3c) project.
 
 ## What This Project Implements
 
@@ -51,14 +51,14 @@ The repository separates the multi-view-plus-depth (`mvd`) and point-cloud conte
 
 The pipeline runs encode, package, deliver (under a 5G Media Streaming / DASH assumption), decode, and render, then measures quality on both source views and rendered pose-trace views. Reported metrics include PSNR, IV-PSNR, and VMAF against bitrate. Because source sequences, coded bitstreams, and rendered pose-trace videos are large, the framework references content on external servers rather than bundling it.
 
-The framework tracks 3GPP FS_Beyond2D and TR 26.956. Where volumetric or MV+D content is evaluated, it reuses V3C tooling (V-PCC and MIV), which is why this project overlaps with, and is smaller than, the product-oriented [MPEG V3C Immersive Platform](/reference-tools/v3c). The set of dedicated repositories is therefore intentionally compact; for the authoritative, current list and status see the [Resources](./resources) page.
+The framework tracks 3GPP FS_Beyond2D and TR 26.956. Where volumetric or MV+D content is evaluated, it reuses V3C tooling (V-PCC and MIV), which is why this project overlaps with, and is smaller than, the product-oriented [MPEG V3C Immersive Platform](/reference-tools/v3c). The set of dedicated repositories is therefore intentionally compact; for the authoritative, current list and status see the [Repositories & Releases](/testbeds/beyond-2d#repositories--releases) page.
 
 ## Getting Started
 
 1. Read the [Beyond 2D Video Experiences](/tech/beyond-2d) Tech page for the scenarios, formats, and metrics.
-2. Check the [Resources](./resources) page for the current repository (or repositories) and clone the evaluation framework.
+2. Check the [Repositories & Releases](/testbeds/beyond-2d#repositories--releases) page for the current repository (or repositories) and clone the evaluation framework.
 3. Follow the repository README to obtain the referenced test content and run the per-scenario encode, deliver, decode, and metric steps.
-4. Track open work on the [Resources](./resources).
+4. Track open work on the [Repositories & Releases](/testbeds/beyond-2d#repositories--releases).
 
 ## Roadmap
 

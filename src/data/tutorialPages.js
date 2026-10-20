@@ -22,9 +22,13 @@ const IMPLEMENTATION_SLUGS = [
   'dvb-i', 'emergency-alerts', 'network-apis', 'v3c', 'vdmc', 'xr',
 ];
 
+// Testbeds and validators with an Implementation Detail page, the same as the Reference Tools.
+const OTHER_IMPLEMENTATION = ['/testbeds/beyond-2d', '/testbeds/ai-ml', '/validation/vops'];
+
 export function implementationUrlFor(docUrl) {
   if (!docUrl) return null;
   const base = docUrl.replace(/\/$/, '');
+  if (OTHER_IMPLEMENTATION.includes(base)) return `${base}/implementation`;
   if (!base.startsWith('/reference-tools/')) return null;
   return IMPLEMENTATION_SLUGS.includes(base.replace('/reference-tools/', '')) ? `${base}/implementation` : null;
 }

@@ -401,7 +401,7 @@
       "repos": [
         "rt-beyond2d-evaluation-framework"
       ],
-      "releases_slug": "resources",
+      "releases_slug": "#repositories--releases",
       "contributors": [
         "Philips",
         "InterDigital"
@@ -428,7 +428,7 @@
       "tagline": "Evaluating AI and ML for media, and the traffic of AI media services",
       "basket": "towards-6g",
       "repos": [],
-      "releases_slug": "resources",
+      "releases_slug": "#repositories--releases",
       "contributors": [
         "Qualcomm",
         "Huawei",
@@ -461,7 +461,7 @@
         "6G-Testbed",
         "netemu-dashboard"
       ],
-      "releases_slug": "resources",
+      "releases_slug": "#repositories--releases",
       "contributors": [
         "Qualcomm",
         "Huawei"
@@ -557,7 +557,7 @@
       "repos": [
         "rt-ai-ml-evaluation-framework"
       ],
-      "releases_slug": "resources",
+      "releases_slug": "#repositories--releases",
       "contributors": [
         "Qualcomm",
         "InterDigital"
@@ -614,7 +614,7 @@
         "3GPP"
       ],
       "icon": "photo-video",
-      "releases_slug": "#repositories"
+      "releases_slug": "#repositories--releases"
     },
     {
       "name": "Common Tools",

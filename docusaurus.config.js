@@ -109,6 +109,15 @@ const config = {
           { from: '/reference-tools/content-delivery/tutorial-media-application', to: '/reference-tools/content-delivery/tutorials/media-application' },
           { from: '/reference-tools/network-apis/tutorial-dedicated-networks-portal', to: '/reference-tools/network-apis/tutorials/dedicated-networks-portal' },
           { from: '/reference-tools/network-apis/tutorial-dedicated-networks-mcp-server', to: '/reference-tools/network-apis/tutorials/dedicated-networks-mcp-server' },
+          // Testbed and validator pages follow the Reference Tools pattern: Scope became Implementation Detail, and the
+          // Resources pages (repositories and releases) are the section of the tool page (2026-10-20).
+          { from: '/testbeds/beyond-2d/scope', to: '/testbeds/beyond-2d/implementation' },
+          { from: '/testbeds/beyond-2d/resources', to: '/testbeds/beyond-2d' },
+          { from: '/testbeds/ai-ml/scope', to: '/testbeds/ai-ml/implementation' },
+          { from: '/testbeds/ai-ml/resources', to: '/testbeds/ai-ml' },
+          { from: '/validation/vops/scope', to: '/validation/vops/implementation' },
+          { from: '/validation/vops/resources', to: '/validation/vops' },
+          { from: '/testbeds/6g-testbed/resources', to: '/testbeds/6g-testbed' },
           { from: '/tech/standards/5g-broadcast', to: '/standards/5g-broadcast' },
           { from: '/tech/standards/5g-broadcast-standards-evolution', to: '/standards/5g-broadcast/evolution' },
           { from: '/tech/standards/5g-mbs', to: '/standards/5g-mbs' },
@@ -185,8 +194,8 @@ const config = {
           { from: '/reference-tools/5g-core/tutorials/using-libscBSF', to: '/reference-tools/3gpp-platforms/tutorials/using-libscBSF' },
           // The VOPS Conformance Validator is a validation tool, under /validation.
           { from: '/testbeds/vops', to: '/validation/vops' },
-          { from: '/testbeds/vops/scope', to: '/validation/vops/scope' },
-          { from: '/testbeds/vops/resources', to: '/validation/vops/resources' },
+          { from: '/testbeds/vops/scope', to: '/validation/vops/implementation' },
+          { from: '/testbeds/vops/resources', to: '/validation/vops' },
           { from: '/testbeds/vops/tutorials', to: '/validation/vops/tutorials' },
           { from: '/reference-tools/5g-mbs/scope', to: '/reference-tools/5g-mbs/implementation' },
           { from: '/reference-tools/5g-mbs/resources', to: '/reference-tools/5g-mbs' },
