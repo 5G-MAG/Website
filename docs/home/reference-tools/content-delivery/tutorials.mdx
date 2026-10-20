@@ -2,13 +2,8 @@
 title: Tutorials
 hide_title: true
 sidebar_position: 2
-description: Walkthrough for delivering DASH/CMAF content over FLUTE (rt-libflute) and ROUTE (the MBMS Client with ROUTE support), plus the 5G-MAG Developer Exchange section.
+description: Walkthroughs for delivering DASH/CMAF content over FLUTE (rt-libflute) and ROUTE (the MBMS Client with ROUTE support), with links to the tutorials for the media origin and the Reference Media Application.
 ---
-
-import ProjectVideos from '@site/src/components/ProjectVideos';
-import youtubePlaylists from '@site/static/data/youtube-playlists.json';
-
-export const projectVideos = youtubePlaylists.projects?.['content-delivery']?.videos || [];
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -96,17 +91,12 @@ The MBMS Client's README covers installation and build only. It does not documen
 
 Between the two, this project covers both delivery models it implements: FLUTE (rt-libflute) for file-based delivery of your packaged DASH/CMAF assets, and ROUTE (the MBMS Client) for real-time segment delivery with a GPAC-based ROUTE client. See the [Implementation Detail](./implementation) page for how these fit into the 5G Broadcast and 5G MBS architectures.
 
-<div class="onair-kicker"><span class="onair-kicker__dot"></span>Watch</div>
+## More tutorials
 
-## Developer Exchange
+Two tutorials cover the media origin and the application that plays from it, each complete on its own:
 
-Our [YouTube channel](https://www.youtube.com/@5GMAG) hosts some practical videos provided by developers on the use of the Reference Tools.
-
-Some of the videos are also available here.
-
-The recorded talk below demonstrates FLUTE (File Delivery over Unidirectional Transport) support in the GPAC multimedia framework.
-
-<ProjectVideos videos={projectVideos} name="Content Delivery Protocols and Tools" />
+- [Tutorial: Media Origin - create and serve content](./tutorial-media-origin): run rt-media-origin in Docker and create DASH, HLS and CMAF streams, live and on demand, radio, real-time feeds, content for FLUTE, XR scenes and V3C volumetric video.
+- [Tutorial: Reference Media Application - play, configure and test](./tutorial-media-application): build the Android application, point it at an origin, watch channels with their titles and posters, and run the delivery tests and read the report.
 
 ## Related
 
