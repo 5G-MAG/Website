@@ -87,7 +87,7 @@ The scenarios of clauses D.1.2.9 and D.1.2.10 were measured across the ten netwo
 
 How the TR words directionality for agents differs between clauses. Clause C.4.6 says the evaluated agentic scenarios have higher UL than DL, and finding 1 in clause 7.1 calls them uplink heavy, with a NOTE that this is observed because of retransmitted context and that whether such retransmission occurs in agentic applications is for further study. Clause C.3.3.4 reports a wire UL/DL ratio of 0.50 and describes it as close to symmetric.
 
-In the 6G-Testbed repository, the README of the `refactor` branch (open pull request 10 at 20 October 2026) lists the scenarios `openclaw_personal_assistant` and `a2a_single_task_local`; the default `main` branch does not yet list them.
+In the 6G-Testbed repository, these tests are the scenarios `openclaw_personal_assistant`, `a2a_single_task_local`, `a2a_streaming_local` and `a2a_multi_agent_local`, with remote A2A variants; the commands are on [Run the testbed](./tutorials/introduction-6g-testbed#5-agentic-tests).
 
 </details>
 
@@ -274,7 +274,7 @@ With four options per question, random selection gives an expected A_vuc of 0.25
 <summary>Sources for this page</summary>
 
 - **How the results are reported:** TR 26.870 V0.6.1, clause C.3.2 and table C.3-1; clause 7.1; the workbook "Collated_AI_Traffic_Results_note_0_6_1.xlsx" in the 26870-061 archive.
-- **Agentic scenarios:** TR 26.870 V0.6.1, clauses C.3.3.1 to C.3.3.5, table C.3.3-1 and the NOTE in C.3.3.4; clauses C.4.6 and 7.1 (finding 1 and its NOTE). The repository branch statement is from the 6G-Testbed README files and pull request list, read on 20 October 2026.
+- **Agentic scenarios:** TR 26.870 V0.6.1, clauses C.3.3.1 to C.3.3.5, table C.3.3-1 and the NOTE in C.3.3.4; clauses C.4.6 and 7.1 (finding 1 and its NOTE). The scenario names are from the README files of the 6G-Testbed repository.
 - **1. Uplink heavy:** TR 26.870 V0.6.1, clauses C.4.3 to C.4.6, tables C.4.6-1 and C.4.6-2 and the NOTE.
 - **2. Data bursts and delay sensitivity:** TR 26.870 V0.6.1, clauses C.5.3 to C.5.6, tables C.5.6-1 and C.5.6-2, NOTE 1 to NOTE 3.
 - **3. Round-trip delay:** TR 26.870 V0.6.1, clauses C.6.3 to C.6.6, table C.6.6-1 and NOTE 1 to NOTE 3; clause 7.1, finding 3 and its NOTE.

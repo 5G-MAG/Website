@@ -80,6 +80,8 @@ The testbed builds on the common test platform of TR 26.934 (clause 5), which pr
 | `capture/` | L3/L4 packet capture (PCAP) and L7 capture through mitmproxy |
 | `analysis/` | Logs to SQLite, computes 3GPP-aligned metrics and generates plots |
 
+In the current repository, the network layer sits in `netemu`: L3/L4 capture is `netemu.capture` and the packet, flow and window metrics are computed by `netemu.pcap`. What stays in `aitestbed/` is the L7 capture through mitmproxy (`capture/l7_capture.py`), the application-layer metrics (`analysis/metrics.py`), the RAN2 methodology metrics that join pcap metrics to session records (`analysis/ran2_metrics.py`) and the reports.
+
 Trace logging gives visibility into protocol and payload behaviour, for example WebRTC SDP samples and the exact request and response payloads of an agent; it is enabled with `TRACE_PAYLOADS=1`.
 
 An Editor's Note in annex B.1 says that whether and how TTFT, TTLT and tool-call latency can be used for AI traffic evaluation is for further study.
@@ -351,11 +353,11 @@ The recommended profile set for AI traffic evaluation studies with this testbed 
 
 The TR notes that this is an initial set based on information available in SA4, and that the 3GPP averaging window and resource type are not taken into account. For satellite_leo, the same table cell also gives 100 ms delay, 20 ms jitter, 0.3 % loss and 4 Mbit/s before defining the separate downlink and uplink parameters shown here. Cross-profile statistics in the TR over the deployment profiles do not include the lossy profile.
 
-**Where the repository adds detail or differs from the TR** (sources: the README files of the 6G-Testbed repository, `main` and `development` branches, read on 20 October 2026):
+**Where the repository adds detail or differs from the TR** (source: the README files of the 6G-Testbed repository):
 
 - The repository names the baseline `no_emulation`, as do the result tables of annex D.5; table D.3.1-1 calls it `ideal`.
 - The repository README gives values the TR table leaves open: a jitter of 0.2 ms for 6g_itu_hrllc and 1 ms for 5qi_80, Gilbert-Elliott loss for cell_edge and congested, and pareto or paretonormal delay for congested and cell_edge. It says the profiles are aligned with the SA4 contribution S4-260848.
-- The `lossy` profile appears in the README of the `development` branch with a fixed 10 % loss; the TR defines it as configurable from 1 % to 30 % (clause D.3.1, used at 1, 3, 5, 10, 20 and 30 % in annex D.5.1).
+- The repository defines the `lossy` profile with a fixed 10 % loss and no added delay, and runs it with the token and real-time video tests; the TR defines it as configurable from 1 % to 30 % (clause D.3.1, used at 1, 3, 5, 10, 20 and 30 % in annex D.5.1).
 
 ## Network emulator
 
@@ -371,7 +373,7 @@ Netemu is a Python wrapper around the Linux tc toolchain. It is a standalone pac
 - **Analysis:** a capture is parsed into per-packet records, per-flow records and per-capture aggregates.
 - **Aggregation:** one or many parsed captures are summarised into distributions.
 
-It is installed from the testbed checkout with `pip install -e netemu` and is imported by the orchestrator at scenario start. Parsing and aggregation need an extra packet-parsing library, declared as an optional dependency (the TR prints `pip install -e "netemu[53]"`, where 53 looks like a reference-list artefact; check the repository for the name of the extra). The modules are `netemu.emulator` (`NetworkEmulator`, `apply_profile()`, `clear_profile()`), `netemu.profile` (`NetworkProfile`), `netemu.capture` (`CaptureController`, `capture_to()`), `netemu.pcap` (`PcapAnalyzer`, `analyze_pcap()`, `analyze_multiple_pcaps()`) and `netemu.metrics` (`compute_packet_metrics()`, `collect_connection_samples()`). Only `netemu.pcap` needs the parsing library.
+It is installed from the testbed checkout with `pip install -e netemu` and is imported by the orchestrator at scenario start. Parsing and aggregation need an extra packet-parsing library, declared as an optional dependency (the TR prints `pip install -e "netemu[53]"`, where 53 looks like a reference-list artefact; the repository names the extra `pcap`: `pip install -e "netemu[pcap]"`). The modules are `netemu.emulator` (`NetworkEmulator`, `apply_profile()`, `clear_profile()`), `netemu.profile` (`NetworkProfile`), `netemu.capture` (`CaptureController`, `capture_to()`), `netemu.pcap` (`PcapAnalyzer`, `analyze_pcap()`, `analyze_multiple_pcaps()`) and `netemu.metrics` (`compute_packet_metrics()`, `collect_connection_samples()`). Only `netemu.pcap` needs the parsing library.
 
 A profile (class `NetworkProfile`, annex E.2) sets one-way delay and jitter, the delay distribution (normal, pareto, paretonormal or fixed) and its correlation, loss and its correlation or a Gilbert-Elliott loss model, an HTB rate ceiling and burst sizes, corruption, reordering and duplication rates, and the transmit queue length. An example of use is on [Run the testbed](./tutorials/introduction-6g-testbed).
 
@@ -410,7 +412,7 @@ The Connection and Reliability families are populated for TCP flows only. Connec
 <details>
 <summary>Sources for this page</summary>
 
-- **Annex map:** TR 26.870 V0.6.1, annexes B to E and clauses 6.3.3.1 and 6.3.3.2; the directories of the 6G-Testbed repository, main branch.
+- **Annex map:** TR 26.870 V0.6.1, annexes B to E and clauses 6.3.3.1 and 6.3.3.2; the directories of the 6G-Testbed repository.
 - **Architecture and use:** TR 26.870 V0.6.1, annex B.1 to B.3. The figure is the architecture diagram of the 6G-Testbed repository, redrawn.
 - **Method and execution modes:** TR 26.870 V0.6.1, clause C.2 and its NOTE. The bracketed aspects are those of clause C.2, items 1 to 5.
 - **Scenarios:** TR 26.870 V0.6.1, table D.1.1 and clauses D.1.2.1 to D.1.2.12, including the Editor's Notes in D.1.2.11 and D.1.2.12.
