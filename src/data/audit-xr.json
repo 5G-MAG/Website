@@ -1,14 +1,14 @@
 {
  "area": "xr",
- "title": "XR/3D Scenes with MPEG-I Scene Description",
- "audited": "2026-10-19",
+ "title": "XR Media & 3D Scenes",
+ "audited": "2026-10-11",
  "tier": "T0",
  "method": "code read against every statement of the specifications on the project page; statements a component cannot meet by construction marked absent by group",
  "releases": {
-  "all": "XR/3D Scenes with MPEG-I Scene Description"
+  "all": "XR Media & 3D Scenes"
  },
  "held": {
-  "cases": 2,
+  "cases": 9,
   "reasons": [
    "it could not be settled by reading the code"
   ]
@@ -16,8 +16,8 @@
  "releaseStatus": {
   "baseline": "19",
   "issues": {
-   "18": "TS 26.501 V18.9.0, TS 26.512 V18.7.0, TS 26.506 V18.6.0, TS 26.249 V18.0.0, TS 26.119 V18.1.0, TS 26.143 V18.2.1, TS 26.565 V18.3.0, TS 26.250 V18.2.0, TS 26.252 V18.4.1, TS 26.253 V18.9.0, TS 26.254 V18.2.0, TS 26.255 V18.2.0, TS 26.256 V18.1.0, TS 26.258 V18.5.0, TS 26.259 V18.0.0, TS 26.260 V18.1.0, TS 26.261 V18.0.0, ISO/IEC 23090-14 ISO/IEC 23090-14:2025, second edition",
-   "19": "TS 26.501 V19.4.0, TS 26.512 V19.3.0, TS 26.506 V19.2.0, TS 26.249 V19.0.0, TS 26.119 V19.1.0, TS 26.143 V19.1.0, TS 26.565 V19.0.0, TS 26.250 V19.1.0, TS 26.251 V19.1.0, TS 26.252 V19.2.0, TS 26.253 V19.3.0, TS 26.254 V19.1.0, TS 26.255 V19.0.0, TS 26.256 V19.1.0, TS 26.258 V19.3.0, TS 26.259 V19.0.0, TS 26.260 V19.1.0, TS 26.261 V19.1.0, ISO/IEC 23090-14 ISO/IEC 23090-14:2025, second edition"
+   "18": "ISO/IEC 23090-14:2024(E) second edition, TS 26.119 V18.1.0, TS 26.143 V18.2.1, TS 26.565 V18.3.0",
+   "19": "ISO/IEC 23090-14:2024(E) second edition, TS 26.119 V19.1.0, TS 26.143 V19.1.0, TS 26.565 V19.0.0"
   },
   "profiles": [
    "all"
@@ -25,16 +25,16 @@
   "matrix": {
    "all": {
     "18": {
-     "implemented": 108,
-     "differs": 65,
-     "absent": 213,
-     "inconsistent": 1
+     "implemented": 113,
+     "differs": 62,
+     "absent": 195,
+     "inconsistent": 0
     },
     "19": {
-     "implemented": 108,
-     "differs": 65,
-     "absent": 213,
-     "inconsistent": 1
+     "implemented": 113,
+     "differs": 62,
+     "absent": 195,
+     "inconsistent": 0
     }
    }
   }
@@ -43,7 +43,7 @@
   "pe": {
    "short": "Presentation Engine",
    "name": "Presentation Engine (rt-xr-unity-player with its glTFast loader)",
-   "builtAgainst": "",
+   "builtAgainst": "ISO/IEC 23090-14 (second edition), TS 26.119 V19.1.0, TS 26.143 V19.1.0, TS 26.565 V19.0.0",
    "repos": [
     {
      "repo": "rt-xr-unity-player",
@@ -58,7 +58,7 @@
   "maf": {
    "short": "Media Access Function",
    "name": "Media Access Function (rt-xr-maf-native)",
-   "builtAgainst": "",
+   "builtAgainst": "ISO/IEC 23090-14 (second edition), TS 26.119 V19.1.0, TS 26.143 V19.1.0, TS 26.565 V19.0.0",
    "repos": [
     {
      "repo": "rt-xr-maf-native",
@@ -69,7 +69,7 @@
   "assets": {
    "short": "Scene files",
    "name": "Scene files and exporter (rt-xr-content, rt-xr-blender-exporter)",
-   "builtAgainst": "",
+   "builtAgainst": "ISO/IEC 23090-14 (second edition), TS 26.119 V19.1.0, TS 26.143 V19.1.0, TS 26.565 V19.0.0",
    "repos": [
     {
      "repo": "rt-xr-content",
@@ -94,7 +94,7 @@
      "component": "pe",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 5.2.1.3"
      },
      "repos": [
@@ -144,7 +144,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 5.2.1.1"
      },
      "repos": [
@@ -172,7 +172,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 5.2.1.2"
      },
      "repos": [
@@ -183,19 +183,8 @@
       {
        "case": "startTimeOffset is a number in seconds",
        "verdict": "implemented",
-       "what": "reading only; nothing was run. The only scene that sets startTimeOffset gives a number (0, the start of the source); the exporter never writes it, and the media access side performs the generation.",
+       "what": "reading only; nothing was run. The only scene that sets startTimeOffset gives a number; the exporter never writes it, and the media access side performs the generation.",
        "repo": "rt-xr-content",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 5.2.1.2"
-      },
-      {
-       "case": "endTimeOffset in MPEG_media",
-       "verdict": "differs",
-       "what": "The exporter model can serialise endTimeOffset but the exporter never sets it (media are built with autoplay and loop only); the only scene that declares it gives endTimeOffset 0 with startTimeOffset 0 and loop true, which by the sentence ends generation at the start of the source instead of the end of the medium.",
-       "repo": "rt-xr-blender-exporter",
        "releases": [
         "18",
         "19"
@@ -322,7 +311,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause C"
      },
      "repos": [
@@ -330,9 +319,9 @@
      ],
      "cases": [
       {
-       "case": "RTP/SRTP URL scheme in MPEG_media",
+       "case": "rtp/srtp/rtmedia URL scheme",
        "verdict": "absent",
-       "what": "No scene references an RTP/SRTP stream; all MPEG_media alternatives use relative file names (e.g. bbb.avc.mp4) and the exporter writes only the file name, so the scheme is not used.",
+       "what": "No scene uses an rtp, srtp or rtmedia URL; exporter does not write them.",
        "repo": "rt-xr-blender-exporter",
        "releases": [
         "18",
@@ -352,9 +341,9 @@
        "locator": "clause C"
       },
       {
-       "case": "Example SDP for an srtp URL",
+       "case": "example SDP description",
        "verdict": "absent",
-       "what": "No scene references an RTP/SRTP stream and no SDP is provided, so the condition is not met.",
+       "what": "No scene or exporter output carries an SDP description.",
        "repo": "rt-xr-blender-exporter",
        "releases": [
         "18",
@@ -378,7 +367,7 @@
      "component": "pe",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 5.2.2.2"
      },
      "repos": [
@@ -406,7 +395,7 @@
      "component": "pe",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 5.2.2.3"
      },
      "repos": [
@@ -416,7 +405,7 @@
       {
        "case": "Timed access described by MPEG_accessor_timed",
        "verdict": "differs",
-       "what": "The player requires the extension on media-backed accessors only to warn when missing (then null-dereferences in GetSuggestedUpdateRate), reads suggestedUpdateRate into MediaBufferHandler where updateRate is assigned and never used, and registers the header bufferView that nothing consumes; the extension does not drive timed access.",
+       "what": "The player requires the extension on media-backed accessors only to warn when it is missing, reads the suggested update rate into the media buffer handler where it is assigned and never used, and registers the header buffer view that nothing consumes; the extension does not drive timed access.",
        "repo": "rt-xr-unity-player",
        "releases": [
         "18",
@@ -437,8 +426,8 @@
       },
       {
        "case": "Header configuration from MPEG_accessor_timed passed to the MAF",
-       "verdict": "absent",
-       "what": "No header configuration from MPEG_accessor_timed reaches the MAF: BufferInfo passed to the pipeline has only bufferId, handler, componentType, type, offset, stride and attributeType; the player itself assumes immutable headers (CreateAccessorsHeaders(..., true)) and the video path only warns on immutable false or a header bufferView.",
+       "verdict": "differs",
+       "what": "Rests on reading only; nothing was run. The MAF buffer description carries no immutable flag or header presence; the player and the MAF both assume immutable headers, and the extension's immutable value is only checked for video textures, with a warning.",
        "repo": "rt-xr-unity-player",
        "releases": [
         "18",
@@ -449,7 +438,7 @@
       {
        "case": "Header presence taken from the bufferView attribute",
        "verdict": "differs",
-       "what": "bufferView >= 0 only copies the view into the config map; header handling is not switched by it: MafAudioReader hard-codes useAccessorHeaders = true and the video texture path just warns when bufferView is present.",
+       "what": "A bufferView value of 0 or more only copies the view into the configuration; header handling is not switched by it: the audio reader always uses accessor headers and the video texture path only warns when a bufferView is present.",
        "repo": "rt-xr-unity-player",
        "releases": [
         "18",
@@ -478,7 +467,7 @@
      "component": "maf",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 5.2.2.3"
      },
      "repos": [
@@ -488,7 +477,7 @@
       {
        "case": "Audio delivered in the requested format",
        "verdict": "differs",
-       "what": "Output format and channel count come from BufferInfo, but ENABLE_AUDIO_RESAMPLING is 0 so any mismatch of format, channel count or planarity throws 'buffer format doesn't match libav's decoder output format' instead of converting; only an exact match is delivered.",
+       "what": "Output format and channel count follow the buffer description, but audio resampling is switched off, so audio whose format, channel count or planarity differs from what the pipeline expects is not converted and is not played; only an exact match is delivered.",
        "repo": "rt-xr-maf-native",
        "releases": [
         "18",
@@ -539,7 +528,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 5.2.2.1"
      },
      "repos": [
@@ -633,7 +622,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 5.2.2.2"
      },
      "repos": [
@@ -711,23 +700,13 @@
      "component": "pe",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 5.2.3.3"
      },
      "repos": [
       "rt-xr-unity-player"
      ],
      "cases": [
-      {
-       "case": "Frames of the buffer may differ in length",
-       "verdict": "implemented",
-       "what": "The player reads each frame with its own length (not the allocated size), and the buffer handler records the length of every frame written, so frames of different lengths are served.",
-       "repo": "rt-xr-unity-player",
-       "releases": [
-        "18",
-        "19"
-       ]
-      },
       {
        "case": "access by frame index or timestamp",
        "verdict": "implemented",
@@ -740,9 +719,7 @@
        "locator": "clause 5.2.3.3"
       }
      ],
-     "noted": [
-      "The circular buffer itself is in the native MAF (BufferHandler::writeFrame stores frame->length per slot, ); slots are allocated at the buffer byteLength as maximum frame size (MediaPlayer.cs:298)."
-     ]
+     "noted": []
     },
     {
      "id": "assets-23090-14-5.2.3.1",
@@ -751,7 +728,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 5.2.3.1"
      },
      "repos": [
@@ -823,7 +800,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 5.2.3.2"
      },
      "repos": [
@@ -847,411 +824,6 @@
    ]
   },
   {
-   "name": "MPEG_primitive_V3C",
-   "summary": "",
-   "requirements": [
-    {
-     "id": "pe-23090-14-G.1.3",
-     "name": "MPEG_primitive_V3C extension / Configuration Data Buffer Format",
-     "release": "all",
-     "component": "pe",
-     "spec": {
-      "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
-      "locator": "clause G.1.3"
-     },
-     "repos": [
-      "rt-xr-unity-player"
-     ],
-     "cases": [
-      {
-       "case": "Configuration data buffer format (Table G.5)",
-       "verdict": "absent",
-       "what": "The component has no code for MPEG_primitive_V3C and does not parse or produce the V3C configuration buffer.",
-       "repo": "rt-xr-unity-player",
-       "releases": [
-        "18",
-        "19"
-       ]
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "pe-23090-14-G.1.4",
-     "name": "MPEG_primitive_V3C extension / Atlas Data Buffer Format",
-     "release": "all",
-     "component": "pe",
-     "spec": {
-      "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
-      "locator": "clause G.1.4"
-     },
-     "repos": [
-      "rt-xr-unity-player"
-     ],
-     "cases": [
-      {
-       "case": "Atlas data buffer formats (Tables G.6 to G.8)",
-       "verdict": "absent",
-       "what": "The component has no code for V3C atlas data and does not parse or produce the baseline, extended or miv atlas buffers.",
-       "repo": "rt-xr-unity-player",
-       "releases": [
-        "18",
-        "19"
-       ]
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "pe-23090-14-G.1.5.1",
-     "name": "Common atlas data / Overview",
-     "release": "all",
-     "component": "pe",
-     "spec": {
-      "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
-      "locator": "clause G.1.5.1"
-     },
-     "repos": [
-      "rt-xr-unity-player"
-     ],
-     "cases": [
-      {
-       "case": "Common atlas data (_MPEG_V3C_CAD)",
-       "verdict": "absent",
-       "what": "The component has no code for common atlas data; the _MPEG_V3C_CAD object is not handled.",
-       "repo": "rt-xr-unity-player",
-       "releases": [
-        "18",
-        "19"
-       ]
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "pe-23090-14-G.1.5.2",
-     "name": "Common atlas data / MIV extension to CAD",
-     "release": "all",
-     "component": "pe",
-     "spec": {
-      "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
-      "locator": "clause G.1.5.2"
-     },
-     "repos": [
-      "rt-xr-unity-player"
-     ],
-     "cases": [
-      {
-       "case": "Extension of _MPEG_V3C_CAD (may)",
-       "verdict": "absent",
-       "what": "The component has no code for _MPEG_V3C_CAD, so no extended properties are described or read.",
-       "repo": "rt-xr-unity-player",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause G.1.5.2"
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "pe-23090-14-G.1.6.1",
-     "name": "Processing Model / General",
-     "release": "all",
-     "component": "pe",
-     "spec": {
-      "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
-      "locator": "clause G.1.6.1"
-     },
-     "repos": [
-      "rt-xr-unity-player"
-     ],
-     "cases": [
-      {
-       "case": "ignore V3C transformation parameters",
-       "verdict": "absent",
-       "what": "The player does not decode V3C bitstreams, so the condition is not met.",
-       "repo": "rt-xr-unity-player",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause G.1.6.1"
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "maf-23090-14-G.1.3",
-     "name": "MPEG_primitive_V3C extension / Configuration Data Buffer Format",
-     "release": "all",
-     "component": "maf",
-     "spec": {
-      "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
-      "locator": "clause G.1.3"
-     },
-     "repos": [
-      "rt-xr-maf-native"
-     ],
-     "cases": [
-      {
-       "case": "Configuration data buffer format (Table G.5)",
-       "verdict": "absent",
-       "what": "The component has no code for MPEG_primitive_V3C and does not parse or produce the V3C configuration buffer.",
-       "repo": "rt-xr-maf-native",
-       "releases": [
-        "18",
-        "19"
-       ]
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "maf-23090-14-G.1.4",
-     "name": "MPEG_primitive_V3C extension / Atlas Data Buffer Format",
-     "release": "all",
-     "component": "maf",
-     "spec": {
-      "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
-      "locator": "clause G.1.4"
-     },
-     "repos": [
-      "rt-xr-maf-native"
-     ],
-     "cases": [
-      {
-       "case": "Atlas data buffer formats (Tables G.6 to G.8)",
-       "verdict": "absent",
-       "what": "The component has no code for V3C atlas data and does not parse or produce the baseline, extended or miv atlas buffers.",
-       "repo": "rt-xr-maf-native",
-       "releases": [
-        "18",
-        "19"
-       ]
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "maf-23090-14-G.1.5.1",
-     "name": "Common atlas data / Overview",
-     "release": "all",
-     "component": "maf",
-     "spec": {
-      "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
-      "locator": "clause G.1.5.1"
-     },
-     "repos": [
-      "rt-xr-maf-native"
-     ],
-     "cases": [
-      {
-       "case": "Common atlas data (_MPEG_V3C_CAD)",
-       "verdict": "absent",
-       "what": "The component has no code for common atlas data; the _MPEG_V3C_CAD object is not handled.",
-       "repo": "rt-xr-maf-native",
-       "releases": [
-        "18",
-        "19"
-       ]
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "maf-23090-14-G.1.5.2",
-     "name": "Common atlas data / MIV extension to CAD",
-     "release": "all",
-     "component": "maf",
-     "spec": {
-      "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
-      "locator": "clause G.1.5.2"
-     },
-     "repos": [
-      "rt-xr-maf-native"
-     ],
-     "cases": [
-      {
-       "case": "Extension of _MPEG_V3C_CAD (may)",
-       "verdict": "absent",
-       "what": "The component has no code for _MPEG_V3C_CAD, so no extended properties are described or read.",
-       "repo": "rt-xr-maf-native",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause G.1.5.2"
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "assets-23090-14-G.1.1",
-     "name": "MPEG_primitive_V3C extension / General",
-     "release": "all",
-     "component": "assets",
-     "spec": {
-      "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
-      "locator": "clause G.1.1"
-     },
-     "repos": [
-      "rt-xr-blender-exporter"
-     ],
-     "cases": [
-      {
-       "case": "PE may reconstruct V3C",
-       "verdict": "absent",
-       "what": "A scene file statement on this: the scene files and exporter contain no V3C primitive.",
-       "repo": "rt-xr-blender-exporter",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause G.1.1"
-      },
-      {
-       "case": "extensionsUsed lists the V3C extension",
-       "verdict": "absent",
-       "what": "No reference scene and no exporter code uses the MPEG_primitive_V3C extension (reading only)",
-       "repo": "rt-xr-blender-exporter",
-       "releases": [
-        "18",
-        "19"
-       ]
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "assets-23090-14-G.1.2",
-     "name": "MPEG_primitive_V3C extension / Semantics",
-     "release": "all",
-     "component": "assets",
-     "spec": {
-      "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
-      "locator": "clause G.1.2"
-     },
-     "repos": [
-      "rt-xr-blender-exporter"
-     ],
-     "cases": [
-      {
-       "case": "_MPEG_V3C_AD reference",
-       "verdict": "absent",
-       "what": "No scene file or exporter output has a _MPEG_V3C_AD component.",
-       "repo": "rt-xr-blender-exporter",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause G.1.2"
-      },
-      {
-       "case": "exactly one atlas component",
-       "verdict": "absent",
-       "what": "No scene file or exporter output has a V3C primitive, so no atlas component.",
-       "repo": "rt-xr-blender-exporter",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause G.1.2"
-      },
-      {
-       "case": "_MPEG_V3C_GVD_MAPS",
-       "verdict": "absent",
-       "what": "No scene file or exporter output has a _MPEG_V3C_GVD_MAPS component.",
-       "repo": "rt-xr-blender-exporter",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause G.1.2"
-      },
-      {
-       "case": "_MPEG_V3C_OVD_MAP",
-       "verdict": "absent",
-       "what": "No scene file or exporter output has a _MPEG_V3C_OVD_MAP component.",
-       "repo": "rt-xr-blender-exporter",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause G.1.2"
-      },
-      {
-       "case": "_MPEG_V3C_AVD",
-       "verdict": "absent",
-       "what": "No scene file or exporter output has a _MPEG_V3C_AVD component.",
-       "repo": "rt-xr-blender-exporter",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause G.1.2"
-      },
-      {
-       "case": "_MPEG_V3C_AD structure",
-       "verdict": "absent",
-       "what": "No _MPEG_V3C_AD object is written or present.",
-       "repo": "rt-xr-blender-exporter",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause G.1.2"
-      },
-      {
-       "case": "_MPEG_V3C_AVD structure",
-       "verdict": "absent",
-       "what": "No _MPEG_V3C_AVD object is written or present.",
-       "repo": "rt-xr-blender-exporter",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause G.1.2"
-      },
-      {
-       "case": "AVD maps array",
-       "verdict": "absent",
-       "what": "No _MPEG_V3C_AVD object with a maps array is written or present.",
-       "repo": "rt-xr-blender-exporter",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause G.1.2"
-      },
-      {
-       "case": "One atlas data buffer per primitive",
-       "verdict": "absent",
-       "what": "No reference scene and no exporter code uses the MPEG_primitive_V3C extension (reading only)",
-       "repo": "rt-xr-blender-exporter",
-       "releases": [
-        "18",
-        "19"
-       ]
-      }
-     ],
-     "noted": []
-    }
-   ]
-  },
-  {
    "name": "MPEG_texture_video",
    "summary": "",
    "requirements": [
@@ -1262,7 +834,7 @@
      "component": "pe",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 5.3.1.3"
      },
      "repos": [
@@ -1272,7 +844,7 @@
       {
        "case": "one frame read per rendering cycle",
        "verdict": "implemented",
-       "what": "reading only; nothing was run. MediaPlayer.Update runs every rendered frame and, for each buffer feeding a video texture, tries to read the frame due at the current time and uploads it.",
+       "what": "Reading only; nothing was run. The player's update runs every rendered frame and, for each buffer feeding a video texture, tries to read the frame due at the current time and uploads it.",
        "repo": "rt-xr-unity-player",
        "releases": [
         "18",
@@ -1294,7 +866,7 @@
       {
        "case": "buffer data has the declared format",
        "verdict": "differs",
-       "what": "reading only; nothing was run. The player passes the format attribute to the video texture but ignores it, interpreting every buffer as RGB24 (the code carries a FIXME about format and YUV conversion); the planar-YUV class exists but is never created.",
+       "what": "Reading only; nothing was run. The player passes the format attribute to the video texture but ignores it, interpreting every buffer as RGB24 (the code notes that format and YUV conversion are still to be done); the planar-YUV class exists but is never created.",
        "repo": "rt-xr-unity-player",
        "releases": [
         "18",
@@ -1317,13 +889,51 @@
      "noted": []
     },
     {
+     "id": "pe-23090-14-G.1",
+     "name": "MPEG_primitive_V3C extension",
+     "release": "all",
+     "component": "pe",
+     "spec": {
+      "doc": "ISO/IEC 23090-14",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
+      "locator": "clause G.1"
+     },
+     "repos": [
+      "rt-xr-unity-player"
+     ],
+     "cases": [
+      {
+       "case": "fallback to raw reconstructed data without V3C support",
+       "verdict": "implemented",
+       "what": "No V3C code exists, so the extension is ignored; each primitive attribute accessor in a media-backed buffer is mapped to a MAF attribute type and requested from the pipeline as a raw buffer, although the received data is not applied to a mesh.",
+       "repo": "rt-xr-unity-player",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause G.1"
+      },
+      {
+       "case": "3D reconstruction of decoded V3C components",
+       "verdict": "absent",
+       "what": "The optional V3C reconstruction is not implemented.",
+       "repo": "rt-xr-unity-player",
+       "releases": [
+        "18",
+        "19"
+       ]
+      }
+     ],
+     "noted": []
+    },
+    {
      "id": "assets-23090-14-5.3.1.1",
      "name": "MPEG_texture_video extensions / General",
      "release": "all",
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 5.3.1.1"
      },
      "repos": [
@@ -1351,7 +961,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 5.3.1.2"
      },
      "repos": [
@@ -1370,9 +980,9 @@
        "locator": "clause 5.3.1.2"
       },
       {
-       "case": "YCbCr formats",
-       "verdict": "absent",
-       "what": "No scene file or exporter output uses a YCbCr format; every video texture is written with format RGB.",
+       "case": "format values (OpenGL table plus YCbCr)",
+       "verdict": "implemented",
+       "what": "The exporter always writes format RGB, which is an OpenGL format value; YCbCr formats are never written. Rests on reading only.",
        "repo": "rt-xr-blender-exporter",
        "releases": [
         "18",
@@ -1403,15 +1013,178 @@
        "locator": "clause 5.3.1.2"
       },
       {
-       "case": "normalized attribute on the accessor",
+       "case": "normalization indicated by accessor normalized attribute",
        "verdict": "implemented",
-       "what": "The exporter writes the video texture accessor with an explicit normalized attribute (false, for unsigned-byte VEC3 RGB), and the reference scenes carry it.",
+       "what": "The exporter writes the normalized attribute explicitly (false) on the texture accessor and the reference scene carries it; whether false is the intended meaning for 8-bit colour is not decided here. Rests on reading only.",
        "repo": "rt-xr-blender-exporter",
        "releases": [
         "18",
         "19"
        ],
        "locator": "clause 5.3.1.2"
+      }
+     ],
+     "noted": [
+      "README states the format is assumed sRGB and YUV is not investigated."
+     ]
+    },
+    {
+     "id": "assets-23090-14-G.1",
+     "name": "MPEG_primitive_V3C extension",
+     "release": "all",
+     "component": "assets",
+     "spec": {
+      "doc": "ISO/IEC 23090-14",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
+      "locator": "clause G.1"
+     },
+     "repos": [
+      "rt-xr-blender-exporter"
+     ],
+     "cases": [
+      {
+       "case": "Exactly one atlas component; GVD maps and OVD map",
+       "verdict": "absent",
+       "what": "No reference scene and no exporter code uses the MPEG_primitive_V3C extension (reading only)",
+       "repo": "rt-xr-blender-exporter",
+       "releases": [
+        "18",
+        "19"
+       ]
+      },
+      {
+       "case": "_MPEG_V3C_AD structure",
+       "verdict": "absent",
+       "what": "No reference scene and no exporter code uses the MPEG_primitive_V3C extension (reading only)",
+       "repo": "rt-xr-blender-exporter",
+       "releases": [
+        "18",
+        "19"
+       ]
+      },
+      {
+       "case": "extensionsUsed lists the V3C extension",
+       "verdict": "absent",
+       "what": "No reference scene and no exporter code uses the MPEG_primitive_V3C extension (reading only)",
+       "repo": "rt-xr-blender-exporter",
+       "releases": [
+        "18",
+        "19"
+       ]
+      },
+      {
+       "case": "One atlas data buffer per primitive",
+       "verdict": "absent",
+       "what": "No reference scene and no exporter code uses the MPEG_primitive_V3C extension (reading only)",
+       "repo": "rt-xr-blender-exporter",
+       "releases": [
+        "18",
+        "19"
+       ]
+      },
+      {
+       "case": "_MPEG_V3C_AD references a timed accessor",
+       "verdict": "absent",
+       "what": "No reference scene and no exporter code uses the MPEG_primitive_V3C extension (reading only)",
+       "repo": "rt-xr-blender-exporter",
+       "releases": [
+        "18",
+        "19"
+       ]
+      },
+      {
+       "case": "_MPEG_V3C_AVD structure",
+       "verdict": "absent",
+       "what": "No reference scene and no exporter code uses the MPEG_primitive_V3C extension (reading only)",
+       "repo": "rt-xr-blender-exporter",
+       "releases": [
+        "18",
+        "19"
+       ]
+      },
+      {
+       "case": "AVD type and maps properties",
+       "verdict": "absent",
+       "what": "No reference scene and no exporter code uses the MPEG_primitive_V3C extension (reading only)",
+       "repo": "rt-xr-blender-exporter",
+       "releases": [
+        "18",
+        "19"
+       ]
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "maf-23090-14-G.1",
+     "name": "MPEG_primitive_V3C extension",
+     "release": "all",
+     "component": "maf",
+     "spec": {
+      "doc": "ISO/IEC 23090-14",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
+      "locator": "clause G.1"
+     },
+     "repos": [
+      "rt-xr-maf-native"
+     ],
+     "cases": [
+      {
+       "case": "Configuration buffer data format",
+       "verdict": "absent",
+       "what": "The native library has no V3C decoding or atlas data buffer output (reading only).",
+       "repo": "rt-xr-maf-native",
+       "releases": [
+        "18",
+        "19"
+       ]
+      },
+      {
+       "case": "Atlas data timed accessor",
+       "verdict": "absent",
+       "what": "The native library has no V3C decoding or atlas data buffer output (reading only).",
+       "repo": "rt-xr-maf-native",
+       "releases": [
+        "18",
+        "19"
+       ]
+      },
+      {
+       "case": "Atlas data buffer formats",
+       "verdict": "absent",
+       "what": "The native library has no V3C decoding or atlas data buffer output (reading only).",
+       "repo": "rt-xr-maf-native",
+       "releases": [
+        "18",
+        "19"
+       ]
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "maf-23090-14-G.1.5.1",
+     "name": "Overview",
+     "release": "all",
+     "component": "maf",
+     "spec": {
+      "doc": "ISO/IEC 23090-14",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
+      "locator": "clause G.1.5.1"
+     },
+     "repos": [
+      "rt-xr-maf-native"
+     ],
+     "cases": [
+      {
+       "case": "Common atlas data",
+       "verdict": "absent",
+       "what": "The native library has no V3C decoding or atlas data buffer output (reading only).",
+       "repo": "rt-xr-maf-native",
+       "releases": [
+        "18",
+        "19"
+       ]
       }
      ],
      "noted": []
@@ -1429,7 +1202,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 5.4.1.1"
      },
      "repos": [
@@ -1439,10 +1212,9 @@
      "cases": [
       {
        "case": "Extension placed on a camera or scene object",
-       "verdict": "inconsistent",
-       "what": "The exporter writes MPEG_audio_spatial on the glTF node of each Blender speaker and the reference scenes carry it on nodes only; none places it on a camera object or a scene object.",
+       "verdict": "implemented",
+       "what": "Rests on reading only; nothing was run. The reference scenes and the exporter attach the extension to node objects (the exporter writes it on the node of a Blender speaker); no scene puts it on a camera object or at scene level, and the clause's next sentence also allows node objects.",
        "repo": "rt-xr-blender-exporter",
-       "conflict": "ISO/IEC 23090-14:2025 clause 5.4.1.1: \"When present, the MPEG_audio_spatial extension shall be included as extension of a camera object, or a scene object defined in ISO/IEC 12113.\" and, in the next paragraph: \"When MPEG_audio_spatial extension is included as an extension for a node object, either MPEG_audio_spatial.source or MPEG_audio_spatial.listener properties of the extension shall be present.\" The first sentence allows a camera object or a scene object only; the second gives rules for a node object.",
        "releases": [
         "18",
         "19"
@@ -1505,6 +1277,17 @@
        "locator": "clause 5.4.1.1"
       },
       {
+       "case": "HOA source ignores node position, 3DoF",
+       "verdict": "absent",
+       "what": "Rests on reading only; nothing was run. No scene or exporter output has an HOA source.",
+       "repo": "rt-xr-blender-exporter",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 5.4.1.1"
+      },
+      {
        "case": "Cluster audio source",
        "verdict": "absent",
        "what": "Rests on reading only; nothing was run. No scene or exporter output has a cluster audio source.",
@@ -1549,7 +1332,9 @@
        "locator": "clause 5.4.1.1"
       }
      ],
-     "noted": []
+     "noted": [
+      "Three sources in one reference scene all use id 0, though the id is meant to identify the source in the scene."
+     ]
     },
     {
      "id": "assets-23090-14-5.4.1.2",
@@ -1558,7 +1343,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 5.4.1.2"
      },
      "repos": [
@@ -1677,9 +1462,7 @@
        "locator": "clause 5.4.1.2"
       }
      ],
-     "noted": [
-      "No scene file in the content repository uses exponentialDistance; they use linearDistance, inverseDistance or the non-spec value inverse_distance."
-     ]
+     "noted": []
     }
    ]
   },
@@ -1694,7 +1477,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 5.3.2.1"
      },
      "repos": [
@@ -1722,7 +1505,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 5.3.2.2"
      },
      "repos": [
@@ -1772,7 +1555,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 7.4.1"
      },
      "repos": [
@@ -1800,7 +1583,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 7.4.2.3"
      },
      "repos": [
@@ -1828,7 +1611,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 7.5.1"
      },
      "repos": [
@@ -1862,7 +1645,7 @@
      "component": "pe",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 5.2.4.1"
      },
      "repos": [
@@ -1967,7 +1750,7 @@
      "component": "pe",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 5.2.4.2"
      },
      "repos": [
@@ -1995,12 +1778,11 @@
      "component": "pe",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 5.2.4.3"
      },
      "repos": [
-      "rt-xr-unity-player",
-      "rt-xr-gITFast"
+      "rt-xr-unity-player"
      ],
      "cases": [
       {
@@ -2070,32 +1852,10 @@
        "locator": "clause 5.2.4.3"
       },
       {
-       "case": "fetching of scene updates",
+       "case": "wallclock-triggered fetching and activation",
        "verdict": "absent",
-       "what": "The player does not fetch scene updates; no MPEG_scene_dynamic handling exists.",
+       "what": "reading only; nothing was run. The player has no update fetching or node activation driven by wallclock time or other triggers.",
        "repo": "rt-xr-unity-player",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 5.2.4.3"
-      },
-      {
-       "case": "update or activation triggered by wallclock or presentation time",
-       "verdict": "absent",
-       "what": "No node activation or update is driven by wallclock time or presentation time; activation happens only through interactivity actions.",
-       "repo": "rt-xr-gITFast",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 5.2.4.3"
-      },
-      {
-       "case": "node activation triggered by an interaction event",
-       "verdict": "implemented",
-       "what": "Interaction triggers (collision, proximity, user input, visibility) can run an activate action that enables or disables nodes.",
-       "repo": "rt-xr-gITFast",
        "releases": [
         "18",
         "19"
@@ -2112,7 +1872,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 5.2.4.1"
      },
      "repos": [
@@ -2195,7 +1955,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 5.2.4.2"
      },
      "repos": [
@@ -2229,7 +1989,7 @@
      "component": "pe",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 5.5.1.1"
      },
      "repos": [
@@ -2268,7 +2028,7 @@
      "component": "pe",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 5.5.1.2"
      },
      "repos": [
@@ -2329,7 +2089,7 @@
      "component": "pe",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 5.5.1.3"
      },
      "repos": [
@@ -2357,7 +2117,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 5.5.1.1"
      },
      "repos": [
@@ -2385,7 +2145,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 5.5.1.2"
      },
      "repos": [
@@ -2452,7 +2212,7 @@
      "component": "pe",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 5.5.2.3"
      },
      "repos": [
@@ -2480,7 +2240,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 4.3"
      },
      "repos": [
@@ -2508,7 +2268,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 5.5.2.1"
      },
      "repos": [
@@ -2536,7 +2296,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 5.5.2.2"
      },
      "repos": [
@@ -2575,7 +2335,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 7.6.1"
      },
      "repos": [
@@ -2614,7 +2374,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 7.6.3.3"
      },
      "repos": [
@@ -2649,18 +2409,319 @@
    ]
   },
   {
-   "name": "Lighting",
+   "name": "Augmented Reality anchor (MPEG_anchor)",
    "summary": "",
    "requirements": [
     {
-     "id": "pe-23090-14-8.4.3",
-     "name": "Lighting / Processing model",
+     "id": "pe-23090-14-8.1.1",
+     "name": "AR Anchoring / MPEG_anchor extension",
      "release": "all",
      "component": "pe",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
-      "locator": "clause 8.4.3"
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
+      "locator": "clause 8.1.1"
+     },
+     "repos": [
+      "rt-xr-gITFast"
+     ],
+     "cases": [
+      {
+       "case": "Scene-level anchoring",
+       "verdict": "implemented",
+       "what": "The loader reads an MPEG_anchor reference on the scene, attaches every root node of the scene to the anchor's trackable and sets the anchor up.",
+       "repo": "rt-xr-gITFast",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.1.1"
+      },
+      {
+       "case": "Node-level anchoring",
+       "verdict": "implemented",
+       "what": "The loader reads an MPEG_anchor reference on each node, attaches that node to the anchor's trackable and sets the anchor up.",
+       "repo": "rt-xr-gITFast",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.1.1"
+      },
+      {
+       "case": "MPEG_anchor extension registered",
+       "verdict": "implemented",
+       "what": "MPEG_anchor is in the list of extensions the loader supports and has parsed schema classes for the root, scene and node objects.",
+       "repo": "rt-xr-gITFast",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.1.1"
+      }
+     ],
+     "noted": [
+      "Anchor objects are only instantiated in Android builds (AddMPEGAnchor is compiled under UNITY_ANDROID); other platforms parse but do not anchor."
+     ]
+    },
+    {
+     "id": "pe-23090-14-8.1.2",
+     "name": "AR Anchoring / Semantics",
+     "release": "all",
+     "component": "pe",
+     "spec": {
+      "doc": "ISO/IEC 23090-14",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
+      "locator": "clause 8.1.2"
+     },
+     "repos": [
+      "rt-xr-gITFast"
+     ],
+     "cases": [
+      {
+       "case": "Trackables and anchors read from the root extension",
+       "verdict": "implemented",
+       "what": "The loader reads the trackables and anchors arrays from the glTF root MPEG_anchor extension and builds one trackable object and one anchor object per entry.",
+       "repo": "rt-xr-gITFast",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.1.2"
+      },
+      {
+       "case": "requiresAnchoring parsed",
+       "verdict": "implemented",
+       "what": "requiresAnchoring is a boolean on the parsed anchor, copied into the anchor instance and passed to the trackable at set-up.",
+       "repo": "rt-xr-gITFast",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.1.2"
+      },
+      {
+       "case": "TRUE: assets hidden until the anchor pose is known (application, 2D and 3D marker, geo trackables)",
+       "verdict": "differs",
+       "what": "Application and Geo hide while unanchored, but Marker3D hides every frame and never assigns an anchor so the assets never appear, and the hide path for Marker2D is not completed when no anchor is tracked.",
+       "repo": "rt-xr-gITFast",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.1.2"
+      },
+      {
+       "case": "TRUE: assets hidden until the anchor pose is known (floor, plane)",
+       "verdict": "differs",
+       "what": "For floor and plane trackables nothing deactivates the attached nodes before the first plane is found; the loader activates them at scene end, and they are only hidden again if a previously built anchor is lost.",
+       "repo": "rt-xr-gITFast",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.1.2"
+      },
+      {
+       "case": "TRUE: controller trackable",
+       "verdict": "differs",
+       "what": "The controller trackable never creates an anchor or pose, so with requiresAnchoring set its assets are never attached to a pose; the flag is stored but unused.",
+       "repo": "rt-xr-gITFast",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.1.2"
+      },
+      {
+       "case": "FALSE: assets processed",
+       "verdict": "implemented",
+       "what": "When the flag is false the trackables do not deactivate the attached nodes, which stay active and are parented to the anchor once it exists.",
+       "repo": "rt-xr-gITFast",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.1.2"
+      },
+      {
+       "case": "Required space compared to estimated real-world bounds (floor, plane)",
+       "verdict": "differs",
+       "what": "minimumRequiredSpace is compared with the detected plane's bounding box (extended by a fixed 2.5 height) axis by axis, not as a volume.",
+       "repo": "rt-xr-gITFast",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.1.2"
+      },
+      {
+       "case": "Required space comparison (other trackables)",
+       "verdict": "absent",
+       "what": "Application, controller, viewer, marker and geo trackables store the required space but never compare it with an estimated space.",
+       "repo": "rt-xr-gITFast",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.1.2"
+      },
+      {
+       "case": "aligned values parsed",
+       "verdict": "implemented",
+       "what": "The aligned property is parsed as an enumeration with NOT_USED=0, ALIGNED_NOTSCALED=1, ALIGNED_SCALED=2 and defaults to NOT_USED.",
+       "repo": "rt-xr-gITFast",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.1.2"
+      },
+      {
+       "case": "aligned behaviour applied",
+       "verdict": "absent",
+       "what": "The value is forwarded to the trackable, but every trackable ignores it (floor and plane have an empty method, others have it commented out), so no alignment or scaling is applied.",
+       "repo": "rt-xr-gITFast",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.1.2"
+      },
+      {
+       "case": "geometricConstraint values",
+       "verdict": "implemented",
+       "what": "geometricConstraint is parsed as HORIZONTAL_PLANE=0 or VERTICAL_PLANE=1 and selects horizontal or vertical plane detection.",
+       "repo": "rt-xr-gITFast",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.1.2"
+      },
+      {
+       "case": "coordinates array of three floats",
+       "verdict": "implemented",
+       "what": "The geo trackable reads three floats from coordinates and uses them to create a geospatial anchor.",
+       "repo": "rt-xr-gITFast",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.1.2"
+      },
+      {
+       "case": "order longitude, latitude, elevation",
+       "verdict": "differs",
+       "what": "The first value is passed where the geospatial anchor call takes latitude and the second where it takes longitude; the reference geo scenes also list latitude first. This rests on reading only: the ARCore Extensions signature was not opened.",
+       "repo": "rt-xr-gITFast",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.1.2"
+      },
+      {
+       "case": "longitude value and range",
+       "verdict": "differs",
+       "what": "coordinates[0] is used as the latitude argument of the anchor call and no range or sign check is made on it, so a longitude in the first position is not interpreted as longitude. Rests on reading only.",
+       "repo": "rt-xr-gITFast",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.1.2"
+      },
+      {
+       "case": "latitude value and range",
+       "verdict": "differs",
+       "what": "coordinates[1] is used as the longitude argument of the anchor call and no range check is made, so a latitude in the second position is not interpreted as latitude. Rests on reading only.",
+       "repo": "rt-xr-gITFast",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.1.2"
+      },
+      {
+       "case": "elevation unit",
+       "verdict": "implemented",
+       "what": "coordinates[2] is passed unconverted as the altitude of the geospatial anchor; the datum is whatever that call uses (not opened), so this rests on reading only.",
+       "repo": "rt-xr-gITFast",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.1.2"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "pe-23090-14-8.1.2.1.3",
+     "name": "Trackable Definitions / TRACKABLE_CONTROLLER",
+     "release": "all",
+     "component": "pe",
+     "spec": {
+      "doc": "ISO/IEC 23090-14",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
+      "locator": "clause 8.1.2.1.3"
+     },
+     "repos": [
+      "rt-xr-unity-player"
+     ],
+     "cases": [
+      {
+       "case": "controller grip pose",
+       "verdict": "absent",
+       "what": "The controller trackable only stores the path; it computes no grip position or orientation and never provides a pose, so assets are never attached.",
+       "repo": "rt-xr-unity-player",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.1.2.1.3"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "pe-23090-14-8.1.2.1.8",
+     "name": "Trackable Definitions / TRACKABLE_APPLICATION",
+     "release": "all",
+     "component": "pe",
+     "spec": {
+      "doc": "ISO/IEC 23090-14",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
+      "locator": "clause 8.1.2.1.8"
+     },
+     "repos": [
+      "rt-xr-unity-player"
+     ],
+     "cases": [
+      {
+       "case": "Application trackable has a right-handed space",
+       "verdict": "absent",
+       "what": "The application trackable resolves an ARCore cloud anchor by its id and neither checks nor converts the handedness of the pose (reading only).",
+       "repo": "rt-xr-unity-player",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.1.2.1.8"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "pe-23090-14-8.1.3",
+     "name": "AR Anchoring / Processing model",
+     "release": "all",
+     "component": "pe",
+     "spec": {
+      "doc": "ISO/IEC 23090-14",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
+      "locator": "clause 8.1.3"
      },
      "repos": [
       "rt-xr-unity-player",
@@ -2668,73 +2729,119 @@
      ],
      "cases": [
       {
-       "case": "MPEG_lights_punctual taken into account",
+       "case": "Scene-level and node-level anchor not both present",
        "verdict": "absent",
-       "what": "Rests on reading only; nothing was run. The MPEG_lights_punctual extension is not parsed, so its light references and accessors are not used.",
+       "what": "Rests on reading only; nothing was run. The loader handles scene-level and node-level anchor extensions independently and does not check or reject a file that has both.",
        "repo": "rt-xr-unity-player",
        "releases": [
         "18",
         "19"
        ],
-       "locator": "clause 8.4.3"
+       "locator": "clause 8.1.3"
       },
       {
-       "case": "MPEG_lights_texture_based taken into account",
-       "verdict": "absent",
-       "what": "Rests on reading only; nothing was run. The texture-based lights extension is not parsed or rendered.",
-       "repo": "rt-xr-unity-player",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.4.3"
-      },
-      {
-       "case": "Renderer considers nature field",
-       "verdict": "absent",
-       "what": "Rests on reading only; nothing was run. The nature field is never read, so virtual and physical lights are not distinguished.",
-       "repo": "rt-xr-unity-player",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.4.3"
-      },
-      {
-       "case": "Virtual elements relit by physical and virtual lights",
-       "verdict": "absent",
-       "what": "Rests on reading only; nothing was run. There is no relighting of virtual objects using physical lighting information; lights are only the glTF lights turned into Unity lights.",
-       "repo": "rt-xr-unity-player",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.4.3"
-      },
-      {
-       "case": "Real elements relit only by virtual lights",
-       "verdict": "absent",
-       "what": "Rests on reading only; nothing was run. No code separates real from virtual elements for lighting, and nature is not read.",
-       "repo": "rt-xr-unity-player",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.4.3"
-      },
-      {
-       "case": "Objects lit by surrounding lights",
-       "verdict": "implemented",
-       "what": "Rests on reading only; nothing was run. Scene lights become Unity Light components at their node positions and the Unity renderer illuminates objects by them according to distance and view; this applies to Khronos lights only, not to the MPEG lighting extensions.",
+       "case": "requiresAnchoring skips assets until pose known (floor, marker, viewer, application trackables)",
+       "verdict": "differs",
+       "what": "Viewer, Application and Marker3D hide while unanchored, but Floor leaves nodes active from the end of scene loading until an anchor has once been built, and the hide path for Marker2D is not completed when no anchor is tracked.",
        "repo": "rt-xr-gITFast",
        "releases": [
         "18",
         "19"
        ],
-       "locator": "clause 8.4.3"
+       "locator": "clause 8.1.3"
+      },
+      {
+       "case": "requiresAnchoring for geometric and controller trackables",
+       "verdict": "differs",
+       "what": "Rests on reading only; nothing was run. The geometric-plane and controller trackables store the flag but never read it, so assets are not held back by it; in addition the scene end activates every root node, which can show assets before anchoring.",
+       "repo": "rt-xr-gITFast",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.1.3"
+      },
+      {
+       "case": "Assets processed when anchoring not required",
+       "verdict": "implemented",
+       "what": "Rests on reading only; nothing was run. When requiresAnchoring is false (the default) the trackables never deactivate attached assets, which are placed once the anchor exists and otherwise stay active.",
+       "repo": "rt-xr-gITFast",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.1.3"
+      },
+      {
+       "case": "minimumRequiredSpace checked (geometric and floor trackables)",
+       "verdict": "differs",
+       "what": "Floor and Geometric compare the plane-boundary box (height fixed 2.5 m) per axis against minimumRequiredSpace and create no anchor when smaller, but the assets are not skipped because they were activated when the scene finished loading and nothing hides them (Geometric has no per-frame update).",
+       "repo": "rt-xr-gITFast",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.1.3"
+      },
+      {
+       "case": "minimumRequiredSpace for other trackable types",
+       "verdict": "absent",
+       "what": "Rests on reading only; nothing was run. Marker, viewer, application, geo-marker and controller trackables store the required space but never compare it with anything.",
+       "repo": "rt-xr-gITFast",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.1.3"
+      },
+      {
+       "case": "Start tracking and place assets relative to the anchor",
+       "verdict": "differs",
+       "what": "The loader initialises the trackable, attaches the nodes and the actions are invoked once tracked, but Geometric sets only the node's world position and never parents it to the anchor at build time, and Floor overrides the rotation to face the camera, so assets are not placed in the anchor's local space.",
+       "repo": "rt-xr-gITFast",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.1.3"
+      },
+      {
+       "case": "Launch the anchor's actions",
+       "verdict": "differs",
+       "what": "Rests on reading only; nothing was run. Actions listed on the anchor are invoked once, when tracking is first reported; the transform action is declared but not executed because its Delay property is not implemented, and the haptic and avatar actions are likewise not executed.",
+       "repo": "rt-xr-gITFast",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.1.3"
+      },
+      {
+       "case": "Node TRS relative to the trackable space",
+       "verdict": "differs",
+       "what": "Rests on reading only; nothing was run. The marker trackables parent the anchored node to the anchor keeping its local transform, but the plane and floor trackables overwrite the node position with the anchor position and turn the node toward the camera.",
+       "repo": "rt-xr-gITFast",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.1.3"
+      },
+      {
+       "case": "setTransform on scene root nodes of an anchored scene",
+       "verdict": "differs",
+       "what": "Rests on reading only; nothing was run. The setTransform action sets world position and rotation of its target nodes and cannot run because of the unimplemented Delay property; it has no relation to the anchor space.",
+       "repo": "rt-xr-gITFast",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.1.3"
       }
      ],
-     "noted": []
+     "noted": [
+      "The plane height compared is a fixed 2.5 m added by the player, not an estimate from the real world."
+     ]
     },
     {
      "id": "pe-26.143-5.8",
@@ -2821,497 +2928,13 @@
      "noted": []
     },
     {
-     "id": "assets-23090-14-8.4.2.1",
-     "name": "Semantics / Semantics of the MPEG_lights_texture_based extension",
-     "release": "all",
-     "component": "assets",
-     "spec": {
-      "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
-      "locator": "clause 8.4.2.1"
-     },
-     "repos": [
-      "rt-xr-blender-exporter"
-     ],
-     "cases": [
-      {
-       "case": "texture-based lights at file and scene level",
-       "verdict": "absent",
-       "what": "No reference scene or exporter code uses this feature.",
-       "repo": "rt-xr-blender-exporter",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.4.2.1"
-      },
-      {
-       "case": "AR anchor for a physical texture-based light",
-       "verdict": "absent",
-       "what": "No scene or export path uses MPEG_lights_texture_based, so the condition is not met.",
-       "repo": "rt-xr-blender-exporter",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.4.2.1"
-      },
-      {
-       "case": "projection type equirectangular or cubemap",
-       "verdict": "absent",
-       "what": "MPEG_lights_texture_based is not used or written.",
-       "repo": "rt-xr-blender-exporter",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.4.2.1"
-      },
-      {
-       "case": "Cubemap face packing order",
-       "verdict": "absent",
-       "what": "MPEG_lights_texture_based is not used, so no radiance map is packed.",
-       "repo": "rt-xr-blender-exporter",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.4.2.1"
-      },
-      {
-       "case": "specular image array length 1 or 6",
-       "verdict": "absent",
-       "what": "No reference scene or exporter code uses this feature.",
-       "repo": "rt-xr-blender-exporter",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.4.2.1"
-      },
-      {
-       "case": "six images imply cubemap projection",
-       "verdict": "absent",
-       "what": "No reference scene or exporter code uses this feature.",
-       "repo": "rt-xr-blender-exporter",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.4.2.1"
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "assets-23090-14-8.4.2.2",
-     "name": "Semantics / Semantics of the MPEG_lights_punctual extension",
-     "release": "all",
-     "component": "assets",
-     "spec": {
-      "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
-      "locator": "clause 8.4.2.2"
-     },
-     "repos": [
-      "rt-xr-blender-exporter"
-     ],
-     "cases": [
-      {
-       "case": "MPEG_lights_punctual at file level",
-       "verdict": "absent",
-       "what": "No scene or exporter uses MPEG_lights_punctual; the one scene with lights (gravity) uses KHR_lights_punctual instead.",
-       "repo": "rt-xr-blender-exporter",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.4.2.2"
-      }
-     ],
-     "noted": []
-    }
-   ]
-  },
-  {
-   "name": "Augmented Reality anchor (MPEG_anchor)",
-   "summary": "",
-   "requirements": [
-    {
-     "id": "pe-23090-14-8.1.1",
-     "name": "AR Anchoring / MPEG_anchor extension",
-     "release": "all",
-     "component": "pe",
-     "spec": {
-      "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
-      "locator": "clause 8.1.1"
-     },
-     "repos": [
-      "rt-xr-gITFast"
-     ],
-     "cases": [
-      {
-       "case": "Scene-level anchoring",
-       "verdict": "implemented",
-       "what": "The loader reads an MPEG_anchor reference on the scene, attaches every root node of the scene to the anchor's trackable and sets the anchor up.",
-       "repo": "rt-xr-gITFast",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.1.1"
-      },
-      {
-       "case": "Node-level anchoring",
-       "verdict": "implemented",
-       "what": "The loader reads an MPEG_anchor reference on each node, attaches that node to the anchor's trackable and sets the anchor up.",
-       "repo": "rt-xr-gITFast",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.1.1"
-      },
-      {
-       "case": "MPEG_anchor extension registered",
-       "verdict": "implemented",
-       "what": "MPEG_anchor is in the list of extensions the loader supports and has parsed schema classes for the root, scene and node objects.",
-       "repo": "rt-xr-gITFast",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.1.1"
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "pe-23090-14-8.1.2",
-     "name": "AR Anchoring / Semantics",
-     "release": "all",
-     "component": "pe",
-     "spec": {
-      "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
-      "locator": "clause 8.1.2"
-     },
-     "repos": [
-      "rt-xr-gITFast",
-      "rt-xr-unity-player"
-     ],
-     "cases": [
-      {
-       "case": "Trackables and anchors read from the root extension",
-       "verdict": "implemented",
-       "what": "The loader reads the trackables and anchors arrays from the glTF root MPEG_anchor extension and builds one trackable object and one anchor object per entry.",
-       "repo": "rt-xr-gITFast",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.1.2"
-      },
-      {
-       "case": "requiresAnchoring parsed",
-       "verdict": "implemented",
-       "what": "requiresAnchoring is a boolean on the parsed anchor, copied into the anchor instance and passed to the trackable at set-up.",
-       "repo": "rt-xr-gITFast",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.1.2"
-      },
-      {
-       "case": "TRUE: assets hidden until the anchor pose is known (application, 2D and 3D marker, geo trackables)",
-       "verdict": "differs",
-       "what": "Application and Geo hide while unanchored, but Marker3D hides every frame and never assigns m_Anchor so the assets never appear, and Marker2D's hide path calls m_Anchor.transform on a null anchor, which throws before SetActive(false).",
-       "repo": "rt-xr-gITFast",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.1.2"
-      },
-      {
-       "case": "TRUE: assets hidden until the anchor pose is known (floor, plane)",
-       "verdict": "differs",
-       "what": "For floor and plane trackables nothing deactivates the attached nodes before the first plane is found; the loader activates them at scene end, and they are only hidden again if a previously built anchor is lost.",
-       "repo": "rt-xr-gITFast",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.1.2"
-      },
-      {
-       "case": "TRUE: controller trackable",
-       "verdict": "differs",
-       "what": "The controller trackable never creates an anchor or pose, so with requiresAnchoring set its assets are never attached to a pose; the flag is stored but unused.",
-       "repo": "rt-xr-gITFast",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.1.2"
-      },
-      {
-       "case": "FALSE: assets processed",
-       "verdict": "implemented",
-       "what": "When the flag is false the trackables do not deactivate the attached nodes, which stay active and are parented to the anchor once it exists.",
-       "repo": "rt-xr-gITFast",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.1.2"
-      },
-      {
-       "case": "Required space compared to estimated real-world bounds (floor, plane)",
-       "verdict": "differs",
-       "what": "minimumRequiredSpace is compared with the detected plane's bounding box (extended by a fixed 2.5 height) axis by axis, not as a volume.",
-       "repo": "rt-xr-gITFast",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.1.2"
-      },
-      {
-       "case": "Required space comparison (other trackables)",
-       "verdict": "absent",
-       "what": "Application, controller, viewer, marker and geo trackables store the required space but never compare it with an estimated space.",
-       "repo": "rt-xr-gITFast",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.1.2"
-      },
-      {
-       "case": "aligned accepts NOT_USED, ALIGNED_NOTSCALED, ALIGNED_SCALED",
-       "verdict": "implemented",
-       "what": "The anchor schema defines the three aligned values (0, 1, 2) with NOT_USED as the default, and the anchor instance reads them.",
-       "repo": "rt-xr-gITFast",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.1.2"
-      },
-      {
-       "case": "ALIGNED_NOTSCALED behaviour",
-       "verdict": "absent",
-       "what": "The value is read but no alignment of the assets to the available space is performed.",
-       "repo": "rt-xr-gITFast",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.1.2"
-      },
-      {
-       "case": "ALIGNED_SCALED behaviour",
-       "verdict": "absent",
-       "what": "ALIGNED_SCALED is parsed and passed to track.RequiredAlignedAndScale, which is an empty method in floor and plane trackables and commented out in the others; m_RequiredAlignedAndScale is never set true, so CheckAlignedAndScale and the scale code are unreachable.",
-       "repo": "rt-xr-unity-player",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.1.2"
-      },
-      {
-       "case": "geometricConstraint accepts HORIZONTAL_PLANE and VERTICAL_PLANE",
-       "verdict": "implemented",
-       "what": "Both values are defined and select horizontal or vertical plane detection for plane trackables.",
-       "repo": "rt-xr-gITFast",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.1.2"
-      },
-      {
-       "case": "coordinates array of three floats",
-       "verdict": "implemented",
-       "what": "The geo trackable reads three floats from coordinates and uses them to create a geospatial anchor.",
-       "repo": "rt-xr-gITFast",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.1.2"
-      },
-      {
-       "case": "order longitude, latitude, elevation",
-       "verdict": "differs",
-       "what": "The first value is passed where the geospatial anchor call takes latitude and the second where it takes longitude; the reference geo scenes also list latitude first. This rests on reading only: the ARCore Extensions signature was not opened.",
-       "repo": "rt-xr-gITFast",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.1.2"
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "pe-23090-14-8.1.2.1.3",
-     "name": "Trackable Definitions / TRACKABLE_CONTROLLER",
-     "release": "all",
-     "component": "pe",
-     "spec": {
-      "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
-      "locator": "clause 8.1.2.1.3"
-     },
-     "repos": [
-      "rt-xr-unity-player"
-     ],
-     "cases": [
-      {
-       "case": "controller grip position adjusted to the grip centre",
-       "verdict": "absent",
-       "what": "The controller trackable only stores the path; it computes no grip pose and creates no anchor, so no grip position adjustment exists.",
-       "repo": "rt-xr-unity-player",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.1.2.1.3"
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "pe-23090-14-8.1.3",
-     "name": "AR Anchoring / Processing model",
-     "release": "all",
-     "component": "pe",
-     "spec": {
-      "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
-      "locator": "clause 8.1.3"
-     },
-     "repos": [
-      "rt-xr-unity-player",
-      "rt-xr-gITFast"
-     ],
-     "cases": [
-      {
-       "case": "Scene-level and node-level anchor not both present",
-       "verdict": "absent",
-       "what": "Rests on reading only; nothing was run. The loader handles scene-level and node-level anchor extensions independently and does not check or reject a file that has both.",
-       "repo": "rt-xr-unity-player",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.1.3"
-      },
-      {
-       "case": "requiresAnchoring skips assets until pose known (floor, marker, viewer, application trackables)",
-       "verdict": "differs",
-       "what": "Viewer, Application and Marker3D hide while unanchored, but Floor leaves nodes active from EndScene until an anchor has once been built (hide gated on m_IsGoActivated) and Marker2D's hide path throws on a null anchor.",
-       "repo": "rt-xr-gITFast",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.1.3"
-      },
-      {
-       "case": "requiresAnchoring for geometric and controller trackables",
-       "verdict": "differs",
-       "what": "Rests on reading only; nothing was run. The geometric-plane and controller trackables store the flag but never read it, so assets are not held back by it; in addition the scene end activates every root node, which can show assets before anchoring.",
-       "repo": "rt-xr-gITFast",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.1.3"
-      },
-      {
-       "case": "Assets processed when anchoring not required",
-       "verdict": "implemented",
-       "what": "Rests on reading only; nothing was run. When requiresAnchoring is false (the default) the trackables never deactivate attached assets, which are placed once the anchor exists and otherwise stay active.",
-       "repo": "rt-xr-gITFast",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.1.3"
-      },
-      {
-       "case": "minimumRequiredSpace checked (geometric and floor trackables)",
-       "verdict": "differs",
-       "what": "Floor and Geometric compare the plane-boundary box (height fixed 2.5 m) per axis against minimumRequiredSpace and create no anchor when smaller, but the assets are not skipped because EndScene activated them and nothing hides them (Geometric has no Update).",
-       "repo": "rt-xr-gITFast",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.1.3"
-      },
-      {
-       "case": "minimumRequiredSpace for other trackable types",
-       "verdict": "absent",
-       "what": "Rests on reading only; nothing was run. Marker, viewer, application, geo-marker and controller trackables store the required space but never compare it with anything.",
-       "repo": "rt-xr-gITFast",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.1.3"
-      },
-      {
-       "case": "Start tracking and place assets relative to the anchor",
-       "verdict": "differs",
-       "what": "The loader inits the trackable, attaches nodes and AnchorInstance invokes the actions once tracked, but Geometric sets only the node's world position and never parents it to the anchor at build time, and Floor overrides rotation with LookAt toward the camera, so assets are not placed in the anchor's local space.",
-       "repo": "rt-xr-gITFast",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.1.3"
-      },
-      {
-       "case": "Launch the anchor's actions",
-       "verdict": "implemented",
-       "what": "AnchorInstance copies anchor.actions in Init and, once SetUp has run, its Update invokes every referenced action the first time the trackable reports a tracked pose, sets m_ActionLaunched and never cancels them.",
-       "repo": "rt-xr-gITFast",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.1.3"
-      },
-      {
-       "case": "setTransform action on anchor",
-       "verdict": "differs",
-       "what": "Anchor actions are launched once the anchor is tracked, but the transform action throws when invoked and, when it runs, sets world position and rotation of its target nodes with no scale, not the trackable-to-anchor-space TRS.",
-       "repo": "rt-xr-gITFast",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.1.3"
-      }
-     ],
-     "noted": []
-    },
-    {
      "id": "assets-23090-14-8.1.1",
      "name": "AR Anchoring / MPEG_anchor extension",
      "release": "all",
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 8.1.1"
      },
      "repos": [
@@ -3353,7 +2976,9 @@
        "locator": "clause 8.1.1"
       }
      ],
-     "noted": []
+     "noted": [
+      "The exporter also reads the aligned option as a boolean but compares it with enum names (, -45), so aligned is not written."
+     ]
     },
     {
      "id": "assets-23090-14-8.1.2",
@@ -3362,7 +2987,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 8.1.2"
      },
      "repos": [
@@ -3393,31 +3018,9 @@
        "locator": "clause 8.1.2"
       },
       {
-       "case": "scene uses ALIGNED_SCALED",
+       "case": "aligned flag values",
        "verdict": "implemented",
-       "what": "Two anchoring scenes set aligned to 2 (ALIGNED_SCALED).",
-       "repo": "rt-xr-content",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.1.2"
-      },
-      {
-       "case": "scene uses ALIGNED_NOTSCALED or an explicit NOT_USED",
-       "verdict": "absent",
-       "what": "No reference scene sets aligned to 1 or 0; other anchors omit the property.",
-       "repo": "rt-xr-content",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.1.2"
-      },
-      {
-       "case": "exporter writes aligned",
-       "verdict": "absent",
-       "what": "The exporter never writes aligned: its two conditions compare xr_anchor.aligned, declared as a BoolProperty, with the strings 'ALIGNED_NOTSCALED' and 'ALIGNED_SCALED', which a boolean never equals, the ANCHOR_ALIGNMENT enum is defined but no property uses it, and the anchoring panel draws no aligned control.",
+       "what": "The exporter writes aligned as 1 or 2 only (omitting it for NOT_USED) and the geometric anchoring scenes use value 2. Rests on reading only.",
        "repo": "rt-xr-blender-exporter",
        "releases": [
         "18",
@@ -3426,31 +3029,9 @@
        "locator": "clause 8.1.2"
       },
       {
-       "case": "scene uses HORIZONTAL_PLANE",
+       "case": "geometricConstraint values",
        "verdict": "implemented",
-       "what": "Reference scenes set geometricConstraint to 0.",
-       "repo": "rt-xr-content",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.1.2"
-      },
-      {
-       "case": "scene uses VERTICAL_PLANE",
-       "verdict": "implemented",
-       "what": "Reference scenes set geometricConstraint to 1.",
-       "repo": "rt-xr-content",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.1.2"
-      },
-      {
-       "case": "exporter writes geometricConstraint",
-       "verdict": "implemented",
-       "what": "The exporter writes 0 for horizontal and 1 for vertical plane trackables.",
+       "what": "The exporter writes 0 for horizontal and 1 for vertical planes and the geometric scenes use 1. Rests on reading only.",
        "repo": "rt-xr-blender-exporter",
        "releases": [
         "18",
@@ -3460,9 +3041,53 @@
       },
       {
        "case": "coordinates are three floats (lon, lat, elevation)",
-       "verdict": "differs",
-       "what": "Three floats are carried, but in latitude, longitude, elevation order: both reference geospatial scenes give [48.13374, -1.618274, 164.0] (a location near Rennes only if read latitude first), the player passes element 0 as the latitude argument of ARCore AddAnchor(latitude, longitude, altitude, ...), and the exporter copies an unlabelled three-float vector with no stated order; the clause orders longitude first.",
+       "verdict": "implemented",
+       "what": "The exporter writes a three-float array from a Blender vector property and the geospatial scenes carry three values; the order of the user-entered values is not constrained by the exporter. Rests on reading only.",
        "repo": "rt-xr-blender-exporter",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.1.2"
+      },
+      {
+       "case": "longitude value in decimal degrees",
+       "verdict": "absent",
+       "what": "The exporter passes the first vector component through unchecked and unlabelled, so nothing builds or validates a longitude. Rests on reading only.",
+       "repo": "rt-xr-blender-exporter",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.1.2"
+      },
+      {
+       "case": "longitude slot in reference scenes",
+       "verdict": "differs",
+       "what": "The geospatial reference scenes put 48.13374 in the longitude position and -1.618274 in the latitude position, which reads as latitude then longitude of a site in western France, i.e. swapped. The inference of intent rests on reading only. Rests on reading only.",
+       "repo": "rt-xr-content",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.1.2"
+      },
+      {
+       "case": "latitude value in decimal degrees",
+       "verdict": "absent",
+       "what": "The exporter passes the second vector component through unchecked, so nothing builds or validates a latitude. Rests on reading only.",
+       "repo": "rt-xr-blender-exporter",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.1.2"
+      },
+      {
+       "case": "latitude slot in reference scenes",
+       "verdict": "differs",
+       "what": "The geospatial reference scenes hold -1.618274 in the latitude position, which is the likely longitude of a site in western France (value order swapped). Rests on reading only.",
+       "repo": "rt-xr-content",
        "releases": [
         "18",
         "19"
@@ -3470,7 +3095,9 @@
        "locator": "clause 8.1.2"
       }
      ],
-     "noted": []
+     "noted": [
+      "For application trackables the exporter writes the key id (line 31) where scenes use trackableId."
+     ]
     }
    ]
   },
@@ -3485,7 +3112,7 @@
      "component": "pe",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 8.2.1"
      },
      "repos": [
@@ -3527,8 +3154,8 @@
       },
       {
        "case": "node-only collision trigger not used for detection",
-       "verdict": "implemented",
-       "what": "Collision detectors are created only for the nodes listed by a scene-level collision trigger (CollisionSceneTrigger.Init iterates trigger.nodes and only then consults the node extension in InitCollisionDetector); no other code instantiates detection from MPEG_node_interactivity (GltfImport only logs it), so a node carrying only a node-level collision trigger is not used for detection.",
+       "verdict": "differs",
+       "what": "Collision detectors are attached only to nodes named by a scene-level collision trigger, so a node with only a node-level collision trigger is not used for detection, but it also gets no rigid body or physics material, so the physics-engine use the sentence requires does not happen.",
        "repo": "rt-xr-gITFast",
        "releases": [
         "18",
@@ -3546,7 +3173,7 @@
      "component": "pe",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 8.2.2.1"
      },
      "repos": [
@@ -3557,18 +3184,7 @@
       {
        "case": "recommendedPhysicsHighPrecision",
        "verdict": "absent",
-       "what": "The scene-level attribute is not parsed and no deterministic or high-precision physics mode is enabled.",
-       "repo": "rt-xr-unity-player",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.2.2.1"
-      },
-      {
-       "case": "recommendedPhysicsFrameRate",
-       "verdict": "absent",
-       "what": "The scene-level attribute is not parsed; the physics rate is not set from the scene.",
+       "what": "The property is not in the schema and no physics precision setting is applied.",
        "repo": "rt-xr-unity-player",
        "releases": [
         "18",
@@ -3588,9 +3204,20 @@
        "locator": "clause 8.2.2.1"
       },
       {
+       "case": "no referenceNode: active camera",
+       "verdict": "implemented",
+       "what": "Without a reference node the proximity trigger uses an enabled scene camera as reference and refreshes it every frame (it picks the last enabled camera returned by Unity).",
+       "repo": "rt-xr-gITFast",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.2.2.1"
+      },
+      {
        "case": "scene-level distance bounds",
        "verdict": "differs",
-       "what": "ProximitySceneTrigger.Init calls GetFirstActivatedCamera unconditionally, overwriting the configured referenceNode with the last camera in Camera.allCameras, so distances are measured to the camera whenever one exists.",
+       "what": "The scene-level proximity trigger always replaces the configured reference node with the last active camera, so distances are measured to the camera whenever one exists.",
        "repo": "rt-xr-gITFast",
        "releases": [
         "18",
@@ -3654,53 +3281,9 @@
        "locator": "clause 8.2.2.1"
       },
       {
-       "case": "Cuboid axes",
-       "verdict": "implemented",
-       "what": "A cuboid primitive takes width on x, height on y and length on z.",
-       "repo": "rt-xr-gITFast",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.2.2.1"
-      },
-      {
-       "case": "Plane region axes",
+       "case": "activationStatus ENABLED/DISABLED",
        "verdict": "differs",
-       "what": "A plane primitive is built in the x/z plane: its height is used as the z extent, not on y+.",
-       "repo": "rt-xr-gITFast",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.2.2.1"
-      },
-      {
-       "case": "Cylinder region axes",
-       "verdict": "differs",
-       "what": "The cylinder length runs along y, not z+.",
-       "repo": "rt-xr-gITFast",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.2.2.1"
-      },
-      {
-       "case": "transformationMatrix",
-       "verdict": "differs",
-       "what": "Only the translation and rotation of the matrix are applied to a collision primitive; its scale is replaced by one.",
-       "repo": "rt-xr-gITFast",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.2.2.1"
-      },
-      {
-       "case": "ENABLED processed / DISABLED skipped",
-       "verdict": "differs",
-       "what": "The activate action inverts the status: ENABLED sets the target nodes inactive and DISABLED sets them active.",
+       "what": "The activate action activates nodes when the status is DISABLED and deactivates them when it is ENABLED (inverted).",
        "repo": "rt-xr-gITFast",
        "releases": [
         "18",
@@ -3720,9 +3303,9 @@
        "locator": "clause 8.2.2.1"
       },
       {
-       "case": "ACTIVE_ON, ACTIVATE_OFF, EACH_ENTER, EACH_EXIT",
+       "case": "EACH/ON/OFF/EACH_EXIT activation",
        "verdict": "differs",
-       "what": "ProcessState returns one activation value per frame and the later assignments override the earlier ones: EACH_ENTER and EACH_EXIT are returned on the transition frames as required, but ON is replaced by EACH_ENTER on the entry frame (and by FIRST_ENTER on the following frame the first time), and OFF by EACH_EXIT on the exit frame, so a behavior with ON or OFF is not launched on every frame the conditions are (not) met.",
+       "what": "Activation is computed as one value per frame, so ON is reported only after the entry frames (the first frame yields EACH_ENTER, the second FIRST_ENTER) and an ON behavior does not fire while the conditions are being met on those frames; OFF, EACH_ENTER and EACH_EXIT match.",
        "repo": "rt-xr-gITFast",
        "releases": [
         "18",
@@ -3731,20 +3314,9 @@
        "locator": "clause 8.2.2.1"
       },
       {
-       "case": "FIRST_ENTER",
+       "case": "FIRST_ENTER / FIRST_EXIT",
        "verdict": "differs",
-       "what": "The first-enter control fires only on the second consecutive frame of the combination being met, because the entry frame is classified as each-enter.",
-       "repo": "rt-xr-gITFast",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.2.2.1"
-      },
-      {
-       "case": "FIRST_EXIT",
-       "verdict": "differs",
-       "what": "The first-exit control never fires: the exit frame is always classified as each-exit, so the first-exit state is never reached.",
+       "what": "First-enter and first-exit are always overridden by the each-enter and each-exit results in the same evaluation, so behaviors configured with them never launch.",
        "repo": "rt-xr-gITFast",
        "releases": [
         "18",
@@ -3755,7 +3327,7 @@
       {
        "case": "EACH/ON/OFF/EACH_EXIT activation",
        "verdict": "differs",
-       "what": "Activation is computed by Behavior.ProcessState as one value per frame, so ON is reported only after the entry frames (the first frame yields EACH_ENTER, the second FIRST_ENTER) and an ON behavior does not fire while the conditions are being met on those frames; OFF, EACH_ENTER and EACH_EXIT match.",
+       "what": "Activation is computed as one value per frame, so ON is reported only after the entry frames (the first frame yields EACH_ENTER, the second FIRST_ENTER) and an ON behavior does not fire while the conditions are being met on those frames; OFF, EACH_ENTER and EACH_EXIT match.",
        "repo": "rt-xr-gITFast",
        "releases": [
         "18",
@@ -3810,7 +3382,7 @@
       {
        "case": "washout",
        "verdict": "absent",
-       "what": "The washout flag is parsed but the haptic action throws not implemented.",
+       "what": "The washout flag is parsed but the haptic action is not implemented.",
        "repo": "rt-xr-unity-player",
        "releases": [
         "18",
@@ -3841,9 +3413,9 @@
        "locator": "clause 8.2.2.1"
       },
       {
-       "case": "materialHapticModality rendering",
+       "case": "materialHapticModality",
        "verdict": "absent",
-       "what": "The attribute is parsed into the schema but no haptic rendering exists; the set-haptic action throws NotImplementedException.",
+       "what": "The list is parsed only; no haptic rendering exists.",
        "repo": "rt-xr-unity-player",
        "releases": [
         "18",
@@ -3894,7 +3466,7 @@
      "component": "pe",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 8.2.2.2"
      },
      "repos": [
@@ -3927,7 +3499,7 @@
       {
        "case": "needPreciseCollisionDetection",
        "verdict": "absent",
-       "what": "The node-level attribute is not parsed and collision detection rate is not changed per node.",
+       "what": "The property is not in the schema and no detection-rate change is made.",
        "repo": "rt-xr-unity-player",
        "releases": [
         "18",
@@ -3948,8 +3520,8 @@
       },
       {
        "case": "partial occlusion computation",
-       "verdict": "differs",
-       "what": "With allowsPartialOcclusion true values 1 and 2 activate, but ComputeVisibility returns 2 for any node whose bounding box straddles a frustum plane before running the occlusion pass, so a node partly in the frustum and fully occluded by other nodes still activates; occlusion is only computed for nodes fully inside the frustum. The flag is read only from a node-level extension.",
+       "verdict": "implemented",
+       "what": "Visibility combines a frustum test with a depth-based occlusion pixel count, and partial visibility counts only when the flag is true; the flag is read only from a node-level extension (scene-only path leaves it false).",
        "repo": "rt-xr-gITFast",
        "releases": [
         "18",
@@ -3959,8 +3531,8 @@
       },
       {
        "case": "fully in frustum and not occluded",
-       "verdict": "implemented",
-       "what": "With allowsPartialOcclusion false only value 1 activates: ComputeVisibility returns -1 outside and 2 straddling the frustum, and for a node fully inside it renders the scene depth and counts visible pixels, returning 1 only when fewer than three of the node's pixels are occluded.",
+       "verdict": "differs",
+       "what": "With allowsPartialOcclusion false only a fully visible result (inside frustum, fewer than three occluded pixels) activates, but the nodes array is used as the set of nodes tested, not as occluders to ignore, so the exception is not honoured.",
        "repo": "rt-xr-gITFast",
        "releases": [
         "18",
@@ -4000,7 +3572,7 @@
      "component": "pe",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 8.2.3"
      },
      "repos": [
@@ -4011,7 +3583,7 @@
       {
        "case": "Highest-priority behavior wins on concurrent effect",
        "verdict": "absent",
-       "what": "Behavior priority is parsed but never used; every behavior is evaluated each FixedUpdate in array order and all that trigger run their actions, with no arbitration between behaviors on the same nodes.",
+       "what": "Behavior priority is parsed but never used; every behavior is evaluated each physics step in array order and all that trigger run their actions, with no arbitration between behaviors on the same nodes.",
        "repo": "rt-xr-unity-player",
        "releases": [
         "18",
@@ -4020,9 +3592,9 @@
        "locator": "clause 8.2.3"
       },
       {
-       "case": "Check behavior after scene update",
+       "case": "Check whether a behavior is still defined after a scene update",
        "verdict": "absent",
-       "what": "The player does not check ongoing behaviors against a scene description update; interrupt actions are never invoked on an update.",
+       "what": "Rests on reading only; nothing was run. The loader and player have no handling of scene description updates, so no behavior is rechecked against an update.",
        "repo": "rt-xr-unity-player",
        "releases": [
         "18",
@@ -4055,18 +3627,7 @@
       {
        "case": "Physics simulation when usePhysics is true on a collision trigger",
        "verdict": "differs",
-       "what": "Rigid body, gravity, mass and physics material from a node-level collision trigger with usePhysics are applied only through InitCollisionDetector, i.e. for nodes named by a scene-level collision trigger; a node-level trigger not referenced by one gets no simulation.",
-       "repo": "rt-xr-gITFast",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.2.3"
-      },
-      {
-       "case": "combine restitution and friction of the two colliding nodes",
-       "verdict": "implemented",
-       "what": "Each physics node's restitution, static friction and dynamic friction are set on its collider's physics material, and Unity's physics combines the two materials on collision with its default combine mode.",
+       "what": "Rigid body, gravity, mass and physics material from a node-level collision trigger with usePhysics are applied only for nodes named by a scene-level collision trigger; a node-level trigger not referenced by one gets no simulation.",
        "repo": "rt-xr-gITFast",
        "releases": [
         "18",
@@ -4084,7 +3645,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 8.2.1"
      },
      "repos": [
@@ -4134,36 +3695,14 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 8.2.2.1"
      },
      "repos": [
-      "rt-xr-blender-exporter",
-      "rt-xr-content"
+      "rt-xr-content",
+      "rt-xr-blender-exporter"
      ],
      "cases": [
-      {
-       "case": "recommendedPhysicsHighPrecision",
-       "verdict": "absent",
-       "what": "No reference scene sets the attribute and the exporter cannot write it.",
-       "repo": "rt-xr-blender-exporter",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.2.2.1"
-      },
-      {
-       "case": "recommendedPhysicsFrameRate",
-       "verdict": "absent",
-       "what": "No reference scene sets the attribute and the exporter cannot write it.",
-       "repo": "rt-xr-blender-exporter",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.2.2.1"
-      },
       {
        "case": "OpenXR input path (gravity)",
        "verdict": "implemented",
@@ -4178,7 +3717,7 @@
       {
        "case": "OpenXR input path (geometry)",
        "verdict": "differs",
-       "what": "Rests on reading only; nothing was run. The UseCase_03 variant 3 scene's user input trigger uses a mouse path that is not an OpenXR input path.",
+       "what": "Rests on reading only; nothing was run. The user input trigger of one test scene (use case 3, variant 3) uses a mouse path that is not an OpenXR input path.",
        "repo": "rt-xr-content",
        "releases": [
         "18",
@@ -4187,21 +3726,10 @@
        "locator": "clause 8.2.2.1"
       },
       {
-       "case": "Primitive axes",
+       "case": "Trigger primitive transformationMatrix",
        "verdict": "absent",
-       "what": "No scene file defines a trigger primitive, and the exporter writes no interactivity.",
+       "what": "Rests on reading only; nothing was run. No reference scene defines trigger primitives, and the exporter writes no interactivity data.",
        "repo": "rt-xr-blender-exporter",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.2.2.1"
-      },
-      {
-       "case": "activationStatus values",
-       "verdict": "implemented",
-       "what": "The gravity scene uses activate actions with activationStatus 0 (ENABLED) and 1 (DISABLED) on node 6, matching the specified values.",
-       "repo": "rt-xr-content",
        "releases": [
         "18",
         "19"
@@ -4222,7 +3750,7 @@
       {
        "case": "triggersActivationControl present",
        "verdict": "implemented",
-       "what": "Every behavior in the reference scenes carries triggersActivationControl with a value from 1, 2 or 4 (each-enter, on, each-exit), all valid values.",
+       "what": "Rests on reading only; nothing was run. Every behavior in the scenes carries a triggersActivationControl value.",
        "repo": "rt-xr-content",
        "releases": [
         "18",
@@ -4233,19 +3761,8 @@
       {
        "case": "Value from the activation control table",
        "verdict": "implemented",
-       "what": "Rests on reading only; nothing was run. The values used (1, 2 and 4 in gravity, 1 in the geometry scenes) are within the six defined activation controls.",
+       "what": "Rests on reading only; nothing was run. The values used are within the six defined activation controls.",
        "repo": "rt-xr-content",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.2.2.1"
-      },
-      {
-       "case": "materialHapticModality",
-       "verdict": "absent",
-       "what": "No scene file contains a haptic action or materialHapticModality, and the exporter has no haptic code.",
-       "repo": "rt-xr-blender-exporter",
        "releases": [
         "18",
         "19"
@@ -4262,12 +3779,11 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 8.2.2.2"
      },
      "repos": [
-      "rt-xr-content",
-      "rt-xr-blender-exporter"
+      "rt-xr-content"
      ],
      "cases": [
       {
@@ -4293,20 +3809,9 @@
        "locator": "clause 8.2.2.2"
       },
       {
-       "case": "needPreciseCollisionDetection",
-       "verdict": "absent",
-       "what": "No node extension in any scene sets the attribute.",
-       "repo": "rt-xr-blender-exporter",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 8.2.2.2"
-      },
-      {
        "case": "allowOcclusion present",
        "verdict": "implemented",
-       "what": "Rests on reading only; nothing was run. The proximity node trigger in UseCase_02 carries the allowOcclusion boolean.",
+       "what": "Rests on reading only; nothing was run. The proximity node trigger of one test scene (use case 2) carries the allowOcclusion boolean.",
        "repo": "rt-xr-content",
        "releases": [
         "18",
@@ -4330,7 +3835,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 8.3.1"
      },
      "repos": [
@@ -4338,9 +3843,9 @@
      ],
      "cases": [
       {
-       "case": "Avatar reconstructed from a range of representations",
+       "case": "avatar description requirements",
        "verdict": "absent",
-       "what": "No avatar is represented in any scene or written by the exporter.",
+       "what": "No reference scene or exporter code uses this feature.",
        "repo": "rt-xr-blender-exporter",
        "releases": [
         "18",
@@ -4369,7 +3874,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 8.3.2"
      },
      "repos": [
@@ -4393,6 +3898,212 @@
    ]
   },
   {
+   "name": "Lighting",
+   "summary": "",
+   "requirements": [
+    {
+     "id": "pe-23090-14-8.4.3",
+     "name": "Lighting / Processing model",
+     "release": "all",
+     "component": "pe",
+     "spec": {
+      "doc": "ISO/IEC 23090-14",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
+      "locator": "clause 8.4.3"
+     },
+     "repos": [
+      "rt-xr-unity-player",
+      "rt-xr-gITFast"
+     ],
+     "cases": [
+      {
+       "case": "MPEG_lights_punctual taken into account",
+       "verdict": "absent",
+       "what": "Rests on reading only; nothing was run. The MPEG_lights_punctual extension is not parsed, so its light references and accessors are not used.",
+       "repo": "rt-xr-unity-player",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.4.3"
+      },
+      {
+       "case": "MPEG_lights_texture_based taken into account",
+       "verdict": "absent",
+       "what": "Rests on reading only; nothing was run. The texture-based lights extension is not parsed or rendered.",
+       "repo": "rt-xr-unity-player",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.4.3"
+      },
+      {
+       "case": "Renderer considers nature field",
+       "verdict": "absent",
+       "what": "Rests on reading only; nothing was run. The nature field is never read, so virtual and physical lights are not distinguished.",
+       "repo": "rt-xr-unity-player",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.4.3"
+      },
+      {
+       "case": "Virtual elements relit by physical and virtual lights",
+       "verdict": "absent",
+       "what": "Rests on reading only; nothing was run. There is no relighting of virtual objects using physical lighting information; lights are only the glTF lights turned into Unity lights.",
+       "repo": "rt-xr-unity-player",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.4.3"
+      },
+      {
+       "case": "Real elements relit only by virtual lights",
+       "verdict": "absent",
+       "what": "Rests on reading only; nothing was run. No code separates real from virtual elements for lighting, and nature is not read.",
+       "repo": "rt-xr-unity-player",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.4.3"
+      },
+      {
+       "case": "Objects lit by surrounding lights",
+       "verdict": "implemented",
+       "what": "Rests on reading only; nothing was run. Scene lights become Unity Light components at their node positions and the Unity renderer illuminates objects by them according to distance and view; this applies to Khronos lights only, not to the MPEG lighting extensions.",
+       "repo": "rt-xr-gITFast",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.4.3"
+      }
+     ],
+     "noted": [
+      "The code reads only the Khronos KHR_lights_punctual extension on nodes and instantiates a Unity light for each; the MPEG extensions are not parsed.",
+      "The code reads only the Khronos KHR_lights_punctual extension on nodes and instantiates a Unity light for each; the MPEG extensions are not parsed."
+     ]
+    },
+    {
+     "id": "assets-23090-14-8.4.2.1",
+     "name": "Semantics / Semantics of the MPEG_lights_texture_based extension",
+     "release": "all",
+     "component": "assets",
+     "spec": {
+      "doc": "ISO/IEC 23090-14",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
+      "locator": "clause 8.4.2.1"
+     },
+     "repos": [
+      "rt-xr-blender-exporter"
+     ],
+     "cases": [
+      {
+       "case": "texture-based lights at file and scene level",
+       "verdict": "absent",
+       "what": "No reference scene or exporter code uses this feature.",
+       "repo": "rt-xr-blender-exporter",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.4.2.1"
+      },
+      {
+       "case": "UNSPECIFIED light source has an anchor",
+       "verdict": "absent",
+       "what": "No reference scene or exporter code uses this feature.",
+       "repo": "rt-xr-blender-exporter",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.4.2.1"
+      },
+      {
+       "case": "projection type EQUIRECT or ANGULAR",
+       "verdict": "absent",
+       "what": "No reference scene or exporter code uses this feature.",
+       "repo": "rt-xr-blender-exporter",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.4.2.1"
+      },
+      {
+       "case": "cubemap faces packed in table order",
+       "verdict": "absent",
+       "what": "No reference scene or exporter code uses this feature.",
+       "repo": "rt-xr-blender-exporter",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.4.2.1"
+      },
+      {
+       "case": "specular image array length 1 or 6",
+       "verdict": "absent",
+       "what": "No reference scene or exporter code uses this feature.",
+       "repo": "rt-xr-blender-exporter",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.4.2.1"
+      },
+      {
+       "case": "six images imply cubemap projection",
+       "verdict": "absent",
+       "what": "No reference scene or exporter code uses this feature.",
+       "repo": "rt-xr-blender-exporter",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.4.2.1"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "assets-23090-14-8.4.2.2",
+     "name": "Semantics / Semantics of the MPEG_lights_punctual extension",
+     "release": "all",
+     "component": "assets",
+     "spec": {
+      "doc": "ISO/IEC 23090-14",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
+      "locator": "clause 8.4.2.2"
+     },
+     "repos": [
+      "rt-xr-blender-exporter"
+     ],
+     "cases": [
+      {
+       "case": "MPEG_lights_punctual at file level",
+       "verdict": "absent",
+       "what": "No scene or exporter uses MPEG_lights_punctual; the one scene with lights (gravity) uses KHR_lights_punctual instead.",
+       "repo": "rt-xr-blender-exporter",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 8.4.2.2"
+      }
+     ],
+     "noted": [
+      "The gravity reference scene declares KHR_lights_punctual."
+     ]
+    }
+   ]
+  },
+  {
    "name": "Haptics",
    "summary": "",
    "requirements": [
@@ -4403,7 +4114,7 @@
      "component": "pe",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause G.3.4"
      },
      "repos": [
@@ -4413,7 +4124,7 @@
       {
        "case": "Haptic data rendered per action properties",
        "verdict": "absent",
-       "what": "Rests on reading only; nothing was run. The haptic action class is a stub whose initialisation and execution throw not-implemented; only the data classes for the action are parsed, and nothing renders haptic data.",
+       "what": "Rests on reading only; nothing was run. The haptic action class is a stub that is not implemented; only the data classes for the action are parsed, and nothing renders haptic data.",
        "repo": "rt-xr-gITFast",
        "releases": [
         "18",
@@ -4437,7 +4148,7 @@
      "component": "pe",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 4.2"
      },
      "repos": [
@@ -4445,9 +4156,9 @@
      ],
      "cases": [
       {
-       "case": "buffer format from the scene description, passed to the MAF",
+       "case": "buffer format from scene passed to MAF",
        "verdict": "implemented",
-       "what": "The player derives each buffer's component type, type, offset and stride from the scene's accessors, buffer views and buffers, and passes them to the MAF when creating the pipeline.",
+       "what": "The player derives each buffer's format (component type, sample type, offset, stride, attribute type) from the scene's accessors, bufferViews and buffers and passes it to the MAF when creating the pipeline. Rests on reading only.",
        "repo": "rt-xr-unity-player",
        "releases": [
         "18",
@@ -4458,7 +4169,7 @@
       {
        "case": "buffer managed through the Buffer API",
        "verdict": "implemented",
-       "what": "The player allocates, reads (by index or timestamp), flushes and frees its circular buffers only through the BufferHandler calls of the Buffer API binding. Rests on reading only.",
+       "what": "The player allocates, reads (by index or timestamp), flushes and frees its circular buffers only through the calls of the Buffer API binding. Rests on reading only.",
        "repo": "rt-xr-unity-player",
        "releases": [
         "18",
@@ -4467,7 +4178,9 @@
        "locator": "clause 4.2"
       }
      ],
-     "noted": []
+     "noted": [
+      "The player does not release frames explicitly; reads advance the position."
+     ]
     },
     {
      "id": "pe-23090-14-6.1",
@@ -4476,7 +4189,7 @@
      "component": "pe",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 6.1"
      },
      "repos": [
@@ -4504,7 +4217,7 @@
      "component": "pe",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 6.2"
      },
      "repos": [
@@ -4514,7 +4227,7 @@
       {
        "case": "startFetching moves ACTIVE",
        "verdict": "implemented",
-       "what": "Play() calls startFetching on the pipeline with a TimeInfo and ViewInfo. Rests on reading only.",
+       "what": "Play calls startFetching on the pipeline with time and view information. Rests on reading only.",
        "repo": "rt-xr-unity-player",
        "releases": [
         "18",
@@ -4525,7 +4238,7 @@
       {
        "case": "stopFetching moves READY",
        "verdict": "implemented",
-       "what": "Stop() stops the audio readers and calls stopFetching on the pipeline. Rests on reading only.",
+       "what": "Stop stops the audio readers and calls stopFetching on the pipeline. Rests on reading only.",
        "repo": "rt-xr-unity-player",
        "releases": [
         "18",
@@ -4535,8 +4248,8 @@
       },
       {
        "case": "destroy frees the pipeline",
-       "verdict": "differs",
-       "what": "MediaPlayer.Dispose calls Stop, pipeline.Dispose and disposes the player's buffers, but the committed SWIG binding wraps the pipeline from createMediaPipeline with cMemoryOwn=false, so IMediaPipeline.Dispose only clears the handle and never calls delete_IMediaPipeline; the native pipeline is not destroyed and its resources are not freed by this path.",
+       "verdict": "implemented",
+       "what": "The media player stops fetching, disposes the pipeline and disposes the buffer handlers; the scene viewer does this on scene unload and destroy. There is no operation named destroy and no IDLE state is requested.",
        "repo": "rt-xr-unity-player",
        "releases": [
         "18",
@@ -4569,7 +4282,7 @@
       {
        "case": "buffer allocated by MAF or by PE",
        "verdict": "implemented",
-       "what": "The player allocates the buffers on its side and passes the handles in BufferInfo. Rests on reading only.",
+       "what": "The player allocates the buffers on its side and passes the handles in the buffer description. Rests on reading only.",
        "repo": "rt-xr-unity-player",
        "releases": [
         "18",
@@ -4589,9 +4302,9 @@
        "locator": "clause 6.2"
       },
       {
-       "case": "attributeType of a buffer corresponds to the primitive attribute",
-       "verdict": "differs",
-       "what": "GetAccessorAttributeTypeMap maps the accessors of POSITION, NORMAL, TANGENT, TEXCOORD_0-8, COLOR_0, JOINTS_0 and WEIGHTS_0 to the matching AttributeType and MediaPlayer sets it on BufferInfo, but primitive.indices accessors are never mapped to ATTRIB_INDEX (an enum value the binding has), so an index accessor fed by the MAF gets no matching attributeType.",
+       "case": "BufferInfo format matches accessor and bufferView",
+       "verdict": "implemented",
+       "what": "The buffer description (component type, sample type and stride) is copied from the accessor and bufferView, and the offset is the sum of the accessor and bufferView byte offsets. Rests on reading only.",
        "repo": "rt-xr-unity-player",
        "releases": [
         "18",
@@ -4602,7 +4315,7 @@
       {
        "case": "view-dependent level of detail",
        "verdict": "absent",
-       "what": "The player passes a default ViewInfo only at startFetching and never supplies pose or object transform, so no distance-based detail is requested. Rests on reading only.",
+       "what": "The player passes a default view description only at startFetching and never supplies pose or object transform, so no distance-based detail is requested. Rests on reading only.",
        "repo": "rt-xr-unity-player",
        "releases": [
         "18",
@@ -4613,7 +4326,7 @@
       {
        "case": "camera intrinsic parameters in ViewInfo",
        "verdict": "absent",
-       "what": "The player never fills ViewInfo.camera; it passes an empty ViewInfo. Rests on reading only.",
+       "what": "The player never fills the camera parameters of the view description; it passes an empty one. Rests on reading only.",
        "repo": "rt-xr-unity-player",
        "releases": [
         "18",
@@ -4653,7 +4366,7 @@
      "component": "pe",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 6.3"
      },
      "repos": [
@@ -4663,7 +4376,7 @@
       {
        "case": "prior frames readable by timestamp",
        "verdict": "implemented",
-       "what": "The player requests frames from the circular buffer by timestamp (readFrame with a time value). Rests on reading only.",
+       "what": "The player requests frames from the circular buffer by timestamp. Rests on reading only.",
        "repo": "rt-xr-unity-player",
        "releases": [
         "18",
@@ -4685,7 +4398,7 @@
       {
        "case": "read_idx equal to write_idx means no frame",
        "verdict": "differs",
-       "what": "The player decides that no frame is available from the frame count being zero or readFrame returning null, not from comparing read and write indices. Rests on reading only.",
+       "what": "The player decides that no frame is available from the frame count being zero or the read returning nothing, not from comparing read and write indices. Rests on reading only.",
        "repo": "rt-xr-unity-player",
        "releases": [
         "18",
@@ -4716,6 +4429,47 @@
        "locator": "clause 6.3"
       }
      ],
+     "noted": [
+      "Audio frames still start with a timed accessor information header, which is a different structure from the buffer frame header."
+     ]
+    },
+    {
+     "id": "maf-23090-14-4.2",
+     "name": "Overview and architecture / Architecture",
+     "release": "all",
+     "component": "maf",
+     "spec": {
+      "doc": "ISO/IEC 23090-14",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
+      "locator": "clause 4.2"
+     },
+     "repos": [
+      "rt-xr-maf-native"
+     ],
+     "cases": [
+      {
+       "case": "Select among alternatives",
+       "verdict": "implemented",
+       "what": "Rests on reading only; nothing was run. The pipeline walks the listed alternatives in order and uses the first one that can be opened, so selection follows the order given and what the media libraries can open.",
+       "repo": "rt-xr-maf-native",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 4.2"
+      },
+      {
+       "case": "Set up and manage a pipeline per requested media",
+       "verdict": "implemented",
+       "what": "Rests on reading only; nothing was run. The factory creates and initialises a pipeline object for each media description, which opens the source, creates decoders, tracks state and starts and stops fetching.",
+       "repo": "rt-xr-maf-native",
+       "releases": [
+        "18",
+        "19"
+       ],
+       "locator": "clause 4.2"
+      }
+     ],
      "noted": []
     },
     {
@@ -4725,7 +4479,7 @@
      "component": "maf",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 6.2"
      },
      "repos": [
@@ -4735,7 +4489,7 @@
       {
        "case": "initialize, startFetching, updateView, stopFetching, state",
        "verdict": "differs",
-       "what": "The five operations exist, but stopFetching returns on a non-ACTIVE state without releasing stateLock_, the state-change callback is stored and never invoked (TODO comments), and the state after stopFetching ends at IDLE not READY.",
+       "what": "The five operations exist, but stopFetching does nothing when the state is not ACTIVE and does not release the pipeline lock, the state-change callback is stored and never invoked (marked as to do), and the state after stopFetching ends at IDLE not READY.",
        "repo": "rt-xr-maf-native",
        "releases": [
         "18",
@@ -4745,8 +4499,8 @@
       },
       {
        "case": "destroy",
-       "verdict": "differs",
-       "what": "IMediaPipeline declares no destroy operation; the only teardown is the virtual destructor, which stops and deletes the decoders and joins the fetch thread but never closes the AVFormatContext opened by avformat_open_input in initialize, so not all associated resources are freed; the committed C# binding also wraps the created pipeline with cMemoryOwn=false, so Dispose does not reach the destructor.",
+       "verdict": "implemented",
+       "what": "IMediaPipeline has no destroy method; the virtual destructor stops decoders, joins the fetch thread and deletes decoders, and the C# binding exposes it as Dispose.",
        "repo": "rt-xr-maf-native",
        "releases": [
         "18",
@@ -4810,20 +4564,9 @@
        "locator": "clause 6.2"
       },
       {
-       "case": "MAF allocates the buffer when no valid handler is given",
+       "case": "MAF allocates when no valid handler is supplied",
        "verdict": "differs",
-       "what": "The pipeline does not allocate; it rejects a missing or too small buffer handler and goes to the error state, although a comment says it allocates.",
-       "repo": "rt-xr-maf-native",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 6.2"
-      },
-      {
-       "case": "allocated buffer format matches the accessor and bufferView",
-       "verdict": "absent",
-       "what": "The condition is not met: the MAF never allocates its own buffer. It writes decoded data using the componentType, type, offset and stride supplied by the Presentation Engine.",
+       "what": "Rests on reading only; nothing was run. When a handler is missing or has under 2 frames the pipeline reports an error instead of allocating the buffer.",
        "repo": "rt-xr-maf-native",
        "releases": [
         "18",
@@ -4867,13 +4610,33 @@
       {
        "case": "Several tracks into one buffer",
        "verdict": "differs",
-       "what": "When two tracks name the same bufferId the first moves the buffer entry out of idMafBuffer and erases it and the second throws \"error while processing track.bufferId\", so initialisation ends in ERROR; with no track list buffers are mapped one stream each.",
+       "what": "When two tracks name the same buffer, the first one takes the buffer entry and the second one fails, so initialisation of the pipeline ends in the ERROR state; with no track list buffers are mapped one stream each.",
        "repo": "rt-xr-maf-native",
        "releases": [
         "18",
         "19"
        ],
        "locator": "clause 6.2"
+      },
+      {
+       "case": "Buffer format follows accessor/bufferView",
+       "verdict": "differs",
+       "what": "Audio output follows the component type, offset and stride of the buffer description, but the video path ignores it and always uses RGB24, so video buffers do not follow the accessor/bufferView format.",
+       "repo": "rt-xr-maf-native",
+       "releases": [
+        "18",
+        "19"
+       ]
+      },
+      {
+       "case": "Information in the scene coordinate system",
+       "verdict": "absent",
+       "what": "The library does no coordinate-system handling; it passes decoded samples through unchanged (reading only).",
+       "repo": "rt-xr-maf-native",
+       "releases": [
+        "18",
+        "19"
+       ]
       }
      ],
      "noted": []
@@ -4885,7 +4648,7 @@
      "component": "maf",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 6.3"
      },
      "repos": [
@@ -4927,8 +4690,8 @@
       },
       {
        "case": "No header in frame data when the Buffer API is used",
-       "verdict": "implemented",
-       "what": "Frame index, timestamp and length are carried as fields of the Frame object passed to BufferHandler::writeFrame2, not serialised into the data; video frame data is raw pixels and audio frame data begins only with the Table 8 timed accessor information header (timestampDelta, byteOffset, count, ...), which Table 25 itself counts as part of the frame data, so no Table 25 buffer frame header is written into frame data.",
+       "verdict": "differs",
+       "what": "Rests on reading only; nothing was run. The audio decoder writes the accessor information header at the start of the frame data that it hands over through the buffer handler, and the handler's header length field is never set by the MAF.",
        "repo": "rt-xr-maf-native",
        "releases": [
         "18",
@@ -4963,7 +4726,7 @@
      "component": "pe",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 4.2"
      },
      "repos": [
@@ -4991,7 +4754,7 @@
      "component": "pe",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 4.3"
      },
      "repos": [
@@ -5046,30 +4809,19 @@
      "noted": []
     },
     {
-     "id": "maf-23090-14-4.2",
+     "id": "maf-23090-14-4.2-how-timed-media-reaches-the-renderer",
      "name": "Overview and architecture / Architecture",
      "release": "all",
      "component": "maf",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 4.2"
      },
      "repos": [
       "rt-xr-maf-native"
      ],
      "cases": [
-      {
-       "case": "MAF selects among multiple sources",
-       "verdict": "implemented",
-       "what": "Given several alternatives for a media entry, the pipeline tries them in listed order and uses the first it can open.",
-       "repo": "rt-xr-maf-native",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 4.2"
-      },
       {
        "case": "timing and view information received from the Presentation Engine",
        "verdict": "implemented",
@@ -5102,7 +4854,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 4.1"
      },
      "repos": [
@@ -5130,7 +4882,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 7.1"
      },
      "repos": [
@@ -5138,9 +4890,9 @@
      ],
      "cases": [
       {
-       "case": "Storage as ISOBMFF track samples or items",
+       "case": "scene documents and updates as ISOBMFF track samples or items",
        "verdict": "absent",
-       "what": "Scene description documents are stored as plain .gltf JSON files; no ISOBMFF carriage is produced.",
+       "what": "reading only; nothing was run. No scene description is stored as ISOBMFF track samples or items.",
        "repo": "rt-xr-blender-exporter",
        "releases": [
         "18",
@@ -5158,7 +4910,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 7.2.1"
      },
      "repos": [
@@ -5166,20 +4918,9 @@
      ],
      "cases": [
       {
-       "case": "glTF JSON track stored as metadata media",
+       "case": "track uses meta handler type",
        "verdict": "absent",
-       "what": "Scene description documents are stored as plain .gltf JSON files; no ISOBMFF carriage is produced. No track exists.",
-       "repo": "rt-xr-blender-exporter",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 7.2.1"
-      },
-      {
-       "case": "'meta' handler type",
-       "verdict": "absent",
-       "what": "Scene description documents are stored as plain .gltf JSON files; no ISOBMFF carriage is produced. No track or HandlerBox is written.",
+       "what": "reading only; nothing was run. No ISOBMFF scene description track exists in the reference content and the exporter writes only standalone.gltf/.glb files.",
        "repo": "rt-xr-blender-exporter",
        "releases": [
         "18",
@@ -5190,7 +4931,7 @@
       {
        "case": "sample entry format mett",
        "verdict": "absent",
-       "what": "reading only; nothing was run. No ISOBMFF scene description track exists in the reference content and the exporter writes only standalone .gltf/.glb files.",
+       "what": "reading only; nothing was run. No ISOBMFF scene description track exists in the reference content and the exporter writes only standalone.gltf/.glb files.",
        "repo": "rt-xr-blender-exporter",
        "releases": [
         "18",
@@ -5201,7 +4942,7 @@
       {
        "case": "mime_format model/gltf+json",
        "verdict": "absent",
-       "what": "reading only; nothing was run. No ISOBMFF scene description track exists in the reference content and the exporter writes only standalone .gltf/.glb files.",
+       "what": "reading only; nothing was run. No ISOBMFF scene description track exists in the reference content and the exporter writes only standalone.gltf/.glb files.",
        "repo": "rt-xr-blender-exporter",
        "releases": [
         "18",
@@ -5212,7 +4953,7 @@
       {
        "case": "content_encoding value",
        "verdict": "absent",
-       "what": "reading only; nothing was run. No ISOBMFF scene description track exists in the reference content and the exporter writes only standalone .gltf/.glb files.",
+       "what": "reading only; nothing was run. No ISOBMFF scene description track exists in the reference content and the exporter writes only standalone.gltf/.glb files.",
        "repo": "rt-xr-blender-exporter",
        "releases": [
         "18",
@@ -5223,7 +4964,7 @@
       {
        "case": "GLTFPatchConfigBox in sample entry",
        "verdict": "absent",
-       "what": "reading only; nothing was run. No ISOBMFF scene description track exists in the reference content and the exporter writes only standalone .gltf/.glb files.",
+       "what": "reading only; nothing was run. No ISOBMFF scene description track exists in the reference content and the exporter writes only standalone.gltf/.glb files.",
        "repo": "rt-xr-blender-exporter",
        "releases": [
         "18",
@@ -5234,7 +4975,7 @@
       {
        "case": "glTF document samples are sync samples in UTF-8",
        "verdict": "absent",
-       "what": "reading only; nothing was run. No ISOBMFF scene description track exists in the reference content and the exporter writes only standalone .gltf/.glb files.",
+       "what": "reading only; nothing was run. No ISOBMFF scene description track exists in the reference content and the exporter writes only standalone.gltf/.glb files.",
        "repo": "rt-xr-blender-exporter",
        "releases": [
         "18",
@@ -5245,7 +4986,7 @@
       {
        "case": "patch samples are not sync samples",
        "verdict": "absent",
-       "what": "reading only; nothing was run. No ISOBMFF scene description track exists in the reference content and the exporter writes only standalone .gltf/.glb files.",
+       "what": "reading only; nothing was run. No ISOBMFF scene description track exists in the reference content and the exporter writes only standalone.gltf/.glb files.",
        "repo": "rt-xr-blender-exporter",
        "releases": [
         "18",
@@ -5256,7 +4997,7 @@
       {
        "case": "sample_has_redundancy flag",
        "verdict": "absent",
-       "what": "reading only; nothing was run. No ISOBMFF scene description track exists in the reference content and the exporter writes only standalone .gltf/.glb files.",
+       "what": "reading only; nothing was run. No ISOBMFF scene description track exists in the reference content and the exporter writes only standalone.gltf/.glb files.",
        "repo": "rt-xr-blender-exporter",
        "releases": [
         "18",
@@ -5265,9 +5006,9 @@
        "locator": "clause 7.2.1"
       },
       {
-       "case": "Non-sync samples without GLTFPatchConfigBox",
+       "case": "non-sync samples applied with update_mode 0",
        "verdict": "absent",
-       "what": "Scene description documents are stored as plain .gltf JSON files; no ISOBMFF carriage is produced. No patch samples or GLTFPatchConfigBox exist, so the condition is not met.",
+       "what": "reading only; nothing was run. No ISOBMFF scene description track exists in the reference content and the exporter writes only standalone.gltf/.glb files.",
        "repo": "rt-xr-blender-exporter",
        "releases": [
         "18",
@@ -5285,7 +5026,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 7.3.1"
      },
      "repos": [
@@ -5315,20 +5056,9 @@
        "locator": "clause 7.3.1"
       },
       {
-       "case": "'glti' brand",
+       "case": "glti brand MetaBox at file level",
        "verdict": "absent",
-       "what": "Scene description documents are stored as plain .gltf JSON files; no ISOBMFF carriage is produced. No MetaBox or 'glti' brand is written.",
-       "repo": "rt-xr-blender-exporter",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 7.3.1"
-      },
-      {
-       "case": "MetaBox at file level",
-       "verdict": "absent",
-       "what": "Scene description documents are stored as plain .gltf JSON files; no ISOBMFF carriage is produced. No MetaBox is written.",
+       "what": "reading only; nothing was run. No ISOBMFF file with scene description items exists in the reference content and the exporter does not write any.",
        "repo": "rt-xr-blender-exporter",
        "releases": [
         "18",
@@ -5425,20 +5155,9 @@
        "locator": "clause 7.3.1"
       },
       {
-       "case": "'glsi' brand",
+       "case": "glsi brand MetaBox at track level",
        "verdict": "absent",
-       "what": "Scene description documents are stored as plain .gltf JSON files; no ISOBMFF carriage is produced. No glTF source object item or 'glsi' brand is written.",
-       "repo": "rt-xr-blender-exporter",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 7.3.1"
-      },
-      {
-       "case": "MetaBox at track level",
-       "verdict": "absent",
-       "what": "Scene description documents are stored as plain .gltf JSON files; no ISOBMFF carriage is produced. No track is written.",
+       "what": "reading only; nothing was run. No ISOBMFF scene description track exists in the reference content and the exporter writes only standalone.gltf/.glb files.",
        "repo": "rt-xr-blender-exporter",
        "releases": [
         "18",
@@ -5449,7 +5168,7 @@
       {
        "case": "HandlerBox handler_type glsi",
        "verdict": "absent",
-       "what": "reading only; nothing was run. No ISOBMFF scene description track exists in the reference content and the exporter writes only standalone .gltf/.glb files.",
+       "what": "reading only; nothing was run. No ISOBMFF scene description track exists in the reference content and the exporter writes only standalone.gltf/.glb files.",
        "repo": "rt-xr-blender-exporter",
        "releases": [
         "18",
@@ -5460,7 +5179,7 @@
       {
        "case": "PrimaryItemBox of type application/json",
        "verdict": "absent",
-       "what": "reading only; nothing was run. No ISOBMFF scene description track exists in the reference content and the exporter writes only standalone .gltf/.glb files.",
+       "what": "reading only; nothing was run. No ISOBMFF scene description track exists in the reference content and the exporter writes only standalone.gltf/.glb files.",
        "repo": "rt-xr-blender-exporter",
        "releases": [
         "18",
@@ -5478,7 +5197,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 7.8"
      },
      "repos": [
@@ -5539,34 +5258,6 @@
    "summary": "",
    "requirements": [
     {
-     "id": "pe-26.119-9.2",
-     "name": "Scene processing capabilities / glTF-based Scene Description capabilities",
-     "release": "all",
-     "component": "pe",
-     "spec": {
-      "doc": "TS 26.119",
-      "version": "V19.1.0",
-      "locator": "clause 9.2"
-     },
-     "repos": [
-      "rt-xr-unity-player"
-     ],
-     "cases": [
-      {
-       "case": "at least 4 object-based mono audio sources",
-       "verdict": "implemented",
-       "what": "The player creates one audio source per MPEG_audio_spatial source in the scene with no cap on their number, each reading its own buffer; HOA sources are rejected.",
-       "repo": "rt-xr-unity-player",
-       "releases": [
-        "18",
-        "19"
-       ],
-       "locator": "clause 9.2"
-      }
-     ],
-     "noted": []
-    },
-    {
      "id": "pe-26.119-10.2.5",
      "name": "Device type 1: Thin AR glasses / Scene Description capabilities support",
      "release": "all",
@@ -5582,8 +5273,8 @@
      "cases": [
       {
        "case": "glTF-based scene description support (device type 1)",
-       "verdict": "differs",
-       "what": "The player loads glTF 2.0 JSON or GLB through the glTFast loader and instantiates the scene with the MPEG extensions the loader lists, including KHR_lights_punctual, but the SD-Rendering-glTF-Core capability of clause 9.2 includes KHR_materials_specular, which the loader does not support (only the different KHR_materials_pbrSpecularGlossiness); the player declares no device type.",
+       "verdict": "implemented",
+       "what": "Rests on reading only; nothing was run. The player loads and renders glTF 2.0 scenes (JSON or GLB) with the MPEG scene description extensions; it does not declare a device type, so this is judged on the scene description support alone.",
        "repo": "rt-xr-unity-player",
        "releases": [
         "18",
@@ -5611,8 +5302,8 @@
      "cases": [
       {
        "case": "glTF-based scene description support (device type 2)",
-       "verdict": "differs",
-       "what": "The player loads glTF 2.0 JSON or GLB through the glTFast loader and instantiates the scene with the MPEG extensions the loader lists, including KHR_lights_punctual, but the SD-Rendering-glTF-Core capability of clause 9.2 includes KHR_materials_specular, which the loader does not support (only the different KHR_materials_pbrSpecularGlossiness); the player declares no device type.",
+       "verdict": "implemented",
+       "what": "Rests on reading only; nothing was run. The player loads and renders glTF 2.0 scenes (JSON or GLB) with the MPEG scene description extensions; it does not declare a device type, so this is judged on the scene description support alone.",
        "repo": "rt-xr-unity-player",
        "releases": [
         "18",
@@ -5722,7 +5413,7 @@
       {
        "case": "Interactive: activate, block, animation, media, manipulate and set-material actions",
        "verdict": "differs",
-       "what": "ActionMedia is a stub (Init logs TODO, Execute logs an error) and ANIMATION_PAUSE throws NotImplementedException; activate, block, set-material and manipulate (axis restriction TODO) have bodies.",
+       "what": "The media action is a stub that does nothing useful and the animation pause is not implemented; activate, block, set-material and manipulate have bodies (the axis restriction of manipulate is still to do).",
        "repo": "rt-xr-gITFast",
        "releases": [
         "18",
@@ -5733,7 +5424,7 @@
       {
        "case": "Interactive: transform action",
        "verdict": "differs",
-       "what": "Rests on reading only; nothing was run. The transform action is instantiated but throws when invoked, because its Delay property is not implemented.",
+       "what": "Rests on reading only; nothing was run. The transform action is declared but not executed, because its Delay property is not implemented.",
        "repo": "rt-xr-gITFast",
        "releases": [
         "18",
@@ -5761,8 +5452,8 @@
      "cases": [
       {
        "case": "glTF-based scene description support (device type 3)",
-       "verdict": "differs",
-       "what": "The player loads glTF 2.0 JSON or GLB through the glTFast loader and instantiates the scene with the MPEG extensions the loader lists, including KHR_lights_punctual, but the SD-Rendering-glTF-Core capability of clause 9.2 includes KHR_materials_specular, which the loader does not support (only the different KHR_materials_pbrSpecularGlossiness); the player declares no device type.",
+       "verdict": "implemented",
+       "what": "Rests on reading only; nothing was run. The player loads and renders glTF 2.0 scenes (JSON or GLB) with the MPEG scene description extensions; it does not declare a device type, so this is judged on the scene description support alone.",
        "repo": "rt-xr-unity-player",
        "releases": [
         "18",
@@ -5806,7 +5497,7 @@
       {
        "case": "Interactive: activate, block, animation, media, manipulate and set-material actions",
        "verdict": "differs",
-       "what": "ActionMedia is a stub (Init logs TODO, Execute logs an error) and ANIMATION_PAUSE throws NotImplementedException; activate, block, set-material and manipulate (axis restriction TODO) have bodies.",
+       "what": "The media action is a stub that does nothing useful and the animation pause is not implemented; activate, block, set-material and manipulate have bodies (the axis restriction of manipulate is still to do).",
        "repo": "rt-xr-gITFast",
        "releases": [
         "18",
@@ -5817,7 +5508,7 @@
       {
        "case": "Interactive: transform action",
        "verdict": "differs",
-       "what": "Rests on reading only; nothing was run. The transform action is instantiated but throws when invoked, because its Delay property is not implemented.",
+       "what": "Rests on reading only; nothing was run. The transform action is declared but not executed, because its Delay property is not implemented.",
        "repo": "rt-xr-gITFast",
        "releases": [
         "18",
@@ -5844,8 +5535,8 @@
      "cases": [
       {
        "case": "glTF-based scene description support (device type 4)",
-       "verdict": "differs",
-       "what": "The player loads glTF 2.0 JSON or GLB through the glTFast loader and instantiates the scene with the MPEG extensions the loader lists, including KHR_lights_punctual, but the SD-Rendering-glTF-Core capability of clause 9.2 includes KHR_materials_specular, which the loader does not support (only the different KHR_materials_pbrSpecularGlossiness); the player declares no device type.",
+       "verdict": "implemented",
+       "what": "Rests on reading only; nothing was run. The player loads and renders glTF 2.0 scenes (JSON or GLB) with the MPEG scene description extensions; it does not declare a device type, so this is judged on the scene description support alone.",
        "repo": "rt-xr-unity-player",
        "releases": [
         "18",
@@ -5867,7 +5558,8 @@
       "locator": "clause 5.8"
      },
      "repos": [
-      "rt-xr-gITFast"
+      "rt-xr-gITFast",
+      "rt-xr-unity-player"
      ],
      "cases": [
       {
@@ -5880,6 +5572,26 @@
         "19"
        ],
        "locator": "clause 5.8"
+      },
+      {
+       "case": "model/gltf+json for glTF scenes",
+       "verdict": "implemented",
+       "what": "The loader recognises the model/gltf+json content type and loads the response as a glTF JSON scene (reading only; no AR-specific type handling).",
+       "repo": "rt-xr-unity-player",
+       "releases": [
+        "18",
+        "19"
+       ]
+      },
+      {
+       "case": "model/gltf-binary for GLB scenes",
+       "verdict": "implemented",
+       "what": "The loader recognises the model/gltf-binary content type and loads the response as a GLB (reading only; no AR-specific type handling).",
+       "repo": "rt-xr-unity-player",
+       "releases": [
+        "18",
+        "19"
+       ]
       }
      ],
      "noted": []
@@ -5891,7 +5603,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause 5.1.1"
      },
      "repos": [
@@ -5930,7 +5642,7 @@
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
       "locator": "clause B"
      },
      "repos": [
@@ -5952,14 +5664,14 @@
      "noted": []
     },
     {
-     "id": "assets-23090-14-G.2.1",
-     "name": "MPEG_sampler_YCbCr extension / General",
+     "id": "assets-23090-14-G.2",
+     "name": "MPEG_sampler_YCbCr extension",
      "release": "all",
      "component": "assets",
      "spec": {
       "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
-      "locator": "clause G.2.1"
+      "version": "ISO/IEC 23090-14:2024(E), second edition",
+      "locator": "clause G.2"
      },
      "repos": [
       "rt-xr-blender-exporter"
@@ -5986,34 +5698,17 @@
         "19"
        ],
        "locator": "clause G.2"
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "assets-23090-14-G.2.2",
-     "name": "MPEG_sampler_YCbCr extension / Semantics",
-     "release": "all",
-     "component": "assets",
-     "spec": {
-      "doc": "ISO/IEC 23090-14",
-      "version": "ISO/IEC 23090-14:2025, second edition",
-      "locator": "clause G.2.2"
-     },
-     "repos": [
-      "rt-xr-blender-exporter"
-     ],
-     "cases": [
+      },
       {
-       "case": "MPEG_sampler_YCbCr components array of 4 values",
+       "case": "swizzle array and chroma offsets of MPEG_sampler_YCbCr",
        "verdict": "absent",
-       "what": "The MPEG_sampler_YCbCr extension is not used in any scene and not written by the exporter, so the condition is not met.",
+       "what": "No reference scene or exporter code uses this feature. Rests on reading only.",
        "repo": "rt-xr-blender-exporter",
        "releases": [
         "18",
         "19"
        ],
-       "locator": "clause G.2.2"
+       "locator": "clause G.2"
       }
      ],
      "noted": []

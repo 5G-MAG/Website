@@ -2,10 +2,8 @@
 title: Implementation Detail
 hide_title: true
 sidebar_position: 2
-description: Explains what MPEG ARF (ISO/IEC 23090-39) covers and how the Avatar Communication tools split into capture, transport, and rendering components.
+description: "Status of the Conversational Avatar reference tools: not yet audited; the repositories are private."
 ---
-
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -26,52 +24,35 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 </div>
 </div>
 
-See also: <a href={useBaseUrl('/reference-tools/avatar/tutorials#developer-exchange')}>Developer Exchange</a>.
+:::tip[In short]
 
-**Category:** MPEG Implementation
+- **What the tools are:** reference tools for conversational avatars using MPEG ARF (ISO/IEC 23090-39) in a real-time call.
+- **Status:** not yet audited. The repositories are private today.
+- **Source of this page:** the repository descriptions; no code audit has been done yet.
 
-## What This Project Implements
+:::
 
-This page describes the specification within the scope of the Avatar Communication reference tools, what that specification covers, and how the tools are organised.
+For what ARF and the call procedures define, see the [Technology](/tech/avatar) and the [Standards](/standards/avatar). For how to run the tools, see the [Tutorials](./tutorials) and the [Developer Exchange](./tutorials#developer-exchange).
 
-The reference tools target MPEG Avatar Representation Format (ARF), specified as Part 39 of the MPEG-I suite in ISO/IEC 23090-39. ARF is a format for representing 3D avatars (synthesised digital representations of a person) so they can be stored, carried between systems, and animated consistently across different implementations. It defines the avatar's geometry, appearance, and the data needed to drive its animation. It is also designed to work alongside MPEG-I Scene Description (ISO/IEC 23090-14), so an avatar can be placed and anchored within a wider 3D scene in a real-world context. The goal is real-time conversational use: an avatar that stands in for a participant in an immersive call or virtual-presence session, driven from live audio and video input.
+## Implementation status
 
-ISO/IEC 23090-39 was, as of 2025, still at the Draft International Standard (DIS) stage rather than published as a final International Standard. MPEG's own report of its 155th meeting (Geneva, 13–17 July 2026) states that MPEG Systems (WG 3) advanced it to Final Draft International Standard (FDIS), the stage just before publication, though the [ISO catalogue page](https://www.iso.org/standard/91745.html) itself had not yet updated its own listing to reflect that at the time of writing. This matters for implementers because the format can still change before publication, so reference tooling built against it should be treated as tracking a moving target. Confirm the current status of the specification on the ISO catalogue page before relying on it, and check the [standards portal](/standards/avatar) for the maintained view of the related work.
+Not yet audited. The repositories are private; see [Early Access](/early-access) to request access. The status of each repository, from its description:
 
-On the implementation side, the work covers the pieces needed to capture, carry, and present an ARF avatar over a 5G delivery path. Broadly, that means tooling to track a participant and produce animation data, a path to package and exchange that data as part of a real-time call, sample content for testing, and integration with a Unity-based presentation so the avatar can be rendered in an interactive application. The separation between the component that produces the avatar animation and the engine that renders it follows the same decoupling pattern used across 5G-MAG's other immersive media tools, including the XR player.
+- **rt-avatar-call:** a reference framework for avatar communication; its goal is to demonstrate WebRTC communication using MPEG ARF and the related animation compression.
+- **rt-avatar-content:** reference MPEG ARF content for real-time avatar communication.
+- **rt-avatar-unity-tracker:** a sample OpenXR tracker for ARF avatar animation in Unity.
 
-The reference tooling in this area is still maturing, and the exact set of public repositories changes as the project develops. For the authoritative, current list of repositories and their implementation status, see [Repositories & Releases](/reference-tools/avatar#repositories--releases) on the project index rather than relying on a hard-coded list here. Roadmap and implementation-status details are tracked on the [Conversational Avatar Kanban board](https://github.com/orgs/5G-MAG/projects/48/views/20) (see [Developer Updates](/reference-tools/avatar#developer-updates) on the project index).
+:::info[Full audit for members]
 
-ARF (ISO/IEC 23090-39) is defined in two halves, and the reference tooling is organised around the same split:
+When an audit of this project exists, the full audit (each requirement with the code behind each verdict) will be available to 5G-MAG members through [Developer Tools](/developer-tools).
 
-- **The base avatar.** ARF's Base Avatar Format describes the static asset using skeletons, meshes, blendshapes, skins, landmarks, and nodes (joints). The tools need to load such an asset, from either an ISOBMFF container (ISO/IEC 14496-12) or a Zip-based container (ISO/IEC 21320-1), and bind it into a scene.
-- **The animation stream.** ARF's Animation Stream Format carries time-varying data as a sequence of Avatar Animation Units (AAUs), each with an AAU header and zero or more AAU packets and tagged with an Avatar ID. The tools produce this stream from live tracking on the sender side and consume it on the receiver side to drive the bound avatar.
+[Become a member](/membership) · [Request access](/early-access)
 
-In practice the implementation splits into a small number of cooperating components:
-
-- A **tracking / animation producer** that takes camera and microphone input, tracks the participant, and emits ARF animation data mapped onto the avatar's landmarks and joints.
-- A **transport / packaging path** that packages the animation as part of a real-time call and exchanges it with the far end.
-- **Sample content** (base avatars and recorded animation) for testing without a live capture rig.
-- A **Unity-based presentation** that loads the base avatar, places it in a scene using the MPEG-I Scene Description avatar node (the `MPEG_node_avatar` glTF extension, see the tech documentation), and applies the animation stream for rendering.
-
-This mirrors the decoupling used elsewhere in 5G-MAG's immersive tooling: the component that produces avatar animation is kept separate from the engine that renders it, so the two can be developed and swapped independently as long as they agree on the ARF stream format. Because ARF is not yet final, expect the animation-stream and base-avatar details to change, and pin the tools to a known specification draft when building.
-
-## Getting Started
-
-The runnable software and setup instructions live on the Developer Portal, not on this page. To begin:
-
-- Read the [Tech: Avatar Communications](/tech/avatar) documentation for the ARF data model, the scene-description integration, and the end-to-end procedure, so the component boundaries are clear before you build.
-- Follow the [Tutorials](./tutorials) page for a getting-started walkthrough to build and run the avatar call demo.
-- Use [Repositories & Releases](/reference-tools/avatar#repositories--releases) on the project index for the current list of repositories, their status, and tagged versions.
-- Track roadmap and open work on the [Conversational Avatar Kanban board](https://github.com/orgs/5G-MAG/projects/48/views/20).
-
-If you only need to render and inspect avatars, start from the Unity presentation with the provided sample content. If you are working on capture and animation, start from the tracking/animation producer and validate its output against the sample animation streams before wiring it into a live call.
+:::
 
 ## Related
 
 - [Repositories & Releases](/reference-tools/avatar#repositories--releases)
 - [Slide deck: Conversational Avatar Communication with MPEG ARF overview](pathname:///docs/Reference_Tools_Avatar.pdf)
-- See also: [XR/3D Scenes with MPEG-I Scene Description](/reference-tools/xr): the scene framework that ARF is designed to plug into.
-:::note
-Refer to the [Conversational Avatar Communication repositories](https://github.com/5G-MAG) on GitHub to use or contribute to these Reference Tools. See [How to Contribute](/contributing) for the process.
-:::
+- [XR/3D Scenes with MPEG-I Scene Description](/reference-tools/xr): the scene framework that ARF is designed to work with
+- [Tutorials](./tutorials): step-by-step guides to run this tool

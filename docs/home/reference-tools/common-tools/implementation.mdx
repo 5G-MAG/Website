@@ -2,9 +2,8 @@
 title: Implementation Detail
 hide_title: true
 sidebar_position: 2
-description: Lists the shared helper tools in rt-common-shared (5GMS, MBMS, Simple Express Server, Open5GS Tools, Data Reporting, Avcodec) and what each one supports.
+description: "Status of the shared helper tools in rt-common-shared."
 ---
-
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -17,11 +16,17 @@ description: Lists the shared helper tools in rt-common-shared (5GMS, MBMS, Simp
 </div>
 </div>
 
-**Category:** Shared Tools
+:::tip[In short]
 
-## What This Project Implements
+- **What it is:** shared helper files (scripts, example configurations and build utilities) used by several Reference Tools. No specification is implemented here and no audit is planned.
+- **Status:** the repository README marks it as under development, with no release yet.
+- **Source of this page:** the repository README.
 
-Common Tools are shared helper repositories (scripts, example configurations and build utilities) that support several Reference Tools rather than implementing a specification of their own. You normally arrive here from a specific tool's own setup steps, not by starting here: each entry below names the project it supports; refer to that project's own Implementation Detail page for more context.
+:::
+
+You normally arrive here from the setup steps of a specific tool; refer to that project's own Implementation Detail page for more context.
+
+## What is in rt-common-shared
 
 All of the tools below live in a single repository, [rt-common-shared](https://github.com/5G-MAG/rt-common-shared), grouped by subdirectory.
 
@@ -33,9 +38,7 @@ In particular, the `5G_APIs-overrides` directory contains files that can be used
 
 ### Multimedia Broadcast Multicast Service (MBMS) and LTE-based 5G Broadcast: [rt-common-shared/mbms](https://github.com/5G-MAG/rt-common-shared/tree/main/mbms)
 
-Includes example configurations for the LTE-based 5G Broadcast (rt-mbms-*) Reference Tools.
-
-In particular, it includes information about the `ServiceAnnouncement(SA)` file, also referred to as `bootstrap.multipart` in the context of Reference Tools. The Service Announcement file is the entry document a receiver reads first to discover which broadcast services are available and how to acquire them.
+Includes example configurations for the LTE-based 5G Broadcast (rt-mbms-*) Reference Tools, and information about the MBMS Service Announcement file, also referred to as `bootstrap.multipart` in the context of Reference Tools.
 
 ### Simple Express Server: [rt-common-shared/simple-express-server](https://github.com/5G-MAG/rt-common-shared/blob/main/simple-express-server/README.md)
 
@@ -53,11 +56,11 @@ Includes modified versions of the OpenAPI YAML files from the 5G_APIs repository
 
 Includes a helper script to build ffmpeg libraries for Android.
 
+## Used with other projects
+
+[5G Media Streaming](../5gms), [5G Broadcast](../5g-broadcast) and [UE Data Collection](../data-collection) use files from this repository. Whether other projects do has not been checked.
+
 ## Related
 
 - [Repositories & Releases](/reference-tools/common-tools#repositories--releases)
-- Projects using these helpers: [5G Media Streaming](../5gms), [5G Broadcast](../5g-broadcast), [3GPP RAN and Core Platforms](../3gpp-platforms) and [UE Data Collection](../data-collection)
-- Standards: none. Common Tools is a shared toolkit of helper scripts and configurations supporting other Reference Tools projects; it does not implement a specification of its own.
-:::note
-Refer to the [Common Tools repositories](https://github.com/5G-MAG) on GitHub to use or contribute to these Reference Tools. See [How to Contribute](/contributing) for the process.
-:::
+- Standards: none. Common Tools does not implement a specification of its own.
