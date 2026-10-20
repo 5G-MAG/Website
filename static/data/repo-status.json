@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-19",
+  "updated_at": "2026-10-20",
   "rule": "No release: Under Development. A release, and a non-housekeeping commit on development, a release, or an open pull request updated in the last 365 days: Actively Maintained. Otherwise Stable.",
   "repos": {
     "6G-Testbed": {
@@ -29,7 +29,7 @@
     "netemu-dashboard": {
       "status": "Under Development",
       "latest_release": null,
-      "last_work_commit": "2026-10-06",
+      "last_work_commit": "2026-10-19",
       "open_pulls_last_year": 0
     },
     "open5gs": {
@@ -65,7 +65,7 @@
     "rt-5gms-application-provider": {
       "status": "Actively Maintained",
       "latest_release": "2026-08-03",
-      "last_work_commit": "2026-10-14",
+      "last_work_commit": "2026-10-19",
       "open_pulls_last_year": 0
     },
     "rt-5gms-application-server": {
@@ -131,7 +131,7 @@
     "rt-camara-examples": {
       "status": "Under Development",
       "latest_release": null,
-      "last_work_commit": "2026-10-07",
+      "last_work_commit": "2026-10-19",
       "open_pulls_last_year": 0
     },
     "rt-cmmf-encoder": {
@@ -155,37 +155,37 @@
     "rt-dvb-i-android-application": {
       "status": "Under Development",
       "latest_release": null,
-      "last_work_commit": "2026-10-09",
+      "last_work_commit": "2026-10-19",
       "open_pulls_last_year": 0
     },
     "rt-dvb-i-application": {
       "status": "Under Development",
       "latest_release": null,
-      "last_work_commit": "2026-10-05",
+      "last_work_commit": "2026-10-19",
       "open_pulls_last_year": 0
     },
     "rt-dvb-i-application-provider": {
       "status": "Under Development",
       "latest_release": null,
-      "last_work_commit": "2026-10-05",
+      "last_work_commit": "2026-10-19",
       "open_pulls_last_year": 0
     },
     "rt-dvb-i-examples": {
       "status": "Under Development",
       "latest_release": null,
-      "last_work_commit": "2026-10-05",
+      "last_work_commit": "2026-10-19",
       "open_pulls_last_year": 0
     },
     "rt-dvb-i-service-list-registry": {
       "status": "Under Development",
       "latest_release": null,
-      "last_work_commit": "2026-10-05",
+      "last_work_commit": "2026-10-19",
       "open_pulls_last_year": 0
     },
     "rt-libflute": {
       "status": "Actively Maintained",
       "latest_release": "2026-09-01",
-      "last_work_commit": "2026-10-16",
+      "last_work_commit": "2026-10-19",
       "open_pulls_last_year": 4
     },
     "rt-mbms-application": {
@@ -231,10 +231,10 @@
       "open_pulls_last_year": 2
     },
     "rt-mbms-mw": {
-      "status": "Under Development",
-      "latest_release": null,
+      "status": "Actively Maintained",
+      "latest_release": "2022-12-08",
       "last_work_commit": "2025-10-31",
-      "open_pulls_last_year": 0
+      "open_pulls_last_year": 1
     },
     "rt-mbms-mw-android": {
       "status": "Actively Maintained",
@@ -252,7 +252,7 @@
       "status": "Actively Maintained",
       "latest_release": "2024-09-05",
       "last_work_commit": "2025-10-31",
-      "open_pulls_last_year": 0
+      "open_pulls_last_year": 1
     },
     "rt-mbs-application": {
       "status": "Under Development",
@@ -345,8 +345,8 @@
       "open_pulls_last_year": 0
     },
     "rt-wui": {
-      "status": "Under Development",
-      "latest_release": null,
+      "status": "Stable",
+      "latest_release": "2022-12-08",
       "last_work_commit": "2025-08-08",
       "open_pulls_last_year": 0
     },
@@ -360,7 +360,7 @@
       "status": "Under Development",
       "latest_release": null,
       "last_work_commit": "2025-06-20",
-      "open_pulls_last_year": 2
+      "open_pulls_last_year": 3
     },
     "rt-xr-gITFast": {
       "status": "Under Development",
@@ -377,7 +377,7 @@
     "rt-xr-unity-player": {
       "status": "Actively Maintained",
       "latest_release": "2025-02-27",
-      "last_work_commit": "2026-10-09",
+      "last_work_commit": "2026-10-19",
       "open_pulls_last_year": 1
     },
     "srsRAN": {
@@ -407,7 +407,7 @@
     "vops-conformance-validator": {
       "status": "Under Development",
       "latest_release": null,
-      "last_work_commit": "2026-09-30",
+      "last_work_commit": "2026-10-19",
       "open_pulls_last_year": 0
     }
   }

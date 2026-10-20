@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-19 01:56 UTC",
+  "updated_at": "2026-10-20 02:14 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -72,32 +72,6 @@
           "last_comment_date": null
         },
         {
-          "repo": "rt-5gms-application",
-          "branch": null,
-          "number": 53,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-5gms-application/pull/53",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-5gms-media-session-handler",
-          "branch": null,
-          "number": 64,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-5gms-media-session-handler/pull/64",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
           "repo": "rt-5gms-media-stream-handler",
           "branch": null,
           "number": 84,
@@ -111,50 +85,11 @@
           "last_comment_date": null
         },
         {
-          "repo": "rt-5gms-common-android-library",
-          "branch": null,
-          "number": 37,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-5gms-common-android-library/pull/37",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-5gms-examples",
-          "branch": null,
-          "number": 45,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-5gms-examples/pull/45",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
           "repo": "rt-5gc-service-consumers",
           "branch": null,
           "number": 35,
           "title": "docs: apply the 5G-MAG README format",
           "url": "https://github.com/5G-MAG/rt-5gc-service-consumers/pull/35",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-cmmf-encoder",
-          "branch": null,
-          "number": 2,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-cmmf-encoder/pull/2",
           "draft": false,
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
@@ -231,123 +166,6 @@
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-09-30",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-mbms-modem",
-          "branch": null,
-          "number": 54,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-mbms-modem/pull/54",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-mbms-tx",
-          "branch": null,
-          "number": 7,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-mbms-tx/pull/7",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-mbms-mw-android",
-          "branch": null,
-          "number": 13,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-mbms-mw-android/pull/13",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-mbms-examples",
-          "branch": null,
-          "number": 20,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-mbms-examples/pull/20",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-mbms-client",
-          "branch": null,
-          "number": 1,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-mbms-client/pull/1",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-mbms-application",
-          "branch": null,
-          "number": 1,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-mbms-application/pull/1",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-mbms-application-provider",
-          "branch": null,
-          "number": 1,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-mbms-application-provider/pull/1",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-mbms-bmsc",
-          "branch": null,
-          "number": 1,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-mbms-bmsc/pull/1",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-mbms-gw",
-          "branch": null,
-          "number": 1,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-mbms-gw/pull/1",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
           "last_comment_by": null,
           "last_comment_date": null
         },
@@ -448,47 +266,7 @@
       "name": "5G Broadcast - Emergency Alerts",
       "doc_url": "/reference-tools/emergency-alerts/",
       "tagline": "Emergency warnings delivered over 5G Broadcast",
-      "pulls": [
-        {
-          "repo": "rt-pws-cbc",
-          "branch": null,
-          "number": 1,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-pws-cbc/pull/1",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-mbms-tx",
-          "branch": null,
-          "number": 7,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-mbms-tx/pull/7",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-mbms-application",
-          "branch": null,
-          "number": 1,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-mbms-application/pull/1",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        }
-      ]
+      "pulls": []
     },
     {
       "name": "XR/3D Scenes with MPEG-I Scene Description",
@@ -742,58 +520,6 @@
           "number": 76,
           "title": "docs: apply the 5G-MAG README format",
           "url": "https://github.com/5G-MAG/rt-mbs-transport-function/pull/76",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-mbs-examples",
-          "branch": null,
-          "number": 36,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-mbs-examples/pull/36",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-mbs-application-provider",
-          "branch": null,
-          "number": 4,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-mbs-application-provider/pull/4",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-mbs-client",
-          "branch": null,
-          "number": 4,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-mbs-client/pull/4",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-mbs-application",
-          "branch": null,
-          "number": 3,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-mbs-application/pull/3",
           "draft": false,
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
@@ -1295,45 +1021,6 @@
           "created_at": "2026-10-05",
           "last_comment_by": null,
           "last_comment_date": null
-        },
-        {
-          "repo": "rt-v3c-unity-player",
-          "branch": null,
-          "number": 2,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-v3c-unity-player/pull/2",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-v3c-decoder-plugin",
-          "branch": null,
-          "number": 4,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-v3c-decoder-plugin/pull/4",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-v3c-content",
-          "branch": null,
-          "number": 1,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-v3c-content/pull/1",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
         }
       ]
     },
@@ -1341,21 +1028,7 @@
       "name": "Dynamic Mesh Coding",
       "doc_url": "/reference-tools/vdmc/",
       "tagline": "Compressing moving 3D surface meshes for real-time immersive environments",
-      "pulls": [
-        {
-          "repo": "rt-vdmc-web-decoder-player",
-          "branch": null,
-          "number": 1,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-vdmc-web-decoder-player/pull/1",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        }
-      ]
+      "pulls": []
     },
     {
       "name": "Beyond 2D Video Experiences",
@@ -1367,21 +1040,7 @@
       "name": "Beyond 2D Evaluation Framework",
       "doc_url": "/testbeds/beyond-2d/",
       "tagline": "Evaluation framework for beyond-2D video experiences",
-      "pulls": [
-        {
-          "repo": "rt-beyond2d-evaluation-framework",
-          "branch": null,
-          "number": 8,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-beyond2d-evaluation-framework/pull/8",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        }
-      ]
+      "pulls": []
     },
     {
       "name": "AI in Media Services",
@@ -1439,7 +1098,7 @@
           "number": 8,
           "title": "feature/unityarf 1.1.0.155",
           "url": "https://github.com/5G-MAG/rt-avatar-content/pull/8",
-          "draft": true,
+          "draft": false,
           "author_login": "nlsdvl",
           "author_avatar": "https://avatars.githubusercontent.com/u/2748737?v=4",
           "created_at": "2026-10-16",
@@ -1453,19 +1112,6 @@
       "doc_url": "/testbeds/ai-ml/",
       "tagline": "Evaluation framework for AI/ML models in media processing for 3GPP systems",
       "pulls": [
-        {
-          "repo": "rt-ai-ml-evaluation-framework",
-          "branch": null,
-          "number": 5,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-ai-ml-evaluation-framework/pull/5",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
         {
           "repo": "rt-ai-ml-evaluation-framework",
           "branch": null,
@@ -1508,19 +1154,6 @@
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-10-08",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-common-shared",
-          "branch": null,
-          "number": 75,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-common-shared/pull/75",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
           "last_comment_by": null,
           "last_comment_date": null
         }
@@ -1567,19 +1200,6 @@
         {
           "repo": "rt-5gms-application",
           "branch": null,
-          "number": 53,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-5gms-application/pull/53",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-5gms-application",
-          "branch": null,
           "number": 52,
           "title": "Fixing instructions",
           "url": "https://github.com/5G-MAG/rt-5gms-application/pull/52",
@@ -1620,19 +1240,6 @@
           "author_login": "jordijoangimenez",
           "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
           "created_at": "2026-10-05",
-          "last_comment_by": null,
-          "last_comment_date": null
-        },
-        {
-          "repo": "rt-cmmf-encoder",
-          "branch": null,
-          "number": 2,
-          "title": "docs: apply the 5G-MAG README format",
-          "url": "https://github.com/5G-MAG/rt-cmmf-encoder/pull/2",
-          "draft": false,
-          "author_login": "jordijoangimenez",
-          "author_avatar": "https://avatars.githubusercontent.com/u/87380947?v=4",
-          "created_at": "2026-09-29",
           "last_comment_by": null,
           "last_comment_date": null
         },

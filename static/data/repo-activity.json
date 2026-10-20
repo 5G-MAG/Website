@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-19 01:57 UTC",
+  "updated_at": "2026-10-20 02:15 UTC",
   "projects": [
     {
       "name": "5G Media Streaming (5GMS)",
@@ -12,6 +12,7 @@
           "auxiliary": false,
           "private": false,
           "pushed_at": "2026-02-18",
+          "latest_release": null,
           "pulls": [
             {
               "number": 2,
@@ -20,6 +21,7 @@
               "draft": false,
               "author": "shilinding",
               "created_at": "2026-07-02",
+              "updated_at": "2026-07-02",
               "base": "main"
             }
           ],
@@ -28,7 +30,8 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2026-02-18"
+              "last_commit": "2026-02-18",
+              "last_work_commit": "2026-02-18"
             }
           ]
         },
@@ -38,7 +41,8 @@
           "description": "5GMS-Aware Application",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-03",
+          "pushed_at": "2026-10-19",
+          "latest_release": "2026-05-26",
           "pulls": [
             {
               "number": 55,
@@ -47,15 +51,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-03",
-              "base": "development"
-            },
-            {
-              "number": 53,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/rt-5gms-application/pull/53",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
+              "updated_at": "2026-10-03",
               "base": "development"
             },
             {
@@ -65,6 +61,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-05-21",
+              "updated_at": "2026-06-18",
               "base": "development"
             }
           ],
@@ -123,32 +120,38 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2026-05-26"
-            },
-            {
-              "name": "feature/dvbi-client",
-              "default": false,
-              "last_commit": "2026-10-03"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2026-05-26",
+              "last_work_commit": "2026-05-26"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-05-26"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-05-26"
+            },
+            {
+              "name": "fix/apply-new-format",
+              "default": false,
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
+            },
+            {
+              "name": "feature/dvbi-client",
+              "default": false,
+              "last_commit": "2026-10-03",
+              "last_work_commit": "2026-10-03"
             },
             {
               "name": "feature/fusecoForum",
               "default": false,
-              "last_commit": "2024-11-05"
+              "last_commit": "2024-11-05",
+              "last_work_commit": "2024-11-05"
             },
             {
               "name": "feature/5gms-aware-app",
               "default": false,
-              "last_commit": "2023-03-06"
+              "last_commit": "2023-03-06",
+              "last_work_commit": "2023-03-06"
             }
           ]
         },
@@ -158,7 +161,8 @@
           "description": "5GMS Application Function (AF)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-14",
+          "pushed_at": "2026-10-19",
+          "latest_release": "2026-08-03",
           "pulls": [
             {
               "number": 203,
@@ -167,6 +171,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-09-29",
+              "updated_at": "2026-10-19",
               "base": "development"
             }
           ],
@@ -393,67 +398,80 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2026-08-03"
-            },
-            {
-              "name": "Feature/DCAF",
-              "default": false,
-              "last_commit": "2026-10-14"
-            },
-            {
-              "name": "feature/multi-application-server-https-support",
-              "default": false,
-              "last_commit": "2026-09-30"
+              "last_commit": "2026-08-03",
+              "last_work_commit": "2026-08-03"
             },
             {
               "name": "fix/apply-new-format",
               "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
+            },
+            {
+              "name": "Feature/DCAF",
+              "default": false,
+              "last_commit": "2026-10-14",
+              "last_work_commit": "2026-10-14"
+            },
+            {
+              "name": "feature/multi-application-server-https-support",
+              "default": false,
+              "last_commit": "2026-09-30",
+              "last_work_commit": "2026-09-30"
             },
             {
               "name": "feature/multi-application-server-support",
               "default": false,
-              "last_commit": "2026-09-24"
+              "last_commit": "2026-09-24",
+              "last_work_commit": "2026-09-24"
             },
             {
               "name": "feature/rtc-provisioning-config-poc",
               "default": false,
-              "last_commit": "2026-09-18"
+              "last_commit": "2026-09-18",
+              "last_work_commit": "2026-09-18"
             },
             {
               "name": "feature/Integrate-DCAF",
               "default": false,
-              "last_commit": "2026-09-04"
+              "last_commit": "2026-09-04",
+              "last_work_commit": "2026-09-04"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-08-03"
+              "last_commit": "2026-08-03",
+              "last_work_commit": "2026-08-03"
             },
             {
               "name": "v1.4.x",
               "default": false,
-              "last_commit": "2025-10-14"
+              "last_commit": "2025-10-14",
+              "last_work_commit": "2025-10-14"
             },
             {
               "name": "v1.3.x",
               "default": false,
-              "last_commit": "2023-04-27"
+              "last_commit": "2023-04-27",
+              "last_work_commit": "2023-04-27"
             },
             {
               "name": "v1.2.x",
               "default": false,
-              "last_commit": "2023-04-05"
+              "last_commit": "2023-04-05",
+              "last_work_commit": "2023-04-05"
             },
             {
               "name": "v1.0.x",
               "default": false,
-              "last_commit": "2023-02-26"
+              "last_commit": "2023-02-26",
+              "last_work_commit": "2023-02-26"
             },
             {
               "name": "v1.1.x",
               "default": false,
-              "last_commit": "2023-02-26"
+              "last_commit": "2023-02-26",
+              "last_work_commit": "2023-02-26"
             }
           ]
         },
@@ -463,7 +481,8 @@
           "description": "5GMS Application Provider",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-14",
+          "pushed_at": "2026-10-19",
+          "latest_release": "2026-08-03",
           "pulls": [],
           "issues": [
             {
@@ -532,27 +551,32 @@
             {
               "name": "master",
               "default": true,
-              "last_commit": "2026-08-03"
+              "last_commit": "2026-08-03",
+              "last_work_commit": "2026-08-03"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-14"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
             },
             {
               "name": "fix/apply-new-format",
               "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2026-09-29",
+              "last_work_commit": "2026-08-03"
             },
             {
               "name": "feature/cmmf-vod-config-formatter",
               "default": false,
-              "last_commit": "2026-09-24"
+              "last_commit": "2026-09-24",
+              "last_work_commit": "2026-09-24"
             },
             {
               "name": "featute/increaseVersionNumber",
               "default": false,
-              "last_commit": "2026-05-15"
+              "last_commit": "2026-05-15",
+              "last_work_commit": "2026-05-15"
             }
           ]
         },
@@ -562,7 +586,8 @@
           "description": "5GMS Application Server (AS)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-07",
+          "pushed_at": "2026-10-19",
+          "latest_release": "2026-08-03",
           "pulls": [
             {
               "number": 113,
@@ -571,6 +596,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-09-29",
+              "updated_at": "2026-10-19",
               "base": "development"
             }
           ],
@@ -708,42 +734,50 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2026-08-03"
-            },
-            {
-              "name": "feature/multi-application-server-support",
-              "default": false,
-              "last_commit": "2026-09-30"
+              "last_commit": "2026-08-03",
+              "last_work_commit": "2026-08-03"
             },
             {
               "name": "fix/apply-new-format",
               "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
+            },
+            {
+              "name": "feature/multi-application-server-support",
+              "default": false,
+              "last_commit": "2026-09-30",
+              "last_work_commit": "2026-09-30"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-08-03"
+              "last_commit": "2026-08-03",
+              "last_work_commit": "2026-08-03"
             },
             {
               "name": "v1.2.x",
               "default": false,
-              "last_commit": "2025-03-19"
+              "last_commit": "2025-03-19",
+              "last_work_commit": "2025-03-19"
             },
             {
               "name": "fix/luaError",
               "default": false,
-              "last_commit": "2024-12-10"
+              "last_commit": "2024-12-10",
+              "last_work_commit": "2024-12-10"
             },
             {
               "name": "v1.1.x",
               "default": false,
-              "last_commit": "2023-06-05"
+              "last_commit": "2023-06-05",
+              "last_work_commit": "2023-06-05"
             },
             {
               "name": "v1.0.x",
               "default": false,
-              "last_commit": "2023-02-26"
+              "last_commit": "2023-02-26",
+              "last_work_commit": "2023-02-26"
             }
           ]
         },
@@ -753,18 +787,9 @@
           "description": "5GMS Media Session Handler",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-09-29",
-          "pulls": [
-            {
-              "number": 64,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/rt-5gms-media-session-handler/pull/64",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
-              "base": "development"
-            }
-          ],
+          "pushed_at": "2026-10-19",
+          "latest_release": "2026-05-26",
+          "pulls": [],
           "issues": [
             {
               "number": 61,
@@ -860,17 +885,20 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2026-05-26"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2026-05-26",
+              "last_work_commit": "2026-05-26"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-05-26"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-05-26"
+            },
+            {
+              "name": "fix/apply-new-format",
+              "default": false,
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
             }
           ]
         },
@@ -880,7 +908,8 @@
           "description": "5GMS Media Stream Handler",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-09-29",
+          "pushed_at": "2026-10-19",
+          "latest_release": "2026-05-26",
           "pulls": [
             {
               "number": 84,
@@ -889,6 +918,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-09-29",
+              "updated_at": "2026-10-19",
               "base": "development"
             }
           ],
@@ -1029,22 +1059,26 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2026-05-26"
+              "last_commit": "2026-05-26",
+              "last_work_commit": "2026-05-26"
             },
             {
               "name": "fix/apply-new-format",
               "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-05-26"
+              "last_commit": "2026-05-26",
+              "last_work_commit": "2026-05-26"
             },
             {
               "name": "feature/cmcd",
               "default": false,
-              "last_commit": "2025-04-10"
+              "last_commit": "2025-04-10",
+              "last_work_commit": "2025-04-10"
             }
           ]
         },
@@ -1054,34 +1088,28 @@
           "description": "CMMF Encoder",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-09-29",
-          "pulls": [
-            {
-              "number": 2,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/rt-cmmf-encoder/pull/2",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
-              "base": "development"
-            }
-          ],
+          "pushed_at": "2026-10-19",
+          "latest_release": null,
+          "pulls": [],
           "issues": [],
           "branches": [
             {
               "name": "main",
               "default": true,
-              "last_commit": "2026-09-10"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2026-09-10",
+              "last_work_commit": "2026-09-10"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-09-21"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-09-21"
+            },
+            {
+              "name": "fix/apply-new-format",
+              "default": false,
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
             }
           ]
         },
@@ -1091,7 +1119,8 @@
           "description": "5G Core Service Consumers",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-10-09",
+          "pushed_at": "2026-10-19",
+          "latest_release": "2026-06-05",
           "pulls": [
             {
               "number": 35,
@@ -1100,6 +1129,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-09-29",
+              "updated_at": "2026-10-19",
               "base": "development"
             }
           ],
@@ -1119,42 +1149,50 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2026-05-27"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-10-09"
-            },
-            {
-              "name": "feature/mbs-compliance-fixes",
-              "default": false,
-              "last_commit": "2026-10-01"
+              "last_commit": "2026-05-27",
+              "last_work_commit": "2026-05-27"
             },
             {
               "name": "fix/apply-new-format",
               "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
+            },
+            {
+              "name": "development",
+              "default": false,
+              "last_commit": "2026-10-09",
+              "last_work_commit": "2026-10-09"
+            },
+            {
+              "name": "feature/mbs-compliance-fixes",
+              "default": false,
+              "last_commit": "2026-10-01",
+              "last_work_commit": "2026-10-01"
             },
             {
               "name": "feature/mnc-length-aware-plmn-id",
               "default": false,
-              "last_commit": "2026-09-22"
+              "last_commit": "2026-09-22",
+              "last_work_commit": "2026-09-22"
             },
             {
               "name": "v2.1.x",
               "default": false,
-              "last_commit": "2026-05-27"
+              "last_commit": "2026-05-27",
+              "last_work_commit": "2026-05-27"
             },
             {
               "name": "v2.0.x",
               "default": false,
-              "last_commit": "2025-10-24"
+              "last_commit": "2025-10-24",
+              "last_work_commit": "2025-10-24"
             },
             {
               "name": "v1.0.x",
               "default": false,
-              "last_commit": "2023-12-15"
+              "last_commit": "2023-12-15",
+              "last_work_commit": "2023-12-15"
             }
           ]
         },
@@ -1164,39 +1202,34 @@
           "description": "5GMS Common Android Library",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-09-29",
-          "pulls": [
-            {
-              "number": 37,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/rt-5gms-common-android-library/pull/37",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
-              "base": "development"
-            }
-          ],
+          "pushed_at": "2026-10-19",
+          "latest_release": "2026-05-26",
+          "pulls": [],
           "issues": [],
           "branches": [
             {
               "name": "main",
               "default": true,
-              "last_commit": "2026-05-26"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-09-29"
-            },
-            {
-              "name": "Feature/CMMF-contentType",
-              "default": false,
-              "last_commit": "2026-08-19"
+              "last_commit": "2026-05-26",
+              "last_work_commit": "2026-05-26"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-05-26"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-05-26"
+            },
+            {
+              "name": "fix/apply-new-format",
+              "default": false,
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
+            },
+            {
+              "name": "Feature/CMMF-contentType",
+              "default": false,
+              "last_commit": "2026-08-19",
+              "last_work_commit": "2026-08-19"
             }
           ]
         },
@@ -1206,7 +1239,8 @@
           "description": "5GMS Tools and Examples",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-10-14",
+          "pushed_at": "2026-10-19",
+          "latest_release": "2026-08-03",
           "pulls": [
             {
               "number": 46,
@@ -1215,16 +1249,8 @@
               "draft": true,
               "author": "sygupt",
               "created_at": "2026-10-08",
+              "updated_at": "2026-10-15",
               "base": "feature/cmmf-dev/docker-example"
-            },
-            {
-              "number": 45,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/rt-5gms-examples/pull/45",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
-              "base": "development"
             }
           ],
           "issues": [
@@ -1265,52 +1291,62 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2026-08-03"
-            },
-            {
-              "name": "feature/cmmf-dev/cmmf-recipe",
-              "default": false,
-              "last_commit": "2026-10-14"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-09-29"
-            },
-            {
-              "name": "feature/cmmf-dev/docker-example",
-              "default": false,
-              "last_commit": "2026-08-18"
+              "last_commit": "2026-08-03",
+              "last_work_commit": "2026-08-03"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-08-13"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-08-13"
+            },
+            {
+              "name": "fix/apply-new-format",
+              "default": false,
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
+            },
+            {
+              "name": "feature/cmmf-dev/cmmf-recipe",
+              "default": false,
+              "last_commit": "2026-10-14",
+              "last_work_commit": "2026-10-14"
+            },
+            {
+              "name": "feature/cmmf-dev/docker-example",
+              "default": false,
+              "last_commit": "2026-08-18",
+              "last_work_commit": "2026-08-18"
             },
             {
               "name": "feature/mwcDemo",
               "default": false,
-              "last_commit": "2026-02-25"
+              "last_commit": "2026-02-25",
+              "last_work_commit": "2026-02-25"
             },
             {
               "name": "fix/5gms-docker",
               "default": false,
-              "last_commit": "2025-10-14"
+              "last_commit": "2025-10-14",
+              "last_work_commit": "2025-10-14"
             },
             {
               "name": "feature/cmcd",
               "default": false,
-              "last_commit": "2025-06-16"
+              "last_commit": "2025-06-16",
+              "last_work_commit": "2025-06-16"
             },
             {
               "name": "demo/fuseco-forum",
               "default": false,
-              "last_commit": "2024-11-05"
+              "last_commit": "2024-11-05",
+              "last_work_commit": "2024-11-05"
             },
             {
               "name": "feature/metricReporting",
               "default": false,
-              "last_commit": "2023-07-13"
+              "last_commit": "2023-07-13",
+              "last_work_commit": "2023-07-13"
             }
           ]
         }
@@ -1326,7 +1362,8 @@
           "description": "FLUTE Protocol and Profiles",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-16",
+          "pushed_at": "2026-10-19",
+          "latest_release": "2026-09-01",
           "pulls": [
             {
               "number": 116,
@@ -1335,6 +1372,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-16",
+              "updated_at": "2026-10-16",
               "base": "development"
             },
             {
@@ -1344,6 +1382,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-08-23",
+              "updated_at": "2026-10-13",
               "base": "development"
             },
             {
@@ -1353,6 +1392,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-08-11",
+              "updated_at": "2026-10-13",
               "base": "development"
             },
             {
@@ -1362,6 +1402,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-08-11",
+              "updated_at": "2026-10-13",
               "base": "feature/raptor-raptorq-fec"
             }
           ],
@@ -1477,47 +1518,56 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2026-08-21"
+              "last_commit": "2026-08-21",
+              "last_work_commit": "2026-08-21"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-16"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
             },
             {
               "name": "feature/issue66-tunnel-passthrough",
               "default": false,
-              "last_commit": "2026-10-16"
+              "last_commit": "2026-10-16",
+              "last_work_commit": "2026-10-16"
             },
             {
               "name": "feature/mbs-profile",
               "default": false,
-              "last_commit": "2026-10-02"
+              "last_commit": "2026-10-02",
+              "last_work_commit": "2026-10-02"
             },
             {
               "name": "feature/raptor-raptorq-fec",
               "default": false,
-              "last_commit": "2026-09-16"
+              "last_commit": "2026-09-16",
+              "last_work_commit": "2026-09-16"
             },
             {
               "name": "feature/webrc-congestion-control",
               "default": false,
-              "last_commit": "2026-09-16"
+              "last_commit": "2026-09-16",
+              "last_work_commit": "2026-09-16"
             },
             {
               "name": "feature/wave3-rfc6726-compliance-fixes",
               "default": false,
-              "last_commit": "2026-09-08"
+              "last_commit": "2026-09-08",
+              "last_work_commit": "2026-09-08"
             },
             {
               "name": "gh-pages",
               "default": false,
-              "last_commit": "2026-09-01"
+              "last_commit": "2026-09-01",
+              "last_work_commit": "2026-09-01"
             },
             {
               "name": "feature/refactor",
               "default": false,
-              "last_commit": "2025-09-22"
+              "last_commit": "2025-09-22",
+              "last_work_commit": "2025-09-22"
             }
           ]
         },
@@ -1527,7 +1577,8 @@
           "description": "MBMS Modem",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-09-30",
+          "pushed_at": "2026-10-19",
+          "latest_release": "2022-06-30",
           "pulls": [
             {
               "number": 55,
@@ -1536,15 +1587,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-09-30",
-              "base": "development"
-            },
-            {
-              "number": 54,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/rt-mbms-modem/pull/54",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
+              "updated_at": "2026-09-30",
               "base": "development"
             },
             {
@@ -1554,6 +1597,7 @@
               "draft": false,
               "author": "jsroldan",
               "created_at": "2026-07-02",
+              "updated_at": "2026-09-23",
               "base": "development"
             }
           ],
@@ -1758,32 +1802,38 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2023-02-27"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-09-30"
-            },
-            {
-              "name": "fix/restore-ber",
-              "default": false,
-              "last_commit": "2026-09-30"
-            },
-            {
-              "name": "feature/mbms-broadcast-demo",
-              "default": false,
-              "last_commit": "2026-09-23"
+              "last_commit": "2023-02-27",
+              "last_work_commit": "2023-02-27"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2025-10-31"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2025-10-31"
+            },
+            {
+              "name": "fix/apply-new-format",
+              "default": false,
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
             },
             {
               "name": "gh-pages",
               "default": false,
-              "last_commit": "2025-10-31"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
+            },
+            {
+              "name": "fix/restore-ber",
+              "default": false,
+              "last_commit": "2026-09-30",
+              "last_work_commit": "2026-09-30"
+            },
+            {
+              "name": "feature/mbms-broadcast-demo",
+              "default": false,
+              "last_commit": "2026-09-23",
+              "last_work_commit": "2026-09-23"
             }
           ]
         },
@@ -1794,6 +1844,7 @@
           "auxiliary": false,
           "private": false,
           "pushed_at": "2025-10-31",
+          "latest_release": "2022-12-08",
           "pulls": [
             {
               "number": 18,
@@ -1802,6 +1853,7 @@
               "draft": false,
               "author": "rbouqueau",
               "created_at": "2021-11-30",
+              "updated_at": "2025-10-31",
               "base": "development"
             },
             {
@@ -1811,6 +1863,7 @@
               "draft": false,
               "author": "rbouqueau",
               "created_at": "2021-10-23",
+              "updated_at": "2023-04-14",
               "base": "development"
             }
           ],
@@ -1971,32 +2024,38 @@
             {
               "name": "development",
               "default": true,
-              "last_commit": "2025-10-31"
+              "last_commit": "2025-10-31",
+              "last_work_commit": "2025-10-31"
             },
             {
               "name": "gh-pages",
               "default": false,
-              "last_commit": "2025-10-31"
+              "last_commit": "2025-10-31",
+              "last_work_commit": "2025-10-31"
             },
             {
               "name": "fix/githubModule",
               "default": false,
-              "last_commit": "2023-06-19"
+              "last_commit": "2023-06-19",
+              "last_work_commit": "2023-06-19"
             },
             {
               "name": "main",
               "default": false,
-              "last_commit": "2023-02-27"
+              "last_commit": "2023-02-27",
+              "last_work_commit": "2023-02-27"
             },
             {
               "name": "feature/ubuntu22",
               "default": false,
-              "last_commit": "2022-07-18"
+              "last_commit": "2022-07-18",
+              "last_work_commit": "2022-07-18"
             },
             {
               "name": "route-gpac",
               "default": false,
-              "last_commit": "2021-12-08"
+              "last_commit": "2021-12-08",
+              "last_work_commit": "2021-12-08"
             }
           ]
         },
@@ -2006,18 +2065,9 @@
           "description": "MBMS Android Middleware",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-09-29",
-          "pulls": [
-            {
-              "number": 13,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/rt-mbms-mw-android/pull/13",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
-              "base": "development"
-            }
-          ],
+          "pushed_at": "2026-10-19",
+          "latest_release": "2024-09-05",
+          "pulls": [],
           "issues": [
             {
               "number": 6,
@@ -2048,17 +2098,20 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2024-08-02"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2024-08-02",
+              "last_work_commit": "2024-08-02"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2025-10-31"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2025-10-31"
+            },
+            {
+              "name": "fix/apply-new-format",
+              "default": false,
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
             }
           ]
         },
@@ -2068,18 +2121,9 @@
           "description": "5G Broadcast Transmitter",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-09-29",
-          "pulls": [
-            {
-              "number": 7,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/rt-mbms-tx/pull/7",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
-              "base": "development"
-            }
-          ],
+          "pushed_at": "2026-10-19",
+          "latest_release": "2023-06-21",
+          "pulls": [],
           "issues": [
             {
               "number": 5,
@@ -2104,22 +2148,26 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2023-09-13"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-09-29"
-            },
-            {
-              "name": "feature/mbms-broadcast-demo",
-              "default": false,
-              "last_commit": "2026-09-23"
+              "last_commit": "2023-09-13",
+              "last_work_commit": "2023-09-13"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2025-10-31"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2025-10-31"
+            },
+            {
+              "name": "fix/apply-new-format",
+              "default": false,
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
+            },
+            {
+              "name": "feature/mbms-broadcast-demo",
+              "default": false,
+              "last_commit": "2026-09-23",
+              "last_work_commit": "2026-09-23"
             }
           ]
         },
@@ -2129,17 +2177,9 @@
           "description": "5G Broadcast Transmitter for QRD and CRD",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-09-29",
+          "pushed_at": "2026-10-19",
+          "latest_release": "2024-09-05",
           "pulls": [
-            {
-              "number": 29,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/rt-mbms-tx-for-qrd-and-crd/pull/29",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
-              "base": "development"
-            },
             {
               "number": 9,
               "title": "WiP: Docker support",
@@ -2147,6 +2187,7 @@
               "draft": true,
               "author": "dsilhavy",
               "created_at": "2024-11-20",
+              "updated_at": "2025-10-22",
               "base": "development"
             }
           ],
@@ -2326,32 +2367,38 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2024-07-25"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2024-07-25",
+              "last_work_commit": "2024-07-25"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2025-10-31"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2025-10-31"
+            },
+            {
+              "name": "fix/apply-new-format",
+              "default": false,
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
             },
             {
               "name": "emergency-alerts-development",
               "default": false,
-              "last_commit": "2025-10-31"
+              "last_commit": "2025-10-31",
+              "last_work_commit": "2025-10-31"
             },
             {
               "name": "emergency-alerts",
               "default": false,
-              "last_commit": "2025-10-08"
+              "last_commit": "2025-10-08",
+              "last_work_commit": "2025-10-08"
             },
             {
               "name": "feature/docker",
               "default": false,
-              "last_commit": "2025-04-08"
+              "last_commit": "2025-04-08",
+              "last_work_commit": "2025-04-08"
             }
           ]
         },
@@ -2362,6 +2409,7 @@
           "auxiliary": false,
           "private": false,
           "pushed_at": "2025-08-08",
+          "latest_release": "2022-12-08",
           "pulls": [],
           "issues": [
             {
@@ -2380,12 +2428,14 @@
             {
               "name": "development",
               "default": true,
-              "last_commit": "2025-08-08"
+              "last_commit": "2025-08-08",
+              "last_work_commit": "2025-08-08"
             },
             {
               "name": "main",
               "default": false,
-              "last_commit": "2023-02-27"
+              "last_commit": "2023-02-27",
+              "last_work_commit": "2023-02-27"
             }
           ]
         },
@@ -2395,17 +2445,9 @@
           "description": "MBMS Tools and Examples",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-09-29",
+          "pushed_at": "2026-10-19",
+          "latest_release": "2024-11-05",
           "pulls": [
-            {
-              "number": 20,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/rt-mbms-examples/pull/20",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
-              "base": "development"
-            },
             {
               "number": 18,
               "title": "WIP: Docker setup for MBMS client components",
@@ -2413,6 +2455,7 @@
               "draft": true,
               "author": "dsilhavy",
               "created_at": "2025-08-27",
+              "updated_at": "2025-08-29",
               "base": "development"
             }
           ],
@@ -2440,37 +2483,44 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2024-11-05"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-09-29"
-            },
-            {
-              "name": "feature/mbms-broadcast-demo",
-              "default": false,
-              "last_commit": "2026-09-23"
+              "last_commit": "2024-11-05",
+              "last_work_commit": "2024-11-05"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2025-10-31"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2025-10-31"
+            },
+            {
+              "name": "fix/apply-new-format",
+              "default": false,
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
+            },
+            {
+              "name": "feature/mbms-broadcast-demo",
+              "default": false,
+              "last_commit": "2026-09-23",
+              "last_work_commit": "2026-09-23"
             },
             {
               "name": "feature/dockerClientComponents",
               "default": false,
-              "last_commit": "2025-08-29"
+              "last_commit": "2025-08-29",
+              "last_work_commit": "2025-08-29"
             },
             {
               "name": "fix/submodule-clone",
               "default": false,
-              "last_commit": "2024-07-25"
+              "last_commit": "2024-07-25",
+              "last_work_commit": "2024-07-25"
             },
             {
               "name": "feature/mws",
               "default": false,
-              "last_commit": "2024-05-27"
+              "last_commit": "2024-05-27",
+              "last_work_commit": "2024-05-27"
             }
           ]
         }
@@ -2486,18 +2536,9 @@
           "description": "5G Broadcast Transmitter",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-09-29",
-          "pulls": [
-            {
-              "number": 7,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/rt-mbms-tx/pull/7",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
-              "base": "development"
-            }
-          ],
+          "pushed_at": "2026-10-19",
+          "latest_release": "2023-06-21",
+          "pulls": [],
           "issues": [
             {
               "number": 5,
@@ -2522,22 +2563,26 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2023-09-13"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-09-29"
-            },
-            {
-              "name": "feature/mbms-broadcast-demo",
-              "default": false,
-              "last_commit": "2026-09-23"
+              "last_commit": "2023-09-13",
+              "last_work_commit": "2023-09-13"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2025-10-31"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2025-10-31"
+            },
+            {
+              "name": "fix/apply-new-format",
+              "default": false,
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
+            },
+            {
+              "name": "feature/mbms-broadcast-demo",
+              "default": false,
+              "last_commit": "2026-09-23",
+              "last_work_commit": "2026-09-23"
             }
           ]
         },
@@ -2547,17 +2592,9 @@
           "description": "5G Broadcast Transmitter for QRD and CRD",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-09-29",
+          "pushed_at": "2026-10-19",
+          "latest_release": "2024-09-05",
           "pulls": [
-            {
-              "number": 29,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/rt-mbms-tx-for-qrd-and-crd/pull/29",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
-              "base": "development"
-            },
             {
               "number": 9,
               "title": "WiP: Docker support",
@@ -2565,6 +2602,7 @@
               "draft": true,
               "author": "dsilhavy",
               "created_at": "2024-11-20",
+              "updated_at": "2025-10-22",
               "base": "development"
             }
           ],
@@ -2744,32 +2782,38 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2024-07-25"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2024-07-25",
+              "last_work_commit": "2024-07-25"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2025-10-31"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2025-10-31"
+            },
+            {
+              "name": "fix/apply-new-format",
+              "default": false,
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
             },
             {
               "name": "emergency-alerts-development",
               "default": false,
-              "last_commit": "2025-10-31"
+              "last_commit": "2025-10-31",
+              "last_work_commit": "2025-10-31"
             },
             {
               "name": "emergency-alerts",
               "default": false,
-              "last_commit": "2025-10-08"
+              "last_commit": "2025-10-08",
+              "last_work_commit": "2025-10-08"
             },
             {
               "name": "feature/docker",
               "default": false,
-              "last_commit": "2025-04-08"
+              "last_commit": "2025-04-08",
+              "last_work_commit": "2025-04-08"
             }
           ]
         }
@@ -2785,7 +2829,8 @@
           "description": "XR/3D Scene Authoring (Blender)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-09-29",
+          "pushed_at": "2026-10-19",
+          "latest_release": "2025-04-16",
           "pulls": [
             {
               "number": 18,
@@ -2794,6 +2839,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-09-29",
+              "updated_at": "2026-10-19",
               "base": "development"
             }
           ],
@@ -2887,22 +2933,26 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2025-07-08"
+              "last_commit": "2025-07-08",
+              "last_work_commit": "2025-07-08"
             },
             {
               "name": "fix/apply-new-format",
               "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2025-04-16"
+              "last_commit": "2025-04-16",
+              "last_work_commit": "2025-04-16"
             },
             {
               "name": "feature/xr-anchoring",
               "default": false,
-              "last_commit": "2025-03-06"
+              "last_commit": "2025-03-06",
+              "last_work_commit": "2025-03-06"
             }
           ]
         },
@@ -2912,7 +2962,8 @@
           "description": "XR/3D Scenes and Test Content",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-14",
+          "pushed_at": "2026-10-19",
+          "latest_release": null,
           "pulls": [
             {
               "number": 45,
@@ -2921,6 +2972,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-14",
+              "updated_at": "2026-10-19",
               "base": "development"
             },
             {
@@ -2930,7 +2982,8 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-12",
-              "base": "main"
+              "updated_at": "2026-10-19",
+              "base": "development"
             },
             {
               "number": 34,
@@ -2939,6 +2992,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-09-29",
+              "updated_at": "2026-10-19",
               "base": "development"
             },
             {
@@ -2948,6 +3002,7 @@
               "draft": true,
               "author": "nlsdvl",
               "created_at": "2025-05-09",
+              "updated_at": "2026-09-29",
               "base": "development"
             }
           ],
@@ -3083,47 +3138,56 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2025-07-08"
+              "last_commit": "2025-07-08",
+              "last_work_commit": "2025-07-08"
             },
             {
               "name": "feature/scene-validator",
               "default": false,
-              "last_commit": "2026-10-14"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
             },
             {
               "name": "feature/xr_smartphone_app",
               "default": false,
-              "last_commit": "2026-10-13"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
             },
             {
               "name": "fix/apply-new-format",
               "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2025-06-20"
+              "last_commit": "2025-06-20",
+              "last_work_commit": "2025-06-20"
             },
             {
               "name": "feature/ar-video-plane",
               "default": false,
-              "last_commit": "2025-06-13"
+              "last_commit": "2025-06-13",
+              "last_work_commit": "2025-06-13"
             },
             {
               "name": "feature/helper-scripts",
               "default": false,
-              "last_commit": "2025-05-09"
+              "last_commit": "2025-05-09",
+              "last_work_commit": "2025-05-09"
             },
             {
               "name": "dev/blender-xr-anchor",
               "default": false,
-              "last_commit": "2025-02-27"
+              "last_commit": "2025-02-27",
+              "last_work_commit": "2025-02-27"
             },
             {
               "name": "feature/development_tools",
               "default": false,
-              "last_commit": "2024-08-23"
+              "last_commit": "2024-08-23",
+              "last_work_commit": "2024-08-23"
             }
           ]
         },
@@ -3133,7 +3197,8 @@
           "description": "glTF Extensions",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-12",
+          "pushed_at": "2026-10-19",
+          "latest_release": null,
           "pulls": [
             {
               "number": 16,
@@ -3142,7 +3207,8 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-12",
-              "base": "rt-xr/unity-player-v1.1.x"
+              "updated_at": "2026-10-19",
+              "base": "rt-xr/development"
             },
             {
               "number": 15,
@@ -3151,6 +3217,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-09-29",
+              "updated_at": "2026-10-19",
               "base": "rt-xr/development"
             },
             {
@@ -3160,6 +3227,7 @@
               "draft": true,
               "author": "Etiennefaivredarcier",
               "created_at": "2024-08-23",
+              "updated_at": "2025-02-11",
               "base": "rt-xr/development"
             }
           ],
@@ -3168,102 +3236,122 @@
             {
               "name": "rt-xr/development",
               "default": true,
-              "last_commit": "2025-10-28"
+              "last_commit": "2025-10-28",
+              "last_work_commit": "2025-10-28"
             },
             {
               "name": "feature/xr_smartphone_app",
               "default": false,
-              "last_commit": "2026-10-11"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
             },
             {
               "name": "fix/apply-new-format",
               "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
             },
             {
               "name": "rt-xr/meta-quest",
               "default": false,
-              "last_commit": "2025-10-02"
+              "last_commit": "2025-10-02",
+              "last_work_commit": "2025-10-02"
             },
             {
               "name": "rt-xr/unity-player-v1.1.x",
               "default": false,
-              "last_commit": "2025-05-19"
+              "last_commit": "2025-05-19",
+              "last_work_commit": "2025-05-19"
             },
             {
               "name": "rt-xr/main",
               "default": false,
-              "last_commit": "2025-05-15"
+              "last_commit": "2025-05-15",
+              "last_work_commit": "2025-05-15"
             },
             {
               "name": "development_tools",
               "default": false,
-              "last_commit": "2024-08-23"
+              "last_commit": "2024-08-23",
+              "last_work_commit": "2024-08-23"
             },
             {
               "name": "main",
               "default": false,
-              "last_commit": "2023-03-30"
+              "last_commit": "2023-03-30",
+              "last_work_commit": "2023-03-30"
             },
             {
               "name": "experimental/newtonsoft-json",
               "default": false,
-              "last_commit": "2023-01-25"
+              "last_commit": "2023-01-25",
+              "last_work_commit": "2023-01-25"
             },
             {
               "name": "legacy/gltfast-4",
               "default": false,
-              "last_commit": "2022-11-28"
+              "last_commit": "2022-11-28",
+              "last_work_commit": "2022-11-28"
             },
             {
               "name": "experimental/extension-api",
               "default": false,
-              "last_commit": "2022-10-26"
+              "last_commit": "2022-10-26",
+              "last_work_commit": "2022-10-26"
             },
             {
               "name": "experimental/demo-metadata",
               "default": false,
-              "last_commit": "2022-09-30"
+              "last_commit": "2022-09-30",
+              "last_work_commit": "2022-09-30"
             },
             {
               "name": "experimental/gameobject-hierarchy-capacity",
               "default": false,
-              "last_commit": "2022-05-13"
+              "last_commit": "2022-05-13",
+              "last_work_commit": "2022-05-13"
             },
             {
               "name": "legacy/gltfast-3",
               "default": false,
-              "last_commit": "2021-05-21"
+              "last_commit": "2021-05-21",
+              "last_work_commit": "2021-05-21"
             },
             {
               "name": "experimental/progressive-material-loading",
               "default": false,
-              "last_commit": "2021-05-05"
+              "last_commit": "2021-05-05",
+              "last_work_commit": "2021-05-05"
             },
             {
               "name": "legacy/gltfast-2",
               "default": false,
-              "last_commit": "2021-01-31"
+              "last_commit": "2021-01-31",
+              "last_work_commit": "2021-01-31"
             },
             {
               "name": "experimental/copy_interleaved",
               "default": false,
-              "last_commit": "2020-12-22"
+              "last_commit": "2020-12-22",
+              "last_work_commit": "2020-12-22"
             },
             {
               "name": "experimental/immediate-schedule",
               "default": false,
-              "last_commit": "2020-12-17"
+              "last_commit": "2020-12-17",
+              "last_work_commit": "2020-12-17"
             },
             {
               "name": "legacy/gltfast-1",
               "default": false,
-              "last_commit": "2020-10-24"
+              "last_commit": "2020-10-24",
+              "last_work_commit": "2020-10-24"
             },
             {
               "name": "experimental/shader_variant_tool",
               "default": false,
-              "last_commit": "2019-06-30"
+              "last_commit": "2019-06-30",
+              "last_work_commit": "2019-06-30"
             }
           ]
         },
@@ -3273,7 +3361,8 @@
           "description": "XR Media Pipelines",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-12",
+          "pushed_at": "2026-10-19",
+          "latest_release": null,
           "pulls": [
             {
               "number": 33,
@@ -3282,7 +3371,8 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-12",
-              "base": "main"
+              "updated_at": "2026-10-19",
+              "base": "development"
             },
             {
               "number": 21,
@@ -3291,6 +3381,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-09-29",
+              "updated_at": "2026-10-19",
               "base": "development"
             }
           ],
@@ -3428,27 +3519,32 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2025-08-04"
+              "last_commit": "2025-08-04",
+              "last_work_commit": "2025-08-04"
             },
             {
               "name": "feature/xr_smartphone_app",
               "default": false,
-              "last_commit": "2026-10-11"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
             },
             {
               "name": "fix/apply-new-format",
               "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
             },
             {
               "name": "fix/issue-72-colorspace",
               "default": false,
-              "last_commit": "2025-10-01"
+              "last_commit": "2025-10-01",
+              "last_work_commit": "2025-10-01"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2025-08-04"
+              "last_commit": "2025-08-04",
+              "last_work_commit": "2025-08-04"
             }
           ]
         },
@@ -3458,7 +3554,8 @@
           "description": "XR Unity Player",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-13",
+          "pushed_at": "2026-10-19",
+          "latest_release": "2025-02-27",
           "pulls": [
             {
               "number": 126,
@@ -3467,7 +3564,8 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-12",
-              "base": "main"
+              "updated_at": "2026-10-19",
+              "base": "development"
             }
           ],
           "issues": [
@@ -3920,52 +4018,62 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2025-06-03"
-            },
-            {
-              "name": "feature/xr_smartphone_app",
-              "default": false,
-              "last_commit": "2026-10-13"
+              "last_commit": "2025-06-03",
+              "last_work_commit": "2025-06-03"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-09"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
+            },
+            {
+              "name": "feature/xr_smartphone_app",
+              "default": false,
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
             },
             {
               "name": "fix/apply-new-format",
               "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2026-09-29",
+              "last_work_commit": "2026-09-29"
             },
             {
               "name": "feature/meta-quest",
               "default": false,
-              "last_commit": "2025-10-10"
+              "last_commit": "2025-10-10",
+              "last_work_commit": "2025-10-10"
             },
             {
               "name": "fix/issue-72-colorspace",
               "default": false,
-              "last_commit": "2025-08-11"
+              "last_commit": "2025-08-11",
+              "last_work_commit": "2025-08-11"
             },
             {
               "name": "v1.1.x",
               "default": false,
-              "last_commit": "2025-05-19"
+              "last_commit": "2025-05-19",
+              "last_work_commit": "2025-05-19"
             },
             {
               "name": "v1.0.x",
               "default": false,
-              "last_commit": "2024-11-29"
+              "last_commit": "2024-11-29",
+              "last_work_commit": "2024-11-29"
             },
             {
               "name": "feature/anchored-object-manipulation",
               "default": false,
-              "last_commit": "2024-08-30"
+              "last_commit": "2024-08-30",
+              "last_work_commit": "2024-08-30"
             },
             {
               "name": "v0.9.x",
               "default": false,
-              "last_commit": "2024-04-14"
+              "last_commit": "2024-04-14",
+              "last_work_commit": "2024-04-14"
             }
           ]
         }
@@ -3981,7 +4089,8 @@
           "description": "5G-MAG's fork of Open5GS",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-17",
+          "pushed_at": "2026-10-19",
+          "latest_release": "2026-07-14",
           "pulls": [
             {
               "number": 57,
@@ -3990,6 +4099,7 @@
               "draft": true,
               "author": "jordijoangimenez",
               "created_at": "2026-10-16",
+              "updated_at": "2026-10-17",
               "base": "improvements"
             },
             {
@@ -3999,6 +4109,7 @@
               "draft": true,
               "author": "jordijoangimenez",
               "created_at": "2026-10-16",
+              "updated_at": "2026-10-17",
               "base": "improvements"
             },
             {
@@ -4008,6 +4119,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-09-29",
+              "updated_at": "2026-10-19",
               "base": "5mbs-development"
             }
           ],
@@ -4213,57 +4325,68 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2025-08-13"
-            },
-            {
-              "name": "port/nrf-collocation",
-              "default": false,
-              "last_commit": "2026-10-17"
-            },
-            {
-              "name": "port/bbc-patches",
-              "default": false,
-              "last_commit": "2026-10-16"
-            },
-            {
-              "name": "5mbs-development",
-              "default": false,
-              "last_commit": "2026-10-09"
-            },
-            {
-              "name": "feature/mbs-compliance-fixes",
-              "default": false,
-              "last_commit": "2026-10-07"
+              "last_commit": "2025-08-13",
+              "last_work_commit": "2025-08-13"
             },
             {
               "name": "fix/apply-new-format",
               "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
+            },
+            {
+              "name": "port/nrf-collocation",
+              "default": false,
+              "last_commit": "2026-10-17",
+              "last_work_commit": "2026-10-17"
+            },
+            {
+              "name": "port/bbc-patches",
+              "default": false,
+              "last_commit": "2026-10-16",
+              "last_work_commit": "2026-10-16"
+            },
+            {
+              "name": "5mbs-development",
+              "default": false,
+              "last_commit": "2026-10-09",
+              "last_work_commit": "2026-10-09"
+            },
+            {
+              "name": "feature/mbs-compliance-fixes",
+              "default": false,
+              "last_commit": "2026-10-07",
+              "last_work_commit": "2026-10-07"
             },
             {
               "name": "bbc-patches",
               "default": false,
-              "last_commit": "2026-09-22"
+              "last_commit": "2026-09-22",
+              "last_work_commit": "2026-09-22"
             },
             {
               "name": "backup/pre-rewrite-20260907",
               "default": false,
-              "last_commit": "2026-08-12"
+              "last_commit": "2026-08-12",
+              "last_work_commit": "2026-08-12"
             },
             {
               "name": "improvements",
               "default": false,
-              "last_commit": "2026-06-20"
+              "last_commit": "2026-06-20",
+              "last_work_commit": "2026-06-20"
             },
             {
               "name": "5mbs",
               "default": false,
-              "last_commit": "2026-05-27"
+              "last_commit": "2026-05-27",
+              "last_work_commit": "2026-05-27"
             },
             {
               "name": "feature/improve-mbs-session-id-compare",
               "default": false,
-              "last_commit": "2026-05-27"
+              "last_commit": "2026-05-27",
+              "last_work_commit": "2026-05-27"
             }
           ]
         },
@@ -4273,7 +4396,8 @@
           "description": "FLUTE Protocol and Profiles",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-16",
+          "pushed_at": "2026-10-19",
+          "latest_release": "2026-09-01",
           "pulls": [
             {
               "number": 116,
@@ -4282,6 +4406,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-16",
+              "updated_at": "2026-10-16",
               "base": "development"
             },
             {
@@ -4291,6 +4416,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-08-23",
+              "updated_at": "2026-10-13",
               "base": "development"
             },
             {
@@ -4300,6 +4426,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-08-11",
+              "updated_at": "2026-10-13",
               "base": "development"
             },
             {
@@ -4309,6 +4436,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-08-11",
+              "updated_at": "2026-10-13",
               "base": "feature/raptor-raptorq-fec"
             }
           ],
@@ -4424,47 +4552,56 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2026-08-21"
+              "last_commit": "2026-08-21",
+              "last_work_commit": "2026-08-21"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-16"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
             },
             {
               "name": "feature/issue66-tunnel-passthrough",
               "default": false,
-              "last_commit": "2026-10-16"
+              "last_commit": "2026-10-16",
+              "last_work_commit": "2026-10-16"
             },
             {
               "name": "feature/mbs-profile",
               "default": false,
-              "last_commit": "2026-10-02"
+              "last_commit": "2026-10-02",
+              "last_work_commit": "2026-10-02"
             },
             {
               "name": "feature/raptor-raptorq-fec",
               "default": false,
-              "last_commit": "2026-09-16"
+              "last_commit": "2026-09-16",
+              "last_work_commit": "2026-09-16"
             },
             {
               "name": "feature/webrc-congestion-control",
               "default": false,
-              "last_commit": "2026-09-16"
+              "last_commit": "2026-09-16",
+              "last_work_commit": "2026-09-16"
             },
             {
               "name": "feature/wave3-rfc6726-compliance-fixes",
               "default": false,
-              "last_commit": "2026-09-08"
+              "last_commit": "2026-09-08",
+              "last_work_commit": "2026-09-08"
             },
             {
               "name": "gh-pages",
               "default": false,
-              "last_commit": "2026-09-01"
+              "last_commit": "2026-09-01",
+              "last_work_commit": "2026-09-01"
             },
             {
               "name": "feature/refactor",
               "default": false,
-              "last_commit": "2025-09-22"
+              "last_commit": "2025-09-22",
+              "last_work_commit": "2025-09-22"
             }
           ]
         },
@@ -4474,7 +4611,8 @@
           "description": "MBS Function (MBSF)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-16",
+          "pushed_at": "2026-10-19",
+          "latest_release": "2026-07-03",
           "pulls": [
             {
               "number": 74,
@@ -4483,6 +4621,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-15",
+              "updated_at": "2026-10-16",
               "base": "development"
             },
             {
@@ -4492,6 +4631,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-09",
+              "updated_at": "2026-10-16",
               "base": "development"
             },
             {
@@ -4501,6 +4641,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-09-29",
+              "updated_at": "2026-10-19",
               "base": "development"
             }
           ],
@@ -4640,32 +4781,38 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2026-07-03"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-10-16"
-            },
-            {
-              "name": "fix/mbsf-usac-create-retry",
-              "default": false,
-              "last_commit": "2026-10-16"
-            },
-            {
-              "name": "feature/mbs5-announcement",
-              "default": false,
-              "last_commit": "2026-10-15"
+              "last_commit": "2026-07-03",
+              "last_work_commit": "2026-07-03"
             },
             {
               "name": "fix/apply-new-format",
               "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
+            },
+            {
+              "name": "development",
+              "default": false,
+              "last_commit": "2026-10-16",
+              "last_work_commit": "2026-10-16"
+            },
+            {
+              "name": "fix/mbsf-usac-create-retry",
+              "default": false,
+              "last_commit": "2026-10-16",
+              "last_work_commit": "2026-10-16"
+            },
+            {
+              "name": "feature/mbs5-announcement",
+              "default": false,
+              "last_commit": "2026-10-15",
+              "last_work_commit": "2026-10-15"
             },
             {
               "name": "backup/pre-rewrite-20260907",
               "default": false,
-              "last_commit": "2026-08-12"
+              "last_commit": "2026-08-12",
+              "last_work_commit": "2026-08-12"
             }
           ]
         },
@@ -4675,7 +4822,8 @@
           "description": "MBS Transport Function (MBSTF)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-16",
+          "pushed_at": "2026-10-19",
+          "latest_release": "2026-07-03",
           "pulls": [
             {
               "number": 81,
@@ -4684,6 +4832,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-16",
+              "updated_at": "2026-10-19",
               "base": "development"
             },
             {
@@ -4693,6 +4842,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-16",
+              "updated_at": "2026-10-16",
               "base": "development"
             },
             {
@@ -4702,6 +4852,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-09-29",
+              "updated_at": "2026-10-19",
               "base": "development"
             }
           ],
@@ -4730,7 +4881,7 @@
             },
             {
               "number": 77,
-              "title": "MBSTF applies no FEC to Packet Distribution Sessions (setPacketFEC is a stub)",
+              "title": "MBSTF applies no FEC to Packet Distribution Method sessions (setPacketFEC is a stub)",
               "url": "https://github.com/5G-MAG/rt-mbs-transport-function/issues/77",
               "author": "jordijoangimenez",
               "created_at": "2026-10-07",
@@ -4765,52 +4916,62 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2026-07-03"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-10-16"
-            },
-            {
-              "name": "fix/mbstf-minimum-fdt-expiry",
-              "default": false,
-              "last_commit": "2026-10-16"
-            },
-            {
-              "name": "fix/mbstf-push-fixed-port",
-              "default": false,
-              "last_commit": "2026-10-16"
+              "last_commit": "2026-07-03",
+              "last_work_commit": "2026-07-03"
             },
             {
               "name": "fix/apply-new-format",
               "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
+            },
+            {
+              "name": "fix/mbstf-minimum-fdt-expiry",
+              "default": false,
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
+            },
+            {
+              "name": "development",
+              "default": false,
+              "last_commit": "2026-10-16",
+              "last_work_commit": "2026-10-16"
+            },
+            {
+              "name": "fix/mbstf-push-fixed-port",
+              "default": false,
+              "last_commit": "2026-10-16",
+              "last_work_commit": "2026-10-16"
             },
             {
               "name": "backup/pre-rewrite-20260907",
               "default": false,
-              "last_commit": "2026-08-11"
+              "last_commit": "2026-08-11",
+              "last_work_commit": "2026-08-11"
             },
             {
               "name": "v1.2.x",
               "default": false,
-              "last_commit": "2025-12-09"
+              "last_commit": "2025-12-09",
+              "last_work_commit": "2025-12-09"
             },
             {
               "name": "v1.1.x",
               "default": false,
-              "last_commit": "2025-10-13"
+              "last_commit": "2025-10-13",
+              "last_work_commit": "2025-10-13"
             },
             {
               "name": "v1.0.x",
               "default": false,
-              "last_commit": "2025-08-01"
+              "last_commit": "2025-08-01",
+              "last_work_commit": "2025-08-01"
             },
             {
               "name": "feature/docker",
               "default": false,
-              "last_commit": "2025-07-25"
+              "last_commit": "2025-07-25",
+              "last_work_commit": "2025-07-25"
             }
           ]
         },
@@ -4820,7 +4981,8 @@
           "description": "5G Core Service Consumers",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-10-09",
+          "pushed_at": "2026-10-19",
+          "latest_release": "2026-06-05",
           "pulls": [
             {
               "number": 35,
@@ -4829,6 +4991,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-09-29",
+              "updated_at": "2026-10-19",
               "base": "development"
             }
           ],
@@ -4848,42 +5011,50 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2026-05-27"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-10-09"
-            },
-            {
-              "name": "feature/mbs-compliance-fixes",
-              "default": false,
-              "last_commit": "2026-10-01"
+              "last_commit": "2026-05-27",
+              "last_work_commit": "2026-05-27"
             },
             {
               "name": "fix/apply-new-format",
               "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
+            },
+            {
+              "name": "development",
+              "default": false,
+              "last_commit": "2026-10-09",
+              "last_work_commit": "2026-10-09"
+            },
+            {
+              "name": "feature/mbs-compliance-fixes",
+              "default": false,
+              "last_commit": "2026-10-01",
+              "last_work_commit": "2026-10-01"
             },
             {
               "name": "feature/mnc-length-aware-plmn-id",
               "default": false,
-              "last_commit": "2026-09-22"
+              "last_commit": "2026-09-22",
+              "last_work_commit": "2026-09-22"
             },
             {
               "name": "v2.1.x",
               "default": false,
-              "last_commit": "2026-05-27"
+              "last_commit": "2026-05-27",
+              "last_work_commit": "2026-05-27"
             },
             {
               "name": "v2.0.x",
               "default": false,
-              "last_commit": "2025-10-24"
+              "last_commit": "2025-10-24",
+              "last_work_commit": "2025-10-24"
             },
             {
               "name": "v1.0.x",
               "default": false,
-              "last_commit": "2023-12-15"
+              "last_commit": "2023-12-15",
+              "last_work_commit": "2023-12-15"
             }
           ]
         },
@@ -4893,17 +5064,9 @@
           "description": "MBS Tools and Examples",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-10-09",
+          "pushed_at": "2026-10-19",
+          "latest_release": "2026-10-02",
           "pulls": [
-            {
-              "number": 36,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/rt-mbs-examples/pull/36",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
-              "base": "development"
-            },
             {
               "number": 33,
               "title": "MBS Broadcast end-to-end demonstration: 5GC, MBSF, MBSTF, gNB and UE with DASH over broadcast",
@@ -4911,6 +5074,7 @@
               "draft": true,
               "author": "jordijoangimenez",
               "created_at": "2026-09-07",
+              "updated_at": "2026-10-09",
               "base": "development"
             }
           ],
@@ -4928,27 +5092,32 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2026-09-20"
-            },
-            {
-              "name": "feature/mbs-compliance-fixes",
-              "default": false,
-              "last_commit": "2026-10-09"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2026-09-20",
+              "last_work_commit": "2026-09-20"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-09-20"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-09-20"
+            },
+            {
+              "name": "fix/apply-new-format",
+              "default": false,
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
+            },
+            {
+              "name": "feature/mbs-compliance-fixes",
+              "default": false,
+              "last_commit": "2026-10-09",
+              "last_work_commit": "2026-10-09"
             },
             {
               "name": "feature/mbsdeployment",
               "default": false,
-              "last_commit": "2026-05-15"
+              "last_commit": "2026-05-15",
+              "last_work_commit": "2026-05-15"
             }
           ]
         }
@@ -4965,6 +5134,7 @@
           "auxiliary": false,
           "private": false,
           "pushed_at": "2026-02-18",
+          "latest_release": null,
           "pulls": [
             {
               "number": 2,
@@ -4973,6 +5143,7 @@
               "draft": false,
               "author": "shilinding",
               "created_at": "2026-07-02",
+              "updated_at": "2026-07-02",
               "base": "main"
             }
           ],
@@ -4981,7 +5152,8 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2026-02-18"
+              "last_commit": "2026-02-18",
+              "last_work_commit": "2026-02-18"
             }
           ]
         },
@@ -4991,7 +5163,8 @@
           "description": "Generic 3GPP Data Collection AF",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-16",
+          "pushed_at": "2026-10-19",
+          "latest_release": "2025-05-13",
           "pulls": [
             {
               "number": 34,
@@ -5000,6 +5173,7 @@
               "draft": false,
               "author": "ErikGaida",
               "created_at": "2026-10-01",
+              "updated_at": "2026-10-19",
               "base": "development"
             },
             {
@@ -5009,6 +5183,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-09-29",
+              "updated_at": "2026-10-19",
               "base": "development"
             },
             {
@@ -5018,6 +5193,7 @@
               "draft": false,
               "author": "ErikGaida",
               "created_at": "2026-08-27",
+              "updated_at": "2026-10-19",
               "base": "development"
             }
           ],
@@ -5083,37 +5259,44 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2025-05-13"
-            },
-            {
-              "name": "bugfix/dcaf-subproject-integration",
-              "default": false,
-              "last_commit": "2026-10-16"
-            },
-            {
-              "name": "feature/integration-test",
-              "default": false,
-              "last_commit": "2026-10-16"
+              "last_commit": "2025-05-13",
+              "last_work_commit": "2025-05-13"
             },
             {
               "name": "fix/apply-new-format",
               "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
+            },
+            {
+              "name": "bugfix/dcaf-subproject-integration",
+              "default": false,
+              "last_commit": "2026-10-16",
+              "last_work_commit": "2026-10-16"
+            },
+            {
+              "name": "feature/integration-test",
+              "default": false,
+              "last_commit": "2026-10-16",
+              "last_work_commit": "2026-10-16"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-08-28"
+              "last_commit": "2026-08-28",
+              "last_work_commit": "2026-08-28"
             },
             {
               "name": "v1.0.x",
               "default": false,
-              "last_commit": "2025-05-13"
+              "last_commit": "2025-05-13",
+              "last_work_commit": "2025-05-13"
             },
             {
               "name": "v1.1.x",
               "default": false,
-              "last_commit": "2025-05-13"
+              "last_commit": "2025-05-13",
+              "last_work_commit": "2025-05-13"
             }
           ]
         }
@@ -5129,7 +5312,8 @@
           "description": "Content for V3C Immersive Platform",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-09-29",
+          "pushed_at": "2026-10-19",
+          "latest_release": "2025-10-09",
           "pulls": [
             {
               "number": 7,
@@ -5138,6 +5322,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-08",
+              "updated_at": "2026-10-14",
               "base": "development"
             },
             {
@@ -5147,6 +5332,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-08",
+              "updated_at": "2026-10-08",
               "base": "development"
             },
             {
@@ -5156,15 +5342,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-08",
-              "base": "development"
-            },
-            {
-              "number": 1,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/rt-v3c-content/pull/1",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
+              "updated_at": "2026-10-08",
               "base": "development"
             }
           ],
@@ -5198,17 +5376,14 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2025-09-24"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2025-09-24",
+              "last_work_commit": "2025-09-24"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2025-09-24"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2025-09-24"
             }
           ]
         },
@@ -5218,7 +5393,8 @@
           "description": "V3C Decoder Plugin",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-09-29",
+          "pushed_at": "2026-10-19",
+          "latest_release": "2025-09-30",
           "pulls": [
             {
               "number": 19,
@@ -5227,6 +5403,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-09",
+              "updated_at": "2026-10-09",
               "base": "development"
             },
             {
@@ -5236,6 +5413,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-08",
+              "updated_at": "2026-10-14",
               "base": "development"
             },
             {
@@ -5245,6 +5423,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-08",
+              "updated_at": "2026-10-08",
               "base": "development"
             },
             {
@@ -5254,6 +5433,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-08",
+              "updated_at": "2026-10-08",
               "base": "development"
             },
             {
@@ -5263,6 +5443,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-08",
+              "updated_at": "2026-10-08",
               "base": "development"
             },
             {
@@ -5272,6 +5453,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-08",
+              "updated_at": "2026-10-08",
               "base": "development"
             },
             {
@@ -5281,6 +5463,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-08",
+              "updated_at": "2026-10-08",
               "base": "development"
             },
             {
@@ -5290,15 +5473,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-08",
-              "base": "development"
-            },
-            {
-              "number": 4,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/rt-v3c-decoder-plugin/pull/4",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
+              "updated_at": "2026-10-14",
               "base": "development"
             }
           ],
@@ -5382,17 +5557,14 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2025-09-26"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2025-09-26",
+              "last_work_commit": "2025-09-26"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2025-09-26"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2025-09-26"
             }
           ]
         },
@@ -5402,7 +5574,8 @@
           "description": "V3C Unity Player",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-09-29",
+          "pushed_at": "2026-10-19",
+          "latest_release": "2025-09-30",
           "pulls": [
             {
               "number": 20,
@@ -5411,6 +5584,7 @@
               "draft": true,
               "author": "jordijoangimenez",
               "created_at": "2026-10-09",
+              "updated_at": "2026-10-09",
               "base": "development"
             },
             {
@@ -5420,6 +5594,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-08",
+              "updated_at": "2026-10-08",
               "base": "development"
             },
             {
@@ -5429,6 +5604,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-08",
+              "updated_at": "2026-10-08",
               "base": "development"
             },
             {
@@ -5438,6 +5614,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-08",
+              "updated_at": "2026-10-08",
               "base": "development"
             },
             {
@@ -5447,6 +5624,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-08",
+              "updated_at": "2026-10-08",
               "base": "development"
             },
             {
@@ -5456,6 +5634,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-08",
+              "updated_at": "2026-10-08",
               "base": "development"
             },
             {
@@ -5465,6 +5644,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-08",
+              "updated_at": "2026-10-08",
               "base": "development"
             },
             {
@@ -5474,6 +5654,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-08",
+              "updated_at": "2026-10-08",
               "base": "development"
             },
             {
@@ -5483,15 +5664,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-08",
-              "base": "development"
-            },
-            {
-              "number": 2,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/rt-v3c-unity-player/pull/2",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
+              "updated_at": "2026-10-08",
               "base": "development"
             }
           ],
@@ -5573,17 +5746,14 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2025-09-26"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2025-09-26",
+              "last_work_commit": "2025-09-26"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2025-09-26"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2025-09-26"
             }
           ]
         }
@@ -5599,34 +5769,28 @@
           "description": "V-DMC Web Decoder/Player",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-09-29",
-          "pulls": [
-            {
-              "number": 1,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/rt-vdmc-web-decoder-player/pull/1",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
-              "base": "development"
-            }
-          ],
+          "pushed_at": "2026-10-19",
+          "latest_release": null,
+          "pulls": [],
           "issues": [],
           "branches": [
             {
               "name": "main",
               "default": true,
-              "last_commit": "2026-09-21"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2026-09-21",
+              "last_work_commit": "2026-09-21"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-09-21"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-09-21"
+            },
+            {
+              "name": "fix/apply-new-format",
+              "default": false,
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
             }
           ]
         }
@@ -5642,29 +5806,16 @@
           "description": "Beyond 2D Video Evaluation Framework",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-09-29",
-          "pulls": [
-            {
-              "number": 8,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/rt-beyond2d-evaluation-framework/pull/8",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
-              "base": "main"
-            }
-          ],
+          "pushed_at": "2026-10-19",
+          "latest_release": "2025-07-24",
+          "pulls": [],
           "issues": [],
           "branches": [
             {
               "name": "main",
               "default": true,
-              "last_commit": "2025-07-23"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2025-07-23"
             }
           ]
         }
@@ -5680,7 +5831,8 @@
           "description": "6G AI Traffic Characterization Testbed",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-08",
+          "pushed_at": "2026-10-19",
+          "latest_release": null,
           "pulls": [
             {
               "number": 11,
@@ -5689,6 +5841,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-09-29",
+              "updated_at": "2026-10-19",
               "base": "development"
             },
             {
@@ -5698,6 +5851,7 @@
               "draft": false,
               "author": "ibouazizi",
               "created_at": "2026-08-26",
+              "updated_at": "2026-10-08",
               "base": "development"
             }
           ],
@@ -5706,27 +5860,32 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2026-04-24"
-            },
-            {
-              "name": "refactor",
-              "default": false,
-              "last_commit": "2026-10-08"
+              "last_commit": "2026-04-24",
+              "last_work_commit": "2026-04-24"
             },
             {
               "name": "fix/apply-new-format",
               "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
+            },
+            {
+              "name": "refactor",
+              "default": false,
+              "last_commit": "2026-10-08",
+              "last_work_commit": "2026-10-08"
             },
             {
               "name": "copilot/refactor-remove-training-subfolder",
               "default": false,
-              "last_commit": "2026-09-26"
+              "last_commit": "2026-09-26",
+              "last_work_commit": "2026-09-26"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-09-04"
+              "last_commit": "2026-09-04",
+              "last_work_commit": "2026-09-04"
             }
           ]
         },
@@ -5736,14 +5895,16 @@
           "description": "Network Emulator Dashboard: web UI and REST API for network impairment profiles with the 6G-Testbed netemu",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-10-06",
+          "pushed_at": "2026-10-19",
+          "latest_release": null,
           "pulls": [],
           "issues": [],
           "branches": [
             {
               "name": "main",
               "default": true,
-              "last_commit": "2026-10-06"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
             }
           ]
         }
@@ -5759,29 +5920,34 @@
           "description": "CAMARA API Tools and Examples",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-07",
+          "pushed_at": "2026-10-19",
+          "latest_release": null,
           "pulls": [],
           "issues": [],
           "branches": [
             {
               "name": "main",
               "default": true,
-              "last_commit": "2026-05-13"
+              "last_commit": "2026-05-13",
+              "last_work_commit": "2026-05-13"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-07"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
             },
             {
               "name": "docs/api-versions-and-readmes",
               "default": false,
-              "last_commit": "2026-10-06"
+              "last_commit": "2026-10-06",
+              "last_work_commit": "2026-10-06"
             },
             {
               "name": "feat/portal-callbacks",
               "default": false,
-              "last_commit": "2026-10-05"
+              "last_commit": "2026-10-05",
+              "last_work_commit": "2026-10-05"
             }
           ]
         }
@@ -5807,14 +5973,16 @@
           "description": "Validates AVC and HEVC video bitstreams against the operation points of 3GPP TS 26.265 (VOPS)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-09-30",
+          "pushed_at": "2026-10-19",
+          "latest_release": null,
           "pulls": [],
           "issues": [],
           "branches": [
             {
               "name": "main",
               "default": true,
-              "last_commit": "2026-09-30"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
             }
           ]
         }
@@ -5830,7 +5998,8 @@
           "description": "Common Shared Tools",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-10-01",
+          "pushed_at": "2026-10-19",
+          "latest_release": "2026-08-03",
           "pulls": [
             {
               "number": 78,
@@ -5839,15 +6008,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-08",
-              "base": "development"
-            },
-            {
-              "number": 75,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/rt-common-shared/pull/75",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
+              "updated_at": "2026-10-08",
               "base": "development"
             }
           ],
@@ -5901,57 +6062,68 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2026-08-03"
-            },
-            {
-              "name": "feature/mbs-compliance-fixes",
-              "default": false,
-              "last_commit": "2026-10-01"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-09-29"
-            },
-            {
-              "name": "3GPP-Rel18",
-              "default": false,
-              "last_commit": "2026-08-13"
+              "last_commit": "2026-08-03",
+              "last_work_commit": "2026-08-03"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-08-13"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-08-13"
+            },
+            {
+              "name": "fix/apply-new-format",
+              "default": false,
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
+            },
+            {
+              "name": "feature/mbs-compliance-fixes",
+              "default": false,
+              "last_commit": "2026-10-01",
+              "last_work_commit": "2026-10-01"
+            },
+            {
+              "name": "3GPP-Rel18",
+              "default": false,
+              "last_commit": "2026-08-13",
+              "last_work_commit": "2026-08-13"
             },
             {
               "name": "fix/cjson-copy-assign-missing-return",
               "default": false,
-              "last_commit": "2026-08-11"
+              "last_commit": "2026-08-11",
+              "last_work_commit": "2026-08-11"
             },
             {
               "name": "feature/mbms-broadcast-demo",
               "default": false,
-              "last_commit": "2026-07-12"
+              "last_commit": "2026-07-12",
+              "last_work_commit": "2026-07-12"
             },
             {
               "name": "3GPP-Rel17",
               "default": false,
-              "last_commit": "2026-06-10"
+              "last_commit": "2026-06-10",
+              "last_work_commit": "2026-06-10"
             },
             {
               "name": "TS26.512v17.7.0",
               "default": false,
-              "last_commit": "2024-01-15"
+              "last_commit": "2024-01-15",
+              "last_work_commit": "2024-01-15"
             },
             {
               "name": "TS26.512v17.6.0",
               "default": false,
-              "last_commit": "2023-09-26"
+              "last_commit": "2023-09-26",
+              "last_work_commit": "2023-09-26"
             },
             {
               "name": "feature/mbms",
               "default": false,
-              "last_commit": "2022-12-08"
+              "last_commit": "2022-12-08",
+              "last_work_commit": "2022-12-08"
             }
           ]
         }
@@ -5972,7 +6144,8 @@
           "description": "5GMS-Aware Application",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-03",
+          "pushed_at": "2026-10-19",
+          "latest_release": "2026-05-26",
           "pulls": [
             {
               "number": 55,
@@ -5981,15 +6154,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-03",
-              "base": "development"
-            },
-            {
-              "number": 53,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/rt-5gms-application/pull/53",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
+              "updated_at": "2026-10-03",
               "base": "development"
             },
             {
@@ -5999,6 +6164,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-05-21",
+              "updated_at": "2026-06-18",
               "base": "development"
             }
           ],
@@ -6057,32 +6223,38 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2026-05-26"
-            },
-            {
-              "name": "feature/dvbi-client",
-              "default": false,
-              "last_commit": "2026-10-03"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2026-05-26",
+              "last_work_commit": "2026-05-26"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-05-26"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-05-26"
+            },
+            {
+              "name": "fix/apply-new-format",
+              "default": false,
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
+            },
+            {
+              "name": "feature/dvbi-client",
+              "default": false,
+              "last_commit": "2026-10-03",
+              "last_work_commit": "2026-10-03"
             },
             {
               "name": "feature/fusecoForum",
               "default": false,
-              "last_commit": "2024-11-05"
+              "last_commit": "2024-11-05",
+              "last_work_commit": "2024-11-05"
             },
             {
               "name": "feature/5gms-aware-app",
               "default": false,
-              "last_commit": "2023-03-06"
+              "last_commit": "2023-03-06",
+              "last_work_commit": "2023-03-06"
             }
           ]
         },
@@ -6092,19 +6264,22 @@
           "description": "Native Android DVB-I client following ETSI TS 103 770, with Media3 ExoPlayer",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-09",
+          "pushed_at": "2026-10-19",
+          "latest_release": null,
           "pulls": [],
           "issues": [],
           "branches": [
             {
               "name": "main",
               "default": true,
-              "last_commit": "2026-10-09"
+              "last_commit": "2026-10-09",
+              "last_work_commit": "2026-10-09"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-09"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
             }
           ]
         },
@@ -6114,19 +6289,22 @@
           "description": "A browser DVB-I client that discovers a service list, presents its channels with their content guide, and plays them, per ETSI TS 103 770.",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-05",
+          "pushed_at": "2026-10-19",
+          "latest_release": null,
           "pulls": [],
           "issues": [],
           "branches": [
             {
               "name": "main",
               "default": true,
-              "last_commit": "2026-10-02"
+              "last_commit": "2026-10-02",
+              "last_work_commit": "2026-10-02"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-05"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
             }
           ]
         },
@@ -6136,19 +6314,22 @@
           "description": "Publishes a DVB-I service list and its content guide, and gives an editor for maintaining them, per ETSI TS 103 770.",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-05",
+          "pushed_at": "2026-10-19",
+          "latest_release": null,
           "pulls": [],
           "issues": [],
           "branches": [
             {
               "name": "main",
               "default": true,
-              "last_commit": "2026-10-02"
+              "last_commit": "2026-10-02",
+              "last_work_commit": "2026-10-02"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-05"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
             }
           ]
         },
@@ -6158,19 +6339,22 @@
           "description": "Answers DVB-I client queries with a list of Service List Entry Points, per ETSI TS 103 770 V1.2.1 clause 5.1.3.2.",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-05",
+          "pushed_at": "2026-10-19",
+          "latest_release": null,
           "pulls": [],
           "issues": [],
           "branches": [
             {
               "name": "main",
               "default": true,
-              "last_commit": "2026-10-02"
+              "last_commit": "2026-10-02",
+              "last_work_commit": "2026-10-02"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-05"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
             }
           ]
         },
@@ -6180,19 +6364,22 @@
           "description": "Runnable examples that bring the DVB-I repositories up together on one machine, publishing and playing a service list per ETSI TS 103 770.",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-10-05",
+          "pushed_at": "2026-10-19",
+          "latest_release": null,
           "pulls": [],
           "issues": [],
           "branches": [
             {
               "name": "main",
               "default": true,
-              "last_commit": "2026-10-02"
+              "last_commit": "2026-10-02",
+              "last_work_commit": "2026-10-02"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-05"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
             }
           ]
         }
@@ -6208,34 +6395,28 @@
           "description": "CMMF Encoder",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-09-29",
-          "pulls": [
-            {
-              "number": 2,
-              "title": "docs: apply the 5G-MAG README format",
-              "url": "https://github.com/5G-MAG/rt-cmmf-encoder/pull/2",
-              "draft": false,
-              "author": "jordijoangimenez",
-              "created_at": "2026-09-29",
-              "base": "development"
-            }
-          ],
+          "pushed_at": "2026-10-19",
+          "latest_release": null,
+          "pulls": [],
           "issues": [],
           "branches": [
             {
               "name": "main",
               "default": true,
-              "last_commit": "2026-09-10"
-            },
-            {
-              "name": "fix/apply-new-format",
-              "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2026-09-10",
+              "last_work_commit": "2026-09-10"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-09-21"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-09-21"
+            },
+            {
+              "name": "fix/apply-new-format",
+              "default": false,
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
             }
           ]
         },
@@ -6245,7 +6426,8 @@
           "description": "FLUTE Protocol and Profiles",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-16",
+          "pushed_at": "2026-10-19",
+          "latest_release": "2026-09-01",
           "pulls": [
             {
               "number": 116,
@@ -6254,6 +6436,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-10-16",
+              "updated_at": "2026-10-16",
               "base": "development"
             },
             {
@@ -6263,6 +6446,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-08-23",
+              "updated_at": "2026-10-13",
               "base": "development"
             },
             {
@@ -6272,6 +6456,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-08-11",
+              "updated_at": "2026-10-13",
               "base": "development"
             },
             {
@@ -6281,6 +6466,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-08-11",
+              "updated_at": "2026-10-13",
               "base": "feature/raptor-raptorq-fec"
             }
           ],
@@ -6396,47 +6582,56 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2026-08-21"
+              "last_commit": "2026-08-21",
+              "last_work_commit": "2026-08-21"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2026-10-16"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
             },
             {
               "name": "feature/issue66-tunnel-passthrough",
               "default": false,
-              "last_commit": "2026-10-16"
+              "last_commit": "2026-10-16",
+              "last_work_commit": "2026-10-16"
             },
             {
               "name": "feature/mbs-profile",
               "default": false,
-              "last_commit": "2026-10-02"
+              "last_commit": "2026-10-02",
+              "last_work_commit": "2026-10-02"
             },
             {
               "name": "feature/raptor-raptorq-fec",
               "default": false,
-              "last_commit": "2026-09-16"
+              "last_commit": "2026-09-16",
+              "last_work_commit": "2026-09-16"
             },
             {
               "name": "feature/webrc-congestion-control",
               "default": false,
-              "last_commit": "2026-09-16"
+              "last_commit": "2026-09-16",
+              "last_work_commit": "2026-09-16"
             },
             {
               "name": "feature/wave3-rfc6726-compliance-fixes",
               "default": false,
-              "last_commit": "2026-09-08"
+              "last_commit": "2026-09-08",
+              "last_work_commit": "2026-09-08"
             },
             {
               "name": "gh-pages",
               "default": false,
-              "last_commit": "2026-09-01"
+              "last_commit": "2026-09-01",
+              "last_work_commit": "2026-09-01"
             },
             {
               "name": "feature/refactor",
               "default": false,
-              "last_commit": "2025-09-22"
+              "last_commit": "2025-09-22",
+              "last_work_commit": "2025-09-22"
             }
           ]
         }
@@ -6457,7 +6652,8 @@
           "description": "5G-MAG's fork of Open5GS",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-10-17",
+          "pushed_at": "2026-10-19",
+          "latest_release": "2026-07-14",
           "pulls": [
             {
               "number": 57,
@@ -6466,6 +6662,7 @@
               "draft": true,
               "author": "jordijoangimenez",
               "created_at": "2026-10-16",
+              "updated_at": "2026-10-17",
               "base": "improvements"
             },
             {
@@ -6475,6 +6672,7 @@
               "draft": true,
               "author": "jordijoangimenez",
               "created_at": "2026-10-16",
+              "updated_at": "2026-10-17",
               "base": "improvements"
             },
             {
@@ -6484,6 +6682,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-09-29",
+              "updated_at": "2026-10-19",
               "base": "5mbs-development"
             }
           ],
@@ -6689,57 +6888,68 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2025-08-13"
-            },
-            {
-              "name": "port/nrf-collocation",
-              "default": false,
-              "last_commit": "2026-10-17"
-            },
-            {
-              "name": "port/bbc-patches",
-              "default": false,
-              "last_commit": "2026-10-16"
-            },
-            {
-              "name": "5mbs-development",
-              "default": false,
-              "last_commit": "2026-10-09"
-            },
-            {
-              "name": "feature/mbs-compliance-fixes",
-              "default": false,
-              "last_commit": "2026-10-07"
+              "last_commit": "2025-08-13",
+              "last_work_commit": "2025-08-13"
             },
             {
               "name": "fix/apply-new-format",
               "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
+            },
+            {
+              "name": "port/nrf-collocation",
+              "default": false,
+              "last_commit": "2026-10-17",
+              "last_work_commit": "2026-10-17"
+            },
+            {
+              "name": "port/bbc-patches",
+              "default": false,
+              "last_commit": "2026-10-16",
+              "last_work_commit": "2026-10-16"
+            },
+            {
+              "name": "5mbs-development",
+              "default": false,
+              "last_commit": "2026-10-09",
+              "last_work_commit": "2026-10-09"
+            },
+            {
+              "name": "feature/mbs-compliance-fixes",
+              "default": false,
+              "last_commit": "2026-10-07",
+              "last_work_commit": "2026-10-07"
             },
             {
               "name": "bbc-patches",
               "default": false,
-              "last_commit": "2026-09-22"
+              "last_commit": "2026-09-22",
+              "last_work_commit": "2026-09-22"
             },
             {
               "name": "backup/pre-rewrite-20260907",
               "default": false,
-              "last_commit": "2026-08-12"
+              "last_commit": "2026-08-12",
+              "last_work_commit": "2026-08-12"
             },
             {
               "name": "improvements",
               "default": false,
-              "last_commit": "2026-06-20"
+              "last_commit": "2026-06-20",
+              "last_work_commit": "2026-06-20"
             },
             {
               "name": "5mbs",
               "default": false,
-              "last_commit": "2026-05-27"
+              "last_commit": "2026-05-27",
+              "last_work_commit": "2026-05-27"
             },
             {
               "name": "feature/improve-mbs-session-id-compare",
               "default": false,
-              "last_commit": "2026-05-27"
+              "last_commit": "2026-05-27",
+              "last_work_commit": "2026-05-27"
             }
           ]
         },
@@ -6750,6 +6960,7 @@
           "auxiliary": false,
           "private": false,
           "pushed_at": "2025-10-24",
+          "latest_release": null,
           "pulls": [],
           "issues": [
             {
@@ -6848,22 +7059,26 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2025-07-28"
+              "last_commit": "2025-07-28",
+              "last_work_commit": "2025-07-28"
             },
             {
               "name": "5mbs-development",
               "default": false,
-              "last_commit": "2025-10-24"
+              "last_commit": "2025-10-24",
+              "last_work_commit": "2025-10-24"
             },
             {
               "name": "5mbs",
               "default": false,
-              "last_commit": "2025-09-26"
+              "last_commit": "2025-09-26",
+              "last_work_commit": "2025-09-26"
             },
             {
               "name": "development",
               "default": false,
-              "last_commit": "2023-07-28"
+              "last_commit": "2023-07-28",
+              "last_work_commit": "2023-07-28"
             }
           ]
         },
@@ -6873,7 +7088,8 @@
           "description": "5G-MAG's fork of srsRAN (discontinued version prior to srsRAN_4G)",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-09-29",
+          "pushed_at": "2026-10-19",
+          "latest_release": null,
           "pulls": [
             {
               "number": 10,
@@ -6882,6 +7098,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-09-29",
+              "updated_at": "2026-10-19",
               "base": "fembms"
             }
           ],
@@ -6936,27 +7153,32 @@
             {
               "name": "fembms",
               "default": true,
-              "last_commit": "2025-08-08"
+              "last_commit": "2025-08-08",
+              "last_work_commit": "2025-08-08"
             },
             {
               "name": "fix/apply-new-format",
               "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
             },
             {
               "name": "main_srsran_4g",
               "default": false,
-              "last_commit": "2023-05-02"
+              "last_commit": "2023-05-02",
+              "last_work_commit": "2023-05-02"
             },
             {
               "name": "main",
               "default": false,
-              "last_commit": "2021-06-17"
+              "last_commit": "2021-06-17",
+              "last_work_commit": "2021-06-17"
             },
             {
               "name": "master",
               "default": false,
-              "last_commit": "2021-06-17"
+              "last_commit": "2021-06-17",
+              "last_work_commit": "2021-06-17"
             }
           ]
         },
@@ -6966,7 +7188,8 @@
           "description": "5G-MAG's fork of srsRAN_4G",
           "auxiliary": false,
           "private": false,
-          "pushed_at": "2026-09-30",
+          "pushed_at": "2026-10-19",
+          "latest_release": null,
           "pulls": [
             {
               "number": 6,
@@ -6975,6 +7198,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-09-30",
+              "updated_at": "2026-09-30",
               "base": "fembms"
             },
             {
@@ -6984,6 +7208,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-09-29",
+              "updated_at": "2026-10-19",
               "base": "master"
             },
             {
@@ -6993,6 +7218,7 @@
               "draft": false,
               "author": "jsroldan",
               "created_at": "2026-07-02",
+              "updated_at": "2026-07-08",
               "base": "fembms"
             }
           ],
@@ -7021,32 +7247,38 @@
             {
               "name": "master",
               "default": true,
-              "last_commit": "2024-01-31"
-            },
-            {
-              "name": "fix/restore-ber",
-              "default": false,
-              "last_commit": "2026-09-30"
+              "last_commit": "2024-01-31",
+              "last_work_commit": "2024-01-31"
             },
             {
               "name": "fix/apply-new-format",
               "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
+            },
+            {
+              "name": "fix/restore-ber",
+              "default": false,
+              "last_commit": "2026-09-30",
+              "last_work_commit": "2026-09-30"
             },
             {
               "name": "5mbs",
               "default": false,
-              "last_commit": "2024-01-31"
+              "last_commit": "2024-01-31",
+              "last_work_commit": "2024-01-31"
             },
             {
               "name": "pws-enb",
               "default": false,
-              "last_commit": "2023-06-19"
+              "last_commit": "2023-06-19",
+              "last_work_commit": "2023-06-19"
             },
             {
               "name": "fembms",
               "default": false,
-              "last_commit": "2022-02-08"
+              "last_commit": "2022-02-08",
+              "last_work_commit": "2022-02-08"
             }
           ]
         },
@@ -7056,7 +7288,8 @@
           "description": "5G Core Service Consumers",
           "auxiliary": true,
           "private": false,
-          "pushed_at": "2026-10-09",
+          "pushed_at": "2026-10-19",
+          "latest_release": "2026-06-05",
           "pulls": [
             {
               "number": 35,
@@ -7065,6 +7298,7 @@
               "draft": false,
               "author": "jordijoangimenez",
               "created_at": "2026-09-29",
+              "updated_at": "2026-10-19",
               "base": "development"
             }
           ],
@@ -7084,42 +7318,50 @@
             {
               "name": "main",
               "default": true,
-              "last_commit": "2026-05-27"
-            },
-            {
-              "name": "development",
-              "default": false,
-              "last_commit": "2026-10-09"
-            },
-            {
-              "name": "feature/mbs-compliance-fixes",
-              "default": false,
-              "last_commit": "2026-10-01"
+              "last_commit": "2026-05-27",
+              "last_work_commit": "2026-05-27"
             },
             {
               "name": "fix/apply-new-format",
               "default": false,
-              "last_commit": "2026-09-29"
+              "last_commit": "2026-10-19",
+              "last_work_commit": "2026-10-19"
+            },
+            {
+              "name": "development",
+              "default": false,
+              "last_commit": "2026-10-09",
+              "last_work_commit": "2026-10-09"
+            },
+            {
+              "name": "feature/mbs-compliance-fixes",
+              "default": false,
+              "last_commit": "2026-10-01",
+              "last_work_commit": "2026-10-01"
             },
             {
               "name": "feature/mnc-length-aware-plmn-id",
               "default": false,
-              "last_commit": "2026-09-22"
+              "last_commit": "2026-09-22",
+              "last_work_commit": "2026-09-22"
             },
             {
               "name": "v2.1.x",
               "default": false,
-              "last_commit": "2026-05-27"
+              "last_commit": "2026-05-27",
+              "last_work_commit": "2026-05-27"
             },
             {
               "name": "v2.0.x",
               "default": false,
-              "last_commit": "2025-10-24"
+              "last_commit": "2025-10-24",
+              "last_work_commit": "2025-10-24"
             },
             {
               "name": "v1.0.x",
               "default": false,
-              "last_commit": "2023-12-15"
+              "last_commit": "2023-12-15",
+              "last_work_commit": "2023-12-15"
             }
           ]
         }
