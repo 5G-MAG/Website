@@ -1,0 +1,110 @@
+---
+hide_title: true
+title: Implementation Detail
+sidebar_position: 0
+description: "How the FLUTE Conformance Validator tests a library, the editions of the specifications it covers per release, and what a verdict means."
+---
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M12 3l8 4.5v9l-8 4.5l-8 -4.5v-9z" />
+  <path d="M12 12l8 -4.5" />
+  <path d="M12 12v9" />
+  <path d="M12 12l-8 -4.5" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">FLUTE Conformance Validator</span>
+<h1>Implementation Detail</h1>
+</div>
+</div>
+
+This page describes the FLUTE Conformance Validator as its repository README does. It tests the FLUTE implementation of the Content Delivery Protocols and Tools, [rt-libflute](/reference-tools/content-delivery).
+
+## How it works
+
+For each profile, the validator:
+
+1. **configures the library's transmitter** with the values the profile supports, in combination, and nothing the profile does not support;
+2. **reads the wire** with its own decoder, written from the RFC field layouts: each configured value as sent, the object's bytes, and the requirements every session of the profile must meet (header fields, extensions, TOI and TSI use, FEC object transmission information, blocking, the FDT and its schema, and what the profile forbids);
+3. **runs the library's receiver** on the same session and checks that it decodes the object and reports each value the wire carried;
+4. **sends what the transmitter cannot be made to send** from its own packet builder (other header widths, unknown extensions, invalid packets, other sessions and sources, Raptor and RaptorQ objects described in several ways, expired FDT Instances and so on), and checks that the receiver handles it as the profile requires.
+
+A value the documents both allow and leave no way to send is sent on its own and reported as a conflict. The README names two such cases: gzip under the 3GPP profiles, and File@Expires under MBS Release 19.
+
+## What a verdict means
+
+The validator checks the library against the sentences of the documents, quoted with their edition and clause. It is a first version of a conformance validator, not yet one in full:
+
+- **It tests rt-libflute.** The two test harnesses are built against the library's interface. The checks of the packets on the wire do not depend on the library, but nothing yet feeds them another implementation's packets.
+- **The reference is a reading of the documents**, recorded in the repository, not a test specification published by 3GPP or the IETF.
+- **Not every statement can be checked.** Some oblige someone else (the BM-SC, the network, the application), some concern congestion control or security that the profiles do not use, and some describe what a receiver does internally. Each is listed with its reason.
+- **No independent party has verified the validator yet.** Its decoder and packet builder are tested against each other and against field layouts built by hand from the RFCs.
+
+## How values are combined
+
+By default the validator combines values **pairwise**: the parameters that shape the FEC blocking (FEC Encoding ID, maximum source block length, packet size and object size) in full product, less the combinations the profile excludes, and every other parameter's values spread over those runs so that every pair of values of any two parameters is sent at least once. **Every combination** sends all of them. The pairwise configurations can be seen and edited on the Configurations tab before a test.
+
+## Obligation levels
+
+Each check is judged at the level of the sentence it rests on: "shall" (MUST, SHALL, REQUIRED), "should" (SHOULD, RECOMMENDED) or "may" (MAY, OPTIONAL).
+
+| Level | Reported as | Changes the exit status |
+| --- | --- | --- |
+| shall | fail | yes |
+| should | not met | no |
+| may | not offered: an option the library does not take up | no |
+
+A value the library was configured with and did not send as configured is reported apart, as **not sent as configured**: a defect against the library's own interface, not a conformance verdict, unless the profile obliges the sender to carry that value.
+
+## Releases
+
+Each 3GPP profile is tested per release, against the latest edition of that release.
+
+| Release | TS 26.346 | TS 26.517 | What differs |
+| --- | --- | --- | --- |
+| 13, 14, 15 | V13.7.0, V14.8.0, V15.5.2 | | MBMS Download: no Content-Encoding at all (L.4.2); no Base-URL-1/2 (L.4.3) or Alternate-Content-Location-1/2 (L.4.4); extended schemaVersion 4 |
+| 16 | V16.11.1 | | as Release 15, without the Base-URL and Alternate-Content-Location prohibitions |
+| 17 | V17.6.0 | V17.11.0 | gzip permitted (L.4.2); the Compact No-Code source block bound of 65535 (7.2.9); MBS and its profiled schema (L.6) appear, schemaVersion 2 |
+| 18 | V18.2.0 | V18.7.0 | as Release 17 |
+| 19 | V19.3.0 | V19.3.0 | extended schemaVersion 5, profiled schemaVersion 3, Repair-Start and Repair-Limit-Percentage; File@Expires gone from the profiled schema |
+
+## Coverage
+
+The validator accounts for every normative statement of the documents each profile rests on: RFC 3926, RFC 3450, RFC 3451, RFC 5052, RFC 5445 section 3 and RFC 5053, plus RFC 6330 under `Profile::None`, and clauses 7.2 and L.4 of TS 26.346 (L.6 and TS 26.517 clause 6.2 under `Profile::MBS`) in each release's edition. Each statement names the checks that test it, or the reason none does:
+
+| Reason | Meaning |
+| --- | --- |
+| other-party | obliges someone other than the FLUTE sender or receiver |
+| session-description | concerns the session description, not carried in the FLUTE session |
+| congestion-control | concerns congestion control or several channels; the profiles use one |
+| security | concerns authentication or integrity protection |
+| not-observable | what a receiver does internally, which the library's receiver does not report |
+| scheme-definition | defines a FEC scheme or the building block itself |
+| not-applicable | a feature the profile does not use |
+| not-sendable | the library's transmitter has no way to send it |
+| inconsistent | the documents disagree; raised, and not judged until answered |
+| introduces-list | opens a list whose items are statements of their own |
+| not-yet | checkable, with no check yet |
+
+No specification text is stored in the repository: a statement is named by its document, clause and a hash of its text, and the text is read from your copies of the documents or fetched from the RFC editor and the 3GPP archive.
+
+## Schemas
+
+The FDT is validated against the schemas of the release under test.
+
+- **`Profile::MBS`:** the profiled schema of annex L.6.1 (version 2 in Releases 17 and 18, version 3 in Release 19).
+- **`Profile::MBMS::Download`:** the extended schema of clause 7.2.10.1 (version 4, and 5 in Release 19) with the schemas it imports. The printed Rel-6 extension schema in V17.6.0 to V19.3.0 is not well-formed; the published schema file is used in its place only when it is identical to the printed one apart from whitespace, and the substitution is reported.
+- **`Profile::None`:** RFC 3926's schema is not a usable XML Schema as published, so unprofiled sessions get no schema check.
+
+## Which library versions can be tested
+
+The harnesses compile against any rt-libflute that builds with your toolchain. What a version offers is read from its headers at build time, and what it does not offer is reported as "not offered by this version" instead of failing the build. The `main` branch and release 0.12.4 of rt-libflute have no profiles, so only `Profile::None` can be configured on them.
+
+<details>
+<summary>Sources for this page</summary>
+
+- **All sections:** the repository README of flute-conformance-validator (profiles, releases and editions, obligation levels, coverage reasons, schemas and library versions).
+- **Specifications named:** IETF RFC 3926, RFC 3450, RFC 3451, RFC 5052, RFC 5053, RFC 5445, RFC 6330; 3GPP TS 26.346 and TS 26.517 at the editions in the Releases table.
+
+</details>

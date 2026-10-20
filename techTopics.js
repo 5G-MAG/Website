@@ -361,27 +361,24 @@ const ALL_TOPICS = [
 // per-project sidebar generators (sidebars-tech.js, sidebars-home.js) omit
 // that destination rather than fabricate one.
 const refToolsForHref = {};
+// A topic can have more than one tool on its own topic: the Reference Tool first, then its validators (Content
+// Delivery: the Reference Tools and the FLUTE Conformance Validator). The first is `refTools`, the others `extraTools`.
+const toolsForHref = {};
 taxonomyData.projects.forEach((p) => {
   if (p.tech_url && p.doc_url) {
-    refToolsForHref[p.tech_url] = {
+    (toolsForHref[p.tech_url] ||= []).push({
       href: p.doc_url.replace(/\/$/, ''),
       isTestbed: p.type === 'testbed' || p.type === 'evaluation-framework',
       // The sidebar group of a project's software pages, by what the entry is (see PROJECT_TYPES in baskets.js).
       label: { testbed: 'Testbeds', 'evaluation-framework': 'Testbeds', 'validation-tool': 'Validation Tools' }[p.type] || 'Reference Tools',
-    };
+      validator: p.type === 'validation-tool',
+    });
   }
 });
-
-// The Specifications block of every project's menu reads the same: the specifications page is "Specifications", the
-// release history of a specification set is "Release history" (named after the set when the topic has more than
-// one, e.g. CMMF), and any other page keeps the name of its own. The project's name is not repeated: the menu
-// holds only the quick access to the project's Technology, Specifications and software.
-ALL_TOPICS.forEach((t) => {
-  (t.standards || []).forEach((s, i) => {
-    const evolution = /-standards-evolution$/.test(s.doc);
-    if (i === 0 && !evolution) s.sidebarLabel = 'Specifications';
-    else if (evolution) s.sidebarLabel = /^standards\/(cmmf)-/.test(s.doc) ? 'CMMF release history' : 'Release history';
-  });
+Object.entries(toolsForHref).forEach(([href, tools]) => {
+  const sorted = [...tools].sort((a, b) => Number(a.validator) - Number(b.validator));
+  refToolsForHref[href] = sorted[0];
+  refToolsForHref[href].extra = sorted.slice(1);
 });
 
 // techHref -> basket key, from taxonomy.json's own projects -- the single
@@ -395,6 +392,19 @@ taxonomyData.projects.forEach((p) => {
 // consumer of TECH_GROUPS/ALL_TOPICS sees it without a second lookup.
 ALL_TOPICS.forEach((t) => {
   t.refTools = refToolsForHref[t.techHref] || null;
+  t.extraTools = t.refTools ? t.refTools.extra : [];
+});
+
+// The Specifications block of every project's menu reads the same: the specifications page is "Specifications", the
+// release history of a specification set is "Release history" (named after the set when the topic has more than
+// one, e.g. CMMF), and any other page keeps the name of its own. The project's name is not repeated: the menu
+// holds only the quick access to the project's Technology, Specifications and software.
+ALL_TOPICS.forEach((t) => {
+  (t.standards || []).forEach((s, i) => {
+    const evolution = /-standards-evolution$/.test(s.doc);
+    if (i === 0 && !evolution) s.sidebarLabel = 'Specifications';
+    else if (evolution) s.sidebarLabel = /^standards\/(cmmf)-/.test(s.doc) ? 'CMMF release history' : 'Release history';
+  });
 });
 
 // A project's testbeds, evaluation frameworks and validators that have a Technology topic of their own (AI in Media

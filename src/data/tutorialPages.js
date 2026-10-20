@@ -6,7 +6,7 @@ export const TUTORIAL_SLUGS = [
 ];
 
 // Testbeds and validators that have tutorials too.
-const OTHER_TUTORIALS = ['/testbeds/6g-testbed', '/testbeds/ai-ml', '/testbeds/beyond-2d', '/validation/vops'];
+const OTHER_TUTORIALS = ['/testbeds/6g-testbed', '/testbeds/ai-ml', '/testbeds/beyond-2d', '/validation/vops', '/validation/flute'];
 
 export function tutorialsUrlFor(docUrl) {
   if (!docUrl) return null;
@@ -23,7 +23,7 @@ const IMPLEMENTATION_SLUGS = [
 ];
 
 // Testbeds and validators with an Implementation Detail page, the same as the Reference Tools.
-const OTHER_IMPLEMENTATION = ['/testbeds/beyond-2d', '/testbeds/ai-ml', '/validation/vops'];
+const OTHER_IMPLEMENTATION = ['/testbeds/beyond-2d', '/testbeds/ai-ml', '/validation/vops', '/validation/flute'];
 
 export function implementationUrlFor(docUrl) {
   if (!docUrl) return null;

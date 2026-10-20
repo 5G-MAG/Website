@@ -155,7 +155,10 @@ export default function ProjectRepositories({ project }) {
   // this project's OWN repos) can be read, including any repo it cross-
   // references but doesn't itself own.
   const taxonomyProject = ALL_PROJECTS.find(
-    (p) => p.doc_url === `/reference-tools/${project}/` || p.doc_url === `/testbeds/${project}/`
+    (p) =>
+      p.doc_url === `/reference-tools/${project}/` ||
+      p.doc_url === `/testbeds/${project}/` ||
+      p.doc_url === `/validation/${project}/`
   );
   const projectDisplayName = taxonomyProject ? displayNameOf(taxonomyProject) : null;
   const repos = projectDisplayName ? ALL_REPOS.filter((r) => r.projectName === projectDisplayName) : [];

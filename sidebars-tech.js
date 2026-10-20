@@ -76,6 +76,15 @@ ALL_TOPICS.forEach((topic) => {
     });
   }
 
+  (topic.extraTools || []).forEach((tool) => {
+    items.push({
+      type: 'category',
+      label: tool.label,
+      collapsed: true,
+      items: deriveLinkItems(`docs/home/${tool.href.replace(/^\//, '')}`, tool.href),
+    });
+  });
+
   if (!topic.refTools && topic.childTools) {
     items.push({
       type: 'category',

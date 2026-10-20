@@ -1,0 +1,72 @@
+---
+hide_title: true
+sidebar_class_name: project-index-link
+title: FLUTE Conformance Validator
+sidebar_position: -1
+description: "Tests a FLUTE implementation (rt-libflute) against the FLUTE profiles of IETF RFC 3926, 3GPP TS 26.346 and 3GPP TS 26.517, release by release."
+---
+import ProjectRepositories from '@site/src/components/ProjectRepositories';
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M12 3l8 4.5v9l-8 4.5l-8 -4.5v-9z" />
+  <path d="M12 12l8 -4.5" />
+  <path d="M12 12v9" />
+  <path d="M12 12l-8 -4.5" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Validation Tools</span>
+<h1>FLUTE Conformance Validator</h1>
+</div>
+</div>
+
+:::tip[At a glance]
+
+- **What it is:** a validator that tests a FLUTE implementation against the FLUTE profiles of IETF RFC 3926, 3GPP TS 26.346 and 3GPP TS 26.517.
+- **What it tests:** rt-libflute, the FLUTE library of the Content Delivery Protocols and Tools, in a version you choose.
+- **What a verdict means:** it is a first version, built from a reading of the documents. No independent party has verified it yet.
+
+:::
+
+## What it does
+
+FLUTE (File Delivery over Unidirectional Transport, IETF RFC 3926) is used by 3GPP MBMS (TS 26.346) and MBS (TS 26.517) to deliver files. Each of these documents defines a profile: the values a sender may use and what a receiver must accept. The validator checks an implementation against those profiles.
+
+For each profile it configures the library's transmitter with the values the profile supports, reads the packets on the wire with its own decoder, runs the library's receiver on the same session, and sends what the transmitter cannot be made to send, such as unknown extensions or invalid packets, to check that the receiver handles it as the profile requires. The result lists every failed "shall", every "should" that is not met, and the verdict on each normative statement of the profile's documents. [How it works](./implementation) describes the method.
+
+## Profiles
+
+| Profile | Rests on | Releases |
+| --- | --- | --- |
+| `Profile::None` | IETF RFC 3926 | none |
+| `Profile::MBMS::Download` | 3GPP TS 26.346 annex L.4 | 13 to 19 |
+| `Profile::MBS` | 3GPP TS 26.517 clause 6.2 | 17 to 19 |
+
+Each 3GPP profile is tested per release, against the latest edition of that release. Release 20 has no edition of either document yet (October 2026). [Implementation Detail](./implementation) lists the editions.
+
+## Where it stands
+
+The validator tests rt-libflute only: its two test harnesses are built against the library's own interface, although the checks of the packets on the wire do not depend on the library. The reference it checks against is a reading of the documents, recorded in the repository, not a test specification published by 3GPP or the IETF. Some statements cannot be checked, for example those that oblige the network or the application, and each is listed with its reason.
+
+The repository is available on request; see [Early Access](/early-access).
+
+## Repositories & Releases
+
+<ProjectRepositories project="flute" />
+
+| Area | Details |
+| --- | --- |
+| **Implementation Detail** | How it works, the releases it covers and what a verdict means: [Implementation Detail](./implementation) |
+| **Tutorials** | Install it and test a library: [Tutorials](./tutorials) |
+| **Resources** | Repository and releases: [Repositories & Releases](/validation/flute#repositories--releases) |
+| **Technical documentation** | [Content Delivery Protocols and Tools on the Tech portal](/tech/content-delivery) |
+| **Standards** | [FLUTE requirements by profile](/standards/content-delivery/flute) |
+| **The library it tests** | [Content Delivery Protocols and Tools (rt-libflute)](/reference-tools/content-delivery) |
+
+<details>
+<summary>Sources for this page</summary>
+
+- **At a glance, What it does, Profiles and Where it stands:** the repository README (flute-conformance-validator), which cites IETF RFC 3926, 3GPP TS 26.346 annex L.4 (V13.7.0 to V19.3.0) and 3GPP TS 26.517 clause 6.2 (V17.11.0 to V19.3.0).
+
+</details>

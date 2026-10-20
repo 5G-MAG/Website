@@ -1,0 +1,72 @@
+---
+hide_title: true
+title: Tutorials
+sidebar_position: 1
+description: "Install the FLUTE Conformance Validator, test an rt-libflute and read the report, from the repository README."
+---
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M12 3l8 4.5v9l-8 4.5l-8 -4.5v-9z" />
+  <path d="M12 12l8 -4.5" />
+  <path d="M12 12v9" />
+  <path d="M12 12l-8 -4.5" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">FLUTE Conformance Validator</span>
+<h1>Tutorials</h1>
+</div>
+</div>
+
+There is no verified step-by-step tutorial for the FLUTE Conformance Validator yet. This page is the quick start of its repository README; run it against a copy of [rt-libflute](/reference-tools/content-delivery). The repository is available on request: see [Early Access](/early-access).
+
+## Install
+
+```bash
+sudo apt install python3 python3-venv git cmake ninja-build g++ pkg-config catdoc \
+  libboost-all-dev libspdlog-dev libssl-dev libtinyxml2-dev libnl-3-dev libconfig++-dev zlib1g-dev
+```
+
+The C++ packages are rt-libflute's own build dependencies, needed to build the two test harnesses against it. `catdoc` reads the editions of TS 26.346 up to Release 15, which 3GPP publishes as Word 97 documents. Nothing else is built ahead of time.
+
+## Run
+
+```bash
+cd ~
+git clone https://github.com/5G-MAG/flute-conformance-validator.git
+cd flute-conformance-validator
+cp config.example.yaml config.yaml    # set the paths to your copies of the documents
+./run.sh
+```
+
+Then open `http://127.0.0.1:8091`. On the Library tab, choose the rt-libflute to test: a local checkout, or a git repository with a branch, tag or commit. It is fetched and built in the background, once per commit. Then open Profile test, choose the profiles, the releases and the combinations, and press Test.
+
+Each profile tested takes 1000 UDP ports from `port_base` (default 20000) upward. The range has to stay out of the kernel's ephemeral ports, 32768 to 60999 by default; a test whose range overlaps them is refused before it starts.
+
+## Without the web page
+
+```bash
+.venv/bin/python cli.py --path ../rt-libflute --out results/
+```
+
+The command builds the library, tests the latest release of every profile (or those you name) and writes `report.md` and `report.json`. Its exit status is 0 when nothing fails a "shall", 1 when something does, and 2 when nothing could be run, so it can run in continuous integration.
+
+## The web page
+
+| Tab | What it shows |
+| --- | --- |
+| Library | the rt-libflute under test, where it came from, what that version offers and its build log |
+| History | every test, with the library it tested, its report, and Delete |
+| Profile test | the profiles and the combinations; for each: the failures by level and the verdict on every normative statement |
+| Configurations | every pairwise configuration a test will send, which you can change, tick, add or remove |
+| Runs | every configuration sent for a profile, with its outcome, configuration, FDT, packets and the receiver's log |
+
+See [Implementation Detail](./implementation) for what a verdict means.
+
+<details>
+<summary>Sources for this page</summary>
+
+- **All sections:** the repository README of flute-conformance-validator (Install dependencies, Downloading, Running and the tab list). The steps have not been run for this page.
+
+</details>
