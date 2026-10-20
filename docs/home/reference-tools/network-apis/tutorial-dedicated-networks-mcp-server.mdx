@@ -3,7 +3,7 @@ title: "Tutorial: Dedicated Networks MCP Server"
 sidebar_label: "Tutorial: Dedicated Networks MCP Server - use it from an AI assistant"
 hide_title: true
 sidebar_position: 4
-description: "Step by step with the CAMARA Dedicated Networks MCP server: install it, configure Claude Desktop on Windows, and let an AI assistant find a service area, reserve a dedicated network, give a device access and dismantle it."
+description: "Step by step with the CAMARA Dedicated Networks MCP server: install it, give it to an AI assistant, and let the assistant find a service area, reserve a dedicated network, give a device access and dismantle it."
 ---
 
 <div class="topic-banner">
@@ -30,11 +30,11 @@ Read the README of [rt-camara-examples](https://github.com/5G-MAG/rt-camara-exam
 |---|---|
 | The server installed | [1. Install the server](#1-install-the-server) |
 | A token for the sandbox | [2. Get a token](#2-get-a-token) |
-| Claude Desktop to use the server | [3. Configure Claude Desktop](#3-configure-claude-desktop) |
+| An AI assistant to use the server | [3. Give the server to an assistant](#3-give-the-server-to-an-assistant) |
 | To book and release a network by asking | [4. Ask the assistant](#4-ask-the-assistant) |
 | To call the tools from a script, or use OpenCode | [Other ways to use the server](#other-ways-to-use-the-server) |
 
-**You need:** `git`; Python 3.10 or newer with pip; Claude Desktop on Windows; and test credentials for a CAMARA sandbox. The sandbox addresses and the credentials are provided to 5G-MAG members on request.
+**You need:** `git`; Python 3.10 or newer with pip; an AI assistant that can use MCP servers, such as [Claude Code](https://claude.com/claude-code); and test credentials for a CAMARA sandbox. The sandbox addresses and the credentials are provided to 5G-MAG members on request.
 
 ## 1. Install the server
 
@@ -60,7 +60,7 @@ Press Ctrl+C to stop it. An MCP client starts the server itself, from the config
 
 ## 2. Get a token
 
-The server calls the sandbox with a bearer token. Request one with your client ID and secret from the token endpoint you were given (`<TOKEN_URL>`). On Windows use `curl.exe`; on Linux and macOS `curl`:
+The server calls the sandbox with a bearer token. Request one with your client ID and secret from the token endpoint you were given (`<TOKEN_URL>`).:
 
 ```bash
 curl -s -X POST <TOKEN_URL> -d grant_type=client_credentials -d client_id=<CLIENT_ID> -d client_secret=<CLIENT_SECRET>
@@ -72,9 +72,9 @@ The answer is a JSON document; copy the value of `access_token`. It is valid for
 Do not put them in a repository, a screenshot or a chat. The configuration file you edit next holds the token; keep it on your own machine.
 :::
 
-## 3. Configure Claude Desktop
+## 3. Give the server to an assistant
 
-Open the Claude Desktop configuration file `%APPDATA%\Claude\claude_desktop_config.json` (paste that path into the Explorer address bar; create the file if it does not exist) and add this block inside `"mcpServers"`:
+An assistant starts the server from a configuration block. Save this as `camara.mcp.json`:
 
 ```json
 {
@@ -82,7 +82,7 @@ Open the Claude Desktop configuration file `%APPDATA%\Claude\claude_desktop_conf
     "camara-dedicated-networks": {
       "command": "python",
       "args": [
-        "C:\\path\\to\\rt-camara-examples\\mcp-servers\\dedicated-networks\\server.py"
+        "/path/to/rt-camara-examples/mcp-servers/dedicated-networks/server.py"
       ],
       "env": {
         "CAMARA_API_ROOT": "<CAMARA_API_ROOT>",
@@ -93,7 +93,13 @@ Open the Claude Desktop configuration file `%APPDATA%\Claude\claude_desktop_conf
 }
 ```
 
-Replace the path with the real path of `server.py`, `<CAMARA_API_ROOT>` with the base address of your sandbox, and the token with yours. Then **restart Claude Desktop**. Check that the server is there: in a new conversation, the tools control shows `camara-dedicated-networks` with its 12 tools.
+Replace the path with the real path of `server.py`, `<CAMARA_API_ROOT>` with the base address of your sandbox, and the token with yours. Then start Claude Code with the server:
+
+```bash
+claude --mcp-config camara.mcp.json
+```
+
+The server's 12 tools are now available to the assistant, with the prefix `mcp__camara-dedicated-networks__`. Check it with the first question of the next section: the assistant calls `camara_list_profiles` and lists the profiles.
 
 ## 4. Ask the assistant
 
@@ -235,19 +241,6 @@ asyncio.run(main())
 ```
 
 Every tool takes its arguments in a single `params` object, for example `{"params": {"atLocation": {"latitude": 48.8467, "longitude": 2.2530}}}` for `camara_retrieve_service_areas`.
-
-</details>
-
-<details>
-<summary>Use Claude Code</summary>
-
-[Claude Code](https://claude.com/claude-code) takes the same `mcpServers` block as Claude Desktop, so it works on Linux, macOS and Windows. Save the block from section 3 as `camara.mcp.json` and start Claude Code with it:
-
-```bash
-claude --mcp-config camara.mcp.json
-```
-
-The tools then appear with the prefix `mcp__camara-dedicated-networks__`. The example conversation above was held this way.
 
 </details>
 
