@@ -397,6 +397,23 @@ ALL_TOPICS.forEach((t) => {
   t.refTools = refToolsForHref[t.techHref] || null;
 });
 
+// A project's testbeds, evaluation frameworks and validators that have a Technology topic of their own (AI in Media
+// Services: the AI/ML Evaluation Framework and the 6G testbed) are listed in the project's menu too, so the project
+// holds its quick access to its tools like any other; the ones that share the project's own topic are already its
+// `refTools`.
+ALL_TOPICS.forEach((t) => {
+  const project = taxonomyData.projects.find((p) => p.tech_url === t.techHref && !p.parent);
+  const children = project
+    ? taxonomyData.projects.filter((p) => p.parent === project.name && p.doc_url && p.tech_url !== t.techHref)
+    : [];
+  t.childTools = children.length
+    ? {
+        label: children.every((c) => c.type === 'validation-tool') ? 'Validation Tools' : 'Testbeds',
+        items: children.map((c) => ({ label: c.displayName || c.name, href: c.doc_url.replace(/\/$/, '') })),
+      }
+    : null;
+});
+
 export const TECH_GROUPS = BASKETS.map((b) => ({
   key: b.key,
   label: b.title,
