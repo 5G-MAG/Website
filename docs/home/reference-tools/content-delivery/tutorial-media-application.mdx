@@ -99,6 +99,8 @@ Open the application and select **Watch**. The first channel is featured at the 
 
 <img src="/img/content-delivery/tut-app-watch.png" alt="The Watch screen: the featured channel and the Movies row" width="280" />
 
+*Caminandes: Llama Drama, by the Blender Foundation, under the [Creative Commons Attribution](https://creativecommons.org/licenses/by/4.0/) licence; a 5G-MAG logo was added. Credits are in `content-sources/ATTRIBUTION.md` of rt-media-origin.*
+
 ### Where the titles and posters come from
 
 The application reads one JSON document, `http://<PUBLIC_HOST>:3344/metadata.json`, which the origin makes from the `metadata` of each channel. It is keyed by channel id:
@@ -129,6 +131,8 @@ Select **Test**. The application lists one card per channel and delivery method 
 While a test runs, its page shows what the phone receives (the picture, the resolution, the codec, frames decoded and dropped, audio), the path the media takes and the document that delivery follows.
 
 <img src="/img/content-delivery/app-test-running.png" alt="A test running: live statistics, the hop and the document" width="280" />
+
+*Caminandes: Llama Drama, by the Blender Foundation, under the [Creative Commons Attribution](https://creativecommons.org/licenses/by/4.0/) licence; a 5G-MAG logo was added. Credits are in `content-sources/ATTRIBUTION.md` of rt-media-origin.*
 
 :::tip[Leave the phone alone while it tests]
 A test needs the application on the screen. If you open another application, pull down the notification shade or change network while it runs, the test in progress cannot show its picture or reach the origin, and it fails for that reason.

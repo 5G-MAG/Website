@@ -77,7 +77,7 @@ You are watching a test card with a tone, made by the origin with ffmpeg, with n
 
 ## 2. The dashboard
 
-Open `http://<PUBLIC_HOST>:3344/dashboard/`. **Status & Control** lists every channel with its state and its endpoint, and lets you start, stop and check each one. **Config** edits the same configuration as a form. Saving a change in **Config** applies it at once: a new channel starts, and no restart is needed.
+Open `http://<PUBLIC_HOST>:3344/dashboard/`; the origin also prints this address when it starts (`docker compose -f docker/compose.yaml --env-file docker/.env logs origin`). **Status & Control** lists every channel with its state and its endpoint, and lets you start, stop and check each one. **Config** edits the same configuration as a form. Saving a change in **Config** applies it at once: a new channel starts, and no restart is needed.
 
 ![The Status and Control tab: one row per channel, with its endpoint and its controls](/img/content-delivery/dashboard-status.png)
 
