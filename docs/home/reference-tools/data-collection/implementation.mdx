@@ -27,10 +27,10 @@ import AUDIT from '@site/src/data/audit-data-collection.json';
 
 :::tip[In short]
 
-- **Which specification the code follows:** Release 18, TS 26.532 V18.3.0 and TS 29.517 V18.6.0, as the Data Collection AF build pins. Release 19 adds nothing to implement.
+- **Which specification the code follows:** the Release 18 APIs of TS 26.532 (TSG105), as the Data Collection AF build pins them. The audit judges every statement of TS 26.531 and TS 26.532 valid in Releases 17 to 20.
 - **Generic framework:** a Data Collection AF library and a standalone AF serve R1, R2 to R4, R5 and R6. No data collection client is provided.
 - **In 5G Media Streaming:** the 5GMS AF embeds the Data Collection AF library, but registers no 5GMS data report type, so no 5GMS data is collected or exposed yet.
-- **Source of this page:** a code audit of the repositories on 2026-10-02: each requirement split into the cases its clause defines, each case checked against the code and then re-checked by a second reader.
+- **Source of this page:** an audit of the `main` branch of the Data Collection AF repository on 2026-10-20: each requirement split into the cases its clause defines, each case read against the code by one reader and then independently by a second, with a third reading where they disagreed. Cases that depend on the Open5GS framework layer, which is not part of the repository, are not shown.
 
 :::
 
@@ -66,13 +66,11 @@ The generic architecture and its 5G Media Streaming instantiation, with the part
 
 Each feature, split into its requirements and each requirement into the cases its clause defines: what works, what does not, and why. Open a feature, then a requirement.
 
-<ImplementationCases data={AUDIT} only={['dcaf-lib', 'dcaf', 'dc-client']} />
+<ImplementationCases data={AUDIT} only={['dcaf', 'dcclient']} />
 
 ## Integration with 5G Media Streaming
 
-Each feature, per 5GMS component and release, in the same form.
-
-<ImplementationCases data={AUDIT} only={['msaf', 'msas', 'msue', 'msap']} />
+The 5GMS Application Function embeds the Data Collection AF library. How the 5GMS components use it is on the [5G Media Streaming: Implementation Detail](/reference-tools/5gms/implementation) page.
 
 :::info[Full audit for members]
 
@@ -88,20 +86,10 @@ This page summarises a requirement-by-requirement audit of the code. The full au
 
 <RepoCards slugs={['rt-data-collection-application-function']} />
 
-- **Built against:** TS 26.532 V18.3.0 and TS 29.517 V18.6.0 (Release 18).
-- **Implemented:** creating, reading and deleting Provisioning Sessions, Data Reporting Configurations and Data Reporting Sessions; communication reports; time-window aggregation; event subscription and notification at R5 and R6; registration of one AF profile with the NRF.
-- **Needs fix:** replacing a Data Reporting Configuration does not store it; the aggregation names MAXIMUM and MINIMUM are not accepted; `"expedite": false` is treated as true; replacing a subscription does not change its notifications; the installed default configuration uses section names the library does not read, so the AF starts without its data collection servers.
-- **Not implemented:** PATCH, user and location restrictions, record types other than communication, TLS and OAuth 2.0, and a Direct, Indirect or AS data collection client.
-
-### 5G Media Streaming components
-
-<RepoCards slugs={['rt-5gms-application-function', 'rt-5gms-application-server', 'rt-5gms-media-session-handler', 'rt-5gms-application-provider']} />
-
-- **5GMS AF:** embeds the Data Collection AF library and leaves R1 and R3 out, but starts it with no data report type, so it does not run; no Event Data Processing provisioning yet. QoE metrics and consumption reports received at M5 are written to files.
-- **5GMS AS:** no reporting of media streaming access activity at R4.
-- **5GMS client:** the Media Session Handler sends QoE metrics and consumption reports at M5. ANBR-based Network Assistance reporting at R2 is a Release 18 addition, beyond the Release 17 the 5GMS AF is built against.
-- **5GMS Application Provider:** the M1 Event Data Processing methods are commented out, and there is no Event Consumer AF.
-- **NWDAF:** not provided. open5gs, which the 5GMS AF builds on, has no NWDAF, so there is no consumer at R5.
+- **Built against:** the Release 18 (TSG105) APIs of TS 26.532.
+- **Implemented:** creating, reading and deleting Provisioning Sessions, Data Reporting Configurations and Data Reporting Sessions; communication reports; time-window aggregation; context identifiers on rules and conditions; event subscription and notification at R5 and R6; registration of an AF profile with the NRF at start-up.
+- **Needs fix:** replacing a Data Reporting Configuration does not store it; reading a session or a configuration answers 201 where the specification says 200; the aggregation names MAXIMUM and MINIMUM are not accepted and COUNT is missing; an empty list of event consumer types matches no consumer; the event time stamp is the time of the notification, not of the record; default values for omitted sampling and reporting rules are not applied; a few property names differ from the specification (`location`, `downlinkThrougput`).
+- **Not implemented:** PATCH, user and location restrictions, record types other than communication (a report with another type is accepted and not stored), redirects, the CORS headers, updating the NRF profile when provisioning changes, and a Direct, Indirect or AS data collection client.
 
 ### Packages
 
