@@ -1,0 +1,287 @@
+---
+title: "Tutorial: Dedicated Networks MCP Server"
+sidebar_label: "Tutorial: Dedicated Networks MCP Server - use it from an AI assistant"
+hide_title: true
+sidebar_position: 4
+description: "Step by step with the CAMARA Dedicated Networks MCP server: install it, configure Claude Desktop on Windows, and let an AI assistant find a service area, reserve a dedicated network, give a device access and dismantle it."
+---
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26 -2 5 -2 5s3.74 -.5 5 -2c.71 -.84 .7 -2.13 -.09 -2.91a2.18 2.18 0 0 0 -2.91 -.09z" /><path d="M12 15l-3 -3a22 22 0 0 1 2 -3.95a12.88 12.88 0 0 1 10 -5.93c0 2.72 -.78 7.5 -6 11a22.35 22.35 0 0 1 -4 2z" /><path d="M9 12h-4s.55 -3.03 2 -4c1.62 -1.08 5 0 5 0" /><path d="M12 15v5s3.03 -.55 4 -2c1.08 -1.62 0 -5 0 -5" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">CAMARA Connectivity Quality Management APIs</span>
+<h1>Tutorial: Dedicated Networks MCP Server</h1>
+</div>
+</div>
+
+In this tutorial you install the CAMARA Dedicated Networks MCP server, give it to an AI assistant, and ask the assistant, in plain language, to find a service area, reserve a dedicated network, give a device access to it and dismantle both again.
+
+:::tip[Read the READMEs first]
+Read the README of [rt-camara-examples](https://github.com/5G-MAG/rt-camara-examples#readme) and the [MCP server's own README](https://github.com/5G-MAG/rt-camara-examples/blob/main/mcp-servers/dedicated-networks/README.md) before you start. They list what the server needs and every setting.
+:::
+
+| Repository | What it is | Used in |
+|---|---|---|
+| [rt-camara-examples](https://github.com/5G-MAG/rt-camara-examples) | The MCP server (`mcp-servers/dedicated-networks`), the management portal and the Insomnia collections | All sections |
+
+| You want | Go to |
+|---|---|
+| The server installed | [1. Install the server](#1-install-the-server) |
+| A token for the sandbox | [2. Get a token](#2-get-a-token) |
+| Claude Desktop to use the server | [3. Configure Claude Desktop](#3-configure-claude-desktop) |
+| To book and release a network by asking | [4. Ask the assistant](#4-ask-the-assistant) |
+| To call the tools from a script, or use OpenCode | [Other ways to use the server](#other-ways-to-use-the-server) |
+
+**You need:** `git`; Python 3.10 or newer with pip; Claude Desktop on Windows; and test credentials for a CAMARA sandbox. The sandbox addresses and the credentials are provided to 5G-MAG members on request.
+
+## 1. Install the server
+
+```bash
+git clone https://github.com/5G-MAG/rt-camara-examples.git
+cd rt-camara-examples/mcp-servers/dedicated-networks
+pip install -r requirements.txt
+```
+
+This installs `mcp[cli]` (the MCP framework), `httpx` (the HTTP client) and `pydantic` (input validation). To check that it starts, run it by hand:
+
+```bash
+python server.py
+```
+
+The server writes one line to standard error and then waits for a client:
+
+```
+[camara-mcp] Starting | API root: http://localhost:9091/ | Auth: NO TOKEN
+```
+
+Press Ctrl+C to stop it. An MCP client starts the server itself, from the configuration in section 3.
+
+## 2. Get a token
+
+The server calls the sandbox with a bearer token. Request one with your client ID and secret from the token endpoint you were given (`<TOKEN_URL>`). On Windows use `curl.exe`; on Linux and macOS `curl`:
+
+```bash
+curl -s -X POST <TOKEN_URL> -d grant_type=client_credentials -d client_id=<CLIENT_ID> -d client_secret=<CLIENT_SECRET>
+```
+
+The answer is a JSON document; copy the value of `access_token`. It is valid for one hour (`expires_in` is 3600), so request a new one when it expires.
+
+:::tip[Keep the token and the secret private]
+Do not put them in a repository, a screenshot or a chat. The configuration file you edit next holds the token; keep it on your own machine.
+:::
+
+## 3. Configure Claude Desktop
+
+Open the Claude Desktop configuration file `%APPDATA%\Claude\claude_desktop_config.json` (paste that path into the Explorer address bar; create the file if it does not exist) and add this block inside `"mcpServers"`:
+
+```json
+{
+  "mcpServers": {
+    "camara-dedicated-networks": {
+      "command": "python",
+      "args": [
+        "C:\\path\\to\\rt-camara-examples\\mcp-servers\\dedicated-networks\\server.py"
+      ],
+      "env": {
+        "CAMARA_API_ROOT": "<CAMARA_API_ROOT>",
+        "CAMARA_ACCESS_TOKEN": "<the access_token you copied>"
+      }
+    }
+  }
+}
+```
+
+Replace the path with the real path of `server.py`, `<CAMARA_API_ROOT>` with the base address of your sandbox, and the token with yours. Then **restart Claude Desktop**. Check that the server is there: in a new conversation, the tools control shows `camara-dedicated-networks` with its 12 tools.
+
+## 4. Ask the assistant
+
+Ask in plain language. The assistant chooses the tools; these are the questions that take you through a full cycle, with what to expect.
+
+1. **"What network profiles are available?"** The assistant lists the profiles with their id, device limit, throughput and QoS profiles (`camara_list_profiles`).
+2. **"Find service areas at latitude 48.8467, longitude 2.2530."** It lists the areas that cover the point, and a link for each to view it on a map (`camara_retrieve_service_areas`). Open a link to see the area on geojson.io.
+3. **"Create a dedicated network using the profile called profile1 in the Roland Garros Tennis Courts area, from 2026-10-20T17:00:00Z to 2026-10-20T18:00:00Z."** Give the window as start and end times with a time zone, starting now or later. The assistant reserves the network and answers with its id and status **REQUESTED** (`camara_create_network`).
+4. **"What is the status of network `<id>`?"** Within a few seconds the status moves to **RESERVED** or **ACTIVATED**; ask again if it still says **REQUESTED** (`camara_get_network`).
+5. **"Grant phone number +1234567890 access to network `<id>`."** It creates the access, with status **REQUESTED**, and gives its id (`camara_create_access`).
+6. **"Is access `<id>` granted yet?"** The status becomes **GRANTED**, or **REJECTED** with the reason (`camara_get_access`).
+7. **"List all my dedicated networks and their status."** (`camara_list_networks`)
+
+Replace each `<id>` with the id from the earlier answer, or let the assistant carry it over in the conversation.
+
+### Dismantle
+
+Release what you booked, the accesses first:
+
+1. **"Revoke access `<id>`."** (`camara_delete_access`)
+2. **"Delete network `<id>`."** (`camara_delete_network`)
+
+Then ask for the list of networks again: the answer is "No dedicated networks found."
+
+<details>
+<summary>An example conversation</summary>
+
+This is a real conversation, held with Claude Code as the assistant against the sandbox, with the answers shortened. Your assistant will word its answers differently.
+
+**You:** What network profiles are available?
+
+*The assistant calls `camara_list_profiles` and answers:*
+
+> There are 6 network profiles available:
+>
+> | Name | ID | Max devices | UL / DL | QoS profiles (default in bold) |
+> |---|---|---|---|---|
+> | profile1 | `7e54f738-9e58-4509-9069-7023f03b22b6` | 100 | 100 / 100 Mbps | **QOS_A**, QOS_B, QOS_C |
+> | profile2 | `3016629c-9c76-4d2c-8069-b50a24f0f62e` | 100,000 | 10 / 10 Mbps | **QOS_D**, QOS_E, QOS_F |
+> | broadband | `1e32608d-0e42-45e0-82a9-7c156972049c` | 1 | 1 / 10 Mbps | **eMBB** |
+> | Medium OutsideBroadcast Production | `914BA5A4-B1DE-404F-B7BB-D5B89FFDBE08` | 12 | 40 / 10 Mbps | QoS_Ul20Mbps_Dl5Mbps, QoS_Ul10Mbps_Dl5Mbps, **QoS_Bi1Mbps**, QoS_RTC_64kbps |
+> | Small OutsideBroadcast Production | `5961C65A-290D-40FE-951F-902B909B5C38` | 6 | 15 / 5 Mbps | QoS_Ul10Mbps_Dl5Mbps, QoS_Bi5Mbps, **QoS_Bi1Mbps**, QoS_RTC_64kbps |
+> | MoJo/ENG Production | `629CD271-4DF2-47B8-B646-D2559D5C6726` | 1 | 5 / 5 Mbps | QoS_Bi5Mbps, **QoS_Bi1Mbps** |
+
+**You:** Find service areas at latitude 48.8467, longitude 2.2530.
+
+*The assistant calls `camara_retrieve_service_areas` and answers:*
+
+> Two service areas cover that point (48.8467, 2.2530).
+>
+> **1. Roland Garros Tennis Courts** (`625b2d4b-4da7-4f07-9169-e60ffdf76671`)
+> - Circle, centre (48.845867, 2.253156), radius 1000 m
+> - Network profiles: profile1 (`7e54f738-...`), profile2 (`3016629c-...`)
+> - QoS profiles: QOS_S, `58e104f7-7b61-4603-9d0a-4813583c27e9`
+> - [GeoJSON map](https://geojson.io/#data=…)
+>
+> **2. Grand Paris** (`4161b722-fa41-4e1d-933d-ed0aabb0fa08`)
+> - Polygon covering the Paris metropolitan region
+> - Network profiles: broadband (`1e32608d-...`)
+> - QoS profiles: eMBB
+> - [GeoJSON map](https://geojson.io/#data=…)
+
+**You:** Create a dedicated network using the profile called profile1 in the Roland Garros Tennis Courts area, from 2026-10-20T17:07:16Z to 2026-10-20T18:07:16Z.
+
+*The assistant calls `camara_create_network` and answers:*
+
+> The network request was submitted and is in **REQUESTED** status, so it's waiting for the provider to approve it.
+>
+> - **Network ID:** `e90cdef4-67ee-4e34-9a16-3d1f7ae01a3e`
+> - **Profile:** profile1 (100 devices, 100/100 Mbps, QoS_A, QOS_B and QOS_C, default QOS_A)
+> - **Area:** Roland Garros Tennis Courts
+> - **Service time:** 2026-10-20T17:07:16Z to 2026-10-20T18:07:16Z
+
+**You:** What is the status of that network?
+
+*The assistant calls `camara_get_network` and answers:*
+
+> The network `e90cdef4-67ee-4e34-9a16-3d1f7ae01a3e` is still **REQUESTED**. The provider hasn't approved it yet.
+
+**You:** Grant phone number +1234567890 access to that network.
+
+*The assistant calls `camara_create_access` and answers:*
+
+> The access request for +1234567890 was submitted. It's in **REQUESTED** status and waiting for the provider to approve it.
+>
+> - **Access ID:** `40ad271a-44ff-4198-9e22-f235e2b03398`
+> - **Network:** `e90cdef4-67ee-4e34-9a16-3d1f7ae01a3e`
+> - **QoS profiles:** all profile1 options (QOS_A, QOS_B, QOS_C), default QOS_A, because you didn't restrict them
+
+**You:** Is that access granted yet?
+
+*The assistant calls `camara_get_access` and answers:*
+
+> Yes, the access `40ad271a-44ff-4198-9e22-f235e2b03398` is now **GRANTED** for +1234567890.
+
+**You:** Revoke that access.
+
+*The assistant calls `camara_delete_access` and answers:*
+
+> I revoked access `40ad271a-44ff-4198-9e22-f235e2b03398`, so +1234567890 can no longer use network `e90cdef4-67ee-4e34-9a16-3d1f7ae01a3e`.
+
+**You:** Delete that network.
+
+*The assistant calls `camara_delete_network` and answers:*
+
+> I deleted network `e90cdef4-67ee-4e34-9a16-3d1f7ae01a3e`, which cancels the reservation. Its device access was already revoked, so nothing is left from this session.
+
+**You:** List all my dedicated networks.
+
+*The assistant calls `camara_list_networks` and answers:*
+
+> You have no dedicated networks. That fits with the one we created having been deleted.
+
+</details>
+
+The server also gives the assistant four workflow prompts, `dedicated_network_workflow`, `discover_profiles_and_areas`, `manage_device_access` and `teardown_network`, which guide it through these steps. The parameters of all 12 tools and the recommended order of calls are in the [tool reference](https://github.com/5G-MAG/rt-camara-examples/blob/main/mcp-servers/dedicated-networks/docs/tool-reference.md).
+
+## Other ways to use the server
+
+<details>
+<summary>Call the tools from a script</summary>
+
+Any MCP client can use the server, so you can try every tool without an assistant. Set `CAMARA_API_ROOT` and `CAMARA_ACCESS_TOKEN` in the environment, then, in the server's folder:
+
+```python
+import asyncio, os
+from mcp import ClientSession, StdioServerParameters
+from mcp.client.stdio import stdio_client
+
+async def main():
+    server = StdioServerParameters(command="python", args=["server.py"], env=dict(os.environ))
+    async with stdio_client(server) as (read, write):
+        async with ClientSession(read, write) as session:
+            await session.initialize()
+            result = await session.call_tool("camara_list_profiles", {"params": {}})
+            print("".join(c.text for c in result.content if hasattr(c, "text")))
+
+asyncio.run(main())
+```
+
+Every tool takes its arguments in a single `params` object, for example `{"params": {"atLocation": {"latitude": 48.8467, "longitude": 2.2530}}}` for `camara_retrieve_service_areas`.
+
+</details>
+
+<details>
+<summary>Use Claude Code</summary>
+
+[Claude Code](https://claude.com/claude-code) takes the same `mcpServers` block as Claude Desktop, so it works on Linux, macOS and Windows. Save the block from section 3 as `camara.mcp.json` and start Claude Code with it:
+
+```bash
+claude --mcp-config camara.mcp.json
+```
+
+The tools then appear with the prefix `mcp__camara-dedicated-networks__`. The example conversation above was held this way.
+
+</details>
+
+<details>
+<summary>Use OpenCode</summary>
+
+[OpenCode](https://opencode.ai) reads MCP servers from an `opencode.json` in your project, or globally from `~/.config/opencode/opencode.json`. Add:
+
+```json
+{
+  "mcp": {
+    "camara-dedicated-networks": {
+      "type": "local",
+      "command": ["python", "/path/to/rt-camara-examples/mcp-servers/dedicated-networks/server.py"],
+      "enabled": true,
+      "environment": {
+        "CAMARA_API_ROOT": "<CAMARA_API_ROOT>",
+        "CAMARA_ACCESS_TOKEN": "<the access_token you copied>"
+      }
+    }
+  }
+}
+```
+
+Restart OpenCode. The tools then have the prefix `camara-dedicated-networks_`, for example `camara-dedicated-networks_camara_list_profiles`.
+
+</details>
+
+<details>
+<summary>Run the server's tests</summary>
+
+```bash
+pip install -r requirements-dev.txt
+python -m pytest
+```
+
+</details>

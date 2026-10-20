@@ -2,13 +2,8 @@
 title: Tutorials
 hide_title: true
 sidebar_position: 2
-description: Written step-by-step tutorials for the CAMARA Connectivity Quality Management APIs reference tools are not yet published; points to the project repositories in the meantime.
+description: "Tutorials for the CAMARA Connectivity Quality Management APIs reference tools: the Dedicated Networks Portal and the Dedicated Networks MCP Server."
 ---
-
-import ProjectVideos from '@site/src/components/ProjectVideos';
-import youtubePlaylists from '@site/static/data/youtube-playlists.json';
-
-export const projectVideos = youtubePlaylists.projects?.['network-apis']?.videos || [];
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -20,16 +15,9 @@ export const projectVideos = youtubePlaylists.projects?.['network-apis']?.videos
 </div>
 </div>
 
-Written step-by-step tutorials for the Network APIs reference tools are not yet published here. In the meantime, the project repositories are the best starting point: refer to the README in each [Network APIs repository](https://github.com/5G-MAG). See the [Implementation Detail](./implementation) page for the full CAMARA API coverage table, and [Repositories & Releases](/reference-tools/network-apis#repositories--releases) on the project index for the code. Our [YouTube channel](https://www.youtube.com/@5GMAG) also hosts practical videos from developers on the use of the Reference Tools generally.
+CAMARA-compliant API clients that let a media application ask the network directly for what a live production needs, such as a booked network slice for a broadcast at a fixed venue and time window. Two tutorials show the Dedicated Networks APIs in use, each complete on its own:
 
-<div class="onair-kicker"><span class="onair-kicker__dot"></span>Watch</div>
+- [Tutorial: Dedicated Networks Portal - book and manage a network](./tutorial-dedicated-networks-portal): run the portal against a sandbox, find a service area, reserve a network, give a device access, book in one step and dismantle it.
+- [Tutorial: Dedicated Networks MCP Server - use it from an AI assistant](./tutorial-dedicated-networks-mcp-server): install the MCP server, configure Claude Desktop on Windows, and book and release a network by asking.
 
-## Dedicated Network APIs for Connected Media Production
-
-CAMARA-compliant API clients that let a media application ask the network directly for what a live production needs: a Quality on Demand (QoD) session for a contribution feed, a connectivity-insight check on whether a location can sustain a required bitrate, or a booked network slice for a broadcast at a fixed venue and time window.
-
-Written step-by-step tutorials for these APIs are not yet published. In the meantime, see the [Implementation Detail](./implementation) page for the full API coverage table and [Repositories & Releases](/reference-tools/network-apis#repositories--releases) on the project index for the project repositories to try them yourself.
-
-## Developer Exchange
-
-<ProjectVideos videos={projectVideos} name="CAMARA Connectivity Quality Management APIs" />
+The [Implementation Detail](./implementation) page has the full CAMARA API coverage table, and [Repositories & Releases](/reference-tools/network-apis#repositories--releases) on the project index lists the repositories.
