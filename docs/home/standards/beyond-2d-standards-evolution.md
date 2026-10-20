@@ -3,6 +3,7 @@ hide_title: true
 title: Beyond 2D Video Experiences - Standards Evolution
 slug: /standards/beyond-2d/evolution
 description: Release-by-release 3GPP work item and Change Request history behind Beyond 2D Video Experiences.
+sidebar_label: Release history
 ---
 
 <div class="topic-banner">

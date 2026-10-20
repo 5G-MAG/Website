@@ -3,6 +3,7 @@ hide_title: true
 title: Network APIs for Connectivity Quality - Standards Evolution
 slug: /standards/network-apis/evolution
 description: Release-by-release 3GPP work item and Change Request history behind CAMARA Connectivity Quality Management APIs.
+sidebar_label: Release history
 ---
 
 <div class="topic-banner">

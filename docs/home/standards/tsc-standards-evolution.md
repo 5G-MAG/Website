@@ -3,6 +3,7 @@ hide_title: true
 title: Time-Sensitive Communications (TSC) - Standards Evolution
 slug: /standards/tsc/evolution
 description: Release-by-release 3GPP work item and Change Request history behind Time-Sensitive Communications (TSC).
+sidebar_label: Release history
 ---
 
 <div class="topic-banner">

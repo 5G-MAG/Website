@@ -3,6 +3,7 @@ hide_title: true
 title: DVB-I Services over 5G - Standards Evolution
 slug: /standards/dvb-i/evolution
 description: Revision history of DVB A177 (ETSI TS 103 770) and ETSI TR 103 972, the specifications behind DVB-I Services over 5G Systems.
+sidebar_label: Release history
 ---
 
 <div class="topic-banner">

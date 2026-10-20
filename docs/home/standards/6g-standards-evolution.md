@@ -3,6 +3,7 @@ hide_title: true
 title: Towards 6G Media - Standards Evolution
 slug: /standards/6g/evolution
 description: Release-by-release 3GPP work item and Change Request history behind Towards 6G Media.
+sidebar_label: Release history
 ---
 
 <div class="topic-banner">

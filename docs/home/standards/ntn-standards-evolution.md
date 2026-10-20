@@ -3,6 +3,7 @@ hide_title: true
 title: Non-Terrestrial Networks in 5G Systems - Standards Evolution
 slug: /standards/ntn/evolution
 description: Release-by-release 3GPP work item and Change Request history behind Non-Terrestrial Networks in 5G Systems.
+sidebar_label: Release history
 ---
 
 <div class="topic-banner">

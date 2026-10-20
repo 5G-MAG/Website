@@ -3,6 +3,7 @@ hide_title: true
 title: Public Warning Systems - Standards Evolution
 slug: /standards/emergency-alerts/evolution
 description: Release-by-release 3GPP work item and Change Request history behind 5G Broadcast - Emergency Alerts.
+sidebar_label: Release history
 ---
 
 <div class="topic-banner">

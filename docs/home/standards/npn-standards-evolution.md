@@ -3,6 +3,7 @@ hide_title: true
 title: Non-Public Networks - Standards Evolution
 slug: /standards/npn/evolution
 description: Release-by-release 3GPP work item and Change Request history behind Non-Public Networks.
+sidebar_label: Release history
 ---
 
 <div class="topic-banner">

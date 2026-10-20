@@ -3,6 +3,7 @@ hide_title: true
 title: Conversational Avatar Communication - Standards Evolution
 slug: /standards/avatar/evolution
 description: Release-by-release 3GPP work item and Change Request history behind Conversational Avatar Communication with MPEG ARF.
+sidebar_label: Release history
 ---
 
 <div class="topic-banner">

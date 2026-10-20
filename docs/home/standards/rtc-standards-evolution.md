@@ -1,6 +1,6 @@
 ---
 hide_title: true
-sidebar_label: Evolution by release
+sidebar_label: Release history
 title: Real-time Media Communication (RTC) - Standards Evolution
 slug: /standards/rtc/evolution
 description: Release by release, the 3GPP work items and change requests behind TS 26.506 and TS 26.113, Release 18 to Release 19, and the Release 20 work items that list them.

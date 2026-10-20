@@ -1,6 +1,6 @@
 ---
 hide_title: true
-sidebar_label: Evolution by release
+sidebar_label: Release history
 title: 5G MBS - Standards Evolution
 slug: /standards/5g-mbs/evolution
 description: Release by release, the 3GPP work items and study items behind MBS User Services and MBS in the 5G System and NG-RAN, Release 17 to Release 20, with the specifications each changed.

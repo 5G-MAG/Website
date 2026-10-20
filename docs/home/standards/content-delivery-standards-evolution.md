@@ -3,6 +3,7 @@ hide_title: true
 title: Content Delivery Protocols and Tools - Standards Evolution
 slug: /standards/content-delivery/evolution
 description: Release-by-release 3GPP work item and Change Request history behind Content Delivery Protocols and Tools.
+sidebar_label: Release history
 ---
 
 <div class="topic-banner">

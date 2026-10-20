@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Reference Media Application"
-sidebar_label: "Tutorial: Reference Media Application - play, configure and test"
+sidebar_label: "Reference Media Application - play, configure and test"
 hide_title: true
 sidebar_position: 4
 description: "Step by step with the Reference Media Application on Android: build and install it, point it at an rt-media-origin, watch channels with titles and posters, and run the delivery tests."
@@ -30,7 +30,7 @@ Read the README of [rt-media-android-application](https://github.com/5G-MAG/rt-m
 | Repository | What it is | Used in |
 |---|---|---|
 | [rt-media-android-application](https://github.com/5G-MAG/rt-media-android-application) | The Reference Media Application, and the laptop scripts in its `rig/` folder | All sections |
-| [rt-media-origin](https://github.com/5G-MAG/rt-media-origin) | The origin the application plays from and tests | [Tutorial: Media Origin](./tutorial-media-origin) |
+| [rt-media-origin](https://github.com/5G-MAG/rt-media-origin) | The origin the application plays from and tests | [Tutorial: Media Origin](./media-origin) |
 
 | You want | Go to |
 |---|---|
@@ -40,7 +40,7 @@ Read the README of [rt-media-android-application](https://github.com/5G-MAG/rt-m
 | Every delivery method checked and a report | [4. Test](#4-test) |
 | The tests run from your laptop | [5. Run the tests from the laptop](#5-run-the-tests-from-the-laptop) |
 
-**You need:** an Android 10 (API 29) or later phone on the same network as the origin, with USB debugging on; a Linux machine with JDK 17 or later, the Android SDK (platform 37 and platform-tools) and `git`; and an origin that is running. If you do not have one, do [Tutorial: Media Origin](./tutorial-media-origin) section 1 first.
+**You need:** an Android 10 (API 29) or later phone on the same network as the origin, with USB debugging on; a Linux machine with JDK 17 or later, the Android SDK (platform 37 and platform-tools) and `git`; and an origin that is running. If you do not have one, do [Tutorial: Media Origin](./media-origin) section 1 first.
 
 ## 1. Build and install
 
@@ -120,7 +120,7 @@ The application reads one JSON document, `http://<PUBLIC_HOST>:3344/metadata.jso
 - `posterUrl` can be relative: the application resolves it against the address the document came from. The origin serves the images from its media folder at `/posters/<file name>`.
 - A channel with no metadata is still shown, by its id and without a poster.
 
-To add titles and posters to your own channels, follow [Tutorial: Media Origin](./tutorial-media-origin#45-titles-and-posters). To read them from somewhere else, put that address in **Metadata address** in the Settings.
+To add titles and posters to your own channels, follow [Tutorial: Media Origin](./media-origin#45-titles-and-posters). To read them from somewhere else, put that address in **Metadata address** in the Settings.
 
 ## 4. Test
 

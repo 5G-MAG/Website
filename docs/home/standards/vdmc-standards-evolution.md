@@ -3,6 +3,7 @@ hide_title: true
 title: Dynamic Mesh Coding - Standards Evolution
 slug: /standards/vdmc/evolution
 description: Edition and stage history of ISO/IEC 23090-29, the specification behind Dynamic Mesh Coding.
+sidebar_label: Release history
 ---
 
 <div class="topic-banner">

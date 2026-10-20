@@ -3,6 +3,7 @@ hide_title: true
 title: 5G Broadcast - Standards Evolution
 slug: /standards/5g-broadcast/evolution
 description: Release-by-release detail on 3GPP work items, Change Requests and RAN meetings behind LTE-based 5G Broadcast, Releases 14 to 19.
+sidebar_label: Release history
 ---
 
 <div class="topic-banner">

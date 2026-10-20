@@ -104,6 +104,11 @@ const config = {
       '@docusaurus/plugin-client-redirects',
       {
         redirects: [
+          // Tutorials moved into each tool's tutorials/ folder, so they cascade under Tutorials in its menu (2026-10-20).
+          { from: '/reference-tools/content-delivery/tutorial-media-origin', to: '/reference-tools/content-delivery/tutorials/media-origin' },
+          { from: '/reference-tools/content-delivery/tutorial-media-application', to: '/reference-tools/content-delivery/tutorials/media-application' },
+          { from: '/reference-tools/network-apis/tutorial-dedicated-networks-portal', to: '/reference-tools/network-apis/tutorials/dedicated-networks-portal' },
+          { from: '/reference-tools/network-apis/tutorial-dedicated-networks-mcp-server', to: '/reference-tools/network-apis/tutorials/dedicated-networks-mcp-server' },
           { from: '/tech/standards/5g-broadcast', to: '/standards/5g-broadcast' },
           { from: '/tech/standards/5g-broadcast-standards-evolution', to: '/standards/5g-broadcast/evolution' },
           { from: '/tech/standards/5g-mbs', to: '/standards/5g-mbs' },

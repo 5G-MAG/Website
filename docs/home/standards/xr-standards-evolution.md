@@ -3,6 +3,7 @@ hide_title: true
 title: XR Media & 3D Scenes - Standards Evolution
 slug: /standards/xr/evolution
 description: Editions and amendments of ISO/IEC 23090-14, MPEG-I Scene Description.
+sidebar_label: Release history
 ---
 
 <div class="topic-banner">

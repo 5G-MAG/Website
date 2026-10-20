@@ -3,6 +3,7 @@ hide_title: true
 title: AI/ML Evaluation Framework - Standards Evolution
 slug: /standards/ai-ml/evolution
 description: Release-by-release 3GPP work item and Change Request history behind AI/ML Evaluation Framework.
+sidebar_label: Release history
 ---
 
 <div class="topic-banner">

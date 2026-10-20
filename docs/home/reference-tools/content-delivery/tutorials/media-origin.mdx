@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Media Origin"
-sidebar_label: "Tutorial: Media Origin - create and serve content"
+sidebar_label: "Media Origin - create and serve content"
 hide_title: true
 sidebar_position: 3
 description: "Step by step with rt-media-origin in Docker: create DASH, HLS and CMAF streams, live and on demand, radio, real-time push feeds, XR scenes and V3C volumetric video, and serve titles and posters."
@@ -25,7 +25,7 @@ Each repository below has a README that lists what to install and how to build a
 | Repository | What it is | Used in |
 |---|---|---|
 | [rt-media-origin](https://github.com/5G-MAG/rt-media-origin) | The origin: packages and serves the content, with a dashboard and a Docker image. See also its [docker/README.md](https://github.com/5G-MAG/rt-media-origin/blob/development/docker/README.md) | All sections |
-| [rt-media-android-application](https://github.com/5G-MAG/rt-media-android-application) | The Reference Media Application that plays the content on a phone | [Tutorial: Reference Media Application](./tutorial-media-application) |
+| [rt-media-android-application](https://github.com/5G-MAG/rt-media-android-application) | The Reference Media Application that plays the content on a phone | [Tutorial: Reference Media Application](./media-application) |
 | [rt-xr-content](https://github.com/5G-MAG/rt-xr-content) | Scenes and videos for XR | [6. Content for XR](#6-content-for-xr) |
 | [rt-xr-unity-player](https://github.com/5G-MAG/rt-xr-unity-player) | The XR scene player | [6. Content for XR](#6-content-for-xr) |
 | [rt-v3c-content](https://github.com/5G-MAG/rt-v3c-content) | Volumetric video titles | [7. Content for V3C](#7-content-for-v3c) |
@@ -43,7 +43,7 @@ Each repository below has a README that lists what to install and how to build a
 | Videos and a scene for an XR player | [6. Content for XR](#6-content-for-xr) |
 | Volumetric video for the V3C player | [7. Content for V3C](#7-content-for-v3c) |
 
-**You need:** a Linux machine with Docker (compose plugin), `git` and Git LFS, and `ffmpeg` on that machine to look at what you made (`ffprobe` and `ffplay`). Allow 2 GB of disk. To play on a phone, continue with the [Reference Media Application tutorial](./tutorial-media-application).
+**You need:** a Linux machine with Docker (compose plugin), `git` and Git LFS, and `ffmpeg` on that machine to look at what you made (`ffprobe` and `ffplay`). Allow 2 GB of disk. To play on a phone, continue with the [Reference Media Application tutorial](./media-application).
 
 ## 1. Start the origin
 
@@ -156,7 +156,7 @@ The same dropdown has templates that set the profile a standard asks for: DVB-DA
 
 ### 4.5 Titles and posters
 
-A viewing application such as the [Reference Media Application](./tutorial-media-application) shows a title, a description and a poster for each channel. They come from the origin, at `http://<PUBLIC_HOST>:3344/metadata.json`.
+A viewing application such as the [Reference Media Application](./media-application) shows a title, a description and a poster for each channel. They come from the origin, at `http://<PUBLIC_HOST>:3344/metadata.json`.
 
 1. Put a poster image (`.png`, `.jpg`, `.jpeg`, `.webp`, `.gif` or `.svg`) in the media folder.
 2. Open `docker/config/origin.yaml` in an editor and add a `metadata` line to the channel:
@@ -204,7 +204,7 @@ To make a push channel of your own, load the template **SRT contribution feed (r
 | `rtp` | a receiver for MPEG-TS over RTP, payload type 33 |
 | `moq` | a moq-lite relay, such as moq-dev's `moq-relay` |
 
-RTP multicast, MoQ and RIST are exercised end to end by the tests of the [Reference Media Application](./tutorial-media-application), which receives them on a phone or a laptop.
+RTP multicast, MoQ and RIST are exercised end to end by the tests of the [Reference Media Application](./media-application), which receives them on a phone or a laptop.
 
 ## 6. Content for XR
 

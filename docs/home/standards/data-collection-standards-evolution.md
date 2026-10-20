@@ -1,6 +1,6 @@
 ---
 hide_title: true
-sidebar_label: Evolution by release
+sidebar_label: Release history
 title: User Data Collection and Reporting - Standards Evolution
 slug: /standards/data-collection/evolution
 description: Release by release, the 3GPP work items and change requests behind TS 26.531 and TS 26.532, Release 17 to Release 19.
