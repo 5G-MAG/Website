@@ -1,0 +1,2341 @@
+{
+ "area": "rtc",
+ "title": "Real-time Media Communication (RTC) Architecture",
+ "audited": "2026-10-21",
+ "tier": "T0",
+ "method": "code read against every statement of the specifications on the project page; statements a component cannot meet by construction marked absent by group",
+ "releases": {
+  "all": "Real-time Media Communication (RTC) Architecture"
+ },
+ "held": {
+  "cases": 3,
+  "reasons": [
+   "a specification or code outside the audit that could not be read"
+  ]
+ },
+ "releaseStatus": {
+  "baseline": "20",
+  "issues": {
+   "18": "TS 26.113 V18.4.0",
+   "19": "TS 26.113 V19.2.0",
+   "20": "TS 26.113 V19.2.0"
+  },
+  "profiles": [
+   "all"
+  ],
+  "matrix": {
+   "all": {
+    "18": {
+     "implemented": 105,
+     "differs": 11,
+     "absent": 8,
+     "inconsistent": 0
+    },
+    "19": {
+     "implemented": 105,
+     "differs": 11,
+     "absent": 8,
+     "inconsistent": 0
+    },
+    "20": {
+     "implemented": 105,
+     "differs": 11,
+     "absent": 8,
+     "inconsistent": 0
+    }
+   }
+  }
+ },
+ "components": {
+  "swapserver": {
+   "short": "SWAP server",
+   "name": "SWAP server (WebRTC Signalling Function of the RTC AS, RTC-4s)",
+   "builtAgainst": "",
+   "repos": [
+    {
+     "repo": "rt-3gpp-swap",
+     "version": ""
+    }
+   ]
+  },
+  "swapclient": {
+   "short": "SWAP client",
+   "name": "SWAP client library (signalling side of an RTC endpoint, RTC-4s)",
+   "builtAgainst": "",
+   "repos": [
+    {
+     "repo": "rt-3gpp-swap",
+     "version": ""
+    }
+   ]
+  },
+  "af": {
+   "short": "RTC AF",
+   "name": "RTC AF (Provisioning, Configuration and Network Support Functions; none exists)",
+   "builtAgainst": "",
+   "repos": []
+  },
+  "msh": {
+   "short": "RTC MSH",
+   "name": "RTC Media Session Handler (none exists)",
+   "builtAgainst": "",
+   "repos": []
+  },
+  "ice": {
+   "short": "ICE",
+   "name": "ICE Function, STUN and TURN (none exists)",
+   "builtAgainst": "",
+   "repos": []
+  },
+  "rtcas": {
+   "short": "RTC AS",
+   "name": "Other RTC AS functions: Media, Application-supporting Web, Transport Gateway, Interworking (none exists)",
+   "builtAgainst": "",
+   "repos": []
+  }
+ },
+ "features": [
+  {
+   "name": "SWAP signalling",
+   "summary": "",
+   "requirements": [
+    {
+     "id": "swapserver-26.113-13.2.4.1",
+     "name": "SWAP / Protocol and version identification",
+     "release": "all",
+     "component": "swapserver",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.4.1"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "WebSocket path /3gpp-swap/v1",
+       "verdict": "implemented",
+       "what": "The server accepts WebSocket upgrades only on the path /3gpp-swap/v1 (default; configurable).",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.1"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "swapserver-26.113-13.2.4.2",
+     "name": "SWAP / Transport",
+     "release": "all",
+     "component": "swapserver",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.4.2"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "SWAP over WebSocket",
+       "verdict": "implemented",
+       "what": "The server runs SWAP messages over a WebSocket server attached to an HTTP or HTTPS server and relays between endpoints.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.2"
+      },
+      {
+       "case": "Information to relay messages",
+       "verdict": "implemented",
+       "what": "The server relays connect messages using the registered matching criteria and other messages using the target identifier, and keeps the source-to-connection mapping.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.2"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "swapserver-26.113-13.2.4.4.1.1",
+     "name": "Common message fields / Source (source)",
+     "release": "all",
+     "component": "swapserver",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.4.4.1.1"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "Source identifier in each message",
+       "verdict": "implemented",
+       "what": "Messages the server originates carry a source identifier (its own UUID), and incoming messages without a source identifier are rejected as malformed.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.1.1"
+      },
+      {
+       "case": "Source identifier randomly generated",
+       "verdict": "implemented",
+       "what": "The server generates its own source identifier as a random UUID v4; it does not check that incoming identifiers are random.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.1.1"
+      },
+      {
+       "case": "Source identifier fixed for lifetime",
+       "verdict": "implemented",
+       "what": "The server uses one source identifier, generated at construction, for all messages it originates for its lifetime.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.1.1"
+      },
+      {
+       "case": "Ignore change of source identifier",
+       "verdict": "implemented",
+       "what": "A message whose source identifier differs from the one first seen on that WebSocket connection is dropped without a response.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.1.1"
+      },
+      {
+       "case": "Source identifier minimum length",
+       "verdict": "implemented",
+       "what": "Incoming messages with a source identifier shorter than 10 characters are rejected as malformed, and the server's own identifier is a 36-character UUID.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.1.1"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "swapserver-26.113-13.2.4.4.1.2",
+     "name": "Common message fields / Message Identifier (messge_id)",
+     "release": "all",
+     "component": "swapserver",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.4.4.1.2"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "Message identifier is a sequence number",
+       "verdict": "implemented",
+       "what": "Messages the server originates take their message identifier from a per-source counter starting at 1.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.1.2"
+      },
+      {
+       "case": "Message identifier scoped by source",
+       "verdict": "implemented",
+       "what": "The message identifier counter is kept per source identifier, and the server assigns identifiers only for messages it originates; relayed messages keep the sender's identifier.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.1.2"
+      },
+      {
+       "case": "Message identifier positive and increasing",
+       "verdict": "implemented",
+       "what": "Server-originated messages use a counter that starts at 1 and only increases; incoming identifiers are required to be integers of at least 1 but monotonic growth is not checked.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.1.2"
+      }
+     ],
+     "noted": [
+      "Incoming monotonic increase is not verified by the server."
+     ]
+    },
+    {
+     "id": "swapserver-26.113-13.2.4.4.1.3",
+     "name": "Common message fields / Message Type (message_type)",
+     "release": "all",
+     "component": "swapserver",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.4.4.1.3"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "Message type case-insensitive",
+       "verdict": "implemented",
+       "what": "The server lower-cases the message type before validation and dispatch, so any letter case is accepted.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.1.3"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "swapserver-26.113-13.2.4.4.2.2",
+     "name": "Register message / Parameters",
+     "release": "all",
+     "component": "swapserver",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.4.4.2.2"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "qos matching criterion",
+       "verdict": "implemented",
+       "what": "The server accepts a criterion of type qos at registration and in connect and matches it by exact equality of type and value; it does not interpret the QoS description.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.2.2"
+      },
+      {
+       "case": "Combine matching criteria",
+       "verdict": "implemented",
+       "what": "A connect with several criteria selects only endpoints that registered all of them.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.2.2"
+      },
+      {
+       "case": "Random selection among matches",
+       "verdict": "differs",
+       "what": "Among matching endpoints the server first keeps those with the most registered criteria and only then picks one at random, so selection is not random over all matches.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.2.2"
+      }
+     ],
+     "noted": [
+      "Matching of every criterion type, including qos, is plain equality on type and JSON value; the other listed types (ipv4, ipv6, fqdn, eas, processing) are likewise not interpreted.",
+      "Spec also says an endpoint registered without a requested criterion is deprioritized; the code excludes such endpoints instead (findMatches requires all criteria)."
+     ]
+    },
+    {
+     "id": "swapserver-26.113-13.2.4.4.3.1",
+     "name": "Response message / Description",
+     "release": "all",
+     "component": "swapserver",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.4.4.3.1"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "Respond to every request",
+       "verdict": "implemented",
+       "what": "Every register, connect, accept, reject, update, close and application message gets an ack or error response, except a changed-source message, which the specification says to ignore.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.3.1"
+      },
+      {
+       "case": "Response indicates ack or error",
+       "verdict": "implemented",
+       "what": "Responses carry type 'ack' or 'error'.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.3.1"
+      },
+      {
+       "case": "Ack after relay",
+       "verdict": "implemented",
+       "what": "After forwarding connect, accept, reject, update or application to the target, the server sends an ack to the source.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.3.1"
+      },
+      {
+       "case": "Error when error or target unknown",
+       "verdict": "differs",
+       "what": "Invalid JSON, schema failures, no match and an unknown target on connect, accept, reject, update and application get an error response, but close to an unknown target is only skipped and acked, and for a connected-but-unregistered target _forwardTo returns silently and an ack follows (accept, reject, update, close, application).",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.3.1"
+      },
+      {
+       "case": "Response carries request id",
+       "verdict": "implemented",
+       "what": "The request field of ack and error responses is the message identifier of the received message.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.3.1"
+      },
+      {
+       "case": "Error description",
+       "verdict": "implemented",
+       "what": "Every error response carries a description made of the error title and detail.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.3.1"
+      }
+     ],
+     "noted": [
+      "Messages of type response are silently dropped (line 183). An error for unparseable JSON uses placeholder -1 values for target and request.",
+      "Forwarding silently does nothing when the target has not registered (line 270), yet the ack is still sent.",
+      "For unparseable JSON no identifier exists and -1 is used."
+     ]
+    },
+    {
+     "id": "swapserver-26.113-13.2.4.4.3.2",
+     "name": "Response message / Parameters",
+     "release": "all",
+     "component": "swapserver",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.4.4.3.2"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "Response type ack or error",
+       "verdict": "implemented",
+       "what": "The server sends only 'ack' and 'error' as response type.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.3.2"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "swapserver-26.113-13.2.4.4.6.1",
+     "name": "Update message / Description",
+     "release": "all",
+     "component": "swapserver",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.4.4.6.1"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "Update from any endpoint",
+       "verdict": "implemented",
+       "what": "The server relays an update message from any endpoint to its target and acks it.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.6.1"
+      },
+      {
+       "case": "Update carries updated SDP",
+       "verdict": "implemented",
+       "what": "The server requires target and sdp in an update and relays the SDP unchanged, without interpreting media changes.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.6.1"
+      },
+      {
+       "case": "Update for half-close",
+       "verdict": "implemented",
+       "what": "An update is relayed like any other and leaves the server-side session active.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.6.1"
+      },
+      {
+       "case": "Termination through close",
+       "verdict": "implemented",
+       "what": "A close message is relayed to the target, removes the session from the server's active sessions and is acked.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.6.1"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "swapserver-26.113-13.2.4.4.8.1",
+     "name": "Close message / Description",
+     "release": "all",
+     "component": "swapserver",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.4.4.8.1"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "Close from either endpoint",
+       "verdict": "implemented",
+       "what": "The server accepts a close message from either side of a session, and also sends a close to the peer when a connection drops.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.8.1"
+      },
+      {
+       "case": "Update for partial teardown",
+       "verdict": "implemented",
+       "what": "The server relays update messages for partial teardown and keeps the session.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.8.1"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "swapserver-26.113-13.2.4.4.9.1",
+     "name": "Application message / Description",
+     "release": "all",
+     "component": "swapserver",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.4.4.9.1"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "Application messages",
+       "verdict": "implemented",
+       "what": "The server relays application messages between endpoints and acks them.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.9.1"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "swapserver-26.113-13.2.4.5",
+     "name": "SWAP / Integrity and security",
+     "release": "all",
+     "component": "swapserver",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.4.5"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "Key derivation configured by provider",
+       "verdict": "implemented",
+       "what": "Differs from the requirement; details are in the members-only section.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.5"
+      },
+      {
+       "case": "Integrity protection with MAC",
+       "verdict": "implemented",
+       "what": "When security is enabled the server signs outgoing messages with HMAC-SHA256 over the canonical message and verifies the signature of incoming messages that carry one.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.5"
+      },
+      {
+       "case": "Optional encryption of payload",
+       "verdict": "implemented",
+       "what": "The library can encrypt the payload with AES-GCM and base64-encode ciphertext and IV for JSON, when its encryption option is set.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.5"
+      },
+      {
+       "case": "Integrity and confidentiality protection are supported through the protection of the ...",
+       "verdict": "implemented",
+       "what": "Differs from the requirement; details are in the members-only section.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ]
+      }
+     ],
+     "noted": [
+      "Security is off unless SWAP_SECURITY_ENABLED is set.",
+      "The reference server.js fixes encryption to false, so encryption is not available through its configuration."
+     ]
+    },
+    {
+     "id": "swapserver-26.113-13.2.4.7",
+     "name": "SWAP / Protocol operation",
+     "release": "all",
+     "component": "swapserver",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.4.7"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "Ack after processing",
+       "verdict": "implemented",
+       "what": "Each request the server receives is acked after it has been processed and forwarded.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.7"
+      },
+      {
+       "case": "Response may indicate error",
+       "verdict": "implemented",
+       "what": "The server answers with an error response when a message cannot be processed or forwarded.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.7"
+      },
+      {
+       "case": "Errors in RFC 7807 format",
+       "verdict": "differs",
+       "what": "The error response is an ordinary SWAP response whose description text combines the Problem Details title and detail; no Problem Details object with type, title and status is sent.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.7"
+      },
+      {
+       "case": "Source identifier uniquely identifies source",
+       "verdict": "implemented",
+       "what": "The server identifies itself with a UUID and refuses a second open connection that claims a source identifier already in use.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.7"
+      },
+      {
+       "case": "UUID as source identifier",
+       "verdict": "implemented",
+       "what": "The server's own source identifier is a UUID v4.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.7"
+      },
+      {
+       "case": "Common fields source, message_id, message_type",
+       "verdict": "implemented",
+       "what": "Every server-originated message is a SwapMessage with version, source_id, message_id and message_type set in the constructor, and incoming messages without them fail the schema and get an error; the field is named source_id (as in the annex JSON schema), the prose says 'source'.",
+       "repo": "rt-3gpp-swap",
+       "conflict": "Clause 13.2.4.7: 'Every message shall contain the common message fields: source, message_id, and message_type.' versus the JSON schema TS26113_SWAPMessage.json, which names the property source_id and requires version, source_id and message_id.",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.7"
+      },
+      {
+       "case": "Source indicates originator",
+       "verdict": "implemented",
+       "what": "Messages the server originates carry its own identifier, and relayed messages are forwarded unchanged so the sender's identifier stays.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.7"
+      },
+      {
+       "case": "Server unique identifier",
+       "verdict": "implemented",
+       "what": "The server generates a UUID v4 at construction and uses it as the source of every message it originates.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.7"
+      }
+     ],
+     "noted": [
+      "Messages of type response are dropped without an ack (line 183).",
+      "Problem Details objects with the Table 13.2.4.6-1 type URIs are built but only the title is used, in the description string.",
+      "The field is named source_id in the code and the JSON schema; the clause text calls it source."
+     ]
+    },
+    {
+     "id": "swapclient-26.113-4.3.2",
+     "name": "Procedures for media content and signalling transport / Signalling (RTC-4s) procedures",
+     "release": "all",
+     "component": "swapclient",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 4.3.2"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "Configure from swapEndpoints",
+       "verdict": "absent",
+       "what": "The client library takes the server host, port and prefix from its constructor options; it does not read a Service Access Information message or any swapEndpoints list.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 4.3.2"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "swapclient-26.113-13.2.4.1",
+     "name": "SWAP / Protocol and version identification",
+     "release": "all",
+     "component": "swapclient",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.4.1"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "Version in URI path",
+       "verdict": "implemented",
+       "what": "The client builds the WebSocket URI path ending in /3gpp-swap/v1, without a trailing slash.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.1"
+      },
+      {
+       "case": "Subprotocol in upgrade request",
+       "verdict": "implemented",
+       "what": "The client opens the WebSocket with the subprotocol 3gpp.SWAP.v1, so the header is sent in the upgrade request.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.1"
+      }
+     ],
+     "noted": [
+      "The statement text shows a trailing slash; clause 13.2.3 says a URI should not contain one, and the client follows 13.2.3."
+     ]
+    },
+    {
+     "id": "swapclient-26.113-13.2.4.2",
+     "name": "SWAP / Transport",
+     "release": "all",
+     "component": "swapclient",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.4.2"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "Operates over WebSocket",
+       "verdict": "implemented",
+       "what": "The client carries SWAP messages over a WebSocket connection to a SWAP server.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.2"
+      },
+      {
+       "case": "Endpoint acts as WebSocket server",
+       "verdict": "absent",
+       "what": "The client only opens outgoing WebSocket connections and cannot listen for an incoming connection request.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.2"
+      },
+      {
+       "case": "Relay information when server used",
+       "verdict": "implemented",
+       "what": "Connect messages carry the matching criteria and other messages carry the target identifier, which the server uses to relay.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.2"
+      }
+     ],
+     "noted": [
+      "Only the endpoint-to-server form is used; the client always initiates the WebSocket connection.",
+      "The library's SwapServer class could be run inside an endpoint, but SwapClient does not use it."
+     ]
+    },
+    {
+     "id": "swapclient-26.113-13.2.4.3",
+     "name": "SWAP / State machine",
+     "release": "all",
+     "component": "swapclient",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.4.3"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "Wait for ICE gathering before offer",
+       "verdict": "implemented",
+       "what": "The helper that creates the offer waits for ICE gathering to complete before returning the SDP; connectOffer itself sends the offer it is given without checking.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.3"
+      }
+     ],
+     "noted": [
+      "The helper is not wired into SwapClient; an application that calls connectOffer directly must wait itself (the demo page does)."
+     ]
+    },
+    {
+     "id": "swapclient-26.113-13.2.4.4.1.1",
+     "name": "Common message fields / Source (source)",
+     "release": "all",
+     "component": "swapclient",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.4.4.1.1"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "Source identifier on every message",
+       "verdict": "implemented",
+       "what": "Every message the client builds carries the client's source identifier.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.1.1"
+      },
+      {
+       "case": "Random source identifier",
+       "verdict": "implemented",
+       "what": "The client generates a random UUID v4 as its source identifier unless the application supplies one.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.1.1"
+      },
+      {
+       "case": "Source identifier fixed",
+       "verdict": "implemented",
+       "what": "The client fixes its source identifier at construction and uses it for every message.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.1.1"
+      },
+      {
+       "case": "At least 10 characters",
+       "verdict": "implemented",
+       "what": "A generated identifier is 36 characters, and messages with a source identifier shorter than 10 characters fail validation when serialised.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.1.1"
+      }
+     ],
+     "noted": [
+      "An application-supplied identifier is used as given."
+     ]
+    },
+    {
+     "id": "swapclient-26.113-13.2.4.4.1.2",
+     "name": "Common message fields / Message Identifier (messge_id)",
+     "release": "all",
+     "component": "swapclient",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.4.4.1.2"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "Message id is a sequence number",
+       "verdict": "implemented",
+       "what": "Each message gets the next integer from a counter.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.1.2"
+      },
+      {
+       "case": "Message id scoped by source",
+       "verdict": "implemented",
+       "what": "The counter is kept per source identifier and assigned by the sending client.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.1.2"
+      },
+      {
+       "case": "Positive, monotonically increasing",
+       "verdict": "implemented",
+       "what": "Message ids start at 1 and increase by one for each message; validation requires an integer of at least 1.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.1.2"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "swapclient-26.113-13.2.4.4.1.3",
+     "name": "Common message fields / Message Type (message_type)",
+     "release": "all",
+     "component": "swapclient",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.4.4.1.3"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "Message type case-insensitive",
+       "verdict": "implemented",
+       "what": "Incoming and validated message types are lower-cased before use, so any letter case is accepted.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.1.3"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "swapclient-26.113-13.2.4.4.2.1",
+     "name": "Register message / Description",
+     "release": "all",
+     "component": "swapclient",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.4.4.2.1"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "Register with matching criteria",
+       "verdict": "implemented",
+       "what": "The client can send a register message with a list of matching criteria.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.2.1"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "swapclient-26.113-13.2.4.4.2.2",
+     "name": "Register message / Parameters",
+     "release": "all",
+     "component": "swapclient",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.4.4.2.2"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "qos criterion",
+       "verdict": "implemented",
+       "what": "The client can send a criterion of type qos with any value.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.2.2"
+      },
+      {
+       "case": "Combine criteria",
+       "verdict": "implemented",
+       "what": "The client sends several criteria together in one register or connect message.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.2.2"
+      },
+      {
+       "case": "Processing type as decode/encode pair",
+       "verdict": "absent",
+       "what": "The client passes criteria values through unchecked and builds no processing criterion.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.2.2"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "swapclient-26.113-13.2.4.4.4.1",
+     "name": "Connect message / Description",
+     "release": "all",
+     "component": "swapclient",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.4.4.4.1"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "Connect carries SDP offer",
+       "verdict": "implemented",
+       "what": "The connect message carries the offer SDP supplied by the application.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.4.1"
+      },
+      {
+       "case": "matching_criteria in connect",
+       "verdict": "implemented",
+       "what": "The connect message always carries a matching_criteria array, empty if the application gives none.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.4.1"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "swapclient-26.113-13.2.4.4.4.2",
+     "name": "Connect message / Parameters",
+     "release": "all",
+     "component": "swapclient",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.4.4.4.2"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "Criteria object shape",
+       "verdict": "implemented",
+       "what": "Each criterion must be an object with a type and a value, checked when the message is serialised.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.4.2"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "swapclient-26.113-13.2.4.4.5.1",
+     "name": "Accept message / Description",
+     "release": "all",
+     "component": "swapclient",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.4.4.5.1"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "Accept connect or update",
+       "verdict": "implemented",
+       "what": "The client emits connect and update events, and the application accepts by calling accept(), which sends an accept message.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.5.1"
+      },
+      {
+       "case": "Accept carries answer SDP",
+       "verdict": "implemented",
+       "what": "accept() puts the answer SDP supplied by the application in the accept message.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.5.1"
+      },
+      {
+       "case": "Reply to close with accept",
+       "verdict": "differs",
+       "what": "On a received close the client updates its state, removes the session and emits a close event, but does not send an accept message itself.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.5.1"
+      },
+      {
+       "case": "No SDP in accept to close",
+       "verdict": "implemented",
+       "what": "accept(target) without an answer sends an accept message with no SDP.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.5.1"
+      }
+     ],
+     "noted": [
+      "The application decides to accept; the library does not reply by itself.",
+      "The application can call accept(target) afterwards."
+     ]
+    },
+    {
+     "id": "swapclient-26.113-13.2.4.4.5.2",
+     "name": "Accept message / Parameters",
+     "release": "all",
+     "component": "swapclient",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.4.4.5.2"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "answer parameter",
+       "verdict": "implemented",
+       "what": "The accept message carries the answer SDP in the answer field.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.5.2"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "swapclient-26.113-13.2.4.4.6.1",
+     "name": "Update message / Description",
+     "release": "all",
+     "component": "swapclient",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.4.4.6.1"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "Update from either endpoint",
+       "verdict": "implemented",
+       "what": "The client can send an update message to its peer.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.6.1"
+      },
+      {
+       "case": "Update carries updated SDP",
+       "verdict": "implemented",
+       "what": "The update message carries the SDP given by the application, which may describe added, changed or removed streams.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.6.1"
+      },
+      {
+       "case": "Accept an update",
+       "verdict": "implemented",
+       "what": "The client emits an update event, and the application accepts by calling accept().",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.6.1"
+      },
+      {
+       "case": "Update for half-close",
+       "verdict": "implemented",
+       "what": "update() sends any SDP, so it can carry a half-close; the library has no dedicated half-close function.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.6.1"
+      },
+      {
+       "case": "Termination uses close",
+       "verdict": "implemented",
+       "what": "close(target) sends a close message to end the session.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.6.1"
+      }
+     ],
+     "noted": [
+      "The application decides to accept; the library does not reply by itself."
+     ]
+    },
+    {
+     "id": "swapclient-26.113-13.2.4.4.7.1",
+     "name": "Reject message / Description",
+     "release": "all",
+     "component": "swapclient",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.4.4.7.1"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "Reject offer or update",
+       "verdict": "implemented",
+       "what": "The application can reject by calling reject(), which sends a reject message.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.7.1"
+      },
+      {
+       "case": "Reject carries reason",
+       "verdict": "differs",
+       "what": "A reject always carries a description (schema requires target and description), but the reference to the offer or update is optional: SwapClient.reject sets request only if the application passes it and never takes it from the received message.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.7.1"
+      },
+      {
+       "case": "Reject references the request",
+       "verdict": "differs",
+       "what": "The reference to the rejected message is included only when the application passes it; it is optional in the client and in message validation.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.7.1"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "swapclient-26.113-13.2.4.4.8.1",
+     "name": "Close message / Description",
+     "release": "all",
+     "component": "swapclient",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.4.4.8.1"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "Close by either endpoint",
+       "verdict": "implemented",
+       "what": "The client can send a close message to its peer.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.8.1"
+      },
+      {
+       "case": "Respond to close with accept",
+       "verdict": "differs",
+       "what": "On a received close the client removes the session and emits close, and sends no accept message itself.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.8.1"
+      },
+      {
+       "case": "Update for partial teardown",
+       "verdict": "implemented",
+       "what": "update() sends any SDP, so it can carry a partial teardown; the library has no dedicated function.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.8.1"
+      }
+     ],
+     "noted": [
+      "The application can call accept(target) afterwards."
+     ]
+    },
+    {
+     "id": "swapclient-26.113-13.2.4.4.9.1",
+     "name": "Application message / Description",
+     "release": "all",
+     "component": "swapclient",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.4.4.9.1"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "Application messages",
+       "verdict": "implemented",
+       "what": "sendApp() sends application messages with a type and a value, and received ones are emitted as application events.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.9.1"
+      },
+      {
+       "case": "Application message type",
+       "verdict": "implemented",
+       "what": "The application message carries a type, and validation requires it.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.9.1"
+      },
+      {
+       "case": "Reject unsupported application type",
+       "verdict": "absent",
+       "what": "The client has no list of supported application types and emits every received application message to the application, without rejecting any.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.9.1"
+      }
+     ],
+     "noted": [
+      "The application can call reject() itself."
+     ]
+    },
+    {
+     "id": "swapclient-26.113-13.2.4.4.9.2",
+     "name": "Application message / Parameters",
+     "release": "all",
+     "component": "swapclient",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.4.4.9.2"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "Application type is a URN",
+       "verdict": "absent",
+       "what": "The type is passed through unchecked; any non-empty string is accepted.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.4.9.2"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "swapclient-26.113-13.2.4.5",
+     "name": "SWAP / Integrity and security",
+     "release": "all",
+     "component": "swapclient",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.4.5"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "Key derivation configured by provider",
+       "verdict": "implemented",
+       "what": "Differs from the requirement; details are in the members-only section.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.5"
+      },
+      {
+       "case": "MAC for integrity",
+       "verdict": "implemented",
+       "what": "When security is enabled, every message carries an HMAC-SHA256 signature over the message.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.5"
+      },
+      {
+       "case": "Encryption, base64 in JSON",
+       "verdict": "implemented",
+       "what": "When encryption is enabled, the payload is encrypted with AES-GCM and the ciphertext and IV are base64 encoded in the message.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.5"
+      },
+      {
+       "case": "Integrity and confidentiality protection are supported through the protection of the ...",
+       "verdict": "implemented",
+       "what": "Differs from the requirement; details are in the members-only section.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ]
+      }
+     ],
+     "noted": [
+      "Security is off by default."
+     ]
+    },
+    {
+     "id": "swapclient-26.113-13.2.4.7",
+     "name": "SWAP / Protocol operation",
+     "release": "all",
+     "component": "swapclient",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.4.7"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "Source identifier is a unique string",
+       "verdict": "implemented",
+       "what": "The client's source identifier is a UUID string, unique to the client.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.7"
+      },
+      {
+       "case": "UUID example",
+       "verdict": "implemented",
+       "what": "The client generates its source identifier as a random UUID v4.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.7"
+      },
+      {
+       "case": "Common fields on every message",
+       "verdict": "implemented",
+       "what": "SwapMessage sets version, source_id, message_id and message_type on every client message, serialize() validates them, the schema requires them for all types, and they stay in the clear when the payload is encrypted; the field is named source_id (schema) where the prose says 'source'.",
+       "repo": "rt-3gpp-swap",
+       "conflict": "Clause 13.2.4.7: \"Every message shall contain the common message fields: source, message_id, and message_type.\" Annex schema TS26113_SWAPMessage.json: required [\"version\", \"source_id\", \"message_id\"].",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.7"
+      },
+      {
+       "case": "Source indicates originator",
+       "verdict": "implemented",
+       "what": "Every message the client sends carries the client's own source identifier.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.4.7"
+      }
+     ],
+     "noted": [
+      "The field is named source_id in the code and the annex schema; the clause text calls it source."
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ICE and signalling configuration",
+   "summary": "",
+   "requirements": [
+    {
+     "id": "swapserver-26.113-13.2.3-ice-and-signalling-configuration",
+     "name": "WebRTC signalling protocol / WebSocket URI structure",
+     "release": "all",
+     "component": "swapserver",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.3"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "Host as FQDN",
+       "verdict": "absent",
+       "what": "The server does not build or check a host name; the host comes from the deployment, and the PUBLIC_DOMAIN variable is only used in a log line.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.3"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "swapclient-26.113-13.2.3-ice-and-signalling-configuration",
+     "name": "WebRTC signalling protocol / WebSocket URI structure",
+     "release": "all",
+     "component": "swapclient",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.3"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "Host is a service provider FQDN",
+       "verdict": "absent",
+       "what": "The client takes the host from its options and uses it unchecked; it does not build or check an FQDN.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.3"
+      }
+     ],
+     "noted": [
+      "The URI always includes the port (443 for wss, 80 for ws when none is given)."
+     ]
+    }
+   ]
+  },
+  {
+   "name": "General",
+   "summary": "",
+   "requirements": [
+    {
+     "id": "swapserver-26.113-13.2.2",
+     "name": "WebRTC signalling protocol / Protocol and version identification",
+     "release": "all",
+     "component": "swapserver",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.2"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "Version determined per connection",
+       "verdict": "implemented",
+       "what": "The protocol and version are fixed by the request path of each WebSocket upgrade, and only the v1 path is served.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.2"
+      },
+      {
+       "case": "Identified by upgrade Request-URI",
+       "verdict": "implemented",
+       "what": "Upgrade requests are accepted or refused according to the request path.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.2"
+      },
+      {
+       "case": "Upgrade URI consistent with 13.2.3",
+       "verdict": "implemented",
+       "what": "The served path /3gpp-swap/v1 follows the pattern protocol name then version, and a deployment may set another path through the path option.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.2"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "swapserver-26.113-13.2.3",
+     "name": "WebRTC signalling protocol / WebSocket URI structure",
+     "release": "all",
+     "component": "swapserver",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.3"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "URI pattern name/version",
+       "verdict": "implemented",
+       "what": "The server serves the path /3gpp-swap/v1, that is protocolName 3gpp-swap and protocolVersion v1.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.3"
+      },
+      {
+       "case": "wss scheme supported",
+       "verdict": "implemented",
+       "what": "With USE_TLS set the server is created as an HTTPS server and is announced as a wss URL.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.3"
+      },
+      {
+       "case": "wss by default",
+       "verdict": "differs",
+       "what": "Without USE_TLS the server listens in plain text and announces a ws URL.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.3"
+      },
+      {
+       "case": "String ://",
+       "verdict": "absent",
+       "what": "The only code that joins scheme, '://', host, port and path in the server is a console.log line in server.js; the server consumes no URI and nothing uses that string, while the URI that clients use is built by the client library's buildSwapUri.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.3"
+      },
+      {
+       "case": "Deployment-specific prefix",
+       "verdict": "implemented",
+       "what": "SwapServer takes options.path (default '/3gpp-swap/v1') and hands it to the WebSocketServer, so a deployment can serve under a prefix by giving '/prefix/3gpp-swap/v1'; there is no separate prefix option, no check that it starts with '/', and server.js does not expose it.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.3"
+      },
+      {
+       "case": "protocolName",
+       "verdict": "implemented",
+       "what": "The protocol name in the path is the string 3gpp-swap.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.3"
+      },
+      {
+       "case": "protocolVersion",
+       "verdict": "implemented",
+       "what": "The version segment in the path is v1.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.3"
+      },
+      {
+       "case": "v plus version number",
+       "verdict": "implemented",
+       "what": "The version segment is the letter v followed by the number 1.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.3"
+      },
+      {
+       "case": "No other fields in URI",
+       "verdict": "implemented",
+       "what": "The path the server serves and announces has only the name and version segments after the root.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.3"
+      },
+      {
+       "case": "URI has no trailing slash",
+       "verdict": "implemented",
+       "what": "The path the server serves and announces has no trailing slash.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.3"
+      },
+      {
+       "case": "\"protocolRoot\" shall be a concatenation of the following parts:",
+       "verdict": "differs",
+       "what": "SwapServer binds the WebSocket upgrade to a fixed path /3gpp-swap/v1 (the path option can carry a prefix, but server.js never passes one) and serves wss only when USE_TLS is set, plain ws by default, and its startup log prints that URI without any deployment prefix; the protocolRoot composition itself is a URI the client builds, so the server only partly meets the wss and optional-prefix parts.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ]
+      }
+     ],
+     "noted": [
+      "Path option at is used as given.",
+      "A query string on the upgrade request is ignored when the path is matched."
+     ]
+    },
+    {
+     "id": "swapclient-26.113-13.2.2",
+     "name": "WebRTC signalling protocol / Protocol and version identification",
+     "release": "all",
+     "component": "swapclient",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.2"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "Protocol and version per connection",
+       "verdict": "implemented",
+       "what": "Each WebSocket connection uses a URI built with the version v1, so the version is set per connection.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.2"
+      },
+      {
+       "case": "Version identified by URI",
+       "verdict": "implemented",
+       "what": "The client identifies protocol and version in the WebSocket URI path of the upgrade request.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.2"
+      },
+      {
+       "case": "URI structure followed",
+       "verdict": "implemented",
+       "what": "The URI is scheme, authority, optional prefix, /3gpp-swap/v1, as in clause 13.2.3.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.2"
+      },
+      {
+       "case": "Scheme can be ws",
+       "verdict": "differs",
+       "what": "The scheme is wss unless the application sets secure to false, which gives ws.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.2"
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "swapclient-26.113-13.2.3",
+     "name": "WebRTC signalling protocol / WebSocket URI structure",
+     "release": "all",
+     "component": "swapclient",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 13.2.3"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "URI form",
+       "verdict": "implemented",
+       "what": "The URI is root, then protocol name, then version.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.3"
+      },
+      {
+       "case": "Default scheme wss",
+       "verdict": "implemented",
+       "what": "The scheme is wss by default.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.3"
+      },
+      {
+       "case": "ws when secure is false",
+       "verdict": "differs",
+       "what": "When the application sets secure to false the scheme is ws.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.3"
+      },
+      {
+       "case": "Fixed string ://",
+       "verdict": "implemented",
+       "what": "The URI has :// between scheme and authority.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.3"
+      },
+      {
+       "case": "Optional prefix starting with /",
+       "verdict": "implemented",
+       "what": "An optional prefix is added with one leading slash and its end slashes removed.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.3"
+      },
+      {
+       "case": "Protocol name",
+       "verdict": "implemented",
+       "what": "The protocol name is 3gpp-swap.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.3"
+      },
+      {
+       "case": "Protocol version",
+       "verdict": "implemented",
+       "what": "The URI carries the version v1.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.3"
+      },
+      {
+       "case": "v plus version number",
+       "verdict": "implemented",
+       "what": "The version is written as v1, the letter v and the number 1.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.3"
+      },
+      {
+       "case": "No other fields in URI",
+       "verdict": "implemented",
+       "what": "The URI has no other parts than root, name and version (no query or fragment).",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.3"
+      },
+      {
+       "case": "No trailing slash",
+       "verdict": "implemented",
+       "what": "The URI the client builds has no trailing slash; trailing slashes of the prefix are removed.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 13.2.3"
+      },
+      {
+       "case": "\"protocolRoot\" shall be a concatenation of the following parts:",
+       "verdict": "implemented",
+       "what": "buildSwapUri composes protocolRoot as scheme (wss by default, ws only when secure is false), \"://\", host and port, and an optional prefix normalised to start with a single \"/\", followed by /3gpp-swap/v1; the constructor of WebSocketTransport calls it and the result is used to open the connection.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ]
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "swapclient-26.113-9.3",
+     "name": "Media-centric transport interface (RTC-4, RTC-12) / Signalling exchange (RTC-4s)",
+     "release": "all",
+     "component": "swapclient",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 9.3"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "This signalling information shall be exchanged over a full-duplex reliable WebSocket ...",
+       "verdict": "implemented",
+       "what": "WebSocketTransport opens the connection with the platform WebSocket or the ws library, subprotocol 3gpp.SWAP.v1, and sends and receives all SWAP messages over it, queuing while not open and reconnecting on close.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ]
+      }
+     ],
+     "noted": []
+    },
+    {
+     "id": "swapserver-26.113-9.3",
+     "name": "Media-centric transport interface (RTC-4, RTC-12) / Signalling exchange (RTC-4s)",
+     "release": "all",
+     "component": "swapserver",
+     "spec": {
+      "doc": "TS 26.113",
+      "version": "V19.2.0",
+      "locator": "clause 9.3"
+     },
+     "repos": [
+      "rt-3gpp-swap"
+     ],
+     "cases": [
+      {
+       "case": "This signalling information shall be exchanged over a full-duplex reliable WebSocket ...",
+       "verdict": "implemented",
+       "what": "SwapServer creates a ws WebSocketServer on its HTTP(S) server and exchanges all SWAP JSON messages over the accepted full-duplex WebSocket connections (receive on message, send with ws.send), with ping/pong liveness.",
+       "repo": "rt-3gpp-swap",
+       "releases": [
+        "18",
+        "19",
+        "20"
+       ]
+      }
+     ],
+     "noted": []
+    }
+   ]
+  }
+ ]
+}

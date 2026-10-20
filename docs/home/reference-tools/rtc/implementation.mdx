@@ -1,0 +1,52 @@
+---
+title: Implementation Detail
+hide_title: true
+sidebar_position: 2
+description: What the Real-time Media Communication (RTC) Architecture Reference Tools implement, component by component, from a code audit of the repositories against the specifications.
+---
+
+import ImplementationCases from '@site/src/components/ImplementationCases';
+import AUDIT from '@site/src/data/audit-rtc.json';
+
+<div class="topic-banner">
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Real-time Media Communication (RTC) Architecture</span>
+<h1>Implementation Detail</h1>
+</div>
+</div>
+
+For what the specifications define, see the [Technical Analysis](/tech/rtc).
+
+## What the Reference Tool implements
+
+The RTC Reference Tool is the SWAP v1 reference implementation of TS 26.113 clause 13.2.4: a Node.js signalling server and a client library for the signalling reference point RTC-4s. It is audited on the `main` branch of `rt-3gpp-swap` (2026-10-21). The RTC AF, the Media Session Handler, the ICE function and the other RTC AS functions are not part of it.
+
+- **Implemented:** the SWAP signalling over WebSocket at `/3gpp-swap/v1` with the `3gpp.SWAP.v1` subprotocol; connect, accept, reject, update, close and application messages; matching criteria and endpoint selection; optional integrity and encryption of messages.
+- **Needs fix:**
+  - The server defaults to plain `ws`, where the specification requires `wss`; the client allows `ws` when its `secure` option is false.
+  - Errors are sent as a SWAP response whose description joins the Problem Details title and detail, not as a Problem Details object.
+  - A message to an endpoint that never registered is acknowledged, not answered with an error.
+  - On a received close the client does not send the accept itself.
+  - The reference to the request in a reject is optional.
+  - The server prefers the endpoint with the most matching criteria and picks at random only among ties.
+- **Not implemented:** handling of the Service Access Information and `swapEndpoints`, processing criteria, checking the application message type, and a client that listens for point-to-point connections.
+- **Not shown:** cases that depend on the WebSocket library's own behaviour, which is not part of the repository.
+
+## Implementation status
+
+Open a feature, then a requirement, to see each case and why. Filter by component, profile and release.
+
+<ImplementationCases data={AUDIT} />
+
+:::info[Full audit for members]
+
+The full audit, with the code behind each verdict, is available to 5G-MAG members through [Developer Tools](/developer-tools).
+
+[Become a member](/membership) · [Request access](/early-access)
+
+:::
+
+## Related
+
+- [Technical Analysis](/tech/rtc)
+- [Repositories & Releases](/reference-tools/rtc/#repositories--releases)
