@@ -26,21 +26,21 @@
   "matrix": {
    "all": {
     "18": {
-     "implemented": 105,
-     "differs": 11,
-     "absent": 8,
+     "implemented": 97,
+     "differs": 10,
+     "absent": 6,
      "inconsistent": 0
     },
     "19": {
-     "implemented": 105,
-     "differs": 11,
-     "absent": 8,
+     "implemented": 97,
+     "differs": 10,
+     "absent": 6,
      "inconsistent": 0
     },
     "20": {
-     "implemented": 105,
-     "differs": 11,
-     "absent": 8,
+     "implemented": 97,
+     "differs": 10,
+     "absent": 6,
      "inconsistent": 0
     }
    }
@@ -382,7 +382,6 @@
       }
      ],
      "noted": [
-      "Matching of every criterion type, including qos, is plain equality on type and JSON value; the other listed types (ipv4, ipv6, fqdn, eas, processing) are likewise not interpreted.",
       "Spec also says an endpoint registered without a requested criterion is deprioritized; the code excludes such endpoints instead (findMatches requires all criteria)."
      ]
     },
@@ -439,7 +438,7 @@
       {
        "case": "Error when error or target unknown",
        "verdict": "differs",
-       "what": "Invalid JSON, schema failures, no match and an unknown target on connect, accept, reject, update and application get an error response, but close to an unknown target is only skipped and acked, and for a connected-but-unregistered target _forwardTo returns silently and an ack follows (accept, reject, update, close, application).",
+       "what": "Invalid JSON, schema failures, no match and an unknown target on connect, accept, reject, update and application get an error response, but close to an unknown target is only skipped and acked, and for a connected-but-unregistered target the forwarding step returns silently and an ack follows (accept, reject, update, close, application).",
        "repo": "rt-3gpp-swap",
        "releases": [
         "18",
@@ -642,73 +641,6 @@
       }
      ],
      "noted": []
-    },
-    {
-     "id": "swapserver-26.113-13.2.4.5",
-     "name": "SWAP / Integrity and security",
-     "release": "all",
-     "component": "swapserver",
-     "spec": {
-      "doc": "TS 26.113",
-      "version": "V19.2.0",
-      "locator": "clause 13.2.4.5"
-     },
-     "repos": [
-      "rt-3gpp-swap"
-     ],
-     "cases": [
-      {
-       "case": "Key derivation configured by provider",
-       "verdict": "implemented",
-       "what": "Differs from the requirement; details are in the members-only section.",
-       "repo": "rt-3gpp-swap",
-       "releases": [
-        "18",
-        "19",
-        "20"
-       ],
-       "locator": "clause 13.2.4.5"
-      },
-      {
-       "case": "Integrity protection with MAC",
-       "verdict": "implemented",
-       "what": "When security is enabled the server signs outgoing messages with HMAC-SHA256 over the canonical message and verifies the signature of incoming messages that carry one.",
-       "repo": "rt-3gpp-swap",
-       "releases": [
-        "18",
-        "19",
-        "20"
-       ],
-       "locator": "clause 13.2.4.5"
-      },
-      {
-       "case": "Optional encryption of payload",
-       "verdict": "implemented",
-       "what": "The library can encrypt the payload with AES-GCM and base64-encode ciphertext and IV for JSON, when its encryption option is set.",
-       "repo": "rt-3gpp-swap",
-       "releases": [
-        "18",
-        "19",
-        "20"
-       ],
-       "locator": "clause 13.2.4.5"
-      },
-      {
-       "case": "Integrity and confidentiality protection are supported through the protection of the ...",
-       "verdict": "implemented",
-       "what": "Differs from the requirement; details are in the members-only section.",
-       "repo": "rt-3gpp-swap",
-       "releases": [
-        "18",
-        "19",
-        "20"
-       ]
-      }
-     ],
-     "noted": [
-      "Security is off unless SWAP_SECURITY_ENABLED is set.",
-      "The reference server.js fixes encryption to false, so encryption is not available through its configuration."
-     ]
     },
     {
      "id": "swapserver-26.113-13.2.4.7",
@@ -1305,7 +1237,7 @@
       {
        "case": "Accept connect or update",
        "verdict": "implemented",
-       "what": "The client emits connect and update events, and the application accepts by calling accept(), which sends an accept message.",
+       "what": "The client emits connect and update events, and the application accepts by calling accept, which sends an accept message.",
        "repo": "rt-3gpp-swap",
        "releases": [
         "18",
@@ -1317,7 +1249,7 @@
       {
        "case": "Accept carries answer SDP",
        "verdict": "implemented",
-       "what": "accept() puts the answer SDP supplied by the application in the accept message.",
+       "what": "accept puts the answer SDP supplied by the application in the accept message.",
        "repo": "rt-3gpp-swap",
        "releases": [
         "18",
@@ -1426,7 +1358,7 @@
       {
        "case": "Accept an update",
        "verdict": "implemented",
-       "what": "The client emits an update event, and the application accepts by calling accept().",
+       "what": "The client emits an update event, and the application accepts by calling accept.",
        "repo": "rt-3gpp-swap",
        "releases": [
         "18",
@@ -1438,7 +1370,7 @@
       {
        "case": "Update for half-close",
        "verdict": "implemented",
-       "what": "update() sends any SDP, so it can carry a half-close; the library has no dedicated half-close function.",
+       "what": "update sends any SDP, so it can carry a half-close; the library has no dedicated half-close function.",
        "repo": "rt-3gpp-swap",
        "releases": [
         "18",
@@ -1481,7 +1413,7 @@
       {
        "case": "Reject offer or update",
        "verdict": "implemented",
-       "what": "The application can reject by calling reject(), which sends a reject message.",
+       "what": "The application can reject by calling reject, which sends a reject message.",
        "repo": "rt-3gpp-swap",
        "releases": [
         "18",
@@ -1558,7 +1490,7 @@
       {
        "case": "Update for partial teardown",
        "verdict": "implemented",
-       "what": "update() sends any SDP, so it can carry a partial teardown; the library has no dedicated function.",
+       "what": "update sends any SDP, so it can carry a partial teardown; the library has no dedicated function.",
        "repo": "rt-3gpp-swap",
        "releases": [
         "18",
@@ -1589,7 +1521,7 @@
       {
        "case": "Application messages",
        "verdict": "implemented",
-       "what": "sendApp() sends application messages with a type and a value, and received ones are emitted as application events.",
+       "what": "sendApp sends application messages with a type and a value, and received ones are emitted as application events.",
        "repo": "rt-3gpp-swap",
        "releases": [
         "18",
@@ -1624,7 +1556,7 @@
       }
      ],
      "noted": [
-      "The application can call reject() itself."
+      "The application can call reject itself."
      ]
     },
     {
@@ -1655,72 +1587,6 @@
       }
      ],
      "noted": []
-    },
-    {
-     "id": "swapclient-26.113-13.2.4.5",
-     "name": "SWAP / Integrity and security",
-     "release": "all",
-     "component": "swapclient",
-     "spec": {
-      "doc": "TS 26.113",
-      "version": "V19.2.0",
-      "locator": "clause 13.2.4.5"
-     },
-     "repos": [
-      "rt-3gpp-swap"
-     ],
-     "cases": [
-      {
-       "case": "Key derivation configured by provider",
-       "verdict": "implemented",
-       "what": "Differs from the requirement; details are in the members-only section.",
-       "repo": "rt-3gpp-swap",
-       "releases": [
-        "18",
-        "19",
-        "20"
-       ],
-       "locator": "clause 13.2.4.5"
-      },
-      {
-       "case": "MAC for integrity",
-       "verdict": "implemented",
-       "what": "When security is enabled, every message carries an HMAC-SHA256 signature over the message.",
-       "repo": "rt-3gpp-swap",
-       "releases": [
-        "18",
-        "19",
-        "20"
-       ],
-       "locator": "clause 13.2.4.5"
-      },
-      {
-       "case": "Encryption, base64 in JSON",
-       "verdict": "implemented",
-       "what": "When encryption is enabled, the payload is encrypted with AES-GCM and the ciphertext and IV are base64 encoded in the message.",
-       "repo": "rt-3gpp-swap",
-       "releases": [
-        "18",
-        "19",
-        "20"
-       ],
-       "locator": "clause 13.2.4.5"
-      },
-      {
-       "case": "Integrity and confidentiality protection are supported through the protection of the ...",
-       "verdict": "implemented",
-       "what": "Differs from the requirement; details are in the members-only section.",
-       "repo": "rt-3gpp-swap",
-       "releases": [
-        "18",
-        "19",
-        "20"
-       ]
-      }
-     ],
-     "noted": [
-      "Security is off by default."
-     ]
     },
     {
      "id": "swapclient-26.113-13.2.4.7",
@@ -1763,7 +1629,7 @@
       {
        "case": "Common fields on every message",
        "verdict": "implemented",
-       "what": "SwapMessage sets version, source_id, message_id and message_type on every client message, serialize() validates them, the schema requires them for all types, and they stay in the clear when the payload is encrypted; the field is named source_id (schema) where the prose says 'source'.",
+       "what": "SwapMessage sets version, source_id, message_id and message_type on every client message, serialize validates them, the schema requires them for all types, and they stay in the clear when the payload is encrypted; the field is named source_id (schema) where the prose says 'source'.",
        "repo": "rt-3gpp-swap",
        "conflict": "Clause 13.2.4.7: \"Every message shall contain the common message fields: source, message_id, and message_type.\" Annex schema TS26113_SWAPMessage.json: required [\"version\", \"source_id\", \"message_id\"].",
        "releases": [
@@ -1797,35 +1663,6 @@
    "summary": "",
    "requirements": [
     {
-     "id": "swapserver-26.113-13.2.3-ice-and-signalling-configuration",
-     "name": "WebRTC signalling protocol / WebSocket URI structure",
-     "release": "all",
-     "component": "swapserver",
-     "spec": {
-      "doc": "TS 26.113",
-      "version": "V19.2.0",
-      "locator": "clause 13.2.3"
-     },
-     "repos": [
-      "rt-3gpp-swap"
-     ],
-     "cases": [
-      {
-       "case": "Host as FQDN",
-       "verdict": "absent",
-       "what": "The server does not build or check a host name; the host comes from the deployment, and the PUBLIC_DOMAIN variable is only used in a log line.",
-       "repo": "rt-3gpp-swap",
-       "releases": [
-        "18",
-        "19",
-        "20"
-       ],
-       "locator": "clause 13.2.3"
-      }
-     ],
-     "noted": []
-    },
-    {
      "id": "swapclient-26.113-13.2.3-ice-and-signalling-configuration",
      "name": "WebRTC signalling protocol / WebSocket URI structure",
      "release": "all",
@@ -1853,7 +1690,7 @@
       }
      ],
      "noted": [
-      "The URI always includes the port (443 for wss, 80 for ws when none is given)."
+      "The URI always includes the port."
      ]
     }
    ]
@@ -1944,31 +1781,7 @@
       {
        "case": "wss scheme supported",
        "verdict": "implemented",
-       "what": "With USE_TLS set the server is created as an HTTPS server and is announced as a wss URL.",
-       "repo": "rt-3gpp-swap",
-       "releases": [
-        "18",
-        "19",
-        "20"
-       ],
-       "locator": "clause 13.2.3"
-      },
-      {
-       "case": "wss by default",
-       "verdict": "differs",
-       "what": "Without USE_TLS the server listens in plain text and announces a ws URL.",
-       "repo": "rt-3gpp-swap",
-       "releases": [
-        "18",
-        "19",
-        "20"
-       ],
-       "locator": "clause 13.2.3"
-      },
-      {
-       "case": "String ://",
-       "verdict": "absent",
-       "what": "The only code that joins scheme, '://', host, port and path in the server is a console.log line in server.js; the server consumes no URI and nothing uses that string, while the URI that clients use is built by the client library's buildSwapUri.",
+       "what": "When the server is configured for TLS it is created as an HTTPS server and is announced as a wss URL.",
        "repo": "rt-3gpp-swap",
        "releases": [
         "18",
@@ -1980,7 +1793,7 @@
       {
        "case": "Deployment-specific prefix",
        "verdict": "implemented",
-       "what": "SwapServer takes options.path (default '/3gpp-swap/v1') and hands it to the WebSocketServer, so a deployment can serve under a prefix by giving '/prefix/3gpp-swap/v1'; there is no separate prefix option, no check that it starts with '/', and server.js does not expose it.",
+       "what": "The server takes a path option (default /3gpp-swap/v1) and hands it to the WebSocket server, so a deployment can serve under a prefix by giving /prefix/3gpp-swap/v1; there is no separate prefix option and no check that it starts with '/'; the reference server application does not expose it.",
        "repo": "rt-3gpp-swap",
        "releases": [
         "18",
@@ -2052,7 +1865,7 @@
       {
        "case": "\"protocolRoot\" shall be a concatenation of the following parts:",
        "verdict": "differs",
-       "what": "SwapServer binds the WebSocket upgrade to a fixed path /3gpp-swap/v1 (the path option can carry a prefix, but server.js never passes one) and serves wss only when USE_TLS is set, plain ws by default, and its startup log prints that URI without any deployment prefix; the protocolRoot composition itself is a URI the client builds, so the server only partly meets the wss and optional-prefix parts.",
+       "what": "The server binds the WebSocket upgrade to the path /3gpp-swap/v1 (the path option can carry a prefix, but the reference server application never passes one); the wss scheme depends on a configuration option, and the server announces its URI without any deployment prefix; the protocolRoot composition itself is a URI the client builds, so the server only partly meets the wss and optional-prefix parts.",
        "repo": "rt-3gpp-swap",
        "releases": [
         "18",
@@ -2268,7 +2081,7 @@
       {
        "case": "\"protocolRoot\" shall be a concatenation of the following parts:",
        "verdict": "implemented",
-       "what": "buildSwapUri composes protocolRoot as scheme (wss by default, ws only when secure is false), \"://\", host and port, and an optional prefix normalised to start with a single \"/\", followed by /3gpp-swap/v1; the constructor of WebSocketTransport calls it and the result is used to open the connection.",
+       "what": "The client builds protocolRoot as scheme (wss by default, ws when the secure option is switched off), \"://\", host and port, and an optional prefix normalised to start with a single \"/\", followed by /3gpp-swap/v1; the constructor of WebSocketTransport calls it and the result is used to open the connection.",
        "repo": "rt-3gpp-swap",
        "releases": [
         "18",

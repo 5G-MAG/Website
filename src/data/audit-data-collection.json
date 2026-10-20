@@ -12,13 +12,6 @@
   "R17": "5GMS Rel-17",
   "R19": "5GMS Rel-18/19"
  },
- "dependencies": [
-  {
-   "project": "5G Media Streaming (5GMS)",
-   "what": "the 5GMS AF is meant to embed the Data Collection AF library",
-   "status": "embedded in the AF, which registers no 5GMS data report type yet"
-  }
- ],
  "held": {
   "cases": 16,
   "reasons": [
@@ -39,27 +32,27 @@
   "matrix": {
    "all": {
     "17": {
-     "implemented": 281,
-     "differs": 47,
-     "absent": 197,
+     "implemented": 279,
+     "differs": 45,
+     "absent": 178,
      "inconsistent": 0
     },
     "18": {
-     "implemented": 302,
-     "differs": 53,
-     "absent": 200,
+     "implemented": 300,
+     "differs": 51,
+     "absent": 181,
      "inconsistent": 0
     },
     "19": {
-     "implemented": 302,
-     "differs": 53,
-     "absent": 200,
+     "implemented": 300,
+     "differs": 51,
+     "absent": 181,
      "inconsistent": 0
     },
     "20": {
-     "implemented": 302,
-     "differs": 53,
-     "absent": 200,
+     "implemented": 300,
+     "differs": 51,
+     "absent": 181,
      "inconsistent": 0
     }
    }
@@ -1255,18 +1248,6 @@
        "locator": "clause 6.2.2.3.1, property row"
       },
       {
-       "case": "This service operation shall support the request data structures specified in table ...",
-       "verdict": "differs",
-       "what": "The request body (DataReportingProvisioningSession) is parsed and a 201 with the session body and a Location header is returned; the Authorization and Origin request headers and the CORS response headers are not handled, and no 307/308 redirects are produced.",
-       "repo": "rt-data-collection-application-function",
-       "releases": [
-        "17",
-        "18",
-        "19",
-        "20"
-       ]
-      },
-      {
        "case": "This service operation shall support the URL query parameters specified in table ...",
        "verdict": "implemented",
        "what": "The create handler takes no URL query parameters, which matches the empty query-parameter table.",
@@ -1453,17 +1434,6 @@
         "19",
         "20"
        ]
-      },
-      {
-       "case": "This method shall support the URL query parameters specified in table 6.2.3.3.1-1 and ...",
-       "verdict": "absent",
-       "what": "GET on a session works and has no query parameters, but the mandatory Authorization and optional Origin request headers of table 6.2.3.3.1-2 are not read and no CORS response headers are produced.",
-       "releases": [
-        "17",
-        "18",
-        "19",
-        "20"
-       ]
       }
      ],
      "noted": []
@@ -1600,17 +1570,6 @@
        ]
       },
       {
-       "case": "This method shall support the request data structures and headers as specified in ...",
-       "verdict": "absent",
-       "what": "DELETE on a session takes no body and works, but the mandatory Authorization and optional Origin request headers of table 6.2.3.3.3-3 are not read.",
-       "releases": [
-        "17",
-        "18",
-        "19",
-        "20"
-       ]
-      },
-      {
        "case": "Furthermore, this method shall support the response data structures as specified in ...",
        "verdict": "implemented",
        "what": "DELETE on /sessions/{id} destroys the session and answers 204 with no body; an unknown id gives 404 ProblemDetails; the optional 307/308 and CORS response headers are not produced.",
@@ -1642,7 +1601,7 @@
       {
        "case": "The Data Reporting Configurations resource collection represents the set of all Data ...",
        "verdict": "implemented",
-       "what": "The configurations of a session are held in one collection per session, reached at .../configurations.",
+       "what": "The configurations of a session are held in one collection per session, reached at.../configurations.",
        "repo": "rt-data-collection-application-function",
        "releases": [
         "17",
@@ -1742,18 +1701,6 @@
        "case": "This service operation shall support the URL query parameters specified in table ...",
        "verdict": "implemented",
        "what": "The create-configuration handler takes no URL query parameters, which matches the empty table.",
-       "repo": "rt-data-collection-application-function",
-       "releases": [
-        "17",
-        "18",
-        "19",
-        "20"
-       ]
-      },
-      {
-       "case": "This service operation shall support the request data structures and headers specified ...",
-       "verdict": "differs",
-       "what": "POST on /sessions/{id}/configurations parses a DataReportingConfiguration and returns 201 with the configuration and a Location header; Authorization/Origin and CORS headers are not handled, and 307/308 are not produced.",
        "repo": "rt-data-collection-application-function",
        "releases": [
         "17",
@@ -1915,17 +1862,6 @@
         "19",
         "20"
        ]
-      },
-      {
-       "case": "This method shall support the URL query parameters specified in table 6.2.5.3.1-1 and ...",
-       "verdict": "absent",
-       "what": "GET on a configuration works and has no query parameters, but the Authorization and Origin request headers of table 6.2.5.3.1-2 are not read.",
-       "releases": [
-        "17",
-        "18",
-        "19",
-        "20"
-       ]
       }
      ],
      "noted": [
@@ -1949,7 +1885,7 @@
       {
        "case": "PUT replaces a configuration",
        "verdict": "differs",
-       "what": "PUT parses a body and answers, but the stored configuration is not replaced: the new object copies the old id, update() returns false at its inverted id test (return value ignored), attaching the new object is refused as a duplicate id, and the unattached object is returned.",
+       "what": "PUT parses a body and answers, but the stored configuration is not replaced: the new object copies the old id, update returns false at its inverted id test (return value ignored), attaching the new object is refused as a duplicate id, and the unattached object is returned.",
        "repo": "rt-data-collection-application-function",
        "releases": [
         "17",
@@ -2153,17 +2089,6 @@
        "locator": "clause 6.2.5.3.3, property row"
       },
       {
-       "case": "This method shall support the request data structures and headers specified in tables ...",
-       "verdict": "absent",
-       "what": "DELETE on a configuration takes no body and works, but the Authorization and Origin request headers of table 6.2.5.3.3-3 are not read.",
-       "releases": [
-        "17",
-        "18",
-        "19",
-        "20"
-       ]
-      },
-      {
        "case": "Furthermore, this method shall support the response data structures specified in table ...",
        "verdict": "implemented",
        "what": "DELETE on a configuration destroys it (detaching it from its session) and answers 204 with no body; an unknown id gives 404 ProblemDetails; optional 307/308 and CORS headers are not produced.",
@@ -2345,19 +2270,6 @@
        "case": "dataCollectionClientType DataCollectionClientType",
        "verdict": "implemented",
        "what": "dataCollectionClientType is a property of the configuration and selects which client type the configuration applies to.",
-       "repo": "rt-data-collection-application-function",
-       "releases": [
-        "17",
-        "18",
-        "19",
-        "20"
-       ],
-       "locator": "clause 6.3.2.2, property row"
-      },
-      {
-       "case": "authorizationURL Url",
-       "verdict": "implemented",
-       "what": "authorizationURL is an optional configuration property that is stored and returned; the AF does not otherwise use it.",
        "repo": "rt-data-collection-application-function",
        "releases": [
         "17",
@@ -2776,19 +2688,6 @@
         "20"
        ],
        "locator": "clause 6.3.2.2, property row"
-      },
-      {
-       "case": "authorizationURL",
-       "verdict": "implemented",
-       "what": "The library defines the optional authorizationURL on DataReportingConfiguration and stores it; nothing in the repository uses it to authorise a consumer.",
-       "repo": "rt-data-collection-application-function",
-       "releases": [
-        "17",
-        "18",
-        "19",
-        "20"
-       ],
-       "locator": "clause 6.3.2.2, property row"
       }
      ],
      "noted": []
@@ -2926,7 +2825,7 @@
       }
      ],
      "noted": [
-      "The generated model also gives userAccessRestrictions and locationAccessRestrictions an aggregationFunctions list (, )."
+      "The generated model also gives userAccessRestrictions and locationAccessRestrictions an aggregationFunctions list."
      ]
     },
     {
@@ -3127,7 +3026,7 @@
       {
        "case": "Data processing instructions 1..*",
        "verdict": "differs",
-       "what": "The data model carries aggregationFunctions inside each DataAccessProfile restriction (time, user, location) and the AF applies them only along the time dimension (MEAN and SUM proportioned to the bucket, others by record mid-point); the code marks location and identity aggregation as TODO, never reads DataProcessingType (AGGREGATION, NORMALIZATION, ANONYMIZATION), and implements no normalisation or anonymisation, so the set of operations is aggregation (NONE, COUNT, MEAN, MIN, MAX, SUM at the library, NONE, MEAN, MIN, MAX, SUM for the communication record) on time only.",
+       "what": "The data model carries aggregationFunctions inside each DataAccessProfile restriction (time, user, location) and the AF applies them only along the time dimension (MEAN and SUM proportioned to the bucket, others by record mid-point); the code does not implement location and identity aggregation, never reads DataProcessingType (AGGREGATION, NORMALIZATION, ANONYMIZATION), and implements no normalisation or anonymisation, so the set of operations is aggregation (NONE, COUNT, MEAN, MIN, MAX, SUM at the library, NONE, MEAN, MIN, MAX, SUM for the communication record) on time only.",
        "repo": "rt-data-collection-application-function",
        "releases": [
         "17",
@@ -4402,7 +4301,7 @@
       {
        "case": "reject operator consumer subscription relaxing ASP restrictions",
        "verdict": "absent",
-       "what": "The AF accepts the subscription (201) and later exposes only data allowed by the matching Data Access Profiles; it never rejects a subscription for relaxing the ASP's restrictions.",
+       "what": "The AF accepts the subscription and later exposes only data allowed by the matching Data Access Profiles; it never rejects a subscription for relaxing the ASP's restrictions.",
        "repo": "rt-data-collection-application-function",
        "releases": [
         "17",
@@ -4423,38 +4322,6 @@
         "19",
         "20"
        ]
-      }
-     ],
-     "noted": [
-      "Profile matching at exposure time is in -939."
-     ]
-    },
-    {
-     "id": "dcclient-26.531-4.5.1",
-     "name": "Information security model / Transport security",
-     "release": "all",
-     "component": "dcclient",
-     "spec": {
-      "doc": "TS 26.531",
-      "version": "V19.0.0",
-      "locator": "clause 4.5.1"
-     },
-     "repos": [
-      "rt-data-collection-application-function"
-     ],
-     "cases": [
-      {
-       "case": "encrypted transport at R2 (client side)",
-       "verdict": "absent",
-       "what": "No Data Collection Client exists in the repository, so nothing on the client side employs an encrypted transfer protocol.",
-       "repo": "rt-data-collection-application-function",
-       "releases": [
-        "17",
-        "18",
-        "19",
-        "20"
-       ],
-       "locator": "clause 4.5.1"
       }
      ],
      "noted": []
@@ -4501,7 +4368,7 @@
       }
      ],
      "noted": [
-      "The library's DataReportingSession model has no GPSI or client identifier property (-562), and the AF has no consent handling."
+      "The library's DataReportingSession model has no GPSI or client identifier property, and the AF has no consent handling."
      ]
     },
     {
@@ -4590,136 +4457,6 @@
        "case": "The UE Application may reset the opaque client reporting identifier at any time by ...",
        "verdict": "absent",
        "what": "The R7 reset method is a UE Application API of the client; not present. There is no Data Collection Client application in the repository.",
-       "repo": "rt-data-collection-application-function",
-       "releases": [
-        "17",
-        "18",
-        "19",
-        "20"
-       ]
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "dcaf-26.531-4.5.3",
-     "name": "Information security model / Authentication of data collection clients by the Data Collection AF",
-     "release": "all",
-     "component": "dcaf",
-     "spec": {
-      "doc": "TS 26.531",
-      "version": "V19.0.0",
-      "locator": "clause 4.5.3"
-     },
-     "repos": [
-      "rt-data-collection-application-function"
-     ],
-     "cases": [
-      {
-       "case": "1. When the data collection client requests its data collection and reporting ...",
-       "verdict": "absent",
-       "what": "Not implemented: the code does not meet the requirement.",
-       "repo": "rt-data-collection-application-function",
-       "releases": [
-        "17",
-        "18",
-        "19",
-        "20"
-       ]
-      },
-      {
-       "case": "For reasons of efficiency, the authentication information may be provided once at the ...",
-       "verdict": "absent",
-       "what": "Not implemented: the code does not meet the requirement.",
-       "repo": "rt-data-collection-application-function",
-       "releases": [
-        "17",
-        "18",
-        "19",
-        "20"
-       ]
-      },
-      {
-       "case": "2. When the data collection client reports UE data to the Data Collection AF.",
-       "verdict": "absent",
-       "what": "Not implemented: the code does not meet the requirement.",
-       "repo": "rt-data-collection-application-function",
-       "releases": [
-        "17",
-        "18",
-        "19",
-        "20"
-       ]
-      },
-      {
-       "case": "To satisfy the requirements in clause 6.2.8.1 of TS 23.288 [4], a data collection ...",
-       "verdict": "absent",
-       "what": "Not implemented: the code does not meet the requirement.",
-       "repo": "rt-data-collection-application-function",
-       "releases": [
-        "17",
-        "18",
-        "19",
-        "20"
-       ]
-      }
-     ],
-     "noted": []
-    },
-    {
-     "id": "dcclient-26.531-4.5.3",
-     "name": "Information security model / Authentication of data collection clients by the Data Collection AF",
-     "release": "all",
-     "component": "dcclient",
-     "spec": {
-      "doc": "TS 26.531",
-      "version": "V19.0.0",
-      "locator": "clause 4.5.3"
-     },
-     "repos": [
-      "rt-data-collection-application-function"
-     ],
-     "cases": [
-      {
-       "case": "1. When the data collection client requests its data collection and reporting ...",
-       "verdict": "absent",
-       "what": "Not implemented: the code does not meet the requirement.",
-       "repo": "rt-data-collection-application-function",
-       "releases": [
-        "17",
-        "18",
-        "19",
-        "20"
-       ]
-      },
-      {
-       "case": "For reasons of efficiency, the authentication information may be provided once at the ...",
-       "verdict": "absent",
-       "what": "Not implemented: the code does not meet the requirement.",
-       "repo": "rt-data-collection-application-function",
-       "releases": [
-        "17",
-        "18",
-        "19",
-        "20"
-       ]
-      },
-      {
-       "case": "2. When the data collection client reports UE data to the Data Collection AF.",
-       "verdict": "absent",
-       "what": "Not implemented: the code does not meet the requirement.",
-       "repo": "rt-data-collection-application-function",
-       "releases": [
-        "17",
-        "18",
-        "19",
-        "20"
-       ]
-      },
-      {
-       "case": "To satisfy the requirements in clause 6.2.8.1 of TS 23.288 [4], a data collection ...",
-       "verdict": "absent",
-       "what": "Not implemented: the code does not meet the requirement.",
        "repo": "rt-data-collection-application-function",
        "releases": [
         "17",
@@ -4824,7 +4561,7 @@
       }
      ],
      "noted": [
-      "The library labels R5 as the AF event exposure interface and R6 as the NWDAF one (-54), the reverse of TS 26.531 clause 4.2 items 7 and 8."
+      "The library labels R5 as the AF event exposure interface and R6 as the NWDAF one, the reverse of TS 26.531 clause 4.2 items 7 and 8."
      ]
     },
     {
@@ -5013,36 +4750,6 @@
      "noted": []
     },
     {
-     "id": "dcaf-26.531-5.8",
-     "name": "Procedures for data collection and reporting / Procedures for event consumer authorization",
-     "release": "all",
-     "component": "dcaf",
-     "spec": {
-      "doc": "TS 26.531",
-      "version": "V19.0.0",
-      "locator": "clause 5.8"
-     },
-     "repos": [
-      "rt-data-collection-application-function"
-     ],
-     "cases": [
-      {
-       "case": "provision the Authorization AS with the profile",
-       "verdict": "absent",
-       "what": "The AF does not provision any Authorization AS.",
-       "repo": "rt-data-collection-application-function",
-       "releases": [
-        "17",
-        "18",
-        "19",
-        "20"
-       ],
-       "locator": "clause 5.8"
-      }
-     ],
-     "noted": []
-    },
-    {
      "id": "dcaf-26.532-6.3.2.3-event-exposure",
      "name": "Structured data types / DataAccessProfile type",
      "release": "all",
@@ -5102,7 +4809,7 @@
       {
        "case": "6. ...and then subscribes to event(s) of interest by invoking the ...",
        "verdict": "implemented",
-       "what": "The AF accepts POST subscriptions at naf-eventexposure/v1/subscriptions with an EventFilter (appIds, gpsis, supis, group ids, locArea) and uses app id and user/group filters when matching a Data Access Profile; the location filter is accepted but not applied (TODO), and user filters apply only when the profile has user restrictions.",
+       "what": "The AF accepts POST subscriptions at naf-eventexposure/v1/subscriptions with an EventFilter (appIds, gpsis, supis, group ids, locArea) and uses app id and user/group filters when matching a Data Access Profile; the location filter is accepted but not applied, and user filters apply only when the profile has user restrictions.",
        "repo": "rt-data-collection-application-function",
        "releases": [
         "17",
@@ -5240,7 +4947,7 @@
      ],
      "noted": [
       "The sentence names validUntil, reportForDomains and reportingCondition, which the Annex B OpenAPI and table 7.3.2.1-1 do not define (the maps are samplingRules, reportingConditions and reportingRules); the code follows the OpenAPI, which takes precedence under clause B.1.",
-      "The code follows the Release 18 form of the API (the build pins the TSG105 Rel-18 API files), in which validUntil is deprecated; this sentence applies to Release 17 only."
+      "The code follows the Release 18 form of the API (the build uses the Release 18 API files), in which validUntil is deprecated; this sentence applies to Release 17 only."
      ]
     },
     {
@@ -5422,8 +5129,8 @@
       }
      ],
      "noted": [
-      "The sentence names validUntil, reportForDomains and reportingCondition; the code follows the OpenAPI properties (clause B.1 precedence). The code follows the Release 18 form of the API (the build pins the TSG105 Rel-18 API files), in which validUntil is deprecated; this sentence applies to Release 17 only.",
-      "The code follows the Release 18 form of the API (the build pins the TSG105 Rel-18 API files), in which validUntil is deprecated; this sentence applies to Release 17 only."
+      "The sentence names validUntil, reportForDomains and reportingCondition; the code follows the OpenAPI properties (clause B.1 precedence). The code follows the Release 18 form of the API (the build uses the Release 18 API files), in which validUntil is deprecated; this sentence applies to Release 17 only.",
+      "The code follows the Release 18 form of the API (the build uses the Release 18 API files), in which validUntil is deprecated; this sentence applies to Release 17 only."
      ]
     },
     {
@@ -5494,7 +5201,7 @@
      ],
      "noted": [
       "The session is built once at creation and a snapshot is cached; later changes to provisioned configurations are not reflected.",
-      "The code follows the Release 18 form of the API (the build pins the TSG105 Rel-18 API files), in which validUntil is deprecated; this sentence applies to Release 17 only."
+      "The code follows the Release 18 form of the API (the build uses the Release 18 API files), in which validUntil is deprecated; this sentence applies to Release 17 only."
      ]
     },
     {
@@ -5851,18 +5558,6 @@
        "locator": "clause 7.2.3.3.1"
       },
       {
-       "case": "Request headers Authorization and Origin",
-       "verdict": "absent",
-       "what": "The AF reads neither Authorization nor Origin on GET; it does honour If-None-Match and If-Modified-Since.",
-       "releases": [
-        "17",
-        "18",
-        "19",
-        "20"
-       ],
-       "locator": "clause 7.2.3.3.1"
-      },
-      {
        "case": "200 and 404 responses",
        "verdict": "implemented",
        "what": "GET answers 200 with the DataReportingSession, 304 when unchanged, and 404 with ProblemDetails when the session does not exist.",
@@ -6016,18 +5711,6 @@
        "locator": "clause 7.2.3.3.3"
       },
       {
-       "case": "Request headers Authorization and Origin",
-       "verdict": "absent",
-       "what": "The AF reads neither Authorization nor Origin on DELETE.",
-       "releases": [
-        "17",
-        "18",
-        "19",
-        "20"
-       ],
-       "locator": "clause 7.2.3.3.3"
-      },
-      {
        "case": "204 and 404 responses",
        "verdict": "implemented",
        "what": "DELETE answers 204 with no body on success and 404 when the session does not exist.",
@@ -6152,18 +5835,6 @@
        "verdict": "implemented",
        "what": "The report operation takes a DataReport JSON body for an existing session.",
        "repo": "rt-data-collection-application-function",
-       "releases": [
-        "17",
-        "18",
-        "19",
-        "20"
-       ],
-       "locator": "clause 7.2.3.4.1"
-      },
-      {
-       "case": "Request headers Authorization and Origin",
-       "verdict": "absent",
-       "what": "The AF reads neither Authorization nor Origin on the report POST.",
        "releases": [
         "17",
         "18",
@@ -6359,7 +6030,7 @@
       }
      ],
      "noted": [
-      "The code follows the Release 18 form of the API (the build pins the TSG105 Rel-18 API files), in which validUntil is deprecated; this sentence applies to Release 17 only.",
+      "The code follows the Release 18 form of the API (the build uses the Release 18 API files), in which validUntil is deprecated; this sentence applies to Release 17 only.",
       "Handling of a validUntil sent by the client lies in the generated model code, which is built at build time and is not in the repository."
      ]
     },
@@ -6759,7 +6430,7 @@
       }
      ],
      "noted": [
-      "The library's DataReport model defines externalApplicationId and the record arrays that make up the report envelope (-836), but no code builds a report."
+      "The library's DataReport model defines externalApplicationId and the record arrays that make up the report envelope, but no code builds a report."
      ]
     },
     {
@@ -6823,7 +6494,7 @@
       }
      ],
      "noted": [
-      "The code follows the Release 18 form of the API (the build pins the TSG105 Rel-18 API files), in which validUntil is deprecated; this sentence applies to Release 17 only."
+      "The code follows the Release 18 form of the API (the build uses the Release 18 API files), in which validUntil is deprecated; this sentence applies to Release 17 only."
      ]
     },
     {
@@ -7046,18 +6717,6 @@
        "locator": "clause 7.2.2.3.1, property row"
       },
       {
-       "case": "Client sends an Authorization header",
-       "verdict": "absent",
-       "what": "No client exists in the repository to send an Authorization header.",
-       "releases": [
-        "17",
-        "18",
-        "19",
-        "20"
-       ],
-       "locator": "clause 7.2.2.3.1, property row"
-      },
-      {
        "case": "Client sends an Origin header",
        "verdict": "absent",
        "what": "No client exists in the repository to send an Origin header.",
@@ -7083,7 +6742,7 @@
       }
      ],
      "noted": [
-      "The library's DataReportingSession model defines externalApplicationId and supportedDomains as client-writable properties (-316)."
+      "The library's DataReportingSession model defines externalApplicationId and supportedDomains as client-writable properties."
      ]
     },
     {
@@ -7112,7 +6771,7 @@
       }
      ],
      "noted": [
-      "The library's DataReport model defines the type a client would send (-836), but no code builds or sends one."
+      "The library's DataReport model defines the type a client would send, but no code builds or sends one."
      ]
     },
     {
@@ -7221,7 +6880,7 @@
       }
      ],
      "noted": [
-      "The code follows the Release 18 form of the API (the build pins the TSG105 Rel-18 API files), in which validUntil is deprecated; this sentence applies to Release 17 only.",
+      "The code follows the Release 18 form of the API (the build uses the Release 18 API files), in which validUntil is deprecated; this sentence applies to Release 17 only.",
       "How the generated model treats a read-only property it parses lies in code built at build time and not in the repository."
      ]
     },
@@ -8124,7 +7783,7 @@
       {
        "case": "A DataReportingSession resource entity (see clause 7.3.2.1) is included in the request ...",
        "verdict": "absent",
-       "what": "The repository contains no Application Server or Direct Data Collection Client; the sentence describes the invoking side, which has no code here (the DCAF side that accepts such a body exists (-399)).",
+       "what": "The repository contains no Application Server or Direct Data Collection Client; the sentence describes the invoking side, which has no code here (the DCAF side that accepts such a body exists).",
        "repo": "rt-data-collection-application-function",
        "releases": [
         "17",
@@ -8136,7 +7795,7 @@
       {
        "case": "The Application Server invokes the Ndcaf_DataReporting_CreateSession service operation ...",
        "verdict": "absent",
-       "what": "The repository contains no Application Server or Direct Data Collection Client; the sentence describes the invoking side, which has no code here (clause 4.2.5.2: the DCAF side exists (POST /sessions, -399)).",
+       "what": "The repository contains no Application Server or Direct Data Collection Client; the sentence describes the invoking side, which has no code here (clause 4.2.5.2: the DCAF side exists (POST /sessions)).",
        "repo": "rt-data-collection-application-function",
        "releases": [
         "17",
@@ -8247,7 +7906,7 @@
       {
        "case": "When the reportCondition of a DataReportingSession is fulfilled, the Application ...",
        "verdict": "absent",
-       "what": "The repository contains no Application Server or Direct Data Collection Client; the sentence describes the invoking side, which has no code here (the DCAF side (POST /sessions/{id}/report) exists at -275).",
+       "what": "The repository contains no Application Server or Direct Data Collection Client; the sentence describes the invoking side, which has no code here (the DCAF side (POST /sessions/{id}/report) exists).",
        "repo": "rt-data-collection-application-function",
        "releases": [
         "17",
@@ -8259,7 +7918,7 @@
       {
        "case": "After acquiring its data collection and configuration from the Data Collection AF, and ...",
        "verdict": "absent",
-       "what": "The repository contains no Application Server or Direct Data Collection Client; the sentence describes the invoking side, which has no code here (the DCAF side (POST /sessions/{id}/report) exists at -275).",
+       "what": "The repository contains no Application Server or Direct Data Collection Client; the sentence describes the invoking side, which has no code here (the DCAF side (POST /sessions/{id}/report) exists).",
        "repo": "rt-data-collection-application-function",
        "releases": [
         "17",
@@ -8271,7 +7930,7 @@
       {
        "case": "The Application Server shall take note of any changes and act accordingly.",
        "verdict": "absent",
-       "what": "The repository contains no Application Server or Direct Data Collection Client; the sentence describes the invoking side, which has no code here (the DCAF side serves the session at -476 but no client reads it).",
+       "what": "The repository contains no Application Server or Direct Data Collection Client; the sentence describes the invoking side, which has no code here (the DCAF side serves the session but no client reads it).",
        "repo": "rt-data-collection-application-function",
        "releases": [
         "17",
@@ -8300,7 +7959,7 @@
       {
        "case": "The Direct Data Reporting Client shall obtain its configuration by invoking the ...",
        "verdict": "absent",
-       "what": "The repository contains no Application Server or Direct Data Collection Client; the sentence describes the invoking side, which has no code here (the DCAF side that serves CreateSession exists (-399)).",
+       "what": "The repository contains no Application Server or Direct Data Collection Client; the sentence describes the invoking side, which has no code here (the DCAF side that serves CreateSession exists).",
        "repo": "rt-data-collection-application-function",
        "releases": [
         "17",
@@ -8329,7 +7988,7 @@
       {
        "case": "The Application Server invokes the Ndcaf_DataReporting_DestroySession service ...",
        "verdict": "absent",
-       "what": "The repository contains no Application Server or Direct Data Collection Client; the sentence describes the invoking side, which has no code here (the DCAF side (DELETE /sessions/{id}) exists at -503).",
+       "what": "The repository contains no Application Server or Direct Data Collection Client; the sentence describes the invoking side, which has no code here (the DCAF side (DELETE /sessions/{id}) exists).",
        "repo": "rt-data-collection-application-function",
        "releases": [
         "17",
@@ -8341,7 +8000,7 @@
       {
        "case": "The Application Server may destroy a Data Reporting Session and the data collection ...",
        "verdict": "absent",
-       "what": "The repository contains no Application Server or Direct Data Collection Client; the sentence describes the invoking side, which has no code here (the DCAF side (DELETE /sessions/{id}) exists at -503).",
+       "what": "The repository contains no Application Server or Direct Data Collection Client; the sentence describes the invoking side, which has no code here (the DCAF side (DELETE /sessions/{id}) exists).",
        "repo": "rt-data-collection-application-function",
        "releases": [
         "17",
@@ -8661,7 +8320,7 @@
       }
      ],
      "noted": [
-      "The AS interface is registered with the NRF alongside R2 and R3 (-49)."
+      "The AS interface is registered with the NRF alongside R2 and R3."
      ]
     },
     {
@@ -8749,7 +8408,7 @@
       }
      ],
      "noted": [
-      "The library's DataReportingSession model has supportedDomains, samplingRules, reportingConditions and reportingRules (-562)."
+      "The library's DataReportingSession model has supportedDomains, samplingRules, reportingConditions and reportingRules."
      ]
     },
     {
@@ -8927,9 +8586,7 @@
        "locator": "clause 5.5"
       }
      ],
-     "noted": [
-      "The AF side of this exchange (POST of a report to a session) is served in -309."
-     ]
+     "noted": []
     },
     {
      "id": "dcclient-26.532-4.2.4.1",
@@ -8998,8 +8655,8 @@
       }
      ],
      "noted": [
-      "The AF rejects a report for an unknown Data Reporting Session with 404 (-260).",
-      "The AF serves CreateSession on the indirect interface (-410)."
+      "The AF rejects a report for an unknown Data Reporting Session with 404.",
+      "The AF serves CreateSession on the indirect interface."
      ]
     },
     {
@@ -9054,7 +8711,7 @@
      ],
      "noted": [
       "The AF deliberately leaves validUntil unset and expires sessions after an inactivity timeout.",
-      "The AF serves RetrieveSession (-475)."
+      "The AF serves RetrieveSession."
      ]
     },
     {
@@ -9142,7 +8799,7 @@
       }
      ],
      "noted": [
-      "The AF serves session creation on the direct interface (-410)."
+      "The AF serves session creation on the direct interface."
      ]
     },
     {
@@ -9204,7 +8861,7 @@
       }
      ],
      "noted": [
-      "The AF serves session deletion (-506)."
+      "The AF serves session deletion."
      ]
     },
     {
@@ -9379,7 +9036,7 @@
       {
        "case": "Similar to clause 4.2.4, the AS shall obtain its configuration by invoking the ...",
        "verdict": "absent",
-       "what": "The AS client calling CreateSession is not coded; the AF serves POST sessions on the R4 server interface . There is no Data Collection Client application in the repository.",
+       "what": "The AS client calling CreateSession is not coded; the AF serves POST sessions on the R4 server interface. There is no Data Collection Client application in the repository.",
        "repo": "rt-data-collection-application-function",
        "releases": [
         "17",
@@ -9391,7 +9048,7 @@
       {
        "case": "An Application Server (AS) instance, as a type of data collection client, acquires its ...",
        "verdict": "absent",
-       "what": "The AS acquiring its configuration is client behaviour; the AF side (R4 server interface for the Ndcaf_DataReporting service) exists at -50. There is no Data Collection Client application in the repository.",
+       "what": "The AS acquiring its configuration is client behaviour; the AF side (R4 server interface for the Ndcaf_DataReporting service) exists. There is no Data Collection Client application in the repository.",
        "repo": "rt-data-collection-application-function",
        "releases": [
         "17",
@@ -9440,7 +9097,7 @@
       {
        "case": "The Application Server requests the DataReportingSession for the current session by ...",
        "verdict": "absent",
-       "what": "The AS client calling RetrieveSession is not coded; the AF serves GET sessions/{id} with 304 handling (-470). There is no Data Collection Client application in the repository.",
+       "what": "The AS client calling RetrieveSession is not coded; the AF serves GET sessions/{id} with 304 handling. There is no Data Collection Client application in the repository.",
        "repo": "rt-data-collection-application-function",
        "releases": [
         "17",
@@ -9692,7 +9349,7 @@
       {
        "case": "The set of UE data to be collected and exposed by the Data Collection AF is determined ...",
        "verdict": "differs",
-       "what": "Exposure to event consumers is driven by subscription matched to provisioned Data Access Profiles (-332), but the configuration returned at R2/R3/R4 is built from provisioning only and is not intersected with current subscriptions, and no MNO preconfiguration precedence rules (clause 4.5.4) exist.",
+       "what": "Exposure to event consumers is driven by subscription matched to provisioned Data Access Profiles, but the configuration returned at R2/R3/R4 is built from provisioning only and is not intersected with current subscriptions, and no MNO preconfiguration precedence rules (clause 4.5.4) exist.",
        "repo": "rt-data-collection-application-function",
        "releases": [
         "17",
@@ -9745,7 +9402,7 @@
       {
        "case": "6. Application Server instances (labelled AS) inside or outside the trusted domain may ...",
        "verdict": "absent",
-       "what": "An Application Server reporting over R4 is client behaviour; the AF only has the R4 server interface . There is no Data Collection Client application in the repository.",
+       "what": "An Application Server reporting over R4 is client behaviour; the AF only has the R4 server interface. There is no Data Collection Client application in the repository.",
        "repo": "rt-data-collection-application-function",
        "releases": [
         "17",
@@ -9803,7 +9460,7 @@
       {
        "case": "The event consumer may additionally specify user-, location- and/or application-based ...",
        "verdict": "differs",
-       "what": "Consumer filters are accepted; app id filter and user filter (against profile user restrictions) narrow what is exposed, but location filter is not applied (TODO) and gpsis/supis do not narrow when the profile has no user restrictions (identity bucket NULL).",
+       "what": "Consumer filters are accepted; app id filter and user filter (against profile user restrictions) narrow what is exposed, but location filter is not applied and gpsis/supis do not narrow when the profile has no user restrictions (identity bucket NULL).",
        "repo": "rt-data-collection-application-function",
        "releases": [
         "17",
@@ -9892,7 +9549,7 @@
       {
        "case": "The format of HTTP message bodies specified in the present document shall be JSON as ...",
        "verdict": "implemented",
-       "what": "Request bodies are required to be application/json (415 otherwise) and parsed as JSON; response bodies are built as JSON.",
+       "what": "Request bodies are required to be application/json and parsed as JSON; response bodies are built as JSON.",
        "repo": "rt-data-collection-application-function",
        "releases": [
         "17",
@@ -10018,7 +9675,7 @@
       {
        "case": "- {apiRoot} shall be set as described in TS 29.501 [17].",
        "verdict": "implemented",
-       "what": "The AF builds its NF profile services with scheme (https unless no_tls) and the configured server addresses and ports and no apiPrefix, which is the TS 29.501 apiRoot (scheme and authority, deployment prefix optional); registered via the Open5GS NF state machine.",
+       "what": "The AF builds its NF profile services with scheme (https unless TLS is switched off) and the configured server addresses and ports and no apiPrefix, which is the TS 29.501 apiRoot (scheme and authority, deployment prefix optional); registered via the Open5GS NF state machine.",
        "repo": "rt-data-collection-application-function",
        "releases": [
         "17",
@@ -10042,7 +9699,7 @@
       {
        "case": "- {apiVersion} shall be set to \"v1\".",
        "verdict": "implemented",
-       "what": "Requests whose apiVersion is not the Open5GS constant OGS_SBI_API_V1 are rejected with 400 on all three services; registration advertises OGS_SBI_API_V1; the notification request uses the literal \"v1\".",
+       "what": "Requests whose apiVersion is not the supported API version are rejected with 400 on all three services; registration advertises the supported version; the notification request uses the literal \"v1\".",
        "repo": "rt-data-collection-application-function",
        "releases": [
         "17",
@@ -10172,7 +9829,7 @@
       {
        "case": "The version-independent semantics of HTTP specified in RFC 9110 [20] shall be followed.",
        "verdict": "differs",
-       "what": "ETag values are bare hex SHA-256 digests (no quotes as RFC 9110 8.8.3 requires), If-None-Match is compared with strcmp (no list, weak or * handling), and conditional requests are handled only on the reporting session GET.",
+       "what": "ETag values are bare hex SHA-256 digests (no quotes as RFC 9110 8.8.3 requires), If-None-Match is compared as a plain string (no list, weak or * handling), and conditional requests are handled only on the reporting session GET.",
        "repo": "rt-data-collection-application-function",
        "releases": [
         "18",
@@ -10206,26 +9863,6 @@
         "18",
         "19",
         "20"
-       ]
-      },
-      {
-       "case": "For other interfaces, support of HTTP/1.1 (per RFC 9112 [19]) over TLS is mandatory ...",
-       "verdict": "absent",
-       "what": "A client HTTP/1.1 over TLS stack (RFC 9112 form) is not coded. There is no Data Collection Client application in the repository.",
-       "repo": "rt-data-collection-application-function",
-       "releases": [
-        "18",
-        "19",
-        "20"
-       ]
-      },
-      {
-       "case": "For other interfaces, support of HTTP/1.1 (IETF RFC 7230 [19], IETF RFC 7231 [20], ...",
-       "verdict": "absent",
-       "what": "A client HTTP/1.1 over TLS stack (RFC 723x form) is not coded. There is no Data Collection Client application in the repository.",
-       "repo": "rt-data-collection-application-function",
-       "releases": [
-        "17"
        ]
       }
      ],

@@ -25,9 +25,18 @@ import AUDIT from '@site/src/data/audit-3gpp-platforms.json';
 
 See also: <a href={useBaseUrl('/reference-tools/3gpp-platforms/tutorials#developer-exchange')}>Developer Exchange</a>.
 
-**Category:** 3GPP Implementations
+:::tip[In short]
 
-## What This Project Implements
+- **Platform description:** 5G-MAG maintains forks of Open5GS, the srsRAN Project and srsRAN_4G, each with a variant for MBS, so that the other reference tools have a network to run against. This part is not yet audited.
+- **5G Core service consumers:** reusable libraries to invoke service operations on 5GC network functions. The BSF and MB-SMF libraries and the NRF discovery they use are audited on the `main` branch of `rt-5gc-service-consumers`; the PCF library is not yet audited.
+
+:::
+
+## Platform description (not yet audited)
+
+Not yet audited. The description in this part is taken from the project's repositories and published 5G-MAG material; only the service consumer libraries further down have been audited.
+
+### What this project implements
 
 This project provides the 5G network infrastructure that other 5G-MAG reference tools run against. 5G-MAG maintains forks of established open-source Radio Access Network (RAN) and Core software, adds the components needed for its media and broadcast work, and documents how to stand up a working network in a lab or testbed.
 
@@ -35,12 +44,12 @@ In 5G terminology the RAN can be split into a Central Unit (CU) and a Distribute
 
 A note on the delivery technologies referenced here:
 
-- **MBS (Multicast-Broadcast Services)**, also written 5MBS, is the 3GPP feature for delivering the same content to many devices over the 5G Core and NR radio.
+- **MBS (Multicast-Broadcast Services)**, is the 3GPP feature for delivering the same content to many devices over the 5G Core and NR radio.
 - **5G Broadcast** (LTE-based) delivers free-to-air TV and radio over LTE/eMBMS radio, without a 5G core or return channel. It reuses **Further evolved Multimedia Broadcast Multicast Service (FeMBMS)**.
 
 These are distinct technologies; the forks below follow this split.
 
-## Upstream software we build on
+### Upstream software we build on
 
 Some Reference Tools Projects make use of software developed by other Open-Source Software initiatives.
 
@@ -52,52 +61,34 @@ In particular:
 
 - [**Open5GS Project**](https://www.open5gs.org), used primarily as the 5GC to build Reference Tools demonstrators and PoCs and as the basis for the development of 5GC related components for MBS
 
-## What this project provides
+### What this project provides
 
 This project does not deliver media itself; it provides a working radio access network and core so that MBS and 5G Broadcast components have something to attach to in a lab or testbed. The pieces map to 5G terminology as follows:
 
 - **NG-RAN (gNB), split into CU and DU:** built from `rt-srsRAN_Project`, 5G-MAG's fork of the srsRAN Project (an O-RAN-native 5G CU/DU with a full L1/L2/L3 implementation from Software Radio Systems). This is the NR side used for MBS demonstrators and for developing NG-RAN components for MBS.
-- **5G Core (5GC):** built from 5G-MAG's fork of Open5GS. For MBS this includes the multicast/broadcast core functions; published 5G-MAG material describes using Open5GS for functions including the AMF, MB-SMF and MB-UPF.
+- **5G Core (5GC):** built from 5G-MAG's fork of Open5GS. The multicast and broadcast core functions are described in the [5G Multicast and Broadcast Services](../5g-mbs/) project.
 - **LTE-based radio and UE, for 5G Broadcast:** built from `srsRAN_4G` (the SDR 4G suite from SRS). This is the basis for the LTE-based 5G Terrestrial Broadcast transmitter and for developing UE-side functionality.
 - **SDR hardware:** Software Defined Radio front-ends transmit and receive the radio signal that the software above generates and processes.
 
-## The two delivery technologies, and why the forks split
+### The two delivery technologies, and why the forks split
 
-The forks are organised around two distinct delivery technologies.
+The project maintains forks of Open5GS, the srsRAN Project and srsRAN_4G, each with a variant for MBS. The forks are organised around two distinct delivery technologies.
 
-|                    | MBS (5MBS)                                   | 5G Broadcast (LTE-based)                              |
-| ------------------ | -------------------------------------------- | ----------------------------------------------------- |
-| Radio              | 5G NR                                        | LTE / eMBMS (reuses FeMBMS)                           |
-| Core               | 5G Core (multicast/broadcast functions)      | None; free-to-air, no return channel                  |
-| RAN software basis | `rt-srsRAN_Project` (NR CU/DU)               | `srsRAN_4G` (eNodeB with MBMS)                        |
-| Typical use        | Same content to many devices over 5GC and NR | Free-to-air TV and radio over broadcast, receive-only |
+- **MBS:** 5G NR radio and the 5G Core with multicast and broadcast functions, for delivering the same content to many devices. The RAN software basis is `rt-srsRAN_Project` (NR CU/DU).
+- **5G Broadcast (LTE-based):** LTE/eMBMS radio (reusing FeMBMS), with no core and no return channel, for free-to-air TV and radio, receive-only. The RAN software basis is `srsRAN_4G` (eNodeB with MBMS).
 
-Further evolved Multimedia Broadcast Multicast Service (FeMBMS) is the LTE broadcast feature reused by 5G Broadcast. Published 5G-MAG material notes that the LTE-based 5G Broadcast transmitter builds on the MBMS implementation in the `srsRAN_4G` eNodeB, extended towards the 3GPP LTE-based 5G Terrestrial Broadcast feature set (for example channel estimation and reference signals for the 1.25 kHz subcarrier spacing introduced in Release 14, TR 36.976 clause 4.3). The dedicated 5G Broadcast transmitter and modem live in separate repositories (for example `rt-mbms-tx` and `rt-mbms-modem`), which depend on this project for the underlying radio software.
+Further evolved Multimedia Broadcast Multicast Service (FeMBMS) is the LTE broadcast feature reused by 5G Broadcast. Published 5G-MAG material notes that the LTE-based 5G Broadcast transmitter builds on the MBMS implementation in the `srsRAN_4G` eNodeB, extended towards the 3GPP LTE-based 5G Terrestrial Broadcast feature set (for example channel estimation and reference signals for the 1.25 kHz subcarrier spacing introduced in Release 14, TR 36.976 V19.0.0 clause 4.3). The dedicated 5G Broadcast transmitter and modem live in separate repositories (for example `rt-mbms-tx` and `rt-mbms-modem`), which depend on this project for the underlying radio software.
 
-## How this relates to the media reference tools
+### How this relates to the media reference tools
 
 The MBS and 5G Broadcast media stacks depend on a working network to run against. This project supplies that network so the media components do not each have to stand up a RAN and core. Because the RAN and core are forks of upstream open-source projects (srsRAN, Open5GS), 5G-MAG tracks the upstream projects and maintains the additions needed for its broadcast and multicast work.
 
-## Getting Started
+### Getting started
 
 1. Decide which technology you are building for: MBS (5G NR plus 5GC) or LTE-based 5G Broadcast. This determines which fork you need.
-2. For MBS, build the NG-RAN from [5G-MAG/rt-srsRAN_Project](https://github.com/5G-MAG/rt-srsRAN_Project) and the core from [5G-MAG/open5gs](https://github.com/5G-MAG/open5gs), using their `5mbs` branch.
-3. For 5G Broadcast, use the LTE-based transmitter path built on `srsRAN_4G`; see the dedicated transmitter and modem repositories.
+2. For MBS, build the NG-RAN from [5G-MAG/rt-srsRAN_Project](https://github.com/5G-MAG/rt-srsRAN_Project) and the core from [5G-MAG/open5gs](https://github.com/5G-MAG/open5gs), using the MBS variant of each fork.
+3. For 5G Broadcast, use the LTE-based transmitter path built on [5G-MAG/srsRAN_4G](https://github.com/5G-MAG/srsRAN_4G); see the dedicated transmitter and modem repositories.
 4. Follow the [Tutorials](./tutorials) for the network and SDR setup guides, including SDR front-end configuration.
-
-## Forks at a glance
-
-PWS (Public Warning System) is the cell-broadcast mechanism used for emergency alerts.
-
-| Repository                                                     | Branch | Use case                                                         |
-| --------------------------------------------------------------- | ------ | ---------------------------------------------------------------- |
-| [open5gs](https://github.com/5G-MAG/open5gs)                   | main   | Regular 5G network (baseline core)                               |
-| [open5gs](https://github.com/5G-MAG/open5gs)                   | 5mbs   | 5MBS implementations                                             |
-| [rt-srsRAN_Project](https://github.com/5G-MAG/rt-srsRAN_Project) | main   | Regular 5G network (baseline NG-RAN)                             |
-| [rt-srsRAN_Project](https://github.com/5G-MAG/rt-srsRAN_Project) | 5mbs   | 5MBS implementations                                             |
-| [srsRAN_4G](https://github.com/5G-MAG/srsRAN_4G)               | main   | LTE-based 5G Broadcast / MBMS, and emergency alerts (PWS)        |
-| [srsRAN_4G](https://github.com/5G-MAG/srsRAN_4G)               | 5mbs   | 5MBS implementations                                             |
-| [srsRAN](https://github.com/5G-MAG/srsRAN) (discontinued version prior to srsRAN_4G) | main | LTE-based 5G Broadcast / MBMS                      |
 
 ## 5G Core Service Consumers
 
@@ -116,7 +107,8 @@ The 5G Core (5GC) presents several Network Functions, each of which has its own 
 - **BSF**: Binding Support Function, which maps a PDU Session to the PCF serving it.
 - **MB-SMF**: Multicast/Broadcast Session Management Function, which manages MBS sessions.
 - **TMGI**: Temporary Mobile Group Identity, the identifier for an MBS session.
-  :::
+
+:::
 
 This page is split into two domains, separated by a horizontal rule: first the **Media Streaming QoS** libraries (BSF and PCF), then the **Multicast/Broadcast Services (MBS)** library (MB-SMF).
 
@@ -126,9 +118,7 @@ Technical documentation providing context to this project can be found in the li
 
 [Tech: Multicast and Broadcast Services in 5G Networks](/tech/5g-mbs)
 
-:::tip[In short]
-A series of reusable service consumer libraries to invoke service operations on various 5GC network functions.
-:::
+
 
 ### Deployment Configurations
 
@@ -140,16 +130,17 @@ The diagram below shows how the MBS reference tools use the MB-SMF service consu
 
 <img loading="lazy" src={useBaseUrl('/assets/images/projects/mbs_5gc_diagram.png')} style={{width: '80%'}} alt="Architecture of the 5G MBS reference tools using the MB-SMF service consumer library to reach the 5G Core"/>
 
-- [5G Multicast Broadcast Services](../5g-mbs/)
-- [Content Delivery Protocols and Tools](../content-delivery/)
-- [3GPP RAN and Core Platforms](../3gpp-platforms/)
-- [Common Tools](../common-tools/)
-
 ### Media Streaming QoS (BSF and PCF)
 
 Within the context of 5G Media Streaming (5GMS), the 5GMS Application Function (AF) needs to communicate with the 5G Core in order to manipulate network Quality of Service (QoS) for ongoing media streaming sessions.
 
 <img loading="lazy" src={useBaseUrl('/assets/images/5gcsc/5GCSC_libscbsf_libscpcf.png')} alt="Architecture showing the libscbsf and libscpcf service consumer libraries connecting a media Application Function to the BSF and PCF in the 5G Core"/>
+
+#### 5G Downlink Media Streaming (5GMSd) with 5GC Service Consumers
+
+The diagram below shows how the 5GMSd reference tools use the 5GC Service Consumer libraries (BSF and PCF) to request network QoS from the 5G Core.
+
+<img loading="lazy" src={useBaseUrl('/assets/images/projects/5gms_5gc_diagram.png')} style={{width: '80%'}} alt="Architecture of the 5G Downlink Media Streaming reference tools using the 5GC Service Consumer libraries to reach the BSF and PCF"/>
 
 The following libraries are available:
 
@@ -220,31 +211,28 @@ Each library implements only the consumer (client) side of its APIs, so it assum
 
 ### Implementation status of the service consumer libraries
 
-This status comes from an audit of the `main` branch of `rt-5gc-service-consumers` on 2026-10-21. Each requirement of the 5G Core service specifications is split into the cases its clause defines, and each case was read against the code by one reader and then independently by a second, with a third reading where they disagreed. It covers **libscbsf** (BSF), **libscmbsmf** (MB-SMF) and the NRF discovery they use. **libscpcf** (PCF, `Npcf_PolicyAuthorization`) is not yet audited. Cases that only the Open5GS stack decides (HTTP/2, content types, the discovery request itself and the generated data models) are not shown, because Open5GS is not part of this repository.
+This status comes from an audit of the `main` branch of `rt-5gc-service-consumers` on 2026-10-21. Each requirement of the 5G Core service specifications is split into the cases its clause defines, and each case was read against the code by one reader and then independently by a second, with a third reading where they disagreed. It covers **libscbsf** (BSF), **libscmbsmf** (MB-SMF) and the NRF discovery they use. **libscpcf** (PCF, `Npcf_PolicyAuthorization`) is not yet audited. Cases that depend on Open5GS, which is not part of this repository, are not shown; some shown cases could be read only up to that boundary.
 
 - **libscbsf:** looks up the PCF binding of a UE with a GET on `pcfBindings` by IPv4 address or IPv6 prefix. It has no query by SUPI, GPSI, DNN or S-NSSAI, and no register, update, deregister or subscribe operation. Any reply other than 200 is reported to the application as "no binding".
-- **libscmbsmf, sessions:** create, update and delete an MBS session; create, update and delete a status subscription; receive the StatusNotify notification. ContextUpdate and the context status operations, multipart content and OAuth2 are not implemented.
+- **libscmbsmf, sessions:** create, update and delete an MBS session; create, update and delete a status subscription; receive the StatusNotify notification. ContextUpdate and the context status operations, and multipart content, are not implemented.
 - **libscmbsmf, TMGIs:** allocate and deallocate TMGIs. Refreshing a TMGI is in the code but no public call reaches it.
 - **Needs fix:**
   - Updating a status subscription sends the session's changes, not the subscription's.
   - A subscription created on its own, after the session, carries no notification URI.
   - The notification receiver answers 200 where TS 29.532 gives 204.
-  - Errors from update, delete and subscription requests, and a failed allocation of a new TMGI, are not reported to the application.
-- **NRF discovery:** the libraries set the service name, the Service-Map requester feature and, for MBS session creation with a TMGI, the target PLMN. The BSF discovery sets no options. Every other discovery parameter, stored search and SCP domain routing is not used.
+  - A failed update is reported to the application without the error details; a delete is treated as successful whatever the answer; a failed subscription creation and a failed allocation of a new TMGI are not reported.
+- **NRF discovery:** the MB-SMF library sets the service name and the Service-Map requester feature, and adds the target PLMN when a session is created with a TMGI. The BSF library sets no discovery options. Every other discovery parameter, stored search and SCP domain routing is not used.
 
 <ImplementationCases data={AUDIT} only={['consumers']} />
 
-### Getting Started
+### Getting started with the libraries
 
 See [Tutorials](./tutorials) to run the tools against a 5G Core, and [Repositories & Releases](/reference-tools/3gpp-platforms#repositories--releases) for the source code and releases.
 
-#### 5G Downlink Media Streaming (5GMSd) with 5GC Service Consumers
+## Used with other projects
 
-The diagram below shows how the 5GMSd reference tools use the 5GC Service Consumer libraries (BSF and PCF) to request network QoS from the 5G Core.
-
-<img loading="lazy" src={useBaseUrl('/assets/images/projects/5gms_5gc_diagram.png')} style={{width: '80%'}} alt="Architecture of the 5G Downlink Media Streaming reference tools using the 5GC Service Consumer libraries to reach the BSF and PCF"/>
-
-- [5G Media Streaming](../5gms/)
+- [5G Multicast Broadcast Services](../5g-mbs/) uses the MB-SMF service consumer library.
+- [5G Media Streaming](../5gms/) uses the BSF and PCF service consumer libraries.
 - [Common Tools](../common-tools/)
 
 ## Related

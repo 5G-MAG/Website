@@ -7,7 +7,6 @@ description: What the data collection Reference Tools implement, for the generic
 
 import FigurePair from '@site/src/components/FigurePair';
 import ImplementationCases from '@site/src/components/ImplementationCases';
-import { RepoCards } from '@site/src/components/ProjectRepoSection';
 import AUDIT from '@site/src/data/audit-data-collection.json';
 
 <div class="topic-banner">
@@ -27,14 +26,14 @@ import AUDIT from '@site/src/data/audit-data-collection.json';
 
 :::tip[In short]
 
-- **Which specification the code follows:** the Release 18 APIs of TS 26.532 (TSG105), as the Data Collection AF build pins them. The audit judges every statement of TS 26.531 and TS 26.532 valid in Releases 17 to 20.
+- **Which specification the code follows:** the Release 18 API definitions of TS 26.532 as published by 3GPP at its TSG meeting 105, which is the default of the build. The audit judges every statement of TS 26.531 and TS 26.532 valid in Releases 17 to 19 (no Release 20 change is known).
 - **Generic framework:** a Data Collection AF library and a standalone AF serve R1, R2 to R4, R5 and R6. No data collection client is provided.
-- **In 5G Media Streaming:** the 5GMS AF embeds the Data Collection AF library, but registers no 5GMS data report type, so no 5GMS data is collected or exposed yet.
+- **In 5G Media Streaming:** the Data Collection AF library is designed to be embedded in the 5GMS Application Function. That integration is not yet part of the main branch of the 5GMS Application Function, so no 5GMS data is collected or exposed yet.
 - **Source of this page:** an audit of the `main` branch of the Data Collection AF repository on 2026-10-20: each requirement split into the cases its clause defines, each case read against the code by one reader and then independently by a second, with a third reading where they disagreed. Cases that depend on the Open5GS framework layer, which is not part of the repository, are not shown.
 
 :::
 
-For what the specifications define, see the [Technology](/tech/data-collection/overview). For how to run the tools, see the [Tutorials](/reference-tools/data-collection/tutorials).
+For what the specifications define, see the [Technology](/tech/data-collection/overview). For how to run the tools, see the [Tutorials](/reference-tools/data-collection/tutorials). The Standards are on the [Data Collection standards page](/standards/data-collection).
 
 ## Architecture
 
@@ -56,7 +55,7 @@ The generic architecture and its 5G Media Streaming instantiation, with the part
       width: 1200, height: 923,
       title: 'Data collection in 5G Media Streaming (Release 17), with Reference Tools',
       source: 'Based on TS 26.501 V17.10.0, figure 4.7.1-1, the release the 5GMS AF is built against',
-      alt: 'The Release 17 5GMS instantiation. The 5GMS components are provided, but the Data Collection AF inside the 5GMS AF is not. Metrics and consumption collection are in the Media Session Handler; the NWDAF and the Event Consumer AF are not provided.',
+      alt: 'The Release 17 5GMS instantiation. The 5GMS components are provided, but the Data Collection AF is not yet part of the 5GMS AF main branch. Metrics and consumption collection are in the Media Session Handler; the NWDAF and the Event Consumer AF are not provided.',
     },
   ]}
   note="Click a figure to enlarge it."
@@ -70,7 +69,7 @@ Each feature, split into its requirements and each requirement into the cases it
 
 ## Integration with 5G Media Streaming
 
-The 5GMS Application Function embeds the Data Collection AF library. How the 5GMS components use it is on the [5G Media Streaming: Implementation Detail](/reference-tools/5gms/implementation) page.
+The Data Collection AF library is designed to be embedded in the 5GMS Application Function; that integration is not yet merged into the main branch of the 5GMS Application Function. See the [5G Media Streaming: Implementation Detail](/reference-tools/5gms/implementation) page for the 5GMS side.
 
 :::info[Full audit for members]
 
@@ -80,33 +79,21 @@ This page summarises a requirement-by-requirement audit of the code. The full au
 
 :::
 
-## Components
+## Implementation status
 
-### Data Collection AF
+The Data Collection AF (repository cards are on the [project page](/reference-tools/data-collection#repositories--releases)).
 
-<RepoCards slugs={['rt-data-collection-application-function']} />
-
-- **Built against:** the Release 18 (TSG105) APIs of TS 26.532.
 - **Implemented:** creating, reading and deleting Provisioning Sessions, Data Reporting Configurations and Data Reporting Sessions; communication reports; time-window aggregation; context identifiers on rules and conditions; event subscription and notification at R5 and R6; registration of an AF profile with the NRF at start-up.
-- **Needs fix:** replacing a Data Reporting Configuration does not store it; reading a session or a configuration answers 201 where the specification says 200; the aggregation names MAXIMUM and MINIMUM are not accepted and COUNT is missing; an empty list of event consumer types matches no consumer; the event time stamp is the time of the notification, not of the record; default values for omitted sampling and reporting rules are not applied; a few property names differ from the specification (`location`, `downlinkThrougput`).
+- **Needs fix:** replacing a Data Reporting Configuration does not store it; the code returns 201 (Created) when a session or configuration is read, where the specification gives 200 (OK); the aggregation function names MAXIMUM and MINIMUM of the specification are not accepted (the code expects MIN and MAX), and COUNT is not accepted for communication records; an empty list of event consumer types matches no consumer; the event time stamp is the time of the notification, not of the record; default values for omitted sampling and reporting rules are not applied; a few property names differ from the specification (`location`, `downlinkThrougput`).
 - **Not implemented:** PATCH, user and location restrictions, record types other than communication (a report with another type is accepted and not stored), redirects, the CORS headers, updating the NRF profile when provisioning changes, and a Direct, Indirect or AS data collection client.
-
-### Packages
-
-| Component | Package |
-| --- | --- |
-| Data Collection AF | [Container image](https://github.com/5G-MAG/rt-data-collection-application-function/pkgs/container/data-collection-af) |
 
 ## Used with other projects
 
-<ul>
-{AUDIT.dependencies.map((d) => (
-  <li key={d.what}><strong>{d.project}</strong>: {d.what}. <em>{d.status}.</em></li>
-))}
-</ul>
+The Data Collection AF library is designed to be used by the [5G Media Streaming](/reference-tools/5gms) Application Function; see the 5G Media Streaming section above for the state of that integration.
 
 ## Related
 
 - [Repositories & Releases](/reference-tools/data-collection#repositories--releases)
 - [Slide deck: UE Data Collection, Reporting and Event Exposure overview](pathname:///docs/Reference_Tools_UE_data_collection.pdf)
 - [5G Media Streaming: Implementation Detail](/reference-tools/5gms/implementation)
+- [Container image of the Data Collection AF](https://github.com/5G-MAG/rt-data-collection-application-function/pkgs/container/data-collection-af)

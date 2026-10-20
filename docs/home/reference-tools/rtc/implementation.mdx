@@ -9,21 +9,31 @@ import ImplementationCases from '@site/src/components/ImplementationCases';
 import AUDIT from '@site/src/data/audit-rtc.json';
 
 <div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M7 21v-6" /><path d="M20 6l-3 -3l-3 3" /><path d="M10 18l-3 3l-3 -3" /><path d="M7 3v2" /><path d="M7 9v2" /><path d="M17 3v6" /><path d="M17 21v-2" /><path d="M17 15v-2" /></svg>
+</div>
 <div class="topic-banner__text">
 <span class="topic-banner__kicker">Real-time Media Communication (RTC) Architecture</span>
 <h1>Implementation Detail</h1>
 </div>
 </div>
 
+:::tip[In short]
+
+- **What exists:** there is no dedicated RTC Reference Tool yet. The only RTC-related code is `rt-3gpp-swap`, the SWAP reference implementation (a Node.js signalling server and a client library) held in the repository of the [Conversational Avatar Communication with MPEG ARF](/reference-tools/avatar) project, which owns it.
+- **What SWAP is:** SWAP (Simple WebRTC Application Protocol) is the signalling protocol of TS 26.113 (clause 13.2.4) that lets two real-time communication endpoints set up a call through a signalling server. It runs on the RTC-4s reference point, between the RTC Client and the WebRTC Signalling Function of the RTC AS.
+- **Which specification it follows:** TS 26.113 V19.2.0. Releases 18 to 20 are judged on the same text.
+- **Source of this page:** an audit of the `main` branch of `rt-3gpp-swap` on 2026-10-21. The RTC AF, the Media Session Handler, the ICE function and the other RTC AS functions are not part of it.
+
+:::
+
 For what the specifications define, see the [Technical Analysis](/tech/rtc).
 
-## What the Reference Tool implements
+## What the SWAP code implements
 
-The RTC Reference Tool is the SWAP v1 reference implementation of TS 26.113 clause 13.2.4: a Node.js signalling server and a client library for the signalling reference point RTC-4s. It is audited on the `main` branch of `rt-3gpp-swap` (2026-10-21). The RTC AF, the Media Session Handler, the ICE function and the other RTC AS functions are not part of it.
-
-- **Implemented:** the SWAP signalling over WebSocket at `/3gpp-swap/v1` with the `3gpp.SWAP.v1` subprotocol; connect, accept, reject, update, close and application messages; matching criteria and endpoint selection; optional integrity and encryption of messages.
+- **Implemented:** the SWAP signalling over WebSocket at `/3gpp-swap/v1` with the `3gpp.SWAP.v1` subprotocol; connect, accept, reject, update, close and application messages; matching criteria and endpoint selection. Message integrity and payload encryption are available as options in the library; their use in the reference server is limited.
 - **Needs fix:**
-  - The server defaults to plain `ws`, where the specification requires `wss`; the client allows `ws` when its `secure` option is false.
   - Errors are sent as a SWAP response whose description joins the Problem Details title and detail, not as a Problem Details object.
   - A message to an endpoint that never registered is acknowledged, not answered with an error.
   - On a received close the client does not send the accept itself.
@@ -46,7 +56,12 @@ The full audit, with the code behind each verdict, is available to 5G-MAG member
 
 :::
 
+## Used with other projects
+
+- [Conversational Avatar Communication with MPEG ARF](/reference-tools/avatar): owns the `rt-3gpp-swap` repository.
+
 ## Related
 
 - [Technical Analysis](/tech/rtc)
+- [RTC standards](/standards/rtc)
 - [Repositories & Releases](/reference-tools/rtc/#repositories--releases)
