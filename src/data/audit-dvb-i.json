@@ -3,7 +3,7 @@
  "title": "DVB-I over 5G Systems",
  "audited": "2026-10-22",
  "tier": "T0",
- "method": "code read against every statement of the specifications on the project page. The audit leads with the published edition ETSI TS 103 770 V1.2.1 (2024-09): the provider and registry entries, and the client entries whose clauses read the same in both editions or exist only in the draft, are judged against V1.2.1, with the differences of the draft DVB A177r8 (V1.3.1 draft) noted per case; statements that exist only in the draft are listed as draft-only and not counted. The remaining 82 client entries (browser client, Exo player and Android client) are still judged against the draft A177r8 and are being re-based onto V1.2.1 in a second wave. Statements a component cannot meet by construction are marked absent by group; entries touched by later fixes were re-read at rt-dvb-i-application-provider e3cfb1e, rt-dvb-i-service-list-registry d0ab0ea and rt-dvb-i-application bb15220",
+ "method": "code read against every statement of the published edition ETSI TS 103 770 V1.2.1 (2024-09). Every entry is judged against V1.2.1: where a clause reads the same in the draft DVB A177r8 (V1.3.1 draft) the verdict stands, and where the draft differs the difference is noted in the case; statements that exist only in the draft are listed as draft-only and not counted. The client entries (browser client, Exo player and Android client) were judged by each component's own code at rt-dvb-i-application bb15220, rt-dvb-i-android-application 553b4a4 and rt-5gms-application 6536205. Statements a component cannot meet by construction are marked absent by group; entries touched by later fixes were re-read at rt-dvb-i-application-provider e3cfb1e, rt-dvb-i-service-list-registry d0ab0ea and rt-dvb-i-application bb15220",
  "releases": {
   "all": "DVB-I over 5G Systems"
  },
@@ -546,7 +546,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 4.1"
      },
      "repos": [
@@ -644,12 +644,12 @@
     },
     {
      "id": "app-770-4.3.4.3.2.4",
-     "name": "Schema based extensibility / Lifetime aspects",
+     "name": "Schema based extensibility / Lifetime aspects (draft A177r8 only)",
      "release": "all",
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.3.4.3.2.4"
      },
      "repos": [
@@ -667,10 +667,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.3.2.4"
+       "locator": "clause 4.3.4.3.2.4",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "app-770-4.6.1.1",
@@ -854,7 +857,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.1.2"
      },
      "repos": [
@@ -922,7 +925,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.1.3.1"
      },
      "repos": [
@@ -1085,7 +1088,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.1.6"
      },
      "repos": [
@@ -1108,7 +1111,7 @@
       {
        "case": "Persistent storage for linked applications",
        "verdict": "implemented",
-       "what": "A linked application is opened as an ordinary web page in a separate browser tab, so it uses the browser's own persistent storage with no restriction from the client.",
+       "what": "A linked application is opened as an ordinary web page in a separate browser tab, so it uses the browser's own persistent storage with no restriction from the client. Draft r8 only: persistent storage for linked applications. V1.2.1 clause 5.1.6 has no such requirement.",
        "repo": "rt-dvb-i-application",
        "releases": [
         "17",
@@ -1116,7 +1119,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.6"
+       "locator": "clause 5.1.6",
+       "draftOnly": true
       }
      ],
      "noted": [
@@ -1130,7 +1134,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.1.7"
      },
      "repos": [
@@ -1140,7 +1144,7 @@
       {
        "case": "Check for an update at least every 24 hours",
        "verdict": "implemented",
-       "what": "While the page is open the client checks the loaded list every 30 seconds (longer after errors) and reloads it at 03:00 local time every day.",
+       "what": "While the page is open the client checks the loaded list every 30 seconds (longer after errors) and reloads it at 03:00 local time every day. V1.2.1 clause 5.1.7 says a client should check once every 24 hours; the draft r8 makes it a shall.",
        "repo": "rt-dvb-i-application",
        "releases": [
         "17",
@@ -1153,7 +1157,7 @@
       {
        "case": "Conditional requests, direct requests",
        "verdict": "implemented",
-       "what": "For a list on the same origin the client sends If-Modified-Since from the stored Last-Modified value on every reload and poll, and keeps its state on a 304.",
+       "what": "For a list on the same origin the client sends If-Modified-Since from the stored Last-Modified value on every reload and poll, and keeps its state on a 304. Draft r8 only: the rule that updates are conditional requests (If-None-Match or If-Modified-Since). V1.2.1 states the If-Modified-Since rule in clause 4.3.2.2, judged in its own entry.",
        "repo": "rt-dvb-i-application",
        "releases": [
         "17",
@@ -1161,12 +1165,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.7"
+       "locator": "clause 5.1.7",
+       "draftOnly": true
       },
       {
        "case": "Conditional requests, via the bundled proxy",
        "verdict": "differs",
-       "what": "For a list on another origin the request goes through the bundled proxy, which does not pass If-Modified-Since to the list server and does not return Last-Modified, so no conditional request reaches the server and the client never stores a validator.",
+       "what": "For a list on another origin the request goes through the bundled proxy, which does not pass If-Modified-Since to the list server and does not return Last-Modified, so no conditional request reaches the server and the client never stores a validator. Draft r8 only: the rule that updates are conditional requests (If-None-Match or If-Modified-Since). V1.2.1 states the If-Modified-Since rule in clause 4.3.2.2, judged in its own entry.",
        "repo": "rt-dvb-i-application",
        "releases": [
         "17",
@@ -1174,12 +1179,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.7"
+       "locator": "clause 5.1.7",
+       "draftOnly": true
       },
       {
        "case": "Cache the list response within 1 to 24 hours",
        "verdict": "differs",
-       "what": "The client keeps no cache of its own and applies no minimum (one hour) or maximum age; it re-requests every 30 seconds and leaves caching to the browser.",
+       "what": "The client keeps no cache of its own and applies no minimum (one hour) or maximum age; it re-requests every 30 seconds and leaves caching to the browser. Draft r8 only: the cache limits of one to 24 hours. V1.2.1 has only the max-age rule of clause 4.3.2.1, judged in its own entry.",
        "repo": "rt-dvb-i-application",
        "releases": [
         "17",
@@ -1187,12 +1193,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.7"
+       "locator": "clause 5.1.7",
+       "draftOnly": true
       },
       {
-       "case": "Spread requests randomly over 15 minutes or one hour",
+       "case": "Randomise the time of updates performed around a predetermined timeframe",
        "verdict": "differs",
-       "what": "Requests are not randomly distributed: the daily refresh is at a fixed 03:00 local time and the polling interval is a fixed 30 seconds.",
+       "what": "The daily refresh runs at a fixed 03:00 local time with no random offset, which is an update around a predetermined timeframe that V1.2.1 says a client should randomise; the 30 second poll is not such a timeframe. The draft r8 asks for requests spread over 15 minutes or one hour.",
        "repo": "rt-dvb-i-application",
        "releases": [
         "17",
@@ -1205,7 +1212,7 @@
       {
        "case": "No checks more often than allowed",
        "verdict": "differs",
-       "what": "The client polls the list every 30 seconds while it is open, far more often than once per hour, and also requests it at every page start.",
+       "what": "The client polls the list every 30 seconds while it is open, far more often than once per hour, and also requests it at every page start. Draft r8 only: the limit on how often a client may check. V1.2.1 clause 5.1.7 has no such limit.",
        "repo": "rt-dvb-i-application",
        "releases": [
         "17",
@@ -1213,12 +1220,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.7"
+       "locator": "clause 5.1.7",
+       "draftOnly": true
       },
       {
        "case": "Immediate check after 7 days unused",
        "verdict": "absent",
-       "what": "The client does not track how long it has been unused, so it makes no check on that basis.",
+       "what": "The client does not track how long it has been unused, so it makes no check on that basis. Draft r8 only: the immediate check after more than 7 days without use. V1.2.1 clause 5.1.7 has no such exception.",
        "repo": "rt-dvb-i-application",
        "releases": [
         "17",
@@ -1226,7 +1234,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.7"
+       "locator": "clause 5.1.7",
+       "draftOnly": true
       },
       {
        "case": "Hybrid client updates after broadcast signal change",
@@ -1244,7 +1253,7 @@
       {
        "case": "Check on explicit user action",
        "verdict": "implemented",
-       "what": "Loading a list by the user (Load button, registry choice, Enter in the URL field) fetches it at once, without waiting for any timer.",
+       "what": "Loading a list by the user (Load button, registry choice, Enter in the URL field) fetches it at once, without waiting for any timer. Draft r8 only: the exception for a check triggered by a user action. V1.2.1 clause 5.1.7 has no such list of exceptions.",
        "repo": "rt-dvb-i-application",
        "releases": [
         "17",
@@ -1252,7 +1261,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.7"
+       "locator": "clause 5.1.7",
+       "draftOnly": true
       }
      ],
      "noted": []
@@ -1264,7 +1274,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.3.1"
      },
      "repos": [
@@ -1287,7 +1297,7 @@
       {
        "case": "Act solely on the broadcast AIT for broadcast instances",
        "verdict": "absent",
-       "what": "The client does not receive broadcast and has no AIT handling, so the condition (broadcast service instances played) is not met; such services are only listed as broadcast-only.",
+       "what": "The client does not receive broadcast and has no AIT handling, so the condition (broadcast service instances played) is not met; such services are only listed as broadcast-only. Draft r8 only: NOTE 5 of clause 5.2.3.1 (table 7a). V1.2.1 clause 5.2.3.3 states the same rule in its own text, judged in its own entry.",
        "repo": "rt-dvb-i-application",
        "releases": [
         "17",
@@ -1295,7 +1305,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.1"
+       "locator": "clause 5.2.3.1",
+       "draftOnly": true
       }
      ],
      "noted": []
@@ -1307,8 +1318,8 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
-      "locator": "clause 5.2.3.2.1"
+      "version": "V1.2.1",
+      "locator": "clause 5.2.3.2"
      },
      "repos": [
       "rt-dvb-i-application"
@@ -1495,7 +1506,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.3.3"
      },
      "repos": [
@@ -1795,7 +1806,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.4.1"
      },
      "repos": [
@@ -1838,7 +1849,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.4.2"
      },
      "repos": [
@@ -1907,7 +1918,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.5.3"
      },
      "repos": [
@@ -1937,7 +1948,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.8.2.1"
      },
      "repos": [
@@ -1948,6 +1959,32 @@
        "case": "Append image_variant to requests",
        "verdict": "absent",
        "what": "The client never asks for an image variant.",
+       "repo": "rt-dvb-i-application",
+       "releases": [
+        "17",
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 5.2.8.2.1"
+      },
+      {
+       "case": "Check that the response has a HowRelated term matching the requested image variant",
+       "verdict": "absent",
+       "what": "The client never requests an image variant, so there is no response to check. V1.2.1 clause 5.2.8.2.1 requires the check; the draft r8 removes the rule.",
+       "repo": "rt-dvb-i-application",
+       "releases": [
+        "17",
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 5.2.8.2.1"
+      },
+      {
+       "case": "Ignore RelatedMaterial elements with an unexpected or unrecognised HowRelated term",
+       "verdict": "implemented",
+       "what": "The client takes images and linked applications only from RelatedMaterial elements whose HowRelated term it knows (for example 1001.2 for service logos); any other element is not used. V1.2.1 clause 5.2.8.2.1 requires this; the draft r8 removes the rule.",
        "repo": "rt-dvb-i-application",
        "releases": [
         "17",
@@ -2027,7 +2064,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.13"
      },
      "repos": [
@@ -2102,7 +2139,7 @@
       {
        "case": "Discard instances that cannot be downloaded without broadband",
        "verdict": "absent",
-       "what": "The client does not run an application controlling media presentation or any linked application engine: linked applications only open in a separate browser tab. Instances that fail to load are skipped through the error fallback, but no instance is discarded in advance.",
+       "what": "The client does not run an application controlling media presentation or any linked application engine: linked applications only open in a separate browser tab. Instances that fail to load are skipped through the error fallback, but no instance is discarded in advance. Draft r8 only: discarding instances that cannot be downloaded when there is no working broadband connection. V1.2.1 clause 5.2.13 has no such rule.",
        "repo": "rt-dvb-i-application",
        "releases": [
         "17",
@@ -2110,12 +2147,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.13"
+       "locator": "clause 5.2.13",
+       "draftOnly": true
       },
       {
        "case": "Restart a linked application after an irrecoverable error",
        "verdict": "absent",
-       "what": "The client does not run an application controlling media presentation or any linked application engine: linked applications only open in a separate browser tab.",
+       "what": "The client does not run an application controlling media presentation or any linked application engine: linked applications only open in a separate browser tab. Draft r8 only: the rules for a linked application that is restarted, terminated by the user or the client, changed by new signalling or that triggers a change of service. V1.2.1 clause 5.2.13 has only the rule for an application controlling media presentation that exits.",
        "repo": "rt-dvb-i-application",
        "releases": [
         "17",
@@ -2123,12 +2161,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.13"
+       "locator": "clause 5.2.13",
+       "draftOnly": true
       },
       {
        "case": "User terminating an application treated as exit",
        "verdict": "absent",
-       "what": "The client does not run an application controlling media presentation or any linked application engine: linked applications only open in a separate browser tab.",
+       "what": "The client does not run an application controlling media presentation or any linked application engine: linked applications only open in a separate browser tab. Draft r8 only: the rules for a linked application that is restarted, terminated by the user or the client, changed by new signalling or that triggers a change of service. V1.2.1 clause 5.2.13 has only the rule for an application controlling media presentation that exits.",
        "repo": "rt-dvb-i-application",
        "releases": [
         "17",
@@ -2136,12 +2175,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.13"
+       "locator": "clause 5.2.13",
+       "draftOnly": true
       },
       {
        "case": "Follow changed application signalling",
        "verdict": "absent",
-       "what": "The client does not run an application controlling media presentation or any linked application engine: linked applications only open in a separate browser tab.",
+       "what": "The client does not run an application controlling media presentation or any linked application engine: linked applications only open in a separate browser tab. Draft r8 only: the rules for a linked application that is restarted, terminated by the user or the client, changed by new signalling or that triggers a change of service. V1.2.1 clause 5.2.13 has only the rule for an application controlling media presentation that exits.",
        "repo": "rt-dvb-i-application",
        "releases": [
         "17",
@@ -2149,12 +2189,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.13"
+       "locator": "clause 5.2.13",
+       "draftOnly": true
       },
       {
        "case": "Follow signalling after application changes service",
        "verdict": "absent",
-       "what": "The client does not run an application controlling media presentation or any linked application engine: linked applications only open in a separate browser tab.",
+       "what": "The client does not run an application controlling media presentation or any linked application engine: linked applications only open in a separate browser tab. Draft r8 only: the rules for a linked application that is restarted, terminated by the user or the client, changed by new signalling or that triggers a change of service. V1.2.1 clause 5.2.13 has only the rule for an application controlling media presentation that exits.",
        "repo": "rt-dvb-i-application",
        "releases": [
         "17",
@@ -2162,12 +2203,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.13"
+       "locator": "clause 5.2.13",
+       "draftOnly": true
       },
       {
        "case": "Inform the user when all instances are discarded",
        "verdict": "implemented",
-       "what": "When no instance of the selected service can be played the client shows an error on the player (a DRM message if any instance is protected, otherwise the count of unavailable streams).",
+       "what": "When no instance of the selected service can be played the client shows an error on the player (a DRM message if any instance is protected, otherwise the count of unavailable streams). Draft r8 only: informing the user when service instances are discarded. V1.2.1 clause 5.2.13 has no such rule.",
        "repo": "rt-dvb-i-application",
        "releases": [
         "17",
@@ -2175,12 +2217,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.13"
+       "locator": "clause 5.2.13",
+       "draftOnly": true
       },
       {
        "case": "Error when the only instance is discarded",
        "verdict": "implemented",
-       "what": "With a single instance that fails, the client shows the error 'All 1 stream unavailable' (or the DRM message).",
+       "what": "With a single instance that fails, the client shows the error 'All 1 stream unavailable' (or the DRM message). Draft r8 only: informing the user when service instances are discarded. V1.2.1 clause 5.2.13 has no such rule.",
        "repo": "rt-dvb-i-application",
        "releases": [
         "17",
@@ -2188,12 +2231,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.13"
+       "locator": "clause 5.2.13",
+       "draftOnly": true
       },
       {
        "case": "Choose one of several discarded instances and show an error",
        "verdict": "implemented",
-       "what": "With several failed instances the client shows one error for the whole service (the DRM message if any instance is protected, otherwise the count of unavailable streams), which is an implementation-specific choice of message.",
+       "what": "With several failed instances the client shows one error for the whole service (the DRM message if any instance is protected, otherwise the count of unavailable streams), which is an implementation-specific choice of message. Draft r8 only: informing the user when service instances are discarded. V1.2.1 clause 5.2.13 has no such rule.",
        "repo": "rt-dvb-i-application",
        "releases": [
         "17",
@@ -2201,7 +2245,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.13"
+       "locator": "clause 5.2.13",
+       "draftOnly": true
       },
       {
        "case": "User override of precedence rules",
@@ -2266,12 +2311,12 @@
     },
     {
      "id": "app-770-5.3.6.7",
-     "name": "DeliveryType / DVBSDeliveryType",
+     "name": "DeliveryType / DVBSDeliveryType (draft A177r8 only)",
      "release": "all",
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 5.3.6.7"
      },
      "repos": [
@@ -2289,10 +2334,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.3.6.7"
+       "locator": "clause 5.3.6.7",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: the @directTuningAvailable attribute of clause 5.3.6.7 is new in the draft A177r8 (V1.2.1 defines DVBSDeliveryType without it), so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "app-770-5.5.1",
@@ -2301,7 +2349,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.1"
      },
      "repos": [
@@ -2311,7 +2359,21 @@
       {
        "case": "Test-service mode not easily accessible",
        "verdict": "absent",
-       "what": "The client has no mode in which test services are treated as regular services, so the condition is not met.",
+       "what": "The client has no mode in which test services are treated as regular services, so the condition is not met. Draft r8 only: the paragraph that test services shall not be started or listed under normal conditions and that a receiver mode treating them as regular services should not be easily accessible. V1.2.1 says only that test services should not generally be selectable unless a capability is enabled.",
+       "repo": "rt-dvb-i-application",
+       "releases": [
+        "17",
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 5.5.1",
+       "draftOnly": true
+      },
+      {
+       "case": "Test services are not selectable unless a capability is enabled",
+       "verdict": "implemented",
+       "what": "The client reads only Service elements of the service list; TestService elements are not read, so test services are neither listed nor selectable and the client has no capability that enables them.",
        "repo": "rt-dvb-i-application",
        "releases": [
         "17",
@@ -2331,7 +2393,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.4"
      },
      "repos": [
@@ -2391,7 +2453,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.12"
      },
      "repos": [
@@ -2421,7 +2483,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.18.7"
      },
      "repos": [
@@ -2451,7 +2513,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.29"
      },
      "repos": [
@@ -2801,7 +2863,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 8.5.3.2"
      },
      "repos": [
@@ -7947,7 +8009,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 4.1"
      },
      "repos": [
@@ -8032,12 +8094,12 @@
     },
     {
      "id": "exo-770-4.3.4.3.2.4",
-     "name": "Schema based extensibility / Lifetime aspects",
+     "name": "Schema based extensibility / Lifetime aspects (draft A177r8 only)",
      "release": "all",
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.3.4.3.2.4"
      },
      "repos": [
@@ -8055,10 +8117,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.3.2.4"
+       "locator": "clause 4.3.4.3.2.4",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "exo-770-4.6.1.1",
@@ -8242,7 +8307,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.1.2"
      },
      "repos": [
@@ -8312,7 +8377,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.1.3.1"
      },
      "repos": [
@@ -8475,7 +8540,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.1.6"
      },
      "repos": [
@@ -8498,7 +8563,7 @@
       {
        "case": "Persistent storage for linked applications",
        "verdict": "absent",
-       "what": "The client does not support linked applications, so the condition is not met.",
+       "what": "The client does not support linked applications, so the condition is not met. Draft r8 only: persistent storage for linked applications. V1.2.1 clause 5.1.6 has no such requirement.",
        "repo": "rt-5gms-application",
        "releases": [
         "17",
@@ -8506,7 +8571,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.6"
+       "locator": "clause 5.1.6",
+       "draftOnly": true
       }
      ],
      "noted": [
@@ -8520,7 +8586,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.1.7"
      },
      "repos": [
@@ -8530,7 +8596,7 @@
       {
        "case": "Update check at least every 24 hours",
        "verdict": "absent",
-       "what": "The client never checks a Service List for updates: its one download runs only when the activity is created.",
+       "what": "The client never checks a Service List for updates: its one download runs only when the activity is created. V1.2.1 clause 5.1.7 says a client should check once every 24 hours; the draft r8 makes it a shall.",
        "repo": "rt-5gms-application",
        "releases": [
         "17",
@@ -8543,7 +8609,7 @@
       {
        "case": "Conditional requests with If-None-Match or If-Modified-Since",
        "verdict": "absent",
-       "what": "The download sends no conditional request headers.",
+       "what": "The download sends no conditional request headers. Draft r8 only: the rule that updates are conditional requests (If-None-Match or If-Modified-Since). V1.2.1 states the If-Modified-Since rule in clause 4.3.2.2, judged in its own entry.",
        "repo": "rt-5gms-application",
        "releases": [
         "17",
@@ -8551,12 +8617,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.7"
+       "locator": "clause 5.1.7",
+       "draftOnly": true
       },
       {
        "case": "Caching of the Service List response",
        "verdict": "absent",
-       "what": "The file is overwritten in the cache directory on each download; no caching directive is read and no minimum or maximum age applied.",
+       "what": "The file is overwritten in the cache directory on each download; no caching directive is read and no minimum or maximum age applied. Draft r8 only: the cache limits of one to 24 hours. V1.2.1 has only the max-age rule of clause 4.3.2.1, judged in its own entry.",
        "repo": "rt-5gms-application",
        "releases": [
         "17",
@@ -8564,12 +8631,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.7"
+       "locator": "clause 5.1.7",
+       "draftOnly": true
       },
       {
-       "case": "Random distribution of update requests",
+       "case": "Randomise the time of updates performed around a predetermined timeframe",
        "verdict": "absent",
-       "what": "The client schedules no update requests, so nothing is distributed.",
+       "what": "The client schedules no update requests, so there is no predetermined timeframe to randomise. The draft r8 asks for requests spread over 15 minutes or one hour.",
        "repo": "rt-5gms-application",
        "releases": [
         "17",
@@ -8582,7 +8650,7 @@
       {
        "case": "• A DVB-I client shall not check more frequently than this except that whilst the ...",
        "verdict": "absent",
-       "what": "The patch has no timed update check of a service list; it only downloads one fixed file into the app cache when the web view activity is created.",
+       "what": "The patch has no timed update check of a service list; it only downloads one fixed file into the app cache when the web view activity is created. Draft r8 only: the limit on how often a client may check. V1.2.1 clause 5.1.7 has no such limit.",
        "repo": "rt-5gms-application",
        "releases": [
         "17",
@@ -8590,12 +8658,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.7"
+       "locator": "clause 5.1.7",
+       "draftOnly": true
       },
       {
        "case": "- requests may be made immediately if the DVB-I client has not been used for more than ...",
        "verdict": "absent",
-       "what": "The player has no update check of a service list and no record of when it was last used.",
+       "what": "The player has no update check of a service list and no record of when it was last used. Draft r8 only: the immediate check after more than 7 days without use. V1.2.1 clause 5.1.7 has no such exception.",
        "repo": "rt-5gms-application",
        "releases": [
         "17",
@@ -8603,7 +8672,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.7"
+       "locator": "clause 5.1.7",
+       "draftOnly": true
       },
       {
        "case": "- a hybrid DVB-I client should request an update of an installed Service List ...",
@@ -8621,7 +8691,7 @@
       {
        "case": "- if explicitly triggered by a user action.",
        "verdict": "absent",
-       "what": "The patch has no user-triggered service list update check; the web view only loads the external front end.",
+       "what": "The patch has no user-triggered service list update check; the web view only loads the external front end. Draft r8 only: the exception for a check triggered by a user action. V1.2.1 clause 5.1.7 has no such list of exceptions.",
        "repo": "rt-5gms-application",
        "releases": [
         "17",
@@ -8629,7 +8699,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.7"
+       "locator": "clause 5.1.7",
+       "draftOnly": true
       }
      ],
      "noted": [
@@ -8645,7 +8716,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.3.1"
      },
      "repos": [
@@ -8668,7 +8739,7 @@
       {
        "case": "NOTE 5: As defined in clause 5.2.3.3, application signalling in the DVB-I service list ...",
        "verdict": "absent",
-       "what": "The player receives no broadcast service instances and acts on no broadcast AIT.",
+       "what": "The player receives no broadcast service instances and acts on no broadcast AIT. Draft r8 only: NOTE 5 of clause 5.2.3.1 (table 7a). V1.2.1 clause 5.2.3.3 states the same rule in its own text, judged in its own entry.",
        "repo": "rt-5gms-application",
        "releases": [
         "17",
@@ -8676,7 +8747,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.1"
+       "locator": "clause 5.2.3.1",
+       "draftOnly": true
       }
      ],
      "noted": []
@@ -8688,8 +8760,8 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
-      "locator": "clause 5.2.3.2.1"
+      "version": "V1.2.1",
+      "locator": "clause 5.2.3.2"
      },
      "repos": [
       "rt-5gms-application"
@@ -8876,7 +8948,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.3.3"
      },
      "repos": [
@@ -9176,7 +9248,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.4.1"
      },
      "repos": [
@@ -9206,7 +9278,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.4.2"
      },
      "repos": [
@@ -9275,7 +9347,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.5.3"
      },
      "repos": [
@@ -9305,7 +9377,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.8.2.1"
      },
      "repos": [
@@ -9316,6 +9388,32 @@
        "case": "The DVB-I client may append an optional image_variant query parameter to request",
        "verdict": "absent",
        "what": "The player requests no images and appends no image_variant parameter.",
+       "repo": "rt-5gms-application",
+       "releases": [
+        "17",
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 5.2.8.2.1"
+      },
+      {
+       "case": "Check that the response has a HowRelated term matching the requested image variant",
+       "verdict": "absent",
+       "what": "The player requests no images and no image variant. V1.2.1 clause 5.2.8.2.1 requires the check; the draft r8 removes the rule.",
+       "repo": "rt-5gms-application",
+       "releases": [
+        "17",
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 5.2.8.2.1"
+      },
+      {
+       "case": "Ignore RelatedMaterial elements with an unexpected or unrecognised HowRelated term",
+       "verdict": "absent",
+       "what": "The player reads no RelatedMaterial elements; any such logic is in the external front end, not in this checkout. V1.2.1 clause 5.2.8.2.1 requires this; the draft r8 removes the rule.",
        "repo": "rt-5gms-application",
        "releases": [
         "17",
@@ -9395,7 +9493,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.13"
      },
      "repos": [
@@ -9444,7 +9542,7 @@
       {
        "case": "- If the DVB-I client does not have a working broadband IP connection, service ...",
        "verdict": "absent",
-       "what": "The patch discards no service instances in advance; the player plays the URL it is given.",
+       "what": "The patch discards no service instances in advance; the player plays the URL it is given. Draft r8 only: discarding instances that cannot be downloaded when there is no working broadband connection. V1.2.1 clause 5.2.13 has no such rule.",
        "repo": "rt-5gms-application",
        "releases": [
         "17",
@@ -9452,12 +9550,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.13"
+       "locator": "clause 5.2.13",
+       "draftOnly": true
       },
       {
        "case": "- If the DVB-I client / linked application manager terminates the linked application ...",
        "verdict": "absent",
-       "what": "The player runs no linked application.",
+       "what": "The player runs no linked application. Draft r8 only: the rules for a linked application that is restarted, terminated by the user or the client, changed by new signalling or that triggers a change of service. V1.2.1 clause 5.2.13 has only the rule for an application controlling media presentation that exits.",
        "repo": "rt-5gms-application",
        "releases": [
         "17",
@@ -9465,12 +9564,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.13"
+       "locator": "clause 5.2.13",
+       "draftOnly": true
       },
       {
        "case": "- If the DVB-I client includes a mechanism for the user to terminate an application ...",
        "verdict": "absent",
-       "what": "The player runs no linked application.",
+       "what": "The player runs no linked application. Draft r8 only: the rules for a linked application that is restarted, terminated by the user or the client, changed by new signalling or that triggers a change of service. V1.2.1 clause 5.2.13 has only the rule for an application controlling media presentation that exits.",
        "repo": "rt-5gms-application",
        "releases": [
         "17",
@@ -9478,12 +9578,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.13"
+       "locator": "clause 5.2.13",
+       "draftOnly": true
       },
       {
        "case": "- If the application signalling changes and a running linked application is no longer ...",
        "verdict": "absent",
-       "what": "The player runs no linked application.",
+       "what": "The player runs no linked application. Draft r8 only: the rules for a linked application that is restarted, terminated by the user or the client, changed by new signalling or that triggers a change of service. V1.2.1 clause 5.2.13 has only the rule for an application controlling media presentation that exits.",
        "repo": "rt-5gms-application",
        "releases": [
         "17",
@@ -9491,12 +9592,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.13"
+       "locator": "clause 5.2.13",
+       "draftOnly": true
       },
       {
        "case": "- If a running linked application triggers a change of service or of the service ...",
        "verdict": "absent",
-       "what": "The player runs no linked application.",
+       "what": "The player runs no linked application. Draft r8 only: the rules for a linked application that is restarted, terminated by the user or the client, changed by new signalling or that triggers a change of service. V1.2.1 clause 5.2.13 has only the rule for an application controlling media presentation that exits.",
        "repo": "rt-5gms-application",
        "releases": [
         "17",
@@ -9504,12 +9606,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.13"
+       "locator": "clause 5.2.13",
+       "draftOnly": true
       },
       {
        "case": "If all service instances are discarded then the DVB-I client shall inform the user.",
        "verdict": "absent",
-       "what": "The patch implements no service instance precedence, so it discards no instances and shows no such message.",
+       "what": "The patch implements no service instance precedence, so it discards no instances and shows no such message. Draft r8 only: informing the user when service instances are discarded. V1.2.1 clause 5.2.13 has no such rule.",
        "repo": "rt-5gms-application",
        "releases": [
         "17",
@@ -9517,12 +9620,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.13"
+       "locator": "clause 5.2.13",
+       "draftOnly": true
       },
       {
        "case": "If there is only one discarded service instance then the DVB-I client shall show an ...",
        "verdict": "absent",
-       "what": "The patch implements no service instance precedence, so it discards no instances.",
+       "what": "The patch implements no service instance precedence, so it discards no instances. Draft r8 only: informing the user when service instances are discarded. V1.2.1 clause 5.2.13 has no such rule.",
        "repo": "rt-5gms-application",
        "releases": [
         "17",
@@ -9530,12 +9634,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.13"
+       "locator": "clause 5.2.13",
+       "draftOnly": true
       },
       {
        "case": "If there are multiple discarded service instances then the DVB-I client shall make an ...",
        "verdict": "absent",
-       "what": "The patch implements no service instance precedence, so it discards no instances.",
+       "what": "The patch implements no service instance precedence, so it discards no instances. Draft r8 only: informing the user when service instances are discarded. V1.2.1 clause 5.2.13 has no such rule.",
        "repo": "rt-5gms-application",
        "releases": [
         "17",
@@ -9543,7 +9648,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.13"
+       "locator": "clause 5.2.13",
+       "draftOnly": true
       },
       {
        "case": "A DVB-I client may permit users to over-ride these default precedence rules.",
@@ -9605,12 +9711,12 @@
     },
     {
      "id": "exo-770-5.3.6.7",
-     "name": "DeliveryType / DVBSDeliveryType",
+     "name": "DeliveryType / DVBSDeliveryType (draft A177r8 only)",
      "release": "all",
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 5.3.6.7"
      },
      "repos": [
@@ -9628,10 +9734,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.3.6.7"
+       "locator": "clause 5.3.6.7",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: the @directTuningAvailable attribute of clause 5.3.6.7 is new in the draft A177r8 (V1.2.1 defines DVBSDeliveryType without it), so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "exo-770-5.5.1",
@@ -9640,7 +9749,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.1"
      },
      "repos": [
@@ -9650,7 +9759,21 @@
       {
        "case": "Any method by which a receiver is put into a mode where test services are treated as ...",
        "verdict": "absent",
-       "what": "The player has no mode in which test services are treated as regular services.",
+       "what": "The player has no mode in which test services are treated as regular services. Draft r8 only: the paragraph that test services shall not be started or listed under normal conditions and that a receiver mode treating them as regular services should not be easily accessible. V1.2.1 says only that test services should not generally be selectable unless a capability is enabled.",
+       "repo": "rt-5gms-application",
+       "releases": [
+        "17",
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 5.5.1",
+       "draftOnly": true
+      },
+      {
+       "case": "Test services are not selectable unless a capability is enabled",
+       "verdict": "absent",
+       "what": "The player reads no service list; any such logic is in the external front end, not in this checkout.",
        "repo": "rt-5gms-application",
        "releases": [
         "17",
@@ -9670,7 +9793,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.4"
      },
      "repos": [
@@ -9730,7 +9853,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.12"
      },
      "repos": [
@@ -9760,7 +9883,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.18.7"
      },
      "repos": [
@@ -9790,7 +9913,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.29"
      },
      "repos": [
@@ -10140,7 +10263,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 8.5.3.2"
      },
      "repos": [
@@ -10358,7 +10481,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 4.1"
      },
      "repos": [
@@ -10455,12 +10578,12 @@
     },
     {
      "id": "android-770-4.3.4.3.2.4",
-     "name": "Schema based extensibility / Lifetime aspects",
+     "name": "Schema based extensibility / Lifetime aspects (draft A177r8 only)",
      "release": "all",
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 4.3.4.3.2.4"
      },
      "repos": [
@@ -10478,10 +10601,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.3.4.3.2.4"
+       "locator": "clause 4.3.4.3.2.4",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: this clause is new in the draft A177r8, so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "android-770-4.6.1.1",
@@ -10664,7 +10790,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.1.2"
      },
      "repos": [
@@ -10734,7 +10860,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.1.3.1"
      },
      "repos": [
@@ -10896,7 +11022,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.1.6"
      },
      "repos": [
@@ -10918,7 +11044,7 @@
       {
        "case": "A DVB-I client that supports linked applications shall support persistent storage of ...",
        "verdict": "absent",
-       "what": "The client supports no linked applications, so the condition for storage is not met.",
+       "what": "The client supports no linked applications, so the condition for storage is not met. Draft r8 only: persistent storage for linked applications. V1.2.1 clause 5.1.6 has no such requirement.",
        "repo": "rt-dvb-i-android-application",
        "releases": [
         "17",
@@ -10926,7 +11052,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.6"
+       "locator": "clause 5.1.6",
+       "draftOnly": true
       }
      ],
      "noted": []
@@ -10938,7 +11065,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.1.7"
      },
      "repos": [
@@ -10948,7 +11075,7 @@
       {
        "case": "A DVB-I client shall regularly check for an update of an installed Service List at ...",
        "verdict": "differs",
-       "what": "The service list is checked when the channel list screen is shown or on Reload; nothing runs in the background, so no check is made once every 24 hours unless the user opens the screen.",
+       "what": "The service list is checked when the channel list screen is shown or on Reload; nothing runs in the background, so no check is made once every 24 hours unless the user opens the screen. V1.2.1 clause 5.1.7 says a client should check once every 24 hours; the draft r8 makes it a shall.",
        "repo": "rt-dvb-i-android-application",
        "releases": [
         "17",
@@ -10961,7 +11088,7 @@
       {
        "case": "When checking for updates, clients shall make conditional requests using If-None-Match ...",
        "verdict": "implemented",
-       "what": "A request for a document held in memory carries If-Modified-Since from its Last-Modified and If-None-Match from its ETag, and a 304 keeps the held copy.",
+       "what": "A request for a document held in memory carries If-Modified-Since from its Last-Modified and If-None-Match from its ETag, and a 304 keeps the held copy. Draft r8 only: the rule that updates are conditional requests (If-None-Match or If-Modified-Since). V1.2.1 states the If-Modified-Since rule in clause 4.3.2.2, judged in its own entry.",
        "repo": "rt-dvb-i-android-application",
        "releases": [
         "17",
@@ -10969,12 +11096,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.7"
+       "locator": "clause 5.1.7",
+       "draftOnly": true
       },
       {
        "case": "• A DVB-I client shall cache the service list HTTP response and shall honour caching ...",
        "verdict": "differs",
-       "what": "The response is cached in memory and its max-age is honoured, but the age is not limited to the range of one hour to 24 hours: a longer max-age is kept, and a response without max-age is not kept fresh at all.",
+       "what": "The response is cached in memory and its max-age is honoured, but the age is not limited to the range of one hour to 24 hours: a longer max-age is kept, and a response without max-age is not kept fresh at all. Draft r8 only: the cache limits of one to 24 hours. V1.2.1 has only the max-age rule of clause 4.3.2.1, judged in its own entry.",
        "repo": "rt-dvb-i-android-application",
        "releases": [
         "17",
@@ -10982,12 +11110,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.7"
+       "locator": "clause 5.1.7",
+       "draftOnly": true
       },
       {
-       "case": "• The timing of requests shall be randomly distributed over a period of at least 15 ...",
+       "case": "Randomise the time of updates performed around a predetermined timeframe",
        "verdict": "absent",
-       "what": "The client does not spread update requests over a random period; its random value is used only for the retry back-off.",
+       "what": "The client runs no update at a predetermined time, so the condition is not met; its random value is used only for the retry back-off. The draft r8 asks for requests spread over 15 minutes or one hour.",
        "repo": "rt-dvb-i-android-application",
        "releases": [
         "17",
@@ -11000,7 +11129,7 @@
       {
        "case": "• A DVB-I client shall not check more frequently than this except that whilst the ...",
        "verdict": "differs",
-       "what": "The channel list screen requests the installed service list each time it is shown and on Reload, limited only by the response max-age, with no one-hour floor, so checks can be more frequent than once per hour.",
+       "what": "The channel list screen requests the installed service list each time it is shown and on Reload, limited only by the response max-age, with no one-hour floor, so checks can be more frequent than once per hour. Draft r8 only: the limit on how often a client may check. V1.2.1 clause 5.1.7 has no such limit.",
        "repo": "rt-dvb-i-android-application",
        "releases": [
         "17",
@@ -11008,12 +11137,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.7"
+       "locator": "clause 5.1.7",
+       "draftOnly": true
       },
       {
        "case": "- requests may be made immediately if the DVB-I client has not been used for more than ...",
        "verdict": "absent",
-       "what": "The client keeps no record of when it was last used, so it has no special immediate check after 7 days of non-use.",
+       "what": "The client keeps no record of when it was last used, so it has no special immediate check after 7 days of non-use. Draft r8 only: the immediate check after more than 7 days without use. V1.2.1 clause 5.1.7 has no such exception.",
        "repo": "rt-dvb-i-android-application",
        "releases": [
         "17",
@@ -11021,7 +11151,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.7"
+       "locator": "clause 5.1.7",
+       "draftOnly": true
       },
       {
        "case": "- a hybrid DVB-I client should request an update of an installed Service List ...",
@@ -11039,7 +11170,7 @@
       {
        "case": "- if explicitly triggered by a user action.",
        "verdict": "implemented",
-       "what": "The Reload menu action runs the service list check at once as a conditional request; it is answered from the local copy only while the held response is still fresh by its max-age.",
+       "what": "The Reload menu action runs the service list check at once as a conditional request; it is answered from the local copy only while the held response is still fresh by its max-age. Draft r8 only: the exception for a check triggered by a user action. V1.2.1 clause 5.1.7 has no such list of exceptions.",
        "repo": "rt-dvb-i-android-application",
        "releases": [
         "17",
@@ -11047,7 +11178,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.1.7"
+       "locator": "clause 5.1.7",
+       "draftOnly": true
       }
      ],
      "noted": [
@@ -11061,7 +11193,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.3.1"
      },
      "repos": [
@@ -11084,7 +11216,7 @@
       {
        "case": "NOTE 5: As defined in clause 5.2.3.3, application signalling in the DVB-I service list ...",
        "verdict": "absent",
-       "what": "The client receives no broadcast service instances and acts on no broadcast AIT; instances with DVB-T, DVB-S or DVB-C delivery parameters are discarded.",
+       "what": "The client receives no broadcast service instances and acts on no broadcast AIT; instances with DVB-T, DVB-S or DVB-C delivery parameters are discarded. Draft r8 only: NOTE 5 of clause 5.2.3.1 (table 7a). V1.2.1 clause 5.2.3.3 states the same rule in its own text, judged in its own entry.",
        "repo": "rt-dvb-i-android-application",
        "releases": [
         "17",
@@ -11092,7 +11224,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.3.1"
+       "locator": "clause 5.2.3.1",
+       "draftOnly": true
       }
      ],
      "noted": [
@@ -11106,13 +11239,11 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
-      "locator": "clause 5.2.3.2.1"
+      "version": "V1.2.1",
+      "locator": "clause 5.2.3.2"
      },
      "repos": [
-      "rt-dvb-i-application",
-      "rt-dvb-i-android-application",
-      "rt-5gms-application"
+      "rt-dvb-i-android-application"
      ],
      "cases": [
       {
@@ -11295,13 +11426,11 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.3.3"
      },
      "repos": [
-      "rt-dvb-i-application",
-      "rt-dvb-i-android-application",
-      "rt-5gms-application"
+      "rt-dvb-i-android-application"
      ],
      "cases": [
       {
@@ -11594,13 +11723,11 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.4.1"
      },
      "repos": [
-      "rt-dvb-i-application",
-      "rt-dvb-i-android-application",
-      "rt-5gms-application"
+      "rt-dvb-i-android-application"
      ],
      "cases": [
       {
@@ -11625,7 +11752,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.4.2"
      },
      "repos": [
@@ -11691,13 +11818,11 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.5.3"
      },
      "repos": [
-      "rt-dvb-i-application",
-      "rt-dvb-i-android-application",
-      "rt-5gms-application"
+      "rt-dvb-i-android-application"
      ],
      "cases": [
       {
@@ -11722,19 +11847,43 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.8.2.1"
      },
      "repos": [
-      "rt-dvb-i-application",
-      "rt-dvb-i-android-application",
-      "rt-5gms-application"
+      "rt-dvb-i-android-application"
      ],
      "cases": [
       {
        "case": "Append image_variant to requests",
        "verdict": "absent",
        "what": "The client never adds an image_variant parameter.",
+       "releases": [
+        "17",
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 5.2.8.2.1"
+      },
+      {
+       "case": "Check that the response has a HowRelated term matching the requested image variant",
+       "verdict": "absent",
+       "what": "The client never requests an image variant, so there is no response to check. V1.2.1 clause 5.2.8.2.1 requires the check; the draft r8 removes the rule.",
+       "repo": null,
+       "releases": [
+        "17",
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 5.2.8.2.1"
+      },
+      {
+       "case": "Ignore RelatedMaterial elements with an unexpected or unrecognised HowRelated term",
+       "verdict": "implemented",
+       "what": "The parsers take service logos, service list logos and programme stills only from RelatedMaterial elements whose HowRelated term is the one expected; any other element is not used. V1.2.1 clause 5.2.8.2.1 requires this; the draft r8 removes the rule.",
+       "repo": "rt-dvb-i-android-application",
        "releases": [
         "17",
         "18",
@@ -11814,7 +11963,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.2.13"
      },
      "repos": [
@@ -11875,7 +12024,7 @@
       {
        "case": "- If the DVB-I client does not have a working broadband IP connection, service ...",
        "verdict": "differs",
-       "what": "The client does not test for a working broadband connection; an instance whose resource cannot be fetched is set aside only after playback fails, and then the next instance is tried.",
+       "what": "The client does not test for a working broadband connection; an instance whose resource cannot be fetched is set aside only after playback fails, and then the next instance is tried. Draft r8 only: discarding instances that cannot be downloaded when there is no working broadband connection. V1.2.1 clause 5.2.13 has no such rule.",
        "repo": "rt-dvb-i-android-application",
        "releases": [
         "17",
@@ -11883,12 +12032,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.13"
+       "locator": "clause 5.2.13",
+       "draftOnly": true
       },
       {
        "case": "- If the DVB-I client / linked application manager terminates the linked application ...",
        "verdict": "absent",
-       "what": "No linked application runs on this client, so none can be terminated and restarted.",
+       "what": "No linked application runs on this client, so none can be terminated and restarted. Draft r8 only: the rules for a linked application that is restarted, terminated by the user or the client, changed by new signalling or that triggers a change of service. V1.2.1 clause 5.2.13 has only the rule for an application controlling media presentation that exits.",
        "repo": "rt-dvb-i-android-application",
        "releases": [
         "17",
@@ -11896,12 +12046,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.13"
+       "locator": "clause 5.2.13",
+       "draftOnly": true
       },
       {
        "case": "- If the DVB-I client includes a mechanism for the user to terminate an application ...",
        "verdict": "absent",
-       "what": "The client has no linked application and so no way to terminate one.",
+       "what": "The client has no linked application and so no way to terminate one. Draft r8 only: the rules for a linked application that is restarted, terminated by the user or the client, changed by new signalling or that triggers a change of service. V1.2.1 clause 5.2.13 has only the rule for an application controlling media presentation that exits.",
        "repo": "rt-dvb-i-android-application",
        "releases": [
         "17",
@@ -11909,12 +12060,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.13"
+       "locator": "clause 5.2.13",
+       "draftOnly": true
       },
       {
        "case": "- If the application signalling changes and a running linked application is no longer ...",
        "verdict": "absent",
-       "what": "No linked application runs on this client, so none has to be terminated when signalling changes.",
+       "what": "No linked application runs on this client, so none has to be terminated when signalling changes. Draft r8 only: the rules for a linked application that is restarted, terminated by the user or the client, changed by new signalling or that triggers a change of service. V1.2.1 clause 5.2.13 has only the rule for an application controlling media presentation that exits.",
        "repo": "rt-dvb-i-android-application",
        "releases": [
         "17",
@@ -11922,12 +12074,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.13"
+       "locator": "clause 5.2.13",
+       "draftOnly": true
       },
       {
        "case": "- If a running linked application triggers a change of service or of the service ...",
        "verdict": "absent",
-       "what": "No linked application runs on this client, so none can trigger a change of service.",
+       "what": "No linked application runs on this client, so none can trigger a change of service. Draft r8 only: the rules for a linked application that is restarted, terminated by the user or the client, changed by new signalling or that triggers a change of service. V1.2.1 clause 5.2.13 has only the rule for an application controlling media presentation that exits.",
        "repo": "rt-dvb-i-android-application",
        "releases": [
         "17",
@@ -11935,12 +12088,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.13"
+       "locator": "clause 5.2.13",
+       "draftOnly": true
       },
       {
        "case": "If all service instances are discarded then the DVB-I client shall inform the user.",
        "verdict": "implemented",
-       "what": "When no instance of the selected service can be played the player shows that none can, and lists each discarded instance with its reason.",
+       "what": "When no instance of the selected service can be played the player shows that none can, and lists each discarded instance with its reason. Draft r8 only: informing the user when service instances are discarded. V1.2.1 clause 5.2.13 has no such rule.",
        "repo": "rt-dvb-i-android-application",
        "releases": [
         "17",
@@ -11948,12 +12102,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.13"
+       "locator": "clause 5.2.13",
+       "draftOnly": true
       },
       {
        "case": "If there is only one discarded service instance then the DVB-I client shall show an ...",
        "verdict": "implemented",
-       "what": "With one discarded instance the player shows a line naming it and the reason it is not played.",
+       "what": "With one discarded instance the player shows a line naming it and the reason it is not played. Draft r8 only: informing the user when service instances are discarded. V1.2.1 clause 5.2.13 has no such rule.",
        "repo": "rt-dvb-i-android-application",
        "releases": [
         "17",
@@ -11961,12 +12116,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.13"
+       "locator": "clause 5.2.13",
+       "draftOnly": true
       },
       {
        "case": "If there are multiple discarded service instances then the DVB-I client shall make an ...",
        "verdict": "implemented",
-       "what": "With several discarded instances the player shows the reason for every one of them, together with a general message that none can be played, instead of picking one.",
+       "what": "With several discarded instances the player shows the reason for every one of them, together with a general message that none can be played, instead of picking one. Draft r8 only: informing the user when service instances are discarded. V1.2.1 clause 5.2.13 has no such rule.",
        "repo": "rt-dvb-i-android-application",
        "releases": [
         "17",
@@ -11974,7 +12130,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.2.13"
+       "locator": "clause 5.2.13",
+       "draftOnly": true
       },
       {
        "case": "A DVB-I client may permit users to over-ride these default precedence rules.",
@@ -12038,12 +12195,12 @@
     },
     {
      "id": "android-770-5.3.6.7",
-     "name": "DeliveryType / DVBSDeliveryType",
+     "name": "DeliveryType / DVBSDeliveryType (draft A177r8 only)",
      "release": "all",
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "A177r8 draft (not in V1.2.1)",
       "locator": "clause 5.3.6.7"
      },
      "repos": [
@@ -12061,10 +12218,13 @@
         "19",
         "20"
        ],
-       "locator": "clause 5.3.6.7"
+       "locator": "clause 5.3.6.7",
+       "draftOnly": true
       }
      ],
-     "noted": []
+     "noted": [
+      "Not in ETSI TS 103 770 V1.2.1: the @directTuningAvailable attribute of clause 5.3.6.7 is new in the draft A177r8 (V1.2.1 defines DVBSDeliveryType without it), so it is listed but not counted against the published edition."
+     ]
     },
     {
      "id": "android-770-5.5.1",
@@ -12073,7 +12233,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.1"
      },
      "repos": [
@@ -12083,7 +12243,21 @@
       {
        "case": "Any method by which a receiver is put into a mode where test services are treated as ...",
        "verdict": "absent",
-       "what": "The client has no mode in which test services are treated as regular services.",
+       "what": "The client has no mode in which test services are treated as regular services. Draft r8 only: the paragraph that test services shall not be started or listed under normal conditions and that a receiver mode treating them as regular services should not be easily accessible. V1.2.1 says only that test services should not generally be selectable unless a capability is enabled.",
+       "repo": "rt-dvb-i-android-application",
+       "releases": [
+        "17",
+        "18",
+        "19",
+        "20"
+       ],
+       "locator": "clause 5.5.1",
+       "draftOnly": true
+      },
+      {
+       "case": "Test services are not selectable unless a capability is enabled",
+       "verdict": "implemented",
+       "what": "The parser reads only Service elements of the service list; TestService elements are not read, so test services are neither listed nor selectable and the client has no capability that enables them.",
        "repo": "rt-dvb-i-android-application",
        "releases": [
         "17",
@@ -12095,7 +12269,7 @@
       }
      ],
      "noted": [
-      "The client does not recognise test services at all, so it lists them like regular services."
+      "TestService elements are not parsed, so test services never reach the channel list."
      ]
     },
     {
@@ -12105,7 +12279,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.4"
      },
      "repos": [
@@ -12165,7 +12339,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.12"
      },
      "repos": [
@@ -12195,7 +12369,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.18.7"
      },
      "repos": [
@@ -12225,7 +12399,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.5.29"
      },
      "repos": [
@@ -12259,9 +12433,9 @@
        "locator": "clause 5.5.29"
       },
       {
-       "case": "targetBroadcast, otherBroadcast: unmatched broadcast services",
+       "case": "targetBroadcast, otherBroadcast: non-DVB-I broadcast services",
        "verdict": "absent",
-       "what": "The client has no broadcast services, so ranges for unmatched broadcast services (targetBroadcast, otherBroadcast, the broadcast part of any) are skipped.",
+       "what": "The client has no broadcast services, so ranges for non-DVB-I broadcast services (targetBroadcast, otherBroadcast, the broadcast part of any) are skipped.",
        "repo": "rt-dvb-i-android-application",
        "releases": [
         "17",
@@ -12399,7 +12573,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 5.6.2.1"
      },
      "repos": [
@@ -12741,7 +12915,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 8.5.3.2"
      },
      "repos": [
@@ -13080,7 +13254,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 4.3.3.7"
      },
      "repos": [
@@ -13384,7 +13558,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 4.4"
      },
      "repos": [
@@ -13471,7 +13645,7 @@
       {
        "case": "Parental rating information in inband and DASH MPD events shall take precedence over paren ...",
        "verdict": "absent",
-       "what": "The client does not read parental rating from DASH MPD events or inband events, so it has nothing to rank above the service list and content guide rating.",
+       "what": "The client does not read parental rating from DASH MPD events or inband events, so it has nothing to rank above the service list and content guide rating. Draft r8 only: the precedence of parental rating carried in DASH MPD events and in-band events over the service list and content guide rating. V1.2.1 clause 4.4 only lists these events as sources of parental rating.",
        "repo": "rt-dvb-i-application",
        "releases": [
         "17",
@@ -13479,7 +13653,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.4"
+       "locator": "clause 4.4",
+       "draftOnly": true
       },
       {
        "case": "Except when parental rating information provided by content guide metadata is available, t ...",
@@ -13492,7 +13667,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.4"
+       "locator": "clause 5.5.28"
       }
      ],
      "noted": []
@@ -13709,8 +13884,8 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
-      "locator": "clause 6.5.5.3"
+      "version": "V1.2.1",
+      "locator": "clause 6.5.5"
      },
      "repos": [
       "rt-dvb-i-application"
@@ -13727,7 +13902,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.5.5.3"
+       "locator": "clause 6.5.5"
       },
       {
        "case": "restart_check for a current event",
@@ -13740,7 +13915,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.5.5.3"
+       "locator": "clause 6.5.5"
       },
       {
        "case": "restart_pending for a current event",
@@ -13753,12 +13928,12 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.5.5.3"
+       "locator": "clause 6.5.5"
       },
       {
        "case": "Retrieve restart status from now/next when pending",
        "verdict": "absent",
-       "what": "The client does not read restart status from any schedule response, so it never refreshes a pending status.",
+       "what": "The client does not read restart status from any schedule response, so it never refreshes a pending status. Draft r8 only: reading the restart status from the Now/Next response when an event becomes current. V1.2.1 clause 6.5.5 has no such rule.",
        "repo": "rt-dvb-i-application",
        "releases": [
         "17",
@@ -13766,7 +13941,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.5.5.3"
+       "locator": "clause 6.5.5",
+       "draftOnly": true
       },
       {
        "case": "Obey cache control on Now/Next responses",
@@ -13947,7 +14123,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.10.11"
      },
      "repos": [
@@ -13990,7 +14166,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.10.15"
      },
      "repos": [
@@ -14020,7 +14196,7 @@
      "component": "app",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.11.11"
      },
      "repos": [
@@ -17878,7 +18054,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 4.3.3.7"
      },
      "repos": [
@@ -18179,7 +18355,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 4.4"
      },
      "repos": [
@@ -18253,14 +18429,15 @@
       {
        "case": "Parental rating information in inband and DASH MPD events shall take precedence over paren ...",
        "verdict": "absent",
-       "what": "The patch and the WebView wrapper contain no parental rating handling; any DVB-I logic is in the external front end.",
+       "what": "The patch and the WebView wrapper contain no parental rating handling; any DVB-I logic is in the external front end. Draft r8 only: the precedence of parental rating carried in DASH MPD events and in-band events over the service list and content guide rating. V1.2.1 clause 4.4 only lists these events as sources of parental rating.",
        "releases": [
         "17",
         "18",
         "19",
         "20"
        ],
-       "locator": "clause 4.4"
+       "locator": "clause 4.4",
+       "draftOnly": true
       },
       {
        "case": "Except when parental rating information provided by content guide metadata is available, t ...",
@@ -18272,7 +18449,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.4"
+       "locator": "clause 5.5.28"
       }
      ],
      "noted": []
@@ -18501,8 +18678,8 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
-      "locator": "clause 6.5.5.3"
+      "version": "V1.2.1",
+      "locator": "clause 6.5.5"
      },
      "repos": [
       "rt-5gms-application"
@@ -18519,7 +18696,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.5.5.3"
+       "locator": "clause 6.5.5"
       },
       {
        "case": "restart_check for a current event",
@@ -18532,7 +18709,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.5.5.3"
+       "locator": "clause 6.5.5"
       },
       {
        "case": "restart_pending for a current event",
@@ -18545,12 +18722,12 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.5.5.3"
+       "locator": "clause 6.5.5"
       },
       {
        "case": "Retrieve restart status from now/next when pending",
        "verdict": "absent",
-       "what": "The Exo player directory holds no DVB-I logic of its own: a WebView shows an external DVB-I front end and the patched ExoPlayer only plays the stream URL handed to it. No restart status is read here.",
+       "what": "The Exo player directory holds no DVB-I logic of its own: a WebView shows an external DVB-I front end and the patched ExoPlayer only plays the stream URL handed to it. No restart status is read here. Draft r8 only: reading the restart status from the Now/Next response when an event becomes current. V1.2.1 clause 6.5.5 has no such rule.",
        "repo": "rt-5gms-application",
        "releases": [
         "17",
@@ -18558,7 +18735,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.5.5.3"
+       "locator": "clause 6.5.5",
+       "draftOnly": true
       },
       {
        "case": "A DVB-I client shall obey cache control headers on Now/Next and AIT responses.",
@@ -18725,7 +18903,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.10.11"
      },
      "repos": [
@@ -18768,7 +18946,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.10.15"
      },
      "repos": [
@@ -18798,7 +18976,7 @@
      "component": "exo",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.11.11"
      },
      "repos": [
@@ -19513,7 +19691,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 4.3.3.7"
      },
      "repos": [
@@ -19814,7 +19992,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 4.4"
      },
      "repos": [
@@ -19914,7 +20092,7 @@
       {
        "case": "Parental rating information in inband and DASH MPD events shall take precedence over paren ...",
        "verdict": "absent",
-       "what": "The client does not read parental rating from DASH MPD events or inband events, so it has nothing to rank above the service list and content guide rating.",
+       "what": "The client does not read parental rating from DASH MPD events or inband events, so it has nothing to rank above the service list and content guide rating. Draft r8 only: the precedence of parental rating carried in DASH MPD events and in-band events over the service list and content guide rating. V1.2.1 clause 4.4 only lists these events as sources of parental rating.",
        "repo": "rt-dvb-i-android-application",
        "releases": [
         "17",
@@ -19922,7 +20100,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.4"
+       "locator": "clause 4.4",
+       "draftOnly": true
       },
       {
        "case": "Except when parental rating information provided by content guide metadata is available, t ...",
@@ -19935,7 +20114,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 4.4"
+       "locator": "clause 5.5.28"
       }
      ],
      "noted": []
@@ -20152,8 +20331,8 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
-      "locator": "clause 6.5.5.3"
+      "version": "V1.2.1",
+      "locator": "clause 6.5.5"
      },
      "repos": [
       "rt-dvb-i-android-application"
@@ -20170,7 +20349,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.5.5.3"
+       "locator": "clause 6.5.5"
       },
       {
        "case": "restart_check for a current event",
@@ -20183,7 +20362,7 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.5.5.3"
+       "locator": "clause 6.5.5"
       },
       {
        "case": "restart_pending for a current event",
@@ -20196,12 +20375,12 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.5.5.3"
+       "locator": "clause 6.5.5"
       },
       {
        "case": "Retrieve restart status from now/next when pending",
        "verdict": "absent",
-       "what": "The client does not read restart status from any schedule response, so it never refreshes a pending status.",
+       "what": "The client does not read restart status from any schedule response, so it never refreshes a pending status. Draft r8 only: reading the restart status from the Now/Next response when an event becomes current. V1.2.1 clause 6.5.5 has no such rule.",
        "repo": "rt-dvb-i-android-application",
        "releases": [
         "17",
@@ -20209,7 +20388,8 @@
         "19",
         "20"
        ],
-       "locator": "clause 6.5.5.3"
+       "locator": "clause 6.5.5",
+       "draftOnly": true
       },
       {
        "case": "Obey cache control headers on Now/Next responses",
@@ -20377,7 +20557,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.10.11"
      },
      "repos": [
@@ -20419,7 +20599,7 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.10.15"
      },
      "repos": [
@@ -20449,13 +20629,11 @@
      "component": "android",
      "spec": {
       "doc": "ETSI TS 103 770",
-      "version": "V1.3.1 draft (A177r8)",
+      "version": "V1.2.1",
       "locator": "clause 6.11.11"
      },
      "repos": [
-      "rt-dvb-i-application",
-      "rt-dvb-i-android-application",
-      "rt-5gms-application"
+      "rt-dvb-i-android-application"
      ],
      "cases": [
       {
