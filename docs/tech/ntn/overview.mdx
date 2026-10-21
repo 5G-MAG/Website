@@ -2,7 +2,7 @@
 title: Non-Terrestrial Networks in 5G Systems Overview
 sidebar_position: -1
 hide_title: true
-description: Placeholder for the Non-Terrestrial Networks technical analysis deep-dive; structure only, content to follow.
+description: "Non-terrestrial networks in 5G: the NTN system model, radio-layer adaptations, system information for media and MBS over NTN."
 sidebar_label: Overview
 ---
 
@@ -24,7 +24,7 @@ sidebar_label: Overview
 :::tip[At a glance]
 
 - **What it is:** satellite and other non-terrestrial access that reuses the 5G system and the NR protocol stack, with differences concentrated in the radio.
-- **In this section:** the NTN system model, radio-layer adaptations, system information for media, MBS over NTN and what each analysis page adds.
+- **In this section:** the NTN system model, radio-layer adaptations, system information for media, MBS over NTN and what each page adds.
 
 :::
 
@@ -93,24 +93,24 @@ Two system information blocks are central to media over NTN:
   [TS 38.331](https://www.3gpp.org/dynareport/38331.htm).
 - **SIB27**, introduced in Release 19 of TS 38.331, contains the intended service
   areas (ISA) of MBS broadcast services in an NTN cell, each given as a polygon or a
-  circle; see [MBS Broadcast NTN](/tech/ntn/analysis-mbs-broadcast-over-ntn).
+  circle (TS 38.331 V19.4.0 clause 6.3.1); see [MBS Broadcast NTN](/tech/ntn/analysis-mbs-broadcast-over-ntn).
 
 ### Carrying MBS over NTN
 
 TS 23.247 Release 19 states that transmission of a Broadcast MBS Session is supported
-over NR non-terrestrial networks:
+over NR non-terrestrial networks (TS 23.247 V20.0.0 clause 4.1):
 
 - **Broadcast MBS session.** Delivered with 5GC Shared MBS traffic delivery and PTM
   delivery only, and receivable in RRC_IDLE, RRC_INACTIVE and RRC_CONNECTED. Over NR NTN,
   Release 19 adds the NR NTN Intended Service Area, carried from the 5G Core to NG-RAN in
   the MBS service area and to the UE in SIB27, which can restrict the MBS service area to
-  an area smaller than a cell.
+  an area smaller than a cell (TS 23.247 V20.0.0 clauses 4.1 and 6.21; TS 38.300 V19.4.0 clause 16.10.1).
 - **Multicast MBS session.** NG-RAN is the decision point for switching between PTP and
   PTM, and the UE receives it in RRC_CONNECTED, or in RRC_INACTIVE with PTM. TS 23.247
   has no NTN clause for the multicast MBS session; TS 38.321 has, since Release 17, a
-  multicast DRX HARQ timer for non-terrestrial networks that adds the UE-gNB round trip.
+  multicast DRX HARQ timer for non-terrestrial networks that adds the UE-gNB round trip (TS 23.247 V20.0.0 clause 4.1; TS 38.300 V19.4.0 clause 16.10.1; TS 38.321 V17.15.0 and V19.4.0 clause 5.7).
 
-### What each analysis page adds
+### What each page adds
 
 - [Mobility Aspects for NTN](/tech/ntn/analysis-mobility-ntn) sets out
   three deployment models (single NTN operator; common NTN/TN operator; independent
@@ -139,5 +139,6 @@ over NR non-terrestrial networks:
 - **Feeder link, service link, NTN payload, Mapped Cell ID:** TS 38.300 V19.4.0, clause 3.1.
 - **Transparent and regenerative payload, cells and service links, Tracking Area, GNSS, FDD:** TS 38.300 V19.4.0, clause 16.14.1.
 - **Timing:** TS 38.300 V19.4.0, clause 16.14.2.1.
+- **MBS over NTN:** TS 23.247 V20.0.0, clauses 4.1 and 6.21; TS 38.300 V19.4.0, clause 16.10.1; TS 38.331 V19.4.0, clause 6.3.1; TS 38.321 V17.15.0 and V19.4.0, clause 5.7. Release 18 comparison: TS 23.247 V18.8.0, TS 38.300 V18.11.0, TS 38.331 V18.11.0 and TS 38.413 V18.11.0 have no ISA or SIB27 text.
 
 </details>

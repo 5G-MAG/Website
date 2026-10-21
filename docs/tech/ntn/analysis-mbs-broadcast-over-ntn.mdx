@@ -56,7 +56,7 @@ Every other step of a broadcast MBS session is as in [MBS Broadcast - End-to-End
 | 5. ISA broadcast to the UE | gNB, UE | RRC: SIB27 `intendedServiceAreaList-r19`; MCCH MBSBroadcastConfiguration, `mbs-SessionAreaList-r19` per session | TS 23.247 cl. 7.3.1 step 9; TS 38.300 cl. 16.14.12; TS 38.331 cl. 6.3.1, 6.3.6 |
 | 6. NTN access | gNB, UE | RRC: valid SIB19 held in RRC_IDLE and RRC_INACTIVE when accessing NR via NTN | TS 38.331 cl. 5.2.2.1; TS 38.300 cl. 7.3.1, 16.14.2.2 |
 | 7. Reception inside the ISA | UE | RRC: broadcast MRB establishment on entering an ISA, release on leaving it | TS 38.300 cl. 16.14.12; TS 38.331 cl. 5.9.3.1, 5.9.3.2 |
-| 8. Frequency priority | UE | Cell reselection: highest priority for the MBS frequency inside the ISA, lowest priority for frequencies without the service outside it | TS 38.304 cl. 5.2.4.1 |
+| 8. Frequency priority | UE | Cell reselection: inside the ISA the UE may consider the MBS frequency the highest priority; outside it, frequencies without the service may be considered the lowest priority | TS 38.304 cl. 5.2.4.1 |
 | 9. Session update | MB-SMF, AMF, NG-RAN | Namf_MBSBroadcast_ContextUpdate; NGAP BROADCAST SESSION MODIFICATION REQUEST, intended service area updated | TS 23.247 cl. 7.3.3 steps 2 and 3; TS 38.413 cl. 8.17.2.2 |
 
 </details>
@@ -94,7 +94,7 @@ SIB27 holds `intendedServiceAreaList-r19`, a list of intended service areas, eac
 - `polygonArea-r19`: the parameter type Polygon defined in TS 37.355;
 - `circleArea-r19`: a centre, `center-r19`, and a radius, `radius-r19`, where each step represents 50 m.
 
-A cell can signal up to 32 MBS broadcast intended service areas (TS 38.331 clause 6.4, `maxNrofMBS-Area-r19`). TS 38.331 sets no UE requirement on the contents of SIB27 beyond those in the procedures and field descriptions that use it (clause 5.2.2.4.29). SIB27 can also be delivered in RRCReconfiguration, in `dedicatedSystemInformationDelivery`, to a UE whose active BWP has no common search space configured (TS 38.331 clause 6.2.2).
+A cell can signal up to 32 MBS broadcast intended service areas (TS 38.331 clause 6.4, `maxNrofMBS-Area-r19`). TS 38.331 sets no UE requirement on the contents of SIB27 beyond those in the procedures and field descriptions that use it (clause 5.2.2.4.29). SIB27 can also be delivered in RRCReconfiguration, in `dedicatedSystemInformationDelivery`, to a UE whose active BWP has no common search space configured, or to an L2 U2N Remote UE in RRC_CONNECTED (TS 38.331 clause 6.2.2).
 
 ### The session-to-ISA link in the MCCH
 
@@ -102,7 +102,7 @@ In the MBSBroadcastConfiguration message on the MCCH, each session's `mbs-Sessio
 
 ## RRC states
 
-The RRC states do not change over NTN: a UE can receive a broadcast communication service in RRC_IDLE, RRC_INACTIVE and RRC_CONNECTED (TS 38.300 clause 16.10.1). The broadcast MRB configuration procedure applies to UEs in those states and, for an MBS ISA capable UE, while it is located within the ISA associated with the MBS service, if any (TS 38.331 clause 5.9.3.1).
+TS 38.300 clause 16.10.1 makes no NTN distinction: a UE can receive a broadcast communication service in RRC_IDLE, RRC_INACTIVE and RRC_CONNECTED (TS 38.300 clause 16.10.1). The broadcast MRB configuration procedure applies to UEs in those states (in RRC_CONNECTED, with an active BWP that has a common search space configured by `searchSpaceMTCH` or `searchSpaceMCCH`) and, for an MBS ISA capable UE, while it is located within the ISA associated with the MBS service, if any (TS 38.331 clause 5.9.3.1).
 
 ## UE behaviour
 
