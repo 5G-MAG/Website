@@ -1,0 +1,256 @@
+---
+title: "Beyond 2D Video Evaluation Framework: prepare, encode and measure V-PCC point clouds"
+sidebar_label: "Beyond 2D Video Evaluation Framework - prepare, encode and measure V-PCC point clouds"
+hide_title: true
+sidebar_position: 3
+description: "Step by step with the point cloud part of the Beyond 2D Video Evaluation Framework: make point clouds from a mesh sequence, encode and decode them with V-PCC, measure the quality and render videos along a camera path."
+---
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M4.338 5.53c5.106 1.932 10.211 1.932 15.317 0a1 1 0 0 1 1.345 .934v11c0 .692 -.692 1.2 -1.34 .962c-5.107 -1.932 -10.214 -1.932 -15.321 0c-.648 .246 -1.339 -.242 -1.339 -.935v-11.027a1 1 0 0 1 1.338 -.935l0 .001" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Beyond 2D Evaluation Framework</span>
+<h1>Prepare, Encode and Measure V-PCC Point Clouds</h1>
+</div>
+</div>
+
+In this tutorial you use the point cloud part of the Beyond 2D Video Evaluation Framework, the `point_cloud/` folder of the repository. You turn a sequence of meshes into dense point clouds, encode and decode them with the MPEG V-PCC test model, measure the objective quality against the source, and render 2D videos of the source and of the decoded point clouds along a camera path. The worked example is the Aliyah sequence, because it is the one sequence whose source is a free download.
+
+The framework supports the 3GPP study on Beyond 2D video, [TR 26.956](https://www.3gpp.org/dynareport/26956.htm) (checked against V19.0.1, 2025-10): the streaming of professionally produced volumetric video with a single asset containing people. The test conditions are in clause 7.3.9 (the V-PCC test model and its configuration files in 7.3.9.1, the five rate points in 7.3.9.2, the profile in 7.3.9.3, bitstream generation and metrics in 7.3.9.4, videos for subjective tests in 7.3.9.5), the evaluation in clause 9.3, and the software package in Annex D.3. The framework follows the evaluation framework of clause 6.
+
+:::tip[Read the READMEs first]
+Read the [point cloud README](https://github.com/5G-MAG/rt-beyond2d-evaluation-framework/blob/main/point_cloud/README.md) before you start, and the three documents it points to, one for each stage: [ply_generation](https://github.com/5G-MAG/rt-beyond2d-evaluation-framework/blob/main/point_cloud/doc/readme_ply_generation.md) (section 4), [ply_to_bin](https://github.com/5G-MAG/rt-beyond2d-evaluation-framework/blob/main/point_cloud/doc/readme_ply_to_bin.md) (section 5) and [bin_to_video](https://github.com/5G-MAG/rt-beyond2d-evaluation-framework/blob/main/point_cloud/doc/readme_bin_to_video.md) (section 6).
+:::
+
+| Repository | What it is | Used in |
+|---|---|---|
+| [rt-beyond2d-evaluation-framework](https://github.com/5G-MAG/rt-beyond2d-evaluation-framework) | The scripts and configuration files; the `point_cloud/` folder holds this framework | All sections |
+| [mpeg-pcc-mmetric](https://github.com/MPEGGroup/mpeg-pcc-mmetric) | MPEG tool that computes the point cloud metrics (tag 1.1.7). Cloned and built by the scripts | [4](#4-make-the-point-clouds), [5](#5-encode-decode-and-measure) |
+| [mpeg-pcc-tmc2](https://github.com/MPEGGroup/mpeg-pcc-tmc2) | MPEG V-PCC test model, encoder and decoder (branch `release-v25.0`). Cloned and built by the scripts | [5](#5-encode-decode-and-measure), [6](#6-render-videos) |
+| [mpeg-3dg-renderer](https://github.com/MPEGGroup/mpeg-3dg-renderer) | MPEG renderer that makes videos from point clouds (commit `c1e09f8`). Cloned and built by the scripts | [6](#6-render-videos) |
+
+| You want | Go to |
+|---|---|
+| The tools and the Python environment | [1. Prepare the machine](#1-prepare-the-machine) |
+| A source sequence | [2. Get a source sequence](#2-get-a-source-sequence) |
+| Meshes from the Blender project | [3. Export the meshes](#3-export-the-meshes) |
+| Dense point clouds | [4. Make the point clouds](#4-make-the-point-clouds) |
+| Bitstreams, decoded point clouds and quality figures | [5. Encode, decode and measure](#5-encode-decode-and-measure) |
+| Videos to look at | [6. Render videos](#6-render-videos) |
+
+**You need:**
+
+- A Linux machine or a Windows machine with a bash tool such as Git Bash or MobaXTerm (the documents name these two). The documents do not give a memory or disk size. The Aliyah sequence has 1112 point clouds of about 2 million points each, so plan for a large amount of disk space and time.
+- Python 3.11, CMake 3.26 or later but earlier than 4.0, `git`, and the C++ tools that the three MPEG tools need to build. The scripts clone and build them; the documents do not list the compiler packages.
+- [Blender](https://www.blender.org) 4.1.1, for the Aliyah sequence (the documents use that version).
+- For the other four sequences, access to the content on request (section 2).
+
+## 1. Prepare the machine
+
+Clone the repository and make a Python virtual environment in the `point_cloud` folder. The three documents ask for the environment to be made from the `requirements.txt` file there.
+
+```bash
+git clone https://github.com/5G-MAG/rt-beyond2d-evaluation-framework.git beyond2d
+cd beyond2d/point_cloud
+python3 -m venv venv
+. venv/bin/activate
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+On Windows, run `venv\Scripts\activate` instead of `. venv/bin/activate`. Check the versions:
+
+```bash
+python --version
+cmake --version
+```
+
+**Check:** Python is 3.11 and CMake is 3.26 or later but earlier than 4.0 (CMake 4.0 is not allowed by the documents). `pip install` ends without an error.
+
+Choose a working folder, for example `~/b2d-pcc`, with these sub-folders. The sections use them:
+
+```bash
+mkdir -p ~/b2d-pcc/blender ~/b2d-pcc/mesh ~/b2d-pcc/ply ~/b2d-pcc/out
+```
+
+Every command of sections 4 to 6 runs with the virtual environment active.
+
+## 2. Get a source sequence
+
+The sequences are in the TR, annex C.2. The ply_generation document lists where to get them:
+
+| Sequence | Provider | What you get | Where |
+|---|---|---|---|
+| Aliyah | RenderPeople | Blender project | [free download](https://download.renderpeople.com/free/rp_aliyah_4d_004_dancing_BLD.zip) |
+| Henry | RenderPeople | Blender project | [RenderPeople](https://renderpeople.com/3d-people/henry-4d-007-stretching/), the Blender project is bought |
+| Mitch, JuggleSoccer, Nathalie | Volucap, XD Productions | Meshes | An Aspera server. 3GPP members ask for the password at `3gpp_b2d_datasets@interdigital.com` |
+
+Download and unzip the Aliyah project into `~/b2d-pcc/blender`. Read the licence: the TR points to the [general terms and conditions of RenderPeople](https://renderpeople.com/general-terms-and-conditions/) (Annex C.2.7). The TR says that bitstreams made from the RenderPeople sequences cannot be shared because of that licence (clause 9.3.4.1.5.1).
+
+**Check:** the zip file unpacks and Blender opens the project.
+
+## 3. Export the meshes
+
+This step is for the sequences that come as a Blender project (Aliyah and Henry). The other three come as meshes.
+
+1. Open the project in Blender.
+2. Choose **File**, **Export**, **Wavefront (.obj)**.
+3. In the export options, under **Geometry**, untick **Normals**. Under **Materials**, tick **Export** and set **Path Mode** to **Copy**. Under **Animation**, tick **Export** to export the whole sequence.
+4. Choose an output folder, for example `~/b2d-pcc/mesh/rp_aliyah_4d_004_dancing_OBJ`, and export.
+
+The repository holds the md5 checksum of every mesh file, so that you can check the export. For Aliyah the list has the `.obj` and the `.mtl` of each frame:
+
+```bash
+cd ~/b2d-pcc/mesh/rp_aliyah_4d_004_dancing_OBJ
+md5sum -c <path-to>/beyond2d/point_cloud/ply_generation/output_info/rp_aliyah_4d_004_dancing_mesh_md5.txt
+```
+
+**Check:** every line ends in `OK`. The folder also holds the texture pictures (`.jpg`) that the next section needs, with names like `rp_aliyah_4d_004_dancing_dif_4k.0001.jpg`.
+
+## 4. Make the point clouds
+
+The script reads a JSON file that lists the sequences, converts each mesh frame into a point cloud with about 2 million points (the `vox11` target of the TR, clause 7.3.4.1 and Annex D.3.3), and writes PLY files. It clones and builds the MPEG mmetric tool first, into `dependencies/` in the output folder.
+
+Copy the example file and keep only the Aliyah entry, with your own paths in `MeshObjPath` and `MeshTxtPath`. Replace `<home>` with your home folder, as the paths in the file must work from where you run the script:
+
+```json
+{
+	"TestList": [
+		{
+			"SeqId": 5,
+			"Name": "aliyah",
+			"Qp": 11,
+			"Ratio": 0.88,
+			"MeshObjPath": "<home>/b2d-pcc/mesh/rp_aliyah_4d_004_dancing_OBJ/rp_aliyah_4d_004_dancing_4k%04d.obj",
+			"MeshTxtPath": "<home>/b2d-pcc/mesh/rp_aliyah_4d_004_dancing_OBJ/rp_aliyah_4d_004_dancing_dif_4k.%04d.jpg",
+			"FirstFrameId": 1,
+			"NbFrame": 1112,
+			"OutputDir": "renderpeople/aliyah",
+			"OutputFormat": "rp_aliyah_4d_004_dancing_4k_%04d.ply"
+		}
+	]
+}
+```
+
+Save it as `~/b2d-pcc/aliyah_selection.json`. The values `Qp` 11, `Ratio` 0.88, `FirstFrameId` 1 and `NbFrame` 1112 are the Aliyah row of the table in the ply_generation document; they give about 2 million points for each frame. Run:
+
+```bash
+cd beyond2d/point_cloud
+python3 ply_generation/exec_ply_generation.py -i ~/b2d-pcc/aliyah_selection.json -o ~/b2d-pcc/ply
+```
+
+The script samples the mesh, quantises the points and removes duplicate points.
+
+**Check:** the folder `~/b2d-pcc/ply/renderpeople/aliyah/F1112_quantized_vox11_r0.88/` holds the PLY files `rp_aliyah_4d_004_dancing_4k_0001.ply` and so on, and the log files. Count them with `ls ~/b2d-pcc/ply/renderpeople/aliyah/F1112_quantized_vox11_r0.88/*.ply | wc -l`; the expected count is the `NbFrame` value, 1112. The ply_generation document says that the number of points and the md5 of the PLY files are given for each frame, in `ply_generation/output_info`; the repository holds only the mesh checksums there.
+
+## 5. Encode, decode and measure
+
+Two JSON files drive this stage, both in `point_cloud/ply_to_bin/jsons/`: `sequences.json` says where the PLY files of each sequence are, and `3gpp_test_configuration.json` says which profile, which sequences, which frame counts and which rate points to run. The script `exec_binGenerator.py` clones and builds the MPEG V-PCC test model (branch `release-v25.0`) and mmetric (tag 1.1.7), then does, for each test: encode, decode, compute the metrics, and write a CSV and a workbook.
+
+The profile is HEVC Main10 V-PCC Basic Rec0, named `Basic`, and the five rate points are R1 to R5 (the TR gives the targets 5, 10, 20, 30 and 50 Mbps in clause 7.3.9.2). The encoder parameters for each rate point (geometry QP, attribute QP, occupancy precision) are in the test configuration; for Aliyah they are in table 5 of the ply_to_bin document.
+
+1. Copy both files to a folder of your own, for example `~/b2d-pcc/`, and keep only what you want to run.
+2. In `sequences.json`, keep the entry with `SeqId` 5 and set `PlyPath` to the folder of section 4: `<home>/b2d-pcc/ply/renderpeople/aliyah/F1112_quantized_vox11_r0.88`. The example file has the folder `renderpeople_idcc/aliyah` there, which is not where section 4 writes.
+3. In `3gpp_test_configuration.json`, keep the `SeqList` entry with `SeqId` 5. It has `"FrameNbList": ["300"]`, which is the first ten seconds of Aliyah at 30 frames per second, and five rate points. To try the chain first, keep only the first rate point and set a smaller frame count, for example `["10"]`.
+4. Run, from the `ply_to_bin` folder:
+
+```bash
+cd beyond2d/point_cloud/ply_to_bin
+python exec_binGenerator.py -o ~/b2d-pcc/out \
+    -i ~/b2d-pcc/sequences.json -t ~/b2d-pcc/3gpp_test_configuration.json
+```
+
+The output folder `~/b2d-pcc/out` gets:
+
+| Path | What it is |
+|---|---|
+| `cmd/` | The job commands and their logs |
+| `dependencies/` | The V-PCC test model and mmetric, built |
+| `F300_Basic/S5C2RA_aliyah11/` | For a 300-frame run: the bitstream `S5C2RAR0001_aliyah11_enc.bin` of rate point 1, the encoder, decoder and mmetric logs, and the decoded PLY files `S5C2RAR0001_aliyah11_dec_%04d.ply`. The folder is named after the frame count and the profile |
+| `FiDx0_Basic_C2RA_3gpp_test_configuration_metrics.csv` | The metrics of the tests, one row for each sequence and rate point. `FiDx0` is the position of the frame count in your list |
+| `FiDx0_Basic_C2RA_3gpp_test_configuration.xlsm` | A workbook made from the template in `ply_to_bin/templates`, with tables and graphs |
+
+**Check:** the bitstream exists, and the CSV has a row for your sequence and rate point. The CSV holds the number of points of the source and of the decoded point cloud, the size of the bitstream and of its geometry, metadata and attribute parts, the D1 and D2 point-to-point and point-to-plane PSNR values, the PSNR of luma, Cb and Cr, the PCQM value, and the encoder and decoder times (list in the ply_to_bin document, section III.D).
+
+The script fills the workbook only when all the tests of a profile have run: with a reduced list, you get the CSV and the message `Cannot generate workbook`. The workbook needs the 5 rate points of each sequence. To compare with the TR, run all five rate points with 300 frames, and read the tables in the workbook; the TR clause 9.3.4.1.5.1 shows the point-based metrics (the PSNR values of D1, D2, Cb, Cr and luma) and PCQM for each sequence as graphs.
+
+## 6. Render videos
+
+The renderer turns a point cloud sequence into 2D videos along a camera path, either from the PLY files of the source or from a V-PCC bitstream, which the script decodes first. TR clause 7.3.9.5 describes why: the videos are for subjective viewing, and the TR renders each sequence in more than one mode. The script `exec_binToVideo.py` clones and builds the V-PCC test model and the MPEG renderer on first use, into `dependencies/` of its output folder.
+
+Two JSON files drive it, both examples in `point_cloud/bin_to_video/jsons/`:
+
+- The configuration file, `3gpp_test_configuration.json`: the threads (`nb_th_dec`, `nb_th_renderer`), the size of the video (`width`, `height`, 1920 by 1080), the arguments common to every render job (`render_args`), and a list of render jobs, each one a video (a `name` and its `args`). The example has three jobs: a cube mode, a blend mode with a floor, and a blend mode with a background (`"use_background": 1`).
+- The test file: a list of tests, each with a `Name`, the bitstream `PathEnc`, the folder of decoded PLY files `PathDec`, the video folder `PathVid`, the `CameraPath` and background `Config` files, and the `FPS`. `PathEnc`, `PathDec` and `PathVid` are absolute or relative to the output folder of the script; `CameraPath` and `Config` are absolute or relative to the folder of the test file.
+
+Use the same output folder as in section 5, so that the build of the tools is shared and the bitstream is found. Write two test files in `point_cloud/bin_to_video/jsons/`, next to the `camerapath/` and `background/` folders that they point to. The first has one test for the source point clouds. Replace `<home>` with your home folder. Save it as `aliyah_source.json`:
+
+```json
+{
+    "TestList": [
+        {
+            "Name": "Aliyah11_source",
+            "PathEnc": "",
+            "PathDec": "<home>/b2d-pcc/ply/renderpeople/aliyah/F1112_quantized_vox11_r0.88",
+            "PathVid": "Videos/Aliyah",
+            "CameraPath": "camerapath/Aliyah.txt",
+            "Config": "background/station_aliyah.txt",
+            "FPS": 30
+        }
+    ]
+}
+```
+
+The second has one test for the decoded bitstream of rate point 1. Save it as `aliyah_decoded.json`:
+
+```json
+{
+    "TestList": [
+        {
+            "Name": "Basic_S5C2RAR0001_aliyah11",
+            "PathEnc": "F300_Basic/S5C2RA_aliyah11/S5C2RAR0001_aliyah11_enc.bin",
+            "PathDec": "Aliyah/Basic_S5C2RAR0001_aliyah11",
+            "PathVid": "Videos/Aliyah",
+            "CameraPath": "camerapath/Aliyah.txt",
+            "Config": "background/station_aliyah.txt",
+            "FPS": 30
+        }
+    ]
+}
+```
+
+The second test is the Aliyah entry of the example `3gpp_selection_dec.json` with the folder `3gpp_test_configuration/` removed from `PathEnc`, because the bitstream of section 5 is at `F300_Basic/...` under the output folder. If you ran section 5 with another frame count, use that folder name.
+
+The third render job of the example configuration uses a background mesh (a scene named in `background/station_aliyah.txt`, which you download yourself and point to with `scenePath`). To skip it, copy `3gpp_test_configuration.json`, delete the third job, and use the copy in the commands below.
+
+Make the videos of the source (`-v` runs only the video generation), then decode the bitstream and make its videos:
+
+```bash
+cd beyond2d/point_cloud
+python bin_to_video/exec_binToVideo.py \
+    -c bin_to_video/jsons/3gpp_test_configuration.json \
+    -i bin_to_video/jsons/aliyah_source.json \
+    -o ~/b2d-pcc/out -v
+python bin_to_video/exec_binToVideo.py \
+    -c bin_to_video/jsons/3gpp_test_configuration.json \
+    -i bin_to_video/jsons/aliyah_decoded.json \
+    -o ~/b2d-pcc/out
+```
+
+Other options: `-d` decodes only, `-f` forces work whose files already exist, `--noRun` only reads the files, and `-s` writes the commands to bash scripts in the output folder (`--scriptsMode` sets how they are split).
+
+**Check:** `~/b2d-pcc/out/Videos/Aliyah/` holds one video file for each test and render job; the name starts with the test `Name` and carries the job `name`. The renderer writes uncompressed `.rgb` video, which you can view or convert with any tool that reads raw video.
+
+<details>
+<summary>Sources for this page</summary>
+
+- **Install, prerequisites, Blender export steps, the sequence table, the JSON files, the commands, the output layout, the CSV columns:** `point_cloud/README.md`, `point_cloud/doc/readme_ply_generation.md`, `readme_ply_to_bin.md` and `readme_bin_to_video.md` of 5G-MAG/rt-beyond2d-evaluation-framework, branch `main`.
+- **Versions of the tools, the output paths and file names:** `point_cloud/common/install_deps.py` (TMC2 branch `release-v25.0`, mmetric `1_1_7`, renderer commit `c1e09f8`), `point_cloud/ply_generation/ConfigManager.py` (the output folder `F<NbFrame>_quantized_vox<Qp>_r<Ratio>`), `point_cloud/ply_to_bin/ConfigManager.py` and `compute.py` (the folder `F<frames>_<Profile>/S<id>C2<condition>_<name>`, `S5C2RAR0001_aliyah11_enc.bin`, `_dec_%04d.ply`, the CSV and workbook names, `FiDx<index>`), `point_cloud/ply_to_bin/XlsSheetGenerator.py` (the workbook only when all tests ran), `point_cloud/bin_to_video/jsons/*.json` (the example files).
+- **The standard:** 3GPP TR 26.956 V19.0.1 (2025-10), clauses 6, 7.3.4.1, 7.3.9.1 to 7.3.9.5, 9.3.4.1, Annex C.2 (sequences, licences) and Annex D.3 (the software package, which names the `point_cloud` folder). The TR gives the rate points as 5000, 10000, 20000, 30000 and 50000 kbps (clause 7.3.9.2).
+- **Paths that differ from the example files** (and are changed in the text): `PlyPath` of `sequences.json` (`renderpeople_idcc/aliyah`) against the folder that `ply_generation` writes (`renderpeople/aliyah/F1112_quantized_vox11_r0.88`); `PathEnc` of `3gpp_selection_dec.json` (`3gpp_test_configuration/F300_Basic/...`) against the folder `ply_to_bin` writes (`F300_Basic/...`). The example `3gpp_selection_dec.json` also names the background files `station_aliyah_linux.txt` and `drawing_room_linux.txt`, which are not in the repository.
+- **Verification: Not run.** None of the commands was run for this page. The machine used to write it has Python 3.14 only (the documents need 3.11; `pip install -r requirements.txt`, which pins numpy 2.1.2, did not finish within five minutes there), and has no Blender, no compiler set-up for the MPEG tools, no content and no disk space for 1112 point clouds. The text comes from the documents, the example files and the scripts. No output is shown for that reason. Check each section on a clean machine before you rely on it. The reduced runs in sections 4 and 5 (one sequence, one rate point, a smaller frame count) are readings of the scripts and the JSON files, not something the documents describe.
+
+</details>

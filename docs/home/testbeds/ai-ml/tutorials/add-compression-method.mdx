@@ -1,0 +1,193 @@
+---
+title: "AI and ML Evaluation Framework: add a compression method"
+sidebar_label: "AI and ML Evaluation Framework - add a compression method"
+hide_title: true
+sidebar_position: 3
+description: "Step by step with the AI and ML Evaluation Framework: write a new coder for the codec pipeline, register it, evaluate it on the wav2vec 2.0 speech recognition model and read its size and word error rate, as TR 26.847 clause 5.2 asks for any compression method."
+---
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M15.5 13a3.5 3.5 0 0 0 -3.5 3.5v1a3.5 3.5 0 0 0 7 0v-1.8" />
+  <path d="M8.5 13a3.5 3.5 0 0 1 3.5 3.5v1a3.5 3.5 0 0 1 -7 0v-1.8" />
+  <path d="M17.5 16a3.5 3.5 0 0 0 0 -7h-.5" />
+  <path d="M19 9.3v-2.8a3.5 3.5 0 0 0 -7 0" />
+  <path d="M6.5 16a3.5 3.5 0 0 1 0 -7h.5" />
+  <path d="M5 9.3v-2.8a3.5 3.5 0 0 1 7 0v10" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">AI/ML Evaluation Framework</span>
+<h1>AI and ML Evaluation Framework</h1>
+</div>
+</div>
+
+In this tutorial you add your own compression method to the codec pipeline of the AI and ML Evaluation Framework and evaluate it on a speech recognition model. The method is a small example, a sender-only coder that stores every parameter as a 16-bit float; you replace its two functions with your own method.
+
+The test encoder and test decoder of the model data testbed (3GPP TR 26.847 V19.0.0, clause 4.3, figure 4.3-1) are the coder of the pipeline. Clause 4.3 says the decoder may be absent for sender-only approaches, and Annex B.2.8 describes how the pipeline is extended with a method. The repository is available on request through [Early Access](/early-access).
+
+:::tip[Read the READMEs first]
+Read the [README of the compression framework](https://github.com/5G-MAG/rt-ai-ml-evaluation-framework/blob/main/scripts/asr/compression/README.md), in particular its sections on the codec pipeline and on extending it, before you start.
+:::
+
+| Repository | What it is | Used in |
+|---|---|---|
+| [rt-ai-ml-evaluation-framework](https://github.com/5G-MAG/rt-ai-ml-evaluation-framework) | The framework; the pipeline is in `scripts/asr/compression` | All sections |
+| [nncodec](https://github.com/fraunhoferhhi/nncodec) | NNCodec, installed with the pipeline although this tutorial's coder does not use it | [1. Install the pipeline](#1-install-the-pipeline) |
+
+| You want | Go to |
+|---|---|
+| The pipeline installed | [1. Install the pipeline](#1-install-the-pipeline) |
+| To know what a coder is | [2. Know the coder interface](#2-know-the-coder-interface) |
+| A coder of your own in the pipeline | [3. Write the coder](#3-write-the-coder) and [4. Register the coder](#4-register-the-coder) |
+| Its size and word error rate | [5. Evaluate the coder](#5-evaluate-the-coder) |
+| To add a new model task instead of a coder | [6. Add a new evaluation task](#6-add-a-new-evaluation-task) |
+
+**You need:** a Linux machine with Python 3.10, `git`, `pip` and a C++ compiler; about 5 GB of disk; a GPU is optional. The pipeline downloads the model and the LibriSpeech test-clean dataset by itself, so no account is needed.
+
+## 1. Install the pipeline
+
+```bash
+git clone https://github.com/5G-MAG/rt-ai-ml-evaluation-framework.git
+cd rt-ai-ml-evaluation-framework/scripts/asr/compression
+python3.10 -m venv env
+source env/bin/activate
+pip install -r requirements.txt
+git clone --branch v0.3.1 https://github.com/fraunhoferhhi/nncodec.git $HOME/nncodec
+pip install $HOME/nncodec
+export AIML=$HOME/aiml-data
+mkdir -p $AIML/out $AIML/data/data_sets
+```
+
+The pipeline imports NNCodec when it loads its coders, so install it even if you do not use it. On a machine without a GPU, change the first line of `requirements.txt` to `--extra-index-url https://download.pytorch.org/whl/cpu` before the `pip install`.
+
+**Check:** the pipeline starts and lists its options.
+
+```bash
+cd pipeline
+python run.py --help
+```
+
+## 2. Know the coder interface
+
+The pipeline gets the anchor model from the evaluation task, sends it through the coder and evaluates the model that comes out. A coder is a Python class with three members (README, section "Adding compression methods"):
+
+| Member | What it does |
+|---|---|
+| `__init__(self, opts)` | Keeps the options. `opts.file_names["bit"]` is the path of the bitstream file, `opts.file_names["dec"]` the path for a decoded model, `opts.enc_cfg_file_name` the configuration file given on the command line, `opts.scenario` the evaluation task object |
+| `encode(self, model)` | Writes the `state_dict()` of the model to the bitstream file |
+| `decode(self, rec_model)` | Reads the bitstream file and loads the parameters into the `state_dict` of `rec_model` |
+
+The size the pipeline reports is the size of the bitstream file. For an encoder-only method, `encode` can write the optimized parameters in a raw format and `decode` can read them back; that is the case here, and it matches clause 5.2.7 b) of TR 26.847, where the bitstream holds the parameters as N-byte values (N is 2 here).
+
+## 3. Write the coder
+
+A coder is a package in `pipeline/coders`. Make one named `fp16`, from the `pipeline` folder:
+
+```bash
+mkdir coders/fp16
+echo "from .factory import Coder" > coders/fp16/__init__.py
+```
+
+Create `coders/fp16/factory.py` with this content:
+
+```python
+from collections import OrderedDict
+
+import numpy as np
+import torch
+
+
+class Coder():
+  def __init__(self, opts):
+    self.__opts = opts
+
+  def encode(self, model):
+    # Write all floating-point parameters as 16-bit floats, other tensors unchanged
+    with open(self.__opts.file_names["bit"], "wb") as file:
+      for _, param in model.state_dict().items():
+        data = param.detach().cpu().numpy()
+        if param.is_floating_point():
+          data = data.astype(np.float16)
+        file.write(data.tobytes())
+
+  def decode(self, rec_model):
+    # Read the parameters back in the same order and load them into rec_model
+    state_dict = OrderedDict()
+    with open(self.__opts.file_names["bit"], "rb") as file:
+      for name, param in rec_model.state_dict().items():
+        dtype = np.float16 if param.is_floating_point() else param.numpy().dtype
+        count = param.numel()
+        data = np.frombuffer(file.read(count * np.dtype(dtype).itemsize), dtype=dtype)
+        state_dict[name] = torch.from_numpy(data.astype(param.numpy().dtype)).reshape(param.shape)
+    rec_model.load_state_dict(state_dict)
+```
+
+Replace the body of `encode` and `decode` with your method. The pipeline builds an empty model of the same topology for `decode`, so a decoder only has to fill the parameters.
+
+## 4. Register the coder
+
+The pipeline picks a coder by the value of `--coder_name` in `pipeline/coders/factory.py`. The README does not describe this step; it is in the code. Make two edits in that file:
+
+```diff
+ from coders import dummy
+ from coders import nnc
++from coders import fp16
+```
+
+and, in the function `get`, before the `else`:
+
+```diff
+   elif opts.coder_name == "nnc":
+     coder = nnc.Coder( opts)
++  elif opts.coder_name == "fp16":
++    coder = fp16.Coder( opts)
+   else:
+```
+
+**Check:** the new name is accepted. The run in section 5 prints `Running test: asr_fp16_...` instead of the error `Unknown coder: fp16`.
+
+## 5. Evaluate the coder
+
+Run the pipeline with the new coder. This time evaluate the anchor too, so that the result file holds the size ratio:
+
+```bash
+python run.py --scenario_name=asr --model_name=wav2vec_asr_base_960h \
+  --coder_name=fp16 --unique_tag=fp16 \
+  --out_dir=$AIML/out --data_dir=$AIML/data
+```
+
+The first run downloads the model (about 0.4 GB) and the test-clean dataset (331 MB). The pipeline evaluates the model on all 2620 sequences of test-clean twice, so expect a long run on a CPU.
+
+**Check:** the run ends with `Done`, and the result file has a row for your coder.
+
+```bash
+cat $AIML/out/asr_fp16_wav2vec_asr_base_960h__fp16.csv
+```
+
+`rec_size` is `188786490`, exactly half of `anc_size` (`377572980`), so `compress_ratio` is `0.5`; the bitstream holds 2 bytes for each of the 94.4 million parameters instead of 4. `rec_perf`, the word error rate of the decoded model as a fraction, is the figure to compare with `anc_perf`; table 5.2.4-1 of TR 26.847 gives 3.4% for the anchor. TR 26.847 clause 5.2.9 characterises a method by the pair of the size ratio (cSize) and the word error rate (wer); for the other columns see [the first tutorial](./first-evaluation#4-read-the-result-file).
+
+To compare with a method that needs a decoder, run NNCodec with one of the configuration files in `evaluations/cfg`, as in [the first tutorial](./first-evaluation#3-compress-the-model-with-nncodec), or vary a method over many settings as in [the sweep tutorial](./qp-sweep). A coder that takes settings can read the file given by `--enc_cfg_file_name`, as the NNCodec coder does with its JSON file.
+
+## 6. Add a new evaluation task
+
+<details>
+<summary>A new model and dataset instead of a new coder</summary>
+
+The README describes the interface of an evaluation task the same way. It is a package in `pipeline/scenarios` with a `Scenario` class holding `metric_name`, `get_model(pre_trained)`, `download_data_and_models()` and `get_perf(model, partition, enforce_higher_is_better=False)`, which returns the performance and the inference time. The `asr` package is the working example. The pipeline chooses it by `--scenario_name` in `pipeline/scenarios/factory.py`, the same way as for coders. This fold was written from the README and the code; it was not run.
+
+</details>
+
+## 7. Stop and clean up
+
+Nothing runs in the background. The bitstream of the example is half the size of the model, so delete the files you no longer need.
+
+```bash
+rm $AIML/out/*.bit
+deactivate
+```
+
+## Sources
+
+- 3GPP TR 26.847 V19.0.0 (2025-06), clause 4.3 and figure 4.3-1, clause 5.2 (tables 5.2.4-1, clauses 5.2.7 and 5.2.9) and Annex B.2.8 (extending the codec pipeline).
+- [scripts/asr/compression/README.md](https://github.com/5G-MAG/rt-ai-ml-evaluation-framework/blob/main/scripts/asr/compression/README.md) of the repository, and `pipeline/coders/factory.py`, `pipeline/coders/dummy/factory.py`, `pipeline/coders/nnc/factory.py`.

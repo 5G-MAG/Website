@@ -1,0 +1,220 @@
+---
+title: "Beyond 2D Video Evaluation Framework: compare coding conditions and read the metrics"
+sidebar_label: "Beyond 2D Video Evaluation Framework - compare coding conditions and read the metrics"
+hide_title: true
+sidebar_position: 2
+description: "Step by step with the multi-view plus depth part of the Beyond 2D Video Evaluation Framework: choose coding conditions, sequences and rate points, run them, collect the objective results in one table and compare the conditions."
+---
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M4.338 5.53c5.106 1.932 10.211 1.932 15.317 0a1 1 0 0 1 1.345 .934v11c0 .692 -.692 1.2 -1.34 .962c-5.107 -1.932 -10.214 -1.932 -15.321 0c-.648 .246 -1.339 -.242 -1.339 -.935v-11.027a1 1 0 0 1 1.338 -.935l0 .001" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Beyond 2D Evaluation Framework</span>
+<h1>Compare Coding Conditions</h1>
+</div>
+</div>
+
+In this tutorial you run the three coding conditions of the multi-view plus depth (MVD) evaluation of the Beyond 2D Video Evaluation Framework on the same sequence, at four rate points, and put the bitrate and the objective quality of each into one table. You then read the table to compare the conditions. You choose the size of the run yourself, from a few minutes of set-up with one sequence to the full matrix of the study.
+
+The conditions and the metrics come from 3GPP [TR 26.956](https://www.3gpp.org/dynareport/26956.htm) (checked against V19.0.1, 2025-10): the three encoder conditions are in clause 9.4.4.1.3 (table 9.4.4.1.3-1), the four rate points in table 9.4.4.1.3-2, and the metrics and the way they are averaged in clause 7.4.5. The framework follows the evaluation framework of clause 6. Clause 7.4.5 also describes metrics and a BD-PSNR calculation that the summary table of the framework does not contain (section 5 says which).
+
+:::tip[Read the READMEs first]
+Read the [multi-view plus depth README](https://github.com/5G-MAG/rt-beyond2d-evaluation-framework/blob/main/mvd/README.md) before you start. It lists the requirements, all options of the configure script and the output files.
+:::
+
+| Repository | What it is | Used in |
+|---|---|---|
+| [rt-beyond2d-evaluation-framework](https://github.com/5G-MAG/rt-beyond2d-evaluation-framework) | The scripts and configuration files; the `mvd/` folder holds this framework | All sections |
+| [TMIV](https://gitlab.com/mpeg-i-visual/tmiv) | MPEG test model for immersive video (tag v24.0). Built by `setup.sh` | [1](#1-prepare-the-machine-and-the-content), [4](#4-run-the-jobs) |
+| [QMIV](https://gitlab.com/mpeg-i-visual/qmiv) | Quality metrics for immersive video. Built by `setup.sh` | [1](#1-prepare-the-machine-and-the-content), [4](#4-run-the-jobs) |
+
+| You want | Go to |
+|---|---|
+| To know what FV, A and SCV are | [2. Know the three conditions](#2-know-the-three-conditions) |
+| To choose conditions, sequences, frames and rate points | [3. Choose what to run](#3-choose-what-to-run) |
+| The jobs to run | [4. Run the jobs](#4-run-the-jobs) |
+| One table with the bitrate and the quality | [5. Collect the results in one table](#5-collect-the-results-in-one-table) |
+| To compare the conditions | [6. Compare the conditions](#6-compare-the-conditions) |
+| To change the QP values or add a condition | [7. Change the rate points or add a condition](#7-change-the-rate-points-or-add-a-condition) |
+
+**You need:**
+
+- A Linux machine with 32 GB of RAM, 1 TB of free disk space, Ubuntu 24.04.02 or later (WSL 2 on Windows), `sudo` rights for the system packages and internet access (README, "Minimum requirements").
+- The test content. It is not in the repository. Access is on request, as the TR says (clause 9.4.4.1.5.5): Breakfast is hosted by InterDigital, Bartender and DanceMoves by Philips. Work with DanceMoves first: it has 6 views, Breakfast has 15 and Bartender has 21.
+
+## 1. Prepare the machine and the content
+
+If you did the first tutorial, [Run a multi-view plus depth evaluation](./mvd-first-evaluation), you have all this and can go to section 2. Otherwise, build the software (TMIV, QMIV and the Python environment). The build takes a while.
+
+```bash
+git clone https://github.com/5G-MAG/rt-beyond2d-evaluation-framework.git beyond2d
+cd beyond2d/mvd
+./setup.sh --system
+```
+
+With `--system` the script runs `sudo apt update` and `sudo apt upgrade -y`, which upgrades every package on the machine, and then installs the build packages. To avoid that, install the packages listed in the README yourself and run `./setup.sh` without the argument.
+
+Put the content in one base folder, with one sub-folder for each sequence and one texture file and one depth file for each view:
+
+```text
+<content-dir>/DanceMoves/v0_texture_1920x1080_yuv420p10le.yuv
+<content-dir>/DanceMoves/v0_depth_1920x1080_yuv420p16le.yuv
+```
+
+`<content-dir>` is any folder you choose, for example `~/b2d-content`. The views are `v0` to `v5` for DanceMoves, `v0` to `v14` for Breakfast and `v00` to `v20` for Bartender. Check the files against the checksums of the repository (not available for Bartender):
+
+```bash
+cd <content-dir>/DanceMoves
+md5sum -c <path-to>/beyond2d/mvd/config/sequences/DanceMoves.md5
+```
+
+**Check:** every line ends in `OK`, and `ls -l tmiv/bin/encode.py tmiv/bin/TmivDecoder qmiv` in `beyond2d/mvd` lists three files.
+
+Every later command runs in `beyond2d/mvd` with the virtual environment active:
+
+```bash
+cd beyond2d/mvd
+. venv/bin/activate
+```
+
+## 2. Know the three conditions
+
+Each condition is a folder of three JSON files in `config/conditions/`: the TMIV encoder configuration (`<ID>_1_TMIV_encode.json`), the multiplexer configuration (`<ID>_3_TMIV_mux.json`) and the decoder configuration (`<ID>_4_TMIV_decode.json`). The video encoder (HM) is configured the same way for all three, with a random-access configuration file. The TR says that the only substantial difference between the conditions is the TMIV encoder configuration (clause 9.4.4.1.3).
+
+| ID | Name in the TR | What it does | Profile and level (TR table 9.4.4.1.3-1) |
+|---|---|---|---|
+| `FV` | Full views | Codes the texture and geometry of every view as its own video sub-bitstream. Highest quality, largest pixel rate and bitrate; an upper bound for the test sequences | HEVC Main 10, no level in the TR |
+| `A` | MPEG MIV main anchor | Part of the MIV common test conditions. TMIV picks basic views and semi-basic views for a pixel budget and packs patches of the other views in two atlases | HEVC Main 10 MIV 2, level 3.5 |
+| `SCV` | Synthesize center view | Designed for the study to lower the pixel rate: one atlas holds a synthesised centre view and patches of the source views | HEVC Main 10 MIV Extended, level 2.5 |
+
+**Check:** the files agree with the table. For example,
+
+```bash
+grep -E '"(PrunerMethod|ViewOptimizerMethod|maxAtlases|levelIdc)"' config/conditions/*/*_1_TMIV_encode.json
+```
+
+shows `NoPruner` and `NoViewOptimizer` for `FV`, `ServerSideInpainter` and `maxAtlases` 2 for `A`, and `SynthesizeCenterView` and `maxAtlases` 1 for `SCV`.
+
+The rate points are in `config/fixed_QPs.csv`. The same values apply to every sequence and every condition; the geometry QP is derived from the texture QP as for the MIV common test conditions (TR clause 9.4.4.1.3).
+
+| Rate point | RP1 | RP2 | RP3 | RP4 |
+|---|---|---|---|---|
+| Texture QP | 20 | 30 | 40 | 50 |
+| Geometry QP | 2 | 10 | 18 | 26 |
+
+`RP0` is not a rate point of the table. It is the encoding without video coding, which every rate point starts from.
+
+## 3. Choose what to run
+
+`configure_experiment.py` takes four lists. Each has a default; the default is the whole matrix.
+
+| Option | Values | Default |
+|---|---|---|
+| `--condition-ids` | `FV`, `A`, `SCV` | `FV A SCV` |
+| `--content-ids` | `Bartender`, `Breakfast`, `DanceMoves` | all three |
+| `--rate-ids` | `RP1`, `RP2`, `RP3`, `RP4` | all four |
+| `--frame-counts` | the number of input frames | `3 65` |
+
+The TR evaluates the first 65 frames of each sequence (clause 9.4.2). The default list also holds 3 frames, which gives a much shorter run. The default matrix is **2178 jobs** (checked with `ninja -n` on a clone of `main`), most of them the reconstruction and the measurement of every view of every bitstream. Start with a subset:
+
+```bash
+./configure_experiment.py --content-dir <content-dir> \
+    --condition-ids FV A SCV --content-ids DanceMoves \
+    --rate-ids RP1 RP2 RP3 RP4 --frame-counts 3
+ninja -n | tail -1
+```
+
+**Check:** the last line starts with `[171/171]`: 15 encoding jobs, 72 reconstructions, 12 pose trace renderings and 72 measurements. `-n` is a dry run; nothing is encoded. The script replaces `build.ninja` each time you run it, so the last configuration is the one `ninja` runs.
+
+The other options are `--thread-count` (threads for each TMIV encoder and decoder run, default 4) and `--slurm` (see the first tutorial).
+
+## 4. Run the jobs
+
+```bash
+ninja -j 2
+```
+
+The README advises to limit the parallel jobs on one machine because encoding and decoding use a lot of memory. Ninja skips jobs whose output exists, so if you stop it with Ctrl+C, run the same command to continue.
+
+**Check:** the last line is `[171/171] Measure SCV3 DanceMoves RP4 v5` (the last job of the build file, which follows the order of your `--condition-ids`), and `ninja -n` prints `ninja: no work to do.` The files are under `out/<condition><frames>/<sequence>/<rate point>/`, for example `out/A3/DanceMoves/RP2/`, and the first tutorial lists what each file is.
+
+## 5. Collect the results in one table
+
+`collect_objective_results.py` reads the bitstreams and the `.qmiv` files and writes one Markdown file for each frame count. It takes the same lists as the configure script (`--condition-ids`, `--content-ids`, `--rate-ids`, `--frame-counts`, with the same defaults), so give it the lists you gave there.
+
+```bash
+python collect_objective_results.py --condition-ids FV A SCV \
+    --content-ids DanceMoves --rate-ids RP1 RP2 RP3 RP4 --frame-counts 3
+cat out/objective-results-3F.md
+```
+
+Run it only after every job of those lists has finished. It stops with a `FileNotFoundError` for the first missing bitstream or `.qmiv` file, and it can leave a table file that holds only part of the first table.
+
+**Check:** `out/objective-results-3F.md` has a table for DanceMoves with one row for each rate point and these columns, in this order: the bitrate of each condition, then the PSNR of each condition, then the IV-SSIM of each condition. The header row has the shape:
+
+```text
+| Rate point | FV bitrate (Mbps) | A bitrate (Mbps) | SCV bitrate (Mbps) | FV PSNR | A PSNR | SCV PSNR | FV IV-SSIM | A IV-SSIM | SCV IV-SSIM |
+```
+
+(the columns follow the order of your `--condition-ids`). The table is a Markdown file; the numbers are the result of your run and are not shown here.
+
+How each number is computed, from the script:
+
+- **Bitrate (Mbps)** is the size of the final MIV bitstream `TMIV_<condition><frames>_<sequence>_<rate point>.bit` in bits, times the frame rate of the sequence, divided by the number of coded frames, divided by one million. The frame rate is fixed in the script: 30 Hz for Breakfast and Bartender and 15 Hz for DanceMoves.
+- **PSNR** is the PSNR of the luma (Y) of each source view, taken from the `PSNR Y:Cb:Cr` line of its `.qmiv` file. The script converts each value to a mean squared error, averages the errors over all views, and converts back to dB.
+- **IV-SSIM** is the plain average over all views of the `IVSSIM` value of the `.qmiv` files.
+
+TR clause 7.4.5 says that every source view is reconstructed and QMIV is run on all views, and the score is averaged over the views. The script does the averaging as above.
+
+## 6. Compare the conditions
+
+Read the table one rate point at a time, across the conditions.
+
+1. **Bitrate.** At the same rate point the three conditions give different bitrates, because they code different amounts of pixel data. The TR says that FV has the largest pixel rate and bitrate and is an upper bound, and that SCV was designed for a lower pixel rate than A.
+2. **Quality.** Compare PSNR and IV-SSIM of the conditions at similar bitrates, not at the same rate point: the bitrates differ, so a condition that is better at one rate point may only be spending more bits. Plot PSNR against bitrate for each condition with any tool you like, one curve for each condition, one point for each rate point. The TR shows such curves for each sequence (clause 9.4.4.1.5.3).
+3. **Frames.** Compare runs that have the same frame count. Use the frame count of the study (65) for results you want to put next to the TR.
+
+:::tip[What the table does not contain]
+The table holds PSNR (Y) and IV-SSIM. TR clause 7.4.5 also names WS-PSNR and IV-PSNR, and a BD-PSNR calculation. The framework collects none of these in the table, and the documentation does not say that QMIV is run with them. To use them, read the `.qmiv` files yourself, or run QMIV on the reconstructed views and the sources with its own options; see the [QMIV repository](https://gitlab.com/mpeg-i-visual/qmiv).
+:::
+
+For the subjective side, each bitstream also gives one pose trace video (section 5 of the first tutorial). The TR evaluates the source views objectively and uses the pose trace videos for subjective viewing (clause 7.4.5).
+
+## 7. Change the rate points or add a condition
+
+These two changes are not described in the README. They follow from the files and the scripts, and they were not run.
+
+<details>
+<summary>Change the QP values</summary>
+
+Edit `config/fixed_QPs.csv`. The file has one row for texture (`tex`) and one for geometry (`geo`), with one column for each of `RP1` to `RP4`, and the encoding jobs read it (`--qp-file`). Then run the encoding again: Ninja does not know that the file changed, so delete the folder of the condition (`out/<condition><frames>/`) first, or use a new output by moving `out` away.
+
+</details>
+
+<details>
+<summary>Add a condition</summary>
+
+The configure script finds a condition by its ID in `config/conditions/<ID>/`, with the file names `<ID>_1_TMIV_encode.json`, `<ID>_3_TMIV_mux.json` and `<ID>_4_TMIV_decode.json`, and it writes the results to `out/<ID><frames>/`. To add a condition `X`:
+
+1. Copy a condition folder, for example `cp -r config/conditions/SCV config/conditions/X`, and rename the three files from `SCV_...` to `X_...`.
+2. In each file, replace the condition name in the path formats (`SCV{0}/...` becomes `X{0}/...`), so that the files from the three steps meet at the same names. The encoder configuration is where the conditions differ; change the TMIV settings there.
+3. Run `./configure_experiment.py --content-dir <content-dir> --condition-ids X ...` and `ninja -j 2` as before, and `python collect_objective_results.py --condition-ids X ...` for the table.
+
+**Check:** `ninja -n` lists jobs named `... X3 DanceMoves ...` and, after the run, `out/X3/DanceMoves/RP1/` exists.
+
+</details>
+
+<details>
+<summary>Sources for this page</summary>
+
+- **Requirements, options and defaults, `ninja -j`, `--slurm`, output files:** `mvd/README.md` of 5G-MAG/rt-beyond2d-evaluation-framework, branch `main`; `mvd/configure_experiment.py` (defaults, job names, file names, `--qp-file config/fixed_QPs.csv`, `--thread-count`). The default options list in the README shows `A FV SCV` and the script has `FV A SCV`; the text follows the script.
+- **Table, formulas, frame rates, stop on a missing file** (the README does not mention this script): `mvd/collect_objective_results.py` (bitrate from the `.bit` size, `RE_QMIV_PSNR` and `RE_QMIV_IVSSIM`, the mean squared error average, the frame rates 30, 30 and 15). The script keeps the last line that matches in a file. The columns are written in the order of `--condition-ids`.
+- **Conditions:** `mvd/config/conditions/{FV,A,SCV}/*.json` (the values in the check) and TR 26.956 V19.0.1, clause 9.4.4.1.3 (descriptions of FV, A and SCV, table 9.4.4.1.3-1, table 9.4.4.1.3-2). The TR names the condition folders `config/full_views`, `config/miv_main_anchor` and `config/synthesize_center_view`; the repository uses `config/conditions/FV`, `A` and `SCV`.
+- **Metrics:** TR 26.956, clause 7.4.5 (PSNR, WS-PSNR, IV-PSNR, IV-SSIM, averaging over views, BD-PSNR) and 9.4.2 (the first 65 frames); QMIV at gitlab.com/mpeg-i-visual/qmiv.
+- **The count of 2178 and 171 jobs:** `ninja -n` after `configure_experiment.py` with the default options and with the options of section 3, on a clone of `main`, with an empty content folder.
+- **Verification.** The configure step and the dry runs of sections 3 and 4 (counts and job names) were run on a clone of `main` with Python 3.14 and no content. The effect of running `collect_objective_results.py` before the jobs have run (the `FileNotFoundError` and a table file with only part of the first table) was seen in that run. Everything else was **not run**: building TMIV and QMIV, the encoding and decoding, the numbers in the table and the two changes in section 7 need `sudo`, a C++ toolchain, 32 GB of RAM and the test content, which were not available. The advice on how to compare the conditions comes from TR clauses 7.4.5 and 9.4.4.1 and is not shown with results.
+
+</details>

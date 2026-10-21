@@ -1,8 +1,8 @@
 ---
 title: Tutorials
 hide_title: true
-sidebar_position: 3
-description: Quickstart pointing to the shared 6G AI Traffic Characterization Testbed walkthrough for what is runnable today; an AI/ML-specific quickstart follows once the evaluation framework repository is public.
+sidebar_position: -1
+description: "Tutorials for the AI and ML Evaluation Framework: run a first evaluation of a compressed speech recognition model, sweep quantization parameters and plot the trade-off, and add a compression method."
 ---
 
 import ProjectVideos from '@site/src/components/ProjectVideos';
@@ -26,19 +26,21 @@ export const projectVideos = youtubePlaylists.projects?.['ai-ml']?.videos || [];
 </div>
 </div>
 
-The AI/ML Evaluation Framework's own repository, [5G-MAG/rt-ai-ml-evaluation-framework](https://github.com/5G-MAG/rt-ai-ml-evaluation-framework), is currently private, so this page cannot yet walk through AI/ML-specific commands against it. What you can run today is the shared 6G AI Traffic Characterization Testbed, which the AI/ML Evaluation Framework builds on for network emulation and AI traffic characterisation.
+## [Set up and run a first evaluation](./first-evaluation)
 
-## Quickstart: run the shared 6G AI Traffic Characterization Testbed today
+Install the framework, evaluate the wav2vec 2.0 model for speech recognition with no compression and with NNCodec, and read the result file.
 
-1. Read the [6G AI Traffic Characterization Testbed scope](../6g-testbed/scope) page for the testbed's two building blocks (network emulator and AI traffic characterisation framework) and how they fit together.
-2. Follow the [Introduction to the 6G AI Traffic Characterization Testbed](../6g-testbed/tutorials/introduction-6g-testbed) tutorial, a video walkthrough of both parts running together.
-3. Clone [5G-MAG/6G-Testbed](https://github.com/5G-MAG/6G-Testbed) and follow its README for setup instructions and running a scenario against an emulated network profile.
+## [Sweep quantization parameters and plot the trade-off](./qp-sweep)
 
-## AI/ML-specific quickstart: coming once the repository is public
+Run the NNCodec evaluation over a range of quantization parameters, plot word error rate against compressed size, and read the plot against the test cases of TR 26.847.
 
-[5G-MAG/rt-ai-ml-evaluation-framework](https://github.com/5G-MAG/rt-ai-ml-evaluation-framework) is currently private. Once it is public, this page will be updated with a step-by-step quickstart specific to the AI/ML Evaluation Framework itself (benchmarks, datasets, and how they connect to the 6G AI Traffic Characterization Testbed's traffic-characterisation output). This is a known gap, not an oversight: in the meantime, [request early access](/early-access) to the repository, or check the [Repositories & Releases](/testbeds/ai-ml#repositories--releases) page for its current public/private status.
+## [Add a compression method](./add-compression-method)
 
-See the [Implementation Detail](./implementation) page for what the framework covers.
+Write a new coder, register it in the pipeline and compare it with the anchor and with NNCodec.
+
+## Network emulation and traffic characterisation
+
+The framework in this repository does not emulate a network. For that, use the [6G AI Traffic Characterization Testbed tutorials](/testbeds/6g-testbed/tutorials).
 
 <div class="onair-kicker"><span class="onair-kicker__dot"></span>Watch</div>
 

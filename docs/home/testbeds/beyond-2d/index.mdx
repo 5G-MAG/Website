@@ -13,6 +13,7 @@ import ProjectVideos from '@site/src/components/ProjectVideos';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import youtubePlaylists from '@site/static/data/youtube-playlists.json';
 import ProjectSlide from '@site/src/components/ProjectSlide';
+import ProjectDeck from '@site/src/components/ProjectDeck';
 
 export const projectVideos = (youtubePlaylists.projects?.['beyond-2d']?.videos || []).slice(0, 1);
 
@@ -92,14 +93,7 @@ See [Beyond 2D on the Standards portal](/standards/beyond-2d) for related work i
 
 The slide deck below introduces the Beyond 2D Evaluation Framework: what it evaluates, the test methodology, and how the results feed 3GPP and MPEG standardisation. For what's implemented and the project roadmap, see [Implementation Detail](./implementation); for the code, use the buttons above (Resources, Tutorials).
 
-<div class="event-post-grid">
-
-<a class="event-post-card" href={useBaseUrl('/docs/Reference_Tools_Beyond2D_Video_Evaluation.pdf')} target="_blank" rel="noreferrer">
-<img loading="lazy" src={useBaseUrl('/assets/images/projects/beyond-2d-slides-cover.jpg')} alt="Beyond 2D Evaluation Framework slide deck cover" />
-<span class="event-post-title">Slide deck: Beyond 2D Evaluation Framework overview</span>
-</a>
-
-</div>
+<ProjectDeck slug="beyond-2d" heading={false} />
 
 <div class="onair-kicker"><span class="onair-kicker__dot"></span>Watch</div>
 

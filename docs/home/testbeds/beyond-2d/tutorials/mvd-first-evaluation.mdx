@@ -1,0 +1,204 @@
+---
+title: "Beyond 2D Video Evaluation Framework: run a multi-view plus depth evaluation"
+sidebar_label: "Beyond 2D Video Evaluation Framework - run a multi-view plus depth evaluation"
+hide_title: true
+sidebar_position: 1
+description: "Step by step with the multi-view plus depth part of the Beyond 2D Video Evaluation Framework: build TMIV and QMIV, prepare the test content, run a small evaluation of one coding condition and read its output files."
+---
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M4.338 5.53c5.106 1.932 10.211 1.932 15.317 0a1 1 0 0 1 1.345 .934v11c0 .692 -.692 1.2 -1.34 .962c-5.107 -1.932 -10.214 -1.932 -15.321 0c-.648 .246 -1.339 -.242 -1.339 -.935v-11.027a1 1 0 0 1 1.338 -.935l0 .001" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">Beyond 2D Evaluation Framework</span>
+<h1>Run a Multi-View plus Depth Evaluation</h1>
+</div>
+</div>
+
+In this tutorial you run the multi-view plus depth (MVD) part of the Beyond 2D Video Evaluation Framework. You build the MPEG test model for immersive video (TMIV) and the quality metrics tool (QMIV), put the test content in place, and run a small evaluation of one coding condition on one sequence. At the end you have a bitstream, the reconstructed source views, a pose trace video and one metrics file for each view.
+
+The framework supports the 3GPP study on Beyond 2D video, [TR 26.956](https://www.3gpp.org/dynareport/26956.htm) (checked against V19.0.1, 2025-10). The framework follows the evaluation framework of clause 6 (reference sequences, a video encoder configured for the application, "pseudo" packaging to find the bitrate, decoding, and metrics on the original and the recovered data) and the end-to-end model of clause 4.2.1. This tutorial covers the streaming of multi-view plus depth produced content (clauses 7.4 and 9.4). The README of the framework says that the descriptions of the three cases it lists are still to be written. The point cloud part of the same repository has its own [tutorial](./vpcc-point-clouds).
+
+:::tip[Read the READMEs first]
+Read the [multi-view plus depth README](https://github.com/5G-MAG/rt-beyond2d-evaluation-framework/blob/main/mvd/README.md) before you start. It lists the requirements, the options of the configure script and the output files. The [repository README](https://github.com/5G-MAG/rt-beyond2d-evaluation-framework#readme) gives the context.
+:::
+
+| Repository | What it is | Used in |
+|---|---|---|
+| [rt-beyond2d-evaluation-framework](https://github.com/5G-MAG/rt-beyond2d-evaluation-framework) | The scripts and configuration files; the `mvd/` folder holds this framework | All sections |
+| [TMIV](https://gitlab.com/mpeg-i-visual/tmiv) | MPEG test model for immersive video: encoder, multiplexer, decoder and renderer (tag v24.0). Built by `setup.sh` | [2](#2-build-the-software), [4](#4-run-the-evaluation) |
+| [QMIV](https://gitlab.com/mpeg-i-visual/qmiv) | Quality metrics for immersive video. Built by `setup.sh` | [2](#2-build-the-software), [4](#4-run-the-evaluation) |
+
+| You want | Go to |
+|---|---|
+| To see the list of jobs without any content or software | [1. Look at the plan of an evaluation](#1-look-at-the-plan-of-an-evaluation) |
+| The software built | [2. Build the software](#2-build-the-software) |
+| The test content in the right place | [3. Put the test content in place](#3-put-the-test-content-in-place) |
+| A first result | [4. Run the evaluation](#4-run-the-evaluation) |
+| To know what each output file is | [5. Read the output](#5-read-the-output) |
+| Several conditions, sequences or rate points, and the summary table | [Compare coding conditions](./mvd-compare-conditions) |
+
+**You need:**
+
+- A Linux machine. The README lists 32 GB of RAM, 1 TB of free disk space, Ubuntu 24.04.02 or later, and internet access. On Windows it lists WSL 2. The framework was developed on Ubuntu 24.04.02 LTS with Python 3.12 and LLVM 18.
+- `sudo` rights, if you let `setup.sh` install the system packages.
+- The test content (section 3). The content is not in the repository. Access to the sequences is on request, as the TR says (clause 9.4.4.1.5.5): Breakfast is hosted by InterDigital, Bartender and DanceMoves are hosted by Philips. This tutorial uses DanceMoves, the sequence with the fewest views (6).
+
+## 1. Look at the plan of an evaluation
+
+A script writes a [Ninja](https://ninja-build.org) build file that lists every job and what it depends on, and you run `ninja`. You can do the first part now, with a Python virtual environment only.
+
+```bash
+git clone https://github.com/5G-MAG/rt-beyond2d-evaluation-framework.git beyond2d
+cd beyond2d/mvd
+python3 -m venv venv
+. venv/bin/activate
+pip install -r requirements.txt
+mkdir -p ~/b2d-content
+./configure_experiment.py --content-dir ~/b2d-content \
+    --condition-ids SCV --frame-counts 3 --content-ids DanceMoves --rate-ids RP3
+ninja -n
+```
+
+The options select one coding condition (`SCV`), one input length (3 frames), one sequence and one rate point. `ninja -n` is a dry run: it prints the jobs and runs none of them. **Check:** the output has 15 lines, from `[1/15] Encode SCV3 DanceMoves RP0` to `[15/15] Measure SCV3 DanceMoves RP3 v5`. In between are `Encode SCV3 DanceMoves RP3`, six `Reconstruct` jobs (views `v0` to `v5`), one `Interpolate ... p02` job and six `Measure` jobs.
+
+:::tip[Remember the folder]
+Every later command runs in `beyond2d/mvd`, with the virtual environment active (`. venv/bin/activate`). The configure script writes `build.ninja` and the jobs write `out/` in the current folder.
+:::
+
+## 2. Build the software
+
+`setup.sh` makes the virtual environment, clones TMIV (tag `v24.0`) and QMIV (tag `v2.0-rc`) into `.deps/`, builds them and their dependencies with `clang`, and installs TMIV into `mvd/tmiv`. It also links the QMIV binary as `mvd/qmiv`.
+
+```bash
+cd beyond2d/mvd
+./setup.sh --system
+```
+
+With `--system` the script runs `sudo apt update`, `sudo apt upgrade -y` and then installs `build-essential`, `clang`, `git`, `libc++-dev`, `libclang-rt-dev`, `llvm`, `python3-pip` and `python3-venv`. The `upgrade` step upgrades every package on the machine. If you do not want that, install the packages yourself and run `./setup.sh` without the argument.
+
+The build compiles TMIV with its video codecs from source and takes a while. **Check:** when it ends without an error,
+
+```bash
+ls -l tmiv/bin/encode.py tmiv/bin/TmivDecoder qmiv
+```
+
+lists the three files. These are the files the jobs of section 1 call.
+
+:::tip[Run `setup.sh` once]
+If you run `setup.sh` a second time, it reuses the clones and rebuilds, and its last line, which creates the `qmiv` link, can report that the link exists. If `qmiv` is in place, you can ignore that message.
+:::
+
+## 3. Put the test content in place
+
+The configure script takes one base folder, `--content-dir`, with one sub-folder for each sequence. Each sub-folder holds a texture file and a depth file for each view:
+
+```text
+<content-dir>/DanceMoves/v0_texture_1920x1080_yuv420p10le.yuv
+<content-dir>/DanceMoves/v0_depth_1920x1080_yuv420p16le.yuv
+...
+<content-dir>/DanceMoves/v5_texture_1920x1080_yuv420p10le.yuv
+<content-dir>/DanceMoves/v5_depth_1920x1080_yuv420p16le.yuv
+```
+
+`<content-dir>` is the folder you pass to `--content-dir`, for example `~/b2d-content`. The view names are `v0` to `v5` for DanceMoves, `v0` to `v14` for Breakfast and `v00` to `v20` for Bartender. The texture is 10-bit 4:2:0 and the depth is 16-bit, both at 1920 x 1080 (TR 26.956, table 7.4.7-1). The camera parameters of each sequence and the pose traces are in the repository (`mvd/config/sequences/` and `mvd/config/pose_traces/`).
+
+Check the files you received against the checksums in the repository. The repository has them for Breakfast and DanceMoves:
+
+```bash
+cd <content-dir>/DanceMoves
+md5sum -c <path-to>/beyond2d/mvd/config/sequences/DanceMoves.md5
+```
+
+**Check:** every line ends in `OK`. The repository has no checksum file for Bartender.
+
+:::tip[The licence comes with the content]
+The TR says that the sequences were made available for 3GPP use under their licence agreements and that the licence text is in the sequence folder on the server (Annex C.4). Read it before you use or share anything made from them.
+:::
+
+## 4. Run the evaluation
+
+Configure the evaluation again, now with the real content folder, and run it. `-j 2` runs two jobs at the same time; the README advises limiting the parallel jobs because encoding and decoding use a lot of memory.
+
+```bash
+cd beyond2d/mvd
+. venv/bin/activate
+./configure_experiment.py --content-dir <content-dir> \
+    --condition-ids SCV --frame-counts 3 --content-ids DanceMoves --rate-ids RP3
+ninja -j 2
+```
+
+Each job prints one line, such as `[2/15] Encode SCV3 DanceMoves RP3`. The jobs run in this order of dependency:
+
+1. **Encode RP0.** TMIV encodes the six views with the condition `config/conditions/SCV/SCV_1_TMIV_encode.json`. It writes the raw video that is to be coded and a partial MIV bitstream. This rate point has no video coding.
+2. **Encode RP3.** The HM video encoder codes each video component with the quantisation parameters of `config/fixed_QPs.csv`, and the TMIV multiplexer joins the result into one MIV bitstream. The CSV gives RP3 a texture QP of 40 and a geometry QP of 18, the values of TR 26.956 table 9.4.4.1.3-2.
+3. **Reconstruct.** The TMIV decoder decodes the bitstream and renders each source view.
+4. **Interpolate.** The decoder renders the pose trace `p02` of DanceMoves, which is a path of viewing poses, with four times as many output frames as input frames.
+5. **Measure.** QMIV compares each reconstructed view with its source view.
+
+**Check:** `ninja` ends after `[15/15] Measure SCV3 DanceMoves RP3 v5` and `ninja -n` now prints `ninja: no work to do.`
+
+To make only what you need, name the file you want. Ninja then runs only the jobs it depends on, for example the first reconstructed view and its encoding:
+
+```bash
+ninja out/SCV3/DanceMoves/RP3/SCV3_DanceMoves_RP3_v0_tex_1920x1080_yuv420p10le.yuv
+```
+
+<details>
+<summary>Run the jobs on a Slurm cluster</summary>
+
+Add `--slurm` to the configure command. Each job is then a batch job on the default partition. The script `run_slurm_job.sh` submits it and waits for it, and it cancels the job if you interrupt it with Ctrl+C. The first time, the configure script writes `slurm_script.sh`, which runs each command under `/bin/time -v`. Add your own `sbatch` parameters there. Keep the queue full with `ninja -j 0`, which sets no limit on the number of jobs.
+
+The CPU count of each job is `--thread-count` (default 4), the same value as the thread count of the TMIV encoder and decoder.
+
+</details>
+
+## 5. Read the output
+
+All files are under `out/SCV3/DanceMoves/`, in one folder for each rate point (`RP0` and `RP3`). The name starts with the condition and the number of frames (`SCV3`), then the sequence and the rate point.
+
+| File | What it is |
+|---|---|
+| `RP0/TMIV_SCV3_DanceMoves_RP0.bit` | The partial MIV bitstream, without video sub-bitstreams |
+| `RP0/TMIV_SCV3_DanceMoves_RP0_geo_c00_<width>x<height>_yuv420p10le.yuv` | The geometry video that is to be coded (the texture file is named `tex`). The size is set by the encoder |
+| `RP3/TMIV_SCV3_DanceMoves_RP3_geo_c00.bit` | The coded video sub-bitstream for geometry |
+| `RP3/TMIV_SCV3_DanceMoves_RP3.bit` | The final MIV bitstream with its video sub-bitstreams. This is the file whose size gives the bitrate |
+| `RP3/SCV3_DanceMoves_RP3_v0_tex_1920x1080_yuv420p10le.yuv` | The reconstructed source view `v0` (one file for each view) |
+| `RP3/SCV3_DanceMoves_RP3_v0.qmiv` | The objective metrics of that view |
+| `RP3/SCV3_DanceMoves_RP3_p02_tex_1920x1080_yuv420p10le.yuv` | The pose trace video |
+
+The same folders also hold `.hls` (the TMIV parser log), `.log` and `.csv` (the TMIV bitrate report) files for analysis.
+
+Read the metrics of one view. The summary script of the next tutorial reads these two lines, one for PSNR and one for IV-SSIM:
+
+```bash
+grep -E "PSNR|IVSSIM" out/SCV3/DanceMoves/RP3/SCV3_DanceMoves_RP3_v0.qmiv
+```
+
+**Check:** the output has a line that starts with `PSNR` and gives three values in dB (Y, Cb and Cr), and a line that starts with `IVSSIM` and gives one number. TR 26.956 clause 7.4.5 names these metrics, among others, and says that the score is averaged over all source views.
+
+Look at the pose trace video with any player that reads raw video. With FFmpeg:
+
+```bash
+ffplay -f rawvideo -pixel_format yuv420p10le -video_size 1920x1080 -framerate 15 \
+    out/SCV3/DanceMoves/RP3/SCV3_DanceMoves_RP3_p02_tex_1920x1080_yuv420p10le.yuv
+```
+
+The frame rate of DanceMoves is 15 Hz. With 3 input frames the video has 12 frames. **Check:** the picture shows the dance scene from the viewpoints of the pose trace.
+
+To go further, run all three coding conditions, all rate points and the 65-frame input of the study, and collect the results in one table, see [Compare coding conditions](./mvd-compare-conditions).
+
+<details>
+<summary>Sources for this page</summary>
+
+- **Requirements, clone, build, configure, options, run, `ninja -j`, output file table, analysis files, software list:** `mvd/README.md` of 5G-MAG/rt-beyond2d-evaluation-framework, branch `main`. The clone uses HTTPS; the README shows the SSH address of the same repository.
+- **`setup.sh` steps** (packages, `TMIV_TAG=v24.0`, `QMIV_TAG=v2.0-rc`, the `qmiv` link, the `upgrade` step): `mvd/setup.sh`. The README lists QMIV as version 2.0; the script clones the tag `v2.0-rc`.
+- **The jobs, their order, the file names, the number of jobs, the four-times pose trace frames, the default views and pose traces:** `mvd/configure_experiment.py`. The content file names: `inputTexturePathFmt` and `inputGeometryPathFmt` in `mvd/config/conditions/*/*_1_TMIV_encode.json`, and the checksum files `mvd/config/sequences/Breakfast.md5` and `DanceMoves.md5`.
+- **QPs:** `mvd/config/fixed_QPs.csv`, and TR 26.956 V19.0.1, table 9.4.4.1.3-2 (RP1 to RP4: texture 20, 30, 40, 50; geometry 2, 10, 18, 26).
+- **The standard:** 3GPP TR 26.956 V19.0.1 (2025-10), clauses 4.2.1, 6.1, 7.4 (7.4.5 metrics), 9.4 (9.4.4.1 reference software, conditions and parameter settings), table 7.4.7-1 (sequence format), Annex C.4 (licences). The TR names the framework in clause 9.4.4.1.1 as tag v0.1.0 of the `mvd/` folder. The sequence frame rate of DanceMoves is from table 7.4.7-1 and `collect_objective_results.py`.
+- **Content access:** TR 26.956 clause 9.4.4.1.5.5 and Annex C.4. The repository does not say where to get the content.
+- **Verification.** Section 1 (virtual environment, configure, `ninja -n`, 15 jobs) was run on a clone of `main` with Python 3.14 and no content, and the job list matches the text. Section 2 (`setup.sh`), section 3, section 4 (running the jobs) and section 5 were **not run**: they need `sudo`, a C++ toolchain, hours of build and encode time, 32 GB of RAM and the test content, none of which were available. No output is shown for them, and what is said about the output files comes from the README and the configure script. Check them on a clean machine before you rely on them.
+
+</details>

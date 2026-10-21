@@ -1,0 +1,186 @@
+---
+title: "AI and ML Evaluation Framework: first evaluation"
+sidebar_label: "AI and ML Evaluation Framework - set up and run a first evaluation"
+hide_title: true
+sidebar_position: 1
+description: "Step by step with the AI and ML Evaluation Framework: install the codec pipeline, evaluate the wav2vec 2.0 speech recognition model uncompressed and compressed with NNCodec, and read the result file against TR 26.847 clause 5.2."
+---
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M15.5 13a3.5 3.5 0 0 0 -3.5 3.5v1a3.5 3.5 0 0 0 7 0v-1.8" />
+  <path d="M8.5 13a3.5 3.5 0 0 1 3.5 3.5v1a3.5 3.5 0 0 1 -7 0v-1.8" />
+  <path d="M17.5 16a3.5 3.5 0 0 0 0 -7h-.5" />
+  <path d="M19 9.3v-2.8a3.5 3.5 0 0 0 -7 0" />
+  <path d="M6.5 16a3.5 3.5 0 0 1 0 -7h.5" />
+  <path d="M5 9.3v-2.8a3.5 3.5 0 0 1 7 0v10" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">AI/ML Evaluation Framework</span>
+<h1>AI and ML Evaluation Framework</h1>
+</div>
+</div>
+
+In this tutorial you install the codec pipeline of the AI and ML Evaluation Framework and evaluate a speech recognition model, wav2vec 2.0, twice: as it is, and compressed with NNCodec, the open implementation of the NNC standard (ISO/IEC 15938-17). You then read the result file: the size of the model before and after compression and the word error rate it reaches.
+
+This is the model data testbed of 3GPP TR 26.847 V19.0.0 (clause 4.3, figure 4.3-1) applied to the transmission of compressed AI/ML model data for automatic speech recognition (clause 5.2). The repository is available on request through [Early Access](/early-access).
+
+:::tip[Read the READMEs first]
+Read the [README of the compression framework](https://github.com/5G-MAG/rt-ai-ml-evaluation-framework/blob/main/scripts/asr/compression/README.md) before you start; it lists the installation, every option of the pipeline and the result columns. The [main README](https://github.com/5G-MAG/rt-ai-ml-evaluation-framework#readme) shows the layout of the repository and marks the project as under development.
+:::
+
+| Repository | What it is | Used in |
+|---|---|---|
+| [rt-ai-ml-evaluation-framework](https://github.com/5G-MAG/rt-ai-ml-evaluation-framework) | The framework; the pipeline is in `scripts/asr/compression` | All sections |
+| [nncodec](https://github.com/fraunhoferhhi/nncodec) | NNCodec, the compression method used here (version 0.3.1) | [1. Install the pipeline](#1-install-the-pipeline) and [3. Compress the model with NNCodec](#3-compress-the-model-with-nncodec) |
+
+| You want | Go to |
+|---|---|
+| The pipeline installed | [1. Install the pipeline](#1-install-the-pipeline) |
+| A first result with the model as it is | [2. Evaluate the uncompressed model](#2-evaluate-the-uncompressed-model) |
+| The model compressed and evaluated again | [3. Compress the model with NNCodec](#3-compress-the-model-with-nncodec) |
+| To know what each number in the result file means | [4. Read the result file](#4-read-the-result-file) |
+| To run it in Docker | [5. Run in Docker](#5-run-in-docker) |
+
+**You need:** a Linux machine (the requirements file is tested under Linux only) with Python 3.10, `git`, `pip` and a C++ compiler (NNCodec builds native code when it is installed). A GPU is optional: the pipeline prints `Device: cpu` or the CUDA version it found, and runs on both. About 5 GB of disk. No account and no key: the pipeline downloads the model from the TorchAudio servers and the LibriSpeech test-clean dataset by itself, and the dataset is released under CC BY 4.0 (TR 26.847 clause 5.2.8).
+
+## 1. Install the pipeline
+
+```bash
+git clone https://github.com/5G-MAG/rt-ai-ml-evaluation-framework.git
+cd rt-ai-ml-evaluation-framework/scripts/asr/compression
+python3.10 -m venv env
+source env/bin/activate
+pip install -r requirements.txt
+git clone --branch v0.3.1 https://github.com/fraunhoferhhi/nncodec.git $HOME/nncodec
+pip install $HOME/nncodec
+```
+
+Then make the folder that holds the downloads and the results. The pipeline does not create the `out` folder; the Docker scripts do.
+
+```bash
+export AIML=$HOME/aiml-data
+mkdir -p $AIML/out $AIML/data/data_sets
+```
+
+:::tip[No GPU]
+The first line of `requirements.txt` points to a PyTorch index for CUDA. On a machine without a GPU, change it to `--extra-index-url https://download.pytorch.org/whl/cpu` before the `pip install`. The pinned versions are `torch==2.0.0` and `torchaudio==2.0.1`, which need Python 3.10 or an earlier one.
+:::
+
+**Check:** NNCodec and the pipeline's libraries import.
+
+```bash
+python -c "import nnc, torch, torchaudio, torcheval; print(torch.__version__, torchaudio.__version__)"
+```
+
+It prints `2.0.0` and `2.0.1`, each followed by a build suffix such as `+cpu`.
+
+## 2. Evaluate the uncompressed model
+
+Go to the `pipeline` folder and run the pipeline with the `dummy` coder. It writes the parameters as 32-bit floats and copies the model, so the result is the anchor of TR 26.847: the model as it is.
+
+```bash
+cd pipeline
+python run.py --scenario_name=asr --model_name=wav2vec_asr_base_960h \
+  --coder_name=dummy --unique_tag=dummy \
+  --out_dir=$AIML/out --data_dir=$AIML/data
+```
+
+Always give `--out_dir` and `--data_dir`; their defaults are Windows folders.
+
+The first run downloads the model (about 0.4 GB) and the test-clean dataset (331 MB) into `$AIML/data`; later runs reuse them. The pipeline then evaluates the model on all 2620 sequences of test-clean (clause 5.2.8, table 5.2.8-1), compresses and decompresses it with the dummy coder and evaluates the copy. Expect a long run on a CPU: the evaluation of the whole dataset is done twice. Add `--eval_compression=0` to evaluate only the anchor.
+
+**Check:** the run ends with `Writing result to csv file` and `Done`, and the file exists.
+
+```bash
+cat $AIML/out/asr_dummy_wav2vec_asr_base_960h__dummy.csv
+```
+
+The file name joins `asr`, the coder, the model, the dataset name (empty here, hence the double underscore) and the tag with underscores. `anc_size` is `377572980` (bytes, 94.4 million parameters at 4 bytes), `rec_size` is the same number and `compress_ratio` is `1.0`. `anc_perf` is close to `0.034`, the word error rate of 3.4% that table 5.2.4-1 gives for this model.
+
+## 3. Compress the model with NNCodec
+
+Run the pipeline again with the `nnc` coder and one of the encoder configuration files of the repository, `QP_-22.json`. The anchor was evaluated in section 2, so skip it with `--eval_anchor=0`:
+
+```bash
+python run.py --scenario_name=asr --model_name=wav2vec_asr_base_960h \
+  --coder_name=nnc --enc_cfg_file_name=../evaluations/cfg/QP_-22.json \
+  --eval_anchor=0 --unique_tag=-22 \
+  --out_dir=$AIML/out --data_dir=$AIML/data
+```
+
+The number in the file name is the quantization parameter (QP) of NNCodec; the repository has one file for each QP from -7 to -45. `--enc_cfg_file_name` is relative to the `pipeline` folder.
+
+**Check:** the run prints `enc_time`, a decoding step and `dec_time`, and ends with `Done`. Three files are new in `$AIML/out`: the bitstream `asr_nnc_wav2vec_asr_base_960h__-22.bit`, the decoded model `.dec` (about as large as the anchor) and the result `.csv`.
+
+```bash
+ls -l $AIML/out
+```
+
+The `.bit` file is a small fraction of the anchor. Keep the `.dec` files in mind when you plan disk space: each run leaves one.
+
+## 4. Read the result file
+
+Because the anchor was skipped in section 3, `anc_size`, `anc_perf` and `compress_ratio` are `nan` in that file. Put the two files side by side:
+
+```bash
+python - <<'EOF'
+import csv, os
+d = os.environ["AIML"] + "/out/"
+anc = next(csv.DictReader(open(d + "asr_dummy_wav2vec_asr_base_960h__dummy.csv")))
+rec = next(csv.DictReader(open(d + "asr_nnc_wav2vec_asr_base_960h__-22.csv")))
+print("cSize =", float(rec["rec_size"]) / float(anc["anc_size"]))
+print("werAnc =", float(anc["anc_perf"]), " wer =", float(rec["rec_perf"]))
+EOF
+```
+
+How the columns of the result file read against TR 26.847 clause 5.2.9 and clause 5.2.7, which define the pair that characterises a compression method:
+
+| Column | Meaning | TR 26.847 |
+|---|---|---|
+| `anc_size` | Size of the anchor model, in bytes | sizeAnc |
+| `anc_perf` | Word error rate of the anchor, as a fraction (`0.034` is 3.4%) | werAnc |
+| `rec_size` | Size of the bitstream, in bytes | the test bitstream size |
+| `rec_perf` | Word error rate of the model after decoding | wer |
+| `compress_ratio` | `rec_size` divided by `anc_size`; `nan` unless the anchor was evaluated in the same run | cSize |
+| `enc_time`, `dec_time` | Encoding and decoding time, in seconds | not named in clause 5.2 |
+| `anc_eval_time`, `rec_eval_time` | Time of the two evaluations, in seconds | not named in clause 5.2 |
+
+The mapping of columns to the names of the TR is read from the README and the clause text; the repository does not state it. `metric_name` is `WER`. Compare the two lines of the output: a smaller bitstream with a higher word error rate is the trade-off the evaluation measures. The [next tutorial](./qp-sweep) repeats this for many QPs and plots it.
+
+## 5. Run in Docker
+
+<details>
+<summary>The same runs in a container</summary>
+
+The compression folder has a Dockerfile (Ubuntu 22.04, Python 3.10, the requirements and NNCodec on an NVIDIA CUDA 12.0 base image) and scripts that mount one host folder for the data and the results. The scripts start the container with `--gpus all`, so Docker needs the NVIDIA Container Toolkit and a GPU. From `scripts/asr/compression`:
+
+```bash
+cd docker
+./buildContainer.sh
+./runPipeline.sh $HOME/aiml-data --scenario_name="asr" --model_name="wav2vec_asr_base_960h" \
+  --coder_name="dummy" --unique_tag="dummy"
+./runPipeline.sh $HOME/aiml-data --scenario_name="asr" --model_name="wav2vec_asr_base_960h" \
+  --coder_name="nnc" --eval_anchor=0 --unique_tag="-22" \
+  --enc_cfg_file_name="/framework/evaluations/cfg/QP_-22.json"
+```
+
+The script creates `out` and `data/data_sets` under the host folder, sets `--out_dir` and `--data_dir` itself and passes everything else to the pipeline. The configuration files are inside the image at `/framework/evaluations/cfg`. **Check:** the result files appear in `$HOME/aiml-data/out` as in sections 2 and 3, and the script ends with `Container run successfull!` (spelled so in the script).
+
+</details>
+
+## 6. Stop and clean up
+
+Nothing runs in the background. To free the disk, delete the files of a run you no longer need; the `.dec` files are the largest, and `$AIML/data` holds the downloads.
+
+```bash
+rm $AIML/out/*.dec
+deactivate
+```
+
+## Sources
+
+- 3GPP TR 26.847 V19.0.0 (2025-06), clause 4.3 and figure 4.3-1 (model data testbed architecture), clause 5.2 (compressed AI/ML model data for automatic speech recognition: tables 5.2.4-1, 5.2.8-1, clauses 5.2.7 and 5.2.9) and Annex B.2 (the software framework).
+- [scripts/asr/compression/README.md](https://github.com/5G-MAG/rt-ai-ml-evaluation-framework/blob/main/scripts/asr/compression/README.md), `pipeline/run.py`, `pipeline/evalMain.py` and `docker/runPipeline.sh` of the repository.
+- [NNCodec](https://github.com/fraunhoferhhi/nncodec), tag `v0.3.1`.

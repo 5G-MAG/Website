@@ -12,6 +12,7 @@ import CommunityStats from '@site/src/components/CommunityStats';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { REPO_METADATA } from '@site/src/data/baskets';
 import ProjectSlide from '@site/src/components/ProjectSlide';
+import FigurePair from '@site/src/components/FigurePair';
 
 export const REPO_COUNT = (REPO_METADATA['dvb-i'] || []).length;
 
@@ -29,11 +30,33 @@ export const REPO_COUNT = (REPO_METADATA['dvb-i'] || []).length;
 
 <ProjectSlide image="/assets/images/projects/dvb-i-reference-tools.png" alt="DVB-I Services over 5G Systems: Reference Tools slide">
 
-DVB-I defines a common service discovery and selection framework that unifies IP-delivered TV services across access networks. The 5G-MAG implementation covers DVB-I service discovery and selection, and hands off to 5G-MAG's other reference tools for the actual 5G unicast (via 5G Media Streaming, 5GMS) and 5G Broadcast (via Further evolved Multimedia Broadcast Multicast Service, FeMBMS) delivery paths, enabling a seamless hybrid broadcast/broadband TV experience. The service list bootstrap step (via a Service List Registry) is not yet documented: see [Tutorials](./tutorials) for the current gap. For the full architecture and specification mapping, see [Implementation Detail](./implementation).
+DVB-I defines a common service discovery and selection framework that unifies IP-delivered TV services across access networks. The 5G-MAG implementation covers DVB-I service discovery and selection, and hands off to 5G-MAG's other reference tools for the actual 5G unicast (via 5G Media Streaming, 5GMS) and 5G Broadcast (via Further evolved Multimedia Broadcast Multicast Service, FeMBMS) delivery paths, enabling a seamless hybrid broadcast/broadband TV experience. The service list bootstrap step is covered by the [Service List Registry tutorial](./tutorials/service-list-registry) and the other [Tutorials](./tutorials). For the full architecture and specification mapping, see [Implementation Detail](./implementation).
 
 </ProjectSlide>
 
 ## What's Built
+
+<FigurePair
+  figures={[
+    {
+      label: 'DVB-I components and interfaces',
+      src: '/img/tech/dvb-i/generated/ts103770-fig1-status.svg',
+      width: 943, height: 1275,
+      title: 'Simplified example DVB-I components and interfaces, with Reference Tools',
+      source: 'Based on ETSI TS 103 770 V1.2.1, figure 1 (clause 4.1)',
+      alt: 'The DVB-I components and interfaces: the DVB-I Client, and the Content Guide Servers, Service List Servers, Service List Registry, Application Servers, Playlist Servers, MPD Servers and Stream Servers, with the Content/Service Providers that feed them. The Reference Tools provide the Content Guide Servers and the Service List Servers (rt-dvb-i-application-provider), the DVB-I Client (rt-dvb-i-application) and the Service List Registry (rt-dvb-i-service-list-registry). The other boxes have no repository.',
+    },
+    {
+      label: 'DVB-I over 5G reference architecture',
+      src: '/img/tech/dvb-i/generated/tr103972-fig5.1-1-status.svg',
+      width: 1200, height: 1048,
+      title: 'High level architecture for DVB-I Services over 5G Systems, with Reference Tools',
+      source: 'Based on ETSI TR 103 972 V1.1.1, figure 5.1-1',
+      alt: 'The DVB-I and DVB-DASH system above the 5G System. The Application holds the DVB-I Client, provided by rt-dvb-i-application, and the DVB-DASH Client, which has no repository. The Content Service Provider holds the DVB-I Content Guide Server and the DVB-I Service List Server, both provided by rt-dvb-i-application-provider, and the Playlist, MPD and Segment Servers, which have no repository. The 5G Data Network, the 5G System and its 5G Unicast and 5G Broadcast parts have no repository in this project.',
+    },
+  ]}
+  note="rt-dvb-i-android-application is a second DVB-I Client and rt-5gms-application carries the Exo DVB-I Player; neither is drawn, because one box shows one repository. rt-dvb-i-examples brings the repositories up together and is not a box of either figure. Click a figure to enlarge it."
+/>
 
 **{REPO_COUNT}** {REPO_COUNT === 1 ? 'repository makes' : 'repositories make'} up this project, listed below.
 

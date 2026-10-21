@@ -1,8 +1,8 @@
 ---
 title: Tutorials
 hide_title: true
-sidebar_position: 3
-description: Notes that step-by-step tutorials aren't yet published for the Beyond 2D Evaluation Framework and points to repository READMEs instead.
+sidebar_position: -1
+description: "Step-by-step tutorials for the Beyond 2D Video Evaluation Framework: run a multi-view plus depth evaluation, compare coding conditions, and prepare and measure V-PCC point clouds."
 ---
 
 import ProjectVideos from '@site/src/components/ProjectVideos';
@@ -22,11 +22,19 @@ export const projectVideos = youtubePlaylists.projects?.['beyond-2d']?.videos ||
 </div>
 
 
-Step-by-step tutorials for the Beyond 2D Evaluation Framework are not yet published on this portal. In the meantime, the setup and usage instructions live in the repository README files.
+## [Run a multi-view plus depth evaluation](./mvd-first-evaluation)
 
-- For the current repositories and their READMEs, see the [Repositories & Releases](/testbeds/beyond-2d#repositories--releases) page.
-- For what the framework evaluates and the specifications it tracks, see the [Implementation Detail](./implementation) page.
-- Related encoding and rendering walkthroughs are available for the [MPEG V3C Immersive Platform](/reference-tools/v3c/tutorials).
+Build TMIV and QMIV, put the test content in place, run a small evaluation of one coding condition and read the output files.
+
+## [Compare coding conditions](./mvd-compare-conditions)
+
+Run the three coding conditions at four rate points, collect the bitrate and the objective quality in one table and compare them.
+
+## [Prepare, encode and measure V-PCC point clouds](./vpcc-point-clouds)
+
+Make point clouds from a mesh sequence, encode and decode them with V-PCC, read the metrics and render videos along a camera path.
+
+For what the framework evaluates and the specifications it tracks, see the [Implementation Detail](../implementation) page. For the repositories and their READMEs, see [Repositories & Releases](/testbeds/beyond-2d#repositories--releases).
 
 <div class="onair-kicker"><span class="onair-kicker__dot"></span>Watch</div>
 

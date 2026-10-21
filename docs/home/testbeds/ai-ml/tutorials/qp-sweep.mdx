@@ -1,0 +1,197 @@
+---
+title: "AI and ML Evaluation Framework: sweep quantization parameters"
+sidebar_label: "AI and ML Evaluation Framework - sweep quantization parameters and plot the trade-off"
+hide_title: true
+sidebar_position: 2
+description: "Step by step with the AI and ML Evaluation Framework: run NNCodec over a range of quantization parameters on the wav2vec 2.0 speech recognition model, plot word error rate against compressed size, read the points against the test cases of TR 26.847 clause 5.2.9, and change a codec setting."
+---
+
+<div class="topic-banner">
+<div class="topic-banner__icon-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M15.5 13a3.5 3.5 0 0 0 -3.5 3.5v1a3.5 3.5 0 0 0 7 0v-1.8" />
+  <path d="M8.5 13a3.5 3.5 0 0 1 3.5 3.5v1a3.5 3.5 0 0 1 -7 0v-1.8" />
+  <path d="M17.5 16a3.5 3.5 0 0 0 0 -7h-.5" />
+  <path d="M19 9.3v-2.8a3.5 3.5 0 0 0 -7 0" />
+  <path d="M6.5 16a3.5 3.5 0 0 1 0 -7h.5" />
+  <path d="M5 9.3v-2.8a3.5 3.5 0 0 1 7 0v10" /></svg>
+</div>
+<div class="topic-banner__text">
+<span class="topic-banner__kicker">AI/ML Evaluation Framework</span>
+<h1>AI and ML Evaluation Framework</h1>
+</div>
+</div>
+
+In this tutorial you compare test conditions with the AI and ML Evaluation Framework. You run NNCodec on the wav2vec 2.0 speech recognition model at several quantization parameters (QPs), plot the word error rate against the compressed size, read the points against the test case of 3GPP TR 26.847 V19.0.0 clause 5.2.9, and change a codec setting to see its effect.
+
+TR 26.847 characterises a compression method by a set of test configurations, each giving a pair of the compressed size and the word error rate. The sweep script and the plotter of the framework produce exactly these pairs (Annex B.2). The repository is available on request through [Early Access](/early-access).
+
+:::tip[Read the READMEs first]
+Read the [README of the compression framework](https://github.com/5G-MAG/rt-ai-ml-evaluation-framework/blob/main/scripts/asr/compression/README.md); the sections "NNC Evaluation Script" and "Graph Plotter" describe the two scripts used here.
+:::
+
+| Repository | What it is | Used in |
+|---|---|---|
+| [rt-ai-ml-evaluation-framework](https://github.com/5G-MAG/rt-ai-ml-evaluation-framework) | The framework; the scripts are in `scripts/asr/compression` | All sections |
+| [nncodec](https://github.com/fraunhoferhhi/nncodec) | NNCodec, the compression method that is swept (version 0.3.1) | All sections |
+
+| You want | Go to |
+|---|---|
+| The pipeline installed | [1. Install the pipeline](#1-install-the-pipeline) |
+| Results for a range of QPs | [2. Run the sweep](#2-run-the-sweep) |
+| The sizes and word error rates in a table | [3. Read the points](#3-read-the-points) |
+| A plot of word error rate against size | [4. Plot the trade-off](#4-plot-the-trade-off) |
+| The points against the test case of TR 26.847 | [5. Compare with the test case](#5-read-the-points-against-the-test-case) |
+| The effect of another NNCodec setting | [6. Change a codec setting](#6-change-a-codec-setting) |
+| The other model, or the full range of QPs | [7. The other model and the full range](#7-the-other-model-and-the-full-range) |
+
+**You need:** a Linux machine with Python 3.10, `git`, `pip` and a C++ compiler; a GPU is optional. The sweep evaluates the model once for the anchor and once for every QP, on all 2620 sequences of the LibriSpeech test-clean dataset, so allow hours on a CPU. Each QP leaves a decoded model as large as the anchor (about 0.4 GB for this model), so allow about 3 GB of disk for the five QPs used here. No account is needed: the model and the dataset are downloaded by the pipeline.
+
+## 1. Install the pipeline
+
+```bash
+git clone https://github.com/5G-MAG/rt-ai-ml-evaluation-framework.git
+cd rt-ai-ml-evaluation-framework/scripts/asr/compression
+python3.10 -m venv env
+source env/bin/activate
+pip install -r requirements.txt
+git clone --branch v0.3.1 https://github.com/fraunhoferhhi/nncodec.git $HOME/nncodec
+pip install $HOME/nncodec
+export AIML=$HOME/aiml-data
+mkdir -p $AIML/out $AIML/data/data_sets
+```
+
+The sweep script does not create the `out` folder; without it every run fails when it writes its result. On a machine without a GPU, change the first line of `requirements.txt` to `--extra-index-url https://download.pytorch.org/whl/cpu` before the `pip install`.
+
+**Check:** the sweep script starts.
+
+```bash
+python evaluations/evalNncAsr.py --help
+```
+
+## 2. Run the sweep
+
+`evalNncAsr.py` calls the pipeline first for the anchor (no compression) and then once for each QP of the range, with the configuration file `evaluations/cfg/QP_<qp>.json`. The repository has a file for each QP from -7 to -45. Run five QPs, from -36 to -28 in steps of 2:
+
+```bash
+python evaluations/evalNncAsr.py --data_directory=$AIML \
+  --model_name=wav2vec_asr_base_960h \
+  --qp_start=-36 --qp_end=-28 --qp_step=2
+```
+
+`--data_directory` holds the downloads in `data` and the results in `out`. The script prints `Running the codec pipeline for wav2vec_asr_base_960h with QP=-36`, and so on, followed by `Completed` after each run. It prints `Completed` even when a run has failed, so check the files.
+
+**Check:** the result files exist, one for the anchor and one for each QP.
+
+```bash
+ls $AIML/out/*.csv
+```
+
+You see `asr_nnc_wav2vec_asr_base_960h__anc.csv` and the files `...__-36.csv`, `...__-34.csv`, `...__-32.csv`, `...__-30.csv` and `...__-28.csv`. If a file is missing, read the error above its `Running test:` line.
+
+## 3. Read the points
+
+Print one line for each QP. The size ratio does not depend on the dataset; the word error rate does.
+
+```bash
+python - <<'EOF'
+import csv, glob, os
+d = os.environ["AIML"] + "/out/"
+p = "asr_nnc_wav2vec_asr_base_960h__"
+anc = next(csv.DictReader(open(d + p + "anc.csv")))
+a_size, a_wer = float(anc["anc_size"]), float(anc["anc_perf"])
+print(f"anchor: size {a_size:.0f} bytes, wer {100*a_wer:.2f} %")
+rows = []
+for f in glob.glob(d + p + "-*.csv"):
+    r = next(csv.DictReader(open(f)))
+    rows.append((int(r["unique_tag"]), float(r["rec_size"]) / a_size, float(r["rec_perf"])))
+for qp, c, w in sorted(rows):
+    print(f"QP {qp:4d}  cSize {100*c:5.1f} %  wer {100*w:5.2f} %  within 5 points of the anchor: {a_wer <= w <= a_wer + 0.05}")
+EOF
+```
+
+**Check:** the anchor is `377572980` bytes and its word error rate is close to 3.4% (a full run of the anchor gave `0.034`). The size ratio (`cSize`) falls as the QP rises. TR 26.847 clause 5.2.14 reports about 10% to 15% for the full range, and the README says results might not be exactly reproducible on different machines. This sweep was not run in full for this page, so no per-QP values are given here; one run, QP -22 on this model, gave a bitstream of `29064621` bytes, 7.7% of the anchor.
+
+## 4. Plot the trade-off
+
+The plotter reads every csv file of the folder whose name starts with the prefix, takes the anchor from the `anc` file and writes a PDF next to them:
+
+```bash
+python evaluations/plotGraphs.py --data_directory=$AIML/out \
+  --prefix=asr_nnc_wav2vec_asr_base_960h__
+```
+
+**Check:** it prints `Plot saved as PDF at:` and the file `$AIML/out/asr_nnc_wav2vec_asr_base_960h__.pdf` exists. Open it. The x axis is the compressed size in percent of the anchor, the y axis is the word error rate in percent, the blue line joins the QPs and the dotted red line is the anchor. Example plots for both models are in `evaluations/examples/` of the repository.
+
+The plotter stops with `No appropriate qp or anc files found` when the anchor file is missing, and with an error when a file with the same prefix has a tag that is not a number. Keep other runs out of the folder, or give them another `--out_dir`, as section 6 does.
+
+## 5. Read the points against the test case
+
+TR 26.847 clause 5.2.9, table 5.2.9-1, defines two test cases: wav2vec 2.0 (`WAV2VEC2_ASR_BASE_960H`) with word error rates from 3.4% to 8.4%, and HuBERT (`HUBERT_ASR_LARGE`) from 2.1% to 7.1%. A compression method is evaluated with several test configurations, each giving a pair (cSize, wer); if possible the set holds at least five configurations whose word error rate lies between werAnc and werAnc plus 0.05. Table 5.2.9-1 shows that 0.05 means 5 percentage points: 3.4% to 8.4%.
+
+In your plot:
+
+1. Count the points between the red line and 5 percentage points above it. The table of section 3 prints this for each QP; the five QPs of this tutorial are the smallest set that meets the clause.
+2. Read the size at which the curve leaves that window. Smaller bitstreams at the same word error rate are better.
+3. Compare with clause 5.2.14, which reports the same sweep from -15 to -45: NNCodec reduces the model size to about 10% to 15% with negligible loss, without data-dependent tools.
+
+The pair (cSize, wer) for each configuration, with werAnc, is how clause 5.2.9 and its figure 5.2.9-1 suggest reporting a method.
+
+## 6. Change a codec setting
+
+A configuration file is a small JSON file of NNCodec parameters; the README points to the [NNCodec usage page](https://github.com/fraunhoferhhi/nncodec/wiki/Usage) for their meaning. Table 5.2.14-1 of TR 26.847 lists the tools the repository files switch on, among them `use_dq` (dependent scalar quantization). Switch it off for two QPs and compare, keeping the new results in their own folder:
+
+```bash
+cd pipeline
+mkdir -p $AIML/cfg-nodq $AIML/out-nodq
+for qp in -32 -36; do
+  sed 's/"use_dq": true/"use_dq": false/' ../evaluations/cfg/QP_$qp.json > $AIML/cfg-nodq/QP_$qp.json
+  python run.py --scenario_name=asr --model_name=wav2vec_asr_base_960h \
+    --coder_name=nnc --enc_cfg_file_name=$AIML/cfg-nodq/QP_$qp.json \
+    --eval_anchor=0 --unique_tag=$qp \
+    --out_dir=$AIML/out-nodq --data_dir=$AIML/data
+done
+```
+
+The repository requires `ioq`, `lsa` and `fine_tune` to stay at `0` (false), because the framework only supports tools that do not need data. Leave those and change the others.
+
+**Check:** each run ends with `Done`; compare the two folders.
+
+```bash
+python - <<'EOF'
+import csv, os
+a = os.environ["AIML"]
+for qp in (-32, -36):
+    for folder in ("out", "out-nodq"):
+        r = next(csv.DictReader(open(f"{a}/{folder}/asr_nnc_wav2vec_asr_base_960h__{qp}.csv")))
+        print(qp, folder, "rec_size", r["rec_size"], "wer", round(100 * float(r["rec_perf"]), 2), "%")
+EOF
+```
+
+Each pair of lines shows the effect of the setting on the bitstream size and on the word error rate at the same QP.
+
+## 7. The other model and the full range
+
+<details>
+<summary>HuBERT and the range of the TR</summary>
+
+Run the same script with `--model_name=hubert_asr_large`, and plot with the prefix `asr_nnc_hubert_asr_large__`. The anchor word error rate is 2.1% (table 5.2.4-1), the model has 315.5 million parameters, so each decoded model takes about 1.3 GB; delete the `.dec` files as you go.
+
+The Docker scripts `docker/runEvalNncAsr.sh <host folder>` and `docker/runPlotGraphs.sh <host folder>` run both models over QP -45 to -15 in steps of 1, the range of clause 5.2.14, and plot both. They use the image built in the first tutorial's Docker section with `./buildContainer.sh`, and start it with `--gpus all`. The README advises a smaller range for a first test, because encoding both models with all QPs takes a long time on a single machine. This fold was written from the README and the scripts; it was not run.
+
+</details>
+
+## 8. Stop and clean up
+
+Nothing runs in the background. The decoded models are the largest files.
+
+```bash
+rm $AIML/out/*.dec $AIML/out-nodq/*.dec
+deactivate
+```
+
+## Sources
+
+- 3GPP TR 26.847 V19.0.0 (2025-06), clause 5.2.4 (table 5.2.4-1), clause 5.2.9 (table 5.2.9-1, figure 5.2.9-1), clause 5.2.14 (table 5.2.14-1) and Annex B.2.
+- [scripts/asr/compression/README.md](https://github.com/5G-MAG/rt-ai-ml-evaluation-framework/blob/main/scripts/asr/compression/README.md), `evaluations/evalNncAsr.py`, `evaluations/plotGraphs.py`, `evaluations/cfg/` and `docker/runEvalNncAsr.sh` of the repository.
+- [NNCodec](https://github.com/fraunhoferhhi/nncodec), tag `v0.3.1`, and its usage page.
