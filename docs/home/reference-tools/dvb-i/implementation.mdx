@@ -2,8 +2,11 @@
 title: Implementation Detail
 hide_title: true
 sidebar_position: 2
-description: Status of the DVB-I Services over 5G Systems Reference Tools; the code audit of this project is not yet done.
+description: What the DVB-I Services over 5G Systems Reference Tools implement, component by component, from an audit of the repositories on main against ETSI TS 103 770.
 ---
+
+import ImplementationCases from '@site/src/components/ImplementationCases';
+import AUDIT from '@site/src/data/audit-dvb-i.json';
 
 <div class="topic-banner">
 <div class="topic-banner__icon-wrap">
@@ -19,28 +22,31 @@ description: Status of the DVB-I Services over 5G Systems Reference Tools; the c
 
 :::tip[In short]
 
-- **Status:** not yet audited. The audit will be done on the `main` branch of each repository; until then this page shows the state described by each repository's README.
-- **Which specification the code follows:** ETSI TS 103 770, *Service Discovery and Programme Metadata for DVB-I*, with its schemas.
-- **DVB-I over 5G:** judged against TS 103 770 clause 9.3, 3GPP TS 26.347 and ETSI TR 103 972 once the audit is done.
+- **What this covers:** the DVB-I client (browser and Android), the service list and content guide server (the application provider), the service list registry and the Exo DVB-I Player, judged against ETSI TS 103 770 V1.2.1. Judged on the `main` branch of each repository on 2026-10-22.
+- **Source of this page:** every requirement is split into the cases its clause defines; each case was read against the code by one reader and then independently by a second, with a third reading where they disagreed. Cases that need documents that were not available (TS 102 796, TS 102 809) or that only a running system can settle are not shown.
+- **DVB-I over 5G:** the 5G parts (TS 26.347, ETSI TR 103 972, the MBMS client interface) are outside the scope of this audit. The Android client carries the DVB-I side of an MBMS path, but the only MBMS client behind it is a no-op, so no service is received over 5G Broadcast today.
 
 :::
 
 For what the specifications define, see the [Technology](/tech/dvb-i). For how to run the tools, see the [Tutorials](/reference-tools/dvb-i/tutorials).
 
+## What the Reference Tools implement
+
+- **Provider (service list and content guide server, with an editor):** publishes one DVB-I service list with channel numbers per region, service instances for DASH, multicast, HLS and MBMS delivery, a content guide for schedule and now/next, and a service list editor with history. It has no programme information endpoint (the `pid` request), no server-side region selection, no image variants and no More Episodes or Box Set. Several outputs differ from TS 103 770: the list is served as `application/xml`, versions are not raised on every published change, `OnDemandProgram` lacks `@serviceIDRef` and its mandatory `Genre`, and the `ContentGuideServiceRef` it publishes is not accepted as `sid` by its own endpoints.
+- **Browser client:** discovers a service list, presents channels and a content guide, applies the user's region, parental rating and instance priority, and plays through dash.js and hls.js. It does not evaluate service hours, does not read cache directives, refreshes on a fixed schedule, accepts plain `http`, and enforces parental rating only at service level and only with a PIN.
+- **Android client:** implements more of the selection rules, including the regulator-list default, instance precedence with service hours, `ContentGuideServiceRef` precedence, programme requests with `pid` and RFC 3986 query encoding. The programme rating is read once when the player opens. It has no Restart handling and no scheduled daily registry access.
+- **Service list registry:** answers client queries with a list of service list entry points and rejects undefined parameters, but it drops offerings that carry no `TargetCountry`, `Language` or `Genre` when that parameter is queried, does not validate every value, and writes no `@regulatorListFlag`, `@version` or `@required`.
+- **Exo DVB-I Player:** the repository holds a WebView around an external front end, a patch to ExoPlayer's demo app and a one-shot download of a fixed service list that nothing reads. The DVB-I logic is in the external front end, which is not part of the repository.
+
 ## Implementation status
 
-Not yet audited.
+Open a feature, then a requirement, to see each case and why. Filter by component and release.
 
-- **rt-dvb-i-application:** a browser DVB-I client that discovers a service list, presents its channels with their content guide, and plays them. Its README marks it as under development.
-- **rt-dvb-i-android-application:** a native Android DVB-I client that discovers a service list, presents its channels with their content guide, and plays them with Media3 ExoPlayer. Its README marks it as under development.
-- **rt-dvb-i-application-provider:** publishes a DVB-I service list and its content guide, and gives an editor for maintaining them. Its README marks it as under development.
-- **rt-dvb-i-service-list-registry:** answers DVB-I client queries with a list of Service List Entry Points. Its README marks it as under development.
-- **rt-dvb-i-examples:** runnable examples that bring the DVB-I repositories up together on one machine, publishing and playing a service list. Its README marks it as under development.
-- **Exo DVB-I Player:** an Android application that is part of rt-5gms-application; not yet audited.
+<ImplementationCases data={AUDIT} />
 
 :::info[Full audit for members]
 
-When the audit of this project is complete, the full audit, with the code behind each verdict, will be available to 5G-MAG members through [Developer Tools](/developer-tools).
+The full audit, with the code behind each verdict, is available to 5G-MAG members through [Developer Tools](/developer-tools).
 
 [Become a member](/membership) · [Request access](/early-access)
 
