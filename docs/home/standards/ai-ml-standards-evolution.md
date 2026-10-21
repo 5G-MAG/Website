@@ -21,14 +21,33 @@ This page is the detailed, release-by-release companion to [Standards: AI/ML Eva
 
 :::tip[At a glance]
 
-- **Release 19:** work item FS_AI4Media; 2 versions without a change request.
-- **Release 18:** work items FS_AIML_MT, FS_AIMLsys, FS_eNA_Ph3; 3 change requests.
+- **Release 20:** TS 23.288 work items AIML_CN_Ph2, TEI20_Metrics and TEI20_UDCE in the work plan; TS 23.288 V20.2.0 adds a loss value to the model accuracy information. Scopes not read in a primary source are marked unverified.
+- **Release 19:** work item FS_AI4Media; 2 versions without a change request. In TS 23.288, work item AIML_CN adds vertical federated learning, AI/ML positioning support and two analytics.
+- **Release 18:** work items FS_AIML_MT, FS_AIMLsys, FS_eNA_Ph3; 3 change requests. TS 23.288 gains ML model training, accuracy monitoring, federated learning and model storage in the ADRF.
+- **Release 17:** work item eNA_Ph2 splits the NWDAF into AnLF and MTLF and adds ML model provisioning.
+- **Release 15 and 16:** the NWDAF is introduced in Release 15; work item eNA in Release 16 defines the analytics framework.
 
 :::
 
-Sources: the 3GPP work plan of 28 September 2026, the 3GPP Change Request database of 25 September 2026, and the change history of TR 22.874 V18.2.0, TR 23.700-80 V18.0.0, TR 23.700-81 V18.0.0, TR 26.847 V19.0.0, TR 26.927 V19.0.0.
+Sources: the 3GPP release descriptions TR 21.915 to TR 21.919, the 3GPP work plan of 28 September 2026, the 3GPP Change Request database of 25 September 2026, and the change history of TR 22.874 V18.2.0, TR 23.700-80 V18.0.0, TR 23.700-81 V18.0.0, TR 26.847 V19.0.0, TR 26.927 V19.0.0.
 
 This page covers [TR 22.874](https://www.3gpp.org/dynareport/22874.htm), [TR 23.700-80](https://www.3gpp.org/dynareport/23700-80.htm), [TR 23.700-81](https://www.3gpp.org/dynareport/23700-81.htm), [TR 26.847](https://www.3gpp.org/dynareport/26847.htm), [TR 26.927](https://www.3gpp.org/dynareport/26927.htm). The work items are those that name these specifications in the 3GPP work plan. The change requests are those recorded in the 3GPP Change Request database as implemented in a version.
+
+## Release 20
+
+There is no TR 21.920 in the archive yet. The items below come from the work plan of 28 September 2026 and from the change history and text of TS 23.288 V20.2.0; scopes that were not read in a primary source are marked unverified.
+
+| Work item | Title | Specifications (work plan) | What was verified |
+| --- | --- | --- | --- |
+| AIML_CN_Ph2 (SP-251669) | Core Network Enhanced Support for Artificial Intelligence (AI) / Machine Learning (ML) Phase 2 | TS 23.288 (Stage 2 part AIML_CN_Ph2-ARC); the CT part AIML_CN_Ph2-CT lists TS 29.510, TS 29.517 and TS 29.522 | Title and listing only. The 3GPP portal entry gives no description; the scope is unverified. |
+| TEI20_Metrics (SP-251207) | Model Evaluation Metrics Enhancement | TS 23.288 | TS 23.288 V20.2.0 clause 5C: the accuracy information includes an accuracy or loss value and its compute method, and the loss value is computed from the differences between actual and predicted values; V19.8.0 clause 5C names only the accuracy value. Clauses 6.2F.2 and 7.9.2 name the desired ML model metrics. The change history records CR 1542 "Model Evaluation Metrics Enhancement" in V20.0.0 (SP-260092); the link between the CR and the work item is by identical title. |
+| TEI20_UDCE (SP-260298) | UPF Data Collection Enhancement | TS 23.288, TS 23.501 | Title and listing only; unverified. |
+
+TS 23.288 V20.2.0 also adds clause 6.24 (Abnormal User Plane Traffic Analytics) and clause 6.25 (Traffic pattern analytics), which V19.8.0 does not have; the change history records CRs 1547, 1553, 1554 and 1555 in V20.0.0 and CR 1573 in V20.1.0. The change history does not name the work item, so the attribution is unverified.
+
+The SA4 reports themselves point to Release 20 next steps. TR 26.927 V19.0.0 clause 7 recommends, for collaboration scenario 3 (IMS services), stage 3 normative work in Release 20 on AI/ML model distribution and operation in IMS, including extending TS 26.114 and TS 26.264, and, for a new study in Release 20 or beyond, further study of the traffic characteristics of the AI/ML data components and of possible QoS identifiers. TR 26.847 V19.0.0 clause 6 recommends a new evaluation study covering AI/ML traffic characteristics and KPIs for the evaluation scenarios. These are recommendations in the reports, not decisions; the work plan entry below is the only Release 20 item found that names TS 26.264.
+
+The work plan lists the Release 20 work item AIML_IMS-MED, "Media aspects for AI/ML in IMS services" (SP-250878), against TS 26.264; its scope is unverified. TR 21.919 clause 8.2.1 states that Stage 1 of AIML_MT_Ph2 (AI/ML Model Transfer Phase 2) was moved to the next release.
 
 ## Release 19
 
@@ -40,6 +59,17 @@ This page covers [TR 22.874](https://www.3gpp.org/dynareport/22874.htm), [TR 23.
 | --- | --- | --- | --- | --- |
 | TR 26.847 | 19.0.0 |  | Version 19.0.0 created by MCC upon approval in SA#108 |  |
 | TR 26.927 | 19.0.0 |  | Version 19.0.0 created by MCC upon approval in SA#108 |  |
+
+What the release description adds (TR 21.919 clause 8):
+
+- AIML_CN (clause 8.1.3, SA2 with CT and SA3 parts; TS 23.288) enhances: LCS support for direct AI/ML based positioning (the LMF obtains or trains ML models, with NWDAF containing MTLF as a source and for performance monitoring); 5GC support for vertical federated learning; NWDAF-assisted policy control and QoS enhancement (QoS and policy assistance analytics); and NWDAF support for mitigating signalling storms. In TS 23.288 V19.8.0 these correspond to clause 6.2E.4, clauses 5.4, 6.2H and 7.12, clause 6.23 and clause 6.22, none of which are in V18.13.0; clauses 5.3 and 6.2C are renamed "Horizontal Federated Learning".
+- eNetAE19 (clause 25.7.2, CT3; TS 29.520, TS 29.574, TS 29.575, TS 29.576, TS 29.517) enhances Nnwdaf_MLModelMonitor_Register, _Deregister and _Subscribe, completes the analytics transfer and aggregation procedures, and adds the global ML model accuracy information to Nnwdaf_MLModelTraining_Notify.
+- AIML_MGT_Ph2 (clause 8.1.4, SA5; TS 28.105) adds pre-specialized training, fine-tuning, training for multiple contexts, distributed and federated training, reinforcement learning, inference emulation environments and AI/ML inference explainability to AI/ML management.
+- AIML_App (clause 8.2.2, SA6; TS 23.482 and TS 23.436) specifies the AI/ML enablement (AIMLE) architecture and an ML repository.
+- PAIDC_UPF (clause 8.2.3, CT3 and CT4; TS 29.564 and the session management event exposure service specification) adds reduced reporting instructions, report bundling and RAT type filtering to UPF event exposure subscriptions.
+- FS_AIML_CAL (clause 8.3.1, TSG SA) is a study of AI/ML consistency and terminology alignment across 3GPP groups.
+- AIML_MT_Ph2: clause 8.2.1 is void; it states that only Stage 1 was defined in Release 19 and was moved to the next release. TS 22.261 records CR 0713 "Adding functional requirements of AIML-Ph2" and CR 0714 "Adding KPIs for AIML-Ph2" in V19.4.0; clauses 6.40.2.2 and 7.10.2 (direct device connection) are in V19.15.0 and not in V18.19.0.
+- FS_AI4Media (SP-220328, SA4) is listed in TR 21.919 clause 29.1 among the studies for which no summary is provided; TR 21.918 clause 11.3 also lists it, in the table of the AI/ML management clause, without a description.
 
 ## Release 18
 
@@ -58,6 +88,31 @@ This page covers [TR 22.874](https://www.3gpp.org/dynareport/22874.htm), [TR 23.
 | TR 22.874 | 18.1.0 | 0001 | FS_AMMT update to Functional requirements for AMMT services | AIML_MT |
 | TR 22.874 | 18.1.0 | 0002 | FS_AMMT update to clause 7.4 Group performance Flocking Use Case | AIML_MT |
 | TR 22.874 | 18.2.0 | 0003 | FS_AMMT update to CPR tables with new format | FS_AIML_MT |
+
+What the release descriptions add (TR 21.918 clause 11 and clause 26):
+
+- AIML_MT (clause 11.1, SA1): the study FS_AIML_MT identifies use cases, performance requirements and traffic characteristics of AI/ML model distribution, transfer and training; its Stage 1 normative work is in TS 22.261 (clause 6.40 AI/ML model transfer in 5GS, clause 7.10 KPIs; change requests CR 0551 "Adding requirements for AMMT" and CR 0552 "Adding performance requirements for AMMT" in V18.4.0).
+- AIMLsys (clause 11.1, SA2 with CT3 and CT4; outputs of FS_AIMLsys in TR 23.700-80): planned data transfer with QoS, enhanced external parameter provisioning, member UE selection assistance, multi-member AF session with required QoS, end-to-end data volume transfer time analytics (an NWDAF analytics, TS 23.288 clause 6.18) and new NEF monitoring events.
+- eNA_Ph3 (clause 26.1, SA2): listed without a summary. TS 23.288 V18.13.0 has, and V17.12.0 does not have: federated learning among NWDAFs (clauses 5.3 and 6.2C), accuracy monitoring of analytics and ML models (clauses 5C, 6.2D and 6.2E, Nnwdaf_MLModelMonitor in clause 7.9), ML model training (clause 6.2F, Nnwdaf_MLModelTraining in clause 7.10 and Nnwdaf_MLModelTrainingInfo in clause 7.11) and ML model storage in the ADRF (clauses 6.2B.5 to 6.2B.7, Nadrf_MLModelManagement in clause 10.3). The change history of V18.x records, for example, CR 0557 "Monitoring of accuracy of ML Models", CR 0641 "ML Model storage and retrieval via ADRF" and CR 0773 "Updates for Nnwdaf_MLModelTraining service".
+- eNetAE (clause 26.2, CT3; TS 29.520, TS 29.574, TS 29.575, TS 29.576): the effect of user consent on data collection and storage, multiple notification endpoints, and analytics service enhancements such as the preferred accuracy levels "Medium" and "Highest".
+- AIML_MGT (clause 11.3, SA5; TS 28.105): AI/ML management capabilities for ML training, emulation, deployment and inference.
+- AIMLsysNEF_CH (clause 11.4, SA5; TS 32.254): NEF charging for the AI/ML supporting NEF northbound APIs.
+
+## Release 17
+
+| Work item | Title | What the release description adds |
+| --- | --- | --- |
+| eNA_Ph2 (TR 21.917 clause 9.4.3, SA2 with CT3, CT4 and SA3) | Enablers for Network Automation for 5G - phase 2 | Logical function decomposition of the NWDAF into the Model Training Logical Function and the Analytics Logical Function; ML model training and provisioning to NWDAFs containing an Analytics Logical Function; trained model sharing between NWDAF instances, limited to single vendor environments; UE data as an input for analytics (via an AF); user consent for UE data collection and analysis. |
+
+TS 23.288 V17.12.0 has the ML model provisioning procedure (clause 6.2A) with Nnwdaf_MLModelProvision (clause 7.5) and Nnwdaf_MLModelInfo (clause 7.6), data collection from the UE Application (clause 6.2.8) and user consent for analytics (clause 6.2.9). It has no accuracy monitoring (clause 5C) and no ML model training procedure (clause 6.2F); those are in V18.13.0.
+
+## Release 16
+
+eNA (TR 21.916 clause 18.1, SA2 with CT3 and CT4) specifies the data collected by the NWDAF and its output (statistics and predictions): a data collection architecture from any NF, a network data analytics exposure architecture, general data collection procedures, the input data and output of each Analytics ID, and the services Nnwdaf_AnalyticsSubscription (subscribe and notify) and Nnwdaf_AnalyticsInfo (request and response).
+
+## Release 15
+
+TR 21.915 clause 5.5.2.2.5 states that the Network Data Analytics Function (NWDAF) is introduced to provide data analytics support, namely the load of each network slice.
 
 ## TR 22.874 before change control
 
