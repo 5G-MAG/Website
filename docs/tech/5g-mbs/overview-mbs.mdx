@@ -120,47 +120,22 @@ A single copy of the MBS traffic is efficiently transported over the 5G core net
 
 ## What kinds of service could be offered with 5G MBS?
 
-MBS supports the delivery of both operator and third-party media content (TS 26.502 V19.6.0 clause 1, 4.2.2). In particular, MBS User Services allow popular online television and radio services (e.g. live sport or national events) to be delivered efficiently to compatible equipment such as smartphones, smart TVs or car infotainment systems (TS 26.502 V19.6.0 clause 1).
+MBS supports the delivery of both operator and third-party media content (TS 26.502 V19.6.0 clause 1, 4.2.2).
 
-- Broadcast is suitable for localized services at the granularity of individual cells (e.g. services in venues, stadiums, exhibition centres) (TS 23.247 V20.0.0 clause 3.1 (MBS service area, note 2), 6.2.2 (note 1)).
-- Multicast allows the efficient and scalable delivery of popular services while ensuring a similar quality of service (QoS) and reliability to that of unicast distribution (TS 23.247 V20.0.0 clause 4.1; TS 38.300 V19.4.0 clause 16.10.5.4). Quality of experience is independent of audience size and network congestion is mitigated. Multicast allows a group of UEs to receive services according to QoS requirements and/or prevailing channel conditions (TS 38.300 V19.4.0 clause 16.10.5.4).
-
-:::note[Not found in the specifications]
-The examples of services and equipment, and the statements on quality of experience and network congestion, are kept from the Explainer; TS 26.502, TS 23.247 and TS 38.300 do not state them in these words.
-:::
-
-<figure style={{maxWidth: '820px', margin: '1.5rem auto'}}>
-<img loading="lazy" style={{width: "100%", height: "auto"}} src={useBaseUrl('/img/tech/5g-mbs/figure_mbs_3.svg')} width="900" height="300" alt="Three examples of compatible equipment: media apps for connected devices, smart TV or 5G to the home, and automotive infotainment." />
-<figcaption>Equipment that could receive MBS User Services: media apps for connected devices, smart TV / 5G to the home, and automotive infotainment. Concept figure by 5G-MAG after the Explainer (April 2023).</figcaption>
-</figure>
+- Broadcast is suitable for localized services at the granularity of individual cells (TS 23.247 V20.0.0 clause 3.1 (MBS service area, note 2), 6.2.2 (note 1)).
+- Multicast allows the efficient and scalable delivery of popular services while ensuring a similar quality of service (QoS) and reliability to that of unicast distribution (TS 23.247 V20.0.0 clause 4.1; TS 38.300 V19.4.0 clause 16.10.5.4). Multicast allows a group of UEs to receive services according to QoS requirements and/or prevailing channel conditions (TS 38.300 V19.4.0 clause 16.10.5.4).
 
 ## Additional characteristics
-
-To minimize implementation impact and complexity, MBS reuses the existing (3GPP Release 15/16) radio-layer design for physical channels, reference signals, and sub-carrier spacings and cyclic prefixes (TS 38.300 V19.4.0 clause 16.10.4, 16.10.5.7, 16.10.6.6; TS 38.214 V19.5.0 clause 5.1).
-
-:::note[Not found in the specifications]
-The specifications show the reuse in part: multicast and broadcast PDSCH are scheduled with group RNTIs on the same PDCCH and PDSCH procedures as unicast, with the numerology of the DL BWP or CORESET 0 (TS 38.300 V19.4.0 clause 16.10.5.7, 16.10.6.6). They do not state the aim of minimizing implementation impact and complexity, or the Release 15/16 baseline.
-:::
 
 ### How is the coverage area of a service determined?
 
 For both Multicast and Broadcast Services, individual cells may be added to or removed from the service area (TS 23.247 V20.0.0 clause 3.1 (MBS service area, note 2)). The Multicast Service is transmitted only in cells within the multicast service area in which there are UEs that have joined an MBS session (TS 23.247 V20.0.0 clause 4.3; TS 38.300 V19.4.0 clause 16.10.5.2, 16.10.5.3.2). Cells within the broadcast service area transmit the Broadcast Service regardless of whether the service is requested or not (TS 23.247 V20.0.0 clause 3.1 (note 1), 4.2.2).
 
-For multicast, link adaptation selects the most appropriate modulation and coding scheme (MCS). Beamforming is optimized for the UEs in the multicast group. For broadcast, the MCS is indicated in the DCI that schedules the transmission, from the MCS table configured for MCCH or MTCH, as there is no channel-state information feedback from UEs (TS 38.212 V19.4.0 clause 7.3.1.5.1; TS 38.214 V19.5.0 clause 5.1.3.1; TS 38.300 V19.4.0 clause 16.10.6.6).
-
-Single frequency network (SFN) operation is possible across sectors of the same base station for multicast. For broadcast, SFNs can be implemented across base stations that are sufficiently close to each other, transparent to UEs.
-
-:::note[Not found in the specifications]
-Link adaptation and beamforming for multicast, and SFN operation for multicast and broadcast, are kept from the Explainer; the specifications of the corpus checked (TS 38.300 V19.4.0, TS 38.214 V19.5.0, TS 38.212 V19.4.0, TS 23.247 V20.0.0) do not state them. For broadcast, TS 38.300 states that HARQ-ACK feedback is not supported (clause 16.10.6.6) and does not mention channel-state information feedback.
-:::
+For broadcast, the MCS is indicated in the DCI that schedules the transmission, from the MCS table configured for MCCH or MTCH (TS 38.212 V19.4.0 clause 7.3.1.5.1; TS 38.214 V19.5.0 clause 5.1.3.1; TS 38.300 V19.4.0 clause 16.10.6.6).
 
 ### How is reliability of reception managed?
 
-For multicast, provision of UE feedback, support of retransmissions using PTP or PTM, link adaptation, and beamforming, among other mechanisms, ensure reliability (TS 38.300 V19.4.0 clause 16.10.1, 16.10.5.6, 16.10.5.7). For broadcast, services are delivered with no guarantee of reception (TS 23.247 V20.0.0 clause 3.1 (note 1); TS 38.300 V19.4.0 clause 16.10.6.6), however data repetition (slot-level) is possible for improved performance (TS 38.300 V19.4.0 clause 16.10.6.6).
-
-:::note[Not found in the specifications]
-UE feedback (HARQ-ACK, enabled or disabled per G-RNTI or G-CS-RNTI) and retransmission using PTP or PTM are in TS 38.300 clause 16.10.1, 16.10.5.6 and 16.10.5.7. Link adaptation and beamforming are not stated there.
-:::
+For multicast, provision of UE feedback and support of retransmissions using PTP or PTM, among other mechanisms, ensure reliability (TS 38.300 V19.4.0 clause 16.10.1, 16.10.5.6, 16.10.5.7). For broadcast, services are delivered with no guarantee of reception (TS 23.247 V20.0.0 clause 3.1 (note 1); TS 38.300 V19.4.0 clause 16.10.6.6), however data repetition (slot-level) is possible for improved performance (TS 38.300 V19.4.0 clause 16.10.6.6).
 
 ### How are mobility and service continuity managed?
 
@@ -174,17 +149,11 @@ Mixed radio carriers can deliver multicast and/or broadcast services alongside o
 
 ## Background
 
-In 2019, 3GPP identified a number of services across different industry verticals that share the requirement of conveying common data to multiple recipients at the same time - for example public safety, V2X, group communications and internet of things (IoT) (TR 23.757 V17.0.0 clause 1 and history).
+3GPP identified a number of services across different industry verticals that share the requirement of conveying common data to multiple recipients at the same time - for example public safety, V2X, group communications and internet of things (IoT) (TR 23.757 V17.0.0 clause 1 and history).
 
 As multicast and broadcast have the potential to deliver 'common data' services more efficiently than unicast 3GPP has since standardised these capabilities in the 5G system as 5G New Radio Multicast and Broadcast Services (5G-NR MBS) (TS 23.247 V20.0.0 clause 4.1; TS 38.300 V19.4.0 clause 16.10.1). 5G-NR MBS was substantially complete in Release 17 (Rel-17), with some (mainly service) aspects carrying over to Rel-18 (TS 23.247 V18.8.0 clause 6.17, which is not in V17.0.0).
 
-In principle, 5G-NR MBS equipped mobile networks would be able to use the most suitable delivery method (i.e. unicast, multicast or broadcast) for a given service depending its requirements and demand within the network. For example, if many user devices requested the same content at the same time in a given cell, the multicast or broadcast delivery methods could be used whereas in periods of lower demand, or more challenging wireless propagation conditions, unicast may be a better option (TS 23.247 V20.0.0 clause 4.1, 6.3.1; TS 38.300 V19.4.0 clause 16.10.5.4).
-
 Media services, for example linear/live radio and TV, concurrently requested by a number of users, have many characteristics in common with the use cases that were identified, and so may also benefit from 5G-NR MBS (TR 23.757 V17.0.0 clause 1 (IPTV); TS 26.502 V19.6.0 clause 1).
-
-:::note[Not found in the specifications]
-The year 2019 is the date of the first entry in the change history of TR 23.757 V17.0.0 (SA2#135, October 2019); the report itself does not state when the services were identified. The choice among unicast, multicast and broadcast for a service is not specified as such; the specifications define the PTP/PTM decision by the NG-RAN and the switching between 5GC Shared and Individual delivery (TS 23.247 V20.0.0 clause 4.1).
-:::
 
 ## Learn more...
 
