@@ -368,7 +368,7 @@ const config = {
     // OS/browser dark-mode preference (respectPrefersColorScheme: false)
     // -- the manual toggle in the navbar still works and is remembered
     // (localStorage) for anyone who switches to dark themselves.
-    colorMode: { defaultMode: 'light', respectPrefersColorScheme: false },
+    colorMode: { defaultMode: 'light', respectPrefersColorScheme: true },
     docs: {
       sidebar: {
         autoCollapseCategories: true,

@@ -1,6 +1,7 @@
 import React from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { REPO_PAGES } from '@site/src/data/repoPages';
+import useAnchors from '@site/src/utils/useAnchors';
 import { ALL_REPOS, ALL_PROJECTS, BASKET_ACCENT, ICON_CATALOG, displayNameOf } from '@site/src/data/baskets';
 import releasesData from '@site/static/data/releases.json';
 import styles from './styles.module.css';
@@ -85,6 +86,7 @@ export default function RepoCard({ entry, meta }) {
   const release = releaseFor(repoSlug);
   const ownPage = REPO_PAGES[repoSlug];
   const earlyAccess = useBaseUrl('/early-access');
+  useAnchors(`repo-${repoSlug}`);
 
   return (
     <article id={`repo-${repoSlug}`} className={styles.card} style={accent ? { '--repo-accent': accent } : undefined}>
